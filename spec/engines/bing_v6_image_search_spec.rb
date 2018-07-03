@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe BingV6ImageSearch, vcr: { re_record_interval: 2.months } do
+describe BingV6ImageSearch do
   let(:image_search_params) do
     { offset: 20,
       limit: 10,

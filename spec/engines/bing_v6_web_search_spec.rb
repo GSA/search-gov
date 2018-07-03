@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe BingV6WebSearch, vcr: { re_record_interval: 2.months } do
+describe BingV6WebSearch do
   it_behaves_like 'a Bing V6 search'
   it_behaves_like "a web search engine"
 
