@@ -60,7 +60,8 @@
   'in the twitter govbox' => '#twitter_govbox',
   'in the site header' => '.l-site-header',
   'in the active site main navigation' => '.l-site-nav.main .active',
-  'in the active site sub navigation' => '.l-site-nav.sub .active'
+  'in the active site sub navigation' => '.l-site-nav.sub .active',
+  'in the SearchgovDomain URLs table' => 'tbody.messages #as_admin__searchgov_urls-messages'
 }.
   each do |suffix, selector|
     Then /^(.+) #{Regexp.escape(suffix)}$/ do |step_string|

@@ -228,7 +228,7 @@ Feature:  Administration
     And I follow "Fetch"
     And I wait for ajax
     Then I should see "Your URL has been added to the fetching queue"
-    And I follow "Close" within "div.info-message.message"
+    And I follow "Close" in the SearchgovDomain URLs table
     And I follow "Delete" and confirm "Are you sure"
     And I follow "Close"
 
