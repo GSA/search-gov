@@ -131,7 +131,7 @@ group :development, :test do
   gem 'rspec-its', '~> 1.2.0'
   gem 'email_spec', '~> 2.1.1'
   gem 'database_cleaner', '~> 1.6.2'
-  gem 'capybara', '~> 2.17.0'
+  gem 'capybara', '~> 2.18.0'
   gem 'launchy', '~> 2.4.3'
   gem 'thin', '~> 1.7'
   gem 'i18n-tasks', '~> 0.9.19'
@@ -148,10 +148,11 @@ group :development, :test do
 end
 
 group :test do
+  gem 'capybara-screenshot'
   gem 'simplecov', '~> 0.15.1', require: false
-  gem 'cucumber-rails', '~> 1.5.0', require: false
+  gem 'cucumber-rails', '~> 1.6.0', require: false
   gem 'resque_spec', '~> 0.17.0'
-  gem 'poltergeist', '~> 1.17.0'
+  gem 'poltergeist', '~> 1.18.1'
   gem 'shoulda-matchers', '~> 3.1.2'
   gem 'shoulda-kept-assign-to', '~> 1.1.0'
   gem 'vcr', '~> 4.0'

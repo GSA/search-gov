@@ -10,12 +10,14 @@ SimpleCov.command_name 'Cucumber'
 require 'cucumber/rails'
 require 'capybara/rails'
 require 'email_spec/cucumber'
+require 'capybara-screenshot/cucumber'
 
 # Capybara defaults to XPath selectors rather than Webrat's default of CSS3. In
 # order to ease the transition to Capybara we set the default here. If you'd
 # prefer to use XPath just remove this line and adjust any selectors in your
 # steps to use the XPath syntax.
 Capybara.default_max_wait_time = 10
+Capybara::Screenshot.autosave_on_failure = false
 
 require 'capybara/poltergeist'
 Capybara.register_driver :poltergeist do |app|
@@ -76,3 +78,4 @@ at_exit do
   TestServices::stop_redis unless ENV['TRAVIS']
   exit ScenarioStatusTracker.success
 end
+Capybara.asset_host = "http://localhost:3000"

@@ -259,7 +259,7 @@ Feature: Manage Content
     When I follow "Edit"
     Then the "URL Prefix 1" field should contain "blog.agency4.gov"
     When I follow "View All"
-    And I press "Remove"
+    When I find and click the "Remove" button
     Then I should see "You have removed News and Blog from this site"
 
   Scenario: View Routed Queries
