@@ -1,4 +1,6 @@
 class SearchgovDomain < ActiveRecord::Base
+  class DomainError < StandardError; end
+
   before_validation(on: :create) { self.domain = self.domain&.downcase&.strip }
 
   validate :valid_domain?, on: :create
@@ -48,7 +50,7 @@ class SearchgovDomain < ActiveRecord::Base
       HTTP.headers(user_agent: DEFAULT_USER_AGENT).timeout(connect: 20, read: 60).follow.get url
     rescue => error
       self.update_attributes(status: error.message.strip)
-      raise
+      raise DomainError.new("#{domain}: #{error}")
     end
   end
 
