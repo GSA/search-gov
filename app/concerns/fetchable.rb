@@ -47,6 +47,8 @@ module Fetchable
     scope :unfetched, -> { where('ISNULL(last_crawled_at)') }
 
     before_validation :normalize_url
+    before_validation :truncate_last_crawl_status
+    before_validation :escape_url
     validates_length_of :url, maximum: 2000
     validates_presence_of :url
     validates_url :url, allow_blank: true
@@ -89,5 +91,17 @@ module Fetchable
 
   def url_extension
     Addressable::URI.parse(url).extname.downcase.from(1)
+  end
+
+  def set_searchgov_domain
+    self.searchgov_domain = SearchgovDomain.find_or_create_by(domain: URI(url).host)
+  end
+
+  def truncate_last_crawl_status
+    self.last_crawl_status = self.last_crawl_status&.truncate(255)
+  end
+
+  def escape_url
+    self.url = Addressable::URI.normalized_encode(url) rescue ''
   end
 end

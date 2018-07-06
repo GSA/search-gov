@@ -25,7 +25,6 @@ class SearchgovUrl < ActiveRecord::Base
     exclusion: { in: BLACKLISTED_EXTENSIONS,  message: "is not one we index" },
     allow_blank: true
 
-  before_validation :escape_url
   before_validation :set_searchgov_domain, on: :create
   before_destroy :delete_document
 
@@ -179,17 +178,9 @@ class SearchgovUrl < ActiveRecord::Base
     RobotsTagParser.get_rules(headers: headers, user_agent: DEFAULT_USER_AGENT)
   end
 
-  def escape_url
-    self.url = Addressable::URI.normalized_encode(url) rescue ''
-  end
-
   def delete_document
     I14yDocument.delete(handle: 'searchgov', document_id: document_id)
   rescue I14yDocument::I14yDocumentError => e
     Rails.logger.error "[SearchgovUrl] Unable to delete Searchgov i14y document #{document_id}: #{e.message}".red
-  end
-
-  def set_searchgov_domain
-    self.searchgov_domain = SearchgovDomain.find_or_create_by(domain: URI(url).host)
   end
 end

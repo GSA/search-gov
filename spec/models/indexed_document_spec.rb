@@ -35,17 +35,6 @@ describe IndexedDocument do
   it { is_expected.to validate_presence_of :title }
   it { is_expected.to belong_to :affiliate }
 
-  describe "normalizing URLs when saving" do
-    context "when URL doesn't have a protocol" do
-      let(:url) { "www.nps.gov/sdfsdf" }
-      it "should prepend it with https://" do
-        expect(IndexedDocument.create!(@valid_attributes.merge(:url => url)).url).to eq("https://www.nps.gov/sdfsdf")
-      end
-    end
-
-    it { is_expected.not_to allow_value("http://something.gov/there_is_a_space_in_this url.pdf").for(:url) }
-  end
-
   it "should create a SuperfreshUrl entry for the affiliate" do
     expect(SuperfreshUrl.find_by_url_and_affiliate_id(@min_valid_attributes[:url], @min_valid_attributes[:affiliate_id])).to be_nil
     IndexedDocument.create!(@min_valid_attributes)
@@ -354,4 +343,5 @@ describe IndexedDocument do
   end
 
   it_should_behave_like 'a record with a fetchable url'
+  it_should_behave_like 'a record with an indexable url'
 end

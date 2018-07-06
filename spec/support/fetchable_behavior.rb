@@ -1,26 +1,28 @@
 shared_examples_for 'a record with a fetchable url' do
-  describe 'validations' do
-    it { is_expected.to validate_presence_of :url }
-    it { is_expected.to allow_value("http://some.site.gov/url").for(:url) }
-    it { is_expected.to allow_value("http://some.site.mil/").for(:url) }
-    it { is_expected.to allow_value("http://some.govsite.com/url").for(:url) }
-    it { is_expected.to allow_value("http://some.govsite.us/url").for(:url) }
-    it { is_expected.to allow_value("http://some.govsite.info/url").for(:url) }
-    it { is_expected.to allow_value("https://some.govsite.info/url").for(:url) }
+  describe 'schema' do
+    it { is_expected.to have_db_column(:url).of_type(:string).with_options(limit: 2000) }
+    it { is_expected.to have_db_column(:last_crawl_status).of_type(:string) }
+    it { is_expected.to have_db_column(:last_crawled_at).of_type(:datetime) }
+  end
 
+  describe 'validations' do
+    it { is_expected.to validate_presence_of(:url) }
+    it { is_expected.to allow_value("http://some.site.gov/url").for(:url) }
     it 'limits the url length to 2000 characters' do
       record = described_class.new(valid_attributes.merge(url: ('x' * 2001) ))
       expect(record).not_to be_valid
       expect(record.errors[:url]).to include("is too long (maximum is 2000 characters)")
     end
 
-    context 'when the url extension is blacklisted' do
-      let(:movie_url) { "http://www.nps.gov/some.mov" }
-      let(:record) { described_class.new(valid_attributes.merge(url: movie_url)) }
+    context 'when last_crawl_status is > 255 characters' do
+      let(:record) { described_class.new(valid_attributes.merge(last_crawl_status: 'x' * 300)) }
 
-      it "is not valid" do
-        expect(record).not_to be_valid
-        expect(record.errors.full_messages.first).to match(/extension is not one we index/i)
+      it 'is valid' do
+        expect(record).to be_valid
+      end
+
+      it 'truncates the list_crawl_status to 255 characters' do
+        expect{ record.valid? }.to change{ record.last_crawl_status.length }.from(300).to(255)
       end
     end
   end
@@ -62,6 +64,8 @@ shared_examples_for 'a record with a fetchable url' do
   end
 
   describe "normalizing URLs when saving" do
+    let(:record) { described_class.new(valid_attributes.merge(url: url)) }
+
     context "when a blank URL is passed in" do
       let(:url) { "" }
       it 'should mark record as invalid' do
@@ -94,6 +98,40 @@ shared_examples_for 'a record with a fetchable url' do
       let(:url) { "http://www.nps.gov//hey/I/am/usagov/and/love/extra////slashes.shtml" }
       it "should collapse the slashes" do
         expect(described_class.create!(valid_attributes.merge(url: url)).url).to eq("http://www.nps.gov/hey/I/am/usagov/and/love/extra/slashes.shtml")
+      end
+    end
+
+    context "when URL doesn't have a protocol" do
+      let(:url) { "www.nps.gov/sdfsdf" }
+
+      it "prepends it with https://" do
+        expect{ record.valid? }.to change{ record.url }.from(url).
+          to('https://www.nps.gov/sdfsdf')
+      end
+    end
+
+    context 'when the url contains query parameters' do
+      let(:url) { 'http://www.irs.gov/foo?bar=baz' }
+
+      it 'retains the query parameters' do
+        expect{ record.valid? }.not_to change{ record.url }
+      end
+    end
+
+    context 'when the url requires escaping' do
+      let(:url) { "https://www.foo.gov/my_url’s_weird!" }
+
+      it 'escapes the url' do
+        expect{ record.valid? }.
+          to change{ record.url }.from(url).to("https://www.foo.gov/my_url%E2%80%99s_weird!")
+      end
+
+      context 'when the url is already escaped' do
+        let(:url) { "https://www.foo.gov/my_url%E2%80%99s_weird!" }
+
+        it 'does not re-escape the url' do
+          expect{ record.valid? }.not_to change{ record.url }
+        end
       end
     end
   end
@@ -133,6 +171,54 @@ shared_examples_for 'a record with a fetchable url' do
       end
 
       it { is_expected.to eq false }
+    end
+  end
+end
+
+shared_examples_for 'a record with an indexable url' do
+  describe 'validations' do
+    context 'when the url extension is blacklisted' do
+      let(:movie_url) { "http://www.nps.gov/some.mov" }
+      let(:record) { described_class.new(valid_attributes.merge(url: movie_url)) }
+
+      it "is not valid" do
+        expect(record).not_to be_valid
+        expect(record.errors.full_messages.first).to match(/extension is not one we index/i)
+      end
+    end
+  end
+end
+
+shared_examples_for 'a record that belongs to a searchgov_domain' do
+  describe 'associations' do
+    it { is_expected.to belong_to(:searchgov_domain) }
+
+    context 'on creation' do
+      context 'when the domain already exists' do
+        let!(:existing_domain) { SearchgovDomain.create!(domain: 'existing.gov') }
+        let!(:sitemap) { described_class.create!(url: 'https://existing.gov/foo') }
+
+        it 'sets the searchgov domain' do
+          expect(sitemap.searchgov_domain).to eq(existing_domain)
+        end
+      end
+
+      context 'when the domain has not been created yet' do
+        it 'creates the domain' do
+          expect{ described_class.create!(url: 'https://brandnewdomain.gov/foo') }.
+            to change{ SearchgovDomain.count }.by(1)
+        end
+      end
+    end
+  end
+
+  describe 'validations' do
+    context "when the url's domain is invalid" do
+      let(:invalid_url) { 'https://foo/bar' }
+
+      it 'is not invalid' do
+        expect(described_class.new(url: invalid_url)).not_to be_valid
+      end
     end
   end
 end

@@ -42,6 +42,7 @@ describe SearchgovDomain do
 
   describe 'associations' do
     it { is_expected.to have_many(:searchgov_urls).dependent(:destroy) }
+    it { is_expected.to have_many(:sitemaps).dependent(:destroy) }
   end
 
   describe 'validations' do
