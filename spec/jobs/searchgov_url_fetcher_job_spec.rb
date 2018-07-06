@@ -2,8 +2,7 @@ require 'spec_helper'
 
 describe SearchgovUrlFetcherJob do
   subject(:perform) { SearchgovUrlFetcherJob.perform_now(args) }
-  let!(:searchgov_domain) { SearchgovDomain.create(domain: 'agency.gov', status: '200') }
-  let(:searchgov_url) { SearchgovUrl.create(url: 'https://agency.gov/') }
+  let!(:searchgov_url) { SearchgovUrl.create(url: 'https://agency.gov/') }
   let(:args) do
     { searchgov_url: searchgov_url }
   end
@@ -17,8 +16,8 @@ describe SearchgovUrlFetcherJob do
     end
 
     it 'fetches a searchgov_url' do
+      expect(searchgov_url).to receive(:fetch)
       perform
-      expect(searchgov_url.last_crawl_status).to_not be(nil)
     end
   end
 end
