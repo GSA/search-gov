@@ -5,7 +5,8 @@ describe NewsSearch do
 
   let(:affiliate) { affiliates(:basic_affiliate) }
 
-  before(:all) do
+  before(:each) do
+    ElasticNewsItem.recreate_index
     NewsItem.all.each { |news_item| news_item.save! }
     ElasticNewsItem.commit
   end
