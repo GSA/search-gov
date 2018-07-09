@@ -21,7 +21,7 @@ shared_examples_for 'a record with a fetchable url' do
         expect(record).to be_valid
       end
 
-      it 'truncates the list_crawl_status to 255 characters' do
+      it 'truncates the last_crawl_status to 255 characters' do
         expect{ record.valid? }.to change{ record.last_crawl_status.length }.from(300).to(255)
       end
     end
