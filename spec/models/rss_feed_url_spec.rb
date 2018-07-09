@@ -118,7 +118,7 @@ describe RssFeedUrl do
 
     context 'when the last_crawl_status is greater than 255 characters' do
       before do
-        rss_feed_url.merge(last_crawl_status: 'x' * 500)
+        rss_feed_url.update(last_crawl_status: 'x' * 500)
       end
 
       it 'should truncate the value to 255 characters' do
