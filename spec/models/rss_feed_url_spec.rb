@@ -115,6 +115,20 @@ describe RssFeedUrl do
         end
       end
     end
+
+    context 'when the last_crawl_status is greater than 255 characters' do
+      before do
+        rss_feed_url.merge(last_crawl_status: 'x' * 500)
+      end
+
+      it 'should truncate the value to 255 characters' do
+        expect(rss_feed_url.last_crawl_status.length).to eq(255)
+      end
+
+      it 'should be valid' do
+        expect(rss_feed_url.valid?).to be true
+      end
+    end
   end
 
   describe 'on destroy' do
