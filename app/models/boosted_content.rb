@@ -1,6 +1,5 @@
 class BoostedContent < ActiveRecord::Base
   extend HumanAttributeName
-  include ActiveRecordExtension
   include BestBet
 
   cattr_reader :per_page
