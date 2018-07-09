@@ -10,6 +10,9 @@ class RssFeedUrl < ActiveRecord::Base
   before_destroy :blocking_destroy_news_items
 
   before_validation NormalizeUrl.new(:url), on: :create
+  before_validation do
+    truncate_value(:last_crawl_status, 255)
+  end
 
   validates_presence_of :rss_feed_owner_type, :url
   validates_uniqueness_of :url, scope: :rss_feed_owner_type, case_sensitive: false

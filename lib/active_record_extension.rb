@@ -9,4 +9,10 @@ module ActiveRecordExtension
       item[:_destroy] = true if keys.all? { |key| item[key].blank? }
     end
   end
+
+  def truncate_value(field, length_limit)
+    self.send("#{field}=", self.send(field)&.truncate(length_limit))
+  end
 end
+
+ActiveRecord::Base.send(:include, ActiveRecordExtension)
