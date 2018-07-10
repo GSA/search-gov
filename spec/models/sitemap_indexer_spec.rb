@@ -32,7 +32,7 @@ describe SitemapIndexer do
 
     context 'when the sitemap specifies a lastmod value' do
       let(:sitemap_entries) do
-        '<url><loc>http://agency.gov/doc1</loc><lastmod>2018-01-01</lastmod></url>'
+        '<url><loc>http://agency.gov/doc1</loc><lastmod>2018-01-01T12:00:00+00:00</lastmod></url>'
       end
 
       it 'sets the lastmod attribute' do
