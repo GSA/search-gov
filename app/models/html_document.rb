@@ -19,8 +19,8 @@ class HtmlDocument < WebDocument
   def redirect_url
     refresh = html.css('meta[http-equiv]').detect{|node| /refresh/i === node['http-equiv'] }
     if refresh
-      new_path = refresh['content'].match(/.*URL=('|")?(?<path>[^('|")]*)/i)[:path]
-      URI.join(url, new_path).to_s
+      new_path = refresh['content'].match(/.*URL=['"]?(?<path>[^'"]*)/i)[:path]
+      URI.join(url, URI.encode(new_path)).to_s
     end
   end
 
