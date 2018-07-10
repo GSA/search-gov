@@ -20,7 +20,7 @@ class HtmlDocument < WebDocument
     refresh = html.css('meta[http-equiv]').detect{|node| /refresh/i === node['http-equiv'] }
     if refresh
       new_path = refresh['content'].match(/.*URL=['"]?(?<path>[^'"]*)/i)[:path]
-      URI.join(url, URI.encode(new_path)).to_s
+      URI.join(url, Addressable::URI.encode(new_path)).to_s
     end
   end
 
