@@ -10,7 +10,7 @@ class RssFeedUrl < ActiveRecord::Base
 
   before_validation NormalizeUrl.new(:url), on: :create
   before_validation do
-    truncate_value(:last_crawl_status, 255) if last_crawl_status.length > 255
+    truncate_value(:last_crawl_status, 255)
   end
 
   validates_presence_of :rss_feed_owner_type, :url
