@@ -159,6 +159,10 @@ describe ApiGoogleDocsSearch do
         search.run
       end
 
+      after do
+        I18n.locale = :en
+      end
+
       it 'returns results' do
         expect(search.results.count).to eq(10)
       end
