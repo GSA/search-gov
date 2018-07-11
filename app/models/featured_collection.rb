@@ -1,6 +1,5 @@
 class FeaturedCollection < ActiveRecord::Base
   extend HumanAttributeName
-  include ActiveRecordExtension
   include BestBet
 
   MAXIMUM_IMAGE_SIZE_IN_KB = 512

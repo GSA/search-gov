@@ -47,7 +47,9 @@ module Fetchable
     scope :unfetched, -> { where('ISNULL(last_crawled_at)') }
 
     before_validation :normalize_url
-    before_validation :truncate_last_crawl_status
+    before_validation do
+      truncate_value(:last_crawl_status, 255)
+    end
     before_validation :escape_url
     validates_length_of :url, maximum: 2000
     validates_presence_of :url
@@ -95,10 +97,6 @@ module Fetchable
 
   def set_searchgov_domain
     self.searchgov_domain = SearchgovDomain.find_or_create_by(domain: URI(url).host)
-  end
-
-  def truncate_last_crawl_status
-    self.last_crawl_status = self.last_crawl_status&.truncate(255)
   end
 
   def escape_url

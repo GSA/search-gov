@@ -4,7 +4,6 @@ require 'sass/css'
 class Affiliate < ActiveRecord::Base
   extend HumanAttributeName
   extend HashColumnsAccessible
-  include ActiveRecordExtension
   include Dupable
   include XmlProcessor
   include LogstashPrefix

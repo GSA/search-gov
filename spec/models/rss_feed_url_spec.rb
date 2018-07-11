@@ -115,6 +115,15 @@ describe RssFeedUrl do
         end
       end
     end
+
+    context 'when the last_crawl_status is greater than 255 characters' do
+      let(:rss_feed_url) { RssFeedUrl.new(last_crawl_status: 'x' * 500) }
+
+      it 'truncates the value to 255 characters' do
+        expect{ rss_feed_url.valid? }.to change{ rss_feed_url.last_crawl_status.length }.
+          from(500).to(255)
+      end
+    end
   end
 
   describe 'on destroy' do
