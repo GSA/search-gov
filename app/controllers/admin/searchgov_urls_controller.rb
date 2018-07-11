@@ -17,7 +17,7 @@ class Admin::SearchgovUrlsController < Admin::AdminController
 
   def fetch
     process_action_link_action do | record|
-      SearchgovUrlFetcherJob.perform_later record
+      SearchgovUrlFetcherJob.perform_later(searchgov_url: record)
       flash[:info] = "Your URL has been added to the fetching queue."
     end
   end
