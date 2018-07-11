@@ -103,4 +103,10 @@ describe ApplicationDocument do
       end
     end
   end
+
+  describe 'redirect_url' do
+    subject(:redirect_url) { application_document.redirect_url }
+
+    it { is_expected.to be nil }
+  end
 end

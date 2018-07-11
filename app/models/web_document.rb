@@ -30,6 +30,10 @@ class WebDocument
     false
   end
 
+  def redirect_url
+    nil
+  end
+
   private
 
   def parse_content

@@ -326,18 +326,49 @@ describe HtmlDocument do
     it { is_expected.to eq nil }
 
     context 'when the HTML sets a redirection' do
-      let(:raw_document) { '<html><meta http-equiv="refresh" content="0; URL=/new.html"></html>' }
+      let(:raw_document) do
+        '<html><meta http-equiv="refresh" content="0; URL=/new.html"></html>'
+      end
 
       it 'returns the new url' do
         expect(redirect_url).to eq 'https://foo.gov/new.html'
       end
 
+      context 'when the new URL is in double quotes' do
+        let(:raw_document) do
+          %(<html><meta http-equiv="refresh" content="0; URL='./new.html'"></html>)
+        end
+
+        it { is_expected.to eq 'https://foo.gov/new.html' }
+      end
+
+      context 'when the new URL is in single quotes' do
+        let(:raw_document) do
+          %(<html><meta http-equiv='refresh' content='0; URL="./new.html"'></html>)
+        end
+
+        it { is_expected.to eq 'https://foo.gov/new.html' }
+      end
+
       context 'case-sensitivity' do
-        let(:raw_document) { '<html><META http-equiv="REFRESH" content="0; URL=/new"></html>' }
+        let(:raw_document) do
+          '<html><META http-equiv="REFRESH" content="0; URL=/new"></html>'
+        end
 
         it 'is not case-sensitive' do
           expect(redirect_url).to eq 'https://foo.gov/new'
         end
+      end
+
+      context 'when the URL contains special characters' do
+        let(:raw_document) do
+          '<html><meta http-equiv="refresh" content="0; URL=https://www.foo.gov/my|url’s_weird?!"></html>'
+        end
+
+        it 'encodes the characters' do
+          expect(redirect_url).to eq 'https://www.foo.gov/my%7Curl%E2%80%99s_weird?!'
+        end
+
       end
     end
   end

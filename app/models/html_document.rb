@@ -18,8 +18,10 @@ class HtmlDocument < WebDocument
   # Returns client-side redirect url
   def redirect_url
     refresh = html.css('meta[http-equiv]').detect{|node| /refresh/i === node['http-equiv'] }
-    new_path = refresh.try(:[],'content')&.gsub(/.*url=/i,'')
-    URI(url).merge(URI(new_path)).to_s if new_path
+    if refresh
+      new_path = refresh['content'].match(/.*URL=['"]?(?<path>[^'"]*)/i)[:path]
+      URI.join(url, Addressable::URI.encode(new_path)).to_s
+    end
   end
 
   private

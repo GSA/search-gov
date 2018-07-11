@@ -440,6 +440,11 @@ describe SearchgovUrl do
         fetch
       end
 
+      it 'reports the redirect' do
+        expect{ fetch }.to change{ searchgov_url.last_crawl_status }.
+          from(nil).to('Redirected to https://www.agency.gov/new.html')
+      end
+
       context 'when it is redirected to a url outside the original domain' do
         let(:new_url) { 'http://www.random.com/' }
 
@@ -455,6 +460,22 @@ describe SearchgovUrl do
 
         it 'does not create a new url' do
           expect(SearchgovUrl).not_to receive(:create).with(url: new_url)
+          fetch
+        end
+      end
+
+      context 'on the client side' do
+        let(:html) do
+          "<header><meta http-equiv=\"refresh\" content=\"0; URL='/client_side.html'\"/></header>"
+        end
+        before do
+          stub_request(:get, url).
+            to_return(status: 200, body: html, headers: { content_type: 'text/html' })
+        end
+
+        it 'creates a url' do
+          expect(SearchgovUrl).to receive(:create).
+            with(url: 'http://www.agency.gov/client_side.html')
           fetch
         end
       end
