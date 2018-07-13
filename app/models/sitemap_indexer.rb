@@ -1,7 +1,7 @@
 class SitemapIndexer
   attr_reader :uri, :domain, :scheme
 
-  def initialize(sitemap_url: '')
+  def initialize(sitemap_url:)
     @uri = URI(sitemap_url)
     @domain = uri.host
     @scheme = uri.scheme

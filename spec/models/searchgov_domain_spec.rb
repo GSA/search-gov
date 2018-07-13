@@ -372,5 +372,14 @@ describe SearchgovDomain do
         it { is_expected.to eq ['http://agency.gov/https_sitemap.xml'] }
       end
     end
+
+    context 'when the domain has sitemap records' do
+      before do
+        searchgov_domain.save!
+        searchgov_domain.sitemaps.create!(url: 'http://agency.gov/sitemap_record.xml')
+      end
+
+      it { is_expected.to eq ['http://agency.gov/sitemap_record.xml'] }
+    end
   end
 end

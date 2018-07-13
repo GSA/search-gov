@@ -56,7 +56,8 @@ class SearchgovDomain < ActiveRecord::Base
   end
 
   def sitemap_urls
-    urls = robotex.sitemaps(url).
+    urls = sitemaps.pluck(:url)
+    urls += robotex.sitemaps(url).
              reject{ |url| URI(url).host != domain }.
              map{ |url| UrlParser.update_scheme(url, scheme) }
     urls.presence || ["#{url}sitemap.xml"]
