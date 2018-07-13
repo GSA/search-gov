@@ -3,7 +3,6 @@ require 'spec_helper'
 describe Admin::SearchgovUrlsController do
   fixtures :users
 
-  let(:admin) { users(:affiliate_admin) }
   let(:searchgov_url) { SearchgovUrl.create!(url: 'agency.gov/test') }
   let(:params) do
     { association: 'searchgov_urls', parent_scaffold: 'admin/searchgov_domains',
@@ -12,7 +11,6 @@ describe Admin::SearchgovUrlsController do
 
   include_context 'super admin logged in' do
     describe '#fetch' do
-
       it 'enqueues a searchgov_url_fetcher_job to the searchgov queue' do
         expect{ post :fetch, params }.
           to have_enqueued_job(SearchgovUrlFetcherJob).on_queue("searchgov").
