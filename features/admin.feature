@@ -1,7 +1,7 @@
 Feature:  Administration
   Background:
     Given I am logged in with email "affiliate_admin@fixtures.org"
-  
+
   Scenario: Visiting the admin home page as an admin
     When I go to the admin home page
     Then I should see the browser page titled "Super Admin"
@@ -214,6 +214,9 @@ Feature:  Administration
     And the following "searchgov urls" exist:
       | url                     |
       | https://search.gov/oops |
+    And the following "sitemaps" exist:
+      | url                             |
+      | https://search.gov/sitemap.xml  |
     When I go to the admin home page
     And I follow "Search.gov Domains"
     Then I should see the following breadcrumbs: Super Admin > Search.gov Domains
@@ -222,6 +225,16 @@ Feature:  Administration
     And I should see "Create New"
     And I should not see "Delete"
     And I should see "search.gov"
+
+    When I follow "Sitemaps"
+    Then I should see "search.gov/sitemap.xml"
+    And I follow "Delete" and confirm "Are you sure you want to delete this sitemap?"
+    Then I should not see "search.gov/sitemap.xml"
+
+    When I follow "Create New" within "#as_admin__sitemaps-active-scaffold"
+    And I fill in "Url" with "search.gov/sitemap.txt"
+    And I press "Create"
+    Then I should see "search.gov/sitemap.txt"
 
     When I follow "URLs"
     Then I should see "search.gov/oops"
