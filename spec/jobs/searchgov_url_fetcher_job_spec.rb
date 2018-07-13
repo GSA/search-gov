@@ -15,6 +15,11 @@ describe SearchgovUrlFetcherJob do
         to raise_error(ArgumentError)
     end
 
+    it 'must have a named argument' do
+      expect { SearchgovUrlFetcherJob.perform_now searchgov_url }.
+        to raise_error(ArgumentError)
+    end
+
     it 'fetches a searchgov_url' do
       expect(searchgov_url).to receive(:fetch)
       perform
