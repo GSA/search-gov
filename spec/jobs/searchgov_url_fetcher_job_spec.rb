@@ -10,14 +10,9 @@ describe SearchgovUrlFetcherJob do
   it_behaves_like 'a searchgov job'
 
   describe '#perform' do
-    it 'must have one parameter' do
+    it 'requires a searchgov_url' do
       expect{ SearchgovUrlFetcherJob.perform_now }.
-        to raise_error(ArgumentError)
-    end
-
-    it 'must have a named argument' do
-      expect { SearchgovUrlFetcherJob.perform_now searchgov_url }.
-        to raise_error(ArgumentError)
+        to raise_error(ArgumentError, 'missing keyword: searchgov_url')
     end
 
     it 'fetches a searchgov_url' do
