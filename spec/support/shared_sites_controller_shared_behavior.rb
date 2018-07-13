@@ -44,6 +44,7 @@ shared_context 'approved user logged in' do
 end
 
 shared_context 'super admin logged in' do
+  fixtures :users
   let(:current_user) { users(:affiliate_admin) }
 
   before do

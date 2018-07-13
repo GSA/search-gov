@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 describe Admin::SearchgovUrlsController do
-  fixtures :users
-
   let(:searchgov_url) { SearchgovUrl.create!(url: 'agency.gov/test') }
   let(:params) do
     { association: 'searchgov_urls', parent_scaffold: 'admin/searchgov_domains',
