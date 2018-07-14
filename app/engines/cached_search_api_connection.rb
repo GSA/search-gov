@@ -1,5 +1,3 @@
-CachedSearchApiConnectionResponse = Struct.new(:response, :cache_namespace)
-
 class CachedSearchApiConnection
   extend Forwardable
   def_delegator :@connection, :basic_auth # optional
