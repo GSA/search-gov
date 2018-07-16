@@ -240,7 +240,8 @@ Feature:  Administration
     Then I should see "search.gov/oops"
     And I follow "Fetch"
     And I wait for ajax
-    Then I should see "404"
+    Then I should see "Your URL has been added to the fetching queue"
+    And I follow "Close" in the SearchgovDomain URLs table
     And I follow "Delete" and confirm "Are you sure"
     And I follow "Close"
 
