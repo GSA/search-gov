@@ -273,7 +273,7 @@ describe HtmlDocument do
       end
 
       context 'when the html can be force-encoded to UTF-8' do
-        let(:raw_document) { open('https://www.ssa.gov/espanol/beneficios/ssi/').read }
+        let(:raw_document) { "jubilación además".force_encoding('ASCII-8BIT') }
 
         it 'encodes the html as UTF-8' do
           expect(parsed_content).to include "jubilación además"
