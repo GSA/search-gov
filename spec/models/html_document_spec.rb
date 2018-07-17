@@ -276,7 +276,9 @@ describe HtmlDocument do
         let(:raw_document) { open('https://www.ssa.gov/espanol/beneficios/ssi/').read }
 
         it 'encodes the html as UTF-8' do
-          expect(parsed_content).to include "jubilación además"
+          VCR.use_cassette 'ascii_page' do
+            expect(parsed_content).to include "jubilación además"
+          end
         end
       end
     end
