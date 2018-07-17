@@ -32,11 +32,20 @@ describe SearchgovDomain do
         with_options(null: false, default: 0)
     end
 
-    it { is_expected.to have_db_index(:domain).unique(true) }
-
     it do
       is_expected.to have_db_column(:scheme).of_type(:string).
         with_options(null: false, default: 'http', limit: 5)
+    end
+
+    it do
+      is_expected.to have_db_column(:activity).of_type(:string).
+        with_options(null: false, default: 'idle', limit: 100)
+    end
+
+    describe 'indices' do
+      it { is_expected.to have_db_index(:domain).unique(true) }
+      it { is_expected.to have_db_index(:status) }
+      it { is_expected.to have_db_index(:activity) }
     end
   end
 
@@ -139,12 +148,40 @@ describe SearchgovDomain do
   end
 
   describe '#index_urls' do
-    before { allow(searchgov_domain).to receive(:delay).and_return(5) }
+    subject(:index_urls) { searchgov_domain.index_urls }
+    before do
+      allow(searchgov_domain).to receive(:delay).and_return(5)
+      allow(SearchgovDomainIndexerJob).to receive(:perform_later)
+    end
 
     it 'enqueues a SearchgovDomainIndexerJob with the record & crawl-delay' do
       expect(SearchgovDomainIndexerJob).
         to receive(:perform_later).with(searchgov_domain: searchgov_domain, delay: 5)
-      searchgov_domain.index_urls
+      index_urls
+    end
+
+    it 'updates #activity as "indexing"' do
+      expect{ index_urls }.to change{ searchgov_domain.activity }.
+        from('idle').to('indexing')
+    end
+
+    context 'when the domain is already being indexed' do
+      let(:searchgov_domain) { SearchgovDomain.new(activity: 'indexing') }
+
+      it 'does not enqueue another indexer job' do
+        expect(SearchgovDomainIndexerJob).
+          not_to receive(:perform_later)
+        index_urls
+      end
+
+      it 'does not raise an error' do
+        expect{ index_urls }.not_to raise_error
+      end
+
+      it 'logs a message that the domain is being indexed' do
+        expect(Rails.logger).to receive(:warn).with(/already being indexed/)
+        index_urls
+      end
     end
   end
 
@@ -247,6 +284,31 @@ describe SearchgovDomain do
           expect{ check_status }.to change{ searchgov_domain.reload.status }.
             from(nil).to('Canonical domain: new.agency.gov')
         end
+      end
+    end
+  end
+
+  describe '#activity' do
+    it 'defaults to "idle"' do
+      expect(SearchgovDomain.new.activity).to eq 'idle'
+    end
+
+    describe '#index' do
+      subject(:index) { searchgov_domain.index }
+
+      it 'changes the activity to "indexing"' do
+        expect{ index }.to change{ searchgov_domain.activity }.
+          from('idle').to('indexing')
+      end
+    end
+
+    describe '#done_indexing' do
+      let(:searchgov_domain) { SearchgovDomain.new(activity: 'indexing') }
+      subject(:done_indexing) { searchgov_domain.done_indexing }
+
+      it 'changes the activity to "idle"' do
+        expect{ done_indexing }.to change{ searchgov_domain.activity }.
+          from('indexing').to('idle')
       end
     end
   end

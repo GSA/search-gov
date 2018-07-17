@@ -79,6 +79,8 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
+    aasm (4.12.3)
+      concurrent-ruby (~> 1.0)
     actionmailer (4.2.10)
       actionpack (= 4.2.10)
       actionview (= 4.2.10)
@@ -738,6 +740,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aasm (~> 4.12)
   active_scaffold (~> 3.4.43)
   active_scaffold_export (~> 3.3.2)
   activerecord-validate_unique_child_attribute (~> 0.1.0)

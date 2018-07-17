@@ -1,4 +1,5 @@
 class SearchgovDomain < ActiveRecord::Base
+  include AASM
   class DomainError < StandardError; end
 
   before_validation(on: :create) { self.domain = self.domain&.downcase&.strip }
@@ -22,7 +23,10 @@ class SearchgovDomain < ActiveRecord::Base
   end
 
   def index_urls
+    index!
     SearchgovDomainIndexerJob.perform_later(searchgov_domain: self, delay: delay)
+  rescue AASM::InvalidTransition
+    Rails.logger.warn("#{domain} is already being indexed")
   end
 
   def index_sitemap
@@ -37,6 +41,19 @@ class SearchgovDomain < ActiveRecord::Base
     self.status, self.scheme = current_status, response.uri.scheme
     save if changed?
     status
+  end
+
+  aasm column: 'activity' do
+    state :idle, initial: true
+    state :indexing
+
+    event :index do
+      transitions from: :idle, to: :indexing
+    end
+
+    event :done_indexing do
+      transitions from: :indexing, to: :idle
+    end
   end
 
   private

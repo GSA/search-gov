@@ -94,6 +94,7 @@ gem 'robotex', git: 'https://github.com/MothOnMars/robotex'
 gem 'sitemaps_parser', require: 'sitemaps', git: 'https://github.com/MothOnMars/sitemaps', branch: 'discovery_fixes'
 gem 'public_suffix', '~> 3.0.2'
 gem 'counter_culture', '~> 1.10'
+gem 'aasm', '~> 4.12'
 
 gem 'coffee-rails', '~> 4.2.2'
 gem 'uglifier', '~> 4.1.2'
