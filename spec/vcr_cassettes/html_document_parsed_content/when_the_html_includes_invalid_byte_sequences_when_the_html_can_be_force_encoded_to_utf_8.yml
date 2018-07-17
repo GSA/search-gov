@@ -1,0 +1,167 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.ssa.gov/espanol/beneficios/ssi/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 17 Jul 2018 16:44:29 GMT
+      Cache-Control:
+      - public
+      Content-Type:
+      - text/html
+      Vary:
+      - accept-encoding
+      X-Xss-Protection:
+      - '1'
+      X-Frame-Options:
+      - SAMEORIGIN
+      Strict-Transport-Security:
+      - max-age=63113904; includeSubDomains; preload
+      Set-Cookie:
+      - TS01838516=017e2f91c31b117defd9f90f9f49839c925aaf55f4933afd48f3b91bcbf64eb1244b7a33e32eeb2818b713c0aa17dcc084fee41d2d;
+        Path=/; Secure; HTTPOnly
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: |-
+        <!DOCTYPE html>
+        <html class="no-js" lang="es">
+
+        <head>
+          <!-- REQUIRED META INFORMATION -->
+          <meta charset="UTF-8" />
+          <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <meta name="msapplication-tap-highlight" content="no" />
+          <!-- PAGE TITLE -->
+          <title>Seguridad de Ingreso Suplementario (SSI) | Administración del Seguro Social</title>
+          <!-- PAGE META INFORMATION -->
+          <meta name="DCTERMS:coder" content="aveliz" />
+          <meta name="DCTERMS:coderOffice" content="OCOMM:OCPT" />
+          <meta name="DCTERMS:contentOffice" content="OCOMM:OCPT" />
+          <meta name="DCTERMS:contentOwner" content="lalicea" />
+          <meta name="DCTERMS:dateCertified" content="2018-05-18" />
+          <meta name="description" content="¿Qué es Seguridad de Ingreso Suplementario, SSI?" />
+          <!-- STYLES -->
+          <link rel="stylesheet" href="/framework/css/ssa.firefly.css" />
+          <!-- SCRIPTS -->
+          <script src="/framework/js/ssa.firefly.head.js"></script>
+        </head>
+
+        <body data-english-file="/benefits/ssi/">
+          <!-- BANNER -->
+          <aside class="accessibility" id="accessibility"><a href="#content" id="skip-navigation">Pase al contenido</a></aside><header class="bg-logo white" id="banner" role="banner"><div class="fx fx-jc-sb px2 py0 wrapper"><h1 class="fs2 fw4 ma0 l-fs3"><a class="fx fx-ai-c hover-yellow py3 white m-py2" href="/espanol/"><img alt="" class="svg3 m-svg5" src="/framework/images/logo.svg"> <span class="pl1 m-pl2">Seguro Social</span></a></h1><nav class="fs1 fx print-dn"><a class="fx fx-ai-c hover-yellow px2 white" href="https://search.ssa.gov/search?affiliate=segurosocial" id="ssa-search" title="Buscar"><svg class="svg1" focusable="false" viewBox="0 0 24 24"><path d="M14.182.0q-1.994.0-3.814.78t-3.132 2.092-2.092 3.132-.78 3.814q0 1.713.558 3.281t1.59 2.847l-6.196 6.187q-.315.315-.315.776.0.469.311.78t.78.311q.46.0.776-.315l6.187-6.196q1.278 1.031 2.847 1.59t3.281.558q1.994.0 3.814-.78t3.132-2.092 2.092-3.132.78-3.814-.78-3.814-2.092-3.132-3.132-2.092-3.814-.78zm0 2.182q1.551.0 2.966.605t2.438 1.628 1.628 2.438.605 2.966-.605 2.966-1.628 2.438-2.438 1.628-2.966.605-2.966-.605-2.438-1.628-1.628-2.438-.605-2.966.605-2.966 1.628-2.438 2.438-1.628 2.966-.605z" vector-effect="non-scaling-stroke"></path></svg><span class="dn m-dib m-pl1">BUSCAR</span></a> <a class="fx fx-ai-c hover-yellow px2 white" href="/site/menu/es/" id="ssa-menu" title="Menú"><svg class="svg1" focusable="false" viewBox="0 0 24 24"><path d="M3 5h18q.414.0.707.293T22 6t-.293.707T21 7H3q-.414.0-.707-.293T2 6t.293-.707T3 5zm0 12h18q.414.0.707.293T22 18t-.293.707T21 19H3q-.414.0-.707-.293T2 18t.293-.707T3 17zm0-6h18q.414.0.707.293T22 12t-.293.707T21 13H3q-.414.0-.707-.293T2 12t.293-.707T3 11z" vector-effect="non-scaling-stroke"></path></svg><span class="dn m-dib m-pl1">MENÚ</span></a> <a class="fx fx-ai-c hover-yellow px2 white" href="/site/languages/es/" id="ssa-languages" title="Idiomas"><svg class="svg1" focusable="false" viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 1C3.14 1 0 4.14.0 8s3.14 7 7 7c.48.0.94-.05 1.38-.14-.17-.08-.2-.73-.02-1.09.19-.41.81-1.45.2-1.8-.61-.35-.44-.5-.81-.91-.37-.41-.22-.47-.25-.58-.08-.34.36-.89.39-.94.02-.06.02-.27.0-.33.0-.08-.27-.22-.34-.23-.06.0-.11.11-.2.13-.09.02-.5-.25-.59-.33-.09-.08-.14-.23-.27-.34-.13-.13-.14-.03-.33-.11s-.8-.31-1.28-.48c-.48-.19-.52-.47-.52-.66-.02-.2-.3-.47-.42-.67-.14-.2-.16-.47-.2-.41-.04.06.25.78.2.81-.05.02-.16-.2-.3-.38-.14-.19.14-.09-.3-.95s.14-1.3.17-1.75c.03-.45.38.17.19-.13-.19-.3.0-.89-.14-1.11-.13-.22-.88.25-.88.25.02-.22.69-.58 1.16-.92.47-.34.78-.06 1.16.05.39.13.41.09.28-.05-.13-.13.06-.17.36-.13.28.05.38.41.83.36.47-.03.05.09.11.22s-.06.11-.38.3c-.3.2.02.22.55.61s.38-.25.31-.55c-.07-.3.39-.06.39-.06.33.22.27.02.5.08.23.06.91.64.91.64-.83.44-.31.48-.17.59.14.11-.28.3-.28.3-.17-.17-.19.02-.3.08-.11.06-.02.22-.02.22-.56.09-.44.69-.42.83.0.14-.38.36-.47.58-.09.2.25.64.06.66-.19.03-.34-.66-1.31-.41-.3.08-.94.41-.59 1.08.36.69.92-.19 1.11-.09.19.1-.06.53-.02.55.04.02.53.02.56.61.03.59.77.53.92.55.17.0.7-.44.77-.45.06-.03.38-.28 1.03.09.66.36.98.31 1.2.47.22.16.08.47.28.58.2.11 1.06-.03 1.28.31.22.34-.88 2.09-1.22 2.28-.34.19-.48.64-.84.92s-.81.64-1.27.91c-.41.23-.47.66-.66.8 3.14-.7 5.48-3.5 5.48-6.84.0-3.86-3.14-7-7-7L7 1zm1.64 6.56c-.09.03-.28.22-.78-.08-.48-.3-.81-.23-.86-.28.0.0-.05-.11.17-.14.44-.05.98.41 1.11.41.13.0.19-.13.41-.05.22.08.05.13-.05.14zM6.34 1.7c-.05-.03.03-.08.09-.14.03-.03.02-.11.05-.14.11-.11.61-.25.52.03-.11.27-.58.3-.66.25zm1.23.89c-.19-.02-.58-.05-.52-.14.3-.28-.09-.38-.34-.38-.25-.02-.34-.16-.22-.19.12-.03.61.02.7.08.08.06.52.25.55.38.02.13.0.25-.17.25zm1.47-.05c-.14.09-.83-.41-.95-.52-.56-.48-.89-.31-1-.41-.11-.1-.08-.19.11-.34.19-.15.69.06 1 .09.3.03.66.27.66.55.02.25.33.5.19.63h-.01z" vector-effect="non-scaling-stroke"></path></svg><span class="dn m-dib m-pl1">IDIOMAS</span></a> <a class="fx fx-ai-c hover-yellow px2 white" href="/site/signin/es/" id="ssa-signin" title="Ingresar*"><svg class="svg1" focusable="false" viewBox="0 0 24 24"><path d="M12 17.016q-.797.0-1.406-.61t-.61-1.405.61-1.405 1.406-.61 1.406.61.61 1.406-.61 1.407-1.406.61zm6 3V9.986H6v10.03h12zm-6-17.11q-1.266.0-2.18.914T8.906 6H9v2.016h6.094V6q0-1.266-.914-2.18T12 2.906zm6 5.11q.797.0 1.406.586t.61 1.383v10.03q0 .798-.61 1.384T18 21.984H6q-.797.0-1.406-.586t-.61-1.384V9.986q0-.798.61-1.384T6 8.016h.984V6q0-2.063 1.477-3.54T12 .985t3.54 1.477T17.015 6v2.016H18z" vector-effect="non-scaling-stroke"></path></svg><span class="dn m-dib m-pl1">INGRESAR*</span></a></nav></div></header>
+          <!-- MAIN CONTENT -->
+          <main class="content" id="content" role="main">
+            <!-- TITLE BAR -->
+            <section class="bg-ivory-200">
+              <!-- WRAPPER -->
+              <div class="py2 wrapper">
+                <h2 class="fw4 ma0">Beneficios de Seguridad de Ingreso Suplementario (SSI)</h2>
+              </div>
+            </section>
+
+            <!-- WRAPPER -->
+            <section class="wrapper">
+
+              <!-- GRID -->
+              <div class="m-grid">
+
+                <!-- CELL -->
+                <article class="m-cell m-w-70">
+                  <section>
+                    <p>El programa de <a href="/pubs/ES-05-11090.pdf" target="_blank">Seguridad de Ingreso Suplementario</a> (SSI, siglas en ingl&eacute;s) paga beneficios a los adultos y a <a href="/pubs/ES-05-10926.pdf" target="_blank">ni&ntilde;os</a> incapacitados que tienen ingresos bajos y recursos limitados.</p>
+                    <p>Los beneficios de SSI tambi&eacute;n se pagan a las personas mayores de 65 a&ntilde;os de edad que  si cumplen con ciertos límites econ&oacute;micos.</p>
+                    <p>Las personas que han trabajado el tiempo suficiente también pueden recibir beneficios de Seguro Social o beneficios de jubilación además de SSI. <a href="/ssi/">Infórmese mejor sobre los beneficios de SSI...</a>*</p>
+                    <h3 class="bg-ocean-blue-500 pa2 white">¿Cómo puedo solicitar SSI?</h3>
+                    <p>No tenemos una solicitud en SSI por Internet. Usted puede solicitar beneficios de SSI para:</p>
+                    <h3>Adulto incapacidado</h3>
+                    <ul>
+                      <li><p>Para llenar una solicitud, programe una cita con su oficina local del Seguro Social. Llame a nuestro número gratis, <strong>1-800-772-1213</strong> (TTY <strong>1-800-325-0778</strong>) entre las 7 a.m. a 7 p.m., de lunes a viernes o <a href="/espanol/agencia/contacto/">comuníquese con su oficina local del Seguro Social</a>, o;</p></li>
+                      <li><p>Averigüe si tiene derecho para recibir beneficios de incapacidad del Seguro Social. Infórmese mejor y empiece el proceso de incapacidad en nuestra página titulada <a href="/espanol/beneficios/incapacidad/">Beneficios de incapacidad</a>.</p>
+                      <p>Aunque esto no es una solicitud para los beneficios de SSI, podemos usar la mayoría de la información que proporcione para comenzar el procedimiento de solicitud para los beneficios por incapacidad. Cuando termine de llenar por internet la primera parte de la solicitud de beneficios por incapacidad, un agente del Seguro Social que habla español se comunicará con usted, o si prefiere, puede continuar la solicitud en inglés..</p></li>
+                    </ul>
+                    <h3>Niño incapacidado</h3>
+                    <p>Para informarse mejor sobre cómo solicitar  los beneficios, vea nuestra página de internet titulada <a href="/espanol/beneficios/incapacidad/solicitar-nino.html">Solicite los beneficios por incapacidad - Niños (menores de 18 años)</a>.</p>
+                    <p>Llene por Internet el <a href="https://secure.ssa.gov/apps6z/i3820/main.html">Informe de incapacidad para niños* (Child Disability Report)</a> si está listo para solicitar.</p>
+                    <h3>Una persona mayor de 65 años</h3>
+                    <ul>
+                      <li>Llaménos a nuestro número gratis <strong>1-800-772-1213</strong>. Las personas sordas o con problemas de audición pueden llamar a nuestro número TTY <strong>1-800-325-0778</strong>, o</li>
+                      <li>Visite su <a href="/locator/">oficina local de Seguro Social</a>*. (Llame primero para hacer una cita.)</li>
+                    </ul>
+                    <h3 class="bg-ocean-blue-500 pa2 white">¿Puedo presentar una apelación si mi solicitud para beneficios de SSI fue denegada?</h3>
+                    <p>Sí. Si recientemente le denegamos su solicitud para  beneficios de SSI, puede presentar una apelación por internet. Para informarse mejor,  lea cómo <a href="/espanol/beneficios/incapacidad/apelar.html">apelar una decisión</a>.</p>
+                    <h3 class="bg-ocean-blue-500 pa2 white">Si recibe beneficios de SSI...</h3>
+                    <h3>Cree una cuenta de <span class="my">my</span> <span class="ssa">Social Security</span> y acceda a su cuenta para:</h3>
+                    <ul>
+                      <li>Obtener una <a class="definition" href="/espanol/masinfo/df/myssa/df-beve-sp.html">carta de verificación de los beneficios</a>* (incluye Seguro Social y Medicare); y</li>
+                      <li>Verificar su información, beneficios y registro de ganancias.</li>
+                    </ul>
+                    <p><a class="btn js-ga-event" href="/signin/">Ingresar o crear una cuenta*</a></p>
+                    <h3>No necesita una cuenta de <span class="my">my</span> <span class="ssa">Social Security</span> para:</h3>
+                    <ul>
+                      <li><a href="https://faq-es.ssa.gov/es-es/Topic/article/KA-01735">Reemplazar una tarjeta de Medicare</a>*;</li>
+                      <li><a href="/espanol/personas/ciegos/index.html">Seleccionar o cambiar la forma en que recibe información</a> del Seguro Social si es ciego o tiene problemas de visión; y</li>
+                      <li><a href="/blockaccess/">Obstruir el acceso, electrónico o por teléfono automatizado*</a>, a su información personal.<br />
+                        <strong>Horas extras:</strong> Este servicio está disponible los domingos hasta las 11:30 PM <abbr title="Horario del este de los EE. UU.">ET</abbr>.</li>
+                    </ul>
+                  </section>
+                </article>
+
+                <!-- CELL -->
+                <aside class="m-cell m-w-30">
+                  <h3 class="by">Información relacionada</h3>
+                  <ul>
+                    <li><a href="/espanol/personas/mismogenero/">Parejas del mismo género</a></li>
+                    <li><a href="/espanol/SSI-puntos/sp-spot-telephone-wage.htm">Cómo informar su sueldo por teléfono</a></li>
+                    <li><a href="/work/">Ayuda de  empleo para  personas incapacitadas <img src="/benefits/assets/images/ssi/ttw.jpg" alt="Ticket to Work" /></a>*</li>
+                    <li><a href="/disabilityresearch/workincentives.htm">Incentivos de trabajo para  personas  incapacitadas</a>*</li>
+                    <li><a href="/espanol/SSI-puntos/index.htm">Otros temás sobre la Seguridad de Ingreso Suplementario</a></li>
+                    <li><a href="/espanol/calendarios/index.html">Días de pago de beneficios de Seguro Social</a></li>
+                </ul>
+                  <h3 class="by">Información sobre servicios de salud</h3>
+                  <ul>
+                    <li><a href="http://www.healthfinder.gov/espanol/" rel="noopener noreferrer" target="_blank">Temas de salud del Departamento de<br> Servicios de Salud y Humanos de EE.UU.</a></li>
+                    <li><a href="http://www.healthfinder.gov/rxdrug/" rel="noopener noreferrer" target="_blank">Programa de ayuda con<br> medicamentos recetados*</a></li>
+                    <li><a href="http://www.dol.gov/ebsa/publications/cobraemployee.html" rel="noopener noreferrer" target="_blank">Beneficos de salud bajo COBRA (siglas en inglés, <em>La Ley Ómnibus Consolidada de Reconciliación Presupuestaria</em>)</a>*</li>
+                  </ul>
+                  <h3 class="by">Publicaciones</h3>
+                  <ul>
+                    <li><a href="/espanol/publist2.html?topic=SSI">Publicaciones sobre los beneficios de SSI</a></li>
+                    <li><a href="/pubs/ES-05-10977.pdf" target="_blank">Lo que necesita saber cuándo recibe beneficios por jubilación o para sobrevivientes</a></li>
+                    <li><a href="/pubs/ES-05-11024.pdf" target="_blank">Lo que necesita saber si recibe beneficios de Seguridad de Ingreso Suplementario (SSI)</a></li>
+                    <li><a href="/pubs/ES-05-10978.pdf" target="_blank">Programas de ayuda de nutrición</a></li>
+                    <li><a href="/pubs/ES-05-11024.pdf" target="_blank"><em>Lo que necesita saber si recibe beneficios de Seguridad de Ingreso Suplementario  (SSI)</em></a></li>
+                  </ul>
+                </aside>
+
+              </div>
+
+            </section>
+          </main>
+          <!-- FOOTER -->
+          <footer class="fs1 pa3 pb4 print-dn l-ta-c" id="footer" role="contentinfo"><div class="grid"><div class="cell pt3 w-100 m-w-33 l-pt0 l-w-100"><p class="fw5 mb2 l-dn">Información importante:</p><ul class="list-nb ma0 pa0"><li class="l-dib"><a class="db l-pr2" href="/accessibility/">Accesibilidad*</a></li><li class="l-dib"><a class="db l-pr2" href="/privacy/">Confidencialidad*</a></li><li class="l-dib"><a class="db l-pr2" href="/foia/">FOIA*</a></li><li class="l-dib"><a class="db l-pr2" href="/espanol/agencia/glosario/">Glosario</a></li><li class="l-dib"><a class="db l-pr2" href="https://oig.ssa.gov/espanol/reportar">Informe fraude o robo de ID</a></li><li class="l-dib"><a class="db" href="/espanol/agencia/">Sobre nosotros</a></li></ul></div><div class="cell pt3 w-100 m-w-33 l-w-100"><p class="fw5 mb2 l-dn">Enlaces relacionados:</p><ul class="list-nb ma0 pa0"><li class="l-dib"><a class="db l-pr2" href="https://www.benefits.gov/es">Benefits.gov</a></li><li class="l-dib"><a class="db l-pr2" href="https://www.disability.gov/">Disability.gov*</a></li><li class="l-dib"><a class="db l-pr2" href="https://gobierno.usa.gov/">GobiernoUSA.gov</a></li><li class="l-dib"><a class="db l-pr2" href="https://www.mymoney.gov/es/Pages/default.aspx">MyMoney.gov</a></li><li class="l-dib"><a class="db l-pr2" href="https://regulations.gov">Regulations.gov*</a></li><li class="l-dib"><a class="db" href="/agency/other-gov-websites.html">Otros sitios web del Gobierno*</a></li></ul></div><div class="cell pt3 w-100 m-w-33 l-w-100"><p class="fw5 mb2 l-dn">Con&eacute;ctese:</p><ul class="list-nb ma0 pa0"><li class="dib"><a class="bg-twitter br-100 bs1 fx fx-ai-c fx-jc-c hover-bg-blue pa2 white" href="//twitter.com/segurosocial/" title="Twitter"><svg class="svg1" focusable="false" viewBox="0 0 24 24"><path d="M23.44 4.83c-.8.37-1.5.38-2.22.02.93-.56.98-.96 1.32-2.02-.88.52-1.86.9-2.9 1.1-.82-.88-2-1.43-3.3-1.43-2.5.0-4.55 2.04-4.55 4.54.0.36.03.7.1 1.04-3.77-.2-7.12-2-9.36-4.75-.4.67-.6 1.45-.6 2.3.0 1.56.8 2.95 2 3.77-.74-.03-1.44-.23-2.05-.57v.06c0 2.2 1.56 4.03 3.64 4.44-.67.2-1.37.2-2.06.08.58 1.8 2.26 3.12 4.25 3.16C5.78 18.1 3.37 18.74 1 18.46c2 1.3 4.4 2.04 6.97 2.04 8.35.0 12.92-6.92 12.92-12.93.0-.2.0-.4-.02-.6.9-.63 1.96-1.22 2.56-2.14z" vector-effect="non-scaling-stroke"></path></svg></a></li><li class="dib pl1"><a class="bg-facebook br-100 bs1 fx fx-ai-c fx-jc-c hover-bg-blue pa2 white" href="//facebook.com/segurosocial/" title="Facebook"><svg class="svg1" focusable="false" viewBox="0 0 24 24"><path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z" vector-effect="non-scaling-stroke"></path></svg></a></li><li class="dib pl1"><a class="bg-youtube br-100 bs1 fx fx-ai-c fx-jc-c hover-bg-blue pa2 white" href="//youtube.com/playlist?list=PLGSYaZN04xzEAenjhqYIrKBF0KgtrpSVy" title="YouTube"><svg class="svg1" focusable="false" viewBox="0 0 38 38"><path d="M26.2 19l-12.6 7.4V11.6L26.2 19zM38 25.8V12.1s.2-6.7-6.4-6.7H6.4S0 5.5.0 12.1v13.8s-.2 6.7 6.4 6.7h25.2s6.4-.1 6.4-6.8" vector-effect="non-scaling-stroke"></path></svg></a></li></ul></div></div><p class="mt3 m-ta-c">El contenido de este sitio de Internet se produce y se publica con fondos de impuestos pagados por los contribuidores en los EE. UU.</p></footer><div class="bg-blue-500 pa1 print-dn ta-c white w-100" style="position:fixed; bottom: 0; z-index: 999;"><small>* Servicios e información solo disponible en inglés</small></div>
+          <!-- SCRIPTS -->
+          <script src="/framework/js/ssa.firefly.body.js"></script>
+        </body>
+
+        </html>
+    http_version: 
+  recorded_at: Tue, 17 Jul 2018 16:44:29 GMT
+recorded_with: VCR 4.0.0

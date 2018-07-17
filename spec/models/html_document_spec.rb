@@ -271,6 +271,14 @@ describe HtmlDocument do
       it 'omits the invalid bytes' do
         expect(parsed_content).to eq 'invalid bytes'
       end
+
+      context 'when the html can be force-encoded to UTF-8' do
+        let(:raw_document) { open('https://www.ssa.gov/espanol/beneficios/ssi/').read }
+
+        it 'encodes the html as UTF-8' do
+          expect(parsed_content).to include "jubilación además"
+        end
+      end
     end
 
     context 'when the html contains a main element' do
