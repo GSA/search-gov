@@ -3,6 +3,6 @@ class SearchgovDomainPreparerJob < ActiveJob::Base
 
   def perform(searchgov_domain:)
     searchgov_domain.check_status
-    SitemapIndexerJob.perform_later(searchgov_domain: searchgov_domain)
+    searchgov_domain.index_sitemaps
   end
 end

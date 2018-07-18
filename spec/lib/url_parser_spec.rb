@@ -35,4 +35,10 @@ describe UrlParser do
       end
     end
   end
+
+  describe '.update_scheme' do
+    it 'updates the scheme' do
+      expect(UrlParser.update_scheme('http://test.gov', 'https')).to eq 'https://test.gov'
+    end
+  end
 end

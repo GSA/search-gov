@@ -17,7 +17,6 @@ class SearchgovDomain < ActiveRecord::Base
 
   def delay
     @delay ||= begin
-      robotex = Robotex.new 'usasearch'
       robotex.delay("http://#{domain}/") || 1
     end
   end
@@ -29,8 +28,8 @@ class SearchgovDomain < ActiveRecord::Base
     Rails.logger.warn("#{domain} is already being indexed")
   end
 
-  def index_sitemap
-    SitemapIndexerJob.perform_later(searchgov_domain: self)
+  def index_sitemaps
+    sitemap_urls.each{ |url| SitemapIndexerJob.perform_later(sitemap_url: url) }
   end
 
   def available?
@@ -56,7 +55,19 @@ class SearchgovDomain < ActiveRecord::Base
     end
   end
 
+  def sitemap_urls
+    urls = sitemaps.pluck(:url)
+    urls += robotex.sitemaps(url).
+             reject{ |url| URI(url).host != domain }.
+             map{ |url| UrlParser.update_scheme(url, scheme) }
+    urls.presence || ["#{url}sitemap.xml"]
+  end
+
   private
+
+  def robotex
+    @robotex ||= Robotex.new 'usasearch'
+  end
 
   def valid_domain?
     errors.add(:domain, 'is invalid') unless PublicSuffix.valid?(domain)

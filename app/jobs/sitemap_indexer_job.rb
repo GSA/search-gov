@@ -1,7 +1,7 @@
 class SitemapIndexerJob < ActiveJob::Base
   queue_as :searchgov
 
-  def perform(searchgov_domain:)
-    SitemapIndexer.new(searchgov_domain: searchgov_domain).index
+  def perform(sitemap_url:)
+    SitemapIndexer.new(sitemap_url: sitemap_url).index
   end
 end

@@ -80,6 +80,10 @@ RSpec.configure do |config|
       to_return( status: 200, body: i14y_web_result )
   end
 
+  config.after(:each) do
+    ActiveJob::Base.queue_adapter.enqueued_jobs.clear
+  end
+
   config.after(:suite) do
     TestServices::delete_es_indexes
     TestServices::stop_redis unless ENV['TRAVIS']

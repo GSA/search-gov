@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe SitemapIndexerJob do
-  let!(:searchgov_domain) { SearchgovDomain.create(domain: 'agency.gov') }
+  let(:sitemap_url) { 'https://agency.gov/sitemap.xml' }
   let(:args) do
-    { searchgov_domain: searchgov_domain }
+    { sitemap_url: sitemap_url }
   end
   let(:indexer) { instance_double(SitemapIndexer) }
   subject(:perform) { SitemapIndexerJob.perform_now(args) }
