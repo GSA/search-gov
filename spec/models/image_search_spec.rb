@@ -24,8 +24,9 @@ describe ImageSearch do
     let(:use_commercial_results) { nil }
     let(:affiliate) { affiliates(:basic_affiliate) }
     let(:search_engine) { nil }
-    before { allow(affiliate).to receive(:search_engine).and_return(search_engine) }
     before do
+      allow(affiliate).to receive(:search_engine).and_return(search_engine)
+      allow(affiliate).to receive(:has_no_social_image_feeds?).and_return false
       allow_any_instance_of(underlying_search_class).
         to receive(:diagnostics).and_return(:underlying_diagnostics)
     end
