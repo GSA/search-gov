@@ -292,6 +292,17 @@ describe SearchgovCrawler do
           expect(SearchgovUrl).to receive(:create).with(url: new_url)
           crawl
         end
+
+        context 'to an external domain' do
+          let(:new_crawler) { SearchgovCrawler.new(domain: 'www.bja.gov', srsly: false) }
+
+          it "doesn't log the redirected link" do
+            new_crawler.crawl
+            new_crawler.doc_links.each do |link|
+              expect(link[0]).to include('www.bja.gov')
+            end
+          end
+        end
       end
     end
   end
