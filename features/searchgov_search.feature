@@ -11,6 +11,7 @@ Feature: SearchGov search
   Scenario: Everything search
     When I am on epa's search page
     Then I should see "Please enter a search term in the box above."
+    And I should not see "Refine your search"
 
   Scenario: Image search
     When I am on epa's image search page
@@ -38,6 +39,8 @@ Feature: SearchGov search
     When I am on epa's search page
     And I search for "exciting"
     Then I should see "exciting news"
+    When I am on epa's "Press" mobile news search page
+    Then I should see "Refine your search"
 
   Scenario: Display an Alert on search page
     Given the following Alert exists:
