@@ -14,7 +14,7 @@ class SearchgovUrl < ActiveRecord::Base
                               )
 
   attr_accessible :last_crawl_status, :last_crawled_at, :url, :lastmod
-  attr_reader :response, :document
+  attr_reader :response, :document, :tempfile
   attr_readonly :url
 
   validates_associated :searchgov_domain, on: :create
@@ -60,6 +60,8 @@ class SearchgovUrl < ActiveRecord::Base
         self.last_crawl_status = error.message.first(255)
         error_line = error.backtrace.find{ |line| line.starts_with?(Rails.root.to_s) }
         Rails.logger.error "[SearchgovUrl] Unable to index #{url} into searchgov: '#{error}'. Called from: #{error_line}".red
+      ensure
+        tempfile&.close!
       end
     end
     save!
@@ -85,11 +87,13 @@ class SearchgovUrl < ActiveRecord::Base
   end
 
   def download
-    file = Tempfile.open("SearchgovUrl:#{Time.now.to_i}", Rails.root.join('tmp'))
-    file.binmode
-    body = response.body
-    file.write body.readpartial until (file.write body.readpartial) == 0
-    file
+    @tempfile = begin
+      file = Tempfile.open("SearchgovUrl:#{Time.now.to_i}", Rails.root.join('tmp'))
+      file.binmode
+      body = response.body
+      file.write body.readpartial until (file.write body.readpartial) == 0
+      file
+    end
   end
 
   def validate_response
