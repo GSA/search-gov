@@ -1,0 +1,1 @@
+CachedSearchApiConnectionResponse = Struct.new(:response, :cache_namespace)
