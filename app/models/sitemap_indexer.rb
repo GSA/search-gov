@@ -55,13 +55,19 @@ class SitemapIndexer
   def log_info
     {
       time: Time.now.utc.to_formatted_s(:db),
-      domain: domain
+      domain: domain,
+      sitemap: uri.to_s
     }
   end
 
   def sitemap
-    @sitemap ||= HTTP.headers(user_agent: DEFAULT_USER_AGENT).
-      timeout(connect: 20, read: 60).follow.get(uri).to_s.freeze
+    @sitemap ||= begin
+      HTTP.headers(user_agent: DEFAULT_USER_AGENT).
+        timeout(connect: 20, read: 60).follow.get(uri).to_s.freeze
+    rescue => e
+      Rails.logger.warn "[Searchgov SitemapIndexer] #{log_info.merge(error: e.message).to_json}".red
+      ''
+    end
   end
 
   # Avoid deadlocks while bulk processing URLs in parallel for the same domain
