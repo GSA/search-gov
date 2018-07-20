@@ -87,7 +87,8 @@ class SearchgovUrl < ActiveRecord::Base
   end
 
   def download
-    @tempfile = begin
+    @tempfile ||= begin
+                    
       file = Tempfile.open("SearchgovUrl:#{Time.now.to_i}", Rails.root.join('tmp'))
       file.binmode
       body = response.body
