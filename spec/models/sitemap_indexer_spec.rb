@@ -153,5 +153,21 @@ describe SitemapIndexer do
       expect(searchgov_domain).to receive(:index_urls)
       index
     end
+
+    context 'when fetching the sitemap raises an error' do
+      before do
+        stub_request(:get, sitemap_url).to_raise(StandardError.new('kaboom'))
+      end
+
+      it 'does not raise an error' do
+        expect{ index }.not_to raise_error
+      end
+
+      it 'logs the error' do
+        expect(Rails.logger).to receive(:warn).
+          with(%r{"sitemap":"http://agency.gov/sitemap.xml","error":"kaboom"})
+        index
+      end
+    end
   end
 end
