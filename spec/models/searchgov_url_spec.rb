@@ -299,6 +299,11 @@ describe SearchgovUrl do
         ))
         fetch
       end
+
+      it 'removes downloaded files' do
+        expect_any_instance_of(Tempfile).to receive(:close!)
+        fetch
+      end
     end
 
     context 'when the url points to a Word doc (.doc)' do
