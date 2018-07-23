@@ -84,6 +84,27 @@ describe SearchgovDomain do
     end
   end
 
+  describe 'scopes' do
+    describe 'by status' do
+      let!(:ok_domain) { SearchgovDomain.create!(domain: domain, status: '200 ok') }
+      let!(:not_ok_domain) do
+        SearchgovDomain.create!(domain: 'notok.gov', status: '403 Forbidden')
+      end
+
+      describe '.ok' do
+        it 'includes domains returning 200' do
+          expect(SearchgovDomain.ok).to match_array [ok_domain]
+        end
+      end
+
+      describe '.not_ok' do
+        it 'includes inaccessible domains' do
+          expect(SearchgovDomain.not_ok).to match_array [not_ok_domain]
+        end
+      end
+    end
+  end
+
   describe 'counter columns' do
     let(:searchgov_domain) { SearchgovDomain.create(domain: domain) }
 

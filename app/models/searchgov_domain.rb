@@ -2,6 +2,8 @@ class SearchgovDomain < ActiveRecord::Base
   include AASM
   class DomainError < StandardError; end
 
+  OK_STATUS = '200 OK'.freeze
+
   before_validation(on: :create) { self.domain = self.domain&.downcase&.strip }
 
   validate :valid_domain?, on: :create
@@ -14,6 +16,9 @@ class SearchgovDomain < ActiveRecord::Base
   has_many :sitemaps, dependent: :destroy
 
   attr_readonly :domain
+
+  scope :ok, -> { where(status: OK_STATUS) }
+  scope :not_ok, -> { where.not(status: OK_STATUS) }
 
   def delay
     @delay ||= begin

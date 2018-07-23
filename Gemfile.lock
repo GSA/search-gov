@@ -104,6 +104,9 @@ GEM
       rails (>= 3.2.22.2, < 5)
     active_scaffold_export (3.3.2)
       active_scaffold (>= 3.3.0.rc)
+    active_scheduler (0.5.0)
+      activejob (>= 4.2.0)
+      rake
     activejob (4.2.10)
       activesupport (= 4.2.10)
       globalid (>= 0.3.0)
@@ -743,6 +746,7 @@ DEPENDENCIES
   aasm (~> 4.12)
   active_scaffold (~> 3.4.43)
   active_scaffold_export (~> 3.3.2)
+  active_scheduler (~> 0.5.0)
   activerecord-validate_unique_child_attribute (~> 0.1.0)
   addressable (~> 2.5.2)
   airbrake (~> 7.1.1)
