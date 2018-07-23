@@ -14,8 +14,8 @@ class SearchgovCrawler
       read_timeout: 30,
       threads: 8,
       verbose: true,
-      user_agent: user_agent,
-      depth_limit: 2 #remove this line when done with testing!!!!!!!!
+      user_agent: user_agent
+      # depth_limit: 2 #remove this line when done with testing!!!!!!!!
     }
     @doc_links = {}
     @url_file = initialize_url_file unless srsly
@@ -29,7 +29,7 @@ class SearchgovCrawler
 
         medusa.on_every_page do |page|
           begin
-            process_page(page) if page.url.host == domain
+            process_page(page)
           rescue => e
             Rails.logger.error("[SearchgovCrawler] Error crawling #{page.url}: #{e}".red)
           end
