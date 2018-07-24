@@ -5,7 +5,7 @@ describe SearchConsumer::API do
 
   let(:affiliate) { affiliates(:basic_affiliate) }
 
-  before(:all) do
+  before do
     NewsItem.all.each { |news_item| news_item.save! }
     ElasticNewsItem.commit
   end
