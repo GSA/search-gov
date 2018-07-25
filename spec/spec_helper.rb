@@ -51,11 +51,8 @@ RSpec.configure do |config|
     c.syntax = [:expect]
   end
 
-  # This prevents affiliate-related tests from failing with an empty test db
-  # if the language fixtures haven't been loaded in a prior test. One *should* be
-  # able to do that using an association in the fixture, but fixture associations
-  # do NOT play nicely with our custom, string primary key 'code' in the language table
-  config.global_fixtures = [:languages]
+  # Create all fixtures in spec/fixtures/*.yml for all tests in alphabetical order.
+  config.global_fixtures = :all
 
   config.before(:suite) do
     FileUtils.mkdir_p(File.join(Rails.root.to_s, 'tmp'))
