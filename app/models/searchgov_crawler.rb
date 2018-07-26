@@ -14,7 +14,7 @@ class SearchgovCrawler
       read_timeout: 30,
       threads: 8,
       verbose: true,
-      user_agent: user_agent,
+      user_agent: user_agent
     }
     @doc_links = {}
     @url_file = initialize_url_file unless srsly
@@ -63,7 +63,8 @@ class SearchgovCrawler
 
   def indexable?(page)
     ([302,200].include? page.code) &&
-      supported_content_type(page.headers['content-type'])
+      supported_content_type(page.headers['content-type']) &&
+      page.url.host == domain && page.redirect_to.host == domain
   end
 
   def application_extensions
