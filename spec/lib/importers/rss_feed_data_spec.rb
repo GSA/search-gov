@@ -421,6 +421,7 @@ describe RssFeedData do
         before do
           rss_feed_url.news_items.destroy_all
           allow(DocumentFetcher).to receive(:fetch).with(rss_feed_url.url, an_instance_of(Hash)).and_return({ status: "301", body: rss_feed_content, last_effective_url: "https://www.whitehouse.gov/feed/blog/white-house" })
+          allow(RssFeedUrl).to receive(:readonly_attributes).and_return(%w{ rss_feed_owner_type })
         end
 
         it 'updates the url' do
