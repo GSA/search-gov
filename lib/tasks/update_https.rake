@@ -11,12 +11,13 @@ namespace :usasearch do
       @secure_hosts = @file.readlines.map(&:strip)
       @insecure_hosts = []
       @updated_records = 0
-      toggle_url_readonly(:off) if [FlickrProfile,RssFeedUrl].include?(@klass)
+      @readonly_attributes = @klass.readonly_attributes
+      set_readonly_attributes(@readonly_attributes - ['url'])
       @klass.where("#{@column} != '' AND #{@column} not like 'https%'").find_each do |record|
         httpsify(record)
       end
     ensure
-      toggle_url_readonly(:on) if [FlickrProfile,RssFeedUrl].include?(@klass)
+      set_readonly_attributes(@readonly_attributes)
       report
       @file.close
     end
@@ -73,13 +74,11 @@ namespace :usasearch do
     end
   end
 
-  def toggle_url_readonly(status)
-    if status == :on
-      RssFeedUrl.class_eval { def self.readonly_attributes ; %w{ rss_feed_owner_type url } ; end }
-      FlickrProfile.class_eval { def self.readonly_attributes ; %w{profile_type profile_id url} ; end }
-    else
-      RssFeedUrl.class_eval { def self.readonly_attributes ; %w{ rss_feed_owner_type } ; end }
-      FlickrProfile.class_eval { def self.readonly_attributes ; %w{ profile_type profile_id } ; end }
+  def set_readonly_attributes(attributes)
+    @klass.class_eval do
+      @attributes = attributes
+
+      def self.readonly_attributes ; @attributes ; end
     end
   end
 end
