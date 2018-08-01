@@ -63,8 +63,8 @@ class SearchgovCrawler
 
   def indexable?(page)
     ([302,200].include? page.code) &&
-      supported_content_type(page.headers['content-type']) &&
-      page.url.host == domain && page.redirect_to.host == domain
+      supported_content_type(page.headers['content-type']) && page.url.host == domain &&
+      (page.redirect_to == nil || page.redirect_to&.host == domain)
   end
 
   def application_extensions
@@ -101,6 +101,7 @@ class SearchgovCrawler
 
   def create_or_log_url(url, depth)
     if srsly
+      # byebug
       SearchgovUrl.create(url: url)
     else
       url_file << "#{url},#{depth}\n"
