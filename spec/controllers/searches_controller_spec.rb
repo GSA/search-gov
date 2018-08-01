@@ -234,6 +234,7 @@ describe SearchesController do
       affiliate = affiliates(:gobiernousa_affiliate)
       get :index, :affiliate => affiliate.name, :query => 'weather', :locale => 'en'
     end
+    after { I18n.locale = I18n.default_locale }
 
     it "should override/ignore the HTTP locale param and set locale to Spanish" do
       expect(I18n.locale.to_s).to eq('es')
