@@ -295,14 +295,14 @@ describe SearchgovCrawler do
       end
 
       context 'when the link is temporarily redirected' do
+        let(:new_url) { 'http://www.external.gov/external' }
+
         before do
-          stub_request(:get, url).to_return(body: "", status: 302, headers: { location: new_url })
+          stub_request(:get, url).to_return(body: "", status: 302, headers: { location: new_url, content_type: 'text/html' })
           stub_request(:get, new_url).to_return(body: "new", status: 200, headers: { content_type: 'text/html' })
         end
 
         context 'to an external domain' do
-          let(:new_url) { 'http://www.external.gov/external' }
-
           it "doesn't log the redirected link" do
             allow(SearchgovUrl).to receive(:create).with(url: url)
             expect(SearchgovUrl).not_to receive(:create).with(url: new_url)
