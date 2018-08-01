@@ -5,13 +5,13 @@ namespace :usasearch do
   task :update_https, [:klass, :column, :srsly] => [:environment] do |_task, args|
     begin
       @klass = args.klass.constantize
+      @readonly_attributes = @klass.readonly_attributes
       @column = args.column.to_sym
       @srsly = args.srsly || false
       @file = File.open('lib/tasks/secure_hosts.csv', 'a+')
       @secure_hosts = @file.readlines.map(&:strip)
       @insecure_hosts = []
       @updated_records = 0
-      @readonly_attributes = @klass.readonly_attributes
       set_readonly_attributes(@readonly_attributes - ['url'])
       @klass.where("#{@column} != '' AND #{@column} not like 'https%'").find_each do |record|
         httpsify(record)
