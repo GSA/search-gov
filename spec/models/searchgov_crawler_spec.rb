@@ -283,7 +283,7 @@ describe SearchgovCrawler do
         let(:new_url) { 'http://www.agency.gov/new' }
 
         before do
-          stub_request(:get, url).to_return(body: "", status: 302, headers: { location: new_url, content_type: 'text/html' })
+          stub_request(:get, url).to_return(body: "", status: 302, headers: { location: new_url })
           stub_request(:get, new_url).to_return(body: "new", status: 200, headers: { content_type: 'text/html' })
         end
 

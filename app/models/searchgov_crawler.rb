@@ -101,7 +101,6 @@ class SearchgovCrawler
 
   def create_or_log_url(url, depth)
     if srsly
-      # byebug
       SearchgovUrl.create(url: url)
     else
       url_file << "#{url},#{depth}\n"
