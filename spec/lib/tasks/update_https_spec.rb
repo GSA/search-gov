@@ -39,27 +39,6 @@ describe "Update https rake task" do
         expect(record.reload.url).to eq 'https://travel.state.gov/content/travel/en.html'
       end
 
-      context 'when the record is an rss feed url' do
-        before do
-          rss_feed_content = File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_blog.xml')
-          allow(HttpConnection).to receive(:get).with('http://www.whitehouse.gov/feed/blog/white-house').and_return(rss_feed_content)
-        end
-
-        let(:rss_feed_url) { rss_feed_urls(:white_house_blog_url) }
-        subject(:invoke_task) { @rake[task].invoke('RssFeedUrl','url','srsly') }
-
-        it 'updates the url' do
-          expect{ invoke_task }.to change{ rss_feed_url.reload.url }.
-            from('http://www.whitehouse.gov/feed/blog/white-house').
-            to('https://www.whitehouse.gov/feed/blog/white-house')
-        end
-
-        it "ensures the url is readonly" do
-          invoke_task
-          expect(RssFeedUrl.readonly_attributes).to match_array(%w{rss_feed_owner_type url})
-        end
-      end
-
       context 'when the record is a Flickr profile' do
         let!(:profile) do
           affiliate.flickr_profiles.create(profile_type: 'user', url: 'www.flickr.com/photos/usdol', profile_id: 'abc123')
