@@ -60,6 +60,7 @@ describe '/api/v2/search' do
 
       ElasticIndexedDocument.commit
 
+      ElasticNewsItem.recreate_index
       affiliate.rss_feeds.destroy_all
 
       rss_feed = affiliate.rss_feeds.build(name: 'RSS')
