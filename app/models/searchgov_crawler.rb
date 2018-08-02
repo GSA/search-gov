@@ -45,7 +45,7 @@ class SearchgovCrawler
 
   def process_page(page)
     if page.visited.nil? && indexable?(page)
-      url = (page.redirect_to || page.url).to_s
+      url = current_url(page).to_s
       create_or_log_url(url, page.depth)
       extract_application_doc_links(page.links.map(&:to_s), page.depth + 1)
     end
@@ -63,7 +63,8 @@ class SearchgovCrawler
 
   def indexable?(page)
     ([302,200].include? page.code) &&
-      supported_content_type(page.headers['content-type'])
+      supported_content_type(page.headers['content-type']) &&
+      current_url(page).host == domain
   end
 
   def application_extensions
@@ -111,5 +112,9 @@ class SearchgovCrawler
     file = open(path, 'w')
     file << "url,depth\n"
     file
+  end
+
+  def current_url(page)
+    page.redirect_to || page.url
   end
 end
