@@ -3,9 +3,12 @@ class SearchgovDomainDestroyerJob < ActiveJob::Base
 
   def perform(searchgov_domain:)
     searchgov_domain.searchgov_urls.find_each do |url|
-      # byebug
-      url.destroy!
+      byebug
+      url.destroy
     end
-    searchgov_domain.destroy!
+    # byebug
+    SearchgovDomain.find(searchgov_domain.id).destroy
+    # searchgov_domain.destroy
+    # byebug
   end
 end

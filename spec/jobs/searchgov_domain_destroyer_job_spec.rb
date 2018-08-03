@@ -18,9 +18,10 @@ describe SearchgovDomainDestroyerJob do
     end
 
     it 'destroys the searchgov domain' do
-      expect(SearchgovDomain).to receive(:destroy)
+      expect(searchgov_domain).to receive(:destroy)
       perform
-      expect(SearchgovDomain.find_by(domain: domain)).to eq nil
+      expect{SearchgovDomain.find(searchgov_domain.id)}.
+        to raise_error(ActiveRecord::RecordNotFound)
     end
 
     context 'when the searchgov_domain contains searchgov_urls' do
