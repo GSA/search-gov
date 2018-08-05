@@ -37,6 +37,7 @@ describe HumanSessionsController do
       end
 
       context 'when using a spanish-lanugage affiliate' do
+        after { I18n.locale = I18n.default_locale }
         it 'says "Buscar" in the captcha form submit button' do
           get :new, r: '/search?affiliate=gobiernousa&query=building'
           expect(response.body).to have_selector('input[type=submit][value=Buscar]')
