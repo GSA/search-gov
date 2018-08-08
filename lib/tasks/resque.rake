@@ -1,5 +1,6 @@
 require 'resque/tasks'
 require 'resque/scheduler/tasks'
+require 'active_scheduler'
 
 namespace :resque do
   task :setup_schedule => [:environment] do
@@ -16,7 +17,8 @@ namespace :resque do
 
     # The schedule doesn't need to be stored in a YAML, it just needs to
     # be a hash.  YAML is usually the easiest.
-    Resque.schedule = Rails.application.config_for('resque_schedule')
+    yaml_schedule = Rails.application.config_for('resque_schedule')
+    Resque.schedule = ActiveScheduler::ResqueWrapper.wrap yaml_schedule
   end
 
   task :scheduler => :setup_schedule
