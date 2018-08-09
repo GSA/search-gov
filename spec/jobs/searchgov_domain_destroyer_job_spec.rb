@@ -29,8 +29,6 @@ describe SearchgovDomainDestroyerJob do
 
       it 'destroys the searchgov_urls in addition to the searchgov_domain' do
         expect(searchgov_domain).to receive(:destroy!)
-        expect(searchgov_url1).to receive(:destroy!)
-        expect(searchgov_url2).to receive(:destroy!)
         expect{perform}.to change{SearchgovUrl.all.count}.from(2).to(0)
       end
     end
