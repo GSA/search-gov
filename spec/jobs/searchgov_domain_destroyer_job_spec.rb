@@ -12,7 +12,7 @@ describe SearchgovDomainDestroyerJob do
 
   describe '#perform' do
     it 'requires a searchgov_domain as an argument' do
-      expect{SearchgovDomainDestroyerJob.perform_now}.
+      expect{ SearchgovDomainDestroyerJob.perform_now }.
         to raise_error(ArgumentError, 'missing keyword: searchgov_domain')
     end
 
@@ -21,14 +21,14 @@ describe SearchgovDomainDestroyerJob do
       perform
     end
 
-    context 'when the searchgov_domain contains searchgov_urls' do
+    context 'when the searchgov_domain has associated searchgov_url records' do
       let(:url1) { 'https://www.archive.gov/info' }
       let(:url2) { 'https://www.archive.gov/hmmm' }
       let!(:searchgov_url1) { SearchgovUrl.create!(url: url1) }
       let!(:searchgov_url2) { SearchgovUrl.create!(url: url2) }
 
       it 'destroys the searchgov_urls' do
-        expect{perform}.to change{SearchgovUrl.count}.from(2).to(0)
+        expect{ perform }.to change{ SearchgovUrl.count }.from(2).to(0)
       end
     end
   end
