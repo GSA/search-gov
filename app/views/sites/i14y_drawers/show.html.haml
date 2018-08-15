@@ -20,7 +20,7 @@
       %tr
         %td
           %ul.unstyled
-            %li= doc.title
+            %li= translate_bing_highlights(doc.title).html_safe
             %li= link_to UrlParser.strip_http_protocols(doc.path), doc.path, target: '_blank'
         %td= render_date doc.created
         %td= render_date doc.updated_at

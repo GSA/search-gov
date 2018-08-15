@@ -31,11 +31,14 @@ describe Sites::I14yDrawersController do
       let(:i14y_drawer) { double(I14yDrawer, id: 5, handle: 'my_drawer') }
       let(:search_response) { Hashie::Mash.new(results: [{title: 'my title'}]) }
       let(:search_params) do
-        { handles: 'my_drawer',
+        {
+          handles: 'my_drawer',
           query: 'my query',
           size: 100,
           include: 'title,path,created,changed,updated_at',
-          sort_by_date: true }
+          sort_by_date: true,
+          language: 'en',
+        }
       end
 
       before do
