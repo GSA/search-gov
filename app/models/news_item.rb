@@ -32,6 +32,10 @@ class NewsItem < ActiveRecord::Base
 
   alias_attribute :url, :link
 
+  def foo
+    'foo'
+  end
+
   def is_video?
     link =~ %r[\Ahttps?://www\.youtube\.com/watch\?v=]
   end
