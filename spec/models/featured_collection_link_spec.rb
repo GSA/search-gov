@@ -27,7 +27,7 @@ describe FeaturedCollectionLink do
 
   describe "URL should have http(s):// prefix" do
     context "when the URL does not start with http(s):// prefix" do
-      url = 'usasearch.howto.gov/post/9866782725/did-you-mean-roes-or-rose'
+      url = 'search.gov/post/9866782725/did-you-mean-roes-or-rose'
       prefixes = %w( http https HTTP HTTPS invalidhttp:// invalidHtTp:// invalidhttps:// invalidHTtPs:// invalidHttPsS://)
       prefixes.each_with_index do |prefix, index|
         specify do
@@ -45,7 +45,7 @@ describe FeaturedCollectionLink do
     end
 
     context "when the URL starts with http(s):// prefix" do
-      url = 'usasearch.howto.gov/post/9866782725/did-you-mean-roes-or-rose'
+      url = 'search.gov/post/9866782725/did-you-mean-roes-or-rose'
       prefixes = %w( http:// https:// HTTP:// HTTPS:// )
       prefixes.each_with_index do |prefix, index|
         specify do

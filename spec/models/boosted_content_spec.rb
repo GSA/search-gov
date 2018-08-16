@@ -61,7 +61,7 @@ describe BoostedContent do
     end
 
     it 'should not allow duplicate url' do
-      url = 'http://usasearch.howto.gov/post/9866782725/did-you-mean-roes-or-rose'
+      url = 'http://search.gov/post/9866782725/did-you-mean-roes-or-rose'
       BoostedContent.create!(valid_attributes.merge(url: url))
       expect { BoostedContent.create!(valid_attributes.merge(url: url)) }.to raise_error
     end
@@ -71,7 +71,7 @@ describe BoostedContent do
     end
 
     it "should save URL as is when it starts with http(s)://" do
-      url = 'usasearch.howto.gov/post/9866782725/did-you-mean-roes-or-rose'
+      url = 'search.gov/post/9866782725/did-you-mean-roes-or-rose'
       prefixes = %w( http:// HTTPS:// )
       prefixes.each do |prefix|
         boosted_content = BoostedContent.create!(valid_attributes.merge(:url => "#{prefix}#{url}"))

@@ -10,7 +10,7 @@ describe Emailer do
 
     subject(:email) { Emailer.user_approval_removed(user) }
 
-    it { is_expected.to deliver_to("usagov@mail.usasearch.howto.gov") }
+    it { is_expected.to deliver_to("usagov@search.gov") }
     it { is_expected.to have_body_text "The following user is no longer associated with any sites" }
     it { is_expected.to have_body_text user.contact_name }
     it { is_expected.to have_body_text user.email }
@@ -28,7 +28,7 @@ describe Emailer do
 
     subject(:email) { Emailer.new_feature_adoption_to_admin.deliver_now }
 
-    it { is_expected.to deliver_to('usagov@mail.usasearch.howto.gov') }
+    it { is_expected.to deliver_to('usagov@search.gov') }
     it { is_expected.to have_subject(/Features adopted yesterday/) }
 
     it 'should contain lists of newly adopted features for each affiliate that has any' do
@@ -48,7 +48,7 @@ describe Emailer do
 
     subject(:email) { Emailer.deep_collection_notification(users(:affiliate_manager), document_collection).deliver_now }
 
-    it { is_expected.to deliver_to('usagov@mail.usasearch.howto.gov') }
+    it { is_expected.to deliver_to('usagov@search.gov') }
     it { is_expected.to have_subject(/Deep collection created/) }
 
     it 'should contain document collection and URL prefixes' do
@@ -61,7 +61,7 @@ describe Emailer do
   describe "#filtered_popular_terms_report" do
     subject(:email) { Emailer.filtered_popular_terms_report(%w{foo bar blat}).deliver_now }
 
-    it { is_expected.to deliver_to('usagov@mail.usasearch.howto.gov') }
+    it { is_expected.to deliver_to('usagov@search.gov') }
     it { is_expected.to have_subject(/Filtered Popular Terms for Last Week/) }
 
     it 'should contain list of filtered sayt suggestions' do
@@ -94,7 +94,7 @@ describe Emailer do
 
       subject { Emailer.new_user_to_admin(user) }
 
-      it { is_expected.to deliver_to('usagov@mail.usasearch.howto.gov') }
+      it { is_expected.to deliver_to('usagov@search.gov') }
       it { is_expected.to have_subject(/New user sign up/) }
       it { is_expected.to have_body_text(/Name: Contractor Joe\nEmail: not.gov.user@agency.com\nOrganization name: Agency\n\n\n    This person doesn't have a .gov or .mil email address/) }
     end
@@ -111,7 +111,7 @@ describe Emailer do
 
       subject { Emailer.new_user_to_admin(user) }
 
-      it { is_expected.to deliver_to('usagov@mail.usasearch.howto.gov') }
+      it { is_expected.to deliver_to('usagov@search.gov') }
       it { is_expected.to have_subject(/New user sign up/) }
       it { is_expected.not_to have_body_text /This user signed up as an affiliate/ }
     end
@@ -129,7 +129,7 @@ describe Emailer do
 
       subject { Emailer.new_user_to_admin(user) }
 
-      it { is_expected.to deliver_to('usagov@mail.usasearch.howto.gov') }
+      it { is_expected.to deliver_to('usagov@search.gov') }
       it { is_expected.to have_body_text /Name: Invited Affiliate Manager\nEmail: affiliate_added_by_another_affiliate@fixtures.org\nOrganization name: Agency\n\n\n    Affiliate Manager added this person to 'Noaa Site'. He'll be approved after verifying his email./ }
     end
 
@@ -146,7 +146,7 @@ describe Emailer do
 
       subject { Emailer.new_user_to_admin(user) }
 
-      it { is_expected.to deliver_to('usagov@mail.usasearch.howto.gov') }
+      it { is_expected.to deliver_to('usagov@search.gov') }
       it { is_expected.not_to have_body_text /This user was added to affiliate/ }
     end
   end

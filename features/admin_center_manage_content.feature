@@ -122,9 +122,9 @@ Feature: Manage Content
       | display_name | name       | contact_email   | contact_name |
       | agency site  | agency.gov | john@agency.gov | John Bar     |
     When the following Boosted Content entries exist for the affiliate "agency.gov"
-      | url                                                 | title                               | description        | status   | publish_start_on | publish_end_on |
-      | http://usasearch.howto.gov/releases/2013-05-31.html | Notes for Week Ending May 31, 2013  | multimedia gallery | active   | 2013-08-01       | 2022-01-01     |
-      | http://usasearch.howto.gov/releases/2013-06-21.html | Notes for Week Ending June 21, 2013 | spring cleaning    | inactive |                  |                |
+      | url                                        | title                               | description        | status   | publish_start_on | publish_end_on |
+      | http://search.gov/releases/2013-05-31.html | Notes for Week Ending May 31, 2013  | multimedia gallery | active   | 2013-08-01       | 2022-01-01     |
+      | http://search.gov/releases/2013-06-21.html | Notes for Week Ending June 21, 2013 | spring cleaning    | inactive |                  |                |
     And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Content page
     And I follow "Best Bets: Text" within the Admin Center content
@@ -139,9 +139,9 @@ Feature: Manage Content
       | display_name | name       | contact_email   | contact_name |
       | agency site  | agency.gov | john@agency.gov | John Bar     |
     When the following Boosted Content entries exist for the affiliate "agency.gov"
-      | url                                                 | title                               | description        | status   | publish_start_on | publish_end_on |
-      | http://usasearch.howto.gov/releases/2013-05-31.html | Notes for Week Ending May 31, 2013  | multimedia gallery | active   | 2013-08-01       | 2022-01-01     |
-      | http://usasearch.howto.gov/releases/2013-06-21.html | Notes for Week Ending June 21, 2013 | spring cleaning    | inactive |                  |                |
+      | url                                        | title                               | description        | status   | publish_start_on | publish_end_on |
+      | http://search.gov/releases/2013-05-31.html | Notes for Week Ending May 31, 2013  | multimedia gallery | active   | 2013-08-01       | 2022-01-01     |
+      | http://search.gov/releases/2013-06-21.html | Notes for Week Ending June 21, 2013 | spring cleaning    | inactive |                  |                |
     And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Content page
     And I follow "Best Bets: Text" within the Admin Center content
@@ -165,10 +165,10 @@ Feature: Manage Content
     And I follow "Best Bets: Text" within the Admin Center content
     And I follow "Add Best Bets: Text"
     When I fill in the following:
-      | URL                  | http://usasearch.howto.gov/releases/2013-06-21.html |
-      | Title                | Notes for Week Ending June 21, 2013                 |
-      | Description          | spring cleaning                                     |
-      | Keyword 1            | releases                                            |
+      | URL                  | http://search.gov/releases/2013-06-21.html |
+      | Title                | Notes for Week Ending June 21, 2013        |
+      | Description          | spring cleaning                            |
+      | Keyword 1            | releases                                   |
     And I add the following best bets keywords:
       | keyword |
       | rails   |
@@ -532,7 +532,7 @@ Feature: Manage Content
       | agency site  | agency.gov | john@agency.gov | John Bar     |
     And affiliate "agency.gov" has the following RSS feeds:
       | name   | url                                                     | last_crawl_status | last_crawled_at | show_only_media_content | is_managed |
-      | News   | usasearch.howto.gov/all.atom                            | OK                | 2013-01-01      |                         |            |
+      | News   | search.gov/all.atom                                     | OK                | 2013-01-01      |                         |            |
       | Videos | gdata.youtube.com/feeds/base/videos?author=usgovernment | Pending           | Pending         |                         | true       |
       | Images | www.flickr.com/photos_public.gne?id=27784370@N05        | 404 Not Found     | 2013-07-01      | true                    |            |
     And I am logged in with email "john@agency.gov"
@@ -595,10 +595,10 @@ Feature: Manage Content
     And I submit the form by pressing "Save"
     Then I should see "URL can't be blank"
     When I fill in the following:
-      | URL | usasearch.howto.gov/all.atom |
+      | URL | search.gov/all.atom |
     And I submit the form by pressing "Save"
     Then I should see "You have updated your supplemental feed for this site"
-    And the "URL" field should contain "http://usasearch.howto.gov/all.atom"
+    And the "URL" field should contain "http://search.gov/all.atom"
     And I should see "Last Crawled Pending"
     And I should see "Status Pending"
     When I press "Remove"
@@ -651,19 +651,19 @@ Feature: Manage Content
     When I go to the agency.gov's Supplemental URLs page
     And I follow "Add Supplemental URL"
     And I fill in the following:
-      | URL         | usasearch.howto.gov/developer/jobs.html             |
+      | URL         | search.gov/developer/jobs.html                      |
       | Title       | Jobs API                                            |
       | Description | Helping job seekers land a job with the government. |
     And I submit the form by pressing "Add"
-    Then I should see "You have added usasearch.howto.gov/developer/jobs.html to this site"
+    Then I should see "You have added search.gov/developer/jobs.html to this site"
     And I should see the following table rows:
-      | URL                                     | Source |
-      | usasearch.howto.gov/developer/jobs.html | Manual |
+      | URL                            | Source |
+      | search.gov/developer/jobs.html | Manual |
     And I should see the following table rows:
       | Status     |
       | Summarized |
     When I press "Remove"
-    Then I should see "You have removed usasearch.howto.gov/developer/jobs.html from this site"
+    Then I should see "You have removed search.gov/developer/jobs.html from this site"
 
   Scenario: View Twitter Handles
     Given the following Affiliates exist:

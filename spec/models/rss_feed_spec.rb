@@ -8,7 +8,7 @@ describe RssFeed do
         owner: affiliates(:basic_affiliate),
         name: 'Blog',
         rss_feed_urls: [RssFeedUrl.new(rss_feed_owner_type: 'Affiliate',
-                                       url: 'http://usasearch.howto.gov/rss')] }
+                                       url: 'http://search.gov/rss')] }
   end
 
   it { is_expected.to validate_presence_of :name }
@@ -24,7 +24,7 @@ describe RssFeed do
     let(:rss_feed_content) { File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_blog.xml') }
 
     before do
-      stub_request(:get, 'http://usasearch.howto.gov/rss').to_return( body: rss_feed_content )
+      stub_request(:get, 'http://search.gov/rss').to_return( body: rss_feed_content )
     end
 
     it 'should create a new instance given valid attributes' do
