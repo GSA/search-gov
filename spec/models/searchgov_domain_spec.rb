@@ -177,7 +177,10 @@ describe SearchgovDomain do
 
     it 'enqueues a SearchgovDomainIndexerJob with the record & crawl-delay' do
       expect(SearchgovDomainIndexerJob).
-        to receive(:perform_later).with(searchgov_domain: searchgov_domain, delay: 5)
+        to receive(:perform_later).
+        with(searchgov_domain: searchgov_domain,
+             delay: 5,
+             conditions: 'last_crawled_at IS NULL OR lastmod > last_crawled_at')
       index_urls
     end
 

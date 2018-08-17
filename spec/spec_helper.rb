@@ -64,8 +64,6 @@ RSpec.configure do |config|
 
     EmailTemplate.load_default_templates
     OutboundRateLimit.load_defaults
-    TestServices::delete_es_indexes
-    TestServices::create_es_indexes
     require "#{Rails.root}/db/seeds/template.rb"
   end
 
@@ -82,7 +80,6 @@ RSpec.configure do |config|
   end
 
   config.after(:suite) do
-    TestServices::delete_es_indexes
     TestServices::stop_redis unless ENV['TRAVIS']
   end
 
