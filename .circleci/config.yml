@@ -26,10 +26,10 @@ jobs:
             curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
             chmod +x ./cc-test-reporter
 
-      - save_cache:
-          key: repo-{{ .Environment.CIRCLE_SHA1 }}
+      - persist_to_workspace:
+          root: ~/search-gov
           paths:
-            - ~/search-gov
+            -
 
   bundle_install:
     working_directory: ~/search-gov
@@ -39,8 +39,8 @@ jobs:
           RAILS_ENV: test
 
     steps:
-      - restore_cache:
-          key: repo-{{ .Environment.CIRCLE_SHA1 }}
+      - attach_workspace:
+          at: ~/search-gov
 
       - restore_cache:
           key: search-gov-{{ checksum "Gemfile.lock" }}
@@ -65,8 +65,8 @@ jobs:
           RAILS_ENV: test
 
     steps:
-      - restore_cache:
-          key: repo-{{ .Environment.CIRCLE_SHA1 }}
+      - attach_workspace:
+          at: ~/search-gov
 
       - run:
           name: Install Elasticsearch
@@ -107,8 +107,8 @@ jobs:
       - image: redis:3.2
 
     steps:
-      - restore_cache:
-          key: repo-{{ .Environment.CIRCLE_SHA1 }}
+      - attach_workspace:
+          at: ~/search-gov
 
       - run:
           name: Install MySQL Client
@@ -178,8 +178,8 @@ jobs:
       - image: redis:3.2
 
     steps:
-      - restore_cache:
-          key: repo-{{ .Environment.CIRCLE_SHA1 }}
+      - attach_workspace:
+          at: ~/search-gov
 
       - run:
           name: Install MySQL Client
@@ -243,8 +243,8 @@ jobs:
           RAILS_ENV: test
 
     steps:
-      - restore_cache:
-          key: repo-{{ .Environment.CIRCLE_SHA1 }}
+      - attach_workspace:
+          at: ~/search-gov
 
       - restore_cache:
           key: search-gov-{{ checksum "Gemfile.lock" }}
