@@ -42,16 +42,13 @@ jobs:
       - attach_workspace:
           at: ~/search-gov
 
-      - restore_cache:
-          key: search-gov-{{ checksum "Gemfile.lock" }}
-
       - run:
           name: Install Dependencies
           command: |
             bundle install --without development --jobs=4 --retry=3 --path vendor/bundle
 
-      - save_cache:
-          key: search-gov-{{ checksum "Gemfile.lock" }}
+      - persist_to_workspace:
+          root: ~/search-gov
           paths:
             - vendor/bundle
 
@@ -88,9 +85,11 @@ jobs:
             echo "script.index: on" >> /home/circleci/search-gov/elasticsearch-1.7.3/config/elasticsearch.yml
             echo "script.inline: on" >> /home/circleci/search-gov/elasticsearch-1.7.3/config/elasticsearch.yml
 
-      - save_cache:
-          key: elasticsearch
-          paths: /home/circleci/search-gov/elasticsearch-1.7.3
+      - persist_to_workspace:
+          root: ~/search-gov
+          paths:
+            - elasticsearch-1.7.3
+            - elasticsearch-1.7.3.tar.gz
 
   rspec:
     working_directory: ~/search-gov
@@ -115,13 +114,18 @@ jobs:
           command: |
             sudo apt-get update && sudo apt-get install mysql-client
 
-      - restore_cache:
-          key: search-gov-{{ checksum "Gemfile.lock" }}
+      - attach_workspace:
+          at: ~/search-gov
+          paths:
+            - vendor/bundle
 
       - run: bundle --path vendor/bundle
 
-      - restore_cache:
-          key: elasticsearch
+      - attach_workspace:
+          at: ~/search-gov
+          paths:
+            - elasticsearch-1.7.3
+            - elasticsearch-1.7.3.tar.gz
 
       - run:
           name: Prepare database
@@ -186,13 +190,18 @@ jobs:
           command: |
             sudo apt-get update && sudo apt-get install mysql-client
 
-      - restore_cache:
-          key: search-gov-{{ checksum "Gemfile.lock" }}
+      - attach_workspace:
+          at: ~/search-gov
+          paths:
+            - vendor/bundle
 
       - run: bundle --path vendor/bundle
 
-      - restore_cache:
-          key: elasticsearch
+      - attach_workspace:
+          at: ~/search-gov
+          paths:
+            - elasticsearch-1.7.3
+            - elasticsearch-1.7.3.tar.gz
 
       - run:
           name: Prepare database
@@ -246,8 +255,8 @@ jobs:
       - attach_workspace:
           at: ~/search-gov
 
-      - restore_cache:
-          key: search-gov-{{ checksum "Gemfile.lock" }}
+      - attach_workspace:
+          at: ~/search-gov/vendor/bundle
 
       - run: bundle --path vendor/bundle
 
