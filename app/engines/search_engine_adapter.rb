@@ -67,19 +67,8 @@ class SearchEngineAdapter
   end
 
   def build_formatted_query
-    formatted_query_klass
-    formatted_query_instance = formatted_query_klass.new @query, domains_scope_options
+    formatted_query_instance = BingFormattedQuery.new @query, domains_scope_options
     formatted_query_instance.query
-  end
-
-  # this should eventually be moved to another class
-  # to avoid having to check the affiliate
-  def formatted_query_klass
-    if @search_class == BingV6ImageSearch
-      BingV6FormattedQuery
-    else
-      "#{@affiliate.search_engine}FormattedQuery".constantize
-    end
   end
 
   def domains_scope_options

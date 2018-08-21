@@ -89,7 +89,15 @@ class ImageSearch
   end
 
   def engine_klass
-    (%w(BingV6 SearchGov).include? @affiliate.search_engine) ? BingV6ImageSearch : HostedAzureImageEngine
+    if @affiliate.search_engine.start_with?('Bing')
+      "#{@affiliate.search_engine}ImageSearch".constantize
+    else
+      latest_bing_image_search_class
+    end
+  end
+
+  def latest_bing_image_search_class
+    BingV6ImageSearch
   end
 
   def assign_module_tag

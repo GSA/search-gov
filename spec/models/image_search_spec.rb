@@ -89,22 +89,6 @@ describe ImageSearch do
         end
       end
 
-      context 'when search_engine is Azure' do
-        before { affiliate.search_engine = 'Azure' }
-
-        it 'should perform an Azure image search' do
-          expect(SearchEngineAdapter).to receive(:new).
-            with(HostedAzureImageEngine,
-                 hash_including(affiliate: affiliate,
-                                page: 1,
-                                per_page: 20,
-                                query: 'lsdkjflskjflskjdf')).
-            and_return(search_engine_adapter)
-          expect(search_engine_adapter).to receive(:run)
-          image_search.run
-        end
-      end
-
       context 'when search_engine is SearchGov' do
         before { affiliate.search_engine = 'SearchGov' }
 
