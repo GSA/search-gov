@@ -174,7 +174,7 @@ describe "Twitter rake tasks" do
           expect(Tweet.count).to eq(1)
           tweet = Tweet.first
           expect(tweet.tweet_text).to eq('Fast. Relevant. Free. Features: http://t.co/l8VhWiZH http://t.co/y5YSDq7M')
-          expect(tweet.urls.collect(&:display_url)).to eq(%w(usasearch.howto.gov/features pic.twitter.com/y5YSDq7M))
+          expect(tweet.urls.collect(&:display_url)).to eq(%w(search.gov/features pic.twitter.com/y5YSDq7M))
         end
 
         it 'should persist urls with complete data' do

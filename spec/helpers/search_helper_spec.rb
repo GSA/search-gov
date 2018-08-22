@@ -335,10 +335,10 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
 
   describe '#display_web_result_title' do
     it 'should render search results module' do
-      result = {'title' => 'USASearch', 'unescapedUrl' => 'http://usasearch.howto.gov'}
+      result = {'title' => 'USASearch', 'unescapedUrl' => 'http://search.gov'}
       search = double(Search, query: 'gov', module_tag: 'BOGUS_MODULE', spelling_suggestion: nil, queried_at_seconds: 1000)
       html = helper.display_web_result_title(result, search, @affiliate, 1, :web)
-      expect(html).to eq("<a href=\"http://usasearch.howto.gov\" onmousedown=\"return clk('gov',this.href, 2, 'usagov', 'BOGUS_MODULE', 1000, 'web', 'en', '')\" >USASearch</a>")
+      expect(html).to eq("<a href=\"http://search.gov\" onmousedown=\"return clk('gov',this.href, 2, 'usagov', 'BOGUS_MODULE', 1000, 'web', 'en', '')\" >USASearch</a>")
     end
   end
 

@@ -268,9 +268,9 @@ Feature:  Administration
     When I go to the admin home page
     And I follow "Help Link"
     And I follow "Create"
-    And I fill in "Help page url" with "http://usasearch.howto.gov/edit_rss"
+    And I fill in "Help page url" with "http://search.gov/edit_rss"
     And I fill in "Request path" with "http://localhost/affiliates/1/rss_feed/2/edit/?m=false"
     And I press "Create"
     Then I should see the following table rows:
-      | Help page url                       | Request path              |
-      | http://usasearch.howto.gov/edit_rss | /affiliates/rss_feed/edit |
+      | Help page url              | Request path              |
+      | http://search.gov/edit_rss | /affiliates/rss_feed/edit |

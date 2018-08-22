@@ -34,7 +34,7 @@ describe Sites::SiteFeedUrlsController do
         before do
           expect(site).to receive(:site_feed_url).and_return(site_feed_url)
           expect(site_feed_url).to receive(:update_attributes).
-              with('rss_url' => 'http://usasearch.howto.gov/all.atom',
+              with('rss_url' => 'http://search.gov/all.atom',
                    'last_checked_at' => nil,
                    'last_fetch_status' => 'Pending').
               and_return(true)
@@ -44,7 +44,7 @@ describe Sites::SiteFeedUrlsController do
 
           put :update,
                site_id: site.id,
-               site_feed_url: { rss_url: 'http://usasearch.howto.gov/all.atom',
+               site_feed_url: { rss_url: 'http://search.gov/all.atom',
                                 not_allowed_key: 'not allowed value' }
         end
 

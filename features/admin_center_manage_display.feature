@@ -9,8 +9,8 @@ Feature: Manage Display
       | name | prefixes         |
       | Blog | agency.gov/blog/ |
     And affiliate "agency.gov" has the following RSS feeds:
-      | name  | url                          |
-      | Press | usasearch.howto.gov/all.atom |
+      | name  | url                 |
+      | Press | search.gov/all.atom |
     And the following flickr URLs exist for the site "agency.gov":
       | url                                      | profile_type | profile_id   |
       | http://www.flickr.com/photos/whitehouse/ | user         | 35591378@N03 |
@@ -129,9 +129,9 @@ Feature: Manage Display
       | name | prefixes         |
       | Blog | agency.gov/blog/ |
     And affiliate "agency.gov" has the following RSS feeds:
-      | name  | url                          | show_only_media_content |
-      | Press | usasearch.howto.gov/all.atom | false                   |
-      | DMA   | media.dma.mil/mrss/portal/144/detailpage/www.af.mil/News/Photos.aspx | true                   |
+      | name  | url                                                                  | show_only_media_content |
+      | Press | search.gov/all.atom                                                  | false                   |
+      | DMA   | media.dma.mil/mrss/portal/144/detailpage/www.af.mil/News/Photos.aspx | true                    |
     And the following Instagram usernames exist for the site "agency.gov":
       | username   |
       | whitehouse |

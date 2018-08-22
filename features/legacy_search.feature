@@ -955,7 +955,7 @@ Feature: Legacy Search
       | agency site  | agency.gov | aff@bar.gov   | John Bar     | .gov    | true                      |
     And affiliate "agency.gov" has the following document collections:
       | name | prefixes                         | is_navigable |
-      | Blog | http://usasearch.howto.gov/blog/ | true         |
+      | Blog | http://search.gov/blog/          | true         |
     And affiliate "agency.gov" has the following RSS feeds:
       | name  | url                                                | is_navigable |
       | Press | http://www.whitehouse.gov/feed/press               | true         |
@@ -1038,16 +1038,16 @@ Feature: Legacy Search
       | agency site    | agency.gov    | john@agency.gov | John Bar     | en     |
       | es agency site | es.agency.gov | john@agency.gov | John Bar     | es     |
     And the following Boosted Content entries exist for the affiliate "agency.gov"
-      | url                                                 | title                               | description        | status   | publish_start_on | publish_end_on |
-      | http://usasearch.howto.gov/releases/2013-05-31.html | Notes for Week Ending May 31, 2013  | multimedia gallery | active   | 2013-08-01       | 2022-01-01     |
-      | http://usasearch.howto.gov/releases/2013-06-21.html | Notes for Week Ending June 21, 2013 | spring cleaning    | inactive |                  |                |
+      | url                                        | title                               | description        | status   | publish_start_on | publish_end_on |
+      | http://search.gov/releases/2013-05-31.html | Notes for Week Ending May 31, 2013  | multimedia gallery | active   | 2013-08-01       | 2022-01-01     |
+      | http://search.gov/releases/2013-06-21.html | Notes for Week Ending June 21, 2013 | spring cleaning    | inactive |                  |                |
     And the following Boosted Content entries exist for the affiliate "es.agency.gov"
       | title                             | url                       | description |
       | la página de prueba de Emergencia | http://www.agency.gov/911 | Some terms  |
     When I am on agency.gov's search page
     And I fill in "query" with "notes"
     And I press "Search" in the legacy search box
-    Then I should see a link to "Notes for Week Ending May 31, 2013" with url for "http://usasearch.howto.gov/releases/2013-05-31.html" in the boosted contents section
+    Then I should see a link to "Notes for Week Ending May 31, 2013" with url for "http://search.gov/releases/2013-05-31.html" in the boosted contents section
     And I should not see a link to "Notes for Week Ending June 21, 2013"
 
     When I am on es.agency.gov's search page

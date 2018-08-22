@@ -28,7 +28,7 @@ describe Sites::SettingsController do
 
       before do
         expect(site).to receive(:update_attributes).
-            with('display_name' => 'new name', 'website' => 'usasearch.howto.gov').
+            with('display_name' => 'new name', 'website' => 'search.gov').
             and_return true
 
         adapter = double(NutshellAdapter)
@@ -38,7 +38,7 @@ describe Sites::SettingsController do
         put :update,
             site_id: site.id,
             site: { display_name: 'new name',
-                    website: 'usasearch.howto.gov',
+                    website: 'search.gov',
                     not_allowed_key: 'not allowed value' }
       end
 

@@ -50,7 +50,7 @@ describe FeaturedCollection do
 
   describe "title URL should have http(s):// prefix" do
     context "when the title URL does not start with http(s):// prefix" do
-      title_url = 'usasearch.howto.gov/post/9866782725/did-you-mean-roes-or-rose'
+      title_url = 'search.gov/post/9866782725/did-you-mean-roes-or-rose'
       prefixes = %w( http https HTTP HTTPS invalidhttp:// invalidHtTp:// invalidhttps:// invalidHTtPs:// invalidHttPsS://)
       prefixes.each do |prefix|
         specify { expect(FeaturedCollection.create!(:title => 'Did You Mean Roes or Rose?',
@@ -62,7 +62,7 @@ describe FeaturedCollection do
     end
 
     context "when the title URL starts with http(s):// prefix" do
-      title_url = 'usasearch.howto.gov/post/9866782725/did-you-mean-roes-or-rose'
+      title_url = 'search.gov/post/9866782725/did-you-mean-roes-or-rose'
       prefixes = %w( http:// https:// HTTP:// HTTPS:// )
       prefixes.each do |prefix|
         specify { expect(FeaturedCollection.create!(:title => 'Did You Mean Roes or Rose?',

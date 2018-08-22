@@ -103,7 +103,7 @@ describe SiteAutodiscoverer do
 
   describe '#run' do
     context 'when domain contains valid hostname' do
-      let(:domain) { 'usasearch.howto.gov/with-path' }
+      let(:domain) { 'search.gov/with-path' }
       let(:url) { "https://#{domain}" }
 
       before do
@@ -121,8 +121,8 @@ describe SiteAutodiscoverer do
     end
 
     context 'when valid hostname require www. prefix' do
-      let(:domain) { 'howto.gov' }
-      let(:url) { 'http://www.howto.gov' }
+      let(:domain) { 'search.gov' }
+      let(:url) { 'http://www.search.gov' }
       let(:response) { { body: '', last_effective_url: url, status: '301 Moved Permanently' } }
 
       before do
@@ -139,7 +139,7 @@ describe SiteAutodiscoverer do
     end
 
     context 'when website response status code is 301' do
-      let(:domain) { 'howto.gov' }
+      let(:domain) { 'search.gov' }
       let(:url) { "http://#{domain}" }
 
       let(:updated_url) { "http://www.#{domain}" }
