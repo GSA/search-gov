@@ -2,7 +2,7 @@ class ApiBingSearch < ApiWebSearch
   self.default_module_tag = 'BWEB'.freeze
 
   def query_formatting_klass
-    BingV6FormattedQuery
+    BingFormattedQuery
   end
 
   def engine_klass

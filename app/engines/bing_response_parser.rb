@@ -1,4 +1,4 @@
-class BingV5ResponseParser
+class BingResponseParser
   attr_reader :engine
   attr_reader :bing_response
 
@@ -29,8 +29,21 @@ class BingV5ResponseParser
     @bing_response_body ||= Hashie::Mash.new(bing_response.body.reverse_merge(default_bing_response_parts))
   end
 
+  def default_bing_response_parts
+    {
+      _type: nil,
+      errors: [{ message: nil }],
+      query_context: { },
+      status_code: 200,
+    }
+  end
+
   def response_error_message
-    "received status code #{bing_response_body.status_code} - #{bing_response_body.message}" if bing_response_body.status_code != 200
+    if bing_response_body.status_code != 200
+      "received status code #{bing_response_body.status_code} - #{bing_response_body.message}"
+    elsif bing_response_body._type == 'ErrorResponse'
+      bing_response_body.errors.first.message
+    end
   end
 
   def start_record
@@ -42,7 +55,7 @@ class BingV5ResponseParser
   end
 
   def spelling_suggestion
-    bing_response_body.query_context.altered_query
+    nil
   end
 
   def next_offset
