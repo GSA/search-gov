@@ -1,19 +1,9 @@
 require 'spec_helper'
 
 describe BingV5WebEngine do
-  it_behaves_like 'a Bing V5 engine'
+  subject { described_class.new(options) }
 
-  describe '#params' do
-    subject { described_class.new({ enable_highlighting: :enable_highlighting }) }
-
-    it 'uses "WebPages,SpellSuggestions" for responseFilter' do
-      expect(subject.params[:responseFilter]).to eq('WebPages,SpellSuggestions')
-    end
-
-    it 'gets textDecorations from options' do
-      expect(subject.params[:textDecorations]).to eq(:enable_highlighting)
-    end
-  end
+  it_behaves_like 'a Bing search'
 
   describe '#execute_query' do
     subject do

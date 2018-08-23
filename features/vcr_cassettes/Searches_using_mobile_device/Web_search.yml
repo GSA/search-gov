@@ -1,963 +1,8 @@
 ---
 http_interactions:
 - request:
-    method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=president%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Ocp-Apim-Subscription-Key:
-      - "<BING_V6_APP_ID>"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Content-Length:
-      - '3289'
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Thu, 22 Feb 2018 07:22:54 GMT
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      Set-Cookie:
-      - MUID=2D80BC9D95A7629B083AB70394426335; path=/; expires=Tue, 19-Mar-2019 07:23:55
-        GMT; domain=bingapis.com
-      - MUIDB=2D80BC9D95A7629B083AB70394426335; path=/; httponly; expires=Tue, 19-Mar-2019
-        07:23:55 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:23:54 GMT;
-        path=/
-      - SRCHUID=V=2&GUID=277A3A11701345BA8040CE08F5A026B1&dmnchg=1; domain=.bingapis.com;
-        expires=Sat, 22-Feb-2020 07:23:54 GMT; path=/
-      - SRCHUSR=DOB=20180222; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:23:54
-        GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=0797F26D78E860B40F1CF9F3790D6120; path=/; httponly;
-        domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Tue, 19-Mar-2019 07:23:55 GMT; domain=bingapis.com
-      - _SS=SID=0797F26D78E860B40F1CF9F3790D6120; domain=.bingapis.com; path=/
-      Bingapis-Traceid:
-      - 6D0DA12422004793AF9EA028A5D05D28
-      X-Msedge-Clientid:
-      - 2D80BC9D95A7629B083AB70394426335
-      X-Msapi-Userstate:
-      - 2aab
-      Bingapis-Market:
-      - en-US
-      X-Msedge-Ref:
-      - 'Ref A: 6D0DA12422004793AF9EA028A5D05D28 Ref B: SG2EDGE0518 Ref C: 2018-02-22T07:23:55Z'
-      Date:
-      - Thu, 22 Feb 2018 07:23:54 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=039251AC16A64031BA8940AC4A0016AA&CID=2D80BC9D95A7629B083AB70394426335&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=039251AC16A64031BA8940AC4A0016AA&CID=2D80BC9D95A7629B083AB70394426335&Type=Event.CPT&DATA=0"},
-        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=president+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5488.1", "totalEstimatedMatches": 10500000,
-        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "Presidents - White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/",
-        "urlPingSuffix": "DevEx,5086.1", "about": [{"name": "White House"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents", "snippet":
-        "Which President served as a lieutenant colonel in the Spanish-American
-        war? Who was the first Democrat elected after the Civil War? Who introduced
-        Social Security? If ...", "dateLastCrawled": "2018-02-13T09:23:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "President
-        Donald Trump - whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/people\/donald-j-trump\/",
-        "urlPingSuffix": "DevEx,5100.1", "about": [{"name": "Donald Trump"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/people\/donald-j-trump", "snippet": "Donald
-        J. Trump is the 45th President of the United States. He believes the United
-        States has incredible potential and will go on to exceed anything that it
-        has ...", "dateLastCrawled": "2018-02-16T13:37:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
-        "name": "President Barack Obama - whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/barack-obama\/",
-        "urlPingSuffix": "DevEx,5115.1", "about": [{"name": "Barack Obama"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/barack...",
-        "snippet": "Barack Obama served as the 44th President of the United States.
-        His story is the American story — values from the heartland, a middle-class
-        upbringing in a strong ...", "dateLastCrawled": "2018-02-16T20:23:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Dear Mr.
-        President", "url": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/ondcp\/commission-interim-report.pdf",
-        "urlPingSuffix": "DevEx,5128.1", "displayUrl": "https:\/\/www.whitehouse.gov\/...\/ondcp\/commission-interim-report.pdf",
-        "snippet": "DRAFT 1 Dear Mr. President: I am proud to present to you today
-        the interim report prepared by your Commission on Combating Drug Addiction
-        and the Opioid ...", "dateLastCrawled": "2018-02-13T06:18:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Presidential
-        News and Speeches - whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/news\/",
-        "urlPingSuffix": "DevEx,5140.1", "displayUrl": "https:\/\/www.whitehouse.gov\/news",
-        "snippet": "Statements & Releases Readout of President Donald J. Trump’s
-        Call with President Vladimir Putin of Russia", "dateLastCrawled": "2018-02-15T00:36:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Presidents,
-        Vice Presidents, and First Ladies of the ...", "url": "https:\/\/www.usa.gov\/presidents",
-        "urlPingSuffix": "DevEx,5157.1", "displayUrl": "https:\/\/www.usa.gov\/presidents",
-        "snippet": "Find contact information and other facts about Presidents, Vice
-        Presidents, and First Ladies, past and present.", "dateLastCrawled": "2018-02-13T10:39:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Home Page
-        [www.whitehouse.gov]", "url": "https:\/\/www.whitehouse.gov\/", "urlPingSuffix":
-        "DevEx,5173.1", "about": [{"name": "whitehouse.gov"}, {"name": "United States"},
-        {"name": "White House"}], "displayUrl": "https:\/\/www.whitehouse.gov",
-        "snippet": "History of The White House. Our first president, George Washington,
-        selected the site for the White House in 1791. Every president since John
-        Adams has occupied the ...", "dateLastCrawled": "2018-02-16T04:03:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Presidential
-        Election Process | USAGov", "url": "https:\/\/www.usa.gov\/election", "urlPingSuffix":
-        "DevEx,5192.1", "about": [{"name": "2016 United States presidential election"},
-        {"name": "United States presidential election"}, {"name": "2016 United States
-        presidential election"}], "displayUrl": "https:\/\/www.usa.gov\/election",
-        "snippet": "Back to Top. Overview of the Presidential Election Process. An
-        election for President of the United States occurs every four years on Election
-        Day, held the first ...", "dateLastCrawled": "2018-02-16T19:41:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Contact
-        the White House", "url": "https:\/\/www.whitehouse.gov\/contact\/", "urlPingSuffix":
-        "DevEx,5207.1", "about": [{"name": "White House"}], "displayUrl": "https:\/\/www.whitehouse.gov\/contact",
-        "snippet": "Get Involved Contact the White House. Share:", "dateLastCrawled":
-        "2018-02-14T23:44:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
-        "name": "Write or Call the White House", "url": "https:\/\/www.whitehouse.gov\/get-involved\/write-or-call\/",
-        "urlPingSuffix": "DevEx,5221.1", "about": [{"name": "White House"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/get-involved\/write-or-call", "snippet":
-        "Write a letter to the President Here are a few simple things you can do
-        to make sure your message gets to the White House as quickly as possible.
-        If possible, email us!", "dateLastCrawled": "2018-02-14T19:08:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Vice
-        President Mike Pence - whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/people\/mike-pence\/",
-        "urlPingSuffix": "DevEx,5235.1", "about": [{"name": "Mike Pence"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/people\/mike-pence", "snippet": "Michael
-        R. Pence is the 48th and current Vice President of the United States. Vice
-        President Mike Pence remains grateful for the grace of God, the love and
-        support of ...", "dateLastCrawled": "2018-02-14T00:38:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "A Budget Blueprint
-        to Make America Great Again", "url": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/omb\/budget\/fy2018\/2018_blueprint.pdf",
-        "urlPingSuffix": "DevEx,5247.1", "displayUrl": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/omb\/budget\/...",
-        "snippet": "President’s Message ... A budget that puts America first must
-        make the safety of our people its number one priority ...", "dateLastCrawled":
-        "2018-02-16T15:01:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
-        "name": "Statement by President Trump on Jerusalem", "url": "https:\/\/www.whitehouse.gov\/briefings-statements\/statement-president-trump-jerusalem\/",
-        "urlPingSuffix": "DevEx,5260.1", "displayUrl": "https:\/\/www.whitehouse.gov\/...\/statement-president-trump-jerusalem",
-        "snippet": "THE PRESIDENT: Thank you. When I came into office, I promised
-        to look at the world’s challenges with open eyes and very fresh thinking.
-        We cannot solve our problems ...", "dateLastCrawled": "2018-02-11T14:04:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "President
-        Andrew Jackson - whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/andrew-jackson\/",
-        "urlPingSuffix": "DevEx,5274.1", "about": [{"name": "Andrew Jackson"}, {"name":
-        "Presidency of Andrew Jackson"}], "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/andrew...",
-        "snippet": "Andrew Jackson was the seventh President of the United States
-        from 1829 to 1837, seeking to act as the direct representative of the common
-        man. More nearly than any ...", "dateLastCrawled": "2018-02-14T20:37:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Michael
-        Picker, President - California Public Utilities ...", "url": "http:\/\/www.cpuc.ca.gov\/picker\/",
-        "urlPingSuffix": "DevEx,5293.1", "displayUrl": "www.cpuc.ca.gov\/picker",
-        "snippet": "Michael Picker was named President of the California Public
-        Utilities Commission (CPUC) on December 23, 2014, by Governor Edmund G. Brown
-        Jr., who first appointed ...", "dateLastCrawled": "2018-02-16T18:34:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "President
-        George W. Bush - whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/george-w-bush\/",
-        "urlPingSuffix": "DevEx,5307.1", "about": [{"name": "George W. Bush"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/george...",
-        "snippet": "George W. Bush, America’s 43rd President (2001-2009), was transformed
-        into a wartime President in the aftermath of the airborne terrorist attacks
-        on September 11 ...", "dateLastCrawled": "2018-02-13T02:17:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "President''s
-        Budget", "url": "https:\/\/www.whitehouse.gov\/omb\/budget\/", "urlPingSuffix":
-        "DevEx,5321.1", "displayUrl": "https:\/\/www.whitehouse.gov\/omb\/budget",
-        "snippet": "Addendum to the President’s FY19 Budget to Account for the Bipartisan
-        Budget Act of 2018 An American Budget – President’s Budget FY 2019 Major
-        Savings and ...", "dateLastCrawled": "2018-02-20T09:01:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Navajo Nation
-        - Official Site", "url": "http:\/\/www.navajo-nsn.gov\/", "urlPingSuffix":
-        "DevEx,5335.1", "about": [{"name": "Navajo Nation"}, {"name": "Navajo"}, {"name":
-        "Navajo Nation"}], "displayUrl": "www.navajo-nsn.gov", "snippet": "Dec 22
-        Navajo Nation Council overrides President Russell Begaye’s veto of the Veterans
-        Trust Fund Income Act.", "dateLastCrawled": "2018-02-14T08:30:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "President
-        Gerald R. Ford - whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/gerald-r-ford\/",
-        "urlPingSuffix": "DevEx,5350.1", "about": [{"name": "Gerald Ford"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/gerald...",
-        "snippet": "When Gerald R. Ford took the oath of office on August 9, 1974
-        as our 38th President, he declared, “I assume the Presidency under extraordinary
-        circumstances…This ...", "dateLastCrawled": "2018-02-15T10:50:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "The Executive
-        Branch - White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/the-executive-branch\/",
-        "urlPingSuffix": "DevEx,5365.1", "about": [{"name": "Executive Office of the
-        President of the United States"}, {"name": "White House Chief of Staff"},
-        {"name": "Executive Office of the President of the United States"}, {"name":
-        "White House Chief of Staff"}], "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/the-executive-branch",
-        "snippet": "The power of the Executive Branch is vested in the President
-        of the United States, who also acts as head of state and Commander-in-Chief
-        of the armed forces. The ...", "dateLastCrawled": "2018-02-10T17:11:00.0000000Z"}]},
-        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
-        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
-        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
-        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
-        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
-        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
-        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
-        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
-        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
-        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
-        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
-        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
-        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
-        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
-        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
-        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
-        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
-        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
-        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
-        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
-        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
-    http_version: 
-  recorded_at: Thu, 22 Feb 2018 07:23:55 GMT
-- request:
-    method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=20&q=president%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Ocp-Apim-Subscription-Key:
-      - "<BING_V6_APP_ID>"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Content-Length:
-      - '3699'
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Thu, 22 Feb 2018 07:22:55 GMT
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      Set-Cookie:
-      - MUID=35421BE5EEAC675A2403107BEF4966EE; path=/; expires=Tue, 19-Mar-2019 07:23:56
-        GMT; domain=bingapis.com
-      - MUIDB=35421BE5EEAC675A2403107BEF4966EE; path=/; httponly; expires=Tue, 19-Mar-2019
-        07:23:56 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:23:55 GMT;
-        path=/
-      - SRCHUID=V=2&GUID=DB1B069654E64DC7817E918DB5825D10&dmnchg=1; domain=.bingapis.com;
-        expires=Sat, 22-Feb-2020 07:23:55 GMT; path=/
-      - SRCHUSR=DOB=20180222; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:23:55
-        GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=3C2EC88E1DA36B722EE6C3101C466AB5; path=/; httponly;
-        domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Tue, 19-Mar-2019 07:23:56 GMT; domain=bingapis.com
-      - _SS=SID=3C2EC88E1DA36B722EE6C3101C466AB5; domain=.bingapis.com; path=/
-      Bingapis-Traceid:
-      - C43A58988578418C8A0C767A6DF8923D
-      X-Msedge-Clientid:
-      - 35421BE5EEAC675A2403107BEF4966EE
-      X-Msapi-Userstate:
-      - b21f
-      Bingapis-Market:
-      - en-US
-      X-Msedge-Ref:
-      - 'Ref A: C43A58988578418C8A0C767A6DF8923D Ref B: SG2EDGE0916 Ref C: 2018-02-22T07:23:56Z'
-      Date:
-      - Thu, 22 Feb 2018 07:23:55 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=204C066DC8854DA1B2AFC70CEBAD4B92&CID=35421BE5EEAC675A2403107BEF4966EE&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=204C066DC8854DA1B2AFC70CEBAD4B92&CID=35421BE5EEAC675A2403107BEF4966EE&Type=Event.CPT&DATA=0"},
-        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=president+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5507.1", "totalEstimatedMatches": 10500000,
-        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "Articles - whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/articles\/",
-        "urlPingSuffix": "DevEx,5079.1", "about": [{"name": "White House"}, {"name":
-        "White House Press Secretary"}, {"name": "White House"}], "displayUrl": "https:\/\/www.whitehouse.gov\/articles",
-        "snippet": "As President Donald J. Trump unveiled his infrastructure plan
-        this week, one question dominated the political debate — how can $200 billion
-        in federal investment ...", "dateLastCrawled": "2018-02-16T10:14:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "President
-        Donald J. Trump Proclaims January 2018 as ...", "url": "https:\/\/www.whitehouse.gov\/presidential-actions\/president-donald-j-trump-proclaims-january-2018-national-slavery-human-trafficking-prevention-month\/",
-        "urlPingSuffix": "DevEx,5094.1", "displayUrl": "https:\/\/www.whitehouse.gov\/presidential-actions\/president-donald-j...",
-        "snippet": "During National Slavery and Human Trafficking Prevention Month,
-        we recommit ourselves to eradicating the evil of enslavement.", "dateLastCrawled":
-        "2018-02-15T14:23:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
-        "name": "Pardon Information and Instructions | PARDON | Department ...",
-        "url": "https:\/\/www.justice.gov\/pardon\/pardon-information-and-instructions",
-        "urlPingSuffix": "DevEx,5111.1", "displayUrl": "https:\/\/www.justice.gov\/pardon\/pardon-information-and-instructions",
-        "snippet": "Pardon Information and Instructions. ... the President''s
-        pardon power extends to convictions adjudicated in the Superior Court of the
-        District of Columbia and ...", "dateLastCrawled": "2018-01-31T17:11:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Presidents
-        and Vice Presidents of the Republic of Texas ...", "url": "https:\/\/www.tsl.texas.gov\/ref\/abouttx\/prestx.html",
-        "urlPingSuffix": "DevEx,5127.1", "about": [{"name": "Republic of Texas"}],
-        "displayUrl": "https:\/\/www.tsl.texas.gov\/ref\/abouttx\/prestx.html",
-        "snippet": "Presidents and Vice Presidents of the Republic of Texas, 1836-1846
-        Related Links Pre-Republic Governors of Texas | Governors of Texas | Who
-        was known as the...", "dateLastCrawled": "2018-02-14T17:22:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Chronological
-        List of Presidents, First Ladies, and Vice ...", "url": "https:\/\/www.loc.gov\/rr\/print\/list\/057_chron.html",
-        "urlPingSuffix": "DevEx,5143.1", "displayUrl": "https:\/\/www.loc.gov\/rr\/print\/list\/057_chron.html",
-        "snippet": "Illustrations from the holdings of the Library of Congress Prints
-        and Photographs Division on the subject of U.S. Presidents, First Ladies,
-        and Vice Presidents", "dateLastCrawled": "2018-01-14T22:39:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "The Executive
-        Branch - White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/the-executive-branch\/",
-        "urlPingSuffix": "DevEx,5159.1", "about": [{"name": "Executive Office of the
-        President of the United States"}, {"name": "White House Chief of Staff"},
-        {"name": "Executive Office of the President of the United States"}, {"name":
-        "White House Chief of Staff"}], "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/the-executive-branch",
-        "snippet": "The power of the Executive Branch is vested in the President
-        of the United States, who also acts as head of state and Commander-in-Chief
-        of the armed forces. The ...", "dateLastCrawled": "2018-02-10T17:11:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Remarks
-        by President Trump in Meeting with Bipartisan ...", "url": "https:\/\/www.whitehouse.gov\/briefings-statements\/remarks-president-trump-meeting-bipartisan-members-congress-immigration\/",
-        "urlPingSuffix": "DevEx,5174.1", "displayUrl": "https:\/\/www.whitehouse.gov\/briefings-statements\/remarks-president...",
-        "snippet": "Cabinet Room 11:39 A.M. EST THE PRESIDENT: Well, thank you very
-        much, everyone, for being here. I’m thrilled to be with a distinguished group
-        of Republican and ...", "dateLastCrawled": "2018-02-11T06:45:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Statement
-        by President Donald J. Trump on the Shooting in ...", "url": "https:\/\/www.whitehouse.gov\/",
-        "urlPingSuffix": "DevEx,5188.1", "displayUrl": "https:\/\/www.whitehouse.gov",
-        "snippet": "History of The White House. Our first president, George Washington,
-        selected the site for the White House in 1791. Every president since John
-        Adams has occupied the ...", "dateLastCrawled": "2018-02-22T05:39:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "President''s
-        Budget | Congressional Budget Office", "url": "https:\/\/www.cbo.gov\/topics\/budget\/presidents-budget",
-        "urlPingSuffix": "DevEx,5207.1", "displayUrl": "https:\/\/www.cbo.gov\/topics\/budget\/presidents-budget",
-        "snippet": "Each year, CBO estimates the effects of the President’s budgetary
-        proposals using the agency’s economic projections and estimating approaches—which
-        also ...", "dateLastCrawled": "2018-02-11T17:37:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
-        "name": "President Gerald R. Ford - whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/gerald-r-ford\/",
-        "urlPingSuffix": "DevEx,5223.1", "about": [{"name": "Gerald Ford"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/gerald...",
-        "snippet": "When Gerald R. Ford took the oath of office on August 9, 1974
-        as our 38th President, he declared, “I assume the Presidency under extraordinary
-        circumstances…This ...", "dateLastCrawled": "2018-02-15T10:50:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "President
-        Woodrow Wilson - whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/woodrow-wilson\/",
-        "urlPingSuffix": "DevEx,5238.1", "about": [{"name": "Woodrow Wilson"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/...",
-        "snippet": "Woodrow Wilson, a leader of the Progressive Movement, was the
-        28th President of the United States (1913-1921). After a policy of neutrality
-        at the outbreak of World ...", "dateLastCrawled": "2018-02-14T22:34:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "A Budget
-        Blueprint to Make America Great Again", "url": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/omb\/budget\/fy2018\/2018_blueprint.pdf",
-        "urlPingSuffix": "DevEx,5251.1", "displayUrl": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/omb\/budget\/...",
-        "snippet": "President’s Message ... A budget that puts America first must
-        make the safety of our people its number one priority ...", "dateLastCrawled":
-        "2018-02-16T15:01:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
-        "name": "President''s Park (White House) (U.S. National Park Service)",
-        "url": "https:\/\/www.nps.gov\/whho\/index.htm", "urlPingSuffix": "DevEx,5266.1",
-        "displayUrl": "https:\/\/www.nps.gov\/whho", "snippet": "Every president
-        except George Washington has called the White House and its surrounding grounds
-        his place of work, rest, and solitude. Recognizable around ...", "dateLastCrawled":
-        "2018-02-16T15:16:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
-        "name": "The President - whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/the-trump-administration\/",
-        "urlPingSuffix": "DevEx,5282.1", "about": [{"name": "Office of Administration"}],
-        "displayUrl": "https:\/\/www.whitehouse.gov\/the-trump-administration",
-        "snippet": "President Donald J. Trump promised that he would bring the best
-        and brightest from across the country—not just inside Washington—to build
-        his Administration. The ...", "dateLastCrawled": "2018-02-16T20:27:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Executive
-        Office of the President - The White House", "url": "https:\/\/obamawhitehouse.archives.gov\/sites\/default\/files\/image\/president27sclimateactionplan.pdf",
-        "urlPingSuffix": "DevEx,5295.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/sites\/default\/files\/image\/...",
-        "snippet": "THE PRESIDENT’S CLIMATE ACTION PLAN . Executive Office of
-        the President . June 2013", "dateLastCrawled": "2018-02-10T14:13:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Election
-        of the President & Vice President: Primary Election", "url": "https:\/\/bensguide.gpo.gov\/election-of-the-president-vice-president-primary-election",
-        "urlPingSuffix": "DevEx,5310.1", "displayUrl": "https:\/\/bensguide.gpo.gov\/election-of-the-president-vice-president...",
-        "snippet": "According to the United States Constitution, a Presidential election
-        is to be held once every fourth year. To be able to run in an election for
-        President one must be ...", "dateLastCrawled": "2018-02-12T02:17:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "President
-        Richard M. Nixon - whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/richard-m-nixon\/",
-        "urlPingSuffix": "DevEx,5324.1", "about": [{"name": "Richard Nixon"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/...",
-        "snippet": "Richard Nixon was elected the 37th President of the United States
-        (1969-1974) after previously serving as a U.S. Representative and a U.S. Senator
-        from California.", "dateLastCrawled": "2018-02-09T01:03:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Office of the
-        Senate President - wvlegislature.gov", "url": "http:\/\/www.wvlegislature.gov\/Senate1\/president.cfm",
-        "urlPingSuffix": "DevEx,5339.1", "displayUrl": "www.wvlegislature.gov\/Senate1\/president.cfm",
-        "snippet": "Welcome from Senate President Mitch Carmichael. Thank you so
-        much for visiting the West Virginia Legislature’s website for the Senate.
-        This page can be a valuable ...", "dateLastCrawled": "2018-02-15T10:00:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "President
-        Theodore Roosevelt - whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/theodore-roosevelt\/",
-        "urlPingSuffix": "DevEx,5354.1", "about": [{"name": "Theodore Roosevelt"}],
-        "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/...",
-        "snippet": "With the assassination of President William McKinley, Theodore
-        Roosevelt, not quite 43, became the 26th and youngest President in the Nation’s
-        history (1901-1909).", "dateLastCrawled": "2018-02-15T20:17:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "U.S.
-        Presidents | Historic Sites", "url": "http:\/\/historicsites.vermont.gov\/vt_history\/presidents",
-        "urlPingSuffix": "DevEx,5372.1", "displayUrl": "historicsites.vermont.gov\/vt_history\/presidents",
-        "snippet": "Vermont claims two U.S. Presidents: Calvin Coolidge and Chester
-        Alan Arthur. Both Coolidge and Arthur were born in small farming communities,
-        and like many of their ...", "dateLastCrawled": "2018-02-10T00:52:00.0000000Z"}]},
-        "rankingResponse": {"mainline": {"items": [{"answerType": "Videos"}, {"answerType":
-        "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
-        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
-        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
-        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
-        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
-        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
-        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
-        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
-        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
-        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
-        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
-        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
-        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
-        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
-        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
-        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
-        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
-        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
-        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
-        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
-    http_version: 
-  recorded_at: Thu, 22 Feb 2018 07:23:56 GMT
-- request:
-    method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=president%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Ocp-Apim-Subscription-Key:
-      - "<BING_V6_APP_ID>"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Content-Length:
-      - '3290'
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Thu, 22 Feb 2018 07:22:56 GMT
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      Set-Cookie:
-      - MUID=076AB2CD1C5B67673023B9531DBE6622; path=/; expires=Tue, 19-Mar-2019 07:23:56
-        GMT; domain=bingapis.com
-      - MUIDB=076AB2CD1C5B67673023B9531DBE6622; path=/; httponly; expires=Tue, 19-Mar-2019
-        07:23:56 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:23:56 GMT;
-        path=/
-      - SRCHUID=V=2&GUID=964E859464904A32B0B01DD5795AC891&dmnchg=1; domain=.bingapis.com;
-        expires=Sat, 22-Feb-2020 07:23:56 GMT; path=/
-      - SRCHUSR=DOB=20180222; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:23:56
-        GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=1B0C035825296ABB004308C624CC6B54; path=/; httponly;
-        domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Tue, 19-Mar-2019 07:23:56 GMT; domain=bingapis.com
-      - _SS=SID=1B0C035825296ABB004308C624CC6B54; domain=.bingapis.com; path=/
-      Bingapis-Traceid:
-      - 3B7ED421E2924EB8812B03B28E2613B9
-      X-Msedge-Clientid:
-      - 076AB2CD1C5B67673023B9531DBE6622
-      X-Msapi-Userstate:
-      - 894b
-      Bingapis-Market:
-      - en-US
-      X-Msedge-Ref:
-      - 'Ref A: 3B7ED421E2924EB8812B03B28E2613B9 Ref B: SG2EDGE1015 Ref C: 2018-02-22T07:23:56Z'
-      Date:
-      - Thu, 22 Feb 2018 07:23:56 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=BE61657A395E4C65B3126CC983D281FC&CID=076AB2CD1C5B67673023B9531DBE6622&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=BE61657A395E4C65B3126CC983D281FC&CID=076AB2CD1C5B67673023B9531DBE6622&Type=Event.CPT&DATA=0"},
-        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=president+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5489.1", "totalEstimatedMatches": 10600000,
-        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "Presidents - White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/",
-        "urlPingSuffix": "DevEx,5087.1", "about": [{"name": "White House"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents", "snippet":
-        "Which President served as a lieutenant colonel in the Spanish-American
-        war? Who was the first Democrat elected after the Civil War? Who introduced
-        Social Security? If ...", "dateLastCrawled": "2018-02-13T09:23:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "President
-        Donald Trump - whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/people\/donald-j-trump\/",
-        "urlPingSuffix": "DevEx,5101.1", "about": [{"name": "Donald Trump"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/people\/donald-j-trump", "snippet": "Donald
-        J. Trump is the 45th President of the United States. He believes the United
-        States has incredible potential and will go on to exceed anything that it
-        has ...", "dateLastCrawled": "2018-02-16T13:37:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
-        "name": "President Barack Obama - whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/barack-obama\/",
-        "urlPingSuffix": "DevEx,5116.1", "about": [{"name": "Barack Obama"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/barack...",
-        "snippet": "Barack Obama served as the 44th President of the United States.
-        His story is the American story — values from the heartland, a middle-class
-        upbringing in a strong ...", "dateLastCrawled": "2018-02-16T20:23:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Dear Mr.
-        President", "url": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/ondcp\/commission-interim-report.pdf",
-        "urlPingSuffix": "DevEx,5129.1", "displayUrl": "https:\/\/www.whitehouse.gov\/...\/ondcp\/commission-interim-report.pdf",
-        "snippet": "DRAFT 1 Dear Mr. President: I am proud to present to you today
-        the interim report prepared by your Commission on Combating Drug Addiction
-        and the Opioid ...", "dateLastCrawled": "2018-02-13T06:18:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Presidential
-        News and Speeches - whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/news\/",
-        "urlPingSuffix": "DevEx,5141.1", "displayUrl": "https:\/\/www.whitehouse.gov\/news",
-        "snippet": "Statements & Releases Readout of President Donald J. Trump’s
-        Call with President Vladimir Putin of Russia", "dateLastCrawled": "2018-02-15T00:36:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Presidents,
-        Vice Presidents, and First Ladies of the ...", "url": "https:\/\/www.usa.gov\/presidents",
-        "urlPingSuffix": "DevEx,5158.1", "displayUrl": "https:\/\/www.usa.gov\/presidents",
-        "snippet": "Find contact information and other facts about Presidents, Vice
-        Presidents, and First Ladies, past and present.", "dateLastCrawled": "2018-02-13T10:39:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Home Page
-        [www.whitehouse.gov]", "url": "https:\/\/www.whitehouse.gov\/", "urlPingSuffix":
-        "DevEx,5174.1", "about": [{"name": "whitehouse.gov"}, {"name": "United States"},
-        {"name": "White House"}], "displayUrl": "https:\/\/www.whitehouse.gov",
-        "snippet": "History of The White House. Our first president, George Washington,
-        selected the site for the White House in 1791. Every president since John
-        Adams has occupied the ...", "dateLastCrawled": "2018-02-16T04:03:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Presidential
-        Election Process | USAGov", "url": "https:\/\/www.usa.gov\/election", "urlPingSuffix":
-        "DevEx,5193.1", "about": [{"name": "2016 United States presidential election"},
-        {"name": "United States presidential election"}, {"name": "2016 United States
-        presidential election"}], "displayUrl": "https:\/\/www.usa.gov\/election",
-        "snippet": "Back to Top. Overview of the Presidential Election Process. An
-        election for President of the United States occurs every four years on Election
-        Day, held the first ...", "dateLastCrawled": "2018-02-16T19:41:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Contact
-        the White House", "url": "https:\/\/www.whitehouse.gov\/contact\/", "urlPingSuffix":
-        "DevEx,5208.1", "about": [{"name": "White House"}], "displayUrl": "https:\/\/www.whitehouse.gov\/contact",
-        "snippet": "Get Involved Contact the White House. Share:", "dateLastCrawled":
-        "2018-02-14T23:44:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
-        "name": "Write or Call the White House", "url": "https:\/\/www.whitehouse.gov\/get-involved\/write-or-call\/",
-        "urlPingSuffix": "DevEx,5222.1", "about": [{"name": "White House"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/get-involved\/write-or-call", "snippet":
-        "Write a letter to the President Here are a few simple things you can do
-        to make sure your message gets to the White House as quickly as possible.
-        If possible, email us!", "dateLastCrawled": "2018-02-14T19:08:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Vice
-        President Mike Pence - whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/people\/mike-pence\/",
-        "urlPingSuffix": "DevEx,5236.1", "about": [{"name": "Mike Pence"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/people\/mike-pence", "snippet": "Michael
-        R. Pence is the 48th and current Vice President of the United States. Vice
-        President Mike Pence remains grateful for the grace of God, the love and
-        support of ...", "dateLastCrawled": "2018-02-14T00:38:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "A Budget Blueprint
-        to Make America Great Again", "url": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/omb\/budget\/fy2018\/2018_blueprint.pdf",
-        "urlPingSuffix": "DevEx,5248.1", "displayUrl": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/omb\/budget\/...",
-        "snippet": "President’s Message ... A budget that puts America first must
-        make the safety of our people its number one priority ...", "dateLastCrawled":
-        "2018-02-16T15:01:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
-        "name": "Statement by President Trump on Jerusalem", "url": "https:\/\/www.whitehouse.gov\/briefings-statements\/statement-president-trump-jerusalem\/",
-        "urlPingSuffix": "DevEx,5261.1", "displayUrl": "https:\/\/www.whitehouse.gov\/...\/statement-president-trump-jerusalem",
-        "snippet": "THE PRESIDENT: Thank you. When I came into office, I promised
-        to look at the world’s challenges with open eyes and very fresh thinking.
-        We cannot solve our problems ...", "dateLastCrawled": "2018-02-11T14:04:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "President
-        Andrew Jackson - whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/andrew-jackson\/",
-        "urlPingSuffix": "DevEx,5275.1", "about": [{"name": "Andrew Jackson"}, {"name":
-        "Presidency of Andrew Jackson"}], "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/andrew...",
-        "snippet": "Andrew Jackson was the seventh President of the United States
-        from 1829 to 1837, seeking to act as the direct representative of the common
-        man. More nearly than any ...", "dateLastCrawled": "2018-02-14T20:37:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Michael
-        Picker, President - California Public Utilities ...", "url": "http:\/\/www.cpuc.ca.gov\/picker\/",
-        "urlPingSuffix": "DevEx,5294.1", "displayUrl": "www.cpuc.ca.gov\/picker",
-        "snippet": "Michael Picker was named President of the California Public
-        Utilities Commission (CPUC) on December 23, 2014, by Governor Edmund G. Brown
-        Jr., who first appointed ...", "dateLastCrawled": "2018-02-16T18:34:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "President
-        George W. Bush - whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/george-w-bush\/",
-        "urlPingSuffix": "DevEx,5308.1", "about": [{"name": "George W. Bush"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/george...",
-        "snippet": "George W. Bush, America’s 43rd President (2001-2009), was transformed
-        into a wartime President in the aftermath of the airborne terrorist attacks
-        on September 11 ...", "dateLastCrawled": "2018-02-13T02:17:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "President''s
-        Budget", "url": "https:\/\/www.whitehouse.gov\/omb\/budget\/", "urlPingSuffix":
-        "DevEx,5322.1", "displayUrl": "https:\/\/www.whitehouse.gov\/omb\/budget",
-        "snippet": "Addendum to the President’s FY19 Budget to Account for the Bipartisan
-        Budget Act of 2018 An American Budget – President’s Budget FY 2019 Major
-        Savings and ...", "dateLastCrawled": "2018-02-20T09:01:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Navajo Nation
-        - Official Site", "url": "http:\/\/www.navajo-nsn.gov\/", "urlPingSuffix":
-        "DevEx,5336.1", "about": [{"name": "Navajo Nation"}, {"name": "Navajo"}, {"name":
-        "Navajo Nation"}], "displayUrl": "www.navajo-nsn.gov", "snippet": "Dec 22
-        Navajo Nation Council overrides President Russell Begaye’s veto of the Veterans
-        Trust Fund Income Act.", "dateLastCrawled": "2018-02-14T08:30:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "President
-        Gerald R. Ford - whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/gerald-r-ford\/",
-        "urlPingSuffix": "DevEx,5351.1", "about": [{"name": "Gerald Ford"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/gerald...",
-        "snippet": "When Gerald R. Ford took the oath of office on August 9, 1974
-        as our 38th President, he declared, “I assume the Presidency under extraordinary
-        circumstances…This ...", "dateLastCrawled": "2018-02-15T10:50:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "The Executive
-        Branch - White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/the-executive-branch\/",
-        "urlPingSuffix": "DevEx,5366.1", "about": [{"name": "Executive Office of the
-        President of the United States"}, {"name": "White House Chief of Staff"},
-        {"name": "Executive Office of the President of the United States"}, {"name":
-        "White House Chief of Staff"}], "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/the-executive-branch",
-        "snippet": "The power of the Executive Branch is vested in the President
-        of the United States, who also acts as head of state and Commander-in-Chief
-        of the armed forces. The ...", "dateLastCrawled": "2018-02-10T17:11:00.0000000Z"}]},
-        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
-        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
-        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
-        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
-        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
-        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
-        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
-        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
-        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
-        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
-        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
-        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
-        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
-        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
-        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
-        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
-        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
-        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
-        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
-        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
-        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
-    http_version: 
-  recorded_at: Thu, 22 Feb 2018 07:23:56 GMT
-- request:
-    method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=presidente%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Ocp-Apim-Subscription-Key:
-      - "<BING_V6_APP_ID>"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Content-Length:
-      - '3185'
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Thu, 22 Feb 2018 07:22:57 GMT
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      Set-Cookie:
-      - MUID=0A96ED927E7E6BEE3661E60C7F9B6AD9; path=/; expires=Tue, 19-Mar-2019 07:23:57
-        GMT; domain=bingapis.com
-      - MUIDB=0A96ED927E7E6BEE3661E60C7F9B6AD9; path=/; httponly; expires=Tue, 19-Mar-2019
-        07:23:57 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:23:57 GMT;
-        path=/
-      - SRCHUID=V=2&GUID=9395C129A2054DA897731BDF7F7DE60D&dmnchg=1; domain=.bingapis.com;
-        expires=Sat, 22-Feb-2020 07:23:57 GMT; path=/
-      - SRCHUSR=DOB=20180222; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:23:57
-        GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=1D47C40DF51668C10AA3CF93F4F36935; path=/; httponly;
-        domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Tue, 19-Mar-2019 07:23:57 GMT; domain=bingapis.com
-      - _SS=SID=1D47C40DF51668C10AA3CF93F4F36935; domain=.bingapis.com; path=/
-      Bingapis-Traceid:
-      - 32EE61E5874C4CE88E0432EB154CA462
-      X-Msedge-Clientid:
-      - 0A96ED927E7E6BEE3661E60C7F9B6AD9
-      X-Msapi-Userstate:
-      - db9c
-      Bingapis-Market:
-      - en-US
-      X-Msedge-Ref:
-      - 'Ref A: 32EE61E5874C4CE88E0432EB154CA462 Ref B: SG2EDGE0322 Ref C: 2018-02-22T07:23:57Z'
-      Date:
-      - Thu, 22 Feb 2018 07:23:57 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=B43523850A1D493193FE1F81FD92197C&CID=0A96ED927E7E6BEE3661E60C7F9B6AD9&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=B43523850A1D493193FE1F81FD92197C&CID=0A96ED927E7E6BEE3661E60C7F9B6AD9&Type=Event.CPT&DATA=0"},
-        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=presidente+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5488.1", "totalEstimatedMatches": 193000,
-        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "Presidents - White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/",
-        "urlPingSuffix": "DevEx,5087.1", "about": [{"name": "White House"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents", "snippet":
-        "Which President served as a lieutenant colonel in the Spanish-American war?
-        Who was the first Democrat elected after the Civil War? Who introduced Social
-        Security?", "dateLastCrawled": "2018-02-13T09:23:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
-        "name": "Donald J. Trump - whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/people\/donald-j-trump\/",
-        "urlPingSuffix": "DevEx,5101.1", "about": [{"name": "Donald Trump"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/people\/donald-j-trump", "snippet": "Donald
-        J. Trump is the 45th President of the United States. He believes the United
-        States has incredible potential and will go on to exceed even its remarkable
-        ...", "dateLastCrawled": "2018-02-16T13:37:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
-        "name": "Presidents, Vice Presidents, and First Ladies of the ...", "url":
-        "https:\/\/www.usa.gov\/presidents", "urlPingSuffix": "DevEx,5118.1", "displayUrl":
-        "https:\/\/www.usa.gov\/presidents", "snippet": "Find contact information
-        and other facts about Presidents, Vice Presidents, and First Ladies, past
-        and present.", "dateLastCrawled": "2018-02-13T10:39:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Harry S. Truman",
-        "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/harry-s-truman\/",
-        "urlPingSuffix": "DevEx,5132.1", "about": [{"name": "Harry S. Truman"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/harry...",
-        "snippet": "During his few weeks as Vice President, Harry Truman scarcely
-        saw President Franklin Roosevelt, and received no briefing on the development
-        of the atomic bomb or the ...", "dateLastCrawled": "2018-02-16T10:06:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Michael
-        R. Pence", "url": "https:\/\/www.whitehouse.gov\/people\/mike-pence\/", "urlPingSuffix":
-        "DevEx,5146.1", "about": [{"name": "Mike Pence"}], "displayUrl": "https:\/\/www.whitehouse.gov\/people\/mike-pence",
-        "snippet": "Michael R. Pence is the 48th and current Vice President of the
-        United States. Michael R. Pence was born in Columbus, Indiana, on June 7,
-        1959, one of six children ...", "dateLastCrawled": "2018-02-14T00:38:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "FAQs -
-        Board of Governors of the Federal Reserve System", "url": "https:\/\/www.federalreserve.gov\/faqs\/how-is-a-federal-reserve-bank-president-selected.htm",
-        "urlPingSuffix": "DevEx,5162.1", "displayUrl": "https:\/\/www.federalreserve.gov\/faqs\/how-is-a-federal-reserve-bank...",
-        "snippet": "Board of Governors of the Federal Reserve System. The Federal
-        Reserve, the central bank of the United States, provides the nation with a
-        safe, flexible, and stable ...", "dateLastCrawled": "2018-02-14T09:43:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "John Adams
-        - The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/john-adams\/",
-        "urlPingSuffix": "DevEx,5176.1", "about": [{"name": "John Adams"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/john-adams",
-        "snippet": "John Adams, a remarkable political philosopher, served as the
-        second President of the United States (1797-1801), after serving as the first
-        Vice President under ...", "dateLastCrawled": "2018-02-14T13:09:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "U.S. President
-        Barack Obama - whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/barack-obama\/",
-        "urlPingSuffix": "DevEx,5191.1", "about": [{"name": "Barack Obama"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/barack...",
-        "snippet": "Barack Obama served as the 44th President of the United States.
-        His story is the American story — values from the heartland, a middle-class
-        upbringing in a strong ...", "dateLastCrawled": "2018-02-16T20:23:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "John Tyler
-        - The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/john-tyler\/",
-        "urlPingSuffix": "DevEx,5205.1", "about": [{"name": "John Tyler"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/john-tyler",
-        "snippet": "John Tyler became the tenth President of the United States (1841-1845)
-        when President William Henry Harrison died in April 1841. He was the first
-        Vice President to ...", "dateLastCrawled": "2018-02-15T21:24:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "George
-        Washington - The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/george-washington\/",
-        "urlPingSuffix": "DevEx,5220.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.gfdCif_EEgdR7OuJtRKDvgHaEL&pid=Api",
-        "about": [{"name": "George Washington"}], "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/george...",
-        "snippet": "On April 30, 1789, George Washington, standing on the balcony
-        of Federal Hall on Wall Street in New York, took his oath of office as the
-        first President of the United ...", "dateLastCrawled": "2018-02-12T22:12:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Abraham
-        Lincoln - White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/abraham-lincoln\/",
-        "urlPingSuffix": "DevEx,5234.1", "about": [{"name": "Abraham Lincoln"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/...",
-        "snippet": "Abraham Lincoln became the United States’ 16th President in 1861,
-        issuing the Emancipation Proclamation that declared forever free those slaves
-        within the ...", "dateLastCrawled": "2018-02-13T16:54:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "James Monroe
-        - The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/james-monroe\/",
-        "urlPingSuffix": "DevEx,5248.1", "about": [{"name": "James Monroe"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/james...",
-        "snippet": "James Monroe was the fifth President of the United States (1817–1825)
-        and the last President from the Founding Fathers. On New Year’s Day, 1825,
-        at the last of ...", "dateLastCrawled": "2018-02-12T10:42:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Herbert Hoover
-        - White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/herbert-hoover\/",
-        "urlPingSuffix": "DevEx,5262.1", "about": [{"name": "Herbert Hoover"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/...",
-        "snippet": "Before serving as America’s 31st President from 1929 to 1933,
-        Herbert Hoover had achieved international success as a mining engineer and
-        worldwide gratitude as ...", "dateLastCrawled": "2018-02-15T14:22:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "President
-        Andrew Jackson - whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/andrew-jackson\/",
-        "urlPingSuffix": "DevEx,5276.1", "about": [{"name": "Andrew Jackson"}, {"name":
-        "Presidency of Andrew Jackson"}], "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/andrew...",
-        "snippet": "Andrew Jackson was the seventh President of the United States
-        from 1829 to 1837, seeking to act as the direct representative of the common
-        man. More nearly than any ...", "dateLastCrawled": "2018-02-14T20:37:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Office
-        of Senate President - The Florida Senate", "url": "https:\/\/www.flsenate.gov\/Offices\/President",
-        "urlPingSuffix": "DevEx,5293.1", "about": [{"name": "President of the Senate"}],
-        "displayUrl": "https:\/\/www.flsenate.gov\/Offices\/President", "snippet":
-        "The Senate President is a constitutional officer who leads the Florida Senate
-        for a two-year term. The President, who is elected by members of the Senate,
-        manages the ...", "dateLastCrawled": "2018-02-15T04:16:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Lyndon B. Johnson
-        - The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/lyndon-b-johnson\/",
-        "urlPingSuffix": "DevEx,5307.1", "about": [{"name": "Lyndon B. Johnson"}],
-        "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/lyndon...",
-        "snippet": "In the 1960 campaign, Lyndon B. Johnson was elected Vice President
-        as John F. Kennedy’s running mate. On November 22, 1963, when Kennedy was
-        assassinated, Johnson ...", "dateLastCrawled": "2018-02-16T15:08:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Chester
-        A. Arthur - The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/chester-a-arthur\/",
-        "urlPingSuffix": "DevEx,5321.1", "about": [{"name": "Chester A. Arthur"}],
-        "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/...",
-        "snippet": "Dignified, tall, and handsome, with clean-shaven chin and side-whiskers,
-        Chester A. Arthur “looked like a President.” The son of a Baptist preacher
-        who had ...", "dateLastCrawled": "2018-02-10T11:42:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
-        "name": "James Carter - The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/james-carter\/",
-        "urlPingSuffix": "DevEx,5335.1", "about": [{"name": "Jimmy Carter"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/james...",
-        "snippet": "Jimmy Carter served as the 39th President of the United States
-        from 1977 to 1981. He was awarded the 2002 Nobel Peace Prize for work to find
-        peaceful solutions to ...", "dateLastCrawled": "2018-02-13T12:07:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "President
-        John Quincy Adams - whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/john-quincy-adams\/",
-        "urlPingSuffix": "DevEx,5349.1", "about": [{"name": "John Quincy Adams"}],
-        "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/john...",
-        "snippet": "John Quincy Adams, son of John and Abigail Adams, served as the
-        sixth President of the United States from 1825 to 1829. A member of multiple
-        political parties over ...", "dateLastCrawled": "2018-02-10T19:09:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "William
-        J. Clinton - The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/william-j-clinton\/",
-        "urlPingSuffix": "DevEx,5363.1", "about": [{"name": "Bill Clinton"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/...",
-        "snippet": "Bill Clinton is an American politician from Arkansas who served
-        as the 42nd President of the United States (1993-2001). He took office at
-        the end of the Cold War, and ...", "dateLastCrawled": "2018-02-15T16:01:00.0000000Z"}]},
-        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
-        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
-        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
-        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
-        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
-        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
-        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
-        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
-        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
-        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
-        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
-        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
-        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
-        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
-        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
-        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
-        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
-        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
-        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
-        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
-        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
-    http_version: 
-  recorded_at: Thu, 22 Feb 2018 07:23:57 GMT
-- request:
-    method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=hippopotamus%20(site:hippo.whitehouse.gov)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Ocp-Apim-Subscription-Key:
-      - "<BING_V6_APP_ID>"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Content-Length:
-      - '241'
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Thu, 22 Feb 2018 07:22:57 GMT
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      Set-Cookie:
-      - MUID=175A7E6A13C1641E2E2175F4122465ED; path=/; expires=Tue, 19-Mar-2019 07:23:58
-        GMT; domain=bingapis.com
-      - MUIDB=175A7E6A13C1641E2E2175F4122465ED; path=/; httponly; expires=Tue, 19-Mar-2019
-        07:23:58 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:23:57 GMT;
-        path=/
-      - SRCHUID=V=2&GUID=F8C8D0139B9D4DBE970973921E34E9DD&dmnchg=1; domain=.bingapis.com;
-        expires=Sat, 22-Feb-2020 07:23:57 GMT; path=/
-      - SRCHUSR=DOB=20180222; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:23:57
-        GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=29978AB7E5ED6E9311DA8129E4086F7A; path=/; httponly;
-        domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Tue, 19-Mar-2019 07:23:58 GMT; domain=bingapis.com
-      - _SS=SID=29978AB7E5ED6E9311DA8129E4086F7A; domain=.bingapis.com; path=/
-      Bingapis-Traceid:
-      - F193A6C0A839434A84C7AE1573ADEC92
-      X-Msedge-Clientid:
-      - 175A7E6A13C1641E2E2175F4122465ED
-      X-Msapi-Userstate:
-      - c1fe
-      Bingapis-Market:
-      - en-US
-      X-Msedge-Ref:
-      - 'Ref A: F193A6C0A839434A84C7AE1573ADEC92 Ref B: SG2EDGE1109 Ref C: 2018-02-22T07:23:58Z'
-      Date:
-      - Thu, 22 Feb 2018 07:23:57 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=E0657E20A5224E928F3FDF1C6897480C&CID=175A7E6A13C1641E2E2175F4122465ED&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=E0657E20A5224E928F3FDF1C6897480C&CID=175A7E6A13C1641E2E2175F4122465ED&Type=Event.CPT&DATA=0"},
-        "rankingResponse": {}}'
-    http_version: 
-  recorded_at: Thu, 22 Feb 2018 07:23:58 GMT
-- request:
     method: put
-    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/featured_collection/2/image/1519290983/original/small.jpg
+    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/featured_collection/4/image/1535335666/original/small.jpg
     body:
       encoding: ASCII-8BIT
       string: !binary |-
@@ -1107,7 +152,7 @@ http_interactions:
       Accept-Encoding:
       - ''
       User-Agent:
-      - aws-sdk-ruby2/2.10.125 ruby/2.3.5 x86_64-darwin15 resources
+      - aws-sdk-ruby2/2.10.125 ruby/2.3.6 x86_64-linux resources
       X-Amz-Acl:
       - public-read
       Expect:
@@ -1115,13 +160,15 @@ http_interactions:
       Content-Md5:
       - qYuchjgGDVZ2G3Liz6UNWw==
       X-Amz-Date:
-      - 20180222T091623Z
+      - 20180827T020747Z
+      Host:
+      - "<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com"
       X-Amz-Content-Sha256:
       - c6b964abe4a519363fe9627c6b04df3dae881a799f1315ff646eec2612663689
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20180222/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
+      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20180827/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
         SignedHeaders=content-md5;content-type;host;x-amz-acl;x-amz-content-sha256;x-amz-date,
-        Signature=fb2751d093b61ce5bf04e910fb5a45a1a7ddcd686868390adf25c5b168b0d1c9
+        Signature=0d876e6f602821dd98b702520deaec9cd17c9709b9e99394a39b315bf6685833
       Content-Length:
       - '6264'
       Accept:
@@ -1132,11 +179,11 @@ http_interactions:
       message: OK
     headers:
       X-Amz-Id-2:
-      - HUFoVWqdn4BwI+1ZD4LwcIlICPQoTrSolptrM+jScukTJGTKB+7HQtQVMjxCfKKYdQRCHZGodl4=
+      - E2T22PJSNMaxPSp2BeQRxlI6oEID6vtYjmWGWBTA8pP3vxY2GygTjFgKwutjKoGf2XAtNNj17e4=
       X-Amz-Request-Id:
-      - F6DA9DE68C506F93
+      - 8FDE007CB4A54C86
       Date:
-      - Thu, 22 Feb 2018 09:16:27 GMT
+      - Mon, 27 Aug 2018 02:07:49 GMT
       Etag:
       - '"a98b9c8638060d56761b72e2cfa50d5b"'
       Content-Length:
@@ -1147,10 +194,10 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Thu, 22 Feb 2018 09:16:27 GMT
+  recorded_at: Mon, 27 Aug 2018 02:07:48 GMT
 - request:
     method: put
-    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/featured_collection/2/image/1519290983/medium/small.jpg
+    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/featured_collection/4/image/1535335666/medium/small.jpg
     body:
       encoding: ASCII-8BIT
       string: !binary |-
@@ -1177,185 +224,187 @@ http_interactions:
         CwkICAoIBwcKDQoKCwwMDAwHCQ4PDQwOCwwMDP/bAEMBAgICAwMDBgMDBgwI
         BwgMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwM
         DAwMDAwMDP/AABEIAF0AfQMBEQACEQEDEQH/xAAeAAABBAIDAQAAAAAAAAAA
-        AAAHAwQICQUGAQIKAP/EAFMQAAEDAgQDAwUHDQwLAAAAAAECAwQFBgAHCBES
-        ITEJE1EUQWFxgQoVInORk9EjJTI1QkVSYnJ0g7KzFhckJjM0dXaSobG0GBkp
-        NjhDU1VjgsH/xAAcAQABBQEBAQAAAAAAAAAAAAAFAQIDBAYHAAj/xAA+EQAB
-        AwMCAwUFBgMHBQAAAAABAAIDBAURITEGEkEHEyJRcRRSYYGxIyQyM5GhFULB
-        NHKSstHw8RYlNVPh/9oADAMBAAIRAxEAPwC7SxbDokqzaU67SoLq3YyCtamt
-        1E4u1FRJzu8R3VBjWcizacvqDt9p4G3xeI/aJPeKk5Yyu7eXtCJ+08Hb4rDR
-        NIf5k4RRpROXVCSQPeeCo/F88J3svvaJRFG3ouHcvaE2PhUmnJ3PPdAG+Pe0
-        THOXnRPbFF00QUzo1iZCaerwfoN6Vmh0GstoSvyaTHWFKSefECEkEerFaW5B
-        mC962Fn7Ob9dqc1lupjIw6ZGP03UEc4O1XyxzS13WfTW5kCkZPWa6qfKqQYI
-        TVpSQCgbAb8AIAG4674GS3pz6gDvDyY/ddztHYpV0PDFQ80/eV8wAaz/ANbe
-        uvmrBdPmd2W2qinyKjZtMEymx+Xlj1PUwy6fxSrYq+TBqGvMoy15Xz3xHwdW
-        2GQRXANa49AQSPXCIL2XFvq5rotNJ+JxaEz/AHissQxN15bW9vv7xU75kYcJ
-        3+8U3lj8kivL2gNdKLT0/ohyw8Tv94ppZH5JJyxqKpRPvRTyPi+mH+0P94qJ
-        zGJs9YlDO/1ogD9EMKKmT3imcjMps7YlEHWkwfmRiVtS/wB4ppYzyTV2xKKB
-        9qYPzQwvtL/fKYYwhtnxbVOp0umCPAisBbbhVwtgb8xglb53kO8SglYNEfbI
-        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
+        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
     headers:
       Content-Type:
       - image/jpeg
       Accept-Encoding:
       - ''
       User-Agent:
-      - aws-sdk-ruby2/2.10.125 ruby/2.3.5 x86_64-darwin15 resources
+      - aws-sdk-ruby2/2.10.125 ruby/2.3.6 x86_64-linux resources
       X-Amz-Acl:
       - public-read
       Expect:
       - 100-continue
       Content-Md5:
-      - xTJF3xQbCcytgwaWw5SOMA==
+      - BLXPnQ91Bwu+NWrIoUHYlw==
       X-Amz-Date:
-      - 20180222T091627Z
+      - 20180827T020748Z
+      Host:
+      - "<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com"
       X-Amz-Content-Sha256:
-      - 29963645c12f1a310c7442dccc0c70e60346bd88f0df76b6fc4baecd2b9ce373
+      - dffed7941a9c5598deee8329c4d6e0fc6366d978c44f0f7f41bf85ae7c160f09
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20180222/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
+      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20180827/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
         SignedHeaders=content-md5;content-type;host;x-amz-acl;x-amz-content-sha256;x-amz-date,
-        Signature=201f06ffe0885b331670c4755b547487537ec3b0d692deb8350bc61199ce97a5
+        Signature=07c7cf81888760511e41dfd747f6e57a063abfc3517befb27c9062669f254ce5
       Content-Length:
-      - '8055'
+      - '8041'
       Accept:
       - "*/*"
   response:
@@ -1364,13 +413,13 @@ http_interactions:
       message: OK
     headers:
       X-Amz-Id-2:
-      - oEl6NTTaKkaWsCVKms+8TDwTF5JBkG9h5TVS3tAGTXSn2frD7p5At4zXqTxQJ+eLLYCs5OMFSOM=
+      - GKdBQ8Bt6pWfd1dD6SIar2NSv0oU+IfLBLimBJKF2VWuWYF/4VU7q/dK9bT32kMQ4CeuSbfvmaM=
       X-Amz-Request-Id:
-      - 2635DB7DACE1AFC6
+      - C7CEDE181D2DCA88
       Date:
-      - Thu, 22 Feb 2018 09:16:29 GMT
+      - Mon, 27 Aug 2018 02:07:50 GMT
       Etag:
-      - '"c53245df141b09ccad830696c3948e30"'
+      - '"04b5cf9d0f75070bbe356ac8a141d897"'
       Content-Length:
       - '0'
       Server:
@@ -1379,10 +428,10 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Thu, 22 Feb 2018 09:16:29 GMT
+  recorded_at: Mon, 27 Aug 2018 02:07:49 GMT
 - request:
     method: put
-    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/featured_collection/2/image/1519290983/small/small.jpg
+    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/featured_collection/4/image/1535335666/small/small.jpg
     body:
       encoding: ASCII-8BIT
       string: !binary |-
@@ -1409,151 +458,153 @@ http_interactions:
         CwkICAoIBwcKDQoKCwwMDAwHCQ4PDQwOCwwMDP/bAEMBAgICAwMDBgMDBgwI
         BwgMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwM
         DAwMDAwMDP/AABEIAEoAZAMBEQACEQEDEQH/xAAdAAABBAMBAQAAAAAAAAAA
-        AAAIBAUHCQIDBgAB/8QASxAAAQMCBAIFBwYKBwkAAAAAAQIDBQQGAAcIERIh
+        AAAIBAUHCQIDBgAB/8QASxAAAAUCBQAFBwYKBwkAAAAAAQIDBAUGEQAHCBIh
         CRMxQWEKFCJRcZTRFiMldIGyFRgmMjQ1coKhsyQ2VFVikcFSc3V2hKKjtNL/
-        xAAcAQACAwEBAQEAAAAAAAAAAAAFBgIDBAEHAAj/xAA+EQABAwIEAwQIBAQF
-        BQAAAAABAAIDBBEFEiExBkFREyJxkQcUM2FygbHBIzJS0Rc0QqEVFiQ1YmOC
-        krLh/9oADAMBAAIRAxEAPwC76zLNiX7Vi1ri45xa6NpSiqmQSTwDck7bnfGy
-        aSXO7U7nmsLGtyjRPCbJh19kRGk+vzZHwxUZpP1HzVgDHclsVZMK02VrioxK
-        Ujck0yNvaeW2Ids4/leVLs2HvWXA31nzkxlksIuG7ct4VxSggN1dfStrJ7Nu
-        Eq3/AIYIQYfiM/sWPcLX0B/ZVmemYbPIB8Qh71idKvldo0vZdvXJl9cFTV1d
-        MKyNraWNpnI+UbUndKmnisbjcjfluPVgDV4q6mdlkzXXsHBnodruJaVtdRVE
-        WQmzgScw8QB5a6qAui96QWXz5v6+n6vKm4Lzua7ZhD3XUFPToh4CgQgIZYU8
-        6QE8PEsnYFSid9jvjLQYnM95vmJJ67BPvpS9FmGYXSUzGVMUEUTLWcC6WSQm
-        5dZo1voB0VlqbKiXKdCnoeLSspBUjzVtXCduzfbng+2R/U+a/McjWgmwutDl
-        hwnF+pYn3Rv4YsEz+p81Xkb+lJnLNhmD6MPGJ9lKj4YsEz+p81Asb0Sd2z4k
-        j9VRp/6VHwxLt5P1HzVJY3okj9nxG5+io73ZHwxNtRJ+o+ahkbbZI37OiRuf
-        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
-        ZxsgY0N0Col3X//Z
+        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
+        AAE6pjDa4+scaoWNDdAqJd1//9k=
     headers:
       Content-Type:
       - image/jpeg
       Accept-Encoding:
       - ''
       User-Agent:
-      - aws-sdk-ruby2/2.10.125 ruby/2.3.5 x86_64-darwin15 resources
+      - aws-sdk-ruby2/2.10.125 ruby/2.3.6 x86_64-linux resources
       X-Amz-Acl:
       - public-read
       Expect:
       - 100-continue
       Content-Md5:
-      - NVT8llqKvpO5A2hkvqbcqw==
+      - Cb/gmUtEbOMTYfhiGmWxqQ==
       X-Amz-Date:
-      - 20180222T091629Z
+      - 20180827T020749Z
+      Host:
+      - "<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com"
       X-Amz-Content-Sha256:
-      - f68f0f63c6c6e2d466a6e2118771d9e2be1774c96cc5413972fe9d014129cfa2
+      - f7c8f230f1f8f589ad4bd8c0786b9004d44b1169b9308cdfa9862d9c0dd11262
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20180222/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
+      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20180827/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
         SignedHeaders=content-md5;content-type;host;x-amz-acl;x-amz-content-sha256;x-amz-date,
-        Signature=56c1b0d2b611598ef94ef88c2f7ca842506e3b900aa7663f62a1e9cbfd3e8a89
+        Signature=5dfece6f4241f5ccd858fc00796e28cc47f38ffa28136b67971f9e9f2243cabb
       Content-Length:
-      - '6492'
+      - '6500'
       Accept:
       - "*/*"
   response:
@@ -1562,13 +613,13 @@ http_interactions:
       message: OK
     headers:
       X-Amz-Id-2:
-      - PFn8UmJy5snxmN+1gG16BBb+pPv6JzWQp9O3Fg8LqYsf9DrCCLel8p1wkbPSYiPbXEVXNUr3ds8=
+      - HNbv72tl9tfMUOBPvptdKxzAzcSJOypWxPjf2QZTSGqm+BpHGAD1t0folq2CaiRJ01NTfKPcxfs=
       X-Amz-Request-Id:
-      - 3A2FE511DB15B89E
+      - 42AD1CEAF92B66B7
       Date:
-      - Thu, 22 Feb 2018 09:16:31 GMT
+      - Mon, 27 Aug 2018 02:07:50 GMT
       Etag:
-      - '"3554fc965a8abe93b9036864bea6dcab"'
+      - '"09bfe0994b446ce31361f8621a65b1a9"'
       Content-Length:
       - '0'
       Server:
@@ -1577,5 +628,950 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Thu, 22 Feb 2018 09:16:31 GMT
+  recorded_at: Mon, 27 Aug 2018 02:07:49 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=president%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '3678'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 27 Aug 2018 02:06:54 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=02A620F2E367678D3DC72CAAE2686680; path=/; expires=Sat, 21-Sep-2019 02:07:54
+        GMT; domain=bingapis.com
+      - MUIDB=02A620F2E367678D3DC72CAAE2686680; path=/; httponly; expires=Sat, 21-Sep-2019
+        02:07:54 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 27-Aug-2020 02:07:54 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=82345427A781454FA5E08707E75F066D&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 27-Aug-2020 02:07:54 GMT; path=/
+      - SRCHUSR=DOB=20180827; domain=.bingapis.com; expires=Thu, 27-Aug-2020 02:07:54
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=020F7DB4AA136CC1096D71ECAB1C6DCF; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 21-Sep-2019 02:07:54 GMT; domain=bingapis.com
+      - _SS=SID=020F7DB4AA136CC1096D71ECAB1C6DCF; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - F25013E15350477E9B66AA32719284D9
+      X-Msedge-Clientid:
+      - 02A620F2E367678D3DC72CAAE2686680
+      X-Msapi-Userstate:
+      - 65d4
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: F25013E15350477E9B66AA32719284D9 Ref B: BAYEDGE0515 Ref C: 2018-08-27T02:07:54Z'
+      Date:
+      - Mon, 27 Aug 2018 02:07:54 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=7CD163879BCB49DBB165BD97940F27E2&CID=02A620F2E367678D3DC72CAAE2686680&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=7CD163879BCB49DBB165BD97940F27E2&CID=02A620F2E367678D3DC72CAAE2686680&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=president+(site%3agov+OR+site%3amil)",
+        "webSearchUrlPingSuffix": "DevEx,5432.1", "totalEstimatedMatches": 24300000,
+        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
+        "Presidents - The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/",
+        "urlPingSuffix": "DevEx,5058.1", "about": [{"name": "White House"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents", "snippet":
+        "Which President served as a lieutenant colonel in the Spanish-American
+        war? Who was the first Democrat elected after the Civil War? Who introduced
+        Social S", "dateLastCrawled": "2018-08-17T15:52:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
+        "name": "Presidents, Vice Presidents, and First Ladies of the ...", "url":
+        "https:\/\/www.usa.gov\/presidents", "urlPingSuffix": "DevEx,5073.1", "displayUrl":
+        "https:\/\/www.usa.gov\/presidents", "snippet": "Find contact information
+        and other facts about Presidents, Vice Presidents, and First Ladies, past
+        and present.", "dateLastCrawled": "2018-08-18T16:41:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "President Signs
+        Fiscal 2019 Defense Authorization Act at ...", "url": "https:\/\/www.defense.gov\/News\/Article\/Article\/1601016\/president-signs-fiscal-2019-defense-authorization-act-at-fort-drum-ceremony\/",
+        "urlPingSuffix": "DevEx,5088.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=ON.11BE224ACCF0CA7C8CD8B2759937E4C8&pid=5.1&w=80&h=80&c=8",
+        "displayUrl": "https:\/\/www.defense.gov\/News\/Article\/Article\/1601016\/president...",
+        "snippet": "President Donald J. Trump today signed the $717 billion Fiscal
+        2019 National Defense Authorization Act at a ceremony at Fort Drum, New York.
+        The act – named for Arizona Sen. John S. McCain – …", "dateLastCrawled": "2018-08-20T09:20:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "The Executive
+        Branch", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/the-executive-branch\/",
+        "urlPingSuffix": "DevEx,5101.1", "about": [{"name": "Executive Office of the
+        President of the United States"}], "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/the-executive-branch",
+        "snippet": "The power of the Executive Branch is vested in the President
+        of the United States, who also acts as head of state and Commander-in-Chief
+        of the armed force", "dateLastCrawled": "2018-07-30T20:31:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Presidential
+        Election Process | USAGov", "url": "https:\/\/www.usa.gov\/election", "urlPingSuffix":
+        "DevEx,5116.1", "about": [{"name": "United States presidential election"},
+        {"name": "2016 United States presidential election"}, {"name": "2016 United
+        States presidential election"}], "displayUrl": "https:\/\/www.usa.gov\/election",
+        "snippet": "Learn about the Presidential election process, including the
+        Electoral College, caucuses and primaries, and the national conventions.",
+        "dateLastCrawled": "2018-08-19T22:24:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
+        "name": "Contact the White House", "url": "https:\/\/www.whitehouse.gov\/contact\/",
+        "urlPingSuffix": "DevEx,5129.1", "about": [{"name": "White House"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov\/contact", "snippet": "Keep me posted with
+        regular updates from the White House. required ...", "dateLastCrawled":
+        "2018-08-21T14:57:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "name": "President Donald J. Trump’s Supreme Court List", "url": "https:\/\/www.whitehouse.gov\/briefings-statements\/president-donald-j-trumps-supreme-court-list\/",
+        "urlPingSuffix": "DevEx,5143.1", "displayUrl": "https:\/\/www.whitehouse.gov\/briefings-statements\/president-donald-j...",
+        "snippet": "Amy Coney Barrett of Indiana, U.S. Court of Appeals for the Seventh
+        Circuit Keith Blackwell of Georgia, Supreme Court of Georgia Charles Canady
+        of Florida,", "dateLastCrawled": "2018-08-18T18:46:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "name": "The White House - Vice President Pence: ''The Evidence Is ...",
+        "url": "https:\/\/www.whitehouse.gov\/", "urlPingSuffix": "DevEx,5157.1",
+        "about": [{"name": "whitehouse.gov"}, {"name": "White House"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov", "snippet": "Search WhiteHouse.gov. ...
+        selected the site for the White House in 1791. Every president since John
+        Adams has occupied the White House, ...", "dateLastCrawled": "2018-08-20T05:21:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Write
+        or Call the White House", "url": "https:\/\/www.whitehouse.gov\/get-involved\/write-or-call\/",
+        "urlPingSuffix": "DevEx,5171.1", "about": [{"name": "White House"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov\/get-involved\/write-or-call", "snippet":
+        "Write a letter to the President Here are a few simple things you can do
+        to make sure your message gets to the White House as quickly as possible.
+        If possib", "dateLastCrawled": "2018-08-19T12:13:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
+        "name": "Articles - The White House", "url": "https:\/\/www.whitehouse.gov\/articles\/",
+        "urlPingSuffix": "DevEx,5185.1", "about": [{"name": "White House"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov\/articles", "snippet": "Chris Smolenak is
+        tapping into the “do-it-yourself” trend – and creating a small business herself.
+        She’s opened a storefront in Holland, Pa., where customers stain and stencil
+        their own handcrafted wooden signs and other decorative items.", "dateLastCrawled":
+        "2018-08-20T22:33:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
+        "name": "President - Ky. Council on Postsecondary Education", "url": "http:\/\/cpe.ky.gov\/aboutus\/president.html",
+        "urlPingSuffix": "DevEx,5200.1", "displayUrl": "cpe.ky.gov\/aboutus\/president.html",
+        "snippet": "Read about Council President Robert L. (Bob) King.", "dateLastCrawled":
+        "2018-08-21T04:40:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
+        "name": "Donald J. Trump", "url": "https:\/\/www.whitehouse.gov\/people\/donald-j-trump\/",
+        "urlPingSuffix": "DevEx,5214.1", "about": [{"name": "Donald Trump"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov\/people\/donald-j-trump", "snippet": "Donald
+        J. Trump is the 45th President of the United States. He believes the United
+        States has incredible potential and will go on to exceed anything that it
+        has achieved in the past.", "dateLastCrawled": "2018-07-30T06:06:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Press
+        Conference by President Trump", "url": "https:\/\/www.whitehouse.gov\/briefings-statements\/press-conference-president-trump\/",
+        "urlPingSuffix": "DevEx,5226.1", "displayUrl": "https:\/\/www.whitehouse.gov\/...\/press-conference-president-trump",
+        "snippet": "Capella Hotel Singapore 4:15 P.M. SGT THE PRESIDENT: Well, thank
+        you very much, everybody. We appreciate it. We''re getting ready to go back.
+        We had a t", "dateLastCrawled": "2018-08-17T13:26:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        "name": "Michael Picker, President", "url": "http:\/\/www.cpuc.ca.gov\/picker\/",
+        "urlPingSuffix": "DevEx,5244.1", "about": [{"name": "Michael Picker"}], "displayUrl":
+        "www.cpuc.ca.gov\/picker", "snippet": "Michael Picker was named President
+        of the California Public Utilities Commission (CPUC) on December 23, 2014,
+        by Governor Edmund G. Brown Jr., who first appointed President Picker as
+        a Commissioner on January 29, 2014.", "dateLastCrawled": "2018-08-20T14:25:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Thomas
+        Jefferson - The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/thomas-jefferson\/",
+        "urlPingSuffix": "DevEx,5258.1", "about": [{"name": "Thomas Jefferson"}],
+        "displayUrl": "https:\/\/www.whitehouse.gov\/...\/presidents\/thomas-jefferson",
+        "snippet": "Thomas Jefferson, a spokesman for democracy, was an American
+        Founding Father, the principal author of the Declaration of Independence (1776),
+        and the third President of the United States (1801–1809). In the thick of
+        party conflict in 1800, Thomas Jefferson wrote in a private letter, “I have
+        ...", "dateLastCrawled": "2018-08-18T13:26:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "Pardon Information and Instructions | PARDON | Department ...",
+        "url": "https:\/\/www.justice.gov\/pardon\/pardon-information-and-instructions",
+        "urlPingSuffix": "DevEx,5274.1", "displayUrl": "https:\/\/www.justice.gov\/pardon\/pardon-information-and-instructions",
+        "snippet": "Pardon Information and Instructions. ... the President''s
+        pardon power extends to convictions adjudicated in the Superior Court of the
+        District of Columbia and ...", "dateLastCrawled": "2018-08-05T14:03:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "The Administration",
+        "url": "https:\/\/www.whitehouse.gov\/the-trump-administration\/", "urlPingSuffix":
+        "DevEx,5288.1", "about": [{"name": "Executive Office of the President of the
+        United States"}], "displayUrl": "https:\/\/www.whitehouse.gov\/the-trump-administration",
+        "snippet": "President Donald J. Trump promised that he would bring the best
+        and brightest from across the country—not just inside Washington—to build
+        his Administratio", "dateLastCrawled": "2018-07-27T02:39:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Barack Obama
+        - The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/barack-obama\/",
+        "urlPingSuffix": "DevEx,5303.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.aG0TZL5mYu7l8KPSj0gG8wHaEL&pid=Api",
+        "about": [{"name": "Barack Obama"}], "displayUrl": "https:\/\/www.whitehouse.gov\/...\/presidents\/barack-obama",
+        "snippet": "Barack Obama served as the 44th President of the United States.
+        His story is the American story -- values from the heartland, a middle-class
+        upbringing in", "dateLastCrawled": "2018-08-18T11:03:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Chronological
+        List of Presidents, First Ladies, and Vice ...", "url": "https:\/\/www.loc.gov\/rr\/print\/list\/057_chron.html",
+        "urlPingSuffix": "DevEx,5317.1", "displayUrl": "https:\/\/www.loc.gov\/rr\/print\/list\/057_chron.html",
+        "snippet": "Illustrations from the holdings of the Library of Congress Prints
+        and Photographs Division on the subject of U.S. Presidents, First Ladies,
+        and Vice Presidents", "dateLastCrawled": "2018-07-03T17:39:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Theodore
+        Roosevelt - The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/theodore-roosevelt\/",
+        "urlPingSuffix": "DevEx,5331.1", "about": [{"name": "Theodore Roosevelt"}],
+        "displayUrl": "https:\/\/www.whitehouse.gov\/...\/presidents\/theodore-roosevelt",
+        "snippet": "With the assassination of President William McKinley, Theodore
+        Roosevelt, not quite 43, became the 26th and youngest President in the
+        Nation''s history (190", "dateLastCrawled": "2018-08-19T20:06:00.0000000Z"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 27 Aug 2018 02:07:54 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=20&q=president%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '3885'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 27 Aug 2018 02:06:55 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=17341F3B388161EE28A01363398E601B; path=/; expires=Sat, 21-Sep-2019 02:07:55
+        GMT; domain=bingapis.com
+      - MUIDB=17341F3B388161EE28A01363398E601B; path=/; httponly; expires=Sat, 21-Sep-2019
+        02:07:55 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 27-Aug-2020 02:07:55 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=656976AAD8AB4B078153E738DFEB4BF0&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 27-Aug-2020 02:07:55 GMT; path=/
+      - SRCHUSR=DOB=20180827; domain=.bingapis.com; expires=Thu, 27-Aug-2020 02:07:55
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=09DB01A5ED46683A08BA0DFDEC49690C; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 21-Sep-2019 02:07:55 GMT; domain=bingapis.com
+      - _SS=SID=09DB01A5ED46683A08BA0DFDEC49690C; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - 69F0A8FB6F18496191F7DF35E155C803
+      X-Msedge-Clientid:
+      - 17341F3B388161EE28A01363398E601B
+      X-Msapi-Userstate:
+      - 071e
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: 69F0A8FB6F18496191F7DF35E155C803 Ref B: BAYEDGE0517 Ref C: 2018-08-27T02:07:55Z'
+      Date:
+      - Mon, 27 Aug 2018 02:07:55 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=F55E3A39B8484BF1B840D4FFE0939EB2&CID=17341F3B388161EE28A01363398E601B&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=F55E3A39B8484BF1B840D4FFE0939EB2&CID=17341F3B388161EE28A01363398E601B&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=president+(site%3agov+OR+site%3amil)",
+        "webSearchUrlPingSuffix": "DevEx,5413.1", "totalEstimatedMatches": 24400000,
+        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
+        "Theodore Roosevelt - The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/theodore-roosevelt\/",
+        "urlPingSuffix": "DevEx,5059.1", "about": [{"name": "Theodore Roosevelt"}],
+        "displayUrl": "https:\/\/www.whitehouse.gov\/...\/presidents\/theodore-roosevelt",
+        "snippet": "With the assassination of President William McKinley, Theodore
+        Roosevelt, not quite 43, became the 26th and youngest President in the
+        Nation''s history (190", "dateLastCrawled": "2018-08-19T20:06:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "The President''s
+        Volunteer Service Award", "url": "https:\/\/www.presidentialserviceawards.gov\/",
+        "urlPingSuffix": "DevEx,5072.1", "about": [{"name": "President''s Volunteer
+        Service Award"}, {"name": "President''s Volunteer Service Award"}], "displayUrl":
+        "https:\/\/www.presidentialserviceawards.gov", "snippet": "The President’s
+        Volunteer Service Award (PVSA) is the premier volunteer awards program, encouraging
+        citizens to live a life of service through presidential gratitude and national
+        recognition.", "dateLastCrawled": "2018-08-20T21:00:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Economic Report
+        of the President February 2018", "url": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2018\/02\/ERP_2018_Final-FINAL.pdf",
+        "urlPingSuffix": "DevEx,5082.1", "displayUrl": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2018\/02\/ERP_2018...",
+        "snippet": "4 | Economic Report of the President Policies for a Pro-Growth
+        Agenda The primary components driving my Administration’s pro-growth policy",
+        "dateLastCrawled": "2018-08-25T17:15:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "Remarks by President Trump and President Putin of the ...", "url":
+        "https:\/\/www.whitehouse.gov\/briefings-statements\/remarks-president-trump-president-putin-russian-federation-joint-press-conference\/",
+        "urlPingSuffix": "DevEx,5093.1", "displayUrl": "https:\/\/www.whitehouse.gov\/briefings-statements\/remarks-president...",
+        "snippet": "Presidential Palace Helsinki, Finland 5:10 P.M. EEST PRESIDENT
+        PUTIN: (As interpreted.) Distinguished Mr. President, ladies and gentlemen:
+        Negotiations w", "dateLastCrawled": "2018-08-09T20:54:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "AN AMERICAN BUDGET",
+        "url": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2018\/02\/budget-fy2019.pdf",
+        "urlPingSuffix": "DevEx,5105.1", "displayUrl": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2018\/02\/budget-fy...",
+        "snippet": "2019 contains the Budget Message of the President, information
+        on the President’s priorities, and summary tables. Analytical Perspectives,
+        Budget of the United States", "dateLastCrawled": "2018-08-21T11:37:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "The President''s
+        Roles and Responsibilities: Understanding ...", "url": "https:\/\/edsitement.neh.gov\/lesson-plan\/presidents-roles-and-responsibilities-understanding-presidents-job",
+        "urlPingSuffix": "DevEx,5118.1", "displayUrl": "https:\/\/edsitement.neh.gov\/lesson-plan\/presidents-roles-and...",
+        "snippet": "This lesson introduces students to the roles and responsibilities
+        of the president of the United States and helps them understand how the
+        president and the public communicate with each other by allowing them to
+        express their views in a letter to the president.", "dateLastCrawled": "2018-08-20T01:37:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Get Involved
+        - The White House", "url": "https:\/\/www.whitehouse.gov\/get-involved\/",
+        "urlPingSuffix": "DevEx,5132.1", "displayUrl": "https:\/\/www.whitehouse.gov\/get-involved",
+        "snippet": "Internships & Fellowships The White House Internship Program’s
+        mission is to make the “People’s House” accessible to future leaders from
+        around the nat", "dateLastCrawled": "2018-08-14T17:49:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "A Budget Blueprint
+        to Make America Great Again", "url": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/omb\/budget\/fy2018\/2018_blueprint.pdf",
+        "urlPingSuffix": "DevEx,5143.1", "displayUrl": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/omb\/budget\/...",
+        "snippet": "President’s Message ... A budget that puts America first must
+        make the safety of our people its number one priority ...", "dateLastCrawled":
+        "2018-08-18T03:55:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
+        "name": "President of the United States - George W. Bush", "url": "https:\/\/georgewbush-whitehouse.archives.gov\/president\/",
+        "urlPingSuffix": "DevEx,5155.1", "displayUrl": "https:\/\/georgewbush-whitehouse.archives.gov\/president",
+        "snippet": "The Oval Office contains speeches and statements of President
+        Bush, a description of policy priorities, biographies, and photo essays.",
+        "dateLastCrawled": "2018-08-14T03:14:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
+        "name": "Michael R. Pence - The White House", "url": "https:\/\/www.whitehouse.gov\/people\/mike-pence\/",
+        "urlPingSuffix": "DevEx,5169.1", "about": [{"name": "Office of the Vice President
+        of the United States"}], "displayUrl": "https:\/\/www.whitehouse.gov\/people\/mike-pence",
+        "snippet": "Michael R. Pence is the 48th and current Vice President of
+        the United States. Vice President Mike Pence remains grateful for the grace
+        of God, the love and support of his family, and the blessings of liberty that
+        are every American’s birthright.", "dateLastCrawled": "2018-08-17T04:39:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Remarks
+        by Vice President Pence, President Morales of the ...", "url": "https:\/\/www.whitehouse.gov\/briefings-statements\/remarks-vice-president-pence-president-morales-republic-guatemala-president-sanchez-ceren-republic-el-salvador-president-hernandez-republic-honduras-joint-pr\/",
+        "urlPingSuffix": "DevEx,5181.1", "displayUrl": "https:\/\/www.whitehouse.gov\/briefings-statements\/remarks-vice...",
+        "snippet": "National Palace of Culture Guatemala City, Guatemala 6:02 P.M.
+        CST PRESIDENT MORALES: (As interpreted.) Welcome everyone. We want to thank
+        you -- sincer", "dateLastCrawled": "2018-08-18T23:01:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "George Washington
+        - The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/george-washington\/",
+        "urlPingSuffix": "DevEx,5196.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.gfdCif_EEgdR7OuJtRKDvgHaEL&pid=Api",
+        "about": [{"name": "George Washington"}], "displayUrl": "https:\/\/www.whitehouse.gov\/...\/presidents\/george-washington",
+        "snippet": "On April 30, 1789, George Washington, standing on the balcony
+        of Federal Hall on Wall Street in New York, took his oath of office as the
+        first President of", "dateLastCrawled": "2018-07-30T15:19:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Franklin
+        D. Roosevelt - The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/franklin-d-roosevelt\/",
+        "urlPingSuffix": "DevEx,5210.1", "about": [{"name": "Franklin D. Roosevelt"},
+        {"name": "Franklin D. Roosevelt"}], "displayUrl": "https:\/\/www.whitehouse.gov\/...\/presidents\/franklin-d-roosevelt",
+        "snippet": "Assuming the Presidency at the depth of the Great Depression as
+        our 32nd President (1933-1945), Franklin D. Roosevelt helped the American
+        people regain fai", "dateLastCrawled": "2018-08-15T21:03:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Taxonomy term
+        | Homeland Security", "url": "https:\/\/www.dhs.gov\/keywords\/president",
+        "urlPingSuffix": "DevEx,5227.1", "displayUrl": "https:\/\/www.dhs.gov\/keywords\/president",
+        "snippet": "Today, the Department of Homeland Security hosted a hurricane
+        briefing for President Donald J. Trump, Vice President Mike Pence, cabinet
+        officials, and hurricane state governors.", "dateLastCrawled": "2018-08-12T05:11:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "George
+        W. Bush - The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/george-w-bush\/",
+        "urlPingSuffix": "DevEx,5241.1", "about": [{"name": "George W. Bush"}, {"name":
+        "George H. W. Bush"}], "displayUrl": "https:\/\/www.whitehouse.gov\/...\/presidents\/george-w-bush",
+        "snippet": "George W. Bush, America''s 43rd President (2001-2009), was
+        transformed into a wartime President in the aftermath of the airborne terrorist
+        attacks on Septem", "dateLastCrawled": "2018-08-19T04:26:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "The White House
+        | whitehouse.gov", "url": "https:\/\/obamawhitehouse.archives.gov\/", "urlPingSuffix":
+        "DevEx,5255.1", "about": [{"name": "whitehouse.gov"}, {"name": "Barack Obama"},
+        {"name": "Barack Obama"}, {"name": "White House"}], "displayUrl": "https:\/\/obamawhitehouse.archives.gov",
+        "snippet": "See the President''s daily schedule, explore behind-the-scenes
+        photos from inside the White House, and find out all the ways you can engage
+        with the most interactive administration in our country''s history.", "dateLastCrawled":
+        "2018-08-20T15:42:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
+        "name": "Remarks by President Trump at Press Conference After NATO ...",
+        "url": "https:\/\/www.whitehouse.gov\/briefings-statements\/remarks-president-trump-press-conference-nato-summit-brussels-belgium\/",
+        "urlPingSuffix": "DevEx,5267.1", "displayUrl": "https:\/\/www.whitehouse.gov\/briefings-statements\/remarks-president...",
+        "snippet": "NATO Headquarters Brussels, Belgium 12:21 P.M. CEST THE PRESIDENT:
+        Well, thank you very much, everybody. Appreciate it. We’ve had a very amazing
+        two-day", "dateLastCrawled": "2018-08-20T05:53:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
+        "name": "President''s Park (White House) (U.S. National Park Service)",
+        "url": "https:\/\/www.nps.gov\/whho\/index.htm", "urlPingSuffix": "DevEx,5281.1",
+        "about": [{"name": "President''s Park (White House)"}], "displayUrl": "https:\/\/www.nps.gov\/whho",
+        "snippet": "Every president except George Washington has called the White
+        House and its surrounding grounds his place of work, rest, and solitude. Recognizable
+        around the world, the White House stands as a symbol of democracy. The White
+        House and its park grounds serve not only as the seat of the executive ...",
+        "dateLastCrawled": "2018-08-06T23:55:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
+        "name": "Presidents, Vice Presidents, & Coinciding Sessions of ...", "url":
+        "http:\/\/history.house.gov\/Institution\/Presidents-Coinciding\/Presidents-Coinciding\/",
+        "urlPingSuffix": "DevEx,5295.1", "displayUrl": "history.house.gov\/Institution\/Presidents-Coinciding\/Presidents...",
+        "snippet": "From 1789 until 1933, the terms of President and Vice President
+        and the term of the Congress coincided, beginning on March 4 and ending on
+        March 3.", "dateLastCrawled": "2018-08-20T23:18:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
+        "name": "President Trump''s Cabinet - The White House", "url": "https:\/\/www.whitehouse.gov\/the-trump-administration\/the-cabinet\/",
+        "urlPingSuffix": "DevEx,5309.1", "about": [{"name": "Cabinet"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov\/the-trump-administration\/the-cabinet",
+        "snippet": "Established in Article II, Section 2 of the Constitution, the
+        Cabinet''s role is to advise the President on subjects related to each
+        member''s office.", "dateLastCrawled": "2018-08-19T06:31:00.0000000Z"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 27 Aug 2018 02:07:55 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=president%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '3678'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 27 Aug 2018 02:06:56 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=3267F9AE02846C3B0435F5F6038B6D51; path=/; expires=Sat, 21-Sep-2019 02:07:56
+        GMT; domain=bingapis.com
+      - MUIDB=3267F9AE02846C3B0435F5F6038B6D51; path=/; httponly; expires=Sat, 21-Sep-2019
+        02:07:56 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 27-Aug-2020 02:07:56 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=1C7F2D6445B44A4885BB3745A52E0501&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 27-Aug-2020 02:07:56 GMT; path=/
+      - SRCHUSR=DOB=20180827; domain=.bingapis.com; expires=Thu, 27-Aug-2020 02:07:56
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=370A4D8DC438696F021A41D5C53768C6; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 21-Sep-2019 02:07:56 GMT; domain=bingapis.com
+      - _SS=SID=370A4D8DC438696F021A41D5C53768C6; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - 817E126D263D4C96BC1815C99524D020
+      X-Msedge-Clientid:
+      - 3267F9AE02846C3B0435F5F6038B6D51
+      X-Msapi-Userstate:
+      - 21f7
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: 817E126D263D4C96BC1815C99524D020 Ref B: BAYEDGE0121 Ref C: 2018-08-27T02:07:56Z'
+      Date:
+      - Mon, 27 Aug 2018 02:07:55 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=6EA05050AA5A4E14A0607CAA98BF3131&CID=3267F9AE02846C3B0435F5F6038B6D51&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=6EA05050AA5A4E14A0607CAA98BF3131&CID=3267F9AE02846C3B0435F5F6038B6D51&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=president+(site%3agov+OR+site%3amil)",
+        "webSearchUrlPingSuffix": "DevEx,5432.1", "totalEstimatedMatches": 24300000,
+        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
+        "Presidents - The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/",
+        "urlPingSuffix": "DevEx,5058.1", "about": [{"name": "White House"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents", "snippet":
+        "Which President served as a lieutenant colonel in the Spanish-American
+        war? Who was the first Democrat elected after the Civil War? Who introduced
+        Social S", "dateLastCrawled": "2018-08-17T15:52:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
+        "name": "Presidents, Vice Presidents, and First Ladies of the ...", "url":
+        "https:\/\/www.usa.gov\/presidents", "urlPingSuffix": "DevEx,5073.1", "displayUrl":
+        "https:\/\/www.usa.gov\/presidents", "snippet": "Find contact information
+        and other facts about Presidents, Vice Presidents, and First Ladies, past
+        and present.", "dateLastCrawled": "2018-08-18T16:41:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "President Signs
+        Fiscal 2019 Defense Authorization Act at ...", "url": "https:\/\/www.defense.gov\/News\/Article\/Article\/1601016\/president-signs-fiscal-2019-defense-authorization-act-at-fort-drum-ceremony\/",
+        "urlPingSuffix": "DevEx,5088.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=ON.11BE224ACCF0CA7C8CD8B2759937E4C8&pid=5.1&w=80&h=80&c=8",
+        "displayUrl": "https:\/\/www.defense.gov\/News\/Article\/Article\/1601016\/president...",
+        "snippet": "President Donald J. Trump today signed the $717 billion Fiscal
+        2019 National Defense Authorization Act at a ceremony at Fort Drum, New York.
+        The act – named for Arizona Sen. John S. McCain – …", "dateLastCrawled": "2018-08-20T09:20:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "The Executive
+        Branch", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/the-executive-branch\/",
+        "urlPingSuffix": "DevEx,5101.1", "about": [{"name": "Executive Office of the
+        President of the United States"}], "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/the-executive-branch",
+        "snippet": "The power of the Executive Branch is vested in the President
+        of the United States, who also acts as head of state and Commander-in-Chief
+        of the armed force", "dateLastCrawled": "2018-07-30T20:31:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Presidential
+        Election Process | USAGov", "url": "https:\/\/www.usa.gov\/election", "urlPingSuffix":
+        "DevEx,5116.1", "about": [{"name": "United States presidential election"},
+        {"name": "2016 United States presidential election"}, {"name": "2016 United
+        States presidential election"}], "displayUrl": "https:\/\/www.usa.gov\/election",
+        "snippet": "Learn about the Presidential election process, including the
+        Electoral College, caucuses and primaries, and the national conventions.",
+        "dateLastCrawled": "2018-08-19T22:24:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
+        "name": "Contact the White House", "url": "https:\/\/www.whitehouse.gov\/contact\/",
+        "urlPingSuffix": "DevEx,5129.1", "about": [{"name": "White House"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov\/contact", "snippet": "Keep me posted with
+        regular updates from the White House. required ...", "dateLastCrawled":
+        "2018-08-21T14:57:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "name": "President Donald J. Trump’s Supreme Court List", "url": "https:\/\/www.whitehouse.gov\/briefings-statements\/president-donald-j-trumps-supreme-court-list\/",
+        "urlPingSuffix": "DevEx,5143.1", "displayUrl": "https:\/\/www.whitehouse.gov\/briefings-statements\/president-donald-j...",
+        "snippet": "Amy Coney Barrett of Indiana, U.S. Court of Appeals for the Seventh
+        Circuit Keith Blackwell of Georgia, Supreme Court of Georgia Charles Canady
+        of Florida,", "dateLastCrawled": "2018-08-18T18:46:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "name": "The White House - Vice President Pence: ''The Evidence Is ...",
+        "url": "https:\/\/www.whitehouse.gov\/", "urlPingSuffix": "DevEx,5157.1",
+        "about": [{"name": "whitehouse.gov"}, {"name": "White House"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov", "snippet": "Search WhiteHouse.gov. ...
+        selected the site for the White House in 1791. Every president since John
+        Adams has occupied the White House, ...", "dateLastCrawled": "2018-08-20T05:21:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Write
+        or Call the White House", "url": "https:\/\/www.whitehouse.gov\/get-involved\/write-or-call\/",
+        "urlPingSuffix": "DevEx,5171.1", "about": [{"name": "White House"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov\/get-involved\/write-or-call", "snippet":
+        "Write a letter to the President Here are a few simple things you can do
+        to make sure your message gets to the White House as quickly as possible.
+        If possib", "dateLastCrawled": "2018-08-19T12:13:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
+        "name": "Articles - The White House", "url": "https:\/\/www.whitehouse.gov\/articles\/",
+        "urlPingSuffix": "DevEx,5185.1", "about": [{"name": "White House"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov\/articles", "snippet": "Chris Smolenak is
+        tapping into the “do-it-yourself” trend – and creating a small business herself.
+        She’s opened a storefront in Holland, Pa., where customers stain and stencil
+        their own handcrafted wooden signs and other decorative items.", "dateLastCrawled":
+        "2018-08-20T22:33:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
+        "name": "President - Ky. Council on Postsecondary Education", "url": "http:\/\/cpe.ky.gov\/aboutus\/president.html",
+        "urlPingSuffix": "DevEx,5200.1", "displayUrl": "cpe.ky.gov\/aboutus\/president.html",
+        "snippet": "Read about Council President Robert L. (Bob) King.", "dateLastCrawled":
+        "2018-08-21T04:40:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
+        "name": "Donald J. Trump", "url": "https:\/\/www.whitehouse.gov\/people\/donald-j-trump\/",
+        "urlPingSuffix": "DevEx,5214.1", "about": [{"name": "Donald Trump"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov\/people\/donald-j-trump", "snippet": "Donald
+        J. Trump is the 45th President of the United States. He believes the United
+        States has incredible potential and will go on to exceed anything that it
+        has achieved in the past.", "dateLastCrawled": "2018-07-30T06:06:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Press
+        Conference by President Trump", "url": "https:\/\/www.whitehouse.gov\/briefings-statements\/press-conference-president-trump\/",
+        "urlPingSuffix": "DevEx,5226.1", "displayUrl": "https:\/\/www.whitehouse.gov\/...\/press-conference-president-trump",
+        "snippet": "Capella Hotel Singapore 4:15 P.M. SGT THE PRESIDENT: Well, thank
+        you very much, everybody. We appreciate it. We''re getting ready to go back.
+        We had a t", "dateLastCrawled": "2018-08-17T13:26:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        "name": "Michael Picker, President", "url": "http:\/\/www.cpuc.ca.gov\/picker\/",
+        "urlPingSuffix": "DevEx,5244.1", "about": [{"name": "Michael Picker"}], "displayUrl":
+        "www.cpuc.ca.gov\/picker", "snippet": "Michael Picker was named President
+        of the California Public Utilities Commission (CPUC) on December 23, 2014,
+        by Governor Edmund G. Brown Jr., who first appointed President Picker as
+        a Commissioner on January 29, 2014.", "dateLastCrawled": "2018-08-20T14:25:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Thomas
+        Jefferson - The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/thomas-jefferson\/",
+        "urlPingSuffix": "DevEx,5258.1", "about": [{"name": "Thomas Jefferson"}],
+        "displayUrl": "https:\/\/www.whitehouse.gov\/...\/presidents\/thomas-jefferson",
+        "snippet": "Thomas Jefferson, a spokesman for democracy, was an American
+        Founding Father, the principal author of the Declaration of Independence (1776),
+        and the third President of the United States (1801–1809). In the thick of
+        party conflict in 1800, Thomas Jefferson wrote in a private letter, “I have
+        ...", "dateLastCrawled": "2018-08-18T13:26:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "Pardon Information and Instructions | PARDON | Department ...",
+        "url": "https:\/\/www.justice.gov\/pardon\/pardon-information-and-instructions",
+        "urlPingSuffix": "DevEx,5274.1", "displayUrl": "https:\/\/www.justice.gov\/pardon\/pardon-information-and-instructions",
+        "snippet": "Pardon Information and Instructions. ... the President''s
+        pardon power extends to convictions adjudicated in the Superior Court of the
+        District of Columbia and ...", "dateLastCrawled": "2018-08-05T14:03:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "The Administration",
+        "url": "https:\/\/www.whitehouse.gov\/the-trump-administration\/", "urlPingSuffix":
+        "DevEx,5288.1", "about": [{"name": "Executive Office of the President of the
+        United States"}], "displayUrl": "https:\/\/www.whitehouse.gov\/the-trump-administration",
+        "snippet": "President Donald J. Trump promised that he would bring the best
+        and brightest from across the country—not just inside Washington—to build
+        his Administratio", "dateLastCrawled": "2018-07-27T02:39:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Barack Obama
+        - The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/barack-obama\/",
+        "urlPingSuffix": "DevEx,5303.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.aG0TZL5mYu7l8KPSj0gG8wHaEL&pid=Api",
+        "about": [{"name": "Barack Obama"}], "displayUrl": "https:\/\/www.whitehouse.gov\/...\/presidents\/barack-obama",
+        "snippet": "Barack Obama served as the 44th President of the United States.
+        His story is the American story -- values from the heartland, a middle-class
+        upbringing in", "dateLastCrawled": "2018-08-18T11:03:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Chronological
+        List of Presidents, First Ladies, and Vice ...", "url": "https:\/\/www.loc.gov\/rr\/print\/list\/057_chron.html",
+        "urlPingSuffix": "DevEx,5317.1", "displayUrl": "https:\/\/www.loc.gov\/rr\/print\/list\/057_chron.html",
+        "snippet": "Illustrations from the holdings of the Library of Congress Prints
+        and Photographs Division on the subject of U.S. Presidents, First Ladies,
+        and Vice Presidents", "dateLastCrawled": "2018-07-03T17:39:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Theodore
+        Roosevelt - The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/theodore-roosevelt\/",
+        "urlPingSuffix": "DevEx,5331.1", "about": [{"name": "Theodore Roosevelt"}],
+        "displayUrl": "https:\/\/www.whitehouse.gov\/...\/presidents\/theodore-roosevelt",
+        "snippet": "With the assassination of President William McKinley, Theodore
+        Roosevelt, not quite 43, became the 26th and youngest President in the
+        Nation''s history (190", "dateLastCrawled": "2018-08-19T20:06:00.0000000Z"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 27 Aug 2018 02:07:55 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=presidente%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '3572'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 27 Aug 2018 02:06:57 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=0392BE12F54C692F145DB24AF44368B6; path=/; expires=Sat, 21-Sep-2019 02:07:57
+        GMT; domain=bingapis.com
+      - MUIDB=0392BE12F54C692F145DB24AF44368B6; path=/; httponly; expires=Sat, 21-Sep-2019
+        02:07:57 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 27-Aug-2020 02:07:57 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=65CBCFBECD924035ACAE71E3A667E255&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 27-Aug-2020 02:07:57 GMT; path=/
+      - SRCHUSR=DOB=20180827; domain=.bingapis.com; expires=Thu, 27-Aug-2020 02:07:57
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=13183A139714673A0CC0364B961B660A; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 21-Sep-2019 02:07:57 GMT; domain=bingapis.com
+      - _SS=SID=13183A139714673A0CC0364B961B660A; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - E4832F7A54D2462AAABAD49189709903
+      X-Msedge-Clientid:
+      - '0392BE12F54C692F145DB24AF44368B6'
+      X-Msapi-Userstate:
+      - d289
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: E4832F7A54D2462AAABAD49189709903 Ref B: BAYEDGE0211 Ref C: 2018-08-27T02:07:57Z'
+      Date:
+      - Mon, 27 Aug 2018 02:07:56 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=29580BB3413943A6BDDC31785230FD54&CID=0392BE12F54C692F145DB24AF44368B6&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=29580BB3413943A6BDDC31785230FD54&CID=0392BE12F54C692F145DB24AF44368B6&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=presidente+(site%3agov+OR+site%3amil)",
+        "webSearchUrlPingSuffix": "DevEx,5422.1", "totalEstimatedMatches": 367000,
+        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
+        "Presidents - The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/",
+        "urlPingSuffix": "DevEx,5059.1", "about": [{"name": "White House"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents", "snippet":
+        "If you’re looking to learn more about the past Presidents who have led
+        our country, you’re in the right place. Take a look at our full set of biographies.",
+        "dateLastCrawled": "2018-08-17T15:52:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
+        "name": "Presidents, Vice Presidents, and First Ladies of the ...", "url":
+        "https:\/\/www.usa.gov\/presidents", "urlPingSuffix": "DevEx,5074.1", "displayUrl":
+        "https:\/\/www.usa.gov\/presidents", "snippet": "Find contact information
+        and other facts about Presidents, Vice Presidents, and First Ladies, past
+        and present.", "dateLastCrawled": "2018-08-18T16:41:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Office of the
+        Senate President - West Virginia Legislature", "url": "http:\/\/www.wvlegislature.gov\/Senate1\/president.cfm",
+        "urlPingSuffix": "DevEx,5088.1", "displayUrl": "www.wvlegislature.gov\/Senate1\/president.cfm",
+        "snippet": "Welcome from Senate President Mitch Carmichael. Thank you so
+        much for visiting the West Virginia Legislature’s website for the Senate.
+        This page can be a valuable source of information about the Senate and our
+        members.", "dateLastCrawled": "2018-08-21T05:16:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "Economic Report of the President February 2018", "url": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2018\/02\/ERP_2018_Final-FINAL.pdf",
+        "urlPingSuffix": "DevEx,5100.1", "displayUrl": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2018\/02\/ERP_2018...",
+        "snippet": "6 | Economic Report of the President however, only 3.5 percent
+        of the over-$800 billion plan went to constructing transportation infrastructure.",
+        "dateLastCrawled": "2018-08-17T19:38:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
+        "name": "Michael R. Pence - The White House", "url": "https:\/\/www.whitehouse.gov\/people\/mike-pence\/",
+        "urlPingSuffix": "DevEx,5113.1", "about": [{"name": "Office of the Vice President
+        of the United States"}], "displayUrl": "https:\/\/www.whitehouse.gov\/people\/mike-pence",
+        "snippet": "Michael R. Pence is the 48th and current Vice President of the
+        United States. Vice President Mike Pence remains grateful for the grace of
+        God, the love and support of his family, and the blessings of liberty that
+        are every American’s birthright.", "dateLastCrawled": "2018-08-17T04:39:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "El Presidente
+        - Virginia", "url": "https:\/\/www.abc.virginia.gov\/products\/recipes\/classic\/el-presidente",
+        "urlPingSuffix": "DevEx,5126.1", "displayUrl": "https:\/\/www.abc.virginia.gov\/products\/recipes\/classic\/el-presidente",
+        "snippet": "Combine ingredients in a shaker and shake well. Strain into a
+        cocktail glass to serve. Garnish with orange twist if desired.", "dateLastCrawled":
+        "2018-08-16T21:23:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "name": "SEC.gov | Theranos, CEO Holmes, and Former President ...", "url":
+        "https:\/\/www.sec.gov\/news\/press-release\/2018-41", "urlPingSuffix": "DevEx,5138.1",
+        "about": [{"name": "Charged"}, {"name": "Fraud"}], "displayUrl": "https:\/\/www.sec.gov\/news\/press-release\/2018-41",
+        "snippet": "The Securities and Exchange Commission today charged Silicon Valley-based
+        private company Theranos Inc., its founder and CEO Elizabeth Holmes, and its
+        former President Ramesh “Sunny” Balwani with raising more than $700 million
+        from investors through an elaborate, years-long fraud in which they exaggerated
+        or made false statements about the ...", "dateLastCrawled": "2018-08-19T13:49:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Donald
+        J. Trump", "url": "https:\/\/www.whitehouse.gov\/people\/donald-j-trump\/",
+        "urlPingSuffix": "DevEx,5152.1", "about": [{"name": "Donald Trump"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov\/people\/donald-j-trump", "snippet": "Donald
+        J. Trump is the 45th President of the United States. He believes the United
+        States has incredible potential and will go on to exceed anything that it
+        has achieved in the past.", "dateLastCrawled": "2018-07-30T06:06:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Franklin
+        D. Roosevelt - The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/franklin-d-roosevelt\/",
+        "urlPingSuffix": "DevEx,5166.1", "about": [{"name": "Franklin D. Roosevelt"},
+        {"name": "Franklin D. Roosevelt"}], "displayUrl": "https:\/\/www.whitehouse.gov\/...\/presidents\/franklin-d-roosevelt",
+        "snippet": "Assuming the Presidency at the depth of the Great Depression as
+        our 32nd President (1933-1945), Franklin D. Roosevelt helped the American
+        people regain fai", "dateLastCrawled": "2018-08-15T21:03:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "George Washington
+        - The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/george-washington\/",
+        "urlPingSuffix": "DevEx,5181.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.gfdCif_EEgdR7OuJtRKDvgHaEL&pid=Api",
+        "about": [{"name": "George Washington"}], "displayUrl": "https:\/\/www.whitehouse.gov\/...\/presidents\/george-washington",
+        "snippet": "On April 30, 1789, George Washington, standing on the balcony
+        of Federal Hall on Wall Street in New York, took his oath of office as the
+        first President of", "dateLastCrawled": "2018-07-30T15:19:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "The Executive
+        Branch", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/the-executive-branch\/",
+        "urlPingSuffix": "DevEx,5195.1", "about": [{"name": "Executive Office of the
+        President of the United States"}], "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/the-executive-branch",
+        "snippet": "The power of the Executive Branch is vested in the President
+        of the United States, who also acts as head of state and Commander-in-Chief
+        of the armed force", "dateLastCrawled": "2018-07-30T20:31:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "The Herbert
+        Hoover Presidential Library and Museum", "url": "https:\/\/hoover.archives.gov\/",
+        "urlPingSuffix": "DevEx,5209.1", "about": [{"name": "Herbert Hoover"}, {"name":
+        "Herbert Hoover"}], "displayUrl": "https:\/\/hoover.archives.gov", "snippet":
+        "Herbert Hoover Presidential Library-Museum. Learn More. President Herbert
+        Hoover. Learn More. First Lady Lou Henry Hoover. Learn More. Photos & Videos.
+        Learn More.", "dateLastCrawled": "2018-08-19T17:37:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
+        "name": "Woodrow Wilson - The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/woodrow-wilson\/",
+        "urlPingSuffix": "DevEx,5223.1", "about": [{"name": "Woodrow Wilson"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov\/...\/presidents\/woodrow-wilson", "snippet":
+        "Woodrow Wilson, a leader of the Progressive Movement, was the 28th President
+        of the United States (1913-1921). After a policy of neutrality at the outbreak",
+        "dateLastCrawled": "2018-08-15T14:14:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        "name": "Ronald Reagan - The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/ronald-reagan\/",
+        "urlPingSuffix": "DevEx,5237.1", "about": [{"name": "Ronald Reagan"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov\/...\/presidents\/ronald-reagan", "snippet":
+        "Ronald Reagan, originally an American actor and politician, became the
+        40th President of the United States serving from 1981 to 1989. His term saw
+        a restor", "dateLastCrawled": "2018-08-17T21:38:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
+        "name": "James Buchanan - The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/james-buchanan\/",
+        "urlPingSuffix": "DevEx,5251.1", "about": [{"name": "James Buchanan"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov\/...\/presidents\/james-buchanan", "snippet":
+        "James Buchanan, the 15th President of the United States (1857-1861), served
+        immediately prior to the American Civil War. He remains the only President
+        to b", "dateLastCrawled": "2018-08-17T11:53:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "William McKinley - The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/william-mckinley\/",
+        "urlPingSuffix": "DevEx,5265.1", "about": [{"name": "William McKinley"}],
+        "displayUrl": "https:\/\/www.whitehouse.gov\/...\/presidents\/william-mckinley",
+        "snippet": "William McKinley was the 25th President of the United States,
+        serving from March 4, 1897, until his assassination on September 14, 1901,
+        after leading the", "dateLastCrawled": "2018-08-19T17:51:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Presidents
+        and Vice Presidents of the Republic of Texas ...", "url": "https:\/\/www.tsl.texas.gov\/ref\/abouttx\/prestx.html",
+        "urlPingSuffix": "DevEx,5279.1", "about": [{"name": "Republic of Texas"}],
+        "displayUrl": "https:\/\/www.tsl.texas.gov\/ref\/abouttx\/prestx.html",
+        "snippet": "Presidents and Vice Presidents of the Republic of Texas, 1836-1846
+        Related Links Pre-Republic Governors of Texas | Governors of Texas | Who
+        was known as the...", "dateLastCrawled": "2018-08-14T13:06:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "The President''s
+        Roles and Responsibilities: Understanding ...", "url": "https:\/\/edsitement.neh.gov\/lesson-plan\/presidents-roles-and-responsibilities-understanding-presidents-job",
+        "urlPingSuffix": "DevEx,5293.1", "displayUrl": "https:\/\/edsitement.neh.gov\/lesson-plan\/presidents-roles-and...",
+        "snippet": "The President''s Roles and Responsibilities: Understanding the
+        President''s Job. Created September 24, 2010. Tools. Email. The Lesson. Introduction.",
+        "dateLastCrawled": "2018-08-20T01:37:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
+        "name": "Chronological List of Presidents, First Ladies, and Vice ...",
+        "url": "https:\/\/www.loc.gov\/rr\/print\/list\/057_chron.html", "urlPingSuffix":
+        "DevEx,5307.1", "displayUrl": "https:\/\/www.loc.gov\/rr\/print\/list\/057_chron.html",
+        "snippet": "Chronological List of Presidents, First Ladies, and Vice Presidents
+        of the United States Selected Images From the Collections of the Library
+        of Congress", "dateLastCrawled": "2018-07-03T17:39:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Rutherford
+        B. Hayes - The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/rutherford-b-hayes\/",
+        "urlPingSuffix": "DevEx,5321.1", "about": [{"name": "Rutherford B. Hayes"}],
+        "displayUrl": "https:\/\/www.whitehouse.gov\/...\/presidents\/rutherford-b-hayes",
+        "snippet": "As the 19th President of the United States (1877-1881), Rutherford
+        B. Hayes oversaw the end of Reconstruction, began the efforts that led to
+        civil service", "dateLastCrawled": "2018-08-20T10:17:00.0000000Z"}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 27 Aug 2018 02:07:56 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=hippopotamus%20(site:hippo.whitehouse.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '242'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 27 Aug 2018 02:06:57 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=193629FB8AFC6C1E163D25A38BF36D0C; path=/; expires=Sat, 21-Sep-2019 02:07:57
+        GMT; domain=bingapis.com
+      - MUIDB=193629FB8AFC6C1E163D25A38BF36D0C; path=/; httponly; expires=Sat, 21-Sep-2019
+        02:07:57 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 27-Aug-2020 02:07:57 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=0A58E74356694293B00746C9443DEB8E&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 27-Aug-2020 02:07:57 GMT; path=/
+      - SRCHUSR=DOB=20180827; domain=.bingapis.com; expires=Thu, 27-Aug-2020 02:07:57
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=0C522C50387E6ACF397D200839716B6D; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 21-Sep-2019 02:07:57 GMT; domain=bingapis.com
+      - _SS=SID=0C522C50387E6ACF397D200839716B6D; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - C6E6D03F278F46538ADC43DEC52ABDAF
+      X-Msedge-Clientid:
+      - 193629FB8AFC6C1E163D25A38BF36D0C
+      X-Msapi-Userstate:
+      - e36a
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: C6E6D03F278F46538ADC43DEC52ABDAF Ref B: BAYEDGE0516 Ref C: 2018-08-27T02:07:57Z'
+      Date:
+      - Mon, 27 Aug 2018 02:07:57 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=8D6CBA74BFE04AE1BFBFA13D72725EEE&CID=193629FB8AFC6C1E163D25A38BF36D0C&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=8D6CBA74BFE04AE1BFBFA13D72725EEE&CID=193629FB8AFC6C1E163D25A38BF36D0C&Type=Event.CPT&DATA=0"},
+        "rankingResponse": {}}'
+    http_version: 
+  recorded_at: Mon, 27 Aug 2018 02:07:57 GMT
 recorded_with: VCR 4.0.0

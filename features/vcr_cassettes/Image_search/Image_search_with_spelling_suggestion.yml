@@ -2,15 +2,13 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.bingapis.com/api/v6/images/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=ebuy%20(site:gov%20OR%20site:mil)&safeSearch=moderate&traffictype=test
+    uri: https://www.bingapis.com/api/v6/images/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=ebuy%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
       - USASearch
-      Ocp-Apim-Subscription-Key:
-      - "<BING_V6_APP_ID>"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -29,7 +27,7 @@ http_interactions:
       Pragma:
       - no-cache
       Content-Length:
-      - '64391'
+      - '64449'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
@@ -39,57 +37,59 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=009B657D6AA6674516CF6EE36B436676; path=/; expires=Tue, 19-Mar-2019 07:15:37
+      - MUID=183C9A96BE9B6AB10E5696CEBF946B5C; path=/; expires=Sat, 21-Sep-2019 01:41:49
         GMT; domain=bingapis.com
-      - MUIDB=009B657D6AA6674516CF6EE36B436676; path=/; httponly; expires=Tue, 19-Mar-2019
-        07:15:37 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:15:36 GMT;
+      - MUIDB=183C9A96BE9B6AB10E5696CEBF946B5C; path=/; httponly; expires=Sat, 21-Sep-2019
+        01:41:49 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 27-Aug-2020 01:41:49 GMT;
         path=/
-      - SRCHUID=V=2&GUID=EE162535E49C483B97A10694E12E547B&dmnchg=1; domain=.bingapis.com;
-        expires=Sat, 22-Feb-2020 07:15:36 GMT; path=/
-      - SRCHUSR=DOB=20180222; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:15:36
+      - SRCHUID=V=2&GUID=00B272801F4C4A9686D4870D58F82890&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 27-Aug-2020 01:41:49 GMT; path=/
+      - SRCHUSR=DOB=20180827; domain=.bingapis.com; expires=Thu, 27-Aug-2020 01:41:49
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=11F99D44C42B6CD5008396DAC5CE6DE3; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=25ECEE8AC30161DC3FC5E2D2C20E609E; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Tue, 19-Mar-2019 07:15:37 GMT; domain=bingapis.com
-      - _SS=SID=11F99D44C42B6CD5008396DAC5CE6DE3; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 21-Sep-2019 01:41:49 GMT; domain=bingapis.com
+      - _SS=SID=25ECEE8AC30161DC3FC5E2D2C20E609E; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 7E6E8E83449E4E1D9F101515B1371FF2
+      - F6AA1044C5DC49BFA3DCD461C9B6C156
       X-Msedge-Clientid:
-      - '009B657D6AA6674516CF6EE36B436676'
+      - 183C9A96BE9B6AB10E5696CEBF946B5C
       X-Msapi-Userstate:
-      - 5ff2
+      - d3bc
       X-Msedge-Ref:
-      - 'Ref A: 7E6E8E83449E4E1D9F101515B1371FF2 Ref B: SG2EDGE0907 Ref C: 2018-02-22T07:15:37Z'
+      - 'Ref A: F6AA1044C5DC49BFA3DCD461C9B6C156 Ref B: BAYEDGE0208 Ref C: 2018-08-27T01:41:49Z'
       Date:
-      - Thu, 22 Feb 2018 07:15:36 GMT
+      - Mon, 27 Aug 2018 01:41:49 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "Images", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=C896640762DC4199A42B5D35527A7D41&CID=009B657D6AA6674516CF6EE36B436676&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=C896640762DC4199A42B5D35527A7D41&CID=009B657D6AA6674516CF6EE36B436676&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "Images", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=D9B0666ED99A480F96E899331335232A&CID=183C9A96BE9B6AB10E5696CEBF946B5C&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=D9B0666ED99A480F96E899331335232A&CID=183C9A96BE9B6AB10E5696CEBF946B5C&Type=Event.CPT&DATA=0"},
         "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=ebuy%20(site:gov%20OR%20site:mil)&FORM=OIIARP",
         "webSearchUrlPingSuffix": "DevEx,5186.1", "totalEstimatedMatches": 100, "nextOffset":
-        22, "value": [{"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=ebuy+(site%3agov+OR+site%3amil)&id=EA5D7B40F78384BE84A4DA32759E663760D93DF2&simid=608011798953198062",
-        "webSearchUrlPingSuffix": "DevEx,5025.1", "name": "GSS Scientific Catalog
-        Moved to the eBuy Marketplace", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.LcL9lFifRf2L1aWU2k55FAHaEv&pid=Api",
-        "datePublished": "2015-10-22T12:00:00.0000000Z", "contentUrl": "http:\/\/procurement.lbl.gov\/wp-content\/uploads\/sites\/4\/2015\/07\/eBuy_logo.jpg",
-        "contentUrlPingSuffix": "DevEx,5027.1", "hostPageUrl": "http:\/\/procurement.lbl.gov\/2015\/10\/22\/gss-scientific-catalog-moving-to-the-ebuy-marketplace\/",
-        "hostPageUrlPingSuffix": "DevEx,5026.1", "contentSize": "29328 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "procurement.lbl.gov\/2015\/10\/22\/gss-scientific-catalog-moving-to-the...",
-        "width": 340, "height": 218, "thumbnail": {"width": 474, "height": 303}, "imageInsightsToken":
-        "ccid_LcL9lFif*mid_EA5D7B40F78384BE84A4DA32759E663760D93DF2*simid_608011798953198062",
-        "imageId": "EA5D7B40F78384BE84A4DA32759E663760D93DF2", "accentColor": "044262"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=ebuy+(site%3agov+OR+site%3amil)&id=76BE68A253BBCBD8726FB4C2902890AE602E364A&simid=608002586241731591",
-        "webSearchUrlPingSuffix": "DevEx,5031.1", "name": "Training for eBuy Users",
-        "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.SYYvHPbWR80qphe16zOQWwAAAA&pid=Api",
-        "datePublished": "2014-07-25T16:46:00.0000000Z", "contentUrl": "http:\/\/procurement.lbl.gov\/wp-content\/uploads\/sites\/4\/2013\/09\/ebuy-3.png",
-        "contentUrlPingSuffix": "DevEx,5033.1", "hostPageUrl": "http:\/\/procurement.lbl.gov\/welcome-to-procurement-property\/make-a-purchase\/ebuy\/ebuy-training-for-ebuy-users\/",
-        "hostPageUrlPingSuffix": "DevEx,5032.1", "contentSize": "5205 B", "encodingFormat":
-        "png", "hostPageDisplayUrl": "procurement.lbl.gov\/welcome-to-procurement-property\/make-a-purchase...",
-        "width": 189, "height": 226, "thumbnail": {"width": 189, "height": 226}, "imageInsightsToken":
-        "ccid_SYYvHPbW*mid_76BE68A253BBCBD8726FB4C2902890AE602E364A*simid_608002586241731591",
-        "imageId": "76BE68A253BBCBD8726FB4C2902890AE602E364A", "accentColor": "0F3F5E"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=ebuy+(site%3agov+OR+site%3amil)&id=76BE68A253BBCBD8726F09D8CB0E65CEBE87AC95&simid=608004360064797955",
+        22, "value": [{"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=ebuy+(site%3agov+OR+site%3amil)&id=D755F20EC02D69649F525D144B27FFD476316A8F&simid=608028317752165566",
+        "webSearchUrlPingSuffix": "DevEx,5025.1", "name": "RFQ | Interact", "thumbnailUrl":
+        "https:\/\/tse4.mm.bing.net\/th?id=OIP.qTu4IX4WvIJNrxBBZNWecQHaEh&pid=Api",
+        "datePublished": "2012-12-24T21:12:00.0000000Z", "contentUrl": "https:\/\/interact.gsa.gov\/sites\/default\/files\/img_3.png",
+        "contentUrlPingSuffix": "DevEx,5027.1", "hostPageUrl": "https:\/\/interact.gsa.gov\/tag\/rfq",
+        "hostPageUrlPingSuffix": "DevEx,5026.1", "contentSize": "101683 B", "encodingFormat":
+        "png", "hostPageDisplayUrl": "https:\/\/interact.gsa.gov\/tag\/rfq", "width":
+        596, "height": 364, "thumbnail": {"width": 474, "height": 289}, "imageInsightsToken":
+        "ccid_qTu4IX4W*mid_D755F20EC02D69649F525D144B27FFD476316A8F*simid_608028317752165566",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "D755F20EC02D69649F525D144B27FFD476316A8F", "accentColor": "076497"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=ebuy+(site%3agov+OR+site%3amil)&id=AFA38328B4807004568FB5AF409F2AE69FB920EF&simid=608026372129557397",
+        "webSearchUrlPingSuffix": "DevEx,5031.1", "name": "Introducing eBuy Marketplace:
+        More Suppliers, More Functionality", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.f-YOnOpkGA1xFcb9jF7eLwAAAA&pid=Api",
+        "datePublished": "2015-08-26T12:00:00.0000000Z", "contentUrl": "http:\/\/today.lbl.gov\/wp-content\/uploads\/sites\/3\/2015\/08\/1340eBuy_logo-300x192.jpg",
+        "contentUrlPingSuffix": "DevEx,5033.1", "hostPageUrl": "http:\/\/today.lbl.gov\/2015\/08\/26\/introducing-ebuy-marketplace-more-suppliers-more-functionality\/",
+        "hostPageUrlPingSuffix": "DevEx,5032.1", "contentSize": "15659 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "today.lbl.gov\/2015\/08\/26\/introducing-ebuy-marketplace-more...",
+        "width": 300, "height": 192, "thumbnail": {"width": 300, "height": 192}, "imageInsightsToken":
+        "ccid_f+YOnOpk*mid_AFA38328B4807004568FB5AF409F2AE69FB920EF*simid_608026372129557397",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "AFA38328B4807004568FB5AF409F2AE69FB920EF", "accentColor": "054363"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=ebuy+(site%3agov+OR+site%3amil)&id=76BE68A253BBCBD8726F09D8CB0E65CEBE87AC95&simid=608004360459255877",
         "webSearchUrlPingSuffix": "DevEx,5037.1", "name": "Training for eBuy Users",
         "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.PkE2X6VSTH5CUUnp8lu4PQAAAA&pid=Api",
         "datePublished": "2014-07-25T16:46:00.0000000Z", "contentUrl": "http:\/\/procurement.lbl.gov\/wp-content\/uploads\/sites\/4\/2013\/09\/ebuy-1.png",
@@ -97,185 +97,183 @@ http_interactions:
         "hostPageUrlPingSuffix": "DevEx,5038.1", "contentSize": "4255 B", "encodingFormat":
         "png", "hostPageDisplayUrl": "procurement.lbl.gov\/welcome-to-procurement-property\/make-a-purchase...",
         "width": 179, "height": 212, "thumbnail": {"width": 179, "height": 212}, "imageInsightsToken":
-        "ccid_PkE2X6VS*mid_76BE68A253BBCBD8726F09D8CB0E65CEBE87AC95*simid_608004360064797955",
+        "ccid_PkE2X6VS*mid_76BE68A253BBCBD8726F09D8CB0E65CEBE87AC95*simid_608004360459255877",
         "imageId": "76BE68A253BBCBD8726F09D8CB0E65CEBE87AC95", "accentColor": "9F722C"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=ebuy+(site%3agov+OR+site%3amil)&id=D755F20EC02D69649F525D144B27FFD476316A8F&simid=608028317359868867",
-        "webSearchUrlPingSuffix": "DevEx,5043.1", "name": "RFQ | Interact", "thumbnailUrl":
-        "https:\/\/tse4.mm.bing.net\/th?id=OIP.qTu4IX4WvIJNrxBBZNWecQHaEh&pid=Api",
-        "datePublished": "2012-12-24T21:12:00.0000000Z", "contentUrl": "https:\/\/interact.gsa.gov\/sites\/default\/files\/img_3.png",
-        "contentUrlPingSuffix": "DevEx,5045.1", "hostPageUrl": "https:\/\/interact.gsa.gov\/tag\/rfq",
-        "hostPageUrlPingSuffix": "DevEx,5044.1", "contentSize": "101683 B", "encodingFormat":
-        "png", "hostPageDisplayUrl": "https:\/\/interact.gsa.gov\/tag\/rfq", "width":
-        596, "height": 364, "thumbnail": {"width": 474, "height": 289}, "imageInsightsToken":
-        "ccid_qTu4IX4W*mid_D755F20EC02D69649F525D144B27FFD476316A8F*simid_608028317359868867",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "D755F20EC02D69649F525D144B27FFD476316A8F", "accentColor": "076497"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=ebuy+(site%3agov+OR+site%3amil)&id=E7877A3E4227D2A3141685D5B684039C3B68A3DA&simid=607989469418882930",
-        "webSearchUrlPingSuffix": "DevEx,5049.1", "name": "eBuy is â€œSet-Asideâ€
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=ebuy+(site%3agov+OR+site%3amil)&id=E7877A3E4227D2A3141685D5B684039C3B68A3DA&simid=607989469813081391",
+        "webSearchUrlPingSuffix": "DevEx,5043.1", "name": "eBuy is â€œSet-Asideâ€
         Ready! | Interact", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.yKRYoAqizoq47u4Be4L_jQHaGV&pid=Api",
-        "datePublished": "2017-12-23T10:30:00.0000000Z", "contentUrl": "https:\/\/interact.gsa.gov\/sites\/default\/files\/img_4.png",
-        "contentUrlPingSuffix": "DevEx,5051.1", "hostPageUrl": "https:\/\/interact.gsa.gov\/blog\/ebuy-%e2%80%9cset-aside%e2%80%9d-ready",
-        "hostPageUrlPingSuffix": "DevEx,5050.1", "contentSize": "135049 B", "encodingFormat":
+        "datePublished": "2018-07-10T05:43:00.0000000Z", "contentUrl": "https:\/\/interact.gsa.gov\/sites\/default\/files\/img_4.png",
+        "contentUrlPingSuffix": "DevEx,5045.1", "hostPageUrl": "https:\/\/interact.gsa.gov\/blog\/ebuy-%E2%80%9Cset-aside%E2%80%9D-ready",
+        "hostPageUrlPingSuffix": "DevEx,5044.1", "contentSize": "135049 B", "encodingFormat":
         "png", "hostPageDisplayUrl": "https:\/\/interact.gsa.gov\/blog\/ebuy-“set-aside”-ready",
         "width": 579, "height": 495, "thumbnail": {"width": 474, "height": 405}, "imageInsightsToken":
-        "ccid_yKRYoAqi*mid_E7877A3E4227D2A3141685D5B684039C3B68A3DA*simid_607989469418882930",
+        "ccid_yKRYoAqi*mid_E7877A3E4227D2A3141685D5B684039C3B68A3DA*simid_607989469813081391",
         "imageId": "E7877A3E4227D2A3141685D5B684039C3B68A3DA", "accentColor": "1C3F6A"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=ebuy+(site%3agov+OR+site%3amil)&id=9C01D4DCBCD8585C11D5A639C0E39F26469F14AA&simid=608002371494088334",
-        "webSearchUrlPingSuffix": "DevEx,5055.1", "name": "eBuy Returns Center", "thumbnailUrl":
-        "https:\/\/tse3.mm.bing.net\/th?id=OIP.jqo7P9RM2vKnT8-Razu-iwAAAA&pid=Api",
-        "datePublished": "2017-07-10T15:27:00.0000000Z", "contentUrl": "http:\/\/procurement.lbl.gov\/wp-content\/uploads\/sites\/4\/2013\/10\/returns_step4-new.png",
-        "contentUrlPingSuffix": "DevEx,5057.1", "hostPageUrl": "http:\/\/procurement.lbl.gov\/welcome-to-procurement-property\/make-a-purchase\/ebuy\/ebuy-returns\/",
-        "hostPageUrlPingSuffix": "DevEx,5056.1", "contentSize": "6966 B", "encodingFormat":
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=ebuy+(site%3agov+OR+site%3amil)&id=76BE68A253BBCBD8726FB4C2902890AE602E364A&simid=608002586630228435",
+        "webSearchUrlPingSuffix": "DevEx,5049.1", "name": "Training for eBuy Users",
+        "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.SYYvHPbWR80qphe16zOQWwAAAA&pid=Api",
+        "datePublished": "2014-07-25T16:46:00.0000000Z", "contentUrl": "http:\/\/procurement.lbl.gov\/wp-content\/uploads\/sites\/4\/2013\/09\/ebuy-3.png",
+        "contentUrlPingSuffix": "DevEx,5051.1", "hostPageUrl": "http:\/\/procurement.lbl.gov\/welcome-to-procurement-property\/make-a-purchase\/ebuy\/ebuy-training-for-ebuy-users\/",
+        "hostPageUrlPingSuffix": "DevEx,5050.1", "contentSize": "5205 B", "encodingFormat":
         "png", "hostPageDisplayUrl": "procurement.lbl.gov\/welcome-to-procurement-property\/make-a-purchase...",
-        "width": 179, "height": 217, "thumbnail": {"width": 179, "height": 217}, "imageInsightsToken":
-        "ccid_jqo7P9RM*mid_9C01D4DCBCD8585C11D5A639C0E39F26469F14AA*simid_608002371494088334",
-        "imageId": "9C01D4DCBCD8585C11D5A639C0E39F26469F14AA", "accentColor": "738249"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=ebuy+(site%3agov+OR+site%3amil)&id=764085BE6AA85BD08F79EEEACA81DA18FBDE83F7&simid=608022549256275920",
-        "webSearchUrlPingSuffix": "DevEx,5061.1", "name": "eBuy Mobile Login| A GSA
+        "width": 189, "height": 226, "thumbnail": {"width": 189, "height": 226}, "imageInsightsToken":
+        "ccid_SYYvHPbW*mid_76BE68A253BBCBD8726FB4C2902890AE602E364A*simid_608002586630228435",
+        "imageId": "76BE68A253BBCBD8726FB4C2902890AE602E364A", "accentColor": "0F3F5E"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=ebuy+(site%3agov+OR+site%3amil)&id=764085BE6AA85BD08F79EEEACA81DA18FBDE83F7&simid=608022549664501350",
+        "webSearchUrlPingSuffix": "DevEx,5055.1", "name": "eBuy Mobile Login| A GSA
         Advantage!® Application", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.JEXGrwt87UUUt7oj_4CJmwAAAA&pid=Api",
         "datePublished": "2013-03-15T13:57:00.0000000Z", "contentUrl": "https:\/\/www.ebuy.gsa.gov\/mobile\/images\/logo.png",
-        "contentUrlPingSuffix": "DevEx,5063.1", "hostPageUrl": "https:\/\/www.ebuy.gsa.gov\/mobile\/login",
-        "hostPageUrlPingSuffix": "DevEx,5062.1", "contentSize": "2222 B", "encodingFormat":
+        "contentUrlPingSuffix": "DevEx,5057.1", "hostPageUrl": "https:\/\/www.ebuy.gsa.gov\/mobile\/login",
+        "hostPageUrlPingSuffix": "DevEx,5056.1", "contentSize": "2222 B", "encodingFormat":
         "png", "hostPageDisplayUrl": "https:\/\/www.ebuy.gsa.gov\/mobile\/login",
         "width": 112, "height": 35, "thumbnail": {"width": 112, "height": 35}, "imageInsightsToken":
-        "ccid_JEXGrwt8*mid_764085BE6AA85BD08F79EEEACA81DA18FBDE83F7*simid_608022549256275920",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "ccid_JEXGrwt8*mid_764085BE6AA85BD08F79EEEACA81DA18FBDE83F7*simid_608022549664501350",
         "imageId": "764085BE6AA85BD08F79EEEACA81DA18FBDE83F7", "accentColor": "033365"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=ebuy+(site%3agov+OR+site%3amil)&id=10F2B378490D9DD221154757628E448ED17CC219&simid=608026990217793072",
-        "webSearchUrlPingSuffix": "DevEx,5067.1", "name": "How to Set a Default Project
-        and Activity Value at Checkout", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.qgx086cg4HVeLVjCCwGFAwHaEw&pid=Api",
-        "datePublished": "2017-07-06T12:00:00.0000000Z", "contentUrl": "http:\/\/procurement.lbl.gov\/wp-content\/uploads\/sites\/4\/2017\/07\/Screen-shot-3.jpg",
-        "contentUrlPingSuffix": "DevEx,5069.1", "hostPageUrl": "https:\/\/procurement.lbl.gov\/2017\/07\/06\/how-to-set-a-default-project-and-activity-id-value-at-checkout\/",
-        "hostPageUrlPingSuffix": "DevEx,5068.1", "contentSize": "51714 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/procurement.lbl.gov\/2017\/07\/06\/how-to-set-a-default-project...",
-        "width": 880, "height": 566, "thumbnail": {"width": 474, "height": 304}, "imageInsightsToken":
-        "ccid_qgx086cg*mid_10F2B378490D9DD221154757628E448ED17CC219*simid_608026990217793072",
-        "imageId": "10F2B378490D9DD221154757628E448ED17CC219", "accentColor": "855146"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=ebuy+(site%3agov+OR+site%3amil)&id=9C01D4DCBCD8585C11D545CB95AD0524FD7EA239&simid=608050299037155870",
-        "webSearchUrlPingSuffix": "DevEx,5073.1", "name": "eBuy Returns Center", "thumbnailUrl":
-        "https:\/\/tse1.mm.bing.net\/th?id=OIP.BtPS-lTGVDJwTXrjoN6OiwAAAA&pid=Api",
-        "datePublished": "2017-07-27T06:17:00.0000000Z", "contentUrl": "http:\/\/procurement.lbl.gov\/wp-content\/uploads\/sites\/4\/2013\/10\/returns_step3-new.png",
-        "contentUrlPingSuffix": "DevEx,5075.1", "hostPageUrl": "http:\/\/procurement.lbl.gov\/welcome-to-procurement-property\/make-a-purchase\/ebuy\/ebuy-returns\/",
-        "hostPageUrlPingSuffix": "DevEx,5074.1", "contentSize": "6508 B", "encodingFormat":
-        "png", "hostPageDisplayUrl": "procurement.lbl.gov\/welcome-to-procurement-property\/make-a-purchase...",
-        "width": 184, "height": 217, "thumbnail": {"width": 184, "height": 217}, "imageInsightsToken":
-        "ccid_BtPS+lTG*mid_9C01D4DCBCD8585C11D545CB95AD0524FD7EA239*simid_608050299037155870",
-        "imageId": "9C01D4DCBCD8585C11D545CB95AD0524FD7EA239", "accentColor": "9B7330"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=ebuy+(site%3agov+OR+site%3amil)&id=D755F20EC02D69649F52FF258DD1405738A2D8FA&simid=608014006623470507",
-        "webSearchUrlPingSuffix": "DevEx,5079.1", "name": "RFQ | Interact", "thumbnailUrl":
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=ebuy+(site%3agov+OR+site%3amil)&id=D755F20EC02D69649F52FF258DD1405738A2D8FA&simid=608014007015441393",
+        "webSearchUrlPingSuffix": "DevEx,5061.1", "name": "RFQ | Interact", "thumbnailUrl":
         "https:\/\/tse4.mm.bing.net\/th?id=OIP.Ps4k8PA9EhlCpV3nY9L_5wHaCE&pid=Api",
         "datePublished": "2012-12-24T21:12:00.0000000Z", "contentUrl": "https:\/\/interact.gsa.gov\/sites\/default\/files\/img2.png",
-        "contentUrlPingSuffix": "DevEx,5081.1", "hostPageUrl": "https:\/\/interact.gsa.gov\/tag\/rfq",
-        "hostPageUrlPingSuffix": "DevEx,5080.1", "contentSize": "6241 B", "encodingFormat":
+        "contentUrlPingSuffix": "DevEx,5063.1", "hostPageUrl": "https:\/\/interact.gsa.gov\/tag\/rfq",
+        "hostPageUrlPingSuffix": "DevEx,5062.1", "contentSize": "6241 B", "encodingFormat":
         "png", "hostPageDisplayUrl": "https:\/\/interact.gsa.gov\/tag\/rfq", "width":
         570, "height": 159, "thumbnail": {"width": 474, "height": 132}, "imageInsightsToken":
-        "ccid_Ps4k8PA9*mid_D755F20EC02D69649F52FF258DD1405738A2D8FA*simid_608014006623470507",
+        "ccid_Ps4k8PA9*mid_D755F20EC02D69649F52FF258DD1405738A2D8FA*simid_608014007015441393",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "D755F20EC02D69649F52FF258DD1405738A2D8FA", "accentColor": "082068"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=ebuy+(site%3agov+OR+site%3amil)&id=9C01D4DCBCD8585C11D5960F85F27E51563802D4&simid=608019267844247148",
-        "webSearchUrlPingSuffix": "DevEx,5085.1", "name": "eBuy Returns Center", "thumbnailUrl":
-        "https:\/\/tse1.mm.bing.net\/th?id=OIP.fb3hUJAJm1kPoJ26wd-BfgAAAA&pid=Api",
-        "datePublished": "2017-07-10T15:27:00.0000000Z", "contentUrl": "http:\/\/procurement.lbl.gov\/wp-content\/uploads\/sites\/4\/2013\/10\/returns_step2.png",
-        "contentUrlPingSuffix": "DevEx,5087.1", "hostPageUrl": "http:\/\/procurement.lbl.gov\/welcome-to-procurement-property\/make-a-purchase\/ebuy\/ebuy-returns\/",
-        "hostPageUrlPingSuffix": "DevEx,5086.1", "contentSize": "8595 B", "encodingFormat":
-        "png", "hostPageDisplayUrl": "procurement.lbl.gov\/welcome-to-procurement-property\/make-a-purchase...",
-        "width": 181, "height": 221, "thumbnail": {"width": 181, "height": 221}, "imageInsightsToken":
-        "ccid_fb3hUJAJ*mid_9C01D4DCBCD8585C11D5960F85F27E51563802D4*simid_608019267844247148",
-        "imageId": "9C01D4DCBCD8585C11D5960F85F27E51563802D4", "accentColor": "A22967"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=ebuy+(site%3agov+OR+site%3amil)&id=639D25169E889BC189D8F868FA705DE32EE625BE&simid=607989258959258651",
-        "webSearchUrlPingSuffix": "DevEx,5091.1", "name": "GSS Scientific Catalog
-        Moved to the eBuy Marketplace", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.ttoWR5Yy-WxjqQd76JV6PAAAAA&pid=Api",
-        "datePublished": "2015-10-22T12:00:00.0000000Z", "contentUrl": "http:\/\/procurement.lbl.gov\/wp-content\/uploads\/sites\/4\/2015\/10\/Screen-Shot-2015-10-19-at-1.25.00-PM.png",
-        "contentUrlPingSuffix": "DevEx,5093.1", "hostPageUrl": "https:\/\/procurement.lbl.gov\/2015\/10\/22\/gss-scientific-catalog-moving-to-the-ebuy-marketplace\/",
-        "hostPageUrlPingSuffix": "DevEx,5092.1", "contentSize": "75932 B", "encodingFormat":
-        "png", "hostPageDisplayUrl": "https:\/\/procurement.lbl.gov\/2015\/10\/22\/gss-scientific-catalog...",
-        "width": 400, "height": 258, "thumbnail": {"width": 400, "height": 258}, "imageInsightsToken":
-        "ccid_ttoWR5Yy*mid_639D25169E889BC189D8F868FA705DE32EE625BE*simid_607989258959258651",
-        "imageId": "639D25169E889BC189D8F868FA705DE32EE625BE", "accentColor": "11933A"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=ebuy+(site%3agov+OR+site%3amil)&id=D755F20EC02D69649F52DC6CEFADB8B0B60D167C&simid=608019091750651759",
-        "webSearchUrlPingSuffix": "DevEx,5097.1", "name": "RFQ | Interact", "thumbnailUrl":
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=ebuy+(site%3agov+OR+site%3amil)&id=D755F20EC02D69649F52DC6CEFADB8B0B60D167C&simid=608019092165627523",
+        "webSearchUrlPingSuffix": "DevEx,5067.1", "name": "RFQ | Interact", "thumbnailUrl":
         "https:\/\/tse3.mm.bing.net\/th?id=OIP.lphsa25YDbQQCmxPBjo7VAHaBT&pid=Api",
         "datePublished": "2012-12-24T21:12:00.0000000Z", "contentUrl": "https:\/\/interact.gsa.gov\/sites\/default\/files\/img1.png",
-        "contentUrlPingSuffix": "DevEx,5099.1", "hostPageUrl": "https:\/\/interact.gsa.gov\/tag\/rfq",
-        "hostPageUrlPingSuffix": "DevEx,5098.1", "contentSize": "17473 B", "encodingFormat":
+        "contentUrlPingSuffix": "DevEx,5069.1", "hostPageUrl": "https:\/\/interact.gsa.gov\/tag\/rfq",
+        "hostPageUrlPingSuffix": "DevEx,5068.1", "contentSize": "17473 B", "encodingFormat":
         "png", "hostPageDisplayUrl": "https:\/\/interact.gsa.gov\/tag\/rfq", "width":
         628, "height": 110, "thumbnail": {"width": 474, "height": 83}, "imageInsightsToken":
-        "ccid_lphsa25Y*mid_D755F20EC02D69649F52DC6CEFADB8B0B60D167C*simid_608019091750651759",
+        "ccid_lphsa25Y*mid_D755F20EC02D69649F52DC6CEFADB8B0B60D167C*simid_608019092165627523",
         "imageId": "D755F20EC02D69649F52DC6CEFADB8B0B60D167C", "accentColor": "A27A29"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=ebuy+(site%3agov+OR+site%3amil)&id=90F7D9E53458821EC8014783B90646E031D47456&simid=608014208477038389",
-        "webSearchUrlPingSuffix": "DevEx,5103.1", "name": "GSA Releases Mobile eBuy,
-        Expands Opportunities for Small ...", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.DDS4MLgL7KD8t_Qhh5UkMgHaEN&pid=Api",
-        "datePublished": "2013-07-31T12:00:00.0000000Z", "contentUrl": "http:\/\/gsablogs.gsa.gov\/gsablog\/files\/2013\/07\/smartphone-blog-post-4.jpg",
-        "contentUrlPingSuffix": "DevEx,5105.1", "hostPageUrl": "https:\/\/gsablogs.gsa.gov\/gsablog\/2013\/07\/31\/gsa-releases-mobile-ebuy-expands-opportunities-for-small-businesses\/",
-        "hostPageUrlPingSuffix": "DevEx,5104.1", "contentSize": "29558 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/gsablogs.gsa.gov\/gsablog\/2013\/07\/31\/gsa-releases-mobile...",
-        "width": 518, "height": 295, "thumbnail": {"width": 474, "height": 269}, "imageInsightsToken":
-        "ccid_DDS4MLgL*mid_90F7D9E53458821EC8014783B90646E031D47456*simid_608014208477038389",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "90F7D9E53458821EC8014783B90646E031D47456", "accentColor": "BAB011"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=ebuy+(site%3agov+OR+site%3amil)&id=9BB2CE6422D475BA49517FB59B4CE4FF3A1FC7A6&simid=608016428959862780",
-        "webSearchUrlPingSuffix": "DevEx,5109.1", "name": "Training Videos Archive",
-        "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.5tSV7QwPPei6biYENW2iRgHaEL&pid=Api",
-        "datePublished": "2018-01-15T01:34:00.0000000Z", "contentUrl": "https:\/\/www.gsa.gov\/cdnstatic\/MAS_Tim_Dempsey_eBuy_863_presentation_thumb.jpg",
-        "contentUrlPingSuffix": "DevEx,5111.1", "hostPageUrl": "https:\/\/www.gsa.gov\/portal\/content\/133587",
-        "hostPageUrlPingSuffix": "DevEx,5110.1", "contentSize": "37893 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.gsa.gov\/portal\/content\/133587",
-        "width": 529, "height": 298, "thumbnail": {"width": 474, "height": 267}, "imageInsightsToken":
-        "ccid_5tSV7QwP*mid_9BB2CE6422D475BA49517FB59B4CE4FF3A1FC7A6*simid_608016428959862780",
-        "imageId": "9BB2CE6422D475BA49517FB59B4CE4FF3A1FC7A6", "accentColor": "3D4473"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=ebuy+(site%3agov+OR+site%3amil)&id=CE507F2E129A90E6AE630B3EB3F62D997B731D1E&simid=608048091429732632",
-        "webSearchUrlPingSuffix": "DevEx,5115.1", "name": "GSA Schedules Frequently
-        Asked Questions", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.E_dyouXVkzvLYZgcuQAhdgAAAA&pid=Api",
-        "datePublished": "2016-11-09T15:57:00.0000000Z", "contentUrl": "https:\/\/www.gsa.gov\/ephox_images\/MAS_Training_Graphic_1362581520293.gif",
-        "contentUrlPingSuffix": "DevEx,5117.1", "hostPageUrl": "https:\/\/www.gsa.gov\/portal\/category\/102271",
-        "hostPageUrlPingSuffix": "DevEx,5116.1", "contentSize": "8140 B", "encodingFormat":
-        "gif", "hostPageDisplayUrl": "https:\/\/www.gsa.gov\/portal\/category\/102271",
-        "width": 210, "height": 182, "thumbnail": {"width": 210, "height": 182}, "imageInsightsToken":
-        "ccid_E\/dyouXV*mid_CE507F2E129A90E6AE630B3EB3F62D997B731D1E*simid_608048091429732632",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "CE507F2E129A90E6AE630B3EB3F62D997B731D1E", "accentColor": "CC3200"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=ebuy+(site%3agov+OR+site%3amil)&id=BC1A43A06ECB7EC6B09AED96C8AA2D33E82435D9&simid=608041099217209426",
-        "webSearchUrlPingSuffix": "DevEx,5121.1", "name": "Long-awaited Acquisition
-        Resource Increases Transparency ...", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.HnXoWnHkR4yXduTNabWWUgHaEN&pid=Api",
-        "datePublished": "2015-06-23T12:00:00.0000000Z", "contentUrl": "http:\/\/gsablogs.gsa.gov\/gsablog\/files\/2015\/06\/Were-open-518x295.jpg",
-        "contentUrlPingSuffix": "DevEx,5123.1", "hostPageUrl": "https:\/\/gsablogs.gsa.gov\/gsablog\/2015\/06\/23\/long-awaited-acquisition-resource-increases-transparency-ebuy-open-now-available-to-federal-buyers\/",
-        "hostPageUrlPingSuffix": "DevEx,5122.1", "contentSize": "22634 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/gsablogs.gsa.gov\/gsablog\/2015\/06\/23\/long-awaited...",
-        "width": 518, "height": 295, "thumbnail": {"width": 474, "height": 269}, "imageInsightsToken":
-        "ccid_HnXoWnHk*mid_BC1A43A06ECB7EC6B09AED96C8AA2D33E82435D9*simid_608041099217209426",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "BC1A43A06ECB7EC6B09AED96C8AA2D33E82435D9", "accentColor": "9A3831"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=ebuy+(site%3agov+OR+site%3amil)&id=1C202198D1378F4A258B475FD2096B7AF656ACA9&simid=608014470474042858",
-        "webSearchUrlPingSuffix": "DevEx,5127.1", "name": "Telework", "thumbnailUrl":
-        "https:\/\/tse4.mm.bing.net\/th?id=OIP.5b-2Ff-I0VQghM6pRs0rWgHaD2&pid=Api",
-        "datePublished": "2011-10-22T15:23:00.0000000Z", "contentUrl": "http:\/\/www.gsa.gov\/ephox_images\/Telework_Success_1457037932131.jpg",
-        "contentUrlPingSuffix": "DevEx,5129.1", "hostPageUrl": "https:\/\/www.gsa.gov\/portal\/content\/105192",
-        "hostPageUrlPingSuffix": "DevEx,5128.1", "contentSize": "241118 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.gsa.gov\/portal\/content\/105192",
-        "width": 750, "height": 390, "thumbnail": {"width": 474, "height": 246}, "imageInsightsToken":
-        "ccid_5b+2Ff+I*mid_1C202198D1378F4A258B475FD2096B7AF656ACA9*simid_608014470474042858",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "1C202198D1378F4A258B475FD2096B7AF656ACA9", "accentColor": "B85B13"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=ebuy+(site%3agov+OR+site%3amil)&id=D1A8DDAEF199D70E8A2E34B1C52358EB63D2B177&simid=607988722088085847",
-        "webSearchUrlPingSuffix": "DevEx,5133.1", "name": "How to Disable the Autofill
-        Function When Applying the ...", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.ErrwjoT1tRJBk1ZQZAwiigHaGM&pid=Api",
-        "datePublished": "2016-07-01T12:00:00.0000000Z", "contentUrl": "http:\/\/procurement.lbl.gov\/wp-content\/uploads\/sites\/4\/2016\/07\/screen-shot-4.jpg",
-        "contentUrlPingSuffix": "DevEx,5135.1", "hostPageUrl": "https:\/\/procurement.lbl.gov\/2016\/07\/01\/how-to-disable-the-autocomplete-function-at-checkout\/",
-        "hostPageUrlPingSuffix": "DevEx,5134.1", "contentSize": "27979 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/procurement.lbl.gov\/2016\/07\/01\/how-to-disable-the...",
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=ebuy+(site%3agov+OR+site%3amil)&id=7CE42720FD9BC3E7BAC334B1C52358EB63D2B177&simid=608037380166323572",
+        "webSearchUrlPingSuffix": "DevEx,5073.1", "name": "How to Disable the Autofill
+        Function When Applying the Project and Activity Values", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.ErrwjoT1tRJBk1ZQZAwiigHaGM&pid=Api",
+        "datePublished": "2017-07-06T12:00:00.0000000Z", "contentUrl": "http:\/\/procurement.lbl.gov\/wp-content\/uploads\/sites\/4\/2016\/07\/screen-shot-4.jpg",
+        "contentUrlPingSuffix": "DevEx,5075.1", "hostPageUrl": "http:\/\/procurement.lbl.gov\/2017\/07\/06\/how-to-disable-the-autocomplete-function-at-checkout\/",
+        "hostPageUrlPingSuffix": "DevEx,5074.1", "contentSize": "27979 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "procurement.lbl.gov\/2017\/07\/06\/how-to-disable-the-autocomplete...",
         "width": 480, "height": 402, "thumbnail": {"width": 474, "height": 396}, "imageInsightsToken":
-        "ccid_ErrwjoT1*mid_D1A8DDAEF199D70E8A2E34B1C52358EB63D2B177*simid_607988722088085847",
-        "imageId": "D1A8DDAEF199D70E8A2E34B1C52358EB63D2B177", "accentColor": "0268C9"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=ebuy+(site%3agov+OR+site%3amil)&id=BBCA9F280F2C28ED68B69AEEE8F5637A492FD839&simid=608008831130536040",
-        "webSearchUrlPingSuffix": "DevEx,5139.1", "name": "Enhanced Project and Activity
-        Copy Down Feature is Now ...", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.o4-mF2HV4nYlAEULLq8HNgHaHb&pid=Api",
+        "ccid_ErrwjoT1*mid_7CE42720FD9BC3E7BAC334B1C52358EB63D2B177*simid_608037380166323572",
+        "imageId": "7CE42720FD9BC3E7BAC334B1C52358EB63D2B177", "accentColor": "0268C9"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=ebuy+(site%3agov+OR+site%3amil)&id=0C0B6499128CE53872836689A65CE223B8ABBDEC&simid=608050114746123222",
+        "webSearchUrlPingSuffix": "DevEx,5079.1", "name": "New – GSS Order Tracking
+        Tool", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.-7grdBk7XavlM3Cn-x_KGwHaD9&pid=Api",
+        "datePublished": "2017-06-05T12:00:00.0000000Z", "contentUrl": "http:\/\/procurement.lbl.gov\/wp-content\/uploads\/sites\/4\/2017\/05\/2017-05-23_10-06-13.jpg",
+        "contentUrlPingSuffix": "DevEx,5081.1", "hostPageUrl": "https:\/\/procurement.lbl.gov\/2017\/06\/05\/2634\/",
+        "hostPageUrlPingSuffix": "DevEx,5080.1", "contentSize": "59465 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/procurement.lbl.gov\/2017\/06\/05\/2634",
+        "width": 602, "height": 322, "thumbnail": {"width": 474, "height": 253}, "imageInsightsToken":
+        "ccid_+7grdBk7*mid_0C0B6499128CE53872836689A65CE223B8ABBDEC*simid_608050114746123222",
+        "imageId": "0C0B6499128CE53872836689A65CE223B8ABBDEC", "accentColor": "B51B16"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=ebuy+(site%3agov+OR+site%3amil)&id=10F2B378490D9DD221154757628E448ED17CC219&simid=608026990593966103",
+        "webSearchUrlPingSuffix": "DevEx,5085.1", "name": "How to Set a Default Project
+        and Activity Value at Checkout", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.qgx086cg4HVeLVjCCwGFAwHaEw&pid=Api",
+        "datePublished": "2017-07-06T12:00:00.0000000Z", "contentUrl": "http:\/\/procurement.lbl.gov\/wp-content\/uploads\/sites\/4\/2017\/07\/Screen-shot-3.jpg",
+        "contentUrlPingSuffix": "DevEx,5087.1", "hostPageUrl": "https:\/\/procurement.lbl.gov\/2017\/07\/06\/how-to-set-a-default-project-and-activity-id-value-at-checkout\/",
+        "hostPageUrlPingSuffix": "DevEx,5086.1", "contentSize": "51714 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/procurement.lbl.gov\/2017\/07\/06\/how-to-set-a-default-project...",
+        "width": 880, "height": 566, "thumbnail": {"width": 474, "height": 304}, "imageInsightsToken":
+        "ccid_qgx086cg*mid_10F2B378490D9DD221154757628E448ED17CC219*simid_608026990593966103",
+        "imageId": "10F2B378490D9DD221154757628E448ED17CC219", "accentColor": "855146"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=ebuy+(site%3agov+OR+site%3amil)&id=9C01D4DCBCD8585C11D5A639C0E39F26469F14AA&simid=608002371881667983",
+        "webSearchUrlPingSuffix": "DevEx,5091.1", "name": "eBuy Returns Center", "thumbnailUrl":
+        "https:\/\/tse3.mm.bing.net\/th?id=OIP.jqo7P9RM2vKnT8-Razu-iwAAAA&pid=Api",
+        "datePublished": "2018-07-17T20:30:00.0000000Z", "contentUrl": "http:\/\/procurement.lbl.gov\/wp-content\/uploads\/sites\/4\/2013\/10\/returns_step4-new.png",
+        "contentUrlPingSuffix": "DevEx,5093.1", "hostPageUrl": "http:\/\/procurement.lbl.gov\/welcome-to-procurement-property\/make-a-purchase\/ebuy\/ebuy-returns\/",
+        "hostPageUrlPingSuffix": "DevEx,5092.1", "contentSize": "6966 B", "encodingFormat":
+        "png", "hostPageDisplayUrl": "procurement.lbl.gov\/welcome-to-procurement-property\/make-a-purchase...",
+        "width": 179, "height": 217, "thumbnail": {"width": 179, "height": 217}, "imageInsightsToken":
+        "ccid_jqo7P9RM*mid_9C01D4DCBCD8585C11D5A639C0E39F26469F14AA*simid_608002371881667983",
+        "imageId": "9C01D4DCBCD8585C11D5A639C0E39F26469F14AA", "accentColor": "738249"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=ebuy+(site%3agov+OR+site%3amil)&id=9C01D4DCBCD8585C11D5960F85F27E51563802D4&simid=608019268259286199",
+        "webSearchUrlPingSuffix": "DevEx,5097.1", "name": "eBuy Returns Center", "thumbnailUrl":
+        "https:\/\/tse1.mm.bing.net\/th?id=OIP.fb3hUJAJm1kPoJ26wd-BfgAAAA&pid=Api",
+        "datePublished": "2018-07-17T20:30:00.0000000Z", "contentUrl": "http:\/\/procurement.lbl.gov\/wp-content\/uploads\/sites\/4\/2013\/10\/returns_step2.png",
+        "contentUrlPingSuffix": "DevEx,5099.1", "hostPageUrl": "http:\/\/procurement.lbl.gov\/welcome-to-procurement-property\/make-a-purchase\/ebuy\/ebuy-returns\/",
+        "hostPageUrlPingSuffix": "DevEx,5098.1", "contentSize": "8595 B", "encodingFormat":
+        "png", "hostPageDisplayUrl": "procurement.lbl.gov\/welcome-to-procurement-property\/make-a-purchase...",
+        "width": 181, "height": 221, "thumbnail": {"width": 181, "height": 221}, "imageInsightsToken":
+        "ccid_fb3hUJAJ*mid_9C01D4DCBCD8585C11D5960F85F27E51563802D4*simid_608019268259286199",
+        "imageId": "9C01D4DCBCD8585C11D5960F85F27E51563802D4", "accentColor": "A22967"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=ebuy+(site%3agov+OR+site%3amil)&id=9C01D4DCBCD8585C11D545CB95AD0524FD7EA239&simid=608050299438826179",
+        "webSearchUrlPingSuffix": "DevEx,5103.1", "name": "eBuy Returns Center", "thumbnailUrl":
+        "https:\/\/tse1.mm.bing.net\/th?id=OIP.BtPS-lTGVDJwTXrjoN6OiwAAAA&pid=Api",
+        "datePublished": "2018-07-17T20:30:00.0000000Z", "contentUrl": "http:\/\/procurement.lbl.gov\/wp-content\/uploads\/sites\/4\/2013\/10\/returns_step3-new.png",
+        "contentUrlPingSuffix": "DevEx,5105.1", "hostPageUrl": "http:\/\/procurement.lbl.gov\/welcome-to-procurement-property\/make-a-purchase\/ebuy\/ebuy-returns\/",
+        "hostPageUrlPingSuffix": "DevEx,5104.1", "contentSize": "6508 B", "encodingFormat":
+        "png", "hostPageDisplayUrl": "procurement.lbl.gov\/welcome-to-procurement-property\/make-a-purchase...",
+        "width": 184, "height": 217, "thumbnail": {"width": 184, "height": 217}, "imageInsightsToken":
+        "ccid_BtPS+lTG*mid_9C01D4DCBCD8585C11D545CB95AD0524FD7EA239*simid_608050299438826179",
+        "imageId": "9C01D4DCBCD8585C11D545CB95AD0524FD7EA239", "accentColor": "9B7330"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=ebuy+(site%3agov+OR+site%3amil)&id=639D25169E889BC189D8F868FA705DE32EE625BE&simid=607989259356276235",
+        "webSearchUrlPingSuffix": "DevEx,5109.1", "name": "GSS Scientific Catalog
+        Moved to the eBuy Marketplace", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.ttoWR5Yy-WxjqQd76JV6PAAAAA&pid=Api",
+        "datePublished": "2015-10-22T12:00:00.0000000Z", "contentUrl": "http:\/\/procurement.lbl.gov\/wp-content\/uploads\/sites\/4\/2015\/10\/Screen-Shot-2015-10-19-at-1.25.00-PM.png",
+        "contentUrlPingSuffix": "DevEx,5111.1", "hostPageUrl": "https:\/\/procurement.lbl.gov\/2015\/10\/22\/gss-scientific-catalog-moving-to-the-ebuy-marketplace\/",
+        "hostPageUrlPingSuffix": "DevEx,5110.1", "contentSize": "75932 B", "encodingFormat":
+        "png", "hostPageDisplayUrl": "https:\/\/procurement.lbl.gov\/2015\/10\/22\/gss-scientific-catalog...",
+        "width": 400, "height": 258, "thumbnail": {"width": 400, "height": 258}, "imageInsightsToken":
+        "ccid_ttoWR5Yy*mid_639D25169E889BC189D8F868FA705DE32EE625BE*simid_607989259356276235",
+        "imageId": "639D25169E889BC189D8F868FA705DE32EE625BE", "accentColor": "11933A"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=ebuy+(site%3agov+OR+site%3amil)&id=1366B3DD675423FA0A1DF015B742F0BEBBDC1795&simid=608005657541742063",
+        "webSearchUrlPingSuffix": "DevEx,5115.1", "name": "Sources For LOTO Supplies
+        in eBuy - Electrical Safety", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.kKSjXtnRv2uTSqQFysdB7gHaJx&pid=Api",
+        "datePublished": "2018-06-01T07:48:00.0000000Z", "contentUrl": "http:\/\/electricalsafety.lblops.wpengine.com\/wp-content\/uploads\/sites\/12\/2014\/11\/Red-Lock.jpg",
+        "contentUrlPingSuffix": "DevEx,5117.1", "hostPageUrl": "https:\/\/electricalsafety.lbl.gov\/loto\/need-loto-supplies\/",
+        "hostPageUrlPingSuffix": "DevEx,5116.1", "contentSize": "149993 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/electricalsafety.lbl.gov\/loto\/need-loto-supplies",
+        "width": 455, "height": 600, "thumbnail": {"width": 474, "height": 625}, "imageInsightsToken":
+        "ccid_kKSjXtnR*mid_1366B3DD675423FA0A1DF015B742F0BEBBDC1795*simid_608005657541742063",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "1366B3DD675423FA0A1DF015B742F0BEBBDC1795", "accentColor": "881F19"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=ebuy+(site%3agov+OR+site%3amil)&id=BBCA9F280F2C28ED68B69AEEE8F5637A492FD839&simid=608008831545510397",
+        "webSearchUrlPingSuffix": "DevEx,5121.1", "name": "Enhanced Project and Activity
+        Copy Down Feature is Now Available in eBuy", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.o4-mF2HV4nYlAEULLq8HNgHaHb&pid=Api",
         "datePublished": "2017-03-22T12:00:00.0000000Z", "contentUrl": "http:\/\/procurement.lbl.gov\/wp-content\/uploads\/sites\/4\/2017\/03\/Feedback-Thank-You.jpg",
-        "contentUrlPingSuffix": "DevEx,5141.1", "hostPageUrl": "http:\/\/procurement.lbl.gov\/2017\/03\/22\/enhanced-project-and-activity-copy-down-feature-is-now-available-in-ebuy\/",
-        "hostPageUrlPingSuffix": "DevEx,5140.1", "contentSize": "55542 B", "encodingFormat":
+        "contentUrlPingSuffix": "DevEx,5123.1", "hostPageUrl": "http:\/\/procurement.lbl.gov\/2017\/03\/22\/enhanced-project-and-activity-copy-down-feature-is-now-available-in-ebuy\/",
+        "hostPageUrlPingSuffix": "DevEx,5122.1", "contentSize": "55542 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "procurement.lbl.gov\/2017\/03\/22\/enhanced-project-and-activity-copy...",
         "width": 760, "height": 763, "thumbnail": {"width": 474, "height": 475}, "imageInsightsToken":
-        "ccid_o4+mF2HV*mid_BBCA9F280F2C28ED68B69AEEE8F5637A492FD839*simid_608008831130536040",
+        "ccid_o4+mF2HV*mid_BBCA9F280F2C28ED68B69AEEE8F5637A492FD839*simid_608008831545510397",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "BBCA9F280F2C28ED68B69AEEE8F5637A492FD839", "accentColor": "885A43"}],
+        "imageId": "BBCA9F280F2C28ED68B69AEEE8F5637A492FD839", "accentColor": "885A43"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=ebuy+(site%3agov+OR+site%3amil)&id=82CDF0941B37D7AA788B7FB59B4CE4FF3A1FC7A6&simid=608025302726019340",
+        "webSearchUrlPingSuffix": "DevEx,5127.1", "name": "Training Videos Archive",
+        "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.5tSV7QwPPei6biYENW2iRgHaEL&pid=Api",
+        "datePublished": "2018-05-27T17:49:00.0000000Z", "contentUrl": "https:\/\/www.gsa.gov\/cdnstatic\/MAS_Tim_Dempsey_eBuy_863_presentation_thumb.jpg",
+        "contentUrlPingSuffix": "DevEx,5129.1", "hostPageUrl": "https:\/\/www.gsa.gov\/portal\/category\/103231",
+        "hostPageUrlPingSuffix": "DevEx,5128.1", "contentSize": "37893 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.gsa.gov\/portal\/category\/103231",
+        "width": 529, "height": 298, "thumbnail": {"width": 474, "height": 267}, "imageInsightsToken":
+        "ccid_5tSV7QwP*mid_82CDF0941B37D7AA788B7FB59B4CE4FF3A1FC7A6*simid_608025302726019340",
+        "imageId": "82CDF0941B37D7AA788B7FB59B4CE4FF3A1FC7A6", "accentColor": "3D4473"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=ebuy+(site%3agov+OR+site%3amil)&id=1366B3DD675423FA0A1D6DE75E693A9373607588&simid=608013178083542048",
+        "webSearchUrlPingSuffix": "DevEx,5133.1", "name": "Sources For LOTO Supplies
+        in eBuy - Electrical Safety", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.opk9cemRSAHbK9PWaDyUEgHaNJ&pid=Api",
+        "datePublished": "2018-06-01T07:48:00.0000000Z", "contentUrl": "http:\/\/electricalsafety.lblops.wpengine.com\/wp-content\/uploads\/sites\/12\/2014\/12\/Red-Lock-Keyed-Alike.jpg",
+        "contentUrlPingSuffix": "DevEx,5135.1", "hostPageUrl": "https:\/\/electricalsafety.lbl.gov\/loto\/need-loto-supplies\/",
+        "hostPageUrlPingSuffix": "DevEx,5134.1", "contentSize": "117850 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/electricalsafety.lbl.gov\/loto\/need-loto-supplies",
+        "width": 338, "height": 600, "thumbnail": {"width": 474, "height": 841}, "imageInsightsToken":
+        "ccid_opk9cemR*mid_1366B3DD675423FA0A1D6DE75E693A9373607588*simid_608013178083542048",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "1366B3DD675423FA0A1D6DE75E693A9373607588", "accentColor": "9A3931"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=ebuy+(site%3agov+OR+site%3amil)&id=AF35B7EC7A011ACDD4FEB360B174463752746723&simid=608008904538130321",
+        "webSearchUrlPingSuffix": "DevEx,5139.1", "name": "Sources For LOTO Supplies
+        in eBuy - Electrical Safety", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.mybqYxD-2zawsKewMJaPnwHaGr&pid=Api",
+        "datePublished": "2018-06-28T23:37:00.0000000Z", "contentUrl": "http:\/\/electricalsafety.lblops.wpengine.com\/wp-content\/uploads\/sites\/12\/2014\/12\/Do-Not-Operate-Tag.jpg",
+        "contentUrlPingSuffix": "DevEx,5141.1", "hostPageUrl": "http:\/\/electricalsafety.lbl.gov\/loto\/need-loto-supplies\/",
+        "hostPageUrlPingSuffix": "DevEx,5140.1", "contentSize": "195063 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "electricalsafety.lbl.gov\/loto\/need-loto-supplies",
+        "width": 600, "height": 541, "thumbnail": {"width": 474, "height": 427}, "imageInsightsToken":
+        "ccid_mybqYxD+*mid_AF35B7EC7A011ACDD4FEB360B174463752746723*simid_608008904538130321",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "AF35B7EC7A011ACDD4FEB360B174463752746723", "accentColor": "BC220F"}],
         "queryExpansions": [{"text": "GSA eBuy", "displayText": "GSA", "webSearchUrl":
         "https:\/\/www.bing.com\/images\/search?q=GSA+eBuy&tq=%7b%22pq%22%3a%22ebuy+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ebuy%22%2c%22pv%22%3a%22ebuy%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22GSA%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
         "webSearchUrlPingSuffix": "DevEx,5190.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=GSA+eBuy&tq=%7b%22pq%22%3a%22ebuy+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ebuy%22%2c%22pv%22%3a%22ebuy%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22GSA%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
@@ -372,5 +370,5 @@ http_interactions:
         {"pivot": "(site:gov", "suggestions": []}, {"pivot": "OR", "suggestions":
         []}, {"pivot": "site:mil)", "suggestions": []}]}'
     http_version: 
-  recorded_at: Thu, 22 Feb 2018 07:15:38 GMT
+  recorded_at: Mon, 27 Aug 2018 01:41:49 GMT
 recorded_with: VCR 4.0.0

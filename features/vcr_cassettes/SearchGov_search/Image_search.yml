@@ -2,15 +2,13 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.bingapis.com/api/v6/images/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=global%20warming%20(site:www.epa.gov%20OR%20site:archive.epa.gov)&safeSearch=moderate&traffictype=test
+    uri: https://www.bingapis.com/api/v6/images/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=global%20warming%20(site:www.epa.gov%20OR%20site:archive.epa.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
       - USASearch
-      Ocp-Apim-Subscription-Key:
-      - "<BING_V6_APP_ID>"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -29,7 +27,7 @@ http_interactions:
       Pragma:
       - no-cache
       Content-Length:
-      - '155800'
+      - '156010'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
@@ -39,256 +37,260 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=2AC3AF26323E679D3578A4B833DB663D; path=/; expires=Tue, 19-Mar-2019 07:18:45
+      - MUID=02764E931B586181103742CB1A5760F7; path=/; expires=Sat, 21-Sep-2019 02:33:04
         GMT; domain=bingapis.com
-      - MUIDB=2AC3AF26323E679D3578A4B833DB663D; path=/; httponly; expires=Tue, 19-Mar-2019
-        07:18:45 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:18:45 GMT;
+      - MUIDB=02764E931B586181103742CB1A5760F7; path=/; httponly; expires=Sat, 21-Sep-2019
+        02:33:04 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 27-Aug-2020 02:33:03 GMT;
         path=/
-      - SRCHUID=V=2&GUID=BC343F8179F14C23B152C996C5FCE091&dmnchg=1; domain=.bingapis.com;
-        expires=Sat, 22-Feb-2020 07:18:45 GMT; path=/
-      - SRCHUSR=DOB=20180222; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:18:45
+      - SRCHUID=V=2&GUID=DF3B04D19B8548B49182B98B974A5C22&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 27-Aug-2020 02:33:03 GMT; path=/
+      - SRCHUSR=DOB=20180827; domain=.bingapis.com; expires=Thu, 27-Aug-2020 02:33:03
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=323BA0DE872F6E7E0F66AB4086CA6FC9; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=2B0D84F39F9A619B241388AB9E95601D; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Tue, 19-Mar-2019 07:18:45 GMT; domain=bingapis.com
-      - _SS=SID=323BA0DE872F6E7E0F66AB4086CA6FC9; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 21-Sep-2019 02:33:04 GMT; domain=bingapis.com
+      - _SS=SID=2B0D84F39F9A619B241388AB9E95601D; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 2545D60C94484FA1A0334BE71190B3D0
+      - 1C374B9982D44A36A48C4D00626924E5
       X-Msedge-Clientid:
-      - 2AC3AF26323E679D3578A4B833DB663D
+      - 02764E931B586181103742CB1A5760F7
       X-Msapi-Userstate:
-      - 0e3e
+      - a017
       X-Msedge-Ref:
-      - 'Ref A: 2545D60C94484FA1A0334BE71190B3D0 Ref B: SG2EDGE0318 Ref C: 2018-02-22T07:18:45Z'
+      - 'Ref A: 1C374B9982D44A36A48C4D00626924E5 Ref B: BAYEDGE0116 Ref C: 2018-08-27T02:33:04Z'
       Date:
-      - Thu, 22 Feb 2018 07:18:45 GMT
+      - Mon, 27 Aug 2018 02:33:03 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "Images", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=1DB0A2FC193D403F98F9CFCFF395A688&CID=2AC3AF26323E679D3578A4B833DB663D&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=1DB0A2FC193D403F98F9CFCFF395A688&CID=2AC3AF26323E679D3578A4B833DB663D&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "Images", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=50AD82AA8A7E4440B07A1001097E7D92&CID=02764E931B586181103742CB1A5760F7&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=50AD82AA8A7E4440B07A1001097E7D92&CID=02764E931B586181103742CB1A5760F7&Type=Event.CPT&DATA=0"},
         "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=global%20warming%20(site:www.epa.gov%20OR%20site:archive.epa.gov)&FORM=OIIARP",
         "webSearchUrlPingSuffix": "DevEx,5190.1", "totalEstimatedMatches": 100, "nextOffset":
-        22, "value": [{"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=global+warming+(site%3awww.epa.gov+OR+site%3aarchive.epa.gov)&id=2DBBA66D2F0D73B11861321939C21205F015F220&simid=608000842484943862",
-        "webSearchUrlPingSuffix": "DevEx,5025.1", "name": "Frequently Asked Questions
-        About Climate Change | Climate ...", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.IgX5Hz4PnedipGlZLcRIBAHaFn&pid=Api",
-        "datePublished": "2018-01-30T23:49:00.0000000Z", "contentUrl": "https:\/\/archive.epa.gov\/epa\/sites\/production\/files\/2017-01\/cs_global_temp_and_co2_1880-2012_v3_1.png",
-        "contentUrlPingSuffix": "DevEx,5027.1", "hostPageUrl": "https:\/\/archive.epa.gov\/epa\/climatechange\/frequently-asked-questions-about-climate-change.html",
-        "hostPageUrlPingSuffix": "DevEx,5026.1", "contentSize": "118671 B", "encodingFormat":
-        "png", "hostPageDisplayUrl": "https:\/\/archive.epa.gov\/epa\/climatechange\/frequently-asked...",
-        "width": 2261, "height": 1714, "thumbnail": {"width": 474, "height": 359},
-        "imageInsightsToken": "ccid_IgX5Hz4P*mid_2DBBA66D2F0D73B11861321939C21205F015F220*simid_608000842484943862",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "2DBBA66D2F0D73B11861321939C21205F015F220", "accentColor": "BB1017"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=global+warming+(site%3awww.epa.gov+OR+site%3aarchive.epa.gov)&id=7BC438CAD542BB03FF2A5BF42BD70B55B271ED40&simid=608056071433814615",
-        "webSearchUrlPingSuffix": "DevEx,5031.1", "name": "Climate Change Indicators
-        in the United States | US EPA", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.73DoBvxoicTUu0ZrRjyiKgHaE7&pid=Api",
-        "datePublished": "2016-12-19T12:00:00.0000000Z", "contentUrl": "https:\/\/www.epa.gov\/sites\/production\/files\/styles\/large\/public\/2016-10\/climate-forcing-graphic.png",
-        "contentUrlPingSuffix": "DevEx,5033.1", "hostPageUrl": "https:\/\/www.epa.gov\/climate-indicators",
-        "hostPageUrlPingSuffix": "DevEx,5032.1", "contentSize": "559912 B", "encodingFormat":
-        "png", "hostPageDisplayUrl": "https:\/\/www.epa.gov\/climate-indicators",
-        "width": 928, "height": 618, "thumbnail": {"width": 474, "height": 315}, "imageInsightsToken":
-        "ccid_73DoBvxo*mid_7BC438CAD542BB03FF2A5BF42BD70B55B271ED40*simid_608056071433814615",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "7BC438CAD542BB03FF2A5BF42BD70B55B271ED40", "accentColor": "002246"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=global+warming+(site%3awww.epa.gov+OR+site%3aarchive.epa.gov)&id=5EE01CF732141D9546BD80A372D423E3E1518338&simid=608018632207302778",
-        "webSearchUrlPingSuffix": "DevEx,5037.1", "name": "Global Greenhouse Gas Emissions
-        Data | Greenhouse Gas (GHG ...", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.ryr2bAQBix5hKH-owGINmwAAAA&pid=Api",
-        "datePublished": "2016-08-09T12:00:00.0000000Z", "contentUrl": "https:\/\/www.epa.gov\/sites\/production\/files\/styles\/medium\/public\/2016-05\/global_emissions_sector_2015.png",
-        "contentUrlPingSuffix": "DevEx,5039.1", "hostPageUrl": "https:\/\/www.epa.gov\/ghgemissions\/global-greenhouse-gas-emissions-data#Country",
-        "hostPageUrlPingSuffix": "DevEx,5038.1", "contentSize": "161631 B", "encodingFormat":
-        "png", "hostPageDisplayUrl": "https:\/\/www.epa.gov\/ghgemissions\/global-greenhouse-gas-emissions...",
-        "width": 448, "height": 493, "thumbnail": {"width": 448, "height": 493}, "imageInsightsToken":
-        "ccid_ryr2bAQB*mid_5EE01CF732141D9546BD80A372D423E3E1518338*simid_608018632207302778",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "5EE01CF732141D9546BD80A372D423E3E1518338", "accentColor": "BA5511"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=global+warming+(site%3awww.epa.gov+OR+site%3aarchive.epa.gov)&id=F9E50FB2B481447A7359F0F92A6B62FC4A292771&simid=607998351402076276",
-        "webSearchUrlPingSuffix": "DevEx,5043.1", "name": "Climate Action Benefits:
-        Methods of Analysis | Climate ...", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.z9HCQo3hUEghx_blPU6YNQEsDh&pid=Api",
-        "datePublished": "2017-12-27T22:49:00.0000000Z", "contentUrl": "https:\/\/www.epa.gov\/sites\/production\/files\/styles\/medium\/public\/2015-05\/cira-framework-temp-fig-1-hires.png",
-        "contentUrlPingSuffix": "DevEx,5045.1", "hostPageUrl": "https:\/\/www.epa.gov\/cira\/climate-action-benefits-methods-analysis",
-        "hostPageUrlPingSuffix": "DevEx,5044.1", "contentSize": "43473 B", "encodingFormat":
-        "png", "hostPageDisplayUrl": "https:\/\/www.epa.gov\/cira\/climate-action-benefits-methods-analysis",
-        "width": 448, "height": 336, "thumbnail": {"width": 288, "height": 216}, "imageInsightsToken":
-        "ccid_z9HCQo3h*mid_F9E50FB2B481447A7359F0F92A6B62FC4A292771*simid_607998351402076276",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "F9E50FB2B481447A7359F0F92A6B62FC4A292771", "accentColor": "1E3DAD"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=global+warming+(site%3awww.epa.gov+OR+site%3aarchive.epa.gov)&id=653C368B6F637B4C7FF6378B4AF8A1B6A86342E1&simid=608022218549561789",
-        "webSearchUrlPingSuffix": "DevEx,5049.1", "name": "Climate Change Indicators:
-        Drought | Climate Change ...", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.-rPP4rJ2nw6q0H_WUTxRjwHaEi&pid=Api",
-        "datePublished": "2015-09-18T19:55:00.0000000Z", "contentUrl": "https:\/\/www.epa.gov\/sites\/production\/files\/styles\/large\/public\/2016-07\/drought-figure2-2016.png",
-        "contentUrlPingSuffix": "DevEx,5051.1", "hostPageUrl": "https:\/\/www.epa.gov\/climate-indicators\/drought",
-        "hostPageUrlPingSuffix": "DevEx,5050.1", "contentSize": "142389 B", "encodingFormat":
-        "png", "hostPageDisplayUrl": "https:\/\/www.epa.gov\/climate-indicators\/drought",
-        "width": 928, "height": 569, "thumbnail": {"width": 474, "height": 290}, "imageInsightsToken":
-        "ccid_+rPP4rJ2*mid_653C368B6F637B4C7FF6378B4AF8A1B6A86342E1*simid_608022218549561789",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "653C368B6F637B4C7FF6378B4AF8A1B6A86342E1", "accentColor": "CA8C01"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=global+warming+(site%3awww.epa.gov+OR+site%3aarchive.epa.gov)&id=5EE01CF732141D9546BDDF12A980CC02C5512CAC&simid=608040914539187631",
-        "webSearchUrlPingSuffix": "DevEx,5055.1", "name": "Global Greenhouse Gas Emissions
-        Data | Greenhouse Gas (GHG ...", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.t1s_dSoPVwBJX66mjCdJaQHaIG&pid=Api",
-        "datePublished": "2016-08-09T12:00:00.0000000Z", "contentUrl": "https:\/\/www.epa.gov\/sites\/production\/files\/2016-05\/global_emissions_gas_2015.png",
-        "contentUrlPingSuffix": "DevEx,5057.1", "hostPageUrl": "https:\/\/www.epa.gov\/ghgemissions\/global-greenhouse-gas-emissions-data",
-        "hostPageUrlPingSuffix": "DevEx,5056.1", "contentSize": "34502 B", "encodingFormat":
-        "png", "hostPageDisplayUrl": "https:\/\/www.epa.gov\/ghgemissions\/global-greenhouse-gas-emissions-data",
-        "width": 501, "height": 548, "thumbnail": {"width": 474, "height": 518}, "imageInsightsToken":
-        "ccid_t1s\/dSoP*mid_5EE01CF732141D9546BDDF12A980CC02C5512CAC*simid_608040914539187631",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "5EE01CF732141D9546BDDF12A980CC02C5512CAC", "accentColor": "AD5E1E"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=global+warming+(site%3awww.epa.gov+OR+site%3aarchive.epa.gov)&id=551C72B6FAE3CB904E22FD507C4F7375456940F3&simid=608047627582833894",
-        "webSearchUrlPingSuffix": "DevEx,5061.1", "name": "Greenhouse Gases | A Student''s
-        Guide to Global Climate ...", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.XzLoc5IVg2jdFj7r6IDjVQHaHG&pid=Api",
-        "datePublished": "2018-02-13T22:07:00.0000000Z", "contentUrl": "https:\/\/archive.epa.gov\/climatechange\/kids\/images\/1-2-2-gases.png",
-        "contentUrlPingSuffix": "DevEx,5063.1", "hostPageUrl": "https:\/\/archive.epa.gov\/climatechange\/kids\/basics\/today\/greenhouse-gases.html",
-        "hostPageUrlPingSuffix": "DevEx,5062.1", "contentSize": "17637 B", "encodingFormat":
-        "png", "hostPageDisplayUrl": "https:\/\/archive.epa.gov\/climatechange\/kids\/basics\/today\/greenhouse...",
-        "width": 480, "height": 460, "thumbnail": {"width": 474, "height": 454}, "imageInsightsToken":
-        "ccid_XzLoc5IV*mid_551C72B6FAE3CB904E22FD507C4F7375456940F3*simid_608047627582833894",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "551C72B6FAE3CB904E22FD507C4F7375456940F3", "accentColor": "0182CA"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=global+warming+(site%3awww.epa.gov+OR+site%3aarchive.epa.gov)&id=3C7CC8BEBE6FA5219203046A2CF797B6D7F4EA52&simid=607986286867711841",
-        "webSearchUrlPingSuffix": "DevEx,5067.1", "name": "Overview of Climate Change
-        Science | Climate Change ...", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.A0NdPgPTMPP7ZHqBsYea3wHaE8&pid=Api",
-        "datePublished": "2016-09-29T12:00:00.0000000Z", "contentUrl": "https:\/\/www.epa.gov\/sites\/production\/files\/styles\/medium\/public\/2016-08\/climate_v_global_warming.jpg",
-        "contentUrlPingSuffix": "DevEx,5069.1", "hostPageUrl": "https:\/\/www.epa.gov\/climate-change-science\/overview-climate-change-science",
-        "hostPageUrlPingSuffix": "DevEx,5068.1", "contentSize": "9552 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.epa.gov\/climate-change-science\/overview-climate-change...",
-        "width": 448, "height": 299, "thumbnail": {"width": 474, "height": 316}, "imageInsightsToken":
-        "ccid_A0NdPgPT*mid_3C7CC8BEBE6FA5219203046A2CF797B6D7F4EA52*simid_607986286867711841",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "3C7CC8BEBE6FA5219203046A2CF797B6D7F4EA52", "accentColor": "C9C902"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=global+warming+(site%3awww.epa.gov+OR+site%3aarchive.epa.gov)&id=4FA1BC156C5BEC14BADABC3E50AA86B7A2E8D024&simid=608024348825816329",
-        "webSearchUrlPingSuffix": "DevEx,5073.1", "name": "Causes of Climate Change
-        | Climate Change Science | US EPA", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.vlQymB7eJwTGUmdZqcrjcQHaE4&pid=Api",
-        "datePublished": "2016-12-27T12:00:00.0000000Z", "contentUrl": "https:\/\/www.epa.gov\/sites\/production\/files\/2016-07\/models-observed-human-natural.png",
-        "contentUrlPingSuffix": "DevEx,5075.1", "hostPageUrl": "https:\/\/www.epa.gov\/climate-change-science\/causes-climate-change",
-        "hostPageUrlPingSuffix": "DevEx,5074.1", "contentSize": "62082 B", "encodingFormat":
-        "png", "hostPageDisplayUrl": "https:\/\/www.epa.gov\/climate-change-science\/causes-climate-change",
-        "width": 819, "height": 540, "thumbnail": {"width": 474, "height": 312}, "imageInsightsToken":
-        "ccid_vlQymB7e*mid_4FA1BC156C5BEC14BADABC3E50AA86B7A2E8D024*simid_608024348825816329",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "4FA1BC156C5BEC14BADABC3E50AA86B7A2E8D024", "accentColor": "4E627D"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=global+warming+(site%3awww.epa.gov+OR+site%3aarchive.epa.gov)&id=3C0E45E5907AE160A0AF42CC8D57A64F80A6077E&simid=608026878536582865",
-        "webSearchUrlPingSuffix": "DevEx,5079.1", "name": "Climate Change Indicators:
-        Greenhouse Gases | Climate ...", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.WTa-UljiOCZALrpFJynagwHaGB&pid=Api",
+        22, "value": [{"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=global+warming+(site%3awww.epa.gov+OR+site%3aarchive.epa.gov)&id=3C0E45E5907AE160A0AF42CC8D57A64F80A6077E&simid=608026878927963106",
+        "webSearchUrlPingSuffix": "DevEx,5025.1", "name": "Climate Change Indicators:
+        Greenhouse Gases | Climate Change Indicators in the United States ...", "thumbnailUrl":
+        "https:\/\/tse3.mm.bing.net\/th?id=OIP.WTa-UljiOCZALrpFJynagwHaGB&pid=Api",
         "datePublished": "2016-08-02T19:55:00.0000000Z", "contentUrl": "https:\/\/www.epa.gov\/sites\/production\/files\/styles\/large\/public\/2016-07\/global-ghg-emissions-landing-thumb-2016.png",
-        "contentUrlPingSuffix": "DevEx,5081.1", "hostPageUrl": "https:\/\/www.epa.gov\/climate-indicators\/greenhouse-gases",
-        "hostPageUrlPingSuffix": "DevEx,5080.1", "contentSize": "80122 B", "encodingFormat":
-        "png", "hostPageDisplayUrl": "https:\/\/www.epa.gov\/climate-indicators\/greenhouse-gases",
+        "contentUrlPingSuffix": "DevEx,5027.1", "hostPageUrl": "https:\/\/www.epa.gov\/climate-indicators\/greenhouse-gases#major-long-lived-greenhouse-gases-and-their-characteristics",
+        "hostPageUrlPingSuffix": "DevEx,5026.1", "contentSize": "80122 B", "encodingFormat":
+        "png", "hostPageDisplayUrl": "https:\/\/www.epa.gov\/climate-indicators\/greenhouse-gases#major-long...",
         "width": 320, "height": 260, "thumbnail": {"width": 474, "height": 385}, "imageInsightsToken":
-        "ccid_WTa+Ulji*mid_3C0E45E5907AE160A0AF42CC8D57A64F80A6077E*simid_608026878536582865",
+        "ccid_WTa+Ulji*mid_3C0E45E5907AE160A0AF42CC8D57A64F80A6077E*simid_608026878927963106",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "3C0E45E5907AE160A0AF42CC8D57A64F80A6077E", "accentColor": "C68A05"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=global+warming+(site%3awww.epa.gov+OR+site%3aarchive.epa.gov)&id=DBF56EB2E72CACFB823F1D1CD601A7DBAAAEEDDA&simid=608015505551000817",
-        "webSearchUrlPingSuffix": "DevEx,5085.1", "name": "Overview of Greenhouse
-        Gases | Greenhouse Gas (GHG ...", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.epqTzpsI4C0BPNG_lcZdMwHaHK&pid=Api",
-        "datePublished": "2017-02-14T12:00:00.0000000Z", "contentUrl": "https:\/\/www.epa.gov\/sites\/production\/files\/styles\/large\/public\/2016-05\/ghge-gases-overview_0.png",
-        "contentUrlPingSuffix": "DevEx,5087.1", "hostPageUrl": "https:\/\/www.epa.gov\/ghgemissions\/overview-greenhouse-gases",
-        "hostPageUrlPingSuffix": "DevEx,5086.1", "contentSize": "46312 B", "encodingFormat":
-        "png", "hostPageDisplayUrl": "https:\/\/www.epa.gov\/ghgemissions\/overview-greenhouse-gases",
-        "width": 764, "height": 739, "thumbnail": {"width": 474, "height": 458}, "imageInsightsToken":
-        "ccid_epqTzpsI*mid_DBF56EB2E72CACFB823F1D1CD601A7DBAAAEEDDA*simid_608015505551000817",
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=global+warming+(site%3awww.epa.gov+OR+site%3aarchive.epa.gov)&id=3C7CC8BEBE6FA5219203046A2CF797B6D7F4EA52&simid=607986287261910889",
+        "webSearchUrlPingSuffix": "DevEx,5031.1", "name": "Overview of Climate Change
+        Science | Climate Change Science | US EPA", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.A0NdPgPTMPP7ZHqBsYea3wHaE8&pid=Api",
+        "datePublished": "2016-09-29T12:00:00.0000000Z", "contentUrl": "https:\/\/www.epa.gov\/sites\/production\/files\/styles\/medium\/public\/2016-08\/climate_v_global_warming.jpg",
+        "contentUrlPingSuffix": "DevEx,5033.1", "hostPageUrl": "https:\/\/www.epa.gov\/climate-change-science\/overview-climate-change-science",
+        "hostPageUrlPingSuffix": "DevEx,5032.1", "contentSize": "9552 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.epa.gov\/climate-change-science\/overview-climate-change...",
+        "width": 448, "height": 299, "thumbnail": {"width": 474, "height": 316}, "imageInsightsToken":
+        "ccid_A0NdPgPT*mid_3C7CC8BEBE6FA5219203046A2CF797B6D7F4EA52*simid_607986287261910889",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "DBF56EB2E72CACFB823F1D1CD601A7DBAAAEEDDA", "accentColor": "326899"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=global+warming+(site%3awww.epa.gov+OR+site%3aarchive.epa.gov)&id=E56C7143992DD054A02BA7CFC43319EC941456D8&simid=608021488407285487",
-        "webSearchUrlPingSuffix": "DevEx,5091.1", "name": "A Student''s Guide to Global
-        Climate Change | US EPA", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.abghLFlXaORrvymEBeTduAHaEY&pid=Api",
-        "datePublished": "2018-01-28T00:14:00.0000000Z", "contentUrl": "https:\/\/archive.epa.gov\/climatechange\/kids\/images\/home-print.jpg",
-        "contentUrlPingSuffix": "DevEx,5093.1", "hostPageUrl": "https:\/\/archive.epa.gov\/climatechange\/kids\/index.html",
-        "hostPageUrlPingSuffix": "DevEx,5092.1", "contentSize": "294304 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/archive.epa.gov\/climatechange\/kids\/index.html",
-        "width": 1262, "height": 747, "thumbnail": {"width": 474, "height": 280},
-        "imageInsightsToken": "ccid_abghLFlX*mid_E56C7143992DD054A02BA7CFC43319EC941456D8*simid_608021488407285487",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "E56C7143992DD054A02BA7CFC43319EC941456D8", "accentColor": "1569B6"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=global+warming+(site%3awww.epa.gov+OR+site%3aarchive.epa.gov)&id=16B5ED494FB4CDDC38643E3C051D1A6CDA86161F&simid=608043740593196426",
-        "webSearchUrlPingSuffix": "DevEx,5097.1", "name": "Future of Climate Change
-        | Climate Change Science | US EPA", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.fpR15wanBSBH-4zA0uI78QHaI0&pid=Api",
-        "datePublished": "2017-04-28T21:18:00.0000000Z", "contentUrl": "https:\/\/www.epa.gov\/sites\/production\/files\/2016-07\/scenarioustemp-large.jpg",
-        "contentUrlPingSuffix": "DevEx,5099.1", "hostPageUrl": "https:\/\/www.epa.gov\/climate-change-science\/future-climate-change",
-        "hostPageUrlPingSuffix": "DevEx,5098.1", "contentSize": "1116757 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.epa.gov\/climate-change-science\/future-climate-change",
-        "width": 1350, "height": 1608, "thumbnail": {"width": 474, "height": 564},
-        "imageInsightsToken": "ccid_fpR15wan*mid_16B5ED494FB4CDDC38643E3C051D1A6CDA86161F*simid_608043740593196426",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "16B5ED494FB4CDDC38643E3C051D1A6CDA86161F", "accentColor": "C3A308"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=global+warming+(site%3awww.epa.gov+OR+site%3aarchive.epa.gov)&id=6622FE2E025461580B2811BCD393DE6F858953A4&simid=608050964744046491",
-        "webSearchUrlPingSuffix": "DevEx,5103.1", "name": "Climate Change Indicators:
-        Sea Level | Climate Change ...", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.HkG9omxCrCjjFj1R1uHJWwHaEo&pid=Api",
-        "datePublished": "2018-02-06T01:37:00.0000000Z", "contentUrl": "https:\/\/www.epa.gov\/sites\/production\/files\/styles\/large\/public\/2016-07\/sea-level-figure1-2016.png",
-        "contentUrlPingSuffix": "DevEx,5105.1", "hostPageUrl": "https:\/\/www.epa.gov\/climate-indicators\/climate-change-indicators-sea-level",
-        "hostPageUrlPingSuffix": "DevEx,5104.1", "contentSize": "69308 B", "encodingFormat":
-        "png", "hostPageDisplayUrl": "https:\/\/www.epa.gov\/climate-indicators\/climate-change-indicators...",
-        "width": 928, "height": 580, "thumbnail": {"width": 474, "height": 296}, "imageInsightsToken":
-        "ccid_HkG9omxC*mid_6622FE2E025461580B2811BCD393DE6F858953A4*simid_608050964744046491",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "6622FE2E025461580B2811BCD393DE6F858953A4", "accentColor": "BD4F0E"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=global+warming+(site%3awww.epa.gov+OR+site%3aarchive.epa.gov)&id=5EE01CF732141D9546BD3A882CB3A4449988797B&simid=608026526363289631",
-        "webSearchUrlPingSuffix": "DevEx,5109.1", "name": "Global Greenhouse Gas Emissions
-        Data | Greenhouse Gas (GHG ...", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.q1d5POixmxEKx14HNnr7BwHaHy&pid=Api",
-        "datePublished": "2016-08-09T12:00:00.0000000Z", "contentUrl": "https:\/\/www.epa.gov\/sites\/production\/files\/styles\/medium\/public\/2016-05\/global_emissions_country_2015.png",
-        "contentUrlPingSuffix": "DevEx,5111.1", "hostPageUrl": "https:\/\/www.epa.gov\/ghgemissions\/global-greenhouse-gas-emissions-data",
-        "hostPageUrlPingSuffix": "DevEx,5110.1", "contentSize": "172479 B", "encodingFormat":
-        "png", "hostPageDisplayUrl": "https:\/\/www.epa.gov\/ghgemissions\/global-greenhouse-gas-emissions-data",
-        "width": 448, "height": 471, "thumbnail": {"width": 474, "height": 498}, "imageInsightsToken":
-        "ccid_q1d5POix*mid_5EE01CF732141D9546BD3A882CB3A4449988797B*simid_608026526363289631",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "5EE01CF732141D9546BD3A882CB3A4449988797B", "accentColor": "AC5F1F"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=global+warming+(site%3awww.epa.gov+OR+site%3aarchive.epa.gov)&id=A15AC5A35817512716B4EA1FFA1F284CCC3F32C6&simid=608025517065963028",
-        "webSearchUrlPingSuffix": "DevEx,5115.1", "name": "Climate Impacts on Agriculture
-        and Food Supply | Climate ...", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.-ZP1NEUJOd716MCylOH2rQHaFM&pid=Api",
-        "datePublished": "2016-10-06T12:00:00.0000000Z", "contentUrl": "https:\/\/www.epa.gov\/sites\/production\/files\/2016-08\/uscornyields-large.jpg",
-        "contentUrlPingSuffix": "DevEx,5117.1", "hostPageUrl": "https:\/\/www.epa.gov\/climate-impacts\/climate-impacts-agriculture-and-food-supply",
-        "hostPageUrlPingSuffix": "DevEx,5116.1", "contentSize": "89397 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.epa.gov\/climate-impacts\/climate-impacts-agriculture-and...",
-        "width": 999, "height": 700, "thumbnail": {"width": 474, "height": 332}, "imageInsightsToken":
-        "ccid_+ZP1NEUJ*mid_A15AC5A35817512716B4EA1FFA1F284CCC3F32C6*simid_608025517065963028",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "A15AC5A35817512716B4EA1FFA1F284CCC3F32C6", "accentColor": "B1441A"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=global+warming+(site%3awww.epa.gov+OR+site%3aarchive.epa.gov)&id=AB4D56F1FAB9D981397C30CEB87E3DB4DC9A3F98&simid=608025796213869125",
-        "webSearchUrlPingSuffix": "DevEx,5121.1", "name": "Overview of Climate Change
-        Science | Climate Change ...", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.0Rc8Fz19pzzlnx2o7msEjQHaCD&pid=Api",
-        "datePublished": "2017-11-11T22:47:00.0000000Z", "contentUrl": "https:\/\/archive.epa.gov\/epa\/sites\/production\/files\/2016-07\/globaltempmaps-large.jpg",
-        "contentUrlPingSuffix": "DevEx,5123.1", "hostPageUrl": "https:\/\/archive.epa.gov\/epa\/climate-change-science\/overview-climate-change-science.html",
-        "hostPageUrlPingSuffix": "DevEx,5122.1", "contentSize": "244623 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/archive.epa.gov\/epa\/climate-change-science\/overview-climate...",
-        "width": 1200, "height": 333, "thumbnail": {"width": 474, "height": 131},
-        "imageInsightsToken": "ccid_0Rc8Fz19*mid_AB4D56F1FAB9D981397C30CEB87E3DB4DC9A3F98*simid_608025796213869125",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "AB4D56F1FAB9D981397C30CEB87E3DB4DC9A3F98", "accentColor": "AE4C1D"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=global+warming+(site%3awww.epa.gov+OR+site%3aarchive.epa.gov)&id=CFD989E42FE24F932F5C920043CA9A6995ADEAE6&simid=608013130441557461",
-        "webSearchUrlPingSuffix": "DevEx,5127.1", "name": "Climate Change Indicators:
-        Sea Surface Temperature ...", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.QsNSuU-NGiFnOVXWTqm43wHaHP&pid=Api",
-        "datePublished": "2018-02-01T05:17:00.0000000Z", "contentUrl": "https:\/\/www.epa.gov\/sites\/production\/files\/styles\/large\/public\/2016-07\/sea-surface-temp-download2-2016.png",
-        "contentUrlPingSuffix": "DevEx,5129.1", "hostPageUrl": "https:\/\/www.epa.gov\/climate-indicators\/climate-change-indicators-sea-surface-temperature",
-        "hostPageUrlPingSuffix": "DevEx,5128.1", "contentSize": "256565 B", "encodingFormat":
+        "imageId": "3C7CC8BEBE6FA5219203046A2CF797B6D7F4EA52", "accentColor": "C9C902"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=global+warming+(site%3awww.epa.gov+OR+site%3aarchive.epa.gov)&id=CFD989E42FE24F932F5C920043CA9A6995ADEAE6&simid=608013130835952803",
+        "webSearchUrlPingSuffix": "DevEx,5037.1", "name": "Climate Change Indicators:
+        Sea Surface Temperature | Climate Change Indicators in the United ...", "thumbnailUrl":
+        "https:\/\/tse2.mm.bing.net\/th?id=OIP.QsNSuU-NGiFnOVXWTqm43wHaHP&pid=Api",
+        "datePublished": "2018-08-09T23:09:00.0000000Z", "contentUrl": "https:\/\/www.epa.gov\/sites\/production\/files\/styles\/large\/public\/2016-07\/sea-surface-temp-download2-2016.png",
+        "contentUrlPingSuffix": "DevEx,5039.1", "hostPageUrl": "https:\/\/www.epa.gov\/climate-indicators\/climate-change-indicators-sea-surface-temperature",
+        "hostPageUrlPingSuffix": "DevEx,5038.1", "contentSize": "256565 B", "encodingFormat":
         "png", "hostPageDisplayUrl": "https:\/\/www.epa.gov\/climate-indicators\/climate-change-indicators...",
         "width": 928, "height": 907, "thumbnail": {"width": 474, "height": 463}, "imageInsightsToken":
-        "ccid_QsNSuU+N*mid_CFD989E42FE24F932F5C920043CA9A6995ADEAE6*simid_608013130441557461",
+        "ccid_QsNSuU+N*mid_CFD989E42FE24F932F5C920043CA9A6995ADEAE6*simid_608013130835952803",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "CFD989E42FE24F932F5C920043CA9A6995ADEAE6", "accentColor": "CC1200"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=global+warming+(site%3awww.epa.gov+OR+site%3aarchive.epa.gov)&id=18CD64EFDB57B90DF5186F442F60973339DA5925&simid=608019989397571786",
-        "webSearchUrlPingSuffix": "DevEx,5133.1", "name": "Climate Change Indicators:
-        Global Greenhouse Gas Emissions ...", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.JqiX-gB6l-nyD2akpKVlywHaEq&pid=Api",
-        "datePublished": "2018-01-28T02:09:00.0000000Z", "contentUrl": "https:\/\/www.epa.gov\/sites\/production\/files\/styles\/large\/public\/2016-07\/global-ghg-emissions-figure3-2016.png",
-        "contentUrlPingSuffix": "DevEx,5135.1", "hostPageUrl": "https:\/\/www.epa.gov\/climate-indicators\/climate-change-indicators-global-greenhouse-gas-emissions",
-        "hostPageUrlPingSuffix": "DevEx,5134.1", "contentSize": "48607 B", "encodingFormat":
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=global+warming+(site%3awww.epa.gov+OR+site%3aarchive.epa.gov)&id=4FA1BC156C5BEC14BADABC3E50AA86B7A2E8D024&simid=608024349251865612",
+        "webSearchUrlPingSuffix": "DevEx,5043.1", "name": "Causes of Climate Change
+        | Climate Change Science | US EPA", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.vlQymB7eJwTGUmdZqcrjcQHaE4&pid=Api",
+        "datePublished": "2016-12-27T12:00:00.0000000Z", "contentUrl": "https:\/\/www.epa.gov\/sites\/production\/files\/2016-07\/models-observed-human-natural.png",
+        "contentUrlPingSuffix": "DevEx,5045.1", "hostPageUrl": "https:\/\/www.epa.gov\/climate-change-science\/causes-climate-change",
+        "hostPageUrlPingSuffix": "DevEx,5044.1", "contentSize": "62082 B", "encodingFormat":
+        "png", "hostPageDisplayUrl": "https:\/\/www.epa.gov\/climate-change-science\/causes-climate-change",
+        "width": 819, "height": 540, "thumbnail": {"width": 474, "height": 312}, "imageInsightsToken":
+        "ccid_vlQymB7e*mid_4FA1BC156C5BEC14BADABC3E50AA86B7A2E8D024*simid_608024349251865612",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "4FA1BC156C5BEC14BADABC3E50AA86B7A2E8D024", "accentColor": "4E627D"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=global+warming+(site%3awww.epa.gov+OR+site%3aarchive.epa.gov)&id=7BC438CAD542BB03FF2A5BF42BD70B55B271ED40&simid=608056071825654259",
+        "webSearchUrlPingSuffix": "DevEx,5049.1", "name": "Climate Change Indicators
+        in the United States | US EPA", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.73DoBvxoicTUu0ZrRjyiKgHaE7&pid=Api",
+        "datePublished": "2016-12-19T12:00:00.0000000Z", "contentUrl": "https:\/\/www.epa.gov\/sites\/production\/files\/styles\/large\/public\/2016-10\/climate-forcing-graphic.png",
+        "contentUrlPingSuffix": "DevEx,5051.1", "hostPageUrl": "https:\/\/www.epa.gov\/climate-indicators",
+        "hostPageUrlPingSuffix": "DevEx,5050.1", "contentSize": "559912 B", "encodingFormat":
+        "png", "hostPageDisplayUrl": "https:\/\/www.epa.gov\/climate-indicators",
+        "width": 928, "height": 618, "thumbnail": {"width": 474, "height": 315}, "imageInsightsToken":
+        "ccid_73DoBvxo*mid_7BC438CAD542BB03FF2A5BF42BD70B55B271ED40*simid_608056071825654259",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "7BC438CAD542BB03FF2A5BF42BD70B55B271ED40", "accentColor": "002246"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=global+warming+(site%3awww.epa.gov+OR+site%3aarchive.epa.gov)&id=FBDD9A68952824D539F07CAE413B16BB8314130A&simid=608049388919524451",
+        "webSearchUrlPingSuffix": "DevEx,5055.1", "name": "Climate Change Indicators:
+        Arctic Sea Ice | Climate Change Indicators in the United States | US EPA",
+        "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.YTgIWRquDMfiOOKokXiHLwHaEy&pid=Api",
+        "datePublished": "2015-06-26T09:22:00.0000000Z", "contentUrl": "https:\/\/www.epa.gov\/sites\/production\/files\/styles\/large\/public\/2016-07\/arctic-sea-ice-figure2-2016.png",
+        "contentUrlPingSuffix": "DevEx,5057.1", "hostPageUrl": "https:\/\/www.epa.gov\/climate-indicators\/climate-change-indicators-arctic-sea-ice",
+        "hostPageUrlPingSuffix": "DevEx,5056.1", "contentSize": "77320 B", "encodingFormat":
         "png", "hostPageDisplayUrl": "https:\/\/www.epa.gov\/climate-indicators\/climate-change-indicators...",
-        "width": 928, "height": 585, "thumbnail": {"width": 474, "height": 298}, "imageInsightsToken":
-        "ccid_JqiX+gB6*mid_18CD64EFDB57B90DF5186F442F60973339DA5925*simid_608019989397571786",
+        "width": 928, "height": 600, "thumbnail": {"width": 474, "height": 306}, "imageInsightsToken":
+        "ccid_YTgIWRqu*mid_FBDD9A68952824D539F07CAE413B16BB8314130A*simid_608049388919524451",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "18CD64EFDB57B90DF5186F442F60973339DA5925", "accentColor": "CA9E01"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=global+warming+(site%3awww.epa.gov+OR+site%3aarchive.epa.gov)&id=16B5ED494FB4CDDC386490B55AF85CB61D42A9D8&simid=607999876121232594",
-        "webSearchUrlPingSuffix": "DevEx,5139.1", "name": "Future of Climate Change
-        | Climate Change Science | US EPA", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.Iq6iPHDZGUcVgz1774TjVgHaGW&pid=Api",
-        "datePublished": "2016-09-29T12:00:00.0000000Z", "contentUrl": "https:\/\/www.epa.gov\/sites\/production\/files\/2016-07\/scenariotempgraph_0.jpg",
-        "contentUrlPingSuffix": "DevEx,5141.1", "hostPageUrl": "https:\/\/www.epa.gov\/climate-change-science\/future-climate-change",
-        "hostPageUrlPingSuffix": "DevEx,5140.1", "contentSize": "373162 B", "encodingFormat":
+        "imageId": "FBDD9A68952824D539F07CAE413B16BB8314130A", "accentColor": "04214E"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=global+warming+(site%3awww.epa.gov+OR+site%3aarchive.epa.gov)&id=59F027F1C4182701AF64A66ED9DB0C107C731B10&simid=608024357832034108",
+        "webSearchUrlPingSuffix": "DevEx,5061.1", "name": "Climate Impacts on Water
+        Resources | Climate Change Impacts | US EPA", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.TGm-okQvCKqXrM98M3UQmQHaE_&pid=Api",
+        "datePublished": "2015-09-18T17:47:00.0000000Z", "contentUrl": "https:\/\/www.epa.gov\/sites\/production\/files\/2016-06\/water_cycle.jpg",
+        "contentUrlPingSuffix": "DevEx,5063.1", "hostPageUrl": "https:\/\/www.epa.gov\/climate-impacts\/climate-impacts-water-resources",
+        "hostPageUrlPingSuffix": "DevEx,5062.1", "contentSize": "179172 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.epa.gov\/climate-impacts\/climate-impacts-water-resources",
+        "width": 1038, "height": 700, "thumbnail": {"width": 474, "height": 319},
+        "imageInsightsToken": "ccid_TGm+okQv*mid_59F027F1C4182701AF64A66ED9DB0C107C731B10*simid_608024357832034108",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "59F027F1C4182701AF64A66ED9DB0C107C731B10", "accentColor": "B79414"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=global+warming+(site%3awww.epa.gov+OR+site%3aarchive.epa.gov)&id=5F5812C80113395E3021AB8E0AED88D351582334&simid=608023301296033637",
+        "webSearchUrlPingSuffix": "DevEx,5067.1", "name": "Climate Impacts on Forests
+        | Climate Change Impacts | US EPA", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.lfA7QyQvq1OueISpa95sAwHaEv&pid=Api",
+        "datePublished": "2015-09-18T17:47:00.0000000Z", "contentUrl": "https:\/\/www.epa.gov\/sites\/production\/files\/2016-06\/shiftinforesttypes-large.jpg",
+        "contentUrlPingSuffix": "DevEx,5069.1", "hostPageUrl": "https:\/\/www.epa.gov\/climate-impacts\/climate-impacts-forests",
+        "hostPageUrlPingSuffix": "DevEx,5068.1", "contentSize": "247712 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.epa.gov\/climate-impacts\/climate-impacts-forests",
+        "width": 750, "height": 480, "thumbnail": {"width": 474, "height": 303}, "imageInsightsToken":
+        "ccid_lfA7QyQv*mid_5F5812C80113395E3021AB8E0AED88D351582334*simid_608023301296033637",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "5F5812C80113395E3021AB8E0AED88D351582334", "accentColor": "BDAA0E"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=global+warming+(site%3awww.epa.gov+OR+site%3aarchive.epa.gov)&id=1A4F62A5B1BB0E3FB5948E1EAB0DE1A4084B4DDF&simid=608037216962416504",
+        "webSearchUrlPingSuffix": "DevEx,5073.1", "name": "Climate Impacts in the
+        Southeast | Climate Change Impacts | US EPA", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.cHUZbX6nlulGL12a5xgz4gHaGe&pid=Api",
+        "datePublished": "2017-02-20T23:28:00.0000000Z", "contentUrl": "https:\/\/www.epa.gov\/sites\/production\/files\/2015-12\/southest-sea-level-large.jpg",
+        "contentUrlPingSuffix": "DevEx,5075.1", "hostPageUrl": "https:\/\/www.epa.gov\/climate-impacts\/climate-impacts-southeast",
+        "hostPageUrlPingSuffix": "DevEx,5074.1", "contentSize": "105148 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.epa.gov\/climate-impacts\/climate-impacts-southeast",
+        "width": 720, "height": 630, "thumbnail": {"width": 474, "height": 414}, "imageInsightsToken":
+        "ccid_BgdrN3Ru*mid_1A4F62A5B1BB0E3FB5948E1EAB0DE1A4084B4DDF*simid_608037216962416504",
+        "imageId": "1A4F62A5B1BB0E3FB5948E1EAB0DE1A4084B4DDF", "accentColor": "CA7501"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=global+warming+(site%3awww.epa.gov+OR+site%3aarchive.epa.gov)&id=2DBBA66D2F0D73B11861321939C21205F015F220&simid=608000842875144997",
+        "webSearchUrlPingSuffix": "DevEx,5079.1", "name": "Frequently Asked Questions
+        About Climate Change | Climate Change | US EPA", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.IgX5Hz4PnedipGlZLcRIBAHaFn&pid=Api",
+        "datePublished": "2018-07-10T04:46:00.0000000Z", "contentUrl": "https:\/\/archive.epa.gov\/epa\/sites\/production\/files\/2017-01\/cs_global_temp_and_co2_1880-2012_v3_1.png",
+        "contentUrlPingSuffix": "DevEx,5081.1", "hostPageUrl": "https:\/\/archive.epa.gov\/epa\/climatechange\/frequently-asked-questions-about-climate-change.html",
+        "hostPageUrlPingSuffix": "DevEx,5080.1", "contentSize": "118671 B", "encodingFormat":
+        "png", "hostPageDisplayUrl": "https:\/\/archive.epa.gov\/epa\/climatechange\/frequently-asked...",
+        "width": 2261, "height": 1714, "thumbnail": {"width": 474, "height": 359},
+        "imageInsightsToken": "ccid_IgX5Hz4P*mid_2DBBA66D2F0D73B11861321939C21205F015F220*simid_608000842875144997",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "2DBBA66D2F0D73B11861321939C21205F015F220", "accentColor": "BB1017"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=global+warming+(site%3awww.epa.gov+OR+site%3aarchive.epa.gov)&id=068F77A4DAB30CBA09048E10FE9BB70180CF8924&simid=608015793712530799",
+        "webSearchUrlPingSuffix": "DevEx,5085.1", "name": "Climate Impacts on Coastal
+        Areas | Climate Change Impacts | US EPA", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.tfY5gG9NOrEO1YM2LHiZSgAAAA&pid=Api",
+        "datePublished": "2015-09-18T17:47:00.0000000Z", "contentUrl": "https:\/\/www.epa.gov\/sites\/production\/files\/2016-05\/charlestonslr-large.jpg",
+        "contentUrlPingSuffix": "DevEx,5087.1", "hostPageUrl": "https:\/\/www.epa.gov\/climate-impacts\/climate-impacts-coastal-areas",
+        "hostPageUrlPingSuffix": "DevEx,5086.1", "contentSize": "28470 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.epa.gov\/climate-impacts\/climate-impacts-coastal-areas",
+        "width": 300, "height": 188, "thumbnail": {"width": 300, "height": 188}, "imageInsightsToken":
+        "ccid_tfY5gG9N*mid_068F77A4DAB30CBA09048E10FE9BB70180CF8924*simid_608015793712530799",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "068F77A4DAB30CBA09048E10FE9BB70180CF8924", "accentColor": "BF840C"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=global+warming+(site%3awww.epa.gov+OR+site%3aarchive.epa.gov)&id=5EE01CF732141D9546BD5F101B0880CADC4C7CE2&simid=608006293187005961",
+        "webSearchUrlPingSuffix": "DevEx,5091.1", "name": "Global Greenhouse Gas Emissions
+        Data | Greenhouse Gas (GHG) Emissions | US EPA", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.hE4hz2tJ4RuC1cUufEx-pAHaIK&pid=Api",
+        "datePublished": "2016-08-09T12:00:00.0000000Z", "contentUrl": "https:\/\/www.epa.gov\/sites\/production\/files\/2016-05\/global_emissions_sector_2015.png",
+        "contentUrlPingSuffix": "DevEx,5093.1", "hostPageUrl": "https:\/\/www.epa.gov\/ghgemissions\/global-greenhouse-gas-emissions-data",
+        "hostPageUrlPingSuffix": "DevEx,5092.1", "contentSize": "34996 B", "encodingFormat":
+        "png", "hostPageDisplayUrl": "https:\/\/www.epa.gov\/ghgemissions\/global-greenhouse-gas-emissions-data",
+        "width": 493, "height": 543, "thumbnail": {"width": 474, "height": 522}, "imageInsightsToken":
+        "ccid_hE4hz2tJ*mid_5EE01CF732141D9546BD5F101B0880CADC4C7CE2*simid_608006293187005961",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "5EE01CF732141D9546BD5F101B0880CADC4C7CE2", "accentColor": "BB5410"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=global+warming+(site%3awww.epa.gov+OR+site%3aarchive.epa.gov)&id=5EE01CF732141D9546BDDF12A980CC02C5512CAC&simid=608040914960187450",
+        "webSearchUrlPingSuffix": "DevEx,5097.1", "name": "Global Greenhouse Gas Emissions
+        Data | Greenhouse Gas (GHG) Emissions | US EPA", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.t1s_dSoPVwBJX66mjCdJaQHaIG&pid=Api",
+        "datePublished": "2016-08-09T12:00:00.0000000Z", "contentUrl": "https:\/\/www.epa.gov\/sites\/production\/files\/2016-05\/global_emissions_gas_2015.png",
+        "contentUrlPingSuffix": "DevEx,5099.1", "hostPageUrl": "https:\/\/www.epa.gov\/ghgemissions\/global-greenhouse-gas-emissions-data#Trends",
+        "hostPageUrlPingSuffix": "DevEx,5098.1", "contentSize": "34502 B", "encodingFormat":
+        "png", "hostPageDisplayUrl": "https:\/\/www.epa.gov\/ghgemissions\/global-greenhouse-gas-emissions...",
+        "width": 501, "height": 548, "thumbnail": {"width": 474, "height": 518}, "imageInsightsToken":
+        "ccid_t1s\/dSoP*mid_5EE01CF732141D9546BDDF12A980CC02C5512CAC*simid_608040914960187450",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "5EE01CF732141D9546BDDF12A980CC02C5512CAC", "accentColor": "AD5E1E"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=global+warming+(site%3awww.epa.gov+OR+site%3aarchive.epa.gov)&id=A5178FB3D43326BEAE3B24F55CF0CC580422F3A3&simid=608049676687114347",
+        "webSearchUrlPingSuffix": "DevEx,5103.1", "name": "Rising Sea Level | A Student''s
+        Guide to Global Climate Change | US EPA", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.a6ZCZ540VnHuwYj_dfNFEgHaC2&pid=Api",
+        "datePublished": "2018-07-22T03:42:00.0000000Z", "contentUrl": "https:\/\/archive.epa.gov\/climatechange\/kids\/images\/2-1-5-1-sealevel.gif",
+        "contentUrlPingSuffix": "DevEx,5105.1", "hostPageUrl": "https:\/\/archive.epa.gov\/climatechange\/kids\/impacts\/signs\/sea-level.html",
+        "hostPageUrlPingSuffix": "DevEx,5104.1", "contentSize": "20907 B", "encodingFormat":
+        "gif", "hostPageDisplayUrl": "https:\/\/archive.epa.gov\/climatechange\/kids\/impacts\/signs\/sea-level...",
+        "width": 516, "height": 199, "thumbnail": {"width": 474, "height": 182}, "imageInsightsToken":
+        "ccid_a6ZCZ540*mid_A5178FB3D43326BEAE3B24F55CF0CC580422F3A3*simid_608049676687114347",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "A5178FB3D43326BEAE3B24F55CF0CC580422F3A3", "accentColor": "0D90BE"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=global+warming+(site%3awww.epa.gov+OR+site%3aarchive.epa.gov)&id=16B5ED494FB4CDDC38643E3C051D1A6CDA86161F&simid=608043740999780709",
+        "webSearchUrlPingSuffix": "DevEx,5109.1", "name": "Future of Climate Change
+        | Climate Change Science | US EPA", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.fpR15wanBSBH-4zA0uI78QHaI0&pid=Api",
+        "datePublished": "2017-04-28T21:18:00.0000000Z", "contentUrl": "https:\/\/www.epa.gov\/sites\/production\/files\/2016-07\/scenarioustemp-large.jpg",
+        "contentUrlPingSuffix": "DevEx,5111.1", "hostPageUrl": "https:\/\/www.epa.gov\/climate-change-science\/future-climate-change",
+        "hostPageUrlPingSuffix": "DevEx,5110.1", "contentSize": "1116757 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "https:\/\/www.epa.gov\/climate-change-science\/future-climate-change",
-        "width": 1111, "height": 952, "thumbnail": {"width": 474, "height": 406},
-        "imageInsightsToken": "ccid_Iq6iPHDZ*mid_16B5ED494FB4CDDC386490B55AF85CB61D42A9D8*simid_607999876121232594",
+        "width": 1350, "height": 1608, "thumbnail": {"width": 474, "height": 564},
+        "imageInsightsToken": "ccid_fpR15wan*mid_16B5ED494FB4CDDC38643E3C051D1A6CDA86161F*simid_608043740999780709",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "16B5ED494FB4CDDC386490B55AF85CB61D42A9D8", "accentColor": "B94412"}],
+        "imageId": "16B5ED494FB4CDDC38643E3C051D1A6CDA86161F", "accentColor": "C3A308"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=global+warming+(site%3awww.epa.gov+OR+site%3aarchive.epa.gov)&id=4FA1BC156C5BEC14BADA5CC7A7FDE51825109972&simid=607991643061816956",
+        "webSearchUrlPingSuffix": "DevEx,5115.1", "name": "Causes of Climate Change
+        | Climate Change Science | US EPA", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.f4bXdY56ONr43c04mX2EXwHaGM&pid=Api",
+        "datePublished": "2016-12-27T12:00:00.0000000Z", "contentUrl": "https:\/\/www.epa.gov\/sites\/production\/files\/2016-07\/co2temp800kyrs-large.jpg",
+        "contentUrlPingSuffix": "DevEx,5117.1", "hostPageUrl": "https:\/\/www.epa.gov\/climate-change-science\/causes-climate-change",
+        "hostPageUrlPingSuffix": "DevEx,5116.1", "contentSize": "77415 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.epa.gov\/climate-change-science\/causes-climate-change",
+        "width": 688, "height": 576, "thumbnail": {"width": 474, "height": 396}, "imageInsightsToken":
+        "ccid_f4bXdY56*mid_4FA1BC156C5BEC14BADA5CC7A7FDE51825109972*simid_607991643061816956",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "4FA1BC156C5BEC14BADA5CC7A7FDE51825109972", "accentColor": "386193"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=global+warming+(site%3awww.epa.gov+OR+site%3aarchive.epa.gov)&id=3C0E45E5907AE160A0AFAE2BFDA4ECB732C88CB5&simid=608043264251793212",
+        "webSearchUrlPingSuffix": "DevEx,5121.1", "name": "Climate Change Indicators:
+        Greenhouse Gases | Climate Change Indicators in the United States ...", "thumbnailUrl":
+        "https:\/\/tse2.mm.bing.net\/th?id=OIP.TI78iQY12J_nLGJXDsfX7gEsDz&pid=Api",
+        "datePublished": "2016-08-02T19:55:00.0000000Z", "contentUrl": "https:\/\/www.epa.gov\/sites\/production\/files\/styles\/large\/public\/2016-07\/climate-forcing-landing-thumb-2016.png",
+        "contentUrlPingSuffix": "DevEx,5123.1", "hostPageUrl": "https:\/\/www.epa.gov\/climate-indicators\/greenhouse-gases#major-long-lived-greenhouse-gases-and-their-characteristics",
+        "hostPageUrlPingSuffix": "DevEx,5122.1", "contentSize": "68103 B", "encodingFormat":
+        "png", "hostPageDisplayUrl": "https:\/\/www.epa.gov\/climate-indicators\/greenhouse-gases#major-long...",
+        "width": 320, "height": 260, "thumbnail": {"width": 320, "height": 260}, "imageInsightsToken":
+        "ccid_TI78iQY1*mid_3C0E45E5907AE160A0AFAE2BFDA4ECB732C88CB5*simid_608043264251793212",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "3C0E45E5907AE160A0AFAE2BFDA4ECB732C88CB5", "accentColor": "CAA101"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=global+warming+(site%3awww.epa.gov+OR+site%3aarchive.epa.gov)&id=969B7C09E9F0DB8816523285C4D118763F1EC7B9&simid=608001989633704338",
+        "webSearchUrlPingSuffix": "DevEx,5127.1", "name": "Integrated Modeling 101:
+        Training Module | Environmental Measurements and Modeling | US EPA", "thumbnailUrl":
+        "https:\/\/tse1.mm.bing.net\/th?id=OIP.2FHBZvCKUW4Jn_WWYGK6TQHaEq&pid=Api",
+        "datePublished": "2018-07-07T00:54:00.0000000Z", "contentUrl": "https:\/\/www.epa.gov\/sites\/production\/files\/styles\/large\/public\/2015-06\/comlex.png?itok=faGqoQB7",
+        "contentUrlPingSuffix": "DevEx,5129.1", "hostPageUrl": "https:\/\/www.epa.gov\/modeling\/integrated-modeling-101-training-module",
+        "hostPageUrlPingSuffix": "DevEx,5128.1", "contentSize": "266150 B", "encodingFormat":
+        "png", "hostPageDisplayUrl": "https:\/\/www.epa.gov\/modeling\/integrated-modeling-101-training-module",
+        "width": 750, "height": 472, "thumbnail": {"width": 474, "height": 298}, "imageInsightsToken":
+        "ccid_2FHBZvCK*mid_969B7C09E9F0DB8816523285C4D118763F1EC7B9*simid_608001989633704338",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "969B7C09E9F0DB8816523285C4D118763F1EC7B9", "accentColor": "AB9D20"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=global+warming+(site%3awww.epa.gov+OR+site%3aarchive.epa.gov)&id=4FCF386098971122A6461F7C67BF77118D63ED9E&simid=608022090100968538",
+        "webSearchUrlPingSuffix": "DevEx,5133.1", "name": "Climate Concepts | A Student''s
+        Guide to Global Climate Change | US EPA", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.JS3hoAoMrWobE-yhJ40RBgHaF9&pid=Api",
+        "datePublished": "2018-07-10T18:22:00.0000000Z", "contentUrl": "https:\/\/archive.epa.gov\/climatechange\/kids\/images\/1-1-webof.gif",
+        "contentUrlPingSuffix": "DevEx,5135.1", "hostPageUrl": "https:\/\/archive.epa.gov\/climatechange\/kids\/basics\/concepts.html",
+        "hostPageUrlPingSuffix": "DevEx,5134.1", "contentSize": "25739 B", "encodingFormat":
+        "gif", "hostPageDisplayUrl": "https:\/\/archive.epa.gov\/climatechange\/kids\/basics\/concepts.html",
+        "width": 510, "height": 411, "thumbnail": {"width": 474, "height": 381}, "imageInsightsToken":
+        "ccid_JS3hoAoM*mid_4FCF386098971122A6461F7C67BF77118D63ED9E*simid_608022090100968538",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "4FCF386098971122A6461F7C67BF77118D63ED9E", "accentColor": "C69505"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=global+warming+(site%3awww.epa.gov+OR+site%3aarchive.epa.gov)&id=CAFFEFEDD04568DFABA28D1DA6D491D71B17E938&simid=608044230629393314",
+        "webSearchUrlPingSuffix": "DevEx,5139.1", "name": "Climate Impacts in Alaska
+        | Climate Change Impacts | US EPA", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.y98chFmye_WBwmnjU6OkgQHaGe&pid=Api",
+        "datePublished": "2016-12-21T03:28:00.0000000Z", "contentUrl": "https:\/\/www.epa.gov\/sites\/production\/files\/2015-12\/pondshrinkage-large_1.jpg",
+        "contentUrlPingSuffix": "DevEx,5141.1", "hostPageUrl": "https:\/\/www.epa.gov\/climate-impacts\/climate-impacts-alaska",
+        "hostPageUrlPingSuffix": "DevEx,5140.1", "contentSize": "311962 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.epa.gov\/climate-impacts\/climate-impacts-alaska",
+        "width": 800, "height": 700, "thumbnail": {"width": 474, "height": 414}, "imageInsightsToken":
+        "ccid_y98chFmy*mid_CAFFEFEDD04568DFABA28D1DA6D491D71B17E938*simid_608044230629393314",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "CAFFEFEDD04568DFABA28D1DA6D491D71B17E938", "accentColor": "4A6C81"}],
         "queryExpansions": [{"text": "Global Warming Scam", "displayText": "Scam",
         "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Global+Warming+Scam&tq=%7b%22pq%22%3a%22global+warming+(site%3awww.epa.gov+OR+site%3aarchive.epa.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22global%22%2c%22pv%22%3a%22global%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22warming%22%2c%22pv%22%3a%22warming%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3awww.epa.gov%22%2c%22pv%22%3a%22(site%3awww.epa.gov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3aarchive.epa.gov)%22%2c%22pv%22%3a%22site%3aarchive.epa.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Scam%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
         "webSearchUrlPingSuffix": "DevEx,5194.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Global+Warming+Scam&tq=%7b%22pq%22%3a%22global+warming+(site%3awww.epa.gov+OR+site%3aarchive.epa.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22global%22%2c%22pv%22%3a%22global%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22warming%22%2c%22pv%22%3a%22warming%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3awww.epa.gov%22%2c%22pv%22%3a%22(site%3awww.epa.gov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3aarchive.epa.gov)%22%2c%22pv%22%3a%22site%3aarchive.epa.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Scam%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
@@ -528,5 +530,5 @@ http_interactions:
         {"pivot": "(site:www.epa.gov", "suggestions": []}, {"pivot": "OR", "suggestions":
         []}, {"pivot": "site:archive.epa.gov)", "suggestions": []}]}'
     http_version: 
-  recorded_at: Thu, 22 Feb 2018 07:18:46 GMT
+  recorded_at: Mon, 27 Aug 2018 02:33:03 GMT
 recorded_with: VCR 4.0.0

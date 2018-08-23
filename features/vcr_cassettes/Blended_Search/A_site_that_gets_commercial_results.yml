@@ -2,15 +2,13 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=news%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=news%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
       - USASearch
-      Ocp-Apim-Subscription-Key:
-      - "<BING_V6_APP_ID>"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -27,165 +25,163 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3070'
+      - '3051'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Thu, 22 Feb 2018 07:14:31 GMT
+      - Mon, 27 Aug 2018 01:35:42 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=2314EA6095D66B1F0F6CE1FE94336AB5; path=/; expires=Tue, 19-Mar-2019 07:15:32
+      - MUID=3A9737337A68672F17243B6B7B676627; path=/; expires=Sat, 21-Sep-2019 01:36:42
         GMT; domain=bingapis.com
-      - MUIDB=2314EA6095D66B1F0F6CE1FE94336AB5; path=/; httponly; expires=Tue, 19-Mar-2019
-        07:15:32 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:15:31 GMT;
+      - MUIDB=3A9737337A68672F17243B6B7B676627; path=/; httponly; expires=Sat, 21-Sep-2019
+        01:36:42 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 27-Aug-2020 01:36:42 GMT;
         path=/
-      - SRCHUID=V=2&GUID=2B559DDC2B974A6599DDE2E6F332DD65&dmnchg=1; domain=.bingapis.com;
-        expires=Sat, 22-Feb-2020 07:15:31 GMT; path=/
-      - SRCHUSR=DOB=20180222; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:15:31
+      - SRCHUID=V=2&GUID=0F69E5282A364B899EA4D19280C7C9B8&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 27-Aug-2020 01:36:42 GMT; path=/
+      - SRCHUSR=DOB=20180827; domain=.bingapis.com; expires=Thu, 27-Aug-2020 01:36:42
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=1D169866A3BA6BD72D0B93F8A25F6A7A; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=26C718CC81856F04367A1494808A6E88; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Tue, 19-Mar-2019 07:15:32 GMT; domain=bingapis.com
-      - _SS=SID=1D169866A3BA6BD72D0B93F8A25F6A7A; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 21-Sep-2019 01:36:42 GMT; domain=bingapis.com
+      - _SS=SID=26C718CC81856F04367A1494808A6E88; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 5C4F796F2D804D0CA582DF14C1810B3A
+      - 12E7A3B0138D48CEB22EF4F2A97CAF7C
       X-Msedge-Clientid:
-      - 2314EA6095D66B1F0F6CE1FE94336AB5
+      - 3A9737337A68672F17243B6B7B676627
       X-Msapi-Userstate:
-      - 012e
+      - c9c5
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 5C4F796F2D804D0CA582DF14C1810B3A Ref B: SG2EDGE0222 Ref C: 2018-02-22T07:15:32Z'
+      - 'Ref A: 12E7A3B0138D48CEB22EF4F2A97CAF7C Ref B: BAYEDGE0114 Ref C: 2018-08-27T01:36:42Z'
       Date:
-      - Thu, 22 Feb 2018 07:15:31 GMT
+      - Mon, 27 Aug 2018 01:36:41 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=CD82C6BD828C4B949682B3D6021AA6C5&CID=2314EA6095D66B1F0F6CE1FE94336AB5&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=CD82C6BD828C4B949682B3D6021AA6C5&CID=2314EA6095D66B1F0F6CE1FE94336AB5&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=44174C32517444E09EFEF2D5C80BADCB&CID=3A9737337A68672F17243B6B7B676627&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=44174C32517444E09EFEF2D5C80BADCB&CID=3A9737337A68672F17243B6B7B676627&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=news+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5527.1", "totalEstimatedMatches": 15600000,
+        "webSearchUrlPingSuffix": "DevEx,5414.1", "totalEstimatedMatches": 31300000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "Presidential News and Speeches - whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/news\/",
-        "urlPingSuffix": "DevEx,5089.1", "displayUrl": "https:\/\/www.whitehouse.gov\/news",
-        "snippet": "Statements & Releases Readout of President Donald J. Trump’s Call
-        with President Vladimir Putin of Russia", "dateLastCrawled": "2018-02-15T00:36:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "News
-        | USCIS", "url": "https:\/\/www.uscis.gov\/news", "urlPingSuffix": "DevEx,5111.1",
-        "displayUrl": "https:\/\/www.uscis.gov\/news", "snippet": "Here we have
-        the latest news within the immigration benefit world, handled by U.S. Citizenship
-        and Immigration Services (USCIS). Both news media and general public ...",
-        "deepLinks": [{"name": "All News", "url": "https:\/\/www.uscis.gov\/news\/all-news",
-        "urlPingSuffix": "DevEx,5103.1"}, {"name": "News Releases", "url": "https:\/\/www.uscis.gov\/news-releases",
-        "urlPingSuffix": "DevEx,5104.1"}, {"name": "Alerts", "url": "https:\/\/www.uscis.gov\/news\/alerts",
-        "urlPingSuffix": "DevEx,5105.1"}, {"name": "Media Contacts", "url": "https:\/\/www.uscis.gov\/news\/media-contacts",
-        "urlPingSuffix": "DevEx,5106.1"}], "dateLastCrawled": "2018-02-13T11:14:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "News
-        | Governor Andrew M. Cuomo", "url": "http:\/\/www.governor.ny.gov\/news",
-        "urlPingSuffix": "DevEx,5131.1", "about": [{"name": "Andrew Cuomo"}], "displayUrl":
-        "www.governor.ny.gov\/news", "snippet": "The official website of the 56th
-        Governor of New York State, Andrew M. Cuomo. Find information about the administration,
-        issues, & news that affects you.", "dateLastCrawled": "2018-02-13T14:15:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "News
-        | NSF - National Science Foundation", "url": "https:\/\/nsf.gov\/news\/",
-        "urlPingSuffix": "DevEx,5146.1", "about": [{"name": "National Science Foundation"}],
-        "displayUrl": "https:\/\/nsf.gov\/news", "snippet": "NSF''s mission is to
-        advance the progress of science, a mission accomplished by funding proposals
-        for research and education made by scientists, engineers, and ...", "dateLastCrawled":
-        "2018-02-12T14:57:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
-        "name": "News - USGS", "url": "https:\/\/www.usgs.gov\/news", "urlPingSuffix":
-        "DevEx,5161.1", "displayUrl": "https:\/\/www.usgs.gov\/news", "snippet":
-        "News Dive into the world of science! Read these stories and narratives
-        to learn about news items, hot topics, expeditions underway, and much more.",
-        "dateLastCrawled": "2018-02-15T20:35:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
+        "News | USCIS", "url": "https:\/\/www.uscis.gov\/news", "urlPingSuffix":
+        "DevEx,5058.1", "displayUrl": "https:\/\/www.uscis.gov\/news", "snippet":
+        "Here we have the latest news within the immigration benefit world, handled
+        by U.S. Citizenship and Immigration Services (USCIS). Both news media
+        and general public can find important information about", "dateLastCrawled":
+        "2018-08-20T20:00:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
+        "name": "News | Governor Andrew M. Cuomo", "url": "https:\/\/www.governor.ny.gov\/news",
+        "urlPingSuffix": "DevEx,5072.1", "about": [{"name": "Andrew Cuomo"}], "displayUrl":
+        "https:\/\/www.governor.ny.gov\/news", "snippet": "The official website
+        of the 56th Governor of New York State, Andrew M. Cuomo. Find information
+        about the administration, issues, & news that affects you.", "dateLastCrawled":
+        "2018-08-20T00:42:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
         "name": "Defense.gov - News", "url": "https:\/\/www.defense.gov\/News\/",
-        "urlPingSuffix": "DevEx,5176.1", "displayUrl": "https:\/\/www.defense.gov\/News",
-        "snippet": "Pacom Commander Says Indo-Pacific Region at a Crossroads America’s
-        security and economic prosperity are linked to the Indo-Pacific region, which
-        finds itself at a ...", "dateLastCrawled": "2018-02-16T18:00:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "News
-        - AF", "url": "http:\/\/www.af.mil\/News.aspx", "urlPingSuffix": "DevEx,5191.1",
-        "about": [{"name": "Davis–Monthan Air Force Base"}], "displayUrl": "www.af.mil\/News.aspx",
+        "urlPingSuffix": "DevEx,5086.1", "displayUrl": "https:\/\/www.defense.gov\/News",
+        "snippet": "United States Department of Defense (DoD) News. Iraqi Forces
+        Make Strong Start in Offensive to Liberate Tal Afar Iraqi security forces
+        have made a positive start in their offensive to liberate the Iraqi city of
+        Tal Afar from the Islamic State of Iraq and Syria, the deputy commander of
+        Operation Inherent Resolve said.", "dateLastCrawled": "2018-08-21T15:55:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "News",
+        "url": "https:\/\/www.whitehouse.gov\/news\/", "urlPingSuffix": "DevEx,5100.1",
+        "displayUrl": "https:\/\/www.whitehouse.gov\/news", "snippet": "Statements
+        & Releases President Trump Announces Presidential Delegation to the Republic
+        of Paraguay to Attend the Inauguration of His Excellency Mario Abdo Benitez",
+        "dateLastCrawled": "2018-08-14T14:21:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
+        "name": "News (U.S. National Park Service)", "url": "https:\/\/www.nps.gov\/aboutus\/news\/index.htm",
+        "urlPingSuffix": "DevEx,5113.1", "about": [{"name": "National Park Service"}],
+        "displayUrl": "https:\/\/www.nps.gov\/aboutus\/news", "snippet": "Find
+        links to the latest National Park Service news, photos and multimedia, facts
+        and figures, and more.", "dateLastCrawled": "2018-08-08T09:26:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "News
+        - af.mil", "url": "https:\/\/www.af.mil\/news\/", "urlPingSuffix": "DevEx,5125.1",
+        "about": [{"name": "Davis–Monthan Air Force Base"}], "displayUrl": "https:\/\/www.af.mil\/news",
         "snippet": "The official website of the U.S. Air Force. AF.MIL delivers
         the latest breaking news and information on the U.S. Air Force including
-        top stories, features, leadership ...", "dateLastCrawled": "2018-02-16T11:23:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "United
-        States Coast Guard (USCG)", "url": "http:\/\/www.news.uscg.mil\/", "urlPingSuffix":
-        "DevEx,5205.1", "about": [{"name": "United States Coast Guard"}], "displayUrl":
-        "www.news.uscg.mil", "snippet": "The official website for the United States
-        Coast Guard News", "dateLastCrawled": "2018-02-15T21:41:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "United States
-        Navy - Official Site", "url": "http:\/\/www.navy.mil\/", "urlPingSuffix":
-        "DevEx,5219.1", "about": [{"name": "United States Navy"}], "displayUrl": "www.navy.mil",
-        "snippet": "The Official Website of the United States Navy: US Navy News
-        Stories, Photos, Videos and Social Media", "dateLastCrawled": "2018-02-15T22:41:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Army
-        Worldwide News - The United States Army", "url": "https:\/\/www.army.mil\/news",
-        "urlPingSuffix": "DevEx,5234.1", "displayUrl": "https:\/\/www.army.mil\/news",
+        top stories, features, leadership, policies, and more.", "dateLastCrawled":
+        "2018-08-20T15:59:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "name": "Newsroom | Internal Revenue Service", "url": "https:\/\/www.irs.gov\/newsroom",
+        "urlPingSuffix": "DevEx,5137.1", "displayUrl": "https:\/\/www.irs.gov\/newsroom",
+        "snippet": "Provides the latest news and information about the IRS.", "dateLastCrawled":
+        "2018-08-15T20:22:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "name": "News - Glacier National Park (U.S. National Park Service)",
+        "url": "https:\/\/www.nps.gov\/glac\/learn\/news\/index.htm", "urlPingSuffix":
+        "DevEx,5151.1", "about": [{"name": "Glacier National Park"}], "displayUrl":
+        "https:\/\/www.nps.gov\/glac\/learn\/news", "snippet": "News Releases
+        Read the latest press releases or find old articles in the archive. Press
+        Kit Explore all sorts of background information on Glacier National Park.",
+        "dateLastCrawled": "2018-06-13T22:18:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
+        "name": "News - Yellowstone National Park (U.S. National Park Service)",
+        "url": "https:\/\/www.nps.gov\/yell\/learn\/news\/index.htm", "urlPingSuffix":
+        "DevEx,5164.1", "displayUrl": "https:\/\/www.nps.gov\/yell\/learn\/news",
+        "snippet": "Stay connected to Yellowstone National Park news through news
+        releases, Twitter, and more.", "dateLastCrawled": "2018-06-17T08:54:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "News
+        | NSF - National Science Foundation", "url": "https:\/\/nsf.gov\/news\/",
+        "urlPingSuffix": "DevEx,5178.1", "displayUrl": "https:\/\/nsf.gov\/news",
+        "snippet": "NSF''s mission is to advance the progress of science, a mission
+        accomplished by funding proposals for research and education made by scientists,
+        engineers, and educators from across the country.", "dateLastCrawled": "2018-08-19T15:59:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "News
+        | City of Fort Worth, Texas", "url": "http:\/\/fortworthtexas.gov\/news\/",
+        "urlPingSuffix": "DevEx,5191.1", "displayUrl": "fortworthtexas.gov\/news",
+        "snippet": "The latest news from the City of Fort Worth, Texas.", "dateLastCrawled":
+        "2018-08-21T17:11:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
+        "name": "United States Coast Guard (USCG)", "url": "http:\/\/news.uscg.mil\/",
+        "urlPingSuffix": "DevEx,5204.1", "about": [{"name": "United States Coast Guard"}],
+        "displayUrl": "news.uscg.mil", "snippet": "The official website for the
+        United States Coast Guard News", "dateLastCrawled": "2018-08-21T23:06:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "News
+        - USGS", "url": "https:\/\/www.usgs.gov\/news", "urlPingSuffix": "DevEx,5218.1",
+        "displayUrl": "https:\/\/www.usgs.gov\/news", "snippet": "News Dive
+        into the world of science! Read these stories and narratives to learn about
+        news items, hot topics, expeditions underway, and much more.", "dateLastCrawled":
+        "2018-08-18T03:42:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        "name": "News - MO.gov", "url": "https:\/\/www.mo.gov\/news\/", "urlPingSuffix":
+        "DevEx,5231.1", "displayUrl": "https:\/\/www.mo.gov\/news", "snippet":
+        "News releases from the State of Missouri. Area hunter education teachers
+        get state honors from MDC… Fri, Aug 17 2018 1:17pm", "dateLastCrawled": "2018-08-19T23:21:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Newsroom
+        - Census", "url": "https:\/\/www.census.gov\/newsroom.html", "urlPingSuffix":
+        "DevEx,5245.1", "about": [{"name": "U.S. Census Bureau"}], "displayUrl": "https:\/\/www.census.gov\/newsroom.html",
+        "snippet": "The latest news releases and statements from the U.S. Census
+        Bureau. Also, find upcoming events, and useful information for media. Read
+        More", "dateLastCrawled": "2018-06-30T09:42:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "Army Worldwide News - The United States Army", "url": "https:\/\/www.army.mil\/news",
+        "urlPingSuffix": "DevEx,5258.1", "displayUrl": "https:\/\/www.army.mil\/news",
         "snippet": "The latest news and information from the U.S. Army covering
         the Americas, Middle East, Europe, Asia and Pacific and more.", "dateLastCrawled":
-        "2018-02-16T04:14:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
-        "name": "Newsroom | Internal Revenue Service", "url": "https:\/\/www.irs.gov\/newsroom",
-        "urlPingSuffix": "DevEx,5247.1", "displayUrl": "https:\/\/www.irs.gov\/newsroom",
-        "snippet": "Provides the latest news and information about the IRS.", "dateLastCrawled":
-        "2018-01-01T09:21:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
-        "name": "Latest News | Internal Revenue Service", "url": "https:\/\/www.irs.gov\/newsroom\/latest-news",
-        "urlPingSuffix": "DevEx,5261.1", "displayUrl": "https:\/\/www.irs.gov\/newsroom\/latest-news",
-        "snippet": "Latest News Landing ... IR-2017-141, Sept. 1, 2017 — The Internal
-        Revenue Service today issued guidance providing penalty relief for certain
-        partnerships that did ...", "dateLastCrawled": "2018-02-15T18:24:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "News
-        — FBI", "url": "https:\/\/www.fbi.gov\/news\/", "urlPingSuffix": "DevEx,5276.1",
-        "displayUrl": "https:\/\/www.fbi.gov\/news", "snippet": "Featured News,
-        Latest News, Press Releases, Editor''s Pick and Feature Photos, all the
-        FBI News up to the minute.", "dateLastCrawled": "2018-02-14T12:41:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "News
-        - DARPA", "url": "https:\/\/www.darpa.mil\/news", "urlPingSuffix": "DevEx,5290.1",
-        "about": [{"name": "DARPA"}], "displayUrl": "https:\/\/www.darpa.mil\/news",
-        "snippet": "News. With more than 200 different programs across the spectrum
-        of science and engineering, DARPA frequently has news to share. We regularly
-        announce the launch of ...", "dateLastCrawled": "2018-02-12T21:54:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Marines.mil
-        - News", "url": "http:\/\/www.marines.mil\/News.aspx", "urlPingSuffix":
-        "DevEx,5305.1", "displayUrl": "www.marines.mil\/News.aspx", "snippet":
-        "MARINE CORPS NEWS. Keyword: Categories: ... IN THE NEWS. More . Maryland
-        educators sample Marine training through graduation day 2\/8\/2018 - www.wbaltv.com",
-        "dateLastCrawled": "2018-02-11T05:37:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
-        "name": "News", "url": "http:\/\/www.afpc.af.mil\/News\/", "urlPingSuffix":
-        "DevEx,5319.1", "displayUrl": "www.afpc.af.mil\/News", "snippet": "News,
-        features and commentaries pertaining to the Air Force Personnel Center.",
-        "dateLastCrawled": "2018-02-14T06:34:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
-        "name": "News | Homeland Security", "url": "https:\/\/www.dhs.gov\/news",
-        "urlPingSuffix": "DevEx,5334.1", "about": [{"name": "United States Department
-        of Homeland Security"}], "displayUrl": "https:\/\/www.dhs.gov\/news",
-        "snippet": "Latest news and press release archive. Blog. The Blog @ Homeland
-        Security provides an inside-out view of what we do every day at the U.S. Department
-        of Homeland Security.", "dateLastCrawled": "2018-02-16T18:51:00.0000000Z"},
+        "2018-08-19T20:15:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
+        "name": "News | Lawrence Livermore National Laboratory", "url": "https:\/\/www.llnl.gov\/news",
+        "urlPingSuffix": "DevEx,5272.1", "about": [{"name": "Lawrence Livermore National
+        Laboratory"}], "displayUrl": "https:\/\/www.llnl.gov\/news", "snippet":
+        "Quest for source of black hole dark matter. Aug. 13, 2018 - Like a game of
+        “hide and seek,” Lawrence Livermore astrophysicists know that there are black
+        holes hiding in the Milky Way, just not where.", "dateLastCrawled": "2018-08-20T09:53:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "News
-        Releases - News", "url": "https:\/\/www.usgs.gov\/news\/news-releases",
-        "urlPingSuffix": "DevEx,5349.1", "displayUrl": "https:\/\/www.usgs.gov\/news\/news-releases",
-        "snippet": "News reporters are invited to attend an illustrated public lecture
-        to learn how U.S. Geological Survey scientists and partners are developing
-        ShakeAlert.", "dateLastCrawled": "2018-02-15T09:08:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
-        "name": "News Around NOAA - National Weather Service", "url": "http:\/\/www.weather.gov\/news\/",
-        "urlPingSuffix": "DevEx,5364.1", "about": [{"name": "National Weather Service"},
-        {"name": "National Weather Service"}], "displayUrl": "www.weather.gov\/news",
-        "snippet": "NOAA National Weather Service News Around NOAA. News Around
-        NOAA. National Program. News Around NOAA. Weather.gov > News Around
-        NOAA . Weather Safety.", "dateLastCrawled": "2018-02-15T16:27:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Welcome
-        to NOAA Communications | National Oceanic and ...", "url": "http:\/\/www.noaa.gov\/NOAA-Communications",
-        "urlPingSuffix": "DevEx,5379.1", "displayUrl": "www.noaa.gov\/NOAA-Communications",
-        "snippet": "NOAA Communications is here to help. Our staff of public affairs
-        and digital media specialists work with news producers, digital and ...
-        Latest news & feature stories;", "dateLastCrawled": "2018-02-13T18:36:00.0000000Z"}]},
-        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
-        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
-        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        | SBIR.gov", "url": "https:\/\/www.sbir.gov\/news", "urlPingSuffix": "DevEx,5285.1",
+        "displayUrl": "https:\/\/www.sbir.gov\/news", "snippet": "Tiny drones that
+        can fly indoors – avoiding obstacles without the use of GPS – would provide
+        a massive surveillance advantage to the warfighter.", "dateLastCrawled": "2018-08-20T02:31:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "News
+        | U.S. Department of the Interior", "url": "https:\/\/www.doi.gov\/news",
+        "urlPingSuffix": "DevEx,5299.1", "displayUrl": "https:\/\/www.doi.gov\/news",
+        "snippet": "Tara Mac Lean Sweeney was sworn in as the Department’s Assistant
+        Secretary for Indian Affairs, making her the first Alaska Native and only
+        the second woman in history to hold the position.", "dateLastCrawled": "2018-08-21T08:50:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Navy.mil
+        The Official Website of the United States Navy ...", "url": "http:\/\/www.navy.mil\/",
+        "urlPingSuffix": "DevEx,5312.1", "about": [{"name": "United States Navy"}],
+        "displayUrl": "www.navy.mil", "snippet": "The Official Website of the United
+        States Navy: US Navy News Stories, Photos, Videos and Social Media", "dateLastCrawled":
+        "2018-08-20T05:55:00.0000000Z"}]}, "rankingResponse": {"mainline": {"items":
+        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
         {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
@@ -203,8 +199,7 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
         {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
-        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}},
-        {"answerType": "Videos"}]}}}'
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Thu, 22 Feb 2018 07:15:32 GMT
+  recorded_at: Mon, 27 Aug 2018 01:36:41 GMT
 recorded_with: VCR 4.0.0

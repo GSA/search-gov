@@ -2,15 +2,13 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=noticia%20uno%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=noticia%20uno%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
       - USASearch
-      Ocp-Apim-Subscription-Key:
-      - "<BING_V6_APP_ID>"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -27,162 +25,171 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3431'
+      - '3887'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Thu, 22 Feb 2018 07:15:42 GMT
+      - Mon, 27 Aug 2018 01:55:17 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=313B9D0C2BCA67E23CE096922A2F6629; path=/; expires=Tue, 19-Mar-2019 07:16:43
+      - MUID=0232F5589B1461A91227F9009A1B607D; path=/; expires=Sat, 21-Sep-2019 01:56:17
         GMT; domain=bingapis.com
-      - MUIDB=313B9D0C2BCA67E23CE096922A2F6629; path=/; httponly; expires=Tue, 19-Mar-2019
-        07:16:43 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:16:42 GMT;
+      - MUIDB=0232F5589B1461A91227F9009A1B607D; path=/; httponly; expires=Sat, 21-Sep-2019
+        01:56:17 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 27-Aug-2020 01:56:17 GMT;
         path=/
-      - SRCHUID=V=2&GUID=FB55667E66B94BB8995A681784B514D2&dmnchg=1; domain=.bingapis.com;
-        expires=Sat, 22-Feb-2020 07:16:42 GMT; path=/
-      - SRCHUSR=DOB=20180222; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:16:42
+      - SRCHUID=V=2&GUID=180DB25930BC4E7BA8EFA672B363D1EC&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 27-Aug-2020 01:56:17 GMT; path=/
+      - SRCHUSR=DOB=20180827; domain=.bingapis.com; expires=Thu, 27-Aug-2020 01:56:17
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=2F9C4D3D82496ED01CB946A383AC6F96; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=061052507EBE63311A6A5E087FB162A2; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Tue, 19-Mar-2019 07:16:43 GMT; domain=bingapis.com
-      - _SS=SID=2F9C4D3D82496ED01CB946A383AC6F96; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 21-Sep-2019 01:56:17 GMT; domain=bingapis.com
+      - _SS=SID=061052507EBE63311A6A5E087FB162A2; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 7A13AE863A1C4869BE8C84853459D603
+      - 6ADA624C2F5340689E04114413E6383A
       X-Msedge-Clientid:
-      - 313B9D0C2BCA67E23CE096922A2F6629
+      - 0232F5589B1461A91227F9009A1B607D
       X-Msapi-Userstate:
-      - '7950'
+      - 57f3
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 7A13AE863A1C4869BE8C84853459D603 Ref B: SG2EDGE1115 Ref C: 2018-02-22T07:16:43Z'
+      - 'Ref A: 6ADA624C2F5340689E04114413E6383A Ref B: BAYEDGE0319 Ref C: 2018-08-27T01:56:17Z'
       Date:
-      - Thu, 22 Feb 2018 07:16:42 GMT
+      - Mon, 27 Aug 2018 01:56:17 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=D09B8191277448E5A04E88A368F0E393&CID=313B9D0C2BCA67E23CE096922A2F6629&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=D09B8191277448E5A04E88A368F0E393&CID=313B9D0C2BCA67E23CE096922A2F6629&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=722364C7A5E64EE7AFFB870E49C0631F&CID=0232F5589B1461A91227F9009A1B607D&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=722364C7A5E64EE7AFFB870E49C0631F&CID=0232F5589B1461A91227F9009A1B607D&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=noticia+uno+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5518.1", "totalEstimatedMatches": 143000,
+        "webSearchUrlPingSuffix": "DevEx,5404.1", "totalEstimatedMatches": 68800,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "Preguntas y Respuestas: Se extiende TPS para hondureños ...", "url": "https:\/\/www.uscis.gov\/es\/archivo\/preguntas-y-respuestas-se-extiende-tps-para-hondurenos-por-18-meses-mas",
-        "urlPingSuffix": "DevEx,5091.1", "displayUrl": "https:\/\/www.uscis.gov\/es\/archivo\/preguntas-y-respuestas-se...",
-        "snippet": "NOTICIAS . Todas las Noticias ... R11. Si un juez de inmigración
-        o BIA le concedió el TPS, usted debe mostrar pruebas de la concesión del TPS
-        ...", "dateLastCrawled": "2018-02-12T15:54:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
-        "name": "Noticias en Español | Internal Revenue Service", "url": "https:\/\/www.irs.gov\/es\/spanish\/noticias-en-espanol",
-        "urlPingSuffix": "DevEx,5104.1", "displayUrl": "https:\/\/www.irs.gov\/es\/spanish\/noticias-en-espanol",
-        "snippet": "Central de Noticias en Español Skip to main content ... Como
-        parte de un amplio esfuerzo para ayudar a víctimas de desastres naturales,
-        ...", "dateLastCrawled": "2018-02-16T10:44:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
-        "name": "Noticias | USCIS", "url": "https:\/\/www.uscis.gov\/es\/noticias",
-        "urlPingSuffix": "DevEx,5125.1", "displayUrl": "https:\/\/www.uscis.gov\/es\/noticias",
-        "snippet": "También incluye las actualizaciones de políticas y procedimientos,
-        así como noticias de última hora sobre los cierres de oficinas de USCIS
-        y otras emergencias.", "dateLastCrawled": "2018-02-09T17:50:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Alertas
-        | USCIS", "url": "https:\/\/www.uscis.gov\/es\/noticias\/alertas", "urlPingSuffix":
-        "DevEx,5142.1", "displayUrl": "https:\/\/www.uscis.gov\/es\/noticias\/alertas",
-        "snippet": "Noticias de última hora ... e Inmigración de Estados Unidos
-        se une a otras agencias del gobierno federal y a la comunidad global para
-        hacer un llamado a dar ...", "dateLastCrawled": "2018-02-09T02:17:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "City of
-        Hialeah, Florida - Últimas Noticias", "url": "http:\/\/www.hialeahfl.gov\/index.php?option=com_content&view=category&id=42&Itemid=419&lang=es",
-        "urlPingSuffix": "DevEx,5156.1", "displayUrl": "www.hialeahfl.gov\/index.php?option=com_content&view=category&id=42&...",
-        "snippet": "List of articles in category Últimas Noticias; Título Fecha
-        de creación; ... La Ciudad de Hialeah y la Autoridad de Vivienda Celebran
-        Pascua con un baile", "dateLastCrawled": "2018-02-10T14:23:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Comunicados
+        "El Negociado de la Policía Logra el Arresto de uno de los ...", "url":
+        "https:\/\/policia.pr.gov\/el-negociado-de-la-policia-logra-el-arresto-de-uno-de-los-mas-buscados\/",
+        "urlPingSuffix": "DevEx,5057.1", "displayUrl": "https:\/\/policia.pr.gov\/el-negociado-de-la-policia-logra-el-arresto...",
+        "snippet": "El Negociado de la Policía Logra el Arresto de uno de los Más
+        ... 25 May 2018. Categorías: Anuncios, Noticias. Tags: El arrestado es conocido
+        como Cuba y se ...", "dateLastCrawled": "2018-08-20T08:26:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Tarjeta Verde
+        para Familiares Inmediatos de un Ciudadano ...", "url": "https:\/\/www.uscis.gov\/es\/tarjeta-verde\/familiar-inmediato",
+        "urlPingSuffix": "DevEx,5074.1", "displayUrl": "https:\/\/www.uscis.gov\/es\/tarjeta-verde\/familiar-inmediato",
+        "snippet": "Todas las Noticias ... Usted es inelegible para solicitar un
+        ajuste de estatus si le aplica en su caso uno o más vetos de ajuste de estatus
+        ...", "dateLastCrawled": "2018-08-17T09:26:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        "name": "NOTICIA SOBRE COMPENSACIÓN LABORAL", "url": "http:\/\/www.workcomp.virginia.gov\/sites\/default\/files\/documents\/Employers-Workplace-Notice-Spanish.pdf",
+        "urlPingSuffix": "DevEx,5085.1", "displayUrl": "www.workcomp.virginia.gov\/sites\/default\/files\/documents\/Employers...",
+        "snippet": "NOTICIA SOBRE COMPENSACIÓN ... En caso de lesiones fatales,
+        el aviso debe ser dado por uno o mas de los dependientes o. herederos del
+        difunto o las personas que los ...", "dateLastCrawled": "2018-08-11T17:59:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Policía
+        Informa | Policía de Puerto Rico", "url": "https:\/\/policia.pr.gov\/policia-informa\/",
+        "urlPingSuffix": "DevEx,5097.1", "displayUrl": "https:\/\/policia.pr.gov\/policia-informa",
+        "snippet": "El Negociado de la Policía Logra el Arresto de uno de los Más
+        Buscados. ... apoyar a la Policía de Puerto Rico, compartir nuestras noticias,
+        hacerse eco ...", "dateLastCrawled": "2018-08-18T11:54:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Última noticia
+        - Zika", "url": "http:\/\/www.dshs.texas.gov\/news\/updates\/Zika-20171207-sp.aspx",
+        "urlPingSuffix": "DevEx,5109.1", "displayUrl": "www.dshs.texas.gov\/news\/updates\/Zika-20171207-sp.aspx",
+        "snippet": "Última noticia - Zika ... El anuncio de tres nuevos casos de
+        zika en el condado de Hidalgo, entre ellos uno aparentemente transmitido
+        a nivel local por mosquitos, ...", "dateLastCrawled": "2018-08-23T14:07:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Juno
+        | NASA", "url": "https:\/\/www.nasa.gov\/mission_pages\/juno\/main\/index.html",
+        "urlPingSuffix": "DevEx,5122.1", "about": [{"name": "Juno"}, {"name": "Juno"}],
+        "displayUrl": "https:\/\/www.nasa.gov\/mission_pages\/juno", "snippet":
+        "Juno will improve our understanding of the solar system''s beginnings by
+        revealing the origin and evolution of Jupiter.", "dateLastCrawled": "2018-08-19T13:30:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Después
+        de recibir una decisión | USCIS", "url": "https:\/\/www.uscis.gov\/es\/recursos\/despues-de-recibir-una-decision",
+        "urlPingSuffix": "DevEx,5138.1", "displayUrl": "https:\/\/www.uscis.gov\/es\/recursos\/despues-de-recibir-una-decision",
+        "snippet": "Después de que usted obtiene la residencia permanente nosotros
+        actualizamos nuestros registros y le enviamos una carta de bienvenida. Luego
+        le enviamos su nueva tarjeta de residente permanente. Si usted se muda antes
+        de recibir su tarjeta debe llenar una solicidad de Cambio de Dirección. Si
+        ocurre ...", "dateLastCrawled": "2018-08-21T18:08:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "name": "NASA - COMIENZA EL PROYECTO M.A.R.T.E. EN RIO TINTO", "url": "https:\/\/www.nasa.gov\/centers\/ames\/spanish\/news\/releases\/2003\/03_74AR_span.html",
+        "urlPingSuffix": "DevEx,5151.1", "about": [{"name": "Rio Tinto"}], "displayUrl":
+        "https:\/\/www.nasa.gov\/centers\/ames\/spanish\/news\/releases\/2003\/03_74...",
+        "snippet": "El próximo día 26 de Septiembre, los medios informativos podrán
+        participar en el “Día de la Prensa”, durante el cual pueden observar las operaciones
+        de perforación que se llevan a cabo cerca de Río Tinto, en la localidad de
+        Nerva (Huelva). Así mismo se presentarán las actividades que ...", "dateLastCrawled":
+        "2018-08-05T00:21:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
+        "name": "Departamento de Trabajdo y Entrenamiento de Rhode Island ...", "url":
+        "http:\/\/www.dlt.ri.gov\/wc\/InformacionContratistaInd.htm", "urlPingSuffix":
+        "DevEx,5164.1", "displayUrl": "www.dlt.ri.gov\/wc\/InformacionContratistaInd.htm",
+        "snippet": "Cuándo hago un reclamo del formulario de de Noticia de designación
+        como Contratista Independiente? ... por cada uno resignaría su condición
+        como contratista ...", "dateLastCrawled": "2018-08-15T20:42:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Comunicados
         de Prensa | USCIS", "url": "https:\/\/www.uscis.gov\/es\/comunicados-de-prensa",
-        "urlPingSuffix": "DevEx,5173.1", "displayUrl": "https:\/\/www.uscis.gov\/es\/comunicados-de-prensa",
+        "urlPingSuffix": "DevEx,5179.1", "displayUrl": "https:\/\/www.uscis.gov\/es\/comunicados-de-prensa",
         "snippet": "Inicio > Noticias > Comunicados de Prensa. saltar los enlaces
         de compartir e imprimir Compartir Esta Página Imprimir Feed RSS . Comunicados
-        de Prensa.", "dateLastCrawled": "2018-02-11T14:43:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
-        "name": "Tarjeta Verde para Familiares Inmediatos de un Ciudadano ...",
-        "url": "https:\/\/www.uscis.gov\/es\/tarjeta-verde\/familiar-inmediato", "urlPingSuffix":
-        "DevEx,5192.1", "displayUrl": "https:\/\/www.uscis.gov\/es\/tarjeta-verde\/familiar-inmediato",
-        "snippet": "Si usted es un familiar inmediato de un ciudadano estadounidense,
-        puede convertirse en residente permanente legal (obtener una Tarjeta Verde)
-        a base de su relación ...", "dateLastCrawled": "2018-02-10T09:51:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Administradores
-        de Servicios Médicos y de Salud ...", "url": "https:\/\/www.bls.gov\/es\/ooh\/management\/medical-and-health-services-managers.htm",
-        "urlPingSuffix": "DevEx,5208.1", "displayUrl": "https:\/\/www.bls.gov\/es\/ooh\/management\/medical-and-health-services...",
-        "snippet": "Los administradores de servicios médicos y de salud habitualmente
-        necesitan al menos un título de licenciatura para ingresar en la ocupación.",
-        "dateLastCrawled": "2018-02-14T16:42:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
-        "name": "Trabajadores de Cuidado de Niños : Occupational Outlook ...", "url":
-        "https:\/\/www.bls.gov\/es\/ooh\/personal-care-and-service\/childcare-workers.htm",
-        "urlPingSuffix": "DevEx,5224.1", "displayUrl": "https:\/\/www.bls.gov\/es\/ooh\/personal-care-and-service\/childcare...",
-        "snippet": "Aunque muchos trabajadores de cuidado de niños trabajan a tiempo
-        completo, más de un tercio trabajó a medio tiempo en 2012. Los horarios
-        de los trabajadores de ...", "dateLastCrawled": "2018-02-16T08:52:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Familiares
-        de Residentes Permanentes | USCIS", "url": "https:\/\/www.uscis.gov\/es\/familia\/familiares-de-residentes-permanentes",
-        "urlPingSuffix": "DevEx,5242.1", "displayUrl": "https:\/\/www.uscis.gov\/es\/familia\/familiares-de-residentes-permanentes",
-        "snippet": "Presentar el Formulario I-130 Presentar un comprobante que demuestre
-        que usted es Residente Permanente. Presentar un documento que demuestre
-        su parentesco, como un ...", "dateLastCrawled": "2018-02-14T16:10:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Beneficios
-        por incapacidad - ssa.gov", "url": "http:\/\/www.ssa.gov\/pubs\/ES-05-10929.pdf",
-        "urlPingSuffix": "DevEx,5254.1", "displayUrl": "www.ssa.gov\/pubs\/ES-05-10929.pdf",
+        de Prensa.", "dateLastCrawled": "2018-07-19T22:01:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
+        "name": "Lo que necesita saber si recibe beneficios de Seguridad de ...",
+        "url": "https:\/\/www.ssa.gov\/pubs\/ES-05-11024.pdf", "urlPingSuffix": "DevEx,5189.1",
+        "displayUrl": "https:\/\/www.ssa.gov\/pubs\/ES-05-11024.pdf", "snippet":
+        "Contenido. Introducción 1 Sobre sus beneficios 1 Lo que nos debe informar
+        5 Las cosas que debe saber si recibe SSI debido a una incapacidad 20", "dateLastCrawled":
+        "2018-08-18T14:30:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
+        "name": "StatinsInfographic Spanish 150327 full - fda.gov", "url": "https:\/\/www.fda.gov\/downloads\/Drugs\/DrugSafety\/UCM440544.pdf",
+        "urlPingSuffix": "DevEx,5199.1", "displayUrl": "https:\/\/www.fda.gov\/downloads\/Drugs\/DrugSafety\/UCM440544.pdf",
+        "snippet": "de los alimentos que uno consume pueden hacer que el nivel de
+        colesterol en la sangre aumente. Demasiados LBD tendrán como consecuencia
+        que el colesterol se", "dateLastCrawled": "2018-07-31T06:00:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Los Más
+        Buscados | Policía de Puerto Rico", "url": "https:\/\/policia.pr.gov\/los-mas-buscados\/",
+        "urlPingSuffix": "DevEx,5210.1", "displayUrl": "https:\/\/policia.pr.gov\/los-mas-buscados",
+        "snippet": "Dato importante: Con la nueva disposición de ley, si un peatón
+        muere atropellado, el conductor responsable se expone a 8 años de cárcel sin
+        derecho a probatoria si se va a la fuga y abandona la escena.", "dateLastCrawled":
+        "2018-08-21T16:02:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        "name": "Tiempos de Procesamiento - egov.uscis.gov", "url": "https:\/\/egov.uscis.gov\/processing-times\/es",
+        "urlPingSuffix": "DevEx,5222.1", "displayUrl": "https:\/\/egov.uscis.gov\/processing-times\/es",
+        "snippet": "Seleccione su número de formulario y la oficina que está procesando
+        su caso. Para obtener más información sobre los tiempos de procesamiento de
+        casos y leer su aviso de recibo, haga clic aquí.", "dateLastCrawled": "2018-08-15T03:53:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Noticias
+        en Español | Internal Revenue Service", "url": "https:\/\/www.irs.gov\/es\/newsroom",
+        "urlPingSuffix": "DevEx,5236.1", "displayUrl": "https:\/\/www.irs.gov\/es\/newsroom",
+        "snippet": "More In Noticias en ... Newsroom Search ... Se alerta a contribuyentes
+        contra falsos reclamos de reembolsos “inflados” uno de los esquemas de la
+        ...", "dateLastCrawled": "2018-07-01T16:46:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "Español — FBI", "url": "https:\/\/www.fbi.gov\/news\/espanol", "urlPingSuffix":
+        "DevEx,5251.1", "displayUrl": "https:\/\/www.fbi.gov\/news\/espanol", "snippet":
+        "Bienvenido al sitio web del FBI dedicado a las personas que hablan español.
+        Aquí se ofrece información básica sobre cómo contactar al FBI y sobre el tipo
+        de delitos que investiga.", "dateLastCrawled": "2018-08-19T12:51:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Ceremonias
+        de Naturalización | USCIS", "url": "https:\/\/www.uscis.gov\/es\/ciudadania\/ceremonias-de-naturalizacion",
+        "urlPingSuffix": "DevEx,5267.1", "displayUrl": "https:\/\/www.uscis.gov\/es\/ciudadania\/ceremonias-de-naturalizacion",
+        "snippet": "A continuación encontrará qué esperar de su ceremonia de naturalización:
+        1. Reciba la Notificación para prestar el Juramento de Lealtad Usted pudiera
+        participar en una ceremonia de naturalización el mismo día de su entrevista.
+        Si no se llevará a cabo una ceremonia ese mismo día, le ...", "dateLastCrawled":
+        "2018-08-17T01:53:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
+        "name": "Preguntas y Respuestas sobre temas relacionados a ...", "url": "https:\/\/www.uscis.gov\/es\/noticias\/preguntas-y-respuestas\/preguntas-y-respuestas-sobre-temas-relacionados-residencia-permanente-green-card",
+        "urlPingSuffix": "DevEx,5283.1", "displayUrl": "https:\/\/www.uscis.gov\/es\/noticias\/preguntas-y-respuestas\/preguntas...",
+        "snippet": "Inicio > Noticias > Preguntas y respuestas > Preguntas y Respuestas
+        sobre temas relacionados a residencia permanente (green card)", "dateLastCrawled":
+        "2018-08-19T02:58:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
+        "name": "Beneficios por incapacidad - ssa.gov", "url": "http:\/\/www.ssa.gov\/pubs\/ES-05-10929.pdf",
+        "urlPingSuffix": "DevEx,5294.1", "displayUrl": "www.ssa.gov\/pubs\/ES-05-10929.pdf",
         "snippet": "Uno de los formularios recopila información sobre su padecimiento
         médico y cómo éste afecta su capacidad para trabajar. Otros formularios dan
-        autorización a los", "dateLastCrawled": "2018-02-09T02:15:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Noticias -
-        National Cancer Institute", "url": "https:\/\/www.cancer.gov\/espanol\/noticias",
-        "urlPingSuffix": "DevEx,5268.1", "displayUrl": "https:\/\/www.cancer.gov\/espanol\/noticias",
-        "snippet": "Las últimas noticias de la principal dependencia del gobierno
-        de los ... Quienes fumaron habitualmente un promedio de menos de un cigarillo
-        al día en su vida ...", "dateLastCrawled": "2018-02-13T05:21:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "medlineplus.gov",
-        "url": "https:\/\/medlineplus.gov\/spanish\/alphanews_d.html", "urlPingSuffix":
-        "DevEx,5281.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/alphanews_d.html",
-        "snippet": "Object Moved. This object may be found here.", "dateLastCrawled":
-        "2018-02-13T20:49:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
-        "name": "Noticias - ssa.gov", "url": "https:\/\/www.ssa.gov\/espanol\/noticias\/",
-        "urlPingSuffix": "DevEx,5294.1", "displayUrl": "https:\/\/www.ssa.gov\/espanol\/noticias",
-        "snippet": "Este es un documento archivado o histórico y posiblemente no
-        refleje las políticas o procedimientos actuales.", "dateLastCrawled": "2018-02-16T08:17:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Ceremonias
-        de Naturalización | USCIS", "url": "https:\/\/www.uscis.gov\/es\/ciudadania\/ceremonias-de-naturalizacion",
-        "urlPingSuffix": "DevEx,5312.1", "displayUrl": "https:\/\/www.uscis.gov\/es\/ciudadania\/ceremonias-de-naturalizacion",
-        "snippet": "NOTICIAS . Todas las Noticias ; Comunicados de Prensa ...
-        Un oficial de USCIS revisará sus respuestas al cuestionario del Formulario
-        N-445, ...", "dateLastCrawled": "2018-02-10T07:38:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
-        "name": "Estatus de Protección Temporal | USCIS", "url": "https:\/\/www.uscis.gov\/es\/TPS",
-        "urlPingSuffix": "DevEx,5330.1", "displayUrl": "https:\/\/www.uscis.gov\/es\/TPS",
-        "snippet": "Para ser elegible al TPS, usted debe: Ser un ciudadano de un
-        país designado al TPS, o una persona sin nacionalidad cuya última residencia
-        habitual fue en el país ...", "dateLastCrawled": "2018-02-09T15:00:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Español
-        — FBI", "url": "https:\/\/www.fbi.gov\/news\/espanol", "urlPingSuffix": "DevEx,5347.1",
-        "displayUrl": "https:\/\/www.fbi.gov\/news\/espanol", "snippet": "También
-        se pueden leer artículos sobre cómo protegerse contra el fraude, qué hacer
-        ante un delito y cómo mantenerse seguro. FBI. More. Most Wanted; News; What
-        ...", "dateLastCrawled": "2018-02-16T19:57:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
-        "name": "State of New Jersey", "url": "http:\/\/nj.gov\/oag\/news-esp.htm",
-        "urlPingSuffix": "DevEx,5361.1", "displayUrl": "nj.gov\/oag\/news-esp.htm",
-        "snippet": "Noticias ... Posesión de 76,000 Videos e Imágenes Pornográficas
-        de Menores Condenado a Siete Años de Prision - El acusado fue uno de los
-        40 ...", "dateLastCrawled": "2018-02-16T11:24:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
-        "name": "Estafas y fraudes | USAGov", "url": "https:\/\/gobierno.usa.gov\/estafas-fraudes",
-        "urlPingSuffix": "DevEx,5379.1", "displayUrl": "https:\/\/gobierno.usa.gov\/estafas-fraudes",
-        "snippet": "Así tendrá un reporte del robo de identidad que lo ayudará a
-        restaurar su nombre. Para solicitar ayuda por teléfono de la FTC, llame gratis
-        al 1-877-438-4338 ...", "dateLastCrawled": "2018-02-16T08:14:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Guía
-        oficial de información y servicios del Gobierno | USAGov", "url": "https:\/\/gobierno.usa.gov\/",
-        "urlPingSuffix": "DevEx,5394.1", "about": [{"name": "GobiernoUSA.gov"}], "displayUrl":
-        "https:\/\/gobierno.usa.gov", "snippet": "En el Día de San Valentín - dígale
-        no al abuso Si usted desea acompañar a un ser querido que pasa por una situación
-        difícil o si busca apoyo para usted mismo ...", "dateLastCrawled": "2018-02-14T00:30:00.0000000Z"}]},
-        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
-        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        autorización a los", "dateLastCrawled": "2018-08-20T04:10:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "NASA - New
+        NASA Online Science Resource Available for ...", "url": "https:\/\/www.nasa.gov\/home\/hqnews\/2012\/oct\/HQ_12-379_Online_Science_Resource.html",
+        "urlPingSuffix": "DevEx,5306.1", "displayUrl": "https:\/\/www.nasa.gov\/home\/hqnews\/2012\/oct\/HQ_12-379_Online_Science...",
+        "snippet": "new nasa online science resource available for educators and
+        students", "dateLastCrawled": "2018-07-27T05:28:00.0000000Z"}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
         "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
@@ -203,5 +210,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Thu, 22 Feb 2018 07:16:43 GMT
+  recorded_at: Mon, 27 Aug 2018 01:56:17 GMT
 recorded_with: VCR 4.0.0

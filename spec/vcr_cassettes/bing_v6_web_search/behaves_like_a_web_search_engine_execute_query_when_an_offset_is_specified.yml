@@ -2,15 +2,13 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=10&mkt=en-US&offset=11&q=anything&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations&traffictype=test
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=10&mkt=en-US&offset=11&q=anything&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
       - USASearch
-      Ocp-Apim-Subscription-Key:
-      - "<BING_V6_APP_ID>"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -27,109 +25,107 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '1983'
+      - '1962'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Thu, 26 Apr 2018 23:25:49 GMT
+      - Sun, 26 Aug 2018 23:57:47 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=1EFFED441907606F3F6BE6991890611C; path=/; expires=Tue, 21-May-2019 23:26:49
+      - MUID=2F100231FD3E6DF63D1A0E66FC316C56; path=/; expires=Fri, 20-Sep-2019 23:58:47
         GMT; domain=bingapis.com
-      - MUIDB=1EFFED441907606F3F6BE6991890611C; path=/; httponly; expires=Tue, 21-May-2019
-        23:26:49 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 26-Apr-2020 23:26:49 GMT;
+      - MUIDB=2F100231FD3E6DF63D1A0E66FC316C56; path=/; httponly; expires=Fri, 20-Sep-2019
+        23:58:47 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 26-Aug-2020 23:58:47 GMT;
         path=/
-      - SRCHUID=V=2&GUID=D03EB3F4A93E472187BBC835737B5538&dmnchg=1; domain=.bingapis.com;
-        expires=Sun, 26-Apr-2020 23:26:49 GMT; path=/
-      - SRCHUSR=DOB=20180426; domain=.bingapis.com; expires=Sun, 26-Apr-2020 23:26:49
+      - SRCHUID=V=2&GUID=F885EDA1A5504FAAAF613FB241488ABD&dmnchg=1; domain=.bingapis.com;
+        expires=Wed, 26-Aug-2020 23:58:47 GMT; path=/
+      - SRCHUSR=DOB=20180826; domain=.bingapis.com; expires=Wed, 26-Aug-2020 23:58:47
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=3B3597D6608560F22CC29C0B61126151; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=36A18882D5956DE80A7284D5D49A6CCB; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Tue, 21-May-2019 23:26:49 GMT; domain=bingapis.com
-      - _SS=SID=3B3597D6608560F22CC29C0B61126151; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Fri, 20-Sep-2019 23:58:47 GMT; domain=bingapis.com
+      - _SS=SID=36A18882D5956DE80A7284D5D49A6CCB; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 24614D6E99D540ABBAE7EA5D76321AFD
+      - DCD32BCD92E74494973E402802EB8C4C
       X-Msedge-Clientid:
-      - 1EFFED441907606F3F6BE6991890611C
+      - 2F100231FD3E6DF63D1A0E66FC316C56
       X-Msapi-Userstate:
-      - 55eb
+      - 4f80
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 24614D6E99D540ABBAE7EA5D76321AFD Ref B: CO1EDGE0312 Ref C: 2018-04-26T23:26:49Z'
+      - 'Ref A: DCD32BCD92E74494973E402802EB8C4C Ref B: BAYEDGE0312 Ref C: 2018-08-26T23:58:47Z'
       Date:
-      - Thu, 26 Apr 2018 23:26:49 GMT
+      - Sun, 26 Aug 2018 23:58:47 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=571B432E1BEC468A9610DCF7D5653A8A&CID=1EFFED441907606F3F6BE6991890611C&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=571B432E1BEC468A9610DCF7D5653A8A&CID=1EFFED441907606F3F6BE6991890611C&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=AE5F3CC783374ABD8FD1E4DDDB09DE88&CID=2F100231FD3E6DF63D1A0E66FC316C56&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=AE5F3CC783374ABD8FD1E4DDDB09DE88&CID=2F100231FD3E6DF63D1A0E66FC316C56&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=anything",
-        "webSearchUrlPingSuffix": "DevEx,5337.1", "totalEstimatedMatches": 45100000,
+        "webSearchUrlPingSuffix": "DevEx,5271.1", "totalEstimatedMatches": 38200000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "Anythink Libraries | Anythink Libraries", "url": "https:\/\/www.anythinklibraries.org\/",
-        "urlPingSuffix": "DevEx,5070.1", "about": [{"name": "Rangeview Library District"}],
-        "displayUrl": "https:\/\/www.anythinklibraries.org", "snippet": "Anythink.
-        A Revolution of Rangeview Libraries. Adams County, Colorado.", "dateLastCrawled":
-        "2018-04-21T13:37:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
-        "name": "Anything dictionary definition | anything defined", "url": "http:\/\/www.yourdictionary.com\/anything",
-        "urlPingSuffix": "DevEx,5086.1", "displayUrl": "www.yourdictionary.com\/anything",
-        "snippet": "any object, event, fact, etc.: do you know anything about it?
-        · a thing, no matter of what kind: do anything you want · in any way; at all:
-        is he anything like his father ...", "dateLastCrawled": "2018-04-19T15:41:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "anything
-        - English-French Dictionary WordReference.com", "url": "http:\/\/www.wordreference.com\/enfr\/anything",
-        "urlPingSuffix": "DevEx,5102.1", "displayUrl": "www.wordreference.com\/enfr\/anything",
-        "snippet": "anything - traduction anglais-français. Forums pour discuter de
-        anything, voir ses formes composées, des exemples et poser vos questions.
-        Gratuit.", "dateLastCrawled": "2018-04-07T04:20:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
-        "name": "Anything - Definition for English-Language Learners from ...", "url":
-        "http:\/\/www.learnersdictionary.com\/definition\/anything", "urlPingSuffix":
-        "DevEx,5119.1", "displayUrl": "www.learnersdictionary.com\/definition\/anything",
+        "anything Meaning in the Cambridge English Dictionary", "url": "https:\/\/dictionary.cambridge.org\/dictionary\/english\/anything",
+        "urlPingSuffix": "DevEx,5054.1", "displayUrl": "https:\/\/dictionary.cambridge.org\/dictionary\/english\/anything",
+        "snippet": "anything definition: 1. used in questions and negatives to mean
+        \"something\": 2. any event, act, object, or situation: . Learn more.", "dateLastCrawled":
+        "2018-07-21T03:46:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
+        "name": "Anything - definition of anything by The Free Dictionary", "url":
+        "https:\/\/www.thefreedictionary.com\/anything", "urlPingSuffix": "DevEx,5068.1",
+        "displayUrl": "https:\/\/www.thefreedictionary.com\/anything", "snippet":
+        "an·y·thing (ĕn′ē-thĭng′) pron. Any object, occurrence, or matter whatever.
+        adv. To any degree or extent; at all: They aren''t anything like last year''s
+        team. n ...", "dateLastCrawled": "2018-08-19T09:16:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        "name": "Anything: The Prayer That Unlocked My God and My Soul ...", "url":
+        "https:\/\/www.amazon.com\/Anything-Prayer-That-Unlocked-Soul\/dp\/0718037200",
+        "urlPingSuffix": "DevEx,5093.1", "about": [{"name": "Anything: The Prayer
+        That Unlocked My God and My Soul"}, {"name": "Anything: The Prayer That Unlocked
+        My God and My Soul"}], "displayUrl": "https:\/\/www.amazon.com\/Anything-Prayer-That-Unlocked-Soul\/dp\/...",
+        "snippet": "Anything: The Prayer That Unlocked My God and My Soul [Jennie
+        Allen] on Amazon.com. *FREE* shipping on qualifying offers. What if you told
+        God you would do anything . . . and he took you up on it?", "dateLastCrawled":
+        "2018-07-29T07:58:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "anything", "url": "https:\/\/www.anything.com\/#!", "urlPingSuffix":
+        "DevEx,5105.1", "displayUrl": "https:\/\/www.anything.com\/#!", "snippet":
+        "Anything.com, Ltd. © 2018 Anything.com, Ltd.", "dateLastCrawled": "2018-08-02T03:10:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Anything
+        - Definition for English-Language Learners from ...", "url": "http:\/\/www.learnersdictionary.com\/definition\/anything",
+        "urlPingSuffix": "DevEx,5118.1", "displayUrl": "www.learnersdictionary.com\/definition\/anything",
         "snippet": "Definition of anything written for English Language Learners from
         the Merriam-Webster Learner''s Dictionary with audio pronunciations, usage
-        examples, and count\/noncount noun labels.", "dateLastCrawled": "2018-04-22T05:54:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Anything
-        in Spanish | English to Spanish Translation ...", "url": "http:\/\/www.spanishdict.com\/translate\/anything",
-        "urlPingSuffix": "DevEx,5135.1", "displayUrl": "www.spanishdict.com\/translate\/anything",
-        "snippet": "Translate Anything. See 4 authoritative translations of Anything
-        in Spanish with example sentences, phrases and audio pronunciations.", "dateLastCrawled":
-        "2018-04-22T23:39:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
-        "name": "Dramarama - Anything, Anything Lyrics | MetroLyrics", "url": "http:\/\/www.metrolyrics.com\/anything-anything-lyrics-dramarama.html",
-        "urlPingSuffix": "DevEx,5152.1", "about": [{"name": "Anything, Anything (I''ll
-        Give You)"}, {"name": "Anything, Anything (I''ll Give You)"}], "displayUrl":
-        "www.metrolyrics.com\/anything-anything-lyrics-dramarama.html", "snippet":
-        "Lyrics to ''Anything, Anything'' by Dramarama: I''ll even let you hear the
-        songs I want to sing Because you married me, married me, married me", "dateLastCrawled":
-        "2018-04-14T05:55:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
-        "name": "A NEW YORK THING", "url": "http:\/\/www.anewyorkthing.com\/", "urlPingSuffix":
-        "DevEx,5166.1", "displayUrl": "www.anewyorkthing.com", "snippet": "A NEW YORK
-        THING", "dateLastCrawled": "2018-04-20T03:23:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
-        "name": "Anything but | Define Anything but at Dictionary.com", "url": "http:\/\/www.dictionary.com\/browse\/anything--but",
-        "urlPingSuffix": "DevEx,5181.1", "displayUrl": "www.dictionary.com\/browse\/anything--but",
-        "snippet": "Anything but definition, any thing whatever; something, no matter
-        what: Do you have anything for a toothache? See more.", "dateLastCrawled":
-        "2018-04-20T06:49:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
-        "name": "Anything (3T song) - Wikipedia", "url": "https:\/\/en.wikipedia.org\/wiki\/Anything_(3T_song)",
-        "urlPingSuffix": "DevEx,5201.1", "about": [{"name": "Anything"}, {"name":
-        "Anything"}, {"name": "Anything"}], "displayUrl": "https:\/\/en.wikipedia.org\/wiki\/Anything_(3T_song)",
-        "snippet": "\"Anything\" is a song composed and recorded by American R&B trio
-        3T. It was their first released single, and was extracted from their first
-        album Brotherhood.This single received a Gold Certification on January 26,
-        1996.", "snippetAttribution": {"license": {"name": "CC-BY-SA", "url": "http:\/\/creativecommons.org\/licenses\/by-sa\/3.0\/",
-        "urlPingSuffix": "DevEx,5338.1"}, "licenseNotice": "Text under CC-BY-SA license"},
-        "dateLastCrawled": "2018-04-22T03:16:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
-        "name": "Anything | Disney Wiki | FANDOM powered by Wikia", "url": "http:\/\/disney.wikia.com\/wiki\/Anything",
-        "urlPingSuffix": "DevEx,5218.1", "displayUrl": "disney.wikia.com\/wiki\/Anything",
-        "snippet": "\"Anything \" is a song from the Sofia the First episode \"Just
-        One of the Princes \". Sung by Sofia, it expresses her determination on becoming
-        a Flying Derby rider and prove that she can do anything if she puts her mind
-        to it.", "dateLastCrawled": "2018-04-22T17:48:00.0000000Z"}]}, "rankingResponse":
-        {"mainline": {"items": [{"answerType": "Videos"}, {"answerType": "WebPages",
-        "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
+        examples, and count\/noncount noun labels.", "dateLastCrawled": "2018-08-20T13:32:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Anything
+        - Wikipedia", "url": "https:\/\/en.wikipedia.org\/wiki\/Anything", "urlPingSuffix":
+        "DevEx,5135.1", "displayUrl": "https:\/\/en.wikipedia.org\/wiki\/Anything",
+        "snippet": "This disambiguation page lists articles associated with the title
+        Anything. If an internal link led you here, you may wish to change the link
+        to point directly to the intended article.", "dateLastCrawled": "2018-08-19T11:43:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Natasha
+        Mosley- Anything (Lyrics) - YouTube", "url": "https:\/\/www.youtube.com\/watch?v=7WanP7v1wFk",
+        "urlPingSuffix": "DevEx,5154.1", "displayUrl": "https:\/\/www.youtube.com\/watch?v=7WanP7v1wFk",
+        "snippet": "BUY NOW ON iTUNEShttps:\/\/itunes.apple.com\/us\/album\/anything\/id991557313?i=991557320
+        \"Anything\", (Lyric) video by Natasha Mosley (c) 2015 ISO Music, LLC", "dateLastCrawled":
+        "2018-08-16T17:15:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "name": "anything - Dizionario inglese-italiano WordReference", "url": "http:\/\/www.wordreference.com\/enit\/anything",
+        "urlPingSuffix": "DevEx,5166.1", "displayUrl": "www.wordreference.com\/enit\/anything",
+        "snippet": "anything - Traduzione del vocabolo e dei suoi composti, e discussioni
+        del forum.", "dateLastCrawled": "2018-08-13T07:49:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
+        "name": "Anything - Jennie Allen", "url": "http:\/\/www.jennieallen.com\/books\/anything\/",
+        "urlPingSuffix": "DevEx,5180.1", "displayUrl": "www.jennieallen.com\/books\/anything",
+        "snippet": "What Is Your Anything? As a generation, I believe we are all yawning
+        and waking up, identifying these currents, and comparing them to the truth
+        of God. We’re considering this simple but game-changing thought: “If God is
+        real and we are going to live with him forever, shouldn’t he be the only thing?”",
+        "dateLastCrawled": "2018-08-19T13:31:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
+        "name": "anything | Definition of anything in English by Oxford ...", "url":
+        "https:\/\/en.oxforddictionaries.com\/definition\/anything", "urlPingSuffix":
+        "DevEx,5193.1", "displayUrl": "https:\/\/en.oxforddictionaries.com\/definition\/anything",
+        "snippet": "Definition of anything - used to refer to a thing, no matter what",
+        "dateLastCrawled": "2018-08-17T03:37:00.0000000Z"}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
         {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
@@ -140,5 +136,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
         {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}}]}}}'
     http_version: 
-  recorded_at: Thu, 26 Apr 2018 23:26:49 GMT
+  recorded_at: Sun, 26 Aug 2018 23:58:47 GMT
 recorded_with: VCR 4.0.0

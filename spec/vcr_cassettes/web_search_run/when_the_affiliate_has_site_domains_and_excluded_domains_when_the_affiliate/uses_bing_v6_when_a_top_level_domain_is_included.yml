@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=mars%20(site:.gov)%20(-site:nasa.gov)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations&traffictype=test
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=mars%20(site:.gov)%20(-site:nasa.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
     body:
       encoding: US-ASCII
       string: ''
@@ -10,7 +10,7 @@ http_interactions:
       User-Agent:
       - USASearch
       Ocp-Apim-Subscription-Key:
-      - "<BING_V6_APP_ID>"
+      - my_api_key
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -27,173 +27,167 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3632'
+      - '3507'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Thu, 26 Apr 2018 23:55:37 GMT
+      - Mon, 27 Aug 2018 00:03:42 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=166C64E69575697B3C766F3B94E26804; path=/; expires=Tue, 21-May-2019 23:56:37
+      - MUID=23CB71B88AF66AF0367E7DE08BF96BC0; path=/; expires=Sat, 21-Sep-2019 00:04:43
         GMT; domain=bingapis.com
-      - MUIDB=166C64E69575697B3C766F3B94E26804; path=/; httponly; expires=Tue, 21-May-2019
-        23:56:37 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 26-Apr-2020 23:56:37 GMT;
+      - MUIDB=23CB71B88AF66AF0367E7DE08BF96BC0; path=/; httponly; expires=Sat, 21-Sep-2019
+        00:04:43 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 27-Aug-2020 00:04:42 GMT;
         path=/
-      - SRCHUID=V=2&GUID=F67695E8AFDF4C4ABC6559EB42594E43&dmnchg=1; domain=.bingapis.com;
-        expires=Sun, 26-Apr-2020 23:56:37 GMT; path=/
-      - SRCHUSR=DOB=20180426; domain=.bingapis.com; expires=Sun, 26-Apr-2020 23:56:37
+      - SRCHUID=V=2&GUID=8D23780DB1014653B6FCD01193EDFDC1&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 27-Aug-2020 00:04:42 GMT; path=/
+      - SRCHUSR=DOB=20180827; domain=.bingapis.com; expires=Thu, 27-Aug-2020 00:04:42
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=3BF79011F76362440C499BCCF6F4630D; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=3AE33204F0C060A809783E5CF1CF61E6; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Tue, 21-May-2019 23:56:37 GMT; domain=bingapis.com
-      - _SS=SID=3BF79011F76362440C499BCCF6F4630D; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 21-Sep-2019 00:04:43 GMT; domain=bingapis.com
+      - _SS=SID=3AE33204F0C060A809783E5CF1CF61E6; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - E724889A156E47FD907BBB2001FFD61B
+      - 59E8DC9BB4F84EA3987F5B4C274704A6
       X-Msedge-Clientid:
-      - 166C64E69575697B3C766F3B94E26804
+      - 23CB71B88AF66AF0367E7DE08BF96BC0
       X-Msapi-Userstate:
-      - fbeb
+      - cbcf
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: E724889A156E47FD907BBB2001FFD61B Ref B: CO1EDGE0216 Ref C: 2018-04-26T23:56:37Z'
+      - 'Ref A: 59E8DC9BB4F84EA3987F5B4C274704A6 Ref B: BAYEDGE0121 Ref C: 2018-08-27T00:04:43Z'
       Date:
-      - Thu, 26 Apr 2018 23:56:36 GMT
+      - Mon, 27 Aug 2018 00:04:42 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=A9618474B366413EADD266CF2806AA27&CID=166C64E69575697B3C766F3B94E26804&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=A9618474B366413EADD266CF2806AA27&CID=166C64E69575697B3C766F3B94E26804&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=CB324203E72F4613925108523AA1AD47&CID=23CB71B88AF66AF0367E7DE08BF96BC0&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=CB324203E72F4613925108523AA1AD47&CID=23CB71B88AF66AF0367E7DE08BF96BC0&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=mars+(site%3a.gov)+(-site%3anasa.gov)",
-        "webSearchUrlPingSuffix": "DevEx,5515.1", "totalEstimatedMatches": 2330000,
+        "webSearchUrlPingSuffix": "DevEx,5389.1", "totalEstimatedMatches": 2030000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "Home | MARS", "url": "https:\/\/mymarketnews.ams.usda.gov\/", "urlPingSuffix":
-        "DevEx,5095.1", "displayUrl": "https:\/\/mymarketnews.ams.usda.gov", "snippet":
-        "USDA Launches MARS, Delivering Market Data to Agricultural Producers Around
-        the Globe Faster and Easier; USDA Announces Lamb Board Appointments;", "deepLinks":
-        [{"name": "Login", "url": "https:\/\/mymarketnews.ams.usda.gov\/user\/login",
-        "urlPingSuffix": "DevEx,5084.1"}, {"name": "Getting Started", "url": "https:\/\/mymarketnews.ams.usda.gov\/mars-api\/getting-started",
-        "urlPingSuffix": "DevEx,5085.1"}, {"name": "FAQs", "url": "https:\/\/mymarketnews.ams.usda.gov\/faqs",
-        "urlPingSuffix": "DevEx,5086.1"}, {"name": "Help", "url": "https:\/\/mymarketnews.ams.usda.gov\/help",
-        "urlPingSuffix": "DevEx,5087.1"}, {"name": "Market News List", "url": "https:\/\/mymarketnews.ams.usda.gov\/market-news\/list",
-        "urlPingSuffix": "DevEx,5088.1"}, {"name": "Mars", "url": "https:\/\/mymarketnews.ams.usda.gov\/report\/list?page=0",
-        "urlPingSuffix": "DevEx,5089.1"}], "dateLastCrawled": "2018-04-22T17:04:00.0000000Z"},
+        "Missouri State Bridge", "url": "https:\/\/emsweb1.dhss.mo.gov\/mars\/default.cfm",
+        "urlPingSuffix": "DevEx,5059.1", "displayUrl": "https:\/\/emsweb1.dhss.mo.gov\/mars\/default.cfm",
+        "snippet": "Welcome to the Missouri Ambulance Reporting System (MARS).If you
+        are new to the system, please click on About to learn more about the Missouri
+        Ambulance Reporting System and the MARS system.", "dateLastCrawled": "2018-08-17T17:53:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "The Planet
         Mars - National Weather Service", "url": "https:\/\/www.weather.gov\/fsd\/mars",
-        "urlPingSuffix": "DevEx,5113.1", "about": [{"name": "Mars"}], "displayUrl":
+        "urlPingSuffix": "DevEx,5075.1", "about": [{"name": "Mars"}], "displayUrl":
         "https:\/\/www.weather.gov\/fsd\/mars", "snippet": "Mars is the last planet
         of the inner four terrestrial planets in the solar system at an average distance
         of 141 million miles from our Sun. It revolves around the Sun every 687 days
         and rotates every 24.6 hours (nearly the same as Earth). Mars has two tiny
-        satellites, named Deimos and Phobos (shown ...", "dateLastCrawled": "2018-04-16T06:11:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Missouri
-        State Bridge", "url": "https:\/\/emsweb1.dhss.mo.gov\/mars\/default.cfm",
-        "urlPingSuffix": "DevEx,5130.1", "displayUrl": "https:\/\/emsweb1.dhss.mo.gov\/mars\/default.cfm",
-        "snippet": "Welcome to the Missouri Ambulance Reporting System (MARS).If you
-        are new to the system, please click on About to learn more about the Missouri
-        Ambulance Reporting System and the MARS system.", "dateLastCrawled": "2018-04-20T07:37:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Mars Dataset
-        | Science On a Sphere", "url": "https:\/\/sos.noaa.gov\/datasets\/mars\/",
-        "urlPingSuffix": "DevEx,5145.1", "about": [{"name": "Mars"}, {"name": "Mars"}],
-        "displayUrl": "https:\/\/sos.noaa.gov\/datasets\/mars", "snippet": "Description.
-        Mars is aptly referred to as the red planet as its surface is red due to a
-        high concentration of iron oxides in the soil. Often the center of science
-        fiction stories, Mars once was believed to support intelligent creatures.",
-        "dateLastCrawled": "2018-04-16T23:42:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
-        "name": "mars.archives.ncdcr.gov - Detect Screen Resolution", "url": "http:\/\/mars.archives.ncdcr.gov\/",
-        "urlPingSuffix": "DevEx,5158.1", "displayUrl": "mars.archives.ncdcr.gov",
-        "snippet": "mars.archives.ncdcr.gov - Detect Screen Resolution", "dateLastCrawled":
-        "2018-04-20T08:28:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
-        "name": "Mortgage Assistance Relief Services Rule: A Compliance ...", "url":
-        "https:\/\/www.ftc.gov\/tips-advice\/business-center\/guidance\/mortgage-assistance-relief-services-rule-compliance-guide",
-        "urlPingSuffix": "DevEx,5177.1", "displayUrl": "https:\/\/www.ftc.gov\/tips-advice\/business-center\/guidance\/mortgage...",
-        "snippet": "The Mortgage Assistance Relief Services (MARS) Rule makes it illegal
-        to charge upfront fees and requires specific disclosures in ads and when you
-        forward a lender’s offer to a homeowner.", "dateLastCrawled": "2018-04-21T15:53:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Mars |
+        satellites, named Deimos and Phobos (shown ...", "dateLastCrawled": "2018-08-18T14:07:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Welcome
+        to CGI Advantage Vendor Self Service Portal: Home", "url": "https:\/\/emars.ky.gov\/webapp\/vssonline\/AltSelfService",
+        "urlPingSuffix": "DevEx,5089.1", "displayUrl": "https:\/\/emars.ky.gov\/webapp\/vssonline\/AltSelfService",
+        "snippet": "Welcome to Kentucky’s 3.10 Vendor Self Service System. This system
+        is for viewing purposes only. No Solicitations after 6\/27\/2018 will be published
+        to this site and no new Vendor Registrations or Vendor Updates on this site
+        will be synched to Kentucky’s financial system.", "dateLastCrawled": "2018-08-21T08:57:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Mars |
         Mass.gov", "url": "https:\/\/www.mass.gov\/service-details\/mars", "urlPingSuffix":
-        "DevEx,5191.1", "displayUrl": "https:\/\/www.mass.gov\/service-details\/mars",
+        "DevEx,5101.1", "displayUrl": "https:\/\/www.mass.gov\/service-details\/mars",
         "snippet": "Find information on this shipwreck and dive site managed by the
         Massachusetts Board of Underwater Archaeological Resources (BUAR).", "dateLastCrawled":
-        "2018-04-22T16:46:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
-        "name": "MDE - GEMS\/MARS (Electronic Monitoring System)", "url": "http:\/\/www.michigan.gov\/mde\/0,4615,7-140-5236_63101---,00.html",
-        "urlPingSuffix": "DevEx,5209.1", "displayUrl": "www.michigan.gov\/mde\/0,4615,7-140-5236_63101---,00.html",
+        "2018-07-26T16:32:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
+        "name": "MDE - GEMS\/MARS (Electronic Monitoring System)", "url": "https:\/\/www.michigan.gov\/mde\/0,4615,7-140-5236_63101---,00.html",
+        "urlPingSuffix": "DevEx,5115.1", "displayUrl": "https:\/\/www.michigan.gov\/mde\/0,4615,7-140-5236_63101---,00.html",
         "snippet": "Michigan Department of Education - GEMS\/MARS (Electronic Monitoring
-        System)", "dateLastCrawled": "2018-04-07T16:39:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
-        "name": "Welcome to CGI Advantage Vendor Self Service Portal: Home", "url":
-        "https:\/\/emars.ky.gov\/webapp\/vssonline\/AltSelfService", "urlPingSuffix":
-        "DevEx,5225.1", "displayUrl": "https:\/\/emars.ky.gov\/webapp\/vssonline\/AltSelfService",
-        "snippet": "Welcome to Kentucky''s Vendor Self Service System. The Kentucky
-        Vendor Self Service (VSS) system allows you, as a payee\/vendor, to manage
-        your own account information, ...", "dateLastCrawled": "2018-04-19T06:24:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Missouri
-        State Bridge", "url": "https:\/\/emsweb1.dhss.mo.gov\/mars\/default.cfm?page=login",
-        "urlPingSuffix": "DevEx,5239.1", "about": [{"name": "Login"}], "displayUrl":
+        System)", "dateLastCrawled": "2018-07-18T06:51:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
+        "name": "mars.archives.ncdcr.gov - Detect Screen Resolution", "url": "https:\/\/mars.archives.ncdcr.gov\/",
+        "urlPingSuffix": "DevEx,5125.1", "displayUrl": "https:\/\/mars.archives.ncdcr.gov",
+        "snippet": "mars.archives.ncdcr.gov - Detect Screen Resolution", "dateLastCrawled":
+        "2018-08-18T06:30:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "name": "Home | MARS", "url": "https:\/\/mymarketnews.ams.usda.gov\/", "urlPingSuffix":
+        "DevEx,5137.1", "displayUrl": "https:\/\/mymarketnews.ams.usda.gov", "snippet":
+        "Market News MARS Webinar. Learn about the many features & tools available.
+        Northeast Cheese Report. Get regional cheese supply, demand, price, quality
+        & market tone.", "dateLastCrawled": "2018-08-19T10:07:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Mortgage Assistance
+        Relief Services Rule: A Compliance ...", "url": "https:\/\/www.ftc.gov\/tips-advice\/business-center\/guidance\/mortgage-assistance-relief-services-rule-compliance-guide",
+        "urlPingSuffix": "DevEx,5154.1", "displayUrl": "https:\/\/www.ftc.gov\/tips-advice\/business-center\/guidance\/mortgage...",
+        "snippet": "The Mortgage Assistance Relief Services (MARS) Rule makes it illegal
+        to charge upfront fees and requires specific disclosures in ads and when you
+        forward a lender’s offer to a homeowner.", "dateLastCrawled": "2018-08-13T15:43:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Department
+        of Administrative Services > Divisions ...", "url": "http:\/\/das.ohio.gov\/Divisions\/Information-Technology\/MARCS-Services",
+        "urlPingSuffix": "DevEx,5167.1", "about": [{"name": "Marc''s"}], "displayUrl":
+        "das.ohio.gov\/Divisions\/Information-Technology\/MARCS-Services", "snippet":
+        "MPP 22.0 Radio Talkgroup Patching Policy . The Radio Talkgroup Patching Policy
+        establishes the terms and conditions for patching 2 way voice radio equipment
+        into the Multi-Agency Radio Communication System (MARCS) infrastructure.",
+        "dateLastCrawled": "2018-08-20T18:54:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
+        "name": "Missouri State Bridge", "url": "https:\/\/emsweb1.dhss.mo.gov\/mars\/default.cfm?page=login",
+        "urlPingSuffix": "DevEx,5179.1", "about": [{"name": "Login"}], "displayUrl":
         "https:\/\/emsweb1.dhss.mo.gov\/mars\/default.cfm?page=login", "snippet":
         "Missouri Ambulance Reporting System ... Users Login Here", "dateLastCrawled":
-        "2018-04-21T01:43:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
-        "name": "North Carolina State Archives MARS - Basic Search", "url": "http:\/\/mars.archives.ncdcr.gov\/BasicSearch.aspx",
-        "urlPingSuffix": "DevEx,5252.1", "displayUrl": "mars.archives.ncdcr.gov\/BasicSearch.aspx",
+        "2018-08-18T19:36:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
+        "name": "Aloha Stadium24K MAGIC WORLD TOUR BRUNO MARS HOMECOMING ...", "url":
+        "http:\/\/alohastadium.hawaii.gov\/event\/24k-magic-world-tour-bruno-mars-homecoming\/",
+        "urlPingSuffix": "DevEx,5190.1", "about": [{"name": "Bruno Mars"}], "displayUrl":
+        "alohastadium.hawaii.gov\/event\/24k-magic-world-tour-bruno-mars...", "snippet":
+        "11x grammy-winner and multi-platinum selling artist bruno mars has announced
+        his homecoming to hawaii. 24k magic world tour bruno mars homecoming thursday,
+        november 8, 2018", "dateLastCrawled": "2018-08-21T08:59:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "mars.msde.maryland.gov
+        - Log In", "url": "https:\/\/mars.msde.maryland.gov\/", "urlPingSuffix": "DevEx,5201.1",
+        "displayUrl": "https:\/\/mars.msde.maryland.gov", "snippet": "MSDE MARS Web
+        Site. SCHOOL AND COMMUNITY NUTRITION MANAGEMENT: Our Vision: To maximize the
+        nutritional well-being of children and adults in Maryland", "dateLastCrawled":
+        "2018-08-19T15:54:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
+        "name": "MARS-E 2.0 was released", "url": "https:\/\/www.cms.gov\/CCIIO\/Resources\/Regulations-and-Guidance\/Downloads\/3-MARS-E-v2-0-Catalog-of-Security-and-Privacy-Controls-11102015.pdf",
+        "urlPingSuffix": "DevEx,5211.1", "displayUrl": "https:\/\/www.cms.gov\/CCIIO\/Resources\/Regulations-and-Guidance\/...",
+        "snippet": "MARS-E 2.0 was released", "dateLastCrawled": "2018-08-17T00:09:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "North
+        Carolina State Archives MARS - Basic Search", "url": "http:\/\/mars.archives.ncdcr.gov\/BasicSearch.aspx",
+        "urlPingSuffix": "DevEx,5222.1", "displayUrl": "mars.archives.ncdcr.gov\/BasicSearch.aspx",
         "snippet": "MARS Home: Help: Contact Us: Mobile Version: Basic Search Basic
         Search; Advanced Search; Search by Call Number . 16 Items per Page Sort by
-        Hierarchy. Search ...", "dateLastCrawled": "2018-04-22T20:46:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "MARS
-        API | MARS - mymarketnews.ams.usda.gov", "url": "https:\/\/mymarketnews.ams.usda.gov\/mars-api",
-        "urlPingSuffix": "DevEx,5264.1", "displayUrl": "https:\/\/mymarketnews.ams.usda.gov\/mars-api",
+        Hierarchy. Search ...", "dateLastCrawled": "2018-08-20T04:47:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "MARS
+        API | MARS", "url": "https:\/\/mymarketnews.ams.usda.gov\/mars-api", "urlPingSuffix":
+        "DevEx,5233.1", "displayUrl": "https:\/\/mymarketnews.ams.usda.gov\/mars-api",
         "snippet": "While MARS provides a quick method to download data on the Home
-        page, the API allows users to download large amounts of raw data.", "dateLastCrawled":
-        "2018-03-28T08:30:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
-        "name": "Mars MGS MOLA Elevation Model 463m (MEGDR) | USGS ...", "url": "https:\/\/astrogeology.usgs.gov\/search\/map\/Mars\/GlobalSurveyor\/MOLA\/Mars_MGS_MOLA_DEM_mosaic_global_463m",
-        "urlPingSuffix": "DevEx,5279.1", "displayUrl": "https:\/\/astrogeology.usgs.gov\/search\/map\/Mars\/GlobalSurveyor\/MOLA\/...",
-        "snippet": "This digital elevation model (DEM) is based on data from the Mars
-        Orbiter Laser Altimeter (MOLA; Smith and others, 2001), an…", "dateLastCrawled":
-        "2018-04-14T22:27:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
-        "name": "Welcome to CGI Advantage: LOGIN - Kentucky", "url": "https:\/\/emars.ky.gov\/webapp\/finonline\/Advantage",
-        "urlPingSuffix": "DevEx,5294.1", "displayUrl": "https:\/\/emars.ky.gov\/webapp\/finonline\/Advantage",
+        page, the API allows users to download large amounts of data that is published
+        in our reports. ...", "dateLastCrawled": "2018-08-15T06:40:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Reports
+        | MARS", "url": "https:\/\/mymarketnews.ams.usda.gov\/mars-api\/reports",
+        "urlPingSuffix": "DevEx,5248.1", "displayUrl": "https:\/\/mymarketnews.ams.usda.gov\/mars-api\/reports",
+        "snippet": "When users initially access the MARS API, a default list of available
+        reports are provided. Calls to the MARS API are all done to specific reports.",
+        "dateLastCrawled": "2018-08-06T01:07:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
+        "name": "Minimum Acceptable Risk Standards for Exchanges – Exchange ...",
+        "url": "https:\/\/www.cms.gov\/CCIIO\/Resources\/Regulations-and-Guidance\/Downloads\/Minimum-Acceptable-Risk-Standards-for-Exchanges-ERA-Supp-v-1-0-08012012-a.pdf",
+        "urlPingSuffix": "DevEx,5260.1", "displayUrl": "https:\/\/www.cms.gov\/CCIIO\/Resources\/Regulations-and-Guidance\/...",
+        "snippet": "(hereafter simply “MARS-E ... for Exchanges – Exchange Reference
+        Architecture Supplement, ... Standards for Exchanges – Exchange Reference
+        Architecture ...", "dateLastCrawled": "2018-08-17T19:51:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Welcome to CGI
+        Advantage: LOGIN - Kentucky", "url": "https:\/\/emars.ky.gov\/webapp\/finonline\/Advantage",
+        "urlPingSuffix": "DevEx,5272.1", "displayUrl": "https:\/\/emars.ky.gov\/webapp\/finonline\/Advantage",
         "snippet": "Login User ID: Password: Copyright © 2001, 2014 CGI Technologies
         and Solutions Inc. All Rights Reserved. Use of this software is subject to
-        CGI Technologies and ...", "dateLastCrawled": "2018-04-21T23:21:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "USDA
-        Launches MARS, Delivering Market Data to Agricultural ...", "url": "https:\/\/www.usda.gov\/media\/press-releases\/2018\/01\/31\/usda-launches-mars-delivering-market-data-agricultural-producers",
-        "urlPingSuffix": "DevEx,5311.1", "displayUrl": "https:\/\/www.usda.gov\/media\/press-releases\/2018\/01\/31\/usda-launches...",
-        "snippet": "USDA Launches MARS, Delivering Market Data to Agricultural Producers
-        Around the Globe Faster and Easier", "dateLastCrawled": "2018-04-13T00:01:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Management
-        Analysis and Reporting System -- Home", "url": "https:\/\/mars.rdc.noaa.gov\/",
-        "urlPingSuffix": "DevEx,5327.1", "displayUrl": "https:\/\/mars.rdc.noaa.gov",
-        "snippet": "System Notice: MARS will be unavailable on the 1st and 3rd Friday
-        of each month from 8:00 PM to 12:00 AM EDT to perform system maintenance.
-        Please plan accordingly.", "dateLastCrawled": "2018-04-22T14:25:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "eMARS
-        and Accounting Support", "url": "https:\/\/finance.ky.gov\/services\/statewideacct\/Pages\/eMARSForms.aspx",
-        "urlPingSuffix": "DevEx,5347.1", "displayUrl": "https:\/\/finance.ky.gov\/services\/statewideacct\/Pages\/eMARSForms.aspx",
-        "snippet": "Chart of Accounts and Budget Forms Management Budget SAS-5 Instructions
-        SAS-5 Capital Project SAS-14 Account Maintenance Instructions (04\/12\/18)
-        SAS-14 Account Maintenance Form (04\/12\/18)", "dateLastCrawled": "2018-04-23T00:31:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "MARS
-        gene - Genetics Home Reference", "url": "https:\/\/ghr.nlm.nih.gov\/gene\/MARS",
-        "urlPingSuffix": "DevEx,5367.1", "displayUrl": "https:\/\/ghr.nlm.nih.gov\/gene\/MARS",
-        "snippet": "This gene encodes a member of the class I family of aminoacyl-tRNA
-        synthetases. These enzymes play a critical role in protein biosynthesis by
-        charging tRNAs with their cognate amino acids. The encoded protein is a component
-        of the multi-tRNA synthetase complex and catalyzes the ligation of ...", "dateLastCrawled":
-        "2018-04-16T10:29:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
-        "name": "Mars | The EPA Blog", "url": "https:\/\/blog.epa.gov\/blog\/tag\/mars\/",
-        "urlPingSuffix": "DevEx,5381.1", "displayUrl": "https:\/\/blog.epa.gov\/blog\/tag\/mars",
-        "snippet": "his image is a time exposure of the Mars-Regulus conjunction.
-        Mars is the bright orange dot next to the blue dot (Regulus).", "dateLastCrawled":
-        "2018-04-17T14:52:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
-        "name": "Choose Collections - North Carolina Department of Natural ...", "url":
-        "http:\/\/mars.archives.ncdcr.gov\/ChooseClassGroupSeries.aspx", "urlPingSuffix":
-        "DevEx,5396.1", "about": [{"name": "Collections"}], "displayUrl": "mars.archives.ncdcr.gov\/ChooseClassGroupSeries.aspx",
-        "snippet": "Mars. Popular Collections. Junk. Account Books. Junk. Academic
-        Records. Junk. Bible Records. Junk. Cemetery Records. Junk. Church Records.
-        Junk. County Records. Junk ...", "dateLastCrawled": "2018-04-21T13:18:00.0000000Z"}]},
-        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
-        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        CGI Technologies and ...", "dateLastCrawled": "2018-08-20T04:54:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Home
+        | MARS", "url": "https:\/\/mymarketnewsdev.ams.usda.gov\/", "urlPingSuffix":
+        "DevEx,5283.1", "displayUrl": "https:\/\/mymarketnewsdev.ams.usda.gov", "snippet":
+        "USDA Launches MARS, Delivering Market Data to Agricultural Producers Around
+        the Globe Faster and Easier; USDA Announces Lamb Board Appointments", "dateLastCrawled":
+        "2018-08-10T11:37:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
+        "name": "Choose Collections", "url": "http:\/\/mars.archives.ncdcr.gov\/ChooseClassGroupSeries.aspx",
+        "urlPingSuffix": "DevEx,5296.1", "about": [{"name": "Collections"}], "displayUrl":
+        "mars.archives.ncdcr.gov\/ChooseClassGroupSeries.aspx", "snippet": "Mars.
+        Popular Collections. Junk. Account Books. Junk. Academic Records. Junk. Bible
+        Records. Junk. Cemetery Records. Junk. Church Records. Junk. County Records.
+        Junk ...", "dateLastCrawled": "2018-08-07T18:53:00.0000000Z"}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
         "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
@@ -214,5 +208,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Thu, 26 Apr 2018 23:56:37 GMT
+  recorded_at: Mon, 27 Aug 2018 00:04:43 GMT
 recorded_with: VCR 4.0.0

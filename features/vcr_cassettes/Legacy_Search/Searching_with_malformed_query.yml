@@ -2,15 +2,13 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=hello%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=hello%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
       - USASearch
-      Ocp-Apim-Subscription-Key:
-      - "<BING_V6_APP_ID>"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -27,165 +25,172 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3848'
+      - '4202'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Thu, 22 Feb 2018 07:15:53 GMT
+      - Mon, 27 Aug 2018 01:55:28 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=2D2D42E8E47B65D4231F4976E59E6438; path=/; expires=Tue, 19-Mar-2019 07:16:53
+      - MUID=0AF12C2C1072650823FA2074117D64E3; path=/; expires=Sat, 21-Sep-2019 01:56:28
         GMT; domain=bingapis.com
-      - MUIDB=2D2D42E8E47B65D4231F4976E59E6438; path=/; httponly; expires=Tue, 19-Mar-2019
-        07:16:53 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:16:53 GMT;
+      - MUIDB=0AF12C2C1072650823FA2074117D64E3; path=/; httponly; expires=Sat, 21-Sep-2019
+        01:56:28 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 27-Aug-2020 01:56:28 GMT;
         path=/
-      - SRCHUID=V=2&GUID=BF897F5F6EFD48B2BFDA0F793FEFD7A5&dmnchg=1; domain=.bingapis.com;
-        expires=Sat, 22-Feb-2020 07:16:53 GMT; path=/
-      - SRCHUSR=DOB=20180222; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:16:53
+      - SRCHUID=V=2&GUID=418DAEC31BE64BD3BDF96225C40432D1&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 27-Aug-2020 01:56:28 GMT; path=/
+      - SRCHUSR=DOB=20180827; domain=.bingapis.com; expires=Thu, 27-Aug-2020 01:56:28
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=0E7F4D4B9A12641D052D46D59BF76522; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=2CCF10A1B4F8627B39F81CF9B5F7638D; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Tue, 19-Mar-2019 07:16:53 GMT; domain=bingapis.com
-      - _SS=SID=0E7F4D4B9A12641D052D46D59BF76522; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 21-Sep-2019 01:56:28 GMT; domain=bingapis.com
+      - _SS=SID=2CCF10A1B4F8627B39F81CF9B5F7638D; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 7355CD33FCCF48E3AEF4E5083FD0E3D0
+      - 67A4751EB12B4453BE40D039F838D369
       X-Msedge-Clientid:
-      - 2D2D42E8E47B65D4231F4976E59E6438
+      - 0AF12C2C1072650823FA2074117D64E3
       X-Msapi-Userstate:
-      - f56f
+      - a3c9
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 7355CD33FCCF48E3AEF4E5083FD0E3D0 Ref B: SG2EDGE1116 Ref C: 2018-02-22T07:16:53Z'
+      - 'Ref A: 67A4751EB12B4453BE40D039F838D369 Ref B: BAYEDGE0515 Ref C: 2018-08-27T01:56:28Z'
       Date:
-      - Thu, 22 Feb 2018 07:16:53 GMT
+      - Mon, 27 Aug 2018 01:56:27 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=9694490011BA418AB31D43C5EBE84946&CID=2D2D42E8E47B65D4231F4976E59E6438&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=9694490011BA418AB31D43C5EBE84946&CID=2D2D42E8E47B65D4231F4976E59E6438&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=F6043692F8B84C4DA7A72949C9EDB30F&CID=0AF12C2C1072650823FA2074117D64E3&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=F6043692F8B84C4DA7A72949C9EDB30F&CID=0AF12C2C1072650823FA2074117D64E3&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=hello+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5477.1", "totalEstimatedMatches": 834000,
+        "webSearchUrlPingSuffix": "DevEx,5414.1", "totalEstimatedMatches": 1630000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "Hello From Above | NASA", "url": "https:\/\/www.nasa.gov\/image-feature\/hello-from-above\/",
-        "urlPingSuffix": "DevEx,5085.1", "displayUrl": "https:\/\/www.nasa.gov\/image-feature\/hello-from-above",
-        "snippet": "Greetings from @Astro_Sabot, otherwise known as Mark Vande Hei,
-        from aboard the International Space Station.", "dateLastCrawled": "2018-02-10T14:30:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Hello.
-        How Are You? | Colchester, VT", "url": "http:\/\/colchestervt.gov\/2898\/Hello-How-Are-You",
-        "urlPingSuffix": "DevEx,5098.1", "displayUrl": "colchestervt.gov\/2898\/Hello-How-Are-You",
-        "snippet": "Hello. How Are You? An outreach program in which Colchester
-        Police are developing, connecting senior citizens with the police department
-        before an emergency happens.", "dateLastCrawled": "2018-02-21T04:39:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Hello!",
-        "url": "https:\/\/ksbn.kansas.gov\/wp-content\/uploads\/Newsletter\/4qtr2017.pdf",
-        "urlPingSuffix": "DevEx,5111.1", "displayUrl": "https:\/\/ksbn.kansas.gov\/wp-content\/uploads\/Newsletter\/4qtr2017.pdf",
-        "snippet": "Hello, I would like to introduce myself. My name is Carol Moreland
-        and I am the new Executive Administrator of the Kansas State Board of Nursing.
-        My dream to be a", "dateLastCrawled": "2017-12-22T11:44:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Hello, World
-        | whitehouse.gov", "url": "https:\/\/obamawhitehouse.archives.gov\/blog\/2015\/05\/17\/hello-world",
-        "urlPingSuffix": "DevEx,5126.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2015\/05\/17\/hello-world",
-        "snippet": "Though it wasn’t true for President Obama when he became the first
-        president to write a line of code back in December, it’s traditional for the
-        first program a ...", "dateLastCrawled": "2018-02-16T08:59:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Fight
-        Social Isolation: Start with Hello! - Fairfax County ...", "url": "https:\/\/www.fairfaxcounty.gov\/news2\/start-with-hello\/",
-        "urlPingSuffix": "DevEx,5140.1", "displayUrl": "https:\/\/www.fairfaxcounty.gov\/news2\/start-with-hello",
-        "snippet": "Many of our county agencies, schools and community-based organizations
-        are participating in the national 2018 Start With Hello Week, Feb. 5-9,
-        to engage local youth ...", "dateLastCrawled": "2018-02-14T12:13:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Hello
-        La Nina | National Oceanic and Atmospheric ...", "url": "http:\/\/www.noaa.gov\/news\/hello-la-nina",
-        "urlPingSuffix": "DevEx,5156.1", "about": [{"name": "La Niña"}], "displayUrl":
-        "www.noaa.gov\/news\/hello-la-nina", "snippet": "November 10, 2016 La
-        Nina has arrived and is favored to stick around through winter. Forecasters
-        say the climate phenomena will likely contribute to drier ...", "dateLastCrawled":
-        "2018-02-14T14:35:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
-        "name": "Hello Sleep: NASA’s HERA XIII Crew Returns Home to Slumber",
-        "url": "https:\/\/www.nasa.gov\/feature\/goodbye-hera-hello-sleep-nasa-s-hera-xiii-crew-returns-home-to-slumber\/",
-        "urlPingSuffix": "DevEx,5171.1", "displayUrl": "https:\/\/www.nasa.gov\/feature\/goodbye-hera-hello-sleep-nasa-s-hera...",
-        "snippet": "Goodbye HERA, Hello Sleep: NASA’s HERA XIII Crew Returns Home
-        to Slumber", "dateLastCrawled": "2018-02-12T01:41:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
-        "name": "Hello Savings!", "url": "http:\/\/hellosavings.cpuc.ca.gov\/",
-        "urlPingSuffix": "DevEx,5184.1", "displayUrl": "hellosavings.cpuc.ca.gov",
-        "snippet": "Hello Savings! A gateway to the California Lifeline Program.",
-        "dateLastCrawled": "2018-01-27T05:34:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
-        "name": "Goodbye, Federal Student Aid PIN. Hello, FSA ID ... - ED ...",
-        "url": "https:\/\/blog.ed.gov\/2015\/05\/goodbye-federal-student-aid-pin-hello-fsa-id\/",
-        "urlPingSuffix": "DevEx,5199.1", "displayUrl": "https:\/\/blog.ed.gov\/2015\/05\/goodbye-federal-student-aid-pin-hello...",
-        "snippet": "If you’re a student, parent, or borrower and you’re logging in
-        to a U.S. Department of Education (ED) website – like fafsa.gov, the National
-        Student Loan Data ...", "dateLastCrawled": "2018-02-02T13:00:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "DOD Occupational
-        Database (ODB)", "url": "https:\/\/www.dmdc.osd.mil\/owa\/odb\/hello", "urlPingSuffix":
-        "DevEx,5212.1", "displayUrl": "https:\/\/www.dmdc.osd.mil\/owa\/odb\/hello",
+        "DOD Occupational Database (ODB)", "url": "https:\/\/www.dmdc.osd.mil\/owa\/odb\/hello",
+        "urlPingSuffix": "DevEx,5057.1", "displayUrl": "https:\/\/www.dmdc.osd.mil\/owa\/odb\/hello",
         "snippet": "Warning Notice and Consent to Monitor. You are accessing a U.S.
         Government(USG) information system(IS) that is provided for USG-authorized
-        use only.", "dateLastCrawled": "2018-02-16T02:15:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
-        "name": "Department of Economic Security: eEmployer Application", "url": "https:\/\/extranet.azdes.gov\/dcss\/eemployer\/Hello.htm",
-        "urlPingSuffix": "DevEx,5226.1", "displayUrl": "https:\/\/extranet.azdes.gov\/dcss\/eemployer",
-        "snippet": "This is where you can update your employees addresses, employment
-        status and report employee terminations.", "dateLastCrawled": "2018-02-15T16:00:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Hello
-        Happy | Benefits & Risk Management", "url": "http:\/\/bewell.franklincountyohio.gov\/thriveon\/programs-and-initiatives\/hello-happy.cfm",
-        "urlPingSuffix": "DevEx,5241.1", "displayUrl": "bewell.franklincountyohio.gov\/...\/hello-happy.cfm",
-        "snippet": "Welcome to Hello Happy. Hello Happy is ThriveOn''s newest
-        incentive program. Last year, the incentive program promoted the completion
-        of the health risk assessment and ...", "dateLastCrawled": "2018-02-13T16:12:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Hello
-        2018: January in Photos | Speaker.gov", "url": "https:\/\/www.speaker.gov\/photo\/hello-2018-january-photos",
-        "urlPingSuffix": "DevEx,5255.1", "displayUrl": "https:\/\/www.speaker.gov\/photo\/hello-2018-january-photos",
-        "snippet": "2018 started with a bang. From a Congressional Delegation trip
-        the Middle East to President Trump’s first State of the Union address (and
-        yes, a reckless government ...", "dateLastCrawled": "2018-02-11T05:13:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Hello,
-        world. | Federal Trade Commission", "url": "https:\/\/www.ftc.gov\/news-events\/blogs\/techftc\/2012\/03\/hello-world",
-        "urlPingSuffix": "DevEx,5275.1", "displayUrl": "https:\/\/www.ftc.gov\/news-events\/blogs\/techftc\/2012\/03\/hello-world",
-        "snippet": "Welcome! I’m Ed Felten, Chief Technologist at the FTC. Let me
-        introduce you to this blog. As the nation’s consumer protection agency, the
-        FTC works on technology ...", "dateLastCrawled": "2017-12-19T20:43:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Hello
-        | National Institute of Corrections", "url": "https:\/\/nicic.gov\/hello",
-        "urlPingSuffix": "DevEx,5288.1", "displayUrl": "https:\/\/nicic.gov\/hello",
-        "snippet": "Hi guys,Nice article. As a newly registered user I only want to
-        say hi to everyone else who uses this forum. It mostly depends on tolerance,
-        size, and weight of the ...", "dateLastCrawled": "2018-02-21T11:45:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Hello
+        use only.", "dateLastCrawled": "2018-08-20T10:27:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
+        "name": "Hello From Above | NASA", "url": "https:\/\/www.nasa.gov\/image-feature\/hello-from-above\/",
+        "urlPingSuffix": "DevEx,5070.1", "displayUrl": "https:\/\/www.nasa.gov\/image-feature\/hello-from-above",
+        "snippet": "Greetings from @Astro_Sabot, otherwise known as Mark Vande Hei,
+        from aboard the International Space Station.", "dateLastCrawled": "2018-08-21T01:28:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Hello,
+        my presentation will provide an overview of ...", "url": "https:\/\/www.cdc.gov\/vaccines\/ed\/pertussis\/transcript.pdf",
+        "urlPingSuffix": "DevEx,5082.1", "displayUrl": "https:\/\/www.cdc.gov\/vaccines\/ed\/pertussis\/transcript.pdf",
+        "snippet": "Coughing up the Facts on Pertussis: Emerging Trends and Vaccine
+        Recommendations Transcript Page 1 Hello, my presentation will provide an
+        overview of pertussis epidemiology in the United States.", "dateLastCrawled":
+        "2018-08-12T16:34:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "Hello America, hello! | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/2013563179\/",
+        "urlPingSuffix": "DevEx,5093.1", "displayUrl": "https:\/\/www.loc.gov\/item\/2013563179",
+        "snippet": "Title Hello America, hello! Contributor Names Fairman, George
+        -- 1881-1962 Created \/ Published", "dateLastCrawled": "2018-08-20T00:02:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "NASA Beams
+        \"Hello, World!\" Video from Space via Laser", "url": "https:\/\/www.nasa.gov\/press\/2014\/june\/nasa-beams-hello-world-video-from-space-via-laser\/",
+        "urlPingSuffix": "DevEx,5105.1", "displayUrl": "https:\/\/www.nasa.gov\/press\/2014\/june\/nasa-beams-hello-world-video...",
+        "snippet": "NASA successfully beamed a high-definition video 260 miles from
+        the International Space Station to Earth Thursday using a new laser communications
+        instrument.", "dateLastCrawled": "2018-08-21T08:15:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
+        "name": "Hello, World | whitehouse.gov", "url": "https:\/\/obamawhitehouse.archives.gov\/blog\/2015\/05\/17\/hello-world",
+        "urlPingSuffix": "DevEx,5118.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2015\/05\/17\/hello-world",
+        "snippet": "Though it wasn’t true for President Obama when he became the first
+        president to write a line of code back in December, it’s traditional for the
+        first program a new coder writes to be one that prints out the message “Hello,
+        world.”", "dateLastCrawled": "2018-07-25T03:52:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "name": "Hello Neighbor Project | Beaverton, OR - Official Website", "url":
+        "http:\/\/www.beavertonoregon.gov\/HelloNeighbor", "urlPingSuffix": "DevEx,5132.1",
+        "displayUrl": "www.beavertonoregon.gov\/HelloNeighbor", "snippet": "It all
+        begins with a simple hello ... Hello Neighbor, the creative brainchild
+        of artist Julie Keefe, introduces neighbors to each other, engages youth,
+        and helps develop a more connected community.", "dateLastCrawled": "2018-08-19T06:04:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Shawnee
+        Language | Eastern Shawnee", "url": "https:\/\/www.estoo-nsn.gov\/culture\/shawnee-language\/",
+        "urlPingSuffix": "DevEx,5145.1", "displayUrl": "https:\/\/www.estoo-nsn.gov\/culture\/shawnee-language",
+        "snippet": "If you are interested in serving on a committee please contact
+        Chief Wallace at 918.666.2435", "dateLastCrawled": "2018-07-28T17:42:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Hello
         Girls - Newspaper and Current Periodical Reading ...", "url": "https:\/\/www.loc.gov\/rr\/news\/topics\/hello.html",
-        "urlPingSuffix": "DevEx,5302.1", "displayUrl": "https:\/\/www.loc.gov\/rr\/news\/topics\/hello.html",
-        "snippet": "Topics in Chronicling America - Hello Girls. Coined as the ‘Hello
-        Girls’ as early as the late 19th century, female switchboard operators were
-        widely known as ...", "dateLastCrawled": "2017-12-10T04:36:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Hello
-        Kitty, Hello New York!", "url": "https:\/\/a856-citystore.nyc.gov\/1\/Gifts\/7\/NYC-Kids\/1992\/Hello-Kitty-Hello-New-York",
-        "urlPingSuffix": "DevEx,5317.1", "displayUrl": "https:\/\/a856-citystore.nyc.gov\/...\/1992\/Hello-Kitty-Hello-New-York",
-        "snippet": "Join Hello Kitty and her friends as they take a bite out of
-        the Big Apple! Visit the Empire State Building, kayak under the Brooklyn Bridge,
-        feed the pigeons at ...", "dateLastCrawled": "2018-02-05T12:07:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Hello,
-        Goodbye - Minnesota Judicial Center", "url": "http:\/\/lprb.mncourts.gov\/articles\/Articles\/Hello,%20Goodbye.pdf",
-        "urlPingSuffix": "DevEx,5330.1", "displayUrl": "lprb.mncourts.gov\/articles\/Articles\/Hello,
-        Goodbye.pdf", "snippet": "Hello, Goodbye By Martin A. Cole, Director Minnesota
-        Office of Lawyers Professional Responsibility Reprinted from Bench & Bar of
-        Minnesota (February 2008)", "dateLastCrawled": "2018-02-07T22:32:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Thrive
-        On Hello Happy Campaign Frequently Asked Questions", "url": "http:\/\/bewell.franklincountyohio.gov\/assets\/pdf\/hello-happy-faq.pdf",
-        "urlPingSuffix": "DevEx,5341.1", "displayUrl": "bewell.franklincountyohio.gov\/assets\/pdf\/hello-happy-faq.pdf",
-        "snippet": "Thrive On Hello Happy Campaign Frequently Asked Questions .
-        1. What is Hello Happy? Hello Happy is Thrive On’s newest wellness incentive
-        program.", "dateLastCrawled": "2018-01-18T03:40:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
-        "name": "The Superior Court of California, County of Riverside", "url":
-        "http:\/\/riverside.courts.ca.gov\/", "urlPingSuffix": "DevEx,5356.1", "displayUrl":
-        "riverside.courts.ca.gov", "snippet": "Welcome to Riverside Superior Court
-        ... Riverside County has 14 courthouses, as far as 185 miles apart, and spread
-        over 7,300 square miles in three regions ...", "dateLastCrawled": "2018-02-16T17:28:00.0000000Z"}]},
-        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
-        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
-        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        "urlPingSuffix": "DevEx,5158.1", "displayUrl": "https:\/\/www.loc.gov\/rr\/news\/topics\/hello.html",
+        "snippet": "Coined as the ‘Hello Girls’ as early as the late 19th century,
+        female switchboard operators were widely known as having gentle and polite
+        voices regardless of demanding and impatient callers. During WWI, General
+        Pershing enlisted French-speaking ‘Hello Girls’ to improve wartime communication
+        ...", "dateLastCrawled": "2018-07-30T17:08:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
+        "name": "Department of Economic Security: eEmployer Application", "url": "https:\/\/extranet.azdes.gov\/dcss\/eemployer\/Hello.htm",
+        "urlPingSuffix": "DevEx,5171.1", "displayUrl": "https:\/\/extranet.azdes.gov\/dcss\/eemployer",
+        "snippet": "This is where you can update your employees addresses, employment
+        status and report employee terminations.", "dateLastCrawled": "2018-08-19T02:14:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "National
+        Oceanic and Atmospheric Administration | U.S ...", "url": "http:\/\/www.noaa.gov\/",
+        "urlPingSuffix": "DevEx,5185.1", "about": [{"name": "National Oceanic and
+        Atmospheric Administration"}, {"name": "National Oceanic and Atmospheric Administration"}],
+        "displayUrl": "www.noaa.gov", "snippet": "Marine debris comes in many forms,
+        including toothbrushes. NOAA starts nationwide listening sessions. National
+        Oceanic and Atmospheric Administration U.S. Department of Commerce", "dateLastCrawled":
+        "2018-08-20T08:32:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
+        "name": "PA DHS - Bulletin Search", "url": "http:\/\/www.dhs.pa.gov\/publications\/bulletinsearch\/index.htm",
+        "urlPingSuffix": "DevEx,5201.1", "displayUrl": "www.dhs.pa.gov\/publications\/bulletinsearch\/index.htm",
+        "snippet": "Search Option B: If you do not know the Bulletin number, use
+        the additional search features below to search using the Program Office, regulation
+        code, ...", "dateLastCrawled": "2018-08-21T14:46:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
+        "name": "Hello, ma baby | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/99470294\/",
+        "urlPingSuffix": "DevEx,5215.1", "displayUrl": "https:\/\/www.loc.gov\/item\/99470294",
+        "snippet": "Music by Joseph Edgar Howard and Ida Emerson. Len G. Spencer,
+        baritone; piano accompaniment. Recorded at an unknown location, Apr. 15, 1899.
+        Recorded on one side only.", "dateLastCrawled": "2018-03-06T06:18:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Hello,
+        June! And more seasonal picks | Pima County Public ...", "url": "https:\/\/www.library.pima.gov\/blogs\/post\/hello-june-and-more-seasonal-staff-picks\/",
+        "urlPingSuffix": "DevEx,5226.1", "displayUrl": "https:\/\/www.library.pima.gov\/blogs\/post\/hello-june-and-more...",
+        "snippet": "I just finished updating our Celebrate page to feature the latest
+        timely staff picks related to summer, Pride, Juneteenth, Father''s…", "dateLastCrawled":
+        "2018-08-13T19:23:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
+        "name": "Goodbye, Federal Student Aid PIN. Hello, FSA ID ... - ED ...",
+        "url": "https:\/\/blog.ed.gov\/2015\/05\/goodbye-federal-student-aid-pin-hello-fsa-id\/",
+        "urlPingSuffix": "DevEx,5240.1", "displayUrl": "https:\/\/blog.ed.gov\/2015\/05\/goodbye-federal-student-aid-pin-hello...",
+        "snippet": "I just got off the phone with a very nice lady at FAFSA. I had
+        been incorrectly checking the box for “parent 1” when, on the FAFSA I was
+        “parent 2”.", "dateLastCrawled": "2018-08-19T17:25:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "Dynacraft Recalls Hello Kitty City Motor Scooters Due to ...",
+        "url": "https:\/\/www.cpsc.gov\/Recalls\/2013\/Dynacraft-Recalls-Hello-Kitty-City-Motor-Scooters\/",
+        "urlPingSuffix": "DevEx,5257.1", "displayUrl": "https:\/\/www.cpsc.gov\/Recalls\/2013\/Dynacraft-Recalls-Hello-Kitty...",
+        "snippet": "This recall involves electric, battery-operated City Scooters
+        that are pink and black with Hello Kitty graphics on the front panel, footboard
+        and rear fenders. The scooters were manufactured between September 9, 2012
+        and December 3, 2012. Model number \"8801-03\" and the date of manufacture,
+        formatted ...", "dateLastCrawled": "2018-08-06T19:19:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "City of Pleasanton,
+        CA - First Time Home Buyer Programs", "url": "http:\/\/www.cityofpleasantonca.gov\/resident\/housing\/homebuyer.asp",
+        "urlPingSuffix": "DevEx,5271.1", "displayUrl": "www.cityofpleasantonca.gov\/resident\/housing\/homebuyer.asp",
+        "snippet": "First Time Home Buyer Programs. Preparing for Homeownership.
+        ... Please contact Hello Housing, not the City, for questions or for more
+        information.", "dateLastCrawled": "2018-08-20T12:42:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Hello Zebra
+        Mussels. Goodbye Austin Lakes? | AustinTexas ...", "url": "http:\/\/austintexas.gov\/blog\/hello-zebra-mussels-goodbye-lake-austin",
+        "urlPingSuffix": "DevEx,5285.1", "displayUrl": "austintexas.gov\/blog\/hello-zebra-mussels-goodbye-lake-austin",
+        "snippet": "This story was updated in May 2018 from the updated story in February
+        2018. Protect Austin’s Creeks and Barton Springs Pool! Highly destructive
+        zebra mussels have invaded many popular Central Texas waters, and Austin’s
+        local creeks and Barton Springs Pool are now at risk.", "dateLastCrawled":
+        "2018-08-16T10:40:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
+        "name": "Goodbye Broadway, hello France | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/jukebox.4843\/",
+        "urlPingSuffix": "DevEx,5299.1", "displayUrl": "https:\/\/www.loc.gov\/item\/jukebox.4843",
+        "snippet": "The Library of Congress has obtained a license from rights holders
+        to offer it as streamed audio ... Goodbye Broadway, hello France. Victor,
+        Camden, New Jersey, 1917.", "dateLastCrawled": "2018-01-07T13:42:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Hello
+        La Nina | National Oceanic and Atmospheric ...", "url": "http:\/\/www.noaa.gov\/news\/hello-la-nina",
+        "urlPingSuffix": "DevEx,5314.1", "about": [{"name": "La Niña"}], "displayUrl":
+        "www.noaa.gov\/news\/hello-la-nina", "snippet": "November 10, 2016 La
+        Nina has arrived and is favored to stick around through winter. Forecasters
+        say the climate phenomena will likely contribute to drier and warmer weather
+        in the southern U.S. and wetter, cooler conditions in the Pacific Northwest
+        and across to the northern tier of the nation this ...", "dateLastCrawled":
+        "2018-08-21T16:34:00.0000000Z"}]}, "rankingResponse": {"mainline": {"items":
+        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
         {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
@@ -205,5 +210,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Thu, 22 Feb 2018 07:16:53 GMT
+  recorded_at: Mon, 27 Aug 2018 01:56:27 GMT
 recorded_with: VCR 4.0.0

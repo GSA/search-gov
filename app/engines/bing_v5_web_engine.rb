@@ -1,13 +1,8 @@
-class BingV5WebEngine < BingV5Engine
+class BingV5WebEngine < BingSearch
   API_ENDPOINT = '/bing/v5.0/search'.freeze
+  include BingV5HostedSubscriptionKey
 
   self.api_endpoint = API_ENDPOINT
-  self.response_parser_class = BingWebResponseParser
-
-  def params
-    super.merge({
-      responseFilter: 'WebPages,SpellSuggestions',
-      textDecorations: options[:enable_highlighting],
-    })
-  end
+  self.api_cache_namespace = 'bing_v5_api'
+  self.response_parser_class = BingV5WebResponseParser
 end

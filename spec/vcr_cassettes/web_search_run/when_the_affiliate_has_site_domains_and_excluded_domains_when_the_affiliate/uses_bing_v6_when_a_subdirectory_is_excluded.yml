@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=legal%20careers%20(site:justice.gov)%20(-site:justice.gov/legal-careers)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations&traffictype=test
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=legal%20careers%20(site:justice.gov)%20(-site:justice.gov/legal-careers)&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
     body:
       encoding: US-ASCII
       string: ''
@@ -10,7 +10,7 @@ http_interactions:
       User-Agent:
       - USASearch
       Ocp-Apim-Subscription-Key:
-      - "<BING_V6_APP_ID>"
+      - my_api_key
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -27,173 +27,169 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3103'
+      - '2864'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Thu, 26 Apr 2018 23:55:35 GMT
+      - Mon, 27 Aug 2018 00:03:41 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=3558DE96A69F67110550D54BA7086666; path=/; expires=Tue, 21-May-2019 23:56:36
+      - MUID=3836786B702C6DDC08B0743371236CBD; path=/; expires=Sat, 21-Sep-2019 00:04:41
         GMT; domain=bingapis.com
-      - MUIDB=3558DE96A69F67110550D54BA7086666; path=/; httponly; expires=Tue, 21-May-2019
-        23:56:36 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 26-Apr-2020 23:56:35 GMT;
+      - MUIDB=3836786B702C6DDC08B0743371236CBD; path=/; httponly; expires=Sat, 21-Sep-2019
+        00:04:41 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 27-Aug-2020 00:04:41 GMT;
         path=/
-      - SRCHUID=V=2&GUID=47D00DD6B046485EB16964FA306F789E&dmnchg=1; domain=.bingapis.com;
-        expires=Sun, 26-Apr-2020 23:56:35 GMT; path=/
-      - SRCHUSR=DOB=20180426; domain=.bingapis.com; expires=Sun, 26-Apr-2020 23:56:35
+      - SRCHUID=V=2&GUID=4A0EE9A4C9174400B10F66F432DA0449&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 27-Aug-2020 00:04:41 GMT; path=/
+      - SRCHUSR=DOB=20180827; domain=.bingapis.com; expires=Thu, 27-Aug-2020 00:04:41
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=1052C2B69E7563F21472C96B9FE26215; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=0DF02167B34F6C7D22042D3FB2406D75; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Tue, 21-May-2019 23:56:36 GMT; domain=bingapis.com
-      - _SS=SID=1052C2B69E7563F21472C96B9FE26215; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 21-Sep-2019 00:04:41 GMT; domain=bingapis.com
+      - _SS=SID=0DF02167B34F6C7D22042D3FB2406D75; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - D0D1270B352F479990CBF457FAA0F033
+      - 34242485393148D1BAFAC377051EBBC3
       X-Msedge-Clientid:
-      - 3558DE96A69F67110550D54BA7086666
+      - 3836786B702C6DDC08B0743371236CBD
       X-Msapi-Userstate:
-      - a861
+      - e47b
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: D0D1270B352F479990CBF457FAA0F033 Ref B: CO1EDGE0316 Ref C: 2018-04-26T23:56:36Z'
+      - 'Ref A: 34242485393148D1BAFAC377051EBBC3 Ref B: BAYEDGE0219 Ref C: 2018-08-27T00:04:41Z'
       Date:
-      - Thu, 26 Apr 2018 23:56:35 GMT
+      - Mon, 27 Aug 2018 00:04:41 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=149B624242794D97A3CF6CC14CC15BCB&CID=3558DE96A69F67110550D54BA7086666&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=149B624242794D97A3CF6CC14CC15BCB&CID=3558DE96A69F67110550D54BA7086666&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=2E6F311B06D74B7B9F37D7AA7C2E6387&CID=3836786B702C6DDC08B0743371236CBD&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=2E6F311B06D74B7B9F37D7AA7C2E6387&CID=3836786B702C6DDC08B0743371236CBD&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=legal+careers+(site%3ajustice.gov)+(-site%3ajustice.gov%2flegal-careers)",
-        "webSearchUrlPingSuffix": "DevEx,5548.1", "totalEstimatedMatches": 1800000,
+        "webSearchUrlPingSuffix": "DevEx,5440.1", "totalEstimatedMatches": 1290000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
         "Legal Careers | Department of Justice", "url": "https:\/\/www.justice.gov\/legal-careers",
-        "urlPingSuffix": "DevEx,5098.1", "about": [{"name": "United States Department
+        "urlPingSuffix": "DevEx,5060.1", "about": [{"name": "United States Department
         of Justice"}], "displayUrl": "https:\/\/www.justice.gov\/legal-careers", "snippet":
         "The Department of Justice offers a broad range of opportunities for experienced
         attorneys to work on many significant and complex issues that face our nation.",
-        "deepLinks": [{"name": "Experienced Attorneys", "url": "https:\/\/www.justice.gov\/legal-careers\/opportunities-experienced-attorneys",
-        "urlPingSuffix": "DevEx,5087.1"}, {"name": "Entry-Level Attorneys", "url":
-        "https:\/\/www.justice.gov\/legal-careers\/entry-level-attorneys", "urlPingSuffix":
-        "DevEx,5088.1"}, {"name": "Law Students", "url": "https:\/\/www.justice.gov\/legal-careers\/law-students",
-        "urlPingSuffix": "DevEx,5089.1"}, {"name": "Why Justice", "url": "https:\/\/www.justice.gov\/legal-careers\/why-justice",
-        "urlPingSuffix": "DevEx,5091.1"}], "dateLastCrawled": "2018-03-15T05:55:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Search
-        Jobs | CAREERS | Department of Justice", "url": "https:\/\/www.justice.gov\/careers\/search-jobs",
-        "urlPingSuffix": "DevEx,5113.1", "displayUrl": "https:\/\/www.justice.gov\/careers\/search-jobs",
+        "dateLastCrawled": "2018-07-19T01:45:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
+        "name": "Search Jobs | CAREERS | Department of Justice", "url": "https:\/\/www.justice.gov\/careers\/search-jobs",
+        "urlPingSuffix": "DevEx,5074.1", "displayUrl": "https:\/\/www.justice.gov\/careers\/search-jobs",
         "snippet": "Legal Careers ; FBI; ATF; DEA; U.S. Marshals Service ; Bureau
-        of Prisons; USAJobs Recent Jobs. Title Location Application Deadline", "dateLastCrawled":
-        "2018-04-17T18:01:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
-        "name": "Why Justice | CAREERS | Department of Justice", "url": "https:\/\/www.justice.gov\/careers\/why-justice",
-        "urlPingSuffix": "DevEx,5130.1", "displayUrl": "https:\/\/www.justice.gov\/careers\/why-justice",
+        of Prisons; USAJobs Recent Jobs. Title Location Application Deadline ; Assistant
+        United States ...", "dateLastCrawled": "2018-08-16T00:41:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Department of
+        Justice Jobs | CAREERS | Department of Justice", "url": "https:\/\/www.justice.gov\/careers\/department-justice-jobs",
+        "urlPingSuffix": "DevEx,5089.1", "displayUrl": "https:\/\/www.justice.gov\/careers\/department-justice-jobs",
         "snippet": "Careers. Legal Careers; Veteran Recruitment; Disability Hiring;
-        Contact; You are here. Home » Careers Careers. Careers Home; Why Justice.
-        Disability Hiring; Veteran ...", "dateLastCrawled": "2018-04-04T22:28:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Benefits
-        | CAREERS | Department of Justice", "url": "https:\/\/www.justice.gov\/careers\/benefits",
-        "urlPingSuffix": "DevEx,5147.1", "displayUrl": "https:\/\/www.justice.gov\/careers\/benefits",
-        "snippet": "You will enjoy a range of comprehensive and competitive employment
-        benefits that include: Health Benefits, Insurance & Retirement ... Legal Careers;
-        Veteran Recruitment;", "dateLastCrawled": "2018-04-16T12:06:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Careers
+        Contact; ... The vacancies below are announced by the Department of Justice
+        and its components on ...", "dateLastCrawled": "2018-07-12T20:17:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Careers
         | Department of Justice", "url": "https:\/\/www.justice.gov\/careers", "urlPingSuffix":
-        "DevEx,5162.1", "about": [{"name": "United States Department of Justice"}],
+        "DevEx,5102.1", "about": [{"name": "United States Department of Justice"}],
         "displayUrl": "https:\/\/www.justice.gov\/careers", "snippet": "The Department
         of Justice has a wide variety of careers in a number of offices throughout
         the country. ... Legal Assistant; Information Technology; Intelligence Research;",
-        "dateLastCrawled": "2018-04-05T20:59:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
-        "name": "Department of Justice Jobs | CAREERS | Department of Justice", "url":
-        "https:\/\/www.justice.gov\/careers\/department-justice-jobs", "urlPingSuffix":
-        "DevEx,5179.1", "displayUrl": "https:\/\/www.justice.gov\/careers\/department-justice-jobs",
-        "snippet": "The vacancies below are announced by the Department of Justice
-        and its components on ... Legal Careers; Veteran Recruitment; Disability Hiring;
-        CONTACT ...", "dateLastCrawled": "2018-03-18T07:41:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
-        "name": "Disability Hiring | CAREERS | Department of Justice", "url": "https:\/\/www.justice.gov\/careers\/disability-hiring",
-        "urlPingSuffix": "DevEx,5197.1", "displayUrl": "https:\/\/www.justice.gov\/careers\/disability-hiring",
-        "snippet": "Disability Hiring. The U.S. Department of Justice (DOJ or Department)
-        is committed to ensuring that persons with disabilities have equal opportunity
-        to ... Legal Careers;", "dateLastCrawled": "2018-03-23T23:15:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Employment
-        Opportunities | OSG | Department of Justice", "url": "https:\/\/www.justice.gov\/osg\/employment-opportunities",
-        "urlPingSuffix": "DevEx,5215.1", "displayUrl": "https:\/\/www.justice.gov\/osg\/employment-opportunities",
-        "snippet": "Please visit the Department''s Legal Careers website to obtain
-        information on: ... Any further questions regarding employment opportunities
-        within OSG should be sent ...", "dateLastCrawled": "2018-04-05T16:27:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "ABOUT
-        JUSTICE ChooseJustice", "url": "https:\/\/www.justice.gov\/sites\/default\/files\/careers\/docs\/legal-careers-brochure.pdf",
-        "urlPingSuffix": "DevEx,5229.1", "displayUrl": "https:\/\/www.justice.gov\/sites\/default\/files\/careers\/docs\/legal...",
-        "snippet": "Department of Justice is stronger, more credible, and more effective
-        when its ... The Department’s legal careers website provides a comprehensive",
-        "dateLastCrawled": "2018-04-17T08:28:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
-        "name": "Meet Holly | CAREERS | Department of Justice", "url": "https:\/\/www.justice.gov\/careers\/meet-holly",
-        "urlPingSuffix": "DevEx,5245.1", "displayUrl": "https:\/\/www.justice.gov\/careers\/meet-holly",
-        "snippet": "Employee Name: Holly . Current Title\/position: Management Analyst
-        How long have you been with DOJ? 4 years. Prior experience before joining
-        DOJ after you left and military:", "dateLastCrawled": "2018-04-19T06:45:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Volunteer
+        "dateLastCrawled": "2018-07-30T07:45:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
+        "name": "Why Justice | CAREERS | Department of Justice", "url": "https:\/\/www.justice.gov\/careers\/why-justice",
+        "urlPingSuffix": "DevEx,5117.1", "displayUrl": "https:\/\/www.justice.gov\/careers\/why-justice",
+        "snippet": "Careers. Legal Careers; Veteran Recruitment; Disability Hiring;
+        Contact; You are here. Home » Careers Careers. Careers Home; Why Justice.
+        Disability Hiring; Veteran ...", "dateLastCrawled": "2018-04-04T22:28:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Benefits
+        | CAREERS | Department of Justice", "url": "https:\/\/www.justice.gov\/careers\/benefits",
+        "urlPingSuffix": "DevEx,5132.1", "displayUrl": "https:\/\/www.justice.gov\/careers\/benefits",
+        "snippet": "Careers. Legal Careers; Veteran Recruitment; ... You will enjoy
+        a range of comprehensive and competitive employment benefits that include:
+        Health Benefits ...", "dateLastCrawled": "2018-07-15T05:51:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Volunteer
         Legal Intern Positions | USAO-DE | Department of ...", "url": "https:\/\/www.justice.gov\/usao-de\/careers\/Volunteer%20Legal%20Intern%20Positions",
-        "urlPingSuffix": "DevEx,5263.1", "displayUrl": "https:\/\/www.justice.gov\/usao-de\/careers\/Volunteer
+        "urlPingSuffix": "DevEx,5148.1", "displayUrl": "https:\/\/www.justice.gov\/usao-de\/careers\/Volunteer
         Legal Intern...", "snippet": "To apply for the summer program visit the Department
         of Justice website at http:\/\/www.justice.gov\/legal-careers\/volunteer-legal-internships.",
-        "dateLastCrawled": "2017-12-10T17:02:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
-        "name": "Meet the Solicitor General | OSG | Department of Justice", "url":
-        "https:\/\/www.justice.gov\/osg\/staff-profile\/meet-solicitor-general", "urlPingSuffix":
-        "DevEx,5281.1", "displayUrl": "https:\/\/www.justice.gov\/osg\/staff-profile\/meet-solicitor-general",
-        "snippet": "Meet the Solicitor General. Download image. Noel John Francisco
-        was sworn in as the 48th Solicitor General of the United States on September
-        19, 2017. ... Legal Careers;", "dateLastCrawled": "2018-04-08T16:10:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "FY 2017
-        AGENCY FINANCIAL REPORT | DOJ | Department of Justice", "url": "https:\/\/www.justice.gov\/doj\/fy-2017-agency-financial-report",
-        "urlPingSuffix": "DevEx,5295.1", "displayUrl": "https:\/\/www.justice.gov\/doj\/fy-2017-agency-financial-report",
-        "snippet": "FY 2017 AGENCY FINANCIAL REPORT. ... Analysis of Systems, Controls,
-        and Legal Compliance. ... Legal Careers; Veteran Recruitment;", "dateLastCrawled":
-        "2018-03-21T18:58:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
-        "name": "Careers | USAO-EDTX | Department of Justice", "url": "https:\/\/www.justice.gov\/usao-edtx\/careers",
-        "urlPingSuffix": "DevEx,5314.1", "displayUrl": "https:\/\/www.justice.gov\/usao-edtx\/careers",
-        "snippet": "Careers. Voted one of the ... Most commonly hired are the paralegal
-        specialists and legal assistants who directly support the Assistant United
-        States Attorneys during ...", "dateLastCrawled": "2018-02-20T09:57:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Department
-        of Justice Pathways Programs | Department of ...", "url": "https:\/\/www.justice.gov\/careers\/department-justice-pathways-programs",
-        "urlPingSuffix": "DevEx,5332.1", "displayUrl": "https:\/\/www.justice.gov\/careers\/department-justice-pathways-programs",
-        "snippet": "Department of Justice Pathways Programs. ... with opportunities
-        to work in agencies and explore Federal careers while still in school and
-        while ... Legal Careers;", "dateLastCrawled": "2018-03-26T04:54:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Resources
-        | OLA | Department of Justice", "url": "https:\/\/www.justice.gov\/ola\/resources",
-        "urlPingSuffix": "DevEx,5349.1", "displayUrl": "https:\/\/www.justice.gov\/ola\/resources",
-        "snippet": "Resources. Thomas Legislative Information. U.S. Senate. U.S. House
-        of Representatives. Government Printing Office (GPO) ... Legal Careers; Interns,
-        Recent Graduates, ...", "dateLastCrawled": "2017-12-04T22:01:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "\"DOJ
-        Law Jobs\" to be Available on iTunes and the Play ...", "url": "https:\/\/www.justice.gov\/opa\/pr\/doj-law-jobs-be-available-itunes-and-play-store",
-        "urlPingSuffix": "DevEx,5369.1", "displayUrl": "https:\/\/www.justice.gov\/opa\/pr\/doj-law-jobs-be-available-itunes...",
-        "snippet": "The U.S. Department of Justice unveiled a new mobile app, called
-        DOJ Law Jobs, ... For more information, please visit www.justice.gov\/legal-careers.
-        Component(s):", "dateLastCrawled": "2018-01-22T16:22:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Employment Opportunities
-        | CRIMINAL | Department of Justice", "url": "https:\/\/www.justice.gov\/criminal\/employment-opportunities",
-        "urlPingSuffix": "DevEx,5387.1", "displayUrl": "https:\/\/www.justice.gov\/criminal\/employment-opportunities",
-        "snippet": "Employment Opportunities. This portion of our website will assist
-        you in navigating current Criminal Division vacancies. ... Legal Careers;
-        Interns, ...", "dateLastCrawled": "2018-03-02T05:13:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Employment Opportunities
-        | OLC | Department of Justice", "url": "https:\/\/www.justice.gov\/olc\/employment-opportunities",
-        "urlPingSuffix": "DevEx,5405.1", "displayUrl": "https:\/\/www.justice.gov\/olc\/employment-opportunities",
-        "snippet": "Employment Opportunities. ... For a listing of OLC’s current experienced
-        attorney vacancies, please visit the Department''s Legal Careers website.",
-        "dateLastCrawled": "2018-02-26T17:52:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
-        "name": "Resources | CRIMINAL-OPDAT | Department of Justice", "url": "https:\/\/www.justice.gov\/criminal-opdat\/resources",
-        "urlPingSuffix": "DevEx,5424.1", "displayUrl": "https:\/\/www.justice.gov\/criminal-opdat\/resources",
-        "snippet": "Resources. Reports. The Financial Action Task Force and recommendations
-        for partner nations; ... Legal Careers; Interns, Recent Graduates, and Fellows;
-        CONTACT ...", "dateLastCrawled": "2017-10-22T08:35:00.0000000Z"}]}, "rankingResponse":
-        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
-        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        "dateLastCrawled": "2017-12-10T17:02:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "name": "Disability Hiring | CAREERS | Department of Justice", "url": "https:\/\/www.justice.gov\/careers\/disability-hiring",
+        "urlPingSuffix": "DevEx,5164.1", "displayUrl": "https:\/\/www.justice.gov\/careers\/disability-hiring",
+        "snippet": "Disability Hiring. The U.S. Department of Justice (DOJ or Department)
+        ... please review DOJ’s legal careers web page to search the listed vacancies.",
+        "dateLastCrawled": "2018-08-02T09:00:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
+        "name": "ABOUT JUSTICE ChooseJustice - U.S. Department of Justice", "url":
+        "https:\/\/www.justice.gov\/sites\/default\/files\/careers\/docs\/legal-careers-brochure.pdf",
+        "urlPingSuffix": "DevEx,5176.1", "displayUrl": "https:\/\/www.justice.gov\/sites\/default\/files\/careers\/docs\/legal...",
+        "snippet": "Department of Justice is stronger, more credible, and more effective
+        when its ... The Department’s legal careers website provides a comprehensive",
+        "dateLastCrawled": "2018-08-17T14:31:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
+        "name": "Assitant United States Attorney | LEGAL-CAREERS ...", "url": "https:\/\/www.justice.gov\/assitant-united-states-attorney",
+        "urlPingSuffix": "DevEx,5190.1", "displayUrl": "https:\/\/www.justice.gov\/assitant-united-states-attorney",
+        "snippet": "The Western District of Michigan includes the western half of
+        the Lower Peninsula of Michigan and all of the Upper Peninsula, a total of
+        more than 35,000 square miles with a population in excess of 3.5 million.
+        The main office is located in Grand Rapids, a mid-sized and growing city that
+        is a short ...", "dateLastCrawled": "2018-07-24T12:56:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Volunteer Legal
+        Intern Positions | USAO-NDGA | Department ...", "url": "https:\/\/www.justice.gov\/usao-ndga\/careers\/volunteer-legal-intern-positions",
+        "urlPingSuffix": "DevEx,5207.1", "displayUrl": "https:\/\/www.justice.gov\/...\/careers\/volunteer-legal-intern-positions",
+        "snippet": "Volunteer Legal Intern Positions. ... To apply for the summer
+        program visit the Department of Justice website at http:\/\/www.justice.gov\/legal-careers\/volunteer-legal
+        ...", "dateLastCrawled": "2018-06-12T19:55:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
+        "name": "Opportunities for Students | CAREERS | Department of Justice", "url":
+        "https:\/\/www.justice.gov\/careers\/opportunities-students", "urlPingSuffix":
+        "DevEx,5222.1", "displayUrl": "https:\/\/www.justice.gov\/careers\/opportunities-students",
+        "snippet": "Careers. Legal Careers; Veteran Recruitment; Disability Hiring;
+        Contact; You are here. Home » Careers Careers. Careers Home; Why Justice;
+        Benefits; Search Jobs ...", "dateLastCrawled": "2018-07-31T14:47:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "U.S.
+        Department of Justice", "url": "https:\/\/www.justice.gov\/", "urlPingSuffix":
+        "DevEx,5235.1", "about": [{"name": "United States Department of Justice"}],
+        "displayUrl": "https:\/\/www.justice.gov", "snippet": "Legal Careers; Veteran
+        Recruitment; ... Justice Department Reaches Settlement Agreement with Native
+        American Community Health Center Resolving the USERRA Claims ...", "dateLastCrawled":
+        "2018-08-16T01:28:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        "name": "Department of Justice Pathways Programs | Department of ...", "url":
+        "https:\/\/www.justice.gov\/careers\/department-justice-pathways-programs",
+        "urlPingSuffix": "DevEx,5251.1", "displayUrl": "https:\/\/www.justice.gov\/careers\/department-justice-pathways-programs",
+        "snippet": "Careers. Legal Careers; Veteran ... Department of Justice Pathways
+        Programs. Internship Program | ... and explore Federal careers while still
+        in school and while ...", "dateLastCrawled": "2018-08-17T08:36:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "FARA
+        eFile | NSD-FARA | Department of Justice", "url": "https:\/\/www.justice.gov\/nsd-fara\/fara-efile",
+        "urlPingSuffix": "DevEx,5264.1", "displayUrl": "https:\/\/www.justice.gov\/nsd-fara\/fara-efile",
+        "snippet": "CAREERS. Legal Careers; Veteran Recruitment; Disability Hiring;
+        CONTACT ...", "dateLastCrawled": "2018-06-04T10:25:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "Employment Opportunities | OSG | Department of Justice", "url": "https:\/\/www.justice.gov\/osg\/employment-opportunities",
+        "urlPingSuffix": "DevEx,5280.1", "displayUrl": "https:\/\/www.justice.gov\/osg\/employment-opportunities",
+        "snippet": "Employment Opportunities. The Solicitor General is supported by
+        four Deputies, 16 ... Please visit the Department''s Legal Careers website
+        to obtain information on:", "dateLastCrawled": "2018-08-02T06:22:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "List
+        of Pro Bono Legal Service Providers | EOIR ...", "url": "https:\/\/www.justice.gov\/eoir\/list-pro-bono-legal-service-providers",
+        "urlPingSuffix": "DevEx,5295.1", "displayUrl": "https:\/\/www.justice.gov\/eoir\/list-pro-bono-legal-service-providers",
+        "snippet": "Careers. Legal Careers; Veteran ... or listing then there are
+        currently no providers on the List of Pro Bono Legal Service Providers in
+        that particular ...", "dateLastCrawled": "2018-08-07T12:23:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Meet
+        DOJ Veteran Cynthia | CAREERS | Department of Justice", "url": "https:\/\/www.justice.gov\/careers\/veteran-recruitment\/meet-doj-veteran-cynthia",
+        "urlPingSuffix": "DevEx,5310.1", "displayUrl": "https:\/\/www.justice.gov\/careers\/veteran-recruitment\/meet-doj...",
+        "snippet": "Careers. Legal Careers; Veteran Recruitment; Disability Hiring;
+        Contact; You are here. Home » Careers » Veteran Recruitment Careers. Careers
+        Home; Why Justice ...", "dateLastCrawled": "2018-07-19T15:44:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Alphabetical
+        Listing of Components, Programs ...", "url": "https:\/\/www.justice.gov\/agencies\/alphabetical-listing-components-programs-initiatives",
+        "urlPingSuffix": "DevEx,5325.1", "displayUrl": "https:\/\/www.justice.gov\/agencies\/alphabetical-listing-components...",
+        "snippet": "Careers. Legal Careers; ... Alphabetical Listing of Components,
+        Programs, & Initiatives. ... Legal Aid Interagency Round Table .", "dateLastCrawled":
+        "2018-07-11T17:49:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
+        "name": "Mission | OLP | Department of Justice", "url": "https:\/\/www.justice.gov\/olp\/mission",
+        "urlPingSuffix": "DevEx,5339.1", "displayUrl": "https:\/\/www.justice.gov\/olp\/mission",
+        "snippet": "As approved by the Attorney General and with notice to Congress,
+        the Office of Legal Policy (OLP) has assumed the principal policy and legislative
+        responsibilities of the Office for Access to Justice.", "dateLastCrawled":
+        "2018-05-16T16:27:00.0000000Z"}]}, "rankingResponse": {"mainline": {"items":
+        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
         {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
@@ -213,5 +209,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Thu, 26 Apr 2018 23:56:36 GMT
+  recorded_at: Mon, 27 Aug 2018 00:04:41 GMT
 recorded_with: VCR 4.0.0

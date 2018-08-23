@@ -2,15 +2,13 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.bingapis.com/api/v6/images/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=barcelona%20(site:gov%20OR%20site:mil)&safeSearch=moderate&traffictype=test
+    uri: https://www.bingapis.com/api/v6/images/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=barcelona%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
       - USASearch
-      Ocp-Apim-Subscription-Key:
-      - "<BING_V6_APP_ID>"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -29,7 +27,7 @@ http_interactions:
       Pragma:
       - no-cache
       Content-Length:
-      - '110327'
+      - '110283'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
@@ -39,250 +37,247 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=2C4F1B630EE067CA1E3C10FD0F056687; path=/; expires=Tue, 19-Mar-2019 07:15:41
+      - MUID=1E5AEF9152A968D8039FE3C953A66952; path=/; expires=Sat, 21-Sep-2019 01:41:52
         GMT; domain=bingapis.com
-      - MUIDB=2C4F1B630EE067CA1E3C10FD0F056687; path=/; httponly; expires=Tue, 19-Mar-2019
-        07:15:41 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:15:41 GMT;
+      - MUIDB=1E5AEF9152A968D8039FE3C953A66952; path=/; httponly; expires=Sat, 21-Sep-2019
+        01:41:52 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 27-Aug-2020 01:41:52 GMT;
         path=/
-      - SRCHUID=V=2&GUID=4A3C6E3854C84CCF98E0F7496A32A313&dmnchg=1; domain=.bingapis.com;
-        expires=Sat, 22-Feb-2020 07:15:41 GMT; path=/
-      - SRCHUSR=DOB=20180222; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:15:41
+      - SRCHUID=V=2&GUID=A6077D16C26D4613861490731003C7B1&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 27-Aug-2020 01:41:52 GMT; path=/
+      - SRCHUSR=DOB=20180827; domain=.bingapis.com; expires=Thu, 27-Aug-2020 01:41:52
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=24814F475EC06C2721EC44D95F256DC9; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=3401FEEC9EE267081A50F2B49FED660A; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Tue, 19-Mar-2019 07:15:41 GMT; domain=bingapis.com
-      - _SS=SID=24814F475EC06C2721EC44D95F256DC9; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 21-Sep-2019 01:41:52 GMT; domain=bingapis.com
+      - _SS=SID=3401FEEC9EE267081A50F2B49FED660A; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 5557536559C143BAA897995E29F4B393
+      - 27478401F51B4A3A81BA87506BA2F4B9
       X-Msedge-Clientid:
-      - 2C4F1B630EE067CA1E3C10FD0F056687
+      - 1E5AEF9152A968D8039FE3C953A66952
       X-Msapi-Userstate:
-      - c7d5
+      - 1b03
       X-Msedge-Ref:
-      - 'Ref A: 5557536559C143BAA897995E29F4B393 Ref B: SG2EDGE0719 Ref C: 2018-02-22T07:15:41Z'
+      - 'Ref A: 27478401F51B4A3A81BA87506BA2F4B9 Ref B: BAYEDGE0308 Ref C: 2018-08-27T01:41:52Z'
       Date:
-      - Thu, 22 Feb 2018 07:15:41 GMT
+      - Mon, 27 Aug 2018 01:41:52 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "Images", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=E3DA6535A0804A639555DF82D2779B21&CID=2C4F1B630EE067CA1E3C10FD0F056687&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=E3DA6535A0804A639555DF82D2779B21&CID=2C4F1B630EE067CA1E3C10FD0F056687&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "Images", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=739871B2AD044D72AA60F70A418BF10E&CID=1E5AEF9152A968D8039FE3C953A66952&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=739871B2AD044D72AA60F70A418BF10E&CID=1E5AEF9152A968D8039FE3C953A66952&Type=Event.CPT&DATA=0"},
         "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=barcelona%20(site:gov%20OR%20site:mil)&FORM=OIIARP",
         "webSearchUrlPingSuffix": "DevEx,5188.1", "totalEstimatedMatches": 100, "nextOffset":
-        23, "value": [{"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=BB805BC66624FA7039BDC58D9B9AD3808C98B9D0&simid=608043109259872780",
-        "webSearchUrlPingSuffix": "DevEx,5025.1", "name": "NYSED Global History and
-        Geography Online Resource Guide: Turningpoints", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.VTCefxqzav7Mlyva42XwEgHaKk&pid=Api",
-        "datePublished": "2017-09-17T05:58:00.0000000Z", "contentUrl": "http:\/\/www.p12.nysed.gov\/ciai\/socst\/ghgonline\/turnpoint\/images\/content\/tp36\/barcelona.jpg",
-        "contentUrlPingSuffix": "DevEx,5027.1", "hostPageUrl": "http:\/\/www.p12.nysed.gov\/ciai\/socst\/ghgonline\/turnpoint\/cities6.html",
-        "hostPageUrlPingSuffix": "DevEx,5026.1", "contentSize": "108209 B", "encodingFormat":
+        22, "value": [{"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=753DD79C6E6ECFA35CD168DB7F57D99CB81BC5C8&simid=608029833877914416",
+        "webSearchUrlPingSuffix": "DevEx,5025.1", "name": "Multipurpose Complex to
+        host FC Barcelona for youth soccer training program - City of Round Rock",
+        "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.jsNLG85IRlhmD2eLnbN7YAHaE8&pid=Api",
+        "datePublished": "2018-07-15T19:35:00.0000000Z", "contentUrl": "https:\/\/www.roundrocktexas.gov\/wp-content\/uploads\/2017\/03\/2016FCBEscolaCamp-CharlotteRound2-June202016-15-1948x1300.jpg",
+        "contentUrlPingSuffix": "DevEx,5027.1", "hostPageUrl": "https:\/\/www.roundrocktexas.gov\/news\/official-fc-barcelona-soccer-school-opening-round-rock-austin\/",
+        "hostPageUrlPingSuffix": "DevEx,5026.1", "contentSize": "198990 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.roundrocktexas.gov\/news\/official-fc-barcelona-soccer...",
+        "width": 1948, "height": 1300, "thumbnail": {"width": 474, "height": 316},
+        "imageInsightsToken": "ccid_jsNLG85I*mid_753DD79C6E6ECFA35CD168DB7F57D99CB81BC5C8*simid_608029833877914416",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "753DD79C6E6ECFA35CD168DB7F57D99CB81BC5C8", "accentColor": "B91228"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=BB805BC66624FA7039BDC58D9B9AD3808C98B9D0&simid=608043109663378062",
+        "webSearchUrlPingSuffix": "DevEx,5031.1", "name": "NYSED Global History and
+        Geography Online Resource Guide: Turningpoints", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.VTCefxqzav7Mlyva42XwEgAAAA&pid=Api",
+        "datePublished": "2018-06-15T15:46:00.0000000Z", "contentUrl": "http:\/\/www.p12.nysed.gov\/ciai\/socst\/ghgonline\/turnpoint\/images\/content\/tp36\/barcelona.jpg",
+        "contentUrlPingSuffix": "DevEx,5033.1", "hostPageUrl": "http:\/\/www.p12.nysed.gov\/ciai\/socst\/ghgonline\/turnpoint\/cities6.html",
+        "hostPageUrlPingSuffix": "DevEx,5032.1", "contentSize": "108209 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "www.p12.nysed.gov\/ciai\/socst\/ghgonline\/turnpoint\/cities6.html",
-        "width": 307, "height": 438, "thumbnail": {"width": 474, "height": 676}, "imageInsightsToken":
-        "ccid_VTCefxqz*mid_BB805BC66624FA7039BDC58D9B9AD3808C98B9D0*simid_608043109259872780",
+        "width": 307, "height": 438, "thumbnail": {"width": 307, "height": 438}, "imageInsightsToken":
+        "ccid_VTCefxqz*mid_BB805BC66624FA7039BDC58D9B9AD3808C98B9D0*simid_608043109663378062",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "BB805BC66624FA7039BDC58D9B9AD3808C98B9D0", "accentColor": "62464A"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=9A7AFB70D6F872011900A7EF144EB87866F40B7A&simid=608037615989689535",
-        "webSearchUrlPingSuffix": "DevEx,5031.1", "name": "Huitième", "thumbnailUrl":
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=9A7AFB70D6F872011900A7EF144EB87866F40B7A&simid=608037616398307260",
+        "webSearchUrlPingSuffix": "DevEx,5037.1", "name": "Huitième", "thumbnailUrl":
         "https:\/\/tse1.mm.bing.net\/th?id=OIP.NAtt1FGsznDDMYfla25phwHaFj&pid=Api",
-        "datePublished": "2017-09-10T00:51:00.0000000Z", "contentUrl": "http:\/\/math.nist.gov\/~JBernal\/ramblas.jpg",
-        "contentUrlPingSuffix": "DevEx,5033.1", "hostPageUrl": "http:\/\/math.nist.gov\/~JBernal\/JBernal_Htn.html",
-        "hostPageUrlPingSuffix": "DevEx,5032.1", "contentSize": "442821 B", "encodingFormat":
+        "datePublished": "2018-07-09T07:32:00.0000000Z", "contentUrl": "http:\/\/math.nist.gov\/~JBernal\/ramblas.jpg",
+        "contentUrlPingSuffix": "DevEx,5039.1", "hostPageUrl": "http:\/\/math.nist.gov\/~JBernal\/JBernal_Htn.html",
+        "hostPageUrlPingSuffix": "DevEx,5038.1", "contentSize": "442821 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "math.nist.gov\/~JBernal\/JBernal_Htn.html",
         "width": 1296, "height": 972, "thumbnail": {"width": 474, "height": 355},
-        "imageInsightsToken": "ccid_NAtt1FGs*mid_9A7AFB70D6F872011900A7EF144EB87866F40B7A*simid_608037615989689535",
+        "imageInsightsToken": "ccid_NAtt1FGs*mid_9A7AFB70D6F872011900A7EF144EB87866F40B7A*simid_608037616398307260",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "9A7AFB70D6F872011900A7EF144EB87866F40B7A", "accentColor": "AB3020"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=3407D57FAAB19FF8B6677907458EF2C489E789DE&simid=608041743450835440",
-        "webSearchUrlPingSuffix": "DevEx,5037.1", "name": "Beautiful Barcelona beckons
-        travelers | Article | The United States Army", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.lbcg_5wtkT-xmWaiUVS4TwHaNJ&pid=Api",
-        "datePublished": "2017-09-15T15:12:00.0000000Z", "contentUrl": "https:\/\/www.army.mil\/e2\/c\/images\/2014\/09\/04\/361327\/original.jpg",
-        "contentUrlPingSuffix": "DevEx,5039.1", "hostPageUrl": "https:\/\/www.army.mil\/article\/133067\/Beautiful_Barcelona_beckons_travelers\/?from=RSS",
-        "hostPageUrlPingSuffix": "DevEx,5038.1", "contentSize": "386581 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.army.mil\/article\/133067\/Beautiful_Barcelona_beckons...",
-        "width": 577, "height": 1024, "thumbnail": {"width": 474, "height": 841},
-        "imageInsightsToken": "ccid_lbcg\/5wt*mid_3407D57FAAB19FF8B6677907458EF2C489E789DE*simid_608041743450835440",
-        "imageId": "3407D57FAAB19FF8B6677907458EF2C489E789DE", "accentColor": "2A77A1"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=0C479EBB26094A645A8CA811CBD2DDBFB2A359C4&simid=607989422183353642",
-        "webSearchUrlPingSuffix": "DevEx,5043.1", "name": "NASA Visible Earth: Barcelona,
-        Spain", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.kuEdKYM1VepA1LQtTVGOBAHaFj&pid=Api",
-        "datePublished": "2017-11-13T12:07:00.0000000Z", "contentUrl": "https:\/\/eoimages.gsfc.nasa.gov\/images\/imagerecords\/7000\/7421\/ISS014-E-10547_lrg.jpg",
-        "contentUrlPingSuffix": "DevEx,5045.1", "hostPageUrl": "https:\/\/visibleearth.nasa.gov\/view.php?id=7421",
-        "hostPageUrlPingSuffix": "DevEx,5044.1", "contentSize": "680604 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/visibleearth.nasa.gov\/view.php?id=7421",
-        "width": 1000, "height": 750, "thumbnail": {"width": 474, "height": 355},
-        "imageInsightsToken": "ccid_kuEdKYM1*mid_0C479EBB26094A645A8CA811CBD2DDBFB2A359C4*simid_607989422183353642",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "0C479EBB26094A645A8CA811CBD2DDBFB2A359C4", "accentColor": "1D455A"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=09ED5C20B96A583450618A5A0788A7E2E432E241&simid=608011747414575172",
-        "webSearchUrlPingSuffix": "DevEx,5049.1", "name": "The World Factbook — Central
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=09ED5C20B96A583450618A5A0788A7E2E432E241&simid=608011747829877373",
+        "webSearchUrlPingSuffix": "DevEx,5043.1", "name": "The World Factbook — Central
         Intelligence Agency", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.7tjP1Ywk1-RdxX7La_jt4QHaJ4&pid=Api",
-        "datePublished": "2018-02-05T23:35:00.0000000Z", "contentUrl": "https:\/\/www.cia.gov\/library\/publications\/the-world-factbook\/photo_gallery\/sp\/images\/SP_054.JPG",
-        "contentUrlPingSuffix": "DevEx,5051.1", "hostPageUrl": "https:\/\/www.cia.gov\/library\/publications\/the-world-factbook\/geos\/SP.html",
-        "hostPageUrlPingSuffix": "DevEx,5050.1", "contentSize": "60960 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.cia.gov\/library\/publications\/the-world-factbook\/geos\/SP...",
+        "datePublished": "2018-08-06T21:25:00.0000000Z", "contentUrl": "https:\/\/www.cia.gov\/library\/publications\/the-world-factbook\/photo_gallery\/sp\/images\/SP_054.JPG",
+        "contentUrlPingSuffix": "DevEx,5045.1", "hostPageUrl": "https:\/\/www.cia.gov\/library\/Publications\/the-world-factbook\/geos\/sp.html",
+        "hostPageUrlPingSuffix": "DevEx,5044.1", "contentSize": "60960 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.cia.gov\/library\/Publications\/the-world-factbook\/geos\/sp...",
         "width": 480, "height": 640, "thumbnail": {"width": 474, "height": 632}, "imageInsightsToken":
-        "ccid_7tjP1Ywk*mid_09ED5C20B96A583450618A5A0788A7E2E432E241*simid_608011747414575172",
+        "ccid_7tjP1Ywk*mid_09ED5C20B96A583450618A5A0788A7E2E432E241*simid_608011747829877373",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "09ED5C20B96A583450618A5A0788A7E2E432E241", "accentColor": "225CA9"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=09ED5C20B96A58345061DF3F983A42F8E0F0F164&simid=608028072559905059",
-        "webSearchUrlPingSuffix": "DevEx,5055.1", "name": "The World Factbook — Central
-        Intelligence Agency", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.yk-fXFfE2TwtWOV6yhGHEQHaFj&pid=Api",
-        "datePublished": "2018-02-14T23:24:00.0000000Z", "contentUrl": "https:\/\/www.cia.gov\/library\/publications\/the-world-factbook\/photo_gallery\/sp\/images\/large\/SP_059_large.jpg",
-        "contentUrlPingSuffix": "DevEx,5057.1", "hostPageUrl": "https:\/\/www.cia.gov\/library\/publications\/the-world-factbook\/geos\/SP.html",
-        "hostPageUrlPingSuffix": "DevEx,5056.1", "contentSize": "61344 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.cia.gov\/library\/publications\/the-world-factbook\/geos\/SP...",
-        "width": 640, "height": 480, "thumbnail": {"width": 474, "height": 355}, "imageInsightsToken":
-        "ccid_yk+fXFfE*mid_09ED5C20B96A58345061DF3F983A42F8E0F0F164*simid_608028072559905059",
-        "imageId": "09ED5C20B96A58345061DF3F983A42F8E0F0F164", "accentColor": "A0982B"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=8DB58A6E04EDE65C791BADE3C9F52D92C6363356&simid=607992329840822588",
-        "webSearchUrlPingSuffix": "DevEx,5061.1", "name": "Sanctuaries Go To Barcelona!",
-        "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.opZjrotxVK8XzQ6WwDB0lwAAAA&pid=Api",
-        "datePublished": "2014-11-07T17:49:00.0000000Z", "contentUrl": "http:\/\/sanctuaries.noaa.gov\/news\/images\/barcelona3.jpg",
-        "contentUrlPingSuffix": "DevEx,5063.1", "hostPageUrl": "http:\/\/sanctuaries.noaa.gov\/news\/features\/1008_barcelona.html",
-        "hostPageUrlPingSuffix": "DevEx,5062.1", "contentSize": "11752 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "sanctuaries.noaa.gov\/news\/features\/1008_barcelona.html",
-        "width": 250, "height": 188, "thumbnail": {"width": 250, "height": 188}, "imageInsightsToken":
-        "ccid_opZjrotx*mid_8DB58A6E04EDE65C791BADE3C9F52D92C6363356*simid_607992329840822588",
-        "imageId": "8DB58A6E04EDE65C791BADE3C9F52D92C6363356", "accentColor": "3E528D"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=3407D57FAAB19FF8B6678B78B37963B42A6DA7A2&simid=608040558054539323",
-        "webSearchUrlPingSuffix": "DevEx,5067.1", "name": "Beautiful Barcelona beckons
-        travelers | Article | The United States Army", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.KVdd2ZudMJbjbaz2gmgBGAHaJ7&pid=Api",
-        "datePublished": "2017-09-15T15:12:00.0000000Z", "contentUrl": "https:\/\/www.army.mil\/e2\/c\/images\/2014\/09\/04\/361323\/original.jpg",
-        "contentUrlPingSuffix": "DevEx,5069.1", "hostPageUrl": "https:\/\/www.army.mil\/article\/133067\/Beautiful_Barcelona_beckons_travelers\/?from=RSS",
-        "hostPageUrlPingSuffix": "DevEx,5068.1", "contentSize": "567189 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.army.mil\/article\/133067\/Beautiful_Barcelona_beckons...",
-        "width": 764, "height": 1024, "thumbnail": {"width": 474, "height": 635},
-        "imageInsightsToken": "ccid_KVdd2Zud*mid_3407D57FAAB19FF8B6678B78B37963B42A6DA7A2*simid_608040558054539323",
-        "imageId": "3407D57FAAB19FF8B6678B78B37963B42A6DA7A2", "accentColor": "323214"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=CDAFB350F666045DFCC4C46D448D88C2623FD2EA&simid=608049225297760008",
-        "webSearchUrlPingSuffix": "DevEx,5073.1", "name": "NASA - Members of the FC
-        Barcelona Soccer Team", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.eyJX5eLaSaDJ00ORE_dOtgHaE6&pid=Api",
-        "datePublished": "2016-11-21T20:50:00.0000000Z", "contentUrl": "https:\/\/www.nasa.gov\/images\/content\/154346main_jsc2006e33427_high.jpg",
-        "contentUrlPingSuffix": "DevEx,5075.1", "hostPageUrl": "https:\/\/www.nasa.gov\/mission_pages\/station\/multimedia\/Barcelona_soccer_team.html",
-        "hostPageUrlPingSuffix": "DevEx,5074.1", "contentSize": "2231422 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.nasa.gov\/mission_pages\/station\/multimedia\/Barcelona...",
-        "width": 3072, "height": 2040, "thumbnail": {"width": 474, "height": 314},
-        "imageInsightsToken": "ccid_eyJX5eLa*mid_CDAFB350F666045DFCC4C46D448D88C2623FD2EA*simid_608049225297760008",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "CDAFB350F666045DFCC4C46D448D88C2623FD2EA", "accentColor": "154274"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=3407D57FAAB19FF8B6673CA74348DE20F0C0157F&simid=608004403019841831",
-        "webSearchUrlPingSuffix": "DevEx,5079.1", "name": "Beautiful Barcelona beckons
-        travelers | Article | The United States Army", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.8-fbOCs9tuPqag6Vqyuc3QHaNK&pid=Api",
-        "datePublished": "2017-09-15T15:12:00.0000000Z", "contentUrl": "https:\/\/www.army.mil\/e2\/c\/images\/2014\/09\/04\/361324\/original.jpg",
-        "contentUrlPingSuffix": "DevEx,5081.1", "hostPageUrl": "https:\/\/www.army.mil\/article\/133067\/Beautiful_Barcelona_beckons_travelers\/?from=RSS",
-        "hostPageUrlPingSuffix": "DevEx,5080.1", "contentSize": "351934 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.army.mil\/article\/133067\/Beautiful_Barcelona_beckons...",
-        "width": 576, "height": 1024, "thumbnail": {"width": 474, "height": 842},
-        "imageInsightsToken": "ccid_8+fbOCs9*mid_3407D57FAAB19FF8B6673CA74348DE20F0C0157F*simid_608004403019841831",
-        "imageId": "3407D57FAAB19FF8B6673CA74348DE20F0C0157F", "accentColor": "886C43"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=3407D57FAAB19FF8B667F2474802AB0C7BA8B09C&simid=608023528485948348",
-        "webSearchUrlPingSuffix": "DevEx,5085.1", "name": "Beautiful Barcelona beckons
-        travelers | Article | The United States Army", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.Pz3A67xRvhc_82RCwi4wuwHaJ7&pid=Api",
-        "datePublished": "2017-09-15T15:12:00.0000000Z", "contentUrl": "https:\/\/www.army.mil\/e2\/c\/images\/2014\/09\/04\/361321\/original.jpg",
-        "contentUrlPingSuffix": "DevEx,5087.1", "hostPageUrl": "https:\/\/www.army.mil\/article\/133067\/Beautiful_Barcelona_beckons_travelers\/?from=RSS",
-        "hostPageUrlPingSuffix": "DevEx,5086.1", "contentSize": "600037 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.army.mil\/article\/133067\/Beautiful_Barcelona_beckons...",
-        "width": 764, "height": 1024, "thumbnail": {"width": 474, "height": 635},
-        "imageInsightsToken": "ccid_Pz3A67xR*mid_3407D57FAAB19FF8B667F2474802AB0C7BA8B09C*simid_608023528485948348",
-        "imageId": "3407D57FAAB19FF8B667F2474802AB0C7BA8B09C", "accentColor": "757042"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=753DD79C6E6ECFA35CD11E20E2E207552F5A8944&simid=607989838771258307",
-        "webSearchUrlPingSuffix": "DevEx,5091.1", "name": "Multipurpose Complex to
-        host FC Barcelona for youth soccer training program - City of Round Rock",
-        "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.NSFj_WcnLCOf3eZk1EfU3AHaHe&pid=Api",
-        "datePublished": "2017-03-03T00:01:00.0000000Z", "contentUrl": "https:\/\/www.roundrocktexas.gov\/wp-content\/uploads\/2017\/03\/barca_crest_thumb.jpg",
-        "contentUrlPingSuffix": "DevEx,5093.1", "hostPageUrl": "https:\/\/www.roundrocktexas.gov\/news\/official-fc-barcelona-soccer-school-opening-round-rock-austin\/",
-        "hostPageUrlPingSuffix": "DevEx,5092.1", "contentSize": "18329 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.roundrocktexas.gov\/news\/official-fc-barcelona-soccer...",
-        "width": 200, "height": 202, "thumbnail": {"width": 474, "height": 478}, "imageInsightsToken":
-        "ccid_NSFj\/Wcn*mid_753DD79C6E6ECFA35CD11E20E2E207552F5A8944*simid_607989838771258307",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "753DD79C6E6ECFA35CD11E20E2E207552F5A8944", "accentColor": "C70427"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=531FE4044224BA2D24281097CC3A771C0FA1BEB3&simid=608003466710352219",
-        "webSearchUrlPingSuffix": "DevEx,5097.1", "name": "Barcelona, Spain : Image
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=531FE4044224BA2D24281097CC3A771C0FA1BEB3&simid=608003467100555561",
+        "webSearchUrlPingSuffix": "DevEx,5049.1", "name": "Barcelona, Spain : Image
         of the Day", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.bXoVxXWEqTBfEW9DCn7jUQHaE5&pid=Api",
         "datePublished": "2013-08-15T21:09:00.0000000Z", "contentUrl": "http:\/\/eoimages.gsfc.nasa.gov\/images\/imagerecords\/4000\/4627\/ISS009-E-9987_lrg.jpg",
-        "contentUrlPingSuffix": "DevEx,5099.1", "hostPageUrl": "http:\/\/earthobservatory.nasa.gov\/IOTD\/view.php?id=4627&eocn=image&eoci=moreiotd",
-        "hostPageUrlPingSuffix": "DevEx,5098.1", "contentSize": "499979 B", "encodingFormat":
+        "contentUrlPingSuffix": "DevEx,5051.1", "hostPageUrl": "http:\/\/earthobservatory.nasa.gov\/IOTD\/view.php?id=4627&eocn=image&eoci=moreiotd",
+        "hostPageUrlPingSuffix": "DevEx,5050.1", "contentSize": "499979 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "earthobservatory.nasa.gov\/IOTD\/view.php?id=4627&eocn=image&eoci...",
         "width": 1000, "height": 662, "thumbnail": {"width": 474, "height": 313},
-        "imageInsightsToken": "ccid_bXoVxXWE*mid_531FE4044224BA2D24281097CC3A771C0FA1BEB3*simid_608003466710352219",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageInsightsToken": "ccid_LxyBxHJX*mid_531FE4044224BA2D24281097CC3A771C0FA1BEB3*simid_608003467100555561",
         "imageId": "531FE4044224BA2D24281097CC3A771C0FA1BEB3", "accentColor": "22446B"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=7959859CD7D5AB3990474D3B9460D0D60104206E&simid=608055646227726682",
-        "webSearchUrlPingSuffix": "DevEx,5103.1", "name": "EHP – Green and Blue Spaces
-        and Behavioral Development in Barcelona Schoolchildren: The BREATHE ...",
-        "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.Iax1G1Sx1k6KOX-vDpP0SAHaKz&pid=Api",
-        "datePublished": "2014-12-01T16:27:00.0000000Z", "contentUrl": "http:\/\/ehp.niehs.nih.gov\/wp-content\/uploads\/2014\/11\/ehp.1408215.g002.png",
-        "contentUrlPingSuffix": "DevEx,5105.1", "hostPageUrl": "http:\/\/ehp.niehs.nih.gov\/1408215\/",
-        "hostPageUrlPingSuffix": "DevEx,5104.1", "contentSize": "485321 B", "encodingFormat":
-        "png", "hostPageDisplayUrl": "ehp.niehs.nih.gov\/1408215", "width": 800, "height":
-        1167, "thumbnail": {"width": 474, "height": 691}, "imageInsightsToken": "ccid_Iax1G1Sx*mid_7959859CD7D5AB3990474D3B9460D0D60104206E*simid_608055646227726682",
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=5B41C2F9687164BC2CC2C46D448D88C2623FD2EA&simid=608043564909661091",
+        "webSearchUrlPingSuffix": "DevEx,5055.1", "name": "NASA - Members of the FC
+        Barcelona Soccer Team", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.eyJX5eLaSaDJ00ORE_dOtgHaE6&pid=Api",
+        "datePublished": "2016-11-25T20:28:00.0000000Z", "contentUrl": "https:\/\/www.nasa.gov\/images\/content\/154346main_jsc2006e33427_high.jpg",
+        "contentUrlPingSuffix": "DevEx,5057.1", "hostPageUrl": "https:\/\/www.nasa.gov\/mission_pages\/station\/multimedia\/Barcelona_soccer_team_prt.htm",
+        "hostPageUrlPingSuffix": "DevEx,5056.1", "contentSize": "2231422 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.nasa.gov\/mission_pages\/station\/multimedia\/Barcelona...",
+        "width": 3072, "height": 2040, "thumbnail": {"width": 474, "height": 314},
+        "imageInsightsToken": "ccid_eyJX5eLa*mid_5B41C2F9687164BC2CC2C46D448D88C2623FD2EA*simid_608043564909661091",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "7959859CD7D5AB3990474D3B9460D0D60104206E", "accentColor": "A62725"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=B7FDE023134A73869700AB9B71C283DF6AFB5596&simid=608052820144753367",
-        "webSearchUrlPingSuffix": "DevEx,5109.1", "name": "Beautiful Barcelona beckons
+        "imageId": "5B41C2F9687164BC2CC2C46D448D88C2623FD2EA", "accentColor": "154274"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=3407D57FAAB19FF8B6679101D47DAF8EF87122A9&simid=608043835495285585",
+        "webSearchUrlPingSuffix": "DevEx,5061.1", "name": "Beautiful Barcelona beckons
+        travelers | Article | The United States Army", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.VxcrvJhWnfQOrkaEwJxpJwAAAA&pid=Api",
+        "datePublished": "2018-05-29T14:54:00.0000000Z", "contentUrl": "https:\/\/www.army.mil\/e2\/c\/images\/2014\/09\/04\/361323\/size0.jpg",
+        "contentUrlPingSuffix": "DevEx,5063.1", "hostPageUrl": "https:\/\/www.army.mil\/article\/133067\/Beautiful_Barcelona_beckons_travelers\/?from=RSS",
+        "hostPageUrlPingSuffix": "DevEx,5062.1", "contentSize": "39244 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.army.mil\/article\/133067\/Beautiful_Barcelona_beckons...",
+        "width": 324, "height": 435, "thumbnail": {"width": 324, "height": 435}, "imageInsightsToken":
+        "ccid_VxcrvJhW*mid_3407D57FAAB19FF8B6679101D47DAF8EF87122A9*simid_608043835495285585",
+        "imageId": "3407D57FAAB19FF8B6679101D47DAF8EF87122A9", "accentColor": "323314"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=9026B2CF3D401DDFF995547D9EABA316E021D2EA&simid=608020080018393907",
+        "webSearchUrlPingSuffix": "DevEx,5067.1", "name": "OCED''s Ocean Carbon Cycle
+        Barcelona Express Underway Data", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.a34yQo7HufBvoVHKocb44QAAAA&pid=Api",
+        "datePublished": "2014-11-15T02:56:00.0000000Z", "contentUrl": "http:\/\/www.aoml.noaa.gov\/ocd\/gcc\/graphics\/barcelona.jpg",
+        "contentUrlPingSuffix": "DevEx,5069.1", "hostPageUrl": "http:\/\/www.aoml.noaa.gov\/ocd\/ocdweb\/barcelona\/barcelona_introduction.html",
+        "hostPageUrlPingSuffix": "DevEx,5068.1", "contentSize": "23911 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "www.aoml.noaa.gov\/ocd\/ocdweb\/barcelona\/barcelona_introduction.html",
+        "width": 300, "height": 225, "thumbnail": {"width": 300, "height": 225}, "imageInsightsToken":
+        "ccid_a34yQo7H*mid_9026B2CF3D401DDFF995547D9EABA316E021D2EA*simid_608020080018393907",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "9026B2CF3D401DDFF995547D9EABA316E021D2EA", "accentColor": "B93C12"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=7A54A3A6F1E98BAF2692221096CB6E11950374A2&simid=608011275379214395",
+        "webSearchUrlPingSuffix": "DevEx,5073.1", "name": "Barcelona, Spain : Image
+        of the Day", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.kuEdKYM1VepA1LQtTVGOBAHaFj&pid=Api",
+        "datePublished": "2010-01-30T18:21:00.0000000Z", "contentUrl": "http:\/\/eoimages.gsfc.nasa.gov\/images\/imagerecords\/7000\/7421\/ISS014-E-10547_lrg.jpg",
+        "contentUrlPingSuffix": "DevEx,5075.1", "hostPageUrl": "http:\/\/earthobservatory.nasa.gov\/IOTD\/view.php?id=7421",
+        "hostPageUrlPingSuffix": "DevEx,5074.1", "contentSize": "680604 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "earthobservatory.nasa.gov\/IOTD\/view.php?id=7421",
+        "width": 1000, "height": 750, "thumbnail": {"width": 474, "height": 355},
+        "imageInsightsToken": "ccid_kuEdKYM1*mid_7A54A3A6F1E98BAF2692221096CB6E11950374A2*simid_608011275379214395",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "7A54A3A6F1E98BAF2692221096CB6E11950374A2", "accentColor": "1D455A"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=09ED5C20B96A58345061A91365F45F056A9D2CC7&simid=608050720343656791",
+        "webSearchUrlPingSuffix": "DevEx,5079.1", "name": "The World Factbook — Central
+        Intelligence Agency", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.E0sVCismAH-jwmiKNPK05AHaJ4&pid=Api",
+        "datePublished": "2018-08-06T21:25:00.0000000Z", "contentUrl": "https:\/\/www.cia.gov\/library\/publications\/the-world-factbook\/photo_gallery\/sp\/images\/SP_057.JPG",
+        "contentUrlPingSuffix": "DevEx,5081.1", "hostPageUrl": "https:\/\/www.cia.gov\/library\/publications\/the-world-factbook\/geos\/SP.html",
+        "hostPageUrlPingSuffix": "DevEx,5080.1", "contentSize": "62694 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.cia.gov\/library\/publications\/the-world-factbook\/geos\/SP...",
+        "width": 480, "height": 640, "thumbnail": {"width": 474, "height": 632}, "imageInsightsToken":
+        "ccid_E0sVCism*mid_09ED5C20B96A58345061A91365F45F056A9D2CC7*simid_608050720343656791",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "09ED5C20B96A58345061A91365F45F056A9D2CC7", "accentColor": "056FC6"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=8DB58A6E04EDE65C791BADE3C9F52D92C6363356&simid=607992330254355612",
+        "webSearchUrlPingSuffix": "DevEx,5085.1", "name": "Sanctuaries Go To Barcelona!",
+        "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.opZjrotxVK8XzQ6WwDB0lwAAAA&pid=Api",
+        "datePublished": "2014-11-07T17:49:00.0000000Z", "contentUrl": "http:\/\/sanctuaries.noaa.gov\/news\/images\/barcelona3.jpg",
+        "contentUrlPingSuffix": "DevEx,5087.1", "hostPageUrl": "http:\/\/sanctuaries.noaa.gov\/news\/features\/1008_barcelona.html",
+        "hostPageUrlPingSuffix": "DevEx,5086.1", "contentSize": "11752 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "sanctuaries.noaa.gov\/news\/features\/1008_barcelona.html",
+        "width": 250, "height": 188, "thumbnail": {"width": 250, "height": 188}, "imageInsightsToken":
+        "ccid_opZjrotx*mid_8DB58A6E04EDE65C791BADE3C9F52D92C6363356*simid_607992330254355612",
+        "imageId": "8DB58A6E04EDE65C791BADE3C9F52D92C6363356", "accentColor": "3E528D"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=1904E42AE28EA3B5F1508941A0D1B6C9930A66DC&simid=608013478737350276",
+        "webSearchUrlPingSuffix": "DevEx,5091.1", "name": "Spangdahlem lt shares first-time
+        marathon experience > Spangdahlem Air Base > Display", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.NeZdg-Ti_Pz-idGQT8VGxgHaFj&pid=Api",
+        "datePublished": "2018-07-15T22:05:00.0000000Z", "contentUrl": "https:\/\/media.defense.gov\/2009\/Mar\/09\/2000613566\/780\/780\/0\/090301-F-0000R-148.JPG",
+        "contentUrlPingSuffix": "DevEx,5093.1", "hostPageUrl": "http:\/\/www.spangdahlem.af.mil\/News\/Commentaries\/Display\/Article\/296930\/spangdahlem-lt-shares-first-time-marathon-experience\/",
+        "hostPageUrlPingSuffix": "DevEx,5092.1", "contentSize": "108714 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "www.spangdahlem.af.mil\/News\/Commentaries\/Display\/Article\/296930...",
+        "width": 780, "height": 585, "thumbnail": {"width": 474, "height": 355}, "imageInsightsToken":
+        "ccid_NeZdg+Ti*mid_1904E42AE28EA3B5F1508941A0D1B6C9930A66DC*simid_608013478737350276",
+        "imageId": "1904E42AE28EA3B5F1508941A0D1B6C9930A66DC", "accentColor": "9F6B2C"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=B7FDE023134A738697007907458EF2C489E789DE&simid=608009282507115142",
+        "webSearchUrlPingSuffix": "DevEx,5097.1", "name": "Beautiful Barcelona beckons
+        travelers | Article | The United States Army", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.lbcg_5wtkT-xmWaiUVS4TwHaNJ&pid=Api",
+        "datePublished": "2018-07-01T22:51:00.0000000Z", "contentUrl": "https:\/\/www.army.mil\/e2\/c\/images\/2014\/09\/04\/361327\/original.jpg",
+        "contentUrlPingSuffix": "DevEx,5099.1", "hostPageUrl": "http:\/\/www.army.mil\/article\/133067\/Beautiful_Barcelona_beckons_travelers\/",
+        "hostPageUrlPingSuffix": "DevEx,5098.1", "contentSize": "386581 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "www.army.mil\/article\/133067\/Beautiful_Barcelona_beckons_travelers",
+        "width": 577, "height": 1024, "thumbnail": {"width": 474, "height": 841},
+        "imageInsightsToken": "ccid_lbcg\/5wt*mid_B7FDE023134A738697007907458EF2C489E789DE*simid_608009282507115142",
+        "imageId": "B7FDE023134A738697007907458EF2C489E789DE", "accentColor": "2A77A1"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=B7FDE023134A73869700AB9B71C283DF6AFB5596&simid=608052820537311590",
+        "webSearchUrlPingSuffix": "DevEx,5103.1", "name": "Beautiful Barcelona beckons
         travelers | Article | The United States Army", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.E8XjvNHYQ1V9IBNpBd1onAHaNN&pid=Api",
-        "datePublished": "2017-07-14T02:43:00.0000000Z", "contentUrl": "https:\/\/www.army.mil\/e2\/c\/images\/2014\/09\/04\/361328\/original.jpg",
-        "contentUrlPingSuffix": "DevEx,5111.1", "hostPageUrl": "http:\/\/www.army.mil\/article\/133067\/Beautiful_Barcelona_beckons_travelers\/",
-        "hostPageUrlPingSuffix": "DevEx,5110.1", "contentSize": "427554 B", "encodingFormat":
+        "datePublished": "2018-07-01T22:51:00.0000000Z", "contentUrl": "https:\/\/www.army.mil\/e2\/c\/images\/2014\/09\/04\/361328\/original.jpg",
+        "contentUrlPingSuffix": "DevEx,5105.1", "hostPageUrl": "http:\/\/www.army.mil\/article\/133067\/Beautiful_Barcelona_beckons_travelers\/",
+        "hostPageUrlPingSuffix": "DevEx,5104.1", "contentSize": "427554 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "www.army.mil\/article\/133067\/Beautiful_Barcelona_beckons_travelers",
         "width": 573, "height": 1022, "thumbnail": {"width": 474, "height": 845},
-        "imageInsightsToken": "ccid_E8XjvNHY*mid_B7FDE023134A73869700AB9B71C283DF6AFB5596*simid_608052820144753367",
+        "imageInsightsToken": "ccid_E8XjvNHY*mid_B7FDE023134A73869700AB9B71C283DF6AFB5596*simid_608052820537311590",
         "imageId": "B7FDE023134A73869700AB9B71C283DF6AFB5596", "accentColor": "257DA6"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=47553443C90E550C55CA3C847DD79FC1E8C62AEE&simid=607990246798593845",
-        "webSearchUrlPingSuffix": "DevEx,5115.1", "name": "Panoramic Photography |
-        Panoramic view of the Barcelona Exposition, Spain. 1929", "thumbnailUrl":
-        "https:\/\/tse4.mm.bing.net\/th?id=OIP.xEQK7JcqcXU49qBwsbwD0wHaBr&pid=Api",
-        "datePublished": "2017-07-20T20:37:00.0000000Z", "contentUrl": "https:\/\/www.archives.gov\/exhibits\/panoramic_photography\/images\/barcelona_exposition_1929.jpg",
-        "contentUrlPingSuffix": "DevEx,5117.1", "hostPageUrl": "https:\/\/www.archives.gov\/exhibits\/panoramic_photography\/images\/barcelona_exposition_1929.html",
-        "hostPageUrlPingSuffix": "DevEx,5116.1", "contentSize": "114275 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.archives.gov\/exhibits\/panoramic_photography\/images...",
-        "width": 1770, "height": 400, "thumbnail": {"width": 474, "height": 107},
-        "imageInsightsToken": "ccid_xEQK7Jcq*mid_47553443C90E550C55CA3C847DD79FC1E8C62AEE*simid_607990246798593845",
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=09ED5C20B96A58345061992CB72149FB8E8B8C00&simid=608048873521023910",
+        "webSearchUrlPingSuffix": "DevEx,5109.1", "name": "The World Factbook — Central
+        Intelligence Agency", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.yk-fXFfE2TwtWOV6yhGHEQHaFj&pid=Api",
+        "datePublished": "2018-08-06T21:25:00.0000000Z", "contentUrl": "https:\/\/www.cia.gov\/library\/publications\/the-world-factbook\/photo_gallery\/sp\/images\/SP_059.jpg",
+        "contentUrlPingSuffix": "DevEx,5111.1", "hostPageUrl": "https:\/\/www.cia.gov\/library\/publications\/the-world-factbook\/geos\/SP.html",
+        "hostPageUrlPingSuffix": "DevEx,5110.1", "contentSize": "61344 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.cia.gov\/library\/publications\/the-world-factbook\/geos\/SP...",
+        "width": 640, "height": 480, "thumbnail": {"width": 474, "height": 355}, "imageInsightsToken":
+        "ccid_yk+fXFfE*mid_09ED5C20B96A58345061992CB72149FB8E8B8C00*simid_608048873521023910",
+        "imageId": "09ED5C20B96A58345061992CB72149FB8E8B8C00", "accentColor": "A0982B"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=3407D57FAAB19FF8B667EDB8CA3DE73B8B924AB7&simid=607998978863137851",
+        "webSearchUrlPingSuffix": "DevEx,5115.1", "name": "Beautiful Barcelona beckons
+        travelers | Article | The United States Army", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.woqA9kNlKusTTwArJrMO2gHaFh&pid=Api",
+        "datePublished": "2018-05-29T14:54:00.0000000Z", "contentUrl": "https:\/\/www.army.mil\/e2\/c\/images\/2014\/09\/04\/361322\/size0.jpg",
+        "contentUrlPingSuffix": "DevEx,5117.1", "hostPageUrl": "https:\/\/www.army.mil\/article\/133067\/Beautiful_Barcelona_beckons_travelers\/?from=RSS",
+        "hostPageUrlPingSuffix": "DevEx,5116.1", "contentSize": "58814 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.army.mil\/article\/133067\/Beautiful_Barcelona_beckons...",
+        "width": 583, "height": 435, "thumbnail": {"width": 474, "height": 353}, "imageInsightsToken":
+        "ccid_woqA9kNl*mid_3407D57FAAB19FF8B667EDB8CA3DE73B8B924AB7*simid_607998978863137851",
+        "imageId": "3407D57FAAB19FF8B667EDB8CA3DE73B8B924AB7", "accentColor": "996A32"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=A4F4EBD807B723EDBD592CC07EE05ED57F62448B&simid=608014707082723401",
+        "webSearchUrlPingSuffix": "DevEx,5121.1", "name": "Consulado General de Estados
+        Unidos en Barcelona | Embajada de EE.UU. en España y Andorra", "thumbnailUrl":
+        "https:\/\/tse4.mm.bing.net\/th?id=OIP.CpB04nUDWfhd6Re-_meAyAHaDc&pid=Api",
+        "datePublished": "2018-06-21T16:36:00.0000000Z", "contentUrl": "https:\/\/es.usembassy.gov\/wp-content\/uploads\/sites\/260\/2015\/10\/ACB_7007-1140x530.jpg",
+        "contentUrlPingSuffix": "DevEx,5123.1", "hostPageUrl": "https:\/\/es.usembassy.gov\/es\/embassy-consulates-es\/barcelona-es\/",
+        "hostPageUrlPingSuffix": "DevEx,5122.1", "contentSize": "116482 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/es.usembassy.gov\/es\/embassy-consulates-es\/barcelona-es",
+        "width": 1140, "height": 530, "thumbnail": {"width": 474, "height": 220},
+        "imageInsightsToken": "ccid_CpB04nUD*mid_A4F4EBD807B723EDBD592CC07EE05ED57F62448B*simid_608014707082723401",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "47553443C90E550C55CA3C847DD79FC1E8C62AEE", "accentColor": "414141"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=55EA8084C54C1F9A0C5E3A216E5101C7A7A76584&simid=608037366881782458",
-        "webSearchUrlPingSuffix": "DevEx,5121.1", "name": "OCED''s Ocean Carbon Cycle
-        Barcelona Express Underway Data", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.Li3C-s1rDb3qOLnqjHYRRQHaEw&pid=Api",
-        "datePublished": "2016-07-13T12:00:00.0000000Z", "contentUrl": "http:\/\/www.aoml.noaa.gov\/ocd\/gcc\/barcelona\/BarX20120418\/BarX20120418.jpg",
-        "contentUrlPingSuffix": "DevEx,5123.1", "hostPageUrl": "http:\/\/www.aoml.noaa.gov\/ocd\/ocdweb\/barcelona\/barcelona_2012.html",
-        "hostPageUrlPingSuffix": "DevEx,5122.1", "contentSize": "488407 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "www.aoml.noaa.gov\/ocd\/ocdweb\/barcelona\/barcelona_2012.html",
-        "width": 2124, "height": 1364, "thumbnail": {"width": 474, "height": 304},
-        "imageInsightsToken": "ccid_Li3C+s1r*mid_55EA8084C54C1F9A0C5E3A216E5101C7A7A76584*simid_608037366881782458",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "55EA8084C54C1F9A0C5E3A216E5101C7A7A76584", "accentColor": "00CB3A"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=51FEBF27300EDFDA88D4D06F15578D1A79BB6FD2&simid=607992759320576595",
-        "webSearchUrlPingSuffix": "DevEx,5127.1", "name": "Environmental Health Perspectives
-        – Green Walls Could Cut Street-Canyon Air Pollution", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.J65_UVaR4_yEPOmxuMbxuwHaE7&pid=Api",
-        "datePublished": "2017-12-20T23:48:00.0000000Z", "contentUrl": "https:\/\/ehp.niehs.nih.gov\/wp-content\/uploads\/2013\/01\/ehp.121-a14.g001.png",
-        "contentUrlPingSuffix": "DevEx,5129.1", "hostPageUrl": "https:\/\/ehp.niehs.nih.gov\/121-a14\/",
-        "hostPageUrlPingSuffix": "DevEx,5128.1", "contentSize": "724629 B", "encodingFormat":
-        "png", "hostPageDisplayUrl": "https:\/\/ehp.niehs.nih.gov\/121-a14", "width":
-        800, "height": 533, "thumbnail": {"width": 474, "height": 315}, "imageInsightsToken":
-        "ccid_J65\/UVaR*mid_51FEBF27300EDFDA88D4D06F15578D1A79BB6FD2*simid_607992759320576595",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "51FEBF27300EDFDA88D4D06F15578D1A79BB6FD2", "accentColor": "BC3608"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=3407D57FAAB19FF8B6671B2BB86EF25FAE9F6080&simid=608000438757427971",
-        "webSearchUrlPingSuffix": "DevEx,5133.1", "name": "Beautiful Barcelona beckons
+        "imageId": "A4F4EBD807B723EDBD592CC07EE05ED57F62448B", "accentColor": "4D5933"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=3407D57FAAB19FF8B6671B2BB86EF25FAE9F6080&simid=608000439147104876",
+        "webSearchUrlPingSuffix": "DevEx,5127.1", "name": "Beautiful Barcelona beckons
         travelers | Article | The United States Army", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.JtPoPo-GOYAdBU414R-oUwHaEI&pid=Api",
-        "datePublished": "2017-09-15T15:12:00.0000000Z", "contentUrl": "https:\/\/www.army.mil\/e2\/c\/images\/2014\/09\/04\/361325\/size0.jpg",
-        "contentUrlPingSuffix": "DevEx,5135.1", "hostPageUrl": "https:\/\/www.army.mil\/article\/133067\/Beautiful_Barcelona_beckons_travelers\/?from=RSS",
-        "hostPageUrlPingSuffix": "DevEx,5134.1", "contentSize": "34564 B", "encodingFormat":
+        "datePublished": "2018-05-29T14:54:00.0000000Z", "contentUrl": "https:\/\/www.army.mil\/e2\/c\/images\/2014\/09\/04\/361325\/size0.jpg",
+        "contentUrlPingSuffix": "DevEx,5129.1", "hostPageUrl": "https:\/\/www.army.mil\/article\/133067\/Beautiful_Barcelona_beckons_travelers\/?from=RSS",
+        "hostPageUrlPingSuffix": "DevEx,5128.1", "contentSize": "34564 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "https:\/\/www.army.mil\/article\/133067\/Beautiful_Barcelona_beckons...",
         "width": 640, "height": 357, "thumbnail": {"width": 474, "height": 264}, "imageInsightsToken":
-        "ccid_JtPoPo+G*mid_3407D57FAAB19FF8B6671B2BB86EF25FAE9F6080*simid_608000438757427971",
+        "ccid_JtPoPo+G*mid_3407D57FAAB19FF8B6671B2BB86EF25FAE9F6080*simid_608000439147104876",
         "imageId": "3407D57FAAB19FF8B6671B2BB86EF25FAE9F6080", "accentColor": "2D729E"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=11F077AE3DE17B48A0E822BF8E060CB4D6E647E6&simid=608006619203308068",
-        "webSearchUrlPingSuffix": "DevEx,5139.1", "name": "U.S. Citizen Services |
-        U.S. Embassy & Consulate in Spain and Andorra", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.RsjCQ2a4YJka75rwCJodcQEPDm&pid=Api",
-        "datePublished": "2017-04-12T18:56:00.0000000Z", "contentUrl": "https:\/\/es.usembassy.gov\/wp-content\/uploads\/sites\/260\/2017\/02\/ACB_7063-350x297.jpg",
-        "contentUrlPingSuffix": "DevEx,5141.1", "hostPageUrl": "https:\/\/es.usembassy.gov\/embassy-consulates\/barcelona\/u-s-citizenship-services\/",
-        "hostPageUrlPingSuffix": "DevEx,5140.1", "contentSize": "20182 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/es.usembassy.gov\/embassy-consulates\/barcelona\/u-s...",
-        "width": 350, "height": 297, "thumbnail": {"width": 271, "height": 230}, "imageInsightsToken":
-        "ccid_RsjCQ2a4*mid_11F077AE3DE17B48A0E822BF8E060CB4D6E647E6*simid_608006619203308068",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "11F077AE3DE17B48A0E822BF8E060CB4D6E647E6", "accentColor": "4C667F"}],
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=3407D57FAAB19FF8B6673CA74348DE20F0C0157F&simid=608004403418827389",
+        "webSearchUrlPingSuffix": "DevEx,5133.1", "name": "Beautiful Barcelona beckons
+        travelers | Article | The United States Army", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.8-fbOCs9tuPqag6Vqyuc3QHaNK&pid=Api",
+        "datePublished": "2018-05-29T14:54:00.0000000Z", "contentUrl": "https:\/\/www.army.mil\/e2\/c\/images\/2014\/09\/04\/361324\/original.jpg",
+        "contentUrlPingSuffix": "DevEx,5135.1", "hostPageUrl": "https:\/\/www.army.mil\/article\/133067\/Beautiful_Barcelona_beckons_travelers\/?from=RSS",
+        "hostPageUrlPingSuffix": "DevEx,5134.1", "contentSize": "351934 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.army.mil\/article\/133067\/Beautiful_Barcelona_beckons...",
+        "width": 576, "height": 1024, "thumbnail": {"width": 474, "height": 842},
+        "imageInsightsToken": "ccid_8+fbOCs9*mid_3407D57FAAB19FF8B6673CA74348DE20F0C0157F*simid_608004403418827389",
+        "imageId": "3407D57FAAB19FF8B6673CA74348DE20F0C0157F", "accentColor": "886C43"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=D74130502E15461A214608D1F77251C30C2316A7&simid=607989087552014932",
+        "webSearchUrlPingSuffix": "DevEx,5139.1", "name": "Parks and Recreation |
+        After School, Recreation & Community Services Programs", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.koTV3-v1B50RiGa9EqsIaAHaK5&pid=Api",
+        "datePublished": "2018-03-12T20:45:00.0000000Z", "contentUrl": "https:\/\/www.fresno.gov\/parks\/wp-content\/uploads\/sites\/14\/2016\/11\/FRESNO-AD.jpg",
+        "contentUrlPingSuffix": "DevEx,5141.1", "hostPageUrl": "https:\/\/www.fresno.gov\/parks\/activities-recreational-programs\/",
+        "hostPageUrlPingSuffix": "DevEx,5140.1", "contentSize": "1684061 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.fresno.gov\/parks\/activities-recreational-programs",
+        "width": 1252, "height": 1843, "thumbnail": {"width": 474, "height": 697},
+        "imageInsightsToken": "ccid_koTV3+v1*mid_D74130502E15461A214608D1F77251C30C2316A7*simid_607989087552014932",
+        "imageId": "D74130502E15461A214608D1F77251C30C2316A7", "accentColor": "0C4992"}],
         "queryExpansions": [{"text": "FC Barcelona", "displayText": "FC", "webSearchUrl":
         "https:\/\/www.bing.com\/images\/search?q=FC+Barcelona&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22FC%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
         "webSearchUrlPingSuffix": "DevEx,5192.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=FC+Barcelona&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22FC%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
@@ -481,5 +476,5 @@ http_interactions:
         {"pivot": "(site:gov", "suggestions": []}, {"pivot": "OR", "suggestions":
         []}, {"pivot": "site:mil)", "suggestions": []}]}'
     http_version: 
-  recorded_at: Thu, 22 Feb 2018 07:15:41 GMT
+  recorded_at: Mon, 27 Aug 2018 01:41:52 GMT
 recorded_with: VCR 4.0.0

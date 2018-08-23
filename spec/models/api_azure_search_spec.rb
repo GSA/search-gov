@@ -211,7 +211,7 @@ describe ApiAzureSearch do
   end
 
   context 'when initialized with a Bing V5 key' do
-    let(:api_key) { BingV5Engine::DEFAULT_HOSTED_PASSWORD }
+      let(:api_key) { BingV5HostedSubscriptionKey::BING_V5_SUBSCRIPTION_KEY }
 
     it_should_behave_like 'a commercial API search'
 

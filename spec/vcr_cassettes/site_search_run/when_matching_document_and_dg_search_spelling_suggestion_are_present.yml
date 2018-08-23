@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=scientost%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations&traffictype=test
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=scientost%20(site:www100.whitehouse.gov/)&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
     body:
       encoding: US-ASCII
       string: ''
@@ -10,7 +10,7 @@ http_interactions:
       User-Agent:
       - USASearch
       Ocp-Apim-Subscription-Key:
-      - "<BING_V6_APP_ID>"
+      - my_api_key
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -21,117 +21,53 @@ http_interactions:
       - '30'
   response:
     status:
-      code: 401
-      message: Unauthorized
+      code: 200
+      message: OK
     headers:
       Cache-Control:
-      - private
+      - private, max-age=0
       Content-Length:
-      - '115'
+      - '241'
       Content-Type:
       - application/json; charset=utf-8
+      Expires:
+      - Mon, 27 Aug 2018 00:03:08 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=34B773D5FF8E6A0B3C91786CFED16B83; path=/; expires=Mon, 15-Apr-2019 21:42:56
+      - MUID=00112185E8396DDD35382DDDE9366C28; path=/; expires=Sat, 21-Sep-2019 00:04:08
         GMT; domain=bingapis.com
-      - MUIDB=34B773D5FF8E6A0B3C91786CFED16B83; path=/; httponly; expires=Mon, 15-Apr-2019
-        21:42:56 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sat, 21-Mar-2020 21:42:56 GMT;
+      - MUIDB=00112185E8396DDD35382DDDE9366C28; path=/; httponly; expires=Sat, 21-Sep-2019
+        00:04:08 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 27-Aug-2020 00:04:08 GMT;
         path=/
-      - SRCHUID=V=2&GUID=3FB73FE3944242A395317AD1737D936E&dmnchg=1; domain=.bingapis.com;
-        expires=Sat, 21-Mar-2020 21:42:56 GMT; path=/
-      - SRCHUSR=DOB=20180321; domain=.bingapis.com; expires=Sat, 21-Mar-2020 21:42:56
+      - SRCHUID=V=2&GUID=AB0012A10A6A4F258E725F193B7BD5EC&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 27-Aug-2020 00:04:08 GMT; path=/
+      - SRCHUSR=DOB=20180827; domain=.bingapis.com; expires=Thu, 27-Aug-2020 00:04:08
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=24C966921E7C670715146D2B1F236627; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=3E47CDC0094666401EABC198084967C8; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Mon, 15-Apr-2019 21:42:56 GMT; domain=bingapis.com
-      - _SS=SID=24C966921E7C670715146D2B1F236627; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 21-Sep-2019 00:04:08 GMT; domain=bingapis.com
+      - _SS=SID=3E47CDC0094666401EABC198084967C8; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 2AD175CD29D3459CB6C40EDC7A964F14
+      - 6BB03BA211C14F36BED7612CE555BAB2
       X-Msedge-Clientid:
-      - 34B773D5FF8E6A0B3C91786CFED16B83
+      - '00112185E8396DDD35382DDDE9366C28'
       X-Msapi-Userstate:
-      - 33e8
+      - 22f2
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 2AD175CD29D3459CB6C40EDC7A964F14 Ref B: BAYEDGE0317 Ref C: 2018-03-21T21:42:56Z'
+      - 'Ref A: 6BB03BA211C14F36BED7612CE555BAB2 Ref B: BAYEDGE0219 Ref C: 2018-08-27T00:04:08Z'
       Date:
-      - Wed, 21 Mar 2018 21:42:56 GMT
+      - Mon, 27 Aug 2018 00:04:08 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "ErrorResponse", "errors": [{"code": "InvalidAuthorization",
-        "message": "Invalid authorization credentials."}]}'
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=08D6DA9FCD3D4CA58482D9F0004C2554&CID=00112185E8396DDD35382DDDE9366C28&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=08D6DA9FCD3D4CA58482D9F0004C2554&CID=00112185E8396DDD35382DDDE9366C28&Type=Event.CPT&DATA=0"},
+        "rankingResponse": {}}'
     http_version: 
-  recorded_at: Wed, 21 Mar 2018 21:42:56 GMT
-- request:
-    method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=scientost%20(site:www100.whitehouse.gov/)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Ocp-Apim-Subscription-Key:
-      - "<BING_V6_APP_ID>"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 401
-      message: Unauthorized
-    headers:
-      Cache-Control:
-      - private
-      Content-Length:
-      - '115'
-      Content-Type:
-      - application/json; charset=utf-8
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      Set-Cookie:
-      - MUID=299076041BF66EF725D77DBD1AA96FD6; path=/; expires=Mon, 15-Apr-2019 21:43:54
-        GMT; domain=bingapis.com
-      - MUIDB=299076041BF66EF725D77DBD1AA96FD6; path=/; httponly; expires=Mon, 15-Apr-2019
-        21:43:54 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sat, 21-Mar-2020 21:43:54 GMT;
-        path=/
-      - SRCHUID=V=2&GUID=C2542D290EAB4866B710CC9FC7447AC4&dmnchg=1; domain=.bingapis.com;
-        expires=Sat, 21-Mar-2020 21:43:54 GMT; path=/
-      - SRCHUSR=DOB=20180321; domain=.bingapis.com; expires=Sat, 21-Mar-2020 21:43:54
-        GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=2A89DA68484963EE391AD1D14916624C; path=/; httponly;
-        domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Mon, 15-Apr-2019 21:43:54 GMT; domain=bingapis.com
-      - _SS=SID=2A89DA68484963EE391AD1D14916624C; domain=.bingapis.com; path=/
-      Bingapis-Traceid:
-      - 58FA2FC1E1034496963C3F2B7D5EF8C2
-      X-Msedge-Clientid:
-      - 299076041BF66EF725D77DBD1AA96FD6
-      X-Msapi-Userstate:
-      - 93d5
-      Bingapis-Market:
-      - en-US
-      X-Msedge-Ref:
-      - 'Ref A: 58FA2FC1E1034496963C3F2B7D5EF8C2 Ref B: BAYEDGE0306 Ref C: 2018-03-21T21:43:54Z'
-      Date:
-      - Wed, 21 Mar 2018 21:43:54 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "ErrorResponse", "errors": [{"code": "InvalidAuthorization",
-        "message": "Invalid authorization credentials."}]}'
-    http_version: 
-  recorded_at: Wed, 21 Mar 2018 21:43:54 GMT
+  recorded_at: Mon, 27 Aug 2018 00:04:08 GMT
 recorded_with: VCR 4.0.0

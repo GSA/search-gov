@@ -2,15 +2,13 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=news%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=news%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
       - USASearch
-      Ocp-Apim-Subscription-Key:
-      - "<BING_V6_APP_ID>"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -27,162 +25,568 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3070'
+      - '3050'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Thu, 22 Feb 2018 07:22:27 GMT
+      - Mon, 27 Aug 2018 02:07:35 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=1D0E787ADCED6CBA24AA73E4DD086DC3; path=/; expires=Tue, 19-Mar-2019 07:23:27
+      - MUID=3E2C76F7554666B710877AAF5449676A; path=/; expires=Sat, 21-Sep-2019 02:08:35
         GMT; domain=bingapis.com
-      - MUIDB=1D0E787ADCED6CBA24AA73E4DD086DC3; path=/; httponly; expires=Tue, 19-Mar-2019
-        07:23:27 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:23:27 GMT;
+      - MUIDB=3E2C76F7554666B710877AAF5449676A; path=/; httponly; expires=Sat, 21-Sep-2019
+        02:08:35 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 27-Aug-2020 02:08:35 GMT;
         path=/
-      - SRCHUID=V=2&GUID=6B9C7B8EDE284A06921CEE1F90FCF80A&dmnchg=1; domain=.bingapis.com;
-        expires=Sat, 22-Feb-2020 07:23:27 GMT; path=/
-      - SRCHUSR=DOB=20180222; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:23:27
+      - SRCHUID=V=2&GUID=30E9E219AA4B46BC9819A809BB1618B9&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 27-Aug-2020 02:08:35 GMT; path=/
+      - SRCHUSR=DOB=20180827; domain=.bingapis.com; expires=Thu, 27-Aug-2020 02:08:35
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=29A6257F34496FA2329C2EE135AC6E44; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=23D8384B7B616C7E1D4B34137A6E6DF4; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Tue, 19-Mar-2019 07:23:27 GMT; domain=bingapis.com
-      - _SS=SID=29A6257F34496FA2329C2EE135AC6E44; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 21-Sep-2019 02:08:35 GMT; domain=bingapis.com
+      - _SS=SID=23D8384B7B616C7E1D4B34137A6E6DF4; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 6CCC72E1E1434E8695A5A24000305888
+      - E742788936FC439AA19C5302C87A31E8
       X-Msedge-Clientid:
-      - 1D0E787ADCED6CBA24AA73E4DD086DC3
+      - 3E2C76F7554666B710877AAF5449676A
       X-Msapi-Userstate:
-      - 79aa
+      - 99b1
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 6CCC72E1E1434E8695A5A24000305888 Ref B: SG2EDGE0817 Ref C: 2018-02-22T07:23:27Z'
+      - 'Ref A: E742788936FC439AA19C5302C87A31E8 Ref B: BAYEDGE0412 Ref C: 2018-08-27T02:08:35Z'
       Date:
-      - Thu, 22 Feb 2018 07:23:26 GMT
+      - Mon, 27 Aug 2018 02:08:34 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=A764E17B392C472EA8F6A3835B9D1286&CID=1D0E787ADCED6CBA24AA73E4DD086DC3&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=A764E17B392C472EA8F6A3835B9D1286&CID=1D0E787ADCED6CBA24AA73E4DD086DC3&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=75A764FA17264EE78438DCCE6D615BA6&CID=3E2C76F7554666B710877AAF5449676A&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=75A764FA17264EE78438DCCE6D615BA6&CID=3E2C76F7554666B710877AAF5449676A&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=news+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5529.1", "totalEstimatedMatches": 15600000,
+        "webSearchUrlPingSuffix": "DevEx,5414.1", "totalEstimatedMatches": 31300000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "Presidential News and Speeches - whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/news\/",
-        "urlPingSuffix": "DevEx,5091.1", "displayUrl": "https:\/\/www.whitehouse.gov\/news",
-        "snippet": "Statements & Releases Readout of President Donald J. Trump’s Call
-        with President Vladimir Putin of Russia", "dateLastCrawled": "2018-02-15T00:36:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "News
-        | USCIS", "url": "https:\/\/www.uscis.gov\/news", "urlPingSuffix": "DevEx,5113.1",
-        "displayUrl": "https:\/\/www.uscis.gov\/news", "snippet": "Here we have
-        the latest news within the immigration benefit world, handled by U.S. Citizenship
-        and Immigration Services (USCIS). Both news media and general public ...",
-        "deepLinks": [{"name": "All News", "url": "https:\/\/www.uscis.gov\/news\/all-news",
-        "urlPingSuffix": "DevEx,5105.1"}, {"name": "News Releases", "url": "https:\/\/www.uscis.gov\/news-releases",
-        "urlPingSuffix": "DevEx,5106.1"}, {"name": "Alerts", "url": "https:\/\/www.uscis.gov\/news\/alerts",
-        "urlPingSuffix": "DevEx,5107.1"}, {"name": "Media Contacts", "url": "https:\/\/www.uscis.gov\/news\/media-contacts",
-        "urlPingSuffix": "DevEx,5108.1"}], "dateLastCrawled": "2018-02-13T11:14:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "News
-        | Governor Andrew M. Cuomo", "url": "http:\/\/www.governor.ny.gov\/news",
-        "urlPingSuffix": "DevEx,5133.1", "about": [{"name": "Andrew Cuomo"}], "displayUrl":
-        "www.governor.ny.gov\/news", "snippet": "The official website of the 56th
-        Governor of New York State, Andrew M. Cuomo. Find information about the administration,
-        issues, & news that affects you.", "dateLastCrawled": "2018-02-13T14:15:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "News
-        | NSF - National Science Foundation", "url": "https:\/\/nsf.gov\/news\/",
-        "urlPingSuffix": "DevEx,5148.1", "about": [{"name": "National Science Foundation"}],
-        "displayUrl": "https:\/\/nsf.gov\/news", "snippet": "NSF''s mission is to
-        advance the progress of science, a mission accomplished by funding proposals
-        for research and education made by scientists, engineers, and ...", "dateLastCrawled":
-        "2018-02-12T14:57:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
-        "name": "News - USGS", "url": "https:\/\/www.usgs.gov\/news", "urlPingSuffix":
-        "DevEx,5163.1", "displayUrl": "https:\/\/www.usgs.gov\/news", "snippet":
-        "News Dive into the world of science! Read these stories and narratives
-        to learn about news items, hot topics, expeditions underway, and much more.",
-        "dateLastCrawled": "2018-02-15T20:35:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
+        "News | USCIS", "url": "https:\/\/www.uscis.gov\/news", "urlPingSuffix":
+        "DevEx,5058.1", "displayUrl": "https:\/\/www.uscis.gov\/news", "snippet":
+        "Here we have the latest news within the immigration benefit world, handled
+        by U.S. Citizenship and Immigration Services (USCIS). Both news media
+        and general public can find important information about", "dateLastCrawled":
+        "2018-08-20T20:00:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
+        "name": "News | Governor Andrew M. Cuomo", "url": "https:\/\/www.governor.ny.gov\/news",
+        "urlPingSuffix": "DevEx,5072.1", "about": [{"name": "Andrew Cuomo"}], "displayUrl":
+        "https:\/\/www.governor.ny.gov\/news", "snippet": "The official website
+        of the 56th Governor of New York State, Andrew M. Cuomo. Find information
+        about the administration, issues, & news that affects you.", "dateLastCrawled":
+        "2018-08-20T00:42:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        "name": "News | NSF - National Science Foundation", "url": "https:\/\/nsf.gov\/news\/",
+        "urlPingSuffix": "DevEx,5086.1", "displayUrl": "https:\/\/nsf.gov\/news",
+        "snippet": "NSF''s mission is to advance the progress of science, a mission
+        accomplished by funding proposals for research and education made by scientists,
+        engineers, and educators from across the country.", "dateLastCrawled": "2018-08-19T15:59:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "News",
+        "url": "https:\/\/www.whitehouse.gov\/news\/", "urlPingSuffix": "DevEx,5100.1",
+        "displayUrl": "https:\/\/www.whitehouse.gov\/news", "snippet": "Statements
+        & Releases President Trump Announces Presidential Delegation to the Republic
+        of Paraguay to Attend the Inauguration of His Excellency Mario Abdo Benitez",
+        "dateLastCrawled": "2018-08-14T14:21:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
         "name": "Defense.gov - News", "url": "https:\/\/www.defense.gov\/News\/",
-        "urlPingSuffix": "DevEx,5178.1", "displayUrl": "https:\/\/www.defense.gov\/News",
-        "snippet": "Pacom Commander Says Indo-Pacific Region at a Crossroads America’s
-        security and economic prosperity are linked to the Indo-Pacific region, which
-        finds itself at a ...", "dateLastCrawled": "2018-02-16T18:00:00.0000000Z"},
+        "urlPingSuffix": "DevEx,5114.1", "displayUrl": "https:\/\/www.defense.gov\/News",
+        "snippet": "United States Department of Defense (DoD) News. Iraqi Forces
+        Make Strong Start in Offensive to Liberate Tal Afar Iraqi security forces
+        have made a positive start in their offensive to liberate the Iraqi city of
+        Tal Afar from the Islamic State of Iraq and Syria, the deputy commander of
+        Operation Inherent Resolve said.", "dateLastCrawled": "2018-08-21T15:55:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "News
+        (U.S. National Park Service)", "url": "https:\/\/www.nps.gov\/aboutus\/news\/index.htm",
+        "urlPingSuffix": "DevEx,5127.1", "about": [{"name": "National Park Service"}],
+        "displayUrl": "https:\/\/www.nps.gov\/aboutus\/news", "snippet": "Find
+        links to the latest National Park Service news, photos and multimedia, facts
+        and figures, and more.", "dateLastCrawled": "2018-08-08T09:26:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "News
-        - AF", "url": "http:\/\/www.af.mil\/News.aspx", "urlPingSuffix": "DevEx,5193.1",
-        "about": [{"name": "Davis–Monthan Air Force Base"}], "displayUrl": "www.af.mil\/News.aspx",
+        - af.mil", "url": "https:\/\/www.af.mil\/news\/", "urlPingSuffix": "DevEx,5139.1",
+        "about": [{"name": "Davis–Monthan Air Force Base"}], "displayUrl": "https:\/\/www.af.mil\/news",
         "snippet": "The official website of the U.S. Air Force. AF.MIL delivers
         the latest breaking news and information on the U.S. Air Force including
-        top stories, features, leadership ...", "dateLastCrawled": "2018-02-16T11:23:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "United
-        States Coast Guard (USCG)", "url": "http:\/\/www.news.uscg.mil\/", "urlPingSuffix":
-        "DevEx,5207.1", "about": [{"name": "United States Coast Guard"}], "displayUrl":
-        "www.news.uscg.mil", "snippet": "The official website for the United States
-        Coast Guard News", "dateLastCrawled": "2018-02-15T21:41:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "United States
-        Navy - Official Site", "url": "http:\/\/www.navy.mil\/", "urlPingSuffix":
-        "DevEx,5221.1", "about": [{"name": "United States Navy"}], "displayUrl": "www.navy.mil",
-        "snippet": "The Official Website of the United States Navy: US Navy News
-        Stories, Photos, Videos and Social Media", "dateLastCrawled": "2018-02-15T22:41:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Army
-        Worldwide News - The United States Army", "url": "https:\/\/www.army.mil\/news",
-        "urlPingSuffix": "DevEx,5236.1", "displayUrl": "https:\/\/www.army.mil\/news",
+        top stories, features, leadership, policies, and more.", "dateLastCrawled":
+        "2018-08-20T15:59:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "name": "Newsroom | Internal Revenue Service", "url": "https:\/\/www.irs.gov\/newsroom",
+        "urlPingSuffix": "DevEx,5151.1", "displayUrl": "https:\/\/www.irs.gov\/newsroom",
+        "snippet": "Provides the latest news and information about the IRS.", "dateLastCrawled":
+        "2018-08-15T20:22:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
+        "name": "News - Glacier National Park (U.S. National Park Service)",
+        "url": "https:\/\/www.nps.gov\/glac\/learn\/news\/index.htm", "urlPingSuffix":
+        "DevEx,5165.1", "about": [{"name": "Glacier National Park"}], "displayUrl":
+        "https:\/\/www.nps.gov\/glac\/learn\/news", "snippet": "News Releases
+        Read the latest press releases or find old articles in the archive. Press
+        Kit Explore all sorts of background information on Glacier National Park.",
+        "dateLastCrawled": "2018-06-13T22:18:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
+        "name": "News - Yellowstone National Park (U.S. National Park Service)",
+        "url": "https:\/\/www.nps.gov\/yell\/learn\/news\/index.htm", "urlPingSuffix":
+        "DevEx,5178.1", "displayUrl": "https:\/\/www.nps.gov\/yell\/learn\/news",
+        "snippet": "Stay connected to Yellowstone National Park news through news
+        releases, Twitter, and more.", "dateLastCrawled": "2018-06-17T08:54:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "News
+        | City of Fort Worth, Texas", "url": "http:\/\/fortworthtexas.gov\/news\/",
+        "urlPingSuffix": "DevEx,5191.1", "displayUrl": "fortworthtexas.gov\/news",
+        "snippet": "The latest news from the City of Fort Worth, Texas.", "dateLastCrawled":
+        "2018-08-21T17:11:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
+        "name": "United States Coast Guard (USCG)", "url": "http:\/\/news.uscg.mil\/",
+        "urlPingSuffix": "DevEx,5204.1", "about": [{"name": "United States Coast Guard"}],
+        "displayUrl": "news.uscg.mil", "snippet": "The official website for the
+        United States Coast Guard News", "dateLastCrawled": "2018-08-21T23:06:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "News
+        - USGS", "url": "https:\/\/www.usgs.gov\/news", "urlPingSuffix": "DevEx,5218.1",
+        "displayUrl": "https:\/\/www.usgs.gov\/news", "snippet": "News Dive
+        into the world of science! Read these stories and narratives to learn about
+        news items, hot topics, expeditions underway, and much more.", "dateLastCrawled":
+        "2018-08-18T03:42:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        "name": "News - MO.gov", "url": "https:\/\/www.mo.gov\/news\/", "urlPingSuffix":
+        "DevEx,5231.1", "displayUrl": "https:\/\/www.mo.gov\/news", "snippet":
+        "News releases from the State of Missouri. Area hunter education teachers
+        get state honors from MDC… Fri, Aug 17 2018 1:17pm", "dateLastCrawled": "2018-08-19T23:21:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Newsroom
+        - Census", "url": "https:\/\/www.census.gov\/newsroom.html", "urlPingSuffix":
+        "DevEx,5245.1", "about": [{"name": "U.S. Census Bureau"}], "displayUrl": "https:\/\/www.census.gov\/newsroom.html",
+        "snippet": "The latest news releases and statements from the U.S. Census
+        Bureau. Also, find upcoming events, and useful information for media. Read
+        More", "dateLastCrawled": "2018-06-30T09:42:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "Army Worldwide News - The United States Army", "url": "https:\/\/www.army.mil\/news",
+        "urlPingSuffix": "DevEx,5258.1", "displayUrl": "https:\/\/www.army.mil\/news",
         "snippet": "The latest news and information from the U.S. Army covering
         the Americas, Middle East, Europe, Asia and Pacific and more.", "dateLastCrawled":
-        "2018-02-16T04:14:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
-        "name": "Newsroom | Internal Revenue Service", "url": "https:\/\/www.irs.gov\/newsroom",
-        "urlPingSuffix": "DevEx,5249.1", "displayUrl": "https:\/\/www.irs.gov\/newsroom",
-        "snippet": "Provides the latest news and information about the IRS.", "dateLastCrawled":
-        "2018-01-01T09:21:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
-        "name": "Latest News | Internal Revenue Service", "url": "https:\/\/www.irs.gov\/newsroom\/latest-news",
-        "urlPingSuffix": "DevEx,5263.1", "displayUrl": "https:\/\/www.irs.gov\/newsroom\/latest-news",
-        "snippet": "Latest News Landing ... IR-2017-141, Sept. 1, 2017 — The Internal
-        Revenue Service today issued guidance providing penalty relief for certain
-        partnerships that did ...", "dateLastCrawled": "2018-02-15T18:24:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "News
-        — FBI", "url": "https:\/\/www.fbi.gov\/news\/", "urlPingSuffix": "DevEx,5278.1",
-        "displayUrl": "https:\/\/www.fbi.gov\/news", "snippet": "Featured News,
-        Latest News, Press Releases, Editor''s Pick and Feature Photos, all the
-        FBI News up to the minute.", "dateLastCrawled": "2018-02-14T12:41:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "News
-        - DARPA", "url": "https:\/\/www.darpa.mil\/news", "urlPingSuffix": "DevEx,5292.1",
-        "about": [{"name": "DARPA"}], "displayUrl": "https:\/\/www.darpa.mil\/news",
-        "snippet": "News. With more than 200 different programs across the spectrum
-        of science and engineering, DARPA frequently has news to share. We regularly
-        announce the launch of ...", "dateLastCrawled": "2018-02-12T21:54:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Marines.mil
-        - News", "url": "http:\/\/www.marines.mil\/News.aspx", "urlPingSuffix":
-        "DevEx,5307.1", "displayUrl": "www.marines.mil\/News.aspx", "snippet":
-        "MARINE CORPS NEWS. Keyword: Categories: ... IN THE NEWS. More . Maryland
-        educators sample Marine training through graduation day 2\/8\/2018 - www.wbaltv.com",
-        "dateLastCrawled": "2018-02-11T05:37:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
-        "name": "News", "url": "http:\/\/www.afpc.af.mil\/News\/", "urlPingSuffix":
-        "DevEx,5321.1", "displayUrl": "www.afpc.af.mil\/News", "snippet": "News,
-        features and commentaries pertaining to the Air Force Personnel Center.",
-        "dateLastCrawled": "2018-02-14T06:34:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
-        "name": "News | Homeland Security", "url": "https:\/\/www.dhs.gov\/news",
-        "urlPingSuffix": "DevEx,5336.1", "about": [{"name": "United States Department
-        of Homeland Security"}], "displayUrl": "https:\/\/www.dhs.gov\/news",
-        "snippet": "Latest news and press release archive. Blog. The Blog @ Homeland
-        Security provides an inside-out view of what we do every day at the U.S. Department
-        of Homeland Security.", "dateLastCrawled": "2018-02-16T18:51:00.0000000Z"},
+        "2018-08-19T20:15:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
+        "name": "News | Lawrence Livermore National Laboratory", "url": "https:\/\/www.llnl.gov\/news",
+        "urlPingSuffix": "DevEx,5272.1", "about": [{"name": "Lawrence Livermore National
+        Laboratory"}], "displayUrl": "https:\/\/www.llnl.gov\/news", "snippet":
+        "Quest for source of black hole dark matter. Aug. 13, 2018 - Like a game of
+        “hide and seek,” Lawrence Livermore astrophysicists know that there are black
+        holes hiding in the Milky Way, just not where.", "dateLastCrawled": "2018-08-20T09:53:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "News
-        Releases - News", "url": "https:\/\/www.usgs.gov\/news\/news-releases",
-        "urlPingSuffix": "DevEx,5351.1", "displayUrl": "https:\/\/www.usgs.gov\/news\/news-releases",
-        "snippet": "News reporters are invited to attend an illustrated public lecture
-        to learn how U.S. Geological Survey scientists and partners are developing
-        ShakeAlert.", "dateLastCrawled": "2018-02-15T09:08:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
-        "name": "News Around NOAA - National Weather Service", "url": "http:\/\/www.weather.gov\/news\/",
-        "urlPingSuffix": "DevEx,5366.1", "about": [{"name": "National Weather Service"},
-        {"name": "National Weather Service"}], "displayUrl": "www.weather.gov\/news",
-        "snippet": "NOAA National Weather Service News Around NOAA. News Around
-        NOAA. National Program. News Around NOAA. Weather.gov > News Around
-        NOAA . Weather Safety.", "dateLastCrawled": "2018-02-15T16:27:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Welcome
-        to NOAA Communications | National Oceanic and ...", "url": "http:\/\/www.noaa.gov\/NOAA-Communications",
-        "urlPingSuffix": "DevEx,5381.1", "displayUrl": "www.noaa.gov\/NOAA-Communications",
-        "snippet": "NOAA Communications is here to help. Our staff of public affairs
-        and digital media specialists work with news producers, digital and ...
-        Latest news & feature stories;", "dateLastCrawled": "2018-02-13T18:36:00.0000000Z"}]},
+        | SBIR.gov", "url": "https:\/\/www.sbir.gov\/news", "urlPingSuffix": "DevEx,5285.1",
+        "displayUrl": "https:\/\/www.sbir.gov\/news", "snippet": "Tiny drones that
+        can fly indoors – avoiding obstacles without the use of GPS – would provide
+        a massive surveillance advantage to the warfighter.", "dateLastCrawled": "2018-08-20T02:31:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "News
+        | U.S. Department of the Interior", "url": "https:\/\/www.doi.gov\/news",
+        "urlPingSuffix": "DevEx,5299.1", "displayUrl": "https:\/\/www.doi.gov\/news",
+        "snippet": "Tara Mac Lean Sweeney was sworn in as the Department’s Assistant
+        Secretary for Indian Affairs, making her the first Alaska Native and only
+        the second woman in history to hold the position.", "dateLastCrawled": "2018-08-21T08:50:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Navy.mil
+        The Official Website of the United States Navy ...", "url": "http:\/\/www.navy.mil\/",
+        "urlPingSuffix": "DevEx,5312.1", "about": [{"name": "United States Navy"}],
+        "displayUrl": "www.navy.mil", "snippet": "The Official Website of the United
+        States Navy: US Navy News Stories, Photos, Videos and Social Media", "dateLastCrawled":
+        "2018-08-20T05:55:00.0000000Z"}]}, "rankingResponse": {"mainline": {"items":
+        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 27 Aug 2018 02:08:35 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=news%20(site:www.data.gov/)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '2579'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 27 Aug 2018 02:07:36 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=128B2FB0843F6DB1071223E885306C31; path=/; expires=Sat, 21-Sep-2019 02:08:36
+        GMT; domain=bingapis.com
+      - MUIDB=128B2FB0843F6DB1071223E885306C31; path=/; httponly; expires=Sat, 21-Sep-2019
+        02:08:36 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 27-Aug-2020 02:08:36 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=02BDEB7C005F4D28AFF1AC3D069FA8C7&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 27-Aug-2020 02:08:36 GMT; path=/
+      - SRCHUSR=DOB=20180827; domain=.bingapis.com; expires=Thu, 27-Aug-2020 02:08:36
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=336ED611E6486EDA230BDA49E7476F32; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 21-Sep-2019 02:08:36 GMT; domain=bingapis.com
+      - _SS=SID=336ED611E6486EDA230BDA49E7476F32; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - 5E8B4F8ACE8D4C16A70BE6F7015EDCDC
+      X-Msedge-Clientid:
+      - 128B2FB0843F6DB1071223E885306C31
+      X-Msapi-Userstate:
+      - 14e0
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: 5E8B4F8ACE8D4C16A70BE6F7015EDCDC Ref B: BAYEDGE0510 Ref C: 2018-08-27T02:08:36Z'
+      Date:
+      - Mon, 27 Aug 2018 02:08:36 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=E5251098B30F47A3AC5F83917DF93725&CID=128B2FB0843F6DB1071223E885306C31&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=E5251098B30F47A3AC5F83917DF93725&CID=128B2FB0843F6DB1071223E885306C31&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=news+(site%3awww.data.gov%2f)",
+        "webSearchUrlPingSuffix": "DevEx,5414.1", "totalEstimatedMatches": 241, "value":
+        [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "In the
+        News - Data.gov", "url": "https:\/\/www.data.gov\/in-the-news", "urlPingSuffix":
+        "DevEx,5058.1", "displayUrl": "https:\/\/www.data.gov\/in-the-news", "snippet":
+        "Dear Open Data Enthusiasts, Below is an abstract of “Liberating data for
+        public value: The case of Data.gov,” International Journal of Information
+        Management (2016). ...", "dateLastCrawled": "2018-08-08T05:22:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "The Legal
+        Entity Identifier (LEI) Is Good News for ...", "url": "https:\/\/www.data.gov\/consumer\/legal-entity-identifier-lei-good-news-financial-technology-developers\/",
+        "urlPingSuffix": "DevEx,5071.1", "displayUrl": "https:\/\/www.data.gov\/consumer\/legal-entity-identifier-lei-good...",
+        "snippet": "3 Responses to “The Legal Entity Identifier (LEI) Is Good News
+        for Financial Technology Developers”", "dateLastCrawled": "2018-08-18T23:04:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Datasets
+        - Data.gov", "url": "https:\/\/www.data.gov\/disasters\/", "urlPingSuffix":
+        "DevEx,5085.1", "displayUrl": "https:\/\/www.data.gov\/disasters", "snippet":
+        "Storm Data is provided by the National Weather Service (NWS) and contain
+        statistics on personal injuries and damage estimates. Storm Data covers
+        the United States of...", "dateLastCrawled": "2018-08-13T18:17:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Energy
+        - Data.gov", "url": "https:\/\/www.data.gov\/energy\/", "urlPingSuffix":
+        "DevEx,5098.1", "displayUrl": "https:\/\/www.data.gov\/energy", "snippet":
+        "Discover data and resources on key energy topics like alternative fuels,
+        green buildings, efficiency, and managing energy in your own home.", "dateLastCrawled":
+        "2018-08-19T06:40:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
+        "name": "Bullying Rates Drop - Data.gov", "url": "https:\/\/www.data.gov\/education\/bullying-rates-drop\/",
+        "urlPingSuffix": "DevEx,5112.1", "displayUrl": "https:\/\/www.data.gov\/education\/bullying-rates-drop",
+        "snippet": "Bullying Rates Drop. May 15, ... This is a great news, bullying
+        is one of the major problem in schools.. I just hope that bullying will totally
+        stop..", "dateLastCrawled": "2018-07-31T17:28:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
+        "name": "Finance - Data.gov", "url": "https:\/\/www.data.gov\/finance\/",
+        "urlPingSuffix": "DevEx,5126.1", "displayUrl": "https:\/\/www.data.gov\/finance",
+        "snippet": "Another data analytics startup is working with banks to unlock
+        insights about businesses from new ... Is Good News for Financial Technology
+        Developers. May 21, 2014 ...", "dateLastCrawled": "2018-08-19T00:36:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "In the
+        News - Page 3 of 4 - Data.gov", "url": "https:\/\/www.data.gov\/announcements_and_news\/in_the_news-10\/page\/3\/",
+        "urlPingSuffix": "DevEx,5138.1", "displayUrl": "https:\/\/www.data.gov\/announcements_and_news\/in_the_news-10\/page\/3",
+        "snippet": "This link will direct you to an external website that may have
+        different content and privacy policies from Data.gov.", "dateLastCrawled":
+        "2018-08-10T09:06:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "name": "Weather - Data.gov", "url": "https:\/\/www.data.gov\/weather\/",
+        "urlPingSuffix": "DevEx,5152.1", "displayUrl": "https:\/\/www.data.gov\/weather",
+        "snippet": "See this data in action at: The Weather Channel broadcasts weather
+        forecasts and weather-related news over their cable channel and web properties.",
+        "dateLastCrawled": "2018-08-19T21:10:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
+        "name": "In the News - Data.gov", "url": "https:\/\/www.data.gov\/announcements_and_news\/in_the_news-10\/",
+        "urlPingSuffix": "DevEx,5164.1", "displayUrl": "https:\/\/www.data.gov\/announcements_and_news\/in_the_news-10",
+        "snippet": "This link will direct you to an external website that may have
+        different content and privacy policies from Data.gov.", "dateLastCrawled":
+        "2018-07-21T18:56:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
+        "name": "Impact - Data.gov", "url": "https:\/\/www.data.gov\/impact\/",
+        "urlPingSuffix": "DevEx,5178.1", "displayUrl": "https:\/\/www.data.gov\/impact",
+        "snippet": "Open government data is important because the more accessible,
+        discoverable, and usable data is, the more impact it can have. ... USDA
+        Market News Reports, ...", "dateLastCrawled": "2018-08-16T23:04:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Energy
+        - Page 5 of 9 - Data.gov", "url": "https:\/\/www.data.gov\/energy\/page\/5\/",
+        "urlPingSuffix": "DevEx,5191.1", "displayUrl": "https:\/\/www.data.gov\/energy\/page\/5",
+        "snippet": "This link will direct you to an external website that may have
+        different content and privacy policies from Data.gov.", "dateLastCrawled":
+        "2018-07-28T15:44:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
+        "name": "Consumer - Data.gov", "url": "https:\/\/www.data.gov\/consumer\/",
+        "urlPingSuffix": "DevEx,5204.1", "displayUrl": "https:\/\/www.data.gov\/consumer",
+        "snippet": "This link will direct you to an external website that may have
+        different content and privacy policies from Data.gov.", "dateLastCrawled":
+        "2018-08-17T04:47:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
+        "name": "Education - Data.gov", "url": "https:\/\/www.data.gov\/education\/",
+        "urlPingSuffix": "DevEx,5217.1", "displayUrl": "https:\/\/www.data.gov\/education",
+        "snippet": "This link will direct you to an external website that may have
+        different content and privacy policies from Data.gov.", "dateLastCrawled":
+        "2018-08-16T10:48:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        "name": "Open Government - Data.gov", "url": "https:\/\/www.data.gov\/open-gov\/",
+        "urlPingSuffix": "DevEx,5231.1", "about": [{"name": "Open data"}], "displayUrl":
+        "https:\/\/www.data.gov\/open-gov", "snippet": "Open Government . Data.gov
+        is the federal government’s open data site, and aims to ... \/\/www2.landgate.wa.gov.au\/web\/guest\/slipstream-e-news:
+        International Regional:", "dateLastCrawled": "2018-08-18T00:51:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Climate
+        - Data.gov", "url": "https:\/\/www.data.gov\/climate\/", "urlPingSuffix":
+        "DevEx,5244.1", "displayUrl": "https:\/\/www.data.gov\/climate", "snippet":
+        "This link will direct you to an external website that may have different
+        content and privacy policies from Data.gov.", "dateLastCrawled": "2018-08-18T18:11:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "A Primer
+        on Machine Readability for Online Documents and ...", "url": "https:\/\/www.data.gov\/developers\/blog\/primer-machine-readability-online-documents-and-data",
+        "urlPingSuffix": "DevEx,5258.1", "displayUrl": "https:\/\/www.data.gov\/developers\/blog\/primer-machine-readability...",
+        "snippet": "A Primer on Machine Readability for Online Documents and ...
+        Machine Readability for Data. ... It is widely used in applications that
+        publish documents or news ...", "dateLastCrawled": "2018-08-19T22:11:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Data.gov",
+        "url": "https:\/\/www.data.gov\/", "urlPingSuffix": "DevEx,5271.1", "about":
+        [{"name": "data.gov"}, {"name": "data.gov"}, {"name": "Data set"}], "displayUrl":
+        "https:\/\/www.data.gov", "snippet": "This link will direct you to an external
+        website that may have different content and privacy policies from Data.gov.",
+        "dateLastCrawled": "2018-08-20T22:07:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
+        "name": "Health - Data.gov", "url": "https:\/\/www.data.gov\/health\/",
+        "urlPingSuffix": "DevEx,5284.1", "about": [{"name": "data.gov"}], "displayUrl":
+        "https:\/\/www.data.gov\/health", "snippet": "Data are being released
+        that show significant variation across the country and within communities
+        in what providers charge for common services.", "dateLastCrawled": "2018-07-30T20:17:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Million
+        Hearts Epi-Exchange - Data.gov", "url": "https:\/\/www.data.gov\/health\/cmscdc-epi-exchange\/",
+        "urlPingSuffix": "DevEx,5298.1", "displayUrl": "https:\/\/www.data.gov\/health\/cmscdc-epi-exchange",
+        "snippet": "Million Hearts Epi-Exchange. ... The good news, however, is
+        that many of the major risk factors for these conditions can be prevented
+        and controlled.", "dateLastCrawled": "2018-07-23T17:19:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Manufacturing
+        - Data.gov", "url": "https:\/\/www.data.gov\/manufacturing\/", "urlPingSuffix":
+        "DevEx,5312.1", "displayUrl": "https:\/\/www.data.gov\/manufacturing", "snippet":
+        "This link will direct you to an external website that may have different
+        content and privacy policies from Data.gov ... projects in additive manufacturing,
+        ...", "dateLastCrawled": "2018-08-18T05:37:00.0000000Z"}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 27 Aug 2018 02:08:36 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=app%20(site:www.data.gov/)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '3102'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 27 Aug 2018 02:07:36 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=134A7FFC3DDB6FFB2F4473A43CD46EE2; path=/; expires=Sat, 21-Sep-2019 02:08:37
+        GMT; domain=bingapis.com
+      - MUIDB=134A7FFC3DDB6FFB2F4473A43CD46EE2; path=/; httponly; expires=Sat, 21-Sep-2019
+        02:08:37 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 27-Aug-2020 02:08:36 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=28AAFCEE381840A69B0999971C3C22DE&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 27-Aug-2020 02:08:36 GMT; path=/
+      - SRCHUSR=DOB=20180827; domain=.bingapis.com; expires=Thu, 27-Aug-2020 02:08:36
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=04CD5A0D407C6E452A38565541736F7A; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 21-Sep-2019 02:08:37 GMT; domain=bingapis.com
+      - _SS=SID=04CD5A0D407C6E452A38565541736F7A; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - E071C982602247CB826F15C2C7F6D12E
+      X-Msedge-Clientid:
+      - 134A7FFC3DDB6FFB2F4473A43CD46EE2
+      X-Msapi-Userstate:
+      - 28af
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: E071C982602247CB826F15C2C7F6D12E Ref B: BAYEDGE0212 Ref C: 2018-08-27T02:08:37Z'
+      Date:
+      - Mon, 27 Aug 2018 02:08:36 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=5750021FF825475D9CCD9ACDD4FCC20E&CID=134A7FFC3DDB6FFB2F4473A43CD46EE2&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=5750021FF825475D9CCD9ACDD4FCC20E&CID=134A7FFC3DDB6FFB2F4473A43CD46EE2&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=app+(site%3awww.data.gov%2f)",
+        "webSearchUrlPingSuffix": "DevEx,5422.1", "totalEstimatedMatches": 20500,
+        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
+        "Applications - Data.gov", "url": "https:\/\/www.data.gov\/applications",
+        "urlPingSuffix": "DevEx,5059.1", "displayUrl": "https:\/\/www.data.gov\/applications",
+        "snippet": "Applications . Open ... While we don’t endorse any particular
+        app, we’re always interested in new examples: Submit application suggestions
+        here.", "dateLastCrawled": "2018-08-20T21:44:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
+        "name": "Open government data powers software applications that ...", "url":
+        "https:\/\/www.data.gov\/safety\/safety-apps", "urlPingSuffix": "DevEx,5073.1",
+        "displayUrl": "https:\/\/www.data.gov\/safety\/safety-apps", "snippet":
+        "Be ready for severe weather with Hurricane by American Red Cross – A hurricane
+        tracker app available for iPhone and Android. Monitor conditions in your
+        area or throughout the storm track, prepare your family and home, find help
+        and let others know you are safe even if the power is out – a must have for
+        anyone who lives in an area where a ...", "dateLastCrawled": "2018-08-20T03:09:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Open government
+        data powers software applications that ...", "url": "https:\/\/www.data.gov\/consumer\/consumer-apps-page",
+        "urlPingSuffix": "DevEx,5087.1", "displayUrl": "https:\/\/www.data.gov\/consumer\/consumer-apps-page",
+        "snippet": "Open Government Data Used: ... The GoodGuide app can be used
+        while shopping to instantly reveal whether a food product is healthy and produced
+        by green or socially ...", "dateLastCrawled": "2018-08-10T07:48:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "City Apps
+        - Data.gov", "url": "https:\/\/www.data.gov\/cities\/city-apps", "urlPingSuffix":
+        "DevEx,5101.1", "displayUrl": "https:\/\/www.data.gov\/cities\/city-apps",
+        "snippet": "This link will direct you to an external website that may have
+        different content and privacy policies from Data.gov ... to-use and full-featured
+        App ...", "dateLastCrawled": "2018-08-13T10:15:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
+        "name": "Apps & Tools - Data.gov", "url": "https:\/\/www.data.gov\/disasters\/apps-tools\/",
+        "urlPingSuffix": "DevEx,5115.1", "displayUrl": "https:\/\/www.data.gov\/disasters\/apps-tools",
+        "snippet": "This link will direct you to an external website that may have
+        different content and privacy policies from Data.gov ... The FEMA mobile
+        app for phones and ...", "dateLastCrawled": "2018-08-17T05:41:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Open government
+        data powers software applications that ...", "url": "https:\/\/www.data.gov\/food\/food-apps",
+        "urlPingSuffix": "DevEx,5129.1", "displayUrl": "https:\/\/www.data.gov\/food\/food-apps",
+        "snippet": "This link will direct you to an external website that may have
+        different content and privacy policies from Data.gov ... Fooducate is a
+        free mobile app ...", "dateLastCrawled": "2018-08-14T01:43:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "USDA
+        FoodKeeper - Data.gov", "url": "https:\/\/www.data.gov\/applications\/usda-foodkeeper\/",
+        "urlPingSuffix": "DevEx,5142.1", "displayUrl": "https:\/\/www.data.gov\/applications\/usda-foodkeeper",
+        "snippet": "iOS App Download URL: https:\/\/itunes.apple.com\/us\/app\/usda-foodkeeper\/id978186100?mt=8
+        Windows Phone App Download URL: ...", "dateLastCrawled": "2018-08-18T01:14:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Announcing
+        the Apps for Vehicles Challenge - Data.gov", "url": "https:\/\/www.data.gov\/developers\/blog\/announcing-apps-vehicles-challenge",
+        "urlPingSuffix": "DevEx,5156.1", "displayUrl": "https:\/\/www.data.gov\/developers\/blog\/announcing-apps-vehicles...",
+        "snippet": "December 5, 2012. Here at the Energy Department’s Vehicle Technologies
+        Program we’re revved up about the next great smartphone app: yours.. That’s
+        why we’re launching the Apps for Vehicles Challenge, which is looking for
+        the best business plans, app ideas and product designs that use open vehicle
+        data to help vehicle owners save fuel ...", "dateLastCrawled": "2018-07-17T18:57:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "LactMed
+        - Data.gov", "url": "https:\/\/www.data.gov\/applications\/lactmed\/", "urlPingSuffix":
+        "DevEx,5170.1", "displayUrl": "https:\/\/www.data.gov\/applications\/lactmed",
+        "snippet": "LactMed, part of the National Library of Medicine’s (NLM) Toxicology
+        Data Network (TOXNET®), is a database of drugs and dietary supplements that
+        may affect breastfeeding.", "dateLastCrawled": "2018-08-10T16:41:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Open government
+        data powers software applications that ...", "url": "https:\/\/www.data.gov\/energy\/energy-apps",
+        "urlPingSuffix": "DevEx,5184.1", "displayUrl": "https:\/\/www.data.gov\/energy\/energy-apps",
+        "snippet": "Open government data powers software applications that help
+        people make informed decisions on alternative fuels, green buildings, efficiency,
+        and managing household energy.", "dateLastCrawled": "2018-08-15T07:50:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "US Department
+        of Transportation Data Challenge - Data.gov", "url": "https:\/\/www.data.gov\/safety\/us-department-transportation-data-challenge\/",
+        "urlPingSuffix": "DevEx,5198.1", "displayUrl": "https:\/\/www.data.gov\/safety\/us-department-transportation-data...",
+        "snippet": "Cross-posted from the Smart Chicago Collaborative Blog. The US
+        Department of Transportation has issued a data challenge for civic app developers
+        to build apps that address public safety, access to transportation, and that
+        help the Department of Transportation better understand and reduce traffic
+        congestion.", "dateLastCrawled": "2018-08-20T01:13:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
+        "name": "Welcome to the Green Button! - Data.gov", "url": "https:\/\/www.data.gov\/energy\/welcome-green-button",
+        "urlPingSuffix": "DevEx,5212.1", "displayUrl": "https:\/\/www.data.gov\/energy\/welcome-green-button",
+        "snippet": "Welcome to the Green Button! ... The app provides several
+        games based on the “shape” of your data, and provides creative comparisons
+        to illustrate your ...", "dateLastCrawled": "2018-08-20T04:35:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "City
+        Data - Data.gov", "url": "https:\/\/www.data.gov\/applications\/city-data\/",
+        "urlPingSuffix": "DevEx,5224.1", "displayUrl": "https:\/\/www.data.gov\/applications\/city-data",
+        "snippet": "Application URL: http:\/\/www.city-data.com\/ Application Image:
+        Android App Download URL: Blackberry App Download URL:", "dateLastCrawled":
+        "2018-08-13T16:25:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        "name": "Apps - Data.gov", "url": "https:\/\/www.data.gov\/application_types\/apps-30\/",
+        "urlPingSuffix": "DevEx,5238.1", "displayUrl": "https:\/\/www.data.gov\/application_types\/apps-30",
+        "snippet": "Find doctors you love, read real reviews, book appointments instantly,
+        and more with this award-winning app. Open Government Data Used: ...",
+        "dateLastCrawled": "2018-05-12T09:26:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
+        "name": "Open with Apps - Data.gov", "url": "https:\/\/www.data.gov\/meta\/open-apps\/",
+        "urlPingSuffix": "DevEx,5252.1", "displayUrl": "https:\/\/www.data.gov\/meta\/open-apps",
+        "snippet": "Open with Apps. March 18, 2015 By Philip Ashlock and Rebecca
+        Williams. Data.gov now enables the public to open data directly with apps
+        like Plotly and CartoDB for ...", "dateLastCrawled": "2018-08-01T08:22:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Energy
+        Department Announces Apps for Vehicles Challenge ...", "url": "https:\/\/www.data.gov\/developers\/blog\/energy-department-announces-apps-vehicles-challenge-winners",
+        "urlPingSuffix": "DevEx,5265.1", "displayUrl": "https:\/\/www.data.gov\/developers\/blog\/energy-department-announces...",
+        "snippet": "Energy Department Announces Apps for Vehicles Challenge ...
+        The competition asked app developers and entrepreneurs ... “By transforming
+        vehicle data into ...", "dateLastCrawled": "2018-06-16T05:49:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Super
+        Tracker - Data.gov", "url": "https:\/\/www.data.gov\/food\/applications\/super-tracker",
+        "urlPingSuffix": "DevEx,5279.1", "displayUrl": "https:\/\/www.data.gov\/food\/applications\/super-tracker",
+        "snippet": "Android App Download URL: Blackberry App Download URL: iOS
+        App Download URL: Windows Phone App ... One Response to “Super Tracker
+        ...", "dateLastCrawled": "2018-08-15T04:16:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
+        "name": "Neighborhood Scout - Data.gov", "url": "https:\/\/www.data.gov\/applications\/neighborhood-scout\/",
+        "urlPingSuffix": "DevEx,5292.1", "displayUrl": "https:\/\/www.data.gov\/applications\/neighborhood-scout",
+        "snippet": "Application URL: http:\/\/www.neighborhoodscout.com\/ Application
+        Image: Android App Download URL: Blackberry App Download URL:", "dateLastCrawled":
+        "2018-08-19T03:33:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
+        "name": "Zoc Doc - Data.gov", "url": "https:\/\/www.data.gov\/applications\/zoc-doc\/",
+        "urlPingSuffix": "DevEx,5306.1", "displayUrl": "https:\/\/www.data.gov\/applications\/zoc-doc",
+        "snippet": "Zoc Doc. May 14, 2015. ... Find doctors you love, read real
+        reviews, book appointments instantly, and more with this award-winning app.
+        Open Government Data Used:", "dateLastCrawled": "2018-08-03T01:16:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Consumer
+        Challenges - Data.gov", "url": "https:\/\/www.data.gov\/consumer\/consumer-challenges",
+        "urlPingSuffix": "DevEx,5320.1", "displayUrl": "https:\/\/www.data.gov\/consumer\/consumer-challenges",
+        "snippet": "Consumer Challenges. ... challenges teams of developers and
+        health professionals and health consumers to co-design a mobile app that
+        will be used by the public to ...", "dateLastCrawled": "2018-08-17T09:50:00.0000000Z"}]},
         "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
         0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
         "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
@@ -203,418 +607,7 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
         {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
-        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}},
-        {"answerType": "Videos"}]}}}'
-    http_version: 
-  recorded_at: Thu, 22 Feb 2018 07:23:27 GMT
-- request:
-    method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=news%20(site:www.data.gov/)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Ocp-Apim-Subscription-Key:
-      - "<BING_V6_APP_ID>"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Content-Length:
-      - '3094'
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Thu, 22 Feb 2018 07:22:27 GMT
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      Set-Cookie:
-      - MUID=1A6A8985FD4A62950F81821BFCAF63F5; path=/; expires=Tue, 19-Mar-2019 07:23:28
-        GMT; domain=bingapis.com
-      - MUIDB=1A6A8985FD4A62950F81821BFCAF63F5; path=/; httponly; expires=Tue, 19-Mar-2019
-        07:23:28 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:23:27 GMT;
-        path=/
-      - SRCHUID=V=2&GUID=F6743A3A4F7745A1ABC31FD8FB4DABD1&dmnchg=1; domain=.bingapis.com;
-        expires=Sat, 22-Feb-2020 07:23:27 GMT; path=/
-      - SRCHUSR=DOB=20180222; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:23:27
-        GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=229A23A15AB46739021F283F5B51665A; path=/; httponly;
-        domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Tue, 19-Mar-2019 07:23:28 GMT; domain=bingapis.com
-      - _SS=SID=229A23A15AB46739021F283F5B51665A; domain=.bingapis.com; path=/
-      Bingapis-Traceid:
-      - 33A0D5ED2F2F41FE89C548625555D649
-      X-Msedge-Clientid:
-      - 1A6A8985FD4A62950F81821BFCAF63F5
-      X-Msapi-Userstate:
-      - 3f48
-      Bingapis-Market:
-      - en-US
-      X-Msedge-Ref:
-      - 'Ref A: 33A0D5ED2F2F41FE89C548625555D649 Ref B: SG2EDGE1106 Ref C: 2018-02-22T07:23:28Z'
-      Date:
-      - Thu, 22 Feb 2018 07:23:28 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=108F7D41F14A4FD48D4B08B6385450CE&CID=1A6A8985FD4A62950F81821BFCAF63F5&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=108F7D41F14A4FD48D4B08B6385450CE&CID=1A6A8985FD4A62950F81821BFCAF63F5&Type=Event.CPT&DATA=0"},
-        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=news+(site%3awww.data.gov%2f)",
-        "webSearchUrlPingSuffix": "DevEx,5510.1", "totalEstimatedMatches": 9780, "value":
-        [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "In the
-        News - Data.gov", "url": "https:\/\/www.data.gov\/in-the-news", "urlPingSuffix":
-        "DevEx,5088.1", "displayUrl": "https:\/\/www.data.gov\/in-the-news", "snippet":
-        "Dear Open Data Enthusiasts, Below is an abstract of “Liberating data for
-        public value: The case of Data.gov,” International Journal of Information
-        Management (2016).", "dateLastCrawled": "2018-02-03T00:12:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "In the News
-        - Page 3 of 4 - Data.gov", "url": "https:\/\/www.data.gov\/announcements_and_news\/in_the_news-10\/page\/3\/",
-        "urlPingSuffix": "DevEx,5103.1", "displayUrl": "https:\/\/www.data.gov\/announcements_and_news\/in_the_news-10\/page\/3",
-        "snippet": "Government data officials have nearly completed an exhaustive
-        list of nearly 300 application programming interfaces that will allow outsiders
-        to stream up-to-date ...", "dateLastCrawled": "2018-01-26T21:13:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "The Legal
-        Entity Identifier (LEI) Is Good News for ...", "url": "https:\/\/www.data.gov\/consumer\/legal-entity-identifier-lei-good-news-financial-technology-developers\/",
-        "urlPingSuffix": "DevEx,5118.1", "displayUrl": "https:\/\/www.data.gov\/consumer\/legal-entity-identifier-lei-good...",
-        "snippet": "3 Responses to “The Legal Entity Identifier (LEI) Is Good News
-        for Financial Technology Developers”", "dateLastCrawled": "2018-02-11T18:52:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Weather
-        - Data.gov", "url": "https:\/\/www.data.gov\/weather\/", "urlPingSuffix":
-        "DevEx,5134.1", "displayUrl": "https:\/\/www.data.gov\/weather", "snippet":
-        "See this data in action at: The Weather Channel broadcasts weather forecasts
-        and weather-related news over their cable channel and web properties.",
-        "dateLastCrawled": "2018-02-16T16:20:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
-        "name": "Bullying Rates Drop - Data.gov", "url": "https:\/\/www.data.gov\/education\/bullying-rates-drop\/",
-        "urlPingSuffix": "DevEx,5150.1", "displayUrl": "https:\/\/www.data.gov\/education\/bullying-rates-drop",
-        "snippet": "Bullying Rates Drop. May 15, ... This is a great news, bullying
-        is one of the major problem in schools.. I just hope that bullying will totally
-        stop..", "dateLastCrawled": "2018-02-01T18:10:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
-        "name": "Data.gov’s New E-newsletter: Big Data Express", "url": "https:\/\/www.data.gov\/blog\/datagovs-new-e-newsletter-big-data-express",
-        "urlPingSuffix": "DevEx,5165.1", "displayUrl": "https:\/\/www.data.gov\/blog\/datagovs-new-e-newsletter-big-data-express",
-        "snippet": "This link will direct you to an external website that may have
-        different content and privacy policies from Data.gov.", "dateLastCrawled":
-        "2018-02-02T22:50:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
-        "name": "In the News - Data.gov", "url": "https:\/\/www.data.gov\/announcements_and_news\/in_the_news-10\/",
-        "urlPingSuffix": "DevEx,5179.1", "displayUrl": "https:\/\/www.data.gov\/announcements_and_news\/in_the_news-10",
-        "snippet": "This link will direct you to an external website that may have
-        different content and privacy policies from Data.gov.", "dateLastCrawled":
-        "2017-12-16T22:19:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
-        "name": "Million Hearts Epi-Exchange - Data.gov", "url": "https:\/\/www.data.gov\/health\/cmscdc-epi-exchange\/",
-        "urlPingSuffix": "DevEx,5195.1", "displayUrl": "https:\/\/www.data.gov\/health\/cmscdc-epi-exchange",
-        "snippet": "Million Hearts Epi-Exchange. ... The good news, however, is
-        that many of the major risk factors for these conditions can be prevented
-        and controlled.", "dateLastCrawled": "2018-02-12T03:40:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Geospatial -
-        Data.gov", "url": "https:\/\/www.data.gov\/geospatial\/", "urlPingSuffix":
-        "DevEx,5211.1", "about": [{"name": "Geospatial analysis"}], "displayUrl":
-        "https:\/\/www.data.gov\/geospatial", "snippet": "Explore geospatial data
-        and resources, including an interactive map of submerged land information,
-        maps of air quality across the U.S., data on water resources, and more.",
-        "dateLastCrawled": "2018-02-16T11:17:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
-        "name": "data.gov - Official Site", "url": "https:\/\/www.data.gov\/", "urlPingSuffix":
-        "DevEx,5226.1", "about": [{"name": "data.gov"}, {"name": "Data set"}, {"name":
-        "data.gov"}], "displayUrl": "https:\/\/www.data.gov", "snippet": "This link
-        will direct you to an external website that may have different content and
-        privacy policies from Data.gov.", "dateLastCrawled": "2018-02-15T00:49:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Impact
-        - Data.gov", "url": "https:\/\/www.data.gov\/impact\/", "urlPingSuffix":
-        "DevEx,5242.1", "displayUrl": "https:\/\/www.data.gov\/impact", "snippet":
-        "Open government data is important because the more accessible, discoverable,
-        and usable data is, the more impact it can have. ... USDA Market News Reports,
-        ...", "dateLastCrawled": "2018-02-10T17:38:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
-        "name": "Finance - Data.gov", "url": "https:\/\/www.data.gov\/finance\/",
-        "urlPingSuffix": "DevEx,5258.1", "displayUrl": "https:\/\/www.data.gov\/finance",
-        "snippet": "Another data analytics startup is working with banks to unlock
-        insights about businesses from new ... Is Good News for Financial Technology
-        Developers. May 21, 2014 ...", "dateLastCrawled": "2018-02-11T06:04:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Energy
-        - Data.gov", "url": "https:\/\/www.data.gov\/energy\/", "urlPingSuffix":
-        "DevEx,5273.1", "displayUrl": "https:\/\/www.data.gov\/energy", "snippet":
-        "Discover data and resources on key energy topics like alternative fuels,
-        green buildings, efficiency, and managing energy in your own home.", "dateLastCrawled":
-        "2018-02-16T09:14:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
-        "name": "Conference Presenters - Data.gov", "url": "https:\/\/www.data.gov\/conference\/presenters",
-        "urlPingSuffix": "DevEx,5289.1", "displayUrl": "https:\/\/www.data.gov\/conference\/presenters",
-        "snippet": "Conference Presenters . Suzanne Acar, Ph.D. Principal ... Ellen
-        is a regular contributor on ABC’s World News Tonight, C-SPAN, CNN, Washington
-        Post, ...", "dateLastCrawled": "2018-02-04T01:11:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
-        "name": "Earthquakes - Data.gov", "url": "https:\/\/www.data.gov\/disasters\/earthquakes\/",
-        "urlPingSuffix": "DevEx,5305.1", "displayUrl": "https:\/\/www.data.gov\/disasters\/earthquakes",
-        "snippet": "Earthquakes Earthquakes can strike suddenly, violently, and without
-        warning any time of day or night. Here you’ll find a “starter list” of tools
-        and open data ...", "dateLastCrawled": "2018-02-08T08:45:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Consumer - Data.gov",
-        "url": "https:\/\/www.data.gov\/consumer\/", "urlPingSuffix": "DevEx,5321.1",
-        "displayUrl": "https:\/\/www.data.gov\/consumer", "snippet": "Data available
-        about each complaint includes the name of the provider, type of complaint,
-        ... Is Good News for Financial Technology Developers. May 21, 2014 By admin.",
-        "dateLastCrawled": "2018-02-12T05:12:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
-        "name": "Climate - Data.gov", "url": "https:\/\/www.data.gov\/climate\/",
-        "urlPingSuffix": "DevEx,5337.1", "displayUrl": "https:\/\/www.data.gov\/climate",
-        "snippet": "Expanding access to Arctic data and tools (Sep 2, 2015) The Administration
-        is expanding its Climate Data Initiative (CDI) and Climate Resilience Toolkit
-        (CRT) to ...", "dateLastCrawled": "2018-02-15T22:56:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Open Government
-        - Data.gov", "url": "https:\/\/www.data.gov\/open-gov\/", "urlPingSuffix":
-        "DevEx,5353.1", "displayUrl": "https:\/\/www.data.gov\/open-gov", "snippet":
-        "Open Government . Data.gov is the federal government’s open data site, and
-        aims to ... \/\/www2.landgate.wa.gov.au\/web\/guest\/slipstream-e-news:
-        International Regional:", "dateLastCrawled": "2018-02-10T17:53:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Webinar:
-        \"Using Participatory GIS to Map Ocean Uses in the ...", "url": "https:\/\/www.data.gov\/ocean\/webinar-using-participatory-gis-map-ocean-uses-mid-atlantic\/",
-        "urlPingSuffix": "DevEx,5369.1", "about": [{"name": "Participatory GIS"}],
-        "displayUrl": "https:\/\/www.data.gov\/ocean\/webinar-using-participatory-gis-map...",
-        "snippet": "Using Participatory GIS to Map Ocean Uses in the Mid-Atlantic
-        Thursday, May 1, 2014 from 2 to 3 p.m. Eastern. Presenter(s): Mimi D’Iorio
-        (National Oceanic and ...", "dateLastCrawled": "2018-02-04T15:06:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Science
-        & Research - Data.gov", "url": "https:\/\/www.data.gov\/research\/", "urlPingSuffix":
-        "DevEx,5385.1", "displayUrl": "https:\/\/www.data.gov\/research", "snippet":
-        "As part of the Administration’s Lab-to-Market initiative, agencies are publishing
-        machine-readable data on over 700 Federal R&D facilities that may be utilized
-        by ...", "dateLastCrawled": "2018-02-16T06:30:00.0000000Z"}]}, "rankingResponse":
-        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
-        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
-        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
-        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
-        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
-        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
-        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
-        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
-        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
-        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
-        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
-        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
-        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
-        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
-        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
-        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
-        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
-        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
-        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Thu, 22 Feb 2018 07:23:28 GMT
-- request:
-    method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=app%20(site:www.data.gov/)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Ocp-Apim-Subscription-Key:
-      - "<BING_V6_APP_ID>"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Content-Length:
-      - '3015'
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Thu, 22 Feb 2018 07:22:28 GMT
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      Set-Cookie:
-      - MUID=3A86887E11CD6808368283E0102869BC; path=/; expires=Tue, 19-Mar-2019 07:23:28
-        GMT; domain=bingapis.com
-      - MUIDB=3A86887E11CD6808368283E0102869BC; path=/; httponly; expires=Tue, 19-Mar-2019
-        07:23:28 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:23:28 GMT;
-        path=/
-      - SRCHUID=V=2&GUID=49A3D47C902143DFBE0942EF52EFA8AB&dmnchg=1; domain=.bingapis.com;
-        expires=Sat, 22-Feb-2020 07:23:28 GMT; path=/
-      - SRCHUSR=DOB=20180222; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:23:28
-        GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=1F3336CEB8AA62121CE23D50B94F6382; path=/; httponly;
-        domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Tue, 19-Mar-2019 07:23:28 GMT; domain=bingapis.com
-      - _SS=SID=1F3336CEB8AA62121CE23D50B94F6382; domain=.bingapis.com; path=/
-      Bingapis-Traceid:
-      - 5106955028EA4EC6ADFE276192B95347
-      X-Msedge-Clientid:
-      - 3A86887E11CD6808368283E0102869BC
-      X-Msapi-Userstate:
-      - 411b
-      Bingapis-Market:
-      - en-US
-      X-Msedge-Ref:
-      - 'Ref A: 5106955028EA4EC6ADFE276192B95347 Ref B: SG2EDGE0819 Ref C: 2018-02-22T07:23:28Z'
-      Date:
-      - Thu, 22 Feb 2018 07:23:28 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=D3E90FDCC45F488C91BCC913F308AEC4&CID=3A86887E11CD6808368283E0102869BC&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=D3E90FDCC45F488C91BCC913F308AEC4&CID=3A86887E11CD6808368283E0102869BC&Type=Event.CPT&DATA=0"},
-        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=app+(site%3awww.data.gov%2f)",
-        "webSearchUrlPingSuffix": "DevEx,5513.1", "totalEstimatedMatches": 7790, "value":
-        [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "Applications
-        - Data.gov", "url": "https:\/\/www.data.gov\/applications", "urlPingSuffix":
-        "DevEx,5088.1", "displayUrl": "https:\/\/www.data.gov\/applications", "snippet":
-        "Applications . Open ... While we don’t endorse any particular app, we’re
-        always interested in new examples: Submit application suggestions here.",
-        "dateLastCrawled": "2018-02-16T17:31:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
-        "name": "Apps & Tools - Data.gov", "url": "https:\/\/www.data.gov\/disasters\/apps-tools\/",
-        "urlPingSuffix": "DevEx,5104.1", "displayUrl": "https:\/\/www.data.gov\/disasters\/apps-tools",
-        "snippet": "The FEMA mobile app for phones and tablets contains disaster
-        safety tips, an interactive emergency kit list, storable emergency meeting
-        locations, and a map with open ...", "dateLastCrawled": "2018-02-11T19:33:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Open government
-        data powers software applications that ...", "url": "https:\/\/www.data.gov\/safety\/safety-apps",
-        "urlPingSuffix": "DevEx,5120.1", "displayUrl": "https:\/\/www.data.gov\/safety\/safety-apps",
-        "snippet": "HDScores is the first real-time comprehensive and recommendation
-        search engine for restaurant inspection data. Our app will help you search
-        and discover restaurants ...", "dateLastCrawled": "2018-02-10T02:55:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Open government
-        data powers software applications that ...", "url": "https:\/\/www.data.gov\/consumer\/consumer-apps-page",
-        "urlPingSuffix": "DevEx,5136.1", "displayUrl": "https:\/\/www.data.gov\/consumer\/consumer-apps-page",
-        "snippet": "Open Government Data Used: ... The GoodGuide app can be used
-        while shopping to instantly reveal whether a food product is healthy and produced
-        by green or socially ...", "dateLastCrawled": "2018-02-11T11:20:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Apps -
-        Data.gov", "url": "https:\/\/www.data.gov\/application_types\/apps-30\/",
-        "urlPingSuffix": "DevEx,5151.1", "displayUrl": "https:\/\/www.data.gov\/application_types\/apps-30",
-        "snippet": "HDScores is the first real-time comprehensive and recommendation
-        search engine for restaurant inspection data. Our app will help you search
-        and discover restaurants ...", "dateLastCrawled": "2017-12-28T20:51:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "City Apps
-        - Data.gov", "url": "https:\/\/www.data.gov\/cities\/city-apps", "urlPingSuffix":
-        "DevEx,5167.1", "displayUrl": "https:\/\/www.data.gov\/cities\/city-apps",
-        "snippet": "This link will direct you to an external website that may have
-        different content and privacy policies from Data.gov ... to-use and full-featured
-        App ...", "dateLastCrawled": "2018-01-27T22:11:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
-        "name": "Food and Nutrition Applications - Data.gov", "url": "https:\/\/www.data.gov\/food\/food-apps",
-        "urlPingSuffix": "DevEx,5183.1", "displayUrl": "https:\/\/www.data.gov\/food\/food-apps",
-        "snippet": "This link will direct you to an external website that may have
-        different content and privacy policies from Data.gov ... Fooducate is a free
-        mobile app ...", "dateLastCrawled": "2018-02-11T18:26:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "LactMed - Data.gov",
-        "url": "https:\/\/www.data.gov\/applications\/lactmed\/", "urlPingSuffix":
-        "DevEx,5199.1", "displayUrl": "https:\/\/www.data.gov\/applications\/lactmed",
-        "snippet": "LactMed, part of the National Library of Medicine’s (NLM) Toxicology
-        Data Network (TOXNET®), is a database of drugs and dietary supplements that
-        may affect ...", "dateLastCrawled": "2018-02-16T18:14:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Spot Crime
-        - Data.gov", "url": "https:\/\/www.data.gov\/applications\/spot-crime\/",
-        "urlPingSuffix": "DevEx,5214.1", "displayUrl": "https:\/\/www.data.gov\/applications\/spot-crime",
-        "snippet": "Android App Download URL: Blackberry App Download URL: iOS
-        App Download URL: Windows Phone App ... One Response to “Spot Crime ...",
-        "dateLastCrawled": "2018-01-24T05:33:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
-        "name": "Open with Apps - Data.gov", "url": "https:\/\/www.data.gov\/meta\/open-apps\/",
-        "urlPingSuffix": "DevEx,5230.1", "displayUrl": "https:\/\/www.data.gov\/meta\/open-apps",
-        "snippet": "Open with Apps. March 18, 2015 By Philip Ashlock and Rebecca Williams.
-        Data.gov now enables the public to open data directly with apps like Plotly
-        and CartoDB for ...", "dateLastCrawled": "2018-02-03T02:54:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "FlockPlenty
-        - Chicken Egg Tracker - Data.gov", "url": "https:\/\/www.data.gov\/applications\/flockplenty-chicken-egg-tracker\/",
-        "urlPingSuffix": "DevEx,5246.1", "displayUrl": "https:\/\/www.data.gov\/applications\/flockplenty-chicken-egg-tracker",
-        "snippet": "Rock Feathers April 17, 2016. Nice, useful app. Still needs
-        a few more options though. Need to be able to search within the app. Like
-        find a specific sale or purchase.", "dateLastCrawled": "2018-02-15T17:08:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Zoc
-        Doc - Data.gov", "url": "https:\/\/www.data.gov\/applications\/zoc-doc\/",
-        "urlPingSuffix": "DevEx,5262.1", "displayUrl": "https:\/\/www.data.gov\/applications\/zoc-doc",
-        "snippet": "Zoc Doc. May 14, 2015. ... Find doctors you love, read real reviews,
-        book appointments instantly, and more with this award-winning app. Open
-        Government Data Used:", "dateLastCrawled": "2018-02-04T00:21:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Open
-        government data powers software applications that ...", "url": "https:\/\/www.data.gov\/energy\/energy-apps",
-        "urlPingSuffix": "DevEx,5278.1", "displayUrl": "https:\/\/www.data.gov\/energy\/energy-apps",
-        "snippet": "While we can’t and don’t endorse specific apps, below are just
-        a few examples of government, citizen, and business tools that: use open government
-        data from the ...", "dateLastCrawled": "2018-01-26T08:45:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "USDA FoodKeeper
-        - Data.gov", "url": "https:\/\/www.data.gov\/applications\/usda-foodkeeper\/",
-        "urlPingSuffix": "DevEx,5293.1", "displayUrl": "https:\/\/www.data.gov\/applications\/usda-foodkeeper",
-        "snippet": "iOS App Download URL: https:\/\/itunes.apple.com\/us\/app\/usda-foodkeeper\/id978186100?mt=8
-        Windows Phone App Download URL: ...", "dateLastCrawled": "2018-01-29T16:30:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Welcome
-        to the Green Button! - Data.gov", "url": "https:\/\/www.data.gov\/energy\/welcome-green-button",
-        "urlPingSuffix": "DevEx,5309.1", "displayUrl": "https:\/\/www.data.gov\/energy\/welcome-green-button",
-        "snippet": "Welcome to the Green Button! ... The app provides several games
-        based on the “shape” of your data, and provides creative comparisons to illustrate
-        your ...", "dateLastCrawled": "2018-01-22T17:19:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
-        "name": "Super Tracker - Data.gov", "url": "https:\/\/www.data.gov\/food\/applications\/super-tracker",
-        "urlPingSuffix": "DevEx,5325.1", "displayUrl": "https:\/\/www.data.gov\/food\/applications\/super-tracker",
-        "snippet": "Android App Download URL: Blackberry App Download URL: iOS
-        App Download URL: Windows Phone App ... 4 Responses to “Super Tracker
-        ...", "dateLastCrawled": "2018-02-06T21:30:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
-        "name": "Citymapper - Data.gov", "url": "https:\/\/www.data.gov\/applications\/citymapper\/",
-        "urlPingSuffix": "DevEx,5341.1", "displayUrl": "https:\/\/www.data.gov\/applications\/citymapper",
-        "snippet": "Citymapper is reinventing the everyday urban transit app and
-        making the large complicated city simple and usable. A to B trip planning
-        with real-time departure ...", "dateLastCrawled": "2017-12-19T17:04:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "FEMA
-        app - Data.gov", "url": "https:\/\/www.data.gov\/meta\/fema-app\/", "urlPingSuffix":
-        "DevEx,5357.1", "displayUrl": "https:\/\/www.data.gov\/meta\/fema-app",
-        "snippet": "With hurricane season kicking off June 1 through November 30,
-        the FEMA app is a comprehensive resource of tools and tips to keep you safe
-        before, during, and after ...", "dateLastCrawled": "2018-01-10T12:21:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Fooducate
-        - Data.gov", "url": "https:\/\/www.data.gov\/consumer\/applications\/fooducate",
-        "urlPingSuffix": "DevEx,5373.1", "displayUrl": "https:\/\/www.data.gov\/consumer\/applications\/fooducate",
-        "snippet": "Fooducate is a free mobile app (Android, iPhone) that empowers
-        supermarket shoppers to make healthy choices effortlessly, enabling consumers
-        to automatically scan the ...", "dateLastCrawled": "2018-01-16T15:06:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "2016
-        International Space Apps Challenge - Data.gov", "url": "https:\/\/www.data.gov\/event\/2016-international-space-apps-challenge\/",
-        "urlPingSuffix": "DevEx,5388.1", "displayUrl": "https:\/\/www.data.gov\/event\/2016-international-space-apps-challenge",
-        "snippet": "The 2016 International Space Apps Challenge, scheduled for April
-        22-24, is NASA’s open innovation incubator and one of the largest hackathons
-        in the world.", "dateLastCrawled": "2018-02-11T01:47:00.0000000Z"}]}, "rankingResponse":
-        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
-        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
-        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
-        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
-        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
-        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
-        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
-        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
-        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
-        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
-        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
-        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
-        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
-        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
-        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
-        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
-        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
-        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
-        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
-        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
-    http_version: 
-  recorded_at: Thu, 22 Feb 2018 07:23:28 GMT
+  recorded_at: Mon, 27 Aug 2018 02:08:36 GMT
 recorded_with: VCR 4.0.0

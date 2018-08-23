@@ -6,10 +6,14 @@ class ApiBingSearch < ApiWebSearch
   end
 
   def engine_klass
-    BingV6WebSearch
+    latest_bing_web_search_class
   end
 
   protected
+
+  def latest_bing_web_search_class
+    BingV6WebSearch
+  end
 
   def handle_response(response)
     return unless response

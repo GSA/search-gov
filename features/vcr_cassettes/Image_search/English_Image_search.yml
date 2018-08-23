@@ -2,15 +2,13 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.bingapis.com/api/v6/images/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=white%20house%20(site:whitehouse.gov)&safeSearch=moderate&traffictype=test
+    uri: https://www.bingapis.com/api/v6/images/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=white%20house%20(site:whitehouse.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
       - USASearch
-      Ocp-Apim-Subscription-Key:
-      - "<BING_V6_APP_ID>"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -29,7 +27,7 @@ http_interactions:
       Pragma:
       - no-cache
       Content-Length:
-      - '93825'
+      - '94054'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
@@ -39,249 +37,255 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=31224BBC5DD16F8E1BA540225C346E48; path=/; expires=Tue, 19-Mar-2019 07:15:35
+      - MUID=0CCA391A639F6ABD3AA4354262906BD6; path=/; expires=Sat, 21-Sep-2019 01:41:46
         GMT; domain=bingapis.com
-      - MUIDB=31224BBC5DD16F8E1BA540225C346E48; path=/; httponly; expires=Tue, 19-Mar-2019
-        07:15:35 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:15:35 GMT;
+      - MUIDB=0CCA391A639F6ABD3AA4354262906BD6; path=/; httponly; expires=Sat, 21-Sep-2019
+        01:41:46 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 27-Aug-2020 01:41:46 GMT;
         path=/
-      - SRCHUID=V=2&GUID=1D37745C60FC45A1BDD0FA297F61C50C&dmnchg=1; domain=.bingapis.com;
-        expires=Sat, 22-Feb-2020 07:15:35 GMT; path=/
-      - SRCHUSR=DOB=20180222; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:15:35
+      - SRCHUID=V=2&GUID=A91AA5D171AB4A1D9718B2AC1408ACD2&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 27-Aug-2020 01:41:46 GMT; path=/
+      - SRCHUSR=DOB=20180827; domain=.bingapis.com; expires=Thu, 27-Aug-2020 01:41:46
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=3BF06FE3F66265CB0309647DF787640D; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=215D726CC6646BED11F27E34C76B6ADF; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Tue, 19-Mar-2019 07:15:35 GMT; domain=bingapis.com
-      - _SS=SID=3BF06FE3F66265CB0309647DF787640D; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 21-Sep-2019 01:41:46 GMT; domain=bingapis.com
+      - _SS=SID=215D726CC6646BED11F27E34C76B6ADF; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - D6277D172174415394D5BBD131F86432
+      - BA00C41EFA4F4EEE8A10AA59EEC62A19
       X-Msedge-Clientid:
-      - 31224BBC5DD16F8E1BA540225C346E48
+      - 0CCA391A639F6ABD3AA4354262906BD6
       X-Msapi-Userstate:
-      - f191
+      - 02ba
       X-Msedge-Ref:
-      - 'Ref A: D6277D172174415394D5BBD131F86432 Ref B: SG2EDGE0413 Ref C: 2018-02-22T07:15:35Z'
+      - 'Ref A: BA00C41EFA4F4EEE8A10AA59EEC62A19 Ref B: BAYEDGE0514 Ref C: 2018-08-27T01:41:46Z'
       Date:
-      - Thu, 22 Feb 2018 07:15:35 GMT
+      - Mon, 27 Aug 2018 01:41:46 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "Images", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=6A07D07EBAB64C90BA617827FF7ACEE5&CID=31224BBC5DD16F8E1BA540225C346E48&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=6A07D07EBAB64C90BA617827FF7ACEE5&CID=31224BBC5DD16F8E1BA540225C346E48&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "Images", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=9208E71CC33A4105B2A955ED6E2A155B&CID=0CCA391A639F6ABD3AA4354262906BD6&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=9208E71CC33A4105B2A955ED6E2A155B&CID=0CCA391A639F6ABD3AA4354262906BD6&Type=Event.CPT&DATA=0"},
         "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=white%20house%20(site:whitehouse.gov)&FORM=OIIARP",
-        "webSearchUrlPingSuffix": "DevEx,5188.1", "totalEstimatedMatches": 111, "nextOffset":
-        23, "value": [{"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=53513FFBBEDEC470783865243FEA492C91409850&simid=608012206974371082",
-        "webSearchUrlPingSuffix": "DevEx,5025.1", "name": "The White House | whitehouse.gov",
-        "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.vzp7BjqnK_hE5tLUCB2qmAHaD4&pid=Api",
-        "datePublished": "2017-08-01T14:22:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/og-image.png",
-        "contentUrlPingSuffix": "DevEx,5027.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/",
-        "hostPageUrlPingSuffix": "DevEx,5026.1", "contentSize": "1264369 B", "encodingFormat":
-        "png", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov", "width": 1200,
-        "height": 630, "thumbnail": {"width": 474, "height": 248}, "imageInsightsToken":
-        "ccid_vzp7Bjqn*mid_53513FFBBEDEC470783865243FEA492C91409850*simid_608012206974371082",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "53513FFBBEDEC470783865243FEA492C91409850", "accentColor": "595236"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=C55479EC564DE9BBCA64CE3B53B2A3C205CA233B&simid=608056007019531526",
-        "webSearchUrlPingSuffix": "DevEx,5031.1", "name": "The Executive Branch |
-        whitehouse.gov", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.VtTAJ3NJvu3YE83YY_yfawHaDo&pid=Api",
-        "datePublished": "2015-04-13T09:17:00.0000000Z", "contentUrl": "http:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/images\/1600\/page_masthead\/1600_executive_branch.jpg",
-        "contentUrlPingSuffix": "DevEx,5033.1", "hostPageUrl": "http:\/\/www.whitehouse.gov\/1600\/executive-branch",
-        "hostPageUrlPingSuffix": "DevEx,5032.1", "contentSize": "213283 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "www.whitehouse.gov\/1600\/executive-branch",
-        "width": 800, "height": 393, "thumbnail": {"width": 474, "height": 232}, "imageInsightsToken":
-        "ccid_VtTAJ3NJ*mid_C55479EC564DE9BBCA64CE3B53B2A3C205CA233B*simid_608056007019531526",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "C55479EC564DE9BBCA64CE3B53B2A3C205CA233B", "accentColor": "2665A5"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=E0D364ECB84A080ED578357F7335746961EAED39&simid=608046652577874275",
-        "webSearchUrlPingSuffix": "DevEx,5037.1", "name": "Photos of the Week: Christmas
-        at the White House | The ...", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.4-VJLpcY4fHo9-xPAl_UgAHaE8&pid=Api",
-        "datePublished": "2017-12-01T12:00:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2017\/12\/f20171120kd-0047_original-1-820x547.jpg",
-        "contentUrlPingSuffix": "DevEx,5039.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/briefings-statements\/photos-week-christmas-white-house\/",
-        "hostPageUrlPingSuffix": "DevEx,5038.1", "contentSize": "98292 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/briefings-statements\/photos-week...",
-        "width": 820, "height": 547, "thumbnail": {"width": 474, "height": 316}, "imageInsightsToken":
-        "ccid_4+VJLpcY*mid_E0D364ECB84A080ED578357F7335746961EAED39*simid_608046652577874275",
-        "imageId": "E0D364ECB84A080ED578357F7335746961EAED39", "accentColor": "6F2D29"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=1F2F4C1E9DBEB6CDC5B816FAC683CB59B3988914&simid=608041644665474204",
-        "webSearchUrlPingSuffix": "DevEx,5043.1", "name": "Happy Halloween! Take a
-        Look Inside #HauntedWH ...", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.IXTUCICTb3djax7fdBk5RgHaFS&pid=Api",
-        "datePublished": "2016-10-31T19:31:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/images\/WH%20Haunted%20Tour%203.jpg",
-        "contentUrlPingSuffix": "DevEx,5045.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/blog\/2016\/10\/31\/inside-hauntedwh",
-        "hostPageUrlPingSuffix": "DevEx,5044.1", "contentSize": "3216494 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/blog\/2016\/10\/31\/inside-hauntedwh",
-        "width": 2200, "height": 1571, "thumbnail": {"width": 474, "height": 338},
-        "imageInsightsToken": "ccid_IXTUCICT*mid_1F2F4C1E9DBEB6CDC5B816FAC683CB59B3988914*simid_608041644665474204",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "1F2F4C1E9DBEB6CDC5B816FAC683CB59B3988914", "accentColor": "937238"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=53513FFBBEDEC4707838978770512553DEFFAA2A&simid=608050067115737507",
-        "webSearchUrlPingSuffix": "DevEx,5049.1", "name": "Home Page [www.whitehouse.gov]",
-        "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.LwxG4x0F5CfYqbsImTJdVwHaD2&pid=Api",
-        "datePublished": "2018-02-09T22:19:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2017\/11\/WhiteHouse-Faded-1387x720.jpg",
-        "contentUrlPingSuffix": "DevEx,5051.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/",
-        "hostPageUrlPingSuffix": "DevEx,5050.1", "contentSize": "105313 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov", "width": 1387,
-        "height": 720, "thumbnail": {"width": 474, "height": 246}, "imageInsightsToken":
-        "ccid_LwxG4x0F*mid_53513FFBBEDEC4707838978770512553DEFFAA2A*simid_608050067115737507",
-        "imageId": "53513FFBBEDEC4707838978770512553DEFFAA2A", "accentColor": "666A61"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=6D2D34DDA3F04CE3C814637ACBFF850188969934&simid=608025615814233849",
-        "webSearchUrlPingSuffix": "DevEx,5055.1", "name": "About The White House",
+        "webSearchUrlPingSuffix": "DevEx,5188.1", "totalEstimatedMatches": 100, "nextOffset":
+        24, "value": [{"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=6D2D34DDA3F04CE3C814637ACBFF850188969934&simid=608025616224682672",
+        "webSearchUrlPingSuffix": "DevEx,5025.1", "name": "About The White House",
         "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.vWpSQJSzVJ9lks69e2kbpAHaCx&pid=Api",
         "datePublished": "2017-12-14T22:10:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2017\/12\/P20170614JB-0303-2-1920x720.jpg",
-        "contentUrlPingSuffix": "DevEx,5057.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/",
-        "hostPageUrlPingSuffix": "DevEx,5056.1", "contentSize": "357656 B", "encodingFormat":
+        "contentUrlPingSuffix": "DevEx,5027.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/",
+        "hostPageUrlPingSuffix": "DevEx,5026.1", "contentSize": "357656 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house",
         "width": 1920, "height": 720, "thumbnail": {"width": 474, "height": 177},
-        "imageInsightsToken": "ccid_vWpSQJSz*mid_6D2D34DDA3F04CE3C814637ACBFF850188969934*simid_608025615814233849",
+        "imageInsightsToken": "ccid_vWpSQJSz*mid_6D2D34DDA3F04CE3C814637ACBFF850188969934*simid_608025616224682672",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "6D2D34DDA3F04CE3C814637ACBFF850188969934", "accentColor": "B11A26"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=968290A392BD3D812ECDDCCFFE214A1560CD4131&simid=607996388615392238",
-        "webSearchUrlPingSuffix": "DevEx,5061.1", "name": "Eisenhower Executive Office
-        Building | whitehouse.gov", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.EOqp8i1H4pOPfksRI1MWYgHaEL&pid=Api",
-        "datePublished": "2017-12-11T02:08:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/images\/1600\/page_masthead\/1600_eeob.jpg",
-        "contentUrlPingSuffix": "DevEx,5063.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/1600\/eeob",
-        "hostPageUrlPingSuffix": "DevEx,5062.1", "contentSize": "283600 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/1600\/eeob",
-        "width": 800, "height": 452, "thumbnail": {"width": 474, "height": 267}, "imageInsightsToken":
-        "ccid_EOqp8i1H*mid_968290A392BD3D812ECDDCCFFE214A1560CD4131*simid_607996388615392238",
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=53513FFBBEDEC4707838978770512553DEFFAA2A&simid=608050067512495459",
+        "webSearchUrlPingSuffix": "DevEx,5031.1", "name": "Home Page [www.whitehouse.gov]",
+        "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.LwxG4x0F5CfYqbsImTJdVwHaD2&pid=Api",
+        "datePublished": "2018-07-20T07:55:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2017\/11\/WhiteHouse-Faded-1387x720.jpg",
+        "contentUrlPingSuffix": "DevEx,5033.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/",
+        "hostPageUrlPingSuffix": "DevEx,5032.1", "contentSize": "105313 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov", "width": 1387,
+        "height": 720, "thumbnail": {"width": 474, "height": 246}, "imageInsightsToken":
+        "ccid_LwxG4x0F*mid_53513FFBBEDEC4707838978770512553DEFFAA2A*simid_608050067512495459",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "968290A392BD3D812ECDDCCFFE214A1560CD4131", "accentColor": "6F6B45"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=53513FFBBEDEC47078383EE286B1B6FA20AFD321&simid=608015746065895116",
-        "webSearchUrlPingSuffix": "DevEx,5067.1", "name": "The White House | whitehouse.gov",
-        "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.2Dlfjd8npEs0tH8GAA2vkAHaD5&pid=Api",
-        "datePublished": "2017-01-13T19:42:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/images\/fb_share_postcard.jpg",
-        "contentUrlPingSuffix": "DevEx,5069.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/",
-        "hostPageUrlPingSuffix": "DevEx,5068.1", "contentSize": "102901 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov", "width": 1020,
-        "height": 536, "thumbnail": {"width": 474, "height": 249}, "imageInsightsToken":
-        "ccid_2Dlfjd8n*mid_53513FFBBEDEC47078383EE286B1B6FA20AFD321*simid_608015746065895116",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "53513FFBBEDEC47078383EE286B1B6FA20AFD321", "accentColor": "00244F"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=90B43EE96B96C9044E5EC22C7DE7481FA28D8B18&simid=608031126289711926",
-        "webSearchUrlPingSuffix": "DevEx,5073.1", "name": "The White House Building
-        | The White House", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.TlRJvQlnk_hJVLgHxQU4DAHaCx&pid=Api",
-        "datePublished": "2017-12-27T18:17:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2017\/12\/35492069145_7d58e21088_k-1-1920x720.jpg",
-        "contentUrlPingSuffix": "DevEx,5075.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/about\/inside-white-house",
-        "hostPageUrlPingSuffix": "DevEx,5074.1", "contentSize": "365382 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/about\/inside-white-house",
+        "imageId": "53513FFBBEDEC4707838978770512553DEFFAA2A", "accentColor": "666A61"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=BFB212A6F8EBFC9ABB37C22C7DE7481FA28D8B18&simid=608040648663565342",
+        "webSearchUrlPingSuffix": "DevEx,5037.1", "name": "The White House Building",
+        "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.TlRJvQlnk_hJVLgHxQU4DAHaCx&pid=Api",
+        "datePublished": "2017-12-14T22:04:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2017\/12\/35492069145_7d58e21088_k-1-1920x720.jpg",
+        "contentUrlPingSuffix": "DevEx,5039.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/the-white-house\/",
+        "hostPageUrlPingSuffix": "DevEx,5038.1", "contentSize": "365382 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/the-white-house",
         "width": 1920, "height": 720, "thumbnail": {"width": 474, "height": 177},
-        "imageInsightsToken": "ccid_TlRJvQln*mid_90B43EE96B96C9044E5EC22C7DE7481FA28D8B18*simid_608031126289711926",
-        "imageId": "90B43EE96B96C9044E5EC22C7DE7481FA28D8B18", "accentColor": "7B5A50"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=58E409E7EDE9EDF5D2D3C73094626C2BF788103B&simid=607991548165360345",
-        "webSearchUrlPingSuffix": "DevEx,5079.1", "name": "The Weight of One Mission:
-        Recounting the Death of Usama ...", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.OHWaZUuG1JetrjgLYwFI6QHaE8&pid=Api",
-        "datePublished": "2016-05-02T18:37:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/images\/Blog\/ubl_7.jpeg",
-        "contentUrlPingSuffix": "DevEx,5081.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/blog\/2016\/05\/02\/weight-one-mission-recounting-death-usama-bin-laden-five-years-later",
-        "hostPageUrlPingSuffix": "DevEx,5080.1", "contentSize": "233891 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/blog\/2016\/05\/02\/weight-one-mission...",
-        "width": 1500, "height": 1000, "thumbnail": {"width": 474, "height": 316},
-        "imageInsightsToken": "ccid_OHWaZUuG*mid_58E409E7EDE9EDF5D2D3C73094626C2BF788103B*simid_607991548165360345",
+        "imageInsightsToken": "ccid_TlRJvQln*mid_BFB212A6F8EBFC9ABB37C22C7DE7481FA28D8B18*simid_608040648663565342",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "58E409E7EDE9EDF5D2D3C73094626C2BF788103B", "accentColor": "68412C"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=27C02B7CBE052B093BAFA195C0AD28B51217D249&simid=608046678345843554",
-        "webSearchUrlPingSuffix": "DevEx,5085.1", "name": "1600 Daily: Everything
-        White House for 8\/4\/17 | whitehouse.gov", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.JLtAN8h3f2CYh4MO8d0HcQEyDM&pid=Api",
-        "datePublished": "2017-08-05T00:37:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/images\/P20170803SC-0640.jpg",
-        "contentUrlPingSuffix": "DevEx,5087.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/1600daily",
-        "hostPageUrlPingSuffix": "DevEx,5086.1", "contentSize": "789620 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/1600daily", "width":
-        1200, "height": 800, "thumbnail": {"width": 306, "height": 204}, "imageInsightsToken":
-        "ccid_JLtAN8h3*mid_27C02B7CBE052B093BAFA195C0AD28B51217D249*simid_608046678345843554",
+        "imageId": "BFB212A6F8EBFC9ABB37C22C7DE7481FA28D8B18", "accentColor": "7B5A50"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=7EE781591D182839A8EF97CFDAFF8568F62AD57C&simid=607998850023558671",
+        "webSearchUrlPingSuffix": "DevEx,5043.1", "name": "In Photos: Pope Francis
+        Visits the White House | whitehouse.gov", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.f1jG7noWwgjazXQ_lKinNgHaE7&pid=Api",
+        "datePublished": "2015-09-25T16:39:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/images\/email\/PopeFrancisPhoto25Sep23.jpeg",
+        "contentUrlPingSuffix": "DevEx,5045.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/blog\/2015\/09\/25\/photos-pope-francis-visits-white-house",
+        "hostPageUrlPingSuffix": "DevEx,5044.1", "contentSize": "884856 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/blog\/2015\/09\/25\/photos-pope-francis...",
+        "width": 2000, "height": 1333, "thumbnail": {"width": 474, "height": 315},
+        "imageInsightsToken": "ccid_f1jG7noW*mid_7EE781591D182839A8EF97CFDAFF8568F62AD57C*simid_607998850023558671",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "27C02B7CBE052B093BAFA195C0AD28B51217D249", "accentColor": "887943"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=C842520FBAAE820695E2E9DF39D29FAA113C1E30&simid=608052360587709270",
-        "webSearchUrlPingSuffix": "DevEx,5091.1", "name": "President Trump Hosts Faith
-        Leaders at the White House ...", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.ciJSod2ej_4Kzo0FrOhIkQHaE7&pid=Api",
-        "datePublished": "2017-05-04T19:20:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/images\/P20170503SC-1494.jpg",
-        "contentUrlPingSuffix": "DevEx,5093.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/blog\/2017\/05\/04\/president-trump-hosts-faith-leaders-white-house",
-        "hostPageUrlPingSuffix": "DevEx,5092.1", "contentSize": "2283410 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/blog\/2017\/05\/04\/president-trump-hosts...",
-        "width": 2048, "height": 1365, "thumbnail": {"width": 474, "height": 315},
-        "imageInsightsToken": "ccid_ciJSod2e*mid_C842520FBAAE820695E2E9DF39D29FAA113C1E30*simid_608052360587709270",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "C842520FBAAE820695E2E9DF39D29FAA113C1E30", "accentColor": "214B6B"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=9754342AD990D88A52DB2F8C84771B188417B21E&simid=608026315900979604",
-        "webSearchUrlPingSuffix": "DevEx,5097.1", "name": "Announcing the First White
-        House Maker Faire | The White House", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.jQN7NfkBvH25YPzana8DVQHaFj&pid=Api",
-        "datePublished": "2014-02-02T23:58:00.0000000Z", "contentUrl": "http:\/\/img.youtube.com\/vi\/e53UPiFDH0k\/0.jpg",
-        "contentUrlPingSuffix": "DevEx,5099.1", "hostPageUrl": "http:\/\/whitehouse.gov\/blog\/2014\/02\/03\/announcing-first-white-house-maker-faire",
-        "hostPageUrlPingSuffix": "DevEx,5098.1", "contentSize": "36776 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "whitehouse.gov\/blog\/2014\/02\/03\/announcing-first-white-house-maker...",
-        "width": 480, "height": 360, "thumbnail": {"width": 474, "height": 355}, "imageInsightsToken":
-        "ccid_jQN7NfkB*mid_9754342AD990D88A52DB2F8C84771B188417B21E*simid_608026315900979604",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "9754342AD990D88A52DB2F8C84771B188417B21E", "accentColor": "A84D23"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=4990F23A226D3FBFB11D2C1DF3FC57EDE1DF8FE9&simid=607987377787307846",
-        "webSearchUrlPingSuffix": "DevEx,5103.1", "name": "Make an Impact: Become
-        a White House Fellow | whitehouse.gov", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.Ap4-DQyxINYkoG3qK-DZ1AHaE7&pid=Api",
-        "datePublished": "2015-11-04T17:09:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/images\/Blog\/POTUS%202014-2015.jpeg",
-        "contentUrlPingSuffix": "DevEx,5105.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/blog\/2015\/11\/04\/make-and-impact-become-white-house-fellow",
-        "hostPageUrlPingSuffix": "DevEx,5104.1", "contentSize": "2383107 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/blog\/2015\/11\/04\/make-and-impact-become...",
-        "width": 2240, "height": 1493, "thumbnail": {"width": 474, "height": 315},
-        "imageInsightsToken": "ccid_Ap4+DQyx*mid_4990F23A226D3FBFB11D2C1DF3FC57EDE1DF8FE9*simid_607987377787307846",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "4990F23A226D3FBFB11D2C1DF3FC57EDE1DF8FE9", "accentColor": "9D452E"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=53513FFBBEDEC47078388E073E9A0C1B9019C50E&simid=608026826999203532",
-        "webSearchUrlPingSuffix": "DevEx,5109.1", "name": "Home Page | The White House",
+        "imageId": "7EE781591D182839A8EF97CFDAFF8568F62AD57C", "accentColor": "30629B"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=53513FFBBEDEC47078388E073E9A0C1B9019C50E&simid=608026827391830581",
+        "webSearchUrlPingSuffix": "DevEx,5049.1", "name": "Home Page | The White House",
         "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.N9K85hTftxW0ZuFp1J6lKAHaHa&pid=Api",
         "datePublished": "2017-12-16T22:12:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2017\/12\/cropped-WH.gov_favicon_512X512.png",
-        "contentUrlPingSuffix": "DevEx,5111.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/",
-        "hostPageUrlPingSuffix": "DevEx,5110.1", "contentSize": "10750 B", "encodingFormat":
+        "contentUrlPingSuffix": "DevEx,5051.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/",
+        "hostPageUrlPingSuffix": "DevEx,5050.1", "contentSize": "10750 B", "encodingFormat":
         "png", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov", "width": 512,
         "height": 512, "thumbnail": {"width": 474, "height": 474}, "imageInsightsToken":
-        "ccid_N9K85hTf*mid_53513FFBBEDEC47078388E073E9A0C1B9019C50E*simid_608026826999203532",
+        "ccid_N9K85hTf*mid_53513FFBBEDEC47078388E073E9A0C1B9019C50E*simid_608026827391830581",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "53513FFBBEDEC47078388E073E9A0C1B9019C50E", "accentColor": "26303E"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=A722F730519F9D67A9E2402F9448D972C3DAFDAF&simid=608008350092428066",
-        "webSearchUrlPingSuffix": "DevEx,5115.1", "name": "Made in America Product
-        Showcase | The White House", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.CqNyp0QiUqzxKr0y_fGIwgHaE8&pid=Api",
-        "datePublished": "2017-07-18T12:00:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/images\/35603026600_e4c51fc9a0_o.png",
-        "contentUrlPingSuffix": "DevEx,5117.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/blog\/2017\/07\/18\/made-america-product-showcase",
-        "hostPageUrlPingSuffix": "DevEx,5116.1", "contentSize": "4817251 B", "encodingFormat":
-        "png", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/blog\/2017\/07\/18\/made-america-product...",
-        "width": 2048, "height": 1366, "thumbnail": {"width": 474, "height": 316},
-        "imageInsightsToken": "ccid_CqNyp0Qi*mid_A722F730519F9D67A9E2402F9448D972C3DAFDAF*simid_608008350092428066",
-        "imageId": "A722F730519F9D67A9E2402F9448D972C3DAFDAF", "accentColor": "A77A24"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=DEEDBAB2FAD7C46ED5E8E415D2075FC3C91E75C1&simid=608051677724868718",
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=6D2D34DDA3F04CE3C814DF518B1B7F1320226FF0&simid=608022983456981796",
+        "webSearchUrlPingSuffix": "DevEx,5055.1", "name": "About The White House",
+        "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.LWQexhMC5cbyU43uA7UtRwHaEK&pid=Api",
+        "datePublished": "2017-12-14T22:10:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2017\/12\/IMG_5365-820x461.jpg",
+        "contentUrlPingSuffix": "DevEx,5057.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/",
+        "hostPageUrlPingSuffix": "DevEx,5056.1", "contentSize": "76171 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house",
+        "width": 820, "height": 461, "thumbnail": {"width": 474, "height": 266}, "imageInsightsToken":
+        "ccid_LWQexhMC*mid_6D2D34DDA3F04CE3C814DF518B1B7F1320226FF0*simid_608022983456981796",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "6D2D34DDA3F04CE3C814DF518B1B7F1320226FF0", "accentColor": "486337"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=7EE781591D182839A8EF75D8B18B37AF2D8C3AB1&simid=608034622783295223",
+        "webSearchUrlPingSuffix": "DevEx,5061.1", "name": "In Photos: Pope Francis
+        Visits the White House | whitehouse.gov", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.1GxurjZWSH_u2-OG_NjRHgHaE7&pid=Api",
+        "datePublished": "2015-09-25T16:39:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/images\/email\/PopeFrancisPhoto19Sep23.jpeg",
+        "contentUrlPingSuffix": "DevEx,5063.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/blog\/2015\/09\/25\/photos-pope-francis-visits-white-house",
+        "hostPageUrlPingSuffix": "DevEx,5062.1", "contentSize": "790323 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/blog\/2015\/09\/25\/photos-pope-francis...",
+        "width": 2000, "height": 1333, "thumbnail": {"width": 474, "height": 315},
+        "imageInsightsToken": "ccid_1GxurjZW*mid_7EE781591D182839A8EF75D8B18B37AF2D8C3AB1*simid_608034622783295223",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "7EE781591D182839A8EF75D8B18B37AF2D8C3AB1", "accentColor": "286097"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=E0D364ECB84A080ED578357F7335746961EAED39&simid=608046652985312319",
+        "webSearchUrlPingSuffix": "DevEx,5067.1", "name": "Photos of the Week: Christmas
+        at the White House", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.4-VJLpcY4fHo9-xPAl_UgAHaE8&pid=Api",
+        "datePublished": "2017-12-01T12:00:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2017\/12\/f20171120kd-0047_original-1-820x547.jpg",
+        "contentUrlPingSuffix": "DevEx,5069.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/briefings-statements\/photos-week-christmas-white-house\/",
+        "hostPageUrlPingSuffix": "DevEx,5068.1", "contentSize": "98292 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/briefings-statements\/photos-week...",
+        "width": 820, "height": 547, "thumbnail": {"width": 474, "height": 316}, "imageInsightsToken":
+        "ccid_4+VJLpcY*mid_E0D364ECB84A080ED578357F7335746961EAED39*simid_608046652985312319",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "E0D364ECB84A080ED578357F7335746961EAED39", "accentColor": "6F2D29"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=1F2F4C1E9DBEB6CDC5B816FAC683CB59B3988914&simid=608041645086870836",
+        "webSearchUrlPingSuffix": "DevEx,5073.1", "name": "Happy Halloween! Take a
+        Look Inside #HauntedWH | whitehouse.gov", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.IXTUCICTb3djax7fdBk5RgHaFS&pid=Api",
+        "datePublished": "2016-10-31T19:31:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/images\/WH%20Haunted%20Tour%203.jpg",
+        "contentUrlPingSuffix": "DevEx,5075.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/blog\/2016\/10\/31\/inside-hauntedwh",
+        "hostPageUrlPingSuffix": "DevEx,5074.1", "contentSize": "3216494 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/blog\/2016\/10\/31\/inside-hauntedwh",
+        "width": 2200, "height": 1571, "thumbnail": {"width": 474, "height": 338},
+        "imageInsightsToken": "ccid_IXTUCICT*mid_1F2F4C1E9DBEB6CDC5B816FAC683CB59B3988914*simid_608041645086870836",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "1F2F4C1E9DBEB6CDC5B816FAC683CB59B3988914", "accentColor": "937238"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=1A42C53E800BF3AEC458043CD688C2583048C33B&simid=608009024819169216",
+        "webSearchUrlPingSuffix": "DevEx,5079.1", "name": "President Trump Welcomes
+        the Chicago Cubs to the White House", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.dHYGb0P6mMBK6JLZOqfZjAHaE7&pid=Api",
+        "datePublished": "2018-07-06T22:23:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2017\/11\/CubsVisit1-1.jpg",
+        "contentUrlPingSuffix": "DevEx,5081.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/articles\/president-trump-welcomes-the-chicago-cubs-to-the-white-house\/",
+        "hostPageUrlPingSuffix": "DevEx,5080.1", "contentSize": "2879647 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/articles\/president-trump-welcomes-the...",
+        "width": 2400, "height": 1597, "thumbnail": {"width": 474, "height": 315},
+        "imageInsightsToken": "ccid_dHYGb0P6*mid_1A42C53E800BF3AEC458043CD688C2583048C33B*simid_608009024819169216",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "1A42C53E800BF3AEC458043CD688C2583048C33B", "accentColor": "B48218"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=C842520FBAAE820695E2E9DF39D29FAA113C1E30&simid=608052360980597644",
+        "webSearchUrlPingSuffix": "DevEx,5085.1", "name": "President Trump Hosts Faith
+        Leaders at the White House | whitehouse.gov", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.ciJSod2ej_4Kzo0FrOhIkQHaE7&pid=Api",
+        "datePublished": "2017-05-04T19:20:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/images\/P20170503SC-1494.jpg",
+        "contentUrlPingSuffix": "DevEx,5087.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/blog\/2017\/05\/04\/president-trump-hosts-faith-leaders-white-house",
+        "hostPageUrlPingSuffix": "DevEx,5086.1", "contentSize": "2283410 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/blog\/2017\/05\/04\/president-trump-hosts...",
+        "width": 2048, "height": 1365, "thumbnail": {"width": 474, "height": 315},
+        "imageInsightsToken": "ccid_ciJSod2e*mid_C842520FBAAE820695E2E9DF39D29FAA113C1E30*simid_608052360980597644",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "C842520FBAAE820695E2E9DF39D29FAA113C1E30", "accentColor": "214B6B"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=FEE2750D3D3F09848A4A004DE14B13CF90D86447&simid=608051772606908851",
+        "webSearchUrlPingSuffix": "DevEx,5091.1", "name": "Photos of the Week", "thumbnailUrl":
+        "https:\/\/tse4.mm.bing.net\/th?id=OIP.R3Il7X7d92P2q1T1waICqAHaE7&pid=Api",
+        "datePublished": "2018-02-16T12:00:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2018\/02\/flag.jpg",
+        "contentUrlPingSuffix": "DevEx,5093.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/briefings-statements\/photos-of-the-week-021618\/",
+        "hostPageUrlPingSuffix": "DevEx,5092.1", "contentSize": "646007 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/briefings-statements\/photos-of-the-week...",
+        "width": 2000, "height": 1333, "thumbnail": {"width": 474, "height": 315},
+        "imageInsightsToken": "ccid_R3Il7X7d*mid_FEE2750D3D3F09848A4A004DE14B13CF90D86447*simid_608051772606908851",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "FEE2750D3D3F09848A4A004DE14B13CF90D86447", "accentColor": "343124"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=B1970B8EC525467AFCF94D16A275449793812A74&simid=608037513325513078",
+        "webSearchUrlPingSuffix": "DevEx,5097.1", "name": "The White House Easter
+        Egg Roll", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.kRhcxef8k3DP99QCww8-fQHaE7&pid=Api",
+        "datePublished": "2018-08-12T21:18:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2018\/04\/EASTER01.jpg",
+        "contentUrlPingSuffix": "DevEx,5099.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/eastereggroll\/",
+        "hostPageUrlPingSuffix": "DevEx,5098.1", "contentSize": "120477 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/eastereggroll",
+        "width": 680, "height": 453, "thumbnail": {"width": 474, "height": 315}, "imageInsightsToken":
+        "ccid_kRhcxef8*mid_B1970B8EC525467AFCF94D16A275449793812A74*simid_608037513325513078",
+        "imageId": "B1970B8EC525467AFCF94D16A275449793812A74", "accentColor": "A8232B"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=7B30B873411AC4D2575BAAEBD854247404669EE1&simid=608038574175095816",
+        "webSearchUrlPingSuffix": "DevEx,5103.1", "name": "The Executive Branch |
+        whitehouse.gov", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.VtTAJ3NJvu3YE83YY_yfawHaDo&pid=Api",
+        "datePublished": "2015-04-03T23:46:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/images\/1600\/page_masthead\/1600_executive_branch.jpg",
+        "contentUrlPingSuffix": "DevEx,5105.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/1600\/executive-branch",
+        "hostPageUrlPingSuffix": "DevEx,5104.1", "contentSize": "213283 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/1600\/executive-branch",
+        "width": 800, "height": 393, "thumbnail": {"width": 474, "height": 232}, "imageInsightsToken":
+        "ccid_VtTAJ3NJ*mid_7B30B873411AC4D2575BAAEBD854247404669EE1*simid_608038574175095816",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "7B30B873411AC4D2575BAAEBD854247404669EE1", "accentColor": "2665A5"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=53513FFBBEDEC4707838F708FB1688B050A7EF3B&simid=608020410736643459",
+        "webSearchUrlPingSuffix": "DevEx,5109.1", "name": "Home Page [www.whitehouse.gov]",
+        "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.3HcClypEpR_cH51DBFdp7QAAAA&pid=Api",
+        "datePublished": "2018-07-20T07:55:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2017\/11\/bitmap-1.jpg",
+        "contentUrlPingSuffix": "DevEx,5111.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/",
+        "hostPageUrlPingSuffix": "DevEx,5110.1", "contentSize": "58394 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov", "width": 264,
+        "height": 177, "thumbnail": {"width": 264, "height": 177}, "imageInsightsToken":
+        "ccid_3HcClypE*mid_53513FFBBEDEC4707838F708FB1688B050A7EF3B*simid_608020410736643459",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "53513FFBBEDEC4707838F708FB1688B050A7EF3B", "accentColor": "37485F"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=53513FFBBEDEC47078383EE286B1B6FA20AFD321&simid=608015746462974298",
+        "webSearchUrlPingSuffix": "DevEx,5115.1", "name": "The White House | whitehouse.gov",
+        "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.2Dlfjd8npEs0tH8GAA2vkAHaD5&pid=Api",
+        "datePublished": "2017-01-13T19:42:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/images\/fb_share_postcard.jpg",
+        "contentUrlPingSuffix": "DevEx,5117.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/",
+        "hostPageUrlPingSuffix": "DevEx,5116.1", "contentSize": "102901 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov", "width": 1020,
+        "height": 536, "thumbnail": {"width": 474, "height": 249}, "imageInsightsToken":
+        "ccid_2Dlfjd8n*mid_53513FFBBEDEC47078383EE286B1B6FA20AFD321*simid_608015746462974298",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "53513FFBBEDEC47078383EE286B1B6FA20AFD321", "accentColor": "00244F"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=DEEDBAB2FAD7C46ED5E8E415D2075FC3C91E75C1&simid=608051678126539544",
         "webSearchUrlPingSuffix": "DevEx,5121.1", "name": "Christmas at the White
-        House 2017 | The White House", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.0HYyu3byiia_NKonufpYxAHaId&pid=Api",
+        House 2017", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.0HYyu3byiia_NKonufpYxAHaId&pid=Api",
         "datePublished": "2017-12-12T12:00:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2017\/12\/WH-tourbook-2017-for-web-1.jpg",
         "contentUrlPingSuffix": "DevEx,5123.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/articles\/christmas-white-house-2017\/",
         "hostPageUrlPingSuffix": "DevEx,5122.1", "contentSize": "233311 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/articles\/christmas-white-house-2017",
         "width": 2100, "height": 2400, "thumbnail": {"width": 474, "height": 541},
-        "imageInsightsToken": "ccid_0HYyu3by*mid_DEEDBAB2FAD7C46ED5E8E415D2075FC3C91E75C1*simid_608051677724868718",
+        "imageInsightsToken": "ccid_0HYyu3by*mid_DEEDBAB2FAD7C46ED5E8E415D2075FC3C91E75C1*simid_608051678126539544",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "DEEDBAB2FAD7C46ED5E8E415D2075FC3C91E75C1", "accentColor": "6C3B24"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=7EE781591D182839A8EF75D8B18B37AF2D8C3AB1&simid=608034622406592880",
-        "webSearchUrlPingSuffix": "DevEx,5127.1", "name": "In Photos: Pope Francis
-        Visits the White House ...", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.1GxurjZWSH_u2-OG_NjRHgHaE7&pid=Api",
-        "datePublished": "2015-09-25T16:39:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/images\/email\/PopeFrancisPhoto19Sep23.jpeg",
-        "contentUrlPingSuffix": "DevEx,5129.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/blog\/2015\/09\/25\/photos-pope-francis-visits-white-house",
-        "hostPageUrlPingSuffix": "DevEx,5128.1", "contentSize": "790323 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/blog\/2015\/09\/25\/photos-pope-francis...",
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=B1970B8EC525467AFCF96125A4191A2D33A25F65&simid=608011460056648730",
+        "webSearchUrlPingSuffix": "DevEx,5127.1", "name": "The White House Easter
+        Egg Roll", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.O59YBe2g__AwfExPQJwG1QHaFC&pid=Api",
+        "datePublished": "2018-02-07T19:15:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2018\/02\/Easter-Egg-Roll-10-HR2.jpg",
+        "contentUrlPingSuffix": "DevEx,5129.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/eastereggroll\/",
+        "hostPageUrlPingSuffix": "DevEx,5128.1", "contentSize": "188543 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/eastereggroll",
+        "width": 1040, "height": 708, "thumbnail": {"width": 474, "height": 322},
+        "imageInsightsToken": "ccid_O59YBe2g*mid_B1970B8EC525467AFCF96125A4191A2D33A25F65*simid_608011460056648730",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "B1970B8EC525467AFCF96125A4191A2D33A25F65", "accentColor": "6A3E35"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=1A42C53E800BF3AEC458E792EA304CDBC25A7426&simid=608008303257062305",
+        "webSearchUrlPingSuffix": "DevEx,5133.1", "name": "President Trump Welcomes
+        the Chicago Cubs to the White House", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.2KJxQuFUJRVkbeacgQ5plQHaE7&pid=Api",
+        "datePublished": "2018-05-24T03:04:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2017\/11\/CubsVisit2.jpg",
+        "contentUrlPingSuffix": "DevEx,5135.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/articles\/president-trump-welcomes-the-chicago-cubs-to-the-white-house\/",
+        "hostPageUrlPingSuffix": "DevEx,5134.1", "contentSize": "2985744 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/articles\/president-trump-welcomes-the...",
+        "width": 2400, "height": 1597, "thumbnail": {"width": 474, "height": 315},
+        "imageInsightsToken": "ccid_2KJxQuFU*mid_1A42C53E800BF3AEC458E792EA304CDBC25A7426*simid_608008303257062305",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "1A42C53E800BF3AEC458E792EA304CDBC25A7426", "accentColor": "B48217"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=1F2F4C1E9DBEB6CDC5B888A9FFD9C6DEE39EDD4D&simid=608000585172650961",
+        "webSearchUrlPingSuffix": "DevEx,5139.1", "name": "Happy Halloween! Take a
+        Look Inside #HauntedWH | whitehouse.gov", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.HxtU_qfXrOC8vAjGa1Lo2gHaE7&pid=Api",
+        "datePublished": "2016-10-31T18:09:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/images\/WH%20Haunted%20Tour%202.jpg",
+        "contentUrlPingSuffix": "DevEx,5141.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/blog\/2016\/10\/31\/inside-hauntedwh",
+        "hostPageUrlPingSuffix": "DevEx,5140.1", "contentSize": "2223203 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/blog\/2016\/10\/31\/inside-hauntedwh",
         "width": 2000, "height": 1333, "thumbnail": {"width": 474, "height": 315},
-        "imageInsightsToken": "ccid_1GxurjZW*mid_7EE781591D182839A8EF75D8B18B37AF2D8C3AB1*simid_608034622406592880",
+        "imageInsightsToken": "ccid_HxtU\/qfX*mid_1F2F4C1E9DBEB6CDC5B888A9FFD9C6DEE39EDD4D*simid_608000585172650961",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "7EE781591D182839A8EF75D8B18B37AF2D8C3AB1", "accentColor": "286097"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=7EE781591D182839A8EF97CFDAFF8568F62AD57C&simid=607998849604715342",
-        "webSearchUrlPingSuffix": "DevEx,5133.1", "name": "In Photos: Pope Francis
-        Visits the White House ...", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.f1jG7noWwgjazXQ_lKinNgHaE7&pid=Api",
-        "datePublished": "2015-09-25T16:39:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/images\/email\/PopeFrancisPhoto25Sep23.jpeg",
-        "contentUrlPingSuffix": "DevEx,5135.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/blog\/2015\/09\/25\/photos-pope-francis-visits-white-house",
-        "hostPageUrlPingSuffix": "DevEx,5134.1", "contentSize": "884856 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/blog\/2015\/09\/25\/photos-pope-francis...",
-        "width": 2000, "height": 1333, "thumbnail": {"width": 474, "height": 315},
-        "imageInsightsToken": "ccid_f1jG7noW*mid_7EE781591D182839A8EF97CFDAFF8568F62AD57C*simid_607998849604715342",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "7EE781591D182839A8EF97CFDAFF8568F62AD57C", "accentColor": "30629B"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=80655116B6CC10CCB7265FC74E29AB3E1848964A&simid=607994039242589220",
-        "webSearchUrlPingSuffix": "DevEx,5139.1", "name": "Announcing the 2016 White
-        House Science Fair | whitehouse.gov", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.fYga2B8SwpLts22_mgG4bQHaE8&pid=Api",
-        "datePublished": "2016-03-30T12:00:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/images\/2015%20Science%20Fair%20photo.jpg",
-        "contentUrlPingSuffix": "DevEx,5141.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/blog\/2016\/03\/30\/announcing-2016-white-house-science-fair",
-        "hostPageUrlPingSuffix": "DevEx,5140.1", "contentSize": "381117 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/blog\/2016\/03\/30\/announcing-2016-white...",
-        "width": 1500, "height": 1000, "thumbnail": {"width": 474, "height": 316},
-        "imageInsightsToken": "ccid_fYga2B8S*mid_80655116B6CC10CCB7265FC74E29AB3E1848964A*simid_607994039242589220",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "80655116B6CC10CCB7265FC74E29AB3E1848964A", "accentColor": "BC870F"}],
+        "imageId": "1F2F4C1E9DBEB6CDC5B888A9FFD9C6DEE39EDD4D", "accentColor": "254B75"}],
         "queryExpansions": [{"text": "White House Roof", "displayText": "Roof", "webSearchUrl":
         "https:\/\/www.bing.com\/images\/search?q=White+House+Roof&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Roof%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
         "webSearchUrlPingSuffix": "DevEx,5192.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=White+House+Roof&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Roof%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
@@ -483,5 +487,5 @@ http_interactions:
         "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Library+of+Congress&pid=Api&mkt=en-US&adlt=moderate&t=1"}}]},
         {"pivot": "(site:whitehouse.gov)", "suggestions": []}]}'
     http_version: 
-  recorded_at: Thu, 22 Feb 2018 07:15:35 GMT
+  recorded_at: Mon, 27 Aug 2018 01:41:46 GMT
 recorded_with: VCR 4.0.0
