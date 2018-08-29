@@ -94,6 +94,7 @@ jobs:
 
   rspec:
     working_directory: ~/search-gov
+    parallelism: 2
     docker:
       - image: circleci/ruby:2.3.5-browsers
         environment:
@@ -148,12 +149,12 @@ jobs:
                               --format progress \
                               $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
 
-            ./cc-test-reporter format-coverage --output coverage/codeclimate.rspec.json
+            ./cc-test-reporter format-coverage --output coverage/codeclimate.rspec.$CIRCLE_NODE_INDEX.json
 
       - persist_to_workspace:
           root: ~/search-gov/coverage
           paths:
-          - codeclimate.rspec.json
+          - codeclimate.rspec.*.json
 
       # collect reports
       - store_test_results:
@@ -257,7 +258,7 @@ jobs:
       - run:
           name: Report coverage to Code Climate
           command: |
-            ./cc-test-reporter sum-coverage --parts 7 coverage/codeclimate.*.json --output coverage/codeclimate_full_report.json
+            ./cc-test-reporter sum-coverage --parts 8 coverage/codeclimate.*.json --output coverage/codeclimate_full_report.json
             ./cc-test-reporter upload-coverage --input coverage/codeclimate_full_report.json
 
             ruby scripts/check_coverage.rb ${PWD}/coverage/codeclimate_full_report.json
