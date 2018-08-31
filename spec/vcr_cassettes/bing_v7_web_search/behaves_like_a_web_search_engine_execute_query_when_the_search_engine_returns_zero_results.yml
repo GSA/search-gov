@@ -1,0 +1,67 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=%2765d86996b6eceb05d2272aea9cadd10d%27&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Fri, 31 Aug 2018 20:57:12 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - DA3291584EE84D6B91DDCB2D286D512B
+      Bingapis-Sessionid:
+      - C81377051C76424797777CE651772AAF
+      X-Msedge-Clientid:
+      - 392EFCCB3E886B5E1437F0973FE46A87
+      X-Msapi-Userstate:
+      - bc92
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=133,MSDatacenter=BN2
+      X-Msedge-Ref:
+      - 'Ref A: DA3291584EE84D6B91DDCB2D286D512B Ref B: SN1EDGE1007 Ref C: 2018-08-31T20:58:13Z'
+      Apim-Request-Id:
+      - 226e04af-f6ef-4fcf-8435-aafd882a80b8
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Fri, 31 Aug 2018 20:58:12 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "''65d86996b6eceb05d2272aea9cadd10d''"},
+        "rankingResponse": {}}'
+    http_version: 
+  recorded_at: Fri, 31 Aug 2018 20:58:12 GMT
+recorded_with: VCR 4.0.0

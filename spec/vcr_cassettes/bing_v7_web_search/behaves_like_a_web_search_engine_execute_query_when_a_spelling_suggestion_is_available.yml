@@ -1,0 +1,223 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=sailing%20dingies&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Fri, 31 Aug 2018 20:57:13 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 158025D320AC4B7FA76AEC8B3CA4B174
+      Bingapis-Sessionid:
+      - E7863553C1F74DF2A2BBFF305500D372
+      X-Msedge-Clientid:
+      - 0BE3B47A8B986A9C2B34B8268AF46B8E
+      X-Msapi-Userstate:
+      - b4ad
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=228,MSDatacenter=BN2
+      X-Msedge-Ref:
+      - 'Ref A: 158025D320AC4B7FA76AEC8B3CA4B174 Ref B: SN1EDGE1022 Ref C: 2018-08-31T20:58:13Z'
+      Apim-Request-Id:
+      - 01e16029-3ee7-483f-b5b4-43507112dc16
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Fri, 31 Aug 2018 20:58:13 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "sailing
+        dingies", "alteredQuery": "sailing dinghies", "alterationDisplayQuery": "sailing
+        dinghies", "alterationOverrideQuery": "+sailing dingies", "adultIntent": false},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=sailing+dingies",
+        "totalEstimatedMatches": 8130000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Dinghy sailing - Wikipedia", "url": "https:\/\/en.wikipedia.org\/wiki\/Dinghy_sailing",
+        "about": [{"name": "Dinghy sailing"}, {"name": "Dinghy sailing"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/en.wikipedia.org\/wiki\/Dinghy_sailing", "snippet":
+        "Dinghy sailing is the activity of sailing small boats by using five essential
+        controls: the sails; the foils (i.e. the daggerboard or centreboard and rudder
+        and ...", "dateLastCrawled": "2018-08-20T13:53:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Best Dinghy | Sailing World", "url": "https:\/\/www.sailingworld.com\/best-dinghy-melges-14",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sailingworld.com\/best-dinghy-melges-14",
+        "snippet": "The Melges 14 delivers on a quick and modern singlehander and
+        earns its stripes as 2016''s Best Dinghy.", "dateLastCrawled": "2018-08-23T21:49:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "25 best beginner sailing dinghies - boats.com", "url": "https:\/\/uk.boats.com\/boat-buyers-guide\/25-best-beginner-sailing-dinghies\/",
+        "about": [{"name": "Dinghy sailing"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/uk.boats.com\/...\/25-best-beginner-sailing-dinghies", "snippet":
+        "There is a lot of choice on the dinghy sailing market, so which is the best
+        sailing dinghy for beginners? Paula Irish reviews the market.", "dateLastCrawled":
+        "2018-08-23T23:25:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3", "name":
+        "Sailing Dinghy | Portland Pudgy", "url": "http:\/\/www.portlandpudgy.com\/sailing-dinghy\/",
+        "about": [{"name": "Dinghy sailing"}], "isFamilyFriendly": true, "displayUrl":
+        "www.portlandpudgy.com\/sailing-dinghy", "snippet": "Portland Pudgy Sailing
+        Dinghy The sail kit makes your Portland Pudgy a fun, safe sailing dinghy.
+        It also makes it a proactive self-rescue boat.", "dateLastCrawled": "2018-08-19T13:56:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Trinka-The Best Rowing\/Sailing Dinghy in the World.", "url": "http:\/\/www.trinka.com\/",
+        "about": [{"name": "Dinghy sailing"}], "isFamilyFriendly": true, "displayUrl":
+        "www.trinka.com", "snippet": "Trinka-The best rowing dinghy and sailing yacht
+        dinghy in the world.", "dateLastCrawled": "2018-08-26T12:44:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Sailing dinghy, Navigation tender - All boating and marine ...",
+        "url": "http:\/\/www.nauticexpo.com\/boat-manufacturer\/sailing-dinghy-1760.html",
+        "about": [{"name": "Dinghy sailing"}], "isFamilyFriendly": true, "displayUrl":
+        "www.nauticexpo.com\/boat-manufacturer\/sailing-dinghy-1760.html", "snippet":
+        "Find your sailing dinghy easily amongst the 178 products from the leading
+        brands (Walker Bay, Laser Performance, ...) on NauticExpo, the boating and
+        maritime industry specialist for your professional purchases.", "dateLastCrawled":
+        "2018-08-20T13:36:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6", "name":
+        "Dinghy | Discover Boating", "url": "https:\/\/www.discoverboating.com\/buying\/boat\/dinghies",
+        "about": [{"name": "Dinghy"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.discoverboating.com\/buying\/boat\/dinghies",
+        "snippet": "Dinghies come in a wide variety of types, ... A sail-equipped
+        dinghy is also a great first boat for introducing children to sailing. Which
+        Engine is Right For Your Boat.", "dateLastCrawled": "2018-08-23T10:19:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Sailing Dinghies for sale, used yachts, new sailing dinghy ...",
+        "url": "http:\/\/sailingdinghies.apolloduck.com\/", "about": [{"name": "Dinghy
+        sailing"}], "isFamilyFriendly": true, "displayUrl": "sailingdinghies.apolloduck.com",
+        "snippet": "Sailing dinghies, sailing dinghies for sale, Apollo Duck new and
+        used dinghy sales. Sell your dinghy fast with a free photo advert. Find your
+        dinghy in our database of sailing dinghies, sailing boats, skiffs, beach cats,
+        keel boats, catamarans, one designs and racers.", "dateLastCrawled": "2018-08-25T01:21:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Sailing Dinghies that You Can Build! - CLC boats", "url": "https:\/\/www.clcboats.com\/shop\/wooden-sailboat-kits\/sailing-dinghies\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.clcboats.com\/shop\/wooden-sailboat-kits\/sailing-dinghies",
+        "snippet": "Tenderly 10-foot Dinghy. Here''s a beautiful 10-foot dinghy or
+        daysailer that slots between our 7''9\" Eastport Pram and the 11''7\" Passagemaker
+        Dinghy.", "dateLastCrawled": "2018-08-18T15:04:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Dinghy - Wikipedia", "url": "https:\/\/en.wikipedia.org\/wiki\/Dingy",
+        "about": [{"name": "Dinghy"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/en.wikipedia.org\/wiki\/Dingy",
+        "snippet": "A typical sailing rig for a dinghy is a gunter with a two-piece
+        folding mast stepped through a thwart and resting on the keel.", "dateLastCrawled":
+        "2018-08-20T02:08:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10", "name":
+        "Gig Harbor Boat Works | Rowing and Sailing Dinghies ...", "url": "http:\/\/www.ghboats.com\/",
+        "about": [{"name": "Gig Harbor Boat Works"}, {"name": "Whitehall rowboat"}],
+        "isFamilyFriendly": true, "displayUrl": "www.ghboats.com", "snippet": "Gig
+        Harbor Boat Works is the builder of a unique line of custom small boats for
+        rowing and sailing. Our boats are modern reproductions of traditional working
+        boats, used by people who earned their living using only wind and oar.", "dateLastCrawled":
+        "2018-08-21T12:19:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11", "name":
+        "Singlehanded sailing dinghies - boats.com", "url": "https:\/\/uk.boats.com\/reviews\/singlehanded-sailing-dinghies\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/uk.boats.com\/reviews\/singlehanded-sailing-dinghies",
+        "snippet": "We look at the world of singlehanded sailing dinghies in the UK,
+        whether you are looking for a dinghy that''s easy to sail or a real challenge
+        with a trapeze or even foils, this is the guide for you.", "dateLastCrawled":
+        "2018-08-18T14:02:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12", "name":
+        "Dinghy Sailing - Topic - YouTube", "url": "https:\/\/www.youtube.com\/channel\/UC1aj5lpRZiCfzVgmN95Pq3Q",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.youtube.com\/channel\/UC1aj5lpRZiCfzVgmN95Pq3Q",
+        "snippet": "Dinghy sailing is the activity of sailing small boats by using
+        five essential controls: the sails the foils the trim side-to-side balance
+        of the dinghy by hi...", "dateLastCrawled": "2018-08-14T15:21:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Sailing Chandlery (Previously Dinghy Rope) | Online ...", "url":
+        "https:\/\/www.sailingchandlery.com\/", "about": [{"name": "Sailing Chandlery
+        - Sporting Goods Store - Benfleet, Essex, United Kingdom  - 9 Reviews - 1,125
+        Photos"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sailingchandlery.com",
+        "snippet": "Sailing Chandlery (previously Dinghy Rope) is an online chandlery
+        and rope suppliers for marine and boat rope. We stock a variety of sailing
+        boat ropes from Kingfisher and Marlow at less than the RRP with fast delivery.
+        10% off your first order.", "dateLastCrawled": "2018-08-24T13:32:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "In Search of the Perfect Dinghy: - www.ruach.net: Dinghy ...", "url":
+        "http:\/\/www.ruach.net\/Dinghy.html", "about": [{"name": "Dinghy sailing"}],
+        "isFamilyFriendly": true, "displayUrl": "www.ruach.net\/Dinghy.html", "snippet":
+        "Another line of boats that are being brought into the US Market are made
+        by RS Sailing. In the US, probably the best known model is the RS Feva, a
+        12'' two-handed, rotomolded polyethelyne dinghy which is becoming increasingly
+        popular among youth sailing programs.", "dateLastCrawled": "2018-08-24T06:30:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Sailing dinghy, Navigation tender - All boating and marine ...",
+        "url": "http:\/\/www.nauticexpo.com\/boat-manufacturer\/sailing-dinghy-1760-_2.html",
+        "isFamilyFriendly": true, "displayUrl": "www.nauticexpo.com\/boat-manufacturer\/sailing-dinghy-1760-_2.html",
+        "snippet": "Find your sailing dinghy easily amongst the 178 products from
+        the leading brands on NauticExpo, the boating and maritime industry specialist
+        for your professional purchases.", "dateLastCrawled": "2018-08-16T01:08:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Sailing Dinghy | eBay", "url": "https:\/\/www.ebay.com\/bhp\/sailing-dinghy",
+        "about": [{"name": "Dinghy sailing"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.ebay.com\/bhp\/sailing-dinghy", "snippet": "Find great deals
+        on eBay for Sailing Dinghy in Paragliding Equipment and Accessories. Shop
+        with confidence.", "dateLastCrawled": "2018-08-22T17:37:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Sailing Dinghies - boats.com", "url": "https:\/\/www.boats.com\/explore\/boats\/dinghy-sail\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.boats.com\/explore\/boats\/dinghy-sail",
+        "snippet": "When it comes to sailing dinghies, there are two main types to
+        consider: singlehanded sailing dinghies or doublehanded sailing dinghies.
+        Discover more.", "dateLastCrawled": "2018-08-26T08:54:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Buy Sailing Dinghies & Boats | eBay", "url": "https:\/\/www.ebay.co.uk\/b\/Sailing-Dinghies-Boats\/98955\/bn_2318024",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ebay.co.uk\/b\/Sailing-Dinghies-Boats\/98955",
+        "snippet": "Shop from the world''s largest selection and best deals for Sailing
+        Dinghies & Boats. Shop with confidence on eBay!", "dateLastCrawled": "2018-08-23T11:48:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "sailing dinghy | eBay", "url": "https:\/\/www.ebay.com\/sch\/i.html?_nkw=sailing+dinghy",
+        "about": [{"name": "Dinghy sailing"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.ebay.com\/sch\/i.html?_nkw=sailing+dinghy", "snippet": "Find
+        great deals on eBay for sailing dinghy. Shop with confidence.", "dateLastCrawled":
+        "2018-08-19T19:11:00.0000000Z", "language": "en", "isNavigational": false}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Fri, 31 Aug 2018 20:58:13 GMT
+recorded_with: VCR 4.0.0

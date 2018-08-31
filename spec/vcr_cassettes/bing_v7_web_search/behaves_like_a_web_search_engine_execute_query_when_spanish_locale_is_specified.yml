@@ -1,0 +1,233 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=casa%20blanca&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Fri, 31 Aug 2018 20:57:10 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - A7CBE93A88264568A9DEDBD637C1A434
+      Bingapis-Sessionid:
+      - '029ABC26EEB3416AA30C746B9659DE62'
+      X-Msedge-Clientid:
+      - 22DFECE481516D8830D2E0B8805E6CB8
+      X-Msapi-Userstate:
+      - aee3
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=236,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: A7CBE93A88264568A9DEDBD637C1A434 Ref B: BAYEDGE0121 Ref C: 2018-08-31T20:58:10Z'
+      Apim-Request-Id:
+      - e5fce19e-e7f8-4521-bf9f-b347dbca5c6a
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Fri, 31 Aug 2018 20:58:10 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "casa
+        blanca"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=casa+blanca",
+        "totalEstimatedMatches": 18300000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Casablanca (film) - Wikipedia", "url": "https:\/\/en.wikipedia.org\/wiki\/Casablanca_(film)",
+        "about": [{"name": "Casablanca"}, {"name": "Casablanca"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/en.wikipedia.org\/wiki\/Casablanca_(film)",
+        "snippet": "Casablanca is a 1942 American romantic drama film directed by
+        Michael Curtiz based on Murray Burnett and Joan Alison''s unproduced stage
+        play Everybody Comes to Rick''s.The film stars Humphrey Bogart, Ingrid Bergman,
+        and Paul Henreid; it also features Claude Rains, Conrad Veidt, Sydney Greenstreet,
+        Peter Lorre, and Dooley Wilson.", "snippetAttribution": {"license": {"name":
+        "CC-BY-SA", "url": "http:\/\/creativecommons.org\/licenses\/by-sa\/3.0\/"},
+        "licenseNotice": "Text under CC-BY-SA license"}, "dateLastCrawled": "2018-08-22T14:58:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Casablanca (1942) - IMDb", "url": "https:\/\/www.imdb.com\/title\/tt0034583\/",
+        "about": [{"name": "Casablanca"}, {"name": "Casablanca"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.imdb.com\/title\/tt0034583", "snippet":
+        "Directed by Michael Curtiz. With Humphrey Bogart, Ingrid Bergman, Paul Henreid,
+        Claude Rains. A cynical nightclub owner protects an old flame and her husband
+        from Nazis in Morocco.", "dateLastCrawled": "2018-08-20T02:42:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Casa Blanca Movie Showtimes & Tickets | Santikos", "url": "https:\/\/www.santikos.com\/san-antonio\/casa-blanca",
+        "about": [{"name": "Santikos Casa Blanca"}, {"name": "Santikos Casa Blanca"}],
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.santikos.com\/san-antonio\/casa-blanca",
+        "snippet": "Visit Santikos Casa Blanca and enjoy our in theatre dining service,
+        luxury electric recliners and 4k projection and premium sound. View showtimes
+        and book your tickets online today!", "dateLastCrawled": "2018-08-23T07:31:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "CasaBlanca Resort and Casino in Mesquite, NV", "url": "https:\/\/casablancaresort.com\/",
+        "about": [{"name": "CasaBlanca Resort"}, {"name": "CasaBlanca Resort"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/casablancaresort.com", "snippet": "Stay in
+        one of our deluxe rooms as you try your luck at over 800 slots, video poker
+        machines, and tables at the famous CasaBlanca Resort in Mesquite!", "dateLastCrawled":
+        "2018-08-24T21:18:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4", "name":
+        "Movie Showtimes & Tickets | Santikos Theatres | San Antonio", "url": "https:\/\/www.santikos.com\/",
+        "about": [{"name": "Santikos Mayan Palace 14"}, {"name": "Santikos Bijou Cinema
+        Bistro"}, {"name": "Santikos Mayan Palace 14"}, {"name": "Santikos Rialto"}],
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.santikos.com", "snippet":
+        "Experience a best in class movie going experience with Santikos Entertainment.
+        Browse showtimes and book your tickets online today!", "dateLastCrawled":
+        "2018-08-23T16:21:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5", "name":
+        "Home | Casa Blanca", "url": "http:\/\/www.casablancatexas.com\/", "about":
+        [{"name": "Casa Blanca On Brushy Creek Wedding\/Events Venue"}], "isFamilyFriendly":
+        true, "displayUrl": "www.casablancatexas.com", "snippet": "Venue. Casa Blanca
+        is the perfect setting for your dream wedding. We have indoor and outdoor
+        settings that allow you to custom create whatever type of wedding you have
+        always wanted.", "dateLastCrawled": "2018-08-21T23:58:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Casa Blanca | Mexican Restaurant & Cantina", "url": "http:\/\/www.casablancaalabama.com\/",
+        "isFamilyFriendly": true, "displayUrl": "www.casablancaalabama.com", "snippet":
+        "Casa Blanca serves up the finest in Mexican cuisine in the North Alabama
+        area. Our extensive menu offers a number of traditional choices, special items
+        found only at our restaurant.", "dateLastCrawled": "2018-08-23T05:50:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "CasaBlanca - Authentic Mexican Restaurants in MA", "url": "https:\/\/casablancamexican.com\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/casablancamexican.com",
+        "snippet": "CasaBlanca has various mexican restaurants in MA including: Andover,
+        North Andover, and North Billerica. Each location specializes in making authentic
+        mexican restaurant cuisine for any taste buds including children, adults,
+        and even vegetarians.", "dateLastCrawled": "2018-08-24T18:55:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Casablanca - Wikipedia", "url": "https:\/\/en.wikipedia.org\/wiki\/Casablanca",
+        "about": [{"name": "Casablanca"}, {"name": "Casablanca"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/en.wikipedia.org\/wiki\/Casablanca", "snippet":
+        "Casablanca (Arabic: الدار البيضاء ‎, translit. ad-dār al-bayḍāʾ; Berber languages:
+        ⴰⵏⴼⴰ, translit. anfa; local informal name: Kaẓa), located in the central-western
+        part of Morocco bordering the Atlantic Ocean, is the largest city in Morocco.",
+        "snippetAttribution": {"license": {"name": "CC-BY-SA", "url": "http:\/\/creativecommons.org\/licenses\/by-sa\/3.0\/"},
+        "licenseNotice": "Text under CC-BY-SA license"}, "dateLastCrawled": "2018-08-19T01:56:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "The Casa Blanca Vacation Rentals | We have your Perfect ...", "url":
+        "http:\/\/thecasablanca.net\/", "isFamilyFriendly": true, "displayUrl": "thecasablanca.net",
+        "snippet": "Welcome! Our condominium complex includes gulf-front apartments
+        and private villas. Every deluxe gulf-front apartment and private villa at
+        the Casa Blanca is individually decorated and fully furnished including all
+        cookware and linens.", "dateLastCrawled": "2018-08-23T07:03:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Amazon.com: Casablanca: Humphrey Bogart, Ingrid Bergman ...", "url":
+        "https:\/\/www.amazon.com\/Casablanca-Humphrey-Bogart\/dp\/B001EBWING", "about":
+        [{"name": "Casablanca"}, {"name": "Casablanca"}], "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.amazon.com\/Casablanca-Humphrey-Bogart\/dp\/B001EBWING",
+        "snippet": "Buy Casablanca: Read 2942 Movies & TV Reviews - Amazon.com", "dateLastCrawled":
+        "2018-08-21T04:25:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11", "name":
+        "Home | Casablanca Bridal", "url": "https:\/\/www.casablancabridal.com\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.casablancabridal.com",
+        "snippet": "We believe there''s a difference between designing a dress for
+        your wedding and for your marriage. Casablanca Bridal was established in 1997
+        and has since become one of the fastest growing, well known manufacturers
+        of bridal gowns in the industry.", "dateLastCrawled": "2018-08-22T20:31:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Santikos Casa Blanca Movie Times - Fandango", "url": "https:\/\/www.fandango.com\/santikos-casa-blanca-aaxwh\/theater-page",
+        "about": [{"name": "Santikos Casa Blanca"}, {"name": "Santikos Casa Blanca"}],
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fandango.com\/santikos-casa-blanca-aaxwh\/theater-page",
+        "snippet": "Find Santikos Casa Blanca showtimes and theater information at
+        Fandango. Buy tickets, get box office information, driving directions and
+        more.", "dateLastCrawled": "2018-08-21T07:26:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Casablanca 2018: Best of Casablanca, Morocco Tourism ...", "url":
+        "https:\/\/www.tripadvisor.com\/Tourism-g293732-Casablanca_Grand_Casablanca_Region-Vacations.html",
+        "about": [{"name": "Casablanca"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.tripadvisor.com\/Tourism-g293732-Casablanca_Grand...", "snippet":
+        "Casablanca Tourism: TripAdvisor has 82,372 reviews of Casablanca Hotels,
+        Attractions, and Restaurants making it your best Casablanca resource.", "dateLastCrawled":
+        "2018-08-20T13:11:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "The White House", "url": "https:\/\/www.whitehouse.gov\/", "about": [{"name":
+        "The White House"}, {"name": "whitehouse.gov"}, {"name": "White House"}],
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov", "snippet":
+        "History of The White House. Our first president, George Washington, selected
+        the site for the White House in 1791. Every president since John Adams has
+        occupied the White House, and the history of this building extends far beyond
+        the construction of its walls.", "dateLastCrawled": "2018-08-24T00:53:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Casa Blanca 7 | Hotel in San Miguel de Allende :: (415 ...", "url":
+        "http:\/\/casablanca7.com\/", "isFamilyFriendly": true, "displayUrl": "casablanca7.com",
+        "snippet": "Stylish hotel in the heart of San Miguel de Allende... overlooking
+        the iconic San Francisco Church.", "dateLastCrawled": "2018-08-19T23:31:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Amazon.com: Casablanca [Blu-ray]: Humphrey Bogart, Ingrid ...", "url":
+        "https:\/\/www.amazon.com\/Casablanca-Blu-ray-Humphrey-Bogart\/dp\/B002VWONB2",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.amazon.com\/Casablanca-Blu-ray-Humphrey-Bogart\/dp\/B002...",
+        "snippet": "Amazon.com: Casablanca [Blu-ray]: Humphrey Bogart, Ingrid Bergman,
+        Paul Henreid, Claude Rains, Conrad Veidt, Sydney Greenstreet, Peter Lorre,
+        S.Z. Sakall, Madeleine Lebeau, Dooley Wilson, Joy Page, John Qualen, Michael
+        Curtiz, Hal B. Wallis, Casey Robinson, Howard Koch, Joan Alison, Julius J.
+        Epstein, Murray Burnett, Philip G. Epstein: Movies & TV", "dateLastCrawled":
+        "2018-08-24T06:01:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17", "name":
+        "Casablanca (1942) - Full Cast & Crew - IMDb", "url": "https:\/\/www.imdb.com\/title\/tt0034583\/fullcredits",
+        "about": [{"name": "Casablanca"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.imdb.com\/title\/tt0034583\/fullcredits", "snippet": "Casablanca
+        (1942) cast and crew credits, including actors, actresses, directors, writers
+        and more.", "dateLastCrawled": "2018-08-25T08:36:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Homepage | Casablanca Ceiling Fan", "url": "https:\/\/www.hunterfan.com\/casablanca",
+        "about": [{"name": "Casablanca Fan Company"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.hunterfan.com\/casablanca", "snippet": "Shop designer ceiling
+        fans and accessories at Casablanca", "dateLastCrawled": "2018-08-21T10:33:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Casa Blanca, AZ - Casa Blanca, Arizona Map & Directions ...", "url":
+        "https:\/\/www.mapquest.com\/us\/az\/casa-blanca-282088664", "about": [{"name":
+        "Casa Blanca, Arizona"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.mapquest.com\/us\/az\/casa-blanca-282088664",
+        "snippet": "Get directions, maps, and traffic for Casa Blanca, AZ. Check flight
+        prices and hotel availability for your visit.", "dateLastCrawled": "2018-08-24T08:39:00.0000000Z",
+        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Fri, 31 Aug 2018 20:58:10 GMT
+recorded_with: VCR 4.0.0
