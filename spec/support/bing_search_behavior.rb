@@ -118,4 +118,42 @@ shared_examples 'a Bing search' do
       end
     end
   end
+
+  describe '#execute_query' do
+    subject { described_class.new(options) }
+
+    context 'when Bing returns an error' do
+      before do
+        stub_request(:get, %r{bing}).to_return({ body: bing_response_body })
+      end
+
+      context 'when the type is an error response' do
+        let(:bing_response_body) do
+          {
+            "_type": "ErrorResponse",
+            "errors": [
+              {
+                "code": "InvalidRequest",
+                "subCode": "ParameterMissing",
+                "message": "Required parameter is missing.",
+                "parameter": "q"
+              }
+            ]
+          }.to_json
+        end
+
+        it 'raises an exception' do
+          expect { subject.execute_query }.to raise_error('Required parameter is missing.')
+        end
+      end
+
+      context 'when Bing returns an error status code' do
+        let(:bing_response_body) { '{"status_code":401,"message":"bad key"}' }
+
+        it 'raises an exception' do
+          expect { subject.execute_query }.to raise_error('received status code 401 - bad key')
+        end
+      end
+    end
+  end
 end
