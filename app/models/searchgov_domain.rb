@@ -26,9 +26,11 @@ class SearchgovDomain < ActiveRecord::Base
     end
   end
 
-  def index_urls
+  def index_urls(conditions: 'last_crawled_at IS NULL OR lastmod > last_crawled_at')
     index!
-    SearchgovDomainIndexerJob.perform_later(searchgov_domain: self, delay: delay)
+    SearchgovDomainIndexerJob.perform_later(searchgov_domain: self,
+                                            delay: delay,
+                                            conditions: conditions)
   rescue AASM::InvalidTransition
     Rails.logger.warn("#{domain} is already being indexed")
   end
