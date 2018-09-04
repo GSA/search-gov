@@ -112,7 +112,7 @@ describe ImageSearch do
 
         it 'should perform a Bing V6 image search' do
           expect(SearchEngineAdapter).to receive(:new).
-            with(BingV6ImageSearch,
+            with(BingV7ImageSearch,
                  hash_including(affiliate: affiliate,
                                 page: 1,
                                 per_page: 20,

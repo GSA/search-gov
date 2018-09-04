@@ -97,7 +97,7 @@ class ImageSearch
   end
 
   def latest_bing_image_search_class
-    BingV6ImageSearch
+    BingV7ImageSearch
   end
 
   def assign_module_tag
