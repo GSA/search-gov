@@ -270,11 +270,25 @@ describe SearchgovDomain do
     end
 
     context 'when the request raises an error' do
-      before { stub_request(:get, 'http://agency.gov').to_raise(StandardError.new('kaboom')) }
+      before do
+        allow(searchgov_domain).to receive(:delay).and_return(0)
+        stub_request(:get, 'http://agency.gov').to_raise(StandardError.new('kaboom'))
+      end
 
       it 'sets the status to the error code'  do
         expect{ check_status }.to raise_error(SearchgovDomain::DomainError, 'agency.gov: kaboom')
         expect(searchgov_domain.reload.status).to eq 'kaboom'
+      end
+
+      context 'when the error is transient' do
+        before do
+          stub_request(:get, 'http://agency.gov').to_raise(HTTP::ConnectionError).times(2).
+            then.to_return(status: 200)
+        end
+
+        it 'retries the request' do
+          expect(check_status).to eq '200 OK'
+        end
       end
     end
 
