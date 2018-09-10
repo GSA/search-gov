@@ -71,4 +71,15 @@ module AnalyticsDSL
     end
   end
 
+  def must_affiliate(json, site_name)
+    json.must do
+      json.child! { json.term { json.affiliate site_name } }
+    end
+  end
+
+  def must_date_range(json, start_date, end_date)
+    json.must do
+      json.child! { date_range(json, start_date, end_date) }
+    end
+  end
 end

@@ -1,6 +1,5 @@
 class TopQueryMatchQuery
   include AnalyticsDSL
-  include DateRangeFilter
 
   def initialize(affiliate_name, raw_query, start_date, end_date, agg_options = {})
     @affiliate_name, @raw_query, @start_date, @end_date = affiliate_name, raw_query, start_date, end_date
@@ -36,7 +35,8 @@ class TopQueryMatchQuery
   end
 
   def booleans(json)
-    must_affiliate_date_range(json, @affiliate_name, @start_date, @end_date)
+    must_affiliate(json, @affiliate_name)
+    must_date_range(json, @start_date, @end_date)
     must_not_spider(json)
   end
 
