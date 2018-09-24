@@ -80,8 +80,10 @@ class SearchgovDomain < ActiveRecord::Base
 
   def response
     @response ||= begin
-      DocumentFetchLogger.new(url, 'searchgov_domain').log
-      HTTP.headers(user_agent: DEFAULT_USER_AGENT).timeout(connect: 20, read: 60).follow.get url
+      Retriable.retriable(base_interval: delay) do
+        DocumentFetchLogger.new(url, 'searchgov_domain').log
+        HTTP.headers(user_agent: DEFAULT_USER_AGENT).timeout(connect: 20, read: 60).follow.get url
+      end
     rescue => error
       self.update_attributes(status: error.message.strip)
       raise DomainError.new("#{domain}: #{error}")
