@@ -98,6 +98,7 @@ gem 'aasm', '~> 4.12'
 gem 'active_scheduler', '~> 0.5.0'
 gem 'retriable', '~> 3.1'
 
+#Assets-related gems
 gem 'coffee-rails', '~> 4.2.2'
 gem 'uglifier', '~> 4.1.2'
 gem 'less-rails-bootstrap', '~> 3.3.5'
