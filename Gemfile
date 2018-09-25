@@ -69,7 +69,7 @@ gem 'sitelink_generator', git: 'https://github.com/GSA/sitelink_generator', ref:
 gem 'typhoeus', '~> 1.3.0'
 gem 'activerecord-validate_unique_child_attribute', '~> 0.1.0', require: 'active_record/validate_unique_child_attribute'
 gem 'jwt', '~> 1.5.6'
-gem 'grape', '~> 1.0.1'
+gem 'grape', '~> 1.1'
 gem 'grape-entity', '~> 0.6.0'
 gem 'rack-cors', '~> 1.0.2', :require => 'rack/cors'
 gem 'hashie', '~> 3.3.0'
