@@ -43,9 +43,19 @@ Anything listed in the `secret_keys` entry of that file will automatically be ma
 
 ## Database
 
-The database.yml file assumes you have a local database server up and running (MySQL 5.6.x), accessible from user 'root' with no password.
+Install MySQL 5.6.x using Homebrew:
+```
+$ brew update
+$ brew search mysql
+```
+The output should include `mysql@5.6` listed under `Formulae`.
+```
+$ brew install mysql56
+```
 
-Add the following to your database server's my.cnf file and restart it before executing the following steps:
+Follow the instructions provided by Homebrew during installation.
+
+Add the following to your database server's my.cnf file (normally located at `/usr/local/etc/my.cnf`):
 
 ```
 [mysqld]
@@ -54,14 +64,46 @@ innodb_large_prefix = ON
 innodb_file_format = Barracuda
 ```
 
+Start or restart MySQL:
+```
+$ brew services start mysql56
+```
+
 You may need to reinstall the mysql2 gem if you changed your MySQL version:
 
     gem uninstall mysql2
     bundle install
 
-Create and setup your development and test databases:
+Create and setup your development and test databases. The database.yml file assumes you have a local database server up and running (MySQL 5.6.x), accessible from user 'root' with no password.
 
-    rake db:setup db:test:prepare
+    $ rake db:setup
+    $ rake db:test:prepare
+
+### Troubleshooting your database setup
+
+Problems may arise if you have multiple versions of MySQL installed, or if you have installed MySQL via the OSX installer instead of or in addition to Homebrew. Below are some troubleshooting steps:
+
+Verify that you are running the Homebrew-installed version of MySQL (as indicated by the `/usr/local/opt/mysql@5.6` directory):
+```
+$ ps -ef | grep mysql
+  502 26965     1   0 12:23PM ??         0:00.04 /bin/sh /usr/local/opt/mysql@5.6/bin/mysqld_safe --bind-address=127.0.0.1 --datadir=/usr/local/var/mysql
+```
+
+Verify that Rails is using the Homebrew version:
+```
+$ rails db
+```
+
+The output should include:
+```
+Server version: 5.6.<x> Homebrew
+```
+
+It may also help to specify the Homebrew directories when reinstalling the `mysql2` gem:
+```
+$ gem uninstall mysql2
+$ gem install mysql2 -v '0.3.11' --   --with-mysql-lib=$(brew --prefix mysql56)/lib   --with-mysql-dir=$(brew --prefix mysql56)   --with-mysql-config=$(brew --prefix mysql56)/bin/mysql_config   --with-mysql-include=$(brew --prefix mysql56)/include
+```
 
 ## Asset pipeline
 
