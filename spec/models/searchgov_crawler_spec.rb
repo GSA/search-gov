@@ -316,4 +316,17 @@ describe SearchgovCrawler do
       end
     end
   end
+
+  # Testing this private method directly for test speed
+  describe '.repeating_segments_regex' do
+    subject(:regex) { crawler.send(:repeating_segments_regex) }
+
+    it { is_expected.to match 'http://www.agency.gov/foo/foo/foo/' }
+    it { is_expected.to match 'http://www.agency.gov/foo/baz/foo/biz/foo/qux/' }
+    it { is_expected.not_to match 'http://www.agency.gov/fee/fie/foe/' }
+    it { is_expected.not_to match 'http://www.agency.gov/foo/foo/' }
+    it { is_expected.not_to match 'http://www.agency.gov/f/foo/foo' }
+    it { is_expected.not_to match 'http://www.agency.gov/foofoofoo/' }
+    it { is_expected.not_to match 'http://www.agency.gov/09/09/09/' }
+  end
 end
