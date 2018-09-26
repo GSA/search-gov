@@ -131,9 +131,6 @@ GEM
     after_commit_action (1.1.0)
       activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
-    airbrake (7.1.1)
-      airbrake-ruby (~> 2.5)
-    airbrake-ruby (2.10.0)
     american_date (1.1.1)
     arel (6.0.4)
     ast (2.4.0)
@@ -749,7 +746,6 @@ DEPENDENCIES
   active_scheduler (~> 0.5.0)
   activerecord-validate_unique_child_attribute (~> 0.1.0)
   addressable (~> 2.5.2)
-  airbrake (~> 7.1.1)
   american_date (~> 1.1.1)
   authlogic (~> 3.6.1)
   awesome_print
