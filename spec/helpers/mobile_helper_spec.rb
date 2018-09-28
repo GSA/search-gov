@@ -21,7 +21,7 @@ describe MobileHelper do
                                mobile_logo_file_name: 'logo.png',
                                website: nil)
 
-        expect(helper.mobile_header(affiliate)).to have_selector('h1', text: 'USASearch')
+        expect(helper.mobile_header(affiliate)).to have_selector('div', text: 'USASearch')
       end
     end
   end

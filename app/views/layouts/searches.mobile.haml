@@ -23,7 +23,7 @@
   %body{ body_class_hash(@search.affiliate) }
     - if $git_info.show_header
       #git-info-header= render partial: 'shared/git_info_header'
-    %a#skiplink{ href: '#main-content', tabindex: 1 }= t 'searches.skip_to_main_content'
+    %a#skiplink{ href: '#main-content' }= t 'searches.skip_to_main_content'
     = render partial: 'searches/header_tagline', locals: { affiliate: @search.affiliate } if @search.affiliate.header_tagline.present?
     #header-wrapper
       - navigations = renderable_navigations @search
@@ -35,13 +35,15 @@
     #navs-filters-facets.navbar-default
       = navigations_and_related_sites(@search, @search_params, navigations)
       = search_filters_and_results_count @search, @search_params
-    #search-bar-nav-wrapper
-      = render partial: 'searches/form', locals: { search: @search } unless advanced_search?
+    #main-content{ tabindex: -1 }
+      %h1.sr-only Search
+      #search-bar-nav-wrapper
+        = render partial: 'searches/form', locals: { search: @search } unless advanced_search?
 
-    = render partial: 'searches/custom_date_search_form_modal',
-      locals: { search: @search, search_params: @search_params } if @search.is_a?(FilterableSearch)
+      = render partial: 'searches/custom_date_search_form_modal',
+        locals: { search: @search, search_params: @search_params } if @search.is_a?(FilterableSearch)
 
-    #main-content{ tabindex: -1 }= yield
+      = yield
 
     = render partial: 'searches/footer', locals: { affiliate: @search.affiliate }
 
