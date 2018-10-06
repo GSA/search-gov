@@ -7,7 +7,10 @@ describe Sitemap do
   it { is_expected.to have_readonly_attribute(:url) }
 
   describe 'schema' do
-    it { is_expected.to have_db_column(:url).of_type(:string).with_options(null: false, limit: 2000) }
+    it do
+      is_expected.to have_db_column(:url).of_type(:string).
+        with_options(null: false, limit: 2000)
+    end
   end
 
   describe 'validations' do
@@ -20,6 +23,15 @@ describe Sitemap do
 
       it 'is not case-sensitive' do
         expect(Sitemap.create!(url: url.upcase)).to be_valid
+      end
+    end
+  end
+
+  describe 'lifecycle' do
+    describe 'on create' do
+      it 'is automatically indexed' do
+        expect(SitemapIndexerJob).to receive(:perform_later).with(sitemap_url: url)
+        Sitemap.create!(url: url)
       end
     end
   end
