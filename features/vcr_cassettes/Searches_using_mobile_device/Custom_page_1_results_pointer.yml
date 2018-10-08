@@ -425,4 +425,458 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
   recorded_at: Mon, 27 Aug 2018 02:09:12 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=gov%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 08 Oct 2018 18:20:05 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 7402429F4EED438E85A526C81A564C46
+      Bingapis-Sessionid:
+      - 993B480102374E5284426770E54EAEC7
+      X-Msedge-Clientid:
+      - 33014EB0D2506D1213874232D31C6C47
+      X-Msapi-Userstate:
+      - 5a39
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=229,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: 7402429F4EED438E85A526C81A564C46 Ref B: BY3EDGE0109 Ref C: 2018-10-08T18:21:05Z'
+      Apim-Request-Id:
+      - b77a026d-cf69-44c8-8a6a-441bfee479b7
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Mon, 08 Oct 2018 18:21:05 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "gov
+        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=gov+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 40400000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "USA - Official Guide to Government Information and Services", "url":
+        "https:\/\/www.usa.gov\/", "about": [{"name": "USA.gov"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.usa.gov", "snippet": "The .gov means
+        it''s official. Federal government websites often end in .gov or .mil. Before
+        sharing sensitive information, make sure you''re on a federal government site.",
+        "dateLastCrawled": "2018-10-03T10:18:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Internal Revenue Service | An official website of the ...", "url":
+        "https:\/\/www.irs.gov\/", "about": [{"name": "Internal Revenue Service"}],
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.irs.gov", "snippet":
+        "The Internal Revenue Service is the nation''s tax collection agency and
+        administers the Internal Revenue Code enacted by Congress.", "dateLastCrawled":
+        "2018-10-04T20:58:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2", "name":
+        "Government Benefits, Grants, and Loans | USAGov", "url": "https:\/\/www.usa.gov\/benefits-grants-loans",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/benefits-grants-loans",
+        "snippet": "The .gov means it''s official. Federal government websites often
+        end in .gov or .mil. Before sharing sensitive information, make sure you''re
+        on a federal government site. This site is secure. The https:\/\/ ensures
+        that you are connecting to the official website and that any information you
+        provide is ...", "dateLastCrawled": "2018-10-03T05:54:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "The United States Social Security Administration", "url": "http:\/\/www.ssa.gov\/",
+        "about": [{"name": "Social Security Administration"}], "isFamilyFriendly":
+        true, "displayUrl": "www.ssa.gov", "snippet": "Official website of the U.S.
+        Social Security Administration.", "dateLastCrawled": "2018-10-04T04:30:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Home | DotGov", "url": "https:\/\/www.dotgov.gov\/", "about": [{"name":
+        "gov"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.dotgov.gov",
+        "snippet": "The .gov means it’s official. Federal government websites often
+        end in .gov or .mil. Before sharing sensitive information, make sure you''re
+        on a federal government site.", "dateLastCrawled": "2018-10-05T03:06:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "USAJOBS - The Federal Government''s Official Jobs Site", "url":
+        "https:\/\/www.usajobs.gov\/", "about": [{"name": "USAJobs"}, {"name": "USAJobs"}],
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usajobs.gov", "snippet":
+        "USAJOBS is the Federal Government''s official one-stop source for Federal
+        jobs and employment information.", "dateLastCrawled": "2018-10-03T18:26:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Government Agencies and Elected Officials | USAGov", "url": "https:\/\/www.usa.gov\/agencies",
+        "about": [{"name": "Federal government of the United States"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.usa.gov\/agencies", "snippet": "The .gov
+        means it''s official. Federal government websites often end in .gov or .mil.
+        Before sharing sensitive information, make sure you''re on a federal government
+        site.", "dateLastCrawled": "2018-10-02T09:08:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Unclaimed Money from the Government | USAGov", "url": "https:\/\/www.usa.gov\/unclaimed-money",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/unclaimed-money",
+        "snippet": "The .gov means it''s official. Federal government websites often
+        end in .gov or .mil. Before sharing sensitive information, make sure you''re
+        on a federal government site.", "dateLastCrawled": "2018-10-04T23:07:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "HealthCare.gov - Get 2018 health coverage. Health ...", "url":
+        "https:\/\/www.healthcare.gov\/", "about": [{"name": "HealthCare.gov"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.healthcare.gov", "snippet": "Official
+        site of Affordable Care Act. Enroll now for 2018 coverage. See health coverage
+        choices, ways to save today, how law affects you.", "dateLastCrawled": "2018-10-04T13:28:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "U.S. Government Services and Information | USAGov", "url": "https:\/\/www.usa.gov\/topics",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/topics",
+        "snippet": "The .gov means it''s official. Federal government websites often
+        end in .gov or .mil. Before sharing sensitive information, make sure you''re
+        on a federal government site. This site is secure. The https:\/\/ ensures
+        that you are connecting to the official website and that any information you
+        provide is ...", "dateLastCrawled": "2018-10-02T21:12:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Welcome to the California State Web Portal", "url": "http:\/\/www.ca.gov\/",
+        "about": [{}, {"name": "California"}], "isFamilyFriendly": true, "displayUrl":
+        "www.ca.gov", "snippet": "California has been hit with devastating wildfires
+        and other natural disasters in both the northern and southern parts of the
+        state. If you need more information about recovery or resources, go to www.caloes.ca.gov",
+        "dateLastCrawled": "2018-10-04T06:02:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "IN.gov | The Official Website of the State of Indiana", "url":
+        "http:\/\/www.in.gov\/core\/", "about": [{"name": "Indiana"}, {"name": "Fort
+        Harrison State Park"}], "isFamilyFriendly": true, "displayUrl": "www.in.gov\/core",
+        "snippet": "A State that Works. IN.gov is the official website of the
+        State of Indiana and your place to find information, services, news and
+        events related to Indiana government.", "dateLastCrawled": "2018-10-02T03:43:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Medicare.gov: the official U.S. government site for Medicare",
+        "url": "https:\/\/www.medicare.gov\/", "about": [{"name": "Medicare"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.medicare.gov", "snippet": "A federal
+        government website managed and paid for by the U.S. Centers for Medicare
+        & Medicaid Services.", "dateLastCrawled": "2018-10-04T10:29:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "A-Z Index of U.S. Government Departments and Agencies", "url":
+        "https:\/\/www.usa.gov\/federal-agencies\/a", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.usa.gov\/federal-agencies", "snippet": "The .gov means
+        it''s official. Federal government websites often end in .gov or .mil. Before
+        sharing sensitive information, make sure you''re on a federal government site.
+        This site is secure. The https:\/\/ ensures that you are connecting to the
+        official website and that any information you provide is ...", "dateLastCrawled":
+        "2018-10-03T21:17:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "Web Content Viewer - DMV", "url": "http:\/\/www.dmv.ca.gov\/portal\/dmv\/",
+        "about": [{"name": "California Department of Motor Vehicles"}], "isFamilyFriendly":
+        true, "displayUrl": "www.dmv.ca.gov\/portal\/dmv", "snippet": "California
+        DMV Home Page is available for customers to check out publications, download
+        forms, brochures, FAQs, Vehicle Information, Boats, Vessel, and Field Offices.",
+        "dateLastCrawled": "2018-10-05T09:13:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Home | GRANTS.GOV", "url": "https:\/\/www.grants.gov\/", "about":
+        [{"name": "Categorical grant"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.grants.gov",
+        "snippet": "The government website where federal agencies post discretionary
+        funding opportunities and grantees find and apply for them", "dateLastCrawled":
+        "2018-09-30T14:39:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16", "name":
+        "Choose MyPlate", "url": "https:\/\/www.choosemyplate.gov\/", "about": [{"name":
+        "MyPlate"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.choosemyplate.gov",
+        "snippet": "ChooseMyPlate.gov provides practical information to individuals,
+        health professionals, nutrition educators, and the food industry to help consumers
+        build healthier diets with resources and tools for dietary assessment, nutrition
+        education, and other user-friendly nutrition information.", "dateLastCrawled":
+        "2018-10-04T00:32:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17", "name":
+        "Centers for Disease Control and Prevention", "url": "https:\/\/www.cdc.gov\/",
+        "about": [{"name": "Civil Rights Commission"}, {"name": "Centers for Disease
+        Control and Prevention"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov",
+        "snippet": "USA.gov. CDC Website Exit Disclaimer. ... The Centers for
+        Disease Control and Prevention (CDC) cannot attest to the accuracy of a
+        non-federal website. Linking to a non-federal website does not constitute
+        an endorsement by CDC or any of its employees of the sponsors or the information
+        and products presented on the website.", "dateLastCrawled": "2018-10-04T03:14:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "U.S. Department of State | Home Page", "url": "https:\/\/www.state.gov\/",
+        "about": [{"name": "United States Department of State"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.state.gov", "snippet": "USA.gov U.S.
+        Embassies The Office of Website Management, Bureau of Public Affairs, manages
+        this site as a portal for information from the U.S. State Department.",
+        "dateLastCrawled": "2018-10-04T14:11:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Tennessee State Government - TN.gov", "url": "http:\/\/www.tn.gov\/",
+        "about": [{}, {"name": "Tennessee State Capitol"}], "isFamilyFriendly": true,
+        "displayUrl": "www.tn.gov", "snippet": "NASHVILLE – Tennessee Gov. Bill
+        Haslam today granted executive clemency to five current or former Tennesseans.
+        “These five individuals have made exceptional positive contributions to their
+        communities and will be able to contribute even further by these grants of
+        executive clemency,” Haslam said.", "dateLastCrawled": "2018-10-04T19:55:00.0000000Z",
+        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 08 Oct 2018 18:21:05 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=20&q=gov%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 08 Oct 2018 18:20:06 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 4CDB30BB57D04A649B0446BF0ADBF71D
+      Bingapis-Sessionid:
+      - CB35773DDF4A466CA645CEE523E09BA4
+      X-Msedge-Clientid:
+      - 0DFE04097B7A68431923088B7A3669C6
+      X-Msapi-Userstate:
+      - 9ccc
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=177,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: 4CDB30BB57D04A649B0446BF0ADBF71D Ref B: BY3EDGE0306 Ref C: 2018-10-08T18:21:06Z'
+      Apim-Request-Id:
+      - d2a2c9ef-55da-4bae-be91-4bfcbdb5f0a7
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Mon, 08 Oct 2018 18:21:05 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "gov
+        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=gov+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 40400000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Data.gov", "url": "https:\/\/www.data.gov\/", "about": [{"name":
+        "data.gov"}, {"name": "data.gov"}, {"name": "Data set"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.data.gov", "snippet": "The Data.gov
+        catalog brings together datasets from hundreds of agency sources across the
+        federal government and from 50 non-federal sources. Metadata for datasets
+        that are available to the public are maintained by the …", "dateLastCrawled":
+        "2018-10-04T11:09:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1", "name":
+        "PA.GOV | The Official Website for the Commonwealth of ...", "url": "http:\/\/www.pa.gov\/",
+        "about": [{}, {"name": "Pennsylvania"}], "isFamilyFriendly": true, "displayUrl":
+        "www.pa.gov", "snippet": "October 9 is the deadline to register to vote
+        in the November 6 general election in Pennsylvania. Register online now
+        at register.votesPA.com. . Oct. 9 is the deadline to register to vote in this
+        election.", "dateLastCrawled": "2018-10-04T14:20:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Texas.gov | The Official Website of the State of Texas", "url":
+        "https:\/\/texas.gov\/", "about": [{"name": "Aspermont"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/texas.gov", "snippet": "Texas.gov does
+        not sell and does not generally release (other than as provided in this policy)
+        personally identifiable information to third parties; however, information
+        provided to any governmental body may be subject to disclosure pursuant to
+        the Texas Public Information Act and applicable federal and state legislation.",
+        "dateLastCrawled": "2018-10-03T07:34:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "MyMedicare.gov: Portal of Personalized Information", "url": "https:\/\/www.mymedicare.gov\/",
+        "about": [{"name": "Medicare"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.mymedicare.gov",
+        "snippet": "You''re accessing data on a U.S. Government Information System,
+        which is owned and operated by the Centers for Medicare and Medicaid Services
+        (CMS). The information accessed through this system is provided for use only
+        by authorized MyMedicare.gov users.", "dateLastCrawled": "2018-10-04T19:59:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Home | disasterassistance.gov", "url": "https:\/\/www.disasterassistance.gov\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.disasterassistance.gov",
+        "snippet": "Highlighted states indicate a disaster has been declared for Individual
+        Assistance. Select a state to see if your county is in a declared area and
+        apply online for assistance.", "dateLastCrawled": "2018-10-04T12:02:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Mass.gov", "url": "https:\/\/www.mass.gov\/", "about": [{"name":
+        "Commonwealth of Massachusetts"}, {"name": "Dighton Rock State Park"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.mass.gov", "snippet": "Official website
+        of the Commonwealth of Massachusetts. Safety advice for Merrimack Valley residents
+        State fire officials offer safety tips for using hot plates, grills, and space
+        heaters.", "dateLastCrawled": "2018-10-03T08:48:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Welcome to EFTPS online", "url": "http:\/\/www.eftps.gov\/", "about":
+        [{"name": "Electronic Federal Tax Payment System"}], "isFamilyFriendly": true,
+        "displayUrl": "www.eftps.gov", "snippet": "The Electronic Federal Tax Payment
+        System® tax payment service is provided free by the U.S. Department of the
+        Treasury. After you''ve enrolled and received your credentials, you can pay
+        any tax due to the Internal Revenue Service (IRS) using this system. ... USA.gov
+        IRS.gov Treasury.gov.", "dateLastCrawled": "2018-10-05T00:32:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Delaware.gov - Official Website of the State of Delaware",
+        "url": "https:\/\/delaware.gov\/", "about": [{"name": "Delaware"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/delaware.gov", "snippet": "The official
+        website of the State of Delaware. Find information about state government,
+        programs, and services. The First State is located in the Northeast U.S.",
+        "dateLastCrawled": "2018-10-05T01:20:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Vets.gov", "url": "https:\/\/www.vets.gov\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.vets.gov", "snippet": "The .gov means
+        it’s official. Federal government websites often end in .gov or .mil. Before
+        sharing sensitive information, make sure you''re on a federal government site.",
+        "dateLastCrawled": "2018-10-05T05:50:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Thrift Savings Plan", "url": "https:\/\/www.tsp.gov\/", "about":
+        [{"name": "Andrew Saul"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.tsp.gov",
+        "snippet": "My Account. TSP Account Number. User ID. Forgot your account
+        number or user ID? My Account, Plan Participation, Investment Funds, Planning
+        and Tools, Life Events and ...", "dateLastCrawled": "2018-10-04T05:37:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Census.gov", "url": "https:\/\/www.census.gov\/", "about": [{"name":
+        "U.S. Census Bureau"}, {"name": "U.S. Census Bureau"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.census.gov", "snippet": "Census Bureau
+        Begins Jobs Recruiting Effort for 2020 Census Read More The U.S. Census
+        Bureau is recruiting thousands of workers for temporary jobs available nationwide
+        in advance of the 2020 Census.", "dateLastCrawled": "2018-10-05T00:35:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Home - ClinicalTrials.gov", "url": "https:\/\/clinicaltrials.gov\/",
+        "about": [{"name": "ClinicalTrials.gov"}, {"name": "ClinicalTrials.gov"},
+        {"name": "Clinical trial"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/clinicaltrials.gov",
+        "snippet": "ClinicalTrials.gov is a database of privately and publicly
+        funded clinical studies conducted around the world. ClinicalTrials.gov
+        is a registry and results database of publicly and privately supported clinical
+        studies of human participants conducted around the world.", "dateLastCrawled":
+        "2018-10-04T06:07:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12", "name":
+        "Recreation.gov", "url": "https:\/\/www.recreation.gov\/", "about": [{"name":
+        "Paradise Campground"}, {"name": "COE Melvern Lake Melvern Lake"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.recreation.gov", "snippet": "Recreation.gov
+        - Bring Home a Story", "dateLastCrawled": "2018-10-04T11:26:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "SEC.gov | HOME", "url": "https:\/\/www.sec.gov\/", "about": [{"name":
+        "U.S. Securities and Exchange Commission"}, {"name": "U.S. Securities and
+        Exchange Commission"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov",
+        "snippet": "The SEC protects investors in the $3.8 trillion municipal securities
+        markets that cities and towns rely on to provide neighborhood schools, local
+        libraries and hospitals, public parks, safe drinking water and so much more.",
+        "dateLastCrawled": "2018-10-05T04:13:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Homepage | USCIS", "url": "https:\/\/www.uscis.gov\/", "about": [{"name":
+        "USCIS"}, {"name": "United States Citizenship and Immigration Services"}],
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.uscis.gov", "snippet":
+        "U.S. Citizenship and Immigration Services (USCIS) is a component of the
+        United States Department of Homeland Security (DHS).", "dateLastCrawled":
+        "2018-10-05T07:12:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15", "name":
+        "Federal Student Aid", "url": "https:\/\/studentaid.ed.gov\/sa\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/studentaid.ed.gov\/sa", "snippet": "To get
+        started, fill out the Free Application for Federal Student Aid ... 2019–20
+        FAFSA Form Available on myStudentAid App and fafsa.gov. Information About
+        Debt Relief for Corinthian Colleges Students. Has Your School Closed? Here’s
+        What to Do. View All . Need financial aid? Here’s what you could get if you
+        fill out the FAFSA® form.", "dateLastCrawled": "2018-10-04T21:45:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Employment Development Department - State Of California", "url":
+        "http:\/\/www.edd.ca.gov\/", "about": [{"name": "Employment Development Department"},
+        {"name": "Employment Development Department"}], "isFamilyFriendly": true,
+        "displayUrl": "www.edd.ca.gov", "snippet": "The EDD page for claimants provides
+        links for unemployment related topics, disability information and forms and
+        paid family leave benefit details. Recent news and announcements.", "dateLastCrawled":
+        "2018-10-05T06:15:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17", "name":
+        "Welcome to Benefits.gov | Benefits.gov", "url": "https:\/\/www.benefits.gov\/",
+        "about": [{"name": "Veterans'' benefits"}, {"name": "Benefits.gov"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.benefits.gov", "snippet": "Browse benefits
+        by state, category, and agency or take the benefit finder questionnaire to
+        determine eligibility.", "dateLastCrawled": "2018-10-03T09:33:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Miami-Dade County Home - Miami-Dade County", "url": "https:\/\/www.miamidade.gov\/home\/",
+        "about": [{"name": "Miami-Dade County"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/miamidade.gov", "snippet": "The General Election will take place
+        Tuesday, Nov. 6. Visit the Elections website for information about voter registration,
+        voting dates and deadlines, and more.", "dateLastCrawled": "2018-10-04T23:53:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "U.S. Department of Veterans Affairs", "url": "http:\/\/www.va.gov\/",
+        "about": [{"name": "Vet Center"}, {"name": "United States Department of Veterans
+        Affairs"}, {"name": "United States Secretary of Veterans Affairs"}], "isFamilyFriendly":
+        true, "displayUrl": "www.va.gov", "snippet": "The US Department of Veterans
+        Affairs provides patient care and federal benefits to veterans and their
+        dependents. The home page for the Department of Veterans Affairs provides
+        links to veterans benefits .and services, as well as information and resources
+        for other Departmental programs and offices.", "dateLastCrawled": "2018-10-03T18:55:00.0000000Z",
+        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 08 Oct 2018 18:21:06 GMT
 recorded_with: VCR 4.0.0

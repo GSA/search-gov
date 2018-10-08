@@ -68,4 +68,68 @@ http_interactions:
         "rankingResponse": {}}'
     http_version: 
   recorded_at: Mon, 27 Aug 2018 02:09:15 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=lkssldfkjsldfkjsldkfjsldkjflsdkjflskdjfwer%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 08 Oct 2018 18:20:08 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - C771D3E9211447B585828B3EA9B0E416
+      Bingapis-Sessionid:
+      - 3C2B3D0D62D944B5BACADB359ACF0558
+      X-Msedge-Clientid:
+      - 3905AE67D2F26E1E0C02A2E5D3BE6FA5
+      X-Msapi-Userstate:
+      - 966d
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=158,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: C771D3E9211447B585828B3EA9B0E416 Ref B: BY3EDGE0315 Ref C: 2018-10-08T18:21:08Z'
+      Apim-Request-Id:
+      - 43790afa-762e-45d3-bffd-03ca67752b15
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Mon, 08 Oct 2018 18:21:07 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "lkssldfkjsldfkjsldkfjsldkjflsdkjflskdjfwer
+        (site:gov OR site:mil)"}, "rankingResponse": {}}'
+    http_version: 
+  recorded_at: Mon, 08 Oct 2018 18:21:08 GMT
 recorded_with: VCR 4.0.0

@@ -666,4 +666,740 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
   recorded_at: Mon, 27 Aug 2018 02:09:09 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=fannie%20mae%20(site:www.sec.gov/archives/edgar)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 08 Oct 2018 18:20:01 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 2912719DEA204FC8AAE53E50BE305D08
+      Bingapis-Sessionid:
+      - 4A41FB4007204475852BF7C610002C96
+      X-Msedge-Clientid:
+      - 1E42E0B0DF4B6F13028AEC32DE076E4F
+      X-Msapi-Userstate:
+      - 77cc
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=239,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: 2912719DEA204FC8AAE53E50BE305D08 Ref B: BY3EDGE0312 Ref C: 2018-10-08T18:21:02Z'
+      Apim-Request-Id:
+      - f851dec1-67d7-470d-b6ae-d5f8d023b60d
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Mon, 08 Oct 2018 18:21:01 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "fannie
+        mae (site:www.sec.gov\/archives\/edgar)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=fannie+mae+(site%3awww.sec.gov%2farchives%2fedgar)",
+        "totalEstimatedMatches": 7430, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Document", "url": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/310522\/000031052218000107\/fanniemae201710k.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/...\/310522\/000031052218000107\/fanniemae201710k.htm",
+        "snippet": "In 2014, Fannie Mae and Freddie Mac executed three agreements
+        relating to the governance and operation of CSS, and appointed a chief executive
+        officer and four members of the CSS Board of Managers, two each from Fannie
+        Mae and Freddie Mac.", "dateLastCrawled": "2018-09-24T16:13:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Document", "url": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/310522\/000031052217000434\/fanniemae8konfhfa2018score.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/...\/fanniemae8konfhfa2018score.htm",
+        "snippet": "For loans funded under the Fannie Mae Green Building Certification
+        program or the Freddie Mac Green Certified program, FHFA will exclude 50 percent
+        of the loan amount if at least 20 percent but less than 50 percent of the
+        unit rents are affordable by applying the income limits in . 6.", "dateLastCrawled":
+        "2018-08-24T20:49:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2", "name":
+        "Document", "url": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/310522\/000031052216000569\/fanniemaeq20630201610q.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/...\/000031052216000569\/fanniemaeq20630201610q.htm",
+        "snippet": "Fannie Mae is a government-sponsored enterprise (“GSE”) that
+        was chartered by Congress in 1938. We serve an essential role in the functioning
+        of the U.S. housing market and are investing in improvements to the U.S. housing
+        finance system.", "dateLastCrawled": "2018-10-04T20:08:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Master Custodial Agreement for Custody of Single Family ...", "url":
+        "https:\/\/www.sec.gov\/Archives\/edgar\/data\/1518715\/000119312511144488\/dex1026.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/1518715\/000119312511144488\/...",
+        "snippet": "3 RECITALS. This Custodial Agreement is executed by, and delivered
+        to, each of Fannie Mae, Custodian, and Lender, as of the effective date,
+        all as indicated on the cover page hereof.. WHEREAS, Lender is (or will become)
+        the Servicer of certain Mortgage Loans pursuant to a Mortgage Selling and
+        Servicing Contract with Fannie Mae, and may or may not be the Seller with
+        respect to those Mortgage Loans;", "dateLastCrawled": "2018-09-07T11:49:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Form 10-K, Amendment No. 1 - SEC.gov | HOME", "url": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/310522\/000119312512105455\/d307691d10ka.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/310522\/000119312512105455\/...",
+        "snippet": "Termination by Fannie Mae. If Fannie Mae terminates an executive
+        officer’s employment other than for cause, the Board of Directors may determine,
+        subject to the approval of FHFA in consultation with Treasury, that he or
+        she may receive certain unpaid deferred salary or long-term incentive awards.",
+        "dateLastCrawled": "2018-09-09T18:34:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "FannieMae 2014 10K Press Release - SEC.gov", "url": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/310522\/000031052215000082\/fanniemae201410kpressrelea.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/...\/fanniemae201410kpressrelea.htm",
+        "snippet": "Fannie Mae paid a total of $20.6 billion in dividends to Treasury
+        in 2014.The company expects to pay Treasury $1.9 billion in dividends in March
+        2015.With the expected March 2015 dividend payment, the company will have
+        paid a total of $136.4 billion in dividends to Treasury.", "dateLastCrawled":
+        "2018-08-29T20:16:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6", "name":
+        "FannieMae.10-K2013 EX 10.10", "url": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/310522\/000031052214000067\/fanniemae10-k2013ex1010.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/...\/000031052214000067\/fanniemae10-k2013ex1010.htm",
+        "snippet": "fannie mae SUPPLEMENTAL PENSION PLAN Pursuant to Section 5.5
+        of the Supplemental Pension Plan (the “Plan”) and as directed by the Federal
+        Housing Finance Agency (“FHFA”) on October 24, 2013 and approved by the Fannie
+        Mae Board of Directors on October 25, 2013, Fannie Mae hereby amends the
+        Plan by adding the following new Section 5.14 :", "dateLastCrawled": "2018-09-27T21:40:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "FannieMae Q3.09.30.2012 EX 4.1 - SEC.gov | HOME", "url": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/310522\/000031052212000141\/fanniemaeq309302012ex41.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/...\/000031052212000141\/fanniemaeq309302012ex41.htm",
+        "snippet": "FANNIE MAE . AMENDED AND RESTATED CERTIFICATE OF DESIGNATION
+        OF TERMS OF. VARIABLE LIQUIDATION PREFERENCE SENIOR. PREFERRED STOCK, SERIES
+        2008-2. The Federal Housing Finance Agency, exercising its authority pursuant
+        to Section 1367(b) of the Federal Housing Enterprises Financial Safety and
+        Soundness Act of 1992 (12 U.", "dateLastCrawled": "2018-09-23T09:50:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "FannieMae2012 10K EX 4.15 Cert of Des Series S", "url": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/310522\/000031052213000065\/fanniemae201210kex415certo.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/...\/fanniemae201210kex415certo.htm",
+        "snippet": "If Fannie Mae redeems the Series S Preferred Stock during a
+        Floating Rate Dividend Period, the dividend that would otherwise be payable
+        for the then current quarterly Floating Rate Dividend Period will be included
+        in the redemption price of the shares redeemed and will not be separately
+        payable.", "dateLastCrawled": "2018-09-29T21:51:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Fannie Mae As Soon As Pooled Agreement - SEC.gov", "url": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/1283683\/000119312504045739\/dex1033.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/1283683\/000119312504045739\/...",
+        "snippet": "(b) From time to time the parties hereto may enter into transactions
+        in which Lender agrees to transfer to Fannie Mae Mortgage Loans against
+        the transfer of funds by Fannie Mae (as described herein), with a simultaneous
+        agreement by Fannie Mae to transfer to Lender each such Mortgage Loan on
+        the Repurchase Date related to such Mortgage Loan in accordance with the terms
+        set forth herein ...", "dateLastCrawled": "2018-10-02T12:37:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "exv10w30", "url": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/1520566\/000095012312001025\/y04863a2exv10w30.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/1520566\/000095012312001025\/...",
+        "snippet": "Fannie Mae and the Lender acknowledge that, and have entered
+        into and will enter into each transaction hereunder in consideration of and
+        in reliance upon the fact that, all deliveries of Mortgage Loans hereunder
+        constitute a single business and contractual relationship and have been made
+        in consideration of each other. Accordingly, each of ...", "dateLastCrawled":
+        "2018-09-13T23:03:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11", "name":
+        "Federal National Mortgage Association (Form: 8-K)", "url": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/310522\/000129993304002429\/htm_2364.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/310522\/000129993304002429\/...",
+        "snippet": "The financial information regarding Fannie Mae’s anticipated
+        results of operations for the quarter ended September 30, 2004 that was contained
+        in Fannie Mae’s Form 12b-25 filed on November 15, 2004 and in Fannie Mae’s
+        Form 8-K filed on November 16, 2004 was prepared applying the same policies
+        and practices, and should also not be relied upon.", "dateLastCrawled": "2018-09-16T18:01:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Master Agreement between Homestreet Bank and Fannie Mae", "url":
+        "https:\/\/www.sec.gov\/Archives\/edgar\/data\/1518715\/000119312511168932\/dex1027.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/1518715\/000119312511168932\/...",
+        "snippet": "• If Fannie Mae receives such notice, and the wire transfer
+        to Fannie Mae is completed by 10:00 a.m. ET on the business day prior to
+        the 18 th, Fannie Mae will reduce the automated draft amount to reflect
+        the remittances received via such wire transfer.", "dateLastCrawled": "2018-09-28T18:53:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "FannieMae2012 10K EX 10.9 Supp Pension Plan of 2003 as ...", "url":
+        "https:\/\/www.sec.gov\/Archives\/edgar\/data\/310522\/000031052213000065\/fanniemae201210kex109suppp.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/...\/fanniemae201210kex109suppp.htm",
+        "snippet": "1.1. Establishment.Fannie Mae (the “Corporation”) establishes
+        this Fannie Mae Supplemental Pension Plan of 2003 for the benefit of eligible
+        employees of the Corporation and their beneficiaries.", "dateLastCrawled":
+        "2018-10-05T05:17:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "FannieMaeCharterActExhibit31", "url": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/310522\/000031052215000179\/fanniemaecharteractexhibit.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/...\/fanniemaecharteractexhibit.htm",
+        "snippet": "The Congress declares that the purposes of this title are to establish
+        secondary market facilities for residential mortgages, to provide that the
+        operations thereof shall be financed by private capital to the maximum extent
+        feasible, and to authorize such facilities to—", "dateLastCrawled": "2018-09-08T05:43:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "def14a - SEC.gov", "url": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/310522\/000095013308001442\/w48664def14a.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/310522\/000095013308001442\/...",
+        "snippet": "You are entitled to vote or direct the voting of your shares of
+        Fannie Mae common stock if you were a shareholder at the close of business
+        on March 21, 2008, which is the record date for the annual meeting (the “Record
+        Date”).", "dateLastCrawled": "2018-10-02T19:29:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Federal National Mortgage Association (Form: 8-K)", "url": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/310522\/000129993308006051\/htm_30584.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/310522\/000129993308006051\/...",
+        "snippet": "In accordance with new non-management director compensation practices
+        approved by FHFA, each Fannie Mae non-management director other than Mr.
+        Laskawy, the non-executive chairman of Fannie Mae’s Board of Directors,
+        will be paid a cash retainer at a rate of $160,000 per year for serving as
+        a Board member.", "dateLastCrawled": "2018-09-05T09:35:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "EX-10.1 - SEC.gov | HOME", "url": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/1040719\/000119312514196674\/d723826dex101.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/...\/1040719\/000119312514196674\/d723826dex101.htm",
+        "snippet": "FANNIE MAE DESIGNATED ACCOUNT: “Designated Account” shall mean
+        a Fannie Mae designated account created by Fannie Mae in its name and
+        under its control at a financial institution of Fannie Mae’s choosing. A
+        Designated Account may relate to either MBS Advances or MRS Advances but not
+        both.", "dateLastCrawled": "2018-09-24T23:22:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "FannieMae 2012 10K - SEC", "url": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/310522\/000031052213000065\/fanniemae201210k.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/...\/310522\/000031052213000065\/fanniemae201210k.htm",
+        "snippet": "Fannie Mae’s HPI is a weighted repeat transactions index, measuring
+        average price changes in repeat sales on the same properties. Fannie Mae’s
+        HPI excludes prices on properties sold in foreclosure. The reported home price
+        change reflects the percentage change in Fannie Mae’s HPI from the fourth
+        quarter of the prior year to the fourth ...", "dateLastCrawled": "2018-09-18T18:25:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "FannieMae2012 10K EX 10.32 ...", "url": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/310522\/000031052213000065\/fanniemae201210kex1032form.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/...\/fanniemae201210kex1032form.htm",
+        "snippet": "This grant of units of Restricted Stock from Fannie Mae (the
+        “Award”) is made to you as an Eligible Employee (the “Awardee”) effective
+        as of the date of grant set forth in the grant detail available for you to
+        view on the UBS website.", "dateLastCrawled": "2018-09-17T11:30:00.0000000Z",
+        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 08 Oct 2018 18:21:02 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=fannie%20mae%20(site:www.sec.gov/news)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 08 Oct 2018 18:20:02 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 4782CCDE12904388A7DB4DC87D684F88
+      Bingapis-Sessionid:
+      - 80A46B797E4348C1A70D0B6A2AEE604E
+      X-Msedge-Clientid:
+      - 317967D4EDF269183F696B56ECBE6827
+      X-Msapi-Userstate:
+      - d7bd
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=223,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: 4782CCDE12904388A7DB4DC87D684F88 Ref B: BY3EDGE0315 Ref C: 2018-10-08T18:21:02Z'
+      Apim-Request-Id:
+      - 36f2bda1-843b-43af-bee7-c03b5b6a22dc
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Mon, 08 Oct 2018 18:21:02 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "fannie
+        mae (site:www.sec.gov\/news)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=fannie+mae+(site%3awww.sec.gov%2fnews)",
+        "totalEstimatedMatches": 7330, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Testimony: Accounting Irregularities at Fannie Mae ...", "url":
+        "https:\/\/www.sec.gov\/news\/testimony\/2006\/ts061506cc.htm", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.sec.gov\/news\/testimony\/2006\/ts061506cc.htm",
+        "snippet": "Fannie Mae''s settlement of accounting fraud charges raises
+        another very significant policy issue, one that has been carefully considered
+        by members of this Committee: whether to require mandatory registration and
+        periodic reporting under the Exchange Act by Fannie Mae, Freddie Mac, and
+        the Federal Home Loan Banks.", "dateLastCrawled": "2018-10-02T17:46:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "SEC.gov | Bank of America Admits Disclosure Failures to ...",
+        "url": "https:\/\/www.sec.gov\/news\/press-release\/2014-172", "about": [{"name":
+        "Bank of America"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/news\/press-release\/2014-172",
+        "snippet": "These uncertainties included whether Fannie Mae, a mortgage
+        loan purchaser from Bank of America, had changed its repurchase claim practices
+        after being put into conservatorship, the future volume of repurchase claims
+        from Fannie Mae and certain monoline insurance companies that provided credit
+        enhancements on certain mortgage loan sales, and ...", "dateLastCrawled":
+        "2018-09-30T09:44:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2", "name":
+        "SEC Charges Former Fannie Mae and Freddie Mac Executives ...", "url":
+        "https:\/\/www.sec.gov\/news\/press\/2011\/2011-267.htm", "about": [{"name":
+        "Freddie Mac"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/news\/press\/2011\/2011-267.htm",
+        "snippet": "Fannie Mae''s executives also knew and approved of the decision
+        to underreport Fannie Mae''s Alt-A loan exposure, the SEC alleged. Fannie
+        Mae disclosed that its March 31, 2007 exposure to Alt-A loans was 11 percent
+        of its portfolio of Single Family loans.", "dateLastCrawled": "2018-10-02T21:35:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "SEC Distributes $356 Million to Defrauded Fannie Mae Investors",
+        "url": "https:\/\/www.sec.gov\/news\/press\/2007\/2007-219.htm", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.sec.gov\/news\/press\/2007\/2007-219.htm",
+        "snippet": "The Fair Fund for Fannie Mae victims resulted from an enforcement
+        action in May 2006 in which Fannie Mae paid $350 million to settle SEC
+        charges that it issued materially false and misleading financial statements
+        in SEC filings and in various reports disseminated to investors.", "dateLastCrawled":
+        "2018-09-24T13:02:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4", "name":
+        "SEC Testimony: The Application of Federal Securities Law ...", "url": "https:\/\/www.sec.gov\/news\/testimony\/ts021004alb.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/news\/testimony\/ts021004alb.htm",
+        "snippet": "Fannie Mae has filed with the Commission its 2002 annual report
+        on Form 10-K including audited financial statements, quarterly reports on
+        Form 10-Q containing unaudited financial statements, its proxy statement relating
+        to its annual meeting of shareholders and numerous current reports on Form
+        8-K.", "dateLastCrawled": "2018-10-04T18:23:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Office of the Chief Accountant Issues Statement on Fannie ...",
+        "url": "https:\/\/www.sec.gov\/news\/press\/2004-172.htm", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.sec.gov\/news\/press\/2004-172.htm",
+        "snippet": "At the request of Fannie Mae, the accounting staff at the Commission
+        has been reviewing whether the accounting used by Fannie Mae complied with
+        Statement Nos. 91 and 133.", "dateLastCrawled": "2018-09-30T14:22:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Chairman Pitt''s Statement On Fannie Mae\/Freddie Mac ...", "url":
+        "https:\/\/www.sec.gov\/news\/speech\/spch574.htm", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.sec.gov\/news\/speech\/spch574.htm", "snippet":
+        "Although Fannie Mae''s and Freddie Mac''s decision to subject themselves
+        to the full panoply of Securities Exchange Act disclosures is voluntary, it
+        is now irrevocable without SEC approval. This addresses the concern that,
+        however complete their disclosures were, it was strictly a matter of choice,
+        not a requirement of law.", "dateLastCrawled": "2018-09-19T00:44:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "SEC and OFHEO Announce Resolution of Investigation and ...",
+        "url": "https:\/\/www.sec.gov\/news\/press\/2006\/2006-80.htm", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.sec.gov\/news\/press\/2006\/2006-80.htm",
+        "snippet": "Fannie Mae had a policy of not recording those amounts that
+        fell within a company-calculated threshold. Such a policy was an improper
+        departure from GAAP and had the effect of reducing earnings volatility.",
+        "dateLastCrawled": "2018-09-02T07:17:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "SEC.gov | Agencies Request Comment on Proposed Risk ...", "url":
+        "https:\/\/www.sec.gov\/news\/pressrelease\/2013-167.html", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.sec.gov\/news\/pressrelease\/2013-167.html",
+        "snippet": "Further, the rule would recognize the full guarantee on payments
+        of principal and interest provided by Fannie Mae and Freddie Mac for their
+        residential mortgage-backed securities as meeting the risk retention requirements
+        while Fannie Mae and Freddie Mac are in conservatorship or receivership
+        and have capital support from the U.S. government.", "dateLastCrawled": "2018-10-02T01:40:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "UNITED STATES OF AMERICA SECURITIES AND EXCHANGE ...", "url": "https:\/\/www.sec.gov\/news\/press\/2011\/npa-pr2011-267-fanniemae.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/news\/press\/2011\/npa-pr2011-267-fanniemae.pdf",
+        "snippet": "(the \"Respondent\" or \"Fannie Mae\") and others that occurred
+        in or about December 2006 through September 6, 2008, arising from, among other
+        things, public statements concerning Fannie Mae''s exposure to SUbprime
+        and Alt-A mortgages (collectively, the \"Investigation\").", "dateLastCrawled":
+        "2018-09-25T15:28:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10", "name":
+        "Enhancing Disclosure in the Mortgage-Backed - SEC", "url": "https:\/\/www.sec.gov\/news\/studies\/mortgagebacked.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/news\/studies\/mortgagebacked.htm",
+        "snippet": "As a result, TBA market participants consider MBS of Fannie Mae,
+        Freddie Mac and Ginnie Mae that meet the Good Delivery Guidelines to be
+        interchangeable or fungible with other such MBS issued or guaranteed by Fannie
+        Mae, Freddie Mac or Ginnie Mae, respectively.", "dateLastCrawled": "2018-10-02T01:03:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Accounting for Deferred Purchase Price Adjustments and for ...",
+        "url": "https:\/\/www.sec.gov\/news\/testimony\/ts020905dtn.htm", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.sec.gov\/news\/testimony\/ts020905dtn.htm",
+        "snippet": "Fannie Mae is the largest non-bank financial services company
+        in the world and the nation''s largest source of financing for home mortgages.
+        2 Fannie Mae''s common stock is listed on the New York Stock Exchange and,
+        after discussions with the Commission staff, on March 31, 2003, Fannie Mae
+        voluntarily registered its common stock with the ...", "dateLastCrawled":
+        "2018-09-29T05:02:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12", "name":
+        "SEC News Digest, December 16, 2011", "url": "https:\/\/www.sec.gov\/news\/digest\/2011\/dig121611.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/news\/digest\/2011\/dig121611.htm",
+        "snippet": "Fannie Mae''s executives also knew and approved of the decision
+        to underreport Fannie Mae''s Alt-A loan exposure, the SEC alleged. Fannie
+        Mae disclosed that its March 31, 2007 exposure to Alt-A loans was 11 percent
+        of its portfolio of Single Family loans.", "dateLastCrawled": "2018-08-30T11:19:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "FREDDIE MAC FANNIE MAE Disclosed - SEC.gov", "url": "https:\/\/www.sec.gov\/news\/press\/2011\/2011-267-chart-subprime-exposure.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/news\/press\/2011\/2011-267-chart-subprime...",
+        "snippet": "FREDDIE MAC SUBPRIME EXPOSURE: MISLEADING STATEMENTS Data as
+        of 2Q 2008 Source: Securities and Exchange Commission Disclosed $6 Billion
+        Disclosed $8 Billion Actual Estimated Holdings:", "dateLastCrawled": "2018-09-28T15:22:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Remarks at Joint News Conference with OFHEO - SEC", "url": "https:\/\/www.sec.gov\/news\/speech\/2006\/spch052306cc.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/news\/speech\/2006\/spch052306cc.htm",
+        "snippet": "Fannie Mae describes itself as \"an instrument of national policy\"
+        and as \"a private company with a public mission.\" For that reason, today''s
+        announcement is especially bitter — because it underscores a breach of trust.",
+        "dateLastCrawled": "2018-10-01T12:40:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "SEC Announces Start of $357 Million Fair Fund Distribution ...",
+        "url": "https:\/\/www.sec.gov\/news\/press\/2007\/2007-81.htm", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.sec.gov\/news\/press\/2007\/2007-81.htm",
+        "snippet": "The SEC brought a settled action against Fannie Mae in May
+        2006 alleging that, between 1998 and 2004, Fannie Mae issued materially
+        false and misleading financial statements in various reports and in filings
+        with the SEC.", "dateLastCrawled": "2018-09-19T13:52:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Statement by SEC Chairman: - SEC.gov", "url": "https:\/\/www.sec.gov\/news\/speech\/2008\/spch111408cc.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/news\/speech\/2008\/spch111408cc.htm",
+        "snippet": "In addition, the Housing and Economic Recovery Act of 2008 gives
+        the SEC Chairman similar oversight and advisory responsibilities with respect
+        to the conservatorship of Fannie Mae and Freddie Mac supervised by the Federal
+        Housing Finance Agency.", "dateLastCrawled": "2018-09-04T08:48:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "SEC.gov | Statement on Proposed Revisions to Prohibitions ...",
+        "url": "https:\/\/www.sec.gov\/news\/public-statement\/statement-stein-060518-2",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/news\/public-statement\/statement-stein-060518-2",
+        "snippet": "The federal government took over the housing giants Freddie Mac
+        and Fannie Mae. And, critically, the government created a number of programs
+        to lend, guarantee, and stave off the failure of large and small banks. ...",
+        "dateLastCrawled": "2018-10-03T01:03:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "SEC Testimony: Application of Federal Securities Law ...", "url":
+        "https:\/\/www.sec.gov\/news\/testimony\/ts042105alb.htm", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.sec.gov\/news\/testimony\/ts042105alb.htm",
+        "snippet": "Fannie Mae has disclosed that the Commission is investigating
+        certain issues associated with Fannie Mae''s accounting and disclosure practices.
+        I and others at the Commission appreciate the Committee''s recognition of
+        the non-public nature of the Commission''s active investigation.", "dateLastCrawled":
+        "2018-09-11T16:56:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19", "name":
+        "Press Release: SEC Enhances Investor Protections Against ...", "url": "https:\/\/www.sec.gov\/news\/press\/2008\/2008-143.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/news\/press\/2008\/2008-143.htm",
+        "snippet": "SEC Enhances Investor Protections Against Naked Short Selling
+        FOR IMMEDIATE RELEASE 2008-143. Washington, D.C., July 15, 2008 - The Securities
+        and Exchange Commission today issued an emergency order to enhance investor
+        protections against \"naked\" short selling in the securities of Fannie Mae,
+        Freddie Mac, and primary dealers at commercial and investment banks.", "dateLastCrawled":
+        "2018-09-30T14:17:00.0000000Z", "language": "en", "isNavigational": false}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 08 Oct 2018 18:21:02 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=fannie%20mae%20(site:sec.gov/archives/edgar/)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 08 Oct 2018 18:20:03 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 2A3ADD96CC48482C81AB489F2213C223
+      Bingapis-Sessionid:
+      - FF47EFC0611B417CB77E907839721540
+      X-Msedge-Clientid:
+      - 397772782CBA6E0428507EFA2DF66F02
+      X-Msapi-Userstate:
+      - 2baf
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=308,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: 2A3ADD96CC48482C81AB489F2213C223 Ref B: BY3EDGE0412 Ref C: 2018-10-08T18:21:03Z'
+      Apim-Request-Id:
+      - f5b9c87a-f1e4-438d-a603-d02c69af41f7
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Mon, 08 Oct 2018 18:21:03 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "fannie
+        mae (site:sec.gov\/archives\/edgar\/)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=fannie+mae+(site%3asec.gov%2farchives%2fedgar%2f)",
+        "totalEstimatedMatches": 7520, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Document", "url": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/310522\/000031052218000107\/fanniemae201710k.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/...\/310522\/000031052218000107\/fanniemae201710k.htm",
+        "snippet": "In 2014, Fannie Mae and Freddie Mac executed three agreements
+        relating to the governance and operation of CSS, and appointed a chief executive
+        officer and four members of the CSS Board of Managers, two each from Fannie
+        Mae and Freddie Mac.", "dateLastCrawled": "2018-09-24T16:13:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Document", "url": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/310522\/000031052217000434\/fanniemae8konfhfa2018score.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/...\/fanniemae8konfhfa2018score.htm",
+        "snippet": "For loans funded under the Fannie Mae Green Building Certification
+        program or the Freddie Mac Green Certified program, FHFA will exclude 50 percent
+        of the loan amount if at least 20 percent but less than 50 percent of the
+        unit rents are affordable by applying the income limits in . 6.", "dateLastCrawled":
+        "2018-08-24T20:49:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2", "name":
+        "Document", "url": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/310522\/000031052216000569\/fanniemaeq20630201610q.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/...\/000031052216000569\/fanniemaeq20630201610q.htm",
+        "snippet": "Fannie Mae is a government-sponsored enterprise (“GSE”) that
+        was chartered by Congress in 1938. We serve an essential role in the functioning
+        of the U.S. housing market and are investing in improvements to the U.S. housing
+        finance system.", "dateLastCrawled": "2018-10-04T20:08:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Master Custodial Agreement for Custody of Single Family ...", "url":
+        "https:\/\/www.sec.gov\/Archives\/edgar\/data\/1518715\/000119312511144488\/dex1026.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/1518715\/000119312511144488\/...",
+        "snippet": "3 RECITALS. This Custodial Agreement is executed by, and delivered
+        to, each of Fannie Mae, Custodian, and Lender, as of the effective date,
+        all as indicated on the cover page hereof.. WHEREAS, Lender is (or will become)
+        the Servicer of certain Mortgage Loans pursuant to a Mortgage Selling and
+        Servicing Contract with Fannie Mae, and may or may not be the Seller with
+        respect to those Mortgage Loans;", "dateLastCrawled": "2018-09-07T11:49:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Form 10-K, Amendment No. 1 - SEC.gov | HOME", "url": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/310522\/000119312512105455\/d307691d10ka.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/310522\/000119312512105455\/...",
+        "snippet": "Termination by Fannie Mae. If Fannie Mae terminates an executive
+        officer’s employment other than for cause, the Board of Directors may determine,
+        subject to the approval of FHFA in consultation with Treasury, that he or
+        she may receive certain unpaid deferred salary or long-term incentive awards.",
+        "dateLastCrawled": "2018-09-09T18:34:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "FannieMae 2014 10K Press Release - SEC.gov", "url": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/310522\/000031052215000082\/fanniemae201410kpressrelea.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/...\/fanniemae201410kpressrelea.htm",
+        "snippet": "Fannie Mae paid a total of $20.6 billion in dividends to Treasury
+        in 2014.The company expects to pay Treasury $1.9 billion in dividends in March
+        2015.With the expected March 2015 dividend payment, the company will have
+        paid a total of $136.4 billion in dividends to Treasury.", "dateLastCrawled":
+        "2018-08-29T20:16:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6", "name":
+        "FannieMae.10-K2013 EX 10.10", "url": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/310522\/000031052214000067\/fanniemae10-k2013ex1010.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/...\/000031052214000067\/fanniemae10-k2013ex1010.htm",
+        "snippet": "fannie mae SUPPLEMENTAL PENSION PLAN Pursuant to Section 5.5
+        of the Supplemental Pension Plan (the “Plan”) and as directed by the Federal
+        Housing Finance Agency (“FHFA”) on October 24, 2013 and approved by the Fannie
+        Mae Board of Directors on October 25, 2013, Fannie Mae hereby amends the
+        Plan by adding the following new Section 5.14 :", "dateLastCrawled": "2018-09-27T21:40:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "FannieMae Q3.09.30.2012 EX 4.1 - SEC.gov | HOME", "url": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/310522\/000031052212000141\/fanniemaeq309302012ex41.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/...\/000031052212000141\/fanniemaeq309302012ex41.htm",
+        "snippet": "FANNIE MAE . AMENDED AND RESTATED CERTIFICATE OF DESIGNATION
+        OF TERMS OF. VARIABLE LIQUIDATION PREFERENCE SENIOR. PREFERRED STOCK, SERIES
+        2008-2. The Federal Housing Finance Agency, exercising its authority pursuant
+        to Section 1367(b) of the Federal Housing Enterprises Financial Safety and
+        Soundness Act of 1992 (12 U.", "dateLastCrawled": "2018-09-23T09:50:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "FannieMae2012 10K EX 4.15 Cert of Des Series S", "url": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/310522\/000031052213000065\/fanniemae201210kex415certo.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/...\/fanniemae201210kex415certo.htm",
+        "snippet": "If Fannie Mae redeems the Series S Preferred Stock during a
+        Floating Rate Dividend Period, the dividend that would otherwise be payable
+        for the then current quarterly Floating Rate Dividend Period will be included
+        in the redemption price of the shares redeemed and will not be separately
+        payable.", "dateLastCrawled": "2018-09-29T21:51:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Fannie Mae As Soon As Pooled Agreement - SEC.gov", "url": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/1283683\/000119312504045739\/dex1033.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/1283683\/000119312504045739\/...",
+        "snippet": "(b) From time to time the parties hereto may enter into transactions
+        in which Lender agrees to transfer to Fannie Mae Mortgage Loans against
+        the transfer of funds by Fannie Mae (as described herein), with a simultaneous
+        agreement by Fannie Mae to transfer to Lender each such Mortgage Loan on
+        the Repurchase Date related to such Mortgage Loan in accordance with the terms
+        set forth herein ...", "dateLastCrawled": "2018-10-02T12:37:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "exv10w30 - SEC.gov", "url": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/1520566\/000095012312001025\/y04863a2exv10w30.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/1520566\/000095012312001025\/...",
+        "snippet": "(c) On each Repurchase Date, Fannie Mae will calculate (i) the
+        price Fannie Mae is to pay for delivery of each Mortgage Loan redelivered
+        to it on such Repurchase Date pursuant to the ASAP Sale Agreement or via Whole
+        Loan Execution, (ii) the Repurchase Price which the Lender is obligated to
+        pay to Fannie Mae to repurchase such Mortgage Loan, and ...", "dateLastCrawled":
+        "2018-09-13T23:03:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11", "name":
+        "Federal National Mortgage Association (Form: 8-K)", "url": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/310522\/000129993304002429\/htm_2364.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/310522\/000129993304002429\/...",
+        "snippet": "The financial information regarding Fannie Mae’s anticipated
+        results of operations for the quarter ended September 30, 2004 that was contained
+        in Fannie Mae’s Form 12b-25 filed on November 15, 2004 and in Fannie Mae’s
+        Form 8-K filed on November 16, 2004 was prepared applying the same policies
+        and practices, and should also not be relied upon.", "dateLastCrawled": "2018-09-16T18:01:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Master Agreement between Homestreet Bank and Fannie Mae", "url":
+        "https:\/\/www.sec.gov\/Archives\/edgar\/data\/1518715\/000119312511168932\/dex1027.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/1518715\/000119312511168932\/...",
+        "snippet": "Fannie Mae must receive the fully executed Master Agreement
+        within ten business days of Lender’s receipt of this Master Agreement, or
+        Fannie Mae may, at its option, declare this Master Agreement null and void.",
+        "dateLastCrawled": "2018-09-28T18:53:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "FannieMae2012 10K EX 10.9 Supp Pension Plan of 2003 as ...", "url":
+        "https:\/\/www.sec.gov\/Archives\/edgar\/data\/310522\/000031052213000065\/fanniemae201210kex109suppp.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/...\/fanniemae201210kex109suppp.htm",
+        "snippet": "1.1. Establishment.Fannie Mae (the “Corporation”) establishes
+        this Fannie Mae Supplemental Pension Plan of 2003 for the benefit of eligible
+        employees of the Corporation and their beneficiaries.", "dateLastCrawled":
+        "2018-10-05T05:17:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "FannieMaeCharterActExhibit31", "url": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/310522\/000031052215000179\/fanniemaecharteractexhibit.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/...\/fanniemaecharteractexhibit.htm",
+        "snippet": "The Congress declares that the purposes of this title are to establish
+        secondary market facilities for residential mortgages, to provide that the
+        operations thereof shall be financed by private capital to the maximum extent
+        feasible, and to authorize such facilities to—", "dateLastCrawled": "2018-09-08T05:43:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "def14a - SEC.gov", "url": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/310522\/000095013308001442\/w48664def14a.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/310522\/000095013308001442\/...",
+        "snippet": "You are entitled to vote or direct the voting of your shares of
+        Fannie Mae common stock if you were a shareholder at the close of business
+        on March 21, 2008, which is the record date for the annual meeting (the “Record
+        Date”).", "dateLastCrawled": "2018-10-02T19:29:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Federal National Mortgage Association (Form: 8-K)", "url": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/310522\/000129993308006051\/htm_30584.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/310522\/000129993308006051\/...",
+        "snippet": "On November 24, 2008, FHFA, as conservator, reconstituted Fannie
+        Mae''s Board of Directors and directed Fannie Mae regarding the function
+        and authorities of the Board of Directors. The directors of Fannie Mae shall
+        serve on behalf of the conservator and shall exercise their authority as directed
+        by the conservator.", "dateLastCrawled": "2018-09-05T09:35:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "EX-10.1 - SEC.gov", "url": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/1040719\/000119312514196674\/d723826dex101.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/...\/1040719\/000119312514196674\/d723826dex101.htm",
+        "snippet": "FANNIE MAE DESIGNATED ACCOUNT: “Designated Account” shall mean
+        a Fannie Mae designated account created by Fannie Mae in its name and
+        under its control at a financial institution of Fannie Mae’s choosing. A
+        Designated Account may relate to either MBS Advances or MRS Advances but not
+        both.", "dateLastCrawled": "2018-09-24T23:22:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "FannieMae 2012 10K - SEC", "url": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/310522\/000031052213000065\/fanniemae201210k.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/...\/310522\/000031052213000065\/fanniemae201210k.htm",
+        "snippet": "Fannie Mae’s HPI is a weighted repeat transactions index, measuring
+        average price changes in repeat sales on the same properties. Fannie Mae’s
+        HPI excludes prices on properties sold in foreclosure. The reported home price
+        change reflects the percentage change in Fannie Mae’s HPI from the fourth
+        quarter of the prior year to the fourth ...", "dateLastCrawled": "2018-09-18T18:25:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "FannieMae2012 10K EX 10.32 ...", "url": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/310522\/000031052213000065\/fanniemae201210kex1032form.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/...\/fanniemae201210kex1032form.htm",
+        "snippet": "(a) materially harmed Fannie Mae by, in connection with the
+        Awardee’s performance of the Awardee’s duties for Fannie Mae, engaging in
+        dishonest or fraudulent actions or willful misconduct, or performing the Awardee’s
+        duties in a grossly negligent manner, or", "dateLastCrawled": "2018-09-17T11:30:00.0000000Z",
+        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 08 Oct 2018 18:21:03 GMT
 recorded_with: VCR 4.0.0

@@ -448,4 +448,498 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
   recorded_at: Mon, 27 Aug 2018 02:08:45 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=alcohol%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 08 Oct 2018 18:19:46 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - F071911896BB4532997C7BC45CB1C867
+      Bingapis-Sessionid:
+      - 7C9C31F38A4D4B22A001A0A3C7DD9EF3
+      X-Msedge-Clientid:
+      - 1F95D1BD29086DDE23F5DD3F28446CE8
+      X-Msapi-Userstate:
+      - a559
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=234,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: F071911896BB4532997C7BC45CB1C867 Ref B: BY3EDGE0410 Ref C: 2018-10-08T18:20:46Z'
+      Apim-Request-Id:
+      - f3649084-3236-4f9a-b9f4-7f91c2964ad9
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Mon, 08 Oct 2018 18:20:45 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "alcohol
+        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=alcohol+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 19900000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Alcohol''s Effects on the Body | National Institute on ...", "url":
+        "https:\/\/www.niaaa.nih.gov\/alcohol-health\/alcohols-effects-body", "about":
+        [{"name": "Alcohol"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.niaaa.nih.gov\/alcohol-health\/alcohols-effects-body",
+        "snippet": "Alcohol interferes with the brain’s communication pathways,
+        and can affect the way the brain looks and works. These disruptions can change
+        mood and behavior, and make it harder to think clearly and move with coordination.
+        ...", "dateLastCrawled": "2018-10-04T22:27:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Alcohol | National Institute on Drug Abuse (NIDA)", "url": "https:\/\/www.drugabuse.gov\/drugs-abuse\/alcohol",
+        "about": [{"name": "Alcohol"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.drugabuse.gov\/drugs-abuse\/alcohol",
+        "snippet": "Brief Description. People drink to socialize, celebrate, and relax.
+        Alcohol often has a strong effect on people—and throughout history, people
+        have struggled to understand and manage alcohol’s power.", "dateLastCrawled":
+        "2018-10-03T07:03:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2", "name":
+        "CDC - Fact Sheets-Alcohol Use And Health - Alcohol", "url": "https:\/\/www.cdc.gov\/alcohol\/fact-sheets\/alcohol-use.htm",
+        "about": [{"name": "Alcohol"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/alcohol\/fact-sheets\/alcohol-use.htm",
+        "snippet": "Excessive alcohol use can lead to increased risk of health problems
+        such as injuries, violence, liver diseases, and cancer.The CDC Alcohol Program
+        works to strengthen the scientific foundation for preventing excessive alcohol
+        use.", "dateLastCrawled": "2018-10-01T21:38:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Alcohol: MedlinePlus", "url": "https:\/\/medlineplus.gov\/alcohol.html",
+        "about": [{"name": "Alcohol"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/medlineplus.gov\/alcohol.html",
+        "snippet": "If you are like many Americans, you drink alcohol at least occasionally.
+        For many people, moderate drinking is probably safe. It may even have health
+        benefits, including reducing your risk of certain heart problems.", "dateLastCrawled":
+        "2018-10-05T11:00:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4", "name":
+        "Alcoholism and Alcohol Abuse: MedlinePlus", "url": "https:\/\/medlineplus.gov\/alcoholismandalcoholabuse.html",
+        "about": [{"name": "Alcohol use disorder"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/medlineplus.gov\/alcoholismandalcoholabuse.html", "snippet":
+        "The primary NIH organization for research on Alcoholism and Alcohol Abuse
+        is the National Institute on Alcohol Abuse and Alcoholism. Other Languages.
+        Find health information in languages other than English on Alcoholism and
+        Alcohol Abuse. NIH MedlinePlus Magazine. As Blood Alcohol Content (BAC)
+        Increases, So Does Impairment ...", "dateLastCrawled": "2018-10-04T03:00:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Alcohol and Cancer Risk Fact Sheet - National Cancer Institute",
+        "url": "https:\/\/www.cancer.gov\/about-cancer\/causes-prevention\/risk\/alcohol\/alcohol-fact-sheet",
+        "about": [{"name": "Alcohol and cancer"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.cancer.gov\/about-cancer\/causes-prevention\/risk\/alcohol\/...",
+        "snippet": "Alcohol is the common term for ethanol or ethyl alcohol, a
+        chemical substance found in alcoholic beverages such as beer, hard cider,
+        malt liquor, wines, and distilled spirits (liquor). Alcohol is produced
+        by the fermentation of sugars and starches by yeast.", "dateLastCrawled":
+        "2018-10-04T01:24:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6", "name":
+        "CDC - Frequently Asked Questions - Alcohol", "url": "https:\/\/www.cdc.gov\/alcohol\/faqs.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/alcohol\/faqs.htm",
+        "snippet": "Ethyl alcohol, or ethanol, is an intoxicating ingredient found
+        in beer, wine, and liquor. Alcohol is produced by the fermentation of yeast,
+        sugars, and starches. Alcohol affects every organ in the body. It is a central
+        nervous system depressant that is rapidly absorbed from the stomach and small
+        ...", "dateLastCrawled": "2018-10-05T13:10:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "CDC - Alcohol and Public Health Home Page - Alcohol", "url":
+        "https:\/\/www.cdc.gov\/alcohol\/index.htm", "about": [{"name": "Alcohol"}],
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/alcohol",
+        "snippet": "Excessive alcohol use, including underage drinking and binge
+        drinking (drinking 5 or more drinks on an occasion for men or 4 or more drinks
+        on an occasion for women), can lead to increased risk of health problems such
+        as injuries, violence, liver diseases, and cancer.", "dateLastCrawled": "2018-10-02T20:46:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Alcohol & Your Health | National Institute on Alcohol ...", "url":
+        "https:\/\/www.niaaa.nih.gov\/alcohol-health\/", "about": [{"name": "National
+        Institute on Alcohol Abuse and Alcoholism"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.niaaa.nih.gov\/alcohol-health", "snippet": "Alcohol’s effects
+        on your brain and body depend on the ways you drink–such as how much and how
+        often–as well as your age, gender, and overall health status. What Is a Standard
+        Drink?You may be drinking more than you realize;", "dateLastCrawled": "2018-10-04T17:57:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "National Institute on Alcohol Abuse and Alcoholism (NIAAA)", "url":
+        "https:\/\/www.niaaa.nih.gov\/", "about": [{"name": "National Institute on
+        Alcohol Abuse and Alcoholism"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.niaaa.nih.gov",
+        "snippet": "@NIAAAnews @IGotThisChicago @samhsagov This is a finding from
+        the 2018 article: \"Trends in Alcohol-Related Emergency Departmen… t.co\/jzlKy9RmcP
+        11 hours 15 min ago", "dateLastCrawled": "2018-10-04T18:52:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Alcohol Facts and Statistics | National Institute on ...", "url":
+        "https:\/\/www.niaaa.nih.gov\/alcohol-health\/overview-alcohol-consumption\/alcohol-facts-and-statistics",
+        "about": [{"name": "Alcohol use disorder"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.niaaa.nih.gov\/...\/alcohol-facts-and-statistics", "snippet":
+        "Definitions. Alcohol Use Disorder (AUD): AUD is a chronic relapsing brain
+        disease characterized by an impaired ability to stop or control alcohol
+        use despite adverse social, occupational, or health consequences.AUD can range
+        from mild to severe, and recovery is possible regardless of severity. The
+        fourth edition of the Diagnostic and Statistical Manual (DSM-IV), published
+        by the American ...", "dateLastCrawled": "2018-10-01T20:08:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Alcohol Use in Pregnancy | FASD | NCBDDD | CDC", "url": "https:\/\/www.cdc.gov\/ncbddd\/fasd\/alcohol-use.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/ncbddd\/fasd\/alcohol-use.html",
+        "snippet": "There is no known safe amount of alcohol use during pregnancy
+        or while trying to get pregnant. There is also no safe time during pregnancy
+        to drink. All types of alcohol are equally harmful, including all wines
+        and beer. When a pregnant woman drinks alcohol, so does her baby. Women
+        also should not ...", "dateLastCrawled": "2018-10-03T13:11:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Alcohol | NIDA for Teens", "url": "https:\/\/teens.drugabuse.gov\/drug-facts\/alcohol",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/teens.drugabuse.gov\/drug-facts\/alcohol",
+        "snippet": "Alcohol is the most commonly used substance of abuse among young
+        people in America, and drinking when you’re underage puts your health and
+        safety at risk. ...", "dateLastCrawled": "2018-10-02T02:26:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Alcohol | SAMHSA - Substance Abuse and Mental Health ...", "url":
+        "https:\/\/www.samhsa.gov\/atod\/alcohol", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.samhsa.gov\/atod\/alcohol", "snippet": "About 17 million
+        of these, or 6.4%, met criteria for an alcohol use disorder in the past
+        year. Slightly more than half of Americans aged 12 or older report being current
+        drinkers of alcohol.", "dateLastCrawled": "2018-10-05T01:25:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Alcohol | Breastfeeding | CDC", "url": "https:\/\/www.cdc.gov\/breastfeeding\/breastfeeding-special-circumstances\/vaccinations-medications-drugs\/alcohol.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/...\/vaccinations-medications-drugs\/alcohol.html",
+        "snippet": "The alcohol level in breast milk is essentially the same as
+        the alcohol level in a mother’s bloodstream. Expressing or pumping milk
+        after drinking alcohol, and then discarding it (“pumping and dumping”),
+        does NOT reduce the amount of alcohol present in the mother’s milk more
+        quickly.", "dateLastCrawled": "2018-10-02T10:21:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "CDC - Fact Sheets- Moderate Drinking - Alcohol", "url": "https:\/\/www.cdc.gov\/alcohol\/fact-sheets\/moderate-drinking.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/alcohol\/fact-sheets\/moderate-drinking.htm",
+        "snippet": "Alcohol consumption is associated with a variety of short- and
+        long-term health risks, including motor vehicle crashes, violence, sexual
+        risk behaviors, high blood pressure, and various cancers (e.g., breast cancer).
+        1 The risk of these harms increases with the amount of alcohol you drink.",
+        "dateLastCrawled": "2018-10-03T12:00:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "CDC - Fact Sheets-Excessive Alcohol Use and Risks to Men''s ...",
+        "url": "https:\/\/www.cdc.gov\/alcohol\/fact-sheets\/mens-health.htm", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.cdc.gov\/alcohol\/fact-sheets\/mens-health.htm",
+        "snippet": "Excessive alcohol use is commonly involved in sexual assault.
+        17 Also, alcohol use by men increases the chances of engaging in risky sexual
+        activity including unprotected sex, sex with multiple partners, or sex with
+        a partner at risk for sexually transmitted diseases. 4. Cancer.", "dateLastCrawled":
+        "2018-10-03T00:36:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17", "name":
+        "Overview of Alcohol Consumption | National Institute on ...", "url": "https:\/\/www.niaaa.nih.gov\/alcohol-health\/overview-alcohol-consumption",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.niaaa.nih.gov\/alcohol-health\/overview-alcohol-consumption",
+        "snippet": "Alcohol’s immediate effects can appear within about 10 minutes.
+        As you drink, you increase your blood alcohol concentration (BAC) level,
+        which is the amount of alcohol present in your bloodstream. The higher your
+        BAC, the more impaired you become by alcohol’s effects.", "dateLastCrawled":
+        "2018-10-03T03:43:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18", "name":
+        "Fact Sheets - Excessive Alcohol Use and Risks to Women''s ...", "url":
+        "https:\/\/www.cdc.gov\/alcohol\/fact-sheets\/womens-health.htm", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.cdc.gov\/alcohol\/fact-sheets\/womens-health.htm",
+        "snippet": "Excessive Alcohol Use and Risks to Women’s Health. Although
+        men are more likely to drink alcohol and drink in larger amounts, gender
+        differences in body structure and chemistry cause women to absorb more alcohol,
+        and take longer to break it down and remove it from their bodies (i.e., to
+        metabolize it).", "dateLastCrawled": "2018-10-04T20:19:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "CDC - Fact Sheets-Minimum Legal Drinking Age - Alcohol", "url":
+        "https:\/\/www.cdc.gov\/alcohol\/fact-sheets\/minimum-legal-drinking-age.htm",
+        "about": [{"name": "Legal drinking age"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.cdc.gov\/alcohol\/fact-sheets\/minimum-legal-drinking-age.htm",
+        "snippet": "Excessive alcohol use can lead to increased risk of health problems
+        such as injuries, violence, liver diseases, and cancer.The CDC Alcohol Program
+        works to strengthen the scientific foundation for preventing excessive alcohol
+        use.", "dateLastCrawled": "2018-10-04T21:45:00.0000000Z", "language": "en",
+        "isNavigational": false}]}, "rankingResponse": {"mainline": {"items": [{"answerType":
+        "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 08 Oct 2018 18:20:46 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=alcohol%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 08 Oct 2018 18:19:46 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - D78710B5280D43FC98EC6565ECFD3D78
+      Bingapis-Sessionid:
+      - 9309C0905B244B7DB51566795E19E068
+      X-Msedge-Clientid:
+      - '08604E87EF886C8D313B4205EEC46D90'
+      X-Msapi-Userstate:
+      - cfd8
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=237,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: D78710B5280D43FC98EC6565ECFD3D78 Ref B: BY3EDGE0109 Ref C: 2018-10-08T18:20:47Z'
+      Apim-Request-Id:
+      - 4bd79bba-b70c-422d-9dbc-d15ea6c7bdc3
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Mon, 08 Oct 2018 18:20:46 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "alcohol
+        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=alcohol+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 20000000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Alcohol''s Effects on the Body | National Institute on ...", "url":
+        "https:\/\/www.niaaa.nih.gov\/alcohol-health\/alcohols-effects-body", "about":
+        [{"name": "Alcohol"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.niaaa.nih.gov\/alcohol-health\/alcohols-effects-body",
+        "snippet": "Alcohol interferes with the brain’s communication pathways,
+        and can affect the way the brain looks and works. These disruptions can change
+        mood and behavior, and make it harder to think clearly and move with coordination.
+        ...", "dateLastCrawled": "2018-10-04T22:27:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Alcohol | National Institute on Drug Abuse (NIDA)", "url": "https:\/\/www.drugabuse.gov\/drugs-abuse\/alcohol",
+        "about": [{"name": "Alcohol"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.drugabuse.gov\/drugs-abuse\/alcohol",
+        "snippet": "Brief Description. People drink to socialize, celebrate, and relax.
+        Alcohol often has a strong effect on people—and throughout history, people
+        have struggled to understand and manage alcohol’s power.", "dateLastCrawled":
+        "2018-10-03T07:03:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2", "name":
+        "CDC - Fact Sheets-Alcohol Use And Health - Alcohol", "url": "https:\/\/www.cdc.gov\/alcohol\/fact-sheets\/alcohol-use.htm",
+        "about": [{"name": "Alcohol"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/alcohol\/fact-sheets\/alcohol-use.htm",
+        "snippet": "Excessive alcohol use can lead to increased risk of health problems
+        such as injuries, violence, liver diseases, and cancer.The CDC Alcohol Program
+        works to strengthen the scientific foundation for preventing excessive alcohol
+        use.", "dateLastCrawled": "2018-10-01T21:38:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Alcohol: MedlinePlus", "url": "https:\/\/medlineplus.gov\/alcohol.html",
+        "about": [{"name": "Alcohol"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/medlineplus.gov\/alcohol.html",
+        "snippet": "If you are like many Americans, you drink alcohol at least occasionally.
+        For many people, moderate drinking is probably safe. It may even have health
+        benefits, including reducing your risk of certain heart problems.", "dateLastCrawled":
+        "2018-10-05T11:00:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4", "name":
+        "Alcoholism and Alcohol Abuse: MedlinePlus", "url": "https:\/\/medlineplus.gov\/alcoholismandalcoholabuse.html",
+        "about": [{"name": "Alcohol use disorder"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/medlineplus.gov\/alcoholismandalcoholabuse.html", "snippet":
+        "The primary NIH organization for research on Alcoholism and Alcohol Abuse
+        is the National Institute on Alcohol Abuse and Alcoholism. Other Languages.
+        Find health information in languages other than English on Alcoholism and
+        Alcohol Abuse. NIH MedlinePlus Magazine. As Blood Alcohol Content (BAC)
+        Increases, So Does Impairment ...", "dateLastCrawled": "2018-10-04T03:00:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Alcohol and Cancer Risk Fact Sheet - National Cancer Institute",
+        "url": "https:\/\/www.cancer.gov\/about-cancer\/causes-prevention\/risk\/alcohol\/alcohol-fact-sheet",
+        "about": [{"name": "Alcohol and cancer"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.cancer.gov\/about-cancer\/causes-prevention\/risk\/alcohol\/...",
+        "snippet": "Alcohol is the common term for ethanol or ethyl alcohol, a
+        chemical substance found in alcoholic beverages such as beer, hard cider,
+        malt liquor, wines, and distilled spirits (liquor). Alcohol is produced
+        by the fermentation of sugars and starches by yeast.", "dateLastCrawled":
+        "2018-10-04T01:24:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6", "name":
+        "CDC - Frequently Asked Questions - Alcohol", "url": "https:\/\/www.cdc.gov\/alcohol\/faqs.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/alcohol\/faqs.htm",
+        "snippet": "Ethyl alcohol, or ethanol, is an intoxicating ingredient found
+        in beer, wine, and liquor. Alcohol is produced by the fermentation of yeast,
+        sugars, and starches. Alcohol affects every organ in the body. It is a central
+        nervous system depressant that is rapidly absorbed from the stomach and small
+        ...", "dateLastCrawled": "2018-10-05T13:10:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "CDC - Alcohol and Public Health Home Page - Alcohol", "url":
+        "https:\/\/www.cdc.gov\/alcohol\/index.htm", "about": [{"name": "Alcohol"}],
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/alcohol",
+        "snippet": "Excessive alcohol use, including underage drinking and binge
+        drinking (drinking 5 or more drinks on an occasion for men or 4 or more drinks
+        on an occasion for women), can lead to increased risk of health problems such
+        as injuries, violence, liver diseases, and cancer.", "dateLastCrawled": "2018-10-02T20:46:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Alcohol & Your Health | National Institute on Alcohol ...", "url":
+        "https:\/\/www.niaaa.nih.gov\/alcohol-health\/", "about": [{"name": "National
+        Institute on Alcohol Abuse and Alcoholism"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.niaaa.nih.gov\/alcohol-health", "snippet": "Alcohol’s effects
+        on your brain and body depend on the ways you drink–such as how much and how
+        often–as well as your age, gender, and overall health status. What Is a Standard
+        Drink?You may be drinking more than you realize;", "dateLastCrawled": "2018-10-04T17:57:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "National Institute on Alcohol Abuse and Alcoholism (NIAAA)", "url":
+        "https:\/\/www.niaaa.nih.gov\/", "about": [{"name": "National Institute on
+        Alcohol Abuse and Alcoholism"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.niaaa.nih.gov",
+        "snippet": "@NIAAAnews @IGotThisChicago @samhsagov This is a finding from
+        the 2018 article: \"Trends in Alcohol-Related Emergency Departmen… t.co\/jzlKy9RmcP
+        11 hours 15 min ago", "dateLastCrawled": "2018-10-04T18:52:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Alcohol Facts and Statistics | National Institute on ...", "url":
+        "https:\/\/www.niaaa.nih.gov\/alcohol-health\/overview-alcohol-consumption\/alcohol-facts-and-statistics",
+        "about": [{"name": "Alcohol use disorder"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.niaaa.nih.gov\/...\/alcohol-facts-and-statistics", "snippet":
+        "Definitions. Alcohol Use Disorder (AUD): AUD is a chronic relapsing brain
+        disease characterized by an impaired ability to stop or control alcohol
+        use despite adverse social, occupational, or health consequences.AUD can range
+        from mild to severe, and recovery is possible regardless of severity. The
+        fourth edition of the Diagnostic and Statistical Manual (DSM-IV), published
+        by the American ...", "dateLastCrawled": "2018-10-01T20:08:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Alcohol Use in Pregnancy | FASD | NCBDDD | CDC", "url": "https:\/\/www.cdc.gov\/ncbddd\/fasd\/alcohol-use.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/ncbddd\/fasd\/alcohol-use.html",
+        "snippet": "There is no known safe amount of alcohol use during pregnancy
+        or while trying to get pregnant. There is also no safe time during pregnancy
+        to drink. All types of alcohol are equally harmful, including all wines
+        and beer. When a pregnant woman drinks alcohol, so does her baby. Women
+        also should not ...", "dateLastCrawled": "2018-10-03T13:11:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Alcohol | NIDA for Teens", "url": "https:\/\/teens.drugabuse.gov\/drug-facts\/alcohol",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/teens.drugabuse.gov\/drug-facts\/alcohol",
+        "snippet": "Alcohol is the most commonly used substance of abuse among young
+        people in America, and drinking when you’re underage puts your health and
+        safety at risk. ...", "dateLastCrawled": "2018-10-02T02:26:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Alcohol | SAMHSA - Substance Abuse and Mental Health ...", "url":
+        "https:\/\/www.samhsa.gov\/atod\/alcohol", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.samhsa.gov\/atod\/alcohol", "snippet": "About 17 million
+        of these, or 6.4%, met criteria for an alcohol use disorder in the past
+        year. Slightly more than half of Americans aged 12 or older report being current
+        drinkers of alcohol.", "dateLastCrawled": "2018-10-05T01:25:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Alcohol | Breastfeeding | CDC", "url": "https:\/\/www.cdc.gov\/breastfeeding\/breastfeeding-special-circumstances\/vaccinations-medications-drugs\/alcohol.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/...\/vaccinations-medications-drugs\/alcohol.html",
+        "snippet": "The alcohol level in breast milk is essentially the same as
+        the alcohol level in a mother’s bloodstream. Expressing or pumping milk
+        after drinking alcohol, and then discarding it (“pumping and dumping”),
+        does NOT reduce the amount of alcohol present in the mother’s milk more
+        quickly.", "dateLastCrawled": "2018-10-02T10:21:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "CDC - Fact Sheets- Moderate Drinking - Alcohol", "url": "https:\/\/www.cdc.gov\/alcohol\/fact-sheets\/moderate-drinking.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/alcohol\/fact-sheets\/moderate-drinking.htm",
+        "snippet": "Alcohol consumption is associated with a variety of short- and
+        long-term health risks, including motor vehicle crashes, violence, sexual
+        risk behaviors, high blood pressure, and various cancers (e.g., breast cancer).
+        1 The risk of these harms increases with the amount of alcohol you drink.",
+        "dateLastCrawled": "2018-10-03T12:00:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "CDC - Fact Sheets-Excessive Alcohol Use and Risks to Men''s ...",
+        "url": "https:\/\/www.cdc.gov\/alcohol\/fact-sheets\/mens-health.htm", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.cdc.gov\/alcohol\/fact-sheets\/mens-health.htm",
+        "snippet": "Excessive alcohol use is commonly involved in sexual assault.
+        17 Also, alcohol use by men increases the chances of engaging in risky sexual
+        activity including unprotected sex, sex with multiple partners, or sex with
+        a partner at risk for sexually transmitted diseases. 4. Cancer.", "dateLastCrawled":
+        "2018-10-03T00:36:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17", "name":
+        "Overview of Alcohol Consumption | National Institute on ...", "url": "https:\/\/www.niaaa.nih.gov\/alcohol-health\/overview-alcohol-consumption",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.niaaa.nih.gov\/alcohol-health\/overview-alcohol-consumption",
+        "snippet": "Alcohol’s immediate effects can appear within about 10 minutes.
+        As you drink, you increase your blood alcohol concentration (BAC) level,
+        which is the amount of alcohol present in your bloodstream. The higher your
+        BAC, the more impaired you become by alcohol’s effects.", "dateLastCrawled":
+        "2018-10-03T03:43:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18", "name":
+        "Fact Sheets - Excessive Alcohol Use and Risks to Women''s ...", "url":
+        "https:\/\/www.cdc.gov\/alcohol\/fact-sheets\/womens-health.htm", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.cdc.gov\/alcohol\/fact-sheets\/womens-health.htm",
+        "snippet": "Excessive Alcohol Use and Risks to Women’s Health. Although
+        men are more likely to drink alcohol and drink in larger amounts, gender
+        differences in body structure and chemistry cause women to absorb more alcohol,
+        and take longer to break it down and remove it from their bodies (i.e., to
+        metabolize it).", "dateLastCrawled": "2018-10-04T20:19:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "CDC - Fact Sheets-Minimum Legal Drinking Age - Alcohol", "url":
+        "https:\/\/www.cdc.gov\/alcohol\/fact-sheets\/minimum-legal-drinking-age.htm",
+        "about": [{"name": "Legal drinking age"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.cdc.gov\/alcohol\/fact-sheets\/minimum-legal-drinking-age.htm",
+        "snippet": "Excessive alcohol use can lead to increased risk of health problems
+        such as injuries, violence, liver diseases, and cancer.The CDC Alcohol Program
+        works to strengthen the scientific foundation for preventing excessive alcohol
+        use.", "dateLastCrawled": "2018-10-04T21:45:00.0000000Z", "language": "en",
+        "isNavigational": false}]}, "rankingResponse": {"mainline": {"items": [{"answerType":
+        "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 08 Oct 2018 18:20:47 GMT
 recorded_with: VCR 4.0.0

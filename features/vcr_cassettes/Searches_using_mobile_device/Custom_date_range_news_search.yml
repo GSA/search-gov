@@ -408,4 +408,460 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
   recorded_at: Mon, 27 Aug 2018 02:08:13 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=item%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 08 Oct 2018 18:19:16 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - ABBE45B9390747E59C1A73963AF7BA51
+      Bingapis-Sessionid:
+      - A74765809E254128ABC071A297A4D40E
+      X-Msedge-Clientid:
+      - 2958181686176F441E0E1494875B6E2C
+      X-Msapi-Userstate:
+      - 954f
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=229,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: ABBE45B9390747E59C1A73963AF7BA51 Ref B: BY3EDGE0313 Ref C: 2018-10-08T18:20:16Z'
+      Apim-Request-Id:
+      - 6e46c8dc-0579-497a-8c09-35e36811069e
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Mon, 08 Oct 2018 18:20:15 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "item
+        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=item+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 15000000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Is your test, item, or service covered? | Medicare", "url": "https:\/\/www.medicare.gov\/coverage\/is-your-test-item-or-service-covered",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.medicare.gov\/coverage\/is-your-test-item-or-service-covered",
+        "snippet": "Find out if your test, item or service is covered. Medicare
+        coverage for many tests, items, and services depends on where you live. This
+        list includes tests, items, and services (covered and non-covered) if coverage
+        is the same no matter where you live.", "dateLastCrawled": "2018-10-05T07:01:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "hours per response7.71 FORM 8-K", "url": "https:\/\/www.sec.gov\/about\/forms\/form8-k.pdf",
+        "about": [{"name": "Form 8-K"}, {"name": "Form 8-K"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.sec.gov\/about\/forms\/form8-k.pdf",
+        "snippet": "If a report on Form 8-K contains disclosures under Item 2.02
+        or Item 7.01, whether or not the report contains disclosures regarding other
+        items, all exhibits to such report relating to Item 2.02 or Item 7.01
+        will be deemed furnished, and not ﬁled, unless the registrant speci ﬁes, under
+        Item 9.01 (Financial Statements and ...", "dateLastCrawled": "2018-10-05T02:13:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Tips on Completing Item 6 of the HSR Form | Federal Trade ...",
+        "url": "https:\/\/www.ftc.gov\/enforcement\/premerger-notification-program\/hsr-resources\/tips-completing-item-6-hsr-form",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ftc.gov\/...\/hsr-resources\/tips-completing-item-6-hsr-form",
+        "snippet": "The HSR form requires a filing party to disclose information on
+        its subsidiaries in Item 6(a), its share or interest holders in Item 6(b)
+        and its minority holdings in Item 6(c)(i).", "dateLastCrawled": "2018-10-02T14:01:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "NPIS - Item Screen", "url": "https:\/\/www.npis.pa.gov\/Screens\/Admin\/Item",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.npis.pa.gov\/Screens\/Admin\/Item",
+        "snippet": "Item Screen : Search Items: Hint: Search using part of the name
+        for best results: Item Name: Vendor Name: ISBN #: Item #: Item Eligibility
+        Status: Vendor Item Availability: Item Type: No Charge Items: ...", "dateLastCrawled":
+        "2018-10-04T11:26:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4", "name":
+        "CARE Item Set and B-CARE - Centers for Medicare & Medicaid ...", "url":
+        "https:\/\/www.cms.gov\/Medicare\/Quality-Initiatives-Patient-Assessment-Instruments\/Post-Acute-Care-Quality-Initiatives\/CARE-Item-Set-and-B-CARE.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cms.gov\/...\/CARE-Item-Set-and-B-CARE.html",
+        "snippet": "Thus, the CARE Item Set is a framework for a standard set of
+        items that can be made available through an item bank. Items from the existing
+        MDS and OASIS tools that were used only for care planning were excluded from
+        CARE Item Set.", "dateLastCrawled": "2018-10-03T03:15:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Road Item Lists - Tennessee", "url": "https:\/\/www.tdot.tn.gov\/APPLICATIONS\/RoadwayItems",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.tdot.tn.gov\/APPLICATIONS\/RoadwayItems",
+        "snippet": "(Note: To display the entire list, search with out entering any
+        Keyword or Item Number. Partial Item Numbers and Partial Description Keywords
+        are allowed in the search.)", "dateLastCrawled": "2018-10-01T23:03:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Nashville--Tenn. and vicinity 1863 | Library of Congress", "url":
+        "https:\/\/www.loc.gov\/item\/2003630454\/", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.loc.gov\/item\/2003630454", "snippet": "Responsibility
+        for making an independent legal assessment of an item and securing any necessary
+        permissions ultimately rests with persons desiring to use the item. Credit
+        Line: Library of Congress, Geography and Map Division.", "dateLastCrawled":
+        "2018-05-21T16:17:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7", "name":
+        "Articles of confederation and perpetual union between the ...", "url": "https:\/\/www.loc.gov\/item\/rbpe.17802600\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/rbpe.17802600",
+        "snippet": "The Library of Congress is unaware of, or has been unable to
+        identify a copyright owner and\/or information about any possible or likely
+        copyright owner, and makes this item available as an exercise of fair use
+        for educational, not-for-profit purposes only.", "dateLastCrawled": "2018-08-15T05:14:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "The first picket line - Library of Congress", "url": "https:\/\/www.loc.gov\/item\/97500299\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/97500299",
+        "snippet": "In some cases, only thumbnail (small) images are available when
+        you are outside the Library of Congress because the item is rights restricted
+        or has not been evaluated for rights restrictions. As a preservation measure,
+        we generally do not serve an original item when a digital image is available.",
+        "dateLastCrawled": "2018-07-16T23:55:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Carnaval, San Francisco, California | Library of Congress", "url":
+        "https:\/\/www.loc.gov\/item\/2013630039\/", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.loc.gov\/item\/2013630039", "snippet": "Carnaval, San
+        Francisco, California Title, date, and keywords provided by the photographer.
+        The San Francisco Bay Area Carnaval season begins in February. Groups from
+        The Mission District, a metro center for the many different Spanish speaking
+        populations of Latin America, will often participate in the parade.", "dateLastCrawled":
+        "2018-03-25T01:50:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10", "name":
+        "The case of Dred Scott in the United States Supreme Court ...", "url": "https:\/\/www.loc.gov\/item\/10034357\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/10034357",
+        "snippet": "Also available on microfilm (Microfilm 21984), and in digital
+        form on the Library of Congress Web site.", "dateLastCrawled": "2018-09-14T18:54:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Chapter 3: Budgeting, Financial Accounting for Local and ...",
+        "url": "https:\/\/nces.ed.gov\/pubs2004\/h2r2\/ch_3.asp", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/nces.ed.gov\/pubs2004\/h2r2\/ch_3.asp", "snippet":
+        "The line-item budget approach has several advantages that account for its
+        wide use. It offers simplicity and ease of preparation. It is a familiar approach
+        to those involved in the budget development process.", "dateLastCrawled":
+        "2018-10-04T06:01:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12", "name":
+        "Management Army Major Item Systems Management", "url": "http:\/\/www.dtic.mil\/dtic\/tr\/fulltext\/u2\/a401934.pdf",
+        "isFamilyFriendly": true, "displayUrl": "www.dtic.mil\/dtic\/tr\/fulltext\/u2\/a401934.pdf",
+        "snippet": "The Army Item Management Study by the Concepts Analysis Agency
+        recommended that the Major Item System Map (MISM) be expanded to interface
+        with all phases of the Planning, Programming,", "dateLastCrawled": "2018-10-05T08:36:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Item Name", "url": "https:\/\/public.logisticsinformationservice.dla.mil\/H6\/NameLookup.aspx",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/public.logisticsinformationservice.dla.mil\/H6\/NameLookup.aspx",
+        "snippet": "This Site describes the products and services that DLA Logistics
+        Information Service provides.", "dateLastCrawled": "2018-10-04T06:13:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Integrated Logistics Support Center (ILSC)", "url": "https:\/\/www.tacom.army.mil\/ilsc\/tulsa\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.tacom.army.mil\/ilsc\/tulsa",
+        "snippet": "Provides item managers with pertinent information to determine
+        disposition, as well as, generate the desired transactions into CCSS per their
+        instructions. A productivity tool. IMA Europe Excess Items Redistribution
+        (Retrograde)", "dateLastCrawled": "2018-10-03T06:47:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "India : a country study | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/96019266\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/96019266",
+        "snippet": "Title India : a country study Contributor Names Heitzman, James,
+        1950-2008. Worden, Robert L.", "dateLastCrawled": "2018-08-27T09:31:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "ISTEP+ Grades 3-8, 10 | IDOE", "url": "https:\/\/www.doe.in.gov\/assessment\/istep-grades-3-8-10",
+        "about": [{"name": "Indiana Statewide Testing for Educational Progress-Plus"}],
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.doe.in.gov\/assessment\/istep-grades-3-8",
+        "snippet": "The Item Samplers on this website provide information about
+        ISTEP+ for students, parents, educators, and others. The items in each sampler
+        are examples of the types of items found on ISTEP+. These examples can serve
+        as models when teachers are constructing items for classroom assessment.",
+        "dateLastCrawled": "2018-10-03T05:58:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Venezuela : a country study | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/92010376\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/92010376",
+        "snippet": "Responsibility for making an independent legal assessment of an
+        item and securing any necessary permissions ultimately rests with persons
+        desiring to use the item(s). Several of the books in the series contain
+        photographs that have been copyrighted.", "dateLastCrawled": "2018-05-23T00:12:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Financial Crimes Enforcement Network", "url": "https:\/\/www.fincen.gov\/sites\/default\/files\/shared\/FBAR%20Line%20Item%20Filing%20Instructions.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fincen.gov\/sites\/default\/files\/shared\/FBAR
+        Line Item...", "snippet": "In item 45 Filer Title enter Parent\/Guardian
+        filing for child. 1.4 As1\/1\/2017 mandated by the Surface Transportation
+        and Veterans Health Care Choice Improvement", "dateLastCrawled": "2018-10-02T23:44:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Pay Item Catalog - NYSDOT Home", "url": "https:\/\/www.dot.ny.gov\/main\/business-center\/engineering\/specifications\/pay-item-catalog",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.dot.ny.gov\/...\/engineering\/specifications\/pay-item-catalog",
+        "snippet": "Pay Item Catalog NYSDOT''s Web-based Electronic Pay Item Catalog
+        , e-PIC , provides more current information than the Microsoft Access-based
+        application it replaced. Item changes will generally appear in e-PIC the
+        day after they are entered into the TRNS•PORT system.", "dateLastCrawled":
+        "2018-10-04T11:41:00.0000000Z", "language": "en", "isNavigational": false}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 08 Oct 2018 18:20:16 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=item%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 08 Oct 2018 18:19:17 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 686B66A64C4C4C89908A946C4DC946A5
+      Bingapis-Sessionid:
+      - 457DFBF5A3774780B468832F0FBAA2C3
+      X-Msedge-Clientid:
+      - 3047C393EF6B63F0241BCF11EE276236
+      X-Msapi-Userstate:
+      - '7876'
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=204,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: 686B66A64C4C4C89908A946C4DC946A5 Ref B: BY3EDGE0321 Ref C: 2018-10-08T18:20:18Z'
+      Apim-Request-Id:
+      - 2caa3c82-b7c4-44af-8ee0-effefb7060b0
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Mon, 08 Oct 2018 18:20:17 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "item
+        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=item+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 14700000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Is your test, item, or service covered? | Medicare", "url": "https:\/\/www.medicare.gov\/coverage\/is-your-test-item-or-service-covered",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.medicare.gov\/coverage\/is-your-test-item-or-service-covered",
+        "snippet": "Find out if your test, item or service is covered. Medicare
+        coverage for many tests, items, and services depends on where you live. This
+        list includes tests, items, and services (covered and non-covered) if coverage
+        is the same no matter where you live.", "dateLastCrawled": "2018-10-05T07:01:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "hours per response7.71 FORM 8-K", "url": "https:\/\/www.sec.gov\/about\/forms\/form8-k.pdf",
+        "about": [{"name": "Form 8-K"}, {"name": "Form 8-K"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.sec.gov\/about\/forms\/form8-k.pdf",
+        "snippet": "If a report on Form 8-K contains disclosures under Item 2.02
+        or Item 7.01, whether or not the report contains disclosures regarding other
+        items, all exhibits to such report relating to Item 2.02 or Item 7.01
+        will be deemed furnished, and not ﬁled, unless the registrant speci ﬁes, under
+        Item 9.01 (Financial Statements and ...", "dateLastCrawled": "2018-10-05T02:13:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Tips on Completing Item 6 of the HSR Form | Federal Trade ...",
+        "url": "https:\/\/www.ftc.gov\/enforcement\/premerger-notification-program\/hsr-resources\/tips-completing-item-6-hsr-form",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ftc.gov\/...\/hsr-resources\/tips-completing-item-6-hsr-form",
+        "snippet": "Item 6(c) requires the disclosure of minority holdings, that
+        is, holdings of 5% or more but less than 50%, in any entity(s) (subject to
+        the $10 million asset threshold) that derives revenues in any 6-digit NAICS
+        code reported by the other person filing notification.", "dateLastCrawled":
+        "2018-10-02T14:01:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3", "name":
+        "NPIS - Item Screen", "url": "https:\/\/www.npis.pa.gov\/Screens\/Admin\/Item",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.npis.pa.gov\/Screens\/Admin\/Item",
+        "snippet": "Item Screen : Search Items: Hint: Search using part of the name
+        for best results: Item Name: Vendor Name: ISBN #: Item #: Item Eligibility
+        Status: Vendor Item Availability: Item Type: No Charge Items: ...", "dateLastCrawled":
+        "2018-10-04T11:26:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4", "name":
+        "CARE Item Set and B-CARE - Centers for Medicare & Medicaid ...", "url":
+        "https:\/\/www.cms.gov\/Medicare\/Quality-Initiatives-Patient-Assessment-Instruments\/Post-Acute-Care-Quality-Initiatives\/CARE-Item-Set-and-B-CARE.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cms.gov\/...\/CARE-Item-Set-and-B-CARE.html",
+        "snippet": "Thus, the CARE Item Set is a framework for a standard set of
+        items that can be made available through an item bank. Items from the existing
+        MDS and OASIS tools that were used only for care planning were excluded from
+        CARE Item Set.", "dateLastCrawled": "2018-10-03T03:15:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Road Item Lists - Tennessee", "url": "https:\/\/www.tdot.tn.gov\/APPLICATIONS\/RoadwayItems",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.tdot.tn.gov\/APPLICATIONS\/RoadwayItems",
+        "snippet": "(Note: To display the entire list, search with out entering any
+        Keyword or Item Number. Partial Item Numbers and Partial Description Keywords
+        are allowed in the search.)", "dateLastCrawled": "2018-10-01T23:03:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Nashville--Tenn. and vicinity 1863 | Library of Congress", "url":
+        "https:\/\/www.loc.gov\/item\/2003630454\/", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.loc.gov\/item\/2003630454", "snippet": "Responsibility
+        for making an independent legal assessment of an item and securing any necessary
+        permissions ultimately rests with persons desiring to use the item. Credit
+        Line: Library of Congress, Geography and Map Division.", "dateLastCrawled":
+        "2018-05-21T16:17:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7", "name":
+        "Articles of confederation and perpetual union between the ...", "url": "https:\/\/www.loc.gov\/item\/rbpe.17802600\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/rbpe.17802600",
+        "snippet": "The Library of Congress is unaware of, or has been unable to
+        identify a copyright owner and\/or information about any possible or likely
+        copyright owner, and makes this item available as an exercise of fair use
+        for educational, not-for-profit purposes only.", "dateLastCrawled": "2018-08-15T05:14:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "The first picket line - Library of Congress", "url": "https:\/\/www.loc.gov\/item\/97500299\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/97500299",
+        "snippet": "In some cases, only thumbnail (small) images are available when
+        you are outside the Library of Congress because the item is rights restricted
+        or has not been evaluated for rights restrictions. As a preservation measure,
+        we generally do not serve an original item when a digital image is available.",
+        "dateLastCrawled": "2018-07-16T23:55:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Carnaval, San Francisco, California | Library of Congress", "url":
+        "https:\/\/www.loc.gov\/item\/2013630039\/", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.loc.gov\/item\/2013630039", "snippet": "Carnaval, San
+        Francisco, California Title, date, and keywords provided by the photographer.
+        The San Francisco Bay Area Carnaval season begins in February. Groups from
+        The Mission District, a metro center for the many different Spanish speaking
+        populations of Latin America, will often participate in the parade.", "dateLastCrawled":
+        "2018-03-25T01:50:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10", "name":
+        "The case of Dred Scott in the United States Supreme Court ...", "url": "https:\/\/www.loc.gov\/item\/10034357\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/10034357",
+        "snippet": "Also available on microfilm (Microfilm 21984), and in digital
+        form on the Library of Congress Web site.", "dateLastCrawled": "2018-09-14T18:54:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Chapter 3: Budgeting, Financial Accounting for Local and ...",
+        "url": "https:\/\/nces.ed.gov\/pubs2004\/h2r2\/ch_3.asp", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/nces.ed.gov\/pubs2004\/h2r2\/ch_3.asp", "snippet":
+        "The line-item budget approach has several advantages that account for its
+        wide use. It offers simplicity and ease of preparation. It is a familiar approach
+        to those involved in the budget development process.", "dateLastCrawled":
+        "2018-10-04T06:01:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12", "name":
+        "Management Army Major Item Systems Management", "url": "http:\/\/www.dtic.mil\/dtic\/tr\/fulltext\/u2\/a401934.pdf",
+        "isFamilyFriendly": true, "displayUrl": "www.dtic.mil\/dtic\/tr\/fulltext\/u2\/a401934.pdf",
+        "snippet": "The Army Item Management Study by the Concepts Analysis Agency
+        recommended that the Major Item System Map (MISM) be expanded to interface
+        with all phases of the Planning, Programming,", "dateLastCrawled": "2018-10-05T08:36:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Item Name", "url": "https:\/\/public.logisticsinformationservice.dla.mil\/H6\/NameLookup.aspx",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/public.logisticsinformationservice.dla.mil\/H6\/NameLookup.aspx",
+        "snippet": "This Site describes the products and services that DLA Logistics
+        Information Service provides.", "dateLastCrawled": "2018-10-04T06:13:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Integrated Logistics Support Center (ILSC)", "url": "https:\/\/www.tacom.army.mil\/ilsc\/tulsa\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.tacom.army.mil\/ilsc\/tulsa",
+        "snippet": "Provides item managers with pertinent information to determine
+        disposition, as well as, generate the desired transactions into CCSS per their
+        instructions. A productivity tool. IMA Europe Excess Items Redistribution
+        (Retrograde)", "dateLastCrawled": "2018-10-03T06:47:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "India : a country study | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/96019266\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/96019266",
+        "snippet": "Title India : a country study Contributor Names Heitzman, James,
+        1950-2008. Worden, Robert L.", "dateLastCrawled": "2018-08-27T09:31:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "ISTEP+ Grades 3-8, 10 | IDOE", "url": "https:\/\/www.doe.in.gov\/assessment\/istep-grades-3-8-10",
+        "about": [{"name": "Indiana Statewide Testing for Educational Progress-Plus"}],
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.doe.in.gov\/assessment\/istep-grades-3-8",
+        "snippet": "The Item Samplers on this website provide information about
+        ISTEP+ for students, parents, educators, and others. The items in each sampler
+        are examples of the types of items found on ISTEP+. These examples can serve
+        as models when teachers are constructing items for classroom assessment.",
+        "dateLastCrawled": "2018-10-03T05:58:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Venezuela : a country study | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/92010376\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/92010376",
+        "snippet": "Responsibility for making an independent legal assessment of an
+        item and securing any necessary permissions ultimately rests with persons
+        desiring to use the item(s). Several of the books in the series contain
+        photographs that have been copyrighted.", "dateLastCrawled": "2018-05-23T00:12:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Financial Crimes Enforcement Network", "url": "https:\/\/www.fincen.gov\/sites\/default\/files\/shared\/FBAR%20Line%20Item%20Filing%20Instructions.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fincen.gov\/sites\/default\/files\/shared\/FBAR
+        Line Item...", "snippet": "In item 45 Filer Title enter Parent\/Guardian
+        filing for child. 1.4 As1\/1\/2017 mandated by the Surface Transportation
+        and Veterans Health Care Choice Improvement", "dateLastCrawled": "2018-10-02T23:44:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Pay Item Catalog - NYSDOT Home", "url": "https:\/\/www.dot.ny.gov\/main\/business-center\/engineering\/specifications\/pay-item-catalog",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.dot.ny.gov\/...\/engineering\/specifications\/pay-item-catalog",
+        "snippet": "Pay Item Catalog NYSDOT''s Web-based Electronic Pay Item Catalog
+        , e-PIC , provides more current information than the Microsoft Access-based
+        application it replaced. Item changes will generally appear in e-PIC the
+        day after they are entered into the TRNS•PORT system.", "dateLastCrawled":
+        "2018-10-04T11:41:00.0000000Z", "language": "en", "isNavigational": false}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 08 Oct 2018 18:20:18 GMT
 recorded_with: VCR 4.0.0

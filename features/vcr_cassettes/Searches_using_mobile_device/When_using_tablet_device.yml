@@ -212,4 +212,230 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
   recorded_at: Mon, 27 Aug 2018 02:08:42 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=bar%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 08 Oct 2018 18:19:43 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 1A8B26ECD79444649CDEB754230EF4E0
+      Bingapis-Sessionid:
+      - CF9ADF142DF04CBF9C8ADC519DB16695
+      X-Msedge-Clientid:
+      - 2A4BABC3405A620D0036A74141166362
+      X-Msapi-Userstate:
+      - 5c0f
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=222,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: 1A8B26ECD79444649CDEB754230EF4E0 Ref B: BY3EDGE0406 Ref C: 2018-10-08T18:20:43Z'
+      Apim-Request-Id:
+      - '08e2408a-0a54-4dbc-a2a2-c21f82545537'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Mon, 08 Oct 2018 18:20:43 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "bar
+        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=bar+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 23500000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Bureau of Automotive Repair, State of California, Dept. of ...",
+        "url": "http:\/\/www.bar.ca.gov\/", "about": [{"name": "California Bureau
+        of Automotive Repair"}, {"name": "California Bureau of Automotive Repair"}],
+        "isFamilyFriendly": true, "displayUrl": "www.bar.ca.gov", "snippet": "Bureau
+        of Automotive Repair home page. This Google translation feature is provided
+        for informational purposes only as DCA is unable to guarantee the accuracy
+        of this translation.", "dateLastCrawled": "2018-10-04T14:46:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Consumer Assistance Program - Bureau of Automotive Repair ...",
+        "url": "https:\/\/www.bar.ca.gov\/Consumer\/Consumer_Assistance_Program\/index.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.bar.ca.gov\/Consumer\/Consumer_Assistance_Program\/index.html",
+        "snippet": "The Consumer Assistance Program (CAP) is administered by the
+        Bureau of Automotive Repair (BAR) and is designed to help improve California''s
+        air quality. CAP is a voluntary program and offers two options – Repair Assistance
+        and Vehicle Retirement.", "dateLastCrawled": "2018-10-05T07:16:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Contact Us - California Bureau of Automotive Repair", "url":
+        "https:\/\/www.bar.ca.gov\/About_BAR\/Contact_Us.html", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.bar.ca.gov\/About_BAR\/Contact_Us.html",
+        "snippet": "BAR Industry Help Desk BAR-OIS\/BAR-97 equipment, technical
+        support, program requirements", "dateLastCrawled": "2018-10-04T15:29:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Consumer - Bureau of Automotive Repair, State of ...", "url":
+        "https:\/\/www.bar.ca.gov\/Consumer\/index.html", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.bar.ca.gov\/Consumer\/index.html", "snippet":
+        "Search this site: This Site California Consumer", "dateLastCrawled": "2018-10-04T20:35:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Vehicle Test History - bar.ca.gov", "url": "http:\/\/www.bar.ca.gov\/pubwebquery\/Vehicle\/PubTstQry.aspx",
+        "isFamilyFriendly": true, "displayUrl": "www.bar.ca.gov\/pubwebquery\/Vehicle\/PubTstQry.aspx",
+        "snippet": "Please Note: Any test records sent during the day will not be
+        displayed until after midnight. This will not affect the transmission of electronic
+        smog certificates to the Department of Motor Vehicles (DMV) for registration
+        purposes.", "dateLastCrawled": "2018-10-02T19:36:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Industry - Bureau of Automotive Repair, State of ...", "url":
+        "https:\/\/www.bar.ca.gov\/Industry\/index.html", "about": [{"name": "Industry"}],
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.bar.ca.gov\/Industry\/index.html",
+        "snippet": "Industry Applicants NOTE: BAR is now accepting individual
+        taxpayer identification numbers (ITINs) for an individual applicant that does
+        NOT have a social security number (SSN).", "dateLastCrawled": "2018-10-01T10:27:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "STAR - Welcome - Bureau of Automotive Repair, State of ...",
+        "url": "https:\/\/www.bar.ca.gov\/pubwebquery\/star\/welcome.aspx", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.bar.ca.gov\/pubwebquery\/star\/welcome.aspx",
+        "snippet": "If, after reviewing this page, you still have questions about
+        the STAR Program, see the STAR Questions & Answers (Q&A) posted on the Industry
+        Home page of the BAR Web site. We welcome your input on the STAR Web page.",
+        "dateLastCrawled": "2018-10-02T21:25:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "The State Bar of California Home Page", "url": "http:\/\/www.calbar.ca.gov\/",
+        "about": [{"name": "State Bar of California"}, {"name": "State Bar of California"}],
+        "isFamilyFriendly": true, "displayUrl": "www.calbar.ca.gov", "snippet":
+        "Founded in 1927 by the legislature, The State Bar of California is an administrative
+        arm of the California Supreme Court. Protection of the public is the highest
+        priority of the State Bar. All lawyers practicing in California must be
+        members.", "dateLastCrawled": "2018-10-02T18:37:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Forms and Publications - Bureau of Automotive Repair ...", "url":
+        "https:\/\/www.bar.ca.gov\/FormsPubs\/index.html", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.bar.ca.gov\/FormsPubs\/index.html", "snippet":
+        "The following documents are fillable PDF forms. Auto-submission is available
+        for select forms. Please follow the specific instructions for submitting each
+        completed form.", "dateLastCrawled": "2018-10-04T23:28:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "STAR Program - California Bureau of Automotive Repair", "url":
+        "http:\/\/www.bar.ca.gov\/Industry\/STAR_Program\/index.html", "about": [{"name":
+        "California Bureau of Automotive Repair"}], "isFamilyFriendly": true, "displayUrl":
+        "www.bar.ca.gov\/Industry\/STAR_Program\/index.html", "snippet": "STAR
+        Program. STAR stations are Smog Check stations that meet higher performance
+        standards established by the Bureau of Automotive Repair. Some STAR stations
+        are licensed to perform only tests, while others are licensed to perform both
+        tests and repairs.", "dateLastCrawled": "2018-10-04T12:30:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "About BAR", "url": "https:\/\/www.bar.ca.gov\/About_BAR\/index.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.bar.ca.gov\/About_BAR\/index.html",
+        "snippet": "Laws. Business and Professions Code §§ 9880-9889.68; Health and
+        Safety Code §§ 44000-44127; California Legislative Information; Precedential
+        Decisions", "dateLastCrawled": "2018-10-04T17:33:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "California State Bar - The State Bar of California Home Page",
+        "url": "http:\/\/calbar.ca.gov\/state\/calbar\/calbar_home.jsp", "isFamilyFriendly":
+        true, "displayUrl": "calbar.ca.gov\/state\/calbar\/calbar_home.jsp",
+        "snippet": "Object Moved This document may be found here", "dateLastCrawled":
+        "2018-10-04T23:17:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12", "name":
+        "Getting Licensed - Bureau of Automotive Repair, State of ...", "url":
+        "https:\/\/www.bar.ca.gov\/Industry\/Getting_Licensed.html", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.bar.ca.gov\/Industry\/Getting_Licensed.html",
+        "snippet": "Bureau of Automotive Repair home page. New! Online license renewal
+        is now available. Click here to review eligibility requirements and begin
+        the online renewal process.", "dateLastCrawled": "2018-10-03T08:40:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "CAP Vehicle Retirement Program", "url": "https:\/\/bar.ca.gov\/Consumer\/Consumer_Assistance_Program\/CAP_Vehicle_Retirement_Program.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/bar.ca.gov\/...\/CAP_Vehicle_Retirement_Program.html",
+        "snippet": "Program Overview. The Consumer Assistance Program (CAP) is administered
+        by the Bureau of Automotive Repair. The purpose of CAP is to improve California''s
+        air quality by reducing vehicle emissions.", "dateLastCrawled": "2018-10-01T13:58:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Resolving Disputes and Reporting Complaints", "url": "https:\/\/www.bar.ca.gov\/Consumer\/Complaints\/index.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.bar.ca.gov\/Consumer\/Complaints\/index.html",
+        "snippet": "While BAR cannot represent you in court, collect money, or levy
+        fines on your behalf, your BAR representative will contact the owner or
+        manager of the repair shop, describe your complaint, and attempt to facilitate
+        a satisfactory settlement.", "dateLastCrawled": "2018-10-05T03:20:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Report of Foreign Bank and Financial Accounts FBAR ...", "url": "https:\/\/www.irs.gov\/businesses\/small-businesses-self-employed\/report-of-foreign-bank-and-financial-accounts-fbar",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.irs.gov\/businesses\/small-businesses-self-employed\/...",
+        "snippet": "If you have a financial interest in or signature authority over
+        a foreign financial account, including a bank account, brokerage account,
+        mutual fund, trust, or other type of foreign financial account, exceeding
+        certain thresholds, the Bank Secrecy Act may require you to report the account
+        yearly to ...", "dateLastCrawled": "2018-09-20T15:08:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Station Search - California Bureau of Automotive Repair", "url":
+        "https:\/\/www.bar.ca.gov\/pubwebquery\/station\/stationlist.aspx", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.bar.ca.gov\/pubwebquery\/station\/stationlist.aspx",
+        "snippet": "Station Search To search for a station, please enter at least
+        one of the following options: Station Name, County, City, Postal Zip-Code,
+        or BAR Field Office area. Select the \"STAR Certified Stations\" box when
+        searching for a STAR certified station.", "dateLastCrawled": "2018-09-30T08:57:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "License Renewal", "url": "https:\/\/www.bar.ca.gov\/Industry\/Online_License_Renewal\/index.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.bar.ca.gov\/Industry\/Online_License_Renewal\/index.html",
+        "snippet": "Please wait two (2) weeks after submitting changes and check BAR’s
+        License Search web page to verify that changes have been made before attempting
+        to submit an online license renewal payment. Payments for Automotive Repair
+        Dealers (ARDs) and stations must be submitted within 90 days of the license
+        expiration date.", "dateLastCrawled": "2018-10-04T12:14:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "CAP Online Check My Status - Bureau of Automotive Repair ...",
+        "url": "https:\/\/bar.ca.gov\/capstatuscheck\/capstatuscheck.aspx", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/bar.ca.gov\/capstatuscheck\/capstatuscheck.aspx",
+        "snippet": "Bureau of Automotive Repair CAP Application Status Check Page",
+        "dateLastCrawled": "2018-09-30T18:46:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Bay Area Rapid Transit | bart.gov", "url": "https:\/\/www.bart.gov\/",
+        "about": [{"name": "Bay Area Rapid Transit"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.bart.gov", "snippet": "Unsung heroes: End-of-line cleaners
+        race clock to sweep, scrub and pick up trash on trains", "dateLastCrawled":
+        "2018-10-05T04:17:00.0000000Z", "language": "en", "isNavigational": false}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 08 Oct 2018 18:20:43 GMT
 recorded_with: VCR 4.0.0

@@ -610,4 +610,702 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
   recorded_at: Mon, 27 Aug 2018 02:08:36 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=news%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 08 Oct 2018 18:19:37 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 695A6A029F1045F0B35653B8EBD66AF6
+      Bingapis-Sessionid:
+      - 4E6D2EF1F7FA43E3AD7543E0218F9CD2
+      X-Msedge-Clientid:
+      - 367CEB68916F60691EFDE7EA9023613A
+      X-Msapi-Userstate:
+      - 97c0
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=112,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: 695A6A029F1045F0B35653B8EBD66AF6 Ref B: BY3EDGE0312 Ref C: 2018-10-08T18:20:37Z'
+      Apim-Request-Id:
+      - 70f6f1cc-a28f-4143-80af-f22ee4d6c942
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Mon, 08 Oct 2018 18:20:36 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "news
+        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=news+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 29000000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "News | The White House", "url": "https:\/\/www.whitehouse.gov\/news\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/news",
+        "snippet": "Follow the latest updates from the Trump Administration, including
+        briefings and statements, Presidential actions, and news articles.", "dateLastCrawled":
+        "2018-10-05T06:35:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1", "name":
+        "News | USCIS", "url": "https:\/\/www.uscis.gov\/news", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.uscis.gov\/news", "snippet": "Here
+        we have the latest news within the immigration benefit world, handled by
+        U.S. Citizenship and Immigration Services (USCIS). Both news media and
+        general public can find important information about", "dateLastCrawled": "2018-10-05T09:05:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "News | Homeland Security", "url": "https:\/\/www.dhs.gov\/news",
+        "about": [{"name": "United States Department of Homeland Security"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.dhs.gov\/news", "snippet": "News
+        and important communications from the Department of Homeland Security.",
+        "dateLastCrawled": "2018-09-30T00:14:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Newsroom | Internal Revenue Service", "url": "https:\/\/www.irs.gov\/newsroom",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.irs.gov\/newsroom",
+        "snippet": "Provides the latest news and information about the IRS.", "dateLastCrawled":
+        "2018-09-22T02:00:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4", "name":
+        "News | PA.GOV", "url": "https:\/\/www.pa.gov\/news\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.pa.gov\/news", "snippet": "October
+        9 is the deadline to register to vote in the November 6 general election in
+        Pennsylvania. Register online now at register.votesPA.com. . Oct. 9 is the
+        deadline to register to vote in this election.", "dateLastCrawled": "2018-10-04T10:17:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Defense.gov - News", "url": "https:\/\/dod.defense.gov\/News\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/dod.defense.gov\/News",
+        "snippet": "News Press Advisories News Releases Transcripts Speeches Publications
+        MISSION The mission of the Department of Defense is to provide a lethal Joint
+        Force to defend the security of our country and sustain American influence
+        abroad.", "dateLastCrawled": "2018-10-04T13:37:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Army Worldwide News - The United States Army", "url": "https:\/\/www.army.mil\/news",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.army.mil\/news",
+        "snippet": "The latest news and information from the U.S. Army covering
+        the Americas, Middle East, Europe, Asia and Pacific and more.", "dateLastCrawled":
+        "2018-10-04T14:25:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7", "name":
+        "News (U.S. National Park Service)", "url": "https:\/\/www.nps.gov\/aboutus\/news\/index.htm",
+        "about": [{"name": "National Park Service"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.nps.gov\/aboutus\/news", "snippet": "Wondering what''s
+        happening across the National Park Service? This is the place to start.
+        You can find links to news releases, subscribe to receive news in your
+        email, search for images and videos, discover facts and figures about the
+        National Park System, and learn how to contact media staff.", "dateLastCrawled":
+        "2018-08-08T09:26:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8", "name":
+        "News | NSF - National Science Foundation", "url": "https:\/\/nsf.gov\/news\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/nsf.gov\/news", "snippet":
+        "NSF''s mission is to advance the progress of science, a mission accomplished
+        by funding proposals for research and education made by scientists, engineers,
+        and educators from across the country.", "dateLastCrawled": "2018-10-04T21:22:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "News | Governor Andrew M. Cuomo", "url": "https:\/\/www.governor.ny.gov\/news",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.governor.ny.gov\/news",
+        "snippet": "The official website of the 56th Governor of New York State, Andrew
+        M. Cuomo. Find information about the administration, issues, & news that
+        affects you.", "dateLastCrawled": "2018-10-05T01:09:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "News | City of Fort Worth, Texas", "url": "http:\/\/fortworthtexas.gov\/news\/",
+        "isFamilyFriendly": true, "displayUrl": "fortworthtexas.gov\/news", "snippet":
+        "News. Search. Find. Panther City Peacemakers recognized. A new class of
+        Panther City Peacemakers was recognized for their service by the Fort Worth
+        City Council. The Fort Worth police officers and community members completed
+        a 10-week, 40-hour course on mediation. Oct. 2, 2018.", "dateLastCrawled":
+        "2018-10-05T00:34:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11", "name":
+        "News - Yellowstone National Park (U.S. National Park Service)", "url":
+        "https:\/\/www.nps.gov\/yell\/learn\/news\/index.htm", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.nps.gov\/yell\/learn\/news\/index.htm",
+        "snippet": "News Releases. Browse our latest news releases or subscribe
+        to our RSS feed.. Social Media. Social media provides a quick and easy way
+        for you to connect with us on a daily basis.. Photos, Sounds & Videos. Browse
+        our library of high-quality, public domain images on Flickr.Explore and download
+        the sounds of Yellowstone in our sound library.Check out our extensive video
+        collection of tours ...", "dateLastCrawled": "2018-09-09T02:38:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Recent News [2018] | New York State Education Department", "url":
+        "http:\/\/www.nysed.gov\/news\/2018", "isFamilyFriendly": true, "displayUrl":
+        "www.nysed.gov\/news", "snippet": "A listing of New York State Education
+        Department (NYSED) news by year.", "dateLastCrawled": "2018-10-05T08:37:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "News — FBI", "url": "https:\/\/www.fbi.gov\/news\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.fbi.gov\/news", "snippet": "Featured
+        News, Latest News, Press Releases, Editor''s Pick and Feature Photos,
+        all the FBI News up to the minute.", "dateLastCrawled": "2018-10-04T03:36:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "News | HHS.gov", "url": "https:\/\/www.hhs.gov\/about\/news\/index.html",
+        "about": [{"name": "United States Department of Health and Human Services"}],
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.hhs.gov\/about\/news",
+        "snippet": "Latest News Releases. Public Affairs Contacts. Visit our Public
+        Affairs Contacts page to access HHS media information as well as press office
+        contact information for ASPA and HHS operating divisions, staff divisions
+        and regional offices.", "dateLastCrawled": "2018-10-05T07:28:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "News - CDTFA", "url": "https:\/\/www.cdtfa.ca.gov\/news\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.cdtfa.ca.gov\/news", "snippet": "News
+        Releases, Notices and Newsletters, Events and Calendar, Public Service Announcements,
+        PSAs", "dateLastCrawled": "2018-10-05T05:45:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "News | U.S. Mint", "url": "https:\/\/www.usmint.gov\/news", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.usmint.gov\/news", "snippet": "Latest
+        Press Releases. September 24, 2018 - United States Mint Opens Sales for
+        Breast Cancer Awareness Coin and Stamp Set on October 1 September 21, 2018
+        - United States Mint Launches New Educational Games September 6, 2018 -
+        Set of Cumberland Island National Seashore Quarters Goes on Sale on September
+        13 August 31, 2018 - Bureau of Engraving and Printing and United States Mint
+        Merge E ...", "dateLastCrawled": "2018-10-02T00:12:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "News - Federal Aviation Administration", "url": "https:\/\/www.faa.gov\/news\/",
+        "about": [{"name": "Federal Aviation Administration"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.faa.gov\/news", "snippet": "A simple
+        search will return results that contain all of the specified words in the
+        title or in the body of the news story. The words may appear in any order.
+        A phrase search can be performed by enclosing the search string in quotes.",
+        "dateLastCrawled": "2018-10-05T02:04:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "News Releases - News", "url": "https:\/\/www.usgs.gov\/news\/news-releases",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usgs.gov\/news\/news-releases",
+        "snippet": "Map of the September 28, 2018 Earthquake near Palu, Indonesia
+        The USGS has up-to-date details on this event Read Story", "dateLastCrawled":
+        "2018-10-04T12:29:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19", "name":
+        "News & Events | National Institutes of Health (NIH)", "url": "https:\/\/www.nih.gov\/news-events",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nih.gov\/news-events",
+        "snippet": "News releases, events, videos, images, social media and outreach,
+        and more from the National Institutes of Health", "dateLastCrawled": "2018-10-03T15:04:00.0000000Z",
+        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 08 Oct 2018 18:20:37 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=news%20(site:www.data.gov/)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 08 Oct 2018 18:19:37 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 54017BED2AAC488D9CF271072C707EF6
+      Bingapis-Sessionid:
+      - C774C367AD884B5588CE8E0390E48574
+      X-Msedge-Clientid:
+      - 1383E5F9439761E23ACAE97B42DB603D
+      X-Msapi-Userstate:
+      - bde7
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=231,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: 54017BED2AAC488D9CF271072C707EF6 Ref B: BY3EDGE0412 Ref C: 2018-10-08T18:20:38Z'
+      Apim-Request-Id:
+      - cc436297-c636-464f-922c-a73e361cda40
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Mon, 08 Oct 2018 18:20:37 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "news
+        (site:www.data.gov\/)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=news+(site%3awww.data.gov%2f)",
+        "totalEstimatedMatches": 199, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "In the News - Data.gov", "url": "https:\/\/www.data.gov\/in-the-news",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/in-the-news",
+        "snippet": "Dear Open Data Enthusiasts, Below is an abstract of “Liberating
+        data for public value: The case of Data.gov,” International Journal of Information
+        Management (2016). Abstract. Public agencies around the globe are liberating
+        their data.", "dateLastCrawled": "2018-09-12T12:35:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "The Legal Entity Identifier (LEI) Is Good News for ...", "url":
+        "https:\/\/www.data.gov\/consumer\/legal-entity-identifier-lei-good-news-financial-technology-developers\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/consumer\/legal-entity-identifier-lei-good...",
+        "snippet": "The Legal Entity Identifier (LEI) is a unique, 20-digit identifier,
+        like a bar code, that will make it possible to identify all the legal entities
+        involved in the thousands of financial transactions that happen around the
+        world every day — and that’s good news for developers in the field of financial
+        technology.", "dateLastCrawled": "2018-09-30T00:58:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Bullying Rates Drop - Data.gov", "url": "https:\/\/www.data.gov\/education\/bullying-rates-drop\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/education\/bullying-rates-drop",
+        "snippet": "2 Responses to “Bullying Rates Drop” Marilyn June 9, 2015. This
+        is a great news, bullying is one of the major problem in schools.. I just
+        hope that bullying will totally stop.. Thanks for sharing the fb page, I will
+        keep myself updated on the page. Francis August 31, 2015.", "dateLastCrawled":
+        "2018-09-28T23:49:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3", "name":
+        "Energy - Data.gov", "url": "https:\/\/www.data.gov\/energy\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.data.gov\/energy", "snippet": "The tool
+        features nearly real-time demand data, plus analysis and visualizations
+        of hourly, daily, and weekly electricity supply and demand on a national and
+        regional level for all of the 66 electric system balancing authorities that
+        make up the U.S. electric grid.", "dateLastCrawled": "2018-10-04T07:27:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Climate - Data.gov", "url": "https:\/\/www.data.gov\/climate\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/climate",
+        "snippet": "You can currently find data and resources related to coastal
+        flooding, food resilience, water, ecosystem vulnerability, human health, energy
+        infrastructure, transportation and the Arctic region. Over time, you will
+        be able to find additional data and tools relevant to other important climate-related
+        impacts.", "dateLastCrawled": "2018-10-02T17:10:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "In the News - Data.gov", "url": "https:\/\/www.data.gov\/announcements_and_news\/in_the_news-10\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/announcements_and_news\/in_the_news-10",
+        "snippet": "The new design for Data.gov, the website that offers a public
+        portal into government data, should make it easier to access and use government
+        data practically, a White House blog post said Tuesday. The blog post offered
+        a sneak peek into Data.gov’s …", "dateLastCrawled": "2018-09-03T00:35:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Weather - Data.gov", "url": "https:\/\/www.data.gov\/weather\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/weather",
+        "snippet": "See this data in action at: The Weather Channel broadcasts weather
+        forecasts and weather-related news over their cable channel and web properties.
+        Climate Corporation offers weather insurance that helps farmers protect their
+        potential profits against bad weather that can cause yield shortfalls.", "dateLastCrawled":
+        "2018-10-05T01:43:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7", "name":
+        "Finance - Data.gov", "url": "https:\/\/www.data.gov\/finance\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.data.gov\/finance", "snippet": "Explore
+        hundreds of free data sets on financial services, including banking, lending,
+        retirement, investments, and insurance. Start using these data sets to build
+        new financial products and services, such as apps that help financial consumers
+        and new models to help make loans to small businesses.", "dateLastCrawled":
+        "2018-10-04T12:40:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8", "name":
+        "Datasets - Data.gov", "url": "https:\/\/www.data.gov\/disasters\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.data.gov\/disasters", "snippet": "The
+        National Flood Hazard Layer (NFHL) is a compilation of GIS data that comprises
+        a nationwide digital Flood Insurance Rate Map. The GIS data and services
+        are...", "dateLastCrawled": "2018-10-02T19:01:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Data.gov", "url": "https:\/\/www.data.gov\/", "about": [{"name":
+        "data.gov"}, {"name": "data.gov"}, {"name": "Data set"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.data.gov", "snippet": "Visitors to the
+        USCG Homeport data download site should note that there are three files
+        available fore download, but it is the second file on the list (named MISLE_DATA.zip)
+        that contains all available marine casualty data from January 2002 – July
+        2015.", "dateLastCrawled": "2018-10-04T11:09:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Impact - Data.gov", "url": "https:\/\/www.data.gov\/impact\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/impact",
+        "snippet": "Free public facing crime mapping and alert website that works
+        similar to a news agency, but deals solely with crime information. Estimated
+        to be the largest aggregator of crime data in the US as well as the largest
+        crime.", "dateLastCrawled": "2018-10-02T01:38:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "In the News - Page 3 of 4 - Data.gov", "url": "https:\/\/www.data.gov\/announcements_and_news\/in_the_news-10\/page\/3\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/announcements_and_news\/in_the_news-10\/page\/3",
+        "snippet": "The Marine Geology Data Viewer is an interactive map providing
+        access to seafloor and lakebed sediment and rock data archived by NOAA’s
+        National Geophysical Data Center. Layers available on the interactive map:
+        Marine Geology Data Sets & Reports; Index to …", "dateLastCrawled": "2018-09-20T23:35:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Applications - Data.gov", "url": "https:\/\/www.data.gov\/applications",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/applications",
+        "snippet": "The project brings together international, regional, and country-level
+        data, news, and research aimed at meeting countries'' immediate food security
+        needs, as well as building long-term global food security.", "dateLastCrawled":
+        "2018-10-04T07:03:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13", "name":
+        "Open Government - Data.gov", "url": "https:\/\/www.data.gov\/open-gov\/",
+        "about": [{"name": "Open data"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.data.gov\/open-gov", "snippet": "Open Government Data.gov
+        is the federal government’s open data site, and aims to make government more
+        open and accountable. Opening government data increases citizen participation
+        in government, creates opportunities for economic development, and informs
+        decision making in both the private and public sectors.", "dateLastCrawled":
+        "2018-10-02T10:20:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "Earthquakes - Data.gov", "url": "https:\/\/www.data.gov\/disasters\/earthquakes\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/disasters\/earthquakes",
+        "snippet": "Earthquakes Earthquakes can strike suddenly, violently, and
+        without warning any time of day or night. Here you’ll find a “starter list”
+        of tools and open data that can support communities in the event of an earthquake.",
+        "dateLastCrawled": "2018-10-02T15:24:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Smart Disclosure Policy Resources - Data.gov", "url": "https:\/\/www.data.gov\/consumer\/smart-disclosure-policy-resources",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/consumer\/smart-disclosure-policy-resources",
+        "snippet": "Federal Smart Disclosure Resources. An Introduction to Smart Disclosure
+        Policy | “Today’s consumers face complex choices, whether they are searching
+        for colleges, health insurance, credit cards, airline flights, or energy providers.
+        It takes time and energy for consumers to seek out the best deal. ... Smart
+        Disclosure in the News. Data ...", "dateLastCrawled": "2018-09-22T12:58:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Manufacturing - Data.gov", "url": "https:\/\/www.data.gov\/manufacturing\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/manufacturing",
+        "snippet": "Explore data, tools, apps and research related to new technologies,
+        facilities, and research. The U.S. Government funds research for government
+        agencies to help empower U.S. innovation—through this page you now have access
+        to all of that valuable research and data.", "dateLastCrawled": "2018-10-02T21:32:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Conference Presenters - Data.gov", "url": "https:\/\/www.data.gov\/conference\/presenters",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/conference\/presenters",
+        "snippet": "Ellen is a regular contributor on ABC’s World News Tonight,
+        C-SPAN, CNN, Washington Post, USA Today, Wired and The Huffington Post. Beth
+        Simone Noveck, Ph.D. U.S. Deputy Chief Technology Officcer", "dateLastCrawled":
+        "2018-08-29T14:52:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18", "name":
+        "Consumer - Data.gov", "url": "https:\/\/www.data.gov\/consumer\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.data.gov\/consumer", "snippet": "The
+        Legal Entity Identifier (LEI) Is Good News for Financial Technology Developers
+        May 21, 2014 By admin By Linda Powell, Chief Data Officer at the Office of
+        Financial Research (OFR) in the U.S. Treasury Department and an OFR representative
+        on the Legal Entity Identifier (LEI) system’s Regulatory Oversight Committee
+        The Legal Entity ...", "dateLastCrawled": "2018-10-05T02:46:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "APIs - Data.gov", "url": "https:\/\/www.data.gov\/developers\/apis",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/developers\/apis",
+        "snippet": "APIs Data.gov doesn’t just catalog raw data, it also includes
+        APIs from across government. You can browse the current catalog for APIs,
+        but expect this listing to grow as agencies include more of their APIs as
+        part of their data.json metadata in Project Open Data.. Data.gov CKAN
+        API. The data.gov catalog is powered by CKAN, a powerful open source data
+        platform that includes a robust API.", "dateLastCrawled": "2018-10-02T18:21:00.0000000Z",
+        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 08 Oct 2018 18:20:38 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=app%20(site:www.data.gov/)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 08 Oct 2018 18:19:38 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 20C57B2AFB3341A8812F3A7D3A51D2F0
+      Bingapis-Sessionid:
+      - BDA027CB33A94A1EA57243867862902D
+      X-Msedge-Clientid:
+      - 389814B9AD796F4904BF183BAC356EF3
+      X-Msapi-Userstate:
+      - 6e68
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=213,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: 20C57B2AFB3341A8812F3A7D3A51D2F0 Ref B: BY3EDGE0512 Ref C: 2018-10-08T18:20:38Z'
+      Apim-Request-Id:
+      - 0f7ce406-78cc-46c7-8361-3b48e7cece0d
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Mon, 08 Oct 2018 18:20:38 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "app
+        (site:www.data.gov\/)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=app+(site%3awww.data.gov%2f)",
+        "totalEstimatedMatches": 19900, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Applications - Data.gov", "url": "https:\/\/www.data.gov\/applications",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/applications",
+        "snippet": "This app provides all of the flight and airport information
+        you need to manage your entire day-of travel. GateGuru provides real-time
+        flight status with push notifications along with a wealth of airport content
+        specifically customized to your itinerary.", "dateLastCrawled": "2018-10-04T07:03:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Apps & Tools - Data.gov", "url": "https:\/\/www.data.gov\/disasters\/apps-tools\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/disasters\/apps-tools",
+        "snippet": "Lantern Live is a mobile app that allows users to report the
+        operational status of local gas stations, find fuel, and look up power outage
+        maps from local utilities, while also accessing useful tips and guidelines.",
+        "dateLastCrawled": "2018-10-01T15:23:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "City Apps - Data.gov", "url": "https:\/\/www.data.gov\/cities\/city-apps",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/cities\/city-apps",
+        "snippet": "Open Government Data Used: ... and Yelp reviews for the 24,000+
+        NYC food locations throughout the five boroughs in an easy-to-use and full-featured
+        App. Know before you go. Directory of Eateries. Food Environment Atlas.
+        Transportation Applications. Roadify", "dateLastCrawled": "2018-09-30T02:14:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Open government data powers software applications that ...", "url":
+        "https:\/\/www.data.gov\/consumer\/consumer-apps-page", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.data.gov\/consumer\/consumer-apps-page",
+        "snippet": "The GoodGuide app can be used while shopping to instantly reveal
+        whether a food product is healthy and produced by green or socially responsible
+        companies. Find safe, healthy, green and ethical product reviews based on
+        scientific ratings.", "dateLastCrawled": "2018-09-27T05:23:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Open government data powers software applications that ...", "url":
+        "https:\/\/www.data.gov\/safety\/safety-apps", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.data.gov\/safety\/safety-apps", "snippet": "Be ready for
+        severe weather with Hurricane by American Red Cross – A hurricane tracker
+        app available for iPhone and Android. Monitor conditions in your area or
+        throughout the storm track, prepare your family and home, find help and let
+        others know you are safe even if the power is out – a must have for anyone
+        who lives in an area where a hurricane may strike or has loved ones who do.",
+        "dateLastCrawled": "2018-10-04T12:45:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Open government data powers software applications that ...", "url":
+        "https:\/\/www.data.gov\/food\/food-apps", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.data.gov\/food\/food-apps", "snippet": "Fooducate is a
+        free mobile app (Android, iPhone) that empowers supermarket shoppers to
+        make healthy choices effortlessly, enabling consumers to automatically scan
+        the barcodes of food products, and instantly see how nutritious they really
+        are.", "dateLastCrawled": "2018-09-30T19:38:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "LactMed - Data.gov", "url": "https:\/\/www.data.gov\/applications\/lactmed\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/applications\/lactmed",
+        "snippet": "LactMed, part of the National Library of Medicine’s (NLM) Toxicology
+        Data Network (TOXNET®), is a database of drugs and dietary supplements that
+        may affect breastfeeding. It includes information on the levels of such substances
+        in breast milk and infant blood, and possible adverse effects in the nursing
+        infant.", "dateLastCrawled": "2018-10-03T19:36:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Open government data powers science and research software ...",
+        "url": "https:\/\/www.data.gov\/research\/research-apps", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.data.gov\/research\/research-apps",
+        "snippet": "Data Contact Science & Research While we can’t and don’t endorse
+        specific apps, below are just a few examples of government, citizen, and business
+        tools that: use open government data from the United States; are accessible,
+        vetted, and available; and are, for the majority, free and do not require
+        registration to use.", "dateLastCrawled": "2018-10-05T09:15:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Apps - Data.gov", "url": "https:\/\/www.data.gov\/application_types\/apps-30\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/application_types\/apps-30",
+        "snippet": "With hurricane season kicking off June 1 through November 30,
+        the FEMA app is a comprehensive resource of tools and tips to keep you safe
+        before, during, and after emergencies. Receive weather-related alerts from
+        the U.S. National Weather Service for …", "dateLastCrawled": "2018-08-04T22:57:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Apps for Farmers - Data.gov", "url": "https:\/\/www.data.gov\/food\/apps-for-farmers\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/food\/apps-for-farmers",
+        "snippet": "Agriculture data is helping fuel new products, services, and apps
+        for farmers. Data in action include: The Climate Corporation offers insurance,
+        software, and services to help farmers plan, manage, and protect their crops
+        by using a number of open federal government data sets, including weather
+        history and forecasts from the National Weather Service, terrain maps and
+        soil type from the U.S ...", "dateLastCrawled": "2018-09-25T16:18:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Welcome to the Green Button! - Data.gov", "url": "https:\/\/www.data.gov\/energy\/welcome-green-button",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/energy\/welcome-green-button",
+        "snippet": "The app provides several games based on the “shape” of your
+        data, and provides creative comparisons to illustrate your usage, like how
+        many cheeseburgers worth of energy you used last Tuesday from 5-6 pm.", "dateLastCrawled":
+        "2018-10-04T10:30:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11", "name":
+        "Open with Apps - Data.gov", "url": "https:\/\/www.data.gov\/meta\/open-apps\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/meta\/open-apps",
+        "snippet": "Data.gov now enables the public to open data directly with apps
+        like Plotly and CartoDB for robust visualization and analysis. New tools are
+        making it easier to visualize and analyze data at the click of a button.",
+        "dateLastCrawled": "2018-09-29T11:16:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Zoc Doc - Data.gov", "url": "https:\/\/www.data.gov\/applications\/zoc-doc\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/applications\/zoc-doc",
+        "snippet": "ZocDoc is the beginning of a better healthcare experience for
+        millions of patients every month. Find doctors you love, read real reviews,
+        book appointments instantly, and more with this award-winning app.", "dateLastCrawled":
+        "2018-09-21T12:28:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13", "name":
+        "Impact - Data.gov", "url": "https:\/\/www.data.gov\/impact\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.data.gov\/impact", "snippet": "Open government
+        data is important because the more accessible, discoverable, and usable
+        data is, the more impact it can have. These impacts include, but are not
+        limited to: cost savings, efficiency, fuel for business, improved civic services,
+        informed policy, performance planning, research and scientific discoveries,
+        transparency and accountability, and increased public participation in the
+        ...", "dateLastCrawled": "2018-10-02T01:38:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "U.S. Treasury Department: Building Apps and Services for ...", "url":
+        "https:\/\/www.data.gov\/consumer\/building-apps-and-services-for-financial-empowerment\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/consumer\/building-apps-and-services-for...",
+        "snippet": "Government data that is being used to fuel these apps and services
+        can be found in Treasury’s Finance Data Directory, an online resource for
+        more than 50 key finance data sets published by Federal agencies.", "dateLastCrawled":
+        "2018-08-31T10:36:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15", "name":
+        "Announcing the Apps for Vehicles Challenge - Data.gov", "url": "https:\/\/www.data.gov\/developers\/blog\/announcing-apps-vehicles-challenge",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/developers\/blog\/announcing-apps-vehicles...",
+        "snippet": "December 5, 2012. Here at the Energy Department’s Vehicle Technologies
+        Program we’re revved up about the next great smartphone app: yours.. That’s
+        why we’re launching the Apps for Vehicles Challenge, which is looking for
+        the best business plans, app ideas and product designs that use open vehicle
+        data to help vehicle owners save fuel, save money and stay safe.", "dateLastCrawled":
+        "2018-10-01T23:09:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16", "name":
+        "City Data - Data.gov", "url": "https:\/\/www.data.gov\/applications\/city-data\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/applications\/city-data",
+        "snippet": "In addition to our huge collection of data, we have also created
+        our Top 100 City Lists and Top 101 City Lists. These lists rank cities in
+        hundreds of categories, including income, crime, most gay couples, most cars,
+        shortest commute, biggest houses, best educated residents and many more.",
+        "dateLastCrawled": "2018-10-01T20:32:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Open government data powers software applications that ...", "url":
+        "https:\/\/www.data.gov\/energy\/energy-apps", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.data.gov\/energy\/energy-apps", "snippet": "Open government
+        data powers software applications that help people make informed decisions
+        on alternative fuels, green buildings, efficiency, and managing household
+        energy.", "dateLastCrawled": "2018-09-26T04:19:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Energy Department Announces Apps for Vehicles Challenge ...", "url":
+        "https:\/\/www.data.gov\/developers\/blog\/energy-department-announces-apps-vehicles-challenge-winners",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/developers\/blog\/energy-department-announces...",
+        "snippet": "The competition asked app developers and entrepreneurs to demonstrate
+        how the open data available on most vehicles can be used to improve vehicle
+        safety, fuel efficiency and comfort. The Department awarded New York City-based
+        Dash the Judges’ Prize and MyCarma, headquartered in Troy, Michigan, the Popular
+        Choice prize.", "dateLastCrawled": "2018-10-04T03:20:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Agriculture - Data.gov", "url": "https:\/\/www.data.gov\/food\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/food",
+        "snippet": "USDA-NRCS rangeland scientist Emilio Carrillo uses an open data
+        mobile app called LandPKS for sustainable land use management. Every day,
+        people around the world use data to make decisions. When heading out of
+        town, most of us use weather apps to check the forecast anywhere in the world
+        before packing our bags.", "dateLastCrawled": "2018-10-04T05:17:00.0000000Z",
+        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 08 Oct 2018 18:20:38 GMT
 recorded_with: VCR 4.0.0

@@ -397,4 +397,435 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
   recorded_at: Mon, 27 Aug 2018 02:08:57 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=gobierno%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 08 Oct 2018 18:19:53 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 70BDEAA6EB7E4011A498A83B249DB313
+      Bingapis-Sessionid:
+      - 90D48F7CD6464730A915123544727347
+      X-Msedge-Clientid:
+      - 3B92B1509DB96D8C0390BDD29CF56CBF
+      X-Msapi-Userstate:
+      - ef45
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=231,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: 70BDEAA6EB7E4011A498A83B249DB313 Ref B: BY3EDGE0417 Ref C: 2018-10-08T18:20:54Z'
+      Apim-Request-Id:
+      - e2e7e080-8f7c-48d9-aff8-b9193ee268fc
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Mon, 08 Oct 2018 18:20:54 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "gobierno
+        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=gobierno+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 3140000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "PR.gov - Portal Oficial del Estado Libre Asociado de ...", "url":
+        "http:\/\/www2.pr.gov\/Pages\/default.aspx\/", "about": [{"name": "Puerto
+        Rico Ports Authority"}, {"name": "Puerto Rico"}], "isFamilyFriendly": true,
+        "displayUrl": "www2.pr.gov\/Pages\/default.aspx", "snippet": "Es el medio
+        oficial de avisos de subastas de todas las agencias de la Rama Ejecutiva y
+        las corporaciones públicas del Gobierno del Estado Libre Asociado de Puerto
+        Rico, según la Ley Núm 205-2012. Ayúdanos a tener un país más seguro", "dateLastCrawled":
+        "2018-10-02T07:51:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1", "name":
+        "Guía oficial de información y servicios del Gobierno | USAGov", "url":
+        "https:\/\/gobierno.usa.gov\/", "about": [{"name": "GobiernoUSA.gov"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/gobierno.usa.gov", "snippet": "Página principal
+        de GobiernoUSA.gov, el portal oficial del Gobierno de Estados Unidos en
+        español.", "dateLastCrawled": "2018-10-04T09:22:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "informacion de formularios prgov Solicitud de ...", "url": "http:\/\/www2.pr.gov\/pages\/informaciondeformulariosprgovsolicituddecertificaci%C3%B3ndecumplimientodeasume.aspx",
+        "isFamilyFriendly": true, "displayUrl": "www2.pr.gov\/pages...", "snippet":
+        "Gobierno a Gobierno; Convocatorias; Subastas Públicas ‹ › informacion
+        de formularios prgov Solicitud de Certificación de Cumplimiento de ASUME ...",
+        "dateLastCrawled": "2018-10-03T17:53:00.0000000Z", "language": "es", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Directorio de Agencias - PR.gov", "url": "http:\/\/www2.pr.gov\/Directorios\/Pages\/DirectoriodeAgencias.aspx",
+        "isFamilyFriendly": true, "displayUrl": "www2.pr.gov\/Directorios\/Pages\/DirectoriodeAgencias.aspx",
+        "snippet": "Gobierno a Gobierno; Convocatorias; Subastas Públicas ‹ ›
+        Directorio de Agencias. Sobre Puerto Rico ...", "dateLastCrawled": "2018-10-03T06:59:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Portal Oficial Del - pr.gov", "url": "http:\/\/www2.pr.gov\/Pages\/servicefilter.aspx?cat=certificados&type=ciudadano",
+        "isFamilyFriendly": true, "displayUrl": "www2.pr.gov\/Pages\/servicefilter.aspx?cat=certificados&type=ciudadano",
+        "snippet": "A través de este servicio usted podrá realiza una pre-cualificación
+        para el Programa Medicaid \/ Plan de Salud del Gobierno. Le indica el número
+        de teléfono a llamar para realizar una cita o recibir orientación.", "dateLastCrawled":
+        "2018-10-01T17:05:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5", "name":
+        "Convocatorias y Becas Busqueda de Convocatorias y Becas", "url": "http:\/\/www2.pr.gov\/Pages\/empleos.aspx",
+        "isFamilyFriendly": true, "displayUrl": "www2.pr.gov\/Pages\/empleos.aspx",
+        "snippet": "Gobierno a Gobierno; Convocatorias Currently selected; Subastas
+        Públicas ‹ › Convocatorias y Becas ...", "dateLastCrawled": "2018-09-30T08:58:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Programas sociales | USAGov - gobierno.usa.gov", "url": "https:\/\/gobierno.usa.gov\/programas-sociales",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/gobierno.usa.gov\/programas-sociales",
+        "snippet": "Beneficios sociales y ayuda financiera del Gobierno para familias
+        o personas con ingresos limitados para cubrir sus necesidades básicas.", "dateLastCrawled":
+        "2018-10-04T10:50:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7", "name":
+        "Servicios e información del Gobierno | USAGov", "url": "https:\/\/gobierno.usa.gov\/servicios-informacion",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/gobierno.usa.gov\/servicios-informacion",
+        "snippet": "Encuentre información sobre programas y servicios del Gobierno
+        de EE. UU.", "dateLastCrawled": "2018-10-05T05:13:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "search - PR.gov", "url": "http:\/\/www2.pr.gov\/Pages\/search.aspx",
+        "isFamilyFriendly": true, "displayUrl": "www2.pr.gov\/Pages\/search.aspx",
+        "snippet": "A través de este servicio usted podrá realiza una pre-cualificación
+        para el Programa Medicaid \/ Plan de Salud del Gobierno. Le indica el número
+        de teléfono a llamar para realizar una cita o recibir orientación.", "dateLastCrawled":
+        "2018-10-04T20:28:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9", "name":
+        "PR.gov - Nuevo Servicio para Solicitar un Certificado de ...", "url": "https:\/\/servicios.pr.gov\/info",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/servicios.pr.gov\/info",
+        "snippet": "Este nuevo servicio se encuentra en un periodo de mejoramiento
+        continuo conocido como beta. Durante este periodo, el servicio será completamente
+        gratuito y todos los certificados emitidos mediante el mismo son oficiales.",
+        "dateLastCrawled": "2018-10-04T12:03:00.0000000Z", "language": "es", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Departamento de Estado", "url": "https:\/\/estado.pr.gov\/en\/",
+        "about": [{"name": "Departamento"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/estado.pr.gov\/en", "snippet": "Gobierno de Puerto Rico Aprobado
+        por la Comisión Estatal de Elecciones - CEE-SA-16-3903", "dateLastCrawled":
+        "2018-10-05T08:41:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11", "name":
+        "Directorio Gubernamental", "url": "http:\/\/www2.pr.gov\/Directorios\/Pages\/Directorios.aspx",
+        "isFamilyFriendly": true, "displayUrl": "www2.pr.gov\/Directorios\/Pages\/Directorios.aspx",
+        "snippet": "Directorio de Agencias. Aquí accederá al Directorio de Agencias
+        del Estado Libre Asociado de Puerto Rico, con alternativas de búsqueda e información
+        de contacto de todas las entidades de nuestro gobierno.", "dateLastCrawled":
+        "2018-10-01T05:57:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12", "name":
+        "Inicio", "url": "http:\/\/de.pr.gov\/", "about": [{}], "isFamilyFriendly":
+        true, "displayUrl": "de.pr.gov", "snippet": "Departamento de Educacion de
+        Puerto Rico escuelas gobierno", "dateLastCrawled": "2018-10-05T04:31:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Recursos para la educación | USAGov - gobierno.usa.gov", "url":
+        "https:\/\/gobierno.usa.gov\/educacion", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/gobierno.usa.gov\/educacion", "snippet": "Información del Gobierno
+        sobre ayuda para estudiantes y personas que quieren aprender inglés.", "dateLastCrawled":
+        "2018-10-03T05:06:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "Subastas y ventas del Gobierno | USAGov", "url": "https:\/\/gobierno.usa.gov\/subastas-ventas-gobierno",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/gobierno.usa.gov\/subastas-ventas-gobierno",
+        "snippet": "Información sobre bienes para la venta, incluyedo casas, edificios,
+        autos, etc. También puede encontrar información sobre subastas y ventas por
+        estado.", "dateLastCrawled": "2018-10-04T23:48:00.0000000Z", "language": "es",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "PR.gov - Nuevo Servicio para Solicitar un Certificado de ...", "url":
+        "https:\/\/servicios.pr.gov\/", "isFamilyFriendly": true, "displayUrl": "https:\/\/servicios.pr.gov",
+        "snippet": "El Gobierno del Estado Libre Asociado de Puerto Rico se compromete
+        a brindar servicios de alta calidad a través del Portal, dentro de las circunstancias
+        particulares del medio cibernético. El Gobierno del Estado Libre Asociado
+        de Puerto Rico se compromete a cumplir con la Política de Privacidad publicada
+        en el Portal.", "dateLastCrawled": "2018-10-05T06:15:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "subastas", "url": "http:\/\/www2.pr.gov\/subasta\/Pages\/subastas.aspx",
+        "isFamilyFriendly": true, "displayUrl": "www2.pr.gov\/subasta\/Pages\/subastas.aspx",
+        "snippet": "para establecer contrato de selecciÓn mÚltiple para la adquisiciÓn
+        de pizarras y pantallas interactivas para los departamentos, dependencias,
+        agencias e instrumentalidades de la rama ejecutiva las corporaciones pÚblicas
+        y los municipios del gobierno de puerto rico (18-021 c)", "dateLastCrawled":
+        "2018-10-04T10:01:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17", "name":
+        "Departamento de Estado", "url": "https:\/\/estado.pr.gov\/es\/", "about":
+        [{"name": "Puerto Rico Department of State"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/estado.pr.gov\/es", "snippet": "Gobierno de Puerto Rico Aprobado
+        por la Comisión Estatal de Elecciones - CEE-SA-16-3903", "dateLastCrawled":
+        "2018-10-03T02:02:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18", "name":
+        "Ayuda financiera, becas y beneficios | USAGov", "url": "https:\/\/gobierno.usa.gov\/ayuda-financiera-becas-beneficios",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/gobierno.usa.gov\/ayuda-financiera-becas-beneficios",
+        "snippet": "Información sobre ayuda federal para estudiantes, beneficios y
+        programas sociales del Gobierno.", "dateLastCrawled": "2018-10-03T12:15:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Portal Oficial Del - Puerto Rico", "url": "http:\/\/www2.pr.gov\/prgovEN\/Pages\/default.aspx",
+        "about": [{"name": "Puerto Rico"}, {"name": "Puerto Rico"}], "isFamilyFriendly":
+        true, "displayUrl": "www2.pr.gov\/prgovEN\/Pages\/default.aspx", "snippet":
+        "Gobierno de Puerto Rico. PR Gov English Currently selected ‹ › Surveys;
+        Pictures ...", "dateLastCrawled": "2018-10-04T22:34:00.0000000Z", "language":
+        "en", "isNavigational": false}]}, "rankingResponse": {"mainline": {"items":
+        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 08 Oct 2018 18:20:54 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=gobierno%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 08 Oct 2018 18:19:54 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - B8AFD64AFC974A2BA019A89508039DBB
+      Bingapis-Sessionid:
+      - 1CF052E75033496FB472D08BC86710F0
+      X-Msedge-Clientid:
+      - 390A8B37B364646C155187B5B2286523
+      X-Msapi-Userstate:
+      - d521
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=193,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: B8AFD64AFC974A2BA019A89508039DBB Ref B: BY3EDGE0414 Ref C: 2018-10-08T18:20:54Z'
+      Apim-Request-Id:
+      - 5df1a6dd-7ac1-41df-9667-5c3392874df3
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Mon, 08 Oct 2018 18:20:53 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "gobierno
+        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=gobierno+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 3140000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "PR.gov - Portal Oficial del Estado Libre Asociado de ...", "url":
+        "http:\/\/www2.pr.gov\/Pages\/default.aspx\/", "about": [{"name": "Puerto
+        Rico Ports Authority"}, {"name": "Puerto Rico"}], "isFamilyFriendly": true,
+        "displayUrl": "www2.pr.gov\/Pages\/default.aspx", "snippet": "Es el medio
+        oficial de avisos de subastas de todas las agencias de la Rama Ejecutiva y
+        las corporaciones públicas del Gobierno del Estado Libre Asociado de Puerto
+        Rico, según la Ley Núm 205-2012.", "dateLastCrawled": "2018-10-02T07:51:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Guía oficial de información y servicios del Gobierno | USAGov",
+        "url": "https:\/\/gobierno.usa.gov\/", "about": [{"name": "GobiernoUSA.gov"}],
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/gobierno.usa.gov", "snippet":
+        "Página principal de GobiernoUSA.gov, el portal oficial del Gobierno de
+        Estados Unidos en español.", "dateLastCrawled": "2018-10-04T09:22:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Directorio de Agencias - PR.gov", "url": "http:\/\/www2.pr.gov\/Directorios\/Pages\/DirectoriodeAgencias.aspx",
+        "isFamilyFriendly": true, "displayUrl": "www2.pr.gov\/Directorios\/Pages\/DirectoriodeAgencias.aspx",
+        "snippet": "Gobierno a Gobierno; Convocatorias; Subastas Públicas ‹ ›
+        Directorio de Agencias. Sobre Puerto Rico ...", "dateLastCrawled": "2018-10-03T06:59:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Portal Oficial Del - pr.gov", "url": "http:\/\/www2.pr.gov\/Pages\/servicefilter.aspx?cat=certificados&type=ciudadano",
+        "isFamilyFriendly": true, "displayUrl": "www2.pr.gov\/Pages\/servicefilter.aspx?cat=certificados&type=ciudadano",
+        "snippet": "A través de este servicio usted podrá realiza una pre-cualificación
+        para el Programa Medicaid \/ Plan de Salud del Gobierno. Le indica el número
+        de teléfono a llamar para realizar una cita o recibir orientación. Gratis.
+        Buscador de Escuelas.", "dateLastCrawled": "2018-10-01T17:05:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Convocatorias y Becas Busqueda de Convocatorias y Becas", "url":
+        "http:\/\/www2.pr.gov\/Pages\/empleos.aspx", "isFamilyFriendly": true, "displayUrl":
+        "www2.pr.gov\/Pages\/empleos.aspx", "snippet": "Gobierno Federal; Tercer
+        Sector; Directorios. Directorio de Agencias; Directorio de Municipios de Puerto
+        Rico; La Fortaleza; Líneas de Ayuda para Emergencias; Junta Revisora de Propiedead
+        Inmueble; Ventanilla Unica. Ventanilla Única Villalba; Ventanilla Única Vega
+        Baja; Ventanilla Única Toa Alta;", "dateLastCrawled": "2018-09-30T08:58:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Programas sociales | USAGov - gobierno.usa.gov", "url": "https:\/\/gobierno.usa.gov\/programas-sociales",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/gobierno.usa.gov\/programas-sociales",
+        "snippet": "Beneficios sociales y ayuda financiera del Gobierno para familias
+        o personas con ingresos limitados para cubrir sus necesidades básicas.", "dateLastCrawled":
+        "2018-10-04T10:50:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6", "name":
+        "Servicios e información del Gobierno | USAGov", "url": "https:\/\/gobierno.usa.gov\/servicios-informacion",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/gobierno.usa.gov\/servicios-informacion",
+        "snippet": "El dominio .gov significa que es oficial. Los sitios del Gobierno
+        federal frecuentemente terminan en dominios .gov o .mil. Antes de compartir
+        información confidencial, asegúrese de que está en un sitio del Gobierno
+        federal.", "dateLastCrawled": "2018-10-05T05:13:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "search - PR.gov", "url": "http:\/\/www2.pr.gov\/Pages\/search.aspx",
+        "isFamilyFriendly": true, "displayUrl": "www2.pr.gov\/Pages\/search.aspx",
+        "snippet": "A través de este servicio usted podrá realiza una pre-cualificación
+        para el Programa Medicaid \/ Plan de Salud del Gobierno. Le indica el número
+        de teléfono a llamar para realizar una cita o recibir orientación. Gratis.
+        N\/A. Buscador de Escuelas.", "dateLastCrawled": "2018-10-04T20:28:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "PR.gov - Nuevo Servicio para Solicitar un Certificado de ...", "url":
+        "https:\/\/servicios.pr.gov\/info", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/servicios.pr.gov\/info", "snippet": "Este nuevo servicio se encuentra
+        en un periodo de mejoramiento continuo conocido como beta. Durante este periodo,
+        el servicio será completamente gratuito y todos los certificados emitidos
+        mediante el mismo son oficiales.", "dateLastCrawled": "2018-10-04T12:03:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "informacion de formularios prgov Solicitud de ...", "url": "http:\/\/www2.pr.gov\/pages\/informaciondeformulariosprgovsolicituddecertificaci%C3%B3ndecumplimientodeasume.aspx",
+        "isFamilyFriendly": true, "displayUrl": "www2.pr.gov\/pages...", "snippet":
+        "Para desplegar correctamente los formularios en PR.GOV debe activar el “Compatibility
+        View”, requerido al actualizar a Internet Explorer 8 y 9. Tiene dos opciones:
+        Opción 1: Presionar el botón de Compatibility View. Cuando accede el portal
+        PR.GOV aparecerá a la derecha del navegador.", "dateLastCrawled": "2018-10-03T17:53:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Departamento de Estado", "url": "https:\/\/estado.pr.gov\/en\/",
+        "about": [{"name": "Departamento"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/estado.pr.gov\/en", "snippet": "Gobierno de Puerto Rico Aprobado
+        por la Comisión Estatal de Elecciones - CEE-SA-16-3903", "dateLastCrawled":
+        "2018-10-05T08:41:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11", "name":
+        "Directorio Gubernamental", "url": "http:\/\/www2.pr.gov\/Directorios\/Pages\/Directorios.aspx",
+        "isFamilyFriendly": true, "displayUrl": "www2.pr.gov\/Directorios\/Pages\/Directorios.aspx",
+        "snippet": "Directorio de Agencias. Aquí accederá al Directorio de Agencias
+        del Estado Libre Asociado de Puerto Rico, con alternativas de búsqueda e información
+        de contacto de todas las entidades de nuestro gobierno.", "dateLastCrawled":
+        "2018-10-01T05:57:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12", "name":
+        "Inicio", "url": "http:\/\/de.pr.gov\/", "about": [{}], "isFamilyFriendly":
+        true, "displayUrl": "de.pr.gov", "snippet": "Departamento de Educacion de
+        Puerto Rico escuelas gobierno", "dateLastCrawled": "2018-10-05T04:31:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Recursos para la educación | USAGov - gobierno.usa.gov", "url":
+        "https:\/\/gobierno.usa.gov\/educacion", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/gobierno.usa.gov\/educacion", "snippet": "Antes de compartir
+        información confidencial, asegúrese de que está en un sitio del Gobierno
+        federal. Este sitio es seguro. El protocolo https:\/\/ le asegura que se está
+        conectando al sitio web oficial y que cualquier información que usted proporcione
+        está encriptada y será transmitida de forma segura.", "dateLastCrawled": "2018-10-03T05:06:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Subastas y ventas del Gobierno | USAGov", "url": "https:\/\/gobierno.usa.gov\/subastas-ventas-gobierno",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/gobierno.usa.gov\/subastas-ventas-gobierno",
+        "snippet": "Cuando el Gobierno tiene equipo adicional, bienes confiscados
+        o propiedades embargadas, los bienes se venden al público. Usted encontrará
+        una variedad de bienes en venta como autos, camiones, propiedades, casas,
+        edificios, terrenos, computadoras, mobiliario y herramientas de trabajo.",
+        "dateLastCrawled": "2018-10-04T23:48:00.0000000Z", "language": "es", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "PR.gov - Nuevo Servicio para Solicitar un Certificado de ...", "url":
+        "https:\/\/servicios.pr.gov\/", "isFamilyFriendly": true, "displayUrl": "https:\/\/servicios.pr.gov",
+        "snippet": "El Gobierno del Estado Libre Asociado de Puerto Rico se compromete
+        a brindar servicios de alta calidad a través del Portal, dentro de las circunstancias
+        particulares del medio cibernético. El Gobierno del Estado Libre Asociado
+        de Puerto Rico se compromete a cumplir con la Política de Privacidad publicada
+        en el Portal.", "dateLastCrawled": "2018-10-05T06:15:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "subastas", "url": "http:\/\/www2.pr.gov\/subasta\/Pages\/subastas.aspx",
+        "isFamilyFriendly": true, "displayUrl": "www2.pr.gov\/subasta\/Pages\/subastas.aspx",
+        "snippet": "para establecer contrato de selecciÓn mÚltiple para la adquisiciÓn
+        de pizarras y pantallas interactivas para los departamentos, dependencias,
+        agencias e instrumentalidades de la rama ejecutiva las corporaciones pÚblicas
+        y los municipios del gobierno de puerto rico (18-021 c)", "dateLastCrawled":
+        "2018-10-04T10:01:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17", "name":
+        "Departamento de Estado", "url": "https:\/\/estado.pr.gov\/es\/", "about":
+        [{"name": "Puerto Rico Department of State"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/estado.pr.gov\/es", "snippet": "Gobierno de Puerto Rico Aprobado
+        por la Comisión Estatal de Elecciones - CEE-SA-16-3903", "dateLastCrawled":
+        "2018-10-03T02:02:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18", "name":
+        "Ayuda financiera, becas y beneficios | USAGov", "url": "https:\/\/gobierno.usa.gov\/ayuda-financiera-becas-beneficios",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/gobierno.usa.gov\/ayuda-financiera-becas-beneficios",
+        "snippet": "Busque ayuda del Gobierno para recibir los beneficios de desempleo
+        y conozca sus obligaciones tributarias. Jubilación. Planee su jubilación,
+        beneficios del Seguro Social y averigüe si tiene una pensión de empleo sin
+        reclamar. Pago de facturas.", "dateLastCrawled": "2018-10-03T12:15:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Portal Oficial Del - Puerto Rico", "url": "http:\/\/www2.pr.gov\/prgovEN\/Pages\/default.aspx",
+        "about": [{"name": "Puerto Rico"}, {"name": "Puerto Rico"}], "isFamilyFriendly":
+        true, "displayUrl": "www2.pr.gov\/prgovEN\/Pages\/default.aspx", "snippet":
+        "Enter to verify the authenticity of the certificate´s information. (To be
+        validated by the entity.)", "dateLastCrawled": "2018-10-04T22:34:00.0000000Z",
+        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 08 Oct 2018 18:20:54 GMT
 recorded_with: VCR 4.0.0
