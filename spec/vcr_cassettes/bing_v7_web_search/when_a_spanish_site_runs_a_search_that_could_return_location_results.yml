@@ -1,0 +1,67 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=es-US&offset=0&q=hotel%20(site:search.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 08 Oct 2018 20:42:46 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 5D6125184B644CA5AFB061D6ADC8CB46
+      Bingapis-Sessionid:
+      - 2919D8E674FF498398B95156039EAD2D
+      X-Msedge-Clientid:
+      - 199F08E1D98B674D285A0463D8C766C6
+      X-Msapi-Userstate:
+      - cbe3
+      Bingapis-Market:
+      - es-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=99,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: 5D6125184B644CA5AFB061D6ADC8CB46 Ref B: BY3EDGE0112 Ref C: 2018-10-08T20:43:46Z'
+      Apim-Request-Id:
+      - 29ddc862-f9c3-405c-999d-d624f7a7119e
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Mon, 08 Oct 2018 20:43:45 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "hotel
+        (site:search.gov)"}, "rankingResponse": {}}'
+    http_version: 
+  recorded_at: Mon, 08 Oct 2018 20:43:46 GMT
+recorded_with: VCR 4.0.0
