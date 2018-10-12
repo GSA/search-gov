@@ -9,4 +9,16 @@ class Alert < ActiveRecord::Base
   def renderable?
     status == 'Active' && title.present? && text.present?
   end
+
+  def untested
+    'untested'
+  end
+
+  def complex
+    if 'foo'
+    elsif 'bar'
+    elsif 'baz'
+      'biz' unless 'quux'
+    end
+  end
 end
