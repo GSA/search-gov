@@ -6,6 +6,7 @@ class SearchgovUrl < ActiveRecord::Base
   MAX_DOC_SIZE = 15.megabytes
   SUPPORTED_CONTENT_TYPES = %w(
                                 text/html
+                                text/plain
                                 application/msword
                                 application/pdf
                                 application/vnd.ms-excel
@@ -167,7 +168,7 @@ class SearchgovUrl < ActiveRecord::Base
 
   def parse_document
     Rails.logger.info "[SearchgovUrl] Parsing document for #{url}"
-    if /^application/ === response.content_type.mime_type
+    if /^application|text\/plain/ === response.content_type.mime_type
       ApplicationDocument.new(document: download.open, url: url)
     else
       HtmlDocument.new(document: response.to_s, url: url)
