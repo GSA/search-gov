@@ -228,16 +228,6 @@ We use Imagemagick to identify some image properties. It can also be installed w
 
     $ brew install imagemagick
 
-## Nutshell
-
-We push some changes on Affiliate and User model to [Nutshell](https://www.nutshell.com).
-
-If you need to access Nutshell on your development environment, you can do the following:
-
-- Go to [API documentation](https://www.nutshell.com/api/detail/class_core.html) and click on one of the `Try it out!` buttons to see the `Auth` row.
-- Copy the username/password from the `Auth` row to `config/nutshell.yaml`.
-- Verify your changes using the [live demo account](https://www.nutshell.com/signup/).
-
 # Tests
 
 We use poltergeist gem to test Javascript. This gem depends on PhantomJS.

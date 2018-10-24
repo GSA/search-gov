@@ -124,10 +124,6 @@ describe Sites::SitesController do
           expect(SiteAutodiscoverer).to receive(:new).with(site).and_return(autodiscoverer)
           expect(autodiscoverer).to receive(:run)
 
-          adapter = double(NutshellAdapter)
-          expect(NutshellAdapter).to receive(:new).and_return(adapter)
-          expect(adapter).to receive(:push_site).with(site)
-
           expect(Emailer).to receive(:new_affiliate_site).and_return(emailer)
           post :create,
                site: { display_name: 'New Aff',
@@ -168,12 +164,6 @@ describe Sites::SitesController do
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
-
-      before do
-        adapter = double(NutshellAdapter)
-        expect(NutshellAdapter).to receive(:new).and_return(adapter)
-        expect(adapter).to receive(:push_site).with(site)
-      end
 
       it 'should enqueue destruction of affiliate' do
         expect(Resque).to receive(:enqueue_with_priority).with(:low, SiteDestroyer, site.id)

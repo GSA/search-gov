@@ -1363,7 +1363,6 @@ describe Affiliate do
                                mobile_logo_file_size: 100,
                                mobile_logo_updated_at: DateTime.current,
                                name: 'original-site',
-                               nutshell_id: 888,
                                page_background_image_content_type: 'image/jpeg',
                                page_background_image_file_name: 'test.jpg',
                                page_background_image_file_size: 100,
@@ -1383,7 +1382,6 @@ describe Affiliate do
                         mobile_logo_file_size
                         mobile_logo_updated_at
                         name
-                        nutshell_id
                         page_background_image_content_type
                         page_background_image_file_name
                         page_background_image_file_size

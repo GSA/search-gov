@@ -70,11 +70,8 @@ describe "Bulk Import rake tasks" do
         expect{import_affiliates}.to change{user.affiliates.count}.by(2)
       end
 
-      it 'reports the addition to Nutshell' do
-        @adapter = double(NutshellAdapter)
-        allow(NutshellAdapter).to receive(:new) { @adapter }
-        expect(@adapter).to receive(:push_site).with(instance_of(Affiliate)).exactly(2).times
-        expect(@adapter).to receive(:new_note).with(user, message).exactly(2).times
+      it 'logs the addition' do
+        expect(Rails.logger).to receive(:info).with(message).exactly(2).times
         import_affiliates
       end
 

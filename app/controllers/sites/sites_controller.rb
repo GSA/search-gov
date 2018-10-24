@@ -30,7 +30,6 @@ class Sites::SitesController < Sites::BaseController
       @site.assign_sitelink_generator_names!
       Emailer.new_affiliate_site(@site, current_user).deliver_now
       SiteAutodiscoverer.new(@site).run
-      NutshellAdapter.new.push_site @site
       redirect_to site_path(@site), flash: { success: "You have added '#{@site.display_name}' as a site." }
     else
       @site.site_domains.first.domain = "http://#{@site.site_domains.first.domain}" if @site.site_domains.first.domain.present?
@@ -41,7 +40,6 @@ class Sites::SitesController < Sites::BaseController
   def destroy
     @site.update_attributes!(active: false)
     @site.user_ids = []
-    NutshellAdapter.new.push_site @site
     Resque.enqueue_with_priority(:low, SiteDestroyer, @site.id)
     redirect_to new_site_path, :flash => { :success => "Scheduled site '#{@site.display_name}' for deletion. This could take several hours to complete." }
   end

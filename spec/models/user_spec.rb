@@ -3,7 +3,6 @@ require 'spec_helper'
 describe User do
   fixtures :users, :affiliates, :memberships
 
-  let(:adapter) { double(NutshellAdapter) }
   let(:valid_attributes) do
     { email: "unique_login@agency.gov",
       password: "password1!",
@@ -21,9 +20,6 @@ describe User do
     }
     @emailer = double(Emailer)
     allow(@emailer).to receive(:deliver_now).and_return true
-
-    allow(NutshellAdapter).to receive(:new) { adapter }
-    allow(adapter).to receive(:push_user)
   end
 
   describe 'schema' do
@@ -33,7 +29,6 @@ describe User do
 
   describe "when validating" do
     before do
-      allow(adapter).to receive(:push_user)
       allow_any_instance_of(User).to receive(:email_verification_token) { 'e_v_token' }
       allow_any_instance_of(User).to receive(:inviter) { users(:affiliate_manager) }
       allow_any_instance_of(User).to receive(:affiliates) { [affiliates(:basic_affiliate)] }
@@ -165,7 +160,6 @@ describe User do
 
     before do
       allow(Authlogic::Random).to receive(:friendly_token).and_return(random_new_token)
-      allow(adapter).to receive(:push_user)
     end
 
     let(:original_token) { 'original_perishable_token_that_should_change' }
@@ -216,8 +210,6 @@ describe User do
   end
 
   describe "on create" do
-    before { allow(adapter).to receive(:push_user) }
-
     it "should assign approval status" do
       user = User.create!(valid_attributes)
       expect(user.approval_status).not_to be_blank
@@ -365,7 +357,6 @@ describe User do
   describe "#verify_email" do
     context "has matching email verification token and does not require manual approval" do
       before do
-        expect(adapter).to receive(:push_user).once
         @user = users(:affiliate_added_by_another_affiliate_with_pending_email_verification_status)
         expect(@user.is_pending_email_verification?).to be true
         expect(@user.welcome_email_sent?).to be false
@@ -383,7 +374,6 @@ describe User do
 
     context "has matching email verification token and requires manual approval" do
       before do
-        expect(adapter).to receive(:push_user).exactly(2).times
         @user = User.create!(@valid_affiliate_attributes.merge(:email => 'not.gov@agency.com'))
         expect(@user.is_pending_email_verification?).to be true
         @user = User.find_by_email('not.gov@agency.com')
@@ -457,7 +447,6 @@ describe User do
 
     context "when welcome_email_sent is false" do
       before do
-        expect(adapter).to receive(:push_user).with(@user)
         @user.set_approval_status_to_approved
       end
 
@@ -474,7 +463,6 @@ describe User do
 
     context "when welcome_email_sent is true" do
       before do
-        expect(adapter).to receive(:push_user).with(@user)
         @user.set_approval_status_to_approved
         @user.welcome_email_sent = true
       end
@@ -493,7 +481,6 @@ describe User do
     context "when contact_name and email are provided" do
 
       it "should initialize new user with assign affiliate, contact_name, and email" do
-        expect(adapter).to receive(:push_user)
         new_user = User.new_invited_by_affiliate(inviter, affiliate, { :contact_name => 'New User Name', :email => 'newuser@approvedagency.com' })
         new_user.save!
         expect(new_user.affiliates.first).to eq(affiliate)
@@ -510,7 +497,6 @@ describe User do
         expect(Emailer).to receive(:welcome_to_new_user_added_by_affiliate).and_return @emailer
         expect(Emailer).to_not receive(:new_user_email_verification)
         new_user = User.new_invited_by_affiliate(inviter, affiliate, { :contact_name => 'New User Name', :email => 'newuser@approvedagency.com' })
-        expect(adapter).to receive(:push_user)
         new_user.save!
         expect(new_user.email_verification_token).not_to be_blank
       end
@@ -523,7 +509,6 @@ describe User do
 
     before do
       @user = User.new_invited_by_affiliate(inviter, affiliate, { :contact_name => 'New User Name', :email => 'newuser@approvedagency.com' })
-      expect(adapter).to receive(:push_user).with(@user)
       @user.save!
     end
 
@@ -568,48 +553,6 @@ describe User do
     end
   end
 
-  describe '#nutshell_approval_status' do
-    let(:nutshell_id) { 42 }
-
-    before do
-      allow(adapter).to receive(:push_user)
-
-      @user = User.create!(valid_attributes.merge(nutshell_id: nutshell_id))
-
-      approval_statuses.each do |approval_status|
-        User.create!(valid_attributes.merge(
-          email: "user-#{approval_status}@example.com",
-          nutshell_id: nutshell_id,
-          approval_status: approval_status
-        ))
-      end
-    end
-
-    context 'when an approved user with the same nutshell contact exists' do
-      let(:approval_statuses) { ['approved'] }
-
-      it 'should be approved' do
-        expect(@user.nutshell_approval_status).to eq('approved')
-      end
-    end
-
-    context 'when a non-approved user with the same nutshell contact exists' do
-      let(:approval_statuses) { ['not_approved'] }
-
-      it 'should be the conventional user approval_status' do
-        expect(@user.nutshell_approval_status).to eq('pending_email_verification')
-      end
-    end
-
-    context 'when approved and non-approved users with the same nutshell contact exist' do
-      let(:approval_statuses) { ['approved', 'not_approved'] }
-
-      it 'should be approved' do
-        expect(@user.nutshell_approval_status).to eq('approved')
-      end
-    end
-  end
-
   describe '#add_to_affiliate' do
     let(:user) { users('affiliate_manager') }
     let(:site) { affiliates(:another_affiliate) }
@@ -617,9 +560,9 @@ describe User do
     subject(:add_to_affiliate) { user.add_to_affiliate(site, 'Someone') }
 
     before do
-      site.update_attribute(:nutshell_id, 100)
-      expect(adapter).to receive(:push_site).with(site)
-      expect(adapter).to receive(:new_note).with(user, "Someone added @[Contacts:1001], affiliate_manager@fixtures.org to @[Leads:100] Another Gov Site [another.gov].")
+      expect(Rails.logger).to receive(:info).with(
+        "Someone added User #{user.id}, affiliate_manager@fixtures.org, to Affiliate #{site.id}, Another Gov Site [another.gov]."
+      )
     end
 
     it 'adds the user to the site' do
@@ -635,8 +578,9 @@ describe User do
     subject(:remove_from_affiliate) { user.remove_from_affiliate(site, 'Someone') }
 
     before do
-      expect(adapter).to receive(:push_site).with(site)
-      expect(adapter).to receive(:new_note).with(user, "Someone removed @[Contacts:1001], affiliate_manager@fixtures.org from @[Leads:99] NPS Site [nps.gov].")
+      expect(Rails.logger).to receive(:info).with(
+        "Someone removed User #{user.id}, affiliate_manager@fixtures.org, from Affiliate #{site.id}, NPS Site [nps.gov]."
+      )
     end
 
     it 'removes the user from the site' do
@@ -646,7 +590,6 @@ describe User do
   end
 
   describe '#password_updated_at' do
-    before { allow(adapter).to receive(:push_user) }
     let(:user) { users(:affiliate_admin) }
 
     it 'is set when the user is created' do
