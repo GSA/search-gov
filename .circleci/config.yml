@@ -48,6 +48,10 @@ jobs:
       - run:
           name: Install Dependencies
           command: |
+            # install protobuf
+            sudo apt-get install protobuf-compiler
+
+            #install gems
             bundle install --without development --jobs=4 --retry=3 --path vendor/bundle
 
       - save_cache:
