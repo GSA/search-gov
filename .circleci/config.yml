@@ -27,7 +27,7 @@ jobs:
             chmod +x ./cc-test-reporter
 
       - save_cache:
-          key: repo-{{ .Environment.CIRCLE_SHA1 }}
+          key: repo-{{ .Environment.CIRCLE_SHA1_v1 }}
           paths:
             - ~/search-gov
 
@@ -40,7 +40,7 @@ jobs:
 
     steps:
       - restore_cache:
-          key: repo-{{ .Environment.CIRCLE_SHA1 }}
+          key: repo-{{ .Environment.CIRCLE_SHA1_v1 }}
 
       - restore_cache:
           key: search-gov-{{ checksum "Gemfile.lock" }}
@@ -70,7 +70,7 @@ jobs:
 
     steps:
       - restore_cache:
-          key: repo-{{ .Environment.CIRCLE_SHA1 }}
+          key: repo-{{ .Environment.CIRCLE_SHA1_v1 }}
 
       - run:
           name: Install Elasticsearch
@@ -113,7 +113,7 @@ jobs:
 
     steps:
       - restore_cache:
-          key: repo-{{ .Environment.CIRCLE_SHA1 }}
+          key: repo-{{ .Environment.CIRCLE_SHA1_v1 }}
 
       - run:
           name: Install MySQL Client
@@ -184,7 +184,7 @@ jobs:
 
     steps:
       - restore_cache:
-          key: repo-{{ .Environment.CIRCLE_SHA1 }}
+          key: repo-{{ .Environment.CIRCLE_SHA1_v1 }}
 
       - run:
           name: Install MySQL Client
@@ -249,7 +249,7 @@ jobs:
 
     steps:
       - restore_cache:
-          key: repo-{{ .Environment.CIRCLE_SHA1 }}
+          key: repo-{{ .Environment.CIRCLE_SHA1_v1 }}
 
       - restore_cache:
           key: search-gov-{{ checksum "Gemfile.lock" }}
