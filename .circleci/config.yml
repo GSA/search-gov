@@ -46,6 +46,10 @@ jobs:
           key: search-gov-{{ checksum "Gemfile.lock" }}
 
       - run:
+          name: Update RubyGems
+          command: gem update --system
+
+      - run:
           name: Install Dependencies
           command: |
             bundle install --without development --jobs=4 --retry=3 --path vendor/bundle
