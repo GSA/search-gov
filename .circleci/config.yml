@@ -8,7 +8,7 @@ jobs:
   checkout_code:
     working_directory: ~/search-gov
     docker:
-      - image: circleci/ruby:2.3.5-browsers
+      - image: circleci/ruby:2.3.8-browsers
         environment:
           RAILS_ENV: test
 
@@ -34,7 +34,7 @@ jobs:
   bundle_install:
     working_directory: ~/search-gov
     docker:
-      - image: circleci/ruby:2.3.5-browsers
+      - image: circleci/ruby:2.3.8-browsers
         environment:
           RAILS_ENV: test
 
@@ -60,7 +60,7 @@ jobs:
       COVERAGE: true
     working_directory: ~/search-gov
     docker:
-      - image: circleci/ruby:2.3.5-browsers
+      - image: circleci/ruby:2.3.8-browsers
         environment:
           RAILS_ENV: test
 
@@ -96,7 +96,7 @@ jobs:
     working_directory: ~/search-gov
     parallelism: 2
     docker:
-      - image: circleci/ruby:2.3.5-browsers
+      - image: circleci/ruby:2.3.8-browsers
         environment:
           RAILS_ENV: test
 
@@ -167,7 +167,7 @@ jobs:
     working_directory: ~/search-gov
     parallelism: 6
     docker:
-      - image: circleci/ruby:2.3.5-browsers
+      - image: circleci/ruby:2.3.8-browsers
         environment:
           RAILS_ENV: test
 
@@ -239,7 +239,7 @@ jobs:
   report_coverage:
     working_directory: ~/search-gov
     docker:
-      - image: circleci/ruby:2.3.5-browsers
+      - image: circleci/ruby:2.3.8-browsers
         environment:
           RAILS_ENV: test
 
