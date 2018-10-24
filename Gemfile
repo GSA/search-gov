@@ -79,7 +79,7 @@ gem 'lograge', '~> 0.7.1'
 gem 'test-unit', '~> 3.2.7'
 gem 'http', '~> 1.0'
 gem 'robots_tag_parser', '~> 0.1.0', git: 'https://github.com/GSA/robots_tag_parser'
-gem 'cld2', '~> 1.0.3', require: 'cld'
+gem 'cld3', '~> 3.2.2'
 gem 'loofah', '~> 2.2.2'
 gem 'protected_attributes', '~> 1.1.4'
 # Using custom branch until https://github.com/brutuscat/medusa/issues/10 is merged
