@@ -39,11 +39,11 @@ jobs:
           RAILS_ENV: test
 
     steps:
-     # - restore_cache:
-     #     key: repo-{{ .Environment.CIRCLE_SHA1 }}
+      - restore_cache:
+          key: repo-{{ .Environment.CIRCLE_SHA1 }}
 
-     # - restore_cache:
-      #    key: search-gov-{{ checksum "Gemfile.lock" }}
+      - restore_cache:
+          key: search-gov-{{ checksum "Gemfile.lock" }}
 
       - run:
           name: Install Dependencies
@@ -55,7 +55,7 @@ jobs:
       - save_cache:
           key: search-gov-{{ checksum "Gemfile.lock" }}
           paths:
-            - vendor/bundle
+            - ~/search-gov/vendor/bundle
 
   setup_elasticsearch:
     environment:
