@@ -11,6 +11,7 @@ jobs:
       - image: circleci/ruby:2.3.5-browsers
         environment:
           RAILS_ENV: test
+      - image: codeclimate/codeclimate-protobuf
 
     steps:
       - checkout
@@ -37,6 +38,7 @@ jobs:
       - image: circleci/ruby:2.3.5-browsers
         environment:
           RAILS_ENV: test
+      - image: codeclimate/codeclimate-protobuf
 
     steps:
       - restore_cache:
@@ -63,6 +65,7 @@ jobs:
       - image: circleci/ruby:2.3.5-browsers
         environment:
           RAILS_ENV: test
+      - image: codeclimate/codeclimate-protobuf
 
     steps:
       - restore_cache:
@@ -106,6 +109,7 @@ jobs:
           MYSQL_ROOT_HOST: "%"
 
       - image: redis:3.2
+      - image: codeclimate/codeclimate-protobuf
 
     steps:
       - restore_cache:
@@ -177,6 +181,7 @@ jobs:
           MYSQL_ROOT_HOST: "%"
 
       - image: redis:3.2
+      - image: codeclimate/codeclimate-protobuf
 
     steps:
       - restore_cache:
