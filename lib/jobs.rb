@@ -40,7 +40,7 @@ module Jobs
 
   def self.search(options)
     @usajobs_api_connection.get(@endpoint, options).body if query_eligible?(options[:query])
-  rescue Exception => error
+  rescue => error
     Rails.logger.error("Trouble fetching jobs information: #{error}")
     nil
   end
