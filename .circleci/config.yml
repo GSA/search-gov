@@ -27,31 +27,29 @@ jobs:
             chmod +x ./cc-test-reporter
 
       - save_cache:
-          key: search-gov-{{ .Environment.CIRCLE_SHA1 }}
+          key: repo-{{ .Environment.CIRCLE_SHA1 }}
           paths:
             - ~/search-gov
 
   bundle_install:
     working_directory: ~/search-gov
     docker:
-      - image: circleci/ruby:2.5.3-browsers
+      - image: circleci/ruby:2.3.5-browsers
         environment:
           RAILS_ENV: test
 
     steps:
-      - restore_cache:
-          key: search-gov-{{ .Environment.CIRCLE_SHA1 }}
+     # - restore_cache:
+     #     key: repo-{{ .Environment.CIRCLE_SHA1 }}
 
-      - restore_cache:
-          key: search-gov-{{ checksum "Gemfile.lock" }}
+     # - restore_cache:
+      #    key: search-gov-{{ checksum "Gemfile.lock" }}
 
       - run:
           name: Install Dependencies
           command: |
-            # install protobuf
+                        # install protobuf
             sudo apt-get install -y libprotobuf-dev protobuf-compiler
-
-            #install gems
             bundle install --without development --jobs=4 --retry=3 --path vendor/bundle
 
       - save_cache:
@@ -64,13 +62,13 @@ jobs:
       COVERAGE: true
     working_directory: ~/search-gov
     docker:
-      - image: circleci/ruby:2.5.3-browsers
+      - image: circleci/ruby:2.3.5-browsers
         environment:
           RAILS_ENV: test
 
     steps:
       - restore_cache:
-          key: search-gov-{{ .Environment.CIRCLE_SHA1 }}
+          key: repo-{{ .Environment.CIRCLE_SHA1 }}
 
       - run:
           name: Install Elasticsearch
@@ -100,7 +98,7 @@ jobs:
     working_directory: ~/search-gov
     parallelism: 2
     docker:
-      - image: circleci/ruby:2.5.3-browsers
+      - image: circleci/ruby:2.3.5-browsers
         environment:
           RAILS_ENV: test
 
@@ -113,7 +111,7 @@ jobs:
 
     steps:
       - restore_cache:
-          key: search-gov-{{ .Environment.CIRCLE_SHA1 }}
+          key: repo-{{ .Environment.CIRCLE_SHA1 }}
 
       - run:
           name: Install MySQL Client
@@ -171,7 +169,7 @@ jobs:
     working_directory: ~/search-gov
     parallelism: 6
     docker:
-      - image: circleci/ruby:2.5.3-browsers
+      - image: circleci/ruby:2.3.5-browsers
         environment:
           RAILS_ENV: test
 
@@ -184,7 +182,7 @@ jobs:
 
     steps:
       - restore_cache:
-          key: search-gov-{{ .Environment.CIRCLE_SHA1 }}
+          key: repo-{{ .Environment.CIRCLE_SHA1 }}
 
       - run:
           name: Install MySQL Client
@@ -243,13 +241,13 @@ jobs:
   report_coverage:
     working_directory: ~/search-gov
     docker:
-      - image: circleci/ruby:2.5.3-browsers
+      - image: circleci/ruby:2.3.5-browsers
         environment:
           RAILS_ENV: test
 
     steps:
       - restore_cache:
-          key: search-gov-{{ .Environment.CIRCLE_SHA1 }}
+          key: repo-{{ .Environment.CIRCLE_SHA1 }}
 
       - restore_cache:
           key: search-gov-{{ checksum "Gemfile.lock" }}
