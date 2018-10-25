@@ -4,10 +4,10 @@ require 'spec_helper'
 describe GovboxSet do
   fixtures :affiliates, :agencies, :federal_register_agencies, :rss_feed_urls, :rss_feeds, :agency_organization_codes
 
-  describe ".new(query, affiliate, geoip_info)" do
+  describe ".new(query, affiliate, location_name)" do
     let(:affiliate) { affiliates(:basic_affiliate) }
     let(:agency) { agencies(:irs) }
-    let(:geoip_info) { double('GeoipInfo', latitude: '12.34', longitude: '-34.56') }
+    let(:location_name) {"Washington, DC"}
     let(:highlighting_options) do
       { highlighting: true,
         pre_tags: %w(<strong>),
@@ -27,7 +27,7 @@ describe GovboxSet do
         expected_results = double(ElasticBoostedContentResults, total: 1)
         allow(ElasticBoostedContent).to receive(:search_for).with(expected_search_options).
           and_return(expected_results)
-        govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
+        govbox_set = GovboxSet.new('foo', affiliate, location_name)
         expect(govbox_set.boosted_contents).to eq(expected_results)
         expect(govbox_set.modules).to include('BOOS')
       end
@@ -44,7 +44,7 @@ describe GovboxSet do
         expected_results = double(ElasticBoostedContentResults, total: 1)
         expect(ElasticBoostedContent).to receive(:search_for).with(expected_search_options).
           and_return(expected_results)
-        govbox_set = GovboxSet.new('foo', affiliate, geoip_info, highlighting_options)
+        govbox_set = GovboxSet.new('foo', affiliate, location_name, highlighting_options)
         expect(govbox_set.boosted_contents).to eq(expected_results)
       end
     end
@@ -60,7 +60,7 @@ describe GovboxSet do
                size: 1).
           and_return(expected_results)
 
-        govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
+        govbox_set = GovboxSet.new('foo', affiliate, location_name)
         expect(govbox_set.featured_collections).to eq(expected_results)
         expect(govbox_set.modules).to include('BBG')
       end
@@ -76,7 +76,7 @@ describe GovboxSet do
         expected_results = double(ElasticFeaturedCollectionResults, total: 1)
         allow(ElasticFeaturedCollection).to receive(:search_for).with(expected_search_options).
           and_return(expected_results)
-        govbox_set = GovboxSet.new('foo', affiliate, geoip_info, highlighting_options)
+        govbox_set = GovboxSet.new('foo', affiliate, location_name, highlighting_options)
         expect(govbox_set.featured_collections).to eq(expected_results)
       end
     end
@@ -109,7 +109,7 @@ describe GovboxSet do
       end
 
       it 'should assign 1 boosted content and 1 featured collection' do
-        govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
+        govbox_set = GovboxSet.new('foo', affiliate, location_name)
         expect(govbox_set.featured_collections).to eq(fc_expected_results)
         expect(govbox_set.modules).to include('BBG')
         expect(govbox_set.boosted_contents).to eq(bc_expected_results_2)
@@ -133,13 +133,13 @@ describe GovboxSet do
       end
 
       it 'searches for federal register documents' do
-        govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
+        govbox_set = GovboxSet.new('foo', affiliate, location_name)
         expect(govbox_set.federal_register_documents).to eq(expected_results)
         expect(govbox_set.modules).to include('FRDOC')
       end
 
       it 'uses highlight options' do
-        govbox_set = GovboxSet.new('foo', affiliate, geoip_info, highlighting_options)
+        govbox_set = GovboxSet.new('foo', affiliate, location_name, highlighting_options)
         expect(govbox_set.federal_register_documents).to eq(expected_results)
       end
     end
@@ -167,19 +167,22 @@ describe GovboxSet do
           allow(affiliate).to receive(:agency).and_return(agency)
         end
 
-        it "should call Jobs.search with the query, org codes, size, hl, and lat_lon params" do
+        it "should call Jobs.search with the query, org codes, results per page, and location name params" do
           expect(Jobs).to receive(:search).
-            with(:query => 'foo', :hl => 1, :size => 10, :organization_ids => 'ABCD,BCDE', :lat_lon => '12.34,-34.56').
+            with(query: 'foo',
+                 ResultsPerPage: 10,
+                 Organization: 'ABCD,BCDE',
+                 LocationName: 'Washington, DC').
             and_return(job_openings)
-          govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
+          govbox_set = GovboxSet.new('foo', affiliate, location_name)
           expect(govbox_set.jobs.first.position_title).to eq('<strong>Nurse</strong>')
           expect(govbox_set.modules).to include('JOBS')
         end
       end
 
       context "when the affiliate does not have a related agency with an org code" do
-        it 'should call Jobs.search with just the query, size, hl, and tags' do
-          expect(Jobs).to receive(:search).with(query: 'foo', hl: 1, size: 10, tags: 'federal').and_return nil
+        it 'should call Jobs.search with just the query, results per page' do
+          expect(Jobs).to receive(:search).with(query: 'foo', ResultsPerPage: 10).and_return nil
           GovboxSet.new('foo', affiliate, nil)
         end
       end
@@ -187,7 +190,7 @@ describe GovboxSet do
       context 'when highlighting is enabled by default' do
         it "translates '<em>' and '</em>'" do
           expect(Jobs).to receive(:search).
-            with(query: 'nursing jobs', hl: 1, size: 10, tags: 'federal').
+            with(query: 'nursing jobs', ResultsPerPage: 10).
             and_return job_openings
           govbox_set = GovboxSet.new('nursing jobs', affiliate, nil)
           expect(govbox_set.jobs.first.position_title).to eq('<strong>Nurse</strong>')
@@ -197,7 +200,7 @@ describe GovboxSet do
         context 'when highlighting options are assigned' do
           it "translates '<em>' and '</em>'" do
             expect(Jobs).to receive(:search).
-              with(query: 'nursing jobs', hl: 1, size: 10, tags: 'federal').
+              with(query: 'nursing jobs', ResultsPerPage: 10).
               and_return job_openings
             govbox_set = GovboxSet.new('nursing jobs',
                                        affiliate,
@@ -240,7 +243,7 @@ describe GovboxSet do
       end
 
       it 'should assign nil jobs' do
-        govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
+        govbox_set = GovboxSet.new('foo', affiliate, location_name)
         expect(govbox_set.jobs).to be_nil
       end
     end
@@ -263,7 +266,7 @@ describe GovboxSet do
                since: 4.months.ago.beginning_of_day, language: 'en', title_only: true).
           and_return(non_video_results)
 
-        govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
+        govbox_set = GovboxSet.new('foo', affiliate, location_name)
         expect(govbox_set.news_items).to eq(non_video_results)
         expect(govbox_set.modules).to include('NEWS')
       end
@@ -282,7 +285,7 @@ describe GovboxSet do
           with(expected_search_options).
           and_return(non_video_results)
 
-        govbox_set = GovboxSet.new('foo', affiliate, geoip_info, highlighting_options)
+        govbox_set = GovboxSet.new('foo', affiliate, location_name, highlighting_options)
         expect(govbox_set.news_items).to eq(non_video_results)
       end
     end
@@ -312,7 +315,7 @@ describe GovboxSet do
         expect(ElasticNewsItem).to receive(:search_for).with(expected_search_options).
           and_return(video_results)
 
-        govbox_set = GovboxSet.new('foo', affiliate, geoip_info, highlighting_options)
+        govbox_set = GovboxSet.new('foo', affiliate, location_name, highlighting_options)
         expect(govbox_set.video_news_items).to eq(video_results)
         expect(govbox_set.modules).to include('VIDS')
       end
@@ -328,7 +331,7 @@ describe GovboxSet do
 
         context "when the search matches a MedTopic record" do
           it "should retrieve the associated Med Topic record" do
-            govbox_set = GovboxSet.new('ulcerative colitis', affiliate, geoip_info)
+            govbox_set = GovboxSet.new('ulcerative colitis', affiliate, location_name)
             expect(govbox_set.med_topic).to eq(med_topics(:ulcerative_colitis))
             expect(govbox_set.modules).to include('MEDL')
           end
@@ -339,7 +342,7 @@ describe GovboxSet do
             end
 
             it "should retrieve the spanish version of the med topic" do
-              govbox_set = GovboxSet.new('Colitis ulcerativa', affiliate, geoip_info)
+              govbox_set = GovboxSet.new('Colitis ulcerativa', affiliate, location_name)
               expect(govbox_set.med_topic).to eq(med_topics(:ulcerative_colitis_es))
             end
 
@@ -352,7 +355,7 @@ describe GovboxSet do
 
         context "when the query does not match a med topic" do
           it "should not set the med topic" do
-            govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
+            govbox_set = GovboxSet.new('foo', affiliate, location_name)
             expect(govbox_set.med_topic).to be_nil
           end
         end
@@ -364,7 +367,7 @@ describe GovboxSet do
         end
 
         it "should not set the med topic" do
-          govbox_set = GovboxSet.new('ulcerative colitis', affiliate, geoip_info)
+          govbox_set = GovboxSet.new('ulcerative colitis', affiliate, location_name)
           expect(govbox_set.med_topic).to be_nil
         end
       end
@@ -387,7 +390,7 @@ describe GovboxSet do
           it "should find the most recent relevant tweet" do
             expected_tweets = double(ElasticTweetResults, total: 1)
             expect(ElasticTweet).to receive(:search_for).with(q: 'foo', twitter_profile_ids: [123], since: 3.days.ago.beginning_of_day, language: "en", size: 1).and_return(expected_tweets)
-            govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
+            govbox_set = GovboxSet.new('foo', affiliate, location_name)
             expect(govbox_set.tweets).to eq(expected_tweets)
             expect(govbox_set.modules).to include('TWEET')
           end
@@ -404,14 +407,14 @@ describe GovboxSet do
             expected_tweets = double(ElasticTweetResults, total: 1)
             expect(ElasticTweet).to receive(:search_for).with(expected_search_options).
               and_return(expected_tweets)
-            govbox_set = GovboxSet.new('foo', affiliate, geoip_info, highlighting_options)
+            govbox_set = GovboxSet.new('foo', affiliate, location_name, highlighting_options)
             expect(govbox_set.tweets).to eq(expected_tweets)
           end
         end
 
         context "when affiliate has no Twitter Profiles" do
           it "should not set tweets" do
-            govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
+            govbox_set = GovboxSet.new('foo', affiliate, location_name)
             expect(govbox_set.tweets).to be_nil
           end
         end
@@ -424,7 +427,7 @@ describe GovboxSet do
       it 'should assign related searches' do
         allow(SaytSuggestion).to receive(:related_search).with('foo', affiliate, {}).
           and_return(expected_search_terms)
-        govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
+        govbox_set = GovboxSet.new('foo', affiliate, location_name)
         expect(govbox_set.related_search).to eq(expected_search_terms)
         expect(govbox_set.modules).to include('SREL')
       end
@@ -432,7 +435,7 @@ describe GovboxSet do
       it 'uses highlighting options' do
         allow(SaytSuggestion).to receive(:related_search).with('foo', affiliate, highlighting_options).
           and_return(expected_search_terms)
-        govbox_set = GovboxSet.new('foo', affiliate, geoip_info, highlighting_options)
+        govbox_set = GovboxSet.new('foo', affiliate, location_name, highlighting_options)
         expect(govbox_set.related_search).to eq(expected_search_terms)
       end
 
@@ -462,7 +465,7 @@ describe GovboxSet do
           and_return(expected_results)
 
         govbox_set = GovboxSet.new('foo',
-                                   affiliate, geoip_info,
+                                   affiliate, location_name,
                                    site_limits: %w(https://blogs.usa.gov http://news.usa.gov))
         expect(govbox_set.boosted_contents).to eq(expected_results)
         expect(govbox_set.modules).to include('BOOS')
