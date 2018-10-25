@@ -8,7 +8,7 @@ jobs:
   checkout_code:
     working_directory: ~/search-gov
     docker:
-      - image: circleci/ruby:2.5.3-browsers
+      - image: circleci/ruby:2.3.5-browsers
         environment:
           RAILS_ENV: test
 
@@ -48,14 +48,12 @@ jobs:
       - run:
           name: Install Dependencies
           command: |
-                        # install protobuf
-            sudo apt-get install -y libprotobuf-dev protobuf-compiler
             bundle install --without development --jobs=4 --retry=3 --path vendor/bundle
 
       - save_cache:
           key: search-gov-{{ checksum "Gemfile.lock" }}
           paths:
-            - ~/search-gov/vendor/bundle
+            - vendor/bundle
 
   setup_elasticsearch:
     environment:
