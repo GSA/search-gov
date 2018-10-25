@@ -123,9 +123,11 @@ jobs:
       - restore_cache:
           key: search-gov-{{ checksum "Gemfile.lock" }}
 
-      - run: |
-          sudo apt-get install -y libprotobuf-dev protobuf-compiler
-          bundle --path vendor/bundle
+      - run:
+          name: Install dependencies
+          command: |
+            sudo apt-get install -y libprotobuf-dev protobuf-compiler
+            bundle --path vendor/bundle
 
       - restore_cache:
           key: elasticsearch
