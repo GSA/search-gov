@@ -37,7 +37,7 @@ module JobsHelper
         nil
       else
         with_max = max > job.minimum ? "-#{max_str} " : ' '
-        "#{min_str}#{with_max}#{Jobs::RATE_INTERVALS[job.rate_interval_code.to_sym]}"
+        "#{min_str}#{with_max}#{job.rate_interval_code}"
     end
   end
 

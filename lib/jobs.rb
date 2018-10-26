@@ -13,18 +13,6 @@ module Jobs
     "|#{BLOCKED_PHRASES}"+
     "|(#{SIMPLE_SINGULARS.join('|')})s?"
 
-  RATE_INTERVALS = {
-    :BW => 'Bi-weekly',
-    :FB => 'Fee Basis',
-    :PA => 'Per Year',
-    :PD => 'Per Day',
-    :PH => 'Per Hour',
-    :PM => 'Per Month',
-    :PW => 'Piece Work',
-    :ST => 'Student Stipend Paid',
-    :SY => 'School Year',
-    :WC => 'Without Compensation'}.freeze
-
   def self.establish_connection!
     usajobs_api_config = Rails.application.secrets.jobs
     @endpoint = usajobs_api_config['endpoint']
@@ -33,6 +21,7 @@ module Jobs
       conn.headers['Authorization-Key'] = 'Qbk5RB/WRc1ctYqwojqlSKeoLVrwokT8OnSLq+G1qu0='
       conn.headers['User-Agent'] = 'parissa.eggleston@gmail.com'
       conn.request :json
+      conn.response :mrashify
       conn.response :json
       conn.use :instrumentation
       conn.adapter Faraday.default_adapter
