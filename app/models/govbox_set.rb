@@ -15,8 +15,8 @@ class GovboxSet
               :tweets,
               :video_news_items
 
-  def initialize(query, affiliate, location_name, options = {})
-    @query, @affiliate, @location_name = query, affiliate, location_name
+  def initialize(query, affiliate, geoip_info, options = {})
+    @query, @affiliate, @geoip_info = query, affiliate, geoip_info
     @highlighting_options = options.slice(:highlighting, :pre_tags, :post_tags)
 
     @base_search_options = @highlighting_options.merge(
@@ -114,10 +114,12 @@ class GovboxSet
 
   def build_jobs_search_options
     jobs_options = { query: @query, ResultsPerPage: 10 }
-    org_hash =  { Organization: @affiliate.agency.joined_organization_codes(',') } if @affiliate.has_organization_codes?
-    jobs_options.merge!(org_hash) if org_hash.present?
-    jobs_options.merge!(LocationName: @location_name) if @location_name.present?
-    jobs_options
+    org_hash =  { Organization: @affiliate.agency&.joined_organization_codes }
+    jobs_options.merge!(org_hash)
+
+    #extract location_name from @geoip_info
+    jobs_options.merge!(LocationName: location_name)
+    jobs_options.compact
   end
 
   def init_federal_register_documents
@@ -157,5 +159,5 @@ class GovboxSet
   def elastic_results_exist?(elastic_results)
     elastic_results.present? && elastic_results.total > 0
   end
-  
+
 end

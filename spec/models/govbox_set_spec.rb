@@ -7,7 +7,7 @@ describe GovboxSet do
   describe ".new(query, affiliate, location_name)" do
     let(:affiliate) { affiliates(:basic_affiliate) }
     let(:agency) { agencies(:irs) }
-    let(:location_name) {"Washington, DC"}
+    let(:location_name) {'Washington, DC'}
     let(:highlighting_options) do
       { highlighting: true,
         pre_tags: %w(<strong>),
@@ -147,7 +147,7 @@ describe GovboxSet do
     context "when the affiliate has the jobs govbox enabled" do
       let(:job_openings) do
         [Hashie::Mash.new(id: 'usajobs:359509200',
-                          position_title: '<em>Nurse</em>',
+                          position_title: 'Nurse',
                           organization_name: 'Indian Health Service',
                           rate_interval_code: 'PA',
                           minimum: 42913,
@@ -175,7 +175,7 @@ describe GovboxSet do
                  LocationName: 'Washington, DC').
             and_return(job_openings)
           govbox_set = GovboxSet.new('foo', affiliate, location_name)
-          expect(govbox_set.jobs.first.position_title).to eq('<em>Nurse</em>')
+          expect(govbox_set.jobs.first.position_title).to eq('Nurse')
           expect(govbox_set.modules).to include('JOBS')
         end
       end
@@ -193,7 +193,7 @@ describe GovboxSet do
             with(query: 'nursing jobs', ResultsPerPage: 10).
             and_return job_openings
           govbox_set = GovboxSet.new('nursing jobs', affiliate, nil)
-          expect(govbox_set.jobs.first.position_title).to eq('<em>Nurse</em>')
+          expect(govbox_set.jobs.first.position_title).to eq('Nurse')
           expect(govbox_set.jobs.first.locations).to eq(['Gallup, NM', 'Dallas, TX'])
         end
 

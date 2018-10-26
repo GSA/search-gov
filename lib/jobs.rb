@@ -28,13 +28,18 @@ module Jobs
   def self.establish_connection!
     usajobs_api_config = Rails.application.secrets.jobs
     @endpoint = usajobs_api_config['endpoint']
-    @usajobs_api_connection = Faraday.new usajobs_api_config['host'] do |conn|
+    @usajobs_api_connection = Faraday.new('https://data.usajobs.gov') do |conn|
+      #conn.response :logger, @logger, :bodies => true
+      conn.headers['Authorization-Key'] = 'Qbk5RB/WRc1ctYqwojqlSKeoLVrwokT8OnSLq+G1qu0='
+      conn.headers['User-Agent'] = 'parissa.eggleston@gmail.com'
       conn.request :json
-      conn.response :mashify
       conn.response :json
       conn.use :instrumentation
-      conn.adapter usajobs_api_config['adapter'] || Faraday.default_adapter
+      conn.adapter Faraday.default_adapter
     end
+    #Rails.logger.debug "-------"
+    #Rails.logger.debug @usajobs_api_connection.to_yaml
+    #Rails.logger.debug "-------"
     @usajobs_api_connection.headers[:accept] = 'application/vnd.usagov.position_openings.v3'
   end
 
