@@ -12,11 +12,11 @@ working development environment for Rails up and running, including the database
 
 ## Ruby
 
-You will need Ruby 2.1. Verify that your path points to the correct version of Ruby:
+You will need Ruby 2.3.5 Verify that your path points to the correct version of Ruby:
 
     devbox:usasearch
     $ ruby -v
-    ruby 2.1.2p95 (2014-05-08 revision 45877) [x86_64-darwin13.0]
+    ruby 2.3.5p376 (2017-09-14 revision 59905) [x86_64-darwin17]
 
 ## Gems
 
@@ -117,14 +117,20 @@ A few tips when working with asset pipeline:
 
         Rails.application.assets['relative_path/to_asset.ext']
 
+## JAVA
 
+Install Java 8.
+
+    $ brew tap caskroom/versions
+
+    $ brew cask install java8
+    
 ## Elasticsearch
 
 We're using [Elastic](http://www.elasticsearch.org/) v1.7.3 for fulltext search and query analytics.
 
-On a Mac, Elasticsearch is easy to install with [Homebrew](http://mxcl.github.com/homebrew/).
-
-    $ brew install homebrew/versions/elasticsearch17
+On a Mac, Elasticsearch is easy to install by following these instructions:
+  https://www.elastic.co/guide/en/elasticsearch/reference/1.7/_installation.html
 
 To check settings and directory locations:
 
