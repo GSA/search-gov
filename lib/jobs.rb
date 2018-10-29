@@ -23,7 +23,7 @@ module Jobs
       conn.response :mrashify
       conn.response :json
       conn.use :instrumentation
-      conn.adapter jobs_api_config['adapter'] || Faraday.default_adapter
+      conn.adapter usajobs_api_config['adapter'] || Faraday.default_adapter
     end
   end
 

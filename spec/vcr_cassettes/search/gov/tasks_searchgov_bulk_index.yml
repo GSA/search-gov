@@ -3441,4 +3441,96 @@ http_interactions:
         href=\"//fast.fonts.net/t/1.css?apiType=css&projectid=44e8c964-4684-44c6-a6e3-3f3da8787b50\">\n</noscript>\n<!--<![endif]-->\n\n\n</body>\n</html>"
     http_version: 
   recorded_at: Sat, 09 Jun 2018 18:54:31 GMT
+- request:
+    method: get
+    uri: http://www.consumerfinance.gov/robots.txt
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - usasearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 301
+      message: Moved Permanently
+    headers:
+      Server:
+      - AkamaiGHost
+      Content-Length:
+      - '0'
+      Location:
+      - https://www.consumerfinance.gov/robots.txt
+      Date:
+      - Mon, 29 Oct 2018 19:19:38 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Mon, 29 Oct 2018 19:19:38 GMT
+- request:
+    method: get
+    uri: https://www.consumerfinance.gov/robots.txt
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - usasearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/plain; charset=UTF-8
+      Etag:
+      - '"125-5795e2cb180b7"'
+      Server:
+      - Apache
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Last-Modified:
+      - Mon, 29 Oct 2018 13:37:47 GMT
+      Access-Control-Allow-Origin:
+      - https://www.consumerfinance.gov
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Mon, 29 Oct 2018 19:19:38 GMT
+      Content-Length:
+      - '293'
+      Connection:
+      - keep-alive
+      Strict-Transport-Security:
+      - max-age=31536000
+    body:
+      encoding: UTF-8
+      string: |
+        User-agent: *
+        Disallow: /save-hud-counselors-list
+        Disallow: /about-us/the-bureau/leadership-calendar/pdf
+        Disallow: /es/obtener-respuestas/*.imprimir.html
+        Disallow: /external-site
+        Disallow: /*?success
+        Disallow: *form-id=*
+        Disallow: /?page=
+
+        sitemap: https://www.consumerfinance.gov/sitemap.xml
+    http_version: 
+  recorded_at: Mon, 29 Oct 2018 19:19:38 GMT
 recorded_with: VCR 4.0.0

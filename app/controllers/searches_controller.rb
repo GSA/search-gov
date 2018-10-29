@@ -19,6 +19,7 @@ class SearchesController < ApplicationController
 
   def index
     search_klass, @search_vertical, template = pick_klass_vertical_template
+    Rails.logger.debug "----------- geoip is : #{GeoipLookup.lookup('209.66.94.77')}"
     @search = search_klass.new(@search_options.merge(geoip_info: GeoipLookup.lookup(request.remote_ip)))
     @search.run
     @form_path = search_path
