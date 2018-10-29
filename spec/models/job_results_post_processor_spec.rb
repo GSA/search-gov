@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe JobResultsPostProcessor do
   let(:results) do
-    response = JSON.parse read_fixture_file("/json/usajobs_response.json")
+    response = JSON.parse read_fixture_file('/json/usajobs_response.json')
     response['SearchResult']['SearchResultItems'].map do |result|
       Hashie::Mash::Rash.new(result)
     end
