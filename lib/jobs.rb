@@ -23,7 +23,7 @@ module Jobs
       conn.response :mrashify
       conn.response :json
       conn.use :instrumentation
-      conn.adapter Faraday.default_adapter
+      conn.adapter jobs_api_config['adapter'] || Faraday.default_adapter
     end
 
     @usajobs_api_connection.headers[:accept] = 'application/vnd.usagov.position_openings.v3'
