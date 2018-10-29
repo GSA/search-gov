@@ -17,9 +17,8 @@ module Jobs
     usajobs_api_config = Rails.application.secrets.jobs
     @endpoint = usajobs_api_config['endpoint']
     @usajobs_api_connection = Faraday.new('https://data.usajobs.gov') do |conn|
-      #conn.response :logger, @logger, :bodies => true
-      conn.headers['Authorization-Key'] = 'Qbk5RB/WRc1ctYqwojqlSKeoLVrwokT8OnSLq+G1qu0='
-      conn.headers['User-Agent'] = 'parissa.eggleston@gmail.com'
+      conn.headers['Authorization-Key'] = usajobs_api_config['authorization-key']
+      conn.headers['User-Agent'] = usajobs_api_config['user-agent']
       conn.request :json
       conn.response :mrashify
       conn.response :json
