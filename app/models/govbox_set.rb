@@ -105,8 +105,9 @@ class GovboxSet
 
   def init_jobs
     if @affiliate.jobs_enabled?
-      @jobs = Jobs.search build_jobs_search_options
-      if @jobs.present?
+      job_results = Jobs.search(build_jobs_search_options).search_result.search_result_items
+      if job_results.present?
+        @jobs = JobResultsPostProcessor.new(results: job_results).post_processed_results
         @modules << 'JOBS'
       end
     end

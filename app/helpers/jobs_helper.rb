@@ -29,15 +29,15 @@ module JobsHelper
     min_str = number_to_currency(job.minimum)
     max_str = number_to_currency(job.maximum)
     case job.rate_interval_code
-      when 'PA', 'PH'
-        period = job.rate_interval_code == 'PA' ? 'yr' : 'hr'
+      when 'Per Year', 'Per Hour'
+        period = job.rate_interval_code == 'Per Year' ? 'yr' : 'hr'
         plus = max > job.minimum ? '+' : ''
         "#{min_str}#{plus}/#{period}"
       when 'WC'
         nil
       else
         with_max = max > job.minimum ? "-#{max_str} " : ' '
-        "#{min_str}#{with_max}#{Jobs::RATE_INTERVALS[job.rate_interval_code.to_sym]}"
+        "#{min_str}#{with_max}#{job.rate_interval_code}"
     end
   end
 
