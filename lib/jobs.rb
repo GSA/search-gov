@@ -26,9 +26,7 @@ module Jobs
       conn.use :instrumentation
       conn.adapter Faraday.default_adapter
     end
-    #Rails.logger.debug "-------"
-    #Rails.logger.debug @usajobs_api_connection.to_yaml
-    #Rails.logger.debug "-------"
+
     @usajobs_api_connection.headers[:accept] = 'application/vnd.usagov.position_openings.v3'
   end
 

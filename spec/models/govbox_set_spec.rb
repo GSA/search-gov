@@ -196,7 +196,6 @@ describe GovboxSet do
           expect(govbox_set.jobs.first.position_title).to eq('Nurse')
           expect(govbox_set.jobs.first.locations).to eq(['Gallup, NM', 'Dallas, TX'])
         end
-
       end
 
     end

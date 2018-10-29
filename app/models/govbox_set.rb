@@ -18,7 +18,6 @@ class GovboxSet
   def initialize(query, affiliate, geoip_info, options = {})
     @query, @affiliate, @geoip_info = query, affiliate, geoip_info
     @highlighting_options = options.slice(:highlighting, :pre_tags, :post_tags)
-
     @base_search_options = @highlighting_options.merge(
       language: @affiliate.indexing_locale,
       q: @query)
@@ -115,11 +114,16 @@ class GovboxSet
 
   def build_jobs_search_options
     jobs_options = { query: @query, ResultsPerPage: 10 }
-    org_hash =  { Organization: @affiliate.agency&.joined_organization_codes }
+    org_hash = { Organization: @affiliate.agency&.joined_organization_codes }
     jobs_options.merge!(org_hash)
 
     #extract location_name from @geoip_info
-    jobs_options.merge!(LocationName: location_name)
+    if @geoip_info.present?
+      location_name = "#{@geoip_info.city_name if @geoip_info.country_code3 == "USA"}, "\
+                      "#{@geoip_info.real_region_name}, "\
+                      "#{@geoip_info.country_name}".gsub(/^,/,'')
+      jobs_options.merge!(LocationName: location_name)
+    end
     jobs_options.compact
   end
 
