@@ -7,21 +7,20 @@ describe GovboxSet do
   describe ".new(query, affiliate, geoip_info)" do
     let(:affiliate) { affiliates(:basic_affiliate) }
     let(:agency) { agencies(:irs) }
-    let(:geoip_info) do  double('GeoipInfo',
-                                ip: '209.66.94.77',
-                                country_code3: 'USA',
-                                country_name: 'United States',
-                                region_name: 'NJ',
-                                city_name: 'Flemington',
-                                real_region_name: 'New Jersey',
-                                latitude: '12.34',
-                                longitude: '-34.56')
+    let(:geoip_info) do double('GeoipInfo',
+                               ip:               '209.66.94.77',
+                               country_code3:    'USA',
+                               country_name:     'United States',
+                               region_name:      'NJ',
+                               city_name:        'Flemington',
+                               real_region_name: 'New Jersey',
+                               latitude:         '12.34',
+                               longitude:        '-34.56')
     end
 
-    #<struct GeoIP::City request="209.66.94.77", ip="209.66.94.77", country_code2="US", country_code3="USA", country_name="United States", continent_code="NA", region_name="NJ", city_name="Flemington", postal_code="08822", latitude=40.516999999999996, longitude=-74.868, dma_code=501, area_code=908, timezone="America/New_York", real_region_name="New Jersey">
     let(:highlighting_options) do
       { highlighting: true,
-        pre_tags: %w(<strong>),
+        pre_tags:  %w(<strong>),
         post_tags: %w(</strong>) }.freeze
     end
 
@@ -184,22 +183,22 @@ describe GovboxSet do
        end
 
       context "when the affiliate does not have a related agency with an org code" do
-        #it 'should call Jobs.search with just the query, results per page' do
-        #  expect(Jobs).to receive(:search).with(query: 'foo', ResultsPerPage: 10).and_return nil
-        #  GovboxSet.new('foo', affiliate, nil)
-        #end
+        it 'should call Jobs.search with just the query, results per page' do
+          expect(Jobs).to receive(:search).with(query: 'foo', ResultsPerPage: 10).and_return nil
+          GovboxSet.new('foo', affiliate, nil)
+        end
       end
 
-      #context 'when highlighting is enabled by default' do
-      #  it "translates '<em>' and '</em>'" do
-      #    expect(Jobs).to receive(:search).
-      #      with(query: 'nursing jobs', ResultsPerPage: 10).
-      #      and_return job_openings
-      #    govbox_set = GovboxSet.new('nursing jobs', affiliate, nil)
-      #    expect(govbox_set.jobs.first.position_title).to eq('Nurse')
-      #    expect(govbox_set.jobs.first.locations).to eq(['Gallup, NM', 'Dallas, TX'])
-      #  end
-      #end
+      context 'when highlighting is enabled by default' do
+        it "translates '<em>' and '</em>'" do
+          expect(Jobs).to receive(:search).
+            with(query: 'nursing jobs', ResultsPerPage: 10).
+            and_return job_openings
+          govbox_set = GovboxSet.new('nursing jobs', affiliate, nil)
+          expect(govbox_set.jobs.first.position_title).to eq('Nurse')
+          expect(govbox_set.jobs.first.locations).to eq(['Gallup, NM', 'Dallas, TX'])
+        end
+      end
 
     end
 

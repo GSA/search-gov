@@ -7,7 +7,6 @@ class JobResultsPostProcessor
   end
 
   def post_processed_results
-
     results.each do |result|
       result.id = result.position_id
       result.url = result.position_uri
