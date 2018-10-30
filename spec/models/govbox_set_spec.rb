@@ -169,6 +169,7 @@ describe GovboxSet do
 
       it "returns job results" do
         expect(govbox_set.jobs.first.position_title).to eq('Therapy Assistant')
+        expect(govbox_set.jobs.first.locations).to eq(['Lyons, New Jersey'])
       end
 
       context "when the affiliate has a related agency with an org code" do
@@ -191,55 +192,6 @@ describe GovboxSet do
         it 'calls Jobs.search with just the query, results per page' do
           expect(Jobs).to receive(:search).with(Keyword: 'job', ResultsPerPage: 10).and_return nil
           GovboxSet.new('job', affiliate, nil)
-        end
-      end
-
-      context 'when highlighting is enabled by default' do
-        it "translates '<em>' and '</em>'" do
-          expect(Jobs).to receive(:search).
-            with(query: 'nursing jobs', ResultsPerPage: 10).
-            and_return job_openings
-          govbox_set = GovboxSet.new('nursing jobs', affiliate, nil)
-          expect(govbox_set.jobs.first.position_title).to eq('<strong>Nurse</strong>')
-          expect(govbox_set.jobs.first.locations).to eq(['Gallup, NM', 'Dallas, TX'])
-        end
-
-        context 'when highlighting options are assigned' do
-          it "translates '<em>' and '</em>'" do
-            expect(Jobs).to receive(:search).
-              with(query: 'nursing jobs', hl: 1, size: 10, tags: 'federal').
-              and_return job_openings
-            govbox_set = GovboxSet.new('nursing jobs',
-                                       affiliate,
-                                       nil,
-                                       highlighting: true,
-                                       pre_tags: ["\ue000"],
-                                       post_tags: ["\ue001"])
-            expect(govbox_set.jobs.first.position_title).to eq("\ue000Nurse\ue001")
-          end
-        end
-      end
-
-      context 'when highlighting is disabled' do
-        let(:job_openings_no_hl) do
-          [Hashie::Mash.new(id: 'usajobs:359509200',
-                            position_title: 'Nurse',
-                            organization_name: 'Indian Health Service',
-                            rate_interval_code: 'PA',
-                            minimum: 42913,
-                            maximum: 61775,
-                            start_date: '2014-01-16',
-                            end_date: '2021-12-31',
-                            locations: ['Gallup, NM'],
-                            url: 'https://www.usajobs.gov/GetJob/ViewDetails/359509200')]
-        end
-
-        it 'returns position_title without highlighting' do
-          expect(Jobs).to receive(:search).with(query: 'nursing jobs',
-                                            size: 10,
-                                            tags: 'federal').and_return(job_openings_no_hl)
-          govbox_set = GovboxSet.new('nursing jobs', affiliate, nil, highlighting: false)
-          expect(govbox_set.jobs.first.position_title).to eq('Nurse')
         end
       end
     end
