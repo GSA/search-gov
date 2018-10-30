@@ -177,7 +177,6 @@ describe GovboxSet do
         end
 
         it "should call Jobs.search with the query, org codes, results per page, and location_name params" do
-          #TODO: pass keyword instead of query
           expect(Jobs).to receive(:search).
             with(Keyword: 'job',
                  ResultsPerPage: 10,
