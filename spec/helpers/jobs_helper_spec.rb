@@ -19,12 +19,12 @@ describe JobsHelper do
       expect(helper.format_salary(job)).to eq('$17.50/hr')
     end
 
-    it 'should return salary when the rate interval is not PA, PH or WC' do
+    it 'should return salary when the rate interval is not Per Year, Per Hour or Without Compensation' do
       job = double('job', minimum: 17.50, maximum: nil, rate_interval_code: 'Per Day')
       expect(helper.format_salary(job)).to eq('$17.50 Per Day')
     end
 
-    it 'should return salary range when maximum is not nil and the rate interval is not PA, PH or WC' do
+    it 'should return salary range when maximum is not nil and the rate interval is not Per Year, Per Hour or Without Compensation' do
       job = double('job', minimum: 17.50, maximum: 20.50, rate_interval_code: 'Per Day')
       expect(helper.format_salary(job)).to eq('$17.50-$20.50 Per Day')
     end
