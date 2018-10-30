@@ -1,11 +1,13 @@
 class JobResultsPostProcessor
   attr_reader :results
 
-  def initialize(results:)
+  def initialize(results)
+    Rails.logger.debug "THE RESULTS ARE: #{results}"
     @results = results.map(&:matched_object_descriptor)
   end
 
   def post_processed_results
+
     results.each do |result|
       result.id = result.position_id
       result.url = result.position_uri

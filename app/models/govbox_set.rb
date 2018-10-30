@@ -104,18 +104,21 @@ class GovboxSet
 
   def init_jobs
     if @affiliate.jobs_enabled?
+      Rails.logger.debug("++++++++++++++++ #{ Jobs.search(build_jobs_search_options)}")
       job_results = Jobs.search(build_jobs_search_options)&.search_result&.search_result_items
+
       if job_results.present?
-        @jobs = JobResultsPostProcessor.new(results: job_results)&.post_processed_results
+        @jobs = JobResultsPostProcessor.new(job_results).post_processed_results
         @modules << 'JOBS'
       end
     end
   end
 
+
   def build_jobs_search_options
     jobs_options = { query: @query, ResultsPerPage: 10 }
     org_hash = { Organization: @affiliate.agency&.joined_organization_codes }
-    jobs_options.merge!(org_hash)
+    jobs_options.merge!(org_hash) if org_hash[:Organization].present?
 
     #extract location_name from @geoip_info
     if @geoip_info.present?

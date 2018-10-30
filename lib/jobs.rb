@@ -20,7 +20,7 @@ module Jobs
       conn.headers['Authorization-Key'] = usajobs_api_config['authorization-key']
       conn.headers['User-Agent'] = usajobs_api_config['user-agent']
       conn.request :json
-      conn.response :mashify
+      conn.response :mrashify
       conn.response :json
       conn.use :instrumentation
       conn.adapter usajobs_api_config['adapter'] || Faraday.default_adapter
