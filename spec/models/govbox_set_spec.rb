@@ -7,7 +7,19 @@ describe GovboxSet do
   describe ".new(query, affiliate, geoip_info)" do
     let(:affiliate) { affiliates(:basic_affiliate) }
     let(:agency) { agencies(:irs) }
-    let(:geoip_info) { double('GeoipInfo', latitude: '12.34', longitude: '-34.56') }
+    #let(:geoip_info) { double('GeoipInfo', latitude: '12.34', longitude: '-34.56') }
+    let(:geoip_info) do
+      double('GeoipInfo',
+             ip:               '209.66.94.77',
+             country_code3:    'USA',
+             country_name:     'United States',
+             region_name:      'NJ',
+             city_name:        'Flemington',
+             real_region_name: 'New Jersey',
+             latitude:         '12.34',
+             longitude:        '-34.56')
+    end
+
     let(:highlighting_options) do
       { highlighting: true,
         pre_tags: %w(<strong>),
@@ -145,21 +157,14 @@ describe GovboxSet do
     end
 
     context "when the affiliate has the jobs govbox enabled" do
-      let(:job_openings) do
-        [Hashie::Mash.new(id: 'usajobs:359509200',
-                          position_title: '<em>Nurse</em>',
-                          organization_name: 'Indian Health Service',
-                          rate_interval_code: 'PA',
-                          minimum: 42913,
-                          maximum: 61775,
-                          start_date: '2014-01-16',
-                          end_date: '2021-12-31',
-                          locations: ['Gallup, NM', 'Dallas, TX'],
-                          url: 'https://www.usajobs.gov/GetJob/ViewDetails/359509200')]
-      end
+      let(:govbox_set) { GovboxSet.new('job', affiliate, geoip_info) }
 
       before do
         allow(affiliate).to receive(:jobs_enabled?).and_return(true)
+      end
+
+      it "includes 'JOBS' in the modules" do
+        expect(govbox_set.modules).to include('JOBS')
       end
 
       context "when the affiliate has a related agency with an org code" do
@@ -168,12 +173,14 @@ describe GovboxSet do
         end
 
         it "should call Jobs.search with the query, org codes, size, hl, and lat_lon params" do
+          #TODO: pass keyword instead of query
           expect(Jobs).to receive(:search).
-            with(:query => 'foo', :hl => 1, :size => 10, :organization_ids => 'ABCD,BCDE', :lat_lon => '12.34,-34.56').
-            and_return(job_openings)
+            with(Keyword: 'foo',
+                 ResultsPerPage: 10,
+                 Organization: 'ABCD;BCDE',
+                 LocationName: 'Flemington, New Jersey, United States')
           govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
           expect(govbox_set.jobs.first.position_title).to eq('<strong>Nurse</strong>')
-          expect(govbox_set.modules).to include('JOBS')
         end
       end
 
@@ -187,7 +194,7 @@ describe GovboxSet do
       context 'when highlighting is enabled by default' do
         it "translates '<em>' and '</em>'" do
           expect(Jobs).to receive(:search).
-            with(query: 'nursing jobs', hl: 1, size: 10, tags: 'federal').
+            with(query: 'nursing jobs', ResultsPerPage: 10).
             and_return job_openings
           govbox_set = GovboxSet.new('nursing jobs', affiliate, nil)
           expect(govbox_set.jobs.first.position_title).to eq('<strong>Nurse</strong>')
