@@ -14,7 +14,7 @@ describe Jobs do
 
       it "should log any errors that occur and return nil" do
         expect(Rails.logger).to receive(:error).with(/Trouble fetching jobs information/)
-        expect(Jobs.search(:query => 'jobs')).to be_nil
+        expect(Jobs.search(Keyword: 'jobs')).to be_nil
       end
     end
   end
