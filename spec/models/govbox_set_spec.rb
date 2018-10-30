@@ -167,20 +167,23 @@ describe GovboxSet do
         expect(govbox_set.modules).to include('JOBS')
       end
 
+      it "returns job results" do
+        expect(govbox_set.jobs.first.position_title).to eq('Therapy Assistant')
+      end
+
       context "when the affiliate has a related agency with an org code" do
         before do
           allow(affiliate).to receive(:agency).and_return(agency)
         end
 
-        it "should call Jobs.search with the query, org codes, size, hl, and lat_lon params" do
+        it "should call Jobs.search with the query, org codes, results per page, and location_name params" do
           #TODO: pass keyword instead of query
           expect(Jobs).to receive(:search).
-            with(Keyword: 'foo',
+            with(Keyword: 'job',
                  ResultsPerPage: 10,
                  Organization: 'ABCD;BCDE',
                  LocationName: 'Flemington, New Jersey, United States')
-          govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
-          expect(govbox_set.jobs.first.position_title).to eq('<strong>Nurse</strong>')
+          govbox_set = GovboxSet.new('job', affiliate, geoip_info)
         end
       end
 
