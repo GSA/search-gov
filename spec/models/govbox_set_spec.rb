@@ -156,14 +156,10 @@ describe GovboxSet do
     end
 
     context "when the affiliate has the jobs govbox enabled" do
-      let(:results) do
+      let(:job_openings) do
         response = JSON.parse read_fixture_file('/json/usajobs_response.json')
-        response['SearchResult']['SearchResultItems'].map do |result|
-          Hashie::Mash::Rash.new(result)
-        end
+        Hashie::Mash::Rash.new(response)
       end
-      let(:post_processor) { JobResultsPostProcessor.new(results) }
-      let(:job_openings) { post_processor.post_processed_results }
 
       before do
         allow(affiliate).to receive(:jobs_enabled?).and_return(true)
@@ -182,7 +178,7 @@ describe GovboxSet do
                  LocationName: 'Flemington, New Jersey, United States').
             and_return(job_openings)
           govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
-          expect(govbox_set.jobs.first.position_title).to eq('Nurse')
+          expect(govbox_set.jobs.first.position_title).to eq('Transportation Security Officer (TSO)')
           expect(govbox_set.modules).to include('JOBS')
         end
        end
