@@ -7,7 +7,6 @@ describe GovboxSet do
   describe ".new(query, affiliate, geoip_info)" do
     let(:affiliate) { affiliates(:basic_affiliate) }
     let(:agency) { agencies(:irs) }
-    #let(:geoip_info) { double('GeoipInfo', latitude: '12.34', longitude: '-34.56') }
     let(:geoip_info) do
       double('GeoipInfo',
              ip:               '209.66.94.77',

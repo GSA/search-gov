@@ -2,7 +2,6 @@ class JobResultsPostProcessor
   attr_reader :results
 
   def initialize(results)
-    Rails.logger.debug "THE RESULTS ARE: #{results}"
     @results = results.map(&:matched_object_descriptor)
   end
 
