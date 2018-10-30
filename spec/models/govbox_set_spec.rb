@@ -186,8 +186,8 @@ describe GovboxSet do
 
       context "when the affiliate does not have a related agency with an org code" do
         it 'calls Jobs.search with just the query, results per page' do
-          expect(Jobs).to receive(:search).with(query: 'foo', ResultsPerPage: 10).and_return nil
-          GovboxSet.new('foo', affiliate, nil)
+          expect(Jobs).to receive(:search).with(Keyword: 'job', ResultsPerPage: 10).and_return nil
+          GovboxSet.new('job', affiliate, nil)
         end
       end
 
