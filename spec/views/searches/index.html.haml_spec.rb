@@ -129,16 +129,16 @@ describe "searches/index.html.haml" do
         allow(@affiliate).to receive(:jobs_enabled?).and_return(true)
         json = [
           {"id" => "usajobs:328437200", "position_title" => "<em>Research</em> Biologist/<em>Research</em> Nutritionist (Postdoctoral <em>Research</em> Affiliate)",
-           "organization_name" => "Agricultural Research Service", "rate_interval_code" => "Per Year", "minimum" => 51871, "maximum" => 67427, "start_date" => "2012-10-10", "end_date" => "2023-10-12", "locations" => ["Boston, MA"],
+           "organization_name" => "Agricultural Research Service", "rate_interval_code" => "Per Year", "minimum" => 51871, "maximum" => 67427, "start_date" => "2012-10-10", "application_close_date" => "2023-10-12", "locations" => ["Boston, MA"],
            "url" => "https://www.usajobs.gov/GetJob/ViewDetails/328437200"},
           {"id" => "usajobs:328437201", "position_title" => "Some Research Job",
-           "organization_name" => "Some Research Service", "rate_interval_code" => "Per Hour", "minimum" => 24, "maximum" => 24, "start_date" => "2012-10-10", "end_date" => "2023-10-13", "locations" => ["Boston, MA", "Cohasset, MA"],
+           "organization_name" => "Some Research Service", "rate_interval_code" => "Per Hour", "minimum" => 24, "maximum" => 24, "start_date" => "2012-10-10", "application_close_date" => "2023-10-13", "locations" => ["Boston, MA", "Cohasset, MA"],
            "url" => "https://www.usajobs.gov/GetJob/ViewDetails/328437201"},
           {"id" => "usajobs:328437202", "position_title" => "Bi-Weekly Research Job",
-           "organization_name" => "BW Research Service", "rate_interval_code" => "Bi-Weekly", "minimum" => 240, "maximum" => 260, "start_date" => "2012-10-10", "end_date" => "2023-10-15", "locations" => ["Hello, MA"],
+           "organization_name" => "BW Research Service", "rate_interval_code" => "Bi-Weekly", "minimum" => 240, "maximum" => 260, "start_date" => "2012-10-10", "application_close_date" => "2023-10-15", "locations" => ["Hello, MA"],
            "url" => "https://www.usajobs.gov/GetJob/ViewDetails/328437202"},
           {"id" => "usajobs:328437203", "position_title" => "Zero Money Research Job",
-           "organization_name" => "Some Poor Research Service", "rate_interval_code" => "Without Compensation", "minimum" => 0, "maximum" => 0, "start_date" => "2012-10-10", "end_date" => "2023-10-14", "locations" => ["Washington Metro Area, DC"],
+           "organization_name" => "Some Poor Research Service", "rate_interval_code" => "Without Compensation", "minimum" => 0, "maximum" => 0, "start_date" => "2012-10-10", "application_close_date" => "2023-10-14", "locations" => ["Washington Metro Area, DC"],
            "url" => "https://www.usajobs.gov/GetJob/ViewDetails/328437203"}
         ]
         mashies = json.collect { |x| Hashie::Mash.new(x) }
@@ -232,7 +232,7 @@ describe "searches/index.html.haml" do
         allow(@affiliate).to receive(:jobs_enabled?).and_return(true)
         json = [
             {"id" => "ng:michigan:328437200", "position_title" => "<em>Research</em> Biologist/<em>Research</em> Nutritionist (Postdoctoral <em>Research</em> Affiliate)",
-             "organization_name" => "Agricultural Research Service", "rate_interval_code" => "PA", "minimum" => 51871, "maximum" => 67427, "start_date" => "2012-10-10", "end_date" => "2023-10-12", "locations" => ["Boston, MA"],
+             "organization_name" => "Agricultural Research Service", "rate_interval_code" => "PA", "minimum" => 51871, "maximum" => 67427, "start_date" => "2012-10-10", "application_close_date" => "2023-10-12", "locations" => ["Boston, MA"],
              "url" => "http://agency.governmentjobs.com/michigan/default.cfm?action=viewjob&jobid=328437200"}]
         mashies = json.collect { |x| Hashie::Mash.new(x) }
         allow(@search).to receive(:query).and_return "research jobs"
