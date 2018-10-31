@@ -51,9 +51,9 @@ module JobsHelper
     end
   end
 
-  def jobs_content_heading_css_classes(is_usajobs_listing)
+  def jobs_content_heading_css_classes
     css_classes = 'content-heading'
-    css_classes << ' usajobs' if is_usajobs_listing
+    css_classes << ' usajobs'
     css_classes
   end
 
@@ -77,14 +77,10 @@ module JobsHelper
 
   def more_agency_jobs_title_and_url(agency, job_id)
     title = "#{t :'searches.more_agency_job_openings', agency: agency.abbreviation || agency.name}"
-    title << " #{t :'searches.on_usajobs'}" if job_listed_on_usajobs?(job_id)
+    title << " #{t :'searches.on_usajobs'}"
 
     url = url_for_more_agency_jobs agency, job_id
     [title, url]
-  end
-
-  def job_listed_on_usajobs?(job_id)
-    job_id =~ /^usajobs/
   end
 
   def more_federal_jobs_title_and_url
