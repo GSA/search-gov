@@ -8,15 +8,9 @@ describe GovboxSet do
     let(:affiliate) { affiliates(:basic_affiliate) }
     let(:agency) { agencies(:irs) }
     let(:geoip_info) do
-      double('GeoipInfo',
-             ip:               '209.66.94.77',
-             country_code3:    'USA',
-             country_name:     'United States',
-             region_name:      'NJ',
-             city_name:        'Flemington',
-             real_region_name: 'New Jersey',
-             latitude:         '12.34',
-             longitude:        '-34.56')
+      instance_double(
+        GeoIP::City,location_name: 'Flemington, New Jersey, United States'
+      )
     end
 
     let(:highlighting_options) do
@@ -177,7 +171,6 @@ describe GovboxSet do
         end
 
         it "should call Jobs.search with the query, org codes, results per page, and location_name params" do
-          #TODO: pass keyword instead of query
           expect(Jobs).to receive(:search).
             with(Keyword: 'job',
                  ResultsPerPage: 10,

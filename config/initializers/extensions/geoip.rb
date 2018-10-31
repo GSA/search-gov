@@ -1,0 +1,1 @@
+require 'geoip_extensions'

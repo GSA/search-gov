@@ -33,7 +33,7 @@ module JobsHelper
         period = job.rate_interval_code == 'Per Year' ? 'yr' : 'hr'
         plus = max > job.minimum ? '+' : ''
         "#{min_str}#{plus}/#{period}"
-      when 'WC'
+      when 'Without Compensation'
         nil
       else
         with_max = max > job.minimum ? "-#{max_str} " : ' '
