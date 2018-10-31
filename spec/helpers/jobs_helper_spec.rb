@@ -85,40 +85,5 @@ describe JobsHelper do
         end
       end
     end
-
-    context 'when rendering neogov jobs for a given organization' do
-      let(:search) do
-        affiliate = affiliates(:usagov_affiliate)
-        agency = Agency.create!(name: 'State of Michigan')
-        AgencyOrganizationCode.create!(organization_code: "USMI", agency: agency)
-        affiliate.agency = agency
-        double('search', affiliate: affiliate, query: 'gov')
-      end
-
-      before do
-        allow(search).to receive_message_chain(:jobs).and_return([double('job', id: 'ng:michigan:1000')])
-      end
-
-      it 'should render an organization specific link to usajobs.gov' do
-        expect(helper).to receive(:job_link_with_click_tracking).with(
-            'More State of Michigan job openings',
-            'http://agency.governmentjobs.com/michigan/default.cfm',
-            search.affiliate, 'gov', -1, nil)
-        helper.legacy_link_to_more_jobs(search)
-      end
-
-      context 'when the affiliate locale is es' do
-        before { I18n.locale = :es }
-        after { I18n.locale = I18n.default_locale }
-
-        it 'should render an organization specific link to usajobs in Spanish' do
-          expect(helper).to receive(:job_link_with_click_tracking).with(
-              'Más trabajos en State of Michigan',
-              'http://agency.governmentjobs.com/michigan/default.cfm',
-              search.affiliate, 'gov', -1, nil)
-          helper.legacy_link_to_more_jobs(search)
-        end
-      end
-    end
   end
 end

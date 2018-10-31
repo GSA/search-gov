@@ -227,44 +227,6 @@ describe "searches/index.html.haml" do
 
     end
 
-    context 'when neogov jobs results are available' do
-      before do
-        allow(@affiliate).to receive(:jobs_enabled?).and_return(true)
-        json = [
-            {"id" => "ng:michigan:328437200", "position_title" => "<em>Research</em> Biologist/<em>Research</em> Nutritionist (Postdoctoral <em>Research</em> Affiliate)",
-             "organization_name" => "Agricultural Research Service", "rate_interval_code" => "PA", "minimum" => 51871, "maximum" => 67427, "start_date" => "2012-10-10", "application_close_date" => "2023-10-12", "locations" => ["Boston, MA"],
-             "url" => "http://agency.governmentjobs.com/michigan/default.cfm?action=viewjob&jobid=328437200"}]
-        mashies = json.collect { |x| Hashie::Mash.new(x) }
-        allow(@search).to receive(:query).and_return "research jobs"
-        @search_result = {'title' => "This is about research jobs",
-                          'unescapedUrl' => "http://www.cdc.gov/jobs",
-                          'content' => "Research jobs don't pay well",
-                          'cacheUrl' => "http://www.cached.com/url"}
-        @search_results = [@search_result]
-        allow(@search_results).to receive(:total_pages).and_return 1
-        allow(@search).to receive(:results).and_return @search_results
-        allow(@search).to receive(:jobs).and_return mashies
-      end
-
-      context 'when there is an agency associated with the affiliate' do
-        before do
-          agency = Agency.create!({:name => 'State of Michigan',
-                                   :abbreviation => 'SOM'})
-          AgencyOrganizationCode.create!(organization_code: "USMI", agency: agency)
-          allow(@affiliate).to receive(:agency).and_return(agency)
-        end
-
-        it "should show the neogov links" do
-          render
-          expect(rendered).to have_content('Job Openings at SOM')
-          expect(rendered).to have_selector('a[href="http://agency.governmentjobs.com/michigan/default.cfm?action=viewjob&jobid=328437200"]',
-                                            text: 'Research Biologist/Research Nutritionist (Postdoctoral Research Affiliate)')
-          expect(rendered).to have_selector('a[href="http://agency.governmentjobs.com/michigan/default.cfm"]',
-                                            text: 'More SOM job openings')
-        end
-      end
-    end
-
     context "when a med topic record matches the query" do
       fixtures :med_topics
       before do
