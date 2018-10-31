@@ -655,4 +655,60 @@ http_interactions:
         description","title":"My Title","xmp:CreatorTool":"Writer","xmpTPg:NPages":"1"}]'
     http_version: 
   recorded_at: Thu, 26 Apr 2018 23:55:47 GMT
+- request:
+    method: post
+    uri: http://localhost:8081/api/v1/documents
+    body:
+      encoding: UTF-8
+      string: '{"document_id":"6045ee8ed3584feb6ce9fd3f3bc3008907d99e356c247a8eb94d1a688677b53a","title":"My
+        Title","path":"https://www.irs.gov/test.pdf","created":"2017-09-07T23:26:04Z","description":"My
+        description","content":"My Title This is my headline. This is my content.
+        This is a test PDF file, we are use it to test our PDF parsing technology.
+        We want it to be at least 250 characters long so that we can test the description
+        generator and see that it cuts off the description, meaning truncates it,
+        in the right location. It should truncate the text and cut off the following:
+        truncate me. It includes some special characters to test our parsing: m–dash,
+        “curly quotes”, a’postrophe, paragraph: ¶","changed":"2017-09-07T23:26:04Z","language":"en","tags":"this,
+        that"}'
+    headers:
+      Authorization:
+      - Basic c2VhcmNoZ292OnNlYXJjaGdvdl90b2tlbg==
+      User-Agent:
+      - Faraday v0.9.2
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '49'
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - c3c3fde9-73ef-4885-b36e-9a9113d936d2
+      X-Runtime:
+      - '1.908724'
+      Vary:
+      - Origin
+      Connection:
+      - keep-alive
+      Server:
+      - thin
+    body:
+      encoding: UTF-8
+      string: '{"developer_message":"Unauthorized","status":400}'
+    http_version: 
+  recorded_at: Wed, 31 Oct 2018 01:07:44 GMT
 recorded_with: VCR 4.0.0
