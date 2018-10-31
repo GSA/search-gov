@@ -4,16 +4,12 @@ describe Jobs do
   describe '.search(options)' do
     context "when there is some problem" do
       before do
-        allow(Rails.application.secrets).to receive(:jobs).and_return({
-          'host' => 'http://nonexistent.server.gov',
-          'endpoint' => '/test/search',
-          'adapter' => Faraday.default_adapter
-        })
-        Jobs.establish_connection!
+        stub_request(:get, %r{data.usajobs.gov}).to_raise(StandardError)
       end
 
       it "should log any errors that occur and return nil" do
-        expect(Rails.logger).to receive(:error).with(/Trouble fetching jobs information/)
+        expect(Rails.logger).to receive(:error).
+          with(/Trouble fetching jobs information/)
         expect(Jobs.search(Keyword: 'jobs')).to be_nil
       end
     end
