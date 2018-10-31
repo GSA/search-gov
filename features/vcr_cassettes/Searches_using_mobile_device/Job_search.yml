@@ -289,4 +289,585 @@ http_interactions:
         VA"],"url":"https://www.usajobs.gov/GetJob/ViewDetails/491975600"}]'
     http_version: 
   recorded_at: Thu, 22 Feb 2018 07:18:04 GMT
+- request:
+    method: get
+    uri: https://data.usajobs.gov/api/search?Keyword=jobs&ResultsPerPage=10
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization-Key:
+      - "<JOBS_AUTHORIZATION_KEY>"
+      User-Agent:
+      - "<JOBS_USER_AGENT>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/hr+json
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/10.0
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Wed, 31 Oct 2018 16:21:43 GMT
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - Transfer-Encoding
+      - keep-alive
+      Set-Cookie:
+      - akavpau_DATA_USAJ=1541003203~id=8352aad20c7b197e302d69fbbb4754fa; Domain=data.usajobs.gov;
+        Path=/; Secure
+    body:
+      encoding: UTF-8
+      string: '{"LanguageCode":"EN","SearchParameters":{},"SearchResult":{"SearchResultCount":10,"SearchResultCountAll":779,"SearchResultItems":[{"MatchedObjectId":"510075500","MatchedObjectDescriptor":{"PositionID":"VA-18-15717","PositionTitle":"Banquet
+        Wait Staff","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/510075500","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/510075500?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Naval
+        Shipyard, Portsmouth, Virginia","PositionLocation":[{"LocationName":"Naval
+        Shipyard, Portsmouth, Virginia","CountryCode":"United States","CountrySubDivisionCode":"Virginia","CityName":"Naval
+        Shipyard, Portsmouth, Virginia","Longitude":-76.29812,"Latitude":36.8030968}],"OrganizationName":"Commander,
+        Navy Installations","DepartmentName":"Department of the Navy","JobCategory":[{"Name":"Waiter","Code":"7420"}],"JobGrade":[{"Code":"NA"}],"PositionSchedule":[{"Name":"Flexible","Code":"4"}],"PositionOfferingType":[{"Name":"Permanent","Code":"15317"}],"QualificationSummary":"Specialized
+        experience must demonstrate the following: Must possess working knowledge
+        of sanitation practices and procedures. Knowledge of proper food handling
+        techniques such as the correct sides to serve and remove from. A minimum of
+        six months experience is strongly preferred. You will receive credit for all
+        qualifying experience, including volunteer and part time experience. You must
+        clearly identify the duties and responsibilities in each position held and
+        the total number of hours per week. Experience refers to paid and unpaid experience,
+        including volunteer work done through National Service programs (e.g., professional,
+        philanthropic, religious, spiritual, community, student, social). Volunteer
+        work helps build critical competencies, knowledge, and skills and can provide
+        valuable training and experience that translates directly to paid employment.
+        As part of the application process, you must complete and submit an occupational
+        questionnaire. Please follow all instructions carefully. Errors or omissions
+        may affect your rating and/or appointment eligibility. Work is primarily performed
+        indoors in a club/bar setting with adequate air conditioning, heating, and
+        lighting. Occasionally, work may be performed outdoors with exposure to a
+        variety of weather conditions. This positon is subject to prolonged standing,
+        walking, talking, bending, reaching, stooping and lifting of heavy trays or
+        objects weighing less than 45 pounds without assistance. May be exposed to
+        loud music, cigarette smoke, &ldquo;rough&rdquo; language, wet, slippery floors,
+        cuts, burns and bruises. As a condition of employment, the employee must be
+        able to obtain a Health Card prior to first day of work. Afterwards, must
+        be able to successfully pass a Food Handlers Sanitation course, thereafter
+        to be updated and maintained annually. Additionally, the employee must successfully
+        complete an annual CARE/TIPS training course. A valid driver&rsquo;s license
+        is strongly preferred, as travel to and from club facilities may be required
+        in the performance of duties. This position is subject to an irregular tour,
+        which includes nights, weekends and/or holiday work to cover all operational
+        hours and special events.","PositionRemuneration":[{"MinimumRange":"8.13","MaximumRange":"8.13","RateIntervalCode":"Per
+        Hour"}],"PositionStartDate":"2018-09-06","PositionEndDate":"2018-11-06","PublicationStartDate":"2018-09-06","ApplicationCloseDate":"2018-11-06","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"","WhoMayApply":{"Name":"","Code":""},"LowGrade":"1","HighGrade":"1","PromotionPotential":"01","HiringPath":["public"],"AgencyMarketingStatement":"Advertisement:
+        Discover MWR, USA JOBS, CNIC HQ","TravelCode":"0","ApplyOnlineUrl":"https://fhrnavigator.com/usajobs/apply"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"510077700","MatchedObjectDescriptor":{"PositionID":"CBCW-10302940-FY18-SB","PositionTitle":"Psychologist","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/510077700","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/510077700?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Multiple
+        Locations","PositionLocation":[{"LocationName":"Danville, Illinois","CountryCode":"United
+        States","CountrySubDivisionCode":"Illinois","CityName":"Danville, Illinois","Longitude":-87.63043,"Latitude":40.1594658},{"LocationName":"Springfield,
+        Illinois","CountryCode":"United States","CountrySubDivisionCode":"Illinois","CityName":"Springfield,
+        Illinois","Longitude":-89.64361,"Latitude":39.8010559}],"OrganizationName":"Veterans
+        Affairs, Veterans Health Administration","DepartmentName":"Department of Veterans
+        Affairs","JobCategory":[{"Name":"Psychology","Code":"0180"}],"JobGrade":[{"Code":"GS"}],"PositionSchedule":[{"Name":"Full-Time","Code":"1"}],"PositionOfferingType":[{"Name":"Permanent","Code":"15317"}],"QualificationSummary":"Basic
+        Requirements:\nUnited States Citizenship - Non-citizens may only be appointed
+        when it is not possible to recruit qualified citizens in accordance with VA
+        Policy.\nEnglish Language Proficiency Requirement - Per VA Handbook 5005,
+        Part II, Chapter 3, Section A, Paragraph 3j: No person will be appointed under
+        authority of 38 U.S.C., chapter 73 or 74, to serve in a direct patient-care
+        capacity in VHA who is not proficient in written and spoken English.\nEducation
+        Requirement - You must have a doctoral degree in psychology from a graduate
+        program in psychology accredited by the American Psychological Association
+        (APA), the Psychological Clinical Science Accreditation System (PCSAS), or
+        the Canadian Psychological Association (CPA) at the time the program was completed.
+        The specialty area of the degree must be consistent with the assignment for
+        which the applicant is to be employed. OR, have a doctoral degree in any area
+        of psychology and, in addition, successfully completed a respecialization
+        program meeting both of the following conditions: a) the respecialization
+        program must be completed in an APA or a CPA accredited doctoral program;
+        and b) the specialty in which you were retrained is consistent with the assignment
+        you are am applying for; OR, have a doctoral degree awarded between 1951 and
+        1978 from a regionally-accredited institution, with a dissertation primarily
+        psychological in nature.\nInternship Requirement - You must have successfully
+        completed a professional psychology internship training program that was accredited
+        by APA or CPA at the time the program was completed and that is consistent
+        with the assignment for which the applicant is to be employed; OR, New VHA
+        psychology internship programs that are in the process of applying for APA
+        accreditation are acceptable in fulfillment of the internship requirement,
+        provided that such programs were sanctioned by the VHA Central Office Program
+        Director for Psychology and the VHA Office of Academic Affiliations at the
+        time that the individual was an intern; OR, VHA facilities that offered full-time,
+        one-year pre-doctoral internships prior to PL 96-151 (pre-1979) are considered
+        to be acceptable in fulfillment of the internship requirement; OR, Applicants
+        who completed an internship that was not accredited by APA or CPA at the time
+        the program was completed may be considered eligible for hire only if they
+        are currently board certified by the American Board of Professional Psychology
+        in a specialty area that is consistent with the assignment for which the applicant
+        is to be employed. (NOTE: Once board certified, the employee is required to
+        maintain board certification). NOTE: Applicants who have a doctoral degree
+        awarded between 1951 and 1978 from a regionally-accredited institution with
+        a dissertation primarily psychological in nature may fulfill this internship
+        requirement by having the equivalent of a one-year supervised internship experience
+        in a site specifically acceptable to the candidate''s doctoral program. If
+        the internship experience is not noted on the applicant''s official transcript,
+        the applicant must provide a statement from the doctoral program verifying
+        that the equivalent of a one-year supervised internship experience was completed
+        in a site acceptable to the doctoral program.\nLicensure: Candidates must
+        hold a full, current, and unrestricted license to practice psychology at the
+        doctoral level in a State, Territory or Commonwealth of the United States,
+        or the District of Columbia. Exception: Non-licensed applicants who otherwise
+        meet the eligibility requirements may be given a temporary appointment as
+        a \"graduate psychologist\" at the GS-11 or GS-12 grade under the authority
+        of 38 U.S.C. 7405 (c)(2)(B) for a period not to exceed two years from the
+        date of employment on the condition that such a psychologist provide care
+        only under the supervision of a psychologist who is licensed. Failure to obtain
+        licensure during that period is justification for termination of the temporary
+        appointment.\nExperience: In additional to meeting the basic requirements
+        as stated above, you must have the following: GS-11 Level: no additional experience
+        beyond the basic requirement\nGS-12 Level: at least 1 full year of experience
+        as a professional psychologist equivalent to the GS-11 level, and are able
+        to demonstrate the following knowledge, skills and abilities: Knowledge of
+        and ability to apply a wide range of professional psychological treatments
+        or assessment methods to a variety of patient populations. Ability to design
+        and implement effective treatment strategies. Ability to incorporate new clinical
+        procedures. Ability to conduct research activities, such as designing and
+        implementing clinical research projects (staff psychologists with specified
+        research job duties). Ability to perform basic research tasks of scholarship
+        and research execution within the context of an established research team,
+        including research participant relations, research documentation, data acquisition,
+        maintenance, and collaboration. GS-13 Level: at least 2 addition years of
+        experience, with at least one year equivalent to the GS-12 level, as a professional
+        psychologist that was obtained through employment as a psychologist or through
+        participating in a supervised post-doctoral psychology training program that
+        demonstrates 1) active professional practice that was paid/non-paid employment
+        and/or 2) a full, current and unrestricted license. To be creditable, the
+        experience must have required the use of knowledge, skills, abilities and
+        other characteristics associated with current psychology practice: Knowledge
+        of, and ability to apply, professional psychological treatments to a full
+        range of patient populations. Ability to provide professional advice and consultation
+        in areas related to professional psychology and behavioral health. Knowledge
+        of clinical research literature.*Experience is only creditable if it is post-doctoral
+        degree experience as a professional psychologist directly related to the duties
+        performed. Preferred Experience: Experience as a Psychologist in a clinical
+        setting. Reference: VA Regulations, specifically VA Handbook 5005, Part II,
+        Appendix G18 Psychologist Qualification Standard. This can be found in the
+        local Human Resources Office. Physical Requirements: This position requires
+        minimal physical exertion, light lifting (under 15 lbs), light carrying (under
+        15 lbs.), working closely with others and working alone. The employee works
+        mostly from a seated position, conducting psychological assessments and providing
+        psychotherapeutic services for patients. The employee will use a computer
+        to access the medical record for entry and retrieval of information. The employee
+        will need to be able to hear conversational speech. hearing aid permitted.
+        The employee will be expected to move around the patient care environment.","PositionRemuneration":[{"MinimumRange":"61218.00","MaximumRange":"113428.00","RateIntervalCode":"Per
+        Year"}],"PositionStartDate":"2018-09-06","PositionEndDate":"2018-10-31","PublicationStartDate":"2018-09-06","ApplicationCloseDate":"2018-10-31","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"","WhoMayApply":{"Name":"","Code":""},"LowGrade":"11","HighGrade":"13","PromotionPotential":"13","HiringPath":["public"],"TotalOpenings":"5","AgencyMarketingStatement":"Learn
+        more about what it''s like to work at Veterans Affairs, Veterans Health Administration,
+        what the agency does, and about the types of careers this agency offers.https://www.va.gov/jobs//","TravelCode":"0","ApplyOnlineUrl":"https://apply.usastaffing.gov/Application/Apply","DetailStatusUrl":"https://apply.usastaffing.gov/Application/ApplicationStatus"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"512261500","MatchedObjectDescriptor":{"PositionID":"Legal
+        Intern-18-SMF","PositionTitle":"Legal Affairs Internship","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/512261500","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/512261500?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Washington
+        DC, District of Columbia","PositionLocation":[{"LocationName":"Washington
+        DC, District of Columbia","CountryCode":"United States","CountrySubDivisionCode":"District
+        of Columbia","CityName":"Washington DC, District of Columbia","Longitude":-77.0213852,"Latitude":38.95269}],"OrganizationName":"Overseas
+        Private Investment Corporation","DepartmentName":"Other Agencies and Independent
+        Organizations","JobCategory":[{"Name":"Legal Occupations Student Trainee","Code":"0999"}],"JobGrade":[{"Code":"GS"}],"PositionSchedule":[{"Name":"Multiple
+        Schedules","Code":"6"}],"PositionOfferingType":[{"Name":"Internships","Code":"15328"}],"QualificationSummary":"Applicants
+        must be U.S. citizens enrolled in an accredited law school with a cumulative
+        GPA of 3.0 or higher, and remain enrolled during the term of the internship.
+        Successful completion of a background investigation is also required.","PositionRemuneration":[{"MinimumRange":"0.00","MaximumRange":"0.00","RateIntervalCode":"Per
+        Year"}],"PositionStartDate":"2018-10-03","PositionEndDate":"2019-04-26","PublicationStartDate":"2018-10-03","ApplicationCloseDate":"2019-04-26","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"","WhoMayApply":{"Name":"","Code":""},"LowGrade":"00","HighGrade":"00","PromotionPotential":"None","HiringPath":["student"],"TotalOpenings":"Many","AgencyMarketingStatement":"Become
+        part of the Overseas Private Investment Corporation (OPIC), ranked fifth among
+        small agencies in the Best Places to Work in the Federal Government! OPIC
+        mobilizes foreign capital to help solve critical development challenges and
+        in doing so, advances U.S. foreign policy and national security priorities.
+        Because OPIC works with the U.S. private sector, it helps U.S. businesses
+        gain footholds in emerging markets, catalyzing revenues, jobs and growth opportunities
+        both at home and abroad.","TravelCode":"0"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"514368500","MatchedObjectDescriptor":{"PositionID":"DE-19-003-HQ-10332434","PositionTitle":"Administrative
+        Officer","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/514368500","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/514368500?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"District
+        of Columbia, District of Columbia","PositionLocation":[{"LocationName":"District
+        of Columbia, District of Columbia","CountryCode":"United States","CountrySubDivisionCode":"District
+        of Columbia","CityName":"District of Columbia, District of Columbia","Longitude":-77.03196,"Latitude":38.89037}],"OrganizationName":"Small
+        Business Administration","DepartmentName":"Other Agencies and Independent
+        Organizations","JobCategory":[{"Name":"Administrative Officer","Code":"0341"}],"JobGrade":[{"Code":"GS"}],"PositionSchedule":[{"Name":"Full-Time","Code":"1"}],"PositionOfferingType":[{"Name":"Cadre--See
+        definition under Important Notes","Code":"15327"}],"QualificationSummary":"Generally,
+        time in Non-Pay status is not creditable towards the specialized experience
+        requirement listed below.\nYou must meet all qualification requirements by
+        the closing date of this announcement. Experience: To receive credit, you
+        must indicate the month and year as well as the average hours worked per week
+        for each employer. Average work hours must be stated on the resume to quantify
+        each period of work experience or that experience will not be credited toward
+        meeting the specialized experience requirement.\nYou must address the specific
+        specialized experience required for each grade level of this position on your
+        resume or application or you will be rated \"Ineligible\" for that grade level.
+        GS-13: To qualify you must have at least 1 full year (52 weeks) of specialized
+        experience equivalent in difficulty and complexity to the GS-12 level in the
+        Federal service that has equipped you with the particular knowledge, skill,
+        and ability to perform successfully in this position. This experience may
+        have been gained in a Non-Federal service position. In addition, this Specialized
+        Experience must demonstrate the following: *Overseeing, managing, or directing
+        the day-to-day administrative functions of an organization to meet program
+        goals in the areas of payroll/budget, travel. and accountability property/procurement.\n*
+        Gathering and analyzing pertinent administrative data for various administrative
+        support functions, such as payroll, budget, travel, records management, accountable
+        property and procurement;\n* Interpreting and applying Federal Acquisition
+        Regulations (FAR) and Federal Travel Regulations (FTR); and\n*Communicating
+        orally and in writing to various levels of internal and external customers
+        to accomplish program goals GS-14: To qualify you must have at least 1 full
+        year (52 weeks) of specialized experience equivalent in difficulty and complexity
+        to the GS-13 level in the Federal service that has equipped you with the particular
+        knowledge, skill, and ability to perform successfully in this position. This
+        experience may have been gained in a Non-Federal service position. In addition,
+        this Specialized Experience must demonstrate the following: *Overseeing, managing,
+        or directing the day-to-day administrative functions of an organization to
+        meet program goals in the areas of payroll/budget, travel. and accountability
+        property/procurement.\n* Gathering and analyzing pertinent administrative
+        data and recommending improvements for various administrative support functions,
+        such as payroll, budget, travel, records management, accountable property
+        and procurement;\n* Interpreting and applying Federal Acquisition Regulations
+        (FAR) and Federal Travel Regulations (FTR);\n*Communicating orally and in
+        writing to various levels of internal and external customers to accomplish
+        program goals; and\n* Leading or supervising employees or projects.","PositionRemuneration":[{"MinimumRange":"96970.00","MaximumRange":"148967.00","RateIntervalCode":"Per
+        Year"}],"PositionStartDate":"2018-10-19","PositionEndDate":"2018-11-02","PublicationStartDate":"2018-10-19","ApplicationCloseDate":"2018-11-02","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"","WhoMayApply":{"Name":"","Code":""},"LowGrade":"13","HighGrade":"14","PromotionPotential":"14","HiringPath":["public"],"AgencyMarketingStatement":"Are
+        you excited by the idea of helping to support $39 billion in small business
+        financing and setting proper conditions to stimulate America''s economic growth?
+        SBA has been a leader in small business development for more than 60 years.
+        In an increasingly globalized economy, we tackle challenges confronted by
+        the small business community across geographic boundaries. Although times
+        have changed since the SBA was founded in 1953, the Agency''s mission - to
+        promote the growth of small business - has not. Today, SBA is more vital than
+        ever. We work in collaboration with partner organizations and use cutting-edge
+        technologies and well-tested best practices to multiply our impact on small
+        businesses. America''s 28 million small businesses are the engine of job creation
+        and economic growth in this country, creating nearly two out of every three
+        new jobs in the United States and employing over half the nation''s workforce.
+        SBA ensures that these businesses have the tools and resources required to
+        start and expand their operations, and create jobs that support a growing
+        economy and strengthen America''s middle class.","TravelCode":"1","ApplyOnlineUrl":"https://apply.usastaffing.gov/Application/Apply","DetailStatusUrl":"https://apply.usastaffing.gov/Application/ApplicationStatus"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"514440600","MatchedObjectDescriptor":{"PositionID":"19-006-CS-DEU","PositionTitle":"Lender
+        Relations Specialist","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/514440600","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/514440600?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Wichita,
+        Kansas","PositionLocation":[{"LocationName":"Wichita, Kansas","CountryCode":"United
+        States","CountrySubDivisionCode":"Kansas","CityName":"Wichita, Kansas","Longitude":-97.33558,"Latitude":37.68698}],"OrganizationName":"Small
+        Business Administration","DepartmentName":"Other Agencies and Independent
+        Organizations","JobCategory":[{"Name":"General Business And Industry","Code":"1101"}],"JobGrade":[{"Code":"GS"}],"PositionSchedule":[{"Name":"Full-Time","Code":"1"}],"PositionOfferingType":[{"Name":"Permanent","Code":"15317"}],"QualificationSummary":"GS-11:
+        One year of specialized experience, equivalent to the GS-09 grade level in
+        the Federal service, obtained in either the private or public sector performing
+        the following duties with minimal supervision: assisting in commercial or
+        business loan proposal development, packaging, and structuring; and assisting
+        with marketing lending programs and services to external customers through
+        outreach activities; and assisting with conducting formal training or professional
+        development; commercial lending experience; and assisting with the growth
+        and development of a customer base; and using a variety of software applications
+        and technologies in all aspects of the job. These qualifications must be clearly
+        referenced in your resume. GS-12: One year of specialized experience, equivalent
+        to the GS-11 grade level in the Federal service, obtained in either the private
+        or public sector performing the following duties independently: commercial
+        or business loan proposal development, packaging, and structuring; and marketing
+        lending programs and services to external customers through outreach activities;
+        and conducting formal training or professional development; and in the growth
+        and development of a customer base; commercial lending experience; and using
+        a variety of software applications and technologies in all aspects of the
+        job. These qualifications must be clearly referenced in your resume.\nAdditional
+        information on the qualification requirements is outlined in the OPM Qualifications
+        Standards Handbook of General Schedule Positions. It is available for your
+        review on OPM''s Qualifications web site. Experience refers to paid and unpaid
+        experience, including volunteer work done through National Service programs
+        (e.g. Peace Corps, AmeriCorps) and other organizations (e.g. professional;
+        philanthropic; religious; spiritual; community, student, social). Volunteer
+        work helps build critical competencies, knowledge, and skills and can provide
+        valuable training and experience that translates directly to paid employment.
+        You will receive credit for all qualifying experience, including volunteer
+        experience. All qualification requirements must be met by 11:59 pm (Eastern
+        Time) on the closing date of this vacancy announcement.","PositionRemuneration":[{"MinimumRange":"61218.00","MaximumRange":"95388.00","RateIntervalCode":"Per
+        Year"}],"PositionStartDate":"2018-10-19","PositionEndDate":"2018-11-02","PublicationStartDate":"2018-10-19","ApplicationCloseDate":"2018-11-02","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"","WhoMayApply":{"Name":"","Code":""},"LowGrade":"11","HighGrade":"12","PromotionPotential":"12","HiringPath":["public"],"TotalOpenings":"1","AgencyMarketingStatement":"Are
+        you excited by the idea of helping to support $39 billion in small business
+        financing and setting proper conditions to stimulate America''s economic growth?
+        SBA has been a leader in small business development for more than 60 years.
+        In an increasingly globalized economy, we tackle challenges confronted by
+        the small business community across geographic boundaries. Although times
+        have changed since the SBA was founded in 1953, the Agency''s mission-to promote
+        the growth of small business-has not. Today, SBA is more vital than ever.
+        We work in collaboration with partner organizations and using cutting-edge
+        technologies and well-tested best practices to multiply our impact on small
+        businesses. America''s 28 million small businesses are the engine of job creation
+        and economic growth in this country, creating nearly two out of every three
+        new jobs in the United States and employing over half the nation''s workforce.
+        SBA ensures that these businesses have the tools and resources required to
+        start and expand their operations, and create jobs that support a growing
+        economy and strengthen America''s middle class. The SBA and entrepreneurs
+        drive American competitiveness and help grow the economy. Picture yourself
+        at SBA.","TravelCode":"2","ApplyOnlineUrl":"https://apply.usastaffing.gov/Application/Apply","DetailStatusUrl":"https://apply.usastaffing.gov/Application/ApplicationStatus"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"514446500","MatchedObjectDescriptor":{"PositionID":"DE-10338309-19-MLJ","PositionTitle":"Student
+        Trainee (Investigations)","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/514446500","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/514446500?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Houston,
+        Texas","PositionLocation":[{"LocationName":"Houston, Texas","CountryCode":"United
+        States","CountrySubDivisionCode":"Texas","CityName":"Houston, Texas","Longitude":-95.36978,"Latitude":29.76045}],"OrganizationName":"Small
+        Business Administration","DepartmentName":"Other Agencies and Independent
+        Organizations","JobCategory":[{"Name":"Investigation Student Trainee","Code":"1899"}],"JobGrade":[{"Code":"GS"}],"PositionSchedule":[{"Name":"Full-Time","Code":"1"}],"PositionOfferingType":[{"Name":"One
+        year","Code":"15318"}],"QualificationSummary":"GS-1899-03: Completion of 1
+        full academic year of post-high school study OR Successful completion of the
+        requirements for an Associate''s degree (please verify by attaching a copy
+        of your transcripts). GS-1899-04: Completion of 2 academic years of post-high
+        school study OR Successful completion of the requirements for an Associate''s
+        degree (please verify by attaching a copy of your college transcripts). Academic
+        year of undergraduate education (post-high school study): A minimum of 30
+        semester or 45 quarter hours at an accredited college or university; or\nA
+        minimum of 36 weeks at an accredited business, technical, vocational, or qualifying
+        educational institution for at least 20 classroom hours per week. Additional
+        information on the qualification requirements is outlined in the OPM Qualifications
+        Standards Handbook of General Schedule Positions. It is available for your
+        review on OPM''s Qualifications web site. All qualification requirements must
+        be met by 11:59 pm (Eastern Time) on the closing date of this vacancy announcement.","PositionRemuneration":[{"MinimumRange":"30359.00","MaximumRange":"44303.00","RateIntervalCode":"Per
+        Year"}],"PositionStartDate":"2018-10-19","PositionEndDate":"2018-11-02","PublicationStartDate":"2018-10-19","ApplicationCloseDate":"2018-11-02","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"","WhoMayApply":{"Name":"","Code":""},"LowGrade":"3","HighGrade":"4","PromotionPotential":"None","HiringPath":["student"],"TotalOpenings":"1","AgencyMarketingStatement":"Are
+        you excited by the idea of helping to support $39 billion in small business
+        financing and setting proper conditions to stimulate America''s economic growth?
+        SBA has been a leader in small business development for more than 60 years.
+        In an increasingly globalized economy, we tackle challenges confronted by
+        the small business community across geographic boundaries. Although times
+        have changed since the SBA was founded in 1953, the Agency''s mission-to promote
+        the growth of small business-has not. Today, SBA is more vital than ever.
+        We work in collaboration with partner organizations and using cutting-edge
+        technologies and well-tested best practices to multiply our impact on small
+        businesses. America''s 28 million small businesses are the engine of job creation
+        and economic growth in this country, creating nearly two out of every three
+        new jobs in the United States and employing over half the nation''s workforce.
+        SBA ensures that these businesses have the tools and resources required to
+        start and expand their operations, and create jobs that support a growing
+        economy and strengthen America''s middle class. The SBA and entrepreneurs
+        drive American competitiveness and help grow the economy. Picture yourself
+        at SBA.","TravelCode":"0","ApplyOnlineUrl":"https://apply.usastaffing.gov/Application/Apply","DetailStatusUrl":"https://apply.usastaffing.gov/Application/ApplicationStatus"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"514452800","MatchedObjectDescriptor":{"PositionID":"DE-019-004-HQ-10336385","PositionTitle":"Supervisory
+        Public Affairs Specialist","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/514452800","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/514452800?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Washington
+        DC, District of Columbia","PositionLocation":[{"LocationName":"Washington
+        DC, District of Columbia","CountryCode":"United States","CountrySubDivisionCode":"District
+        of Columbia","CityName":"Washington DC, District of Columbia","Longitude":-77.032,"Latitude":38.8904}],"OrganizationName":"Small
+        Business Administration","DepartmentName":"Other Agencies and Independent
+        Organizations","JobCategory":[{"Name":"Public Affairs","Code":"1035"}],"JobGrade":[{"Code":"GS"}],"PositionSchedule":[{"Name":"Full-Time","Code":"1"}],"PositionOfferingType":[{"Name":"Permanent","Code":"15317"}],"QualificationSummary":"Generally,
+        time in Non-Pay status is not creditable towards the specialized experience
+        requirement listed below.\nYou must meet all qualification requirements by
+        the closing date of this announcement. Experience: To receive credit, you
+        must indicate the month and year as well as the average hours worked per week
+        for each employer. Average work hours must be stated on the resume to quantify
+        each period of work experience or that experience will not be credited toward
+        meeting the specialized experience requirement.\nYou must address the specific
+        specialized experience required for each grade level of this position on your
+        resume or application or you will be rated \"Ineligible\" for that grade level.
+        GS-15: To qualify you must have at least 1 full year (52 weeks) of specialized
+        experience equivalent in difficulty and complexity to the GS-14 level in the
+        Federal service that has equipped you with the particular knowledge, skill,
+        and ability to perform successfully in this position. This experience may
+        have been gained in a Non-Federal service position. In addition, this Specialized
+        Experience must demonstrate the following: *Leading or supervising employees
+        or projects in a disaster or emergency relief organization/program. (This
+        experience must involve activities pertaining to planning, socializing, and
+        maintaining preparedness for disasters or emergencies.)\n*Performing outreach
+        and coordination activities involving multiple agencies or organizations.\n*Reviewing/approving
+        or preparing press or news releases, speeches or talking points, and feature
+        and photo material for the media or public appearances; and\n*Acting as the
+        spokesperson for an organization or program.\n*Evaluating a program to identify
+        strengths, monitor progress, and make recommendations for improvement","PositionRemuneration":[{"MinimumRange":"134789.00","MaximumRange":"164200.00","RateIntervalCode":"Per
+        Year"}],"PositionStartDate":"2018-10-19","PositionEndDate":"2018-11-02","PublicationStartDate":"2018-10-19","ApplicationCloseDate":"2018-11-02","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"","WhoMayApply":{"Name":"","Code":""},"LowGrade":"15","HighGrade":"15","PromotionPotential":"15","HiringPath":["public"],"AgencyMarketingStatement":"Are
+        you excited by the idea of helping to support $39 billion in small business
+        financing and setting proper conditions to stimulate America''s economic growth?
+        SBA has been a leader in small business development for more than 60 years.
+        In an increasingly globalized economy, we tackle challenges confronted by
+        the small business community across geographic boundaries. Although times
+        have changed since the SBA was founded in 1953, the Agency''s mission - to
+        promote the growth of small business - has not. Today, SBA is more vital than
+        ever. We work in collaboration with partner organizations and use cutting-edge
+        technologies and well-tested best practices to multiply our impact on small
+        businesses. America''s 28 million small businesses are the engine of job creation
+        and economic growth in this country, creating nearly two out of every three
+        new jobs in the United States and employing over half the nation''s workforce.
+        SBA ensures that these businesses have the tools and resources required to
+        start and expand their operations, and create jobs that support a growing
+        economy and strengthen America''s middle class.","TravelCode":"1","ApplyOnlineUrl":"https://apply.usastaffing.gov/Application/Apply","DetailStatusUrl":"https://apply.usastaffing.gov/Application/ApplicationStatus"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"514603500","MatchedObjectDescriptor":{"PositionID":"18-388D-LAC-DEU
+        (10339547)","PositionTitle":"Program Analyst","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/514603500","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/514603500?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Washington
+        DC, District of Columbia","PositionLocation":[{"LocationName":"Washington
+        DC, District of Columbia","CountryCode":"United States","CountrySubDivisionCode":"District
+        of Columbia","CityName":"Washington DC, District of Columbia","Longitude":-77.032,"Latitude":38.8904}],"OrganizationName":"Small
+        Business Administration","DepartmentName":"Other Agencies and Independent
+        Organizations","JobCategory":[{"Name":"Management And Program Analysis","Code":"0343"}],"JobGrade":[{"Code":"GS"}],"PositionSchedule":[{"Name":"Full-Time","Code":"1"}],"PositionOfferingType":[{"Name":"Permanent","Code":"15317"}],"QualificationSummary":"MINIMUM
+        QUALIFICATIONS: To be considered minimally qualified for this position, you
+        must demonstrate that you have the required specialized experience and/or
+        education for the respective grade level in which you are applying. This experience
+        must be clearly articulated in your resume. GS-09: Specialized Experience:
+        One year of specialized experience (equivalent to the GS-7 grade level in
+        the Federal service) obtained in either the private or public sector that
+        includes: assisting in reading and writing SQL queries for assigned program
+        areas; AND assisting in manipulating large data sets, using data analytic
+        tools and reporting applications such as relational databases, MS Access and
+        MS Excel (to include Excel Pivot Tables), Tableau, SharePoint, Microsoft Reporting
+        Services; AND assisting in designing or developing reporting and dashboards
+        to be used for research in the examination of program office related activities;
+        AND evaluating, analyzing or financial interpreting data from various database
+        systems to determine program effectiveness. OR Education: Successful completion
+        of at least a Master''s or equivalent graduate degree or (2) full years of
+        progressively higher level graduate education leading to such a degree in
+        a field which demonstrates the knowledge, skills, and abilities necessary
+        to do the work of the position or LL.B. or J.D. , if related. You must include
+        transcripts. OR Combination of Education and Experience: A combination of
+        education and experience may be used to qualify for this position. To combine
+        education and experience, first divide your semester hours of graduate education
+        beyond 18 semester hours by 18. (If your education is currently described
+        in quarter hours, convert them to semester hours by dividing by 1.5). Then
+        divide your total months of qualifying specialized experience by 12. Finally,
+        add the two percentages together. The total percentage must equal at least
+        100 percent to qualify. You must include transcripts. Additional information
+        on the qualification requirements is outlined in the OPM Qualifications Standards
+        Handbook of General Schedule Positions. It is available for your review on
+        OPM''s Qualifications web site. Experience refers to paid and unpaid experience,
+        including volunteer work done through National Service programs (e.g. Peace
+        Corps, AmeriCorps) and other organizations (e.g. professional; philanthropic;
+        religious; spiritual; community, student, social). Volunteer work helps build
+        critical competencies, knowledge, and skills and can provide valuable training
+        and experience that translates directly to paid employment. You will receive
+        credit for all qualifying experience, including volunteer experience. All
+        qualification requirements must be met by 11:59 pm (Eastern Time) on the closing
+        date of this vacancy announcement.","PositionRemuneration":[{"MinimumRange":"56233.00","MaximumRange":"106012.00","RateIntervalCode":"Per
+        Year"}],"PositionStartDate":"2018-10-24","PositionEndDate":"2018-11-06","PublicationStartDate":"2018-10-24","ApplicationCloseDate":"2018-11-06","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"","WhoMayApply":{"Name":"","Code":""},"LowGrade":"9","HighGrade":"9","PromotionPotential":"12","HiringPath":["public"],"TotalOpenings":"1","AgencyMarketingStatement":"Are
+        you excited by the idea of helping to support $39 billion in small business
+        financing and setting proper conditions to stimulate America''s economic growth?
+        SBA has been a leader in small business development for more than 60 years.
+        In an increasingly globalized economy, we tackle challenges confronted by
+        the small business community across geographic boundaries. Although times
+        have changed since the SBA was founded in 1953, the Agency''s mission-to promote
+        the growth of small business-has not. Today, SBA is more vital than ever.
+        We work in collaboration with partner organizations and using cutting-edge
+        technologies and well-tested best practices to multiply our impact on small
+        businesses. America''s 28 million small businesses are the engine of job creation
+        and economic growth in this country, creating nearly two out of every three
+        new jobs in the United States and employing over half the nation''s workforce.
+        SBA ensures that these businesses have the tools and resources required to
+        start and expand their operations, and create jobs that support a growing
+        economy and strengthen America''s middle class. The SBA and entrepreneurs
+        drive American competitiveness and help grow the economy. Picture yourself
+        at SBA.","TravelCode":"1","ApplyOnlineUrl":"https://apply.usastaffing.gov/Application/Apply","DetailStatusUrl":"https://apply.usastaffing.gov/Application/ApplicationStatus"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"515174200","MatchedObjectDescriptor":{"PositionID":"19-014-CL-DEU","PositionTitle":"General
+        Attorney","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/515174200","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/515174200?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Hato
+        Rey, Puerto Rico","PositionLocation":[{"LocationName":"Hato Rey, Puerto Rico","CountryCode":"United
+        States","CountrySubDivisionCode":"Puerto Rico","CityName":"Hato Rey, Puerto
+        Rico","Longitude":-66.05612,"Latitude":18.42488}],"OrganizationName":"Small
+        Business Administration","DepartmentName":"Other Agencies and Independent
+        Organizations","JobCategory":[{"Name":"Attorney","Code":"0905"}],"JobGrade":[{"Code":"GS"}],"PositionSchedule":[{"Name":"Full-Time","Code":"1"}],"PositionOfferingType":[{"Name":"Permanent","Code":"15317"}],"QualificationSummary":"GS-13:
+        Four or more years of professional legal experience, equivalent to the GS-12
+        grade level in the Federal service, obtained in either the private or public
+        sector in one or more of the following area: government-guaranteed lending,
+        banking and financial law, litigation and bankruptcy and real estate law and
+        closings, administrative law and ethics. Additional information on the qualification
+        requirements is outlined in the OPM Qualifications Standards Handbook of General
+        Schedule Positions. It is available for your review on OPM''s Qualifications
+        web site. Experience refers to paid and unpaid experience, including volunteer
+        work done through National Service programs (e.g. Peace Corps, AmeriCorps)
+        and other organizations (e.g. professional; philanthropic; religious; spiritual;
+        community, student, social). Volunteer work helps build critical competencies,
+        knowledge, and skills and can provide valuable training and experience that
+        translates directly to paid employment. You will receive credit for all qualifying
+        experience, including volunteer experience. Selective Placement Factors: This
+        position requires a special qualification that has been determined to be essential
+        to perform the duties and will be used as a screen out element. Those who
+        do not provide evidence they possess the following selective factor(s) will
+        be rated not qualified. Active member of the Federal bar\nAdmitted to the
+        Bar of the U.S. District Court for the District of Puerto Rico\nObtained notarial
+        license for Puerto Rico All qualification requirements must be met by 11:59
+        pm (Eastern Time) on the closing date of this vacancy announcement.","PositionRemuneration":[{"MinimumRange":"87252.00","MaximumRange":"113428.00","RateIntervalCode":"Per
+        Year"}],"PositionStartDate":"2018-10-29","PositionEndDate":"2018-11-09","PublicationStartDate":"2018-10-29","ApplicationCloseDate":"2018-11-09","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"","WhoMayApply":{"Name":"","Code":""},"LowGrade":"13","HighGrade":"13","PromotionPotential":"13","HiringPath":["public"],"TotalOpenings":"1","AgencyMarketingStatement":"Are
+        you excited by the idea of helping to support $39 billion in small business
+        financing and setting proper conditions to stimulate America''s economic growth?
+        SBA has been a leader in small business development for more than 60 years.
+        In an increasingly globalized economy, we tackle challenges confronted by
+        the small business community across geographic boundaries. Although times
+        have changed since the SBA was founded in 1953, the Agency''s mission-to promote
+        the growth of small business-has not. Today, SBA is more vital than ever.
+        We work in collaboration with partner organizations and using cutting-edge
+        technologies and well-tested best practices to multiply our impact on small
+        businesses. America''s 28 million small businesses are the engine of job creation
+        and economic growth in this country, creating nearly two out of every three
+        new jobs in the United States and employing over half the nation''s workforce.
+        SBA ensures that these businesses have the tools and resources required to
+        start and expand their operations, and create jobs that support a growing
+        economy and strengthen America''s middle class. The SBA and entrepreneurs
+        drive American competitiveness and help grow the economy. Picture yourself
+        at SBA.","TravelCode":"2","ApplyOnlineUrl":"https://apply.usastaffing.gov/Application/Apply","DetailStatusUrl":"https://apply.usastaffing.gov/Application/ApplicationStatus"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"515350000","MatchedObjectDescriptor":{"PositionID":"DE-19-005-HQ-10339142","PositionTitle":"IT
+        Project Manager","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/515350000","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/515350000?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Washington
+        DC, District of Columbia","PositionLocation":[{"LocationName":"Washington
+        DC, District of Columbia","CountryCode":"United States","CountrySubDivisionCode":"District
+        of Columbia","CityName":"Washington DC, District of Columbia","Longitude":-77.032,"Latitude":38.8904}],"OrganizationName":"Small
+        Business Administration","DepartmentName":"Other Agencies and Independent
+        Organizations","JobCategory":[{"Name":"Information Technology Management","Code":"2210"}],"JobGrade":[{"Code":"GS"}],"PositionSchedule":[{"Name":"Full-Time","Code":"1"}],"PositionOfferingType":[{"Name":"Multiple
+        Appointment Types","Code":"15327"}],"QualificationSummary":"REQUIRED CERTIFICATION:
+        Federal Acquisition Certification (FAC) Contracting Officer''s Representative
+        (COR) Level II or higher Certification is required. In addition, selectees
+        with FAC COR Level II Certification must obtain FAC COR Level III Certification
+        within 6 months of entry on duty. If this Level III Certification is not obtained
+        within 6 months, the employee may be subject to removal from the position
+        Generally, time in Non-Pay status is not creditable towards the specialized
+        experience requirement listed below.\nYou must meet all qualification requirements
+        by the closing date of this announcement. Experience: To receive credit, you
+        must indicate the month and year as well as the average hours worked per week
+        for each employer. Average work hours must be stated on the resume to quantify
+        each period of work experience or that experience will not be credited toward
+        meeting the specialized experience requirement.\nYou must address the specific
+        specialized experience required for each grade level of this position on your
+        resume or application or you will be rated \"Ineligible\" for that grade level.
+        For all positions individuals must have IT-related experience demonstrating
+        each of the four competencies listed below:\n1. Attention to Detail - Is thorough
+        when performing work and conscientious about attending to detail.\n2. Customer
+        Service - Works with clients and customers (that is, any individuals who use
+        or receive the services or products that your work unit produces, including
+        the general public, individuals who work in the agency, other agencies, or
+        organizations outside the Government) to assess their needs, provide information
+        or assistance, resolve their problems, or satisfy their expectations; knows
+        about available products and services; is committed to providing quality products
+        and services.\n3. Oral Communication - Expresses information (for example,
+        ideas or facts) to individuals or groups effectively, taking into account
+        the audience and nature of the information (for example, technical, sensitive,
+        controversial); makes clear and convincing oral presentations; listens to
+        others, attends to nonverbal cues, and responds appropriately.\n4. Problem
+        Solving - Identifies problems; determines accuracy and relevance of information;
+        uses sound judgment to generate and evaluate alternatives, and to make recommendations.
+        GS-14: To qualify you must have at least 1 full year (52 weeks) of specialized
+        experience equivalent in difficulty and complexity to the GS-13 level in the
+        Federal service that has equipped you with the particular knowledge, skill,
+        and ability to perform successfully in this position. This experience may
+        have been gained in a Non-Federal service position. In addition, this Specialized
+        Experience must demonstrate the following: *Initiating, planning, and managing
+        information technology projects in support of enterprise software development
+        and implementation;\n*Serving as a Contracting Officer Representative (COR)
+        for contracts supporting a major information technology investment; and\n*Participating
+        in the project governance process for an Information Technology portfolio.","PositionRemuneration":[{"MinimumRange":"114590.00","MaximumRange":"148967.00","RateIntervalCode":"Per
+        Year"}],"PositionStartDate":"2018-10-29","PositionEndDate":"2018-11-09","PublicationStartDate":"2018-10-29","ApplicationCloseDate":"2018-11-09","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"","WhoMayApply":{"Name":"","Code":""},"LowGrade":"14","HighGrade":"14","PromotionPotential":"14","HiringPath":["public"],"TotalOpenings":"1","AgencyMarketingStatement":"Are
+        you excited by the idea of helping to support $39 billion in small business
+        financing and setting proper conditions to stimulate America''s economic growth?
+        SBA has been a leader in small business development for more than 60 years.
+        In an increasingly globalized economy, we tackle challenges confronted by
+        the small business community across geographic boundaries. Although times
+        have changed since the SBA was founded in 1953, the Agency''s mission - to
+        promote the growth of small business - has not. Today, SBA is more vital than
+        ever. We work in collaboration with partner organizations and use cutting-edge
+        technologies and well-tested best practices to multiply our impact on small
+        businesses. America''s 28 million small businesses are the engine of job creation
+        and economic growth in this country, creating nearly two out of every three
+        new jobs in the United States and employing over half the nation''s workforce.
+        SBA ensures that these businesses have the tools and resources required to
+        start and expand their operations, and create jobs that support a growing
+        economy and strengthen America''s middle class. By applying for this position
+        with SBA''s Office of Disaster Assistance, you can enjoy challenging but satisfying
+        work and join a highly motivated and diverse team that helps families and
+        businesses rebuild their lives after a disaster.","TravelCode":"1","ApplyOnlineUrl":"https://apply.usastaffing.gov/Application/Apply","DetailStatusUrl":"https://apply.usastaffing.gov/Application/ApplicationStatus"},"IsRadialSearch":false}},"RelevanceRank":0.0}],"UserArea":{"NumberOfPages":"78","IsRadialSearch":false}}}'
+    http_version: 
+  recorded_at: Wed, 31 Oct 2018 16:21:44 GMT
 recorded_with: VCR 4.0.0
