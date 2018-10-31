@@ -115,15 +115,8 @@ class GovboxSet
   def build_jobs_search_options
     jobs_options = { Keyword: @query, ResultsPerPage: 10 }
     org_hash = { Organization: @affiliate.agency&.joined_organization_codes }
-    jobs_options.merge!(org_hash) if org_hash[:Organization].present?
-
-    #extract location_name from @geoip_info
-    if @geoip_info.present?
-      location_name = "#{@geoip_info.city_name if @geoip_info.country_code3 == "USA"}, "\
-                      "#{@geoip_info.real_region_name}, "\
-                      "#{@geoip_info.country_name}".gsub(/^,/,'')
-      jobs_options.merge!(LocationName: location_name)
-    end
+    jobs_options.merge!(org_hash)
+    jobs_options.merge!(LocationName: @geoip_info&.location_name)
     jobs_options.compact
   end
 
