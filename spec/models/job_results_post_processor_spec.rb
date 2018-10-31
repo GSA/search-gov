@@ -15,6 +15,7 @@ describe JobResultsPostProcessor do
     expect(result.url).to eq 'https://www.usajobs.gov:443/GetJob/ViewDetails/390086900'
     expect(result.id).to eq 'FAR-F09-P001'
     expect(result.locations.first).to eq 'Fargo, North Dakota'
+    expect(result.rate_interval_code).to eq 'Per Hour'
   end
 
   it 'converts the salary ranges to floats' do
