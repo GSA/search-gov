@@ -11,4 +11,3 @@ Then /I should see an application deadline/ do
   deadline_regex = /Apply by [[:alpha:]]+ \d{1,2}, \d{4}/
   page.should have_selector('.job-dates', text: deadline_regex)
 end
-
