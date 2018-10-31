@@ -2,6 +2,12 @@ require 'spec_helper'
 
 describe Jobs do
   describe '.search(options)' do
+    subject(:search) { Jobs.search(Keyword: 'jobs') }
+
+    it 'returns results' do
+      expect(search.search_result.search_result_count).to eq 10
+    end
+
     context "when there is some problem" do
       before do
         stub_request(:get, %r{data.usajobs.gov}).to_raise(StandardError)
@@ -10,7 +16,7 @@ describe Jobs do
       it "should log any errors that occur and return nil" do
         expect(Rails.logger).to receive(:error).
           with(/Trouble fetching jobs information/)
-        expect(Jobs.search(Keyword: 'jobs')).to be_nil
+        expect(search).to be_nil
       end
     end
   end
