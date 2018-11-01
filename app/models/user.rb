@@ -214,7 +214,8 @@ class User < ActiveRecord::Base
   end
 
   def log_note_for_user(added_or_removed, to_or_from, site, source)
-    note = "#{source} #{added_or_removed} User #{id}, #{email}, #{to_or_from} Affiliate #{site.id}, #{site.display_name} [#{site.name}]."
+    note = "#{source} #{added_or_removed} User #{id}, #{email}, #{to_or_from}
+            Affiliate #{site.id}, #{site.display_name} [#{site.name}].".squish
     Rails.logger.info(note)
   end
 

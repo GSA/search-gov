@@ -561,7 +561,8 @@ describe User do
 
     before do
       expect(Rails.logger).to receive(:info).with(
-        "Someone added User #{user.id}, affiliate_manager@fixtures.org, to Affiliate #{site.id}, Another Gov Site [another.gov]."
+        "Someone added User #{user.id}, affiliate_manager@fixtures.org,
+        to Affiliate #{site.id}, Another Gov Site [another.gov].".squish
       )
     end
 
@@ -579,7 +580,8 @@ describe User do
 
     before do
       expect(Rails.logger).to receive(:info).with(
-        "Someone removed User #{user.id}, affiliate_manager@fixtures.org, from Affiliate #{site.id}, NPS Site [nps.gov]."
+        "Someone removed User #{user.id}, affiliate_manager@fixtures.org,
+        from Affiliate #{site.id}, NPS Site [nps.gov].".squish
       )
     end
 

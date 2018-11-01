@@ -37,7 +37,12 @@ describe 'User rake tasks' do
     end
 
     it 'logs the change' do
-      expected_message = "User #{user.id}, #{user.email}, is no longer associated with any sites, so their approval status has been set to \"not_approved\"."
+      expected_message = <<~MESSAGE.squish
+        User #{user.id}, affiliate_manager_with_no_affiliates@fixtures.org,
+        is no longer associated with any sites,
+        so their approval status has been set to "not_approved".
+      MESSAGE
+
       expect(Rails.logger).to receive(:info).with(expected_message)
       @rake[task_name].invoke
     end
