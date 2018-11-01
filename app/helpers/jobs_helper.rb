@@ -69,17 +69,17 @@ module JobsHelper
 
   def more_jobs_title_and_url(search)
     if search.affiliate.has_organization_codes?
-      more_agency_jobs_title_and_url search.affiliate.agency, search.jobs.first.id
+      more_agency_jobs_title_and_url search.affiliate.agency
     else
       more_federal_jobs_title_and_url
     end
   end
 
-  def more_agency_jobs_title_and_url(agency, job_id)
+  def more_agency_jobs_title_and_url(agency)
     title = "#{t :'searches.more_agency_job_openings', agency: agency.abbreviation || agency.name}"
     title << " #{t :'searches.on_usajobs'}"
 
-    url = url_for_more_agency_jobs agency, job_id
+    url = url_for_more_agency_jobs agency
     [title, url]
   end
 
@@ -89,15 +89,9 @@ module JobsHelper
     [title, url]
   end
 
-  def url_for_more_agency_jobs(agency, job_id)
-    case job_id
-    when /^usajobs/
-      organization_codes = agency.joined_organization_codes
-      "https://www.usajobs.gov/JobSearch/Search/GetResults?organizationid=#{organization_codes}&PostingChannelID=USASearch&ApplicantEligibility=all"
-    when /^ng:/
-      ng_agency = job_id.split(':')[1]
-      "http://agency.governmentjobs.com/#{ng_agency}/default.cfm"
-    end
+  def url_for_more_agency_jobs(agency)
+    organization_codes = agency.joined_organization_codes
+    "https://www.usajobs.gov/JobSearch/Search/GetResults?organizationid=#{organization_codes}&PostingChannelID=USASearch&ApplicantEligibility=all"
   end
 
   def job_openings_header(agency)
