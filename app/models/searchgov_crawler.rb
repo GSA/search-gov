@@ -21,7 +21,7 @@ class SearchgovCrawler
   end
 
   def crawl
-    Rails.logger.warn(disallowed_warning) unless @robotex.allowed? base_url
+    Rails.logger.warn(disallowed_warning) unless robotex.allowed? base_url
 
     begin
       Medusa.crawl(base_url, @medusa_opts) do |medusa|
