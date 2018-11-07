@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ApiBingDocsSearch, vcr: { re_record_interval: 4.months } do
+describe ApiBingDocsSearch, vcr: { re_record_interval: 6.months } do
   fixtures :affiliates
 
   let(:affiliate) { affiliates(:usagov_affiliate) }
