@@ -19,10 +19,15 @@ describe SearchgovCrawler do
       </html>
     HTML
   end
+  let(:robots_txt) { '' }
 
   before do
     stub_request(:get, base_url).
       to_return(status: 200, body: html, headers: { content_type: 'text/html' })
+    stub_request(:get, "#{base_url}robots.txt").
+      to_return(status: [200, 'OK'],
+                headers: { content_type: 'text/plain' },
+                body: robots_txt)
   end
 
   describe '.crawl' do
@@ -49,12 +54,7 @@ describe SearchgovCrawler do
     describe 'options' do
       describe 'crawl delay' do
         context 'when a crawl delay is specified in robots.txt' do
-          before do
-            stub_request(:get, 'http://www.agency.gov/robots.txt').
-              to_return(status: [200, 'OK'],
-                        headers: { content_type: 'text/plain' },
-                        body: "User-agent: *\nCrawl-delay: 10")
-          end
+          let(:robots_txt) { "User-agent: *\nCrawl-delay: 10" }
 
           it 'sets the specified delay' do
             Medusa.should_receive(:crawl).
@@ -313,6 +313,16 @@ describe SearchgovCrawler do
             crawl
           end
         end
+      end
+    end
+
+    context 'when robots.txt disallows everything' do
+      let(:robots_txt) { "User-agent: *\nDisallow: /" }
+
+      it 'logs a warning' do
+        message = 'Warning: www.agency.gov is not crawlable based on the rules in its robots.txt.'
+        expect(Rails.logger).to receive(:warn).with message
+        crawl
       end
     end
   end
