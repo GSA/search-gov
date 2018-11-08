@@ -101,7 +101,7 @@ module JobsHelper
   def url_for_more_agency_jobs(agency, job_id)
     case job_id
     when /^usajobs/
-      organization_codes = agency.joined_organization_codes.gsub(/\;/,"&a=")
+      organization_codes = agency.joined_organization_codes('&a=')
       "https://www.usajobs.gov/Search/Results?a=#{organization_codes}"
     when /^ng:/
       ng_agency = job_id.split(':')[1]
