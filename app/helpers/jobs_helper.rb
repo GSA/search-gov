@@ -94,7 +94,7 @@ module JobsHelper
 
   def more_federal_jobs_title_and_url
     title = t :'searches.more_federal_job_openings'
-    url = 'https://www.usajobs.gov/Search/Results?hp=public&p=1'
+    url = 'https://www.usajobs.gov/Search/Results?hp=public'
     [title, url]
   end
 
@@ -102,7 +102,7 @@ module JobsHelper
     case job_id
     when /^usajobs/
       organization_codes = agency.joined_organization_codes.gsub(/\;/,"&a=")
-      "https://www.usajobs.gov/Search/Results?a=#{organization_codes}&p=1"
+      "https://www.usajobs.gov/Search/Results?a=#{organization_codes}"
     when /^ng:/
       ng_agency = job_id.split(':')[1]
       "http://agency.governmentjobs.com/#{ng_agency}/default.cfm"

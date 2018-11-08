@@ -176,7 +176,7 @@ describe "searches/index.html.haml" do
 
         expect(rendered).not_to have_content('Zero Money Research Job')
 
-        expect(rendered).to have_selector('a[href="https://www.usajobs.gov/Search/Results?hp=public&p=1"]',
+        expect(rendered).to have_selector('a[href="https://www.usajobs.gov/Search/Results?hp=public"]',
                                           text: 'More federal job openings on USAJobs.gov')
       end
 
@@ -186,7 +186,7 @@ describe "searches/index.html.haml" do
 
         it 'should show links with Spanish translations' do
           render
-          expect(rendered).to have_selector('a[href="https://www.usajobs.gov/Search/Results?hp=public&p=1"]',
+          expect(rendered).to have_selector('a[href="https://www.usajobs.gov/Search/Results?hp=public"]',
                                             text: 'Más trabajos en el gobierno federal en USAJobs.gov')
         end
       end
