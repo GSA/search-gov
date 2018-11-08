@@ -102,7 +102,7 @@ module JobsHelper
     case job_id
     when /^usajobs/
       organization_codes = agency.joined_organization_codes('&a=')
-      "https://www.usajobs.gov/Search/Results?a=#{organization_codes}"
+      "https://www.usajobs.gov/Search/Results?a=#{organization_codes}&hp=public"
     when /^ng:/
       ng_agency = job_id.split(':')[1]
       "http://agency.governmentjobs.com/#{ng_agency}/default.cfm"
