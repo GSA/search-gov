@@ -44,7 +44,7 @@ describe JobsHelper do
         allow(search).to receive_message_chain(:affiliate, :agency).and_return(nil)
         expect(helper).to receive(:job_link_with_click_tracking).with(
             'More federal job openings on USAJobs.gov',
-            'https://www.usajobs.gov/JobSearch/Search/GetResults?PostingChannelID=USASearch',
+            'https://www.usajobs.gov/Search/Results?hp=public',
             search.affiliate, 'gov', -1, nil)
         helper.legacy_link_to_more_jobs(search)
       end
@@ -67,7 +67,7 @@ describe JobsHelper do
       it 'should render an organization specific link to usajobs.gov' do
         expect(helper).to receive(:job_link_with_click_tracking).with(
             'More GSA job openings on USAJobs.gov',
-            'https://www.usajobs.gov/JobSearch/Search/GetResults?organizationid=GS;HI&PostingChannelID=USASearch&ApplicantEligibility=all',
+            'https://www.usajobs.gov/Search/Results?a=GS&a=HI&hp=public',
             search.affiliate, 'gov', -1, nil)
         helper.legacy_link_to_more_jobs(search)
       end
@@ -79,7 +79,7 @@ describe JobsHelper do
         it 'should render an organization specific link to usajobs in Spanish' do
           expect(helper).to receive(:job_link_with_click_tracking).with(
               'Más trabajos en GSA en USAJobs.gov',
-              'https://www.usajobs.gov/JobSearch/Search/GetResults?organizationid=GS;HI&PostingChannelID=USASearch&ApplicantEligibility=all',
+              'https://www.usajobs.gov/Search/Results?a=GS&a=HI&hp=public',
               search.affiliate, 'gov', -1, nil)
           helper.legacy_link_to_more_jobs(search)
         end
