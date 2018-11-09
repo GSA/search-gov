@@ -411,18 +411,6 @@ describe SiteCloner do
         expect(cloned_site.available_templates.pluck(:name)).to match_array(['Classic','IRS'])
       end
     end
-
-    it 'pushes to cloned site to Nutshell' do
-      cloned_site = Affiliate.create!(display_name: 'cloned_site', name: 'cloned-site')
-      cloner = SiteCloner.new(affiliates(:basic_affiliate))
-      expect(cloner).to receive(:create_site_shallow_copy).and_return(cloned_site)
-
-      adapter = double(NutshellAdapter)
-      expect(NutshellAdapter).to receive(:new).and_return(adapter)
-      expect(adapter).to receive(:push_site).with(cloned_site)
-
-      cloner.clone
-    end
   end
 
   describe '#create_site_shallow_copy' do
