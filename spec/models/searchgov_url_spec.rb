@@ -127,6 +127,17 @@ describe SearchgovUrl do
         fetch
       end
 
+      context 'when the record is enqueued for reindex' do
+        let(:searchgov_url) do
+          SearchgovUrl.create!(valid_attributes.merge(enqueued_for_reindex: true))
+        end
+
+        it('sets enqueued_for_reindex to false') do
+          expect{ fetch }.to change{ searchgov_url.enqueued_for_reindex }.
+              from(true).to(false)
+        end
+      end
+
       context 'when the record includes a lastmod value' do
         let(:valid_attributes) { { url: url, lastmod: '2018-01-01' } }
 

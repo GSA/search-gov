@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.6.41, for osx10.13 (x86_64)
 --
--- Host: localhost    Database: usasearch_development
+-- Host: 127.0.0.1    Database: usasearch_test
 -- ------------------------------------------------------
 -- Server version	5.6.41
 
