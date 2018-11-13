@@ -31,10 +31,6 @@ describe Sites::SettingsController do
             with('display_name' => 'new name', 'website' => 'search.gov').
             and_return true
 
-        adapter = double(NutshellAdapter)
-        expect(NutshellAdapter).to receive(:new).and_return(adapter)
-        expect(adapter).to receive(:push_site).with(site)
-
         put :update,
             site_id: site.id,
             site: { display_name: 'new name',

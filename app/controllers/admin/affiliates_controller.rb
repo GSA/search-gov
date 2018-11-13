@@ -24,11 +24,10 @@ class Admin::AffiliatesController < Admin::AdminController
     all_columns |= virtual_columns
     config.columns = all_columns
 
-    list_columns = %i(id display_name name website site_domains search_engine nutshell created_at updated_at recent_user_activity)
+    list_columns = %i(id display_name name website site_domains search_engine created_at updated_at recent_user_activity)
     config.list.columns = list_columns
 
     export_columns = [list_columns, all_columns].flatten.uniq
-    export_columns.reject! { |c| [:nutshell].include?(c) }
     actions.add :export
     config.export.columns = export_columns
     config.export.default_deselected_columns = %i(api_access_key
@@ -159,9 +158,5 @@ class Admin::AffiliatesController < Admin::AdminController
 
   def analytics
     redirect_to new_site_queries_path(Affiliate.find params[:id])
-  end
-
-  def after_update_save(record)
-    NutshellAdapter.new.push_site record
   end
 end

@@ -61,14 +61,6 @@ describe Admin::AffiliatesController do
       UserSession.create(users(:affiliate_admin))
     end
 
-    it 'triggers NutshellAdapter#push_site' do
-      adapter = double(NutshellAdapter)
-      allow(NutshellAdapter).to receive(:new) { adapter }
-      expect(adapter).to receive(:push_site).with(affiliate)
-
-      put :update, id: affiliate.id, record: {}
-    end
-
     context 'Active Scaffold configuration' do
       let(:update_columns) { config.update.columns }
       let(:settings_columns) do
