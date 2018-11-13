@@ -1,5 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.6.41, for osx10.13 (x86_64)
 --
+-- Host: 127.0.0.1    Database: usasearch_test
 -- ------------------------------------------------------
 -- Server version	5.6.41
 
@@ -1156,7 +1157,7 @@ CREATE TABLE `searchgov_urls` (
   `updated_at` datetime NOT NULL,
   `searchgov_domain_id` int(11) DEFAULT NULL,
   `lastmod` datetime DEFAULT NULL,
-  `enqueued_for_reindex` tinyint(1) DEFAULT '0',
+  `enqueued_for_reindex` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `index_searchgov_urls_on_url` (`url`(255)),
   KEY `index_searchgov_urls_on_searchgov_domain_id` (`searchgov_domain_id`),
@@ -1562,7 +1563,7 @@ CREATE TABLE `youtube_profiles` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-11-12 16:10:34
+-- Dump completed on 2018-11-13 16:22:36
 INSERT INTO schema_migrations (version) VALUES ('20090818003200');
 
 INSERT INTO schema_migrations (version) VALUES ('20090827135344');

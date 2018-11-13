@@ -3,6 +3,6 @@ class AddEnqueuedForReindexToSearchgovUrls < ActiveRecord::Migration
     add_column :searchgov_urls,
                :enqueued_for_reindex,
                :boolean,
-                default: false
+                default: false, null: false
   end
 end

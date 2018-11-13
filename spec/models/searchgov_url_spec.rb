@@ -14,7 +14,10 @@ describe SearchgovUrl do
          with_options(null: false, limit: 2000) }
     it { is_expected.to have_db_column(:load_time).of_type(:integer) }
     it { is_expected.to have_db_column(:lastmod).of_type(:datetime) }
-    it { is_expected.to have_db_column(:enqueued_for_reindex) }
+    it do  is_expected.to have_db_column(:enqueued_for_reindex).
+        of_type(:boolean).
+        with_options(default: false, null: false)
+    end
     it { is_expected.to have_db_index(:url) }
   end
 
