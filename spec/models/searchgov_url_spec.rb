@@ -36,6 +36,12 @@ describe SearchgovUrl do
         expect(SearchgovUrl.fetch_required.pluck(:url)).
           to eq %w[http://www.agency.gov/new http://www.agency.gov/outdated]
       end
+
+      it 'includes urls that have been enqueued for reindexing' do
+        searchgov_url.update(enqueued_for_reindex: true)
+        expect(SearchgovUrl.fetch_required.pluck(:url)).
+            to include "http://www.agency.gov/boring.html"
+      end
     end
   end
 
