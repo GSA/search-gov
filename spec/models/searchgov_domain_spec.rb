@@ -406,6 +406,17 @@ describe SearchgovDomain do
 
         it { is_expected.to eq ['http://agency.gov/https_sitemap.xml'] }
       end
+
+      context 'when the sitemap is listed twice' do
+        let(:robots_txt) do
+          <<~SITEMAP
+            Sitemap: http://agency.gov/dupe_sitemap.xml
+            Sitemap: http://agency.gov/dupe_sitemap.xml
+          SITEMAP
+        end
+
+        it { is_expected.to eq ['http://agency.gov/dupe_sitemap.xml'] }
+      end
     end
 
     context 'when the domain has sitemap records' do

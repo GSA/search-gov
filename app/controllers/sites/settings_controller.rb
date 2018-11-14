@@ -5,7 +5,6 @@ class Sites::SettingsController < Sites::SetupSiteController
 
   def update
     if @site.update_attributes site_params
-      NutshellAdapter.new.push_site @site
       redirect_to edit_site_setting_path(@site), flash: { success: 'Your site settings have been updated.' }
     else
       render action: :edit

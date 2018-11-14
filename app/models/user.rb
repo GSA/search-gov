@@ -37,15 +37,11 @@ class User < ActiveRecord::Base
   after_update :deliver_email_verification, if: :email_changed?
 
   before_save :set_password_updated_at
-  after_save :push_to_nutshell
   attr_accessor :invited, :skip_welcome_email, :inviter, :require_password,
                 :current_password, :require_password_confirmation
   attr_reader :deliver_welcome_email_on_update
   scope :approved_affiliate, -> { where(:is_affiliate => true, :approval_status => 'approved') }
   scope :not_approved, -> { where(approval_status: 'not_approved') }
-  scope :approved_with_same_nutshell_contact, ->(user) {
-    where(nutshell_id: user.nutshell_id, approval_status: 'approved')
-  }
 
   acts_as_authentic do |c|
     c.crypto_provider = Authlogic::CryptoProviders::BCrypt
@@ -133,27 +129,17 @@ class User < ActiveRecord::Base
     affiliates.collect(&:name).join(',')
   end
 
-  def nutshell_approval_status
-    if User.approved_with_same_nutshell_contact(self).count > 0
-      'approved'
-    else
-      approval_status
-    end
-  end
-
   def send_new_affiliate_user_email(affiliate, inviter_user)
     Emailer.new_affiliate_user(affiliate, self, inviter_user).deliver_now
   end
 
   def add_to_affiliate(affiliate, source)
     affiliate.users << self unless self.affiliates.include? affiliate
-    NutshellAdapter.new.push_site affiliate
     audit_trail_user_added(affiliate, source)
   end
 
   def remove_from_affiliate(affiliate, source)
     Membership.where(user_id: self.id, affiliate_id: affiliate.id).destroy_all
-    NutshellAdapter.new.push_site affiliate
     audit_trail_user_removed(affiliate, source)
   end
 
@@ -215,27 +201,22 @@ class User < ActiveRecord::Base
     self.welcome_email_sent = true if (is_developer? and !skip_welcome_email)
   end
 
-  def push_to_nutshell
-    if contact_name_changed? || email_changed? || approval_status_changed?
-      NutshellAdapter.new.push_user self
-    end
-  end
-
   def send_welcome_to_new_user_email
     Emailer.welcome_to_new_user(self).deliver_now
   end
 
   def audit_trail_user_added(site, source)
-    add_nutshell_note_for_user('added', 'to', site, source)
+    log_note_for_user('added', 'to', site, source)
   end
 
   def audit_trail_user_removed(site, source)
-    add_nutshell_note_for_user('removed', 'from', site, source)
+    log_note_for_user('removed', 'from', site, source)
   end
 
-  def add_nutshell_note_for_user(added_or_removed, to_or_from, site, source)
-    note = "#{source} #{added_or_removed} @[Contacts:#{self.nutshell_id}], #{self.email} #{to_or_from} @[Leads:#{site.nutshell_id}] #{site.display_name} [#{site.name}]."
-    NutshellAdapter.new.new_note(self, note)
+  def log_note_for_user(added_or_removed, to_or_from, site, source)
+    note = "#{source} #{added_or_removed} User #{id}, #{email}, #{to_or_from}
+            Affiliate #{site.id}, #{site.display_name} [#{site.name}].".squish
+    Rails.logger.info(note)
   end
 
   def set_password_updated_at

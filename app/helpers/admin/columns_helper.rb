@@ -34,14 +34,4 @@ module Admin::ColumnsHelper
   def website_column(record, column)
     link_to_url_without_protocol record.website, target: '_blank'
   end
-
-  def nutshell_column(record, column)
-    if record.nutshell_id
-      if record.is_a?(User)
-        link_to(record.nutshell_id, "https://app.nutshell.com/contact/#{record.nutshell_id}", target: '_blank')
-      elsif record.is_a?(Affiliate)
-        link_to(record.nutshell_id, "https://app.nutshell.com/lead/id/#{record.nutshell_id}", target: '_blank')
-      end
-    end
-  end
 end

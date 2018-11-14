@@ -21,6 +21,8 @@ class SearchgovCrawler
   end
 
   def crawl
+    Rails.logger.warn(disallowed_warning) unless robotex.allowed? base_url
+
     begin
       Medusa.crawl(base_url, @medusa_opts) do |medusa|
         medusa.skip_links_like(skip_extensions_regex)
@@ -116,5 +118,9 @@ class SearchgovCrawler
 
   def current_url(page)
     page.redirect_to || page.url
+  end
+
+  def disallowed_warning
+    "Warning: #{domain} is not crawlable based on the rules in its robots.txt."
   end
 end

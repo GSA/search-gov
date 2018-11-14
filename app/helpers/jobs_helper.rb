@@ -64,7 +64,12 @@ module JobsHelper
 
   def legacy_link_to_more_jobs(search)
     title, url = more_jobs_title_and_url search
-    job_link_with_click_tracking title, url, search.affiliate, search.query, agency_jobs_link_index = -1, @search_vertical
+    job_link_with_click_tracking title,
+                                 url,
+                                 search.affiliate,
+                                 search.query,
+                                 agency_jobs_link_index = -1,
+                                 @search_vertical
   end
 
   def more_jobs_title_and_url(search)
@@ -85,13 +90,13 @@ module JobsHelper
 
   def more_federal_jobs_title_and_url
     title = t :'searches.more_federal_job_openings'
-    url = 'https://www.usajobs.gov/JobSearch/Search/GetResults?PostingChannelID=USASearch'
+    url = 'https://www.usajobs.gov/Search/Results?hp=public'
     [title, url]
   end
 
   def url_for_more_agency_jobs(agency)
-    organization_codes = agency.joined_organization_codes
-    "https://www.usajobs.gov/JobSearch/Search/GetResults?organizationid=#{organization_codes}&PostingChannelID=USASearch&ApplicantEligibility=all"
+    organization_codes = agency.joined_organization_codes('&a=')
+    "https://www.usajobs.gov/Search/Results?a=#{organization_codes}&hp=public"
   end
 
   def job_openings_header(agency)

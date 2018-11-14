@@ -458,7 +458,7 @@ Feature: Searches using mobile device
     And I should see an annual salary
     And I should see an application deadline
     And I should see an image link to "USAJobs.gov" with url for "https://www.usajobs.gov/"
-    And I should see a link to "More federal job openings on USAJobs.gov" with url for "https://www.usajobs.gov/JobSearch/Search/GetResults?PostingChannelID=USASearch"
+    And I should see a link to "More federal job openings on USAJobs.gov" with url for "https://www.usajobs.gov/Search/Results?hp=public"
 
   Scenario: When using tablet device
     Given I am using a mobile device
