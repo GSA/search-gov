@@ -238,7 +238,9 @@ Download and install PhantomJS:
 
 It can also be installed with Homebrew on a Mac.
 
-    $ brew install homebrew/versions/phantomjs198
+    $ brew tap homebrew/cask
+
+    $ brew cask install phantomjs
 
 If you see ```Error: The `brew link` step did not complete successfully``` when installing phantomjs, 
 

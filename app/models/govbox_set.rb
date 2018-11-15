@@ -18,7 +18,6 @@ class GovboxSet
   def initialize(query, affiliate, geoip_info, options = {})
     @query, @affiliate, @geoip_info = query, affiliate, geoip_info
     @highlighting_options = options.slice(:highlighting, :pre_tags, :post_tags)
-
     @base_search_options = @highlighting_options.merge(
       language: @affiliate.indexing_locale,
       q: @query)
@@ -105,31 +104,20 @@ class GovboxSet
 
   def init_jobs
     if @affiliate.jobs_enabled?
-      @jobs = Jobs.search build_jobs_search_options
-      if @jobs.present?
-        translate_jobs_highlights unless highlighting_disabled?
+      job_results = Jobs.search(build_jobs_search_options)&.search_result&.search_result_items
+      if job_results.present?
+        @jobs = JobResultsPostProcessor.new(results: job_results)&.post_processed_results
         @modules << 'JOBS'
       end
     end
   end
 
   def build_jobs_search_options
-    jobs_options = { query: @query, size: 10 }
-    jobs_options[:hl] = 1 unless highlighting_disabled?
-    org_tags_hash = @affiliate.has_organization_codes? ? { organization_ids: @affiliate.agency.joined_organization_codes(',') } : { tags: 'federal' }
-    jobs_options.merge!(org_tags_hash)
-    jobs_options.merge!(lat_lon: [@geoip_info.latitude, @geoip_info.longitude].join(',')) if @geoip_info.present?
-    jobs_options
-  end
-
-  def translate_jobs_highlights
-    pre_tag = (@highlighting_options[:pre_tags] || DEFAULT_JOB_HIGHLIGHTING_OPTIONS[:pre_tags]).first
-    post_tag = (@highlighting_options[:post_tags] || DEFAULT_JOB_HIGHLIGHTING_OPTIONS[:post_tags]).first
-    @jobs.each do |job_opening|
-      job_opening.position_title = job_opening.position_title.
-        gsub(/<em>/, pre_tag).
-        gsub(/<\/em>/, post_tag)
-    end
+    jobs_options = { Keyword: @query, ResultsPerPage: 10 }
+    org_hash = { Organization: @affiliate.agency&.joined_organization_codes }
+    jobs_options.merge!(org_hash)
+    jobs_options.merge!(LocationName: @geoip_info&.location_name)
+    jobs_options.compact
   end
 
   def init_federal_register_documents
@@ -170,7 +158,4 @@ class GovboxSet
     elastic_results.present? && elastic_results.total > 0
   end
 
-  def highlighting_disabled?
-    @highlighting_options[:highlighting] === false
-  end
 end

@@ -2,296 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=jobs%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Ocp-Apim-Subscription-Key:
-      - "<BING_V6_APP_ID>"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Content-Length:
-      - '3363'
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Thu, 22 Feb 2018 07:17:01 GMT
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      Set-Cookie:
-      - MUID=0E2AB436054C64D8299BBFA804A965CF; path=/; expires=Tue, 19-Mar-2019 07:18:02
-        GMT; domain=bingapis.com
-      - MUIDB=0E2AB436054C64D8299BBFA804A965CF; path=/; httponly; expires=Tue, 19-Mar-2019
-        07:18:02 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:18:01 GMT;
-        path=/
-      - SRCHUID=V=2&GUID=83C19085EE1745DA8C25FD0A59E3C611&dmnchg=1; domain=.bingapis.com;
-        expires=Sat, 22-Feb-2020 07:18:01 GMT; path=/
-      - SRCHUSR=DOB=20180222; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:18:01
-        GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=321D5B56E1AF67601EFD50C8E04A6693; path=/; httponly;
-        domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Tue, 19-Mar-2019 07:18:02 GMT; domain=bingapis.com
-      - _SS=SID=321D5B56E1AF67601EFD50C8E04A6693; domain=.bingapis.com; path=/
-      Bingapis-Traceid:
-      - 45D4DBCEC9654F539D37883208F7CB44
-      X-Msedge-Clientid:
-      - 0E2AB436054C64D8299BBFA804A965CF
-      X-Msapi-Userstate:
-      - d452
-      Bingapis-Market:
-      - en-US
-      X-Msedge-Ref:
-      - 'Ref A: 45D4DBCEC9654F539D37883208F7CB44 Ref B: SG2EDGE0918 Ref C: 2018-02-22T07:18:02Z'
-      Date:
-      - Thu, 22 Feb 2018 07:18:01 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=64B392C7471D42CEA36D5E01128733D2&CID=0E2AB436054C64D8299BBFA804A965CF&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=64B392C7471D42CEA36D5E01128733D2&CID=0E2AB436054C64D8299BBFA804A965CF&Type=Event.CPT&DATA=0"},
-        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=jobs+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5527.1", "totalEstimatedMatches": 15100000,
-        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "USAJOBS - The Federal Government''s Official Jobs Site", "url": "https:\/\/www.usajobs.gov\/",
-        "urlPingSuffix": "DevEx,5101.1", "about": [{"name": "USAJobs"}, {"name": "USAJobs"}],
-        "displayUrl": "https:\/\/www.usajobs.gov", "snippet": "USAJOBS is the Federal
-        Government''s official one-stop source for Federal jobs and employment information.",
-        "deepLinks": [{"name": "Sign In", "url": "http:\/\/my.usajobs.gov\/Applicant\/ProfileDashboard\/Home",
-        "urlPingSuffix": "DevEx,5088.1"}, {"name": "Veterans", "url": "https:\/\/www.usajobs.gov\/Help\/working-in-government\/unique-hiring-paths\/veterans\/",
-        "urlPingSuffix": "DevEx,5089.1"}, {"name": "Search Jobs", "url": "http:\/\/jobsearch.usajobs.gov\/",
-        "urlPingSuffix": "DevEx,5090.1"}, {"name": "Students", "url": "https:\/\/www.usajobs.gov\/Help\/working-in-government\/unique-hiring-paths\/students\/",
-        "urlPingSuffix": "DevEx,5091.1"}, {"name": "Create Account", "url": "https:\/\/login.usajobs.gov\/account\/Create",
-        "urlPingSuffix": "DevEx,5092.1"}, {"name": "FBI", "url": "https:\/\/fbi.usajobs.gov\/",
-        "urlPingSuffix": "DevEx,5093.1"}], "dateLastCrawled": "2018-02-15T01:46:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "SPD: Home
-        - IN.gov", "url": "http:\/\/in.gov\/jobs\/", "urlPingSuffix": "DevEx,5116.1",
-        "about": [{"name": "United States Department of Veterans Affairs"}], "displayUrl":
-        "in.gov\/jobs", "snippet": "Search for jobs with Indiana State Government;
-        Learn more about working for the state of Indiana; View my current benefits
-        summary; Ask SPD a question related to my ...", "dateLastCrawled": "2018-02-16T15:32:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "State
-        of California Jobs - CalCareers", "url": "http:\/\/www.jobs.ca.gov\/",
-        "urlPingSuffix": "DevEx,5142.1", "about": [{"name": "California"}], "displayUrl":
-        "www.jobs.ca.gov", "snippet": "The State of California offers a wide variety
-        of careers and jobs, ranging from accounting to zoology. The services our
-        employees provide are truly ...", "dateLastCrawled": "2018-02-15T22:13:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Jobs
-        - Federal Aviation Administration (FAA)", "url": "https:\/\/www.faa.gov\/jobs\/",
-        "urlPingSuffix": "DevEx,5158.1", "about": [{"name": "Federal Aviation Administration"}],
-        "displayUrl": "https:\/\/www.faa.gov\/jobs", "snippet": "Take control
-        of your career. The FAA has many opportunities for you to contribute to our
-        safe and efficient skies. Below is a sample of possible career fields:", "dateLastCrawled":
-        "2018-02-15T16:45:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
-        "name": "Jobs Home | City of New York", "url": "http:\/\/www1.nyc.gov\/jobs\/index.page",
-        "urlPingSuffix": "DevEx,5174.1", "about": [{"name": "New York"}], "displayUrl":
-        "www1.nyc.gov\/jobs\/index.page", "snippet": "Every day, the City''s 325,000
-        employees serve millions of residents and visitors. They improve infrastructure,
-        provide important social services, and make the city safer.", "dateLastCrawled":
-        "2018-02-15T20:08:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
-        "name": "jobs.utah.gov - Department of Workforce Services", "url": "https:\/\/jobs.utah.gov\/",
-        "urlPingSuffix": "DevEx,5188.1", "displayUrl": "https:\/\/jobs.utah.gov",
-        "snippet": "Find Your New Job. Workforce Services has jobs in over 23 career
-        fields in Utah. Start searching for your new job today.", "dateLastCrawled":
-        "2018-02-16T23:37:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
-        "name": "Jobs and Career Information | USAGov", "url": "https:\/\/www.usa.gov\/jobs-careers",
-        "urlPingSuffix": "DevEx,5207.1", "displayUrl": "https:\/\/www.usa.gov\/jobs-careers",
-        "snippet": "Jobs and Career Information. Find information about different
-        career fields. Animal Care and Science. Find career information about animal
-        science and care.", "dateLastCrawled": "2018-02-10T11:32:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Jobs | Topics",
-        "url": "https:\/\/www.fairfaxcounty.gov\/topics\/jobs", "urlPingSuffix": "DevEx,5220.1",
-        "about": [{"name": "Fairfax County"}], "displayUrl": "https:\/\/www.fairfaxcounty.gov\/topics\/jobs",
-        "snippet": "Fairfax County, Virginia - Look and apply for a job with Fairfax
-        Count Government. Serve your community as a public servant in many ways.",
-        "dateLastCrawled": "2018-02-14T21:02:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
-        "name": "Phila.gov | Human Resources | Jobs", "url": "http:\/\/www.phila.gov\/personnel\/Jobs.html",
-        "urlPingSuffix": "DevEx,5235.1", "displayUrl": "www.phila.gov\/personnel\/Jobs.html",
-        "snippet": "Job Interest » Job Opportunities » In order to be hired for a
-        Civil Service job, you must apply, take and pass a test, and rank high enough
-        to be called in for an ...", "dateLastCrawled": "2018-02-10T21:01:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Jobs
-        | City of Mesa", "url": "http:\/\/www.mesaaz.gov\/about-us\/jobs", "urlPingSuffix":
-        "DevEx,5249.1", "about": [{"name": "Mesa"}], "displayUrl": "www.mesaaz.gov\/about-us\/jobs",
-        "snippet": "To apply online and advance to Career Opportunities read the Employee
-        Values and click the \"I Agree\" button below. By doing so you are committing
-        to uphold and ...", "dateLastCrawled": "2018-02-12T17:55:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Virginia Jobs",
-        "url": "http:\/\/jobs.virginia.gov\/", "urlPingSuffix": "DevEx,5264.1", "displayUrl":
-        "jobs.virginia.gov", "snippet": "Job search website for individuals seeking
-        employment with the Commonwealth of Virginia State Government.", "dateLastCrawled":
-        "2018-02-10T00:21:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
-        "name": "Nevada Employment - Official State of Nevada website", "url":
-        "http:\/\/nv.gov\/employment\/", "urlPingSuffix": "DevEx,5279.1", "about":
-        [{"name": "Nevada"}], "displayUrl": "nv.gov\/employment", "snippet": "About
-        Nevada. Tourism Information. Economic Development", "dateLastCrawled": "2018-02-15T19:55:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "CalJOBS",
-        "url": "http:\/\/www.caljobs.ca.gov\/", "urlPingSuffix": "DevEx,5295.1", "about":
-        [{"name": "Employment Development Department"}], "displayUrl": "www.caljobs.ca.gov",
-        "snippet": "CalJOBS - Complete set of employment tools for job seekers in
-        California. Job seekers and employers access jobs, résumés, education, training,
-        labor market information.", "dateLastCrawled": "2018-02-14T05:07:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Arkansas.gov
-        | Jobs", "url": "http:\/\/www.arkansas.gov\/jobs", "urlPingSuffix": "DevEx,5310.1",
-        "about": [{"name": "Arkansas"}], "displayUrl": "www.arkansas.gov\/jobs",
-        "snippet": "Welcome to Arkansas.gov the official site of the State of Arkansas.",
-        "dateLastCrawled": "2018-02-09T14:39:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
-        "name": "Exciting Career Opportunities - Jobs - California Public ...",
-        "url": "http:\/\/www.cpuc.ca.gov\/jobs\/", "urlPingSuffix": "DevEx,5326.1",
-        "about": [{"name": "California Public Utilities Commission"}], "displayUrl":
-        "www.cpuc.ca.gov\/jobs", "snippet": "Exciting Career Opportunities. The
-        CPUC is hiring! The CPUC is currently hiring for a variety of positions. We
-        welcome qualified candidates to join our diverse team ...", "dateLastCrawled":
-        "2018-02-12T21:26:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
-        "name": "VA JOBS Home", "url": "http:\/\/www.va.gov\/jobs\/", "urlPingSuffix":
-        "DevEx,5342.1", "about": [{"name": "United States Department of Veterans Affairs"}],
-        "displayUrl": "www.va.gov\/jobs", "snippet": "The Department of Veterans
-        Affairs is committed to adding and retaining Veterans to our workforce. Whether
-        you are a vet interested at working at VA or you''re a Vet ...", "dateLastCrawled":
-        "2018-02-16T01:20:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
-        "name": "PNNL: Jobs", "url": "https:\/\/jobs.pnnl.gov\/", "urlPingSuffix":
-        "DevEx,5358.1", "about": [{"name": "Pacific Northwest National Laboratory"}],
-        "displayUrl": "https:\/\/jobs.pnnl.gov", "snippet": "Find Jobs. Browse
-        a list of our current job openings. Create an applicant profile and upload
-        a resumé. Sign up to receive email notices for new job openings.", "dateLastCrawled":
-        "2018-02-15T02:18:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
-        "name": "Jobs | Communications & Public Information | City of ...", "url":
-        "https:\/\/www.alexandriava.gov\/Jobs", "urlPingSuffix": "DevEx,5374.1", "about":
-        [{"name": "Alexandria"}], "displayUrl": "https:\/\/www.alexandriava.gov\/Jobs",
-        "snippet": "Jobs. Alexandria offers wide range of job opportunities and
-        services. Work for City government or City Public Schools, find out about
-        an internship opportunity or ...", "dateLastCrawled": "2018-02-10T06:40:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Careers.ohio.gov",
-        "url": "http:\/\/careers.ohio.gov\/", "urlPingSuffix": "DevEx,5389.1", "displayUrl":
-        "careers.ohio.gov", "snippet": "The State of Ohio offers a wide range of
-        career opportunities. A career in public service is an honorable choice. The
-        work we do impacts the lives of the people in Ohio.", "dateLastCrawled": "2018-02-08T17:10:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Jobs
-        & Careers at TPWD - Texas Parks & Wildlife Department", "url": "https:\/\/tpwd.texas.gov\/jobs\/",
-        "urlPingSuffix": "DevEx,5404.1", "about": [{"name": "Texas Parks and Wildlife
-        Department"}], "displayUrl": "https:\/\/tpwd.texas.gov\/jobs", "snippet":
-        "We are TPWD. Providing outdoor recreational opportunities, managing and protecting
-        fish and wildlife habitat, and managing parklands and historic areas", "dateLastCrawled":
-        "2018-02-12T05:17:00.0000000Z"}]}, "rankingResponse": {"mainline": {"items":
-        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
-        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
-        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
-        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
-        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
-        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
-        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
-        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
-        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
-        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
-        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
-        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
-        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
-        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
-        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
-        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
-        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
-        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
-        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
-        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
-    http_version: 
-  recorded_at: Thu, 22 Feb 2018 07:18:02 GMT
-- request:
-    method: get
-    uri: https://jobs.search.gov/jobs/search.json?hl=1&query=jobs&size=10&tags=federal
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v0.9.2
-      Accept:
-      - application/vnd.usagov.position_openings.v3
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      Content-Type:
-      - application/json; charset=utf-8
-      Date:
-      - Thu, 22 Feb 2018 07:18:04 GMT
-      Etag:
-      - W/"18eacab73d4f2b3cb9e3b0ae00de8cba"
-      Server:
-      - Apache
-      Status:
-      - 200 OK
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubdomains; preload
-      Vary:
-      - Origin
-      X-Powered-By:
-      - Phusion Passenger 5.1.12
-      X-Request-Id:
-      - c13e354c-d435-4ea8-9b76-dcc23dca13f3
-      X-Runtime:
-      - '0.020412'
-      Content-Length:
-      - '3371'
-      Connection:
-      - keep-alive
-    body:
-      encoding: UTF-8
-      string: '[{"id":"usajobs:491993400","position_title":"Administrative Technician
-        (OA)","organization_name":"Bureau of Land Management","rate_interval_code":"PA","minimum":33394,"maximum":52893,"start_date":"2018-02-22","end_date":"2018-02-28","locations":["Bishop,
-        CA"],"url":"https://www.usajobs.gov/GetJob/ViewDetails/491993400"},{"id":"usajobs:491993300","position_title":"Supervisory
-        Range Technician (Fire)","organization_name":"Bureau of Land Management","rate_interval_code":"PA","minimum":36802,"maximum":53169,"start_date":"2018-02-21","end_date":"2018-03-05","locations":["Wickenburg,
-        AZ"],"url":"https://www.usajobs.gov/GetJob/ViewDetails/491993300"},{"id":"usajobs:491993000","position_title":"Civil
-        Engineer, GS-0810-07/09/11 (DEU-GEB)","organization_name":"Bureau of Reclamation","rate_interval_code":"PA","minimum":46609,"maximum":86553,"start_date":"2018-02-22","end_date":"2018-03-15","locations":["Lakewood,
-        CO"],"url":"https://www.usajobs.gov/GetJob/ViewDetails/491993000"},{"id":"usajobs:491986500","position_title":"Staff
-        Accountant, GS-0510-13 (DEU-JG)","organization_name":"Bureau of Reclamation","rate_interval_code":"PA","minimum":94890,"maximum":123358,"start_date":"2018-02-22","end_date":"2018-02-28","locations":["Lakewood,
-        CO"],"url":"https://www.usajobs.gov/GetJob/ViewDetails/491986500"},{"id":"usajobs:491984700","position_title":"Opportunities
-        for Individuals with Disabilities","organization_name":"Lyndon B. Johnson
-        Space Center","rate_interval_code":"PA","minimum":50598,"maximum":90878,"start_date":"2018-02-22","end_date":"2018-03-02","locations":["Las
-        Cruces, NM","Houston, TX"],"url":"https://www.usajobs.gov/GetJob/ViewDetails/491984700"},{"id":"usajobs:491984500","position_title":"Opportunities
-        for Individuals with Disabilities","organization_name":"Lyndon B. Johnson
-        Space Center","rate_interval_code":"PA","minimum":83737,"maximum":129523,"start_date":"2018-02-22","end_date":"2018-03-02","locations":["Houston,
-        TX"],"url":"https://www.usajobs.gov/GetJob/ViewDetails/491984500"},{"id":"usajobs:491984000","position_title":"Computer
-        Engineer, ZP-0854-III (GS-11/12 Equivalent)","organization_name":"National
-        Institute of Standards and Technology","rate_interval_code":"PA","minimum":68036,"maximum":106012,"start_date":"2018-02-22","end_date":"2018-03-01","locations":["Gaithersburg,
-        MD"],"url":"https://www.usajobs.gov/GetJob/ViewDetails/491984000"},{"id":"usajobs:491980000","position_title":"Tools
-        and Parts Attendant, WG-6904-6","organization_name":"U.S. Coast Guard","rate_interval_code":"PH","minimum":22,"maximum":25,"start_date":"2018-02-22","end_date":"2018-03-07","locations":["Baltimore,
-        MD"],"url":"https://www.usajobs.gov/GetJob/ViewDetails/491980000"},{"id":"usajobs:491978900","position_title":"Telecommunications
-        Specialist","organization_name":"Federal Emergency Management Agency","rate_interval_code":"PA","minimum":81077,"maximum":105400,"start_date":"2018-02-21","end_date":"2018-02-26","locations":["Maynard,
-        MA"],"url":"https://www.usajobs.gov/GetJob/ViewDetails/491978900"},{"id":"usajobs:491975600","position_title":"RECREATION
-        SPECIALIST NF3* - SAILING INSTRUCTOR (SEASONAL)","organization_name":"U.S.
-        Marine Corps","rate_interval_code":"PH","minimum":12,"maximum":14,"start_date":"2018-02-21","end_date":"2018-03-05","locations":["Quantico,
-        VA"],"url":"https://www.usajobs.gov/GetJob/ViewDetails/491975600"}]'
-    http_version: 
-  recorded_at: Thu, 22 Feb 2018 07:18:04 GMT
-- request:
-    method: get
-    uri: https://data.usajobs.gov/api/search?Keyword=jobs&ResultsPerPage=10
+    uri: https://data.usajobs.gov/api/search?Keyword=jobs
     body:
       encoding: US-ASCII
       string: ''
@@ -328,18 +39,18 @@ http_interactions:
       Vary:
       - Accept-Encoding
       Date:
-      - Wed, 31 Oct 2018 16:21:43 GMT
+      - Wed, 31 Oct 2018 01:43:02 GMT
       Transfer-Encoding:
       - chunked
       Connection:
       - Transfer-Encoding
       - keep-alive
       Set-Cookie:
-      - akavpau_DATA_USAJ=1541003203~id=8352aad20c7b197e302d69fbbb4754fa; Domain=data.usajobs.gov;
+      - akavpau_DATA_USAJ=1540950482~id=e88f65f618aa454884b8d4ac2dd7444a; Domain=data.usajobs.gov;
         Path=/; Secure
     body:
       encoding: UTF-8
-      string: '{"LanguageCode":"EN","SearchParameters":{},"SearchResult":{"SearchResultCount":10,"SearchResultCountAll":779,"SearchResultItems":[{"MatchedObjectId":"510075500","MatchedObjectDescriptor":{"PositionID":"VA-18-15717","PositionTitle":"Banquet
+      string: '{"LanguageCode":"EN","SearchParameters":{},"SearchResult":{"SearchResultCount":10,"SearchResultCountAll":757,"SearchResultItems":[{"MatchedObjectId":"510075500","MatchedObjectDescriptor":{"PositionID":"VA-18-15717","PositionTitle":"Banquet
         Wait Staff","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/510075500","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/510075500?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Naval
         Shipyard, Portsmouth, Virginia","PositionLocation":[{"LocationName":"Naval
         Shipyard, Portsmouth, Virginia","CountryCode":"United States","CountrySubDivisionCode":"Virginia","CityName":"Naval
@@ -494,7 +205,52 @@ http_interactions:
         in doing so, advances U.S. foreign policy and national security priorities.
         Because OPIC works with the U.S. private sector, it helps U.S. businesses
         gain footholds in emerging markets, catalyzing revenues, jobs and growth opportunities
-        both at home and abroad.","TravelCode":"0"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"514368500","MatchedObjectDescriptor":{"PositionID":"DE-19-003-HQ-10332434","PositionTitle":"Administrative
+        both at home and abroad.","TravelCode":"0"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"513746700","MatchedObjectDescriptor":{"PositionID":"18-384-SH-DEU","PositionTitle":"Loan
+        Specialist (Commercial)","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/513746700","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/513746700?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Citrus
+        Heights, California","PositionLocation":[{"LocationName":"Citrus Heights,
+        California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"Citrus
+        Heights, California","Longitude":-121.272,"Latitude":38.6978}],"OrganizationName":"Small
+        Business Administration","DepartmentName":"Other Agencies and Independent
+        Organizations","JobCategory":[{"Name":"Loan Specialist","Code":"1165"}],"JobGrade":[{"Code":"GS"}],"PositionSchedule":[{"Name":"Full-Time","Code":"1"}],"PositionOfferingType":[{"Name":"Permanent","Code":"15317"}],"QualificationSummary":"GS-12:
+        One year of specialized experience, equivalent to the GS-11 grade level in
+        the Federal service, obtained in either the private or public sector: as a
+        loan processor, underwriter, financial analyst, portfolio manager, or other
+        like position with responsibility for making repayment and other eligibility
+        determinations about the loan application package; utilizing automated systems
+        including the data entry, tracking and processing of loan applications with
+        attendant documents such as credit reports, appraisals, business valuations,
+        environmental reviews or franchise agreements pertaining to a commercial loan.
+        These qualifications must be clearly referenced in your resume. Additional
+        information on the qualification requirements is outlined in the OPM Qualifications
+        Standards Handbook of General Schedule Positions. It is available for your
+        review on OPM''s Qualifications web site. Experience refers to paid and unpaid
+        experience, including volunteer work done through National Service programs
+        (e.g. Peace Corps, AmeriCorps) and other organizations (e.g. professional;
+        philanthropic; religious; spiritual; community, student, social). Volunteer
+        work helps build critical competencies, knowledge, and skills and can provide
+        valuable training and experience that translates directly to paid employment.
+        You will receive credit for all qualifying experience, including volunteer
+        experience. All qualification requirements must be met by 11:59 pm (Eastern
+        Time) on the closing date of this vacancy announcement.","PositionRemuneration":[{"MinimumRange":"79411.00","MaximumRange":"103234.00","RateIntervalCode":"Per
+        Year"}],"PositionStartDate":"2018-10-24","PositionEndDate":"2018-10-30","PublicationStartDate":"2018-10-24","ApplicationCloseDate":"2018-10-30","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"","WhoMayApply":{"Name":"","Code":""},"LowGrade":"12","HighGrade":"12","PromotionPotential":"12","HiringPath":["public"],"TotalOpenings":"2","AgencyMarketingStatement":"Are
+        you excited by the idea of helping to support $39 billion in small business
+        financing and setting proper conditions to stimulate America''s economic growth?
+        SBA has been a leader in small business development for more than 60 years.
+        In an increasingly globalized economy, we tackle challenges confronted by
+        the small business community across geographic boundaries. Although times
+        have changed since the SBA was founded in 1953, the Agency''s mission-to promote
+        the growth of small business-has not. Today, SBA is more vital than ever.
+        We work in collaboration with partner organizations and using cutting-edge
+        technologies and well-tested best practices to multiply our impact on small
+        businesses. America''s 28 million small businesses are the engine of job creation
+        and economic growth in this country, creating nearly two out of every three
+        new jobs in the United States and employing over half the nation''s workforce.
+        SBA ensures that these businesses have the tools and resources required to
+        start and expand their operations, and create jobs that support a growing
+        economy and strengthen America''s middle class. The SBA and entrepreneurs
+        drive American competitiveness and help grow the economy. Picture yourself
+        at SBA.","TravelCode":"1","ApplyOnlineUrl":"https://apply.usastaffing.gov/Application/Apply","DetailStatusUrl":"https://apply.usastaffing.gov/Application/ApplicationStatus"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"514368500","MatchedObjectDescriptor":{"PositionID":"DE-19-003-HQ-10332434","PositionTitle":"Administrative
         Officer","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/514368500","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/514368500?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"District
         of Columbia, District of Columbia","PositionLocation":[{"LocationName":"District
         of Columbia, District of Columbia","CountryCode":"United States","CountrySubDivisionCode":"District
@@ -800,74 +556,7 @@ http_interactions:
         start and expand their operations, and create jobs that support a growing
         economy and strengthen America''s middle class. The SBA and entrepreneurs
         drive American competitiveness and help grow the economy. Picture yourself
-        at SBA.","TravelCode":"2","ApplyOnlineUrl":"https://apply.usastaffing.gov/Application/Apply","DetailStatusUrl":"https://apply.usastaffing.gov/Application/ApplicationStatus"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"515350000","MatchedObjectDescriptor":{"PositionID":"DE-19-005-HQ-10339142","PositionTitle":"IT
-        Project Manager","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/515350000","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/515350000?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Washington
-        DC, District of Columbia","PositionLocation":[{"LocationName":"Washington
-        DC, District of Columbia","CountryCode":"United States","CountrySubDivisionCode":"District
-        of Columbia","CityName":"Washington DC, District of Columbia","Longitude":-77.032,"Latitude":38.8904}],"OrganizationName":"Small
-        Business Administration","DepartmentName":"Other Agencies and Independent
-        Organizations","JobCategory":[{"Name":"Information Technology Management","Code":"2210"}],"JobGrade":[{"Code":"GS"}],"PositionSchedule":[{"Name":"Full-Time","Code":"1"}],"PositionOfferingType":[{"Name":"Multiple
-        Appointment Types","Code":"15327"}],"QualificationSummary":"REQUIRED CERTIFICATION:
-        Federal Acquisition Certification (FAC) Contracting Officer''s Representative
-        (COR) Level II or higher Certification is required. In addition, selectees
-        with FAC COR Level II Certification must obtain FAC COR Level III Certification
-        within 6 months of entry on duty. If this Level III Certification is not obtained
-        within 6 months, the employee may be subject to removal from the position
-        Generally, time in Non-Pay status is not creditable towards the specialized
-        experience requirement listed below.\nYou must meet all qualification requirements
-        by the closing date of this announcement. Experience: To receive credit, you
-        must indicate the month and year as well as the average hours worked per week
-        for each employer. Average work hours must be stated on the resume to quantify
-        each period of work experience or that experience will not be credited toward
-        meeting the specialized experience requirement.\nYou must address the specific
-        specialized experience required for each grade level of this position on your
-        resume or application or you will be rated \"Ineligible\" for that grade level.
-        For all positions individuals must have IT-related experience demonstrating
-        each of the four competencies listed below:\n1. Attention to Detail - Is thorough
-        when performing work and conscientious about attending to detail.\n2. Customer
-        Service - Works with clients and customers (that is, any individuals who use
-        or receive the services or products that your work unit produces, including
-        the general public, individuals who work in the agency, other agencies, or
-        organizations outside the Government) to assess their needs, provide information
-        or assistance, resolve their problems, or satisfy their expectations; knows
-        about available products and services; is committed to providing quality products
-        and services.\n3. Oral Communication - Expresses information (for example,
-        ideas or facts) to individuals or groups effectively, taking into account
-        the audience and nature of the information (for example, technical, sensitive,
-        controversial); makes clear and convincing oral presentations; listens to
-        others, attends to nonverbal cues, and responds appropriately.\n4. Problem
-        Solving - Identifies problems; determines accuracy and relevance of information;
-        uses sound judgment to generate and evaluate alternatives, and to make recommendations.
-        GS-14: To qualify you must have at least 1 full year (52 weeks) of specialized
-        experience equivalent in difficulty and complexity to the GS-13 level in the
-        Federal service that has equipped you with the particular knowledge, skill,
-        and ability to perform successfully in this position. This experience may
-        have been gained in a Non-Federal service position. In addition, this Specialized
-        Experience must demonstrate the following: *Initiating, planning, and managing
-        information technology projects in support of enterprise software development
-        and implementation;\n*Serving as a Contracting Officer Representative (COR)
-        for contracts supporting a major information technology investment; and\n*Participating
-        in the project governance process for an Information Technology portfolio.","PositionRemuneration":[{"MinimumRange":"114590.00","MaximumRange":"148967.00","RateIntervalCode":"Per
-        Year"}],"PositionStartDate":"2018-10-29","PositionEndDate":"2018-11-09","PublicationStartDate":"2018-10-29","ApplicationCloseDate":"2018-11-09","PositionFormattedDescription":[{"Label":"Dynamic
-        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"","WhoMayApply":{"Name":"","Code":""},"LowGrade":"14","HighGrade":"14","PromotionPotential":"14","HiringPath":["public"],"TotalOpenings":"1","AgencyMarketingStatement":"Are
-        you excited by the idea of helping to support $39 billion in small business
-        financing and setting proper conditions to stimulate America''s economic growth?
-        SBA has been a leader in small business development for more than 60 years.
-        In an increasingly globalized economy, we tackle challenges confronted by
-        the small business community across geographic boundaries. Although times
-        have changed since the SBA was founded in 1953, the Agency''s mission - to
-        promote the growth of small business - has not. Today, SBA is more vital than
-        ever. We work in collaboration with partner organizations and use cutting-edge
-        technologies and well-tested best practices to multiply our impact on small
-        businesses. America''s 28 million small businesses are the engine of job creation
-        and economic growth in this country, creating nearly two out of every three
-        new jobs in the United States and employing over half the nation''s workforce.
-        SBA ensures that these businesses have the tools and resources required to
-        start and expand their operations, and create jobs that support a growing
-        economy and strengthen America''s middle class. By applying for this position
-        with SBA''s Office of Disaster Assistance, you can enjoy challenging but satisfying
-        work and join a highly motivated and diverse team that helps families and
-        businesses rebuild their lives after a disaster.","TravelCode":"1","ApplyOnlineUrl":"https://apply.usastaffing.gov/Application/Apply","DetailStatusUrl":"https://apply.usastaffing.gov/Application/ApplicationStatus"},"IsRadialSearch":false}},"RelevanceRank":0.0}],"UserArea":{"NumberOfPages":"78","IsRadialSearch":false}}}'
+        at SBA.","TravelCode":"2","ApplyOnlineUrl":"https://apply.usastaffing.gov/Application/Apply","DetailStatusUrl":"https://apply.usastaffing.gov/Application/ApplicationStatus"},"IsRadialSearch":false}},"RelevanceRank":0.0}],"UserArea":{"NumberOfPages":"76","IsRadialSearch":false}}}'
     http_version: 
-  recorded_at: Wed, 31 Oct 2018 16:21:44 GMT
+  recorded_at: Wed, 31 Oct 2018 01:43:02 GMT
 recorded_with: VCR 4.0.0

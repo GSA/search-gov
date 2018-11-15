@@ -1,9 +1,8 @@
 #jobs.search.collapsible.collapsed.focus-on-next-sibling{ tabindex: -1 }
   .content-block-item.content-block-item-header
-    - is_usajobs_listing = job_listed_on_usajobs? search.jobs.first.id
 
-    = usajobs_logo if is_usajobs_listing
-    %h3{ class: jobs_content_heading_css_classes(is_usajobs_listing) }
+    = usajobs_logo
+    %h3{ class: jobs_content_heading_css_classes }
       = job_openings_header(search.affiliate.agency)
 
   - search.jobs.each_with_index do |job, index|

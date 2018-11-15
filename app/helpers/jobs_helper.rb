@@ -29,15 +29,15 @@ module JobsHelper
     min_str = number_to_currency(job.minimum)
     max_str = number_to_currency(job.maximum)
     case job.rate_interval_code
-      when 'PA', 'PH'
-        period = job.rate_interval_code == 'PA' ? 'yr' : 'hr'
+      when 'Per Year', 'Per Hour'
+        period = job.rate_interval_code == 'Per Year' ? 'yr' : 'hr'
         plus = max > job.minimum ? '+' : ''
         "#{min_str}#{plus}/#{period}"
-      when 'WC'
+      when 'Without Compensation'
         nil
       else
         with_max = max > job.minimum ? "-#{max_str} " : ' '
-        "#{min_str}#{with_max}#{Jobs::RATE_INTERVALS[job.rate_interval_code.to_sym]}"
+        "#{min_str}#{with_max}#{job.rate_interval_code}"
     end
   end
 
@@ -51,9 +51,9 @@ module JobsHelper
     end
   end
 
-  def jobs_content_heading_css_classes(is_usajobs_listing)
+  def jobs_content_heading_css_classes
     css_classes = 'content-heading'
-    css_classes << ' usajobs' if is_usajobs_listing
+    css_classes << ' usajobs'
     css_classes
   end
 
@@ -74,22 +74,18 @@ module JobsHelper
 
   def more_jobs_title_and_url(search)
     if search.affiliate.has_organization_codes?
-      more_agency_jobs_title_and_url search.affiliate.agency, search.jobs.first.id
+      more_agency_jobs_title_and_url search.affiliate.agency
     else
       more_federal_jobs_title_and_url
     end
   end
 
-  def more_agency_jobs_title_and_url(agency, job_id)
+  def more_agency_jobs_title_and_url(agency)
     title = "#{t :'searches.more_agency_job_openings', agency: agency.abbreviation || agency.name}"
-    title << " #{t :'searches.on_usajobs'}" if job_listed_on_usajobs?(job_id)
+    title << " #{t :'searches.on_usajobs'}"
 
-    url = url_for_more_agency_jobs agency, job_id
+    url = url_for_more_agency_jobs agency
     [title, url]
-  end
-
-  def job_listed_on_usajobs?(job_id)
-    job_id =~ /^usajobs/
   end
 
   def more_federal_jobs_title_and_url
@@ -98,15 +94,9 @@ module JobsHelper
     [title, url]
   end
 
-  def url_for_more_agency_jobs(agency, job_id)
-    case job_id
-    when /^usajobs/
-      organization_codes = agency.joined_organization_codes('&a=')
-      "https://www.usajobs.gov/Search/Results?a=#{organization_codes}&hp=public"
-    when /^ng:/
-      ng_agency = job_id.split(':')[1]
-      "http://agency.governmentjobs.com/#{ng_agency}/default.cfm"
-    end
+  def url_for_more_agency_jobs(agency)
+    organization_codes = agency.joined_organization_codes('&a=')
+    "https://www.usajobs.gov/Search/Results?a=#{organization_codes}&hp=public"
   end
 
   def job_openings_header(agency)
