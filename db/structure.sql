@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.6.41, for osx10.13 (x86_64)
 --
--- Host: 127.0.0.1    Database: usasearch_test
+-- Host: localhost    Database: usasearch_development
 -- ------------------------------------------------------
 -- Server version	5.6.41
 
@@ -1563,7 +1563,7 @@ CREATE TABLE `youtube_profiles` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-11-13 16:22:36
+-- Dump completed on 2018-11-16  9:52:13
 INSERT INTO schema_migrations (version) VALUES ('20090818003200');
 
 INSERT INTO schema_migrations (version) VALUES ('20090827135344');
