@@ -2,7 +2,11 @@ require 'spec_helper'
 
 describe Jobs do
   describe '.search(options)' do
-    subject(:search) { Jobs.search(Keyword: 'jobs') }
+    subject(:search) do  Jobs.search({Keyword:'jobs',
+                                      Organization: '',
+                                      LocationName: 'Washington, DC, United States',
+                                      ResultsPerPage: 10})
+    end
 
     it 'returns results' do
       expect(search.search_result.search_result_count).to eq 10
@@ -21,8 +25,16 @@ describe Jobs do
     end
   end
 
+  describe 'job_scrub(query)' do
+    context 'when the search phrase contains the a job related keyword' do
+      it 'should return the query with out the job related keyword at the end of the query' do
+        expect(Jobs.job_scrub('Nursing jobs')).to eq('Nursing')
+      end
+    end
+
+  end
   describe '.query_eligible?(query)' do
-    context "when the search phrase contains hyphenated words" do
+    context 'when the search phrase contains hyphenated words' do
       it 'should return true' do
         expect(Jobs.query_eligible?('full-time jobs')).to be true
         expect(Jobs.query_eligible?('intern')).to be true

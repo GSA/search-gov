@@ -161,7 +161,7 @@ describe GovboxSet do
       end
 
       it "returns job results" do
-        expect(govbox_set.jobs.first.position_title).to eq('Therapy Assistant')
+        expect(govbox_set.jobs.first.position_title).to eq('Maintenance Worker')
         expect(govbox_set.jobs.first.locations).to eq(['Lyons, New Jersey'])
       end
 
@@ -173,8 +173,8 @@ describe GovboxSet do
         it "should call Jobs.search with the query, org codes, results per page, and location_name params" do
           expect(Jobs).to receive(:search).
             with(Keyword: 'job',
-                 ResultsPerPage: 10,
                  Organization: 'ABCD;BCDE',
+                 ResultsPerPage: 10,
                  LocationName: 'Flemington, New Jersey, United States')
           govbox_set = GovboxSet.new('job', affiliate, geoip_info)
         end
@@ -182,7 +182,10 @@ describe GovboxSet do
 
       context "when the affiliate does not have a related agency with an org code" do
         it 'calls Jobs.search with just the query, results per page' do
-          expect(Jobs).to receive(:search).with(Keyword: 'job', ResultsPerPage: 10).and_return nil
+          expect(Jobs).to receive(:search).with(Keyword: 'job',
+                                                Organization: nil,
+                                                ResultsPerPage: 10,
+                                                LocationName: nil).and_return nil
           GovboxSet.new('job', affiliate, nil)
         end
       end
