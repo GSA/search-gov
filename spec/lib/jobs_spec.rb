@@ -2,19 +2,21 @@ require 'spec_helper'
 
 describe Jobs do
   describe '.search(options)' do
+    subject(:search) { Jobs.search(Keyword: 'jobs') }
+
+    it 'returns results' do
+      expect(search.search_result.search_result_count).to eq 10
+    end
+
     context "when there is some problem" do
       before do
-        allow(Rails.application.secrets).to receive(:jobs).and_return({
-          'host' => 'http://nonexistent.server.gov',
-          'endpoint' => '/test/search',
-          'adapter' => Faraday.default_adapter
-        })
-        Jobs.establish_connection!
+        stub_request(:get, %r{data.usajobs.gov}).to_raise(StandardError)
       end
 
       it "should log any errors that occur and return nil" do
-        expect(Rails.logger).to receive(:error).with(/Trouble fetching jobs information/)
-        expect(Jobs.search(:query => 'jobs')).to be_nil
+        expect(Rails.logger).to receive(:error).
+          with(/Trouble fetching jobs information/)
+        expect(search).to be_nil
       end
     end
   end

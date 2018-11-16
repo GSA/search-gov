@@ -13,41 +13,29 @@ module Jobs
     "|#{BLOCKED_PHRASES}"+
     "|(#{SIMPLE_SINGULARS.join('|')})s?"
 
-  RATE_INTERVALS = {
-    :BW => 'Bi-weekly',
-    :FB => 'Fee Basis',
-    :PA => 'Per Year',
-    :PD => 'Per Day',
-    :PH => 'Per Hour',
-    :PM => 'Per Month',
-    :PW => 'Piece Work',
-    :ST => 'Student Stipend Paid',
-    :SY => 'School Year',
-    :WC => 'Without Compensation'}.freeze
-
   def self.establish_connection!
-    jobs_api_config = Rails.application.secrets.jobs
-    @endpoint = jobs_api_config['endpoint']
-    @jobs_api_connection = Faraday.new jobs_api_config['host'] do |conn|
+    usajobs_api_config = Rails.application.secrets.jobs
+    @endpoint = usajobs_api_config['endpoint']
+    @usajobs_api_connection = Faraday.new(usajobs_api_config['host']) do |conn|
+      conn.headers['Authorization-Key'] = usajobs_api_config['authorization_key']
+      conn.headers['User-Agent'] = usajobs_api_config['user_agent']
       conn.request :json
-      conn.response :mashify
+      conn.response :mrashify
       conn.response :json
       conn.use :instrumentation
-      conn.adapter jobs_api_config['adapter'] || Faraday.default_adapter
+      conn.adapter usajobs_api_config['adapter'] || Faraday.default_adapter
     end
-    @jobs_api_connection.headers[:accept] = 'application/vnd.usagov.position_openings.v3'
   end
 
   def self.search(options)
-    @jobs_api_connection.get(@endpoint, options).body if query_eligible?(options[:query])
-  rescue Exception => e
-    Rails.logger.error("Trouble fetching jobs information: #{e}")
+    @usajobs_api_connection.get(@endpoint, options).body if query_eligible?(options[:Keyword])
+  rescue => error
+    Rails.logger.error("Trouble fetching jobs information: #{error}")
     nil
   end
 
   def self.query_eligible?(query)
     query =~ /\b#{JOB_RELATED_KEYWORDS}\b/i && !(query =~ /\b#{BLOCKED_KEYWORDS}\b/i) && !(query =~ /["():]|^-| -\S+/)
-
   end
 
 end
