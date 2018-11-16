@@ -138,7 +138,7 @@ describe SearchgovUrl do
           SearchgovUrl.create!(valid_attributes.merge(enqueued_for_reindex: true))
         end
 
-        it('sets enqueued_for_reindex to false') do
+        it 'sets enqueued_for_reindex to false' do
           expect{ fetch }.to change{ searchgov_url.enqueued_for_reindex }.
               from(true).to(false)
         end
