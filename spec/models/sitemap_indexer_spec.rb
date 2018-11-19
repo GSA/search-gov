@@ -143,10 +143,6 @@ describe SitemapIndexer do
 
       it 'ignores them' do
         index
-        expect(SearchgovUrl.pluck(:url)).to include 'http://agency.gov/doc1'
-      end
-
-      it 'does not include urls that are from different domain' do
         expect(SearchgovUrl.pluck(:url)).not_to include 'http://other.gov/doc1'
       end
     end

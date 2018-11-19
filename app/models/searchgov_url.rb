@@ -15,7 +15,8 @@ class SearchgovUrl < ActiveRecord::Base
 
   attr_accessible :last_crawl_status,
                   :last_crawled_at,
-                  :url, :lastmod,
+                  :url,
+                  :lastmod,
                   :enqueued_for_reindex
   attr_reader :response, :document, :tempfile
   attr_readonly :url
@@ -38,9 +39,9 @@ class SearchgovUrl < ActiveRecord::Base
     column_names: { ['searchgov_urls.last_crawled_at IS NULL'] => 'unfetched_urls_count' }
 
   scope :fetch_required, ->() do
-     where('last_crawled_at IS NULL OR
-            lastmod > last_crawled_at OR
-            enqueued_for_reindex')
+    where('last_crawled_at IS NULL
+           OR lastmod > last_crawled_at
+           OR enqueued_for_reindex')
   end
 
   class SearchgovUrlError < StandardError; end

@@ -5,3 +5,14 @@ outdated:
   url: http://www.agency.gov/outdated
   last_crawled_at: <%= 1.week.ago.to_s(:db) %>
   lastmod: <%= 1.day.ago.to_s(:db) %>
+
+current:
+  url: http://www.agency.gov/current
+  last_crawled_at: <%= 1.day.ago.to_s(:db) %>
+  lastmod: <%= 1.week.ago.to_s(:db) %>
+
+enqueued:
+  url: http://www.agency.gov/enqueued
+  last_crawled_at: <%= 1.day.ago.to_s(:db) %>
+  lastmod: <%= 1.week.ago.to_s(:db) %>
+  enqueued_for_reindex: true

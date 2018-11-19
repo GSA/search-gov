@@ -24,21 +24,20 @@ describe SearchgovUrl do
 
   describe 'scopes' do
     describe '.fetch_required' do
-      before do
-        SearchgovUrl.create!(
-          url: 'http://www.agency.gov/current', last_crawled_at: 1.day.ago, lastmod: 1.week.ago
-        )
-      end
 
       it 'includes urls that have never been crawled and outdated urls' do
         expect(SearchgovUrl.fetch_required.pluck(:url)).
-          to eq %w[http://www.agency.gov/new http://www.agency.gov/outdated]
+          to include('http://www.agency.gov/new', 'http://www.agency.gov/outdated')
+      end
+
+      it 'does not include current, crawled and not enqueued urls' do
+        expect(SearchgovUrl.fetch_required.pluck(:url)).
+          not_to include('http://www.agency.gov/current')
       end
 
       it 'includes urls that have been enqueued for reindexing' do
-        searchgov_url.update(enqueued_for_reindex: true)
         expect(SearchgovUrl.fetch_required.pluck(:url)).
-          to include "http://www.agency.gov/boring.html"
+          to include 'http://www.agency.gov/enqueued'
       end
     end
   end
@@ -139,7 +138,7 @@ describe SearchgovUrl do
 
         it 'sets enqueued_for_reindex to false' do
           expect{ fetch }.to change{ searchgov_url.enqueued_for_reindex }.
-              from(true).to(false)
+            from(true).to(false)
         end
       end
 
