@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe SearchgovUrl do
+  fixtures :searchgov_urls
+
   let(:url) { 'http://www.agency.gov/boring.html' }
   let(:html) { read_fixture_file("/html/page_with_og_metadata.html") }
   let(:valid_attributes) { { url: url } }
@@ -23,10 +25,6 @@ describe SearchgovUrl do
   describe 'scopes' do
     describe '.fetch_required' do
       before do
-        SearchgovUrl.create!(url: 'http://www.agency.gov/new')
-        SearchgovUrl.create!(
-          url: 'http://www.agency.gov/outdated', last_crawled_at: 1.week.ago, lastmod: 1.day.ago
-        )
         SearchgovUrl.create!(
           url: 'http://www.agency.gov/current', last_crawled_at: 1.day.ago, lastmod: 1.week.ago
         )
@@ -40,7 +38,7 @@ describe SearchgovUrl do
       it 'includes urls that have been enqueued for reindexing' do
         searchgov_url.update(enqueued_for_reindex: true)
         expect(SearchgovUrl.fetch_required.pluck(:url)).
-            to include "http://www.agency.gov/boring.html"
+          to include "http://www.agency.gov/boring.html"
       end
     end
   end
@@ -49,7 +47,8 @@ describe SearchgovUrl do
     it 'requires a valid domain' do
       searchgov_url = SearchgovUrl.new(url: 'https://foo/bar')
       expect(searchgov_url).not_to be_valid
-      expect(searchgov_url.errors.messages[:searchgov_domain]).to include 'is invalid'
+      expect(searchgov_url.errors.messages[:searchgov_domain]).
+        to include 'is invalid'
     end
 
     describe 'validating url uniqueness' do
@@ -81,7 +80,7 @@ describe SearchgovUrl do
         end
 
         it 'deletes the Searchgov Url' do
-          expect{ searchgov_url.destroy }.to change{ SearchgovUrl.count }.from(1).to(0)
+          expect{ searchgov_url.destroy }.to change{ SearchgovUrl.count }.by(-1)
         end
       end
     end

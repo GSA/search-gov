@@ -38,13 +38,21 @@ shared_examples_for 'a record with a fetchable url' do
       describe '.fetched' do
         it 'includes successfully and unsuccessfully fetched records' do
           expect(described_class.fetched.pluck(:url)).
-            to match_array %w[http://agency.gov/ok http://agency.gov/failed]
+            to include('http://agency.gov/ok', 'http://agency.gov/failed')
+        end
+
+        it 'does not include unfetched records' do
+          expect(described_class.fetched.pluck(:url)).not_to include 'http://agency.gov/unfetched'
         end
       end
 
       describe '.unfetched' do
         it 'includes unfetched records' do
-          expect(described_class.unfetched.pluck(:url)).to eq ['http://agency.gov/unfetched']
+          expect(described_class.unfetched.pluck(:url)).to include 'http://agency.gov/unfetched'
+        end
+
+        it 'does not include fetched records' do
+          expect(described_class.unfetched.pluck(:url)).not_to include 'http://agency.gov/ok'
         end
       end
 
@@ -57,7 +65,7 @@ shared_examples_for 'a record with a fetchable url' do
       describe '.not_ok' do
         it 'includes failed or unfetched records' do
           expect(described_class.not_ok.pluck(:url)).
-            to match_array %w[http://agency.gov/unfetched http://agency.gov/failed]
+            to include('http://agency.gov/unfetched', 'http://agency.gov/failed')
         end
       end
     end

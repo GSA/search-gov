@@ -1,0 +1,7 @@
+new:
+  url: http://www.agency.gov/new
+
+outdated:
+  url: http://www.agency.gov/outdated
+  last_crawled_at: <%= 1.week.ago.to_s(:db) %>
+  lastmod: <%= 1.day.ago.to_s(:db) %>
