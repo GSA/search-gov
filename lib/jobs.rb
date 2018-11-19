@@ -31,10 +31,8 @@ module Jobs
     keyword =~ /^#{JOB_RELATED_KEYWORDS}$/ ? keyword  : keyword.gsub(/#{JOB_RELATED_KEYWORDS}/,"").strip
   end
 
-  def self.search(options)
-    keyword = options[:Keyword]
-    options[:Keyword] = job_scrub keyword
-    @usajobs_api_connection.get(@endpoint, options).body if query_eligible?(keyword)
+  def self.search(job_options)
+    @usajobs_api_connection.get(@endpoint, params(job_options)).body if query_eligible?(job_options[:query])
   rescue => error
     Rails.logger.error("Trouble fetching jobs information: #{error}")
     nil
@@ -42,6 +40,14 @@ module Jobs
 
   def self.query_eligible?(query)
     query =~ /\b#{JOB_RELATED_KEYWORDS}\b/i && !(query =~ /\b#{BLOCKED_KEYWORDS}\b/i) && !(query =~ /["():]|^-| -\S+/)
+  end
+
+  def self.params(options)
+    { Keyword:        job_scrub(options[:query]),
+      Organization:   options[:organization],
+      LocationName:   options[:location_name],
+      ResultsPerPage: options[:results_per_page]
+    }
   end
 
 end

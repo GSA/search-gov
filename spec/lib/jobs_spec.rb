@@ -2,10 +2,10 @@ require 'spec_helper'
 
 describe Jobs do
   describe '.search(options)' do
-    subject(:search) do  Jobs.search({Keyword:'jobs',
-                                      Organization: '',
-                                      LocationName: 'Washington, DC, United States',
-                                      ResultsPerPage: 10})
+    subject(:search) do  Jobs.search({query:'jobs',
+                                      organization_code: '',
+                                      location_name: 'Washington, DC, United States',
+                                      results_per_page: 10})
     end
 
     it 'returns results' do
