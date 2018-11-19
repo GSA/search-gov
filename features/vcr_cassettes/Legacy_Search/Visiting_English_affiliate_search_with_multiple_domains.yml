@@ -219,4 +219,227 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
   recorded_at: Thu, 22 Feb 2018 07:24:37 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=president%20(site:whitehouse.gov%20OR%20site:usa.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '3488'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 19 Nov 2018 22:39:07 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=15B272726A716B8613A07EDE6BA66AA6; path=/; expires=Sat, 14-Dec-2019 22:40:08
+        GMT; domain=bingapis.com
+      - MUIDB=15B272726A716B8613A07EDE6BA66AA6; path=/; httponly; expires=Sat, 14-Dec-2019
+        22:40:08 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 19-Nov-2020 22:40:07 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=97036036A8274E7CA71C2A302A02C26C&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 19-Nov-2020 22:40:07 GMT; path=/
+      - SRCHUSR=DOB=20181119; domain=.bingapis.com; expires=Thu, 19-Nov-2020 22:40:07
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=0830CCF87E9C6BAD24A4C0547F4B6AD2; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 14-Dec-2019 22:40:08 GMT; domain=bingapis.com
+      - _SS=SID=0830CCF87E9C6BAD24A4C0547F4B6AD2; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - DBFA19C76E354524941F3F4CB980CAD7
+      X-Msedge-Clientid:
+      - 15B272726A716B8613A07EDE6BA66AA6
+      X-Msapi-Userstate:
+      - 95fc
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: DBFA19C76E354524941F3F4CB980CAD7 Ref B: CO1EDGE0115 Ref C: 2018-11-19T22:40:08Z'
+      Date:
+      - Mon, 19 Nov 2018 22:40:07 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=8DEB8FD79F194780AE5B95D4BFD3165B&CID=15B272726A716B8613A07EDE6BA66AA6&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=8DEB8FD79F194780AE5B95D4BFD3165B&CID=15B272726A716B8613A07EDE6BA66AA6&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=president+(site%3awhitehouse.gov+OR+site%3ausa.gov)",
+        "webSearchUrlPingSuffix": "DevEx,5412.1", "totalEstimatedMatches": 2010000,
+        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
+        "Presidents | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/",
+        "urlPingSuffix": "DevEx,5058.1", "about": [{"name": "White House"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents", "snippet":
+        "Which President served as a lieutenant colonel in the Spanish-American
+        war? Who was the first Democrat elected after the Civil War? Who introduced
+        Social Security?", "dateLastCrawled": "2018-11-12T05:18:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Donald J. Trump
+        | The White House", "url": "https:\/\/www.whitehouse.gov\/people\/donald-j-trump\/",
+        "urlPingSuffix": "DevEx,5072.1", "about": [{"name": "Donald Trump"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov\/people\/donald-j-trump", "snippet": "Donald
+        J. Trump is the 45th President of the United States. He believes the United
+        States has incredible potential and will go on to exceed even its remarkable
+        achievements of the past.", "dateLastCrawled": "2018-11-16T06:06:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "The Administration
+        | The White House", "url": "https:\/\/www.whitehouse.gov\/the-trump-administration\/",
+        "urlPingSuffix": "DevEx,5086.1", "about": [{"name": "Executive Office of the
+        President of the United States"}], "displayUrl": "https:\/\/www.whitehouse.gov\/the-trump-administration",
+        "snippet": "Michael R. Pence is the 48th and current Vice President of the
+        United States. Vice President Mike Pence remains grateful for the grace
+        of God, the love and support of his family, and the blessings ...", "dateLastCrawled":
+        "2018-11-13T17:44:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "Presidents, Vice Presidents, and First Ladies of the ...", "url":
+        "https:\/\/www.usa.gov\/presidents", "urlPingSuffix": "DevEx,5102.1", "displayUrl":
+        "https:\/\/www.usa.gov\/presidents", "snippet": "The president of the
+        United States is the head of state of the U.S., the chief executive of the
+        federal government, and Commander-in-Chief of the armed forces. The United
+        States was the first nation to create the office of president as the head
+        of state in a modern republic. The Constitution ...", "dateLastCrawled": "2018-11-15T14:19:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Andrew
+        Jackson | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/andrew-jackson\/",
+        "urlPingSuffix": "DevEx,5116.1", "about": [{"name": "Andrew Jackson"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov\/...\/presidents\/andrew-jackson", "snippet":
+        "Andrew Jackson was the seventh President of the United States from 1829
+        to 1837, seeking to act as the direct representative of the common man. More
+        nearly than any of his predecessors, Andrew ...", "dateLastCrawled": "2018-11-13T06:08:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Write
+        or Call the White House | The White House", "url": "https:\/\/www.whitehouse.gov\/get-involved\/write-or-call\/",
+        "urlPingSuffix": "DevEx,5130.1", "about": [{"name": "White House"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov\/get-involved\/write-or-call", "snippet":
+        "Write a letter to the President. Here are a few simple things you can do
+        to make sure your message gets to the White House as quickly as possible.",
+        "dateLastCrawled": "2018-11-16T02:34:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "name": "President''s Management Agenda - whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2018\/03\/Presidents-Management-Agenda.pdf",
+        "urlPingSuffix": "DevEx,5141.1", "displayUrl": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2018\/03\/Presidents...",
+        "snippet": "President’s Management Agenda 1. Most Americans may not think
+        about the Federal Government every day—but when they need Government services,
+        they expect them to work.", "dateLastCrawled": "2018-11-11T11:41:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "The Executive
+        Branch | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/the-executive-branch\/",
+        "urlPingSuffix": "DevEx,5154.1", "about": [{"name": "Executive Office of the
+        President of the United States"}], "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/the-executive-branch",
+        "snippet": "The power of the Executive Branch is vested in the President
+        of the United States, who also acts as head of state and Commander-in-Chief
+        of the armed forces. The President is responsible for ...", "dateLastCrawled":
+        "2018-11-13T00:11:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
+        "name": "The White House", "url": "https:\/\/www.whitehouse.gov\/", "urlPingSuffix":
+        "DevEx,5168.1", "about": [{"name": "The White House"}, {"name": "whitehouse.gov"},
+        {"name": "White House"}], "displayUrl": "https:\/\/www.whitehouse.gov",
+        "snippet": "History of The White House. Our first president, George Washington,
+        selected the site for the White House in 1791. Every president since John
+        Adams has occupied the White House, and the history of ...", "dateLastCrawled":
+        "2018-11-16T14:40:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
+        "name": "Contact the White House | The White House", "url": "https:\/\/www.whitehouse.gov\/contact\/",
+        "urlPingSuffix": "DevEx,5181.1", "about": [{"name": "White House"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov\/contact", "snippet": "Keep me posted with
+        regular updates from the White House. required ...", "dateLastCrawled":
+        "2018-11-13T16:42:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
+        "name": "President Donald J. Trump’s 500 Days of American Greatness ...",
+        "url": "https:\/\/www.whitehouse.gov\/briefings-statements\/president-donald-j-trumps-500-days-american-greatness\/",
+        "urlPingSuffix": "DevEx,5193.1", "displayUrl": "https:\/\/www.whitehouse.gov\/briefings-statements\/president-donald-j...",
+        "snippet": "500 DAYS: In his first 500 days in office, President Donald
+        J. Trump has achieved results domestically and internationally for the American
+        people. Since taking office, President Trump has ...", "dateLastCrawled":
+        "2018-11-15T04:13:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
+        "name": "George W. Bush | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/george-w-bush\/",
+        "urlPingSuffix": "DevEx,5207.1", "about": [{"name": "George W. Bush"}, {"name":
+        "George H. W. Bush"}], "displayUrl": "https:\/\/www.whitehouse.gov\/...\/presidents\/george-w-bush",
+        "snippet": "George W. Bush, America’s 43rd President (2001-2009), was
+        transformed into a wartime President in the aftermath of the airborne terrorist
+        attacks on September 11, 2001, facing the “greatest ...", "dateLastCrawled":
+        "2018-11-14T23:36:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
+        "name": "William McKinley | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/william-mckinley\/",
+        "urlPingSuffix": "DevEx,5221.1", "about": [{"name": "William McKinley"}],
+        "displayUrl": "https:\/\/www.whitehouse.gov\/...\/presidents\/william-mckinley",
+        "snippet": "William McKinley was the 25th President of the United States,
+        serving from March 4, 1897, until his assassination on September 14, 1901,
+        after leading the nation to victory in the Spanish-American ...", "dateLastCrawled":
+        "2018-11-12T05:25:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        "name": "Statement from the President | The White House", "url": "https:\/\/www.whitehouse.gov\/briefings-statements\/statement-from-the-president-4\/",
+        "urlPingSuffix": "DevEx,5232.1", "displayUrl": "https:\/\/www.whitehouse.gov\/...\/statement-from-the-president-4",
+        "snippet": "As President, it is my duty to protect the interests of working
+        men and women, farmers, ranchers, businesses, and our country itself.", "dateLastCrawled":
+        "2018-11-13T18:05:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
+        "name": "President Donald J. Trump Approves North Carolina ...", "url":
+        "https:\/\/www.whitehouse.gov\/briefings-statements\/president-donald-j-trump-approves-north-carolina-emergency-declaration\/",
+        "urlPingSuffix": "DevEx,5244.1", "displayUrl": "https:\/\/www.whitehouse.gov\/briefings-statements\/president-donald-j...",
+        "snippet": "Today, President Donald J. Trump declared that an emergency
+        exists in the State of North Carolina and ordered Federal assistance to supplement
+        State, tribal, and local response efforts due to the ...", "dateLastCrawled":
+        "2018-11-16T13:12:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "Briefing Statements Archive | The White House", "url": "https:\/\/www.whitehouse.gov\/briefings-statements\/",
+        "urlPingSuffix": "DevEx,5257.1", "about": [{"name": "The White"}, {"name":
+        "White"}], "displayUrl": "https:\/\/www.whitehouse.gov\/briefings-statements",
+        "snippet": "Get official White House briefings, statements, and remarks
+        from President Donald J. Trump and members of his Administration.", "dateLastCrawled":
+        "2018-11-16T10:21:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
+        "name": "Richard M. Nixon | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/richard-m-nixon\/",
+        "urlPingSuffix": "DevEx,5271.1", "about": [{"name": "Richard Nixon"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov\/...\/presidents\/richard-m-nixon", "snippet":
+        "Richard Nixon was elected the 37th President of the United States (1969-1974)
+        after previously serving as a U.S. Representative and a U.S. Senator from
+        California. After successfully ending ...", "dateLastCrawled": "2018-11-14T18:11:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Theodore
+        Roosevelt | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/theodore-roosevelt\/",
+        "urlPingSuffix": "DevEx,5285.1", "about": [{"name": "Theodore Roosevelt"}],
+        "displayUrl": "https:\/\/www.whitehouse.gov\/...\/presidents\/theodore-roosevelt",
+        "snippet": "With the assassination of President William McKinley, Theodore
+        Roosevelt, not quite 43, became the 26th and youngest President in the
+        Nation’s history (1901-1909). He brought new excitement and ...", "dateLastCrawled":
+        "2018-11-12T08:12:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
+        "name": "Franklin Pierce | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/franklin-pierce\/",
+        "urlPingSuffix": "DevEx,5299.1", "about": [{"name": "Franklin Pierce"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov\/...\/presidents\/franklin-pierce", "snippet":
+        "Franklin Pierce became 14th President of the United States at a time
+        of apparent tranquility (1853-1857). By pursuing the recommendations of southern
+        advisers, Pierce — a New Englander — hoped ...", "dateLastCrawled": "2018-11-12T16:16:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Remarks
+        by President Trump to the 73rd Session of the ...", "url": "https:\/\/www.whitehouse.gov\/briefings-statements\/remarks-president-trump-73rd-session-united-nations-general-assembly-new-york-ny\/",
+        "urlPingSuffix": "DevEx,5311.1", "displayUrl": "https:\/\/www.whitehouse.gov\/briefings-statements\/remarks-president...",
+        "snippet": "THE PRESIDENT: Madam President, Mr. Secretary-General, world
+        leaders, ambassadors, and distinguished delegates: One year ago, I stood before
+        you for the first time in this grand hall. I addressed ...", "dateLastCrawled":
+        "2018-11-15T22:47:00.0000000Z"}]}, "rankingResponse": {"mainline": {"items":
+        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 19 Nov 2018 22:40:08 GMT
 recorded_with: VCR 4.0.0

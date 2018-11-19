@@ -848,4 +848,1814 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
   recorded_at: Thu, 22 Feb 2018 07:23:03 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=gov%20(site:usa.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '2077'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 19 Nov 2018 22:40:43 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=00BDA0348A1269B51C60AC988BC56860; path=/; expires=Sat, 14-Dec-2019 22:41:43
+        GMT; domain=bingapis.com
+      - MUIDB=00BDA0348A1269B51C60AC988BC56860; path=/; httponly; expires=Sat, 14-Dec-2019
+        22:41:43 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 19-Nov-2020 22:41:43 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=DFC7D47B494E4C0AB3F13CC5D6ACB9BF&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 19-Nov-2020 22:41:43 GMT; path=/
+      - SRCHUSR=DOB=20181119; domain=.bingapis.com; expires=Thu, 19-Nov-2020 22:41:43
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=3378EA19AF0069E60111E6B5AED7683E; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 14-Dec-2019 22:41:43 GMT; domain=bingapis.com
+      - _SS=SID=3378EA19AF0069E60111E6B5AED7683E; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - DE8A82BFCDF84DC6B851FE0B87016D24
+      X-Msedge-Clientid:
+      - 00BDA0348A1269B51C60AC988BC56860
+      X-Msapi-Userstate:
+      - d859
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: DE8A82BFCDF84DC6B851FE0B87016D24 Ref B: CO1EDGE0410 Ref C: 2018-11-19T22:41:43Z'
+      Date:
+      - Mon, 19 Nov 2018 22:41:42 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=25D1F8798C9F400DABB002E0DA127219&CID=00BDA0348A1269B51C60AC988BC56860&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=25D1F8798C9F400DABB002E0DA127219&CID=00BDA0348A1269B51C60AC988BC56860&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=gov+(site%3ausa.gov)",
+        "webSearchUrlPingSuffix": "DevEx,5444.1", "totalEstimatedMatches": 134000,
+        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
+        "USA - Official Guide to Government Information and Services", "url": "https:\/\/www.usa.gov\/",
+        "urlPingSuffix": "DevEx,5059.1", "about": [{"name": "United States"}], "displayUrl":
+        "https:\/\/www.usa.gov", "snippet": "The .gov means it''s official. Federal
+        government websites often end in .gov or .mil. Before sharing sensitive
+        information, make sure you''re on a federal government site.", "dateLastCrawled":
+        "2018-11-16T12:07:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
+        "name": "A-Z Index of U.S. Government Departments and Agencies", "url":
+        "https:\/\/www.usa.gov\/federal-agencies\/a", "urlPingSuffix": "DevEx,5075.1",
+        "displayUrl": "https:\/\/www.usa.gov\/federal-agencies", "snippet": "The
+        .gov means it''s official. Federal government websites often end in .gov
+        or .mil. Before sharing sensitive information, make sure you''re on a federal
+        government site. This site is secure. The https:\/\/ ensures that you are
+        connecting to the official website and that any information you provide is
+        ...", "dateLastCrawled": "2018-11-11T03:18:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        "name": "Government Benefits, Grants, and Loans | USAGov", "url": "https:\/\/www.usa.gov\/benefits-grants-loans",
+        "urlPingSuffix": "DevEx,5088.1", "displayUrl": "https:\/\/www.usa.gov\/benefits-grants-loans",
+        "snippet": "The .gov means it''s official. Federal government websites often
+        end in .gov or .mil. Before sharing sensitive information, make sure you''re
+        on a federal government site. This site is secure. The https:\/\/ ensures
+        that you are connecting to the official website and that any information you
+        provide is ...", "dateLastCrawled": "2018-11-13T12:45:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Unclaimed Money
+        from the Government | USAGov", "url": "https:\/\/www.usa.gov\/unclaimed-money",
+        "urlPingSuffix": "DevEx,5104.1", "displayUrl": "https:\/\/www.usa.gov\/unclaimed-money",
+        "snippet": "The .gov means it''s official. Federal government websites often
+        end in .gov or .mil. Before sharing sensitive information, make sure you''re
+        on a federal government site.", "dateLastCrawled": "2018-11-14T23:56:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Jobs
+        and Unemployment | USAGov", "url": "https:\/\/www.usa.gov\/jobs-and-unemployment",
+        "urlPingSuffix": "DevEx,5118.1", "displayUrl": "https:\/\/www.usa.gov\/jobs-and-unemployment",
+        "snippet": "The .gov means it''s official. Federal government websites often
+        end in .gov or .mil. Before sharing sensitive information, make sure you''re
+        on a federal government site. This site is secure. The https:\/\/ ensures
+        that you are connecting to the official website and that any information you
+        provide is ...", "dateLastCrawled": "2018-11-15T10:35:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "U.S. Government
+        Services and Information | USAGov", "url": "https:\/\/www.usa.gov\/topics",
+        "urlPingSuffix": "DevEx,5132.1", "displayUrl": "https:\/\/www.usa.gov\/topics",
+        "snippet": "The .gov means it''s official. Federal government websites often
+        end in .gov or .mil. Before sharing sensitive information, make sure you''re
+        on a federal government site. This site is secure. The https:\/\/ ensures
+        that you are connecting to the official website and that any information you
+        provide is ...", "dateLastCrawled": "2018-11-15T18:20:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Getting or Renewing
+        a U.S. Passport | USAGov", "url": "https:\/\/www.usa.gov\/passport", "urlPingSuffix":
+        "DevEx,5148.1", "displayUrl": "https:\/\/www.usa.gov\/passport", "snippet":
+        "The .gov means it''s official. Federal government websites often end in
+        .gov or .mil. Before sharing sensitive information, make sure you''re on
+        a federal government site.", "dateLastCrawled": "2018-11-13T22:14:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Looking
+        for a New Job | USAGov", "url": "https:\/\/www.usa.gov\/job-search", "urlPingSuffix":
+        "DevEx,5164.1", "displayUrl": "https:\/\/www.usa.gov\/job-search", "snippet":
+        "The .gov means it''s official. Federal government websites often end in
+        .gov or .mil. Before sharing sensitive information, make sure you''re on
+        a federal government site.", "dateLastCrawled": "2018-11-12T15:21:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Government
+        Agencies and Elected Officials | USAGov", "url": "https:\/\/www.usa.gov\/agencies",
+        "urlPingSuffix": "DevEx,5178.1", "about": [{"name": "Federal government of
+        the United States"}], "displayUrl": "https:\/\/www.usa.gov\/agencies", "snippet":
+        "The .gov means it''s official. Federal government websites often end in
+        .gov or .mil. Before sharing sensitive information, make sure you''re on
+        a federal government site.", "dateLastCrawled": "2018-11-16T02:55:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Find a
+        Federal Government Job | USAGov", "url": "https:\/\/www.usa.gov\/government-jobs",
+        "urlPingSuffix": "DevEx,5194.1", "displayUrl": "https:\/\/www.usa.gov\/government-jobs",
+        "snippet": "The federal government has job opportunities available now in
+        agencies throughout the U.S. If you’re interested in a job with the federal
+        government, visit USAJOBS.gov, the official one-stop source for federal
+        jobs and employment information. There, you can: You must create a USAJOBS
+        profile to ...", "dateLastCrawled": "2018-11-14T13:30:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Contact Us
+        | USAGov", "url": "https:\/\/www.usa.gov\/contact", "urlPingSuffix": "DevEx,5208.1",
+        "displayUrl": "https:\/\/www.usa.gov\/contact", "snippet": "USA.gov’s
+        information specialists can help you find information on federal agencies,
+        programs, benefits, services, and more. Chat with USA.gov USA.gov’s live
+        chat service can help you find information on federal agencies, programs,
+        benefits, services, and more.", "dateLastCrawled": "2018-11-13T05:29:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Branches
+        of the U.S. Government | USAGov", "url": "https:\/\/www.usa.gov\/branches-of-government",
+        "urlPingSuffix": "DevEx,5224.1", "about": [{"name": "Federal government of
+        the United States"}], "displayUrl": "https:\/\/www.usa.gov\/branches-of-government",
+        "snippet": "The .gov means it''s official. Federal government websites often
+        end in .gov or .mil. Before sharing sensitive information, make sure you''re
+        on a federal government site.", "dateLastCrawled": "2018-11-14T21:39:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "I | Government
+        Forms | USAGov", "url": "https:\/\/www.usa.gov\/forms\/i", "urlPingSuffix":
+        "DevEx,5240.1", "displayUrl": "https:\/\/www.usa.gov\/forms\/i", "snippet":
+        "The .gov means it''s official. Federal government websites often end
+        in .gov or .mil. Before sharing sensitive information, make sure you''re
+        on a federal government site.", "dateLastCrawled": "2018-11-15T21:44:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "About
+        USA.gov | USAGov", "url": "https:\/\/www.usa.gov\/about", "urlPingSuffix":
+        "DevEx,5254.1", "about": [{"name": "USA.gov"}], "displayUrl": "https:\/\/www.usa.gov\/about",
+        "snippet": "About USA.gov. Our mission is to create and organize timely,
+        needed government information and services and make them accessible anytime,
+        anywhere, via your channel of choice. About Us. Learn more about the history
+        and mission of USA.gov. Contact USA.gov.", "dateLastCrawled": "2018-11-13T17:29:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Travel
+        and Immigration | USAGov", "url": "https:\/\/www.usa.gov\/travel-and-immigration",
+        "urlPingSuffix": "DevEx,5268.1", "displayUrl": "https:\/\/www.usa.gov\/travel-and-immigration",
+        "snippet": "The .gov means it''s official. Federal government websites often
+        end in .gov or .mil. Before sharing sensitive information, make sure you''re
+        on a federal government site. This site is secure. The https:\/\/ ensures
+        that you are connecting to the official website and that any information you
+        provide is ...", "dateLastCrawled": "2018-11-15T04:38:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Money and
+        Credit | USAGov", "url": "https:\/\/www.usa.gov\/money", "urlPingSuffix":
+        "DevEx,5282.1", "displayUrl": "https:\/\/www.usa.gov\/money", "snippet":
+        "The .gov means it''s official. Federal government websites often end in
+        .gov or .mil. Before sharing sensitive information, make sure you''re on
+        a federal government site.", "dateLastCrawled": "2018-11-16T08:28:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Features
+        | USAGov", "url": "https:\/\/www.usa.gov\/features", "urlPingSuffix": "DevEx,5298.1",
+        "displayUrl": "https:\/\/www.usa.gov\/features", "snippet": "The .gov
+        means it''s official. Federal government websites often end in .gov or .mil.
+        Before sharing sensitive information, make sure you''re on a federal government
+        site.", "dateLastCrawled": "2018-11-15T20:11:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
+        "name": "Government Grants and Loans | USAGov", "url": "https:\/\/www.usa.gov\/grants",
+        "urlPingSuffix": "DevEx,5314.1", "displayUrl": "https:\/\/www.usa.gov\/grants",
+        "snippet": "The .gov means it''s official. Federal government websites often
+        end in .gov or .mil. Before sharing sensitive information, make sure you''re
+        on a federal government site.", "dateLastCrawled": "2018-11-12T14:24:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Health
+        | USAGov", "url": "https:\/\/www.usa.gov\/health", "urlPingSuffix": "DevEx,5328.1",
+        "displayUrl": "https:\/\/www.usa.gov\/health", "snippet": "The .gov
+        means it''s official. Federal government websites often end in .gov or .mil.
+        Before sharing sensitive information, make sure you''re on a federal government
+        site.", "dateLastCrawled": "2018-11-14T16:52:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
+        "name": "Small Business | USAGov", "url": "https:\/\/www.usa.gov\/business",
+        "urlPingSuffix": "DevEx,5342.1", "displayUrl": "https:\/\/www.usa.gov\/business",
+        "snippet": "The .gov means it''s official. Federal government websites often
+        end in .gov or .mil. Before sharing sensitive information, make sure you''re
+        on a federal government site.", "dateLastCrawled": "2018-11-11T18:13:00.0000000Z"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 19 Nov 2018 22:41:43 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=gov%20(site:.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '3280'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 19 Nov 2018 22:40:44 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=1179D345AE2566EA1A27DFE9AFF26755; path=/; expires=Sat, 14-Dec-2019 22:41:44
+        GMT; domain=bingapis.com
+      - MUIDB=1179D345AE2566EA1A27DFE9AFF26755; path=/; httponly; expires=Sat, 14-Dec-2019
+        22:41:44 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 19-Nov-2020 22:41:44 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=0DFFE6A8115A4A23B7AF8D3558921F81&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 19-Nov-2020 22:41:44 GMT; path=/
+      - SRCHUSR=DOB=20181119; domain=.bingapis.com; expires=Thu, 19-Nov-2020 22:41:44
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=32853AE21C5969070295364E1D8E688E; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 14-Dec-2019 22:41:44 GMT; domain=bingapis.com
+      - _SS=SID=32853AE21C5969070295364E1D8E688E; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - 57BF25C726094B00A015CC73065E3815
+      X-Msedge-Clientid:
+      - 1179D345AE2566EA1A27DFE9AFF26755
+      X-Msapi-Userstate:
+      - '2600'
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: 57BF25C726094B00A015CC73065E3815 Ref B: CO1EDGE0422 Ref C: 2018-11-19T22:41:44Z'
+      Date:
+      - Mon, 19 Nov 2018 22:41:44 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=9405107BFD7D48809C36C9561D7C3AD2&CID=1179D345AE2566EA1A27DFE9AFF26755&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=9405107BFD7D48809C36C9561D7C3AD2&CID=1179D345AE2566EA1A27DFE9AFF26755&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=gov+(site%3a.gov)",
+        "webSearchUrlPingSuffix": "DevEx,5426.1", "totalEstimatedMatches": 52400000,
+        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
+        "USA - Official Guide to Government Information and Services", "url": "https:\/\/www.usa.gov\/",
+        "urlPingSuffix": "DevEx,5058.1", "about": [{"name": "United States"}], "displayUrl":
+        "https:\/\/www.usa.gov", "snippet": "The .gov means it''s official. Federal
+        government websites often end in .gov or .mil. Before sharing sensitive
+        information, make sure you''re on a federal government site.", "dateLastCrawled":
+        "2018-11-16T12:07:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
+        "name": "Internal Revenue Service | An official website of the ...", "url":
+        "https:\/\/www.irs.gov\/", "urlPingSuffix": "DevEx,5071.1", "about": [{"name":
+        "Internal Revenue Service"}], "displayUrl": "https:\/\/www.irs.gov", "snippet":
+        "The Internal Revenue Service is the nation''s tax collection agency and
+        administers the Internal Revenue Code enacted by Congress.", "dateLastCrawled":
+        "2018-11-15T23:54:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        "name": "The United States Social Security Administration", "url": "http:\/\/www.ssa.gov\/",
+        "urlPingSuffix": "DevEx,5085.1", "about": [{"name": "Social Security Administration"}],
+        "displayUrl": "www.ssa.gov", "snippet": "Official website of the U.S. Social
+        Security Administration. When I made the decision to enlist in the Army,
+        I knew it was a lifetime commitment, whether I was in uniform or not.", "dateLastCrawled":
+        "2018-11-16T10:44:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "A-Z Index of U.S. Government Departments and Agencies", "url":
+        "https:\/\/www.usa.gov\/federal-agencies\/a", "urlPingSuffix": "DevEx,5101.1",
+        "displayUrl": "https:\/\/www.usa.gov\/federal-agencies", "snippet": "The
+        .gov means it''s official. Federal government websites often end in .gov
+        or .mil. Before sharing sensitive information, make sure you''re on a federal
+        government site. This site is secure. The https:\/\/ ensures that you are
+        connecting to the official website and that any information you provide is
+        ...", "dateLastCrawled": "2018-11-11T03:18:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
+        "name": "Medicare.gov: the official U.S. government site for Medicare",
+        "url": "https:\/\/www.medicare.gov\/", "urlPingSuffix": "DevEx,5115.1", "about":
+        [{"name": "Medicare"}], "displayUrl": "https:\/\/www.medicare.gov", "snippet":
+        "If you share our content on Facebook, Twitter, or other social media accounts,
+        we may track what Medicare.gov content you share. This helps us improve
+        our social media outreach. Selecting OFF will block this tracking.", "dateLastCrawled":
+        "2018-11-13T23:34:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
+        "name": "IN.gov | The Official Website of the State of Indiana", "url":
+        "https:\/\/www.in.gov\/", "urlPingSuffix": "DevEx,5129.1", "about": [{"name":
+        "Indiana"}, {"name": "Tennessee State Capitol"}], "displayUrl": "https:\/\/www.in.gov",
+        "snippet": "IN.gov is the official website of the State of Indiana and
+        your place to find information, services, news and events related to Indiana
+        government. AMBER ALERT But when you''re done reading it, click the close
+        button in the corner to dismiss this alert.", "dateLastCrawled": "2018-11-13T08:29:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "HealthCare.gov
+        - Get 2019 health coverage. Health ...", "url": "https:\/\/www.healthcare.gov\/",
+        "urlPingSuffix": "DevEx,5142.1", "about": [{"name": "HealthCare.gov"}], "displayUrl":
+        "https:\/\/www.healthcare.gov", "snippet": "Official site of Affordable
+        Care Act. Enroll now for 2019 coverage. See health coverage choices, ways
+        to save today, how law affects you.", "dateLastCrawled": "2018-11-13T18:37:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "USAJOBS
+        - The Federal Government''s Official Jobs Site", "url": "https:\/\/www.usajobs.gov\/",
+        "urlPingSuffix": "DevEx,5155.1", "about": [{"name": "USAJOBS"}, {"name": "USAJOBS"}],
+        "displayUrl": "https:\/\/www.usajobs.gov", "snippet": "USAJOBS is the
+        Federal Government''s official one-stop source for Federal jobs and employment
+        information.", "dateLastCrawled": "2018-11-12T08:38:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "U.S. Government
+        Services and Information | USAGov", "url": "https:\/\/www.usa.gov\/topics",
+        "urlPingSuffix": "DevEx,5169.1", "displayUrl": "https:\/\/www.usa.gov\/topics",
+        "snippet": "The .gov means it''s official. Federal government websites often
+        end in .gov or .mil. Before sharing sensitive information, make sure you''re
+        on a federal government site. This site is secure. The https:\/\/ ensures
+        that you are connecting to the official website and that any information you
+        provide is ...", "dateLastCrawled": "2018-11-15T18:20:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "National Weather
+        Service", "url": "https:\/\/www.weather.gov\/", "urlPingSuffix": "DevEx,5183.1",
+        "about": [{"name": "National Weather Service"}, {"name": "National Weather
+        Service"}], "displayUrl": "https:\/\/www.weather.gov", "snippet": "NOAA
+        National Weather Service National Weather Service. Fire Weather Threat Waning
+        in Southern California; Early Season Winter Storm Impacting the Ohio\/Mississippi
+        Valleys and the East Coast States", "dateLastCrawled": "2018-11-16T09:22:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Welcome
+        to the California State Web Portal", "url": "http:\/\/www.ca.gov\/", "urlPingSuffix":
+        "DevEx,5197.1", "about": [{"name": "Missouri AT"}, {"name": "California"}],
+        "displayUrl": "www.ca.gov", "snippet": "California has been hit with devastating
+        wildfires and other natural disasters in both the northern and southern parts
+        of the state. If you need more information about recovery or resources, go
+        to www.caloes.ca.gov", "dateLastCrawled": "2018-11-16T06:07:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Tennessee
+        State Government - TN.gov", "url": "http:\/\/www.tn.gov\/", "urlPingSuffix":
+        "DevEx,5211.1", "about": [{"name": "Tennessee State Capitol"}, {"name": "Tennessee"},
+        {"name": "Tennessee State Capitol"}], "displayUrl": "www.tn.gov", "snippet":
+        "Tennessee Gov. Bill Haslam and Department of Economic and Community Development
+        Commissioner Bob Rolfe announced today that Amazon will invest more than $230
+        million to establish a new Operations Center of Excellence in downtown Nashville.",
+        "dateLastCrawled": "2018-11-15T20:10:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
+        "name": "CalCareers - State of California", "url": "https:\/\/jobs.ca.gov\/",
+        "urlPingSuffix": "DevEx,5225.1", "about": [{"name": "JobsMoGov"}], "displayUrl":
+        "https:\/\/jobs.ca.gov", "snippet": "The State of California offers its
+        employees generous benefits that include retirement and savings plans, health
+        and dental insurance, and access to long-term disability and long-term care
+        insurance.", "dateLastCrawled": "2018-11-16T07:14:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        "name": "U.S. Department of State | Home Page", "url": "https:\/\/www.state.gov\/",
+        "urlPingSuffix": "DevEx,5239.1", "about": [{"name": "United States Department
+        of State"}], "displayUrl": "https:\/\/www.state.gov", "snippet": "State
+        Department honors those who have served in the United States’ armed forces
+        on Veterans Day, and each and every day, by providing education, fellowship,
+        and job exposure to veterans and transitioning military to become the diplomats
+        of tomorrow.", "dateLastCrawled": "2018-11-14T19:16:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "PA.GOV | The
+        Official Website for the Commonwealth of ...", "url": "https:\/\/www.pa.gov\/",
+        "urlPingSuffix": "DevEx,5253.1", "about": [{"name": "Pennsylvania"}, {"name":
+        "Commonwealth Gov .Sch."}, {"name": "Pennsylvania"}], "displayUrl": "https:\/\/www.pa.gov",
+        "snippet": "PA.GOV | The Official Website for the Commonwealth of Pennsylvania.
+        The official website of the Commonwealth of Pennsylvania. Find information
+        and services from Pennsylvania state government agencies.", "dateLastCrawled":
+        "2018-11-14T00:40:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "Government Benefits, Grants, and Loans | USAGov", "url": "https:\/\/www.usa.gov\/benefits-grants-loans",
+        "urlPingSuffix": "DevEx,5266.1", "displayUrl": "https:\/\/www.usa.gov\/benefits-grants-loans",
+        "snippet": "The .gov means it''s official. Federal government websites often
+        end in .gov or .mil. Before sharing sensitive information, make sure you''re
+        on a federal government site. This site is secure. The https:\/\/ ensures
+        that you are connecting to the official website and that any information you
+        provide is ...", "dateLastCrawled": "2018-11-13T12:45:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Home [www.dmv.ca.gov]",
+        "url": "https:\/\/www.dmv.ca.gov\/portal\/dmv", "urlPingSuffix": "DevEx,5280.1",
+        "about": [{"name": "California Department of Motor Vehicles"}], "displayUrl":
+        "https:\/\/www.dmv.ca.gov", "snippet": "California DMV Home Page is available
+        for customers to check out publications, download forms, brochures, FAQs,
+        Vehicle Information, Boats, Vessel, and Field Offices.", "dateLastCrawled":
+        "2018-11-16T11:39:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
+        "name": "Home | DotGov", "url": "https:\/\/www.dotgov.gov\/", "urlPingSuffix":
+        "DevEx,5294.1", "about": [{"name": "gov"}], "displayUrl": "https:\/\/www.dotgov.gov",
+        "snippet": "The .gov means it’s official. Federal government websites often
+        end in .gov or .mil. Before sharing sensitive information, make sure you''re
+        on a federal government site.", "dateLastCrawled": "2018-11-15T02:57:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Unclaimed
+        Money from the Government | USAGov", "url": "https:\/\/www.usa.gov\/unclaimed-money",
+        "urlPingSuffix": "DevEx,5310.1", "displayUrl": "https:\/\/www.usa.gov\/unclaimed-money",
+        "snippet": "The .gov means it''s official. Federal government websites often
+        end in .gov or .mil. Before sharing sensitive information, make sure you''re
+        on a federal government site.", "dateLastCrawled": "2018-11-14T23:56:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Texas.gov
+        | The Official Website of the State of Texas", "url": "https:\/\/texas.gov\/",
+        "urlPingSuffix": "DevEx,5324.1", "about": [{"name": "Texas"}], "displayUrl":
+        "https:\/\/texas.gov", "snippet": "Texas.gov does not sell and does
+        not generally release (other than as provided in this policy) personally identifiable
+        information to third parties; however, information provided to any governmental
+        body may be subject to disclosure pursuant to the Texas Public Information
+        Act and applicable federal and state legislation.", "dateLastCrawled": "2018-11-13T13:43:00.0000000Z"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 19 Nov 2018 22:41:44 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=gobierno%20(site:usa.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '2737'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 19 Nov 2018 22:40:44 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=09ECF1997AAB6C241370FD357B7C6D5F; path=/; expires=Sat, 14-Dec-2019 22:41:44
+        GMT; domain=bingapis.com
+      - MUIDB=09ECF1997AAB6C241370FD357B7C6D5F; path=/; httponly; expires=Sat, 14-Dec-2019
+        22:41:44 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 19-Nov-2020 22:41:44 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=F57358C541F24927975058B14F7990D6&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 19-Nov-2020 22:41:44 GMT; path=/
+      - SRCHUSR=DOB=20181119; domain=.bingapis.com; expires=Thu, 19-Nov-2020 22:41:44
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=0849083CEFF96ECF09690490EE2E6FA3; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 14-Dec-2019 22:41:44 GMT; domain=bingapis.com
+      - _SS=SID=0849083CEFF96ECF09690490EE2E6FA3; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - 83F5CF13ABCC4902A2F2D9E3507EF11C
+      X-Msedge-Clientid:
+      - '09ECF1997AAB6C241370FD357B7C6D5F'
+      X-Msapi-Userstate:
+      - '3583'
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: 83F5CF13ABCC4902A2F2D9E3507EF11C Ref B: CO1EDGE0209 Ref C: 2018-11-19T22:41:44Z'
+      Date:
+      - Mon, 19 Nov 2018 22:41:44 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=E07A4D9EB3B14A13A40B0B8EC677E405&CID=09ECF1997AAB6C241370FD357B7C6D5F&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=E07A4D9EB3B14A13A40B0B8EC677E405&CID=09ECF1997AAB6C241370FD357B7C6D5F&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=gobierno+(site%3ausa.gov)",
+        "webSearchUrlPingSuffix": "DevEx,5422.1", "totalEstimatedMatches": 108000,
+        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
+        "Guía oficial de información y servicios del Gobierno | USAGov", "url":
+        "https:\/\/gobierno.usa.gov\/", "urlPingSuffix": "DevEx,5057.1", "about":
+        [{"name": "GobiernoUSA.gov"}], "displayUrl": "https:\/\/gobierno.usa.gov",
+        "snippet": "Página principal de GobiernoUSA.gov, el portal oficial del Gobierno
+        de Estados Unidos en español.", "dateLastCrawled": "2018-11-16T08:29:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Servicios
+        e información del Gobierno | USAGov", "url": "https:\/\/gobierno.usa.gov\/servicios-informacion",
+        "urlPingSuffix": "DevEx,5070.1", "displayUrl": "https:\/\/gobierno.usa.gov\/servicios-informacion",
+        "snippet": "El dominio .gov significa que es oficial. Los sitios del Gobierno
+        federal frecuentemente terminan en dominios .gov o .mil. Antes de compartir
+        información confidencial, asegúrese de que está en un sitio del Gobierno
+        federal.", "dateLastCrawled": "2018-11-14T09:33:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        "name": "Agencias y funcionarios del Gobierno | USAGov", "url": "https:\/\/gobierno.usa.gov\/agencias-gobierno",
+        "urlPingSuffix": "DevEx,5085.1", "displayUrl": "https:\/\/gobierno.usa.gov\/agencias-gobierno",
+        "snippet": "El dominio .gov significa que es oficial. Los sitios del Gobierno
+        federal frecuentemente terminan en dominios .gov o .mil. Antes de compartir
+        información confidencial, asegúrese de que está en un sitio del Gobierno
+        federal.", "dateLastCrawled": "2018-11-14T22:24:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "Vivienda | USAGov - gobierno.usa.gov", "url": "https:\/\/gobierno.usa.gov\/vivienda",
+        "urlPingSuffix": "DevEx,5098.1", "displayUrl": "https:\/\/gobierno.usa.gov\/vivienda",
+        "snippet": "Ayuda con asuntos de vivienda. Recursos para encontrar vivienda
+        para grupos con necesidades específicas. Ayuda con la compra de una vivienda.
+        Conozca los programas del Gobierno que le facilitan la compra de una casa.",
+        "dateLastCrawled": "2018-11-12T18:18:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
+        "name": "Recursos para la educación | USAGov - gobierno.usa.gov", "url":
+        "https:\/\/gobierno.usa.gov\/educacion", "urlPingSuffix": "DevEx,5111.1",
+        "displayUrl": "https:\/\/gobierno.usa.gov\/educacion", "snippet": "Antes
+        de compartir información confidencial, asegúrese de que está en un sitio del
+        Gobierno federal. Este sitio es seguro. El protocolo https:\/\/ le asegura
+        que se está conectando al sitio web oficial y que cualquier información que
+        usted proporcione está encriptada y será transmitida de forma segura.", "dateLastCrawled":
+        "2018-11-13T04:44:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
+        "name": "Novedades | USAGov - gobierno.usa.gov", "url": "https:\/\/gobierno.usa.gov\/novedades",
+        "urlPingSuffix": "DevEx,5126.1", "displayUrl": "https:\/\/gobierno.usa.gov\/novedades",
+        "snippet": "Antes de compartir información confidencial, asegúrese de que
+        está en un sitio del Gobierno federal. Este sitio es seguro. El protocolo
+        https:\/\/ le asegura que se está conectando al sitio web oficial y que cualquier
+        información que usted proporcione está encriptada y será transmitida de forma
+        segura.", "dateLastCrawled": "2018-11-15T18:12:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "name": "Directorios del Gobierno | USAGov", "url": "https:\/\/gobierno.usa.gov\/directorios",
+        "urlPingSuffix": "DevEx,5139.1", "displayUrl": "https:\/\/gobierno.usa.gov\/directorios",
+        "snippet": "El dominio .gov significa que es oficial. Los sitios del Gobierno
+        federal frecuentemente terminan en dominios .gov o .mil. Antes de compartir
+        información confidencial, asegúrese de que está en un sitio del Gobierno
+        federal.", "dateLastCrawled": "2018-11-11T10:32:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "name": "Cómo obtener o renovar el pasaporte | USAGov", "url": "https:\/\/gobierno.usa.gov\/pasaportes-documentos-de-viaje",
+        "urlPingSuffix": "DevEx,5154.1", "displayUrl": "https:\/\/gobierno.usa.gov\/pasaportes-documentos-de-viaje",
+        "snippet": "Antes de compartir información confidencial, asegúrese de que
+        está en un sitio del Gobierno federal. Este sitio es seguro. El protocolo
+        https:\/\/ le asegura que se está conectando al sitio web oficial y que cualquier
+        información que usted proporcione está encriptada y será transmitida de forma
+        segura.", "dateLastCrawled": "2018-11-15T15:33:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
+        "name": "Programas sociales | USAGov - gobierno.usa.gov", "url": "https:\/\/gobierno.usa.gov\/programas-sociales",
+        "urlPingSuffix": "DevEx,5168.1", "displayUrl": "https:\/\/gobierno.usa.gov\/programas-sociales",
+        "snippet": "Beneficios sociales y ayuda financiera del Gobierno para familias
+        o personas con ingresos limitados para cubrir sus necesidades básicas.", "dateLastCrawled":
+        "2018-11-13T10:20:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
+        "name": "USA - Official Guide to Government Information and Services", "url":
+        "https:\/\/www.usa.gov\/", "urlPingSuffix": "DevEx,5181.1", "about": [{"name":
+        "United States"}], "displayUrl": "https:\/\/www.usa.gov", "snippet": "USA.gov
+        can help you start your search for government information by topic and agency.",
+        "dateLastCrawled": "2018-11-16T12:07:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
+        "name": "Trabajo y desempleo | USAGov - gobierno.usa.gov", "url": "https:\/\/gobierno.usa.gov\/trabajo-y-desempleo",
+        "urlPingSuffix": "DevEx,5194.1", "displayUrl": "https:\/\/gobierno.usa.gov\/trabajo-y-desempleo",
+        "snippet": "Antes de compartir información confidencial, asegúrese de que
+        está en un sitio del Gobierno federal. Este sitio es seguro. El protocolo
+        https:\/\/ le asegura que se está conectando al sitio web oficial y que cualquier
+        información que usted proporcione está encriptada y será transmitida de forma
+        segura.", "dateLastCrawled": "2018-11-09T22:23:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
+        "name": "Explorar USAGov en español | GobiernoUSA.gov", "url": "https:\/\/gobierno.usa.gov\/explorar\/",
+        "urlPingSuffix": "DevEx,5207.1", "displayUrl": "https:\/\/gobierno.usa.gov\/explorar",
+        "snippet": "USAGov es un programa federal que lo conecta a la información
+        y los servicios de las agencias, los departamentos y programas del Gobierno.
+        En USAGov encontrará respuestas a sus preguntas en español y en inglés—por
+        Internet, teléfono, chat o en nuestra Guía del Consumidor.", "dateLastCrawled":
+        "2018-11-10T04:36:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
+        "name": "Government Benefits, Grants, and Loans | USAGov", "url": "https:\/\/www.usa.gov\/benefits-grants-loans",
+        "urlPingSuffix": "DevEx,5220.1", "displayUrl": "https:\/\/www.usa.gov\/benefits-grants-loans",
+        "snippet": "The .gov means it''s official. Federal government websites often
+        end in .gov or .mil. Before sharing sensitive information, make sure you''re
+        on a federal government site. This site is secure. The https:\/\/ ensures
+        that you are connecting to the official website and that any information you
+        provide is ...", "dateLastCrawled": "2018-11-13T12:45:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Centro de atención
+        al cliente | USAGov - gobierno.usa.gov", "url": "https:\/\/gobierno.usa.gov\/contactenos",
+        "urlPingSuffix": "DevEx,5235.1", "displayUrl": "https:\/\/gobierno.usa.gov\/contactenos",
+        "snippet": "Antes de compartir información confidencial, asegúrese de que
+        está en un sitio del Gobierno federal. Este sitio es seguro. El protocolo
+        https:\/\/ le asegura que se está conectando al sitio web oficial y que cualquier
+        información que usted proporcione está encriptada y será transmitida de forma
+        segura.", "dateLastCrawled": "2018-11-06T12:15:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
+        "name": "Subastas y ventas del Gobierno | USAGov", "url": "https:\/\/gobierno.usa.gov\/subastas-ventas-gobierno",
+        "urlPingSuffix": "DevEx,5250.1", "displayUrl": "https:\/\/gobierno.usa.gov\/subastas-ventas-gobierno",
+        "snippet": "Cuando el Gobierno tiene equipo adicional, bienes confiscados
+        o propiedades embargadas, los bienes se venden al público. Usted encontrará
+        una variedad de bienes en venta como autos, camiones, propiedades, casas,
+        edificios, terrenos, computadoras, mobiliario y herramientas de trabajo.",
+        "dateLastCrawled": "2018-11-10T06:58:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "Ciudadanía, inmigración y viajes | USAGov - gobierno.usa.gov",
+        "url": "https:\/\/gobierno.usa.gov\/ciudadania-inmigracion-viajes", "urlPingSuffix":
+        "DevEx,5263.1", "displayUrl": "https:\/\/gobierno.usa.gov\/ciudadania-inmigracion-viajes",
+        "snippet": "El dominio .gov significa que es oficial. Los sitios del Gobierno
+        federal frecuentemente terminan en dominios .gov o .mil. Antes de compartir
+        información confidencial, asegúrese de que está en un sitio del Gobierno
+        federal.", "dateLastCrawled": "2018-11-14T17:56:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
+        "name": "Ramas Legislativas del Gobierno | USAGov", "url": "https:\/\/gobierno.usa.gov\/ramas-del-gobierno",
+        "urlPingSuffix": "DevEx,5278.1", "displayUrl": "https:\/\/gobierno.usa.gov\/ramas-del-gobierno",
+        "snippet": "El Gobierno federal funciona bajo un sistema cuyo objetivo principal
+        es proteger los intereses de sus ciudadanos. La rama legislativa. El Congreso
+        representa la rama del poder legislativo y está conformado por la Cámara de
+        Representantes y el Senado.", "dateLastCrawled": "2018-11-07T07:23:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Dinero
+        y crédito | USAGov - gobierno.usa.gov", "url": "https:\/\/gobierno.usa.gov\/dinero",
+        "urlPingSuffix": "DevEx,5290.1", "displayUrl": "https:\/\/gobierno.usa.gov\/dinero",
+        "snippet": "Antes de compartir información confidencial, asegúrese de que
+        está en un sitio del Gobierno federal. Este sitio es seguro. El protocolo
+        https:\/\/ le asegura que se está conectando al sitio web oficial y que cualquier
+        información que usted proporcione está encriptada y será transmitida de forma
+        segura.", "dateLastCrawled": "2018-11-11T20:36:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
+        "name": "Empleo y capacitación laboral | USAGov - gobierno.usa.gov", "url":
+        "https:\/\/gobierno.usa.gov\/empleo-capacitacion-laboral", "urlPingSuffix":
+        "DevEx,5305.1", "displayUrl": "https:\/\/gobierno.usa.gov\/empleo-capacitacion-laboral",
+        "snippet": "El dominio .gov significa que es oficial. Los sitios del Gobierno
+        federal frecuentemente terminan en dominios .gov o .mil. Antes de compartir
+        información confidencial, asegúrese de que está en un sitio del Gobierno
+        federal.", "dateLastCrawled": "2018-11-07T14:25:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
+        "name": "Quienes Somos | USAGov - gobierno.usa.gov", "url": "https:\/\/gobierno.usa.gov\/quienes-somos",
+        "urlPingSuffix": "DevEx,5320.1", "displayUrl": "https:\/\/gobierno.usa.gov\/quienes-somos",
+        "snippet": "Quiénes somos Nuestra misión. Crear y organizar información y
+        servicios del Gobierno oportunos y necesarios para que el público los pueda
+        acceder en cualquier momento, desde cualquier lugar y con cualquier dispositivo
+        electrónico.", "dateLastCrawled": "2018-11-13T11:42:00.0000000Z"}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 19 Nov 2018 22:41:45 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=gobierno%20(site:.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '3655'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 19 Nov 2018 22:40:45 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=1C7FD14C87636A63234CDDE086B46B11; path=/; expires=Sat, 14-Dec-2019 22:41:45
+        GMT; domain=bingapis.com
+      - MUIDB=1C7FD14C87636A63234CDDE086B46B11; path=/; httponly; expires=Sat, 14-Dec-2019
+        22:41:45 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 19-Nov-2020 22:41:45 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=69FE89145C8E47F1B48C4D95465ED989&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 19-Nov-2020 22:41:45 GMT; path=/
+      - SRCHUSR=DOB=20181119; domain=.bingapis.com; expires=Thu, 19-Nov-2020 22:41:45
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=12F62B4AF9176B16358227E6F8C06A2C; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 14-Dec-2019 22:41:45 GMT; domain=bingapis.com
+      - _SS=SID=12F62B4AF9176B16358227E6F8C06A2C; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - 73970263CAA34AB98473D5EF500D9453
+      X-Msedge-Clientid:
+      - 1C7FD14C87636A63234CDDE086B46B11
+      X-Msapi-Userstate:
+      - '2828'
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: 73970263CAA34AB98473D5EF500D9453 Ref B: CO1EDGE0211 Ref C: 2018-11-19T22:41:45Z'
+      Date:
+      - Mon, 19 Nov 2018 22:41:44 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=8D3A20ADD43B4E2E8DA975751A8517DE&CID=1C7FD14C87636A63234CDDE086B46B11&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=8D3A20ADD43B4E2E8DA975751A8517DE&CID=1C7FD14C87636A63234CDDE086B46B11&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=gobierno+(site%3a.gov)",
+        "webSearchUrlPingSuffix": "DevEx,5406.1", "totalEstimatedMatches": 3440000,
+        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
+        "PR.gov - Portal Oficial del Estado Libre Asociado de ...", "url": "http:\/\/pr.gov\/",
+        "urlPingSuffix": "DevEx,5058.1", "about": [{"name": "Missouri AT"}, {"name":
+        "Puerto Rico"}], "displayUrl": "pr.gov", "snippet": "Es el medio oficial
+        de avisos de subastas de todas las agencias de la Rama Ejecutiva y las corporaciones
+        públicas del Gobierno del Estado Libre Asociado de Puerto Rico, según la
+        Ley Núm 205-2012.", "dateLastCrawled": "2018-11-12T20:11:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Guía oficial
+        de información y servicios del Gobierno | USAGov", "url": "https:\/\/gobierno.usa.gov\/",
+        "urlPingSuffix": "DevEx,5070.1", "about": [{"name": "GobiernoUSA.gov"}], "displayUrl":
+        "https:\/\/gobierno.usa.gov", "snippet": "Página principal de GobiernoUSA.gov,
+        el portal oficial del Gobierno de Estados Unidos en español.", "dateLastCrawled":
+        "2018-11-16T08:29:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        "name": "informacion de formularios prgov Solicitud de ...", "url": "http:\/\/www2.pr.gov\/pages\/informaciondeformulariosprgovsolicituddecertificaci%C3%B3ndecumplimientodeasume.aspx",
+        "urlPingSuffix": "DevEx,5083.1", "displayUrl": "www2.pr.gov\/pages...",
+        "snippet": "Para desplegar correctamente los formularios en PR.GOV debe activar
+        el “Compatibility View”, requerido al actualizar a Internet Explorer 8 y 9.
+        Tiene dos opciones: Opción 1: Presionar el botón de Compatibility View. Cuando
+        accede el portal PR.GOV aparecerá a la derecha del navegador.", "dateLastCrawled":
+        "2018-11-15T11:26:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "Convocatorias y Becas Busqueda de Convocatorias y Becas", "url":
+        "http:\/\/www2.pr.gov\/Pages\/empleos.aspx", "urlPingSuffix": "DevEx,5096.1",
+        "displayUrl": "www2.pr.gov\/Pages\/empleos.aspx", "snippet": "Gobierno
+        Federal; Tercer Sector; Directorios. Directorio de Agencias; Directorio de
+        Municipios de Puerto Rico; La Fortaleza; Líneas de Ayuda para Emergencias;
+        Junta Revisora de Propiedead Inmueble; Ventanilla Unica. Ventanilla Única
+        Villalba; Ventanilla Única Vega Baja; Ventanilla Única Toa Alta;", "dateLastCrawled":
+        "2018-11-16T08:39:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
+        "name": "Directorio de Agencias - PR.gov", "url": "http:\/\/www2.pr.gov\/Directorios\/Pages\/DirectoriodeAgencias.aspx",
+        "urlPingSuffix": "DevEx,5108.1", "displayUrl": "www2.pr.gov\/Directorios\/Pages\/DirectoriodeAgencias.aspx",
+        "snippet": "Gobierno a Gobierno; Convocatorias; Subastas Públicas ‹ ›
+        Directorio de Agencias. Sobre Puerto Rico ...", "dateLastCrawled": "2018-11-14T17:02:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Servicios
+        e información del Gobierno | USAGov", "url": "https:\/\/gobierno.usa.gov\/servicios-informacion",
+        "urlPingSuffix": "DevEx,5121.1", "displayUrl": "https:\/\/gobierno.usa.gov\/servicios-informacion",
+        "snippet": "El dominio .gov significa que es oficial. Los sitios del Gobierno
+        federal frecuentemente terminan en dominios .gov o .mil. Antes de compartir
+        información confidencial, asegúrese de que está en un sitio del Gobierno
+        federal.", "dateLastCrawled": "2018-11-14T09:33:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "name": "Portal Oficial Del - pr.gov", "url": "http:\/\/www2.pr.gov\/Pages\/servicefilter.aspx?searchTerm=desempleo",
+        "urlPingSuffix": "DevEx,5134.1", "displayUrl": "www2.pr.gov\/Pages\/servicefilter.aspx?searchTerm=desempleo",
+        "snippet": "Página del Gobierno Federal que se utiliza para la búsqueda
+        de personas desaparecidas. Gratis. Portal de Datos Geográficos Gubernamentales
+        – GIS. Este portal centraliza los datos geográficos digitales producidos por
+        las agencias y corporaciones desde 2001-2012 donde los ciudadanos tendrán
+        acceso a esos datos.", "dateLastCrawled": "2018-11-15T09:49:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Directorio
+        Gubernamental", "url": "http:\/\/www2.pr.gov\/Directorios\/Pages\/Directorios.aspx",
+        "urlPingSuffix": "DevEx,5147.1", "displayUrl": "www2.pr.gov\/Directorios\/Pages\/Directorios.aspx",
+        "snippet": "Directorio de Agencias. Aquí accederá al Directorio de Agencias
+        del Estado Libre Asociado de Puerto Rico, con alternativas de búsqueda e información
+        de contacto de todas las entidades de nuestro gobierno.", "dateLastCrawled":
+        "2018-11-12T21:55:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
+        "name": "PR.gov - Nuevo Servicio para Solicitar un Certificado de ...", "url":
+        "https:\/\/servicios.pr.gov\/info", "urlPingSuffix": "DevEx,5160.1", "displayUrl":
+        "https:\/\/servicios.pr.gov\/info", "snippet": "Este nuevo servicio se encuentra
+        en un periodo de mejoramiento continuo conocido como beta. Durante este periodo,
+        el servicio será completamente gratuito y todos los certificados emitidos
+        mediante el mismo son oficiales.", "dateLastCrawled": "2018-11-15T04:29:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "search
+        - PR.gov", "url": "http:\/\/www2.pr.gov\/Pages\/search.aspx", "urlPingSuffix":
+        "DevEx,5173.1", "displayUrl": "www2.pr.gov\/Pages\/search.aspx", "snippet":
+        "A través de este servicio usted podrá realiza una pre-cualificación para
+        el Programa Medicaid \/ Plan de Salud del Gobierno. Le indica el número
+        de teléfono a llamar para realizar una cita o recibir orientación. Gratis.
+        N\/A. Buscador de Escuelas.", "dateLastCrawled": "2018-11-13T22:00:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "USA
+        - Official Guide to Government Information and Services", "url": "https:\/\/www.usa.gov\/",
+        "urlPingSuffix": "DevEx,5186.1", "about": [{"name": "United States"}], "displayUrl":
+        "https:\/\/www.usa.gov", "snippet": "USA.gov can help you start your search
+        for government information by topic and agency.", "dateLastCrawled": "2018-11-16T12:07:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Solicitud
+        de Certificación de Cumplimiento de ASUME", "url": "http:\/\/pr.gov\/CitizenPortal\/124-002-002-000.htm?TRX=124002002000",
+        "urlPingSuffix": "DevEx,5198.1", "displayUrl": "pr.gov\/CitizenPortal\/124-002-002-000.htm?TRX=124002002000",
+        "snippet": "Mediante esta transacción el ciudadano puede solicitar un documento
+        que certifica si tiene o no tiene un caso de pensión alimentaria en ASUME.",
+        "dateLastCrawled": "2018-11-15T17:17:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
+        "name": "Departamento de Estado", "url": "https:\/\/estado.pr.gov\/es\/",
+        "urlPingSuffix": "DevEx,5211.1", "about": [{"name": "Puerto Rico Department
+        of State"}], "displayUrl": "https:\/\/estado.pr.gov\/es", "snippet": "Secretario
+        de Estado destaca que Mesa Permanente del Sector Privado continúa sus esfuerzos
+        con el Gobierno para mejorar y maximizar servicios Viernes, 9 de noviembre
+        de 2018 – (San Juan) – El …", "dateLastCrawled": "2018-11-16T10:12:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "PR.gov
+        - Nuevo Servicio para Solicitar un Certificado de ...", "url": "https:\/\/servicios.pr.gov\/",
+        "urlPingSuffix": "DevEx,5224.1", "displayUrl": "https:\/\/servicios.pr.gov",
+        "snippet": "El Gobierno del Estado Libre Asociado de Puerto Rico se compromete
+        a brindar servicios de alta calidad a través del Portal, dentro de las circunstancias
+        particulares del medio cibernético. El Gobierno del Estado Libre Asociado
+        de Puerto Rico se compromete a cumplir con la Política de Privacidad publicada
+        en el Portal.", "dateLastCrawled": "2018-11-13T18:28:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "subastas", "url":
+        "http:\/\/www2.pr.gov\/subasta\/Pages\/subastas.aspx", "urlPingSuffix": "DevEx,5237.1",
+        "displayUrl": "www2.pr.gov\/subasta\/Pages\/subastas.aspx", "snippet": "para
+        establecer contrato de selecciÓn mÚltiple para el servicio de disposiciÓn
+        de documento pÚblicos para los departamentos,dependencias,agencias e instrumentalidades
+        de la rama ejecutiva,las corporaciones pÚblicas y los municipios del gobierno
+        de puerto rico (18-135-c)", "dateLastCrawled": "2018-11-15T21:59:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Agencias
+        y funcionarios del Gobierno | USAGov", "url": "https:\/\/gobierno.usa.gov\/agencias-gobierno",
+        "urlPingSuffix": "DevEx,5252.1", "displayUrl": "https:\/\/gobierno.usa.gov\/agencias-gobierno",
+        "snippet": "El dominio .gov significa que es oficial. Los sitios del Gobierno
+        federal frecuentemente terminan en dominios .gov o .mil. Antes de compartir
+        información confidencial, asegúrese de que está en un sitio del Gobierno
+        federal.", "dateLastCrawled": "2018-11-14T22:24:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
+        "name": "Vivienda | USAGov - gobierno.usa.gov", "url": "https:\/\/gobierno.usa.gov\/vivienda",
+        "urlPingSuffix": "DevEx,5265.1", "displayUrl": "https:\/\/gobierno.usa.gov\/vivienda",
+        "snippet": "Ayuda con asuntos de vivienda. Recursos para encontrar vivienda
+        para grupos con necesidades específicas. Ayuda con la compra de una vivienda.
+        Conozca los programas del Gobierno que le facilitan la compra de una casa.",
+        "dateLastCrawled": "2018-11-12T18:18:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
+        "name": "Portal Oficial Del - pr.gov", "url": "http:\/\/www2.pr.gov\/Directorios\/Pages\/InfoAgencia.aspx?PRIFA=024",
+        "urlPingSuffix": "DevEx,5278.1", "displayUrl": "www2.pr.gov\/Directorios\/Pages\/InfoAgencia.aspx?PRIFA=024",
+        "snippet": "El Plan de Reorganización Núm. 3 de 22 de junio de 1994, que reorganiza
+        el Departamento de Hacienda como el Departamento Sombrilla. Garantizar la
+        justicia contributiva y estabilidad fiscal que contribuya plenamente al bienestar
+        social y económico de nuestro país.", "dateLastCrawled": "2018-11-15T02:03:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Inicio
+        - Asume - Servicios En Línea", "url": "https:\/\/serviciosenlinea.asume.pr.gov\/asume_servicios\/",
+        "urlPingSuffix": "DevEx,5291.1", "displayUrl": "https:\/\/serviciosenlinea.asume.pr.gov\/asume_servicios",
+        "snippet": "(a) El nombre, dirección y número de seguro social del empleado,
+        y (b) el nombre, dirección y número de identificación federal patronal, o
+        en caso de que la ley local o federal no requiera un número de identificación
+        federal patronal, el número de identificación patronal del Gobierno del
+        Estado Libre Asociado de Puerto Rico.", "dateLastCrawled": "2018-11-14T16:42:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Recursos
+        para la educación | USAGov - gobierno.usa.gov", "url": "https:\/\/gobierno.usa.gov\/educacion",
+        "urlPingSuffix": "DevEx,5304.1", "displayUrl": "https:\/\/gobierno.usa.gov\/educacion",
+        "snippet": "Antes de compartir información confidencial, asegúrese de que
+        está en un sitio del Gobierno federal. Este sitio es seguro. El protocolo
+        https:\/\/ le asegura que se está conectando al sitio web oficial y que cualquier
+        información que usted proporcione está encriptada y será transmitida de forma
+        segura.", "dateLastCrawled": "2018-11-13T04:44:00.0000000Z"}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 19 Nov 2018 22:41:45 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=gov%20(site:usa.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 19 Nov 2018 22:41:56 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 48D1D2ECBE534EF08FCE1A0AA3C5B251
+      Bingapis-Sessionid:
+      - D6A6E9A262D943A1A547D080EA622E22
+      X-Msedge-Clientid:
+      - 2D53E538B3D0673A17DCE994B29C66AA
+      X-Msapi-Userstate:
+      - e12f
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=174,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: 48D1D2ECBE534EF08FCE1A0AA3C5B251 Ref B: BY3EDGE0319 Ref C: 2018-11-19T22:42:56Z'
+      Apim-Request-Id:
+      - b15f1f6b-d803-4806-bb85-c46ed2045bf3
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Mon, 19 Nov 2018 22:42:56 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "gov
+        (site:usa.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=gov+(site%3ausa.gov)",
+        "totalEstimatedMatches": 134000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "USA - Official Guide to Government Information and Services", "url":
+        "https:\/\/www.usa.gov\/", "about": [{"name": "United States"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.usa.gov", "snippet": "The .gov means
+        it''s official. Federal government websites often end in .gov or .mil. Before
+        sharing sensitive information, make sure you''re on a federal government site.",
+        "dateLastCrawled": "2018-11-16T12:07:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "A-Z Index of U.S. Government Departments and Agencies", "url":
+        "https:\/\/www.usa.gov\/federal-agencies\/a", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.usa.gov\/federal-agencies", "snippet": "The .gov means
+        it''s official. Federal government websites often end in .gov or .mil. Before
+        sharing sensitive information, make sure you''re on a federal government site.
+        This site is secure. The https:\/\/ ensures that you are connecting to the
+        official website and that any information you provide is ...", "dateLastCrawled":
+        "2018-11-11T03:18:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2", "name":
+        "Government Benefits, Grants, and Loans | USAGov", "url": "https:\/\/www.usa.gov\/benefits-grants-loans",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/benefits-grants-loans",
+        "snippet": "The .gov means it''s official. Federal government websites often
+        end in .gov or .mil. Before sharing sensitive information, make sure you''re
+        on a federal government site. This site is secure. The https:\/\/ ensures
+        that you are connecting to the official website and that any information you
+        provide is ...", "dateLastCrawled": "2018-11-13T12:45:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Unclaimed Money from the Government | USAGov", "url": "https:\/\/www.usa.gov\/unclaimed-money",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/unclaimed-money",
+        "snippet": "The .gov means it''s official. Federal government websites often
+        end in .gov or .mil. Before sharing sensitive information, make sure you''re
+        on a federal government site.", "dateLastCrawled": "2018-11-14T23:56:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Jobs and Unemployment | USAGov", "url": "https:\/\/www.usa.gov\/jobs-and-unemployment",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/jobs-and-unemployment",
+        "snippet": "The .gov means it''s official. Federal government websites often
+        end in .gov or .mil. Before sharing sensitive information, make sure you''re
+        on a federal government site. This site is secure. The https:\/\/ ensures
+        that you are connecting to the official website and that any information you
+        provide is ...", "dateLastCrawled": "2018-11-15T10:35:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "U.S. Government Services and Information | USAGov", "url": "https:\/\/www.usa.gov\/topics",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/topics",
+        "snippet": "The .gov means it''s official. Federal government websites often
+        end in .gov or .mil. Before sharing sensitive information, make sure you''re
+        on a federal government site. This site is secure. The https:\/\/ ensures
+        that you are connecting to the official website and that any information you
+        provide is ...", "dateLastCrawled": "2018-11-15T18:20:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Getting or Renewing a U.S. Passport | USAGov", "url": "https:\/\/www.usa.gov\/passport",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/passport",
+        "snippet": "The .gov means it''s official. Federal government websites often
+        end in .gov or .mil. Before sharing sensitive information, make sure you''re
+        on a federal government site.", "dateLastCrawled": "2018-11-13T22:14:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Looking for a New Job | USAGov", "url": "https:\/\/www.usa.gov\/job-search",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/job-search",
+        "snippet": "The .gov means it''s official. Federal government websites often
+        end in .gov or .mil. Before sharing sensitive information, make sure you''re
+        on a federal government site.", "dateLastCrawled": "2018-11-12T15:21:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Government Agencies and Elected Officials | USAGov", "url": "https:\/\/www.usa.gov\/agencies",
+        "about": [{"name": "Federal government of the United States"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.usa.gov\/agencies", "snippet": "The .gov
+        means it''s official. Federal government websites often end in .gov or .mil.
+        Before sharing sensitive information, make sure you''re on a federal government
+        site.", "dateLastCrawled": "2018-11-16T02:55:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Find a Federal Government Job | USAGov", "url": "https:\/\/www.usa.gov\/government-jobs",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/government-jobs",
+        "snippet": "The federal government has job opportunities available now in
+        agencies throughout the U.S. If you’re interested in a job with the federal
+        government, visit USAJOBS.gov, the official one-stop source for federal
+        jobs and employment information. There, you can: You must create a USAJOBS
+        profile to ...", "dateLastCrawled": "2018-11-14T13:30:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Contact Us | USAGov", "url": "https:\/\/www.usa.gov\/contact",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/contact",
+        "snippet": "USA.gov’s information specialists can help you find information
+        on federal agencies, programs, benefits, services, and more. Chat with USA.gov
+        USA.gov’s live chat service can help you find information on federal agencies,
+        programs, benefits, services, and more.", "dateLastCrawled": "2018-11-13T05:29:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Branches of the U.S. Government | USAGov", "url": "https:\/\/www.usa.gov\/branches-of-government",
+        "about": [{"name": "Federal government of the United States"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.usa.gov\/branches-of-government", "snippet":
+        "The .gov means it''s official. Federal government websites often end in
+        .gov or .mil. Before sharing sensitive information, make sure you''re on
+        a federal government site.", "dateLastCrawled": "2018-11-14T21:39:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "I | Government Forms | USAGov", "url": "https:\/\/www.usa.gov\/forms\/i",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/forms\/i",
+        "snippet": "The .gov means it''s official. Federal government websites
+        often end in .gov or .mil. Before sharing sensitive information, make sure
+        you''re on a federal government site.", "dateLastCrawled": "2018-11-15T21:44:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "About USA.gov | USAGov", "url": "https:\/\/www.usa.gov\/about",
+        "about": [{"name": "USA.gov"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/about",
+        "snippet": "About USA.gov. Our mission is to create and organize timely,
+        needed government information and services and make them accessible anytime,
+        anywhere, via your channel of choice. About Us. Learn more about the history
+        and mission of USA.gov. Contact USA.gov.", "dateLastCrawled": "2018-11-13T17:29:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Travel and Immigration | USAGov", "url": "https:\/\/www.usa.gov\/travel-and-immigration",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/travel-and-immigration",
+        "snippet": "The .gov means it''s official. Federal government websites often
+        end in .gov or .mil. Before sharing sensitive information, make sure you''re
+        on a federal government site. This site is secure. The https:\/\/ ensures
+        that you are connecting to the official website and that any information you
+        provide is ...", "dateLastCrawled": "2018-11-15T04:38:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Money and Credit | USAGov", "url": "https:\/\/www.usa.gov\/money",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/money",
+        "snippet": "The .gov means it''s official. Federal government websites often
+        end in .gov or .mil. Before sharing sensitive information, make sure you''re
+        on a federal government site.", "dateLastCrawled": "2018-11-16T08:28:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Features | USAGov", "url": "https:\/\/www.usa.gov\/features", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.usa.gov\/features", "snippet": "The
+        .gov means it''s official. Federal government websites often end in .gov
+        or .mil. Before sharing sensitive information, make sure you''re on a federal
+        government site.", "dateLastCrawled": "2018-11-15T20:11:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Government Grants and Loans | USAGov", "url": "https:\/\/www.usa.gov\/grants",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/grants",
+        "snippet": "The .gov means it''s official. Federal government websites often
+        end in .gov or .mil. Before sharing sensitive information, make sure you''re
+        on a federal government site.", "dateLastCrawled": "2018-11-12T14:24:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Health | USAGov", "url": "https:\/\/www.usa.gov\/health", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.usa.gov\/health", "snippet": "The .gov
+        means it''s official. Federal government websites often end in .gov or .mil.
+        Before sharing sensitive information, make sure you''re on a federal government
+        site.", "dateLastCrawled": "2018-11-14T16:52:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Small Business | USAGov", "url": "https:\/\/www.usa.gov\/business",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/business",
+        "snippet": "The .gov means it''s official. Federal government websites often
+        end in .gov or .mil. Before sharing sensitive information, make sure you''re
+        on a federal government site.", "dateLastCrawled": "2018-11-11T18:13:00.0000000Z",
+        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 19 Nov 2018 22:42:57 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=gov%20(site:.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 19 Nov 2018 22:41:57 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 30BF0C7E840D44CDA2CA8556771D0593
+      Bingapis-Sessionid:
+      - F0CA22F005164FAAB0695F23E29AD22A
+      X-Msedge-Clientid:
+      - 21C8B84A04C466FF2E2FB4E6058867EB
+      X-Msapi-Userstate:
+      - b755
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=263,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: 30BF0C7E840D44CDA2CA8556771D0593 Ref B: BY3EDGE0417 Ref C: 2018-11-19T22:42:57Z'
+      Apim-Request-Id:
+      - 7b7bb8c9-acc0-4002-b16c-3307f51d9297
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Mon, 19 Nov 2018 22:42:57 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "gov
+        (site:.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=gov+(site%3a.gov)",
+        "totalEstimatedMatches": 50500000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "USA - Official Guide to Government Information and Services", "url":
+        "https:\/\/www.usa.gov\/", "about": [{"name": "United States"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.usa.gov", "snippet": "The .gov means
+        it''s official. Federal government websites often end in .gov or .mil. Before
+        sharing sensitive information, make sure you''re on a federal government site.",
+        "dateLastCrawled": "2018-11-16T12:07:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Internal Revenue Service | An official website of the ...", "url":
+        "https:\/\/www.irs.gov\/", "about": [{"name": "Internal Revenue Service"}],
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.irs.gov", "snippet":
+        "The Internal Revenue Service is the nation''s tax collection agency and
+        administers the Internal Revenue Code enacted by Congress.", "dateLastCrawled":
+        "2018-11-15T23:54:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2", "name":
+        "The United States Social Security Administration", "url": "https:\/\/www.ssa.gov\/",
+        "about": [{"name": "Social Security Administration"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.ssa.gov", "snippet": "Official website
+        of the U.S. Social Security Administration. When I made the decision to
+        enlist in the Army, I knew it was a lifetime commitment, whether I was in
+        uniform or not.", "dateLastCrawled": "2018-11-16T02:03:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "A-Z Index of U.S. Government Departments and Agencies", "url":
+        "https:\/\/www.usa.gov\/federal-agencies\/a", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.usa.gov\/federal-agencies", "snippet": "The .gov means
+        it''s official. Federal government websites often end in .gov or .mil. Before
+        sharing sensitive information, make sure you''re on a federal government site.
+        This site is secure. The https:\/\/ ensures that you are connecting to the
+        official website and that any information you provide is ...", "dateLastCrawled":
+        "2018-11-11T03:18:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4", "name":
+        "Medicare.gov: the official U.S. government site for Medicare", "url":
+        "https:\/\/www.medicare.gov\/", "about": [{"name": "Medicare"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.medicare.gov", "snippet": "If you share
+        our content on Facebook, Twitter, or other social media accounts, we may track
+        what Medicare.gov content you share. This helps us improve our social media
+        outreach. Selecting OFF will block this tracking.", "dateLastCrawled": "2018-11-13T23:34:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "IN.gov | The Official Website of the State of Indiana", "url":
+        "https:\/\/www.in.gov\/", "about": [{"name": "Indiana"}, {"name": "Tennessee
+        State Capitol"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.in.gov",
+        "snippet": "IN.gov is the official website of the State of Indiana and
+        your place to find information, services, news and events related to Indiana
+        government. AMBER ALERT But when you''re done reading it, click the close
+        button in the corner to dismiss this alert.", "dateLastCrawled": "2018-11-13T08:29:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "HealthCare.gov - Get 2019 health coverage. Health ...", "url":
+        "https:\/\/www.healthcare.gov\/", "about": [{"name": "HealthCare.gov"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.healthcare.gov", "snippet": "Official
+        site of Affordable Care Act. Enroll now for 2019 coverage. See health coverage
+        choices, ways to save today, how law affects you.", "dateLastCrawled": "2018-11-13T18:37:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "USAJOBS - The Federal Government''s Official Jobs Site", "url":
+        "https:\/\/www.usajobs.gov\/", "about": [{"name": "USAJOBS"}, {"name": "USAJOBS"}],
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usajobs.gov", "snippet":
+        "USAJOBS is the Federal Government''s official one-stop source for Federal
+        jobs and employment information.", "dateLastCrawled": "2018-11-12T08:38:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "U.S. Government Services and Information | USAGov", "url": "https:\/\/www.usa.gov\/topics",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/topics",
+        "snippet": "The .gov means it''s official. Federal government websites often
+        end in .gov or .mil. Before sharing sensitive information, make sure you''re
+        on a federal government site. This site is secure. The https:\/\/ ensures
+        that you are connecting to the official website and that any information you
+        provide is ...", "dateLastCrawled": "2018-11-15T18:20:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "National Weather Service", "url": "https:\/\/www.weather.gov\/",
+        "about": [{"name": "National Weather Service"}, {"name": "National Weather
+        Service"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov",
+        "snippet": "NOAA National Weather Service National Weather Service. Fire
+        Weather Threat Waning in Southern California; Early Season Winter Storm Impacting
+        the Ohio\/Mississippi Valleys and the East Coast States", "dateLastCrawled":
+        "2018-11-16T09:22:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10", "name":
+        "Welcome to the California State Web Portal", "url": "http:\/\/www.ca.gov\/",
+        "about": [{"name": "Missouri AT"}, {"name": "California"}], "isFamilyFriendly":
+        true, "displayUrl": "www.ca.gov", "snippet": "California has been hit
+        with devastating wildfires and other natural disasters in both the northern
+        and southern parts of the state. If you need more information about recovery
+        or resources, go to www.caloes.ca.gov", "dateLastCrawled": "2018-11-16T06:07:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Tennessee State Government - TN.gov", "url": "http:\/\/www.tn.gov\/",
+        "about": [{"name": "Tennessee State Capitol"}, {"name": "Tennessee"}, {"name":
+        "Tennessee State Capitol"}], "isFamilyFriendly": true, "displayUrl": "www.tn.gov",
+        "snippet": "Tennessee Gov. Bill Haslam and Department of Economic and Community
+        Development Commissioner Bob Rolfe announced today that Amazon will invest
+        more than $230 million to establish a new Operations Center of Excellence
+        in downtown Nashville.", "dateLastCrawled": "2018-11-15T20:10:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "CalCareers - State of California", "url": "https:\/\/jobs.ca.gov\/",
+        "about": [{"name": "JobsMoGov"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/jobs.ca.gov", "snippet": "The State of California offers its
+        employees generous benefits that include retirement and savings plans, health
+        and dental insurance, and access to long-term disability and long-term care
+        insurance.", "dateLastCrawled": "2018-11-16T07:14:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "U.S. Department of State | Home Page", "url": "https:\/\/www.state.gov\/",
+        "about": [{"name": "United States Department of State"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.state.gov", "snippet": "State Department
+        honors those who have served in the United States’ armed forces on Veterans
+        Day, and each and every day, by providing education, fellowship, and job exposure
+        to veterans and transitioning military to become the diplomats of tomorrow.",
+        "dateLastCrawled": "2018-11-14T19:16:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "PA.GOV | The Official Website for the Commonwealth of ...", "url":
+        "https:\/\/www.pa.gov\/", "about": [{"name": "Pennsylvania"}, {"name": "Commonwealth
+        Gov .Sch."}, {"name": "Pennsylvania"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.pa.gov", "snippet": "PA.GOV | The Official Website for
+        the Commonwealth of Pennsylvania. The official website of the Commonwealth
+        of Pennsylvania. Find information and services from Pennsylvania state
+        government agencies.", "dateLastCrawled": "2018-11-14T00:40:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Government Benefits, Grants, and Loans | USAGov", "url": "https:\/\/www.usa.gov\/benefits-grants-loans",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/benefits-grants-loans",
+        "snippet": "The .gov means it''s official. Federal government websites often
+        end in .gov or .mil. Before sharing sensitive information, make sure you''re
+        on a federal government site. This site is secure. The https:\/\/ ensures
+        that you are connecting to the official website and that any information you
+        provide is ...", "dateLastCrawled": "2018-11-13T12:45:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Home [www.dmv.ca.gov]", "url": "https:\/\/www.dmv.ca.gov\/portal\/dmv",
+        "about": [{"name": "California Department of Motor Vehicles"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.dmv.ca.gov", "snippet": "California
+        DMV Home Page is available for customers to check out publications, download
+        forms, brochures, FAQs, Vehicle Information, Boats, Vessel, and Field Offices.",
+        "dateLastCrawled": "2018-11-16T11:39:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Home | DotGov", "url": "https:\/\/www.dotgov.gov\/", "about": [{"name":
+        "gov"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.dotgov.gov",
+        "snippet": "The .gov means it’s official. Federal government websites often
+        end in .gov or .mil. Before sharing sensitive information, make sure you''re
+        on a federal government site.", "dateLastCrawled": "2018-11-15T02:57:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Unclaimed Money from the Government | USAGov", "url": "https:\/\/www.usa.gov\/unclaimed-money",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/unclaimed-money",
+        "snippet": "The .gov means it''s official. Federal government websites often
+        end in .gov or .mil. Before sharing sensitive information, make sure you''re
+        on a federal government site.", "dateLastCrawled": "2018-11-14T23:56:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Texas.gov | The Official Website of the State of Texas", "url":
+        "https:\/\/texas.gov\/", "about": [{"name": "Texas"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/texas.gov", "snippet": "Texas.gov does
+        not sell and does not generally release (other than as provided in this policy)
+        personally identifiable information to third parties; however, information
+        provided to any governmental body may be subject to disclosure pursuant to
+        the Texas Public Information Act and applicable federal and state legislation.",
+        "dateLastCrawled": "2018-11-13T13:43:00.0000000Z", "language": "en", "isNavigational":
+        false}]}, "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages",
+        "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 19 Nov 2018 22:42:57 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=gobierno%20(site:usa.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 19 Nov 2018 22:41:57 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - FF0F32F678B341479D1ED96BEF17CA1C
+      Bingapis-Sessionid:
+      - 942C115B11B445349EF00338D56F5884
+      X-Msedge-Clientid:
+      - 25A553DE2B03606C275A5F722A4F6190
+      X-Msapi-Userstate:
+      - '0996'
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=263,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: FF0F32F678B341479D1ED96BEF17CA1C Ref B: BY3EDGE0521 Ref C: 2018-11-19T22:42:58Z'
+      Apim-Request-Id:
+      - f0edd52e-8f57-488c-9b33-fdd10e4be9d7
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Mon, 19 Nov 2018 22:42:57 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "gobierno
+        (site:usa.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=gobierno+(site%3ausa.gov)",
+        "totalEstimatedMatches": 108000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Guía oficial de información y servicios del Gobierno | USAGov",
+        "url": "https:\/\/gobierno.usa.gov\/", "about": [{"name": "GobiernoUSA.gov"}],
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/gobierno.usa.gov",
+        "snippet": "Página principal de GobiernoUSA.gov, el portal oficial del Gobierno
+        de Estados Unidos en español.", "dateLastCrawled": "2018-11-16T08:29:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Servicios e información del Gobierno | USAGov", "url": "https:\/\/gobierno.usa.gov\/servicios-informacion",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/gobierno.usa.gov\/servicios-informacion",
+        "snippet": "El dominio .gov significa que es oficial. Los sitios del Gobierno
+        federal frecuentemente terminan en dominios .gov o .mil. Antes de compartir
+        información confidencial, asegúrese de que está en un sitio del Gobierno
+        federal.", "dateLastCrawled": "2018-11-14T09:33:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Recursos para la educación | USAGov - gobierno.usa.gov", "url":
+        "https:\/\/gobierno.usa.gov\/educacion", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/gobierno.usa.gov\/educacion", "snippet": "Antes de compartir
+        información confidencial, asegúrese de que está en un sitio del Gobierno
+        federal. Este sitio es seguro. El protocolo https:\/\/ le asegura que se está
+        conectando al sitio web oficial y que cualquier información que usted proporcione
+        está encriptada y será transmitida de forma segura.", "dateLastCrawled": "2018-11-13T04:44:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Agencias estatales de Puerto Rico | USAGov - gobierno.usa.gov",
+        "url": "https:\/\/gobierno.usa.gov\/gobiernos-estatales\/puerto-rico", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/gobierno.usa.gov\/gobiernos-estatales\/puerto-rico",
+        "snippet": "El dominio .gov significa que es oficial. Los sitios del Gobierno
+        federal frecuentemente terminan en dominios .gov o .mil. Antes de compartir
+        información confidencial, asegúrese de que está en un sitio del Gobierno
+        federal.", "dateLastCrawled": "2018-11-12T12:51:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Explorar USAGov en español | GobiernoUSA.gov", "url": "https:\/\/gobierno.usa.gov\/explorar\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/gobierno.usa.gov\/explorar",
+        "snippet": "USAGov es un programa federal que lo conecta a la información
+        y los servicios de las agencias, los departamentos y programas del Gobierno.
+        En USAGov encontrará respuestas a sus preguntas en español y en inglés—por
+        Internet, teléfono, chat o en nuestra Guía del Consumidor.", "dateLastCrawled":
+        "2018-11-10T04:36:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5", "name":
+        "Programas sociales | USAGov - gobierno.usa.gov", "url": "https:\/\/gobierno.usa.gov\/programas-sociales",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/gobierno.usa.gov\/programas-sociales",
+        "snippet": "Beneficios sociales y ayuda financiera del Gobierno para familias
+        o personas con ingresos limitados para cubrir sus necesidades básicas.", "dateLastCrawled":
+        "2018-11-13T10:20:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6", "name":
+        "Subastas y ventas del Gobierno | USAGov", "url": "https:\/\/gobierno.usa.gov\/subastas-ventas-gobierno",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/gobierno.usa.gov\/subastas-ventas-gobierno",
+        "snippet": "Cuando el Gobierno tiene equipo adicional, bienes confiscados
+        o propiedades embargadas, los bienes se venden al público. Usted encontrará
+        una variedad de bienes en venta como autos, camiones, propiedades, casas,
+        edificios, terrenos, computadoras, mobiliario y herramientas de trabajo.",
+        "dateLastCrawled": "2018-11-10T06:58:00.0000000Z", "language": "es", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Cómo funcional el Gobierno | USAGov", "url": "https:\/\/gobierno.usa.gov\/como-funciona-el-gobiernousa.gov",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/gobierno.usa.gov\/como-funciona-el-gobiernousa.gov",
+        "snippet": "El Gobierno federal funciona bajo un sistema cuyo objetivo principal
+        es proteger los intereses de sus ciudadanos. La rama legislativa. El Congreso
+        representa la rama del poder legislativo y está conformado por la Cámara de
+        Representantes y el Senado.", "dateLastCrawled": "2018-11-13T01:29:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Agencias y funcionarios del Gobierno | USAGov", "url": "https:\/\/gobierno.usa.gov\/agencias-gobierno",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/gobierno.usa.gov\/agencias-gobierno",
+        "snippet": "El dominio .gov significa que es oficial. Los sitios del Gobierno
+        federal frecuentemente terminan en dominios .gov o .mil. Antes de compartir
+        información confidencial, asegúrese de que está en un sitio del Gobierno
+        federal.", "dateLastCrawled": "2018-11-14T22:24:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "USA - Official Guide to Government Information and Services", "url":
+        "https:\/\/www.usa.gov\/", "about": [{"name": "United States"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.usa.gov", "snippet": "USA.gov can help
+        you start your search for government information by topic and agency.", "dateLastCrawled":
+        "2018-11-16T12:07:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10", "name":
+        "Ciudadanía, inmigración y viajes | USAGov - gobierno.usa.gov", "url":
+        "https:\/\/gobierno.usa.gov\/ciudadania-inmigracion-viajes", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/gobierno.usa.gov\/ciudadania-inmigracion-viajes",
+        "snippet": "El dominio .gov significa que es oficial. Los sitios del Gobierno
+        federal frecuentemente terminan en dominios .gov o .mil. Antes de compartir
+        información confidencial, asegúrese de que está en un sitio del Gobierno
+        federal.", "dateLastCrawled": "2018-11-14T17:56:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Ayuda financiera, becas y beneficios | USAGov", "url": "https:\/\/gobierno.usa.gov\/ayuda-financiera-becas-beneficios",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/gobierno.usa.gov\/ayuda-financiera-becas-beneficios",
+        "snippet": "Busque ayuda del Gobierno para recibir los beneficios de desempleo
+        y conozca sus obligaciones tributarias. Jubilación. Planee su jubilación,
+        beneficios del Seguro Social y averigüe si tiene una pensión de empleo sin
+        reclamar. Pago de facturas.", "dateLastCrawled": "2018-11-11T08:35:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Temas migratorios comunes | USAGov - gobierno.usa.gov", "url":
+        "https:\/\/gobierno.usa.gov\/tramites-migratorios", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/gobierno.usa.gov\/tramites-migratorios", "snippet":
+        "El dominio .gov significa que es oficial. Los sitios del Gobierno federal
+        frecuentemente terminan en dominios .gov o .mil. Antes de compartir información
+        confidencial, asegúrese de que está en un sitio del Gobierno federal.",
+        "dateLastCrawled": "2018-11-16T03:49:00.0000000Z", "language": "es", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Vivienda | USAGov - gobierno.usa.gov", "url": "https:\/\/gobierno.usa.gov\/vivienda",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/gobierno.usa.gov\/vivienda",
+        "snippet": "Ayuda con asuntos de vivienda. Recursos para encontrar vivienda
+        para grupos con necesidades específicas. Ayuda con la compra de una vivienda.
+        Conozca los programas del Gobierno que le facilitan la compra de una casa.",
+        "dateLastCrawled": "2018-11-12T18:18:00.0000000Z", "language": "es", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Préstamos y subvenciones | USAGov - gobierno.usa.gov", "url":
+        "https:\/\/gobierno.usa.gov\/prestamos-y-subvenciones", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/gobierno.usa.gov\/prestamos-y-subvenciones",
+        "snippet": "El dominio .gov significa que es oficial. Los sitios del Gobierno
+        federal frecuentemente terminan en dominios .gov o .mil. Antes de compartir
+        información confidencial, asegúrese de que está en un sitio del Gobierno
+        federal.", "dateLastCrawled": "2018-11-08T14:54:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Huracán Michael | USAGov - gobierno.usa.gov", "url": "https:\/\/gobierno.usa.gov\/huracan-michael",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/gobierno.usa.gov\/huracan-michael",
+        "snippet": "El dominio .gov significa que es oficial. Los sitios del Gobierno
+        federal frecuentemente terminan en dominios .gov o .mil. Antes de compartir
+        información confidencial, asegúrese de que está en un sitio del Gobierno
+        federal.", "dateLastCrawled": "2018-11-08T08:12:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Ayuda para comprar una vivienda | USAGov - gobierno.usa.gov",
+        "url": "https:\/\/gobierno.usa.gov\/compra-vivienda", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/gobierno.usa.gov\/compra-vivienda", "snippet":
+        "El dominio .gov significa que es oficial. Los sitios del Gobierno federal
+        frecuentemente terminan en dominios .gov o .mil. Antes de compartir información
+        confidencial, asegúrese de que está en un sitio del Gobierno federal.",
+        "dateLastCrawled": "2018-11-08T04:57:00.0000000Z", "language": "es", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Empleo y capacitación laboral | USAGov - gobierno.usa.gov", "url":
+        "https:\/\/gobierno.usa.gov\/empleo-capacitacion-laboral", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/gobierno.usa.gov\/empleo-capacitacion-laboral",
+        "snippet": "El dominio .gov significa que es oficial. Los sitios del Gobierno
+        federal frecuentemente terminan en dominios .gov o .mil. Antes de compartir
+        información confidencial, asegúrese de que está en un sitio del Gobierno
+        federal.", "dateLastCrawled": "2018-11-07T14:25:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Encuentre lo que necesita en ... - gobierno.usa.gov", "url":
+        "https:\/\/gobierno.usa.gov\/forma-de-uso", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/gobierno.usa.gov\/forma-de-uso", "snippet": "El dominio .gov
+        significa que es oficial. Los sitios del Gobierno federal frecuentemente
+        terminan en dominios .gov o .mil. Antes de compartir información confidencial,
+        asegúrese de que está en un sitio del Gobierno federal.", "dateLastCrawled":
+        "2018-11-11T19:07:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19", "name":
+        "Novedades | USAGov - gobierno.usa.gov", "url": "https:\/\/gobierno.usa.gov\/novedades",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/gobierno.usa.gov\/novedades",
+        "snippet": "Antes de compartir información confidencial, asegúrese de que
+        está en un sitio del Gobierno federal. Este sitio es seguro. El protocolo
+        https:\/\/ le asegura que se está conectando al sitio web oficial y que cualquier
+        información que usted proporcione está encriptada y será transmitida de forma
+        segura.", "dateLastCrawled": "2018-11-15T18:12:00.0000000Z", "language": "es",
+        "isNavigational": false}]}, "rankingResponse": {"mainline": {"items": [{"answerType":
+        "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 19 Nov 2018 22:42:58 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=gobierno%20(site:.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 19 Nov 2018 22:41:58 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 173685A097E141F3B431797C80B63080
+      Bingapis-Sessionid:
+      - 9164CD00C03541658593BD1A2AD066BF
+      X-Msedge-Clientid:
+      - 1CE9A722F67E695835CAAB8EF732680D
+      X-Msapi-Userstate:
+      - f938
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=172,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: 173685A097E141F3B431797C80B63080 Ref B: BY3EDGE0310 Ref C: 2018-11-19T22:42:58Z'
+      Apim-Request-Id:
+      - e4c2e6ad-0bd5-4256-ad78-c87f5221263d
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Mon, 19 Nov 2018 22:42:58 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "gobierno
+        (site:.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=gobierno+(site%3a.gov)",
+        "totalEstimatedMatches": 3440000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "PR.gov - Portal Oficial del Estado Libre Asociado de ...", "url":
+        "http:\/\/pr.gov\/", "about": [{"name": "Missouri AT"}, {"name": "Puerto Rico"}],
+        "isFamilyFriendly": true, "displayUrl": "pr.gov", "snippet": "Es el medio
+        oficial de avisos de subastas de todas las agencias de la Rama Ejecutiva y
+        las corporaciones públicas del Gobierno del Estado Libre Asociado de Puerto
+        Rico, según la Ley Núm 205-2012.", "dateLastCrawled": "2018-11-12T20:11:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Guía oficial de información y servicios del Gobierno | USAGov",
+        "url": "https:\/\/gobierno.usa.gov\/", "about": [{"name": "GobiernoUSA.gov"}],
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/gobierno.usa.gov",
+        "snippet": "Página principal de GobiernoUSA.gov, el portal oficial del Gobierno
+        de Estados Unidos en español.", "dateLastCrawled": "2018-11-16T08:29:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "informacion de formularios prgov Solicitud de ...", "url": "http:\/\/www2.pr.gov\/pages\/informaciondeformulariosprgovsolicituddecertificaci%C3%B3ndecumplimientodeasume.aspx",
+        "isFamilyFriendly": true, "displayUrl": "www2.pr.gov\/pages...", "snippet":
+        "Para desplegar correctamente los formularios en PR.GOV debe activar el “Compatibility
+        View”, requerido al actualizar a Internet Explorer 8 y 9. Tiene dos opciones:
+        Opción 1: Presionar el botón de Compatibility View. Cuando accede el portal
+        PR.GOV aparecerá a la derecha del navegador.", "dateLastCrawled": "2018-11-15T11:26:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Convocatorias y Becas Busqueda de Convocatorias y Becas", "url":
+        "http:\/\/www2.pr.gov\/Pages\/empleos.aspx", "isFamilyFriendly": true, "displayUrl":
+        "www2.pr.gov\/Pages\/empleos.aspx", "snippet": "Gobierno Federal; Tercer
+        Sector; Directorios. Directorio de Agencias; Directorio de Municipios de Puerto
+        Rico; La Fortaleza; Líneas de Ayuda para Emergencias; Junta Revisora de Propiedead
+        Inmueble; Ventanilla Unica. Ventanilla Única Villalba; Ventanilla Única Vega
+        Baja; Ventanilla Única Toa Alta;", "dateLastCrawled": "2018-11-16T08:39:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Directorio de Agencias - PR.gov", "url": "http:\/\/www2.pr.gov\/Directorios\/Pages\/DirectoriodeAgencias.aspx",
+        "isFamilyFriendly": true, "displayUrl": "www2.pr.gov\/Directorios\/Pages\/DirectoriodeAgencias.aspx",
+        "snippet": "Gobierno a Gobierno; Convocatorias; Subastas Públicas ‹ ›
+        Directorio de Agencias. Sobre Puerto Rico ...", "dateLastCrawled": "2018-11-14T17:02:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Servicios e información del Gobierno | USAGov", "url": "https:\/\/gobierno.usa.gov\/servicios-informacion",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/gobierno.usa.gov\/servicios-informacion",
+        "snippet": "El dominio .gov significa que es oficial. Los sitios del Gobierno
+        federal frecuentemente terminan en dominios .gov o .mil. Antes de compartir
+        información confidencial, asegúrese de que está en un sitio del Gobierno
+        federal.", "dateLastCrawled": "2018-11-14T09:33:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Portal Oficial Del - pr.gov", "url": "http:\/\/www2.pr.gov\/Pages\/servicefilter.aspx?searchTerm=desempleo",
+        "isFamilyFriendly": true, "displayUrl": "www2.pr.gov\/Pages\/servicefilter.aspx?searchTerm=desempleo",
+        "snippet": "Página del Gobierno Federal que se utiliza para la búsqueda
+        de personas desaparecidas. Gratis. Portal de Datos Geográficos Gubernamentales
+        – GIS. Este portal centraliza los datos geográficos digitales producidos por
+        las agencias y corporaciones desde 2001-2012 donde los ciudadanos tendrán
+        acceso a esos datos.", "dateLastCrawled": "2018-11-15T09:49:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Directorio Gubernamental", "url": "http:\/\/www2.pr.gov\/Directorios\/Pages\/Directorios.aspx",
+        "isFamilyFriendly": true, "displayUrl": "www2.pr.gov\/Directorios\/Pages\/Directorios.aspx",
+        "snippet": "Directorio de Agencias. Aquí accederá al Directorio de Agencias
+        del Estado Libre Asociado de Puerto Rico, con alternativas de búsqueda e información
+        de contacto de todas las entidades de nuestro gobierno.", "dateLastCrawled":
+        "2018-11-12T21:55:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8", "name":
+        "PR.gov - Nuevo Servicio para Solicitar un Certificado de ...", "url": "https:\/\/servicios.pr.gov\/info",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/servicios.pr.gov\/info",
+        "snippet": "Este nuevo servicio se encuentra en un periodo de mejoramiento
+        continuo conocido como beta. Durante este periodo, el servicio será completamente
+        gratuito y todos los certificados emitidos mediante el mismo son oficiales.",
+        "dateLastCrawled": "2018-11-15T04:29:00.0000000Z", "language": "es", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "search - PR.gov", "url": "http:\/\/www2.pr.gov\/Pages\/search.aspx",
+        "isFamilyFriendly": true, "displayUrl": "www2.pr.gov\/Pages\/search.aspx",
+        "snippet": "A través de este servicio usted podrá realiza una pre-cualificación
+        para el Programa Medicaid \/ Plan de Salud del Gobierno. Le indica el número
+        de teléfono a llamar para realizar una cita o recibir orientación. Gratis.
+        N\/A. Buscador de Escuelas.", "dateLastCrawled": "2018-11-13T22:00:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "USA - Official Guide to Government Information and Services", "url":
+        "https:\/\/www.usa.gov\/", "about": [{"name": "United States"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.usa.gov", "snippet": "USA.gov can help
+        you start your search for government information by topic and agency.", "dateLastCrawled":
+        "2018-11-16T12:07:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11", "name":
+        "Solicitud de Certificación de Cumplimiento de ASUME", "url": "http:\/\/pr.gov\/CitizenPortal\/124-002-002-000.htm?TRX=124002002000",
+        "isFamilyFriendly": true, "displayUrl": "pr.gov\/CitizenPortal\/124-002-002-000.htm?TRX=124002002000",
+        "snippet": "Mediante esta transacción el ciudadano puede solicitar un documento
+        que certifica si tiene o no tiene un caso de pensión alimentaria en ASUME.",
+        "dateLastCrawled": "2018-11-15T17:17:00.0000000Z", "language": "es", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Departamento de Estado", "url": "https:\/\/estado.pr.gov\/es\/",
+        "about": [{"name": "Puerto Rico Department of State"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/estado.pr.gov\/es", "snippet": "Secretario
+        de Estado destaca que Mesa Permanente del Sector Privado continúa sus esfuerzos
+        con el Gobierno para mejorar y maximizar servicios Viernes, 9 de noviembre
+        de 2018 – (San Juan) – El …", "dateLastCrawled": "2018-11-16T10:12:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "PR.gov - Nuevo Servicio para Solicitar un Certificado de ...", "url":
+        "https:\/\/servicios.pr.gov\/", "isFamilyFriendly": true, "displayUrl": "https:\/\/servicios.pr.gov",
+        "snippet": "El Gobierno del Estado Libre Asociado de Puerto Rico se compromete
+        a brindar servicios de alta calidad a través del Portal, dentro de las circunstancias
+        particulares del medio cibernético. El Gobierno del Estado Libre Asociado
+        de Puerto Rico se compromete a cumplir con la Política de Privacidad publicada
+        en el Portal.", "dateLastCrawled": "2018-11-13T18:28:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "subastas", "url": "http:\/\/www2.pr.gov\/subasta\/Pages\/subastas.aspx",
+        "isFamilyFriendly": true, "displayUrl": "www2.pr.gov\/subasta\/Pages\/subastas.aspx",
+        "snippet": "para establecer contrato de selecciÓn mÚltiple para el servicio
+        de disposiciÓn de documento pÚblicos para los departamentos,dependencias,agencias
+        e instrumentalidades de la rama ejecutiva,las corporaciones pÚblicas y los
+        municipios del gobierno de puerto rico (18-135-c)", "dateLastCrawled": "2018-11-15T21:59:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Agencias y funcionarios del Gobierno | USAGov", "url": "https:\/\/gobierno.usa.gov\/agencias-gobierno",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/gobierno.usa.gov\/agencias-gobierno",
+        "snippet": "El dominio .gov significa que es oficial. Los sitios del Gobierno
+        federal frecuentemente terminan en dominios .gov o .mil. Antes de compartir
+        información confidencial, asegúrese de que está en un sitio del Gobierno
+        federal.", "dateLastCrawled": "2018-11-14T22:24:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Vivienda | USAGov - gobierno.usa.gov", "url": "https:\/\/gobierno.usa.gov\/vivienda",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/gobierno.usa.gov\/vivienda",
+        "snippet": "Ayuda con asuntos de vivienda. Recursos para encontrar vivienda
+        para grupos con necesidades específicas. Ayuda con la compra de una vivienda.
+        Conozca los programas del Gobierno que le facilitan la compra de una casa.",
+        "dateLastCrawled": "2018-11-12T18:18:00.0000000Z", "language": "es", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Portal Oficial Del - pr.gov", "url": "http:\/\/www2.pr.gov\/Directorios\/Pages\/InfoAgencia.aspx?PRIFA=024",
+        "isFamilyFriendly": true, "displayUrl": "www2.pr.gov\/Directorios\/Pages\/InfoAgencia.aspx?PRIFA=024",
+        "snippet": "El Plan de Reorganización Núm. 3 de 22 de junio de 1994, que reorganiza
+        el Departamento de Hacienda como el Departamento Sombrilla. Garantizar la
+        justicia contributiva y estabilidad fiscal que contribuya plenamente al bienestar
+        social y económico de nuestro país.", "dateLastCrawled": "2018-11-15T02:03:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Inicio - Asume - Servicios En Línea", "url": "https:\/\/serviciosenlinea.asume.pr.gov\/asume_servicios\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/serviciosenlinea.asume.pr.gov\/asume_servicios",
+        "snippet": "(a) El nombre, dirección y número de seguro social del empleado,
+        y (b) el nombre, dirección y número de identificación federal patronal, o
+        en caso de que la ley local o federal no requiera un número de identificación
+        federal patronal, el número de identificación patronal del Gobierno del
+        Estado Libre Asociado de Puerto Rico.", "dateLastCrawled": "2018-11-14T16:42:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Recursos para la educación | USAGov - gobierno.usa.gov", "url":
+        "https:\/\/gobierno.usa.gov\/educacion", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/gobierno.usa.gov\/educacion", "snippet": "Antes de compartir
+        información confidencial, asegúrese de que está en un sitio del Gobierno
+        federal. Este sitio es seguro. El protocolo https:\/\/ le asegura que se está
+        conectando al sitio web oficial y que cualquier información que usted proporcione
+        está encriptada y será transmitida de forma segura.", "dateLastCrawled": "2018-11-13T04:44:00.0000000Z",
+        "language": "es", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 19 Nov 2018 22:42:58 GMT
 recorded_with: VCR 4.0.0

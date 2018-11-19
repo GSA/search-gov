@@ -416,4 +416,913 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
   recorded_at: Thu, 22 Feb 2018 07:18:37 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=agency%20(site:.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '3956'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 19 Nov 2018 22:41:06 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=05B7A3E03E2A6CA8339DAF4C3FFD6D04; path=/; expires=Sat, 14-Dec-2019 22:42:06
+        GMT; domain=bingapis.com
+      - MUIDB=05B7A3E03E2A6CA8339DAF4C3FFD6D04; path=/; httponly; expires=Sat, 14-Dec-2019
+        22:42:06 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 19-Nov-2020 22:42:06 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=F61301B1ED6B4D5B9B0C1F36AC13783A&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 19-Nov-2020 22:42:06 GMT; path=/
+      - SRCHUSR=DOB=20181119; domain=.bingapis.com; expires=Thu, 19-Nov-2020 22:42:06
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=3EAD8A74B0CF6F35127586D8B1186E94; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 14-Dec-2019 22:42:06 GMT; domain=bingapis.com
+      - _SS=SID=3EAD8A74B0CF6F35127586D8B1186E94; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - 29C8B5332F3C48D0A94CEDE4219565B6
+      X-Msedge-Clientid:
+      - 05B7A3E03E2A6CA8339DAF4C3FFD6D04
+      X-Msapi-Userstate:
+      - '4204'
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: 29C8B5332F3C48D0A94CEDE4219565B6 Ref B: CO1EDGE0422 Ref C: 2018-11-19T22:42:06Z'
+      Date:
+      - Mon, 19 Nov 2018 22:42:06 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=33F89C28D51047F1AD209FF27802EDA1&CID=05B7A3E03E2A6CA8339DAF4C3FFD6D04&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=33F89C28D51047F1AD209FF27802EDA1&CID=05B7A3E03E2A6CA8339DAF4C3FFD6D04&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=agency+(site%3a.gov)",
+        "webSearchUrlPingSuffix": "DevEx,5420.1", "totalEstimatedMatches": 29800000,
+        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
+        "Agency - post.ca.gov", "url": "https:\/\/post.ca.gov\/agency", "urlPingSuffix":
+        "DevEx,5060.1", "displayUrl": "https:\/\/post.ca.gov\/agency", "snippet":
+        "With a PASS account, you can use one password to access POST''s online services
+        - including your POST Profile, Continuing Professional Training (CPT) status,
+        and news customized for your location and occupation", "dateLastCrawled":
+        "2018-11-15T10:00:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
+        "name": "CA.Gov : Agencies", "url": "http:\/\/www.ca.gov\/Agencies", "urlPingSuffix":
+        "DevEx,5074.1", "about": [{"name": "North Carolina"}], "displayUrl": "www.ca.gov\/Agencies",
+        "snippet": "Search for adult inmates currently in a California Department
+        of Corrections and Rehabilitation institution. Find a State Job Access state
+        civil service examinations, apply for vacancies, and track your application
+        status. ... Find an Agency. Agency Search: Search. Show Filters .", "dateLastCrawled":
+        "2018-11-15T20:07:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        "name": "About the Agency | FEMA.gov", "url": "https:\/\/www.fema.gov\/about-agency",
+        "urlPingSuffix": "DevEx,5088.1", "about": [{"name": "Federal Emergency Management
+        Agency"}, {"name": "Federal Emergency Management Agency"}], "displayUrl":
+        "https:\/\/www.fema.gov\/about", "snippet": "On April 1, 1979, President
+        Jimmy Carter signed the executive order that created the Federal Emergency
+        Management Agency (FEMA). From day one, FEMA has remained committed to protecting
+        and serving the American people. That commitment to the people we serve and
+        the belief in our survivor centric mission will never change.", "dateLastCrawled":
+        "2018-11-09T14:50:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "Passport Agencies - State", "url": "https:\/\/travel.state.gov\/content\/travel\/en\/passports\/requirements\/where-to-apply\/passport-agencies.html",
+        "urlPingSuffix": "DevEx,5106.1", "displayUrl": "https:\/\/travel.state.gov\/...\/where-to-apply\/passport-agencies.html",
+        "snippet": "Passport Agencies Proof of immediate international travel ,
+        the Expedited Fee , and an appointment are required for each application submitted
+        in person at a Passport Agency or Center. You can make an appointment online
+        in a few minutes.", "dateLastCrawled": "2018-11-11T22:30:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Agencies | The
+        State of New York", "url": "https:\/\/www.ny.gov\/agencies", "urlPingSuffix":
+        "DevEx,5120.1", "about": [{"name": "New York"}], "displayUrl": "https:\/\/www.ny.gov\/agencies",
+        "snippet": "The State of New York does not imply approval of the listed
+        destinations, warrant the accuracy of any information set out in those destinations,
+        or endorse any opinions expressed therein.", "dateLastCrawled": "2018-11-13T14:19:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "The Texas
+        Education Agency", "url": "https:\/\/tea.texas.gov\/Home\/", "urlPingSuffix":
+        "DevEx,5132.1", "displayUrl": "https:\/\/tea.texas.gov\/Home", "snippet":
+        "The latest news from the Texas Education Agency is available through news
+        releases, online correspondence, mailing lists, and other posted information.
+        Finance & Funding. Final FIRST Ratings Announced. The 2017-18 final financial
+        accountability ratings for more than 1,100 school districts and charters across
+        the state are now available.", "dateLastCrawled": "2018-11-18T21:11:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Agency
+        | California Natural Resources Agency", "url": "http:\/\/resources.ca.gov\/agency\/",
+        "urlPingSuffix": "DevEx,5146.1", "displayUrl": "resources.ca.gov\/agency",
+        "snippet": "The California Natural Resources Agency leads and coordinates
+        both the administration''s climate adaptation policy and its natural resources
+        climate policy. California EcoRestore. California EcoRestore is an initiative
+        to help coordinate and advance at least 30,000 acres of critical habitat restoration
+        in the Sacramento - San Joaquin Delta over ...", "dateLastCrawled": "2018-11-12T18:52:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Agencies
+        | Georgia.gov", "url": "https:\/\/georgia.gov\/agency-list", "urlPingSuffix":
+        "DevEx,5159.1", "about": [{"name": "Georgia"}], "displayUrl": "https:\/\/georgia.gov\/agency-list",
+        "snippet": "You are here. Home » Agencies. Agencies", "dateLastCrawled":
+        "2018-11-14T20:50:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
+        "name": "Government Agencies and Elected Officials | USAGov", "url": "https:\/\/www.usa.gov\/agencies",
+        "urlPingSuffix": "DevEx,5173.1", "about": [{"name": "Federal government of
+        the United States"}], "displayUrl": "https:\/\/www.usa.gov\/agencies", "snippet":
+        "Find the right agency to help me A-Z Index of U.S. Government Agencies
+        Find contact information for federal government departments, agencies, and
+        government-sponsored enterprises.", "dateLastCrawled": "2018-11-16T02:55:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "A-Z Index
+        of U.S. Government Departments and Agencies", "url": "https:\/\/www.usa.gov\/federal-agencies\/a",
+        "urlPingSuffix": "DevEx,5189.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies",
+        "snippet": "The .gov means it''s official. Federal government websites often
+        end in .gov or .mil. Before sharing sensitive information, make sure you''re
+        on a federal government site. This site is secure. The https:\/\/ ensures
+        that you are connecting to the official website and that any information you
+        provide is ...", "dateLastCrawled": "2018-11-11T03:18:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Welcome to the
+        CIA Web Site — Central Intelligence Agency", "url": "https:\/\/www.cia.gov\/index.html",
+        "urlPingSuffix": "DevEx,5203.1", "about": [{"name": "Special Activities Division"},
+        {"name": "Central Intelligence Agency"}], "displayUrl": "https:\/\/www.cia.gov",
+        "snippet": "The Central Intelligence Agency (CIA) today released the third
+        of six sets of declassified daily intelligence reports President Harry Truman
+        received from CIA and its predecessor organization, the Central Intelligence
+        Group, between 1946 and 1951.", "dateLastCrawled": "2018-11-15T21:18:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Home
+        | FEMA.gov", "url": "https:\/\/www.fema.gov\/", "urlPingSuffix": "DevEx,5215.1",
+        "displayUrl": "https:\/\/www.fema.gov", "snippet": "Individuals or businesses
+        that suffered damages from Hurricane Michael can check their eligibility for
+        different types of disaster assistance online, by calling 800-621-3362, or
+        by visiting a disaster recovery center.", "dateLastCrawled": "2018-11-06T16:34:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Agencies
+        - West Virginia", "url": "https:\/\/www.wv.gov\/agencies\/Pages\/default.aspx",
+        "urlPingSuffix": "DevEx,5230.1", "about": [{"name": "West Virginia"}], "displayUrl":
+        "https:\/\/www.wv.gov\/agencies\/Pages\/default.aspx", "snippet": "The
+        West Virginia Water Development Authority (WDA) is the agency that coordinates
+        the financing and closing for all infrastructure loans and economic development
+        loans and provides financing for the design, construction, improvement and
+        acquisiti...", "dateLastCrawled": "2018-11-12T22:33:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Agency for
+        Healthcare Research & Quality", "url": "https:\/\/www.ahrq.gov\/", "urlPingSuffix":
+        "DevEx,5241.1", "displayUrl": "https:\/\/www.ahrq.gov", "snippet": "AHRQ
+        invests in research and evidence to make health care safer and improve quality.",
+        "dateLastCrawled": "2018-11-19T22:15:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
+        "name": "Pay.gov - Home", "url": "https:\/\/www.pay.gov\/agency\/", "urlPingSuffix":
+        "DevEx,5255.1", "displayUrl": "https:\/\/www.pay.gov\/agency", "snippet":
+        "Pay.gov provides U.S. Government agencies flexible online and offline internet-based
+        services that allow them to securely collect funds electronically. Agency
+        customers benefit from the ability to easily make and manage their payments
+        24 hour-a-day, 365 days-a-year (excepting regular maintenance windows).",
+        "dateLastCrawled": "2018-11-04T04:00:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "Agencies | USDA", "url": "https:\/\/www.usda.gov\/our-agency\/agencies",
+        "urlPingSuffix": "DevEx,5271.1", "displayUrl": "https:\/\/www.usda.gov\/our-agency\/agencies",
+        "snippet": "The Farm Service Agency implements agricultural policy, administers
+        credit and loan programs, and manages conservation, commodity, disaster and
+        farm marketing programs through a national network of offices.", "dateLastCrawled":
+        "2018-11-14T18:38:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
+        "name": "Agency Information - Public Utility Commission of Texas", "url":
+        "http:\/\/www.puc.texas.gov\/agency\/Default.aspx", "urlPingSuffix": "DevEx,5283.1",
+        "displayUrl": "www.puc.texas.gov\/agency\/Default.aspx", "snippet": "The
+        PUC makes extensive use of Adobe''s Acrobat PDF format Download a free copy
+        of the Acrobat Reader here.", "dateLastCrawled": "2018-11-16T11:38:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Agencies
+        - Commonwealth of Virginia", "url": "https:\/\/www.virginia.gov\/agencies\/",
+        "urlPingSuffix": "DevEx,5296.1", "about": [{"name": "Virginia"}], "displayUrl":
+        "https:\/\/www.virginia.gov\/agencies", "snippet": "The agency also
+        collects Virginia''s fuel tax, monitors the state''s trucking industry and
+        serves as Virginia''s Highway Safety Office. In addition, the agency effectively
+        enforces motoring and transportation-related tax laws, and efficiently collects
+        and distributes transportation-related revenues.", "dateLastCrawled": "2018-11-16T00:42:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "State
+        of North Carolina: Agencies", "url": "https:\/\/www.nc.gov\/agencies", "urlPingSuffix":
+        "DevEx,5309.1", "about": [{"name": "North Carolina"}], "displayUrl": "https:\/\/www.nc.gov\/agencies",
+        "snippet": "Full list of state government agencies in North Carolina, with
+        links and contacts.", "dateLastCrawled": "2018-11-16T03:26:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "AgencyWeb",
+        "url": "https:\/\/agencyweb.elpasotexas.gov\/index.cfm", "urlPingSuffix":
+        "DevEx,5321.1", "displayUrl": "https:\/\/agencyweb.elpasotexas.gov\/index.cfm",
+        "snippet": "Login: Your internet browser is not supported. Microsoft Internet
+        Explorer v5.0 and above are supported.", "dateLastCrawled": "2018-11-16T08:32:00.0000000Z"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 19 Nov 2018 22:42:07 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=agency%20(site:www.usa.gov/)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '3619'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 19 Nov 2018 22:41:07 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=28741D0262E8649A06A411AE633F6508; path=/; expires=Sat, 14-Dec-2019 22:42:07
+        GMT; domain=bingapis.com
+      - MUIDB=28741D0262E8649A06A411AE633F6508; path=/; httponly; expires=Sat, 14-Dec-2019
+        22:42:07 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 19-Nov-2020 22:42:07 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=EC47A69D63EA402C8728077DC564E0E3&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 19-Nov-2020 22:42:07 GMT; path=/
+      - SRCHUSR=DOB=20181119; domain=.bingapis.com; expires=Thu, 19-Nov-2020 22:42:07
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=3B1FB49BC1FE6330166BB837C029621D; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 14-Dec-2019 22:42:07 GMT; domain=bingapis.com
+      - _SS=SID=3B1FB49BC1FE6330166BB837C029621D; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - E95B8EACFCDD4A39A82B70205713C0C2
+      X-Msedge-Clientid:
+      - 28741D0262E8649A06A411AE633F6508
+      X-Msapi-Userstate:
+      - '7791'
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: E95B8EACFCDD4A39A82B70205713C0C2 Ref B: CO1EDGE0514 Ref C: 2018-11-19T22:42:07Z'
+      Date:
+      - Mon, 19 Nov 2018 22:42:07 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=072AEDD6714D46749BB79863EAE9E313&CID=28741D0262E8649A06A411AE633F6508&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=072AEDD6714D46749BB79863EAE9E313&CID=28741D0262E8649A06A411AE633F6508&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=agency+(site%3awww.usa.gov%2f)",
+        "webSearchUrlPingSuffix": "DevEx,5457.1", "totalEstimatedMatches": 62600,
+        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
+        "A-Z Index of U.S. Government Departments and Agencies", "url": "https:\/\/www.usa.gov\/federal-agencies\/a",
+        "urlPingSuffix": "DevEx,5060.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies",
+        "snippet": "The .gov means it''s official. Federal government websites often
+        end in .gov or .mil. Before sharing sensitive information, make sure you''re
+        on a federal government site. This site is secure. The https:\/\/ ensures
+        that you are connecting to the official website and that any information you
+        provide is ...", "dateLastCrawled": "2018-11-11T03:18:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Government Agencies
+        and Elected Officials | USAGov", "url": "https:\/\/www.usa.gov\/agencies",
+        "urlPingSuffix": "DevEx,5074.1", "about": [{"name": "Federal government of
+        the United States"}], "displayUrl": "https:\/\/www.usa.gov\/agencies", "snippet":
+        "Find the right agency to help me A-Z Index of U.S. Government Agencies
+        Find contact information for federal government departments, agencies, and
+        government-sponsored enterprises.", "dateLastCrawled": "2018-11-16T02:55:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Internal
+        Revenue Service | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/internal-revenue-service",
+        "urlPingSuffix": "DevEx,5090.1", "about": [{"name": "Internal Revenue Service"}],
+        "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/internal-revenue-service",
+        "snippet": "The Internal Revenue Service (IRS) administers and enforces
+        U.S. federal tax laws. Agency Details Acronym: IRS. Website: Internal Revenue
+        Service (IRS) Contact: Contact the Internal Revenue Service. Help With
+        Tax Questions. Taxpayer Advocate Service. Report Tax Fraud. IRS Hotlines.",
+        "dateLastCrawled": "2018-11-12T12:22:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "Filing a Consumer Complaint | USAGov", "url": "https:\/\/www.usa.gov\/consumer-complaints",
+        "urlPingSuffix": "DevEx,5106.1", "displayUrl": "https:\/\/www.usa.gov\/consumer-complaints",
+        "snippet": "File a complaint with your local consumer protection offices or
+        the state regulatory agency or licensing board that has jurisdiction over
+        the seller. Notify the Better Business Bureau (BBB) in your area about your
+        problem.", "dateLastCrawled": "2018-11-12T07:19:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
+        "name": "Farm Service Agency | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/farm-service-agency",
+        "urlPingSuffix": "DevEx,5122.1", "about": [{"name": "Farm Service Agency"}],
+        "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/farm-service-agency",
+        "snippet": "Farm Service Agency. The Farm Service Agency supports farms
+        and farming communities with programs including disaster relief, conservation
+        programs, commodity price guarantee programs, and loan programs.", "dateLastCrawled":
+        "2018-11-14T20:17:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
+        "name": "U.S. Agency for Global Media | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/u-s-agency-for-global-media",
+        "urlPingSuffix": "DevEx,5136.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/u-s-agency-for-global-media",
+        "snippet": "U.S. Agency for Global Media. The U.S. Agency for Global Media,
+        formerly known as the Broadcasting Board of Governors, broadcasts news and
+        information about the United States and the world to audiences abroad.", "dateLastCrawled":
+        "2018-11-13T12:05:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "name": "USA - Official Guide to Government Information and Services", "url":
+        "https:\/\/www.usa.gov\/", "urlPingSuffix": "DevEx,5149.1", "about": [{"name":
+        "United States"}], "displayUrl": "https:\/\/www.usa.gov", "snippet": "USA.gov
+        can help you start your search for government information by topic and agency.",
+        "dateLastCrawled": "2018-11-16T12:07:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "name": "Complaints Against the Government | USAGov", "url": "https:\/\/www.usa.gov\/complaint-against-government",
+        "urlPingSuffix": "DevEx,5165.1", "displayUrl": "https:\/\/www.usa.gov\/complaint-against-government",
+        "snippet": "If you are unable to resolve an issue with a federal government
+        agency, contact the office of the Inspector General (IG) of that agency.
+        State Government Agencies. To file a complaint against a state, local or
+        tribal government agency, contact the agency directly.", "dateLastCrawled":
+        "2018-11-16T10:56:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
+        "name": "Credit Reports and Scores | USAGov", "url": "https:\/\/www.usa.gov\/credit-reports",
+        "urlPingSuffix": "DevEx,5181.1", "displayUrl": "https:\/\/www.usa.gov\/credit-reports",
+        "snippet": "A credit reporting agency (CRA) is a company that collects information
+        about where you live and work, how you pay your bills, whether or not you
+        have been sued, arrested, or filed for bankruptcy. All of this information
+        is combined together in a credit report.", "dateLastCrawled": "2018-11-15T17:37:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "State
+        Consumer Protection Offices | USAGov", "url": "https:\/\/www.usa.gov\/state-consumer",
+        "urlPingSuffix": "DevEx,5197.1", "about": [{"name": "Protection"}], "displayUrl":
+        "https:\/\/www.usa.gov\/state-consumer", "snippet": "The .gov means it''s
+        official. Federal government websites often end in .gov or .mil. Before sharing
+        sensitive information, make sure you''re on a federal government site. This
+        site is secure. The https:\/\/ ensures that you are connecting to the official
+        website and that any information you provide is ...", "dateLastCrawled": "2018-11-15T05:07:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Independent
+        Agencies | USAGov", "url": "https:\/\/www.usa.gov\/independent-agencies",
+        "urlPingSuffix": "DevEx,5212.1", "displayUrl": "https:\/\/www.usa.gov\/independent-agencies",
+        "snippet": "Independent Agencies. Independent establishments are created
+        by Congress to address concerns that go beyond the scope of ordinary legislation.
+        These agencies are responsible for keeping the government and economy running
+        smoothly.", "dateLastCrawled": "2018-11-13T22:34:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
+        "name": "Branches of the U.S. Government | USAGov", "url": "https:\/\/www.usa.gov\/branches-of-government",
+        "urlPingSuffix": "DevEx,5228.1", "about": [{"name": "Federal government of
+        the United States"}], "displayUrl": "https:\/\/www.usa.gov\/branches-of-government",
+        "snippet": "The Founding Fathers, the framers of the U.S. Constitution, wanted
+        to form a government that did not allow one person to have too much control.
+        With this in mind, they wrote the Constitution to provide for a separation
+        of powers, or three separate branches of government. Each branch has its
+        own ...", "dateLastCrawled": "2018-11-14T21:39:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
+        "name": "U.S. Department of Health and Human Services | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/u-s-department-of-health-and-human-services",
+        "urlPingSuffix": "DevEx,5243.1", "about": [{"name": "United States Department
+        of Health and Human Services"}], "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/u-s-department-of-health-and...",
+        "snippet": "U.S. Department of Health and Human Services. The Department of
+        Health and Human Services protects the health of all Americans and provides
+        essential human services.", "dateLastCrawled": "2018-11-16T10:43:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Identity
+        Theft | USAGov", "url": "https:\/\/www.usa.gov\/identity-theft", "urlPingSuffix":
+        "DevEx,5259.1", "displayUrl": "https:\/\/www.usa.gov\/identity-theft", "snippet":
+        "Tax Identity Theft - Report this type of ID theft to the Internal Revenue
+        Service and your state’s Department of Taxation or Revenue. Report Identity
+        Theft to Other Organizations. ... Confirm that the credit reporting agency
+        will alert the other two credit reporting agencies.", "dateLastCrawled": "2018-11-16T10:07:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Auctions
+        and Sales | USAGov", "url": "https:\/\/www.usa.gov\/auctions-and-sales",
+        "urlPingSuffix": "DevEx,5275.1", "displayUrl": "https:\/\/www.usa.gov\/auctions-and-sales",
+        "snippet": "The General Services Administration (GSA) is the federal agency
+        responsible for selling developed surplus property. If you''re interested
+        in purchasing real property, contact the GSA''s Office of Real Property Utilization
+        and Disposal at 1-202-501-0084 .", "dateLastCrawled": "2018-11-13T19:04:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Getting
+        or Renewing a U.S. Passport | USAGov", "url": "https:\/\/www.usa.gov\/passport",
+        "urlPingSuffix": "DevEx,5291.1", "displayUrl": "https:\/\/www.usa.gov\/passport",
+        "snippet": "Requirements for expedited service at passport agency locations.
+        You must show proof of emergency or upcoming travel in person at one of 26
+        regional passport agencies. You must have an appointment. Call the National
+        Passport Information Center at 1-877-487-2778 to schedule one.", "dateLastCrawled":
+        "2018-11-13T22:14:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
+        "name": "Report Scams and Frauds | USAGov", "url": "https:\/\/www.usa.gov\/stop-scams-frauds",
+        "urlPingSuffix": "DevEx,5307.1", "displayUrl": "https:\/\/www.usa.gov\/stop-scams-frauds",
+        "snippet": "Welfare (TANF) fraud - Contact your nearest welfare agency or
+        call the HHS Inspector General at 1-800-HHS-TIPS (1-800-447-8477) to report
+        program fraud or abuse. Reporting fraud may not recover everything you lost,
+        but it does improve your chances of getting some of it back and avoiding future
+        losses.", "dateLastCrawled": "2018-11-14T23:35:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
+        "name": "Find a Federal Government Job | USAGov", "url": "https:\/\/www.usa.gov\/government-jobs",
+        "urlPingSuffix": "DevEx,5323.1", "displayUrl": "https:\/\/www.usa.gov\/government-jobs",
+        "snippet": "The federal government has job opportunities available now in
+        agencies throughout the U.S. If you’re interested in a job with the federal
+        government, visit USAJOBS.gov, the official one-stop source for federal jobs
+        and employment information. There, you can: You must create a USAJOBS profile
+        to ...", "dateLastCrawled": "2018-11-14T13:30:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
+        "name": "Marine Mammal Commission | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/marine-mammal-commission",
+        "urlPingSuffix": "DevEx,5339.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/marine-mammal-commission",
+        "snippet": "Marine Mammal Commission The Marine Mammal Commission provides
+        oversight of all marine mammal conservation policies and programs carried
+        out by federal regulatory agencies. Agency Details", "dateLastCrawled":
+        "2018-11-12T22:07:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
+        "name": "U.S. Department of Defense | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/u-s-department-of-defense",
+        "urlPingSuffix": "DevEx,5355.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/u-s-department-of-defense",
+        "snippet": "U.S. Department of Defense The Department of Defense provides
+        the military forces needed to deter war, and to protect the security of the
+        United States. Agency Details", "dateLastCrawled": "2018-11-13T14:05:00.0000000Z"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 19 Nov 2018 22:42:08 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=agency%20(site:.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 19 Nov 2018 22:42:19 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 2DD6646E9606421CBD5B6965E67F1255
+      Bingapis-Sessionid:
+      - 39CA308E4D59460DB429DCA005A6D06D
+      X-Msedge-Clientid:
+      - 0ADB43F1E238639C16CB4F5DE37462F8
+      X-Msapi-Userstate:
+      - d2a8
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=181,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: 2DD6646E9606421CBD5B6965E67F1255 Ref B: BY3EDGE0316 Ref C: 2018-11-19T22:43:19Z'
+      Apim-Request-Id:
+      - 074ba1f9-6017-4887-8e2c-3b25398996fd
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Mon, 19 Nov 2018 22:43:19 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "agency
+        (site:.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=agency+(site%3a.gov)",
+        "totalEstimatedMatches": 29800000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Agency - post.ca.gov", "url": "https:\/\/post.ca.gov\/agency",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/post.ca.gov\/agency",
+        "snippet": "With a PASS account, you can use one password to access POST''s
+        online services - including your POST Profile, Continuing Professional Training
+        (CPT) status, and news customized for your location and occupation", "dateLastCrawled":
+        "2018-11-15T10:00:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1", "name":
+        "CA.Gov : Agencies", "url": "http:\/\/www.ca.gov\/Agencies", "about": [{"name":
+        "North Carolina"}], "isFamilyFriendly": true, "displayUrl": "www.ca.gov\/Agencies",
+        "snippet": "Search for adult inmates currently in a California Department
+        of Corrections and Rehabilitation institution. Find a State Job Access state
+        civil service examinations, apply for vacancies, and track your application
+        status. ... Find an Agency. Agency Search: Search. Show Filters .", "dateLastCrawled":
+        "2018-11-15T20:07:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2", "name":
+        "About the Agency | FEMA.gov", "url": "https:\/\/www.fema.gov\/about-agency",
+        "about": [{"name": "Federal Emergency Management Agency"}, {"name": "Federal
+        Emergency Management Agency"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fema.gov\/about",
+        "snippet": "On April 1, 1979, President Jimmy Carter signed the executive
+        order that created the Federal Emergency Management Agency (FEMA). From
+        day one, FEMA has remained committed to protecting and serving the American
+        people. That commitment to the people we serve and the belief in our survivor
+        centric mission will never change.", "dateLastCrawled": "2018-11-09T14:50:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Passport Agencies - State", "url": "https:\/\/travel.state.gov\/content\/travel\/en\/passports\/requirements\/where-to-apply\/passport-agencies.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/travel.state.gov\/...\/where-to-apply\/passport-agencies.html",
+        "snippet": "Passport Agencies Proof of immediate international travel ,
+        the Expedited Fee , and an appointment are required for each application submitted
+        in person at a Passport Agency or Center. You can make an appointment online
+        in a few minutes.", "dateLastCrawled": "2018-11-11T22:30:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Agencies | The State of New York", "url": "https:\/\/www.ny.gov\/agencies",
+        "about": [{"name": "New York"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ny.gov\/agencies",
+        "snippet": "The State of New York does not imply approval of the listed
+        destinations, warrant the accuracy of any information set out in those destinations,
+        or endorse any opinions expressed therein.", "dateLastCrawled": "2018-11-13T14:19:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "The Texas Education Agency", "url": "https:\/\/tea.texas.gov\/Home\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/tea.texas.gov\/Home",
+        "snippet": "The latest news from the Texas Education Agency is available
+        through news releases, online correspondence, mailing lists, and other posted
+        information. Finance & Funding. Final FIRST Ratings Announced. The 2017-18
+        final financial accountability ratings for more than 1,100 school districts
+        and charters across the state are now available.", "dateLastCrawled": "2018-11-18T21:11:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Agency | California Natural Resources Agency", "url": "http:\/\/resources.ca.gov\/agency\/",
+        "isFamilyFriendly": true, "displayUrl": "resources.ca.gov\/agency", "snippet":
+        "The California Natural Resources Agency leads and coordinates both the
+        administration''s climate adaptation policy and its natural resources climate
+        policy. California EcoRestore. California EcoRestore is an initiative to help
+        coordinate and advance at least 30,000 acres of critical habitat restoration
+        in the Sacramento - San Joaquin Delta over ...", "dateLastCrawled": "2018-11-12T18:52:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Agencies | Georgia.gov", "url": "https:\/\/georgia.gov\/agency-list",
+        "about": [{"name": "Georgia"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/georgia.gov\/agency-list",
+        "snippet": "You are here. Home » Agencies. Agencies", "dateLastCrawled":
+        "2018-11-14T20:50:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8", "name":
+        "Government Agencies and Elected Officials | USAGov", "url": "https:\/\/www.usa.gov\/agencies",
+        "about": [{"name": "Federal government of the United States"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.usa.gov\/agencies", "snippet": "Find
+        the right agency to help me A-Z Index of U.S. Government Agencies Find contact
+        information for federal government departments, agencies, and government-sponsored
+        enterprises.", "dateLastCrawled": "2018-11-16T02:55:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "A-Z Index of U.S. Government Departments and Agencies", "url":
+        "https:\/\/www.usa.gov\/federal-agencies\/a", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.usa.gov\/federal-agencies", "snippet": "The .gov means it''s
+        official. Federal government websites often end in .gov or .mil. Before sharing
+        sensitive information, make sure you''re on a federal government site. This
+        site is secure. The https:\/\/ ensures that you are connecting to the official
+        website and that any information you provide is ...", "dateLastCrawled": "2018-11-11T03:18:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Welcome to the CIA Web Site — Central Intelligence Agency", "url":
+        "https:\/\/www.cia.gov\/index.html", "about": [{"name": "Special Activities
+        Division"}, {"name": "Central Intelligence Agency"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.cia.gov", "snippet": "The Central Intelligence
+        Agency (CIA) today released the third of six sets of declassified daily intelligence
+        reports President Harry Truman received from CIA and its predecessor organization,
+        the Central Intelligence Group, between 1946 and 1951.", "dateLastCrawled":
+        "2018-11-15T21:18:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11", "name":
+        "Home | FEMA.gov", "url": "https:\/\/www.fema.gov\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.fema.gov", "snippet": "Individuals or
+        businesses that suffered damages from Hurricane Michael can check their eligibility
+        for different types of disaster assistance online, by calling 800-621-3362,
+        or by visiting a disaster recovery center.", "dateLastCrawled": "2018-11-06T16:34:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Agencies - West Virginia", "url": "https:\/\/www.wv.gov\/agencies\/Pages\/default.aspx",
+        "about": [{"name": "West Virginia"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.wv.gov\/agencies\/Pages\/default.aspx", "snippet": "The
+        West Virginia Water Development Authority (WDA) is the agency that coordinates
+        the financing and closing for all infrastructure loans and economic development
+        loans and provides financing for the design, construction, improvement and
+        acquisiti...", "dateLastCrawled": "2018-11-12T22:33:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Agency for Healthcare Research & Quality", "url": "https:\/\/www.ahrq.gov\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ahrq.gov", "snippet":
+        "AHRQ invests in research and evidence to make health care safer and improve
+        quality.", "dateLastCrawled": "2018-11-19T22:15:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Pay.gov - Home", "url": "https:\/\/www.pay.gov\/agency\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.pay.gov\/agency", "snippet": "Pay.gov
+        provides U.S. Government agencies flexible online and offline internet-based
+        services that allow them to securely collect funds electronically. Agency
+        customers benefit from the ability to easily make and manage their payments
+        24 hour-a-day, 365 days-a-year (excepting regular maintenance windows).",
+        "dateLastCrawled": "2018-11-04T04:00:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Agencies | USDA", "url": "https:\/\/www.usda.gov\/our-agency\/agencies",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usda.gov\/our-agency\/agencies",
+        "snippet": "The Farm Service Agency implements agricultural policy, administers
+        credit and loan programs, and manages conservation, commodity, disaster and
+        farm marketing programs through a national network of offices.", "dateLastCrawled":
+        "2018-11-14T18:38:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16", "name":
+        "Agency Information - Public Utility Commission of Texas", "url": "http:\/\/www.puc.texas.gov\/agency\/Default.aspx",
+        "isFamilyFriendly": true, "displayUrl": "www.puc.texas.gov\/agency\/Default.aspx",
+        "snippet": "The PUC makes extensive use of Adobe''s Acrobat PDF format Download
+        a free copy of the Acrobat Reader here.", "dateLastCrawled": "2018-11-16T11:38:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Agencies - Commonwealth of Virginia", "url": "https:\/\/www.virginia.gov\/agencies\/",
+        "about": [{"name": "Virginia"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.virginia.gov\/agencies",
+        "snippet": "The agency also collects Virginia''s fuel tax, monitors the
+        state''s trucking industry and serves as Virginia''s Highway Safety Office.
+        In addition, the agency effectively enforces motoring and transportation-related
+        tax laws, and efficiently collects and distributes transportation-related
+        revenues.", "dateLastCrawled": "2018-11-16T00:42:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "State of North Carolina: Agencies", "url": "https:\/\/www.nc.gov\/agencies",
+        "about": [{"name": "North Carolina"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.nc.gov\/agencies", "snippet": "Full list of state government
+        agencies in North Carolina, with links and contacts.", "dateLastCrawled":
+        "2018-11-16T03:26:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19", "name":
+        "AgencyWeb", "url": "https:\/\/agencyweb.elpasotexas.gov\/index.cfm", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/agencyweb.elpasotexas.gov\/index.cfm",
+        "snippet": "Login: Your internet browser is not supported. Microsoft Internet
+        Explorer v5.0 and above are supported.", "dateLastCrawled": "2018-11-16T08:32:00.0000000Z",
+        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 19 Nov 2018 22:43:20 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=agency%20(site:www.usa.gov/)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 19 Nov 2018 22:42:20 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 6C5A3C7FD73646488B1451340D1C9470
+      Bingapis-Sessionid:
+      - 6F93126C0D5547A5A8CFCF2D9EE3AF42
+      X-Msedge-Clientid:
+      - 14F5A336EFE667B61F25AF9AEEAA6603
+      X-Msapi-Userstate:
+      - 3be2
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=169,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: 6C5A3C7FD73646488B1451340D1C9470 Ref B: BY3EDGE0408 Ref C: 2018-11-19T22:43:20Z'
+      Apim-Request-Id:
+      - a355c0d3-d35f-4773-9f72-d1bb6bdbd38d
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Mon, 19 Nov 2018 22:43:20 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "agency
+        (site:www.usa.gov\/)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=agency+(site%3awww.usa.gov%2f)",
+        "totalEstimatedMatches": 62600, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "A-Z Index of U.S. Government Departments and Agencies", "url":
+        "https:\/\/www.usa.gov\/federal-agencies\/a", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.usa.gov\/federal-agencies", "snippet": "The .gov means it''s
+        official. Federal government websites often end in .gov or .mil. Before sharing
+        sensitive information, make sure you''re on a federal government site. This
+        site is secure. The https:\/\/ ensures that you are connecting to the official
+        website and that any information you provide is ...", "dateLastCrawled": "2018-11-11T03:18:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Government Agencies and Elected Officials | USAGov", "url": "https:\/\/www.usa.gov\/agencies",
+        "about": [{"name": "Federal government of the United States"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.usa.gov\/agencies", "snippet": "Find
+        the right agency to help me A-Z Index of U.S. Government Agencies Find contact
+        information for federal government departments, agencies, and government-sponsored
+        enterprises.", "dateLastCrawled": "2018-11-16T02:55:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Internal Revenue Service | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/internal-revenue-service",
+        "about": [{"name": "Internal Revenue Service"}], "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/internal-revenue-service",
+        "snippet": "The Internal Revenue Service (IRS) administers and enforces
+        U.S. federal tax laws. Agency Details Acronym: IRS. Website: Internal Revenue
+        Service (IRS) Contact: Contact the Internal Revenue Service. Help With
+        Tax Questions. Taxpayer Advocate Service. Report Tax Fraud. IRS Hotlines.",
+        "dateLastCrawled": "2018-11-12T12:22:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Filing a Consumer Complaint | USAGov", "url": "https:\/\/www.usa.gov\/consumer-complaints",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/consumer-complaints",
+        "snippet": "File a complaint with your local consumer protection offices or
+        the state regulatory agency or licensing board that has jurisdiction over
+        the seller. Notify the Better Business Bureau (BBB) in your area about your
+        problem.", "dateLastCrawled": "2018-11-12T07:19:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Farm Service Agency | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/farm-service-agency",
+        "about": [{"name": "Farm Service Agency"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.usa.gov\/federal-agencies\/farm-service-agency", "snippet":
+        "Farm Service Agency. The Farm Service Agency supports farms and farming
+        communities with programs including disaster relief, conservation programs,
+        commodity price guarantee programs, and loan programs.", "dateLastCrawled":
+        "2018-11-14T20:17:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5", "name":
+        "U.S. Agency for Global Media | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/u-s-agency-for-global-media",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/u-s-agency-for-global-media",
+        "snippet": "U.S. Agency for Global Media. The U.S. Agency for Global Media,
+        formerly known as the Broadcasting Board of Governors, broadcasts news and
+        information about the United States and the world to audiences abroad.", "dateLastCrawled":
+        "2018-11-13T12:05:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6", "name":
+        "USA - Official Guide to Government Information and Services", "url": "https:\/\/www.usa.gov\/",
+        "about": [{"name": "United States"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.usa.gov", "snippet": "USA.gov can help you start your search
+        for government information by topic and agency.", "dateLastCrawled": "2018-11-16T12:07:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Complaints Against the Government | USAGov", "url": "https:\/\/www.usa.gov\/complaint-against-government",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/complaint-against-government",
+        "snippet": "If you are unable to resolve an issue with a federal government
+        agency, contact the office of the Inspector General (IG) of that agency.
+        State Government Agencies. To file a complaint against a state, local or
+        tribal government agency, contact the agency directly.", "dateLastCrawled":
+        "2018-11-16T10:56:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8", "name":
+        "Credit Reports and Scores | USAGov", "url": "https:\/\/www.usa.gov\/credit-reports",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/credit-reports",
+        "snippet": "A credit reporting agency (CRA) is a company that collects information
+        about where you live and work, how you pay your bills, whether or not you
+        have been sued, arrested, or filed for bankruptcy. All of this information
+        is combined together in a credit report.", "dateLastCrawled": "2018-11-15T17:37:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "State Consumer Protection Offices | USAGov", "url": "https:\/\/www.usa.gov\/state-consumer",
+        "about": [{"name": "Protection"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.usa.gov\/state-consumer", "snippet": "The .gov means it''s
+        official. Federal government websites often end in .gov or .mil. Before sharing
+        sensitive information, make sure you''re on a federal government site. This
+        site is secure. The https:\/\/ ensures that you are connecting to the official
+        website and that any information you provide is ...", "dateLastCrawled": "2018-11-15T05:07:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Independent Agencies | USAGov", "url": "https:\/\/www.usa.gov\/independent-agencies",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/independent-agencies",
+        "snippet": "Independent Agencies. Independent establishments are created
+        by Congress to address concerns that go beyond the scope of ordinary legislation.
+        These agencies are responsible for keeping the government and economy running
+        smoothly.", "dateLastCrawled": "2018-11-13T22:34:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Branches of the U.S. Government | USAGov", "url": "https:\/\/www.usa.gov\/branches-of-government",
+        "about": [{"name": "Federal government of the United States"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.usa.gov\/branches-of-government", "snippet":
+        "The Founding Fathers, the framers of the U.S. Constitution, wanted to form
+        a government that did not allow one person to have too much control. With
+        this in mind, they wrote the Constitution to provide for a separation of powers,
+        or three separate branches of government. Each branch has its own ...",
+        "dateLastCrawled": "2018-11-14T21:39:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "U.S. Department of Health and Human Services | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/u-s-department-of-health-and-human-services",
+        "about": [{"name": "United States Department of Health and Human Services"}],
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/u-s-department-of-health-and...",
+        "snippet": "U.S. Department of Health and Human Services. The Department of
+        Health and Human Services protects the health of all Americans and provides
+        essential human services.", "dateLastCrawled": "2018-11-16T10:43:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Identity Theft | USAGov", "url": "https:\/\/www.usa.gov\/identity-theft",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/identity-theft",
+        "snippet": "Tax Identity Theft - Report this type of ID theft to the Internal
+        Revenue Service and your state’s Department of Taxation or Revenue. Report
+        Identity Theft to Other Organizations. ... Confirm that the credit reporting
+        agency will alert the other two credit reporting agencies.", "dateLastCrawled":
+        "2018-11-16T10:07:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "Auctions and Sales | USAGov", "url": "https:\/\/www.usa.gov\/auctions-and-sales",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/auctions-and-sales",
+        "snippet": "The General Services Administration (GSA) is the federal agency
+        responsible for selling developed surplus property. If you''re interested
+        in purchasing real property, contact the GSA''s Office of Real Property Utilization
+        and Disposal at 1-202-501-0084 .", "dateLastCrawled": "2018-11-13T19:04:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Getting or Renewing a U.S. Passport | USAGov", "url": "https:\/\/www.usa.gov\/passport",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/passport",
+        "snippet": "Requirements for expedited service at passport agency locations.
+        You must show proof of emergency or upcoming travel in person at one of 26
+        regional passport agencies. You must have an appointment. Call the National
+        Passport Information Center at 1-877-487-2778 to schedule one.", "dateLastCrawled":
+        "2018-11-13T22:14:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16", "name":
+        "Report Scams and Frauds | USAGov", "url": "https:\/\/www.usa.gov\/stop-scams-frauds",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/stop-scams-frauds",
+        "snippet": "Welfare (TANF) fraud - Contact your nearest welfare agency or
+        call the HHS Inspector General at 1-800-HHS-TIPS (1-800-447-8477) to report
+        program fraud or abuse. Reporting fraud may not recover everything you lost,
+        but it does improve your chances of getting some of it back and avoiding future
+        losses.", "dateLastCrawled": "2018-11-14T23:35:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Find a Federal Government Job | USAGov", "url": "https:\/\/www.usa.gov\/government-jobs",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/government-jobs",
+        "snippet": "The federal government has job opportunities available now in
+        agencies throughout the U.S. If you’re interested in a job with the federal
+        government, visit USAJOBS.gov, the official one-stop source for federal jobs
+        and employment information. There, you can: You must create a USAJOBS profile
+        to ...", "dateLastCrawled": "2018-11-14T13:30:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Marine Mammal Commission | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/marine-mammal-commission",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/marine-mammal-commission",
+        "snippet": "Marine Mammal Commission The Marine Mammal Commission provides
+        oversight of all marine mammal conservation policies and programs carried
+        out by federal regulatory agencies. Agency Details", "dateLastCrawled":
+        "2018-11-12T22:07:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19", "name":
+        "U.S. Department of Defense | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/u-s-department-of-defense",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/u-s-department-of-defense",
+        "snippet": "U.S. Department of Defense The Department of Defense provides
+        the military forces needed to deter war, and to protect the security of the
+        United States. Agency Details", "dateLastCrawled": "2018-11-13T14:05:00.0000000Z",
+        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 19 Nov 2018 22:43:20 GMT
 recorded_with: VCR 4.0.0
