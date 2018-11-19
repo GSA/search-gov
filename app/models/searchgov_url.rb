@@ -37,7 +37,11 @@ class SearchgovUrl < ActiveRecord::Base
     column_name: proc {|url| !url.fetched? ? 'unfetched_urls_count' : nil },
     column_names: { ['searchgov_urls.last_crawled_at IS NULL'] => 'unfetched_urls_count' }
 
-  scope :fetch_required, -> { where('last_crawled_at IS NULL OR lastmod > last_crawled_at OR enqueued_for_reindex') }
+  scope :fetch_required, ->() do
+     where('last_crawled_at IS NULL OR
+            lastmod > last_crawled_at OR
+            enqueued_for_reindex')
+  end
 
   class SearchgovUrlError < StandardError; end
   class DomainError < StandardError; end
