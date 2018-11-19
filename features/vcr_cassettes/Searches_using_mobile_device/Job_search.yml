@@ -870,4 +870,458 @@ http_interactions:
         businesses rebuild their lives after a disaster.","TravelCode":"1","ApplyOnlineUrl":"https://apply.usastaffing.gov/Application/Apply","DetailStatusUrl":"https://apply.usastaffing.gov/Application/ApplicationStatus"},"IsRadialSearch":false}},"RelevanceRank":0.0}],"UserArea":{"NumberOfPages":"78","IsRadialSearch":false}}}'
     http_version: 
   recorded_at: Wed, 31 Oct 2018 16:21:44 GMT
+- request:
+    method: get
+    uri: https://data.usajobs.gov/api/search?Keyword=jobs&LocationName&Organization&ResultsPerPage=10
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization-Key:
+      - "<JOBS_AUTHORIZATION_KEY>" 
+      User-Agent:
+      - "<JOBS_USER_AGENT>" 
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/hr+json
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/10.0
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Mon, 19 Nov 2018 17:42:45 GMT
+      Content-Length:
+      - '41780'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - akavpau_DATA_USAJ=1542649665~id=29b598163b720cd2cf8e7f6662d3d5af; Domain=data.usajobs.gov;
+        Path=/; Secure
+    body:
+      encoding: UTF-8
+      string: '{"LanguageCode":"EN","SearchParameters":{},"SearchResult":{"SearchResultCount":10,"SearchResultCountAll":737,"SearchResultItems":[{"MatchedObjectId":"510077700","MatchedObjectDescriptor":{"PositionID":"CBCW-10302940-FY18-SB","PositionTitle":"Psychologist","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/510077700","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/510077700?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Multiple
+        Locations","PositionLocation":[{"LocationName":"Danville, Illinois","CountryCode":"United
+        States","CountrySubDivisionCode":"Illinois","CityName":"Danville, Illinois","Longitude":-87.63043,"Latitude":40.1594658},{"LocationName":"Springfield,
+        Illinois","CountryCode":"United States","CountrySubDivisionCode":"Illinois","CityName":"Springfield,
+        Illinois","Longitude":-89.64361,"Latitude":39.8010559}],"OrganizationName":"Veterans
+        Affairs, Veterans Health Administration","DepartmentName":"Department of Veterans
+        Affairs","JobCategory":[{"Name":"Psychology","Code":"0180"}],"JobGrade":[{"Code":"GS"}],"PositionSchedule":[{"Name":"Full-Time","Code":"1"}],"PositionOfferingType":[{"Name":"Permanent","Code":"15317"}],"QualificationSummary":"Basic
+        Requirements:\nUnited States Citizenship - Non-citizens may only be appointed
+        when it is not possible to recruit qualified citizens in accordance with VA
+        Policy.\nEnglish Language Proficiency Requirement - Per VA Handbook 5005,
+        Part II, Chapter 3, Section A, Paragraph 3j: No person will be appointed under
+        authority of 38 U.S.C., chapter 73 or 74, to serve in a direct patient-care
+        capacity in VHA who is not proficient in written and spoken English.\nEducation
+        Requirement - You must have a doctoral degree in psychology from a graduate
+        program in psychology accredited by the American Psychological Association
+        (APA), the Psychological Clinical Science Accreditation System (PCSAS), or
+        the Canadian Psychological Association (CPA) at the time the program was completed.
+        The specialty area of the degree must be consistent with the assignment for
+        which the applicant is to be employed. OR, have a doctoral degree in any area
+        of psychology and, in addition, successfully completed a respecialization
+        program meeting both of the following conditions: a) the respecialization
+        program must be completed in an APA or a CPA accredited doctoral program;
+        and b) the specialty in which you were retrained is consistent with the assignment
+        you are am applying for; OR, have a doctoral degree awarded between 1951 and
+        1978 from a regionally-accredited institution, with a dissertation primarily
+        psychological in nature.\nInternship Requirement - You must have successfully
+        completed a professional psychology internship training program that was accredited
+        by APA or CPA at the time the program was completed and that is consistent
+        with the assignment for which the applicant is to be employed; OR, New VHA
+        psychology internship programs that are in the process of applying for APA
+        accreditation are acceptable in fulfillment of the internship requirement,
+        provided that such programs were sanctioned by the VHA Central Office Program
+        Director for Psychology and the VHA Office of Academic Affiliations at the
+        time that the individual was an intern; OR, VHA facilities that offered full-time,
+        one-year pre-doctoral internships prior to PL 96-151 (pre-1979) are considered
+        to be acceptable in fulfillment of the internship requirement; OR, Applicants
+        who completed an internship that was not accredited by APA or CPA at the time
+        the program was completed may be considered eligible for hire only if they
+        are currently board certified by the American Board of Professional Psychology
+        in a specialty area that is consistent with the assignment for which the applicant
+        is to be employed. (NOTE: Once board certified, the employee is required to
+        maintain board certification). NOTE: Applicants who have a doctoral degree
+        awarded between 1951 and 1978 from a regionally-accredited institution with
+        a dissertation primarily psychological in nature may fulfill this internship
+        requirement by having the equivalent of a one-year supervised internship experience
+        in a site specifically acceptable to the candidate''s doctoral program. If
+        the internship experience is not noted on the applicant''s official transcript,
+        the applicant must provide a statement from the doctoral program verifying
+        that the equivalent of a one-year supervised internship experience was completed
+        in a site acceptable to the doctoral program.\nLicensure: Candidates must
+        hold a full, current, and unrestricted license to practice psychology at the
+        doctoral level in a State, Territory or Commonwealth of the United States,
+        or the District of Columbia. Exception: Non-licensed applicants who otherwise
+        meet the eligibility requirements may be given a temporary appointment as
+        a \"graduate psychologist\" at the GS-11 or GS-12 grade under the authority
+        of 38 U.S.C. 7405 (c)(2)(B) for a period not to exceed two years from the
+        date of employment on the condition that such a psychologist provide care
+        only under the supervision of a psychologist who is licensed. Failure to obtain
+        licensure during that period is justification for termination of the temporary
+        appointment.\nExperience: In additional to meeting the basic requirements
+        as stated above, you must have the following: GS-11 Level: no additional experience
+        beyond the basic requirement\nGS-12 Level: at least 1 full year of experience
+        as a professional psychologist equivalent to the GS-11 level, and are able
+        to demonstrate the following knowledge, skills and abilities: Knowledge of
+        and ability to apply a wide range of professional psychological treatments
+        or assessment methods to a variety of patient populations. Ability to design
+        and implement effective treatment strategies. Ability to incorporate new clinical
+        procedures. Ability to conduct research activities, such as designing and
+        implementing clinical research projects (staff psychologists with specified
+        research job duties). Ability to perform basic research tasks of scholarship
+        and research execution within the context of an established research team,
+        including research participant relations, research documentation, data acquisition,
+        maintenance, and collaboration. GS-13 Level: at least 2 addition years of
+        experience, with at least one year equivalent to the GS-12 level, as a professional
+        psychologist that was obtained through employment as a psychologist or through
+        participating in a supervised post-doctoral psychology training program that
+        demonstrates 1) active professional practice that was paid/non-paid employment
+        and/or 2) a full, current and unrestricted license. To be creditable, the
+        experience must have required the use of knowledge, skills, abilities and
+        other characteristics associated with current psychology practice: Knowledge
+        of, and ability to apply, professional psychological treatments to a full
+        range of patient populations. Ability to provide professional advice and consultation
+        in areas related to professional psychology and behavioral health. Knowledge
+        of clinical research literature.*Experience is only creditable if it is post-doctoral
+        degree experience as a professional psychologist directly related to the duties
+        performed. Preferred Experience: Experience as a Psychologist in a clinical
+        setting. Reference: VA Regulations, specifically VA Handbook 5005, Part II,
+        Appendix G18 Psychologist Qualification Standard. This can be found in the
+        local Human Resources Office. Physical Requirements: This position requires
+        minimal physical exertion, light lifting (under 15 lbs), light carrying (under
+        15 lbs.), working closely with others and working alone. The employee works
+        mostly from a seated position, conducting psychological assessments and providing
+        psychotherapeutic services for patients. The employee will use a computer
+        to access the medical record for entry and retrieval of information. The employee
+        will need to be able to hear conversational speech. hearing aid permitted.
+        The employee will be expected to move around the patient care environment.","PositionRemuneration":[{"MinimumRange":"61218.00","MaximumRange":"113428.00","RateIntervalCode":"Per
+        Year"}],"PositionStartDate":"2018-09-06","PositionEndDate":"2018-11-28","PublicationStartDate":"2018-09-06","ApplicationCloseDate":"2018-11-28","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"","WhoMayApply":{"Name":"","Code":""},"LowGrade":"11","HighGrade":"13","PromotionPotential":"13","HiringPath":["public"],"TotalOpenings":"5","AgencyMarketingStatement":"Learn
+        more about what it''s like to work at Veterans Affairs, Veterans Health Administration,
+        what the agency does, and about the types of careers this agency offers.https://www.va.gov/jobs//","TravelCode":"0","ApplyOnlineUrl":"https://apply.usastaffing.gov/Application/Apply","DetailStatusUrl":"https://apply.usastaffing.gov/Application/ApplicationStatus"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"512261500","MatchedObjectDescriptor":{"PositionID":"Legal
+        Intern-18-SMF","PositionTitle":"Legal Affairs Internship","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/512261500","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/512261500?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Washington
+        DC, District of Columbia","PositionLocation":[{"LocationName":"Washington
+        DC, District of Columbia","CountryCode":"United States","CountrySubDivisionCode":"District
+        of Columbia","CityName":"Washington DC, District of Columbia","Longitude":-77.0213852,"Latitude":38.95269}],"OrganizationName":"Overseas
+        Private Investment Corporation","DepartmentName":"Other Agencies and Independent
+        Organizations","JobCategory":[{"Name":"Legal Occupations Student Trainee","Code":"0999"}],"JobGrade":[{"Code":"GS"}],"PositionSchedule":[{"Name":"Multiple
+        Schedules","Code":"6"}],"PositionOfferingType":[{"Name":"Internships","Code":"15328"}],"QualificationSummary":"Applicants
+        must be U.S. citizens enrolled in an accredited law school with a cumulative
+        GPA of 3.0 or higher, and remain enrolled during the term of the internship.
+        Successful completion of a background investigation is also required.","PositionRemuneration":[{"MinimumRange":"0.00","MaximumRange":"0.00","RateIntervalCode":"Per
+        Year"}],"PositionStartDate":"2018-10-03","PositionEndDate":"2019-04-26","PublicationStartDate":"2018-10-03","ApplicationCloseDate":"2019-04-26","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"","WhoMayApply":{"Name":"","Code":""},"LowGrade":"00","HighGrade":"00","PromotionPotential":"None","HiringPath":["student"],"TotalOpenings":"Many","AgencyMarketingStatement":"Become
+        part of the Overseas Private Investment Corporation (OPIC), ranked fifth among
+        small agencies in the Best Places to Work in the Federal Government! OPIC
+        mobilizes foreign capital to help solve critical development challenges and
+        in doing so, advances U.S. foreign policy and national security priorities.
+        Because OPIC works with the U.S. private sector, it helps U.S. businesses
+        gain footholds in emerging markets, catalyzing revenues, jobs and growth opportunities
+        both at home and abroad.","TravelCode":"0"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"516863900","MatchedObjectDescriptor":{"PositionID":"OMB-19-09-KJ-IP","PositionTitle":"STUDENT
+        TRAINEE (RECORDS AND INFORMATION MANAGEMENT)","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/516863900","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/516863900?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"District
+        of Columbia, District of Columbia","PositionLocation":[{"LocationName":"District
+        of Columbia, District of Columbia","CountryCode":"United States","CountrySubDivisionCode":"District
+        of Columbia","CityName":"District of Columbia, District of Columbia","Longitude":-77.03196,"Latitude":38.89037}],"OrganizationName":"Office
+        of Management and Budget","DepartmentName":"Executive Office of the President","JobCategory":[{"Name":"Administration
+        And Office Support Student Trainee","Code":"0399"}],"JobGrade":[{"Code":"GS"}],"PositionSchedule":[{"Name":"Full-Time","Code":"1"}],"PositionOfferingType":[{"Name":"Permanent","Code":"15317"}],"QualificationSummary":"MINIMUM
+        QUALIFICATION REQUIREMENTS: All applicants must meet the qualification requirements
+        outlined below to be considered minimally qualified for this position. The
+        qualification requirements are in accordance with the OPM Qualification Standards.
+        ALL QUALIFICATIONS MUST BE MET BY THE CLOSING DATE OF THIS ANNOUNCEMENT. BASIC
+        REQUIREMENTS: Must be a current student in an accredited high school, college
+        (including 4-year colleges/universities, community colleges, and junior colleges);
+        professional, technical, vocational, and trade school; advanced degree programs;
+        or other qualifying educational institution pursuing a qualifying degree or
+        certificate. AND SPECIALIZED EXPERIENCE: Applicants must have a minimum of
+        one year of specialized experience at a level of difficulty and responsibility
+        comparable to the next lower grade or comparable pay band in the Federal service
+        or equivalent experience in the private sector. Examples of specialized experience
+        are: You may qualify at the GS-09 level, if you fulfill the following qualification
+        requirement: A. Completion of Master''s or equivalent graduate degree in library
+        and information science with an emphasis in records management or equivalent
+        field of study OR B. Two full years of progressively higher level graduate
+        education leading to such a degree; or a LL.B. or J.D., if related OR C. One
+        year of specialized experience equivalent to the GS-07 grade level in the
+        Federal service or equivalent experience in the private sector that includes
+        participating in the maintenance and establishment of records of an organizational
+        program; providing administrative recommendations on the effectiveness of
+        an organizations records management program and operations; researching and
+        retrieving information from database records; reviewing and updating records.
+        OR D. Combination of education and experience.","PositionRemuneration":[{"MinimumRange":"56233.00","MaximumRange":"73105.00","RateIntervalCode":"Per
+        Year"}],"PositionStartDate":"2018-11-14","PositionEndDate":"2018-11-28","PublicationStartDate":"2018-11-14","ApplicationCloseDate":"2018-11-28","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"","WhoMayApply":{"Name":"","Code":""},"LowGrade":"9","HighGrade":"9","PromotionPotential":"9","HiringPath":["student","public","vet"],"TotalOpenings":"1","AgencyMarketingStatement":"The
+        Pathways Internship Program is designed to attract students enrolled in a
+        wide variety of educational institutions (ranging from high school to graduate
+        school) with paid opportunities to work in agencies and explore Federal careers
+        while still in school. This program exposes students to jobs in the Federal
+        civil service by providing meaningful development work at the beginning of
+        their career, before their careers paths are fully established.","TravelCode":"0","ApplyOnlineUrl":"https://apply.usastaffing.gov/Application/Apply","DetailStatusUrl":"https://apply.usastaffing.gov/Application/ApplicationStatus"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"515978200","MatchedObjectDescriptor":{"PositionID":"19-014a-CL","PositionTitle":"General
+        Attorney","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/515978200","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/515978200?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Hato
+        Rey, Puerto Rico","PositionLocation":[{"LocationName":"Hato Rey, Puerto Rico","CountryCode":"United
+        States","CountrySubDivisionCode":"Puerto Rico","CityName":"Hato Rey, Puerto
+        Rico","Longitude":-66.05612,"Latitude":18.42488}],"OrganizationName":"Small
+        Business Administration","DepartmentName":"Other Agencies and Independent
+        Organizations","JobCategory":[{"Name":"Attorney","Code":"0905"}],"JobGrade":[{"Code":"GS"}],"PositionSchedule":[{"Name":"Full-Time","Code":"1"}],"PositionOfferingType":[{"Name":"Permanent","Code":"15317"}],"QualificationSummary":"GS-13:
+        Four or more years of professional legal experience, equivalent to the GS-12
+        grade level in the Federal service, obtained in either the private or public
+        sector in one or more of the following area: government-guaranteed lending,
+        banking and financial law, litigation and bankruptcy and real estate law and
+        closings, administrative law and ethics. Additional information on the qualification
+        requirements is outlined in the OPM Qualifications Standards Handbook of General
+        Schedule Positions. It is available for your review on OPM''s Qualifications
+        web site. Experience refers to paid and unpaid experience, including volunteer
+        work done through National Service programs (e.g. Peace Corps, AmeriCorps)
+        and other organizations (e.g. professional; philanthropic; religious; spiritual;
+        community, student, social). Volunteer work helps build critical competencies,
+        knowledge, and skills and can provide valuable training and experience that
+        translates directly to paid employment. You will receive credit for all qualifying
+        experience, including volunteer experience. Selective Placement Factors: This
+        position requires a special qualification that has been determined to be essential
+        to perform the duties and will be used as a screen out element. Those who
+        do not provide evidence they possess the following selective factor(s) will
+        be rated not qualified. Active member of the Federal bar\nAdmitted to the
+        Bar of the U.S. District Court for the District of Puerto Rico\nObtain a notarial
+        license for Puerto Rico All qualification requirements must be met by 11:59
+        pm (Eastern Time) on the closing date of this vacancy announcement.","PositionRemuneration":[{"MinimumRange":"87252.00","MaximumRange":"113428.00","RateIntervalCode":"Per
+        Year"}],"PositionStartDate":"2018-11-05","PositionEndDate":"2018-11-19","PublicationStartDate":"2018-11-05","ApplicationCloseDate":"2018-11-19","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"","WhoMayApply":{"Name":"","Code":""},"LowGrade":"13","HighGrade":"13","PromotionPotential":"13","HiringPath":["public"],"TotalOpenings":"1","AgencyMarketingStatement":"Are
+        you excited by the idea of helping to support $39 billion in small business
+        financing and setting proper conditions to stimulate America''s economic growth?
+        SBA has been a leader in small business development for more than 60 years.
+        In an increasingly globalized economy, we tackle challenges confronted by
+        the small business community across geographic boundaries. Although times
+        have changed since the SBA was founded in 1953, the Agency''s mission-to promote
+        the growth of small business-has not. Today, SBA is more vital than ever.
+        We work in collaboration with partner organizations and using cutting-edge
+        technologies and well-tested best practices to multiply our impact on small
+        businesses. America''s 28 million small businesses are the engine of job creation
+        and economic growth in this country, creating nearly two out of every three
+        new jobs in the United States and employing over half the nation''s workforce.
+        SBA ensures that these businesses have the tools and resources required to
+        start and expand their operations, and create jobs that support a growing
+        economy and strengthen America''s middle class. The SBA and entrepreneurs
+        drive American competitiveness and help grow the economy. Picture yourself
+        at SBA.","TravelCode":"2","ApplyOnlineUrl":"https://apply.usastaffing.gov/Application/Apply","DetailStatusUrl":"https://apply.usastaffing.gov/Application/ApplicationStatus"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"516071300","MatchedObjectDescriptor":{"PositionID":"DE-19-006-ASC-10349353","PositionTitle":"Supervisory
+        Administrative Specialist (Travel Operations Manager)","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/516071300","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/516071300?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Herndon,
+        Virginia","PositionLocation":[{"LocationName":"Herndon, Virginia","CountryCode":"United
+        States","CountrySubDivisionCode":"Virginia","CityName":"Herndon, Virginia","Longitude":-77.3854752,"Latitude":38.9697}],"OrganizationName":"Small
+        Business Administration","DepartmentName":"Other Agencies and Independent
+        Organizations","JobCategory":[{"Name":"Miscellaneous Administration And Program","Code":"0301"}],"JobGrade":[{"Code":"GS"}],"PositionSchedule":[{"Name":"Full-Time","Code":"1"}],"PositionOfferingType":[{"Name":"Cadre
+        - See definition under important notes.","Code":"15327"}],"QualificationSummary":"Generally,
+        time in Non-Pay status is not creditable towards the specialized experience
+        requirement listed below.You must meet all qualification requirements by the
+        closing date of this announcement. Experience: To receive credit, you must
+        indicate the month and year as well as the average hours worked per week for
+        each employer. Average work hours must be stated on the resume to quantify
+        each period of work experience or that experience will not be credited toward
+        meeting the specialized experience requirement.\nYou must address the specific
+        specialized experience required for each grade level of this position on your
+        resume or application or you will be rated \"Ineligible\" for that grade level.
+        GS-14: To qualify you must have at least 1 full year (52 weeks) of specialized
+        experience equivalent in difficulty and complexity to the GS-13 level in the
+        Federal service that has equipped you with the particular knowledge, skill,
+        and ability to perform successfully in this position. This experience may
+        have been gained in a Non-Federal service position. In addition, this Specialized
+        Experience must demonstrate the following: Gathering and analyzing pertinent
+        administrative data and making recommendations for, and/or solving, complex
+        administrative issues related to travel; Interpreting and applying applicable
+        travel laws, regulations, and policies, including the Federal Travel Regulations
+        (FTR), in order to assess, evaluate, and monitor an organization''s travel
+        program; Communicating orally and in writing with various levels of internal
+        and external customers to accomplish program goals; and Leading or supervising
+        employees or projects.","PositionRemuneration":[{"MinimumRange":"114590.00","MaximumRange":"148967.00","RateIntervalCode":"Per
+        Year"}],"PositionStartDate":"2018-11-05","PositionEndDate":"2018-11-19","PublicationStartDate":"2018-11-05","ApplicationCloseDate":"2018-11-19","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"","WhoMayApply":{"Name":"","Code":""},"LowGrade":"14","HighGrade":"14","PromotionPotential":"14","HiringPath":["public"],"TotalOpenings":"1","AgencyMarketingStatement":"Are
+        you excited by the idea of helping to support $39 billion in small business
+        financing and setting proper conditions to stimulate America''s economic growth?
+        SBA has been a leader in small business development for more than 60 years.
+        In an increasingly globalized economy, we tackle challenges confronted by
+        the small business community across geographic boundaries. Although times
+        have changed since the SBA was founded in 1953, the Agency''s mission - to
+        promote the growth of small business - has not. Today, SBA is more vital than
+        ever. We work in collaboration with partner organizations and use cutting-edge
+        technologies and well-tested best practices to multiply our impact on small
+        businesses. America''s 28 million small businesses are the engine of job creation
+        and economic growth in this country, creating nearly two out of every three
+        new jobs in the United States and employing over half the nation''s workforce.
+        SBA ensures that these businesses have the tools and resources required to
+        start and expand their operations, and create jobs that support a growing
+        economy and strengthen America''s middle class.","TravelCode":"1","ApplyOnlineUrl":"https://apply.usastaffing.gov/Application/Apply","DetailStatusUrl":"https://apply.usastaffing.gov/Application/ApplicationStatus"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"516073900","MatchedObjectDescriptor":{"PositionID":"DE-19-007-ASC-10350447","PositionTitle":"Supervisory
+        Administrative Specialist (Financial Operations Specialist)","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/516073900","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/516073900?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Herndon,
+        Virginia","PositionLocation":[{"LocationName":"Herndon, Virginia","CountryCode":"United
+        States","CountrySubDivisionCode":"Virginia","CityName":"Herndon, Virginia","Longitude":-77.3854752,"Latitude":38.9697}],"OrganizationName":"Small
+        Business Administration","DepartmentName":"Other Agencies and Independent
+        Organizations","JobCategory":[{"Name":"Miscellaneous Administration And Program","Code":"0301"}],"JobGrade":[{"Code":"GS"}],"PositionSchedule":[{"Name":"Full-Time","Code":"1"}],"PositionOfferingType":[{"Name":"Cadre
+        - See definition under important notes.","Code":"15327"}],"QualificationSummary":"Generally,
+        time in Non-Pay status is not creditable towards the specialized experience
+        requirement listed below.\nYou must meet all qualification requirements by
+        the closing date of this announcement. Experience: To receive credit, you
+        must indicate the month and year as well as the average hours worked per week
+        for each employer. Average work hours must be stated on the resume to quantify
+        each period of work experience or that experience will not be credited toward
+        meeting the specialized experience requirement.\nYou must address the specific
+        specialized experience required for each grade level of this position on your
+        resume or application or you will be rated \"Ineligible\" for that grade level.
+        GS-14: To qualify you must have at least 1 full year (52 weeks) of specialized
+        experience equivalent in difficulty and complexity to the GS-13 level in the
+        Federal service that has equipped you with the particular knowledge, skill,
+        and ability to perform successfully in this position. This experience may
+        have been gained in a Non-Federal service position. In addition, this Specialized
+        Experience must demonstrate the following: Gathering and analyzing pertinent
+        administrative data and making recommendations for, and/or solving, complex
+        administrative issues related to payroll (time and attendance) and procurement;
+        Interpreting and applying applicable laws, regulations and policies, including
+        the Federal Acquisitions Regulations (FAR) in order to assess, evaluate, and
+        monitor an organization''s payroll and procurement programs; Communicating
+        orally and in writing with various levels of internal and external customers
+        to accomplish program goals; and Leading or supervising employees or projects.","PositionRemuneration":[{"MinimumRange":"114590.00","MaximumRange":"148967.00","RateIntervalCode":"Per
+        Year"}],"PositionStartDate":"2018-11-05","PositionEndDate":"2018-11-19","PublicationStartDate":"2018-11-05","ApplicationCloseDate":"2018-11-19","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"","WhoMayApply":{"Name":"","Code":""},"LowGrade":"14","HighGrade":"14","PromotionPotential":"14","HiringPath":["public"],"TotalOpenings":"1","AgencyMarketingStatement":"Are
+        you excited by the idea of helping to support $39 billion in small business
+        financing and setting proper conditions to stimulate America''s economic growth?
+        SBA has been a leader in small business development for more than 60 years.
+        In an increasingly globalized economy, we tackle challenges confronted by
+        the small business community across geographic boundaries. Although times
+        have changed since the SBA was founded in 1953, the Agency''s mission - to
+        promote the growth of small business - has not. Today, SBA is more vital than
+        ever. We work in collaboration with partner organizations and use cutting-edge
+        technologies and well-tested best practices to multiply our impact on small
+        businesses. America''s 28 million small businesses are the engine of job creation
+        and economic growth in this country, creating nearly two out of every three
+        new jobs in the United States and employing over half the nation''s workforce.
+        SBA ensures that these businesses have the tools and resources required to
+        start and expand their operations, and create jobs that support a growing
+        economy and strengthen America''s middle class.","TravelCode":"1","ApplyOnlineUrl":"https://apply.usastaffing.gov/Application/Apply","DetailStatusUrl":"https://apply.usastaffing.gov/Application/ApplicationStatus"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"499399600","MatchedObjectDescriptor":{"PositionID":"NENAFDQ1810211361","PositionTitle":"Operations
+        Assistant, NF-02","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/499399600","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/499399600?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Carlisle
+        Barracks, Pennsylvania","PositionLocation":[{"LocationName":"Carlisle Barracks,
+        Pennsylvania","CountryCode":"United States","CountrySubDivisionCode":"Pennsylvania","CityName":"Carlisle
+        Barracks, Pennsylvania","Longitude":-77.17368,"Latitude":40.21037}],"OrganizationName":"Army
+        Installation Management Command","DepartmentName":"Department of the Army","JobCategory":[{"Name":"General
+        Business And Industry","Code":"1101"}],"JobGrade":[{"Code":"NF"}],"PositionSchedule":[{"Name":"Intermittent","Code":"4"}],"PositionOfferingType":[{"Name":"Intermittent","Code":"15522"}],"QualificationSummary":"At
+        least one year of experience effectively working in a fast paced, stressful
+        environment at a large Name Brand Casual Dining restaurant establishment.
+        Must possess good interpersonal, communication and customer service skills.","PositionRemuneration":[{"MinimumRange":"11.00","MaximumRange":"12.00","RateIntervalCode":"Per
+        Hour"}],"PositionStartDate":"2018-05-11","PositionEndDate":"2018-12-31","PublicationStartDate":"2018-05-11","ApplicationCloseDate":"2018-12-31","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"The
+        Area of Consideration for this vacancy announcement is Carlisle Barracks.
+        Military Spouse Preference (MSP) and Involuntarily Separated Military Preference
+        (ISMP) eligible candidates are included in the area of consideration. This
+        position is located at Le Tort View Community Center (LVCC) which is THE catering
+        outlet for Carlisle Barracks, servicing Active Duty and Retired service members
+        and their families, DOD civilians and non-military affiliated people from
+        everything to Proms, weddings, Family Reunions, as well a multitude of Military
+        events. LVCC has two indoor bars and a Tiki Bar for outdoor fun during the
+        warmer months. Enjoy time spent and building relationships with our regular
+        and returning guests, and get to know people from all walks of life. Our staff
+        members also have the opportunity to work at three other food &amp; beverages
+        outlets on post, giving them a vast food &amp; beverage experience in serving
+        our guests.","WhoMayApply":{"Name":"","Code":""},"LowGrade":"2","HighGrade":"2","PromotionPotential":"2","HiringPath":["public"],"AgencyMarketingStatement":"Note
+        to applicants: Please include name and contact information for at least two
+        (2) professional references in your resume and/or DA Form 3433 application
+        when applying for jobs. The FMWRC mission is to create and maintain \"FIRST
+        CHOICE\" MWR products and services for America''s Army, essential to a ready,
+        self-reliant force. Historical Carlisle Barracks is home to the U.S. Army
+        War College (USAWC). Nestled in the beautiful Susquehanna Valley, Carlisle
+        Barracks is one of our nation''s oldest military installations. Carlisle is
+        located within two to three hours of New York, Philadelphia, Washington, D.C.,
+        and Baltimore.","TravelCode":"0","ApplyOnlineUrl":"https://apply.usastaffing.gov/Application/Apply","DetailStatusUrl":"https://apply.usastaffing.gov/Application/ApplicationStatus"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"505016800","MatchedObjectDescriptor":{"PositionID":"NENAFDQ1810259854SR","PositionTitle":"Automotive
+        Mechanic Supervisor, NS-09","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/505016800","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/505016800?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Carlisle
+        Barracks, Pennsylvania","PositionLocation":[{"LocationName":"Carlisle Barracks,
+        Pennsylvania","CountryCode":"United States","CountrySubDivisionCode":"Pennsylvania","CityName":"Carlisle
+        Barracks, Pennsylvania","Longitude":-77.17368,"Latitude":40.21037}],"OrganizationName":"Army
+        Installation Management Command","DepartmentName":"Department of the Army","JobCategory":[{"Name":"Automotive
+        Mechanic","Code":"5823"}],"JobGrade":[{"Code":"NS"}],"PositionSchedule":[{"Name":"Full-Time","Code":"1"}],"PositionOfferingType":[{"Name":"Permanent","Code":"15317"}],"QualificationSummary":"1.
+        Experience and training that provide the knowledge, skills and abilities needed
+        to perform the duties of this position consistent with accepted practices
+        of the trade.\n2. Ability to use and maintain appropriates tools and equipment.\n3.
+        Ability to read, understand and apply instruction and other materials related
+        to the job.\n4. Demonstrated ability to lead or supervise. NOTE: There is
+        a \"Highly Preferred\" criteria for this position which includes State Inspection
+        & Emissions license and must have a valid driver''s license. If you have answered
+        yes to either of these questions please ensure it is clearly reflected in
+        your resume. \"Highly Preferred\" applicants will be sent to the selecting
+        official first. NOTE (1): Applicants have the ability to perform an E-Verify
+        Self Check to confirm employment eligibility at http://www.uscis.gov/mye-verify/self-check.
+        Although a Self-Check is not mandatory, it can be a useful tool for applicants
+        to find out if there is a problem with their employment eligibility records
+        and resolve any issues before taking a job.","PositionRemuneration":[{"MinimumRange":"18.42","MaximumRange":"18.42","RateIntervalCode":"Per
+        Hour"}],"PositionStartDate":"2018-07-13","PositionEndDate":"2018-12-31","PublicationStartDate":"2018-07-13","ApplicationCloseDate":"2018-12-31","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"","WhoMayApply":{"Name":"","Code":""},"LowGrade":"9","HighGrade":"9","PromotionPotential":"9","HiringPath":["public"],"TotalOpenings":"Few","AgencyMarketingStatement":"Note
+        to applicants: Please include name and contact information for at least two
+        (2) professional references in your resume and/or DA Form 3433 application
+        when applying for jobs. The FMWRC mission is to create and maintain \"FIRST
+        CHOICE\" MWR products and services for America''s Army, essential to a ready,
+        self-reliant force.\nHistorical Carlisle Barracks is home to the U.S. Army
+        War College (USAWC). Nestled in the beautiful Susquehanna Valley, Carlisle
+        Barracks is one of our nation''s oldest military installations. Carlisle is
+        located within two to three hours of New York, Philadelphia, Washington, D.C.,
+        and Baltimore.","TravelCode":"0","ApplyOnlineUrl":"https://apply.usastaffing.gov/Application/Apply","DetailStatusUrl":"https://apply.usastaffing.gov/Application/ApplicationStatus"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"508781400","MatchedObjectDescriptor":{"PositionID":"NENAFDQ1810292177","PositionTitle":"Operations
+        Assistant NF-01","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/508781400","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/508781400?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Carlisle
+        Barracks, Pennsylvania","PositionLocation":[{"LocationName":"Carlisle Barracks,
+        Pennsylvania","CountryCode":"United States","CountrySubDivisionCode":"Pennsylvania","CityName":"Carlisle
+        Barracks, Pennsylvania","Longitude":-77.17368,"Latitude":40.21037}],"OrganizationName":"Army
+        Installation Management Command","DepartmentName":"Department of the Army","JobCategory":[{"Name":"General
+        Business And Industry","Code":"1101"}],"JobGrade":[{"Code":"NF"}],"PositionSchedule":[{"Name":"Intermittent","Code":"4"}],"PositionOfferingType":[{"Name":"Intermittent","Code":"15522"}],"QualificationSummary":"No
+        experience required. Please note: This is an open continuous announcement;
+        with an initial cut-off date of 05 SEP 2018. Applicants that apply by the
+        initial cut-off will receive first consideration. Subsequent cut-off dates
+        will occur every two weeks until all selections are made or the closing date
+        of the announcement, whichever comes first.","PositionRemuneration":[{"MinimumRange":"9.50","MaximumRange":"11.00","RateIntervalCode":"Per
+        Hour"}],"PositionStartDate":"2018-08-22","PositionEndDate":"2018-12-31","PublicationStartDate":"2018-08-22","ApplicationCloseDate":"2018-12-31","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"","WhoMayApply":{"Name":"","Code":""},"LowGrade":"1","HighGrade":"1","PromotionPotential":"1","HiringPath":["public"],"TotalOpenings":"Few","AgencyMarketingStatement":"Note
+        to applicants: Please include name and contact information for at least two
+        (2) professional references in your resume and/or DA Form 3433 application
+        when applying for jobs. The FMWRC mission is to create and maintain \"FIRST
+        CHOICE\" MWR products and services for America''s Army, essential to a ready,
+        self-reliant force.\nHistorical Carlisle Barracks is home to the U.S. Army
+        War College (USAWC). Nestled in the beautiful Susquehanna Valley, Carlisle
+        Barracks is one of our nation''s oldest military installations. Carlisle is
+        located within two to three hours of New York, Philadelphia, Washington, D.C.,
+        and Baltimore.","TravelCode":"0","ApplyOnlineUrl":"https://apply.usastaffing.gov/Application/Apply","DetailStatusUrl":"https://apply.usastaffing.gov/Application/ApplicationStatus"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"509616700","MatchedObjectDescriptor":{"PositionID":"NENAFDQ1810298629SR","PositionTitle":"Automotive
+        Worker NA-08","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/509616700","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/509616700?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Carlisle
+        Barracks, Pennsylvania","PositionLocation":[{"LocationName":"Carlisle Barracks,
+        Pennsylvania","CountryCode":"United States","CountrySubDivisionCode":"Pennsylvania","CityName":"Carlisle
+        Barracks, Pennsylvania","Longitude":-77.17368,"Latitude":40.21037}],"OrganizationName":"Army
+        Installation Management Command","DepartmentName":"Department of the Army","JobCategory":[{"Name":"Automotive
+        Mechanic","Code":"5823"}],"JobGrade":[{"Code":"NA"}],"PositionSchedule":[{"Name":"Full-Time","Code":"1"}],"PositionOfferingType":[{"Name":"Permanent","Code":"15317"}],"QualificationSummary":"1.
+        Be able to lift and carry weights up to 70 pounds\n2. Possess a valid motor
+        vehicle operator''s permit.\n3. Have work experience performing the identified
+        duties.\n4. Be able to work independently.","PositionRemuneration":[{"MinimumRange":"14.49","MaximumRange":"16.95","RateIntervalCode":"Per
+        Hour"}],"PositionStartDate":"2018-08-30","PositionEndDate":"2018-12-30","PublicationStartDate":"2018-08-30","ApplicationCloseDate":"2018-12-30","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"","WhoMayApply":{"Name":"","Code":""},"LowGrade":"8","HighGrade":"8","PromotionPotential":"8","HiringPath":["public"],"TotalOpenings":"1","AgencyMarketingStatement":"Note
+        to applicants: Please include name and contact information for at least two
+        (2) professional references in your resume and/or DA Form 3433 application
+        when applying for jobs. The FMWRC mission is to create and maintain \"FIRST
+        CHOICE\" MWR products and services for America''s Army, essential to a ready,
+        self-reliant force.\nHistorical Carlisle Barracks is home to the U.S. Army
+        War College (USAWC). Nestled in the beautiful Susquehanna Valley, Carlisle
+        Barracks is one of our nation''s oldest military installations. Carlisle is
+        located within two to three hours of New York, Philadelphia, Washington, D.C.,
+        and Baltimore. Please note: This is an open continuous announcement; with
+        an initial cut-off date of 13 Sept 2018. Applicants that apply by the initial
+        cut-off will receive first consideration. Subsequent cut-off dates will occur
+        every two weeks until all selections are made or the closing date of the announcement,
+        whichever comes first.","TravelCode":"0","ApplyOnlineUrl":"https://apply.usastaffing.gov/Application/Apply","DetailStatusUrl":"https://apply.usastaffing.gov/Application/ApplicationStatus"},"IsRadialSearch":false}},"RelevanceRank":0.0}],"UserArea":{"NumberOfPages":"74","IsRadialSearch":false}}}'
+    http_version: 
+  recorded_at: Mon, 19 Nov 2018 17:42:45 GMT
 recorded_with: VCR 4.0.0
