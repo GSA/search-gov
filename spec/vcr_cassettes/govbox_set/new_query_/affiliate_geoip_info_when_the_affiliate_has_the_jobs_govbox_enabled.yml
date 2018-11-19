@@ -3429,4 +3429,1785 @@ http_interactions:
         appt, NTE 2 yrs","AgencyMarketingStatement":"","TravelCode":"5","ApplyOnlineUrl":"https://careerconnector.jobs.treas.gov/doc/ros/rosDashboard.hms?O=3&J=119595","DetailStatusUrl":"https://careerconnector.jobs.treas.gov/doc/ros/rosDashboard.hms?O=3&J=119595&S=1"},"IsRadialSearch":false}},"RelevanceRank":0.0}],"UserArea":{"NumberOfPages":"2","IsRadialSearch":true}}}'
     http_version: 
   recorded_at: Tue, 30 Oct 2018 20:22:56 GMT
+- request:
+    method: get
+    uri: https://data.usajobs.gov/api/search?Keyword=job&LocationName=Flemington,%20New%20Jersey,%20United%20States&Organization&ResultsPerPage=10
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization-Key:
+      - Qbk5RB/WRc1ctYqwojqlSKeoLVrwokT8OnSLq+G1qu0=
+      User-Agent:
+      - parissa.eggleston@gmail.com
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/hr+json
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/10.0
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Mon, 19 Nov 2018 22:16:17 GMT
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - Transfer-Encoding
+      - keep-alive
+      Set-Cookie:
+      - akavpau_DATA_USAJ=1542666077~id=80b2ed2542278da54f6c099774f51c7f; Domain=data.usajobs.gov;
+        Path=/; Secure
+    body:
+      encoding: UTF-8
+      string: '{"LanguageCode":"EN","SearchParameters":{},"SearchResult":{"SearchResultCount":4,"SearchResultCountAll":4,"SearchResultItems":[{"MatchedObjectId":"503588500","MatchedObjectDescriptor":{"PositionID":"HHS-CDC-DH-18-10247876","PositionTitle":"Physician","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/503588500","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/503588500?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Multiple
+        Locations","PositionLocation":[{"LocationName":"Anchorage, Alaska","CountryCode":"United
+        States","CountrySubDivisionCode":"Alaska","CityName":"Anchorage, Alaska","Longitude":-149.857742,"Latitude":61.21756},{"LocationName":"Phoenix,
+        Arizona","CountryCode":"United States","CountrySubDivisionCode":"Arizona","CityName":"Phoenix,
+        Arizona","Longitude":-112.075775,"Latitude":33.44826},{"LocationName":"Los
+        Angeles, California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"Los
+        Angeles, California","Longitude":-118.245,"Latitude":34.0535},{"LocationName":"Richmond,
+        California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"Richmond,
+        California","Longitude":-122.3427,"Latitude":37.9378},{"LocationName":"Sacramento,
+        California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"Sacramento,
+        California","Longitude":-121.491,"Latitude":38.57906},{"LocationName":"San
+        Diego, California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"San
+        Diego, California","Longitude":-117.162,"Latitude":32.7157},{"LocationName":"Fort
+        Collins, Colorado","CountryCode":"United States","CountrySubDivisionCode":"Colorado","CityName":"Fort
+        Collins, Colorado","Longitude":-105.076263,"Latitude":40.5815048},{"LocationName":"Hartford,
+        Connecticut","CountryCode":"United States","CountrySubDivisionCode":"Connecticut","CityName":"Hartford,
+        Connecticut","Longitude":-72.67407,"Latitude":41.7633247},{"LocationName":"Washington
+        DC, District of Columbia","CountryCode":"United States","CountrySubDivisionCode":"District
+        of Columbia","CityName":"Washington DC, District of Columbia","Longitude":-77.032,"Latitude":38.8904},{"LocationName":"Fort
+        Lauderdale, Florida","CountryCode":"United States","CountrySubDivisionCode":"Florida","CityName":"Fort
+        Lauderdale, Florida","Longitude":-80.14356,"Latitude":26.12367},{"LocationName":"Gainesville,
+        Florida","CountryCode":"United States","CountrySubDivisionCode":"Florida","CityName":"Gainesville,
+        Florida","Longitude":-82.32319,"Latitude":29.65195},{"LocationName":"Hollywood,
+        Florida","CountryCode":"United States","CountrySubDivisionCode":"Florida","CityName":"Hollywood,
+        Florida","Longitude":-80.16008,"Latitude":26.010397},{"LocationName":"Miami,
+        Florida","CountryCode":"United States","CountrySubDivisionCode":"Florida","CityName":"Miami,
+        Florida","Longitude":-80.23742,"Latitude":25.7289848},{"LocationName":"North
+        Miami, Florida","CountryCode":"United States","CountrySubDivisionCode":"Florida","CityName":"North
+        Miami, Florida","Longitude":-80.18271,"Latitude":25.8904247},{"LocationName":"Tallahassee,
+        Florida","CountryCode":"United States","CountrySubDivisionCode":"Florida","CityName":"Tallahassee,
+        Florida","Longitude":-84.28065,"Latitude":30.4397755},{"LocationName":"Vero
+        Beach, Florida","CountryCode":"United States","CountrySubDivisionCode":"Florida","CityName":"Vero
+        Beach, Florida","Longitude":-80.3942261,"Latitude":27.6388512},{"LocationName":"Atlanta,
+        Georgia","CountryCode":"United States","CountrySubDivisionCode":"Georgia","CityName":"Atlanta,
+        Georgia","Longitude":-84.39111,"Latitude":33.7483139},{"LocationName":"Atlanta,
+        Georgia","CountryCode":"United States","CountrySubDivisionCode":"Georgia","CityName":"Atlanta,
+        Georgia","Longitude":-84.39111,"Latitude":33.7483139},{"LocationName":"Mangilao,
+        Guam","CountryCode":"United States","CountrySubDivisionCode":"Guam","CityName":"Mangilao,
+        Guam","Longitude":144.7406,"Latitude":13.2755928},{"LocationName":"Honolulu,
+        Hawaii","CountryCode":"United States","CountrySubDivisionCode":"Hawaii","CityName":"Honolulu,
+        Hawaii","Longitude":-157.858,"Latitude":21.3047},{"LocationName":"Des Moines,
+        Iowa","CountryCode":"United States","CountrySubDivisionCode":"Iowa","CityName":"Des
+        Moines, Iowa","Longitude":-93.61568,"Latitude":41.5897865},{"LocationName":"Boise,
+        Idaho","CountryCode":"United States","CountrySubDivisionCode":"Idaho","CityName":"Boise,
+        Idaho","Longitude":-116.193413,"Latitude":43.60698},{"LocationName":"Chicago,
+        Illinois","CountryCode":"United States","CountrySubDivisionCode":"Illinois","CityName":"Chicago,
+        Illinois","Longitude":-87.63241,"Latitude":41.88415},{"LocationName":"Chicago,
+        Illinois","CountryCode":"United States","CountrySubDivisionCode":"Illinois","CityName":"Chicago,
+        Illinois","Longitude":-87.63241,"Latitude":41.88415},{"LocationName":"Indianapolis,
+        Indiana","CountryCode":"United States","CountrySubDivisionCode":"Indiana","CityName":"Indianapolis,
+        Indiana","Longitude":-86.14996,"Latitude":39.76691},{"LocationName":"Frankfort,
+        Kentucky","CountryCode":"United States","CountrySubDivisionCode":"Kentucky","CityName":"Frankfort,
+        Kentucky","Longitude":-84.87869,"Latitude":38.19506},{"LocationName":"Alexandria,
+        Louisiana","CountryCode":"United States","CountrySubDivisionCode":"Louisiana","CityName":"Alexandria,
+        Louisiana","Longitude":-92.44565,"Latitude":31.312685},{"LocationName":"Baton
+        Rouge, Louisiana","CountryCode":"United States","CountrySubDivisionCode":"Louisiana","CityName":"Baton
+        Rouge, Louisiana","Longitude":-91.1868744,"Latitude":30.44342},{"LocationName":"Berlin,
+        Massachusetts","CountryCode":"United States","CountrySubDivisionCode":"Massachusetts","CityName":"Berlin,
+        Massachusetts","Longitude":-71.63784,"Latitude":42.3813744},{"LocationName":"Boston,
+        Massachusetts","CountryCode":"United States","CountrySubDivisionCode":"Massachusetts","CityName":"Boston,
+        Massachusetts","Longitude":-71.0567,"Latitude":42.3586349},{"LocationName":"Concord,
+        Massachusetts","CountryCode":"United States","CountrySubDivisionCode":"Massachusetts","CityName":"Concord,
+        Massachusetts","Longitude":-71.34647,"Latitude":42.46286},{"LocationName":"Marlborough,
+        Massachusetts","CountryCode":"United States","CountrySubDivisionCode":"Massachusetts","CityName":"Marlborough,
+        Massachusetts","Longitude":-71.548,"Latitude":42.3468056},{"LocationName":"Milton,
+        Massachusetts","CountryCode":"United States","CountrySubDivisionCode":"Massachusetts","CityName":"Milton,
+        Massachusetts","Longitude":-71.06313,"Latitude":42.2653732},{"LocationName":"Northampton,
+        Massachusetts","CountryCode":"United States","CountrySubDivisionCode":"Massachusetts","CityName":"Northampton,
+        Massachusetts","Longitude":-72.6324,"Latitude":42.3178139},{"LocationName":"Baltimore,
+        Maryland","CountryCode":"United States","CountrySubDivisionCode":"Maryland","CityName":"Baltimore,
+        Maryland","Longitude":-76.6096039,"Latitude":39.290554},{"LocationName":"College
+        Park, Maryland","CountryCode":"United States","CountrySubDivisionCode":"Maryland","CityName":"College
+        Park, Maryland","Longitude":-76.93727,"Latitude":38.9807243},{"LocationName":"Columbia,
+        Maryland","CountryCode":"United States","CountrySubDivisionCode":"Maryland","CityName":"Columbia,
+        Maryland","Longitude":-76.8673,"Latitude":39.2092},{"LocationName":"Ellicott
+        City, Maryland","CountryCode":"United States","CountrySubDivisionCode":"Maryland","CityName":"Ellicott
+        City, Maryland","Longitude":-76.79945,"Latitude":39.2687225},{"LocationName":"Hyattsville,
+        Maryland","CountryCode":"United States","CountrySubDivisionCode":"Maryland","CityName":"Hyattsville,
+        Maryland","Longitude":-76.94208,"Latitude":38.95259},{"LocationName":"Kensington,
+        Maryland","CountryCode":"United States","CountrySubDivisionCode":"Maryland","CityName":"Kensington,
+        Maryland","Longitude":-77.07452,"Latitude":39.0261536},{"LocationName":"Potomac,
+        Maryland","CountryCode":"United States","CountrySubDivisionCode":"Maryland","CityName":"Potomac,
+        Maryland","Longitude":-77.2083359,"Latitude":39.01765},{"LocationName":"Rockville,
+        Maryland","CountryCode":"United States","CountrySubDivisionCode":"Maryland","CityName":"Rockville,
+        Maryland","Longitude":-77.1512,"Latitude":39.0817},{"LocationName":"Silver
+        Spring, Maryland","CountryCode":"United States","CountrySubDivisionCode":"Maryland","CityName":"Silver
+        Spring, Maryland","Longitude":-77.02888,"Latitude":38.99668},{"LocationName":"White
+        Oak, Maryland","CountryCode":"United States","CountrySubDivisionCode":"Maryland","CityName":"White
+        Oak, Maryland","Longitude":-76.99311,"Latitude":39.0479279},{"LocationName":"Woodlawn,
+        Maryland","CountryCode":"United States","CountrySubDivisionCode":"Maryland","CityName":"Woodlawn,
+        Maryland","Longitude":-76.7374,"Latitude":39.317},{"LocationName":"Augusta,
+        Maine","CountryCode":"United States","CountrySubDivisionCode":"Maine","CityName":"Augusta,
+        Maine","Longitude":-69.7762,"Latitude":44.318},{"LocationName":"Fairfield,
+        Maine","CountryCode":"United States","CountrySubDivisionCode":"Maine","CityName":"Fairfield,
+        Maine","Longitude":-69.5947,"Latitude":44.5893},{"LocationName":"Freeport,
+        Maine","CountryCode":"United States","CountrySubDivisionCode":"Maine","CityName":"Freeport,
+        Maine","Longitude":-70.105896,"Latitude":43.8555145},{"LocationName":"Fenton,
+        Michigan","CountryCode":"United States","CountrySubDivisionCode":"Michigan","CityName":"Fenton,
+        Michigan","Longitude":-83.70526,"Latitude":42.7936935},{"LocationName":"Minneapolis,
+        Minnesota","CountryCode":"United States","CountrySubDivisionCode":"Minnesota","CityName":"Minneapolis,
+        Minnesota","Longitude":-93.26493,"Latitude":44.9790344},{"LocationName":"Saint
+        Paul, Minnesota","CountryCode":"United States","CountrySubDivisionCode":"Minnesota","CityName":"Saint
+        Paul, Minnesota","Longitude":-93.09333,"Latitude":44.94383},{"LocationName":"Blue
+        Springs, Missouri","CountryCode":"United States","CountrySubDivisionCode":"Missouri","CityName":"Blue
+        Springs, Missouri","Longitude":-94.27481,"Latitude":39.0182648},{"LocationName":"Saint
+        Charles, Missouri","CountryCode":"United States","CountrySubDivisionCode":"Missouri","CityName":"Saint
+        Charles, Missouri","Longitude":-90.4821,"Latitude":38.7824},{"LocationName":"Monroe,
+        North Carolina","CountryCode":"United States","CountrySubDivisionCode":"North
+        Carolina","CityName":"Monroe, North Carolina","Longitude":-80.5489,"Latitude":34.9826},{"LocationName":"Raleigh,
+        North Carolina","CountryCode":"United States","CountrySubDivisionCode":"North
+        Carolina","CityName":"Raleigh, North Carolina","Longitude":-78.64267,"Latitude":35.78551},{"LocationName":"Trenton,
+        North Carolina","CountryCode":"United States","CountrySubDivisionCode":"North
+        Carolina","CityName":"Trenton, North Carolina","Longitude":-77.35292,"Latitude":35.06337},{"LocationName":"Ashley,
+        North Dakota","CountryCode":"United States","CountrySubDivisionCode":"North
+        Dakota","CityName":"Ashley, North Dakota","Longitude":-99.37806,"Latitude":46.03451},{"LocationName":"Lincoln,
+        Nebraska","CountryCode":"United States","CountrySubDivisionCode":"Nebraska","CityName":"Lincoln,
+        Nebraska","Longitude":-96.70774,"Latitude":40.81362},{"LocationName":"Newark,
+        New Jersey","CountryCode":"United States","CountrySubDivisionCode":"New Jersey","CityName":"Newark,
+        New Jersey","Longitude":-74.17419,"Latitude":40.73197},{"LocationName":"Trenton,
+        New Jersey","CountryCode":"United States","CountrySubDivisionCode":"New Jersey","CityName":"Trenton,
+        New Jersey","Longitude":-74.7594,"Latitude":40.2179},{"LocationName":"Albuquerque,
+        New Mexico","CountryCode":"United States","CountrySubDivisionCode":"New Mexico","CityName":"Albuquerque,
+        New Mexico","Longitude":-106.649,"Latitude":35.0842},{"LocationName":"Santa
+        Fe, New Mexico","CountryCode":"United States","CountrySubDivisionCode":"New
+        Mexico","CityName":"Santa Fe, New Mexico","Longitude":-105.937424,"Latitude":35.6915474},{"LocationName":"Las
+        Vegas, Nevada","CountryCode":"United States","CountrySubDivisionCode":"Nevada","CityName":"Las
+        Vegas, Nevada","Longitude":-115.14,"Latitude":36.1719},{"LocationName":"Albany,
+        New York","CountryCode":"United States","CountrySubDivisionCode":"New York","CityName":"Albany,
+        New York","Longitude":-73.75527,"Latitude":42.6514549},{"LocationName":"New
+        York, New York","CountryCode":"United States","CountrySubDivisionCode":"New
+        York","CityName":"New York, New York","Longitude":-74.0071,"Latitude":40.7146},{"LocationName":"Suffern,
+        New York","CountryCode":"United States","CountrySubDivisionCode":"New York","CityName":"Suffern,
+        New York","Longitude":-74.14964,"Latitude":41.1143837},{"LocationName":"Cincinnati,
+        Ohio","CountryCode":"United States","CountrySubDivisionCode":"Ohio","CityName":"Cincinnati,
+        Ohio","Longitude":-84.5041,"Latitude":39.1071},{"LocationName":"Columbus,
+        Ohio","CountryCode":"United States","CountrySubDivisionCode":"Ohio","CityName":"Columbus,
+        Ohio","Longitude":-83.00301,"Latitude":39.962},{"LocationName":"Lyndhurst,
+        Ohio","CountryCode":"United States","CountrySubDivisionCode":"Ohio","CityName":"Lyndhurst,
+        Ohio","Longitude":-81.48846,"Latitude":41.5199356},{"LocationName":"Perrysburg,
+        Ohio","CountryCode":"United States","CountrySubDivisionCode":"Ohio","CityName":"Perrysburg,
+        Ohio","Longitude":-83.6289,"Latitude":41.5567},{"LocationName":"Toledo, Ohio","CountryCode":"United
+        States","CountrySubDivisionCode":"Ohio","CityName":"Toledo, Ohio","Longitude":-83.53626,"Latitude":41.65381},{"LocationName":"Oklahoma
+        City, Oklahoma","CountryCode":"United States","CountrySubDivisionCode":"Oklahoma","CityName":"Oklahoma
+        City, Oklahoma","Longitude":-97.52033,"Latitude":35.4720039},{"LocationName":"Oklahoma
+        City, Oklahoma","CountryCode":"United States","CountrySubDivisionCode":"Oklahoma","CityName":"Oklahoma
+        City, Oklahoma","Longitude":-97.52033,"Latitude":35.4720039},{"LocationName":"Oklahoma
+        City, Oklahoma","CountryCode":"United States","CountrySubDivisionCode":"Oklahoma","CityName":"Oklahoma
+        City, Oklahoma","Longitude":-97.52033,"Latitude":35.4720039},{"LocationName":"Oklahoma
+        City, Oklahoma","CountryCode":"United States","CountrySubDivisionCode":"Oklahoma","CityName":"Oklahoma
+        City, Oklahoma","Longitude":-97.52033,"Latitude":35.4720039},{"LocationName":"Oklahoma
+        City, Oklahoma","CountryCode":"United States","CountrySubDivisionCode":"Oklahoma","CityName":"Oklahoma
+        City, Oklahoma","Longitude":-97.52033,"Latitude":35.4720039},{"LocationName":"Tulsa,
+        Oklahoma","CountryCode":"United States","CountrySubDivisionCode":"Oklahoma","CityName":"Tulsa,
+        Oklahoma","Longitude":-95.9933548,"Latitude":36.14975},{"LocationName":"Tulsa,
+        Oklahoma","CountryCode":"United States","CountrySubDivisionCode":"Oklahoma","CityName":"Tulsa,
+        Oklahoma","Longitude":-95.9933548,"Latitude":36.14975},{"LocationName":"Portland,
+        Oregon","CountryCode":"United States","CountrySubDivisionCode":"Oregon","CityName":"Portland,
+        Oregon","Longitude":-122.675629,"Latitude":45.511795},{"LocationName":"Portland,
+        Oregon","CountryCode":"United States","CountrySubDivisionCode":"Oregon","CityName":"Portland,
+        Oregon","Longitude":-122.675629,"Latitude":45.511795},{"LocationName":"Portland,
+        Oregon","CountryCode":"United States","CountrySubDivisionCode":"Oregon","CityName":"Portland,
+        Oregon","Longitude":-122.675629,"Latitude":45.511795},{"LocationName":"Philadelphia,
+        Pennsylvania","CountryCode":"United States","CountrySubDivisionCode":"Pennsylvania","CityName":"Philadelphia,
+        Pennsylvania","Longitude":-75.16237,"Latitude":39.95227},{"LocationName":"Pittsburgh,
+        Pennsylvania","CountryCode":"United States","CountrySubDivisionCode":"Pennsylvania","CityName":"Pittsburgh,
+        Pennsylvania","Longitude":-79.99746,"Latitude":40.43831},{"LocationName":"Yardley,
+        Pennsylvania","CountryCode":"United States","CountrySubDivisionCode":"Pennsylvania","CityName":"Yardley,
+        Pennsylvania","Longitude":-74.83738,"Latitude":40.2413368},{"LocationName":"San
+        Juan, Puerto Rico","CountryCode":"United States","CountrySubDivisionCode":"Puerto
+        Rico","CityName":"San Juan, Puerto Rico","Longitude":-66.1067,"Latitude":18.4662},{"LocationName":"Providence,
+        Rhode Island","CountryCode":"United States","CountrySubDivisionCode":"Rhode
+        Island","CityName":"Providence, Rhode Island","Longitude":-71.4119949,"Latitude":41.8238754},{"LocationName":"Columbia,
+        South Carolina","CountryCode":"United States","CountrySubDivisionCode":"South
+        Carolina","CityName":"Columbia, South Carolina","Longitude":-81.04525,"Latitude":33.99855},{"LocationName":"Columbia,
+        South Carolina","CountryCode":"United States","CountrySubDivisionCode":"South
+        Carolina","CityName":"Columbia, South Carolina","Longitude":-81.04525,"Latitude":33.99855},{"LocationName":"North
+        Augusta, South Carolina","CountryCode":"United States","CountrySubDivisionCode":"South
+        Carolina","CityName":"North Augusta, South Carolina","Longitude":-81.9701,"Latitude":33.4958},{"LocationName":"Coalmont,
+        Tennessee","CountryCode":"United States","CountrySubDivisionCode":"Tennessee","CityName":"Coalmont,
+        Tennessee","Longitude":-85.69968,"Latitude":35.3475838},{"LocationName":"Nashville,
+        Tennessee","CountryCode":"United States","CountrySubDivisionCode":"Tennessee","CityName":"Nashville,
+        Tennessee","Longitude":-86.7783661,"Latitude":36.16778},{"LocationName":"Austin,
+        Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"Austin,
+        Texas","Longitude":-97.743,"Latitude":30.2676},{"LocationName":"Austin, Texas","CountryCode":"United
+        States","CountrySubDivisionCode":"Texas","CityName":"Austin, Texas","Longitude":-97.6428,"Latitude":30.4887},{"LocationName":"El
+        Paso, Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"El
+        Paso, Texas","Longitude":-106.4874,"Latitude":31.7591},{"LocationName":"Houston,
+        Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"Houston,
+        Texas","Longitude":-95.36978,"Latitude":29.76045},{"LocationName":"Houston,
+        Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"Houston,
+        Texas","Longitude":-95.36978,"Latitude":29.76045},{"LocationName":"Houston,
+        Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"Houston,
+        Texas","Longitude":-95.36978,"Latitude":29.76045},{"LocationName":"Keller,
+        Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"Keller,
+        Texas","Longitude":-97.22513,"Latitude":32.9308624},{"LocationName":"San Antonio,
+        Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"San
+        Antonio, Texas","Longitude":-98.49462,"Latitude":29.42449},{"LocationName":"Salt
+        Lake City, Utah","CountryCode":"United States","CountrySubDivisionCode":"Utah","CityName":"Salt
+        Lake City, Utah","Longitude":-111.888229,"Latitude":40.75952},{"LocationName":"Richmond,
+        Virginia","CountryCode":"United States","CountrySubDivisionCode":"Virginia","CityName":"Richmond,
+        Virginia","Longitude":-77.4336548,"Latitude":37.5407},{"LocationName":"Burlington,
+        Vermont","CountryCode":"United States","CountrySubDivisionCode":"Vermont","CityName":"Burlington,
+        Vermont","Longitude":-73.2132,"Latitude":44.4759},{"LocationName":"Seattle,
+        Washington","CountryCode":"United States","CountrySubDivisionCode":"Washington","CityName":"Seattle,
+        Washington","Longitude":-122.329453,"Latitude":47.60358},{"LocationName":"Shoreline,
+        Washington","CountryCode":"United States","CountrySubDivisionCode":"Washington","CityName":"Shoreline,
+        Washington","Longitude":-122.344582,"Latitude":47.756897},{"LocationName":"Spokane,
+        Washington","CountryCode":"United States","CountrySubDivisionCode":"Washington","CityName":"Spokane,
+        Washington","Longitude":-117.412277,"Latitude":47.65726},{"LocationName":"Madison,
+        Wisconsin","CountryCode":"United States","CountrySubDivisionCode":"Wisconsin","CityName":"Madison,
+        Wisconsin","Longitude":-89.38666,"Latitude":43.0729256},{"LocationName":"Charleston,
+        West Virginia","CountryCode":"United States","CountrySubDivisionCode":"West
+        Virginia","CityName":"Charleston, West Virginia","Longitude":-81.63893,"Latitude":38.3502159},{"LocationName":"Morgantown,
+        West Virginia","CountryCode":"United States","CountrySubDivisionCode":"West
+        Virginia","CityName":"Morgantown, West Virginia","Longitude":-79.95785,"Latitude":39.6303749}],"OrganizationName":"Centers
+        for Disease Control and Prevention","DepartmentName":"Department of Health
+        And Human Services","JobCategory":[{"Name":"Medical Officer","Code":"0602"}],"JobGrade":[{"Code":"GP"}],"PositionSchedule":[{"Name":"Full-Time","Code":"1"}],"PositionOfferingType":[{"Name":"Multiple
+        Appointment Types","Code":"15327"}],"QualificationSummary":"BASIC QUALIFICATIONS:\nApplicants
+        must possess a Doctor of Medicine or Doctor of Osteopathic Medicine or equivalent
+        from a school in the United States or Canada. This degree must have been accredited
+        by the Council on Medical Education of the American Medical Association; Association
+        of American Medical Colleges; Liaison Committee on Medical Education; Commission
+        on Osteopathic College Accreditation of the American Osteopathic Association,
+        or an accrediting body recognized by the U.S. Department of Education at the
+        time the degree was obtained. A Doctor of Medicine or equivalent degree from
+        a foreign medical school must provide education and medical knowledge equivalent
+        to accredited schools in the United States. Evidence of equivalency to accredited
+        schools in the United States is demonstrated by permanent certification by
+        the Educational Commission for Foreign Medical Graduates (ECFMG) https://www.ecfmg.org/,
+        a fifth pathway certificate for Americans who completed premedical education
+        in the United States and graduate education in a foreign country, or successful
+        completion of the U.S. Medical Licensing Examination. Applicants must possess
+        a current, active, full, and unrestricted license or registration as a Physician
+        from a State, the District of Columbia, the Commonwealth of Puerto Rico, or
+        a territory of the United States. NOTE: All applicants must possess a current
+        medical license when applying for positions that require clinical or patient
+        care. Additional Qualifications: In addition to meeting the Basic Qualifications
+        applicants must also meet the following for Physician, GP-602-13/14/15. NOTE:
+        A residency program involves training in a specialized field of medicine in
+        an institution accredited for training in the specialty by a recognized body
+        of the American Medical Association (AMA) or AOA. For GS-13: Three years of
+        residency training in the specialty of the position to be filled or possess
+        at least one year of specialized experience equivalent to the GS-12 grade
+        level in the Federal service implementing and evaluating medical activities
+        related to public health programs. For GS-14: Four years of residency training
+        in the specialty of the position to be filled or possess at least one year
+        of specialized experience equivalent to the GS-13 grade level in the Federal
+        service designing, implementing and evaluating medical activities related
+        to public health programs. For GS-15: Five years of residency training in
+        the specialty of the position to be filled or possess at least one year of
+        specialized experience equivalent to the GS-14 grade level in the Federal
+        service performing scientific, technical and programmatic medical activities
+        to originate new techniques, establish criteria, or develop new information
+        related to public health programs.","PositionRemuneration":[{"MinimumRange":"75628.00","MaximumRange":"136659.00","RateIntervalCode":"Per
+        Year"}],"PositionStartDate":"2018-07-09","PositionEndDate":"2019-01-11","PublicationStartDate":"2018-07-09","ApplicationCloseDate":"2019-01-11","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"","WhoMayApply":{"Name":"","Code":""},"LowGrade":"13","HighGrade":"15","PromotionPotential":"15","PromotionPotentialAdditionalText":"No
+        promotion potential for Physician positions, any position filled with this
+        announcement will be filled at the single grade level requested.","HiringPath":["public"],"TotalOpenings":"Few","AgencyMarketingStatement":"The
+        Centers for Disease Control and Prevention (CDC) is the agency Americans trust
+        with their lives. As a global leader in public health, CDC is the nation''s
+        premier health promotion, prevention, and preparedness agency. Whether we
+        are protecting the American people from public health threats, researching
+        emerging diseases, or mobilizing public health programs with our domestic
+        and international partners, we rely on our employees to make a real difference
+        in the health and well-being of people here and around the world. This position
+        is being filled through the Direct Hire Authority. Veterans'' preference and
+        traditional rating and ranking of applications do not apply to positions filled
+        under this announcement. All applicants who meet the basic qualification requirements
+        will be forwarded to the Selecting Official for consideration. Applications
+        received as a result of job fairs, recruitment events, and emergency hiring
+        mechanisms in support of this hiring initiative will also be accepted during
+        the duration of the direct-hire authority. Physician positions may be filled
+        with this open continuous vacancy announcement within any CDC organization.
+        This announcement will be used to fill positions in various geographical locations
+        HHS-wide. Please be advised there is no promotion potential for Physician
+        positions, any position filled with this announcement will be filled at the
+        single grade level requested. CDC is an Equal Opportunity Employer.","TravelCode":"1","ApplyOnlineUrl":"https://apply.usastaffing.gov/Application/Apply","DetailStatusUrl":"https://apply.usastaffing.gov/Application/ApplicationStatus"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"507712200","MatchedObjectDescriptor":{"PositionID":"FMCS-10266155-18","PositionTitle":"Mediator
+        (Open Continuous)","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/507712200","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/507712200?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Multiple
+        Locations","PositionLocation":[{"LocationName":"Birmingham, Alabama","CountryCode":"United
+        States","CountrySubDivisionCode":"Alabama","CityName":"Birmingham, Alabama","Longitude":-86.8048553,"Latitude":33.52132},{"LocationName":"Phoenix,
+        Arizona","CountryCode":"United States","CountrySubDivisionCode":"Arizona","CityName":"Phoenix,
+        Arizona","Longitude":-112.069374,"Latitude":33.5128479},{"LocationName":"Anaheim,
+        California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"Anaheim,
+        California","Longitude":-117.909248,"Latitude":33.82995},{"LocationName":"Bakersfield,
+        California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"Bakersfield,
+        California","Longitude":-119.118912,"Latitude":35.394104},{"LocationName":"Glendale,
+        California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"Glendale,
+        California","Longitude":-118.265152,"Latitude":34.1536369},{"LocationName":"Oakland,
+        California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"Oakland,
+        California","Longitude":-122.273026,"Latitude":37.8050652},{"LocationName":"San
+        Diego, California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"San
+        Diego, California","Longitude":-117.157288,"Latitude":32.7148361},{"LocationName":"Denver,
+        Colorado","CountryCode":"United States","CountrySubDivisionCode":"Colorado","CityName":"Denver,
+        Colorado","Longitude":-104.992256,"Latitude":39.74001},{"LocationName":"Hartford,
+        Connecticut","CountryCode":"United States","CountrySubDivisionCode":"Connecticut","CityName":"Hartford,
+        Connecticut","Longitude":-72.67407,"Latitude":41.7633247},{"LocationName":"District
+        of Columbia, District of Columbia","CountryCode":"United States","CountrySubDivisionCode":"District
+        of Columbia","CityName":"District of Columbia, District of Columbia","Longitude":-77.03196,"Latitude":38.89037},{"LocationName":"Miami
+        Lakes, Florida","CountryCode":"United States","CountrySubDivisionCode":"Florida","CityName":"Miami
+        Lakes, Florida","Longitude":-80.3093262,"Latitude":25.9130211},{"LocationName":"Orlando,
+        Florida","CountryCode":"United States","CountrySubDivisionCode":"Florida","CityName":"Orlando,
+        Florida","Longitude":-81.24789,"Latitude":28.5921783},{"LocationName":"Atlanta,
+        Georgia","CountryCode":"United States","CountrySubDivisionCode":"Georgia","CityName":"Atlanta,
+        Georgia","Longitude":-84.38834,"Latitude":33.66042},{"LocationName":"Honolulu,
+        Hawaii","CountryCode":"United States","CountrySubDivisionCode":"Hawaii","CityName":"Honolulu,
+        Hawaii","Longitude":-157.863342,"Latitude":21.3022251},{"LocationName":"Cedar
+        Rapids, Iowa","CountryCode":"United States","CountrySubDivisionCode":"Iowa","CityName":"Cedar
+        Rapids, Iowa","Longitude":-91.66361,"Latitude":42.0299454},{"LocationName":"Des
+        Moines, Iowa","CountryCode":"United States","CountrySubDivisionCode":"Iowa","CityName":"Des
+        Moines, Iowa","Longitude":-93.62084,"Latitude":41.5863152},{"LocationName":"Chicago,
+        Illinois","CountryCode":"United States","CountrySubDivisionCode":"Illinois","CityName":"Chicago,
+        Illinois","Longitude":-87.63241,"Latitude":41.88415},{"LocationName":"Peoria,
+        Illinois","CountryCode":"United States","CountrySubDivisionCode":"Illinois","CityName":"Peoria,
+        Illinois","Longitude":-89.58776,"Latitude":40.69214},{"LocationName":"Rockford,
+        Illinois","CountryCode":"United States","CountrySubDivisionCode":"Illinois","CityName":"Rockford,
+        Illinois","Longitude":-89.00411,"Latitude":42.2868958},{"LocationName":"Indianapolis,
+        Indiana","CountryCode":"United States","CountrySubDivisionCode":"Indiana","CityName":"Indianapolis,
+        Indiana","Longitude":-86.14996,"Latitude":39.76691},{"LocationName":"South
+        Bend, Indiana","CountryCode":"United States","CountrySubDivisionCode":"Indiana","CityName":"South
+        Bend, Indiana","Longitude":-86.2492,"Latitude":41.6673355},{"LocationName":"Wichita,
+        Kansas","CountryCode":"United States","CountrySubDivisionCode":"Kansas","CityName":"Wichita,
+        Kansas","Longitude":-97.33558,"Latitude":37.68698},{"LocationName":"Louisville,
+        Kentucky","CountryCode":"United States","CountrySubDivisionCode":"Kentucky","CityName":"Louisville,
+        Kentucky","Longitude":-85.74921,"Latitude":38.25365},{"LocationName":"New
+        Orleans, Louisiana","CountryCode":"United States","CountrySubDivisionCode":"Louisiana","CityName":"New
+        Orleans, Louisiana","Longitude":-90.2014,"Latitude":29.9536266},{"LocationName":"Boston,
+        Massachusetts","CountryCode":"United States","CountrySubDivisionCode":"Massachusetts","CityName":"Boston,
+        Massachusetts","Longitude":-71.0567,"Latitude":42.3586349},{"LocationName":"Baltimore,
+        Maryland","CountryCode":"United States","CountrySubDivisionCode":"Maryland","CityName":"Baltimore,
+        Maryland","Longitude":-76.6096039,"Latitude":39.290554},{"LocationName":"Portland,
+        Maine","CountryCode":"United States","CountrySubDivisionCode":"Maine","CityName":"Portland,
+        Maine","Longitude":-70.2567,"Latitude":43.6591},{"LocationName":"Detroit,
+        Michigan","CountryCode":"United States","CountrySubDivisionCode":"Michigan","CityName":"Detroit,
+        Michigan","Longitude":-83.0479,"Latitude":42.3317},{"LocationName":"Grand
+        Rapids, Michigan","CountryCode":"United States","CountrySubDivisionCode":"Michigan","CityName":"Grand
+        Rapids, Michigan","Longitude":-85.67118,"Latitude":42.96641},{"LocationName":"Saginaw,
+        Michigan","CountryCode":"United States","CountrySubDivisionCode":"Michigan","CityName":"Saginaw,
+        Michigan","Longitude":-83.94668,"Latitude":43.419178},{"LocationName":"Duluth,
+        Minnesota","CountryCode":"United States","CountrySubDivisionCode":"Minnesota","CityName":"Duluth,
+        Minnesota","Longitude":-92.1101,"Latitude":46.76604},{"LocationName":"Minneapolis,
+        Minnesota","CountryCode":"United States","CountrySubDivisionCode":"Minnesota","CityName":"Minneapolis,
+        Minnesota","Longitude":-93.2405548,"Latitude":44.9965363},{"LocationName":"Kansas
+        City, Missouri","CountryCode":"United States","CountrySubDivisionCode":"Missouri","CityName":"Kansas
+        City, Missouri","Longitude":-94.584465,"Latitude":39.0799522},{"LocationName":"Saint
+        Louis, Missouri","CountryCode":"United States","CountrySubDivisionCode":"Missouri","CityName":"Saint
+        Louis, Missouri","Longitude":-90.19952,"Latitude":38.62774},{"LocationName":"Charlotte,
+        North Carolina","CountryCode":"United States","CountrySubDivisionCode":"North
+        Carolina","CityName":"Charlotte, North Carolina","Longitude":-80.83754,"Latitude":35.2225},{"LocationName":"Omaha,
+        Nebraska","CountryCode":"United States","CountrySubDivisionCode":"Nebraska","CityName":"Omaha,
+        Nebraska","Longitude":-96.05259,"Latitude":41.3026848},{"LocationName":"Iselin,
+        New Jersey","CountryCode":"United States","CountrySubDivisionCode":"New Jersey","CityName":"Iselin,
+        New Jersey","Longitude":-74.31446,"Latitude":40.57136},{"LocationName":"Trenton,
+        New Jersey","CountryCode":"United States","CountrySubDivisionCode":"New Jersey","CityName":"Trenton,
+        New Jersey","Longitude":-74.7594,"Latitude":40.2179},{"LocationName":"Las
+        Vegas, Nevada","CountryCode":"United States","CountrySubDivisionCode":"Nevada","CityName":"Las
+        Vegas, Nevada","Longitude":-115.160027,"Latitude":36.1837273},{"LocationName":"Albany,
+        New York","CountryCode":"United States","CountrySubDivisionCode":"New York","CityName":"Albany,
+        New York","Longitude":-73.75527,"Latitude":42.6514549},{"LocationName":"Amherst,
+        New York","CountryCode":"United States","CountrySubDivisionCode":"New York","CityName":"Amherst,
+        New York","Longitude":-78.79142,"Latitude":42.97561},{"LocationName":"New
+        York, New York","CountryCode":"United States","CountrySubDivisionCode":"New
+        York","CityName":"New York, New York","Longitude":-74.0071,"Latitude":40.7146},{"LocationName":"Syracuse,
+        New York","CountryCode":"United States","CountrySubDivisionCode":"New York","CityName":"Syracuse,
+        New York","Longitude":-76.14739,"Latitude":43.04999},{"LocationName":"Cincinnati,
+        Ohio","CountryCode":"United States","CountrySubDivisionCode":"Ohio","CityName":"Cincinnati,
+        Ohio","Longitude":-84.5041,"Latitude":39.1071},{"LocationName":"Cleveland,
+        Ohio","CountryCode":"United States","CountrySubDivisionCode":"Ohio","CityName":"Cleveland,
+        Ohio","Longitude":-81.6905746,"Latitude":41.5044937},{"LocationName":"Columbus,
+        Ohio","CountryCode":"United States","CountrySubDivisionCode":"Ohio","CityName":"Columbus,
+        Ohio","Longitude":-83.00301,"Latitude":39.962},{"LocationName":"Dayton, Ohio","CountryCode":"United
+        States","CountrySubDivisionCode":"Ohio","CityName":"Dayton, Ohio","Longitude":-84.1944,"Latitude":39.7591},{"LocationName":"Toledo,
+        Ohio","CountryCode":"United States","CountrySubDivisionCode":"Ohio","CityName":"Toledo,
+        Ohio","Longitude":-83.53626,"Latitude":41.65381},{"LocationName":"Portland,
+        Oregon","CountryCode":"United States","CountrySubDivisionCode":"Oregon","CityName":"Portland,
+        Oregon","Longitude":-122.643242,"Latitude":45.54529},{"LocationName":"Erie,
+        Pennsylvania","CountryCode":"United States","CountrySubDivisionCode":"Pennsylvania","CityName":"Erie,
+        Pennsylvania","Longitude":-80.08524,"Latitude":42.1294441},{"LocationName":"Harrisburg,
+        Pennsylvania","CountryCode":"United States","CountrySubDivisionCode":"Pennsylvania","CityName":"Harrisburg,
+        Pennsylvania","Longitude":-76.882225,"Latitude":40.2598763},{"LocationName":"Philadelphia,
+        Pennsylvania","CountryCode":"United States","CountrySubDivisionCode":"Pennsylvania","CityName":"Philadelphia,
+        Pennsylvania","Longitude":-75.16237,"Latitude":39.95227},{"LocationName":"Pittsburgh,
+        Pennsylvania","CountryCode":"United States","CountrySubDivisionCode":"Pennsylvania","CityName":"Pittsburgh,
+        Pennsylvania","Longitude":-79.99746,"Latitude":40.43831},{"LocationName":"Providence,
+        Rhode Island","CountryCode":"United States","CountrySubDivisionCode":"Rhode
+        Island","CityName":"Providence, Rhode Island","Longitude":-71.4119949,"Latitude":41.8238754},{"LocationName":"Memphis,
+        Tennessee","CountryCode":"United States","CountrySubDivisionCode":"Tennessee","CityName":"Memphis,
+        Tennessee","Longitude":-89.84284,"Latitude":35.1276245},{"LocationName":"Smyrna,
+        Tennessee","CountryCode":"United States","CountrySubDivisionCode":"Tennessee","CityName":"Smyrna,
+        Tennessee","Longitude":-86.5121,"Latitude":35.9747},{"LocationName":"Dallas,
+        Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"Dallas,
+        Texas","Longitude":-96.8046341,"Latitude":32.78109},{"LocationName":"Houston,
+        Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"Houston,
+        Texas","Longitude":-95.36978,"Latitude":29.76045},{"LocationName":"San Antonio,
+        Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"San
+        Antonio, Texas","Longitude":-98.47718,"Latitude":29.5853729},{"LocationName":"Chesapeake,
+        Virginia","CountryCode":"United States","CountrySubDivisionCode":"Virginia","CityName":"Chesapeake,
+        Virginia","Longitude":-76.24785,"Latitude":36.7142944},{"LocationName":"Roanoke,
+        Virginia","CountryCode":"United States","CountrySubDivisionCode":"Virginia","CityName":"Roanoke,
+        Virginia","Longitude":-79.88848,"Latitude":37.2234},{"LocationName":"Seattle,
+        Washington","CountryCode":"United States","CountrySubDivisionCode":"Washington","CityName":"Seattle,
+        Washington","Longitude":-122.3467,"Latitude":47.6141663},{"LocationName":"Green
+        Bay, Wisconsin","CountryCode":"United States","CountrySubDivisionCode":"Wisconsin","CityName":"Green
+        Bay, Wisconsin","Longitude":-88.04971,"Latitude":44.54694},{"LocationName":"Milwaukee,
+        Wisconsin","CountryCode":"United States","CountrySubDivisionCode":"Wisconsin","CityName":"Milwaukee,
+        Wisconsin","Longitude":-87.9068451,"Latitude":43.04181},{"LocationName":"Charleston,
+        West Virginia","CountryCode":"United States","CountrySubDivisionCode":"West
+        Virginia","CityName":"Charleston, West Virginia","Longitude":-81.63893,"Latitude":38.3502159}],"OrganizationName":"Federal
+        Mediation and Conciliation Service","DepartmentName":"Other Agencies and Independent
+        Organizations","JobCategory":[{"Name":"Mediation","Code":"0241"}],"JobGrade":[{"Code":"GS"}],"PositionSchedule":[{"Name":"Full-Time","Code":"1"}],"PositionOfferingType":[{"Name":"Excepted
+        Service","Code":"15317"}],"QualificationSummary":"GS-11 MINIMUM QUALIFICATION
+        REQUIREMENT\nIn order to be considered minimally qualified for the FMCS Mediator,
+        GS-241-11 position; your resume must clearly reflect one (1) year of full-time
+        specialized experience utilizing the concepts and theories of collective bargaining,
+        alternative dispute resolution, negotiation, and/or conflict resolution. This
+        specialized experience MUST have been gained performing one or more of the
+        tasks listed below: Participating in the negotiation or mediation of labor
+        agreements or assisting in the resolution of workplace conflict issues; or
+        Being in an organizational position that involves identifying and solving
+        problems related to workplace relations and conflict resolution, drawing conclusions
+        and recommending appropriate courses of action; or Serving as a representative
+        of labor or management in a corporation, company or labor organization; or
+        Working for a Federal, state or local government entity in a capacity that
+        involves dealing with labor relations, collective bargaining, human resources,
+        workplace conflict resolution, and/or the interpretation or application of
+        labor laws and regulations; or Providing consultation, teaching, training,
+        making presentations, facilitating or leading groups on a variety of topics
+        including age discrimination, EEO complaints, labor relations, human resources,
+        alternative dispute resolution, conflict management, regulatory compliance,
+        or regulatory negotiations; or Adapting conflict management or ADR services
+        for delivery within various technology platforms, such as telephonic, video
+        and other online collaborative systems. -OR- Education Substitution: Undergraduate
+        degree in Labor Relations, Industrial Relations, Alternative Dispute Resolution,
+        Mediation, Conflict Management, Human Resources Development/Management, Organizational
+        Studies/Management/Behavior, Negotiations, Employee Relations, Organizational
+        Learning, Public Policy or a related field. Undergraduate degree must be from
+        an accredited college or university. Transcripts and references will be requested.
+        -OR- Combination of Education and Experience: A combination of two (2) full
+        years of education leading to an undergraduate degree in a field listed above
+        AND one (1) year of full-time practical experience, internships, or other
+        related specialized experience may be used to meet the qualification requirement.
+        GS-12 MINIMUM QUALIFICATION REQUIREMENT\nIn order to be considered minimally
+        qualified for the FMCS Mediator, GS-241-12 position; your resume must clearly
+        reflect two (2) years of full-time specialized experience utilizing the concepts
+        and theories of collective bargaining, alternative dispute resolution, negotiation,
+        and/or conflict resolution. This specialized experience MUST have been gained
+        performing one or more of the tasks listed below: Participating in the negotiation
+        or mediation of labor agreements or assisting in the resolution of workplace
+        conflict issues; or Being in an organizational position that involves identifying
+        and solving problems related to workplace relations and conflict resolution,
+        drawing conclusions and recommending appropriate courses of action; or Serving
+        as a representative of labor or management in a corporation, company or labor
+        organization; or Working for a Federal, state or local government entity in
+        a capacity that involves dealing with labor relations, collective bargaining,
+        human resources, workplace conflict resolution, and/or the interpretation
+        or application of labor laws and regulations; or Providing consultation, teaching,
+        training, making presentations, facilitating or leading groups on a variety
+        of topics including age discrimination, EEO complaints, labor relations, human
+        resources, alternative dispute resolution, conflict management, regulatory
+        compliance, or regulatory negotiations; or Adapting conflict management or
+        ADR services for delivery within various technology platforms, such as telephonic,
+        video and other online collaborative systems. -OR- Education Substitution:
+        Master''s or J.D. equivalent graduate degree in Labor Relations, Industrial
+        Relations, Alternative Dispute Resolution, Mediation, Conflict Management,
+        Human Resources Development/Management, Organizational Studies/Management/Behavior,
+        Negotiations, Employee Relations, Organizational Learning, Public Policy,
+        or a related field. Graduate degree must be from an accredited college or
+        university. Transcripts and references will be requested. -OR- Combination
+        of Education and Experience: A combination of two (2) full years of education
+        leading to a graduate degree in a field listed above AND one (1) year of full-time
+        practical experience, internships, or other related specialized experience
+        may be used to meet the qualification requirement. GS-13 MINIMUM QUALIFICATION
+        REQUIREMENT\nIn order to be considered minimally qualified for the FMCS Mediator,
+        GS-241-13 position; your resume MUST clearly reflect your full-time experience,
+        utilizing the concepts and theories of collective bargaining, alternative
+        dispute resolution, negotiation, and/or conflict resolution. This specialized
+        experience MUST have been gained serving in one (or more) of the roles listed
+        below assisting parties in the interpretation and negotiation of collective
+        bargaining (labor) agreements on matters such as wages, benefits, hours of
+        work, and working conditions or the handling of workplace conflict resolution.
+        Chief/Lead Spokesperson (representing labor or management); or Second Chair
+        (representing labor or management); or Benefits Expert (representing labor
+        or management); or Mediator; or Consultant; or Facilitator or Trainer In addition
+        to the qualifications listed above; your resume should indicate (if applicable):
+        years of experience, breadth of responsibilities, the complexity of bargaining
+        matters, knowledge of contract language, familiarity with a broad scope of
+        subjects, and knowledge of joint processes to improve labor-management relationships.
+        Part-time or unpaid experience: Credit will be given for appropriate unpaid
+        work on the same basis as for paid experience. Part-time experience will be
+        credited on the basis of time actually spent in appropriate activities. To
+        receive credit for such experience, you must indicate clearly the nature of
+        the duties and responsibilities in each position held and the number of hours
+        per week spent in such employment. Qualifications must be met by the Closing
+        Date: You must meet all qualification and eligibility requirements by 11:59
+        pm EST on the closing date of this announcement.","PositionRemuneration":[{"MinimumRange":"53062.00","MaximumRange":"98317.00","RateIntervalCode":"Per
+        Year"}],"PositionStartDate":"2018-08-14","PositionEndDate":"2019-08-13","PublicationStartDate":"2018-08-14","ApplicationCloseDate":"2019-08-13","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"","WhoMayApply":{"Name":"","Code":""},"LowGrade":"11","HighGrade":"13","PromotionPotential":"14","HiringPath":["public"],"TotalOpenings":"Many","AgencyMarketingStatement":"The
+        Best Places to Work has ranked the Federal Mediation and Conciliation Service
+        (FMCS) #1 for Small Agencies in the Federal Government. The Best Places to
+        Work rankings are an important tool for ensuring that employee satisfaction
+        is a top priority for government managers and leaders. The FMCS promotes the
+        development of sound and stable labor-management relationships; prevents or
+        minimizes work stoppages by assisting labor and management to settle their
+        disputes through mediation; advocates collective bargaining, mediation and
+        voluntary arbitration as the preferred process for settling issues between
+        employers and representatives of employees; develops the art, science and
+        practice of conflict resolution; assists government agencies in the effective
+        use of alternative dispute resolution through support, training, and the provision
+        of neutrals; and fostering the establishment and maintenance of constructive
+        processes to improve labor-management relationships, employment security and
+        organizational effectiveness. Stationed in offices throughout the United States,
+        FMCS Mediators are full-time excepted service employees of the Federal government
+        that perform duties in five major areas: collective bargaining mediation;
+        grievance mediation; relationship development training; ADR services to government
+        entities. *****Please Sign Up for FMCS Updates (via email) for Career notifications,
+        to learn of application submission cut-off dates.*****","TravelCode":"7","ApplyOnlineUrl":"https://apply.usastaffing.gov/Application/Apply","DetailStatusUrl":"https://apply.usastaffing.gov/Application/ApplicationStatus"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"508213700","MatchedObjectDescriptor":{"PositionID":"FSIS-2018-VMO-1031","PositionTitle":"Veterinary
+        Medical Officer (Public Health)","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/508213700","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/508213700?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Multiple
+        Locations","PositionLocation":[{"LocationName":"Anchorage, Alaska","CountryCode":"United
+        States","CountrySubDivisionCode":"Alaska","CityName":"Anchorage, Alaska","Longitude":-149.857742,"Latitude":61.21756},{"LocationName":"North
+        Pole, Alaska","CountryCode":"United States","CountrySubDivisionCode":"Alaska","CityName":"North
+        Pole, Alaska","Longitude":-147.352509,"Latitude":64.74878},{"LocationName":"Palmer,
+        Alaska","CountryCode":"United States","CountrySubDivisionCode":"Alaska","CityName":"Palmer,
+        Alaska","Longitude":-149.117371,"Latitude":61.59944},{"LocationName":"Abbeville,
+        Alabama","CountryCode":"United States","CountrySubDivisionCode":"Alabama","CityName":"Abbeville,
+        Alabama","Longitude":-85.25093,"Latitude":31.5716419},{"LocationName":"Albertville,
+        Alabama","CountryCode":"United States","CountrySubDivisionCode":"Alabama","CityName":"Albertville,
+        Alabama","Longitude":-86.2079,"Latitude":34.2695},{"LocationName":"Ashland,
+        Alabama","CountryCode":"United States","CountrySubDivisionCode":"Alabama","CityName":"Ashland,
+        Alabama","Longitude":-85.8354645,"Latitude":33.27431},{"LocationName":"Athens,
+        Alabama","CountryCode":"United States","CountrySubDivisionCode":"Alabama","CityName":"Athens,
+        Alabama","Longitude":-86.97215,"Latitude":34.80288},{"LocationName":"Baker
+        Hill, Alabama","CountryCode":"United States","CountrySubDivisionCode":"Alabama","CityName":"Baker
+        Hill, Alabama","Longitude":-85.30216,"Latitude":31.78127},{"LocationName":"Blountsville,
+        Alabama","CountryCode":"United States","CountrySubDivisionCode":"Alabama","CityName":"Blountsville,
+        Alabama","Longitude":-86.58949,"Latitude":34.0866165},{"LocationName":"Decatur,
+        Alabama","CountryCode":"United States","CountrySubDivisionCode":"Alabama","CityName":"Decatur,
+        Alabama","Longitude":-86.9798,"Latitude":34.6074},{"LocationName":"Dothan,
+        Alabama","CountryCode":"United States","CountrySubDivisionCode":"Alabama","CityName":"Dothan,
+        Alabama","Longitude":-85.3933,"Latitude":31.2232},{"LocationName":"Enterprise,
+        Alabama","CountryCode":"United States","CountrySubDivisionCode":"Alabama","CityName":"Enterprise,
+        Alabama","Longitude":-85.8547,"Latitude":31.3152},{"LocationName":"Gadsden,
+        Alabama","CountryCode":"United States","CountrySubDivisionCode":"Alabama","CityName":"Gadsden,
+        Alabama","Longitude":-86.0072,"Latitude":34.0148},{"LocationName":"Guntersville,
+        Alabama","CountryCode":"United States","CountrySubDivisionCode":"Alabama","CityName":"Guntersville,
+        Alabama","Longitude":-86.2992,"Latitude":34.3511},{"LocationName":"Jack, Alabama","CountryCode":"United
+        States","CountrySubDivisionCode":"Alabama","CityName":"Jack, Alabama","Longitude":-86.00083,"Latitude":31.58677},{"LocationName":"Mobile,
+        Alabama","CountryCode":"United States","CountrySubDivisionCode":"Alabama","CityName":"Mobile,
+        Alabama","Longitude":-88.0532,"Latitude":30.6864},{"LocationName":"Montgomery,
+        Alabama","CountryCode":"United States","CountrySubDivisionCode":"Alabama","CityName":"Montgomery,
+        Alabama","Longitude":-86.3006,"Latitude":32.3801},{"LocationName":"Russellville,
+        Alabama","CountryCode":"United States","CountrySubDivisionCode":"Alabama","CityName":"Russellville,
+        Alabama","Longitude":-87.72841,"Latitude":34.50743},{"LocationName":"Tuscaloosa,
+        Alabama","CountryCode":"United States","CountrySubDivisionCode":"Alabama","CityName":"Tuscaloosa,
+        Alabama","Longitude":-87.5658,"Latitude":33.2105},{"LocationName":"Union Springs,
+        Alabama","CountryCode":"United States","CountrySubDivisionCode":"Alabama","CityName":"Union
+        Springs, Alabama","Longitude":-85.71268,"Latitude":32.1461449},{"LocationName":"Batesville,
+        Arkansas","CountryCode":"United States","CountrySubDivisionCode":"Arkansas","CityName":"Batesville,
+        Arkansas","Longitude":-91.64998,"Latitude":35.7697754},{"LocationName":"Clarksville,
+        Arkansas","CountryCode":"United States","CountrySubDivisionCode":"Arkansas","CityName":"Clarksville,
+        Arkansas","Longitude":-93.46635,"Latitude":35.4717},{"LocationName":"Danville,
+        Arkansas","CountryCode":"United States","CountrySubDivisionCode":"Arkansas","CityName":"Danville,
+        Arkansas","Longitude":-93.3939056,"Latitude":35.0565147},{"LocationName":"Dardanelle,
+        Arkansas","CountryCode":"United States","CountrySubDivisionCode":"Arkansas","CityName":"Dardanelle,
+        Arkansas","Longitude":-93.15585,"Latitude":35.2237167},{"LocationName":"De
+        Queen, Arkansas","CountryCode":"United States","CountrySubDivisionCode":"Arkansas","CityName":"De
+        Queen, Arkansas","Longitude":-94.33944,"Latitude":34.03677},{"LocationName":"Decatur,
+        Arkansas","CountryCode":"United States","CountrySubDivisionCode":"Arkansas","CityName":"Decatur,
+        Arkansas","Longitude":-94.46068,"Latitude":36.3369331},{"LocationName":"Fort
+        Smith, Arkansas","CountryCode":"United States","CountrySubDivisionCode":"Arkansas","CityName":"Fort
+        Smith, Arkansas","Longitude":-94.4213,"Latitude":35.3846},{"LocationName":"Grannis,
+        Arkansas","CountryCode":"United States","CountrySubDivisionCode":"Arkansas","CityName":"Grannis,
+        Arkansas","Longitude":-94.33438,"Latitude":34.2399559},{"LocationName":"Green
+        Forest, Arkansas","CountryCode":"United States","CountrySubDivisionCode":"Arkansas","CityName":"Green
+        Forest, Arkansas","Longitude":-93.43585,"Latitude":36.3354263},{"LocationName":"Hope,
+        Arkansas","CountryCode":"United States","CountrySubDivisionCode":"Arkansas","CityName":"Hope,
+        Arkansas","Longitude":-93.58978,"Latitude":33.66747},{"LocationName":"Huntsville,
+        Arkansas","CountryCode":"United States","CountrySubDivisionCode":"Arkansas","CityName":"Huntsville,
+        Arkansas","Longitude":-93.73689,"Latitude":36.08742},{"LocationName":"Nashville,
+        Arkansas","CountryCode":"United States","CountrySubDivisionCode":"Arkansas","CityName":"Nashville,
+        Arkansas","Longitude":-93.84702,"Latitude":33.94792},{"LocationName":"Ozark,
+        Arkansas","CountryCode":"United States","CountrySubDivisionCode":"Arkansas","CityName":"Ozark,
+        Arkansas","Longitude":-93.8312759,"Latitude":35.4873962},{"LocationName":"Pine
+        Bluff, Arkansas","CountryCode":"United States","CountrySubDivisionCode":"Arkansas","CityName":"Pine
+        Bluff, Arkansas","Longitude":-92.0034,"Latitude":34.2235336},{"LocationName":"Pocahontas,
+        Arkansas","CountryCode":"United States","CountrySubDivisionCode":"Arkansas","CityName":"Pocahontas,
+        Arkansas","Longitude":-90.94396,"Latitude":36.2833},{"LocationName":"Springdale,
+        Arkansas","CountryCode":"United States","CountrySubDivisionCode":"Arkansas","CityName":"Springdale,
+        Arkansas","Longitude":-94.13036,"Latitude":36.1850548},{"LocationName":"Waldron,
+        Arkansas","CountryCode":"United States","CountrySubDivisionCode":"Arkansas","CityName":"Waldron,
+        Arkansas","Longitude":-94.09109,"Latitude":34.89705},{"LocationName":"Warren,
+        Arkansas","CountryCode":"United States","CountrySubDivisionCode":"Arkansas","CityName":"Warren,
+        Arkansas","Longitude":-92.0643,"Latitude":33.6142},{"LocationName":"Tolleson,
+        Arizona","CountryCode":"United States","CountrySubDivisionCode":"Arizona","CityName":"Tolleson,
+        Arizona","Longitude":-112.264915,"Latitude":33.4502945},{"LocationName":"Tucson,
+        Arizona","CountryCode":"United States","CountrySubDivisionCode":"Arizona","CityName":"Tucson,
+        Arizona","Longitude":-110.969757,"Latitude":32.2215538},{"LocationName":"Brawley,
+        California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"Brawley,
+        California","Longitude":-115.534607,"Latitude":32.97863},{"LocationName":"Chino,
+        California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"Chino,
+        California","Longitude":-117.689331,"Latitude":34.01281},{"LocationName":"Creston,
+        California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"Creston,
+        California","Longitude":-120.523758,"Latitude":35.51975},{"LocationName":"Dixon,
+        California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"Dixon,
+        California","Longitude":-121.816109,"Latitude":38.4455},{"LocationName":"Eureka,
+        California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"Eureka,
+        California","Longitude":-124.16,"Latitude":40.8033},{"LocationName":"Fresno,
+        California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"Fresno,
+        California","Longitude":-119.785683,"Latitude":36.7406158},{"LocationName":"Hanford,
+        California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"Hanford,
+        California","Longitude":-119.645805,"Latitude":36.3271751},{"LocationName":"Livingston,
+        California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"Livingston,
+        California","Longitude":-120.7234,"Latitude":37.38073},{"LocationName":"Los
+        Angeles, California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"Los
+        Angeles, California","Longitude":-118.245,"Latitude":34.0535},{"LocationName":"Los
+        Banos, California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"Los
+        Banos, California","Longitude":-120.847565,"Latitude":37.0613937},{"LocationName":"Madera,
+        California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"Madera,
+        California","Longitude":-120.063995,"Latitude":36.9620552},{"LocationName":"Merced,
+        California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"Merced,
+        California","Longitude":-120.4862,"Latitude":37.30127},{"LocationName":"Modesto,
+        California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"Modesto,
+        California","Longitude":-120.9996,"Latitude":37.6383},{"LocationName":"Newman,
+        California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"Newman,
+        California","Longitude":-121.021828,"Latitude":37.3168449},{"LocationName":"Orland,
+        California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"Orland,
+        California","Longitude":-122.194771,"Latitude":39.7473946},{"LocationName":"Petaluma,
+        California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"Petaluma,
+        California","Longitude":-122.644455,"Latitude":38.2324677},{"LocationName":"Pico
+        Rivera, California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"Pico
+        Rivera, California","Longitude":-118.088036,"Latitude":33.9823456},{"LocationName":"Sacramento,
+        California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"Sacramento,
+        California","Longitude":-121.491,"Latitude":38.57906},{"LocationName":"Sanger,
+        California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"Sanger,
+        California","Longitude":-119.556351,"Latitude":36.7084846},{"LocationName":"Selma,
+        California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"Selma,
+        California","Longitude":-119.610786,"Latitude":36.5675354},{"LocationName":"Sonora,
+        California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"Sonora,
+        California","Longitude":-120.3822,"Latitude":37.9833},{"LocationName":"Stockton,
+        California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"Stockton,
+        California","Longitude":-121.291,"Latitude":37.9536},{"LocationName":"Turlock,
+        California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"Turlock,
+        California","Longitude":-120.84642,"Latitude":37.4950142},{"LocationName":"Vernon,
+        California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"Vernon,
+        California","Longitude":-118.230247,"Latitude":34.0049934},{"LocationName":"Alamosa,
+        Colorado","CountryCode":"United States","CountrySubDivisionCode":"Colorado","CityName":"Alamosa,
+        Colorado","Longitude":-105.8736,"Latitude":37.46818},{"LocationName":"Boulder,
+        Colorado","CountryCode":"United States","CountrySubDivisionCode":"Colorado","CityName":"Boulder,
+        Colorado","Longitude":-105.279243,"Latitude":40.01574},{"LocationName":"Colorado
+        Springs, Colorado","CountryCode":"United States","CountrySubDivisionCode":"Colorado","CityName":"Colorado
+        Springs, Colorado","Longitude":-104.821732,"Latitude":38.83311},{"LocationName":"Craig,
+        Colorado","CountryCode":"United States","CountrySubDivisionCode":"Colorado","CityName":"Craig,
+        Colorado","Longitude":-107.547867,"Latitude":40.5142365},{"LocationName":"Delta,
+        Colorado","CountryCode":"United States","CountrySubDivisionCode":"Colorado","CityName":"Delta,
+        Colorado","Longitude":-108.070869,"Latitude":38.74479},{"LocationName":"Denver,
+        Colorado","CountryCode":"United States","CountrySubDivisionCode":"Colorado","CityName":"Denver,
+        Colorado","Longitude":-104.992256,"Latitude":39.74001},{"LocationName":"Durango,
+        Colorado","CountryCode":"United States","CountrySubDivisionCode":"Colorado","CityName":"Durango,
+        Colorado","Longitude":-107.8793,"Latitude":37.273674},{"LocationName":"Erie,
+        Colorado","CountryCode":"United States","CountrySubDivisionCode":"Colorado","CityName":"Erie,
+        Colorado","Longitude":-105.053322,"Latitude":40.0515137},{"LocationName":"Fort
+        Collins, Colorado","CountryCode":"United States","CountrySubDivisionCode":"Colorado","CityName":"Fort
+        Collins, Colorado","Longitude":-105.076263,"Latitude":40.5815048},{"LocationName":"Fort
+        Morgan, Colorado","CountryCode":"United States","CountrySubDivisionCode":"Colorado","CityName":"Fort
+        Morgan, Colorado","Longitude":-103.801483,"Latitude":40.25467},{"LocationName":"Grand
+        Junction, Colorado","CountryCode":"United States","CountrySubDivisionCode":"Colorado","CityName":"Grand
+        Junction, Colorado","Longitude":-108.564453,"Latitude":39.06879},{"LocationName":"Greeley,
+        Colorado","CountryCode":"United States","CountrySubDivisionCode":"Colorado","CityName":"Greeley,
+        Colorado","Longitude":-104.694466,"Latitude":40.42328},{"LocationName":"Lakewood,
+        Colorado","CountryCode":"United States","CountrySubDivisionCode":"Colorado","CityName":"Lakewood,
+        Colorado","Longitude":-105.082741,"Latitude":39.71095},{"LocationName":"Pierce,
+        Colorado","CountryCode":"United States","CountrySubDivisionCode":"Colorado","CityName":"Pierce,
+        Colorado","Longitude":-104.754,"Latitude":40.6349144},{"LocationName":"Sterling,
+        Colorado","CountryCode":"United States","CountrySubDivisionCode":"Colorado","CityName":"Sterling,
+        Colorado","Longitude":-103.206139,"Latitude":40.625946},{"LocationName":"Stafford
+        Springs, Connecticut","CountryCode":"United States","CountrySubDivisionCode":"Connecticut","CityName":"Stafford
+        Springs, Connecticut","Longitude":-72.31683,"Latitude":41.9532433},{"LocationName":"Waterbury,
+        Connecticut","CountryCode":"United States","CountrySubDivisionCode":"Connecticut","CityName":"Waterbury,
+        Connecticut","Longitude":-73.04615,"Latitude":41.5540733},{"LocationName":"Georgetown,
+        Delaware","CountryCode":"United States","CountrySubDivisionCode":"Delaware","CityName":"Georgetown,
+        Delaware","Longitude":-75.3867,"Latitude":38.6907},{"LocationName":"Harbeson,
+        Delaware","CountryCode":"United States","CountrySubDivisionCode":"Delaware","CityName":"Harbeson,
+        Delaware","Longitude":-75.2777,"Latitude":38.70546},{"LocationName":"Milford,
+        Delaware","CountryCode":"United States","CountrySubDivisionCode":"Delaware","CityName":"Milford,
+        Delaware","Longitude":-75.42854,"Latitude":38.9107056},{"LocationName":"Millsboro,
+        Delaware","CountryCode":"United States","CountrySubDivisionCode":"Delaware","CityName":"Millsboro,
+        Delaware","Longitude":-75.2942657,"Latitude":38.5870667},{"LocationName":"Selbyville,
+        Delaware","CountryCode":"United States","CountrySubDivisionCode":"Delaware","CityName":"Selbyville,
+        Delaware","Longitude":-75.23358,"Latitude":38.45691},{"LocationName":"Center
+        Hill, Florida","CountryCode":"United States","CountrySubDivisionCode":"Florida","CityName":"Center
+        Hill, Florida","Longitude":-82.00725,"Latitude":28.649931},{"LocationName":"Century,
+        Florida","CountryCode":"United States","CountrySubDivisionCode":"Florida","CityName":"Century,
+        Florida","Longitude":-87.2657852,"Latitude":30.9727058},{"LocationName":"Clermont,
+        Florida","CountryCode":"United States","CountrySubDivisionCode":"Florida","CityName":"Clermont,
+        Florida","Longitude":-81.7663,"Latitude":28.5513},{"LocationName":"Gainesville,
+        Florida","CountryCode":"United States","CountrySubDivisionCode":"Florida","CityName":"Gainesville,
+        Florida","Longitude":-82.32319,"Latitude":29.65195},{"LocationName":"Live
+        Oak, Florida","CountryCode":"United States","CountrySubDivisionCode":"Florida","CityName":"Live
+        Oak, Florida","Longitude":-82.9844742,"Latitude":30.2960148},{"LocationName":"Miami,
+        Florida","CountryCode":"United States","CountrySubDivisionCode":"Florida","CityName":"Miami,
+        Florida","Longitude":-80.23742,"Latitude":25.7289848},{"LocationName":"Moore
+        Haven, Florida","CountryCode":"United States","CountrySubDivisionCode":"Florida","CityName":"Moore
+        Haven, Florida","Longitude":-81.09773,"Latitude":26.8336449},{"LocationName":"Orlando,
+        Florida","CountryCode":"United States","CountrySubDivisionCode":"Florida","CityName":"Orlando,
+        Florida","Longitude":-81.37739,"Latitude":28.5382347},{"LocationName":"Tallahassee,
+        Florida","CountryCode":"United States","CountrySubDivisionCode":"Florida","CityName":"Tallahassee,
+        Florida","Longitude":-84.28065,"Latitude":30.4397755},{"LocationName":"Tampa,
+        Florida","CountryCode":"United States","CountrySubDivisionCode":"Florida","CityName":"Tampa,
+        Florida","Longitude":-82.45927,"Latitude":27.94653},{"LocationName":"Wimauma,
+        Florida","CountryCode":"United States","CountrySubDivisionCode":"Florida","CityName":"Wimauma,
+        Florida","Longitude":-82.29624,"Latitude":27.7137241},{"LocationName":"Zolfo
+        Springs, Florida","CountryCode":"United States","CountrySubDivisionCode":"Florida","CityName":"Zolfo
+        Springs, Florida","Longitude":-81.79576,"Latitude":27.49346},{"LocationName":"Athens,
+        Georgia","CountryCode":"United States","CountrySubDivisionCode":"Georgia","CityName":"Athens,
+        Georgia","Longitude":-83.37325,"Latitude":33.9581337},{"LocationName":"Atlanta,
+        Georgia","CountryCode":"United States","CountrySubDivisionCode":"Georgia","CityName":"Atlanta,
+        Georgia","Longitude":-84.39111,"Latitude":33.7483139},{"LocationName":"Augusta,
+        Georgia","CountryCode":"United States","CountrySubDivisionCode":"Georgia","CityName":"Augusta,
+        Georgia","Longitude":-81.97531,"Latitude":33.47909},{"LocationName":"Bethlehem,
+        Georgia","CountryCode":"United States","CountrySubDivisionCode":"Georgia","CityName":"Bethlehem,
+        Georgia","Longitude":-83.71381,"Latitude":33.9320755},{"LocationName":"Camilla,
+        Georgia","CountryCode":"United States","CountrySubDivisionCode":"Georgia","CityName":"Camilla,
+        Georgia","Longitude":-84.20465,"Latitude":31.2311344},{"LocationName":"Canton,
+        Georgia","CountryCode":"United States","CountrySubDivisionCode":"Georgia","CityName":"Canton,
+        Georgia","Longitude":-84.4873,"Latitude":34.2363},{"LocationName":"Carrollton,
+        Georgia","CountryCode":"United States","CountrySubDivisionCode":"Georgia","CityName":"Carrollton,
+        Georgia","Longitude":-85.0784,"Latitude":33.5809},{"LocationName":"Claxton,
+        Georgia","CountryCode":"United States","CountrySubDivisionCode":"Georgia","CityName":"Claxton,
+        Georgia","Longitude":-81.90452,"Latitude":32.16129},{"LocationName":"Cornelia,
+        Georgia","CountryCode":"United States","CountrySubDivisionCode":"Georgia","CityName":"Cornelia,
+        Georgia","Longitude":-83.527565,"Latitude":34.51211},{"LocationName":"Cumming,
+        Georgia","CountryCode":"United States","CountrySubDivisionCode":"Georgia","CityName":"Cumming,
+        Georgia","Longitude":-84.1399,"Latitude":34.2036},{"LocationName":"Douglas,
+        Georgia","CountryCode":"United States","CountrySubDivisionCode":"Georgia","CityName":"Douglas,
+        Georgia","Longitude":-82.84957,"Latitude":31.5056744},{"LocationName":"Ellijay,
+        Georgia","CountryCode":"United States","CountrySubDivisionCode":"Georgia","CityName":"Ellijay,
+        Georgia","Longitude":-84.48291,"Latitude":34.6945076},{"LocationName":"Gainesville,
+        Georgia","CountryCode":"United States","CountrySubDivisionCode":"Georgia","CityName":"Gainesville,
+        Georgia","Longitude":-83.8255,"Latitude":34.2972755},{"LocationName":"Louisville,
+        Georgia","CountryCode":"United States","CountrySubDivisionCode":"Georgia","CityName":"Louisville,
+        Georgia","Longitude":-82.40527,"Latitude":33.0062561},{"LocationName":"Marietta,
+        Georgia","CountryCode":"United States","CountrySubDivisionCode":"Georgia","CityName":"Marietta,
+        Georgia","Longitude":-84.54588,"Latitude":33.9531937},{"LocationName":"Moultrie,
+        Georgia","CountryCode":"United States","CountrySubDivisionCode":"Georgia","CityName":"Moultrie,
+        Georgia","Longitude":-83.7887955,"Latitude":31.1804543},{"LocationName":"Murrayville,
+        Georgia","CountryCode":"United States","CountrySubDivisionCode":"Georgia","CityName":"Murrayville,
+        Georgia","Longitude":-83.90516,"Latitude":34.41749},{"LocationName":"Pendergrass,
+        Georgia","CountryCode":"United States","CountrySubDivisionCode":"Georgia","CityName":"Pendergrass,
+        Georgia","Longitude":-83.67875,"Latitude":34.16326},{"LocationName":"Perry,
+        Georgia","CountryCode":"United States","CountrySubDivisionCode":"Georgia","CityName":"Perry,
+        Georgia","Longitude":-83.73476,"Latitude":32.46087},{"LocationName":"Pine
+        Mountain Valley, Georgia","CountryCode":"United States","CountrySubDivisionCode":"Georgia","CityName":"Pine
+        Mountain Valley, Georgia","Longitude":-84.82543,"Latitude":32.7967758},{"LocationName":"Vienna,
+        Georgia","CountryCode":"United States","CountrySubDivisionCode":"Georgia","CityName":"Vienna,
+        Georgia","Longitude":-83.7952,"Latitude":32.0912971},{"LocationName":"Maite,
+        Guam","CountryCode":"United States","CountrySubDivisionCode":"Guam","CityName":"Maite,
+        Guam","Longitude":144.764,"Latitude":13.4747},{"LocationName":"Tamuning, Guam","CountryCode":"United
+        States","CountrySubDivisionCode":"Guam","CityName":"Tamuning, Guam","Longitude":144.7767,"Latitude":13.4839},{"LocationName":"Hilo,
+        Hawaii","CountryCode":"United States","CountrySubDivisionCode":"Hawaii","CityName":"Hilo,
+        Hawaii","Longitude":-155.081863,"Latitude":19.7192345},{"LocationName":"Honolulu,
+        Hawaii","CountryCode":"United States","CountrySubDivisionCode":"Hawaii","CityName":"Honolulu,
+        Hawaii","Longitude":-157.858,"Latitude":21.3047},{"LocationName":"Kalaheo,
+        Hawaii","CountryCode":"United States","CountrySubDivisionCode":"Hawaii","CityName":"Kalaheo,
+        Hawaii","Longitude":-159.531052,"Latitude":21.9255867},{"LocationName":"Ames,
+        Iowa","CountryCode":"United States","CountrySubDivisionCode":"Iowa","CityName":"Ames,
+        Iowa","Longitude":-93.6202,"Latitude":42.0253448},{"LocationName":"Charles
+        City, Iowa","CountryCode":"United States","CountrySubDivisionCode":"Iowa","CityName":"Charles
+        City, Iowa","Longitude":-92.674324,"Latitude":43.065773},{"LocationName":"Columbus
+        City, Iowa","CountryCode":"United States","CountrySubDivisionCode":"Iowa","CityName":"Columbus
+        City, Iowa","Longitude":-91.37443,"Latitude":41.2587357},{"LocationName":"Denison,
+        Iowa","CountryCode":"United States","CountrySubDivisionCode":"Iowa","CityName":"Denison,
+        Iowa","Longitude":-95.35453,"Latitude":42.0123444},{"LocationName":"Des Moines,
+        Iowa","CountryCode":"United States","CountrySubDivisionCode":"Iowa","CityName":"Des
+        Moines, Iowa","Longitude":-93.61568,"Latitude":41.5897865},{"LocationName":"Eagle
+        Grove, Iowa","CountryCode":"United States","CountrySubDivisionCode":"Iowa","CityName":"Eagle
+        Grove, Iowa","Longitude":-93.9044952,"Latitude":42.6646233},{"LocationName":"Estherville,
+        Iowa","CountryCode":"United States","CountrySubDivisionCode":"Iowa","CityName":"Estherville,
+        Iowa","Longitude":-94.83859,"Latitude":43.4019356},{"LocationName":"Hospers,
+        Iowa","CountryCode":"United States","CountrySubDivisionCode":"Iowa","CityName":"Hospers,
+        Iowa","Longitude":-95.9063,"Latitude":43.0725937},{"LocationName":"Iowa City,
+        Iowa","CountryCode":"United States","CountrySubDivisionCode":"Iowa","CityName":"Iowa
+        City, Iowa","Longitude":-91.526535,"Latitude":41.6578255},{"LocationName":"Jewell,
+        Iowa","CountryCode":"United States","CountrySubDivisionCode":"Iowa","CityName":"Jewell,
+        Iowa","Longitude":-93.64005,"Latitude":42.30746},{"LocationName":"Marshalltown,
+        Iowa","CountryCode":"United States","CountrySubDivisionCode":"Iowa","CityName":"Marshalltown,
+        Iowa","Longitude":-92.90803,"Latitude":42.04978},{"LocationName":"Ottumwa,
+        Iowa","CountryCode":"United States","CountrySubDivisionCode":"Iowa","CityName":"Ottumwa,
+        Iowa","Longitude":-92.4157,"Latitude":41.0201},{"LocationName":"Perry, Iowa","CountryCode":"United
+        States","CountrySubDivisionCode":"Iowa","CityName":"Perry, Iowa","Longitude":-94.10552,"Latitude":41.83855},{"LocationName":"Postville,
+        Iowa","CountryCode":"United States","CountrySubDivisionCode":"Iowa","CityName":"Postville,
+        Iowa","Longitude":-91.56935,"Latitude":43.0845871},{"LocationName":"Sigourney,
+        Iowa","CountryCode":"United States","CountrySubDivisionCode":"Iowa","CityName":"Sigourney,
+        Iowa","Longitude":-92.20517,"Latitude":41.3366852},{"LocationName":"Sioux
+        Center, Iowa","CountryCode":"United States","CountrySubDivisionCode":"Iowa","CityName":"Sioux
+        Center, Iowa","Longitude":-96.1754761,"Latitude":43.076786},{"LocationName":"Sioux
+        City, Iowa","CountryCode":"United States","CountrySubDivisionCode":"Iowa","CityName":"Sioux
+        City, Iowa","Longitude":-96.4209442,"Latitude":42.49981},{"LocationName":"Storm
+        Lake, Iowa","CountryCode":"United States","CountrySubDivisionCode":"Iowa","CityName":"Storm
+        Lake, Iowa","Longitude":-95.20139,"Latitude":42.6474762},{"LocationName":"Tama,
+        Iowa","CountryCode":"United States","CountrySubDivisionCode":"Iowa","CityName":"Tama,
+        Iowa","Longitude":-92.57683,"Latitude":41.9620667},{"LocationName":"Waterloo,
+        Iowa","CountryCode":"United States","CountrySubDivisionCode":"Iowa","CityName":"Waterloo,
+        Iowa","Longitude":-92.3423157,"Latitude":42.4929543},{"LocationName":"West
+        Liberty, Iowa","CountryCode":"United States","CountrySubDivisionCode":"Iowa","CityName":"West
+        Liberty, Iowa","Longitude":-91.2608,"Latitude":41.5705},{"LocationName":"Boise,
+        Idaho","CountryCode":"United States","CountrySubDivisionCode":"Idaho","CityName":"Boise,
+        Idaho","Longitude":-116.193413,"Latitude":43.60698},{"LocationName":"Idaho
+        Falls, Idaho","CountryCode":"United States","CountrySubDivisionCode":"Idaho","CityName":"Idaho
+        Falls, Idaho","Longitude":-112.041992,"Latitude":43.492},{"LocationName":"Kuna,
+        Idaho","CountryCode":"United States","CountrySubDivisionCode":"Idaho","CityName":"Kuna,
+        Idaho","Longitude":-116.422661,"Latitude":43.48843},{"LocationName":"Nampa,
+        Idaho","CountryCode":"United States","CountrySubDivisionCode":"Idaho","CityName":"Nampa,
+        Idaho","Longitude":-116.569908,"Latitude":43.58283},{"LocationName":"Rigby,
+        Idaho","CountryCode":"United States","CountrySubDivisionCode":"Idaho","CityName":"Rigby,
+        Idaho","Longitude":-111.914375,"Latitude":43.67221},{"LocationName":"Twin
+        Falls, Idaho","CountryCode":"United States","CountrySubDivisionCode":"Idaho","CityName":"Twin
+        Falls, Idaho","Longitude":-114.469612,"Latitude":42.5562},{"LocationName":"Wendell,
+        Idaho","CountryCode":"United States","CountrySubDivisionCode":"Idaho","CityName":"Wendell,
+        Idaho","Longitude":-114.704773,"Latitude":42.77543},{"LocationName":"Beardstown,
+        Illinois","CountryCode":"United States","CountrySubDivisionCode":"Illinois","CityName":"Beardstown,
+        Illinois","Longitude":-90.43295,"Latitude":40.01549},{"LocationName":"Bolingbrook,
+        Illinois","CountryCode":"United States","CountrySubDivisionCode":"Illinois","CityName":"Bolingbrook,
+        Illinois","Longitude":-88.0812,"Latitude":41.6982},{"LocationName":"Chicago,
+        Illinois","CountryCode":"United States","CountrySubDivisionCode":"Illinois","CityName":"Chicago,
+        Illinois","Longitude":-87.63241,"Latitude":41.88415},{"LocationName":"De Kalb,
+        Illinois","CountryCode":"United States","CountrySubDivisionCode":"Illinois","CityName":"De
+        Kalb, Illinois","Longitude":-88.74058,"Latitude":41.9325333},{"LocationName":"Elk
+        Grove Village, Illinois","CountryCode":"United States","CountrySubDivisionCode":"Illinois","CityName":"Elk
+        Grove Village, Illinois","Longitude":-88.00904,"Latitude":42.0028076},{"LocationName":"Hillsdale,
+        Illinois","CountryCode":"United States","CountrySubDivisionCode":"Illinois","CityName":"Hillsdale,
+        Illinois","Longitude":-90.1710358,"Latitude":41.6037827},{"LocationName":"Lombard,
+        Illinois","CountryCode":"United States","CountrySubDivisionCode":"Illinois","CityName":"Lombard,
+        Illinois","Longitude":-88.01168,"Latitude":41.8675461},{"LocationName":"Marengo,
+        Illinois","CountryCode":"United States","CountrySubDivisionCode":"Illinois","CityName":"Marengo,
+        Illinois","Longitude":-88.6075745,"Latitude":42.2499657},{"LocationName":"Millstadt,
+        Illinois","CountryCode":"United States","CountrySubDivisionCode":"Illinois","CityName":"Millstadt,
+        Illinois","Longitude":-90.0932159,"Latitude":38.458992},{"LocationName":"Momence,
+        Illinois","CountryCode":"United States","CountrySubDivisionCode":"Illinois","CityName":"Momence,
+        Illinois","Longitude":-87.66275,"Latitude":41.16357},{"LocationName":"Monmouth,
+        Illinois","CountryCode":"United States","CountrySubDivisionCode":"Illinois","CityName":"Monmouth,
+        Illinois","Longitude":-90.65017,"Latitude":40.9120865},{"LocationName":"Mount
+        Morris, Illinois","CountryCode":"United States","CountrySubDivisionCode":"Illinois","CityName":"Mount
+        Morris, Illinois","Longitude":-89.42351,"Latitude":42.0467758},{"LocationName":"North
+        Aurora, Illinois","CountryCode":"United States","CountrySubDivisionCode":"Illinois","CityName":"North
+        Aurora, Illinois","Longitude":-88.32222,"Latitude":41.8077965},{"LocationName":"Peoria,
+        Illinois","CountryCode":"United States","CountrySubDivisionCode":"Illinois","CityName":"Peoria,
+        Illinois","Longitude":-89.58776,"Latitude":40.69214},{"LocationName":"Rantoul,
+        Illinois","CountryCode":"United States","CountrySubDivisionCode":"Illinois","CityName":"Rantoul,
+        Illinois","Longitude":-88.146225,"Latitude":40.3085},{"LocationName":"South
+        Holland, Illinois","CountryCode":"United States","CountrySubDivisionCode":"Illinois","CityName":"South
+        Holland, Illinois","Longitude":-87.61001,"Latitude":41.5999146},{"LocationName":"Colfax,
+        Indiana","CountryCode":"United States","CountrySubDivisionCode":"Indiana","CityName":"Colfax,
+        Indiana","Longitude":-86.6642761,"Latitude":40.190136},{"LocationName":"Corydon,
+        Indiana","CountryCode":"United States","CountrySubDivisionCode":"Indiana","CityName":"Corydon,
+        Indiana","Longitude":-86.1186752,"Latitude":38.210434},{"LocationName":"Delphi,
+        Indiana","CountryCode":"United States","CountrySubDivisionCode":"Indiana","CityName":"Delphi,
+        Indiana","Longitude":-86.67216,"Latitude":40.58683},{"LocationName":"Elkhart,
+        Indiana","CountryCode":"United States","CountrySubDivisionCode":"Indiana","CityName":"Elkhart,
+        Indiana","Longitude":-85.97568,"Latitude":41.6867638},{"LocationName":"Hobart,
+        Indiana","CountryCode":"United States","CountrySubDivisionCode":"Indiana","CityName":"Hobart,
+        Indiana","Longitude":-87.25405,"Latitude":41.5307045},{"LocationName":"Huntingburg,
+        Indiana","CountryCode":"United States","CountrySubDivisionCode":"Indiana","CityName":"Huntingburg,
+        Indiana","Longitude":-86.9554443,"Latitude":38.2982559},{"LocationName":"La
+        Porte, Indiana","CountryCode":"United States","CountrySubDivisionCode":"Indiana","CityName":"La
+        Porte, Indiana","Longitude":-86.72139,"Latitude":41.6095428},{"LocationName":"Lagrange,
+        Indiana","CountryCode":"United States","CountrySubDivisionCode":"Indiana","CityName":"Lagrange,
+        Indiana","Longitude":-85.41796,"Latitude":41.6444168},{"LocationName":"Logansport,
+        Indiana","CountryCode":"United States","CountrySubDivisionCode":"Indiana","CityName":"Logansport,
+        Indiana","Longitude":-86.3602142,"Latitude":40.7537537},{"LocationName":"Memphis,
+        Indiana","CountryCode":"United States","CountrySubDivisionCode":"Indiana","CityName":"Memphis,
+        Indiana","Longitude":-85.7627258,"Latitude":38.4854546},{"LocationName":"Mentone,
+        Indiana","CountryCode":"United States","CountrySubDivisionCode":"Indiana","CityName":"Mentone,
+        Indiana","Longitude":-86.03842,"Latitude":41.17332},{"LocationName":"Milford,
+        Indiana","CountryCode":"United States","CountrySubDivisionCode":"Indiana","CityName":"Milford,
+        Indiana","Longitude":-85.8457,"Latitude":41.4098},{"LocationName":"North Vernon,
+        Indiana","CountryCode":"United States","CountrySubDivisionCode":"Indiana","CityName":"North
+        Vernon, Indiana","Longitude":-85.62403,"Latitude":39.0056953},{"LocationName":"Orland,
+        Indiana","CountryCode":"United States","CountrySubDivisionCode":"Indiana","CityName":"Orland,
+        Indiana","Longitude":-85.16968,"Latitude":41.73098},{"LocationName":"Vincennes,
+        Indiana","CountryCode":"United States","CountrySubDivisionCode":"Indiana","CityName":"Vincennes,
+        Indiana","Longitude":-87.53225,"Latitude":38.6781044},{"LocationName":"Washington,
+        Indiana","CountryCode":"United States","CountrySubDivisionCode":"Indiana","CityName":"Washington,
+        Indiana","Longitude":-87.17018,"Latitude":38.6573639},{"LocationName":"Arkansas
+        City, Kansas","CountryCode":"United States","CountrySubDivisionCode":"Kansas","CityName":"Arkansas
+        City, Kansas","Longitude":-97.03898,"Latitude":37.0558662},{"LocationName":"De
+        Soto, Kansas","CountryCode":"United States","CountrySubDivisionCode":"Kansas","CityName":"De
+        Soto, Kansas","Longitude":-94.96512,"Latitude":38.9774666},{"LocationName":"Dodge
+        City, Kansas","CountryCode":"United States","CountrySubDivisionCode":"Kansas","CityName":"Dodge
+        City, Kansas","Longitude":-100.0187,"Latitude":37.7526},{"LocationName":"Downs,
+        Kansas","CountryCode":"United States","CountrySubDivisionCode":"Kansas","CityName":"Downs,
+        Kansas","Longitude":-98.544426,"Latitude":39.50325},{"LocationName":"Holcomb,
+        Kansas","CountryCode":"United States","CountrySubDivisionCode":"Kansas","CityName":"Holcomb,
+        Kansas","Longitude":-100.987358,"Latitude":37.9891},{"LocationName":"Holton,
+        Kansas","CountryCode":"United States","CountrySubDivisionCode":"Kansas","CityName":"Holton,
+        Kansas","Longitude":-95.738,"Latitude":39.4634},{"LocationName":"Kingman,
+        Kansas","CountryCode":"United States","CountrySubDivisionCode":"Kansas","CityName":"Kingman,
+        Kansas","Longitude":-98.1132,"Latitude":37.6469536},{"LocationName":"Liberal,
+        Kansas","CountryCode":"United States","CountrySubDivisionCode":"Kansas","CityName":"Liberal,
+        Kansas","Longitude":-100.9252,"Latitude":37.0324},{"LocationName":"Wellington,
+        Kansas","CountryCode":"United States","CountrySubDivisionCode":"Kansas","CityName":"Wellington,
+        Kansas","Longitude":-97.40198,"Latitude":37.26821},{"LocationName":"Albany,
+        Kentucky","CountryCode":"United States","CountrySubDivisionCode":"Kentucky","CityName":"Albany,
+        Kentucky","Longitude":-85.1358643,"Latitude":36.6906},{"LocationName":"Alvaton,
+        Kentucky","CountryCode":"United States","CountrySubDivisionCode":"Kentucky","CityName":"Alvaton,
+        Kentucky","Longitude":-86.35193,"Latitude":36.8717},{"LocationName":"Benton,
+        Kentucky","CountryCode":"United States","CountrySubDivisionCode":"Kentucky","CityName":"Benton,
+        Kentucky","Longitude":-88.35075,"Latitude":36.85753},{"LocationName":"Bowling
+        Green, Kentucky","CountryCode":"United States","CountrySubDivisionCode":"Kentucky","CityName":"Bowling
+        Green, Kentucky","Longitude":-86.44559,"Latitude":36.9946251},{"LocationName":"Cromwell,
+        Kentucky","CountryCode":"United States","CountrySubDivisionCode":"Kentucky","CityName":"Cromwell,
+        Kentucky","Longitude":-86.78661,"Latitude":37.3395958},{"LocationName":"Hazel
+        Green, Kentucky","CountryCode":"United States","CountrySubDivisionCode":"Kentucky","CityName":"Hazel
+        Green, Kentucky","Longitude":-83.41615,"Latitude":37.79786},{"LocationName":"Hickory,
+        Kentucky","CountryCode":"United States","CountrySubDivisionCode":"Kentucky","CityName":"Hickory,
+        Kentucky","Longitude":-88.6502457,"Latitude":36.8182144},{"LocationName":"Lancaster,
+        Kentucky","CountryCode":"United States","CountrySubDivisionCode":"Kentucky","CityName":"Lancaster,
+        Kentucky","Longitude":-84.57874,"Latitude":37.6190453},{"LocationName":"Lexington,
+        Kentucky","CountryCode":"United States","CountrySubDivisionCode":"Kentucky","CityName":"Lexington,
+        Kentucky","Longitude":-84.50032,"Latitude":38.0485954},{"LocationName":"Louisville,
+        Kentucky","CountryCode":"United States","CountrySubDivisionCode":"Kentucky","CityName":"Louisville,
+        Kentucky","Longitude":-85.7664,"Latitude":38.25486},{"LocationName":"Monticello,
+        Kentucky","CountryCode":"United States","CountrySubDivisionCode":"Kentucky","CityName":"Monticello,
+        Kentucky","Longitude":-84.84956,"Latitude":36.82895},{"LocationName":"Robards,
+        Kentucky","CountryCode":"United States","CountrySubDivisionCode":"Kentucky","CityName":"Robards,
+        Kentucky","Longitude":-87.5461349,"Latitude":37.6744},{"LocationName":"Simpsonville,
+        Kentucky","CountryCode":"United States","CountrySubDivisionCode":"Kentucky","CityName":"Simpsonville,
+        Kentucky","Longitude":-85.35441,"Latitude":38.2223434},{"LocationName":"Taylorsville,
+        Kentucky","CountryCode":"United States","CountrySubDivisionCode":"Kentucky","CityName":"Taylorsville,
+        Kentucky","Longitude":-85.34124,"Latitude":38.03295},{"LocationName":"Arcadia,
+        Louisiana","CountryCode":"United States","CountrySubDivisionCode":"Louisiana","CityName":"Arcadia,
+        Louisiana","Longitude":-92.9212646,"Latitude":32.54943},{"LocationName":"Farmerville,
+        Louisiana","CountryCode":"United States","CountrySubDivisionCode":"Louisiana","CityName":"Farmerville,
+        Louisiana","Longitude":-92.40546,"Latitude":32.7796364},{"LocationName":"Hammond,
+        Louisiana","CountryCode":"United States","CountrySubDivisionCode":"Louisiana","CityName":"Hammond,
+        Louisiana","Longitude":-90.4584,"Latitude":30.50417},{"LocationName":"Natchitoches,
+        Louisiana","CountryCode":"United States","CountrySubDivisionCode":"Louisiana","CityName":"Natchitoches,
+        Louisiana","Longitude":-93.08698,"Latitude":31.7609558},{"LocationName":"West
+        Groton, Massachusetts","CountryCode":"United States","CountrySubDivisionCode":"Massachusetts","CityName":"West
+        Groton, Massachusetts","Longitude":-71.62729,"Latitude":42.60426},{"LocationName":"Catonsville,
+        Maryland","CountryCode":"United States","CountrySubDivisionCode":"Maryland","CityName":"Catonsville,
+        Maryland","Longitude":-76.73983,"Latitude":39.2702141},{"LocationName":"Hagerstown,
+        Maryland","CountryCode":"United States","CountrySubDivisionCode":"Maryland","CityName":"Hagerstown,
+        Maryland","Longitude":-77.7176,"Latitude":39.6425},{"LocationName":"Hurlock,
+        Maryland","CountryCode":"United States","CountrySubDivisionCode":"Maryland","CityName":"Hurlock,
+        Maryland","Longitude":-75.86157,"Latitude":38.6305542},{"LocationName":"Mount
+        Airy, Maryland","CountryCode":"United States","CountrySubDivisionCode":"Maryland","CityName":"Mount
+        Airy, Maryland","Longitude":-77.15992,"Latitude":39.375885},{"LocationName":"Mountain
+        Lake Park, Maryland","CountryCode":"United States","CountrySubDivisionCode":"Maryland","CityName":"Mountain
+        Lake Park, Maryland","Longitude":-79.3816147,"Latitude":39.3983841},{"LocationName":"Salisbury,
+        Maryland","CountryCode":"United States","CountrySubDivisionCode":"Maryland","CityName":"Salisbury,
+        Maryland","Longitude":-75.59532,"Latitude":38.3657341},{"LocationName":"Guilford,
+        Maine","CountryCode":"United States","CountrySubDivisionCode":"Maine","CityName":"Guilford,
+        Maine","Longitude":-69.3858261,"Latitude":45.16811},{"LocationName":"Windham,
+        Maine","CountryCode":"United States","CountrySubDivisionCode":"Maine","CityName":"Windham,
+        Maine","Longitude":-70.4092941,"Latitude":43.7921448},{"LocationName":"Buckley,
+        Michigan","CountryCode":"United States","CountrySubDivisionCode":"Michigan","CityName":"Buckley,
+        Michigan","Longitude":-85.67901,"Latitude":44.50438},{"LocationName":"Caledonia,
+        Michigan","CountryCode":"United States","CountrySubDivisionCode":"Michigan","CityName":"Caledonia,
+        Michigan","Longitude":-85.51179,"Latitude":42.7869072},{"LocationName":"Coopersville,
+        Michigan","CountryCode":"United States","CountrySubDivisionCode":"Michigan","CityName":"Coopersville,
+        Michigan","Longitude":-85.92715,"Latitude":43.074},{"LocationName":"Detroit,
+        Michigan","CountryCode":"United States","CountrySubDivisionCode":"Michigan","CityName":"Detroit,
+        Michigan","Longitude":-83.0479,"Latitude":42.3317},{"LocationName":"East Lansing,
+        Michigan","CountryCode":"United States","CountrySubDivisionCode":"Michigan","CityName":"East
+        Lansing, Michigan","Longitude":-84.48384,"Latitude":42.7374954},{"LocationName":"Escanaba,
+        Michigan","CountryCode":"United States","CountrySubDivisionCode":"Michigan","CityName":"Escanaba,
+        Michigan","Longitude":-87.07976,"Latitude":45.7452164},{"LocationName":"Flint,
+        Michigan","CountryCode":"United States","CountrySubDivisionCode":"Michigan","CityName":"Flint,
+        Michigan","Longitude":-83.68602,"Latitude":43.010746},{"LocationName":"Grand
+        Rapids, Michigan","CountryCode":"United States","CountrySubDivisionCode":"Michigan","CityName":"Grand
+        Rapids, Michigan","Longitude":-85.67118,"Latitude":42.96641},{"LocationName":"Hillsdale,
+        Michigan","CountryCode":"United States","CountrySubDivisionCode":"Michigan","CityName":"Hillsdale,
+        Michigan","Longitude":-84.63184,"Latitude":41.9229164},{"LocationName":"Holland,
+        Michigan","CountryCode":"United States","CountrySubDivisionCode":"Michigan","CityName":"Holland,
+        Michigan","Longitude":-86.10175,"Latitude":42.77309},{"LocationName":"Hudsonville,
+        Michigan","CountryCode":"United States","CountrySubDivisionCode":"Michigan","CityName":"Hudsonville,
+        Michigan","Longitude":-85.86367,"Latitude":42.8659172},{"LocationName":"Kalamazoo,
+        Michigan","CountryCode":"United States","CountrySubDivisionCode":"Michigan","CityName":"Kalamazoo,
+        Michigan","Longitude":-85.60111,"Latitude":42.2924347},{"LocationName":"Middleville,
+        Michigan","CountryCode":"United States","CountrySubDivisionCode":"Michigan","CityName":"Middleville,
+        Michigan","Longitude":-85.47003,"Latitude":42.71056},{"LocationName":"Plainwell,
+        Michigan","CountryCode":"United States","CountrySubDivisionCode":"Michigan","CityName":"Plainwell,
+        Michigan","Longitude":-85.63988,"Latitude":42.4427948},{"LocationName":"Saranac,
+        Michigan","CountryCode":"United States","CountrySubDivisionCode":"Michigan","CityName":"Saranac,
+        Michigan","Longitude":-85.21192,"Latitude":42.93122},{"LocationName":"Union
+        City, Michigan","CountryCode":"United States","CountrySubDivisionCode":"Michigan","CityName":"Union
+        City, Michigan","Longitude":-85.1338959,"Latitude":42.0654449},{"LocationName":"Wyoming,
+        Michigan","CountryCode":"United States","CountrySubDivisionCode":"Michigan","CityName":"Wyoming,
+        Michigan","Longitude":-85.6933,"Latitude":42.9134},{"LocationName":"Yale,
+        Michigan","CountryCode":"United States","CountrySubDivisionCode":"Michigan","CityName":"Yale,
+        Michigan","Longitude":-82.79835,"Latitude":43.1308365},{"LocationName":"Austin,
+        Minnesota","CountryCode":"United States","CountrySubDivisionCode":"Minnesota","CityName":"Austin,
+        Minnesota","Longitude":-92.9723358,"Latitude":43.66659},{"LocationName":"Buffalo
+        Lake, Minnesota","CountryCode":"United States","CountrySubDivisionCode":"Minnesota","CityName":"Buffalo
+        Lake, Minnesota","Longitude":-94.61786,"Latitude":44.7332954},{"LocationName":"Butterfield,
+        Minnesota","CountryCode":"United States","CountrySubDivisionCode":"Minnesota","CityName":"Butterfield,
+        Minnesota","Longitude":-94.79647,"Latitude":43.9587135},{"LocationName":"Cannon
+        Falls, Minnesota","CountryCode":"United States","CountrySubDivisionCode":"Minnesota","CityName":"Cannon
+        Falls, Minnesota","Longitude":-92.90574,"Latitude":44.50763},{"LocationName":"Cold
+        Spring, Minnesota","CountryCode":"United States","CountrySubDivisionCode":"Minnesota","CityName":"Cold
+        Spring, Minnesota","Longitude":-94.429,"Latitude":45.4553},{"LocationName":"Dawson,
+        Minnesota","CountryCode":"United States","CountrySubDivisionCode":"Minnesota","CityName":"Dawson,
+        Minnesota","Longitude":-96.05467,"Latitude":44.9293861},{"LocationName":"Faribault,
+        Minnesota","CountryCode":"United States","CountrySubDivisionCode":"Minnesota","CityName":"Faribault,
+        Minnesota","Longitude":-93.27538,"Latitude":44.2946968},{"LocationName":"Frazee,
+        Minnesota","CountryCode":"United States","CountrySubDivisionCode":"Minnesota","CityName":"Frazee,
+        Minnesota","Longitude":-95.7000961,"Latitude":46.7284279},{"LocationName":"Glencoe,
+        Minnesota","CountryCode":"United States","CountrySubDivisionCode":"Minnesota","CityName":"Glencoe,
+        Minnesota","Longitude":-94.15379,"Latitude":44.77204},{"LocationName":"Lakeville,
+        Minnesota","CountryCode":"United States","CountrySubDivisionCode":"Minnesota","CityName":"Lakeville,
+        Minnesota","Longitude":-93.24274,"Latitude":44.6570168},{"LocationName":"Lindstrom,
+        Minnesota","CountryCode":"United States","CountrySubDivisionCode":"Minnesota","CityName":"Lindstrom,
+        Minnesota","Longitude":-92.84577,"Latitude":45.38981},{"LocationName":"Long
+        Prairie, Minnesota","CountryCode":"United States","CountrySubDivisionCode":"Minnesota","CityName":"Long
+        Prairie, Minnesota","Longitude":-94.8668,"Latitude":45.972},{"LocationName":"Marshall,
+        Minnesota","CountryCode":"United States","CountrySubDivisionCode":"Minnesota","CityName":"Marshall,
+        Minnesota","Longitude":-95.79167,"Latitude":44.4490128},{"LocationName":"Melrose,
+        Minnesota","CountryCode":"United States","CountrySubDivisionCode":"Minnesota","CityName":"Melrose,
+        Minnesota","Longitude":-94.81103,"Latitude":45.67488},{"LocationName":"Minneapolis,
+        Minnesota","CountryCode":"United States","CountrySubDivisionCode":"Minnesota","CityName":"Minneapolis,
+        Minnesota","Longitude":-93.26493,"Latitude":44.9790344},{"LocationName":"Northfield,
+        Minnesota","CountryCode":"United States","CountrySubDivisionCode":"Minnesota","CityName":"Northfield,
+        Minnesota","Longitude":-93.15376,"Latitude":44.4496},{"LocationName":"Pelican
+        Rapids, Minnesota","CountryCode":"United States","CountrySubDivisionCode":"Minnesota","CityName":"Pelican
+        Rapids, Minnesota","Longitude":-96.08355,"Latitude":46.57035},{"LocationName":"Rochester,
+        Minnesota","CountryCode":"United States","CountrySubDivisionCode":"Minnesota","CityName":"Rochester,
+        Minnesota","Longitude":-92.45977,"Latitude":44.01925},{"LocationName":"Roseville,
+        Minnesota","CountryCode":"United States","CountrySubDivisionCode":"Minnesota","CityName":"Roseville,
+        Minnesota","Longitude":-93.1483841,"Latitude":45.02146},{"LocationName":"Saint
+        Cloud, Minnesota","CountryCode":"United States","CountrySubDivisionCode":"Minnesota","CityName":"Saint
+        Cloud, Minnesota","Longitude":-94.1830139,"Latitude":45.5670662},{"LocationName":"South
+        Saint Paul, Minnesota","CountryCode":"United States","CountrySubDivisionCode":"Minnesota","CityName":"South
+        Saint Paul, Minnesota","Longitude":-93.0417,"Latitude":44.8877335},{"LocationName":"Sturgeon
+        Lake, Minnesota","CountryCode":"United States","CountrySubDivisionCode":"Minnesota","CityName":"Sturgeon
+        Lake, Minnesota","Longitude":-92.822876,"Latitude":46.38134},{"LocationName":"Thief
+        River Falls, Minnesota","CountryCode":"United States","CountrySubDivisionCode":"Minnesota","CityName":"Thief
+        River Falls, Minnesota","Longitude":-96.1808,"Latitude":48.1191},{"LocationName":"Willmar,
+        Minnesota","CountryCode":"United States","CountrySubDivisionCode":"Minnesota","CityName":"Willmar,
+        Minnesota","Longitude":-95.0545,"Latitude":45.1206436},{"LocationName":"Windom,
+        Minnesota","CountryCode":"United States","CountrySubDivisionCode":"Minnesota","CityName":"Windom,
+        Minnesota","Longitude":-95.11492,"Latitude":43.8648262},{"LocationName":"Worthington,
+        Minnesota","CountryCode":"United States","CountrySubDivisionCode":"Minnesota","CityName":"Worthington,
+        Minnesota","Longitude":-95.61647,"Latitude":43.63103},{"LocationName":"Alma,
+        Missouri","CountryCode":"United States","CountrySubDivisionCode":"Missouri","CityName":"Alma,
+        Missouri","Longitude":-93.54973,"Latitude":39.10555},{"LocationName":"California,
+        Missouri","CountryCode":"United States","CountrySubDivisionCode":"Missouri","CityName":"California,
+        Missouri","Longitude":-92.5663,"Latitude":38.63579},{"LocationName":"Carthage,
+        Missouri","CountryCode":"United States","CountrySubDivisionCode":"Missouri","CityName":"Carthage,
+        Missouri","Longitude":-94.314,"Latitude":37.17675},{"LocationName":"Cassville,
+        Missouri","CountryCode":"United States","CountrySubDivisionCode":"Missouri","CityName":"Cassville,
+        Missouri","Longitude":-93.86692,"Latitude":36.6812172},{"LocationName":"Chillicothe,
+        Missouri","CountryCode":"United States","CountrySubDivisionCode":"Missouri","CityName":"Chillicothe,
+        Missouri","Longitude":-93.55362,"Latitude":39.79022},{"LocationName":"Columbia,
+        Missouri","CountryCode":"United States","CountrySubDivisionCode":"Missouri","CityName":"Columbia,
+        Missouri","Longitude":-92.33416,"Latitude":38.9521751},{"LocationName":"Dexter,
+        Missouri","CountryCode":"United States","CountrySubDivisionCode":"Missouri","CityName":"Dexter,
+        Missouri","Longitude":-89.95835,"Latitude":36.7995949},{"LocationName":"Jackson,
+        Missouri","CountryCode":"United States","CountrySubDivisionCode":"Missouri","CityName":"Jackson,
+        Missouri","Longitude":-89.6673,"Latitude":37.3835},{"LocationName":"Macon,
+        Missouri","CountryCode":"United States","CountrySubDivisionCode":"Missouri","CityName":"Macon,
+        Missouri","Longitude":-92.4652557,"Latitude":39.74058},{"LocationName":"Milan,
+        Missouri","CountryCode":"United States","CountrySubDivisionCode":"Missouri","CityName":"Milan,
+        Missouri","Longitude":-93.12601,"Latitude":40.20209},{"LocationName":"Monett,
+        Missouri","CountryCode":"United States","CountrySubDivisionCode":"Missouri","CityName":"Monett,
+        Missouri","Longitude":-93.9276047,"Latitude":36.92048},{"LocationName":"Noel,
+        Missouri","CountryCode":"United States","CountrySubDivisionCode":"Missouri","CityName":"Noel,
+        Missouri","Longitude":-94.4835739,"Latitude":36.5448456},{"LocationName":"Poplar
+        Bluff, Missouri","CountryCode":"United States","CountrySubDivisionCode":"Missouri","CityName":"Poplar
+        Bluff, Missouri","Longitude":-90.39327,"Latitude":36.75698},{"LocationName":"Saint
+        Joseph, Missouri","CountryCode":"United States","CountrySubDivisionCode":"Missouri","CityName":"Saint
+        Joseph, Missouri","Longitude":-94.83068,"Latitude":39.7793732},{"LocationName":"Sedalia,
+        Missouri","CountryCode":"United States","CountrySubDivisionCode":"Missouri","CityName":"Sedalia,
+        Missouri","Longitude":-93.2281,"Latitude":38.7108},{"LocationName":"South
+        West City, Missouri","CountryCode":"United States","CountrySubDivisionCode":"Missouri","CityName":"South
+        West City, Missouri","Longitude":-94.61143,"Latitude":36.51351},{"LocationName":"Springfield,
+        Missouri","CountryCode":"United States","CountrySubDivisionCode":"Missouri","CityName":"Springfield,
+        Missouri","Longitude":-93.2915649,"Latitude":37.2089767},{"LocationName":"Washington,
+        Missouri","CountryCode":"United States","CountrySubDivisionCode":"Missouri","CityName":"Washington,
+        Missouri","Longitude":-91.0011,"Latitude":38.5535},{"LocationName":"Saipan,
+        Mariana Island, Northern Mariana Islands","CountryCode":"United States","CountrySubDivisionCode":"Northern
+        Mariana Islands","CityName":"Saipan, Mariana Island, Northern Mariana Islands","Longitude":145.7641,"Latitude":15.192},{"LocationName":"Bay
+        Springs, Mississippi","CountryCode":"United States","CountrySubDivisionCode":"Mississippi","CityName":"Bay
+        Springs, Mississippi","Longitude":-89.28872,"Latitude":31.9828758},{"LocationName":"Canton,
+        Mississippi","CountryCode":"United States","CountrySubDivisionCode":"Mississippi","CityName":"Canton,
+        Mississippi","Longitude":-90.03478,"Latitude":32.6126},{"LocationName":"Carthage,
+        Mississippi","CountryCode":"United States","CountrySubDivisionCode":"Mississippi","CityName":"Carthage,
+        Mississippi","Longitude":-89.538,"Latitude":32.7455},{"LocationName":"Collins,
+        Mississippi","CountryCode":"United States","CountrySubDivisionCode":"Mississippi","CityName":"Collins,
+        Mississippi","Longitude":-89.55755,"Latitude":31.6433945},{"LocationName":"Forest,
+        Mississippi","CountryCode":"United States","CountrySubDivisionCode":"Mississippi","CityName":"Forest,
+        Mississippi","Longitude":-89.47541,"Latitude":32.36419},{"LocationName":"Hattiesburg,
+        Mississippi","CountryCode":"United States","CountrySubDivisionCode":"Mississippi","CityName":"Hattiesburg,
+        Mississippi","Longitude":-89.29072,"Latitude":31.3273582},{"LocationName":"Hazlehurst,
+        Mississippi","CountryCode":"United States","CountrySubDivisionCode":"Mississippi","CityName":"Hazlehurst,
+        Mississippi","Longitude":-90.394,"Latitude":31.8597546},{"LocationName":"Jackson,
+        Mississippi","CountryCode":"United States","CountrySubDivisionCode":"Mississippi","CityName":"Jackson,
+        Mississippi","Longitude":-90.18049,"Latitude":32.29869},{"LocationName":"Laurel,
+        Mississippi","CountryCode":"United States","CountrySubDivisionCode":"Mississippi","CityName":"Laurel,
+        Mississippi","Longitude":-89.13518,"Latitude":31.69679},{"LocationName":"Morton,
+        Mississippi","CountryCode":"United States","CountrySubDivisionCode":"Mississippi","CityName":"Morton,
+        Mississippi","Longitude":-89.65535,"Latitude":32.3524857},{"LocationName":"Moselle,
+        Mississippi","CountryCode":"United States","CountrySubDivisionCode":"Mississippi","CityName":"Moselle,
+        Mississippi","Longitude":-89.2789,"Latitude":31.50517},{"LocationName":"Ridgeland,
+        Mississippi","CountryCode":"United States","CountrySubDivisionCode":"Mississippi","CityName":"Ridgeland,
+        Mississippi","Longitude":-90.1411057,"Latitude":32.42756},{"LocationName":"Sebastopol,
+        Mississippi","CountryCode":"United States","CountrySubDivisionCode":"Mississippi","CityName":"Sebastopol,
+        Mississippi","Longitude":-89.33495,"Latitude":32.5728531},{"LocationName":"Summit,
+        Mississippi","CountryCode":"United States","CountrySubDivisionCode":"Mississippi","CityName":"Summit,
+        Mississippi","Longitude":-90.4681,"Latitude":31.2872},{"LocationName":"Belgrade,
+        Montana","CountryCode":"United States","CountrySubDivisionCode":"Montana","CityName":"Belgrade,
+        Montana","Longitude":-111.178,"Latitude":45.7765},{"LocationName":"Billings,
+        Montana","CountryCode":"United States","CountrySubDivisionCode":"Montana","CityName":"Billings,
+        Montana","Longitude":-108.505577,"Latitude":45.7837524},{"LocationName":"Butte,
+        Montana","CountryCode":"United States","CountrySubDivisionCode":"Montana","CityName":"Butte,
+        Montana","Longitude":-112.520889,"Latitude":46.0017548},{"LocationName":"Columbus,
+        Montana","CountryCode":"United States","CountrySubDivisionCode":"Montana","CityName":"Columbus,
+        Montana","Longitude":-109.24794,"Latitude":45.6363945},{"LocationName":"Great
+        Falls, Montana","CountryCode":"United States","CountrySubDivisionCode":"Montana","CityName":"Great
+        Falls, Montana","Longitude":-111.306076,"Latitude":47.5071449},{"LocationName":"Kalispell,
+        Montana","CountryCode":"United States","CountrySubDivisionCode":"Montana","CityName":"Kalispell,
+        Montana","Longitude":-114.3149,"Latitude":48.20164},{"LocationName":"Miles
+        City, Montana","CountryCode":"United States","CountrySubDivisionCode":"Montana","CityName":"Miles
+        City, Montana","Longitude":-105.848671,"Latitude":46.40672},{"LocationName":"Sweet
+        Grass, Montana","CountryCode":"United States","CountrySubDivisionCode":"Montana","CityName":"Sweet
+        Grass, Montana","Longitude":-111.961182,"Latitude":48.9943962},{"LocationName":"Asheboro,
+        North Carolina","CountryCode":"United States","CountrySubDivisionCode":"North
+        Carolina","CityName":"Asheboro, North Carolina","Longitude":-79.81351,"Latitude":35.70861},{"LocationName":"Clinton,
+        North Carolina","CountryCode":"United States","CountrySubDivisionCode":"North
+        Carolina","CityName":"Clinton, North Carolina","Longitude":-78.3222,"Latitude":34.9983},{"LocationName":"Dobson,
+        North Carolina","CountryCode":"United States","CountrySubDivisionCode":"North
+        Carolina","CityName":"Dobson, North Carolina","Longitude":-80.7227859,"Latitude":36.39612},{"LocationName":"Dudley,
+        North Carolina","CountryCode":"United States","CountrySubDivisionCode":"North
+        Carolina","CityName":"Dudley, North Carolina","Longitude":-78.0425,"Latitude":35.26646},{"LocationName":"Kinston,
+        North Carolina","CountryCode":"United States","CountrySubDivisionCode":"North
+        Carolina","CityName":"Kinston, North Carolina","Longitude":-77.5818,"Latitude":35.2687},{"LocationName":"Lewiston,
+        North Carolina","CountryCode":"United States","CountrySubDivisionCode":"North
+        Carolina","CityName":"Lewiston, North Carolina","Longitude":-77.1697,"Latitude":36.11484},{"LocationName":"Lumber
+        Bridge, North Carolina","CountryCode":"United States","CountrySubDivisionCode":"North
+        Carolina","CityName":"Lumber Bridge, North Carolina","Longitude":-79.07211,"Latitude":34.88876},{"LocationName":"Marshville,
+        North Carolina","CountryCode":"United States","CountrySubDivisionCode":"North
+        Carolina","CityName":"Marshville, North Carolina","Longitude":-80.36843,"Latitude":34.9876633},{"LocationName":"Monroe,
+        North Carolina","CountryCode":"United States","CountrySubDivisionCode":"North
+        Carolina","CityName":"Monroe, North Carolina","Longitude":-80.5489,"Latitude":34.9826},{"LocationName":"Morganton,
+        North Carolina","CountryCode":"United States","CountrySubDivisionCode":"North
+        Carolina","CityName":"Morganton, North Carolina","Longitude":-81.68586,"Latitude":35.7468},{"LocationName":"Mount
+        Olive, North Carolina","CountryCode":"United States","CountrySubDivisionCode":"North
+        Carolina","CityName":"Mount Olive, North Carolina","Longitude":-78.06844,"Latitude":35.19132},{"LocationName":"Rockingham,
+        North Carolina","CountryCode":"United States","CountrySubDivisionCode":"North
+        Carolina","CityName":"Rockingham, North Carolina","Longitude":-79.77406,"Latitude":34.93583},{"LocationName":"Rose
+        Hill, North Carolina","CountryCode":"United States","CountrySubDivisionCode":"North
+        Carolina","CityName":"Rose Hill, North Carolina","Longitude":-78.02322,"Latitude":34.8287048},{"LocationName":"Saint
+        Pauls, North Carolina","CountryCode":"United States","CountrySubDivisionCode":"North
+        Carolina","CityName":"Saint Pauls, North Carolina","Longitude":-78.9754,"Latitude":34.8092461},{"LocationName":"Sanford,
+        North Carolina","CountryCode":"United States","CountrySubDivisionCode":"North
+        Carolina","CityName":"Sanford, North Carolina","Longitude":-79.1593246,"Latitude":35.4662552},{"LocationName":"Siler
+        City, North Carolina","CountryCode":"United States","CountrySubDivisionCode":"North
+        Carolina","CityName":"Siler City, North Carolina","Longitude":-79.46249,"Latitude":35.7238541},{"LocationName":"Tar
+        Heel, North Carolina","CountryCode":"United States","CountrySubDivisionCode":"North
+        Carolina","CityName":"Tar Heel, North Carolina","Longitude":-78.78964,"Latitude":34.73262},{"LocationName":"Teachey,
+        North Carolina","CountryCode":"United States","CountrySubDivisionCode":"North
+        Carolina","CityName":"Teachey, North Carolina","Longitude":-78.00288,"Latitude":34.770443},{"LocationName":"Warsaw,
+        North Carolina","CountryCode":"United States","CountrySubDivisionCode":"North
+        Carolina","CityName":"Warsaw, North Carolina","Longitude":-78.09252,"Latitude":34.9991035},{"LocationName":"Wilkesboro,
+        North Carolina","CountryCode":"United States","CountrySubDivisionCode":"North
+        Carolina","CityName":"Wilkesboro, North Carolina","Longitude":-81.15272,"Latitude":36.1481361},{"LocationName":"Bismarck,
+        North Dakota","CountryCode":"United States","CountrySubDivisionCode":"North
+        Dakota","CityName":"Bismarck, North Dakota","Longitude":-100.77932,"Latitude":46.80537},{"LocationName":"Fargo,
+        North Dakota","CountryCode":"United States","CountrySubDivisionCode":"North
+        Dakota","CityName":"Fargo, North Dakota","Longitude":-96.78177,"Latitude":46.87591},{"LocationName":"Luverne,
+        North Dakota","CountryCode":"United States","CountrySubDivisionCode":"North
+        Dakota","CityName":"Luverne, North Dakota","Longitude":-97.94015,"Latitude":47.2546},{"LocationName":"Minot,
+        North Dakota","CountryCode":"United States","CountrySubDivisionCode":"North
+        Dakota","CityName":"Minot, North Dakota","Longitude":-101.296,"Latitude":48.2361},{"LocationName":"New
+        Rockford, North Dakota","CountryCode":"United States","CountrySubDivisionCode":"North
+        Dakota","CityName":"New Rockford, North Dakota","Longitude":-99.12564,"Latitude":47.6806335},{"LocationName":"Columbus,
+        Nebraska","CountryCode":"United States","CountrySubDivisionCode":"Nebraska","CityName":"Columbus,
+        Nebraska","Longitude":-97.3718,"Latitude":41.4309349},{"LocationName":"Crete,
+        Nebraska","CountryCode":"United States","CountrySubDivisionCode":"Nebraska","CityName":"Crete,
+        Nebraska","Longitude":-96.96208,"Latitude":40.6252251},{"LocationName":"Dakota
+        City, Nebraska","CountryCode":"United States","CountrySubDivisionCode":"Nebraska","CityName":"Dakota
+        City, Nebraska","Longitude":-96.41941,"Latitude":42.41523},{"LocationName":"Fremont,
+        Nebraska","CountryCode":"United States","CountrySubDivisionCode":"Nebraska","CityName":"Fremont,
+        Nebraska","Longitude":-96.4985657,"Latitude":41.43441},{"LocationName":"Gibbon,
+        Nebraska","CountryCode":"United States","CountrySubDivisionCode":"Nebraska","CityName":"Gibbon,
+        Nebraska","Longitude":-98.84593,"Latitude":40.7489166},{"LocationName":"Gordon,
+        Nebraska","CountryCode":"United States","CountrySubDivisionCode":"Nebraska","CityName":"Gordon,
+        Nebraska","Longitude":-102.203178,"Latitude":42.81416},{"LocationName":"Grand
+        Island, Nebraska","CountryCode":"United States","CountrySubDivisionCode":"Nebraska","CityName":"Grand
+        Island, Nebraska","Longitude":-98.3399048,"Latitude":40.92474},{"LocationName":"Hastings,
+        Nebraska","CountryCode":"United States","CountrySubDivisionCode":"Nebraska","CityName":"Hastings,
+        Nebraska","Longitude":-98.39237,"Latitude":40.58565},{"LocationName":"Lexington,
+        Nebraska","CountryCode":"United States","CountrySubDivisionCode":"Nebraska","CityName":"Lexington,
+        Nebraska","Longitude":-99.73949,"Latitude":40.7777443},{"LocationName":"Lincoln,
+        Nebraska","CountryCode":"United States","CountrySubDivisionCode":"Nebraska","CityName":"Lincoln,
+        Nebraska","Longitude":-96.70774,"Latitude":40.81362},{"LocationName":"Madison,
+        Nebraska","CountryCode":"United States","CountrySubDivisionCode":"Nebraska","CityName":"Madison,
+        Nebraska","Longitude":-97.45502,"Latitude":41.8284149},{"LocationName":"Omaha,
+        Nebraska","CountryCode":"United States","CountrySubDivisionCode":"Nebraska","CityName":"Omaha,
+        Nebraska","Longitude":-95.94007,"Latitude":41.26067},{"LocationName":"Schuyler,
+        Nebraska","CountryCode":"United States","CountrySubDivisionCode":"Nebraska","CityName":"Schuyler,
+        Nebraska","Longitude":-97.05965,"Latitude":41.44684},{"LocationName":"Tecumseh,
+        Nebraska","CountryCode":"United States","CountrySubDivisionCode":"Nebraska","CityName":"Tecumseh,
+        Nebraska","Longitude":-96.19499,"Latitude":40.3681335},{"LocationName":"Madbury,
+        New Hampshire","CountryCode":"United States","CountrySubDivisionCode":"New
+        Hampshire","CityName":"Madbury, New Hampshire","Longitude":-70.96147,"Latitude":43.1789055},{"LocationName":"Manchester,
+        New Hampshire","CountryCode":"United States","CountrySubDivisionCode":"New
+        Hampshire","CityName":"Manchester, New Hampshire","Longitude":-71.46309,"Latitude":42.9911766},{"LocationName":"North
+        Haverhill, New Hampshire","CountryCode":"United States","CountrySubDivisionCode":"New
+        Hampshire","CityName":"North Haverhill, New Hampshire","Longitude":-72.0255,"Latitude":44.08646},{"LocationName":"Green
+        Village, New Jersey","CountryCode":"United States","CountrySubDivisionCode":"New
+        Jersey","CityName":"Green Village, New Jersey","Longitude":-74.43915,"Latitude":40.7412071},{"LocationName":"Monroeville,
+        New Jersey","CountryCode":"United States","CountrySubDivisionCode":"New Jersey","CityName":"Monroeville,
+        New Jersey","Longitude":-75.16963,"Latitude":39.6308556},{"LocationName":"Newark,
+        New Jersey","CountryCode":"United States","CountrySubDivisionCode":"New Jersey","CityName":"Newark,
+        New Jersey","Longitude":-74.17419,"Latitude":40.73197},{"LocationName":"Newton,
+        New Jersey","CountryCode":"United States","CountrySubDivisionCode":"New Jersey","CityName":"Newton,
+        New Jersey","Longitude":-74.7532043,"Latitude":41.058567},{"LocationName":"Norma,
+        New Jersey","CountryCode":"United States","CountrySubDivisionCode":"New Jersey","CityName":"Norma,
+        New Jersey","Longitude":-75.08806,"Latitude":39.49542},{"LocationName":"Paterson,
+        New Jersey","CountryCode":"United States","CountrySubDivisionCode":"New Jersey","CityName":"Paterson,
+        New Jersey","Longitude":-74.1711,"Latitude":40.9165},{"LocationName":"Trenton,
+        New Jersey","CountryCode":"United States","CountrySubDivisionCode":"New Jersey","CityName":"Trenton,
+        New Jersey","Longitude":-74.7594,"Latitude":40.2179},{"LocationName":"Vineland,
+        New Jersey","CountryCode":"United States","CountrySubDivisionCode":"New Jersey","CityName":"Vineland,
+        New Jersey","Longitude":-75.0261,"Latitude":39.4862},{"LocationName":"Moriarty,
+        New Mexico","CountryCode":"United States","CountrySubDivisionCode":"New Mexico","CityName":"Moriarty,
+        New Mexico","Longitude":-106.045151,"Latitude":35.0066528},{"LocationName":"Roswell,
+        New Mexico","CountryCode":"United States","CountrySubDivisionCode":"New Mexico","CityName":"Roswell,
+        New Mexico","Longitude":-104.522751,"Latitude":33.39482},{"LocationName":"Fallon,
+        Nevada","CountryCode":"United States","CountrySubDivisionCode":"Nevada","CityName":"Fallon,
+        Nevada","Longitude":-118.778,"Latitude":39.4749},{"LocationName":"Altamont,
+        New York","CountryCode":"United States","CountrySubDivisionCode":"New York","CityName":"Altamont,
+        New York","Longitude":-74.03386,"Latitude":42.70596},{"LocationName":"Argyle,
+        New York","CountryCode":"United States","CountrySubDivisionCode":"New York","CityName":"Argyle,
+        New York","Longitude":-73.49068,"Latitude":43.23541},{"LocationName":"Brasher
+        Falls, New York","CountryCode":"United States","CountrySubDivisionCode":"New
+        York","CityName":"Brasher Falls, New York","Longitude":-74.774826,"Latitude":44.8059578},{"LocationName":"Brightwaters,
+        New York","CountryCode":"United States","CountrySubDivisionCode":"New York","CityName":"Brightwaters,
+        New York","Longitude":-73.2702255,"Latitude":40.73035},{"LocationName":"Canaseraga,
+        New York","CountryCode":"United States","CountrySubDivisionCode":"New York","CityName":"Canaseraga,
+        New York","Longitude":-77.77841,"Latitude":42.46127},{"LocationName":"Croghan,
+        New York","CountryCode":"United States","CountrySubDivisionCode":"New York","CityName":"Croghan,
+        New York","Longitude":-75.39215,"Latitude":43.89675},{"LocationName":"Monroe,
+        New York","CountryCode":"United States","CountrySubDivisionCode":"New York","CityName":"Monroe,
+        New York","Longitude":-74.1871262,"Latitude":41.328125},{"LocationName":"New
+        York, New York","CountryCode":"United States","CountrySubDivisionCode":"New
+        York","CityName":"New York, New York","Longitude":-74.0071,"Latitude":40.7146},{"LocationName":"Newark
+        Valley, New York","CountryCode":"United States","CountrySubDivisionCode":"New
+        York","CityName":"Newark Valley, New York","Longitude":-76.1835,"Latitude":42.2241821},{"LocationName":"Ontario,
+        New York","CountryCode":"United States","CountrySubDivisionCode":"New York","CityName":"Ontario,
+        New York","Longitude":-77.289,"Latitude":43.2226},{"LocationName":"Rome, New
+        York","CountryCode":"United States","CountrySubDivisionCode":"New York","CityName":"Rome,
+        New York","Longitude":-75.45336,"Latitude":43.215168},{"LocationName":"South
+        Fallsburg, New York","CountryCode":"United States","CountrySubDivisionCode":"New
+        York","CityName":"South Fallsburg, New York","Longitude":-74.63401,"Latitude":41.70651},{"LocationName":"Stone
+        Ridge, New York","CountryCode":"United States","CountrySubDivisionCode":"New
+        York","CityName":"Stone Ridge, New York","Longitude":-74.14095,"Latitude":41.85103},{"LocationName":"Strykersville,
+        New York","CountryCode":"United States","CountrySubDivisionCode":"New York","CityName":"Strykersville,
+        New York","Longitude":-78.4480057,"Latitude":42.70145},{"LocationName":"West
+        Valley, New York","CountryCode":"United States","CountrySubDivisionCode":"New
+        York","CityName":"West Valley, New York","Longitude":-78.61226,"Latitude":42.4046173},{"LocationName":"Whitehall,
+        New York","CountryCode":"United States","CountrySubDivisionCode":"New York","CityName":"Whitehall,
+        New York","Longitude":-73.4002,"Latitude":43.55003},{"LocationName":"Yaphank,
+        New York","CountryCode":"United States","CountrySubDivisionCode":"New York","CityName":"Yaphank,
+        New York","Longitude":-72.93421,"Latitude":40.8421631},{"LocationName":"Ashland,
+        Ohio","CountryCode":"United States","CountrySubDivisionCode":"Ohio","CityName":"Ashland,
+        Ohio","Longitude":-82.3153,"Latitude":40.8686},{"LocationName":"Bowling Green,
+        Ohio","CountryCode":"United States","CountrySubDivisionCode":"Ohio","CityName":"Bowling
+        Green, Ohio","Longitude":-83.65042,"Latitude":41.37546},{"LocationName":"Canton,
+        Ohio","CountryCode":"United States","CountrySubDivisionCode":"Ohio","CityName":"Canton,
+        Ohio","Longitude":-81.3716,"Latitude":40.7978},{"LocationName":"Cincinnati,
+        Ohio","CountryCode":"United States","CountrySubDivisionCode":"Ohio","CityName":"Cincinnati,
+        Ohio","Longitude":-84.5041,"Latitude":39.1071},{"LocationName":"Columbus,
+        Ohio","CountryCode":"United States","CountrySubDivisionCode":"Ohio","CityName":"Columbus,
+        Ohio","Longitude":-83.00301,"Latitude":39.962},{"LocationName":"Creston, Ohio","CountryCode":"United
+        States","CountrySubDivisionCode":"Ohio","CityName":"Creston, Ohio","Longitude":-81.89366,"Latitude":40.98653},{"LocationName":"Dayton,
+        Ohio","CountryCode":"United States","CountrySubDivisionCode":"Ohio","CityName":"Dayton,
+        Ohio","Longitude":-84.1944,"Latitude":39.7591},{"LocationName":"Kidron, Ohio","CountryCode":"United
+        States","CountrySubDivisionCode":"Ohio","CityName":"Kidron, Ohio","Longitude":-81.74422,"Latitude":40.7412148},{"LocationName":"Saint
+        Henry, Ohio","CountryCode":"United States","CountrySubDivisionCode":"Ohio","CityName":"Saint
+        Henry, Ohio","Longitude":-84.6403351,"Latitude":40.417038},{"LocationName":"Sandusky,
+        Ohio","CountryCode":"United States","CountrySubDivisionCode":"Ohio","CityName":"Sandusky,
+        Ohio","Longitude":-82.7073746,"Latitude":41.44876},{"LocationName":"Wapakoneta,
+        Ohio","CountryCode":"United States","CountrySubDivisionCode":"Ohio","CityName":"Wapakoneta,
+        Ohio","Longitude":-84.1945343,"Latitude":40.5678825},{"LocationName":"Winesburg,
+        Ohio","CountryCode":"United States","CountrySubDivisionCode":"Ohio","CityName":"Winesburg,
+        Ohio","Longitude":-81.6943359,"Latitude":40.6165962},{"LocationName":"Xenia,
+        Ohio","CountryCode":"United States","CountrySubDivisionCode":"Ohio","CityName":"Xenia,
+        Ohio","Longitude":-83.92817,"Latitude":39.6850967},{"LocationName":"Broken
+        Bow, Oklahoma","CountryCode":"United States","CountrySubDivisionCode":"Oklahoma","CityName":"Broken
+        Bow, Oklahoma","Longitude":-94.73954,"Latitude":34.027916},{"LocationName":"Guymon,
+        Oklahoma","CountryCode":"United States","CountrySubDivisionCode":"Oklahoma","CityName":"Guymon,
+        Oklahoma","Longitude":-101.481567,"Latitude":36.6813354},{"LocationName":"Heavener,
+        Oklahoma","CountryCode":"United States","CountrySubDivisionCode":"Oklahoma","CityName":"Heavener,
+        Oklahoma","Longitude":-94.60251,"Latitude":34.8892441},{"LocationName":"Jay,
+        Oklahoma","CountryCode":"United States","CountrySubDivisionCode":"Oklahoma","CityName":"Jay,
+        Oklahoma","Longitude":-94.7974,"Latitude":36.4214},{"LocationName":"Miami,
+        Oklahoma","CountryCode":"United States","CountrySubDivisionCode":"Oklahoma","CityName":"Miami,
+        Oklahoma","Longitude":-94.8775,"Latitude":36.8741},{"LocationName":"Stillwater,
+        Oklahoma","CountryCode":"United States","CountrySubDivisionCode":"Oklahoma","CityName":"Stillwater,
+        Oklahoma","Longitude":-97.05866,"Latitude":36.1162643},{"LocationName":"Dayton,
+        Oregon","CountryCode":"United States","CountrySubDivisionCode":"Oregon","CityName":"Dayton,
+        Oregon","Longitude":-123.077225,"Latitude":45.219902},{"LocationName":"Elgin,
+        Oregon","CountryCode":"United States","CountrySubDivisionCode":"Oregon","CityName":"Elgin,
+        Oregon","Longitude":-117.917343,"Latitude":45.56519},{"LocationName":"Eugene,
+        Oregon","CountryCode":"United States","CountrySubDivisionCode":"Oregon","CityName":"Eugene,
+        Oregon","Longitude":-123.088921,"Latitude":44.04991},{"LocationName":"Klamath
+        Falls, Oregon","CountryCode":"United States","CountrySubDivisionCode":"Oregon","CityName":"Klamath
+        Falls, Oregon","Longitude":-121.782066,"Latitude":42.2238846},{"LocationName":"Portland,
+        Oregon","CountryCode":"United States","CountrySubDivisionCode":"Oregon","CityName":"Portland,
+        Oregon","Longitude":-122.675629,"Latitude":45.511795},{"LocationName":"Springfield,
+        Oregon","CountryCode":"United States","CountrySubDivisionCode":"Oregon","CityName":"Springfield,
+        Oregon","Longitude":-123.019554,"Latitude":44.0473328},{"LocationName":"Birdsboro,
+        Pennsylvania","CountryCode":"United States","CountrySubDivisionCode":"Pennsylvania","CityName":"Birdsboro,
+        Pennsylvania","Longitude":-75.8081,"Latitude":40.2654457},{"LocationName":"Bradenville,
+        Pennsylvania","CountryCode":"United States","CountrySubDivisionCode":"Pennsylvania","CityName":"Bradenville,
+        Pennsylvania","Longitude":-79.33927,"Latitude":40.3209152},{"LocationName":"Charleroi,
+        Pennsylvania","CountryCode":"United States","CountrySubDivisionCode":"Pennsylvania","CityName":"Charleroi,
+        Pennsylvania","Longitude":-79.8966,"Latitude":40.13651},{"LocationName":"Claysburg,
+        Pennsylvania","CountryCode":"United States","CountrySubDivisionCode":"Pennsylvania","CityName":"Claysburg,
+        Pennsylvania","Longitude":-78.45507,"Latitude":40.2921333},{"LocationName":"Dillsburg,
+        Pennsylvania","CountryCode":"United States","CountrySubDivisionCode":"Pennsylvania","CityName":"Dillsburg,
+        Pennsylvania","Longitude":-77.03525,"Latitude":40.1093063},{"LocationName":"Fredericksburg,
+        Pennsylvania","CountryCode":"United States","CountrySubDivisionCode":"Pennsylvania","CityName":"Fredericksburg,
+        Pennsylvania","Longitude":-76.43223,"Latitude":40.4442673},{"LocationName":"Gilbert,
+        Pennsylvania","CountryCode":"United States","CountrySubDivisionCode":"Pennsylvania","CityName":"Gilbert,
+        Pennsylvania","Longitude":-75.44047,"Latitude":40.91565},{"LocationName":"Girard,
+        Pennsylvania","CountryCode":"United States","CountrySubDivisionCode":"Pennsylvania","CityName":"Girard,
+        Pennsylvania","Longitude":-80.31541,"Latitude":42.0018044},{"LocationName":"Hamburg,
+        Pennsylvania","CountryCode":"United States","CountrySubDivisionCode":"Pennsylvania","CityName":"Hamburg,
+        Pennsylvania","Longitude":-75.9827347,"Latitude":40.5561333},{"LocationName":"Hatfield,
+        Pennsylvania","CountryCode":"United States","CountrySubDivisionCode":"Pennsylvania","CityName":"Hatfield,
+        Pennsylvania","Longitude":-75.2951,"Latitude":40.2768},{"LocationName":"Hazleton,
+        Pennsylvania","CountryCode":"United States","CountrySubDivisionCode":"Pennsylvania","CityName":"Hazleton,
+        Pennsylvania","Longitude":-75.97627,"Latitude":40.95462},{"LocationName":"Hegins,
+        Pennsylvania","CountryCode":"United States","CountrySubDivisionCode":"Pennsylvania","CityName":"Hegins,
+        Pennsylvania","Longitude":-76.49973,"Latitude":40.6513634},{"LocationName":"Kossuth,
+        Pennsylvania","CountryCode":"United States","CountrySubDivisionCode":"Pennsylvania","CityName":"Kossuth,
+        Pennsylvania","Longitude":-79.5764,"Latitude":41.2858925},{"LocationName":"Loganton,
+        Pennsylvania","CountryCode":"United States","CountrySubDivisionCode":"Pennsylvania","CityName":"Loganton,
+        Pennsylvania","Longitude":-77.30722,"Latitude":41.0360146},{"LocationName":"Middleburg,
+        Pennsylvania","CountryCode":"United States","CountrySubDivisionCode":"Pennsylvania","CityName":"Middleburg,
+        Pennsylvania","Longitude":-77.0460052,"Latitude":40.7917862},{"LocationName":"Mifflintown,
+        Pennsylvania","CountryCode":"United States","CountrySubDivisionCode":"Pennsylvania","CityName":"Mifflintown,
+        Pennsylvania","Longitude":-77.39664,"Latitude":40.57003},{"LocationName":"Moosic,
+        Pennsylvania","CountryCode":"United States","CountrySubDivisionCode":"Pennsylvania","CityName":"Moosic,
+        Pennsylvania","Longitude":-75.72818,"Latitude":41.35325},{"LocationName":"New
+        Holland, Pennsylvania","CountryCode":"United States","CountrySubDivisionCode":"Pennsylvania","CityName":"New
+        Holland, Pennsylvania","Longitude":-76.08585,"Latitude":40.1037941},{"LocationName":"New
+        Oxford, Pennsylvania","CountryCode":"United States","CountrySubDivisionCode":"Pennsylvania","CityName":"New
+        Oxford, Pennsylvania","Longitude":-77.05673,"Latitude":39.86363},{"LocationName":"Philadelphia,
+        Pennsylvania","CountryCode":"United States","CountrySubDivisionCode":"Pennsylvania","CityName":"Philadelphia,
+        Pennsylvania","Longitude":-75.16237,"Latitude":39.95227},{"LocationName":"Reading,
+        Pennsylvania","CountryCode":"United States","CountrySubDivisionCode":"Pennsylvania","CityName":"Reading,
+        Pennsylvania","Longitude":-75.92784,"Latitude":40.336586},{"LocationName":"Richlandtown,
+        Pennsylvania","CountryCode":"United States","CountrySubDivisionCode":"Pennsylvania","CityName":"Richlandtown,
+        Pennsylvania","Longitude":-75.3210754,"Latitude":40.4690361},{"LocationName":"Saxonburg,
+        Pennsylvania","CountryCode":"United States","CountrySubDivisionCode":"Pennsylvania","CityName":"Saxonburg,
+        Pennsylvania","Longitude":-79.8169,"Latitude":40.7541},{"LocationName":"Scranton,
+        Pennsylvania","CountryCode":"United States","CountrySubDivisionCode":"Pennsylvania","CityName":"Scranton,
+        Pennsylvania","Longitude":-75.6608,"Latitude":41.4101334},{"LocationName":"Souderton,
+        Pennsylvania","CountryCode":"United States","CountrySubDivisionCode":"Pennsylvania","CityName":"Souderton,
+        Pennsylvania","Longitude":-75.32932,"Latitude":40.3131371},{"LocationName":"Stevens,
+        Pennsylvania","CountryCode":"United States","CountrySubDivisionCode":"Pennsylvania","CityName":"Stevens,
+        Pennsylvania","Longitude":-76.1277,"Latitude":40.2161},{"LocationName":"Sunbury,
+        Pennsylvania","CountryCode":"United States","CountrySubDivisionCode":"Pennsylvania","CityName":"Sunbury,
+        Pennsylvania","Longitude":-76.7962,"Latitude":40.8628},{"LocationName":"Uniontown,
+        Pennsylvania","CountryCode":"United States","CountrySubDivisionCode":"Pennsylvania","CityName":"Uniontown,
+        Pennsylvania","Longitude":-79.72418,"Latitude":39.9021},{"LocationName":"Wyalusing,
+        Pennsylvania","CountryCode":"United States","CountrySubDivisionCode":"Pennsylvania","CityName":"Wyalusing,
+        Pennsylvania","Longitude":-76.26311,"Latitude":41.6658},{"LocationName":"Zullinger,
+        Pennsylvania","CountryCode":"United States","CountrySubDivisionCode":"Pennsylvania","CityName":"Zullinger,
+        Pennsylvania","Longitude":-77.62971,"Latitude":39.77009},{"LocationName":"Aibonito,
+        Puerto Rico","CountryCode":"United States","CountrySubDivisionCode":"Puerto
+        Rico","CityName":"Aibonito, Puerto Rico","Longitude":-66.265686,"Latitude":18.1398849},{"LocationName":"Arecibo,
+        Puerto Rico","CountryCode":"United States","CountrySubDivisionCode":"Puerto
+        Rico","CityName":"Arecibo, Puerto Rico","Longitude":-66.7157,"Latitude":18.4722},{"LocationName":"Guaynabo,
+        Puerto Rico","CountryCode":"United States","CountrySubDivisionCode":"Puerto
+        Rico","CityName":"Guaynabo, Puerto Rico","Longitude":-66.1105,"Latitude":18.3597},{"LocationName":"Yauco,
+        Puerto Rico","CountryCode":"United States","CountrySubDivisionCode":"Puerto
+        Rico","CityName":"Yauco, Puerto Rico","Longitude":-66.84844,"Latitude":18.0334},{"LocationName":"Batesburg-Leesville,
+        South Carolina","CountryCode":"United States","CountrySubDivisionCode":"South
+        Carolina","CityName":"Batesburg-Leesville, South Carolina","Longitude":-81.54737,"Latitude":33.90723},{"LocationName":"Dillon,
+        South Carolina","CountryCode":"United States","CountrySubDivisionCode":"South
+        Carolina","CityName":"Dillon, South Carolina","Longitude":-79.3708038,"Latitude":34.41709},{"LocationName":"Gaffney,
+        South Carolina","CountryCode":"United States","CountrySubDivisionCode":"South
+        Carolina","CityName":"Gaffney, South Carolina","Longitude":-81.64867,"Latitude":35.0736237},{"LocationName":"Greenville,
+        South Carolina","CountryCode":"United States","CountrySubDivisionCode":"South
+        Carolina","CityName":"Greenville, South Carolina","Longitude":-82.40022,"Latitude":34.84802},{"LocationName":"Greenwood,
+        South Carolina","CountryCode":"United States","CountrySubDivisionCode":"South
+        Carolina","CityName":"Greenwood, South Carolina","Longitude":-82.16074,"Latitude":34.1910477},{"LocationName":"Newberry,
+        South Carolina","CountryCode":"United States","CountrySubDivisionCode":"South
+        Carolina","CityName":"Newberry, South Carolina","Longitude":-81.61925,"Latitude":34.2745552},{"LocationName":"Sumter,
+        South Carolina","CountryCode":"United States","CountrySubDivisionCode":"South
+        Carolina","CityName":"Sumter, South Carolina","Longitude":-80.34236,"Latitude":33.92434},{"LocationName":"Ward,
+        South Carolina","CountryCode":"United States","CountrySubDivisionCode":"South
+        Carolina","CityName":"Ward, South Carolina","Longitude":-81.73448,"Latitude":33.8569},{"LocationName":"West
+        Columbia, South Carolina","CountryCode":"United States","CountrySubDivisionCode":"South
+        Carolina","CityName":"West Columbia, South Carolina","Longitude":-81.07328,"Latitude":33.98897},{"LocationName":"Aberdeen,
+        South Dakota","CountryCode":"United States","CountrySubDivisionCode":"South
+        Dakota","CityName":"Aberdeen, South Dakota","Longitude":-98.48733,"Latitude":45.45909},{"LocationName":"Howard,
+        South Dakota","CountryCode":"United States","CountrySubDivisionCode":"South
+        Dakota","CityName":"Howard, South Dakota","Longitude":-97.52651,"Latitude":44.008},{"LocationName":"Huron,
+        South Dakota","CountryCode":"United States","CountrySubDivisionCode":"South
+        Dakota","CityName":"Huron, South Dakota","Longitude":-98.21414,"Latitude":44.36385},{"LocationName":"Marion,
+        South Dakota","CountryCode":"United States","CountrySubDivisionCode":"South
+        Dakota","CityName":"Marion, South Dakota","Longitude":-97.26071,"Latitude":43.4262543},{"LocationName":"Pierre,
+        South Dakota","CountryCode":"United States","CountrySubDivisionCode":"South
+        Dakota","CityName":"Pierre, South Dakota","Longitude":-100.35,"Latitude":44.3689},{"LocationName":"Rapid
+        City, South Dakota","CountryCode":"United States","CountrySubDivisionCode":"South
+        Dakota","CityName":"Rapid City, South Dakota","Longitude":-103.230888,"Latitude":44.0811653},{"LocationName":"Sioux
+        Falls, South Dakota","CountryCode":"United States","CountrySubDivisionCode":"South
+        Dakota","CityName":"Sioux Falls, South Dakota","Longitude":-96.7313,"Latitude":43.5453},{"LocationName":"Sturgis,
+        South Dakota","CountryCode":"United States","CountrySubDivisionCode":"South
+        Dakota","CityName":"Sturgis, South Dakota","Longitude":-103.509,"Latitude":44.4149},{"LocationName":"Yankton,
+        South Dakota","CountryCode":"United States","CountrySubDivisionCode":"South
+        Dakota","CityName":"Yankton, South Dakota","Longitude":-97.3971,"Latitude":42.8718},{"LocationName":"Brighton,
+        Tennessee","CountryCode":"United States","CountrySubDivisionCode":"Tennessee","CityName":"Brighton,
+        Tennessee","Longitude":-89.7324,"Latitude":35.4896},{"LocationName":"Chapel
+        Hill, Tennessee","CountryCode":"United States","CountrySubDivisionCode":"Tennessee","CityName":"Chapel
+        Hill, Tennessee","Longitude":-86.6919,"Latitude":35.6314},{"LocationName":"Chattanooga,
+        Tennessee","CountryCode":"United States","CountrySubDivisionCode":"Tennessee","CityName":"Chattanooga,
+        Tennessee","Longitude":-85.3094254,"Latitude":35.0464325},{"LocationName":"College
+        Grove, Tennessee","CountryCode":"United States","CountrySubDivisionCode":"Tennessee","CityName":"College
+        Grove, Tennessee","Longitude":-86.66332,"Latitude":35.8027267},{"LocationName":"Cookeville,
+        Tennessee","CountryCode":"United States","CountrySubDivisionCode":"Tennessee","CityName":"Cookeville,
+        Tennessee","Longitude":-85.4998,"Latitude":36.16193},{"LocationName":"Greeneville,
+        Tennessee","CountryCode":"United States","CountrySubDivisionCode":"Tennessee","CityName":"Greeneville,
+        Tennessee","Longitude":-82.8312,"Latitude":36.1627},{"LocationName":"Kodak,
+        Tennessee","CountryCode":"United States","CountrySubDivisionCode":"Tennessee","CityName":"Kodak,
+        Tennessee","Longitude":-83.62647,"Latitude":35.97374},{"LocationName":"Lenoir
+        City, Tennessee","CountryCode":"United States","CountrySubDivisionCode":"Tennessee","CityName":"Lenoir
+        City, Tennessee","Longitude":-84.2653,"Latitude":35.7914},{"LocationName":"Memphis,
+        Tennessee","CountryCode":"United States","CountrySubDivisionCode":"Tennessee","CityName":"Memphis,
+        Tennessee","Longitude":-90.04893,"Latitude":35.14968},{"LocationName":"Morristown,
+        Tennessee","CountryCode":"United States","CountrySubDivisionCode":"Tennessee","CityName":"Morristown,
+        Tennessee","Longitude":-83.293045,"Latitude":36.21503},{"LocationName":"Nashville,
+        Tennessee","CountryCode":"United States","CountrySubDivisionCode":"Tennessee","CityName":"Nashville,
+        Tennessee","Longitude":-86.7783661,"Latitude":36.16778},{"LocationName":"Newbern,
+        Tennessee","CountryCode":"United States","CountrySubDivisionCode":"Tennessee","CityName":"Newbern,
+        Tennessee","Longitude":-89.26162,"Latitude":36.113224},{"LocationName":"Shelbyville,
+        Tennessee","CountryCode":"United States","CountrySubDivisionCode":"Tennessee","CityName":"Shelbyville,
+        Tennessee","Longitude":-86.45999,"Latitude":35.48303},{"LocationName":"Union
+        City, Tennessee","CountryCode":"United States","CountrySubDivisionCode":"Tennessee","CityName":"Union
+        City, Tennessee","Longitude":-89.05732,"Latitude":36.42378},{"LocationName":"Amarillo,
+        Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"Amarillo,
+        Texas","Longitude":-101.833893,"Latitude":35.2072563},{"LocationName":"Austin,
+        Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"Austin,
+        Texas","Longitude":-97.743,"Latitude":30.2676},{"LocationName":"Booker, Texas","CountryCode":"United
+        States","CountrySubDivisionCode":"Texas","CityName":"Booker, Texas","Longitude":-100.542046,"Latitude":36.4555359},{"LocationName":"Bryan,
+        Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"Bryan,
+        Texas","Longitude":-96.3704,"Latitude":30.6709},{"LocationName":"Cactus, Texas","CountryCode":"United
+        States","CountrySubDivisionCode":"Texas","CityName":"Cactus, Texas","Longitude":-102.005241,"Latitude":36.0495148},{"LocationName":"Carthage,
+        Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"Carthage,
+        Texas","Longitude":-94.3408661,"Latitude":32.16589},{"LocationName":"Center,
+        Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"Center,
+        Texas","Longitude":-94.1797256,"Latitude":31.796133},{"LocationName":"College
+        Station, Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"College
+        Station, Texas","Longitude":-96.3259,"Latitude":30.6205},{"LocationName":"Corpus
+        Christi, Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"Corpus
+        Christi, Texas","Longitude":-97.4035645,"Latitude":27.79635},{"LocationName":"Dallas,
+        Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"Dallas,
+        Texas","Longitude":-96.7954,"Latitude":32.7781563},{"LocationName":"Del Rio,
+        Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"Del
+        Rio, Texas","Longitude":-100.898,"Latitude":29.3662},{"LocationName":"Devine,
+        Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"Devine,
+        Texas","Longitude":-98.90537,"Latitude":29.14072},{"LocationName":"Dublin,
+        Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"Dublin,
+        Texas","Longitude":-98.34187,"Latitude":32.08507},{"LocationName":"El Paso,
+        Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"El
+        Paso, Texas","Longitude":-106.4874,"Latitude":31.7591},{"LocationName":"Fort
+        Hancock, Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"Fort
+        Hancock, Texas","Longitude":-105.844,"Latitude":31.2999},{"LocationName":"Fort
+        Worth, Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"Fort
+        Worth, Texas","Longitude":-97.32925,"Latitude":32.74863},{"LocationName":"Friona,
+        Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"Friona,
+        Texas","Longitude":-102.724426,"Latitude":34.6420135},{"LocationName":"Goldthwaite,
+        Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"Goldthwaite,
+        Texas","Longitude":-98.5680161,"Latitude":31.4508476},{"LocationName":"Hereford,
+        Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"Hereford,
+        Texas","Longitude":-102.4057,"Latitude":34.8121},{"LocationName":"Houston,
+        Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"Houston,
+        Texas","Longitude":-95.36978,"Latitude":29.76045},{"LocationName":"Lott, Texas","CountryCode":"United
+        States","CountrySubDivisionCode":"Texas","CityName":"Lott, Texas","Longitude":-97.0354843,"Latitude":31.2049675},{"LocationName":"Lubbock,
+        Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"Lubbock,
+        Texas","Longitude":-101.855865,"Latitude":33.59233},{"LocationName":"Lufkin,
+        Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"Lufkin,
+        Texas","Longitude":-94.7183,"Latitude":31.3424},{"LocationName":"Malone, Texas","CountryCode":"United
+        States","CountrySubDivisionCode":"Texas","CityName":"Malone, Texas","Longitude":-96.89609,"Latitude":31.9169655},{"LocationName":"Mineola,
+        Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"Mineola,
+        Texas","Longitude":-95.48797,"Latitude":32.6638},{"LocationName":"Mount Pleasant,
+        Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"Mount
+        Pleasant, Texas","Longitude":-94.9685,"Latitude":33.1571},{"LocationName":"Nacogdoches,
+        Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"Nacogdoches,
+        Texas","Longitude":-94.6556,"Latitude":31.6035},{"LocationName":"Nixon, Texas","CountryCode":"United
+        States","CountrySubDivisionCode":"Texas","CityName":"Nixon, Texas","Longitude":-97.76404,"Latitude":29.2675552},{"LocationName":"Palestine,
+        Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"Palestine,
+        Texas","Longitude":-95.632,"Latitude":31.7617},{"LocationName":"San Angelo,
+        Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"San
+        Angelo, Texas","Longitude":-100.442421,"Latitude":31.4615},{"LocationName":"Seguin,
+        Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"Seguin,
+        Texas","Longitude":-97.9647,"Latitude":29.5693},{"LocationName":"Stephenville,
+        Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"Stephenville,
+        Texas","Longitude":-98.202,"Latitude":32.2203},{"LocationName":"Tyler, Texas","CountryCode":"United
+        States","CountrySubDivisionCode":"Texas","CityName":"Tyler, Texas","Longitude":-95.2943,"Latitude":32.3474731},{"LocationName":"Waco,
+        Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"Waco,
+        Texas","Longitude":-97.1495056,"Latitude":31.5718212},{"LocationName":"Draper,
+        Utah","CountryCode":"United States","CountrySubDivisionCode":"Utah","CityName":"Draper,
+        Utah","Longitude":-111.866272,"Latitude":40.52413},{"LocationName":"Hyrum,
+        Utah","CountryCode":"United States","CountrySubDivisionCode":"Utah","CityName":"Hyrum,
+        Utah","Longitude":-111.851013,"Latitude":41.6339722},{"LocationName":"Lewiston,
+        Utah","CountryCode":"United States","CountrySubDivisionCode":"Utah","CityName":"Lewiston,
+        Utah","Longitude":-111.848633,"Latitude":41.97595},{"LocationName":"Moroni,
+        Utah","CountryCode":"United States","CountrySubDivisionCode":"Utah","CityName":"Moroni,
+        Utah","Longitude":-111.582863,"Latitude":39.52492},{"LocationName":"Salt Lake
+        City, Utah","CountryCode":"United States","CountrySubDivisionCode":"Utah","CityName":"Salt
+        Lake City, Utah","Longitude":-111.888229,"Latitude":40.75952},{"LocationName":"Accomac,
+        Virginia","CountryCode":"United States","CountrySubDivisionCode":"Virginia","CityName":"Accomac,
+        Virginia","Longitude":-75.66984,"Latitude":37.7197227},{"LocationName":"Bealeton,
+        Virginia","CountryCode":"United States","CountrySubDivisionCode":"Virginia","CityName":"Bealeton,
+        Virginia","Longitude":-77.76452,"Latitude":38.57547},{"LocationName":"Crozet,
+        Virginia","CountryCode":"United States","CountrySubDivisionCode":"Virginia","CityName":"Crozet,
+        Virginia","Longitude":-78.70069,"Latitude":38.0696564},{"LocationName":"Dayton,
+        Virginia","CountryCode":"United States","CountrySubDivisionCode":"Virginia","CityName":"Dayton,
+        Virginia","Longitude":-78.93897,"Latitude":38.4145241},{"LocationName":"Edinburg,
+        Virginia","CountryCode":"United States","CountrySubDivisionCode":"Virginia","CityName":"Edinburg,
+        Virginia","Longitude":-78.56243,"Latitude":38.82136},{"LocationName":"Glen
+        Allen, Virginia","CountryCode":"United States","CountrySubDivisionCode":"Virginia","CityName":"Glen
+        Allen, Virginia","Longitude":-77.5041,"Latitude":37.6653},{"LocationName":"Harrisonburg,
+        Virginia","CountryCode":"United States","CountrySubDivisionCode":"Virginia","CityName":"Harrisonburg,
+        Virginia","Longitude":-78.869,"Latitude":38.4515},{"LocationName":"Hinton,
+        Virginia","CountryCode":"United States","CountrySubDivisionCode":"Virginia","CityName":"Hinton,
+        Virginia","Longitude":-78.97218,"Latitude":38.46586},{"LocationName":"New
+        Market, Virginia","CountryCode":"United States","CountrySubDivisionCode":"Virginia","CityName":"New
+        Market, Virginia","Longitude":-78.67211,"Latitude":38.647274},{"LocationName":"Smithfield,
+        Virginia","CountryCode":"United States","CountrySubDivisionCode":"Virginia","CityName":"Smithfield,
+        Virginia","Longitude":-76.63392,"Latitude":36.9813347},{"LocationName":"Temperanceville,
+        Virginia","CountryCode":"United States","CountrySubDivisionCode":"Virginia","CityName":"Temperanceville,
+        Virginia","Longitude":-75.54879,"Latitude":37.89405},{"LocationName":"Timberville,
+        Virginia","CountryCode":"United States","CountrySubDivisionCode":"Virginia","CityName":"Timberville,
+        Virginia","Longitude":-78.77367,"Latitude":38.63708},{"LocationName":"Ferrisburg,
+        Vermont","CountryCode":"United States","CountrySubDivisionCode":"Vermont","CityName":"Ferrisburg,
+        Vermont","Longitude":-73.24718,"Latitude":44.20306},{"LocationName":"Blaine,
+        Washington","CountryCode":"United States","CountrySubDivisionCode":"Washington","CityName":"Blaine,
+        Washington","Longitude":-122.748886,"Latitude":48.9940453},{"LocationName":"Colville,
+        Washington","CountryCode":"United States","CountrySubDivisionCode":"Washington","CityName":"Colville,
+        Washington","Longitude":-117.9048,"Latitude":48.5466},{"LocationName":"Ferndale,
+        Washington","CountryCode":"United States","CountrySubDivisionCode":"Washington","CityName":"Ferndale,
+        Washington","Longitude":-122.593529,"Latitude":48.84757},{"LocationName":"Kelso,
+        Washington","CountryCode":"United States","CountrySubDivisionCode":"Washington","CityName":"Kelso,
+        Washington","Longitude":-122.898666,"Latitude":46.14428},{"LocationName":"Moses
+        Lake, Washington","CountryCode":"United States","CountrySubDivisionCode":"Washington","CityName":"Moses
+        Lake, Washington","Longitude":-119.277153,"Latitude":47.1319427},{"LocationName":"Mount
+        Vernon, Washington","CountryCode":"United States","CountrySubDivisionCode":"Washington","CityName":"Mount
+        Vernon, Washington","Longitude":-122.334633,"Latitude":48.41146},{"LocationName":"Olympia,
+        Washington","CountryCode":"United States","CountrySubDivisionCode":"Washington","CityName":"Olympia,
+        Washington","Longitude":-122.891434,"Latitude":47.0392265},{"LocationName":"Stanwood,
+        Washington","CountryCode":"United States","CountrySubDivisionCode":"Washington","CityName":"Stanwood,
+        Washington","Longitude":-122.372383,"Latitude":48.24159},{"LocationName":"Toppenish,
+        Washington","CountryCode":"United States","CountrySubDivisionCode":"Washington","CityName":"Toppenish,
+        Washington","Longitude":-120.313,"Latitude":46.3751},{"LocationName":"Wallula,
+        Washington","CountryCode":"United States","CountrySubDivisionCode":"Washington","CityName":"Wallula,
+        Washington","Longitude":-118.908539,"Latitude":46.08157},{"LocationName":"Woodland,
+        Washington","CountryCode":"United States","CountrySubDivisionCode":"Washington","CityName":"Woodland,
+        Washington","Longitude":-122.73983,"Latitude":45.9086456},{"LocationName":"Abbotsford,
+        Wisconsin","CountryCode":"United States","CountrySubDivisionCode":"Wisconsin","CityName":"Abbotsford,
+        Wisconsin","Longitude":-90.31913,"Latitude":44.94576},{"LocationName":"Arcadia,
+        Wisconsin","CountryCode":"United States","CountrySubDivisionCode":"Wisconsin","CityName":"Arcadia,
+        Wisconsin","Longitude":-91.49917,"Latitude":44.2523232},{"LocationName":"Barron,
+        Wisconsin","CountryCode":"United States","CountrySubDivisionCode":"Wisconsin","CityName":"Barron,
+        Wisconsin","Longitude":-91.84932,"Latitude":45.40135},{"LocationName":"Black
+        Earth, Wisconsin","CountryCode":"United States","CountrySubDivisionCode":"Wisconsin","CityName":"Black
+        Earth, Wisconsin","Longitude":-89.7479858,"Latitude":43.1378136},{"LocationName":"Curtiss,
+        Wisconsin","CountryCode":"United States","CountrySubDivisionCode":"Wisconsin","CityName":"Curtiss,
+        Wisconsin","Longitude":-90.43417,"Latitude":44.9539337},{"LocationName":"Eau
+        Claire, Wisconsin","CountryCode":"United States","CountrySubDivisionCode":"Wisconsin","CityName":"Eau
+        Claire, Wisconsin","Longitude":-91.501236,"Latitude":44.8165131},{"LocationName":"Endeavor,
+        Wisconsin","CountryCode":"United States","CountrySubDivisionCode":"Wisconsin","CityName":"Endeavor,
+        Wisconsin","Longitude":-89.4677353,"Latitude":43.7167625},{"LocationName":"Franklin,
+        Wisconsin","CountryCode":"United States","CountrySubDivisionCode":"Wisconsin","CityName":"Franklin,
+        Wisconsin","Longitude":-88.03116,"Latitude":42.89756},{"LocationName":"Green
+        Bay, Wisconsin","CountryCode":"United States","CountrySubDivisionCode":"Wisconsin","CityName":"Green
+        Bay, Wisconsin","Longitude":-88.01016,"Latitude":44.5127945},{"LocationName":"Madison,
+        Wisconsin","CountryCode":"United States","CountrySubDivisionCode":"Wisconsin","CityName":"Madison,
+        Wisconsin","Longitude":-89.38666,"Latitude":43.0729256},{"LocationName":"Milwaukee,
+        Wisconsin","CountryCode":"United States","CountrySubDivisionCode":"Wisconsin","CityName":"Milwaukee,
+        Wisconsin","Longitude":-87.9068451,"Latitude":43.04181},{"LocationName":"Norwalk,
+        Wisconsin","CountryCode":"United States","CountrySubDivisionCode":"Wisconsin","CityName":"Norwalk,
+        Wisconsin","Longitude":-90.62201,"Latitude":43.83033},{"LocationName":"Plover,
+        Wisconsin","CountryCode":"United States","CountrySubDivisionCode":"Wisconsin","CityName":"Plover,
+        Wisconsin","Longitude":-89.54411,"Latitude":44.45425},{"LocationName":"Watertown,
+        Wisconsin","CountryCode":"United States","CountrySubDivisionCode":"Wisconsin","CityName":"Watertown,
+        Wisconsin","Longitude":-88.72047,"Latitude":43.1973724},{"LocationName":"Bridgeport,
+        West Virginia","CountryCode":"United States","CountrySubDivisionCode":"West
+        Virginia","CityName":"Bridgeport, West Virginia","Longitude":-80.24889,"Latitude":39.2859726},{"LocationName":"Milton,
+        West Virginia","CountryCode":"United States","CountrySubDivisionCode":"West
+        Virginia","CityName":"Milton, West Virginia","Longitude":-82.13335,"Latitude":38.4345169},{"LocationName":"Moorefield,
+        West Virginia","CountryCode":"United States","CountrySubDivisionCode":"West
+        Virginia","CityName":"Moorefield, West Virginia","Longitude":-78.96894,"Latitude":39.0621452},{"LocationName":"Laramie
+        County, Wyoming","CountryCode":"United States","CountrySubDivisionCode":"Wyoming","CityName":"Laramie
+        County, Wyoming","Longitude":-104.6896,"Latitude":41.30707}],"OrganizationName":"Food
+        Safety and Inspection Service","DepartmentName":"Department of Agriculture","JobCategory":[{"Name":"Veterinary
+        Medical Science","Code":"0701"}],"JobGrade":[{"Code":"GS"}],"PositionSchedule":[{"Name":"Full-Time","Code":"1"}],"PositionOfferingType":[{"Name":"Permanent","Code":"15317"}],"QualificationSummary":"Please
+        reference the specific Office of Personnel Management (OPM) qualifications
+        standards for the 0701 Job Series.BASIC QUALIFICATION REQUIREMENT FOR THE
+        GS-11 GRADE LEVEL:\nDoctor of Veterinary Medicine (DVM) or equivalent degree,
+        i.e., Veterinary Medical Doctor (VMD), obtained at a school or college of
+        veterinary medicine accredited by the American Veterinary Medical Association
+        Council on Education (AVMA). The AVMA web site has a listing of all AVMA-accredited
+        veterinary medical schools.\nOR\nGraduates of foreign veterinary medical schools
+        that are not accredited by the AVMA Council on Education must meet one of
+        the following requirements and submit supporting documentation: Proof of certification
+        of their final transcript by the Educational Commission for Foreign Veterinary
+        Graduates (ECFVG) (Completion of ECFVG program)\nPossession of a permanent,
+        full, and unrestricted license to practice veterinary medicine in a State,
+        District of Columbia, the Commonwealth of Puerto Rico, or a territory of the
+        United States that includes successful completion of the North American Veterinary
+        Licensing Examination (NAVLE) or its predecessors, the National Board Examination
+        (NBE) and the Clinical Competency Test (CCT).\nProof that the education obtained
+        in a foreign veterinary medical program is equivalent to that gained in a
+        veterinary medical program that is accredited by the American Veterinary Medical
+        Association Council on Education. Under this provision, equivalency is established
+        only if an AVMA-accredited veterinary medical school or college accepts the
+        graduate&rsquo;s final transcript from the foreign veterinary medical school
+        at full value for placement into an advanced degree, postgraduate educational
+        program, or training program (e.g. Residency or graduate program). Graduates
+        of foreign veterinary medical programs must also submit proof of proficiency
+        in the English language by successfully completing one of the nationally and
+        internationally recognized examinations that incorporate assessments of reading,
+        writing, listening, and speaking skills. Examples of examinations that assess
+        mastery of the English language are shown below: Test of English as a Foreign
+        Language (TOEFL) - Minimum scores for the TOEFL are 560 for the paper-based
+        version; 220 for the computer-based version; or overall score of 83 for the
+        internet-based version (including 26 or higher in speaking, 26 or higher in
+        listening, and 17 or higher in writing). For the computer-based and paper-based
+        test versions, applicants must also complete the Test of Spoken English (TSE)
+        and the Test of Written English (TWE). Minimum required scores are 55 for
+        the TSE and 5.5 for the TWE;\nAcademic tests (listening, writing, and speaking)
+        offered by the International English Language Testing System (IELTS). Applicants
+        must achieve a minimum overall band score of 7.0, with at least 7.0 in speaking,
+        6.5 in listening, and 6.0 in writing; OR\nCanadian Academic English Language
+        Assessment (CAEL). Applicants must achieve a minimum overall band score of
+        70, with at least 60 in speaking, 60 in listening, and 50 in writing. English
+        language proficiency assessments may also be waived for qualified job applicants
+        whose native language is English (i.e. the official or common language of
+        an individual''s country of birth is English) AND they submit a diploma or
+        other official documentation from the school as proof of graduation from a
+        high (secondary) school where the entire curriculum and educational programs
+        of the school are taught in the English language for the entire three or four
+        years of full-time attendance.\nBASIC QUALIFICATION REQUIREMENT FOR THE GS-12
+        GRADE LEVEL - You must meet the basic requirements for the GS-11 grade level
+        to qualify for positions at the GS-12grade level.Qualification requirements
+        for the GS-12 grade leveland above are:\n1. EXPERIENCE: Mastery of clinical
+        medicine (veterinary practice experience); scientific presentations before
+        professional groups; publication of medical reports in professional journals
+        or publications; participation in seminars, advisory/working groups, and research
+        groups; or other related activities that contribute to the advancement of
+        veterinary medical science are positive indicators of the quality of an applicant''s
+        experience. However, articles on the care of pets would not be considered
+        professional publications or qualifying specialized experience.OR2. EDUCATION:Master&rsquo;s
+        degree conferred from an accredited college, in an area of specialization;
+        or successfully completed two years of an internship, Residency program or
+        fellowship training program in a discipline related to this position. Area
+        of specialization, including but not limited to, animal science, avian medicine,
+        food safety, infectious diseases, veterinary clinical sciences, pathobiology,
+        biomedical sciences, veterinary anatomy, veterinary preventive medicine, comparative
+        biological sciences, epidemiology, veterinary parasitology, molecular veterinary
+        biosciences, public health, microbiology, pathology, immunology, laboratory
+        animal medicine, toxicology, wildlife, zoological animal medicine, or sciences
+        related to the work of a veterinary medical officer position.","PositionRemuneration":[{"MinimumRange":"61218.0","MaximumRange":"95388.0","RateIntervalCode":"Per
+        Year"}],"PositionStartDate":"2018-08-17","PositionEndDate":"2019-08-16","PublicationStartDate":"2018-08-17","ApplicationCloseDate":"2019-08-16","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"","WhoMayApply":{"Name":"","Code":""},"LowGrade":"11","HighGrade":"12","PromotionPotential":"12","HiringPath":["public"],"AgencyMarketingStatement":"The
+        Food Safety and Inspection Service (FSIS) is the agency in the U.S. Department
+        of Agriculture (USDA) responsible for protecting the public''s health by ensuring
+        the safety of the Nation''s commercial supply of meat, poultry, and processed
+        egg products.\nUSDA is a great place to start or continue your career.USDA
+        isranked as one of the top 10 \"Best Places to Work in the Federal Government\"
+        by the Partnership for Public Service. Rankings are based on employee feedback
+        regarding satisfaction with their work experience. For more information on
+        USDA and the Food Safety and Inspection Service, visit FSIS.","TravelCode":"1","ApplyOnlineUrl":"https://fsis.usda.ntis.gov/cp/?event=ros.incomingLinkSSO&jobAudienceTypeID=5F941EFC-6A61-2E29-4CDB-A4704711EC02&audienceTypeCode=EXT","DetailStatusUrl":"https://fsis.usda.ntis.gov/cp/?event=ros.incomingAppStatusLinkSSO&JobID=B8ADAF5D-69BE-4DB7-84EA-A93000DC01C6"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"515259300","MatchedObjectDescriptor":{"PositionID":"RCC2020NY-2019-0122","PositionTitle":"Information
+        Technology Manager, AD-0301-00-Census-EXT-SC","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/515259300","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/515259300?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Trenton,
+        New Jersey","PositionLocation":[{"LocationName":"Trenton, New Jersey","CountryCode":"United
+        States","CountrySubDivisionCode":"New Jersey","CityName":"Trenton, New Jersey","Longitude":-74.7594,"Latitude":40.2179}],"OrganizationName":"U.S.
+        Census Bureau","DepartmentName":"Department of Commerce","JobCategory":[{"Name":"Miscellaneous
+        Administration And Program","Code":"0301"}],"JobGrade":[{"Code":"AD"}],"PositionSchedule":[{"Name":"This
+        position is Mixed Tour. With a Mixed Tour work schedule, an employee may be
+        changed between full-time, part-time and intermittent work schedules to accommodate
+        fluctuating workloads and is subject to a signed agreement.","Code":"1"}],"PositionOfferingType":[{"Name":"Time
+        Limited Appointment, initial appointment is not to exceed (NTE) 2 years. This
+        appointment may be extended 2 additional years at management''s discretion.","Code":"15319"}],"QualificationSummary":"NOTE:
+        This position is advertised as an OPEN CONTINUOUS with 1 CUT-OFF date. Applicants
+        that apply by the CUT-OFF date will be considered first. This announcement
+        may close prior to the closing date. This announcement may also be extended
+        if needed, andadditionalCUT-OFFdates may be set as requested by management.
+        The first CUT-OFF date is November 15, 2018.\nApplicants are responsible for
+        insuring that the application submitted clearly indicates that they meet the
+        qualifications listed below. To be eligible for this position, you must have
+        the specialized experience, education, or a combination as indicated below.Experience
+        refers to paid and unpaid experience, including volunteer work done through
+        National Service programs (e.g., Peace Corps, AmeriCorps) and other organizations
+        (e.g., professional; philanthropic; religious; spiritual; community, student,
+        social). Volunteer work helps build critical competencies, knowledge, and
+        skills and can provide valuable training and experience that translates directly
+        to paid employment. You will receive credit for all qualifying experience,
+        including volunteer experience.\nEXPERIENCE: Applicant must have one year
+        of specialized experience equivalent to the next lower grade level in the
+        Federal Service. Examples of experience sought for these positions include
+        experience supervising a technical support staff, training office employees
+        on software, hardware and automation operations. Experience troubleshooting
+        technical issues and evaluating, analyzing, coordinating automation operations.
+        Experience working with various Microsoft, Apple, Cisco operating and administrative
+        programs. Experience working with and supporting various office technologies
+        and devices including telecommunications hardware such as router, switches,
+        servers, mobile devices, laptops, IPads, Personal Computers, VOIP telecommunications
+        systems and printers. Experience tracking property management, reporting and
+        documenting lost, missing, stolen equipment. Experience scheduling and coordinating
+        data entry operations.\nOR\nEDUCATION: Bachelor''s degree plus 1 full year
+        of graduate level education or superior academic achievement with major study
+        in computer science, information science, information system management, mathematics,
+        statistics, operations research, engineering, or course work that required
+        the development or adaptation of computer programs and systems and provided
+        knowledge equivalent to a major in the computer field.","PositionRemuneration":[{"MinimumRange":"25.0","MaximumRange":"25.0","RateIntervalCode":"Per
+        Hour"}],"PositionStartDate":"2018-11-02","PositionEndDate":"2018-12-03","PublicationStartDate":"2018-11-02","ApplicationCloseDate":"2018-12-03","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"Duty
+        Station:Initially will be the selectee''s home address (Work At Home) until
+        the opening of the Area Census Office (ACO)inTrenton, NJ. At that timethe
+        employeewill be required to report tothe ACO as their regularplace of work.\nTo
+        be considered, ALL APPLICANTS MUST RESIDEin one of the following geographic
+        areas in New Jersey: &bull; Mercer County&bull; Somerset County&bull; Middlesex
+        County\nRelocationexpenses willnotbe paid.","WhoMayApply":{"Name":"","Code":""},"LowGrade":"00","HighGrade":"00","PromotionPotential":"00","HiringPath":["public"],"TotalOpenings":"FEW","AppointmentExplanationText":"Term
+        appt, NTE 2 yrs","AgencyMarketingStatement":"","TravelCode":"5","ApplyOnlineUrl":"https://careerconnector.jobs.treas.gov/doc/ros/rosDashboard.hms?O=3&J=119842","DetailStatusUrl":"https://careerconnector.jobs.treas.gov/doc/ros/rosDashboard.hms?O=3&J=119842&S=1"},"IsRadialSearch":false}},"RelevanceRank":0.0}],"UserArea":{"NumberOfPages":"1","IsRadialSearch":true}}}'
+    http_version: 
+  recorded_at: Mon, 19 Nov 2018 22:16:17 GMT
 recorded_with: VCR 4.0.0
