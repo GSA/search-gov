@@ -104,11 +104,12 @@ class GovboxSet
 
   def init_jobs
     if @affiliate.jobs_enabled?
-      job_results = Jobs.search({ query: @query,
-                                  organization_codes: @affiliate.agency&.joined_organization_codes,
-                                  location_name: @geoip_info&.location_name,
-                                  results_per_page: 10
-                                })&.search_result&.search_result_items
+      job_results = Jobs.search({
+        query: @query,
+        organization_codes: @affiliate.agency&.joined_organization_codes,
+        location_name: @geoip_info&.location_name,
+        results_per_page: 10
+      })&.search_result&.search_result_items
 
       if job_results.present?
         @jobs = JobResultsPostProcessor.new(results: job_results)&.post_processed_results
@@ -152,7 +153,7 @@ class GovboxSet
   end
 
   def elastic_results_exist?(elastic_results)
-    elastic_results.present? && elastic_results.total > 0
+    elastic_results.present? && elastic_results.total.positive?
   end
 
 end
