@@ -153,7 +153,7 @@ class GovboxSet
   end
 
   def elastic_results_exist?(elastic_results)
-    elastic_results.present? && elastic_results.total.positive?
+    elastic_results.present? && elastic_results.total > 0
   end
 
 end
