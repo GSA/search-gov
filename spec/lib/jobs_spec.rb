@@ -26,7 +26,7 @@ describe Jobs do
     end
   end
 
-  describe 'scrub_keyword(query)' do
+  describe '.scrub_keyword(query)' do
     context 'when the search phrase contains the a job related keyword' do
       it 'should return the query with out the job related keyword at the end of the query' do
         expect(Jobs.scrub_keyword('Nursing jobs')).to eq('Nursing')
