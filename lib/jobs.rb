@@ -28,6 +28,7 @@ module Jobs
   end
 
   def self.scrub_keyword(keyword)
+    #Keep the job related keyword if its the only word being searched on so "" is not passed to api.
     scrubbed_keyword = keyword.remove(/\b#{JOB_RELATED_KEYWORDS}\b/, '').squish
     keyword =~ /^#{JOB_RELATED_KEYWORDS}$/ ? keyword : scrubbed_keyword
   end
