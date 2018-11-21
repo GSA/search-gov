@@ -32,8 +32,8 @@ describe Jobs do
         expect(Jobs.scrub_keyword('Nursing jobs')).to eq('Nursing')
       end
     end
-
   end
+  
   describe '.query_eligible?(query)' do
     context 'when the search phrase contains hyphenated words' do
       it 'should return true' do
