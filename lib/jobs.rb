@@ -27,8 +27,8 @@ module Jobs
     end
   end
 
-  def self.job_scrub(keyword)
-    scrubbed_keyword = keyword.gsub(/#{JOB_RELATED_KEYWORDS}/, '').strip
+  def self.scrub_keyword(keyword)
+    scrubbed_keyword = keyword.remove(/\b#{JOB_RELATED_KEYWORDS}\b/, '').squish
     keyword =~ /^#{JOB_RELATED_KEYWORDS}$/ ? keyword : scrubbed_keyword
   end
 
@@ -46,7 +46,7 @@ module Jobs
   end
 
   def self.params(options)
-    { Keyword:        job_scrub(options[:query]),
+    { Keyword:        scrub_keyword(options[:query]),
       Organization:   options[:organization],
       LocationName:   options[:location_name],
       ResultsPerPage: options[:results_per_page]
