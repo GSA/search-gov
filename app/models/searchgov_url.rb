@@ -4,7 +4,7 @@ class SearchgovUrl < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
 
   MAX_DOC_SIZE = 15.megabytes
-  SUPPORTED_CONTENT_TYPES = %w(
+  SUPPORTED_CONTENT_TYPES = %w[
                                 text/html
                                 text/plain
                                 application/msword
@@ -12,7 +12,7 @@ class SearchgovUrl < ActiveRecord::Base
                                 application/vnd.ms-excel
                                 application/vnd.openxmlformats-officedocument.wordprocessingml.document
                                 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
-                              )
+                              ]
 
   attr_accessible :last_crawl_status, :last_crawled_at, :url, :lastmod
   attr_reader :response, :document, :tempfile
