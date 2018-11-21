@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.6.35, for osx10.11 (x86_64)
+-- MySQL dump 10.13  Distrib 5.6.41, for osx10.13 (x86_64)
 --
 -- Host: localhost    Database: usasearch_development
 -- ------------------------------------------------------
--- Server version	5.6.35
+-- Server version	5.6.41
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -1157,6 +1157,7 @@ CREATE TABLE `searchgov_urls` (
   `updated_at` datetime NOT NULL,
   `searchgov_domain_id` int(11) DEFAULT NULL,
   `lastmod` datetime DEFAULT NULL,
+  `enqueued_for_reindex` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `index_searchgov_urls_on_url` (`url`(255)),
   KEY `index_searchgov_urls_on_searchgov_domain_id` (`searchgov_domain_id`),
@@ -1562,7 +1563,7 @@ CREATE TABLE `youtube_profiles` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-07-12  9:43:35
+-- Dump completed on 2018-11-16  9:52:13
 INSERT INTO schema_migrations (version) VALUES ('20090818003200');
 
 INSERT INTO schema_migrations (version) VALUES ('20090827135344');
@@ -3002,4 +3003,6 @@ INSERT INTO schema_migrations (version) VALUES ('20180608190543');
 INSERT INTO schema_migrations (version) VALUES ('20180611171416');
 
 INSERT INTO schema_migrations (version) VALUES ('20180621213347');
+
+INSERT INTO schema_migrations (version) VALUES ('20181109212904');
 
