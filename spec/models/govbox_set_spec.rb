@@ -174,7 +174,6 @@ describe GovboxSet do
             with(query: 'job',
                  organization_codes: 'ABCD;BCDE',
                  results_per_page: 10,
-                 radius: '75',
                  location_name: 'Flemington, New Jersey, United States')
           govbox_set = GovboxSet.new('job', affiliate, geoip_info)
         end
@@ -185,7 +184,6 @@ describe GovboxSet do
           expect(Jobs).to receive(:search).with(query: 'job',
                                                 organization_codes: nil,
                                                 results_per_page: 10,
-                                                radius: 75,
                                                 location_name: nil).and_return nil
           GovboxSet.new('job', affiliate, nil)
         end

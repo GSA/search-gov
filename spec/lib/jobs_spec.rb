@@ -7,7 +7,6 @@ describe Jobs do
                     organization_code: '',
                     location_name: 'Washington, DC, United States',
                     results_per_page: 10,
-                    radius: 75
                   })
     end
 
@@ -26,6 +25,20 @@ describe Jobs do
         expect(search).to be_nil
       end
     end
+
+    context "when the search is within radius but different city" do
+      before do
+        Jobs.search({ query:'jobs',
+          organization_code: 'HE38',
+          location_name: 'Baltimore, MD, United States',
+          results_per_page: 10,
+        })
+      end
+
+      it "should return results" do
+        expect(search.search_result.search_result_count).to be > 0
+      end
+    end
   end
 
   describe 'job_scrub(query)' do
@@ -36,6 +49,7 @@ describe Jobs do
     end
 
   end
+
   describe '.query_eligible?(query)' do
     context 'when the search phrase contains hyphenated words' do
       it 'should return true' do

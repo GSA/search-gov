@@ -5210,4 +5210,1205 @@ http_interactions:
         appt, NTE 2 yrs","AgencyMarketingStatement":"","TravelCode":"5","ApplyOnlineUrl":"https://careerconnector.jobs.treas.gov/doc/ros/rosDashboard.hms?O=3&J=119842","DetailStatusUrl":"https://careerconnector.jobs.treas.gov/doc/ros/rosDashboard.hms?O=3&J=119842&S=1"},"IsRadialSearch":false}},"RelevanceRank":0.0}],"UserArea":{"NumberOfPages":"1","IsRadialSearch":true}}}'
     http_version: 
   recorded_at: Mon, 19 Nov 2018 22:16:17 GMT
+- request:
+    method: get
+    uri: https://data.usajobs.gov/api/search?Keyword=job&LocationName=Flemington,%20New%20Jersey,%20United%20States&Organization&Radius=75&ResultsPerPage=10
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization-Key:
+      - Qbk5RB/WRc1ctYqwojqlSKeoLVrwokT8OnSLq+G1qu0=
+      User-Agent:
+      - parissa.eggleston@gmail.com
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/hr+json
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/10.0
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Wed, 21 Nov 2018 19:49:16 GMT
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - Transfer-Encoding
+      - keep-alive
+      Set-Cookie:
+      - akavpau_DATA_USAJ=1542830056~id=89d9b164f46a968f70aa79be62c92f2a; Domain=data.usajobs.gov;
+        Path=/; Secure
+    body:
+      encoding: UTF-8
+      string: '{"LanguageCode":"EN","SearchParameters":{},"SearchResult":{"SearchResultCount":10,"SearchResultCountAll":208,"SearchResultItems":[{"MatchedObjectId":"516629700","MatchedObjectDescriptor":{"PositionID":"CARZ-10355247-19-DAF","PositionTitle":"Pipefitter","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/516629700","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/516629700?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Montrose,
+        New York","PositionLocation":[{"LocationName":"Montrose, New York","CountryCode":"United
+        States","CountrySubDivisionCode":"New York","CityName":"Montrose, New York","Longitude":-73.93177,"Latitude":41.2518539}],"OrganizationName":"Veterans
+        Affairs, Veterans Health Administration","DepartmentName":"Department of Veterans
+        Affairs","JobCategory":[{"Name":"Pipefitting","Code":"4204"}],"JobGrade":[{"Code":"WG"}],"PositionSchedule":[{"Name":"Full-Time","Code":"1"}],"PositionOfferingType":[{"Name":"Permanent","Code":"15317"}],"QualificationSummary":"PHYSICAL
+        EFFORT AND WORK CONDITIONS: The employee in this position makes repairs and
+        installations from ladders, scaffolding, and platforms and where the parts
+        of systems worked on are in hard-to-reach places. Work may sometimes require
+        standing, stooping, bending, kneeling, climbing, and working in tiring and
+        uncomfortable positions. The employee frequently lifts, carries, and sets
+        up parts and equipment that weigh up to 50 pounds. The work is done inside
+        and outside and is usually dirty, dusty, and greasy. Occasionally makes repairs
+        in areas where bad smelling fumes are present. Occasional exposure to the
+        possibility of broken bones and has frequent exposure to the possibility of
+        scrapes, bumps, and infections. Applicants will be rated in accordance with
+        the OPM Qualification Standard Handbook X-118C (www.opm.gov/qualifications/x-118c).
+        For this position, the job element method is used to match what you, the applicant,
+        can do against what the work calls for. Your knowledge, skills and abilities
+        will be compared to the knowledge, skills and abilities (called job elements)
+        needed for success. Your qualifications will first be evaluated against the
+        prescribed screen out element (WG-2 and higher only; screen-outs are not applicable
+        to WG-1). Applicants who appear to meet the screen out element are considered
+        for further rating; those who do not are rated ineligible and are eliminated
+        from consideration. The potential eligibles are rated against the remainder
+        of the job elements. While a specific length of training and experience is
+        not required, your responses to the questionnaire must be supported by detailed
+        descriptions of your experience on your resume. You will be rated on the following
+        Job Elements as part of the assessment questionnaire for this position:\nEquipment
+        Assembly, Installation, RepairInterpret Instructions, Specifications (includes
+        blueprint reading)Use and Maintain Tools and EquipmentWithout more than normal
+        supervision IMPORTANT: A full year of work is considered to be 35-40 hours
+        of work per week. All experience listed on your resume must include the month
+        and year start/end dates. Part-time experience will be credited on the basis
+        of time actually spent in appropriate activities. Applicants wishing to receive
+        credit for such experience must indicate clearly the nature of their duties
+        and responsibilities in each position and the number of hours a week spent
+        in such employment. Experience refers to paid and unpaid experience, including
+        volunteer work done through National Service programs (e.g., Peace Corps,
+        AmeriCorps) and other organizations (e.g., professional; philanthropic; religious;
+        spiritual; community; student; social). Volunteer work helps build critical
+        competencies, knowledge, and skills and can provide valuable training and
+        experience that translates directly to paid employment. You will receive credit
+        for all qualifying experience, including volunteer experience.","PositionRemuneration":[{"MinimumRange":"25.40","MaximumRange":"29.63","RateIntervalCode":"Per
+        Hour"}],"PositionStartDate":"2018-11-13","PositionEndDate":"2018-11-27","PublicationStartDate":"2018-11-13","ApplicationCloseDate":"2018-11-27","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"","WhoMayApply":{"Name":"","Code":""},"LowGrade":"8","HighGrade":"8","PromotionPotential":"8","HiringPath":["public"],"TotalOpenings":"1","AgencyMarketingStatement":"OUR
+        MISSION: To fulfill President Lincoln''s promise: \"To care for him who shall
+        have borne the battle, and for his widow, and his orphan\" - by serving and
+        honoring the men and women who are America''s Veterans. How would you like
+        to become a part of a team providing compassionate care to Veterans? The Department
+        of Veterans Affairs (VA) needs employees who possess the energy, compassion,
+        and commitment to serve those who served our Country. Whatever the job title,
+        every position in VA will give you a chance to make a meaningful and personal
+        contribution to the lives of truly special and deserving people - our Veterans.
+        VA professionals feel good about their careers and their ability to balance
+        work and home life. VA offers generous paid time off and a variety of predictable
+        and flexible scheduling opportunities. Working for VA is one of the most emotionally
+        satisfying and professionally rewarding ways to dedicate the best within you
+        to your Country''s service. If you are transitioning from the military or
+        a Veteran already, we invite you to explore the benefits of continuing your
+        career at the VA. The VA is committed to hiring Veterans. The VA is much more
+        than just another employer. It is an honorable, open and welcoming community
+        of those who care. Gratitude is our motivation and service is our mission.
+        America''s Veterans need you!","TravelCode":"1","ApplyOnlineUrl":"https://apply.usastaffing.gov/Application/Apply","DetailStatusUrl":"https://apply.usastaffing.gov/Application/ApplicationStatus"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"516648100","MatchedObjectDescriptor":{"PositionID":"CARZ-10355359-19-DSB","PositionTitle":"Pipefitter","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/516648100","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/516648100?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Multiple
+        Locations","PositionLocation":[{"LocationName":"Montrose, New York","CountryCode":"United
+        States","CountrySubDivisionCode":"New York","CityName":"Montrose, New York","Longitude":-73.93177,"Latitude":41.2518539},{"LocationName":"Wappingers
+        Falls, New York","CountryCode":"United States","CountrySubDivisionCode":"New
+        York","CityName":"Wappingers Falls, New York","Longitude":-73.91326,"Latitude":41.5969849}],"OrganizationName":"Veterans
+        Affairs, Veterans Health Administration","DepartmentName":"Department of Veterans
+        Affairs","JobCategory":[{"Name":"Pipefitting","Code":"4204"}],"JobGrade":[{"Code":"WG"}],"PositionSchedule":[{"Name":"Full-Time","Code":"1"}],"PositionOfferingType":[{"Name":"Permanent","Code":"15317"}],"QualificationSummary":"TO
+        QUALIFY FOR THIS POSITION THE FOLLOWING SKILLS ARE REQUIRED: Requires knowledge
+        and skill of how various high-pressure piping systems and equipment are installed
+        and operate. Must be able to plan and lay out the installation, modification,
+        and repair of various new and existing piping systems and equipment. Ability
+        to interpret and apply building plans and blueprints, and to use shop mathematics
+        to lay out angles, arcs, and circles. Skill in the use of tools and equipment
+        such as sliding squares, measuring tapes, dividers, and chalk lines. PHYSICAL
+        EFFORT AND WORK CONDITIONS: The employee is required to stand, stoop, bend,
+        kneel, climb and work in tiring and uncomfortable positions. The employee
+        works from ladders, scaffolding, and platforms where the systems and equipment
+        worked on are in hard to reach places. The employee handles, lifts, carries
+        and sets up parts and equipment that weigh up to 50 pounds. Occasionally items
+        may weigh more than 50 pounds. The work is done inside and outside, and is
+        usually dirty, dusty, greasy, and smelly. There is frequent exposure to the
+        possibility of uncomfortable heat conditions. The employee is exposed to the
+        possibility of strains, cuts, scrapes, bruises, burns, and infections. The
+        employee is occasionally exposed to the possibility of broken bones. Applicants
+        will be rated in accordance with the OPM Qualification Standard Handbook X-118C
+        (www.opm.gov/qualifications/x-118c). For this position, the job element method
+        is used to match what you, the applicant, can do against what the work calls
+        for. Your knowledge, skills and abilities will be compared to the knowledge,
+        skills and abilities (called job elements) needed for success. Your qualifications
+        will first be evaluated against the prescribed screen out element (WG-2 and
+        higher only; screen-outs are not applicable to WG-1). Applicants who appear
+        to meet the screen out element are considered for further rating; those who
+        do not are rated ineligible and are eliminated from consideration. The potential
+        eligibles are rated against the remainder of the job elements. While a specific
+        length of training and experience is not required, your responses to the questionnaire
+        must be supported by detailed descriptions of your experience on your resume.
+        You will be rated on the following Job Elements as part of the assessment
+        questionnaire for this position:\nEquipment Assembly, Installation, RepairInterpret
+        Instructions, Specifications (includes blueprint reading)Measurement and LayoutTechnical
+        PracticesUse and Maintain Tools and Equipment IMPORTANT: A full year of work
+        is considered to be 35-40 hours of work per week. All experience listed on
+        your resume must include the month and year start/end dates. Part-time experience
+        will be credited on the basis of time actually spent in appropriate activities.
+        Applicants wishing to receive credit for such experience must indicate clearly
+        the nature of their duties and responsibilities in each position and the number
+        of hours a week spent in such employment. Experience refers to paid and unpaid
+        experience, including volunteer work done through National Service programs
+        (e.g., Peace Corps, AmeriCorps) and other organizations (e.g., professional;
+        philanthropic; religious; spiritual; community; student; social). Volunteer
+        work helps build critical competencies, knowledge, and skills and can provide
+        valuable training and experience that translates directly to paid employment.
+        You will receive credit for all qualifying experience, including volunteer
+        experience.","PositionRemuneration":[{"MinimumRange":"27.56","MaximumRange":"32.21","RateIntervalCode":"Per
+        Hour"}],"PositionStartDate":"2018-11-13","PositionEndDate":"2018-11-27","PublicationStartDate":"2018-11-13","ApplicationCloseDate":"2018-11-27","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"","WhoMayApply":{"Name":"","Code":""},"LowGrade":"10","HighGrade":"10","PromotionPotential":"10","HiringPath":["public","vet"],"AgencyMarketingStatement":"OUR
+        MISSION: To fulfill President Lincoln''s promise: \"To care for him who shall
+        have borne the battle, and for his widow, and his orphan\" - by serving and
+        honoring the men and women who are America''s Veterans. How would you like
+        to become a part of a team providing compassionate care to Veterans? The Department
+        of Veterans Affairs (VA) needs employees who possess the energy, compassion,
+        and commitment to serve those who served our Country. Whatever the job title,
+        every position in VA will give you a chance to make a meaningful and personal
+        contribution to the lives of truly special and deserving people - our Veterans.
+        VA professionals feel good about their careers and their ability to balance
+        work and home life. VA offers generous paid time off and a variety of predictable
+        and flexible scheduling opportunities. Working for VA is one of the most emotionally
+        satisfying and professionally rewarding ways to dedicate the best within you
+        to your Country''s service. If you are transitioning from the military or
+        a Veteran already, we invite you to explore the benefits of continuing your
+        career at the VA. The VA is committed to hiring Veterans. The VA is much more
+        than just another employer. It is an honorable, open and welcoming community
+        of those who care. Gratitude is our motivation and service is our mission.
+        America''s Veterans need you!","TravelCode":"1","ApplyOnlineUrl":"https://apply.usastaffing.gov/Application/Apply","DetailStatusUrl":"https://apply.usastaffing.gov/Application/ApplicationStatus"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"517004300","MatchedObjectDescriptor":{"PositionID":"CARZ-10359326-19-PLC","PositionTitle":"Cook","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/517004300","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/517004300?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Wilkes
+        Barre, Pennsylvania","PositionLocation":[{"LocationName":"Wilkes Barre, Pennsylvania","CountryCode":"United
+        States","CountrySubDivisionCode":"Pennsylvania","CityName":"Wilkes Barre,
+        Pennsylvania","Longitude":-75.92483,"Latitude":41.2128944}],"OrganizationName":"Veterans
+        Affairs, Veterans Health Administration","DepartmentName":"Department of Veterans
+        Affairs","JobCategory":[{"Name":"Cooking","Code":"7404"}],"JobGrade":[{"Code":"WG"}],"PositionSchedule":[{"Name":"Full-Time","Code":"1"}],"PositionOfferingType":[{"Name":"Permanent","Code":"15317"}],"QualificationSummary":"PHYSICAL
+        EFFORT AND WORK CONDITIONS: The incumbent stands and moves about on hard surfaces
+        for the entire tour. He/She frequently stoops, reaches, lifts, or carries
+        food and kitchen equipment. Hand dexterity is necessary in the utilization
+        of machines to prepare foods. It may be required to lift up to 40 pounds unassisted
+        of more with assistance. The incumbent is responsible for following defined
+        safety rules to avoid hazards associated with the operation and cleaning of
+        steam and electrical equipment used in Nutrition and Food Service. Must use
+        proper procedures in lifting and moving heavy objects to avoid bruises, strains,
+        and other injury. Must be alert to avoid falls on wet floors, burns, and scalds
+        from hot foods and equipment, cuts from knives, slicers and other equipment,
+        and injury from improper use of chemicals. Must have the ability to work rapidly
+        yet efficiently to meet meal schedules and time frames. Works in areas subject
+        to change in temperature when required to enter refrigerators or freezers.
+        is required to wear protective clothing provided when entering freezer. The
+        work is performed in a hospital. The incumbent is subjected to constant distractions
+        and interruptions and includes the everyday risks and discomforts typical
+        of an acute care medical center. Workers are constantly exposed to the \"public\"
+        which involves patients, professional hospital staff and other support personnel
+        of the medical center. The importance of caring, courteous, interpersonal
+        relations which at times can be under strain or difficult circumstances, is
+        stressed. The incumbent may be exposed to contagious diseases while working
+        on inpatient care units. Must be neat and clean at all times and follow standard
+        set proper uniform compliance. This position involves shift work and requires
+        duty on weekends and holidays. The incumbent may be scheduled on a rotating
+        basis to provide coverage for both early and late shifts and performing other
+        duties as assigned. Applicants will be rated in accordance with the OPM Qualification
+        Standard Handbook X-118C (www.opm.gov/qualifications/x-118c). For this position,
+        the job element method is used to match what you, the applicant, can do against
+        what the work calls for. Your knowledge, skills and abilities will be compared
+        to the knowledge, skills and abilities (called job elements) needed for success.
+        Your qualifications will first be evaluated against the prescribed screen
+        out element (WG-2 and higher only; screen-outs are not applicable to WG-1).
+        Applicants who appear to meet the screen out element are considered for further
+        rating; those who do not are rated ineligible and are eliminated from consideration.
+        The potential eligibles are rated against the remainder of the job elements.
+        While a specific length of training and experience is not required, your responses
+        to the questionnaire must be supported by detailed descriptions of your experience
+        on your resume. You will be rated on the following Job Elements as part of
+        the assessment questionnaire for this position:\nComputer SkillsFood ServiceSpecial
+        Aptitude - Food Service WorkWithout more than normal supervisionWork with
+        Others IMPORTANT: A full year of work is considered to be 35-40 hours of work
+        per week. All experience listed on your resume must include the month and
+        year start/end dates. Part-time experience will be credited on the basis of
+        time actually spent in appropriate activities. Applicants wishing to receive
+        credit for such experience must indicate clearly the nature of their duties
+        and responsibilities in each position and the number of hours a week spent
+        in such employment. Experience refers to paid and unpaid experience, including
+        volunteer work done through National Service programs (e.g., Peace Corps,
+        AmeriCorps) and other organizations (e.g., professional; philanthropic; religious;
+        spiritual; community; student; social). Volunteer work helps build critical
+        competencies, knowledge, and skills and can provide valuable training and
+        experience that translates directly to paid employment. You will receive credit
+        for all qualifying experience, including volunteer experience.","PositionRemuneration":[{"MinimumRange":"18.61","MaximumRange":"21.75","RateIntervalCode":"Per
+        Hour"}],"PositionStartDate":"2018-11-16","PositionEndDate":"2018-11-23","PublicationStartDate":"2018-11-16","ApplicationCloseDate":"2018-11-23","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"","WhoMayApply":{"Name":"","Code":""},"LowGrade":"6","HighGrade":"6","PromotionPotential":"6","HiringPath":["public","vet"],"AgencyMarketingStatement":"OUR
+        MISSION: To fulfill President Lincoln''s promise: \"To care for him who shall
+        have borne the battle, and for his widow, and his orphan\" - by serving and
+        honoring the men and women who are America''s Veterans. How would you like
+        to become a part of a team providing compassionate care to Veterans? The Department
+        of Veterans Affairs (VA) needs employees who possess the energy, compassion,
+        and commitment to serve those who served our Country. Whatever the job title,
+        every position in VA will give you a chance to make a meaningful and personal
+        contribution to the lives of truly special and deserving people - our Veterans.
+        VA professionals feel good about their careers and their ability to balance
+        work and home life. VA offers generous paid time off and a variety of predictable
+        and flexible scheduling opportunities. Working for VA is one of the most emotionally
+        satisfying and professionally rewarding ways to dedicate the best within you
+        to your Country''s service. If you are transitioning from the military or
+        a Veteran already, we invite you to explore the benefits of continuing your
+        career at the VA. The VA is committed to hiring Veterans. The VA is much more
+        than just another employer. It is an honorable, open and welcoming community
+        of those who care. Gratitude is our motivation and service is our mission.
+        America''s Veterans need you!","TravelCode":"0","ApplyOnlineUrl":"https://apply.usastaffing.gov/Application/Apply","DetailStatusUrl":"https://apply.usastaffing.gov/Application/ApplicationStatus"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"516997500","MatchedObjectDescriptor":{"PositionID":"CARZ-10358032-19-TJE","PositionTitle":"Supervisory
+        Interior Designer","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/516997500","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/516997500?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Bronx,
+        New York","PositionLocation":[{"LocationName":"Bronx, New York","CountryCode":"United
+        States","CountrySubDivisionCode":"New York","CityName":"Bronx, New York","Longitude":-73.9232,"Latitude":40.8257}],"OrganizationName":"Veterans
+        Affairs, Veterans Health Administration","DepartmentName":"Department of Veterans
+        Affairs","JobCategory":[{"Name":"Interior Design","Code":"1008"}],"JobGrade":[{"Code":"GS"}],"PositionSchedule":[{"Name":"Full-Time","Code":"1"}],"PositionOfferingType":[{"Name":"Permanent","Code":"15317"}],"QualificationSummary":"To
+        qualify for this position at the GS-11 grade level, you must meet one of the
+        following: Experience: You must have at least one (1) full year of specialized
+        experience equivalent to at least the next lower grade level (GS-9) in the
+        Federal Service that has given you the particular knowledge, skills and abilities
+        required to successfully perform the duties of a Supervisory Interior Designer,
+        and that is typically in or related to the work of the position to be filled.
+        Specialized experience is experience that required the performance of work
+        concerned with the design and alteration of interior spaces to meet functional
+        and aesthetic needs such as: Identifying, researching, and creatively solving
+        problems pertaining to the function and quality of the interior environment;
+        Performing services relative to interior spaces, including programming, design
+        analysis, space planning and aesthetics, using specialized knowledge of interior
+        construction, building systems and components, building codes, equipment,
+        materials, and furnishings; Preparing drawings and documents relative to the
+        design of interior spaces in order to enhance and protect the health, safety,
+        and welfare of the public; Coordinating and integrating the mechanical, electrical,
+        and structural engineering disciplines within the interior context; Managing
+        projects, developing cost estimates, evaluating bid proposals, reviewing construction
+        documents, participating in on-site construction visits, conducting pre- and
+        post-occupancy evaluations, developing standards for efficient space management,
+        etc. NOTE: Experience must be fully documented on your resume and must include
+        job title, duties, month and year start/end dates AND hours worked per week.
+        ~OR~\nEducation: Successful completion of a Ph.D. or equivalent doctoral degree
+        or 3 full years of progressively higher level graduate education leading to
+        such a degree or LL.M., if related, with a major study in interior design
+        or other field that included or was supplemented by at least 30 semester hours
+        in interior design, interior architecture, or interior environmental design.
+        Such education must demonstrate the knowledge, skills, and abilities necessary
+        to do the work of the Supervisory Interior Designer position. NOTE: Transcripts
+        (unofficial or official) must be submitted with your application materials.
+        Education cannot be credited without documentation. ~OR~\nCombination: Equivalent
+        combination of successfully completed graduate level education (beyond the
+        second year) and specialized experience, as described above, which may be
+        used to meet total experience requirements for this grade level. The education
+        portion must include graduate courses that demonstrate the knowledge, skills,
+        and abilities necessary to do the work of the Supervisory Interior Designer
+        position. NOTE: Transcripts (unofficial or official) must be submitted with
+        your application materials. Education cannot be credited without documentation.
+        ~OR~\nNCIDQ Examination: Successfully passed the National Council for Interior
+        Design Qualification (NCIDQ) examination. NOTE: If attempting to qualify based
+        on passage of the NCIDQ exam, you must submit a copy of your certification
+        with your application. Certification cannot be credited without documentation.
+        A Quality Ranking Factor* has been requested by the facility to help determine
+        which of the basically qualified applicants are likely to be better qualified
+        for a position. The quality ranking factor for this position is: \"Do you
+        have a National Council for Interior Design Qualification (NCIDQ) Certification?\"
+        (To receive credit, you must submit a copy of your certification with your
+        application. Certification cannot be credited without documentation.) *Quality
+        Ranking Factors are skills, knowledge, abilities, or other worker characteristics
+        which could be expected to result in superior performance on the job. Quality
+        ranking factors will not be used for screening, but may be used as ranking
+        criteria. Applicants with higher proficiency levels may rank above those with
+        lower proficiency levels on a quality ranking factor. You will be rated on
+        the following Competencies as part of the assessment questionnaire for this
+        position: MENTAL VISUALIZATION PLANNING AND EVALUATING MANAGING HUMAN RESOURCES
+        PROJECT MANAGEMENT COMMUNICATION IMPORTANT: A full year of work is considered
+        to be 35-40 hours of work per week. All experience listed on your resume must
+        include the month and year start/end dates. Part-time experience will be credited
+        on the basis of time actually spent in appropriate activities. Applicants
+        wishing to receive credit for such experience must indicate clearly the nature
+        of their duties and responsibilities in each position and the number of hours
+        a week spent in such employment. Experience refers to paid and unpaid experience,
+        including volunteer work done through National Service programs (e.g., Peace
+        Corps, AmeriCorps) and other organizations (e.g., professional; philanthropic;
+        religious; spiritual; community; student; social). Volunteer work helps build
+        critical competencies, knowledge, and skills and can provide valuable training
+        and experience that translates directly to paid employment. You will receive
+        credit for all qualifying experience, including volunteer experience. For
+        more information on these qualification standards, please visit the United
+        States Office of Personnel Management''s website at http://www.opm.gov/qualifications.","PositionRemuneration":[{"MinimumRange":"70111.00","MaximumRange":"91147.00","RateIntervalCode":"Per
+        Year"}],"PositionStartDate":"2018-11-16","PositionEndDate":"2018-11-23","PublicationStartDate":"2018-11-16","ApplicationCloseDate":"2018-11-23","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"","WhoMayApply":{"Name":"","Code":""},"LowGrade":"11","HighGrade":"11","PromotionPotential":"11","HiringPath":["public"],"TotalOpenings":"1","AgencyMarketingStatement":"OUR
+        MISSION: To fulfill President Lincoln''s promise: \"To care for him who shall
+        have borne the battle, and for his widow, and his orphan\" - by serving and
+        honoring the men and women who are America''s Veterans. How would you like
+        to become a part of a team providing compassionate care to Veterans? The Department
+        of Veterans Affairs (VA) needs employees who possess the energy, compassion,
+        and commitment to serve those who served our Country. Whatever the job title,
+        every position in VA will give you a chance to make a meaningful and personal
+        contribution to the lives of truly special and deserving people - our Veterans.
+        VA professionals feel good about their careers and their ability to balance
+        work and home life. VA offers generous paid time off and a variety of predictable
+        and flexible scheduling opportunities. Working for VA is one of the most emotionally
+        satisfying and professionally rewarding ways to dedicate the best within you
+        to your Country''s service. If you are transitioning from the military or
+        a Veteran already, we invite you to explore the benefits of continuing your
+        career at the VA. The VA is committed to hiring Veterans. The VA is much more
+        than just another employer. It is an honorable, open and welcoming community
+        of those who care. Gratitude is our motivation and service is our mission.
+        America''s Veterans need you!","TravelCode":"1","ApplyOnlineUrl":"https://apply.usastaffing.gov/Application/Apply","DetailStatusUrl":"https://apply.usastaffing.gov/Application/ApplicationStatus"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"517351300","MatchedObjectDescriptor":{"PositionID":"CARZ-10359914-19-NRT","PositionTitle":"Biological
+        Science Laboratory Technician (Animal)","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/517351300","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/517351300?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Bronx,
+        New York","PositionLocation":[{"LocationName":"Bronx, New York","CountryCode":"United
+        States","CountrySubDivisionCode":"New York","CityName":"Bronx, New York","Longitude":-73.89544,"Latitude":40.8715553}],"OrganizationName":"Veterans
+        Affairs, Veterans Health Administration","DepartmentName":"Department of Veterans
+        Affairs","JobCategory":[{"Name":"Biological Science Technician","Code":"0404"}],"JobGrade":[{"Code":"GS"}],"PositionSchedule":[{"Name":"Full-Time","Code":"1"}],"PositionOfferingType":[{"Name":"4
+        years","Code":"15319"}],"QualificationSummary":"NOTE: This is a TERM appointment
+        (not-to-exceed 4 years). Term appointments are non-status, nonpermanent appointments
+        of limited duration (more than 1 year but not more than 4). Term employees
+        are eligible to earn leave and generally have the same benefits as permanent
+        employees including health and life insurance, within-grade increases and
+        Federal Employees Retirement System and Thrift Savings Plan coverage. Term
+        appointments may be extended without further competition (up to the 4 year
+        maximum). The appointment to a Term position does not confer eligibility for
+        promotion or reassignment to other positions or the ability to be non-competitively
+        converted to permanent employment. SELECTIVE PLACEMENT FACTOR (SCREEN-OUT)
+        - A Selective Placement Factor (SPF) has been identified for this position.
+        Selective Placement Factors (SPF) are a prerequisite to appointment and represent
+        minimum requirements for the position. Applicants who do not meet the SPF
+        are ineligible for further consideration. The SPF for this position is: Experience
+        working with and handling animals in a research capacity. AND, in addition
+        to the SPF, applicant(s) must meet one of the following experience and/or
+        educational requirements:\nSPECIALIZED EXPERIENCE: Requires one year of specialized
+        experience equivalent to the next lower grade level (GS-4) in the Federal
+        service that equipped the applicant with the particular knowledge, skills,
+        and abilities (KSA''s) to perform successfully the duties of the position,
+        and that is typically in or related to the work of the position to be filled.
+        Experience must have been related to the work of the position for which application
+        is made. Qualifying experience includes providing basic husbandry (feeding,
+        watering, cleaning, and caring for laboratory animals); monitoring animals;
+        maintaining equipment, rooms, supplies, and cages in an animal facility; keeping
+        accurate records of animal laboratory operations and activities; work comparable
+        to that with a large dairy farm where production records, animal environment
+        and sanitary conditions were kept in accordance with modern practice and regulation
+        compliance; and performing research activity or control program work. Your
+        resume must detail your experience to be creditable. We will not make assumptions
+        regarding experience.\nNOTE: Farming experience that was not performed in
+        a controlled environment, or experience as a laborer who was not responsible
+        for planning and scheduling his/her own work, but only performed assigned
+        tasks, would not qualify as specialized experience.\n-OR-\nSUBSTITUTION OF
+        EDUCATION FOR EXPERIENCE (TRANSCRIPT REQUIRED): Successful completion of a
+        full 4-year course of study above high school leading to a bachelor''s degree
+        (or higher) with major study or at least 24 semester hours in any combination
+        of courses such as biology, chemistry, statistics, entomology, animal husbandry,
+        botany, physics, agriculture, or mathematics. At least 6 semester hours of
+        courses must have been directly related to the position to be filled. The
+        successful completion of a full course of study of at least 12 months in a
+        school for clinical laboratory technicians may be substituted for the 1 year
+        of specialized experience required at the GS-5 level for positions involving
+        microbiology and biochemistry technician work.\n-OR-\nCOMBINATION OF EDUCATION
+        AND EXPERIENCE (TRANSCRIPT REQUIRED): Equivalent combinations of successfully
+        completed post-high school education and specialized experience, as described
+        above, are also qualifying. A Quality Ranking Factor* has also been requested
+        by the facility to help determine which of the basically qualified applicants
+        are likely to be better qualified for a position. The quality ranking factor
+        for this position is: Completion of an AVMA - accredited Veterinary Technology
+        Program with certification as a Registered/Certified/Licensed Veterinary Technician
+        OR Possess an American Association for Laboratory Animal Science Certification
+        at the Laboratory Animal Technician (LAT) level. (Copy of Registered/Certified/Licensed
+        Certification Required) *Quality Ranking Factors are skills, knowledge, abilities,
+        or other worker characteristics which could be expected to result in superior
+        performance on the job. Quality ranking factors will not be used for screening,
+        but may be used as ranking criteria. Applicants with higher proficiency levels
+        may rank above those with lower proficiency levels on a quality ranking factor.
+        You will be rated on the following Competencies as part of the assessment
+        questionnaire for this position:\nAnimal HusbandryCommunicationsQuality Ranking
+        FactorTechnical Competence IMPORTANT: A full year of work is considered to
+        be 35-40 hours of work per week. All experience listed on your resume must
+        include the month and year start/end dates. Part-time experience will be credited
+        on the basis of time actually spent in appropriate activities. Applicants
+        wishing to receive credit for such experience must indicate clearly the nature
+        of their duties and responsibilities in each position and the number of hours
+        a week spent in such employment. Experience refers to paid and unpaid experience,
+        including volunteer work done through National Service programs (e.g., Peace
+        Corps, AmeriCorps) and other organizations (e.g., professional; philanthropic;
+        religious; spiritual; community; student; social). Volunteer work helps build
+        critical competencies, knowledge, and skills and can provide valuable training
+        and experience that translates directly to paid employment. You will receive
+        credit for all qualifying experience, including volunteer experience. For
+        more information on these qualification standards, please visit the United
+        States Office of Personnel Management''s website at http://www.opm.gov/qualifications.","PositionRemuneration":[{"MinimumRange":"38245.00","MaximumRange":"49721.00","RateIntervalCode":"Per
+        Year"}],"PositionStartDate":"2018-11-20","PositionEndDate":"2018-11-28","PublicationStartDate":"2018-11-20","ApplicationCloseDate":"2018-11-28","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"","WhoMayApply":{"Name":"","Code":""},"LowGrade":"5","HighGrade":"5","PromotionPotential":"5","HiringPath":["public"],"AgencyMarketingStatement":"OUR
+        MISSION: To fulfill President Lincoln''s promise: \"To care for him who shall
+        have borne the battle, and for his widow, and his orphan\" - by serving and
+        honoring the men and women who are America''s Veterans. How would you like
+        to become a part of a team providing compassionate care to Veterans? The Department
+        of Veterans Affairs (VA) needs employees who possess the energy, compassion,
+        and commitment to serve those who served our Country. Whatever the job title,
+        every position in VA will give you a chance to make a meaningful and personal
+        contribution to the lives of truly special and deserving people - our Veterans.
+        VA professionals feel good about their careers and their ability to balance
+        work and home life. VA offers generous paid time off and a variety of predictable
+        and flexible scheduling opportunities. Working for VA is one of the most emotionally
+        satisfying and professionally rewarding ways to dedicate the best within you
+        to your Country''s service. If you are transitioning from the military or
+        a Veteran already, we invite you to explore the benefits of continuing your
+        career at the VA. The VA is committed to hiring Veterans. The VA is much more
+        than just another employer. It is an honorable, open and welcoming community
+        of those who care. Gratitude is our motivation and service is our mission.
+        America''s Veterans need you!","TravelCode":"0","ApplyOnlineUrl":"https://apply.usastaffing.gov/Application/Apply","DetailStatusUrl":"https://apply.usastaffing.gov/Application/ApplicationStatus"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"517072800","MatchedObjectDescriptor":{"PositionID":"CARZ-10359442-19-CLB","PositionTitle":"Records
+        and Information Management Specialist","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/517072800","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/517072800?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Philadelphia,
+        Pennsylvania","PositionLocation":[{"LocationName":"Philadelphia, Pennsylvania","CountryCode":"United
+        States","CountrySubDivisionCode":"Pennsylvania","CityName":"Philadelphia,
+        Pennsylvania","Longitude":-75.16237,"Latitude":39.95227}],"OrganizationName":"Veterans
+        Affairs, Veterans Health Administration","DepartmentName":"Department of Veterans
+        Affairs","JobCategory":[{"Name":"Records & Information Management","Code":"0308"}],"JobGrade":[{"Code":"GS"}],"PositionSchedule":[{"Name":"Full-Time","Code":"1"}],"PositionOfferingType":[{"Name":"Permanent","Code":"15317"}],"QualificationSummary":"Specialized
+        Experience: MUST possess one (1) year of specialized experience equipped with
+        the knowledge, skills, and abilities to perform successfully the duties of
+        the Records and Information Management Specialist position. To be creditable,
+        this experience must have been equivalent to at least the GS-9 level in the
+        Federal service. Specialized experience includes: working experience managing
+        the records and information management program for a large health care system;
+        developing and utilizing records management metrics, dashboards, audits, surveys
+        and other reports to identify potential issues related to records management;
+        developing standardized file plans/records inventories and indexing approaches
+        for use of, access to and integration of information within an organization;
+        providing ongoing general and/or program specific training related to records
+        management; collaborating with others to implement programs for managing electronic
+        and audiovisual records and microfilm media; collaborating with others to
+        establish, coordinate and maintain automated information systems, shared drives
+        and share-point sites; estimating quarterly and annual funding for short-term
+        and long-term records storage, freight costs for records shipments and supplemental
+        costs related to records storage and dispositioning. (This experience must
+        be documented in your resume.) OR Substitution of Education for Experience:
+        MUST possess a Ph.D. or equivalent doctoral degree or 3 full years of progressively
+        higher level graduate education leading to such a degree or LL.M., if related.
+        This education must demonstrate the knowledge, skills, and abilities necessary
+        to do the work of this position. (Transcript Required)\nOR Combination of
+        Education and Experience: MUST possess a combination of successfully completed
+        graduate education and experience may be used to meet total qualification
+        requirements. (Transcript Required) You will be rated on the following Competencies
+        as part of the assessment questionnaire for this position:\nProject ManagementTeaches
+        OthersTechnical Competence IMPORTANT: A full year of work is considered to
+        be 35-40 hours of work per week. All experience listed on your resume must
+        include the month and year start/end dates. Part-time experience will be credited
+        on the basis of time actually spent in appropriate activities. Applicants
+        wishing to receive credit for such experience must indicate clearly the nature
+        of their duties and responsibilities in each position and the number of hours
+        a week spent in such employment. Experience refers to paid and unpaid experience,
+        including volunteer work done through National Service programs (e.g., Peace
+        Corps, AmeriCorps) and other organizations (e.g., professional; philanthropic;
+        religious; spiritual; community; student; social). Volunteer work helps build
+        critical competencies, knowledge, and skills and can provide valuable training
+        and experience that translates directly to paid employment. You will receive
+        credit for all qualifying experience, including volunteer experience. For
+        more information on these qualification standards, please visit the United
+        States Office of Personnel Management''s website at http://www.opm.gov/qualifications.","PositionRemuneration":[{"MinimumRange":"66110.00","MaximumRange":"85946.00","RateIntervalCode":"Per
+        Year"}],"PositionStartDate":"2018-11-16","PositionEndDate":"2018-11-26","PublicationStartDate":"2018-11-16","ApplicationCloseDate":"2018-11-26","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"","WhoMayApply":{"Name":"","Code":""},"LowGrade":"11","HighGrade":"11","PromotionPotential":"11","HiringPath":["public"],"TotalOpenings":"1","AgencyMarketingStatement":"OUR
+        MISSION: To fulfill President Lincoln''s promise: \"To care for him who shall
+        have borne the battle, and for his widow, and his orphan\" - by serving and
+        honoring the men and women who are America''s Veterans. How would you like
+        to become a part of a team providing compassionate care to Veterans? The Department
+        of Veterans Affairs (VA) needs employees who possess the energy, compassion,
+        and commitment to serve those who served our Country. Whatever the job title,
+        every position in VA will give you a chance to make a meaningful and personal
+        contribution to the lives of truly special and deserving people - our Veterans.
+        VA professionals feel good about their careers and their ability to balance
+        work and home life. VA offers generous paid time off and a variety of predictable
+        and flexible scheduling opportunities. Working for VA is one of the most emotionally
+        satisfying and professionally rewarding ways to dedicate the best within you
+        to your Country''s service. If you are transitioning from the military or
+        a Veteran already, we invite you to explore the benefits of continuing your
+        career at the VA. The VA is committed to hiring Veterans. The VA is much more
+        than just another employer. It is an honorable, open and welcoming community
+        of those who care. Gratitude is our motivation and service is our mission.
+        America''s Veterans need you!","TravelCode":"1","ApplyOnlineUrl":"https://apply.usastaffing.gov/Application/Apply","DetailStatusUrl":"https://apply.usastaffing.gov/Application/ApplicationStatus"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"512652900","MatchedObjectDescriptor":{"PositionID":"DE-10306385-18-WJJ","PositionTitle":"General
+        Attorney","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/512652900","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/512652900?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Multiple
+        Locations","PositionLocation":[{"LocationName":"Eloy, Arizona","CountryCode":"United
+        States","CountrySubDivisionCode":"Arizona","CityName":"Eloy, Arizona","Longitude":-111.555557,"Latitude":32.75242},{"LocationName":"Florence,
+        Arizona","CountryCode":"United States","CountrySubDivisionCode":"Arizona","CityName":"Florence,
+        Arizona","Longitude":-111.387543,"Latitude":33.0388145},{"LocationName":"Phoenix,
+        Arizona","CountryCode":"United States","CountrySubDivisionCode":"Arizona","CityName":"Phoenix,
+        Arizona","Longitude":-112.075775,"Latitude":33.44826},{"LocationName":"Tucson,
+        Arizona","CountryCode":"United States","CountrySubDivisionCode":"Arizona","CityName":"Tucson,
+        Arizona","Longitude":-110.969757,"Latitude":32.2215538},{"LocationName":"Adelanto,
+        California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"Adelanto,
+        California","Longitude":-117.4101,"Latitude":34.57922},{"LocationName":"El
+        Centro, California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"El
+        Centro, California","Longitude":-115.569969,"Latitude":32.7958031},{"LocationName":"Los
+        Angeles, California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"Los
+        Angeles, California","Longitude":-118.245,"Latitude":34.0535},{"LocationName":"Otay,
+        California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"Otay,
+        California","Longitude":-117.063,"Latitude":32.5948},{"LocationName":"Sacramento,
+        California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"Sacramento,
+        California","Longitude":-121.491,"Latitude":38.57906},{"LocationName":"San
+        Diego, California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"San
+        Diego, California","Longitude":-117.162,"Latitude":32.7157},{"LocationName":"San
+        Francisco, California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"San
+        Francisco, California","Longitude":-122.4196,"Latitude":37.7771},{"LocationName":"Centennial,
+        Colorado","CountryCode":"United States","CountrySubDivisionCode":"Colorado","CityName":"Centennial,
+        Colorado","Longitude":-104.898,"Latitude":39.5951},{"LocationName":"Hartford,
+        Connecticut","CountryCode":"United States","CountrySubDivisionCode":"Connecticut","CityName":"Hartford,
+        Connecticut","Longitude":-72.67407,"Latitude":41.7633247},{"LocationName":"Miami,
+        Florida","CountryCode":"United States","CountrySubDivisionCode":"Florida","CityName":"Miami,
+        Florida","Longitude":-80.23742,"Latitude":25.7289848},{"LocationName":"Orlando,
+        Florida","CountryCode":"United States","CountrySubDivisionCode":"Florida","CityName":"Orlando,
+        Florida","Longitude":-81.37739,"Latitude":28.5382347},{"LocationName":"Pompano
+        Beach, Florida","CountryCode":"United States","CountrySubDivisionCode":"Florida","CityName":"Pompano
+        Beach, Florida","Longitude":-80.12522,"Latitude":26.2314529},{"LocationName":"Atlanta,
+        Georgia","CountryCode":"United States","CountrySubDivisionCode":"Georgia","CityName":"Atlanta,
+        Georgia","Longitude":-84.39111,"Latitude":33.7483139},{"LocationName":"Lumpkin,
+        Georgia","CountryCode":"United States","CountrySubDivisionCode":"Georgia","CityName":"Lumpkin,
+        Georgia","Longitude":-84.7944946,"Latitude":32.05105},{"LocationName":"Honolulu,
+        Hawaii","CountryCode":"United States","CountrySubDivisionCode":"Hawaii","CityName":"Honolulu,
+        Hawaii","Longitude":-157.858,"Latitude":21.3047},{"LocationName":"Chicago,
+        Illinois","CountryCode":"United States","CountrySubDivisionCode":"Illinois","CityName":"Chicago,
+        Illinois","Longitude":-87.63241,"Latitude":41.88415},{"LocationName":"Louisville,
+        Kentucky","CountryCode":"United States","CountrySubDivisionCode":"Kentucky","CityName":"Louisville,
+        Kentucky","Longitude":-85.7664,"Latitude":38.25486},{"LocationName":"Jena,
+        Louisiana","CountryCode":"United States","CountrySubDivisionCode":"Louisiana","CityName":"Jena,
+        Louisiana","Longitude":-92.13284,"Latitude":31.6830769},{"LocationName":"New
+        Orleans, Louisiana","CountryCode":"United States","CountrySubDivisionCode":"Louisiana","CityName":"New
+        Orleans, Louisiana","Longitude":-90.07771,"Latitude":29.95369},{"LocationName":"Oakdale,
+        Louisiana","CountryCode":"United States","CountrySubDivisionCode":"Louisiana","CityName":"Oakdale,
+        Louisiana","Longitude":-92.66452,"Latitude":30.8151054},{"LocationName":"Boston,
+        Massachusetts","CountryCode":"United States","CountrySubDivisionCode":"Massachusetts","CityName":"Boston,
+        Massachusetts","Longitude":-71.0567,"Latitude":42.3586349},{"LocationName":"Baltimore,
+        Maryland","CountryCode":"United States","CountrySubDivisionCode":"Maryland","CityName":"Baltimore,
+        Maryland","Longitude":-76.6096039,"Latitude":39.290554},{"LocationName":"Detroit,
+        Michigan","CountryCode":"United States","CountrySubDivisionCode":"Michigan","CityName":"Detroit,
+        Michigan","Longitude":-83.0479,"Latitude":42.3317},{"LocationName":"Minneapolis,
+        Minnesota","CountryCode":"United States","CountrySubDivisionCode":"Minnesota","CityName":"Minneapolis,
+        Minnesota","Longitude":-93.26493,"Latitude":44.9790344},{"LocationName":"Kansas
+        City, Missouri","CountryCode":"United States","CountrySubDivisionCode":"Missouri","CityName":"Kansas
+        City, Missouri","Longitude":-94.58306,"Latitude":39.10296},{"LocationName":"Charlotte,
+        North Carolina","CountryCode":"United States","CountrySubDivisionCode":"North
+        Carolina","CityName":"Charlotte, North Carolina","Longitude":-80.83754,"Latitude":35.2225},{"LocationName":"Omaha,
+        Nebraska","CountryCode":"United States","CountrySubDivisionCode":"Nebraska","CityName":"Omaha,
+        Nebraska","Longitude":-95.94007,"Latitude":41.26067},{"LocationName":"Elizabeth,
+        New Jersey","CountryCode":"United States","CountrySubDivisionCode":"New Jersey","CityName":"Elizabeth,
+        New Jersey","Longitude":-74.2115,"Latitude":40.6635},{"LocationName":"Newark,
+        New Jersey","CountryCode":"United States","CountrySubDivisionCode":"New Jersey","CityName":"Newark,
+        New Jersey","Longitude":-74.17419,"Latitude":40.73197},{"LocationName":"Chaparral,
+        New Mexico","CountryCode":"United States","CountrySubDivisionCode":"New Mexico","CityName":"Chaparral,
+        New Mexico","Longitude":-106.4102,"Latitude":32.0381},{"LocationName":"Las
+        Vegas, Nevada","CountryCode":"United States","CountrySubDivisionCode":"Nevada","CityName":"Las
+        Vegas, Nevada","Longitude":-115.14,"Latitude":36.1719},{"LocationName":"Batavia,
+        New York","CountryCode":"United States","CountrySubDivisionCode":"New York","CityName":"Batavia,
+        New York","Longitude":-78.1882,"Latitude":42.9984},{"LocationName":"Buffalo,
+        New York","CountryCode":"United States","CountrySubDivisionCode":"New York","CityName":"Buffalo,
+        New York","Longitude":-78.87846,"Latitude":42.88544},{"LocationName":"New
+        York, New York","CountryCode":"United States","CountrySubDivisionCode":"New
+        York","CityName":"New York, New York","Longitude":-74.0071,"Latitude":40.7146},{"LocationName":"Newburgh,
+        New York","CountryCode":"United States","CountrySubDivisionCode":"New York","CityName":"Newburgh,
+        New York","Longitude":-74.01023,"Latitude":41.4999466},{"LocationName":"Brooklyn
+        Heights, Ohio","CountryCode":"United States","CountrySubDivisionCode":"Ohio","CityName":"Brooklyn
+        Heights, Ohio","Longitude":-81.6788254,"Latitude":41.4203835},{"LocationName":"Portland,
+        Oregon","CountryCode":"United States","CountrySubDivisionCode":"Oregon","CityName":"Portland,
+        Oregon","Longitude":-122.675629,"Latitude":45.511795},{"LocationName":"Philadelphia,
+        Pennsylvania","CountryCode":"United States","CountrySubDivisionCode":"Pennsylvania","CityName":"Philadelphia,
+        Pennsylvania","Longitude":-75.16237,"Latitude":39.95227},{"LocationName":"York,
+        Pennsylvania","CountryCode":"United States","CountrySubDivisionCode":"Pennsylvania","CityName":"York,
+        Pennsylvania","Longitude":-76.72429,"Latitude":39.9645348},{"LocationName":"San
+        Juan, Puerto Rico","CountryCode":"United States","CountrySubDivisionCode":"Puerto
+        Rico","CityName":"San Juan, Puerto Rico","Longitude":-66.1067,"Latitude":18.4662},{"LocationName":"Memphis,
+        Tennessee","CountryCode":"United States","CountrySubDivisionCode":"Tennessee","CityName":"Memphis,
+        Tennessee","Longitude":-90.04893,"Latitude":35.14968},{"LocationName":"Conroe,
+        Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"Conroe,
+        Texas","Longitude":-95.45592,"Latitude":30.31218},{"LocationName":"Dallas,
+        Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"Dallas,
+        Texas","Longitude":-96.7954,"Latitude":32.7781563},{"LocationName":"Dilley,
+        Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"Dilley,
+        Texas","Longitude":-99.16859,"Latitude":28.6669254},{"LocationName":"El Paso,
+        Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"El
+        Paso, Texas","Longitude":-106.4874,"Latitude":31.7591},{"LocationName":"Harlingen,
+        Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"Harlingen,
+        Texas","Longitude":-97.6955,"Latitude":26.1899},{"LocationName":"Houston,
+        Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"Houston,
+        Texas","Longitude":-95.36978,"Latitude":29.76045},{"LocationName":"Huntsville,
+        Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"Huntsville,
+        Texas","Longitude":-95.5521,"Latitude":30.7237},{"LocationName":"Los Fresnos,
+        Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"Los
+        Fresnos, Texas","Longitude":-97.477,"Latitude":26.0717144},{"LocationName":"Pearsall,
+        Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"Pearsall,
+        Texas","Longitude":-99.0946,"Latitude":28.8919},{"LocationName":"San Antonio,
+        Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"San
+        Antonio, Texas","Longitude":-98.49462,"Latitude":29.42449},{"LocationName":"West
+        Valley City, Utah","CountryCode":"United States","CountrySubDivisionCode":"Utah","CityName":"West
+        Valley City, Utah","Longitude":-111.957977,"Latitude":40.6941},{"LocationName":"Arlington,
+        Virginia","CountryCode":"United States","CountrySubDivisionCode":"Virginia","CityName":"Arlington,
+        Virginia","Longitude":-77.0862961,"Latitude":38.89051},{"LocationName":"Seattle,
+        Washington","CountryCode":"United States","CountrySubDivisionCode":"Washington","CityName":"Seattle,
+        Washington","Longitude":-122.329453,"Latitude":47.60358},{"LocationName":"Tacoma,
+        Washington","CountryCode":"United States","CountrySubDivisionCode":"Washington","CityName":"Tacoma,
+        Washington","Longitude":-122.441658,"Latitude":47.2551651}],"OrganizationName":"Immigration
+        and Customs Enforcement","DepartmentName":"Department of Homeland Security","JobCategory":[{"Name":"Attorney","Code":"0905"}],"JobGrade":[{"Code":"GS"}],"PositionSchedule":[{"Name":"Full-Time","Code":"1"}],"PositionOfferingType":[{"Name":"Permanent","Code":"15317"}],"QualificationSummary":"Applicants
+        with fewer than five (5) years of experience practicing law must submit a
+        copy of their law school transcript and grade point average or class ranking
+        as part of the application package. Qualifications by Cut-off Dates: Unless
+        otherwise noted, you must meet all qualification and eligibility requirements
+        by 11:59 P.M. Eastern Standard Time by the cut off dates listed in the \"How
+        You Will be Evaluated\" section order to be considered for that cut-off period.
+        Please note that qualification claims will be subject to verification.","PositionRemuneration":[{"MinimumRange":"53062.00","MaximumRange":"116181.00","RateIntervalCode":"Per
+        Year"}],"PositionStartDate":"2018-10-01","PositionEndDate":"2019-09-30","PublicationStartDate":"2018-10-01","ApplicationCloseDate":"2019-09-30","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"","WhoMayApply":{"Name":"","Code":""},"LowGrade":"11","HighGrade":"14","PromotionPotential":"14","HiringPath":["public"],"TotalOpenings":"Few","AgencyMarketingStatement":"JOB
+        SUMMARY\nThe Department of Homeland Security (DHS) is calling on those who
+        want to help protect American interests and secure our Nation. DHS components
+        work collectively to prevent terrorism; secure borders and our transportation
+        systems; protect the President and other dignitaries; enforce and administer
+        immigration laws; safeguard cyberspace; and ensure resilience to disasters.
+        We achieve these vital missions through a diverse workforce spanning hundreds
+        of occupations. Make an impact; join DHS. Immigration and Customs Enforcement
+        is the principal investigative arm of the U.S. Department of Homeland Security
+        (DHS) and the second largest investigative agency in the Federal government.
+        Created in 2003 through a merger of the investigative and interior enforcement
+        elements of the U.S. Customs Service and the Immigration and Naturalization
+        Service, ICE now has more than 20,000 employees in more than 400 offices in
+        the United States and 46 foreign countries around the world. ICE is a key
+        component of the DHS layered defense approach to protecting our nation. For
+        additional information about ICE and career opportunities go to www.ice.gov.","TravelCode":"1","ApplyOnlineUrl":"https://apply.usastaffing.gov/Application/Apply","DetailStatusUrl":"https://apply.usastaffing.gov/Application/ApplicationStatus"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"503588500","MatchedObjectDescriptor":{"PositionID":"HHS-CDC-DH-18-10247876","PositionTitle":"Physician","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/503588500","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/503588500?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Multiple
+        Locations","PositionLocation":[{"LocationName":"Anchorage, Alaska","CountryCode":"United
+        States","CountrySubDivisionCode":"Alaska","CityName":"Anchorage, Alaska","Longitude":-149.857742,"Latitude":61.21756},{"LocationName":"Phoenix,
+        Arizona","CountryCode":"United States","CountrySubDivisionCode":"Arizona","CityName":"Phoenix,
+        Arizona","Longitude":-112.075775,"Latitude":33.44826},{"LocationName":"Los
+        Angeles, California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"Los
+        Angeles, California","Longitude":-118.245,"Latitude":34.0535},{"LocationName":"Richmond,
+        California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"Richmond,
+        California","Longitude":-122.3427,"Latitude":37.9378},{"LocationName":"Sacramento,
+        California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"Sacramento,
+        California","Longitude":-121.491,"Latitude":38.57906},{"LocationName":"San
+        Diego, California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"San
+        Diego, California","Longitude":-117.162,"Latitude":32.7157},{"LocationName":"Fort
+        Collins, Colorado","CountryCode":"United States","CountrySubDivisionCode":"Colorado","CityName":"Fort
+        Collins, Colorado","Longitude":-105.076263,"Latitude":40.5815048},{"LocationName":"Hartford,
+        Connecticut","CountryCode":"United States","CountrySubDivisionCode":"Connecticut","CityName":"Hartford,
+        Connecticut","Longitude":-72.67407,"Latitude":41.7633247},{"LocationName":"Washington
+        DC, District of Columbia","CountryCode":"United States","CountrySubDivisionCode":"District
+        of Columbia","CityName":"Washington DC, District of Columbia","Longitude":-77.032,"Latitude":38.8904},{"LocationName":"Fort
+        Lauderdale, Florida","CountryCode":"United States","CountrySubDivisionCode":"Florida","CityName":"Fort
+        Lauderdale, Florida","Longitude":-80.14356,"Latitude":26.12367},{"LocationName":"Gainesville,
+        Florida","CountryCode":"United States","CountrySubDivisionCode":"Florida","CityName":"Gainesville,
+        Florida","Longitude":-82.32319,"Latitude":29.65195},{"LocationName":"Hollywood,
+        Florida","CountryCode":"United States","CountrySubDivisionCode":"Florida","CityName":"Hollywood,
+        Florida","Longitude":-80.16008,"Latitude":26.010397},{"LocationName":"Miami,
+        Florida","CountryCode":"United States","CountrySubDivisionCode":"Florida","CityName":"Miami,
+        Florida","Longitude":-80.23742,"Latitude":25.7289848},{"LocationName":"North
+        Miami, Florida","CountryCode":"United States","CountrySubDivisionCode":"Florida","CityName":"North
+        Miami, Florida","Longitude":-80.18271,"Latitude":25.8904247},{"LocationName":"Tallahassee,
+        Florida","CountryCode":"United States","CountrySubDivisionCode":"Florida","CityName":"Tallahassee,
+        Florida","Longitude":-84.28065,"Latitude":30.4397755},{"LocationName":"Vero
+        Beach, Florida","CountryCode":"United States","CountrySubDivisionCode":"Florida","CityName":"Vero
+        Beach, Florida","Longitude":-80.3942261,"Latitude":27.6388512},{"LocationName":"Atlanta,
+        Georgia","CountryCode":"United States","CountrySubDivisionCode":"Georgia","CityName":"Atlanta,
+        Georgia","Longitude":-84.39111,"Latitude":33.7483139},{"LocationName":"Atlanta,
+        Georgia","CountryCode":"United States","CountrySubDivisionCode":"Georgia","CityName":"Atlanta,
+        Georgia","Longitude":-84.39111,"Latitude":33.7483139},{"LocationName":"Mangilao,
+        Guam","CountryCode":"United States","CountrySubDivisionCode":"Guam","CityName":"Mangilao,
+        Guam","Longitude":144.7406,"Latitude":13.2755928},{"LocationName":"Honolulu,
+        Hawaii","CountryCode":"United States","CountrySubDivisionCode":"Hawaii","CityName":"Honolulu,
+        Hawaii","Longitude":-157.858,"Latitude":21.3047},{"LocationName":"Des Moines,
+        Iowa","CountryCode":"United States","CountrySubDivisionCode":"Iowa","CityName":"Des
+        Moines, Iowa","Longitude":-93.61568,"Latitude":41.5897865},{"LocationName":"Boise,
+        Idaho","CountryCode":"United States","CountrySubDivisionCode":"Idaho","CityName":"Boise,
+        Idaho","Longitude":-116.193413,"Latitude":43.60698},{"LocationName":"Chicago,
+        Illinois","CountryCode":"United States","CountrySubDivisionCode":"Illinois","CityName":"Chicago,
+        Illinois","Longitude":-87.63241,"Latitude":41.88415},{"LocationName":"Chicago,
+        Illinois","CountryCode":"United States","CountrySubDivisionCode":"Illinois","CityName":"Chicago,
+        Illinois","Longitude":-87.63241,"Latitude":41.88415},{"LocationName":"Indianapolis,
+        Indiana","CountryCode":"United States","CountrySubDivisionCode":"Indiana","CityName":"Indianapolis,
+        Indiana","Longitude":-86.14996,"Latitude":39.76691},{"LocationName":"Frankfort,
+        Kentucky","CountryCode":"United States","CountrySubDivisionCode":"Kentucky","CityName":"Frankfort,
+        Kentucky","Longitude":-84.87869,"Latitude":38.19506},{"LocationName":"Alexandria,
+        Louisiana","CountryCode":"United States","CountrySubDivisionCode":"Louisiana","CityName":"Alexandria,
+        Louisiana","Longitude":-92.44565,"Latitude":31.312685},{"LocationName":"Baton
+        Rouge, Louisiana","CountryCode":"United States","CountrySubDivisionCode":"Louisiana","CityName":"Baton
+        Rouge, Louisiana","Longitude":-91.1868744,"Latitude":30.44342},{"LocationName":"Berlin,
+        Massachusetts","CountryCode":"United States","CountrySubDivisionCode":"Massachusetts","CityName":"Berlin,
+        Massachusetts","Longitude":-71.63784,"Latitude":42.3813744},{"LocationName":"Boston,
+        Massachusetts","CountryCode":"United States","CountrySubDivisionCode":"Massachusetts","CityName":"Boston,
+        Massachusetts","Longitude":-71.0567,"Latitude":42.3586349},{"LocationName":"Concord,
+        Massachusetts","CountryCode":"United States","CountrySubDivisionCode":"Massachusetts","CityName":"Concord,
+        Massachusetts","Longitude":-71.34647,"Latitude":42.46286},{"LocationName":"Marlborough,
+        Massachusetts","CountryCode":"United States","CountrySubDivisionCode":"Massachusetts","CityName":"Marlborough,
+        Massachusetts","Longitude":-71.548,"Latitude":42.3468056},{"LocationName":"Milton,
+        Massachusetts","CountryCode":"United States","CountrySubDivisionCode":"Massachusetts","CityName":"Milton,
+        Massachusetts","Longitude":-71.06313,"Latitude":42.2653732},{"LocationName":"Northampton,
+        Massachusetts","CountryCode":"United States","CountrySubDivisionCode":"Massachusetts","CityName":"Northampton,
+        Massachusetts","Longitude":-72.6324,"Latitude":42.3178139},{"LocationName":"Baltimore,
+        Maryland","CountryCode":"United States","CountrySubDivisionCode":"Maryland","CityName":"Baltimore,
+        Maryland","Longitude":-76.6096039,"Latitude":39.290554},{"LocationName":"College
+        Park, Maryland","CountryCode":"United States","CountrySubDivisionCode":"Maryland","CityName":"College
+        Park, Maryland","Longitude":-76.93727,"Latitude":38.9807243},{"LocationName":"Columbia,
+        Maryland","CountryCode":"United States","CountrySubDivisionCode":"Maryland","CityName":"Columbia,
+        Maryland","Longitude":-76.8673,"Latitude":39.2092},{"LocationName":"Ellicott
+        City, Maryland","CountryCode":"United States","CountrySubDivisionCode":"Maryland","CityName":"Ellicott
+        City, Maryland","Longitude":-76.79945,"Latitude":39.2687225},{"LocationName":"Hyattsville,
+        Maryland","CountryCode":"United States","CountrySubDivisionCode":"Maryland","CityName":"Hyattsville,
+        Maryland","Longitude":-76.94208,"Latitude":38.95259},{"LocationName":"Kensington,
+        Maryland","CountryCode":"United States","CountrySubDivisionCode":"Maryland","CityName":"Kensington,
+        Maryland","Longitude":-77.07452,"Latitude":39.0261536},{"LocationName":"Potomac,
+        Maryland","CountryCode":"United States","CountrySubDivisionCode":"Maryland","CityName":"Potomac,
+        Maryland","Longitude":-77.2083359,"Latitude":39.01765},{"LocationName":"Rockville,
+        Maryland","CountryCode":"United States","CountrySubDivisionCode":"Maryland","CityName":"Rockville,
+        Maryland","Longitude":-77.1512,"Latitude":39.0817},{"LocationName":"Silver
+        Spring, Maryland","CountryCode":"United States","CountrySubDivisionCode":"Maryland","CityName":"Silver
+        Spring, Maryland","Longitude":-77.02888,"Latitude":38.99668},{"LocationName":"White
+        Oak, Maryland","CountryCode":"United States","CountrySubDivisionCode":"Maryland","CityName":"White
+        Oak, Maryland","Longitude":-76.99311,"Latitude":39.0479279},{"LocationName":"Woodlawn,
+        Maryland","CountryCode":"United States","CountrySubDivisionCode":"Maryland","CityName":"Woodlawn,
+        Maryland","Longitude":-76.7374,"Latitude":39.317},{"LocationName":"Augusta,
+        Maine","CountryCode":"United States","CountrySubDivisionCode":"Maine","CityName":"Augusta,
+        Maine","Longitude":-69.7762,"Latitude":44.318},{"LocationName":"Fairfield,
+        Maine","CountryCode":"United States","CountrySubDivisionCode":"Maine","CityName":"Fairfield,
+        Maine","Longitude":-69.5947,"Latitude":44.5893},{"LocationName":"Freeport,
+        Maine","CountryCode":"United States","CountrySubDivisionCode":"Maine","CityName":"Freeport,
+        Maine","Longitude":-70.105896,"Latitude":43.8555145},{"LocationName":"Fenton,
+        Michigan","CountryCode":"United States","CountrySubDivisionCode":"Michigan","CityName":"Fenton,
+        Michigan","Longitude":-83.70526,"Latitude":42.7936935},{"LocationName":"Minneapolis,
+        Minnesota","CountryCode":"United States","CountrySubDivisionCode":"Minnesota","CityName":"Minneapolis,
+        Minnesota","Longitude":-93.26493,"Latitude":44.9790344},{"LocationName":"Saint
+        Paul, Minnesota","CountryCode":"United States","CountrySubDivisionCode":"Minnesota","CityName":"Saint
+        Paul, Minnesota","Longitude":-93.09333,"Latitude":44.94383},{"LocationName":"Blue
+        Springs, Missouri","CountryCode":"United States","CountrySubDivisionCode":"Missouri","CityName":"Blue
+        Springs, Missouri","Longitude":-94.27481,"Latitude":39.0182648},{"LocationName":"Saint
+        Charles, Missouri","CountryCode":"United States","CountrySubDivisionCode":"Missouri","CityName":"Saint
+        Charles, Missouri","Longitude":-90.4821,"Latitude":38.7824},{"LocationName":"Monroe,
+        North Carolina","CountryCode":"United States","CountrySubDivisionCode":"North
+        Carolina","CityName":"Monroe, North Carolina","Longitude":-80.5489,"Latitude":34.9826},{"LocationName":"Raleigh,
+        North Carolina","CountryCode":"United States","CountrySubDivisionCode":"North
+        Carolina","CityName":"Raleigh, North Carolina","Longitude":-78.64267,"Latitude":35.78551},{"LocationName":"Trenton,
+        North Carolina","CountryCode":"United States","CountrySubDivisionCode":"North
+        Carolina","CityName":"Trenton, North Carolina","Longitude":-77.35292,"Latitude":35.06337},{"LocationName":"Ashley,
+        North Dakota","CountryCode":"United States","CountrySubDivisionCode":"North
+        Dakota","CityName":"Ashley, North Dakota","Longitude":-99.37806,"Latitude":46.03451},{"LocationName":"Lincoln,
+        Nebraska","CountryCode":"United States","CountrySubDivisionCode":"Nebraska","CityName":"Lincoln,
+        Nebraska","Longitude":-96.70774,"Latitude":40.81362},{"LocationName":"Newark,
+        New Jersey","CountryCode":"United States","CountrySubDivisionCode":"New Jersey","CityName":"Newark,
+        New Jersey","Longitude":-74.17419,"Latitude":40.73197},{"LocationName":"Trenton,
+        New Jersey","CountryCode":"United States","CountrySubDivisionCode":"New Jersey","CityName":"Trenton,
+        New Jersey","Longitude":-74.7594,"Latitude":40.2179},{"LocationName":"Albuquerque,
+        New Mexico","CountryCode":"United States","CountrySubDivisionCode":"New Mexico","CityName":"Albuquerque,
+        New Mexico","Longitude":-106.649,"Latitude":35.0842},{"LocationName":"Santa
+        Fe, New Mexico","CountryCode":"United States","CountrySubDivisionCode":"New
+        Mexico","CityName":"Santa Fe, New Mexico","Longitude":-105.937424,"Latitude":35.6915474},{"LocationName":"Las
+        Vegas, Nevada","CountryCode":"United States","CountrySubDivisionCode":"Nevada","CityName":"Las
+        Vegas, Nevada","Longitude":-115.14,"Latitude":36.1719},{"LocationName":"Albany,
+        New York","CountryCode":"United States","CountrySubDivisionCode":"New York","CityName":"Albany,
+        New York","Longitude":-73.75527,"Latitude":42.6514549},{"LocationName":"New
+        York, New York","CountryCode":"United States","CountrySubDivisionCode":"New
+        York","CityName":"New York, New York","Longitude":-74.0071,"Latitude":40.7146},{"LocationName":"Suffern,
+        New York","CountryCode":"United States","CountrySubDivisionCode":"New York","CityName":"Suffern,
+        New York","Longitude":-74.14964,"Latitude":41.1143837},{"LocationName":"Cincinnati,
+        Ohio","CountryCode":"United States","CountrySubDivisionCode":"Ohio","CityName":"Cincinnati,
+        Ohio","Longitude":-84.5041,"Latitude":39.1071},{"LocationName":"Columbus,
+        Ohio","CountryCode":"United States","CountrySubDivisionCode":"Ohio","CityName":"Columbus,
+        Ohio","Longitude":-83.00301,"Latitude":39.962},{"LocationName":"Lyndhurst,
+        Ohio","CountryCode":"United States","CountrySubDivisionCode":"Ohio","CityName":"Lyndhurst,
+        Ohio","Longitude":-81.48846,"Latitude":41.5199356},{"LocationName":"Perrysburg,
+        Ohio","CountryCode":"United States","CountrySubDivisionCode":"Ohio","CityName":"Perrysburg,
+        Ohio","Longitude":-83.6289,"Latitude":41.5567},{"LocationName":"Toledo, Ohio","CountryCode":"United
+        States","CountrySubDivisionCode":"Ohio","CityName":"Toledo, Ohio","Longitude":-83.53626,"Latitude":41.65381},{"LocationName":"Oklahoma
+        City, Oklahoma","CountryCode":"United States","CountrySubDivisionCode":"Oklahoma","CityName":"Oklahoma
+        City, Oklahoma","Longitude":-97.52033,"Latitude":35.4720039},{"LocationName":"Oklahoma
+        City, Oklahoma","CountryCode":"United States","CountrySubDivisionCode":"Oklahoma","CityName":"Oklahoma
+        City, Oklahoma","Longitude":-97.52033,"Latitude":35.4720039},{"LocationName":"Oklahoma
+        City, Oklahoma","CountryCode":"United States","CountrySubDivisionCode":"Oklahoma","CityName":"Oklahoma
+        City, Oklahoma","Longitude":-97.52033,"Latitude":35.4720039},{"LocationName":"Oklahoma
+        City, Oklahoma","CountryCode":"United States","CountrySubDivisionCode":"Oklahoma","CityName":"Oklahoma
+        City, Oklahoma","Longitude":-97.52033,"Latitude":35.4720039},{"LocationName":"Oklahoma
+        City, Oklahoma","CountryCode":"United States","CountrySubDivisionCode":"Oklahoma","CityName":"Oklahoma
+        City, Oklahoma","Longitude":-97.52033,"Latitude":35.4720039},{"LocationName":"Tulsa,
+        Oklahoma","CountryCode":"United States","CountrySubDivisionCode":"Oklahoma","CityName":"Tulsa,
+        Oklahoma","Longitude":-95.9933548,"Latitude":36.14975},{"LocationName":"Tulsa,
+        Oklahoma","CountryCode":"United States","CountrySubDivisionCode":"Oklahoma","CityName":"Tulsa,
+        Oklahoma","Longitude":-95.9933548,"Latitude":36.14975},{"LocationName":"Portland,
+        Oregon","CountryCode":"United States","CountrySubDivisionCode":"Oregon","CityName":"Portland,
+        Oregon","Longitude":-122.675629,"Latitude":45.511795},{"LocationName":"Portland,
+        Oregon","CountryCode":"United States","CountrySubDivisionCode":"Oregon","CityName":"Portland,
+        Oregon","Longitude":-122.675629,"Latitude":45.511795},{"LocationName":"Portland,
+        Oregon","CountryCode":"United States","CountrySubDivisionCode":"Oregon","CityName":"Portland,
+        Oregon","Longitude":-122.675629,"Latitude":45.511795},{"LocationName":"Philadelphia,
+        Pennsylvania","CountryCode":"United States","CountrySubDivisionCode":"Pennsylvania","CityName":"Philadelphia,
+        Pennsylvania","Longitude":-75.16237,"Latitude":39.95227},{"LocationName":"Pittsburgh,
+        Pennsylvania","CountryCode":"United States","CountrySubDivisionCode":"Pennsylvania","CityName":"Pittsburgh,
+        Pennsylvania","Longitude":-79.99746,"Latitude":40.43831},{"LocationName":"Yardley,
+        Pennsylvania","CountryCode":"United States","CountrySubDivisionCode":"Pennsylvania","CityName":"Yardley,
+        Pennsylvania","Longitude":-74.83738,"Latitude":40.2413368},{"LocationName":"San
+        Juan, Puerto Rico","CountryCode":"United States","CountrySubDivisionCode":"Puerto
+        Rico","CityName":"San Juan, Puerto Rico","Longitude":-66.1067,"Latitude":18.4662},{"LocationName":"Providence,
+        Rhode Island","CountryCode":"United States","CountrySubDivisionCode":"Rhode
+        Island","CityName":"Providence, Rhode Island","Longitude":-71.4119949,"Latitude":41.8238754},{"LocationName":"Columbia,
+        South Carolina","CountryCode":"United States","CountrySubDivisionCode":"South
+        Carolina","CityName":"Columbia, South Carolina","Longitude":-81.04525,"Latitude":33.99855},{"LocationName":"Columbia,
+        South Carolina","CountryCode":"United States","CountrySubDivisionCode":"South
+        Carolina","CityName":"Columbia, South Carolina","Longitude":-81.04525,"Latitude":33.99855},{"LocationName":"North
+        Augusta, South Carolina","CountryCode":"United States","CountrySubDivisionCode":"South
+        Carolina","CityName":"North Augusta, South Carolina","Longitude":-81.9701,"Latitude":33.4958},{"LocationName":"Coalmont,
+        Tennessee","CountryCode":"United States","CountrySubDivisionCode":"Tennessee","CityName":"Coalmont,
+        Tennessee","Longitude":-85.69968,"Latitude":35.3475838},{"LocationName":"Nashville,
+        Tennessee","CountryCode":"United States","CountrySubDivisionCode":"Tennessee","CityName":"Nashville,
+        Tennessee","Longitude":-86.7783661,"Latitude":36.16778},{"LocationName":"Austin,
+        Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"Austin,
+        Texas","Longitude":-97.743,"Latitude":30.2676},{"LocationName":"Austin, Texas","CountryCode":"United
+        States","CountrySubDivisionCode":"Texas","CityName":"Austin, Texas","Longitude":-97.6428,"Latitude":30.4887},{"LocationName":"El
+        Paso, Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"El
+        Paso, Texas","Longitude":-106.4874,"Latitude":31.7591},{"LocationName":"Houston,
+        Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"Houston,
+        Texas","Longitude":-95.36978,"Latitude":29.76045},{"LocationName":"Houston,
+        Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"Houston,
+        Texas","Longitude":-95.36978,"Latitude":29.76045},{"LocationName":"Houston,
+        Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"Houston,
+        Texas","Longitude":-95.36978,"Latitude":29.76045},{"LocationName":"Keller,
+        Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"Keller,
+        Texas","Longitude":-97.22513,"Latitude":32.9308624},{"LocationName":"San Antonio,
+        Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"San
+        Antonio, Texas","Longitude":-98.49462,"Latitude":29.42449},{"LocationName":"Salt
+        Lake City, Utah","CountryCode":"United States","CountrySubDivisionCode":"Utah","CityName":"Salt
+        Lake City, Utah","Longitude":-111.888229,"Latitude":40.75952},{"LocationName":"Richmond,
+        Virginia","CountryCode":"United States","CountrySubDivisionCode":"Virginia","CityName":"Richmond,
+        Virginia","Longitude":-77.4336548,"Latitude":37.5407},{"LocationName":"Burlington,
+        Vermont","CountryCode":"United States","CountrySubDivisionCode":"Vermont","CityName":"Burlington,
+        Vermont","Longitude":-73.2132,"Latitude":44.4759},{"LocationName":"Seattle,
+        Washington","CountryCode":"United States","CountrySubDivisionCode":"Washington","CityName":"Seattle,
+        Washington","Longitude":-122.329453,"Latitude":47.60358},{"LocationName":"Shoreline,
+        Washington","CountryCode":"United States","CountrySubDivisionCode":"Washington","CityName":"Shoreline,
+        Washington","Longitude":-122.344582,"Latitude":47.756897},{"LocationName":"Spokane,
+        Washington","CountryCode":"United States","CountrySubDivisionCode":"Washington","CityName":"Spokane,
+        Washington","Longitude":-117.412277,"Latitude":47.65726},{"LocationName":"Madison,
+        Wisconsin","CountryCode":"United States","CountrySubDivisionCode":"Wisconsin","CityName":"Madison,
+        Wisconsin","Longitude":-89.38666,"Latitude":43.0729256},{"LocationName":"Charleston,
+        West Virginia","CountryCode":"United States","CountrySubDivisionCode":"West
+        Virginia","CityName":"Charleston, West Virginia","Longitude":-81.63893,"Latitude":38.3502159},{"LocationName":"Morgantown,
+        West Virginia","CountryCode":"United States","CountrySubDivisionCode":"West
+        Virginia","CityName":"Morgantown, West Virginia","Longitude":-79.95785,"Latitude":39.6303749}],"OrganizationName":"Centers
+        for Disease Control and Prevention","DepartmentName":"Department of Health
+        And Human Services","JobCategory":[{"Name":"Medical Officer","Code":"0602"}],"JobGrade":[{"Code":"GP"}],"PositionSchedule":[{"Name":"Full-Time","Code":"1"}],"PositionOfferingType":[{"Name":"Multiple
+        Appointment Types","Code":"15327"}],"QualificationSummary":"BASIC QUALIFICATIONS:\nApplicants
+        must possess a Doctor of Medicine or Doctor of Osteopathic Medicine or equivalent
+        from a school in the United States or Canada. This degree must have been accredited
+        by the Council on Medical Education of the American Medical Association; Association
+        of American Medical Colleges; Liaison Committee on Medical Education; Commission
+        on Osteopathic College Accreditation of the American Osteopathic Association,
+        or an accrediting body recognized by the U.S. Department of Education at the
+        time the degree was obtained. A Doctor of Medicine or equivalent degree from
+        a foreign medical school must provide education and medical knowledge equivalent
+        to accredited schools in the United States. Evidence of equivalency to accredited
+        schools in the United States is demonstrated by permanent certification by
+        the Educational Commission for Foreign Medical Graduates (ECFMG) https://www.ecfmg.org/,
+        a fifth pathway certificate for Americans who completed premedical education
+        in the United States and graduate education in a foreign country, or successful
+        completion of the U.S. Medical Licensing Examination. Applicants must possess
+        a current, active, full, and unrestricted license or registration as a Physician
+        from a State, the District of Columbia, the Commonwealth of Puerto Rico, or
+        a territory of the United States. NOTE: All applicants must possess a current
+        medical license when applying for positions that require clinical or patient
+        care. Additional Qualifications: In addition to meeting the Basic Qualifications
+        applicants must also meet the following for Physician, GP-602-13/14/15. NOTE:
+        A residency program involves training in a specialized field of medicine in
+        an institution accredited for training in the specialty by a recognized body
+        of the American Medical Association (AMA) or AOA. For GS-13: Three years of
+        residency training in the specialty of the position to be filled or possess
+        at least one year of specialized experience equivalent to the GS-12 grade
+        level in the Federal service implementing and evaluating medical activities
+        related to public health programs. For GS-14: Four years of residency training
+        in the specialty of the position to be filled or possess at least one year
+        of specialized experience equivalent to the GS-13 grade level in the Federal
+        service designing, implementing and evaluating medical activities related
+        to public health programs. For GS-15: Five years of residency training in
+        the specialty of the position to be filled or possess at least one year of
+        specialized experience equivalent to the GS-14 grade level in the Federal
+        service performing scientific, technical and programmatic medical activities
+        to originate new techniques, establish criteria, or develop new information
+        related to public health programs.","PositionRemuneration":[{"MinimumRange":"75628.00","MaximumRange":"136659.00","RateIntervalCode":"Per
+        Year"}],"PositionStartDate":"2018-07-09","PositionEndDate":"2019-01-11","PublicationStartDate":"2018-07-09","ApplicationCloseDate":"2019-01-11","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"","WhoMayApply":{"Name":"","Code":""},"LowGrade":"13","HighGrade":"15","PromotionPotential":"15","PromotionPotentialAdditionalText":"No
+        promotion potential for Physician positions, any position filled with this
+        announcement will be filled at the single grade level requested.","HiringPath":["public"],"TotalOpenings":"Few","AgencyMarketingStatement":"The
+        Centers for Disease Control and Prevention (CDC) is the agency Americans trust
+        with their lives. As a global leader in public health, CDC is the nation''s
+        premier health promotion, prevention, and preparedness agency. Whether we
+        are protecting the American people from public health threats, researching
+        emerging diseases, or mobilizing public health programs with our domestic
+        and international partners, we rely on our employees to make a real difference
+        in the health and well-being of people here and around the world. This position
+        is being filled through the Direct Hire Authority. Veterans'' preference and
+        traditional rating and ranking of applications do not apply to positions filled
+        under this announcement. All applicants who meet the basic qualification requirements
+        will be forwarded to the Selecting Official for consideration. Applications
+        received as a result of job fairs, recruitment events, and emergency hiring
+        mechanisms in support of this hiring initiative will also be accepted during
+        the duration of the direct-hire authority. Physician positions may be filled
+        with this open continuous vacancy announcement within any CDC organization.
+        This announcement will be used to fill positions in various geographical locations
+        HHS-wide. Please be advised there is no promotion potential for Physician
+        positions, any position filled with this announcement will be filled at the
+        single grade level requested. CDC is an Equal Opportunity Employer.","TravelCode":"1","ApplyOnlineUrl":"https://apply.usastaffing.gov/Application/Apply","DetailStatusUrl":"https://apply.usastaffing.gov/Application/ApplicationStatus"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"488878600","MatchedObjectDescriptor":{"PositionID":"RPCV
+        NCE 2018","PositionTitle":"RPCV Non-Competitive Employment Program","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/488878600","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/488878600?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Multiple
+        Locations","PositionLocation":[{"LocationName":"Oakland, California","CountryCode":"United
+        States","CountrySubDivisionCode":"California","CityName":"Oakland, California","Longitude":-122.273026,"Latitude":37.8050652},{"LocationName":"District
+        of Columbia, District of Columbia","CountryCode":"United States","CountrySubDivisionCode":"District
+        of Columbia","CityName":"District of Columbia, District of Columbia","Longitude":-77.03196,"Latitude":38.89037},{"LocationName":"Chicago,
+        Illinois","CountryCode":"United States","CountrySubDivisionCode":"Illinois","CityName":"Chicago,
+        Illinois","Longitude":-87.63241,"Latitude":41.88415},{"LocationName":"New
+        York, New York","CountryCode":"United States","CountrySubDivisionCode":"New
+        York","CityName":"New York, New York","Longitude":-74.0071,"Latitude":40.7146}],"OrganizationName":"Peace
+        Corps","DepartmentName":"Other Agencies and Independent Organizations","JobCategory":[{"Name":"Miscellaneous
+        Administration And Program","Code":"0301"}],"JobGrade":[{"Code":"FP"}],"PositionSchedule":[{"Name":"Schedule
+        may depend on the needs of the office","Code":"1"}],"PositionOfferingType":[{"Name":"Term
+        Limits cannot exceed 60 months (5 years)","Code":"15317"}],"QualificationSummary":"You
+        must meet the specialized experience at the time of your application. You
+        will receive credit for all qualifying experience, including volunteer experience.
+        To ensure full credit for your experience, please indicate dates of employment
+        by month, day, and year and the number of hours worked per week in your resume.
+        Minimum Federal Qualification Requirements FP-9 (GS-5)Qualifying experience
+        for the FP-9 (GS-5) level includes one (1) year of specialized experience
+        at least equivalent to the GS-4 level which is in or directly related to the
+        line of work of the position to be filled and which has equipped the applicant
+        with the particular knowledge, skills, and abilities to successfully perform
+        the duties of the position. Specialized experience may include: Providing
+        general clerical support (e.g., greeting visitors, maintaining files, and
+        typing routine correspondence); or gathering program data or information following
+        routine search procedures.orThe experience requirements for the FP-09 level
+        may be generally met by completion of a bachelor''s degree or four years of
+        education beyond the high school level.orA combination of successfully completed
+        post high school education and specialized experience that combined account
+        for a total of 100% may be generally used to meet the total experience requirement.Some
+        positions may require a different set of specialized experience and/or specific
+        education depending on the job category and/or grade level.Additional information
+        on qualification requirements are outlined in the OPM Qualifications Standards
+        Handbook of General Schedule Positions. It is available for your review on
+        the OPM web site at http://www.opm.gov/qualifications.","PositionRemuneration":[{"MinimumRange":"33394.0","MaximumRange":"59204.0","RateIntervalCode":"Per
+        Year"}],"PositionStartDate":"2018-01-17","PositionEndDate":"2019-01-16","PublicationStartDate":"2018-01-17","ApplicationCloseDate":"2019-01-16","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"These
+        positions are designed to allow returning Peace Corps volunteers the opportunity
+        to enter Federal employment and gain work skills and experience. These entry
+        level positions include job categories in general administration, finance,
+        human resources, medical, data management and analysis, communications, information
+        technology, health services, training, contract management, and volunteer
+        recruitment.These may include, but are not limited to, jobs in the following
+        job families and series: General Administrative, Clerical, and Office Services
+        (0301, 0303, 0318), Management and Program Analysis (0343), Human Resources
+        (0201, 0203), Accounting and Budget (0501, 0503, 0560), Medical, Hospital,
+        Dental, and Public Health (0679, 0675), Information and Arts (1035, 1082),
+        Business and Industry (1101, 1102) and Information Technology Management (2210).You
+        may indicate interest in one (1) or all of the job categories and locations
+        listed.Positions may be filled at the DC Headquarters location or at one of
+        three (3) regional offices (New York, NY; Oakland/San Francisco, CA; Chicago,
+        IL), or in a variety of field-based locations throughout the continental United
+        States. The starting grade, pay and promotion potential will vary by position
+        and location.Other locations may also be available depending on the type of
+        position and the office in which the vacancy exists.When a position is requested
+        to be filled utilizing this RPCV standing register, eligible applicants will
+        be forwarded to management for review and possible selection.Positions filled
+        through this announcement may be at the FP-9 through FP-5 grade levels (equivalent
+        to GS-5 through GS-9).Your resume and any submitted documents will be retained
+        for 90 days after your first application. You will need to certify your continued
+        interest every 90 days to be considered for future opportunities.","WhoMayApply":{"Name":"ONLY
+        recently Returned Peace Corps Volunteers (RPCV) who are U.S. Citizens Eligible
+        for Non-Competitive Hire May Apply","Code":"26985"},"LowGrade":"09","HighGrade":"09","PromotionPotential":"05","HiringPath":["public","peace"],"TotalOpenings":"MANY","AppointmentExplanationText":"Permanent","AgencyMarketingStatement":"","TravelCode":"0","ApplyOnlineUrl":"https://careerconnector.jobs.treas.gov/cc/pc/ros/rosDashboard.hms?O=1754&J=159789","DetailStatusUrl":"https://careerconnector.jobs.treas.gov/cc/pc/ros/rosDashboard.hms?O=1754&J=159789&S=1"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"490914300","MatchedObjectDescriptor":{"PositionID":"SEU-SR-AIRCRAFT-HELPER-WG05","PositionTitle":"Aircraft
+        Mechanic Helper","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/490914300","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/490914300?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Multiple
+        Locations","PositionLocation":[{"LocationName":"Elmendorf AFB, Alaska","CountryCode":"United
+        States","CountrySubDivisionCode":"Alaska","CityName":"Elmendorf AFB, Alaska","Longitude":-149.819611,"Latitude":61.2758446},{"LocationName":"Gunter
+        AFB, Alabama","CountryCode":"United States","CountrySubDivisionCode":"Alabama","CityName":"Gunter
+        AFB, Alabama","Longitude":-86.2444,"Latitude":32.4077},{"LocationName":"Maxwell
+        AFB, Alabama","CountryCode":"United States","CountrySubDivisionCode":"Alabama","CityName":"Maxwell
+        AFB, Alabama","Longitude":-86.3577,"Latitude":32.3834},{"LocationName":"Little
+        Rock AFB, Arkansas","CountryCode":"United States","CountrySubDivisionCode":"Arkansas","CityName":"Little
+        Rock AFB, Arkansas","Longitude":-92.14686,"Latitude":34.91159},{"LocationName":"Davis
+        Monthan AFB, Arizona","CountryCode":"United States","CountrySubDivisionCode":"Arizona","CityName":"Davis
+        Monthan AFB, Arizona","Longitude":-110.8475,"Latitude":32.1566},{"LocationName":"Luke
+        AFB, Arizona","CountryCode":"United States","CountrySubDivisionCode":"Arizona","CityName":"Luke
+        AFB, Arizona","Longitude":-112.361771,"Latitude":33.53527},{"LocationName":"Tucson,
+        Arizona","CountryCode":"United States","CountrySubDivisionCode":"Arizona","CityName":"Tucson,
+        Arizona","Longitude":-110.969757,"Latitude":32.2215538},{"LocationName":"Beale
+        AFB, California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"Beale
+        AFB, California","Longitude":-121.3373,"Latitude":39.0943},{"LocationName":"Edwards
+        AFB, California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"Edwards
+        AFB, California","Longitude":-117.8332,"Latitude":34.8898},{"LocationName":"March
+        AFB, California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"March
+        AFB, California","Longitude":-117.250732,"Latitude":33.8914032},{"LocationName":"Monterey,
+        California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"Monterey,
+        California","Longitude":-121.897,"Latitude":36.5976},{"LocationName":"Travis
+        AFB, California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"Travis
+        AFB, California","Longitude":-121.9318,"Latitude":38.2633},{"LocationName":"Vandenberg
+        AFB, California","CountryCode":"United States","CountrySubDivisionCode":"California","CityName":"Vandenberg
+        AFB, California","Longitude":-120.542488,"Latitude":34.75468},{"LocationName":"Air
+        Force Academy, Colorado","CountryCode":"United States","CountrySubDivisionCode":"Colorado","CityName":"Air
+        Force Academy, Colorado","Longitude":-104.854523,"Latitude":38.99115},{"LocationName":"Buckley
+        AFB, Colorado","CountryCode":"United States","CountrySubDivisionCode":"Colorado","CityName":"Buckley
+        AFB, Colorado","Longitude":-104.762611,"Latitude":39.70392},{"LocationName":"Peterson
+        AFB, Colorado","CountryCode":"United States","CountrySubDivisionCode":"Colorado","CityName":"Peterson
+        AFB, Colorado","Longitude":-104.7071,"Latitude":38.8279},{"LocationName":"Schriever
+        AFB, Colorado","CountryCode":"United States","CountrySubDivisionCode":"Colorado","CityName":"Schriever
+        AFB, Colorado","Longitude":-104.52668,"Latitude":38.8019447},{"LocationName":"Bolling
+        AFB, District of Columbia","CountryCode":"United States","CountrySubDivisionCode":"District
+        of Columbia","CityName":"Bolling AFB, District of Columbia","Longitude":-77.01735,"Latitude":38.83941},{"LocationName":"Dover
+        AFB, Delaware","CountryCode":"United States","CountrySubDivisionCode":"Delaware","CityName":"Dover
+        AFB, Delaware","Longitude":-75.4701,"Latitude":39.1274},{"LocationName":"Eglin
+        AFB, Florida","CountryCode":"United States","CountrySubDivisionCode":"Florida","CityName":"Eglin
+        AFB, Florida","Longitude":-86.5552,"Latitude":30.4654},{"LocationName":"Homestead
+        AFB, Florida","CountryCode":"United States","CountrySubDivisionCode":"Florida","CityName":"Homestead
+        AFB, Florida","Longitude":-80.38872,"Latitude":25.4953156},{"LocationName":"Hurlburt
+        Field, Florida","CountryCode":"United States","CountrySubDivisionCode":"Florida","CityName":"Hurlburt
+        Field, Florida","Longitude":-86.6988,"Latitude":30.4303},{"LocationName":"MacDill
+        AFB, Florida","CountryCode":"United States","CountrySubDivisionCode":"Florida","CityName":"MacDill
+        AFB, Florida","Longitude":-82.5033,"Latitude":27.8446},{"LocationName":"Miami,
+        Florida","CountryCode":"United States","CountrySubDivisionCode":"Florida","CityName":"Miami,
+        Florida","Longitude":-80.23742,"Latitude":25.7289848},{"LocationName":"Patrick
+        AFB, Florida","CountryCode":"United States","CountrySubDivisionCode":"Florida","CityName":"Patrick
+        AFB, Florida","Longitude":-80.60844,"Latitude":28.2421055},{"LocationName":"Tyndall
+        AFB, Florida","CountryCode":"United States","CountrySubDivisionCode":"Florida","CityName":"Tyndall
+        AFB, Florida","Longitude":-85.5674,"Latitude":30.049},{"LocationName":"Atlanta,
+        Georgia","CountryCode":"United States","CountrySubDivisionCode":"Georgia","CityName":"Atlanta,
+        Georgia","Longitude":-84.39111,"Latitude":33.7483139},{"LocationName":"Dobbins
+        AFB, Georgia","CountryCode":"United States","CountrySubDivisionCode":"Georgia","CityName":"Dobbins
+        AFB, Georgia","Longitude":-84.5194,"Latitude":33.9155},{"LocationName":"Moody
+        AFB, Georgia","CountryCode":"United States","CountrySubDivisionCode":"Georgia","CityName":"Moody
+        AFB, Georgia","Longitude":-83.1928253,"Latitude":30.9677639},{"LocationName":"Robins
+        AFB, Georgia","CountryCode":"United States","CountrySubDivisionCode":"Georgia","CityName":"Robins
+        AFB, Georgia","Longitude":-83.5919,"Latitude":32.64},{"LocationName":"Andersen
+        Air Base, Guam","CountryCode":"United States","CountrySubDivisionCode":"Guam","CityName":"Andersen
+        Air Base, Guam","Longitude":144.796,"Latitude":13.4831},{"LocationName":"Hickam
+        AFB, Hawaii","CountryCode":"United States","CountrySubDivisionCode":"Hawaii","CityName":"Hickam
+        AFB, Hawaii","Longitude":-157.934738,"Latitude":21.3174648},{"LocationName":"Scott
+        AFB, Illinois","CountryCode":"United States","CountrySubDivisionCode":"Illinois","CityName":"Scott
+        AFB, Illinois","Longitude":-89.8714,"Latitude":38.5483},{"LocationName":"Grissom
+        AFB, Indiana","CountryCode":"United States","CountrySubDivisionCode":"Indiana","CityName":"Grissom
+        AFB, Indiana","Longitude":-86.15,"Latitude":40.668026},{"LocationName":"McConnell
+        AFB, Kansas","CountryCode":"United States","CountrySubDivisionCode":"Kansas","CityName":"McConnell
+        AFB, Kansas","Longitude":-97.26118,"Latitude":37.6226845},{"LocationName":"Barksdale
+        AFB, Louisiana","CountryCode":"United States","CountrySubDivisionCode":"Louisiana","CityName":"Barksdale
+        AFB, Louisiana","Longitude":-93.6116,"Latitude":32.49727},{"LocationName":"Westover
+        Air Reserve Base, Massachusetts","CountryCode":"United States","CountrySubDivisionCode":"Massachusetts","CityName":"Westover
+        Air Reserve Base, Massachusetts","Longitude":-72.52932,"Latitude":42.1968},{"LocationName":"Andrews
+        AFB, Maryland","CountryCode":"United States","CountrySubDivisionCode":"Maryland","CityName":"Andrews
+        AFB, Maryland","Longitude":-76.8765,"Latitude":38.8054},{"LocationName":"Minneapolis,
+        Minnesota","CountryCode":"United States","CountrySubDivisionCode":"Minnesota","CityName":"Minneapolis,
+        Minnesota","Longitude":-93.26493,"Latitude":44.9790344},{"LocationName":"Whiteman
+        AFB, Missouri","CountryCode":"United States","CountrySubDivisionCode":"Missouri","CityName":"Whiteman
+        AFB, Missouri","Longitude":-93.572,"Latitude":38.7401},{"LocationName":"Columbus
+        AFB, Mississippi","CountryCode":"United States","CountrySubDivisionCode":"Mississippi","CityName":"Columbus
+        AFB, Mississippi","Longitude":-88.4415,"Latitude":33.6382},{"LocationName":"Keesler
+        AFB, Mississippi","CountryCode":"United States","CountrySubDivisionCode":"Mississippi","CityName":"Keesler
+        AFB, Mississippi","Longitude":-88.92272,"Latitude":30.40913},{"LocationName":"Seymour
+        Johnson AFB, North Carolina","CountryCode":"United States","CountrySubDivisionCode":"North
+        Carolina","CityName":"Seymour Johnson AFB, North Carolina","Longitude":-77.96784,"Latitude":35.3487473},{"LocationName":"Offutt
+        AFB, Nebraska","CountryCode":"United States","CountrySubDivisionCode":"Nebraska","CityName":"Offutt
+        AFB, Nebraska","Longitude":-95.9223,"Latitude":41.1203},{"LocationName":"McGuire
+        AFB, New Jersey","CountryCode":"United States","CountrySubDivisionCode":"New
+        Jersey","CityName":"McGuire AFB, New Jersey","Longitude":-74.5890961,"Latitude":40.0216141},{"LocationName":"Holloman
+        AFB, New Mexico","CountryCode":"United States","CountrySubDivisionCode":"New
+        Mexico","CityName":"Holloman AFB, New Mexico","Longitude":-106.100639,"Latitude":32.84768},{"LocationName":"Creech
+        AFB, Nevada","CountryCode":"United States","CountrySubDivisionCode":"Nevada","CityName":"Creech
+        AFB, Nevada","Longitude":-115.671,"Latitude":36.5858},{"LocationName":"Nellis
+        AFB, Nevada","CountryCode":"United States","CountrySubDivisionCode":"Nevada","CityName":"Nellis
+        AFB, Nevada","Longitude":-114.996,"Latitude":36.2363},{"LocationName":"Niagara
+        Falls, New York","CountryCode":"United States","CountrySubDivisionCode":"New
+        York","CityName":"Niagara Falls, New York","Longitude":-79.0558,"Latitude":43.0955},{"LocationName":"Wright-Patterson
+        AFB, Ohio","CountryCode":"United States","CountrySubDivisionCode":"Ohio","CityName":"Wright-Patterson
+        AFB, Ohio","Longitude":-84.05,"Latitude":39.8333},{"LocationName":"Youngstown,
+        Ohio","CountryCode":"United States","CountrySubDivisionCode":"Ohio","CityName":"Youngstown,
+        Ohio","Longitude":-80.65079,"Latitude":41.0981},{"LocationName":"Altus AFB,
+        Oklahoma","CountryCode":"United States","CountrySubDivisionCode":"Oklahoma","CityName":"Altus
+        AFB, Oklahoma","Longitude":-99.27909,"Latitude":34.66338},{"LocationName":"Fort
+        Sill, Oklahoma","CountryCode":"United States","CountrySubDivisionCode":"Oklahoma","CityName":"Fort
+        Sill, Oklahoma","Longitude":-98.5083,"Latitude":34.7042},{"LocationName":"Oklahoma
+        City, Oklahoma","CountryCode":"United States","CountrySubDivisionCode":"Oklahoma","CityName":"Oklahoma
+        City, Oklahoma","Longitude":-97.52033,"Latitude":35.4720039},{"LocationName":"Tinker
+        AFB, Oklahoma","CountryCode":"United States","CountrySubDivisionCode":"Oklahoma","CityName":"Tinker
+        AFB, Oklahoma","Longitude":-97.3894,"Latitude":35.422},{"LocationName":"Vance
+        AFB, Oklahoma","CountryCode":"United States","CountrySubDivisionCode":"Oklahoma","CityName":"Vance
+        AFB, Oklahoma","Longitude":-97.90917,"Latitude":36.3372269},{"LocationName":"Portland,
+        Oregon","CountryCode":"United States","CountrySubDivisionCode":"Oregon","CityName":"Portland,
+        Oregon","Longitude":-122.675629,"Latitude":45.511795},{"LocationName":"Pittsburgh,
+        Pennsylvania","CountryCode":"United States","CountrySubDivisionCode":"Pennsylvania","CityName":"Pittsburgh,
+        Pennsylvania","Longitude":-79.99746,"Latitude":40.43831},{"LocationName":"Charleston
+        AFB, South Carolina","CountryCode":"United States","CountrySubDivisionCode":"South
+        Carolina","CityName":"Charleston AFB, South Carolina","Longitude":-80.04993,"Latitude":32.8969536},{"LocationName":"Shaw
+        AFB, South Carolina","CountryCode":"United States","CountrySubDivisionCode":"South
+        Carolina","CityName":"Shaw AFB, South Carolina","Longitude":-80.4677,"Latitude":33.9741},{"LocationName":"Dyess
+        AFB, Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"Dyess
+        AFB, Texas","Longitude":-99.83814,"Latitude":32.4213638},{"LocationName":"Fort
+        Worth, Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"Fort
+        Worth, Texas","Longitude":-97.32925,"Latitude":32.74863},{"LocationName":"Lackland
+        AFB, Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"Lackland
+        AFB, Texas","Longitude":-98.6181,"Latitude":29.3861},{"LocationName":"Randolph
+        AFB, Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"Randolph
+        AFB, Texas","Longitude":-98.2775,"Latitude":29.5275},{"LocationName":"Sheppard
+        AFB, Texas","CountryCode":"United States","CountrySubDivisionCode":"Texas","CityName":"Sheppard
+        AFB, Texas","Longitude":-98.50469,"Latitude":33.9740448},{"LocationName":"Hill
+        AFB, Utah","CountryCode":"United States","CountrySubDivisionCode":"Utah","CityName":"Hill
+        AFB, Utah","Longitude":-111.9896,"Latitude":41.1251},{"LocationName":"Langley
+        AFB, Virginia","CountryCode":"United States","CountrySubDivisionCode":"Virginia","CityName":"Langley
+        AFB, Virginia","Longitude":-76.3667,"Latitude":37.0771},{"LocationName":"Pentagon,
+        Arlington, Virginia","CountryCode":"United States","CountrySubDivisionCode":"Virginia","CityName":"Pentagon,
+        Arlington, Virginia","Longitude":-77.06204,"Latitude":38.86163},{"LocationName":"McChord
+        AFB, Washington","CountryCode":"United States","CountrySubDivisionCode":"Washington","CityName":"McChord
+        AFB, Washington","Longitude":-122.501572,"Latitude":47.1286964}],"OrganizationName":"Headquarters,
+        Air Force Reserve Command","DepartmentName":"Department of the Air Force","JobCategory":[{"Name":"Aircraft
+        Mechanic","Code":"8852"}],"JobGrade":[{"Code":"WG"}],"PositionSchedule":[{"Name":"Full-Time","Code":"1"}],"PositionOfferingType":[{"Name":"Permanent","Code":"15317"}],"QualificationSummary":"A
+        specific length of experience or training is not required. However, you must
+        have experience and/or training (military or civilian, paid or unpaid) of
+        sufficient scope and quality to be able to perform the duties of the specific
+        position for which you are applying. You must show that you have the experience
+        as identified in the Job Elements listed below as they relate to the position
+        for which you are applying. Since your rating will be based upon the information
+        you supply in your application (resume), you should be as detailed as possible
+        and use the following Job Elements as a guide to assist you in identifying
+        your relevant work experience. ELEMENT A: Reliability and Dependability (Screen-Out)
+        -- Tell about experience you have had that shows you would be a reliable and
+        dependable worker. ELEMENT B: Shop Aptitude and Interest -- Demonstrate you
+        possess the aptitude and interest for learning the theories and practices
+        of the trade. ELEMENT C: Ability to Follow Directions in a Shop -- Give examples
+        of your experience (work or non-work related) in which you had to follow directions
+        in a mechanical/maintenance shop environment. Element D: Dexterity and Safety
+        -- Give examples of work situations in which you had to apply safety procedures.
+        ELEMENT E: Ability to Work as a Member of a Team -- Give examples of your
+        experience (work or non-work related) in which you worked closely with others.
+        Include any completion of training, vocational, trade or related schools in
+        a mechanical/maintenance field. PART-TIME OR UNPAID EXPERIENCE: Credit will
+        be given for appropriate unpaid and or part-time work. You must clearly identify
+        the duties and responsibilities in each position held and the total number
+        of hours per week. VOLUNTEER WORK EXPERIENCE: Refers to paid and unpaid experience,
+        including volunteer work done through National Service Programs (i.e., Peace
+        Corps, AmeriCorps) and other organizations (e.g., professional; philanthropic;
+        religious; spiritual; community; student and social). Volunteer work helps
+        build critical competencies, knowledge and skills that can provide valuable
+        training and experience that translates directly to paid employment.You will
+        receive credit for all qualifying experience, including volunteer experience.","PositionRemuneration":[{"MinimumRange":"18.55","MaximumRange":"21.64","RateIntervalCode":"Per
+        Hour"}],"PositionStartDate":"2018-02-08","PositionEndDate":"2018-12-25","PublicationStartDate":"2018-02-08","ApplicationCloseDate":"2018-12-25","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"","WhoMayApply":{"Name":"","Code":""},"LowGrade":"5","HighGrade":"5","PromotionPotential":"10","HiringPath":["public"],"TotalOpenings":"FEW","AgencyMarketingStatement":"This
+        is an Air Reserve Technician (ART) Enlisted position. Air Reserve Technicians
+        are part of the regular civil service and enjoy all the benefits granted to
+        Federal employees in the competitive civil service. In addition, ARTs are
+        required to maintain active membership in an Air Force Reserve unit so long
+        as they occupy Air Reserve Technician positions. As members of reserve units,
+        ARTs receive on average one weekend of military training per month. In addition,
+        they are eligible for 15 days active duty tour each year for which military
+        leave is granted with full civilian pay. Air Reserve units and members are
+        subject to immediate call to active duty in mobilization to meet a national
+        emergency. THIS IS A STANDING REGISTER USED TO FILL POSITIONS AT AFRC LOCATIONS
+        AS VACANCIES OCCUR. SOME POSITIONS MAY HAVE PROMOTION POTENTIAL TO A HIGHER
+        GRADE THAN THE GRADE BEING FILLED. MULTIPLE VACANCIES MAY BE FILLED FROM THIS
+        ANNOUNCEMENT. THE BEGINNING AND ENDING SALARIES MAY VARY DEPENDING ON LOCATION
+        OF POSITION. THE CUT-OFF DATE FOR THESE POSITIONS IS THE 25TH OF EACH MONTH.
+        THEREFORE, IF YOUR APPLICATION IS RECEIVED BY MIDNIGHT ON THE 25TH OF THE
+        MONTH, YOU ARE ELIGIBLE TO GO ON THE REGISTER THE FOLLOWING MONTH. Optional
+        Salary Description: Salary is based on geographical location. Please visit
+        http://www.cpms.osd.mil/wage/scheds/afusa.aspx to obtain the salary for your
+        area of interest. The Government''s most important asset is its people.","TravelCode":"1","ApplyOnlineUrl":"https://apply.usastaffing.gov/Application/Apply","DetailStatusUrl":"https://apply.usastaffing.gov/Application/ApplicationStatus"},"IsRadialSearch":false}},"RelevanceRank":0.0}],"UserArea":{"NumberOfPages":"21","IsRadialSearch":true}}}'
+    http_version: 
+  recorded_at: Wed, 21 Nov 2018 19:49:16 GMT
 recorded_with: VCR 4.0.0
