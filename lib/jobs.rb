@@ -49,7 +49,8 @@ module Jobs
     { Keyword:        job_scrub(options[:query]),
       Organization:   options[:organization],
       LocationName:   options[:location_name],
-      ResultsPerPage: options[:results_per_page]
+      ResultsPerPage: options[:results_per_page],
+      Radius:         options[:radius]
     }
   end
 

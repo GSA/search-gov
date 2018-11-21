@@ -6,7 +6,9 @@ describe Jobs do
       Jobs.search({ query:'jobs',
                     organization_code: '',
                     location_name: 'Washington, DC, United States',
-                    results_per_page: 10})
+                    results_per_page: 10,
+                    radius: 75
+                  })
     end
 
     it 'returns results' do

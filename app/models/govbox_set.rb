@@ -108,7 +108,8 @@ class GovboxSet
         query: @query,
         organization_codes: @affiliate.agency&.joined_organization_codes,
         location_name: @geoip_info&.location_name,
-        results_per_page: 10
+        results_per_page: 10,
+        radius: 75
       })&.search_result&.search_result_items
 
       if job_results.present?
