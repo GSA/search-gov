@@ -26,14 +26,14 @@ describe Jobs do
     end
   end
 
-  describe 'job_scrub(query)' do
+  describe 'scrub_keyword(query)' do
     context 'when the search phrase contains the a job related keyword' do
       it 'should return the query with out the job related keyword at the end of the query' do
-        expect(Jobs.job_scrub('Nursing jobs')).to eq('Nursing')
+        expect(Jobs.scrub_keyword('Nursing jobs')).to eq('Nursing')
       end
     end
-
   end
+  
   describe '.query_eligible?(query)' do
     context 'when the search phrase contains hyphenated words' do
       it 'should return true' do
