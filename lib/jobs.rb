@@ -31,7 +31,7 @@ module Jobs
     # Keep the job related keyword if its the only word being searched,
     # so "" is not passed to api.
     scrubbed_keyword = keyword.remove(/\b#{JOB_RELATED_KEYWORDS}\b/, '').squish
-    keyword =~ /^#{JOB_RELATED_KEYWORDS}$/ ? keyword : scrubbed_keyword
+    keyword =~ /^(position|opening|posting|job|employment|)s?$/ ? keyword : scrubbed_keyword
   end
 
   def self.search(job_options)
@@ -51,7 +51,8 @@ module Jobs
     { Keyword:        scrub_keyword(options[:query]),
       Organization:   options[:organization],
       LocationName:   options[:location_name],
-      ResultsPerPage: options[:results_per_page] }
+      ResultsPerPage: options[:results_per_page]
+    }
   end
 
 end
