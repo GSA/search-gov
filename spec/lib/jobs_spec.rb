@@ -5,12 +5,29 @@ describe Jobs do
     subject(:search) do
       Jobs.search({ query:'jobs',
                     organization_code: '',
-                    location_name: 'Washington, DC, United States',
+                    location_name: '',
                     results_per_page: 10})
     end
-
+    let(:usajobs_url) {'https://data.usajobs.gov/api/search'}
     it 'returns results' do
       expect(search.search_result.search_result_count).to eq 10
+    end
+
+    it 'searches USAJOBS with the correct params' do
+      search
+      expect(a_request(:get, usajobs_url).with(
+        query: {
+          Keyword:        '',
+          Organization:   '',
+          LocationName:   "Washington, DC, USA",
+          ResultsPerPage: 10},
+        headers: {
+          'Accept': '*/*',
+          'Accept-Encoding': 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+          'Connection': 'keep-alive',
+          'Keep-Alive': '30',
+       }
+      )).to have_been_made
     end
 
     context "when there is some problem" do
