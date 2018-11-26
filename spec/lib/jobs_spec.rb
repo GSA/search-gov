@@ -27,10 +27,19 @@ describe Jobs do
   end
 
   describe '.scrub_keyword(query)' do
-    context 'when the search phrase contains the a job related keyword' do
+    context 'when the search phrase contains a job related keyword' do
       it 'should return the query with out the job related keyword at the end of the query' do
         expect(Jobs.scrub_keyword('Nursing jobs')).to eq('Nursing')
       end
+
+      it 'should return blank if its equal to one of these job term keywords job,employment,posting,position' do
+        expect(Jobs.scrub_keyword('jobs')).to eq('')
+      end
+
+      it 'should return job related keyword if its the same as query and not equal to job term keywords.' do
+        expect(Jobs.scrub_keyword('internship')).to eq('internship')
+      end
+
     end
   end
   
