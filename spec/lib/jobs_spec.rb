@@ -4,13 +4,26 @@ describe Jobs do
   describe '.search(options)' do
     subject(:search) do
       Jobs.search({ query:'jobs',
-                    organization_code: '',
-                    location_name: 'Washington, DC, United States',
+                    organization_codes: 'HE38',
+                    location_name: 'Washington, DC, USA',
                     results_per_page: 10})
     end
 
+    let(:usajobs_url) {'https://data.usajobs.gov/api/search'}
+
     it 'returns results' do
       expect(search.search_result.search_result_count).to eq 10
+    end
+
+    it 'searches USAJOBS with the correct params' do
+      search
+      expect(a_request(:get, usajobs_url).with(
+        query: {
+          Keyword:        '',
+          Organization:   'HE38',
+          LocationName:   'Washington, DC, USA',
+          ResultsPerPage: 10}
+      )).to have_been_made
     end
 
     context "when there is some problem" do
@@ -28,21 +41,20 @@ describe Jobs do
 
   describe '.scrub_keyword(query)' do
     context 'when the search phrase contains a job related keyword' do
-      it 'should return the query with out the job related keyword at the end of the query' do
+      it 'returns the query with out generic job keywords' do
         expect(Jobs.scrub_keyword('Nursing jobs')).to eq('Nursing')
       end
 
-      it 'should return blank if its equal to one of these job term keywords job,employment,posting,position' do
+      it 'return blank if its equal to one of these job term keywords job,employment,posting,position' do
         expect(Jobs.scrub_keyword('jobs')).to eq('')
       end
 
-      it 'should return job related keyword if its the same as query and not equal to job term keywords.' do
+      it 'return job related keyword if its the same as query and not equal to job term keywords.' do
         expect(Jobs.scrub_keyword('internship')).to eq('internship')
       end
-
     end
   end
-  
+
   describe '.query_eligible?(query)' do
     context 'when the search phrase contains hyphenated words' do
       it 'should return true' do
