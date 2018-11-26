@@ -50,7 +50,7 @@ module Jobs
 
   def self.params(options)
     { Keyword:        scrub_keyword(options[:query]),
-      Organization:   options[:organization],
+      Organization:   options[:organization_codes],
       LocationName:   options[:location_name],
       ResultsPerPage: options[:results_per_page]
     }

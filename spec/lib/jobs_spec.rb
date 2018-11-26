@@ -3,9 +3,9 @@ require 'spec_helper'
 describe Jobs do
   describe '.search(options)' do
     subject(:search) do
-      Jobs.search({ query:'jobs',
-                    organization_code: '',
-                    location_name: '',
+      Jobs.search({ query:'Nursing jobs',
+                    organization_codes: 'abcdefg',
+                    location_name: 'Washington, DC, USA',
                     results_per_page: 10})
     end
     let(:usajobs_url) {'https://data.usajobs.gov/api/search'}
@@ -17,16 +17,10 @@ describe Jobs do
       search
       expect(a_request(:get, usajobs_url).with(
         query: {
-          Keyword:        '',
-          Organization:   '',
-          LocationName:   "Washington, DC, USA",
-          ResultsPerPage: 10},
-        headers: {
-          'Accept': '*/*',
-          'Accept-Encoding': 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-          'Connection': 'keep-alive',
-          'Keep-Alive': '30',
-       }
+          Keyword:        'Nursing',
+          Organization:   'abcdefg',
+          LocationName:   'Washington, DC, USA',
+          ResultsPerPage: 10}
       )).to have_been_made
     end
 
@@ -45,21 +39,20 @@ describe Jobs do
 
   describe '.scrub_keyword(query)' do
     context 'when the search phrase contains a job related keyword' do
-      it 'should return the query with out the job related keyword at the end of the query' do
+      it 'returns the query with out generic job keywords' do
         expect(Jobs.scrub_keyword('Nursing jobs')).to eq('Nursing')
       end
 
-      it 'should return blank if its equal to one of these job term keywords job,employment,posting,position' do
+      it 'return blank if its equal to one of these job term keywords job,employment,posting,position' do
         expect(Jobs.scrub_keyword('jobs')).to eq('')
       end
 
-      it 'should return job related keyword if its the same as query and not equal to job term keywords.' do
+      it 'return job related keyword if its the same as query and not equal to job term keywords.' do
         expect(Jobs.scrub_keyword('internship')).to eq('internship')
       end
-
     end
   end
-  
+
   describe '.query_eligible?(query)' do
     context 'when the search phrase contains hyphenated words' do
       it 'should return true' do
