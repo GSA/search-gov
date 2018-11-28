@@ -3,26 +3,24 @@ require 'spec_helper'
 describe Jobs do
   describe '.search(options)' do
     subject(:search) do
-      Jobs.search({ query:'jobs',
+      Jobs.search({ query:'Nursing jobs',
                     organization_codes: 'HE38',
                     location_name: 'Washington, DC, USA',
                     results_per_page: 10 })
     end
-
     let(:usajobs_url) {'https://data.usajobs.gov/api/search'}
-
     it 'returns results' do
-      expect(search.search_result.search_result_count).to eq 10
+      expect(search.search_result.search_result_count).to be > 0
     end
 
     it 'searches USAJOBS with the correct params' do
       search
       expect(a_request(:get, usajobs_url).with(
         query: {
-          Keyword:        '',
+          Keyword:        'Nursing',
           Organization:   'HE38',
           LocationName:   'Washington, DC, USA',
-          ResultsPerPage: 10}
+          ResultsPerPage: 10 }
       )).to have_been_made
     end
 
@@ -39,18 +37,18 @@ describe Jobs do
     end
   end
 
-  describe '.scrub_keyword(query)' do
+  describe '.scrub_query(query)' do
     context 'when the search phrase contains a job related keyword' do
       it 'returns the query with out generic job keywords' do
-        expect(Jobs.scrub_keyword('Nursing jobs')).to eq('Nursing')
+        expect(Jobs.scrub_query('Nursing jobs')).to eq('Nursing')
       end
 
       it 'return blank if its equal to one of these job term keywords job,employment,posting,position' do
-        expect(Jobs.scrub_keyword('jobs')).to eq('')
+        expect(Jobs.scrub_query('jobs')).to eq('')
       end
 
       it 'return job related keyword if its the same as query and not equal to job term keywords.' do
-        expect(Jobs.scrub_keyword('internship')).to eq('internship')
+        expect(Jobs.scrub_query('internship')).to eq('internship')
       end
     end
   end
