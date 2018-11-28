@@ -28,7 +28,7 @@ module Jobs
   end
 
   def self.scrub_query(query)
-    query.gsub(/(position|opening|posting|job|employment)s?/, '').squish
+    query.remove(/\b(position|opening|posting|job|employment)s?\b/, '').squish
   end
 
   def self.search(job_options)
