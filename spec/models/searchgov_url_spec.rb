@@ -97,6 +97,7 @@ describe SearchgovUrl do
 
     before do
       allow(searchgov_url).to receive(:searchgov_domain).and_return(searchgov_domain)
+      allow(I14yDocument).to receive(:create)
     end
 
     context 'when the fetch is successful' do
@@ -399,6 +400,30 @@ describe SearchgovUrl do
             description: 'My Excel doc description',
             language: 'en',
             tags: 'excel',
+        ))
+        fetch
+      end
+    end
+
+    context 'when the url points to a TXT doc (.txt)' do
+      let(:url) { 'https://www.irs.gov/test.txt' }
+
+      before do
+        stub_request(:get, url).
+          to_return(status: 200,
+                    body: 'This is my text content.',
+                    headers: { content_type: 'text/plain' })
+      end
+
+      it 'fetches and indexes the document' do
+        expect(I14yDocument).to receive(:create).
+          with(hash_including(
+            handle: 'searchgov',
+            path: 'https://www.irs.gov/test.txt',
+            title: 'test.txt',
+            description: nil,
+            content: 'This is my text content.',
+            language: 'en'
         ))
         fetch
       end
