@@ -5221,4 +5221,634 @@ http_interactions:
         with other Institutes and NIH programs.","TravelCode":"0","ApplyOnlineUrl":"https://apply.usastaffing.gov/Application/Apply","DetailStatusUrl":"https://apply.usastaffing.gov/Application/ApplicationStatus"},"IsRadialSearch":false}},"RelevanceRank":0.0}],"UserArea":{"NumberOfPages":"1","IsRadialSearch":true}}}'
     http_version: 
   recorded_at: Tue, 27 Nov 2018 13:55:34 GMT
+- request:
+    method: get
+    uri: https://data.usajobs.gov/api/search?Keyword&LocationName=Washington,%20DC,%20USA&Organization=HE38&ResultsPerPage=10
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization-Key:
+      - Qbk5RB/WRc1ctYqwojqlSKeoLVrwokT8OnSLq+G1qu0=
+      User-Agent:
+      - parissa.eggleston@gmail.com
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/hr+json
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/10.0
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Wed, 28 Nov 2018 03:02:35 GMT
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - Transfer-Encoding
+      - keep-alive
+      Set-Cookie:
+      - akavpau_DATA_USAJ=1543374455~id=fd277b870697fa2ffa2cb503d7a2be82; Domain=data.usajobs.gov;
+        Path=/; Secure
+    body:
+      encoding: UTF-8
+      string: '{"LanguageCode":"EN","SearchParameters":{},"SearchResult":{"SearchResultCount":10,"SearchResultCountAll":13,"SearchResultItems":[{"MatchedObjectId":"510301500","MatchedObjectDescriptor":{"PositionID":"NIH-CC-DH-18-10295468","PositionTitle":"Nurse
+        (Clinical Research)","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/510301500","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/510301500?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Montgomery
+        County, Maryland","PositionLocation":[{"LocationName":"Montgomery County,
+        Maryland","CountryCode":"United States","CountrySubDivisionCode":"Maryland","CityName":"Montgomery
+        County, Maryland","Longitude":-77.20451,"Latitude":39.1366}],"OrganizationName":"National
+        Institutes of Health","DepartmentName":"Department of Health And Human Services","JobCategory":[{"Name":"Nurse","Code":"0610"}],"JobGrade":[{"Code":"GS"}],"PositionSchedule":[{"Name":"Full
+        Time, Part Time - 16-32 Hours","Code":"6"}],"PositionOfferingType":[{"Name":"Permanent","Code":"15317"}],"QualificationSummary":"BASIC
+        QUALIFICATIONS: In order to meet the Basic Qualification Requirements (click
+        here for OPM Nurse Qualification Standards), for a Nurse (Clinical Research),
+        GS-0610-11, you must: Have a graduate or higher level degree, bachelor''s
+        degree, associate degree, or diploma from an accredited professional nursing
+        educational program. Note: Official certification from the Commission on Graduates
+        of Foreign Nursing Schools is required for individuals who graduated from
+        foreign nursing schools. AND You must have passed the National Council Licensure
+        Examination for Registered Nurses (NCLEX-RN) AND Have a current, active, full
+        and unrestricted license, or registration as a professional nurse from a state,
+        the District of Columbia, the Commonwealth of Puerto Rico, or a territory
+        of the United States. In addition, in order to qualify for a Clinical Nurse
+        position at the GS-11 level, you must: A. Have completed a Ph.D., or equivalent
+        doctoral degree, from a professional nursing educational program or related
+        medical science field OR B. Have at least 1 year of professional nursing experience
+        equivalent to at least the GS-09 level in the federal service obtained in
+        either the private or public sector, performing the following types of tasks:
+        providing comprehensive nursing care to patients based on the physician''s
+        medical care plan and the physical, mental and emotional needs of the patient;
+        administering oxygen, IV fluid, blood transfusions and prescribed oral, subcutaneous
+        and intramuscular medications; managing nasal-pharyngeal and gastric suction
+        as well as a variety of other drainage tubes; preparing patients for surgical
+        and/or diagnostic procedures; setting-up, operating and monitoring specialized
+        equipment such as cardiac monitors, respirators, defibrillators, etc. AND
+        possession of a diploma, associate degree, bachelor''s degree, or master''s
+        degree from a professional nursing educational program. Experience refers
+        to paid and unpaid experience, including volunteer work done through National
+        Service programs (e.g., Peace Corps, AmeriCorps) and other organizations (e.g.,
+        professional; philanthropic; religious; spiritual; community, student, social).
+        Volunteer work helps build critical competencies, knowledge, and skills and
+        can provide valuable training and experience that translates directly to paid
+        employment. You will receive credit for all qualifying experience, including
+        volunteer experience. Preview assessment questionnaire before you apply: https://apply.usastaffing.gov/ViewQuestionnaire/10295468
+        Ideal Candidates: The ideal candidate will have recent acute care (hospital)
+        experience in their specialty area. i.e. Pediatrics, ICU, Perioperative, Ambulatory,
+        Medical Surgical and more. This announcement covers multiple areas within
+        NIH Clinical Center Nursing Department: Inpatient Units: Rotating shifts (may
+        include weekends, holidays, evening and nights)\nICU\nPediatrics\nOncology
+        Surgical, Medical and Transplant\nMedical Surgical\nAdult Behavioral Health\nAddictions\nNeurology\nPediatric
+        Behavioral Health\nSpecial Clinical Studies Unit Outpatient Clinics: Primarily
+        Monday-Friday 7-4:30 with occasional extended hours\nHematology and Oncology\nPediatrics\nBehavioral
+        Health\nInfectious Disease\nRadiation Oncology\nCardiology\nOphthalmology\nMedical
+        Surgical Specialties\nNeurology\nENT Specialty Areas: (May include weekends
+        and on-call)\nOR\nPACU\nInterventional Radiology\nDental Clinic\nProcedures
+        Services Endoscopy, Moderate Sedation\nDialysis\nDay Hospital/Infusion Center
+        (Oncology, Pediatrics, Medical Surgical)\nCare Coordination and Case Management","PositionRemuneration":[{"MinimumRange":"71589.00","MaximumRange":"90930.00","RateIntervalCode":"Per
+        Year"}],"PositionStartDate":"2018-09-10","PositionEndDate":"2019-03-08","PublicationStartDate":"2018-09-10","ApplicationCloseDate":"2019-03-08","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"","WhoMayApply":{"Name":"","Code":""},"LowGrade":"11","HighGrade":"11","PromotionPotential":"11","HiringPath":["public"],"AgencyMarketingStatement":"The
+        National Institutes of Health (NIH) is the premier biomedical research center
+        for the world. Its 27 Institutes and Centers employ approximately 18,000 employees
+        doing a vast array of jobs, all supporting efforts for a healthy nation. For
+        information on the NIH mission, goals, and Institutes and Centers, visit NIH
+        Overview. The NIH Clinical Center comprises 200 inpatient beds, 3 Day Hospitals
+        and 14 Specialty Outpatient Clinics. It is the largest inpatient hospital
+        in the country devoted exclusively to clinical research, and provides a full
+        range of services including ambulatory care, specialty inpatient units, critical
+        care and special procedures. Our nurses help to transform medical discoveries
+        into treatment for potential cures. If you want to play a significant role
+        supporting the vision at the Clinical Center, then consider joining our team!
+        This vacancy announcement will be used to fill vacancies for various specialties
+        within the Clinical Center/Hospital. We welcome nurses with clinical backgrounds
+        such as: Oncology, Pediatrics, Medical-Surgical, Neurology, Behavioral Health,
+        Critical Care, OR and more. New nurses are offered a tailored orientation,
+        an introduction to Clinical Research Nursing, Education, and Training which
+        define the roles and contributions of nurses providing care to research participants.
+        Our Shared Governance model promotes the journey in which every nurse brings
+        knowledge and skills for evaluating and modifying nursing practice.","TravelCode":"0","ApplyOnlineUrl":"https://apply.usastaffing.gov/Application/Apply","DetailStatusUrl":"https://apply.usastaffing.gov/Application/ApplicationStatus"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"515597200","MatchedObjectDescriptor":{"PositionID":"NIH-CC-DE-19-10335738","PositionTitle":"Microbiologist","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/515597200","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/515597200?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Montgomery
+        County, Maryland","PositionLocation":[{"LocationName":"Montgomery County,
+        Maryland","CountryCode":"United States","CountrySubDivisionCode":"Maryland","CityName":"Montgomery
+        County, Maryland","Longitude":-77.20451,"Latitude":39.1366}],"OrganizationName":"National
+        Institutes of Health","DepartmentName":"Department of Health And Human Services","JobCategory":[{"Name":"Microbiology","Code":"0403"}],"JobGrade":[{"Code":"GS"}],"PositionSchedule":[{"Name":"Full-Time","Code":"1"}],"PositionOfferingType":[{"Name":"Permanent","Code":"15317"}],"QualificationSummary":"In
+        order to qualify for a Microbiologist, GS-403-14, position, you must meet
+        the following requirements: A. Have successfully completed the requirements
+        for a bachelor''s degree in microbiology, biology, chemistry, or basic medical
+        science that includes at least 20 semester hours in microbiology and other
+        subjects related to the study of microorganisms and at least 20 semester hours
+        need to be in the physical and mathematical sciences (combination of course
+        work in organic chemistry or biochemistry, physics, and college algebra, or
+        their equivalent); OR\nB. Combination of education and experience: Courses
+        equivalent to a major in microbiology, biology, chemistry, or basic medical
+        science that included courses as shown in A above, plus appropriate experience
+        or additional education. ADDITIONAL REQUIREMENTS:\nHave 1 year of specialized
+        experience equivalent to at least the GS-13 level in the Federal service obtained
+        in either the private or public sector, performing the following types of
+        tasks: Serving as a primary investigator or project member for research projects
+        of broad and complex scope to address problems that are exceptionally difficult
+        to resolve as part of critical clinical investigations; manage and/or collaborate
+        on human subjects studies, advise clinicians and physician scientists on the
+        significance of the diagnostic test menu and interpretation of laboratory
+        test results; design, validate, implement and oversee new clinical diagnostic
+        testing services in accordance with regulatory guidelines and standards; participate
+        in clinical investigations and trials for the management of patients in Phase
+        I, Phase II, and Phase III studies; presenting and publishing scientific studies
+        and research results. OR\nHave certification by the American Board of Medical
+        Microbiology/American Board of Medical Laboratory Immunology OR be elected
+        to a Fellowship in the American Academy of Microbiology. Experience refers
+        to paid and unpaid experience, including volunteer work done through National
+        Service programs (e.g., Peace Corps, AmeriCorps) and other organizations (e.g.,
+        professional; philanthropic; religious; spiritual; community, student, social).
+        Volunteer work helps build critical competencies, knowledge, and skills and
+        can provide valuable training and experience that translates directly to paid
+        employment. You will receive credit for all qualifying experience, including
+        volunteer experience. Preview assessment questionnaire before you apply: https://apply.usastaffing.gov/ViewQuestionnaire/10335738","PositionRemuneration":[{"MinimumRange":"114590.00","MaximumRange":"148967.00","RateIntervalCode":"Per
+        Year"}],"PositionStartDate":"2018-11-21","PositionEndDate":"2018-11-30","PublicationStartDate":"2018-11-21","ApplicationCloseDate":"2018-11-30","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"","WhoMayApply":{"Name":"","Code":""},"LowGrade":"14","HighGrade":"14","PromotionPotential":"14","HiringPath":["public"],"AgencyMarketingStatement":"The
+        National Institutes of Health (NIH), a part of the U.S. Department of Health
+        and Human Services, is the largest biomedical research funding organization
+        in the world. NIH is made up of 27 Institutes and Centers, with a specific
+        research agenda, often focusing on particular diseases or body systems. NIH
+        employs approximately 18,000 employees in varied occupations, all supporting
+        research efforts that improve health and save lives. For more information
+        on NIH''s mission and goals, and its 27 Institutes and Centers, visit the
+        NIH website. The Clinical Center''s Microbiology Service provides state-of-the-art
+        diagnostic and consultation services, supports the clinical research programs,
+        and conducts research in the field of microbiology. The Service consists of
+        six sections: Bacteriology, Mycobacteriology and Mycology, Specimen Processing,
+        Molecular Diagnostics, Genomics, and Parasitology.","TravelCode":"0","ApplyOnlineUrl":"https://apply.usastaffing.gov/Application/Apply","DetailStatusUrl":"https://apply.usastaffing.gov/Application/ApplicationStatus"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"516814500","MatchedObjectDescriptor":{"PositionID":"NIH-CC-DE-19-10344918","PositionTitle":"Inventory
+        Management Specialist","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/516814500","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/516814500?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Montgomery
+        County, Maryland","PositionLocation":[{"LocationName":"Montgomery County,
+        Maryland","CountryCode":"United States","CountrySubDivisionCode":"Maryland","CityName":"Montgomery
+        County, Maryland","Longitude":-77.20451,"Latitude":39.1366}],"OrganizationName":"National
+        Institutes of Health","DepartmentName":"Department of Health And Human Services","JobCategory":[{"Name":"Inventory
+        Management","Code":"2010"}],"JobGrade":[{"Code":"GS"}],"PositionSchedule":[{"Name":"Full-Time","Code":"1"}],"PositionOfferingType":[{"Name":"Permanent","Code":"15317"}],"QualificationSummary":"You
+        qualify at the GS-09 level, if you meet one of the following qualification
+        requirements: A. Have completed a Master''s or equivalent graduate degree,
+        or 2 full years of progressively higher level graduate education leading to
+        such a degree or an LL.B. or J.D., if related; OR B. Have 1 year of specialized
+        experience equivalent to at least the GS-07 level in the Federal service obtained
+        in either the private or public sector, performing the following types of
+        tasks: providing supply management and control for activities involving specialized
+        supplies and equipment; coordinating physical inventories of property; analyzing
+        property reports to prevent and reduce supply losses; determining proper storage
+        methods, identification, and stock location for property and equipment.; monitoring
+        trends to identify vendors that often have back order stock or order discrepancies;
+        and conducting physical inspections of property to identify unserviceable
+        items. OR C. Have a combination of post baccalaureate education and experience
+        that meets 100% of the qualification requirements for this position. Experience
+        refers to paid and unpaid experience, including volunteer work done through
+        National Service programs (e.g., Peace Corps, AmeriCorps) and other organizations
+        (e.g., professional; philanthropic; religious; spiritual; community, student,
+        social). Volunteer work helps build critical competencies, knowledge, and
+        skills and can provide valuable training and experience that translates directly
+        to paid employment. You will receive credit for all qualifying experience,
+        including volunteer experience. Preview assessment questionnaire before you
+        apply: https://apply.usastaffing.gov/ViewQuestionnaire/10344918","PositionRemuneration":[{"MinimumRange":"56233.00","MaximumRange":"73105.00","RateIntervalCode":"Per
+        Year"}],"PositionStartDate":"2018-11-26","PositionEndDate":"2018-11-30","PublicationStartDate":"2018-11-26","ApplicationCloseDate":"2018-11-30","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"","WhoMayApply":{"Name":"","Code":""},"LowGrade":"9","HighGrade":"9","PromotionPotential":"9","HiringPath":["public"],"AgencyMarketingStatement":"The
+        National Institutes of Health (NIH), a part of the U.S. Department of Health
+        and Human Services, is the largest biomedical research funding organization
+        in the world. NIH is made up of 27 Institutes and Centers, with a specific
+        research agenda, often focusing on particular diseases or body systems. NIH
+        employs approximately 18,000 employees in varied occupations, all supporting
+        research efforts that improve health and save lives. For more information
+        on NIH''s mission and goals, and its 27 Institutes and Centers, visit the
+        NIH website. The Materials Management and Environmental Services Department
+        (MMESD) responsibilities include: - Supply procurement and distribution\n-
+        Biomedical equipment safety and maintenance\n- A clean environment for patients,
+        staff, and the public This position is located in the Biomedical Engineering
+        & Property Section of MMESD. The Biomedical/Property Section of MMESD manages
+        the maintenance, calibration, safety, and performance monitoring of all clinical
+        and non-clinical equipment and ensures that all clinical equipment meets regulatory
+        agency(s) regulations and industry standard.","TravelCode":"0","ApplyOnlineUrl":"https://apply.usastaffing.gov/Application/Apply","DetailStatusUrl":"https://apply.usastaffing.gov/Application/ApplicationStatus"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"516862300","MatchedObjectDescriptor":{"PositionID":"NIH-SR-DH-19-10352148","PositionTitle":"Supervisory
+        and Lead Contract Specialist","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/516862300","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/516862300?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Multiple
+        Locations","PositionLocation":[{"LocationName":"Frederick, Maryland","CountryCode":"United
+        States","CountrySubDivisionCode":"Maryland","CityName":"Frederick, Maryland","Longitude":-77.412,"Latitude":39.4157},{"LocationName":"Montgomery
+        County, Maryland","CountryCode":"United States","CountrySubDivisionCode":"Maryland","CityName":"Montgomery
+        County, Maryland","Longitude":-77.20451,"Latitude":39.1366}],"OrganizationName":"National
+        Institutes of Health","DepartmentName":"Department of Health And Human Services","JobCategory":[{"Name":"Contracting","Code":"1102"}],"JobGrade":[{"Code":"GS"}],"PositionSchedule":[{"Name":"Full-Time","Code":"1"}],"PositionOfferingType":[{"Name":"Permanent","Code":"15317"}],"QualificationSummary":"Basic
+        Requirements: You must have completed a 4-year course of study leading to
+        a bachelor''s degree, that included or was supplemented by at least 24 semester
+        hours in any combination of the following fields: accounting, business, finance,
+        law, contracts, purchasing, economics, industrial management, marketing, quantitative
+        methods, or organization and management; OR Occupied a GS-1102-14 position
+        since at least January 1, 2000. Guidance on Business Related Coursework for
+        the GS-1102 Contracting Series In addition: You must have completed all mandatory
+        training prescribed by the head of the agency for progression to the GS-13
+        or higher level contracting positions, including at least 4 years experience
+        in contracting or related positions. At least 1 year of that experience must
+        have been specialized experience at or equivalent to work at the next lower
+        level of the position, and must have provided the knowledge, skills and abilities
+        to perform successfully the work of the position. Additional Qualifications:
+        You must demonstrate in your resume at least one (1) year of specialized experience
+        equivalent to at the least the GS-13 level in the Federal service. Examples
+        of specialized experience equivalent to at least the GS-13 level in the Federal
+        service includes: serving as a senior-level contract specialist; developing
+        and overseeing organizational contracting policies; collaborating with senior
+        contract specialists and other business professionals on policy and compliance
+        issues; providing technical leadership to contracting or administrative staff;
+        leading negotiations on complex contracts; representing the organization at
+        high-level meetings. Experience refers to paid and unpaid experience, including
+        volunteer work done through National Service programs (e.g., Peace Corps,
+        AmeriCorps) and other organizations (e.g., professional; philanthropic; religious;
+        spiritual; community; social). Volunteer work helps build critical competencies,
+        knowledge, and skills and can provide valuable training and experience that
+        translates directly to paid employment. You will receive credit for all qualifying
+        experience, including volunteer experience. Preview assessment questionnaire
+        before you apply: https://apply.usastaffing.gov/ViewQuestionnaire/10352148","PositionRemuneration":[{"MinimumRange":"114590.00","MaximumRange":"148967.00","RateIntervalCode":"Per
+        Year"}],"PositionStartDate":"2018-11-26","PositionEndDate":"2018-11-30","PublicationStartDate":"2018-11-26","ApplicationCloseDate":"2018-11-30","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"","WhoMayApply":{"Name":"","Code":""},"LowGrade":"14","HighGrade":"14","PromotionPotential":"14","HiringPath":["public"],"AgencyMarketingStatement":"The
+        National Institutes of Health (NIH), a part of the U.S. Department of Health
+        and Human Services, is the largest biomedical research funding organization
+        in the world. NIH is made up of 27 Institutes and Centers, with a specific
+        research agenda, often focusing on particular diseases or body systems. NIH
+        employs approximately 18,000 employees in varied occupations, all supporting
+        research efforts that improve health and save lives. For more information
+        on NIH''s mission and goals, and its 27 Institutes and Centers, visit the
+        NIH website.","TravelCode":"1","ApplyOnlineUrl":"https://apply.usastaffing.gov/Application/Apply","DetailStatusUrl":"https://apply.usastaffing.gov/Application/ApplicationStatus"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"516862400","MatchedObjectDescriptor":{"PositionID":"NIH-SR-DH-19-10352618","PositionTitle":"Supervisory
+        Contract Specialist","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/516862400","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/516862400?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Montgomery
+        County, Maryland","PositionLocation":[{"LocationName":"Montgomery County,
+        Maryland","CountryCode":"United States","CountrySubDivisionCode":"Maryland","CityName":"Montgomery
+        County, Maryland","Longitude":-77.20451,"Latitude":39.1366}],"OrganizationName":"National
+        Institutes of Health","DepartmentName":"Department of Health And Human Services","JobCategory":[{"Name":"Contracting","Code":"1102"}],"JobGrade":[{"Code":"GS"}],"PositionSchedule":[{"Name":"Full-Time","Code":"1"}],"PositionOfferingType":[{"Name":"Permanent","Code":"15317"}],"QualificationSummary":"Basic
+        Requirements: You must have completed a 4-year course of study leading to
+        a bachelor''s degree, that included or was supplemented by at least 24 semester
+        hours in any combination of the following fields: accounting, business, finance,
+        law, contracts, purchasing, economics, industrial management, marketing, quantitative
+        methods, or organization and management (Guidance on Business Related Coursework
+        for the GS-1102 Contracting Series); OR occupied a GS-1102-14 position since
+        at least January 1, 2000. In addition: You must have completed all mandatory
+        training prescribed by the head of the agency for progression to the GS-14
+        or higher level contracting positions, including at least 4 years of experience
+        in contracting or related positions. If selected, and if you are not currently
+        employed by HHS in the 1102 series at the GS-13 level or above, you will be
+        provided a reasonable timeframe to complete the mandatory training. At least
+        1 year of that experience must have been specialized experience at or equivalent
+        to work at the next lower level of the position, and must have provided the
+        knowledge, skills and abilities to perform successfully the work of the position.
+        Additional Qualifications: You must demonstrate in your resume at least one
+        (1) year of specialized experience equivalent to at the least the GS-14 level
+        in the Federal service. Examples of specialized experience include: providing
+        technical leadership to contracting and procurement staff; overseeing an acquisition
+        workforce that handles a wide variety of agency-wide contracting vehicles;
+        solving complex acquisition problems; developing and enforcing practices and
+        procedures that ensure the organization is in compliance with applicable acquisition
+        management laws, rules, and regulations; and representing the organization
+        at high level conferences and meetings. Experience refers to paid and unpaid
+        experience, including volunteer work done through National Service programs
+        (e.g., Peace Corps, AmeriCorps) and other organizations (e.g., professional;
+        philanthropic; religious; spiritual; community, student, social). Volunteer
+        work helps build critical competencies, knowledge, and skills and can provide
+        valuable training and experience that translates directly to paid employment.
+        You will receive credit for all qualifying experience, including volunteer
+        experience. Preview assessment questionnaire before you apply: https://apply.usastaffing.gov/ViewQuestionnaire/10352618","PositionRemuneration":[{"MinimumRange":"134789.00","MaximumRange":"164200.00","RateIntervalCode":"Per
+        Year"}],"PositionStartDate":"2018-11-26","PositionEndDate":"2018-11-30","PublicationStartDate":"2018-11-26","ApplicationCloseDate":"2018-11-30","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"","WhoMayApply":{"Name":"","Code":""},"LowGrade":"15","HighGrade":"15","PromotionPotential":"15","HiringPath":["public"],"TotalOpenings":"2","AgencyMarketingStatement":"The
+        National Institutes of Health (NIH), a part of the U.S. Department of Health
+        and Human Services, is the largest biomedical research funding organization
+        in the world. NIH is made up of 27 Institutes and Centers, with a specific
+        research agenda, often focusing on particular diseases or body systems. NIH
+        employs approximately 18,000 employees in varied occupations, all supporting
+        research efforts that improve health and save lives. For more information
+        on NIH''s mission and goals, and its 27 Institutes and Centers, visit the
+        NIH website.","TravelCode":"1","ApplyOnlineUrl":"https://apply.usastaffing.gov/Application/Apply","DetailStatusUrl":"https://apply.usastaffing.gov/Application/ApplicationStatus"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"516868700","MatchedObjectDescriptor":{"PositionID":"NIH-NEI-DH-19-10345032","PositionTitle":"Nurse
+        (Research Specialist)","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/516868700","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/516868700?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Montgomery
+        County, Maryland","PositionLocation":[{"LocationName":"Montgomery County,
+        Maryland","CountryCode":"United States","CountrySubDivisionCode":"Maryland","CityName":"Montgomery
+        County, Maryland","Longitude":-77.20451,"Latitude":39.1366}],"OrganizationName":"National
+        Institutes of Health","DepartmentName":"Department of Health And Human Services","JobCategory":[{"Name":"Nurse","Code":"0610"}],"JobGrade":[{"Code":"GS"}],"PositionSchedule":[{"Name":"Full-Time","Code":"1"}],"PositionOfferingType":[{"Name":"Permanent","Code":"15317"}],"QualificationSummary":"EDUCATION:
+        In order to meet the Basic Qualification Requirement for a Nurse (Research
+        Specialist), GS-610, you must: have a graduate or higher level degree, bachelor''s
+        degree, associate degree, or diploma from an accredited professional nursing
+        educational program. NOTE: Official certification from the Commission on Collegiate
+        Nursing Education, Council on Accreditation of Nurse Anesthesia Educational
+        Programs, Accreditation Commission for Midwifery Education, or an accrediting
+        body recognized by the U.S. Department of Education at the time the degree
+        was obtained.\nOR\nDegree from Foreign Nursing School: Official certification
+        from the Commission on Graduates of Foreign Nursing Schools is required for
+        individuals who graduated from foreign nursing schools. LICENSURE: In addition
+        to the education requirement, you must have passed the National Council Licensure
+        Examination for Registered Nurses (NCLEX-RN) AND you must have a current,
+        active, full, and unrestricted license or registration as a professional nurse
+        from a State, the District of Columbia, the Commonwealth of Puerto Rico, or
+        a territory of the United States. ADDITIONAL QUALIFICATIONS:\nGS-11: In addition
+        to the education and license requirement, you must:\nA. have completed a Ph.D.,
+        or equivalent doctoral degree, from a professional nursing educational program
+        or related medical science field;\nOR\nB. have at least one year of specialized
+        experience equivalent to the GS-09 grade level in the Federal service that
+        demonstrates your ability to screen and schedule all potential research participants;
+        participate in rounds with physicians to determine future course of treatment
+        for patients; assist with the design, development and approval of research
+        protocols; assist in preparing reports for the Internal Review Board (IRB);
+        interpret clinical test results; and maintain an automated database management
+        system to collect, organize and report information on clinical trials\nAND
+        possession of a diploma, associate degree, bachelor''s degree, or master''s
+        degree from a professional nursing educational program. GS-12: In addition
+        to the education and license requirement, you must have at least one year
+        of specialized experience equivalent to the GS-11 grade level in the Federal
+        service that demonstrates your ability to provide specialized knowledge on
+        research protocols in a clinical research environment; serve as a leader in
+        providing ongoing education and counseling to clinical research nurses on
+        patient care units related to all aspects of the protocol; oversee all phases
+        of data management to include data collection, entry, validation, reporting
+        and analysis; define criteria for dose modifications and/or other modifications
+        of treatment regimen; and manage required evaluation to confirm study eligibility
+        and baseline measurements of all parameters to be evaluated on the study.
+        Experience refers to paid and unpaid experience, including volunteer work
+        done through National Service programs (e.g., Peace Corps, AmeriCorps) and
+        other organizations (e.g., professional; philanthropic; religious; spiritual;
+        community, student, social). Volunteer work helps build critical competencies,
+        knowledge, and skills and can provide valuable training and experience that
+        translates directly to paid employment. You will receive credit for all qualifying
+        experience, including volunteer experience. Preview assessment questionnaire
+        before you apply: https://apply.usastaffing.gov/ViewQuestionnaire/10345032","PositionRemuneration":[{"MinimumRange":"68036.00","MaximumRange":"106012.00","RateIntervalCode":"Per
+        Year"}],"PositionStartDate":"2018-11-26","PositionEndDate":"2018-11-30","PublicationStartDate":"2018-11-26","ApplicationCloseDate":"2018-11-30","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"","WhoMayApply":{"Name":"","Code":""},"LowGrade":"11","HighGrade":"12","PromotionPotential":"12","HiringPath":["public"],"TotalOpenings":"1","AgencyMarketingStatement":"The
+        National Institutes of Health (NIH), a part of the U.S. Department of Health
+        and Human Services, is the largest biomedical research funding organization
+        in the world. NIH is made up of 27 Institutes and Centers, with a specific
+        research agenda, often focusing on particular diseases or body systems. NIH
+        employs approximately 18,000 employees in varied occupations, all supporting
+        research efforts that improve health and save lives. For more information
+        on NIH''s mission and goals, and its 27 Institutes and Centers, visit the
+        NIH website. The National Eye Institute (NEI) is one of the 27 Institutes
+        and Centers of the National Institutes of Health (NIH). THe mission of NEI
+        is to prolong and protect the vision of the American people by conducting
+        and performing research into the treatment and prevention of diseases affecting
+        the eye or vision. The Clinical Operations Branch (COB), Office of Clinical
+        Director (OCD) studies the causes, diagnosis, prevention, and the treatment
+        of conditions of the ocular system, and fosters the translation of advances
+        in laboratory research into clinical applications. The COB provides the infrastructure
+        needed to promote high quality clinical research in a safe patient care environment.
+        The OCD evaluates research efforts, establishes program priorities, and collaborates
+        with other Institutes and NIH programs.","TravelCode":"0","ApplyOnlineUrl":"https://apply.usastaffing.gov/Application/Apply","DetailStatusUrl":"https://apply.usastaffing.gov/Application/ApplicationStatus"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"517148800","MatchedObjectDescriptor":{"PositionID":"NIH-NINDS-DH-19-10340989","PositionTitle":"Supervisory
+        Physician (Clinical)","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/517148800","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/517148800?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Montgomery
+        County, Maryland","PositionLocation":[{"LocationName":"Montgomery County,
+        Maryland","CountryCode":"United States","CountrySubDivisionCode":"Maryland","CityName":"Montgomery
+        County, Maryland","Longitude":-77.20451,"Latitude":39.1366}],"OrganizationName":"National
+        Institutes of Health","DepartmentName":"Department of Health And Human Services","JobCategory":[{"Name":"Medical
+        Officer","Code":"0602"}],"JobGrade":[{"Code":"GP"}],"PositionSchedule":[{"Name":"Full-Time","Code":"1"}],"PositionOfferingType":[{"Name":"Permanent","Code":"15317"}],"QualificationSummary":"You
+        qualify at the GP-15 level, if you meet the following qualification requirements:
+        Basic Requirements: Degree: Doctor of Medicine, Doctor of Osteopathic Medicine
+        or equivalent from a school in the United States or Canada. This degree must
+        have been accredited by the Council on Medical Education of the American Medical
+        Association; Association of American Medical Colleges; Liaison Committee on
+        Medical Education Commission on Osteopathic College Accreditation of the American
+        Osteopathic Association, or an accrediting body recognized by the U.S. Department
+        of Education at the time the degree was obtained; OR a degree from Foreign
+        Medical School: A Doctor of Medicine or equivalent degree from a foreign medical
+        school must provide education and medical knowledge equivalent to accredited
+        schools in the United States. Evidence of equivalency to accredited schools
+        in the United States is demonstrated by permanent certification by the Educational
+        Commission for Foreign Medical Graduates, a fifth pathway certificate for
+        Americans who completed premedical education in the United States and graduate
+        education in a foreign country, or successful completion of the U.S. Medical
+        Licensing Examination. Licensure: Possess an active, current, full, and unrestricted
+        license or registration as a physician from a State, the District of Columbia,
+        the Commonwealth of Puerto Rico, or a territory of the United States. Graduate
+        Training: Subsequent to obtaining a Doctor of Medicine or Doctor of Osteopathic
+        Medicine degree, you must have had at least 1 year of supervised experience
+        providing direct service in a clinical setting, i.e., a 1-year internship
+        or the first year of a residency program in a hospital or an institution accredited
+        for such training. Graduate training programs include only those internship,
+        residency, and fellowship programs that are approved by accrediting bodies
+        recognized within the United States or Canada. Descriptions of such programs
+        are described below: An internship program involves broadly based clinical
+        practice in which physicians acquire experience in treating a variety of medical
+        problems under supervision (e.g., internal medicine, surgery, general practice,
+        obstetrics-gynecology, and pediatrics). Such programs are in hospitals or
+        other institutions accredited for internship training by a recognized body
+        of the Accreditation Council for Graduate Medical Education (ACGME).\nA residency
+        program involves training in a specialized field of medicine in a hospital
+        or an institution accredited for training in the specialty by a recognized
+        body of the American Medical Association, (AMA) or Accreditation Council for
+        Graduate Medical Education (ACGME).\nA fellowship program involves advanced
+        training (beyond residency training) in a given medical specialty in either
+        a clinical or research setting in a hospital or an institution accredited
+        in the United States for such training. Additional Qualifications: In addition
+        to the Basic Requirements, you must possess 5 years of graduate training in
+        the specialty field or equivalent experience and training. Board Certification
+        in Vascular Neurology AND One year of specialized experience equivalent to
+        the GP-14 grade level that demonstrated your ability to perform significant
+        medical research in a particular medical field. Examples of specialized experience
+        include: providing leadership and mentoring in the planning, directing, and
+        coordination of biomedical clinical research staff, programs and activities,
+        including administrative, regulatory, and scientific matters; providing specialized
+        medical expertise in clinical research in all aspects of stroke, traumatic
+        brain injury, and/or vascular cognitive impairment; developing research programs
+        which enhance research goals and objectives of an organization; collaborating
+        with other organizations and outside researchers in a variety of clinically-related
+        projects; analyzing, evaluating, and interpreting scientific and clinical
+        data in order to prepare papers for publications in peer-reviewed journals;
+        presenting medical findings at seminars and scientific meetings; designing,
+        conducting, or directing clinical investigations or trials; providing direct
+        patient care and/or developing organization policies about patient care; providing
+        recommendation for the established, revised, or re-evaluated goals and objectives
+        of the research programs; and developing policies and plans to strengthening
+        the program areas which impact national and/or international research activities.
+        Experience refers to paid and unpaid experience, including volunteer work
+        done through National Service programs (e.g., Peace Corps, AmeriCorps) and
+        other organizations (e.g., professional; philanthropic; religious; spiritual;
+        community, student, social). Volunteer work helps build critical competencies,
+        knowledge, and skills and can provide valuable training and experience that
+        translates directly to paid employment. You will receive credit for all qualifying
+        experience, including volunteer experience. Preview assessment questionnaire
+        before you apply: https://apply.usastaffing.gov/ViewQuestionnaire/10340989","PositionRemuneration":[{"MinimumRange":"105123.00","MaximumRange":"275000.00","RateIntervalCode":"Per
+        Year"}],"PositionStartDate":"2018-11-19","PositionEndDate":"2018-11-30","PublicationStartDate":"2018-11-19","ApplicationCloseDate":"2018-11-30","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"","WhoMayApply":{"Name":"","Code":""},"LowGrade":"15","HighGrade":"15","PromotionPotential":"15","HiringPath":["public"],"AgencyMarketingStatement":"The
+        National Institutes of Health (NIH), a part of the U.S. Department of Health
+        and Human Services, is the largest biomedical research funding organization
+        in the world. NIH is made up of 27 Institutes and Centers, with a specific
+        research agenda, often focusing on particular diseases or body systems. NIH
+        employs approximately 18,000 employees in varied occupations, all supporting
+        research efforts that improve health and save lives. For more information
+        on NIH''s mission and goals, and its 27 Institutes and Centers, visit the
+        NIH website. This position is located in the Office of the Clinical Director
+        (OCD), Clinical Neuroscience Program (CNP), Division of Intramural Research
+        (DIR), National Institute of Neurological Disorders and Stroke (NINDS). The
+        mission of NINDS is to seek fundamental knowledge about the brain and nervous
+        system and to use that knowledge to reduce the burden of neurological disease.
+        NINDS helps to identify, translate, and clinically evaluate innovations that
+        improve the prevention, diagnosis, and treatment of stroke and neurological
+        disorders, and to reduce the burden of neurological disease. For more information,
+        please visit: https://www.ninds.nih.gov/.","TravelCode":"0","ApplyOnlineUrl":"https://apply.usastaffing.gov/Application/Apply","DetailStatusUrl":"https://apply.usastaffing.gov/Application/ApplicationStatus"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"517386200","MatchedObjectDescriptor":{"PositionID":"NIH-CC-DE-19-10355816","PositionTitle":"Medical
+        Records Administration Specialist","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/517386200","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/517386200?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Montgomery
+        County, Maryland","PositionLocation":[{"LocationName":"Montgomery County,
+        Maryland","CountryCode":"United States","CountrySubDivisionCode":"Maryland","CityName":"Montgomery
+        County, Maryland","Longitude":-77.20451,"Latitude":39.1366}],"OrganizationName":"National
+        Institutes of Health","DepartmentName":"Department of Health And Human Services","JobCategory":[{"Name":"Medical
+        Records Administration","Code":"0669"}],"JobGrade":[{"Code":"GS"}],"PositionSchedule":[{"Name":"Full-Time","Code":"1"}],"PositionOfferingType":[{"Name":"Permanent","Code":"15317"}],"QualificationSummary":"You
+        qualify at the GS-11 level, if you meet one of the following qualification
+        requirements: A. One year of specialized experience equivalent to the GS-09
+        grade level in the Federal service that demonstrates your ability to lead
+        in the development of procedures and policies of the medical records department;
+        analyze and articulate data trends from various medical records reports; collaborate
+        with staff clinicians to ensure departmental compliance with internal controls
+        and patient safety measures; interface with various coding systems and assign
+        appropriate codes to each medical record; OR B. Completion of a Ph.D. or equivalent
+        doctoral degree, or 3 full years of progressively higher level graduate education
+        leading to such a degree or an LL.M., if related; OR C. A combination of education
+        and specialized experience that meets the qualification requirements for this
+        position. Experience refers to paid and unpaid experience, including volunteer
+        work done through National Service programs (e.g., Peace Corps, AmeriCorps)
+        and other organizations (e.g., professional; philanthropic; religious; spiritual;
+        community, student, social). Volunteer work helps build critical competencies,
+        knowledge, and skills and can provide valuable training and experience that
+        translates directly to paid employment. You will receive credit for all qualifying
+        experience, including volunteer experience. Preview assessment questionnaire
+        before you apply: https://apply.usastaffing.gov/ViewQuestionnaire/10355816","PositionRemuneration":[{"MinimumRange":"68036.00","MaximumRange":"88450.00","RateIntervalCode":"Per
+        Year"}],"PositionStartDate":"2018-11-26","PositionEndDate":"2018-11-30","PublicationStartDate":"2018-11-26","ApplicationCloseDate":"2018-11-30","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"","WhoMayApply":{"Name":"","Code":""},"LowGrade":"11","HighGrade":"11","PromotionPotential":"11","HiringPath":["public"],"TotalOpenings":"2","AgencyMarketingStatement":"The
+        National Institutes of Health (NIH), a part of the U.S. Department of Health
+        and Human Services, is the largest biomedical research funding organization
+        in the world. NIH is made up of 27 Institutes and Centers, with a specific
+        research agenda, often focusing on particular diseases or body systems. NIH
+        employs approximately 18,000 employees in varied occupations, all supporting
+        research efforts that improve health and save lives. For more information
+        on NIH''s mission and goals, and its 27 Institutes and Centers, visit the
+        NIH website. This position is located in the Health Information Management
+        Department (HIMD). The HIMD is responsible for providing health information\nmanagement
+        services including Coding and Abstracting, Record Processing and Medicolegal
+        (Release of Information) services, as well as\nproviding technical assistance
+        and consultation to CC and other Institutes in accreditation, regulatory and
+        compliance documentation\nrequirements. These activities all serve to support
+        the patient care and clinical research support mission of the NIH Clinical
+        Center. The primary\npurpose of this position is to analyze medical record
+        documentation and ensure that it complies with patient safety guidelines and
+        other\nregulatory requirements as well as assign diagnostic and procedural
+        codes for inpatient admissions and outpatient encounters.","TravelCode":"0","ApplyOnlineUrl":"https://apply.usastaffing.gov/Application/Apply","DetailStatusUrl":"https://apply.usastaffing.gov/Application/ApplicationStatus"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"517403500","MatchedObjectDescriptor":{"PositionID":"NIH-NIAID-DE-19-10308277","PositionTitle":"Public
+        Health Analyst","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/517403500","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/517403500?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Montgomery
+        County, Maryland","PositionLocation":[{"LocationName":"Montgomery County,
+        Maryland","CountryCode":"United States","CountrySubDivisionCode":"Maryland","CityName":"Montgomery
+        County, Maryland","Longitude":-77.20451,"Latitude":39.1366}],"OrganizationName":"National
+        Institutes of Health","DepartmentName":"Department of Health And Human Services","JobCategory":[{"Name":"Public
+        Health Program Specialist","Code":"0685"}],"JobGrade":[{"Code":"GS"}],"PositionSchedule":[{"Name":"Full-Time","Code":"1"}],"PositionOfferingType":[{"Name":"Permanent","Code":"15317"}],"QualificationSummary":"Qualifications\nBasic
+        Qualifications:\nAll applicants must show that they possess a Bachelor''s
+        or graduate/higher level degree with major study in an academic field related
+        to the medical field, health sciences or allied sciences appropriate lo the
+        work or the position. Additional Qualifications:\nIn addition to meeting the
+        basic qualifications, you must demonstrate one year of specialized experience
+        equivalent to the GS-12 grade level In the Federal service obtained in either
+        the private or public sector, performing the following types of tasks: evaluating
+        the effectiveness of public health related clinical programs, policies and
+        regulations; developing clinical research agreements; and ensuring compliance
+        with collaborative research agreements, standards and procedures. Experience
+        refers to paid and unpaid experience, including volunteer work done through
+        National Service programs (e.g., Peace Corps, AmeriCorps) and other organizations
+        (e.g., professional; philanthropic; religious; spiritual; community, student,
+        social). Volunteer work helps build critical competencies, knowledge, and
+        skills and can provide valuable training and experience that translates directly
+        to paid employment. You will receive credit for all qualifying experience,
+        including volunteer experience. Preview assessment questionnaire before you
+        apply: https://apply.usastaffing.gov/ViewQuestionnaire/10308277","PositionRemuneration":[{"MinimumRange":"96970.00","MaximumRange":"126062.00","RateIntervalCode":"Per
+        Year"}],"PositionStartDate":"2018-11-26","PositionEndDate":"2018-11-30","PublicationStartDate":"2018-11-26","ApplicationCloseDate":"2018-11-30","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"","WhoMayApply":{"Name":"","Code":""},"LowGrade":"13","HighGrade":"13","PromotionPotential":"13","HiringPath":["public"],"AgencyMarketingStatement":"The
+        National Institutes of Health (NIH), a part of the U.S. Department of Health
+        and Human Services, is the largest biomedical research funding organization
+        in the world. NIH is made up of 27 Institutes and Centers, with a specific
+        research agenda, often focusing on particular diseases or body systems. NIH
+        employs approximately 18,000 employees in varied occupations, all supporting
+        research efforts that improve health and save lives. For more information
+        on NIH''s mission and goals, and its 27 Institutes and Centers, visit the
+        NIH website. National Institute of Allergy and Infectious Diseases (NIAID)
+        is a multi-billion research organization that conducts and supports basic
+        and applied research to better understand, treat, and ultimately prevent infectious,
+        immunologic, and allergic diseases. For more information, please visit our
+        website: https://www.niaid.nih.gov/.","TravelCode":"0","ApplyOnlineUrl":"https://apply.usastaffing.gov/Application/Apply","DetailStatusUrl":"https://apply.usastaffing.gov/Application/ApplicationStatus"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"517489900","MatchedObjectDescriptor":{"PositionID":"NIH-NIAID-DH-18-10335783","PositionTitle":"Supervisory
+        Physician (Clinical)","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/517489900","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/517489900?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Montgomery
+        County, Maryland","PositionLocation":[{"LocationName":"Montgomery County,
+        Maryland","CountryCode":"United States","CountrySubDivisionCode":"Maryland","CityName":"Montgomery
+        County, Maryland","Longitude":-77.20451,"Latitude":39.1366}],"OrganizationName":"National
+        Institutes of Health","DepartmentName":"Department of Health And Human Services","JobCategory":[{"Name":"Medical
+        Officer","Code":"0602"}],"JobGrade":[{"Code":"GP"}],"PositionSchedule":[{"Name":"Full-Time","Code":"1"}],"PositionOfferingType":[{"Name":"Permanent","Code":"15317"}],"QualificationSummary":"Education
+        Requirement: Successful completion of the requirements for Doctor of Medicine
+        or Doctor of Osteopathic Medicine, or equivalent, from a school in the United
+        States or Canada. This degree must have been accredited by the Council on
+        Medical Education of the American Medical Association; Association of American
+        Medical Colleges; Liaison Committee on Medical Education; Commission on Osteopathic
+        College Accreditation of the American Osteopathic Association; or an accrediting
+        body recognized by the U.S. Department of Education at the time the degree
+        was obtained. For further information, please visit OPM''s qualification standard;
+        OR Successful completion of a Doctor of Medicine or equivalent degree from
+        a foreign medical school that provided education and medical knowledge substantially
+        equivalent to accredited schools in the United States that was demonstrated
+        by permanent certification by the Educational Commission for Foreign Medical
+        Graduates (ECFMG); OR Successful completion of premedical education in the
+        United States AND graduate education from a foreign medical school that provided
+        education and medical knowledge substantially equivalent to accredited schools
+        in the United States that was demonstrated by permanent certification by the
+        Educational Commission for Foreign Medical Graduates (ECFMG). OR Successful
+        completion of the U.S. Medical Licensing Examination. Licensure Requirement
+        - You must have an active, current, full, and unrestricted license or registration
+        as a physician from a State, the District of Columbia, the Commonwealth of
+        Puerto Rico, or a territory of the United States. Graduate Training Requirement:
+        Subsequent to obtaining a Doctor of Medicine or Doctor of Osteopathic Medicine
+        degree, I have had at least 1 year of supervised experience providing direct
+        service in a clinical setting, i.e., a 1-year internship or the first year
+        of a residency program in a hospital or an institution accredited for such
+        training. Graduate training programs include only those internship, residency,
+        and fellowship programs that are approved by accrediting bodies recognized
+        within the United States or Canada. Descriptions of such programs are described
+        below: An internship program involves broadly based clinical practice in which
+        physicians acquire experience in treating a variety of medical problems under
+        supervision (e.g., internal medicine, surgery, general practice, obstetrics-gynecology,
+        and pediatrics). Such programs are in hospitals or other institutions accredited
+        for internship training by a recognized body of the Accreditation Council
+        for Graduate Medical Education (ACGME); OR A residency program involves training
+        in a specialized field of medicine in a hospital or an institution accredited
+        for training in the specialty by a recognized body of the American Medical
+        Association, (AMA) or Accreditation Council for Graduate Medical Education
+        (ACGME); OR A fellowship program involves advanced training (beyond residency
+        training) in a given medical specialty in either a clinical or research setting
+        in a hospital or an institution accredited in the United States for such training.
+        Additional Qualification Requirements - You must have five years of graduate
+        training in the specialty of the position to be filled; OR equivalent experience
+        and training. AND You must have one year of specialized experience equivalent
+        to the GS-14 level that demonstrates your ability to perform significant medical
+        research in a particular medical field. Examples of specialized experience
+        include: Providing scientific and medical leadership for the planning, implementing,
+        managing, coordinating, and evaluating of a broad national and international
+        clinical research program; developing and communicating the scientific agenda
+        of a broad research program; monitoring and managing staff performance and
+        fiscal functions of an organization to ensure that all responsibilities are
+        met; serving as the principal advisor and authoritative resource to organizational
+        leadership and staff concerning highly complex medical, clinical, and scientific
+        program and administrative matters. Experience refers to paid and unpaid experience,
+        including volunteer work done through National Service programs (e.g., Peace
+        Corps, AmeriCorps) and other organizations (e.g., professional; philanthropic;
+        religious; spiritual; community, student, social). Volunteer work helps build
+        critical competencies, knowledge, and skills and can provide valuable training
+        and experience that translates directly to paid employment. You will receive
+        credit for all qualifying experience, including volunteer experience. ?Preview
+        assessment questionnaire before you apply: https://apply.usastaffing.gov/ViewQuestionnaire/10335783","PositionRemuneration":[{"MinimumRange":"105123.00","MaximumRange":"275000.00","RateIntervalCode":"Per
+        Year"}],"PositionStartDate":"2018-11-21","PositionEndDate":"2018-11-30","PublicationStartDate":"2018-11-21","ApplicationCloseDate":"2018-11-30","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"","WhoMayApply":{"Name":"","Code":""},"LowGrade":"15","HighGrade":"15","PromotionPotential":"15","HiringPath":["public"],"TotalOpenings":"1","AgencyMarketingStatement":"The
+        National Institutes of Health (NIH), a part of the U.S. Department of Health
+        and Human Services, is the largest biomedical research funding organization
+        in the world. NIH is made up of 27 Institutes and Centers, with a specific
+        research agenda, often focusing on particular diseases or body systems. NIH
+        employs approximately 18,000 employees in varied occupations, all supporting
+        research efforts that improve health and save lives. For more information
+        on NIH''s mission and goals, and its 27 Institutes and Centers, visit the
+        NIH website.","TravelCode":"1","ApplyOnlineUrl":"https://apply.usastaffing.gov/Application/Apply","DetailStatusUrl":"https://apply.usastaffing.gov/Application/ApplicationStatus"},"IsRadialSearch":false}},"RelevanceRank":0.0}],"UserArea":{"NumberOfPages":"2","IsRadialSearch":true}}}'
+    http_version: 
+  recorded_at: Wed, 28 Nov 2018 03:02:35 GMT
 recorded_with: VCR 4.0.0

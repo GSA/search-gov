@@ -28,11 +28,7 @@ module Jobs
   end
 
   def self.scrub_query(query)
-    if query =~ /^#{JOB_RELATED_KEYWORDS}$/
-      query =~ /^(position|opening|posting|job|employment|)s?$/ ? "" : query
-    else
-      query.remove(/\b#{JOB_RELATED_KEYWORDS}\b/, '').squish
-    end
+    query.gsub(/(position|opening|posting|job|employment)s?/, '').squish
   end
 
   def self.search(job_options)

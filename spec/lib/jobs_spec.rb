@@ -52,6 +52,14 @@ describe Jobs do
       it 'returns job related keyword if the query is the same, and not a generic job keyword.' do
         expect(Jobs.scrub_query('internship')).to eq('internship')
       end
+
+      it 'returns blank when the query only contains generic job keywords.' do
+        expect(Jobs.scrub_query('job posting')).to eq('')
+      end
+
+      it 'returns the job related keyword even if the query is job related keyword and a generic job keyword' do
+        expect(Jobs.scrub_query('internship job')).to eq('internship')
+      end
     end
   end
 
