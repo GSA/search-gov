@@ -8,7 +8,7 @@ describe Jobs do
                     location_name: 'Washington, DC, USA',
                     results_per_page: 10 })
     end
-    let(:usajobs_url) {'https://data.usajobs.gov/api/search'}
+    let(:usajobs_url) { 'https://data.usajobs.gov/api/search' }
     it 'returns results' do
       expect(search.search_result.search_result_count).to be > 0
     end
@@ -39,15 +39,17 @@ describe Jobs do
 
   describe '.scrub_query(query)' do
     context 'when the search phrase contains a job related keyword' do
-      it 'returns the query with out generic job keywords' do
+      it 'returns the query without generic job keywords' do
         expect(Jobs.scrub_query('Nursing jobs')).to eq('Nursing')
       end
 
-      it 'return blank if its equal to one of these job term keywords job,employment,posting,position' do
-        expect(Jobs.scrub_query('jobs')).to eq('')
+      it 'returns blank when the query is a generic job keyword' do
+        %w[job employment posting position].each do |query|
+          expect(Jobs.scrub_keyword(query)).to eq('')
+        end
       end
 
-      it 'return job related keyword if its the same as query and not equal to job term keywords.' do
+      it 'returns job related keyword if the query is the same, and not a generic job keyword.' do
         expect(Jobs.scrub_query('internship')).to eq('internship')
       end
     end
