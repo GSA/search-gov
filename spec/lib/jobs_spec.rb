@@ -57,11 +57,11 @@ describe Jobs do
         expect(Jobs.scrub_query('job posting')).to eq('')
       end
 
-      it 'returns the job related keyword even if the query is job related keyword and a generic job keyword' do
+      it 'returns the job related keyword when the query is a job related keyword and generic job keyword' do
         expect(Jobs.scrub_query('internship job')).to eq('internship')
       end
 
-      it 'does includes the job related keyword if it is part of another word' do
+      it 'does include the job related keyword if it is part of another word' do
         expect(Jobs.scrub_query('grand reopening')).to eq('grand reopening')
       end
     end
