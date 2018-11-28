@@ -27,11 +27,11 @@ module Jobs
     end
   end
 
-  def self.scrub_keyword(keyword)
-    if keyword =~ /^#{JOB_RELATED_KEYWORDS}$/
-      keyword =~ /^(position|opening|posting|job|employment|)s?$/ ? "" : keyword
+  def self.scrub_query(query)
+    if query =~ /^#{JOB_RELATED_KEYWORDS}$/
+      query =~ /^(position|opening|posting|job|employment|)s?$/ ? "" : query
     else
-      keyword.remove(/\b#{JOB_RELATED_KEYWORDS}\b/, '').squish
+      query.remove(/\b#{JOB_RELATED_KEYWORDS}\b/, '').squish
     end
   end
 
@@ -49,11 +49,10 @@ module Jobs
   end
 
   def self.params(options)
-    { Keyword:        scrub_keyword(options[:query]),
+    { Keyword:        scrub_query(options[:query]),
       Organization:   options[:organization_codes],
       LocationName:   options[:location_name],
-      ResultsPerPage: options[:results_per_page]
-    }
+      ResultsPerPage: options[:results_per_page] }
   end
 
 end

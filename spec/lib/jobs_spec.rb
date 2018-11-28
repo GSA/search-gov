@@ -6,7 +6,7 @@ describe Jobs do
       Jobs.search({ query:'jobs',
                     organization_codes: 'HE38',
                     location_name: 'Washington, DC, USA',
-                    results_per_page: 10})
+                    results_per_page: 10 })
     end
 
     let(:usajobs_url) {'https://data.usajobs.gov/api/search'}
