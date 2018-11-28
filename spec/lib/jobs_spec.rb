@@ -45,7 +45,7 @@ describe Jobs do
 
       it 'returns blank when the query is a generic job keyword' do
         %w[job employment posting position].each do |query|
-          expect(Jobs.scrub_keyword(query)).to eq('')
+          expect(Jobs.scrub_query(query)).to eq('')
         end
       end
 
