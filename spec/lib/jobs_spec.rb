@@ -16,11 +16,10 @@ describe Jobs do
     it 'searches USAJOBS with the correct params' do
       search
       expect(a_request(:get, usajobs_url).with(
-        query: {
-          Keyword:        'Nursing',
-          Organization:   'HE38',
-          LocationName:   'Washington, DC, USA',
-          ResultsPerPage: 10 }
+        query: { Keyword:        'Nursing',
+                 Organization:   'HE38',
+                 LocationName:   'Washington, DC, USA',
+                 ResultsPerPage: 10 }
       )).to have_been_made
     end
 
