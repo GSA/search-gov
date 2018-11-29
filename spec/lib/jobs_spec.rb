@@ -65,10 +65,9 @@ describe Jobs do
         expect(Jobs.scrub_query('grand reopening')).to eq('grand reopening')
       end
 
-      it 'is case sensitive when scrubing queries' do
+      it 'is case sensitive when scrubbing queries' do
         expect(Jobs.scrub_query('JoB')).to eq('')
       end
-
     end
   end
 

@@ -1,6 +1,6 @@
 module Jobs
   SIMPLE_SEARCHES = '(job|employment|internship)s?'
-  JOB_RELATED_KEYWORDS = '((position|opening|posting|job|employment|intern(ship)?|seasonal|trabajo|puesto|empleo|vacante)s?|(opportunit|vacanc)(y|ies))|(posicion|ocupacion|oportunidad|federal)(es\b|\b)|gobierno'
+  JOB_RELATED_KEYWORDS = '((position|opening|posting|job|employment|intern(ship)?|seasonal|trabajo|puesto|empleo|vacante)s?|(opportunit|vacanc)(y|ies))|(posicion|ocupacion|oportunidad|federal)(es)?|gobierno'
   SCRUB_KEYWORDS = JOB_RELATED_KEYWORDS.remove(/\|intern\(ship\)|\|seasonal|\|federal\||gobierno/)
   SIMPLE_SINGULARS = %w{
     statistic number level rate description trend growth projection survey forecast figure report verification record
@@ -29,7 +29,7 @@ module Jobs
   end
 
   def self.scrub_query(query)
-    query.remove(/\b#{SCRUB_KEYWORDS}\b/i, '').squish
+    query.remove(/\b#{SCRUB_KEYWORDS}\b/i).squish
   end
 
   def self.search(job_options)
