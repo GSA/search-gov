@@ -43,7 +43,8 @@ describe Jobs do
       end
 
       it 'returns blank when the query is a generic job keyword' do
-        %w[job employment posting position].each do |query|
+        %w[ position opening posting job employment trabajo puesto empleo
+            vacante opportunity vacancy posicion ocupacion oportunidad].each do |query|
           expect(Jobs.scrub_query(query)).to eq('')
         end
       end
@@ -63,6 +64,11 @@ describe Jobs do
       it 'does include the job related keyword if it is part of another word' do
         expect(Jobs.scrub_query('grand reopening')).to eq('grand reopening')
       end
+
+      it 'is case sensitive when scrubing queries' do
+        expect(Jobs.scrub_query('JoB')).to eq('')
+      end
+
     end
   end
 
