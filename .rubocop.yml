@@ -21,7 +21,7 @@ Lint/AssignmentInCondition:
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#safe-assignment-in-condition'
   Enabled: true
 
-Lint/BlockAlignment:
+Layout/BlockAlignment:
   Description: 'Align block ends correctly.'
   Enabled: true
 
@@ -29,7 +29,7 @@ Lint/CircularArgumentReference:
   Description: "Don't refer to the keyword argument in the default value."
   Enabled: true
 
-Lint/ConditionPosition:
+Layout/ConditionPosition:
   Description: >-
                  Checks for condition placed in a confusing position relative to
                  the keyword.
@@ -40,7 +40,7 @@ Lint/Debugger:
   Description: 'Check for debugger calls.'
   Enabled: true
 
-Lint/DefEndAlignment:
+Layout/DefEndAlignment:
   Description: 'Align ends corresponding to defs correctly.'
   Enabled: true
 
@@ -68,7 +68,7 @@ Lint/EmptyInterpolation:
   Description: 'Checks for empty string interpolation.'
   Enabled: true
 
-Lint/EndAlignment:
+Layout/EndAlignment:
   Description: 'Align ends correctly.'
   Enabled: true
 
@@ -157,7 +157,7 @@ Lint/UnderscorePrefixedVariableName:
   Description: 'Do not use prefix `_` for a variable that is used.'
   Enabled: true
 
-Lint/UnneededDisable:
+Lint/UnneededCopDisableDirective:
   Description: >-
                  Checks for rubocop:disable comments that can be removed.
                  Note: this cop is not disabled when disabling all cops.
@@ -1315,7 +1315,7 @@ Lint/RescueType:
   Description: Avoid rescuing from non constants that could result in a `TypeError`.
   Enabled: true
 
-Lint/RescueWithoutErrorClass:
+Style/RescueStandardError:
   Description: Avoid rescuing without specifying an error class.
   StyleGuide: "#no-blind-rescues"
   Enabled: false
@@ -1801,3 +1801,209 @@ Style/YodaCondition:
   SupportedStyles:
   - all_comparison_operators
   - equality_operators_only
+
+
+# The following cops are added between 0.52.1 and 0.59.2.
+# The configurations are default.
+# If you want to use a cop by default, remove a configuration for the cop from here.
+# If you want to disable a cop, change `Enabled` to false.
+
+Bundler/GemComment:
+  Description: Add a comment describing each gem.
+  Enabled: false
+  Include:
+  - "**/*.gemfile"
+  - "**/Gemfile"
+  - "**/gems.rb"
+  Whitelist: []
+
+# Supports --auto-correct
+Layout/ClosingHeredocIndentation:
+  Description: Checks the indentation of here document closings.
+  Enabled: true
+
+# Supports --auto-correct
+Layout/EmptyComment:
+  Description: Checks empty comment.
+  Enabled: true
+  AllowBorderComment: true
+  AllowMarginComment: true
+
+# Supports --auto-correct
+Layout/EmptyLineAfterGuardClause:
+  Description: Add empty line after guard clause.
+  Enabled: true
+
+# Supports --auto-correct
+Layout/LeadingBlankLines:
+  Description: Check for unnecessary blank lines at the beginning of a file.
+  Enabled: true
+
+# Supports --auto-correct
+Lint/BigDecimalNew:
+  Description: "`BigDecimal.new()` is deprecated. Use `BigDecimal()` instead."
+  Enabled: true
+
+Lint/ErbNewArguments:
+  Description: Use `:trim_mode` and `:eoutvar` keyword arguments to `ERB.new`.
+  Enabled: true
+
+Lint/NumberConversion:
+  Description: Checks unsafe usage of number conversion methods.
+  Enabled: false
+
+# Supports --auto-correct
+Lint/OrderedMagicComments:
+  Description: Checks the proper ordering of magic comments and whether a magic comment
+    is not placed before a shebang.
+  Enabled: true
+
+# Supports --auto-correct
+Lint/SafeNavigationConsistency:
+  Description: Check to make sure that if safe navigation is used for a method call
+    in an `&&` or `||` condition that safe navigation is used for all method calls on
+    that same object.
+  Enabled: true
+  Whitelist:
+  - present?
+  - blank?
+  - presence
+  - try
+  - try!
+
+# Supports --auto-correct
+Lint/UnneededCopEnableDirective:
+  Description: Checks for rubocop:enable comments that can be removed.
+  Enabled: true
+
+Naming/MemoizedInstanceVariableName:
+  Description: Memoized method name should match memo instance variable name.
+  Enabled: true
+  EnforcedStyleForLeadingUnderscores: disallowed
+  SupportedStylesForLeadingUnderscores:
+  - disallowed
+  - required
+  - optional
+
+Naming/UncommunicativeBlockParamName:
+  Description: Checks for block parameter names that contain capital letters, end in
+    numbers, or do not meet a minimal length.
+  Enabled: true
+  MinNameLength: 1
+  AllowNamesEndingInNumbers: true
+  AllowedNames: []
+  ForbiddenNames: []
+
+Naming/UncommunicativeMethodParamName:
+  Description: Checks for method parameter names that contain capital letters, end in
+    numbers, or do not meet a minimal length.
+  Enabled: true
+  MinNameLength: 3
+  AllowNamesEndingInNumbers: true
+  AllowedNames:
+  - io
+  - id
+  - to
+  - by
+  - 'on'
+  - in
+  - at
+  - ip
+  - db
+  ForbiddenNames: []
+
+Performance/ChainArrayAllocation:
+  Description: Instead of chaining array methods that allocate new arrays, mutate an
+    existing array.
+  Reference: https://twitter.com/schneems/status/1034123879978029057
+  Enabled: false
+
+# Supports --auto-correct
+Performance/InefficientHashSearch:
+  Description: Use `key?` or `value?` instead of `keys.include?` or `values.include?`
+  Reference: https://github.com/JuanitoFatas/fast-ruby#hashkey-instead-of-hashkeysinclude-code
+  Enabled: true
+
+# Supports --auto-correct
+Performance/UnneededSort:
+  Description: Use `min` instead of `sort.first`, `max_by` instead of `sort_by...last`,
+    etc.
+  Enabled: true
+
+# Supports --auto-correct
+Rails/ActiveRecordAliases:
+  Description: 'Avoid Active Record aliases: Use `update` instead of `update_attributes`.
+    Use `update!` instead of `update_attributes!`.'
+  Enabled: true
+
+# Supports --auto-correct
+Rails/AssertNot:
+  Description: Use `assert_not` instead of `assert !`.
+  Enabled: true
+  Include:
+  - "**/test/**/*"
+
+Rails/BulkChangeTable:
+  Description: Check whether alter queries are combinable.
+  Enabled: true
+  Database: 
+  SupportedDatabases:
+  - mysql
+  - postgresql
+  Include:
+  - db/migrate/*.rb
+
+# Supports --auto-correct
+Rails/RefuteMethods:
+  Description: Use `assert_not` methods instead of `refute` methods.
+  Enabled: true
+  Include:
+  - "**/test/**/*"
+
+Security/Open:
+  Description: The use of Kernel#open represents a serious security risk.
+  Enabled: true
+
+Style/AccessModifierDeclarations:
+  Description: Checks style of how access modifiers are used.
+  Enabled: true
+  EnforcedStyle: group
+  SupportedStyles:
+  - inline
+  - group
+
+# Supports --auto-correct
+Style/ExpandPathArguments:
+  Description: Use `expand_path(__dir__)` instead of `expand_path('..', __FILE__)`.
+  Enabled: true
+
+Style/IpAddresses:
+  Description: Don't include literal IP addresses in code.
+  Enabled: false
+  Whitelist:
+  - "::"
+
+Style/MultilineMethodSignature:
+  Description: Avoid multi-line method signatures.
+  Enabled: false
+
+# Supports --auto-correct
+Style/TrailingBodyOnClass:
+  Description: Class body goes below class statement.
+  Enabled: true
+
+# Supports --auto-correct
+Style/TrailingBodyOnModule:
+  Description: Module body goes below module statement.
+  Enabled: true
+
+# Supports --auto-correct
+Style/UnneededCondition:
+  Description: Checks for unnecessary conditional expressions.
+  Enabled: true
+
+# Supports --auto-correct
+Style/UnpackFirst:
+  Description: Checks for accessing the first element of `String#unpack` instead of
+    using `unpack1`
+  Enabled: true

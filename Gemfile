@@ -1,8 +1,6 @@
 source 'https://rubygems.org'
 
-# Temporarily limiting rake version:
-# #http://stackoverflow.com/questions/35893584/nomethoderror-undefined-method-last-comment-after-upgrading-to-rake-11
-gem 'rake', '~> 10.0'
+gem 'rake', '~> 12.3.1'
 gem 'rails', '= 4.2.10'
 gem 'rails-observers', '~> 0.1.5'
 gem 'responders', '~> 2.0'
@@ -81,7 +79,7 @@ gem 'lograge', '~> 0.7.1'
 gem 'test-unit', '~> 3.2.7'
 gem 'http', '~> 1.0'
 gem 'robots_tag_parser', '~> 0.1.0', git: 'https://github.com/GSA/robots_tag_parser'
-gem 'cld2', '~> 1.0.3', require: 'cld'
+gem 'cld3', '~> 3.2.2'
 gem 'loofah', '~> 2.2.2'
 gem 'protected_attributes', '~> 1.1.4'
 # Using custom branch until https://github.com/brutuscat/medusa/issues/10 is merged
@@ -144,11 +142,11 @@ group :development, :test do
   # https://github.com/pocke/mry#usage (include the target version to add new cops)
   # Also bump the rubocop channel in .codeclimate.yml:
   # https://docs.codeclimate.com/v1.0/docs/rubocop#section-using-rubocop-s-newer-versions
-  gem 'rubocop', '0.52.1'
+  gem 'rubocop', '0.59.2'
   gem 'faker', '~> 1.8'
   gem 'pry-rails', '~> 0.3.6'
   gem 'awesome_print'
-  gem 'mry', '~> 0.52.0'
+  gem 'mry', '~> 0.59.0'
 end
 
 group :test do
