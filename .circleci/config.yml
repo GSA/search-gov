@@ -46,6 +46,10 @@ jobs:
           key: search-gov-{{ checksum "Gemfile.lock" }}
 
       - run:
+          name: Install packages
+          command: sudo apt-get install -y libprotobuf-dev protobuf-compiler
+
+      - run:
           name: Install Dependencies
           command: |
             bundle install --without development --jobs=4 --retry=3 --path vendor/bundle
