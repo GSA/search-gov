@@ -120,6 +120,8 @@ jobs:
       - restore_cache:
           key: search-gov-v1-{{ checksum "Gemfile.lock" }}
 
+      - run: sudo apt-get install -y libprotobuf-dev protobuf-compiler
+
       - run: bundle --path vendor/bundle
 
       - restore_cache:
