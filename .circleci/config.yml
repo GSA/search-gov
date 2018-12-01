@@ -170,7 +170,8 @@ jobs:
     working_directory: ~/search-gov
     parallelism: 6
     docker:
-      - image: circleci/ruby:2.3.8-browsers
+      # The legacy image includes phantomjs
+      - image: circleci/ruby:2.3.8-browsers-legacy
         environment:
           RAILS_ENV: test
 
