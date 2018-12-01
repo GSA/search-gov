@@ -31,6 +31,13 @@ jobs:
           paths:
             - ~/search-gov
 
+  install_packages:
+    steps:
+      - run:
+          name: Install packages
+          command: sudo apt-get install -y libprotobuf-dev protobuf-compiler
+
+
   bundle_install:
     working_directory: ~/search-gov
     docker:
@@ -44,10 +51,6 @@ jobs:
 
       - restore_cache:
           key: search-gov-v1{{ checksum "Gemfile.lock" }}
-
-      - run:
-          name: Install packages
-          command: sudo apt-get install -y libprotobuf-dev protobuf-compiler
 
       - run:
           name: Install Dependencies
@@ -277,6 +280,7 @@ workflows:
 
       - bundle_install:
           requires:
+          - install_packages
           - checkout_code
 
       - rspec:
