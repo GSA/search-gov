@@ -43,7 +43,7 @@ jobs:
           key: repo-{{ .Environment.CIRCLE_SHA1 }}
 
       - restore_cache:
-          key: search-gov-v1-{{ checksum "Gemfile.lock" }}
+          key: search-gov-{{ checksum "Gemfile.lock" }}
 
       - run:
           name: Install Dependencies
@@ -52,7 +52,7 @@ jobs:
             bundle install --without development --jobs=4 --retry=3 --path vendor/bundle
 
       - save_cache:
-          key: search-gov-v1-{{ checksum "Gemfile.lock" }}
+          key: search-gov-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
 
@@ -118,7 +118,7 @@ jobs:
             sudo apt-get update && sudo apt-get install mysql-client
 
       - restore_cache:
-          key: search-gov-v1-{{ checksum "Gemfile.lock" }}
+          key: search-gov-{{ checksum "Gemfile.lock" }}
 
       - run: sudo apt-get install -y libprotobuf-dev protobuf-compiler
 
@@ -192,7 +192,7 @@ jobs:
             sudo apt-get update && sudo apt-get install mysql-client
 
       - restore_cache:
-          key: search-gov-v1-{{ checksum "Gemfile.lock" }}
+          key: search-gov-{{ checksum "Gemfile.lock" }}
 
       - run: sudo apt-get install -y libprotobuf-dev protobuf-compiler
 
@@ -254,7 +254,7 @@ jobs:
           key: repo-{{ .Environment.CIRCLE_SHA1 }}
 
       - restore_cache:
-          key: search-gov-v1-{{ checksum "Gemfile.lock" }}
+          key: search-gov-{{ checksum "Gemfile.lock" }}
 
       - run: bundle --path vendor/bundle
 
@@ -274,6 +274,7 @@ workflows:
   build_and_test:
     jobs:
       - checkout_code
+
       - setup_elasticsearch
 
       - bundle_install:
