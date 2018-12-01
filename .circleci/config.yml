@@ -32,6 +32,12 @@ jobs:
             - ~/search-gov
 
   install_packages:
+    working_directory: ~/search-gov
+    docker:
+      - image: circleci/ruby:2.3.8-browsers
+        environment:
+          RAILS_ENV: test
+
     steps:
       - run:
           name: Install packages
