@@ -281,7 +281,7 @@ workflows:
   build_and_test:
     jobs:
       - checkout_code
-
+      - install_packages
       - setup_elasticsearch
 
       - bundle_install:
