@@ -48,7 +48,7 @@ jobs:
       - run:
           name: Install Dependencies
           command: |
-            sudo apt-get install -y libprotobuf-dev protobuf-compiler
+            # sudo apt-get install -y libprotobuf-dev protobuf-compiler
             bundle install --without development --jobs=4 --retry=3 --path vendor/bundle
 
       - save_cache:
@@ -88,6 +88,7 @@ jobs:
             for plugin in ${PLUGINS[*]}; do /home/circleci/search-gov/elasticsearch-1.7.3/bin/plugin install $plugin; done
             echo "script.index: on" >> /home/circleci/search-gov/elasticsearch-1.7.3/config/elasticsearch.yml
             echo "script.inline: on" >> /home/circleci/search-gov/elasticsearch-1.7.3/config/elasticsearch.yml
+            sudo apt-get install -y libprotobuf-dev protobuf-compiler
 
       - save_cache:
           key: elasticsearch
@@ -120,7 +121,7 @@ jobs:
       - restore_cache:
           key: search-gov-{{ checksum "Gemfile.lock" }}
 
-      - run: sudo apt-get install -y libprotobuf-dev protobuf-compiler
+      ##- run: sudo apt-get install -y libprotobuf-dev protobuf-compiler
 
       - run: bundle --path vendor/bundle
 
