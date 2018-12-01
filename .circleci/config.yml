@@ -31,19 +31,6 @@ jobs:
           paths:
             - ~/search-gov
 
-  install_packages:
-    working_directory: ~/search-gov
-    docker:
-      - image: circleci/ruby:2.3.8-browsers
-        environment:
-          RAILS_ENV: test
-
-    steps:
-      - run:
-          name: Install packages
-          command: sudo apt-get install -y libprotobuf-dev protobuf-compiler
-
-
   bundle_install:
     working_directory: ~/search-gov
     docker:
@@ -61,6 +48,7 @@ jobs:
       - run:
           name: Install Dependencies
           command: |
+            sudo apt-get install -y libprotobuf-dev protobuf-compiler
             bundle install --without development --jobs=4 --retry=3 --path vendor/bundle
 
       - save_cache:
@@ -281,12 +269,10 @@ workflows:
   build_and_test:
     jobs:
       - checkout_code
-      - install_packages
       - setup_elasticsearch
 
       - bundle_install:
           requires:
-          - install_packages
           - checkout_code
 
       - rspec:
