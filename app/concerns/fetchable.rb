@@ -30,7 +30,6 @@ module Fetchable
                                swf
                                tar
                                tgz
-                               txt
                                wav
                                wmv
                                wsdl

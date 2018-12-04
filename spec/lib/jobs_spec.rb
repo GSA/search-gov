@@ -3,14 +3,24 @@ require 'spec_helper'
 describe Jobs do
   describe '.search(options)' do
     subject(:search) do
-      Jobs.search({ query:'jobs',
-                    organization_code: '',
-                    location_name: 'Washington, DC, United States',
-                    results_per_page: 10})
+      Jobs.search({ query:'Nursing jobs',
+                    organization_codes: 'HE38',
+                    location_name: 'Washington, DC, USA',
+                    results_per_page: 10 })
+    end
+    let(:usajobs_url) { 'https://data.usajobs.gov/api/search' }
+    it 'returns results' do
+      expect(search.search_result.search_result_count).to be > 0
     end
 
-    it 'returns results' do
-      expect(search.search_result.search_result_count).to eq 10
+    it 'searches USAJOBS with the correct params' do
+      search
+      expect(a_request(:get, usajobs_url).with(
+        query: { Keyword:        'Nursing',
+                 Organization:   'HE38',
+                 LocationName:   'Washington, DC, USA',
+                 ResultsPerPage: 10 }
+      )).to have_been_made
     end
 
     context "when there is some problem" do
@@ -26,23 +36,41 @@ describe Jobs do
     end
   end
 
-  describe '.scrub_keyword(query)' do
+  describe '.scrub_query(query)' do
     context 'when the search phrase contains a job related keyword' do
-      it 'should return the query with out the job related keyword at the end of the query' do
-        expect(Jobs.scrub_keyword('Nursing jobs')).to eq('Nursing')
+      it 'returns the query without generic job keywords' do
+        expect(Jobs.scrub_query('Nursing jobs')).to eq('Nursing')
       end
 
-      it 'should return blank if its equal to one of these job term keywords job,employment,posting,position' do
-        expect(Jobs.scrub_keyword('jobs')).to eq('')
+      it 'returns blank when the query is a generic job keyword' do
+        %w[ position opening posting job employment trabajo puesto empleo
+            vacante opportunity vacancy posicion ocupacion oportunidad].each do |query|
+          expect(Jobs.scrub_query(query)).to eq('')
+        end
       end
 
-      it 'should return job related keyword if its the same as query and not equal to job term keywords.' do
-        expect(Jobs.scrub_keyword('internship')).to eq('internship')
+      it 'returns job related keyword if the query is the same, and not a generic job keyword.' do
+        expect(Jobs.scrub_query('internship')).to eq('internship')
       end
 
+      it 'returns blank when the query only contains generic job keywords.' do
+        expect(Jobs.scrub_query('job posting')).to eq('')
+      end
+
+      it 'returns the job related keyword when the query is a job related keyword and generic job keyword' do
+        expect(Jobs.scrub_query('internship job')).to eq('internship')
+      end
+
+      it 'does include the job related keyword if it is part of another word' do
+        expect(Jobs.scrub_query('grand reopening')).to eq('grand reopening')
+      end
+
+      it 'is case sensitive when scrubbing queries' do
+        expect(Jobs.scrub_query('JoB')).to eq('')
+      end
     end
   end
-  
+
   describe '.query_eligible?(query)' do
     context 'when the search phrase contains hyphenated words' do
       it 'should return true' do
