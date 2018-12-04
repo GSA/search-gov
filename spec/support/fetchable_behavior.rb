@@ -61,14 +61,14 @@ shared_examples_for 'a record with a fetchable url' do
 
         it 'does not include fetched records' do
           expect(described_class.unfetched.pluck(:url)).
-              not_to include 'http://agency.gov/ok'
+            not_to include 'http://agency.gov/ok'
         end
       end
 
       describe '.ok' do
         it 'includes successfully fetched records' do
           expect(described_class.ok.pluck(:url)).
-              to match_array ['http://agency.gov/ok']
+            to match_array ['http://agency.gov/ok']
         end
       end
 
@@ -95,7 +95,7 @@ shared_examples_for 'a record with a fetchable url' do
       let(:url) { "http://www.nps.gov/sdfsdf#anchorme" }
       it "should remove it" do
         expect(described_class.create!(valid_attributes.merge(url: url)).url).
-            to eq("http://www.nps.gov/sdfsdf")
+          to eq("http://www.nps.gov/sdfsdf")
       end
     end
 
@@ -103,7 +103,7 @@ shared_examples_for 'a record with a fetchable url' do
       let(:url) { "HTTP://Www.nps.GOV/UsaGovLovesToCapitalize" }
       it "should downcase the scheme and host only" do
         expect(described_class.create!(valid_attributes.merge(url: url)).url).
-            to eq("http://www.nps.gov/UsaGovLovesToCapitalize")
+          to eq("http://www.nps.gov/UsaGovLovesToCapitalize")
       end
     end
 
@@ -111,7 +111,7 @@ shared_examples_for 'a record with a fetchable url' do
       let(:url) { "http://www.nps.gov" }
       it "should append a /" do
         expect(described_class.create!(valid_attributes.merge(url: url)).url).
-            to eq("http://www.nps.gov/")
+          to eq("http://www.nps.gov/")
       end
     end
 
@@ -119,7 +119,7 @@ shared_examples_for 'a record with a fetchable url' do
       let(:url) { "http://www.nps.gov//hey/I/am/usagov/and/love/extra////slashes.shtml" }
       it "should collapse the slashes" do
         expect(described_class.create!(valid_attributes.merge(url: url)).url).
-            to eq("http://www.nps.gov/hey/I/am/usagov/and/love/extra/slashes.shtml")
+          to eq("http://www.nps.gov/hey/I/am/usagov/and/love/extra/slashes.shtml")
       end
     end
 
