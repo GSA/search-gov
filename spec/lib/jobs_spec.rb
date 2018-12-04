@@ -35,28 +35,18 @@ describe Jobs do
       end
     end
 
-    context "when the search is within radius but different city" do
+    context 'when the search is within the default radius, but in a different city' do
       before do
         Jobs.search({ query:'jobs',
-          organization_code: 'HE38',
-          location_name: 'Baltimore, MD, United States',
-          results_per_page: 10,
-        })
+                      organization_code: 'HE38',
+                      location_name: 'Baltimore, MD, United States',
+                      results_per_page: 10 })
       end
 
-      it "should return results" do
+      it 'should return results' do
         expect(search.search_result.search_result_count).to be > 0
       end
     end
-  end
-
-  describe 'job_scrub(query)' do
-    context 'when the search phrase contains the a job related keyword' do
-      it 'should return the query with out the job related keyword at the end of the query' do
-        expect(Jobs.job_scrub('Nursing jobs')).to eq('Nursing')
-      end
-    end
-
   end
 
   describe '.scrub_query(query)' do

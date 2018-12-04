@@ -1871,7 +1871,7 @@ http_interactions:
   recorded_at: Mon, 19 Nov 2018 22:41:31 GMT
 - request:
     method: get
-    uri: https://data.usajobs.gov/api/search?Keyword=jobs&LocationName=Washington,%20DC,%20United%20States&Organization&Radius=75&ResultsPerPage=10
+    uri: https://data.usajobs.gov/api/search?Keyword=&LocationName=Washington,%20DC,%20United%20States&Organization&Radius=75&ResultsPerPage=10
     body:
       encoding: US-ASCII
       string: ''
@@ -3059,9 +3059,9 @@ http_interactions:
       string: ''
     headers:
       Authorization-Key:
-      - Qbk5RB/WRc1ctYqwojqlSKeoLVrwokT8OnSLq+G1qu0=
+      - "<JOBS_AUTHORIZATION_KEY>"
       User-Agent:
-      - parissa.eggleston@gmail.com
+      - "<JOBS_USER_AGENT>"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -3111,9 +3111,9 @@ http_interactions:
       string: ''
     headers:
       Authorization-Key:
-      - Qbk5RB/WRc1ctYqwojqlSKeoLVrwokT8OnSLq+G1qu0=
+      - "<JOBS_AUTHORIZATION_KEY>"
       User-Agent:
-      - parissa.eggleston@gmail.com
+      - "<JOBS_USER_AGENT>"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -3163,9 +3163,9 @@ http_interactions:
       string: ''
     headers:
       Authorization-Key:
-      - Qbk5RB/WRc1ctYqwojqlSKeoLVrwokT8OnSLq+G1qu0=
+      - "<JOBS_AUTHORIZATION_KEY>"
       User-Agent:
-      - parissa.eggleston@gmail.com
+      - "<JOBS_USER_AGENT>"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -4345,9 +4345,9 @@ http_interactions:
       string: ''
     headers:
       Authorization-Key:
-      - Qbk5RB/WRc1ctYqwojqlSKeoLVrwokT8OnSLq+G1qu0=
+      - "<JOBS_AUTHORIZATION_KEY>"
       User-Agent:
-      - parissa.eggleston@gmail.com
+      - "<JOBS_USER_AGENT>"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -4975,9 +4975,9 @@ http_interactions:
       string: ''
     headers:
       Authorization-Key:
-      - Qbk5RB/WRc1ctYqwojqlSKeoLVrwokT8OnSLq+G1qu0=
+      - "<JOBS_AUTHORIZATION_KEY>"
       User-Agent:
-      - parissa.eggleston@gmail.com
+      - "<JOBS_USER_AGENT>"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -5229,9 +5229,9 @@ http_interactions:
       string: ''
     headers:
       Authorization-Key:
-      - Qbk5RB/WRc1ctYqwojqlSKeoLVrwokT8OnSLq+G1qu0=
+      - "<JOBS_AUTHORIZATION_KEY>"
       User-Agent:
-      - parissa.eggleston@gmail.com
+      - "<JOBS_USER_AGENT>"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:

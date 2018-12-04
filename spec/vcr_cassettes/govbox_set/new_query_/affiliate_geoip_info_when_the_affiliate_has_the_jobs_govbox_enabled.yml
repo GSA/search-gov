@@ -5212,7 +5212,7 @@ http_interactions:
   recorded_at: Mon, 19 Nov 2018 22:16:17 GMT
 - request:
     method: get
-    uri: https://data.usajobs.gov/api/search?Keyword=job&LocationName=Flemington,%20New%20Jersey,%20United%20States&Organization&Radius=75&ResultsPerPage=10
+    uri: https://data.usajobs.gov/api/search?Keyword=&LocationName=Flemington,%20New%20Jersey,%20United%20States&Organization&Radius=75&ResultsPerPage=10
     body:
       encoding: US-ASCII
       string: ''
@@ -5345,7 +5345,6 @@ http_interactions:
         Program if funding is available. Please contact Human Resources at this medical
         center and speak with the Education Debt Reduction Program Coordinator for
         additional information.","TravelCode":"0","ApplyOnlineUrl":"https://apply.usastaffing.gov/Application/Apply","DetailStatusUrl":"https://apply.usastaffing.gov/Application/ApplicationStatus"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"503588500","MatchedObjectDescriptor":{"PositionID":"HHS-CDC-DH-18-10247876","PositionTitle":"Physician","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/503588500","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/503588500?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Multiple
->>>>>>> 4970a011b0663ce37dc8e3b10945fc76af330c66
         Locations","PositionLocation":[{"LocationName":"Anchorage, Alaska","CountryCode":"United
         States","CountrySubDivisionCode":"Alaska","CityName":"Anchorage, Alaska","Longitude":-149.857742,"Latitude":61.21756},{"LocationName":"Phoenix,
         Arizona","CountryCode":"United States","CountrySubDivisionCode":"Arizona","CityName":"Phoenix,
@@ -8582,5 +8581,4 @@ http_interactions:
         for Locations.\n**AMENDED TO EXTEND THE 1ST CUTOFF DATE TO 11/19/2018**","WhoMayApply":{"Name":"","Code":""},"LowGrade":"07","HighGrade":"11","PromotionPotential":"12","HiringPath":["public"],"TotalOpenings":"469","AppointmentExplanationText":"Permanent","AgencyMarketingStatement":"","TravelCode":"1","ApplyOnlineUrl":"https://careerconnector.jobs.treas.gov/cc/irs/ros/rosDashboard.hms?O=2&J=170847","DetailStatusUrl":"https://careerconnector.jobs.treas.gov/cc/irs/ros/rosDashboard.hms?O=2&J=170847&S=1"},"IsRadialSearch":false}},"RelevanceRank":0.0}],"UserArea":{"NumberOfPages":"2","IsRadialSearch":true}}}'
     http_version: 
   recorded_at: Mon, 26 Nov 2018 17:40:44 GMT
->>>>>>> 4970a011b0663ce37dc8e3b10945fc76af330c66
 recorded_with: VCR 4.0.0
