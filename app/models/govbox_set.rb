@@ -104,20 +104,18 @@ class GovboxSet
 
   def init_jobs
     if @affiliate.jobs_enabled?
-      job_results = Jobs.search(build_jobs_search_options)&.search_result&.search_result_items
+      job_results = Jobs.search({
+        query: @query,
+        organization_codes: @affiliate.agency&.joined_organization_codes,
+        location_name: @geoip_info&.location_name,
+        results_per_page: 10
+      })&.search_result&.search_result_items
+
       if job_results.present?
         @jobs = JobResultsPostProcessor.new(results: job_results)&.post_processed_results
         @modules << 'JOBS'
       end
     end
-  end
-
-  def build_jobs_search_options
-    jobs_options = { Keyword: @query, ResultsPerPage: 10 }
-    org_hash = { Organization: @affiliate.agency&.joined_organization_codes }
-    jobs_options.merge!(org_hash)
-    jobs_options.merge!(LocationName: @geoip_info&.location_name)
-    jobs_options.compact
   end
 
   def init_federal_register_documents
