@@ -4,14 +4,15 @@ class SearchgovUrl < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
 
   MAX_DOC_SIZE = 15.megabytes
-  SUPPORTED_CONTENT_TYPES = %w(
+  SUPPORTED_CONTENT_TYPES = %w[
                                 text/html
+                                text/plain
                                 application/msword
                                 application/pdf
                                 application/vnd.ms-excel
                                 application/vnd.openxmlformats-officedocument.wordprocessingml.document
                                 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
-                              )
+                              ]
 
   attr_accessible :last_crawl_status, :last_crawled_at, :url, :lastmod
   attr_reader :response, :document, :tempfile
@@ -167,7 +168,7 @@ class SearchgovUrl < ActiveRecord::Base
 
   def parse_document
     Rails.logger.info "[SearchgovUrl] Parsing document for #{url}"
-    if /^application/ === response.content_type.mime_type
+    if /^application|text\/plain/ === response.content_type.mime_type
       ApplicationDocument.new(document: download.open, url: url)
     else
       HtmlDocument.new(document: response.to_s, url: url)

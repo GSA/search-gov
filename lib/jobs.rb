@@ -1,6 +1,7 @@
 module Jobs
   SIMPLE_SEARCHES = '(job|employment|internship)s?'
-  JOB_RELATED_KEYWORDS = '((position|opening|posting|job|employment|intern(ship)?|seasonal|trabajo|puesto|empleo|vacante)s?|(opportunit|vacanc)(y|ies))|(posicion|ocupacion|oportunidad|federal)es|gobierno'
+  JOB_RELATED_KEYWORDS = '((position|opening|posting|job|employment|intern(ship)?|seasonal|trabajo|puesto|empleo|vacante)s?|(opportunit|vacanc)(y|ies))|(posicion|ocupacion|oportunidad|federal)(es)?|gobierno'
+  SCRUB_KEYWORDS = JOB_RELATED_KEYWORDS.remove(/\|intern\(ship\)|\|seasonal|\|federal\||gobierno/)
   SIMPLE_SINGULARS = %w{
     statistic number level rate description trend growth projection survey forecast figure report verification record
     authorization card classification form hazard poster fair board outlook grant funding factor other cut
@@ -28,9 +29,8 @@ module Jobs
     end
   end
 
-  def self.job_scrub(keyword)
-    scrubbed_keyword = keyword.gsub(/#{JOB_RELATED_KEYWORDS}/, '').strip
-    keyword =~ /^#{JOB_RELATED_KEYWORDS}$/ ? keyword : scrubbed_keyword
+  def self.scrub_query(query)
+    query.remove(/\b#{SCRUB_KEYWORDS}\b/i).squish
   end
 
   def self.search(job_options)
@@ -47,12 +47,10 @@ module Jobs
   end
 
   def self.params(options)
-    { Keyword:        job_scrub(options[:query]),
-      Organization:   options[:organization],
+    { Keyword:        scrub_query(options[:query]),
+      Organization:   options[:organization_codes],
       LocationName:   options[:location_name],
-      ResultsPerPage: options[:results_per_page],
-      Radius:         SEARCH_RADIUS
-    }
+      ResultsPerPage: options[:results_per_page] }
   end
 
 end
