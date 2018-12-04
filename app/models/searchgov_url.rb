@@ -39,7 +39,7 @@ class SearchgovUrl < ActiveRecord::Base
     column_name: proc {|url| !url.fetched? ? 'unfetched_urls_count' : nil },
     column_names: { ['searchgov_urls.last_crawled_at IS NULL'] => 'unfetched_urls_count' }
 
-  scope :fetch_required, ->() do
+  scope :fetch_required, -> do
     where('last_crawled_at IS NULL
            OR lastmod > last_crawled_at
            OR enqueued_for_reindex')
@@ -50,7 +50,7 @@ class SearchgovUrl < ActiveRecord::Base
 
   def fetch
     raise DomainError.new("#{searchgov_domain.domain}: #{searchgov_domain.status}") if !searchgov_domain.available?
-    self.update(last_crawled_at: Time.now, enqueued_for_reindex: false)
+    update(last_crawled_at: Time.now, enqueued_for_reindex: false)
     self.load_time = Benchmark.realtime do
       DocumentFetchLogger.new(url, 'searchgov_url').log
       begin

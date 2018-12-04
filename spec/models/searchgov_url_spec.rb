@@ -79,7 +79,7 @@ describe SearchgovUrl do
         end
 
         it 'deletes the Searchgov Url' do
-          expect{ searchgov_url.destroy }.to change{ SearchgovUrl.count }.by(-1)
+          expect { searchgov_url.destroy }.to change{ SearchgovUrl.count }.by(-1)
         end
       end
     end
@@ -138,7 +138,7 @@ describe SearchgovUrl do
         end
 
         it 'sets enqueued_for_reindex to false' do
-          expect{ fetch }.to change{ searchgov_url.enqueued_for_reindex }.
+          expect { fetch }.to change{ searchgov_url.enqueued_for_reindex }.
             from(true).to(false)
         end
       end
