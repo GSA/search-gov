@@ -1222,9 +1222,9 @@ http_interactions:
       string: ''
     headers:
       Authorization-Key:
-      - Qbk5RB/WRc1ctYqwojqlSKeoLVrwokT8OnSLq+G1qu0=
+      - "<JOBS_AUTHORIZATION_KEY>"
       User-Agent:
-      - parissa.eggleston@gmail.com
+      - "<JOBS_USER_AGENT>"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -1871,15 +1871,15 @@ http_interactions:
   recorded_at: Mon, 19 Nov 2018 22:41:31 GMT
 - request:
     method: get
-    uri: https://data.usajobs.gov/api/search?Keyword=&LocationName=Washington,%20DC,%20United%20States&Organization&Radius=75&ResultsPerPage=10
+    uri: https://data.usajobs.gov/api/search?Keyword=&LocationName=Washington,%20DC,%20United%20States&Organization&ResultsPerPage=10
     body:
       encoding: US-ASCII
       string: ''
     headers:
       Authorization-Key:
-      - Qbk5RB/WRc1ctYqwojqlSKeoLVrwokT8OnSLq+G1qu0=
+      - "<JOBS_AUTHORIZATION_KEY>"
       User-Agent:
-      - parissa.eggleston@gmail.com
+      - "<JOBS_USER_AGENT>"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -5272,7 +5272,6 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"LanguageCode":"EN","SearchParameters":{},"SearchResult":{"SearchResultCount":10,"SearchResultCountAll":13,"SearchResultItems":[{"MatchedObjectId":"510301500","MatchedObjectDescriptor":{"PositionID":"NIH-CC-DH-18-10295468","PositionTitle":"Nurse
->>>>>>> 4970a011b0663ce37dc8e3b10945fc76af330c66
         (Clinical Research)","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/510301500","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/510301500?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Montgomery
         County, Maryland","PositionLocation":[{"LocationName":"Montgomery County,
         Maryland","CountryCode":"United States","CountrySubDivisionCode":"Maryland","CityName":"Montgomery
@@ -5852,5 +5851,4 @@ http_interactions:
         NIH website.","TravelCode":"1","ApplyOnlineUrl":"https://apply.usastaffing.gov/Application/Apply","DetailStatusUrl":"https://apply.usastaffing.gov/Application/ApplicationStatus"},"IsRadialSearch":false}},"RelevanceRank":0.0}],"UserArea":{"NumberOfPages":"2","IsRadialSearch":true}}}'
     http_version: 
   recorded_at: Wed, 28 Nov 2018 03:02:35 GMT
->>>>>>> 4970a011b0663ce37dc8e3b10945fc76af330c66
 recorded_with: VCR 4.0.0
