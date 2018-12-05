@@ -1702,4 +1702,422 @@ http_interactions:
         to change.","WhoMayApply":{"Name":"","Code":""},"LowGrade":"D","HighGrade":"D","PromotionPotential":"E","HiringPath":["public"],"AppointmentExplanationText":"Permanent","AgencyMarketingStatement":"","TravelCode":"1","ApplyOnlineUrl":"https://jobs-recruit.tsa.dhs.gov/tsa-tso/ros/rosDashboard.hms?O=1&J=199","DetailStatusUrl":"https://jobs-recruit.tsa.dhs.gov/tsa-tso/ros/rosDashboard.hms?O=1&J=199&S=1"},"IsRadialSearch":false}},"RelevanceRank":0.0}],"UserArea":{"NumberOfPages":"695","IsRadialSearch":false}}}'
     http_version: 
   recorded_at: Mon, 26 Nov 2018 18:57:42 GMT
+- request:
+    method: get
+    uri: https://data.usajobs.gov/api/search?Keyword=&LocationName&Organization&Radius=75&ResultsPerPage=10
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization-Key:
+      - "<JOBS_AUTHORIZATION_KEY>"
+      User-Agent:
+      - "<JOBS_USER_AGENT>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/hr+json
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/10.0
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Wed, 05 Dec 2018 22:18:07 GMT
+      Content-Length:
+      - '39650'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - akavpau_DATA_USAJ=1544048587~id=74215fc08558d4a3f81670a53a2abead; Domain=data.usajobs.gov;
+        Path=/; Secure
+    body:
+      encoding: UTF-8
+      string: '{"LanguageCode":"EN","SearchParameters":{},"SearchResult":{"SearchResultCount":10,"SearchResultCountAll":7366,"SearchResultItems":[{"MatchedObjectId":"404038500","MatchedObjectDescriptor":{"PositionID":"DEN-F09-P001","PositionTitle":"Transportation
+        Security Officer (TSO)","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/404038500","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/404038500?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Denver,
+        Colorado","PositionLocation":[{"LocationName":"Denver, Colorado","CountryCode":"United
+        States","CountrySubDivisionCode":"Colorado","CityName":"Denver, Colorado","Longitude":-104.992256,"Latitude":39.74001}],"OrganizationName":"Transportation
+        Security Administration","DepartmentName":"Department of Homeland Security","JobCategory":[{"Name":"Compliance
+        Inspection And Support","Code":"1802"}],"JobGrade":[{"Code":"SV"}],"PositionSchedule":[{"Name":"Part-Time","Code":"2"}],"PositionOfferingType":[{"Name":"Permanent","Code":"15317"}],"QualificationSummary":"Applicants
+        must meet these qualifications in order to be further evaluated in the TSO
+        hiring process:Have a high school diploma, General Educational Development
+        (GED), High School Equivalency Test (HiSET), or Test Assessing Secondary Completion
+        (TASC) credential OR at least one year of full-time work experience in the
+        security industry, aviation screening, or as an X-ray technicianBe proficient
+        in the English language (i.e., able to read, write, speak, and comprehend)National
+        Service Experience (i.e., volunteer experience): Experience refers to paid
+        and unpaid experience, including volunteer work done through National Service
+        programs (e.g., Peace Corps, AmeriCorps) and other organizations (e.g., professional;
+        philanthropic; religious; spiritual; community, student, social). Volunteer
+        work helps build critical competencies, knowledge, and skills and can provide
+        valuable training and experience that translates directly to paid employment.
+        You will receive credit for all qualifying experience, including volunteer
+        experience.","PositionRemuneration":[{"MinimumRange":"18.7","MaximumRange":"25.98","RateIntervalCode":"Per
+        Hour"}],"PositionStartDate":"2018-05-30","PositionEndDate":"2018-12-31","PublicationStartDate":"2018-05-30","ApplicationCloseDate":"2018-12-31","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"Any
+        offers of employment made pursuant to this announcement will be consistent
+        with all applicable authorities concerning, including Presidential Memoranda,
+        Executive Orders, interpretive U.S. Office of Management and Budget (OMB)
+        and U.S. Office of Personnel Management (OPM) guidance, and Office of Management
+        and Budget plans and policies concerning hiring. These authorities are subject
+        to change.","WhoMayApply":{"Name":"","Code":""},"LowGrade":"D","HighGrade":"D","PromotionPotential":"E","HiringPath":["public"],"AppointmentExplanationText":"Permanent","AgencyMarketingStatement":"","TravelCode":"1","ApplyOnlineUrl":"https://jobs-recruit.tsa.dhs.gov/tsa-tso/ros/rosDashboard.hms?O=1&J=120","DetailStatusUrl":"https://jobs-recruit.tsa.dhs.gov/tsa-tso/ros/rosDashboard.hms?O=1&J=120&S=1"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"434612600","MatchedObjectDescriptor":{"PositionID":"DON0905-LTA","PositionTitle":"Attorney","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/434612600","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/434612600?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Washington
+        Navy Yard, District of Columbia","PositionLocation":[{"LocationName":"Washington
+        Navy Yard, District of Columbia","CountryCode":"United States","CountrySubDivisionCode":"District
+        of Columbia","CityName":"Washington Navy Yard, District of Columbia","Longitude":-76.99695,"Latitude":38.873333}],"OrganizationName":"Department
+        of the Navy/Assistant for Administration","DepartmentName":"Department of
+        the Navy","JobCategory":[{"Name":"Attorney","Code":"0905"}],"JobGrade":[{"Code":"GS"}],"PositionSchedule":[{"Name":"Multiple
+        Schedules","Code":"6"}],"PositionOfferingType":[{"Name":"Multiple Appointment
+        Types","Code":"15327"}],"QualificationSummary":"The Office of Personnel Management
+        (OPM) has not issued qualification standards for attorney positions. However,
+        OGC sets minimum qualifications for attorney positions and sets forth these
+        qualifications in each vacancy announcement. The successful candidate: Must
+        be a U.S. citizen Graduated with a J.D. or LL.B from a law school accredited
+        by the American Bar Association An active member in good standing of the bar
+        of the highest court of a State, U.S. Commonwealth, U.S. territory, or the
+        District of Columbia Admitted to practice before a state or federal court
+        Must obtain and maintain a Secret security clearance Patent Attorneys must
+        be members of the U.S. Patent and Trademark Organization A secret or top secret
+        security clearance is a requirement of a position with OGC. Failure to obtain
+        and maintain the required level of clearance may result in the withdrawal
+        of a position offer or removal. If you possess a security clearance, please
+        indicate the level and termination date in your resume.","PositionRemuneration":[{"MinimumRange":"64650.0000","MaximumRange":"160300.0000","RateIntervalCode":"Per
+        Year"}],"PositionStartDate":"2018-01-16","PositionEndDate":"2019-01-15","PublicationStartDate":"2018-01-16","ApplicationCloseDate":"2019-01-15","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"The
+        Navy&#39;s Office of the General Counsel (OGC) has over 140 locations around
+        the world. To view Department of the Navy&#39;s Office of the General Counsel
+        (OGC) current attorney vacancies please go to the OGC website at: http://www.secnav.navy.mil/OGC/Lists/Vacancies2/Front.aspx.
+        Please note that the OGC website lists all available attorney positions. All
+        questions regarding vacancy announcements should be directed to the point
+        of contact listed for the specific vacancy. OGC consists of approximately
+        750 civilian attorneys, 25 uniformed Navy JAGs and Marine Corps Judge Advocates,
+        and over 200 support staff located in 140 offices throughout the United States
+        and overseas. These positions range from GS-11 to GS-15. Approximately 300
+        civilian attorneys are located in Washington D.C.. The Office of the General
+        Counsel of the Navy provides legal advice to the Secretary of the Navy, the
+        Under Secretary of the Navy, the Assistant Secretaries of the Navy and their
+        staffs, and the multiple components of the Department, to include the Navy
+        and the Marine Corps, in the obligation of an annual budget of over $160 billion
+        and the management of over 900,000 service members and civilians. . Civilian
+        Navy OGC attorneys help clients address legal concerns in virtually every
+        area of the law related to business, including government contracts, public
+        employment ethics, environmental concerns, personal and real property law,
+        personnel law, fiscal issues, intellectual property law, litigation, legislation,
+        cyber and intelligence law.","WhoMayApply":{"Name":"United States Citizens","Code":"15514"},"LowGrade":"11","HighGrade":"15","PromotionPotential":"15","HiringPath":["public"],"TotalOpenings":"Many","AgencyMarketingStatement":"","TravelCode":"1"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"451842500","MatchedObjectDescriptor":{"PositionID":"OARMAV1","PositionTitle":"Attorney
+        and Assistant United States Attorney","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/451842500","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/451842500?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Washington
+        DC, District of Columbia","PositionLocation":[{"LocationName":"Washington
+        DC, District of Columbia","CountryCode":"United States","CountrySubDivisionCode":"District
+        of Columbia","CityName":"Washington DC, District of Columbia","Longitude":-77.032,"Latitude":38.8904}],"OrganizationName":"Offices,
+        Boards and Divisions","DepartmentName":"Department of Justice","JobCategory":[{"Name":"Attorney","Code":"0905"}],"JobGrade":[{"Code":"GS"}],"PositionSchedule":[{"Name":"Full
+        Time","Code":"1"}],"PositionOfferingType":[{"Name":"Multiple Appointment Types","Code":"15327"}],"QualificationSummary":"Given
+        the scope of Justice''s legal practice (see component practice areas at http://www.justice.gov/legal-careers/attorneys-vacancies
+        ) the needs of each organization and section are defined by its respective
+        mission, areas of practice, and the specific skills needed at the time of
+        the vacancy. Generally, as the \"Nation''s Litigator,\" Justice seeks attorneys
+        with some litigation experience; however, opportunities also exist for attorneys
+        with other types of experience, such as legislative review, policy formulation,
+        and legal advising.To review the specific requirements, please review the
+        vacancy announcements listed on the Department''s web page, http://www.justice.gov/legal-careers/attorneys-vacanciesTECHNICAL
+        QUALIFICATIONS:Any attorney who is an active member of the bar of any U.S.
+        jurisdiction and has at least one year post-J.D. legal or other relevant experience
+        is eligible to apply for any experienced attorney position.Please review the
+        information listed in each vacancy announcement. The list of attorney vacancies
+        is available at, [http://www.justice.gov/careers/legal/attvancies.html","PositionRemuneration":[{"MinimumRange":"52062.0","MaximumRange":"136659.0","RateIntervalCode":"Per
+        Year"}],"PositionStartDate":"2018-11-28","PositionEndDate":"2019-11-27","PublicationStartDate":"2018-11-28","ApplicationCloseDate":"2019-11-27","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"","WhoMayApply":{"Name":"","Code":""},"LowGrade":"11","HighGrade":"15","PromotionPotential":"15","HiringPath":["public"],"TotalOpenings":"Many","AgencyMarketingStatement":"","TravelCode":"0","ApplyOnlineUrl":"https://www.avuecentral.com/casting/aiportal/control/toVacancy","DetailStatusUrl":"https://www.avuecentral.com/casting/aiportal/control/toVacancy"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"462291700","MatchedObjectDescriptor":{"PositionID":"SPP-Register","PositionTitle":"Selective
+        Placement Program (Noncompetitive Appointments for Applicants with Disabilities)","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/462291700","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/462291700?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Multiple
+        Locations","PositionLocation":[{"LocationName":"Washington DC, District of
+        Columbia","CountryCode":"United States","CountrySubDivisionCode":"District
+        of Columbia","CityName":"Washington DC, District of Columbia","Longitude":-77.032,"Latitude":38.8904},{"LocationName":"Landover,
+        Maryland","CountryCode":"United States","CountrySubDivisionCode":"Maryland","CityName":"Landover,
+        Maryland","Longitude":-76.89111,"Latitude":38.930954},{"LocationName":"Culpeper,
+        Virginia","CountryCode":"United States","CountrySubDivisionCode":"Virginia","CityName":"Culpeper,
+        Virginia","Longitude":-77.99614,"Latitude":38.47333}],"OrganizationName":"Library
+        of Congress","DepartmentName":"Legislative Branch","JobCategory":[{"Name":"Social
+        Science","Code":"0101"},{"Name":"Miscellaneous Administration And Program","Code":"0301"},{"Name":"Librarian","Code":"1410"},{"Name":"Copyright","Code":"1210"},{"Name":"Information
+        Technology Management","Code":"2210"}],"JobGrade":[{"Code":"GS"}],"PositionSchedule":[{"Name":"Open","Code":"1"}],"PositionOfferingType":[{"Name":"Temporary
+        (Not To Exceed a period of 120 days to 2 years, depending on qualifications
+        of applicant)","Code":"15317"}],"QualificationSummary":"Education: Some positions
+        may require specific training, education and/or degrees depending on the series
+        and grade level of the position being filled.Experience: Applicants must have
+        had progressively responsible experience and training sufficient in scope
+        and quality to furnish them with an acceptable level of knowledge, skills,
+        and abilities to perform the duties of the position. The DETAILED description
+        of your work experience in your personal resume must clearly demonstrate that
+        you have gained and currently posess the knowledge, skills and abilities to
+        satisfactorily perform the duties of the position being filled. Transcripts
+        and certifications provided as proof of qualifying education and/or training
+        must be submitted at the time of application.To view qualification requirements
+        for all series, click on the following link: https://www.opm.gov/policy-data-oversight/classification-qualifications/general-schedule-qualification-standards/.Part-Time,
+        Volunteer or Unpaid Experience: Credit will be given for appropriate undpaid
+        and/or part-time work. You must clearly identify the duties and responsibilities
+        in each position held and the total number of hours worked per week. Volunteer
+        work experience can include work done through National Service Programs (i.e.,
+        Peace Corps, Americorps) and other organizations (e.g., professional, pilanthropic,
+        religious, spiritual, community, student and social).","PositionRemuneration":[{"MinimumRange":"23547.0","MaximumRange":"161900.0","RateIntervalCode":"Per
+        Year"}],"PositionStartDate":"2017-01-12","PositionEndDate":"2018-12-28","PublicationStartDate":"2017-01-12","ApplicationCloseDate":"2018-12-28","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"The
+        Library of Congress is accepting applications from people who wish to be considered
+        for employment at the Library under its Selective Placement Program (SPP).
+        It is the policy of the Library to recruit and hire qualified applicants with
+        targeted disabilities by assisting these individuals in obtaining employment
+        consistent with their level of skills and abilities and their capacity for
+        safe and efficient job performance. Targeted disabilities include, but are
+        not limited to severe physical, cognitive, or emotional disabilities. The
+        SPP program is open to applicants who have, or who have a history of having,
+        a severe disability as listed above. Applicants with disabilities wishing
+        to be considered for employment at the Library may apply using this announcement
+        and must (1) have appropriate certification of their disability (Details in
+        JOB REQUIREMENTS), (2) show that they have the qualifications for the job,
+        and (3) satisfy the requirements/conditions for employment. By responding
+        to this announcement you are applying to a resume database. Your resume and
+        any documents submitted will be retained for two years and may be used at
+        any time during that period. When a position is requested to be filled under
+        the SPP hiring authority, a list of applicants will be provided to management
+        for review and possible selection. Additional information on the Library''s
+        Selective Placement Program can be found at: https://www.loc.gov/hr/employment/LOCSelectivePlacementProgram.pdf.Applicants
+        wishing to be considered for employment at the Library through the SPP may
+        also submit an application using the Library&#8217;s competitive selection
+        process by responding to a specific job opportunity announcement listed on
+        the Library&#8217;s job opportunity page at http://www.loc.gov/hr/employment/index.php?action=cMain.showJobs.The
+        salary range indicated reflects the wide range of grades/salaries which may
+        be filled through this process and includes locality pay adjustments for the
+        Washington, D.C., Metropolitan area. Appointments under this program do not
+        have promotion potential beyond the grade to which the applicant is initially
+        appointed.The incumbent of this position may request to work a flextime work
+        schedule.Some positions may involve travel.This may be a supervisory or non-supervisory
+        position and may be a bargaining unit position, if not excluded by regulation.Relocation
+        expenses will not be authorized for any person(s) selected under this vacancy
+        announcement.","WhoMayApply":{"Name":"U.S. Citizens with a certified, severe
+        intellectual, physical or psychiatric disability.","Code":"15669"},"LowGrade":"01","HighGrade":"01","PromotionPotential":"01","HiringPath":["public"],"AppointmentExplanationText":"Permanent","AgencyMarketingStatement":"","TravelCode":"0","ApplyOnlineUrl":"https://jobs.monstergovt.com/loc/ros/rosDashboard.hms?O=1&J=24212","DetailStatusUrl":"https://jobs.monstergovt.com/loc/ros/rosDashboard.hms?O=1&J=24212&S=1"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"465061000","MatchedObjectDescriptor":{"PositionID":"EGE-F09-P001","PositionTitle":"Transportation
+        Security Officer (TSO)","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/465061000","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/465061000?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Eagle,
+        Colorado","PositionLocation":[{"LocationName":"Eagle, Colorado","CountryCode":"United
+        States","CountrySubDivisionCode":"Colorado","CityName":"Eagle, Colorado","Longitude":-106.828,"Latitude":39.6556}],"OrganizationName":"Transportation
+        Security Administration","DepartmentName":"Department of Homeland Security","JobCategory":[{"Name":"Compliance
+        Inspection And Support","Code":"1802"}],"JobGrade":[{"Code":"SV"}],"PositionSchedule":[{"Name":"Part-Time","Code":"2"}],"PositionOfferingType":[{"Name":"Permanent","Code":"15317"}],"QualificationSummary":"Applicants
+        must meet these qualifications in order to be further evaluated in the TSO
+        hiring process:Have a high school diploma, General Educational Development
+        (GED), High School Equivalency Test (HiSET), or Test Assessing Secondary Completion
+        (TASC) credential OR at least one year of full-time work experience in the
+        security industry, aviation screening, or as an X-ray technicianBe proficient
+        in the English language (i.e., able to read, write, speak, and comprehend)National
+        Service Experience (i.e., volunteer experience): Experience refers to paid
+        and unpaid experience, including volunteer work done through National Service
+        programs (e.g., Peace Corps, AmeriCorps) and other organizations (e.g., professional;
+        philanthropic; religious; spiritual; community, student, social). Volunteer
+        work helps build critical competencies, knowledge, and skills and can provide
+        valuable training and experience that translates directly to paid employment.
+        You will receive credit for all qualifying experience, including volunteer
+        experience.","PositionRemuneration":[{"MinimumRange":"19.54","MaximumRange":"26.23","RateIntervalCode":"Per
+        Hour"}],"PositionStartDate":"2017-06-07","PositionEndDate":"2018-12-31","PublicationStartDate":"2017-06-07","ApplicationCloseDate":"2018-12-31","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"Any
+        offers of employment made pursuant to this announcement will be consistent
+        with all applicable authorities concerning, including Presidential Memoranda,
+        Executive Orders, interpretive U.S. Office of Management and Budget (OMB)
+        and U.S. Office of Personnel Management (OPM) guidance, and Office of Management
+        and Budget plans and policies concerning hiring. These authorities are subject
+        to change.","WhoMayApply":{"Name":"","Code":""},"LowGrade":"D","HighGrade":"D","PromotionPotential":"E","HiringPath":["public"],"AppointmentExplanationText":"Permanent","AgencyMarketingStatement":"","TravelCode":"1","ApplyOnlineUrl":"https://jobs-recruit.tsa.dhs.gov/tsa-tso/ros/rosDashboard.hms?O=1&J=137","DetailStatusUrl":"https://jobs-recruit.tsa.dhs.gov/tsa-tso/ros/rosDashboard.hms?O=1&J=137&S=1"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"465061100","MatchedObjectDescriptor":{"PositionID":"ASE-F09-P001","PositionTitle":"Transportation
+        Security Officer (TSO)","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/465061100","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/465061100?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Aspen,
+        Colorado","PositionLocation":[{"LocationName":"Aspen, Colorado","CountryCode":"United
+        States","CountrySubDivisionCode":"Colorado","CityName":"Aspen, Colorado","Longitude":-106.818184,"Latitude":39.19003}],"OrganizationName":"Transportation
+        Security Administration","DepartmentName":"Department of Homeland Security","JobCategory":[{"Name":"Compliance
+        Inspection And Support","Code":"1802"}],"JobGrade":[{"Code":"SV"}],"PositionSchedule":[{"Name":"Part-Time","Code":"2"}],"PositionOfferingType":[{"Name":"Permanent","Code":"15317"}],"QualificationSummary":"Applicants
+        must meet these qualifications in order to be further evaluated in the TSO
+        hiring process:Have a high school diploma, General Educational Development
+        (GED), High School Equivalency Test (HiSET), or Test Assessing Secondary Completion
+        (TASC) credential OR at least one year of full-time work experience in the
+        security industry, aviation screening, or as an X-ray technicianBe proficient
+        in the English language (i.e., able to read, write, speak, and comprehend)National
+        Service Experience (i.e., volunteer experience): Experience refers to paid
+        and unpaid experience, including volunteer work done through National Service
+        programs (e.g., Peace Corps, AmeriCorps) and other organizations (e.g., professional;
+        philanthropic; religious; spiritual; community, student, social). Volunteer
+        work helps build critical competencies, knowledge, and skills and can provide
+        valuable training and experience that translates directly to paid employment.
+        You will receive credit for all qualifying experience, including volunteer
+        experience.","PositionRemuneration":[{"MinimumRange":"21.1","MaximumRange":"27.8","RateIntervalCode":"Per
+        Hour"}],"PositionStartDate":"2017-06-07","PositionEndDate":"2018-12-31","PublicationStartDate":"2017-06-07","ApplicationCloseDate":"2018-12-31","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"Any
+        offers of employment made pursuant to this announcement will be consistent
+        with all applicable authorities concerning, including Presidential Memoranda,
+        Executive Orders, interpretive U.S. Office of Management and Budget (OMB)
+        and U.S. Office of Personnel Management (OPM) guidance, and Office of Management
+        and Budget plans and policies concerning hiring. These authorities are subject
+        to change.","WhoMayApply":{"Name":"","Code":""},"LowGrade":"D","HighGrade":"D","PromotionPotential":"E","HiringPath":["public"],"AppointmentExplanationText":"Permanent","AgencyMarketingStatement":"","TravelCode":"1","ApplyOnlineUrl":"https://jobs-recruit.tsa.dhs.gov/tsa-tso/ros/rosDashboard.hms?O=1&J=30","DetailStatusUrl":"https://jobs-recruit.tsa.dhs.gov/tsa-tso/ros/rosDashboard.hms?O=1&J=30&S=1"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"465062500","MatchedObjectDescriptor":{"PositionID":"HDN-F09-P001","PositionTitle":"Transportation
+        Security Officer (TSO)","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/465062500","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/465062500?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Hayden,
+        Colorado","PositionLocation":[{"LocationName":"Hayden, Colorado","CountryCode":"United
+        States","CountrySubDivisionCode":"Colorado","CityName":"Hayden, Colorado","Longitude":-107.258148,"Latitude":40.4951439}],"OrganizationName":"Transportation
+        Security Administration","DepartmentName":"Department of Homeland Security","JobCategory":[{"Name":"Compliance
+        Inspection And Support","Code":"1802"}],"JobGrade":[{"Code":"SV"}],"PositionSchedule":[{"Name":"Part-Time","Code":"2"}],"PositionOfferingType":[{"Name":"Permanent","Code":"15317"}],"QualificationSummary":"Applicants
+        must meet these qualifications in order to be further evaluated in the TSO
+        hiring process:Have a high school diploma, General Educational Development
+        (GED), High School Equivalency Test (HiSET), or Test Assessing Secondary Completion
+        (TASC) credential OR at least one year of full-time work experience in the
+        security industry, aviation screening, or as an X-ray technicianBe proficient
+        in the English language (i.e., able to read, write, speak, and comprehend)National
+        Service Experience (i.e., volunteer experience): Experience refers to paid
+        and unpaid experience, including volunteer work done through National Service
+        programs (e.g., Peace Corps, AmeriCorps) and other organizations (e.g., professional;
+        philanthropic; religious; spiritual; community, student, social). Volunteer
+        work helps build critical competencies, knowledge, and skills and can provide
+        valuable training and experience that translates directly to paid employment.
+        You will receive credit for all qualifying experience, including volunteer
+        experience.","PositionRemuneration":[{"MinimumRange":"17.19","MaximumRange":"23.89","RateIntervalCode":"Per
+        Hour"}],"PositionStartDate":"2018-01-03","PositionEndDate":"2018-12-31","PublicationStartDate":"2018-01-03","ApplicationCloseDate":"2018-12-31","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"Any
+        offers of employment made pursuant to this announcement will be consistent
+        with all applicable authorities concerning, including Presidential Memoranda,
+        Executive Orders, interpretive U.S. Office of Management and Budget (OMB)
+        and U.S. Office of Personnel Management (OPM) guidance, and Office of Management
+        and Budget plans and policies concerning hiring. These authorities are subject
+        to change.","WhoMayApply":{"Name":"","Code":""},"LowGrade":"D","HighGrade":"D","PromotionPotential":"E","HiringPath":["public"],"AppointmentExplanationText":"Permanent","AgencyMarketingStatement":"","TravelCode":"1","ApplyOnlineUrl":"https://jobs-recruit.tsa.dhs.gov/tsa-tso/ros/rosDashboard.hms?O=1&J=199","DetailStatusUrl":"https://jobs-recruit.tsa.dhs.gov/tsa-tso/ros/rosDashboard.hms?O=1&J=199&S=1"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"474011400","MatchedObjectDescriptor":{"PositionID":"DE-10025393-17-JP","PositionTitle":"PHYSICIAN
+        (EMERGENCY MEDICINE)","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/474011400","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/474011400?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Yokosuka,
+        Japan","PositionLocation":[{"LocationName":"Yokosuka, Japan","CountryCode":"Japan","CityName":"Yokosuka,
+        Japan","Longitude":139.677,"Latitude":35.2783}],"OrganizationName":"Naval
+        Medical Command","DepartmentName":"Department of the Navy","JobCategory":[{"Name":"Medical
+        Officer","Code":"0602"}],"JobGrade":[{"Code":"GP"}],"PositionSchedule":[{"Name":"Full-Time","Code":"1"}],"PositionOfferingType":[{"Name":"Permanent","Code":"15317"}],"QualificationSummary":"This
+        announcement is being used to recruit qualified individuals, under the Office
+        of Personnel Management (OPM) Direct Hire Authority, authorized by 5 United
+        States Code (U.S.C.), Section 3304 and 5 Code of Federal Regulations (CFR)
+        Part 337, Subpart B. The Rule of Three, Veteran''s Preference and traditional
+        rating and ranking of applicants do not apply to the Direct Hire process.
+        For more information on OPM Direct-Hire Authority, please review this link:
+        http://www.opm.gov/DirectHire/factsheet.asp. APPLY NOW! This job opportunity
+        announcement has a first cut-off date of 7/26/2017. Applications received
+        by 11:59 PM Eastern Standard Time (EST) on the cut-off date of 7/26/2017 will
+        receive first consideration for this vacancy. Candidates who apply after may
+        be referred on a periodic basis depending on staffing needs. In order to qualify
+        for this position, your resume must provide sufficient experience and/or education,
+        knowledge, skills, and abilities to perform the duties of the specific position
+        for which you are being considered. Your resume is the key means we have for
+        evaluating your skills, knowledge, and abilities as they relate to this position.
+        Therefore, we encourage you to be clear and specific when describing your
+        experience. Applicants must meet the following Basic Requirements of the Office
+        of Personnel Management (OPM) Qualifications Standards Manual: Applicants
+        must possess a Medical Doctor (MD) or Doctor of Osteopathy (DO) degree from
+        an accredited school in the United States or Canada; OR possess a medical
+        degree from a foreign medical school and have a permanent certificate from
+        the Educational Commission for Foreign Medical Graduates (ECFMG) or fifth
+        pathway certificate; AND have an active, valid, and unrestricted physician
+        license to practice medicine awarded by any State, District of Columbia, the
+        Commonwealth of Puerto Rico, or a territory of the United States. In addition
+        to the Basic Requirements for this position, your resume must also demonstrate
+        that you have at least 5 years of residency training or equivalent experience
+        and training in Emergency Medicine (e.g., 3 years Emergency Medicine residency
+        and 2 year(s) fellowship and/or experience, or any combination totaling 5
+        years). This includes, but is not limited to, experience that demonstrates
+        the following: immediate decision making and action necessary to prevent death
+        or any further disability; immediate recognition, evaluation, care, stabilization
+        and disposition of a generally diversified population of adult and pediatric
+        patients in response to acute illness and injury; determining the need for
+        consultation with other specialists; prescribing and dispensing medications;
+        and evaluating the quality of care provided to patients and identifying opportunities
+        to improve care. This position has a selective placement factor that will
+        be used to screen out ineligible candidates. The selective placement factor
+        is: Possession of Basic Life Support (BLS), Pediatric Advanced Life Support
+        (PALS) and Advanced Cardiac Life Support (ACLS) Certifications. Failure to
+        possess this factor WILL result in an ineligible rating. Possession of the
+        factor must be verifiable via your resume or support documents. Additional
+        qualification information can be found from the following Office of Personnel
+        Management website:\nhttp://www.opm.gov/policy-data-oversight/classification-qualifications/general-schedule-qualification-standards/0600/medical-officer-series-0602
+        You will receive credit for all qualifying experience, including volunteer
+        and part time experience. You must clearly identify the duties and responsibilities
+        in each position held and the total number of hours per week. Experience refers
+        to paid and unpaid experience, including volunteer work done through National
+        Service programs (e.g., professional, philanthropic, religious, spiritual,
+        community, student, social). Volunteer work helps build critical competencies,
+        knowledge, and skills and can provide valuable training and experience that
+        translates directly to paid employment.","PositionRemuneration":[{"MinimumRange":"120000.00","MaximumRange":"365000.00","RateIntervalCode":"Per
+        Year"}],"PositionStartDate":"2017-07-12","PositionEndDate":"2019-01-30","PublicationStartDate":"2017-07-12","ApplicationCloseDate":"2019-01-30","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"","WhoMayApply":{"Name":"","Code":""},"LowGrade":"15","HighGrade":"15","PromotionPotential":"15","HiringPath":["public"],"AgencyMarketingStatement":"Consider
+        working for the Bureau of Medicine and Surgery (BUMED), Navy''s CIVILIAN health
+        care organization. You don''t have to join the military to work side-by-side
+        with our military medical staff to care for those who serve our Nation. BUMED
+        provides high quality patient- and family-centered care in wartime and peacetime
+        to active duty members, their families, and beneficiaries at medical facilities
+        around the globe. Every day, no matter what the environment, Navy Medicine
+        is ready to provide world class care, anytime, anywhere. U.S. Naval Hospital,
+        Yokosuka is the largest U.S. military treatment facility on mainland Japan:
+        a 47-bed core hospital in Yokosuka, near Tokyo. Branch health clinics are
+        located in Sasebo, Iwakuni, Atsugi, Camp Fuji, and Yokohama in mainland Japan;
+        Chinhae, Korea on the southern tip of South Korea; and, Diego Garcia in the
+        Indian Ocean. USNH Yokosuka serves 33,000 beneficiaries throughout the western
+        Pacific by caring for readiness. This is accomplished by enabling the Fleet
+        through quality patient and family-centered healthcare delivered by empowered
+        people using efficient business practices.","TravelCode":"0","ApplyOnlineUrl":"https://apply.usastaffing.gov/Application/Apply","DetailStatusUrl":"https://apply.usastaffing.gov/Application/ApplicationStatus"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"475627700","MatchedObjectDescriptor":{"PositionID":"DSM-F09-P001","PositionTitle":"Transportation
+        Security Officer (TSO)","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/475627700","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/475627700?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Des
+        Moines, Iowa","PositionLocation":[{"LocationName":"Des Moines, Iowa","CountryCode":"United
+        States","CountrySubDivisionCode":"Iowa","CityName":"Des Moines, Iowa","Longitude":-93.61568,"Latitude":41.5897865}],"OrganizationName":"Transportation
+        Security Administration","DepartmentName":"Department of Homeland Security","JobCategory":[{"Name":"Compliance
+        Inspection And Support","Code":"1802"}],"JobGrade":[{"Code":"SV"}],"PositionSchedule":[{"Name":"Part-Time","Code":"2"}],"PositionOfferingType":[{"Name":"Permanent","Code":"15317"}],"QualificationSummary":"Applicants
+        must meet these qualifications in order to be further evaluated in the TSO
+        hiring process:Have a high school diploma, General Educational Development
+        (GED), High School Equivalency Test (HiSET), or Test Assessing Secondary Completion
+        (TASC) credential OR at least one year of full-time work experience in the
+        security industry, aviation screening, or as an X-ray technicianBe proficient
+        in the English language (i.e., able to read, write, speak, and comprehend)National
+        Service Experience (i.e., volunteer experience): Experience refers to paid
+        and unpaid experience, including volunteer work done through National Service
+        programs (e.g., Peace Corps, AmeriCorps) and other organizations (e.g., professional;
+        philanthropic; religious; spiritual; community, student, social). Volunteer
+        work helps build critical competencies, knowledge, and skills and can provide
+        valuable training and experience that translates directly to paid employment.
+        You will receive credit for all qualifying experience, including volunteer
+        experience.","PositionRemuneration":[{"MinimumRange":"17.19","MaximumRange":"23.89","RateIntervalCode":"Per
+        Hour"}],"PositionStartDate":"2018-08-28","PositionEndDate":"2018-12-31","PublicationStartDate":"2018-08-28","ApplicationCloseDate":"2018-12-31","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"Any
+        offers of employment made pursuant to this announcement will be consistent
+        with all applicable authorities concerning, including Presidential Memoranda,
+        Executive Orders, interpretive U.S. Office of Management and Budget (OMB)
+        and U.S. Office of Personnel Management (OPM) guidance, and Office of Management
+        and Budget plans and policies concerning hiring. These authorities are subject
+        to change.","WhoMayApply":{"Name":"","Code":""},"LowGrade":"D","HighGrade":"D","PromotionPotential":"E","HiringPath":["public"],"AppointmentExplanationText":"Permanent","AgencyMarketingStatement":"","TravelCode":"1","ApplyOnlineUrl":"https://jobs-recruit.tsa.dhs.gov/tsa-tso/ros/rosDashboard.hms?O=1&J=128","DetailStatusUrl":"https://jobs-recruit.tsa.dhs.gov/tsa-tso/ros/rosDashboard.hms?O=1&J=128&S=1"},"IsRadialSearch":false}},"RelevanceRank":0.0},{"MatchedObjectId":"475927300","MatchedObjectDescriptor":{"PositionID":"CA-10026415-AF-17-543A-1","PositionTitle":"SUPERVISORY
+        SPACE OPERATIONS SPECIALIST","PositionURI":"https://www.usajobs.gov:443/GetJob/ViewDetails/475927300","ApplyURI":["https://www.usajobs.gov:443/GetJob/ViewDetails/475927300?PostingChannelID=RESTAPI"],"PositionLocationDisplay":"Vandenberg
+        AFB, California","PositionLocation":[{"LocationName":"Vandenberg AFB, California","CountryCode":"United
+        States","CountrySubDivisionCode":"California","CityName":"Vandenberg AFB,
+        California","Longitude":-120.542488,"Latitude":34.75468}],"OrganizationName":"Air
+        National Guard Units","DepartmentName":"Department of the Air Force","JobCategory":[{"Name":"Miscellaneous
+        Administration And Program","Code":"0301"}],"JobGrade":[{"Code":"GS"}],"PositionSchedule":[{"Name":"Full-Time","Code":"1"}],"PositionOfferingType":[{"Name":"T32
+        Excepted","Code":"15317"}],"QualificationSummary":"General Experience: Experience,
+        education, or training which provided a general knowledge of principles of
+        organization, management, and administration. Experience using computer and
+        automation systems. Supervisory Space Operations Specialist, GS-0301-12: Must
+        have at least 36 months experience, education or training in program or managerial
+        experience in a type of work or a combination of functions directly related
+        to the position to be filled or in comparable work or functions; Experience
+        developing and recommending policy; organizing and carrying out specific programs,
+        evaluating and recommending changes in methods of operations; Experience in
+        supervisory, staff or technical work which included study, analysis or evaluation
+        leading to the development or improvement of managerial or administrative
+        policies, practices and procedures; Experience preparing written communications
+        and oral presentations; Experience in managing the function of the work to
+        be performed; Experience which includes leading, directing and assigning work
+        of personnel. Your qualifications will be evaluated on the following competencies:\nAttention
+        to DetailDecision MakingPlanning and EvaluatingProblem Solving","PositionRemuneration":[{"MinimumRange":"81319.00","MaximumRange":"105718.00","RateIntervalCode":"Per
+        Year"}],"PositionStartDate":"2017-08-01","PositionEndDate":"2019-07-31","PublicationStartDate":"2017-08-01","ApplicationCloseDate":"2019-07-31","PositionFormattedDescription":[{"Label":"Dynamic
+        Teaser","LabelDescription":"Hit highlighting for keyword searches."}],"UserArea":{"Details":{"JobSummary":"","WhoMayApply":{"Name":"","Code":""},"LowGrade":"12","HighGrade":"12","PromotionPotential":"12","HiringPath":["nguard"],"TotalOpenings":"2","AgencyMarketingStatement":"The
+        National Guard is the oldest component of the Armed Forces of the United States.
+        Since the earliest American colonial days, citizens have joined together for
+        collective defense. We have a proud tradition of coming to the aid of our
+        friends and neighbors in times of serious emergencies. Join our National Guard
+        team and serve your nation, your states and your community!","TravelCode":"1","ApplyOnlineUrl":"https://apply.usastaffing.gov/Application/Apply","DetailStatusUrl":"https://apply.usastaffing.gov/Application/ApplicationStatus"},"IsRadialSearch":false}},"RelevanceRank":0.0}],"UserArea":{"NumberOfPages":"737","IsRadialSearch":false}}}'
+    http_version: 
+  recorded_at: Wed, 05 Dec 2018 22:18:07 GMT
 recorded_with: VCR 4.0.0
