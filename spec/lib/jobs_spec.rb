@@ -35,12 +35,6 @@ describe Jobs do
         expect(search).to be_nil
       end
     end
-
-    context 'when the search is within the default radius, but in a different city' do
-      it 'should return results' do
-        expect(search.search_result.search_result_count).to be > 0
-      end
-    end
   end
 
   describe '.scrub_query(query)' do
