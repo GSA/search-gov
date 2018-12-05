@@ -194,7 +194,6 @@ describe Admin::AffiliatesController do
             locale
             mobile_logo_url
             name
-            nutshell_id
             raw_log_access_enabled
             recent_user_activity
             related_sites_dropdown_label
