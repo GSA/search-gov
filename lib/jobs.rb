@@ -50,7 +50,8 @@ module Jobs
     { Keyword:        scrub_query(options[:query]),
       Organization:   options[:organization_codes],
       LocationName:   options[:location_name],
-      ResultsPerPage: options[:results_per_page] }
+      ResultsPerPage: options[:results_per_page],
+      Radius:         SEARCH_RADIUS }
   end
 
 end

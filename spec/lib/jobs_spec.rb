@@ -5,7 +5,7 @@ describe Jobs do
     subject(:search) do
       Jobs.search({ query:'Nursing jobs',
                     organization_codes: 'HE38',
-                    location_name: 'Washington, DC, USA',
+                    location_name: 'Baltimore, MD, USA',
                     results_per_page: 10 })
     end
     let(:usajobs_url) { 'https://data.usajobs.gov/api/search' }
@@ -18,8 +18,9 @@ describe Jobs do
       expect(a_request(:get, usajobs_url).with(
         query: { Keyword:        'Nursing',
                  Organization:   'HE38',
-                 LocationName:   'Washington, DC, USA',
-                 ResultsPerPage: 10 }
+                 LocationName:   'Baltimore, MD, USA',
+                 ResultsPerPage: 10,
+                 Radius:         75 }
       )).to have_been_made
     end
 
@@ -36,13 +37,6 @@ describe Jobs do
     end
 
     context 'when the search is within the default radius, but in a different city' do
-      before do
-        Jobs.search({ query:'jobs',
-                      organization_code: 'HE38',
-                      location_name: 'Baltimore, MD, United States',
-                      results_per_page: 10 })
-      end
-
       it 'should return results' do
         expect(search.search_result.search_result_count).to be > 0
       end
