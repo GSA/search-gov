@@ -1,6 +1,7 @@
 module Jobs
   SIMPLE_SEARCHES = '(job|employment|internship)s?'
-  JOB_RELATED_KEYWORDS = '((position|opening|posting|job|employment|intern(ship)?|seasonal|trabajo|puesto|empleo|vacante)s?|(opportunit|vacanc)(y|ies))|(posicion|ocupacion|oportunidad|federal)es|gobierno'
+  JOB_RELATED_KEYWORDS = '((position|opening|posting|job|employment|intern(ship)?|seasonal|trabajo|puesto|empleo|vacante)s?|(opportunit|vacanc)(y|ies))|(posicion|ocupacion|oportunidad|federal)(es)?|gobierno'
+  SCRUB_KEYWORDS = JOB_RELATED_KEYWORDS.remove(/\|intern\(ship\)|\|seasonal|\|federal\||gobierno/)
   SIMPLE_SINGULARS = %w{
     statistic number level rate description trend growth projection survey forecast figure report verification record
     authorization card classification form hazard poster fair board outlook grant funding factor other cut
@@ -27,8 +28,14 @@ module Jobs
     end
   end
 
-  def self.search(options)
-    @usajobs_api_connection.get(@endpoint, options).body if query_eligible?(options[:Keyword])
+  def self.scrub_query(query)
+    query.remove(/\b#{SCRUB_KEYWORDS}\b/i).squish
+  end
+
+  def self.search(job_options)
+    if query_eligible?(job_options[:query])
+      @usajobs_api_connection.get(@endpoint, params(job_options)).body
+    end
   rescue => error
     Rails.logger.error("Trouble fetching jobs information: #{error}")
     nil
@@ -36,6 +43,13 @@ module Jobs
 
   def self.query_eligible?(query)
     query =~ /\b#{JOB_RELATED_KEYWORDS}\b/i && !(query =~ /\b#{BLOCKED_KEYWORDS}\b/i) && !(query =~ /["():]|^-| -\S+/)
+  end
+
+  def self.params(options)
+    { Keyword:        scrub_query(options[:query]),
+      Organization:   options[:organization_codes],
+      LocationName:   options[:location_name],
+      ResultsPerPage: options[:results_per_page] }
   end
 
 end
