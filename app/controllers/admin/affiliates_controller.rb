@@ -66,7 +66,38 @@ class Admin::AffiliatesController < Admin::AdminController
       config.columns[c].form_ui = :textarea
     end
 
-    update_columns = attribute_columns.reject { |column| column =~ /\A(api_access_key|created_at|external_css_url|favicon_url|has_staged_content|id|nutshell_id|theme|updated_at)\z/i }
+    update_columns = %i[
+                         active
+                         agency
+                         bing_v5_key
+                         dap_enabled
+                         display_name
+                         domain_control_validation_code
+                         fetch_concurrency
+                         force_mobile_format
+                         ga_web_property_id
+                         gets_blended_results
+                         gets_commercial_results_on_blended_search
+                         gets_i14y_results
+                         google_cx
+                         google_key
+                         i14y_date_stamp_enabled
+                         is_bing_image_search_enabled
+                         is_federal_register_document_govbox_enabled
+                         is_medline_govbox_enabled
+                         is_photo_govbox_enabled
+                         is_related_searches_enabled
+                         is_rss_govbox_enabled
+                         is_sayt_enabled
+                         is_video_govbox_enabled
+                         jobs_enabled
+                         locale
+                         name
+                         raw_log_access_enabled
+                         search_consumer_search_enabled
+                         search_engine
+                         website
+                       ]
     config.update.columns = []
     enable_disable_column_regex = /^(is\_|dap_enabled|force_mobile_format|gets_blended_results|gets_commercial_results_on_blended_search|jobs_enabled|raw_log_access_enabled|search_consumer_search_enabled|gets_i14y_results)/.freeze
 
