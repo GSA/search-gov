@@ -42,12 +42,7 @@ class WebSearch < Search
 
   protected
   def search_engine_klass(search_engine_option)
-    case search_engine_option
-    when 'Azure'
-      "HostedAzure#{get_vertical.to_s.classify}Engine".constantize
-    else
-      "#{search_engine_option}#{get_vertical.to_s.classify}Search".constantize
-    end
+    "#{search_engine_option}#{get_vertical.to_s.classify}Search".constantize
   end
 
   def domains_scope_options

@@ -634,4 +634,1351 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
   recorded_at: Thu, 22 Feb 2018 07:45:31 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=video%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '4309'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 19 Nov 2018 22:40:22 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=309AEA8A192664481BCBE62618F1657E; path=/; expires=Sat, 14-Dec-2019 22:41:23
+        GMT; domain=bingapis.com
+      - MUIDB=309AEA8A192664481BCBE62618F1657E; path=/; httponly; expires=Sat, 14-Dec-2019
+        22:41:23 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 19-Nov-2020 22:41:22 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=B46AE939FC494D718A2B1062F083E744&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 19-Nov-2020 22:41:22 GMT; path=/
+      - SRCHUSR=DOB=20181119; domain=.bingapis.com; expires=Thu, 19-Nov-2020 22:41:22
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=1EA10BAF633168D23C69070362E66910; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 14-Dec-2019 22:41:23 GMT; domain=bingapis.com
+      - _SS=SID=1EA10BAF633168D23C69070362E66910; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - BB2FB958E73248FEA4984E77F9BBF8F1
+      X-Msedge-Clientid:
+      - 309AEA8A192664481BCBE62618F1657E
+      X-Msapi-Userstate:
+      - 806a
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: BB2FB958E73248FEA4984E77F9BBF8F1 Ref B: CO1EDGE0908 Ref C: 2018-11-19T22:41:23Z'
+      Date:
+      - Mon, 19 Nov 2018 22:41:22 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=4293CF9F1AF54FB6B60B8E96F1F0C57E&CID=309AEA8A192664481BCBE62618F1657E&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=4293CF9F1AF54FB6B60B8E96F1F0C57E&CID=309AEA8A192664481BCBE62618F1657E&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=video+(site%3agov+OR+site%3amil)",
+        "webSearchUrlPingSuffix": "DevEx,5429.1", "totalEstimatedMatches": 28500000,
+        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
+        "NASA Video Gallery | NASA", "url": "https:\/\/www.nasa.gov\/multimedia\/videogallery\/index.html",
+        "urlPingSuffix": "DevEx,5058.1", "about": [{"name": "NASA"}], "displayUrl":
+        "https:\/\/www.nasa.gov\/multimedia\/videogallery", "snippet": "Watch
+        or download the latest launch videos, mission updates, animations, This Week
+        @NASA, ScienceCast and more.", "dateLastCrawled": "2018-11-16T02:08:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Videos
+        | Idaho Fish and Game", "url": "https:\/\/idfg.idaho.gov\/media\/video", "urlPingSuffix":
+        "DevEx,5072.1", "displayUrl": "https:\/\/idfg.idaho.gov\/media\/video",
+        "snippet": "Fish and Game Video Playlists | Fish & Game Video Loading
+        Video... Loading Video Playlist... Fish and Game Video Playlists. Skip
+        to main content. Idaho » Department of Fish and Game. Buy a License; Idaho
+        Fish and Game ... Videos from Idaho Fish and Game''s YouTube Channel.",
+        "dateLastCrawled": "2018-11-14T23:23:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        "name": "Videos : U.S. Bureau of Labor Statistics", "url": "https:\/\/www.bls.gov\/video\/",
+        "urlPingSuffix": "DevEx,5086.1", "displayUrl": "https:\/\/www.bls.gov\/video",
+        "snippet": "The U.S. Bureau of Labor Statistics has many sources of data
+        on pay and benefits. Ingredients for Multifactor Productivity. ... This video
+        discusses BLS projections of occupational openings from workers who leave
+        an occupation permanently. Introduction to the Producer Price Index.", "dateLastCrawled":
+        "2018-11-12T20:39:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "Video | Newsroom | Office of Inspector General | U.S ...", "url":
+        "https:\/\/oig.hhs.gov\/newsroom\/video\/index.asp", "urlPingSuffix": "DevEx,5100.1",
+        "displayUrl": "https:\/\/oig.hhs.gov\/newsroom\/video\/index.asp", "snippet":
+        "Video Eye on Oversight: Cybersecurity October 9, 2018. OIG recognizes Protecting
+        HHS Data, Systems, and Beneficiaries from Cybersecurity Threats as a top management
+        and performance challenge facing HHS.", "dateLastCrawled": "2018-11-10T03:57:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Video
+        | Congress.gov | Library of Congress", "url": "https:\/\/www.congress.gov\/video",
+        "urlPingSuffix": "DevEx,5114.1", "about": [{"name": "Library of Congress"}],
+        "displayUrl": "https:\/\/www.congress.gov\/video", "snippet": "All video
+        on Congress.gov plus links to resources, including House and Senate video.
+        Two-Minute Tips A series of short videos designed to highlight useful features
+        of Congress.gov. The Legislative Process Brief videos about introducing legislation,
+        committee and House and Senate consideration, conference committees, and presidential
+        vetoes.", "dateLastCrawled": "2018-11-09T00:00:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
+        "name": "Videos | DOJ | Department of Justice", "url": "https:\/\/www.justice.gov\/videos",
+        "urlPingSuffix": "DevEx,5131.1", "displayUrl": "https:\/\/www.justice.gov\/videos",
+        "snippet": "Filter by video category. Events (137) Apply Events filter ;
+        Press Conferences & Statements (167) ... Videos . Email updates. Keywords
+        . Items per page . U.S. Charges Russian GRU Officers with International Hacking
+        and Related Influence and Disinformation Operations.", "dateLastCrawled":
+        "2018-10-10T12:59:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "name": "NOAA''s National Ocean Service: Ocean Video", "url": "https:\/\/oceanservice.noaa.gov\/video\/",
+        "urlPingSuffix": "DevEx,5145.1", "displayUrl": "https:\/\/oceanservice.noaa.gov\/video",
+        "snippet": "The Coral Reef Economy 5 Oct 2017. Coral reefs are one of Earth’s
+        most productive ecosystems — both in terms of biology and cold, hard cash.
+        Healthy coral reef ecosystems do everything from supporting millions of jobs
+        to protecting lives and valuable coastal infrastructure, like hotels and roads,
+        from storms and waves.", "dateLastCrawled": "2018-11-13T16:13:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Options
+        for Consideration Active Shooter Preparedness Video", "url": "https:\/\/www.dhs.gov\/options-consideration-active-shooter-preparedness-video",
+        "urlPingSuffix": "DevEx,5161.1", "displayUrl": "https:\/\/www.dhs.gov\/options-consideration-active-shooter...",
+        "snippet": "The Options for Consideration video demonstrates possible actions
+        that individuals can take if confronted with an active shooter scenario. This
+        instructive video reviews the choices of running, hiding, or as an option
+        of last resort, fighting the shooter.", "dateLastCrawled": "2018-11-08T03:16:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Videos
+        - Jet Propulsion Laboratory", "url": "https:\/\/www.jpl.nasa.gov\/video\/",
+        "urlPingSuffix": "DevEx,5175.1", "displayUrl": "https:\/\/www.jpl.nasa.gov\/video",
+        "snippet": "Find out more in this 60-second video from NASA''s Jet Propulsion
+        Laboratory. March 7, 2018. Mars InSight Arrives at Vandenberg Air Force Base.
+        March 7, 2018. Mars InSight Arrives at Vandenberg Air Force Base NASA''s InSight
+        spacecraft arrived at Vandenberg Air Force Base, California, to begin final
+        preparations for launch. ...", "dateLastCrawled": "2018-11-15T23:46:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Videos
+        | Products | SRS", "url": "http:\/\/www.srs.fs.usda.gov\/video\/", "urlPingSuffix":
+        "DevEx,5189.1", "displayUrl": "www.srs.fs.usda.gov\/video", "snippet": "Southern
+        Research Station: Caring for the Land. Check out this video highlighting
+        some of the people and science that makes the Southern Research Station part
+        of the leading organization for research on natural resource management and
+        sustainability in the United States.", "dateLastCrawled": "2018-11-09T02:51:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Videos
+        — FBI", "url": "https:\/\/www.fbi.gov\/news\/videos", "urlPingSuffix": "DevEx,5204.1",
+        "displayUrl": "https:\/\/www.fbi.gov\/news\/videos", "snippet": "A webpage
+        compiling the various videos pertaining to the stories, press releases,
+        and wanted person information on FBI.gov.", "dateLastCrawled": "2018-11-16T14:01:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "OSHA
+        Videos | Occupational Safety and Health Administration", "url": "https:\/\/www.osha.gov\/video\/",
+        "urlPingSuffix": "DevEx,5218.1", "displayUrl": "https:\/\/www.osha.gov\/video",
+        "snippet": "Thank You for Visiting Our Website You are exiting the Department
+        of Labor''s Web server. The Department of Labor does not endorse, takes no
+        responsibility for, and exercises no control over the linked organization
+        or its views, or contents, nor does it vouch for the accuracy or accessibility
+        of the information contained on the destination server.", "dateLastCrawled":
+        "2018-11-10T01:31:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
+        "name": "NSSL Video", "url": "https:\/\/www.nssl.noaa.gov\/news\/video\/",
+        "urlPingSuffix": "DevEx,5232.1", "about": [{"name": "National Severe Storms
+        Laboratory"}], "displayUrl": "https:\/\/www.nssl.noaa.gov\/news\/video",
+        "snippet": "This is the focus of researchers at the National Severe Storms
+        Laboratory. This brief video, featuring NSSL Director, Dr. Jeff Kimpel,
+        provides an overview of the research conducted at NSSL, highlighting the three
+        main topics of weather radar, hydrometeorology, and forecast and warning improvements.",
+        "dateLastCrawled": "2018-11-13T08:22:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        "name": "Videos | Rover Readies for Second Drilling", "url": "https:\/\/www.jpl.nasa.gov\/video\/index.php?id=1217",
+        "urlPingSuffix": "DevEx,5244.1", "displayUrl": "https:\/\/www.jpl.nasa.gov\/video\/index.php?id=1217",
+        "snippet": "Captioned Video: › download. Ogv Format: › download › Online
+        Video Catalog. You Might Also Like November brings planets, an asteroid,
+        a comet and the Leonids What''s Up - November 2018. When NASA''s InSight descends
+        to the Red Planet on Nov. 26, 2018, it is guaranteed to be a white-knuckle
+        event. InSight Landing on Mars ...", "dateLastCrawled": "2018-11-17T11:44:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Impact
+        Texas Teen Drivers", "url": "https:\/\/impacttexasdrivers.dps.texas.gov\/ITTD\/",
+        "urlPingSuffix": "DevEx,5258.1", "displayUrl": "https:\/\/impacttexasdrivers.dps.texas.gov\/ITTD",
+        "snippet": "Course Overview. Discover why Impact Texas Teen Drivers was
+        created and how this program is implemented into a driver''s license learning
+        curriculum to positively impact highway safety.", "dateLastCrawled": "2018-11-15T01:12:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Video",
+        "url": "https:\/\/www.niehs.nih.gov\/news\/video\/index.cfm", "urlPingSuffix":
+        "DevEx,5273.1", "displayUrl": "https:\/\/www.niehs.nih.gov\/news\/video\/index.cfm",
+        "snippet": "Video interviews, press events, trainings, and seminars | Provided
+        online by the NIEHS to cover the latest topics within the institute. Video
+        interviews, press events, trainings, and seminars | Provided online by the
+        NIEHS to cover the latest topics within the institute", "dateLastCrawled":
+        "2018-11-16T06:04:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
+        "name": "The Fed - Videos", "url": "https:\/\/www.federalreserve.gov\/videos.htm",
+        "urlPingSuffix": "DevEx,5287.1", "displayUrl": "https:\/\/www.federalreserve.gov\/videos.htm",
+        "snippet": "The Federal Reserve Board of Governors in Washington DC. Board
+        of Governors of the Federal Reserve System. The Federal Reserve, the central
+        bank of the United States, provides the nation with a safe, flexible, and
+        stable monetary and financial system.", "dateLastCrawled": "2018-11-13T07:40:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Video
+        - wpafb.af.mil", "url": "https:\/\/www.wpafb.af.mil\/News\/Video\/", "urlPingSuffix":
+        "DevEx,5299.1", "displayUrl": "https:\/\/www.wpafb.af.mil\/News\/Video",
+        "snippet": "The 14th Annual Pumpkin Chuck event took place behind the National
+        Museum of the United States Air Force, Wright-Patteson Air Force Base, Ohio,
+        November 5, 2018.", "dateLastCrawled": "2018-11-16T05:45:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Alaskan Way
+        Viaduct - Program Videos", "url": "http:\/\/www.wsdot.wa.gov\/Projects\/Viaduct\/Library\/Videos",
+        "urlPingSuffix": "DevEx,5313.1", "displayUrl": "www.wsdot.wa.gov\/Projects\/Viaduct\/Library\/Videos",
+        "snippet": "Raw video: Testing fire systems in the new tunnel (June 2018).
+        Narrated video: The smart systems in the new tunnel are designed to work
+        together to keep traffic moving safely (March 2018). Time-lapse video: Crews
+        place the final deck segment for the tunnel''s lower deck (March 2018).",
+        "dateLastCrawled": "2018-11-13T20:59:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
+        "name": "Resources | Videos", "url": "https:\/\/www.cdc.gov\/tobacco\/campaign\/tips\/resources\/videos\/index.html",
+        "urlPingSuffix": "DevEx,5327.1", "displayUrl": "https:\/\/www.cdc.gov\/tobacco\/campaign\/tips\/resources\/videos",
+        "snippet": "In this video, Amanda talks about being rushed to the hospital,
+        where her baby was born 2 months early, at just 3 pounds. Amanda’s “Smoking,
+        Family, and Pain” Story Amanda tried her first cigarette when she was in elementary
+        school.", "dateLastCrawled": "2018-11-12T10:57:00.0000000Z"}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 19 Nov 2018 22:41:23 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=video%20usgovernment_channel_id%205%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '3789'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 19 Nov 2018 22:40:24 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=074AF1C70197619B344AFD6B004060FA; path=/; expires=Sat, 14-Dec-2019 22:41:24
+        GMT; domain=bingapis.com
+      - MUIDB=074AF1C70197619B344AFD6B004060FA; path=/; httponly; expires=Sat, 14-Dec-2019
+        22:41:24 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 19-Nov-2020 22:41:24 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=52280BD548EF409FA1C75C2821FBF96C&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 19-Nov-2020 22:41:24 GMT; path=/
+      - SRCHUSR=DOB=20181119; domain=.bingapis.com; expires=Thu, 19-Nov-2020 22:41:24
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=3F988ED765C76B7902F2827B64106AFD; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 14-Dec-2019 22:41:24 GMT; domain=bingapis.com
+      - _SS=SID=3F988ED765C76B7902F2827B64106AFD; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - 77CD441E91C54C15AA5F24ABBB4215EB
+      X-Msedge-Clientid:
+      - 074AF1C70197619B344AFD6B004060FA
+      X-Msapi-Userstate:
+      - f53f
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: 77CD441E91C54C15AA5F24ABBB4215EB Ref B: CO1EDGE0407 Ref C: 2018-11-19T22:41:24Z'
+      Date:
+      - Mon, 19 Nov 2018 22:41:24 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=A8D86908FAC249F79968068C5B817FDD&CID=074AF1C70197619B344AFD6B004060FA&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=A8D86908FAC249F79968068C5B817FDD&CID=074AF1C70197619B344AFD6B004060FA&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=video+usgovernment_channel_id+5+(site%3agov+OR+site%3amil)",
+        "webSearchUrlPingSuffix": "DevEx,5409.1", "totalEstimatedMatches": 18, "value":
+        [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "October
+        13, 2006 FEMA Emergency Management Higher ...", "url": "https:\/\/training.fema.gov\/hiedu\/arrpt\/2006\/october\/oct%2013,%2006.doc",
+        "urlPingSuffix": "DevEx,5052.1", "displayUrl": "https:\/\/training.fema.gov\/hiedu\/arrpt\/2006\/october\/oct
+        13, 06.doc", "snippet": "And this time around, it is a video abusing the
+        man who epitomised all that is best in mankind: love, compassion and generosity.
+        Clearly, even if the Muslims are prepared to forgive and forget those targeting
+        their faith and the Prophet, they are not willing to let go of the past themselves....
+        Clearly, there is a method in the madness.", "dateLastCrawled": "2018-11-15T18:27:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Wayne''s
+        Bibliography - FEMA", "url": "http:\/\/training.fema.gov\/hiedu\/docs\/wayne%20bibliography.doc",
+        "urlPingSuffix": "DevEx,5065.1", "displayUrl": "training.fema.gov\/hiedu\/docs\/wayne
+        bibliography.doc", "snippet": "Adventures of the Disaster Dudes – Master (2
+        copies of video) American Red Cross. A Year of Healing: The American Red
+        Cross Response to Hurricanes Katrina, Rita and Wilma.", "dateLastCrawled":
+        "2018-11-10T02:30:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        "name": "www.science.gov", "url": "https:\/\/www.science.gov\/topicpages\/i\/integrated+photonic+qubit.html",
+        "urlPingSuffix": "DevEx,5083.1", "displayUrl": "https:\/\/www.science.gov\/topicpages\/i\/integrated+photonic+qubit.html",
+        "snippet": "Integrated photonic quantum gates for polarization qubits. PubMed.
+        Crespi, Andrea; Ramponi, Roberta; Osellame, Roberto; Sansoni, Linda; Bongioanni,
+        Irene; Sciarrino ...", "dateLastCrawled": "2018-11-03T13:49:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "communication
+        support system: Topics by Science.gov", "url": "https:\/\/www.science.gov\/topicpages\/c\/communication+support+system.html",
+        "urlPingSuffix": "DevEx,5101.1", "displayUrl": "https:\/\/www.science.gov\/topicpages\/c\/communication+support+system.html",
+        "snippet": "Capable of providing Internet access, voice over Internet protocol,
+        e-mail, video teleconferencing, broadcast television, and other high-bandwidth
+        communications, the systems have provided communication during the wildfires
+        in California, after Hurricane Katrina in Mississippi, and following the 2010
+        Haiti earthquake.", "dateLastCrawled": "2018-11-05T22:39:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "spacecraft water
+        systems: Topics by Science.gov", "url": "https:\/\/www.science.gov\/topicpages\/s\/spacecraft+water+systems.html",
+        "urlPingSuffix": "DevEx,5118.1", "displayUrl": "https:\/\/www.science.gov\/topicpages\/s\/spacecraft+water+systems.html",
+        "snippet": "The IGDS was sized to iodinate the drinking water nominally consumed
+        by six men, 4.5 to 13.6 kg (10 to 30 lb) water per man-day with a + or -
+        10 to 20% variation with iodine (I2) levels of 0.5 to 20 parts per million
+        (ppm).", "dateLastCrawled": "2018-11-03T04:45:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
+        "name": "processive run length: Topics by Science.gov", "url": "https:\/\/www.science.gov\/topicpages\/p\/processive+run+length.html",
+        "urlPingSuffix": "DevEx,5135.1", "displayUrl": "https:\/\/www.science.gov\/topicpages\/p\/processive+run+length.html",
+        "snippet": "Thirteen subjects were video-recorded as they ran at self-selected
+        slow and fast paces. Runners targeted a specific distance before the curb
+        for foot placement, and lengthened their step over the curb (p0.0001) regardless
+        of where the step over the curb was initiated.", "dateLastCrawled": "2018-11-03T06:31:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "www.science.gov",
+        "url": "https:\/\/www.science.gov\/topicpages\/k\/kaposi+sarcoma-associated+herpes",
+        "urlPingSuffix": "DevEx,5152.1", "displayUrl": "https:\/\/www.science.gov\/topicpages\/k\/kaposi+sarcoma-associated+herpes",
+        "snippet": "Kaposi ''s Sarcoma Associated-Herpes Virus (KSHV) Seroprevalence
+        in Pregnant Women in South Africa. PubMed Central. 2010-01-01. Background
+        Factors previously associated with Kaposi", "dateLastCrawled": "2018-10-15T15:09:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "chemical
+        communication system: Topics by Science.gov", "url": "https:\/\/www.science.gov\/topicpages\/c\/chemical+communication+system.html",
+        "urlPingSuffix": "DevEx,5169.1", "displayUrl": "https:\/\/www.science.gov\/topicpages\/c\/chemical+communication+system...",
+        "snippet": "Secure video communications system. DOEpatents. Smith, Robert
+        L. 1991-01-01. A secure video communications system having at least one
+        command network formed by a combination of subsystems. The combination of
+        subsystems to include a video subsystem, an audio subsystem, a communications
+        subsystem, and a control subsystem.", "dateLastCrawled": "2018-10-27T00:33:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "fully
+        integrated assessment: Topics by Science.gov", "url": "https:\/\/www.science.gov\/topicpages\/f\/fully+integrated+assessment.html",
+        "urlPingSuffix": "DevEx,5186.1", "displayUrl": "https:\/\/www.science.gov\/topicpages\/f\/fully+integrated+assessment.html",
+        "snippet": "The resonators dimensions are 1x1x10.5 mm3 and 1x1x8.5 mm3
+        for green and infrared configurations, respectively. Presented laser devices,
+        with total dimensions of 40x52x120 mm3, are fully equipped with driving electronics,
+        pump diode, optical and mechanical components.", "dateLastCrawled": "2018-11-12T13:37:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "DrugFacts:
+        Synthetic Cathinones (\"Bath Salts\") | National ...", "url": "https:\/\/www.drugabuse.gov\/publications\/drugfacts\/synthetic-cathinones-bath-salts",
+        "urlPingSuffix": "DevEx,5202.1", "about": [{"name": "Bath salts"}, {"name":
+        "Bath salts"}], "displayUrl": "https:\/\/www.drugabuse.gov\/publications\/drugfacts\/synthetic...",
+        "snippet": "What are synthetic cathinones? Synthetic cathinones, more commonly
+        known as \"bath salts,\" are human-made stimulants chemically related to cathinone,
+        a substance found in the khat plant.", "dateLastCrawled": "2018-11-16T09:29:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "human-rated
+        spacecraft systems: Topics by Science.gov", "url": "https:\/\/www.science.gov\/topicpages\/h\/human-rated+spacecraft+systems.html",
+        "urlPingSuffix": "DevEx,5219.1", "displayUrl": "https:\/\/www.science.gov\/topicpages\/h\/human-rated+spacecraft...",
+        "snippet": "A video tape of one of our autonomous power systems using co-operating
+        expert systems, and advanced hardware will be presented. ... (May 5, 1961),
+        seventy-five manned entries have been made resulting in significant progress
+        in the understanding and development of Thermal Protection Systems (TPS) for
+        manned rated spacecraft.", "dateLastCrawled": "2018-10-26T22:02:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "absolute
+        parallelism 1929-1932: Topics by Science.gov", "url": "http:\/\/www.science.gov\/topicpages\/a\/absolute+parallelism+1929-1932.html",
+        "urlPingSuffix": "DevEx,5236.1", "displayUrl": "www.science.gov\/topicpages\/a\/absolute+parallelism+1929-1932.html",
+        "snippet": "A parallel version of CLIPS 5.1 has been developed to run on
+        Intel Hypercubes. The user interface is the same as that for CLIPS with some
+        added commands to allow for parallel calls. A complete version of CLIPS runs
+        on each node of the hypercube.", "dateLastCrawled": "2018-10-28T00:10:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "www.science.gov",
+        "url": "http:\/\/www.science.gov\/topicpages\/p\/parallel+discrete-ordinates+transport.html",
+        "urlPingSuffix": "DevEx,5254.1", "displayUrl": "www.science.gov\/topicpages\/p\/parallel+discrete-ordinates+transport...",
+        "snippet": "Solution of the within-group multidimensional discrete ordinates
+        transport equations on massively parallel architectures. NASA Astrophysics
+        Data System (ADS) Zerr, Robert Joseph.", "dateLastCrawled": "2018-09-16T02:51:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "parallel
+        cdm software: Topics by Science.gov", "url": "https:\/\/www.science.gov\/topicpages\/p\/parallel+cdm+software.html",
+        "urlPingSuffix": "DevEx,5272.1", "displayUrl": "https:\/\/www.science.gov\/topicpages\/p\/parallel+cdm+software.html",
+        "snippet": "Sample records for parallel cdm software ... implements parallel
+        processing for nearly real-time creation of panoramic mosaics of images of
+        terrain acquired by video cameras on an exploratory robotic vehicle (e.g.,
+        a Mars rover). Because the original images are typically acquired at various
+        camera positions and orientations, it is necessary to ...", "dateLastCrawled":
+        "2018-11-10T10:18:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
+        "name": "kaposi sarcoma herpes: Topics by Science.gov", "url": "https:\/\/www.science.gov\/topicpages\/k\/kaposi+sarcoma+herpes",
+        "urlPingSuffix": "DevEx,5290.1", "displayUrl": "https:\/\/www.science.gov\/topicpages\/k\/kaposi+sarcoma+herpes",
+        "snippet": "We have determined the 5{prime} and 3{prime} untranslated region
+        of the unspliced ORF11 transcript and identified both the transcription start
+        site and the transcription termination site. Coremore » promoter region, representing
+        ORF11 promoter activity, was mapped to a 159nt fragment 5{prime} most proximal
+        to the transcription start site.", "dateLastCrawled": "2018-09-18T09:31:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "wfii
+        parallel archive: Topics by Science.gov", "url": "https:\/\/www.science.gov\/topicpages\/w\/wfii+parallel+archive.html",
+        "urlPingSuffix": "DevEx,5307.1", "displayUrl": "https:\/\/www.science.gov\/topicpages\/w\/wfii+parallel+archive.html",
+        "snippet": "A parallel version of CLIPS 5.1 has been developed to run on
+        Intel Hypercubes. The user interface is the same as that for CLIPS with some
+        added commands to allow for parallel calls. A complete version of CLIPS runs
+        on each node of the hypercube. The system has been instrumented to display
+        the time spent in the match, recognize, and act cycles ...", "dateLastCrawled":
+        "2018-11-08T03:58:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
+        "name": "www.science.gov", "url": "https:\/\/www.science.gov\/topicpages\/s\/suicide+gene+herpes.html",
+        "urlPingSuffix": "DevEx,5324.1", "displayUrl": "https:\/\/www.science.gov\/topicpages\/s\/suicide+gene+herpes.html",
+        "snippet": "Suicide and the selfish gene. PubMed. Satora, Leszek. 2005-01-01.
+        The application of an evolutionary perspective to human behaviour generates
+        philosophical, political and scientif", "dateLastCrawled": "2018-10-26T09:24:00.0000000Z"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 19 Nov 2018 22:41:24 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=video%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '4313'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 19 Nov 2018 22:40:25 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=3FFECEC7734E63702D19C26B72996280; path=/; expires=Sat, 14-Dec-2019 22:41:25
+        GMT; domain=bingapis.com
+      - MUIDB=3FFECEC7734E63702D19C26B72996280; path=/; httponly; expires=Sat, 14-Dec-2019
+        22:41:25 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 19-Nov-2020 22:41:25 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=EE1D9EFE657A4513AC7D125B44E469FF&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 19-Nov-2020 22:41:25 GMT; path=/
+      - SRCHUSR=DOB=20181119; domain=.bingapis.com; expires=Thu, 19-Nov-2020 22:41:25
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=04464B64A3636B78016B47C8A2B46ADD; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 14-Dec-2019 22:41:25 GMT; domain=bingapis.com
+      - _SS=SID=04464B64A3636B78016B47C8A2B46ADD; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - 063AD6A1F678416085690E3F1CC252FF
+      X-Msedge-Clientid:
+      - 3FFECEC7734E63702D19C26B72996280
+      X-Msapi-Userstate:
+      - f889
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: 063AD6A1F678416085690E3F1CC252FF Ref B: CO1EDGE0414 Ref C: 2018-11-19T22:41:25Z'
+      Date:
+      - Mon, 19 Nov 2018 22:41:25 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=6D7FB7FE7092441795B0B5986CEEEB10&CID=3FFECEC7734E63702D19C26B72996280&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=6D7FB7FE7092441795B0B5986CEEEB10&CID=3FFECEC7734E63702D19C26B72996280&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=video+(site%3agov+OR+site%3amil)",
+        "webSearchUrlPingSuffix": "DevEx,5429.1", "totalEstimatedMatches": 28500000,
+        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
+        "NASA Video Gallery | NASA", "url": "https:\/\/www.nasa.gov\/multimedia\/videogallery\/index.html",
+        "urlPingSuffix": "DevEx,5058.1", "about": [{"name": "NASA"}], "displayUrl":
+        "https:\/\/www.nasa.gov\/multimedia\/videogallery", "snippet": "Watch
+        or download the latest launch videos, mission updates, animations, This Week
+        @NASA, ScienceCast and more.", "dateLastCrawled": "2018-11-16T02:08:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Videos
+        | Idaho Fish and Game", "url": "https:\/\/idfg.idaho.gov\/media\/video", "urlPingSuffix":
+        "DevEx,5072.1", "displayUrl": "https:\/\/idfg.idaho.gov\/media\/video",
+        "snippet": "Fish and Game Video Playlists | Fish & Game Video Loading
+        Video... Loading Video Playlist... Fish and Game Video Playlists. Skip
+        to main content. Idaho » Department of Fish and Game. Buy a License; Idaho
+        Fish and Game ... Videos from Idaho Fish and Game''s YouTube Channel.",
+        "dateLastCrawled": "2018-11-14T23:23:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        "name": "Videos : U.S. Bureau of Labor Statistics", "url": "https:\/\/www.bls.gov\/video\/",
+        "urlPingSuffix": "DevEx,5086.1", "displayUrl": "https:\/\/www.bls.gov\/video",
+        "snippet": "The U.S. Bureau of Labor Statistics has many sources of data
+        on pay and benefits. Ingredients for Multifactor Productivity. ... This video
+        discusses BLS projections of occupational openings from workers who leave
+        an occupation permanently. Introduction to the Producer Price Index.", "dateLastCrawled":
+        "2018-11-12T20:39:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "Video | Newsroom | Office of Inspector General | U.S ...", "url":
+        "https:\/\/oig.hhs.gov\/newsroom\/video\/index.asp", "urlPingSuffix": "DevEx,5100.1",
+        "displayUrl": "https:\/\/oig.hhs.gov\/newsroom\/video\/index.asp", "snippet":
+        "Video Eye on Oversight: Cybersecurity October 9, 2018. OIG recognizes Protecting
+        HHS Data, Systems, and Beneficiaries from Cybersecurity Threats as a top management
+        and performance challenge facing HHS.", "dateLastCrawled": "2018-11-10T03:57:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Video
+        | Congress.gov | Library of Congress", "url": "https:\/\/www.congress.gov\/video",
+        "urlPingSuffix": "DevEx,5114.1", "about": [{"name": "Library of Congress"}],
+        "displayUrl": "https:\/\/www.congress.gov\/video", "snippet": "All video
+        on Congress.gov plus links to resources, including House and Senate video.
+        Two-Minute Tips A series of short videos designed to highlight useful features
+        of Congress.gov. The Legislative Process Brief videos about introducing legislation,
+        committee and House and Senate consideration, conference committees, and presidential
+        vetoes.", "dateLastCrawled": "2018-11-09T00:00:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
+        "name": "Videos | DOJ | Department of Justice", "url": "https:\/\/www.justice.gov\/videos",
+        "urlPingSuffix": "DevEx,5131.1", "displayUrl": "https:\/\/www.justice.gov\/videos",
+        "snippet": "Filter by video category. Events (137) Apply Events filter ;
+        Press Conferences & Statements (167) ... Videos . Email updates. Keywords
+        . Items per page . U.S. Charges Russian GRU Officers with International Hacking
+        and Related Influence and Disinformation Operations.", "dateLastCrawled":
+        "2018-10-10T12:59:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "name": "NOAA''s National Ocean Service: Ocean Video", "url": "https:\/\/oceanservice.noaa.gov\/video\/",
+        "urlPingSuffix": "DevEx,5145.1", "displayUrl": "https:\/\/oceanservice.noaa.gov\/video",
+        "snippet": "The Coral Reef Economy 5 Oct 2017. Coral reefs are one of Earth’s
+        most productive ecosystems — both in terms of biology and cold, hard cash.
+        Healthy coral reef ecosystems do everything from supporting millions of jobs
+        to protecting lives and valuable coastal infrastructure, like hotels and roads,
+        from storms and waves.", "dateLastCrawled": "2018-11-13T16:13:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Options
+        for Consideration Active Shooter Preparedness Video", "url": "https:\/\/www.dhs.gov\/options-consideration-active-shooter-preparedness-video",
+        "urlPingSuffix": "DevEx,5161.1", "displayUrl": "https:\/\/www.dhs.gov\/options-consideration-active-shooter...",
+        "snippet": "The Options for Consideration video demonstrates possible actions
+        that individuals can take if confronted with an active shooter scenario. This
+        instructive video reviews the choices of running, hiding, or as an option
+        of last resort, fighting the shooter.", "dateLastCrawled": "2018-11-08T03:16:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Videos
+        - Jet Propulsion Laboratory", "url": "https:\/\/www.jpl.nasa.gov\/video\/",
+        "urlPingSuffix": "DevEx,5175.1", "displayUrl": "https:\/\/www.jpl.nasa.gov\/video",
+        "snippet": "Find out more in this 60-second video from NASA''s Jet Propulsion
+        Laboratory. March 7, 2018. Mars InSight Arrives at Vandenberg Air Force Base.
+        March 7, 2018. Mars InSight Arrives at Vandenberg Air Force Base NASA''s InSight
+        spacecraft arrived at Vandenberg Air Force Base, California, to begin final
+        preparations for launch. ...", "dateLastCrawled": "2018-11-15T23:46:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Videos
+        | Products | SRS", "url": "http:\/\/www.srs.fs.usda.gov\/video\/", "urlPingSuffix":
+        "DevEx,5189.1", "displayUrl": "www.srs.fs.usda.gov\/video", "snippet": "Southern
+        Research Station: Caring for the Land. Check out this video highlighting
+        some of the people and science that makes the Southern Research Station part
+        of the leading organization for research on natural resource management and
+        sustainability in the United States.", "dateLastCrawled": "2018-11-09T02:51:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Videos
+        — FBI", "url": "https:\/\/www.fbi.gov\/news\/videos", "urlPingSuffix": "DevEx,5204.1",
+        "displayUrl": "https:\/\/www.fbi.gov\/news\/videos", "snippet": "A webpage
+        compiling the various videos pertaining to the stories, press releases,
+        and wanted person information on FBI.gov.", "dateLastCrawled": "2018-11-16T14:01:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "OSHA
+        Videos | Occupational Safety and Health Administration", "url": "https:\/\/www.osha.gov\/video\/",
+        "urlPingSuffix": "DevEx,5218.1", "displayUrl": "https:\/\/www.osha.gov\/video",
+        "snippet": "Thank You for Visiting Our Website You are exiting the Department
+        of Labor''s Web server. The Department of Labor does not endorse, takes no
+        responsibility for, and exercises no control over the linked organization
+        or its views, or contents, nor does it vouch for the accuracy or accessibility
+        of the information contained on the destination server.", "dateLastCrawled":
+        "2018-11-10T01:31:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
+        "name": "NSSL Video", "url": "https:\/\/www.nssl.noaa.gov\/news\/video\/",
+        "urlPingSuffix": "DevEx,5232.1", "about": [{"name": "National Severe Storms
+        Laboratory"}], "displayUrl": "https:\/\/www.nssl.noaa.gov\/news\/video",
+        "snippet": "This is the focus of researchers at the National Severe Storms
+        Laboratory. This brief video, featuring NSSL Director, Dr. Jeff Kimpel,
+        provides an overview of the research conducted at NSSL, highlighting the three
+        main topics of weather radar, hydrometeorology, and forecast and warning improvements.",
+        "dateLastCrawled": "2018-11-13T08:22:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        "name": "Videos | Rover Readies for Second Drilling", "url": "https:\/\/www.jpl.nasa.gov\/video\/index.php?id=1217",
+        "urlPingSuffix": "DevEx,5244.1", "displayUrl": "https:\/\/www.jpl.nasa.gov\/video\/index.php?id=1217",
+        "snippet": "Captioned Video: › download. Ogv Format: › download › Online
+        Video Catalog. You Might Also Like November brings planets, an asteroid,
+        a comet and the Leonids What''s Up - November 2018. When NASA''s InSight descends
+        to the Red Planet on Nov. 26, 2018, it is guaranteed to be a white-knuckle
+        event. InSight Landing on Mars ...", "dateLastCrawled": "2018-11-17T11:44:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Impact
+        Texas Teen Drivers", "url": "https:\/\/impacttexasdrivers.dps.texas.gov\/ITTD\/",
+        "urlPingSuffix": "DevEx,5258.1", "displayUrl": "https:\/\/impacttexasdrivers.dps.texas.gov\/ITTD",
+        "snippet": "Course Overview. Discover why Impact Texas Teen Drivers was
+        created and how this program is implemented into a driver''s license learning
+        curriculum to positively impact highway safety.", "dateLastCrawled": "2018-11-15T01:12:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Video",
+        "url": "https:\/\/www.niehs.nih.gov\/news\/video\/index.cfm", "urlPingSuffix":
+        "DevEx,5273.1", "displayUrl": "https:\/\/www.niehs.nih.gov\/news\/video\/index.cfm",
+        "snippet": "Video interviews, press events, trainings, and seminars | Provided
+        online by the NIEHS to cover the latest topics within the institute. Video
+        interviews, press events, trainings, and seminars | Provided online by the
+        NIEHS to cover the latest topics within the institute", "dateLastCrawled":
+        "2018-11-16T06:04:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
+        "name": "The Fed - Videos", "url": "https:\/\/www.federalreserve.gov\/videos.htm",
+        "urlPingSuffix": "DevEx,5287.1", "displayUrl": "https:\/\/www.federalreserve.gov\/videos.htm",
+        "snippet": "The Federal Reserve Board of Governors in Washington DC. Board
+        of Governors of the Federal Reserve System. The Federal Reserve, the central
+        bank of the United States, provides the nation with a safe, flexible, and
+        stable monetary and financial system.", "dateLastCrawled": "2018-11-13T07:40:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Video
+        - wpafb.af.mil", "url": "https:\/\/www.wpafb.af.mil\/News\/Video\/", "urlPingSuffix":
+        "DevEx,5299.1", "displayUrl": "https:\/\/www.wpafb.af.mil\/News\/Video",
+        "snippet": "The 14th Annual Pumpkin Chuck event took place behind the National
+        Museum of the United States Air Force, Wright-Patteson Air Force Base, Ohio,
+        November 5, 2018.", "dateLastCrawled": "2018-11-16T05:45:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Alaskan Way
+        Viaduct - Program Videos", "url": "http:\/\/www.wsdot.wa.gov\/Projects\/Viaduct\/Library\/Videos",
+        "urlPingSuffix": "DevEx,5313.1", "displayUrl": "www.wsdot.wa.gov\/Projects\/Viaduct\/Library\/Videos",
+        "snippet": "Raw video: Testing fire systems in the new tunnel (June 2018).
+        Narrated video: The smart systems in the new tunnel are designed to work
+        together to keep traffic moving safely (March 2018). Time-lapse video: Crews
+        place the final deck segment for the tunnel''s lower deck (March 2018).",
+        "dateLastCrawled": "2018-11-13T20:59:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
+        "name": "Resources | Videos", "url": "https:\/\/www.cdc.gov\/tobacco\/campaign\/tips\/resources\/videos\/index.html",
+        "urlPingSuffix": "DevEx,5327.1", "displayUrl": "https:\/\/www.cdc.gov\/tobacco\/campaign\/tips\/resources\/videos",
+        "snippet": "In this video, Amanda talks about being rushed to the hospital,
+        where her baby was born 2 months early, at just 3 pounds. Amanda’s “Smoking,
+        Family, and Pain” Story Amanda tried her first cigarette when she was in elementary
+        school.", "dateLastCrawled": "2018-11-12T10:57:00.0000000Z"}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 19 Nov 2018 22:41:25 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=video%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 19 Nov 2018 22:41:34 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 74BB989A27FC4DDC9D7C5498D2F02E3C
+      Bingapis-Sessionid:
+      - 2179F26531F84A25AD9CF85677EFC2D9
+      X-Msedge-Clientid:
+      - 363E6B1CA287613029EF67B0A3CB609B
+      X-Msapi-Userstate:
+      - c97c
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=228,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: 74BB989A27FC4DDC9D7C5498D2F02E3C Ref B: BY3EDGE0417 Ref C: 2018-11-19T22:42:34Z'
+      Apim-Request-Id:
+      - bcce3ec4-710f-4958-a042-ccfb2519218f
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Mon, 19 Nov 2018 22:42:34 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "video
+        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=video+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 28500000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "NASA Video Gallery | NASA", "url": "https:\/\/www.nasa.gov\/multimedia\/videogallery\/index.html",
+        "about": [{"name": "NASA"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nasa.gov\/multimedia\/videogallery",
+        "snippet": "Watch or download the latest launch videos, mission updates, animations,
+        This Week @NASA, ScienceCast and more.", "dateLastCrawled": "2018-11-16T02:08:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Videos | Idaho Fish and Game", "url": "https:\/\/idfg.idaho.gov\/media\/video",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/idfg.idaho.gov\/media\/video",
+        "snippet": "Fish and Game Video Playlists | Fish & Game Video Loading
+        Video... Loading Video Playlist... Fish and Game Video Playlists. Skip
+        to main content. Idaho » Department of Fish and Game. Buy a License; Idaho
+        Fish and Game ... Videos from Idaho Fish and Game''s YouTube Channel.",
+        "dateLastCrawled": "2018-11-14T23:23:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Videos : U.S. Bureau of Labor Statistics", "url": "https:\/\/www.bls.gov\/video\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.bls.gov\/video",
+        "snippet": "The U.S. Bureau of Labor Statistics has many sources of data
+        on pay and benefits. Ingredients for Multifactor Productivity. ... This video
+        discusses BLS projections of occupational openings from workers who leave
+        an occupation permanently. Introduction to the Producer Price Index.", "dateLastCrawled":
+        "2018-11-12T20:39:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3", "name":
+        "Video | Newsroom | Office of Inspector General | U.S ...", "url": "https:\/\/oig.hhs.gov\/newsroom\/video\/index.asp",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/oig.hhs.gov\/newsroom\/video\/index.asp",
+        "snippet": "Video Eye on Oversight: Cybersecurity October 9, 2018. OIG recognizes
+        Protecting HHS Data, Systems, and Beneficiaries from Cybersecurity Threats
+        as a top management and performance challenge facing HHS.", "dateLastCrawled":
+        "2018-11-10T03:57:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4", "name":
+        "Video | Congress.gov | Library of Congress", "url": "https:\/\/www.congress.gov\/video",
+        "about": [{"name": "Library of Congress"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.congress.gov\/video", "snippet": "All video on Congress.gov
+        plus links to resources, including House and Senate video. Two-Minute Tips
+        A series of short videos designed to highlight useful features of Congress.gov.
+        The Legislative Process Brief videos about introducing legislation, committee
+        and House and Senate consideration, conference committees, and presidential
+        vetoes.", "dateLastCrawled": "2018-11-09T00:00:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Videos | DOJ | Department of Justice", "url": "https:\/\/www.justice.gov\/videos",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.justice.gov\/videos",
+        "snippet": "Filter by video category. Events (137) Apply Events filter ;
+        Press Conferences & Statements (167) ... Videos . Email updates. Keywords
+        . Items per page . U.S. Charges Russian GRU Officers with International Hacking
+        and Related Influence and Disinformation Operations.", "dateLastCrawled":
+        "2018-10-10T12:59:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6", "name":
+        "NOAA''s National Ocean Service: Ocean Video", "url": "https:\/\/oceanservice.noaa.gov\/video\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/oceanservice.noaa.gov\/video",
+        "snippet": "The Coral Reef Economy 5 Oct 2017. Coral reefs are one of Earth’s
+        most productive ecosystems — both in terms of biology and cold, hard cash.
+        Healthy coral reef ecosystems do everything from supporting millions of jobs
+        to protecting lives and valuable coastal infrastructure, like hotels and roads,
+        from storms and waves.", "dateLastCrawled": "2018-11-13T16:13:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Options for Consideration Active Shooter Preparedness Video",
+        "url": "https:\/\/www.dhs.gov\/options-consideration-active-shooter-preparedness-video",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.dhs.gov\/options-consideration-active-shooter...",
+        "snippet": "The Options for Consideration video demonstrates possible actions
+        that individuals can take if confronted with an active shooter scenario. This
+        instructive video reviews the choices of running, hiding, or as an option
+        of last resort, fighting the shooter.", "dateLastCrawled": "2018-11-08T03:16:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Videos - Jet Propulsion Laboratory", "url": "https:\/\/www.jpl.nasa.gov\/video\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.jpl.nasa.gov\/video",
+        "snippet": "Find out more in this 60-second video from NASA''s Jet Propulsion
+        Laboratory. March 7, 2018. Mars InSight Arrives at Vandenberg Air Force Base.
+        March 7, 2018. Mars InSight Arrives at Vandenberg Air Force Base NASA''s InSight
+        spacecraft arrived at Vandenberg Air Force Base, California, to begin final
+        preparations for launch. ...", "dateLastCrawled": "2018-11-15T23:46:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Videos | Products | SRS", "url": "http:\/\/www.srs.fs.usda.gov\/video\/",
+        "isFamilyFriendly": true, "displayUrl": "www.srs.fs.usda.gov\/video", "snippet":
+        "Southern Research Station: Caring for the Land. Check out this video highlighting
+        some of the people and science that makes the Southern Research Station part
+        of the leading organization for research on natural resource management and
+        sustainability in the United States.", "dateLastCrawled": "2018-11-09T02:51:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Videos — FBI", "url": "https:\/\/www.fbi.gov\/news\/videos", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.fbi.gov\/news\/videos", "snippet":
+        "A webpage compiling the various videos pertaining to the stories, press
+        releases, and wanted person information on FBI.gov.", "dateLastCrawled":
+        "2018-11-16T14:01:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11", "name":
+        "OSHA Videos | Occupational Safety and Health Administration", "url": "https:\/\/www.osha.gov\/video\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.osha.gov\/video",
+        "snippet": "Thank You for Visiting Our Website You are exiting the Department
+        of Labor''s Web server. The Department of Labor does not endorse, takes no
+        responsibility for, and exercises no control over the linked organization
+        or its views, or contents, nor does it vouch for the accuracy or accessibility
+        of the information contained on the destination server.", "dateLastCrawled":
+        "2018-11-10T01:31:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12", "name":
+        "NSSL Video", "url": "https:\/\/www.nssl.noaa.gov\/news\/video\/", "about":
+        [{"name": "National Severe Storms Laboratory"}], "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.nssl.noaa.gov\/news\/video", "snippet": "This
+        is the focus of researchers at the National Severe Storms Laboratory. This
+        brief video, featuring NSSL Director, Dr. Jeff Kimpel, provides an overview
+        of the research conducted at NSSL, highlighting the three main topics of weather
+        radar, hydrometeorology, and forecast and warning improvements.", "dateLastCrawled":
+        "2018-11-13T08:22:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13", "name":
+        "Videos | Rover Readies for Second Drilling", "url": "https:\/\/www.jpl.nasa.gov\/video\/index.php?id=1217",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.jpl.nasa.gov\/video\/index.php?id=1217",
+        "snippet": "Captioned Video: › download. Ogv Format: › download › Online
+        Video Catalog. You Might Also Like November brings planets, an asteroid,
+        a comet and the Leonids What''s Up - November 2018. When NASA''s InSight descends
+        to the Red Planet on Nov. 26, 2018, it is guaranteed to be a white-knuckle
+        event. InSight Landing on Mars ...", "dateLastCrawled": "2018-11-17T11:44:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Impact Texas Teen Drivers", "url": "https:\/\/impacttexasdrivers.dps.texas.gov\/ITTD\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/impacttexasdrivers.dps.texas.gov\/ITTD",
+        "snippet": "Course Overview. Discover why Impact Texas Teen Drivers was
+        created and how this program is implemented into a driver''s license learning
+        curriculum to positively impact highway safety.", "dateLastCrawled": "2018-11-15T01:12:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Video", "url": "https:\/\/www.niehs.nih.gov\/news\/video\/index.cfm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.niehs.nih.gov\/news\/video\/index.cfm",
+        "snippet": "Video interviews, press events, trainings, and seminars | Provided
+        online by the NIEHS to cover the latest topics within the institute. Video
+        interviews, press events, trainings, and seminars | Provided online by the
+        NIEHS to cover the latest topics within the institute", "dateLastCrawled":
+        "2018-11-16T06:04:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16", "name":
+        "The Fed - Videos", "url": "https:\/\/www.federalreserve.gov\/videos.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.federalreserve.gov\/videos.htm",
+        "snippet": "The Federal Reserve Board of Governors in Washington DC. Board
+        of Governors of the Federal Reserve System. The Federal Reserve, the central
+        bank of the United States, provides the nation with a safe, flexible, and
+        stable monetary and financial system.", "dateLastCrawled": "2018-11-13T07:40:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Video - wpafb.af.mil", "url": "https:\/\/www.wpafb.af.mil\/News\/Video\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.wpafb.af.mil\/News\/Video",
+        "snippet": "The 14th Annual Pumpkin Chuck event took place behind the National
+        Museum of the United States Air Force, Wright-Patteson Air Force Base, Ohio,
+        November 5, 2018.", "dateLastCrawled": "2018-11-16T05:45:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Alaskan Way Viaduct - Program Videos", "url": "http:\/\/www.wsdot.wa.gov\/Projects\/Viaduct\/Library\/Videos",
+        "isFamilyFriendly": true, "displayUrl": "www.wsdot.wa.gov\/Projects\/Viaduct\/Library\/Videos",
+        "snippet": "Raw video: Testing fire systems in the new tunnel (June 2018).
+        Narrated video: The smart systems in the new tunnel are designed to work
+        together to keep traffic moving safely (March 2018). Time-lapse video: Crews
+        place the final deck segment for the tunnel''s lower deck (March 2018).",
+        "dateLastCrawled": "2018-11-13T20:59:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Resources | Videos", "url": "https:\/\/www.cdc.gov\/tobacco\/campaign\/tips\/resources\/videos\/index.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/tobacco\/campaign\/tips\/resources\/videos",
+        "snippet": "In this video, Amanda talks about being rushed to the hospital,
+        where her baby was born 2 months early, at just 3 pounds. Amanda’s “Smoking,
+        Family, and Pain” Story Amanda tried her first cigarette when she was in elementary
+        school.", "dateLastCrawled": "2018-11-12T10:57:00.0000000Z", "language": "en",
+        "isNavigational": false}]}, "rankingResponse": {"mainline": {"items": [{"answerType":
+        "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 19 Nov 2018 22:42:34 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=video%20usgovernment_channel_id%205%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 19 Nov 2018 22:41:36 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 6E4F176002FF4C44B3BD2C5660BC61A9
+      Bingapis-Sessionid:
+      - F3420A8D6C5B4AB9B93B4086E9FDDF19
+      X-Msedge-Clientid:
+      - 2C6521CC8B646B5F33822D608A286A1C
+      X-Msapi-Userstate:
+      - 777c
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=163,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: 6E4F176002FF4C44B3BD2C5660BC61A9 Ref B: BY3EDGE0306 Ref C: 2018-11-19T22:42:36Z'
+      Apim-Request-Id:
+      - 9a9d37bb-0917-4826-b9ae-b206662b829b
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Mon, 19 Nov 2018 22:42:36 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "video
+        usgovernment_channel_id 5 (site:gov OR site:mil)"}, "webPages": {"webSearchUrl":
+        "https:\/\/www.bing.com\/search?q=video+usgovernment_channel_id+5+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 18, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "October 13, 2006 FEMA Emergency Management Higher ...", "url": "https:\/\/training.fema.gov\/hiedu\/arrpt\/2006\/october\/oct%2013,%2006.doc",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/training.fema.gov\/hiedu\/arrpt\/2006\/october\/oct
+        13, 06.doc", "snippet": "And this time around, it is a video abusing the
+        man who epitomised all that is best in mankind: love, compassion and generosity.
+        Clearly, even if the Muslims are prepared to forgive and forget those targeting
+        their faith and the Prophet, they are not willing to let go of the past themselves....
+        Clearly, there is a method in the madness.", "dateLastCrawled": "2018-11-15T18:27:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Wayne''s Bibliography - FEMA", "url": "http:\/\/training.fema.gov\/hiedu\/docs\/wayne%20bibliography.doc",
+        "isFamilyFriendly": true, "displayUrl": "training.fema.gov\/hiedu\/docs\/wayne
+        bibliography.doc", "snippet": "Adventures of the Disaster Dudes – Master (2
+        copies of video) American Red Cross. A Year of Healing: The American Red
+        Cross Response to Hurricanes Katrina, Rita and Wilma.", "dateLastCrawled":
+        "2018-11-10T02:30:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2", "name":
+        "www.science.gov", "url": "https:\/\/www.science.gov\/topicpages\/i\/integrated+photonic+qubit.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.science.gov\/topicpages\/i\/integrated+photonic+qubit.html",
+        "snippet": "Integrated photonic quantum gates for polarization qubits. PubMed.
+        Crespi, Andrea; Ramponi, Roberta; Osellame, Roberto; Sansoni, Linda; Bongioanni,
+        Irene; Sciarrino ...", "dateLastCrawled": "2018-11-03T13:49:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "communication support system: Topics by Science.gov", "url": "https:\/\/www.science.gov\/topicpages\/c\/communication+support+system.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.science.gov\/topicpages\/c\/communication+support+system.html",
+        "snippet": "Capable of providing Internet access, voice over Internet protocol,
+        e-mail, video teleconferencing, broadcast television, and other high-bandwidth
+        communications, the systems have provided communication during the wildfires
+        in California, after Hurricane Katrina in Mississippi, and following the 2010
+        Haiti earthquake.", "dateLastCrawled": "2018-11-05T22:39:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "spacecraft water systems: Topics by Science.gov", "url": "https:\/\/www.science.gov\/topicpages\/s\/spacecraft+water+systems.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.science.gov\/topicpages\/s\/spacecraft+water+systems.html",
+        "snippet": "The IGDS was sized to iodinate the drinking water nominally consumed
+        by six men, 4.5 to 13.6 kg (10 to 30 lb) water per man-day with a + or -
+        10 to 20% variation with iodine (I2) levels of 0.5 to 20 parts per million
+        (ppm).", "dateLastCrawled": "2018-11-03T04:45:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "processive run length: Topics by Science.gov", "url": "https:\/\/www.science.gov\/topicpages\/p\/processive+run+length.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.science.gov\/topicpages\/p\/processive+run+length.html",
+        "snippet": "Thirteen subjects were video-recorded as they ran at self-selected
+        slow and fast paces. Runners targeted a specific distance before the curb
+        for foot placement, and lengthened their step over the curb (p0.0001) regardless
+        of where the step over the curb was initiated.", "dateLastCrawled": "2018-11-03T06:31:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "www.science.gov", "url": "https:\/\/www.science.gov\/topicpages\/k\/kaposi+sarcoma-associated+herpes",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.science.gov\/topicpages\/k\/kaposi+sarcoma-associated+herpes",
+        "snippet": "Kaposi ''s Sarcoma Associated-Herpes Virus (KSHV) Seroprevalence
+        in Pregnant Women in South Africa. PubMed Central. 2010-01-01. Background
+        Factors previously associated with Kaposi", "dateLastCrawled": "2018-10-15T15:09:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "chemical communication system: Topics by Science.gov", "url": "https:\/\/www.science.gov\/topicpages\/c\/chemical+communication+system.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.science.gov\/topicpages\/c\/chemical+communication+system...",
+        "snippet": "Secure video communications system. DOEpatents. Smith, Robert
+        L. 1991-01-01. A secure video communications system having at least one
+        command network formed by a combination of subsystems. The combination of
+        subsystems to include a video subsystem, an audio subsystem, a communications
+        subsystem, and a control subsystem.", "dateLastCrawled": "2018-10-27T00:33:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "fully integrated assessment: Topics by Science.gov", "url": "https:\/\/www.science.gov\/topicpages\/f\/fully+integrated+assessment.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.science.gov\/topicpages\/f\/fully+integrated+assessment.html",
+        "snippet": "The resonators dimensions are 1x1x10.5 mm3 and 1x1x8.5 mm3
+        for green and infrared configurations, respectively. Presented laser devices,
+        with total dimensions of 40x52x120 mm3, are fully equipped with driving electronics,
+        pump diode, optical and mechanical components.", "dateLastCrawled": "2018-11-12T13:37:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "DrugFacts: Synthetic Cathinones (\"Bath Salts\") | National ...",
+        "url": "https:\/\/www.drugabuse.gov\/publications\/drugfacts\/synthetic-cathinones-bath-salts",
+        "about": [{"name": "Bath salts"}, {"name": "Bath salts"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.drugabuse.gov\/publications\/drugfacts\/synthetic...",
+        "snippet": "What are synthetic cathinones? Synthetic cathinones, more commonly
+        known as \"bath salts,\" are human-made stimulants chemically related to cathinone,
+        a substance found in the khat plant.", "dateLastCrawled": "2018-11-16T09:29:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "human-rated spacecraft systems: Topics by Science.gov", "url": "https:\/\/www.science.gov\/topicpages\/h\/human-rated+spacecraft+systems.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.science.gov\/topicpages\/h\/human-rated+spacecraft...",
+        "snippet": "A video tape of one of our autonomous power systems using co-operating
+        expert systems, and advanced hardware will be presented. ... (May 5, 1961),
+        seventy-five manned entries have been made resulting in significant progress
+        in the understanding and development of Thermal Protection Systems (TPS) for
+        manned rated spacecraft.", "dateLastCrawled": "2018-10-26T22:02:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "absolute parallelism 1929-1932: Topics by Science.gov", "url": "http:\/\/www.science.gov\/topicpages\/a\/absolute+parallelism+1929-1932.html",
+        "isFamilyFriendly": true, "displayUrl": "www.science.gov\/topicpages\/a\/absolute+parallelism+1929-1932.html",
+        "snippet": "A parallel version of CLIPS 5.1 has been developed to run on
+        Intel Hypercubes. The user interface is the same as that for CLIPS with some
+        added commands to allow for parallel calls. A complete version of CLIPS runs
+        on each node of the hypercube.", "dateLastCrawled": "2018-10-28T00:10:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "www.science.gov", "url": "http:\/\/www.science.gov\/topicpages\/p\/parallel+discrete-ordinates+transport.html",
+        "isFamilyFriendly": true, "displayUrl": "www.science.gov\/topicpages\/p\/parallel+discrete-ordinates+transport...",
+        "snippet": "Solution of the within-group multidimensional discrete ordinates
+        transport equations on massively parallel architectures. NASA Astrophysics
+        Data System (ADS) Zerr, Robert Joseph.", "dateLastCrawled": "2018-09-16T02:51:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "parallel cdm software: Topics by Science.gov", "url": "https:\/\/www.science.gov\/topicpages\/p\/parallel+cdm+software.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.science.gov\/topicpages\/p\/parallel+cdm+software.html",
+        "snippet": "Sample records for parallel cdm software ... implements parallel
+        processing for nearly real-time creation of panoramic mosaics of images of
+        terrain acquired by video cameras on an exploratory robotic vehicle (e.g.,
+        a Mars rover). Because the original images are typically acquired at various
+        camera positions and orientations, it is necessary to ...", "dateLastCrawled":
+        "2018-11-10T10:18:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "kaposi sarcoma herpes: Topics by Science.gov", "url": "https:\/\/www.science.gov\/topicpages\/k\/kaposi+sarcoma+herpes",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.science.gov\/topicpages\/k\/kaposi+sarcoma+herpes",
+        "snippet": "We have determined the 5{prime} and 3{prime} untranslated region
+        of the unspliced ORF11 transcript and identified both the transcription start
+        site and the transcription termination site. Coremore » promoter region, representing
+        ORF11 promoter activity, was mapped to a 159nt fragment 5{prime} most proximal
+        to the transcription start site.", "dateLastCrawled": "2018-09-18T09:31:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "wfii parallel archive: Topics by Science.gov", "url": "https:\/\/www.science.gov\/topicpages\/w\/wfii+parallel+archive.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.science.gov\/topicpages\/w\/wfii+parallel+archive.html",
+        "snippet": "A parallel version of CLIPS 5.1 has been developed to run on
+        Intel Hypercubes. The user interface is the same as that for CLIPS with some
+        added commands to allow for parallel calls. A complete version of CLIPS runs
+        on each node of the hypercube. The system has been instrumented to display
+        the time spent in the match, recognize, and act cycles ...", "dateLastCrawled":
+        "2018-11-08T03:58:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16", "name":
+        "www.science.gov", "url": "https:\/\/www.science.gov\/topicpages\/s\/suicide+gene+herpes.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.science.gov\/topicpages\/s\/suicide+gene+herpes.html",
+        "snippet": "Suicide and the selfish gene. PubMed. Satora, Leszek. 2005-01-01.
+        The application of an evolutionary perspective to human behaviour generates
+        philosophical, political and scientif", "dateLastCrawled": "2018-10-26T09:24:00.0000000Z",
+        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 19 Nov 2018 22:42:36 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=video%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 19 Nov 2018 22:41:37 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - DBA304F8FC8349149DA657B0609663DD
+      Bingapis-Sessionid:
+      - 0D836F5767FC4B46B02989A20617B6C9
+      X-Msedge-Clientid:
+      - 22CA9E893B606576360492253A2C6407
+      X-Msapi-Userstate:
+      - 3f05
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=120,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: DBA304F8FC8349149DA657B0609663DD Ref B: BY3EDGE0310 Ref C: 2018-11-19T22:42:37Z'
+      Apim-Request-Id:
+      - bec96bd0-d7ac-42c0-8b96-648aa327cf98
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Mon, 19 Nov 2018 22:42:36 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "video
+        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=video+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 28500000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "NASA Video Gallery | NASA", "url": "https:\/\/www.nasa.gov\/multimedia\/videogallery\/index.html",
+        "about": [{"name": "NASA"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nasa.gov\/multimedia\/videogallery",
+        "snippet": "Watch or download the latest launch videos, mission updates, animations,
+        This Week @NASA, ScienceCast and more.", "dateLastCrawled": "2018-11-16T02:08:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Videos | Idaho Fish and Game", "url": "https:\/\/idfg.idaho.gov\/media\/video",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/idfg.idaho.gov\/media\/video",
+        "snippet": "Fish and Game Video Playlists | Fish & Game Video Loading
+        Video... Loading Video Playlist... Fish and Game Video Playlists. Skip
+        to main content. Idaho » Department of Fish and Game. Buy a License; Idaho
+        Fish and Game ... Videos from Idaho Fish and Game''s YouTube Channel.",
+        "dateLastCrawled": "2018-11-14T23:23:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Videos : U.S. Bureau of Labor Statistics", "url": "https:\/\/www.bls.gov\/video\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.bls.gov\/video",
+        "snippet": "The U.S. Bureau of Labor Statistics has many sources of data
+        on pay and benefits. Ingredients for Multifactor Productivity. ... This video
+        discusses BLS projections of occupational openings from workers who leave
+        an occupation permanently. Introduction to the Producer Price Index.", "dateLastCrawled":
+        "2018-11-12T20:39:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3", "name":
+        "Video | Newsroom | Office of Inspector General | U.S ...", "url": "https:\/\/oig.hhs.gov\/newsroom\/video\/index.asp",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/oig.hhs.gov\/newsroom\/video\/index.asp",
+        "snippet": "Video Eye on Oversight: Cybersecurity October 9, 2018. OIG recognizes
+        Protecting HHS Data, Systems, and Beneficiaries from Cybersecurity Threats
+        as a top management and performance challenge facing HHS.", "dateLastCrawled":
+        "2018-11-10T03:57:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4", "name":
+        "Video | Congress.gov | Library of Congress", "url": "https:\/\/www.congress.gov\/video",
+        "about": [{"name": "Library of Congress"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.congress.gov\/video", "snippet": "All video on Congress.gov
+        plus links to resources, including House and Senate video. Two-Minute Tips
+        A series of short videos designed to highlight useful features of Congress.gov.
+        The Legislative Process Brief videos about introducing legislation, committee
+        and House and Senate consideration, conference committees, and presidential
+        vetoes.", "dateLastCrawled": "2018-11-09T00:00:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Videos | DOJ | Department of Justice", "url": "https:\/\/www.justice.gov\/videos",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.justice.gov\/videos",
+        "snippet": "Filter by video category. Events (137) Apply Events filter ;
+        Press Conferences & Statements (167) ... Videos . Email updates. Keywords
+        . Items per page . U.S. Charges Russian GRU Officers with International Hacking
+        and Related Influence and Disinformation Operations.", "dateLastCrawled":
+        "2018-10-10T12:59:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6", "name":
+        "NOAA''s National Ocean Service: Ocean Video", "url": "https:\/\/oceanservice.noaa.gov\/video\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/oceanservice.noaa.gov\/video",
+        "snippet": "The Coral Reef Economy 5 Oct 2017. Coral reefs are one of Earth’s
+        most productive ecosystems — both in terms of biology and cold, hard cash.
+        Healthy coral reef ecosystems do everything from supporting millions of jobs
+        to protecting lives and valuable coastal infrastructure, like hotels and roads,
+        from storms and waves.", "dateLastCrawled": "2018-11-13T16:13:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Options for Consideration Active Shooter Preparedness Video",
+        "url": "https:\/\/www.dhs.gov\/options-consideration-active-shooter-preparedness-video",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.dhs.gov\/options-consideration-active-shooter...",
+        "snippet": "The Options for Consideration video demonstrates possible actions
+        that individuals can take if confronted with an active shooter scenario. This
+        instructive video reviews the choices of running, hiding, or as an option
+        of last resort, fighting the shooter.", "dateLastCrawled": "2018-11-08T03:16:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Videos - Jet Propulsion Laboratory", "url": "https:\/\/www.jpl.nasa.gov\/video\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.jpl.nasa.gov\/video",
+        "snippet": "Find out more in this 60-second video from NASA''s Jet Propulsion
+        Laboratory. March 7, 2018. Mars InSight Arrives at Vandenberg Air Force Base.
+        March 7, 2018. Mars InSight Arrives at Vandenberg Air Force Base NASA''s InSight
+        spacecraft arrived at Vandenberg Air Force Base, California, to begin final
+        preparations for launch. ...", "dateLastCrawled": "2018-11-15T23:46:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Videos | Products | SRS", "url": "http:\/\/www.srs.fs.usda.gov\/video\/",
+        "isFamilyFriendly": true, "displayUrl": "www.srs.fs.usda.gov\/video", "snippet":
+        "Southern Research Station: Caring for the Land. Check out this video highlighting
+        some of the people and science that makes the Southern Research Station part
+        of the leading organization for research on natural resource management and
+        sustainability in the United States.", "dateLastCrawled": "2018-11-09T02:51:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Videos — FBI", "url": "https:\/\/www.fbi.gov\/news\/videos", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.fbi.gov\/news\/videos", "snippet":
+        "A webpage compiling the various videos pertaining to the stories, press
+        releases, and wanted person information on FBI.gov.", "dateLastCrawled":
+        "2018-11-16T14:01:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11", "name":
+        "OSHA Videos | Occupational Safety and Health Administration", "url": "https:\/\/www.osha.gov\/video\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.osha.gov\/video",
+        "snippet": "Thank You for Visiting Our Website You are exiting the Department
+        of Labor''s Web server. The Department of Labor does not endorse, takes no
+        responsibility for, and exercises no control over the linked organization
+        or its views, or contents, nor does it vouch for the accuracy or accessibility
+        of the information contained on the destination server.", "dateLastCrawled":
+        "2018-11-10T01:31:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12", "name":
+        "NSSL Video", "url": "https:\/\/www.nssl.noaa.gov\/news\/video\/", "about":
+        [{"name": "National Severe Storms Laboratory"}], "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.nssl.noaa.gov\/news\/video", "snippet": "This
+        is the focus of researchers at the National Severe Storms Laboratory. This
+        brief video, featuring NSSL Director, Dr. Jeff Kimpel, provides an overview
+        of the research conducted at NSSL, highlighting the three main topics of weather
+        radar, hydrometeorology, and forecast and warning improvements.", "dateLastCrawled":
+        "2018-11-13T08:22:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13", "name":
+        "Videos | Rover Readies for Second Drilling", "url": "https:\/\/www.jpl.nasa.gov\/video\/index.php?id=1217",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.jpl.nasa.gov\/video\/index.php?id=1217",
+        "snippet": "Captioned Video: › download. Ogv Format: › download › Online
+        Video Catalog. You Might Also Like November brings planets, an asteroid,
+        a comet and the Leonids What''s Up - November 2018. When NASA''s InSight descends
+        to the Red Planet on Nov. 26, 2018, it is guaranteed to be a white-knuckle
+        event. InSight Landing on Mars ...", "dateLastCrawled": "2018-11-17T11:44:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Impact Texas Teen Drivers", "url": "https:\/\/impacttexasdrivers.dps.texas.gov\/ITTD\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/impacttexasdrivers.dps.texas.gov\/ITTD",
+        "snippet": "Course Overview. Discover why Impact Texas Teen Drivers was
+        created and how this program is implemented into a driver''s license learning
+        curriculum to positively impact highway safety.", "dateLastCrawled": "2018-11-15T01:12:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Video", "url": "https:\/\/www.niehs.nih.gov\/news\/video\/index.cfm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.niehs.nih.gov\/news\/video\/index.cfm",
+        "snippet": "Video interviews, press events, trainings, and seminars | Provided
+        online by the NIEHS to cover the latest topics within the institute. Video
+        interviews, press events, trainings, and seminars | Provided online by the
+        NIEHS to cover the latest topics within the institute", "dateLastCrawled":
+        "2018-11-16T06:04:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16", "name":
+        "The Fed - Videos", "url": "https:\/\/www.federalreserve.gov\/videos.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.federalreserve.gov\/videos.htm",
+        "snippet": "The Federal Reserve Board of Governors in Washington DC. Board
+        of Governors of the Federal Reserve System. The Federal Reserve, the central
+        bank of the United States, provides the nation with a safe, flexible, and
+        stable monetary and financial system.", "dateLastCrawled": "2018-11-13T07:40:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Video - wpafb.af.mil", "url": "https:\/\/www.wpafb.af.mil\/News\/Video\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.wpafb.af.mil\/News\/Video",
+        "snippet": "The 14th Annual Pumpkin Chuck event took place behind the National
+        Museum of the United States Air Force, Wright-Patteson Air Force Base, Ohio,
+        November 5, 2018.", "dateLastCrawled": "2018-11-16T05:45:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Alaskan Way Viaduct - Program Videos", "url": "http:\/\/www.wsdot.wa.gov\/Projects\/Viaduct\/Library\/Videos",
+        "isFamilyFriendly": true, "displayUrl": "www.wsdot.wa.gov\/Projects\/Viaduct\/Library\/Videos",
+        "snippet": "Raw video: Testing fire systems in the new tunnel (June 2018).
+        Narrated video: The smart systems in the new tunnel are designed to work
+        together to keep traffic moving safely (March 2018). Time-lapse video: Crews
+        place the final deck segment for the tunnel''s lower deck (March 2018).",
+        "dateLastCrawled": "2018-11-13T20:59:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Resources | Videos", "url": "https:\/\/www.cdc.gov\/tobacco\/campaign\/tips\/resources\/videos\/index.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/tobacco\/campaign\/tips\/resources\/videos",
+        "snippet": "In this video, Amanda talks about being rushed to the hospital,
+        where her baby was born 2 months early, at just 3 pounds. Amanda’s “Smoking,
+        Family, and Pain” Story Amanda tried her first cigarette when she was in elementary
+        school.", "dateLastCrawled": "2018-11-12T10:57:00.0000000Z", "language": "en",
+        "isNavigational": false}]}, "rankingResponse": {"mainline": {"items": [{"answerType":
+        "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 19 Nov 2018 22:42:37 GMT
 recorded_with: VCR 4.0.0

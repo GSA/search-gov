@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=mars%20(site:nasa.gov)%20(-site:mars.nasa.gov)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations&traffictype=test
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=mars%20(site:nasa.gov)%20(-site:mars.nasa.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
     body:
       encoding: US-ASCII
       string: ''
@@ -10,7 +10,7 @@ http_interactions:
       User-Agent:
       - USASearch
       Ocp-Apim-Subscription-Key:
-      - "<BING_V6_APP_ID>"
+      - my_api_key
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -27,170 +27,167 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '2885'
+      - '2846'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Thu, 26 Apr 2018 23:55:36 GMT
+      - Mon, 27 Aug 2018 00:03:42 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=3E10923F40436BF8157099E241D46AE9; path=/; expires=Tue, 21-May-2019 23:56:36
+      - MUID=1D49AC73CBD76D190EE9A02BCAD86CCC; path=/; expires=Sat, 21-Sep-2019 00:04:42
         GMT; domain=bingapis.com
-      - MUIDB=3E10923F40436BF8157099E241D46AE9; path=/; httponly; expires=Tue, 21-May-2019
-        23:56:36 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 26-Apr-2020 23:56:36 GMT;
+      - MUIDB=1D49AC73CBD76D190EE9A02BCAD86CCC; path=/; httponly; expires=Sat, 21-Sep-2019
+        00:04:42 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 27-Aug-2020 00:04:42 GMT;
         path=/
-      - SRCHUID=V=2&GUID=41796823BA694B36A0298AEE05EA115E&dmnchg=1; domain=.bingapis.com;
-        expires=Sun, 26-Apr-2020 23:56:36 GMT; path=/
-      - SRCHUSR=DOB=20180426; domain=.bingapis.com; expires=Sun, 26-Apr-2020 23:56:36
+      - SRCHUID=V=2&GUID=EC894A6AAEF14EA2B8573307FE2DCE86&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 27-Aug-2020 00:04:42 GMT; path=/
+      - SRCHUSR=DOB=20180827; domain=.bingapis.com; expires=Thu, 27-Aug-2020 00:04:42
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=1A4D00D89436655E1EB80B0595A16418; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=01F84C6316746D303286403B177B6CC5; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Tue, 21-May-2019 23:56:36 GMT; domain=bingapis.com
-      - _SS=SID=1A4D00D89436655E1EB80B0595A16418; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 21-Sep-2019 00:04:42 GMT; domain=bingapis.com
+      - _SS=SID=01F84C6316746D303286403B177B6CC5; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - A5FB756B22A84B52B43531A3BDC87877
+      - 69D859CFF41B4B359C311E5080F2DE1F
       X-Msedge-Clientid:
-      - 3E10923F40436BF8157099E241D46AE9
+      - 1D49AC73CBD76D190EE9A02BCAD86CCC
       X-Msapi-Userstate:
-      - '4226'
+      - 27a9
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: A5FB756B22A84B52B43531A3BDC87877 Ref B: CO1EDGE0111 Ref C: 2018-04-26T23:56:36Z'
+      - 'Ref A: 69D859CFF41B4B359C311E5080F2DE1F Ref B: BAYEDGE0321 Ref C: 2018-08-27T00:04:42Z'
       Date:
-      - Thu, 26 Apr 2018 23:56:36 GMT
+      - Mon, 27 Aug 2018 00:04:42 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=929260648BCE4D13819FF1DBED4530B9&CID=3E10923F40436BF8157099E241D46AE9&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=929260648BCE4D13819FF1DBED4530B9&CID=3E10923F40436BF8157099E241D46AE9&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=E1A2981278DB4B0DAA482B8B670820C8&CID=1D49AC73CBD76D190EE9A02BCAD86CCC&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=E1A2981278DB4B0DAA482B8B670820C8&CID=1D49AC73CBD76D190EE9A02BCAD86CCC&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=mars+(site%3anasa.gov)+(-site%3amars.nasa.gov)",
-        "webSearchUrlPingSuffix": "DevEx,5577.1", "totalEstimatedMatches": 2190000,
+        "webSearchUrlPingSuffix": "DevEx,5422.1", "totalEstimatedMatches": 1890000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "Overview | Mars – Solar System Exploration: NASA Science", "url": "https:\/\/solarsystem.nasa.gov\/planets\/mars\/",
-        "urlPingSuffix": "DevEx,5099.1", "about": [{"name": "Mars"}], "displayUrl":
-        "https:\/\/solarsystem.nasa.gov\/planets\/mars", "snippet": "Mars may have
-        once been a wet world like Earth. Where did the water go?", "deepLinks": [{"name":
-        "In Depth", "url": "https:\/\/solarsystem.nasa.gov\/planets\/mars\/in-depth",
-        "urlPingSuffix": "DevEx,5087.1"}, {"name": "10 Need-To-Know Things", "url":
-        "https:\/\/solarsystem.nasa.gov\/planets\/mars\/needtoknow", "urlPingSuffix":
-        "DevEx,5088.1"}, {"name": "Jupiter", "url": "https:\/\/solarsystem.nasa.gov\/planets\/jupiter",
-        "urlPingSuffix": "DevEx,5089.1"}, {"name": "By The Numbers", "url": "https:\/\/solarsystem.nasa.gov\/planets\/mars\/by-the-numbers",
-        "urlPingSuffix": "DevEx,5090.1"}, {"name": "Planets", "url": "https:\/\/solarsystem.nasa.gov\/planets\/overview",
-        "urlPingSuffix": "DevEx,5091.1"}, {"name": "Moons", "url": "https:\/\/solarsystem.nasa.gov\/planets\/mars\/moons",
-        "urlPingSuffix": "DevEx,5092.1"}], "dateLastCrawled": "2018-04-16T02:14:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Ep18:
-        Mars | NASA", "url": "https:\/\/www.nasa.gov\/johnson\/HWHAP\/mars\/", "urlPingSuffix":
-        "DevEx,5115.1", "displayUrl": "https:\/\/www.nasa.gov\/johnson\/HWHAP\/mars",
-        "snippet": "Dr. Doug Archer, Planetary Scientist, talks about Mars: what its
-        made of, what it''s like on the surface, and why it''s such an intriguing
-        place for humans to visit in the next giant leap.", "dateLastCrawled": "2018-04-19T05:20:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Mars planet
-        facts news & images | NASA Mars rover ...", "url": "https:\/\/mars.jpl.nasa.gov\/",
-        "urlPingSuffix": "DevEx,5141.1", "about": [{"name": "Mars"}], "displayUrl":
-        "https:\/\/mars.jpl.nasa.gov", "snippet": "Exploration of the Planet Mars
-        - missions, videos, images and information", "dateLastCrawled": "2018-04-20T06:40:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Mars Science
-        Laboratory - Curiosity | NASA", "url": "https:\/\/www.nasa.gov\/mission_pages\/msl\/index.html",
-        "urlPingSuffix": "DevEx,5154.1", "displayUrl": "https:\/\/www.nasa.gov\/mission_pages\/msl",
-        "snippet": "The latest news, images and videos from NASA''s car-sized rover
-        exploring the red planet for evidence the planet could have once supported
-        life.", "dateLastCrawled": "2018-04-23T20:31:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
-        "name": "NASA''s Journey to Mars", "url": "https:\/\/www.nasa.gov\/topics\/journeytomars\/index.html",
-        "urlPingSuffix": "DevEx,5171.1", "displayUrl": "https:\/\/www.nasa.gov\/topics\/journeytomars\/index.html",
+        "NASA’s Mars Exploration Program", "url": "https:\/\/mars.jpl.nasa.gov\/",
+        "urlPingSuffix": "DevEx,5057.1", "about": [{"name": "Mars"}, {"name": "Mars
+        Exploration Program"}], "displayUrl": "https:\/\/mars.jpl.nasa.gov", "snippet":
+        "NASA’s real-time portal for Mars exploration, featuring the latest news,
+        images, and discoveries from the Red Planet.", "dateLastCrawled": "2018-08-20T08:34:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Mars Exploration
+        | NASA", "url": "https:\/\/www.nasa.gov\/mission_pages\/mars\/main\/index.html",
+        "urlPingSuffix": "DevEx,5069.1", "displayUrl": "https:\/\/www.nasa.gov\/mission_pages\/mars\/main\/index.html",
         "snippet": "NASA.gov brings you the latest images, videos and news from America''s
         space agency. Get the latest updates on NASA missions, watch NASA TV live,
         and learn about our quest to reveal the unknown and benefit all humankind.",
-        "dateLastCrawled": "2018-04-17T13:22:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
-        "name": "What Is Mars? | NASA", "url": "https:\/\/www.nasa.gov\/audience\/forstudents\/k-4\/stories\/nasa-knows\/what-is-mars-k4.html",
-        "urlPingSuffix": "DevEx,5189.1", "about": [{"name": "Mars"}], "displayUrl":
-        "https:\/\/www.nasa.gov\/...\/k-4\/stories\/nasa-knows\/what-is-mars-k4.html",
-        "snippet": "Mars is also called the Red Planet.", "dateLastCrawled": "2018-04-18T06:28:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "What Is
-        Mars? | NASA", "url": "https:\/\/www.nasa.gov\/audience\/forstudents\/5-8\/features\/nasa-knows\/what-is-mars-58.html",
-        "urlPingSuffix": "DevEx,5207.1", "about": [{"name": "Mars"}], "displayUrl":
+        "dateLastCrawled": "2018-08-22T10:15:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        "name": "Overview | Mars – Solar System Exploration: NASA Science", "url":
+        "https:\/\/solarsystem.nasa.gov\/planets\/mars\/", "urlPingSuffix": "DevEx,5082.1",
+        "about": [{"name": "Mars"}], "displayUrl": "https:\/\/solarsystem.nasa.gov\/planets\/mars",
+        "snippet": "Mars may have once been a wet world like Earth. Where did the
+        water go?", "dateLastCrawled": "2018-08-18T10:16:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "Moon to Mars Overview | NASA", "url": "https:\/\/www.nasa.gov\/topics\/moon-to-mars\/overview\/",
+        "urlPingSuffix": "DevEx,5094.1", "displayUrl": "https:\/\/www.nasa.gov\/topics\/moon-to-mars\/overview",
+        "snippet": "Overview of Moon to Mars: NASA''s plans to enable human exploration
+        of the Moon as preparation for human missions to Mars and deeper into the
+        solar system.", "dateLastCrawled": "2018-08-20T07:52:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Mars 2020 Rover
+        | NASA", "url": "https:\/\/www.nasa.gov\/mars2020\/", "urlPingSuffix": "DevEx,5107.1",
+        "about": [{"name": "Mars 2020"}], "displayUrl": "https:\/\/www.nasa.gov\/mars2020",
+        "snippet": "NASA''s Mars 2020 rover will look for signs of past life in a
+        region of Mars where the ancient environment is believed to have been favorable
+        for microbial life.", "dateLastCrawled": "2018-07-27T06:43:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Moon to
+        Mars | NASA", "url": "https:\/\/www.nasa.gov\/topics\/moon-to-mars\/", "urlPingSuffix":
+        "DevEx,5119.1", "displayUrl": "https:\/\/www.nasa.gov\/topics\/moon-to-mars",
+        "snippet": "Moon to Mars: NASA''s plans to enable human exploration of the
+        Moon as preparation for human missions to Mars and deeper into the solar system.",
+        "dateLastCrawled": "2018-08-19T15:15:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "name": "What Is Mars? | NASA", "url": "https:\/\/www.nasa.gov\/audience\/forstudents\/5-8\/features\/nasa-knows\/what-is-mars-58.html",
+        "urlPingSuffix": "DevEx,5138.1", "about": [{"name": "Mars"}], "displayUrl":
         "https:\/\/www.nasa.gov\/...\/5-8\/features\/nasa-knows\/what-is-mars-58.html",
         "snippet": "Earth''s next-door neighbor is often called the Red Planet because
-        of its red soil.", "dateLastCrawled": "2018-04-18T03:49:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Mars Exploration
-        | NASA", "url": "https:\/\/www.nasa.gov\/mission_pages\/mars\/main\/index.html",
-        "urlPingSuffix": "DevEx,5224.1", "about": [{"name": "Mars"}], "displayUrl":
-        "https:\/\/www.nasa.gov\/mission_pages\/mars\/main", "snippet": "NASA.gov
-        brings you the latest images, videos and news from America''s space agency.
-        Get the latest updates on NASA missions, watch NASA TV live, and learn about
-        our quest to reveal the unknown and benefit all humankind.", "dateLastCrawled":
-        "2018-04-19T18:42:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
+        of its red soil.", "dateLastCrawled": "2018-08-19T18:27:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "What Is Mars?
+        | NASA", "url": "https:\/\/www.nasa.gov\/audience\/forstudents\/k-4\/stories\/nasa-knows\/what-is-mars-k4.html",
+        "urlPingSuffix": "DevEx,5152.1", "about": [{"name": "Mars"}], "displayUrl":
+        "https:\/\/www.nasa.gov\/...\/k-4\/stories\/nasa-knows\/what-is-mars-k4.html",
+        "snippet": "Mars is also called the Red Planet.", "dateLastCrawled": "2018-08-02T12:17:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "By the
+        Numbers | Mars – Solar System Exploration: NASA Science", "url": "https:\/\/solarsystem.nasa.gov\/planets\/mars\/by-the-numbers\/",
+        "urlPingSuffix": "DevEx,5166.1", "displayUrl": "https:\/\/solarsystem.nasa.gov\/planets\/mars\/by-the-numbers",
+        "snippet": "NASA’s real-time science encyclopedia of deep space exploration.
+        Our scientists and hardworking robots are exploring the wild frontiers of
+        our solar system.", "dateLastCrawled": "2018-08-20T06:41:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "In Depth | Mars
+        – Solar System Exploration: NASA Science", "url": "https:\/\/solarsystem.nasa.gov\/planets\/mars\/in-depth\/",
+        "urlPingSuffix": "DevEx,5178.1", "about": [{"name": "Mars"}], "displayUrl":
+        "https:\/\/solarsystem.nasa.gov\/planets\/mars\/in-depth", "snippet": "NASA’s
+        real-time science encyclopedia of deep space exploration. Our scientists and
+        hardworking robots are exploring the wild frontiers of our solar system.",
+        "dateLastCrawled": "2018-08-20T22:10:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
         "name": "NSSDCA Photo Gallery: Mars", "url": "https:\/\/nssdc.gsfc.nasa.gov\/photo_gallery\/photogallery-mars.html",
-        "urlPingSuffix": "DevEx,5239.1", "about": [{"name": "Mars"}], "displayUrl":
+        "urlPingSuffix": "DevEx,5191.1", "about": [{"name": "Mars"}], "displayUrl":
         "https:\/\/nssdc.gsfc.nasa.gov\/photo_gallery\/photogallery-mars.html", "snippet":
         "NSSDCA Photo Gallery: Mars - A collection of images of the planet Mars and
-        its satellites", "dateLastCrawled": "2018-04-13T05:44:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Mars Facts |
-        Mars Exploration Program - NASA Mars", "url": "https:\/\/mars.jpl.nasa.gov\/allaboutmars\/facts\/",
-        "urlPingSuffix": "DevEx,5256.1", "displayUrl": "https:\/\/mars.jpl.nasa.gov\/allaboutmars\/facts",
-        "snippet": "Mars planet facts and information. Compare Earth & Mars. Fun science
-        images for kids, school, family & space fans. Mars in space, night sky & history.",
-        "dateLastCrawled": "2018-04-20T08:36:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
-        "name": "NASA''s Journey to Mars | NASA", "url": "https:\/\/www.nasa.gov\/content\/nasas-journey-to-mars\/",
-        "urlPingSuffix": "DevEx,5274.1", "displayUrl": "https:\/\/www.nasa.gov\/content\/nasas-journey-to-mars",
+        its satellites", "dateLastCrawled": "2018-07-20T06:24:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Galleries |
+        Mars – Solar System Exploration: NASA Science", "url": "https:\/\/solarsystem.nasa.gov\/planets\/mars\/galleries\/",
+        "urlPingSuffix": "DevEx,5204.1", "displayUrl": "https:\/\/solarsystem.nasa.gov\/planets\/mars\/galleries",
+        "snippet": "NASA’s real-time science encyclopedia of deep space exploration.
+        Our scientists and hardworking robots are exploring the wild frontiers of
+        our solar system.", "dateLastCrawled": "2018-08-14T12:40:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Mars Science
+        Laboratory - Curiosity | NASA", "url": "https:\/\/www.nasa.gov\/mission_pages\/msl\/index.html",
+        "urlPingSuffix": "DevEx,5218.1", "about": [{"name": "Curiosity"}], "displayUrl":
+        "https:\/\/www.nasa.gov\/mission_pages\/msl", "snippet": "The latest news,
+        images and videos from NASA''s car-sized rover exploring the red planet for
+        evidence the planet could have once supported life.", "dateLastCrawled": "2018-08-20T13:12:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "NASA''s
+        Journey to Mars | NASA", "url": "https:\/\/www.nasa.gov\/content\/nasas-journey-to-mars\/",
+        "urlPingSuffix": "DevEx,5233.1", "displayUrl": "https:\/\/www.nasa.gov\/content\/nasas-journey-to-mars",
         "snippet": "NASA is developing the capabilities needed to send humans to an
         asteroid by 2025 and Mars in the 2030s – goals outlined in the bipartisan
         NASA Authorization Act of 2010 and in the U.S. National Space Policy, also
-        issued in 2010.", "dateLastCrawled": "2018-04-19T10:22:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "NASA Confirms
-        Evidence That Liquid Water Flows on Today’s Mars", "url": "https:\/\/www.nasa.gov\/press-release\/nasa-confirms-evidence-that-liquid-water-flows-on-today-s-mars\/",
-        "urlPingSuffix": "DevEx,5294.1", "displayUrl": "https:\/\/www.nasa.gov\/press-release\/nasa-confirms-evidence-that...",
+        issued in 2010.", "dateLastCrawled": "2018-08-21T06:27:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Mars Moons -
+        Solar System Exploration: NASA Science", "url": "https:\/\/solarsystem.nasa.gov\/moons\/mars-moons\/overview\/",
+        "urlPingSuffix": "DevEx,5246.1", "displayUrl": "https:\/\/solarsystem.nasa.gov\/moons\/mars-moons\/overview",
+        "snippet": "Mars'' moons are among the smallest in the solar system.", "dateLastCrawled":
+        "2018-08-20T05:14:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "Mars Facts | Mars Exploration Program - NASA Mars", "url": "https:\/\/mars.jpl.nasa.gov\/allaboutmars\/facts\/",
+        "urlPingSuffix": "DevEx,5260.1", "displayUrl": "https:\/\/mars.jpl.nasa.gov\/allaboutmars\/facts",
+        "snippet": "Mars planet facts and information. Compare Earth & Mars. Fun science
+        images for kids, school, family & space fans. Mars in space, night sky & history.",
+        "dateLastCrawled": "2018-08-15T16:09:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
+        "name": "Ep18: Mars | NASA", "url": "https:\/\/www.nasa.gov\/johnson\/HWHAP\/mars\/",
+        "urlPingSuffix": "DevEx,5273.1", "displayUrl": "https:\/\/www.nasa.gov\/johnson\/HWHAP\/mars",
+        "snippet": "Dr. Doug Archer, Planetary Scientist, talks about Mars: what its
+        made of, what it''s like on the surface, and why it''s such an intriguing
+        place for humans to visit in the next giant leap.", "dateLastCrawled": "2018-08-16T05:45:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Mars
+        Odyssey", "url": "https:\/\/mars.jpl.nasa.gov\/odyssey\/", "urlPingSuffix":
+        "DevEx,5285.1", "about": [{"name": "2001 Mars Odyssey"}, {"name": "2001 Mars
+        Odyssey"}], "displayUrl": "https:\/\/mars.jpl.nasa.gov\/odyssey", "snippet":
+        "2001 Mars Odyssey - missions, videos, images and information", "dateLastCrawled":
+        "2018-08-19T14:46:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
+        "name": "All About Mars :: NASA Space Place", "url": "https:\/\/spaceplace.nasa.gov\/all-about-mars\/en\/",
+        "urlPingSuffix": "DevEx,5300.1", "about": [{"name": "Mars"}], "displayUrl":
+        "https:\/\/www.spaceplace.nasa.gov\/all-about-mars", "snippet": "Mars is a
+        cold desert world. It is half the size of Earth. Mars is sometimes called
+        the Red Planet. It''s red because of rusty iron in the ground. Like Earth,
+        Mars has seasons, polar ice caps, volcanoes, canyons, and weather. It has
+        a very thin atmosphere made of carbon dioxide, nitrogen, and argon ...", "dateLastCrawled":
+        "2018-08-20T09:37:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
+        "name": "NASA Confirms Evidence That Liquid Water Flows on Today’s Mars",
+        "url": "https:\/\/www.nasa.gov\/press-release\/nasa-confirms-evidence-that-liquid-water-flows-on-today-s-mars\/",
+        "urlPingSuffix": "DevEx,5320.1", "displayUrl": "https:\/\/www.nasa.gov\/press-release\/nasa-confirms-evidence-that...",
         "snippet": "New findings from NASA''s Mars Reconnaissance Orbiter (MRO) provide
         the strongest evidence yet that liquid water flows intermittently on present-day
-        Mars.", "dateLastCrawled": "2018-04-19T02:18:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
-        "name": "Mars: Extreme Planet | Mars Exploration Program - NASA", "url": "https:\/\/mars.jpl.nasa.gov\/allaboutmars\/extreme\/",
-        "urlPingSuffix": "DevEx,5310.1", "about": [{"name": "Mars"}], "displayUrl":
-        "https:\/\/mars.jpl.nasa.gov\/allaboutmars\/extreme", "snippet": "Exploration
-        of the Planet Mars - missions, videos, images and information", "dateLastCrawled":
-        "2018-04-09T13:07:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
-        "name": "Journey to Mars Overview | NASA", "url": "https:\/\/www.nasa.gov\/content\/journey-to-mars-overview\/",
-        "urlPingSuffix": "DevEx,5328.1", "displayUrl": "https:\/\/www.nasa.gov\/content\/journey-to-mars-overview",
-        "snippet": "NASA.gov brings you the latest images, videos and news from America''s
-        space agency. Get the latest updates on NASA missions, watch NASA TV live,
-        and learn about our quest to reveal the unknown and benefit all humankind.",
-        "dateLastCrawled": "2018-04-19T06:42:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
-        "name": "Mars - NASA", "url": "https:\/\/nssdc.gsfc.nasa.gov\/planetary\/planets\/marspage.html",
-        "urlPingSuffix": "DevEx,5343.1", "about": [{"name": "Mars program"}, {"name":
-        "Mars 3"}, {"name": "Mars 2"}, {"name": "Mars program"}], "displayUrl": "https:\/\/nssdc.gsfc.nasa.gov\/planetary\/planets\/marspage.html",
-        "snippet": "NSSDCA Lunar & Planetary Science: Mars Page. General Information.
-        Mars Fact Sheet; Frequently Asked Questions; Missions to Mars", "dateLastCrawled":
-        "2018-04-20T03:45:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
-        "name": "Mars Exploration Rover Mission: Home", "url": "https:\/\/mars.jpl.nasa.gov\/mer\/home\/index.html",
-        "urlPingSuffix": "DevEx,5359.1", "about": [{"name": "Mars Exploration Rover"},
-        {"name": "Spirit"}, {"name": "Mars Exploration Rover"}, {"name": "Spirit"}],
-        "displayUrl": "https:\/\/mars.jpl.nasa.gov\/mer\/home\/index.html", "snippet":
-        "New Day for Longest-Working Mars Rover NASA''s Mars Exploration Rover Opportunity
-        recorded the dawn of the rover''s 4,999th Martian day, or sol, with its Panoramic
-        Camera (Pancam) on Feb. 15, 2018, yielding this processed, approximately true-color
-        scene.", "dateLastCrawled": "2018-04-20T05:03:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
-        "name": "All About Mars | Mars Exploration Program - NASA Mars", "url": "https:\/\/mars.jpl.nasa.gov\/allaboutmars\/",
-        "urlPingSuffix": "DevEx,5375.1", "displayUrl": "https:\/\/mars.jpl.nasa.gov\/allaboutmars",
-        "snippet": "Exploration of the Planet Mars - missions, videos, images and
-        information", "dateLastCrawled": "2018-04-17T17:51:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
-        "name": "Mars Mobile", "url": "https:\/\/marsmobile.jpl.nasa.gov\/", "urlPingSuffix":
-        "DevEx,5390.1", "displayUrl": "https:\/\/marsmobile.jpl.nasa.gov", "snippet":
-        "Exploration of the planet Mars - rover, mission, videos, pictures and information",
-        "dateLastCrawled": "2018-04-11T23:26:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
-        "name": "NASA - Official Site", "url": "https:\/\/www.nasa.gov\/", "urlPingSuffix":
-        "DevEx,5407.1", "about": [{"name": "NASA"}], "displayUrl": "https:\/\/www.nasa.gov",
-        "snippet": "NASA.gov brings you the latest news, images and videos from America''s
-        space agency, pioneering the future in space exploration, scientific discovery
-        and aeronautics research.", "dateLastCrawled": "2018-04-19T20:30:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Mars
-        Reconnaissance Orbiter - Official Site", "url": "https:\/\/mars.jpl.nasa.gov\/mro\/",
-        "urlPingSuffix": "DevEx,5422.1", "about": [{"name": "Mars Reconnaissance Orbiter"}],
-        "displayUrl": "https:\/\/mars.jpl.nasa.gov\/mro", "snippet": "Mars Reconnaissance
-        Orbiter - missions, videos, images and information", "dateLastCrawled": "2018-04-13T05:49:00.0000000Z"}]},
-        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
-        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        Mars.", "dateLastCrawled": "2018-08-19T15:14:00.0000000Z"}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
         "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
@@ -209,8 +206,7 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
         {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
-        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]},
-        "sidebar": {"items": [{"answerType": "Entities"}]}}}'
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Thu, 26 Apr 2018 23:56:36 GMT
+  recorded_at: Mon, 27 Aug 2018 00:04:42 GMT
 recorded_with: VCR 4.0.0

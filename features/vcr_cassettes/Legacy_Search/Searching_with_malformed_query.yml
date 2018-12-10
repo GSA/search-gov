@@ -206,4 +206,217 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
   recorded_at: Thu, 22 Feb 2018 07:16:53 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=hello%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '4406'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 19 Nov 2018 22:39:36 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=3DB1ECF8BB86682217E5E054BA51698E; path=/; expires=Sat, 14-Dec-2019 22:40:36
+        GMT; domain=bingapis.com
+      - MUIDB=3DB1ECF8BB86682217E5E054BA51698E; path=/; httponly; expires=Sat, 14-Dec-2019
+        22:40:36 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 19-Nov-2020 22:40:36 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=10AF2D5543EB4BAE9AC7E87A6BD84AEA&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 19-Nov-2020 22:40:36 GMT; path=/
+      - SRCHUSR=DOB=20181119; domain=.bingapis.com; expires=Thu, 19-Nov-2020 22:40:36
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=147580BCE9BA6F8D099A8C10E86D6E8C; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 14-Dec-2019 22:40:36 GMT; domain=bingapis.com
+      - _SS=SID=147580BCE9BA6F8D099A8C10E86D6E8C; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - 9BCE88F11AD844899020FCED691E21D7
+      X-Msedge-Clientid:
+      - 3DB1ECF8BB86682217E5E054BA51698E
+      X-Msapi-Userstate:
+      - be4b
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: 9BCE88F11AD844899020FCED691E21D7 Ref B: CO1EDGE0214 Ref C: 2018-11-19T22:40:36Z'
+      Date:
+      - Mon, 19 Nov 2018 22:40:36 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=C0FAD66D475C465ABF74FB69FFE601A5&CID=3DB1ECF8BB86682217E5E054BA51698E&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=C0FAD66D475C465ABF74FB69FFE601A5&CID=3DB1ECF8BB86682217E5E054BA51698E&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=hello+(site%3agov+OR+site%3amil)",
+        "webSearchUrlPingSuffix": "DevEx,5382.1", "totalEstimatedMatches": 1390000,
+        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
+        "McDonald’s Recalls Hello Kitty Themed Whistles | CPSC.gov", "url": "https:\/\/www.cpsc.gov\/Recalls\/2014\/mcdonalds-recalls-hello-kitty-themed-whistles",
+        "urlPingSuffix": "DevEx,5058.1", "displayUrl": "https:\/\/www.cpsc.gov\/Recalls\/2014\/mcdonalds-recalls-hello-kitty...",
+        "snippet": "Consumers should immediately take the whistle away from children
+        and return it to any McDonald''s for a free replacement toy and either a yogurt
+        tube or a bag of apple slices.", "dateLastCrawled": "2018-11-15T21:59:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Goodbye,
+        Federal Student Aid PIN. Hello, FSA ID! - ED.gov Blog", "url": "https:\/\/blog.ed.gov\/2015\/05\/goodbye-federal-student-aid-pin-hello-fsa-id\/",
+        "urlPingSuffix": "DevEx,5070.1", "displayUrl": "https:\/\/blog.ed.gov\/2015\/05\/goodbye-federal-student-aid-pin-hello...",
+        "snippet": "I just got off the phone with a very nice lady at FAFSA. I had
+        been incorrectly checking the box for “parent 1” when, on the FAFSA I was
+        “parent 2”.", "dateLastCrawled": "2018-11-16T14:30:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        "name": "Goodbye – Hello - Tennessee", "url": "https:\/\/www.tn.gov\/content\/dam\/tn\/tenncare\/documents\/notice03-07-16.pdf",
+        "urlPingSuffix": "DevEx,5082.1", "displayUrl": "https:\/\/www.tn.gov\/content\/dam\/tn\/tenncare\/documents\/notice03-07...",
+        "snippet": "Goodbye – Hello Alternative Attestation Method thru Medicare
+        Public Health Reporting Requirements Public Health Specialized Registries
+        Reporting Deadlines – everybody wants to know about deadlines Problems we
+        often see Fantastic Resource Latest Payment Amounts CONTACT INFORMATION .",
+        "dateLastCrawled": "2018-11-11T19:00:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "Hello, Thank you, Amanda Porras Purposes", "url": "https:\/\/homeloans.va.gov\/SAR_TPSS\/runtime\/pdfs\/request_a_lt5v2.pdf",
+        "urlPingSuffix": "DevEx,5093.1", "displayUrl": "https:\/\/homeloans.va.gov\/SAR_TPSS\/runtime\/pdfs\/request_a_lt5v2.pdf",
+        "snippet": "Request A. Hello, I was hoping you could help me. The notice
+        of value that I recently received calls for Flood Insurance. I would like
+        this condition waived because the garage is the only part of the house that
+        is", "dateLastCrawled": "2018-11-04T15:12:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
+        "name": "Hello, Loudoun", "url": "https:\/\/www.loudoun.gov\/ArchiveCenter\/ViewFile\/Item\/8065",
+        "urlPingSuffix": "DevEx,5103.1", "displayUrl": "https:\/\/www.loudoun.gov\/ArchiveCenter\/ViewFile\/Item\/8065",
+        "snippet": "Hello, Loudoun Welcome back to all LCPS teachers, educators
+        and staff. I hope everyone has a great new school year and thank you for your
+        service to our students!", "dateLastCrawled": "2018-11-08T06:06:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Hello,
+        Neighbor! | U.S. Embassy in Bosnia and Herzegovina", "url": "https:\/\/ba.usembassy.gov\/hello-neighbor\/",
+        "urlPingSuffix": "DevEx,5116.1", "displayUrl": "https:\/\/ba.usembassy.gov\/hello-neighbor",
+        "snippet": "One hundred and fifty participants from BiH, Croatia, Montenegro,
+        Serbia, Slovenia and 15 other European countries came together for the Hello
+        Neighbor Climbing and High-lining Festival in the Tijesno Canyon near Banja
+        Luka. Organized by the Banja Luka Climbing Club with an Embassy’s ESF-Interethnic
+        Reconciliation grant, participants spent ten days working together and building
+        relationships ...", "dateLastCrawled": "2018-10-27T18:13:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Hello. How Are
+        You? | Colchester, VT", "url": "http:\/\/colchestervt.gov\/2898\/Hello-How-Are-You",
+        "urlPingSuffix": "DevEx,5129.1", "about": [{"name": "How Are You"}, {"name":
+        "How Are You?"}, {"name": "How Are You?"}], "displayUrl": "colchestervt.gov\/2898\/Hello-How-Are-You",
+        "snippet": "HELLO. HOW ARE YOU? REQUIREMENTS: 1. You must live alone, or
+        with another person, if that person is unable to render you assistance in
+        an emergency. 2. You must not be in regular daily contact with another person.
+        3. You must reside in the town of Colchester. 4. You must notify the Colchester
+        Police Department with a key to your residence.", "dateLastCrawled": "2018-11-09T16:39:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Hello
+        world! | Cannabis", "url": "https:\/\/cannabis.ca.gov\/2017\/01\/18\/hello-world\/",
+        "urlPingSuffix": "DevEx,5143.1", "displayUrl": "https:\/\/cannabis.ca.gov\/2017\/01\/18\/hello-world",
+        "snippet": "State of California. Saving your location allows us to provide
+        you with more relevant information.", "dateLastCrawled": "2018-11-06T14:07:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Hello
+        Savings!", "url": "http:\/\/hellosavings.cpuc.ca.gov\/", "urlPingSuffix":
+        "DevEx,5155.1", "displayUrl": "hellosavings.cpuc.ca.gov", "snippet": "Hello
+        Savings! A gateway to the California Lifeline Program.", "dateLastCrawled":
+        "2018-11-04T19:39:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
+        "name": "Hello, MAHLI – NASA’s Mars Exploration Program", "url": "https:\/\/mars.nasa.gov\/resources\/4658\/hello-mahli\/",
+        "urlPingSuffix": "DevEx,5165.1", "about": [{"name": "Mars Hand Lens Imager"}],
+        "displayUrl": "https:\/\/mars.nasa.gov\/resources\/4658", "snippet": "September
+        12, 2012 This image shows the Mars Hand Lens Imager (MAHLI) on NASA''s Curiosity
+        rover, with the Martian landscape in the background.", "dateLastCrawled":
+        "2018-11-11T07:15:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
+        "name": "Hello Lamp Post Austin | Economic Development ...", "url": "http:\/\/austintexas.gov\/page\/hello-lamp-post-austin",
+        "urlPingSuffix": "DevEx,5179.1", "displayUrl": "austintexas.gov\/page\/hello-lamp-post-austin",
+        "snippet": "Hello Lamp Post: Austin is a city-wide platform for play that
+        lets you talk to the city’s infrastructure and share your stories using the
+        humble text messaging function of your mobile phone. By referencing the thousands
+        of pre-existing identifier codes that label items of street furniture across
+        the city, players can send text messages to ...", "dateLastCrawled": "2018-11-09T05:42:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Hello
+        From Above | NASA", "url": "https:\/\/www.nasa.gov\/image-feature\/hello-from-above\/",
+        "urlPingSuffix": "DevEx,5192.1", "displayUrl": "https:\/\/www.nasa.gov\/image-feature\/hello-from-above",
+        "snippet": "Greetings from @Astro_Sabot, otherwise known as Mark Vande Hei,
+        from aboard the International Space Station.", "dateLastCrawled": "2018-11-02T08:24:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Hello.
+        And welcome to today''s CDRH Industry Basics ...", "url": "https:\/\/www.fda.gov\/downloads\/Training\/CDRHLearn\/UCM586415.pdf",
+        "urlPingSuffix": "DevEx,5204.1", "displayUrl": "https:\/\/www.fda.gov\/downloads\/Training\/CDRHLearn\/UCM586415.pdf",
+        "snippet": "1 . Hello. And welcome to today''s CDRH Industry Basics workshop.
+        I''m Joseph Tartal, the deputy director of the Division of Industry and Consumer
+        Education at the center for devices and ...", "dateLastCrawled": "2018-11-16T05:29:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "An Autistic
+        Child Would Like to Say “Hello”", "url": "https:\/\/files.eric.ed.gov\/fulltext\/ED568094.pdf",
+        "urlPingSuffix": "DevEx,5215.1", "displayUrl": "https:\/\/files.eric.ed.gov\/fulltext\/ED568094.pdf",
+        "snippet": "242 An Autistic Child Would Like to Say “Hello” Here it is the
+        right formula: early diagnosis leads to early intervention that leads to optimal
+        development of children with ASD.", "dateLastCrawled": "2018-11-05T20:12:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "NOAA
+        - National Oceanic and Atmospheric Administration ...", "url": "http:\/\/www.cachedefault.noaa.gov\/",
+        "urlPingSuffix": "DevEx,5228.1", "displayUrl": "www.cachedefault.noaa.gov",
+        "snippet": "The National Oceanic and Atmospheric Administration (NOAA) is
+        a federal agency focused on the condition of the oceans and the atmosphere.
+        It plays several distinct roles within the Department of Commerce.", "dateLastCrawled":
+        "2018-11-15T15:11:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "Hello, Please you", "url": "https:\/\/www.uspto.gov\/sites\/default\/files\/documents\/casestudies_e_turbopatent_12feb2016.pdf",
+        "urlPingSuffix": "DevEx,5240.1", "displayUrl": "https:\/\/www.uspto.gov\/sites\/default\/files\/documents\/casestudies_e...",
+        "snippet": "Hello, Please find our Topic Submission for Case Studies attached.
+        Please let us know if you have any questions. Best, Britt Griffith ‐‐ Britt
+        Griffith", "dateLastCrawled": "2018-10-26T19:15:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
+        "name": "The Hello Girls Finally Get Paid – Pieces of History", "url": "https:\/\/prologue.blogs.archives.gov\/2015\/06\/24\/the-hello-girls-finally-get-paid\/",
+        "urlPingSuffix": "DevEx,5252.1", "displayUrl": "https:\/\/prologue.blogs.archives.gov\/2015\/06\/24\/the-hello-girls...",
+        "snippet": "The Hello Girls Finally Get Paid June 24, 2015 by hilaryparkinson
+        , posted in Uncategorized Today’s post comes from Ashley Mattingly, who is
+        an archivist at the National Archives at St. Louis, where she manages the
+        collection of archival civilian personnel records.", "dateLastCrawled": "2018-11-14T23:22:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "hello",
+        "url": "https:\/\/fpd.gsfc.nasa.gov\/critical_path\/critical_path_16winter.pdf",
+        "urlPingSuffix": "DevEx,5264.1", "displayUrl": "https:\/\/fpd.gsfc.nasa.gov\/critical_path\/critical_path_16winter.pdf",
+        "snippet": "last time. On the operations side, our teams continue to keep
+        our important investments flying (literally dozens of missions). Every week
+        at Chris Scolese’s senior staff meeting we see the fruits of their labors
+        with", "dateLastCrawled": "2018-11-11T16:07:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
+        "name": "DOD Occupational Database (ODB) - dmdc.osd.mil", "url": "https:\/\/www.dmdc.osd.mil\/owa\/odb\/hello",
+        "urlPingSuffix": "DevEx,5275.1", "displayUrl": "https:\/\/www.dmdc.osd.mil\/owa\/odb\/hello",
+        "snippet": "Warning Notice and Consent to Monitor. You are accessing a U.S.
+        Government(USG) information system(IS) that is provided for USG-authorized
+        use only.", "dateLastCrawled": "2018-11-16T04:33:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
+        "name": "Pennsylvania Liquor Control Board - Home", "url": "http:\/\/www.lcb.pa.gov\/",
+        "urlPingSuffix": "DevEx,5288.1", "about": [{"name": "Pennsylvania Liquor Control
+        Board"}], "displayUrl": "www.lcb.pa.gov", "snippet": "COMMONWEALTH OF PENNSYLVANIA.
+        Keystone State. Proudly founded by William Penn in 1681 as a place of tolerance
+        and freedom.", "dateLastCrawled": "2018-11-15T15:35:00.0000000Z"}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 19 Nov 2018 22:40:37 GMT
 recorded_with: VCR 4.0.0

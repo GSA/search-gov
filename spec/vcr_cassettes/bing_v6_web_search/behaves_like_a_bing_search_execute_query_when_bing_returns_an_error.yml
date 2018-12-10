@@ -1,0 +1,73 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - b1rd1sth3p4ssw0rd
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '243'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Fri, 31 Aug 2018 21:45:12 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=18543E3CE8B56C9110603260E9626D6C; path=/; expires=Wed, 25-Sep-2019 21:46:12
+        GMT; domain=bingapis.com
+      - MUIDB=18543E3CE8B56C9110603260E9626D6C; path=/; httponly; expires=Wed, 25-Sep-2019
+        21:46:12 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Mon, 31-Aug-2020 21:46:12 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=836FCB90E2D4466587BA71F64FF4936D&dmnchg=1; domain=.bingapis.com;
+        expires=Mon, 31-Aug-2020 21:46:12 GMT; path=/
+      - SRCHUSR=DOB=20180831; domain=.bingapis.com; expires=Mon, 31-Aug-2020 21:46:12
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=1654E25FAD2F692B0396EE03ACF86818; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Wed, 25-Sep-2019 21:46:12 GMT; domain=bingapis.com
+      - _SS=SID=1654E25FAD2F692B0396EE03ACF86818; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - 51E0B4D8196A4F228220064870D13DE8
+      X-Msedge-Clientid:
+      - 18543E3CE8B56C9110603260E9626D6C
+      X-Msapi-Userstate:
+      - c2c2
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: 51E0B4D8196A4F228220064870D13DE8 Ref B: CO1EDGE0315 Ref C: 2018-08-31T21:46:12Z'
+      Date:
+      - Fri, 31 Aug 2018 21:46:12 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=5FE48C8E719248F2A57103F3D6F83903&CID=18543E3CE8B56C9110603260E9626D6C&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=5FE48C8E719248F2A57103F3D6F83903&CID=18543E3CE8B56C9110603260E9626D6C&Type=Event.CPT&DATA=0"},
+        "rankingResponse": {}}'
+    http_version: 
+  recorded_at: Fri, 31 Aug 2018 21:46:12 GMT
+recorded_with: VCR 4.0.0

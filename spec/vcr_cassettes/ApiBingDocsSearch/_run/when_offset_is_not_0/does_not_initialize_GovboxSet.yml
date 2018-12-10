@@ -207,4 +207,160 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
   recorded_at: Mon, 02 Jul 2018 21:49:08 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=888&q=healthy%20snack%20(site:usa.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - my_api_key
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '2519'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Sun, 26 Aug 2018 23:59:48 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=1592E431EF9367FB1246E869EE9C660B; path=/; expires=Sat, 21-Sep-2019 00:00:48
+        GMT; domain=bingapis.com
+      - MUIDB=1592E431EF9367FB1246E869EE9C660B; path=/; httponly; expires=Sat, 21-Sep-2019
+        00:00:48 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 27-Aug-2020 00:00:48 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=DF1E24040CD140B18DAFF6C78BBFF489&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 27-Aug-2020 00:00:48 GMT; path=/
+      - SRCHUSR=DOB=20180827; domain=.bingapis.com; expires=Thu, 27-Aug-2020 00:00:48
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=1502B4D0CB75653B1E63B888CA7A6467; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 21-Sep-2019 00:00:48 GMT; domain=bingapis.com
+      - _SS=SID=1502B4D0CB75653B1E63B888CA7A6467; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - C49F9632CA54483E86EB3265A65BC1F3
+      X-Msedge-Clientid:
+      - 1592E431EF9367FB1246E869EE9C660B
+      X-Msapi-Userstate:
+      - 9f8f
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: C49F9632CA54483E86EB3265A65BC1F3 Ref B: BAYEDGE0316 Ref C: 2018-08-27T00:00:48Z'
+      Date:
+      - Mon, 27 Aug 2018 00:00:48 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=8EB87BDDFB244A7D871522CDBEFEAC1B&CID=1592E431EF9367FB1246E869EE9C660B&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=8EB87BDDFB244A7D871522CDBEFEAC1B&CID=1592E431EF9367FB1246E869EE9C660B&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=healthy+snack+(site%3ausa.gov)",
+        "webSearchUrlPingSuffix": "DevEx,5250.1", "totalEstimatedMatches": 55, "value":
+        [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "Natural
+        Resources Conservation Service | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/natural-resources-conservation-service",
+        "urlPingSuffix": "DevEx,5050.1", "about": [{"name": "Natural Resources Conservation
+        Service"}], "displayUrl": "https:\/\/www.usa.gov\/...\/natural-resources-conservation-service",
+        "snippet": "Natural Resources Conservation Service. The Natural Resources
+        Conservation Service works with landowners for conservation planning and
+        assistance to foster healthy ecosystems.", "dateLastCrawled": "2018-08-20T04:49:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Links
+        | Go.USA.gov", "url": "https:\/\/go.usa.gov\/shorturl\/user\/22?page=8",
+        "urlPingSuffix": "DevEx,5063.1", "displayUrl": "https:\/\/go.usa.gov\/shorturl\/user\/22?page=8",
+        "snippet": "USA.gov: Home page of the U.S. Government''s Official Web Portal
+        for all government transactions, services, and information. It provides direct
+        online access to federal, state, local, and tribal governments.", "dateLastCrawled":
+        "2018-08-19T02:28:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        "name": "USAGov’s Back to School Guide for Teachers and Parents ...", "url":
+        "https:\/\/www.usa.gov\/features\/usagovs-back-to-school-guide-for-teachers-and-parents",
+        "urlPingSuffix": "DevEx,5079.1", "displayUrl": "https:\/\/www.usa.gov\/features\/usagovs-back-to-school-guide-for...",
+        "snippet": "Food Assistance; Social Security ... Pack a healthy and safe
+        lunch. ... Check out USAGov’s Back To School Guide for Teachers and Parents.
+        Connect with USAGov.", "dateLastCrawled": "2018-08-21T00:36:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Features
+        | USAGov", "url": "https:\/\/www.usa.gov\/features\/zika-virus-what-you-need-to-know?_hsenc=p2ANqtz-8Tf8o9Y1rpgzXhhycqB2h9sygxvqrQ95ndF2Yxs5TgE15SBNzR5ZolDBRqZ4MGcgL3a4H-yn_yGWnemJccDOYR4cJSMQ&_hs",
+        "urlPingSuffix": "DevEx,5093.1", "displayUrl": "https:\/\/www.usa.gov\/features\/zika-virus-what-you-need-to-know?...",
+        "snippet": "Learn about federal government benefit programs for low income
+        earners that can help pay for food, ... A Healthy Prescription For a Healthy
+        Home. Feeling ill?", "dateLastCrawled": "2018-06-17T22:00:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "About this Website
+        | USAGov", "url": "https:\/\/www.usa.gov\/history-of-website?source=kids",
+        "urlPingSuffix": "DevEx,5107.1", "about": [{"name": "USA.gov"}], "displayUrl":
+        "https:\/\/www.usa.gov\/history-of-website?source=kids", "snippet": "This
+        site is secure. The https:\/\/ ensures that you are connecting to the official
+        website and that any information you provide is encrypted and transmitted
+        securely.", "dateLastCrawled": "2018-08-14T22:43:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
+        "name": "Links | Go.USA.gov", "url": "https:\/\/go.usa.gov\/shorturl\/user\/32?page=7",
+        "urlPingSuffix": "DevEx,5119.1", "displayUrl": "https:\/\/go.usa.gov\/shorturl\/user\/32?page=7",
+        "snippet": "http:\/\/www.fda.gov\/Food\/LabelingNutrition\/ConsumerInformation\/ucm...
+        ... informed food choices that contribute to a healthy diet. ...", "dateLastCrawled":
+        "2018-07-27T14:43:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "name": "Links | Go.USA.gov", "url": "https:\/\/go.usa.gov\/shorturl\/user\/32?page=17",
+        "urlPingSuffix": "DevEx,5131.1", "displayUrl": "https:\/\/go.usa.gov\/shorturl\/user\/32?page=17",
+        "snippet": "Follow four easy rules to keep food from spoiling and causing
+        people to get sick. 798. 6\/30\/2010: Be the Best Pet Owner You Can Be - Consumer
+        Focus ...", "dateLastCrawled": "2018-06-12T07:16:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "name": "Start the School Year Off Right with USAGov’s 8 Tips for 2018", "url":
+        "https:\/\/www.usa.gov\/features\/start-the-school-year-off-right-with-usagovs-8-tips-for-2018",
+        "urlPingSuffix": "DevEx,5146.1", "displayUrl": "https:\/\/www.usa.gov\/features\/start-the-school-year-off-right-with...",
+        "snippet": "Food Assistance; Social Security Questions; Affordable Rental
+        Housing; ... Help your kids respond to stress in healthy ways. Show the
+        Video Transcript ...", "dateLastCrawled": "2018-08-21T17:29:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "analytics.usa.gov",
+        "url": "https:\/\/analytics.usa.gov\/data\/health-human-services\/all-pages-realtime.csv",
+        "urlPingSuffix": "DevEx,5157.1", "displayUrl": "https:\/\/analytics.usa.gov\/data\/health-human-services\/all-pages...",
+        "snippet": "page,page_title,active_visitors healthcare.gov\/login,Health Insurance
+        Marketplace: Please wait,974 fda.gov\/newsevents\/newsroom\/pressannouncements\/ucm613532.htm,Press
+        Announcements > FDA announces voluntary recall of several medicines containing
+        valsartan following detection of an impurity,648 mymedicare.gov\/index.html,MyMedicare.gov:
+        Portal of ...", "dateLastCrawled": "2018-07-17T16:28:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "analytics.usa.gov",
+        "url": "https:\/\/analytics.usa.gov\/data\/live\/all-pages-realtime.csv",
+        "urlPingSuffix": "DevEx,5168.1", "displayUrl": "https:\/\/analytics.usa.gov\/data\/live\/all-pages-realtime.csv",
+        "snippet": "page,page_title,active_visitors universalenroll.dhs.gov\/,Universal
+        Enrollment Services (UES),912 m.usps.com\/m\/trackconfirmaction,USPS Tracking®,813
+        weather.gov\/,National Weather Service,666 nhc.noaa.gov\/,National Hurricane
+        Center,606 earthquake.usgs.gov\/earthquakes\/map\/,Latest Earthquakes,509
+        usps.com\/,Welcome | USPS,462 egov.uscis.gov ...", "dateLastCrawled": "2018-06-10T13:54:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "analytics.usa.gov",
+        "url": "https:\/\/analytics.usa.gov\/data\/live\/all-pages-realtime.json",
+        "urlPingSuffix": "DevEx,5180.1", "displayUrl": "https:\/\/analytics.usa.gov\/data\/live\/all-pages-realtime.json",
+        "snippet": "{ \"name\": \"all-pages-realtime\", \"sampling\": {}, \"query\":
+        { \"dimensions\": \"rt:pagePath,rt:pageTitle\", \"metrics\": [ \"rt:activeUsers\"
+        ], \"sort\": [ \"-rt:activeUsers\" ], \"max-results\": 10000 }, \"meta\":
+        { \"name\": \"All Pages (Live)\", \"description\": \"Pages, measured by active
+        onsite users, for all sites.\"", "dateLastCrawled": "2018-08-21T05:09:00.0000000Z"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 27 Aug 2018 00:00:48 GMT
 recorded_with: VCR 4.0.0

@@ -79,4 +79,83 @@ http_interactions:
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}]}}}'
     http_version: 
   recorded_at: Mon, 02 Jul 2018 21:49:12 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=10&mkt=en-US&offset=0&q=healthy%20snack%20(site:usa.gov)%20(-site:www.usa.gov%20AND%20-site:kids.usa.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - my_api_key
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '638'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Sun, 26 Aug 2018 23:59:52 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=0B8D3B932B546A1A31EA37CB2A5B6B65; path=/; expires=Sat, 21-Sep-2019 00:00:52
+        GMT; domain=bingapis.com
+      - MUIDB=0B8D3B932B546A1A31EA37CB2A5B6B65; path=/; httponly; expires=Sat, 21-Sep-2019
+        00:00:52 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 27-Aug-2020 00:00:52 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=1BAED7F7A3AB46899002144F3F737D9C&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 27-Aug-2020 00:00:52 GMT; path=/
+      - SRCHUSR=DOB=20180827; domain=.bingapis.com; expires=Thu, 27-Aug-2020 00:00:52
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=2063A3F3B2C861B4045CAFABB3C76034; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 21-Sep-2019 00:00:52 GMT; domain=bingapis.com
+      - _SS=SID=2063A3F3B2C861B4045CAFABB3C76034; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - FC2F8C36167E4D168FC4D5C059A79550
+      X-Msedge-Clientid:
+      - 0B8D3B932B546A1A31EA37CB2A5B6B65
+      X-Msapi-Userstate:
+      - 1f1b
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: FC2F8C36167E4D168FC4D5C059A79550 Ref B: BAYEDGE0514 Ref C: 2018-08-27T00:00:52Z'
+      Date:
+      - Mon, 27 Aug 2018 00:00:52 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=1D8C6142BFCC4B74A546835D9EE26A76&CID=0B8D3B932B546A1A31EA37CB2A5B6B65&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=1D8C6142BFCC4B74A546835D9EE26A76&CID=0B8D3B932B546A1A31EA37CB2A5B6B65&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=healthy+snack+(site%3ausa.gov)+(-site%3awww.usa.gov+AND+-site%3akids.usa.gov)",
+        "webSearchUrlPingSuffix": "DevEx,5073.1", "totalEstimatedMatches": 1, "value":
+        [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "Food
+        Assistance | USAGov", "url": "https:\/\/www.usa.gov\/food-help", "urlPingSuffix":
+        "DevEx,5040.1", "displayUrl": "https:\/\/www.usa.gov\/food-help", "snippet":
+        "This short-term program can help you get healthy food for yourself and
+        your ... You may qualify for other food assistance programs ... Call USA.gov;
+        Chat with ...", "dateLastCrawled": "2018-08-20T03:21:00.0000000Z"}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 27 Aug 2018 00:00:52 GMT
 recorded_with: VCR 4.0.0

@@ -1,0 +1,145 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=10&mkt=en-US&offset=11&q=anything&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Fri, 31 Aug 2018 20:57:09 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - F6184289E6F244909254E517811A94C8
+      Bingapis-Sessionid:
+      - 69E23763A4C94208AB97ABB79F75449A
+      X-Msedge-Clientid:
+      - 0742F93153466CC531ADF56D522A6DFD
+      X-Msapi-Userstate:
+      - bf8d
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=187,MSDatacenter=BN2
+      X-Msedge-Ref:
+      - 'Ref A: F6184289E6F244909254E517811A94C8 Ref B: SN1EDGE1013 Ref C: 2018-08-31T20:58:09Z'
+      Apim-Request-Id:
+      - 4d00e5a7-1930-4459-bdbd-8182426515cd
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Fri, 31 Aug 2018 20:58:09 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "anything"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=anything",
+        "totalEstimatedMatches": 37800000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Anything - definition of anything by The Free Dictionary", "url":
+        "https:\/\/www.thefreedictionary.com\/anything", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.thefreedictionary.com\/anything", "snippet":
+        "an·y·thing (ĕn′ē-thĭng′) pron. Any object, occurrence, or matter whatever.
+        adv. To any degree or extent; at all: They aren''t anything like last year''s
+        team. n ...", "dateLastCrawled": "2018-08-22T23:03:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "anything Meaning in the Cambridge English Dictionary", "url": "https:\/\/dictionary.cambridge.org\/dictionary\/english\/anything",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/dictionary.cambridge.org\/dictionary\/english\/anything",
+        "snippet": "anything definition: 1. used in questions and negatives to mean
+        \"something\": 2. any event, act, object, or situation: . Learn more.", "dateLastCrawled":
+        "2018-07-21T03:46:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2", "name":
+        "Natasha Mosley-Anything (Official Video) - YouTube", "url": "https:\/\/www.youtube.com\/watch?v=k5qbym6Mu08",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.youtube.com\/watch?v=k5qbym6Mu08",
+        "snippet": "Our new desktop experience was built to be your music destination.
+        Listen to official albums & more.", "dateLastCrawled": "2018-08-24T13:58:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Anything: The Prayer That Unlocked My God and My Soul ...", "url":
+        "https:\/\/www.amazon.com\/Anything-Prayer-That-Unlocked-Soul\/dp\/0718037200",
+        "about": [{"name": "Anything: The Prayer That Unlocked My God and My Soul"},
+        {"name": "Anything: The Prayer That Unlocked My God and My Soul"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.amazon.com\/Anything-Prayer-That-Unlocked-Soul\/dp\/...",
+        "snippet": "Anything: The Prayer That Unlocked My God and My Soul [Jennie
+        Allen] on Amazon.com. *FREE* shipping on qualifying offers. What if you told
+        God you would do anything . . . and he took you up on it?", "dateLastCrawled":
+        "2018-08-23T21:47:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4", "name":
+        "anything", "url": "https:\/\/www.anything.com\/#!", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.anything.com\/#!", "snippet": "Anything.com,
+        Ltd. © 2018 Anything.com, Ltd.", "dateLastCrawled": "2018-08-22T16:59:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Anything But | Definition of Anything But by Merriam-Webster", "url":
+        "https:\/\/www.merriam-webster.com\/dictionary\/anything%20but", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.merriam-webster.com\/dictionary\/anything
+        but", "snippet": "Seen and Heard. What made you want to look up anything but?Please
+        tell us where you read or heard it (including the quote, if possible).", "dateLastCrawled":
+        "2018-08-23T12:59:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6", "name":
+        "Anything - Definition for English-Language Learners from ...", "url": "http:\/\/www.learnersdictionary.com\/definition\/anything",
+        "isFamilyFriendly": true, "displayUrl": "www.learnersdictionary.com\/definition\/anything",
+        "snippet": "Definition of anything written for English Language Learners from
+        the Merriam-Webster Learner''s Dictionary with audio pronunciations, usage
+        examples, and count\/noncount noun labels.", "dateLastCrawled": "2018-08-22T07:50:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Anything (The Damned album) - Wikipedia", "url": "https:\/\/en.wikipedia.org\/wiki\/Anything_(The_Damned_album)",
+        "about": [{"name": "Anything"}, {"name": "Anything"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/en.wikipedia.org\/wiki\/Anything_(The_Damned_album)",
+        "snippet": "Anything is the seventh studio album by the Damned, released by
+        MCA Records in 1986. On the album''s release, it charted in the United Kingdom,
+        peaking at No. 40, and was certified as silver by the British Phonographic
+        Industry.", "snippetAttribution": {"license": {"name": "CC-BY-SA", "url":
+        "http:\/\/creativecommons.org\/licenses\/by-sa\/3.0\/"}, "licenseNotice":
+        "Text under CC-BY-SA license"}, "dateLastCrawled": "2018-08-20T11:13:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Anything - Wikipedia", "url": "https:\/\/en.wikipedia.org\/wiki\/Anything",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/en.wikipedia.org\/wiki\/Anything",
+        "snippet": "This disambiguation page lists articles associated with the title
+        Anything. If an internal link led you here, you may wish to change the link
+        to point directly to the intended article.", "dateLastCrawled": "2018-08-19T11:43:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Anything dictionary definition | anything defined", "url": "http:\/\/www.yourdictionary.com\/anything",
+        "isFamilyFriendly": true, "displayUrl": "www.yourdictionary.com\/anything",
+        "snippet": "any object, event, fact, etc.: do you know anything about it?
+        · a thing, no matter of what kind: do anything you want · in any way; at all:
+        is he anything like his father ...", "dateLastCrawled": "2018-06-12T00:39:00.0000000Z",
+        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}}]}}}'
+    http_version: 
+  recorded_at: Fri, 31 Aug 2018 20:58:09 GMT
+recorded_with: VCR 4.0.0

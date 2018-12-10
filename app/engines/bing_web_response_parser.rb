@@ -1,4 +1,4 @@
-class BingV6WebResponseParser < BingV6ResponseParser
+class BingWebResponseParser < BingResponseParser
   def results
     @results ||= bing_response_body.web_pages.value.map { |v| individual_result(v) }
   end
@@ -9,25 +9,24 @@ class BingV6WebResponseParser < BingV6ResponseParser
 
   private
 
-  def individual_result(bing_result)
-    Hashie::Mash.new({
-      title: bing_result.name,
-      unescaped_url: bing_result.url,
-      content: bing_result.snippet,
-    })
-  end
-
   def default_bing_response_parts
-    {
-      query_context: {
-        altered_query: nil,
-      },
-      status_code: 200,
-      _type: nil,
+    super.merge({
       web_pages: {
         total_estimated_matches: 0,
         value: [],
       },
-    }
+    })
+  end
+
+  def individual_result(bing_result)
+    Hashie::Mash.new({
+      content: bing_result.snippet,
+      title: bing_result.name,
+      unescaped_url: bing_result.url,
+    })
+  end
+
+  def spelling_suggestion
+    bing_response_body.query_context.altered_query
   end
 end

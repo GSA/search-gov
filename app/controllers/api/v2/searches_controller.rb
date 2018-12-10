@@ -71,7 +71,7 @@ module Api
 
       def affiliate_docs_search_class
         case @search_options.site.search_engine
-        when 'BingV6'
+        when %r{BingV\d+}
           ApiBingDocsSearch
         when 'Google'
           ApiGoogleDocsSearch

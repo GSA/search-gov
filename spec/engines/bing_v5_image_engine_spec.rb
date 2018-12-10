@@ -1,7 +1,9 @@
 require 'spec_helper'
 
 describe BingV5ImageEngine do
-  it_behaves_like 'a Bing V5 engine'
+  subject { described_class.new(options) }
+
+  it_behaves_like 'a Bing search'
 
   describe '#execute_query' do
     subject do

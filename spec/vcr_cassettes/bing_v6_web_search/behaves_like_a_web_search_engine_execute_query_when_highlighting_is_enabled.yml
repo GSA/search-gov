@@ -2,15 +2,13 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=white%20house&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=white%20house&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
       - USASearch
-      Ocp-Apim-Subscription-Key:
-      - "<BING_V6_APP_ID>"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -27,211 +25,187 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '4261'
+      - '3621'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Fri, 27 Apr 2018 15:13:05 GMT
+      - Sun, 26 Aug 2018 23:57:46 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=26A32DD638396E6433EB260839AE6F8A; path=/; expires=Wed, 22-May-2019 15:14:05
+      - MUID=06F78B361012682017258761111D699F; path=/; expires=Fri, 20-Sep-2019 23:58:47
         GMT; domain=bingapis.com
-      - MUIDB=26A32DD638396E6433EB260839AE6F8A; path=/; httponly; expires=Wed, 22-May-2019
-        15:14:05 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Mon, 27-Apr-2020 15:14:05 GMT;
+      - MUIDB=06F78B361012682017258761111D699F; path=/; httponly; expires=Fri, 20-Sep-2019
+        23:58:47 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 26-Aug-2020 23:58:46 GMT;
         path=/
-      - SRCHUID=V=2&GUID=1CB8609F8AEA434B9BC53E86A10B5B17&dmnchg=1; domain=.bingapis.com;
-        expires=Mon, 27-Apr-2020 15:14:05 GMT; path=/
-      - SRCHUSR=DOB=20180427; domain=.bingapis.com; expires=Mon, 27-Apr-2020 15:14:05
+      - SRCHUID=V=2&GUID=4102C0A9A8654CAC87DD6A247CC44D54&dmnchg=1; domain=.bingapis.com;
+        expires=Wed, 26-Aug-2020 23:58:46 GMT; path=/
+      - SRCHUSR=DOB=20180826; domain=.bingapis.com; expires=Wed, 26-Aug-2020 23:58:46
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=00AF73EAC26368E5072B7834C3F4696E; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=059D76A408146044199D7AF3091B6148; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Wed, 22-May-2019 15:14:05 GMT; domain=bingapis.com
-      - _SS=SID=00AF73EAC26368E5072B7834C3F4696E; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Fri, 20-Sep-2019 23:58:47 GMT; domain=bingapis.com
+      - _SS=SID=059D76A408146044199D7AF3091B6148; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 63CAAE53003A444CA6BEB96EA91D2303
+      - EEE51E9171144CB0835E62287972ACD1
       X-Msedge-Clientid:
-      - 26A32DD638396E6433EB260839AE6F8A
+      - 06F78B361012682017258761111D699F
       X-Msapi-Userstate:
-      - 6faa
+      - 8fde
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 63CAAE53003A444CA6BEB96EA91D2303 Ref B: CO1EDGE0221 Ref C: 2018-04-27T15:14:05Z'
+      - 'Ref A: EEE51E9171144CB0835E62287972ACD1 Ref B: BAYEDGE0118 Ref C: 2018-08-26T23:58:47Z'
       Date:
-      - Fri, 27 Apr 2018 15:14:05 GMT
+      - Sun, 26 Aug 2018 23:58:46 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=F313E06E10504EF2B4BD7823DB2E57B6&CID=26A32DD638396E6433EB260839AE6F8A&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=F313E06E10504EF2B4BD7823DB2E57B6&CID=26A32DD638396E6433EB260839AE6F8A&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=D65BA977ACFC4EFC9D41DF85D044288F&CID=06F78B361012682017258761111D699F&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=D65BA977ACFC4EFC9D41DF85D044288F&CID=06F78B361012682017258761111D699F&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=white+house",
-        "webSearchUrlPingSuffix": "DevEx,5893.1", "totalEstimatedMatches": 277000000,
+        "webSearchUrlPingSuffix": "DevEx,5416.1", "totalEstimatedMatches": 224000000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
         "The White House", "url": "https:\/\/www.whitehouse.gov\/", "urlPingSuffix":
-        "DevEx,5126.1", "about": [{"name": "whitehouse.gov"}, {"name": "United States"},
-        {"name": "White House"}], "displayUrl": "https:\/\/www.whitehouse.gov",
-        "snippet": "History of The White House. Our first president, George Washington,
-        selected the site for the White House in 1791. Every president since John
-        Adams has occupied the White House, and the history of this building extends
-        far beyond the construction of its walls.", "deepLinks": [{"name": "Contact",
-        "url": "https:\/\/www.whitehouse.gov\/contact", "urlPingSuffix": "DevEx,5100.1",
-        "snippet": "Get Involved Contact the White House. Share:"}, {"name": "News",
-        "url": "https:\/\/www.whitehouse.gov\/news\/", "urlPingSuffix": "DevEx,5101.1",
-        "snippet": "Readout of Vice President Mike Pence’s Meeting with German Vice
-        Chancellor and Minister of Finance Olaf Scholz"}, {"name": "Live Events",
-        "url": "https:\/\/www.whitehouse.gov\/live", "urlPingSuffix": "DevEx,5102.1",
-        "snippet": "Tune in to White House events and statements as they happen"},
-        {"name": "We The People Petitions", "url": "https:\/\/petitions.whitehouse.gov\/",
-        "urlPingSuffix": "DevEx,5109.1", "snippet": "Create a Petition. Call on the
-        White House to take action on the issue that matters to you."}, {"name": "Statements
-        & Releases", "url": "https:\/\/www.whitehouse.gov\/briefings-statements\/",
-        "urlPingSuffix": "DevEx,5116.1", "snippet": "Readout of Vice President Mike
-        Pence’s Meeting with German Vice Chancellor and Minister of Finance Olaf Scholz"},
-        {"name": "Tours & Events", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/tours-events\/",
-        "urlPingSuffix": "DevEx,5117.1", "snippet": "Anyone visiting DC can experience
-        the history and art of the White House in person after submitting a tour request
-        through one’s Member of Congress. Public tour requests must be submitted through
-        one’s Member of Congress."}], "dateLastCrawled": "2018-04-22T08:49:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "White
-        House - Wikipedia", "url": "https:\/\/en.wikipedia.org\/wiki\/White_House",
-        "urlPingSuffix": "DevEx,5149.1", "about": [{"name": "White House"}, {"name":
-        "White House"}], "displayUrl": "https:\/\/en.wikipedia.org\/wiki\/White_House",
-        "snippet": "The White House is the official residence and workplace of the
-        President of the United States.It is located at 1600 Pennsylvania Avenue NW
-        in Washington, D.C. and has been the residence of every U.S. President since
-        John Adams in 1800.", "snippetAttribution": {"license": {"name": "CC-BY-SA",
-        "url": "http:\/\/creativecommons.org\/licenses\/by-sa\/3.0\/", "urlPingSuffix":
-        "DevEx,5894.1"}, "licenseNotice": "Text under CC-BY-SA license"}, "dateLastCrawled":
-        "2018-04-22T16:18:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
-        "name": "whitehouse.org - Official Site", "url": "http:\/\/whitehouse.org\/",
-        "urlPingSuffix": "DevEx,5166.1", "about": [{"name": "whitehouse.org"}], "displayUrl":
-        "whitehouse.org", "snippet": "POTUS: The Facebook witch hunt for #TrumpRussia
-        “proof” is FAKE NEWS! Totally VERY REAL Americans like “Texas Chuck” say I’m
-        best the best Prez ever.", "dateLastCrawled": "2018-04-23T01:06:00.0000000Z"},
+        "DevEx,5057.1", "about": [{"name": "whitehouse.gov"}, {"name": "White House"}],
+        "displayUrl": "https:\/\/www.whitehouse.gov", "snippet": "History of The
+        White House. Our first president, George Washington, selected the site for
+        the White House in 1791. Every president since John Adams has occupied the
+        White House, and the history of this building extends far beyond the construction
+        of its walls.", "dateLastCrawled": "2018-08-20T05:21:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "White House
+        - Wikipedia", "url": "https:\/\/en.wikipedia.org\/wiki\/White_House", "urlPingSuffix":
+        "DevEx,5075.1", "about": [{"name": "White House"}, {"name": "White House"}],
+        "displayUrl": "https:\/\/en.wikipedia.org\/wiki\/White_House", "snippet":
+        "The White House is the official residence and workplace of the President
+        of the United States.It is located at 1600 Pennsylvania Avenue NW in Washington,
+        D.C. and has been the residence of every U.S. President since John Adams in
+        1800.", "snippetAttribution": {"license": {"name": "CC-BY-SA", "url": "http:\/\/creativecommons.org\/licenses\/by-sa\/3.0\/",
+        "urlPingSuffix": "DevEx,5417.1"}, "licenseNotice": "Text under CC-BY-SA license"},
+        "dateLastCrawled": "2018-08-14T08:54:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        "name": "TRUMP® WHITE HOUSE | WHITEHOUSE.ORG", "url": "https:\/\/whitehouse.org\/",
+        "urlPingSuffix": "DevEx,5088.1", "about": [{"name": "whitehouse.org"}], "displayUrl":
+        "https:\/\/whitehouse.org", "snippet": "100% OFFICIOUS website of the White
+        House & President Donald J. Trump", "dateLastCrawled": "2018-08-18T22:08:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "The White
-        House - YouTube", "url": "https:\/\/www.youtube.com\/user\/whitehouse", "urlPingSuffix":
-        "DevEx,5184.1", "about": [{"name": "White House"}, {"name": "Presidency of
-        Barack Obama"}, {"name": "West Wing Week"}], "displayUrl": "https:\/\/www.youtube.com\/user\/whitehouse",
-        "snippet": "Official White House Youtube channel. President Trump and The
-        First Lady have a Social Dinner with the Prime Minister of Japan - Duration:
-        3 minutes, 38 seconds.", "dateLastCrawled": "2018-04-22T16:47:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "The White
         House (@WhiteHouse) | Twitter", "url": "https:\/\/twitter.com\/WhiteHouse",
-        "urlPingSuffix": "DevEx,5211.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?u=https%3a%2f%2fpbs.twimg.com%2fprofile_images%2f822251886988267520%2f28GpoRsy_bigger.jpg&w=40&h=40&c=1&rs=1&pid=5.1",
-        "about": [{"name": "White House"}, {"name": "AKA White House"}, {"name": "White
-        House"}], "displayUrl": "https:\/\/twitter.com\/WhiteHouse", "snippet":
-        "The latest Tweets from The White House (@WhiteHouse). Welcome to @WhiteHouse!
+        "urlPingSuffix": "DevEx,5109.1", "about": [{"name": "White House"}, {"name":
+        "White House"}], "displayUrl": "https:\/\/twitter.com\/WhiteHouse", "snippet":
+        "The latest Tweets from The White House (@WhiteHouse). Welcome to @WhiteHouse!
         Follow for the latest from President @realDonaldTrump and his Administration.
-        Tweets may be archived: https:\/\/t.co\/IURuMIrzxb.", "dateLastCrawled": "2018-03-27T17:51:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "The White
+        Tweets may be archived: https:\/\/t.co\/IURuMIrzxb.", "dateLastCrawled": "2018-08-21T09:47:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "The White
         House - Home | Facebook", "url": "https:\/\/www.facebook.com\/WhiteHouse",
-        "urlPingSuffix": "DevEx,5231.1", "about": [{"name": "White House"}, {"name":
+        "urlPingSuffix": "DevEx,5126.1", "about": [{"name": "White House"}, {"name":
         "White House"}, {"name": "White House"}], "displayUrl": "https:\/\/www.facebook.com\/WhiteHouse",
-        "snippet": "The White House. 8.3M likes. Welcome to the official White
+        "snippet": "The White House. 8.4M likes. Welcome to the official White
         House Facebook page for the Trump Administration. Comments posted on and
-        messages received...", "dateLastCrawled": "2018-04-22T01:46:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "White
+        messages received...", "dateLastCrawled": "2018-08-19T12:10:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "White
+        House: Latest News, Top Stories & Analysis - POLITICO", "url": "https:\/\/www.politico.com\/white-house",
+        "urlPingSuffix": "DevEx,5139.1", "about": [{"name": "Politico"}], "displayUrl":
+        "https:\/\/www.politico.com\/white-house", "snippet": "Latest news, headlines,
+        analysis, photos and videos on White House", "dateLastCrawled": "2018-08-20T12:03:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "The White
+        House - YouTube", "url": "https:\/\/www.youtube.com\/channel\/UCYxRlFDqcWM4y7FfpiAN3KQ",
+        "urlPingSuffix": "DevEx,5152.1", "about": [{"name": "White House"}], "displayUrl":
+        "https:\/\/www.youtube.com\/channel\/UCYxRlFDqcWM4y7FfpiAN3KQ", "snippet":
+        "Official White House Youtube channel. Vice President Pence Delivers Remarks
+        at an Honorable Carry Ceremony for the Remains of American Service Members
+        Who Fell in the Korean War", "dateLastCrawled": "2018-08-16T17:25:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Homepage
+        - White House Historical Association", "url": "https:\/\/whitehousehistory.org\/",
+        "urlPingSuffix": "DevEx,5166.1", "about": [{"name": "Association historique
+        de la Maison-Blanche"}, {"name": "White House"}, {"name": "Decatur House"},
+        {"name": "White House Historical Association"}, {"name": "White House Learning
+        Center"}, {"name": "White House"}], "displayUrl": "https:\/\/whitehousehistory.org",
+        "snippet": "The White House Historical Association is a non-profit organization
+        enhancing understanding of the White House and is supported by official
+        White House Christma...", "dateLastCrawled": "2018-08-16T21:31:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Articles
+        - The White House", "url": "https:\/\/www.whitehouse.gov\/articles\/", "urlPingSuffix":
+        "DevEx,5180.1", "about": [{"name": "White House"}], "displayUrl": "https:\/\/www.whitehouse.gov\/articles",
+        "snippet": "Chris Smolenak is tapping into the “do-it-yourself” trend – and
+        creating a small business herself. She’s opened a storefront in Holland, Pa.,
+        where customers stain and stencil their own handcrafted wooden signs and other
+        decorative items.", "dateLastCrawled": "2018-08-20T22:33:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Petition the
+        White House on the Issues that Matter to You ...", "url": "https:\/\/petitions.whitehouse.gov\/",
+        "urlPingSuffix": "DevEx,5193.1", "about": [{"name": "We the People"}, {"name":
+        "White House"}], "displayUrl": "https:\/\/petitions.whitehouse.gov", "snippet":
+        "Create a Petition. Call on the White House to take action on the issue
+        that matters to you.", "dateLastCrawled": "2018-08-18T12:32:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Women''s
+        Clothing, Dresses, Tops, Pants, Petite & Plus Size ...", "url": "https:\/\/www.whitehouseblackmarket.com\/store\/",
+        "urlPingSuffix": "DevEx,5207.1", "about": [{"name": "White House Black Market"}],
+        "displayUrl": "https:\/\/www.whitehouseblackmarket.com", "snippet": "White
+        House Black Market offers polished black and white women''s clothing with
+        pops of color and patterns. Shop tailored dresses, tops, pants and accessories.",
+        "dateLastCrawled": "2018-08-20T09:46:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
+        "name": "White House | History, Location, & Facts | Britannica.com", "url":
+        "https:\/\/www.britannica.com\/topic\/White-House-Washington-DC", "urlPingSuffix":
+        "DevEx,5221.1", "about": [{"name": "White House"}], "displayUrl": "https:\/\/www.britannica.com\/topic\/White-House-Washington-DC",
+        "snippet": "White House: White House, the office and residence of the
+        president of the United States at 1600 Pennsylvania Avenue N.W. in Washington,
+        D.C. Since the administration of George Washington (1789–97), who occupied
+        presidential residences in New York and Philadelphia, every American president
+        has resided at the White House.", "dateLastCrawled": "2018-08-18T22:14:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "White
         House - Facts & Summary - HISTORY.com", "url": "https:\/\/www.history.com\/topics\/white-house",
-        "urlPingSuffix": "DevEx,5246.1", "about": [{"name": "White House"}], "displayUrl":
+        "urlPingSuffix": "DevEx,5233.1", "about": [{"name": "White House"}], "displayUrl":
         "https:\/\/www.history.com\/topics\/white-house", "snippet": "Find out more
         about the history of White House, including videos, interesting articles,
         pictures, historical features and more. Get all the facts on HISTORY.com",
-        "dateLastCrawled": "2018-04-22T18:55:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "dateLastCrawled": "2018-08-20T18:09:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
         "name": "President''s Park (White House) (U.S. National Park Service)",
-        "url": "https:\/\/www.nps.gov\/whho\/index.htm", "urlPingSuffix": "DevEx,5263.1",
-        "displayUrl": "https:\/\/www.nps.gov\/whho", "snippet": "Every president except
-        George Washington has called the White House and its surrounding grounds
-        his place of work, rest, and solitude. Recognizable around the world, the
-        White House stands as a symbol of democracy. The White House and its park
-        grounds serve not only as the seat of the executive ...", "dateLastCrawled":
-        "2018-04-22T23:17:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
-        "name": "The White House Historical Association - Official Site", "url":
-        "https:\/\/whitehousehistory.org\/", "urlPingSuffix": "DevEx,5280.1", "about":
-        [{"name": "White House"}, {"name": "Decatur House"}, {"name": "White House
-        Historical Association"}, {"name": "White House Learning Center"}, {"name":
-        "White House Historical Association"}, {"name": "White House"}], "displayUrl":
-        "https:\/\/whitehousehistory.org", "snippet": "The White House Historical
-        Association is a non-profit organization enhancing understanding of the White
-        House and is supported by official White House Christma...", "dateLastCrawled":
-        "2018-04-21T19:54:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
-        "name": "White House officials alarmed at Betsy DeVos'' ''60 Minutes ...",
-        "url": "https:\/\/www.cnn.com\/2018\/03\/12\/politics\/white-house-officials-alarmed-at-betsy-devos\/index.html",
-        "urlPingSuffix": "DevEx,5296.1", "displayUrl": "https:\/\/www.cnn.com\/2018\/03\/12\/politics\/white-house-officials...",
-        "snippet": "White House officials were alarmed by Education Secretary Betsy
-        DeVos'' struggle to answer basic questions about the nation''s schools and
-        failure to defend the administration''s newly proposed school safety measures
-        during a tour of television interviews Sunday and Monday, according to two
-        sources familiar with their reaction.", "dateLastCrawled": "2018-04-21T10:33:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "The White
-        House | whitehouse.gov", "url": "https:\/\/obamawhitehouse.archives.gov\/",
-        "urlPingSuffix": "DevEx,5313.1", "about": [{"name": "Barack Obama"}, {"name":
-        "whitehouse.gov"}], "displayUrl": "https:\/\/obamawhitehouse.archives.gov",
-        "snippet": "See the President''s daily schedule, explore behind-the-scenes
-        photos from inside the White House, and find out all the ways you can engage
-        with the most interactive administration in our country''s history.", "dateLastCrawled":
-        "2018-04-20T21:46:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
-        "name": "White House | HuffPost", "url": "https:\/\/www.huffingtonpost.com\/topic\/white-house",
-        "urlPingSuffix": "DevEx,5328.1", "displayUrl": "https:\/\/www.huffingtonpost.com\/topic\/white-house",
-        "snippet": "The White House counselor blasted the former FBI director for
-        not discussing his concerns \"under oath.\" But he did last year.", "dateLastCrawled":
-        "2018-04-18T04:55:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
-        "name": "Home - WHBM", "url": "https:\/\/www.whitehouseblackmarket.com\/store\/",
-        "urlPingSuffix": "DevEx,5344.1", "about": [{"name": "White House Black Market"}],
-        "displayUrl": "https:\/\/www.whitehouseblackmarket.com", "snippet": "White
-        House Black Market offers polished black and white women''s clothing with
-        pops of color and patterns. Shop tailored dresses, tops, pants and accessories.",
-        "dateLastCrawled": "2018-04-22T15:49:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
-        "name": "White House Videos at ABC News Video Archive at abcnews.com", "url":
-        "http:\/\/abcnews.go.com\/topics\/news\/us\/white-house.htm", "urlPingSuffix":
-        "DevEx,5362.1", "displayUrl": "abcnews.go.com\/topics\/news\/us\/white-house.htm",
-        "snippet": "Browse, search and watch White House videos and more at abcnews.com",
-        "dateLastCrawled": "2018-04-24T02:15:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
-        "name": "White House | presidential office and residence ...", "url": "https:\/\/www.britannica.com\/topic\/White-House-Washington-DC",
-        "urlPingSuffix": "DevEx,5378.1", "about": [{"name": "White House"}], "displayUrl":
-        "https:\/\/www.britannica.com\/topic\/White-House-Washington-DC", "snippet":
-        "White House: White House, the official office and residence of the president
-        of the United States at 1600 Pennsylvania Avenue N.W. in Washington, D.C.
-        The White House and its landscaped grounds occupy 18 acres (7.2 hectares).",
-        "dateLastCrawled": "2018-04-23T00:54:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
-        "name": "White House frustrated with EPA''s Pruitt - CNNPolitics", "url":
-        "https:\/\/www.cnn.com\/2018\/03\/30\/politics\/scott-pruitt-epa-white-house\/index.html",
-        "urlPingSuffix": "DevEx,5395.1", "displayUrl": "https:\/\/www.cnn.com\/2018\/03\/30\/politics\/scott-pruitt-epa-white-house",
-        "snippet": "Washington (CNN)Senior White House aides are exasperated with
-        Environmental Protection Agency Administrator Scott Pruitt, the already embattled
-        Cabinet secretary who now finds himself at the center of an expanding controversy
-        over his decision to rent a room in Washington, DC, from the family of an
-        energy lobbyist.", "dateLastCrawled": "2018-04-22T16:25:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "The White House
-        Tour - President''s Park (White House) (U.S ...", "url": "https:\/\/www.nps.gov\/whho\/planyourvisit\/the-white-house-tour.htm",
-        "urlPingSuffix": "DevEx,5412.1", "about": [{"name": "White House"}], "displayUrl":
+        "url": "https:\/\/www.nps.gov\/whho\/index.htm", "urlPingSuffix": "DevEx,5247.1",
+        "about": [{"name": "President''s Park (White House)"}], "displayUrl": "https:\/\/www.nps.gov\/whho",
+        "snippet": "Every president except George Washington has called the White
+        House and its surrounding grounds his place of work, rest, and solitude.
+        Recognizable around the world, the White House stands as a symbol of democracy.
+        The White House and its park grounds serve not only as the seat of the executive
+        ...", "dateLastCrawled": "2018-08-06T23:55:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
+        "name": "The White House Tour - President''s Park (White House) (U.S ...",
+        "url": "https:\/\/www.nps.gov\/whho\/planyourvisit\/the-white-house-tour.htm",
+        "urlPingSuffix": "DevEx,5261.1", "about": [{"name": "White House"}], "displayUrl":
         "https:\/\/www.nps.gov\/whho\/planyourvisit\/the-white-house-tour.htm",
         "snippet": "A visit to the White House can be one of the most memorable
         experiences during any trip to the nation''s capital. If you are interested
         in attending a public tour of the White House be sure to secure your reservation
         well in advance of your arrival to Washington DC. You will find more detailed
-        ...", "dateLastCrawled": "2018-04-21T23:09:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
+        ...", "dateLastCrawled": "2018-06-12T18:05:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
         "name": "How Can I Tour the White House in DC? | Washington.org", "url":
-        "https:\/\/washington.org\/DC-faqs-for-visitors\/how-can-i-tour-white-house",
-        "urlPingSuffix": "DevEx,5445.1", "about": [{"name": "White House"}], "displayUrl":
-        "https:\/\/washington.org\/DC-faqs-for-visitors\/how-can-i-tour-white-house",
-        "snippet": "Find out everything you need to know about planning a visit to
-        the country’s most famous house. Here’s how to request and book a tour,
-        what to expect when you visit, how to get to the White House, where to store
-        your belongings before you go and much more.", "dateLastCrawled": "2018-04-21T01:14:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Headlines
-        from the White House", "url": "https:\/\/www.cnbc.com\/white-house\/", "urlPingSuffix":
-        "DevEx,5462.1", "about": [{"name": "Michael Cohen"}], "displayUrl": "https:\/\/www.cnbc.com\/white-house",
-        "snippet": "Latest news from the White House, including video, commentary,
-        and in-depth analysis coverage.", "dateLastCrawled": "2018-04-22T09:19:00.0000000Z"}]},
-        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
-        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "https:\/\/washington.org\/dc-faqs-for-visitors\/how-can-i-tour-white-house",
+        "urlPingSuffix": "DevEx,5275.1", "about": [{"name": "White House"}], "displayUrl":
+        "https:\/\/washington.org\/dc-faqs-for-visitors\/how-can-i-tour-white-house",
+        "snippet": "Here’s how to request and book a White House tour, what to expect
+        when you visit, how to get to the White House, where to store your belongings
+        before you go and much more.", "dateLastCrawled": "2018-08-18T09:47:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "White
+        House | TheHill", "url": "http:\/\/thehill.com\/opinion\/white-house", "urlPingSuffix":
+        "DevEx,5288.1", "about": [{"name": "The Hill"}], "displayUrl": "thehill.com\/opinion\/white-house",
+        "snippet": "The Hill is a top US political website, read by the White House
+        and more lawmakers than any other site -- vital for policy, politics and election
+        campaigns.", "dateLastCrawled": "2018-07-08T06:34:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
+        "name": "White House | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/white-house",
+        "urlPingSuffix": "DevEx,5303.1", "about": [{"name": "White House"}], "displayUrl":
+        "https:\/\/www.usa.gov\/federal-agencies\/white-house", "snippet": "Directory
+        listing for White House. The .gov means it''s official. Federal government
+        websites often end in .gov or .mil.", "dateLastCrawled": "2018-07-30T00:42:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Shop
+        Women''s New Arrivals - White House Black Market", "url": "https:\/\/www.whitehouseblackmarket.com\/store\/category\/new-arrivals\/cat210006",
+        "urlPingSuffix": "DevEx,5317.1", "about": [{"name": "White House Black Market"}],
+        "displayUrl": "https:\/\/www.whitehouseblackmarket.com\/store\/category\/new-arrivals\/...",
+        "snippet": "Shop White House | Black Market''s new arrivals for the latest
+        in designer women''s clothing, shoes & accessories. Free shipping for WHBM
+        Rewards members!", "dateLastCrawled": "2018-08-20T02:31:00.0000000Z"}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
         "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
-        {"answerType": "News"}, {"answerType": "WebPages", "resultIndex": 2, "value":
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}}, {"answerType":
-        "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
         {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
         {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
         {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
@@ -248,5 +222,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}}]}}}'
     http_version: 
-  recorded_at: Fri, 27 Apr 2018 15:14:07 GMT
+  recorded_at: Sun, 26 Aug 2018 23:58:47 GMT
 recorded_with: VCR 4.0.0

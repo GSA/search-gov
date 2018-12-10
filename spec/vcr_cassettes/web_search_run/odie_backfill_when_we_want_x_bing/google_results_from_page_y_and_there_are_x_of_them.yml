@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=english%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations&traffictype=test
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=english%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
     body:
       encoding: US-ASCII
       string: ''
@@ -10,7 +10,7 @@ http_interactions:
       User-Agent:
       - USASearch
       Ocp-Apim-Subscription-Key:
-      - "<BING_V6_APP_ID>"
+      - my_api_key
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -27,170 +27,170 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3677'
+      - '3721'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Thu, 26 Apr 2018 23:55:32 GMT
+      - Mon, 27 Aug 2018 00:03:38 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=2D98093F6637676D216502E267A06665; path=/; expires=Tue, 21-May-2019 23:56:33
+      - MUID=1C15385917AE61D52353340116A16062; path=/; expires=Sat, 21-Sep-2019 00:04:38
         GMT; domain=bingapis.com
-      - MUIDB=2D98093F6637676D216502E267A06665; path=/; httponly; expires=Tue, 21-May-2019
-        23:56:33 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 26-Apr-2020 23:56:32 GMT;
+      - MUIDB=1C15385917AE61D52353340116A16062; path=/; httponly; expires=Sat, 21-Sep-2019
+        00:04:38 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 27-Aug-2020 00:04:38 GMT;
         path=/
-      - SRCHUID=V=2&GUID=0FCF11C9B5944734AACD45B940B49C8E&dmnchg=1; domain=.bingapis.com;
-        expires=Sun, 26-Apr-2020 23:56:32 GMT; path=/
-      - SRCHUSR=DOB=20180426; domain=.bingapis.com; expires=Sun, 26-Apr-2020 23:56:32
+      - SRCHUID=V=2&GUID=4ED2BE4E7A5842978F01201C4812A729&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 27-Aug-2020 00:04:38 GMT; path=/
+      - SRCHUSR=DOB=20180827; domain=.bingapis.com; expires=Thu, 27-Aug-2020 00:04:38
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=22712D9CD4AD65BB1B7B2641D53A647A; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=0EBFB52EEF3364AF1AE5B976EE3C6567; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Tue, 21-May-2019 23:56:33 GMT; domain=bingapis.com
-      - _SS=SID=22712D9CD4AD65BB1B7B2641D53A647A; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 21-Sep-2019 00:04:38 GMT; domain=bingapis.com
+      - _SS=SID=0EBFB52EEF3364AF1AE5B976EE3C6567; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 1DD52D8C87D5400A9DA570E87B9DBB07
+      - 43F7209DB4A348619DC649D24197757F
       X-Msedge-Clientid:
-      - 2D98093F6637676D216502E267A06665
+      - 1C15385917AE61D52353340116A16062
       X-Msapi-Userstate:
-      - 114e
+      - 3fb5
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 1DD52D8C87D5400A9DA570E87B9DBB07 Ref B: CO1EDGE0214 Ref C: 2018-04-26T23:56:33Z'
+      - 'Ref A: 43F7209DB4A348619DC649D24197757F Ref B: BAYEDGE0519 Ref C: 2018-08-27T00:04:38Z'
       Date:
-      - Thu, 26 Apr 2018 23:56:32 GMT
+      - Mon, 27 Aug 2018 00:04:38 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=7AAD8CB20DA84D31BBA5CFF9516ABDF0&CID=2D98093F6637676D216502E267A06665&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=7AAD8CB20DA84D31BBA5CFF9516ABDF0&CID=2D98093F6637676D216502E267A06665&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=A764B383915F49009A544AD6DC3BF77F&CID=1C15385917AE61D52353340116A16062&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=A764B383915F49009A544AD6DC3BF77F&CID=1C15385917AE61D52353340116A16062&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=english+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5532.1", "totalEstimatedMatches": 25300000,
+        "webSearchUrlPingSuffix": "DevEx,5392.1", "totalEstimatedMatches": 25500000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
         "VDOE :: English Standards of Learning Resources", "url": "http:\/\/www.doe.virginia.gov\/testing\/sol\/standards_docs\/english\/index.shtml",
-        "urlPingSuffix": "DevEx,5105.1", "about": [{"name": "Standards of Learning"}],
-        "displayUrl": "www.doe.virginia.gov\/testing\/sol\/standards_docs\/english\/index.shtml",
+        "urlPingSuffix": "DevEx,5058.1", "displayUrl": "www.doe.virginia.gov\/testing\/sol\/standards_docs\/english\/index.shtml",
         "snippet": "Standards of Learning Documents for English . The Standards of
         Learning and Curriculum Framework comprise the English language arts content
         that teachers in Virginia are expected to teach and students are expected
-        to learn.", "deepLinks": [{"name": "Released Sol Tests", "url": "http:\/\/www.doe.virginia.gov\/testing\/sol\/released_tests\/index.shtml",
-        "urlPingSuffix": "DevEx,5091.1"}, {"name": "Mathematics", "url": "http:\/\/www.doe.virginia.gov\/testing\/sol\/standards_docs\/mathematics\/index.shtml",
-        "urlPingSuffix": "DevEx,5092.1"}, {"name": "History & Social Science", "url":
-        "http:\/\/www.doe.virginia.gov\/testing\/sol\/standards_docs\/history_socialscience\/index.shtml",
-        "urlPingSuffix": "DevEx,5093.1"}, {"name": "Physical Education", "url": "http:\/\/www.doe.virginia.gov\/testing\/sol\/standards_docs\/physical_education\/index.shtml",
-        "urlPingSuffix": "DevEx,5094.1"}], "dateLastCrawled": "2018-04-18T12:59:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "American
-        English | For English Language Teachers Around ...", "url": "https:\/\/americanenglish.state.gov\/",
-        "urlPingSuffix": "DevEx,5118.1", "displayUrl": "https:\/\/americanenglish.state.gov",
-        "snippet": "American English is a website for teachers and learners of English
-        as a foreign language abroad.", "dateLastCrawled": "2018-04-26T08:52:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Study
-        Materials for the English Test | USCIS", "url": "https:\/\/www.uscis.gov\/citizenship\/learners\/study-test\/study-materials-english-test",
-        "urlPingSuffix": "DevEx,5147.1", "displayUrl": "https:\/\/www.uscis.gov\/...\/study-test\/study-materials-english-test",
+        to learn.", "dateLastCrawled": "2018-08-20T03:57:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
+        "name": "American English | For English Language Teachers Around ...", "url":
+        "https:\/\/americanenglish.state.gov\/", "urlPingSuffix": "DevEx,5069.1",
+        "displayUrl": "https:\/\/americanenglish.state.gov", "snippet": "American
+        English is a website for teachers and learners of English as a foreign language
+        abroad.", "dateLastCrawled": "2018-08-18T15:22:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        "name": "Study Materials for the English Test | USCIS", "url": "https:\/\/www.uscis.gov\/citizenship\/learners\/study-test\/study-materials-english-test",
+        "urlPingSuffix": "DevEx,5087.1", "displayUrl": "https:\/\/www.uscis.gov\/...\/study-test\/study-materials-english-test",
         "snippet": "The English test has three components: reading, writing, and speaking.
         Your ability to speak English will be determined by a USCIS Officer during
         your eligibility interview on Form N-400, Application for Naturalization.",
-        "dateLastCrawled": "2018-04-16T21:43:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
-        "name": "MedlinePlus - Official Site", "url": "https:\/\/medlineplus.gov\/",
-        "urlPingSuffix": "DevEx,5164.1", "about": [{"name": "MedlinePlus"}], "displayUrl":
-        "https:\/\/medlineplus.gov", "snippet": "Find information on health conditions,
-        wellness issues, and more in easy-to-read language on MedlinePlus, the up-to-date,
-        trusted health information site from the NIH and the National Library of Medicine.",
-        "dateLastCrawled": "2018-04-20T13:04:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
-        "name": "English Camp - San Juan Island National Historical Park (U ...",
-        "url": "https:\/\/www.nps.gov\/sajh\/learn\/historyculture\/english-camp.htm",
-        "urlPingSuffix": "DevEx,5181.1", "displayUrl": "https:\/\/www.nps.gov\/sajh\/learn\/historyculture\/english-camp.htm",
-        "snippet": "English Camp as it appeared in late spring of 1860 with bell and
-        marquee tents on the emerging parade ground and a marine detail working the
-        vegetable garden ...", "dateLastCrawled": "2018-04-19T19:05:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Florida
-        Driver’s Handbook", "url": "http:\/\/www.flhsmv.gov\/handbooks\/EnglishDriverHandbook.pdf",
-        "urlPingSuffix": "DevEx,5194.1", "displayUrl": "www.flhsmv.gov\/handbooks\/EnglishDriverHandbook.pdf",
-        "snippet": "Florida Driver’s Handbook", "dateLastCrawled": "2018-04-18T14:12:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "English
+        "dateLastCrawled": "2018-08-19T09:58:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "MedlinePlus - Health Information from the National Library ...",
+        "url": "https:\/\/medlineplus.gov\/", "urlPingSuffix": "DevEx,5101.1", "about":
+        [{"name": "MedlinePlus"}], "displayUrl": "https:\/\/medlineplus.gov", "snippet":
+        "Find information on health conditions, wellness issues, and more in easy-to-read
+        language on MedlinePlus, the up-to-date, trusted health information site from
+        the NIH and the National Library of Medicine.", "dateLastCrawled": "2018-08-19T19:56:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "English
         Language Arts | Ohio Department of Education", "url": "http:\/\/education.ohio.gov\/Topics\/Learning-in-Ohio\/English-Language-Art",
-        "urlPingSuffix": "DevEx,5209.1", "displayUrl": "education.ohio.gov\/Topics\/Learning-in-Ohio\/English-Language-Art",
+        "urlPingSuffix": "DevEx,5115.1", "displayUrl": "education.ohio.gov\/Topics\/Learning-in-Ohio\/English-Language-Art",
         "snippet": "Webpages in this section feature English language arts information
         supporting each part of Ohio’s educational system: Ohio’s Learning Standards,
         the model curricula, assessments, and additional resources to help teachers
-        in the classroom.", "dateLastCrawled": "2018-04-19T00:23:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "This Employer
-        Participates in E-Verify", "url": "https:\/\/e-verify.uscis.gov\/emp\/media\/resourcesContents\/EverifyPosterEnglish.pdf",
-        "urlPingSuffix": "DevEx,5224.1", "displayUrl": "https:\/\/e-verify.uscis.gov\/...\/EverifyPosterEnglish.pdf",
-        "snippet": "Title: E-Verify Participation Poster English Version Author: USCIS\/DHS\/VER
-        Subject: Participation Poster Keywords: USCIS, DHS, VER, E-VERIFY Created
-        Date", "dateLastCrawled": "2018-04-19T12:14:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
-        "name": "Study for the Test | USCIS", "url": "https:\/\/www.uscis.gov\/citizenship\/learners\/study-test",
-        "urlPingSuffix": "DevEx,5243.1", "about": [{"name": "United States Citizenship
-        and Immigration Services"}], "displayUrl": "https:\/\/www.uscis.gov\/citizenship\/learners\/study-test",
-        "snippet": "Study for the Test. ... The English test has three components:
-        reading, writing, and speaking. The civics test covers important U.S. history
-        and government topics.", "dateLastCrawled": "2018-04-20T06:49:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Don’t
-        let anyone take it away.", "url": "https:\/\/www.uscis.gov\/sites\/default\/files\/USCIS\/Verification\/E-Verify\/E-Verify_Native_Documents\/OSC_Right_to_Work_Poster.pdf",
-        "urlPingSuffix": "DevEx,5257.1", "displayUrl": "https:\/\/www.uscis.gov\/...\/OSC_Right_to_Work_Poster.pdf",
-        "snippet": "IF YOU HAVE THE RIGHT TO WORK … Immigrant opportunity to resolve
-        the problem. Don’t let anyone take it away. There are laws to protect you
-        from", "dateLastCrawled": "2018-04-18T12:40:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
-        "name": "English Language Development Standards", "url": "https:\/\/www.cde.ca.gov\/sp\/el\/er\/documents\/eldstndspublication14.pdf",
-        "urlPingSuffix": "DevEx,5270.1", "displayUrl": "https:\/\/www.cde.ca.gov\/sp\/el\/er\/documents\/eldstndspublication14.pdf",
-        "snippet": "California English Language Development Standards (Electronic
-        Edition) Kindergarten Through Grade 12 Adopted by the California State Board
-        of Education", "dateLastCrawled": "2018-04-18T21:42:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Trees of Ohio:
-        English Oak", "url": "http:\/\/forestry.ohiodnr.gov\/englishoak", "urlPingSuffix":
-        "DevEx,5287.1", "about": [{"name": "Quercus robur"}], "displayUrl": "forestry.ohiodnr.gov\/englishoak",
-        "snippet": "English Oak Quercus robur ; A deciduous tree from the Beech Family
-        (Fagaceae)", "dateLastCrawled": "2018-04-20T00:40:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
-        "name": "Adult BMI Calculator | Healthy Weight | CDC", "url": "https:\/\/www.cdc.gov\/healthyweight\/assessing\/bmi\/adult_bmi\/english_bmi_calculator\/bmi_calculator.html",
-        "urlPingSuffix": "DevEx,5304.1", "about": [{"name": "Body mass index"}, {"name":
-        "Body mass index"}], "displayUrl": "https:\/\/www.cdc.gov\/healthyweight\/assessing\/bmi\/adult_bmi\/english...",
-        "snippet": "This calculator provides BMI and the corresponding BMI weight
-        status category. Use this calculator for adults, 20 years old and older. For
-        children and teens, 2 through 19 years old, use the BMI Calculator for Children
-        and Teens. Note: this calculator uses JavaScript. If you have JavaScript turned
-        ...", "dateLastCrawled": "2018-04-17T11:50:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
-        "name": "English Vocabulary for the Naturalization Test | USCIS", "url": "https:\/\/www.uscis.gov\/citizenship\/see-all-section-items-title\/English%20Vocabulary%20for%20the%20Naturalization%20Test\/55258?destination=node\/41142",
-        "urlPingSuffix": "DevEx,5323.1", "displayUrl": "https:\/\/www.uscis.gov\/citizenship\/see-all-section-items-title...",
-        "snippet": "Official list of vocabulary for the English reading portion of
-        the naturalization test. We have a text-only version that can be used with
-        screen enlargers, screen readers, refreshable Braille displays, and most other
-        accessibility products.", "dateLastCrawled": "2018-04-15T04:23:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "EMPLOYEE
-        RIGHTS - United States Department of Labor", "url": "https:\/\/www.dol.gov\/whd\/regs\/compliance\/posters\/fmlaen.pdf",
-        "urlPingSuffix": "DevEx,5337.1", "displayUrl": "https:\/\/www.dol.gov\/whd\/regs\/compliance\/posters\/fmlaen.pdf",
-        "snippet": "EMPLOYEE RIGHTS UNDER THE FAMILY AND MEDICAL LEAVE ACT Eligible
-        employees who work for a covered employer can take up to 12 weeks of unpaid,
-        job-protected leave in a 12-month period", "dateLastCrawled": "2018-04-20T12:41:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "FAQ -
-        English", "url": "http:\/\/www.sbe.wa.gov\/faq\/english.php", "urlPingSuffix":
-        "DevEx,5352.1", "displayUrl": "www.sbe.wa.gov\/faq\/english.php", "snippet":
-        "English Graduation Requirement Frequently Asked Questions. Updated: January
-        2013. What is the State Board of Education’s role in graduation requirements?",
-        "dateLastCrawled": "2018-04-14T02:05:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
-        "name": "English Standards of Learning", "url": "http:\/\/www.doe.virginia.gov\/testing\/sol\/standards_docs\/english\/2010\/stds_all_english.pdf",
-        "urlPingSuffix": "DevEx,5366.1", "displayUrl": "www.doe.virginia.gov\/testing\/sol\/standards_docs\/english\/2010\/stds...",
-        "snippet": "English Standards of Learning for Virginia Public Schools - January
-        2010 iii English Standards of Learning for Virginia Public Schools Adopted
-        in January 2010 by the", "dateLastCrawled": "2018-04-19T12:01:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "sde.ok.gov",
-        "url": "http:\/\/sde.ok.gov\/sde\/sites\/ok.gov.sde\/files\/documents\/files\/OAS-ELA-Final%20Version_0.pdf",
-        "urlPingSuffix": "DevEx,5378.1", "displayUrl": "sde.ok.gov\/sde\/sites\/ok.gov.sde\/files\/documents\/files\/OAS-ELA-Final...",
-        "snippet": "sde.ok.gov", "dateLastCrawled": "2018-04-17T18:35:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "English
-        Learner Tool Kit (OELA)", "url": "https:\/\/www2.ed.gov\/about\/offices\/list\/oela\/english-learner-toolkit\/index.html",
-        "urlPingSuffix": "DevEx,5391.1", "displayUrl": "https:\/\/www2.ed.gov\/about\/offices\/list\/oela\/english-learner-toolkit",
-        "snippet": "The Office of English Language Acquisition''s English Learner
-        Tool Kit.", "dateLastCrawled": "2018-04-13T02:49:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
-        "name": "California Common Core State Standards", "url": "http:\/\/www.cde.ca.gov\/be\/st\/ss\/documents\/finalelaccssstandards.pdf",
-        "urlPingSuffix": "DevEx,5404.1", "about": [{"name": "Common Core State Standards
+        in the classroom.", "dateLastCrawled": "2018-08-18T11:55:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "California Common
+        Core State Standards", "url": "http:\/\/www.cde.ca.gov\/be\/st\/ss\/documents\/finalelaccssstandards.pdf",
+        "urlPingSuffix": "DevEx,5126.1", "about": [{"name": "Common Core State Standards
         Initiative"}], "displayUrl": "www.cde.ca.gov\/be\/st\/ss\/documents\/finalelaccssstandards.pdf",
         "snippet": "California Common Core . State Standards. English Language Arts
         & Literacy in . History\/Social Studies, Science, and Technical Subjects.
-        Adopted by the", "dateLastCrawled": "2018-04-19T08:52:00.0000000Z"}]}, "rankingResponse":
+        Adopted by the", "dateLastCrawled": "2018-08-04T03:00:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "English Camp
+        - San Juan Island National Historical Park (U ...", "url": "https:\/\/www.nps.gov\/sajh\/learn\/historyculture\/english-camp.htm",
+        "urlPingSuffix": "DevEx,5139.1", "displayUrl": "https:\/\/www.nps.gov\/sajh\/learn\/historyculture\/english-camp.htm",
+        "snippet": "English Camp as it appeared in late spring of 1860 with bell and
+        marquee tents on the emerging parade ground and a marine detail working the
+        vegetable garden ...", "dateLastCrawled": "2018-06-15T07:44:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Standards:
+        English Language Arts - K-12 Standards Section ...", "url": "http:\/\/www.azed.gov\/standards-practices\/k-12standards\/english-language-arts-standards\/",
+        "urlPingSuffix": "DevEx,5152.1", "displayUrl": "www.azed.gov\/...\/k-12standards\/english-language-arts-standards",
+        "snippet": "Per A.R.S. §38-431.02, all notices of the public meetings for
+        the Arizona Department of Education can be accessed by clicking the link below.",
+        "dateLastCrawled": "2018-08-18T16:20:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
+        "name": "English Learners - Tennessee", "url": "https:\/\/www.tn.gov\/education\/student-support\/english-learners.html",
+        "urlPingSuffix": "DevEx,5165.1", "displayUrl": "https:\/\/www.tn.gov\/education\/student-support\/english-learners.html",
+        "snippet": "Tennessee students speak more than 140 languages, and it is the
+        responsibility of the educational system to ensure all of these students are
+        appropriately supported in their English language development and in their
+        progress toward mastering the academic standards for each grade level and
+        content ...", "dateLastCrawled": "2018-08-18T17:23:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
+        "name": "Home Language Questionnaire (HLQ)", "url": "http:\/\/www.nysed.gov\/common\/nysed\/files\/programs\/bilingual-ed\/hlq_english_1.6.16.pdf",
+        "urlPingSuffix": "DevEx,5177.1", "displayUrl": "www.nysed.gov\/common\/nysed\/files\/programs\/bilingual-ed\/hlq_english...",
+        "snippet": "1 ENGLISH Dear Parent or Guardian: In order to provide your child
+        with the best possible education, we need to determine how well he or she
+        understands, speaks, reads and writes", "dateLastCrawled": "2018-08-19T05:59:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Many
+        Vaccine Information Statements are Varicella ...", "url": "https:\/\/www.cdc.gov\/vaccines\/hcp\/vis\/vis-statements\/varicella.pdf",
+        "urlPingSuffix": "DevEx,5188.1", "about": [{"name": "Varicella vaccine"}],
+        "displayUrl": "https:\/\/www.cdc.gov\/vaccines\/hcp\/vis\/vis-statements\/varicella.pdf",
+        "snippet": "Varicella (also called chickenpox) is a very contagious viral
+        disease. It is caused by the varicella zoster virus. Chickenpox is usually
+        mild, but it can be serious ...", "dateLastCrawled": "2018-08-19T17:48:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Trees
+        of Ohio: English Oak", "url": "http:\/\/forestry.ohiodnr.gov\/englishoak",
+        "urlPingSuffix": "DevEx,5203.1", "about": [{"name": "Quercus robur"}], "displayUrl":
+        "forestry.ohiodnr.gov\/englishoak", "snippet": "English Oak Quercus robur
+        ; A deciduous tree from the Beech Family (Fagaceae)", "dateLastCrawled": "2018-08-21T13:09:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "APPLICATION
+        FOR CALFRESH BENEFITS", "url": "http:\/\/www.cdss.ca.gov\/cdssweb\/entres\/forms\/English\/CF285.pdf",
+        "urlPingSuffix": "DevEx,5215.1", "displayUrl": "www.cdss.ca.gov\/cdssweb\/entres\/forms\/English\/CF285.pdf",
+        "snippet": "APPLICATION FOR CALFRESH BENEFITS ... If you prefer to speak,
+        read, or write in a language other than English, the County will get someone
+        to help you", "dateLastCrawled": "2018-08-19T06:24:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        "name": "A GUIDE FOR PARENTS OF ENGLISH LANGUAGE LEARNERS IN NEW ...", "url":
+        "http:\/\/www.nysed.gov\/common\/nysed\/files\/programs\/bilingual-ed\/guideforparentsofellsinnysenglish.pdf",
+        "urlPingSuffix": "DevEx,5226.1", "displayUrl": "www.nysed.gov\/...\/bilingual-ed\/guideforparentsofellsinnysenglish.pdf",
+        "snippet": "New York State Education Department . Office of Bilingual Education
+        and World Languages . A GUIDE FOR PARENTS OF ENGLISH LANGUAGE LEARNERS IN
+        NEW YORK STATE", "dateLastCrawled": "2018-08-19T00:23:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Equal Employment
+        Opportunity isTHE LAW", "url": "https:\/\/www.dol.gov\/ofccp\/regs\/compliance\/posters\/pdf\/eeopost.pdf",
+        "urlPingSuffix": "DevEx,5237.1", "about": [{"name": "Equal Employment Opportunity
+        Commission"}], "displayUrl": "https:\/\/www.dol.gov\/ofccp\/regs\/compliance\/posters\/pdf\/eeopost.pdf",
+        "snippet": "Equal Employment Opportunity isTHE LAW Private Employers, State
+        and Local Governments, Educational Institutions, Employment Agencies and Labor
+        Organizations", "dateLastCrawled": "2018-08-18T11:01:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "TIME OFF TO
+        VOTE", "url": "http:\/\/elections.cdn.sos.ca.gov\/pdfs\/tov-english.pdf",
+        "urlPingSuffix": "DevEx,5248.1", "displayUrl": "elections.cdn.sos.ca.gov\/pdfs\/tov-english.pdf",
+        "snippet": "TIME OFF TO VOTE POLLS ARE OPEN FROM 7:00 A.M. TO 8:00 P.M. EACH
+        ELECTION DAY If you are scheduled to be at work during that time and you do
+        not have", "dateLastCrawled": "2018-08-19T13:55:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
+        "name": "English Language Arts and Reading", "url": "https:\/\/tea.texas.gov\/Academics\/Subject_Areas\/English_Language_Arts_and_Reading\/English_Language_Arts_and_Reading\/",
+        "urlPingSuffix": "DevEx,5261.1", "displayUrl": "https:\/\/tea.texas.gov\/...\/English_Language_Arts_and_Reading",
+        "snippet": "This page contains information on curriculum, assessment, and
+        rules. We welcome any suggestions that will improve this page for individuals
+        working to provide high quality English language arts and reading (ELA\/R)
+        programs for students.", "dateLastCrawled": "2018-08-21T14:10:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Everyday
+        Conversations - American English", "url": "https:\/\/americanenglish.state.gov\/files\/ae\/resource_files\/b_dialogues_everyday_conversations_english_lo_0.pdf",
+        "urlPingSuffix": "DevEx,5272.1", "displayUrl": "https:\/\/americanenglish.state.gov\/files\/ae\/resource_files\/b...",
+        "snippet": "Everyday Conversations - American English", "dateLastCrawled":
+        "2018-08-19T02:48:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
+        "name": "Study for the Test | USCIS", "url": "https:\/\/www.uscis.gov\/citizenship\/learners\/study-test",
+        "urlPingSuffix": "DevEx,5288.1", "about": [{"name": "United States Citizenship
+        and Immigration Services"}], "displayUrl": "https:\/\/www.uscis.gov\/citizenship\/learners\/study-test",
+        "snippet": "Study for the Test. ... The English test has three components:
+        reading, writing, and speaking. The civics test covers important U.S. history
+        and government topics.", "dateLastCrawled": "2018-08-11T20:34:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "P Safety
+        Check", "url": "https:\/\/www.cdc.gov\/HomeandRecreationalSafety\/pubs\/English\/booklet_Eng_desktop-a.pdf",
+        "urlPingSuffix": "DevEx,5300.1", "displayUrl": "https:\/\/www.cdc.gov\/HomeandRecreationalSafety\/pubs\/English\/booklet...",
+        "snippet": "Check for Safety. A Home Fall Prevention Checklist for . Department
+        of Health and Human Services Older Adults. Centers for Disease Control and
+        Prevention", "dateLastCrawled": "2018-08-20T16:21:00.0000000Z"}]}, "rankingResponse":
         {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
         "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
@@ -213,5 +213,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Thu, 26 Apr 2018 23:56:33 GMT
+  recorded_at: Mon, 27 Aug 2018 00:04:38 GMT
 recorded_with: VCR 4.0.0
