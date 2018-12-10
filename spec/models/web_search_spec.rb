@@ -85,7 +85,7 @@ describe WebSearch do
   end
 
   describe "instrumenting search engine calls" do
-    context 'when Bing is the engine' do
+    context 'when BingV6 is the engine' do
       before do
         @valid_options = {query: 'government', affiliate: affiliate}
         bing_search = BingV6WebSearch.new(@valid_options)
@@ -97,6 +97,23 @@ describe WebSearch do
         expect(affiliate.search_engine).to eq('BingV6')
         expect(ActiveSupport::Notifications).to receive(:instrument).
           with("bing_v6_web_search.usasearch", hash_including(query: hash_including(term: 'government')))
+        WebSearch.new(@valid_options).send(:search)
+      end
+    end
+
+    context 'when BingV7 is the engine' do
+      before do
+        affiliate.search_engine = 'BingV7'
+        @valid_options = {query: 'government', affiliate: affiliate}
+        bing_search = BingV7WebSearch.new(@valid_options)
+        allow(BingV7WebSearch).to receive(:new).and_return bing_search
+        allow(bing_search).to receive(:execute_query)
+      end
+
+      it "should instrument the call to the search engine with the proper action.service namespace and query param hash" do
+        expect(affiliate.search_engine).to eq('BingV7')
+        expect(ActiveSupport::Notifications).to receive(:instrument).
+          with("bing_v7_web_search.usasearch", hash_including(query: hash_including(term: 'government')))
         WebSearch.new(@valid_options).send(:search)
       end
     end

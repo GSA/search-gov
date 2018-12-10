@@ -1,0 +1,217 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=english&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Fri, 31 Aug 2018 20:57:12 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - A79794DA6ED5497FAABD32688D76428E
+      Bingapis-Sessionid:
+      - 47182B12BECF4B21B920E79C53BAB54D
+      X-Msedge-Clientid:
+      - 0566A82A8D8E6BD21AE8A4768C816A69
+      X-Msapi-Userstate:
+      - 563f
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=229,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: A79794DA6ED5497FAABD32688D76428E Ref B: BAYEDGE0508 Ref C: 2018-08-31T20:58:12Z'
+      Apim-Request-Id:
+      - b23fa8a9-234d-4c14-982c-f5d62d9e4ed3
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Fri, 31 Aug 2018 20:58:12 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "english"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=english", "totalEstimatedMatches":
+        68400000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "English language - Wikipedia", "url": "https:\/\/en.wikipedia.org\/wiki\/English_language",
+        "about": [{"name": "English"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/en.wikipedia.org\/wiki\/English_language",
+        "snippet": "English is an Indo-European language and belongs to the West Germanic
+        group of the Germanic languages. Old English originated from a Germanic tribal
+        and linguistic continuum along the coast of the North Sea, whose languages
+        are now known as the Anglo-Frisian subgroup within West Germanic.", "snippetAttribution":
+        {"license": {"name": "CC-BY-SA", "url": "http:\/\/creativecommons.org\/licenses\/by-sa\/3.0\/"},
+        "licenseNotice": "Text under CC-BY-SA license"}, "dateLastCrawled": "2018-08-20T11:43:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "English | Define English at Dictionary.com", "url": "https:\/\/www.dictionary.com\/browse\/english",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.dictionary.com\/browse\/english",
+        "snippet": "English definition, of, relating to, or characteristic of England
+        or its inhabitants, institutions, etc. See more.", "dateLastCrawled": "2018-08-21T14:10:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "English Grammar: a complete guide", "url": "https:\/\/www.ef.com\/english-resources\/english-grammar\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ef.com\/english-resources\/english-grammar",
+        "snippet": "This is a complete English grammar guide with the rules of English
+        usage. Each grammatical rule is explained in plain English with several examples,
+        and when needed, counter-examples.", "dateLastCrawled": "2018-08-21T22:21:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Google", "url": "https:\/\/www.google.com\/intl\/en\/", "about":
+        [{"name": "Google"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.google.com\/intl\/en",
+        "snippet": "Search the world''s information, including webpages, images, videos
+        and more. Google has many special features to help you find exactly what you''re
+        looking for.", "dateLastCrawled": "2018-08-24T15:16:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Advanced English lessons", "url": "https:\/\/www.englishpage.com\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.englishpage.com", "snippet":
+        "Englishpage.com offers free English lessons with English grammar and vocabulary
+        exercises online. Hundreds of English lessons to help you learn English today!",
+        "dateLastCrawled": "2018-08-19T20:02:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "English | Oxford Dictionaries", "url": "https:\/\/en.oxforddictionaries.com\/english",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/en.oxforddictionaries.com\/english",
+        "snippet": "English. Oxford Dictionaries definitions. Looking for the meanings
+        of words, phrases, and expressions? We provide hundreds of thousands of definitions,
+        synonyms, antonyms, and pronunciations for English and other languages, derived
+        from our language research and expert analysis.", "dateLastCrawled": "2018-08-23T09:46:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "English Listening Practice - Learn English Listening ...", "url":
+        "https:\/\/www.youtube.com\/watch?v=qYb0LCqqJbU", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.youtube.com\/watch?v=qYb0LCqqJbU", "snippet":
+        "English listening comprehension - English listening practice. Learn english
+        via listening level 1 (full) - lesson 1 - 115. TOPICS: 1. First Snow Fall
+        - 00:01...", "dateLastCrawled": "2018-08-18T20:43:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Pearson English", "url": "https:\/\/www.pearsonelt.com\/", "about":
+        [{"name": "Longman Publishing Group"}, {"name": "Longman Publishing Group"}],
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.pearsonelt.com", "snippet":
+        "If you''re studying with a Pearson course, you can access audio files and
+        extra revision activities online.", "dateLastCrawled": "2018-08-21T17:45:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "English people - Wikipedia", "url": "https:\/\/en.wikipedia.org\/wiki\/English_people",
+        "about": [{"name": "English people"}, {"name": "English people"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/en.wikipedia.org\/wiki\/English_people", "snippet":
+        "The English people are a nation and an ethnic group native to England who
+        speak the English language.The English identity is of early medieval origin,
+        when they were known in Old English as the Angelcynn (\"family of the Angles\").",
+        "snippetAttribution": {"license": {"name": "CC-BY-SA", "url": "http:\/\/creativecommons.org\/licenses\/by-sa\/3.0\/"},
+        "licenseNotice": "Text under CC-BY-SA license"}, "dateLastCrawled": "2018-08-20T07:26:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Google Translate", "url": "https:\/\/translate.google.com\/", "about":
+        [{"name": "Google Translate"}, {"name": "Google Translate"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/translate.google.com", "snippet": "Google''s
+        free service instantly translates words, phrases, and web pages between English
+        and over 100 other languages.", "dateLastCrawled": "2018-08-21T22:15:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "English | Definition of English by Merriam-Webster", "url": "https:\/\/www.merriam-webster.com\/dictionary\/English",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.merriam-webster.com\/dictionary\/English",
+        "snippet": "Seen and Heard. What made you want to look up English?Please tell
+        us where you read or heard it (including the quote, if possible).", "dateLastCrawled":
+        "2018-08-23T21:13:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11", "name":
+        "Cambridge Dictionary | English Dictionary, Translations ...", "url": "https:\/\/dictionary.cambridge.org\/",
+        "about": [{"name": "Cambridge Advanced Learner''s Dictionary"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/dictionary.cambridge.org", "snippet": "The
+        most popular dictionary and thesaurus for learners of English. Meanings and
+        definitions of words with pronunciations and translations.", "dateLastCrawled":
+        "2018-08-23T19:42:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12", "name":
+        "Vocabulary.com - Learn Words - English Dictionary", "url": "https:\/\/www.vocabulary.com\/",
+        "about": [{"name": "Vocabulary.com"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.vocabulary.com", "snippet": "Vocabulary.com helps you learn
+        new words, play games that improve your vocabulary, and explore language.",
+        "dateLastCrawled": "2018-08-22T20:32:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "English as a Second Language (ESL) for Teachers and Students", "url":
+        "https:\/\/www.thoughtco.com\/esl-4133095", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.thoughtco.com\/esl-4133095", "snippet": "Whether you are a
+        teacher looking for ESL teaching materials, a beginner who''s just starting
+        out, or an advanced student who wants to hone and polish reading comprehension,
+        conversation, and writing skills, these resources can take you to the next
+        level.", "dateLastCrawled": "2018-08-24T02:11:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "English Banana — Teacher Resources for English, ESL, ESOL ...", "url":
+        "http:\/\/www.englishbanana.com\/", "isFamilyFriendly": true, "displayUrl":
+        "www.englishbanana.com", "snippet": "Free printable resources for teaching
+        and learning English. Worksheets for students both young and old, and all
+        levels of proficiency.", "dateLastCrawled": "2018-08-21T16:30:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "www.youtube.com", "url": "https:\/\/www.youtube.com\/watch?v=juKd26qkNAw",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.youtube.com\/watch?v=juKd26qkNAw",
+        "snippet": "www.youtube.com", "dateLastCrawled": "2018-08-17T16:25:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Dictionary by Merriam-Webster: America''s most-trusted ...", "url":
+        "https:\/\/www.merriam-webster.com\/", "about": [{"name": "Merriam-Webster"},
+        {"name": "Merriam-Webster"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.merriam-webster.com",
+        "snippet": "The dictionary by Merriam-Webster is America''s most trusted online
+        dictionary for English word definitions, meanings, and pronunciation. #wordsmatter",
+        "dateLastCrawled": "2018-08-25T04:04:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "BBC Bitesize - KS3 English", "url": "https:\/\/www.bbc.com\/bitesize\/subjects\/z3kw2hv",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.bbc.com\/bitesize\/subjects\/z3kw2hv",
+        "snippet": "KS3 English learning resources for adults, children, parents and
+        teachers organised by topic.", "dateLastCrawled": "2018-08-23T13:02:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Learn English Speaking and Improve your Spoken English ...", "url":
+        "https:\/\/www.talkenglish.com\/", "about": [{"name": "TalkEnglish"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.talkenglish.com", "snippet": "Learn English
+        Speaking Online to improve your Spoken English. Speak English fluently with
+        Free Spoken English lessons using over 10,000 free audio files!", "dateLastCrawled":
+        "2018-08-23T07:42:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19", "name":
+        "Cambridge English Dictionary: Meanings & Definitions", "url": "https:\/\/dictionary.cambridge.org\/dictionary\/english\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/dictionary.cambridge.org\/dictionary\/english",
+        "snippet": "The most popular dictionary and thesaurus. Meanings & definitions
+        of words in English with examples, synonyms, pronunciations and translations.",
+        "dateLastCrawled": "2018-08-14T11:38:00.0000000Z", "language": "en", "isNavigational":
+        false}]}, "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages",
+        "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Fri, 31 Aug 2018 20:58:12 GMT
+recorded_with: VCR 4.0.0

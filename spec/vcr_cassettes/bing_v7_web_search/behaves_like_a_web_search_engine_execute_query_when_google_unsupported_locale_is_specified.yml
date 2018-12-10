@@ -1,0 +1,213 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=tradiksyon&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Fri, 31 Aug 2018 20:57:11 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 59EC82C752D64E2B880C2DE97A3F106A
+      Bingapis-Sessionid:
+      - 586A05BA97C7429CBD6B551D86ED0368
+      X-Msedge-Clientid:
+      - 20385486594461681F9158DA584B6091
+      X-Msapi-Userstate:
+      - 35c1
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=187,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: 59EC82C752D64E2B880C2DE97A3F106A Ref B: BAYEDGE0122 Ref C: 2018-08-31T20:58:11Z'
+      Apim-Request-Id:
+      - 5a18a1c1-1d50-47f1-a890-f95be7f13137
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Fri, 31 Aug 2018 20:58:11 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "tradiksyon"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=tradiksyon",
+        "totalEstimatedMatches": 140000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Google Translate", "url": "https:\/\/translate.google.com\/?hl=ht",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/translate.google.com\/?hl=ht",
+        "snippet": "Tradui Fèmen tradiksyon enstantane a. Kreyòl Ayisyen. Angl ...",
+        "dateLastCrawled": "2018-08-21T20:13:00.0000000Z", "language": "ht", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Google Traduction", "url": "https:\/\/translate.google.com\/?hl=fr",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/translate.google.com\/?hl=fr",
+        "snippet": "Ce service gratuit de Google traduit instantanément des mots,
+        des expressions et des pages Web du français vers plus de 100 autres langues.",
+        "dateLastCrawled": "2018-08-21T05:45:00.0000000Z", "language": "fr", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Reemployment Assistance Foreign Language Guidance ...", "url": "http:\/\/sitefinity.floridajobs.org\/reemployment-assistance-foreign-language-guidance",
+        "isFamilyFriendly": true, "displayUrl": "sitefinity.floridajobs.org\/reemployment-assistance-foreign...",
+        "snippet": "Reemployment Assistance Foreign Language Guidance. ... analfabèt
+        òdinatè, baryè lang oswa enfimite rele 1-800-681-8102 pou asistans tradiksyon
+        gratis. ...", "dateLastCrawled": "2018-08-23T00:26:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Translate tradiksyon from French to Arabic - MyMemory", "url": "https:\/\/mymemory.translated.net\/en\/French\/Arabic\/tradiksyon",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/mymemory.translated.net\/en\/French\/Arabic\/tradiksyon",
+        "snippet": "Contextual translation of \"tradiksyon\" from French into Arabic.
+        Examples translated by humans: ll, ola, hob, cccc, sami, vvvv, wachcv, mahlik,
+        azadine, wach cv, محدكمكوط.", "dateLastCrawled": "2018-08-12T11:34:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Calendar Of Events | Office of Communications", "url": "https:\/\/www.palmbeachschools.org\/communications\/calendarofevents\/",
+        "about": [{"name": "School District of Palm Beach County"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.palmbeachschools.org\/communications\/calendarofevents",
+        "snippet": "School District of Palm Beach County Calendars School Year Calendars
+        School Board and Advisory Committee Calendars 2018 -2019 Calendar ... Avètisman
+        sou tradiksyon yo.", "dateLastCrawled": "2018-08-19T16:49:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Elementary | Learning Tools", "url": "https:\/\/www.palmbeachschools.org\/learning_tools\/elementary\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.palmbeachschools.org\/learning_tools\/elementary",
+        "snippet": "Favorite Learning Tools District Portal Login BrainPOP BrainPOP
+        Junior BrainPOP Español BrainPOP Francais Destiny ...", "dateLastCrawled":
+        "2018-08-22T10:29:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6", "name":
+        "Affordable Housing for Rent", "url": "https:\/\/a806-housingconnect.nyc.gov\/nyclottery\/AdvertisementPdf\/481.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/a806-housingconnect.nyc.gov\/nyclottery\/AdvertisementPdf\/...",
+        "snippet": "Pou resevwa yon tradiksyon anons sa a nan lang Kreyòl Ayisyen
+        ak aplikasyon an sou papye, voye anvlòp ki gen adrès pou retounen li nan:
+        ...", "dateLastCrawled": "2018-08-18T18:41:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "UI Online - Florida", "url": "http:\/\/connect.myflorida.com\/",
+        "isFamilyFriendly": true, "displayUrl": "connect.myflorida.com", "snippet":
+        "This is a State of Florida computer system owned and operated by the Florida
+        Department of Economic Opportunity (Department) and is for authorized use
+        only.", "dateLastCrawled": "2018-08-24T06:31:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Free Translation and Professional Translation Services ...", "url":
+        "http:\/\/www.freetranslation.com\/", "about": [{}], "isFamilyFriendly": true,
+        "displayUrl": "www.freetranslation.com", "snippet": "SDL FreeTranslation.com
+        is the world''s number one provider of free and professional translation services
+        for text, websites, and documents.", "dateLastCrawled": "2018-08-22T21:17:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Business To Business (b2b) Marketplace - Manufacturers ...", "url":
+        "https:\/\/www.tradekey.com\/", "about": [{"name": "TradeKey.com"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.tradekey.com", "snippet": "TradeKey.com
+        Business to Business marketplace, B2B Marketplace, Import export marketplace
+        - over 9,208,101 members, offers b2b directory, catalog & trade leads to importer,
+        buyer, exporter, manufacturer, wholesaler, supplier.", "dateLastCrawled":
+        "2018-08-23T17:16:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10", "name":
+        "NY DCJS - Translations", "url": "http:\/\/www.criminaljustice.ny.gov\/pio\/translations.html",
+        "isFamilyFriendly": true, "displayUrl": "www.criminaljustice.ny.gov\/pio\/translations.html",
+        "snippet": "Oral entèpretasyon ak tradiksyon ekri a dwe disponib, gratis,
+        nan tout kliyan ki gen kapasite limite li, pale, ekri oswa konprann angle.",
+        "dateLastCrawled": "2018-08-24T07:57:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Lucky Dube - Prisoner Tradiksyon en Kreyol - YouTube", "url": "https:\/\/www.youtube.com\/watch?v=ARzwpfvza6A",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.youtube.com\/watch?v=ARzwpfvza6A",
+        "snippet": "Lucky Dube - Prisoner Tradiksyon en Kreyol Please leave a comment,
+        like, share our videos and don''t forget to subscribe.", "dateLastCrawled":
+        "2018-08-07T14:21:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12", "name":
+        "Kreyol - Mass.Gov", "url": "http:\/\/www.mass.gov\/lwd\/eolwd\/multilingual-information\/multilingual\/haitian-creole\/",
+        "isFamilyFriendly": true, "displayUrl": "www.mass.gov\/lwd\/eolwd\/multilingual-information\/multilingual\/...",
+        "snippet": "The Official Website of the Executive Office of Labor and Workforce
+        Development ... Nou founi sèvis tradiksyon\/entèpretasyon pou kliyan ak Konpetans
+        Angle Limite ...", "dateLastCrawled": "2018-08-20T08:17:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Bell Films launches big comeback movie: Kontradiksyon ...", "url":
+        "https:\/\/www.lionheartv.net\/2018\/07\/bell-films-launches-big-comeback-movie-kontradiksyon\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.lionheartv.net\/2018\/07\/bell-films-launches-big...",
+        "snippet": "Bell Films launches big comeback movie: Kontradiksyon After over
+        23 years, Bell Films is proud to make its comeback into the realm of film
+        production as it strives to enter the digital age of", "dateLastCrawled":
+        "2018-08-04T19:21:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "Haitian tradiksyon diksyonè - Apps on Google Play", "url": "https:\/\/play.google.com\/store\/apps\/details?id=en.ht.bestdict&hl=en_US",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/play.google.com\/store\/apps\/details?id=en.ht.bestdict&hl=en_US",
+        "snippet": "Pou tradiktè a oswa entèprèt, zouti sa a ap ba ou byen vit bon
+        tradiksyon an ak tou pwononsyasyon la nan toude lang pa sèlman yon sèl tiyo.-",
+        "dateLastCrawled": "2018-08-22T07:10:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "MyMemory - Machine translation meets human translation", "url": "https:\/\/mymemory.translated.net\/",
+        "about": [{"name": "Translation memory"}, {"name": "Translation memory"}],
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/mymemory.translated.net",
+        "snippet": "MyMemory is the world largest collaborative translation archive.",
+        "dateLastCrawled": "2018-08-21T22:38:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Claimants - FloridaJobs.org", "url": "http:\/\/floridajobs.org\/job-seekers-community-services\/reemployment-assistance-center\/claimants",
+        "isFamilyFriendly": true, "displayUrl": "floridajobs.org\/job-seekers-community-services\/reemployment...",
+        "snippet": "CONNECT provides online access for claimants to apply for benefits,
+        view and maintain claimant account information, view claim status and payments,
+        view overpayment balance and make payments.", "dateLastCrawled": "2018-08-23T12:45:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Diversity, Prevention & Intervention \/ Code of Conduct", "url":
+        "https:\/\/www.browardschools.com\/Page\/38107", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.browardschools.com\/Page\/38107", "snippet":
+        "Ayisyen \/ kreyòl Tradiksyon. Tradução em português . Discipline Matrix.
+        WHAT IS THE DISCIPLINE MATRIX?", "dateLastCrawled": "2018-08-21T01:45:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Lucky Dube \"remember me\" traduction FR - YouTube", "url": "https:\/\/www.youtube.com\/watch?v=OVvvjVzR7NM",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.youtube.com\/watch?v=OVvvjVzR7NM",
+        "snippet": "Lucky Dube \"remember me\" traduction FR ... Lucky Dube - Prisoner
+        Tradiksyon en Kreyol - Duration: 4:11. Haitian Freedom Music 23,067 views.
+        4:11.", "dateLastCrawled": "2018-08-17T21:00:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "AEC | Adult Education Center", "url": "http:\/\/www.theadulteducationcenter.com\/",
+        "about": [{"name": "Adult Education Center Of Palm Beach"}, {"name": "Adult
+        Education Center"}], "isFamilyFriendly": true, "displayUrl": "www.theadulteducationcenter.com",
+        "snippet": "Welcome to The Adult Education Center The Adult Education Center
+        - \"Where Every Day Counts\" Open Registration The Adult Education Center
+        ha...", "dateLastCrawled": "2018-08-21T05:00:00.0000000Z", "language": "en",
+        "isNavigational": false}]}, "rankingResponse": {"mainline": {"items": [{"answerType":
+        "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Fri, 31 Aug 2018 20:58:11 GMT
+recorded_with: VCR 4.0.0

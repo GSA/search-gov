@@ -1,0 +1,184 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=%E4%B8%AD%E5%9B%BD&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Fri, 31 Aug 2018 20:57:11 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 6E6BEB9424E94C67802C5BEBE77984D0
+      Bingapis-Sessionid:
+      - 99320C574A5747C1A0FE980F2BD2AD99
+      X-Msedge-Clientid:
+      - '0409204668F06EA41E312C1A699C6FA1'
+      X-Msapi-Userstate:
+      - '9945'
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=217,MSDatacenter=BN2
+      X-Msedge-Ref:
+      - 'Ref A: 6E6BEB9424E94C67802C5BEBE77984D0 Ref B: SN1EDGE0810 Ref C: 2018-08-31T20:58:11Z'
+      Apim-Request-Id:
+      - 82f36e37-5981-4853-8dd2-4c62ff5ced90
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Fri, 31 Aug 2018 20:58:10 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "中国"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=%e4%b8%ad%e5%9b%bd",
+        "totalEstimatedMatches": 33100000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "中国_360百科", "url": "https:\/\/baike.so.com\/doc\/1279856-24188840.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/baike.so.com\/doc\/1279856-24188840.html",
+        "snippet": "中国,中国位于东亚，是以华夏文明为主体、中华文化为基础，以汉族为主要民族的统一多民族国家，通用汉语。中国人一般称呼自己为龙的传人、炎黄子孙或中华民族。",
+        "dateLastCrawled": "2018-08-24T14:46:00.0000000Z", "language": "zh_chs", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "中国网--网上中国", "url": "http:\/\/www.china.com.cn\/", "about": [{"name":
+        "Yonghe Temple"}, {"name": "Yonghe Temple"}], "isFamilyFriendly": true, "displayUrl":
+        "www.china.com.cn", "snippet": "国家重点新闻网站，拥有十个语种独立新闻采编、报道和发布权；第一时间报道国家重大新闻事件；国情信息库服务全球读者了解中国；国务院新闻办公室发布会独家网络直播发布网站；拥有国内外顶级学者专家资源，独家编发各种相关政策解读。",
+        "dateLastCrawled": "2018-08-23T02:15:00.0000000Z", "language": "zh_chs", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "中国银行全球门户网站", "url": "http:\/\/www.boc.cn\/", "about": [{"name": "Bank
+        of China"}], "isFamilyFriendly": true, "displayUrl": "www.boc.cn", "snippet":
+        "中国银行是中国国际化和多元化程度最高的银行，在中国内地及53个国家和地区为客户提供全面的金融服务。主要经营商业银行业务：公司金融、个人金融和金融市场业务，并通过附属机构开展投资银行、保险、直接投资、投资管理、基金管理和飞机租赁业务。",
+        "dateLastCrawled": "2018-08-23T19:00:00.0000000Z", "language": "zh_chs", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "中國 - 维基百科，自由的百科全书", "url": "https:\/\/zh.wikipedia.org\/wiki\/%E4%B8%AD%E5%9C%8B",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/zh.wikipedia.org\/wiki\/中國",
+        "snippet": "中国历史系列條目; 史 前 時 代: 舊石器時代: 中石器時代: 新石器時代: 黄河 文明: 長江 文明: 青銅器時代: 传说時代
+        （三皇五帝、虞朝） 夏 约前21世纪–约前17世纪", "dateLastCrawled": "2018-08-24T04:36:00.0000000Z",
+        "language": "zh_chs", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "戴尔官方网站 | Dell 中国大陆", "url": "https:\/\/www.dell.com\/zh-cn", "about":
+        [{"name": "Dell"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.dell.com\/zh-cn",
+        "snippet": "欢迎访问戴尔官方网站。Dell中国为个人、家庭、企业办公等提供高品质戴尔产品及服务。登录Dell官方网站查询最新Dell产品价格、戴尔优惠活动、戴尔售后服务信息等。",
+        "dateLastCrawled": "2018-08-24T15:08:00.0000000Z", "language": "zh_chs", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "佳能（中国）-首页", "url": "http:\/\/www.canon.com.cn\/", "about": [{"name":
+        "Canon (China) Co., Ltd"}], "isFamilyFriendly": true, "displayUrl": "www.canon.com.cn",
+        "snippet": "佳能公司是以光学为核心的相机与办公设备制造商，始终以创造世界一流产品为目标，积极推动事业向多元化和全球化发展。", "dateLastCrawled":
+        "2018-08-22T03:57:00.0000000Z", "language": "zh_chs", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6", "name":
+        "中国政府网 中央人民政府门户网站 - gov.cn", "url": "http:\/\/www.gov.cn\/", "about": [{"name":
+        "Mianyang"}], "isFamilyFriendly": true, "displayUrl": "www.gov.cn", "snippet":
+        "中国政府网由国务院办公厅主办，中国政府网运行中心负责运行维护,是国务院和国务院各部门，以及各省、自治区、直辖市人民政府在国际互联网上发布政府信息和提供在线服务的综合平台,第一时间权威发布国务院重大决策部署和重要政策文件，国务院领导
+        ...", "dateLastCrawled": "2018-08-24T13:00:00.0000000Z", "language": "zh_chs",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "NBA中国官方网站", "url": "http:\/\/china.nba.com\/", "about": [{"name":
+        "NBA China"}], "isFamilyFriendly": true, "displayUrl": "china.nba.com", "snippet":
+        "湖人助教：隆多是个能上场打球的nba教练; 重返欧洲 布兰登-詹宁斯将前往俄罗斯淘金; 休城市长将设立哈登日 预计赛季开始前公布", "dateLastCrawled":
+        "2018-08-24T12:53:00.0000000Z", "language": "zh_chs", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8", "name":
+        "baidu.com - 百度一下，你就知道", "url": "https:\/\/www.baidu.com\/", "about": [{"name":
+        "Baidu"}, {"name": "Baidu"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.baidu.com",
+        "snippet": "输入法. 手写; 拼音; 关闭; 百度首页 设置 登录. 新闻 hao123 地图 视频 贴吧 学术 登录 设置 更多产品",
+        "dateLastCrawled": "2018-08-20T14:28:00.0000000Z", "language": "zh_chs", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "军事_中国网_权威军事新闻网站", "url": "http:\/\/military.china.com.cn\/", "isFamilyFriendly":
+        true, "displayUrl": "military.china.com.cn", "snippet": "中国网军事频道是中国最权威的军事网站之一，报道中国、国际等全球军事新闻。主要有以下栏目：军方发布、中国军事、国际军事、军情24小时、武器库、论战、军史、军事图库、军事论坛。",
+        "dateLastCrawled": "2018-08-23T01:46:00.0000000Z", "language": "zh_chs", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "中国银行", "url": "https:\/\/ebsnew.boc.cn\/boc15\/login.html", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/ebsnew.boc.cn\/boc15\/login.html", "snippet":
+        "*登录时需已安装 Windows 或 Mac “网上银行登录安全控件”， * 请持有中银E盾的客户，下载并安装 Windows 或 Mac “USBKey管理工具”
+        。 * 网上银行服务使用完毕后，请点击页面右上角的“安全退出”按钮退出服务。", "dateLastCrawled": "2018-08-24T10:35:00.0000000Z",
+        "language": "zh_chs", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "中国农业银行", "url": "http:\/\/www.abchina.com\/", "about": [{"name":
+        "Agricultural Bank of China, New York Branch"}, {"name": "Agricultural Bank
+        of China"}], "isFamilyFriendly": true, "displayUrl": "www.abchina.com", "snippet":
+        "私人银行. 至尊荣耀，为您专享. 立即查看 贵宾服务. 机场贵宾等专享增值服务. 立即查看 助业贷款. 享最高1000万元贷款，为您的事业加油助力！",
+        "dateLastCrawled": "2018-08-24T00:04:00.0000000Z", "language": "zh_chs", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "中国法院网", "url": "https:\/\/www.chinacourt.org\/index.shtml", "about":
+        [{"name": "People''s Court Daily"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.chinacourt.org", "snippet": "中国法院网是经最高人民法院批准成立，经国务院新闻办公室批准从事登载新闻业务的综合性新闻网站，并经国家广电总局批准自办视频播放业务。",
+        "dateLastCrawled": "2018-08-22T20:30:00.0000000Z", "language": "zh_chs", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "189邮箱", "url": "http:\/\/www.189.cn\/", "isFamilyFriendly": true,
+        "displayUrl": "www.189.cn", "snippet": "中国电信网上营业厅，为电信客户提供充值交费、费用查询、业务办理、在线客服、故障申告、投诉咨询及品牌专区等全方位的电子自助服务；中国电信——世界触手可及。",
+        "dateLastCrawled": "2018-08-21T15:01:00.0000000Z", "language": "zh_chs", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "首页-中国天气网", "url": "http:\/\/www.weather.com.cn\/", "isFamilyFriendly":
+        true, "displayUrl": "www.weather.com.cn", "snippet": "中国天气网官方权威发布天气预报,逐三小时天气预报,提供天气预报查询一周,天气预报15天查询,天气预报40天查询,空气质量,生活指数,旅游出行,交通天气等查询服务",
+        "dateLastCrawled": "2018-08-20T16:33:00.0000000Z", "language": "zh_chs", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "中国工商银行中国网站", "url": "http:\/\/www.icbc.com.cn\/icbc\/", "about":
+        [{"name": "Industrial and Commercial Bank of China"}], "isFamilyFriendly":
+        true, "displayUrl": "www.icbc.com.cn", "snippet": "8月22日-23日，中国工商银行将面向个人和非金融机构客户同步销售国家开发银行2018年第八期、第九期和第十一期金…",
+        "dateLastCrawled": "2018-08-23T21:17:00.0000000Z", "language": "zh_chs", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "国内新闻_环球网", "url": "http:\/\/china.huanqiu.com\/", "isFamilyFriendly":
+        true, "displayUrl": "china.huanqiu.com", "snippet": "环球网国内新闻着力于报道国内要闻、时事新闻、海外看中国、国内各地动态、港澳新闻、政策观察与解读、深度报道、新闻图片、新闻人物等中国新闻。",
+        "dateLastCrawled": "2018-08-24T00:50:00.0000000Z", "language": "zh_chs", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Google", "url": "http:\/\/www.google.cn\/", "about": [{"name": "Google
+        China"}, {"name": "Google China"}], "isFamilyFriendly": true, "displayUrl":
+        "www.google.cn", "snippet": "google.com.hk. 请收藏我们的网址 翻译 ©2011 - ICP证合字B2-20070004号ICP证合字B2-20070004号",
+        "dateLastCrawled": "2018-08-22T15:42:00.0000000Z", "language": "zh_chs", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Garmin | 中国 | 官方网站", "url": "http:\/\/www.garmin.com.cn\/", "isFamilyFriendly":
+        true, "displayUrl": "www.garmin.com.cn", "snippet": "Garmin公司专注于设计，制造和销售先进的全球定位系统，全球定位系统接收机和其他消费电子产品。Garmin在全球卫星导航领域独占鳌头。",
+        "dateLastCrawled": "2018-08-23T18:55:00.0000000Z", "language": "zh_chs", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Apple (中国) - 官方网站", "url": "https:\/\/www.apple.com\/cn\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.apple.com\/cn", "snippet": "探索 Apple 充满创新的世界，选购各式
+        iPhone、iPad、Apple Watch 和 Mac，浏览各种配件、娱乐产品，并获得相关产品的专家支持服务。", "dateLastCrawled":
+        "2018-08-23T10:11:00.0000000Z", "language": "zh_chs", "isNavigational": false}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Fri, 31 Aug 2018 20:58:11 GMT
+recorded_with: VCR 4.0.0

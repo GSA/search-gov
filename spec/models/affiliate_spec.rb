@@ -59,7 +59,7 @@ describe Affiliate do
                rejecting(nil, %w{ text/plain text/xml application/pdf }) }
     end
 
-    it { is_expected.to validate_inclusion_of(:search_engine).in_array(%w( Google BingV6 SearchGov )) }
+    it { is_expected.to validate_inclusion_of(:search_engine).in_array(%w( Google BingV6 BingV7 SearchGov )) }
 
     it { is_expected.to have_many :boosted_contents }
     it { is_expected.to have_many :sayt_suggestions }
@@ -1550,6 +1550,7 @@ describe Affiliate do
     {
       'Bing' => 'Bing',
       'BingV6' => 'Bing',
+      'BingV7' => 'Bing',
       'Google' => 'Google',
     }.each do |configured_search_engine, sc_reported_search_engine|
       context "when an affiliate's search_engine is '#{configured_search_engine}'" do

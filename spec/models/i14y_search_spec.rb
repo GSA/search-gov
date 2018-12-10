@@ -163,16 +163,18 @@ describe I14ySearch do
 
     # This covers the scenario where a non-i14y-, non-searchgov-affiliate needs to search
     # the searchgov drawer for deep collection results
-    context 'when the affiliate is not using SearchGov as a search engine' do
-      before { allow(affiliate).to receive(:search_engine).and_return('BingV6') }
+    %w[BingV6 BingV7].each do |search_engine|
+      context "when the affiliate is using #{search_engine} as a search engine" do
+        before { allow(affiliate).to receive(:search_engine).and_return(search_engine) }
 
-      context 'when they do not receive i14y results' do
-        before { allow(affiliate).to receive(:gets_i14y_results).and_return(false) }
+        context 'when they do not receive i14y results' do
+          before { allow(affiliate).to receive(:gets_i14y_results).and_return(false) }
 
-        it 'searches the searchgov drawer' do
-          expect(I14yCollections).to receive(:search).
-            with(hash_including(handles: 'searchgov') )
-            i14y_search.run
+          it 'searches the searchgov drawer' do
+            expect(I14yCollections).to receive(:search).
+              with(hash_including(handles: 'searchgov') )
+              i14y_search.run
+          end
         end
       end
     end

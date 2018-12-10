@@ -2,14 +2,18 @@ class ApiBingSearch < ApiWebSearch
   self.default_module_tag = 'BWEB'.freeze
 
   def query_formatting_klass
-    BingV6FormattedQuery
+    BingFormattedQuery
   end
 
   def engine_klass
-    BingV6WebSearch
+    latest_bing_web_search_class
   end
 
   protected
+
+  def latest_bing_web_search_class
+    BingV6WebSearch
+  end
 
   def handle_response(response)
     return unless response

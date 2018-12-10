@@ -28,7 +28,7 @@ describe ApiAzureCompositeImageSearch do
     end
 
     context 'when initialized with a Bing V5 key' do
-      let(:api_key) { BingV5Engine::DEFAULT_HOSTED_PASSWORD }
+      let(:api_key) { BingV5HostedSubscriptionKey::BING_V5_SUBSCRIPTION_KEY }
 
       it 'instantiates a BingV5ImageEngine' do
         expect(BingV5ImageEngine).to receive(:new)
