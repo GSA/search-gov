@@ -24,7 +24,7 @@ describe SitemapIndexer do
     subject(:index) { indexer.index }
 
     it 'creates searchgov urls' do
-      expect{ index }.to change{SearchgovUrl.count}.from(0).to(1)
+      expect { index }.to change{ SearchgovUrl.count }.by(1)
     end
 
     it 'updates the counter cache columns' do
@@ -115,7 +115,7 @@ describe SitemapIndexer do
       let(:sitemap_entries) { "<url>\n  <loc>\n    http://agency.gov/doc1 \n    </loc>\n  </url>" }
 
       it 'creates a searchgov_url record' do
-        expect{index}.to change{SearchgovUrl.count}.from(0).to(1)
+        expect { index }.to change{ SearchgovUrl.count }.by(1)
       end
     end
 
@@ -143,7 +143,7 @@ describe SitemapIndexer do
 
       it 'ignores them' do
         index
-        expect(SearchgovUrl.pluck(:url)).to eq ['http://agency.gov/doc1']
+        expect(SearchgovUrl.pluck(:url)).not_to include 'http://other.gov/doc1'
       end
     end
 

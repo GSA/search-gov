@@ -77,7 +77,7 @@ describe 'Search.gov tasks' do
     it 'indexes new urls' do
       allow(I14yDocument).to receive(:promote).
         with(handle: 'searchgov', document_id: doc_id, bool: 'true').at_least(:once)
-      expect{ promote_urls }.to change{ SearchgovUrl.count }.from(0).to(1)
+      expect { promote_urls }.to change{ SearchgovUrl.count }.by(1)
     end
 
     it 'creates new urls' do
