@@ -42,6 +42,11 @@ describe SearchgovDomain do
         with_options(null: false, default: 'idle', limit: 100)
     end
 
+    it do
+      is_expected.to have_db_column(:canonical_domain).of_type(:string).
+        with_options(null: true)
+    end
+
     describe 'indices' do
       it { is_expected.to have_db_index(:domain).unique(true) }
       it { is_expected.to have_db_index(:status) }
@@ -302,12 +307,16 @@ describe SearchgovDomain do
       context 'when the redirect is to https' do
         let(:new_url) { 'https://agency.gov/' }
 
-        it 'sets the status to 200' do
-          expect{ check_status }.to change{ searchgov_domain.reload.status }.from(nil).to('200 OK')
+        it 'sets the status to 200 OK' do
+          expect{ check_status }.to change{
+            searchgov_domain.reload.status
+          }.from(nil).to('200 OK')
         end
 
         it 'sets the scheme to "https"' do
-          expect{ check_status }.to change{ searchgov_domain.reload.scheme }.from('http').to('https')
+          expect{ check_status }.to change{
+            searchgov_domain.reload.scheme
+          }.from('http').to('https')
         end
       end
 
@@ -315,8 +324,15 @@ describe SearchgovDomain do
         let(:new_url) { 'https://new.agency.gov' }
 
         it 'reports the canonical domain' do
-          expect{ check_status }.to change{ searchgov_domain.reload.status }.
-            from(nil).to('Canonical domain: new.agency.gov')
+          expect{ check_status }.to change{
+            searchgov_domain.reload.canonical_domain
+          }.from(nil).to('new.agency.gov')
+        end
+
+        it 'sets the status to 200 OK' do
+          expect{ check_status }.to change{
+            searchgov_domain.reload.status
+          }.from(nil).to('200 OK')
         end
       end
     end

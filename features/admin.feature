@@ -209,8 +209,9 @@ Feature:  Administration
   @javascript
   Scenario: Managing Search.gov Domains
     Given the following "searchgov domains" exist:
-      | domain     | status |
-      | search.gov | 200 OK |
+      | domain     | status | canonical_domain |
+      | search.gov | 200 OK |                  |
+      | old.gov    | 200 OK | new.gov          |
     And the following "searchgov urls" exist:
       | url                     |
       | https://search.gov/oops |
@@ -225,19 +226,21 @@ Feature:  Administration
     And I should see "Create New"
     And I should not see "Delete"
     And I should see "search.gov"
+    And I should see "old.gov"
+    And I should see "new.gov"
     And I should see "idle"
 
-    When I follow "Sitemaps"
+    When I follow "Sitemaps" within the first scaffold row
     Then I should see "search.gov/sitemap.xml"
     And I follow "Delete" and confirm "Are you sure you want to delete this sitemap?"
     Then I should not see "search.gov/sitemap.xml"
 
-    When I follow "Create New" within "#as_admin__sitemaps-active-scaffold"
+    When I follow "Create New" in the SearchgovDomain Sitemaps table
     And I fill in "Url" with "search.gov/sitemap.txt"
     And I press "Create"
     Then I should see "search.gov/sitemap.txt"
-
-    When I follow "URLs"
+    When I follow "Close"
+    And I follow "URLs" within the first scaffold row
     Then I should see "search.gov/oops"
     And I follow "Fetch"
     And I wait for ajax
