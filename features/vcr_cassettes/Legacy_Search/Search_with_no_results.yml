@@ -1,0 +1,284 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=chupacabra%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '4227'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 04 Sep 2018 21:09:20 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=080985BC73CD62D60D1589DC721A63E6; path=/; expires=Sun, 29-Sep-2019 21:10:20
+        GMT; domain=bingapis.com
+      - MUIDB=080985BC73CD62D60D1589DC721A63E6; path=/; httponly; expires=Sun, 29-Sep-2019
+        21:10:20 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Fri, 04-Sep-2020 21:10:20 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=E99F19549A714C9AB933C81773724A82&dmnchg=1; domain=.bingapis.com;
+        expires=Fri, 04-Sep-2020 21:10:20 GMT; path=/
+      - SRCHUSR=DOB=20180904; domain=.bingapis.com; expires=Fri, 04-Sep-2020 21:10:20
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=09A154E9F8F76DA339A25889F9206CFD; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Sun, 29-Sep-2019 21:10:20 GMT; domain=bingapis.com
+      - _SS=SID=09A154E9F8F76DA339A25889F9206CFD; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - 347C43B796384D378C119C32208B1858
+      X-Msedge-Clientid:
+      - '080985BC73CD62D60D1589DC721A63E6'
+      X-Msapi-Userstate:
+      - 2de1
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: 347C43B796384D378C119C32208B1858 Ref B: CO1EDGE0211 Ref C: 2018-09-04T21:10:20Z'
+      Date:
+      - Tue, 04 Sep 2018 21:10:20 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=107371C0105F4ABCAE3E334C5AAE73BB&CID=080985BC73CD62D60D1589DC721A63E6&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=107371C0105F4ABCAE3E334C5AAE73BB&CID=080985BC73CD62D60D1589DC721A63E6&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=chupacabra+(site%3agov+OR+site%3amil)",
+        "webSearchUrlPingSuffix": "DevEx,5414.1", "totalEstimatedMatches": 16000,
+        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
+        "Show-Me Freaks of Nature", "url": "https:\/\/mdc.mo.gov\/blogs\/fresh-afield\/show-me-freaks-nature",
+        "urlPingSuffix": "DevEx,5067.1", "displayUrl": "https:\/\/mdc.mo.gov\/blogs\/fresh-afield\/show-me-freaks-nature",
+        "snippet": "Although the chupacabra and Momo are ... Really enjoyed learning
+        about Show-Me Freaks of Nature. My brother wanted to know about the Piasa
+        Bird he spotted flying ...", "dateLastCrawled": "2018-08-14T07:09:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "TPWD:
+        Chupacabra Point | | Texas Paddling Trails", "url": "https:\/\/tpwd.texas.gov\/fishboat\/boat\/paddlingtrails\/inland\/runawaybay_chupacabra\/",
+        "urlPingSuffix": "DevEx,5080.1", "displayUrl": "https:\/\/tpwd.texas.gov\/...\/paddlingtrails\/inland\/runawaybay_chupacabra",
+        "snippet": "Chupacabra Point Paddling ... Proceed South on Blue Fathom drive,
+        until reaching the Chupacabra put in point & kiosk ... Crossing from Chupacabra
+        Point to the ...", "dateLastCrawled": "2018-08-20T03:37:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Chupacabra
+        | Pima County Public Library", "url": "https:\/\/www.library.pima.gov\/content\/chupacabra\/",
+        "urlPingSuffix": "DevEx,5093.1", "displayUrl": "https:\/\/www.library.pima.gov\/content\/chupacabra",
+        "snippet": "Chupacabra is a legendary beast that roams Puerto Rico, Mexico
+        and the southern United States. The descriptions of the chupacabra…", "dateLastCrawled":
+        "2018-08-19T23:01:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "SLEEPING WITH CHUPACABRAS? > Torch Magazine > Article Display", "url":
+        "https:\/\/www.torch.aetc.af.mil\/News\/Article-Display\/Article\/364812\/sleeping-with-chupacabras\/",
+        "urlPingSuffix": "DevEx,5105.1", "displayUrl": "https:\/\/www.torch.aetc.af.mil\/...\/364812\/sleeping-with-chupacabras",
+        "snippet": "A Chupacabra is a mythical creature rumored to inhabit parts
+        of Southwest Texas and Mexico. The name comes from the animal''s reported
+        habit of attacking and drinking the blood of livestock, especially goats.",
+        "dateLastCrawled": "2018-08-08T23:46:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
+        "name": "TPWD: News Images", "url": "https:\/\/tpwd.texas.gov\/newsmedia\/news_images\/?g=texas_travel_rally_day_2011&i=chupacabra_point_trail_kayakers--~city_of_rowlett.jpg",
+        "urlPingSuffix": "DevEx,5117.1", "displayUrl": "https:\/\/tpwd.texas.gov\/newsmedia\/news_images\/?g=texas_travel_rally...",
+        "snippet": "Navigation: Texas Travel Rally Day 2011 Group All Groups Group:
+        Texas Travel Rally Day 2011 Image: Chupacabra Point Trail Kayakers. File
+        Size: 3648 x 2736 pixels, 2.3 megabytes", "dateLastCrawled": "2018-08-12T05:58:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "chupacabra_2012.jpg
+        | Missouri Department of Conservation", "url": "https:\/\/mdc.mo.gov\/files\/chupacabra2012jpg",
+        "urlPingSuffix": "DevEx,5131.1", "displayUrl": "https:\/\/mdc.mo.gov\/files\/chupacabra2012jpg",
+        "snippet": "We protect and manage the fish, forest, and wildlife of the state.
+        We facilitate and provide opportunity for all citizens to use, enjoy, and
+        learn about these resources.", "dateLastCrawled": "2018-07-23T23:25:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "S3\/ Encl:
+        (1) NMCB SEVEN Deployment Completion Report", "url": "https:\/\/www.history.navy.mil\/content\/dam\/museums\/Seabee\/Online%20Reading%20Room\/DCRs\/NMCB7\/NMCB%207%20DCR%202000_2001.pdf",
+        "urlPingSuffix": "DevEx,5143.1", "displayUrl": "https:\/\/www.history.navy.mil\/content\/dam\/museums\/Seabee\/Online...",
+        "snippet": "Subj: SUBMISSION OF DEPLOYMENT COMPLETION REPORT Ref: (a) ...
+        The capstone event of Operation Chupacabra was the mount-out exercise. The
+        embark", "dateLastCrawled": "2018-08-29T23:45:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "name": "abra.dc.gov", "url": "https:\/\/abra.dc.gov\/sites\/default\/files\/dc\/sites\/abra\/publication\/attachments\/822HStNE-9192013.pdf",
+        "urlPingSuffix": "DevEx,5154.1", "displayUrl": "https:\/\/abra.dc.gov\/sites\/default\/files\/dc\/sites\/abra\/publication\/...",
+        "snippet": "Chupacabra, LLC t\/a Chupacabra case No. 13-PRO-00123 License
+        No. ABRA-092662 Page 2 Accordingly, it is this 19th day of September, 2013,
+        ORDERED that:", "dateLastCrawled": "2018-07-20T09:33:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "chupacabra_2012.jpg
+        | MDC Discover Nature", "url": "https:\/\/nature.mdc.mo.gov\/file\/chupacabra2012jpg",
+        "urlPingSuffix": "DevEx,5168.1", "displayUrl": "https:\/\/nature.mdc.mo.gov\/file\/chupacabra2012jpg",
+        "snippet": "chupacabra_2012.jpg. This coyote is suffering from severe sarcoptic
+        mange and malnutrition. Janis and Jerry Hinde. Inside MDC. About Us; Magazines
+        & Newsletters; Blogs;", "dateLastCrawled": "2018-07-31T16:42:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "TPWD:
+        Inland Paddling Trails | Texas Paddling Trails", "url": "https:\/\/tpwd.texas.gov\/fishboat\/boat\/paddlingtrails\/inland\/",
+        "urlPingSuffix": "DevEx,5182.1", "displayUrl": "https:\/\/tpwd.texas.gov\/fishboat\/boat\/paddlingtrails\/inland",
+        "snippet": "Texas Parks and Wildlife Paddling Trails are statewide canoeing
+        and kayaking trails for outdoor recreation on the coast and ... Chupacabra
+        Point Paddling Trail ...", "dateLastCrawled": "2018-08-31T05:21:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "TPWD:
+        Bridgeport Falls | | Texas Paddling Trails", "url": "https:\/\/tpwd.texas.gov\/fishboat\/boat\/paddlingtrails\/inland\/bridgeportfalls\/",
+        "urlPingSuffix": "DevEx,5196.1", "displayUrl": "https:\/\/tpwd.texas.gov\/...\/boat\/paddlingtrails\/inland\/bridgeportfalls",
+        "snippet": "The Bridgeport Falls low water weir dam creates a pleasant 5.8
+        mile looped paddling trail under a lush canopy of ... Texas at the Chupacabra
+        Point Paddling Trail ...", "dateLastCrawled": "2018-08-04T14:28:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "BREED
+        CODE LIST", "url": "http:\/\/hdoa.hawaii.gov\/ai\/files\/2013\/01\/aqs-66.pdf",
+        "urlPingSuffix": "DevEx,5208.1", "displayUrl": "hdoa.hawaii.gov\/ai\/files\/2013\/01\/aqs-66.pdf",
+        "snippet": "BREED CODE LIST Unlisted Breeds May Not Be Eligible For Entry
+        Into Hawaii The regulation of breeds that are permitted or prohibited from
+        entering Hawaii are under the ...", "dateLastCrawled": "2018-08-31T09:06:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "McAllister
+        Park - The City of San Antonio - Official City ...", "url": "https:\/\/www.sanantonio.gov\/ParksAndRec\/Parks-Facilities\/All-Parks-Facilities\/Parks-Facilities-Details\/ArtMID\/14820\/ArticleID\/2578\/McAllister-Park",
+        "urlPingSuffix": "DevEx,5220.1", "displayUrl": "https:\/\/www.sanantonio.gov\/...\/14820\/ArticleID\/2578\/McAllister-Park",
+        "snippet": "\/ Parks & Facilities Details. Parks & Facilities Details.
+        McAllister Park. ... McAllister Park hours are 5 a.m. to 11 p.m., seven
+        days a week. No lighting in the ...", "dateLastCrawled": "2018-08-24T17:32:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Mermaids,
+        Giant Turtles, and Wild Men…Oh My! – The Indiana ...", "url": "https:\/\/blog.history.in.gov\/mermaids-giant-turtles-and-wild-men-oh-my\/",
+        "urlPingSuffix": "DevEx,5232.1", "displayUrl": "https:\/\/blog.history.in.gov\/mermaids-giant-turtles-and-wild-men-oh-my",
+        "snippet": "EDITOR’S NOTE: While the Indiana Historical Bureau does not research
+        folklore and cryptozoology, in the course of doing historical research in
+        newspapers about other topics, we sometimes come across odd stories like we
+        have collected here.", "dateLastCrawled": "2018-07-26T14:21:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Johns
+        Creek - Home", "url": "https:\/\/www.johnscreekga.gov\/", "urlPingSuffix":
+        "DevEx,5246.1", "about": [{"name": "Johns Creek"}, {"name": "Johns Creek"}],
+        "displayUrl": "https:\/\/www.johnscreekga.gov", "snippet": "Johns Creek
+        is a culturally diverse community with nearly 25 percent of our residents
+        joining us from India, China, South Korea and other nations.", "dateLastCrawled":
+        "2018-08-29T15:02:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "Searching for mythical creatures; enjoying what was found ...",
+        "url": "http:\/\/magazine.outdoornebraska.gov\/2013\/10\/mythical-creatures-2\/",
+        "urlPingSuffix": "DevEx,5262.1", "displayUrl": "magazine.outdoornebraska.gov\/2013\/10\/mythical-creatures-2",
+        "snippet": "Sasquatch, chupacabra, Yellow Rail and White-eyed Vireo have
+        long been mythical creatures, at least for me in Nebraska. I’ll leave the
+        two mammals to be discussed elsewhere (this IS a blog about birds).", "dateLastCrawled":
+        "2018-08-31T05:15:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
+        "name": "Yucca Valley, California, United States - Spot The Station",
+        "url": "https:\/\/spotthestation.nasa.gov\/sightings\/view.cfm?country=United_States&region=California&city=Yucca_Valley",
+        "urlPingSuffix": "DevEx,5275.1", "displayUrl": "https:\/\/spotthestation.nasa.gov\/sightings\/view.cfm?country=United...",
+        "snippet": "Upcoming dates, times and sighting details for the space station’s
+        next passes over Yucca Valley, California, United States", "dateLastCrawled":
+        "2018-08-22T21:30:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
+        "name": "The Official Site of Rio Rancho, NM", "url": "https:\/\/rrnm.gov\/calendar.aspx?view=list&year=2017&month=10&day=3",
+        "urlPingSuffix": "DevEx,5287.1", "displayUrl": "https:\/\/rrnm.gov\/calendar.aspx?view=list&year=2017&month=10&day=3",
+        "snippet": "Calendar View all calendars is the default. Choose ... Tracking
+        the Chupacabra, and Investigating Ghosts: The Scientific Search for Spirits.
+        More Details", "dateLastCrawled": "2018-08-29T06:59:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Pages - default",
+        "url": "http:\/\/www.public.navy.mil\/surflant\/ddg94\/Pages\/default.aspx",
+        "urlPingSuffix": "DevEx,5301.1", "about": [{"name": "USS Nitze"}, {"name":
+        "USS Nitze"}], "displayUrl": "www.public.navy.mil\/surflant\/ddg94\/Pages\/default.aspx",
+        "snippet": "USS NITZE (DDG 94) \"Vision, Courage, Determination\" ISIC:
+        COMDESRON TWO Mailing Address: USS NITZE (DDG 94) UNIT 100514 BOX 1 FPO
+        AE 09579", "dateLastCrawled": "2018-08-21T23:17:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
+        "name": "Congressman John Ratcliffe | Representing the 4th District ...",
+        "url": "https:\/\/ratcliffe.house.gov\/", "urlPingSuffix": "DevEx,5315.1",
+        "about": [{"name": "John Ratcliffe"}, {"name": "John Ratcliffe"}], "displayUrl":
+        "https:\/\/ratcliffe.house.gov", "snippet": "WASHINGTON – Rep. John Ratcliffe
+        (R-Texas) congratulated Harrison Benefield, William Humphrey, and Mayten Lumpkin
+        today for their successful completion of a congressional internship in his
+        Texarkana district office this summer.", "dateLastCrawled": "2018-09-01T02:11:00.0000000Z"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Tue, 04 Sep 2018 21:10:20 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=foobarbazbiz%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '241'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 04 Sep 2018 21:11:17 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=038C16839D2769E213931AE39CF06849; path=/; expires=Sun, 29-Sep-2019 21:12:18
+        GMT; domain=bingapis.com
+      - MUIDB=038C16839D2769E213931AE39CF06849; path=/; httponly; expires=Sun, 29-Sep-2019
+        21:12:18 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Fri, 04-Sep-2020 21:12:17 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=CF99A53B45484952A65B5405F9993443&dmnchg=1; domain=.bingapis.com;
+        expires=Fri, 04-Sep-2020 21:12:17 GMT; path=/
+      - SRCHUSR=DOB=20180904; domain=.bingapis.com; expires=Fri, 04-Sep-2020 21:12:17
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=349625B644DB62D015C129D6450C6363; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Sun, 29-Sep-2019 21:12:18 GMT; domain=bingapis.com
+      - _SS=SID=349625B644DB62D015C129D6450C6363; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - 97F825619CA54D9CB6E44ED8B383AD9B
+      X-Msedge-Clientid:
+      - '038C16839D2769E213931AE39CF06849'
+      X-Msapi-Userstate:
+      - 1a11
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: 97F825619CA54D9CB6E44ED8B383AD9B Ref B: CO1EDGE0308 Ref C: 2018-09-04T21:12:18Z'
+      Date:
+      - Tue, 04 Sep 2018 21:12:17 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=412A3A0DCA284C6F880381F913D64EFA&CID=038C16839D2769E213931AE39CF06849&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=412A3A0DCA284C6F880381F913D64EFA&CID=038C16839D2769E213931AE39CF06849&Type=Event.CPT&DATA=0"},
+        "rankingResponse": {}}'
+    http_version: 
+  recorded_at: Tue, 04 Sep 2018 21:12:18 GMT
+recorded_with: VCR 4.0.0

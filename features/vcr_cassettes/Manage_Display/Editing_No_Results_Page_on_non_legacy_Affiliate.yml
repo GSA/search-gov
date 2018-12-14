@@ -140,4 +140,140 @@ http_interactions:
         "rankingResponse": {}}'
     http_version: 
   recorded_at: Thu, 22 Feb 2018 07:15:04 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=hdakfjd%3Bkljowaurei%3Bak%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '242'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 19 Nov 2018 22:37:45 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=17859FC09F566DA20129936C9E816CF0; path=/; expires=Sat, 14-Dec-2019 22:38:45
+        GMT; domain=bingapis.com
+      - MUIDB=17859FC09F566DA20129936C9E816CF0; path=/; httponly; expires=Sat, 14-Dec-2019
+        22:38:45 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 19-Nov-2020 22:38:45 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=1A4B83F3E5F84992AB5D7922E7016472&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 19-Nov-2020 22:38:45 GMT; path=/
+      - SRCHUSR=DOB=20181119; domain=.bingapis.com; expires=Thu, 19-Nov-2020 22:38:45
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=02C31201B15C665D14151EADB08B6778; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 14-Dec-2019 22:38:45 GMT; domain=bingapis.com
+      - _SS=SID=02C31201B15C665D14151EADB08B6778; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - 3BFB0C8EC3AF480DB62F76FBBB7B0FEF
+      X-Msedge-Clientid:
+      - 17859FC09F566DA20129936C9E816CF0
+      X-Msapi-Userstate:
+      - f55d
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: 3BFB0C8EC3AF480DB62F76FBBB7B0FEF Ref B: CO1EDGE0922 Ref C: 2018-11-19T22:38:45Z'
+      Date:
+      - Mon, 19 Nov 2018 22:38:45 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=489AF567FA894865A4A1E0F3E53AE00F&CID=17859FC09F566DA20129936C9E816CF0&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=489AF567FA894865A4A1E0F3E53AE00F&CID=17859FC09F566DA20129936C9E816CF0&Type=Event.CPT&DATA=0"},
+        "rankingResponse": {}}'
+    http_version: 
+  recorded_at: Mon, 19 Nov 2018 22:38:45 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=hdakfjd%3Bkljowaurei%3Bak%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '241'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 19 Nov 2018 22:37:46 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=152006DAA36D62C82A860A76A2BA630D; path=/; expires=Sat, 14-Dec-2019 22:38:46
+        GMT; domain=bingapis.com
+      - MUIDB=152006DAA36D62C82A860A76A2BA630D; path=/; httponly; expires=Sat, 14-Dec-2019
+        22:38:46 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 19-Nov-2020 22:38:46 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=A0DA4D8F2AAC4BAB9DC0283CF344A452&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 19-Nov-2020 22:38:46 GMT; path=/
+      - SRCHUSR=DOB=20181119; domain=.bingapis.com; expires=Thu, 19-Nov-2020 22:38:46
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=10FADC0E217D676D0FC1D0A220AA663C; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 14-Dec-2019 22:38:46 GMT; domain=bingapis.com
+      - _SS=SID=10FADC0E217D676D0FC1D0A220AA663C; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - 96BD72D1466E4029A6EBA30F5E939EAC
+      X-Msedge-Clientid:
+      - 152006DAA36D62C82A860A76A2BA630D
+      X-Msapi-Userstate:
+      - dbf2
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: 96BD72D1466E4029A6EBA30F5E939EAC Ref B: CO1EDGE0215 Ref C: 2018-11-19T22:38:46Z'
+      Date:
+      - Mon, 19 Nov 2018 22:38:45 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=0A7C8D8C5D5F4734B3339137743077E7&CID=152006DAA36D62C82A860A76A2BA630D&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=0A7C8D8C5D5F4734B3339137743077E7&CID=152006DAA36D62C82A860A76A2BA630D&Type=Event.CPT&DATA=0"},
+        "rankingResponse": {}}'
+    http_version: 
+  recorded_at: Mon, 19 Nov 2018 22:38:47 GMT
 recorded_with: VCR 4.0.0

@@ -1,0 +1,229 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=white%20house&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Fri, 31 Aug 2018 20:57:09 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 99E28E7C8DEF4D7A957EDBDE2D447042
+      Bingapis-Sessionid:
+      - B2B21792D6F34795A96BF78021C51170
+      X-Msedge-Clientid:
+      - 35C1502A94696ACB07EC5C7695056B1C
+      X-Msapi-Userstate:
+      - 3d6b
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=165,MSDatacenter=BN2
+      X-Msedge-Ref:
+      - 'Ref A: 99E28E7C8DEF4D7A957EDBDE2D447042 Ref B: SN1EDGE0709 Ref C: 2018-08-31T20:58:09Z'
+      Apim-Request-Id:
+      - 0d9d198e-a17f-4414-8f8d-b5019e6ca469
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Fri, 31 Aug 2018 20:58:08 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "white
+        house"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=white+house",
+        "totalEstimatedMatches": 268000000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "The White House", "url": "https:\/\/www.whitehouse.gov\/", "about":
+        [{"name": "The White House"}, {"name": "whitehouse.gov"}, {"name": "White
+        House"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov",
+        "snippet": "History of The White House. Our first president, George Washington,
+        selected the site for the White House in 1791. Every president since John
+        Adams has occupied the White House, and the history of this building extends
+        far beyond the construction of its walls.", "dateLastCrawled": "2018-08-24T00:53:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "White House - Wikipedia", "url": "https:\/\/en.wikipedia.org\/wiki\/White_House",
+        "about": [{"name": "White House"}, {"name": "White House"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/en.wikipedia.org\/wiki\/White_House", "snippet":
+        "The White House is the official residence and workplace of the President
+        of the United States.It is located at 1600 Pennsylvania Avenue NW in Washington,
+        D.C. and has been the residence of every U.S. President since John Adams in
+        1800.", "snippetAttribution": {"license": {"name": "CC-BY-SA", "url": "http:\/\/creativecommons.org\/licenses\/by-sa\/3.0\/"},
+        "licenseNotice": "Text under CC-BY-SA license"}, "dateLastCrawled": "2018-08-19T15:03:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "TRUMP® WHITE HOUSE | WHITEHOUSE.ORG", "url": "https:\/\/whitehouse.org\/",
+        "about": [{"name": "WHITEHOUSE.ORG"}, {"name": "whitehouse.org"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/whitehouse.org", "snippet": "100% OFFICIOUS
+        website of the White House & President Donald J. Trump", "dateLastCrawled":
+        "2018-08-23T20:10:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3", "name":
+        "The White House - YouTube", "url": "https:\/\/www.youtube.com\/whitehouse",
+        "about": [{"name": "White House"}, {"name": "White House"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.youtube.com\/whitehouse", "snippet": "Official
+        White House Youtube channel. Vice President Pence Delivers Remarks at the
+        37th Annual National Peace Officers'' Memorial Service - Duration: 6 minutes,
+        32 seconds.", "dateLastCrawled": "2018-08-23T14:25:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "The White House (@WhiteHouse) | Twitter", "url": "https:\/\/twitter.com\/WhiteHouse",
+        "about": [{"name": "White House"}, {"name": "White House"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/twitter.com\/WhiteHouse", "snippet": "The latest
+        Tweets from The White House (@WhiteHouse). Welcome to @WhiteHouse! Follow
+        for the latest from President @realDonaldTrump and his Administration. Tweets
+        may be archived: https:\/\/t.co\/IURuMIrzxb.", "dateLastCrawled": "2018-08-24T16:14:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "The White House - Home | Facebook", "url": "http:\/\/www.facebook.com\/WhiteHouse",
+        "isFamilyFriendly": true, "displayUrl": "www.facebook.com\/WhiteHouse", "snippet":
+        "The White House. 8.4M likes. Welcome to the official White House Facebook
+        page for the Trump Administration. Comments posted on and messages received...",
+        "dateLastCrawled": "2018-08-19T14:01:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "White House - Facts & Summary - HISTORY.com", "url": "https:\/\/www.history.com\/topics\/white-house",
+        "about": [{"name": "White House"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.history.com\/topics\/white-house", "snippet": "Find out more
+        about the history of White House, including videos, interesting articles,
+        pictures, historical features and more. Get all the facts on HISTORY.com",
+        "dateLastCrawled": "2018-08-24T00:33:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Headlines from the White House", "url": "https:\/\/www.cnbc.com\/white-house\/",
+        "about": [{"name": "White House"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.cnbc.com\/white-house", "snippet": "Latest news from the White
+        House, including video, commentary, and in-depth analysis coverage.", "dateLastCrawled":
+        "2018-08-24T16:50:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8", "name":
+        "Petition the White House on the Issues that Matter to You ...", "url": "https:\/\/petitions.whitehouse.gov\/",
+        "about": [{"name": "We the People"}, {"name": "White House"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/petitions.whitehouse.gov", "snippet": "Create
+        a Petition. Call on the White House to take action on the issue that matters
+        to you.", "dateLastCrawled": "2018-08-24T20:02:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Contact the White House", "url": "https:\/\/www.whitehouse.gov\/contact\/",
+        "about": [{"name": "White House"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.whitehouse.gov\/contact", "snippet": "Keep me posted with regular
+        updates from the White House. required ...", "dateLastCrawled": "2018-08-21T14:57:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Women''s Clothing, Dresses, Tops, Pants, Petite & Plus Size ...",
+        "url": "https:\/\/www.whitehouseblackmarket.com\/store\/", "about": [{"name":
+        "White House Black Market"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouseblackmarket.com",
+        "snippet": "White House Black Market offers polished black and white women''s
+        clothing with pops of color and patterns. Shop tailored dresses, tops, pants
+        and accessories.", "dateLastCrawled": "2018-08-23T04:54:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "President''s Park (White House) (U.S. National Park Service)", "url":
+        "https:\/\/www.nps.gov\/whho\/index.htm", "about": [{"name": "President''s
+        Park (White House)"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/whho",
+        "snippet": "Every president except George Washington has called the White
+        House and its surrounding grounds his place of work, rest, and solitude. Recognizable
+        around the world, the White House stands as a symbol of democracy. The White
+        House and its park grounds serve not only as the seat of the executive ...",
+        "dateLastCrawled": "2018-08-06T23:55:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Homepage - White House Historical Association", "url": "https:\/\/whitehousehistory.org\/",
+        "about": [{"name": "White House"}, {"name": "Decatur House"}, {"name": "White
+        House Historical Association"}, {"name": "White House Historical Association"},
+        {"name": "White House Learning Center"}, {"name": "White House"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/whitehousehistory.org", "snippet": "The White
+        House Historical Association is a non-profit organization enhancing understanding
+        of the White House and is supported by official White House Christma...",
+        "dateLastCrawled": "2018-08-24T12:46:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "The White House | whitehouse.gov", "url": "https:\/\/obamawhitehouse.archives.gov\/",
+        "about": [{"name": "whitehouse.gov"}, {"name": "Barack Obama"}, {"name": "Barack
+        Obama"}, {"name": "White House"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/obamawhitehouse.archives.gov", "snippet": "See the President''s
+        daily schedule, explore behind-the-scenes photos from inside the White House,
+        and find out all the ways you can engage with the most interactive administration
+        in our country''s history.", "dateLastCrawled": "2018-08-20T15:42:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "The White House — Google Arts & Culture", "url": "https:\/\/artsandculture.google.com\/partner\/the-white-house",
+        "about": [{"name": "White House"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/artsandculture.google.com\/partner\/the-white-house", "snippet":
+        "For more than 200 years, the White House has been more than just the home
+        of the Presidents and their families. Throughout the world, it is recognized
+        as t...", "dateLastCrawled": "2018-08-21T22:39:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "White House | History, Location, & Facts | Britannica.com", "url":
+        "https:\/\/www.britannica.com\/topic\/White-House-Washington-DC", "about":
+        [{"name": "White House"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.britannica.com\/topic\/White-House-Washington-DC",
+        "snippet": "White House: White House, the office and residence of the president
+        of the United States at 1600 Pennsylvania Avenue N.W. in Washington, D.C.
+        Since the administration of George Washington (1789–97), who occupied presidential
+        residences in New York and Philadelphia, every American president has resided
+        at the White House.", "dateLastCrawled": "2018-08-23T09:52:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "A look inside the White House - POLITICO", "url": "https:\/\/www.politico.com\/gallery\/a-look-inside-the-white-house",
+        "about": [{"name": "White House"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.politico.com\/gallery\/a-look-inside-the-white-house", "snippet":
+        "Designed by James Hoban, the White House has 132 rooms, 35 bathrooms and
+        6 levels in the residence. This includes 412 doors, 147 windows, 28 fireplaces,
+        8 staircases and 3 elevators.", "dateLastCrawled": "2018-08-19T21:37:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "White House: Government News, Videos & Updates - NBC News", "url":
+        "https:\/\/www.nbcnews.com\/politics\/white-house", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.nbcnews.com\/politics\/white-house", "snippet":
+        "Find the latest White House news, videos and photos on http:\/\/www.nbcnews.com.
+        Read headlines covering White House statements, releases, conferences & more.",
+        "dateLastCrawled": "2018-08-22T15:07:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "The White House", "url": "https:\/\/apply.whitehouse.gov\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/apply.whitehouse.gov", "snippet": "Thank you
+        for your interest in serving in the Trump Administration. This website is
+        designed for applicants interested in non-career positions within the Trump
+        Administration.", "dateLastCrawled": "2018-08-23T06:17:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "White House | Fox News", "url": "http:\/\/www.foxnews.com\/category\/politics\/executive\/white-house.html",
+        "isFamilyFriendly": true, "displayUrl": "www.foxnews.com\/category\/politics\/executive\/white-house.html",
+        "snippet": "White House stories and articles from Fox News Politics", "dateLastCrawled":
+        "2018-08-21T02:45:00.0000000Z", "language": "en", "isNavigational": false}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Fri, 31 Aug 2018 20:58:09 GMT
+recorded_with: VCR 4.0.0

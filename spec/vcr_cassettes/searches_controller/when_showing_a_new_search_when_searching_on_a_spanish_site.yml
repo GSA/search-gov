@@ -225,4 +225,229 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
   recorded_at: Thu, 26 Apr 2018 23:29:10 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=60&q=social%20security%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '3467'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 27 Aug 2018 00:06:08 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=1ABABC154DF6677B0085B04D4CF966E3; path=/; expires=Sat, 21-Sep-2019 00:07:09
+        GMT; domain=bingapis.com
+      - MUIDB=1ABABC154DF6677B0085B04D4CF966E3; path=/; httponly; expires=Sat, 21-Sep-2019
+        00:07:09 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 27-Aug-2020 00:07:08 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=1AB30217E0B34FBBAF571863FEFB595D&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 27-Aug-2020 00:07:08 GMT; path=/
+      - SRCHUSR=DOB=20180827; domain=.bingapis.com; expires=Thu, 27-Aug-2020 00:07:08
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=18794D9246CD631632AE41CA47C26264; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 21-Sep-2019 00:07:09 GMT; domain=bingapis.com
+      - _SS=SID=18794D9246CD631632AE41CA47C26264; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - AA7130B13D9F4198BCDE41E2FBBE6802
+      X-Msedge-Clientid:
+      - 1ABABC154DF6677B0085B04D4CF966E3
+      X-Msapi-Userstate:
+      - f53f
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: AA7130B13D9F4198BCDE41E2FBBE6802 Ref B: BAYEDGE0106 Ref C: 2018-08-27T00:07:09Z'
+      Date:
+      - Mon, 27 Aug 2018 00:07:08 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=DF5C734D3AA24247B5BB6739A905C9A7&CID=1ABABC154DF6677B0085B04D4CF966E3&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=DF5C734D3AA24247B5BB6739A905C9A7&CID=1ABABC154DF6677B0085B04D4CF966E3&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=social+security+(site%3agov+OR+site%3amil)",
+        "webSearchUrlPingSuffix": "DevEx,5414.1", "totalEstimatedMatches": 682000,
+        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
+        "Form SSA-1 - Social Security Administration", "url": "https:\/\/www.ssa.gov\/forms\/ssa-1.html",
+        "urlPingSuffix": "DevEx,5059.1", "about": [{"name": "Social Security Administration"}],
+        "displayUrl": "https:\/\/www.ssa.gov\/forms\/ssa-1.html", "snippet": "If
+        you are outside the U.S., we may need to know if you worked or will be working
+        over 45 hours a month outside the United States. Documents You May Need To
+        Provide We may need to see certain documents in order to pay benefits. If
+        you apply online, a list of documents we need to see will appear at ...",
+        "dateLastCrawled": "2018-08-18T04:16:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
+        "name": "Services for people currently receiving benefits | Social ...",
+        "url": "https:\/\/www.ssa.gov\/onlineservices\/current.htm", "urlPingSuffix":
+        "DevEx,5071.1", "about": [{"name": "Social Security Administration"}], "displayUrl":
+        "https:\/\/www.ssa.gov\/onlineservices\/current.htm", "snippet": "This Social
+        Security web page contains information about services for people currently
+        receiving benefits.", "dateLastCrawled": "2018-08-01T22:42:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Social
+        Security History - ssa.gov", "url": "https:\/\/www.ssa.gov\/history\/35act.html",
+        "urlPingSuffix": "DevEx,5084.1", "about": [{"name": "Social Security Administration"}],
+        "displayUrl": "https:\/\/www.ssa.gov\/history\/35act.html", "snippet": "The
+        Social Security Act (Act of August 14, 1935) [H. R. 7260] An act to provide
+        for the general welfare by establishing a system of Federal old-age benefits,
+        and by enabling the several States to make more adequate provision for aged
+        persons, blind persons, dependent and crippled children, maternal and child
+        welfare, public health, and the ...", "dateLastCrawled": "2018-08-17T19:44:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "ROME Survey
+        Page | Social Security Administration", "url": "https:\/\/www.ssa.gov\/myaccount\/lp\/landing-page-rome.html",
+        "urlPingSuffix": "DevEx,5098.1", "about": [{"name": "Social Security Administration"}],
+        "displayUrl": "https:\/\/www.ssa.gov\/myaccount\/lp\/landing-page-rome.html",
+        "snippet": "Thank you for using my Social Security.... We hope you enjoyed
+        your online service experience with us today. We look forward to your next
+        visit. Remember, if you receive benefits or have Medicare, you can use your
+        my Social Security online account to:", "dateLastCrawled": "2018-08-21T00:36:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "About
+        Social Security | Social Security Administration", "url": "https:\/\/www.ssa.gov\/agency\/",
+        "urlPingSuffix": "DevEx,5111.1", "about": [{"name": "Social Security Administration"}],
+        "displayUrl": "https:\/\/www.ssa.gov\/agency", "snippet": "Learn more about
+        the Social Security Administration - here with you through life''s journey.",
+        "dateLastCrawled": "2018-08-18T13:43:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
+        "name": "Benefits Planner: Retirement - Social Security Administration",
+        "url": "https:\/\/www.ssa.gov\/planners\/retire\/ageincrease.html", "urlPingSuffix":
+        "DevEx,5124.1", "displayUrl": "https:\/\/www.ssa.gov\/planners\/retire\/ageincrease.html",
+        "snippet": "This page describes how the full retirement age to receive Social
+        Security benefits is increasing.", "dateLastCrawled": "2018-08-09T17:37:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Benefits
+        Planner: Retirement - Social Security Administration", "url": "https:\/\/www.ssa.gov\/planners\/retire\/applying6.html",
+        "urlPingSuffix": "DevEx,5137.1", "about": [{"name": "Social Security Administration"}],
+        "displayUrl": "https:\/\/www.ssa.gov\/planners\/retire\/applying6.html",
+        "snippet": "This retirement planner page explains what happens if you qualify
+        for Social Security benefits on someone else''s record.", "dateLastCrawled":
+        "2018-08-19T08:12:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "name": "Social Security - Representative Payee Program - When ...", "url":
+        "https:\/\/www.ssa.gov\/payee\/", "urlPingSuffix": "DevEx,5150.1", "about":
+        [{"name": "Representative payee"}, {"name": "Representative payee"}], "displayUrl":
+        "https:\/\/www.ssa.gov\/payee", "snippet": "The page contains information
+        on financial management for Social Security and SSI payments when beneficiaries
+        incapable of managing their benefits.", "dateLastCrawled": "2018-08-21T11:23:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Social
+        Security Quick Calculator - The United States ...", "url": "https:\/\/www.ssa.gov\/OACT\/quickcalc\/index.html",
+        "urlPingSuffix": "DevEx,5164.1", "about": [{"name": "Social Security Administration"}],
+        "displayUrl": "https:\/\/www.ssa.gov\/OACT\/quickcalc\/index.html", "snippet":
+        "Benefit estimates depend on your date of birth and on your earnings history.
+        For security, the \"Quick Calculator\" does not access your earnings record;
+        instead, it will estimate your earnings based on information you provide.
+        So benefit estimates made by the Quick Calculator are rough. Although the
+        ...", "dateLastCrawled": "2018-08-20T18:18:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
+        "name": "Benefits Planner | Income Taxes And Your Social Security ...",
+        "url": "https:\/\/www.ssa.gov\/planners\/taxes.html", "urlPingSuffix": "DevEx,5176.1",
+        "about": [{"name": "Social Security Administration"}], "displayUrl": "https:\/\/www.ssa.gov\/planners\/taxes.htm",
+        "snippet": "This Social Security planner page explains when you may have
+        to pay income taxes on your Social Security benefits.", "dateLastCrawled":
+        "2018-08-17T20:43:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
+        "name": "The Work Site - Social Security Administration", "url": "https:\/\/www.ssa.gov\/work\/",
+        "urlPingSuffix": "DevEx,5190.1", "displayUrl": "https:\/\/www.ssa.gov\/work",
+        "snippet": "Welcome to the Ticket to Work Program! The Ticket to Work
+        (Ticket) program is a free and voluntary program that can help Social Security
+        beneficiaries go to work, get a good job that may lead to a career, and become
+        financially independent, all while they keep their Medicare or Medicaid.",
+        "dateLastCrawled": "2018-08-18T19:06:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
+        "name": "Log In to Online Services", "url": "https:\/\/www.ssa.gov\/ere\/ere_demo_public\/html\/EREMEREF\/eFolder\/efLogin.html",
+        "urlPingSuffix": "DevEx,5204.1", "about": [{"name": "Social Security Administration"}],
+        "displayUrl": "https:\/\/www.ssa.gov\/ere\/ere_demo_public\/html\/EREMEREF\/eFolder\/ef...",
+        "snippet": "I understand that the Social Security Administration (SSA) will
+        validate the information I provide against the information in SSA''s files.
+        I certify that: I understand that I may be subject to penalties if I submit
+        fraudulent information. I understand that SSA may prevent me from using these
+        ...", "dateLastCrawled": "2018-08-15T21:11:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
+        "name": "2018 SOCIAL SECURITY CHANGES", "url": "https:\/\/www.ssa.gov\/news\/press\/factsheets\/colafacts2018.pdf",
+        "urlPingSuffix": "DevEx,5216.1", "displayUrl": "https:\/\/www.ssa.gov\/news\/press\/factsheets\/colafacts2018.pdf",
+        "snippet": "The 7.65% tax rate is the combined rate for Social Security
+        and Medicare. The Social Security portion (OASDI) is 6.20% on earnings up
+        to the applicable", "dateLastCrawled": "2018-08-17T17:09:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Benefits Planner:
+        Disability | Social Security Administration", "url": "https:\/\/www.ssa.gov\/planners\/disability\/",
+        "urlPingSuffix": "DevEx,5228.1", "about": [{"name": "Social Security Administration"}],
+        "displayUrl": "https:\/\/www.ssa.gov\/planners\/disability", "snippet":
+        "This page describes Social Security benefits for people who become disabled.",
+        "dateLastCrawled": "2018-08-17T20:02:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
+        "name": "Social Security Office Locator, Social Security", "url": "https:\/\/secure.ssa.gov\/ICON\/msg012View.do",
+        "urlPingSuffix": "DevEx,5240.1", "displayUrl": "https:\/\/secure.ssa.gov\/ICON\/msg012View.do",
+        "snippet": "The Social Security Administration (SSA) website contains links
+        to certain websites that are not affiliated with the United States government.",
+        "dateLastCrawled": "2018-07-31T12:45:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "Social Security Matters | The Official Blog of Social Security",
+        "url": "https:\/\/blog.ssa.gov\/", "urlPingSuffix": "DevEx,5253.1", "about":
+        [{"name": "Social Security Administration"}], "displayUrl": "https:\/\/blog.ssa.gov",
+        "snippet": "While it may be best known for retirement, Social Security is
+        also here to help you get back to work if you are disabled. For millions of
+        people, work isn’t just a source of income, it’s a vital part of who they
+        are — it gives them purpose and pride — it’s a connection to community.",
+        "dateLastCrawled": "2018-08-19T00:01:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
+        "name": "Social Security for Women | Social Security Administration",
+        "url": "https:\/\/www.ssa.gov\/people\/women\/", "urlPingSuffix": "DevEx,5267.1",
+        "about": [{"name": "Social Security Administration"}], "displayUrl": "https:\/\/www.ssa.gov\/people\/women",
+        "snippet": "We are with you from day one, when your parents named you and
+        when you named your children — beginning a lifetime of security. Most parents
+        apply for their child’s Social Security number at birth, usually through
+        the hospital. When the time comes for your kid’s first job, the number is
+        already ...", "dateLastCrawled": "2018-08-20T05:13:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
+        "name": "FICA & SECA Tax Rates - Social Security Administration", "url":
+        "https:\/\/www.ssa.gov\/OACT\/ProgData\/taxRates.html", "urlPingSuffix": "DevEx,5281.1",
+        "displayUrl": "https:\/\/www.ssa.gov\/OACT\/ProgData\/taxRates.html", "snippet":
+        "Social Security''s Old-Age, Survivors, and Disability Insurance (OASDI)
+        program and Medicare''s Hospital Insurance (HI) program are financed primarily
+        by employment taxes.", "dateLastCrawled": "2018-08-11T03:47:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Social
+        Security | City of New York - nyc.gov", "url": "https:\/\/www1.nyc.gov\/nyc-resources\/service\/1254\/social-security",
+        "urlPingSuffix": "DevEx,5292.1", "about": [{"name": "Social Security Administration"}],
+        "displayUrl": "https:\/\/www1.nyc.gov\/nyc-resources\/service\/1254\/social-security",
+        "snippet": "Get information and assistance with Social Security, Disability,
+        and Supplemental Security Income (SSI).", "dateLastCrawled": "2018-08-20T06:50:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Business
+        Services | Social Security Administration", "url": "https:\/\/www.ssa.gov\/thirdparty\/business.html",
+        "urlPingSuffix": "DevEx,5305.1", "displayUrl": "https:\/\/www.ssa.gov\/thirdparty\/business.html",
+        "snippet": "Learn about issues such as reporting wages, verifying Social
+        Security numbers and doing business with the Social Security Administration.",
+        "dateLastCrawled": "2018-08-18T00:24:00.0000000Z"}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 27 Aug 2018 00:07:09 GMT
 recorded_with: VCR 4.0.0

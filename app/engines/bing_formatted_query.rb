@@ -1,4 +1,4 @@
-class AzureFormattedQuery < FormattedQuery
+class BingFormattedQuery < FormattedQuery
   DEFAULT_DOMAIN_SCOPE = 'site:gov OR site:mil'.freeze
 
   attr_reader :scope_ids

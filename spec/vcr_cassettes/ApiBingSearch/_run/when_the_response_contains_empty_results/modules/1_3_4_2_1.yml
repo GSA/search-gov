@@ -70,4 +70,74 @@ http_interactions:
         "rankingResponse": {}}'
     http_version: 
   recorded_at: Mon, 02 Jul 2018 21:49:20 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=mango%20smoothie%20(site:usa.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - my_api_key
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '242'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 27 Aug 2018 00:00:02 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=304E6FA9DA946D0E3CA963F1DB9B6CE9; path=/; expires=Sat, 21-Sep-2019 00:01:02
+        GMT; domain=bingapis.com
+      - MUIDB=304E6FA9DA946D0E3CA963F1DB9B6CE9; path=/; httponly; expires=Sat, 21-Sep-2019
+        00:01:02 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 27-Aug-2020 00:01:02 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=74DDFD93165249F8A739EB74D8DE554C&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 27-Aug-2020 00:01:02 GMT; path=/
+      - SRCHUSR=DOB=20180827; domain=.bingapis.com; expires=Thu, 27-Aug-2020 00:01:02
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=396D5D905E3F6DE83AE451C85F306C6E; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 21-Sep-2019 00:01:02 GMT; domain=bingapis.com
+      - _SS=SID=396D5D905E3F6DE83AE451C85F306C6E; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - 2BCBF156BAD3465B8712A806430E1716
+      X-Msedge-Clientid:
+      - 304E6FA9DA946D0E3CA963F1DB9B6CE9
+      X-Msapi-Userstate:
+      - '5903'
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: 2BCBF156BAD3465B8712A806430E1716 Ref B: BAYEDGE0321 Ref C: 2018-08-27T00:01:02Z'
+      Date:
+      - Mon, 27 Aug 2018 00:01:01 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=8DCBFB2D735246EA8A7FE31C293319D5&CID=304E6FA9DA946D0E3CA963F1DB9B6CE9&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=8DCBFB2D735246EA8A7FE31C293319D5&CID=304E6FA9DA946D0E3CA963F1DB9B6CE9&Type=Event.CPT&DATA=0"},
+        "rankingResponse": {}}'
+    http_version: 
+  recorded_at: Mon, 27 Aug 2018 00:01:02 GMT
 recorded_with: VCR 4.0.0

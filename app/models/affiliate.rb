@@ -596,7 +596,7 @@ class Affiliate < ActiveRecord::Base
   end
 
   def sc_search_engine
-    (search_engine == 'BingV6') ? 'Bing' : search_engine
+    (search_engine =~ %r{BingV\d+}) ? 'Bing' : search_engine
   end
 
   def status

@@ -10,7 +10,7 @@ class ApiAzureCompositeSearch < ApiCommercialSearch
   protected
 
   def instantiate_engine(options)
-    formatted_query_instance = AzureFormattedQuery.new(@query, domains_scope_options)
+    formatted_query_instance = BingFormattedQuery.new(@query, domains_scope_options)
     @formatted_query = formatted_query_instance.query
     engine_options = options.slice(:enable_highlighting,
                                    :limit,

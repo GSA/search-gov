@@ -134,6 +134,13 @@ shared_examples "a web search engine" do
 end
 
 shared_examples "an image search" do
+  let(:image_search_params) do
+    {
+      offset: 20,
+      limit: 10,
+      query: 'agncy (site:nasa.gov)',
+    }
+  end
   let(:image_search) { described_class.new(image_search_params) }
   let(:search_response) { image_search.execute_query }
 
