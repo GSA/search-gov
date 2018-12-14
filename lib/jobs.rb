@@ -13,6 +13,7 @@ module Jobs
     "|#{Date.current.year.to_s}"+
     "|#{BLOCKED_PHRASES}"+
     "|(#{SIMPLE_SINGULARS.join('|')})s?"
+  SEARCH_RADIUS = 75
 
   def self.establish_connection!
     usajobs_api_config = Rails.application.secrets.jobs
@@ -49,7 +50,8 @@ module Jobs
     { Keyword:        scrub_query(options[:query]),
       Organization:   options[:organization_codes],
       LocationName:   options[:location_name],
-      ResultsPerPage: options[:results_per_page] }
+      ResultsPerPage: options[:results_per_page],
+      Radius:         SEARCH_RADIUS }
   end
 
 end
