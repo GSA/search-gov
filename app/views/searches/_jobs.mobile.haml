@@ -10,9 +10,8 @@
       .content-block-item.content-block-item-footer.content-trigger
         = render partial: 'show_more_show_less'
   - else
-    #no-results
-      .content-block-item
-        = t(:no_job_results)
+    #no-job-results
+      = t(:no_job_results)
   .content-block-item.content-block-item-footer
     .see-more
       = link_to_more_jobs search
