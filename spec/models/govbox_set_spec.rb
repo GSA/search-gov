@@ -169,7 +169,7 @@ describe GovboxSet do
           allow(affiliate).to receive(:agency).and_return(agency)
         end
 
-        it "should call Jobs.search with the query, org codes, results per page, and location_name params" do
+        it "should call Jobs.search with the params" do
           expect(Jobs).to receive(:search).
             with(query: 'job',
                  organization_codes: 'ABCD;BCDE',

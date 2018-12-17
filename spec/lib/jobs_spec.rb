@@ -5,7 +5,7 @@ describe Jobs do
     subject(:search) do
       Jobs.search({ query:'Nursing jobs',
                     organization_codes: 'HE38',
-                    location_name: 'Washington, DC, USA',
+                    location_name: 'Baltimore, MD, USA',
                     results_per_page: 10 })
     end
     let(:usajobs_url) { 'https://data.usajobs.gov/api/search' }
@@ -18,8 +18,9 @@ describe Jobs do
       expect(a_request(:get, usajobs_url).with(
         query: { Keyword:        'Nursing',
                  Organization:   'HE38',
-                 LocationName:   'Washington, DC, USA',
-                 ResultsPerPage: 10 }
+                 LocationName:   'Baltimore, MD, USA',
+                 ResultsPerPage: 10,
+                 Radius:         75 }
       )).to have_been_made
     end
 
