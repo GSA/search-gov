@@ -16,3 +16,9 @@ enqueued:
   last_crawled_at: <%= 1.day.ago.to_s(:db) %>
   lastmod: <%= 1.week.ago.to_s(:db) %>
   enqueued_for_reindex: true
+
+crawled_more_than_month:
+  url: http://www.agency.gov/crawled_more_than_month
+  last_crawled_at: <%= 30.days.ago.to_s(:db) %>
+  lastmod: <%= 30.day.ago.to_s(:db) %>
+  last_crawl_status: 'OK'

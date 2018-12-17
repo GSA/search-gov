@@ -42,7 +42,9 @@ class SearchgovUrl < ActiveRecord::Base
   scope :fetch_required, -> do
     where('last_crawled_at IS NULL
            OR lastmod > last_crawled_at
-           OR enqueued_for_reindex')
+           OR enqueued_for_reindex
+           OR last_crawl_status = "OK" AND last_crawled_at < ? ', 30.days.ago).
+           order(last_crawled_at: :ASC)
   end
 
   class SearchgovUrlError < StandardError; end
