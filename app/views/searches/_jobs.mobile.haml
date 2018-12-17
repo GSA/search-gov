@@ -1,14 +1,18 @@
 #jobs.search.collapsible.collapsed.focus-on-next-sibling{ tabindex: -1 }
   .content-block-item.content-block-item-header
-
     = usajobs_logo
     %h3{ class: jobs_content_heading_css_classes }
       = job_openings_header(search.affiliate.agency)
-
-  - search.jobs.each_with_index do |job, index|
-    = render partial: 'job', locals: { affiliate: search.affiliate, job: job, position: index + 1 }
-  - if search.jobs.count > 3
-    .content-block-item.content-block-item-footer.content-trigger
-      = render partial: 'show_more_show_less'
+  - if search.jobs.present?
+    - search.jobs.each_with_index do |job, index|
+      = render partial: 'job', locals: { affiliate: search.affiliate, job: job, position: index + 1 }
+    - if search.jobs.count > 3
+      .content-block-item.content-block-item-footer.content-trigger
+        = render partial: 'show_more_show_less'
+  - else
+    #no-job-results
+      = t(:no_job_results)
   .content-block-item.content-block-item-footer
-    .see-more= link_to_more_jobs search
+    .see-more
+      = link_to_more_jobs search
+
