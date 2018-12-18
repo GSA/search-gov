@@ -82,7 +82,7 @@ describe SearchgovDomain do
 
     describe 'after create' do
       it 'enqueues a domain preparer job' do
-        expect{
+        expect {
           SearchgovDomain.create!(domain: domain)
         }.to have_enqueued_job(SearchgovDomainPreparerJob)
       end
@@ -115,7 +115,7 @@ describe SearchgovDomain do
 
     describe '#urls_count' do
       it 'tracks the number of associated searchgov url records' do
-        expect{
+        expect {
           searchgov_domain.searchgov_urls.create!(url: 'https://agency.gov')
         }.to change{ searchgov_domain.reload.urls_count }.by(1)
       end
@@ -187,7 +187,7 @@ describe SearchgovDomain do
     end
 
     it 'updates #activity as "indexing"' do
-      expect{ index_urls }.to change{ searchgov_domain.activity }.
+      expect { index_urls }.to change{ searchgov_domain.activity }.
         from('idle').to('indexing')
     end
 
@@ -201,7 +201,7 @@ describe SearchgovDomain do
       end
 
       it 'does not raise an error' do
-        expect{ index_urls }.not_to raise_error
+        expect { index_urls }.not_to raise_error
       end
 
       it 'logs a message that the domain is being indexed' do
@@ -258,7 +258,7 @@ describe SearchgovDomain do
       before { stub_request(:get, 'http://agency.gov').to_return(status: 200) }
 
       it 'sets the status to 200' do
-        expect{ check_status }.to change{ searchgov_domain.reload.status }.from(nil).to('200 OK')
+        expect { check_status }.to change{ searchgov_domain.reload.status }.from(nil).to('200 OK')
       end
 
       it 'returns the status' do
@@ -270,7 +270,7 @@ describe SearchgovDomain do
       before { stub_request(:get, 'http://agency.gov').to_return(status: [403, 'Forbidden']) }
 
       it 'sets the status to the error code'  do
-       expect{ check_status }.to change{ searchgov_domain.reload.status }.from(nil).to('403 Forbidden')
+       expect { check_status }.to change{ searchgov_domain.reload.status }.from(nil).to('403 Forbidden')
       end
     end
 
@@ -281,7 +281,7 @@ describe SearchgovDomain do
       end
 
       it 'sets the status to the error code'  do
-        expect{ check_status }.to raise_error(SearchgovDomain::DomainError, 'agency.gov: kaboom')
+        expect { check_status }.to raise_error(SearchgovDomain::DomainError, 'agency.gov: kaboom')
         expect(searchgov_domain.reload.status).to eq 'kaboom'
       end
 
@@ -308,13 +308,13 @@ describe SearchgovDomain do
         let(:new_url) { 'https://agency.gov/' }
 
         it 'sets the status to 200 OK' do
-          expect{ check_status }.to change{
+          expect { check_status }.to change{
             searchgov_domain.reload.status
           }.from(nil).to('200 OK')
         end
 
         it 'sets the scheme to "https"' do
-          expect{ check_status }.to change{
+          expect { check_status }.to change{
             searchgov_domain.reload.scheme
           }.from('http').to('https')
         end
@@ -324,13 +324,13 @@ describe SearchgovDomain do
         let(:new_url) { 'https://new.agency.gov' }
 
         it 'reports the canonical domain' do
-          expect{ check_status }.to change{
+          expect { check_status }.to change{
             searchgov_domain.reload.canonical_domain
           }.from(nil).to('new.agency.gov')
         end
 
         it 'sets the status to 200 OK' do
-          expect{ check_status }.to change{
+          expect { check_status }.to change{
             searchgov_domain.reload.status
           }.from(nil).to('200 OK')
         end
@@ -347,7 +347,7 @@ describe SearchgovDomain do
       subject(:index) { searchgov_domain.index }
 
       it 'changes the activity to "indexing"' do
-        expect{ index }.to change{ searchgov_domain.activity }.
+        expect { index }.to change{ searchgov_domain.activity }.
           from('idle').to('indexing')
       end
     end
@@ -357,7 +357,7 @@ describe SearchgovDomain do
       subject(:done_indexing) { searchgov_domain.done_indexing }
 
       it 'changes the activity to "idle"' do
-        expect{ done_indexing }.to change{ searchgov_domain.activity }.
+        expect { done_indexing }.to change{ searchgov_domain.activity }.
           from('indexing').to('idle')
       end
     end
