@@ -43,7 +43,7 @@ class SearchgovUrl < ActiveRecord::Base
     where('last_crawled_at IS NULL
            OR lastmod > last_crawled_at
            OR enqueued_for_reindex
-           OR (last_crawl_status = "OK" AND last_crawled_at < ?)', 30.days.ago).
+           OR (last_crawl_status = "OK" AND last_crawled_at < ?)', 1.month.ago).
            order(last_crawled_at: :ASC)
   end
 
