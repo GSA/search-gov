@@ -113,8 +113,8 @@ class GovboxSet
 
       if job_results.present?
         @jobs = JobResultsPostProcessor.new(results: job_results)&.post_processed_results
-        @modules << 'JOBS'
       end
+      @modules << 'JOBS' if Jobs.query_eligible?(@query)
     end
   end
 
