@@ -42,8 +42,9 @@ class SearchgovDomain < ActiveRecord::Base
   end
 
   def check_status
-    self.status, self.scheme = response.status, response.uri.scheme
-    self.canonical_domain = host if domain != host
+    self.status = response.status
+    self.scheme = response.uri.scheme
+    self.canonical_domain = host unless domain == host
 
     save if changed?
     status
