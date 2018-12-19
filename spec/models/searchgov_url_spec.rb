@@ -39,6 +39,11 @@ describe SearchgovUrl do
         expect(SearchgovUrl.fetch_required.pluck(:url)).
           to include 'http://www.agency.gov/enqueued'
       end
+
+      it 'includes urls last crawled more than 30 days and crawl status is ok' do
+        expect(SearchgovUrl.fetch_required.pluck(:url)).
+          to include 'http://www.agency.gov/crawled_more_than_month'
+      end
     end
   end
 

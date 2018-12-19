@@ -68,7 +68,7 @@ shared_examples_for 'a record with a fetchable url' do
       describe '.ok' do
         it 'includes successfully fetched records' do
           expect(described_class.ok.pluck(:url)).
-            to match_array ['http://agency.gov/ok']
+            to include 'http://agency.gov/ok'
         end
       end
 
