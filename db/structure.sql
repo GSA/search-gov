@@ -1132,6 +1132,7 @@ CREATE TABLE `searchgov_domains` (
   `updated_at` datetime NOT NULL,
   `scheme` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'http',
   `activity` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'idle',
+  `canonical_domain` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_searchgov_domains_on_domain` (`domain`(100)),
   KEY `index_searchgov_domains_on_status` (`status`(100)),
@@ -1560,7 +1561,7 @@ CREATE TABLE `youtube_profiles` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-11-21 16:13:19
+-- Dump completed on 2018-12-17 14:12:16
 INSERT INTO schema_migrations (version) VALUES ('20090818003200');
 
 INSERT INTO schema_migrations (version) VALUES ('20090827135344');
@@ -3004,4 +3005,6 @@ INSERT INTO schema_migrations (version) VALUES ('20180621213347');
 INSERT INTO schema_migrations (version) VALUES ('20181025225740');
 
 INSERT INTO schema_migrations (version) VALUES ('20181109212904');
+
+INSERT INTO schema_migrations (version) VALUES ('20181213153332');
 
