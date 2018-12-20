@@ -3,7 +3,10 @@ class Admin::SearchgovDomainsController < Admin::AdminController
     config.label = 'Search.gov Domains'
     config.actions = %i[create list search export nested]
     config.create.columns = [:domain]
-    config.columns = %i[id domain status activity urls_count unfetched_urls_count created_at]
+    config.columns = %i[
+      id domain canonical_domain status activity
+      urls_count unfetched_urls_count created_at
+    ]
     config.nested.add_link(:searchgov_urls, label: "URLs", page: false)
     config.nested.add_link(:sitemaps, page: false)
   end
