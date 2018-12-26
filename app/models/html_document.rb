@@ -52,7 +52,7 @@ class HtmlDocument < WebDocument
     # convert custom tags to plain 'ol divs to ensure they are not
     # stripped out during HTML sanitization
     Loofah::Scrubber.new do |node|
-      node.name = 'div' if /-/ === node.name
+      node.name = 'div' if /-/.match(node.name)
     end
   end
 
