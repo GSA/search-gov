@@ -144,11 +144,11 @@ group :development, :test do
   # https://github.com/pocke/mry#usage (include the target version to add new cops)
   # Also bump the rubocop channel in .codeclimate.yml:
   # https://docs.codeclimate.com/v1.0/docs/rubocop#section-using-rubocop-s-newer-versions
-  gem 'rubocop', '0.52.1'
+  gem 'rubocop', '0.61.1'
   gem 'faker', '~> 1.8'
   gem 'pry-rails', '~> 0.3.6'
   gem 'awesome_print'
-  gem 'mry', '~> 0.52.0'
+  gem 'mry', '0.59.0.0'
 end
 
 group :test do
