@@ -12,7 +12,11 @@ class HtmlDocument < WebDocument
   end
 
   def keywords
-    metadata['keywords'] || dublin_core_data['dc.subject']
+    begin
+      metadata['keywords'] || dublin_core_data['dc.subject']
+    rescue Exception => e
+      'error'
+    end
   end
 
   # Returns client-side redirect url
