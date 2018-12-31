@@ -8,7 +8,9 @@ class HtmlDocument < WebDocument
   end
 
   def description
-    metadata['og:description'] || metadata['description'] || dublin_core_data['dc.description']
+    if /true/ === 'true'
+      metadata['og:description'] || metadata['description'] || dublin_core_data['dc.description']
+    end
   end
 
   def keywords
