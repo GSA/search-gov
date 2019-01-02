@@ -1,5 +1,5 @@
 ---
-plugins:
+engins:
   brakeman:
     enabled: true
     exclude_fingerprints:
@@ -23,7 +23,7 @@ plugins:
     enabled: true
   rubocop:
     enabled: true
-    channel: rubocop-0-60-0
+    channel: rubocop-0-60
 ratings:
   paths:
   - app/
