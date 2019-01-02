@@ -2063,12 +2063,6 @@ Performance/LstripRstrip:
   Enabled: true
   VersionAdded: '0.36'
 
-Performance/OpenStruct:
-  Description: 'Use `Struct` instead of `OpenStruct`.'
-  Enabled: false
-  VersionAdded: '0.61'
-  Safe: false
-
 Performance/RangeInclude:
   Description: 'Use `Range#cover?` instead of `Range#include?`.'
   Reference: 'https://github.com/JuanitoFatas/fast-ruby#cover-vs-include-code'
@@ -3253,14 +3247,6 @@ Style/ImplicitRuntimeError:
   Enabled: false
   VersionAdded: '0.41'
 
-Style/InfiniteLoop:
-  Description: 'Use Kernel#loop for infinite loops.'
-  StyleGuide: '#infinite-loop'
-  Enabled: true
-  VersionAdded: '0.26'
-  VersionChanged: '0.61'
-  SafeAutoCorrect: true
-
 Style/InlineComment:
   Description: 'Avoid trailing inline comments.'
   Enabled: false
@@ -3331,21 +3317,6 @@ Style/LineEndConcatenation:
                  line end.
   Enabled: true
   VersionAdded: '0.18'
-
-Style/MethodCallWithArgsParentheses:
-  Description: 'Use parentheses for method calls with arguments.'
-  StyleGuide: '#method-invocation-parens'
-  Enabled: false
-  VersionAdded: '0.47'
-  VersionChanged: '0.61'
-  IgnoreMacros: true
-  IgnoredMethods: []
-  AllowParenthesesInMultilineCall: false
-  AllowParenthesesInChaining: false
-  EnforcedStyle: require_parentheses
-  SupportedStyles:
-    - require_parentheses
-    - omit_parentheses
 
 Style/MethodCallWithoutArgsParentheses:
   Description: 'Do not use parentheses for method calls with no arguments.'
