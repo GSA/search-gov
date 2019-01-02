@@ -2493,12 +2493,12 @@ Rails/SafeNavigation:
   # `try` and `try!` work slightly differently. `try!` and safe navigation will
   # both raise a `NoMethodError` if the receiver of the method call does not
   # implement the intended method. `try` will not raise an exception for this.
-  ConvertTry: false
+  ConvertTry: true
 
 Rails/SaveBang:
   Description: 'Identifies possible cases where Active Record save! or related should be used.'
   StyleGuide: 'https://github.com/rubocop-hq/rails-style-guide#save-bang'
-  Enabled: true
+  Enabled: false
   VersionAdded: '0.42'
   VersionChanged: '0.59'
   AllowImplicitReturn: true
