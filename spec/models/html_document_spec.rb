@@ -240,7 +240,9 @@ describe HtmlDocument do
     end
 
     context 'when the html contains a script' do
-      let(:raw_document) { "no script<script>alert('OHAI')</script>" }
+      let(:raw_document) do
+        '<html><body>no script<script>alert("OHAI")</script></body></html>'
+      end
 
       it 'removes the script' do
         expect(parsed_content).to eq 'no script'
@@ -248,7 +250,9 @@ describe HtmlDocument do
     end
 
     context 'when the html contains style tags' do
-      let(:raw_document) { "<style>h1 {color:red;}</style>no style" }
+      let(:raw_document) do
+        '<html><body><style>h1 {color:red;}</style>no style</body></html>'
+      end
 
       it 'removes the style' do
         expect(parsed_content).to eq 'no style'
@@ -325,6 +329,12 @@ describe HtmlDocument do
       let(:raw_document) { '<html></html>' }
 
       it { is_expected.to eq '' }
+    end
+
+    context 'when the html contains custom tags' do
+      let(:raw_document) { '<custom-tag>content</custom-tag>' }
+
+      it { is_expected.to eq 'content' }
     end
   end
 
