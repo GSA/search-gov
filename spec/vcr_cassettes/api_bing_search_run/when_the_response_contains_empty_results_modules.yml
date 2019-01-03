@@ -1,0 +1,73 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=mango%20smoothie%20(site:usa.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - my_api_key
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '243'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Thu, 03 Jan 2019 18:33:42 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=1D10C7F9A7D86E490133CB20A60F6F69; path=/; expires=Tue, 28-Jan-2020 18:34:42
+        GMT; domain=bingapis.com
+      - MUIDB=1D10C7F9A7D86E490133CB20A60F6F69; path=/; httponly; expires=Tue, 28-Jan-2020
+        18:34:42 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 03-Jan-2021 18:34:42 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=5563217E0B3248F898F3D4650F79AA74&dmnchg=1; domain=.bingapis.com;
+        expires=Sun, 03-Jan-2021 18:34:42 GMT; path=/
+      - SRCHUSR=DOB=20190103; domain=.bingapis.com; expires=Sun, 03-Jan-2021 18:34:42
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=201D44D7FF2D64300C32480EFEFA6501; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Tue, 28-Jan-2020 18:34:42 GMT; domain=bingapis.com
+      - _SS=SID=201D44D7FF2D64300C32480EFEFA6501; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - AF41E7E1D1F34598AE968CA59431A8E3
+      X-Msedge-Clientid:
+      - 1D10C7F9A7D86E490133CB20A60F6F69
+      X-Msapi-Userstate:
+      - 6d0f
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: AF41E7E1D1F34598AE968CA59431A8E3 Ref B: CO1EDGE0322 Ref C: 2019-01-03T18:34:42Z'
+      Date:
+      - Thu, 03 Jan 2019 18:34:41 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=76D080052A4849BC988A5F9E71D36B4F&CID=1D10C7F9A7D86E490133CB20A60F6F69&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=76D080052A4849BC988A5F9E71D36B4F&CID=1D10C7F9A7D86E490133CB20A60F6F69&Type=Event.CPT&DATA=0"},
+        "rankingResponse": {}}'
+    http_version: 
+  recorded_at: Thu, 03 Jan 2019 18:34:42 GMT
+recorded_with: VCR 4.0.0
