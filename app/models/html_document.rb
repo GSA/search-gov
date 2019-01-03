@@ -52,7 +52,7 @@ class HtmlDocument < WebDocument
     Loofah::Scrubber.new do |node|
       # convert custom tags to plain 'ol divs to ensure they are not
       # stripped out during HTML sanitization
-      node.name = 'div' if /-/.match(node.name)
+      node.name = 'div' if node.name =~ /-/
 
       # omit common elements
       node.remove if %w[footer nav].include?(node.name)
