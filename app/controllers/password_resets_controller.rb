@@ -1,8 +1,8 @@
 class PasswordResetsController < ApplicationController
   before_filter :require_no_user
-  before_filter :load_user_using_perishable_token, :only => [:edit, :update]
+  before_filter :load_user_using_perishable_token, only: %i[edit update]
   before_filter :load_user_by_email, only: [:create]
-  before_filter :reject_not_approved_user, only: [:create, :edit, :update]
+  before_filter :reject_not_approved_user, only: %i[create edit update]
 
   def edit
     render
@@ -12,10 +12,10 @@ class PasswordResetsController < ApplicationController
     @user.require_password = true
     @user.password = params[:user][:password]
     if @user.save
-      flash[:notice] = "Password successfully updated"
+      flash[:notice] = 'Password successfully updated'
       redirect_to account_path
     else
-      render :action => :edit
+      render action: :edit
     end
   end
 
@@ -24,13 +24,10 @@ class PasswordResetsController < ApplicationController
   end
 
   def create
-    if @user
-      @user.deliver_password_reset_instructions!
-      flash.now[:notice] = "Instructions to reset your password have been emailed to you. Please check your email."
-    else
-      flash.now[:notice] = "No user was found with that email address"
-    end
-    render :action => :new
+    @user&.deliver_password_reset_instructions!
+    flash.now[:notice] = 'Instructions to reset your password have been \
+                          emailed to you. Please check your email.'
+    render action: :new
   end
 
   private
@@ -47,13 +44,17 @@ class PasswordResetsController < ApplicationController
   end
 
   def reject_not_approved_user
-    if @user && @user.is_not_approved?
-      redirect_to new_password_reset_path, flash: { notice: I18n.t('authlogic.error_messages.not_approved') }
+    if @user&.is_not_approved?
+      redirect_to new_password_reset_path, flash: {
+        notice: I18n.t('authlogic.error_messages.not_approved')
+      }
       false
     end
   end
 
   def invalid_token_message
-    "Sorry! This password reset link is invalid or expired. Password reset links are valid for one hour. Please enter your email below to receive a new link."
+    'Sorry! This password reset link is invalid or expired. \
+     Password reset links are valid for one hour. Please enter \
+     your email below to receive a new link.'
   end
 end
