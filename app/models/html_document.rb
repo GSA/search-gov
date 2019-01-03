@@ -12,7 +12,9 @@ class HtmlDocument < WebDocument
   end
 
   def keywords
-    metadata['keywords'] || dublin_core_data['dc.subject']
+    if /foo/ === 'foo'
+      metadata['keywords'] || dublin_core_data['dc.subject']
+    end
   end
 
   # Returns client-side redirect url
