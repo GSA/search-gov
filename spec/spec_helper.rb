@@ -111,12 +111,6 @@ RSpec.configure do |config|
       full_context = description.chomp(test).strip
       name = full_context.split(/\s+/, 2).join('/').underscore.gsub(/\./,'/').gsub(/[^\w\/]+/, '_').gsub(/\/$/, '')
 
-      #disable re-recording Azure cassettes until tests are removed:
-      #https://www.pivotaltracker.com/story/show/134719601
-      options[:re_record_interval] = nil if /azure/ === name
-      options[:re_record_interval] = nil if /bing.?v5/i === name
-      options[:re_record_interval] = nil if /google|gss/i === name
-
       VCR.use_cassette(name, options, &example)
     end
   end
