@@ -25,9 +25,9 @@ class PasswordResetsController < ApplicationController
 
   def create
     @user&.deliver_password_reset_instructions!
-    flash.now[:notice] = 'Instructions to reset your password have been \
-                          emailed to you. Please check your email.'
-    render action: :new
+    flash.now[:notice] = 'Instructions to reset your password have been '\
+                         'emailed to you. Please check your email.'
+
   end
 
   private
@@ -53,8 +53,8 @@ class PasswordResetsController < ApplicationController
   end
 
   def invalid_token_message
-    'Sorry! This password reset link is invalid or expired. \
-     Password reset links are valid for one hour. Please enter \
-     your email below to receive a new link.'
+    'Sorry! This password reset link is invalid or expired.' \
+    'Password reset links are valid for one hour. Please enter' \
+    'your email below to receive a new link.'
   end
 end
