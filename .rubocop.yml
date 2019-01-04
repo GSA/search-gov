@@ -369,7 +369,7 @@ Layout/CaseIndentation:
 Layout/ClassStructure:
   Description: 'Enforces a configured order of definitions within a class body.'
   StyleGuide: 'https://github.com/rubocop-hq/ruby-style-guide#consistent-classes'
-  Enabled: false
+  Enabled: true
   VersionAdded: 0.52
   Categories:
     module_inclusion:
@@ -428,7 +428,7 @@ Layout/DotPosition:
   StyleGuide: '#consistent-multi-line-chains'
   Enabled: true
   VersionAdded: 0.49
-  EnforcedStyle: leading
+  EnforcedStyle: trailing
   SupportedStyles:
     - leading
     - trailing
@@ -496,7 +496,7 @@ Layout/EmptyLinesAroundBlockBody:
   StyleGuide: '#empty-lines-around-bodies'
   Enabled: true
   VersionAdded: 0.49
-  EnforcedStyle: no_empty_lines
+  EnforcedStyle: empty_lines
   SupportedStyles:
     - empty_lines
     - no_empty_lines
@@ -1620,7 +1620,7 @@ Metrics/AbcSize:
   Description: >-
                  A calculated magnitude based on number of assignments,
                  branches, and conditions.
-  Reference: 'http://c2.com/cgi/wiki?AbcMetric'
+  Reference: 'https://c2.com/cgi/wiki?AbcMetric'
   Enabled: true
   VersionAdded: 0.27
   # The ABC size is a calculated magnitude, so this number can be an Integer or
@@ -2176,7 +2176,7 @@ Performance/UriDefaultParser:
 # By default, the rails cops are not run. Override in project or home
 # directory .rubocop.yml files, or by giving the -R/--rails option.
 Rails:
-  Enabled: false
+  Enabled: true
 
 Rails/ActionFilter:
   Description: 'Enforces consistent use of action filter methods.'
@@ -2479,7 +2479,7 @@ Rails/RequestReferer:
 Rails/ReversibleMigration:
   Description: 'Checks whether the change method of the migration file is reversible.'
   StyleGuide: 'https://github.com/rubocop-hq/rails-style-guide#reversible-migration'
-  Reference: 'http://api.rubyonrails.org/classes/ActiveRecord/Migration/CommandRecorder.html'
+  Reference: 'https://api.rubyonrails.org/classes/ActiveRecord/Migration/CommandRecorder.html'
   Enabled: true
   VersionAdded: 0.47
   Include:
@@ -2515,7 +2515,7 @@ Rails/SkipsModelValidations:
   Description: >-
                  Use methods that skips model validations with caution.
                  See reference for more information.
-  Reference: 'http://guides.rubyonrails.org/active_record_validations.html#skipping-validations'
+  Reference: 'https://guides.rubyonrails.org/active_record_validations.html#skipping-validations'
   Enabled: true
   VersionAdded: 0.47
   VersionChanged: 0.59
@@ -2586,7 +2586,7 @@ Security/JSONLoad:
   Description: >-
                  Prefer usage of `JSON.parse` over `JSON.load` due to potential
                  security issues. See reference for more information.
-  Reference: 'http://ruby-doc.org/stdlib-2.3.0/libdoc/json/rdoc/JSON.html#method-i-load'
+  Reference: 'https://ruby-doc.org/stdlib-2.3.0/libdoc/json/rdoc/JSON.html#method-i-load'
   Enabled: true
   VersionAdded: 0.43
   VersionChanged: 0.44
@@ -2599,7 +2599,7 @@ Security/MarshalLoad:
   Description: >-
                  Avoid using of `Marshal.load` or `Marshal.restore` due to potential
                  security issues. See reference for more information.
-  Reference: 'http://ruby-doc.org/core-2.3.3/Marshal.html#module-Marshal-label-Security+considerations'
+  Reference: 'https://ruby-doc.org/core-2.3.3/Marshal.html#module-Marshal-label-Security+considerations'
   Enabled: true
   VersionAdded: 0.47
 
@@ -3139,7 +3139,7 @@ Style/FormatString:
   Enabled: true
   VersionAdded: 0.19
   VersionChanged: 0.49
-  EnforcedStyle: format
+  EnforcedStyle: sprintf
   SupportedStyles:
     - format
     - sprintf
@@ -3344,7 +3344,7 @@ Style/LineEndConcatenation:
 Style/MethodCallWithArgsParentheses:
   Description: 'Use parentheses for method calls with arguments.'
   StyleGuide: '#method-invocation-parens'
-  Enabled: false
+  Enabled: true
   VersionAdded: 0.47
   VersionChanged: 0.48
   IgnoreMacros: true
