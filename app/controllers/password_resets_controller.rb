@@ -27,7 +27,7 @@ class PasswordResetsController < ApplicationController
     @user&.deliver_password_reset_instructions!
     flash.now[:notice] = 'Instructions to reset your password have been '\
                          'emailed to you. Please check your email.'
-
+    render :action => :new
   end
 
   private

@@ -1,17 +1,21 @@
 require 'spec_helper'
 
+NOT_AUTHORIZED_MESSAGE = 'You are not authorized to access Search.gov.'.freeze
+RESET_PASSWORD_MESSAGE = 'Instructions to reset your password have been ' \
+                         'emailed to you. Please check your email.'.freeze
+
 describe PasswordResetsController do
-  context "when unknown token is passed in" do
-    it "should redirect to the password reset page" do
-      get :edit, :id=>"fail"
+  context 'when unknown token is passed in' do
+    it 'should redirect to the password reset page' do
+      get :edit, id: 'fail'
       expect(response).to redirect_to(new_password_reset_path)
     end
   end
 
   describe '#create' do
     context 'when params[:email] is not a string' do
-      before { post :create, email: { 'foo' => 'bar' } }
-      it { is_expected.to set_flash.now.to(/Instructions to reset your password have beenemailed to you. Please check your email./) }
+      before { post :create, email: { 'foo': 'bar' } }
+      it { is_expected.to set_flash.now.to(/#{RESET_PASSWORD_MESSAGE}/) }
     end
 
     context 'when User is not approved' do
@@ -22,7 +26,7 @@ describe PasswordResetsController do
         post :create, email: 'not_approved@email.gov'
       end
 
-      it { is_expected.to set_flash[:notice].to(/You are not authorized to access Search.gov./) }
+      it { is_expected.to set_flash[:notice].to(/#{NOT_AUTHORIZED_MESSAGE}/) }
       it { is_expected.to redirect_to(new_password_reset_path) }
     end
   end
@@ -36,7 +40,7 @@ describe PasswordResetsController do
         get :edit, id: 'my token'
       end
 
-      it { is_expected.to set_flash[:notice].to(/You are not authorized to access Search.gov./) }
+      it { is_expected.to set_flash[:notice].to(/#{NOT_AUTHORIZED_MESSAGE}/) }
       it { is_expected.to redirect_to(new_password_reset_path) }
     end
   end
@@ -50,7 +54,7 @@ describe PasswordResetsController do
         put :update, id: 'my token'
       end
 
-      it { is_expected.to set_flash[:notice].to(/You are not authorized to access Search.gov./) }
+      it { is_expected.to set_flash[:notice].to(/#{NOT_AUTHORIZED_MESSAGE}/) }
       it { is_expected.to redirect_to(new_password_reset_path) }
     end
   end

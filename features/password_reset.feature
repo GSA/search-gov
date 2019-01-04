@@ -44,7 +44,7 @@ Feature: Password Reset
     And I follow "Forgot your password?"
     When I fill in "email" with "notarealuser@fixtures.org"
     And I press "Email me a link to reset my password"
-    Then I should see "Instructions to reset your password have beenemailed to you. Please check your email."
+    Then I should see "Instructions to reset your password have been emailed to you. Please check your email."
     And I should be on the password reset page
 
   Scenario: Trying to reuse the same password
