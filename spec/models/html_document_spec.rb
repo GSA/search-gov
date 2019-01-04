@@ -336,6 +336,26 @@ describe HtmlDocument do
 
       it { is_expected.to eq 'content' }
     end
+
+    context 'when the HTML includes a nav element' do
+      let(:raw_document) do
+        '<html><body><nav>Menu</nav>content</body></html>'
+      end
+
+      it 'omits the nav bar content' do
+        expect(parsed_content).to eq 'content'
+      end
+    end
+
+    context 'when the HTML includes a footer element' do
+      let(:raw_document) do
+        '<html><body>content<footer>footer</footer></body></html>'
+      end
+
+      it 'omits the footer content' do
+        expect(parsed_content).to eq 'content'
+      end
+    end
   end
 
   describe '#redirect_url' do
@@ -386,7 +406,6 @@ describe HtmlDocument do
         it 'encodes the characters' do
           expect(redirect_url).to eq 'https://www.foo.gov/my%7Curl%E2%80%99s_weird?!'
         end
-
       end
     end
   end
