@@ -5,6 +5,10 @@ module I14yCollections
     @i14y_connection ||= I14y.establish_connection!
   end
 
+  def self.cached_connection
+    @cached_connection ||= I14y.cached_connection
+  end
+
   def self.create(handle, token)
     params = { handle: handle, token: token }
     response = i14y_connection.post API_ENDPOINT, params
@@ -22,7 +26,7 @@ module I14yCollections
   end
 
   def self.search(params)
-    response = i14y_connection.get "#{API_ENDPOINT}/search", params
-    response.body
+    response = cached_connection.get "#{API_ENDPOINT}/search", params
+    response.response.body
   end
 end
