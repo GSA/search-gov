@@ -21,4 +21,10 @@ module I14y
   def self.admin_password
     Rails.application.secrets.i14y['admin_password']
   end
+
+  def self.cached_connection
+    CachedSearchApiConnection.new('i14y', host, I14Y_CACHE_DURATION).tap do |conn|
+      conn.basic_auth(admin_user, admin_password)
+    end
+  end
 end
