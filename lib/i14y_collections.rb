@@ -1,28 +1,35 @@
+# frozen_string_literal: true
+
+# API wrapper methods for I14Y
 module I14yCollections
-  API_ENDPOINT = "/api/v1/collections"
+  API_ENDPOINT = '/api/v1/collections'
 
   def self.i14y_connection
     @i14y_connection ||= I14y.establish_connection!
   end
 
+  def self.cached_connection
+    @cached_connection ||= I14y.cached_connection
+  end
+
   def self.create(handle, token)
     params = { handle: handle, token: token }
-    response = i14y_connection.post API_ENDPOINT, params
+    response = i14y_connection.post(API_ENDPOINT, params)
     response.body
   end
 
   def self.delete(handle)
-    response = i14y_connection.delete "#{API_ENDPOINT}/#{handle}"
+    response = i14y_connection.delete("#{API_ENDPOINT}/#{handle}")
     response.body
   end
 
   def self.get(handle)
-    response = i14y_connection.get "#{API_ENDPOINT}/#{handle}"
+    response = i14y_connection.get("#{API_ENDPOINT}/#{handle}")
     response.body
   end
 
   def self.search(params)
-    response = i14y_connection.get "#{API_ENDPOINT}/search", params
-    response.body
+    response = cached_connection.get("#{API_ENDPOINT}/search", params)
+    response.response.body
   end
 end
