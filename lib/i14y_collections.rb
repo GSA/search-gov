@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# API wrapper methods for I14Y
 module I14yCollections
   API_ENDPOINT = '/api/v1/collections'
 
