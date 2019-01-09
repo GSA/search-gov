@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 module I14yCollections
-  API_ENDPOINT = "/api/v1/collections"
+  API_ENDPOINT = '/api/v1/collections'
 
   def self.i14y_connection
     @i14y_connection ||= I14y.establish_connection!
@@ -11,22 +13,22 @@ module I14yCollections
 
   def self.create(handle, token)
     params = { handle: handle, token: token }
-    response = i14y_connection.post API_ENDPOINT, params
+    response = i14y_connection.post(API_ENDPOINT, params)
     response.body
   end
 
   def self.delete(handle)
-    response = i14y_connection.delete "#{API_ENDPOINT}/#{handle}"
+    response = i14y_connection.delete("#{API_ENDPOINT}/#{handle}")
     response.body
   end
 
   def self.get(handle)
-    response = i14y_connection.get "#{API_ENDPOINT}/#{handle}"
+    response = i14y_connection.get("#{API_ENDPOINT}/#{handle}")
     response.body
   end
 
   def self.search(params)
-    response = cached_connection.get "#{API_ENDPOINT}/search", params
+    response = cached_connection.get("#{API_ENDPOINT}/search", params)
     response.response.body
   end
 end
