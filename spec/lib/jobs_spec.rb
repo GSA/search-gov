@@ -44,8 +44,9 @@ describe Jobs do
       end
 
       it 'returns blank when the query is a generic job keyword' do
-        %w[ position opening posting job employment trabajo puesto empleo
-            vacante opportunity vacancy posicion ocupacion oportunidad].each do |query|
+        %w[ position opening posting job employment career trabajo
+            carrera puesto empleo vacante opportunity vacancy posicion
+            ocupacion oportunidad ].each do |query|
           expect(Jobs.scrub_query(query)).to eq('')
         end
       end
