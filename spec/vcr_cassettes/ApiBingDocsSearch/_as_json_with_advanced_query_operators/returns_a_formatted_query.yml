@@ -2,76 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=10&mkt=en-US&offset=0&q=healthy%20snack%20-kittens%20(chili%20OR%20cheese%20OR%20fries)%20(site:usa.gov)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Ocp-Apim-Subscription-Key:
-      - "<BING_V6_APP_ID>"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Content-Length:
-      - '241'
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Mon, 02 Jul 2018 21:57:04 GMT
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      Set-Cookie:
-      - MUID=195AFB44BA3862E12187F764BBEF63E0; path=/; expires=Sat, 27-Jul-2019 21:58:04
-        GMT; domain=bingapis.com
-      - MUIDB=195AFB44BA3862E12187F764BBEF63E0; path=/; httponly; expires=Sat, 27-Jul-2019
-        21:58:04 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 02-Jul-2020 21:58:04 GMT;
-        path=/
-      - SRCHUID=V=2&GUID=308E2F98153B44C5990FC60C837C5D0D&dmnchg=1; domain=.bingapis.com;
-        expires=Thu, 02-Jul-2020 21:58:04 GMT; path=/
-      - SRCHUSR=DOB=20180702; domain=.bingapis.com; expires=Thu, 02-Jul-2020 21:58:04
-        GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=0308091073E06ABC23D1053072376B27; path=/; httponly;
-        domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sat, 27-Jul-2019 21:58:04 GMT; domain=bingapis.com
-      - _SS=SID=0308091073E06ABC23D1053072376B27; domain=.bingapis.com; path=/
-      Bingapis-Traceid:
-      - E604CBA3E68B4484B74C097DB95AC063
-      X-Msedge-Clientid:
-      - 195AFB44BA3862E12187F764BBEF63E0
-      X-Msapi-Userstate:
-      - c9da
-      Bingapis-Market:
-      - en-US
-      X-Msedge-Ref:
-      - 'Ref A: E604CBA3E68B4484B74C097DB95AC063 Ref B: CO1EDGE0508 Ref C: 2018-07-02T21:58:04Z'
-      Date:
-      - Mon, 02 Jul 2018 21:58:04 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=CD446184411F4EDFA4EAA8F01E16A8F3&CID=195AFB44BA3862E12187F764BBEF63E0&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=CD446184411F4EDFA4EAA8F01E16A8F3&CID=195AFB44BA3862E12187F764BBEF63E0&Type=Event.CPT&DATA=0"},
-        "rankingResponse": {}}'
-    http_version: 
-  recorded_at: Mon, 02 Jul 2018 21:58:04 GMT
-- request:
-    method: get
     uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=10&mkt=en-US&offset=0&q=healthy%20snack%20-kittens%20(chili%20OR%20cheese%20OR%20fries)%20(site:usa.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
     body:
       encoding: US-ASCII
@@ -97,47 +27,47 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '242'
+      - '243'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Sun, 26 Aug 2018 23:59:56 GMT
+      - Thu, 10 Jan 2019 19:55:35 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=0269058F185F6A480B3309D719506B48; path=/; expires=Sat, 21-Sep-2019 00:00:56
+      - MUID=127C083BA0476FCE27EF04DBA1906E4C; path=/; expires=Tue, 04-Feb-2020 19:56:35
         GMT; domain=bingapis.com
-      - MUIDB=0269058F185F6A480B3309D719506B48; path=/; httponly; expires=Sat, 21-Sep-2019
-        00:00:56 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 27-Aug-2020 00:00:56 GMT;
+      - MUIDB=127C083BA0476FCE27EF04DBA1906E4C; path=/; httponly; expires=Tue, 04-Feb-2020
+        19:56:35 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 10-Jan-2021 19:56:35 GMT;
         path=/
-      - SRCHUID=V=2&GUID=4475B4725CA948058547D6FAEE6DC021&dmnchg=1; domain=.bingapis.com;
-        expires=Thu, 27-Aug-2020 00:00:56 GMT; path=/
-      - SRCHUSR=DOB=20180827; domain=.bingapis.com; expires=Thu, 27-Aug-2020 00:00:56
+      - SRCHUID=V=2&GUID=128514A56CE841ED8254FAE7E87BD24E&dmnchg=1; domain=.bingapis.com;
+        expires=Sun, 10-Jan-2021 19:56:35 GMT; path=/
+      - SRCHUSR=DOB=20190110; domain=.bingapis.com; expires=Sun, 10-Jan-2021 19:56:35
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=06662B35C5496EDD2678276DC4466F05; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=2DC0D9A4252F61253980D54424F86078; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sat, 21-Sep-2019 00:00:56 GMT; domain=bingapis.com
-      - _SS=SID=06662B35C5496EDD2678276DC4466F05; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Tue, 04-Feb-2020 19:56:35 GMT; domain=bingapis.com
+      - _SS=SID=2DC0D9A4252F61253980D54424F86078; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 3425E54E2AE7466889F77D2A164994BE
+      - E36BEB585635413A851F64F146B62DDB
       X-Msedge-Clientid:
-      - '0269058F185F6A480B3309D719506B48'
+      - 127C083BA0476FCE27EF04DBA1906E4C
       X-Msapi-Userstate:
-      - ae06
+      - 6b5f
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 3425E54E2AE7466889F77D2A164994BE Ref B: BAYEDGE0516 Ref C: 2018-08-27T00:00:56Z'
+      - 'Ref A: E36BEB585635413A851F64F146B62DDB Ref B: CO1EDGE0919 Ref C: 2019-01-10T19:56:35Z'
       Date:
-      - Mon, 27 Aug 2018 00:00:55 GMT
+      - Thu, 10 Jan 2019 19:56:35 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=EF0E5127D4D24505A2B5D26897B18CFD&CID=0269058F185F6A480B3309D719506B48&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=EF0E5127D4D24505A2B5D26897B18CFD&CID=0269058F185F6A480B3309D719506B48&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=F2E2CCCED765438898B7A69E3C5DD533&CID=127C083BA0476FCE27EF04DBA1906E4C&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=F2E2CCCED765438898B7A69E3C5DD533&CID=127C083BA0476FCE27EF04DBA1906E4C&Type=Event.CPT&DATA=0"},
         "rankingResponse": {}}'
     http_version: 
-  recorded_at: Mon, 27 Aug 2018 00:00:56 GMT
+  recorded_at: Thu, 10 Jan 2019 19:56:35 GMT
 recorded_with: VCR 4.0.0

@@ -2,85 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=10&mkt=en-US&offset=0&q=healthy%20snack%20(site:usa.gov)%20(-site:www.usa.gov%20AND%20-site:kids.usa.gov)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Ocp-Apim-Subscription-Key:
-      - "<BING_V6_APP_ID>"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Content-Length:
-      - '636'
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Mon, 02 Jul 2018 21:48:12 GMT
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      Set-Cookie:
-      - MUID=1BCB326588866DAB25F23E4589516CB4; path=/; expires=Sat, 27-Jul-2019 21:49:12
-        GMT; domain=bingapis.com
-      - MUIDB=1BCB326588866DAB25F23E4589516CB4; path=/; httponly; expires=Sat, 27-Jul-2019
-        21:49:12 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 02-Jul-2020 21:49:12 GMT;
-        path=/
-      - SRCHUID=V=2&GUID=B94AEF62E16C40BCA6474772D1BCF786&dmnchg=1; domain=.bingapis.com;
-        expires=Thu, 02-Jul-2020 21:49:12 GMT; path=/
-      - SRCHUSR=DOB=20180702; domain=.bingapis.com; expires=Thu, 02-Jul-2020 21:49:12
-        GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=375A06328B75691502780A128AA268B6; path=/; httponly;
-        domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sat, 27-Jul-2019 21:49:12 GMT; domain=bingapis.com
-      - _SS=SID=375A06328B75691502780A128AA268B6; domain=.bingapis.com; path=/
-      Bingapis-Traceid:
-      - AD452A79B873405383470D9C6E70389A
-      X-Msedge-Clientid:
-      - 1BCB326588866DAB25F23E4589516CB4
-      X-Msapi-Userstate:
-      - 0c75
-      Bingapis-Market:
-      - en-US
-      X-Msedge-Ref:
-      - 'Ref A: AD452A79B873405383470D9C6E70389A Ref B: CO1EDGE0211 Ref C: 2018-07-02T21:49:12Z'
-      Date:
-      - Mon, 02 Jul 2018 21:49:11 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=03013D90CA584BF79D1643FE589C3F5D&CID=1BCB326588866DAB25F23E4589516CB4&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=03013D90CA584BF79D1643FE589C3F5D&CID=1BCB326588866DAB25F23E4589516CB4&Type=Event.CPT&DATA=0"},
-        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=healthy+snack+(site%3ausa.gov)+(-site%3awww.usa.gov+AND+-site%3akids.usa.gov)",
-        "webSearchUrlPingSuffix": "DevEx,5147.1", "totalEstimatedMatches": 1, "value":
-        [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "Food
-        Assistance | USAGov", "url": "https:\/\/www.usa.gov\/food-help", "urlPingSuffix":
-        "DevEx,5065.1", "displayUrl": "https:\/\/www.usa.gov\/food-help", "snippet":
-        "This short-term program can help you get healthy food for yourself and
-        your ... You may qualify for other food assistance programs ... Call USA.gov;
-        Chat with ...", "dateLastCrawled": "2018-06-28T06:56:00.0000000Z"}]}, "rankingResponse":
-        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}]}}}'
-    http_version: 
-  recorded_at: Mon, 02 Jul 2018 21:49:12 GMT
-- request:
-    method: get
     uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=10&mkt=en-US&offset=0&q=healthy%20snack%20(site:usa.gov)%20(-site:www.usa.gov%20AND%20-site:kids.usa.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
     body:
       encoding: US-ASCII
@@ -106,56 +27,47 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '638'
+      - '242'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Sun, 26 Aug 2018 23:59:52 GMT
+      - Thu, 10 Jan 2019 19:55:41 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=0B8D3B932B546A1A31EA37CB2A5B6B65; path=/; expires=Sat, 21-Sep-2019 00:00:52
+      - MUID=0746BEA37E4364DD1C94B2437F9465BF; path=/; expires=Tue, 04-Feb-2020 19:56:41
         GMT; domain=bingapis.com
-      - MUIDB=0B8D3B932B546A1A31EA37CB2A5B6B65; path=/; httponly; expires=Sat, 21-Sep-2019
-        00:00:52 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 27-Aug-2020 00:00:52 GMT;
+      - MUIDB=0746BEA37E4364DD1C94B2437F9465BF; path=/; httponly; expires=Tue, 04-Feb-2020
+        19:56:41 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 10-Jan-2021 19:56:41 GMT;
         path=/
-      - SRCHUID=V=2&GUID=1BAED7F7A3AB46899002144F3F737D9C&dmnchg=1; domain=.bingapis.com;
-        expires=Thu, 27-Aug-2020 00:00:52 GMT; path=/
-      - SRCHUSR=DOB=20180827; domain=.bingapis.com; expires=Thu, 27-Aug-2020 00:00:52
+      - SRCHUID=V=2&GUID=F009AA2CC01D4DC2AED3995A83AA86B9&dmnchg=1; domain=.bingapis.com;
+        expires=Sun, 10-Jan-2021 19:56:41 GMT; path=/
+      - SRCHUSR=DOB=20190110; domain=.bingapis.com; expires=Sun, 10-Jan-2021 19:56:41
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=2063A3F3B2C861B4045CAFABB3C76034; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=35E6137021C7673438D81F9020106605; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sat, 21-Sep-2019 00:00:52 GMT; domain=bingapis.com
-      - _SS=SID=2063A3F3B2C861B4045CAFABB3C76034; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Tue, 04-Feb-2020 19:56:41 GMT; domain=bingapis.com
+      - _SS=SID=35E6137021C7673438D81F9020106605; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - FC2F8C36167E4D168FC4D5C059A79550
+      - 4C712238CF674926B80FFA7A56AA4A28
       X-Msedge-Clientid:
-      - 0B8D3B932B546A1A31EA37CB2A5B6B65
+      - 0746BEA37E4364DD1C94B2437F9465BF
       X-Msapi-Userstate:
-      - 1f1b
+      - '3332'
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: FC2F8C36167E4D168FC4D5C059A79550 Ref B: BAYEDGE0514 Ref C: 2018-08-27T00:00:52Z'
+      - 'Ref A: 4C712238CF674926B80FFA7A56AA4A28 Ref B: CO1EDGE0116 Ref C: 2019-01-10T19:56:41Z'
       Date:
-      - Mon, 27 Aug 2018 00:00:52 GMT
+      - Thu, 10 Jan 2019 19:56:40 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=1D8C6142BFCC4B74A546835D9EE26A76&CID=0B8D3B932B546A1A31EA37CB2A5B6B65&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=1D8C6142BFCC4B74A546835D9EE26A76&CID=0B8D3B932B546A1A31EA37CB2A5B6B65&Type=Event.CPT&DATA=0"},
-        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=healthy+snack+(site%3ausa.gov)+(-site%3awww.usa.gov+AND+-site%3akids.usa.gov)",
-        "webSearchUrlPingSuffix": "DevEx,5073.1", "totalEstimatedMatches": 1, "value":
-        [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "Food
-        Assistance | USAGov", "url": "https:\/\/www.usa.gov\/food-help", "urlPingSuffix":
-        "DevEx,5040.1", "displayUrl": "https:\/\/www.usa.gov\/food-help", "snippet":
-        "This short-term program can help you get healthy food for yourself and
-        your ... You may qualify for other food assistance programs ... Call USA.gov;
-        Chat with ...", "dateLastCrawled": "2018-08-20T03:21:00.0000000Z"}]}, "rankingResponse":
-        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}]}}}'
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=E8F94D51EB6D4E879FF31B82E1DF37C5&CID=0746BEA37E4364DD1C94B2437F9465BF&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=E8F94D51EB6D4E879FF31B82E1DF37C5&CID=0746BEA37E4364DD1C94B2437F9465BF&Type=Event.CPT&DATA=0"},
+        "rankingResponse": {}}'
     http_version: 
-  recorded_at: Mon, 27 Aug 2018 00:00:52 GMT
+  recorded_at: Thu, 10 Jan 2019 19:56:41 GMT
 recorded_with: VCR 4.0.0

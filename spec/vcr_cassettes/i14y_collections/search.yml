@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:8081/api/v1/collections/search?handles=testing
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Authorization:
+      - Basic dGVzdDp0ZXN0cHdk
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '63'
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - d9e9e2ed-811d-4d86-a1f9-a50db36fb6d5
+      X-Runtime:
+      - '0.008548'
+      Vary:
+      - Origin
+      Connection:
+      - keep-alive
+      Server:
+      - thin
+    body:
+      encoding: UTF-8
+      string: '{"error":"Could not find all the specified collection handles"}'
+    http_version: 
+  recorded_at: Tue, 08 Jan 2019 23:11:53 GMT
+recorded_with: VCR 4.0.0
