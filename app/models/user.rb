@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class User < ActiveRecord::Base
   APPROVAL_STATUSES = %w[pending_email_verification
                          pending_approval approved
@@ -16,7 +17,7 @@ class User < ActiveRecord::Base
   validates :password,
             format: { with: PASSWORD_FORMAT,
                       if: :require_password?,
-                      message: 'must include a combination of letters, '\
+                      message: 'must include a combination of letters, ' \
                                'numbers, and special characters.' }
   validate :confirm_current_password,
            on: :update,
@@ -54,9 +55,7 @@ class User < ActiveRecord::Base
   scope :approved_affiliate, lambda {
     where(is_affiliate: true, approval_status: 'approved')
   }
-  scope :not_approved, lambda {
-    where(approval_status: 'not_approved')
-  }
+  scope :not_approved, -> { where(approval_status: 'not_approved') }
 
   acts_as_authentic do |c|
     c.crypto_provider = Authlogic::CryptoProviders::BCrypt
@@ -150,7 +149,7 @@ class User < ActiveRecord::Base
   end
 
   def add_to_affiliate(affiliate, source)
-    affiliate.users << self unless self.affiliates.include?(affiliate)
+    affiliate.users << self unless affiliates.include?(affiliate)
     audit_trail_user_added(affiliate, source)
   end
 
@@ -212,7 +211,7 @@ class User < ActiveRecord::Base
   end
 
   def set_initial_approval_status
-    if self.approval_status.blank? || invited
+    if approval_status.blank? || invited
       set_approval_status_to_pending_email_verification
     end
   end
@@ -251,9 +250,8 @@ class User < ActiveRecord::Base
   end
 
   def confirm_current_password
-    unless valid_password?(current_password)
-      errors[:current_password] << 'is invalid'
-    end
+    valid_password = valid_password?(current_password)
+    errors[:current_password] << 'is invalid' unless valid_password
   end
 
   def new_password_differs_from_current
