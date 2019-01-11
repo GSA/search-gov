@@ -2,142 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=10&mkt=en-US&offset=0&q=healthy%20snack%20(site:usa.gov)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Ocp-Apim-Subscription-Key:
-      - "<BING_V6_APP_ID>"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Content-Length:
-      - '1733'
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Mon, 02 Jul 2018 21:57:04 GMT
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      Set-Cookie:
-      - MUID=2699E249AE966E862FD3EE69AF416FFC; path=/; expires=Sat, 27-Jul-2019 21:58:04
-        GMT; domain=bingapis.com
-      - MUIDB=2699E249AE966E862FD3EE69AF416FFC; path=/; httponly; expires=Sat, 27-Jul-2019
-        21:58:04 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 02-Jul-2020 21:58:04 GMT;
-        path=/
-      - SRCHUID=V=2&GUID=2B951D0FB2F34043865BB28787C963F8&dmnchg=1; domain=.bingapis.com;
-        expires=Thu, 02-Jul-2020 21:58:04 GMT; path=/
-      - SRCHUSR=DOB=20180702; domain=.bingapis.com; expires=Thu, 02-Jul-2020 21:58:04
-        GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=2D36413DB16D64B026634D1DB0BA65C8; path=/; httponly;
-        domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sat, 27-Jul-2019 21:58:04 GMT; domain=bingapis.com
-      - _SS=SID=2D36413DB16D64B026634D1DB0BA65C8; domain=.bingapis.com; path=/
-      Bingapis-Traceid:
-      - 0B88F8BC28B34DFDB7F4662195B08662
-      X-Msedge-Clientid:
-      - 2699E249AE966E862FD3EE69AF416FFC
-      X-Msapi-Userstate:
-      - 4fbf
-      Bingapis-Market:
-      - en-US
-      X-Msedge-Ref:
-      - 'Ref A: 0B88F8BC28B34DFDB7F4662195B08662 Ref B: CO1EDGE0209 Ref C: 2018-07-02T21:58:04Z'
-      Date:
-      - Mon, 02 Jul 2018 21:58:04 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=8F115C23C9A543C99992D27A769B462F&CID=2699E249AE966E862FD3EE69AF416FFC&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=8F115C23C9A543C99992D27A769B462F&CID=2699E249AE966E862FD3EE69AF416FFC&Type=Event.CPT&DATA=0"},
-        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=healthy+snack+(site%3ausa.gov)",
-        "webSearchUrlPingSuffix": "DevEx,5353.1", "totalEstimatedMatches": 161, "value":
-        [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "Health
-        | USAGov", "url": "https:\/\/www.usa.gov\/health", "urlPingSuffix": "DevEx,5085.1",
-        "displayUrl": "https:\/\/www.usa.gov\/health", "snippet": "Food Assistance;
-        Social Security Questions; ... Health Information from the Government. Learn
-        more about the best ways to find health information from the government.",
-        "dateLastCrawled": "2018-06-29T00:50:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
-        "name": "Food Assistance | USAGov", "url": "https:\/\/www.usa.gov\/food-help",
-        "urlPingSuffix": "DevEx,5104.1", "displayUrl": "https:\/\/www.usa.gov\/food-help",
-        "snippet": "Food Assistance. Find out how to get food in case of an emergency,
-        ... These programs can help you get healthy food for your children at their
-        school, ...", "dateLastCrawled": "2018-06-28T06:56:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
-        "name": "A Healthy Prescription For a Healthy Home | USAGov", "url": "https:\/\/www.usa.gov\/features\/a-healthy-prescription-for-a-healthy-home",
-        "urlPingSuffix": "DevEx,5121.1", "displayUrl": "https:\/\/www.usa.gov\/features\/a-healthy-prescription-for-a-healthy-home",
-        "snippet": "A Healthy Prescription For a Healthy Home. Date: ... Learn
-        about federal government benefit programs for low income earners that can
-        help pay for food, ...", "dateLastCrawled": "2018-06-21T11:44:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Healthcare
-        Careers | USAGov", "url": "https:\/\/www.usa.gov\/healthcare-careers", "urlPingSuffix":
-        "DevEx,5141.1", "displayUrl": "https:\/\/www.usa.gov\/healthcare-careers",
-        "snippet": "Find information on different jobs in healthcare. ... I would
-        encourage making smart decisions for snacking and incorporating fruits and
-        ... to be a healthy role ...", "dateLastCrawled": "2018-06-29T23:46:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Government
-        Benefits | USAGov", "url": "https:\/\/www.usa.gov\/benefits", "urlPingSuffix":
-        "DevEx,5160.1", "displayUrl": "https:\/\/www.usa.gov\/benefits", "snippet":
-        "Get information on government benefits that may help you pay for food,
-        ... Other food aid programs offer: Healthy foods to pregnant women, new
-        moms, ...", "dateLastCrawled": "2018-06-24T16:45:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
-        "name": "Office of Lead Hazard Control and Healthy Homes | USAGov", "url":
-        "https:\/\/www.usa.gov\/federal-agencies\/office-of-lead-hazard-control-and-healthy-homes",
-        "urlPingSuffix": "DevEx,5177.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/office-of-lead-hazard-control...",
-        "snippet": "Directory listing for Office of Lead Hazard Control and Healthy
-        Homes", "dateLastCrawled": "2018-06-07T00:51:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
-        "name": "Finding Health Insurance | USAGov", "url": "https:\/\/www.usa.gov\/finding-health-insurance",
-        "urlPingSuffix": "DevEx,5196.1", "displayUrl": "https:\/\/www.usa.gov\/finding-health-insurance",
-        "snippet": "Finding Health Insurance. ... What about help with food preparation
-        and housecleaning? ... programs, tips for healthy living and more.", "dateLastCrawled":
-        "2018-06-26T13:21:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
-        "name": "Features | USAGov", "url": "https:\/\/www.usa.gov\/features?page=1",
-        "urlPingSuffix": "DevEx,5213.1", "displayUrl": "https:\/\/www.usa.gov\/features?page=1",
-        "snippet": "Features. You''re invited to read and use our bilingual articles
-        covering trusted, timely, and valuable government information. A Healthy
-        Prescription For a Healthy Home", "dateLastCrawled": "2018-06-25T13:27:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Education
-        | USAGov", "url": "https:\/\/www.usa.gov\/education?source=kids", "urlPingSuffix":
-        "DevEx,5228.1", "displayUrl": "https:\/\/www.usa.gov\/education?source=kids",
-        "snippet": "Find government information on education including primary, secondary,
-        and higher education.", "dateLastCrawled": "2018-06-25T01:29:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "USA.Gov
-        Subscription Page", "url": "https:\/\/connect.usa.gov\/publications", "urlPingSuffix":
-        "DevEx,5243.1", "about": [{"name": "USAGov"}], "displayUrl": "https:\/\/connect.usa.gov\/publications",
-        "snippet": "Thank you for being a loyal visitor to the site! After six years
-        of serving the American public and consumers, the Publications.USA.gov website
-        has been discontinued.", "dateLastCrawled": "2018-06-26T19:50:00.0000000Z"}]},
-        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
-        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
-        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
-        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
-        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
-        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
-        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
-        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
-        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
-        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
-        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}}]}}}'
-    http_version: 
-  recorded_at: Mon, 02 Jul 2018 21:58:04 GMT
-- request:
-    method: get
     uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=10&mkt=en-US&offset=0&q=healthy%20snack%20(site:usa.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
     body:
       encoding: US-ASCII
@@ -163,105 +27,120 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '1734'
+      - '2376'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Sun, 26 Aug 2018 23:59:55 GMT
+      - Fri, 11 Jan 2019 18:39:36 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=3F72E6EA120B62240B11EAB213046314; path=/; expires=Sat, 21-Sep-2019 00:00:55
+      - MUID=316586FB7E4E652729118A1A7F9964E6; path=/; expires=Wed, 05-Feb-2020 18:40:36
         GMT; domain=bingapis.com
-      - MUIDB=3F72E6EA120B62240B11EAB213046314; path=/; httponly; expires=Sat, 21-Sep-2019
-        00:00:55 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 27-Aug-2020 00:00:55 GMT;
+      - MUIDB=316586FB7E4E652729118A1A7F9964E6; path=/; httponly; expires=Wed, 05-Feb-2020
+        18:40:36 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Mon, 11-Jan-2021 18:40:36 GMT;
         path=/
-      - SRCHUID=V=2&GUID=06C93C6A9468487C93D82FC9ACB43355&dmnchg=1; domain=.bingapis.com;
-        expires=Thu, 27-Aug-2020 00:00:55 GMT; path=/
-      - SRCHUSR=DOB=20180827; domain=.bingapis.com; expires=Thu, 27-Aug-2020 00:00:55
+      - SRCHUID=V=2&GUID=81E3C2B6AF2044A49967225FE2CE649F&dmnchg=1; domain=.bingapis.com;
+        expires=Mon, 11-Jan-2021 18:40:36 GMT; path=/
+      - SRCHUSR=DOB=20190111; domain=.bingapis.com; expires=Mon, 11-Jan-2021 18:40:36
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=203B323E0C1A6C110F743E660D156D70; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=2177CD818EFE66F63DB0C1608F296781; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sat, 21-Sep-2019 00:00:55 GMT; domain=bingapis.com
-      - _SS=SID=203B323E0C1A6C110F743E660D156D70; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Wed, 05-Feb-2020 18:40:36 GMT; domain=bingapis.com
+      - _SS=SID=2177CD818EFE66F63DB0C1608F296781; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 892CFAB35C774E8A9CCFBA855DADAAAB
+      - E83106F2CFA649A49E35C08B29469CA4
       X-Msedge-Clientid:
-      - 3F72E6EA120B62240B11EAB213046314
+      - 316586FB7E4E652729118A1A7F9964E6
       X-Msapi-Userstate:
-      - '2980'
+      - '9814'
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 892CFAB35C774E8A9CCFBA855DADAAAB Ref B: BAYEDGE0122 Ref C: 2018-08-27T00:00:55Z'
+      - 'Ref A: E83106F2CFA649A49E35C08B29469CA4 Ref B: CO1EDGE0115 Ref C: 2019-01-11T18:40:36Z'
       Date:
-      - Mon, 27 Aug 2018 00:00:55 GMT
+      - Fri, 11 Jan 2019 18:40:36 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=B30FDDF7107B43DF9EE66E1A46F3EF90&CID=3F72E6EA120B62240B11EAB213046314&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=B30FDDF7107B43DF9EE66E1A46F3EF90&CID=3F72E6EA120B62240B11EAB213046314&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=7445CB27D3EE4EB5B7F44CB708E2F51C&CID=316586FB7E4E652729118A1A7F9964E6&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=7445CB27D3EE4EB5B7F44CB708E2F51C&CID=316586FB7E4E652729118A1A7F9964E6&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=healthy+snack+(site%3ausa.gov)",
-        "webSearchUrlPingSuffix": "DevEx,5259.1", "totalEstimatedMatches": 143, "value":
-        [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "Health
-        | USAGov", "url": "https:\/\/www.usa.gov\/health", "urlPingSuffix": "DevEx,5055.1",
-        "displayUrl": "https:\/\/www.usa.gov\/health", "snippet": "Food Assistance;
-        Social Security Questions; ... Health Information from the Government. Learn
-        more about the best ways to find health information from the government.",
-        "dateLastCrawled": "2018-08-20T21:14:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
-        "name": "Food Assistance | USAGov", "url": "https:\/\/www.usa.gov\/food-help",
-        "urlPingSuffix": "DevEx,5071.1", "displayUrl": "https:\/\/www.usa.gov\/food-help",
-        "snippet": "Food Assistance. Find out how to get food in case of an emergency,
-        ... This short-term program can help you get healthy food for yourself and
-        your young children.", "dateLastCrawled": "2018-08-20T03:21:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Government
-        Benefits | USAGov", "url": "https:\/\/www.usa.gov\/benefits", "urlPingSuffix":
-        "DevEx,5087.1", "displayUrl": "https:\/\/www.usa.gov\/benefits", "snippet":
-        "Get information on government benefits that may help you pay for food,
-        ... Other food aid programs offer: Healthy foods to pregnant women, new
-        moms, ...", "dateLastCrawled": "2018-08-15T14:42:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
-        "name": "A Healthy Prescription For a Healthy Home | USAGov", "url": "https:\/\/www.usa.gov\/features\/a-healthy-prescription-for-a-healthy-home",
-        "urlPingSuffix": "DevEx,5101.1", "displayUrl": "https:\/\/www.usa.gov\/features\/a-healthy-prescription-for-a-healthy-home",
-        "snippet": "Food Assistance; Social Security Questions; Affordable Rental
-        Housing; ... you can address the problems to make it safe and healthy for
-        you and your family.", "dateLastCrawled": "2018-08-14T22:44:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Healthcare
-        Careers | USAGov", "url": "https:\/\/www.usa.gov\/healthcare-careers", "urlPingSuffix":
-        "DevEx,5117.1", "displayUrl": "https:\/\/www.usa.gov\/healthcare-careers",
-        "snippet": "Find information on different jobs in healthcare. ... I would
-        encourage making smart decisions for snacking and incorporating fruits and
-        ... to be a healthy role ...", "dateLastCrawled": "2018-08-19T17:13:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Health
-        Information from the Government | USAGov", "url": "https:\/\/www.usa.gov\/health-resources",
-        "urlPingSuffix": "DevEx,5133.1", "displayUrl": "https:\/\/www.usa.gov\/health-resources",
-        "snippet": "Health Information from the Government. ... or want tips on
-        healthy eating. ... Food Distribution Programs—Find out how to apply for
-        these programs, ...", "dateLastCrawled": "2018-08-05T10:50:00.0000000Z"},
+        "webSearchUrlPingSuffix": "DevEx,5240.1", "totalEstimatedMatches": 142, "value":
+        [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "Food
+        Assistance | USAGov", "url": "https:\/\/www.usa.gov\/food-help", "urlPingSuffix":
+        "DevEx,5054.1", "displayUrl": "https:\/\/www.usa.gov\/food-help", "snippet":
+        "Many low-income women and young children can get healthy food to add to
+        their diet. It’s available through the Special Supplemental Nutrition Program
+        for Women, Infants and Children (WIC). WIC also offers nutrition counseling
+        and referrals to health, welfare, and social services.", "dateLastCrawled":
+        "2019-01-11T15:35:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
+        "name": "Health | USAGov", "url": "https:\/\/www.usa.gov\/health", "urlPingSuffix":
+        "DevEx,5067.1", "displayUrl": "https:\/\/www.usa.gov\/health", "snippet":
+        "Health Information from the Government. Learn more about the best ways
+        to find health information from the government. Health Insurance. Learn
+        about health insurance, including Medicaid and Medicare. Medications. Get
+        answers to common questions about buying and using medicine and medical products.
+        Mental Health and Substance Abuse", "dateLastCrawled": "2019-01-07T17:02:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "A Healthy
+        Prescription For a Healthy Home | USAGov", "url": "https:\/\/www.usa.gov\/features\/a-healthy-prescription-for-a-healthy-home",
+        "urlPingSuffix": "DevEx,5079.1", "displayUrl": "https:\/\/www.usa.gov\/features\/a-healthy-prescription-for-a-healthy-home",
+        "snippet": "Personal health and home health go hand in hand. By identifying
+        the weaknesses in your home’s health as outlined in this video, you can address
+        the problems to make it safe and healthy for you and your family. Have more
+        questions about environmental health? Contact your state environmental office.",
+        "dateLastCrawled": "2019-01-04T19:05:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "Government Benefits | USAGov", "url": "https:\/\/www.usa.gov\/benefits",
+        "urlPingSuffix": "DevEx,5092.1", "displayUrl": "https:\/\/www.usa.gov\/benefits",
+        "snippet": "If you have a low income and need help with basic living expenses,
+        you may qualify for government benefits to help cover food, housing, medical,
+        and other costs. ... Other food aid programs offer: Healthy foods to pregnant
+        women, new moms, and kids under age 5.", "dateLastCrawled": "2019-01-05T05:20:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Office
+        of Lead Hazard Control and Healthy Homes | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/office-of-lead-hazard-control-and-healthy-homes",
+        "urlPingSuffix": "DevEx,5105.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/office-of-lead-hazard-control...",
+        "snippet": "Office of Lead Hazard Control and Healthy Homes. The Office
+        of Lead Hazard Control and Healthy Homes works to make private homes safe
+        from lead and other harmful materials.", "dateLastCrawled": "2018-12-31T19:33:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Adoption,
+        Foster Care, and Other Child Related Issues | USAGov", "url": "https:\/\/www.usa.gov\/child-care",
+        "urlPingSuffix": "DevEx,5118.1", "displayUrl": "https:\/\/www.usa.gov\/child-care",
+        "snippet": "Children''s healthy development depends on safe and positive
+        experiences starting at an early age throughout childhood and teenage years.
+        Follow these recommendations to measure the quality of providers and centers:
+        ... This helps take care of the child’s needs on a daily basis, from food
+        and housing to clothing and medical needs.", "dateLastCrawled": "2019-01-05T09:09:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Finding
         Health Insurance | USAGov", "url": "https:\/\/www.usa.gov\/finding-health-insurance",
-        "urlPingSuffix": "DevEx,5149.1", "displayUrl": "https:\/\/www.usa.gov\/finding-health-insurance",
-        "snippet": "Finding Health Insurance. ... What about help with food preparation
-        and housecleaning? ... programs, tips for healthy living and more.", "dateLastCrawled":
-        "2018-08-18T17:23:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
-        "name": "Education | USAGov", "url": "https:\/\/www.usa.gov\/education",
-        "urlPingSuffix": "DevEx,5162.1", "displayUrl": "https:\/\/www.usa.gov\/education",
-        "snippet": "Find government information on education including primary,
-        secondary, and higher education.", "dateLastCrawled": "2018-07-24T17:57:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "USA.Gov
-        Subscription Page", "url": "https:\/\/connect.usa.gov\/publications", "urlPingSuffix":
-        "DevEx,5175.1", "about": [{"name": "USAGov"}], "displayUrl": "https:\/\/connect.usa.gov\/publications",
-        "snippet": "Thank you for being a loyal visitor to the site! After six years
-        of serving the American public and consumers, the Publications.USA.gov website
-        has been discontinued.", "dateLastCrawled": "2018-08-18T18:25:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Office
-        of Lead Hazard Control and Healthy Homes | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/office-of-lead-hazard-control-and-healthy-homes",
-        "urlPingSuffix": "DevEx,5188.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/office-of-lead-hazard-control...",
-        "snippet": "Directory listing for Office of Lead Hazard Control and Healthy
-        Homes", "dateLastCrawled": "2018-08-15T08:29:00.0000000Z"}]}, "rankingResponse":
-        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "urlPingSuffix": "DevEx,5131.1", "displayUrl": "https:\/\/www.usa.gov\/finding-health-insurance",
+        "snippet": "Finding Health Insurance. Get information on how to find and
+        sign-up for health insurance including the ACA, COBRA, long term care and
+        health care for people with disabilities. ... will it pay for care provided
+        by visiting nurses and therapists? What about help with food preparation
+        and housecleaning? ... tips for healthy living and more.", "dateLastCrawled":
+        "2019-01-06T16:56:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "name": "Healthcare Careers | USAGov", "url": "https:\/\/www.usa.gov\/healthcare-careers?source=kids",
+        "urlPingSuffix": "DevEx,5143.1", "displayUrl": "https:\/\/www.usa.gov\/healthcare-careers?source=kids",
+        "snippet": "I love food! And I love helping people. At USDA [U.S. Department
+        of Agriculture], our job is to teach Americans, all Americans in the whole
+        country, about healthy eating, which is a pretty big job. What does a nutritionist
+        do? A nutritionist or a dietician is an expert in food, health and nutrition.",
+        "dateLastCrawled": "2019-01-04T00:32:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
+        "name": "Health Information from the Government | USAGov", "url": "https:\/\/www.usa.gov\/health-resources",
+        "urlPingSuffix": "DevEx,5156.1", "displayUrl": "https:\/\/www.usa.gov\/health-resources",
+        "snippet": "Health Information from the Government. Find a wealth of online
+        healthcare information: Use the Medline Plus search tool to answer your medical
+        questions, find information for seniors, visit sites covering issues like
+        Alzheimer’s, vaccines, and rare diseases, discover caregiver support resources.",
+        "dateLastCrawled": "2018-12-30T20:28:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
+        "name": "Education | USAGov", "url": "https:\/\/www.usa.gov\/education?source=kids",
+        "urlPingSuffix": "DevEx,5168.1", "displayUrl": "https:\/\/www.usa.gov\/education?source=kids",
+        "snippet": "Find government information on education including primary, secondary,
+        and higher education.", "dateLastCrawled": "2019-01-07T03:52:00.0000000Z"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
         "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
@@ -272,5 +151,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
         {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}}]}}}'
     http_version: 
-  recorded_at: Mon, 27 Aug 2018 00:00:55 GMT
+  recorded_at: Fri, 11 Jan 2019 18:40:36 GMT
 recorded_with: VCR 4.0.0
