@@ -833,7 +833,7 @@ Layout/MultilineMethodCallIndentation:
                  that span more than one line.
   Enabled: true
   VersionAdded: 0.49
-  EnforcedStyle: aligned
+  EnforcedStyle: indented_relative_to_receiver
   SupportedStyles:
     - aligned
     - indented
@@ -3349,6 +3349,8 @@ Style/MethodCallWithArgsParentheses:
   VersionChanged: 0.48
   IgnoreMacros: true
   IgnoredMethods: []
+  Exclude:
+    - 'spec/**/*'
 
 Style/MethodCallWithoutArgsParentheses:
   Description: 'Do not use parentheses for method calls with no arguments.'
@@ -4291,3 +4293,4 @@ Style/ZeroLengthPredicate:
   Safe: false
   VersionAdded: 0.37
   VersionChanged: 0.39
+

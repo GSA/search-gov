@@ -44,8 +44,9 @@ describe Jobs do
       end
 
       it 'returns blank when the query is a generic job keyword' do
-        %w[ position opening posting job employment trabajo puesto empleo
-            vacante opportunity vacancy posicion ocupacion oportunidad].each do |query|
+        %w[ position opening posting job employment career trabajo
+            carrera puesto empleo vacante opportunity vacancy posicion
+            ocupacion oportunidad ].each do |query|
           expect(Jobs.scrub_query(query)).to eq('')
         end
       end
@@ -81,6 +82,12 @@ describe Jobs do
       end
     end
 
+    context 'when the search phrase contains search key word inside the word' do
+      it 'should return false' do
+        expect(Jobs.query_eligible?('international store')).to be_falsey
+      end
+    end
+
     context 'when the search phrase is blocked' do
       it 'should return false' do
         ["employment data", "employment statistics", "employment numbers", "employment levels", "employment rate",
@@ -93,7 +100,7 @@ describe Jobs do
          "funding opportunities", "vacancy factor", "vacancy rates", "delayed opening", "opening others mail", "job corps cuts",
          "job application", "job safety and health poster", "job safety analysis standard", "job safety analysis", "employment contract",
          "application for employment"
-        ].each { |phrase| expect(Jobs.query_eligible?(phrase)).to be false }
+        ].each { |phrase| expect(Jobs.query_eligible?(phrase)).to be_falsey }
       end
     end
 
