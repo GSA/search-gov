@@ -66,11 +66,10 @@ Feature: User sessions
       | contact_name | email            | password  | password_updated_at | approval_status |
       | Jane         | jane@example.com | test1234! | 2017-01-01          | approved        |
     And a clear email queue
-    And the time is 2017-03-30 23:55
+    And the time becomes 2017-03-30 23:55
     And I log in with email "jane@example.com" and password "test1234!"
-    And the time is 2017-03-31 00:20
+    And the time becomes 2017-03-31 00:20
     And I follow "Add Site"
-    And the time is 2017-03-31 01:10
     Then I should be on the new site page
     And "jane@example.com" should receive no emails
 
@@ -80,8 +79,8 @@ Feature: User sessions
       | contact_name | email            | password  |  approval_status |
       | Jane         | jane@example.com | test1234! |  approved        |
     And a clear email queue
-    And the time is 2017-03-30 10:55
+    And the time becomes 2017-03-30 10:55
     And I log in with email "jane@example.com" and password "test1234!"
-    And the time is 2017-03-30 12:00
+    And the time becomes 2017-03-30 12:00
     And I follow "Add Site"
     Then I should be on the login page
