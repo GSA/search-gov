@@ -66,7 +66,7 @@ Feature: User sessions
       | contact_name | email            | password  | password_updated_at | approval_status |
       | Jane         | jane@example.com | test1234! | 2017-01-01          | approved        |
     And a clear email queue
-    And the time becomes 2017-03-30 23:55
+    And the time is 2017-03-30 23:55
     And I log in with email "jane@example.com" and password "test1234!"
     And the time becomes 2017-03-31 00:20
     And I follow "Add Site"
@@ -79,7 +79,7 @@ Feature: User sessions
       | contact_name | email            | password  |  approval_status |
       | Jane         | jane@example.com | test1234! |  approved        |
     And a clear email queue
-    And the time becomes 2017-03-30 10:55
+    And the time is 2017-03-30 10:55
     And I log in with email "jane@example.com" and password "test1234!"
     And the time becomes 2017-03-30 12:00
     And I follow "Add Site"
