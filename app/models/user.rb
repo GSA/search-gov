@@ -1,30 +1,42 @@
+# frozen_string_literal: true
+
 class User < ActiveRecord::Base
-  APPROVAL_STATUSES = %w( pending_email_verification pending_approval approved not_approved )
+  APPROVAL_STATUSES = %w[pending_email_verification
+                         pending_approval approved
+                         not_approved].freeze
   PASSWORD_FORMAT = /\A
     (?=.{8,}\z)        # Must contain 8 or more characters
     (?=.*\d)           # Must contain a digit
     (?=.*[a-zA-Z])     # Must contain a letter
     (?=.*[[:^alnum:]]) # Must contain a symbol
-  /x
+  /x.freeze
 
-  validates_presence_of :email
-  validates_presence_of :contact_name
-  validates_inclusion_of :approval_status, :in => APPROVAL_STATUSES
-  validates_format_of :password,
-    with: PASSWORD_FORMAT,
-    if: :require_password?,
-    message: 'must include a combination of letters, numbers, and special characters.'
-  validate :confirm_current_password, on: :update, if: :require_password_confirmation
-  validate :new_password_differs_from_current, on: :update, if: ->(user) { user.password.present? }
+  validates :email, presence: true
+  validates :contact_name, presence: true
+  validates :approval_status, inclusion: APPROVAL_STATUSES
+  validates :password,
+            format: { with: PASSWORD_FORMAT,
+                      if: :require_password?,
+                      message: 'must include a combination of letters, ' \
+                               'numbers, and special characters.' }
+  validate :confirm_current_password,
+           on: :update,
+           if: :require_password_confirmation
+  validate :new_password_differs_from_current,
+           on: :update,
+           if: ->(user) { user.password.present? }
 
-  has_many :memberships, :dependent => :destroy
-  has_many :affiliates, -> { order 'affiliates.display_name, affiliates.ID ASC' }, through: :memberships
+  has_many :memberships, dependent: :destroy
+  has_many :affiliates, lambda {
+                          order 'affiliates.display_name, affiliates.ID ASC'
+                        },
+           through: :memberships
   has_many :watchers, dependent: :destroy
   belongs_to :default_affiliate, class_name: 'Affiliate'
 
   before_validation :downcase_email
-  before_validation :set_initial_approval_status, :on => :create
-  after_validation :set_default_flags, :on => :create
+  before_validation :set_initial_approval_status, on: :create
+  after_validation :set_default_flags, on: :create
 
   with_options if: :is_pending_email_verification? do
     after_create :deliver_email_verification
@@ -40,14 +52,17 @@ class User < ActiveRecord::Base
   attr_accessor :invited, :skip_welcome_email, :inviter, :require_password,
                 :current_password, :require_password_confirmation
   attr_reader :deliver_welcome_email_on_update
-  scope :approved_affiliate, -> { where(:is_affiliate => true, :approval_status => 'approved') }
+  scope :approved_affiliate, lambda {
+    where(is_affiliate: true, approval_status: 'approved')
+  }
   scope :not_approved, -> { where(approval_status: 'not_approved') }
 
   acts_as_authentic do |c|
     c.crypto_provider = Authlogic::CryptoProviders::BCrypt
-    c.perishable_token_valid_for 1.hour
+    c.perishable_token_valid_for(1.hour)
     c.disable_perishable_token_maintenance(true)
     c.require_password_confirmation = false
+    c.logged_in_timeout = 1.hour
   end
 
   APPROVAL_STATUSES.each do |status|
@@ -87,15 +102,15 @@ class User < ActiveRecord::Base
     email =~ /\.(gov|mil|fed\.us)$|(\.|@)state\.[a-z]{2}\.us$/i
   end
 
-  #authlogic magic state
+  # authlogic magic state
   def approved?
     approval_status != 'not_approved'
   end
 
   def verify_email(token)
-    return true if (is_approved? && email_verification_token == token)
+    return true if is_approved? && email_verification_token == token
 
-    if is_pending_email_verification? and email_verification_token == token
+    if is_pending_email_verification? && email_verification_token == token
       if requires_manual_approval?
         set_approval_status_to_pending_approval
       else
@@ -113,12 +128,12 @@ class User < ActiveRecord::Base
     self.require_password = true
     self.email_verification_token = nil
     self.set_approval_status_to_approved
-    !self.requires_manual_approval? and self.update_attributes(attributes)
+    !requires_manual_approval? && update(attributes)
   end
 
   def self.new_invited_by_affiliate(inviter, affiliate, attributes)
     new_user = User.new(attributes)
-    new_user.password = SecureRandom.hex(10) + "MLPFTW2016!!!"
+    new_user.password = SecureRandom.hex(10) + 'MLPFTW2016!!!'
     new_user.inviter = inviter
     new_user.invited = true
     new_user.affiliates << affiliate
@@ -134,12 +149,12 @@ class User < ActiveRecord::Base
   end
 
   def add_to_affiliate(affiliate, source)
-    affiliate.users << self unless self.affiliates.include? affiliate
+    affiliate.users << self unless affiliates.include?(affiliate)
     audit_trail_user_added(affiliate, source)
   end
 
   def remove_from_affiliate(affiliate, source)
-    Membership.where(user_id: self.id, affiliate_id: affiliate.id).destroy_all
+    Membership.where(user_id: id, affiliate_id: affiliate.id).destroy_all
     audit_trail_user_removed(affiliate, source)
   end
 
@@ -150,7 +165,7 @@ class User < ActiveRecord::Base
   private
 
   def require_password?
-    require_password.nil? ? super : (require_password == true)
+    require_password.nil? ? super : require_password
   end
 
   def ping_admin
@@ -159,12 +174,17 @@ class User < ActiveRecord::Base
 
   def deliver_email_verification
     assign_email_verification_token!
-    invited ? deliver_welcome_to_new_user_added_by_affiliate : deliver_user_email_verification
+    if invited
+      deliver_welcome_to_new_user_added_by_affiliate
+    else
+      deliver_user_email_verification
+    end
   end
 
   def assign_email_verification_token!
     begin
-      update_column(:email_verification_token, Authlogic::Random.friendly_token.downcase)
+      update_column(:email_verification_token,
+                    Authlogic::Random.friendly_token.downcase)
     rescue ActiveRecord::RecordNotUnique
       retry
     end
@@ -175,7 +195,9 @@ class User < ActiveRecord::Base
   end
 
   def deliver_welcome_to_new_user_added_by_affiliate
-    Emailer.welcome_to_new_user_added_by_affiliate(affiliates.first, self, inviter).deliver_now
+    Emailer.
+      welcome_to_new_user_added_by_affiliate(affiliates.first, self, inviter).
+      deliver_now
   end
 
   def detect_deliver_welcome_email
@@ -189,7 +211,9 @@ class User < ActiveRecord::Base
   end
 
   def set_initial_approval_status
-    set_approval_status_to_pending_email_verification if self.approval_status.blank? or invited
+    if approval_status.blank? || invited
+      set_approval_status_to_pending_email_verification
+    end
   end
 
   def downcase_email
@@ -197,8 +221,10 @@ class User < ActiveRecord::Base
   end
 
   def set_default_flags
-    self.requires_manual_approval = true if is_affiliate? and !has_government_affiliated_email? and !invited
-    self.welcome_email_sent = true if (is_developer? and !skip_welcome_email)
+    self.requires_manual_approval = true if is_affiliate? &&
+                                            !has_government_affiliated_email? &&
+                                            !invited
+    self.welcome_email_sent = true if is_developer? && !skip_welcome_email
   end
 
   def send_welcome_to_new_user_email
@@ -220,18 +246,20 @@ class User < ActiveRecord::Base
   end
 
   def set_password_updated_at
-    self.password_updated_at = Time.now if password
+    self.password_updated_at = Time.current if password
   end
 
   def confirm_current_password
-    errors[:current_password] << 'is invalid' unless valid_password?(current_password)
+    valid_password = valid_password?(current_password)
+    errors[:current_password] << 'is invalid' unless valid_password
   end
 
   def new_password_differs_from_current
     # valid_password?(password) checks that password, when encrypted, matches the encrypted
     # password that is currently stored in the database
     if valid_password?(password)
-      errors[:password] << 'is invalid: new password must be different from current password'
+      errors[:password] << 'is invalid: new password must be ' \
+                           'different from current password'
     end
   end
 
