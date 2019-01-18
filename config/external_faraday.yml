@@ -9,9 +9,6 @@ azure_default: &AZURE_DEFAULT
 
 i14y_default: &I14Y_DEFAULT
   adapter: :typhoeus
-  request:
-    retry:
-      max: 0
   options:
     timeout: 0
 
