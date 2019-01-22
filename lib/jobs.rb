@@ -14,7 +14,9 @@ module Jobs
     projection survey forecast figure report verification record
     authorization card classification form hazard poster fair board
     outlook grant funding factor other cut
-    application
+    application creating agreement certificate changes denial
+    earnings income participation change loss offer
+    qualifications requirement statement
   ].freeze
   BLOCKED_PHRASES = '(job|employment) (contract|law|training|safety)s?'
   BLOCKED_KEYWORDS =
