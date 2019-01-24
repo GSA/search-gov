@@ -2,6 +2,9 @@ require 'spec_helper'
 
 describe I14yDrawer do
   fixtures :i14y_drawers, :affiliates, :i14y_memberships
+
+  let(:drawer) { i14y_drawers(:one) }
+
   it { is_expected.to validate_presence_of :handle }
   it { is_expected.to validate_uniqueness_of :handle }
   it { is_expected.to validate_length_of(:handle).is_at_least(3).is_at_most(33) }
@@ -64,16 +67,49 @@ describe I14yDrawer do
     end
   end
 
-  describe "stats" do
-    let(:collection)  { Hashie::Mash.new('created_at' => '2015-06-12T16:59:50.687+00:00', 'updated_at' => '2015-06-12T16:59:50.687+00:00', 'token' => '6bffe2fe778ba131f28c93377e0630a8', 'id' => 'one', 'document_total' => 1, 'last_document_sent' => "2015-06-12T16:59:50+00:00")}
+  describe '#stats' do
+    subject(:stats) { drawer.stats }
 
-    before do
-      response = Hashie::Mash.new('status' => 200, "developer_message" => "OK", "collection" => collection)
-      expect(I14yCollections).to receive(:get).with("one").and_return response
+    let(:collection)  do
+      Hashie::Mash.new(created_at: '2015-06-12T16:59:50.687+00:00',
+                       updated_at: '2015-06-12T16:59:50.687+00:00',
+                       token: '6bffe2fe778ba131f28c93377e0630a8',
+                       id: 'one',
+                       document_total: 1,
+                       last_document_sent: '2015-06-12T16:59:50+00:00')
     end
 
-    it 'gets the collection from I14y endpoint and returns the collection info' do
-      expect(i14y_drawers(:one).stats).to eq(collection)
+    context 'when stats are available' do
+      let(:response) do
+        Hashie::Mash.new(status: 200,
+                         developer_message: 'OK',
+                         collection: collection)
+      end
+
+      before do
+        expect(I14yCollections).to receive(:get).with('one').and_return response
+      end
+
+      it 'gets the collection from I14y endpoint and returns the collection info' do
+        expect(drawer.stats).to eq(collection)
+      end
+    end
+
+    context 'when something goes wrong' do
+      before do
+        allow(I14yCollections).to receive(:get).with('one').
+          and_raise StandardError.new('fail')
+      end
+
+      it 'returns nil' do
+        expect(drawer.stats).to eq nil
+      end
+
+      it 'logs the error' do
+        expect(Rails.logger).to receive(:error).
+          with(/Trouble fetching statistics for the one drawer/)
+        drawer.stats
+      end
     end
   end
 
