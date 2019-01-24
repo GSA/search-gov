@@ -12,11 +12,20 @@ working development environment for Rails up and running, including the database
 
 ## Ruby
 
-You will need Ruby 2.3.5 Verify that your path points to the correct version of Ruby:
+You will need Ruby 2.3.8 Verify that your path points to the correct version of Ruby:
 
     devbox:usasearch
     $ ruby -v
-    ruby 2.3.5p376 (2017-09-14 revision 59905) [x86_64-darwin17]
+    ruby 2.3.8p459 (2018-10-18 revision 65136) [x86_64-darwin16]
+
+## Packages
+
+The [cld3](https://github.com/akihikodaki/cld3-ruby) gem, which we use for language detection, depends on Google's
+[protocol buffers](https://developers.google.com/protocol-buffers/) and
+a C++ compiler:
+
+    brew install gcc
+    brew install protobuf
 
 ## Gems
 

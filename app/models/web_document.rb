@@ -53,8 +53,9 @@ class WebDocument
   end
 
   def detect_language
-    detected = CLD.detect_language(parsed_content)
-    detected[:reliable] ? detected[:code] : nil
+    detector = CLD3::NNetLanguageIdentifier.new(0, 1000)
+    detected = detector.find_language(parsed_content)
+    detected[:reliable?] ? detected[:language].to_s : nil
   end
 
   def timestamp(timestamp)

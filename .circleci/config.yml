@@ -8,7 +8,8 @@ jobs:
   checkout_code:
     working_directory: ~/search-gov
     docker:
-      - image: circleci/ruby:2.3.5-browsers
+      # using custom image, see .circleci/images/primary/Dockerfile
+      - image: mothra/search.gov:011119
         environment:
           RAILS_ENV: test
 
@@ -34,7 +35,7 @@ jobs:
   bundle_install:
     working_directory: ~/search-gov
     docker:
-      - image: circleci/ruby:2.3.5-browsers
+      - image: mothra/search.gov:011119
         environment:
           RAILS_ENV: test
 
@@ -60,7 +61,7 @@ jobs:
       COVERAGE: true
     working_directory: ~/search-gov
     docker:
-      - image: circleci/ruby:2.3.5-browsers
+      - image: mothra/search.gov:011119
         environment:
           RAILS_ENV: test
 
@@ -96,7 +97,7 @@ jobs:
     working_directory: ~/search-gov
     parallelism: 2
     docker:
-      - image: circleci/ruby:2.3.5-browsers
+      - image: mothra/search.gov:011119
         environment:
           RAILS_ENV: test
 
@@ -110,11 +111,6 @@ jobs:
     steps:
       - restore_cache:
           key: repo-{{ .Environment.CIRCLE_SHA1 }}
-
-      - run:
-          name: Install MySQL Client
-          command: |
-            sudo apt-get update && sudo apt-get install mysql-client
 
       - restore_cache:
           key: search-gov-{{ checksum "Gemfile.lock" }}
@@ -167,7 +163,7 @@ jobs:
     working_directory: ~/search-gov
     parallelism: 6
     docker:
-      - image: circleci/ruby:2.3.5-browsers
+      - image: mothra/search.gov:011119
         environment:
           RAILS_ENV: test
 
@@ -181,11 +177,6 @@ jobs:
     steps:
       - restore_cache:
           key: repo-{{ .Environment.CIRCLE_SHA1 }}
-
-      - run:
-          name: Install MySQL Client
-          command: |
-            sudo apt-get update && sudo apt-get install mysql-client
 
       - restore_cache:
           key: search-gov-{{ checksum "Gemfile.lock" }}
@@ -239,7 +230,7 @@ jobs:
   report_coverage:
     working_directory: ~/search-gov
     docker:
-      - image: circleci/ruby:2.3.5-browsers
+      - image: mothra/search.gov:011119
         environment:
           RAILS_ENV: test
 

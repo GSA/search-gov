@@ -12,7 +12,13 @@ class I14yDrawer < ActiveRecord::Base
   end
 
   def stats
-    I14yCollections.get(self.handle).collection rescue nil
+    I14yCollections.get(handle).collection
+  rescue StandardError => error
+    Rails.logger.error(
+      "Trouble fetching statistics for the #{handle} drawer:\n" \
+      "#{error.class}: #{error}"
+    )
+    nil
   end
 
   def i14y_connection

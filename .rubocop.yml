@@ -3351,6 +3351,7 @@ Style/MethodCallWithArgsParentheses:
   IgnoredMethods: []
   Exclude:
     - 'spec/**/*'
+    - 'Gemfile'
 
 Style/MethodCallWithoutArgsParentheses:
   Description: 'Do not use parentheses for method calls with no arguments.'
