@@ -81,7 +81,6 @@ gem 'lograge', '~> 0.7.1'
 gem 'test-unit', '~> 3.2.7'
 gem 'http', '~> 1.0'
 gem 'robots_tag_parser', '~> 0.1.0', git: 'https://github.com/GSA/robots_tag_parser'
-gem 'cld2', '~> 1.0.3', require: 'cld'
 gem 'loofah', '~> 2.2.2'
 gem 'protected_attributes', '~> 1.1.4'
 # Using custom branch until https://github.com/brutuscat/medusa/issues/10 is merged
@@ -97,6 +96,7 @@ gem 'counter_culture', '~> 2.0.0'
 gem 'aasm', '~> 4.12'
 gem 'active_scheduler', '~> 0.5.0'
 gem 'retriable', '~> 3.1'
+gem 'cld3', '~> 3.2.3'
 
 #Assets-related gems
 gem 'coffee-rails', '~> 4.2.2'
@@ -144,11 +144,11 @@ group :development, :test do
   # https://github.com/pocke/mry#usage (include the target version to add new cops)
   # Also bump the rubocop channel in .codeclimate.yml:
   # https://docs.codeclimate.com/v1.0/docs/rubocop#section-using-rubocop-s-newer-versions
-  gem 'rubocop', '0.52.1'
+  gem 'rubocop', '0.60.0'
   gem 'faker', '~> 1.8'
   gem 'pry-rails', '~> 0.3.6'
   gem 'awesome_print'
-  gem 'mry', '~> 0.52.0'
+  gem 'mry', '0.59.0.0'
 end
 
 group :test do

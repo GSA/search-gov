@@ -98,7 +98,7 @@ describe User do
       let(:user) { User.create!(valid_attributes.merge(password: 'goodpass1!')) }
 
       context 'when password confirmation is not required' do
-        before { user.update_attributes(password: 'newpass123!') }
+        before { user.update(password: 'newpass123!') }
 
         it 'updates the password' do
           expect(user.valid_password?('newpass123!')).to be true
@@ -119,7 +119,7 @@ describe User do
           end
 
           context 'when the new password is the same as the current password' do
-            before { user.update_attributes(password: 'goodpass1!', current_password: 'goodpass1!') }
+            before { user.update(password: 'goodpass1!', current_password: 'goodpass1!') }
 
             it 'fails' do
               expect(user.errors[:password]).to eq ['is invalid: new password must be different from current password']
@@ -128,7 +128,7 @@ describe User do
         end
 
         context 'when the current password is incorrect' do
-          before { user.update_attributes(password: 'newpass123!', current_password: 'foobar123!') }
+          before { user.update(password: 'newpass123!', current_password: 'foobar123!') }
 
           it 'fails' do
             expect(user.errors[:current_password]).to eq ['is invalid']
@@ -136,7 +136,7 @@ describe User do
         end
 
         context 'when the current password is not provided' do
-          before { user.update_attributes(password: 'newpass123!') }
+          before { user.update(password: 'newpass123!') }
 
           it 'fails' do
             expect(user.errors[:current_password]).to eq ['is invalid']
@@ -280,7 +280,7 @@ describe User do
     context 'when updating an email address' do
       let(:user) { users(:affiliate_admin) }
       let(:new_email) { 'new@new.gov' }
-      subject(:update_email) { user.update_attributes(email: new_email) }
+      subject(:update_email) { user.update(email: new_email) }
       before { allow(Emailer).to receive(:user_email_verification).with(an_instance_of(User)).and_return @emailer }
 
       it 'requires re-verification' do
@@ -393,7 +393,7 @@ describe User do
     context "when the user is already approved" do
       let(:user) { users(:affiliate_manager) }
 
-      before { user.update_attributes!(email_verification_token: 'token') }
+      before { user.update(email_verification_token: 'token') }
 
       it "should return true" do
         expect(user.is_approved?).to be true
@@ -408,7 +408,7 @@ describe User do
 
       context 'when the user has already received a welcome email' do
         before do
-          user.update_attributes!(approval_status: 'pending_email_verification',
+          user.update(approval_status: 'pending_email_verification',
                                   welcome_email_sent: true)
         end
 
@@ -516,7 +516,7 @@ describe User do
       let(:user) { user = User.find @user.id }
 
       before do
-        expect(user).to receive(:update_attributes)
+        expect(user).to receive(:update)
         expect(Emailer).to_not receive(:welcome_to_new_user)
         user.complete_registration({})
       end
@@ -599,17 +599,17 @@ describe User do
     end
 
     it 'is set when the password is updated' do
-      expect { user.update_attributes(password: "new1234!") }.
+      expect { user.update(password: "new1234!") }.
         to change{ user.password_updated_at }
     end
 
     it 'is not set when other attributes are updated' do
-      expect { user.update_attributes(contact_name: 'Kermit the Frog') }.
+      expect { user.update(contact_name: 'Kermit the Frog') }.
         to_not change{ user.password_updated_at }
     end
 
     it 'is not set when the password is blank' do
-      expect { user.update_attributes(email: 'new@example.com', password: '') }.
+      expect { user.update(email: 'new@example.com', password: '') }.
         to_not change{ user.password_updated_at }
     end
   end

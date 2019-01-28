@@ -41,8 +41,22 @@ class HtmlDocument < WebDocument
     # it to html, then running it through Loofah again, it's because Loofah's 'to_text' method is
     # much smarter about whitespace than Nokogiri, but you can't run `to_text` on the Nokogiri
     # elements extracted by "html.at('main')". Hence the jumping through hoops.
-    plain_text = Loofah.fragment(main_html).scrub!(:whitewash).to_text(encode_special_chars: false)
+    plain_text = Loofah.fragment(main_html).
+      scrub!(tag_scrubber).
+      scrub!(:whitewash).
+      to_text(encode_special_chars: false)
     plain_text.gsub(/[ \t]+/,' ' ).gsub(/[\n\r]+/, "\n").chomp.lstrip
+  end
+
+  def tag_scrubber
+    Loofah::Scrubber.new do |node|
+      # convert custom tags to plain 'ol divs to ensure they are not
+      # stripped out during HTML sanitization
+      node.name = 'div' if node.name =~ /-/
+
+      # omit common elements
+      node.remove if %w[footer nav].include?(node.name)
+    end
   end
 
   def html_attributes
