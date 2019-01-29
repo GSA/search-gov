@@ -47,58 +47,72 @@ describe "shared/_searchresults.html.haml" do
       end
     end
 
-    context "when results are by USASearch" do
-      it "should show the Bing logo" do
+    context 'when results are by USASearch' do
+      it 'should show the Bing logo' do
         render
-        expect(rendered).to have_selector("img[src^='/assets/searches/binglogo_en.gif']")
-        expect(rendered).not_to have_selector("a img[src^='/assets/searches/binglogo_en.gif']")
+        expect(rendered).
+          to have_selector("img[src^='/assets/searches/binglogo_en']")
+        expect(rendered).
+          not_to have_selector("a img[src^='/assets/searches/binglogo_en']")
       end
     end
 
-    context "when results are by USASearch" do
+    context 'when results are by USASearch' do
       before do
         allow(@search).to receive(:module_tag).and_return 'AIDOC'
         allow(view).to receive(:search).and_return @search
       end
 
-      it "should show the English USASearch results by logo" do
+      it 'should show the English USASearch results by logo' do
         render
-        expect(rendered).to have_selector("a[href='https://search.gov'] img[src^='/assets/searches/results_by_usasearch_en.png']")
+        expect(rendered).
+          to have_selector(
+            'a[href="https://search.gov"] ' \
+            'img[src^="/assets/searches/results_by_usasearch_en"]'
+          )
       end
 
-      context "when the locale is Spanish" do
+      context 'when the locale is Spanish' do
         before do
           allow(I18n).to receive(:locale).and_return :es
         end
 
-        it "should show the Spanish USASearch results by logo" do
+        it 'should show the Spanish USASearch results by logo' do
           render
-          expect(rendered).to have_selector("a[href='https://search.gov'] img[src^='/assets/searches/results_by_usasearch_es.png']")
+          expect(rendered).
+            to have_selector(
+              'a[href="https://search.gov"] ' \
+              'img[src^="/assets/searches/results_by_usasearch_es"]'
+            )
         end
       end
     end
 
-    context "when results are by Google" do
+    context 'when results are by Google' do
       before do
         allow(@search).to receive(:module_tag).and_return 'GWEB'
         allow(view).to receive(:search).and_return @search
       end
 
-      it "should show the English Google results by logo" do
+      it 'should show the English Google results by logo' do
         render
-        expect(rendered).to have_selector("img[src^='/assets/searches/googlelogo_en.gif']")
-        expect(rendered).not_to have_selector("a img[src^='/assets/searches/googlelogo_en.gif']")
+        expect(rendered).
+          to have_selector('img[src^="/assets/searches/googlelogo_en"]')
+        expect(rendered).
+          not_to have_selector('a img[src^="/assets/searches/googlelogo_en"]')
       end
 
-      context "when the locale is Spanish" do
+      context 'when the locale is Spanish' do
         before do
           allow(I18n).to receive(:locale).and_return :es
         end
 
-        it "should show the Spanish Google results by logo" do
+        it 'should show the Spanish Google results by logo' do
           render
-          expect(rendered).to have_selector("img[src^='/assets/searches/googlelogo_es.gif']")
-          expect(rendered).not_to have_selector("a img[src^='/assets/searches/googlelogo_es.gif']")
+          expect(rendered).
+            to have_selector('img[src^="/assets/searches/googlelogo_es"]')
+          expect(rendered).
+            not_to have_selector('a img[src^="/assets/searches/googlelogo_es"]')
         end
       end
     end
