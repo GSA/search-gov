@@ -89,22 +89,41 @@ describe UsersController do
 
   describe '#update' do
     let(:update_params) do
-      { 'contact_name' => 'BAR', 'email' => 'changed@foo.com' }
+      { 'contact_name': 'BAR',
+        'email': 'changed@foo.com' }
     end
+
     context 'when logged in as affiliate' do
       before { activate_authlogic }
       include_context 'approved user logged in'
 
-      it { is_expected.to permit(*permitted_params).for(:update, params: { user: update_params }) }
+      context 'when changing the password' do
+        let(:update_password_params) do
+          { 'current_password': current_user.password,
+            'password': 'newpassword1234!' }
+        end
+
+        it 'filters passwords in the logfile' do
+          allow(Rails.logger).to receive(:info)
+          expect(Rails.logger).
+            to receive(:info).
+                 with(/{\"current_password\"=>\"\[FILTERED\]\", \"password\"=>\"\[FILTERED\]\"}/)
+          post :update,
+               id: current_user.id,
+               user: update_password_params
+        end
+      end
 
       context 'when the User#update_attributes was successfully' do
         before do
-          expect(current_user).to receive(:update_attributes).with(update_params).
-            and_return(true)
+          expect(current_user).
+            to receive(:update_attributes).
+                 with(update_params).
+                 and_return(true)
 
           post :update,
                id: current_user.id,
-               user: { contact_name: 'BAR', email: 'changed@foo.com' }
+               user: update_params
         end
 
         it { is_expected.to assign_to(:user).with(current_user) }
