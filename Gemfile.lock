@@ -512,10 +512,10 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rainbow (2.2.2)
       rake
-    rake (10.5.0)
-    rb-fsevent (0.10.3)
-    rb-inotify (0.10.0)
-      ffi (~> 1.0)
+    rake (12.3.2)
+    rb-fsevent (0.10.2)
+    rb-inotify (0.9.10)
+      ffi (>= 0.5.0, < 2)
     recaptcha (4.6.4)
       json
     redis (4.0.1)
@@ -818,7 +818,7 @@ DEPENDENCIES
   rack-cors (~> 1.0.2)
   rails (= 4.2.11)
   rails-observers (~> 0.1.5)
-  rake (~> 10.0)
+  rake (~> 12.3.2)
   rash_alt!
   recaptcha (~> 4.6.3)
   redis (~> 4.0.1)
