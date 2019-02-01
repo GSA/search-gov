@@ -103,6 +103,7 @@ describe UsersController do
       before { activate_authlogic }
       include_context 'approved user logged in'
 
+      it { is_expected.to permit(*permitted_params).for(:update, params: { user: update_params }) }
       context 'when changing the password' do
         let(:update_params) do
           { 'current_password': current_user.password,
