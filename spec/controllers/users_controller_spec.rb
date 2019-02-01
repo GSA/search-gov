@@ -11,7 +11,7 @@ describe UsersController do
   describe '#create' do
     it { is_expected.to permit(*permitted_params).for(:create, params: { user: user_params }) }
 
-     context 'when the User#save was successful and User has government affiliated email' do
+    context 'when the User#save was successful and User has government affiliated email' do
       let(:user) do
         mock_model(User,
                    has_government_affiliated_email?: true,
