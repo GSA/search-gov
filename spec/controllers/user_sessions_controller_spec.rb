@@ -15,12 +15,15 @@ describe UserSessionsController do
       post :create, user_session: { email: user.email, password: user.password }
     end
 
-    it 'filters passwords in the logfile' do
-      allow(Rails.logger).to receive(:info)
-      expect(Rails.logger).to receive(:info).
-        with(/ \"password\"=>\"\[FILTERED\]\"/)
-      post :create, user_session: { email: users('developer').email,
-                                    password: 'test1234!'}
+    context 'when the user is approved' do
+      let(:user) { users(:affiliate_manager) }
+
+      it 'filters passwords in the logfile' do
+        allow(Rails.logger).to receive(:info)
+        expect(Rails.logger).to receive(:info).
+          with(/ \"password\"=>\"\[FILTERED\]\"/)
+        post_create
+      end
     end
 
     context 'when the user is not approved' do
