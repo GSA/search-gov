@@ -12,7 +12,7 @@ describe UserSessionsController do
 
   describe "#create" do
     let(:post_create) do
-      post :create, user_session: { email: user.email , password: user.password }
+      post :create, user_session: { email: user.email, password: user.password }
     end
 
     it 'filters passwords in the logfile' do
