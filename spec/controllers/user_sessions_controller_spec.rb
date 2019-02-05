@@ -11,8 +11,16 @@ describe UserSessionsController do
   end
 
   describe "#create" do
+    let(:user) { users(:affiliate_manager) }
     let(:post_create) do
-      post :create, user_session: { email: user.email , password: user.password }
+      post :create, user_session: { email: user.email, password: user.password }
+    end
+
+    it 'filters passwords in the logfile' do
+      allow(Rails.logger).to receive(:info)
+      expect(Rails.logger).to receive(:info).
+        with(/ \"password\"=>\"\[FILTERED\]\"/)
+      post_create
     end
 
     context 'when the user is not approved' do
