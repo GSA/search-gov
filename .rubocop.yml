@@ -841,7 +841,8 @@ Layout/MultilineMethodCallIndentation:
   # By default, the indentation width from Layout/IndentationWidth is used
   # But it can be overridden by setting this parameter
   IndentationWidth: ~
-
+  Exclude:
+    - 'spec/**/*'
 Layout/MultilineMethodDefinitionBraceLayout:
   Description: >-
                  Checks that the closing brace in a method definition is
