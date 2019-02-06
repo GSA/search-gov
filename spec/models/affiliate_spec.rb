@@ -21,7 +21,7 @@ describe Affiliate do
         is_expected.to have_db_column(:i14y_date_stamp_enabled).
           of_type(:boolean).with_options(default: false, null: false)
       end
-      #The active_template_id column has been deprectated. It will be dropped in a future migration.
+      # The active_template_id column has been deprectated. It will be dropped in a future migration.
       it { is_expected.to have_db_column(:active_template_id).of_type(:integer) }
       it { is_expected.to have_db_column(:template_id).of_type(:integer) }
       it do
