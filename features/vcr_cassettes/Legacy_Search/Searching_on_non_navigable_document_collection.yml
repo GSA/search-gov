@@ -240,4 +240,166 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}}]}}}'
     http_version: 
   recorded_at: Mon, 19 Nov 2018 22:40:35 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=noaa%20(site:www.sba.gov/blogs/)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 05 Feb 2019 21:44:54 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - DB90DF447E6649E1ADFC593225D05CFD
+      Bingapis-Sessionid:
+      - 7CAA5E3156F445B2ADB99EB9634FF2D6
+      X-Msedge-Clientid:
+      - 182C565C75C9610905BC5AA674856096
+      X-Msapi-Userstate:
+      - 6d63
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=195,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: DB90DF447E6649E1ADFC593225D05CFD Ref B: BY3EDGE0221 Ref C: 2019-02-05T21:45:54Z'
+      Apim-Request-Id:
+      - 7004deeb-f9af-45b0-af97-017775b6b045
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 05 Feb 2019 21:45:54 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "noaa
+        (site:www.sba.gov\/blogs\/)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=noaa+(site%3awww.sba.gov%2fblogs%2f)",
+        "totalEstimatedMatches": 11, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Get Tips and Information about Hurricane Preparedness for ...", "url":
+        "https:\/\/www.sba.gov\/blogs\/get-tips-and-information-about-hurricane-preparedness-your-business",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/get-tips-and-information-about-hurricane...",
+        "snippet": "Nearly three years have passed since Hurricane Sandy devastated
+        the East Coast, and the recovery continues in some of the hardest-hit areas.
+        According to a National Hurricane Center report, Hurricane Sandy was the second
+        costliest storm in U.S. history.", "dateLastCrawled": "2019-01-25T16:11:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "5 Tips on Starting Your Hurricane Season Business ...", "url": "https:\/\/www.sba.gov\/blogs\/5-tips-starting-your-hurricane-season-business-continuity-plan",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/5-tips-starting-your-hurricane-season...",
+        "snippet": "While weather experts NOAA are predicting a “near-normal” 2012
+        Atlantic hurricane season, last year’s Hurricane Irene is a reminder of the
+        erratic and devastating nature of tropical storms.", "dateLastCrawled": "2019-01-21T19:17:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Seven Ways to Start Your Business Continuity Plan | The U ...", "url":
+        "https:\/\/www.sba.gov\/blogs\/seven-ways-start-your-business-continuity-plan",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/seven-ways-start-your-business...",
+        "snippet": "James Rivera was named Associate Administrator for SBA’s Office
+        of Disaster Assistance in November 2009 after serving for several months as
+        Acting Associate Administrator.", "dateLastCrawled": "2019-01-01T22:25:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "4 Ways to Make Your Company Resilient Enough to Withstand ...", "url":
+        "https:\/\/www.sba.gov\/blogs\/4-ways-make-your-company-resilient-enough-withstand-winter-weather-threats",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/4-ways-make-your-company-resilient...",
+        "snippet": "According to the National Oceanic and Atmospheric Administration
+        (NOAA), 2011 and 2012 were the two most extreme years on record for destructive
+        weather events, causing more than $170 billion in damages, much of that to
+        businesses.", "dateLastCrawled": "2019-01-27T05:58:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Is Your Company Resilient Enough to Recover After a Major ...", "url":
+        "https:\/\/www.sba.gov\/blogs\/your-company-resilient-enough-recover-after-major-disaster",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/your-company-resilient-enough-recover...",
+        "snippet": "According to National Oceanic and Atmospheric Administration (NOAA),
+        2011 and 2012 were the two most extreme years on record for destructive weather
+        events, which caused a total of more than $170 billion in damages, much of
+        that to businesses.", "dateLastCrawled": "2019-01-14T02:03:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Payroll Concerns for Remote Employees | The U.S. Small ...", "url":
+        "https:\/\/www.sba.gov\/blogs\/payroll-concerns-remote-employees", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/payroll-concerns-remote-employees",
+        "snippet": "Barbara Weltman is an attorney, prolific author with such titles
+        as J.K. Lasser''s Small Business Taxes, J.K. Lasser''s Guide to Self-Employment,
+        and Smooth Failing as well as a trusted professional advocate for small businesses
+        and entrepreneurs. She is also the publisher of Idea of the Day® and monthly
+        e-newsletter Big Ideas for Small Business® and host of Build Your Business
+        Radio.", "dateLastCrawled": "2019-02-01T00:20:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Five Easy Ways to Safeguard Your Small Business Before ...", "url":
+        "https:\/\/www.sba.gov\/blogs\/five-easy-ways-safeguard-your-small-business-disaster-strikes",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/five-easy-ways-safeguard-your-small...",
+        "snippet": "Weather experts from the National Oceanic and Atmospheric Administration
+        (NOAA) are predicting an “active” 2013 Atlantic hurricane season. The six-month
+        season, which began June 1, typically peaks between August and October.",
+        "dateLastCrawled": "2018-12-24T16:44:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Blogs Category - SBA News and Views | The U.S. Small ...", "url":
+        "https:\/\/www.sba.gov\/blogs\/sba-news-and-views?page=15", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/sba-news-and-views?page=15",
+        "snippet": "SBA has just concluded the public comment period for the size
+        rules on the SBIR program. As we had hoped, the input and comments we received
+        on the rules were robust ...", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8", "name":
+        "How to Start a Non-Profit | The U.S. Small Business ...", "url": "https:\/\/www.sba.gov\/blogs\/how-start-non-profit",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/how-start-non-profit",
+        "snippet": "Starting a non-profit can be an extremely rewarding entrepreneurial
+        experience. A non-profit gives you the ability to give back to your community
+        and really make a difference unlike any other industry.", "dateLastCrawled":
+        "2019-01-29T19:30:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9", "name":
+        "Government Contracting: Explaining the Process in 5 Steps ...", "url": "https:\/\/www.sba.gov\/blogs\/government-contracting-explaining-process-5-steps",
+        "about": [{"name": "Government procurement in the United States"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/government-contracting-explaining...",
+        "snippet": "Many small businesses have products and services that they’d like
+        to sell to government and the drive to make those sales happen. Yet, many
+        lack an understanding of the government contracting process.", "dateLastCrawled":
+        "2019-01-30T08:25:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10", "name":
+        "Selling to the Government – Get Started With These 5 Steps ...", "url":
+        "https:\/\/www.sba.gov\/blogs\/selling-government-get-started-these-5-steps",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/selling-government-get-started-these-5-steps",
+        "snippet": "Selling to the Government – Get Started With These 5 Steps .
+        By Caron_Beesley, Contributor . Published: February 8, 2012 Updated: September
+        23, 2016. Did you know the U.S. federal government buys nearly $100 billion
+        worth of goods and services from small businesses each year? It’s a lucrative
+        business opportunity, indeed!", "dateLastCrawled": "2019-01-28T05:33:00.0000000Z",
+        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}}]}}}'
+    http_version: 
+  recorded_at: Tue, 05 Feb 2019 21:45:54 GMT
 recorded_with: VCR 4.0.0

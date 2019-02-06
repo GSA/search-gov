@@ -70,4 +70,68 @@ http_interactions:
         "rankingResponse": {}}'
     http_version: 
   recorded_at: Mon, 27 Aug 2018 00:04:44 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=english%20(site:nonsense.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 05 Feb 2019 21:32:58 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 85E42A15C73C45DCB61BFA44C85738BB
+      Bingapis-Sessionid:
+      - AAE12F85FBF34BC48CC535C833A01056
+      X-Msedge-Clientid:
+      - 29ADA6991FF1654A29A3AA631EBD647C
+      X-Msapi-Userstate:
+      - 24fb
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=144,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: 85E42A15C73C45DCB61BFA44C85738BB Ref B: BY3EDGE0519 Ref C: 2019-02-05T21:33:58Z'
+      Apim-Request-Id:
+      - 331779e6-ef27-4749-9fbc-f59b0e63d269
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 05 Feb 2019 21:33:58 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "english
+        (site:nonsense.gov)"}, "rankingResponse": {}}'
+    http_version: 
+  recorded_at: Tue, 05 Feb 2019 21:33:58 GMT
 recorded_with: VCR 4.0.0

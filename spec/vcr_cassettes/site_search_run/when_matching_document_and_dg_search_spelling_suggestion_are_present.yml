@@ -70,4 +70,68 @@ http_interactions:
         "rankingResponse": {}}'
     http_version: 
   recorded_at: Mon, 27 Aug 2018 00:04:08 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=scientost%20(site:www100.whitehouse.gov/)&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 05 Feb 2019 21:36:25 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 253DB8AFA17441A79948979E94CF6218
+      Bingapis-Sessionid:
+      - 909EE13DCCC349E09DC0C5CA4B0A0F07
+      X-Msedge-Clientid:
+      - 00CC580CC1886451215654F6C0C4656C
+      X-Msapi-Userstate:
+      - '1169'
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=154,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: 253DB8AFA17441A79948979E94CF6218 Ref B: BY3EDGE0316 Ref C: 2019-02-05T21:37:25Z'
+      Apim-Request-Id:
+      - 8ac177fd-d660-4c7c-a49e-b5724e1f52d9
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 05 Feb 2019 21:37:25 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "scientost
+        (site:www100.whitehouse.gov\/)"}, "rankingResponse": {}}'
+    http_version: 
+  recorded_at: Tue, 05 Feb 2019 21:37:25 GMT
 recorded_with: VCR 4.0.0

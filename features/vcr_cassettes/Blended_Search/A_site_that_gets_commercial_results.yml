@@ -419,4 +419,235 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
   recorded_at: Mon, 19 Nov 2018 22:39:21 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=news%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 05 Feb 2019 21:43:27 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 1E668A530653416393EB7A99EF4832D8
+      Bingapis-Sessionid:
+      - E4E9EBB55F1340F483BF0035CB32C6F5
+      X-Msedge-Clientid:
+      - 360C5CFCA96D6D71057D5006A8216CF7
+      X-Msapi-Userstate:
+      - e2f0
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=235,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: 1E668A530653416393EB7A99EF4832D8 Ref B: BY3EDGE0221 Ref C: 2019-02-05T21:44:28Z'
+      Apim-Request-Id:
+      - a7c94c34-b3b2-4e91-8d08-3a2e44c8a0f1
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 05 Feb 2019 21:44:27 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "news
+        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=news+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 28700000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "News | USCIS", "url": "https:\/\/www.uscis.gov\/news", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.uscis.gov\/news", "snippet": "All News
+        This page lists all USCIS releases, searchable by topic and date. It also
+        includes policy and procedure updates as well as late-breaking news about
+        USCIS office closures and other emergencies.", "dateLastCrawled": "2019-01-29T08:51:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "News | The White House", "url": "https:\/\/www.whitehouse.gov\/news\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/news",
+        "snippet": "Follow the latest updates from the Trump Administration, including
+        briefings and statements, Presidential actions, and news articles.", "dateLastCrawled":
+        "2019-02-01T09:23:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2", "name":
+        "News | Homeland Security", "url": "https:\/\/www.dhs.gov\/news", "about":
+        [{"name": "United States Department of Homeland Security"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.dhs.gov\/news", "snippet": "News
+        and important communications from the Department of Homeland Security. Press
+        Releases. Latest news and press releases. National Terrorism Advisory System.
+        The National Terrorism Advisory System (NTAS) communicates information about
+        terrorist threats to the American public. Blog.", "dateLastCrawled": "2019-01-25T09:16:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "News — FBI", "url": "https:\/\/www.fbi.gov\/news\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.fbi.gov\/news", "snippet": "Featured
+        News, Latest News, Press Releases, Editor''s Pick and Feature Photos,
+        all the FBI News up to the minute.", "dateLastCrawled": "2019-02-01T08:25:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "News | HHS.gov", "url": "https:\/\/www.hhs.gov\/about\/news\/index.html",
+        "about": [{"name": "United States Department of Health and Human Services"}],
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.hhs.gov\/about\/news",
+        "snippet": "Latest News Releases. Trump Administration Actions to Protect
+        Life and Conscience. January 18, 2019. In February 2018, HHS updated its five-year
+        Strategic Plan for 2018-2022, which highlights that a core component of HHS’s
+        mission is the dedication to protecting the life of all Americans at every
+        stage of life, beginning at conception. ...", "dateLastCrawled": "2019-01-30T13:20:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "News - Federal Aviation Administration", "url": "https:\/\/www.faa.gov\/news\/",
+        "about": [{"name": "Federal Aviation Administration"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.faa.gov\/news", "snippet": "Latest
+        News & Updates. FAA Air Traffic Report. January 30, 2019 – Get a heads-up
+        on any daily impacts to normal air traffic operations. Atlanta is a \"No Drone
+        Zone\" During Super Bowl LIII. January 24, 2019 – FAA prohibits drones around
+        Mercedes-Benz Stadium for Super Bowl LIII in Atlanta.", "dateLastCrawled":
+        "2019-02-01T13:30:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6", "name":
+        "News - Yellowstone National Park (U.S. National Park Service)", "url":
+        "https:\/\/www.nps.gov\/yell\/learn\/news\/index.htm", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.nps.gov\/yell\/learn\/news", "snippet":
+        "News Releases. Browse our latest news releases or subscribe to our RSS
+        feed. Social Media. Social media provides a quick and easy way for you to
+        connect with us on a daily basis. Photos, Sounds & Videos. Browse our library
+        of high-quality, public domain images on Flickr. Explore and download the
+        sounds of Yellowstone in our sound library.", "dateLastCrawled": "2018-11-30T17:01:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Army Worldwide News - The United States Army", "url": "https:\/\/www.army.mil\/news",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.army.mil\/news",
+        "snippet": "The latest news and information from the U.S. Army covering
+        the Americas, Middle East, Europe, Asia and Pacific and more.", "dateLastCrawled":
+        "2019-02-01T00:21:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8", "name":
+        "Newsroom | Internal Revenue Service", "url": "https:\/\/www.irs.gov\/newsroom",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.irs.gov\/newsroom",
+        "snippet": "Newsroom Search Historical Content. Keywords. Year. Year. Type
+        Search Include Archived Content ... A collection of recent news releases,
+        statements and other items related to IRS compliance and enforcement efforts.
+        Email Updates. Tax tips, filing season news, and more.", "dateLastCrawled":
+        "2018-12-27T21:06:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9", "name":
+        "News | Governor Andrew M. Cuomo", "url": "https:\/\/www.governor.ny.gov\/news",
+        "about": [{"name": "Andrew Cuomo"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.governor.ny.gov\/news", "snippet": "The official website
+        of the 56th Governor of New York State, Andrew M. Cuomo. Find information
+        about the administration, issues, & news that affects you.", "dateLastCrawled":
+        "2019-01-28T02:23:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10", "name":
+        "News | PA.GOV", "url": "https:\/\/www.pa.gov\/news\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.pa.gov\/news", "snippet": "Commonwealth
+        of Pennsylvania. Keystone State. Proudly founded by William Penn in 1681 as
+        a place of tolerance and freedom.", "dateLastCrawled": "2019-01-31T15:29:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "News | NSF - National Science Foundation", "url": "https:\/\/nsf.gov\/news\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/nsf.gov\/news", "snippet":
+        "News From the Field. December 13, 2018. Study scrutinizes hidden marketing
+        relationships on social media. News From the Field. December 13, 2018. Collagen
+        nanofibrils in mammalian tissues get stronger with exercise. News From the
+        Field. December 13, 2018. Plants'' defense against insects is a bouquet.",
+        "dateLastCrawled": "2019-02-01T15:26:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "News & Events | National Institutes of Health (NIH)", "url": "https:\/\/www.nih.gov\/news-events",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nih.gov\/news-events",
+        "snippet": "A monthly newsletter of practical consumer health news and information
+        based on NIH research. NIH Record A biweekly newsletter for employees of the
+        National Institutes of Health.", "dateLastCrawled": "2019-02-01T15:38:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "News - CDTFA", "url": "https:\/\/www.cdtfa.ca.gov\/news\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.cdtfa.ca.gov\/news", "snippet": "News
+        Releases, Notices and Newsletters, Events and Calendar, Public Service Announcements,
+        PSAs ALERT! Credit Card services will be unavailable from Thursday, February
+        7, 2018 at 9:00 p.m. to Friday, February 8, 2018 at 1:00 a.m., Pacific time,
+        for system maintenance.", "dateLastCrawled": "2019-02-01T07:23:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "News (U.S. National Park Service)", "url": "https:\/\/www.nps.gov\/aboutus\/news\/index.htm",
+        "about": [{"name": "National Park Service"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.nps.gov\/aboutus\/news", "snippet": "News releases -
+        Here you can view all National Park Service news releases, search by topic,
+        or filter by park or office. DOI news releases - Our parent agency, the
+        U.S. Department of the Interior, publishes news releases relating to national
+        parks and other natural and cultural resource topics.", "dateLastCrawled":
+        "2018-12-09T17:13:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15", "name":
+        "News | NASA''s Opportunity Rover Logs 15 Years on Mars", "url": "https:\/\/www.jpl.nasa.gov\/news\/news.php?feature=7317",
+        "thumbnailUrl": "https:\/\/www.bing.com\/th?id=ON.1D93150DF43C82B27E6DE6699084CE49&pid=5.1&w=80&h=80&c=8",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.jpl.nasa.gov\/news\/news.php?feature=7317",
+        "snippet": "The rover landed in a region of the Red Planet called Meridiani
+        Planum 15 years ago today, on Jan. 24, 2004.", "dateLastCrawled": "2019-01-25T12:22:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "News | Huge Cavity in Antarctic Glacier Signals Rapid Decay", "url":
+        "https:\/\/www.jpl.nasa.gov\/news\/news.php?feature=7322", "thumbnailUrl":
+        "https:\/\/www.bing.com\/th?id=ON.A36F3BFD4E7927F8CFC876B127AD9079&pid=5.1&w=80&h=80&c=8",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.jpl.nasa.gov\/news\/news.php?feature=7322",
+        "snippet": "News Media Contact. Esprit Smith Jet Propulsion Laboratory,
+        Pasadena, California 818-354-4269 Esprit.smith@jpl.nasa.gov Brian Bell University
+        of California, Irvine 949-824-8249 bpbell@uci.edu Written by Carol Rasmussen
+        NASA''s Earth Science News Team 2019-011 . Popular.", "dateLastCrawled":
+        "2019-01-31T13:53:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17", "name":
+        "News | U.S. Department of the Interior", "url": "https:\/\/www.doi.gov\/news",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.doi.gov\/news",
+        "snippet": "News from the Office of the Secretary of the Interior.", "dateLastCrawled":
+        "2019-02-01T05:29:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18", "name":
+        "News | Office of the Texas Governor | Greg Abbott", "url": "https:\/\/gov.texas.gov\/news",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/gov.texas.gov\/news",
+        "snippet": "News. Jan 30. Governor Abbott Appoints Hambrick Director Of
+        The Office Of State-Federal Relations. Governor Greg Abbott has appointed
+        Wes Hambrick Director of the Office of State-Federal Relations for a term
+        to expire at the pleasure of the Governor. Appointment. Jan 29.", "dateLastCrawled":
+        "2019-02-01T09:15:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19", "name":
+        "News - Glacier National Park (U.S. National Park Service)", "url":
+        "https:\/\/www.nps.gov\/glac\/learn\/news\/index.htm", "about": [{"name":
+        "Glacier National Park"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/glac\/learn\/news\/index.htm",
+        "snippet": "News Releases Read the latest press releases or find old articles
+        in the archive. Press Kit Explore all sorts of background information on Glacier
+        National Park. Contact Public Affairs For news media related questions,
+        please contact our Public Affairs Officer. Social Media Follow the links below
+        or check out our other social media outlets.", "dateLastCrawled": "2018-12-10T16:13:00.0000000Z",
+        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Tue, 05 Feb 2019 21:44:28 GMT
 recorded_with: VCR 4.0.0

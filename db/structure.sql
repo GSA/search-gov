@@ -123,7 +123,7 @@ CREATE TABLE `affiliates` (
   `jobs_enabled` tinyint(1) NOT NULL DEFAULT '0',
   `agency_id` int(11) DEFAULT NULL,
   `raw_log_access_enabled` tinyint(1) NOT NULL DEFAULT '0',
-  `search_engine` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'BingV6',
+  `search_engine` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'BingV7',
   `is_rss_govbox_enabled` tinyint(1) NOT NULL DEFAULT '0',
   `rss_govbox_label` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `is_video_govbox_enabled` tinyint(1) NOT NULL DEFAULT '1',
@@ -1561,7 +1561,7 @@ CREATE TABLE `youtube_profiles` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-12-17 14:12:16
+-- Dump completed on 2019-02-05 12:20:42
 INSERT INTO schema_migrations (version) VALUES ('20090818003200');
 
 INSERT INTO schema_migrations (version) VALUES ('20090827135344');
@@ -3007,4 +3007,6 @@ INSERT INTO schema_migrations (version) VALUES ('20181025225740');
 INSERT INTO schema_migrations (version) VALUES ('20181109212904');
 
 INSERT INTO schema_migrations (version) VALUES ('20181213153332');
+
+INSERT INTO schema_migrations (version) VALUES ('20190205200912');
 

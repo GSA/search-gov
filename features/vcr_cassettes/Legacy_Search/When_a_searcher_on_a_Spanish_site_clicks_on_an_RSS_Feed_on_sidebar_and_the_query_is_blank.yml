@@ -440,4 +440,246 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
   recorded_at: Mon, 19 Nov 2018 22:40:28 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=noticia%20uno%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 05 Feb 2019 21:44:46 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - FD0C8A8D2D6F4170866B99A72568720E
+      Bingapis-Sessionid:
+      - 1C98AD3BFA3D43F2BABF7B066AF4430E
+      X-Msedge-Clientid:
+      - 2B70E216A74D6F1D04D7EEECA6016E20
+      X-Msapi-Userstate:
+      - f11c
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=194,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: FD0C8A8D2D6F4170866B99A72568720E Ref B: BY3EDGE0207 Ref C: 2019-02-05T21:45:47Z'
+      Apim-Request-Id:
+      - 96c55055-774e-4d6e-bed9-c1ce97769f8c
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 05 Feb 2019 21:45:47 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "noticia
+        uno (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=noticia+uno+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 75900, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "El Negociado de la Policía Logra el Arresto de uno de los ...",
+        "url": "https:\/\/policia.pr.gov\/el-negociado-de-la-policia-logra-el-arresto-de-uno-de-los-mas-buscados\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/policia.pr.gov\/el-negociado-de-la-policia-logra-el-arresto...",
+        "snippet": "El Negociado de la Policía Logra el Arresto de uno de los Más
+        Buscados. Fecha de Publicación: 25 May 2018. Categorías: Anuncios, Noticias.
+        Tags: El arrestado es conocido como Cuba y se relaciona con casos de asesinatos.",
+        "dateLastCrawled": "2019-01-28T07:05:00.0000000Z", "language": "es", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Tarjeta Verde para Familiares Inmediatos de un Ciudadano ...", "url":
+        "https:\/\/www.uscis.gov\/es\/tarjeta-verde\/familiar-inmediato", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.uscis.gov\/es\/tarjeta-verde\/familiar-inmediato",
+        "snippet": "Usted podría ajustar su estatus bajo INA 245(i), aún si está sujeto
+        a uno o más vetos de ajuste de estatus y por consiguiente ser inelegible
+        al ajuste de estatus bajo INA 245(a). Para más información, vea las instrucciones
+        del Formulario I-485, Suplemento A, Suplemento A del Formulario I-485, Ajuste
+        de Estatus bajo la Sección 245 (i).", "dateLastCrawled": "2019-01-29T12:16:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Policía Informa | Policía de Puerto Rico", "url": "https:\/\/policia.pr.gov\/policia-informa\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/policia.pr.gov\/policia-informa",
+        "snippet": "Noticias. Agentes adscritos a la Unidad de Rescate y del cuartel
+        de Trujillo Alto Sur rescataron a tres perritos que cayeron en una alcantarilla
+        que... LEER MÁS. Línea Confidencial 787-343-2020. ... Helicóptero de FURA
+        gana el Primer Lugar como uno de los Mejores del Mundo. 07\/09\/2015.",
+        "dateLastCrawled": "2019-01-30T14:22:00.0000000Z", "language": "es", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Información General sobre el ITIN | Internal Revenue Service", "url":
+        "https:\/\/www.irs.gov\/es\/individuals\/international-taxpayers\/general-itin-information",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.irs.gov\/es\/individuals\/international-taxpayers\/general...",
+        "snippet": "Puede que tenga que renovar su ITIN. A partir del 1 de enero de
+        2017, todos los ITIN no utilizados en una declaración de impuestos federales
+        por lo menos una vez en los últimos tres años, ya no serán válidos para utilizar.
+        Además, todos los ITIN emitidos antes de 2013 comenzarán a vencer este ...",
+        "dateLastCrawled": "2018-12-09T06:45:00.0000000Z", "language": "es", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Glosario de términos de compensación de trabajadores para ...", "url":
+        "https:\/\/www.dir.ca.gov\/DWC\/WCGlossary_spanish.htm", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.dir.ca.gov\/DWC\/WCGlossary_spanish.htm",
+        "snippet": "Notice = Noticia: Vea noticia de beneficio (benefit notice).
+        ... del 2004 y el médico que lo está atendiendo indica que probablemente nunca
+        va poder regresar a su trabajo usual o a uno como el y su empleador le ofrece
+        un trabajo modificado o alternativo en lugar de los beneficios de rehabilitación
+        vocacional. ...", "dateLastCrawled": "2019-01-28T02:32:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Juno - Mission to Jupiter | NASA", "url": "https:\/\/www.nasa.gov\/mission_pages\/juno\/main\/index.html",
+        "about": [{"name": "Juno"}, {"name": "Juno"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.nasa.gov\/mission_pages\/juno", "snippet": "Juno will
+        improve our understanding of the solar system''s beginnings by revealing the
+        origin and evolution of Jupiter.", "dateLastCrawled": "2019-01-31T19:03:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Preguntas y Respuestas sobre temas relacionados a ...", "url": "https:\/\/www.uscis.gov\/es\/noticias\/preguntas-y-respuestas\/preguntas-y-respuestas-sobre-temas-relacionados-residencia-permanente-green-card",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.uscis.gov\/es\/noticias\/preguntas-y-respuestas\/preguntas...",
+        "snippet": "Inicio > Noticias > Preguntas y respuestas > Preguntas y Respuestas
+        sobre temas relacionados a residencia permanente (green card) saltar los enlaces
+        de compartir e imprimir Compartir Esta Página Imprimir. Contenido de Archivo.",
+        "dateLastCrawled": "2019-01-29T01:00:00.0000000Z", "language": "es", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Después de recibir una decisión | USCIS", "url": "https:\/\/www.uscis.gov\/es\/recursos\/despues-de-recibir-una-decision",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.uscis.gov\/es\/recursos\/despues-de-recibir-una-decision",
+        "snippet": "Después de que usted obtiene la residencia permanente nosotros
+        actualizamos nuestros registros y le enviamos una carta de bienvenida. Luego
+        le enviamos su nueva tarjeta de residente permanente. Si usted se muda antes
+        de recibir su tarjeta debe llenar una solicitud de Cambio de Dirección. Si
+        ocurre ...", "dateLastCrawled": "2019-01-29T20:45:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Preguntas y respuestas sobre la tuberculosis - cdc.gov", "url":
+        "https:\/\/www.cdc.gov\/tb\/esp\/publications\/faqs\/TBQASp.pdf", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.cdc.gov\/tb\/esp\/publications\/faqs\/TBQASp.pdf",
+        "snippet": "La buena noticia es que las personas con la enfermedad de tuberculosis
+        pueden recibir tratamiento si consultan a un proveedor de atención médica.
+        Es más, la mayoría de las personas que tienen la infección de tuberculosis
+        latente pueden tomar medicamentos para que no se les desarrolle la enfermedad
+        de tuberculosis.", "dateLastCrawled": "2019-01-31T14:34:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Cambios del Seguro Social para el 2016 - ssa.gov", "url": "https:\/\/www.ssa.gov\/espanol\/noticias\/prensa\/hojadedatos\/2016cola-datos.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/espanol\/noticias\/prensa\/hojadedatos\/2016cola...",
+        "snippet": "Trabajador incapacitado, cónyuge y uno o más hijos : $1,983:
+        Todo trabajador incapacitado : $1,166 * Debido a que no habrá aumento por
+        concepto del COLA, la ley requiere que estás cantidades no cambien en el año
+        2016.", "dateLastCrawled": "2019-01-27T16:54:00.0000000Z", "language": "es",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "El proceso de apelación - ssa.gov", "url": "https:\/\/www.ssa.gov\/pubs\/ES-05-10941.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/pubs\/ES-05-10941.pdf",
+        "snippet": "Para hablar con uno de nuestros agentes en español, llame a
+        nuestro número gratuito . 1-800-772-1213. y oprima el número 7. Si es sordo
+        o tiene problemas de audición, llame a nuestro número TTY, 1-800-325-0778.
+        Si necesita hablar con un agente, podemos contestar", "dateLastCrawled": "2019-02-01T11:46:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Preguntas y Respuestas: Se extiende TPS para hondureños ...", "url":
+        "https:\/\/www.uscis.gov\/es\/archivo\/preguntas-y-respuestas-se-extiende-tps-para-hondurenos-por-18-meses-mas",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.uscis.gov\/es\/archivo\/preguntas-y-respuestas-se...",
+        "snippet": "Introduccion. El Departamento de Seguridad Nacional (DHS, por
+        sus siglas en inglés) extenderá por 18 meses el Estatus de Protección Temporal
+        (TPS, por sus siglas en inglés) para los ciudadanos de Honduras (y aquellos
+        ciudadanos sin nacionalidad cuya última residencia haya sido en Honduras)
+        hasta el 5 de enero del 2012.", "dateLastCrawled": "2019-01-31T12:55:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Cambios del Seguro Social para el 2015 - ssa.gov", "url": "https:\/\/www.ssa.gov\/espanol\/noticias\/prensa\/hojadedatos\/2015cola-datos.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/espanol\/noticias\/prensa\/hojadedatos\/2015cola...",
+        "snippet": "NOTA ACLARATORIA. La tasa de contribución de 7.65% es la cantidad
+        combinada de las contribuciones de Seguro Social y Medicare. La cantidad contributiva
+        perteneciente al Seguro Social (OASDI) es de 6.20% aplicable a todos los salarios
+        tributables hasta el máximo de salarios tributables (véase las cantidades
+        a seguir).", "dateLastCrawled": "2019-01-30T05:04:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Huellas Dactilares | USCIS", "url": "https:\/\/www.uscis.gov\/es\/formularios\/huellas-dactilares",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.uscis.gov\/es\/formularios\/huellas-dactilares",
+        "snippet": "USCIS requiere que se le tomen las huellas dactilares a los solicitantes
+        y peticionarios de ciertos beneficios de inmigración, con el propósito hacerle
+        una investigación de antecedentes criminales en el FBI. Para asegurar la calidad
+        e integridad del proceso, USCIS tramita las tarjetas de huellas ...", "dateLastCrawled":
+        "2019-01-26T01:12:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "Colombia - Trade Promotion and Advertising | export.gov", "url": "https:\/\/www.export.gov\/article?id=Colombia-trade-promotion-and-advertising",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.export.gov\/article?id=Colombia-trade-promotion-and...",
+        "snippet": "Colombia - Trade Promotion and AdvertisingColombia - Trade Promotion
+        ... Noticias Uno NTN24 ... Colombia - Trade Promotion and Advertising.
+        Includes web links to local trade fair or show authorities and local newspapers,
+        trade publications, radio\/TV\/cable information. Pick a Board .", "dateLastCrawled":
+        "2019-01-31T00:23:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15", "name":
+        "Requisitos Revisados Para Solicitar Un ITIN | Internal ...", "url": "https:\/\/www.irs.gov\/es\/individuals\/revised-application-standards-for-itins",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.irs.gov\/es\/individuals\/revised-application-standards...",
+        "snippet": "El IRS ha modificado la cantidad de documentos que la agencia
+        aceptará como prueba de identidad y estatus de extranjero para obtener un
+        ITIN. En la actualidad, se aceptan 13 documentos . Cada uno de los documentos
+        deberá estar vigente y contener una fecha de vencimiento.", "dateLastCrawled":
+        "2018-12-17T08:40:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16", "name":
+        "Comunicados de Prensa | USCIS", "url": "https:\/\/www.uscis.gov\/es\/comunicados-de-prensa",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.uscis.gov\/es\/comunicados-de-prensa",
+        "snippet": "Inicio > Noticias > Comunicados de Prensa. saltar los enlaces
+        de compartir e imprimir Compartir Esta Página Imprimir Feed RSS . Comunicados
+        de Prensa. Esta página contiene actualizaciones de comunicados de prensa que
+        impactan la inmigración legal.", "dateLastCrawled": "2019-01-25T16:48:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Lo que necesita saber si recibe beneficios de Seguridad de ...",
+        "url": "http:\/\/www.ssa.gov\/pubs\/ES-05-11024.pdf", "isFamilyFriendly":
+        true, "displayUrl": "www.ssa.gov\/pubs\/ES-05-11024.pdf", "snippet": "Contenido.
+        Introducción 1 Sobre sus beneficios 1 Lo que nos debe informar 5 Las cosas
+        que debe saber si recibe SSI debido a una incapacidad 20", "dateLastCrawled":
+        "2019-01-29T11:44:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18", "name":
+        "Después de que su Petición es Aprobada - Travel", "url": "https:\/\/travel.state.gov\/content\/travel\/en\/us-visas\/inmigracion\/el-proceso-de-visa-de-inmigrante\/despues-de-que-su-peticion-es-aprobada.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/travel.state.gov\/content\/travel\/en\/us-visas\/inmigracion\/el...",
+        "snippet": "Últimas Noticias (en inglés) Índice A-Z (en inglés) Glosario
+        (en inglés) Programa de Visa de Diversidad (en inglés) Advertencia de Fraude
+        (en inglés) ¿Qué es una Visa de EE.UU? (en inglés) Boletín de Visa (en inglés)
+        Una Guia para Nuevos Inmigrantes", "dateLastCrawled": "2019-02-01T04:16:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Ceremonias de Naturalización | USCIS", "url": "https:\/\/www.uscis.gov\/es\/ciudadania\/ceremonias-de-naturalizacion",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.uscis.gov\/es\/ciudadania\/ceremonias-de-naturalizacion",
+        "snippet": "A continuación encontrará qué esperar de su ceremonia de naturalización:
+        1. Reciba la Notificación para prestar el Juramento de Lealtad Usted pudiera
+        participar en una ceremonia de naturalización el mismo día de su entrevista.
+        Si no se llevará a cabo una ceremonia ese mismo día, le ...", "dateLastCrawled":
+        "2019-01-22T18:02:00.0000000Z", "language": "es", "isNavigational": false}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Tue, 05 Feb 2019 21:45:47 GMT
 recorded_with: VCR 4.0.0

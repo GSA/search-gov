@@ -441,4 +441,247 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
   recorded_at: Mon, 27 Aug 2018 00:07:11 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=thunder%20%26%20lightning%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 05 Feb 2019 21:33:47 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - B39ED3E4CA614383A2A0A3D4E9976FC3
+      Bingapis-Sessionid:
+      - B75EE017306947F9963762E0A5AB9E83
+      X-Msedge-Clientid:
+      - 35597124B6F06A9409BF7DDEB7BC6BA9
+      X-Msapi-Userstate:
+      - a8b5
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=221,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: B39ED3E4CA614383A2A0A3D4E9976FC3 Ref B: BY3EDGE0416 Ref C: 2019-02-05T21:34:47Z'
+      Apim-Request-Id:
+      - 7ddc5153-a876-4d7d-bede-8ff29201c535
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 05 Feb 2019 21:34:46 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "thunder
+        & lightning (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=thunder+%26+lightning+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 2410000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Thunderstorms & Lightning | Ready.gov", "url": "https:\/\/www.ready.gov\/thunderstorms-lightning",
+        "about": [{"name": "Thunderstorm"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.ready.gov\/thunderstorms-lightning", "snippet": "Consider
+        buying surge protectors, lightning rods, or a lightning protection system
+        to protect your home, appliances, and electronic devices. Survive DURING.
+        When thunder roars, go indoors. A sturdy building is the safest place to
+        be during a thunderstorm. Pay attention to weather reports and warnings
+        of thunderstorms.", "dateLastCrawled": "2019-02-01T09:20:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Lightning Safety - weather.gov", "url": "https:\/\/www.weather.gov\/safety\/lightning-safety",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/safety\/lightning-safety",
+        "snippet": "If you hear thunder, you are likely within striking distance
+        of the storm. Just remember, When Thunder Roars, Go Indoors. Too many people
+        wait far too long to get to a safe place when thunderstorms approach. Unfortunately,
+        these delayed actions lead to many of the lightning deaths and injuries
+        in the United States.", "dateLastCrawled": "2019-01-31T22:43:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "What causes lightning and thunder? | NOAA SciJinks – All ...",
+        "url": "https:\/\/scijinks.gov\/lightning\/", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/scijinks.gov\/lightning", "snippet": "Lightning begins as static
+        charges in a rain cloud. Winds inside the cloud are very turbulent. Water
+        droplets in the bottom part of the cloud are caught in the updrafts and lifted
+        to great heights where the much colder atmosphere freezes them.", "dateLastCrawled":
+        "2019-01-29T06:56:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3", "name":
+        "Understanding Lightning: Thunder - weather.gov", "url": "https:\/\/www.weather.gov\/safety\/lightning-science-thunder",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/safety\/lightning-science-thunder",
+        "snippet": "Thunder is the sound caused by a nearby flash of lightning
+        and can be heard for a distance of only about 10 miles from the lightning
+        strike. The sound of thunder should serve as a warning to anyone outside
+        that they are within striking distance of the storm and need to get to a safe
+        place ...", "dateLastCrawled": "2019-02-01T08:58:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "NWS JetStream - Lightning Safety - weather.gov", "url": "https:\/\/www.weather.gov\/jetstream\/lightning_safety",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/jetstream\/lightning_safety",
+        "snippet": "Lightning is the first thunderstorm hazard to arrive and the
+        last to leave. Lightning is one of the most capricious and unpredictable
+        characteristics of a thunderstorm. Because of this, no one can guarantee
+        an individual or group absolute protection from lightning.", "dateLastCrawled":
+        "2019-02-01T16:56:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5", "name":
+        "Social Media: Lightning - National Weather Service", "url": "https:\/\/www.weather.gov\/wrn\/summer2017-lightning-sm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/wrn\/summer2017-lightning-sm",
+        "snippet": "When Thunder Roars, Go Indoors! Facebook When Thunder Roars,
+        Go Indoors! Thunderstorms can produce deadly lightning capable of striking
+        up to 10 miles away from the storm — so, even if you don''t see rain you could
+        be in harm’s way.", "dateLastCrawled": "2019-01-24T16:16:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "NWS JetStream - The Sound of Thunder", "url": "https:\/\/www.weather.gov\/jetstream\/thunder",
+        "about": [{"name": "Thunder"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/jetstream\/thunder",
+        "snippet": "Thunder is the acoustic shock wave resulting from the extreme
+        heat generated by a lightning flash. Lightning can be as hot as 54,000°F
+        (30,000°C), a temperature that is five times hotter than the surface of the
+        sun! When lightning occurs, it heats the air surrounding its channel to
+        that same incredible temperature in a fraction of a second.", "dateLastCrawled":
+        "2019-01-31T14:12:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7", "name":
+        "Lightning Myths - weather.gov", "url": "https:\/\/www.weather.gov\/safety\/lightning-myths",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/safety\/lightning-myths",
+        "snippet": "Fact: Lightning often strikes more than three miles from the
+        center of the thunderstorm, far outside the rain or thunderstorm cloud.
+        “Bolts from the blue” can strike 10-15 miles from the thunderstorm.", "dateLastCrawled":
+        "2019-01-31T13:08:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8", "name":
+        "Lightning Safety Tips and Resources - weather.gov", "url": "https:\/\/www.weather.gov\/safety\/lightning",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/safety\/lightning",
+        "snippet": "Lightning Resources Lightning strikes the United States about
+        25 million times a year. Although most lightning occurs in the summer, people
+        can be struck at any time of year.", "dateLastCrawled": "2019-02-01T07:00:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Lightning Tips - weather.gov", "url": "https:\/\/www.weather.gov\/safety\/lightning-tips",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/safety\/lightning-tips",
+        "snippet": "Lightning: What You Need to Know. NO PLACE outside is safe when
+        thunderstorms are in the area!! If you hear thunder, lightning is close
+        enough to strike you. When you hear thunder, immediately move to safe shelter:
+        a substantial building with electricity or plumbing or an enclosed, metal-topped
+        vehicle with windows up.", "dateLastCrawled": "2019-02-01T02:01:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Lightning Safety When Working Outdoors", "url": "https:\/\/www.weather.gov\/media\/owlie\/OSHA_FS-3863_Lightning_Safety_05-2016.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/media\/owlie\/OSHA_FS-3863_Lightning_Safety...",
+        "snippet": "When thunder roars, go indoors! If you hear thunder, even
+        a distant rumble, get to a safe place immediately. Thunderstorms always include
+        lightning. Any thunder you hear is caused by lightning! NOAA advises
+        that nowhere outside is safe when thunderstorms are in your area. OSHA and
+        NOAA recommend that employers", "dateLastCrawled": "2019-01-29T21:31:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Understanding Lightning Science - weather.gov", "url": "https:\/\/www.weather.gov\/safety\/lightning-science-overview",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/safety\/lightning-science-overview",
+        "snippet": "Thunder is the sound made by a flash of lightning. As lightning
+        passes through the air it heats the air quickly. This causes the air to expand
+        rapidly and creates the sound wave we hear as thunder. Normally, you can
+        hear thunder about 10 miles from a lightning strike.", "dateLastCrawled":
+        "2019-01-30T19:43:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12", "name":
+        "When Thunder Roars, Go Indoors! | Features | CDC", "url": "https:\/\/www.cdc.gov\/features\/lightning-safety\/index.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/features\/lightning-safety\/index.html",
+        "snippet": "Remember: When thunder roars, go indoors. Find a safe, enclosed
+        shelter. The main lightning safety guide is the 30-30 rule. After you see
+        lightning, start counting to 30. If you hear thunder before you reach
+        30, go indoors. Suspend activities for at least 30 minutes after the last
+        clap of thunder.", "dateLastCrawled": "2019-01-30T03:05:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "NWS JetStream - Lightning Frequently Asked Questions", "url":
+        "https:\/\/www.weather.gov\/jetstream\/lightning_faq", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.weather.gov\/jetstream\/lightning_faq",
+        "snippet": "Lightning struck the pole and traveled down the flag to the
+        golf green. The bolt then branched out along the ground leaving dead grass
+        as an indicator of the ground current. What is the difference between a thundershower
+        and a thunderstorm? Technically, there is none. In general, the term ...",
+        "dateLastCrawled": "2019-01-31T01:15:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Thunderstorm and Lightning Awareness", "url": "https:\/\/www.weather.gov\/cae\/thunder.html",
+        "about": [{"name": "Thunderstorm"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.weather.gov\/cae\/thunder.html", "snippet": "Every thunderstorm
+        produces lightning...which kills more people each year than tornadoes. Occurs
+        with all thunderstorms. Averages 93 deaths and 300 injuries nationwide each
+        year. Causes several hundred million dollars in property damage and forests
+        each year. Photo by Phoenix Gazette.", "dateLastCrawled": "2019-01-29T10:27:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Thunder and Lightning - ready.pa.gov", "url": "https:\/\/www.ready.pa.gov\/BeInformed\/Know-The-Threats\/Pages\/Thunder-and-Lightning-.aspx",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ready.pa.gov\/...\/Pages\/Thunder-and-Lightning-.aspx",
+        "snippet": "Every thunderstorm produces lightning, which means every thunderstorm
+        is dangerous. Because lightning is so unpredictable and can occur as far
+        as 10 miles away from any rainfall, being prepared and knowing what to do
+        in a thunderstorm will decrease your risk of being injured.", "dateLastCrawled":
+        "2019-01-22T22:34:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16", "name":
+        "Thunder and Lightning | Augusta, GA - Official Website", "url": "http:\/\/www.augustaga.gov\/1902\/Thunder-and-Lightning",
+        "isFamilyFriendly": true, "displayUrl": "www.augustaga.gov\/1902\/Thunder-and-Lightning",
+        "snippet": "Thunder and Lightning Severe thunderstorms can produce strong
+        winds, damaging hail, lightning, and can cause flash flooding. It is important
+        to take the dangers of thunderstorms seriously and follow some basic safety
+        precautions.", "dateLastCrawled": "2019-01-30T08:18:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "NWS JetStream - How Lightning is Created", "url": "https:\/\/www.weather.gov\/jetstream\/lightning",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/jetstream\/lightning",
+        "snippet": "Lightning channel develops Negatively charged area in the storm
+        will send out a charge Thunderstorm gathers another pool of positively charged
+        particles. A moving thunderstorm gathers another pool of positively charged
+        particles along the ground that travel with the storm (image 1 below ).",
+        "dateLastCrawled": "2019-01-28T17:57:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Understanding Lightning - weather.gov", "url": "https:\/\/www.weather.gov\/safety\/lightning-science-scienceintro",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/safety\/lightning-science-scienceintro",
+        "snippet": "Lightning is one of the top three storm-related killers in the
+        United States. It is also one of the least understood weather phenomena. Learn
+        more about lightning science at the links below. You can go through the
+        site sequentially for a complete intro to lightning science or pick the
+        topics of ...", "dateLastCrawled": "2019-01-31T20:07:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "NWS JetStream - Thunderstorms", "url": "https:\/\/www.weather.gov\/jetstream\/tstorms_intro",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/jetstream\/tstorms_intro",
+        "snippet": "Introduction to Thunderstorms. It is estimated that there are
+        as many as 40,000 thunderstorm occurrences each day world-wide. This translates
+        into an astounding 14.6 million occurrences annually! The United States certainly
+        experiences its share of thunderstorm occurrences. Annual number of thunderstorms
+        the U.S.", "dateLastCrawled": "2019-01-25T08:08:00.0000000Z", "language":
+        "en", "isNavigational": false}]}, "rankingResponse": {"mainline": {"items":
+        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Tue, 05 Feb 2019 21:34:47 GMT
 recorded_with: VCR 4.0.0

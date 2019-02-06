@@ -443,4 +443,250 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
   recorded_at: Mon, 19 Nov 2018 22:40:26 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=first%20item%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 05 Feb 2019 21:44:44 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 66D42F39451242599892225BD351FF50
+      Bingapis-Sessionid:
+      - '004279417A2B4EC4BE03349C4FAA21C3'
+      X-Msedge-Clientid:
+      - 15BEEC60600761200381E09A614B6090
+      X-Msapi-Userstate:
+      - cf3a
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=209,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: 66D42F39451242599892225BD351FF50 Ref B: BY3EDGE0208 Ref C: 2019-02-05T21:45:44Z'
+      Apim-Request-Id:
+      - ecad08d4-ce8a-43c0-a547-37010d9c3159
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 05 Feb 2019 21:45:44 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "first
+        item (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=first+item+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 836000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "First U.S. Patent Issued Today in 1790 | USPTO", "url": "https:\/\/www.uspto.gov\/about-us\/news-updates\/first-us-patent-issued-today-1790",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.uspto.gov\/about-us\/news-updates\/first-us-patent-issued...",
+        "snippet": "The patent was signed by President George Washington. Hopkins
+        was born in Vermont, but was living in Philadelphia, Pa. when the patent
+        was granted. The first patent, as well as the more than 6 million patents
+        issued since then, can be seen on the Department of Commerce''s United States
+        Patent and Trademark Office website at www.uspto.gov .", "dateLastCrawled":
+        "2019-01-30T06:50:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1", "name":
+        "U.S. Senate: Constitution of the United States", "url": "https:\/\/www.senate.gov\/civics\/constitution_item\/constitution.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.senate.gov\/civics\/constitution_item\/constitution.htm",
+        "snippet": "Written in 1787, ratified in 1788, and in operation since 1789,
+        the United States Constitution is the world’s longest surviving written charter
+        of government. Its first three words – “We The People” – affirm that the
+        government of the United States exists to serve its citizens.", "dateLastCrawled":
+        "2019-02-05T09:07:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2", "name":
+        "1.WN GO 2. MASK OR RESPIRATOR 3. GOGGLES OR FACE SHIELD", "url": "https:\/\/www.cdc.gov\/hai\/pdfs\/ppe\/PPE-Sequence.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/hai\/pdfs\/ppe\/PPE-Sequence.pdf",
+        "snippet": "peel off second glove over first glove • Discard gloves in a
+        waste container. 2. GOGGLES OR FACE SHIELD ... • If the item is reusable,
+        place in designated receptacle for reprocessing. Otherwise, discard in a waste
+        container. 3.WN GO • Gown front and sleeves are contaminated!", "dateLastCrawled":
+        "2019-01-29T07:57:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3", "name":
+        "First Grade Mathematics Item Specifications", "url": "https:\/\/dese.mo.gov\/sites\/default\/files\/asmt-math-g1-item-specs-0717.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/dese.mo.gov\/sites\/default\/files\/asmt-math-g1-item-specs...",
+        "snippet": "First Grade . Mathematics . Item Specifications . 2 . Table
+        of Contents ... One of the documents developed is the item specification
+        document, which includes all Missouri grade level\/course expectations arranged
+        by domains\/strands. It defines what could be measured on a variety of assessments.
+        The document", "dateLastCrawled": "2019-01-29T10:27:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "First 5 California - State Site", "url": "http:\/\/www.ccfc.ca.gov\/",
+        "isFamilyFriendly": true, "displayUrl": "www.ccfc.ca.gov", "snippet": "First
+        5 California was created by voters under Proposition 10 to recognize that
+        children''s health and education are a top priority, especially in the early
+        years of development. Research shows that critical brain growth and other
+        developmental milestones take place during the earliest years of a child''s
+        life.", "dateLastCrawled": "2019-02-01T17:27:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Commercial Item Acquisition: Considerations", "url": "https:\/\/www.acq.osd.mil\/dpap\/Docs\/cotsreport.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.acq.osd.mil\/dpap\/Docs\/cotsreport.pdf",
+        "snippet": "First, increased reliance on commercial items implies a different
+        paradigm of system acquisition. The most fundamental change involves the dynamic
+        interaction between the system context , the system architecture and design,
+        and the commercial items available in the marketplace. Managing this interaction
+        requires unprecedented cooperation among the", "dateLastCrawled": "2019-01-31T19:04:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Guidance for Industry: Nutrition Labeling of Standard Menu ...",
+        "url": "https:\/\/www.fda.gov\/Food\/GuidanceRegulation\/GuidanceDocumentsRegulatoryInformation\/ucm437403.htm?source=govdelivery",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fda.gov\/Food\/GuidanceRegulation\/GuidanceDocuments...",
+        "snippet": "The statement of availability must appear on the bottom of the
+        first page with menu items immediately above, below, or beside the succinct
+        statement. (21 CFR 101.11(b)(2)(i)(C)(2))", "dateLastCrawled": "2019-02-03T04:29:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "First Aid List - Occupational Safety and Health Administration",
+        "url": "https:\/\/www.osha.gov\/recordkeeping\/firstaid_list.pdf", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.osha.gov\/recordkeeping\/firstaid_list.pdf",
+        "snippet": "First Aid List 1904.7 (b)(5)(ii) What is “first aid”? For
+        the purposes of Part 1904, \"first aid\" means the following: (A) Using
+        a nonprescription medication at nonprescription strength (for medications",
+        "dateLastCrawled": "2019-01-29T13:18:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Boston.gov", "url": "https:\/\/www.boston.gov\/", "about": [{"name":
+        "Boston City Hall Plaza"}, {"name": "Boston City Hall Plaza"}, {"name": "Boston"}],
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.boston.gov", "snippet":
+        "Request a bulk item pickup. Request to salt or plow a street. Report a
+        pothole. Report a parking violation. Report a missing or damaged street sign.
+        Report a streetlight outage. Stay Connected. Sign up for email updates from
+        the City of Boston, including information on big events and upcoming traffic
+        and parking restrictions. Your Email Address ...", "dateLastCrawled": "2019-01-31T23:47:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Form 10-K - SEC", "url": "https:\/\/www.sec.gov\/about\/forms\/form10-k.pdf",
+        "about": [{"name": "Form 10-K"}, {"name": "Form 10-K"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.sec.gov\/about\/forms\/form10-k.pdf",
+        "snippet": "included in Part I of Form 10-K under an appropriate caption.
+        See Instruction 3 to Item 401(b) of Regulation S-K (§ 229.401(b) of this
+        chapter). (4) No item numbers of captions of items need be contained in
+        the material incorporated by reference into the report.", "dateLastCrawled":
+        "2019-01-31T05:24:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10", "name":
+        "First Course of Treatment", "url": "https:\/\/www.cdc.gov\/cancer\/npcr\/pdf\/abstracting\/treatment_codes.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/cancer\/npcr\/pdf\/abstracting\/treatment_codes.pdf",
+        "snippet": "or stage disease in this data item. Record the date of this
+        surgical procedure in data item Date of First Course of Treatment (NAACCR
+        Item #1270) and\/or Date of First Surgical Procedure (NAACCR Item #1200)
+        as appropriate. • Codes 0–7 are hierarchical. If only one procedure can be
+        recorded, code the procedure that is numerically higher.", "dateLastCrawled":
+        "2019-01-30T02:48:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11", "name":
+        "List 1 HTSUS Product Description - ustr.gov", "url": "https:\/\/ustr.gov\/sites\/default\/files\/enforcement\/301Investigations\/List%201.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/ustr.gov\/sites\/default\/files\/enforcement\/301Investigations...",
+        "snippet": "HTSUS Subheading Product Description 8420.10.90 Calendering or
+        other rolling machines, other than for metals or glass, nesoi 8420.91.10 Cylinders
+        for textile calendering or rolling machines", "dateLastCrawled": "2019-01-31T18:40:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "QUICK AND EASY SERVICE ENTRY SHEET (SES) ENTRY AND RELEASE ...",
+        "url": "https:\/\/www.ntc.blm.gov\/krc\/uploads\/431\/SESInstructions8X28X09wtips.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ntc.blm.gov\/krc\/uploads\/431\/SESInstructions8X28X09...",
+        "snippet": "QUICK AND EASY SERVICE ENTRY SHEET (SES) ENTRY AND RELEASE .
+        TABLE OF CONTENTS . SECTIONS PAGE NUMBERS . PREFACE ... To set up a line item
+        to receive based on VALUE (receipt by SES) for either a ... * When setting
+        up your PR line items . think about the backend first - how do you need",
+        "dateLastCrawled": "2019-01-19T12:07:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Home Inventory Checklist", "url": "http:\/\/www.dfs.ny.gov\/consumer\/homeown\/home_invchklst.pdf",
+        "isFamilyFriendly": true, "displayUrl": "www.dfs.ny.gov\/consumer\/homeown\/home_invchklst.pdf",
+        "snippet": "HOME INVENTORY CHECKLIST ... Items such as sofas, tables,
+        beds, TVs, refrigerators, and lawn mowers should be included in such a schedule.
+        As you compile your inventory, supplement it with receipts indicating the
+        date of purchase and purchase price and photographs of", "dateLastCrawled":
+        "2019-02-01T00:37:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "USPS RETURNS CUSTOMER GUIDE", "url": "https:\/\/ribbs.usps.gov\/shipproductsservices\/documents\/tech_guides\/ReturnsCustomerGuide.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/ribbs.usps.gov\/...\/tech_guides\/ReturnsCustomerGuide.pdf",
+        "snippet": "USPS RETURNS CUSTOMER GUIDE ... hassle-free customer returns
+        policy helps merchants win the first order and a positive returns ... merchandise,
+        test kits, samples and other items. Merchants are charged only if and when
+        the labels are used. Exhibit 2: MRS label example", "dateLastCrawled": "2019-01-31T13:59:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Best Practices Guide: Fundamentals of a Workplace First ...", "url":
+        "https:\/\/www.osha.gov\/Publications\/OSHA3317first-aid.pdf", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.osha.gov\/Publications\/OSHA3317first-aid.pdf",
+        "snippet": "accessible first-aid supplies and first-aid equipment, such
+        as bandages and automated external defibrillators. • Assigns and trains first-aid
+        providers who: receive first-aid training suitable to the specific workplace
+        receive periodic refresher courses on first-aid skills and knowledge. 3",
+        "dateLastCrawled": "2019-01-30T00:25:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "\"The first vote\"", "url": "https:\/\/www.loc.gov\/pictures\/item\/00651117\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/pictures\/item\/00651117",
+        "snippet": "Is the item digitized? (A thumbnail (small) image will be visible
+        on the left.) Yes, the item is digitized. Please use the digital image in
+        preference to requesting the original. All images can be viewed at a large
+        size when you are in any reading room at the Library of Congress.", "dateLastCrawled":
+        "2019-01-17T16:25:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17", "name":
+        "391#2s (DOC) Payment in Lieu of Real Property Taxation ...", "url": "https:\/\/budget.lis.virginia.gov\/amendment\/2019\/1\/SB1100\/Introduced\/MR\/391\/2s\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/budget.lis.virginia.gov\/amendment\/2019\/1\/SB1100\/Introduced\/...",
+        "snippet": "The appropriation in this Item includes $2,868,500 the first
+        year and $2,135,500 the second year from the Contract Prisoners Special Revenue
+        Fund to defray a portion of the costs of maintaining and enhancing the offender
+        management system, including the development of an electronic health records
+        system.", "dateLastCrawled": "2019-01-27T16:09:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Your guide to who pays first. - Medicare", "url": "https:\/\/www.medicare.gov\/Pubs\/pdf\/02179-Medicare-Coordination-Benefits-Payer.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.medicare.gov\/Pubs\/pdf\/02179-Medicare-Coordination...",
+        "snippet": "Guide to Who Pays First ... TRICARE pays first for services
+        or items from a military hospital or any other federal provider . Medicare
+        pays second for active-duty military enrolled in Medicare . TRICARE may
+        pay second for inactive-duty", "dateLastCrawled": "2019-01-30T17:33:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Apply in Person - State", "url": "https:\/\/travel.state.gov\/content\/travel\/en\/passports\/apply-renew-passport\/apply-in-person.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/travel.state.gov\/...\/apply-renew-passport\/apply-in-person.html",
+        "snippet": "You must apply in person using Form DS-11 if at least one of
+        the following is true: You are applying for your first U.S. passport; ...
+        Most events are for first-time applicants and children, (who use Form DS-11).
+        If you can use Form DS-82, you can renew by mail at your convenience!", "dateLastCrawled":
+        "2019-02-01T16:45:00.0000000Z", "language": "en", "isNavigational": false}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Tue, 05 Feb 2019 21:45:44 GMT
 recorded_with: VCR 4.0.0

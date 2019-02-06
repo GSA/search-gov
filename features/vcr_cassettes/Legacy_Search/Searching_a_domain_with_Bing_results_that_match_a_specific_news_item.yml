@@ -427,4 +427,242 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
   recorded_at: Mon, 19 Nov 2018 22:39:57 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=hillary%20rodham%20clinton%20first%20lady%20(site:whitehouse.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 05 Feb 2019 21:44:11 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - B95EB13BF7BE4BDD90BB0A4D5D8DC906
+      Bingapis-Sessionid:
+      - 0DA9626A173C43B3A7005F167BF61BF1
+      X-Msedge-Clientid:
+      - 27FBDE9D39F968AA176BD26738B5695F
+      X-Msapi-Userstate:
+      - 46af
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=213,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: B95EB13BF7BE4BDD90BB0A4D5D8DC906 Ref B: BY3EDGE0208 Ref C: 2019-02-05T21:45:12Z'
+      Apim-Request-Id:
+      - 5b5d680e-be61-4e16-9940-ba3298f95c50
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 05 Feb 2019 21:45:11 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "hillary
+        rodham clinton first lady (site:whitehouse.gov)"}, "webPages": {"webSearchUrl":
+        "https:\/\/www.bing.com\/search?q=hillary+rodham+clinton+first+lady+(site%3awhitehouse.gov)",
+        "totalEstimatedMatches": 50, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Hillary Rodham Clinton | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/hillary-rodham-clinton\/",
+        "about": [{"name": "Hillary Clinton"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.whitehouse.gov\/...\/first-ladies\/hillary-rodham-clinton",
+        "snippet": "Hillary Diane Rodham Clinton served as the First Lady
+        of the United States to the 42nd President, Bill Clinton. She went on to
+        become a U.S. Secretary of State and U.S. Senator from New York.", "dateLastCrawled":
+        "2019-01-28T22:26:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1", "name":
+        "First Ladies | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/",
+        "about": [{"name": "Nancy Reagan"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies",
+        "snippet": "Which two first ladies met their husbands through local newspapers?
+        Who was the first First Lady to make regular nationwide radio broadcasts?
+        Which First Lady cared for wounded soldiers in her ...", "dateLastCrawled":
+        "2019-01-31T01:42:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2", "name":
+        "William J. Clinton | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/william-j-clinton\/",
+        "about": [{"name": "Bill Clinton"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.whitehouse.gov\/...\/presidents\/william-j-clinton", "snippet":
+        "The next year he married Hillary Rodham, a graduate of Wellesley College
+        and Yale Law School. In 1980, Chelsea, their only child, was born. Clinton
+        was elected Arkansas Attorney General in 1976 ...", "dateLastCrawled": "2019-02-01T18:45:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Laura Welch Bush | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/laura-welch-bush\/",
+        "about": [{"name": "Laura Bush"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/...",
+        "snippet": "Prior to becoming First Lady of the United States, Mrs. Bush
+        served as the First Lady of Texas. Learn more about Laura Welch Bush’s
+        spouse, George W. Bush. The White House", "dateLastCrawled": "2019-01-31T14:12:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Rosalynn Smith Carter | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/rosalynn-smith-carter\/",
+        "about": [{"name": "Rosalynn Carter"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.whitehouse.gov\/...\/first-ladies\/rosalynn-smith-carter",
+        "snippet": "Serving as the First Lady from 1977 to 1981, she was an envoy
+        abroad and a leading advocate for numerous causes, including mental health
+        research. ... Rosalynn Smith Carter. Share: Politically ...", "dateLastCrawled":
+        "2019-01-31T02:30:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5", "name":
+        "Barbara Pierce Bush | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/barbara-pierce-bush\/",
+        "about": [{"name": "Barbara Bush"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.whitehouse.gov\/...\/first-ladies\/barbara-pierce-bush",
+        "snippet": "After serving as Second Lady from 1981 to 1989, Barbara Pierce
+        Bush served as First Lady of the United States when her husband George
+        H. W. Bush won the Presidency. She is also the mother of the ...", "dateLastCrawled":
+        "2019-01-30T04:36:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6", "name":
+        "Jacqueline Lee Bouvier Kennedy | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/jacqueline-lee-bouvier-kennedy\/",
+        "about": [{"name": "Jacqueline Kennedy Onassis"}], "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/...",
+        "snippet": "Jacqueline Lee Bouvier Kennedy. Share: First Lady Jacqueline
+        Lee “Jackie” (Bouvier) Kennedy Onassis was a symbol of strength for a traumatized
+        nation after the assassination of one the country ...", "dateLastCrawled":
+        "2019-01-29T13:30:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7", "name":
+        "Nancy Davis Reagan | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/nancy-davis-reagan\/",
+        "about": [{"name": "Nancy Reagan"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.whitehouse.gov\/...\/first-ladies\/nancy-davis-reagan",
+        "snippet": "Originally a Broadway actress, Nancy Davis Reagan served as
+        First Lady from 1981 to 1989. She served alongside her husband, President
+        Ronald Reagan, and is remembered for her passionate advocacy ...", "dateLastCrawled":
+        "2019-02-01T12:54:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8", "name":
+        "Martha Dandridge Custis Washington | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/martha-dandridge-custis-washington\/",
+        "about": [{"name": "Martha Washington"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/...",
+        "snippet": "As the wife of George Washington, the first President of the
+        United States, Martha Dandridge Custis Washington is considered to be the
+        first First Lady, but the title was not coined until after ...", "dateLastCrawled":
+        "2019-01-30T23:36:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9", "name":
+        "Michelle Obama | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/michelle-obama\/",
+        "about": [{"name": "Michelle Obama"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.whitehouse.gov\/...\/first-ladies\/michelle-obama", "snippet":
+        "Michelle LaVaughn Robinson Obama is a lawyer, writer, and the wife of the
+        44th President, Barack Obama. She was the first African-American First
+        Lady of the United States.", "dateLastCrawled": "2019-01-31T13:32:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "The Administration | The White House", "url": "https:\/\/www.whitehouse.gov\/the-trump-administration\/",
+        "about": [{"name": "Executive Office of the President of the United States"}],
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/the-trump-administration",
+        "snippet": "President Donald J. Trump promised that he would bring the best
+        and brightest from across the country—not just inside Washington—to build
+        his Administration. The President, alongside the Vice ...", "dateLastCrawled":
+        "2019-01-31T20:57:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11", "name":
+        "Claudia Alta Taylor \"Lady Bird\" Johnson | The White House", "url":
+        "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/claudia-alta-taylor-lady-bird-johnson\/",
+        "about": [{"name": "Lady Bird Johnson"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.whitehouse.gov\/...\/claudia-alta-taylor-lady-bird-johnson",
+        "snippet": "Claudia Alta Taylor “Lady Bird” Johnson served as First Lady
+        of the United States (1963–1969) as the wife of President Lyndon B. Johnson.
+        A shrewd investor and manager, she broke ground for ...", "dateLastCrawled":
+        "2019-02-01T06:23:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12", "name":
+        "The White House", "url": "https:\/\/www.whitehouse.gov\/", "about": [{"name":
+        "The White House"}, {"name": "whitehouse.gov"}], "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.whitehouse.gov", "snippet": "History of The
+        White House. Our first president, George Washington, selected the site
+        for the White House in 1791. Every president since John Adams has occupied
+        the White House, and the history of ...", "dateLastCrawled": "2019-02-01T04:21:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Copyright Policy | The White House", "url": "https:\/\/www.whitehouse.gov\/copyright\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/copyright",
+        "snippet": "Pursuant to federal law, government-produced materials appearing
+        on this site are not copyright protected. The United States Government may
+        receive and hold copyrights transferred to it by ...", "dateLastCrawled":
+        "2019-02-01T04:18:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "Eisenhower Executive Office Building | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/eisenhower-executive-office-building\/",
+        "about": [{"name": "Eisenhower Executive Office Building"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.whitehouse.gov\/...\/eisenhower-executive-office-building",
+        "snippet": "Built for the State, War, and Navy Departments, the Eisenhower
+        Executive Office Building now houses White House staff. ... of the nineteenth
+        century and the first quarter of the twentieth century ...", "dateLastCrawled":
+        "2019-01-30T02:38:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15", "name":
+        "Louisa Catherine Johnson Adams | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/louisa-catherine-johnson-adams\/",
+        "about": [{"name": "Louisa Adams"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/...",
+        "snippet": "Born in London, Louisa Catherine Johnson Adams was the wife
+        of the sixth President, John Quincy Adams (1825-1829). Louisa Catherine Adams,
+        the first of America’s First Ladies to be born outside ...", "dateLastCrawled":
+        "2019-01-31T13:38:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16", "name":
+        "Economy & Jobs | The White House", "url": "https:\/\/www.whitehouse.gov\/issues\/economy-jobs\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/issues\/economy-jobs",
+        "snippet": "Economy & Jobs The economy has come roaring back to life under
+        President Trump. The stock market has hit record high after record high, helping
+        more Americans build wealth and secure their futures.", "dateLastCrawled":
+        "2019-02-01T07:09:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17", "name":
+        "Ulysses S. Grant | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/ulysses-s-grant\/",
+        "about": [{"name": "Ulysses S. Grant"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.whitehouse.gov\/...\/presidents\/ulysses-s-grant", "snippet":
+        "In 1865, as commanding general, Ulysses S. Grant led the Union Armies to
+        victory over the Confederacy in the American Civil War. As an American hero,
+        Grant was later elected the 18th President of ...", "dateLastCrawled": "2019-01-31T23:37:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "James K. Polk | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/james-k-polk\/",
+        "about": [{"name": "James K. Polk"}, {"name": "James K. Polk"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.whitehouse.gov\/...\/presidents\/james-k-polk",
+        "snippet": "Often referred to as the first “dark horse” President, James
+        K. Polk was the last of the Jacksonians to sit in the White House, and
+        the last strong President until the Civil War.", "dateLastCrawled": "2019-01-31T10:44:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "George Washington | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/george-washington\/",
+        "about": [{"name": "George Washington"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.whitehouse.gov\/...\/presidents\/george-washington", "snippet":
+        "On April 30, 1789, George Washington, standing on the balcony of Federal
+        Hall on Wall Street in New York, took his oath of office as the first President
+        of the United States. On April 30, 1789 ...", "dateLastCrawled": "2019-01-31T21:50:00.0000000Z",
+        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Tue, 05 Feb 2019 21:45:12 GMT
 recorded_with: VCR 4.0.0

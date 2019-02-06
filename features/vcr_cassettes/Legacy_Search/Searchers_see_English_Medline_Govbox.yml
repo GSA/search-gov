@@ -435,4 +435,217 @@ http_interactions:
         "rankingResponse": {}}'
     http_version: 
   recorded_at: Mon, 19 Nov 2018 22:40:14 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=hippopotomonstrosesquippedaliophobia%20(site:nih.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 05 Feb 2019 21:44:28 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 75D981EBCD9C4AAF83390E1B61B9D1FF
+      Bingapis-Sessionid:
+      - 4A9048EF33A949508344CEAC8FAA8423
+      X-Msedge-Clientid:
+      - 1CAE406C9F8265461EC64C969ECE6446
+      X-Msapi-Userstate:
+      - c416
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=186,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: 75D981EBCD9C4AAF83390E1B61B9D1FF Ref B: BY3EDGE0216 Ref C: 2019-02-05T21:45:29Z'
+      Apim-Request-Id:
+      - 12836bc9-4d5c-45ee-b885-80a3548f5625
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 05 Feb 2019 21:45:28 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "hippopotomonstrosesquippedaliophobia
+        (site:nih.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=hippopotomonstrosesquippedaliophobia+(site%3anih.gov)",
+        "totalEstimatedMatches": 1, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "PubMed - National Center for Biotechnology Information", "url":
+        "https:\/\/www.ncbi.nlm.nih.gov\/pubmed\/17551351", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pubmed\/17551351", "snippet":
+        "Moved Permanently. The document has moved here.", "dateLastCrawled": "2017-02-24T12:26:00.0000000Z",
+        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}}]}}}'
+    http_version: 
+  recorded_at: Tue, 05 Feb 2019 21:45:29 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=hippopotomonstrosesquippedaliophobia%20(site:nih.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 05 Feb 2019 21:44:29 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - F61EF5FF7D3B4EF194DA4452201054D4
+      Bingapis-Sessionid:
+      - A5C69A6BF60543C9B7D390A75F740D6A
+      X-Msedge-Clientid:
+      - 1CF1AD2BEF2667520732A1D1EE6A66B7
+      X-Msapi-Userstate:
+      - '7214'
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=122,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: F61EF5FF7D3B4EF194DA4452201054D4 Ref B: BY3EDGE0312 Ref C: 2019-02-05T21:45:29Z'
+      Apim-Request-Id:
+      - 2e1fc694-7c2e-4a6d-88e8-0cb2875535c9
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 05 Feb 2019 21:45:29 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "hippopotomonstrosesquippedaliophobia
+        (site:nih.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=hippopotomonstrosesquippedaliophobia+(site%3anih.gov)",
+        "totalEstimatedMatches": 1, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "PubMed - National Center for Biotechnology Information", "url":
+        "https:\/\/www.ncbi.nlm.nih.gov\/pubmed\/17551351", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pubmed\/17551351", "snippet":
+        "Moved Permanently. The document has moved here.", "dateLastCrawled": "2017-02-24T12:26:00.0000000Z",
+        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}}]}}}'
+    http_version: 
+  recorded_at: Tue, 05 Feb 2019 21:45:29 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=hippopotomonstrosesquippedaliophobia%20(site:nih.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 05 Feb 2019 21:44:31 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - D25AA8FE8E47491D96A9408EC742B49F
+      Bingapis-Sessionid:
+      - 821FC7EDE16F45D89D764DBE6A394750
+      X-Msedge-Clientid:
+      - 322D46DD50D4665928EC4A27519867CD
+      X-Msapi-Userstate:
+      - f50b
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=127,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: D25AA8FE8E47491D96A9408EC742B49F Ref B: BY3EDGE0212 Ref C: 2019-02-05T21:45:31Z'
+      Apim-Request-Id:
+      - f11d956a-6f94-4a2e-83cc-1ea28e8c39ad
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 05 Feb 2019 21:45:31 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "hippopotomonstrosesquippedaliophobia
+        (site:nih.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=hippopotomonstrosesquippedaliophobia+(site%3anih.gov)",
+        "totalEstimatedMatches": 1, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "PubMed - National Center for Biotechnology Information", "url":
+        "https:\/\/www.ncbi.nlm.nih.gov\/pubmed\/17551351", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pubmed\/17551351", "snippet":
+        "Moved Permanently. The document has moved here.", "dateLastCrawled": "2017-02-24T12:26:00.0000000Z",
+        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}}]}}}'
+    http_version: 
+  recorded_at: Tue, 05 Feb 2019 21:45:32 GMT
 recorded_with: VCR 4.0.0
