@@ -43,7 +43,8 @@ describe CompleteRegistrationController do
       end
 
       it "@user should be assigned" do
-        post :update, :id => "known"
+        post :update, { id: "known",
+                        "user": { "contact_name": "Homer Simpson" } }
         expect(assigns[:user]).to eq(user)
       end
 

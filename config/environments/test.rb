@@ -39,8 +39,9 @@ Rails.application.configure do
 
   config.active_job.queue_adapter = :test
 
-  # Raise exception on mass assignment protection for Active Record models
-  config.active_record.mass_assignment_sanitizer = :strict
+  # Raise exception on un permitted parameters for Active Record models
+  # config.action_controller.action_on_unpermitted_parameters = :raise
+
 end
 
 ADDITIONAL_BING_PARAMS = { 'traffictype' => 'test' }

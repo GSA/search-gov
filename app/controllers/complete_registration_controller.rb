@@ -7,6 +7,7 @@ class CompleteRegistrationController < ApplicationController
 
   def update
     if @user.complete_registration(user_params[:user])
+      Rails.logger.debug user_params[:user]
       flash[:success] = 'You have successfully completed your account registration.'
       redirect_to sites_path
     else
