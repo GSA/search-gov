@@ -98,13 +98,21 @@ describe SearchgovDomain do
 
       describe '.ok' do
         it 'includes domains returning 200' do
-          expect(SearchgovDomain.ok).to match_array [ok_domain]
+          expect(SearchgovDomain.ok).to include ok_domain
+        end
+
+        it 'does not include inaccessible domains' do
+          expect(SearchgovDomain.ok).not_to include not_ok_domain
         end
       end
 
       describe '.not_ok' do
         it 'includes inaccessible domains' do
-          expect(SearchgovDomain.not_ok).to match_array [not_ok_domain]
+          expect(SearchgovDomain.not_ok).to include not_ok_domain
+        end
+
+        it 'does not include domains returning 200' do
+          expect(SearchgovDomain.not_ok).not_to include ok_domain
         end
       end
     end
