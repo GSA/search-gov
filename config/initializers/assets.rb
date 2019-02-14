@@ -17,5 +17,6 @@ Rails.application.config.assets.js_compressor = :uglifier
 # Rails.application.config.assets.precompile += %w( search.js )
 Rails.application.config.assets.precompile += %w(font-awesome-grunticon-rails.js)
 Rails.application.config.assets.precompile += %w(*.png *.gif)
+Rails.application.config.assets.precompile += %w( application.css )
 Rails.application.config.assets.precompile += Dir.entries("#{Rails.root}/app/assets/javascripts/").select { |e| e =~ /^(?!application\.js).+\.js$/ }
 Rails.application.config.assets.precompile += Dir.entries("#{Rails.root}/app/assets/stylesheets/").select { |e| e =~ /^(?!application\.css).+\.css$/ }
