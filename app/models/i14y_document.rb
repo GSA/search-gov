@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Represents Elasticsearch documents created via the I14y API
 class I14yDocument
   include ActiveModel::Validations
   extend ActiveModel::Callbacks
@@ -9,7 +12,7 @@ class I14yDocument
   delegate :i14y_connection, to: :i14y_drawer
 
   attr_accessor :document_id, :title, :path, :created, :description, :content,
-    :changed, :promote, :language, :tags, :handle
+                :changed, :promote, :language, :tags, :handle, :click_count
 
   validates_presence_of :document_id, :path, :handle, :title
 
@@ -27,9 +30,10 @@ class I14yDocument
 
   def save
     run_callbacks :save do
-      params = attributes.reject{ |_k,v| v.blank? }
+      params = attributes.reject { |_k, v| v.blank? }
       response = i14y_connection.post self.class.api_endpoint, params
       raise I14yDocumentError.new(response.body.developer_message) unless response.status == 201
+
       true
     end
   end
@@ -46,21 +50,22 @@ class I14yDocument
 
   def attributes
     attributes = {}
-    [:document_id, :title, :path, :created, :description, :content,
-     :changed, :promote, :language, :tags].each do |attribute|
+    %i[document_id title path created description content
+       changed promote language tags click_count].each do |attribute|
         attributes[attribute] = send(attribute)
     end
     attributes
   end
 
   def self.api_endpoint
-    "/api/v1/documents".freeze
+    '/api/v1/documents'
   end
 
   def update
-    params = attributes.except(:document_id).reject{ |_k,v| v.blank? }
+    params = attributes.except(:document_id).reject { |_k, v| v.blank? }
     response = i14y_connection.put "#{self.class.api_endpoint}/#{document_id}", params
     raise I14yDocumentError.new(response.body.developer_message) unless response.status == 200
+
     true
   end
 
@@ -72,10 +77,11 @@ class I14yDocument
   def delete
     response = i14y_connection.delete "#{self.class.api_endpoint}/#{document_id}"
     raise I14yDocumentError.new(response.body.developer_message) unless response.status == 200
+
     true
   end
 
   def self.promote(handle:, document_id:, bool: 'true')
-    self.update(handle: handle, document_id: document_id, promote: bool)
+    update(handle: handle, document_id: document_id, promote: bool)
   end
 end

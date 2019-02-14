@@ -1,0 +1,555 @@
+{
+  "took": 291,
+  "timed_out": false,
+  "_shards": {
+    "total": 440,
+    "successful": 440,
+    "failed": 0
+  },
+  "hits": {
+    "total": 83,
+    "max_score": 1.0,
+    "hits": [
+      {
+        "_index": "logstash-2019.01.20",
+        "_type": "click",
+        "_id": "AWhtA2RVeTV50iYQ5v0q",
+        "_score": 1.0,
+        "_source": {
+          "@version": "1",
+          "@timestamp": "2019-01-20T20:46:04.000Z",
+          "host": "app2.us-east-1.prod.infr.search.usa.gov",
+          "clientip": "155.95.90.245",
+          "request": "/clicked?a=usasearch&l=en&q=news&t=1548017143&v=i14y&u=https%3A%2F%2Fsearch.gov%2Fquote%2Flabor.html&p=15&s=I14Y&i=",
+          "referrer": "https://find.search.gov/search/?utf8=%E2%9C%93&affiliate=usasearch&query=news",
+          "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; Trident/7.0; rv:11.0) like Gecko",
+          "useragent": {
+            "name": "IE",
+            "os": "Windows 10",
+            "device": "Other"
+          },
+          "geoip": {
+            "country_code": 225,
+            "country_code2": "US"
+          },
+          "params": {
+            "query": "news",
+            "url": "https://search.gov/quote/labor.html",
+            "position": 15,
+            "affiliate": "usasearch"
+          },
+          "modules": "I14Y",
+          "vertical": "i14y",
+          "type": "click",
+          "click_domain": "search.gov"
+        }
+      },
+      {
+        "_index": "logstash-2019.01.22",
+        "_type": "click",
+        "_id": "AWh29CGvqdVOfjGO-8Wd",
+        "_score": 1.0,
+        "_source": {
+          "@version": "1",
+          "@timestamp": "2019-01-22T19:05:36.000Z",
+          "host": "app2.us-east-1.prod.infr.search.usa.gov",
+          "clientip": "67.170.115.191",
+          "request": "/clicked?v=i14y&t=1548183925&q=api&l=en&a=usasearch&u=https%3A%2F%2Fsearch.gov%2Fmanual%2Fsearch-results-api.html&p=4&s=I14Y&i=",
+          "referrer": "https://find.search.gov/search/?utf8=%E2%9C%93&affiliate=usasearch&query=api",
+          "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36",
+          "useragent": {
+            "name": "Chrome",
+            "os": "Mac OS X 10.14.0",
+            "device": "Other"
+          },
+          "geoip": {
+            "country_code": 225,
+            "country_code2": "US"
+          },
+          "params": {
+            "query": "api",
+            "url": "https://search.gov/manual/search-results-api.html",
+            "position": 4,
+            "affiliate": "usasearch"
+          },
+          "modules": "I14Y",
+          "vertical": "i14y",
+          "type": "click",
+          "click_domain": "search.gov"
+        }
+      },
+      {
+        "_index": "logstash-2019.01.22",
+        "_type": "click",
+        "_id": "AWh3UXP2E4Eio8jUzY_s",
+        "_score": 1.0,
+        "_source": {
+          "@version": "1",
+          "@timestamp": "2019-01-22T20:47:33.000Z",
+          "host": "app1.us-east-1.prod.infr.search.usa.gov",
+          "clientip": "156.40.209.194",
+          "request": "/clicked?v=i14y&t=1548190049&q=main%20element&l=en&a=usasearch&u=https%3A%2F%2Fsearch.gov%2Fblog%2Fhow-search-engines-index-content-better-discoverability.html&p=1&s=I14Y&i=",
+          "referrer": "https://find.search.gov/search/?utf8=%E2%9C%93&affiliate=usasearch&query=main+element",
+          "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36",
+          "useragent": {
+            "name": "Chrome",
+            "os": "Windows 10",
+            "device": "Other"
+          },
+          "geoip": {
+            "country_code": 225,
+            "country_code2": "US"
+          },
+          "params": {
+            "query": "main element",
+            "url": "https://search.gov/blog/how-search-engines-index-content-better-discoverability.html",
+            "position": 1,
+            "affiliate": "usasearch"
+          },
+          "modules": "I14Y",
+          "vertical": "i14y",
+          "type": "click",
+          "click_domain": "search.gov"
+        }
+      },
+      {
+        "_index": "logstash-2019.01.23",
+        "_type": "click",
+        "_id": "AWh6YC-YqdVOfjGOYqqJ",
+        "_score": 1.0,
+        "_source": {
+          "@version": "1",
+          "@timestamp": "2019-01-23T11:02:27.000Z",
+          "host": "app4.us-east-1.prod.infr.search.usa.gov",
+          "clientip": "103.81.33.236",
+          "request": "/clicked?v=i14y&t=1548241341&q=p&l=en&a=usasearch&u=https%3A%2F%2Fsearch.gov%2Fpdf%2Fseo-joe-pagano.pdf&p=1&s=I14Y&i=",
+          "referrer": "https://find.search.gov/search?utf8=%E2%9C%93&affiliate=usasearch&sort_by=&query=p",
+          "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36 OPR/57.0.3098.116",
+          "useragent": {
+            "name": "Opera",
+            "os": "Windows 10",
+            "device": "Other"
+          },
+          "geoip": {
+            "country_code": 0,
+            "country_code2": "--"
+          },
+          "params": {
+            "query": "p",
+            "url": "https://search.gov/pdf/seo-joe-pagano.pdf",
+            "position": 1,
+            "affiliate": "usasearch"
+          },
+          "modules": "I14Y",
+          "vertical": "i14y",
+          "type": "click",
+          "click_domain": "search.gov"
+        }
+      },
+      {
+        "_index": "logstash-2019.01.23",
+        "_type": "click",
+        "_id": "AWh4UgWHeTV50iYQ79l6",
+        "_score": 1.0,
+        "_source": {
+          "@version": "1",
+          "@timestamp": "2019-01-23T01:27:47.000Z",
+          "host": "app3.us-east-1.prod.infr.search.usa.gov",
+          "clientip": "177.249.212.64",
+          "request": "/clicked?v=i14y&t=1548206858&q=top%20reasons%20for%20immigration%20into%20the%20us&l=en&a=usasearch&u=https%3A%2F%2Fsearch.gov%2Fmanual%2Fsite-overview.html&p=1&s=I14Y&i=",
+          "referrer": "https://find.search.gov/search/?utf8=%E2%9C%93&affiliate=usasearch&query=top+reasons+for+immigration+into+the+us",
+          "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36",
+          "useragent": {
+            "name": "Chrome",
+            "os": "Windows 10",
+            "device": "Other"
+          },
+          "geoip": {
+            "country_code": 0,
+            "country_code2": "--"
+          },
+          "params": {
+            "query": "top reasons for immigration into the us",
+            "url": "https://search.gov/manual/site-overview.html",
+            "position": 1,
+            "affiliate": "usasearch"
+          },
+          "modules": "I14Y",
+          "vertical": "i14y",
+          "type": "click",
+          "click_domain": "search.gov"
+        }
+      },
+      {
+        "_index": "logstash-2019.01.23",
+        "_type": "click",
+        "_id": "AWh87LJFeTV50iYQ9DNZ",
+        "_score": 1.0,
+        "_source": {
+          "@version": "1",
+          "@timestamp": "2019-01-23T22:55:12.000Z",
+          "host": "app1.us-east-1.prod.infr.search.usa.gov",
+          "clientip": "128.193.154.61",
+          "request": "/clicked?v=i14y&t=1548284109&q=developer%20jobs&l=en&a=usasearch&u=https%3A%2F%2Fsearch.gov%2Fdeveloper%2Fjobs.html&p=1&s=I14Y&i=",
+          "referrer": "https://find.search.gov/search?utf8=%E2%9C%93&affiliate=usasearch&sort_by=&query=developer+jobs",
+          "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36",
+          "useragent": {
+            "name": "Chrome",
+            "os": "Mac OS X 10.14.2",
+            "device": "Other"
+          },
+          "geoip": {
+            "country_code": 225,
+            "country_code2": "US"
+          },
+          "params": {
+            "query": "developer jobs",
+            "url": "https://search.gov/developer/jobs.html",
+            "position": 1,
+            "affiliate": "usasearch"
+          },
+          "modules": "I14Y",
+          "vertical": "i14y",
+          "type": "click",
+          "click_domain": "search.gov"
+        }
+      },
+      {
+        "_index": "logstash-2019.01.23",
+        "_type": "click",
+        "_id": "AWh86kra4pMsH3WUuDj5",
+        "_score": 1.0,
+        "_source": {
+          "@version": "1",
+          "@timestamp": "2019-01-23T22:52:34.000Z",
+          "host": "app2.us-east-1.prod.infr.search.usa.gov",
+          "clientip": "128.193.154.61",
+          "request": "/clicked?v=i14y&t=1548283951&q=jobs&l=en&a=usasearch&u=https%3A%2F%2Fsearch.gov%2Fdeveloper%2Fjobs.html&p=1&s=I14Y&i=",
+          "referrer": "https://find.search.gov/search/?utf8=%E2%9C%93&affiliate=usasearch&query=jobs",
+          "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36",
+          "useragent": {
+            "name": "Chrome",
+            "os": "Mac OS X 10.14.2",
+            "device": "Other"
+          },
+          "geoip": {
+            "country_code": 225,
+            "country_code2": "US"
+          },
+          "params": {
+            "query": "jobs",
+            "url": "https://search.gov/developer/jobs.html",
+            "position": 1,
+            "affiliate": "usasearch"
+          },
+          "modules": "I14Y",
+          "vertical": "i14y",
+          "type": "click",
+          "click_domain": "search.gov"
+        }
+      },
+      {
+        "_index": "logstash-2019.01.24",
+        "_type": "click",
+        "_id": "AWiAq4ztqdVOfjGOIKCx",
+        "_score": 1.0,
+        "_source": {
+          "@version": "1",
+          "@timestamp": "2019-01-24T16:22:31.000Z",
+          "host": "app2.us-east-1.prod.infr.search.usa.gov",
+          "clientip": "68.134.14.6",
+          "request": "/clicked?v=i14y&t=1548346946&q=nurse&l=en&a=usasearch&u=https%3A%2F%2Fsearch.gov%2Fdeveloper%2Fjobs.html&p=1&s=I14Y&i=",
+          "referrer": "https://find.search.gov/search/?utf8=%E2%9C%93&affiliate=usasearch&query=nurse",
+          "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36",
+          "useragent": {
+            "name": "Chrome",
+            "os": "Mac OS X 10.13.6",
+            "device": "Other"
+          },
+          "geoip": {
+            "country_code": 225,
+            "country_code2": "US"
+          },
+          "params": {
+            "query": "nurse",
+            "url": "https://search.gov/developer/jobs.html",
+            "position": 1,
+            "affiliate": "usasearch"
+          },
+          "modules": "I14Y",
+          "vertical": "i14y",
+          "type": "click",
+          "click_domain": "search.gov"
+        }
+      },
+      {
+        "_index": "logstash-2019.01.24",
+        "_type": "click",
+        "_id": "AWiAq89gE4Eio8jU1Yd3",
+        "_score": 1.0,
+        "_source": {
+          "@version": "1",
+          "@timestamp": "2019-01-24T16:22:49.000Z",
+          "host": "app1.us-east-1.prod.infr.search.usa.gov",
+          "clientip": "68.134.14.6",
+          "request": "/clicked?v=i14y&t=1548346962&q=nursing%20jobs&l=en&a=usasearch&u=https%3A%2F%2Fsearch.gov%2Fdeveloper%2Fjobs.html&p=1&s=I14Y&i=",
+          "referrer": "https://find.search.gov/search/?utf8=%E2%9C%93&affiliate=usasearch&query=nursing+jobs",
+          "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36",
+          "useragent": {
+            "name": "Chrome",
+            "os": "Mac OS X 10.13.6",
+            "device": "Other"
+          },
+          "geoip": {
+            "country_code": 225,
+            "country_code2": "US"
+          },
+          "params": {
+            "query": "nursing jobs",
+            "url": "https://search.gov/developer/jobs.html",
+            "position": 1,
+            "affiliate": "usasearch"
+          },
+          "modules": "I14Y",
+          "vertical": "i14y",
+          "type": "click",
+          "click_domain": "search.gov"
+        }
+      },
+      {
+        "_index": "logstash-2019.01.24",
+        "_type": "click",
+        "_id": "AWiA4-hb4pMsH3WUuxCn",
+        "_score": 1.0,
+        "_source": {
+          "@version": "1",
+          "@timestamp": "2019-01-24T17:24:05.000Z",
+          "host": "app1.us-east-1.prod.infr.search.usa.gov",
+          "clientip": "158.59.146.29",
+          "request": "/clicked?v=i14y&t=1548350624&q=Air%20Quality%20Index&l=en&a=usasearch&u=https%3A%2F%2Fsearch.gov%2Fquote%2Fdefense.html&p=4&s=I14Y&i=",
+          "referrer": "https://find.search.gov/search/?utf8=%E2%9C%93&affiliate=usasearch&query=Air+Quality+Index",
+          "user_agent": "Mozilla/5.0 (iPad; CPU OS 12_1_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Mobile/15E148 Safari/604.1",
+          "useragent": {
+            "name": "Mobile Safari",
+            "os": "iOS 12.1.1",
+            "device": "iPad"
+          },
+          "geoip": {
+            "country_code": 225,
+            "country_code2": "US"
+          },
+          "params": {
+            "query": "air quality index",
+            "url": "https://search.gov/quote/defense.html",
+            "position": 4,
+            "affiliate": "usasearch"
+          },
+          "modules": "I14Y",
+          "vertical": "i14y",
+          "type": "click",
+          "click_domain": "search.gov"
+        }
+      }
+    ]
+  },
+  "aggregations": {
+    "agg": {
+      "doc_count_error_upper_bound": 0,
+      "sum_other_doc_count": 0,
+      "buckets": [
+        {
+          "key": "https://search.gov/developer/jobs.html",
+          "doc_count": 8
+        },
+        {
+          "key": "https://search.gov/developer/",
+          "doc_count": 4
+        },
+        {
+          "key": "https://search.gov/files/GSA_%20VPAT_DigitalGovSearch.pdf",
+          "doc_count": 4
+        },
+        {
+          "key": "https://search.gov/manual/domains.html",
+          "doc_count": 4
+        },
+        {
+          "key": "https://search.gov/manual/collections.html",
+          "doc_count": 3
+        },
+        {
+          "key": "https://search.gov/manual/search-results-api.html",
+          "doc_count": 3
+        },
+        {
+          "key": "https://search.gov/pdf/seo-joe-pagano.pdf",
+          "doc_count": 3
+        },
+        {
+          "key": "https://search.gov/",
+          "doc_count": 2
+        },
+        {
+          "key": "https://search.gov/blog/cache.html",
+          "doc_count": 2
+        },
+        {
+          "key": "https://search.gov/blog/how-search-engines-index-content-better-discoverability.html",
+          "doc_count": 2
+        },
+        {
+          "key": "https://search.gov/blog/power-users-recap.html",
+          "doc_count": 2
+        },
+        {
+          "key": "https://search.gov/blog/searchgov-blog.html",
+          "doc_count": 2
+        },
+        {
+          "key": "https://search.gov/blog/searchgov-faqs-indexing.html",
+          "doc_count": 2
+        },
+        {
+          "key": "https://search.gov/blog/sitemaps.html",
+          "doc_count": 2
+        },
+        {
+          "key": "https://search.gov/files/HowSearchEnginesIndexYourWebsite.pdf",
+          "doc_count": 2
+        },
+        {
+          "key": "https://search.gov/manual/color-codes.html",
+          "doc_count": 2
+        },
+        {
+          "key": "https://search.gov/manual/govbox-jobs.html",
+          "doc_count": 2
+        },
+        {
+          "key": "https://search.gov/quote/defense.html",
+          "doc_count": 2
+        },
+        {
+          "key": "https://search.gov/quote/dhs.html",
+          "doc_count": 2
+        },
+        {
+          "key": "https://search.gov/releases/january-2018.html",
+          "doc_count": 2
+        },
+        {
+          "key": "https://search.gov/blog/hadoop-bigger-ox.html",
+          "doc_count": 1
+        },
+        {
+          "key": "https://search.gov/blog/robotstxt.html",
+          "doc_count": 1
+        },
+        {
+          "key": "https://search.gov/blog/seo-joe-pagano.html",
+          "doc_count": 1
+        },
+        {
+          "key": "https://search.gov/blog/serp-redesign.html",
+          "doc_count": 1
+        },
+        {
+          "key": "https://search.gov/blog/six-months-in.html",
+          "doc_count": 1
+        },
+        {
+          "key": "https://search.gov/developer/i14y.html",
+          "doc_count": 1
+        },
+        {
+          "key": "https://search.gov/files/Webinar.pdf",
+          "doc_count": 1
+        },
+        {
+          "key": "https://search.gov/manual/add-site.html",
+          "doc_count": 1
+        },
+        {
+          "key": "https://search.gov/manual/cname.html",
+          "doc_count": 1
+        },
+        {
+          "key": "https://search.gov/manual/content-overview.html",
+          "doc_count": 1
+        },
+        {
+          "key": "https://search.gov/manual/filter-tags.html",
+          "doc_count": 1
+        },
+        {
+          "key": "https://search.gov/manual/i14y-drawers.html",
+          "doc_count": 1
+        },
+        {
+          "key": "https://search.gov/manual/module-codes.html",
+          "doc_count": 1
+        },
+        {
+          "key": "https://search.gov/manual/routed-queries.html",
+          "doc_count": 1
+        },
+        {
+          "key": "https://search.gov/manual/site-overview.html",
+          "doc_count": 1
+        },
+        {
+          "key": "https://search.gov/manual/training.html",
+          "doc_count": 1
+        },
+        {
+          "key": "https://search.gov/manual/typeahead-api.html",
+          "doc_count": 1
+        },
+        {
+          "key": "https://search.gov/manual/youtube.html",
+          "doc_count": 1
+        },
+        {
+          "key": "https://search.gov/pdf/2014-04-11-search-big-data.pdf",
+          "doc_count": 1
+        },
+        {
+          "key": "https://search.gov/quote/agriculture.html",
+          "doc_count": 1
+        },
+        {
+          "key": "https://search.gov/quote/labor.html",
+          "doc_count": 1
+        },
+        {
+          "key": "https://search.gov/releases/december-2013.html",
+          "doc_count": 1
+        },
+        {
+          "key": "https://search.gov/releases/january-2013.html",
+          "doc_count": 1
+        },
+        {
+          "key": "https://search.gov/releases/january-2019.html",
+          "doc_count": 1
+        },
+        {
+          "key": "https://search.gov/releases/july-2012.html",
+          "doc_count": 1
+        },
+        {
+          "key": "https://search.gov/releases/november-2016.html",
+          "doc_count": 1
+        },
+        {
+          "key": "https://search.gov/releases/september-2012.html",
+          "doc_count": 1
+        },
+        {
+          "key": "https://search.gov/tos.html",
+          "doc_count": 1
+        }
+      ]
+    }
+  }
+}
