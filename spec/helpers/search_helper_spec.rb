@@ -280,7 +280,11 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
         %w(AWEB AIMAG BWEB IMAG).each do |module_tag|
           it 'should see an image with alt text' do
             html = helper.search_results_by_logo(module_tag)
-            expect(html).to have_selector("img[alt='Results by Bing'][src^='/assets/searches/binglogo_en.gif']")
+            expect(html).
+              to have_selector(
+                "img[alt='Results by Bing']" \
+                "[src^='/assets/searches/binglogo_en']"
+              )
           end
         end
       end
@@ -289,7 +293,11 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
         %w(GWEB GIMAG).each do |module_tag|
           it 'should see an image with alt text' do
             html = helper.search_results_by_logo(module_tag)
-            expect(html).to have_selector("img[alt='Results by Google'][src^='/assets/searches/googlelogo_en.gif']")
+            expect(html).
+              to have_selector(
+                "img[alt='Results by Google']" \
+                "[src^='/assets/searches/googlelogo_en']"
+              )
           end
         end
       end
@@ -297,7 +305,12 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
       context 'when results by USASearch' do
         it 'should see an image with alt text' do
           html = helper.search_results_by_logo('whatevs')
-          expect(html).to have_selector("a[href='https://search.gov'] img[alt='Results by USASearch'][src^='/assets/searches/results_by_usasearch_en.png']")
+          expect(html).
+            to have_selector(
+              "a[href='https://search.gov'] " \
+              "img[alt='Results by USASearch']" \
+              "[src^='/assets/searches/results_by_usasearch_en']"
+            )
         end
       end
     end
@@ -310,7 +323,11 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
         %w(BWEB IMAG).each do |module_tag|
           it 'should see an image with alt text' do
             html = helper.search_results_by_logo(module_tag)
-            expect(html).to have_selector("img[alt='Resultados por Bing'][src^='/assets/searches/binglogo_es.gif']")
+            expect(html).
+              to have_selector(
+                "img[alt='Resultados por Bing']" \
+                "[src^='/assets/searches/binglogo_es']"
+              )
           end
         end
       end
@@ -319,7 +336,11 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
         %w(GWEB GIMAG).each do |module_tag|
           it 'should see an image with alt text' do
             html = helper.search_results_by_logo(module_tag)
-            expect(html).to have_selector("img[alt='Resultados por Google'][src^='/assets/searches/googlelogo_es.gif']")
+            expect(html).
+              to have_selector(
+                "img[alt='Resultados por Google']" \
+                "[src^='/assets/searches/googlelogo_es']"
+              )
           end
         end
       end
@@ -327,7 +348,12 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
       context 'when results by USASearch' do
         it 'should see an image with alt text' do
           html = helper.search_results_by_logo('whatevs')
-          expect(html).to have_selector("a[href='https://search.gov'] img[alt='Resultados por USASearch'][src^='/assets/searches/results_by_usasearch_es.png']")
+          expect(html).
+            to have_selector(
+              "a[href='https://search.gov'] " \
+              "img[alt='Resultados por USASearch']" \
+              "[src^='/assets/searches/results_by_usasearch_es']"
+            )
         end
       end
     end
