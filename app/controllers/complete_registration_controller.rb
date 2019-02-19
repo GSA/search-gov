@@ -20,7 +20,7 @@ class CompleteRegistrationController < ApplicationController
   def user_params
     params.permit(user: [:contact_name, :email, :organization_name, :password])
   end
-
+localhost:3000/complete_registaration_controller/new
   def load_user_using_email_verification_token
     @user = User.find_by_email_verification_token(params[:id])
     unless @user
