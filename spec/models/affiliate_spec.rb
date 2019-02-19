@@ -152,12 +152,12 @@ describe Affiliate do
       end
 
       it "should populate default search label for English site" do
-        affiliate = Affiliate.create!(valid_attributes.merge(:locale => 'en'))
+        affiliate = Affiliate.create!(valid_attributes.merge(locale: 'en'))
         expect(affiliate.default_search_label).to eq('Everything')
       end
 
       it "should populate default search labels for Spanish site" do
-        affiliate = Affiliate.create!(valid_attributes.merge(:locale => 'es'))
+        affiliate = Affiliate.create!(valid_attributes.merge(locale: 'es'))
         expect(affiliate.default_search_label).to eq('Todo')
       end
 
@@ -1122,7 +1122,7 @@ describe Affiliate do
         <h1 id="my_header">header</h1>
       HTML
 
-      affiliate = Affiliate.create!(valid_attributes.merge(:header => tainted_header))
+      affiliate = Affiliate.create!(valid_attributes.merge(header: tainted_header))
       expect(affiliate.sanitized_header.strip).to eq(%q(<h1 id="my_header">header</h1>))
     end
   end
@@ -1136,7 +1136,7 @@ describe Affiliate do
         <h1 id="my_footer">footer</h1>
       HTML
 
-      affiliate = Affiliate.create!(valid_attributes.merge(:footer => tainted_footer))
+      affiliate = Affiliate.create!(valid_attributes.merge(footer: tainted_footer))
       expect(affiliate.sanitized_footer.strip).to eq(%q(<h1 id="my_footer">footer</h1>))
     end
   end
