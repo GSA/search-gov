@@ -42,9 +42,8 @@ describe CompleteRegistrationController do
         expect(User).to receive(:find_by_email_verification_token).and_return(user)
       end
 
-      it "@user should be assigned" do
-        post :update, { id: "known",
-                        "user": { "contact_name": "Homer Simpson" } }
+      it '@user should be assigned' do
+        post :update, { id: 'known', 'user': { 'contact_name': 'Homer Simpson' } }
         expect(assigns[:user]).to eq(user)
       end
 

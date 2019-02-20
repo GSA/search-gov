@@ -22,8 +22,7 @@ describe "Bulk Import rake tasks" do
         before do
           @user = users(:affiliate_manager)
           Affiliate.where("name LIKE ?", "test%").each{|aff| aff.destroy }
-          @existing_affiliate = Affiliate.
-            create(name: 'test1', display_name: 'Test 1')
+          @existing_affiliate = Affiliate.create(name: 'test1', display_name: 'Test 1')
           @existing_affiliate.users << @user
           @existing_affiliate.site_domains << SiteDomain.new(:domain => 'domain1.gov')
           @xml_file_path = File.join(Rails.root.to_s, "spec", "fixtures", "xml", "google_bulk.xml")

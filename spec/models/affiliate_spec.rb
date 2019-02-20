@@ -264,16 +264,14 @@ describe Affiliate do
     end
 
     it 'should populate search labels for English site' do
-      english_affiliate = Affiliate.
-        create!(valid_attributes.merge(locale: 'en'))
+      english_affiliate = Affiliate.create!(valid_attributes.merge(locale: 'en'))
       english_affiliate.default_search_label = ''
       english_affiliate.save!
       expect(english_affiliate.default_search_label).to eq('Everything')
     end
 
     it "should populate search labels for Spanish site" do
-      spanish_affiliate = Affiliate.
-        create!(valid_attributes.merge(locale: 'es'))
+      spanish_affiliate = Affiliate.create!(valid_attributes.merge(locale: 'es'))
       spanish_affiliate.default_search_label = ''
       spanish_affiliate.save!
       expect(spanish_affiliate.default_search_label).to eq('Todo')
