@@ -440,4 +440,231 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
   recorded_at: Mon, 19 Nov 2018 22:40:10 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=president%20(site:whitehouse.gov%20OR%20site:usa.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 05 Feb 2019 21:44:26 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 518B41F874CC41C0ADF1F7DCC7892021
+      Bingapis-Sessionid:
+      - FB4C49A0AB7B43BEB8DA4A455754F822
+      X-Msedge-Clientid:
+      - 2D4FAD70A4906C74374AA18AA5DC6D54
+      X-Msapi-Userstate:
+      - d320
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=173,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: 518B41F874CC41C0ADF1F7DCC7892021 Ref B: BY3EDGE0519 Ref C: 2019-02-05T21:45:26Z'
+      Apim-Request-Id:
+      - e6c47b12-702f-49af-90db-3b6828c37e39
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 05 Feb 2019 21:45:26 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "president
+        (site:whitehouse.gov OR site:usa.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=president+(site%3awhitehouse.gov+OR+site%3ausa.gov)",
+        "totalEstimatedMatches": 1900000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Presidents | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/",
+        "about": [{"name": "White House"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents", "snippet":
+        "Which President served as a lieutenant colonel in the Spanish-American
+        war? Who was the first Democrat elected after the Civil War? Who introduced
+        Social Security? If you’re looking to learn ...", "dateLastCrawled": "2019-01-30T08:34:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Donald J. Trump | The White House", "url": "https:\/\/www.whitehouse.gov\/people\/donald-j-trump\/",
+        "about": [{"name": "Donald Trump"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.whitehouse.gov\/people\/donald-j-trump", "snippet": "Donald
+        J. Trump is the 45th President of the United States. He believes the United
+        States has incredible potential and will go on to exceed even its remarkable
+        achievements of the past.", "dateLastCrawled": "2019-01-30T07:50:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Contact the White House | The White House", "url": "https:\/\/www.whitehouse.gov\/contact\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/contact",
+        "snippet": "Keep me posted with regular updates from the White House. required
+        ...", "dateLastCrawled": "2019-02-05T20:54:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Get Involved | The White House", "url": "https:\/\/www.whitehouse.gov\/get-involved\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/get-involved",
+        "snippet": "Write the President, receive updates from the Administration,
+        or apply to one of the White House’s prestigious Internship or Fellowship
+        Programs.", "dateLastCrawled": "2019-01-31T00:07:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "George W. Bush | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/george-w-bush\/",
+        "about": [{"name": "George W. Bush"}, {"name": "George H. W. Bush"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.whitehouse.gov\/...\/presidents\/george-w-bush",
+        "snippet": "When George W. Bush, at the age of 54, became the 43rd president
+        of the United States, it was only the second time in American history that
+        a president’s son went on to the White House.", "dateLastCrawled": "2019-01-30T01:10:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Presidents, Vice Presidents, and First Ladies of the ...", "url":
+        "https:\/\/www.usa.gov\/presidents", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.usa.gov\/presidents", "snippet": "The president of the
+        United States is the head of state of the U.S., the chief executive of the
+        federal government, and Commander-in-Chief of the armed forces. The United
+        States was the first nation to create the office of president as the head
+        of state in a modern republic. The Constitution ...", "dateLastCrawled": "2019-01-31T22:00:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "The Administration | The White House", "url": "https:\/\/www.whitehouse.gov\/the-trump-administration\/",
+        "about": [{"name": "Executive Office of the President of the United States"}],
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/the-trump-administration",
+        "snippet": "President Donald J. Trump promised that he would bring the best
+        and brightest from across the country—not just inside Washington—to build
+        his Administration. The President, alongside the Vice ...", "dateLastCrawled":
+        "2019-01-31T20:57:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7", "name":
+        "Michael R. Pence | The White House", "url": "https:\/\/www.whitehouse.gov\/people\/mike-pence\/",
+        "about": [{"name": "Office of the Vice President of the United States"}],
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/people\/mike-pence",
+        "snippet": "Michael R. Pence is the 48th and current Vice President of
+        the United States. Michael R. Pence was born in Columbus, Indiana, on June
+        7, 1959, one of six children born to Edward and Nancy Pence.", "dateLastCrawled":
+        "2019-01-30T06:39:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8", "name":
+        "Barack Obama | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/barack-obama\/",
+        "about": [{"name": "Barack Obama"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.whitehouse.gov\/...\/presidents\/barack-obama", "snippet":
+        "Barack Obama served as the 44th President of the United States. His story
+        is the American story — values from the heartland, a middle-class upbringing
+        in a strong family, hard work and education ...", "dateLastCrawled": "2019-01-30T01:49:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "The White House", "url": "https:\/\/www.whitehouse.gov\/", "about":
+        [{"name": "The White House"}, {"name": "whitehouse.gov"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.whitehouse.gov", "snippet": "History
+        of The White House. Our first president, George Washington, selected the
+        site for the White House in 1791. Every president since John Adams has
+        occupied the White House, and the history of ...", "dateLastCrawled": "2019-02-01T04:21:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Write or Call the White House | The White House", "url": "https:\/\/www.whitehouse.gov\/get-involved\/write-or-call\/",
+        "about": [{"name": "White House"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.whitehouse.gov\/get-involved\/write-or-call", "snippet":
+        "Here are a few simple things you can do to make sure your message gets to
+        the White House as quickly as possible. The President and the First Lady
+        strongly encourage all Americans to consider ...", "dateLastCrawled": "2019-01-30T03:19:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Richard M. Nixon | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/richard-m-nixon\/",
+        "about": [{"name": "Richard Nixon"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.whitehouse.gov\/...\/presidents\/richard-m-nixon", "snippet":
+        "Reconciliation was the first goal set by President Richard M. Nixon.
+        The Nation was painfully divided, with turbulence in the cities and war overseas.",
+        "dateLastCrawled": "2019-02-01T11:45:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Articles | The White House", "url": "https:\/\/www.whitehouse.gov\/articles\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/articles",
+        "snippet": "This morning, President Donald J. Trump sent a letter to all
+        Members of Congress on the need to secure our borders. He attached a presentation
+        that Secretary of Homeland Security Kirstjen Nielsen ...", "dateLastCrawled":
+        "2019-01-29T17:33:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13", "name":
+        "Special Guests for President Trump''s Second State of the ...", "url":
+        "https:\/\/www.whitehouse.gov\/articles\/special-guests-president-trumps-second-state-union-address\/",
+        "thumbnailUrl": "https:\/\/www.bing.com\/th?id=ON.FBAB3CCEABD82F8127C07D66D93C1DB2&pid=5.1&w=80&h=80&c=8",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/articles\/special-guests-president-trumps...",
+        "snippet": "President Trump granted Alice Johnson clemency on June 6, 2018.
+        Alice had been serving a mandatory life sentence without parole for charges
+        associated with a nonviolent drug case.", "dateLastCrawled": "2019-02-05T16:31:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "John F. Kennedy | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/john-f-kennedy\/",
+        "about": [{"name": "John F. Kennedy"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.whitehouse.gov\/...\/presidents\/john-f-kennedy", "snippet":
+        "John F. Kennedy was the 35th President of the United States (1961-1963),
+        the youngest man elected to the office. On November 22, 1963, when he was
+        hardly past his first thousand days in office ...", "dateLastCrawled": "2019-01-31T15:11:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "James Monroe | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/james-monroe\/",
+        "about": [{"name": "James Monroe"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.whitehouse.gov\/...\/presidents\/james-monroe", "snippet":
+        "James Monroe was the fifth President of the United States (1817–1825)
+        and the last President from the Founding Fathers. On New Year’s Day, 1825,
+        at the last of his annual White House ...", "dateLastCrawled": "2019-01-31T04:43:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "The Executive Branch | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/the-executive-branch\/",
+        "about": [{"name": "Executive Office of the President of the United States"}],
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/the-executive-branch",
+        "snippet": "The Executive Branch conducts diplomacy with other nations,
+        and the President has the power to negotiate and sign treaties, which also
+        must be ratified by two-thirds of the Senate.", "dateLastCrawled": "2019-01-30T06:50:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "George Washington | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/george-washington\/",
+        "about": [{"name": "George Washington"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.whitehouse.gov\/...\/presidents\/george-washington",
+        "snippet": "On April 30, 1789, George Washington, standing on the balcony
+        of Federal Hall on Wall Street in New York, took his oath of office as the
+        first President of the United States. On April 30, 1789 ...", "dateLastCrawled":
+        "2019-01-31T21:50:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18", "name":
+        "Andrew Jackson | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/andrew-jackson\/",
+        "about": [{"name": "Andrew Jackson"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.whitehouse.gov\/...\/presidents\/andrew-jackson", "snippet":
+        "Andrew Jackson was the seventh President of the United States from 1829
+        to 1837, seeking to act as the direct representative of the common man.",
+        "dateLastCrawled": "2019-01-29T22:06:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Martin Van Buren | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/martin-van-buren\/",
+        "about": [{"name": "Martin Van Buren"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.whitehouse.gov\/...\/presidents\/martin-van-buren", "snippet":
+        "Martin Van Buren was the eighth President of the United States (1837-1841),
+        after serving as the eighth Vice President and the tenth Secretary of State,
+        both under President Andrew Jackson.", "dateLastCrawled": "2019-01-30T12:47:00.0000000Z",
+        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Tue, 05 Feb 2019 21:45:26 GMT
 recorded_with: VCR 4.0.0

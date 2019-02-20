@@ -450,4 +450,257 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
   recorded_at: Mon, 27 Aug 2018 00:07:09 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=60&q=social%20security%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 05 Feb 2019 21:33:42 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 3D6FC28E8A464C3987ECB3F98AAD455B
+      Bingapis-Sessionid:
+      - E8D15EC1CB334182A5405848F37F8D53
+      X-Msedge-Clientid:
+      - 11DC63FEC2566D990A7D6F04C31A6CE5
+      X-Msapi-Userstate:
+      - '9944'
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=247,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: 3D6FC28E8A464C3987ECB3F98AAD455B Ref B: BY3EDGE0406 Ref C: 2019-02-05T21:34:42Z'
+      Apim-Request-Id:
+      - 5e914549-4101-4f70-97c0-8e38c4b8e7ab
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 05 Feb 2019 21:34:41 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "social
+        security (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=social+security+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 537000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Benefits Planner: Disability | How You Qualify | Social ...", "url":
+        "https:\/\/www.ssa.gov\/planners\/disability\/qualify.html", "about": [{"name":
+        "Social Security Administration"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.ssa.gov\/planners\/disability\/qualify.html", "snippet":
+        "Social Security program rules assume that working families have access
+        to other resources to provide support during periods of short-term disabilities,
+        including workers'' compensation, insurance, savings, and investments.", "dateLastCrawled":
+        "2019-02-01T16:00:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1", "name":
+        "Benefits Planner: Retirement | Social Security Administration", "url":
+        "https:\/\/www.ssa.gov\/planners\/retire\/", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.ssa.gov\/planners\/retire", "snippet": "The three major elements
+        of your retirement portfolio are benefits from pensions, savings and investments,
+        and Social Security benefits. This planner provides detailed information
+        about your Social Security retirement benefits under current law.", "dateLastCrawled":
+        "2019-02-03T13:09:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2", "name":
+        "Social Security Administration | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/social-security-administration",
+        "about": [{"name": "Social Security Administration"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/social-security-administration",
+        "snippet": "The Social Security Administration assigns Social Security
+        numbers, and administers the Social Security retirement, survivors, and
+        disability insurance programs. They also administer the Supplemental Security
+        Income program for the aged, blind, and disabled. Agency Details Acronym:
+        SSA.", "dateLastCrawled": "2019-01-28T23:52:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Apply for Social Security Benefits | Social Security ...", "url":
+        "https:\/\/www.ssa.gov\/benefits\/forms\/", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.ssa.gov\/benefits\/forms", "snippet": "Visit your local Social
+        Security office. An appointment is not required, but if you call ahead and
+        schedule one, it may reduce the time you spend waiting to apply. If you live
+        outside the U.S. you can contact the nearest U.S. Social Security office,
+        U.S. Embassy or consulate. Retirement or Spouse''s Benefits", "dateLastCrawled":
+        "2019-02-03T13:22:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4", "name":
+        "Social Security Income | Internal Revenue Service", "url": "https:\/\/www.irs.gov\/faqs\/social-security-income",
+        "about": [{"name": "Social Security"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.irs.gov\/faqs\/social-security-income", "snippet": "If
+        the total of (1) one half of the child''s social security benefits and (2)
+        all the child''s other income is greater than the base amount that applies
+        to the child''s filing status, part of the child''s social security benefits
+        may be taxable.", "dateLastCrawled": "2018-12-19T07:32:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Social Security", "url": "https:\/\/secure.ssa.gov\/RIR\/finish",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/secure.ssa.gov\/RIR\/finish",
+        "snippet": "With your my Social Security account, you can immediately view,
+        download, or print your Statement. Your online Statement contains the most
+        up-to-date information in our records about your earnings and benefit.", "dateLastCrawled":
+        "2019-01-30T22:57:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6", "name":
+        "Benefits Planner: Retirement - Social Security Administration", "url":
+        "https:\/\/www.ssa.gov\/planners\/retire\/ageincrease.html", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.ssa.gov\/planners\/retire\/ageincrease.html",
+        "snippet": "The 1983 Social Security Amendments included a provision for
+        raising the full retirement age beginning with people born in 1938 or later.
+        Congress cited improvements in the health of older people and increases in
+        average life expectancy as primary reasons for increasing the normal retirement
+        age.", "dateLastCrawled": "2019-01-29T01:44:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Supplemental Security Income - Social Security Administration",
+        "url": "http:\/\/www.ssa.gov\/ssi\/", "about": [{"name": "Social Security
+        Administration"}], "isFamilyFriendly": true, "displayUrl": "www.ssa.gov\/ssi",
+        "snippet": "Social Security Handbook: This is a link to Chapter 21 of the
+        Social Security Handbook which contains material about SSI organized in
+        question and answer format so that you can find the information you need quickly
+        and easily. SSI Law and Regulations", "dateLastCrawled": "2019-02-01T02:03:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Benefits Planner: Disability | Social Security Administration",
+        "url": "https:\/\/www.ssa.gov\/planners\/disability\/", "about": [{"name":
+        "Social Security Administration"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.ssa.gov\/planners\/disability", "snippet": "The Social Security
+        disability insurance program pays benefits to you and certain family members
+        if you worked long enough and paid Social Security taxes. (Your adult child
+        also may qualify for benefits on your earnings record if he or she has a disability
+        that started before age 22.)", "dateLastCrawled": "2019-01-29T08:55:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Benefits For Your Family - Social Security Administration", "url":
+        "https:\/\/www.ssa.gov\/planners\/retire\/applying7.html", "about": [{"name":
+        "Social Security Administration"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.ssa.gov\/planners\/retire\/applying7.html", "snippet": "Benefits
+        For Your Family When you start receiving Social Security retirement benefits,
+        some members of your family may also qualify to receive benefits on your record.
+        If they qualify, your spouse or child may receive a monthly payment of up
+        to one-half of your full retirement benefit amount.", "dateLastCrawled": "2019-01-31T10:23:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Appeal A Decision | Social Security Administration", "url": "https:\/\/www.ssa.gov\/benefits\/disability\/appeal.html",
+        "about": [{"name": "Social Security Administration"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.ssa.gov\/benefits\/disability\/appeal.html",
+        "snippet": "Appeal A Decision If you were recently denied Social Security
+        benefits or Supplemental Security Income (SSI), you may request an appeal.
+        Generally, you have 60 days after you receive the notice of our decision to
+        ask for any type of appeal.", "dateLastCrawled": "2019-01-31T07:41:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Getting Benefits While Working", "url": "https:\/\/www.ssa.gov\/planners\/retire\/whileworking.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/planners\/retire\/whileworking.html",
+        "snippet": "Your Social Security benefits would be reduced through July
+        by $706 ($1 for every $3 you earned over the limit). You would still receive
+        $4,894 out of your $5,600 benefits for the first 7 months ($800 a month January
+        through July).", "dateLastCrawled": "2019-01-31T17:25:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Veterans | Social Security Administration", "url": "http:\/\/www.ssa.gov\/people\/veterans\/",
+        "isFamilyFriendly": true, "displayUrl": "www.ssa.gov\/people\/veterans",
+        "snippet": "Social Security has always changed to meet the needs of the
+        people we serve and will continue to help support you and your family. Whether
+        you are about to retire, become a full time grandparent, or start a new chapter,
+        Social Security can help you secure today and tomorrow.", "dateLastCrawled":
+        "2019-02-03T13:10:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13", "name":
+        "Benefits Planner: Retirement - Social Security Administration", "url":
+        "https:\/\/www.ssa.gov\/planners\/retire\/agereduction.html", "about": [{"name":
+        "Social Security Administration"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.ssa.gov\/planners\/retire\/agereduction.html", "snippet":
+        "to contact Social Security before you decide when to retire. If you decide
+        to delay your benefits until after age 65, you should still apply for Medicare
+        benefits within three months of your 65th birthday.", "dateLastCrawled": "2019-01-29T23:55:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Social Security Matters | The Official Blog of Social Security",
+        "url": "https:\/\/blog.ssa.gov\/", "about": [{"name": "Social Security Administration"}],
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/blog.ssa.gov", "snippet":
+        "Social Security is here with information, tools, and benefits to help you
+        secure today and tomorrow. Our journey together begins when you’re born and
+        get your Social Security card. It continues when you get your first job
+        and follows you through your entire career, marriage, and retirement.", "dateLastCrawled":
+        "2019-01-31T18:38:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15", "name":
+        "How Social Security Can Help You When a Family Member Dies", "url": "https:\/\/www.ssa.gov\/pubs\/EN-05-10008.pdf",
+        "about": [{"name": "Social Security Administration"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.ssa.gov\/pubs\/EN-05-10008.pdf", "snippet":
+        "How Social Security Can Help You When a Family Member Dies You should let
+        Social Security know as soon as possible when a person in your family dies.
+        Usually, the funeral director will report the person’s death to Social Security.
+        You’ll need to give the deceased’s Social Security number to the funeral
+        director so they can make the report.", "dateLastCrawled": "2019-01-30T12:00:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Understanding the Benefits - ssa.gov", "url": "https:\/\/www.ssa.gov\/pubs\/EN-05-10024.pdf",
+        "about": [{"name": "Social Security Administration"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.ssa.gov\/pubs\/EN-05-10024.pdf", "snippet":
+        "Social Security helps older Americans, workers who become disabled, and
+        families in which a spouse or parent dies. As of June 2018, about 175 million
+        people worked and paid Social Security taxes and about 62 million people
+        received monthly Social Security benefits.", "dateLastCrawled": "2019-01-31T00:36:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Planning For Your Survivors - Social Security Administration",
+        "url": "https:\/\/www.ssa.gov\/planners\/survivors\/onyourown.html", "about":
+        [{"name": "Social Security Administration"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.ssa.gov\/planners\/survivors\/onyourown.html", "snippet":
+        "Social Security can help your family if you have earned enough Social
+        Security credits through your work. You can earn up to four credits each
+        year . In 2019, for example, you earn one credit for each $1,360 of wages
+        or self-employment income.", "dateLastCrawled": "2019-01-31T15:58:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Email Our Support Team, Comments And Questions, Social ...", "url":
+        "https:\/\/secure.ssa.gov\/emailus\/", "about": [{"name": "Questions"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/secure.ssa.gov\/emailus", "snippet": "Many
+        of our services are now available online, like applying for Social Security
+        benefits, requesting a replacement Social Security card, getting your Social
+        Security Statement, and benefit verification letter. You can also look for
+        answers to your questions on our Frequently Asked Questions page.", "dateLastCrawled":
+        "2019-01-31T16:27:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19", "name":
+        "Glossary of Social Security Terms | Social Security ...", "url": "https:\/\/www.ssa.gov\/agency\/glossary\/",
+        "about": [{"name": "Social Security Administration"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.ssa.gov\/agency\/glossary", "snippet":
+        "Social Security is based on a simple concept: While you work, you pay taxes
+        into the Social Security system, and when you retire or become disabled,
+        you, your spouse, and your dependent children receive monthly benefits that
+        are based on your reported earnings.", "dateLastCrawled": "2019-01-30T05:35:00.0000000Z",
+        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Tue, 05 Feb 2019 21:34:42 GMT
 recorded_with: VCR 4.0.0

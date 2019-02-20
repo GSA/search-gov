@@ -3964,4 +3964,2162 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
   recorded_at: Mon, 19 Nov 2018 22:39:43 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=first%20item%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 05 Feb 2019 21:43:46 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 36BA7CC03DE14B918540110C03F4199A
+      Bingapis-Sessionid:
+      - 904D348378654F0FB6626A2BAF57748E
+      X-Msedge-Clientid:
+      - 1F274DA46D0A633D3EA4415E6C46627B
+      X-Msapi-Userstate:
+      - c8e2
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=225,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: 36BA7CC03DE14B918540110C03F4199A Ref B: BY3EDGE0210 Ref C: 2019-02-05T21:44:46Z'
+      Apim-Request-Id:
+      - 2e9ac935-91a8-48a6-9f54-dfb371c9b6c6
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 05 Feb 2019 21:44:46 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "first
+        item (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=first+item+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 836000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "First U.S. Patent Issued Today in 1790 | USPTO", "url": "https:\/\/www.uspto.gov\/about-us\/news-updates\/first-us-patent-issued-today-1790",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.uspto.gov\/about-us\/news-updates\/first-us-patent-issued...",
+        "snippet": "The patent was signed by President George Washington. Hopkins
+        was born in Vermont, but was living in Philadelphia, Pa. when the patent
+        was granted. The first patent, as well as the more than 6 million patents
+        issued since then, can be seen on the Department of Commerce''s United States
+        Patent and Trademark Office website at www.uspto.gov .", "dateLastCrawled":
+        "2019-01-30T06:50:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1", "name":
+        "U.S. Senate: Constitution of the United States", "url": "https:\/\/www.senate.gov\/civics\/constitution_item\/constitution.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.senate.gov\/civics\/constitution_item\/constitution.htm",
+        "snippet": "Written in 1787, ratified in 1788, and in operation since 1789,
+        the United States Constitution is the world’s longest surviving written charter
+        of government. Its first three words – “We The People” – affirm that the
+        government of the United States exists to serve its citizens.", "dateLastCrawled":
+        "2019-02-05T09:07:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2", "name":
+        "1.WN GO 2. MASK OR RESPIRATOR 3. GOGGLES OR FACE SHIELD", "url": "https:\/\/www.cdc.gov\/hai\/pdfs\/ppe\/PPE-Sequence.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/hai\/pdfs\/ppe\/PPE-Sequence.pdf",
+        "snippet": "peel off second glove over first glove • Discard gloves in a
+        waste container. 2. GOGGLES OR FACE SHIELD ... • If the item is reusable,
+        place in designated receptacle for reprocessing. Otherwise, discard in a waste
+        container. 3.WN GO • Gown front and sleeves are contaminated!", "dateLastCrawled":
+        "2019-01-29T07:57:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3", "name":
+        "First Grade Mathematics Item Specifications", "url": "https:\/\/dese.mo.gov\/sites\/default\/files\/asmt-math-g1-item-specs-0717.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/dese.mo.gov\/sites\/default\/files\/asmt-math-g1-item-specs...",
+        "snippet": "First Grade . Mathematics . Item Specifications . 2 . Table
+        of Contents ... One of the documents developed is the item specification
+        document, which includes all Missouri grade level\/course expectations arranged
+        by domains\/strands. It defines what could be measured on a variety of assessments.
+        The document", "dateLastCrawled": "2019-01-29T10:27:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "First 5 California - State Site", "url": "http:\/\/www.ccfc.ca.gov\/",
+        "isFamilyFriendly": true, "displayUrl": "www.ccfc.ca.gov", "snippet": "First
+        5 California was created by voters under Proposition 10 to recognize that
+        children''s health and education are a top priority, especially in the early
+        years of development. Research shows that critical brain growth and other
+        developmental milestones take place during the earliest years of a child''s
+        life.", "dateLastCrawled": "2019-02-01T17:27:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Commercial Item Acquisition: Considerations", "url": "https:\/\/www.acq.osd.mil\/dpap\/Docs\/cotsreport.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.acq.osd.mil\/dpap\/Docs\/cotsreport.pdf",
+        "snippet": "First, increased reliance on commercial items implies a different
+        paradigm of system acquisition. The most fundamental change involves the dynamic
+        interaction between the system context , the system architecture and design,
+        and the commercial items available in the marketplace. Managing this interaction
+        requires unprecedented cooperation among the", "dateLastCrawled": "2019-01-31T19:04:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Guidance for Industry: Nutrition Labeling of Standard Menu ...",
+        "url": "https:\/\/www.fda.gov\/Food\/GuidanceRegulation\/GuidanceDocumentsRegulatoryInformation\/ucm437403.htm?source=govdelivery",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fda.gov\/Food\/GuidanceRegulation\/GuidanceDocuments...",
+        "snippet": "The statement of availability must appear on the bottom of the
+        first page with menu items immediately above, below, or beside the succinct
+        statement. (21 CFR 101.11(b)(2)(i)(C)(2))", "dateLastCrawled": "2019-02-03T04:29:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "First Aid List - Occupational Safety and Health Administration",
+        "url": "https:\/\/www.osha.gov\/recordkeeping\/firstaid_list.pdf", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.osha.gov\/recordkeeping\/firstaid_list.pdf",
+        "snippet": "First Aid List 1904.7 (b)(5)(ii) What is “first aid”? For
+        the purposes of Part 1904, \"first aid\" means the following: (A) Using
+        a nonprescription medication at nonprescription strength (for medications",
+        "dateLastCrawled": "2019-01-29T13:18:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Boston.gov", "url": "https:\/\/www.boston.gov\/", "about": [{"name":
+        "Boston City Hall Plaza"}, {"name": "Boston City Hall Plaza"}, {"name": "Boston"}],
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.boston.gov", "snippet":
+        "Request a bulk item pickup. Request to salt or plow a street. Report a
+        pothole. Report a parking violation. Report a missing or damaged street sign.
+        Report a streetlight outage. Stay Connected. Sign up for email updates from
+        the City of Boston, including information on big events and upcoming traffic
+        and parking restrictions. Your Email Address ...", "dateLastCrawled": "2019-01-31T23:47:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Form 10-K - SEC", "url": "https:\/\/www.sec.gov\/about\/forms\/form10-k.pdf",
+        "about": [{"name": "Form 10-K"}, {"name": "Form 10-K"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.sec.gov\/about\/forms\/form10-k.pdf",
+        "snippet": "included in Part I of Form 10-K under an appropriate caption.
+        See Instruction 3 to Item 401(b) of Regulation S-K (§ 229.401(b) of this
+        chapter). (4) No item numbers of captions of items need be contained in
+        the material incorporated by reference into the report.", "dateLastCrawled":
+        "2019-01-31T05:24:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10", "name":
+        "First Course of Treatment", "url": "https:\/\/www.cdc.gov\/cancer\/npcr\/pdf\/abstracting\/treatment_codes.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/cancer\/npcr\/pdf\/abstracting\/treatment_codes.pdf",
+        "snippet": "or stage disease in this data item. Record the date of this
+        surgical procedure in data item Date of First Course of Treatment (NAACCR
+        Item #1270) and\/or Date of First Surgical Procedure (NAACCR Item #1200)
+        as appropriate. • Codes 0–7 are hierarchical. If only one procedure can be
+        recorded, code the procedure that is numerically higher.", "dateLastCrawled":
+        "2019-01-30T02:48:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11", "name":
+        "List 1 HTSUS Product Description - ustr.gov", "url": "https:\/\/ustr.gov\/sites\/default\/files\/enforcement\/301Investigations\/List%201.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/ustr.gov\/sites\/default\/files\/enforcement\/301Investigations...",
+        "snippet": "HTSUS Subheading Product Description 8420.10.90 Calendering or
+        other rolling machines, other than for metals or glass, nesoi 8420.91.10 Cylinders
+        for textile calendering or rolling machines", "dateLastCrawled": "2019-01-31T18:40:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "QUICK AND EASY SERVICE ENTRY SHEET (SES) ENTRY AND RELEASE ...",
+        "url": "https:\/\/www.ntc.blm.gov\/krc\/uploads\/431\/SESInstructions8X28X09wtips.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ntc.blm.gov\/krc\/uploads\/431\/SESInstructions8X28X09...",
+        "snippet": "QUICK AND EASY SERVICE ENTRY SHEET (SES) ENTRY AND RELEASE .
+        TABLE OF CONTENTS . SECTIONS PAGE NUMBERS . PREFACE ... To set up a line item
+        to receive based on VALUE (receipt by SES) for either a ... * When setting
+        up your PR line items . think about the backend first - how do you need",
+        "dateLastCrawled": "2019-01-19T12:07:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Home Inventory Checklist", "url": "http:\/\/www.dfs.ny.gov\/consumer\/homeown\/home_invchklst.pdf",
+        "isFamilyFriendly": true, "displayUrl": "www.dfs.ny.gov\/consumer\/homeown\/home_invchklst.pdf",
+        "snippet": "HOME INVENTORY CHECKLIST ... Items such as sofas, tables,
+        beds, TVs, refrigerators, and lawn mowers should be included in such a schedule.
+        As you compile your inventory, supplement it with receipts indicating the
+        date of purchase and purchase price and photographs of", "dateLastCrawled":
+        "2019-02-01T00:37:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "USPS RETURNS CUSTOMER GUIDE", "url": "https:\/\/ribbs.usps.gov\/shipproductsservices\/documents\/tech_guides\/ReturnsCustomerGuide.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/ribbs.usps.gov\/...\/tech_guides\/ReturnsCustomerGuide.pdf",
+        "snippet": "USPS RETURNS CUSTOMER GUIDE ... hassle-free customer returns
+        policy helps merchants win the first order and a positive returns ... merchandise,
+        test kits, samples and other items. Merchants are charged only if and when
+        the labels are used. Exhibit 2: MRS label example", "dateLastCrawled": "2019-01-31T13:59:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Best Practices Guide: Fundamentals of a Workplace First ...", "url":
+        "https:\/\/www.osha.gov\/Publications\/OSHA3317first-aid.pdf", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.osha.gov\/Publications\/OSHA3317first-aid.pdf",
+        "snippet": "accessible first-aid supplies and first-aid equipment, such
+        as bandages and automated external defibrillators. • Assigns and trains first-aid
+        providers who: receive first-aid training suitable to the specific workplace
+        receive periodic refresher courses on first-aid skills and knowledge. 3",
+        "dateLastCrawled": "2019-01-30T00:25:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "\"The first vote\"", "url": "https:\/\/www.loc.gov\/pictures\/item\/00651117\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/pictures\/item\/00651117",
+        "snippet": "Is the item digitized? (A thumbnail (small) image will be visible
+        on the left.) Yes, the item is digitized. Please use the digital image in
+        preference to requesting the original. All images can be viewed at a large
+        size when you are in any reading room at the Library of Congress.", "dateLastCrawled":
+        "2019-01-17T16:25:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17", "name":
+        "391#2s (DOC) Payment in Lieu of Real Property Taxation ...", "url": "https:\/\/budget.lis.virginia.gov\/amendment\/2019\/1\/SB1100\/Introduced\/MR\/391\/2s\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/budget.lis.virginia.gov\/amendment\/2019\/1\/SB1100\/Introduced\/...",
+        "snippet": "The appropriation in this Item includes $2,868,500 the first
+        year and $2,135,500 the second year from the Contract Prisoners Special Revenue
+        Fund to defray a portion of the costs of maintaining and enhancing the offender
+        management system, including the development of an electronic health records
+        system.", "dateLastCrawled": "2019-01-27T16:09:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Your guide to who pays first. - Medicare", "url": "https:\/\/www.medicare.gov\/Pubs\/pdf\/02179-Medicare-Coordination-Benefits-Payer.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.medicare.gov\/Pubs\/pdf\/02179-Medicare-Coordination...",
+        "snippet": "Guide to Who Pays First ... TRICARE pays first for services
+        or items from a military hospital or any other federal provider . Medicare
+        pays second for active-duty military enrolled in Medicare . TRICARE may
+        pay second for inactive-duty", "dateLastCrawled": "2019-01-30T17:33:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Apply in Person - State", "url": "https:\/\/travel.state.gov\/content\/travel\/en\/passports\/apply-renew-passport\/apply-in-person.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/travel.state.gov\/...\/apply-renew-passport\/apply-in-person.html",
+        "snippet": "You must apply in person using Form DS-11 if at least one of
+        the following is true: You are applying for your first U.S. passport; ...
+        Most events are for first-time applicants and children, (who use Form DS-11).
+        If you can use Form DS-82, you can renew by mail at your convenience!", "dateLastCrawled":
+        "2019-02-01T16:45:00.0000000Z", "language": "en", "isNavigational": false}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Tue, 05 Feb 2019 21:44:47 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=first%20item%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 05 Feb 2019 21:43:47 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 60CE31DBACED42039935FCF78638A93E
+      Bingapis-Sessionid:
+      - AF6AE4159A2A4E60A03EFB6A98C4CFDE
+      X-Msedge-Clientid:
+      - 041EC6333CAC6B15158CCAC93DE06A6F
+      X-Msapi-Userstate:
+      - 9e51
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=216,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: 60CE31DBACED42039935FCF78638A93E Ref B: BY3EDGE0220 Ref C: 2019-02-05T21:44:47Z'
+      Apim-Request-Id:
+      - 8445d794-9c6a-4f82-a74e-313ab64727d6
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 05 Feb 2019 21:44:47 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "first
+        item (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=first+item+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 836000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "First U.S. Patent Issued Today in 1790 | USPTO", "url": "https:\/\/www.uspto.gov\/about-us\/news-updates\/first-us-patent-issued-today-1790",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.uspto.gov\/about-us\/news-updates\/first-us-patent-issued...",
+        "snippet": "The patent was signed by President George Washington. Hopkins
+        was born in Vermont, but was living in Philadelphia, Pa. when the patent
+        was granted. The first patent, as well as the more than 6 million patents
+        issued since then, can be seen on the Department of Commerce''s United States
+        Patent and Trademark Office website at www.uspto.gov .", "dateLastCrawled":
+        "2019-01-30T06:50:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1", "name":
+        "U.S. Senate: Constitution of the United States", "url": "https:\/\/www.senate.gov\/civics\/constitution_item\/constitution.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.senate.gov\/civics\/constitution_item\/constitution.htm",
+        "snippet": "Written in 1787, ratified in 1788, and in operation since 1789,
+        the United States Constitution is the world’s longest surviving written charter
+        of government. Its first three words – “We The People” – affirm that the
+        government of the United States exists to serve its citizens.", "dateLastCrawled":
+        "2019-02-05T09:07:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2", "name":
+        "1.WN GO 2. MASK OR RESPIRATOR 3. GOGGLES OR FACE SHIELD", "url": "https:\/\/www.cdc.gov\/hai\/pdfs\/ppe\/PPE-Sequence.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/hai\/pdfs\/ppe\/PPE-Sequence.pdf",
+        "snippet": "peel off second glove over first glove • Discard gloves in a
+        waste container. 2. GOGGLES OR FACE SHIELD ... • If the item is reusable,
+        place in designated receptacle for reprocessing. Otherwise, discard in a waste
+        container. 3.WN GO • Gown front and sleeves are contaminated!", "dateLastCrawled":
+        "2019-01-29T07:57:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3", "name":
+        "First Grade Mathematics Item Specifications", "url": "https:\/\/dese.mo.gov\/sites\/default\/files\/asmt-math-g1-item-specs-0717.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/dese.mo.gov\/sites\/default\/files\/asmt-math-g1-item-specs...",
+        "snippet": "First Grade . Mathematics . Item Specifications . 2 . Table
+        of Contents ... One of the documents developed is the item specification
+        document, which includes all Missouri grade level\/course expectations arranged
+        by domains\/strands. It defines what could be measured on a variety of assessments.
+        The document", "dateLastCrawled": "2019-01-29T10:27:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "First 5 California - State Site", "url": "http:\/\/www.ccfc.ca.gov\/",
+        "isFamilyFriendly": true, "displayUrl": "www.ccfc.ca.gov", "snippet": "First
+        5 California was created by voters under Proposition 10 to recognize that
+        children''s health and education are a top priority, especially in the early
+        years of development. Research shows that critical brain growth and other
+        developmental milestones take place during the earliest years of a child''s
+        life.", "dateLastCrawled": "2019-02-01T17:27:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Commercial Item Acquisition: Considerations", "url": "https:\/\/www.acq.osd.mil\/dpap\/Docs\/cotsreport.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.acq.osd.mil\/dpap\/Docs\/cotsreport.pdf",
+        "snippet": "First, increased reliance on commercial items implies a different
+        paradigm of system acquisition. The most fundamental change involves the dynamic
+        interaction between the system context , the system architecture and design,
+        and the commercial items available in the marketplace. Managing this interaction
+        requires unprecedented cooperation among the", "dateLastCrawled": "2019-01-31T19:04:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Guidance for Industry: Nutrition Labeling of Standard Menu ...",
+        "url": "https:\/\/www.fda.gov\/Food\/GuidanceRegulation\/GuidanceDocumentsRegulatoryInformation\/ucm437403.htm?source=govdelivery",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fda.gov\/Food\/GuidanceRegulation\/GuidanceDocuments...",
+        "snippet": "The statement of availability must appear on the bottom of the
+        first page with menu items immediately above, below, or beside the succinct
+        statement. (21 CFR 101.11(b)(2)(i)(C)(2))", "dateLastCrawled": "2019-02-03T04:29:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "First Aid List - Occupational Safety and Health Administration",
+        "url": "https:\/\/www.osha.gov\/recordkeeping\/firstaid_list.pdf", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.osha.gov\/recordkeeping\/firstaid_list.pdf",
+        "snippet": "First Aid List 1904.7 (b)(5)(ii) What is “first aid”? For
+        the purposes of Part 1904, \"first aid\" means the following: (A) Using
+        a nonprescription medication at nonprescription strength (for medications",
+        "dateLastCrawled": "2019-01-29T13:18:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Boston.gov", "url": "https:\/\/www.boston.gov\/", "about": [{"name":
+        "Boston City Hall Plaza"}, {"name": "Boston City Hall Plaza"}, {"name": "Boston"}],
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.boston.gov", "snippet":
+        "Request a bulk item pickup. Request to salt or plow a street. Report a
+        pothole. Report a parking violation. Report a missing or damaged street sign.
+        Report a streetlight outage. Stay Connected. Sign up for email updates from
+        the City of Boston, including information on big events and upcoming traffic
+        and parking restrictions. Your Email Address ...", "dateLastCrawled": "2019-01-31T23:47:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Form 10-K - SEC", "url": "https:\/\/www.sec.gov\/about\/forms\/form10-k.pdf",
+        "about": [{"name": "Form 10-K"}, {"name": "Form 10-K"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.sec.gov\/about\/forms\/form10-k.pdf",
+        "snippet": "included in Part I of Form 10-K under an appropriate caption.
+        See Instruction 3 to Item 401(b) of Regulation S-K (§ 229.401(b) of this
+        chapter). (4) No item numbers of captions of items need be contained in
+        the material incorporated by reference into the report.", "dateLastCrawled":
+        "2019-01-31T05:24:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10", "name":
+        "First Course of Treatment", "url": "https:\/\/www.cdc.gov\/cancer\/npcr\/pdf\/abstracting\/treatment_codes.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/cancer\/npcr\/pdf\/abstracting\/treatment_codes.pdf",
+        "snippet": "or stage disease in this data item. Record the date of this
+        surgical procedure in data item Date of First Course of Treatment (NAACCR
+        Item #1270) and\/or Date of First Surgical Procedure (NAACCR Item #1200)
+        as appropriate. • Codes 0–7 are hierarchical. If only one procedure can be
+        recorded, code the procedure that is numerically higher.", "dateLastCrawled":
+        "2019-01-30T02:48:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11", "name":
+        "List 1 HTSUS Product Description - ustr.gov", "url": "https:\/\/ustr.gov\/sites\/default\/files\/enforcement\/301Investigations\/List%201.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/ustr.gov\/sites\/default\/files\/enforcement\/301Investigations...",
+        "snippet": "HTSUS Subheading Product Description 8420.10.90 Calendering or
+        other rolling machines, other than for metals or glass, nesoi 8420.91.10 Cylinders
+        for textile calendering or rolling machines", "dateLastCrawled": "2019-01-31T18:40:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "QUICK AND EASY SERVICE ENTRY SHEET (SES) ENTRY AND RELEASE ...",
+        "url": "https:\/\/www.ntc.blm.gov\/krc\/uploads\/431\/SESInstructions8X28X09wtips.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ntc.blm.gov\/krc\/uploads\/431\/SESInstructions8X28X09...",
+        "snippet": "QUICK AND EASY SERVICE ENTRY SHEET (SES) ENTRY AND RELEASE .
+        TABLE OF CONTENTS . SECTIONS PAGE NUMBERS . PREFACE ... To set up a line item
+        to receive based on VALUE (receipt by SES) for either a ... * When setting
+        up your PR line items . think about the backend first - how do you need",
+        "dateLastCrawled": "2019-01-19T12:07:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Home Inventory Checklist", "url": "http:\/\/www.dfs.ny.gov\/consumer\/homeown\/home_invchklst.pdf",
+        "isFamilyFriendly": true, "displayUrl": "www.dfs.ny.gov\/consumer\/homeown\/home_invchklst.pdf",
+        "snippet": "HOME INVENTORY CHECKLIST ... Items such as sofas, tables,
+        beds, TVs, refrigerators, and lawn mowers should be included in such a schedule.
+        As you compile your inventory, supplement it with receipts indicating the
+        date of purchase and purchase price and photographs of", "dateLastCrawled":
+        "2019-02-01T00:37:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "USPS RETURNS CUSTOMER GUIDE", "url": "https:\/\/ribbs.usps.gov\/shipproductsservices\/documents\/tech_guides\/ReturnsCustomerGuide.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/ribbs.usps.gov\/...\/tech_guides\/ReturnsCustomerGuide.pdf",
+        "snippet": "USPS RETURNS CUSTOMER GUIDE ... hassle-free customer returns
+        policy helps merchants win the first order and a positive returns ... merchandise,
+        test kits, samples and other items. Merchants are charged only if and when
+        the labels are used. Exhibit 2: MRS label example", "dateLastCrawled": "2019-01-31T13:59:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Best Practices Guide: Fundamentals of a Workplace First ...", "url":
+        "https:\/\/www.osha.gov\/Publications\/OSHA3317first-aid.pdf", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.osha.gov\/Publications\/OSHA3317first-aid.pdf",
+        "snippet": "accessible first-aid supplies and first-aid equipment, such
+        as bandages and automated external defibrillators. • Assigns and trains first-aid
+        providers who: receive first-aid training suitable to the specific workplace
+        receive periodic refresher courses on first-aid skills and knowledge. 3",
+        "dateLastCrawled": "2019-01-30T00:25:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "\"The first vote\"", "url": "https:\/\/www.loc.gov\/pictures\/item\/00651117\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/pictures\/item\/00651117",
+        "snippet": "Is the item digitized? (A thumbnail (small) image will be visible
+        on the left.) Yes, the item is digitized. Please use the digital image in
+        preference to requesting the original. All images can be viewed at a large
+        size when you are in any reading room at the Library of Congress.", "dateLastCrawled":
+        "2019-01-17T16:25:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17", "name":
+        "391#2s (DOC) Payment in Lieu of Real Property Taxation ...", "url": "https:\/\/budget.lis.virginia.gov\/amendment\/2019\/1\/SB1100\/Introduced\/MR\/391\/2s\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/budget.lis.virginia.gov\/amendment\/2019\/1\/SB1100\/Introduced\/...",
+        "snippet": "The appropriation in this Item includes $2,868,500 the first
+        year and $2,135,500 the second year from the Contract Prisoners Special Revenue
+        Fund to defray a portion of the costs of maintaining and enhancing the offender
+        management system, including the development of an electronic health records
+        system.", "dateLastCrawled": "2019-01-27T16:09:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Your guide to who pays first. - Medicare", "url": "https:\/\/www.medicare.gov\/Pubs\/pdf\/02179-Medicare-Coordination-Benefits-Payer.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.medicare.gov\/Pubs\/pdf\/02179-Medicare-Coordination...",
+        "snippet": "Guide to Who Pays First ... TRICARE pays first for services
+        or items from a military hospital or any other federal provider . Medicare
+        pays second for active-duty military enrolled in Medicare . TRICARE may
+        pay second for inactive-duty", "dateLastCrawled": "2019-01-30T17:33:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Apply in Person - State", "url": "https:\/\/travel.state.gov\/content\/travel\/en\/passports\/apply-renew-passport\/apply-in-person.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/travel.state.gov\/...\/apply-renew-passport\/apply-in-person.html",
+        "snippet": "You must apply in person using Form DS-11 if at least one of
+        the following is true: You are applying for your first U.S. passport; ...
+        Most events are for first-time applicants and children, (who use Form DS-11).
+        If you can use Form DS-82, you can renew by mail at your convenience!", "dateLastCrawled":
+        "2019-02-01T16:45:00.0000000Z", "language": "en", "isNavigational": false}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Tue, 05 Feb 2019 21:44:48 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=loren%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 05 Feb 2019 21:43:48 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - E5B74B48B8EC4C0CADACC143E06268E0
+      Bingapis-Sessionid:
+      - 449B416327284FD1B6DA43AEEDEA743D
+      X-Msedge-Clientid:
+      - '07369F5B598A6BB100B993A158C66A91'
+      X-Msapi-Userstate:
+      - 13fa
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=227,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: E5B74B48B8EC4C0CADACC143E06268E0 Ref B: BY3EDGE0416 Ref C: 2019-02-05T21:44:48Z'
+      Apim-Request-Id:
+      - 2a7a3fd9-f34b-4bf1-a64d-50c4d3cf806f
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 05 Feb 2019 21:44:48 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "loren
+        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=loren+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 612000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Loren Sweatt - Deputy Assistant Secretary of Labor for ...", "url":
+        "https:\/\/www.osha.gov\/as\/opa\/sweatt_bio.html", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.osha.gov\/as\/opa\/sweatt_bio.html", "snippet":
+        "Loren Sweatt joined the Occupational Safety and Health Administration
+        July 24, 2017. Ms. Sweatt joins the agency from the U.S. House of Representatives
+        where she served as a Senior Policy Advisor at the Committee on Education
+        and the Workforce for the last 15 years.", "dateLastCrawled": "2019-01-29T17:56:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Loren Wobig, P.E. CFM - Water Resources", "url": "https:\/\/www.dnr.illinois.gov\/WaterResources\/Pages\/OWRStaff_WobigLoren.aspx",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.dnr.illinois.gov\/...\/Pages\/OWRStaff_WobigLoren.aspx",
+        "snippet": "Loren Wobig has been working for the State of Illinois for over
+        30 years as a licensed Professional Engineer in Illinois, Certified Floodplain
+        Manager, Civil Engineer, area Permit Engineer, Project Engineer, Project Manager,
+        and Division Manager.", "dateLastCrawled": "2019-01-29T02:41:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Donald P. Loren - Office of Public and Intergovernmental ...",
+        "url": "https:\/\/www.va.gov\/opa\/bios\/bio_loren.asp", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.va.gov\/opa\/bios\/bio_loren.asp",
+        "snippet": "VA » Office of Public and Intergovernmental Affairs » Donald
+        P. Loren Office of Public and Intergovernmental Affairs . Donald P. Loren
+        Assistant Secretary Operations, Security, and Preparedness . Donald P. Loren
+        was appointed by President Trump to serve as the Department of Veterans Affairs’
+        (VA) Assistant Secretary for Operations, Security ...", "dateLastCrawled":
+        "2019-01-29T17:33:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3", "name":
+        "Statement from OSHA Regarding Decline in Workplace ...", "url": "https:\/\/www.osha.gov\/news\/newsreleases\/trade\/12182018",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.osha.gov\/news\/newsreleases\/trade\/12182018",
+        "snippet": "“While today’s report shows a decline in the number of workplace
+        fatalities, the loss of even one worker is too many,” said Loren Sweatt,
+        Acting Assistant Secretary for the Occupational Safety and Health Administration
+        (OSHA).", "dateLastCrawled": "2019-02-01T11:01:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "City of Oakland | District 6 Councilmember", "url": "https:\/\/www.oaklandca.gov\/officials\/loren-taylor",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.oaklandca.gov\/officials\/loren-taylor",
+        "snippet": "Loren Taylor is a nationally recognized community, business,
+        and non-profit leader who is regularly recruited to solve tough problems for
+        cities, non-profits, and organizations.", "dateLastCrawled": "2019-01-30T07:28:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Loren L. AliKhan | jnc", "url": "https:\/\/jnc.dc.gov\/biography\/loren-l-alikhan",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/jnc.dc.gov\/biography\/loren-l-alikhan",
+        "snippet": "Loren L. AliKhan Before joining the D.C. Office of the Attorney
+        General in 2013, Loren was an attorney with O''Melveny & Myers LLP focusing
+        on Supreme Court and appellate litigation.", "dateLastCrawled": "2019-02-01T13:46:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Biographical Data - nasa.gov", "url": "https:\/\/www.nasa.gov\/sites\/default\/files\/atoms\/files\/shriver_loren.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nasa.gov\/sites\/default\/files\/atoms\/files\/shriver_loren.pdf",
+        "snippet": "Loren Shriver is Vice President, Engineering and Integration,
+        for United Space Alliance and is USA’s Chief Technology Officer. He is responsible
+        for Engineering and Int egration functions and processes, software engineering
+        and product system software processes, and", "dateLastCrawled": "2019-01-13T05:01:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Loren Khogali | Michigan Indigent Defense Commission", "url": "https:\/\/michiganidc.gov\/staff\/loren-khogali\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/michiganidc.gov\/staff\/loren-khogali",
+        "snippet": "Prior to joining MIDC in February 2018, Loren served as an attorney
+        with the Federal Public Defender Office in Detroit for 13 years where she
+        advocated on behalf of indigent persons charged with federal crimes at the
+        trial, appellate and post-conviction stages.", "dateLastCrawled": "2019-01-31T04:35:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Hon. Loren Baily-Schiffman - NYCOURTS.GOV", "url": "http:\/\/www.nycourts.gov\/courts\/2jd\/kings\/civil\/BailySchiffmanRules.shtml",
+        "isFamilyFriendly": true, "displayUrl": "www.nycourts.gov\/courts\/2jd\/kings\/civil\/BailySchiffmanRules.shtml",
+        "snippet": "Hon. Loren Baily-Schiffman. Part 65 Rules. Motions Motions
+        are heard on Thursdays. First call at 9:45 AM Second call at 10:30 AM Oral
+        argument is required on all motions. Defaults Pursuant to Uniform Rule §202.27,
+        the Court has discretion in addressing a calendar default. A motion is likely
+        to be denied upon the failure of a movant to appear ...", "dateLastCrawled":
+        "2019-02-01T02:36:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9", "name":
+        "Tribal Services – Southern Ute Indian Tribe", "url": "https:\/\/www.southernute-nsn.gov\/tribal-services\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.southernute-nsn.gov\/tribal-services",
+        "snippet": "Mission. The mission of Tribal Services is to strengthen families
+        by promoting positive personal growth and well-being based on a strength-based
+        perspective and empowerment of individuals through a network of holistic and
+        culturally relevant comprehensive human services that addresses the physical,
+        psychological, emotional, and spiritual needs of the Tribal membership all
+        based on honoring ...", "dateLastCrawled": "2019-02-01T05:22:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Senior Executive Biography - va.gov", "url": "https:\/\/www.va.gov\/opa\/bios\/docs\/loren.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.va.gov\/opa\/bios\/docs\/loren.pdf",
+        "snippet": "Senior Executive Biography Donald P. Loren . Assistant Secretary
+        . Operations, Security, and Preparedness . Donald P. Loren was appointed
+        by President Trump to serve as the Department of Veterans Affairs’ (VA) Assistant
+        Secretary for Operations, Security, and Preparedness. He was subsequently
+        sworn into office by the Secretary on August 10, 2017.", "dateLastCrawled":
+        "2019-01-21T02:10:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11", "name":
+        "Biographies of the Chair and Board Members", "url": "http:\/\/www.wcb.ny.gov\/content\/main\/TheBoard\/CommissionersBios.jsp",
+        "isFamilyFriendly": true, "displayUrl": "www.wcb.ny.gov\/content\/main\/TheBoard\/CommissionersBios.jsp",
+        "snippet": "Loren Lobban of Erie County has many years of experience as
+        a practicing attorney, representing individuals, business and government.
+        Prior to joining the Board, Mr. Lobban maintained a private law practice where
+        he specialized in litigation. He was the principle of his own firm and also
+        counsel to the Erie County Legislature.", "dateLastCrawled": "2019-01-30T11:37:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "California Department of Business Oversight", "url": "http:\/\/www.dbo.ca.gov\/LOEN\/default.asp",
+        "isFamilyFriendly": true, "displayUrl": "www.dbo.ca.gov\/LOEN\/default.asp",
+        "snippet": "The Self-Service DOCQNET portal replaces the former Limited Offering
+        Exemption Notice (LOEN) system with improved functionality and increased
+        security. The new system requires a LOEN filer to register as a single filing
+        organization to access the portal.", "dateLastCrawled": "2019-01-30T04:37:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Loren R. Kaufman VA Clinic (The Dalles) - VA Portland ...", "url":
+        "https:\/\/www.portland.va.gov\/locations\/TheDalles.asp", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.portland.va.gov\/locations\/TheDalles.asp",
+        "snippet": "Parent Facility: The Loren R. Kaufman VA Clinic located in The
+        Dalles, Ore. is part of the VA Portland Health Care System. Please note: NO
+        EMERGENCY SERVICES at this location.", "dateLastCrawled": "2019-01-31T11:14:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Loren Sweatt | Occupational Safety and Health Administration",
+        "url": "https:\/\/www.osha.gov\/news\/speeches\/04092018", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.osha.gov\/news\/speeches\/04092018",
+        "snippet": "Loren Sweatt Deputy Assistant Secretary of Labor for Occupational
+        Safety and Health Stand-up for Grain Engulfment Prevention Week, April 9-13,
+        2018 Monday, April 9, 2018. Thank you so much for inviting me to participate
+        in this year’s Stand-Up to Prevent Grain Engulfment.", "dateLastCrawled":
+        "2019-01-29T19:10:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15", "name":
+        "James Valley Grain v. David - Appellee Brief", "url": "http:\/\/www.ndcourts.gov\/Court\/Briefs\/20110050.aeb.htm",
+        "isFamilyFriendly": true, "displayUrl": "www.ndcourts.gov\/Court\/Briefs\/20110050.aeb.htm",
+        "snippet": "On June 22, 2010, the National Grain and Feed Association issued
+        an arbitration award to appellee\/plaintiff James Valley Grain (\"James
+        Valley\") against appellant\/defendant Loren David. Pursuant to the North
+        Dakota Uniform Arbitration Act, David had 90 days to move the district court
+        to vacate, modify, or correct the award, but never made such ...", "dateLastCrawled":
+        "2019-01-27T00:57:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16", "name":
+        "Departments and Staff - Conservation - Polk County Iowa", "url": "https:\/\/www.polkcountyiowa.gov\/conservation\/about-us\/departments-and-staff\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.polkcountyiowa.gov\/...\/about-us\/departments-and-staff",
+        "snippet": "Doing Business with the County. Registrations, Certificates, Business\/Trade
+        Names, Beer\/Cigarette Licenses, Building Inspections & Permits", "dateLastCrawled":
+        "2019-01-30T23:11:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17", "name":
+        "Loren Miller Legal Services Award", "url": "http:\/\/www.calbar.ca.gov\/About-Us\/Who-We-Are\/Awards\/Loren-Miller-Legal-Services",
+        "about": [{"name": "Loren Miller"}], "isFamilyFriendly": true, "displayUrl":
+        "www.calbar.ca.gov\/About-Us\/Who-We-Are\/Awards\/Loren-Miller-Legal...",
+        "snippet": "The Loren Miller Legal Services Award, named after the late
+        Loren Miller, an African American lawyer and judge who was a leader in the
+        civil rights movement, was established in 1977 to commemorate the 50th Anniversary
+        of the State Bar of California.", "dateLastCrawled": "2019-01-31T14:02:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "President Donald J. Trump Announces Key Additions to his ...",
+        "url": "https:\/\/www.whitehouse.gov\/presidential-actions\/president-donald-j-trump-announces-key-additions-administration-2\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/presidential-actions\/president-donald-j...",
+        "snippet": "Loren received his BS from the United States Naval Academy.
+        Peter J. Shelby of Wisconsin to be an Assistant Secretary of Veterans Affairs,
+        Human Resources and Administration. Mr.", "dateLastCrawled": "2019-01-29T14:25:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Contact Us - Water Resources", "url": "https:\/\/www.dnr.illinois.gov\/WaterResources\/Pages\/ContactUs.aspx",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.dnr.illinois.gov\/WaterResources\/Pages\/ContactUs.aspx",
+        "snippet": "Office of the Director Loren Wobig, Director (217) 782-9130
+        (312) 793-3123 . Cindy Podshadley, Administrative Assistant (217) 782-0900.
+        Division of Capital Programs Rick Pohlman, P.E., Division Manager (217) 782-4732
+        · Technical Assistance · Capital Projects · Interstate Planning · Cooperation
+        with local communities Barbara Bragg, Administrative Assistant (217) 782-4636",
+        "dateLastCrawled": "2019-01-31T03:04:00.0000000Z", "language": "en", "isNavigational":
+        false}]}, "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages",
+        "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Tue, 05 Feb 2019 21:44:49 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=noticia%20uno%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 05 Feb 2019 21:43:51 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 477E53D5FE2341C18AA658757DF6C11E
+      Bingapis-Sessionid:
+      - 95787DE5ED6642CFB2544835F85CE034
+      X-Msedge-Clientid:
+      - 281548AB59AC66800042445158E0676E
+      X-Msapi-Userstate:
+      - '8097'
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=227,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: 477E53D5FE2341C18AA658757DF6C11E Ref B: BY3EDGE0212 Ref C: 2019-02-05T21:44:51Z'
+      Apim-Request-Id:
+      - 30b5674f-5b9e-4d01-9eb6-5f64f1b134f0
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 05 Feb 2019 21:44:50 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "noticia
+        uno (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=noticia+uno+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 75900, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "El Negociado de la Policía Logra el Arresto de uno de los ...",
+        "url": "https:\/\/policia.pr.gov\/el-negociado-de-la-policia-logra-el-arresto-de-uno-de-los-mas-buscados\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/policia.pr.gov\/el-negociado-de-la-policia-logra-el-arresto...",
+        "snippet": "El Negociado de la Policía Logra el Arresto de uno de los Más
+        Buscados. Fecha de Publicación: 25 May 2018. Categorías: Anuncios, Noticias.
+        Tags: El arrestado es conocido como Cuba y se relaciona con casos de asesinatos.",
+        "dateLastCrawled": "2019-01-28T07:05:00.0000000Z", "language": "es", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Tarjeta Verde para Familiares Inmediatos de un Ciudadano ...", "url":
+        "https:\/\/www.uscis.gov\/es\/tarjeta-verde\/familiar-inmediato", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.uscis.gov\/es\/tarjeta-verde\/familiar-inmediato",
+        "snippet": "Usted podría ajustar su estatus bajo INA 245(i), aún si está sujeto
+        a uno o más vetos de ajuste de estatus y por consiguiente ser inelegible
+        al ajuste de estatus bajo INA 245(a). Para más información, vea las instrucciones
+        del Formulario I-485, Suplemento A, Suplemento A del Formulario I-485, Ajuste
+        de Estatus bajo la Sección 245 (i).", "dateLastCrawled": "2019-01-29T12:16:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Policía Informa | Policía de Puerto Rico", "url": "https:\/\/policia.pr.gov\/policia-informa\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/policia.pr.gov\/policia-informa",
+        "snippet": "Noticias. Agentes adscritos a la Unidad de Rescate y del cuartel
+        de Trujillo Alto Sur rescataron a tres perritos que cayeron en una alcantarilla
+        que... LEER MÁS. Línea Confidencial 787-343-2020. ... Helicóptero de FURA
+        gana el Primer Lugar como uno de los Mejores del Mundo. 07\/09\/2015.",
+        "dateLastCrawled": "2019-01-30T14:22:00.0000000Z", "language": "es", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Información General sobre el ITIN | Internal Revenue Service", "url":
+        "https:\/\/www.irs.gov\/es\/individuals\/international-taxpayers\/general-itin-information",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.irs.gov\/es\/individuals\/international-taxpayers\/general...",
+        "snippet": "Puede que tenga que renovar su ITIN. A partir del 1 de enero de
+        2017, todos los ITIN no utilizados en una declaración de impuestos federales
+        por lo menos una vez en los últimos tres años, ya no serán válidos para utilizar.
+        Además, todos los ITIN emitidos antes de 2013 comenzarán a vencer este ...",
+        "dateLastCrawled": "2018-12-09T06:45:00.0000000Z", "language": "es", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Glosario de términos de compensación de trabajadores para ...", "url":
+        "https:\/\/www.dir.ca.gov\/DWC\/WCGlossary_spanish.htm", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.dir.ca.gov\/DWC\/WCGlossary_spanish.htm",
+        "snippet": "Notice = Noticia: Vea noticia de beneficio (benefit notice).
+        ... del 2004 y el médico que lo está atendiendo indica que probablemente nunca
+        va poder regresar a su trabajo usual o a uno como el y su empleador le ofrece
+        un trabajo modificado o alternativo en lugar de los beneficios de rehabilitación
+        vocacional. ...", "dateLastCrawled": "2019-01-28T02:32:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Juno - Mission to Jupiter | NASA", "url": "https:\/\/www.nasa.gov\/mission_pages\/juno\/main\/index.html",
+        "about": [{"name": "Juno"}, {"name": "Juno"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.nasa.gov\/mission_pages\/juno", "snippet": "Juno will
+        improve our understanding of the solar system''s beginnings by revealing the
+        origin and evolution of Jupiter.", "dateLastCrawled": "2019-01-31T19:03:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Preguntas y Respuestas sobre temas relacionados a ...", "url": "https:\/\/www.uscis.gov\/es\/noticias\/preguntas-y-respuestas\/preguntas-y-respuestas-sobre-temas-relacionados-residencia-permanente-green-card",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.uscis.gov\/es\/noticias\/preguntas-y-respuestas\/preguntas...",
+        "snippet": "Inicio > Noticias > Preguntas y respuestas > Preguntas y Respuestas
+        sobre temas relacionados a residencia permanente (green card) saltar los enlaces
+        de compartir e imprimir Compartir Esta Página Imprimir. Contenido de Archivo.",
+        "dateLastCrawled": "2019-01-29T01:00:00.0000000Z", "language": "es", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Después de recibir una decisión | USCIS", "url": "https:\/\/www.uscis.gov\/es\/recursos\/despues-de-recibir-una-decision",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.uscis.gov\/es\/recursos\/despues-de-recibir-una-decision",
+        "snippet": "Después de que usted obtiene la residencia permanente nosotros
+        actualizamos nuestros registros y le enviamos una carta de bienvenida. Luego
+        le enviamos su nueva tarjeta de residente permanente. Si usted se muda antes
+        de recibir su tarjeta debe llenar una solicitud de Cambio de Dirección. Si
+        ocurre ...", "dateLastCrawled": "2019-01-29T20:45:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Preguntas y respuestas sobre la tuberculosis - cdc.gov", "url":
+        "https:\/\/www.cdc.gov\/tb\/esp\/publications\/faqs\/TBQASp.pdf", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.cdc.gov\/tb\/esp\/publications\/faqs\/TBQASp.pdf",
+        "snippet": "La buena noticia es que las personas con la enfermedad de tuberculosis
+        pueden recibir tratamiento si consultan a un proveedor de atención médica.
+        Es más, la mayoría de las personas que tienen la infección de tuberculosis
+        latente pueden tomar medicamentos para que no se les desarrolle la enfermedad
+        de tuberculosis.", "dateLastCrawled": "2019-01-31T14:34:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Cambios del Seguro Social para el 2016 - ssa.gov", "url": "https:\/\/www.ssa.gov\/espanol\/noticias\/prensa\/hojadedatos\/2016cola-datos.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/espanol\/noticias\/prensa\/hojadedatos\/2016cola...",
+        "snippet": "Trabajador incapacitado, cónyuge y uno o más hijos : $1,983:
+        Todo trabajador incapacitado : $1,166 * Debido a que no habrá aumento por
+        concepto del COLA, la ley requiere que estás cantidades no cambien en el año
+        2016.", "dateLastCrawled": "2019-01-27T16:54:00.0000000Z", "language": "es",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "El proceso de apelación - ssa.gov", "url": "https:\/\/www.ssa.gov\/pubs\/ES-05-10941.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/pubs\/ES-05-10941.pdf",
+        "snippet": "Para hablar con uno de nuestros agentes en español, llame a
+        nuestro número gratuito . 1-800-772-1213. y oprima el número 7. Si es sordo
+        o tiene problemas de audición, llame a nuestro número TTY, 1-800-325-0778.
+        Si necesita hablar con un agente, podemos contestar", "dateLastCrawled": "2019-02-01T11:46:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Preguntas y Respuestas: Se extiende TPS para hondureños ...", "url":
+        "https:\/\/www.uscis.gov\/es\/archivo\/preguntas-y-respuestas-se-extiende-tps-para-hondurenos-por-18-meses-mas",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.uscis.gov\/es\/archivo\/preguntas-y-respuestas-se...",
+        "snippet": "Introduccion. El Departamento de Seguridad Nacional (DHS, por
+        sus siglas en inglés) extenderá por 18 meses el Estatus de Protección Temporal
+        (TPS, por sus siglas en inglés) para los ciudadanos de Honduras (y aquellos
+        ciudadanos sin nacionalidad cuya última residencia haya sido en Honduras)
+        hasta el 5 de enero del 2012.", "dateLastCrawled": "2019-01-31T12:55:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Cambios del Seguro Social para el 2015 - ssa.gov", "url": "https:\/\/www.ssa.gov\/espanol\/noticias\/prensa\/hojadedatos\/2015cola-datos.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/espanol\/noticias\/prensa\/hojadedatos\/2015cola...",
+        "snippet": "NOTA ACLARATORIA. La tasa de contribución de 7.65% es la cantidad
+        combinada de las contribuciones de Seguro Social y Medicare. La cantidad contributiva
+        perteneciente al Seguro Social (OASDI) es de 6.20% aplicable a todos los salarios
+        tributables hasta el máximo de salarios tributables (véase las cantidades
+        a seguir).", "dateLastCrawled": "2019-01-30T05:04:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Huellas Dactilares | USCIS", "url": "https:\/\/www.uscis.gov\/es\/formularios\/huellas-dactilares",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.uscis.gov\/es\/formularios\/huellas-dactilares",
+        "snippet": "USCIS requiere que se le tomen las huellas dactilares a los solicitantes
+        y peticionarios de ciertos beneficios de inmigración, con el propósito hacerle
+        una investigación de antecedentes criminales en el FBI. Para asegurar la calidad
+        e integridad del proceso, USCIS tramita las tarjetas de huellas ...", "dateLastCrawled":
+        "2019-01-26T01:12:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "Colombia - Trade Promotion and Advertising | export.gov", "url": "https:\/\/www.export.gov\/article?id=Colombia-trade-promotion-and-advertising",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.export.gov\/article?id=Colombia-trade-promotion-and...",
+        "snippet": "Colombia - Trade Promotion and AdvertisingColombia - Trade Promotion
+        ... Noticias Uno NTN24 ... Colombia - Trade Promotion and Advertising.
+        Includes web links to local trade fair or show authorities and local newspapers,
+        trade publications, radio\/TV\/cable information. Pick a Board .", "dateLastCrawled":
+        "2019-01-31T00:23:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15", "name":
+        "Requisitos Revisados Para Solicitar Un ITIN | Internal ...", "url": "https:\/\/www.irs.gov\/es\/individuals\/revised-application-standards-for-itins",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.irs.gov\/es\/individuals\/revised-application-standards...",
+        "snippet": "El IRS ha modificado la cantidad de documentos que la agencia
+        aceptará como prueba de identidad y estatus de extranjero para obtener un
+        ITIN. En la actualidad, se aceptan 13 documentos . Cada uno de los documentos
+        deberá estar vigente y contener una fecha de vencimiento.", "dateLastCrawled":
+        "2018-12-17T08:40:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16", "name":
+        "Comunicados de Prensa | USCIS", "url": "https:\/\/www.uscis.gov\/es\/comunicados-de-prensa",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.uscis.gov\/es\/comunicados-de-prensa",
+        "snippet": "Inicio > Noticias > Comunicados de Prensa. saltar los enlaces
+        de compartir e imprimir Compartir Esta Página Imprimir Feed RSS . Comunicados
+        de Prensa. Esta página contiene actualizaciones de comunicados de prensa que
+        impactan la inmigración legal.", "dateLastCrawled": "2019-01-25T16:48:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Lo que necesita saber si recibe beneficios de Seguridad de ...",
+        "url": "http:\/\/www.ssa.gov\/pubs\/ES-05-11024.pdf", "isFamilyFriendly":
+        true, "displayUrl": "www.ssa.gov\/pubs\/ES-05-11024.pdf", "snippet": "Contenido.
+        Introducción 1 Sobre sus beneficios 1 Lo que nos debe informar 5 Las cosas
+        que debe saber si recibe SSI debido a una incapacidad 20", "dateLastCrawled":
+        "2019-01-29T11:44:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18", "name":
+        "Después de que su Petición es Aprobada - Travel", "url": "https:\/\/travel.state.gov\/content\/travel\/en\/us-visas\/inmigracion\/el-proceso-de-visa-de-inmigrante\/despues-de-que-su-peticion-es-aprobada.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/travel.state.gov\/content\/travel\/en\/us-visas\/inmigracion\/el...",
+        "snippet": "Últimas Noticias (en inglés) Índice A-Z (en inglés) Glosario
+        (en inglés) Programa de Visa de Diversidad (en inglés) Advertencia de Fraude
+        (en inglés) ¿Qué es una Visa de EE.UU? (en inglés) Boletín de Visa (en inglés)
+        Una Guia para Nuevos Inmigrantes", "dateLastCrawled": "2019-02-01T04:16:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Ceremonias de Naturalización | USCIS", "url": "https:\/\/www.uscis.gov\/es\/ciudadania\/ceremonias-de-naturalizacion",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.uscis.gov\/es\/ciudadania\/ceremonias-de-naturalizacion",
+        "snippet": "A continuación encontrará qué esperar de su ceremonia de naturalización:
+        1. Reciba la Notificación para prestar el Juramento de Lealtad Usted pudiera
+        participar en una ceremonia de naturalización el mismo día de su entrevista.
+        Si no se llevará a cabo una ceremonia ese mismo día, le ...", "dateLastCrawled":
+        "2019-01-22T18:02:00.0000000Z", "language": "es", "isNavigational": false}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Tue, 05 Feb 2019 21:44:51 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=item%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 05 Feb 2019 21:43:52 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 8A4B1E96CC1E4F76A91C273833B6F468
+      Bingapis-Sessionid:
+      - 88D397DF4D88473CAA8D26154FDC3BDC
+      X-Msedge-Clientid:
+      - 35F30C12D17860EB255500E8D034610F
+      X-Msapi-Userstate:
+      - '5440'
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=222,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: 8A4B1E96CC1E4F76A91C273833B6F468 Ref B: BY3EDGE0519 Ref C: 2019-02-05T21:44:52Z'
+      Apim-Request-Id:
+      - 17acd9bb-7b2a-4486-a024-7a61c9315cfb
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 05 Feb 2019 21:44:52 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "item
+        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=item+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 16400000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Frankenstein | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/2017600664\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/2017600664",
+        "snippet": "This catalog data provides the details known to the Library of
+        Congress regarding the corresponding item and may assist you in making independent
+        assessments of the legal status of these items for their desired uses.", "dateLastCrawled":
+        "2019-01-26T11:49:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1", "name":
+        "Colonies scolaires des Enfants de l''Yser. Out of door ...", "url": "https:\/\/www.loc.gov\/item\/2017667047\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/2017667047",
+        "snippet": "Is the item digitized? (A thumbnail (small) image will be visible
+        on the left.) Yes, the item is digitized. Please use the digital image in
+        preference to requesting the original. All images can be viewed at a large
+        size when you are in any reading room at the Library of Congress.", "dateLastCrawled":
+        "2019-02-05T01:09:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2", "name":
+        "Item Name", "url": "https:\/\/public.logisticsinformationservice.dla.mil\/H6\/NameLookup.aspx",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/public.logisticsinformationservice.dla.mil\/H6\/NameLookup.aspx",
+        "snippet": "This Site describes the products and services that DLA Logistics
+        Information Service provides.", "dateLastCrawled": "2019-01-31T12:28:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "American progress | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/97507547\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/97507547",
+        "snippet": "In some cases, only thumbnail (small) images are available when
+        you are outside the Library of Congress because the item is rights restricted
+        or has not been evaluated for rights restrictions. As a preservation measure,
+        we generally do not serve an original item when a digital image is available.",
+        "dateLastCrawled": "2018-12-28T05:03:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "U.S. Senate: Constitution of the United States", "url": "https:\/\/www.senate.gov\/civics\/constitution_item\/constitution.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.senate.gov\/civics\/constitution_item\/constitution.htm",
+        "snippet": "Introduction. Written in 1787, ratified in 1788, and in operation
+        since 1789, the United States Constitution is the world’s longest surviving
+        written charter of government.", "dateLastCrawled": "2019-02-05T09:07:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Pay Item Catalog", "url": "https:\/\/www.dot.ny.gov\/pic", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.dot.ny.gov\/pic", "snippet": "New York
+        State Department of Transportation coordinates operation of transportation
+        facilities and services including highway, bridges, railroad, mass transit,
+        port, waterway and aviation facilities", "dateLastCrawled": "2019-01-30T05:50:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Form 20-F - SEC", "url": "https:\/\/www.sec.gov\/files\/form20-f.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/files\/form20-f.pdf",
+        "snippet": "FORM 20-F (Mark One) REGISTRATION STATEMENT PURSUANTT O SECTION
+        12(b) OR (g) OFTHE SECURITIES ... If “Other” has been checked in response
+        to the previous question, indicate by check mark which financial statement
+        item the registrant has elected to follow. Item 17 Item 18 If this is
+        an annual report, indicate by check mark whether the ...", "dateLastCrawled":
+        "2019-02-01T06:13:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7", "name":
+        "Is your test, item, or service covered? | Medicare", "url": "https:\/\/www.medicare.gov\/coverage\/is-your-test-item-or-service-covered",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.medicare.gov\/coverage\/is-your-test-item-or-service-covered",
+        "snippet": "Find out if your test, item or service is covered. Medicare
+        coverage for many tests, items, and services depends on where you live. This
+        list includes tests, items, and services (covered and non-covered) if coverage
+        is the same no matter where you live.", "dateLastCrawled": "2019-01-31T13:33:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Item Analysis - ERIC", "url": "https:\/\/files.eric.ed.gov\/fulltext\/ED501716.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/files.eric.ed.gov\/fulltext\/ED501716.pdf",
+        "snippet": "Item Analysis for Criterion-Referenced Tests. 1. 2 The Center
+        for Development of Human Services is a continuing education ... item sets,
+        and entire sets of items, as well as the relationship of each item to other
+        items. It “investigates the performance of items considered individually",
+        "dateLastCrawled": "2019-01-31T14:32:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Carnaval, San Francisco, California | Library of Congress", "url":
+        "https:\/\/www.loc.gov\/item\/2013630039\/", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.loc.gov\/item\/2013630039", "snippet": "Carnaval, San
+        Francisco, California Contributor Names Highsmith, Carol M., 1946-, photographer
+        ... determine whether you need to fill out a call slip in the Prints and Photographs
+        Reading Room to view the original item(s). In some cases, a surrogate (substitute
+        image) is available, often in the form of a digital image, a copy print, or
+        ...", "dateLastCrawled": "2019-01-24T06:55:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "The horse America, throwing his master | Library of Congress",
+        "url": "https:\/\/www.loc.gov\/item\/97514739\/", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.loc.gov\/item\/97514739", "snippet": "The
+        horse America, throwing his master Summary Print shows a horse \"America\"
+        throwing its rider, George III. ... determine whether you need to fill out
+        a call slip in the Prints and Photographs Reading Room to view the original
+        item(s). In some cases, a surrogate (substitute image) is available, often
+        in the form of a digital image, a copy ...", "dateLastCrawled": "2019-01-26T17:34:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "What Can I Bring? | Transportation Security Administration",
+        "url": "https:\/\/www.tsa.gov\/travel\/security-screening\/whatcanibring\/all",
+        "about": [{"name": "Baggage allowance"}, {"name": "Transportation Security
+        Administration"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.tsa.gov\/travel\/security-screening\/whatcanibring",
+        "snippet": "What Can I Bring? Planning ahead and packing properly can facilitate
+        the screening process and ease your travel experience at the airport. ...
+        Even if an item is generally permitted, it may be subject to additional
+        screening or not allowed through the checkpoint if it triggers an alarm during
+        the screening process, appears to have been tampered ...", "dateLastCrawled":
+        "2019-02-01T09:55:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12", "name":
+        "Road Item Lists - Tennessee", "url": "https:\/\/www.tdot.tn.gov\/APPLICATIONS\/RoadwayItems",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.tdot.tn.gov\/APPLICATIONS\/RoadwayItems",
+        "snippet": "Road Item Lists SearchOptions. English (Spec. Year 2000) Metric
+        (Spec. Year 2001) Search by an Item Number. Search By Description Keyword
+        (Note: To display the entire list, search with out entering any Keyword or
+        Item Number. Partial Item Numbers and Partial Description Keywords are
+        allowed in the search.)", "dateLastCrawled": "2019-01-31T00:14:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Department of Defense Guidebook for Acquiring Commercial Items",
+        "url": "https:\/\/www.acq.osd.mil\/dpap\/cpic\/cp\/docs\/Guidebook_Part_A_Commercial_Item_Determination_20180129.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.acq.osd.mil\/dpap\/cpic\/cp\/docs\/Guidebook_Part_A...",
+        "snippet": "Department of Defense Guidebook for Acquiring Commercial Items
+        PART A: COMMERCIAL ITEM DETERMINATION . ... Any item, other than real
+        property, that is of a type customarily used by the general public or by non-governmental
+        entities for purposes other than Governmental purposes, and—", "dateLastCrawled":
+        "2019-01-29T20:52:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "hours per response7.71 FORM 8-K - SEC.gov | HOME", "url": "https:\/\/www.sec.gov\/files\/form8-k.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/files\/form8-k.pdf",
+        "snippet": "Item 2.02 or Item 7.01 will be deemed furnished, and not ﬁled,
+        unless the registrant speci ﬁes, under Item 9.01 (Financial Statements and
+        Exhibits), which exhibits, or portions of exhibits, are intended to be deemed
+        ﬁled rather than furnished pursuant to this instruction.", "dateLastCrawled":
+        "2019-01-29T04:22:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15", "name":
+        "Pick Item Name", "url": "https:\/\/public.logisticsinformationservice.dla.mil\/H6\/ShowItems.aspx",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/public.logisticsinformationservice.dla.mil\/H6\/ShowItems.aspx",
+        "snippet": "This Site describes the products and services that DLA Logistics
+        Information Service provides.", "dateLastCrawled": "2019-02-01T15:31:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "A family working in the Tifton (Ga.) Cotton Mill. Mrs. A.J ...",
+        "url": "https:\/\/www.loc.gov\/item\/2018674997\/", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.loc.gov\/item\/2018674997", "snippet": "Is
+        the item digitized? (A thumbnail (small) image will be visible on the left.)
+        Yes, the item is digitized. Please use the digital image in preference to
+        requesting the original. All images can be viewed at a large size when you
+        are in any reading room at the Library of Congress.", "dateLastCrawled": "2019-01-31T23:34:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "A map of the British and French dominions in North America ...",
+        "url": "https:\/\/www.loc.gov\/item\/74693177", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.loc.gov\/item\/74693177", "snippet": "A map
+        of the British and French dominions in North America, with the roads, distances,
+        limits, and extent of the settlements, humbly inscribed to the Right Honourable
+        the Earl of Halifax, and the other Right Honourable the Lords Commissioners
+        for Trade & Plantations. [London, Printed for Jefferys and Faden, geographers
+        to the King, 1774] Map.", "dateLastCrawled": "2018-12-21T14:18:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "ASSIST-QuickSearch Basic Search", "url": "http:\/\/quicksearch.dla.mil\/qssearch.aspx",
+        "about": [{"name": "MIL-STD-188"}], "isFamilyFriendly": true, "displayUrl":
+        "quicksearch.dla.mil\/qssearch.aspx", "snippet": "warning: unauthorized
+        access to this united states government computer system and software is prohibited
+        by public law 99-474 (the computer fraud and abuse act of 1986) and can result
+        in administrative, disciplinary or criminal proceedings.", "dateLastCrawled":
+        "2019-02-01T07:29:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19", "name":
+        "The first picket line - Library of Congress", "url": "https:\/\/www.loc.gov\/item\/97500299\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/97500299",
+        "snippet": "Is the item digitized? (A thumbnail (small) image will be visible
+        on the left.) Yes, the item is digitized. Please use the digital image in
+        preference to requesting the original. All images can be viewed at a large
+        size when you are in any reading room at the Library of Congress.", "dateLastCrawled":
+        "2019-01-03T23:47:00.0000000Z", "language": "en", "isNavigational": false}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Tue, 05 Feb 2019 21:44:52 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=item%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 05 Feb 2019 21:43:54 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - A30CCC3CAFE545F0991A81FCEAC1290B
+      Bingapis-Sessionid:
+      - 4CDD98911BDF472798964B61C0B15098
+      X-Msedge-Clientid:
+      - 1673627837CB6AAE358E6E8236876B5F
+      X-Msapi-Userstate:
+      - '09f9'
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=229,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: A30CCC3CAFE545F0991A81FCEAC1290B Ref B: BY3EDGE0111 Ref C: 2019-02-05T21:44:54Z'
+      Apim-Request-Id:
+      - eb50248e-3cea-4ee5-ba35-aa6a41341e82
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 05 Feb 2019 21:44:53 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "item
+        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=item+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 16400000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Frankenstein | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/2017600664\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/2017600664",
+        "snippet": "This catalog data provides the details known to the Library of
+        Congress regarding the corresponding item and may assist you in making independent
+        assessments of the legal status of these items for their desired uses.", "dateLastCrawled":
+        "2019-01-26T11:49:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1", "name":
+        "Colonies scolaires des Enfants de l''Yser. Out of door ...", "url": "https:\/\/www.loc.gov\/item\/2017667047\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/2017667047",
+        "snippet": "Is the item digitized? (A thumbnail (small) image will be visible
+        on the left.) Yes, the item is digitized. Please use the digital image in
+        preference to requesting the original. All images can be viewed at a large
+        size when you are in any reading room at the Library of Congress.", "dateLastCrawled":
+        "2019-02-05T01:09:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2", "name":
+        "Item Name", "url": "https:\/\/public.logisticsinformationservice.dla.mil\/H6\/NameLookup.aspx",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/public.logisticsinformationservice.dla.mil\/H6\/NameLookup.aspx",
+        "snippet": "This Site describes the products and services that DLA Logistics
+        Information Service provides.", "dateLastCrawled": "2019-01-31T12:28:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "American progress | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/97507547\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/97507547",
+        "snippet": "In some cases, only thumbnail (small) images are available when
+        you are outside the Library of Congress because the item is rights restricted
+        or has not been evaluated for rights restrictions. As a preservation measure,
+        we generally do not serve an original item when a digital image is available.",
+        "dateLastCrawled": "2018-12-28T05:03:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "U.S. Senate: Constitution of the United States", "url": "https:\/\/www.senate.gov\/civics\/constitution_item\/constitution.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.senate.gov\/civics\/constitution_item\/constitution.htm",
+        "snippet": "Introduction. Written in 1787, ratified in 1788, and in operation
+        since 1789, the United States Constitution is the world’s longest surviving
+        written charter of government.", "dateLastCrawled": "2019-02-05T09:07:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Pay Item Catalog", "url": "https:\/\/www.dot.ny.gov\/pic", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.dot.ny.gov\/pic", "snippet": "New York
+        State Department of Transportation coordinates operation of transportation
+        facilities and services including highway, bridges, railroad, mass transit,
+        port, waterway and aviation facilities", "dateLastCrawled": "2019-01-30T05:50:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Form 20-F - SEC", "url": "https:\/\/www.sec.gov\/files\/form20-f.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/files\/form20-f.pdf",
+        "snippet": "FORM 20-F (Mark One) REGISTRATION STATEMENT PURSUANTT O SECTION
+        12(b) OR (g) OFTHE SECURITIES ... If “Other” has been checked in response
+        to the previous question, indicate by check mark which financial statement
+        item the registrant has elected to follow. Item 17 Item 18 If this is
+        an annual report, indicate by check mark whether the ...", "dateLastCrawled":
+        "2019-02-01T06:13:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7", "name":
+        "Is your test, item, or service covered? | Medicare", "url": "https:\/\/www.medicare.gov\/coverage\/is-your-test-item-or-service-covered",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.medicare.gov\/coverage\/is-your-test-item-or-service-covered",
+        "snippet": "Find out if your test, item or service is covered. Medicare
+        coverage for many tests, items, and services depends on where you live. This
+        list includes tests, items, and services (covered and non-covered) if coverage
+        is the same no matter where you live.", "dateLastCrawled": "2019-01-31T13:33:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Item Analysis - ERIC", "url": "https:\/\/files.eric.ed.gov\/fulltext\/ED501716.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/files.eric.ed.gov\/fulltext\/ED501716.pdf",
+        "snippet": "Item Analysis for Criterion-Referenced Tests. 1. 2 The Center
+        for Development of Human Services is a continuing education ... item sets,
+        and entire sets of items, as well as the relationship of each item to other
+        items. It “investigates the performance of items considered individually",
+        "dateLastCrawled": "2019-01-31T14:32:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Carnaval, San Francisco, California | Library of Congress", "url":
+        "https:\/\/www.loc.gov\/item\/2013630039\/", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.loc.gov\/item\/2013630039", "snippet": "Carnaval, San
+        Francisco, California Contributor Names Highsmith, Carol M., 1946-, photographer
+        ... determine whether you need to fill out a call slip in the Prints and Photographs
+        Reading Room to view the original item(s). In some cases, a surrogate (substitute
+        image) is available, often in the form of a digital image, a copy print, or
+        ...", "dateLastCrawled": "2019-01-24T06:55:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "The horse America, throwing his master | Library of Congress",
+        "url": "https:\/\/www.loc.gov\/item\/97514739\/", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.loc.gov\/item\/97514739", "snippet": "The
+        horse America, throwing his master Summary Print shows a horse \"America\"
+        throwing its rider, George III. ... determine whether you need to fill out
+        a call slip in the Prints and Photographs Reading Room to view the original
+        item(s). In some cases, a surrogate (substitute image) is available, often
+        in the form of a digital image, a copy ...", "dateLastCrawled": "2019-01-26T17:34:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "What Can I Bring? | Transportation Security Administration",
+        "url": "https:\/\/www.tsa.gov\/travel\/security-screening\/whatcanibring\/all",
+        "about": [{"name": "Baggage allowance"}, {"name": "Transportation Security
+        Administration"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.tsa.gov\/travel\/security-screening\/whatcanibring",
+        "snippet": "What Can I Bring? Planning ahead and packing properly can facilitate
+        the screening process and ease your travel experience at the airport. ...
+        Even if an item is generally permitted, it may be subject to additional
+        screening or not allowed through the checkpoint if it triggers an alarm during
+        the screening process, appears to have been tampered ...", "dateLastCrawled":
+        "2019-02-01T09:55:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12", "name":
+        "Road Item Lists - Tennessee", "url": "https:\/\/www.tdot.tn.gov\/APPLICATIONS\/RoadwayItems",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.tdot.tn.gov\/APPLICATIONS\/RoadwayItems",
+        "snippet": "Road Item Lists SearchOptions. English (Spec. Year 2000) Metric
+        (Spec. Year 2001) Search by an Item Number. Search By Description Keyword
+        (Note: To display the entire list, search with out entering any Keyword or
+        Item Number. Partial Item Numbers and Partial Description Keywords are
+        allowed in the search.)", "dateLastCrawled": "2019-01-31T00:14:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Department of Defense Guidebook for Acquiring Commercial Items",
+        "url": "https:\/\/www.acq.osd.mil\/dpap\/cpic\/cp\/docs\/Guidebook_Part_A_Commercial_Item_Determination_20180129.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.acq.osd.mil\/dpap\/cpic\/cp\/docs\/Guidebook_Part_A...",
+        "snippet": "Department of Defense Guidebook for Acquiring Commercial Items
+        PART A: COMMERCIAL ITEM DETERMINATION . ... Any item, other than real
+        property, that is of a type customarily used by the general public or by non-governmental
+        entities for purposes other than Governmental purposes, and—", "dateLastCrawled":
+        "2019-01-29T20:52:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "hours per response7.71 FORM 8-K - SEC.gov | HOME", "url": "https:\/\/www.sec.gov\/files\/form8-k.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/files\/form8-k.pdf",
+        "snippet": "Item 2.02 or Item 7.01 will be deemed furnished, and not ﬁled,
+        unless the registrant speci ﬁes, under Item 9.01 (Financial Statements and
+        Exhibits), which exhibits, or portions of exhibits, are intended to be deemed
+        ﬁled rather than furnished pursuant to this instruction.", "dateLastCrawled":
+        "2019-01-29T04:22:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15", "name":
+        "Pick Item Name", "url": "https:\/\/public.logisticsinformationservice.dla.mil\/H6\/ShowItems.aspx",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/public.logisticsinformationservice.dla.mil\/H6\/ShowItems.aspx",
+        "snippet": "This Site describes the products and services that DLA Logistics
+        Information Service provides.", "dateLastCrawled": "2019-02-01T15:31:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "A family working in the Tifton (Ga.) Cotton Mill. Mrs. A.J ...",
+        "url": "https:\/\/www.loc.gov\/item\/2018674997\/", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.loc.gov\/item\/2018674997", "snippet": "Is
+        the item digitized? (A thumbnail (small) image will be visible on the left.)
+        Yes, the item is digitized. Please use the digital image in preference to
+        requesting the original. All images can be viewed at a large size when you
+        are in any reading room at the Library of Congress.", "dateLastCrawled": "2019-01-31T23:34:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "A map of the British and French dominions in North America ...",
+        "url": "https:\/\/www.loc.gov\/item\/74693177", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.loc.gov\/item\/74693177", "snippet": "A map
+        of the British and French dominions in North America, with the roads, distances,
+        limits, and extent of the settlements, humbly inscribed to the Right Honourable
+        the Earl of Halifax, and the other Right Honourable the Lords Commissioners
+        for Trade & Plantations. [London, Printed for Jefferys and Faden, geographers
+        to the King, 1774] Map.", "dateLastCrawled": "2018-12-21T14:18:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "ASSIST-QuickSearch Basic Search", "url": "http:\/\/quicksearch.dla.mil\/qssearch.aspx",
+        "about": [{"name": "MIL-STD-188"}], "isFamilyFriendly": true, "displayUrl":
+        "quicksearch.dla.mil\/qssearch.aspx", "snippet": "warning: unauthorized
+        access to this united states government computer system and software is prohibited
+        by public law 99-474 (the computer fraud and abuse act of 1986) and can result
+        in administrative, disciplinary or criminal proceedings.", "dateLastCrawled":
+        "2019-02-01T07:29:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19", "name":
+        "The first picket line - Library of Congress", "url": "https:\/\/www.loc.gov\/item\/97500299\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/97500299",
+        "snippet": "Is the item digitized? (A thumbnail (small) image will be visible
+        on the left.) Yes, the item is digitized. Please use the digital image in
+        preference to requesting the original. All images can be viewed at a large
+        size when you are in any reading room at the Library of Congress.", "dateLastCrawled":
+        "2019-01-03T23:47:00.0000000Z", "language": "en", "isNavigational": false}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Tue, 05 Feb 2019 21:44:54 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=obama%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 05 Feb 2019 21:43:55 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - EF1E28F8AFDD41E7979003CA10E5E7E3
+      Bingapis-Sessionid:
+      - 973642D706294CA0BBD92EAEA1161953
+      X-Msedge-Clientid:
+      - 2805B31878BC6ABC0294BFE279F06BDD
+      X-Msapi-Userstate:
+      - fc5f
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=232,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: EF1E28F8AFDD41E7979003CA10E5E7E3 Ref B: BY3EDGE0306 Ref C: 2019-02-05T21:44:55Z'
+      Apim-Request-Id:
+      - d171e417-650a-4047-baed-439645b8e3d2
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 05 Feb 2019 21:44:54 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "obama
+        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=obama+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 11600000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Barack Obama | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/barack-obama\/",
+        "about": [{"name": "Barack Obama"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.whitehouse.gov\/...\/presidents\/barack-obama", "snippet":
+        "Barack Obama served as the 44th President of the United States. His story
+        is the American story — values from the heartland, a middle-class upbringing
+        in a strong family, hard work and education ...", "dateLastCrawled": "2019-01-30T01:49:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "The White House", "url": "https:\/\/www.whitehouse.gov\/", "about":
+        [{"name": "The White House"}, {"name": "whitehouse.gov"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.whitehouse.gov", "snippet": "Search WhiteHouse.gov.
+        Immigration President Trump: The Next 21 Days Are an Opportunity for Both
+        Parties to Work Together ... George Washington, selected the site for the
+        White House in 1791 ...", "dateLastCrawled": "2019-02-01T04:21:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "The White House | whitehouse.gov", "url": "https:\/\/obamawhitehouse.archives.gov\/",
+        "about": [{"name": "whitehouse.gov"}, {"name": "Barack Obama"}, {"name": "Barack
+        Obama"}, {"name": "White House"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/obamawhitehouse.archives.gov", "snippet": "President Obama
+        has protected more natural resources than any other president. American Leadership.
+        President Obama has refocused and reaffirmed American leadership in the
+        world. Economic Progress. President Obama has created jobs, rescued the
+        auto industry, and rebuilt the economy.", "dateLastCrawled": "2019-01-30T20:59:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Barack Obama Presidential Library", "url": "https:\/\/www.obamalibrary.gov\/",
+        "about": [{"name": "Barack Obama"}, {"name": "Barack Obama Presidential Center"},
+        {"name": "Barack Obama"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.obamalibrary.gov",
+        "snippet": "Barack Obama. Scroll Down. President Barack Obama works at
+        the Resolute Desk in the Oval Office, Oct. 18, 2013. (P101813PS-0012) Learn
+        More. President Barack Obama. Learn More. First Lady Michelle Obama. Learn
+        More. Photos & Videos. Learn More. Frequently Asked Questions. Learn More.
+        About Presidential Libraries .", "dateLastCrawled": "2019-01-31T06:26:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Contact the White House | The White House", "url": "https:\/\/www.whitehouse.gov\/contact\/",
+        "about": [{"name": "White House"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.whitehouse.gov\/contact", "snippet": "Keep me posted with
+        regular updates from the White House. required ...", "dateLastCrawled":
+        "2019-02-01T00:05:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5", "name":
+        "The Administration | The White House", "url": "https:\/\/www.whitehouse.gov\/the-trump-administration\/",
+        "about": [{"name": "Executive Office of the President of the United States"}],
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/the-trump-administration",
+        "snippet": "President Donald J. Trump promised that he would bring the best
+        and brightest from across the country—not just inside Washington—to build
+        his Administration. The President, alongside the Vice ...", "dateLastCrawled":
+        "2019-01-31T20:57:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6", "name":
+        "Articles | The White House", "url": "https:\/\/www.whitehouse.gov\/articles\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/articles",
+        "snippet": "He attached a presentation that Secretary of Homeland Security
+        Kirstjen Nielsen was planning to deliver during a meeting with Congressional
+        leadership in the White House Situation Room earlier ...", "dateLastCrawled":
+        "2019-01-29T17:33:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7", "name":
+        "Michelle Obama | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/michelle-obama\/",
+        "about": [{"name": "Michelle Obama"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.whitehouse.gov\/...\/first-ladies\/michelle-obama", "snippet":
+        "Michelle LaVaughn Robinson Obama is a lawyer, writer, and the wife of the
+        44th President, Barack Obama. She was the first African-American First Lady
+        of the United States.", "dateLastCrawled": "2019-01-31T13:32:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "President Barack Obama | whitehouse.gov", "url": "https:\/\/obamawhitehouse.archives.gov\/administration\/president-obama",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/administration\/president-obama",
+        "snippet": "President Barack Obama Barack Obama is the 44th President
+        of the United States. His story is the American story -- values from the heartland,
+        a middle-class upbringing in a strong family, hard work and education as the
+        means of getting ahead, and the conviction that a life so blessed should be
+        lived in service to others.", "dateLastCrawled": "2019-01-16T12:44:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "HealthCare.gov - Get 2019 health coverage. Health ...", "url":
+        "https:\/\/www.healthcare.gov\/", "about": [{"name": "HealthCare.gov"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.healthcare.gov", "snippet": "News & information
+        from the HealthCare.gov blog. Please select a topic. Now that you’re signed
+        up, we’ll send you deadline reminders, plus tips about how to get enrolled,
+        stay enrolled, and get the most from your health insurance.", "dateLastCrawled":
+        "2019-01-31T04:43:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10", "name":
+        "Donald J. Trump | The White House", "url": "https:\/\/www.whitehouse.gov\/people\/donald-j-trump\/",
+        "about": [{"name": "Donald Trump"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.whitehouse.gov\/people\/donald-j-trump", "snippet": "Donald
+        J. Trump is the 45th President of the United States. He believes the United
+        States has incredible potential and will go on to exceed even its remarkable
+        achievements of the past.", "dateLastCrawled": "2019-01-30T07:50:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Immigration | The White House", "url": "https:\/\/www.whitehouse.gov\/issues\/immigration\/",
+        "about": [{"name": "Immigration policy"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.whitehouse.gov\/issues\/immigration", "snippet": "The United
+        States must adopt an immigration system that serves the national interest.
+        To restore the rule of law and secure our border, President Trump is committed
+        to constructing a border wall ...", "dateLastCrawled": "2019-01-30T20:57:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Presidential Actions Archive | The White House", "url": "https:\/\/www.whitehouse.gov\/presidential-actions\/",
+        "about": [{"name": "White House"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.whitehouse.gov\/presidential-actions", "snippet": "Access
+        all official actions from President Donald J. Trump, including nominations,
+        Executive Orders, and Proclamations.", "dateLastCrawled": "2019-02-01T00:49:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Live | The White House", "url": "https:\/\/www.whitehouse.gov\/live\/",
+        "about": [{"name": "White House"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.whitehouse.gov\/live", "snippet": "Tune in for LIVE White
+        House events with President Donald J. Trump, Vice President Mike Pence, and
+        other officials.", "dateLastCrawled": "2019-02-01T02:40:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "The Cabinet | whitehouse.gov", "url": "https:\/\/obamawhitehouse.archives.gov\/administration\/cabinet",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/administration\/cabinet",
+        "snippet": "Article II Section 2 of the Constitution establishes the Cabinet.
+        Check out the members of President Obama''s Cabinet.", "dateLastCrawled":
+        "2019-01-30T18:06:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15", "name":
+        "The White House Blog | whitehouse.gov", "url": "https:\/\/obamawhitehouse.archives.gov\/blog",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog",
+        "snippet": "President Obama Narrates \"The People’s House,\" a Virtual Reality
+        Tour of the White House The President and First Lady are using virtual reality
+        to bring the history of the White House directly to you.", "dateLastCrawled":
+        "2019-01-28T01:07:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16", "name":
+        "Education | The White House", "url": "https:\/\/www.whitehouse.gov\/issues\/education\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/issues\/education",
+        "snippet": "Presidential Proclamation on American Education Week, 2018.
+        Education Nov 9, 2018. Proclamations Presidential Proclamation on National
+        Historically Black Colleges and Universities Week, 2018.", "dateLastCrawled":
+        "2019-01-29T04:01:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17", "name":
+        "OBAMA, Barack - Biographical Information", "url": "http:\/\/bioguide.congress.gov\/scripts\/biodisplay.pl?index=o000167",
+        "about": [{"name": "Barack Obama"}, {"name": "Barack Obama"}], "isFamilyFriendly":
+        true, "displayUrl": "bioguide.congress.gov\/scripts\/biodisplay.pl?index=o000167",
+        "snippet": "OBAMA, Barack, a Senator from Illinois and 44th President
+        of the United States; born in Honolulu, Hawaii, August 4, 1961; obtained early
+        education in Jakarta, Indonesia, and Hawaii; continued education at Occidental
+        College, Los Angeles, Calif.; received a B.A. in 1983 from Columbia University,
+        New York City; worked as a community organizer in ...", "dateLastCrawled":
+        "2019-02-01T08:23:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18", "name":
+        "Foreign Policy | The White House", "url": "https:\/\/www.whitehouse.gov\/issues\/foreign-policy\/",
+        "about": [{"name": "Foreign Policy"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.whitehouse.gov\/issues\/foreign-policy", "snippet": "Foreign
+        Policy Jan 16, 2019. Presidential Memoranda Presidential Memorandum for the
+        Secretary of State, Secretary of the Treasury, and Director of National Intelligence.",
+        "dateLastCrawled": "2019-01-31T08:34:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Briefing Room | The White House", "url": "https:\/\/obamawhitehouse.archives.gov\/briefing-room",
+        "about": [{"name": "White House Press Secretary"}], "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/briefing-room",
+        "snippet": "Briefing Room. The White House provides timely and accurate
+        information about the President''s latest events and public statements. Here
+        you''ll find photos, video, and transcripts, as well as proclamations, executive
+        orders, and press releases. ... Text and video of speeches and remarks by
+        President Obama, the First Lady, and members of the ...", "dateLastCrawled":
+        "2019-01-22T23:27:00.0000000Z", "language": "en", "isNavigational": false}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Tue, 05 Feb 2019 21:44:55 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=obama%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 05 Feb 2019 21:43:56 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - F421360CF59446109607B2305E0E7521
+      Bingapis-Sessionid:
+      - 36973647ED9E45A5860862E7B1395F4F
+      X-Msedge-Clientid:
+      - 1EFDC341643363B91828CFBB657F62B8
+      X-Msapi-Userstate:
+      - 9ea5
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=220,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: F421360CF59446109607B2305E0E7521 Ref B: BY3EDGE0521 Ref C: 2019-02-05T21:44:56Z'
+      Apim-Request-Id:
+      - ab7ef67d-36e3-40bb-8e72-64ba0d1ea21d
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 05 Feb 2019 21:44:56 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "obama
+        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=obama+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 11600000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Barack Obama | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/barack-obama\/",
+        "about": [{"name": "Barack Obama"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.whitehouse.gov\/...\/presidents\/barack-obama", "snippet":
+        "Barack Obama served as the 44th President of the United States. His story
+        is the American story — values from the heartland, a middle-class upbringing
+        in a strong family, hard work and education ...", "dateLastCrawled": "2019-01-30T01:49:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "The White House", "url": "https:\/\/www.whitehouse.gov\/", "about":
+        [{"name": "The White House"}, {"name": "whitehouse.gov"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.whitehouse.gov", "snippet": "Search WhiteHouse.gov.
+        Immigration President Trump: The Next 21 Days Are an Opportunity for Both
+        Parties to Work Together ... George Washington, selected the site for the
+        White House in 1791 ...", "dateLastCrawled": "2019-02-01T04:21:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "The White House | whitehouse.gov", "url": "https:\/\/obamawhitehouse.archives.gov\/",
+        "about": [{"name": "whitehouse.gov"}, {"name": "Barack Obama"}, {"name": "Barack
+        Obama"}, {"name": "White House"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/obamawhitehouse.archives.gov", "snippet": "President Obama
+        has protected more natural resources than any other president. American Leadership.
+        President Obama has refocused and reaffirmed American leadership in the
+        world. Economic Progress. President Obama has created jobs, rescued the
+        auto industry, and rebuilt the economy.", "dateLastCrawled": "2019-01-30T20:59:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Barack Obama Presidential Library", "url": "https:\/\/www.obamalibrary.gov\/",
+        "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.uec73DYm3UcMXWjirKlrhgHaE9&pid=Api",
+        "about": [{"name": "Barack Obama"}, {"name": "Barack Obama Presidential Center"},
+        {"name": "Barack Obama"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.obamalibrary.gov",
+        "snippet": "The Obama Presidential Library is part of the presidential libraries
+        system administered by the National Archives and Records Administration, a
+        federal agency.", "dateLastCrawled": "2019-01-31T06:26:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Contact the White House | The White House", "url": "https:\/\/www.whitehouse.gov\/contact\/",
+        "about": [{"name": "White House"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.whitehouse.gov\/contact", "snippet": "Keep me posted with
+        regular updates from the White House. required ...", "dateLastCrawled":
+        "2019-02-01T00:05:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5", "name":
+        "The Administration | The White House", "url": "https:\/\/www.whitehouse.gov\/the-trump-administration\/",
+        "about": [{"name": "Executive Office of the President of the United States"}],
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/the-trump-administration",
+        "snippet": "President Donald J. Trump promised that he would bring the best
+        and brightest from across the country—not just inside Washington—to build
+        his Administration. The President, alongside the Vice ...", "dateLastCrawled":
+        "2019-01-31T20:57:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6", "name":
+        "Articles | The White House", "url": "https:\/\/www.whitehouse.gov\/articles\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/articles",
+        "snippet": "He attached a presentation that Secretary of Homeland Security
+        Kirstjen Nielsen was planning to deliver during a meeting with Congressional
+        leadership in the White House Situation Room earlier ...", "dateLastCrawled":
+        "2019-01-29T17:33:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7", "name":
+        "Michelle Obama | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/michelle-obama\/",
+        "about": [{"name": "Michelle Obama"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.whitehouse.gov\/...\/first-ladies\/michelle-obama", "snippet":
+        "Michelle LaVaughn Robinson Obama is a lawyer, writer, and the wife of the
+        44th President, Barack Obama. She was the first African-American First Lady
+        of the United States. Through her four main ...", "dateLastCrawled": "2019-01-31T13:32:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "President Barack Obama | whitehouse.gov", "url": "https:\/\/obamawhitehouse.archives.gov\/administration\/president-obama",
+        "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.DohFNTbBKMM7K5_4OgZdewHaHa&pid=Api",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/administration\/president-obama",
+        "snippet": "President Barack Obama Barack Obama is the 44th President
+        of the United States. His story is the American story -- values from the heartland,
+        a middle-class upbringing in a strong family, hard work and education as the
+        means of getting ahead, and the conviction that a life so blessed should be
+        lived in service to others.", "dateLastCrawled": "2019-01-16T12:44:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "HealthCare.gov - Get 2019 health coverage. Health ...", "url":
+        "https:\/\/www.healthcare.gov\/", "about": [{"name": "HealthCare.gov"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.healthcare.gov", "snippet": "News & information
+        from the HealthCare.gov blog. Please select a topic. Now that you’re signed
+        up, we’ll send you deadline reminders, plus tips about how to get enrolled,
+        stay enrolled, and get the most from your health insurance.", "dateLastCrawled":
+        "2019-01-31T04:43:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10", "name":
+        "Donald J. Trump | The White House", "url": "https:\/\/www.whitehouse.gov\/people\/donald-j-trump\/",
+        "about": [{"name": "Donald Trump"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.whitehouse.gov\/people\/donald-j-trump", "snippet": "Donald
+        J. Trump is the 45th President of the United States. He believes the United
+        States has incredible potential and will go on to exceed even its remarkable
+        achievements of the past.", "dateLastCrawled": "2019-01-30T07:50:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Immigration | The White House", "url": "https:\/\/www.whitehouse.gov\/issues\/immigration\/",
+        "about": [{"name": "Immigration policy"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.whitehouse.gov\/issues\/immigration", "snippet": "The United
+        States must adopt an immigration system that serves the national interest.
+        To restore the rule of law and secure our border, President Trump is committed
+        to constructing a border wall ...", "dateLastCrawled": "2019-01-30T20:57:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Presidential Actions Archive | The White House", "url": "https:\/\/www.whitehouse.gov\/presidential-actions\/",
+        "about": [{"name": "White House"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.whitehouse.gov\/presidential-actions", "snippet": "Access
+        all official actions from President Donald J. Trump, including nominations,
+        Executive Orders, and Proclamations.", "dateLastCrawled": "2019-02-01T00:49:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Live | The White House", "url": "https:\/\/www.whitehouse.gov\/live\/",
+        "about": [{"name": "White House"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.whitehouse.gov\/live", "snippet": "Tune in for LIVE White
+        House events with President Donald J. Trump, Vice President Mike Pence, and
+        other officials.", "dateLastCrawled": "2019-02-01T02:40:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "The Cabinet | whitehouse.gov", "url": "https:\/\/obamawhitehouse.archives.gov\/administration\/cabinet",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/administration\/cabinet",
+        "snippet": "Article II Section 2 of the Constitution establishes the Cabinet.
+        Check out the members of President Obama''s Cabinet.", "dateLastCrawled":
+        "2019-01-30T18:06:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15", "name":
+        "The White House Blog | whitehouse.gov", "url": "https:\/\/obamawhitehouse.archives.gov\/blog",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog",
+        "snippet": "The Obama Administration Digital Transition: Moving Forward
+        Here''s the latest on how you can continue to follow and engage with President
+        Obama, the First Lady, and other Obama White House officials moving forward.",
+        "dateLastCrawled": "2019-01-28T01:07:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Education | The White House", "url": "https:\/\/www.whitehouse.gov\/issues\/education\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/issues\/education",
+        "snippet": "Our Nation’s elementary and secondary education systems are
+        falling behind the rest of the world. The Administration supports an agenda
+        that provides school choice for parents, better prepares ...", "dateLastCrawled":
+        "2019-01-29T04:01:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17", "name":
+        "OBAMA, Barack - Biographical Information", "url": "http:\/\/bioguide.congress.gov\/scripts\/biodisplay.pl?index=o000167",
+        "about": [{"name": "Barack Obama"}, {"name": "Barack Obama"}], "isFamilyFriendly":
+        true, "displayUrl": "bioguide.congress.gov\/scripts\/biodisplay.pl?index=o000167",
+        "snippet": "OBAMA, Barack, a Senator from Illinois and 44th President
+        of the United States; born in Honolulu, Hawaii, August 4, 1961; obtained early
+        education in Jakarta, Indonesia, and Hawaii; continued education at Occidental
+        College, Los Angeles, Calif.; received a B.A. in 1983 from Columbia University,
+        New York City; worked as a community organizer in ...", "dateLastCrawled":
+        "2019-02-01T08:23:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18", "name":
+        "Foreign Policy | The White House", "url": "https:\/\/www.whitehouse.gov\/issues\/foreign-policy\/",
+        "about": [{"name": "Foreign Policy"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.whitehouse.gov\/issues\/foreign-policy", "snippet": "Foreign
+        Policy. President Trump is bolstering American influence by leading a coalition
+        of strong and independent nations to promote security, prosperity, and peace
+        both within America’s borders ...", "dateLastCrawled": "2019-01-31T08:34:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Briefing Room | The White House", "url": "https:\/\/obamawhitehouse.archives.gov\/briefing-room",
+        "about": [{"name": "White House Press Secretary"}], "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/briefing-room",
+        "snippet": "Briefing Room. The White House provides timely and accurate
+        information about the President''s latest events and public statements. Here
+        you''ll find photos, video, and transcripts, as well as proclamations, executive
+        orders, and press releases. ... Text and video of speeches and remarks by
+        President Obama, the First Lady, and members of the ...", "dateLastCrawled":
+        "2019-01-22T23:27:00.0000000Z", "language": "en", "isNavigational": false}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Tue, 05 Feb 2019 21:44:56 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=obama%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 05 Feb 2019 21:43:56 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - E79393213B0541B49A3FCC28FC55F1F2
+      Bingapis-Sessionid:
+      - 1C71E7061ED94D6E9D976E8049A2242C
+      X-Msedge-Clientid:
+      - '0468E19C3A78661221BDED663B346773'
+      X-Msapi-Userstate:
+      - f559
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=206,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: E79393213B0541B49A3FCC28FC55F1F2 Ref B: BY3EDGE0320 Ref C: 2019-02-05T21:44:57Z'
+      Apim-Request-Id:
+      - 51ff4285-597f-4b91-ae4c-dfd902c6c4ba
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 05 Feb 2019 21:44:56 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "obama
+        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=obama+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 11300000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Barack Obama | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/barack-obama\/",
+        "about": [{"name": "Barack Obama"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.whitehouse.gov\/...\/presidents\/barack-obama", "snippet":
+        "Barack Obama served as the 44th President of the United States. His story
+        is the American story — values from the heartland, a middle-class upbringing
+        in a strong family, hard work and education ...", "dateLastCrawled": "2019-01-30T01:49:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "The White House", "url": "https:\/\/www.whitehouse.gov\/", "about":
+        [{"name": "The White House"}, {"name": "whitehouse.gov"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.whitehouse.gov", "snippet": "Search WhiteHouse.gov.
+        Immigration President Trump: The Next 21 Days Are an Opportunity for Both
+        Parties to Work Together ... George Washington, selected the site for the
+        White House in 1791 ...", "dateLastCrawled": "2019-02-01T04:21:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "The White House | whitehouse.gov", "url": "https:\/\/obamawhitehouse.archives.gov\/",
+        "about": [{"name": "whitehouse.gov"}, {"name": "Barack Obama"}, {"name": "Barack
+        Obama"}, {"name": "White House"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/obamawhitehouse.archives.gov", "snippet": "President Obama
+        has protected more natural resources than any other president. American Leadership.
+        President Obama has refocused and reaffirmed American leadership in the
+        world. Economic Progress. President Obama has created jobs, rescued the
+        auto industry, and rebuilt the economy.", "dateLastCrawled": "2019-01-30T20:59:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Barack Obama Presidential Library", "url": "https:\/\/www.obamalibrary.gov\/",
+        "about": [{"name": "Barack Obama"}, {"name": "Barack Obama Presidential Center"},
+        {"name": "Barack Obama"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.obamalibrary.gov",
+        "snippet": "Barack Obama. Scroll Down. President Barack Obama works at
+        the Resolute Desk in the Oval Office, Oct. 18, 2013. (P101813PS-0012) Learn
+        More. President Barack Obama. Learn More. First Lady Michelle Obama. Learn
+        More. Photos & Videos. Learn More. Frequently Asked Questions. Learn More.
+        About Presidential Libraries .", "dateLastCrawled": "2019-01-31T06:26:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Contact the White House | The White House", "url": "https:\/\/www.whitehouse.gov\/contact\/",
+        "about": [{"name": "White House"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.whitehouse.gov\/contact", "snippet": "Keep me posted with
+        regular updates from the White House. required ...", "dateLastCrawled":
+        "2019-02-01T00:05:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5", "name":
+        "The Administration | The White House", "url": "https:\/\/www.whitehouse.gov\/the-trump-administration\/",
+        "about": [{"name": "Executive Office of the President of the United States"}],
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/the-trump-administration",
+        "snippet": "President Donald J. Trump promised that he would bring the best
+        and brightest from across the country—not just inside Washington—to build
+        his Administration. The President, alongside the Vice ...", "dateLastCrawled":
+        "2019-01-31T20:57:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6", "name":
+        "Articles | The White House", "url": "https:\/\/www.whitehouse.gov\/articles\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/articles",
+        "snippet": "He attached a presentation that Secretary of Homeland Security
+        Kirstjen Nielsen was planning to deliver during a meeting with Congressional
+        leadership in the White House Situation Room earlier ...", "dateLastCrawled":
+        "2019-01-29T17:33:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7", "name":
+        "Michelle Obama | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/michelle-obama\/",
+        "about": [{"name": "Michelle Obama"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.whitehouse.gov\/...\/first-ladies\/michelle-obama", "snippet":
+        "Michelle LaVaughn Robinson Obama is a lawyer, writer, and the wife of the
+        44th President, Barack Obama. She was the first African-American First Lady
+        of the United States.", "dateLastCrawled": "2019-01-31T13:32:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "President Barack Obama | whitehouse.gov", "url": "https:\/\/obamawhitehouse.archives.gov\/administration\/president-obama",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/administration\/president-obama",
+        "snippet": "President Barack Obama Barack Obama is the 44th President
+        of the United States. His story is the American story -- values from the heartland,
+        a middle-class upbringing in a strong family, hard work and education as the
+        means of getting ahead, and the conviction that a life so blessed should be
+        lived in service to others.", "dateLastCrawled": "2019-01-16T12:44:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "HealthCare.gov - Get 2019 health coverage. Health ...", "url":
+        "https:\/\/www.healthcare.gov\/", "about": [{"name": "HealthCare.gov"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.healthcare.gov", "snippet": "News & information
+        from the HealthCare.gov blog. Please select a topic. Now that you’re signed
+        up, we’ll send you deadline reminders, plus tips about how to get enrolled,
+        stay enrolled, and get the most from your health insurance.", "dateLastCrawled":
+        "2019-01-31T04:43:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10", "name":
+        "Donald J. Trump | The White House", "url": "https:\/\/www.whitehouse.gov\/people\/donald-j-trump\/",
+        "about": [{"name": "Donald Trump"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.whitehouse.gov\/people\/donald-j-trump", "snippet": "Donald
+        J. Trump is the 45th President of the United States. He believes the United
+        States has incredible potential and will go on to exceed even its remarkable
+        achievements of the past.", "dateLastCrawled": "2019-01-30T07:50:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Immigration | The White House", "url": "https:\/\/www.whitehouse.gov\/issues\/immigration\/",
+        "about": [{"name": "Immigration policy"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.whitehouse.gov\/issues\/immigration", "snippet": "The United
+        States must adopt an immigration system that serves the national interest.
+        To restore the rule of law and secure our border, President Trump is committed
+        to constructing a border wall ...", "dateLastCrawled": "2019-01-30T20:57:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Presidential Actions Archive | The White House", "url": "https:\/\/www.whitehouse.gov\/presidential-actions\/",
+        "about": [{"name": "White House"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.whitehouse.gov\/presidential-actions", "snippet": "Access
+        all official actions from President Donald J. Trump, including nominations,
+        Executive Orders, and Proclamations.", "dateLastCrawled": "2019-02-01T00:49:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Live | The White House", "url": "https:\/\/www.whitehouse.gov\/live\/",
+        "about": [{"name": "White House"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.whitehouse.gov\/live", "snippet": "Tune in for LIVE White
+        House events with President Donald J. Trump, Vice President Mike Pence, and
+        other officials.", "dateLastCrawled": "2019-02-01T02:40:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "The Cabinet | whitehouse.gov", "url": "https:\/\/obamawhitehouse.archives.gov\/administration\/cabinet",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/administration\/cabinet",
+        "snippet": "Article II Section 2 of the Constitution establishes the Cabinet.
+        Check out the members of President Obama''s Cabinet.", "dateLastCrawled":
+        "2019-01-30T18:06:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15", "name":
+        "The White House Blog | whitehouse.gov", "url": "https:\/\/obamawhitehouse.archives.gov\/blog",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog",
+        "snippet": "President Obama Narrates \"The People’s House,\" a Virtual Reality
+        Tour of the White House The President and First Lady are using virtual reality
+        to bring the history of the White House directly to you.", "dateLastCrawled":
+        "2019-01-28T01:07:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16", "name":
+        "Education | The White House", "url": "https:\/\/www.whitehouse.gov\/issues\/education\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/issues\/education",
+        "snippet": "Presidential Proclamation on American Education Week, 2018.
+        Education Nov 9, 2018. Proclamations Presidential Proclamation on National
+        Historically Black Colleges and Universities Week, 2018.", "dateLastCrawled":
+        "2019-01-29T04:01:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17", "name":
+        "OBAMA, Barack - Biographical Information", "url": "http:\/\/bioguide.congress.gov\/scripts\/biodisplay.pl?index=o000167",
+        "about": [{"name": "Barack Obama"}, {"name": "Barack Obama"}], "isFamilyFriendly":
+        true, "displayUrl": "bioguide.congress.gov\/scripts\/biodisplay.pl?index=o000167",
+        "snippet": "OBAMA, Barack, a Senator from Illinois and 44th President
+        of the United States; born in Honolulu, Hawaii, August 4, 1961; obtained early
+        education in Jakarta, Indonesia, and Hawaii; continued education at Occidental
+        College, Los Angeles, Calif.; received a B.A. in 1983 from Columbia University,
+        New York City; worked as a community organizer in ...", "dateLastCrawled":
+        "2019-02-01T08:23:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18", "name":
+        "Foreign Policy | The White House", "url": "https:\/\/www.whitehouse.gov\/issues\/foreign-policy\/",
+        "about": [{"name": "Foreign Policy"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.whitehouse.gov\/issues\/foreign-policy", "snippet": "Foreign
+        Policy Jan 16, 2019. Presidential Memoranda Presidential Memorandum for the
+        Secretary of State, Secretary of the Treasury, and Director of National Intelligence.",
+        "dateLastCrawled": "2019-01-31T08:34:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Briefing Room | The White House", "url": "https:\/\/obamawhitehouse.archives.gov\/briefing-room",
+        "about": [{"name": "White House Press Secretary"}], "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/briefing-room",
+        "snippet": "Briefing Room. The White House provides timely and accurate
+        information about the President''s latest events and public statements. Here
+        you''ll find photos, video, and transcripts, as well as proclamations, executive
+        orders, and press releases. ... Text and video of speeches and remarks by
+        President Obama, the First Lady, and members of the ...", "dateLastCrawled":
+        "2019-01-22T23:27:00.0000000Z", "language": "en", "isNavigational": false}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Tue, 05 Feb 2019 21:44:57 GMT
 recorded_with: VCR 4.0.0

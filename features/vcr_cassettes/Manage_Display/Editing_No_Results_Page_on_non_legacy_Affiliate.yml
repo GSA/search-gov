@@ -276,4 +276,132 @@ http_interactions:
         "rankingResponse": {}}'
     http_version: 
   recorded_at: Mon, 19 Nov 2018 22:38:47 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=hdakfjd%3Bkljowaurei%3Bak%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 05 Feb 2019 21:42:45 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 1E229B04BCB04243B9CAAC73258A8912
+      Bingapis-Sessionid:
+      - 404E35C9A2F54F8E81E905789A750A79
+      X-Msedge-Clientid:
+      - 0EA039C13524675E249C353B346866DE
+      X-Msapi-Userstate:
+      - 11e2
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=143,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: 1E229B04BCB04243B9CAAC73258A8912 Ref B: BY3EDGE0115 Ref C: 2019-02-05T21:43:45Z'
+      Apim-Request-Id:
+      - cb46a829-ccd9-42e4-9232-afe7bf23f31b
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 05 Feb 2019 21:43:45 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "hdakfjd;kljowaurei;ak
+        (site:gov OR site:mil)"}, "rankingResponse": {}}'
+    http_version: 
+  recorded_at: Tue, 05 Feb 2019 21:43:45 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=hdakfjd%3Bkljowaurei%3Bak%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 05 Feb 2019 21:42:46 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 1ED4E8DE31ED42168CED7688F9C04574
+      Bingapis-Sessionid:
+      - '075877089A1D402B9BE25E7FAD221C4F'
+      X-Msedge-Clientid:
+      - 0A4E83A112D560DB21588F5B139961E8
+      X-Msapi-Userstate:
+      - 21f2
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=75,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: 1ED4E8DE31ED42168CED7688F9C04574 Ref B: BY3EDGE0216 Ref C: 2019-02-05T21:43:46Z'
+      Apim-Request-Id:
+      - 86340dd9-1e10-4a34-b9e2-5051e74505ca
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 05 Feb 2019 21:43:46 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "hdakfjd;kljowaurei;ak
+        (site:gov OR site:mil)"}, "rankingResponse": {}}'
+    http_version: 
+  recorded_at: Tue, 05 Feb 2019 21:43:46 GMT
 recorded_with: VCR 4.0.0

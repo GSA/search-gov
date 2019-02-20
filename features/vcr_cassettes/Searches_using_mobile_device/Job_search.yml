@@ -2120,4 +2120,601 @@ http_interactions:
         team and serve your nation, your states and your community!","TravelCode":"1","ApplyOnlineUrl":"https://apply.usastaffing.gov/Application/Apply","DetailStatusUrl":"https://apply.usastaffing.gov/Application/ApplicationStatus"},"IsRadialSearch":false}},"RelevanceRank":0.0}],"UserArea":{"NumberOfPages":"737","IsRadialSearch":false}}}'
     http_version: 
   recorded_at: Wed, 05 Dec 2018 22:18:07 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=jobs%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 05 Feb 2019 21:45:54 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 0027225B24AC40B6A295BCD622293F4F
+      Bingapis-Sessionid:
+      - 6EC29DA80F624B3EB677BAF8D2A2F8DC
+      X-Msedge-Clientid:
+      - 365C135CF6A36FAB1DAE1FA6F7EF6E8E
+      X-Msapi-Userstate:
+      - '6343'
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=214,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: 0027225B24AC40B6A295BCD622293F4F Ref B: BY3EDGE0208 Ref C: 2019-02-05T21:46:55Z'
+      Apim-Request-Id:
+      - fbef03fd-c539-4bfd-9b10-2675206ee59a
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 05 Feb 2019 21:46:54 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "jobs
+        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=jobs+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 28000000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "USAJOBS - The Federal Government''s Official Jobs Site", "url":
+        "https:\/\/www.usajobs.gov\/", "about": [{"name": "USAJOBS"}, {"name": "USAJOBS"}],
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usajobs.gov", "snippet":
+        "USAJOBS is the Federal Government''s official one-stop source for Federal
+        jobs and employment information.", "dateLastCrawled": "2019-01-30T21:53:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Job Search Results", "url": "https:\/\/jobs.ca.gov\/CalHRPublic\/Search\/JobSearchResults.aspx",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/jobs.ca.gov\/CalHRPublic\/Search\/JobSearchResults.aspx",
+        "snippet": "Note: documents in Portable Document Format (PDF) require Adobe
+        Acrobat Reader 5.0 or higher to view download Adobe Acrobat Reader.", "dateLastCrawled":
+        "2019-01-30T08:52:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2", "name":
+        "Jobs | Topics - Fairfax County", "url": "https:\/\/www.fairfaxcounty.gov\/topics\/jobs",
+        "about": [{"name": "Fairfax County"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.fairfaxcounty.gov\/topics\/jobs", "snippet": "History of
+        Fairfax County Jobs More Board of Supervisors. Board Auditor Board Members
+        Clerk to the Board Committees Meetings & Agendas Priorities Reports ... Working
+        for Fairfax County New Hires. Compensation Plan. Class Specifications. Employee
+        Benefits . Personnel Regulations. Awards Site Feedback.", "dateLastCrawled":
+        "2019-01-31T18:00:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3", "name":
+        "jobs.utah.gov - Department of Workforce Services", "url": "https:\/\/jobs.utah.gov\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/jobs.utah.gov", "snippet":
+        "Search our robust job board of more than 20,000 open jobs in a variety
+        of fields. Job Search. Manage Your Business. As an employer, fill your open
+        position with more than 80,000 active job seekers in our system. You can also
+        manage your unemployment insurance account. Learn More.", "dateLastCrawled":
+        "2019-02-01T12:45:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4", "name":
+        "Jobs - Federal Aviation Administration", "url": "https:\/\/www.faa.gov\/jobs\/",
+        "about": [{"name": "Federal Aviation Administration"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.faa.gov\/jobs", "snippet": "Take control
+        of your career. The FAA has many opportunities for you to contribute to our
+        safe and efficient skies. Below is a sample of possible career fields:", "dateLastCrawled":
+        "2019-02-01T17:05:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5", "name":
+        "Careers - Houston", "url": "https:\/\/houstontx.gov\/hr\/careers.html",
+        "about": [{}], "isFamilyFriendly": true, "displayUrl": "https:\/\/houstontx.gov\/hr\/careers.html",
+        "snippet": "Employment with City of Houston represents more than just a
+        job. A career in public service is an opportunity to serve fellow citizens
+        across our city. Professions in city government help to support many aspects
+        of life in Houston and considering a career in public service is an honorable
+        choice.", "dateLastCrawled": "2019-01-28T06:23:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "NC.gov: Jobs", "url": "https:\/\/www.nc.gov\/jobs", "about": [{"name":
+        "North Carolina"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nc.gov\/jobs",
+        "snippet": "Careers within the State of North Carolina include public safety,
+        education, transportation, and health care. State employees located in each
+        one of the 100 counties in North Carolina. We also have listings for jobs
+        in the local school system, and jobs in the private sector that are in our
+        Employment Security database.", "dateLastCrawled": "2019-02-01T12:02:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "CalCareers", "url": "https:\/\/calcareers.ca.gov\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/calcareers.ca.gov", "snippet": "The State
+        of California offers a wide variety of careers and jobs, ranging from accounting
+        to zoology. The services our employees provide are truly essential to the
+        people of California. In public service, you will spend every day doing work
+        that is vital to your state and your community.", "dateLastCrawled": "2019-01-30T23:45:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Phila.gov | Human Resources | Jobs", "url": "https:\/\/www.phila.gov\/personnel\/Jobs.html",
+        "about": [{"name": "Philadelphia"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.phila.gov\/personnel\/Jobs.html", "snippet": "Jobs. Thank
+        you for your interest in employment with the City of Philadelphia. We have
+        immediate job openings in a wide variety of occupations. Employment Verification
+        For information on current employees, contact 215-686-2376. Job Opportunities.
+        Job Interest. Job Class Specifications.", "dateLastCrawled": "2019-01-31T03:41:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Jobs | City of Alexandria, VA", "url": "https:\/\/www.alexandriava.gov\/Jobs",
+        "about": [{"name": "Alexandria"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.alexandriava.gov\/Jobs", "snippet": "Jobs Alexandria offers
+        wide range of job opportunities and services. Work for City government or
+        City Public Schools, find out about an internship opportunity or learn about
+        workforce development and career training options.", "dateLastCrawled": "2019-02-01T14:05:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Jobs | The Official Website of the State of Idaho", "url": "https:\/\/www.idaho.gov\/jobs\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.idaho.gov\/jobs",
+        "snippet": "Find a job in Idaho and learn about employee rights and laws.",
+        "dateLastCrawled": "2019-01-31T20:34:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Careers | Department of Human Resources", "url": "https:\/\/humanresources.vermont.gov\/careers",
+        "about": [{"name": "Vermont"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/humanresources.vermont.gov\/careers",
+        "snippet": "Current employees can now use our new Career Site, SuccessFactors,
+        to search and apply for jobs online. If you are logging in to the new system
+        for the first time, please select the ''First Time Login'' link.", "dateLastCrawled":
+        "2019-01-31T09:00:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12", "name":
+        "Jobs & Careers at TPWD - Texas Parks & Wildlife Department", "url": "https:\/\/tpwd.texas.gov\/jobs\/",
+        "about": [{"name": "Texas Parks and Wildlife Department"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/tpwd.texas.gov\/jobs", "snippet": "Veteran
+        Hiring at TPWD. Texas state law requires agencies to give veterans, surviving
+        spouses of veterans, and orphans of veterans preference in the selection process
+        when candidates are similarly qualified.", "dateLastCrawled": "2019-01-31T01:10:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Virginia Jobs", "url": "http:\/\/jobs.virginia.gov\/", "about":
+        [{"name": "Virginia"}], "isFamilyFriendly": true, "displayUrl": "jobs.virginia.gov",
+        "snippet": "The Commonwealth of Virginia is an Employer of National Service.
+        Virginia encourages AmeriCorps and Peace Corps alumni to continue their
+        lifetime of service by applying for jobs with Virginia State Government.
+        Preference is not awarded to national service alumni in the hiring process.",
+        "dateLastCrawled": "2019-02-01T14:42:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Careers at CDC", "url": "https:\/\/jobs.cdc.gov\/", "about": [{"name":
+        "Centers for Disease Control and Prevention"}], "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/jobs.cdc.gov", "snippet": "Use your LinkedIn profile
+        to see which jobs at CDC may be a good fit for you. When you click the button
+        below, a new window will open and you’ll be asked to log in to LinkedIn. Start
+        Matching Skills", "dateLastCrawled": "2019-01-30T21:22:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "CalJOBS", "url": "http:\/\/www.caljobs.ca.gov\/", "about": [{"name":
+        "Employment Development Department"}], "isFamilyFriendly": true, "displayUrl":
+        "www.caljobs.ca.gov", "snippet": "Look for jobs from your smartphone with
+        the CalJOBS mobile app, available on Apple and Google Play stores. Access
+        California''s ETPL and Apprenticeship Providers Access the Eligible Training
+        Provider List (ETPL) featuring educational programs and apprentices for job
+        seekers.", "dateLastCrawled": "2019-01-31T00:50:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Jobs - edd.ca.gov", "url": "https:\/\/edd.ca.gov\/jobs.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/edd.ca.gov\/jobs.htm",
+        "snippet": "Jobs. The Employment Development Department (EDD) provides a
+        comprehensive range of employment and training services in partnership with
+        state and local agencies and organizations. These services benefit job seekers,
+        laid off workers, youth, individuals currently working, veterans, and people
+        with disabilities.", "dateLastCrawled": "2019-01-31T13:16:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Jobs Express: Job Openings in New York State - New York ...", "url":
+        "https:\/\/labor.ny.gov\/jobs\/regional.shtm", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/labor.ny.gov\/jobs\/regional.shtm", "snippet": "Jobs Express:
+        Job Openings in New York State. Below are current job openings in New York''s
+        10 regional economies. New Yorkers can view the region they live in, see which
+        industries are growing and find out what jobs are available in that economic
+        sector.", "dateLastCrawled": "2019-01-31T03:56:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "CalCareers", "url": "https:\/\/jobs.ca.gov\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/jobs.ca.gov", "snippet": "The State of California
+        offers a wide variety of careers and jobs, ranging from accounting to zoology.
+        The services our employees provide are truly essential to the people of California.",
+        "dateLastCrawled": "2019-01-31T19:01:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Jobs Home | City of New York", "url": "https:\/\/www1.nyc.gov\/jobs\/index.page",
+        "about": [{"name": "New York"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www1.nyc.gov\/jobs\/index.page",
+        "snippet": "Jobs Home Get Started Explore Careers. Find a job in New York
+        City government: Search Search. Login or Create an Account. City Employee
+        Login. Make a difference. City government is filled with opportunities for
+        talented people who want to improve their communities and make an important
+        difference in the lives of their fellow New Yorkers.", "dateLastCrawled":
+        "2019-01-31T15:19:00.0000000Z", "language": "en", "isNavigational": false}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Tue, 05 Feb 2019 21:46:55 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=blablah%20jobs%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 05 Feb 2019 21:45:55 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 366C29F5DCD94532AA1CBF777F7DC68C
+      Bingapis-Sessionid:
+      - BB044E895BD04349B5F830BE4F6F08E8
+      X-Msedge-Clientid:
+      - 32908CF7CCB8643210D8800DCDF4652F
+      X-Msapi-Userstate:
+      - 2cc2
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=140,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: 366C29F5DCD94532AA1CBF777F7DC68C Ref B: BY3EDGE0312 Ref C: 2019-02-05T21:46:56Z'
+      Apim-Request-Id:
+      - b510e891-d0c2-43fd-b36f-75187431eef8
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 05 Feb 2019 21:46:55 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "blablah
+        jobs (site:gov OR site:mil)"}, "rankingResponse": {}}'
+    http_version: 
+  recorded_at: Tue, 05 Feb 2019 21:46:56 GMT
+- request:
+    method: get
+    uri: https://data.usajobs.gov/api/search?Keyword=blablah&LocationName&Organization&Radius=75&ResultsPerPage=10
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization-Key:
+      - "<JOBS_AUTHORIZATION_KEY>"
+      User-Agent:
+      - "<JOBS_USER_AGENT>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/hr+json
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/10.0
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Tue, 05 Feb 2019 21:46:56 GMT
+      Content-Length:
+      - '186'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - akavpau_DATA_USAJ=1549403516~id=1556b480114fbf80ebc080f2e03a33b5; Domain=data.usajobs.gov;
+        Path=/; Secure
+    body:
+      encoding: UTF-8
+      string: '{"LanguageCode":"EN","SearchParameters":{},"SearchResult":{"SearchResultCount":0,"SearchResultCountAll":0,"SearchResultItems":[],"UserArea":{"NumberOfPages":"0","IsRadialSearch":false}}}'
+    http_version: 
+  recorded_at: Tue, 05 Feb 2019 21:46:56 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=blablah%20trabajo%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 05 Feb 2019 21:45:57 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - A7A2C84C29C54D22BAEE7F7CD822531C
+      Bingapis-Sessionid:
+      - C939D10159704FCFB0C85CD55A2C904F
+      X-Msedge-Clientid:
+      - 1754E2D56A076C2815C4EE2F6B4B6D25
+      X-Msapi-Userstate:
+      - a600
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=233,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: A7A2C84C29C54D22BAEE7F7CD822531C Ref B: BY3EDGE0108 Ref C: 2019-02-05T21:46:57Z'
+      Apim-Request-Id:
+      - 23f44ab9-d931-40c6-993a-a0d1b62f7355
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 05 Feb 2019 21:46:56 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "blablah
+        trabajo (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=blablah+trabajo+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 16, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Department of Labor and Industrial Relations", "url": "http:\/\/labor.hawaii.gov\/",
+        "isFamilyFriendly": true, "displayUrl": "labor.hawaii.gov", "snippet": "Aloha
+        from DLIR! The Employment Benefits & Rights line of business protects the
+        economic security, physical, economic and social well-being of workers and
+        supports good labor-management relations.", "dateLastCrawled": "2019-01-31T08:18:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Work Zone Safety for Drivers - Safety | Federal Highway ...", "url":
+        "https:\/\/safety.fhwa.dot.gov\/wz\/resources\/fhwasa03012\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/safety.fhwa.dot.gov\/wz\/resources\/fhwasa03012",
+        "snippet": "Work Zone Safety for Drivers. Download Version PDF [300 KB]
+        This brochure provides information to drivers on work zone safety. Creating
+        Safer Work Zones: Improving Operations on Both Sides of the Barrel Facts.
+        During the past 5 years in work zone crashes more than: 4,400 persons died
+        (85 percent of which was the driver or passenger)", "dateLastCrawled": "2019-01-26T01:31:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Social Security Funded Until 2034, and About Three ...", "url": "https:\/\/blog.ssa.gov\/social-security-funded-until-2034-and-about-three-quarters-funded-for-the-long-term-many-options-to-address-the-long-term-shortfall\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/blog.ssa.gov\/social-security-funded-until-2034-and-about...",
+        "snippet": "The Social Security Board of Trustees today released its 76th
+        annual report to Congress on the financial status of the Social Security trust
+        funds. As a trustee of Social Security funds, I work with the other trustees
+        to ensure the public is informed about the status of Social Security’s finances
+        for the short term and over the next 75 years.", "dateLastCrawled": "2019-01-22T07:07:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Alabama Leyes Laborales de Menores", "url": "https:\/\/labor.alabama.gov\/docs\/posters\/childlaborlawposter_spanish.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/labor.alabama.gov\/docs\/posters\/childlaborlawposter_spanish.pdf",
+        "snippet": "Empleo a menores de 16\/17 años de edad. Restricciónes de Horas
+        (menores de 19 años) Durante los meses que la. Escuela publica esta en Año
+        Escolar: No mas de 3 horas en un día escolar. ... blah blah Created Date:
+        5\/20\/2014 3:19:31 PM ...", "dateLastCrawled": "2019-01-25T02:46:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Community Engagement Event on 9\/11 Health", "url": "https:\/\/wwwn.cdc.gov\/ResearchGateway\/R2C",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/wwwn.cdc.gov\/ResearchGateway\/R2C",
+        "snippet": "Community Engagement Event on 9\/11 Health ... (WTC) Health
+        Program held the first ever Research to Care Community Engagement event on
+        October 21st, 2017 to hear about new developments in 9\/11 health research
+        and learn how to maintain good health. ... ” blah blah blah, but anyway.
+        So, and I’m glad that Dr. Moline mentioned ATSDR because I ...", "dateLastCrawled":
+        "2019-01-27T03:27:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5", "name":
+        "ST New Life Cafe - Spanish - New - Welcome to NYC.gov", "url": "http:\/\/www.nyc.gov\/html\/weareny\/downloads\/pdf\/script_newlifecafe-Spanish.pdf",
+        "isFamilyFriendly": true, "displayUrl": "www.nyc.gov\/html\/weareny\/downloads\/pdf\/script_newlifecafe-Spanish.pdf",
+        "snippet": "We Are New York: New Life Café 1 ... Blah, blah, blah, blah,
+        blah, blah, blah and blah blah... Understand? Get your lab tests tomorrow.
+        Then come back and see me. ... me cuesta trabajo entenderlo. La última vez
+        que vine, ¡no entendí nada de lo que me dijo! DOCTOR MÉDICO", "dateLastCrawled":
+        "2019-01-29T22:07:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6", "name":
+        "LIDEANDO CON CONFLICTO (Spanish) - epa.gov", "url": "https:\/\/www.epa.gov\/sites\/production\/files\/2014-03\/documents\/esalv2013-conflictresolution.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.epa.gov\/sites\/production\/files\/2014-03\/documents\/esalv...",
+        "snippet": "Hay poder en una buena relación de trabajo. 23 ¿Que significa
+        separar las personas de los ... blah, blah, blah, blah…. Oh, realmente me
+        esta preguntando mi opinión en qué hacer? Trabaje con los otros dos grupos
+        y proponga opciones. NO EVALUE!!! Negociaciones Basadas en", "dateLastCrawled":
+        "2018-04-23T15:21:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7", "name":
+        "www.copyright.gov", "url": "https:\/\/www.copyright.gov\/licensing\/noi\/files\/Spotify%20USA%20Inc.-2018.06.19-NOI.2.xlsx",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.copyright.gov\/licensing\/noi\/files\/Spotify
+        USA Inc.-2018...", "snippet": "www.copyright.gov", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "From CDC - Preparedness 101: Zombie Apocalypse | Page 2 ...", "url":
+        "https:\/\/www.fema.gov\/es\/comment\/2061", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.fema.gov\/es\/comment\/2061", "snippet": "They got their
+        message out with a little creativity and flair. Zombies are the big thing
+        today, with shows like Walking Dead and movies like World War Z. I think they
+        did a great job making an important message that would be better to read then
+        \"if you are in the middle of an earthquake zone, blah blah blah blah\".",
+        "dateLastCrawled": "2019-01-29T20:37:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "www.copyright.gov", "url": "https:\/\/www.copyright.gov\/licensing\/noi\/files\/Spotify%20USA%20Inc.-2018.06.16-NOI.6.xlsx",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.copyright.gov\/licensing\/noi\/files\/Spotify
+        USA Inc.-2018...", "snippet": "U.S. Copyright Office Section 115 Electronic
+        - Notice of Intention to Obtain a Compulsory License for Making and Distributing
+        Phonorecords [201.18(d)(1)]", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10", "name":
+        "Japan Earthquake & Tsunami Update 1 | FEMA.gov", "url": "https:\/\/www.fema.gov\/es\/comment\/1171",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fema.gov\/es\/comment\/1171",
+        "snippet": "WHY IS IT that when a tragedy of such epic proportions as this
+        one occurs, so many ''trolls'' seize this as an opportunity to get on their
+        soapbox to SPOUT OFF about unrelated (''nuclear power is not safe, blah,
+        blah) & insignificant (\"the EFFECTS of the tsunami\")??", "dateLastCrawled":
+        "2018-08-14T06:13:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11", "name":
+        "Alabama Leyes Laborales de Menores", "url": "https:\/\/labortest.alabama.gov\/docs\/posters\/childlaborlawposter_spanish.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/labortest.alabama.gov\/docs\/posters\/childlaborlawposter...",
+        "snippet": "Empleo a menores de 16\/17 años de edad Restricciónes de Horas
+        Montgomery, AL 36131 (menores de 19 años) Durante los meses que la Escuela
+        publica esta en Año Escolar No mas de 3 horas en un día escolar 649 Monroe
+        Street ... blah blah Created Date: 5\/20\/2014 3:19:31 PM ...", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "www.copyright.gov", "url": "https:\/\/www.copyright.gov\/licensing\/noi\/files\/Spotify%20USA%20Inc.-2018.09.22-NOI.Gurbet%20Mekan%20Oldu%20Bana.xlsx",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.copyright.gov\/licensing\/noi\/files\/Spotify
+        USA Inc.-2018...", "snippet": "Por Motivos de Trabajo Pedro Gómez 1RieGyHL1AFoqofyMizyeQ
+        Green Music LLC (I Do Not Know) My Way Around Here 1RmWsKNtR1CB0xHOOAyrew
+        Blauwe Ogen 1RtvaSBn8apqpNPI2SEpv8 Reclaim Your Mind 1RyqpFV60aMMj00Xj1WBl4
+        Snow Lights 1S8ZZyj4CvQtrqtrSY8h9R 1SBAmclid7dUFFf2iRBFy9 Miss You - Hexlogic
+        Remix Adam Brown,Louis Tan,Cat Martin,Evgeniy Lavrinenko", "dateLastCrawled":
+        "2018-11-27T00:22:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13", "name":
+        "Recession pushes low-income families to the brink | The HUDdle", "url":
+        "https:\/\/blog.hud.gov\/index.php\/2011\/02\/04\/recession-pushes-low-income-families-to-the-brink\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/blog.hud.gov\/index.php\/2011\/02\/04\/recession-pushes-low...",
+        "snippet": "Recession pushes low-income families to the brink. ... ya me
+        duele los dedos de hacer aplicaciones y nada talbes si ustedes tienen otro
+        estado q puedan indicarme q halla trabajo pues yo pudiera trasladarme para
+        otro estado por fabor nesesito ayuda ... 150,000 annual income, to $1600 a
+        month of un-employment, how to pay not only my mortgage, but ...", "dateLastCrawled":
+        "2019-01-06T18:20:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "New Web Pages (weekly) | The City of Tualatin Oregon ...", "url": "https:\/\/www.tualatinoregon.gov\/new-web-pages-weekly-0",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.tualatinoregon.gov\/new-web-pages-weekly-0",
+        "snippet": "Search form. Search . Your Government", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "www.loc.gov", "url": "https:\/\/www.loc.gov\/nlsold\/tbt\/1998\/2marapr.txt",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/nlsold\/tbt\/1998\/2marapr.txt",
+        "snippet": "www.loc.gov", "language": "en", "isNavigational": false}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}}]}}}'
+    http_version: 
+  recorded_at: Tue, 05 Feb 2019 21:46:57 GMT
+- request:
+    method: get
+    uri: https://data.usajobs.gov/api/search?Keyword=blablah&LocationName&Organization&Radius=75&ResultsPerPage=10
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization-Key:
+      - "<JOBS_AUTHORIZATION_KEY>"
+      User-Agent:
+      - "<JOBS_USER_AGENT>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/hr+json
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/10.0
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Tue, 05 Feb 2019 21:46:57 GMT
+      Content-Length:
+      - '186'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - akavpau_DATA_USAJ=1549403517~id=b7f9e1d1d3a95ad048e1705c34e8f4ee; Domain=data.usajobs.gov;
+        Path=/; Secure
+    body:
+      encoding: UTF-8
+      string: '{"LanguageCode":"EN","SearchParameters":{},"SearchResult":{"SearchResultCount":0,"SearchResultCountAll":0,"SearchResultItems":[],"UserArea":{"NumberOfPages":"0","IsRadialSearch":false}}}'
+    http_version: 
+  recorded_at: Tue, 05 Feb 2019 21:46:57 GMT
 recorded_with: VCR 4.0.0

@@ -612,4 +612,354 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}}]}}}'
     http_version: 
   recorded_at: Mon, 19 Nov 2018 22:40:39 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=jobs%20(site:usa.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 05 Feb 2019 21:44:57 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 739F507EBC4A4F628396DCA336FA247A
+      Bingapis-Sessionid:
+      - E57072ED4BCA46A2850B8485C84F3AD5
+      X-Msedge-Clientid:
+      - 34649EB046D1698F35F1924A479D6850
+      X-Msapi-Userstate:
+      - 8edb
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=211,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: 739F507EBC4A4F628396DCA336FA247A Ref B: BY3EDGE0409 Ref C: 2019-02-05T21:45:58Z'
+      Apim-Request-Id:
+      - 3b900849-f973-43c4-ba56-2e6b285acba1
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 05 Feb 2019 21:45:58 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "jobs
+        (site:usa.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=jobs+(site%3ausa.gov)",
+        "totalEstimatedMatches": 135000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Find a Federal Government Job | USAGov", "url": "https:\/\/www.usa.gov\/government-jobs",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/government-jobs",
+        "snippet": "Search for jobs, and explore the government''s most urgent
+        hiring needs. Create or upload resumes and find\/apply for jobs. Learn about
+        federal employment for non-U.S. citizens. Get help applying for federal jobs.
+        How to Apply for a Federal Government Job Through USAJOBS. You must create
+        a USAJOBS profile to apply for any jobs.", "dateLastCrawled": "2019-01-31T14:37:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Research Career Fields | USAGov", "url": "https:\/\/www.usa.gov\/jobs-careers",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/jobs-careers",
+        "snippet": "Learn more about other jobs at the Bureau of Labor Statistic’s
+        Occupational Outlook Handbook. Animal Care and Science. Find career information
+        about animal science and care. Architecture and Engineering. Find careers
+        in the architecture and engineering fields. Art and Design.", "dateLastCrawled":
+        "2019-01-30T01:03:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2", "name":
+        "Looking for a New Job | USAGov", "url": "https:\/\/www.usa.gov\/job-search",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/job-search",
+        "snippet": "Jobs and Unemployment. Labor Laws and Issues Looking for a
+        New Job; Public Service and Volunteer Opportunities ... Small Business U.S.
+        Government Employees Unemployment Help Looking for a New Job. Find out how
+        to look for work in the private sector and federal government. Find a Federal
+        Government Job. Learn how to find a job with the federal ...", "dateLastCrawled":
+        "2019-01-30T20:54:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3", "name":
+        "Government Careers | USAGov", "url": "https:\/\/www.usa.gov\/government-careers",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/government-careers",
+        "snippet": "Learn about different jobs in the government. Skip to main
+        content An official website of the United States government Here''s how
+        you know The .gov means it’s official. Federal government websites often
+        end in .gov or .mil. Before sharing sensitive information, make sure you''re
+        on a federal government site. ...", "dateLastCrawled": "2019-01-30T14:17:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Jobs and Unemployment | USAGov", "url": "https:\/\/www.usa.gov\/jobs-and-unemployment",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/jobs",
+        "snippet": "Find out how and where to look for a new job or career, get help
+        if you are unemployed, and more. Learn about some important employment laws
+        and issues. Looking for a New Job Find out how to look for work in the private
+        sector and federal government. Public Service and Volunteer Opportunities
+        Find a ...", "dateLastCrawled": "2019-01-30T21:12:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Healthcare Careers | USAGov", "url": "https:\/\/www.usa.gov\/healthcare-careers?source=kids",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/healthcare-careers?source=kids",
+        "snippet": "They talk about their jobs and working with patients. Show the
+        Video Transcript. Lieutenant Mike Marmolejo, Physical Therapist: If you find,
+        you know, you love the sciences and you love sports, physical therapy is a
+        great combination of both. What’s your day like? Janette Scardillo, Physical
+        Therapist: ...", "dateLastCrawled": "2019-01-22T12:33:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Employment, Education, and Training for Veterans | USAGov", "url":
+        "https:\/\/www.usa.gov\/veteran-employment", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.usa.gov\/veteran-employment", "snippet": "Jobs and Training
+        for Veterans. If you are a current or former U.S. service member looking for
+        a civilian job, visit: CareerOneStop''s Veteran and Military Transition Center
+        for information and resources about your job search, benefits, training opportunities,
+        and more", "dateLastCrawled": "2019-01-25T14:35:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Business and Financial Careers | USAGov", "url": "https:\/\/www.usa.gov\/business-financial-careers",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/business-financial-careers",
+        "snippet": "Find careers in the business and financial fields.", "dateLastCrawled":
+        "2019-01-31T02:07:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8", "name":
+        "Find a Job | USAGov", "url": "https:\/\/www.usa.gov\/find-a-job", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.usa.gov\/find-a-job", "snippet": "Find
+        a Job. Ticket to Work trains Social Security disability recipients age 18
+        - 64 who want to work. It''s free and voluntary. AbilityOne.gov helps people
+        who are blind or have significant disabilities find jobs. Job openings are
+        with nonprofit agencies nationwide. The federal government has many jobs
+        open to people with disabilities.", "dateLastCrawled": "2019-02-01T17:31:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Farming, Fishing and Forestry Careers | USAGov", "url": "https:\/\/www.usa.gov\/farming-fishing-forestry-careers",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/farming-fishing-forestry-careers",
+        "snippet": "Farming, Fishing and Forestry. Learn about the careers in farming,
+        fishing and forestry.", "dateLastCrawled": "2019-01-28T23:29:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Entertainment and Sports Careers | USAGov", "url": "https:\/\/www.usa.gov\/entertainment-sports-careers",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/entertainment-sports-careers",
+        "snippet": "Entertainment and Sports Actor. Actors perform in stage, radio,
+        television, video, or movies. It''s hard for most actors to find steady work.
+        Only a few become famous. They also teach in high school or college drama
+        departments, acting conservatories, or public programs.", "dateLastCrawled":
+        "2019-02-01T13:34:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11", "name":
+        "USA - Official Guide to Government Information and Services", "url": "https:\/\/www.usa.gov\/",
+        "about": [{"name": "USA.gov"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov",
+        "snippet": "USA.gov can help you start your search for government information
+        by topic and agency.", "dateLastCrawled": "2019-01-31T21:38:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Jobs and Education for People with Disabilities | USAGov", "url":
+        "https:\/\/www.usa.gov\/disability-jobs-education", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.usa.gov\/disability-jobs-education", "snippet":
+        "Jobs and Education for People with Disabilities Learn about employment
+        resources on how to find a government job and prepare for a job interview.
+        You can also find information on employment laws and how to file a workplace
+        harassment or discrimination complaint.", "dateLastCrawled": "2019-02-01T00:14:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Art and Design Careers | USAGov", "url": "https:\/\/www.usa.gov\/art-design-careers",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/art-design-careers",
+        "snippet": "Art and Design Actor. Actors perform in stage, radio, television,
+        video, or movies. It''s hard for most actors to find steady work. Only a few
+        become famous. They also teach in high school or college drama departments,
+        acting conservatories, or public programs.", "dateLastCrawled": "2019-02-01T11:13:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Computer and Information Technology Careers | USAGov", "url": "https:\/\/www.usa.gov\/computer-technology-careers",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/computer-technology-careers",
+        "snippet": "Computer and Information Technology Database Administrator.
+        Data must be stored, organized, and managed. Database administrators work
+        with database software to find ways to do this. Hardware Engineer. Hardware
+        engineers research, design, develop, test, and oversee the installation of
+        computer hardware. Software Developer", "dateLastCrawled": "2019-01-24T17:27:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Pay and Benefits for Federal Employees | USAGov", "url": "https:\/\/www.usa.gov\/benefits-for-federal-employees",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/benefits-for-federal-employees",
+        "snippet": "Learn more about pay and benefits for federal employees.", "dateLastCrawled":
+        "2019-01-29T14:06:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16", "name":
+        "Hurricane Michael | USAGov", "url": "https:\/\/www.usa.gov\/hurricane-michael",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/hurricane-michael",
+        "snippet": "Hurricane Michael brought life-threatening conditions to parts
+        of the U.S. Gulf Coast states. Follow instructions from state and local emergency
+        officials in your area, and learn how to recover from the storm. Wait to return
+        to your property until local officials have declared that the area is safe
+        ...", "dateLastCrawled": "2019-01-29T21:07:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Office of Career, Technical, and Adult Education | USAGov", "url":
+        "https:\/\/www.usa.gov\/federal-agencies\/office-of-career-technical-and-adult-education",
+        "about": [{"name": "Office of Career, Technical, and Adult Education"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.usa.gov\/...\/office-of-career-technical-and-adult-education",
+        "snippet": "Office of Career, Technical, and Adult Education. The Office
+        of Career, Technical, and Adult Education administers and coordinates programs
+        that are related to adult education and literacy, career and technical education,
+        and community colleges.", "dateLastCrawled": "2019-01-24T03:20:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Government Jobs Lesson Plan | USAGov", "url": "https:\/\/www.usa.gov\/government-jobs-lesson-plan",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/government-jobs-lesson-plan",
+        "snippet": "Government Jobs Lesson Plan Objectives. Teach students about
+        different careers in the federal government. Discuss ways students can get
+        exposure to careers of interest", "dateLastCrawled": "2019-01-29T01:12:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "A-Z Index of U.S. Government Departments and Agencies", "url":
+        "https:\/\/www.usa.gov\/federal-agencies\/a", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.usa.gov\/federal-agencies\/a", "snippet": "The .gov means
+        it’s official. Federal government websites often end in .gov or .mil. Before
+        sharing sensitive information, make sure you''re on a federal government site.",
+        "dateLastCrawled": "2019-02-01T04:13:00.0000000Z", "language": "en", "isNavigational":
+        false}]}, "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages",
+        "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Tue, 05 Feb 2019 21:45:58 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=jazz%20(site:usa.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 05 Feb 2019 21:44:58 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - B2A0BCBEC5DA4876A5180170E5845197
+      Bingapis-Sessionid:
+      - AC3AB854E7E946F0AD8C2B83E57FAE2A
+      X-Msedge-Clientid:
+      - 20628B9BA4EE634018FC8761A5A26247
+      X-Msapi-Userstate:
+      - fb1b
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=264,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: B2A0BCBEC5DA4876A5180170E5845197 Ref B: BY3EDGE0416 Ref C: 2019-02-05T21:45:58Z'
+      Apim-Request-Id:
+      - 470b3488-4e1b-46b6-bf85-26b2ff29c3e3
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 05 Feb 2019 21:45:58 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "jazz
+        (site:usa.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=jazz+(site%3ausa.gov)",
+        "totalEstimatedMatches": 6, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Entertainment and Sports Careers | USAGov", "url": "https:\/\/www.usa.gov\/entertainment-sports-careers",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/entertainment-sports-careers",
+        "snippet": "Entertainment and Sports Actor. Actors perform in stage, radio,
+        television, video, or movies. It''s hard for most actors to find steady work.
+        ... stories, rhythm, and sound with their bodies. Dancers work in musical
+        shows, in folk, ethnic, tap, and jazz dances. Musician. Musicians and singers
+        compose, sing, and play music. They perform solo or ...", "dateLastCrawled":
+        "2019-02-01T13:34:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1", "name":
+        "Art and Design Careers | USAGov", "url": "https:\/\/www.usa.gov\/art-design-careers",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/art-design-careers",
+        "snippet": "Art and Design Actor. Actors perform in stage, radio, television,
+        video, or movies. It''s hard for most actors to find steady work. ... rhythm,
+        and sound with their bodies. Dancers work in musical shows, in folk, ethnic,
+        tap, and jazz dances. Fashion Designer. Fashion designers help create clothes
+        and accessories. Designers study fashion trends ...", "dateLastCrawled": "2019-02-01T11:13:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "analytics.usa.gov", "url": "https:\/\/analytics.usa.gov\/data\/live\/device_model.json",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/analytics.usa.gov\/data\/live\/device_model.json",
+        "snippet": "{ \"name\": \"device_model\", \"sampling\": { \"containsSampledData\":
+        false }, \"query\": { \"start-date\": \"90daysAgo\", \"end-date\": \"yesterday\",
+        \"dimensions\": \"ga:date,ga ...", "dateLastCrawled": "2019-02-01T16:12:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "The American Flag | USAGov", "url": "https:\/\/www.usa.gov\/flag",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/flag", "snippet":
+        "The American Flag and Its Flying Rules. The Flag of the United States of
+        America is a symbol of freedom and liberty to which Americans pledge their
+        allegiance by standing at attention, facing the flag with their right hand
+        over the heart, and reciting: \"I pledge allegiance to the flag of the United
+        States of America, and to the republic for which it stands, one nation under
+        God, indivisible ...", "dateLastCrawled": "2019-01-31T16:11:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Medicare | USAGov", "url": "https:\/\/www.usa.gov\/medicare\/",
+        "about": [{"name": "Medicare"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/medicare",
+        "snippet": "Original Medicare. If you have Original Medicare and have
+        a Medigap policy, it may provide coverage for foreign travel emergency health
+        care. Learn more from this fact sheet about Original Medicare outside the
+        United States. Voluntary Termination of Medicare Part B. You can voluntarily
+        terminate your Medicare Part B (medical insurance). It is a ...", "dateLastCrawled":
+        "2019-01-28T06:47:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5", "name":
+        "Learn About Life in the U.S. | USAGov", "url": "https:\/\/www.usa.gov\/life-in-the-us",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/life-in-the-us",
+        "snippet": "Daylight Saving Time is a widely used system in the United States
+        that adjusts the official local time forward one hour during spring and summer
+        months. Clocks are moved ahead one hour on the second Sunday in March at 2
+        AM (local time).", "dateLastCrawled": "2019-02-01T07:03:00.0000000Z", "language":
+        "en", "isNavigational": false}]}, "rankingResponse": {"mainline": {"items":
+        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}}]}}}'
+    http_version: 
+  recorded_at: Tue, 05 Feb 2019 21:45:58 GMT
 recorded_with: VCR 4.0.0

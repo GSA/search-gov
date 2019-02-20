@@ -281,4 +281,68 @@ http_interactions:
         "rankingResponse": {}}'
     http_version: 
   recorded_at: Tue, 04 Sep 2018 21:12:18 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=foobarbazbiz%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 05 Feb 2019 21:43:43 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - F0DEE466235446C498CA8448F3CC3568
+      Bingapis-Sessionid:
+      - 2DAB499FCAD044259B8D7C1FB1839096
+      X-Msedge-Clientid:
+      - 271A5921EB2E67E3136D55DBEA6266FE
+      X-Msapi-Userstate:
+      - b2ac
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=146,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: F0DEE466235446C498CA8448F3CC3568 Ref B: BY3EDGE0216 Ref C: 2019-02-05T21:44:43Z'
+      Apim-Request-Id:
+      - 399b49d4-a6f5-4f14-9a98-46d47aeb4659
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 05 Feb 2019 21:44:42 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "foobarbazbiz
+        (site:gov OR site:mil)"}, "rankingResponse": {}}'
+    http_version: 
+  recorded_at: Tue, 05 Feb 2019 21:44:43 GMT
 recorded_with: VCR 4.0.0
