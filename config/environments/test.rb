@@ -38,10 +38,6 @@ Rails.application.configure do
   config.static_cache_control = "public, max-age=3600"
 
   config.active_job.queue_adapter = :test
-
-  # Raise exception on un permitted parameters for Active Record models
-  # config.action_controller.action_on_unpermitted_parameters = :raise
-
 end
 
 ADDITIONAL_BING_PARAMS = { 'traffictype' => 'test' }
