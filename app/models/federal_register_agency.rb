@@ -28,8 +28,4 @@ class FederalRegisterAgency < ActiveRecord::Base
   def documents_fresh?
     last_load_documents_requested_at && last_load_documents_requested_at >= Date.current
   end
-
-  def self.attributes_protected_by_default # allows us to set agency id as id
-    super - ['id']
-  end
 end
