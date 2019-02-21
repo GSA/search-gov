@@ -434,4 +434,245 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
   recorded_at: Mon, 19 Nov 2018 22:43:29 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=item%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 05 Feb 2019 21:47:26 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 2BBB46A363564C84B87CA3043DEC9638
+      Bingapis-Sessionid:
+      - C2B870D17147449EBECC6CDEBACC0125
+      X-Msedge-Clientid:
+      - 02E938DA8465674100EC3420852966A8
+      X-Msapi-Userstate:
+      - 488f
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=191,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: 2BBB46A363564C84B87CA3043DEC9638 Ref B: BY3EDGE0212 Ref C: 2019-02-05T21:48:26Z'
+      Apim-Request-Id:
+      - b08c9d7e-d33b-4c3f-937b-10dfd1a2be03
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 05 Feb 2019 21:48:25 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "item
+        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=item+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 16400000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Frankenstein | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/2017600664\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/2017600664",
+        "snippet": "This catalog data provides the details known to the Library of
+        Congress regarding the corresponding item and may assist you in making independent
+        assessments of the legal status of these items for their desired uses.", "dateLastCrawled":
+        "2019-01-26T11:49:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1", "name":
+        "Colonies scolaires des Enfants de l''Yser. Out of door ...", "url": "https:\/\/www.loc.gov\/item\/2017667047\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/2017667047",
+        "snippet": "Is the item digitized? (A thumbnail (small) image will be visible
+        on the left.) Yes, the item is digitized. Please use the digital image in
+        preference to requesting the original. All images can be viewed at a large
+        size when you are in any reading room at the Library of Congress.", "dateLastCrawled":
+        "2019-02-05T01:09:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2", "name":
+        "Item Name", "url": "https:\/\/public.logisticsinformationservice.dla.mil\/H6\/NameLookup.aspx",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/public.logisticsinformationservice.dla.mil\/H6\/NameLookup.aspx",
+        "snippet": "This Site describes the products and services that DLA Logistics
+        Information Service provides.", "dateLastCrawled": "2019-01-31T12:28:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "American progress | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/97507547\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/97507547",
+        "snippet": "In some cases, only thumbnail (small) images are available when
+        you are outside the Library of Congress because the item is rights restricted
+        or has not been evaluated for rights restrictions. As a preservation measure,
+        we generally do not serve an original item when a digital image is available.",
+        "dateLastCrawled": "2018-12-28T05:03:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "U.S. Senate: Constitution of the United States", "url": "https:\/\/www.senate.gov\/civics\/constitution_item\/constitution.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.senate.gov\/civics\/constitution_item\/constitution.htm",
+        "snippet": "Introduction. Written in 1787, ratified in 1788, and in operation
+        since 1789, the United States Constitution is the world’s longest surviving
+        written charter of government.", "dateLastCrawled": "2019-02-05T09:07:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Pay Item Catalog", "url": "https:\/\/www.dot.ny.gov\/pic", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.dot.ny.gov\/pic", "snippet": "New York
+        State Department of Transportation coordinates operation of transportation
+        facilities and services including highway, bridges, railroad, mass transit,
+        port, waterway and aviation facilities", "dateLastCrawled": "2019-01-30T05:50:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Form 20-F - SEC", "url": "https:\/\/www.sec.gov\/files\/form20-f.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/files\/form20-f.pdf",
+        "snippet": "FORM 20-F (Mark One) REGISTRATION STATEMENT PURSUANTT O SECTION
+        12(b) OR (g) OFTHE SECURITIES ... If “Other” has been checked in response
+        to the previous question, indicate by check mark which financial statement
+        item the registrant has elected to follow. Item 17 Item 18 If this is
+        an annual report, indicate by check mark whether the ...", "dateLastCrawled":
+        "2019-02-01T06:13:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7", "name":
+        "Is your test, item, or service covered? | Medicare", "url": "https:\/\/www.medicare.gov\/coverage\/is-your-test-item-or-service-covered",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.medicare.gov\/coverage\/is-your-test-item-or-service-covered",
+        "snippet": "Find out if your test, item or service is covered. Medicare
+        coverage for many tests, items, and services depends on where you live. This
+        list includes tests, items, and services (covered and non-covered) if coverage
+        is the same no matter where you live.", "dateLastCrawled": "2019-01-31T13:33:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Item Analysis - ERIC", "url": "https:\/\/files.eric.ed.gov\/fulltext\/ED501716.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/files.eric.ed.gov\/fulltext\/ED501716.pdf",
+        "snippet": "Item Analysis for Criterion-Referenced Tests. 1. 2 The Center
+        for Development of Human Services is a continuing education ... item sets,
+        and entire sets of items, as well as the relationship of each item to other
+        items. It “investigates the performance of items considered individually",
+        "dateLastCrawled": "2019-01-31T14:32:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Carnaval, San Francisco, California | Library of Congress", "url":
+        "https:\/\/www.loc.gov\/item\/2013630039\/", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.loc.gov\/item\/2013630039", "snippet": "Carnaval, San
+        Francisco, California Contributor Names Highsmith, Carol M., 1946-, photographer
+        ... determine whether you need to fill out a call slip in the Prints and Photographs
+        Reading Room to view the original item(s). In some cases, a surrogate (substitute
+        image) is available, often in the form of a digital image, a copy print, or
+        ...", "dateLastCrawled": "2019-01-24T06:55:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "The horse America, throwing his master | Library of Congress",
+        "url": "https:\/\/www.loc.gov\/item\/97514739\/", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.loc.gov\/item\/97514739", "snippet": "The
+        horse America, throwing his master Summary Print shows a horse \"America\"
+        throwing its rider, George III. ... determine whether you need to fill out
+        a call slip in the Prints and Photographs Reading Room to view the original
+        item(s). In some cases, a surrogate (substitute image) is available, often
+        in the form of a digital image, a copy ...", "dateLastCrawled": "2019-01-26T17:34:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "What Can I Bring? | Transportation Security Administration",
+        "url": "https:\/\/www.tsa.gov\/travel\/security-screening\/whatcanibring\/all",
+        "about": [{"name": "Baggage allowance"}, {"name": "Transportation Security
+        Administration"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.tsa.gov\/travel\/security-screening\/whatcanibring",
+        "snippet": "What Can I Bring? Planning ahead and packing properly can facilitate
+        the screening process and ease your travel experience at the airport. ...
+        Even if an item is generally permitted, it may be subject to additional
+        screening or not allowed through the checkpoint if it triggers an alarm during
+        the screening process, appears to have been tampered ...", "dateLastCrawled":
+        "2019-02-01T09:55:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12", "name":
+        "Road Item Lists - Tennessee", "url": "https:\/\/www.tdot.tn.gov\/APPLICATIONS\/RoadwayItems",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.tdot.tn.gov\/APPLICATIONS\/RoadwayItems",
+        "snippet": "Road Item Lists SearchOptions. English (Spec. Year 2000) Metric
+        (Spec. Year 2001) Search by an Item Number. Search By Description Keyword
+        (Note: To display the entire list, search with out entering any Keyword or
+        Item Number. Partial Item Numbers and Partial Description Keywords are
+        allowed in the search.)", "dateLastCrawled": "2019-01-31T00:14:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Department of Defense Guidebook for Acquiring Commercial Items",
+        "url": "https:\/\/www.acq.osd.mil\/dpap\/cpic\/cp\/docs\/Guidebook_Part_A_Commercial_Item_Determination_20180129.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.acq.osd.mil\/dpap\/cpic\/cp\/docs\/Guidebook_Part_A...",
+        "snippet": "Department of Defense Guidebook for Acquiring Commercial Items
+        PART A: COMMERCIAL ITEM DETERMINATION . ... Any item, other than real
+        property, that is of a type customarily used by the general public or by non-governmental
+        entities for purposes other than Governmental purposes, and—", "dateLastCrawled":
+        "2019-01-29T20:52:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "hours per response7.71 FORM 8-K - SEC.gov | HOME", "url": "https:\/\/www.sec.gov\/files\/form8-k.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/files\/form8-k.pdf",
+        "snippet": "Item 2.02 or Item 7.01 will be deemed furnished, and not ﬁled,
+        unless the registrant speci ﬁes, under Item 9.01 (Financial Statements and
+        Exhibits), which exhibits, or portions of exhibits, are intended to be deemed
+        ﬁled rather than furnished pursuant to this instruction.", "dateLastCrawled":
+        "2019-01-29T04:22:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15", "name":
+        "Pick Item Name", "url": "https:\/\/public.logisticsinformationservice.dla.mil\/H6\/ShowItems.aspx",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/public.logisticsinformationservice.dla.mil\/H6\/ShowItems.aspx",
+        "snippet": "This Site describes the products and services that DLA Logistics
+        Information Service provides.", "dateLastCrawled": "2019-02-01T15:31:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "A family working in the Tifton (Ga.) Cotton Mill. Mrs. A.J ...",
+        "url": "https:\/\/www.loc.gov\/item\/2018674997\/", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.loc.gov\/item\/2018674997", "snippet": "Is
+        the item digitized? (A thumbnail (small) image will be visible on the left.)
+        Yes, the item is digitized. Please use the digital image in preference to
+        requesting the original. All images can be viewed at a large size when you
+        are in any reading room at the Library of Congress.", "dateLastCrawled": "2019-01-31T23:34:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "A map of the British and French dominions in North America ...",
+        "url": "https:\/\/www.loc.gov\/item\/74693177", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.loc.gov\/item\/74693177", "snippet": "A map
+        of the British and French dominions in North America, with the roads, distances,
+        limits, and extent of the settlements, humbly inscribed to the Right Honourable
+        the Earl of Halifax, and the other Right Honourable the Lords Commissioners
+        for Trade & Plantations. [London, Printed for Jefferys and Faden, geographers
+        to the King, 1774] Map.", "dateLastCrawled": "2018-12-21T14:18:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "ASSIST-QuickSearch Basic Search", "url": "http:\/\/quicksearch.dla.mil\/qssearch.aspx",
+        "about": [{"name": "MIL-STD-188"}], "isFamilyFriendly": true, "displayUrl":
+        "quicksearch.dla.mil\/qssearch.aspx", "snippet": "warning: unauthorized
+        access to this united states government computer system and software is prohibited
+        by public law 99-474 (the computer fraud and abuse act of 1986) and can result
+        in administrative, disciplinary or criminal proceedings.", "dateLastCrawled":
+        "2019-02-01T07:29:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19", "name":
+        "The first picket line - Library of Congress", "url": "https:\/\/www.loc.gov\/item\/97500299\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/97500299",
+        "snippet": "Is the item digitized? (A thumbnail (small) image will be visible
+        on the left.) Yes, the item is digitized. Please use the digital image in
+        preference to requesting the original. All images can be viewed at a large
+        size when you are in any reading room at the Library of Congress.", "dateLastCrawled":
+        "2019-01-03T23:47:00.0000000Z", "language": "en", "isNavigational": false}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Tue, 05 Feb 2019 21:48:26 GMT
 recorded_with: VCR 4.0.0

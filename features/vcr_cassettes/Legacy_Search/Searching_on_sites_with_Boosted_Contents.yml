@@ -870,4 +870,483 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
   recorded_at: Mon, 19 Nov 2018 22:40:54 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=notes%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 05 Feb 2019 21:45:15 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 0BBD6269786F4AD68EAA961B435D2170
+      Bingapis-Sessionid:
+      - 3E668F8647B4406DB5C68C0C57B3533D
+      X-Msedge-Clientid:
+      - 356107D5FD5D64531FE60B2FFC1165DB
+      X-Msapi-Userstate:
+      - f06c
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=210,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: 0BBD6269786F4AD68EAA961B435D2170 Ref B: BY3EDGE0218 Ref C: 2019-02-05T21:46:16Z'
+      Apim-Request-Id:
+      - 4e3c82a3-3a5d-4473-96d2-1ff1a285aa3a
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 05 Feb 2019 21:46:15 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "notes
+        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=notes+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 18500000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Individual - Treasury Notes", "url": "https:\/\/www.treasurydirect.gov\/indiv\/products\/prod_tnotes_glance.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.treasurydirect.gov\/indiv\/products\/prod_tnotes_glance.htm",
+        "snippet": "Treasury Notes. Treasury notes, sometimes called T-Notes,
+        earn a fixed rate of interest every six months until maturity. Notes are
+        issued in terms of 2, 3, 5, 7, and 10 years. You can buy notes from us in
+        TreasuryDirect. You also can buy them through a bank or broker.", "dateLastCrawled":
+        "2019-01-29T17:51:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1", "name":
+        "References :: Definitions and Notes — The World Factbook ...", "url": "https:\/\/www.cia.gov\/library\/publications\/the-world-factbook\/docs\/notesanddefs.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cia.gov\/library\/publications\/the-world-factbook\/docs\/...",
+        "snippet": "An acronym is an abbreviation coined from the initial letter of
+        each successive word in a term or phrase. In general, an acronym made up solely
+        from the first letter of the major words in the expanded form is rendered
+        in all capital letters (NATO from North Atlantic Treaty Organization; an exception
+        would be ASEAN for Association of Southeast Asian Nations).", "dateLastCrawled":
+        "2019-01-25T06:46:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2", "name":
+        "Individual - Treasury Notes In Depth", "url": "http:\/\/www.treasurydirect.gov\/indiv\/research\/indepth\/tnotes\/res_tnote.htm",
+        "isFamilyFriendly": true, "displayUrl": "www.treasurydirect.gov\/indiv\/research\/indepth\/tnotes\/res_tnote.htm",
+        "snippet": "Treasury Notes In Depth. Treasury notes, or T-notes, are
+        issued in terms of 2, 3, 5, 7, and 10 years, and pay interest every six months
+        until they mature. The price of a note may be greater than, less than, or
+        equal to the face value of the note.", "dateLastCrawled": "2019-01-30T21:34:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "TreasuryDirect KIDS - The Basics of Treasury Securities ...", "url":
+        "https:\/\/www.treasurydirect.gov\/kids\/basics\/basics_notes.htm", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.treasurydirect.gov\/kids\/basics\/basics_notes.htm",
+        "snippet": "Treasury Notes. Treasury Notes Facts: Also called T-notes;
+        Short to medium-term investments (term can be 2, 3, 5, 7 or 10 years) Set
+        or fixed interest rate", "dateLastCrawled": "2019-02-01T15:36:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Oklahoma Funeral Board - Agenda\/Minutes\/Notes", "url": "https:\/\/www.ok.gov\/funeral\/Board_Info\/Agenda_Minutes_Notes\/index.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ok.gov\/funeral\/Board_Info\/Agenda_Minutes_Notes\/index.html",
+        "snippet": "Should you need any agendas, minutes, or notes prior to 2010,
+        you will need to make an open records request through the board. You will
+        need to fill out the Open Records Request Form and send the completed form
+        to the Board. Please note that it takes Board Staff 4-6 weeks to complete
+        an Open Records Request.", "dateLastCrawled": "2019-02-01T17:33:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Institutional - Announcements, Data & Results", "url": "https:\/\/www.treasurydirect.gov\/instit\/annceresult\/annceresult.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.treasurydirect.gov\/instit\/annceresult\/annceresult.htm",
+        "snippet": "Announcements, Data & Results. Treasury sells bills, notes,
+        bonds, FRNs, and TIPS at regularly scheduled auctions. Refer to the auction
+        announcements & results press releases for more information. Follow the links
+        below to get the latest information on:", "dateLastCrawled": "2019-01-30T09:59:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Individual - Treasury Notes: Rates & Terms", "url": "https:\/\/www.treasurydirect.gov\/indiv\/research\/indepth\/tnotes\/res_tnote_rates.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.treasurydirect.gov\/indiv\/research\/indepth\/tnotes\/res...",
+        "snippet": "Treasury Notes: Rates & Terms . Notes are issued in terms
+        of 2, 3, 5, 7, and 10 years, and are offered in multiples of $100. Price and
+        Interest. The price and interest rate of a Note are determined at auction.",
+        "dateLastCrawled": "2019-02-01T00:19:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Institutional - Treasury Notes", "url": "http:\/\/www.treasurydirect.gov\/instit\/marketables\/tnotes\/tnotes.htm",
+        "isFamilyFriendly": true, "displayUrl": "www.treasurydirect.gov\/instit\/marketables\/tnotes\/tnotes.htm",
+        "snippet": "Treasury Notes. Treasury notes are interest-bearing securities
+        that have a fixed maturity of not less than 1 year and not more than 10 years
+        from date of issue. Treasury currently issues notes in 2, 3, 5, 7, and 10-year
+        maturities. Treasury notes pay interest on a semi-annual basis.", "dateLastCrawled":
+        "2019-01-29T11:31:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8", "name":
+        "Online Services | Riverside Superior Court", "url": "https:\/\/epublic-access.riverside.courts.ca.gov\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/epublic-access.riverside.courts.ca.gov",
+        "snippet": "Probate Notes are last updated in the evening three business
+        days prior to the scheduled hearing to reflect documents filed at least four
+        court days prior to the hearing. Any additional documents\/responses filed
+        after that timeframe will not be included. Case Number Search.", "dateLastCrawled":
+        "2019-02-01T11:25:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9", "name":
+        "Refining Crude Oil - Energy Explained, Your Guide To ...", "url": "https:\/\/www.eia.gov\/energyexplained\/index.php?page=oil_refining",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.eia.gov\/energyexplained\/index.php?page=oil_refining",
+        "snippet": "Refineries operate 24\/7. A refinery runs 24 hours a day, 365
+        days a year and requires a large number of employees. A refinery can occupy
+        as much land as several hundred football fields.", "dateLastCrawled": "2019-01-31T23:38:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Notes from the Field: Enterovirus A71 Neurologic Disease ...",
+        "url": "https:\/\/www.cdc.gov\/mmwr\/volumes\/67\/wr\/mm6736a5.htm", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.cdc.gov\/mmwr\/volumes\/67\/wr\/mm6736a5.htm",
+        "snippet": "In May 2018, the Colorado Department of Public Health and Environment
+        was notified by Children’s Hospital Colorado of an increase in pediatric cases
+        of meningitis and encephalitis, in which patients tested positive for enterovirus,
+        which can cause hand, foot, and mouth disease and neurologic disease in children
+        aged <5 years.", "dateLastCrawled": "2019-02-04T11:43:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "U.S. Bureau of Engraving and Printing - $1 Note", "url": "https:\/\/www.moneyfactory.gov\/uscurrency\/1note.html",
+        "about": [{"name": "Bureau of Engraving and Printing"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.moneyfactory.gov\/uscurrency\/1note.html",
+        "snippet": "Of all the notes printed by the Bureau of Engraving and Printing,
+        the $1 note makes up about 45% of currency production. The first $1 notes
+        (called United States Notes or \"Legal Tenders\") were issued by the federal
+        government in 1862 and featured a portrait of Secretary of the Treasury Salmon
+        P. Chase (1861-1864).", "dateLastCrawled": "2019-01-30T06:55:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Notes from the Field: False-Negative Hepatitis B Surface ...",
+        "url": "https:\/\/www.cdc.gov\/mmwr\/volumes\/67\/wr\/mm6710a6.htm", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.cdc.gov\/mmwr\/volumes\/67\/wr\/mm6710a6.htm",
+        "snippet": "In March 2017, the Nebraska Department of Health and Human Services
+        (NDHHS) was contacted by a hemodialysis clinic regarding a patient who had
+        tested negative for hepatitis B virus (HBV) surface antigen (HBsAg) after
+        vaccination in 2010 and who later tested positive for HBsAg.", "dateLastCrawled":
+        "2019-02-04T11:37:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13", "name":
+        "Individual - Treasury Notes: How To Buy", "url": "https:\/\/www.treasurydirect.gov\/indiv\/research\/indepth\/tnotes\/res_tnote_buy.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.treasurydirect.gov\/indiv\/research\/indepth\/tnotes\/res...",
+        "snippet": "Treasury Notes: How To Buy. You can buy Treasury notes directly
+        from the U.S. Treasury or through a bank, broker, or dealer. Buying Directly
+        From the U.S. Treasury. To buy a note directly from us, you must have an account
+        in TreasuryDirect ...", "dateLastCrawled": "2019-02-01T15:40:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "The Fed - FEDS Notes - 2018", "url": "https:\/\/www.federalreserve.gov\/econres\/notes\/feds-notes\/index.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.federalreserve.gov\/econres\/notes\/feds-notes\/index.htm",
+        "snippet": "Disclaimer: FEDS Notes are articles in which Board economists
+        offer their own views and present analysis on a range of topics in economics
+        and finance. These articles are shorter and less technically oriented than
+        FEDS Working Papers.", "dateLastCrawled": "2019-01-25T19:55:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "U.S. Bureau of Engraving and Printing - $2 Note", "url": "http:\/\/www.bep.treas.gov\/uscurrency\/2note.html",
+        "about": [{"name": "Bureau of Engraving and Printing"}], "isFamilyFriendly":
+        true, "displayUrl": "www.bep.treas.gov\/uscurrency\/2note.html", "snippet":
+        "The first $2 notes (called United States Notes or \"Legal Tenders\")
+        were issued by the federal government in 1862 and featured a portrait of the
+        first Secretary of the Treasury, Alexander Hamilton (1789-1795).", "dateLastCrawled":
+        "2019-02-01T15:56:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16", "name":
+        "Individual - Transferring Treasury Bills, Notes, Bonds ...", "url": "https:\/\/www.treasurydirect.gov\/indiv\/research\/indepth\/tnotes\/res_tnote_transfer.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.treasurydirect.gov\/indiv\/research\/indepth\/tnotes\/res...",
+        "snippet": "Transferring Treasury Bills, Notes, Bonds, and TIPS. NOTE: Transfers
+        aren''t permitted into Legacy Treasury Direct, which is being phased out.However,
+        customers can transfer securities from one Legacy account to another Legacy
+        account (see sixth link below).", "dateLastCrawled": "2019-02-01T17:23:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Notes from the Field: Obstetric Tetanus in an Unvaccinated ...",
+        "url": "https:\/\/www.cdc.gov\/mmwr\/volumes\/66\/wr\/mm6611a7.htm", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.cdc.gov\/mmwr\/volumes\/66\/wr\/mm6611a7.htm",
+        "snippet": "Suggested citation for this article: Yaffee AQ, Day DL, Bastin
+        G, et al. Notes from the Field. Obstetric Tetanus in an Unvaccinated Woman
+        After a Home Birth Delivery — Kentucky, 2016. Obstetric Tetanus in an Unvaccinated
+        Woman After a Home Birth Delivery — Kentucky, 2016.", "dateLastCrawled": "2019-02-04T11:32:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "OFAC FAQs: Sanctions Compliance - treasury.gov", "url": "https:\/\/www.treasury.gov\/resource-center\/faqs\/Sanctions\/Pages\/faq_compliance.aspx",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.treasury.gov\/resource-center\/faqs\/Sanctions\/Pages\/faq...",
+        "snippet": "Steven Terner Mnuchin was sworn in as the 77th Secretary of the
+        Treasury on February 13, 2017. As Secretary, Mr. Mnuchin is responsible for
+        the U.S. Treasury, whose mission is to maintain a strong economy, foster economic
+        growth, and create job opportunities by promoting the conditions that enable
+        prosperity at home and abroad.", "dateLastCrawled": "2019-02-05T00:58:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Natural Orifice Transluminal Endoscopic Surgery", "url": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC2966194\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC2966194",
+        "snippet": "Natural orifice transluminal endoscopic surgery (NOTES) has
+        generated healthy and vigorous debate about the introduction of an entirely
+        novel method of surgical therapy. Although there are many reasons for scepticism,
+        there is undoubted interest in this field from both the medical profession
+        and general public.", "dateLastCrawled": "2017-01-27T19:10:00.0000000Z", "language":
+        "en", "isNavigational": false}]}, "rankingResponse": {"mainline": {"items":
+        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Tue, 05 Feb 2019 21:46:16 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=emergencia%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 05 Feb 2019 21:45:16 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 965EFE6138BF4045B7324BE31598995F
+      Bingapis-Sessionid:
+      - 9E8945628A704E8E894B2972B3D2AE39
+      X-Msedge-Clientid:
+      - '0876581187506921128054EB861C688D'
+      X-Msapi-Userstate:
+      - 2a55
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=206,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: 965EFE6138BF4045B7324BE31598995F Ref B: BY3EDGE0315 Ref C: 2019-02-05T21:46:17Z'
+      Apim-Request-Id:
+      - ed529a2b-dbd1-4667-9d82-6223d3a5ac8d
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 05 Feb 2019 21:46:16 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "emergencia
+        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=emergencia+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 1940000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Consejos de FCC\/FEMA para Comunicarse Durante Casos de ...", "url":
+        "https:\/\/www.fcc.gov\/emergencia", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.fcc.gov\/emergencia", "snippet": "Preparación para una
+        emergencia Conozca cómo los cortes de energía pueden afectar su servicio
+        de línea fija Conozca qué tipo de servicio de telefonía fija tiene.", "dateLastCrawled":
+        "2019-01-22T16:35:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1", "name":
+        "Emergencies - Travel", "url": "https:\/\/travel.state.gov\/content\/travel\/en\/international-travel\/emergencies.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/travel.state.gov\/...\/en\/international-travel\/emergencies.html",
+        "snippet": "Emergencies. Getting Help in an Emergency. If you are overseas
+        and in need of emergency assistance contact the nearest U.S. embassy or consulate.
+        If you are concerned about a loved one overseas, please call: From the U.S.
+        & Canada - 1-888-407-4747; From Overseas - +1 202-501-4444;", "dateLastCrawled":
+        "2019-01-29T02:36:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2", "name":
+        "Líneas de Ayuda para Emergencias", "url": "http:\/\/www2.pr.gov\/Directorios\/Pages\/L%c3%adneasdeAyudaparaEmergencias.aspx",
+        "isFamilyFriendly": true, "displayUrl": "www2.pr.gov\/Directorios\/Pages\/LíneasdeAyudaparaEmergencias.aspx",
+        "snippet": "SERVICIOS DE EMERGENCIA. Policía, Bomberos, Emergencias Médicas,
+        Agencia Estatal para el Manejo de Emergencias y Administración de Desastres",
+        "dateLastCrawled": "2019-02-01T17:29:00.0000000Z", "language": "es", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Kit de suministros básicos para casos de desastre | Ready.gov",
+        "url": "https:\/\/www.ready.gov\/es\/kit-de-suministros-basicos-para-casos-de-desastre",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ready.gov\/es\/kit-de-suministros-basicos-para-casos-de...",
+        "snippet": "En una emergencia, usted o un familiar pueden sufrir una lesión.
+        Si dispone de estos suministros básicos de primeros auxilios, estará mejor
+        preparado para ayudar a sus seres queridos si sufren alguna lesión. En una
+        emergencia, saber cómo tratar lesiones leves puede marcar la diferencia.",
+        "dateLastCrawled": "2019-01-31T13:23:00.0000000Z", "language": "es", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Prepárese para Emergencias - cms.gov", "url": "https:\/\/www.cms.gov\/Outreach-and-Education\/Medicare-Learning-Network-MLN\/MLNProducts\/downloads\/10150_s.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cms.gov\/Outreach-and-Education\/Medicare-Learning...",
+        "snippet": "emergencia. 4. Comience su dieta de emergencia (ver página
+        22) en cuanto se anuncie o suceda la emergencia, si la misma pudiera retrasar
+        su próximo tratamiento de diálisis. 5. Si debe ir a un refugio, informe al
+        encargado del mismo sobre sus necesidades para tratar su condición. 6. Si
+        necesita tratamiento médico, asegúrese que su acceso de", "dateLastCrawled":
+        "2019-01-22T08:06:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5", "name":
+        "Preparación y Respuestas en Caso de Emergencias ...", "url": "http:\/\/www.doh.wa.gov\/Emergencies\/PreparacionyRespuestasenCasodeEmergencias",
+        "isFamilyFriendly": true, "displayUrl": "www.doh.wa.gov\/Emergencies\/PreparacionyRespuestasenCasodeEmergencias",
+        "snippet": "Preparación y Respuestas en Caso de Emergencias El mal tiempo
+        de otoño e invierno. El mal tiempo puede causar gran daño físico y también
+        puede crear riesgos para la salud debido a cortes de energía, agua potable
+        y otras necesidades. Sepa como prepararse. Información para prepararse en
+        caso de emergencias. Números de teléfono durante ...", "dateLastCrawled":
+        "2019-01-19T11:58:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6", "name":
+        "Emergency Preparedness Materials in Spanish (Families ...", "url": "https:\/\/www.fema.gov\/media-library\/resources-documents\/collections\/355",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fema.gov\/media-library\/resources-documents\/collections\/355",
+        "snippet": "Preparar a sus mascotas para casos de emergencia tiene sentido.
+        Prepárese ahora. - Consiga un kit de insumos de emergencia para mascotas.
+        Elabore un plan de acción en caso de emergencia.Manténgase informado acerca
+        de lo que puede suceder.", "dateLastCrawled": "2019-01-16T06:15:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Car Safety | Ready.gov", "url": "https:\/\/www.ready.gov\/car",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ready.gov\/car",
+        "snippet": "Car Safety; Car Safety. Plan long trips carefully, listening
+        to the radio or television for the latest weather forecasts and road conditions.
+        If bad weather is forecast, drive only if absolutely necessary. Emergency
+        Kit for the Car.", "dateLastCrawled": "2019-01-31T21:36:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Build A Kit | Ready.gov", "url": "https:\/\/www.ready.gov\/build-a-kit",
+        "about": [{"name": "Emergency shelter"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.ready.gov\/build-a-kit", "snippet": "Build A Kit. Make
+        sure your emergency kit is stocked with the items on the checklist below.
+        Most of the items are inexpensive and easy to find, and any one of them could
+        save your life. Headed to the store?", "dateLastCrawled": "2019-02-01T10:45:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Make A Plan | Ready.gov", "url": "https:\/\/www.ready.gov\/make-a-plan",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ready.gov\/make-a-plan",
+        "snippet": "Make a plan today. Your family may not be together if a disaster
+        strikes, so it is important to know which types of disasters could affect
+        your area. Know how you’ll contact one another and reconnect if separated.",
+        "dateLastCrawled": "2019-01-29T09:57:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Emergency Response Guidebook (ERG) | PHMSA", "url": "https:\/\/www.phmsa.dot.gov\/hazmat\/erg\/emergency-response-guidebook-erg",
+        "about": [{"name": "Emergency Response Guidebook"}], "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.phmsa.dot.gov\/hazmat\/erg\/emergency-response-guidebook-erg",
+        "snippet": "PHMSA''s 2016 Emergency Response Guidebook provides first responders
+        with a go-to manual to help deal with hazmat transportation accidents during
+        the critical first 30 minutes. DOT''s goal is to place an ERG in every public
+        emergency service vehicle nationwide.", "dateLastCrawled": "2019-01-30T06:19:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Emergency Alerts | Ready.gov", "url": "https:\/\/www.ready.gov\/alerts",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ready.gov\/alerts",
+        "snippet": "Wireless Emergency Alerts (WEAs), made available through the
+        Integrated Public Alert and Warning System (IPAWS) infrastructure, are just
+        one of the ways public safety officials can quickly and effectively alert
+        and warn the public about serious emergencies.", "dateLastCrawled": "2019-02-01T10:50:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Plan de comunicación familiar para padres y niños- Listo ...",
+        "url": "https:\/\/www.fema.gov\/media-library\/assets\/documents\/35134",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fema.gov\/media-library\/assets\/documents\/35134",
+        "snippet": "Plan de comunicación familiar para padres (español) (Spanish)
+        Modelo de un plan de comunicación familiar diseñado para que los padres de
+        familia organicen números de teléfono de contactos de emergencia e identifiquen
+        un lugar de encuentro en caso de emergencia.", "dateLastCrawled": "2019-01-25T10:43:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Build an Emergency Kit | ready", "url": "https:\/\/ready.dc.gov\/page\/build-emergency-kit",
+        "about": [{"name": "Ready"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/ready.dc.gov\/page\/build-emergency-kit",
+        "snippet": "An emergency kit is a container of items that your family may
+        need during or after an emergency. It is important to make your emergency
+        kit before any emergency occurs and to swap out expired items regularly.",
+        "dateLastCrawled": "2019-02-01T02:53:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Life-or-Death Emergencies - State", "url": "https:\/\/travel.state.gov\/content\/travel\/en\/passports\/apply-renew-passport\/emergencies.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/travel.state.gov\/content\/travel\/en\/passports\/apply-renew...",
+        "snippet": "Life-or-death emergencies are serious illnesses, injuries, or
+        deaths in your immediate family that require you to travel outside the United
+        States within 72 hours (3 days).If you''re traveling in more than 72 hours,
+        learn more about Where to Apply.. Call us to make an appointment for emergency
+        passport service in case of a life-or-death emergency within 72 hours (3 days).",
+        "dateLastCrawled": "2019-02-01T06:06:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "The Emergency Food Assistance Program (TEFAP) | Food and ...",
+        "url": "https:\/\/www.fns.usda.gov\/tefap\/emergency-food-assistance-program-tefap",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fns.usda.gov\/tefap",
+        "snippet": "The Emergency Food Assistance Program (TEFAP) is a Federal program
+        that helps supplement the diets of low-income Americans, including elderly
+        people, by providing them with emergency food and nutrition assistance at
+        no cost.", "dateLastCrawled": "2019-01-31T17:03:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Cierres y emergencias | Administración del Seguro Social", "url":
+        "https:\/\/www.ssa.gov\/espanol\/agencia\/emergencia\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.ssa.gov\/espanol\/agencia\/emergencia",
+        "snippet": "Aquí encontrará información sobre los cierres de las oficinas
+        del Seguro Social, información sobre medidas de seguridad y protección en
+        casos de emergencia, cómo inscribirse para el depósito directo de sus pagos
+        de beneficios, y mucho más.", "dateLastCrawled": "2019-01-30T10:10:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Create Your Family Emergency Communication Plan and Family ...",
+        "url": "https:\/\/www.fema.gov\/media-library\/assets\/documents\/133447",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fema.gov\/media-library\/assets\/documents\/133447",
+        "snippet": "Create Your Family Emergency Communication Plan and Family Communication
+        Plan Fillable Card. Create Your Family Emergency Communication Plan and
+        Family Communication Plan Fillable Card. ... Create Your Family Emergency
+        Communication Plan. Use this form to create a Family Emergency Communication
+        Plan. 0.94M: July 5, 2018: Family Communication ...", "dateLastCrawled": "2019-01-27T12:21:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "National Weather Service", "url": "https:\/\/forecast.weather.gov\/MapClick.php?lat=26.7144&lon=-80.0532",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/forecast.weather.gov\/MapClick.php?lat=26.7144&lon=-80.0532",
+        "snippet": "A 30 percent chance of showers, mainly after 4am. Increasing clouds,
+        with a low around 66. Breezy, with a south wind 14 to 16 mph, with gusts as
+        high as 21 mph.", "dateLastCrawled": "2019-01-20T11:18:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Viajes de Emergencia | USCIS", "url": "https:\/\/www.uscis.gov\/es\/tarjeta-verde\/viaje-emergencia",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.uscis.gov\/es\/tarjeta-verde\/viaje-emergencia",
+        "snippet": "Documentos de Permiso Adelantado de Emergencia. Si usted está
+        experimentando una situación de extrema urgencia, puede visitar su oficina
+        local para solicitar un documento de permiso adelantado de emergencia. Para
+        visitar una oficina local para obtener este servicio, usted tiene que programar
+        una cita a través del Centro de Contacto de USCIS.", "dateLastCrawled": "2019-01-31T09:37:00.0000000Z",
+        "language": "es", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Tue, 05 Feb 2019 21:46:17 GMT
 recorded_with: VCR 4.0.0

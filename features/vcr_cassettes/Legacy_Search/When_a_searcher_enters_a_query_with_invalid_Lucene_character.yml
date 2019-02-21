@@ -892,4 +892,496 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
   recorded_at: Mon, 19 Nov 2018 22:40:23 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=%2B%2Bhealth%20it%20(site:.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 05 Feb 2019 21:44:40 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 48BBC9CB416B4A5C90C3F9BAADBF0F45
+      Bingapis-Sessionid:
+      - 215EDC7FEB97487989710A14119AC9A6
+      X-Msedge-Clientid:
+      - 13FC394257C4663122C135B8568867CF
+      X-Msapi-Userstate:
+      - cf41
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=347,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: 48BBC9CB416B4A5C90C3F9BAADBF0F45 Ref B: BY3EDGE0518 Ref C: 2019-02-05T21:45:40Z'
+      Apim-Request-Id:
+      - 80dd3ab5-6bee-4da7-9463-83e7ea86a9c5
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 05 Feb 2019 21:45:39 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "++health
+        it (site:.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=%2b%2bhealth+it+(site%3a.gov)",
+        "totalEstimatedMatches": 29100000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "New York State Department of Health", "url": "https:\/\/www.health.ny.gov\/",
+        "about": [{"name": "Blossom Health Care Center"}, {"name": "New York State
+        Department of Health"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.health.ny.gov",
+        "snippet": "Local Health Departments. Local health departments prevent
+        disease, promote health and protect the public from health problems and
+        hazards. Do you: Need help getting your child immunized? Need to get a rabies
+        vaccine for your pet? Feel sick after eating at a restaurant? Want to learn
+        about the health needs in your community?", "dateLastCrawled": "2019-02-01T04:47:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Home :: Washington State Department of Health", "url": "http:\/\/www.doh.wa.gov\/",
+        "about": [{"name": "Washington State Department of Health"}, {"name": "Brookshire
+        Village"}, {"name": "LakeCrest House"}], "isFamilyFriendly": true, "displayUrl":
+        "www.doh.wa.gov", "snippet": "Behavioral Health Integration Mental health,
+        substance use disorder and problem gambling treatment program licensing and
+        certification has transferred from DSHS to DOH. Learn more about the changes
+        .", "dateLastCrawled": "2019-01-31T11:39:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "HealthCare.gov - Get 2019 health coverage. Health ...", "url":
+        "https:\/\/www.healthcare.gov\/", "about": [{"name": "HealthCare.gov"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.healthcare.gov", "snippet": "Subscribe
+        to get email (or text) updates with important deadline reminders, useful tips,
+        and other information about your health insurance. Your information contains
+        error(s): Please choose a state.", "dateLastCrawled": "2019-01-31T04:43:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "North Dakota Department of Health", "url": "http:\/\/www.ndhealth.gov\/",
+        "about": [{"name": "North Dakota Department of Health"}], "isFamilyFriendly":
+        true, "displayUrl": "www.ndhealth.gov", "snippet": "To see how public health
+        affects your life every day, click here: A Day in Your Life Thanks to Public
+        Health . All of us at the Department of Health are committed to safeguarding
+        the health of every North Dakotan.", "dateLastCrawled": "2019-02-01T09:50:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Health Information | National Institutes of Health (NIH)", "url":
+        "https:\/\/www.nih.gov\/health-information", "about": [{"name": "National
+        Institutes of Health"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nih.gov\/health-information",
+        "snippet": "Check out the new advice about how much physical activity is enough
+        to help you improve your health and feel better. Nearly all cases of cervical
+        cancer are caused by HPV. The good news is that the HPV vaccine can help prevent
+        this cancer. It can be hard to get a diagnosis when you have a rare ...",
+        "dateLastCrawled": "2019-02-01T08:11:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Home of the Office of Disease Prevention and Health ...", "url":
+        "https:\/\/health.gov\/", "about": [{"name": "Citizen''s Care Day Care Inc"},
+        {"name": "Physical Activity Guidelines for Americans"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/health.gov", "snippet": "Health.gov is
+        your portal for health related resources and news from the US government.
+        Find prevention topics, dietary and physical activity guidelines, and other
+        health resources.", "dateLastCrawled": "2019-01-31T23:05:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Health - Tennessee", "url": "https:\/\/www.tn.gov\/health.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.tn.gov\/health.html",
+        "snippet": "Welcome to The Tennessee Department of Health Mission: Protect,
+        promote and improve the health and prosperity of people in Tennessee. Safe
+        Stars Initiative The Safe Stars initiative recognizes youth sports leagues
+        throughout Tennessee for providing the highest level of safety for their young
+        athletes.", "dateLastCrawled": "2019-01-31T15:12:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Health | USAGov", "url": "https:\/\/www.usa.gov\/health", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.usa.gov\/health", "snippet": "Health
+        Information from the Government. Learn more about the best ways to find health
+        information from the government. Health Insurance. Learn about health
+        insurance, including Medicaid and Medicare. Medications. Get answers to common
+        questions about buying and using medicine and medical products.", "dateLastCrawled":
+        "2019-02-01T05:22:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8", "name":
+        "Florida Department of Health", "url": "http:\/\/www.floridahealth.gov\/",
+        "about": [{}, {"name": "Florida Department of Health"}], "isFamilyFriendly":
+        true, "displayUrl": "www.floridahealth.gov", "snippet": "The Florida Department
+        of Health is highlighting National Radon Action Month in January by announcing
+        the winners of the 2019 Florida Radon Poster Contest. The annual Florida Radon
+        Contest is an opportunity to engage students and schools in educating their
+        communities about the risks from elevated indoor radon levels.", "dateLastCrawled":
+        "2019-02-01T14:49:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9", "name":
+        "Health Insurance Marketplace for Individuals | HealthCare.gov", "url":
+        "https:\/\/www.healthcare.gov\/login", "about": [{"name": "HealthCare.gov"}],
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.healthcare.gov\/login",
+        "snippet": "HHS.gov A federal government website managed and paid for by the
+        U.S. Centers for Medicare & Medicaid Services. 7500 Security Boulevard, Baltimore,
+        MD 21244", "dateLastCrawled": "2019-01-30T17:25:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Department of Health Home", "url": "http:\/\/www.health.pa.gov\/",
+        "about": [{"name": "Pennsylvania Department of Health"}], "isFamilyFriendly":
+        true, "displayUrl": "www.health.pa.gov", "snippet": "Pennsylvania Department
+        of Health provides programs, services and health related information for
+        adults, business owners, caregivers, health care professionals, parents,
+        researchers, school representatives, teens and all Pennsylvanians.", "dateLastCrawled":
+        "2019-01-31T22:02:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11", "name":
+        "Health - Census.gov", "url": "https:\/\/www.census.gov\/topics\/health.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.census.gov\/topics\/health.html",
+        "snippet": "Health statistics are increasingly important in measuring the
+        nation’s overall well-being. The Census Bureau provides accurate, detailed,
+        and up-to-date statistics—covering people and business—relating to health
+        in America.", "dateLastCrawled": "2019-01-12T04:23:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "ONC | Office of the National Coordinator for Health ...", "url":
+        "https:\/\/www.healthit.gov\/", "about": [{"name": "Office of the National
+        Coordinator for Health Information Technology"}, {"name": "Office of the National
+        Coordinator for Health Information Technology"}], "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.healthit.gov", "snippet": "Health information
+        technology (Health IT) makes it possible for health care providers to
+        better manage patient care through secure use and sharing of health information.
+        Health IT includes the use of electronic health records (EHRs) instead
+        of paper medical records to maintain people''s health information.", "dateLastCrawled":
+        "2019-01-31T08:19:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13", "name":
+        "Veterans Health Administration - United States Department ...", "url":
+        "https:\/\/www.va.gov\/health\/", "about": [{"name": "Veterans Health Administration"},
+        {"name": "Veterans Health Administration"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.va.gov\/health", "snippet": "The Veterans Health Administration
+        is America’s largest integrated health care system, providing care at 1,250
+        health care facilities, including 172 medical centers and 1,069 outpatient
+        sites of care of varying complexity (VHA outpatient clinics), serving 9 million
+        enrolled Veterans each year.", "dateLastCrawled": "2019-01-31T19:28:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Homepage - Health, United States - Products", "url": "https:\/\/www.cdc.gov\/nchs\/hus\/index.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/nchs\/hus",
+        "snippet": "The Data Finder gives you Health, United States trend tables
+        and figures on a subject and\/or population subgroup of interest.", "dateLastCrawled":
+        "2019-02-01T01:53:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15", "name":
+        "Department of Public Health | Homepage | City of Philadelphia", "url":
+        "https:\/\/www.phila.gov\/departments\/department-of-public-health\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.phila.gov\/departments\/department-of-public-health",
+        "snippet": "The Department of Public Health works to make Philadelphia a
+        healthy place to live, work, and play. Our department: Provides high-quality
+        medical care at City health centers. Prevents the spread of illness and
+        infectious disease. Protects against environmental hazards.", "dateLastCrawled":
+        "2019-01-31T20:07:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16", "name":
+        "Virginia Department of Health", "url": "http:\/\/www.vdh.virginia.gov\/",
+        "about": [{"name": "Virginia Department of Health"}], "isFamilyFriendly":
+        true, "displayUrl": "www.vdh.virginia.gov", "snippet": "January is Cervical
+        Cancer Awareness Month. January is Cervical Cancer Awareness Month, which
+        raises awareness about cervical cancer, and the Human Papillomavirus (HPV)
+        vaccine that can help prevent it, and other cancers, from ever developing.",
+        "dateLastCrawled": "2019-02-01T02:22:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Healthy People 2020", "url": "https:\/\/www.healthypeople.gov\/",
+        "about": [{"name": "Healthy People program"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.healthypeople.gov", "snippet": "Planning for Healthy People
+        2030. Every decade, the Healthy People initiative develops a new set of objectives
+        to improve the health of all Americans.Learn more and get involved", "dateLastCrawled":
+        "2019-01-30T13:57:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18", "name":
+        "National Institutes of Health (NIH) | Turning Discovery ...", "url": "https:\/\/www.nih.gov\/",
+        "about": [{"name": "National Institutes of Health"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.nih.gov", "snippet": "Official website
+        of the National Institutes of Health (NIH). NIH is one of the world''s foremost
+        medical research centers. An agency of the U.S. Department of Health and
+        Human Services, the NIH is the Federal focal point for health and medical
+        research.", "dateLastCrawled": "2019-02-01T15:57:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Get Healthcare Coverage, Health Insurance Marketplace ...", "url":
+        "https:\/\/www.healthcare.gov\/get-coverage\/", "about": [{"name": "HealthCare.gov"}],
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.healthcare.gov\/get-coverage",
+        "snippet": "Subscribe to get email (or text) updates with important deadline
+        reminders, useful tips, and other information about your health insurance.
+        Your information contains error(s): Please choose a state.", "dateLastCrawled":
+        "2019-01-30T10:42:00.0000000Z", "language": "en", "isNavigational": false}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Tue, 05 Feb 2019 21:45:40 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=OR%20us97%20central%20(site:.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 05 Feb 2019 21:44:40 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 1D735B13C20E46EEAEAA6C331D6B63D2
+      Bingapis-Sessionid:
+      - C19E1187918D4093BBAF86701DB2D751
+      X-Msedge-Clientid:
+      - 22B97419DB366C62040C78E3DA7A6D14
+      X-Msapi-Userstate:
+      - 7eb8
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=214,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: 1D735B13C20E46EEAEAA6C331D6B63D2 Ref B: BY3EDGE0220 Ref C: 2019-02-05T21:45:40Z'
+      Apim-Request-Id:
+      - 35a7fa65-6487-4d0f-98a3-0f0d40059384
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 05 Feb 2019 21:45:40 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "OR us97
+        central (site:.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=OR+us97+central+(site%3a.gov)",
+        "totalEstimatedMatches": 61300, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "US 97 Bend North Corridor - oregon.gov", "url": "https:\/\/www.oregon.gov\/ODOT\/Projects\/Project%20Documents\/BendNorthCorridorfinal_rec_doc_2014_07_17.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.oregon.gov\/ODOT\/Projects\/Project
+        Documents...", "snippet": "north-south state facility that runs through the
+        central portion of the state. It is classified as a statewide facility and
+        freight route along its entire length, and as an expressway through the project’s
+        API. US 97 is a critical facility for moving goods and people through Central
+        Oregon.", "dateLastCrawled": "2019-02-01T05:05:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Descriptions of US and OR Routes - oregon.gov", "url": "https:\/\/www.oregon.gov\/ODOT\/Engineering\/TRSDocs\/HWY-Route-Descriptions.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.oregon.gov\/ODOT\/Engineering\/TRSDocs\/HWY-Route...",
+        "snippet": "Thence southerly over The Dalles-California Highway (common with
+        US97) to its junction with the Central Oregon Highway in Bend; thence
+        easterly over the Central Oregon Highway via Brothers, Riley, Hines, Burns
+        (common with US395 from Riley to two miles northeast of Burns), Juntura, Vale,
+        Cairo, and", "dateLastCrawled": "2019-02-01T07:27:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "STATE OF OREGON INTEROFFICE MEMO Planning Section", "url": "https:\/\/www.oregon.gov\/ODOT\/Planning\/Documents\/APMv2_App19A3.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.oregon.gov\/ODOT\/Planning\/Documents\/APMv2_App19A3.pdf",
+        "snippet": "project location is a five-lane expressway and a major freight
+        route in central Oregon. There are currently signals at Robal Road and Cooley
+        Road and several driveway approaches to US97 in ... The US97\/ Grandview
+        Drive intersection becomes a right-in\/right-out\/left-in intersection.",
+        "dateLastCrawled": "2019-01-18T15:04:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Document Central | City of Bend", "url": "https:\/\/www.bendoregon.gov\/services\/advanced-components\/document-central\/-folder-1314",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.bendoregon.gov\/...\/document-central\/-folder-1314",
+        "snippet": "Document Central » BMPO Documents » US97 Parkway Plan US
+        97 Parkway Plan Draft Ped-Bike Crossing Alternatives Packet US97 Parkway
+        Vision Concept and Development Plan 20181218 adopted", "dateLastCrawled":
+        "2019-01-17T04:33:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4", "name":
+        "ODOT Region 4 Project Information - oregon.gov", "url": "https:\/\/www.oregon.gov\/ODOT\/Projects\/Project%20Documents\/US97CooleyPIP.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.oregon.gov\/ODOT\/Projects\/Project
+        Documents...", "snippet": "central portion of Oregon and complements the
+        I-5 corridor. It is designated as a statewide facility and freight route on
+        the ... The US97 @ Cooley project will receive funding in relative proportion
+        to revenues collected from 2018 through 2025 by House Bill 2017. Additional
+        revenue is anticipated to allow for", "dateLastCrawled": "2019-01-23T01:25:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "RURAL HIGHWAY DESIGN (NON-FREEWAY) - oregon.gov", "url": "https:\/\/www.oregon.gov\/ODOT\/Engineering\/Documents_RoadwayEng\/HDM_07-Rural-Highway.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.oregon.gov\/ODOT\/Engineering\/Documents_RoadwayEng\/HDM...",
+        "snippet": "also be designated as expressways. The Dalles-California Highway
+        (US 97) in Central Oregon is an example of a designated expressway that
+        includes both multi-lane sections and two-lane sections. The primary function
+        of rural expressways is to provide connections to larger urban areas, ports,
+        and major recreational areas with minimal interruptions.", "dateLastCrawled":
+        "2019-01-26T15:17:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6", "name":
+        "TRANSPORTATION 2018 BRIDGE LOG - oregon.gov", "url": "https:\/\/www.oregon.gov\/ODOT\/Bridge\/Documents\/brlog.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.oregon.gov\/ODOT\/Bridge\/Documents\/brlog.pdf",
+        "snippet": "004 The Dalles-California Hwy US20, US26, US97, US197, OR140
+        147 005 John Day Hwy US26, US395, OR19, OR207 159 006 Old Oregon Trail Hwy
+        I-84, US30, US935 169 007 Central Oregon Hwy US20, US26, US395, OR201 194
+        008 Oregon-Washington Hwy OR11 202 009 Oregon Coast Hwy US101 205 010 Wallowa
+        Lake Hwy OR82 232 011 Enterprise-Lewiston Hwy OR3 236", "dateLastCrawled":
+        "2019-01-31T14:27:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7", "name":
+        "US 97 Satus Creek Bridge Replacement Project", "url": "http:\/\/www.wsdot.wa.gov\/eesc\/bridge\/Folios\/US97_SatusCreekBridge.pdf",
+        "isFamilyFriendly": true, "displayUrl": "www.wsdot.wa.gov\/eesc\/bridge\/Folios\/US97_SatusCreekBridge.pdf",
+        "snippet": "US 97 Satus Creek Bridge Replacement Project. For general information
+        contact: Tom Baker PE . State Bridge and Structures Engineer (360) 705-7207,
+        bakert@wsdot.wa.gov. ... of south central Washington State. Except for
+        the creek valley the area is treeless. Native grasses, sage brush", "dateLastCrawled":
+        "2019-01-26T01:47:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8", "name":
+        "2018 CROSS REFERENCE TABLE OF HIGHWAY ROUTE NUMBER TO ...", "url": "https:\/\/www.oregon.gov\/ODOT\/Data\/Documents\/Routes-to-Highway-Cross-Reference-Table.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.oregon.gov\/ODOT\/Data\/Documents\/Routes-to-Highway-Cross...",
+        "snippet": "004 the dalles-california us26, us30, us97, us197, or216 005
+        john day us26, us395, or19, or206, or207 006 old oregon trail i-84, us30,
+        us395, or203 007 central oregon us20, us26, us395, or201 008 oregon-washington
+        us30, or11 009 oregon coast us101, or255 010 wallowa lake or82 011 enterprise-lewiston
+        or3 012 baker-copperfield or7, or86", "dateLastCrawled": "2019-01-30T23:46:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Using Highway Economic Requirements System: Telling the Story", "url":
+        "https:\/\/www.oregon.gov\/ODOT\/Planning\/Documents\/HERS-ST-Poster-Telling-the-Story-US97-Bend-North-Corridor.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.oregon.gov\/ODOT\/Planning\/Documents\/HERS-ST-Poster...",
+        "snippet": "organizations moving into this Central Oregon community. With
+        growth comes traffic and associated congestion and this area is a source of
+        current congestion issues. The location makes it extremely attractive for
+        future retail development, which will result in greater congestion in the
+        future. Traffic analysis of this area is important for planning", "dateLastCrawled":
+        "2019-01-12T00:17:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10", "name":
+        "data.oregon.gov", "url": "https:\/\/data.oregon.gov\/api\/views\/fdus-r2ei\/rows.rdf?accessType=DOWNLOAD",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/data.oregon.gov\/api\/views\/fdus-r2ei\/rows.rdf?accessType=...",
+        "snippet": "nhpp-s002(163) 2015-12-29t00:00:00 886574 hp civil inc preq 618
+        n second ave stayton or 97383 row-3rvc-saez_xu4u 2016 14860 us97 @ wickiup
+        jct (la pine) sec stp-s004(198) 2015-12-29t00:00:00 10982202 high desert aggregate
+        & paving inc preq 8500 n lone pine rd terrebonne or 97760 row-4ube~c4s6~cxyk
+        2016 14865 or38: luder cr culvert replacement ...", "dateLastCrawled": "2019-01-22T02:26:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "APPENDIX I Stormwater Management Plan - bendoregon.gov", "url":
+        "https:\/\/www.bendoregon.gov\/home\/showdocument?id=1134", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.bendoregon.gov\/home\/showdocument?id=1134",
+        "snippet": "PDX\/US97_MURPHYRD_STORMWATERMANAGEMENTPLAN_REV2 1 COPYRIGHT
+        2011 BY CH2M HILL, INC. • COMPANY CONFIDENTIAL Stormwater Management Plan
+        Executive Summary The US 97 Murphy Road- Brookswood Boulevard to Parrell
+        Road Project entails both new and ... Central Oregon Stormwater Management
+        (COSM), and ODOT standards. ...", "dateLastCrawled": "2019-01-21T07:49:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Active (without 2nd Note) Construction Contracts by County", "url":
+        "https:\/\/www.oregon.gov\/ODOT\/Construction\/Documents\/contract-admin-status-reports\/CPSR001c.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.oregon.gov\/ODOT\/Construction\/Documents\/contract-admin...",
+        "snippet": "Deschutes C15045 Roy L. Houck Construction LL FFO-US97: Sunriver
+        Interchange - O Grade,Drain,Sign,Illum,Si Martin, Bill S004(193) $12,349,339
+        $12,666,248 98 ... C15065 Central Washington Asphalt OR11: Pendleton-Weston
+        and OR33 Remily, Mike S008(017) $8,198,109 $8,271,978 92", "dateLastCrawled":
+        "2019-02-01T06:55:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13", "name":
+        "REGION 4 - MOBILITY PRESENTATION 7-12-2018", "url": "https:\/\/www.oregon.gov\/ODOT\/MCT\/Mobility%20Document%20Retention\/7-6-18\/2018_07-12_Region4.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.oregon.gov\/ODOT\/MCT\/Mobility
+        Document Retention\/7-6-18...", "snippet": "US20\/Buck Creek and US97\/Shaniko
+        MP Site Description Type of Work Zone Closures Allowable Work Hours (any day
+        of week) Mobility Impact\/ Horizontal Clearance Maintained US20 (Hwy 007:
+        Central Oregon) MP 82.92 82.92 Site 12: Buck Creek –Eastbound Shoulder Any
+        Time No Impact US97 (Hwy 042: Sherman) MP 56.36", "dateLastCrawled": "2019-01-27T14:17:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "OREGON DEPARTMENT OF TRANSPORTATION AWARDED CONTRACTS AND ...", "url":
+        "https:\/\/www.oregon.gov\/ODOT\/Business\/Procurement\/DocsConstr\/09-28-17_ACPA.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.oregon.gov\/ODOT\/Business\/Procurement\/DocsConstr\/09-28...",
+        "snippet": "oregon department of transportation awarded contracts and project
+        authorizations for bid opening date 09\/28\/2017 call order: 003 description:
+        twin creeks rail crossing (central point)", "dateLastCrawled": "2019-01-12T10:32:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Caltrans District 2 -Northeastern California", "url": "http:\/\/www.dot.ca.gov\/dist2\/cctv\/allcams.shtml",
+        "isFamilyFriendly": true, "displayUrl": "www.dot.ca.gov\/dist2\/cctv\/allcams.shtml",
+        "snippet": "Central Yreka Cam (SIS 5 R 47.82) is located in central Yreka
+        on the east side of I-5 next to the flag pole in Siskiyou County: South Yreka
+        Cam ... I5-US97 Cam (SIS 5 R 19.27) is located in Siskiyou County just north
+        of the I5-US97 separation in Weed: South Weed Cam", "dateLastCrawled": "2019-01-29T08:36:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "FREIGHT MOBILITY MEETING MINUTES - oregon.gov", "url": "https:\/\/www.oregon.gov\/ODOT\/MCT\/Mobility%20Document%20Retention\/2014-07-08_Minutes_FreightMobility.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.oregon.gov\/ODOT\/MCT\/Mobility
+        Document Retention\/2014-07...", "snippet": "Bend Central Area Planning
+        project and the current status of the MMA project. Matt provided an overview
+        of the MMA project, discussing the project goals; rationale for ... The purpose
+        of this project is to replace the overlay on the US97: Bend Parkway bridge
+        crossings over 3rd Street (Bridge 17328) and Division Street (Bridge 17329
+        ...", "dateLastCrawled": "2019-01-18T15:04:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Document Central | City of Bend", "url": "https:\/\/www.bendoregon.gov\/services\/advanced-components\/document-central\/-parent-23479\/-folder-714",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.bendoregon.gov\/services\/advanced-components\/document...",
+        "snippet": "Get In Touch. City Administration (541) 388-5505 Utility Billing
+        (541) 388-5515 Community Development (541) 388-5580", "dateLastCrawled": "2019-01-19T12:43:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "WSDOT - South Central Region Construction Update", "url": "http:\/\/www.wsdot.gov\/Regions\/SouthCentral\/Construction\/",
+        "isFamilyFriendly": true, "displayUrl": "www.wsdot.gov\/Regions\/SouthCentral\/Construction",
+        "snippet": "South Central Region 2809 Rudkin Road Union Gap, WA 98903 (509)
+        577-1600 Normal business hours: 7:30 a.m. to 4 p.m. Monday through Friday
+        Please send comments to SC Public Affairs South Central Region Construction
+        Update and Travel Advisory. Jan. 25 to Feb. 3, 2019 ...", "dateLastCrawled":
+        "2019-01-31T00:34:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19", "name":
+        "Document Central | City of Bend", "url": "https:\/\/www.bendoregon.gov\/services\/advanced-components\/document-central\/-parent-5352\/-folder-770",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.bendoregon.gov\/services\/advanced-components\/document...",
+        "snippet": "Document Central » BMPO Documents » MTP. App I Maps; Emme2 Model
+        Update 2013; MTP2040Update; US97_MPO_MTP Modification_051613.pdf; mtp app
+        k revised 9.2013; mtp chp 21 revised 9.2013; mtp chp 6 revised 9.2013; mtp
+        all; mtp cover and toc; mtp ch 21; mtp ch 20; mtp ch 19; mtp ch 18; mtp ch
+        17;", "dateLastCrawled": "2018-12-26T21:59:00.0000000Z", "language": "en",
+        "isNavigational": false}]}, "rankingResponse": {"mainline": {"items": [{"answerType":
+        "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Tue, 05 Feb 2019 21:45:41 GMT
 recorded_with: VCR 4.0.0

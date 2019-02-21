@@ -246,4 +246,202 @@ http_interactions:
         "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Ann+Dunham&pid=Api&mkt=en-US&adlt=moderate&t=1"}}]}]}'
     http_version: 
   recorded_at: Mon, 27 Aug 2018 00:02:44 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/images/search?count=20&mkt=en-US&offset=0&q=ubama%20(site:nonsense.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Pragma:
+      - no-cache
+      Content-Length:
+      - '21976'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - "-1"
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - AE1B53758DB14CB9897A9897C3AA2388
+      X-Msedge-Clientid:
+      - 27747EBD795E6281166B7247781263B5
+      X-Msapi-Userstate:
+      - 89e4
+      X-Search-Responseinfo:
+      - InternalResponseTime=123,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: AE1B53758DB14CB9897A9897C3AA2388 Ref B: BY3EDGE0420 Ref C: 2019-02-05T21:34:03Z'
+      Apim-Request-Id:
+      - ce1c45d2-4aee-46e1-b2d1-21858afab34c
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 05 Feb 2019 21:34:02 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "Images", "instrumentation": {"_type": "ResponseInstrumentation"},
+        "queryContext": {"originalQuery": "ubama (site:nonsense.gov)", "alterationDisplayQuery":
+        "ubama (site:nonsense.gov)", "alterationOverrideQuery": "+ubama (site:nonsense.gov)",
+        "alterationMethod": "AM_JustChangeIt", "alterationType": "CombinedAlterationsChained"},
+        "value": [], "queryExpansions": [{"text": "Barack Ubama", "displayText": "Barack",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Barack+Ubama&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Barack%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barack+Ubama&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Barack%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Barack+Ubama&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Ubama Barrack", "displayText": "Barrack", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Ubama+Barrack&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Barrack%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Ubama+Barrack&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Barrack%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Ubama+Barrack&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Ubama Watoto WA", "displayText": "Watoto WA", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Ubama+Watoto+WA&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Watoto+WA%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Ubama+Watoto+WA&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Watoto+WA%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Ubama+Watoto+WA&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Ubama Baraq", "displayText": "Baraq", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Ubama+Baraq&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Baraq%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Ubama+Baraq&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Baraq%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Ubama+Baraq&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Webama Ubama", "displayText": "Webama", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Webama+Ubama&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Webama%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Webama+Ubama&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Webama%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Webama+Ubama&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Ubama King DPM", "displayText": "King DPM", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Ubama+King+DPM&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22King+DPM%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Ubama+King+DPM&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22King+DPM%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Ubama+King+DPM&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Ubama Flute", "displayText": "Flute", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Ubama+Flute&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Flute%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Ubama+Flute&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Flute%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Ubama+Flute&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Ubama Play Football", "displayText": "Play Football", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Ubama+Play+Football&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Play+Football%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Ubama+Play+Football&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Play+Football%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Ubama+Play+Football&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Ubama Sister", "displayText": "Sister", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Ubama+Sister&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Sister%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Ubama+Sister&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Sister%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Ubama+Sister&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Ubama Karzai", "displayText": "Karzai", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Ubama+Karzai&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Karzai%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Ubama+Karzai&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Karzai%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Ubama+Karzai&pid=Api&mkt=en-US&adlt=moderate&t=1"}}],
+        "pivotSuggestions": [{"pivot": "ubama", "suggestions": []}, {"pivot": "(site:nonsense.gov)",
+        "suggestions": []}], "relatedSearches": [{"text": "Obama", "displayText":
+        "Obama", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Obama&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Obama",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Obama&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barack Obama", "displayText": "Barack Obama", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Barack+Obama&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barack+Obama",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Barack+Obama&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Obama Working", "displayText": "Obama Working", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Obama+Working&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Obama+Working",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Obama+Working&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Mark Seliger", "displayText": "Mark Seliger", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Mark+Seliger&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Mark+Seliger",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Mark+Seliger&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Obama Putin", "displayText": "Obama Putin", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Obama+Putin&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Obama+Putin",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Obama+Putin&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Black Panther", "displayText": "Black Panther", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Black+Panther&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Black+Panther",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Black+Panther&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barack Obama Votes", "displayText": "Barack Obama Votes", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Barack+Obama+Votes&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barack+Obama+Votes",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Barack+Obama+Votes&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Obama Care", "displayText": "Obama Care", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Obama+Care&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Obama+Care",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Obama+Care&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barack Obama and Michelle Obama", "displayText": "Barack Obama and
+        Michelle Obama", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Barack+Obama+and+Michelle+Obama&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barack+Obama+and+Michelle+Obama",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Barack+Obama+and+Michelle+Obama&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Nazi T-Shirts", "displayText": "Nazi T-Shirts", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Nazi+T-Shirts&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Nazi+T-Shirts",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Nazi+T-Shirts&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Korean Demilitarized Zone", "displayText": "Korean Demilitarized
+        Zone", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Korean+Demilitarized+Zone&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Korean+Demilitarized+Zone",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Korean+Demilitarized+Zone&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Michelle and Barack Obama", "displayText": "Michelle and Barack
+        Obama", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Michelle+and+Barack+Obama&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Michelle+and+Barack+Obama",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Michelle+and+Barack+Obama&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Obama Terry Richardson", "displayText": "Obama Terry Richardson",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Obama+Terry+Richardson&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Obama+Terry+Richardson",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Obama+Terry+Richardson&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Obama Funny", "displayText": "Obama Funny", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Obama+Funny&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Obama+Funny",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Obama+Funny&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Michelle Obama Eye Problem", "displayText": "Michelle Obama Eye
+        Problem", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Michelle+Obama+Eye+Problem&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Michelle+Obama+Eye+Problem",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Michelle+Obama+Eye+Problem&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Obama Gun", "displayText": "Obama Gun", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Obama+Gun&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Obama+Gun",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Obama+Gun&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Osama Bin Laden", "displayText": "Osama Bin Laden", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Osama+Bin+Laden&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Osama+Bin+Laden",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Osama+Bin+Laden&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Michelle Obama Funny", "displayText": "Michelle Obama Funny", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Michelle+Obama+Funny&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Michelle+Obama+Funny",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Michelle+Obama+Funny&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Most Famous People", "displayText": "Most Famous People", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Most+Famous+People&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Most+Famous+People",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Most+Famous+People&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barack Obama Funny", "displayText": "Barack Obama Funny", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Barack+Obama+Funny&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barack+Obama+Funny",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Barack+Obama+Funny&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "President Obama", "displayText": "President Obama", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=President+Obama&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=President+Obama",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=President+Obama&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "President Barack Obama", "displayText": "President Barack Obama",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=President+Barack+Obama&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=President+Barack+Obama",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=President+Barack+Obama&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "President Obama White House", "displayText": "President Obama White
+        House", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=President+Obama+White+House&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=President+Obama+White+House",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=President+Obama+White+House&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Meme T-Shirts", "displayText": "Meme T-Shirts", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Meme+T-Shirts&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Meme+T-Shirts",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Meme+T-Shirts&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Michelle Obama a Guy", "displayText": "Michelle Obama a Guy", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Michelle+Obama+a+Guy&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Michelle+Obama+a+Guy",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Michelle+Obama+a+Guy&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Obama Proxy", "displayText": "Obama Proxy", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Obama+Proxy&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Obama+Proxy",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Obama+Proxy&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Executive Branch Symbol", "displayText": "Executive Branch Symbol",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Executive+Branch+Symbol&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Executive+Branch+Symbol",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Executive+Branch+Symbol&pid=Api&mkt=en-US&adlt=moderate&t=1"}}]}'
+    http_version: 
+  recorded_at: Tue, 05 Feb 2019 21:34:03 GMT
 recorded_with: VCR 4.0.0

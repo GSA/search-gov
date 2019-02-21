@@ -24,7 +24,7 @@ describe SiteSearch do
     let(:bing_formatted_query) { double("BingFormattedQuery", matching_site_limits: nil, query: 'ignore') }
 
     it 'should include sites from document collection' do
-      expect(BingV6FormattedQuery).to receive(:new).with(
+      expect(BingV7FormattedQuery).to receive(:new).with(
         "gov", hash_including(included_domains: ["www.whitehouse.gov/photos-and-video/", "www.whitehouse.gov/blog/"],
                               excluded_domains: [])).and_return bing_formatted_query
       SiteSearch.new(:query => 'gov', :affiliate => affiliate, :document_collection => dc)
@@ -33,7 +33,7 @@ describe SiteSearch do
     context 'when no document collection is specified' do
       before do
         affiliate.site_domains.create(domain: 'usa.gov')
-        expect(BingV6FormattedQuery).to receive(:new).with(
+        expect(BingV7FormattedQuery).to receive(:new).with(
           'gov', hash_including(included_domains: ["usa.gov"], excluded_domains: [])
         ).and_return bing_formatted_query
       end

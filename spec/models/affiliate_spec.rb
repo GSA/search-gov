@@ -16,21 +16,35 @@ describe Affiliate do
    let(:affiliate) { Affiliate.new(valid_create_attributes) }
 
   describe 'schema' do
-    it { is_expected.to have_db_column(:i14y_date_stamp_enabled).of_type(:boolean).with_options(default: false, null: false) }
-    #The active_template_id column has been deprectated. It will be dropped in a future migration.
-    it { is_expected.to have_db_column(:active_template_id).of_type(:integer) }
-    it { is_expected.to have_db_column(:template_id).of_type(:integer) }
+    describe 'columns' do
+      it do
+        is_expected.to have_db_column(:i14y_date_stamp_enabled).
+          of_type(:boolean).with_options(default: false, null: false)
+      end
+      # The active_template_id column has been deprectated. It will be dropped in a future migration.
+      it { is_expected.to have_db_column(:active_template_id).of_type(:integer) }
+      it { is_expected.to have_db_column(:template_id).of_type(:integer) }
+      it do
+        is_expected.to have_db_column(:search_engine).of_type(:string).
+          with_options(default: 'BingV7', null: false)
+      end
+      it do
+        is_expected.to have_db_column(:active).of_type(:boolean).
+          with_options(default: true, null: false)
+      end
+    end
 
-    it { is_expected.to have_db_index(:active_template_id) }
-    it { is_expected.to have_db_index(:template_id) }
+    describe 'indices' do
+      it { is_expected.to have_db_index(:active_template_id) }
+      it { is_expected.to have_db_index(:template_id) }
+    end
 
-    it { is_expected.to have_attached_file :page_background_image }
-    it { is_expected.to have_attached_file :header_image }
-    it { is_expected.to have_attached_file :mobile_logo }
-    it { is_expected.to have_attached_file :header_tagline_logo }
-
-    it { is_expected.to have_db_column(:search_engine).of_type(:string).with_options(default: 'BingV6', null: false) }
-    it { is_expected.to have_db_column(:active).of_type(:boolean).with_options(default: true, null: false) }
+    describe 'Paperclip attachments' do
+      it { is_expected.to have_attached_file :page_background_image }
+      it { is_expected.to have_attached_file :header_image }
+      it { is_expected.to have_attached_file :mobile_logo }
+      it { is_expected.to have_attached_file :header_tagline_logo }
+    end
   end
 
   describe "Creating new instance of Affiliate" do

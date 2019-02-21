@@ -419,4 +419,248 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
   recorded_at: Mon, 19 Nov 2018 22:40:37 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=hello%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 05 Feb 2019 21:44:56 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 4F4BBB37D8D44C2DA7F2859C18C37F72
+      Bingapis-Sessionid:
+      - 262CC0620BEC482196CEFF1EF3D29EFB
+      X-Msedge-Clientid:
+      - 103A86E48A986B4F0D4D8A1E8BD46A37
+      X-Msapi-Userstate:
+      - f9a4
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=205,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: 4F4BBB37D8D44C2DA7F2859C18C37F72 Ref B: BY3EDGE0509 Ref C: 2019-02-05T21:45:56Z'
+      Apim-Request-Id:
+      - c7530130-a368-407c-be3b-ee4c4139e920
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 05 Feb 2019 21:45:55 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "hello
+        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=hello+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 2050000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "#GoodbyeViaduct – Hello, SR #99Tunnel! Here’s what you ...", "url":
+        "http:\/\/sdotblog.seattle.gov\/2019\/01\/29\/goodbyeviaduct-hello-sr-99tunnel-heres-what-you-need-to-know\/",
+        "isFamilyFriendly": true, "displayUrl": "sdotblog.seattle.gov\/2019\/01\/29\/goodbyeviaduct-hello-sr-99tunnel...",
+        "snippet": "WSDOT’s website for the new SR 99 tunnel, www.99tunnel.com, is
+        your best resource for learning all about the new tunnel.Watch these videos
+        that show you how to use the new tunnel and how connections to downtown will
+        be different. (Videos also available in Spanish and Chinese – Mandarin and
+        Cantonese.) Check it out! Know about construction still underway.", "dateLastCrawled":
+        "2019-01-31T20:38:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1", "name":
+        "WSDOT announces weekend celebration to say “hello” new ...", "url": "https:\/\/www.wsdot.wa.gov\/news\/2018\/11\/01\/wsdot-announces-weekend-celebration-say-hello-new-tunnel-goodbye-old-viaduct",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.wsdot.wa.gov\/news\/2018\/11\/01\/wsdot-announces-weekend...",
+        "snippet": "WSDOT announces weekend celebration to say “hello” new tunnel,
+        “goodbye” old viaduct . Thursday, November 1, 2018 - 10:25 . Steve Peer, communications,
+        425-301-2023. Public invited to once-in-a-lifetime event in the new tunnel
+        and on the viaduct.", "dateLastCrawled": "2019-02-01T01:00:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Hello and welcome to the Medical Marijuana Use Registry", "url":
+        "https:\/\/mmuregistry.flhealth.gov\/", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/mmuregistry.flhealth.gov", "snippet": "Hello and welcome to the
+        Medical Marijuana Use Registry. ... The Medical Marijuana Use Registry
+        will be undergoing scheduled maintenance during this time. Forgot your Username?
+        Patients and Caregivers may log in using your email address once it has been
+        added by your physician.", "dateLastCrawled": "2019-02-01T10:12:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "DOD Occupational Database (ODB) - dmdc.osd.mil", "url": "https:\/\/www.dmdc.osd.mil\/owa\/odb\/hello",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.dmdc.osd.mil\/owa\/odb\/hello",
+        "snippet": "DOD Occupational Database (ODB) Warning Notice and Consent to
+        Monitor. You are accessing a U.S. Government(USG) information system(IS) that
+        is provided for USG-authorized use only. By using this IS, you consent to
+        the following conditions: -The USG routinely monitors communications occurring
+        on this IS and any device attached to this IS, for ...", "dateLastCrawled":
+        "2019-01-29T22:02:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4", "name":
+        "Hello America, hello! | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/2013563179\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/2013563179",
+        "snippet": "The Library of Congress would like to learn more about these
+        materials and would like to hear from individuals or institutions that have
+        any additional information or know of their history. Please contact: Performing
+        Arts Reading Room. Suggested credit line: Library of Congress, Music Division.",
+        "dateLastCrawled": "2018-12-21T02:22:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Newton, MA - Washington Street Vision", "url": "http:\/\/www.newtonma.gov\/gov\/planning\/lrplan\/washington_street_vision.asp",
+        "isFamilyFriendly": true, "displayUrl": "www.newtonma.gov\/gov\/planning\/lrplan\/washington_street_vision.asp",
+        "snippet": "\"Hello Washington Street!\" is the City of Newton''s initiative
+        to plan proactively the future of Washington Street in a community-based process
+        with residents, local businesses, and City Councilors, with the help of the
+        Principle Group, the planning firm under contract with the City of Newton.",
+        "dateLastCrawled": "2019-01-30T07:03:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "PA DHS - Bulletin Search", "url": "http:\/\/www.dhs.pa.gov\/publications\/bulletinsearch\/index.htm",
+        "isFamilyFriendly": true, "displayUrl": "www.dhs.pa.gov\/publications\/bulletinsearch\/index.htm",
+        "snippet": "Bulletin Number:-OR-Search Option B: If you do not know the
+        Bulletin number, use the additional search features below to search using
+        the Program Office, regulation code, provider type, year issued and\/or keywords
+        from the bulletin''s subject\/title. You can search with either one or a
+        combination of these search fields.", "dateLastCrawled": "2019-02-01T03:16:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "HELLP syndrome: MedlinePlus Medical Encyclopedia", "url": "https:\/\/medlineplus.gov\/ency\/article\/000890.htm",
+        "about": [{"name": "HELLP syndrome"}, {"name": "HELLP syndrome"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/medlineplus.gov\/ency\/article\/000890.htm",
+        "snippet": "The death rate among babies born to mothers with HELLP syndrome
+        depends on birth weight and the development of the baby''s organs, especially
+        the lungs. Many babies are born prematurely (born before 37 weeks of pregnancy).
+        HELLP syndrome may return in up to 1 out of 4 future pregnancies.", "dateLastCrawled":
+        "2019-02-01T04:08:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8", "name":
+        "Pennsylvania Liquor Control Board - Home", "url": "http:\/\/www.lcb.pa.gov\/",
+        "about": [{"name": "Pennsylvania Liquor Control Board"}], "isFamilyFriendly":
+        true, "displayUrl": "www.lcb.pa.gov", "snippet": "Pennsylvania Liquor Control
+        Board Accepting Applications for Grants to Attend International Town & Gown
+        Association Conference. Pennsylvania Liquor Control Board Reminds Parents
+        That Sporting Events, Celebrations Are Prime Opportunities to Talk to Kids
+        About Alcohol .", "dateLastCrawled": "2019-01-31T19:17:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Arizona Department of Economic Security | Your Partner for ...",
+        "url": "https:\/\/des.az.gov\/", "about": [{"name": "Arizona Department of
+        Economic Security"}, {"name": "Arizona Department of Economic Security"}],
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/des.az.gov", "snippet":
+        "ATTENTION: SNAP recipients who were previously eligible for February SNAP
+        benefits received those benefits on or before January 20th. At this time,
+        new applications are still being accepted and processed. Please apply and
+        be sure to provide all required information and verification promptly.", "dateLastCrawled":
+        "2019-01-31T15:09:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10", "name":
+        "login.gov | Contact us", "url": "https:\/\/login.gov\/contact\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/login.gov\/contact", "snippet": "Contact us
+        Contact the login.gov team. Let us know a bit about the problem you’re experiencing
+        and we’ll get back to you soon. Agency application. Email. Phone number (optional)
+        Issue topic. Issue sub-topic. Issue description. Find help using login.gov.
+        Web: Help. Check out answers to common questions. Still have a question or
+        a problem? ...", "dateLastCrawled": "2019-01-29T22:36:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Welcome to VA", "url": "https:\/\/www.va.gov\/va_welcomekit_color.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.va.gov\/va_welcomekit_color.pdf",
+        "snippet": "HELLO. 2 YOUR BENEFITS Understand how VA can meet your needs
+        3 YOUR ELIGIBILITY Understand more about it and how it affects your VA benefits
+        4 YOUR DISABILITY RATING Understand how your disability rating affects your
+        eligibility 5 YOUR JOURNEY See how VA can support you throughout your life
+        14 YOUR CHECKLIST Learn about ways to access the benefits", "dateLastCrawled":
+        "2019-01-29T15:10:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12", "name":
+        "Department of Economic Security: eCalc Application", "url": "https:\/\/extranet.azdes.gov\/ecalc\/Hello.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/extranet.azdes.gov\/ecalc",
+        "snippet": "DES eCalc is a tool for calculating arrears owed for child support.",
+        "dateLastCrawled": "2019-01-31T19:29:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "My Healthcare", "url": "https:\/\/www.illinois.gov\/hfs\/MedicalClients\/Pages\/default.aspx",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.illinois.gov\/hfs\/MedicalClients\/Pages\/default.aspx",
+        "snippet": "Welcome to Illinois Healthcare and Family Services! Apply
+        for and Manage Your Benefits Medical Programs Listing Brochures & Forms Medical
+        Card Information Illinois Plan Report Card Report Fraud & Abuse About Our
+        Programs ...", "dateLastCrawled": "2019-01-30T10:31:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Retailers:Hello Lucy", "url": "https:\/\/www.prideofdakota.nd.gov\/companies\/profile\/HelloLucy\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.prideofdakota.nd.gov\/companies\/profile\/HelloLucy",
+        "snippet": "Hello Lucy Hello Lucy specializes in coasters and sewn or
+        embellished items (aprons, scarves, headbands) many promotional items. Many
+        coasters have images or maps on them and it could be your own picture!", "dateLastCrawled":
+        "2019-01-27T11:57:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15", "name":
+        "login.gov - Welcome", "url": "https:\/\/secure.login.gov\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/secure.login.gov", "snippet": "An official
+        website of the United States government. Sign in * Email address Email address
+        * Password", "dateLastCrawled": "2019-02-01T00:55:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "California Board Of Registered Nursing", "url": "http:\/\/www.rn.ca.gov\/",
+        "about": [{"name": "Registered nurse"}], "isFamilyFriendly": true, "displayUrl":
+        "www.rn.ca.gov", "snippet": "The Board of Registered Nursing encourages
+        you to order new forms with the new serial number requirement and utilize
+        e-prescribing when applicable. Visit DOJ’s website here for more information.
+        NOTICE: The Board is aware of the closure of Brightwood College and will provide
+        additional information as soon as it’s available.", "dateLastCrawled": "2019-01-31T00:11:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Latest “Hello Baltimore County” TV Show Features Sit-down ...",
+        "url": "https:\/\/www.baltimorecountymd.gov\/News\/BaltimoreCountyNow\/latest-hello-baltimore-county-tv-show-features-sit-down-with-county-executive-olszewski-clean-green-15-litter-challenge",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.baltimorecountymd.gov\/News\/BaltimoreCountyNow\/latest...",
+        "snippet": "The latest edition of Baltimore County’s half-hour cable television
+        public affairs show, “Hello Baltimore County,” includes an in-depth interview
+        with County Executive Johnny Olszewski, an overview of the County’s environmental
+        health function and details on how you can join the Team BCPS Clean Green
+        15 Litter Challenge.", "dateLastCrawled": "2019-02-02T00:31:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "12 CFR Part 1024 - Real Estate Settlement Procedures Act ...", "url":
+        "https:\/\/www.consumerfinance.gov\/policy-compliance\/rulemaking\/regulations\/1024\/33\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.consumerfinance.gov\/policy-compliance\/rulemaking\/...",
+        "snippet": "1. Terminology. Although the servicing disclosure statement must
+        be clear and conspicuous pursuant to § 1024.32(a), § 1024.33(a) does not set
+        forth any specific rules for the format of the statement, and the specific
+        language of the servicing disclosure statement in appendix MS-1 is not required
+        to be used.", "dateLastCrawled": "2019-02-01T02:23:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Hello, ma baby | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/99470294\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/99470294",
+        "snippet": "Rights assessment is your responsibility. The Library of Congress
+        is providing access to these materials for educational and research purposes
+        and makes no warranty with regard to their use for other purposes.", "dateLastCrawled":
+        "2019-02-01T00:55:00.0000000Z", "language": "en", "isNavigational": false}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Tue, 05 Feb 2019 21:45:56 GMT
 recorded_with: VCR 4.0.0

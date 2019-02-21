@@ -884,4 +884,494 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
   recorded_at: Mon, 19 Nov 2018 22:40:31 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=season%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 05 Feb 2019 21:44:49 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - C8AB7CF3712D4E6A939CDFD1394EA646
+      Bingapis-Sessionid:
+      - 874BF6B0923D466B8C10A6452A84A318
+      X-Msedge-Clientid:
+      - 0E6422B3566365123BE02E49572F6496
+      X-Msapi-Userstate:
+      - d58d
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=214,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: C8AB7CF3712D4E6A939CDFD1394EA646 Ref B: BY3EDGE0306 Ref C: 2019-02-05T21:45:50Z'
+      Apim-Request-Id:
+      - e6501746-b3a0-4735-8abe-9e08b84dba24
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 05 Feb 2019 21:45:50 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "season
+        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=season+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 18500000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "TRICARE Open Season | TRICARE", "url": "https:\/\/www.tricare.mil\/About\/Changes\/OpenSeason",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.tricare.mil\/About\/Changes\/OpenSeason",
+        "snippet": "TRICARE Open Season is the annual period when you can enroll
+        in or change your health plan for the next year. It occurs each fall, beginning
+        on the Monday of the second full week in November to the Monday of the second
+        full week in December.", "dateLastCrawled": "2019-01-30T11:03:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Frequently Asked Flu Questions 2018-2019 Influenza Season", "url":
+        "https:\/\/www.cdc.gov\/flu\/about\/season\/flu-season-2018-2019.htm", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.cdc.gov\/flu\/about\/season\/flu-season-2018-2019.htm",
+        "snippet": "During the 2018-2019 flu season, CDC began reporting cumulative,
+        in-season estimates of the disease burden of influenza, including estimates
+        of the total number of flu illnesses in the United States. More information
+        regarding these Preliminary In-Season Burden Estimates is available.", "dateLastCrawled":
+        "2019-02-04T11:38:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2", "name":
+        "2018-2019 Flu Season | CDC", "url": "https:\/\/www.cdc.gov\/flu\/about\/season\/current.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/flu\/about\/season\/current.htm",
+        "snippet": "More information about the upcoming 2018-2019 flu season is
+        available. What You Need to Know Find preventive steps, symptoms, and treatment
+        options for this flu season.", "dateLastCrawled": "2019-01-31T20:19:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Small Game Hunting Seasons | VDGIF", "url": "https:\/\/www.dgif.virginia.gov\/hunting\/regulations\/smallgame\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.dgif.virginia.gov\/hunting\/regulations\/smallgame",
+        "snippet": "Small Game Hunting Seasons Legal Methods and Restrictions. Special
+        restrictions apply to specific firearms use during this season. See Legal
+        Use of Firearms and Archery Equipment and Local Firearms Ordinances for details..
+        Modern firearms.", "dateLastCrawled": "2019-01-29T13:58:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Hunting Seasons | MDC Hunting and Fishing", "url": "https:\/\/huntfish.mdc.mo.gov\/hunting-trapping\/seasons",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/huntfish.mdc.mo.gov\/hunting-trapping\/seasons",
+        "snippet": "During fall deer season, hunters must have an unfilled firearms
+        deer hunting permit and a permit to hunt small game. During spring turkey
+        season, coyotes may be taken using only methods allowed for spring turkey
+        hunting, and hunters must have an unfilled spring turkey hunting permit and
+        a permit to hunt small game. Prohibited Methods", "dateLastCrawled": "2019-01-31T14:40:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Hunting Seasons - NYS Dept. of Environmental Conservation", "url":
+        "http:\/\/www.dec.ny.gov\/outdoor\/65231.html", "isFamilyFriendly": true,
+        "displayUrl": "www.dec.ny.gov\/outdoor\/65231.html", "snippet": "New season
+        dates are posted in late summer, or you can visit Future Big Game Hunting
+        Seasons to determine future dates for big game. Print or download a convenient
+        summary of all the 2018-19 Hunting Seasons (PDF, 4.3 MB) to carry in your
+        pack or vest.", "dateLastCrawled": "2019-01-31T21:48:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Tennessee Deer Season Regulations and Information", "url": "https:\/\/www.tn.gov\/twra\/hunting\/big-game\/deer.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.tn.gov\/twra\/hunting\/big-game\/deer.html",
+        "snippet": "A new hunting season has been created for Fayette, Hardeman,
+        and McNairy Counties starting January 7 through January 31, 2019. The antlered
+        bag limit is 1. There is not a limit on antlerless deer.", "dateLastCrawled":
+        "2019-01-31T10:21:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7", "name":
+        "Fishing Seasons - Wisconsin DNR", "url": "http:\/\/dnr.wi.gov\/topic\/Fishing\/seasons\/index.html",
+        "isFamilyFriendly": true, "displayUrl": "dnr.wi.gov\/topic\/Fishing\/seasons\/index.html",
+        "snippet": "Fishing season dates - Plan your fun! Download the fishing
+        season dates for 2019-2020 [PDF] to plan your fishing trips. Dates for
+        fishing seasons are organized alphabetically by fish species. This information
+        is provided for general orientation only.", "dateLastCrawled": "2019-01-31T07:43:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Montana Fish, Wildlife & Parks :: Season Dates", "url": "http:\/\/fwp.mt.gov\/hunting\/seasons\/",
+        "about": [{"name": "Montana Department of Fish, Wildlife and Parks"}], "isFamilyFriendly":
+        true, "displayUrl": "fwp.mt.gov\/hunting\/seasons", "snippet": "Date Setting
+        Process. Click on the calendar icon in the table(s) to see the date setting
+        process for each species\/hunting season.", "dateLastCrawled": "2019-02-01T10:04:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Deer and Bear Hunting Seasons", "url": "http:\/\/www.dec.ny.gov\/outdoor\/28605.html",
+        "isFamilyFriendly": true, "displayUrl": "www.dec.ny.gov\/outdoor\/28605.html",
+        "snippet": "Deer Hunting Seasons. Note: Hunters using a crossbow during
+        the last 10 days of the early bow season in the Northern Zone are not subject
+        to the antlered deer-only requirement of the early muzzleloader season
+        in WMUs 6A, 6F, 6J, and 6N, despite the overlap in season dates. 2018 Deer
+        Hunting Season Dates", "dateLastCrawled": "2019-02-01T04:52:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Montana Fish, Wildlife & Parks :: Elk Shoulder Seasons", "url":
+        "http:\/\/fwp.mt.gov\/hunting\/seasons\/elkShoulder\/", "isFamilyFriendly":
+        true, "displayUrl": "fwp.mt.gov\/hunting\/seasons\/elkShoulder", "snippet":
+        "A shoulder season is a firearms season that occurs outside the 5-week
+        general firearms and archery seasons. While most shoulder seasons focus on
+        antlerless elk harvest on private land and are not intended to replace or
+        reduce harvest during the existing archery or 5-week general firearms seasons,
+        a few are meant to address problematic distribution of elk.", "dateLastCrawled":
+        "2019-01-30T21:04:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11", "name":
+        "The Flu Season | CDC", "url": "https:\/\/www.cdc.gov\/flu\/about\/season\/flu-season.htm",
+        "about": [{"name": "Influenza (flu)"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.cdc.gov\/flu\/about\/season\/flu-season.htm", "snippet":
+        "When is the flu season in the United States? In the United States, flu
+        season occurs in the fall and winter. While influenza viruses circulate year-round,
+        most of the time flu activity peaks between December and February, but activity
+        can last as late as May.", "dateLastCrawled": "2019-02-01T13:59:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Fishing Seasons | MDC Hunting and Fishing", "url": "https:\/\/huntfish.mdc.mo.gov\/fishing\/seasons",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/huntfish.mdc.mo.gov\/fishing\/seasons",
+        "snippet": "Fishing Seasons. by Date; by Species; Nongame Fish - Bow Fishing,
+        Impounded Waters. Dates: Apr 01 2018 to Jan 31 2019 Feb 01 2019 to Mar 31
+        2019. ... Limits are set for each species and hunting or trapping season.
+        Check the species and season listings for information about limits. Allowed
+        & Prohibited Methods.", "dateLastCrawled": "2019-01-31T09:19:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Ocean Salmon Seasons", "url": "https:\/\/www.wildlife.ca.gov\/Fishing\/Ocean\/Regulations\/Salmon",
+        "about": [{"name": "Salmon"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.wildlife.ca.gov\/Fishing\/Ocean\/Regulations\/Salmon",
+        "snippet": "Any person who lands salmon shall keep a copy of all landing
+        receipts documenting salmon landings on board the fishing vessel that caught
+        the salmon until 15 days after the last salmon season closure for the
+        calendar year (CCR T14 §182, FGC §8043).", "dateLastCrawled": "2019-01-24T17:14:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "DNR - Season Information", "url": "https:\/\/www.michigan.gov\/dnr\/0,4570,7-350-79119_79147_82106---,00.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.michigan.gov\/dnr\/0,4570,7-350-79119_79147_82106---,00.html",
+        "snippet": "Season Dates for All Species. Note: Seasons marked with an *
+        indicate the season dates are the same each year. Fur Harvester Information
+        (includes Muskrat, Mink, Raccoon, Fox, Bobcat, Badger, Fisher\/Marten, Beaver,
+        Otter, and Coyote): See page 6 of the Michigan Hunting and Trapping Digest.",
+        "dateLastCrawled": "2019-01-29T12:33:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Hunting dates and deadlines - Wisconsin DNR", "url": "https:\/\/dnr.wi.gov\/topic\/hunt\/dates.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/dnr.wi.gov\/topic\/hunt\/dates.html",
+        "snippet": "Contact information For information on hunting season dates
+        and deadlines, contact: DNR Customer Service Toll Free 1-888-WDNRINFo (1-888-936-7463)",
+        "dateLastCrawled": "2019-02-01T11:11:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Current & Past Flu Seasons | CDC", "url": "https:\/\/www.cdc.gov\/flu\/about\/season\/index.html",
+        "about": [{"name": "Influenza (flu)"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.cdc.gov\/flu\/about\/season\/index.html", "snippet": "Current
+        & Past Flu Seasons. Language: English (US) Español; Recommend on Facebook
+        Tweet Share Compartir. In the United States, flu season occurs in the fall
+        and winter. The peak of flu season has occurred anywhere from late November
+        through March. CDC recommends:", "dateLastCrawled": "2019-01-31T15:05:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Tennessee Turkey Season Regulations and Information", "url":
+        "https:\/\/www.tn.gov\/twra\/hunting\/big-game\/turkey.html", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.tn.gov\/twra\/hunting\/big-game\/turkey.html",
+        "snippet": "Statewide Fall Turkey Season Dates. During the fall turkey seasons
+        a turkey hunter may not be in possession of both archery equipment and shotguns
+        and\/or rifles.Any turkey harvested during these seasons count toward the
+        county bag limit.", "dateLastCrawled": "2019-02-01T04:14:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "2018-19 Tennessee Hunting Seasons Summary", "url": "https:\/\/www.tn.gov\/content\/dam\/tn\/twra\/documents\/hunting_seasons_summary.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.tn.gov\/...\/tn\/twra\/documents\/hunting_seasons_summary.pdf",
+        "snippet": "2018-19 Tennessee Hunting Seasons Summary. Please refer to
+        the . 2018-19 Tennessee Hunting and Trapping Guide . for detailed hunting
+        dates, bag limits, zones, units, and required licenses and\/or permits. ...
+        Training Season . Year-round, except where prohibited by local ordinances.
+        No take permitted.", "dateLastCrawled": "2019-01-30T16:08:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Deer - Illinois DNR", "url": "https:\/\/www.dnr.illinois.gov\/hunting\/deer\/Pages\/DeerSeasonsDeadlinesAvailablePermits.aspx",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.dnr.illinois.gov\/hunting\/deer\/Pages\/DeerSeasons...",
+        "snippet": "Nonresidents may not purchase a Combination Archery Deer permit
+        after September 30 if they have previously purchased any Single Antlerless-Only
+        Archery Deer permit for the current deer season. 2019 Deer Archery
+        Application\/Sales Period (RESIDENTS OF IL)", "dateLastCrawled": "2019-01-31T19:47:00.0000000Z",
+        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Tue, 05 Feb 2019 21:45:50 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=estados%20unidos%20amiga%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 05 Feb 2019 21:44:50 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 5E061C8AFB5C43C490DF71085853D50E
+      Bingapis-Sessionid:
+      - F5E45EC10F2341E7A0B64F4CBA785557
+      X-Msedge-Clientid:
+      - 1E861EB9C7F2643028461243C6BE6522
+      X-Msapi-Userstate:
+      - b64d
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=224,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: 5E061C8AFB5C43C490DF71085853D50E Ref B: BY3EDGE0114 Ref C: 2019-02-05T21:45:50Z'
+      Apim-Request-Id:
+      - 65914e3c-ac23-4b4c-b81a-2f52e975c377
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 05 Feb 2019 21:45:50 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "estados
+        unidos amiga (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=estados+unidos+amiga+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 35800, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Visita a los Estados Unidos | USCIS", "url": "https:\/\/www.uscis.gov\/es\/visita-los-estados-unidos",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.uscis.gov\/es\/visita-los-estados-unidos",
+        "snippet": "La visa B-2 es para individuos que desean visitar los Estados
+        Unidos temporalmente o visitar a familiares o amigos. Si usted piensa
+        visitar los Estados Unidos, debe demostrar que: ... Si usted desea viajar
+        a los Estados Unidos por razones que no sean de negocios o placer, debe
+        solicitar una visa en la categoría apropiada. ...", "dateLastCrawled": "2019-01-29T01:04:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Embajada de los Estados Unidos en Cuba - cu.usembassy.gov", "url":
+        "https:\/\/cu.usembassy.gov\/es\/visas-es\/immigrant-visas-es\/cuban-parole-programs-es\/cp3-es\/programacion-de-cita\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/cu.usembassy.gov\/es\/visas-es\/immigrant-visas-es\/cuban...",
+        "snippet": "Familiares y amigos en los Estados Unidos pueden programar
+        citas de CP3 llamando al 1-866-374-1769 desde cualquier lugar dentro de los
+        EE.UU o al (52) 477-690-3521 desde Cuba o cualquier otro país, de 8:00 a.m
+        a 5:00 p.m. (Hora del Este), de lunes a viernes.", "dateLastCrawled": "2019-01-31T04:57:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Bienvenido a los Estados Unidos de América Guía para ...", "url":
+        "https:\/\/www.uscis.gov\/sites\/default\/files\/files\/nativedocuments\/M-618_sp.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.uscis.gov\/sites\/default\/files\/files\/nativedocuments\/M...",
+        "snippet": "Estados Unidos también incluye los territorios de Guam, Samoa
+        Americana, las Islas Vírgenes estadounidenses y la Mancomunidad de las Islas
+        Marianas del Norte y el Estado Libre Asociado de Puerto Rico, que no aparecen
+        en este mapa. 4 . Días feriados nacionales.", "dateLastCrawled": "2019-02-01T16:05:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Visa de no inmigrante | Embajada de los Estados Unidos en ...",
+        "url": "https:\/\/gt.usembassy.gov\/es\/visas-es\/nonimmigrant-visas-es\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/gt.usembassy.gov\/es\/visas-es\/nonimmigrant-visas-es",
+        "snippet": "Por razones de seguridad y capacidad, la Sección Consular de la
+        Embajada de los Estados Unidos de América no permite el ingreso de partes
+        interesadas, tales como: amigos, familia, abogados y socios; exceptuando
+        a los padres o tutores acompañando a menores de edad, personas de la tercera
+        edad o solicitantes con necesidades especiales o ...", "dateLastCrawled":
+        "2019-02-01T00:08:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4", "name":
+        "Soy ciudadano de los Estados Unidos A3 - uscis.gov", "url": "https:\/\/www.uscis.gov\/sites\/default\/files\/files\/article\/A3esp.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.uscis.gov\/sites\/default\/files\/files\/article\/A3esp.pdf",
+        "snippet": "A3—Soy cuidadano de los Estados Unidos…¿Cómo puedo traer a
+        los Estados Unidos a mi hijo adoptivoo a un niño que quiero adoptar, o
+        cómo puedo ayudar a mi hijo adoptivo a adquirir la residencia permanente o
+        ciudadanía en los Estados Unidos? M-556S (Febrero 2014) N.", "dateLastCrawled":
+        "2019-02-01T07:18:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5", "name":
+        "Tarifas | Embajada y Consulado de EE.UU. en Ecuador", "url": "https:\/\/ec.usembassy.gov\/es\/u-s-citizen-services-es\/passports-es\/fees-es\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/ec.usembassy.gov\/es\/u-s-citizen-services-es\/passports-es\/...",
+        "snippet": "Estados Unidos Permitirá la Importación de Tomate de Árbol
+        de Ecuador; ... le podemos ayudar a ponerse en contacto con su familia o amigos
+        en los Estados Unidos, por favor lea la información en la sección de Asistencia
+        financiera de emergencia. Excepciones.", "dateLastCrawled": "2019-01-29T00:56:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Discursos Archives | Embajada de EE.UU. en España y Andorra", "url":
+        "https:\/\/es.usembassy.gov\/es\/category\/discursos\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/es.usembassy.gov\/es\/category\/discursos",
+        "snippet": "Washington, DC 11 de octubre de 2017 En nombre del gobierno de
+        los Estados Unidos de América, envío nuestros mejores deseos al pueblo
+        de España con motivo de la celebración de su Fiesta Nacional. Estados Unidos
+        y España son grandes amigos y sólidos aliados.", "dateLastCrawled": "2019-01-25T22:58:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Familiares y amigos - peacecorps.gov", "url": "https:\/\/www.peacecorps.gov\/family-and-friends\/espanol\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.peacecorps.gov\/family-and-friends\/espanol",
+        "snippet": "En caso de emergencia, los familiares y amigos del Voluntario
+        en servicio pueden comunicarse con un miembro del personal del Cuerpo de Paz
+        durante las 24 horas, los 7 días de la semana, mediante una línea de emergencia
+        gratuita. ... ya que algunas enfermedades que se tratan fácilmente en los
+        Estados Unidos pueden presentar desafíos en los ...", "dateLastCrawled":
+        "2019-02-04T18:28:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8", "name":
+        "Visados | U.S. Embassy in El Salvador", "url": "https:\/\/sv.usembassy.gov\/es\/visas-es\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/sv.usembassy.gov\/es\/visas-es",
+        "snippet": "las Secciones Consulares de los Estados Unidos no permiten
+        que ningún tipo de acompañante, como amigos, parientes, abogados o contactos
+        de negocios, se presente a la entrevista junto con el solicitante debido a
+        políticas de seguridad y limitantes de espacio. Existen las siguientes excepciones:",
+        "dateLastCrawled": "2019-02-01T07:02:00.0000000Z", "language": "es", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Negocios & Turismo (B1\/B2) | Embajada y consulados de ...", "url":
+        "https:\/\/mx.usembassy.gov\/es\/visas-es\/turismo-y-visitantes\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/mx.usembassy.gov\/es\/visas-es\/turismo-y-visitantes",
+        "snippet": "Ciudadanos de los Estados Unidos en alguna situación de emergencia,
+        llamar al: 01 55 8526 2561. Llamadas fuera de horario de oficina, contacte
+        a: 01 55 5080 2000 . Llamando fuera de Mexico: 1-844-528-6611. ... visitar
+        amigos y parientes, obtener tratamientos médicos, etc. La visa B1 y B2 no
+        es válida para obtener empleo en Estados Unidos de ...", "dateLastCrawled":
+        "2019-02-01T10:22:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10", "name":
+        "240 Aniversario de la Independencia de EE.UU. | Embajada ...", "url": "https:\/\/ni.usembassy.gov\/es\/240-aniversario-de-la-independencia-de-ee-uu\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/ni.usembassy.gov\/es\/240-aniversario-de-la-independencia-de...",
+        "snippet": "Muchas gracias por acompañarnos esta noche para celebrar el 240
+        aniversario de la independencia de los Estados Unidos. Deseo agradecer
+        especialmente a nuestros patrocinadores que pueden ver en nuestras pantallas.
+        ... desfiles comunitarios, juegos artificiales o por último pasándola junto
+        a familiares y amigos. Como con toda celebración, es ...", "dateLastCrawled":
+        "2019-01-23T04:46:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11", "name":
+        "El Embajador de los EE.UU. da la bienvenida a 25 nuevos ...", "url": "https:\/\/co.usembassy.gov\/es\/el-embajador-de-los-ee-uu-da-la-bienvenida-a-25-nuevos-voluntarios-del-cuerpo-de-paz\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/co.usembassy.gov\/es\/el-embajador-de-los-ee-uu-da-la...",
+        "snippet": "Durante la ceremonia, el embajador de los Estados Unidos se
+        dirigió a los nuevos voluntarios diciendo: “ustedes representan lo mejor de
+        nosotros.” El enfatizó: “ estoy muy agradecido con ustedes por el compromiso
+        que desde ya demuestran y por lo que harán aquí en Colombia, uno de nuestros
+        mejores amigos en el hemisferio”.", "dateLastCrawled": "2019-01-26T17:35:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Perguntas frequentes sobre vistos de imigrantes ...", "url": "https:\/\/br.usembassy.gov\/pt\/visas-pt\/perguntas-frequentes-sobre-vistos-de-imigrantes\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/br.usembassy.gov\/pt\/visas-pt\/perguntas-frequentes-sobre...",
+        "snippet": "Sou residente permanente legal e não pretendo mais morar nos Estados
+        Unidos, porém gostaria de poder visitar alguns parentes e amigos que tenho
+        neste país. O que devo fazer? Caso seja um Residente Permanente Legal e queira
+        solicitar a renúncia ao status de residente Permanente legal, p or favor,
+        leia aqui todas as instruções sobre a ...", "dateLastCrawled": "2019-02-01T15:24:00.0000000Z",
+        "language": "pt", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Fallecimiento de un ciudadano de EE.UU. | Embajada de los ...", "url":
+        "https:\/\/pa.usembassy.gov\/es\/u-s-citizen-services-es\/death-of-a-u-s-citizen-es\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/pa.usembassy.gov\/es\/u-s-citizen-services-es\/death-of-a-u-s...",
+        "snippet": "La Unidad de Servicios para Ciudadanos Americanos (ACS) puede
+        asistir a familiar y amigos en un evento de muerte de un ciudadano Americano
+        en Panamá. La Unidad ACS puede notificar al pariente más cercano en los Estados
+        Unidos, actuar como enlace para arreglar la disposición de los restos y
+        ayudar con el envío de los ...", "dateLastCrawled": "2019-01-28T10:47:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "¡Feliz día de Acción de Gracias! | Embajada de EE.UU. en ...", "url":
+        "https:\/\/es.usembassy.gov\/es\/feliz-dia-de-accion-de-gracias\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/es.usembassy.gov\/es\/feliz-dia-de-accion-de-gracias",
+        "snippet": "Para los ciudadanos extranjeros que quieren vivir permanentemente
+        en los Estados Unidos. Para leer más. Programa de exención de visados.
+        TEl Programa de exención de visado ... la familia Buchan quiere expresar su
+        agradecimiento a sus nuevos amigos de España y Andorra y desear a todos
+        de corazón un feliz día de Acción de Gracias. Video ...", "dateLastCrawled":
+        "2019-01-19T10:23:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15", "name":
+        "Como Solicitar | Embaixada dos EUA em Moçambique", "url": "https:\/\/mz.usembassy.gov\/pt\/visas-pt\/nonimmigrant-visas-tourism-visit-pt\/how-to-apply-pt\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/mz.usembassy.gov\/pt\/visas-pt\/nonimmigrant-visas-tourism...",
+        "snippet": "Nota: Os requerentes devem qualificar-se com base na sua residência
+        e laços fora dos Estados Unidos, ao invés de seguros de família e amigos
+        nos Estados Unidos. Uma carta convite ou um termo de responsabilidade
+        não é um requisito para a solicitação de um visto de não-imigrante de turismo.",
+        "dateLastCrawled": "2019-01-31T09:57:00.0000000Z", "language": "pt", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Emma: Una presencia amiga y un recurso innovador de USCIS ...",
+        "url": "https:\/\/www.uscis.gov\/es\/archivo\/blog\/2016\/09\/emma-una-presencia-amiga-y-un-recurso",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.uscis.gov\/...\/09\/emma-una-presencia-amiga-y-un-recurso",
+        "snippet": "Emma no es sólo una cara amiga. Es un recurso poderoso e innovador
+        disponible 24\/7 que puede responder a sus preguntas de inmigración en cuestión
+        de segundos Emma es parte de USCIS.gov desde diciembre de 2015 y desde entonces
+        ha contestado 456.000 preguntas al mes en nuestro sitio web en inglés.", "dateLastCrawled":
+        "2019-01-23T07:48:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17", "name":
+        "Visa de Inmigrante - La entrevista | Embajada de EE.UU. en ...", "url": "https:\/\/co.usembassy.gov\/es\/visas-es\/immigrant-visas-es\/family-based-immigration-es\/immigrant-visa-interview-es\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/co.usembassy.gov\/es\/visas-es\/immigrant-visas-es\/family...",
+        "snippet": "Para los ciudadanos extranjeros que quieren vivir permanentemente
+        en los Estados Unidos. Para leer más. ... Choferes, amigos, otros parientes
+        y demás personas que no sean casos como los ya especificados anteriormente
+        en el párrafo anterior no se les será permitida la entrada. Igualmente, no
+        se les permitirá a los abogados acompañar a los ...", "dateLastCrawled": "2019-01-30T17:21:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Amigos de las Américas Archivo | Embajada de Estados ...", "url":
+        "https:\/\/uy.usembassy.gov\/es\/tag\/amigos-de-las-americas\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/uy.usembassy.gov\/es\/tag\/amigos-de-las-americas",
+        "snippet": "La Embajada de Estados Unidos, DESEM Jóvenes Emprendedores
+        y la Fundación Amigos de las Américas seleccionarán familias anfitrionas
+        que reciban a sus hogares a participantes del programa Jóvenes Embajadores
+        provenientes de los Estados Unidos.", "dateLastCrawled": "2019-01-29T11:55:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Visados | Embajada de EE.UU. en España y Andorra", "url": "https:\/\/es.usembassy.gov\/es\/visas-es\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/es.usembassy.gov\/es\/visas-es",
+        "snippet": "Viajar a los Estados Unidos es bienvenida y alentada. Nos
+        comprometemos a que el solicitante del visado, que: ... No se permitirá el
+        acceso a familiares, amigos, abogados, etc. Las entrevistas en Madrid se
+        realizan en inglés y español. Si necesita un intérprete, ...", "dateLastCrawled":
+        "2019-01-31T14:21:00.0000000Z", "language": "es", "isNavigational": false}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Tue, 05 Feb 2019 21:45:51 GMT
 recorded_with: VCR 4.0.0
