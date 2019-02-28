@@ -18,11 +18,11 @@ describe "Bulk Import rake tasks" do
         expect(@rake[task_name].prerequisites).to include("environment")
       end
 
-      context "when a file and default user email is specified" do
+      context 'when a file and default user email is specified' do
         before do
           @user = users(:affiliate_manager)
           Affiliate.where("name LIKE ?", "test%").each{|aff| aff.destroy }
-          @existing_affiliate = Affiliate.create({:name => 'test1', :display_name => 'Test 1'}, :as => :test)
+          @existing_affiliate = Affiliate.create(name: 'test1', display_name: 'Test 1')
           @existing_affiliate.users << @user
           @existing_affiliate.site_domains << SiteDomain.new(:domain => 'domain1.gov')
           @xml_file_path = File.join(Rails.root.to_s, "spec", "fixtures", "xml", "google_bulk.xml")

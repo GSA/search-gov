@@ -38,9 +38,6 @@ Rails.application.configure do
   config.static_cache_control = "public, max-age=3600"
 
   config.active_job.queue_adapter = :test
-
-  # Raise exception on mass assignment protection for Active Record models
-  config.active_record.mass_assignment_sanitizer = :strict
 end
 
 ADDITIONAL_BING_PARAMS = { 'traffictype' => 'test' }

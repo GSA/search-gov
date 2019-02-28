@@ -180,10 +180,12 @@ describe BoostedContent do
     end
   end
 
-  context "when the affiliate associated with a particular Boosted Content is destroyed" do
+  context 'when the affiliate associated with a ' \
+          'particular Boosted Content is destroyed' do
     before do
-      affiliate = Affiliate.create!({ :display_name => "Test Affiliate", :name => 'test_affiliate' }, :as => :test)
-      BoostedContent.create(valid_attributes.merge(:affiliate => affiliate))
+      affiliate = Affiliate.create!(display_name: 'Test Affiliate',
+                                    name: 'test_affiliate')
+      BoostedContent.create(valid_attributes.merge(affiliate: affiliate))
       affiliate.destroy
     end
 
