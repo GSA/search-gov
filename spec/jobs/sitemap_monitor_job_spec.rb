@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe SitemapMonitorJob do
-  let(:args) { nil }
   let(:searchgov_domain) { instance_double(SearchgovDomain) }
   subject(:perform) { SitemapMonitorJob.perform_now }
 
