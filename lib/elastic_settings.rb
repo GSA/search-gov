@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 module ElasticSettings
-  KEYWORD = { type: 'string', analyzer: 'case_insensitive_keyword_analyzer' }
+  KEYWORD = { type: 'text',
+              analyzer: 'case_insensitive_keyword_analyzer' }.freeze
 
   COMMON = {
     index: {

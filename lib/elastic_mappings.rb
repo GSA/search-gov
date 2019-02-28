@@ -1,23 +1,20 @@
 module ElasticMappings
   COMMON = {
     dynamic: :strict,
-    _analyzer: { path: "language" },
+    _analyzer: { path: 'language' },
     properties: {
-      language: { type: "string", index: :not_analyzed },
+      language: { type: 'keyword', index: true },
       affiliate_id: { type: 'integer' },
-      id: { type: 'integer', index: :not_analyzed }
-    }
+      id: { type: 'integer', index: :not_analyzed } }
   }.freeze
 
   BEST_BET = COMMON.deep_merge(
     properties: {
-      status: { type: 'string', index: :not_analyzed },
+      status: { type: 'keyword', index: true },
       publish_start_on: { type: 'date', format: 'YYYY-MM-dd' },
       publish_end_on: { type: 'date', format: 'YYYY-MM-dd', null_value: '9999-12-31' },
-      title: { type: 'string', term_vector: 'with_positions_offsets' },
-      match_keyword_values_only: { type: 'boolean',
-                                   index: :not_analyzed,
-                                   null_value: 'false' },
+      title: { type: 'text', term_vector: 'with_positions_offsets' },
+      match_keyword_values_only: { type: 'boolean', index: :not_analyzed, include_in_all: false, null_value: 'false' },
       keyword_values: ElasticSettings::KEYWORD }
   ).freeze
 
