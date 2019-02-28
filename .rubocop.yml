@@ -1666,12 +1666,12 @@ Metrics/CyclomaticComplexity:
   Max: 6
 
 Metrics/LineLength:
-  Description: 'Limit lines to 80 characters.'
+  Description: 'Limit lines to 90 characters.'
   StyleGuide: '#80-character-limits'
   Enabled: true
   VersionAdded: 0.25
   VersionChanged: 0.46
-  Max: 80
+  Max: 90
   # To make it possible to copy or click on URIs in the code, we allow lines
   # containing a URI to be longer than Max.
   AllowHeredoc: true

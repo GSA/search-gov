@@ -14,11 +14,6 @@ class SearchgovUrl < ActiveRecord::Base
                                 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
                               ]
 
-  attr_accessible :last_crawl_status,
-                  :last_crawled_at,
-                  :url,
-                  :lastmod,
-                  :enqueued_for_reindex
   attr_reader :response, :document, :tempfile
   attr_readonly :url
 

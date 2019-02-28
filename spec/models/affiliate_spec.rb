@@ -154,22 +154,24 @@ describe Affiliate do
         expect(Affiliate.create!(valid_create_attributes).is_sayt_enabled).to be true
       end
 
-      it "should generate a database-level error when attempting to add an affiliate with the same name as an existing affiliate, but with different case; instead it should return false" do
-        affiliate = Affiliate.new(valid_attributes, :as => :test)
+      it 'should generate a database-level error when attempting to add an ' \
+         'affiliate with the same name as an existing affiliate, but with ' \
+         'different case; instead it should return false' do
+        affiliate = Affiliate.new(valid_attributes)
         affiliate.name = valid_attributes[:name]
         affiliate.save!
-        duplicate_affiliate = Affiliate.new(valid_attributes, :as => :test)
+        duplicate_affiliate = Affiliate.new(valid_attributes)
         duplicate_affiliate.name = valid_attributes[:name].upcase
         expect(duplicate_affiliate.save).to be false
       end
 
       it "should populate default search label for English site" do
-        affiliate = Affiliate.create!(valid_attributes.merge(:locale => 'en'), :as => :test)
+        affiliate = Affiliate.create!(valid_attributes.merge(locale: 'en'))
         expect(affiliate.default_search_label).to eq('Everything')
       end
 
       it "should populate default search labels for Spanish site" do
-        affiliate = Affiliate.create!(valid_attributes.merge(:locale => 'es'), :as => :test)
+        affiliate = Affiliate.create!(valid_attributes.merge(locale: 'es'))
         expect(affiliate.default_search_label).to eq('Todo')
       end
 
@@ -275,15 +277,15 @@ describe Affiliate do
       expect(Affiliate.find(affiliate.id).staged_footer).to eq('staged footer')
     end
 
-    it "should populate search labels for English site" do
-      english_affiliate = Affiliate.create!(valid_attributes.merge(:locale => 'en'), :as => :test)
+    it 'should populate search labels for English site' do
+      english_affiliate = Affiliate.create!(valid_attributes.merge(locale: 'en'))
       english_affiliate.default_search_label = ''
       english_affiliate.save!
       expect(english_affiliate.default_search_label).to eq('Everything')
     end
 
     it "should populate search labels for Spanish site" do
-      spanish_affiliate = Affiliate.create!(valid_attributes.merge(:locale => 'es'), :as => :test)
+      spanish_affiliate = Affiliate.create!(valid_attributes.merge(locale: 'es'))
       spanish_affiliate.default_search_label = ''
       spanish_affiliate.save!
       expect(spanish_affiliate.default_search_label).to eq('Todo')
@@ -1132,7 +1134,7 @@ describe Affiliate do
         <h1 id="my_header">header</h1>
       HTML
 
-      affiliate = Affiliate.create!(valid_attributes.merge(:header => tainted_header), :as => :test)
+      affiliate = Affiliate.create!(valid_attributes.merge(header: tainted_header))
       expect(affiliate.sanitized_header.strip).to eq(%q(<h1 id="my_header">header</h1>))
     end
   end
@@ -1146,7 +1148,7 @@ describe Affiliate do
         <h1 id="my_footer">footer</h1>
       HTML
 
-      affiliate = Affiliate.create!(valid_attributes.merge(:footer => tainted_footer), :as => :test)
+      affiliate = Affiliate.create!(valid_attributes.merge(footer: tainted_footer))
       expect(affiliate.sanitized_footer.strip).to eq(%q(<h1 id="my_footer">footer</h1>))
     end
   end
