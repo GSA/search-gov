@@ -22,7 +22,7 @@ class ElasticNewsItem
         publisher: { type: 'string', analyzer: 'keyword' },
         bigram: { type: 'string', analyzer: 'bigram_analyzer'},
         tags: { type: 'string', analyzer: 'keyword' },
-        id: { type: 'integer', index: :not_analyzed, include_in_all: false } }
+        id: { type: 'integer', index: :not_analyzed } }
     }
   }
 
