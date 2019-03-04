@@ -6,7 +6,7 @@ class ElasticTweet
   self.mappings = {
     index_type => {
       dynamic: :strict,
-      _analyzer: { path: "language" },
+      _analyzer: { path: 'language' },
       properties: {
         language: { type: 'keyword', index: true },
         twitter_profile_id: { type: 'long' },
