@@ -23,11 +23,11 @@ class ElasticNewsItem
         published_at: { type: 'date' },
         popularity: { type: 'integer' },
         link: ElasticSettings::KEYWORD,
-        contributor: { type: 'text', analyzer: 'keyword' },
-        subject: { type: 'text', analyzer: 'keyword' },
-        publisher: { type: 'text', analyzer: 'keyword' },
+        contributor: { type: 'keyword' },
+        subject: { type: 'keyword' },
+        publisher: { type: 'keyword' },
         bigram: { type: 'text', analyzer: 'bigram_analyzer' },
-        tags: { type: 'text', analyzer: 'keyword' },
+        tags: { type: 'keyword' },
         id: { type: 'integer', index: :not_analyzed } }
     }
   }
