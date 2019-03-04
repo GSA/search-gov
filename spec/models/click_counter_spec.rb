@@ -39,12 +39,14 @@ describe ClickCounter do
         let!(:searchgov_url) { SearchgovUrl.create!(url: url) }
 
         before do
-          allow(I14yDocument).to receive(:update).and_raise(I14yDocument::I14yDocumentError)
+          allow(I14yDocument).to receive(:update).
+            and_raise(I14yDocument::I14yDocumentError, 'fail')
         end
 
         it 'logs the unindexed URL' do
-          expect(Rails.logger).to receive(:error).
-            with('I14yDocument not found for clicked URL: http://agency.gov/')
+          expect(Rails.logger).to receive(:error).with(
+            'Unable to update I14yDocument click_count for http://agency.gov/: fail'
+          )
           update_click_counts
         end
       end
