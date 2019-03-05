@@ -17,7 +17,7 @@ class ElasticFederalRegisterDocument
         federal_register_agency_ids: { type: 'integer' },
         title: { type: 'string', term_vector: 'with_positions_offsets', analyzer: 'en_analyzer' },
         significant: { type: 'boolean' },
-        id: { type: 'integer', index: :not_analyzed }
+        id: { type: 'integer' }
       }
     }
   }

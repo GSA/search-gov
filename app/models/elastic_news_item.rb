@@ -9,7 +9,7 @@ class ElasticNewsItem
       dynamic: :strict,
       _analyzer: { path: "language" },
       properties: {
-        language: { type: "string", index: :not_analyzed },
+        language: { type: 'keyword', index: true },
         rss_feed_url_id: { type: 'integer' },
         title: { type: 'string', term_vector: 'with_positions_offsets', copy_to: 'bigram' },
         description: { type: 'string', term_vector: 'with_positions_offsets', copy_to: 'bigram' },
@@ -22,7 +22,7 @@ class ElasticNewsItem
         publisher: { type: 'string', analyzer: 'keyword' },
         bigram: { type: 'string', analyzer: 'bigram_analyzer'},
         tags: { type: 'string', analyzer: 'keyword' },
-        id: { type: 'integer', index: :not_analyzed } }
+        id: { type: 'integer' } }
     }
   }
 
