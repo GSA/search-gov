@@ -7,7 +7,6 @@ class ElasticNewsItem
   self.mappings = {
     index_type => {
       dynamic: :strict,
-      _analyzer: { path: "language" },
       properties: {
         language: { type: 'keyword', index: true },
         rss_feed_url_id: { type: 'integer' },
