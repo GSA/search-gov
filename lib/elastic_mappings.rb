@@ -1,7 +1,6 @@
 module ElasticMappings
   COMMON = {
     dynamic: :strict,
-    _analyzer: { path: 'language' },
     properties: {
       language: { type: 'keyword', index: true },
       affiliate_id: { type: 'integer' },
