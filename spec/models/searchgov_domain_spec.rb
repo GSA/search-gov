@@ -60,9 +60,26 @@ describe SearchgovDomain do
   end
 
   describe 'validations' do
-    it 'validates the domain format' do
-      expect(SearchgovDomain.new(domain: 'foo')).not_to be_valid
-      expect(SearchgovDomain.new(domain: 'search.gov')).to be_valid
+    it { is_expected.to validate_presence_of :domain }
+
+    context 'when the domain is valid' do
+      let(:valid_domains) { %w[search.gov foo.bar.gov foo.bar.baz.museum] }
+
+      it 'is valid' do
+        valid_domains.each do |domain|
+          expect(SearchgovDomain.new(domain: domain)).to be_valid
+        end
+      end
+    end
+
+    context 'when the domain is invalid' do
+      let(:invalid_domains) { ['foo', 'foo.gov.', 'foo.gov/bar', 'foo.gov bar'] }
+
+      it 'is invalid' do
+        invalid_domains.each do |domain|
+          expect(SearchgovDomain.new(domain: domain)).not_to be_valid
+        end
+      end
     end
 
     it { is_expected.to validate_inclusion_of(:scheme).in_array %w(http https) }

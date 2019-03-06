@@ -5,7 +5,7 @@ module ElasticMappings
     properties: {
       language: { type: 'keyword', index: true },
       affiliate_id: { type: 'integer' },
-      id: { type: 'integer', index: :not_analyzed } }
+      id: { type: 'integer' } }
   }.freeze
 
   BEST_BET = COMMON.deep_merge(

@@ -12,7 +12,7 @@ class ElasticTweet
         twitter_profile_id: { type: 'long' },
         tweet_text: { type: 'text', term_vector: 'with_positions_offsets' },
         published_at: { type: 'date' },
-        id: { type: 'long', index: :not_analyzed }
+        id: { type: 'long' }
       }
     }
   }
