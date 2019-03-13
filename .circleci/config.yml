@@ -2,16 +2,37 @@
 #
 # Check https://circleci.com/docs/2.0/language-ruby/ for more details
 
-version: 2
-jobs:
+version: 2.1
 
-  checkout_code:
+executors:
+  test_executor:
     working_directory: ~/search-gov
+
     docker:
       # using custom image, see .circleci/images/primary/Dockerfile
-      - image: mothra/search.gov:011119
+      - image: searchgov/circleci:20190313
         environment:
           RAILS_ENV: test
+
+      - image: circleci/mysql:5.6
+        environment:
+          MYSQL_ALLOW_EMPTY_PASSWORD: true
+          MYSQL_ROOT_HOST: "%"
+
+      - image: redis:3.2
+
+commands:
+  prepare_database:
+    description: 'Prepare the test database'
+    steps:
+      - run: bundle exec rake db:create
+      # Configure MySQL 5.6 for ROW_FORMAT=DYNAMIC storage
+      - run: cat .circleci/database-configuration.sql | bundle exec rails db
+      - run: bundle exec rake db:structure:load
+
+jobs:
+  checkout_code:
+    executor: test_executor
 
     steps:
       - checkout
@@ -33,11 +54,7 @@ jobs:
             - ~/search-gov
 
   bundle_install:
-    working_directory: ~/search-gov
-    docker:
-      - image: mothra/search.gov:011119
-        environment:
-          RAILS_ENV: test
+    executor: test_executor
 
     steps:
       - restore_cache:
@@ -57,13 +74,10 @@ jobs:
             - vendor/bundle
 
   setup_elasticsearch:
+    executor: test_executor
+
     environment:
       COVERAGE: true
-    working_directory: ~/search-gov
-    docker:
-      - image: mothra/search.gov:011119
-        environment:
-          RAILS_ENV: test
 
     steps:
       - restore_cache:
@@ -94,19 +108,9 @@ jobs:
           paths: /home/circleci/search-gov/elasticsearch-1.7.3
 
   rspec:
-    working_directory: ~/search-gov
+    executor: test_executor
+
     parallelism: 2
-    docker:
-      - image: mothra/search.gov:011119
-        environment:
-          RAILS_ENV: test
-
-      - image: circleci/mysql:5.6
-        environment:
-          MYSQL_ALLOW_EMPTY_PASSWORD: true
-          MYSQL_ROOT_HOST: "%"
-
-      - image: redis:3.2
 
     steps:
       - restore_cache:
@@ -120,13 +124,7 @@ jobs:
       - restore_cache:
           key: elasticsearch
 
-      - run:
-          name: Prepare database
-          command: |
-            bundle exec rake db:create
-            # Configure MySQL 5.6 for ROW_FORMAT=DYNAMIC storage
-            cat .circleci/database-configuration.sql | bundle exec rails db
-            bundle exec rake db:structure:load
+      - prepare_database
 
       - run:
           name: Run Tests
@@ -160,19 +158,9 @@ jobs:
           destination: test-results
 
   cucumber:
-    working_directory: ~/search-gov
+    executor: test_executor
+
     parallelism: 6
-    docker:
-      - image: mothra/search.gov:011119
-        environment:
-          RAILS_ENV: test
-
-      - image: circleci/mysql:5.6
-        environment:
-          MYSQL_ALLOW_EMPTY_PASSWORD: true
-          MYSQL_ROOT_HOST: "%"
-
-      - image: redis:3.2
 
     steps:
       - restore_cache:
@@ -186,13 +174,7 @@ jobs:
       - restore_cache:
           key: elasticsearch
 
-      - run:
-          name: Prepare database
-          command: |
-            bundle exec rake db:create
-            # Configure MySQL 5.6 for ROW_FORMAT=DYNAMIC storage
-            cat .circleci/database-configuration.sql | bundle exec rails db
-            bundle exec rake db:structure:load
+      - prepare_database
 
       - run:
           name: Run Tests
@@ -228,11 +210,7 @@ jobs:
           destination: test-results
 
   report_coverage:
-    working_directory: ~/search-gov
-    docker:
-      - image: mothra/search.gov:011119
-        environment:
-          RAILS_ENV: test
+    executor: test_executor
 
     steps:
       - restore_cache:
