@@ -299,7 +299,6 @@ describe WebSearch do
         end
         ElasticIndexedDocument.commit
         expect(@non_affiliate.indexed_documents.size).to eq(15)
-        binding.pry
         expect(ElasticIndexedDocument.search_for(q:'indexed', affiliate_id: @non_affiliate.id, language: @non_affiliate.indexing_locale).total).to eq(15)
       end
 
