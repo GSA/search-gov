@@ -6,7 +6,7 @@ class ElasticTextFilteredQuery < ElasticQuery
 
   def filtered_query(json)
     json.query do
-      json.filtered do
+      json.bool do
         filtered_query_query(json)
         filtered_query_filter(json)
       end
@@ -14,14 +14,12 @@ class ElasticTextFilteredQuery < ElasticQuery
   end
 
   def filtered_query_query(json)
-    json.query do
-      json.bool do
-        json.must do
-          json.child! { query_string(json, highlighted_fields, @q, query_string_options) }
-          json.child! { multi_match(json, highlighted_fields, @q, multi_match_options) }
-        end
+    if @q.present?
+      json.must do
+        json.child! { query_string(json, highlighted_fields, @q, query_string_options) }
+        json.child! { multi_match(json, highlighted_fields, @q, multi_match_options) }
       end
-    end if @q.present?
+    end
   end
 
   def query_string(json, fields, query, options = {})

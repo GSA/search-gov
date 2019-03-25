@@ -123,6 +123,7 @@ module Indexable
   def search(query)
     params = { preference: '_local', index: reader_alias, type: index_type, body: query.body, from: query.offset, size: query.size }
     params.merge!(sort: query.sort) if query.sort.present?
+
     result = ES::CustomIndices.client_reader.search(params)
     result['hits']['offset'] = query.offset
     "#{self.name}Results".constantize.new(result)

@@ -15,7 +15,7 @@ describe ElasticTweet do
     ElasticTweet.commit
   end
 
-  describe ".search_for" do
+  pending ".search_for" do
     describe "results structure" do
       context 'when there are results' do
 
@@ -42,7 +42,7 @@ describe ElasticTweet do
       end
     end
 
-    describe "filters" do
+    pending "filters" do
 
       context 'when Twitter profile IDs are specified' do
         it "should restrict results to the tweets with those Twitter profile IDs" do
@@ -80,7 +80,7 @@ describe ElasticTweet do
 
     end
 
-    describe "sorting" do
+    pending "sorting" do
       it "should show newest first, by default" do
         search = ElasticTweet.search_for(q: 'america', twitter_profile_ids: [12345, 2196784676], language: 'en')
         expect(search.total).to eq(3)
