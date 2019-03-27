@@ -26,6 +26,7 @@ executors:
           http.port: 9256
           cluster.name: es56
           xpack.security.enabled: false
+          ES_JAVA_OPTS: '-Xms750m -Xmx750m'
 
 commands:
   prepare_database:
