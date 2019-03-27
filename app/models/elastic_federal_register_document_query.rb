@@ -49,14 +49,14 @@ class ElasticFederalRegisterDocumentQuery < ElasticTextFilteredQuery
   end
 
   def filtered_query_query(json)
-    json.query do
+    if @q.present?
       json.bool do
         json.set! :should do |should_json|
           should_json.child! { should_json.terms { should_json.document_number @q.split(/\s+/) } }
           should_json.child! { multi_match(should_json, highlighted_fields, @q, multi_match_options) }
         end
       end
-    end if @q.present?
+    end
   end
 
   def multi_match_options
