@@ -38,5 +38,9 @@ class ClickCounter
                         handle: 'searchgov')
   rescue ActiveRecord::RecordNotFound
     Rails.logger.error("SearchgovUrl not found for clicked URL: #{url}")
+  rescue I14yDocument::I14yDocumentError => error
+    Rails.logger.error(
+      "Unable to update I14yDocument click_count for #{url}: #{error}"
+    )
   end
 end
