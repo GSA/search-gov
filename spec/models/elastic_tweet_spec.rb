@@ -43,7 +43,6 @@ describe ElasticTweet do
     end
 
     describe "filters" do
-
       context 'when Twitter profile IDs are specified' do
         it "should restrict results to the tweets with those Twitter profile IDs" do
           search = ElasticTweet.search_for(q: 'america', twitter_profile_ids: [2196784676], language: 'en')
