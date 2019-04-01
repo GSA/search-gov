@@ -12,8 +12,6 @@ describe SearchConsumer::API do
 
   let(:rss_feed) { rss_feeds(:white_house_blog) }
 
-  # following code is no longer use. See https://cm-jira.usa.gov/browse/SRCHAR-2713
-  # for more detail.
   context 'GET /api/c/affiliate/:name/rss/:channel_id' do
     it 'returns a list of results for an RSS channel with no results' do
       get "/api/c/search/rss/#{rss_feed.id}?affiliate=nps.gov&sc_access_key=#{SC_ACCESS_KEY}&query=df"
