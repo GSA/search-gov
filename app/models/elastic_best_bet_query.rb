@@ -21,13 +21,15 @@ class ElasticBestBetQuery < ElasticTextFilteredQuery
 
   def filtered_query_query(json)
     if @q.present?
-      json.bool do
-        json.set! :should do |should_json|
-          should_json.child! { should_json.match { should_json.keyword_values @q } }
-          should_json.child! do
-            should_json.bool do
-              should_json.must_not { json.term { json.match_keyword_values_only true } }
-              should_json.must { multi_match(should_json, highlighted_fields, @q, multi_match_options) }
+      json.must do
+        json.bool do
+          json.set! :should do |should_json|
+            should_json.child! { should_json.match { should_json.keyword_values @q } }
+            should_json.child! do
+              should_json.bool do
+                should_json.must_not { json.term { json.match_keyword_values_only true } }
+                should_json.must { multi_match(should_json, highlighted_fields, @q, multi_match_options) }
+              end
             end
           end
         end
