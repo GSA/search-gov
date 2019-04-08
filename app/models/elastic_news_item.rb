@@ -25,7 +25,7 @@ class ElasticNewsItem
         contributor: { type: 'keyword' },
         subject: { type: 'keyword' },
         publisher: { type: 'keyword' },
-        bigram: { type: 'text', analyzer: 'bigram_analyzer' },
+        bigram: { type: 'text', analyzer: 'standard' },
         tags: { type: 'keyword' },
         id: { type: 'integer' } }
     }

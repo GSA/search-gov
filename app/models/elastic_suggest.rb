@@ -4,7 +4,7 @@ module ElasticSuggest
       json.text @q
       json.suggestion do
         json.phrase do
-          json.analyzer 'bigram_analyzer'
+          json.analyzer 'standard'
           json.field 'bigram'
           json.size 1
           json.direct_generator do

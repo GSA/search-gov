@@ -10,7 +10,7 @@ class ElasticFederalRegisterDocument
       properties: {
         abstract: { type: 'text',
                     term_vector: 'with_positions_offsets',
-                    analyzer: 'en_analyzer' },
+                    analyzer: 'standard' },
         comments_close_on: { type: 'date', format: 'date' },
         publication_date: { type: 'date', format: 'date' },
         group_id: ElasticSettings::KEYWORD,
@@ -19,7 +19,7 @@ class ElasticFederalRegisterDocument
         federal_register_agency_ids: { type: 'integer' },
         title: { type: 'text',
                  term_vector: 'with_positions_offsets',
-                 analyzer: 'en_analyzer' },
+                 analyzer: 'standard' },
         significant: { type: 'boolean' },
         id: { type: 'integer' }
       }
