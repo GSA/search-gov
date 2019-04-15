@@ -17,7 +17,7 @@ class ElasticIndexedDocument
                 copy_to: 'bigram' },
         published_at: { type: 'date' },
         popularity: { type: 'integer' },
-        bigram: { type: 'text', analyzer: 'standard'},
+        bigram: { type: 'text', analyzer: 'bigram_analyzer'},
         url: ElasticSettings::KEYWORD
       }
     )

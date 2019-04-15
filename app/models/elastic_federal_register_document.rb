@@ -10,7 +10,7 @@ class ElasticFederalRegisterDocument
       properties: {
         abstract: { type: 'text',
                     term_vector: 'with_positions_offsets',
-                    analyzer: 'standard' },
+                    analyzer: 'en_analyzer' },
         comments_close_on: { type: 'date', format: 'date' },
         publication_date: { type: 'date', format: 'date' },
         group_id: ElasticSettings::KEYWORD,
