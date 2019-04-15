@@ -192,8 +192,8 @@ describe ElasticIndexedDocument do
     end
 
     describe "title and description and body" do
-      pending 'should be case insentitive' do
-        expect(ElasticIndexedDocument.search_for(q: 'OBAMA', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
+      it 'should be case insentitive' do
+        expect(ElasticIndexedDocument.search_for(q: 'OBAMå', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
         expect(ElasticIndexedDocument.search_for(q: 'yosemite', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
         expect(ElasticIndexedDocument.search_for(q: 'SpellinG', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
       end
