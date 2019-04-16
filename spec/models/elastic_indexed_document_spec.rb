@@ -255,8 +255,9 @@ describe ElasticIndexedDocument do
         end
       end
 
-      #Elastic search 5x and higher does not support analyzers therefore this test does not work at this time.
-      # Standard analyzers uses _none_ for stopwords. It also does not use stemming.
+      # Elastic search 5x and higher does not support analyzers therefore this test does
+      # not work at this time. Standard analyzers uses _none_ for stopwords.
+      # It also does not use stemming.  See https://cm-jira.usa.gov/browse/SRCH-474
 
       pending 'when affiliate is English' do
         before do
