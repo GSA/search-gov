@@ -243,13 +243,12 @@ describe ElasticIndexedDocument do
           end
         end
 
-        #Elastic search 5x and higher does not support analyzers therefore this test does not work at this time.
-        it 'when query contains a wildcard' do
+        context 'when query contains a wildcard' do
           it 'should find documents in the specified field based on truncation' do
             expect(ElasticIndexedDocument.search_for(q: 'dolphn*', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(0)
             expect(ElasticIndexedDocument.search_for(q: 'tx?', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(0)
             expect(ElasticIndexedDocument.search_for(q: 'dolph*', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
-            expect(ElasticIndexedDocument.search_for(q: 'dolph?n', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
+            expect(ElasticIndexedDocument.search_for(q: 'dolph?ns', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
             expect(ElasticIndexedDocument.search_for(q: 'do*', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(2)
             expect(ElasticIndexedDocument.search_for(q: 't?xt', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(2)
           end

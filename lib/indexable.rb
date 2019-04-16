@@ -129,7 +129,6 @@ module Indexable
                size: query.size }
     params[:sort] = query.sort if query.sort.present?
 
-    binding.pry
     result = ES::CustomIndices.client_reader.search(params)
     result['hits']['offset'] = query.offset
     "#{name}Results".constantize.new(result)
