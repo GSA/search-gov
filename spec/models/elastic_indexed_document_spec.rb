@@ -255,8 +255,8 @@ describe ElasticIndexedDocument do
         end
       end
 
-      # Elastic search 5x and higher does not support analyzers therefore this test does
-      # not work at this time. Standard analyzers uses _none_ for stopwords.
+      # Elasticsearch 5x and higher does not support per-document analyzers therefore this
+      # test does not work at this time. Standard analyzers uses _none_ for stopwords.
       # It also does not use stemming.  See https://cm-jira.usa.gov/browse/SRCH-474
 
       pending 'when affiliate is English' do
@@ -276,7 +276,8 @@ describe ElasticIndexedDocument do
         end
       end
 
-      #Elastic search 5x and higher does not support analyzers therefore this test does not work at this time.
+      # Elastic search 5x and higher does not support per-document analyzers therefore
+      # this test does not work at this time.  See https://cm-jira.usa.gov/browse/SRCH-474
       # Standard analyzers uses _none_ for stopwords. It also does not use stemming.
       pending 'when affiliate is Spanish' do
         before do
@@ -301,7 +302,8 @@ describe ElasticIndexedDocument do
 
       end
 
-      #Elastic search 5x and higher does not support analyzers therefore this test does not work at this time.
+      # Elastic search 5x and higher does not support per-document analyzers therefore
+      # this test does not work at this time. See https://cm-jira.usa.gov/browse/SRCH-474.
       pending 'when affiliate locale is not one of the custom indexed languages' do
         before do
           affiliate.locale = 'de'
