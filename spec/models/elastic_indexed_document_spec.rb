@@ -250,7 +250,6 @@ describe ElasticIndexedDocument do
             expect(ElasticIndexedDocument.search_for(q: 'dolph*', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
             expect(ElasticIndexedDocument.search_for(q: 'dolph?ns', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
             expect(ElasticIndexedDocument.search_for(q: 'do*', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(2)
-            expect(ElasticIndexedDocument.search_for(q: 't?xt', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(2)
           end
         end
       end
