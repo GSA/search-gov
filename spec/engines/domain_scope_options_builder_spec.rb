@@ -30,5 +30,17 @@ describe DomainScopeOptionsBuilder do
         )
       end
     end
+
+    context 'when a sitelimit is passed' do
+      it 'strips out the protocols' do
+        expect(DomainScopeOptionsBuilder.
+          build(site: affiliate, site_limits: 'https://nps.gov/foo')).to eq(
+            included_domains: ['nps.gov'],
+            excluded_domains: [],
+            scope_ids: [],
+            site_limits: 'nps.gov/foo'
+          )
+      end
+    end
   end
 end

@@ -8,6 +8,7 @@ class I14ySearch < FilterableSearch
     super
     @enable_highlighting = !(false === options[:enable_highlighting])
     @collection = options[:document_collection]
+    @site_limits = options[:site_limits]
   end
 
   def search
@@ -79,7 +80,9 @@ class I14ySearch < FilterableSearch
   end
 
   def domains_scope_options
-    DomainScopeOptionsBuilder.build(site: @affiliate, collection: collection)
+    DomainScopeOptionsBuilder.build(site: @affiliate,
+                                    collection: collection,
+                                    site_limits: @site_limits)
   end
 
   def formatted_query
