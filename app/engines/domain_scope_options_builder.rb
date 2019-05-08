@@ -13,9 +13,8 @@ module DomainScopeOptionsBuilder
   end
 
   def self.strip_sitelimit_protocol(site_limits)
-    if site_limits.present?
-      site_limits.split(/\+/).
-        map { |site_limit| UrlParser.strip_http_protocols(site_limit) }.join('+')
+    site_limits.split(/\+/).
+      map { |site_limit| UrlParser.strip_http_protocols(site_limit) }.join('+') unless site_limits.blank?
     end
   end
 end
