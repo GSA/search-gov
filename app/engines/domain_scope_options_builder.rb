@@ -19,5 +19,4 @@ module DomainScopeOptionsBuilder
       UrlParser.strip_http_protocols(site_limit)
     end.join(' ')
   end
-
 end
