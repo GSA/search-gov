@@ -48,7 +48,7 @@ describe DomainScopeOptionsBuilder do
       end
     end
 
-    context 'when a sitelimit is passed' do
+    context 'when multiple sitelimits are passed' do
       let(:args) do
         { site: affiliate, site_limits: 'https://nps.gov/foo+https://nps.gov/bar' }
       end
