@@ -96,9 +96,11 @@ describe I14ySearch do
 
   context 'when a site limit is specified' do
     let!(:site_domains) { affiliate.site_domains.create!(domain: 'nih.gov') }
-    let(:i14y_search) { I14ySearch.new(affiliate: affiliate,
-                                       site_limits: 'http://nih.gov/foo',
-                                       query: 'marketplase') }
+    let(:i14y_search) do
+      I14ySearch.new(affiliate: affiliate,
+                     site_limits: 'http://nih.gov/foo',
+                     query: 'marketplase')
+    end
 
     it 'passes the sitelimits to i14y with out http/https' do
       expect(I14yCollections).to receive(:search).
@@ -109,12 +111,12 @@ describe I14ySearch do
 
   context 'when multiple site limits are specified' do
     let!(:site_domains) { affiliate.site_domains.create!(domain: 'nih.gov') }
-    let(:i14y_search) {
+    let(:i14y_search) do
       I14ySearch.new(
         affiliate: affiliate,
         site_limits: 'http://nih.gov/foo+https://nih.gov/bar',
-        query: 'marketplase' )
-    }
+        query: 'marketplase')
+    end
 
     it 'passes the sitelimits to i14y with out http/https' do
       expect(I14yCollections).to receive(:search).

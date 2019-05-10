@@ -5,6 +5,8 @@ describe DomainScopeOptionsBuilder do
 
   describe '.build' do
     let(:affiliate) { affiliates(:basic_affiliate) }
+    subject(:build) { DomainScopeOptionsBuilder.build(args) }
+
 
     it 'includes the site domains' do
       expect(DomainScopeOptionsBuilder.build(site: affiliate)).to eq(
@@ -32,14 +34,32 @@ describe DomainScopeOptionsBuilder do
     end
 
     context 'when a sitelimit is passed' do
+      let(:args) do
+        { site: affiliate, site_limits: 'https://nps.gov/foo' }
+      end
+
       it 'strips out the protocols' do
-        expect(DomainScopeOptionsBuilder.
-          build(site: affiliate, site_limits: 'https://nps.gov/foo')).to eq(
-            included_domains: ['nps.gov'],
-            excluded_domains: [],
-            scope_ids: [],
-            site_limits: 'nps.gov/foo'
-          )
+        expect(build).to eq(
+          included_domains: ['nps.gov'],
+          excluded_domains: [],
+          scope_ids: [],
+          site_limits: 'nps.gov/foo'
+        )
+      end
+    end
+
+    context 'when a sitelimit is passed' do
+      let(:args) do
+        { site: affiliate, site_limits: 'https://nps.gov/foo+https://nps.gov/bar' }
+      end
+
+      it 'strips out the protocols from multiple sites' do
+        expect(build).to eq(
+          included_domains: ['nps.gov'],
+          excluded_domains: [],
+          scope_ids: [],
+          site_limits: 'nps.gov/foo+nps.gov/bar'
+        )
       end
     end
   end
