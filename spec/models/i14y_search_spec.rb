@@ -114,13 +114,13 @@ describe I14ySearch do
     let(:i14y_search) do
       I14ySearch.new(
         affiliate: affiliate,
-        site_limits: 'http://nih.gov/foo+https://nih.gov/bar',
+        site_limits: 'http://nih.gov/foo https://nih.gov/bar',
         query: 'marketplase')
     end
 
     it 'passes the sitelimits to i14y with out http/https' do
       expect(I14yCollections).to receive(:search).
-        with(hash_including(query: 'marketplase site:nih.gov/foo+nih.gov/bar'))
+        with(hash_including(query: 'marketplase site:nih.gov/bar site:nih.gov/foo'))
       i14y_search.run
     end
   end

@@ -50,7 +50,7 @@ describe DomainScopeOptionsBuilder do
 
     context 'when multiple sitelimits are passed' do
       let(:args) do
-        { site: affiliate, site_limits: 'https://nps.gov/foo+https://nps.gov/bar' }
+        { site: affiliate, site_limits: 'https://nps.gov/foo https://nps.gov/bar' }
       end
 
       it 'strips out the protocols from multiple sites' do
@@ -58,7 +58,7 @@ describe DomainScopeOptionsBuilder do
           included_domains: ['nps.gov'],
           excluded_domains: [],
           scope_ids: [],
-          site_limits: 'nps.gov/foo+nps.gov/bar'
+          site_limits: 'nps.gov/foo nps.gov/bar'
         )
       end
     end
