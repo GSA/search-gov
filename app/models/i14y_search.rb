@@ -8,6 +8,7 @@ class I14ySearch < FilterableSearch
     super
     @enable_highlighting = !(false === options[:enable_highlighting])
     @collection = options[:document_collection]
+    @site_limits = options[:site_limits]
   end
 
   def search
@@ -18,6 +19,7 @@ class I14ySearch < FilterableSearch
       size: detect_size,
       offset: detect_offset,
     }.merge!(filter_options)
+
     I14yCollections.search(search_options)
   rescue Faraday::ClientError => e
     Rails.logger.error "I14y search problem: #{e.message}"
@@ -79,7 +81,9 @@ class I14ySearch < FilterableSearch
   end
 
   def domains_scope_options
-    DomainScopeOptionsBuilder.build(site: @affiliate, collection: collection)
+    DomainScopeOptionsBuilder.build(site: @affiliate,
+                                    collection: collection,
+                                    site_limits: @site_limits)
   end
 
   def formatted_query

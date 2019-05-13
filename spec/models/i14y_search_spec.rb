@@ -86,12 +86,42 @@ describe I14ySearch do
 
     it 'returns non highlighted results' do
       i14y_search.run
-
       first = i14y_search.results.first
       expect(first.title).to eq('Marketplace')
       expect(first.link).to eq('https://www.healthcare.gov/glossary/marketplace')
       expect(first.description).to eq('See Health Insurance Marketplace...More info on Health Insurance Marketplace')
       expect(first.body).to eq('More info on Health Insurance Marketplace')
+    end
+  end
+
+  context 'when a site limit is specified' do
+    let!(:site_domains) { affiliate.site_domains.create!(domain: 'nih.gov') }
+    let(:i14y_search) do
+      I14ySearch.new(affiliate: affiliate,
+                     site_limits: 'http://nih.gov/foo',
+                     query: 'marketplase')
+    end
+
+    it 'passes the sitelimits to i14y with out http/https' do
+      expect(I14yCollections).to receive(:search).
+        with(hash_including(query: 'marketplase site:nih.gov/foo'))
+      i14y_search.run
+    end
+  end
+
+  context 'when multiple site limits are specified' do
+    let!(:site_domains) { affiliate.site_domains.create!(domain: 'nih.gov') }
+    let(:i14y_search) do
+      I14ySearch.new(
+        affiliate: affiliate,
+        site_limits: 'http://nih.gov/foo https://nih.gov/bar',
+        query: 'marketplase')
+    end
+
+    it 'passes the sitelimits to i14y with out http/https' do
+      expect(I14yCollections).to receive(:search).
+        with(hash_including(query: 'marketplase site:nih.gov/bar site:nih.gov/foo'))
+      i14y_search.run
     end
   end
 
