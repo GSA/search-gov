@@ -9,7 +9,7 @@ describe HumanSessionsController do
     context 'when the referenced affiliate does not exist' do
       it 'redirects to the usa.gov search-error page' do
         get :new, r: '/search?affiliate=imaginaryaffiliate&query=building'
-        expect(response).to redirect_to('https://www.usa.gov/search-error/')
+        expect(response).to redirect_to('https://www.usa.gov/search-error')
       end
     end
 
