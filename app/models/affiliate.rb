@@ -38,7 +38,7 @@ class Affiliate < ActiveRecord::Base
     assoc.has_many :routed_queries
     assoc.has_many :rss_feeds, -> { order 'rss_feeds.name ASC, rss_feeds.id ASC' }, as: :owner
     assoc.has_many :sayt_suggestions
-    assoc.has_many :site_domains, -> { order 'domain ASC' }
+    assoc.has_many :site_domains, -> { order 'domain ASC' }, inverse_of: :affiliate
     assoc.has_one :site_feed_url
     assoc.has_many :superfresh_urls
     assoc.has_one :alert
