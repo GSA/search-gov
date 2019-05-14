@@ -7,7 +7,7 @@ describe HumanSessionsController do
     render_views
 
     context 'when the referenced affiliate does not exist' do
-      it 'redirects to the usa.gov page-not-found page' do
+      it 'redirects to the usa.gov search-error page' do
         get :new, r: '/search?affiliate=imaginaryaffiliate&query=building'
         expect(response).to redirect_to('https://www.usa.gov/search-error/')
       end
@@ -79,7 +79,7 @@ describe HumanSessionsController do
       end
 
       context 'when the redirect_to parameter does not start with a URL-encoded slash' do
-        it 'should redirect to the usa.gov page-not-found URL' do
+        it 'should redirect to the usa.gov search-error URL' do
           post :create, redirect_to: 'http:%2F%2Flol%2Fwut'
           expect(response).to redirect_to(ApplicationController::PAGE_NOT_FOUND)
         end
@@ -112,7 +112,7 @@ describe HumanSessionsController do
       end
 
       context 'when the redirect_to parameter does not start with a URL-encoded slash' do
-        it 'should redirect to the usa.gov page-not-found URL' do
+        it 'should redirect to the usa.gov search-error URL' do
           post :create, redirect_to: 'http:%2F%2Flol%2Fwut'
           expect(response).to redirect_to(ApplicationController::PAGE_NOT_FOUND)
         end
