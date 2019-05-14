@@ -2,13 +2,14 @@ class I14ySearch < FilterableSearch
   include SearchInitializer
   include Govboxable
   I14Y_SUCCESS = 200
-  attr_reader :collection
+  attr_reader :collection, :matching_site_limits
 
   def initialize(options = {})
     super
     @enable_highlighting = !(false === options[:enable_highlighting])
     @collection = options[:document_collection]
     @site_limits = options[:site_limits]
+    @matching_site_limits = formatted_query_instance.matching_site_limits
   end
 
   def search
@@ -87,6 +88,10 @@ class I14ySearch < FilterableSearch
   end
 
   def formatted_query
-    I14yFormattedQuery.new(@query, domains_scope_options).query
+    formatted_query_instance.query
+  end
+
+  def formatted_query_instance
+    @formatted_query_instance ||= I14yFormattedQuery.new(@query, domains_scope_options)
   end
 end
