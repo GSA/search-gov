@@ -134,4 +134,49 @@ http_interactions:
         (site:nonsense.gov OR site:nonsense.com)"}, "rankingResponse": {}}'
     http_version: 
   recorded_at: Tue, 05 Feb 2019 21:33:53 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=no_results%20(site:nonsense.com%20OR%20site:nonsense.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 401
+      message: Access Denied
+    headers:
+      Content-Length:
+      - '154'
+      Content-Type:
+      - application/json
+      Apim-Request-Id:
+      - 69c88201-b61e-4073-b97e-107d01f61429
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Www-Authenticate:
+      - AzureApiManagementKey realm="https://api.cognitive.microsoft.com/bing/v7.0",name="Ocp-Apim-Subscription-Key",type="header"
+      Date:
+      - Thu, 16 May 2019 20:27:27 GMT
+    body:
+      encoding: UTF-8
+      string: '{ "error":{ "statusCode": 401, "message": "Access denied due to invalid
+        subscription key. Make sure to provide a valid key for an active subscription."
+        }}'
+    http_version: 
+  recorded_at: Thu, 16 May 2019 20:27:28 GMT
 recorded_with: VCR 4.0.0
