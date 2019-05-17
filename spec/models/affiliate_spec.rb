@@ -95,7 +95,7 @@ describe Affiliate do
     it { is_expected.to have_many(:rss_feeds).dependent(:destroy) }
     it { is_expected.to have_many(:affiliate_templates).dependent(:destroy) }
     it { is_expected.to have_many(:available_templates).through(:affiliate_templates).source(:template) }
-    it { is_expected.to have_many(:site_domains).dependent(:destroy) }
+    it { is_expected.to have_many(:site_domains).dependent(:destroy).inverse_of(:affiliate) }
     it { is_expected.to have_many(:tag_filters).dependent(:destroy) }
 
     it { is_expected.to have_and_belong_to_many :instagram_profiles }
