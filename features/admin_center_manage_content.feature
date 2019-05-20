@@ -576,8 +576,8 @@ Feature: Manage Content
     And the "URL 2" field should contain "https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/health-fraud/rss.xml"
     When I fill in "Name" with "Food, Safety and Pet Health Recalls"
     And I add the following RSS Feed URLs:
-      | url                                                                               |
-      | https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/recalls/rss.xml |
+      | url                                                                                           |
+      | https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/food-safety-recalls/rss.xml |
     And I submit the form by pressing "Save"
     Then I should see "You have updated Food, Safety and Pet Health Recalls"
     When I press "Remove"
