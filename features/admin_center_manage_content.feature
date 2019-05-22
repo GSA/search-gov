@@ -558,26 +558,27 @@ Feature: Manage Content
       | display_name | name       | contact_email   | contact_name |
       | agency site  | agency.gov | john@agency.gov | John Bar     |
     And I am logged in with email "john@agency.gov"
+    And www.fda.gov has valid RSS feeds
     When I go to the agency.gov's Manage Content page
     And I follow "RSS" within the Admin Center content
     And I follow "Add RSS Feed"
     When I fill in the following:
       | Name  | Recalls                                                                                |
-      | URL 1 | https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/health-fraud/rss.xml |
+      | URL 1 | https://www.fda.gov/rss/health-fraud/rss.xml |
     And I choose "RSS"
     And I add the following RSS Feed URLs:
       | url                                                                                      |
-      | https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/food-allergies/rss.xml |
+      | https://www.fda.gov/rss/food-allergies/rss.xml |
     And I submit the form by pressing "Add"
     Then I should see "You have added Recalls to this site"
     When I follow "Edit"
     Then the "Name" field should contain "Recalls"
-    And the "URL 1" field should contain "https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/food-allergies/rss.xml"
-    And the "URL 2" field should contain "https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/health-fraud/rss.xml"
+    And the "URL 1" field should contain "https://www.fda.gov/rss/food-allergies/rss.xml"
+    And the "URL 2" field should contain "https://www.fda.gov/rss/health-fraud/rss.xml"
     When I fill in "Name" with "Food, Safety and Pet Health Recalls"
     And I add the following RSS Feed URLs:
       | url                                                                                           |
-      | https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/food-safety-recalls/rss.xml |
+      | https://www.fda.gov/rss/food-safety-recalls/rss.xml |
     And I submit the form by pressing "Save"
     Then I should see "You have updated Food, Safety and Pet Health Recalls"
     When I press "Remove"
