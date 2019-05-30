@@ -134,6 +134,7 @@ gem 'font-awesome-grunticon-rails',
 # https://github.com/rails/execjs/releases/tag/v2.8.0
 # Locking the version to 2.7.x until we remove or replace therubyracer
 gem 'execjs', '~> 2.7.0'
+gem 'webdrivers', '~> 5.0'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
@@ -178,5 +179,4 @@ group :test do
   gem 'rspec-activemodel-mocks', '~> 1.1'
   gem 'rspec_junit_formatter', '~> 0.4'
   gem 'rails-controller-testing', '~> 1.0'
-  gem 'webdrivers', '~> 5.0'
 end
