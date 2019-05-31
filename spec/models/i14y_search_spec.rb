@@ -107,6 +107,10 @@ describe I14ySearch do
         with(hash_including(query: 'marketplase site:nih.gov/foo'))
       i14y_search.run
     end
+
+    it 'sets matching site limits' do
+      expect(i14y_search.matching_site_limits).to eq ['nih.gov/foo']
+    end
   end
 
   context 'when multiple site limits are specified' do
