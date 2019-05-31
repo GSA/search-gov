@@ -129,16 +129,16 @@ describe "searches/index.html.haml" do
         allow(@affiliate).to receive(:jobs_enabled?).and_return(true)
         json = [
           {"id" => "usajobs:328437200", "position_title" => "<em>Research</em> Biologist/<em>Research</em> Nutritionist (Postdoctoral <em>Research</em> Affiliate)",
-           "organization_name" => "Agricultural Research Service", "rate_interval_code" => "PA", "minimum" => 51871, "maximum" => 67427, "start_date" => "2012-10-10", "end_date" => "2023-10-12", "locations" => ["Boston, MA"],
+           "organization_name" => "Agricultural Research Service", "rate_interval_code" => "Per Year", "minimum" => 51871, "maximum" => 67427, "start_date" => "2012-10-10", "application_close_date" => "2023-10-12", "locations" => ["Boston, MA"],
            "url" => "https://www.usajobs.gov/GetJob/ViewDetails/328437200"},
           {"id" => "usajobs:328437201", "position_title" => "Some Research Job",
-           "organization_name" => "Some Research Service", "rate_interval_code" => "PH", "minimum" => 24, "maximum" => 24, "start_date" => "2012-10-10", "end_date" => "2023-10-13", "locations" => ["Boston, MA", "Cohasset, MA"],
+           "organization_name" => "Some Research Service", "rate_interval_code" => "Per Hour", "minimum" => 24, "maximum" => 24, "start_date" => "2012-10-10", "application_close_date" => "2023-10-13", "locations" => ["Boston, MA", "Cohasset, MA"],
            "url" => "https://www.usajobs.gov/GetJob/ViewDetails/328437201"},
           {"id" => "usajobs:328437202", "position_title" => "Bi-Weekly Research Job",
-           "organization_name" => "BW Research Service", "rate_interval_code" => "BW", "minimum" => 240, "maximum" => 260, "start_date" => "2012-10-10", "end_date" => "2023-10-15", "locations" => ["Hello, MA"],
+           "organization_name" => "BW Research Service", "rate_interval_code" => "Bi-Weekly", "minimum" => 240, "maximum" => 260, "start_date" => "2012-10-10", "application_close_date" => "2023-10-15", "locations" => ["Hello, MA"],
            "url" => "https://www.usajobs.gov/GetJob/ViewDetails/328437202"},
           {"id" => "usajobs:328437203", "position_title" => "Zero Money Research Job",
-           "organization_name" => "Some Poor Research Service", "rate_interval_code" => "WC", "minimum" => 0, "maximum" => 0, "start_date" => "2012-10-10", "end_date" => "2023-10-14", "locations" => ["Washington Metro Area, DC"],
+           "organization_name" => "Some Poor Research Service", "rate_interval_code" => "Without Compensation", "minimum" => 0, "maximum" => 0, "start_date" => "2012-10-10", "application_close_date" => "2023-10-14", "locations" => ["Washington Metro Area, DC"],
            "url" => "https://www.usajobs.gov/GetJob/ViewDetails/328437203"}
         ]
         mashies = json.collect { |x| Hashie::Mash.new(x) }
@@ -176,7 +176,7 @@ describe "searches/index.html.haml" do
 
         expect(rendered).not_to have_content('Zero Money Research Job')
 
-        expect(rendered).to have_selector('a[href="https://www.usajobs.gov/JobSearch/Search/GetResults?PostingChannelID=USASearch"]',
+        expect(rendered).to have_selector('a[href="https://www.usajobs.gov/Search/Results?hp=public"]',
                                           text: 'More federal job openings on USAJobs.gov')
       end
 
@@ -186,7 +186,7 @@ describe "searches/index.html.haml" do
 
         it 'should show links with Spanish translations' do
           render
-          expect(rendered).to have_selector('a[href="https://www.usajobs.gov/JobSearch/Search/GetResults?PostingChannelID=USASearch"]',
+          expect(rendered).to have_selector('a[href="https://www.usajobs.gov/Search/Results?hp=public"]',
                                             text: 'Más trabajos en el gobierno federal en USAJobs.gov')
         end
       end
@@ -225,44 +225,6 @@ describe "searches/index.html.haml" do
         end
       end
 
-    end
-
-    context 'when neogov jobs results are available' do
-      before do
-        allow(@affiliate).to receive(:jobs_enabled?).and_return(true)
-        json = [
-            {"id" => "ng:michigan:328437200", "position_title" => "<em>Research</em> Biologist/<em>Research</em> Nutritionist (Postdoctoral <em>Research</em> Affiliate)",
-             "organization_name" => "Agricultural Research Service", "rate_interval_code" => "PA", "minimum" => 51871, "maximum" => 67427, "start_date" => "2012-10-10", "end_date" => "2023-10-12", "locations" => ["Boston, MA"],
-             "url" => "http://agency.governmentjobs.com/michigan/default.cfm?action=viewjob&jobid=328437200"}]
-        mashies = json.collect { |x| Hashie::Mash.new(x) }
-        allow(@search).to receive(:query).and_return "research jobs"
-        @search_result = {'title' => "This is about research jobs",
-                          'unescapedUrl' => "http://www.cdc.gov/jobs",
-                          'content' => "Research jobs don't pay well",
-                          'cacheUrl' => "http://www.cached.com/url"}
-        @search_results = [@search_result]
-        allow(@search_results).to receive(:total_pages).and_return 1
-        allow(@search).to receive(:results).and_return @search_results
-        allow(@search).to receive(:jobs).and_return mashies
-      end
-
-      context 'when there is an agency associated with the affiliate' do
-        before do
-          agency = Agency.create!({:name => 'State of Michigan',
-                                   :abbreviation => 'SOM'})
-          AgencyOrganizationCode.create!(organization_code: "USMI", agency: agency)
-          allow(@affiliate).to receive(:agency).and_return(agency)
-        end
-
-        it "should show the neogov links" do
-          render
-          expect(rendered).to have_content('Job Openings at SOM')
-          expect(rendered).to have_selector('a[href="http://agency.governmentjobs.com/michigan/default.cfm?action=viewjob&jobid=328437200"]',
-                                            text: 'Research Biologist/Research Nutritionist (Postdoctoral Research Affiliate)')
-          expect(rendered).to have_selector('a[href="http://agency.governmentjobs.com/michigan/default.cfm"]',
-                                            text: 'More SOM job openings')
-        end
-      end
     end
 
     context "when a med topic record matches the query" do

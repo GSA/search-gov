@@ -16,21 +16,35 @@ describe Affiliate do
    let(:affiliate) { Affiliate.new(valid_create_attributes) }
 
   describe 'schema' do
-    it { is_expected.to have_db_column(:i14y_date_stamp_enabled).of_type(:boolean).with_options(default: false, null: false) }
-    #The active_template_id column has been deprectated. It will be dropped in a future migration.
-    it { is_expected.to have_db_column(:active_template_id).of_type(:integer) }
-    it { is_expected.to have_db_column(:template_id).of_type(:integer) }
+    describe 'columns' do
+      it do
+        is_expected.to have_db_column(:i14y_date_stamp_enabled).
+          of_type(:boolean).with_options(default: false, null: false)
+      end
+      # The active_template_id column has been deprectated. It will be dropped in a future migration.
+      it { is_expected.to have_db_column(:active_template_id).of_type(:integer) }
+      it { is_expected.to have_db_column(:template_id).of_type(:integer) }
+      it do
+        is_expected.to have_db_column(:search_engine).of_type(:string).
+          with_options(default: 'BingV7', null: false)
+      end
+      it do
+        is_expected.to have_db_column(:active).of_type(:boolean).
+          with_options(default: true, null: false)
+      end
+    end
 
-    it { is_expected.to have_db_index(:active_template_id) }
-    it { is_expected.to have_db_index(:template_id) }
+    describe 'indices' do
+      it { is_expected.to have_db_index(:active_template_id) }
+      it { is_expected.to have_db_index(:template_id) }
+    end
 
-    it { is_expected.to have_attached_file :page_background_image }
-    it { is_expected.to have_attached_file :header_image }
-    it { is_expected.to have_attached_file :mobile_logo }
-    it { is_expected.to have_attached_file :header_tagline_logo }
-
-    it { is_expected.to have_db_column(:search_engine).of_type(:string).with_options(default: 'BingV6', null: false) }
-    it { is_expected.to have_db_column(:active).of_type(:boolean).with_options(default: true, null: false) }
+    describe 'Paperclip attachments' do
+      it { is_expected.to have_attached_file :page_background_image }
+      it { is_expected.to have_attached_file :header_image }
+      it { is_expected.to have_attached_file :mobile_logo }
+      it { is_expected.to have_attached_file :header_tagline_logo }
+    end
   end
 
   describe "Creating new instance of Affiliate" do
@@ -59,7 +73,7 @@ describe Affiliate do
                rejecting(nil, %w{ text/plain text/xml application/pdf }) }
     end
 
-    it { is_expected.to validate_inclusion_of(:search_engine).in_array(%w( Google BingV6 SearchGov )) }
+    it { is_expected.to validate_inclusion_of(:search_engine).in_array(%w( Google BingV6 BingV7 SearchGov )) }
 
     it { is_expected.to have_many :boosted_contents }
     it { is_expected.to have_many :sayt_suggestions }
@@ -140,22 +154,24 @@ describe Affiliate do
         expect(Affiliate.create!(valid_create_attributes).is_sayt_enabled).to be true
       end
 
-      it "should generate a database-level error when attempting to add an affiliate with the same name as an existing affiliate, but with different case; instead it should return false" do
-        affiliate = Affiliate.new(valid_attributes, :as => :test)
+      it 'should generate a database-level error when attempting to add an ' \
+         'affiliate with the same name as an existing affiliate, but with ' \
+         'different case; instead it should return false' do
+        affiliate = Affiliate.new(valid_attributes)
         affiliate.name = valid_attributes[:name]
         affiliate.save!
-        duplicate_affiliate = Affiliate.new(valid_attributes, :as => :test)
+        duplicate_affiliate = Affiliate.new(valid_attributes)
         duplicate_affiliate.name = valid_attributes[:name].upcase
         expect(duplicate_affiliate.save).to be false
       end
 
       it "should populate default search label for English site" do
-        affiliate = Affiliate.create!(valid_attributes.merge(:locale => 'en'), :as => :test)
+        affiliate = Affiliate.create!(valid_attributes.merge(locale: 'en'))
         expect(affiliate.default_search_label).to eq('Everything')
       end
 
       it "should populate default search labels for Spanish site" do
-        affiliate = Affiliate.create!(valid_attributes.merge(:locale => 'es'), :as => :test)
+        affiliate = Affiliate.create!(valid_attributes.merge(locale: 'es'))
         expect(affiliate.default_search_label).to eq('Todo')
       end
 
@@ -261,15 +277,15 @@ describe Affiliate do
       expect(Affiliate.find(affiliate.id).staged_footer).to eq('staged footer')
     end
 
-    it "should populate search labels for English site" do
-      english_affiliate = Affiliate.create!(valid_attributes.merge(:locale => 'en'), :as => :test)
+    it 'should populate search labels for English site' do
+      english_affiliate = Affiliate.create!(valid_attributes.merge(locale: 'en'))
       english_affiliate.default_search_label = ''
       english_affiliate.save!
       expect(english_affiliate.default_search_label).to eq('Everything')
     end
 
     it "should populate search labels for Spanish site" do
-      spanish_affiliate = Affiliate.create!(valid_attributes.merge(:locale => 'es'), :as => :test)
+      spanish_affiliate = Affiliate.create!(valid_attributes.merge(locale: 'es'))
       spanish_affiliate.default_search_label = ''
       spanish_affiliate.save!
       expect(spanish_affiliate.default_search_label).to eq('Todo')
@@ -1118,7 +1134,7 @@ describe Affiliate do
         <h1 id="my_header">header</h1>
       HTML
 
-      affiliate = Affiliate.create!(valid_attributes.merge(:header => tainted_header), :as => :test)
+      affiliate = Affiliate.create!(valid_attributes.merge(header: tainted_header))
       expect(affiliate.sanitized_header.strip).to eq(%q(<h1 id="my_header">header</h1>))
     end
   end
@@ -1132,7 +1148,7 @@ describe Affiliate do
         <h1 id="my_footer">footer</h1>
       HTML
 
-      affiliate = Affiliate.create!(valid_attributes.merge(:footer => tainted_footer), :as => :test)
+      affiliate = Affiliate.create!(valid_attributes.merge(footer: tainted_footer))
       expect(affiliate.sanitized_footer.strip).to eq(%q(<h1 id="my_footer">footer</h1>))
     end
   end
@@ -1363,7 +1379,6 @@ describe Affiliate do
                                mobile_logo_file_size: 100,
                                mobile_logo_updated_at: DateTime.current,
                                name: 'original-site',
-                               nutshell_id: 888,
                                page_background_image_content_type: 'image/jpeg',
                                page_background_image_file_name: 'test.jpg',
                                page_background_image_file_size: 100,
@@ -1383,7 +1398,6 @@ describe Affiliate do
                         mobile_logo_file_size
                         mobile_logo_updated_at
                         name
-                        nutshell_id
                         page_background_image_content_type
                         page_background_image_file_name
                         page_background_image_file_size
@@ -1552,6 +1566,7 @@ describe Affiliate do
     {
       'Bing' => 'Bing',
       'BingV6' => 'Bing',
+      'BingV7' => 'Bing',
       'Google' => 'Google',
     }.each do |configured_search_engine, sc_reported_search_engine|
       context "when an affiliate's search_engine is '#{configured_search_engine}'" do

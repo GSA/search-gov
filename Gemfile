@@ -1,9 +1,7 @@
 source 'https://rubygems.org'
 
-# Temporarily limiting rake version:
-# #http://stackoverflow.com/questions/35893584/nomethoderror-undefined-method-last-comment-after-upgrading-to-rake-11
-gem 'rake', '~> 10.0'
-gem 'rails', '= 4.2.10'
+gem 'rake', '~> 12.3.2'
+gem 'rails', '~> 4.2.11'
 gem 'rails-observers', '~> 0.1.5'
 gem 'responders', '~> 2.0'
 gem 'mysql2', '~> 0.3.0'
@@ -69,7 +67,7 @@ gem 'sitelink_generator', git: 'https://github.com/GSA/sitelink_generator', ref:
 gem 'typhoeus', '~> 1.3.0'
 gem 'activerecord-validate_unique_child_attribute', '~> 0.1.0', require: 'active_record/validate_unique_child_attribute'
 gem 'jwt', '~> 1.5.6'
-gem 'grape', '~> 1.0.1'
+gem 'grape', '~> 1.1'
 gem 'grape-entity', '~> 0.6.0'
 gem 'rack-cors', '~> 1.0.2', :require => 'rack/cors'
 gem 'hashie', '~> 3.3.0'
@@ -81,9 +79,7 @@ gem 'lograge', '~> 0.7.1'
 gem 'test-unit', '~> 3.2.7'
 gem 'http', '~> 1.0'
 gem 'robots_tag_parser', '~> 0.1.0', git: 'https://github.com/GSA/robots_tag_parser'
-gem 'cld2', '~> 1.0.3', require: 'cld'
 gem 'loofah', '~> 2.2.2'
-gem 'protected_attributes', '~> 1.1.4'
 # Using custom branch until https://github.com/brutuscat/medusa/issues/10 is merged
 gem 'medusa', git: 'https://github.com/MothOnMars/medusa', branch: 'clean_urls'
 # Robotex is required by Medusa. Specifying fork until https://github.com/chriskite/robotex/issues/4
@@ -92,17 +88,17 @@ gem 'robotex', git: 'https://github.com/MothOnMars/robotex'
 # Using custom branch until https://github.com/lygaret/sitemaps/pull/4 is merged,
 # and https://github.com/lygaret/sitemaps/issues/5 and https://github.com/lygaret/sitemaps/issues/6 are resolved
 gem 'sitemaps_parser', require: 'sitemaps', git: 'https://github.com/MothOnMars/sitemaps', branch: 'discovery_fixes'
-gem 'public_suffix', '~> 3.0.2'
 gem 'counter_culture', '~> 2.0.0'
 gem 'aasm', '~> 4.12'
 gem 'active_scheduler', '~> 0.5.0'
 gem 'retriable', '~> 3.1'
+gem 'cld3', '~> 3.2.3'
 
 #Assets-related gems
 gem 'coffee-rails', '~> 4.2.2'
 gem 'uglifier', '~> 4.1.2'
 gem 'less-rails-bootstrap', '~> 3.3.5'
-gem 'compass-rails', '~> 2.0.5'
+gem 'compass-rails', '~> 3.1.0'
 gem 'compass-blueprint', '~> 1.0.0'
 gem 'jquery-ui-rails', '~> 6.0.1'
 gem 'jquery-rails', git: 'https://github.com/GSA/jquery-rails', ref: 'c0c56208f57746a4bc63431d5e771cea4486efca'
@@ -130,7 +126,7 @@ group :development do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.7.2'
+  gem 'rspec-rails', '~> 3.8.2'
   gem 'rspec-json_expectations', '~> 2.1.0'
   gem 'rspec-its', '~> 1.2.0'
   gem 'email_spec', '~> 2.1.1'
@@ -144,11 +140,11 @@ group :development, :test do
   # https://github.com/pocke/mry#usage (include the target version to add new cops)
   # Also bump the rubocop channel in .codeclimate.yml:
   # https://docs.codeclimate.com/v1.0/docs/rubocop#section-using-rubocop-s-newer-versions
-  gem 'rubocop', '0.52.1'
+  gem 'rubocop', '0.60.0'
   gem 'faker', '~> 1.8'
   gem 'pry-rails', '~> 0.3.6'
   gem 'awesome_print'
-  gem 'mry', '~> 0.52.0'
+  gem 'mry', '0.59.0.0'
 end
 
 group :test do

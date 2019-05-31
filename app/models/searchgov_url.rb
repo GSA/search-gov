@@ -4,16 +4,16 @@ class SearchgovUrl < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
 
   MAX_DOC_SIZE = 15.megabytes
-  SUPPORTED_CONTENT_TYPES = %w(
+  SUPPORTED_CONTENT_TYPES = %w[
                                 text/html
+                                text/plain
                                 application/msword
                                 application/pdf
                                 application/vnd.ms-excel
                                 application/vnd.openxmlformats-officedocument.wordprocessingml.document
                                 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
-                              )
+                              ]
 
-  attr_accessible :last_crawl_status, :last_crawled_at, :url, :lastmod
   attr_reader :response, :document, :tempfile
   attr_readonly :url
 
@@ -34,14 +34,20 @@ class SearchgovUrl < ActiveRecord::Base
     column_name: proc {|url| !url.fetched? ? 'unfetched_urls_count' : nil },
     column_names: { ['searchgov_urls.last_crawled_at IS NULL'] => 'unfetched_urls_count' }
 
-  scope :fetch_required, -> { where('last_crawled_at IS NULL OR lastmod > last_crawled_at') }
+  scope :fetch_required, -> do
+    where('last_crawled_at IS NULL
+           OR lastmod > last_crawled_at
+           OR enqueued_for_reindex
+           OR (last_crawl_status = "OK" AND last_crawled_at < ?)', 1.month.ago).
+           order(last_crawled_at: :ASC)
+  end
 
   class SearchgovUrlError < StandardError; end
   class DomainError < StandardError; end
 
   def fetch
     raise DomainError.new("#{searchgov_domain.domain}: #{searchgov_domain.status}") if !searchgov_domain.available?
-    self.update_attributes(last_crawled_at: Time.now)
+    update(last_crawled_at: Time.now, enqueued_for_reindex: false)
     self.load_time = Benchmark.realtime do
       DocumentFetchLogger.new(url, 'searchgov_url').log
       begin
@@ -167,7 +173,7 @@ class SearchgovUrl < ActiveRecord::Base
 
   def parse_document
     Rails.logger.info "[SearchgovUrl] Parsing document for #{url}"
-    if /^application/ === response.content_type.mime_type
+    if /^application|text\/plain/ === response.content_type.mime_type
       ApplicationDocument.new(document: download.open, url: url)
     else
       HtmlDocument.new(document: response.to_s, url: url)

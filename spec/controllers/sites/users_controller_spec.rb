@@ -3,11 +3,8 @@ require 'spec_helper'
 describe Sites::UsersController do
   fixtures :users, :affiliates, :memberships
 
-  let(:adapter) { double(NutshellAdapter) }
-
   before do
     activate_authlogic
-    allow(NutshellAdapter).to receive(:new) { adapter }
   end
 
   describe '#index' do
@@ -47,7 +44,7 @@ describe Sites::UsersController do
       include_context 'approved user logged in to a site'
 
       context 'when new user does not exist in the system and user params are valid' do
-        let(:new_user) { mock_model(User, email: 'john@email.gov', nutshell_id: 42) }
+        let(:new_user) { mock_model(User, email: 'john@email.gov') }
 
         before do
           expect(User).to receive(:find_by_email).with('john@email.gov').and_return nil
@@ -56,7 +53,8 @@ describe Sites::UsersController do
               and_return(new_user)
 
           expect(new_user).to receive(:save).and_return(true)
-          expect(new_user).to receive(:add_to_affiliate).with(site, "@[Contacts:1001]")
+          expect(new_user).to receive(:add_to_affiliate).
+            with(site, "User #{current_user.id}, affiliate_manager@fixtures.org")
 
           post :create,
                site_id: site.id,
@@ -92,7 +90,7 @@ describe Sites::UsersController do
       end
 
       context 'when new user exists in the system but does not have access to the site' do
-        let(:new_user) { mock_model(User, email: 'john@email.gov', nutshell_id: 42) }
+        let(:new_user) { mock_model(User, email: 'john@email.gov') }
         let(:site_users) { double('site users') }
 
         before do
@@ -100,7 +98,8 @@ describe Sites::UsersController do
           expect(new_user).to receive(:send_new_affiliate_user_email).with(site, current_user)
           expect(site).to receive(:users).once.and_return(site_users)
           expect(site_users).to receive(:exists?).and_return(false)
-          expect(new_user).to receive(:add_to_affiliate).with(site, "@[Contacts:1001]")
+          expect(new_user).to receive(:add_to_affiliate).
+            with(site, "User #{current_user.id}, affiliate_manager@fixtures.org")
 
           post :create,
                site_id: site.id,
@@ -145,14 +144,15 @@ describe Sites::UsersController do
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
 
-      let(:target_user) { mock_model(User, id: 100, nutshell_id: 42, email: 'john@email.gov') }
+      let(:target_user) { mock_model(User, id: 100, email: 'john@email.gov') }
 
       before do
         expect(User).to receive(:find).with('100').and_return(target_user)
       end
 
       it 'removes the user from the site' do
-        expect(target_user).to receive(:remove_from_affiliate).with(site, "@[Contacts:1001]")
+        expect(target_user).to receive(:remove_from_affiliate).
+          with(site, "User #{current_user.id}, affiliate_manager@fixtures.org")
 
         put :destroy,
             id: 100,

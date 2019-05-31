@@ -7,6 +7,8 @@ class Sitemap < ActiveRecord::Base
 
   before_validation :set_searchgov_domain, on: :create
 
+  after_create { SitemapIndexerJob.perform_later(sitemap_url: url) }
+
   validates_associated :searchgov_domain, on: :create
   validates_presence_of :searchgov_domain, on: :create
 

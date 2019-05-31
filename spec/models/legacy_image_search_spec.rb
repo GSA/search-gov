@@ -4,22 +4,6 @@ describe LegacyImageSearch do
   fixtures :affiliates, :site_domains, :flickr_profiles
   let(:affiliate) { affiliates(:usagov_affiliate) }
 
-  describe '#new' do
-    context 'when the search engine is Azure' do
-      before { affiliate.search_engine = 'Azure' }
-
-      it 'searches using Azure engine' do
-        expect(HostedAzureImageEngine).to receive(:new).
-          with(hash_including(language: 'en',
-                              offset: 0,
-                              per_page: 20,
-                              query: 'government (site:gov OR site:mil)'))
-
-        described_class.new query: 'government', affiliate: affiliate
-      end
-    end
-  end
-
   describe "#run" do
     context "when there are no Bing/Google or Flickr results" do
       let(:noresults_search) { LegacyImageSearch.new(query: 'shuttle', affiliate: affiliate) }

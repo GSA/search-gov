@@ -37,9 +37,6 @@ Rails.application.configure do
     # Expands the lines which load the assets
     config.assets.debug = true
   end
-
-  # Raise exception on mass assignment protection for Active Record models
-  config.active_record.mass_assignment_sanitizer = :strict
 end
 
 ADDITIONAL_BING_PARAMS = { 'traffictype' => 'test' }
@@ -48,3 +45,4 @@ DEFAULT_CACHE_DURATION = 6.hours
 AZURE_CACHE_DURATION = 1.day
 BING_CACHE_DURATION = 1.day
 GOOGLE_CACHE_DURATION = 5.minutes
+I14Y_CACHE_DURATION = 1.day

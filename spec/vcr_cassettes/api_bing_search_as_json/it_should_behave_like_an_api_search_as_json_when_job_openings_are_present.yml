@@ -1,0 +1,166 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=10&mkt=en-US&offset=0&q=food%20nutrition%20(site:usa.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - my_api_key
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '2344'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Thu, 03 Jan 2019 18:33:47 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=395A2EAFEDE766631F1D2276EC30675B; path=/; expires=Tue, 28-Jan-2020 18:34:47
+        GMT; domain=bingapis.com
+      - MUIDB=395A2EAFEDE766631F1D2276EC30675B; path=/; httponly; expires=Tue, 28-Jan-2020
+        18:34:47 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 03-Jan-2021 18:34:47 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=BBF40A32187A4B548E66E99412AA0E66&dmnchg=1; domain=.bingapis.com;
+        expires=Sun, 03-Jan-2021 18:34:47 GMT; path=/
+      - SRCHUSR=DOB=20190103; domain=.bingapis.com; expires=Sun, 03-Jan-2021 18:34:47
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=2FB3D18AD5B967430AE2DD53D46E66EA; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Tue, 28-Jan-2020 18:34:47 GMT; domain=bingapis.com
+      - _SS=SID=2FB3D18AD5B967430AE2DD53D46E66EA; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - CC1A575D4FD94956ACBC17859F0A7A50
+      X-Msedge-Clientid:
+      - 395A2EAFEDE766631F1D2276EC30675B
+      X-Msapi-Userstate:
+      - 80ac
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: CC1A575D4FD94956ACBC17859F0A7A50 Ref B: CO1EDGE0508 Ref C: 2019-01-03T18:34:47Z'
+      Date:
+      - Thu, 03 Jan 2019 18:34:47 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=BD0383C6CDA24AB5943134276D5E4613&CID=395A2EAFEDE766631F1D2276EC30675B&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=BD0383C6CDA24AB5943134276D5E4613&CID=395A2EAFEDE766631F1D2276EC30675B&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=food+nutrition+(site%3ausa.gov)",
+        "webSearchUrlPingSuffix": "DevEx,5242.1", "totalEstimatedMatches": 129, "value":
+        [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "Health
+        | USAGov", "url": "https:\/\/www.usa.gov\/health", "urlPingSuffix": "DevEx,5054.1",
+        "displayUrl": "https:\/\/www.usa.gov\/health", "snippet": "Health Information
+        from the Government. Learn more about the best ways to find health information
+        from the government. Health Insurance. Learn about health insurance, including
+        Medicaid and Medicare. Medications. Get answers to common questions about
+        buying and using medicine and medical products. Mental Health and Substance
+        Abuse", "dateLastCrawled": "2018-12-27T17:34:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
+        "name": "U.S. Department of Agriculture | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/u-s-department-of-agriculture",
+        "urlPingSuffix": "DevEx,5067.1", "about": [{"name": "United States Department
+        of Agriculture"}], "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/u-s-department-of-agriculture",
+        "snippet": "Popular Services from U.S. Department of Agriculture. Food
+        Stamps\/SNAP Information . How to Apply for Food Stamps\/SNAP . Food and
+        Nutrition . USDA Food and Food Safety Recalls. Back to Top. Parent Agency.
+        White House Related Agency. Center for Nutrition Policy and Promotion Food
+        and Nutrition Service", "dateLastCrawled": "2018-12-28T00:35:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Food
+        and Nutrition Service | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/food-and-nutrition-service",
+        "urlPingSuffix": "DevEx,5080.1", "about": [{"name": "Food and Nutrition Service"}],
+        "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/food-and-nutrition-service",
+        "snippet": "Food and Nutrition Service. The Food and Nutrition Service
+        provides children and low-income people access to food, a healthful diet,
+        and nutrition education. Agency Details Website: Food and Nutrition Service
+        . Contact: Contact the Food and Nutrition Service . Food Stamps. Child
+        Nutrition Programs. Main Address: 3101 Park Center Dr.", "dateLastCrawled":
+        "2018-12-23T03:03:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "Food Assistance | USAGov", "url": "https:\/\/www.usa.gov\/food-help",
+        "urlPingSuffix": "DevEx,5093.1", "displayUrl": "https:\/\/www.usa.gov\/food-help",
+        "snippet": "If you have a low income, the Supplemental Nutrition Assistance
+        Program (SNAP), formerly known as \"food stamps,\" is a federal nutrition
+        program that can help you stretch your food budget. You get benefits each
+        month on a plastic electronic benefits transfer (EBT) card, which you use
+        like a credit or ...", "dateLastCrawled": "2018-12-29T09:16:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Healthcare
+        Careers | USAGov", "url": "https:\/\/www.usa.gov\/healthcare-careers?source=kids",
+        "urlPingSuffix": "DevEx,5105.1", "displayUrl": "https:\/\/www.usa.gov\/healthcare-careers?source=kids",
+        "snippet": "A nutritionist or a dietician is an expert in food, health and
+        nutrition. And nutritionists are health professionals, so they work in a
+        variety of settings: Nutritionists work in hospitals helping patients get
+        better. Nutritionists also work in grocery stores helping customers.", "dateLastCrawled":
+        "2018-12-24T12:14:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
+        "name": "Food and Drug Administration | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/food-and-drug-administration",
+        "urlPingSuffix": "DevEx,5118.1", "about": [{"name": "Food and Drug Administration"}],
+        "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/food-and-drug-administration",
+        "snippet": "Food and Drug Administration. The Food and Drug Administration
+        (FDA) is responsible for protecting the public health by assuring the safety,
+        efficacy, and security of human and veterinary drugs, biological products,
+        medical devices, our nation''s food supply, cosmetics, and products that
+        emit radiation.", "dateLastCrawled": "2018-12-30T20:21:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Center for Food
+        Safety and Applied Nutrition | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/center-for-food-safety-and-applied-nutrition",
+        "urlPingSuffix": "DevEx,5131.1", "about": [{"name": "Center for Food Safety
+        and Applied Nutrition"}, {"name": "Center for Food Safety"}], "displayUrl":
+        "https:\/\/www.usa.gov\/...\/center-for-food-safety-and-applied-nutrition",
+        "snippet": "Center for Food Safety and Applied Nutrition. The Center provides
+        services to consumers and industry groups about food and cosmetics. They
+        perform scientific analysis, develop policy, and handle critical issues related
+        to food and cosmetics.", "dateLastCrawled": "2018-12-25T03:09:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Center
+        for Nutrition Policy and Promotion | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/center-for-nutrition-policy-and-promotion",
+        "urlPingSuffix": "DevEx,5144.1", "about": [{"name": "Center for Nutrition
+        Policy and Promotion"}], "displayUrl": "https:\/\/www.usa.gov\/...\/center-for-nutrition-policy-and-promotion",
+        "snippet": "Center for Nutrition Policy and Promotion. The Center for Nutrition
+        Policy and Promotion works to improve the health and well-being of Americans
+        by developing and promoting dietary guidance that links scientific research
+        to the nutrition needs of consumers.", "dateLastCrawled": "2018-12-27T13:40:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "C | A-Z
+        Index of U.S. Government Departments and Agencies ...", "url": "https:\/\/www.usa.gov\/federal-agencies\/c",
+        "urlPingSuffix": "DevEx,5157.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/c",
+        "snippet": "Center for Food Safety and Applied Nutrition Center for Nutrition
+        Policy and Promotion (CNPP) Centers for Disease Control and Prevention (CDC)
+        Centers for Medicare and Medicaid Services (CMS) Central Command (CENTCOM)
+        Central Intelligence Agency (CIA) Chemical Safety Board", "dateLastCrawled":
+        "2018-12-28T10:32:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
+        "name": "Executive Department Sub-Agencies and Bureaus | USAGov", "url":
+        "https:\/\/www.usa.gov\/sub-agencies", "urlPingSuffix": "DevEx,5170.1", "displayUrl":
+        "https:\/\/www.usa.gov\/sub-agencies", "snippet": "Executive Department
+        Sub-Agencies and Bureaus. These offices, agencies, and bureaus support the
+        mission of their parent department. ... Center for Food Safety and Applied
+        Nutrition. Center for Nutrition Policy and Promotion. Centers for Disease
+        Control and Prevention.", "dateLastCrawled": "2018-12-19T22:26:00.0000000Z"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}}]}}}'
+    http_version: 
+  recorded_at: Thu, 03 Jan 2019 18:34:47 GMT
+recorded_with: VCR 4.0.0

@@ -1,4 +1,5 @@
-#require 'active_record/validate_unique_child_attribute'
+# require 'active_record/validate_unique_child_attribute'
+# frozen_string_literal: true
 
 class RssFeed < ActiveRecord::Base
   include Dupable
@@ -56,12 +57,12 @@ class RssFeed < ActiveRecord::Base
   end
 
   def self.find_existing_or_initialize(name, url)
-    self.where(name: name)
-        .joins(:rss_feed_urls)
-        .where("rss_feed_urls.url = ?", url)
-        .reorder("rss_feeds.id")
-        .readonly(false)
-        .first || new(name: name)
+    where(name: name).
+      joins(:rss_feed_urls).
+      where('rss_feed_urls.url = ?', url).
+      reorder('rss_feeds.id').
+      readonly(false).
+      first || new(name: name)
   end
 
   def self.do_not_dup_attributes

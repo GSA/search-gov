@@ -11,6 +11,15 @@ Feature: Legacy Search
     And I press "Search" in the legacy search box
     Then I should see "Please enter a search term"
 
+  Scenario: Search with no results
+    Given the following legacy Affiliates exist:
+      | display_name     | name             | contact_email         | contact_name        |
+      | bar site         | bar.gov          | aff@bar.gov           | John Bar            |
+    When I am on bar.gov's search page
+    And I fill in "Enter your search term" with "foobarbazbiz"
+    And I press "Search" in the legacy search box
+    Then I should see "Sorry, no results found for 'foobarbazbiz'. Try entering fewer or broader query terms."
+
   Scenario: Searching with active RSS feeds
     Given the following legacy Affiliates exist:
       | display_name     | name       | contact_email | contact_name | locale | youtube_handles | is_image_search_navigable |

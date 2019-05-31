@@ -1809,7 +1809,7 @@ http_interactions:
         1 } }).x === 1\"),eval(\"({ set x(v){ value = v; } }).x = 1\"),setter=1===value,eval(\"obj
         = ({ if: 1 })\"),reservedWords=1===obj[\"if\"],zeroWidthChars=eval(\"_‌‍ =
         true\"),stringAccess&&getter&&setter&&reservedWords&&zeroWidthChars}catch(e){return!1}}),Modernizr.addTest(\"es5undefined\",function(){var
-        e,t;try{t=window.undefined,window.undefined=12345,e=void 0===window.undefined,window.undefined=t}catch(e){return!1}return
+        e,t;try{t=window.undefined,window.undefined=<AIRBRAKE_PROJECT_ID>,e=void 0===window.undefined,window.undefined=t}catch(e){return!1}return
         e}),Modernizr.addTest(\"es5\",function(){return!!(Modernizr.es5array&&Modernizr.es5date&&Modernizr.es5function&&Modernizr.es5object&&Modernizr.strictmode&&Modernizr.es5string&&Modernizr.json&&Modernizr.es5syntax&&Modernizr.es5undefined)}),testRunner(),setClasses(classes),delete
         ModernizrProto.addTest,delete ModernizrProto.addAsyncTest;for(var i=0;i<Modernizr._q.length;i++)Modernizr._q[i]();window.Modernizr=Modernizr}(window,document);\n\n
         \       !function(){\n          var modernizr = window.Modernizr;\n          if
@@ -3441,4 +3441,96 @@ http_interactions:
         href=\"//fast.fonts.net/t/1.css?apiType=css&projectid=44e8c964-4684-44c6-a6e3-3f3da8787b50\">\n</noscript>\n<!--<![endif]-->\n\n\n</body>\n</html>"
     http_version: 
   recorded_at: Sat, 09 Jun 2018 18:54:31 GMT
+- request:
+    method: get
+    uri: http://www.consumerfinance.gov/robots.txt
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - usasearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 301
+      message: Moved Permanently
+    headers:
+      Server:
+      - AkamaiGHost
+      Content-Length:
+      - '0'
+      Location:
+      - https://www.consumerfinance.gov/robots.txt
+      Date:
+      - Fri, 16 Nov 2018 22:42:40 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Fri, 16 Nov 2018 22:42:40 GMT
+- request:
+    method: get
+    uri: https://www.consumerfinance.gov/robots.txt
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - usasearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/plain; charset=UTF-8
+      Etag:
+      - '"125-57abc510cd176"'
+      Server:
+      - Apache
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Last-Modified:
+      - Thu, 15 Nov 2018 23:21:55 GMT
+      Access-Control-Allow-Origin:
+      - https://www.consumerfinance.gov
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Fri, 16 Nov 2018 22:42:40 GMT
+      Content-Length:
+      - '293'
+      Connection:
+      - keep-alive
+      Strict-Transport-Security:
+      - max-age=31536000
+    body:
+      encoding: UTF-8
+      string: |
+        User-agent: *
+        Disallow: /save-hud-counselors-list
+        Disallow: /about-us/the-bureau/leadership-calendar/pdf
+        Disallow: /es/obtener-respuestas/*.imprimir.html
+        Disallow: /external-site
+        Disallow: /*?success
+        Disallow: *form-id=*
+        Disallow: /?page=
+
+        sitemap: https://www.consumerfinance.gov/sitemap.xml
+    http_version: 
+  recorded_at: Fri, 16 Nov 2018 22:42:40 GMT
 recorded_with: VCR 4.0.0

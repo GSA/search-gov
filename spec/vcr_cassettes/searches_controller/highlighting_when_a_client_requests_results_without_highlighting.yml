@@ -223,4 +223,220 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
   recorded_at: Thu, 26 Apr 2018 23:29:20 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=obama%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '3453'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 27 Aug 2018 00:06:17 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=00259FE1FAEB6460046D93B9FBE4656F; path=/; expires=Sat, 21-Sep-2019 00:07:18
+        GMT; domain=bingapis.com
+      - MUIDB=00259FE1FAEB6460046D93B9FBE4656F; path=/; httponly; expires=Sat, 21-Sep-2019
+        00:07:18 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 27-Aug-2020 00:07:17 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=64371C3A252D4FC38240935D885C9636&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 27-Aug-2020 00:07:17 GMT; path=/
+      - SRCHUSR=DOB=20180827; domain=.bingapis.com; expires=Thu, 27-Aug-2020 00:07:17
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=095578AF8E1667D5283E74F78F1966B3; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 21-Sep-2019 00:07:18 GMT; domain=bingapis.com
+      - _SS=SID=095578AF8E1667D5283E74F78F1966B3; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - 29DC161CEC544A56BA7701FBF66C0B8B
+      X-Msedge-Clientid:
+      - '00259FE1FAEB6460046D93B9FBE4656F'
+      X-Msapi-Userstate:
+      - 01cd
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: 29DC161CEC544A56BA7701FBF66C0B8B Ref B: BAYEDGE0518 Ref C: 2018-08-27T00:07:18Z'
+      Date:
+      - Mon, 27 Aug 2018 00:07:17 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=8F7CB5BB26624ABEBF02295E9336A4E9&CID=00259FE1FAEB6460046D93B9FBE4656F&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=8F7CB5BB26624ABEBF02295E9336A4E9&CID=00259FE1FAEB6460046D93B9FBE4656F&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=obama+(site%3agov+OR+site%3amil)",
+        "webSearchUrlPingSuffix": "DevEx,5425.1", "totalEstimatedMatches": 12800000,
+        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
+        "The White House", "url": "https:\/\/www.whitehouse.gov\/", "urlPingSuffix":
+        "DevEx,5059.1", "about": [{"name": "whitehouse.gov"}, {"name": "White House"}],
+        "displayUrl": "https:\/\/www.whitehouse.gov", "snippet": "Search WhiteHouse.gov.
+        Economy & Jobs Vice President Pence: ... Our first president, George Washington,
+        selected the site for the White House in 1791.", "dateLastCrawled": "2018-08-20T05:21:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "HealthCare.gov
+        - Get 2018 health coverage. Health ...", "url": "https:\/\/www.healthcare.gov\/",
+        "urlPingSuffix": "DevEx,5072.1", "about": [{"name": "HealthCare.gov"}], "displayUrl":
+        "https:\/\/www.healthcare.gov", "snippet": "Official site of Affordable Care
+        Act. Enroll now for 2018 coverage. See health coverage choices, ways to save
+        today, how law affects you.", "dateLastCrawled": "2018-08-20T08:23:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "The White
+        House | whitehouse.gov", "url": "https:\/\/obamawhitehouse.archives.gov\/",
+        "urlPingSuffix": "DevEx,5085.1", "about": [{"name": "whitehouse.gov"}, {"name":
+        "Barack Obama"}, {"name": "Barack Obama"}, {"name": "White House"}], "displayUrl":
+        "https:\/\/obamawhitehouse.archives.gov", "snippet": "President Obama has
+        protected more natural resources than any other president.", "dateLastCrawled":
+        "2018-08-20T15:42:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "Barack Obama - The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/barack-obama\/",
+        "urlPingSuffix": "DevEx,5100.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.aG0TZL5mYu7l8KPSj0gG8wHaEL&pid=Api",
+        "about": [{"name": "Barack Obama"}], "displayUrl": "https:\/\/www.whitehouse.gov\/...\/presidents\/barack-obama",
+        "snippet": "Barack Obama served as the 44th President of the United States.
+        His story is the American story -- values from the heartland, a middle-class
+        upbringing in", "dateLastCrawled": "2018-08-18T11:03:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "The White House
+        Blog | whitehouse.gov", "url": "https:\/\/obamawhitehouse.archives.gov\/blog",
+        "urlPingSuffix": "DevEx,5114.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog",
+        "snippet": "Here''s the latest on how you can continue to follow and engage
+        with President Obama, the First Lady, and other Obama White House officials
+        moving forward.", "dateLastCrawled": "2018-08-18T17:45:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Barack Obama
+        Presidential Library", "url": "https:\/\/www.obamalibrary.gov\/", "urlPingSuffix":
+        "DevEx,5129.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.uec73DYm3UcMXWjirKlrhgHaE9&pid=Api",
+        "about": [{"name": "Barack Obama"}, {"name": "Barack Obama Presidential Center"},
+        {"name": "Barack Obama"}], "displayUrl": "https:\/\/www.obamalibrary.gov",
+        "snippet": "The Obama Presidential Library is part of the presidential libraries
+        system administered by the National Archives and Records Administration, a
+        federal agency.", "dateLastCrawled": "2018-08-19T15:02:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "America''s Move
+        to Raise A Healthier Generation of Kids", "url": "https:\/\/letsmove.obamawhitehouse.archives.gov\/about",
+        "urlPingSuffix": "DevEx,5143.1", "displayUrl": "https:\/\/letsmove.obamawhitehouse.archives.gov\/about",
+        "snippet": "America''s Move to Raise A Healthier Generation of Kids \"In the
+        end, as First Lady, this isn’t just a policy issue for me. ... - First Lady
+        Michelle Obama.", "dateLastCrawled": "2018-08-20T08:17:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Net Neutrality:
+        A Free and Open Internet | The White House", "url": "https:\/\/obamawhitehouse.archives.gov\/node\/323681",
+        "urlPingSuffix": "DevEx,5156.1", "about": [{"name": "Net neutrality"}], "displayUrl":
+        "https:\/\/obamawhitehouse.archives.gov\/node\/323681", "snippet": "Then-Senator
+        Barack Obama pledges support for net neutrality to protect a free and open
+        Internet if elected President. Oct. 29 2007", "dateLastCrawled": "2018-08-08T06:44:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Thank
+        You | whitehouse.gov", "url": "https:\/\/obamawhitehouse.archives.gov\/blog\/2017\/01\/19\/thank-you",
+        "urlPingSuffix": "DevEx,5169.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2017\/01\/19\/thank-you",
+        "snippet": "Editor''s note: President Obama sent this final message to the
+        White House email list this morning.", "dateLastCrawled": "2018-07-30T00:27:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Contact
+        the White House", "url": "https:\/\/www.whitehouse.gov\/contact\/", "urlPingSuffix":
+        "DevEx,5182.1", "about": [{"name": "White House"}], "displayUrl": "https:\/\/www.whitehouse.gov\/contact",
+        "snippet": "Keep me posted with regular updates from the White House. required
+        ...", "dateLastCrawled": "2018-08-21T14:57:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
+        "name": "Pardons Granted by President Barack Obama (2009-2017 ...", "url":
+        "https:\/\/www.justice.gov\/pardon\/obama-pardons", "urlPingSuffix": "DevEx,5199.1",
+        "displayUrl": "https:\/\/www.justice.gov\/pardon\/obama-pardons", "snippet":
+        "James Robert Adelman. Offense: Conspiracy to embezzle by trustee or officer;
+        embezzlement by trustee (five counts); making a false account (Northern District
+        of Oklahoma)", "dateLastCrawled": "2018-07-26T16:00:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Statement by
+        the President on the Passing of Fidel Castro ...", "url": "https:\/\/obamawhitehouse.archives.gov\/the-press-office\/2016\/11\/26\/statement-president-passing-fidel-castro",
+        "urlPingSuffix": "DevEx,5213.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/the-press-office\/2016\/11\/26\/...",
+        "snippet": "Statement by the President on the Passing of Fidel Castro. ...
+        First Lady Michelle Obama; Dr. Jill Biden; The Cabinet; Executive Office of
+        the President;", "dateLastCrawled": "2018-08-20T07:01:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Contact Us |
+        Barack Obama Presidential Library", "url": "https:\/\/www.obamalibrary.gov\/about-us\/contact-us",
+        "urlPingSuffix": "DevEx,5227.1", "displayUrl": "https:\/\/www.obamalibrary.gov\/about-us\/contact-us",
+        "snippet": "Barack Obama Presidential Library 2500 W. Golf Road Hoffman Estates,
+        IL 60169-1114 Phone: (847) 252-5700 Fax: (847) 252-5799 Email: obama.library@nara.gov
+        Office of Barack and Michelle Obama President Barack Obama and Mrs. Michelle
+        Obama do not maintain offices at the Barack Obama Presidential Library.",
+        "dateLastCrawled": "2018-08-21T19:21:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        "name": "President Barack Obama''s State of the Union Address ...", "url":
+        "https:\/\/obamawhitehouse.archives.gov\/the-press-office\/2014\/01\/28\/president-barack-obamas-state-union-address",
+        "urlPingSuffix": "DevEx,5241.1", "about": [{"name": "2014 State of the Union
+        Address"}], "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/the-press-office\/2014\/01\/28\/...",
+        "snippet": "Mr. Speaker, Mr. Vice President, Members of Congress, my fellow
+        Americans: Today in America, a teacher spent extra time with a student who
+        needed it, and did her part to lift America’s graduation rate to its highest
+        level in more than three decades.", "dateLastCrawled": "2018-08-10T23:16:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Precision
+        Medicine Initiative | The White House", "url": "https:\/\/obamawhitehouse.archives.gov\/node\/333101",
+        "urlPingSuffix": "DevEx,5255.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/node\/333101",
+        "snippet": "President Obama has launched the Precision Medicine Initiative
+        — a bold new research effort to revolutionize how we improve health and treat
+        disease.", "dateLastCrawled": "2018-08-19T14:04:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "Foreign Policy - The White House", "url": "https:\/\/www.whitehouse.gov\/issues\/foreign-policy\/",
+        "urlPingSuffix": "DevEx,5269.1", "about": [{"name": "Foreign Policy"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov\/issues\/foreign-policy", "snippet": "Foreign
+        Policy. President Trump is bolstering American influence by leading a coalition
+        of strong and independent nations to promote security, prosperity, ...", "dateLastCrawled":
+        "2018-08-15T09:19:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
+        "name": "Osama Bin Laden Dead | whitehouse.gov", "url": "https:\/\/obamawhitehouse.archives.gov\/blog\/2011\/05\/02\/osama-bin-laden-dead",
+        "urlPingSuffix": "DevEx,5282.1", "about": [{"name": "Death of Osama bin Laden"}],
+        "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/...\/05\/02\/osama-bin-laden-dead",
+        "snippet": "President Obama addresses the Nation to announce that the United
+        States has killed Osama bin Laden, the leader of al Qaeda.", "dateLastCrawled":
+        "2018-08-20T18:32:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
+        "name": "Articles - The White House", "url": "https:\/\/www.whitehouse.gov\/articles\/",
+        "urlPingSuffix": "DevEx,5296.1", "about": [{"name": "White House"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov\/articles", "snippet": "Chris Smolenak is tapping
+        into the “do-it-yourself” trend – and creating a small business herself. She’s
+        opened a storefront in Holland, Pa., where customers stain and stencil their
+        own handcrafted wooden signs and other decorative items.", "dateLastCrawled":
+        "2018-08-20T22:33:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
+        "name": "President Obama''s Long Form Birth Certificate", "url": "http:\/\/obamawhitehouse.archives.gov\/blog\/2011\/04\/27\/president-obamas-long-form-birth-certificate",
+        "urlPingSuffix": "DevEx,5309.1", "displayUrl": "obamawhitehouse.archives.gov\/blog\/2011\/04\/27\/president-obamas-long...",
+        "snippet": "Since President Obama believed the distraction over his birth
+        certificate wasn’t good for the country, he requested the long form version,
+        which has been published here.", "dateLastCrawled": "2018-08-26T17:07:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Circulars
+        | The White House", "url": "https:\/\/obamawhitehouse.archives.gov\/omb\/circulars_default",
+        "urlPingSuffix": "DevEx,5323.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/omb\/circulars_default",
+        "snippet": "Circulars . Some of the documents on this page were created as
+        PDFs Click here for PDF assistance Instructions or information issued by OMB
+        to Federal agencies. These are expected to have a continuing effect of two
+        years or more.", "dateLastCrawled": "2018-08-21T15:53:00.0000000Z"}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 27 Aug 2018 00:07:18 GMT
 recorded_with: VCR 4.0.0

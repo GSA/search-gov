@@ -273,8 +273,7 @@ class Affiliate < ActiveRecord::Base
         column_name =~ /\A(header_tagline_logo|page_background_image|mobile_logo)/
       end
       %w(api_access_key
-         name
-         nutshell_id).push(*logo_attrs).freeze
+         name).push(*logo_attrs).freeze
     end
   end
 
@@ -597,7 +596,7 @@ class Affiliate < ActiveRecord::Base
   end
 
   def sc_search_engine
-    (search_engine == 'BingV6') ? 'Bing' : search_engine
+    (search_engine =~ %r{BingV\d+}) ? 'Bing' : search_engine
   end
 
   def status

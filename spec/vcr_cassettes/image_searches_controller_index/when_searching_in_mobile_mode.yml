@@ -2,15 +2,13 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.bingapis.com/api/v6/images/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=obama%20(site:gov%20OR%20site:mil)&safeSearch=moderate&traffictype=test
+    uri: https://www.bingapis.com/api/v6/images/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=obama%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
       - USASearch
-      Ocp-Apim-Subscription-Key:
-      - "<BING_V6_APP_ID>"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -29,7 +27,7 @@ http_interactions:
       Pragma:
       - no-cache
       Content-Length:
-      - '109059'
+      - '110055'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
@@ -39,259 +37,263 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=3D5B776B72C46C3614337CB673536D52; path=/; expires=Tue, 21-May-2019 23:29:06
+      - MUID=2284267BE91F65DC12172A23E8106414; path=/; expires=Sat, 21-Sep-2019 00:07:03
         GMT; domain=bingapis.com
-      - MUIDB=3D5B776B72C46C3614337CB673536D52; path=/; httponly; expires=Tue, 21-May-2019
-        23:29:06 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 26-Apr-2020 23:29:06 GMT;
+      - MUIDB=2284267BE91F65DC12172A23E8106414; path=/; httponly; expires=Sat, 21-Sep-2019
+        00:07:03 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 27-Aug-2020 00:07:02 GMT;
         path=/
-      - SRCHUID=V=2&GUID=D66C42B6B5324BE7B0236CC40FBB869E&dmnchg=1; domain=.bingapis.com;
-        expires=Sun, 26-Apr-2020 23:29:06 GMT; path=/
-      - SRCHUSR=DOB=20180426; domain=.bingapis.com; expires=Sun, 26-Apr-2020 23:29:06
+      - SRCHUID=V=2&GUID=07052111E1BC47A98086D88E5C9016D7&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 27-Aug-2020 00:07:02 GMT; path=/
+      - SRCHUSR=DOB=20180827; domain=.bingapis.com; expires=Thu, 27-Aug-2020 00:07:02
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=25A02BFD59EA6A3B20E52020587D6B9B; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=302B274C1A45608022852B141B4A61C2; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Tue, 21-May-2019 23:29:06 GMT; domain=bingapis.com
-      - _SS=SID=25A02BFD59EA6A3B20E52020587D6B9B; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 21-Sep-2019 00:07:03 GMT; domain=bingapis.com
+      - _SS=SID=302B274C1A45608022852B141B4A61C2; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - F5B102100F484390BCE45EAA25BC0880
+      - 06F00B26AB7F4E6C93A693AD85C99327
       X-Msedge-Clientid:
-      - 3D5B776B72C46C3614337CB673536D52
+      - 2284267BE91F65DC12172A23E8106414
       X-Msapi-Userstate:
-      - 3a36
+      - 9fe0
       X-Msedge-Ref:
-      - 'Ref A: F5B102100F484390BCE45EAA25BC0880 Ref B: CO1EDGE0121 Ref C: 2018-04-26T23:29:06Z'
+      - 'Ref A: 06F00B26AB7F4E6C93A693AD85C99327 Ref B: BAYEDGE0212 Ref C: 2018-08-27T00:07:03Z'
       Date:
-      - Thu, 26 Apr 2018 23:29:05 GMT
+      - Mon, 27 Aug 2018 00:07:02 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "Images", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=D7B6A9D47D9244D8A71177658C8D93FB&CID=3D5B776B72C46C3614337CB673536D52&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=D7B6A9D47D9244D8A71177658C8D93FB&CID=3D5B776B72C46C3614337CB673536D52&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "Images", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=E0BEEDC212CF48DEB666A7C6F14A3CFE&CID=2284267BE91F65DC12172A23E8106414&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=E0BEEDC212CF48DEB666A7C6F14A3CFE&CID=2284267BE91F65DC12172A23E8106414&Type=Event.CPT&DATA=0"},
         "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=obama%20(site:gov%20OR%20site:mil)&FORM=OIIARP",
-        "webSearchUrlPingSuffix": "DevEx,5188.1", "totalEstimatedMatches": 104, "nextOffset":
-        22, "value": [{"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=8ADF611AC03335B8019B744FA412B8F36B712E21&simid=608037367031267515",
-        "webSearchUrlPingSuffix": "DevEx,5025.1", "name": "Barack Obama | whitehouse.gov",
-        "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.aG0TZL5mYu7l8KPSj0gG8wHaEL&pid=Api",
-        "datePublished": "2015-02-16T00:15:00.0000000Z", "contentUrl": "http:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/images\/first-family\/44_barack_obama%5B1%5D.jpg",
-        "contentUrlPingSuffix": "DevEx,5027.1", "hostPageUrl": "http:\/\/www.whitehouse.gov\/1600\/presidents\/barackobama",
-        "hostPageUrlPingSuffix": "DevEx,5026.1", "contentSize": "241745 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "www.whitehouse.gov\/1600\/presidents\/barackobama",
-        "width": 800, "height": 452, "thumbnail": {"width": 474, "height": 267}, "imageInsightsToken":
-        "ccid_aG0TZL5m*mid_8ADF611AC03335B8019B744FA412B8F36B712E21*simid_608037367031267515",
+        "webSearchUrlPingSuffix": "DevEx,5188.1", "totalEstimatedMatches": 109, "nextOffset":
+        23, "value": [{"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=AFD7BDD88014022424A86F187FCBA00897EBDDD8&simid=607994924431048836",
+        "webSearchUrlPingSuffix": "DevEx,5025.1", "name": "President Barack Obama
+        | whitehouse.gov", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.mVDly-W7LrsNP_ptTfpdcQHaJQ&pid=Api",
+        "datePublished": "2010-01-17T14:26:00.0000000Z", "contentUrl": "http:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/images\/Administration\/People\/president_official_portrait_hires.jpg",
+        "contentUrlPingSuffix": "DevEx,5027.1", "hostPageUrl": "http:\/\/www.whitehouse.gov\/administration\/president-obama",
+        "hostPageUrlPingSuffix": "DevEx,5026.1", "contentSize": "1285932 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "www.whitehouse.gov\/administration\/president-obama",
+        "width": 2687, "height": 3356, "thumbnail": {"width": 474, "height": 592},
+        "imageInsightsToken": "ccid_mVDly+W7*mid_AFD7BDD88014022424A86F187FCBA00897EBDDD8*simid_607994924431048836",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "8ADF611AC03335B8019B744FA412B8F36B712E21", "accentColor": "924239"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=ADC303143F0B6323A2959A8FC50855E0629EF8C1&simid=607993863295076160",
+        "imageId": "AFD7BDD88014022424A86F187FCBA00897EBDDD8", "accentColor": "9F2E2C"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=ADC303143F0B6323A295B9C6A774AD07EC313647&simid=608045025195787631",
         "webSearchUrlPingSuffix": "DevEx,5031.1", "name": "President Obama: “We Will
-        Degrade and Ultimately Destroy ISIL” | whitehouse.gov", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.BwRvK1HBX80PFZ0tBPylRAHaE7&pid=Api",
-        "datePublished": "2014-09-10T12:00:00.0000000Z", "contentUrl": "https:\/\/obamawhitehouse.archives.gov\/sites\/default\/files\/image\/image_file\/091014_potus_isil_1.jpg",
-        "contentUrlPingSuffix": "DevEx,5033.1", "hostPageUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2014\/09\/10\/president-obama-we-will-degrade-and-ultimately-destroy-isil",
-        "hostPageUrlPingSuffix": "DevEx,5032.1", "contentSize": "754828 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2014\/09\/10\/president...",
-        "width": 2048, "height": 1365, "thumbnail": {"width": 474, "height": 315},
-        "imageInsightsToken": "ccid_BwRvK1HB*mid_ADC303143F0B6323A2959A8FC50855E0629EF8C1*simid_607993863295076160",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "ADC303143F0B6323A2959A8FC50855E0629EF8C1", "accentColor": "4F5A6B"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=6F67ABE3D66EC29B0F48D6EB08F8804FF4D3642C&simid=608032088494902177",
-        "webSearchUrlPingSuffix": "DevEx,5037.1", "name": "Obama Proclaims April Sexual
-        Assault Awareness and Prevention Month | DoDLive", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP._rrRCMGU-CjYwMLAlGLdxQHaE8&pid=Api",
-        "datePublished": "2013-04-01T12:00:00.0000000Z", "contentUrl": "http:\/\/www.dodlive.mil\/files\/2013\/04\/121203-D-BW835-505b.jpg",
-        "contentUrlPingSuffix": "DevEx,5039.1", "hostPageUrl": "http:\/\/www.dodlive.mil\/index.php\/2013\/04\/obama-proclaims-april-sexual-assault-awareness-and-prevention-month\/",
-        "hostPageUrlPingSuffix": "DevEx,5038.1", "contentSize": "2451102 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "www.dodlive.mil\/index.php\/2013\/04\/obama-proclaims-april-sexual...",
-        "width": 3174, "height": 2116, "thumbnail": {"width": 474, "height": 316},
-        "imageInsightsToken": "ccid_\/rrRCMGU*mid_6F67ABE3D66EC29B0F48D6EB08F8804FF4D3642C*simid_608032088494902177",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "6F67ABE3D66EC29B0F48D6EB08F8804FF4D3642C", "accentColor": "121826"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=18891D4D8CCE2165230D300B78727873B015A4E6&simid=608049543277773608",
-        "webSearchUrlPingSuffix": "DevEx,5043.1", "name": "NASA - NASA Supports the
-        President''s Educate To Innovate Campaign With Summer Of Innovation To ...",
-        "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.BE0L-nvTTBr_SYeRlflCpgHaIb&pid=Api",
-        "datePublished": "2010-02-05T16:05:00.0000000Z", "contentUrl": "http:\/\/www.nasa.gov\/images\/content\/415925main_201001060001HQ.jpg",
-        "contentUrlPingSuffix": "DevEx,5045.1", "hostPageUrl": "http:\/\/www.nasa.gov\/topics\/nasalife\/summer_of_innovation.html",
-        "hostPageUrlPingSuffix": "DevEx,5044.1", "contentSize": "1560458 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "www.nasa.gov\/topics\/nasalife\/summer_of_innovation.html",
-        "width": 1992, "height": 2267, "thumbnail": {"width": 474, "height": 539},
-        "imageInsightsToken": "ccid_BE0L+nvT*mid_18891D4D8CCE2165230D300B78727873B015A4E6*simid_608049543277773608",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "18891D4D8CCE2165230D300B78727873B015A4E6", "accentColor": "5E626D"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=ADC303143F0B6323A295B9C6A774AD07EC313647&simid=608045024928140954",
-        "webSearchUrlPingSuffix": "DevEx,5049.1", "name": "President Obama: “We Will
         Degrade and Ultimately Destroy ISIL” | whitehouse.gov", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.nwlCqf8iT04pVN5uLvAFHgHaE7&pid=Api",
         "datePublished": "2014-09-11T00:23:00.0000000Z", "contentUrl": "https:\/\/obamawhitehouse.archives.gov\/sites\/default\/files\/image\/image_file\/091014_potus_isil_2.jpg",
-        "contentUrlPingSuffix": "DevEx,5051.1", "hostPageUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2014\/09\/10\/president-obama-we-will-degrade-and-ultimately-destroy-isil",
-        "hostPageUrlPingSuffix": "DevEx,5050.1", "contentSize": "633936 B", "encodingFormat":
+        "contentUrlPingSuffix": "DevEx,5033.1", "hostPageUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2014\/09\/10\/president-obama-we-will-degrade-and-ultimately-destroy-isil",
+        "hostPageUrlPingSuffix": "DevEx,5032.1", "contentSize": "633936 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2014\/09\/10\/president...",
         "width": 2048, "height": 1365, "thumbnail": {"width": 474, "height": 315},
-        "imageInsightsToken": "ccid_nwlCqf8i*mid_ADC303143F0B6323A295B9C6A774AD07EC313647*simid_608045024928140954",
+        "imageInsightsToken": "ccid_nwlCqf8i*mid_ADC303143F0B6323A295B9C6A774AD07EC313647*simid_608045025195787631",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "ADC303143F0B6323A295B9C6A774AD07EC313647", "accentColor": "7B1C2D"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=94ED69EE777A931A6E8CCEB84BD60F4C4A9B9D97&simid=608002199828039692",
-        "webSearchUrlPingSuffix": "DevEx,5055.1", "name": "5 little-known facts about
-        President Obama | ShareAmerica", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.Hb3kzJJkThbakOJoOWT54gHaE9&pid=Api",
-        "datePublished": "2016-05-28T16:41:00.0000000Z", "contentUrl": "https:\/\/share.america.gov\/wp-content\/uploads\/2015\/01\/Optimized-AP678899868516.jpg",
-        "contentUrlPingSuffix": "DevEx,5057.1", "hostPageUrl": "https:\/\/share.america.gov\/five-little-known-facts-about-president-obama",
-        "hostPageUrlPingSuffix": "DevEx,5056.1", "contentSize": "221373 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/share.america.gov\/five-little-known-facts-about-president...",
-        "width": 700, "height": 469, "thumbnail": {"width": 474, "height": 317}, "imageInsightsToken":
-        "ccid_Hb3kzJJk*mid_94ED69EE777A931A6E8CCEB84BD60F4C4A9B9D97*simid_608002199828039692",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "94ED69EE777A931A6E8CCEB84BD60F4C4A9B9D97", "accentColor": "354E7B"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=7AEE8A19859F9638A4A7A6E011FEB7B2E62D64E1&simid=608038122948461017",
-        "webSearchUrlPingSuffix": "DevEx,5061.1", "name": "Defense.gov - Inauguration
-        2009", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.bZf5Pdhg-yyp1YkLPHrbjAHaE8&pid=Api",
-        "datePublished": "2018-04-12T18:35:00.0000000Z", "contentUrl": "http:\/\/archive.defense.gov\/dodcmsshare\/newsstoryPhoto\/2009-01\/hrs_090120-N-0696M-327a.jpg",
-        "contentUrlPingSuffix": "DevEx,5063.1", "hostPageUrl": "http:\/\/archive.defense.gov\/home\/features\/2009\/0109_inauguration\/",
-        "hostPageUrlPingSuffix": "DevEx,5062.1", "contentSize": "1019167 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "archive.defense.gov\/home\/features\/2009\/0109_inauguration",
-        "width": 1972, "height": 1315, "thumbnail": {"width": 474, "height": 316},
-        "imageInsightsToken": "ccid_bZf5Pdhg*mid_7AEE8A19859F9638A4A7A6E011FEB7B2E62D64E1*simid_608038122948461017",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "7AEE8A19859F9638A4A7A6E011FEB7B2E62D64E1", "accentColor": "444D5A"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=AFD7BDD88014022424A852A5AE3831B66D5E04F6&simid=608001306477790361",
-        "webSearchUrlPingSuffix": "DevEx,5067.1", "name": "President Barack Obama
-        | whitehouse.gov", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.K2jPfmAkia5ZEYcjYNiQFAHaJP&pid=Api",
-        "datePublished": "2010-01-17T14:26:00.0000000Z", "contentUrl": "http:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/images\/Administration\/People\/president_official_portrait_lores.jpg",
-        "contentUrlPingSuffix": "DevEx,5069.1", "hostPageUrl": "http:\/\/www.whitehouse.gov\/administration\/president-obama",
-        "hostPageUrlPingSuffix": "DevEx,5068.1", "contentSize": "303258 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "www.whitehouse.gov\/administration\/president-obama",
-        "width": 599, "height": 748, "thumbnail": {"width": 474, "height": 591}, "imageInsightsToken":
-        "ccid_K2jPfmAk*mid_AFD7BDD88014022424A852A5AE3831B66D5E04F6*simid_608001306477790361",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "AFD7BDD88014022424A852A5AE3831B66D5E04F6", "accentColor": "9E2F2D"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=4CF7545BD04E49FD22DE9EB5A4AD0206E610E8A6&simid=608023657483210127",
-        "webSearchUrlPingSuffix": "DevEx,5073.1", "name": "Barack Obama | Congress.gov
-        | Library of Congress", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.5tDYEUe7ueJ3cfSCZmoprAHaJD&pid=Api",
-        "datePublished": "2014-06-05T16:18:00.0000000Z", "contentUrl": "http:\/\/beta.congress.gov\/img\/member\/obama_d_il.jpg",
-        "contentUrlPingSuffix": "DevEx,5075.1", "hostPageUrl": "http:\/\/beta.congress.gov\/member\/barack-obama\/1763",
-        "hostPageUrlPingSuffix": "DevEx,5074.1", "contentSize": "63243 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "beta.congress.gov\/member\/barack-obama\/1763",
-        "width": 675, "height": 825, "thumbnail": {"width": 474, "height": 579}, "imageInsightsToken":
-        "ccid_5tDYEUe7*mid_4CF7545BD04E49FD22DE9EB5A4AD0206E610E8A6*simid_608023657483210127",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "4CF7545BD04E49FD22DE9EB5A4AD0206E610E8A6", "accentColor": "374770"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=AA7733F3A627D9E83BF9554221ABD8A186C6121A&simid=608045574679561085",
-        "webSearchUrlPingSuffix": "DevEx,5079.1", "name": "President Obama on the
-        Shooting in San Bernardino | whitehouse.gov", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.fq5DnVLxQcdHsz_0Uu8HYQHaE7&pid=Api",
-        "datePublished": "2015-12-02T22:42:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/images\/23460287881_7af9ea4313_o.jpg",
-        "contentUrlPingSuffix": "DevEx,5081.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/blog\/2015\/12\/02\/president-obama-shooting-san-bernardino",
-        "hostPageUrlPingSuffix": "DevEx,5080.1", "contentSize": "1546070 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/blog\/2015\/12\/02\/president-obama-shooting...",
-        "width": 2240, "height": 1493, "thumbnail": {"width": 474, "height": 315},
-        "imageInsightsToken": "ccid_fq5DnVLx*mid_AA7733F3A627D9E83BF9554221ABD8A186C6121A*simid_608045574679561085",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "AA7733F3A627D9E83BF9554221ABD8A186C6121A", "accentColor": "355196"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=316A7AA60EA4E56DB3C44353AF560B72DB27063C&simid=608049637760699275",
-        "webSearchUrlPingSuffix": "DevEx,5085.1", "name": "\"We Were Strangers Once,
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=316A7AA60EA4E56DB3C44353AF560B72DB27063C&simid=608049638034902605",
+        "webSearchUrlPingSuffix": "DevEx,5037.1", "name": "\"We Were Strangers Once,
         Too\": The President Announces New Steps on Immigration | whitehouse.gov",
         "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.iIZKGW7Sm7kXnwdgecOAlgHaLG&pid=Api",
         "datePublished": "2014-11-20T12:00:00.0000000Z", "contentUrl": "https:\/\/obamawhitehouse.archives.gov\/sites\/default\/files\/image\/image_file\/p112014ps-1200.jpg",
-        "contentUrlPingSuffix": "DevEx,5087.1", "hostPageUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2014\/11\/20\/we-were-strangers-once-too-president-announces-new-steps-immigratio",
-        "hostPageUrlPingSuffix": "DevEx,5086.1", "contentSize": "1160703 B", "encodingFormat":
+        "contentUrlPingSuffix": "DevEx,5039.1", "hostPageUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2014\/11\/20\/we-were-strangers-once-too-president-announces-new-steps-immigratio",
+        "hostPageUrlPingSuffix": "DevEx,5038.1", "contentSize": "1160703 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2014\/11\/20\/we-were...",
         "width": 2731, "height": 4096, "thumbnail": {"width": 474, "height": 710},
-        "imageInsightsToken": "ccid_iIZKGW7S*mid_316A7AA60EA4E56DB3C44353AF560B72DB27063C*simid_608049637760699275",
+        "imageInsightsToken": "ccid_iIZKGW7S*mid_316A7AA60EA4E56DB3C44353AF560B72DB27063C*simid_608049638034902605",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "316A7AA60EA4E56DB3C44353AF560B72DB27063C", "accentColor": "4C5C7C"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=1FD2A95D692BA8C8ACEDCECD1C5BCADC23C04E35&simid=608004398864600427",
-        "webSearchUrlPingSuffix": "DevEx,5091.1", "name": "President Obama travels
-        to Hawaii > Kunsan Air Base > News", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.5rdq8ODxfir_X3V2vbHzKAHaFS&pid=Api",
-        "datePublished": "2018-03-30T04:31:00.0000000Z", "contentUrl": "https:\/\/media.defense.gov\/2016\/Sep\/02\/2001623412\/-1\/-1\/0\/160831-F-WY331-296.JPG",
-        "contentUrlPingSuffix": "DevEx,5093.1", "hostPageUrl": "http:\/\/www.kunsan.af.mil\/News\/tabid\/1925\/Article\/935503\/president-obama-travels-to-hawaii.aspx",
-        "hostPageUrlPingSuffix": "DevEx,5092.1", "contentSize": "1999592 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "www.kunsan.af.mil\/News\/tabid\/1925\/Article\/935503\/president-obama...",
-        "width": 2100, "height": 1500, "thumbnail": {"width": 474, "height": 338},
-        "imageInsightsToken": "ccid_5rdq8ODx*mid_1FD2A95D692BA8C8ACEDCECD1C5BCADC23C04E35*simid_608004398864600427",
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=ADC303143F0B6323A2959A8FC50855E0629EF8C1&simid=607993863566527610",
+        "webSearchUrlPingSuffix": "DevEx,5043.1", "name": "President Obama: “We Will
+        Degrade and Ultimately Destroy ISIL” | whitehouse.gov", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.BwRvK1HBX80PFZ0tBPylRAHaE7&pid=Api",
+        "datePublished": "2018-07-28T23:30:00.0000000Z", "contentUrl": "https:\/\/obamawhitehouse.archives.gov\/sites\/default\/files\/image\/image_file\/091014_potus_isil_1.jpg",
+        "contentUrlPingSuffix": "DevEx,5045.1", "hostPageUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2014\/09\/10\/president-obama-we-will-degrade-and-ultimately-destroy-isil",
+        "hostPageUrlPingSuffix": "DevEx,5044.1", "contentSize": "754828 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2014\/09\/10\/president...",
+        "width": 2048, "height": 1365, "thumbnail": {"width": 474, "height": 315},
+        "imageInsightsToken": "ccid_BwRvK1HB*mid_ADC303143F0B6323A2959A8FC50855E0629EF8C1*simid_607993863566527610",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "1FD2A95D692BA8C8ACEDCECD1C5BCADC23C04E35", "accentColor": "8B7C40"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=E212CB195E52512B41F3C011803317E0D1DD292C&simid=608034790037783367",
-        "webSearchUrlPingSuffix": "DevEx,5097.1", "name": "02\/03\/16 - Presidential
-        Proclamation -- National African American History Month, 2016 | U.S ...",
-        "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.FMMgAxoKHFJ32I3psy5RiwHaDc&pid=Api",
-        "datePublished": "2018-03-16T11:50:00.0000000Z", "contentUrl": "https:\/\/kr.usembassy.gov\/wp-content\/uploads\/sites\/75\/2014\/11\/Obama-1140x530.jpg",
-        "contentUrlPingSuffix": "DevEx,5099.1", "hostPageUrl": "https:\/\/kr.usembassy.gov\/ack_sp_020116a\/",
-        "hostPageUrlPingSuffix": "DevEx,5098.1", "contentSize": "34646 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/kr.usembassy.gov\/ack_sp_020116a",
-        "width": 1140, "height": 530, "thumbnail": {"width": 474, "height": 220},
-        "imageInsightsToken": "ccid_FMMgAxoK*mid_E212CB195E52512B41F3C011803317E0D1DD292C*simid_608034790037783367",
+        "imageId": "ADC303143F0B6323A2959A8FC50855E0629EF8C1", "accentColor": "4F5A6B"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=CCD48CDA437E7B6E4E48843239A9444754FB0F4B&simid=607987893577713708",
+        "webSearchUrlPingSuffix": "DevEx,5049.1", "name": "President Obama on America''s
+        Response to Ebola: \"When Disease or Disaster Strikes, Americans ...", "thumbnailUrl":
+        "https:\/\/tse3.mm.bing.net\/th?id=OIP.sbbrxEOHaJ0Y_g3xaW83cAHaE7&pid=Api",
+        "datePublished": "2014-10-28T12:00:00.0000000Z", "contentUrl": "https:\/\/obamawhitehouse.archives.gov\/sites\/default\/files\/image\/image_file\/ebolaupdatephoto.jpg",
+        "contentUrlPingSuffix": "DevEx,5051.1", "hostPageUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2014\/10\/28\/president-obama-provides-update-our-ebola-response-when-disease-or-disaster-strikes-",
+        "hostPageUrlPingSuffix": "DevEx,5050.1", "contentSize": "146818 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2014\/10\/28\/president...",
+        "width": 1100, "height": 733, "thumbnail": {"width": 474, "height": 315},
+        "imageInsightsToken": "ccid_sbbrxEOH*mid_CCD48CDA437E7B6E4E48843239A9444754FB0F4B*simid_607987893577713708",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "E212CB195E52512B41F3C011803317E0D1DD292C", "accentColor": "446588"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=257C89FE54B7813B457E8ACDD826A5BD94E2013C&simid=607992428761451212",
-        "webSearchUrlPingSuffix": "DevEx,5103.1", "name": "Happy 53rd Birthday, President
+        "imageId": "CCD48CDA437E7B6E4E48843239A9444754FB0F4B", "accentColor": "9C8C2F"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=88F7969DBAE4DB5BE78554A31331F0C7CD4BFC42&simid=608048512744557028",
+        "webSearchUrlPingSuffix": "DevEx,5055.1", "name": "Obama Proclaims Martin
+        Luther King Jr. Holiday | DoDLive", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP._rrRCMGU-CjYwMLAlGLdxQHaE8&pid=Api",
+        "datePublished": "2014-01-20T12:00:00.0000000Z", "contentUrl": "http:\/\/www.dodlive.mil\/files\/2013\/01\/121203-D-BW835-505b.jpg",
+        "contentUrlPingSuffix": "DevEx,5057.1", "hostPageUrl": "http:\/\/www.dodlive.mil\/index.php\/2014\/01\/presidential-proclamation-martin-luther-king-jr-federal-holiday-2014\/",
+        "hostPageUrlPingSuffix": "DevEx,5056.1", "contentSize": "2451102 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "www.dodlive.mil\/index.php\/2014\/01\/presidential-proclamation-martin...",
+        "width": 3174, "height": 2116, "thumbnail": {"width": 474, "height": 316},
+        "imageInsightsToken": "ccid_\/rrRCMGU*mid_88F7969DBAE4DB5BE78554A31331F0C7CD4BFC42*simid_608048512744557028",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "88F7969DBAE4DB5BE78554A31331F0C7CD4BFC42", "accentColor": "121726"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=506F70027846A0D88FE47559E94C9C5B12CEDA62&simid=607986557847208330",
+        "webSearchUrlPingSuffix": "DevEx,5061.1", "name": "Live Updates: What the
+        President is Doing to Keep Guns Out of the Wrong Hands | whitehouse.gov",
+        "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.npaBEVdpRqGc0AxlBXFwvgHaE7&pid=Api",
+        "datePublished": "2016-01-05T00:44:00.0000000Z", "contentUrl": "https:\/\/obamawhitehouse.archives.gov\/sites\/obamawhitehouse.archives.gov\/files\/POTUSguns.jpg",
+        "contentUrlPingSuffix": "DevEx,5063.1", "hostPageUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2016\/01\/04\/live-updates-what-president-doing-keep-guns-out-wrong-hands",
+        "hostPageUrlPingSuffix": "DevEx,5062.1", "contentSize": "535952 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2016\/01\/04\/live-updates...",
+        "width": 2800, "height": 1866, "thumbnail": {"width": 474, "height": 315},
+        "imageInsightsToken": "ccid_npaBEVdp*mid_506F70027846A0D88FE47559E94C9C5B12CEDA62*simid_607986557847208330",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "506F70027846A0D88FE47559E94C9C5B12CEDA62", "accentColor": "998832"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=35E214D072E23BB5D52ADE74D000E7E022F83614&simid=608005073439098405",
+        "webSearchUrlPingSuffix": "DevEx,5067.1", "name": "President Obama Speaks
+        on Malaysia Airlines Flight MH17, Russia and Ukraine, and the Situation ...",
+        "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.zgxvjopsch9MKVXGgFzZTgHaE7&pid=Api",
+        "datePublished": "2014-07-18T12:00:00.0000000Z", "contentUrl": "https:\/\/obamawhitehouse.archives.gov\/sites\/default\/files\/image\/image_file\/p071814ck-00832.jpg",
+        "contentUrlPingSuffix": "DevEx,5069.1", "hostPageUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2014\/07\/18\/president-obama-speaks-malaysia-airlines-flight-mh17-russia-and-ukraine-and-situatio",
+        "hostPageUrlPingSuffix": "DevEx,5068.1", "contentSize": "122288 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2014\/07\/18\/president...",
+        "width": 1100, "height": 733, "thumbnail": {"width": 474, "height": 315},
+        "imageInsightsToken": "ccid_zgxvjops*mid_35E214D072E23BB5D52ADE74D000E7E022F83614*simid_608005073439098405",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "35E214D072E23BB5D52ADE74D000E7E022F83614", "accentColor": "6A6162"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=9A0981089061AE9FF3F7992C9668E431ED968525&simid=608038286396817682",
+        "webSearchUrlPingSuffix": "DevEx,5073.1", "name": "President Obama: Trayvon
+        Martin Could Have Been Me | whitehouse.gov", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.MYRoUEkJhzbZxQ1g3y6AjQHaE8&pid=Api",
+        "datePublished": "2013-07-19T12:00:00.0000000Z", "contentUrl": "https:\/\/obamawhitehouse.archives.gov\/sites\/default\/files\/image\/image_file\/p071913ck-0023.jpg",
+        "contentUrlPingSuffix": "DevEx,5075.1", "hostPageUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2013\/07\/19\/president-obama-trayvon-martin-could-have-been-me",
+        "hostPageUrlPingSuffix": "DevEx,5074.1", "contentSize": "129155 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2013\/07\/19\/president...",
+        "width": 1050, "height": 700, "thumbnail": {"width": 474, "height": 316},
+        "imageInsightsToken": "ccid_MYRoUEkJ*mid_9A0981089061AE9FF3F7992C9668E431ED968525*simid_608038286396817682",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "9A0981089061AE9FF3F7992C9668E431ED968525", "accentColor": "0D3E76"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=257C89FE54B7813B457E8ACDD826A5BD94E2013C&simid=607992429051707980",
+        "webSearchUrlPingSuffix": "DevEx,5079.1", "name": "Happy 53rd Birthday, President
         Obama! | whitehouse.gov", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.ohoifudW6Iyjt4iE_IlaAgHaE7&pid=Api",
         "datePublished": "2014-08-04T12:00:00.0000000Z", "contentUrl": "https:\/\/obamawhitehouse.archives.gov\/sites\/default\/files\/image\/image_file\/president_barack_obama_holds_a_bobblehead_doll_of_himself_in_the_outer_oval_office.jpg",
-        "contentUrlPingSuffix": "DevEx,5105.1", "hostPageUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2014\/08\/04\/happy-53rd-birthday-president-obama",
-        "hostPageUrlPingSuffix": "DevEx,5104.1", "contentSize": "56818 B", "encodingFormat":
+        "contentUrlPingSuffix": "DevEx,5081.1", "hostPageUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2014\/08\/04\/happy-53rd-birthday-president-obama",
+        "hostPageUrlPingSuffix": "DevEx,5080.1", "contentSize": "56818 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2014\/08\/04\/happy-53rd...",
         "width": 520, "height": 346, "thumbnail": {"width": 474, "height": 315}, "imageInsightsToken":
-        "ccid_ohoifudW*mid_257C89FE54B7813B457E8ACDD826A5BD94E2013C*simid_607992428761451212",
+        "ccid_ohoifudW*mid_257C89FE54B7813B457E8ACDD826A5BD94E2013C*simid_607992429051707980",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "257C89FE54B7813B457E8ACDD826A5BD94E2013C", "accentColor": "3B4663"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=901A28E227497D3C44D52CFC68FD2B63011FC5A0&simid=608050350717143922",
-        "webSearchUrlPingSuffix": "DevEx,5109.1", "name": "presidential appointments
-        | Government Book Talk", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.44PNrhGUmfzJqXW4suM7JQHaEL&pid=Api",
-        "datePublished": "2016-05-07T11:33:00.0000000Z", "contentUrl": "https:\/\/govbooktalk.files.wordpress.com\/2013\/09\/44-barack-obama.jpg",
-        "contentUrlPingSuffix": "DevEx,5111.1", "hostPageUrl": "https:\/\/govbooktalk.gpo.gov\/tag\/presidential-appointments\/",
-        "hostPageUrlPingSuffix": "DevEx,5110.1", "contentSize": "45798 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/govbooktalk.gpo.gov\/tag\/presidential-appointments",
-        "width": 450, "height": 254, "thumbnail": {"width": 474, "height": 267}, "imageInsightsToken":
-        "ccid_44PNrhGU*mid_901A28E227497D3C44D52CFC68FD2B63011FC5A0*simid_608050350717143922",
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=EAB628249F2DA36ECE862C568AC47C2DBDB6965A&simid=608023258343213072",
+        "webSearchUrlPingSuffix": "DevEx,5085.1", "name": "NASA - NASA Supports the
+        President''s Educate To Innovate Campaign With Summer Of Innovation To ...",
+        "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.BE0L-nvTTBr_SYeRlflCpgHaIb&pid=Api",
+        "datePublished": "2018-06-30T20:36:00.0000000Z", "contentUrl": "https:\/\/www.nasa.gov\/images\/content\/415925main_201001060001HQ.jpg",
+        "contentUrlPingSuffix": "DevEx,5087.1", "hostPageUrl": "https:\/\/www.nasa.gov\/topics\/nasalife\/summer_of_innovation.html",
+        "hostPageUrlPingSuffix": "DevEx,5086.1", "contentSize": "1560458 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.nasa.gov\/topics\/nasalife\/summer_of_innovation.html",
+        "width": 1992, "height": 2267, "thumbnail": {"width": 474, "height": 539},
+        "imageInsightsToken": "ccid_BE0L+nvT*mid_EAB628249F2DA36ECE862C568AC47C2DBDB6965A*simid_608023258343213072",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "901A28E227497D3C44D52CFC68FD2B63011FC5A0", "accentColor": "1D171D"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=E6055E7E7ABD1139650168938A4A2885B1493E70&simid=608033256738064934",
-        "webSearchUrlPingSuffix": "DevEx,5115.1", "name": "POTUS-2 « Coast Guard Compass",
-        "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.SA5zHtMqLDcN6Lb7uNI5ygHaE8&pid=Api",
-        "datePublished": "2018-04-03T03:51:00.0000000Z", "contentUrl": "http:\/\/coastguard.dodlive.mil\/files\/2010\/08\/POTUS1.jpg",
-        "contentUrlPingSuffix": "DevEx,5117.1", "hostPageUrl": "http:\/\/coastguard.dodlive.mil\/2011\/05\/president-obama-addresses-the-class-of-2011\/POTUS-2\/",
-        "hostPageUrlPingSuffix": "DevEx,5116.1", "contentSize": "1356347 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "coastguard.dodlive.mil\/2011\/05\/president-obama-addresses-the-class...",
-        "width": 4096, "height": 2731, "thumbnail": {"width": 474, "height": 316},
-        "imageInsightsToken": "ccid_SA5zHtMq*mid_E6055E7E7ABD1139650168938A4A2885B1493E70*simid_608033256738064934",
+        "imageId": "EAB628249F2DA36ECE862C568AC47C2DBDB6965A", "accentColor": "5E626D"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=A90115D9FDC69466D90EB04C60A7C9C65EC19A6C&simid=608004132838968578",
+        "webSearchUrlPingSuffix": "DevEx,5091.1", "name": "Barack Obama", "thumbnailUrl":
+        "https:\/\/tse3.mm.bing.net\/th?id=OIP.aG0TZL5mYu7l8KPSj0gG8wHaEL&pid=Api",
+        "datePublished": "2018-08-17T21:19:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2017\/12\/44_barack_obama1.jpg",
+        "contentUrlPingSuffix": "DevEx,5093.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/barack-obama\/",
+        "hostPageUrlPingSuffix": "DevEx,5092.1", "contentSize": "241745 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/barack...",
+        "width": 800, "height": 452, "thumbnail": {"width": 474, "height": 267}, "imageInsightsToken":
+        "ccid_aG0TZL5m*mid_A90115D9FDC69466D90EB04C60A7C9C65EC19A6C*simid_608004132838968578",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "E6055E7E7ABD1139650168938A4A2885B1493E70", "accentColor": "407A8B"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=E581E7ACDA9107062AA7B5B0876ACCC4D4AB51E0&simid=608004257133233330",
-        "webSearchUrlPingSuffix": "DevEx,5121.1", "name": "Barack Obama Presidential
-        Library", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.9QNYtUeVB1JdxyCzoFPj8wHaE9&pid=Api",
-        "datePublished": "2018-04-07T10:20:00.0000000Z", "contentUrl": "http:\/\/www.obamalibrary.gov\/sites\/default\/files\/uploads\/portals\/the-obamas-potus.jpg",
-        "contentUrlPingSuffix": "DevEx,5123.1", "hostPageUrl": "http:\/\/www.obamalibrary.gov\/",
-        "hostPageUrlPingSuffix": "DevEx,5122.1", "contentSize": "93387 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "www.obamalibrary.gov", "width": 800, "height":
-        536, "thumbnail": {"width": 474, "height": 317}, "imageInsightsToken": "ccid_9QNYtUeV*mid_E581E7ACDA9107062AA7B5B0876ACCC4D4AB51E0*simid_608004257133233330",
+        "imageId": "A90115D9FDC69466D90EB04C60A7C9C65EC19A6C", "accentColor": "924239"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=4ABD7D3421D4240069F0D563C91DB25EBD92919E&simid=608013461542536158",
+        "webSearchUrlPingSuffix": "DevEx,5097.1", "name": "President Obama on Government
+        and Economic Recovery in Nevada | whitehouse.gov", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.wNBXh4BfiXDLpIzdwNSC8AHaLH&pid=Api",
+        "datePublished": "2010-07-09T12:00:00.0000000Z", "contentUrl": "https:\/\/obamawhitehouse.archives.gov\/sites\/default\/files\/image\/image_file\/unlv_vertical.jpg",
+        "contentUrlPingSuffix": "DevEx,5099.1", "hostPageUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2010\/07\/09\/president-obama-government-and-economic-recovery-nevada",
+        "hostPageUrlPingSuffix": "DevEx,5098.1", "contentSize": "165524 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2010\/07\/09\/president...",
+        "width": 1024, "height": 1536, "thumbnail": {"width": 474, "height": 711},
+        "imageInsightsToken": "ccid_wNBXh4Bf*mid_4ABD7D3421D4240069F0D563C91DB25EBD92919E*simid_608013461542536158",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "E581E7ACDA9107062AA7B5B0876ACCC4D4AB51E0", "accentColor": "1F4069"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=739D4D07395FD640E620A4ECA53E4B81045AA2DC&simid=607991453801843369",
-        "webSearchUrlPingSuffix": "DevEx,5127.1", "name": "President Obama Answers
-        #My2k Questions on Twitter | whitehouse.gov", "thumbnailUrl": "https:\/\/tse3.explicit.bing.net\/th?id=OIP.Tx1aOSMkN7x1uqJUfgeGOAHaE8&pid=Api",
-        "datePublished": "2012-12-03T12:00:00.0000000Z", "contentUrl": "https:\/\/obamawhitehouse.archives.gov\/sites\/default\/files\/image\/image_file\/p120312ps-02463.jpg",
-        "contentUrlPingSuffix": "DevEx,5129.1", "hostPageUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2012\/12\/03\/president-obama-answers-my2k-questions-twitter",
-        "hostPageUrlPingSuffix": "DevEx,5128.1", "contentSize": "238357 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2012\/12\/03\/president...",
+        "imageId": "4ABD7D3421D4240069F0D563C91DB25EBD92919E", "accentColor": "A32831"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=CFF6F5BED4287F294E2BFC1AC3FD0D9955FE1AFF&simid=608055131230636701",
+        "webSearchUrlPingSuffix": "DevEx,5103.1", "name": "Supreme Court Upholds President
+        Obama''s Health Care Reform | whitehouse.gov", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.b5axmiN6chpv3KZek__dugHaE8&pid=Api",
+        "datePublished": "2012-06-28T12:00:00.0000000Z", "contentUrl": "https:\/\/obamawhitehouse.archives.gov\/sites\/default\/files\/image\/image_file\/20120628-potus.jpg",
+        "contentUrlPingSuffix": "DevEx,5105.1", "hostPageUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2012\/06\/28\/supreme-court-upholds-president-obamas-health-care-reform",
+        "hostPageUrlPingSuffix": "DevEx,5104.1", "contentSize": "250735 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2012\/06\/28\/supreme-court...",
         "width": 1920, "height": 1280, "thumbnail": {"width": 474, "height": 316},
-        "imageInsightsToken": "ccid_Tx1aOSMk*mid_739D4D07395FD640E620A4ECA53E4B81045AA2DC*simid_607991453801843369",
+        "imageInsightsToken": "ccid_b5axmiN6*mid_CFF6F5BED4287F294E2BFC1AC3FD0D9955FE1AFF*simid_608055131230636701",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "739D4D07395FD640E620A4ECA53E4B81045AA2DC", "accentColor": "465685"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=17FFB9B7C78B34CD58394170A2D61881E4BC420C&simid=608007650136885961",
-        "webSearchUrlPingSuffix": "DevEx,5133.1", "name": "The Government Shutdown
-        Is Over | whitehouse.gov", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.WylI-R6CCuYN_RCa4Y-wWQHaFH&pid=Api",
-        "datePublished": "2013-10-17T12:00:00.0000000Z", "contentUrl": "https:\/\/obamawhitehouse.archives.gov\/sites\/default\/files\/image\/image_file\/_g1a9864.jpg",
-        "contentUrlPingSuffix": "DevEx,5135.1", "hostPageUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2013\/10\/17\/government-shutdown-over",
-        "hostPageUrlPingSuffix": "DevEx,5134.1", "contentSize": "252777 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2013\/10\/17\/government...",
-        "width": 1948, "height": 1347, "thumbnail": {"width": 474, "height": 327},
-        "imageInsightsToken": "ccid_WylI+R6C*mid_17FFB9B7C78B34CD58394170A2D61881E4BC420C*simid_608007650136885961",
+        "imageId": "CFF6F5BED4287F294E2BFC1AC3FD0D9955FE1AFF", "accentColor": "374994"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=BDD380180648E2B80ABCFDE19906409294A09811&simid=608008603908440481",
+        "webSearchUrlPingSuffix": "DevEx,5109.1", "name": "5 discoveries from Obama''s
+        playlist | ShareAmerica", "thumbnailUrl": "https:\/\/tse2.explicit.bing.net\/th?id=OIP.hYQ0G1nYb-DPInWhj0MQiQHaFd&pid=Api",
+        "datePublished": "2016-09-02T21:23:00.0000000Z", "contentUrl": "https:\/\/share.america.gov\/wp-content\/uploads\/2016\/08\/AP_120716041617.jpg",
+        "contentUrlPingSuffix": "DevEx,5111.1", "hostPageUrl": "https:\/\/share.america.gov\/5-discoveries-from-obamas-playlist\/",
+        "hostPageUrlPingSuffix": "DevEx,5110.1", "contentSize": "304925 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/share.america.gov\/5-discoveries-from-obamas-playlist",
+        "width": 2000, "height": 1474, "thumbnail": {"width": 474, "height": 349},
+        "imageInsightsToken": "ccid_hYQ0G1nY*mid_BDD380180648E2B80ABCFDE19906409294A09811*simid_608008603908440481",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "17FFB9B7C78B34CD58394170A2D61881E4BC420C", "accentColor": "793028"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=2AA98677170AF9877A7B8C5075F364C604371667&simid=608037010552981015",
-        "webSearchUrlPingSuffix": "DevEx,5139.1", "name": "The President Gives an
-        Update on Iraq and the Situation in Ferguson, Missouri | whitehouse.gov",
-        "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.dgErHr9iRDTqwVfMc3fgiwHaFB&pid=Api",
-        "datePublished": "2014-08-14T12:00:00.0000000Z", "contentUrl": "https:\/\/obamawhitehouse.archives.gov\/sites\/default\/files\/image\/image_file\/p081414ps-02682.jpg",
-        "contentUrlPingSuffix": "DevEx,5141.1", "hostPageUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2014\/08\/14\/president-gives-update-iraq-and-situation-ferguson-missouri",
-        "hostPageUrlPingSuffix": "DevEx,5140.1", "contentSize": "153761 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2014\/08\/14\/president...",
-        "width": 1455, "height": 987, "thumbnail": {"width": 474, "height": 321},
-        "imageInsightsToken": "ccid_dgErHr9i*mid_2AA98677170AF9877A7B8C5075F364C604371667*simid_608037010552981015",
+        "imageId": "BDD380180648E2B80ABCFDE19906409294A09811", "accentColor": "383A66"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=99007996AF9D305D8452C50D214B3DB5D5286774&simid=608030744451940571",
+        "webSearchUrlPingSuffix": "DevEx,5115.1", "name": "President Obama''s 2014
+        State of the Union Address | whitehouse.gov", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.hchu8z-efGvaQ-B4lRM8kwHaE3&pid=Api",
+        "datePublished": "2014-01-29T12:00:00.0000000Z", "contentUrl": "https:\/\/obamawhitehouse.archives.gov\/sites\/default\/files\/image\/image_file\/p012814ps-0733.jpg",
+        "contentUrlPingSuffix": "DevEx,5117.1", "hostPageUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2014\/01\/29\/president-obamas-2014-state-union-address",
+        "hostPageUrlPingSuffix": "DevEx,5116.1", "contentSize": "137130 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2014\/01\/29\/president...",
+        "width": 1100, "height": 723, "thumbnail": {"width": 474, "height": 311},
+        "imageInsightsToken": "ccid_hchu8z+e*mid_99007996AF9D305D8452C50D214B3DB5D5286774*simid_608030744451940571",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "2AA98677170AF9877A7B8C5075F364C604371667", "accentColor": "1252AF"}],
+        "imageId": "99007996AF9D305D8452C50D214B3DB5D5286774", "accentColor": "AF1C3C"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=89C4A2E3A2EDD5381FBCBB9958F7A708E11E563A&simid=608013508795303058",
+        "webSearchUrlPingSuffix": "DevEx,5121.1", "name": "Weekly Address: The American
+        Spirit of Innovation | whitehouse.gov", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.nlOd0h2hGEajV6D77_La2wHaE8&pid=Api",
+        "datePublished": "2016-03-05T12:00:00.0000000Z", "contentUrl": "https:\/\/obamawhitehouse.archives.gov\/sites\/obamawhitehouse.archives.gov\/files\/Weekly0305.jpeg",
+        "contentUrlPingSuffix": "DevEx,5123.1", "hostPageUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2016\/03\/05\/weekly-address-sxsw",
+        "hostPageUrlPingSuffix": "DevEx,5122.1", "contentSize": "449136 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2016\/03\/05\/weekly-address...",
+        "width": 2800, "height": 1867, "thumbnail": {"width": 474, "height": 316},
+        "imageInsightsToken": "ccid_nlOd0h2h*mid_89C4A2E3A2EDD5381FBCBB9958F7A708E11E563A*simid_608013508795303058",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "89C4A2E3A2EDD5381FBCBB9958F7A708E11E563A", "accentColor": "465A85"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=06294BEC03EFFA62F24EFF69E380D2AA2A603CA2&simid=608025568976176587",
+        "webSearchUrlPingSuffix": "DevEx,5127.1", "name": "The President’s BuySecure
+        Initiative: Protecting Americans from Credit Card Fraud and Identity ...",
+        "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.x5ucLs0G9AZKj0jBTysP0QHaE7&pid=Api",
+        "datePublished": "2014-10-17T12:00:00.0000000Z", "contentUrl": "https:\/\/obamawhitehouse.archives.gov\/sites\/default\/files\/image\/image_file\/p101714ck-0026.jpg",
+        "contentUrlPingSuffix": "DevEx,5129.1", "hostPageUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2014\/10\/17\/president-s-buysecure-initiative-protecting-americans-credit-card-fraud-and-identity",
+        "hostPageUrlPingSuffix": "DevEx,5128.1", "contentSize": "143739 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2014\/10\/17\/president-s...",
+        "width": 1100, "height": 733, "thumbnail": {"width": 474, "height": 315},
+        "imageInsightsToken": "ccid_x5ucLs0G*mid_06294BEC03EFFA62F24EFF69E380D2AA2A603CA2*simid_608025568976176587",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "06294BEC03EFFA62F24EFF69E380D2AA2A603CA2", "accentColor": "183D78"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=FEB10B65D0E1D191FAA25622E8DB3ED5143B52CE&simid=608022176003523319",
+        "webSearchUrlPingSuffix": "DevEx,5133.1", "name": "President Obama Speaks
+        at the U.S. Holocaust Memorial Museum | whitehouse.gov", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.yjt7D5ZmZ2qHdgYZuInqAgHaE8&pid=Api",
+        "datePublished": "2012-04-23T12:00:00.0000000Z", "contentUrl": "https:\/\/obamawhitehouse.archives.gov\/sites\/default\/files\/image\/image_file\/p042312ps-0197.jpg",
+        "contentUrlPingSuffix": "DevEx,5135.1", "hostPageUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2012\/04\/23\/president-obama-speaks-us-holocaust-memorial-museum",
+        "hostPageUrlPingSuffix": "DevEx,5134.1", "contentSize": "223926 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2012\/04\/23\/president...",
+        "width": 1920, "height": 1281, "thumbnail": {"width": 474, "height": 316},
+        "imageInsightsToken": "ccid_yjt7D5Zm*mid_FEB10B65D0E1D191FAA25622E8DB3ED5143B52CE*simid_608022176003523319",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "FEB10B65D0E1D191FAA25622E8DB3ED5143B52CE", "accentColor": "434361"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=BB80649C2C8F74DCFD84FCD01AED170AB69A88F9&simid=608004704069028418",
+        "webSearchUrlPingSuffix": "DevEx,5139.1", "name": "President Obama Announces
+        Plans to Save Americans Money on Homeownership | whitehouse.gov", "thumbnailUrl":
+        "https:\/\/tse1.mm.bing.net\/th?id=OIP.uVXNRo6cCXpns5mNg5CwEgHaFH&pid=Api",
+        "datePublished": "2015-01-08T12:00:00.0000000Z", "contentUrl": "https:\/\/obamawhitehouse.archives.gov\/sites\/default\/files\/image\/image_file\/_p2a0477.jpg",
+        "contentUrlPingSuffix": "DevEx,5141.1", "hostPageUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2015\/01\/08\/president-obama-announces-plans-save-americans-money-homeownership",
+        "hostPageUrlPingSuffix": "DevEx,5140.1", "contentSize": "154489 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2015\/01\/08\/president...",
+        "width": 1334, "height": 922, "thumbnail": {"width": 474, "height": 327},
+        "imageInsightsToken": "ccid_uVXNRo6c*mid_BB80649C2C8F74DCFD84FCD01AED170AB69A88F9*simid_608004704069028418",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "BB80649C2C8F74DCFD84FCD01AED170AB69A88F9", "accentColor": "4A5C73"}],
         "queryExpansions": [{"text": "Michelle Obama", "displayText": "Michelle",
         "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Michelle+Obama&tq=%7b%22pq%22%3a%22obama+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22obama%22%2c%22pv%22%3a%22obama%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Michelle%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
         "webSearchUrlPingSuffix": "DevEx,5192.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Michelle+Obama&tq=%7b%22pq%22%3a%22obama+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22obama%22%2c%22pv%22%3a%22obama%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Michelle%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
@@ -473,5 +475,5 @@ http_interactions:
         {"pivot": "(site:gov", "suggestions": []}, {"pivot": "OR", "suggestions":
         []}, {"pivot": "site:mil)", "suggestions": []}]}'
     http_version: 
-  recorded_at: Thu, 26 Apr 2018 23:29:06 GMT
+  recorded_at: Mon, 27 Aug 2018 00:07:03 GMT
 recorded_with: VCR 4.0.0

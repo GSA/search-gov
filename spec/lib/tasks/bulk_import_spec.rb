@@ -18,11 +18,11 @@ describe "Bulk Import rake tasks" do
         expect(@rake[task_name].prerequisites).to include("environment")
       end
 
-      context "when a file and default user email is specified" do
+      context 'when a file and default user email is specified' do
         before do
           @user = users(:affiliate_manager)
           Affiliate.where("name LIKE ?", "test%").each{|aff| aff.destroy }
-          @existing_affiliate = Affiliate.create({:name => 'test1', :display_name => 'Test 1'}, :as => :test)
+          @existing_affiliate = Affiliate.create(name: 'test1', display_name: 'Test 1')
           @existing_affiliate.users << @user
           @existing_affiliate.site_domains << SiteDomain.new(:domain => 'domain1.gov')
           @xml_file_path = File.join(Rails.root.to_s, "spec", "fixtures", "xml", "google_bulk.xml")
@@ -70,11 +70,8 @@ describe "Bulk Import rake tasks" do
         expect{import_affiliates}.to change{user.affiliates.count}.by(2)
       end
 
-      it 'reports the addition to Nutshell' do
-        @adapter = double(NutshellAdapter)
-        allow(NutshellAdapter).to receive(:new) { @adapter }
-        expect(@adapter).to receive(:push_site).with(instance_of(Affiliate)).exactly(2).times
-        expect(@adapter).to receive(:new_note).with(user, message).exactly(2).times
+      it 'logs the addition' do
+        expect(Rails.logger).to receive(:info).with(message).exactly(2).times
         import_affiliates
       end
 

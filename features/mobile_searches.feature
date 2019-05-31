@@ -448,14 +448,33 @@ Feature: Searches using mobile device
 
   Scenario: Job search
     Given the following Affiliates exist:
-      | display_name | name   | contact_email    | contact_name | jobs_enabled |
-      | English site | usagov | admin@agency.gov | John Bar     | 1            |
-    When I am on usagov's mobile search page
+      | display_name | name          | contact_email    | contact_name |locale | jobs_enabled |
+      | English site | en.agency.gov | admin@agency.gov | John Bar     | en    | 1            |
+      | Spanish site | es.agency.gov | admin@agency.gov | John Bar     | es    | 1            |
+
+    When I am on en.agency.gov's mobile search page
     And I fill in "Enter your search term" with "jobs"
     And I press "Search"
     Then I should see "Federal Job Openings"
+    And I should see 10 job postings
+    And I should see an annual salary
+    And I should see an application deadline
     And I should see an image link to "USAJobs.gov" with url for "https://www.usajobs.gov/"
-    And I should see a link to "More federal job openings on USAJobs.gov" with url for "https://www.usajobs.gov/JobSearch/Search/GetResults?PostingChannelID=USASearch"
+    And I should see a link to "More federal job openings on USAJobs.gov" with url for "https://www.usajobs.gov/Search/Results?hp=public"
+
+    When I am on en.agency.gov's mobile search page
+    And I fill in "Enter your search term" with "blablah jobs"
+    And I press "Search"
+    Then I should see an image link to "USAJobs.gov" with url for "https://www.usajobs.gov/"
+    And I should see "No job openings in your region match your query"
+    And I should see a link to "More federal job openings on USAJobs.gov" with url for "https://www.usajobs.gov/Search/Results?hp=public"
+
+    When I am on es.agency.gov's mobile search page
+    And I fill in "Ingrese su búsqueda" with "blablah trabajo"
+    And I press "Buscar"
+    Then I should see an image link to "USAJobs.gov" with url for "https://www.usajobs.gov/"
+    And I should see "Ninguna oferta de trabajo en su región coincide con su búsqueda"
+    And I should see a link to "​Más trabajos en el gobierno federal en USAJobs.gov" with url for "https://www.usajobs.gov/Search/Results?hp=public"
 
   Scenario: When using tablet device
     Given I am using a mobile device

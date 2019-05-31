@@ -28,8 +28,6 @@ class SiteCloner
 
     clone_memberships cloned_site
 
-    NutshellAdapter.new.push_site cloned_site
-
     cloned_site
   end
 

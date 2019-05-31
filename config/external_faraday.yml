@@ -7,6 +7,11 @@ azure_default: &AZURE_DEFAULT
   <<: *DEFAULT
   adapter: :typhoeus
 
+i14y_default: &I14Y_DEFAULT
+  adapter: :typhoeus
+  options:
+    timeout: 0
+
 development: &DEVELOPMENT
   <<: *DEFAULT
   adapter: :net_http_persistent
@@ -15,9 +20,13 @@ development: &DEVELOPMENT
     <<: *AZURE_DEFAULT
   azure_composite_api:
     <<: *AZURE_DEFAULT
+  i14y:
+    <<: *I14Y_DEFAULT
 
 test:
   <<: *DEVELOPMENT
+  i14y:
+    <<: *I14Y_DEFAULT
 
 azure_production: &AZURE_PROD
   options:
@@ -43,3 +52,5 @@ production: &PRODUCTION
     <<: *AZURE_PROD
   bing_v5_api:
     <<: *BING_V5_PROD
+  i14y:
+    <<: *I14Y_DEFAULT

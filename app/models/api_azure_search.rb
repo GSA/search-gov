@@ -4,7 +4,7 @@ class ApiAzureSearch < ApiWebSearch
   end
 
   def query_formatting_klass
-    AzureFormattedQuery
+    BingFormattedQuery
   end
 
   def engine_klass

@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe SearchgovUrl do
+  fixtures :searchgov_urls
+
   let(:url) { 'http://www.agency.gov/boring.html' }
   let(:html) { read_fixture_file("/html/page_with_og_metadata.html") }
   let(:valid_attributes) { { url: url } }
@@ -14,25 +16,33 @@ describe SearchgovUrl do
          with_options(null: false, limit: 2000) }
     it { is_expected.to have_db_column(:load_time).of_type(:integer) }
     it { is_expected.to have_db_column(:lastmod).of_type(:datetime) }
-
+    it { is_expected.to have_db_column(:enqueued_for_reindex).
+           of_type(:boolean).
+           with_options(default: false, null: false) }
     it { is_expected.to have_db_index(:url) }
   end
 
   describe 'scopes' do
     describe '.fetch_required' do
-      before do
-        SearchgovUrl.create!(url: 'http://www.agency.gov/new')
-        SearchgovUrl.create!(
-          url: 'http://www.agency.gov/outdated', last_crawled_at: 1.week.ago, lastmod: 1.day.ago
-        )
-        SearchgovUrl.create!(
-          url: 'http://www.agency.gov/current', last_crawled_at: 1.day.ago, lastmod: 1.week.ago
-        )
-      end
 
       it 'includes urls that have never been crawled and outdated urls' do
         expect(SearchgovUrl.fetch_required.pluck(:url)).
-          to eq %w[http://www.agency.gov/new http://www.agency.gov/outdated]
+          to include('http://www.agency.gov/new', 'http://www.agency.gov/outdated')
+      end
+
+      it 'does not include current, crawled and not enqueued urls' do
+        expect(SearchgovUrl.fetch_required.pluck(:url)).
+          not_to include('http://www.agency.gov/current')
+      end
+
+      it 'includes urls that have been enqueued for reindexing' do
+        expect(SearchgovUrl.fetch_required.pluck(:url)).
+          to include 'http://www.agency.gov/enqueued'
+      end
+
+      it 'includes urls last crawled more than 30 days and crawl status is ok' do
+        expect(SearchgovUrl.fetch_required.pluck(:url)).
+          to include 'http://www.agency.gov/crawled_more_than_month'
       end
     end
   end
@@ -41,7 +51,8 @@ describe SearchgovUrl do
     it 'requires a valid domain' do
       searchgov_url = SearchgovUrl.new(url: 'https://foo/bar')
       expect(searchgov_url).not_to be_valid
-      expect(searchgov_url.errors.messages[:searchgov_domain]).to include 'is invalid'
+      expect(searchgov_url.errors.messages[:searchgov_domain]).
+        to include 'is invalid'
     end
 
     describe 'validating url uniqueness' do
@@ -73,7 +84,7 @@ describe SearchgovUrl do
         end
 
         it 'deletes the Searchgov Url' do
-          expect{ searchgov_url.destroy }.to change{ SearchgovUrl.count }.from(1).to(0)
+          expect { searchgov_url.destroy }.to change{ SearchgovUrl.count }.by(-1)
         end
       end
     end
@@ -95,6 +106,7 @@ describe SearchgovUrl do
 
     before do
       allow(searchgov_url).to receive(:searchgov_domain).and_return(searchgov_domain)
+      allow(I14yDocument).to receive(:create)
     end
 
     context 'when the fetch is successful' do
@@ -123,6 +135,17 @@ describe SearchgovUrl do
             changed: '2017-03-30T13:18:28-04:00',
         ))
         fetch
+      end
+
+      context 'when the record is enqueued for reindex' do
+        let(:searchgov_url) do
+          SearchgovUrl.create!(valid_attributes.merge(enqueued_for_reindex: true))
+        end
+
+        it 'sets enqueued_for_reindex to false' do
+          expect { fetch }.to change{ searchgov_url.enqueued_for_reindex }.
+            from(true).to(false)
+        end
       end
 
       context 'when the record includes a lastmod value' do
@@ -397,6 +420,30 @@ describe SearchgovUrl do
             description: 'My Excel doc description',
             language: 'en',
             tags: 'excel',
+        ))
+        fetch
+      end
+    end
+
+    context 'when the url points to a TXT doc (.txt)' do
+      let(:url) { 'https://www.irs.gov/test.txt' }
+
+      before do
+        stub_request(:get, url).
+          to_return(status: 200,
+                    body: 'This is my text content.',
+                    headers: { content_type: 'text/plain' })
+      end
+
+      it 'fetches and indexes the document' do
+        expect(I14yDocument).to receive(:create).
+          with(hash_including(
+            handle: 'searchgov',
+            path: 'https://www.irs.gov/test.txt',
+            title: 'test.txt',
+            description: nil,
+            content: 'This is my text content.',
+            language: 'en'
         ))
         fetch
       end

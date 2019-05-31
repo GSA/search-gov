@@ -16,14 +16,14 @@ class Sites::UsersController < Sites::SetupSiteController
     if @user.nil?
       @user = User.new_invited_by_affiliate(current_user, @site, user_params)
       if @user.save
-        @user.add_to_affiliate(@site, "@[Contacts:#{current_user.nutshell_id}]")
+        @user.add_to_affiliate(@site, "User #{current_user.id}, #{current_user.email}")
         message = "We've created a temporary account and notified #{@user.email} on how to login and to access this site."
         redirect_to site_users_path(@site), flash: { success: message }
       else
         render action: :new
       end
     elsif !@site.users.exists?(id: @user.id)
-      @user.add_to_affiliate(@site, "@[Contacts:#{current_user.nutshell_id}]")
+      @user.add_to_affiliate(@site, "User #{current_user.id}, #{current_user.email}")
       @user.send_new_affiliate_user_email(@site, current_user)
       redirect_to site_users_path(@site), flash: { success: "You have added #{@user.email} to this site." }
     else
@@ -35,7 +35,7 @@ class Sites::UsersController < Sites::SetupSiteController
 
   def destroy
     @user = User.find params[:id]
-    @user.remove_from_affiliate(@site, "@[Contacts:#{current_user.nutshell_id}]")
+    @user.remove_from_affiliate(@site, "User #{current_user.id}, #{current_user.email}")
     redirect_to site_users_path(@site), flash: { success: "You have removed #{@user.email} from this site." }
   end
 

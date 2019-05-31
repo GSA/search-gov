@@ -2,15 +2,13 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.bingapis.com/api/v6/images/search?AppId=<BING_V6_APP_ID>&count=10&mkt=en-US&offset=20&q=agncy%20(site:nasa.gov)&safeSearch=moderate&traffictype=test
+    uri: https://www.bingapis.com/api/v6/images/search?AppId=<BING_V6_APP_ID>&count=10&mkt=en-US&offset=20&q=agncy%20(site:nasa.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
       - USASearch
-      Ocp-Apim-Subscription-Key:
-      - "<BING_V6_APP_ID>"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -29,7 +27,7 @@ http_interactions:
       Pragma:
       - no-cache
       Content-Length:
-      - '51490'
+      - '51644'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
@@ -39,70 +37,70 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=1F1B41E0709C609E14724DC1714B6141; path=/; expires=Sun, 28-Jul-2019 18:54:53
+      - MUID=108F4406CA3461C633164851CB3B60F8; path=/; expires=Fri, 20-Sep-2019 23:58:46
         GMT; domain=bingapis.com
-      - MUIDB=1F1B41E0709C609E14724DC1714B6141; path=/; httponly; expires=Sun, 28-Jul-2019
-        18:54:53 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Fri, 03-Jul-2020 18:54:53 GMT;
+      - MUIDB=108F4406CA3461C633164851CB3B60F8; path=/; httponly; expires=Fri, 20-Sep-2019
+        23:58:46 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 26-Aug-2020 23:58:46 GMT;
         path=/
-      - SRCHUID=V=2&GUID=C0688EA403B347028DEED5841C979078&dmnchg=1; domain=.bingapis.com;
-        expires=Fri, 03-Jul-2020 18:54:53 GMT; path=/
-      - SRCHUSR=DOB=20180703; domain=.bingapis.com; expires=Fri, 03-Jul-2020 18:54:53
+      - SRCHUID=V=2&GUID=20D5219AEDD64F7BAF5FCF571C9E6F09&dmnchg=1; domain=.bingapis.com;
+        expires=Wed, 26-Aug-2020 23:58:46 GMT; path=/
+      - SRCHUSR=DOB=20180826; domain=.bingapis.com; expires=Wed, 26-Aug-2020 23:58:46
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=183EC2F24F7265A52C53CED34EA564D9; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=1F6AF32FC3746D330CE4FF78C27B6CA4; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sun, 28-Jul-2019 18:54:53 GMT; domain=bingapis.com
-      - _SS=SID=183EC2F24F7265A52C53CED34EA564D9; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Fri, 20-Sep-2019 23:58:46 GMT; domain=bingapis.com
+      - _SS=SID=1F6AF32FC3746D330CE4FF78C27B6CA4; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 0BED869927BC44069FBF7B32FDF0FAAB
+      - 86C861CC72AF4DE9A6C9A6AFEE8E9835
       X-Msedge-Clientid:
-      - 1F1B41E0709C609E14724DC1714B6141
+      - 108F4406CA3461C633164851CB3B60F8
       X-Msapi-Userstate:
-      - 04cf
+      - d62d
       X-Msedge-Ref:
-      - 'Ref A: 0BED869927BC44069FBF7B32FDF0FAAB Ref B: CO1EDGE0421 Ref C: 2018-07-03T18:54:53Z'
+      - 'Ref A: 86C861CC72AF4DE9A6C9A6AFEE8E9835 Ref B: BAYEDGE0110 Ref C: 2018-08-26T23:58:46Z'
       Date:
-      - Tue, 03 Jul 2018 18:54:52 GMT
+      - Sun, 26 Aug 2018 23:58:46 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "Images", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=8972D7E00B4A4A2F8C0119495569E6A5&CID=1F1B41E0709C609E14724DC1714B6141&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=8972D7E00B4A4A2F8C0119495569E6A5&CID=1F1B41E0709C609E14724DC1714B6141&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "Images", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=27BB6DF3E5614310AE8A21CC794D9F0F&CID=108F4406CA3461C633164851CB3B60F8&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=27BB6DF3E5614310AE8A21CC794D9F0F&CID=108F4406CA3461C633164851CB3B60F8&Type=Event.CPT&DATA=0"},
         "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=agncy%20(site:nasa.gov)&FORM=OIIARP",
-        "webSearchUrlPingSuffix": "DevEx,5126.1", "totalEstimatedMatches": 112, "nextOffset":
-        32, "value": [{"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=agncy+(site%3anasa.gov)&id=5323DD4C8A973FF8891EF39CC31F12A75CAA9BDC&simid=608024005496998736",
-        "webSearchUrlPingSuffix": "DevEx,5025.1", "name": "STS-112 Spacewalk | NASA",
-        "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.EsGJPmTsC9VQmgINTTvSBwHaHa&pid=Api",
-        "datePublished": "2016-04-08T16:08:00.0000000Z", "contentUrl": "http:\/\/www.nasa.gov\/sites\/default\/files\/sts112-709-073k.jpg",
-        "contentUrlPingSuffix": "DevEx,5027.1", "hostPageUrl": "https:\/\/www.nasa.gov\/centers\/marshall\/history\/launch_of_sts-112.html",
-        "hostPageUrlPingSuffix": "DevEx,5026.1", "contentSize": "6125356 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.nasa.gov\/centers\/marshall\/history\/launch_of_sts-112.html",
-        "width": 5723, "height": 5723, "thumbnail": {"width": 474, "height": 474},
-        "imageInsightsToken": "ccid_EsGJPmTs*mid_5323DD4C8A973FF8891EF39CC31F12A75CAA9BDC*simid_608024005496998736",
+        "webSearchUrlPingSuffix": "DevEx,5126.1", "totalEstimatedMatches": 121, "nextOffset":
+        30, "value": [{"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=agncy+(site%3anasa.gov)&id=684444DEFD0E6E0910881D307C93C8912AD59EF6&simid=608024894699013819",
+        "webSearchUrlPingSuffix": "DevEx,5025.1", "name": "Measuring Earth’s Magnetism
+        : Image of the Day", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.n9VLx6ZvZsm261TMfHqoRgHaF7&pid=Api",
+        "datePublished": "2017-01-28T01:08:00.0000000Z", "contentUrl": "http:\/\/eoimages.gsfc.nasa.gov\/images\/imagerecords\/84000\/84266\/magneticfieldchange_swa_201401-06_lrg.jpg",
+        "contentUrlPingSuffix": "DevEx,5027.1", "hostPageUrl": "http:\/\/earthobservatory.nasa.gov\/IOTD\/view.php?id=84266",
+        "hostPageUrlPingSuffix": "DevEx,5026.1", "contentSize": "2770723 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "earthobservatory.nasa.gov\/IOTD\/view.php?id=84266",
+        "width": 6000, "height": 4800, "thumbnail": {"width": 474, "height": 379},
+        "imageInsightsToken": "ccid_n9VLx6Zv*mid_684444DEFD0E6E0910881D307C93C8912AD59EF6*simid_608024894699013819",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "5323DD4C8A973FF8891EF39CC31F12A75CAA9BDC", "accentColor": "2E4673"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=agncy+(site%3anasa.gov)&id=9ECEA93DE987DA14237D0DA341FDF05BE138D2F4&simid=608033978413025727",
-        "webSearchUrlPingSuffix": "DevEx,5031.1", "name": "2016 Agency Honor Awards
-        | NASA", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.YJmEL9qiP7yqMmD3PFKFRQHaDt&pid=Api",
-        "datePublished": "2018-01-28T00:29:00.0000000Z", "contentUrl": "http:\/\/www.nasa.gov\/sites\/default\/files\/thumbnails\/image\/nasa-logo-web-rgb.png",
-        "contentUrlPingSuffix": "DevEx,5033.1", "hostPageUrl": "https:\/\/www.nasa.gov\/centers\/marshall\/about\/star\/nasa-honor-awards-2016.html",
-        "hostPageUrlPingSuffix": "DevEx,5032.1", "contentSize": "125881 B", "encodingFormat":
-        "png", "hostPageDisplayUrl": "https:\/\/www.nasa.gov\/centers\/marshall\/about\/star\/nasa-honor-awards...",
-        "width": 3400, "height": 1700, "thumbnail": {"width": 474, "height": 237},
-        "imageInsightsToken": "ccid_YJmEL9qi*mid_9ECEA93DE987DA14237D0DA341FDF05BE138D2F4*simid_608033978413025727",
+        "imageId": "684444DEFD0E6E0910881D307C93C8912AD59EF6", "accentColor": "C70428"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=agncy+(site%3anasa.gov)&id=E821B39EE448CFB2F969476451643B9F5A2F4D66&simid=608039652233251852",
+        "webSearchUrlPingSuffix": "DevEx,5031.1", "name": "NASA and Korean Space Agency
+        Discuss Space Cooperation | NASA", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.A6eut9uz-gJKfltrMSzf5AHaDt&pid=Api",
+        "datePublished": "2013-07-29T16:00:00.0000000Z", "contentUrl": "http:\/\/www.nasa.gov\/sites\/default\/files\/thumbnails\/image\/nasa_logo_press_release.jpg",
+        "contentUrlPingSuffix": "DevEx,5033.1", "hostPageUrl": "http:\/\/www.nasa.gov\/press\/2013\/july\/nasa-and-korean-space-agency-discuss-space-cooperation\/",
+        "hostPageUrlPingSuffix": "DevEx,5032.1", "contentSize": "31132 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "www.nasa.gov\/press\/2013\/july\/nasa-and-korean-space-agency-discuss...",
+        "width": 946, "height": 473, "thumbnail": {"width": 474, "height": 237}, "imageInsightsToken":
+        "ccid_A6eut9uz*mid_E821B39EE448CFB2F969476451643B9F5A2F4D66*simid_608039652233251852",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "9ECEA93DE987DA14237D0DA341FDF05BE138D2F4", "accentColor": "C42007"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=agncy+(site%3anasa.gov)&id=9DBC7C2708AB5E61A41852427D8FAEB30A3A728B&simid=608036821680194409",
-        "webSearchUrlPingSuffix": "DevEx,5037.1", "name": "Catalog Page for PIA08118",
-        "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.aFLoh_rSlTQSVyPQ4hE7wQHaFj&pid=Api",
-        "datePublished": "2018-04-22T17:47:00.0000000Z", "contentUrl": "http:\/\/photojournal.jpl.nasa.gov\/jpeg\/PIA08118.jpg",
-        "contentUrlPingSuffix": "DevEx,5039.1", "hostPageUrl": "http:\/\/photojournal.jpl.nasa.gov\/catalog\/PIA08118",
-        "hostPageUrlPingSuffix": "DevEx,5038.1", "contentSize": "41463 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "photojournal.jpl.nasa.gov\/catalog\/PIA08118",
-        "width": 516, "height": 387, "thumbnail": {"width": 474, "height": 355}, "imageInsightsToken":
-        "ccid_aFLoh\/rS*mid_9DBC7C2708AB5E61A41852427D8FAEB30A3A728B*simid_608036821680194409",
+        "imageId": "E821B39EE448CFB2F969476451643B9F5A2F4D66", "accentColor": "C22209"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=agncy+(site%3anasa.gov)&id=04B1569F93AAFB7E11BC7AE4E821322328701E54&simid=608028403665667704",
+        "webSearchUrlPingSuffix": "DevEx,5037.1", "name": "Expedition 46 Soyuz Liftoff
+        | NASA", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.a8eEHboMtODTOxJaBNSOcgHaEo&pid=Api",
+        "datePublished": "2018-06-16T22:54:00.0000000Z", "contentUrl": "http:\/\/www.nasa.gov\/sites\/default\/files\/styles\/full_width\/public\/thumbnails\/image\/23400755339_2958be3888_o.jpg?itok=yOirgVdd",
+        "contentUrlPingSuffix": "DevEx,5039.1", "hostPageUrl": "https:\/\/www.nasa.gov\/image-feature\/expedition-46-soyuz-liftoff\/",
+        "hostPageUrlPingSuffix": "DevEx,5038.1", "contentSize": "70853 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.nasa.gov\/image-feature\/expedition-46-soyuz-liftoff",
+        "width": 985, "height": 617, "thumbnail": {"width": 474, "height": 296}, "imageInsightsToken":
+        "ccid_a8eEHboM*mid_04B1569F93AAFB7E11BC7AE4E821322328701E54*simid_608028403665667704",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "9DBC7C2708AB5E61A41852427D8FAEB30A3A728B", "accentColor": "C76F04"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=agncy+(site%3anasa.gov)&id=EDD3D17D84ADFD69EF5007660FF2475E9C17D3A4&simid=608024026974588153",
+        "imageId": "04B1569F93AAFB7E11BC7AE4E821322328701E54", "accentColor": "B95C12"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=agncy+(site%3anasa.gov)&id=EDD3D17D84ADFD69EF5007660FF2475E9C17D3A4&simid=608024027111034107",
         "webSearchUrlPingSuffix": "DevEx,5043.1", "name": "Logo: NASA Pathways Agency
         Cross-Center Collaboration (PAXC) | NASA", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.2GBhgY5EtfRZvRonPK0ZCwHaF-&pid=Api",
         "datePublished": "2018-02-12T01:08:00.0000000Z", "contentUrl": "http:\/\/www.nasa.gov\/sites\/default\/files\/thumbnails\/image\/lorennewton_afrc_tshirt_white_bor.jpg",
@@ -110,73 +108,74 @@ http_interactions:
         "hostPageUrlPingSuffix": "DevEx,5044.1", "contentSize": "389357 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "https:\/\/www.nasa.gov\/centers\/armstrong\/multimedia\/imagegallery...",
         "width": 1900, "height": 1535, "thumbnail": {"width": 474, "height": 382},
-        "imageInsightsToken": "ccid_2GBhgY5E*mid_EDD3D17D84ADFD69EF5007660FF2475E9C17D3A4*simid_608024026974588153",
+        "imageInsightsToken": "ccid_2GBhgY5E*mid_EDD3D17D84ADFD69EF5007660FF2475E9C17D3A4*simid_608024027111034107",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "EDD3D17D84ADFD69EF5007660FF2475E9C17D3A4", "accentColor": "001DCB"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=agncy+(site%3anasa.gov)&id=04B1569F93AAFB7E11BC796F0FBB8AEEB71F8149&simid=608022373456285672",
-        "webSearchUrlPingSuffix": "DevEx,5049.1", "name": "Expedition 46 Soyuz Liftoff
-        | NASA", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.1lbKZdJolvWka65qRaYnogHaEp&pid=Api",
-        "datePublished": "2018-05-04T21:51:00.0000000Z", "contentUrl": "http:\/\/www.nasa.gov\/sites\/default\/files\/thumbnails\/image\/23400755339_2958be3888_o.jpg",
-        "contentUrlPingSuffix": "DevEx,5051.1", "hostPageUrl": "https:\/\/www.nasa.gov\/image-feature\/expedition-46-soyuz-liftoff",
-        "hostPageUrlPingSuffix": "DevEx,5050.1", "contentSize": "9383418 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.nasa.gov\/image-feature\/expedition-46-soyuz-liftoff",
-        "width": 5759, "height": 3610, "thumbnail": {"width": 474, "height": 297},
-        "imageInsightsToken": "ccid_1lbKZdJo*mid_04B1569F93AAFB7E11BC796F0FBB8AEEB71F8149*simid_608022373456285672",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "04B1569F93AAFB7E11BC796F0FBB8AEEB71F8149", "accentColor": "C55806"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=agncy+(site%3anasa.gov)&id=4DE98EF3B797DB8C297251CBBA1243A52BE1F036&simid=608031551772495681",
-        "webSearchUrlPingSuffix": "DevEx,5055.1", "name": "The European Space Agency''s
-        Automated Transfer Vehicle-4 | NASA", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.84FPV-IcQj8VQeKVLigcqgHaE8&pid=Api",
-        "datePublished": "2018-05-30T19:04:00.0000000Z", "contentUrl": "http:\/\/www.nasa.gov\/sites\/default\/files\/images\/756494main_iss036e007747_full.jpg",
-        "contentUrlPingSuffix": "DevEx,5057.1", "hostPageUrl": "http:\/\/www.nasa.gov\/mission_pages\/station\/multimedia\/gallery\/iss036e007747.html",
-        "hostPageUrlPingSuffix": "DevEx,5056.1", "contentSize": "2356124 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "www.nasa.gov\/mission_pages\/station\/multimedia\/gallery\/iss036e007747...",
-        "width": 6048, "height": 4032, "thumbnail": {"width": 474, "height": 316},
-        "imageInsightsToken": "ccid_84FPV+Ic*mid_4DE98EF3B797DB8C297251CBBA1243A52BE1F036*simid_608031551772495681",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "4DE98EF3B797DB8C297251CBBA1243A52BE1F036", "accentColor": "856846"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=agncy+(site%3anasa.gov)&id=AB803D51B52F5B59AFEC87113AFF4D33D582177F&simid=608040485333568492",
-        "webSearchUrlPingSuffix": "DevEx,5061.1", "name": "NASA - Canadian Space Agency
-        astronaut Chris Hadfield", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.QC_lnNGu95Am_PXgsR9FowHaE7&pid=Api",
-        "datePublished": "2012-08-06T19:27:00.0000000Z", "contentUrl": "https:\/\/www.nasa.gov\/images\/content\/673702main_jsc2012e107922_full.jpg",
-        "contentUrlPingSuffix": "DevEx,5063.1", "hostPageUrl": "https:\/\/www.nasa.gov\/mission_pages\/station\/multimedia\/gallery\/jsc2012e107922.html",
-        "hostPageUrlPingSuffix": "DevEx,5062.1", "contentSize": "1970824 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.nasa.gov\/mission_pages\/station\/multimedia\/gallery...",
-        "width": 4256, "height": 2832, "thumbnail": {"width": 474, "height": 315},
-        "imageInsightsToken": "ccid_QC\/lnNGu*mid_AB803D51B52F5B59AFEC87113AFF4D33D582177F*simid_608040485333568492",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "AB803D51B52F5B59AFEC87113AFF4D33D582177F", "accentColor": "144473"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=agncy+(site%3anasa.gov)&id=8DF1130B541297C43A481084E142ECBE9A5AE422&simid=608034824519486421",
-        "webSearchUrlPingSuffix": "DevEx,5067.1", "name": "NASA - 2007 Heads of Agency
-        Joint Statement | NASA", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.BGnl8xs_uhYVcp-j5-0onwHaF7&pid=Api",
-        "datePublished": "2007-01-23T12:00:00.0000000Z", "contentUrl": "http:\/\/www.nasa.gov\/sites\/default\/files\/styles\/full_width\/public\/thumbnails\/image\/ed08-0172-04.jpg?itok=ispxg9rX",
-        "contentUrlPingSuffix": "DevEx,5069.1", "hostPageUrl": "http:\/\/www.nasa.gov\/about\/highlights\/hoa_20070123.html",
-        "hostPageUrlPingSuffix": "DevEx,5068.1", "contentSize": "21822 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "www.nasa.gov\/about\/highlights\/hoa_20070123.html",
-        "width": 985, "height": 788, "thumbnail": {"width": 474, "height": 379}, "imageInsightsToken":
-        "ccid_BGnl8xs\/*mid_8DF1130B541297C43A481084E142ECBE9A5AE422*simid_608034824519486421",
-        "imageId": "8DF1130B541297C43A481084E142ECBE9A5AE422", "accentColor": "1E4A66"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=agncy+(site%3anasa.gov)&id=0B1564E9E913863F52101B940D2479FC4C00BE5F&simid=608027402797449744",
-        "webSearchUrlPingSuffix": "DevEx,5073.1", "name": "Rosetta: To Chase a Comet
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=agncy+(site%3anasa.gov)&id=EFEA92A054B7A2C864B71B940D2479FC4C00BE5F&simid=608049947245219095",
+        "webSearchUrlPingSuffix": "DevEx,5049.1", "name": "Rosetta: To Chase a Comet
         | NASA", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.cdNtihWesNSPnW1abH1AwAHaFV&pid=Api",
         "datePublished": "2014-01-17T12:00:00.0000000Z", "contentUrl": "http:\/\/www.nasa.gov\/sites\/default\/files\/rosetta20140117.jpg",
-        "contentUrlPingSuffix": "DevEx,5075.1", "hostPageUrl": "https:\/\/www.nasa.gov\/jpl\/news\/rosetta20140117",
-        "hostPageUrlPingSuffix": "DevEx,5074.1", "contentSize": "896500 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.nasa.gov\/jpl\/news\/rosetta20140117",
+        "contentUrlPingSuffix": "DevEx,5051.1", "hostPageUrl": "http:\/\/www.nasa.gov\/jpl\/news\/rosetta20140117",
+        "hostPageUrlPingSuffix": "DevEx,5050.1", "contentSize": "896500 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "www.nasa.gov\/jpl\/news\/rosetta20140117",
         "width": 2971, "height": 2141, "thumbnail": {"width": 474, "height": 341},
-        "imageInsightsToken": "ccid_cdNtihWe*mid_0B1564E9E913863F52101B940D2479FC4C00BE5F*simid_608027402797449744",
+        "imageInsightsToken": "ccid_cdNtihWe*mid_EFEA92A054B7A2C864B71B940D2479FC4C00BE5F*simid_608049947245219095",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "0B1564E9E913863F52101B940D2479FC4C00BE5F", "accentColor": "604B0C"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=agncy+(site%3anasa.gov)&id=87281CA3F6B33C17EE5640E5A9D8718D606D087B&simid=608027089243344450",
-        "webSearchUrlPingSuffix": "DevEx,5079.1", "name": "Space Images | Two Models
-        of Black Hole Spin (Artist''s Concept)", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.2ITmqGL1JSpwSVte9-st4gHaE8&pid=Api",
-        "datePublished": "2016-11-22T19:45:00.0000000Z", "contentUrl": "http:\/\/www.jpl.nasa.gov\/spaceimages\/images\/mediumsize\/PIA16697_ip.jpg",
-        "contentUrlPingSuffix": "DevEx,5081.1", "hostPageUrl": "http:\/\/www.jpl.nasa.gov\/spaceimages\/details.php?id=PIA16697",
-        "hostPageUrlPingSuffix": "DevEx,5080.1", "contentSize": "65803 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "www.jpl.nasa.gov\/spaceimages\/details.php?id=PIA16697",
-        "width": 900, "height": 600, "thumbnail": {"width": 474, "height": 316}, "imageInsightsToken":
-        "ccid_2ITmqGL1*mid_87281CA3F6B33C17EE5640E5A9D8718D606D087B*simid_608027089243344450",
-        "imageId": "87281CA3F6B33C17EE5640E5A9D8718D606D087B", "accentColor": "BD800E"}],
+        "imageId": "EFEA92A054B7A2C864B71B940D2479FC4C00BE5F", "accentColor": "604B0C"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=agncy+(site%3anasa.gov)&id=DAB7E30BDD1F92ECD06B26158A4A720EEED8F4B8&simid=608048796210956394",
+        "webSearchUrlPingSuffix": "DevEx,5055.1", "name": "NASA - Launch and Landing",
+        "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP._nhv4QKfPAA8ZmGw0b090gHaE7&pid=Api",
+        "datePublished": "2008-03-11T12:00:00.0000000Z", "contentUrl": "http:\/\/www.nasa.gov\/images\/content\/220176main_launch-l.jpg",
+        "contentUrlPingSuffix": "DevEx,5057.1", "hostPageUrl": "http:\/\/www.nasa.gov\/mission_pages\/shuttle\/shuttlemissions\/sts123\/launch\/index.html",
+        "hostPageUrlPingSuffix": "DevEx,5056.1", "contentSize": "3267812 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "www.nasa.gov\/mission_pages\/shuttle\/shuttlemissions\/sts123\/launch...",
+        "width": 3000, "height": 1995, "thumbnail": {"width": 474, "height": 315},
+        "imageInsightsToken": "ccid_Kr9uCXjX*mid_DAB7E30BDD1F92ECD06B26158A4A720EEED8F4B8*simid_608048796210956394",
+        "imageId": "DAB7E30BDD1F92ECD06B26158A4A720EEED8F4B8", "accentColor": "C97A02"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=agncy+(site%3anasa.gov)&id=4DE98EF3B797DB8C297251CBBA1243A52BE1F036&simid=608031551895636354",
+        "webSearchUrlPingSuffix": "DevEx,5061.1", "name": "The European Space Agency''s
+        Automated Transfer Vehicle-4 | NASA", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.84FPV-IcQj8VQeKVLigcqgHaE8&pid=Api",
+        "datePublished": "2018-07-17T18:50:00.0000000Z", "contentUrl": "http:\/\/www.nasa.gov\/sites\/default\/files\/images\/756494main_iss036e007747_full.jpg",
+        "contentUrlPingSuffix": "DevEx,5063.1", "hostPageUrl": "http:\/\/www.nasa.gov\/mission_pages\/station\/multimedia\/gallery\/iss036e007747.html",
+        "hostPageUrlPingSuffix": "DevEx,5062.1", "contentSize": "2356124 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "www.nasa.gov\/mission_pages\/station\/multimedia\/gallery\/iss036e007747...",
+        "width": 6048, "height": 4032, "thumbnail": {"width": 474, "height": 316},
+        "imageInsightsToken": "ccid_84FPV+Ic*mid_4DE98EF3B797DB8C297251CBBA1243A52BE1F036*simid_608031551895636354",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "4DE98EF3B797DB8C297251CBBA1243A52BE1F036", "accentColor": "856846"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=agncy+(site%3anasa.gov)&id=5323DD4C8A973FF8891EF39CC31F12A75CAA9BDC&simid=608024005633377659",
+        "webSearchUrlPingSuffix": "DevEx,5067.1", "name": "STS-112 Spacewalk | NASA",
+        "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.EsGJPmTsC9VQmgINTTvSBwHaHa&pid=Api",
+        "datePublished": "2016-04-08T16:08:00.0000000Z", "contentUrl": "http:\/\/www.nasa.gov\/sites\/default\/files\/sts112-709-073k.jpg",
+        "contentUrlPingSuffix": "DevEx,5069.1", "hostPageUrl": "https:\/\/www.nasa.gov\/centers\/marshall\/history\/launch_of_sts-112.html",
+        "hostPageUrlPingSuffix": "DevEx,5068.1", "contentSize": "6125356 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.nasa.gov\/centers\/marshall\/history\/launch_of_sts-112.html",
+        "width": 5723, "height": 5723, "thumbnail": {"width": 474, "height": 474},
+        "imageInsightsToken": "ccid_lEEY0Yi5*mid_5323DD4C8A973FF8891EF39CC31F12A75CAA9BDC*simid_608024005633377659",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "5323DD4C8A973FF8891EF39CC31F12A75CAA9BDC", "accentColor": "2E4673"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=agncy+(site%3anasa.gov)&id=B54B589914B742AD8380FED73A8ECDA8F1C767C7&simid=608042890616047275",
+        "webSearchUrlPingSuffix": "DevEx,5073.1", "name": "NASA - NASA''s NEPA Program
+        and the Environmental Protection Agency", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.nq2zXyebmen2s9fkM1Bh8QHaFl&pid=Api",
+        "datePublished": "2018-07-19T00:25:00.0000000Z", "contentUrl": "http:\/\/www.nasa.gov\/images\/content\/483716main_EPA-Flag.jpg",
+        "contentUrlPingSuffix": "DevEx,5075.1", "hostPageUrl": "http:\/\/www.nasa.gov\/agency\/nepa\/EPA-Information.html",
+        "hostPageUrlPingSuffix": "DevEx,5074.1", "contentSize": "35738 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "www.nasa.gov\/agency\/nepa\/EPA-Information.html",
+        "width": 325, "height": 245, "thumbnail": {"width": 474, "height": 357}, "imageInsightsToken":
+        "ccid_nq2zXyeb*mid_B54B589914B742AD8380FED73A8ECDA8F1C767C7*simid_608042890616047275",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "B54B589914B742AD8380FED73A8ECDA8F1C767C7", "accentColor": "0E4B7B"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=agncy+(site%3anasa.gov)&id=6BC5B6EE4DD13E705792E40EC64EA0104C236E4D&simid=608025367146595539",
+        "webSearchUrlPingSuffix": "DevEx,5079.1", "name": "JSC Features - Unleash
+        your inner innovator Nov. 1 to 2 - https:\/\/roundupreads.jsc.nasa.gov ...",
+        "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.x8aKajmIaAz-wKuDrj0DswHaFk&pid=Api",
+        "datePublished": "2016-10-25T02:44:00.0000000Z", "contentUrl": "http:\/\/jscfeatures.jsc.nasa.gov\/images\/imagefull-1853.png",
+        "contentUrlPingSuffix": "DevEx,5081.1", "hostPageUrl": "http:\/\/jscfeatures.jsc.nasa.gov\/pages.ashx\/534\/Unleash%20your%20inner%20innovator%20Nov%201%20to%202",
+        "hostPageUrlPingSuffix": "DevEx,5080.1", "contentSize": "148400 B", "encodingFormat":
+        "png", "hostPageDisplayUrl": "jscfeatures.jsc.nasa.gov\/pages.ashx\/534\/Unleash
+        your inner...", "width": 928, "height": 697, "thumbnail": {"width": 474, "height":
+        356}, "imageInsightsToken": "ccid_x8aKajmI*mid_6BC5B6EE4DD13E705792E40EC64EA0104C236E4D*simid_608025367146595539",
+        "imageId": "6BC5B6EE4DD13E705792E40EC64EA0104C236E4D", "accentColor": "035CC8"}],
         "queryExpansions": [{"text": "Travel Agency", "displayText": "Travel", "webSearchUrl":
         "https:\/\/www.bing.com\/images\/search?q=Travel+Agency&tq=%7b%22pq%22%3a%22agncy+(site%3anasa.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22agncy+(site%3anasa.gov)%22%2c%22pv%22%3a%22agncy+(site%3anasa.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Travel%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
         "webSearchUrlPingSuffix": "DevEx,5130.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Travel+Agency&tq=%7b%22pq%22%3a%22agncy+(site%3anasa.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22agncy+(site%3anasa.gov)%22%2c%22pv%22%3a%22agncy+(site%3anasa.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Travel%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
@@ -314,5 +313,5 @@ http_interactions:
         "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Personal+Agency&pid=Api&mkt=en-US&adlt=moderate&t=1"}}],
         "pivotSuggestions": [{"pivot": "agncy (site:nasa.gov)", "suggestions": []}]}'
     http_version: 
-  recorded_at: Tue, 03 Jul 2018 18:54:53 GMT
+  recorded_at: Sun, 26 Aug 2018 23:58:46 GMT
 recorded_with: VCR 4.0.0

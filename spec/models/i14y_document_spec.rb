@@ -11,7 +11,8 @@ describe I14yDocument do
       path: url,
       created: Time.now.to_s,
       description: 'My fascinating document',
-      handle: 'searchgov'
+      handle: 'searchgov',
+      click_count: 1000
     }
   end
   let(:document) { I14yDocument.new(valid_attributes) }

@@ -42,6 +42,11 @@ describe SearchgovDomain do
         with_options(null: false, default: 'idle', limit: 100)
     end
 
+    it do
+      is_expected.to have_db_column(:canonical_domain).of_type(:string).
+        with_options(null: true)
+    end
+
     describe 'indices' do
       it { is_expected.to have_db_index(:domain).unique(true) }
       it { is_expected.to have_db_index(:status) }
@@ -55,9 +60,26 @@ describe SearchgovDomain do
   end
 
   describe 'validations' do
-    it 'validates the domain format' do
-      expect(SearchgovDomain.new(domain: 'foo')).not_to be_valid
-      expect(SearchgovDomain.new(domain: 'search.gov')).to be_valid
+    it { is_expected.to validate_presence_of :domain }
+
+    context 'when the domain is valid' do
+      let(:valid_domains) { %w[search.gov foo.bar.gov foo.bar.baz.museum] }
+
+      it 'is valid' do
+        valid_domains.each do |domain|
+          expect(SearchgovDomain.new(domain: domain)).to be_valid
+        end
+      end
+    end
+
+    context 'when the domain is invalid' do
+      let(:invalid_domains) { ['foo', 'foo.gov.', 'foo.gov/bar', 'foo.gov bar'] }
+
+      it 'is invalid' do
+        invalid_domains.each do |domain|
+          expect(SearchgovDomain.new(domain: domain)).not_to be_valid
+        end
+      end
     end
 
     it { is_expected.to validate_inclusion_of(:scheme).in_array %w(http https) }
@@ -77,7 +99,7 @@ describe SearchgovDomain do
 
     describe 'after create' do
       it 'enqueues a domain preparer job' do
-        expect{
+        expect {
           SearchgovDomain.create!(domain: domain)
         }.to have_enqueued_job(SearchgovDomainPreparerJob)
       end
@@ -110,7 +132,7 @@ describe SearchgovDomain do
 
     describe '#urls_count' do
       it 'tracks the number of associated searchgov url records' do
-        expect{
+        expect {
           searchgov_domain.searchgov_urls.create!(url: 'https://agency.gov')
         }.to change{ searchgov_domain.reload.urls_count }.by(1)
       end
@@ -182,7 +204,7 @@ describe SearchgovDomain do
     end
 
     it 'updates #activity as "indexing"' do
-      expect{ index_urls }.to change{ searchgov_domain.activity }.
+      expect { index_urls }.to change{ searchgov_domain.activity }.
         from('idle').to('indexing')
     end
 
@@ -196,7 +218,7 @@ describe SearchgovDomain do
       end
 
       it 'does not raise an error' do
-        expect{ index_urls }.not_to raise_error
+        expect { index_urls }.not_to raise_error
       end
 
       it 'logs a message that the domain is being indexed' do
@@ -253,7 +275,7 @@ describe SearchgovDomain do
       before { stub_request(:get, 'http://agency.gov').to_return(status: 200) }
 
       it 'sets the status to 200' do
-        expect{ check_status }.to change{ searchgov_domain.reload.status }.from(nil).to('200 OK')
+        expect { check_status }.to change{ searchgov_domain.reload.status }.from(nil).to('200 OK')
       end
 
       it 'returns the status' do
@@ -265,7 +287,7 @@ describe SearchgovDomain do
       before { stub_request(:get, 'http://agency.gov').to_return(status: [403, 'Forbidden']) }
 
       it 'sets the status to the error code'  do
-       expect{ check_status }.to change{ searchgov_domain.reload.status }.from(nil).to('403 Forbidden')
+       expect { check_status }.to change{ searchgov_domain.reload.status }.from(nil).to('403 Forbidden')
       end
     end
 
@@ -276,7 +298,7 @@ describe SearchgovDomain do
       end
 
       it 'sets the status to the error code'  do
-        expect{ check_status }.to raise_error(SearchgovDomain::DomainError, 'agency.gov: kaboom')
+        expect { check_status }.to raise_error(SearchgovDomain::DomainError, 'agency.gov: kaboom')
         expect(searchgov_domain.reload.status).to eq 'kaboom'
       end
 
@@ -302,12 +324,16 @@ describe SearchgovDomain do
       context 'when the redirect is to https' do
         let(:new_url) { 'https://agency.gov/' }
 
-        it 'sets the status to 200' do
-          expect{ check_status }.to change{ searchgov_domain.reload.status }.from(nil).to('200 OK')
+        it 'sets the status to 200 OK' do
+          expect { check_status }.to change{
+            searchgov_domain.reload.status
+          }.from(nil).to('200 OK')
         end
 
         it 'sets the scheme to "https"' do
-          expect{ check_status }.to change{ searchgov_domain.reload.scheme }.from('http').to('https')
+          expect { check_status }.to change{
+            searchgov_domain.reload.scheme
+          }.from('http').to('https')
         end
       end
 
@@ -315,8 +341,15 @@ describe SearchgovDomain do
         let(:new_url) { 'https://new.agency.gov' }
 
         it 'reports the canonical domain' do
-          expect{ check_status }.to change{ searchgov_domain.reload.status }.
-            from(nil).to('Canonical domain: new.agency.gov')
+          expect { check_status }.to change{
+            searchgov_domain.reload.canonical_domain
+          }.from(nil).to('new.agency.gov')
+        end
+
+        it 'sets the status to 200 OK' do
+          expect { check_status }.to change{
+            searchgov_domain.reload.status
+          }.from(nil).to('200 OK')
         end
       end
     end
@@ -331,7 +364,7 @@ describe SearchgovDomain do
       subject(:index) { searchgov_domain.index }
 
       it 'changes the activity to "indexing"' do
-        expect{ index }.to change{ searchgov_domain.activity }.
+        expect { index }.to change{ searchgov_domain.activity }.
           from('idle').to('indexing')
       end
     end
@@ -341,7 +374,7 @@ describe SearchgovDomain do
       subject(:done_indexing) { searchgov_domain.done_indexing }
 
       it 'changes the activity to "idle"' do
-        expect{ done_indexing }.to change{ searchgov_domain.activity }.
+        expect { done_indexing }.to change{ searchgov_domain.activity }.
           from('indexing').to('idle')
       end
     end
@@ -405,6 +438,17 @@ describe SearchgovDomain do
         let(:robots_txt) { 'Sitemap: https://agency.gov/https_sitemap.xml' }
 
         it { is_expected.to eq ['http://agency.gov/https_sitemap.xml'] }
+      end
+
+      context 'when the sitemap is listed twice' do
+        let(:robots_txt) do
+          <<~SITEMAP
+            Sitemap: http://agency.gov/dupe_sitemap.xml
+            Sitemap: http://agency.gov/dupe_sitemap.xml
+          SITEMAP
+        end
+
+        it { is_expected.to eq ['http://agency.gov/dupe_sitemap.xml'] }
       end
     end
 

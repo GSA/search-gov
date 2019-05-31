@@ -12,11 +12,20 @@ working development environment for Rails up and running, including the database
 
 ## Ruby
 
-You will need Ruby 2.1. Verify that your path points to the correct version of Ruby:
+You will need Ruby 2.3.8 Verify that your path points to the correct version of Ruby:
 
     devbox:usasearch
     $ ruby -v
-    ruby 2.1.2p95 (2014-05-08 revision 45877) [x86_64-darwin13.0]
+    ruby 2.3.8p459 (2018-10-18 revision 65136) [x86_64-darwin16]
+
+## Packages
+
+The [cld3](https://github.com/akihikodaki/cld3-ruby) gem, which we use for language detection, depends on Google's
+[protocol buffers](https://developers.google.com/protocol-buffers/) and
+a C++ compiler:
+
+    brew install gcc
+    brew install protobuf
 
 ## Gems
 
@@ -43,9 +52,19 @@ Anything listed in the `secret_keys` entry of that file will automatically be ma
 
 ## Database
 
-The database.yml file assumes you have a local database server up and running (MySQL 5.6.x), accessible from user 'root' with no password.
+Install MySQL 5.6.x using Homebrew:
+```
+$ brew update
+$ brew search mysql
+```
+The output should include `mysql@5.6` listed under `Formulae`.
+```
+$ brew install mysql56
+```
 
-Add the following to your database server's my.cnf file and restart it before executing the following steps:
+Follow the instructions provided by Homebrew during installation.
+
+Add the following to your database server's my.cnf file (normally located at `/usr/local/etc/my.cnf`):
 
 ```
 [mysqld]
@@ -54,14 +73,46 @@ innodb_large_prefix = ON
 innodb_file_format = Barracuda
 ```
 
+Start or restart MySQL:
+```
+$ brew services start mysql56
+```
+
 You may need to reinstall the mysql2 gem if you changed your MySQL version:
 
     gem uninstall mysql2
     bundle install
 
-Create and setup your development and test databases:
+Create and setup your development and test databases. The database.yml file assumes you have a local database server up and running (MySQL 5.6.x), accessible from user 'root' with no password.
 
-    rake db:setup db:test:prepare
+    $ rake db:setup
+    $ rake db:test:prepare
+
+### Troubleshooting your database setup
+
+Problems may arise if you have multiple versions of MySQL installed, or if you have installed MySQL via the OSX installer instead of or in addition to Homebrew. Below are some troubleshooting steps:
+
+Verify that you are running the Homebrew-installed version of MySQL (as indicated by the `/usr/local/opt/mysql@5.6` directory):
+```
+$ ps -ef | grep mysql
+  502 26965     1   0 12:23PM ??         0:00.04 /bin/sh /usr/local/opt/mysql@5.6/bin/mysqld_safe --bind-address=127.0.0.1 --datadir=/usr/local/var/mysql
+```
+
+Verify that Rails is using the Homebrew version:
+```
+$ rails db
+```
+
+The output should include:
+```
+Server version: 5.6.<x> Homebrew
+```
+
+It may also help to specify the Homebrew directories when reinstalling the `mysql2` gem:
+```
+$ gem uninstall mysql2
+$ gem install mysql2 -v '0.3.11' --   --with-mysql-lib=$(brew --prefix mysql56)/lib   --with-mysql-dir=$(brew --prefix mysql56)   --with-mysql-config=$(brew --prefix mysql56)/bin/mysql_config   --with-mysql-include=$(brew --prefix mysql56)/include
+```
 
 ## Asset pipeline
 
@@ -75,14 +126,20 @@ A few tips when working with asset pipeline:
 
         Rails.application.assets['relative_path/to_asset.ext']
 
+## JAVA
 
+Install Java 8.
+
+    $ brew tap caskroom/versions
+
+    $ brew cask install java8
+    
 ## Elasticsearch
 
 We're using [Elastic](http://www.elasticsearch.org/) v1.7.3 for fulltext search and query analytics.
 
-On a Mac, Elasticsearch is easy to install with [Homebrew](http://mxcl.github.com/homebrew/).
-
-    $ brew install homebrew/versions/elasticsearch17
+On a Mac, Elasticsearch is easy to install by following these instructions:
+  https://www.elastic.co/guide/en/elasticsearch/reference/1.7/_installation.html
 
 To check settings and directory locations:
 
@@ -180,16 +237,6 @@ We use Imagemagick to identify some image properties. It can also be installed w
 
     $ brew install imagemagick
 
-## Nutshell
-
-We push some changes on Affiliate and User model to [Nutshell](https://www.nutshell.com).
-
-If you need to access Nutshell on your development environment, you can do the following:
-
-- Go to [API documentation](https://www.nutshell.com/api/detail/class_core.html) and click on one of the `Try it out!` buttons to see the `Auth` row.
-- Copy the username/password from the `Auth` row to `config/nutshell.yaml`.
-- Verify your changes using the [live demo account](https://www.nutshell.com/signup/).
-
 # Tests
 
 We use poltergeist gem to test Javascript. This gem depends on PhantomJS.
@@ -200,7 +247,9 @@ Download and install PhantomJS:
 
 It can also be installed with Homebrew on a Mac.
 
-    $ brew install homebrew/versions/phantomjs198
+    $ brew tap homebrew/cask
+
+    $ brew cask install phantomjs
 
 If you see ```Error: The `brew link` step did not complete successfully``` when installing phantomjs, 
 

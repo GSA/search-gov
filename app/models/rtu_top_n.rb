@@ -14,4 +14,18 @@ class RtuTopN
     term_buckets.collect { |hash| [hash["key"], hash["doc_count"]] }
   end
 
+  # Results representing a given percentage of all results by doc_count
+  def top_n_to_percentage(percent)
+    top = top_n
+    total = top.map(&:last).sum
+    cumulative_count = 0.0
+    top_to_percentage = []
+
+    while (cumulative_count / total) * 100 < percent
+      result = top.shift
+      top_to_percentage << result
+      cumulative_count += result[1]
+    end
+    top_to_percentage
+  end
 end

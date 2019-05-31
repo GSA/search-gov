@@ -432,4 +432,925 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
   recorded_at: Thu, 22 Feb 2018 07:17:06 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=jobs%20(site:.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '3914'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 19 Nov 2018 22:39:49 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=34D07FC567DA69F60A0C7369660D6865; path=/; expires=Sat, 14-Dec-2019 22:40:49
+        GMT; domain=bingapis.com
+      - MUIDB=34D07FC567DA69F60A0C7369660D6865; path=/; httponly; expires=Sat, 14-Dec-2019
+        22:40:49 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 19-Nov-2020 22:40:49 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=9FB46742FAFE42EB87C34197F14C509E&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 19-Nov-2020 22:40:49 GMT; path=/
+      - SRCHUSR=DOB=20181119; domain=.bingapis.com; expires=Thu, 19-Nov-2020 22:40:49
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=293BB14A44B36BE91EBBBDE645646A1B; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 14-Dec-2019 22:40:49 GMT; domain=bingapis.com
+      - _SS=SID=293BB14A44B36BE91EBBBDE645646A1B; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - D87C0582D326458D9DE521DF09C1A6B3
+      X-Msedge-Clientid:
+      - 34D07FC567DA69F60A0C7369660D6865
+      X-Msapi-Userstate:
+      - '0613'
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: D87C0582D326458D9DE521DF09C1A6B3 Ref B: CO1EDGE0216 Ref C: 2018-11-19T22:40:49Z'
+      Date:
+      - Mon, 19 Nov 2018 22:40:49 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=381639F3882243E58690C981DDAB28B9&CID=34D07FC567DA69F60A0C7369660D6865&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=381639F3882243E58690C981DDAB28B9&CID=34D07FC567DA69F60A0C7369660D6865&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=jobs+(site%3a.gov)",
+        "webSearchUrlPingSuffix": "DevEx,5410.1", "totalEstimatedMatches": 31200000,
+        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
+        "Virginia Jobs", "url": "http:\/\/jobs.virginia.gov\/", "urlPingSuffix":
+        "DevEx,5059.1", "about": [{"name": "Virginia"}], "displayUrl": "jobs.virginia.gov",
+        "snippet": "The Commonwealth of Virginia is an Equal Opportunity Employer
+        It is the policy of the Commonwealth of Virginia to prohibit discrimination
+        on the basis of race, sex, color, national origin, religion, sexual orientation,
+        gender identity, age, veteran status, political affiliation, genetics, or
+        disability in the recruitment, selection, and hiring ...", "dateLastCrawled":
+        "2018-11-14T21:05:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
+        "name": "Jobs | Topics - Fairfax County Homepage | Fairfax County",
+        "url": "https:\/\/www.fairfaxcounty.gov\/topics\/jobs", "urlPingSuffix": "DevEx,5072.1",
+        "about": [{"name": "Fairfax County"}], "displayUrl": "https:\/\/www.fairfaxcounty.gov\/topics\/jobs",
+        "snippet": "Fairfax County, Virginia - Look and apply for a job with Fairfax
+        Count Government. Serve your community as a public servant in many ways.",
+        "dateLastCrawled": "2018-11-12T04:20:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        "name": "USAJOBS - The Federal Government''s Official Jobs Site", "url":
+        "https:\/\/www.usajobs.gov\/", "urlPingSuffix": "DevEx,5085.1", "about": [{"name":
+        "USAJOBS"}, {"name": "USAJOBS"}], "displayUrl": "https:\/\/www.usajobs.gov",
+        "snippet": "USAJOBS is the Federal Government''s official one-stop source
+        for Federal jobs and employment information.", "dateLastCrawled": "2018-11-12T08:38:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "jobs.utah.gov
+        - Department of Workforce Services", "url": "https:\/\/jobs.utah.gov\/", "urlPingSuffix":
+        "DevEx,5097.1", "displayUrl": "https:\/\/jobs.utah.gov", "snippet": "The
+        Department of Workforce Services strengthens Utah''s communities by supporting
+        the economic stability and quality of our workforce.", "dateLastCrawled":
+        "2018-11-16T02:39:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
+        "name": "Jobs Home | City of New York", "url": "https:\/\/www1.nyc.gov\/jobs\/index.page",
+        "urlPingSuffix": "DevEx,5109.1", "about": [{"name": "New York"}], "displayUrl":
+        "https:\/\/www1.nyc.gov\/jobs\/index.page", "snippet": "Jobs ; Jobs
+        Home Get Started Explore Careers. Find a job in New York City government:
+        Search Search. Login or Create an Account. City Employee Login. Make a difference.
+        City government is filled with opportunities for talented people who want
+        to improve their communities and make an important difference in the lives
+        of their fellow New Yorkers.", "dateLastCrawled": "2018-11-16T08:37:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "NC.gov:
+        Jobs", "url": "https:\/\/www.nc.gov\/jobs", "urlPingSuffix": "DevEx,5123.1",
+        "about": [{"name": "North Carolina"}], "displayUrl": "https:\/\/www.nc.gov\/jobs",
+        "snippet": "Careers within the State of North Carolina include public safety,
+        education, transportation, and health care. State employees located in each
+        one of the 100 counties in North Carolina. We also have listings for jobs
+        in the local school system, and jobs in the private sector that are in our
+        Employment Security database.", "dateLastCrawled": "2018-11-15T22:10:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "NJDEP-Employment
+        Opportunities", "url": "https:\/\/www.nj.gov\/dep\/jobs\/", "urlPingSuffix":
+        "DevEx,5135.1", "about": [{"name": "New Jersey Department of Environmental
+        Protection"}], "displayUrl": "https:\/\/www.nj.gov\/dep\/jobs", "snippet":
+        "Government Jobs can also be found on the Civil Service Commission Home
+        Page. New Jersey Residency Requirements All employees of State and local government
+        must reside in the State of New Jersey, unless exempted under the law.", "dateLastCrawled":
+        "2018-11-13T21:28:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "name": "2020 Census Jobs", "url": "https:\/\/2020census.gov\/jobs", "urlPingSuffix":
+        "DevEx,5148.1", "displayUrl": "https:\/\/2020census.gov\/jobs", "snippet":
+        "We are hiring for a variety of temporary jobs, including census takers,
+        recruiting assistants, office staff, and supervisory staff. To be eligible,
+        you must be at least 18 years old, have a valid Social Security number, and
+        be a U.S. citizen.", "dateLastCrawled": "2018-11-09T15:00:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Jobs - Federal
+        Aviation Administration", "url": "https:\/\/www.faa.gov\/jobs\/", "urlPingSuffix":
+        "DevEx,5161.1", "about": [{"name": "Federal Aviation Administration"}], "displayUrl":
+        "https:\/\/www.faa.gov\/jobs", "snippet": "Take control of your career.
+        The FAA has many opportunities for you to contribute to our safe and efficient
+        skies. Below is a sample of possible career fields:", "dateLastCrawled": "2018-11-16T09:32:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "myCase
+        - Home", "url": "https:\/\/jobs.utah.gov\/mycase\/", "urlPingSuffix": "DevEx,5175.1",
+        "displayUrl": "https:\/\/jobs.utah.gov\/mycase", "snippet": "jobs main
+        content Starting November 1, 2018 through December 15, 2018 ... Do I log into
+        myCase with the same ID\/password information that I use when I log in for
+        Unemployment or to search for employment? Yes. Use your UtahID information
+        to login. Will myCase share information with Google, Yahoo, Facebook or
+        any other sites?", "dateLastCrawled": "2018-11-12T16:18:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Job Search
+        Results", "url": "https:\/\/jobs.ca.gov\/CalHRPublic\/Search\/JobSearchResults.aspx",
+        "urlPingSuffix": "DevEx,5188.1", "displayUrl": "https:\/\/jobs.ca.gov\/CalHRPublic\/Search\/JobSearchResults.aspx",
+        "snippet": "System Updates - CalCareers: CalCareers will be offline for maintenance
+        on Tuesday, November 13th, 2018 between 4:30PM - 9:30PM. The Office Technician
+        exam will be offline from 3:30PM - 9:30PM. Thank you for your cooperation.",
+        "dateLastCrawled": "2018-11-15T12:41:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
+        "name": "CalCareers", "url": "https:\/\/jobs.ca.gov\/", "urlPingSuffix": "DevEx,5202.1",
+        "about": [{"name": "JobsMoGov"}], "displayUrl": "https:\/\/jobs.ca.gov",
+        "snippet": "The State of California offers a wide variety of careers and
+        jobs, ranging from accounting to zoology. The services our employees provide
+        are truly essential to the people of California. In public service, you
+        will spend every day doing work that is vital to your state and your community.",
+        "dateLastCrawled": "2018-11-16T07:14:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
+        "name": "Careers.ohio.gov", "url": "http:\/\/careers.ohio.gov\/", "urlPingSuffix":
+        "DevEx,5215.1", "about": [{"name": "Ohio"}], "displayUrl": "careers.ohio.gov",
+        "snippet": "The State of Ohio transitioned to a new applicant tracking system
+        to post jobs and receive applications. Job seekers will continue to have
+        access to view their existing profile\/account at governmentjobs.com. This
+        includes application status information and any correspondences sent concerning
+        applications submitted prior to April 6, 2018.", "dateLastCrawled": "2018-11-15T04:43:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Careers
+        | US EPA", "url": "https:\/\/www.epa.gov\/careers", "urlPingSuffix": "DevEx,5226.1",
+        "displayUrl": "https:\/\/www.epa.gov\/careers", "snippet": "Find out more
+        information on the special hiring authority for Individuals with disabilities,
+        Schedule A, as well as all EPA jobs currently open. Attorneys at EPA work
+        on cutting-edge legal issues. Learn more about our legal offices and law career
+        opportunities , and about opportunities for law school grads .", "dateLastCrawled":
+        "2018-11-05T14:19:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
+        "name": "Find a Federal Government Job | USAGov", "url": "https:\/\/www.usa.gov\/government-jobs",
+        "urlPingSuffix": "DevEx,5242.1", "displayUrl": "https:\/\/www.usa.gov\/government-jobs",
+        "snippet": "The federal government has job opportunities available now in
+        agencies throughout the U.S. If you’re interested in a job with the federal
+        government, visit USAJOBS.gov, the official one-stop source for federal jobs
+        and employment information. There, you can: You must create a USAJOBS profile
+        to ...", "dateLastCrawled": "2018-11-14T13:30:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "Jobs | Communications & Public Information | City of ...", "url":
+        "https:\/\/www.alexandriava.gov\/Jobs", "urlPingSuffix": "DevEx,5256.1", "about":
+        [{"name": "Alexandria"}], "displayUrl": "https:\/\/www.alexandriava.gov\/Jobs",
+        "snippet": "Jobs Alexandria offers wide range of job opportunities and services.
+        Work for City government or City Public Schools, find out about an internship
+        opportunity or learn about workforce development and career training options.",
+        "dateLastCrawled": "2018-11-12T15:30:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
+        "name": "FBIJOBS", "url": "https:\/\/www.fbijobs.gov\/", "urlPingSuffix":
+        "DevEx,5270.1", "about": [{"name": "Federal Bureau of Investigation"}, {"name":
+        "Federal Bureau of Investigation"}], "displayUrl": "https:\/\/www.fbijobs.gov",
+        "snippet": "FBIJOBS.GOV is an official site of the U.S. Government, U.S.
+        Department of Justice FBI is a partner with the U.S. Intelligence Community
+        Federal Bureau of Investigation.", "dateLastCrawled": "2018-11-16T13:55:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Jobs
+        & Careers at TPWD - Texas Parks & Wildlife Department", "url": "https:\/\/tpwd.texas.gov\/jobs\/",
+        "urlPingSuffix": "DevEx,5284.1", "about": [{"name": "Texas Parks and Wildlife
+        Department"}], "displayUrl": "https:\/\/tpwd.texas.gov\/jobs", "snippet":
+        "Veteran Hiring at TPWD. Texas state law requires agencies to give veterans,
+        surviving spouses of veterans, and orphans of veterans preference in the selection
+        process when candidates are similarly qualified.", "dateLastCrawled": "2018-11-11T09:39:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Jobs
+        Express: Job Openings in New York State - New York ...", "url": "https:\/\/labor.ny.gov\/jobs\/regional.shtm",
+        "urlPingSuffix": "DevEx,5300.1", "displayUrl": "https:\/\/labor.ny.gov\/jobs\/regional.shtm",
+        "snippet": "Jobs Express: Job Openings in New York State. Below are current
+        job openings in New York''s 10 regional economies. New Yorkers can view the
+        region they live in, see which industries are growing and find out what jobs
+        are available in that economic sector.", "dateLastCrawled": "2018-11-16T09:34:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "USAJobs",
+        "url": "https:\/\/login.usajobs.gov\/", "urlPingSuffix": "DevEx,5312.1", "about":
+        [{"name": "USAJOBS"}], "displayUrl": "https:\/\/login.usajobs.gov", "snippet":
+        "USAJobs", "dateLastCrawled": "2018-11-15T18:29:00.0000000Z"}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 19 Nov 2018 22:40:49 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=jobs%20(site:.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '3913'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 19 Nov 2018 22:39:49 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=32955B3BA51F664504155797A4C86756; path=/; expires=Sat, 14-Dec-2019 22:40:50
+        GMT; domain=bingapis.com
+      - MUIDB=32955B3BA51F664504155797A4C86756; path=/; httponly; expires=Sat, 14-Dec-2019
+        22:40:50 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 19-Nov-2020 22:40:49 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=F83531BAFFD849C1A649E05BAAF1C4F2&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 19-Nov-2020 22:40:49 GMT; path=/
+      - SRCHUSR=DOB=20181119; domain=.bingapis.com; expires=Thu, 19-Nov-2020 22:40:49
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=043D8660DF4268F926AA8ACCDE95690A; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 14-Dec-2019 22:40:50 GMT; domain=bingapis.com
+      - _SS=SID=043D8660DF4268F926AA8ACCDE95690A; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - 0A3C81DF314A46A2A28096D01457C3E4
+      X-Msedge-Clientid:
+      - 32955B3BA51F664504155797A4C86756
+      X-Msapi-Userstate:
+      - 70a9
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: 0A3C81DF314A46A2A28096D01457C3E4 Ref B: CO1EDGE0917 Ref C: 2018-11-19T22:40:50Z'
+      Date:
+      - Mon, 19 Nov 2018 22:40:49 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=D817EAC154884085819E6A0A1062F8DF&CID=32955B3BA51F664504155797A4C86756&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=D817EAC154884085819E6A0A1062F8DF&CID=32955B3BA51F664504155797A4C86756&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=jobs+(site%3a.gov)",
+        "webSearchUrlPingSuffix": "DevEx,5410.1", "totalEstimatedMatches": 31200000,
+        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
+        "Virginia Jobs", "url": "http:\/\/jobs.virginia.gov\/", "urlPingSuffix":
+        "DevEx,5059.1", "about": [{"name": "Virginia"}], "displayUrl": "jobs.virginia.gov",
+        "snippet": "The Commonwealth of Virginia is an Equal Opportunity Employer
+        It is the policy of the Commonwealth of Virginia to prohibit discrimination
+        on the basis of race, sex, color, national origin, religion, sexual orientation,
+        gender identity, age, veteran status, political affiliation, genetics, or
+        disability in the recruitment, selection, and hiring ...", "dateLastCrawled":
+        "2018-11-14T21:05:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
+        "name": "Jobs | Topics - Fairfax County Homepage | Fairfax County",
+        "url": "https:\/\/www.fairfaxcounty.gov\/topics\/jobs", "urlPingSuffix": "DevEx,5072.1",
+        "about": [{"name": "Fairfax County"}], "displayUrl": "https:\/\/www.fairfaxcounty.gov\/topics\/jobs",
+        "snippet": "Fairfax County, Virginia - Look and apply for a job with Fairfax
+        Count Government. Serve your community as a public servant in many ways.",
+        "dateLastCrawled": "2018-11-12T04:20:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        "name": "USAJOBS - The Federal Government''s Official Jobs Site", "url":
+        "https:\/\/www.usajobs.gov\/", "urlPingSuffix": "DevEx,5085.1", "about": [{"name":
+        "USAJOBS"}, {"name": "USAJOBS"}], "displayUrl": "https:\/\/www.usajobs.gov",
+        "snippet": "USAJOBS is the Federal Government''s official one-stop source
+        for Federal jobs and employment information.", "dateLastCrawled": "2018-11-12T08:38:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "jobs.utah.gov
+        - Department of Workforce Services", "url": "https:\/\/jobs.utah.gov\/", "urlPingSuffix":
+        "DevEx,5097.1", "displayUrl": "https:\/\/jobs.utah.gov", "snippet": "The
+        Department of Workforce Services strengthens Utah''s communities by supporting
+        the economic stability and quality of our workforce.", "dateLastCrawled":
+        "2018-11-16T02:39:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
+        "name": "Jobs Home | City of New York", "url": "https:\/\/www1.nyc.gov\/jobs\/index.page",
+        "urlPingSuffix": "DevEx,5109.1", "about": [{"name": "New York"}], "displayUrl":
+        "https:\/\/www1.nyc.gov\/jobs\/index.page", "snippet": "Jobs ; Jobs
+        Home Get Started Explore Careers. Find a job in New York City government:
+        Search Search. Login or Create an Account. City Employee Login. Make a difference.
+        City government is filled with opportunities for talented people who want
+        to improve their communities and make an important difference in the lives
+        of their fellow New Yorkers.", "dateLastCrawled": "2018-11-16T08:37:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "NC.gov:
+        Jobs", "url": "https:\/\/www.nc.gov\/jobs", "urlPingSuffix": "DevEx,5123.1",
+        "about": [{"name": "North Carolina"}], "displayUrl": "https:\/\/www.nc.gov\/jobs",
+        "snippet": "Careers within the State of North Carolina include public safety,
+        education, transportation, and health care. State employees located in each
+        one of the 100 counties in North Carolina. We also have listings for jobs
+        in the local school system, and jobs in the private sector that are in our
+        Employment Security database.", "dateLastCrawled": "2018-11-15T22:10:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "NJDEP-Employment
+        Opportunities", "url": "https:\/\/www.nj.gov\/dep\/jobs\/", "urlPingSuffix":
+        "DevEx,5135.1", "about": [{"name": "New Jersey Department of Environmental
+        Protection"}], "displayUrl": "https:\/\/www.nj.gov\/dep\/jobs", "snippet":
+        "Government Jobs can also be found on the Civil Service Commission Home
+        Page. New Jersey Residency Requirements All employees of State and local government
+        must reside in the State of New Jersey, unless exempted under the law.", "dateLastCrawled":
+        "2018-11-13T21:28:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "name": "2020 Census Jobs", "url": "https:\/\/2020census.gov\/jobs", "urlPingSuffix":
+        "DevEx,5148.1", "displayUrl": "https:\/\/2020census.gov\/jobs", "snippet":
+        "We are hiring for a variety of temporary jobs, including census takers,
+        recruiting assistants, office staff, and supervisory staff. To be eligible,
+        you must be at least 18 years old, have a valid Social Security number, and
+        be a U.S. citizen.", "dateLastCrawled": "2018-11-09T15:00:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Jobs - Federal
+        Aviation Administration", "url": "https:\/\/www.faa.gov\/jobs\/", "urlPingSuffix":
+        "DevEx,5161.1", "about": [{"name": "Federal Aviation Administration"}], "displayUrl":
+        "https:\/\/www.faa.gov\/jobs", "snippet": "Take control of your career.
+        The FAA has many opportunities for you to contribute to our safe and efficient
+        skies. Below is a sample of possible career fields:", "dateLastCrawled": "2018-11-16T09:32:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "myCase
+        - Home", "url": "https:\/\/jobs.utah.gov\/mycase\/", "urlPingSuffix": "DevEx,5175.1",
+        "displayUrl": "https:\/\/jobs.utah.gov\/mycase", "snippet": "jobs main
+        content Starting November 1, 2018 through December 15, 2018 ... Do I log into
+        myCase with the same ID\/password information that I use when I log in for
+        Unemployment or to search for employment? Yes. Use your UtahID information
+        to login. Will myCase share information with Google, Yahoo, Facebook or
+        any other sites?", "dateLastCrawled": "2018-11-12T16:18:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Job Search
+        Results", "url": "https:\/\/jobs.ca.gov\/CalHRPublic\/Search\/JobSearchResults.aspx",
+        "urlPingSuffix": "DevEx,5188.1", "displayUrl": "https:\/\/jobs.ca.gov\/CalHRPublic\/Search\/JobSearchResults.aspx",
+        "snippet": "System Updates - CalCareers: CalCareers will be offline for maintenance
+        on Tuesday, November 13th, 2018 between 4:30PM - 9:30PM. The Office Technician
+        exam will be offline from 3:30PM - 9:30PM. Thank you for your cooperation.",
+        "dateLastCrawled": "2018-11-15T12:41:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
+        "name": "CalCareers", "url": "https:\/\/jobs.ca.gov\/", "urlPingSuffix": "DevEx,5202.1",
+        "about": [{"name": "JobsMoGov"}], "displayUrl": "https:\/\/jobs.ca.gov",
+        "snippet": "The State of California offers a wide variety of careers and
+        jobs, ranging from accounting to zoology. The services our employees provide
+        are truly essential to the people of California. In public service, you
+        will spend every day doing work that is vital to your state and your community.",
+        "dateLastCrawled": "2018-11-16T07:14:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
+        "name": "Careers.ohio.gov", "url": "http:\/\/careers.ohio.gov\/", "urlPingSuffix":
+        "DevEx,5215.1", "about": [{"name": "Ohio"}], "displayUrl": "careers.ohio.gov",
+        "snippet": "The State of Ohio transitioned to a new applicant tracking system
+        to post jobs and receive applications. Job seekers will continue to have
+        access to view their existing profile\/account at governmentjobs.com. This
+        includes application status information and any correspondences sent concerning
+        applications submitted prior to April 6, 2018.", "dateLastCrawled": "2018-11-15T04:43:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Careers
+        | US EPA", "url": "https:\/\/www.epa.gov\/careers", "urlPingSuffix": "DevEx,5226.1",
+        "displayUrl": "https:\/\/www.epa.gov\/careers", "snippet": "Find out more
+        information on the special hiring authority for Individuals with disabilities,
+        Schedule A, as well as all EPA jobs currently open. Attorneys at EPA work
+        on cutting-edge legal issues. Learn more about our legal offices and law career
+        opportunities , and about opportunities for law school grads .", "dateLastCrawled":
+        "2018-11-05T14:19:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
+        "name": "Find a Federal Government Job | USAGov", "url": "https:\/\/www.usa.gov\/government-jobs",
+        "urlPingSuffix": "DevEx,5242.1", "displayUrl": "https:\/\/www.usa.gov\/government-jobs",
+        "snippet": "The federal government has job opportunities available now in
+        agencies throughout the U.S. If you’re interested in a job with the federal
+        government, visit USAJOBS.gov, the official one-stop source for federal jobs
+        and employment information. There, you can: You must create a USAJOBS profile
+        to ...", "dateLastCrawled": "2018-11-14T13:30:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "Jobs | Communications & Public Information | City of ...", "url":
+        "https:\/\/www.alexandriava.gov\/Jobs", "urlPingSuffix": "DevEx,5256.1", "about":
+        [{"name": "Alexandria"}], "displayUrl": "https:\/\/www.alexandriava.gov\/Jobs",
+        "snippet": "Jobs Alexandria offers wide range of job opportunities and services.
+        Work for City government or City Public Schools, find out about an internship
+        opportunity or learn about workforce development and career training options.",
+        "dateLastCrawled": "2018-11-12T15:30:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
+        "name": "FBIJOBS", "url": "https:\/\/www.fbijobs.gov\/", "urlPingSuffix":
+        "DevEx,5270.1", "about": [{"name": "Federal Bureau of Investigation"}, {"name":
+        "Federal Bureau of Investigation"}], "displayUrl": "https:\/\/www.fbijobs.gov",
+        "snippet": "FBIJOBS.GOV is an official site of the U.S. Government, U.S.
+        Department of Justice FBI is a partner with the U.S. Intelligence Community
+        Federal Bureau of Investigation.", "dateLastCrawled": "2018-11-16T13:55:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Jobs
+        & Careers at TPWD - Texas Parks & Wildlife Department", "url": "https:\/\/tpwd.texas.gov\/jobs\/",
+        "urlPingSuffix": "DevEx,5284.1", "about": [{"name": "Texas Parks and Wildlife
+        Department"}], "displayUrl": "https:\/\/tpwd.texas.gov\/jobs", "snippet":
+        "Veteran Hiring at TPWD. Texas state law requires agencies to give veterans,
+        surviving spouses of veterans, and orphans of veterans preference in the selection
+        process when candidates are similarly qualified.", "dateLastCrawled": "2018-11-11T09:39:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Jobs
+        Express: Job Openings in New York State - New York ...", "url": "https:\/\/labor.ny.gov\/jobs\/regional.shtm",
+        "urlPingSuffix": "DevEx,5300.1", "displayUrl": "https:\/\/labor.ny.gov\/jobs\/regional.shtm",
+        "snippet": "Jobs Express: Job Openings in New York State. Below are current
+        job openings in New York''s 10 regional economies. New Yorkers can view the
+        region they live in, see which industries are growing and find out what jobs
+        are available in that economic sector.", "dateLastCrawled": "2018-11-16T09:34:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "USAJobs",
+        "url": "https:\/\/login.usajobs.gov\/", "urlPingSuffix": "DevEx,5312.1", "about":
+        [{"name": "USAJOBS"}], "displayUrl": "https:\/\/login.usajobs.gov", "snippet":
+        "USAJobs", "dateLastCrawled": "2018-11-15T18:29:00.0000000Z"}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 19 Nov 2018 22:40:50 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=jobs%20(site:.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 05 Feb 2019 21:45:10 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - C2FBCC1711B248E5BCF4783C03426312
+      Bingapis-Sessionid:
+      - 86E4BD5F0BA84076994A264DF7A9E725
+      X-Msedge-Clientid:
+      - 04EF34F292D661C922423808939A601B
+      X-Msapi-Userstate:
+      - cf8c
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=211,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: C2FBCC1711B248E5BCF4783C03426312 Ref B: BY3EDGE0318 Ref C: 2019-02-05T21:46:10Z'
+      Apim-Request-Id:
+      - 11d5402b-9fff-46f2-bcc3-99f8a84ac261
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 05 Feb 2019 21:46:10 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "jobs
+        (site:.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=jobs+(site%3a.gov)",
+        "totalEstimatedMatches": 27900000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Virginia Jobs", "url": "http:\/\/jobs.virginia.gov\/", "about":
+        [{"name": "Virginia"}], "isFamilyFriendly": true, "displayUrl": "jobs.virginia.gov",
+        "snippet": "The Commonwealth of Virginia is an Employer of National Service.
+        Virginia encourages AmeriCorps and Peace Corps alumni to continue their
+        lifetime of service by applying for jobs with Virginia State Government.
+        Preference is not awarded to national service alumni in the hiring process.",
+        "dateLastCrawled": "2019-02-01T14:42:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Job Search Results", "url": "https:\/\/jobs.ca.gov\/CalHRPublic\/Search\/JobSearchResults.aspx",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/jobs.ca.gov\/CalHRPublic\/Search\/JobSearchResults.aspx",
+        "snippet": "Note: documents in Portable Document Format (PDF) require Adobe
+        Acrobat Reader 5.0 or higher to view download Adobe Acrobat Reader.", "dateLastCrawled":
+        "2019-01-30T08:52:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2", "name":
+        "USAJOBS - The Federal Government''s Official Jobs Site", "url": "https:\/\/www.usajobs.gov\/",
+        "about": [{"name": "USAJOBS"}, {"name": "USAJOBS"}], "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.usajobs.gov", "snippet": "USAJOBS is the
+        Federal Government''s official one-stop source for Federal jobs and employment
+        information.", "dateLastCrawled": "2019-01-30T21:53:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Jobs | Topics - Fairfax County", "url": "https:\/\/www.fairfaxcounty.gov\/topics\/jobs",
+        "about": [{"name": "Fairfax County"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.fairfaxcounty.gov\/topics\/jobs", "snippet": "History of
+        Fairfax County Jobs More Board of Supervisors. Board Auditor Board Members
+        Clerk to the Board Committees Meetings & Agendas Priorities Reports ... Working
+        for Fairfax County New Hires. Compensation Plan. Class Specifications. Employee
+        Benefits . Personnel Regulations. Awards Site Feedback.", "dateLastCrawled":
+        "2019-01-31T18:00:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4", "name":
+        "jobs.utah.gov - Department of Workforce Services", "url": "https:\/\/jobs.utah.gov\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/jobs.utah.gov", "snippet":
+        "Search our robust job board of more than 20,000 open jobs in a variety
+        of fields. Job Search. Manage Your Business. As an employer, fill your open
+        position with more than 80,000 active job seekers in our system. You can also
+        manage your unemployment insurance account. Learn More.", "dateLastCrawled":
+        "2019-02-01T12:45:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5", "name":
+        "Jobs - Federal Aviation Administration", "url": "https:\/\/www.faa.gov\/jobs\/",
+        "about": [{"name": "Federal Aviation Administration"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.faa.gov\/jobs", "snippet": "Take control
+        of your career. The FAA has many opportunities for you to contribute to our
+        safe and efficient skies. Below is a sample of possible career fields:", "dateLastCrawled":
+        "2019-02-01T17:05:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6", "name":
+        "NC.gov: Jobs", "url": "https:\/\/www.nc.gov\/jobs", "about": [{"name":
+        "North Carolina"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nc.gov\/jobs",
+        "snippet": "Careers within the State of North Carolina include public safety,
+        education, transportation, and health care. State employees located in each
+        one of the 100 counties in North Carolina. We also have listings for jobs
+        in the local school system, and jobs in the private sector that are in our
+        Employment Security database.", "dateLastCrawled": "2019-02-01T12:02:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Careers - Houston", "url": "https:\/\/houstontx.gov\/hr\/careers.html",
+        "about": [{}], "isFamilyFriendly": true, "displayUrl": "https:\/\/houstontx.gov\/hr\/careers.html",
+        "snippet": "Employment with City of Houston represents more than just a
+        job. A career in public service is an opportunity to serve fellow citizens
+        across our city. Professions in city government help to support many aspects
+        of life in Houston and considering a career in public service is an honorable
+        choice.", "dateLastCrawled": "2019-01-28T06:23:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "CalJOBS", "url": "http:\/\/www.caljobs.ca.gov\/", "about": [{"name":
+        "Employment Development Department"}], "isFamilyFriendly": true, "displayUrl":
+        "www.caljobs.ca.gov", "snippet": "Look for jobs from your smartphone with
+        the CalJOBS mobile app, available on Apple and Google Play stores. Access
+        California''s ETPL and Apprenticeship Providers Access the Eligible Training
+        Provider List (ETPL) featuring educational programs and apprentices for job
+        seekers.", "dateLastCrawled": "2019-01-31T00:50:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "CalCareers", "url": "https:\/\/calcareers.ca.gov\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/calcareers.ca.gov", "snippet": "The State
+        of California offers a wide variety of careers and jobs, ranging from accounting
+        to zoology. The services our employees provide are truly essential to the
+        people of California. In public service, you will spend every day doing work
+        that is vital to your state and your community.", "dateLastCrawled": "2019-01-30T23:45:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Phila.gov | Human Resources | Jobs", "url": "https:\/\/www.phila.gov\/personnel\/Jobs.html",
+        "about": [{"name": "Philadelphia"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.phila.gov\/personnel\/Jobs.html", "snippet": "Jobs. Thank
+        you for your interest in employment with the City of Philadelphia. We have
+        immediate job openings in a wide variety of occupations. Employment Verification
+        For information on current employees, contact 215-686-2376. Job Opportunities.
+        Job Interest. Job Class Specifications.", "dateLastCrawled": "2019-01-31T03:41:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Careers | Department of Human Resources", "url": "https:\/\/humanresources.vermont.gov\/careers",
+        "about": [{"name": "Vermont"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/humanresources.vermont.gov\/careers",
+        "snippet": "Current employees can now use our new Career Site, SuccessFactors,
+        to search and apply for jobs online. If you are logging in to the new system
+        for the first time, please select the ''First Time Login'' link.", "dateLastCrawled":
+        "2019-01-31T09:00:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12", "name":
+        "Careers at CDC", "url": "https:\/\/jobs.cdc.gov\/", "about": [{"name": "Centers
+        for Disease Control and Prevention"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/jobs.cdc.gov", "snippet": "Use your LinkedIn profile to see
+        which jobs at CDC may be a good fit for you. When you click the button below,
+        a new window will open and you’ll be asked to log in to LinkedIn. Start Matching
+        Skills", "dateLastCrawled": "2019-01-30T21:22:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Jobs | City of Alexandria, VA", "url": "https:\/\/www.alexandriava.gov\/Jobs",
+        "about": [{"name": "Alexandria"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.alexandriava.gov\/Jobs", "snippet": "Jobs Alexandria
+        offers wide range of job opportunities and services. Work for City government
+        or City Public Schools, find out about an internship opportunity or learn
+        about workforce development and career training options.", "dateLastCrawled":
+        "2019-02-01T14:05:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "Jobs & Careers at TPWD - Texas Parks & Wildlife Department", "url": "https:\/\/tpwd.texas.gov\/jobs\/",
+        "about": [{"name": "Texas Parks and Wildlife Department"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/tpwd.texas.gov\/jobs", "snippet": "Veteran
+        Hiring at TPWD. Texas state law requires agencies to give veterans, surviving
+        spouses of veterans, and orphans of veterans preference in the selection process
+        when candidates are similarly qualified.", "dateLastCrawled": "2019-01-31T01:10:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Jobs | The Official Website of the State of Idaho", "url": "https:\/\/www.idaho.gov\/jobs\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.idaho.gov\/jobs",
+        "snippet": "Find a job in Idaho and learn about employee rights and laws.",
+        "dateLastCrawled": "2019-01-31T20:34:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Jobs Home | City of New York", "url": "https:\/\/www1.nyc.gov\/jobs\/index.page",
+        "about": [{"name": "New York"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www1.nyc.gov\/jobs\/index.page",
+        "snippet": "Jobs Home Get Started Explore Careers. Find a job in New York
+        City government: Search Search. Login or Create an Account. City Employee
+        Login. Make a difference. City government is filled with opportunities for
+        talented people who want to improve their communities and make an important
+        difference in the lives of their fellow New Yorkers.", "dateLastCrawled":
+        "2019-01-31T15:19:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17", "name":
+        "Jobs", "url": "https:\/\/edd.ca.gov\/jobs.htm", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/edd.ca.gov\/jobs.htm", "snippet": "Jobs. The
+        Employment Development Department (EDD) provides a comprehensive range of
+        employment and training services in partnership with state and local agencies
+        and organizations. These services benefit job seekers, laid off workers, youth,
+        individuals currently working, veterans, and people with disabilities.", "dateLastCrawled":
+        "2019-01-31T13:16:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18", "name":
+        "Jobs Express: Job Openings in New York State - New York ...", "url": "https:\/\/labor.ny.gov\/jobs\/regional.shtm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/labor.ny.gov\/jobs\/regional.shtm",
+        "snippet": "Jobs Express: Job Openings in New York State. Below are current
+        job openings in New York''s 10 regional economies. New Yorkers can view the
+        region they live in, see which industries are growing and find out what jobs
+        are available in that economic sector.", "dateLastCrawled": "2019-01-31T03:56:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "CalCareers", "url": "https:\/\/jobs.ca.gov\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/jobs.ca.gov", "snippet": "The State of California
+        offers a wide variety of careers and jobs, ranging from accounting to zoology.
+        The services our employees provide are truly essential to the people of California.
+        In public service, you will spend every day doing work that is vital to your
+        state and your community.", "dateLastCrawled": "2019-01-31T19:01:00.0000000Z",
+        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Tue, 05 Feb 2019 21:46:10 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=jobs%20(site:.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 05 Feb 2019 21:45:10 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - C681BA16F59A46F0B8F2CBC20CB4E06D
+      Bingapis-Sessionid:
+      - A5AAB00071944D408A47182D832868C9
+      X-Msedge-Clientid:
+      - 157A2415C5EB642127F828EFC4A76524
+      X-Msapi-Userstate:
+      - 78c8
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=169,MSDatacenter=CO4
+      X-Msedge-Ref:
+      - 'Ref A: C681BA16F59A46F0B8F2CBC20CB4E06D Ref B: BY3EDGE0420 Ref C: 2019-02-05T21:46:10Z'
+      Apim-Request-Id:
+      - b03b0466-1782-4a2c-b188-f2cd59b2464e
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 05 Feb 2019 21:46:10 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "jobs
+        (site:.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=jobs+(site%3a.gov)",
+        "totalEstimatedMatches": 27900000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "USAJOBS - The Federal Government''s Official Jobs Site", "url":
+        "https:\/\/www.usajobs.gov\/", "about": [{"name": "USAJOBS"}, {"name": "USAJOBS"}],
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usajobs.gov", "snippet":
+        "USAJOBS is the Federal Government''s official one-stop source for Federal
+        jobs and employment information.", "dateLastCrawled": "2019-01-30T21:53:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Job Search Results", "url": "https:\/\/jobs.ca.gov\/CalHRPublic\/Search\/JobSearchResults.aspx",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/jobs.ca.gov\/CalHRPublic\/Search\/JobSearchResults.aspx",
+        "snippet": "Note: documents in Portable Document Format (PDF) require Adobe
+        Acrobat Reader 5.0 or higher to view download Adobe Acrobat Reader.", "dateLastCrawled":
+        "2019-01-30T08:52:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2", "name":
+        "Jobs | Topics - Fairfax County", "url": "https:\/\/www.fairfaxcounty.gov\/topics\/jobs",
+        "about": [{"name": "Fairfax County"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.fairfaxcounty.gov\/topics\/jobs", "snippet": "History of
+        Fairfax County Jobs More Board of Supervisors. Board Auditor Board Members
+        Clerk to the Board Committees Meetings & Agendas Priorities Reports ... Working
+        for Fairfax County New Hires. Compensation Plan. Class Specifications. Employee
+        Benefits . Personnel Regulations. Awards Site Feedback.", "dateLastCrawled":
+        "2019-01-31T18:00:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3", "name":
+        "jobs.utah.gov - Department of Workforce Services", "url": "https:\/\/jobs.utah.gov\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/jobs.utah.gov", "snippet":
+        "Search our robust job board of more than 20,000 open jobs in a variety
+        of fields. Job Search. Manage Your Business. As an employer, fill your open
+        position with more than 80,000 active job seekers in our system. You can also
+        manage your unemployment insurance account. Learn More.", "dateLastCrawled":
+        "2019-02-01T12:45:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4", "name":
+        "Jobs - Federal Aviation Administration", "url": "https:\/\/www.faa.gov\/jobs\/",
+        "about": [{"name": "Federal Aviation Administration"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.faa.gov\/jobs", "snippet": "Take control
+        of your career. The FAA has many opportunities for you to contribute to our
+        safe and efficient skies. Below is a sample of possible career fields:", "dateLastCrawled":
+        "2019-02-01T17:05:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5", "name":
+        "NC.gov: Jobs", "url": "https:\/\/www.nc.gov\/jobs", "about": [{"name":
+        "North Carolina"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nc.gov\/jobs",
+        "snippet": "Careers within the State of North Carolina include public safety,
+        education, transportation, and health care. State employees located in each
+        one of the 100 counties in North Carolina. We also have listings for jobs
+        in the local school system, and jobs in the private sector that are in our
+        Employment Security database.", "dateLastCrawled": "2019-02-01T12:02:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Careers - Houston", "url": "https:\/\/houstontx.gov\/hr\/careers.html",
+        "about": [{}], "isFamilyFriendly": true, "displayUrl": "https:\/\/houstontx.gov\/hr\/careers.html",
+        "snippet": "Employment with City of Houston represents more than just a
+        job. A career in public service is an opportunity to serve fellow citizens
+        across our city. Professions in city government help to support many aspects
+        of life in Houston and considering a career in public service is an honorable
+        choice.", "dateLastCrawled": "2019-01-28T06:23:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "CalCareers", "url": "https:\/\/calcareers.ca.gov\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/calcareers.ca.gov", "snippet": "The State
+        of California offers a wide variety of careers and jobs, ranging from accounting
+        to zoology. The services our employees provide are truly essential to the
+        people of California. In public service, you will spend every day doing work
+        that is vital to your state and your community.", "dateLastCrawled": "2019-01-30T23:45:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Jobs | City of Alexandria, VA", "url": "https:\/\/www.alexandriava.gov\/Jobs",
+        "about": [{"name": "Alexandria"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.alexandriava.gov\/Jobs", "snippet": "Jobs Alexandria
+        offers wide range of job opportunities and services. Work for City government
+        or City Public Schools, find out about an internship opportunity or learn
+        about workforce development and career training options.", "dateLastCrawled":
+        "2019-02-01T14:05:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9", "name":
+        "Phila.gov | Human Resources | Jobs", "url": "https:\/\/www.phila.gov\/personnel\/Jobs.html",
+        "about": [{"name": "Philadelphia"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.phila.gov\/personnel\/Jobs.html", "snippet": "Jobs. Thank
+        you for your interest in employment with the City of Philadelphia. We have
+        immediate job openings in a wide variety of occupations. Employment Verification
+        For information on current employees, contact 215-686-2376. Job Opportunities.
+        Job Interest. Job Class Specifications.", "dateLastCrawled": "2019-01-31T03:41:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Careers | Department of Human Resources", "url": "https:\/\/humanresources.vermont.gov\/careers",
+        "about": [{"name": "Vermont"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/humanresources.vermont.gov\/careers",
+        "snippet": "Current employees can now use our new Career Site, SuccessFactors,
+        to search and apply for jobs online. If you are logging in to the new system
+        for the first time, please select the ''First Time Login'' link.", "dateLastCrawled":
+        "2019-01-31T09:00:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11", "name":
+        "Careers at CDC", "url": "https:\/\/jobs.cdc.gov\/", "about": [{"name": "Centers
+        for Disease Control and Prevention"}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/jobs.cdc.gov", "snippet": "Use your LinkedIn profile to see
+        which jobs at CDC may be a good fit for you. When you click the button below,
+        a new window will open and you’ll be asked to log in to LinkedIn. Start Matching
+        Skills", "dateLastCrawled": "2019-01-30T21:22:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "CalJOBS", "url": "http:\/\/www.caljobs.ca.gov\/", "about": [{"name":
+        "Employment Development Department"}], "isFamilyFriendly": true, "displayUrl":
+        "www.caljobs.ca.gov", "snippet": "Look for jobs from your smartphone with
+        the CalJOBS mobile app, available on Apple and Google Play stores. Access
+        California''s ETPL and Apprenticeship Providers Access the Eligible Training
+        Provider List (ETPL) featuring educational programs and apprentices for job
+        seekers.", "dateLastCrawled": "2019-01-31T00:50:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Virginia Jobs", "url": "http:\/\/jobs.virginia.gov\/", "about":
+        [{"name": "Virginia"}], "isFamilyFriendly": true, "displayUrl": "jobs.virginia.gov",
+        "snippet": "The Commonwealth of Virginia is an Employer of National Service.
+        Virginia encourages AmeriCorps and Peace Corps alumni to continue their
+        lifetime of service by applying for jobs with Virginia State Government.
+        Preference is not awarded to national service alumni in the hiring process.",
+        "dateLastCrawled": "2019-02-01T14:42:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Jobs & Careers at TPWD - Texas Parks & Wildlife Department",
+        "url": "https:\/\/tpwd.texas.gov\/jobs\/", "about": [{"name": "Texas Parks
+        and Wildlife Department"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/tpwd.texas.gov\/jobs",
+        "snippet": "Veteran Hiring at TPWD. Texas state law requires agencies to give
+        veterans, surviving spouses of veterans, and orphans of veterans preference
+        in the selection process when candidates are similarly qualified.", "dateLastCrawled":
+        "2019-01-31T01:10:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15", "name":
+        "Jobs | The Official Website of the State of Idaho", "url": "https:\/\/www.idaho.gov\/jobs\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.idaho.gov\/jobs",
+        "snippet": "Find a job in Idaho and learn about employee rights and laws.",
+        "dateLastCrawled": "2019-01-31T20:34:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Jobs Home | City of New York", "url": "https:\/\/www1.nyc.gov\/jobs\/index.page",
+        "about": [{"name": "New York"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www1.nyc.gov\/jobs\/index.page",
+        "snippet": "Jobs Home Get Started Explore Careers. Find a job in New York
+        City government: Search Search. Login or Create an Account. City Employee
+        Login. Make a difference. City government is filled with opportunities for
+        talented people who want to improve their communities and make an important
+        difference in the lives of their fellow New Yorkers.", "dateLastCrawled":
+        "2019-01-31T15:19:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17", "name":
+        "Jobs", "url": "https:\/\/edd.ca.gov\/jobs.htm", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/edd.ca.gov\/jobs.htm", "snippet": "Jobs. The
+        Employment Development Department (EDD) provides a comprehensive range of
+        employment and training services in partnership with state and local agencies
+        and organizations. These services benefit job seekers, laid off workers, youth,
+        individuals currently working, veterans, and people with disabilities.", "dateLastCrawled":
+        "2019-01-31T13:16:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18", "name":
+        "Jobs Express: Job Openings in New York State - New York ...", "url": "https:\/\/labor.ny.gov\/jobs\/regional.shtm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/labor.ny.gov\/jobs\/regional.shtm",
+        "snippet": "Jobs Express: Job Openings in New York State. Below are current
+        job openings in New York''s 10 regional economies. New Yorkers can view the
+        region they live in, see which industries are growing and find out what jobs
+        are available in that economic sector.", "dateLastCrawled": "2019-01-31T03:56:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "CalCareers", "url": "https:\/\/jobs.ca.gov\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/jobs.ca.gov", "snippet": "The State of California
+        offers a wide variety of careers and jobs, ranging from accounting to zoology.
+        The services our employees provide are truly essential to the people of California.
+        In public service, you will spend every day doing work that is vital to your
+        state and your community.", "dateLastCrawled": "2019-01-31T19:01:00.0000000Z",
+        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Tue, 05 Feb 2019 21:46:10 GMT
 recorded_with: VCR 4.0.0

@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.6.35, for osx10.11 (x86_64)
+-- MySQL dump 10.13  Distrib 5.6.42, for osx10.12 (x86_64)
 --
 -- Host: localhost    Database: usasearch_development
 -- ------------------------------------------------------
--- Server version	5.6.35
+-- Server version	5.6.42
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -123,7 +123,7 @@ CREATE TABLE `affiliates` (
   `jobs_enabled` tinyint(1) NOT NULL DEFAULT '0',
   `agency_id` int(11) DEFAULT NULL,
   `raw_log_access_enabled` tinyint(1) NOT NULL DEFAULT '0',
-  `search_engine` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'BingV6',
+  `search_engine` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'BingV7',
   `is_rss_govbox_enabled` tinyint(1) NOT NULL DEFAULT '0',
   `rss_govbox_label` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `is_video_govbox_enabled` tinyint(1) NOT NULL DEFAULT '1',
@@ -136,7 +136,6 @@ CREATE TABLE `affiliates` (
   `google_cx` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `google_key` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `api_access_key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nutshell_id` int(11) DEFAULT NULL,
   `gets_commercial_results_on_blended_search` tinyint(1) NOT NULL DEFAULT '1',
   `gets_i14y_results` tinyint(1) NOT NULL DEFAULT '0',
   `rackspace_header_tagline_logo_file_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -1133,6 +1132,7 @@ CREATE TABLE `searchgov_domains` (
   `updated_at` datetime NOT NULL,
   `scheme` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'http',
   `activity` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'idle',
+  `canonical_domain` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_searchgov_domains_on_domain` (`domain`(100)),
   KEY `index_searchgov_domains_on_status` (`status`(100)),
@@ -1157,6 +1157,7 @@ CREATE TABLE `searchgov_urls` (
   `updated_at` datetime NOT NULL,
   `searchgov_domain_id` int(11) DEFAULT NULL,
   `lastmod` datetime DEFAULT NULL,
+  `enqueued_for_reindex` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `index_searchgov_urls_on_url` (`url`(255)),
   KEY `index_searchgov_urls_on_searchgov_domain_id` (`searchgov_domain_id`),
@@ -1460,15 +1461,13 @@ CREATE TABLE `users` (
   `requires_manual_approval` tinyint(1) DEFAULT '0',
   `default_affiliate_id` int(11) DEFAULT NULL,
   `sees_filtered_totals` tinyint(1) NOT NULL DEFAULT '1',
-  `nutshell_id` int(11) DEFAULT NULL,
   `failed_login_count` int(11) NOT NULL DEFAULT '0',
   `password_updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_users_on_email` (`email`),
   UNIQUE KEY `index_users_on_api_key` (`api_key`),
   UNIQUE KEY `index_users_on_email_verification_token` (`email_verification_token`),
-  KEY `index_users_on_perishable_token` (`perishable_token`),
-  KEY `index_users_on_nutshell_id` (`nutshell_id`)
+  KEY `index_users_on_perishable_token` (`perishable_token`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1562,7 +1561,7 @@ CREATE TABLE `youtube_profiles` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-07-12  9:43:35
+-- Dump completed on 2019-02-05 12:20:42
 INSERT INTO schema_migrations (version) VALUES ('20090818003200');
 
 INSERT INTO schema_migrations (version) VALUES ('20090827135344');
@@ -3002,4 +3001,12 @@ INSERT INTO schema_migrations (version) VALUES ('20180608190543');
 INSERT INTO schema_migrations (version) VALUES ('20180611171416');
 
 INSERT INTO schema_migrations (version) VALUES ('20180621213347');
+
+INSERT INTO schema_migrations (version) VALUES ('20181025225740');
+
+INSERT INTO schema_migrations (version) VALUES ('20181109212904');
+
+INSERT INTO schema_migrations (version) VALUES ('20181213153332');
+
+INSERT INTO schema_migrations (version) VALUES ('20190205200912');
 

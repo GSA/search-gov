@@ -240,7 +240,9 @@ describe HtmlDocument do
     end
 
     context 'when the html contains a script' do
-      let(:raw_document) { "no script<script>alert('OHAI')</script>" }
+      let(:raw_document) do
+        '<html><body>no script<script>alert("OHAI")</script></body></html>'
+      end
 
       it 'removes the script' do
         expect(parsed_content).to eq 'no script'
@@ -248,7 +250,9 @@ describe HtmlDocument do
     end
 
     context 'when the html contains style tags' do
-      let(:raw_document) { "<style>h1 {color:red;}</style>no style" }
+      let(:raw_document) do
+        '<html><body><style>h1 {color:red;}</style>no style</body></html>'
+      end
 
       it 'removes the style' do
         expect(parsed_content).to eq 'no style'
@@ -326,6 +330,32 @@ describe HtmlDocument do
 
       it { is_expected.to eq '' }
     end
+
+    context 'when the html contains custom tags' do
+      let(:raw_document) { '<custom-tag>content</custom-tag>' }
+
+      it { is_expected.to eq 'content' }
+    end
+
+    context 'when the HTML includes a nav element' do
+      let(:raw_document) do
+        '<html><body><nav>Menu</nav>content</body></html>'
+      end
+
+      it 'omits the nav bar content' do
+        expect(parsed_content).to eq 'content'
+      end
+    end
+
+    context 'when the HTML includes a footer element' do
+      let(:raw_document) do
+        '<html><body>content<footer>footer</footer></body></html>'
+      end
+
+      it 'omits the footer content' do
+        expect(parsed_content).to eq 'content'
+      end
+    end
   end
 
   describe '#redirect_url' do
@@ -376,7 +406,6 @@ describe HtmlDocument do
         it 'encodes the characters' do
           expect(redirect_url).to eq 'https://www.foo.gov/my%7Curl%E2%80%99s_weird?!'
         end
-
       end
     end
   end

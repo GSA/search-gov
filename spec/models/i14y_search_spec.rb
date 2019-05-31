@@ -86,12 +86,46 @@ describe I14ySearch do
 
     it 'returns non highlighted results' do
       i14y_search.run
-
       first = i14y_search.results.first
       expect(first.title).to eq('Marketplace')
       expect(first.link).to eq('https://www.healthcare.gov/glossary/marketplace')
       expect(first.description).to eq('See Health Insurance Marketplace...More info on Health Insurance Marketplace')
       expect(first.body).to eq('More info on Health Insurance Marketplace')
+    end
+  end
+
+  context 'when a site limit is specified' do
+    let!(:site_domains) { affiliate.site_domains.create!(domain: 'nih.gov') }
+    let(:i14y_search) do
+      I14ySearch.new(affiliate: affiliate,
+                     site_limits: 'http://nih.gov/foo',
+                     query: 'marketplase')
+    end
+
+    it 'passes the sitelimits to i14y with out http/https' do
+      expect(I14yCollections).to receive(:search).
+        with(hash_including(query: 'marketplase site:nih.gov/foo'))
+      i14y_search.run
+    end
+
+    it 'sets matching site limits' do
+      expect(i14y_search.matching_site_limits).to eq ['nih.gov/foo']
+    end
+  end
+
+  context 'when multiple site limits are specified' do
+    let!(:site_domains) { affiliate.site_domains.create!(domain: 'nih.gov') }
+    let(:i14y_search) do
+      I14ySearch.new(
+        affiliate: affiliate,
+        site_limits: 'http://nih.gov/foo https://nih.gov/bar',
+        query: 'marketplase')
+    end
+
+    it 'passes the sitelimits to i14y with out http/https' do
+      expect(I14yCollections).to receive(:search).
+        with(hash_including(query: 'marketplase site:nih.gov/bar site:nih.gov/foo'))
+      i14y_search.run
     end
   end
 
@@ -163,16 +197,18 @@ describe I14ySearch do
 
     # This covers the scenario where a non-i14y-, non-searchgov-affiliate needs to search
     # the searchgov drawer for deep collection results
-    context 'when the affiliate is not using SearchGov as a search engine' do
-      before { allow(affiliate).to receive(:search_engine).and_return('BingV6') }
+    %w[BingV6 BingV7].each do |search_engine|
+      context "when the affiliate is using #{search_engine} as a search engine" do
+        before { allow(affiliate).to receive(:search_engine).and_return(search_engine) }
 
-      context 'when they do not receive i14y results' do
-        before { allow(affiliate).to receive(:gets_i14y_results).and_return(false) }
+        context 'when they do not receive i14y results' do
+          before { allow(affiliate).to receive(:gets_i14y_results).and_return(false) }
 
-        it 'searches the searchgov drawer' do
-          expect(I14yCollections).to receive(:search).
-            with(hash_including(handles: 'searchgov') )
-            i14y_search.run
+          it 'searches the searchgov drawer' do
+            expect(I14yCollections).to receive(:search).
+              with(hash_including(handles: 'searchgov') )
+              i14y_search.run
+          end
         end
       end
     end
