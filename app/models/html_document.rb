@@ -74,7 +74,7 @@ class HtmlDocument < WebDocument
   end
 
   def extract_language
-    html_attributes['lang'].try(:content).try(:first, 2) || detect_language
+    html_attributes['lang']&.content
   end
 
   def extract_created
