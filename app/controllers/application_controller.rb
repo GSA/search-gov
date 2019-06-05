@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   before_filter :set_default_locale
   after_filter :set_response_headers
@@ -6,7 +8,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   VALID_FORMATS = %w{html rss json xml mobile}
   SERP_RESULTS_PER_PAGE = 20
-  PAGE_NOT_FOUND = 'https://www.usa.gov/page-not-found'
+  PAGE_NOT_FOUND = 'https://www.usa.gov/search-error'
 
   ADVANCED_PARAM_KEYS = %i(filetype filter query-not query-or query-quote).freeze
   DUBLIN_CORE_PARAM_KEYS = %i(contributor publisher subject).freeze
