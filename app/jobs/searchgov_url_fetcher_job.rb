@@ -1,4 +1,4 @@
-class SearchgovUrlFetcherJob < ActiveJob::Base
+class SearchgovUrlFetcherJob < ApplicationJob
   queue_as :searchgov
 
   def perform(searchgov_url:)
