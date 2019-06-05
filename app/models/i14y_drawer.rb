@@ -1,4 +1,4 @@
-class I14yDrawer < ActiveRecord::Base
+class I14yDrawer < ApplicationRecord
   has_many :i14y_memberships, dependent: :destroy
   has_many :affiliates, through: :i14y_memberships
   validates_presence_of :handle

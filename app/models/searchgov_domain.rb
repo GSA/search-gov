@@ -1,4 +1,8 @@
-class SearchgovDomain < ActiveRecord::Base
+# frozen_string_literal: true
+
+# Domains whose pages are indexed into the 'searchgov' I14y drawer
+# for searching via the SearchGov search engine
+class SearchgovDomain < ApplicationRecord
   include AASM
   class DomainError < StandardError; end
 

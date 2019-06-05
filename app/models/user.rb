@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   APPROVAL_STATUSES = %w[pending_email_verification
                          pending_approval approved
                          not_approved].freeze

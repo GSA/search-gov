@@ -1,4 +1,4 @@
-class SearchModule < ActiveRecord::Base
+class SearchModule < ApplicationRecord
   validates_presence_of :tag, :display_name
   validates_uniqueness_of :tag
 

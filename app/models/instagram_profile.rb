@@ -1,4 +1,4 @@
-class InstagramProfile < ActiveRecord::Base
+class InstagramProfile < ApplicationRecord
   has_and_belongs_to_many :affiliates
 
   validates_presence_of :id, :username

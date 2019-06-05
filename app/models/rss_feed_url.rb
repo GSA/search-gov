@@ -1,4 +1,4 @@
-class RssFeedUrl < ActiveRecord::Base
+class RssFeedUrl < ApplicationRecord
   OK_STATUS = 'OK'
   PENDING_STATUS = 'Pending'
   STATUSES = [OK_STATUS, PENDING_STATUS]

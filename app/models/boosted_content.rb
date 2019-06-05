@@ -1,4 +1,4 @@
-class BoostedContent < ActiveRecord::Base
+class BoostedContent < ApplicationRecord
   extend HumanAttributeName
   include BestBet
 

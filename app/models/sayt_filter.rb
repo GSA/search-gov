@@ -1,4 +1,4 @@
-class SaytFilter < ActiveRecord::Base
+class SaytFilter < ApplicationRecord
   before_validation :squish_whitespace_and_downcase
   validates_presence_of :phrase
   validates_uniqueness_of :phrase, :case_sensitive => false

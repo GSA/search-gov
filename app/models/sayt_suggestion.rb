@@ -1,5 +1,5 @@
 # coding: utf-8
-class SaytSuggestion < ActiveRecord::Base
+class SaytSuggestion < ApplicationRecord
   include Dupable
 
   LETTERS_WITH_DIACRITIC = "áéíóúÁÉÍÓÚüÜñÑ¿¡"

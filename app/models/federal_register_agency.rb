@@ -1,4 +1,4 @@
-class FederalRegisterAgency < ActiveRecord::Base
+class FederalRegisterAgency < ApplicationRecord
   belongs_to :parent, class_name: 'FederalRegisterAgency'
   has_many :agencies
   has_and_belongs_to_many :federal_register_documents, join_table: :federal_register_agencies_federal_register_documents

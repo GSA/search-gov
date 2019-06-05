@@ -1,4 +1,4 @@
-class ExcludedUrl < ActiveRecord::Base
+class ExcludedUrl < ApplicationRecord
   include Dupable
 
   before_validation :ensure_http_prefix

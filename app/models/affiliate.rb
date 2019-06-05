@@ -1,7 +1,7 @@
 require 'digest'
 require 'sass/css'
 
-class Affiliate < ActiveRecord::Base
+class Affiliate < ApplicationRecord
   extend HumanAttributeName
   extend HashColumnsAccessible
   include Dupable

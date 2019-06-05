@@ -1,4 +1,4 @@
-class OutboundRateLimit < ActiveRecord::Base
+class OutboundRateLimit < ApplicationRecord
   VALID_INTERVALS = %w(day month)
   attr_readonly :name
   validates_presence_of :limit, :name, :interval

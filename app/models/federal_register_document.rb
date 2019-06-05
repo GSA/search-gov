@@ -1,4 +1,4 @@
-class FederalRegisterDocument < ActiveRecord::Base
+class FederalRegisterDocument < ApplicationRecord
   has_and_belongs_to_many :federal_register_agencies, join_table: :federal_register_agencies_federal_register_documents
 
   validates_presence_of :document_number,

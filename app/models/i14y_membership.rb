@@ -1,4 +1,4 @@
-class I14yMembership < ActiveRecord::Base
+class I14yMembership < ApplicationRecord
   include Dupable
 
   belongs_to :affiliate

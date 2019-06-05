@@ -1,7 +1,7 @@
 require 'filetype'
 
 # coding: utf-8
-class IndexedDocument < ActiveRecord::Base
+class IndexedDocument < ApplicationRecord
   include Dupable
   include FastDeleteFromDbAndEs
   include Fetchable
