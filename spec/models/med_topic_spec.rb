@@ -1,4 +1,3 @@
-# coding: utf-8
 require 'spec_helper'
 
 describe MedTopic do
@@ -14,6 +13,8 @@ describe MedTopic do
   it { is_expected.to validate_presence_of :medline_tid }
   it { is_expected.to have_many(:med_related_topics).dependent(:destroy) }
   it { is_expected.to have_many(:med_sites).dependent(:destroy) }
+  it { is_expected.to have_many(:synonyms).dependent(:destroy).inverse_of(:topic) }
+
 
   it "should create a new instance given valid attributes" do
     MedTopic.create!(valid_attributes)
