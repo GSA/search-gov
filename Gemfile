@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
-
+gem "rails", "~>5.0.0"
+gem 'rack-contrib', '~> 2.1.0'
+gem 'rails-controller-testing', '~> 1.0.4'
 gem 'rake', '~> 12.3.2'
 gem 'rails', '~> 4.2.11'
 gem 'rails-observers', '~> 0.1.5'
