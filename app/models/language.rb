@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 class Language < ActiveRecord::Base
-  validates :code, presence: true
-  validates :name, presence: true
+  validates :code, :name, presence: true
 
   validates_uniqueness_of :code, case_sensitive: false
 
