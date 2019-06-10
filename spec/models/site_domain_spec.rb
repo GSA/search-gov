@@ -51,7 +51,7 @@ describe SiteDomain do
       end
       tempfile.close
       tempfile.open
-      ActionDispatch::Http::UploadedFile.new(:tempfile => tempfile, :type => content_type)
+      Rack::Test::UploadedFile.new(tempfile, content_type)
     end
     let(:site_domain) { mock_model(SiteDomain) }
 
