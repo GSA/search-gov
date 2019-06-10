@@ -29,8 +29,8 @@ gem 'sanitize', '~> 4.6.4'
 gem 'tweetstream', '~> 2.6.1' # no longer maintained?
 gem 'twitter', '~> 5.5'
 gem 'flickraw', '~> 0.9.9'
-gem 'active_scaffold', '~> 3.4.43'
-gem 'active_scaffold_export', '~> 3.3.2'
+gem 'active_scaffold', '~> 3.5.0'
+gem 'active_scaffold_export', github: 'naaano/active_scaffold_export'
 gem 'us_states_select', '~> 1.2.0', :git => 'https://github.com/jeremydurham/us-state-select-plugin.git', :require => 'us_states_select'
 gem 'mobile-fu', '~> 1.4.0'
 gem "recaptcha", '~> 4.6.3', :require => "recaptcha/rails"

@@ -28,7 +28,7 @@ describe SuperfreshUrl do
         end
         tempfile.close
         tempfile.open
-        @file = ActionDispatch::Http::UploadedFile.new(:tempfile => tempfile)
+        @file = Rack::Test::UploadedFile.new(tempfile)
       end
 
       it "should create a new SuperfreshUrl for each of the lines in the file" do
@@ -49,7 +49,7 @@ describe SuperfreshUrl do
         101.times { |x| tempfile.write("https://search.usa.gov/#{x}\n") }
         tempfile.close
         tempfile.open
-        @file = ActionDispatch::Http::UploadedFile.new(:tempfile => tempfile)
+        @file = Rack::Test::UploadedFile.new(tempfile)
       end
 
       it "should raise an error that there are too many URLs in the file" do
