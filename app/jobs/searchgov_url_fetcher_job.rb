@@ -5,3 +5,4 @@ class SearchgovUrlFetcherJob < ApplicationJob
     searchgov_url.fetch
   end
 end
+

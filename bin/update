@@ -1,10 +1,11 @@
 #!/usr/bin/env ruby
-require 'pathname'
-require 'fileutils'
-include FileUtils
+# frozen_string_literal: true
+require('pathname')
+require('fileutils')
+include(FileUtils)
 
 # path to your application root.
-APP_ROOT = Pathname.new File.expand_path('../../', __FILE__)
+APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
 
 def system!(*args)
   system(*args) || abort("\n== Command #{args} failed ==")

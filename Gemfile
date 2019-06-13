@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
-gem "rails", "~>5.0.0"
+
+gem 'rails', '~>5.0.0'
 
 gem 'rake', '~> 12.3.2'
 gem 'rack-contrib', '~> 2.1.0'
@@ -41,7 +42,7 @@ gem 'american_date', '~> 1.1.1'
 gem 'sass', '~> 3.3.0'
 gem 'sass-rails', '~> 5.0.7'
 # Gem no longer being maintained. See https://cm-jira.usa.gov/browse/SRCH-694
-gem 'google_visualr', github: 'winston/google_visualr', ref: '17b97114a345baadd011e7b442b9a6c91a2b7ab5'
+gem 'google_visualr', git: 'https://github.com/winston/google_visualr', ref: '17b97114a345baadd011e7b442b9a6c91a2b7ab5'
 gem 'oj', '~> 3.3.10'
 gem 'faraday_middleware', '~> 0.12.2'
 gem 'net-http-persistent', '~> 2.9.3'
@@ -117,7 +118,9 @@ gem 'font-awesome-rails', '~> 4.7.0'
 # icons compiled into SVG/CSS+PNG using Grunticon. See
 # https://github.com/gsa/font-awesome-grunticon-rails
 # for instructions on how to add more icons to this set
-gem 'font-awesome-grunticon-rails', git: 'https://github.com/gsa/font-awesome-grunticon-rails', ref: '8ad9734a65f7e2d2de934bebe4ee7b460734f96e'
+gem 'font-awesome-grunticon-rails',
+    git: 'https://github.com/gsa/font-awesome-grunticon-rails',
+    ref: '8ad9734a65f7e2d2de934bebe4ee7b460734f96e'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators

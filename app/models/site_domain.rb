@@ -1,4 +1,4 @@
-class SiteDomain < ApplicationRecord 
+class SiteDomain < ApplicationRecord
   include Dupable
   acts_as_search_domain
 

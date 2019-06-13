@@ -95,14 +95,14 @@ class SiteCloner
   end
 
   def clone_routed_queries(cloned_site)
-    ApplicationRecord.observers.disable :routed_query_keyword_observer
+    ApplicationRecord.observers.disable(:routed_query_keyword_observer)
 
     clone_association_with_children @origin_site,
                                     cloned_site,
                                     :routed_queries,
                                     :routed_query_keywords
   ensure
-    ApplicationRecord.observers.enable :routed_query_keyword_observer
+    ApplicationRecord.observers.enable( :routed_query_keyword_observer)
   end
 
   def clone_rss_feeds(cloned_site)

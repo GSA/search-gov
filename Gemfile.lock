@@ -6,13 +6,6 @@ GIT
       active_scaffold (>= 3.3.0.rc)
 
 GIT
-  remote: git://github.com/winston/google_visualr.git
-  revision: 17b97114a345baadd011e7b442b9a6c91a2b7ab5
-  ref: 17b97114a345baadd011e7b442b9a6c91a2b7ab5
-  specs:
-    google_visualr (2.5.1)
-
-GIT
   remote: https://github.com/GSA/jquery-rails
   revision: c0c56208f57746a4bc63431d5e771cea4486efca
   ref: c0c56208f57746a4bc63431d5e771cea4486efca
@@ -81,6 +74,13 @@ GIT
   specs:
     us_states_select (1.2.0)
       rails (>= 1.2)
+
+GIT
+  remote: https://github.com/winston/google_visualr
+  revision: 17b97114a345baadd011e7b442b9a6c91a2b7ab5
+  ref: 17b97114a345baadd011e7b442b9a6c91a2b7ab5
+  specs:
+    google_visualr (2.5.1)
 
 GEM
   remote: https://rubygems.org/
