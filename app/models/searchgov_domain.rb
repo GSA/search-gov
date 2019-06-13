@@ -6,13 +6,14 @@ class SearchgovDomain < ApplicationRecord
   include AASM
   class DomainError < StandardError; end
 
-  OK_STATUS = '200 OK'.freeze
+  OK_STATUS = '200 OK'
 
-  before_validation(on: :create) { self.domain = self.domain&.downcase&.strip }
+  before_validation(on: :create) { self.domain = domain&.downcase&.strip }
 
-  validate :valid_domain?, on: :create
-  validates_inclusion_of :scheme, in: %w(http https)
-  validates_uniqueness_of :domain, on: :create
+  validates :scheme, inclusion: %w[http https]
+  validates :domain, uniqueness: true, on: :create
+  validates :domain, presence: true,
+                     format: { with: /\A([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,}\Z/ }
 
   after_create { SearchgovDomainPreparerJob.perform_later(searchgov_domain: self) }
 
@@ -38,7 +39,7 @@ class SearchgovDomain < ApplicationRecord
   end
 
   def index_sitemaps
-    sitemap_urls.each{ |url| SitemapIndexerJob.perform_later(sitemap_url: url) }
+    sitemap_urls.each { |url| SitemapIndexerJob.perform_later(sitemap_url: url) }
   end
 
   def available?
@@ -70,29 +71,26 @@ class SearchgovDomain < ApplicationRecord
   def sitemap_urls
     urls = sitemaps.pluck(:url)
     urls += robotex.sitemaps(url).uniq.
-             reject{ |url| URI(url).host != domain }.
-             map{ |url| UrlParser.update_scheme(url, scheme) }
+              select { |url| URI(url).host == domain }.
+              map { |url| UrlParser.update_scheme(url, scheme) }
     urls.presence || ["#{url}sitemap.xml"]
   end
 
   private
 
   def robotex
-    @robotex ||= Robotex.new 'usasearch'
-  end
-
-  def valid_domain?
-    errors.add(:domain, 'is invalid') unless PublicSuffix.valid?(domain)
+    @robotex ||= Robotex.new('usasearch')
   end
 
   def response
     @response ||= begin
       Retriable.retriable(base_interval: delay) do
         DocumentFetchLogger.new(url, 'searchgov_domain').log
-        HTTP.headers(user_agent: DEFAULT_USER_AGENT).timeout(connect: 20, read: 60).follow.get url
+        HTTP.headers(user_agent: DEFAULT_USER_AGENT).
+          timeout(connect: 20, read: 60).follow.get(url)
       end
-    rescue => error
-      self.update_attributes(status: error.message.strip)
+    rescue StandardError => error
+      update(status: error.message.strip)
       raise DomainError.new("#{domain}: #{error}")
     end
   end

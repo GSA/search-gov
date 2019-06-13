@@ -4,7 +4,12 @@ class MedTopic < ApplicationRecord
   MEDLINE_BASE_VOCAB_URL = "#{MEDLINE_BASE_URL}xml/"
 
   validates_presence_of :medline_tid, :medline_title, :locale
-  has_many :synonyms, :class_name => 'MedSynonym', :foreign_key => :topic_id, :dependent => :destroy
+  has_many :synonyms,
+           class_name: 'MedSynonym',
+           foreign_key: :topic_id,
+           dependent: :destroy,
+           inverse_of: :topic
+
   has_many :med_related_topics, -> { order 'title' }, dependent: :destroy
   has_many :med_sites, -> { order 'title' }, dependent: :destroy
 

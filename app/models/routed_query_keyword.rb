@@ -8,7 +8,7 @@ class RoutedQueryKeyword < ApplicationRecord
     record.keyword.downcase! if record.keyword.present?
   end
 
-  belongs_to :routed_query
+  belongs_to :routed_query, inverse_of: :routed_query_keywords
   validates :routed_query, presence: true
 
   validates_presence_of :keyword
