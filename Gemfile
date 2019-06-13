@@ -40,7 +40,8 @@ gem 'newrelic_rpm', '~> 5.0.0'
 gem 'american_date', '~> 1.1.1'
 gem 'sass', '~> 3.3.0'
 gem 'sass-rails', '~> 5.0.7'
-gem 'google_visualr', '~> 2.5.1'
+# Gem no longer being maintained. See https://cm-jira.usa.gov/browse/SRCH-694
+gem 'google_visualr', github: 'winston/google_visualr', ref: '17b97114a345baadd011e7b442b9a6c91a2b7ab5'
 gem 'oj', '~> 3.3.10'
 gem 'faraday_middleware', '~> 0.12.2'
 gem 'net-http-persistent', '~> 2.9.3'
@@ -88,7 +89,7 @@ gem 'medusa', git: 'https://github.com/MothOnMars/medusa', branch: 'clean_urls'
 gem 'robotex', git: 'https://github.com/MothOnMars/robotex'
 # Using custom branch until https://github.com/lygaret/sitemaps/pull/4 is merged,
 # and https://github.com/lygaret/sitemaps/issues/5 and https://github.com/lygaret/sitemaps/issues/6 are resolved
-gem 'sitemaps_parser', require: 'sitemaps', git: 'https://github.com/MothOnMars/sitemaps', branch: 'discovery_fixes'
+# gem 'sitemaps_parser', require: 'sitemaps', git: 'https://github.com/MothOnMars/sitemaps', branch: 'discovery_fixes'
 gem 'counter_culture', '~> 2.0.0'
 gem 'aasm', '~> 4.12'
 gem 'active_scheduler', '~> 0.5.0'
