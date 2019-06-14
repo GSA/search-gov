@@ -1,10 +1,9 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~>5.0.0'
+gem 'rails', '~> 5.0.0'
 
 gem 'rake', '~> 12.3.2'
 gem 'rack-contrib', '~> 2.1.0'
-gem 'rails-controller-testing', '~> 1.0.4'
 gem 'rails-observers', '~> 0.1.5'
 gem 'responders', '~> 2.0'
 gem 'mysql2', '~> 0.3.0'
@@ -167,4 +166,5 @@ group :test do
   gem 'rspec-activemodel-mocks', '~> 1.0.3'
   gem 'timecop', '~> 0.9.1'
   gem 'rspec_junit_formatter', '~> 0.3.0'
+  gem 'rails-controller-testing', '~> 1.0.4'
 end
