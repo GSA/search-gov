@@ -102,7 +102,7 @@ class SiteCloner
                                     :routed_queries,
                                     :routed_query_keywords
   ensure
-    ApplicationRecord.observers.enable( :routed_query_keyword_observer)
+    ApplicationRecord.observers.enable(:routed_query_keyword_observer)
   end
 
   def clone_rss_feeds(cloned_site)

@@ -8,3 +8,4 @@ class SearchgovDomainDestroyerJob < ApplicationJob
     searchgov_domain.destroy!
   end
 end
+
