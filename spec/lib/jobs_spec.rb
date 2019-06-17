@@ -88,6 +88,13 @@ describe Jobs do
       end
     end
 
+    context 'when the search phrase includes "federal" or "gobierno" ' do
+      it 'should not trigger job search' do
+        %w['federal' 'gobierno'].
+          each { |phrase| expect(Jobs.query_eligible?(phrase)).to be_falsey }
+      end
+    end
+
     context 'when the search phrase is blocked' do
       it 'should return false' do
         ["employment data", "employment statistics", "employment numbers", "employment levels", "employment rate",

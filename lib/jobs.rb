@@ -5,10 +5,10 @@ module Jobs
   JOB_RELATED_KEYWORDS = '((position|opening|posting|job|employment|career|' \
                          'intern(ship)?|seasonal|trabajo|puesto|empleo|' \
                          'carrera|vacante+?)(s\b|\b)|(opportunit|vacanc)' \
-                         '(y|ies))|(posicion|ocupacion|oportunidad|federal)' \
-                         '(es)?|gobierno'
+                         '(y|ies))|(posicion|ocupacion|oportunidad)' \
+                         '(es)?'
   SCRUB_KEYWORDS = JOB_RELATED_KEYWORDS.
-                     remove(/\|intern\(ship\)|\|seasonal|\|federal\||gobierno/)
+                     remove(/\|intern\(ship\)|\|seasonal/)
   SIMPLE_SINGULARS = %w[
     statistic number level rate description trend growth
     projection survey forecast figure report verification record
