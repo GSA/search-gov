@@ -90,8 +90,7 @@ describe Jobs do
 
     context 'when the search phrase does not include job-related keyword' do
       it 'does not trigger job search' do
-        %w[federal gobierno].
-          each { |phrase| expect(Jobs.query_eligible?(phrase)).to be_falsey }
+        expect(Jobs.query_eligible?('federal')).to be_falsey
       end
     end
 
