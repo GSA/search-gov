@@ -69,7 +69,7 @@ describe 'User rake tasks' do
     it 'logs the change' do
       expected_message = <<~MESSAGE.squish
         User #{inactive_user.id}, inactivedeveloper@fixtures.org, has been inactive for 90 days, 
-        so their status has been set to "not_approved".
+        so their approval status has been set to "not_approved".
       MESSAGE
 
       expect(Rails.logger).to receive(:info).with(expected_message)
