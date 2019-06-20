@@ -1,6 +1,9 @@
 require 'spec_helper'
 
-NOT_AUTHORIZED_MESSAGE = 'You are not authorized to access Search.gov.'.freeze
+NOT_AUTHORIZED_MESSAGE = 'These credentials are not recognized as valid '\
+                         'for accessing Search.gov. Please contact ' \
+                         'search@support.digitalgov.gov if you believe '\
+                         'this is in error.'.freeze
 RESET_PASSWORD_MESSAGE = 'Instructions to reset your password have been ' \
                          'emailed to you. Please check your email.'.freeze
 
