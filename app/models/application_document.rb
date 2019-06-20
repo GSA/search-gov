@@ -24,10 +24,7 @@ class ApplicationDocument < WebDocument
   end
 
   def extract_language
-    language = metadata['language'] || ''
-    language[/^(?<code>[a-z]{2})\W?/,"code"] ||
-      Language.find_by_name(language)&.code ||
-      detect_language
+    metadata['language']
   end
 
   def extract_created
