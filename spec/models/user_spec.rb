@@ -155,6 +155,43 @@ describe User do
     end
   end
 
+  describe 'scopes' do
+    let(:approved_affiliate_user) { users(:affiliate_manager) }
+    let(:not_approved_user) { users(:affiliate_manager_with_not_approved_status) }
+    let(:pending_user) { users(:affiliate_manager_with_pending_approval_status) }
+    let(:non_affiliate) { users(:developer) }
+    let(:inactive_approved_user) { users(:inactive_developer) }
+
+    describe '.approved_affiliate' do
+      subject(:not_approved) { User.approved_affiliate }
+
+      it { is_expected.to include(approved_affiliate_user) }
+      it { is_expected.not_to include(not_approved_user) }
+      it { is_expected.not_to include(non_affiliate) }
+      it { is_expected.not_to include(pending_user) }
+    end
+
+    describe '.not_approved' do
+      subject(:not_approved) { User.not_approved }
+
+      let(:approved_user) { users(:affiliate_manager) }
+      let(:not_approved_user) { users(:affiliate_manager_with_not_approved_status) }
+      let(:pending_user) { users(:affiliate_manager_with_pending_approval_status) }
+
+      it { is_expected.to include(not_approved_user) }
+      it { is_expected.not_to include(approved_user) }
+      it { is_expected.not_to include(pending_user) }
+    end
+
+    describe '.not_active' do
+      subject(:not_active) { User.not_active }
+
+      it { is_expected.to include(inactive_approved_user) }
+      it { is_expected.not_to include(not_approved_user) }
+      it { is_expected.not_to include(pending_user) }
+    end
+  end
+
   describe '#deliver_password_reset_instructions!' do
     let(:user) { User.create!(valid_attributes.merge(perishable_token: original_token)) }
 

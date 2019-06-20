@@ -78,6 +78,15 @@ developer:
   contact_name: A New Developer
   welcome_email_sent: true
 
+inactive_developer:
+  <<: *DEFAULTS
+  email: inactivedeveloper@fixtures.org
+  is_affiliate_admin: false
+  is_affiliate: false
+  contact_name: An Old Developer
+  welcome_email_sent: true
+  last_login_at: <%= 100.days.ago.to_s(:db) %>
+
 affiliate_manager_with_pending_contact_information_status:
   <<: *DEFAULTS
   email: affiliate_manager_with_pending_contact_information_status@fixtures.org
@@ -134,3 +143,5 @@ affiliate_requiring_manual_approval:
   <<: *DEFAULTS
   email: affiliate_requiring_manual_approval@email.gov
   requires_manual_approval: true
+  approval_status: not_approved
+
