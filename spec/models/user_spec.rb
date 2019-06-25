@@ -160,10 +160,12 @@ describe User do
     let(:not_approved_user) { users(:affiliate_manager_with_not_approved_status) }
     let(:pending_user) { users(:affiliate_manager_with_pending_approval_status) }
     let(:non_affiliate) { users(:developer) }
-    let(:inactive_approved_user) { users(:inactive_developer) }
+    let(:not_active_user) { users(:not_active_user) }
+    let(:active_user) { users(:active_user) }
+
 
     describe '.approved_affiliate' do
-      subject(:not_approved) { User.approved_affiliate }
+      subject(:approved_affiliate) { User.approved_affiliate }
 
       it { is_expected.to include(approved_affiliate_user) }
       it { is_expected.not_to include(not_approved_user) }
@@ -183,12 +185,22 @@ describe User do
       it { is_expected.not_to include(pending_user) }
     end
 
+    describe '.approved' do
+      subject(:approved) { User.approved }
+
+      let(:approved_user) { users(:affiliate_manager) }
+
+      it { is_expected.to include(approved_affiliate_user) }
+      it { is_expected.not_to include(pending_user) }
+      it { is_expected.not_to include(not_approved_user) }
+
+    end
+
     describe '.not_active' do
       subject(:not_active) { User.not_active }
 
-      it { is_expected.to include(inactive_approved_user) }
-      it { is_expected.not_to include(not_approved_user) }
-      it { is_expected.not_to include(pending_user) }
+      it { is_expected.to include(not_active_user) }
+      it { is_expected.not_to include(active_user) }
     end
   end
 

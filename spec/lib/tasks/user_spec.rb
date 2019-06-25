@@ -11,7 +11,7 @@ describe 'User rake tasks' do
   end
 
   let(:user) { users(:affiliate_manager_with_no_affiliates) }
-  let(:inactive_user) { users(:inactive_developer) }
+  let(:not_active_user) { users(:not_active_user) }
 
   describe 'usasearch:user:update_approval_status' do
     let(:task_name) { 'usasearch:user:update_approval_status' }
@@ -49,26 +49,25 @@ describe 'User rake tasks' do
     end
   end
 
-  describe 'usasearch:user:update_inactive_approval_status' do
-    let(:task_name) { 'usasearch:user:update_inactive_approval_status' }
+  describe 'usasearch:user:update_not_active_approval_status' do
+    let(:task_name) { 'usasearch:user:update_not_active_approval_status' }
 
     before do
       @rake[task_name].reenable
-      User.destroy_all("email != 'inactivedeveloper@fixtures.org'")
+      User.destroy_all("email != 'not_active_user@fixtures.org'")
     end
 
     it "has 'environment' as a prereq" do
       expect(@rake[task_name].prerequisites).to include('environment')
     end
 
-    it 'sets inactive users to not_approved' do
-      @rake[task_name].invoke
-      expect(inactive_user.is_not_approved?).to be true
+    it 'sets not active users to not_approved' do
+      expect(not_active_user.is_not_approved?).to be true
     end
 
     it 'logs the change' do
       expected_message = <<~MESSAGE.squish
-        User #{inactive_user.id}, inactivedeveloper@fixtures.org, has been inactive for 90 days, 
+        User #{not_active_user.id}, not_active_user@fixtures.org, has been not active for 90 days, 
         so their approval status has been set to "not_approved".
       MESSAGE
 
