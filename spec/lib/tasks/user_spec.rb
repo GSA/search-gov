@@ -62,6 +62,7 @@ describe 'User rake tasks' do
     end
 
     it 'sets not active users to not_approved' do
+      @rake[task_name].invoke
       expect(not_active_user.is_not_approved?).to be true
     end
 
