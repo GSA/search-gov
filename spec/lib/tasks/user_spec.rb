@@ -54,7 +54,6 @@ describe 'User rake tasks' do
 
     before do
       @rake[task_name].reenable
-      User.destroy_all("email != 'not_active_user@fixtures.org'")
     end
 
     it "has 'environment' as a prereq" do

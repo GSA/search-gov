@@ -163,7 +163,6 @@ describe User do
     let(:not_active_user) { users(:not_active_user) }
     let(:active_user) { users(:active_user) }
 
-
     describe '.approved_affiliate' do
       subject(:approved_affiliate) { User.approved_affiliate }
 
@@ -193,7 +192,6 @@ describe User do
       it { is_expected.to include(approved_affiliate_user) }
       it { is_expected.not_to include(pending_user) }
       it { is_expected.not_to include(not_approved_user) }
-
     end
 
     describe '.not_active' do
