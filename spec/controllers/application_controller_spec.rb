@@ -31,16 +31,10 @@ describe ExampleController do
   end
 
   context "when a request raises an ActionView::MissingTemplate error" do
-    context "when the format for the request is a valid format" do
-      it "should raise an error" do
-        expect { get :missing_template, :format => 'json' }.to raise_error(ActionView::MissingTemplate)
-      end
-    end
-
     context "when the format for the request is not a valid format" do
-      it "should render a 406" do
+      it "should render a 204" do
         get :missing_template, :format => "orig"
-        expect(response.code).to eq("406")
+        expect(response.code).to eq("204")
       end
     end
   end
