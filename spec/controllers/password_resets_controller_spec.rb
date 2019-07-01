@@ -1,11 +1,16 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
-NOT_AUTHORIZED_MESSAGE = 'These credentials are not recognized as valid '\
-                         'for accessing Search.gov. Please contact ' \
-                         'search@support.digitalgov.gov if you believe '\
-                         'this is in error.'.freeze
-RESET_PASSWORD_MESSAGE = 'Instructions to reset your password have been ' \
-                         'emailed to you. Please check your email.'.freeze
+RESET_PASSWORD_MESSAGE  = <<~MESSAGE.chomp
+    Instructions to reset your password have been
+    emailed to you. Please check your email.
+MESSAGE
+
+NOT_AUTHORIZED_MESSAGE = <<~MESSAGE.chomp
+    These credentials are not recognized as valid for accessing Search.gov.
+    Please contact search@support.digitalgov.gov if you believe this is in error.
+MESSAGE
 
 describe PasswordResetsController do
   context 'when unknown token is passed in' do
