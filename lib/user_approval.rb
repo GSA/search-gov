@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module UserApproval
   def self.set_to_not_approved(users, message, email = false)
     users.each do |user|
