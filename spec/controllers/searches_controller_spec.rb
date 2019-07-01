@@ -394,7 +394,7 @@ describe SearchesController do
     before do
       expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
       expect(affiliate).to receive(:force_mobile_format?).and_return(true)
-      get :index, query: 'gov', affiliate: affiliate.name, m: 'true'
+      get :index, query: 'gov', affiliate: affiliate.name
     end
 
     it 'requests the mobile format' do
