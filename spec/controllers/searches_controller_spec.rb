@@ -387,7 +387,7 @@ describe SearchesController do
       end
     end
   end
-  
+
   context 'when Affiliate.force_mobile_format = true' do
     let(:affiliate) { affiliates(:basic_affiliate) }
 
@@ -400,7 +400,7 @@ describe SearchesController do
     it 'requests the mobile format' do
       expect(request.params['format']).to eq 'mobile'
     end
-    
+
     it { is_expected.to render_template 'layouts/searches' }
     it { is_expected.to render_template 'searches/index' }
   end
