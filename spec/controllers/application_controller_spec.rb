@@ -32,7 +32,7 @@ describe ExampleController do
 
   context 'when the format for the request is not a valid format' do
     it 'responds with a 204' do
-      get :missing_template, :format => "orig"
+      get :missing_template, format: 'orig'
       expect(response.code).to eq('204')
     end
   end
