@@ -2,12 +2,12 @@
 
 require 'spec_helper'
 
-RESET_PASSWORD_MESSAGE  = <<~MESSAGE.chomp
+RESET_PASSWORD_MESSAGE  = <<~MESSAGE.chomp.squish
     Instructions to reset your password have been
     emailed to you. Please check your email.
 MESSAGE
 
-NOT_AUTHORIZED_MESSAGE = <<~MESSAGE.chomp
+NOT_AUTHORIZED_MESSAGE = <<~MESSAGE.chomp.squish
     These credentials are not recognized as valid for accessing Search.gov.
     Please contact search@support.digitalgov.gov if you believe this is in error.
 MESSAGE
