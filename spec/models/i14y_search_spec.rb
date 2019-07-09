@@ -69,7 +69,7 @@ describe I14ySearch do
                                        per_page: 20,
                                        query: 'marketplase') }
 
-    it 'searches I14y with the appropriate params' do
+    xit 'searches I14y with the appropriate params' do
       expect(I14yCollections).to receive(:search).
         with(hash_including(sort_by_date: 1, 
                             min_timestamp: DateTime.parse('07/28/2015').beginning_of_day,
