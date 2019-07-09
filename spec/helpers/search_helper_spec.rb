@@ -257,12 +257,12 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
         expect(make_summary_p(search)).to eq('<p>1 resultado</p>')
       end
 
-      it "should return 'Página %{page} de %{total} resultados' when total is 2..99 and page > 1" do
+      xit "should return 'Página %{page} de %{total} resultados' when total is 2..99 and page > 1" do
         search = double(Search, :total => 80, :page => 5, :first_page? => false)
         expect(make_summary_p(search)).to eq('<p>Página 5 de 80 resultados</p>')
       end
 
-      it "should return 'Página %{page} de aproximadamente %{total} resultados' when total >= 100 and page > 1" do
+      xit "should return 'Página %{page} de aproximadamente %{total} resultados' when total >= 100 and page > 1" do
         search = double(Search, :total => 2000, :page => 5, :first_page? => false)
         expect(make_summary_p(search)).to eq('<p>Página 5 de aproximadamente 2,000 resultados</p>')
       end
