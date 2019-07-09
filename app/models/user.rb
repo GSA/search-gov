@@ -57,7 +57,12 @@ class User < ActiveRecord::Base
   }
   scope :not_approved, -> { where(approval_status: 'not_approved') }
   scope :approved, -> { where(approval_status: 'approved') }
-  scope :not_active, -> { where('last_login_at <= ?', 90.days.ago) }
+  scope :not_active,
+        lambda {
+          where('last_login_at <= ? OR (last_login_at IS NULL AND created_at <=? )',
+                90.days.ago,
+                90.days.ago)
+        }
 
   acts_as_authentic do |c|
     c.crypto_provider = Authlogic::CryptoProviders::BCrypt

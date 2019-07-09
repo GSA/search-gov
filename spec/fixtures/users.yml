@@ -88,6 +88,16 @@ not_active_user:
   email: not_active_user@fixtures.org
   last_login_at: <%= 100.days.ago.to_s(:db) %>
 
+never_active_user:
+  <<: *DEFAULTS
+  email: never_active_user@fixtures.org
+  created_at: <%= 100.days.ago.to_s(:db) %>
+
+new_non_active_user:
+  <<: *DEFAULTS
+  email: new_non_active_user@fixtures.org
+  created_at: <%= 3.days.ago.to_s(:db) %>
+
 affiliate_manager_with_pending_contact_information_status:
   <<: *DEFAULTS
   email: affiliate_manager_with_pending_contact_information_status@fixtures.org
