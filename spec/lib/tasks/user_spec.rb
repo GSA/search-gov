@@ -12,6 +12,7 @@ describe 'User rake tasks' do
 
   let(:user) { users(:affiliate_manager_with_no_affiliates) }
   let(:not_active_user) { users(:not_active_user) }
+  let(:never_active_user) { users(:never_active_user)}
 
   describe 'usasearch:user:update_approval_status' do
     let(:task_name) { 'usasearch:user:update_approval_status' }
@@ -67,7 +68,7 @@ describe 'User rake tasks' do
 
     it 'logs the change' do
       expected_message = <<~MESSAGE.squish
-        User #{not_active_user.id}, not_active_user@fixtures.org, has been not active for 90 days, 
+        User #{never_active_user.id}, never_active_user@fixtures.org, has been not active for 90 days, 
         so their approval status has been set to "not_approved".
       MESSAGE
 
