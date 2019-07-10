@@ -5,8 +5,8 @@ Feature: SearchGov search
 
   Background:
     Given the following SearchGov Affiliates exist:
-      | display_name | name | contact_email | contact_name | header         | domains                     | youtube_handles |
-      | EPA          | epa  | aff@epa.gov   | Jane Bar     | EPA.gov Header | www.epa.gov,archive.epa.gov | usgovernment    |
+      | display_name | name | contact_email | contact_name | header         | domains                     |
+      | EPA          | epa  | aff@epa.gov   | Jane Bar     | EPA.gov Header | www.epa.gov,archive.epa.gov |
 
   Scenario: Everything search
     When I am on epa's search page
@@ -59,14 +59,3 @@ Feature: SearchGov search
     When I am on epa's search page with site limited to "www.epa.gov/news"
     When I search for "carbon emissions"
     Then I should see "We're including results for carbon emissions from www.epa.gov/news only."
-
-  Scenario: Video news search
-    Given affiliate "epa" has the following RSS feeds:
-      | name   | url                        | is_navigable | is_managed |
-      | Videos | http://www.epa.gov/videos/ | true         | true       |
-    And there are 20 video news items for "usgovernment_channel_id"
-
-    When I am on epa's search page
-    And I search for "video"
-    Then I should see exactly "1" video govbox search result
-    And I should see "More videos about video"
