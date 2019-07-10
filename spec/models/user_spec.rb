@@ -162,8 +162,8 @@ describe User do
     let(:non_affiliate) { users(:developer) }
     let(:not_active_user) { users(:not_active_user) }
     let(:active_user) { users(:active_user) }
-    let(:never_active_user) { users(:never_active_user)}
-    let(:new_non_active_user) { users(:new_non_active_user)}
+    let(:never_active_user) { users(:never_active_user) }
+    let(:new_non_active_user) { users(:new_non_active_user) }
 
     describe '.approved_affiliate' do
       subject(:approved_affiliate) { User.approved_affiliate }
