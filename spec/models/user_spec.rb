@@ -155,6 +155,57 @@ describe User do
     end
   end
 
+  describe 'scopes' do
+    let(:approved_affiliate_user) { users(:affiliate_manager) }
+    let(:not_approved_user) { users(:affiliate_manager_with_not_approved_status) }
+    let(:pending_user) { users(:affiliate_manager_with_pending_approval_status) }
+    let(:non_affiliate) { users(:developer) }
+    let(:not_active_user) { users(:not_active_user) }
+    let(:active_user) { users(:active_user) }
+    let(:never_active_user) { users(:never_active_user) }
+    let(:new_non_active_user) { users(:new_non_active_user) }
+
+    describe '.approved_affiliate' do
+      subject(:approved_affiliate) { User.approved_affiliate }
+
+      it { is_expected.to include(approved_affiliate_user) }
+      it { is_expected.not_to include(not_approved_user) }
+      it { is_expected.not_to include(non_affiliate) }
+      it { is_expected.not_to include(pending_user) }
+    end
+
+    describe '.not_approved' do
+      subject(:not_approved) { User.not_approved }
+
+      let(:approved_user) { users(:affiliate_manager) }
+      let(:not_approved_user) { users(:affiliate_manager_with_not_approved_status) }
+      let(:pending_user) { users(:affiliate_manager_with_pending_approval_status) }
+
+      it { is_expected.to include(not_approved_user) }
+      it { is_expected.not_to include(approved_user) }
+      it { is_expected.not_to include(pending_user) }
+    end
+
+    describe '.approved' do
+      subject(:approved) { User.approved }
+
+      let(:approved_user) { users(:affiliate_manager) }
+
+      it { is_expected.to include(approved_affiliate_user) }
+      it { is_expected.not_to include(pending_user) }
+      it { is_expected.not_to include(not_approved_user) }
+    end
+
+    describe '.not_active' do
+      subject(:not_active) { User.not_active }
+
+      it { is_expected.to include(not_active_user) }
+      it { is_expected.not_to include(active_user) }
+      it { is_expected.to include(never_active_user) }
+      it { is_expected.not_to include(new_non_active_user) }
+    end
+  end
+
   describe '#deliver_password_reset_instructions!' do
     let(:user) { User.create!(valid_attributes.merge(perishable_token: original_token)) }
 

@@ -11,6 +11,7 @@ describe 'User rake tasks' do
   end
 
   let(:user) { users(:affiliate_manager_with_no_affiliates) }
+  let(:not_active_user) { users(:not_active_user) }
 
   describe 'usasearch:user:update_approval_status' do
     let(:task_name) { 'usasearch:user:update_approval_status' }
@@ -43,6 +44,34 @@ describe 'User rake tasks' do
         so their approval status has been set to "not_approved".
       MESSAGE
 
+      expect(Rails.logger).to receive(:info).with(expected_message)
+      @rake[task_name].invoke
+    end
+  end
+
+  describe 'usasearch:user:update_not_active_approval_status' do
+    let(:task_name) { 'usasearch:user:update_not_active_approval_status' }
+
+    before do
+      @rake[task_name].reenable
+    end
+
+    it "has 'environment' as a prereq" do
+      expect(@rake[task_name].prerequisites).to include('environment')
+    end
+
+    it 'sets not active users to not_approved' do
+      @rake[task_name].invoke
+      expect(not_active_user.is_not_approved?).to be true
+    end
+
+    it 'logs the change' do
+      expected_message = <<~MESSAGE.squish
+        User #{not_active_user.id}, not_active_user@fixtures.org, has been not active for 90 days, 
+        so their approval status has been set to "not_approved".
+      MESSAGE
+
+      allow(Rails.logger).to receive(:info)
       expect(Rails.logger).to receive(:info).with(expected_message)
       @rake[task_name].invoke
     end
