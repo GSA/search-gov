@@ -10,7 +10,7 @@ Feature: User sessions
 
   Scenario: User has trouble logging in
     When I log in with email "not@valid.gov" and password "fail"
-    Then I should see "Login failed due to invalid username and/or password."
+    Then I should see "These credentials are not recognized as valid for accessing Search.gov. Please contact search@support.digitalgov.gov if you believe this is in error."
 
   Scenario: Affiliate admin should be on the site home page upon successful login
     Given I am on the login page
@@ -51,14 +51,14 @@ Feature: User sessions
   Scenario: User is not approved
     When I log in with email "affiliate_manager_with_not_approved_status@fixtures.org" and password "test1234!"
     Then I should be on the user session page
-    And I should see "You are not authorized to access Search.gov. Please contact search@support.digitalgov.gov with any questions."
+    And I should see "These credentials are not recognized as valid for accessing Search.gov. Please contact search@support.digitalgov.gov if you believe this is in error."
 
   Scenario: User is not approved and user's password is more than 90 days old
     Given the following Users exist:
       | contact_name | email            | password  | password_updated_at | approval_status |
       | Jane         | jane@example.com | test1234! | 2015-01-01          | not_approved    |
     When I log in with email "jane@example.com" and password "test1234!"
-    Then I should see "You are not authorized to access Search.gov. Please contact search@support.digitalgov.gov with any questions."
+    Then I should see "These credentials are not recognized as valid for accessing Search.gov. Please contact search@support.digitalgov.gov if you believe this is in error."
     And "jane@example.com" should receive no emails
 
   Scenario: User's password expires during session
