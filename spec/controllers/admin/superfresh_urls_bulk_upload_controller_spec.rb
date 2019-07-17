@@ -28,20 +28,28 @@ describe Admin::SuperfreshUrlsBulkUploadController do
   end
 
   describe '#upload' do
+    let(:file) { fixture_file_upload('/txt/superfresh_urls.txt', 'txt') }
+    let(:upload) do
+      post :upload, params: { superfresh_urls: file }
+    end
+
     context 'when logged in as an admin' do
       let(:user) { users(:affiliate_admin) }
-      let(:file) { double(File, :present? => true, :content_type => 'txt') }
 
       before do
         UserSession.create(user)
-        expect(file).to receive(:to_param).at_least(:once).and_return(file)
-        expect(SuperfreshUrl).to receive(:process_file).with(file, nil, 65535).
-            and_raise(Exception.new('unable to process file'))
-        post :upload, :superfresh_urls => file
       end
 
-      xit { is_expected.to set_flash.to('unable to process file')}
-      xit { is_expected.to redirect_to admin_superfresh_urls_bulk_upload_index_path }
+      context 'when an error is raised' do
+        before do
+          allow(SuperfreshUrl).to receive(:process_file).with(any_args).
+            and_raise(StandardError.new('unable to process file'))
+          upload
+        end
+
+        it { is_expected.to set_flash.to('unable to process file') }
+        it { is_expected.to redirect_to admin_superfresh_urls_bulk_upload_index_path }
+      end
     end
   end
 end
