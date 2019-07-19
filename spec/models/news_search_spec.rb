@@ -18,9 +18,7 @@ describe NewsSearch do
       { affiliate: affiliate, channel: feed.id }
     end
 
-    pending('does not work for rails 5') do
-      it_behaves_like 'an initialized filterable search'
-    end
+    it_behaves_like 'an initialized filterable search'
 
     context 'when options does not include sort_by' do
       subject(:search) { described_class.new filterable_search_options }
