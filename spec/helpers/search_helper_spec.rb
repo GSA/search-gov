@@ -266,11 +266,7 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
         search = double(Search, :total => 2000, :page => 5, :first_page? => false)
         expect(make_summary_p(search)).to eq('<p>Página 5 de aproximadamente 2,000 resultados</p>')
       end
-
-      it "should pluralize spanish words for spanish language" do
-        expect("flor".pluralize(2, :es)).to eq("flores")
-      end
-
+      
       after(:all) { I18n.locale = I18n.default_locale }
     end
   end
