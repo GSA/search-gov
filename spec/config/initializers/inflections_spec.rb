@@ -1,7 +1,7 @@
 # coding: utf-8
 require 'spec_helper'
 
-describe "Inflections" do
+describe 'Inflections' do
   context 'when locale = :es' do
     context 'if the spanish word is being pluralized' do
       it 'adds "es" if a noun ends in a consonant' do
