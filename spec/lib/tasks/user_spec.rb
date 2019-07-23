@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'User rake tasks' do
+describe 'User rake tasks', type: :task do
   fixtures :users, :affiliates, :memberships
 
   before(:all) do
