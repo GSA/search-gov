@@ -8,7 +8,8 @@ namespace :usasearch do
         set_to_not_approved(
           User.approved_affiliate.select { |user| user.affiliates.empty? },
           'is no longer associated with any sites',
-          true)
+          true
+        )
     end
 
     desc 'Set accounts that are not active for more than 90 days to not_approved'
