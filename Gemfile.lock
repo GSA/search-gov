@@ -1,11 +1,4 @@
 GIT
-  remote: git://github.com/naaano/active_scaffold_export.git
-  revision: 879ceb549b871ebb597ae5339a2e67498beb70d1
-  specs:
-    active_scaffold_export (3.3.2)
-      active_scaffold (>= 3.3.0.rc)
-
-GIT
   remote: https://github.com/GSA/jquery-rails
   revision: c0c56208f57746a4bc63431d5e771cea4486efca
   ref: c0c56208f57746a4bc63431d5e771cea4486efca
@@ -74,6 +67,13 @@ GIT
   specs:
     us_states_select (1.2.0)
       rails (>= 1.2)
+
+GIT
+  remote: https://github.com/naaano/active_scaffold_export
+  revision: 879ceb549b871ebb597ae5339a2e67498beb70d1
+  specs:
+    active_scaffold_export (3.3.2)
+      active_scaffold (>= 3.3.0.rc)
 
 GIT
   remote: https://github.com/winston/google_visualr
@@ -658,6 +658,8 @@ GEM
       rack (~> 2.0)
       rack-protection (= 2.0.5)
       tilt (~> 2.0)
+    sitemaps_parser (0.2.3)
+      activesupport (>= 4, < 7)
     spring (2.0.2)
       activesupport (>= 4.2)
     sprockets (3.7.2)
@@ -861,6 +863,7 @@ DEPENDENCIES
   shoulda-matchers (~> 3.1.2)
   simplecov (~> 0.15.1)
   sitelink_generator!
+  sitemaps_parser (~> 0.2)
   spring (~> 2.0)
   test-unit (~> 3.2.7)
   therubyracer (~> 0.12.3)
@@ -886,4 +889,4 @@ DEPENDENCIES
   yui-compressor (~> 0.12.0)
 
 BUNDLED WITH
-   1.17.3`
+   1.17.3
