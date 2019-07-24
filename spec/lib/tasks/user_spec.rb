@@ -12,14 +12,18 @@ describe 'User rake tasks' do
 
   let(:user) { users(:affiliate_manager_with_no_affiliates) }
   let(:not_active_user) { users(:not_active_user) }
+  let(:affiliate) { affiliates(:basic_affiliate) }
 
   describe 'usasearch:user:update_approval_status' do
     let(:task_name) { 'usasearch:user:update_approval_status' }
 
     before do
       @rake[task_name].reenable
-      User.destroy_all("email != 'affiliate_manager_with_no_affiliates@fixtures.org'")
+      user_with_one_site.affiliates << affiliate
+      user_with_one_site.save!
     end
+
+    let(:user_with_one_site) { users(:affiliate_manager_with_one_site) }
 
     it "has 'environment' as a prereq" do
       expect(@rake[task_name].prerequisites).to include('environment')
@@ -30,7 +34,13 @@ describe 'User rake tasks' do
       expect(user.is_not_approved?).to be true
     end
 
+    it 'leaves approved users with sites as approved' do
+      @rake[task_name].invoke
+      expect(user_with_one_site.reload.is_approved?).to be true
+    end
+
     it 'sends admin the user_approval_removed email' do
+      User.destroy_all("email != 'affiliate_manager_with_no_affiliates@fixtures.org'")
       emailer = double(Emailer)
       expect(Emailer).to receive(:user_approval_removed).with(user).and_return emailer
       expect(emailer).to receive(:deliver_now)
@@ -44,6 +54,7 @@ describe 'User rake tasks' do
         so their approval status has been set to "not_approved".
       MESSAGE
 
+      allow(Rails.logger).to receive(:info)
       expect(Rails.logger).to receive(:info).with(expected_message)
       @rake[task_name].invoke
     end
