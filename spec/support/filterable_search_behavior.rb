@@ -19,7 +19,7 @@ shared_examples 'an initialized filterable search' do
                                   until_date: '11/30/2014')
     end
     let(:expected_since) { DateTime.parse('2013-11-30T00:00:00Z') }
-    let(:expected_until) { DateTime.parse('2014-11-30T23:59:59.999999999.Z') }
+    let(:expected_until) { DateTime.parse('2014-11-30T23:59:59.999999999Z') }
 
     its(:since) { should eq(expected_since) }
     its(:until) { should eq(expected_until) }
