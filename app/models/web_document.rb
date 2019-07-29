@@ -15,7 +15,7 @@ class WebDocument
   end
 
   def language
-    @language ||= extract_language&.downcase
+    @language ||= (Language.iso_639_1(extract_language) || detect_language)
   end
 
   def created
