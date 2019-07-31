@@ -5,7 +5,7 @@ describe ImageSearchesController do
   let(:affiliate) { affiliates(:usagov_affiliate) }
 
   describe "#index" do
-    context "when searching on legacy affiliate and the query is present" do
+    context 'when searching on legacy affiliate and the query is present' do
       let(:affiliate) { affiliates(:basic_affiliate) }
       let(:query) { '<script>thunder & lightning</script>' }
       let(:image_search) { double(LegacyImageSearch, :query => 'thunder & lightning', :modules => [], :diagnostics => {}) }
