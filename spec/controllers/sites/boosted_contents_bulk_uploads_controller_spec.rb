@@ -21,7 +21,7 @@ describe Sites::BoostedContentsBulkUploadsController do
           allow(BoostedContentBulkUploader).to receive(:new).and_return uploader
           expect(uploader).to receive(:upload).and_return({ created: 3, updated: 2, failed: 1 , success: true })
 
-          post :create, best_bets_text_data_file: data_file, site_id: site.id
+          post :create, params: { best_bets_text_data_file: data_file, site_id: site.id }
         end
 
         it { is_expected.to redirect_to(site_best_bets_texts_path(site)) }
@@ -35,7 +35,7 @@ describe Sites::BoostedContentsBulkUploadsController do
           allow(BoostedContentBulkUploader).to receive(:new).and_return uploader
           expect(uploader).to receive(:upload).and_return({ error_message: 'some error message' })
 
-          post :create, best_bets_text_data_file: data_file, site_id: site.id
+          post :create, params: { best_bets_text_data_file: data_file, site_id: site.id }
         end
 
         it { is_expected.to set_flash.now.to('some error message') }
