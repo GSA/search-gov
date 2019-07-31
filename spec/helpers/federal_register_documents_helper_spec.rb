@@ -17,11 +17,11 @@ describe FederalRegisterDocumentsHelper do
       )
     end
     let(:result) do
-      <<~HTML
-        A <span>Notice</span> by the <span>Internal
-        Revenue Service</span>, the <span>International
-        Trade Administration</span> and the <span>National
-        Oceanic and Atmospheric Administration</span>
+      <<~HTML.delete!("\n")
+        A <span>Notice</span> by the <span>Internal 
+        Revenue Service</span>, the <span>International 
+        Trade Administration</span> and the <span>National 
+        Oceanic and Atmospheric Administration</span> 
         posted on <span>June 9, 2014</span>.
       HTML
     end
