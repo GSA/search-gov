@@ -1,7 +1,15 @@
 shared_examples 'restricted to approved user' do |request_method, action, parameters = nil, sessions = nil, flash = nil|
+
+  let(:args) do
+    { params: parameters,
+    flash: flash }
+  end
+
+  args[:sessions] = sessions if sessions.present?
+
   context 'when user is not logged in' do
     it 'should redirect to login page' do
-      send request_method, action, parameters, sessions, flash
+      send request_method, action, args
       expect(response).to redirect_to(login_path)
     end
   end
@@ -10,7 +18,7 @@ shared_examples 'restricted to approved user' do |request_method, action, parame
     before { UserSession.create(users(:affiliate_manager_with_pending_email_verification_status)) }
 
     it 'should redirect to affiliates page' do
-      send request_method, action, parameters, sessions, flash
+      send request_method, action, args
       expect(response).to redirect_to(account_path)
     end
   end
@@ -19,7 +27,7 @@ shared_examples 'restricted to approved user' do |request_method, action, parame
     before { UserSession.create(users(:affiliate_manager_with_pending_approval_status)) }
 
     it 'should redirect to affiliates page' do
-      self.send request_method, action, parameters, sessions, flash
+      self.send request_method, action, args
       expect(response).to redirect_to(account_path)
     end
   end
@@ -28,7 +36,7 @@ shared_examples 'restricted to approved user' do |request_method, action, parame
     before { UserSession.create(users(:affiliate_manager_with_pending_contact_information_status)) }
 
     it 'should redirect to affiliates page' do
-      self.send request_method, action, parameters, sessions, flash
+      self.send request_method, action, args
       expect(response).to redirect_to(account_path)
     end
   end
