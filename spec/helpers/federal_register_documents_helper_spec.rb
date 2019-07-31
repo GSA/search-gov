@@ -13,7 +13,7 @@ describe FederalRegisterDocumentsHelper do
       )
     end
 
-    context 'when federal_register_document_info' do
+    context 'when federal_register_document_info is called' do
       let(:result) do
         "A <span>Notice</span> by the <span>Internal " \
         "Revenue Service</span>, the <span>International " \
