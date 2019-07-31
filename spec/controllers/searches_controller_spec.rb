@@ -10,7 +10,7 @@ describe SearchesController do
     render_views
     context "when searching in English" do
       before do
-        get :index, query: 'social security', page: 4, affiliate: 'usagov'
+        get :index, params: { query: 'social security', page: 4, affiliate: 'usagov' }
         @search = assigns[:search]
         @page_title = assigns[:page_title]
       end
@@ -62,7 +62,7 @@ describe SearchesController do
   end
 
   context 'when affiliate is not valid' do
-    before { get :index, query: 'gov', affiliate: { 'foo' => 'bar' } }
+    before { get :index, params: { query: 'gov', affiliate: { 'foo' => 'bar' } } }
     it { is_expected.to redirect_to 'https://www.usa.gov/search-error' }
   end
 
@@ -84,7 +84,7 @@ describe SearchesController do
     let(:affiliate) { affiliates(:search_consumer_affiliate) }
 
     it 'should redirect to the search-consumer display page' do
-      get :index, query: 'matzo balls', affiliate: affiliate.name
+      get :index, params: { query: 'matzo balls', affiliate: affiliate.name }
       expect(response).to redirect_to search_consumer_search_url({query: 'matzo balls', affiliate: affiliate.name})
     end
   end
@@ -99,7 +99,7 @@ describe SearchesController do
       end
 
       it 'redirects to the proper url' do
-        get :index, query: "foo bar", affiliate: affiliate.name
+        get :index, params: { query: "foo bar", affiliate: affiliate.name }
         expect(response).to redirect_to 'http://www.gov.gov/foo.html'
       end
 
@@ -148,7 +148,7 @@ describe SearchesController do
       affiliate.gets_i14y_results = true
       expect(I14ySearch).to receive(:new).and_return(i14y_search)
       expect(i14y_search).to receive(:run)
-      get :index, :query => 'gov', :affiliate => affiliate.name
+      get :index, params: { query: 'gov', affiliate: affiliate.name }
     end
 
     it { is_expected.to assign_to(:affiliate).with(affiliate) }
@@ -174,7 +174,7 @@ describe SearchesController do
       affiliate.search_engine = 'SearchGov'
       expect(I14ySearch).to receive(:new).and_return(i14y_search)
       expect(i14y_search).to receive(:run)
-      get :index, :query => 'gov', :affiliate => affiliate.name
+      get :index, params: { query: 'gov', affiliate: affiliate.name }
     end
 
     it { is_expected.to assign_to(:affiliate).with(affiliate) }
@@ -246,12 +246,12 @@ describe SearchesController do
     let(:affiliate) { affiliates(:power_affiliate) }
 
     it "should maintain the staged parameter for future searches" do
-      get :index, :affiliate => affiliate.name, :query => "weather", :staged => 1
+      get :index, params: { affiliate: affiliate.name, query: 'weather', staged: 1 }
       expect(response.body).to have_selector("input[type='hidden'][value='1'][name='staged']", visible: false)
     end
 
     it "should set an affiliate page title" do
-      get :index, :affiliate => affiliate.name, :query => "weather", :staged => 1
+      get :index, params: { affiliate: affiliate.name, query: 'weather', staged: 1 }
       expect(assigns[:page_title]).to eq("weather - Noaa Site Search Results")
     end
   end
@@ -275,7 +275,7 @@ describe SearchesController do
 
     context "when searching normally" do
       before do
-        get :index, :query => 'weather', :format => "json", affiliate: 'usagov'
+        get :index, params: { query: 'weather', affiliate: 'usagov' }, format: 'json'
         @search = assigns[:search]
       end
 
@@ -288,7 +288,7 @@ describe SearchesController do
 
     context "when some error is returned" do
       before do
-        get :index, :query => 'a' * 1001, :format => "json", affiliate: 'usagov'
+        get :index, params: { query: 'a' * 1001,  affiliate: 'usagov' }, format: 'json'
         @search = assigns[:search]
       end
 
@@ -406,7 +406,7 @@ describe SearchesController do
   end
 
   describe "#advanced" do
-    before { get :advanced, affiliate: 'usagov' }
+    before { get :advanced, params: { affiliate: 'usagov' } }
 
     it { is_expected.to assign_to(:page_title).with_kind_of(String) }
   end
