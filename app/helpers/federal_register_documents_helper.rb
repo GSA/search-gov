@@ -5,7 +5,7 @@ module FederalRegisterDocumentsHelper
     fr_agency_names = document.contributing_agency_names
     fr_agencies_html = federal_register_agencies_html fr_agency_names
 
-    publication_date_span = content_tag :span, document.publication_date.to_s(:long)
+    publication_date_span = content_tag :span, document.publication_date.strftime("%B %-d, %Y")
     "A #{document_type_span} #{fr_agencies_html} posted on #{publication_date_span}.".html_safe
   end
 
