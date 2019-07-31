@@ -9,7 +9,9 @@ describe UsersController do
   let(:permitted_params) { %i(contact_name organization_name email password) }
 
   describe '#create' do
-    it { is_expected.to permit(*permitted_params).for(:create, params: { user: user_params }) }
+    it do
+      is_expected.to permit(*permitted_params).for(:create, params: { user: user_params })
+    end
 
     context 'when the User#save was successful and User has government affiliated email' do
       let(:user) do
@@ -21,7 +23,7 @@ describe UsersController do
       before do
         expect(User).to receive(:new).and_return(user)
         expect(user).to receive(:save).and_return(true)
-        post :create, user: user_params
+        post :create, params: { user: user_params }
       end
 
       it { is_expected.to assign_to(:user).with(user) }
@@ -39,7 +41,7 @@ describe UsersController do
       before do
         expect(User).to receive(:new).and_return(user)
         expect(user).to receive(:save).and_return(true)
-        post :create, user: user_params
+        post :create, params: { user: user_params }
       end
 
       it { is_expected.to assign_to(:user).with(user) }
@@ -57,7 +59,7 @@ describe UsersController do
       before do
         expect(User).to receive(:new).and_return(user)
         expect(user).to receive(:save).and_return(false)
-        post :create, user: user_params
+        post :create, params: { user: user_params }
       end
 
       it { is_expected.to assign_to(:user).with(user) }
@@ -70,7 +72,7 @@ describe UsersController do
       before { activate_authlogic }
       include_context 'approved user logged in'
 
-      before { get :show, id: current_user.id }
+      before { get :show, params: { id: current_user.id } }
 
       it { is_expected.to assign_to(:user).with(current_user) }
     end
@@ -81,7 +83,7 @@ describe UsersController do
       before { activate_authlogic }
       include_context 'approved user logged in'
 
-      before { get :edit, id: current_user.id }
+      before { get :edit, params: { id: current_user.id } }
 
       it { is_expected.to assign_to(:user).with(current_user) }
     end
@@ -90,8 +92,8 @@ describe UsersController do
   describe '#update' do
     let(:update_user) do
       post :update,
-           id: current_user.id,
-           user: update_params
+           params: { id: current_user.id,
+                     user: update_params }
     end
 
     let(:update_params) do
@@ -103,7 +105,9 @@ describe UsersController do
       before { activate_authlogic }
       include_context 'approved user logged in'
 
-      it { is_expected.to permit(*permitted_params).for(:update, params: { user: update_params }) }
+      it do
+        is_expected.to permit(*permitted_params).for(:update, params: { user: update_params })
+      end
 
       context 'when changing the password' do
         let(:update_params) do
@@ -153,23 +157,23 @@ describe UsersController do
       UserSession.create(@user)
     end
 
-    describe "do GET on show" do
-      it "should redirect the developer to the USA.gov developer page" do
-        get :show, :id => @user.id
+    describe 'do GET on show' do
+      it 'should redirect the developer to the USA.gov developer page' do
+        get :show, params: { id: @user.id }
         expect(response).to redirect_to(developer_redirect_url)
       end
     end
 
-    describe "do GET on edit" do
-      it "should redirect the developer to the USA.gov developer page" do
-        get :edit, :id => @user.id
+    describe 'do GET on edit' do
+      it 'should redirect the developer to the USA.gov developer page' do
+        get :edit, params: { id: @user.id }
         expect(response).to redirect_to(developer_redirect_url)
       end
     end
 
-    describe "do POST on update" do
-      it "should redirect the developer to the USA.gov developer page" do
-        post :update, :id => @user.id, :user => {:email => "changed@foo.com"}
+    describe 'do POST on update' do
+      it 'should redirect the developer to the USA.gov developer page' do
+        post :update, params: { id: @user.id, user: {email: 'changed@foo.com'} }
         expect(response).to redirect_to(developer_redirect_url)
       end
     end
