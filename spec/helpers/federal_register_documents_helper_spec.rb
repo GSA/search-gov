@@ -36,6 +36,5 @@ describe FederalRegisterDocumentsHelper do
 
       specify { expect(helper.federal_register_document_comment_period(document)).to eq 'Comment period ends today' }
     end
-
   end
 end
