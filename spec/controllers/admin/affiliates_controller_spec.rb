@@ -213,7 +213,7 @@ describe Admin::AffiliatesController do
       end
 
       describe 'exports file' do
-        before { post :export, format: :csv }
+        before { post :export, params: { format: :csv } }
 
         it { is_expected.to respond_with :success }
       end

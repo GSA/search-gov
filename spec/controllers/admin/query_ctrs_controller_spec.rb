@@ -15,16 +15,16 @@ describe Admin::QueryCtrsController do
 
     context "when not logged in" do
       it "should redirect to the home page" do
-        get :show, module_tag: 'BOOS', site_name: 'usagov'
+        get :show, params: { module_tag: 'BOOS', site_name: 'usagov' }
         expect(response).to redirect_to login_path
       end
     end
 
-    context "when logged in as an admin" do
+    context 'when logged in as an admin' do
       before do
-        @user = users("affiliate_admin")
+        @user = users('affiliate_admin')
         UserSession.create(@user)
-        get :show, module_tag: 'BOOS', site_name: 'usagov'
+        get :show, params: { module_tag: 'BOOS', site_name: 'usagov' }
       end
 
       it "should allow the admin to see query CTRs for some search module on a given site" do
