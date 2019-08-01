@@ -32,7 +32,7 @@ describe Admin::AffiliatesController do
       end
 
       it "should redirect to the affiliate analytics page for the affiliate id passed" do
-        get :analytics, :id => @affiliate.id
+        get :analytics, params: { id: @affiliate.id }
         expect(response).to redirect_to new_site_queries_path(@affiliate)
       end
     end
@@ -45,8 +45,8 @@ describe Admin::AffiliatesController do
 
       before do
         activate_authlogic
-        UserSession.create(users("affiliate_admin"))
-        get :edit, :id => affiliate.id
+        UserSession.create(users('affiliate_admin'))
+        get :edit, params: { id: affiliate.id }
       end
 
       it { is_expected.to respond_with :success }
