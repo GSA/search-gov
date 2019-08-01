@@ -7,7 +7,7 @@ describe EmailVerificationController do
   end
 
   describe "#show" do
-    subject(:attempt_email_verification) { get :show, id: token }
+    subject(:attempt_email_verification) { get :show, params: { id: token } }
     let(:email) { 'verifyme@example.com' }
     let(:verifying_user) { mock_model(User, email: email) }
     let(:token) { 'verifyme' }
