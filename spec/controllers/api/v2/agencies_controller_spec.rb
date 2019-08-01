@@ -11,7 +11,7 @@ describe Api::V2::AgenciesController do
       end
 
       it "should return valid JSON with the organization codes array in alpha order" do
-        get :search, params { query: 'the nps', format: 'json' }
+        get :search, params: { query: 'the nps' }, format: 'json'
         expect(response).to be_success
         expect(response.body).to eq({name: @agency.name, abbreviation: @agency.abbreviation,
                                  organization_codes: @agency.agency_organization_codes.collect(&:organization_code).sort }.to_json)
