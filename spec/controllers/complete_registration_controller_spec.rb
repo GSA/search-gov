@@ -7,19 +7,19 @@ describe CompleteRegistrationController do
     'Sorry! Your request to complete registration is invalid. Are you sure you copied the right link from your email?'
   end
 
-  describe "do GET on #edit" do
-    context "when unknown token is passed in" do
-      before { get :edit, :id=>"unknown" }
+  describe 'do GET on #edit' do
+    context 'when unknown token is passed in' do
+      before { get :edit, params: { id: 'unknown' } }
       specify { expect(response).to redirect_to(login_path) }
 
       it { is_expected.to set_flash[:notice].to(failure_message) }
     end
 
-    context "when a known token is passed in" do
+    context 'when a known token is passed in' do
       let(:user) { users(:affiliate_added_by_another_affiliate_with_pending_email_verification_status) }
       before do
         expect(User).to receive(:find_by_email_verification_token).and_return(user)
-        get :edit, :id => "known"
+        get :edit, params: { id: 'known' }
       end
 
       it "@user should be assigned" do
@@ -30,7 +30,7 @@ describe CompleteRegistrationController do
 
   describe "do POST on #update" do
     context "when unknown token is passed in" do
-      before { post :update, :id=>"unknown" }
+      before { post :update, params: { id: 'unknown' } }
       specify { expect(response).to redirect_to(login_path) }
 
       it { is_expected.to set_flash[:notice].to(failure_message) }
@@ -43,14 +43,22 @@ describe CompleteRegistrationController do
       end
 
       it '@user should be assigned' do
-        post :update, { id: 'known', 'user': { 'contact_name': 'Homer Simpson' } }
+        post :update, 
+             params: {
+               id: 'known', 
+               'user': { 'contact_name': 'Homer Simpson' } 
+             }
+   
         expect(assigns[:user]).to eq(user)
       end
 
       context "when the form parameters are valid" do
         before do
           expect(user).to receive(:complete_registration).and_return(true)
-          post :update, :id => "known"
+          post :update, 
+          params: { 
+            id: 'known'
+          }
         end
 
         it { is_expected.to set_flash[:success].to(success_message) }
@@ -61,7 +69,7 @@ describe CompleteRegistrationController do
       context "when the form parameters are invalid" do
         before do
           expect(user).to receive(:complete_registration).and_return(false)
-          post :update, :id => "known"
+          post :update, params: { id: 'known' }
         end
 
         it "flash[:success] should be blank" do
