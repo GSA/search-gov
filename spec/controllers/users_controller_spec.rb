@@ -3,14 +3,20 @@ require 'spec_helper'
 describe UsersController do
   fixtures :users
   let(:user_params) do
-    { contact_name: 'Barack', organization_name: 'White House', email: 'barack@whitehouse.gov', password: 'Michelle2016!' }
+    { contact_name: 'Barack',
+      organization_name: 'White House',
+      email: 'barack@whitehouse.gov',
+      password: 'Michelle2016!' }
   end
 
-  let(:permitted_params) { %i(contact_name organization_name email password) }
+  let(:permitted_params) { %i[contact_name organization_name email password] }
 
   describe '#create' do
     it do
-      is_expected.to permit(*permitted_params).for(:create, params: { user: user_params })
+      # to avoid depreication warning had to put params there twice
+      # https://github.com/thoughtbot/shoulda-matchers/issues/867
+      is_expected.to permit(*permitted_params).
+        for(:create, params: { params: { user: user_params } })
     end
 
     context 'when the User#save was successful and User has government affiliated email' do
@@ -97,8 +103,7 @@ describe UsersController do
     end
 
     let(:update_params) do
-      { 'contact_name': 'BAR',
-        'email': 'changed@foo.com' }
+      { 'contact_name': 'BAR', 'email': 'changed@foo.com' }
     end
 
     context 'when logged in as affiliate' do
@@ -106,7 +111,10 @@ describe UsersController do
       include_context 'approved user logged in'
 
       it do
-        is_expected.to permit(*permitted_params).for(:update, params: { user: update_params })
+      # to avoid depreication warning had to put params there twice
+      # https://github.com/thoughtbot/shoulda-matchers/issues/867
+      is_expected.to permit(*permitted_params).
+          for(:update, params: { params: { user: update_params } })
       end
 
       context 'when changing the password' do
