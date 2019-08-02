@@ -114,7 +114,7 @@ describe UsersController do
       # to avoid depreication warning had to put params there twice
       # https://github.com/thoughtbot/shoulda-matchers/issues/867
       is_expected.to permit(*permitted_params).
-          for(:update, params: { params: { user: update_params } })
+        for(:update, params: { params: { user: update_params } })
       end
 
       context 'when changing the password' do

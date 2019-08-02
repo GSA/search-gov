@@ -20,7 +20,7 @@ describe Api::V2::AgenciesController do
 
     context "when search returns nil or raises an exception" do
       it "should return error string" do
-        get :search, params: { query: 'error', format: 'json' }
+        get :search, params: { query: 'error' }, format: 'json'
         expect(response).not_to be_success
         expect(response.body).to match(/No matching agency could be found./)
       end
