@@ -14,7 +14,7 @@ describe Sites::RssFeedsController do
 
       before do
         expect(site).to receive(:rss_feeds).and_return(rss_feeds)
-        get :index, site_id: site.id
+        get :index, params: { site_id: site.id }
       end
 
       it { is_expected.to assign_to(:site).with(site) }
@@ -46,11 +46,17 @@ describe Sites::RssFeedsController do
           expect(rss_feed).to receive(:save).and_return(true)
 
           post :create,
-               site_id: site.id,
-               rss_feed: { name: 'Recalls',
-                           show_only_media_content: 'false',
-                           rss_feed_urls_attributes: { '0' => { url: 'some.agency.gov/news.atom' } },
-                           not_allowed_key: 'not allowed value' }
+               params: {
+                 site_id: site.id,
+                 rss_feed: { name: 'Recalls',
+                             show_only_media_content: 'false',
+                             rss_feed_urls_attributes: {
+                               '0': {
+                                 url: 'some.agency.gov/news.atom'
+                               }
+                             },
+                             not_allowed_key: 'not allowed value' }
+               }
         end
 
         it { is_expected.to assign_to(:rss_feed).with(rss_feed) }
@@ -77,11 +83,17 @@ describe Sites::RssFeedsController do
           allow(rss_feed).to receive_message_chain(:rss_feed_urls, :build)
 
           post :create,
-               site_id: site.id,
-               rss_feed: { name: 'Recalls',
-                           show_only_media_content: 'false',
-                           rss_feed_urls_attributes: { '0' => { url: 'some.agency.gov/news.atom' } },
-                           not_allowed_key: 'not allowed value' }
+               params: {
+                 site_id: site.id,
+                 rss_feed: { name: 'Recalls',
+                             show_only_media_content: 'false',
+                             rss_feed_urls_attributes: {
+                               '0': {
+                                 url: 'some.agency.gov/news.atom'
+                               }
+                             },
+                             not_allowed_key: 'not allowed value' }
+               }
         end
 
         it { is_expected.to assign_to(:rss_feed).with(rss_feed) }
@@ -116,12 +128,14 @@ describe Sites::RssFeedsController do
           allow(rss_feed).to receive_message_chain(:rss_feed_urls, :build)
 
           put :update,
-              site_id: site.id,
-              id: 100,
-              rss_feed: { name: 'Recalls',
-                          show_only_media_content: 'false',
-                          rss_feed_urls_attributes: { '0' => { url: 'some.agency.gov/news.atom' } },
-                          not_allowed_key: 'not allowed value' }
+              params: {
+                site_id: site.id,
+                id: 100,
+                rss_feed: { name: 'Recalls',
+                            show_only_media_content: 'false',
+                            rss_feed_urls_attributes: { '0' => { url: 'some.agency.gov/news.atom' } },
+                            not_allowed_key: 'not allowed value' }
+              }
         end
 
         it { is_expected.to assign_to(:rss_feed).with(rss_feed) }
@@ -144,7 +158,7 @@ describe Sites::RssFeedsController do
         allow(rss_feeds).to receive_message_chain(:non_managed, :find_by_id).with('100').and_return(rss_feed)
         expect(rss_feed).to receive(:destroy)
 
-        delete :destroy, site_id: site.id, id: 100
+        delete :destroy, params: { site_id: site.id, id: 100 }
       end
 
       it { is_expected.to redirect_to(site_rss_feeds_path(site)) }

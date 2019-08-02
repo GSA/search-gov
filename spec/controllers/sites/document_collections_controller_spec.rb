@@ -14,7 +14,7 @@ describe Sites::DocumentCollectionsController do
 
       before do
         expect(site).to receive(:document_collections).and_return(document_collections)
-        get :index, site_id: site.id
+        get :index, params: { site_id: site.id }
       end
 
       it { is_expected.to assign_to(:site).with(site) }
@@ -49,11 +49,15 @@ describe Sites::DocumentCollectionsController do
           expect(email).to receive(:deliver_now)
 
           post :create,
-               site_id: site.id,
-               document_collection: { name: 'News',
-                                      url_prefixes_attributes: { '0' => { prefix: 'some.agency.gov/news',
-                                                                          invalid_key: 'invalid value'} },
-                                      not_allowed_key: 'not allowed value' }
+               params: {
+                 site_id: site.id,
+                 document_collection: { name: 'News',
+                                        url_prefixes_attributes: {
+                                          '0': { prefix: 'some.agency.gov/news',
+                                                 invalid_key: 'invalid value' }
+                                        },
+                                        not_allowed_key: 'not allowed value' }
+               }
         end
 
         it { is_expected.to assign_to(:document_collection).with(document_collection) }
@@ -75,11 +79,15 @@ describe Sites::DocumentCollectionsController do
           allow(document_collection).to receive_message_chain(:url_prefixes, :build)
 
           post :create,
-               site_id: site.id,
-               document_collection: { name: 'News',
-                                      url_prefixes_attributes: { '0' => { prefix: '',
-                                                                          invalid_key: 'invalid value'} },
-                                      not_allowed_key: 'not allowed value' }
+               params: {
+                 site_id: site.id,
+                 document_collection: { name: 'News',
+                                        url_prefixes_attributes: {
+                                          '0': { prefix: '',
+                                                 invalid_key: 'invalid value' }
+                                        },
+                                        not_allowed_key: 'not allowed value' }
+               }
         end
 
         it { is_expected.to assign_to(:document_collection).with(document_collection) }
@@ -109,12 +117,16 @@ describe Sites::DocumentCollectionsController do
           allow(document_collection).to receive_message_chain(:url_prefixes, :build)
 
           put :update,
-               site_id: site.id,
-               id: 100,
-               document_collection: { name: 'News',
-                                      url_prefixes_attributes: { '0' => { prefix: '',
-                                                                          invalid_key: 'invalid value'} },
-                                      not_allowed_key: 'not allowed value' }
+              params: {
+                site_id: site.id,
+                id: 100,
+                document_collection: { name: 'News',
+                                       url_prefixes_attributes: {
+                                         '0': { prefix: '',
+                                                invalid_key: 'invalid value' }
+                                       },
+                                       not_allowed_key: 'not allowed value' }
+              }
         end
 
         it { is_expected.to assign_to(:document_collection).with(document_collection) }

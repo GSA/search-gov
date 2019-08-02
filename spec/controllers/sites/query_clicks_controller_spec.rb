@@ -14,7 +14,13 @@ describe Sites::QueryClicksController do
 
       before do
         allow(RtuTopClicks).to receive(:new).and_return rtu_top_clicks
-        get :show, site_id: site.id, start_date: Date.current, end_date: Date.current, query: 'foo'
+        get :show,
+            params: {
+              site_id: site.id,
+              start_date: Date.current,
+              end_date: Date.current,
+              query: 'foo'
+            }
       end
 
       it { is_expected.to assign_to(:top_urls).with(top_n) }

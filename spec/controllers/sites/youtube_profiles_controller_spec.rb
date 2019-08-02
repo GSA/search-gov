@@ -82,12 +82,13 @@ describe Sites::YoutubeProfilesController do
               and_return(new_youtube_profile)
 
           post :create,
-                 params: {
-                   site_id: site.id,
-                   youtube_profile: {
-                     not_allowed_key: 'not allowed value',
-                     url: 'youtube.com/channel/us_government_channel_id' }
+               params: {
+                 site_id: site.id,
+                 youtube_profile: {
+                   not_allowed_key: 'not allowed value',
+                   url: 'youtube.com/channel/us_government_channel_id'
                  }
+               }
         end
 
         it { is_expected.to assign_to(:profile).with(new_youtube_profile) }

@@ -14,7 +14,7 @@ describe Sites::FeaturedCollectionsController do
 
       before do
         allow(site).to receive_message_chain(:featured_collections, :substring_match, :paginate, :order).and_return(featured_collections)
-        get :index, site_id: site.id
+        get :index, params: { site_id: site.id }
       end
 
       it { is_expected.to assign_to(:site).with(site) }
@@ -41,8 +41,11 @@ describe Sites::FeaturedCollectionsController do
           expect(featured_collection).to receive(:save).and_return(true)
 
           post :create,
-               site_id: site.id,
-               featured_collection: { title: 'page title', not_allowed_key: 'not allowed value' }
+               params: {
+                 site_id: site.id,
+                 featured_collection: { title: 'page title',
+                                        not_allowed_key: 'not allowed value' }
+               }
         end
 
         it { is_expected.to assign_to(:featured_collection).with(featured_collection) }
@@ -65,8 +68,10 @@ describe Sites::FeaturedCollectionsController do
           allow(featured_collection).to receive_message_chain(:featured_collection_links, :build)
 
           post :create,
-               site_id: site.id,
-               featured_collection: { title: '', not_allowed_key: 'not allowed value' }
+               params: {
+                 site_id: site.id,
+                 featured_collection: { title: '', not_allowed_key: 'not allowed value' }
+               }
         end
 
         it { is_expected.to assign_to(:featured_collection).with(featured_collection) }
@@ -96,9 +101,12 @@ describe Sites::FeaturedCollectionsController do
           allow(featured_collection).to receive_message_chain(:featured_collection_links, :build)
 
           put :update,
-              site_id: site.id,
-              id: 100,
-              featured_collection: { title: 'updated title', not_allowed_key: 'not allowed value' }
+              params: {
+                site_id: site.id,
+                id: 100,
+                featured_collection: { title: 'updated title',
+                                       not_allowed_key: 'not allowed value' }
+              }
         end
 
         it { is_expected.to assign_to(:featured_collection).with(featured_collection) }

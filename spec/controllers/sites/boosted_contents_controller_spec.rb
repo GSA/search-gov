@@ -14,7 +14,7 @@ describe Sites::BoostedContentsController do
 
       before do
         allow(site).to receive_message_chain(:boosted_contents, :substring_match, :paginate, :order).and_return(boosted_contents)
-        get :index, site_id: site.id
+        get :index, params: { site_id: site.id }
       end
 
       it { is_expected.to assign_to(:site).with(site) }
@@ -41,8 +41,11 @@ describe Sites::BoostedContentsController do
           expect(boosted_content).to receive(:save).and_return(true)
 
           post :create,
-               site_id: site.id,
-               boosted_content: { title: 'page title', not_allowed_key: 'not allowed value' }
+               params: {
+                 site_id: site.id,
+                 boosted_content: { title: 'page title',
+                                    not_allowed_key: 'not allowed value' }
+               }
         end
 
         it { is_expected.to assign_to(:boosted_content).with(boosted_content) }
@@ -64,8 +67,10 @@ describe Sites::BoostedContentsController do
           allow(boosted_content).to receive_message_chain(:boosted_content_keywords, :build)
 
           post :create,
-               site_id: site.id,
-               boosted_content: { title: '', not_allowed_key: 'not allowed value' }
+               params: {
+                 site_id: site.id,
+                 boosted_content: { title: '', not_allowed_key: 'not allowed value' }
+               }
         end
 
         it { is_expected.to assign_to(:boosted_content).with(boosted_content) }
@@ -121,7 +126,7 @@ describe Sites::BoostedContentsController do
             and_return(boosted_content)
         expect(boosted_content).to receive(:destroy)
 
-        delete :destroy, site_id: site.id, id: 100
+        delete :destroy, params: { site_id: site.id, id: 100 }
       end
 
       it { is_expected.to redirect_to(site_best_bets_texts_path(site)) }
