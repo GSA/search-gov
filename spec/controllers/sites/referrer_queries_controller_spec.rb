@@ -15,7 +15,7 @@ describe Sites::ReferrerQueriesController do
       before do
         allow(RtuTopQueries).to receive(:new).and_return rtu_top_queries
         get :show,
-            parms: {
+            params: {
               site_id: site.id,
               start_date: Date.current,
               end_date: Date.current,

@@ -130,7 +130,7 @@ describe Sites::FeaturedCollectionsController do
             and_return(featured_collection)
         expect(featured_collection).to receive(:destroy)
 
-        delete :destroy, site_id: site.id, id: 100
+        delete :destroy, params: { site_id: site.id, id: 100 }
       end
 
       it { is_expected.to redirect_to(site_best_bets_graphics_path(site)) }

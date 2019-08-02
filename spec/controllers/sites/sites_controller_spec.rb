@@ -171,18 +171,18 @@ describe Sites::SitesController do
 
       it 'should enqueue destruction of affiliate' do
         expect(Resque).to receive(:enqueue_with_priority).with(:low, SiteDestroyer, site.id)
-        delete :destroy, id: site.id
+        delete :destroy, params: { id: site.id }
       end
 
       it 'deactivates the site' do
         expect(site).to receive(:update_attributes!).with(active: false)
         expect(site).to receive(:user_ids=).with([])
-        delete :destroy, id: site.id
+        delete :destroy, params: { id: site.id }
       end
 
       context 'when successful' do
         before do
-          delete :destroy, id: site.id
+          delete :destroy, params: { id: site.id }
         end
 
         it { is_expected.to redirect_to(new_site_path) }

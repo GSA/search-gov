@@ -15,7 +15,7 @@ describe Sites::MonthlyReportsController do
       context 'when valid target month passed in' do
         before do
           expect(RtuMonthlyReport).to receive(:new).with(site, '2014', '06', current_user.sees_filtered_totals).and_return rtu_monthly_report
-          get :show, parms: { mmyyyy: '06/2014', site_id: site.id }
+          get :show, params: { mmyyyy: '06/2014', site_id: site.id }
         end
 
         it { is_expected.to assign_to(:monthly_report).with(rtu_monthly_report) }

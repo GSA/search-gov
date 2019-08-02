@@ -99,9 +99,14 @@ describe Sites::BoostedContentsController do
           allow(boosted_content).to receive_message_chain(:boosted_content_keywords, :build)
 
           put :update,
-              site_id: site.id,
-              id: 100,
-              boosted_content: { title: 'updated title', not_allowed_key: 'not allowed value' }
+              params: {
+                site_id: site.id,
+                id: 100,
+                boosted_content: { 
+                  title: 'updated title',
+                  not_allowed_key: 'not allowed value'
+                }
+              }
         end
 
         it { is_expected.to assign_to(:boosted_content).with(boosted_content) }
