@@ -320,9 +320,10 @@ describe SiteCloner do
             and_raise(StandardError)
         end
 
-        xit 're-enables the routed_query_keyword_observer' do
-          expect(ActiveRecord::Base.observers).to receive(:enable).with(:routed_query_keyword_observer).and_call_original
-          expect{cloner.clone}.to raise_error
+        it 're-enables the routed_query_keyword_observer' do
+          expect(ApplicationRecord.observers).to receive(:enable).
+            with(:routed_query_keyword_observer).and_call_original
+          expect{ cloner.clone }.to raise_error
         end
       end
     end
