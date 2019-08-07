@@ -1,8 +1,7 @@
 shared_examples 'restricted to approved user' do |request_method, action, parameters = nil, sessions = nil, flash = nil|
 
   let(:args) do
-    { params: parameters,
-    flash: flash }
+    { params: parameters, flash: flash }
   end
 
   args[:sessions] = sessions if sessions.present?

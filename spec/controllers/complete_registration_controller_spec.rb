@@ -48,17 +48,14 @@ describe CompleteRegistrationController do
                id: 'known', 
                'user': { 'contact_name': 'Homer Simpson' } 
              }
-   
+
         expect(assigns[:user]).to eq(user)
       end
 
       context "when the form parameters are valid" do
         before do
           expect(user).to receive(:complete_registration).and_return(true)
-          post :update, 
-          params: { 
-            id: 'known'
-          }
+          post :update, params: { id: 'known' }
         end
 
         it { is_expected.to set_flash[:success].to(success_message) }

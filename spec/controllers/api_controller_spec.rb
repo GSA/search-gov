@@ -39,10 +39,11 @@ describe ApiController do
         json = { result_field: 'result' }.to_json
         expect(ApiSearch).to receive(:new).with(hash_including(affiliate: affiliate, query: 'solar')).and_return(api_search)
         allow(api_search).to receive(:run).and_return(json)
-        get :search, 
-            params: { affiliate: affiliate.name,
-                      format: 'json',
-                      query: 'solar'
+        get :search,
+            params: {
+              affiliate: affiliate.name,
+              format: 'json',
+              query: 'solar'
             }
       end
 
