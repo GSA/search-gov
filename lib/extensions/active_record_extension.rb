@@ -4,8 +4,7 @@ module ActiveRecordExtension
   end
 
   def destroy_on_blank(attributes, *keys)
-    attributes.each do |attribute|
-      item = attribute[1]
+    attributes.each do |k, item|
       item[:_destroy] = true if keys.all? { |key| item[key].blank? }
     end
   end
