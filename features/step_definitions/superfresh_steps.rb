@@ -34,24 +34,24 @@ end
 
 When /^there are (\d+) uncrawled IndexedDocuments for "([^"]*)"$/ do |count, aff_name|
   affiliate = Affiliate.find_by_name(aff_name)
-  ActiveRecord::Base.observers.disable :indexed_document_observer
+  ApplicationRecord.observers.disable :indexed_document_observer
   count.to_i.times do |index|
     affiliate.indexed_documents.create!(:title => "uncrawled document #{index + 1}",
                                         :description => "uncrawled document description #{index + 1}",
                                         :url => "http://aff.gov/uncrawled/#{index + 1}")
   end
-  ActiveRecord::Base.observers.enable :indexed_document_observer
+  ApplicationRecord.observers.enable :indexed_document_observer
 end
 
 When /^there are (\d+) crawled IndexedDocuments for "([^"]*)"$/ do |count, aff_name|
   affiliate = Affiliate.find_by_name(aff_name)
-  ActiveRecord::Base.observers.disable :indexed_document_observer
+  ApplicationRecord.observers.disable :indexed_document_observer
   count.to_i.times do |index|
     affiliate.indexed_documents.create!(:title => "crawled document #{index + 1}",
                                         :description => "crawled document description #{index + 1}",
                                         :url => "http://aff.gov/crawled/#{index + 1}",
                                         :last_crawled_at => Time.current,
                                         :last_crawl_status => 'OK')
-    ActiveRecord::Base.observers.enable :indexed_document_observer
+    ApplicationRecord.observers.enable :indexed_document_observer
   end
 end

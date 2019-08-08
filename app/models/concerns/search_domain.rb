@@ -1,6 +1,9 @@
-module SearchDomain
+# frozen_string_literal: true
 
-  def acts_as_search_domain
+module SearchDomain
+  extend ActiveSupport::Concern
+
+  included do
     belongs_to :affiliate
     before_validation :normalize_domain
     validates_presence_of :domain, :affiliate
@@ -25,4 +28,3 @@ module SearchDomain
 
 end
 
-ActiveRecord::Base.extend SearchDomain

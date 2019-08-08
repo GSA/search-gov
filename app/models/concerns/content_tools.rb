@@ -1,4 +1,8 @@
-module ActiveRecordExtension
+# frozen_string_literal: true
+
+module ContentTools
+  extend ActiveSupport::Concern
+
   def swap_error_key(from, to)
     errors.add(to, errors.delete(from)) if errors.include?(from)
   end
@@ -11,6 +15,6 @@ module ActiveRecordExtension
   end
 
   def truncate_value(field, length_limit)
-    self.send("#{field}=", self.send(field)&.truncate(length_limit))
+    send("#{field}=", send(field)&.truncate(length_limit))
   end
 end
