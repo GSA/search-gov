@@ -3,11 +3,11 @@
  # See https://github.com/GSA/usasearch/blob/master/README_I14Y.markdown
 
 Given /^we don't want observers to run during these cucumber scenarios$/ do
-  ApplicationRecord.observers.disable :all
+  ActiveRecord::Base.observers.disable :all
 end
 
 Given /^we want observers to run during the rest of these cucumber scenarios$/ do
-  ApplicationRecord.observers.enable :all
+  ActiveRecord::Base.observers.enable :all
 end
 
 Then /^I should see the secret token for the "([^"]*)" drawer$/ do |handle|
