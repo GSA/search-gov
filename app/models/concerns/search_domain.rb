@@ -14,7 +14,6 @@ module SearchDomain
   end
 
   module InstanceMethods
-
     def to_label
       domain
     end
@@ -25,6 +24,5 @@ module SearchDomain
       self.domain = domain.gsub(/(^https?:\/\/| |\/$)/, '').downcase unless domain.blank?
     end
   end
-
 end
 
