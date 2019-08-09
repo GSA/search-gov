@@ -10,7 +10,7 @@ module ActiveRecordExtension
   end
 
   def truncate_value(field, length_limit)
-    send("#{field}=", send(field)&.truncate(length_limit))
+    self.send("#{field}=", send(field)&.truncate(length_limit))
   end
 end
 
