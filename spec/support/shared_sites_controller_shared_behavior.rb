@@ -20,7 +20,7 @@ shared_examples 'restricted to approved user' do |request_method, action, parame
     before { UserSession.create(users(:affiliate_manager_with_pending_approval_status)) }
 
     it 'should redirect to affiliates page' do
-      self.send request_method, action, params: parameters
+      send request_method, action, params: parameters
       expect(response).to redirect_to(account_path)
     end
   end
