@@ -4,14 +4,13 @@ module ActiveRecordExtension
   end
 
   def destroy_on_blank(attributes, *keys)
-    attributes.each do |attribute|
-      item = attribute[1]
+    attributes.each do |_k, item|
       item[:_destroy] = true if keys.all? { |key| item[key].blank? }
     end
   end
 
   def truncate_value(field, length_limit)
-    self.send("#{field}=", self.send(field)&.truncate(length_limit))
+    self.send("#{field}=", send(field)&.truncate(length_limit))
   end
 end
 
