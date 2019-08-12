@@ -25,4 +25,3 @@ module SearchDomain
     end
   end
 end
-
