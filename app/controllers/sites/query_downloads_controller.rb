@@ -48,7 +48,7 @@ class Sites::QueryDownloadsController < Sites::SetupSiteController
   def ctr(click_count, query_count)
     return '--' if click_count == 0 || query_count == 0
 
-    sprintf("%.1f%", click_count.to_f * 100 / query_count)
+    sprintf('%.1f%%', click_count.to_f * 100 / query_count)
   end
 
   def date_range_top_n_query
