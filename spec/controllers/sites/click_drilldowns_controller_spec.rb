@@ -17,7 +17,14 @@ describe Sites::ClickDrilldownsController do
       end
 
       it 'should generate a CSV of various click fields' do
-        get :show, site_id: site.id, url:'http://some.gov.url/super_long_so_truncate_at_50/blah.cfm', start_date: '2015-02-01', end_date: '2015-02-05', format: 'csv'
+        get :show,
+            params: {
+              site_id: site.id,
+              url: 'http://some.gov.url/super_long_so_truncate_at_50/blah.cfm',
+              start_date: '2015-02-01', end_date: '2015-02-05'
+            },
+            format: 'csv'
+
         expect(response.content_type).to eq('text/csv')
         expect(response.headers["Content-Disposition"]).to eq("attachment;filename=nps.gov_http://some.gov.url/super_long_so_truncate_at_50/b_2015-02-01_2015-02-05.csv")
         expect(response.body).to start_with(Sites::ClickDrilldownsController::HEADER_FIELDS.to_csv)

@@ -17,7 +17,15 @@ describe Sites::QueryDrilldownsController do
       end
 
       it 'should generate a CSV of various query fields' do
-        get :show, query:'foo bar', start_date: '2015-02-01', end_date: '2015-02-05', format: 'csv', site_id: site.id
+        get :show,
+            params: {
+              query: 'foo bar',
+              start_date: '2015-02-01',
+              end_date: '2015-02-05',
+              site_id: site.id
+            },
+            format: 'csv'
+
         expect(response.content_type).to eq('text/csv')
         expect(response.headers["Content-Disposition"]).to eq("attachment;filename=nps.gov_foo_bar_2015-02-01_2015-02-05.csv")
         expect(response.body).to start_with(Sites::QueryDrilldownsController::HEADER_FIELDS.to_csv)

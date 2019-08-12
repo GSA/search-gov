@@ -14,7 +14,7 @@ describe Sites::SiteDomainsController do
 
       before do
         expect(site).to receive(:site_domains).and_return(site_domains)
-        get :index, site_id: site.id
+        get :index, params: { site_id: site.id }
       end
 
       it { is_expected.to assign_to(:site).with(site) }
@@ -43,9 +43,11 @@ describe Sites::SiteDomainsController do
           expect(site).to receive(:assign_sitelink_generator_names!)
 
           post :create,
-               site_id: site.id,
-               site_domain: { domain: 'usa.gov',
-                              not_allowed_key: 'not allowed value' }
+               params: {
+                 site_id: site.id,
+                 site_domain: { domain: 'usa.gov',
+                                not_allowed_key: 'not allowed value' }
+               }
         end
 
         it { is_expected.to assign_to(:site_domain).with(site_domain) }
@@ -66,9 +68,11 @@ describe Sites::SiteDomainsController do
           expect(site_domain).to receive(:save).and_return(false)
 
           post :create,
-               site_id: site.id,
-               site_domain: { domain: 'gov',
-                              not_allowed_key: 'not allowed value' }
+               params: {
+                 site_id: site.id,
+                 site_domain: { domain: 'gov',
+                                not_allowed_key: 'not allowed value' }
+               }
         end
 
         it { is_expected.to assign_to(:site_domain).with(site_domain) }
@@ -97,10 +101,12 @@ describe Sites::SiteDomainsController do
               and_return(false)
 
           put :update,
-               site_id: site.id,
-               id: 100,
-               site_domain: { domain: 'gov',
-                              not_allowed_key: 'not allowed value' }
+              params: {
+                site_id: site.id,
+                id: 100,
+                site_domain: { domain: 'gov',
+                               not_allowed_key: 'not allowed value' }
+              }
         end
 
         it { is_expected.to assign_to(:site_domain).with(site_domain) }

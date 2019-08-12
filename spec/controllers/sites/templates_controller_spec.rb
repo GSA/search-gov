@@ -11,7 +11,7 @@ describe Sites::TemplatesController do
     let(:affiliate) { affiliates(:usagov_affiliate) }
     let(:template) { Template.find_by_name("IRS") }
     let(:update_template) do
-      put :update, site_id: affiliate.id, site: { template_id: template.id }
+      put :update, params: { site_id: affiliate.id, site: { template_id: template.id } }
     end
 
     it_should_behave_like 'restricted to approved user', :put, :update, site_id: 100

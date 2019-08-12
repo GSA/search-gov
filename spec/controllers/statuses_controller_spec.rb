@@ -11,7 +11,7 @@ describe StatusesController do
       expect(OutboundRateLimitStatus).to receive(:find_by_name).
         with('google_api').
         and_return(rate_limit_status)
-      get :outbound_rate_limit, name: 'google_api', format: 'text'
+      get :outbound_rate_limit, params: { name: 'google_api', format: 'text' }
     end
 
     it { is_expected.to respond_with :success }
@@ -25,7 +25,7 @@ describe StatusesController do
     fixtures :affiliates
 
     before do
-      get :domain_control_validation, affiliate: affiliate.name, format: 'text'
+      get :domain_control_validation, params: { affiliate: affiliate.name, format: 'text' }
     end
 
     context 'when the affiliate does not have a DCV code' do
