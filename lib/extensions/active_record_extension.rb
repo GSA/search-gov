@@ -13,5 +13,3 @@ module ActiveRecordExtension
     self.send("#{field}=", send(field)&.truncate(length_limit))
   end
 end
-
-ActiveRecord::Base.send(:include, ActiveRecordExtension)

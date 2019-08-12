@@ -1,6 +1,9 @@
-module SearchDomain
+# frozen_string_literal: true
 
-  def acts_as_search_domain
+module SearchDomain
+  extend ActiveSupport::Concern
+
+  included do
     belongs_to :affiliate
     before_validation :normalize_domain
     validates_presence_of :domain, :affiliate
@@ -11,7 +14,6 @@ module SearchDomain
   end
 
   module InstanceMethods
-
     def to_label
       domain
     end
@@ -22,7 +24,4 @@ module SearchDomain
       self.domain = domain.gsub(/(^https?:\/\/| |\/$)/, '').downcase unless domain.blank?
     end
   end
-
 end
-
-ActiveRecord::Base.extend SearchDomain
