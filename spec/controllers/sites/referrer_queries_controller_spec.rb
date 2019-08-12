@@ -14,7 +14,13 @@ describe Sites::ReferrerQueriesController do
 
       before do
         allow(RtuTopQueries).to receive(:new).and_return rtu_top_queries
-        get :show, site_id: site.id, start_date: Date.current, end_date: Date.current, url: 'http://www.url.gov'
+        get :show,
+            params: {
+              site_id: site.id,
+              start_date: Date.current,
+              end_date: Date.current,
+              url: 'http://www.url.gov'
+            }
       end
 
       it { is_expected.to assign_to(:top_queries).with(top_n) }

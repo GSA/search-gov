@@ -14,7 +14,7 @@ describe Admin::SiteCtrsController do
 
     context "when not logged in" do
       it "should redirect to the home page" do
-        get :show, module_tag: 'BOOS'
+        get :show, params: { module_tag: 'BOOS' }
         expect(response).to redirect_to login_path
       end
     end
@@ -23,7 +23,7 @@ describe Admin::SiteCtrsController do
       before do
         @user = users("affiliate_admin")
         UserSession.create(@user)
-        get :show, module_tag: 'BOOS'
+        get :show, params: { module_tag: 'BOOS' }
       end
 
       it "should allow the admin to see site CTRs for some search module" do

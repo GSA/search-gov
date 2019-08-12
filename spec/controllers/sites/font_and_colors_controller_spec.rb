@@ -19,8 +19,10 @@ describe Sites::FontAndColorsController do
               and_return(false)
 
           put :update,
-              site_id: site.id,
-              site: { css_property_hash: { font_family: 'Arial, san-serif' } }
+              params: {
+                site_id: site.id,
+                site: { css_property_hash: { font_family: 'Arial, san-serif' } }
+              }
         end
 
         it { is_expected.to render_template(:edit) }

@@ -14,7 +14,7 @@ describe Sites::SiteFeedUrlsController do
 
       before do
         expect(site).to receive(:site_feed_url).and_return(site_feed_url)
-        get :edit, site_id: site.id
+        get :edit, params: { site_id: site.id }
       end
 
       it { is_expected.to assign_to(:site).with(site) }
@@ -43,9 +43,11 @@ describe Sites::SiteFeedUrlsController do
               with(:high, SiteFeedUrlFetcher, site_feed_url.id)
 
           put :update,
-               site_id: site.id,
-               site_feed_url: { rss_url: 'http://search.gov/all.atom',
-                                not_allowed_key: 'not allowed value' }
+              params: {
+                site_id: site.id,
+                site_feed_url: { rss_url: 'http://search.gov/all.atom',
+                                 not_allowed_key: 'not allowed value' }
+              }
         end
 
         it { is_expected.to assign_to(:site_feed_url).with(site_feed_url) }
@@ -65,9 +67,11 @@ describe Sites::SiteFeedUrlsController do
               and_return(false)
 
           put :update,
-              site_id: site.id,
-              site_feed_url: { rss_url: '',
-                               not_allowed_key: 'not allowed value' }
+              params: {
+                site_id: site.id,
+                site_feed_url: { rss_url: '',
+                                 not_allowed_key: 'not allowed value' }
+              }
         end
 
         it { is_expected.to assign_to(:site_feed_url).with(site_feed_url) }
@@ -87,7 +91,7 @@ describe Sites::SiteFeedUrlsController do
         expect(site).to receive(:site_feed_url).and_return(site_feed_url)
         expect(site_feed_url).to receive(:destroy)
 
-        delete :destroy, site_id: site.id, id: 100
+        delete :destroy, params: { site_id: site.id, id: 100 }
       end
 
       it { is_expected.to redirect_to(edit_site_supplemental_feed_path(site)) }

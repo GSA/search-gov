@@ -25,9 +25,19 @@ describe Sites::NoResultsPagesController do
               and_return(false)
 
           put :update,
-              site_id: site.id,
-              id: 100,
-              no_results_pages: {"additional_guidance_text"=>"Testadfaf", "managed_no_results_pages_alt_links_attributes"=>{"0"=>{"title"=>"test", "position"=>"0", "url"=>"http://google.com"}}}
+              params: {
+                site_id: site.id,
+                id: 100,
+                no_results_pages: {'additional_guidance_text': 'Testadfaf',
+                                   'managed_no_results_pages_alt_links_attributes': {
+                                     '0': {
+                                       'title': 'test',
+                                       'position': '0',
+                                       'url': 'http://google.com'
+                                     }
+                                   }
+                }
+              }
         end
 
         it { is_expected.to render_template(:edit) }
