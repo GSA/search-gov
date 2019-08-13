@@ -465,6 +465,26 @@ describe Affiliate do
       expect(affiliate.errors[:base]).to include("Locale must be valid")
     end
 
+    describe 'header tagline validation' do
+      it 'validates a valid url and returns true' do
+        affiliate = Affiliate.new(valid_create_attributes.
+          merge(header_tagline_url: 'http://www.google.com'))
+        expect(affiliate.save).to be true
+      end
+
+      it 'validates a non valid url and returns false' do
+        affiliate = Affiliate.new(valid_create_attributes.
+          merge(header_tagline_url: 'foo;'))
+        expect(affiliate.save).to be false
+      end
+
+      it 'validates a non valid url with javascript returns false' do
+        affiliate = Affiliate.new(valid_create_attributes.
+          merge(header_tagline_url: 'javascript:alert(document.domain)'))
+        expect(affiliate.save).to be false
+      end
+    end
+
     describe 'bing v5 key stripping' do
       subject { Affiliate.new(valid_create_attributes.merge(bing_v5_key: bing_v5_key)) }
       before { subject.save }
