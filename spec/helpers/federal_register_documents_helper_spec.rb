@@ -29,6 +29,25 @@ describe FederalRegisterDocumentsHelper do
     it { is_expected.to eq result }
   end
 
+  describe 'federal register links' do
+    subject(:federal_register_document_info) do
+      search.affiliate.agency = Agency.create!({name: 'Some New Agency', abbreviation: 'SNA'})
+      helper.link_to_federal_register_advanced_search(search)
+    end
+
+    let(:affiliate) {  affiliates(:usagov_affiliate) }
+    let(:search) { WebSearch.new(query: 'english', affiliate: affiliate) }
+    let(:link) do
+      <<~HTML.delete!("\n")
+        <a href="https://www.federalregister.gov/articles/search?conditions
+        %5Bagency_ids%5D%5B%5D=&amp;conditions%5Bterm%5D=english">More SNA 
+        documents on FederalRegister.gov</a>
+      HTML
+    end
+
+    it { is_expected.to eq link }
+  end
+
   describe '#federal_register_document_comment_period' do
     let(:document) do
       mock_model(
