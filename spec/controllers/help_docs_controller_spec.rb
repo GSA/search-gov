@@ -31,7 +31,9 @@ describe HelpDocsController do
     end
 
     context 'when url does match search.gov with newline characters' do
-      let(:url) { "https://search.gov/manual/site-information.html\n<script>dangerous_stuff();</script>" }
+      let(:url) do
+        "https://search.gov/manual/site-information.html\n<script>dangerous_stuff();</script>"
+      end
 
       before do
         expect(HelpDoc).not_to receive(:extract_article)
