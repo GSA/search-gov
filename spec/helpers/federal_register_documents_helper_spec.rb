@@ -29,8 +29,8 @@ describe FederalRegisterDocumentsHelper do
     it { is_expected.to eq result }
   end
 
-  describe 'federal register links' do
-    subject(:federal_register_document_info) do
+  describe '#link_to_federal_register_advanced_search' do
+    subject(:link_to_federal_register_advanced_search) do
       search.affiliate.agency = Agency.create!({name: 'Some New Agency', abbreviation: 'SNA'})
       helper.link_to_federal_register_advanced_search(search)
     end
