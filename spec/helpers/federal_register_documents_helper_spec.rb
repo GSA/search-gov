@@ -1,21 +1,26 @@
 require 'spec_helper'
 
 describe FederalRegisterDocumentsHelper do
+
+  let(:document) do
+    mock_model(
+      FederalRegisterDocument,
+      document_type: 'Notice',
+      publication_date: 'Mon, 09 Jun 2014'.to_date,
+      start_page: 0,
+      end_page: 47,
+      document_number: '2019-55555',
+      contributing_agency_names: ['Internal Revenue Service',
+                                  'International Trade Administration',
+                                  'National Oceanic and Atmospheric Administration']
+    )
+  end
+
   describe '#federal_register_document_info' do
     subject(:federal_register_document_info) do
       helper.federal_register_document_info(document)
     end
 
-    let(:document) do
-      mock_model(
-        FederalRegisterDocument,
-        document_type: 'Notice',
-        publication_date: 'Mon, 09 Jun 2014'.to_date,
-        contributing_agency_names: ['Internal Revenue Service',
-                                    'International Trade Administration',
-                                    'National Oceanic and Atmospheric Administration']
-      )
-    end
     let(:result) do
       <<~HTML.delete!("\n")
         A <span>Notice</span> by the <span>Internal 
@@ -29,18 +34,22 @@ describe FederalRegisterDocumentsHelper do
     it { is_expected.to eq result }
   end
 
-  describe '#federal_register_document_comment_period' do
-    let(:document) do
-      mock_model(
-        FederalRegisterDocument,
-        document_type: "Notice",
-        publication_date: "Mon, 09 Jun 2014".to_date,
-        contributing_agency_names: ['Internal Revenue Service',
-                                    'International Trade Administration',
-                                    'National Oceanic and Atmospheric Administration']
-      )
+  describe '#federal_register_document_page_info' do
+    subject(:federal_register_document_info) do
+      helper.federal_register_document_page_info(document)
     end
 
+    let(:result) do
+      <<~HTML.delete!("\n")
+        Pages 0 - 47 (0 pages) [FR DOC #: 2019-55555]
+      HTML
+    end
+
+    it { is_expected.to eq result }
+
+  end
+
+  describe '#federal_register_document_comment_period' do
     context 'when federal_register_document_info is called' do
       let(:result) do
         "A <span>Notice</span> by the <span>Internal " \
