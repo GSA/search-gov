@@ -517,13 +517,14 @@ class Affiliate < ApplicationRecord
   end
 
   def save_template_schema(saved_template_schema)
-    merged_hash = if self.template_schema.blank?
-      (Template.default.schema).deep_merge(saved_template_schema)
-    else
-      (JSON.parse(template_schema)).deep_merge(saved_template_schema)
-    end
+    merged_template_schema =
+      if template_schema.blank?
+        (Template.default.schema.to_h).deep_merge(saved_template_schema)
+      else
+        (JSON.parse(template_schema)).deep_merge(saved_template_schema)
+      end
 
-    self.update_attribute(:template_schema, merged_hash.to_json)
+    update(template_schema: merged_template_schema.to_json)
   end
 
   def reset_template_schema
