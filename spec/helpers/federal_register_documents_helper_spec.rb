@@ -46,7 +46,6 @@ describe FederalRegisterDocumentsHelper do
     end
 
     it { is_expected.to eq result }
-
   end
 
   describe '#federal_register_document_comment_period' do
