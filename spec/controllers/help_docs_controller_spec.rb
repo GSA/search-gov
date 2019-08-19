@@ -30,6 +30,19 @@ describe HelpDocsController do
       it { is_expected.to redirect_to('https://www.usa.gov/search-error') }
     end
 
+    context 'when url does match search.gov with newline characters' do
+      let(:url) do
+        "https://search.gov/manual/site-information.html\n<script>dangerous_stuff();</script>"
+      end
+
+      before do
+        expect(HelpDoc).not_to receive(:extract_article)
+        get :show, url: url, format: :json
+      end
+      it { is_expected.to redirect_to('https://www.usa.gov/search-error') }
+    end
+
+
     context 'when user is not logged in' do
       let(:url) { 'https://search.gov/manual/site-information.html' }
 
