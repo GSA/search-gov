@@ -81,7 +81,7 @@ developer:
 active_user:
   <<: *DEFAULTS
   email: active_user@fixtures.org
-  last_login_at: <%= 1.day.ago.to_s(:db) %>
+  current_login_at: <%= 1.day.ago.to_s(:db) %>
 
 never_active_user:
   <<: *DEFAULTS
@@ -91,7 +91,7 @@ never_active_user:
 not_active_user:
   <<: *DEFAULTS
   email: not_active_user@fixtures.org
-  last_login_at: <%= 100.days.ago.to_s(:db) %>
+  current_login_at: <%= 100.days.ago.to_s(:db) %>
 
 new_non_active_user:
   <<: *DEFAULTS
