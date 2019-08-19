@@ -466,22 +466,34 @@ describe Affiliate do
     end
 
     describe 'header tagline validation' do
-      it 'validates a valid url and returns true' do
-        affiliate = Affiliate.new(valid_create_attributes.
-          merge(header_tagline_url: 'http://www.google.com'))
-        expect(affiliate.save).to be true
+      let(:affiliate) do
+        Affiliate.new(valid_create_attributes.
+          merge(header_tagline_url: header_tagline_url))
+      end
+      let(:header_tagline_url) { 'http://www.google.com' }
+
+      context 'when the URL is valid' do
+        it 'is valid' do
+          expect(affiliate).to be_valid
+        end
       end
 
-      it 'validates a non valid url and returns false' do
-        affiliate = Affiliate.new(valid_create_attributes.
-          merge(header_tagline_url: 'foo;'))
-        expect(affiliate.save).to be false
+      context 'when the URL is invalid' do
+        let(:header_tagline_url) { 'foo' }
+
+        it 'is invalid' do
+          expect(affiliate).not_to be_valid
+          expect(affiliate.errors[:header_tagline_url]).to include 'is not a valid URL'
+        end
       end
 
-      it 'validates a non valid url with javascript returns false' do
-        affiliate = Affiliate.new(valid_create_attributes.
-          merge(header_tagline_url: 'javascript:alert(document.domain)'))
-        expect(affiliate.save).to be false
+      context 'when the URL is includes javascript' do
+        let(:header_tagline_url) { 'javascript:alert(document.domain)' }
+
+        it 'is invalid' do
+          expect(affiliate).not_to be_valid
+          expect(affiliate.errors[:header_tagline_url]).to include 'is not a valid URL'
+        end
       end
     end
 
