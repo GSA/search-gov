@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe FederalRegisterDocumentsHelper do
-
   let(:document) do
     mock_model(
       FederalRegisterDocument,
@@ -39,9 +38,7 @@ describe FederalRegisterDocumentsHelper do
       helper.federal_register_document_page_info(document)
     end
 
-    let(:result) { 'Pages 0 - 47 (0 pages) [FR DOC #: 2019-55555]' }
-
-    it { is_expected.to eq result }
+    it { is_expected.to eq 'Pages 0 - 47 (0 pages) [FR DOC #: 2019-55555]' }
   end
 
   describe '#link_to_federal_register_advanced_search' do
