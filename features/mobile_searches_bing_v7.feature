@@ -512,6 +512,7 @@ Feature: Searches using mobile device
     And I press "Search"
     Then I should see "We're including results for gov from usa.gov only."
     And I should see "Do you want to see results for gov from all sites?"
+    And every result URL should match "usa.gov"
     When I follow "gov from all sites" within the search all sites row
     Then I should not see "We're including results for gov from usa.gov only."
 

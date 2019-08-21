@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rake', '~> 12.3.2'
-gem 'rails', '= 4.2.11'
+gem 'rails', '~> 4.2.11'
 gem 'rails-observers', '~> 0.1.5'
 gem 'responders', '~> 2.0'
 gem 'mysql2', '~> 0.3.0'
@@ -9,7 +9,7 @@ gem 'curb', '~> 0.9.4'
 gem 'haml', '~> 5.0.4'
 gem 'json', '~> 1.8.6'
 gem 'will_paginate', '~> 3.1.6'
-gem 'nokogiri', '~> 1.8.1'
+gem 'nokogiri', '~> 1.10.4'
 gem 'bcrypt-ruby', '~> 3.1.5', :require => 'bcrypt'
 gem 'authlogic', '~> 3.6.1'
 gem 'airbrake', '~> 7.1.1'
@@ -29,8 +29,8 @@ gem 'sanitize', '~> 4.6.4'
 gem 'tweetstream', '~> 2.6.1' # no longer maintained?
 gem 'twitter', '~> 5.5'
 gem 'flickraw', '~> 0.9.9'
-gem 'active_scaffold', '~> 3.4.43'
-gem 'active_scaffold_export', '~> 3.3.2'
+gem 'active_scaffold', '~> 3.5.0'
+gem 'active_scaffold_export', git: 'https://github.com/naaano/active_scaffold_export'
 gem 'us_states_select', '~> 1.2.0', :git => 'https://github.com/jeremydurham/us-state-select-plugin.git', :require => 'us_states_select'
 gem 'mobile-fu', '~> 1.4.0'
 gem "recaptcha", '~> 4.6.3', :require => "recaptcha/rails"
@@ -85,9 +85,7 @@ gem 'medusa', git: 'https://github.com/MothOnMars/medusa', branch: 'clean_urls'
 # Robotex is required by Medusa. Specifying fork until https://github.com/chriskite/robotex/issues/4
 # is resolved
 gem 'robotex', git: 'https://github.com/MothOnMars/robotex'
-# Using custom branch until https://github.com/lygaret/sitemaps/pull/4 is merged,
-# and https://github.com/lygaret/sitemaps/issues/5 and https://github.com/lygaret/sitemaps/issues/6 are resolved
-gem 'sitemaps_parser', require: 'sitemaps', git: 'https://github.com/MothOnMars/sitemaps', branch: 'discovery_fixes'
+gem 'sitemaps_parser', '~> 0.2', require: 'sitemaps'
 gem 'counter_culture', '~> 2.0.0'
 gem 'aasm', '~> 4.12'
 gem 'active_scheduler', '~> 0.5.0'

@@ -95,7 +95,7 @@ describe Affiliate do
     it { is_expected.to have_many(:rss_feeds).dependent(:destroy) }
     it { is_expected.to have_many(:affiliate_templates).dependent(:destroy) }
     it { is_expected.to have_many(:available_templates).through(:affiliate_templates).source(:template) }
-    it { is_expected.to have_many(:site_domains).dependent(:destroy) }
+    it { is_expected.to have_many(:site_domains).dependent(:destroy).inverse_of(:affiliate) }
     it { is_expected.to have_many(:tag_filters).dependent(:destroy) }
 
     it { is_expected.to have_and_belong_to_many :instagram_profiles }
@@ -463,6 +463,38 @@ describe Affiliate do
       affiliate = Affiliate.new(valid_create_attributes.merge(locale: 'invalid_locale'))
       expect(affiliate.save).to be false
       expect(affiliate.errors[:base]).to include("Locale must be valid")
+    end
+
+    describe 'header tagline validation' do
+      let(:affiliate) do
+        Affiliate.new(valid_create_attributes.
+          merge(header_tagline_url: header_tagline_url))
+      end
+      let(:header_tagline_url) { 'http://www.google.com' }
+
+      context 'when the URL is valid' do
+        it 'is valid' do
+          expect(affiliate).to be_valid
+        end
+      end
+
+      context 'when the URL is invalid' do
+        let(:header_tagline_url) { 'foo' }
+
+        it 'is invalid' do
+          expect(affiliate).not_to be_valid
+          expect(affiliate.errors[:header_tagline_url]).to include 'is not a valid URL'
+        end
+      end
+
+      context 'when the URL is includes javascript' do
+        let(:header_tagline_url) { 'javascript:alert(document.domain)' }
+
+        it 'is invalid' do
+          expect(affiliate).not_to be_valid
+          expect(affiliate.errors[:header_tagline_url]).to include 'is not a valid URL'
+        end
+      end
     end
 
     describe 'bing v5 key stripping' do

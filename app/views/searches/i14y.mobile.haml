@@ -5,10 +5,12 @@
     = render partial: 'no_results', locals: { search: @search }
   - else
     = search_suggestion(@search, 'ISPEL')
+  = matching_site_limits @search, @search_params if @search.results.present?
   = render partial: 'best_bets', locals: { search: @search } if @search.has_best_bets?
   = render partial: 'med_topic', locals: { search: @search } if @search.med_topic.present?
   = render partial: 'jobs', locals: { search: @search } if @search.jobs.present?
   = render partial: 'tweets', locals: { search:  @search } if @search.has_tweets?
+  = render partial: 'govbox_video_news_items', locals: { search:  @search, search_params: @search_params } if @search.has_video_news_items?
   = render partial: 'govbox_news_items', locals: { search:  @search } if @search.has_fresh_news_items?
 
   - if @search.results.present?

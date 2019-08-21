@@ -3,8 +3,8 @@ require 'spec_helper'
 describe I14yMembership do
   fixtures :i14y_drawers, :affiliates, :i14y_memberships
 
-  it { is_expected.to belong_to(:affiliate) }
-  it { is_expected.to belong_to(:i14y_drawer) }
+  it { is_expected.to belong_to(:affiliate), inverse_of: :i14y_memberships }
+  it { is_expected.to belong_to(:i14y_drawer), inverse_of: :i14y_memberships }
 
   describe "#label" do
     it 'should show the affiliate name and i14y drawer handle' do

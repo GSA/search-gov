@@ -175,11 +175,13 @@ describe SaytSuggestion do
 
   describe "#process_sayt_suggestion_txt_upload" do
     fixtures :affiliates
+    let(:content_type) { 'text/plain' }
+
     before do
       @affiliate = affiliates(:basic_affiliate)
       @phrases = %w{ one two three }
       tempfile = File.open('spec/fixtures/txt/sayt_suggestions.txt')
-      @file = ActionDispatch::Http::UploadedFile.new(:tempfile => tempfile, :type => 'text/plain')
+      @file = Rack::Test::UploadedFile.new(tempfile, content_type)
       @dummy_suggestion = SaytSuggestion.create(:phrase => 'dummy suggestions')
     end
 

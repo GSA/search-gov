@@ -14,7 +14,7 @@ describe RoutedQuery do
     end
 
     it { is_expected.to belong_to :affiliate }
-    it { is_expected.to have_many(:routed_query_keywords).dependent(:destroy) }
+    it { is_expected.to have_many(:routed_query_keywords).dependent(:destroy).inverse_of(:routed_query)}
     it { is_expected.to validate_presence_of :description }
     it { is_expected.to validate_uniqueness_of(:description).scoped_to(:affiliate_id) }
     it { is_expected.to validate_presence_of :affiliate }

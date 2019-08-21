@@ -76,7 +76,7 @@ describe ImageSearchesController do
     context 'when params[:affiliate] is not a string' do
       before { get :index, affiliate: { 'foo' => 'bar' }, query: 'gov' }
 
-      it { is_expected.to redirect_to 'https://www.usa.gov/page-not-found' }
+      it { is_expected.to redirect_to 'https://www.usa.gov/search-error' }
     end
 
     context "when searching on legacy affiliate via the API" do

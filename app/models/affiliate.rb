@@ -38,7 +38,7 @@ class Affiliate < ActiveRecord::Base
     assoc.has_many :routed_queries
     assoc.has_many :rss_feeds, -> { order 'rss_feeds.name ASC, rss_feeds.id ASC' }, as: :owner
     assoc.has_many :sayt_suggestions
-    assoc.has_many :site_domains, -> { order 'domain ASC' }
+    assoc.has_many :site_domains, -> { order 'domain ASC' }, inverse_of: :affiliate
     assoc.has_one :site_feed_url
     assoc.has_many :superfresh_urls
     assoc.has_one :alert
@@ -119,6 +119,7 @@ class Affiliate < ActiveRecord::Base
   validates_format_of :name, :with => /\A[a-z0-9._-]+\z/
   validates_format_of :bing_v5_key, :with => /\A[0-9a-f]{32}\z/i, allow_nil: true
   validates_inclusion_of :search_engine, in: SEARCH_ENGINES
+  validates_url :header_tagline_url, allow_blank: true
 
   validates_attachment_content_type :page_background_image,
                                     content_type: VALID_IMAGE_CONTENT_TYPES,

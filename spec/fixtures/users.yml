@@ -54,6 +54,7 @@ affiliate_manager_with_one_site:
   is_affiliate: true
   contact_name: A New Manager with one site
   welcome_email_sent: true
+  approval_status: approved
 
 affiliate_without_contact_info:
   <<: *DEFAULTS
@@ -77,6 +78,26 @@ developer:
   is_affiliate: false
   contact_name: A New Developer
   welcome_email_sent: true
+
+active_user:
+  <<: *DEFAULTS
+  email: active_user@fixtures.org
+  current_login_at: <%= 1.day.ago.to_s(:db) %>
+
+never_active_user:
+  <<: *DEFAULTS
+  email: never_active_user@fixtures.org
+  created_at: <%= 100.days.ago.to_s(:db) %>
+
+not_active_user:
+  <<: *DEFAULTS
+  email: not_active_user@fixtures.org
+  current_login_at: <%= 100.days.ago.to_s(:db) %>
+
+new_non_active_user:
+  <<: *DEFAULTS
+  email: new_non_active_user@fixtures.org
+  created_at: <%= 3.days.ago.to_s(:db) %>
 
 affiliate_manager_with_pending_contact_information_status:
   <<: *DEFAULTS
@@ -134,3 +155,5 @@ affiliate_requiring_manual_approval:
   <<: *DEFAULTS
   email: affiliate_requiring_manual_approval@email.gov
   requires_manual_approval: true
+  approval_status: pending_approval
+

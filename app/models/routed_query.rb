@@ -5,7 +5,7 @@ class RoutedQuery < ActiveRecord::Base
   include ActiveRecord::ValidateUniqueChildAttribute
 
   belongs_to :affiliate
-  has_many :routed_query_keywords, dependent: :destroy
+  has_many :routed_query_keywords, dependent: :destroy, inverse_of: :routed_query
 
   validates :description, presence: true
   validates_uniqueness_of :description, scope: :affiliate_id

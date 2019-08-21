@@ -5,8 +5,7 @@ describe RoutedQueryKeyword do
   let(:routed_query) { routed_queries(:unclaimed_money) }
 
   describe 'Creating new instance' do
-
-    it { is_expected.to belong_to :routed_query }
+    it { is_expected.to belong_to(:routed_query).inverse_of(:routed_query_keywords) }
     it { is_expected.to validate_presence_of :routed_query }
     it { is_expected.to validate_presence_of :keyword }
     it { is_expected.to validate_uniqueness_of(:keyword).scoped_to(:routed_query_id).case_insensitive }
