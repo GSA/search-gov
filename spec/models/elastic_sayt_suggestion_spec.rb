@@ -1,5 +1,7 @@
 require 'spec_helper'
 
+# Temporarily disabling these specs during ES56 upgrade
+# https://cm-jira.usa.gov/browse/SRCH-821
 describe ElasticSaytSuggestion do
   fixtures :affiliates
   let(:affiliate) { affiliates(:basic_affiliate) }
@@ -10,7 +12,7 @@ describe ElasticSaytSuggestion do
     affiliate.locale = 'en'
   end
 
-  describe ".search_for" do
+  pending ".search_for" do
     describe "results structure" do
       context 'when there are results' do
         before do
@@ -46,7 +48,7 @@ describe ElasticSaytSuggestion do
     end
   end
 
-  describe "highlighting results" do
+  pending "highlighting results" do
     before do
       affiliate.sayt_suggestions.create!(phrase: 'hi suggest me', popularity: 30)
       ElasticSaytSuggestion.commit
@@ -84,7 +86,7 @@ describe ElasticSaytSuggestion do
 
   end
 
-  describe "filters" do
+  pending "filters" do
     context 'when query is exact match of phrase' do
       before do
         affiliate.sayt_suggestions.create!(phrase: 'the exact match', popularity: 30)
@@ -120,7 +122,7 @@ describe ElasticSaytSuggestion do
 
   end
 
-  describe "recall" do
+  pending "recall" do
     before do
       affiliate.sayt_suggestions.create!(phrase: 'obama and biden', popularity: 30)
       ElasticSaytSuggestion.commit
