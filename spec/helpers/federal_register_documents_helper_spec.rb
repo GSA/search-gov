@@ -39,11 +39,7 @@ describe FederalRegisterDocumentsHelper do
       helper.federal_register_document_page_info(document)
     end
 
-    let(:result) do
-      <<~HTML.delete!("\n")
-        Pages 0 - 47 (0 pages) [FR DOC #: 2019-55555]
-      HTML
-    end
+    let(:result) { 'Pages 0 - 47 (0 pages) [FR DOC #: 2019-55555]' }
 
     it { is_expected.to eq result }
   end
