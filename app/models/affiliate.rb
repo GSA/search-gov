@@ -520,7 +520,7 @@ class Affiliate < ApplicationRecord
   def save_template_schema(saved_template_schema)
     merged_template_schema =
       if template_schema.blank?
-        (Template.default.schema.to_h).deep_merge(saved_template_schema)
+        (Template.default.schema).deep_merge(saved_template_schema.to_h)
       else
         (JSON.parse(template_schema)).deep_merge(saved_template_schema)
       end
