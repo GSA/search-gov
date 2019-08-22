@@ -59,7 +59,7 @@ class User < ActiveRecord::Base
   scope :approved, -> { where(approval_status: 'approved') }
   scope :not_active,
         lambda {
-          where('last_login_at <= ? OR (last_login_at IS NULL AND created_at <=? )',
+          where('current_login_at <= ? OR (current_login_at IS NULL AND created_at <=? )',
                 90.days.ago,
                 90.days.ago)
         }

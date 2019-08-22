@@ -119,6 +119,7 @@ class Affiliate < ActiveRecord::Base
   validates_format_of :name, :with => /\A[a-z0-9._-]+\z/
   validates_format_of :bing_v5_key, :with => /\A[0-9a-f]{32}\z/i, allow_nil: true
   validates_inclusion_of :search_engine, in: SEARCH_ENGINES
+  validates_url :header_tagline_url, allow_blank: true
 
   validates_attachment_content_type :page_background_image,
                                     content_type: VALID_IMAGE_CONTENT_TYPES,
