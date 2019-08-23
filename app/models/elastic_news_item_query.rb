@@ -34,7 +34,7 @@ class ElasticNewsItemQuery < ElasticTextFilterByPublishedAtQuery
     json.set! field do |agg_json|
       agg_json.terms do
         agg_json.field field
-        agg_json.size 0
+        agg_json.size 100
       end
     end
   end

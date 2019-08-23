@@ -48,10 +48,8 @@ describe ElasticNewsItem do
     ElasticNewsItem.commit
   end
 
-  # Temporarily disabling these specs during ES56 upgrade
-  # https://cm-jira.usa.gov/browse/SRCH-826
-  pending ".search_for" do
-    describe "results structure" do
+  describe '.search_for' do
+    describe 'results structure' do
       context 'when there are results' do
 
         it 'should return results in an easy to access structure' do
@@ -105,7 +103,9 @@ describe ElasticNewsItem do
 
     end
 
-    describe "filters" do
+    # Temporarily disabling these specs during ES56 upgrade
+    # https://cm-jira.usa.gov/browse/SRCH-826
+    pending "filters" do
 
       context 'when RSS feeds are specified' do
         it "should restrict results to the RSS feed URLS belonging to the specified collection of RSS feeds" do
@@ -260,7 +260,9 @@ describe ElasticNewsItem do
       end
     end
 
-    describe "synonyms and protected words" do
+    # Temporarily disabling these specs during ES56 upgrade
+    # https://cm-jira.usa.gov/browse/SRCH-826
+    pending "synonyms and protected words" do
       it "should use both" do
         search = ElasticNewsItem.search_for(q: "gas", rss_feeds: [blog, gallery], language: 'en')
         expect(search.total).to eq(1)
