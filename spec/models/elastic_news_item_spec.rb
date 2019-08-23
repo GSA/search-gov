@@ -48,7 +48,9 @@ describe ElasticNewsItem do
     ElasticNewsItem.commit
   end
 
-  describe ".search_for" do
+  # Temporarily disabling these specs during ES56 upgrade
+  # https://cm-jira.usa.gov/browse/SRCH-826
+  pending ".search_for" do
     describe "results structure" do
       context 'when there are results' do
 
