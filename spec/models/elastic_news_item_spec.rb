@@ -103,10 +103,7 @@ describe ElasticNewsItem do
 
     end
 
-    # Temporarily disabling these specs during ES56 upgrade
-    # https://cm-jira.usa.gov/browse/SRCH-826
-    pending "filters" do
-
+    describe 'filters' do
       context 'when RSS feeds are specified' do
         it "should restrict results to the RSS feed URLS belonging to the specified collection of RSS feeds" do
           search = ElasticNewsItem.search_for(q: 'policy', rss_feeds: [blog], language: 'en')
@@ -210,7 +207,9 @@ describe ElasticNewsItem do
         end
       end
 
-      context 'when affiliate locale is not one of the custom indexed languages' do
+      # Disabling until we re-implement multi-lingual support for ES 5.6+
+      # https://cm-jira.usa.gov/browse/SRCH-472
+      pending 'when affiliate locale is not one of the custom indexed languages' do
         before do
           affiliate.locale = 'kl'
           affiliate.save!
@@ -262,7 +261,7 @@ describe ElasticNewsItem do
 
     # Temporarily disabling these specs during ES56 upgrade
     # https://cm-jira.usa.gov/browse/SRCH-826
-    pending "synonyms and protected words" do
+    pending 'synonyms and protected words' do
       it "should use both" do
         search = ElasticNewsItem.search_for(q: "gas", rss_feeds: [blog, gallery], language: 'en')
         expect(search.total).to eq(1)

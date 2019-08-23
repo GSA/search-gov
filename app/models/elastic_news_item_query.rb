@@ -16,9 +16,11 @@ class ElasticNewsItemQuery < ElasticTextFilterByPublishedAtQuery
     filtered_query(json)
 
     json.post_filter do
-      json.and do
-        @dublin_core_aggs.each do |facet, value|
-          json.child! { json.term { json.set! facet, value } }
+      json.bool do
+        json.must do
+          @dublin_core_aggs.each do |facet, value|
+            json.child! { json.term { json.set! facet, value } }
+          end
         end
       end
     end if @dublin_core_aggs.present?
