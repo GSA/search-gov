@@ -23,9 +23,7 @@ describe SearchConsumer::API do
         }.to_json)
     end
 
-    # Temporarily disabling these specs during ES56 upgrade
-    # https://cm-jira.usa.gov/browse/SRCH-827
-    xit 'returns a list of results for an RSS channel with results' do
+    it 'returns a list of results for an RSS channel with results' do
       get "/api/c/search/rss/#{rss_feed.id}?affiliate=nps.gov&sc_access_key=#{SC_ACCESS_KEY}&query=element"
       expect(response.status).to eq(200)
       expect(response.body).to include_json(
