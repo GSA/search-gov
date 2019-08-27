@@ -10,7 +10,7 @@ module ElasticSuggest
           json.direct_generator do
             json.child! do
               json.field 'bigram'
-              json.prefix_len 1
+              json.prefix_length 1
             end
           end
           json.highlight do

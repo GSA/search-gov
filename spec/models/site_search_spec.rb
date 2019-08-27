@@ -80,9 +80,7 @@ describe SiteSearch do
         ElasticIndexedDocument.commit
       end
 
-      # Temporarily disabling these specs during ES56 upgrade
-      # https://cm-jira.usa.gov/browse/SRCH-822
-      xit 'includes SPEL and LOVER in the modules' do
+      it 'includes SPEL and LOVER in the modules' do
         search = SiteSearch.new({ affiliate: affiliate, document_collection: collection, query: 'Scientost' })
         search.run
         expect(search.modules).to include('SPEL', 'LOVER')
