@@ -13,7 +13,7 @@ class ElasticQuery
     @size = [options[:size].to_i, MAX_SIZE].min
     @q = options[:q]
     @highlighting = !(options[:highlighting] == false)
-    @text_analyzer = 'standard'
+    @text_analyzer = 'default'
     @sort = options[:sort]
     @pre_tags = options[:pre_tags]
     @post_tags = options[:post_tags]

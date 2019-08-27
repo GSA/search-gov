@@ -26,6 +26,10 @@ module ElasticSettings
             type: "custom",
             tokenizer: "standard",
             filter: %w(standard asciifolding lowercase) },
+          default: {
+            type: "custom",
+            tokenizer: "standard",
+            filter: %w(standard asciifolding lowercase) },
           en_analyzer: {
             type: "custom",
             tokenizer: "standard",
