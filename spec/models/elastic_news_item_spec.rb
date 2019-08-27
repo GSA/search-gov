@@ -210,9 +210,7 @@ describe ElasticNewsItem do
         end
       end
 
-      # Disabling until we re-implement multi-lingual support for ES 5.6+
-      # https://cm-jira.usa.gov/browse/SRCH-472
-      pending 'when affiliate locale is not one of the custom indexed languages' do
+      context 'when affiliate locale is not one of the custom indexed languages' do
         before do
           affiliate.locale = 'kl'
           affiliate.save!
