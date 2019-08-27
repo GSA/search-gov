@@ -27,13 +27,13 @@ class ElasticBlendedQuery < ElasticTextFilterByPublishedAtQuery
           json.child! do
             json.gauss do
               json.published_at do
-                json.scale "4w"
+                json.scale '28d'
               end
             end
           end
           json.child! do
             json.field_value_factor do
-              json.field "popularity"
+              json.field 'popularity'
             end
           end
         end unless @sort
