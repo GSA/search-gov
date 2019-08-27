@@ -198,7 +198,7 @@ describe ElasticIndexedDocument do
         expect(ElasticIndexedDocument.search_for(q: 'SpellinG', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
       end
 
-      pending 'should perform ASCII folding' do
+      it 'performs ASCII folding' do
         expect(ElasticIndexedDocument.search_for(q: 'øbåmà', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
         expect(ElasticIndexedDocument.search_for(q: 'yøsemîte', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
         expect(ElasticIndexedDocument.search_for(q: 'spélliñg', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
@@ -300,9 +300,7 @@ describe ElasticIndexedDocument do
 
       end
 
-      # Elastic search 5x and higher does not support per-document analyzers therefore
-      # this test does not work at this time. See https://cm-jira.usa.gov/browse/SRCH-474.
-      pending 'when affiliate locale is not one of the custom indexed languages' do
+      context 'when affiliate locale is not one of the custom indexed languages' do
         before do
           affiliate.locale = 'de'
           affiliate.indexed_documents.create!(title: 'Angebote und Superknüller der Woche',
