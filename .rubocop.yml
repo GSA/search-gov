@@ -3349,7 +3349,7 @@ Style/MethodCallWithArgsParentheses:
   VersionAdded: 0.47
   VersionChanged: 0.48
   IgnoreMacros: true
-  IgnoredMethods: []
+  IgnoredMethods: ['require']
   Exclude:
     - 'spec/**/*'
     - 'Gemfile'
