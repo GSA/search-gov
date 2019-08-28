@@ -260,9 +260,7 @@ describe ElasticNewsItem do
       end
     end
 
-    # Temporarily disabling these specs during ES56 upgrade
-    # https://cm-jira.usa.gov/browse/SRCH-836
-    pending 'synonyms and protected words' do
+    context 'synonyms and protected words' do
       it "should use both" do
         search = ElasticNewsItem.search_for(q: "gas", rss_feeds: [blog, gallery], language: 'en')
         expect(search.total).to eq(1)

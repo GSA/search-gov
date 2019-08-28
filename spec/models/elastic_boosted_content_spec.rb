@@ -277,9 +277,7 @@ describe ElasticBoostedContent do
       end
     end
 
-    # Disabling until we re-implement per-language analysis:
-    # https://cm-jira.usa.gov/browse/SRCH-474
-    pending 'when various apostrophes are present in title/desc/keywords' do
+    context 'when various apostrophes are present in title/desc/keywords' do
       before do
         apostrophe_1 = affiliate.boosted_contents.build(title: "hawai`i o'reilly",
                                                            status: 'active',
@@ -354,9 +352,7 @@ describe ElasticBoostedContent do
         end
       end
 
-      # Disabling until we re-implement per-language analysis:
-      # https://cm-jira.usa.gov/browse/SRCH-474
-      pending 'when affiliate is English' do
+      context 'when affiliate is English' do
         before do
           affiliate.boosted_contents.create!(title: 'The affiliate interns use powerful engineering computers',
                                              status: 'active',
@@ -374,9 +370,7 @@ describe ElasticBoostedContent do
         end
       end
 
-      # Disabling until we re-implement per-language analysis:
-      # https://cm-jira.usa.gov/browse/SRCH-474
-      pending 'when affiliate is Spanish' do
+      context 'when affiliate is Spanish' do
         before do
           affiliate.locale = 'es'
           affiliate.boosted_contents.create!(title: 'Leyes y el rey',

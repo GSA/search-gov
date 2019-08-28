@@ -3,7 +3,7 @@ class ElasticSaytSuggestionQuery < ElasticTextFilteredQuery
   def initialize(options)
     super(options.merge({ sort: 'popularity:desc' }))
     @affiliate_id = options[:affiliate_id]
-    self.highlighted_fields = %w(phrase)
+    @text_fields = ['phrase']
   end
 
   def filtered_query_filter(json)

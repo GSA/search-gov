@@ -1,19 +1,18 @@
+# frozen_string_literal: true
+
 class ElasticTweet
   extend Indexable
 
   self.settings = ElasticSettings::COMMON
 
   self.mappings = {
-    index_type => {
-      dynamic: :strict,
+    index_type => ElasticMappings::COMMON.deep_merge(
       properties: {
-        language: { type: 'keyword', index: true },
         twitter_profile_id: { type: 'long' },
-        tweet_text: { type: 'text', term_vector: 'with_positions_offsets' },
+        tweet_text: ElasticSettings::TEXT,
         published_at: { type: 'date' },
-        id: { type: 'long' }
       }
-    }
+    )
   }
 
 end

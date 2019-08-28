@@ -1,19 +1,28 @@
 class ElasticNewsItemData
   DAYS_BACK = 7
 
+  attr_reader :news_item, :language
+
   def initialize(news_item)
     @news_item = news_item
+    @language = news_item.language
   end
 
   def to_builder
     Jbuilder.new do |json|
-      json.(@news_item, :id, :rss_feed_url_id, :title, :description, :body, :link, :tags)
+      json.(news_item, :id, :rss_feed_url_id, :link, :tags)
       ElasticNewsItem::DUBLIN_CORE_AGG_NAMES.each do |dublin_core_field|
-        json.set! dublin_core_field, @news_item.send(dublin_core_field).split(',').map(&:squish) if @news_item.send(dublin_core_field).present?
+        if news_item.send(dublin_core_field).present?
+          value = news_item.send(dublin_core_field).split(',').map(&:squish)
+          json.set! dublin_core_field, value
+        end
       end
-      json.published_at @news_item.published_at.strftime("%Y-%m-%dT%H:%M:%S")
-      json.popularity LinkPopularity.popularity_for(@news_item.link, DAYS_BACK)
-      json.language "#{@news_item.language}_analyzer"
+       %w[title description body].each do |field|
+         json.set! "#{field}.#{language}", news_item.send(field)
+       end
+      json.published_at news_item.published_at.strftime("%Y-%m-%dT%H:%M:%S")
+      json.popularity LinkPopularity.popularity_for(news_item.link, DAYS_BACK)
+      json.language language
     end
   end
 

@@ -1,14 +1,27 @@
+# frozen_string_literal: true
+
 class ElasticFeaturedCollectionData
+  attr_reader :featured_collection, :language
+
   def initialize(featured_collection)
     @featured_collection = featured_collection
+    @language = featured_collection.affiliate.indexing_locale
   end
 
   def to_builder
     Jbuilder.new do |json|
-      json.(@featured_collection, :id, :affiliate_id, :title, :status, :publish_start_on, :publish_end_on, :match_keyword_values_only)
-      json.language "#{@featured_collection.affiliate.indexing_locale}_analyzer"
-      json.link_titles @featured_collection.featured_collection_links.collect(&:title)
-      json.keyword_values @featured_collection.featured_collection_keywords.collect(&:value)
+      json.(featured_collection,
+            :id,
+            :affiliate_id,
+            :status,
+            :publish_start_on,
+            :publish_end_on,
+            :match_keyword_values_only)
+      json.language language
+      json.set! "title.#{language}", featured_collection.title
+      json.set! "link_titles.#{language}",
+                featured_collection.featured_collection_links.pluck(:title)
+      json.keyword_values featured_collection.featured_collection_keywords.pluck(:value)
     end
   end
 

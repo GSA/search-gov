@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ElasticBestBetQuery < ElasticTextFilteredQuery
 
   def initialize(options)

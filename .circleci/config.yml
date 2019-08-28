@@ -260,14 +260,12 @@ workflows:
             - setup_elasticsearch
             - bundle_install
 
-# Temporarily disabling Cucumber tests & coverage check until Rspec is passing
-# https://cm-jira.usa.gov/browse/SRCH-825
-#     - cucumber:
-#         requires:
-#           - setup_elasticsearch
-#           - bundle_install
-#
-#     - report_coverage:
-#         requires:
-#           - rspec
-#           - cucumber
+      - cucumber:
+          requires:
+            - setup_elasticsearch
+            - bundle_install
+
+      - report_coverage:
+          requires:
+            - rspec
+            - cucumber
