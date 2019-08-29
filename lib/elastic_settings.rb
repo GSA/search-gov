@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module ElasticSettings
-  KEYWORD = { type: 'text',
-              analyzer: 'case_insensitive_keyword_analyzer' }.freeze
+  KEYWORD = { type: 'keyword',
+              normalizer: 'keyword_normalizer' }.freeze
 
   COMMON = {
     index: {
@@ -25,31 +25,37 @@ module ElasticSettings
           babel_analyzer: {
             type: 'custom',
             tokenizer: 'standard',
-            filter: %w(standard asciifolding lowercase) },
+            filter: %w(asciifolding lowercase) },
           default: {
             type: 'custom',
             tokenizer: 'standard',
-            filter: %w(standard asciifolding lowercase) },
+            filter: %w(asciifolding lowercase) },
           en_analyzer: {
             type: 'custom',
             tokenizer: 'standard',
             char_filter: %w(ignore_chars),
-            filter: %w(standard asciifolding lowercase en_stop_filter en_protected_filter en_stem_filter en_synonym) },
+            filter: %w(asciifolding lowercase en_stop_filter en_protected_filter en_stem_filter en_synonym) },
           es_analyzer: {
             type: 'custom',
             tokenizer: 'standard',
             char_filter: %w(ignore_chars),
-            filter: %w(standard asciifolding lowercase es_stop_filter es_protected_filter es_stem_filter es_synonym) },
+            filter: %w(asciifolding lowercase es_stop_filter es_protected_filter es_stem_filter es_synonym) },
           bigram_analyzer: {
             type: 'custom',
             tokenizer: 'standard',
             char_filter: %w(ignore_chars),
-            filter: %w(standard asciifolding lowercase bigram_filter)
-          },
-          case_insensitive_keyword_analyzer: {
-            tokenizer: 'keyword',
+            filter: %w(asciifolding lowercase bigram_filter)
+          }
+        },
+        normalizer: {
+          keyword_normalizer: {
+            type: 'custom',
             char_filter: %w(ignore_chars),
-            filter: %w(standard asciifolding lowercase) } } } }
+            filter: %w(asciifolding lowercase)
+          }
+        }
+      }
+    }
   }.freeze
 
 end
