@@ -86,7 +86,7 @@ describe ElasticSaytSuggestion do
 
   end
 
-  pending "filters" do
+  describe 'filters' do
     context 'when query is exact match of phrase' do
       before do
         affiliate.sayt_suggestions.create!(phrase: 'the exact match', popularity: 30)
