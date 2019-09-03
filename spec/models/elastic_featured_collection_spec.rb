@@ -4,6 +4,13 @@ require 'spec_helper'
 describe ElasticFeaturedCollection do
   fixtures :affiliates
   let(:affiliate) { affiliates(:basic_affiliate) }
+  let(:search_params) do
+    {
+      q: 'Tropical',
+      affiliate_id: affiliate.id,
+      language: affiliate.indexing_locale
+    }
+  end
 
   before do
     ElasticFeaturedCollection.recreate_index
@@ -49,9 +56,7 @@ describe ElasticFeaturedCollection do
     end
   end
 
-  # Temporarily disabling these specs during ES56 upgrade
-  # https://cm-jira.usa.gov/browse/SRCH-823
-  pending "highlighting results" do
+  describe 'highlighting results' do
     before do
       featured_collection = affiliate.featured_collections.build(title: 'Tropical Hurricane Names',
                                                                  status: 'active',
@@ -90,10 +95,10 @@ describe ElasticFeaturedCollection do
       end
 
       it 'should escape the entity but show the highlight' do
-        search = ElasticFeaturedCollection.search_for(q: 'carrot', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
+        search = ElasticFeaturedCollection.search_for(search_params.merge(q: 'carrots'))
         first = search.results.first
         expect(first.title).to eq("Peas &amp; <strong>Carrots</strong>")
-        search = ElasticFeaturedCollection.search_for(q: 'entity', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
+        search = ElasticFeaturedCollection.search_for(search_params.merge(q: 'entities'))
         first = search.results.first
         expect(first.title).to eq("Peas &amp; Carrots")
       end
@@ -194,7 +199,7 @@ describe ElasticFeaturedCollection do
     end
   end
 
-  pending "recall" do
+  describe 'recall' do
     let(:valid_fc_params) do
       {
         title: 'Obamå',
@@ -277,7 +282,9 @@ describe ElasticFeaturedCollection do
         end
       end
 
-      context 'when affiliate is English' do
+      # Disabling until we re-implement per-language analysis:
+      # https://cm-jira.usa.gov/browse/SRCH-474
+      pending 'when affiliate is English' do
         before do
           featured_collection = affiliate.featured_collections.build(title: 'The affiliate interns use powerful engineering computers',
                                                                      status: 'active',
@@ -297,7 +304,9 @@ describe ElasticFeaturedCollection do
         end
       end
 
-      context 'when affiliate is Spanish' do
+      # Disabling until we re-implement per-language analysis:
+      # https://cm-jira.usa.gov/browse/SRCH-474
+      pending 'when affiliate is Spanish' do
         before do
           affiliate.locale = 'es'
           featured_collection = affiliate.featured_collections.build(title: 'Leyes y el rey',
