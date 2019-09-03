@@ -30,7 +30,7 @@ module Analytics::HomeHelper
   end
 
   def linked_shortened_url_without_protocol(url)
-    link_to(UrlParser.strip_http_protocols(truncate_url(url)), url)
+    sanitize(link_to(UrlParser.strip_http_protocols(truncate_url(url)), url))
   end
 
 end
