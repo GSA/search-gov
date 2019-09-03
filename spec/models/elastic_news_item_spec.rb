@@ -38,8 +38,11 @@ describe ElasticNewsItem do
       guid: 'unique to feed',
       published_at: 1.day.ago,
       link: 'http://www.wh.gov/ns2',
-      title: 'Obama adopts some more things',
-      description: '<p>that is the policy.</p>',
+      title: 'Obama adopts some more things about some other things',
+      description: '<p>that is the policy.</p><p>This is a paragraph full of other,
+                   less relevant words. These are more random words to ensure that
+                   the relevance calculation is comparing document fields
+                   of similar lengths.<\p>',
       contributor: 'President',
       publisher: 'Briefing Room',
       subject: 'HIV',
@@ -48,10 +51,8 @@ describe ElasticNewsItem do
     ElasticNewsItem.commit
   end
 
-  # Temporarily disabling these specs during ES56 upgrade
-  # https://cm-jira.usa.gov/browse/SRCH-826
-  pending ".search_for" do
-    describe "results structure" do
+  describe '.search_for' do
+    describe 'results structure' do
       context 'when there are results' do
 
         it 'should return results in an easy to access structure' do
@@ -105,8 +106,7 @@ describe ElasticNewsItem do
 
     end
 
-    describe "filters" do
-
+    describe 'filters' do
       context 'when RSS feeds are specified' do
         it "should restrict results to the RSS feed URLS belonging to the specified collection of RSS feeds" do
           search = ElasticNewsItem.search_for(q: 'policy', rss_feeds: [blog], language: 'en')
@@ -260,7 +260,9 @@ describe ElasticNewsItem do
       end
     end
 
-    describe "synonyms and protected words" do
+    # Temporarily disabling these specs during ES56 upgrade
+    # https://cm-jira.usa.gov/browse/SRCH-836
+    pending 'synonyms and protected words' do
       it "should use both" do
         search = ElasticNewsItem.search_for(q: "gas", rss_feeds: [blog, gallery], language: 'en')
         expect(search.total).to eq(1)

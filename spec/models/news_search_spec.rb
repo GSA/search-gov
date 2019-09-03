@@ -90,9 +90,7 @@ describe NewsSearch do
         expect(@search.run).to be true
       end
 
-      # Temporarily disabling these specs during ES56 upgrade
-      # https://cm-jira.usa.gov/browse/SRCH-816
-      xit "should have more than 0 results" do
+      it 'has more than 0 results' do
         @search.run
         expect(@search.results.size).to be > 0
       end
@@ -354,9 +352,7 @@ describe NewsSearch do
          published_at publisher rss_feed_url_id subject title updated_at)
     end
 
-    # Temporarily disabling these specs during ES56 upgrade
-    # https://cm-jira.usa.gov/browse/SRCH-816
-    xit 'contains all attributes' do
+    it 'contains all attributes' do
       search = NewsSearch.new(affiliate: affiliate, channel: rss_feeds(:white_house_blog))
       search.run
       expect(search.as_json[:results].first.keys).to match_array(expected_keys)
