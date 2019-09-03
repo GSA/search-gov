@@ -13,7 +13,9 @@ class ElasticSaytSuggestionQuery < ElasticTextFilteredQuery
           json.term { json.affiliate_id @affiliate_id }
         end
         json.must_not do
-          json.term { json.keyword @q.downcase }
+          json.term do
+            json.set! 'phrase.keyword', @q.downcase
+          end
         end
       end
     end

@@ -2,6 +2,7 @@ class ElasticFederalRegisterDocumentQuery < ElasticTextFilteredQuery
   def initialize(options)
     super(options.merge({ sort: 'comments_close_on:desc' }))
     self.highlighted_fields = %i(abstract title)
+    @text_analyzer = 'en_analyzer'
     @federal_register_agency_ids = options[:federal_register_agency_ids]
   end
 
