@@ -567,7 +567,7 @@ describe SearchesController do
       expect(assigns[:search]).to be_an_instance_of(NewsSearch)
     end
 
-    it "should find news items that match the query for the affiliate" do
+    it 'finds news items that match the query for the affiliate' do
       get :news, :query => "element", :affiliate => affiliate.name, :channel => rss_feeds(:white_house_blog).id, :tbs => "w"
       expect(assigns[:search].total).to eq(1)
       expect(assigns[:search].results.first).to eq(news_items(:item1))
@@ -585,7 +585,7 @@ describe SearchesController do
       it { is_expected.to redirect_to 'https://www.usa.gov/search-error' }
     end
 
-    context "when the query is blank and total is > 0" do
+    context 'when the query is blank and total is > 0' do
       before { get :news, :query => "", :affiliate => affiliate.name, :channel => rss_feeds(:white_house_blog).id, :tbs => "w" }
       it { is_expected.to assign_to(:page_title).with('White House Blog - NPS Site Search Results') }
     end
