@@ -6,9 +6,14 @@ module SearchDomain
   included do
     belongs_to :affiliate
     before_validation :normalize_domain
-    validates_presence_of :domain, :affiliate
-    validates_format_of :domain, :with => /\A([a-z0-9]+)?([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(\/[^?.]*)?\z/ix, allow_blank: true
-    validates_uniqueness_of :domain, :scope => :affiliate_id
+    validates :domain, :affiliate, presence: true
+
+    validates :domain,
+              uniqueness: { scope: :affiliate_id },
+              format: {
+                with: %r{\A([a-z0-9]+)?([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(\/[^?.]*)?\z}ix
+              },
+              allow_blank: true
 
     include InstanceMethods
   end
@@ -21,7 +26,7 @@ module SearchDomain
     protected
 
     def normalize_domain
-      self.domain = domain.gsub(/(^https?:\/\/| |\/$)/, '').downcase unless domain.blank?
+      self.domain = domain.gsub(%r{(^https?:\/\/| |\/$)}, '').downcase if domain.present?
     end
   end
 end
