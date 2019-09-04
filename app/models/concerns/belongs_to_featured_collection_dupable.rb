@@ -1,6 +1,4 @@
 module BelongsToFeaturedCollectionDupable
-# frozen_string_literal: true
-
   extend ActiveSupport::Concern
   include Dupable
 

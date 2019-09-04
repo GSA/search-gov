@@ -25,11 +25,18 @@ module Pageable
   end
 
   def initialize_pageable_attributes(options = {})
+    initialize_page_attributes(options)  
+    initialize_per_page_attributes(options)
+  end
+
+  def initialize_page_attributes(options = {})
     @page = options[:page].to_i rescue default_page
     @page = default_page unless @page >= default_page
+  end
 
+  def initialize_per_page_attributes(options = {})
     @per_page = options[:per_page].to_i rescue default_per_page
     max_per_page = [Pageable::MAX_PER_PAGE, default_per_page].max
-    @per_page = default_per_page unless (1..max_per_page).cover? @per_page
+    @per_page = default_per_page unless (1..max_per_page).cover?(@per_page)
   end
 end
