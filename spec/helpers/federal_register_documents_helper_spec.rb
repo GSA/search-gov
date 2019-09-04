@@ -61,17 +61,6 @@ describe FederalRegisterDocumentsHelper do
   end
 
   describe '#federal_register_document_comment_period' do
-    let(:document) do
-      mock_model(
-        FederalRegisterDocument,
-        document_type: "Notice",
-        publication_date: "Mon, 09 Jun 2014".to_date,
-        contributing_agency_names: ['Internal Revenue Service',
-                                    'International Trade Administration',
-                                    'National Oceanic and Atmospheric Administration']
-      )
-    end
-    
     context 'when the document comments_close_on is before today' do
       before { allow(document).to receive(:comments_close_on).and_return Date.current.prev_week }
 
