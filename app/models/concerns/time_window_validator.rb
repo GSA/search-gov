@@ -3,10 +3,10 @@ class TimeWindowValidator < ActiveModel::EachValidator
   MAX_DAYS_BACK = 29
 
   def validate_each(record, attribute, value)
-    unless recent_enough?(value)
-      record.errors.add(attribute, (options[:message] ||
-                                    "exceeds the maximum of #{MAX_DAYS_BACK} days"))
-    end
+    return unless recent_enough?(value)
+
+    record.errors.add(attribute, (options[:message] ||
+      "exceeds the maximum of #{MAX_DAYS_BACK} days"))
   end
 
   def recent_enough?(time_window)
