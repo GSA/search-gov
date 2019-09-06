@@ -32,8 +32,7 @@ module BestBet
   end
 
   def match_keyword_values_only_requires_keywords(keywords_collection)
-    if keywords_collection.reject(&:marked_for_destruction?).blank?
-      && match_keyword_values_only?
+    if keywords_collection.reject(&:marked_for_destruction?).blank? && match_keyword_values_only?
       errors.add(:match_keyword_values_only, 'requires at least one keyword')
     end
   end
