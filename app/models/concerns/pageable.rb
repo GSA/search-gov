@@ -30,6 +30,6 @@ module Pageable
 
     @per_page = options[:per_page].to_i rescue default_per_page
     max_per_page = [Pageable::MAX_PER_PAGE, default_per_page].max
-    @per_page = default_per_page unless (1..max_per_page).include? @per_page
+    @per_page = default_per_page unless (1..max_per_page).cover?(@per_page)
   end
 end
