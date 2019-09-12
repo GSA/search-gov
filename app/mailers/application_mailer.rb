@@ -1,4 +1,4 @@
-# frozen string_literal: true
+# frozen_string_literal: true
 
 class ApplicationMailer < ActionMailer::Base
   default from: 'no-reply@support.digitalgov.gov',
