@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  concern :active_scaffold_association, ActiveScaffold::Routing::Association.new
+  concern :active_scaffold, ActiveScaffold::Routing::Basic.new(association: true)
   get '/search' => 'searches#index', as: :search
   get '/api/search' => 'api#search', as: :api_search
   get '/search/advanced' => 'searches#advanced', as: :advanced_search
@@ -165,7 +167,7 @@ Rails.application.routes.draw do
   get '/affiliates/:id/:some_action', to: redirect('/sites/%{id}')
 
   namespace :admin do
-    resources :affiliates do as_routes end
+    resources :affiliates, concerns: :active_scaffold 
     resources :affiliate_notes, concerns: :active_scaffold
     resources :affiliate_templates, concerns: :active_scaffold
     resources :users, concerns: :active_scaffold
@@ -195,7 +197,7 @@ Rails.application.routes.draw do
     resources :excluded_domains, concerns: :active_scaffold
     resources :affiliate_scopes, concerns: :active_scaffold
     resources :site_domains, concerns: :active_scaffold
-    resources :features do as_routes end
+    resources :features, concerns: :active_scaffold
     resources :affiliate_feature_additions, concerns: :active_scaffold
     resources :help_links, concerns: :active_scaffold
     resources :compare_search_results, :only => :index
@@ -216,10 +218,9 @@ Rails.application.routes.draw do
     resource :search_module_ctrs, only: [:show]
     resource :site_ctrs, only: [:show]
     resource :query_ctrs, only: [:show]
-    resources :whitelisted_v1_api_handles do as_routes end
-    resources :hints do
+    resources :whitelisted_v1_api_handles, concerns: :active_scaffold
+    resources :hints, concerns: :active_scaffold do
       collection { get 'reload_hints' }
-      as_routes
     end
     resources :i14y_drawers, concerns: :active_scaffold
     resources :languages, concerns: :active_scaffold
