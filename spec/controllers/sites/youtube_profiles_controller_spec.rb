@@ -14,7 +14,7 @@ describe Sites::YoutubeProfilesController do
 
       before do
         expect(site).to receive(:youtube_profiles).and_return(youtube_profiles)
-        get :index, site_id: site.id
+        get :index, params: { site_id: site.id }
       end
 
       it { is_expected.to assign_to(:site).with(site) }
@@ -47,10 +47,12 @@ describe Sites::YoutubeProfilesController do
           expect(site).to receive(:enable_video_govbox!)
 
           post :create,
-               site_id: site.id,
-               youtube_profile: {
-                 url: 'youtube.com/channel/us_government_channel_id',
-                 not_allowed_key: 'not allowed value' }
+               params: {
+                 site_id: site.id,
+                 youtube_profile: {
+                   url: 'youtube.com/channel/us_government_channel_id',
+                   not_allowed_key: 'not allowed value' }
+               }
         end
 
         it { is_expected.to redirect_to(site_youtube_channels_path(site)) }
@@ -80,10 +82,13 @@ describe Sites::YoutubeProfilesController do
               and_return(new_youtube_profile)
 
           post :create,
-               site_id: site.id,
-               youtube_profile: {
-                 not_allowed_key: 'not allowed value',
-                 url: 'youtube.com/channel/us_government_channel_id' }
+               params: {
+                 site_id: site.id,
+                 youtube_profile: {
+                   not_allowed_key: 'not allowed value',
+                   url: 'youtube.com/channel/us_government_channel_id'
+                 }
+               }
         end
 
         it { is_expected.to assign_to(:profile).with(new_youtube_profile) }
@@ -103,10 +108,12 @@ describe Sites::YoutubeProfilesController do
               and_return(new_youtube_profile)
 
           post :create,
-               site_id: site.id,
-               youtube_profile: {
-                 url: 'youtube.com/user/dgsearch',
-                 not_allowed_key: 'not allowed value' }
+               params: { site_id: site.id,
+                         youtube_profile: {
+                           url: 'youtube.com/user/dgsearch',
+                           not_allowed_key: 'not allowed value'
+                         }
+               }
         end
 
         it { is_expected.to assign_to(:profile).with(new_youtube_profile) }
@@ -132,7 +139,7 @@ describe Sites::YoutubeProfilesController do
         expect(youtube_profiles).to receive(:exists?).and_return(false)
         expect(site).to receive(:disable_video_govbox!)
 
-        delete :destroy, site_id: site.id, id: 100
+        delete :destroy, params: { site_id: site.id, id: 100 }
       end
 
       it { is_expected.to redirect_to(site_youtube_channels_path(site)) }

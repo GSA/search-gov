@@ -10,7 +10,7 @@ describe SaytController, type: :request do
   describe '#index' do
     context 'when sanitized query is empty' do
       it 'returns empty string' do
-        get '/sayt', q: ' \\ '
+        get '/sayt', params: { q: ' \\ ' }
         expect(response.body).to eq('')
       end
     end
@@ -25,7 +25,7 @@ describe SaytController, type: :request do
                                 number_of_results: 5)).
             and_return(search)
 
-        get '/sayt', q: 'lorem \\ ipsum', name: affiliate.name
+        get '/sayt', params: { q: 'lorem \\ ipsum', name: affiliate.name }
         expect(response.body).to eq('some json string')
       end
     end
@@ -41,7 +41,7 @@ describe SaytController, type: :request do
                                 number_of_results: 5)).
             and_return(search)
 
-        get '/sayt', q: 'lorem \\ ipsum', name: affiliate.name, extras: true
+        get '/sayt', params: { q: 'lorem \\ ipsum', name: affiliate.name, extras: true }
         expect(response.body).to eq('some json string')
       end
     end
@@ -50,7 +50,7 @@ describe SaytController, type: :request do
       it 'should return blank' do
         expect(SaytSearch).not_to receive(:new)
 
-        get '/sayt', q: 'lorem \\ ipsum', name: 'invalid'
+        get '/sayt', params: { q: 'lorem \\ ipsum', name: 'invalid' }
         expect(response.body).to eq('')
       end
     end
@@ -65,7 +65,7 @@ describe SaytController, type: :request do
                                 number_of_results: 5)).
             and_return(search)
 
-        get '/sayt', :q => 'lorem \\ ipsum', :aid => affiliate.id
+        get '/sayt', params: { q: 'lorem \\ ipsum', aid: affiliate.id }
         expect(response.body).to eq('some json string')
       end
     end
@@ -80,7 +80,7 @@ describe SaytController, type: :request do
                                 number_of_results: 5)).
             and_return(search)
 
-        get '/sayt', :q => 'lorem \\ ipsum', :aid => affiliate.id, :extras => 'true'
+        get '/sayt', params: { q: 'lorem \\ ipsum', aid: affiliate.id, extras: 'true' }
         expect(response.body).to eq('some json string')
       end
     end
@@ -90,7 +90,7 @@ describe SaytController, type: :request do
         expect(Affiliate).to receive(:find_by_id_and_is_sayt_enabled).with('0', true).and_return(nil)
         expect(SaytSearch).not_to receive(:new)
 
-        get '/sayt', :q => 'lorem // ipsum', :aid => 0
+        get '/sayt', params: { q: 'lorem // ipsum', aid: 0 }
         expect(response.body).to eq('')
       end
     end

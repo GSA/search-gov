@@ -73,7 +73,7 @@ describe I14ySearch do
       expect(I14yCollections).to receive(:search).
         with(hash_including(sort_by_date: 1, 
                             min_timestamp: DateTime.parse('07/28/2015').beginning_of_day,
-                            max_timestamp: DateTime.parse('09/28/2015').end_of_day))
+                            max_timestamp: DateTime.parse('09/28/2015T23:59:59.999999999Z')))
       i14y_search.run
     end
   end

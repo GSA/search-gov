@@ -1,4 +1,4 @@
-class TwitterProfile < ActiveRecord::Base
+class TwitterProfile < ApplicationRecord
   has_many :tweets, :primary_key => :twitter_id, :dependent => :destroy
   has_many :affiliate_twitter_settings, dependent: :destroy
   has_many :affiliates, through: :affiliate_twitter_settings

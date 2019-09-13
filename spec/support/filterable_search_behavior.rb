@@ -6,7 +6,7 @@ shared_examples 'an initialized filterable search' do
                                   until_date: '11/30/2014')
     end
     let(:expected_since) { DateTime.parse('2012-08-20T00:00:00Z') }
-    let(:expected_until) { DateTime.parse('2014-11-30T23:59:59Z') }
+    let(:expected_until) { DateTime.parse('2014-11-30T23:59:59.999999999Z') }
 
     its(:since) { should eq(expected_since) }
     its(:until) { should eq(expected_until) }
@@ -19,7 +19,7 @@ shared_examples 'an initialized filterable search' do
                                   until_date: '11/30/2014')
     end
     let(:expected_since) { DateTime.parse('2013-11-30T00:00:00Z') }
-    let(:expected_until) { DateTime.parse('2014-11-30T23:59:59Z') }
+    let(:expected_until) { DateTime.parse('2014-11-30T23:59:59.999999999Z') }
 
     its(:since) { should eq(expected_since) }
     its(:until) { should eq(expected_until) }
@@ -56,8 +56,9 @@ shared_examples 'an initialized filterable search' do
                             merge(since_date: '12/25/2014',
                                   until_date: '10/18/2012')
     end
+
     let(:expected_since) { DateTime.parse('2012-10-18T00:00:00Z') }
-    let(:expected_until) { DateTime.parse('2014-12-25T23:59:59Z') }
+    let(:expected_until) { DateTime.parse('2014-12-25T23:59:59.999999999Z') }
 
     its(:since) { should eq(expected_since) }
     its(:until) { should eq(expected_until) }
@@ -74,7 +75,7 @@ shared_examples 'an initialized filterable search' do
       end
 
       let(:expected_since) { DateTime.parse('2012-10-18T00:00:00Z') }
-      let(:expected_until) { DateTime.parse('2014-12-25T23:59:59Z') }
+      let(:expected_until) { DateTime.parse('2014-12-25T23:59:59.999999999Z') }
 
       its(:since) { should eq(expected_since) }
       its(:until) { should eq(expected_until) }
@@ -137,7 +138,7 @@ shared_examples 'a runnable filterable search' do
     it 'searches for results between since_date and start_date' do
       expect(ElasticBlended).to receive(:search_for).
         with(hash_including(since: DateTime.parse('2012-08-20T00:00:00Z'),
-                            until: DateTime.parse('2014-11-30T23:59:59Z'))).
+                            until: DateTime.parse('2014-11-30T23:59:59.999999999Z'))).
         and_return(double(ElasticBlendedResults,
                         results: [],
                         suggestion: nil,

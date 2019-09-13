@@ -1,4 +1,4 @@
-class AffiliateTwitterSetting < ActiveRecord::Base
+class AffiliateTwitterSetting < ApplicationRecord
   include Dupable
 
   belongs_to :affiliate

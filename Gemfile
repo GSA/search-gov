@@ -1,7 +1,9 @@
 source 'https://rubygems.org'
 
+gem 'rails', '~> 5.0.0'
+
 gem 'rake', '~> 12.3.2'
-gem 'rails', '~> 4.2.11'
+gem 'rack-contrib', '~> 2.1.0'
 gem 'rails-observers', '~> 0.1.5'
 gem 'responders', '~> 2.0'
 gem 'mysql2', '~> 0.3.0'
@@ -38,7 +40,10 @@ gem 'newrelic_rpm', '~> 5.0.0'
 gem 'american_date', '~> 1.1.1'
 gem 'sass', '~> 3.3.0'
 gem 'sass-rails', '~> 5.0.7'
-gem 'google_visualr', '~> 2.5.1'
+# Gem no longer being maintained. See https://cm-jira.usa.gov/browse/SRCH-694
+gem 'google_visualr',
+    git: 'https://github.com/winston/google_visualr',
+    ref: '17b97114a345baadd011e7b442b9a6c91a2b7ab5'
 gem 'oj', '~> 3.3.10'
 gem 'faraday_middleware', '~> 0.12.2'
 gem 'net-http-persistent', '~> 2.9.3'
@@ -62,7 +67,6 @@ gem 'github-markdown', '~> 0.6.9'
 gem 'google-api-client', '~> 0.19.1'
 gem 'iso8601', '~> 0.10.1'
 gem 'jbuilder', '~> 2.6.4'
-gem 'rack-contrib', '~> 1.8.0'
 gem 'sitelink_generator', git: 'https://github.com/GSA/sitelink_generator', ref: '2f78cd142547a2a87e500266f1ef4eb5e281cc6b'
 gem 'typhoeus', '~> 1.3.0'
 gem 'activerecord-validate_unique_child_attribute', '~> 0.1.0', require: 'active_record/validate_unique_child_attribute'
@@ -113,7 +117,9 @@ gem 'font-awesome-rails', '~> 4.7.0'
 # icons compiled into SVG/CSS+PNG using Grunticon. See
 # https://github.com/gsa/font-awesome-grunticon-rails
 # for instructions on how to add more icons to this set
-gem 'font-awesome-grunticon-rails', git: 'https://github.com/gsa/font-awesome-grunticon-rails', ref: '8ad9734a65f7e2d2de934bebe4ee7b460734f96e'
+gem 'font-awesome-grunticon-rails',
+    git: 'https://github.com/gsa/font-awesome-grunticon-rails',
+    ref: '8ad9734a65f7e2d2de934bebe4ee7b460734f96e'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
@@ -158,5 +164,5 @@ group :test do
   gem 'rspec-activemodel-mocks', '~> 1.0.3'
   gem 'timecop', '~> 0.9.1'
   gem 'rspec_junit_formatter', '~> 0.3.0'
-  gem 'test_after_commit', '~> 1.1.0' # Needed before rails5 https://github.com/grosser/test_after_commit
+  gem 'rails-controller-testing', '~> 1.0.4'
 end

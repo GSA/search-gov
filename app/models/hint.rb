@@ -1,4 +1,4 @@
-class Hint < ActiveRecord::Base
+class Hint < ApplicationRecord
   before_validation do |record|
     AttributeProcessor.squish_attributes record,
                                          :name,

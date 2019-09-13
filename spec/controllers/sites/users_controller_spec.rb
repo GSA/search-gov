@@ -16,7 +16,7 @@ describe Sites::UsersController do
 
       before do
         expect(site).to receive(:users).and_return site_users
-        get :index, site_id: site.id
+        get :index, params: { site_id: site.id }
       end
 
       it { is_expected.to assign_to(:site).with site }
@@ -30,7 +30,7 @@ describe Sites::UsersController do
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
 
-      before { get :new, site_id: site.id }
+      before { get :new, params: { site_id: site.id } }
 
       it { is_expected.to assign_to(:site).with site }
       it { is_expected.to assign_to(:user).with_kind_of(User) }
@@ -57,10 +57,12 @@ describe Sites::UsersController do
             with(site, "User #{current_user.id}, affiliate_manager@fixtures.org")
 
           post :create,
-               site_id: site.id,
-               user: { contact_name: 'John Doe',
-                       email: 'john@email.gov',
-                       not_allowed_key: 'not allowed value' }
+               params: {
+                 site_id: site.id,
+                 user: { contact_name: 'John Doe',
+                         email: 'john@email.gov',
+                         not_allowed_key: 'not allowed value' }
+               }
         end
 
         it { is_expected.to assign_to(:user).with(new_user) }
@@ -79,10 +81,12 @@ describe Sites::UsersController do
 
           expect(new_user).to receive(:save).and_return(false)
           post :create,
-               site_id: site.id,
-               user: { contact_name: '',
-                       email: 'john@email.gov',
-                       not_allowed_key: 'not allowed value' }
+               params: {
+                 site_id: site.id,
+                 user: { contact_name: '',
+                         email: 'john@email.gov',
+                         not_allowed_key: 'not allowed value' }
+               }
         end
 
         it { is_expected.to assign_to(:user).with(new_user) }
@@ -102,9 +106,11 @@ describe Sites::UsersController do
             with(site, "User #{current_user.id}, affiliate_manager@fixtures.org")
 
           post :create,
-               site_id: site.id,
-               user: { contact_name: 'John Doe',
-                       email: 'john@email.gov' }
+               params: {
+                 site_id: site.id,
+                 user: { contact_name: 'John Doe',
+                         email: 'john@email.gov' }
+               }
         end
 
         it { is_expected.to assign_to(:user).with(new_user) }
@@ -126,9 +132,11 @@ describe Sites::UsersController do
               and_return(new_user)
 
           post :create,
-               site_id: site.id,
-               user: { contact_name: 'John Doe',
-                       email: 'john@email.gov' }
+               params: {
+                 site_id: site.id,
+                 user: { contact_name: 'John Doe',
+                         email: 'john@email.gov' }
+               }
         end
 
         it { is_expected.to assign_to(:user).with(new_user) }
@@ -155,8 +163,10 @@ describe Sites::UsersController do
           with(site, "User #{current_user.id}, affiliate_manager@fixtures.org")
 
         put :destroy,
-            id: 100,
-            site_id: site.id
+            params: {
+              id: 100,
+              site_id: site.id
+            }
       end
     end
   end

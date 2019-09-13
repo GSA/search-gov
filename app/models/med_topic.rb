@@ -1,4 +1,4 @@
-class MedTopic < ActiveRecord::Base
+class MedTopic < ApplicationRecord
   MAX_MED_TOPIC_SUMMARY_LENGTH = 200
   MEDLINE_BASE_URL = 'https://medlineplus.gov/'
   MEDLINE_BASE_VOCAB_URL = "#{MEDLINE_BASE_URL}xml/"

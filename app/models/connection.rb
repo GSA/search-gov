@@ -1,4 +1,4 @@
-class Connection < ActiveRecord::Base
+class Connection < ApplicationRecord
   include Dupable
 
   belongs_to :affiliate

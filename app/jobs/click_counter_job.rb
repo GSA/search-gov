@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Update click counts for popular URLs for a given domain
-class ClickCounterJob < ActiveJob::Base
+class ClickCounterJob < ApplicationJob
   queue_as :searchgov
 
   def perform(domain:)

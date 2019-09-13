@@ -1,4 +1,4 @@
-class EmailTemplate < ActiveRecord::Base
+class EmailTemplate < ApplicationRecord
   validates_presence_of :name, :subject, :body
   validates_uniqueness_of :name, case_sensitive: false
 

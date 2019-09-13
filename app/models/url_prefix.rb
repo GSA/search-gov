@@ -1,4 +1,4 @@
-class UrlPrefix < ActiveRecord::Base
+class UrlPrefix < ApplicationRecord
   include Dupable
 
   before_validation :ensure_protocol_and_trailing_slash_on_prefix

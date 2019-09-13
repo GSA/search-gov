@@ -1,4 +1,4 @@
-class FlickrProfile < ActiveRecord::Base
+class FlickrProfile < ApplicationRecord
   include Dupable
   include FlickrDsl
 

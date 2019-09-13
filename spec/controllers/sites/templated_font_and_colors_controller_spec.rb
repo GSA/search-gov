@@ -20,20 +20,24 @@ describe Sites::TemplatedFontAndColorsController do
         expect(User).to receive(:find_by_id).and_return(current_user)
       end
 
-      it "resets the template if the checkbox is selected" do
+      it 'resets the template if the checkbox is selected' do
         put :update,
-            site_id: affiliate.id,
-            reset_theme: true,
-            schema: { css_property_hash: { font_family: 'Arial, san-serif' } }
+            params: {
+              site_id: affiliate.id,
+              reset_theme: true,
+              schema: { css_property_hash: { font_family: 'Arial, san-serif' } }
+            }
 
             expect(response).to redirect_to  :edit_site_templated_font_and_colors
       end
 
-      it "should reset the template if the checkbox is selected" do
+      it 'should reset the template if the checkbox is selected' do
         put :update,
-            site_id: affiliate.id,
-            reset_theme: true,
-            schema: { css_property_hash: { font_family: 'Arial, san-serif' } }
+            params: {
+              site_id: affiliate.id,
+              reset_theme: true,
+              schema: { css_property_hash: { font_family: 'Arial, san-serif' } }
+            }
 
             expect(response).to redirect_to  :edit_site_templated_font_and_colors
       end

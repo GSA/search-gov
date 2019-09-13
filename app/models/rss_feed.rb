@@ -1,7 +1,7 @@
 # require 'active_record/validate_unique_child_attribute'
 # frozen_string_literal: true
 
-class RssFeed < ActiveRecord::Base
+class RssFeed < ApplicationRecord
   include Dupable
   include ActiveRecord::ValidateUniqueChildAttribute
 

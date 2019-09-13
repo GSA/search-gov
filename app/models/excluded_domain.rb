@@ -1,3 +1,3 @@
-class ExcludedDomain < ActiveRecord::Base
-  acts_as_search_domain
+class ExcludedDomain < ApplicationRecord
+  include SearchDomain
 end

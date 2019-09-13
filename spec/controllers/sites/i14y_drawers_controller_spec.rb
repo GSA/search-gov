@@ -14,7 +14,7 @@ describe Sites::I14yDrawersController do
 
       before do
         allow(site).to receive_message_chain(:i14y_drawers).and_return(i14y_drawers)
-        get :index, site_id: site.id
+        get :index, params: { site_id: site.id }
       end
 
       it { is_expected.to assign_to(:site).with(site) }
@@ -44,7 +44,13 @@ describe Sites::I14yDrawersController do
       before do
         allow(site).to receive_message_chain(:i14y_drawers, :find_by_id).and_return i14y_drawer
         expect(I14yCollections).to receive(:search).with(search_params).and_return search_response
-        get :show, site_id: site.id, id: 5, query: 'my query', page: 1
+        get :show,
+            params: {
+              site_id: site.id,
+              id: 5,
+              query: 'my query',
+              page: 1
+            }
       end
 
       it { is_expected.to assign_to(:site).with(site) }
