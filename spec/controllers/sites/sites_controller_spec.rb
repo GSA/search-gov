@@ -57,7 +57,7 @@ describe Sites::SitesController do
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
 
-      before { get :show, id: site.id }
+      before { get :show, params: { id: site.id } }
 
       it { is_expected.to assign_to(:site).with(site) }
     end
@@ -65,7 +65,7 @@ describe Sites::SitesController do
     context 'when logged in as affiliate and when the site is no longer accessible' do
       include_context 'approved user logged in'
 
-      before { get :show, id: -1 }
+      before { get :show, params: { id: -1 } }
 
       it { is_expected.to redirect_to(sites_path) }
     end
@@ -73,7 +73,7 @@ describe Sites::SitesController do
     context 'when logged in as super admin' do
       include_context 'super admin logged in to a site'
 
-      before { get :show, id: site.id }
+      before { get :show, params: { id: site.id } }
 
       it { is_expected.to assign_to(:site).with(site) }
     end
@@ -81,7 +81,7 @@ describe Sites::SitesController do
     context 'when logged in as super admin and when the site is no longer accessible' do
       include_context 'super admin logged in'
 
-      before { get :show, id: -1 }
+      before { get :show, params: { id: -1 } }
 
       it { is_expected.to redirect_to(sites_path) }
     end
@@ -93,7 +93,7 @@ describe Sites::SitesController do
 
       before do
         expect(RtuDashboard).to receive(:new).with(site, Date.current, current_user.sees_filtered_totals).and_return dashboard
-        get :show, id: site.id
+        get :show, params: { id: site.id }
       end
 
       it { is_expected.to assign_to(:dashboard).with(dashboard) }
@@ -126,10 +126,14 @@ describe Sites::SitesController do
 
           expect(Emailer).to receive(:new_affiliate_site).and_return(emailer)
           post :create,
-               site: { display_name: 'New Aff',
-                       locale: 'es',
-                       name: 'newaff',
-                       site_domains_attributes: { '0' => { domain: 'http://www.brandnew.gov' } },}
+               params: {
+                 site: { display_name: 'New Aff',
+                         locale: 'es',
+                         name: 'newaff',
+                         site_domains_attributes: {
+                           '0': { domain: 'http://www.brandnew.gov' }
+                         } }
+               }
         end
 
         it { is_expected.to redirect_to(site_path(site)) }
@@ -150,7 +154,7 @@ describe Sites::SitesController do
       before do
         request.env['HTTP_REFERER'] = site_path(site)
         expect(current_user).to receive(:update_attributes!).with(default_affiliate: site)
-        put :pin, id: site.id
+        put :pin, params: { id: site.id }
       end
 
       it { is_expected.to assign_to(:site).with(site) }
@@ -167,18 +171,18 @@ describe Sites::SitesController do
 
       it 'should enqueue destruction of affiliate' do
         expect(Resque).to receive(:enqueue_with_priority).with(:low, SiteDestroyer, site.id)
-        delete :destroy, id: site.id
+        delete :destroy, params: { id: site.id }
       end
 
       it 'deactivates the site' do
         expect(site).to receive(:update_attributes!).with(active: false)
         expect(site).to receive(:user_ids=).with([])
-        delete :destroy, id: site.id
+        delete :destroy, params: { id: site.id }
       end
 
       context 'when successful' do
         before do
-          delete :destroy, id: site.id
+          delete :destroy, params: { id: site.id }
         end
 
         it { is_expected.to redirect_to(new_site_path) }

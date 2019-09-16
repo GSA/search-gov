@@ -32,10 +32,12 @@ describe Sites::SettingsController do
             and_return true
 
         put :update,
-            site_id: site.id,
-            site: { display_name: 'new name',
-                    website: 'search.gov',
-                    not_allowed_key: 'not allowed value' }
+            params: {
+              site_id: site.id,
+              site: { display_name: 'new name',
+                      website: 'search.gov',
+                      not_allowed_key: 'not allowed value' }
+            }
       end
 
       it { is_expected.to redirect_to edit_site_setting_path(site) }
@@ -51,8 +53,10 @@ describe Sites::SettingsController do
             and_return false
 
         put :update,
-            site_id: site.id,
-            site: { display_name: 'new name', not_allowed_key: 'not allowed value' }
+            params: {
+              site_id: site.id,
+              site: { display_name: 'new name', not_allowed_key: 'not allowed value' }
+            }
       end
 
       it { is_expected.to render_template :edit }

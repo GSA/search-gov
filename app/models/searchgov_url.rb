@@ -1,4 +1,4 @@
-class SearchgovUrl < ActiveRecord::Base
+class SearchgovUrl < ApplicationRecord
   include Fetchable
   include RobotsTaggable
   include ActionView::Helpers::NumberHelper

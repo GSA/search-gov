@@ -16,9 +16,11 @@ describe Sites::DisplaysController do
           allow(site).to receive_message_chain(:connections, :build)
 
           put :update,
-               site_id: site.id,
-               id: 100,
-               site: { default_search_label: 'Search' }
+              params: {
+                site_id: site.id,
+                id: 100,
+                site: { default_search_label: 'Search' }
+              }
         end
 
         it { is_expected.to redirect_to(edit_site_display_path(site)) }
@@ -34,9 +36,11 @@ describe Sites::DisplaysController do
           allow(site).to receive_message_chain(:connections, :build)
 
           put :update,
-               site_id: site.id,
-               id: 100,
-               site: { default_search_label: 'Search' }
+              params: {
+                site_id: site.id,
+                id: 100,
+                site: { default_search_label: 'Search' }
+              }
         end
 
         it { is_expected.to render_template(:edit) }

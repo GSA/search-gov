@@ -1,4 +1,4 @@
-class SitemapMonitorJob < ActiveJob::Base
+class SitemapMonitorJob < ApplicationJob
   queue_as :searchgov
 
   def perform

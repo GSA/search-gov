@@ -14,7 +14,7 @@ describe Sites::RoutedQueriesController do
 
       before do
         expect(site).to receive(:routed_queries).and_return(routed_queries)
-        get :index, site_id: site.id
+        get :index, params: { site_id: site.id }
       end
 
       it { is_expected.to assign_to(:site).with(site) }
@@ -36,7 +36,7 @@ describe Sites::RoutedQueriesController do
         allow(routed_query).to receive_message_chain(:routed_query_keywords, :build).and_return(mock_model(RoutedQueryKeyword))
         expect(routed_queries).to receive(:build).and_return(routed_query)
 
-        get :new, site_id: site.id
+        get :new, params: { site_id: site.id }
       end
 
       it { is_expected.to render_template(:new) }
@@ -72,8 +72,10 @@ describe Sites::RoutedQueriesController do
         expect(routed_query).to receive(:save).and_return(!keyword.blank?)
 
         post :create,
-             site_id: site.id,
-             routed_query: attrs.merge('not_allowed_key' => 'not allowed value')
+             params: {
+               site_id: site.id,
+               routed_query: attrs.merge('not_allowed_key': 'not allowed value')
+             }
       end
 
       context 'when routed query params are valid' do
@@ -111,8 +113,10 @@ describe Sites::RoutedQueriesController do
         allow(routed_query).to receive_message_chain(:routed_query_keywords, :empty?).and_return(keyword.blank?)
 
         get :edit,
-            site_id: site.id,
-            id: 100
+            params: {
+              site_id: site.id,
+              id: 100
+            }
       end
 
       context 'when routed query params are valid' do
@@ -151,9 +155,11 @@ describe Sites::RoutedQueriesController do
         allow(routed_query).to receive_message_chain(:routed_query_keywords, :build).and_return(mock_model(RoutedQueryKeyword))
 
         put :update,
-            site_id: site.id,
-            id: 100,
-            routed_query: attrs
+            params: {
+              site_id: site.id,
+              id: 100,
+              routed_query: attrs
+            }
       end
 
       context 'when routed query params are valid' do
@@ -187,7 +193,11 @@ describe Sites::RoutedQueriesController do
         expect(routed_queries).to receive(:find_by_id).with('100').and_return(routed_query)
         expect(routed_query).to receive(:destroy)
 
-        delete :destroy, site_id: site.id, id: 100
+        delete :destroy,
+               params: {
+                 site_id: site.id,
+                 id: 100
+               }
       end
 
       it { is_expected.to assign_to(:routed_query).with(routed_query) }
@@ -203,7 +213,11 @@ describe Sites::RoutedQueriesController do
       include_context 'approved user logged in to a site'
 
       before do
-        xhr :get, :new_routed_query_keyword, site_id: site.id, index: 0, format: :js
+        xhr :get,
+            :new_routed_query_keyword,
+            params: { site_id: site.id,
+                      index: 0 },
+            format: :js
       end
 
       it { is_expected.to render_template(:new_routed_query_keyword) }

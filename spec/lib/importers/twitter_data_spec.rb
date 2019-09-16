@@ -60,7 +60,7 @@ describe TwitterData do
     context 'when the profile twitter lists does not include the imported list' do
       it 'should append the imported lists to the profile' do
         allow(profile).to receive_message_chain(:twitter_lists, :exists?).with(id: ar_list.id).and_return(false)
-        expect(profile.twitter_lists).to receive(:<<).with(ar_list)
+        expect(profile.twitter_lists).to receive(:push).with(ar_list)
         TwitterData.import_twitter_profile_lists(profile)
       end
     end
@@ -68,7 +68,7 @@ describe TwitterData do
     context 'when the profile twitter lists include the imported list' do
       it 'should not append the imported lists to the profile' do
         allow(profile).to receive_message_chain(:twitter_lists, :exists?).with(id: ar_list.id).and_return(true)
-        expect(profile.twitter_lists).not_to receive(:<<).with(ar_list)
+        expect(profile.twitter_lists).not_to receive(:push).with(ar_list)
         TwitterData.import_twitter_profile_lists(profile)
       end
     end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Language < ActiveRecord::Base
+class Language < ApplicationRecord
   validates :code, :name, presence: true
 
   validates_uniqueness_of :code, case_sensitive: false

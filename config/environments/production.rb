@@ -35,7 +35,8 @@ Rails.application.configure do
 
   # See everything in the log (default is :info)
   # config.log_level = :debug
-
+  config.log_level = :info
+  
   # Use a different logger for distributed setups
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
 
@@ -67,6 +68,9 @@ Rails.application.configure do
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
   config.ssl_options[:secure_cookies] = true
+
+  # needs autoloading while running in production mode
+  config.enable_dependency_loading = true
 end
 
 ADDITIONAL_BING_PARAMS = {}

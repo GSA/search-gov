@@ -1,4 +1,4 @@
-class TwitterList < ActiveRecord::Base
+class TwitterList < ApplicationRecord
   self.primary_key = 'id'
   serialize :member_ids, Array
   validates_numericality_of :id, only_integer: true, greater_than: 0

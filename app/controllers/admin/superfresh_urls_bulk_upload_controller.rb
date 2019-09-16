@@ -15,8 +15,8 @@ class Admin::SuperfreshUrlsBulkUploadController < Admin::AdminController
         else
           flash[:error] = "No urls uploaded; please check your file and try again."
         end
-      rescue Exception => e
-        flash[:error] = e.message
+      rescue StandardError => error
+        flash[:error] = error.message
       end
     else
       flash[:error] = "Invalid file format; please upload a plain text file (.txt)."

@@ -208,7 +208,7 @@ module SearchHelper
     return if search.matching_site_limits.nil? or search.matching_site_limits.empty?
     html = "We're including results for '#{h search.query}' from only #{h search.matching_site_limits.join(' ')}. "
     html << "Do you want to see results for "
-    html << link_to("'#{h search.query}' from all sites", search_path(params.except(:sitelimit)))
+    html << link_to("'#{h search.query}' from all sites", search_path(params.except(:sitelimit).permit))
     html << "?"
     raw content_tag(:h4, html.html_safe, :class => 'search-all-sites-suggestion')
   end

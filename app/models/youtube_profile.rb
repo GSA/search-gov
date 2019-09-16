@@ -1,4 +1,4 @@
-class YoutubeProfile < ActiveRecord::Base
+class YoutubeProfile < ApplicationRecord
   attr_writer :url
   has_one :rss_feed, as: :owner, dependent: :destroy
   has_and_belongs_to_many :affiliates

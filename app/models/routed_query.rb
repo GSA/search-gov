@@ -1,6 +1,6 @@
 #require 'active_record/validate_unique_child_attribute'
 
-class RoutedQuery < ActiveRecord::Base
+class RoutedQuery < ApplicationRecord
   include Dupable
   include ActiveRecord::ValidateUniqueChildAttribute
 

@@ -1,14 +1,13 @@
-class Emailer < ActionMailer::Base
+# frozen_string_literal: true
+
+class Emailer < ApplicationMailer
   include ActionView::Helpers::TextHelper
   default_url_options[:host] = Rails.application.secrets.organization['app_host']
   default_url_options[:protocol] = 'https'
   ADMIN_EMAIL_ADDRESS = Rails.application.secrets.organization['admin_email_address']
-  DELIVER_FROM_EMAIL_ADDRESS = 'no-reply@support.digitalgov.gov'.freeze
+  DELIVER_FROM_EMAIL_ADDRESS = 'no-reply@support.digitalgov.gov'
   REPLY_TO_EMAIL_ADDRESS = Rails.application.secrets.organization['support_email_address']
-  NOTIFICATION_SENDER_EMAIL_ADDRESS = 'notification@support.digitalgov.gov'.freeze
-
-  self.default from: DELIVER_FROM_EMAIL_ADDRESS,
-               reply_to: REPLY_TO_EMAIL_ADDRESS
+  NOTIFICATION_SENDER_EMAIL_ADDRESS = 'notification@support.digitalgov.gov'
 
   def password_reset_instructions(user)
     @password_reset_url = edit_password_reset_url(user.perishable_token)

@@ -1,4 +1,4 @@
-class AgencyOrganizationCode < ActiveRecord::Base
+class AgencyOrganizationCode < ApplicationRecord
   DEPARTMENT_LEVEL_LENGTH = 2
 
   before_validation do |record|

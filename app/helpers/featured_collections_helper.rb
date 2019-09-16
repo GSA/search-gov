@@ -7,8 +7,8 @@ module FeaturedCollectionsHelper
     links_size = fc.featured_collection_links.size
     left_links_size = (links_size / 2) + (links_size % 2)
 
-    [fc.featured_collection_links.slice(0, left_links_size),
-     fc.featured_collection_links.slice(left_links_size, links_size - left_links_size)]
+    [fc.featured_collection_links.to_a.slice(0, left_links_size),
+     fc.featured_collection_links.to_a.slice(left_links_size, links_size - left_links_size)]
   end
 
   def featured_collection_title(fc)

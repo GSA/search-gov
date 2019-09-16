@@ -30,23 +30,15 @@ describe ExampleController do
     Rails.application.reload_routes!
   end
 
-  context "when a request raises an ActionView::MissingTemplate error" do
-    context "when the format for the request is a valid format" do
-      it "should raise an error" do
-        expect { get :missing_template, :format => 'json' }.to raise_error(ActionView::MissingTemplate)
-      end
-    end
-
-    context "when the format for the request is not a valid format" do
-      it "should render a 406" do
-        get :missing_template, :format => "orig"
-        expect(response.code).to eq("406")
-      end
+  context 'when the format for the request is not a valid format' do
+    it 'responds with a 204' do
+      get :missing_template, format: 'orig'
+      expect(response.code).to eq('204')
     end
   end
 
-  describe "#handle_unverified_request" do
-    it "raises an error" do
+  describe '#handle_unverified_request' do
+    it 'raises an error' do
       expect { ExampleController.new.handle_unverified_request }.to raise_error(ActionController::InvalidAuthenticityToken)
     end
   end

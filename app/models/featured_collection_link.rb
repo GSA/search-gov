@@ -1,4 +1,4 @@
-class FeaturedCollectionLink < ActiveRecord::Base
+class FeaturedCollectionLink < ApplicationRecord
   include BelongsToFeaturedCollectionDupable
 
   before_validation do |record|

@@ -1,4 +1,4 @@
-class SiteFeedUrl < ActiveRecord::Base
+class SiteFeedUrl < ApplicationRecord
   include Dupable
 
   HUMAN_ATTRIBUTE_NAME_HASH = { rss_url: 'URL' }

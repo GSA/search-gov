@@ -1,4 +1,4 @@
-class NewsItem < ActiveRecord::Base
+class NewsItem < ApplicationRecord
   include FastDeleteFromDbAndEs
 
   before_validation do |record|

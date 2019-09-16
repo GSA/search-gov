@@ -1,4 +1,4 @@
-class Agency < ActiveRecord::Base
+class Agency < ApplicationRecord
   before_validation do |record|
     AttributeProcessor.squish_attributes record,
                                          :name,

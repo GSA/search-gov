@@ -1,4 +1,4 @@
-class Watcher < ActiveRecord::Base
+class Watcher < ApplicationRecord
   extend HashColumnsAccessible
   include ActionView::Helpers::NumberHelper
   include LogstashPrefix

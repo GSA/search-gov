@@ -1,4 +1,4 @@
-class SitemapIndexerJob < ActiveJob::Base
+class SitemapIndexerJob < ApplicationJob
   queue_as :searchgov
 
   def perform(sitemap_url:)
