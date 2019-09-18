@@ -1,4 +1,4 @@
-class FeaturedCollectionKeyword < ActiveRecord::Base
+class FeaturedCollectionKeyword < ApplicationRecord
   include BelongsToFeaturedCollectionDupable
 
   validates_presence_of :value

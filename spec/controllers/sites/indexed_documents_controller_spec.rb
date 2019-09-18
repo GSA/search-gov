@@ -14,7 +14,7 @@ describe Sites::IndexedDocumentsController do
 
       before do
         allow(site).to receive_message_chain(:indexed_documents, :by_matching_url, :paginate, :order).and_return(indexed_documents)
-        get :index, site_id: site.id
+        get :index, params: { site_id: site.id }
       end
 
       it { is_expected.to assign_to(:site).with(site) }
@@ -47,11 +47,15 @@ describe Sites::IndexedDocumentsController do
               with(:high, IndexedDocumentFetcher, indexed_document.id)
 
           post :create,
-               site_id: site.id,
-               indexed_document: { url: 'http://search.gov/developer/jobs.html',
-                                   title: 'Jobs API',
-                                   description: 'Helping job seekers land a job with the government.',
-                                   not_allowed_key: 'not allowed value' }
+               params: {
+                 site_id: site.id,
+                 indexed_document: {
+                   url: 'http://search.gov/developer/jobs.html',
+                   title: 'Jobs API',
+                   description: 'Helping job seekers land a job with the government.',
+                   not_allowed_key: 'not allowed value'
+                 }
+               }
         end
 
         it { is_expected.to assign_to(:indexed_document).with(indexed_document) }
@@ -76,11 +80,15 @@ describe Sites::IndexedDocumentsController do
           expect(indexed_document).to receive(:save).and_return(false)
 
           post :create,
-               site_id: site.id,
-               indexed_document: { url: 'http://search.gov/developer/jobs.html',
-                                   title: '',
-                                   description: '',
-                                   not_allowed_key: 'not allowed value' }
+               params: {
+                 site_id: site.id,
+                 indexed_document: {
+                   url: 'http://search.gov/developer/jobs.html',
+                   title: '',
+                   description: '',
+                   not_allowed_key: 'not allowed value'
+                 }
+               }
         end
 
         it { is_expected.to assign_to(:indexed_document).with(indexed_document) }
@@ -106,7 +114,7 @@ describe Sites::IndexedDocumentsController do
             and_return(indexed_document)
         expect(indexed_document).to receive(:destroy)
 
-        delete :destroy, site_id: site.id, id: 100
+        delete :destroy, params: { site_id: site.id, id: 100 }
       end
 
       it { is_expected.to redirect_to(site_supplemental_urls_path(site)) }

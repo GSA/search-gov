@@ -19,9 +19,15 @@ describe Sites::ImageAssetsController do
               and_return(false)
 
           put :update,
-              site_id: site.id,
-              id: 100,
-              image_asset: { css_property_hash: { page_background_image_repeat: 'repeat-x' } }
+              params: {
+                site_id: site.id,
+                id: 100,
+                image_asset: {
+                  css_property_hash: {
+                    page_background_image_repeat: 'repeat-x'
+                  }
+                }
+              }
         end
 
         it { is_expected.to render_template(:edit) }

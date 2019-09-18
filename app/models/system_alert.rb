@@ -1,4 +1,4 @@
-class SystemAlert < ActiveRecord::Base
+class SystemAlert < ApplicationRecord
   validates_presence_of :message, :start_at
   validate :start_at_and_end_at
   scope :current, -> {

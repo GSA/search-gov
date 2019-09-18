@@ -1,4 +1,4 @@
-class DocumentCollection < ActiveRecord::Base
+class DocumentCollection < ApplicationRecord
   include Dupable
   DEPTH_WHEN_BING_FAILS = 3
 

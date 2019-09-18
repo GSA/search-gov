@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
   helper :all
   helper_method :current_user_session, :current_user, :permitted_params
   protect_from_forgery with: :exception
-  VALID_FORMATS = %w{html rss json xml mobile}
   SERP_RESULTS_PER_PAGE = 20
   PAGE_NOT_FOUND = 'https://www.usa.gov/search-error'
 
@@ -35,8 +34,6 @@ class ApplicationController < ActionController::Base
   ).concat(ADVANCED_PARAM_KEYS).
     concat(DUBLIN_CORE_PARAM_KEYS).
     concat(FILTER_PARAM_KEYS).freeze
-
-  rescue_from ActionView::MissingTemplate, :with => :template_not_found
 
   def handle_unverified_request
     raise ActionController::InvalidAuthenticityToken
@@ -71,14 +68,6 @@ class ApplicationController < ActionController::Base
   end
 
   private
-
-  def template_not_found(error)
-    if VALID_FORMATS.include?(request.format)
-      raise error
-    else
-      render text: '406 Not Acceptable', status: 406
-    end
-  end
 
   def set_default_locale
     I18n.locale = :en

@@ -38,7 +38,7 @@ describe Api::V2::SearchesController do
                                                  hash_including('query'),
                                                  be_a_kind_of(ActionDispatch::Request))
 
-      get :blended, search_params
+      get :blended, params: search_params
     end
 
     it { is_expected.to respond_with :success }
@@ -50,7 +50,7 @@ describe Api::V2::SearchesController do
 
   describe '#azure' do
     context 'when the search options are not valid' do
-      before { get :azure, search_params.except(:api_key) }
+      before { get :azure, params: search_params.except(:api_key) }
 
       it { is_expected.to respond_with :bad_request }
 
@@ -73,7 +73,9 @@ describe Api::V2::SearchesController do
                                                    hash_including('query'),
                                                    be_a_kind_of(ActionDispatch::Request))
 
-        get :azure, search_params.merge({ access_key: 'usagov_key' })
+        get :azure,
+            params: search_params.
+              merge(access_key: 'usagov_key')
       end
 
       it { is_expected.to respond_with :success }
@@ -91,7 +93,8 @@ describe Api::V2::SearchesController do
         routed_query.routed_query_keywords.build(keyword: 'foo bar')
         routed_query.save!
 
-        get :azure, search_params.merge({ query: 'foo bar', routed: 'true' })
+        get :azure,
+            params: search_params.merge(query: 'foo bar', routed: 'true')
       end
 
       it { is_expected.to respond_with :success }
@@ -104,7 +107,7 @@ describe Api::V2::SearchesController do
 
   describe '#azure_web' do
     context 'when the search options are not valid' do
-      before { get :azure, search_params.except(:api_key) }
+      before { get :azure, params: search_params.except(:api_key) }
 
       it { is_expected.to respond_with :bad_request }
 
@@ -128,7 +131,7 @@ describe Api::V2::SearchesController do
                                                    hash_including('query'),
                                                    be_a_kind_of(ActionDispatch::Request))
 
-        get :azure_web, search_params.merge({ access_key: 'usagov_key' })
+        get :azure_web, params: search_params.merge(access_key: 'usagov_key')
       end
 
       it { is_expected.to respond_with :success }
@@ -146,7 +149,7 @@ describe Api::V2::SearchesController do
         routed_query.routed_query_keywords.build(keyword: 'foo bar')
         routed_query.save!
 
-        get :azure_web, search_params.merge({ query: 'foo bar', routed: 'true' })
+        get :azure_web, params: search_params.merge(query: 'foo bar', routed: 'true')
       end
 
       it { is_expected.to respond_with :success }
@@ -159,7 +162,7 @@ describe Api::V2::SearchesController do
 
   describe '#azure_image' do
     context 'when the search options are not valid' do
-      before { get :azure, search_params.except(:api_key) }
+      before { get :azure, params: search_params.except(:api_key) }
 
       it { is_expected.to respond_with :bad_request }
 
@@ -183,7 +186,7 @@ describe Api::V2::SearchesController do
                                                    hash_including('query'),
                                                    be_a_kind_of(ActionDispatch::Request))
 
-        get :azure_image, search_params
+        get :azure_image, params: search_params
       end
 
       it { is_expected.to respond_with :success }
@@ -201,7 +204,7 @@ describe Api::V2::SearchesController do
         routed_query.routed_query_keywords.build(keyword: 'foo bar')
         routed_query.save!
 
-        get :azure_image, search_params.merge({ query: 'foo bar', routed: 'true'})
+        get :azure_image, params: search_params.merge(query: 'foo bar', routed: 'true')
       end
 
       it { is_expected.to respond_with :success }
@@ -213,10 +216,10 @@ describe Api::V2::SearchesController do
   end
 
   describe '#bing' do
-    let(:bing_params) { search_params.merge({ sc_access_key: 'secureKey' }) }
+    let(:bing_params) { search_params.merge(sc_access_key: 'secureKey') }
 
     context 'when the search options are not valid' do
-      before { get :bing, bing_params.except(:sc_access_key) }
+      before { get :bing, params: bing_params.except(:sc_access_key) }
 
       it { is_expected.to respond_with :bad_request }
 
@@ -240,7 +243,7 @@ describe Api::V2::SearchesController do
                                                    hash_including('query'),
                                                    be_a_kind_of(ActionDispatch::Request))
 
-        get :bing, bing_params
+        get :bing, params: bing_params
       end
 
       it { is_expected.to respond_with :success }
@@ -258,7 +261,7 @@ describe Api::V2::SearchesController do
         routed_query.routed_query_keywords.build(keyword: 'foo bar')
         routed_query.save!
 
-        get :bing, bing_params.merge({ query: 'foo bar', routed: 'true'})
+        get :bing, params: bing_params.merge(query: 'foo bar', routed: 'true')
       end
 
       it { is_expected.to respond_with :success }
@@ -274,7 +277,7 @@ describe Api::V2::SearchesController do
 
     context 'when the search options are not valid' do
       before do
-        get :gss, gss_params.except(:cx, :api_key)
+        get :gss, params: gss_params.except(:cx, :api_key)
       end
 
       it { is_expected.to respond_with :bad_request }
@@ -300,7 +303,7 @@ describe Api::V2::SearchesController do
                                                    hash_including('query'),
                                                    be_a_kind_of(ActionDispatch::Request))
 
-        get :gss, gss_params
+        get :gss, params: gss_params
       end
 
       it { is_expected.to respond_with :success }
@@ -318,7 +321,7 @@ describe Api::V2::SearchesController do
         routed_query.routed_query_keywords.build(keyword: 'foo bar')
         routed_query.save!
 
-        get :gss, gss_params.merge({ query: 'foo bar', routed: 'true'})
+        get :gss, params: gss_params.merge(query: 'foo bar', routed: 'true')
       end
 
       it { is_expected.to respond_with :success }
@@ -333,9 +336,11 @@ describe Api::V2::SearchesController do
     context 'when the search options are not valid' do
       before do
         get :i14y,
-            affiliate: 'usagov',
-            format: 'json',
-            query: 'api'
+            params: {
+              affiliate: 'usagov',
+              format: 'json',
+              query: 'api'
+            }
       end
 
       it { is_expected.to respond_with :bad_request }
@@ -359,7 +364,7 @@ describe Api::V2::SearchesController do
                                                    hash_including('query'),
                                                    be_a_kind_of(ActionDispatch::Request))
 
-        get :i14y, search_params
+        get :i14y, params: search_params
       end
 
       it { is_expected.to respond_with :success }
@@ -391,7 +396,7 @@ describe Api::V2::SearchesController do
         routed_query.routed_query_keywords.build(keyword: 'foo bar')
         routed_query.save!
 
-        get :i14y, search_params.merge({ query: 'foo bar', routed: 'true'})
+        get :i14y, params: search_params.merge(query: 'foo bar', routed: 'true')
       end
 
       it { is_expected.to respond_with :success }
@@ -406,9 +411,11 @@ describe Api::V2::SearchesController do
     context 'when the search options are not valid' do
       before do
         get :video,
-            affiliate: 'usagov',
-            format: 'json',
-            query: 'api'
+            params: {
+              affiliate: 'usagov',
+              format: 'json',
+              query: 'api'
+            }
       end
 
       it { is_expected.to respond_with :bad_request }
@@ -433,7 +440,7 @@ describe Api::V2::SearchesController do
                                                    hash_including('query'),
                                                    be_a_kind_of(ActionDispatch::Request))
 
-        get :video, search_params
+        get :video, params: search_params
       end
 
       it { is_expected.to respond_with :success }
@@ -451,7 +458,7 @@ describe Api::V2::SearchesController do
         routed_query.routed_query_keywords.build(keyword: 'foo bar')
         routed_query.save!
 
-        get :video, search_params.merge({ query: 'foo bar', routed: 'true'})
+        get :video, params: search_params.merge(query: 'foo bar', routed: 'true')
       end
 
       it { is_expected.to respond_with :success }
@@ -466,7 +473,7 @@ describe Api::V2::SearchesController do
     let(:docs_params) { search_params.merge({ dc: 1 }) }
 
     context 'when the search options are not valid' do
-      before { get :docs, docs_params.except(:dc) }
+      before { get :docs, params: docs_params.except(:dc) }
       it { is_expected.to respond_with :bad_request }
 
       it 'returns errors in JSON' do
@@ -488,7 +495,7 @@ describe Api::V2::SearchesController do
                                                    hash_including('query'),
                                                    be_a_kind_of(ActionDispatch::Request))
 
-        get :docs, docs_params
+        get :docs, params: docs_params
       end
 
       it { is_expected.to respond_with :success }
@@ -515,7 +522,7 @@ describe Api::V2::SearchesController do
                                                    hash_including('query'),
                                                    be_a_kind_of(ActionDispatch::Request))
 
-        get :docs, docs_params
+        get :docs, params: docs_params
       end
 
       it { is_expected.to respond_with :success }
@@ -539,7 +546,7 @@ describe Api::V2::SearchesController do
                                                    hash_including('query'),
                                                    be_a_kind_of(ActionDispatch::Request))
 
-        get :docs, docs_params
+        get :docs, params: docs_params
       end
 
       it { is_expected.to respond_with :success }
@@ -557,7 +564,7 @@ describe Api::V2::SearchesController do
         routed_query.routed_query_keywords.build(keyword: 'foo bar')
         routed_query.save!
 
-        get :docs, docs_params.merge({ query: 'foo bar', routed: 'true'})
+        get :docs, params: docs_params.merge(query: 'foo bar', routed: 'true')
       end
 
       it { is_expected.to respond_with :success }

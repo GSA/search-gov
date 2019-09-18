@@ -90,7 +90,7 @@ RSpec.configure do |config|
   end
 
   config.after(:each) do
-    ActiveJob::Base.queue_adapter.enqueued_jobs.clear
+    ApplicationJob.queue_adapter.enqueued_jobs.clear
   end
 
   config.after(:suite) do

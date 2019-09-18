@@ -13,7 +13,13 @@ describe UserSessionsController do
   describe "#create" do
     let(:user) { users(:affiliate_manager) }
     let(:post_create) do
-      post :create, user_session: { email: user.email, password: user.password }
+      post :create,
+           params: {
+             user_session: {
+               email: user.email,
+               password: user.password
+             }
+           }
     end
 
     it 'filters passwords in the logfile' do
@@ -30,18 +36,30 @@ describe UserSessionsController do
       it { is_expected.to render_template(:new) }
     end
 
-    context "when the user session fails to save" do
+    context 'when the user session fails to save' do
       before do
-        post :create, :user_session => {:email => "invalid@fixtures.org", :password => "admin"}
+        post :create,
+             params: {
+               user_session: {
+                 email: 'invalid@fixtures.org',
+                 password: 'admin'
+               }
+             }
       end
 
       it { is_expected.to render_template(:new) }
     end
   end
 
-  describe "do POST on create for developer" do
-    it "should redirect to affiliate home page" do
-      post :create, :user_session => {:email => users("developer").email, :password => "test1234!"}
+  describe 'do POST on create for developer' do
+    it 'should redirect to affiliate home page' do
+      post :create,
+           params: {
+             user_session: {
+               email: users('developer').email,
+               password: 'test1234!'
+             }
+           }
       expect(response).to redirect_to(developer_redirect_url)
     end
   end

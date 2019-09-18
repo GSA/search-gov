@@ -1,4 +1,4 @@
-class Alert < ActiveRecord::Base
+class Alert < ApplicationRecord
   belongs_to :affiliate
   validates :text, presence: true, :unless => "title.blank?"
   validates :status, presence: true

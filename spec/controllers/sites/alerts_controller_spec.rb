@@ -14,7 +14,7 @@ describe Sites::AlertsController do
 
       before do
         expect(site).to receive(:alert).and_return(alert)
-        get :edit, site_id: site.id
+        get :edit, params: { site_id: site.id }
       end
 
       it { is_expected.to assign_to(:site).with(site) }
@@ -40,11 +40,14 @@ describe Sites::AlertsController do
               and_return(true)
 
           put :update,
-               site_id: site.id,
-               alert: { title: 'Updated Title for Alert',
-                        text: 'Some text for the alert.',
-                        status: 'Active',
-                        not_allowed_key: 'not allowed value' }
+              params: {
+                site_id: site.id,
+                alert: { title: 'Updated Title for Alert',
+                         text: 'Some text for the alert.',
+                         status: 'Active',
+                         not_allowed_key: 'not allowed value' }
+              }
+
         end
 
         it { is_expected.to assign_to(:alert).with(alert) }
@@ -64,10 +67,12 @@ describe Sites::AlertsController do
               and_return(false)
 
           put :update,
-              site_id: site.id,
-              alert: { title: 'Title',
-                        text: '',
-                        status: 'Active' }
+              params: {
+                site_id: site.id,
+                alert: { title: 'Title',
+                         text: '',
+                         status: 'Active' }
+              }
         end
 
         it { is_expected.to assign_to(:alert).with(alert) }

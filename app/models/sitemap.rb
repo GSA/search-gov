@@ -1,4 +1,4 @@
-class Sitemap < ActiveRecord::Base
+class Sitemap < ApplicationRecord
   include Fetchable
 
   attr_readonly :url

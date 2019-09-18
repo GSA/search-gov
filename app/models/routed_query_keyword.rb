@@ -1,4 +1,4 @@
-class RoutedQueryKeyword < ActiveRecord::Base
+class RoutedQueryKeyword < ApplicationRecord
   include Dupable
 
   before_validation do |record|

@@ -1,4 +1,4 @@
-class Tweet < ActiveRecord::Base
+class Tweet < ApplicationRecord
   before_save :sanitize_tweet_text
   belongs_to :twitter_profile, :primary_key => :twitter_id
   validates_presence_of :tweet_id, :tweet_text, :published_at, :twitter_profile_id

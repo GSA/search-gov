@@ -16,7 +16,7 @@ describe Sites::TwitterProfilesController do
 
       before do
         expect(site).to receive(:twitter_profiles).and_return(twitter_profiles)
-        get :index, site_id: site.id
+        get :index, params: { site_id: site.id }
       end
 
       it { is_expected.to assign_to(:site).with(site) }
@@ -52,9 +52,14 @@ describe Sites::TwitterProfilesController do
                    show_lists: '1')
 
           post :create,
-               site_id: site.id,
-               twitter_profile: { screen_name: 'usasearch', not_allowed_key: 'not allowed value' },
-               show_lists: 1
+               params: {
+                 site_id: site.id,
+                 twitter_profile: {
+                   screen_name: 'usasearch',
+                   not_allowed_key: 'not allowed value'
+                 },
+                 show_lists: 1
+               }
         end
 
         it { is_expected.to redirect_to(site_twitter_handles_path(site)) }
@@ -82,8 +87,13 @@ describe Sites::TwitterProfilesController do
               and_return(new_twitter_profile)
 
           post :create,
-               site_id: site.id,
-               twitter_profile: { screen_name: 'usasearch', not_allowed_key: 'not allowed value' }
+               params: {
+                 site_id: site.id,
+                 twitter_profile: {
+                   screen_name: 'usasearch',
+                   not_allowed_key: 'not allowed value'
+                 }
+               }
         end
 
         it { is_expected.to assign_to(:profile).with(new_twitter_profile) }
@@ -101,8 +111,12 @@ describe Sites::TwitterProfilesController do
               and_return(new_twitter_profile)
 
           post :create,
-               site_id: site.id,
-               twitter_profile: { screen_name: 'invalid handle', not_allowed_key: 'not allowed value' }
+               params: {
+                 site_id: site.id,
+                 twitter_profile: { screen_name: 'invalid handle',
+                                    not_allowed_key: 'not allowed value'
+                 }
+               }
         end
 
         it { is_expected.to assign_to(:profile).with(new_twitter_profile) }
@@ -126,7 +140,7 @@ describe Sites::TwitterProfilesController do
             and_return(twitter_profile)
         expect(twitter_profiles).to receive(:delete).with(twitter_profile)
 
-        delete :destroy, site_id: site.id, id: 100
+        delete :destroy, params: { site_id: site.id, id: 100 }
       end
 
       it { is_expected.to redirect_to(site_twitter_handles_path(site)) }

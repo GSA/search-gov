@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Enqueues a ClickCounterJob for each SearchgovDomain
-class ClickMonitorJob < ActiveJob::Base
+class ClickMonitorJob < ApplicationJob
   queue_as :searchgov
 
   def perform

@@ -1,4 +1,4 @@
-class FeaturedCollection < ActiveRecord::Base
+class FeaturedCollection < ApplicationRecord
   extend HumanAttributeName
   include BestBet
 
