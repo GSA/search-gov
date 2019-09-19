@@ -2,7 +2,7 @@
 
 class ElasticNewsItem
   extend Indexable
-  DUBLIN_CORE_AGG_NAMES = [:contributor, :subject, :publisher]
+  DUBLIN_CORE_AGG_NAMES = %i[contributor subject publisher].freeze
 
   self.settings = ElasticSettings::COMMON
 
@@ -19,9 +19,8 @@ class ElasticNewsItem
         contributor: { type: 'keyword' },
         subject: { type: 'keyword' },
         publisher: { type: 'keyword' },
-        tags: { type: 'keyword' },
+        tags: { type: 'keyword' }
       }
     )
   }
-
 end

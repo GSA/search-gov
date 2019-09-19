@@ -10,9 +10,8 @@ class ElasticTweet
       properties: {
         twitter_profile_id: { type: 'long' },
         tweet_text: ElasticSettings::TEXT,
-        published_at: { type: 'date' },
+        published_at: { type: 'date' }
       }
     )
   }
-
 end

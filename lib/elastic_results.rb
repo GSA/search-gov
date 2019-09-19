@@ -33,7 +33,7 @@ class ElasticResults
 
   def highlight(highlight, instance)
     if highlight.present? and instance.present?
-      highlight.transform_keys!{ |key| key.remove(/\..*/) }
+      highlight.transform_keys! { |key| key.remove(/\..*/) }
       highlight_instance(highlight, instance)
     end
     instance

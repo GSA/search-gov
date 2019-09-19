@@ -73,6 +73,6 @@ class ElasticQuery
   end
 
   def highlighted_fields
-    @highlighted_fields ||= text_fields.map{ |field| "#{field}.#{language}" }
+    @highlighted_fields ||= text_fields.map { |field| "#{field}.#{language}" }
   end
 end

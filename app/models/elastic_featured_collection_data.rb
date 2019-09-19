@@ -10,19 +10,30 @@ class ElasticFeaturedCollectionData
 
   def to_builder
     Jbuilder.new do |json|
-      json.(featured_collection,
-            :id,
-            :affiliate_id,
-            :status,
-            :publish_start_on,
-            :publish_end_on,
-            :match_keyword_values_only)
+      json.(featured_collection, *attributes)
       json.language language
       json.set! "title.#{language}", featured_collection.title
-      json.set! "link_titles.#{language}",
-                featured_collection.featured_collection_links.pluck(:title)
-      json.keyword_values featured_collection.featured_collection_keywords.pluck(:value)
+      json.set! "link_titles.#{language}", titles
+      json.keyword_values keyword_values
     end
   end
 
+  private
+
+  def attributes
+    %i[id
+       affiliate_id
+       status
+       publish_start_on
+       publish_end_on
+       match_keyword_values_only]
+  end
+
+  def titles
+    featured_collection.featured_collection_links.pluck(:title)
+  end
+
+  def keyword_values
+    featured_collection.featured_collection_keywords.pluck(:value)
+  end
 end

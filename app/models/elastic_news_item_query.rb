@@ -8,8 +8,7 @@ class ElasticNewsItemQuery < ElasticTextFilterByPublishedAtQuery
     @excluded_urls = options[:excluded_urls].try(:collect, &:url)
     @tags = options[:tags]
     @dublin_core_aggs = options.slice(*ElasticNewsItem::DUBLIN_CORE_AGG_NAMES).delete_if { |agg_name, agg_value| agg_value.nil? }
-    @text_fields = %w[title]
-    @text_fields += %w[body description] unless options[:title_only]
+    @text_fields = (options[:title_only] ? ['title'] : %w[body description title])
   end
 
   def query(json)

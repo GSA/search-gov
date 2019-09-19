@@ -5,27 +5,27 @@ module ElasticSettings
               normalizer: 'keyword_normalizer' }.freeze
 
   TEXT = {
-           properties: {
-             en: {
-               type: 'text',
-               analyzer: 'en_analyzer',
-               copy_to: 'bigram',
-               term_vector: 'with_positions_offsets'
-             },
-             es: {
-               type: 'text',
-               analyzer: 'es_analyzer',
-               copy_to: 'bigram',
-               term_vector: 'with_positions_offsets'
-             },
-             babel: {
-               type: 'text',
-               analyzer: 'babel_analyzer',
-               copy_to: 'bigram',
-               term_vector: 'with_positions_offsets'
-             }
-           }
-         }
+    properties: {
+      en: {
+        type: 'text',
+        analyzer: 'en_analyzer',
+        copy_to: 'bigram',
+        term_vector: 'with_positions_offsets'
+      },
+      es: {
+        type: 'text',
+        analyzer: 'es_analyzer',
+        copy_to: 'bigram',
+        term_vector: 'with_positions_offsets'
+      },
+      babel: {
+        type: 'text',
+        analyzer: 'babel_analyzer',
+        copy_to: 'bigram',
+        term_vector: 'with_positions_offsets'
+      }
+    }
+  }.freeze
 
   COMMON = {
     index: {
@@ -80,5 +80,4 @@ module ElasticSettings
       }
     }
   }.freeze
-
 end
