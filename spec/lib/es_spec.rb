@@ -33,9 +33,14 @@ describe ES do
   end
 
   context 'when working in ES::ELK submodule' do
+    let(:es_config) { Rails.application.secrets.analytics['elasticsearch'] }
+
     describe '.client_reader' do
-      it 'uses the value from the secrets.yml analytics[elasticsearch][reader] entry' do
-        expect(ES::ELK.client_reader.transport.hosts.first[:host]).to eq(Rails.application.secrets.analytics['elasticsearch']['reader'])
+      let(:host) { ES::ELK.client_reader.transport.hosts.first }
+
+      it 'uses the values from the secrets.yml analytics[elasticsearch][reader] entry' do
+        expect(host[:host]).to eq(URI(es_config['reader']['host']).host)
+        expect(host[:user]).to eq(es_config['reader']['user'])
       end
     end
 
@@ -44,17 +49,23 @@ describe ES do
         count = Rails.application.secrets.analytics['elasticsearch']['writers'].count
         expect(ES::ELK.client_writers.size).to eq(count)
         count.times do |i|
-          expect(ES::ELK.client_writers.first.transport.hosts[i][:host]).to eq(Rails.application.secrets.analytics['elasticsearch']['writers'][i])
+          host = ES::ELK.client_writers.first.transport.hosts[i]
+          expect(host[:host]).to eq(URI(es_config['writers'][i]['host']).host)
+          expect(host[:user]).to eq(es_config['writers'][i]['user'])
         end
       end
     end
   end
 
   describe 'when working in ES::CustomIndices submodule' do
+    let(:es_config) { Rails.application.secrets.custom_indices['elasticsearch'] }
+
     describe '.client_reader' do
-      it 'uses the value from the secrets.yml custom_indices[elasticsearch][reader] entry' do
-        expect(ES::CustomIndices.client_reader.transport.hosts.first[:host]).
-          to eq(URI(Rails.application.secrets.custom_indices['elasticsearch']['reader']).host)
+      let(:host) { ES::CustomIndices.client_reader.transport.hosts.first }
+
+      it 'uses the values from the secrets.yml custom_indices[elasticsearch][reader] entry' do
+        expect(host[:host]).to eq(URI(es_config['reader']['host']).host)
+        expect(host[:user]).to eq(es_config['reader']['user'])
       end
     end
 
@@ -63,8 +74,9 @@ describe ES do
         count = Rails.application.secrets.custom_indices['elasticsearch']['writers'].count
         expect(ES::CustomIndices.client_writers.size).to eq(count)
         count.times do |i|
-          expect(ES::CustomIndices.client_writers.first.transport.hosts[i][:host]).
-            to eq(URI(Rails.application.secrets.custom_indices['elasticsearch']['writers'][i]).host)
+          host = ES::CustomIndices.client_writers.first.transport.hosts[i]
+          expect(host[:host]).to eq(URI(es_config['writers'][i]['host']).host)
+          expect(host[:user]).to eq(es_config['writers'][i]['user'])
         end
       end
     end
