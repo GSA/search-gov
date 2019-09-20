@@ -4,7 +4,7 @@ class ElasticTweetQuery < ElasticTextFilteredQuery
     super({ sort: 'published_at:desc' }.merge(options))
     @twitter_profile_ids = options[:twitter_profile_ids]
     @since_ts = options[:since]
-    self.highlighted_fields = %w(tweet_text)
+    @text_fields = ['tweet_text']
   end
 
   def filtered_query_filter(json)

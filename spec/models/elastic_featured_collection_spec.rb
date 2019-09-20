@@ -282,9 +282,7 @@ describe ElasticFeaturedCollection do
         end
       end
 
-      # Disabling until we re-implement per-language analysis:
-      # https://cm-jira.usa.gov/browse/SRCH-474
-      pending 'when affiliate is English' do
+      context 'when affiliate is English' do
         before do
           featured_collection = affiliate.featured_collections.build(title: 'The affiliate interns use powerful engineering computers',
                                                                      status: 'active',
@@ -304,9 +302,7 @@ describe ElasticFeaturedCollection do
         end
       end
 
-      # Disabling until we re-implement per-language analysis:
-      # https://cm-jira.usa.gov/browse/SRCH-474
-      pending 'when affiliate is Spanish' do
+      context 'when affiliate is Spanish' do
         before do
           affiliate.locale = 'es'
           featured_collection = affiliate.featured_collections.build(title: 'Leyes y el rey',

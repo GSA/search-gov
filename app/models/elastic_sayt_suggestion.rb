@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ElasticSaytSuggestion
   extend Indexable
 
@@ -6,9 +8,12 @@ class ElasticSaytSuggestion
   self.mappings = {
     index_type => ElasticMappings::COMMON.deep_merge(
       properties: {
+        affiliate_id: { type: 'integer' },
         phrase: {
-          type: 'text', term_vector: 'with_positions_offsets',
-          fields: { keyword: ElasticSettings::KEYWORD } },
+          properties: { keyword: ElasticSettings::KEYWORD }.merge(
+            ElasticSettings::TEXT[:properties]
+          )
+        },
         popularity: { type: 'integer' }
       }
     )

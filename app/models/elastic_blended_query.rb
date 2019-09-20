@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ElasticBlendedQuery < ElasticTextFilterByPublishedAtQuery
   include ElasticSuggest
   include ElasticTitleDescriptionBodyHighlightFields
@@ -7,7 +9,7 @@ class ElasticBlendedQuery < ElasticTextFilterByPublishedAtQuery
     super(options)
     @affiliate_id = options[:affiliate_id]
     @rss_feed_url_ids = options[:rss_feed_url_ids]
-    self.highlighted_fields = %w(title description body)
+    @text_fields = %w[title description body]
   end
 
   def body
