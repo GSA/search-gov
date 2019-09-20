@@ -1479,6 +1479,8 @@ CREATE TABLE `users` (
   `sees_filtered_totals` tinyint(1) NOT NULL DEFAULT '1',
   `failed_login_count` int(11) NOT NULL DEFAULT '0',
   `password_updated_at` datetime DEFAULT NULL,
+  `provider` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `uid` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_users_on_email` (`email`),
   UNIQUE KEY `index_users_on_api_key` (`api_key`),
@@ -1581,7 +1583,7 @@ CREATE TABLE `youtube_profiles` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-07-29 10:29:38
+-- Dump completed on 2019-09-20 14:21:11
 INSERT INTO `schema_migrations` (version) VALUES
 ('20090818003200'),
 ('20090827135344'),
@@ -2306,6 +2308,8 @@ INSERT INTO `schema_migrations` (version) VALUES
 ('20181025225740'),
 ('20181109212904'),
 ('20181213153332'),
-('20190205200912');
+('20190205200912'),
+('20190920174118'),
+('20190920181828');
 
 
