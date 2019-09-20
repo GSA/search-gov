@@ -279,4 +279,13 @@ class User < ApplicationRecord
     self.requires_manual_approval = !has_government_affiliated_email?
     true
   end
+
+  def self.find_from_omniauth_data(hash)
+    find_by_provider_and_uid(hash['provider'], hash['uid'])
+  end
+
+  def self.create_from_omniauth_data(hash, user = nil)
+    user ||= User.create_from_omniauth_data(hash)
+    Authorization.create(:user_id => user.id, :uid => hash['uid'], :provider => hash['provider'])
+  end
 end
