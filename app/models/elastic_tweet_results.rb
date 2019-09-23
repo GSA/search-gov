@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ElasticTweetResults < ElasticResults
 
   def highlight_instance(highlight, instance)

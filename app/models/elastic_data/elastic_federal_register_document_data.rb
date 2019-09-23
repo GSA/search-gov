@@ -17,7 +17,7 @@ class ElasticFederalRegisterDocumentData
             :publication_date,
             :significant,
             :document_type)
-      json.group_id (document.docket_id || document.document_number)
+      json.group_id(document.docket_id || document.document_number)
       %w[title abstract].each do |field|
         json.set! "#{field}.en", document.send(field)
       end

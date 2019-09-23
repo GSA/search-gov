@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ElasticQueryStringQuery
   def filtered_query_query(json)
     if @q.present?

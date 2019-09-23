@@ -17,9 +17,8 @@ class ElasticFederalRegisterDocument
         document_type: ElasticSettings::KEYWORD,
         federal_register_agency_ids: { type: 'integer' },
         title: ElasticSettings::TEXT,
-        significant: { type: 'boolean' },
+        significant: { type: 'boolean' }
       }
     )
   }
-
 end

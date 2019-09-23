@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ElasticLinkPopularityQuery
   def initialize(link, days_back = 7)
     @link = link
