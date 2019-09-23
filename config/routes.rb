@@ -10,8 +10,7 @@ Rails.application.routes.draw do
   get '/search/news' => 'searches#news', as: :news_search
   get '/search/news/videos' => 'searches#video_news', as: :video_news_search
 
-  #get '/auth/:provider/callback' => 'omniauth_callbacks#create'
-  get '/auth/logindotgov/callback', to: 'omniauth_callbacks#create'
+  get '/auth/logindotgov/callback', to: 'omniauth_callbacks#login_dot_gov'
 
 
   namespace :api, defaults: { format: :json } do
