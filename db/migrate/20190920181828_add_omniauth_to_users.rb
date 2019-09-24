@@ -1,6 +1,12 @@
+# frozen_string_literal: true
+
 class AddOmniauthToUsers < ActiveRecord::Migration[5.0]
   def change
-    add_column :users, :provider, :string
-    add_column :users, :uid, :string
+    change_table :users, bulk: true do |t|
+      t.string :provider
+      t.string :uid
+      t.index :uid, unique: true
+      t.index %i[provider uid], unique: true
+    end
   end
 end
