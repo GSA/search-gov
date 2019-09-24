@@ -17,13 +17,13 @@ class ElasticLinkPopularityQuery
               json.must do
                 json.child! do
                   json.terms do
-                    json.set! "params.url", links
+                    json.set! 'params.url', links
                   end
                 end
                 json.child! do
                   json.range do
-                    json.set! "@timestamp" do
-                      json.gt "now-#{@days_back}d/d"
+                    json.set! '@timestamp' do
+                      json.gt 'now-#{@days_back}d/d'
                     end
                   end
                 end
@@ -34,5 +34,4 @@ class ElasticLinkPopularityQuery
       end
     end
   end
-
 end

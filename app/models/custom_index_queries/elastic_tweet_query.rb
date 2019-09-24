@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class ElasticTweetQuery < ElasticTextFilteredQuery
-
   def initialize(options)
     super({ sort: 'published_at:desc' }.merge(options))
     @twitter_profile_ids = options[:twitter_profile_ids]
@@ -27,5 +26,4 @@ class ElasticTweetQuery < ElasticTextFilteredQuery
       end
     end
   end
-
 end

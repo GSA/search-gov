@@ -76,7 +76,11 @@ class ElasticFederalRegisterDocumentQuery < ElasticTextFilteredQuery
     json.filter do
       json.bool do
         json.must do
-          json.child! { json.terms { json.federal_register_agency_ids @federal_register_agency_ids } }
+          json.child! do
+            json.terms do
+              json.federal_register_agency_ids @federal_register_agency_ids
+            end
+          end
         end
         json.set! :should do
           json.child! { json.term { json.document_type 'rule' } }

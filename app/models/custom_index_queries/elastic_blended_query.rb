@@ -58,7 +58,7 @@ class ElasticBlendedQuery < ElasticTextFilterByPublishedAtQuery
       json.bool do
         json.must do
           json.child! { published_at_filter(json) }
-        end if @since_ts or @until_ts
+        end if @since_ts || @until_ts
         json.set! :should do |json|
           json.child! { json.term { json.affiliate_id @affiliate_id } }
           json.child! { json.terms { json.rss_feed_url_id @rss_feed_url_ids } }
@@ -66,5 +66,4 @@ class ElasticBlendedQuery < ElasticTextFilterByPublishedAtQuery
       end
     end
   end
-
 end

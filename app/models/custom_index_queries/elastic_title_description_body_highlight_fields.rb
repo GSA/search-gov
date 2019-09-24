@@ -10,11 +10,10 @@ module ElasticTitleDescriptionBodyHighlightFields
   end
 
   def default_pre_tags
-    %w()
+    ['']
   end
 
   def default_post_tags
-    %w()
+    ['']
   end
-
 end

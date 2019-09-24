@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
 class ElasticSaytSuggestionQuery < ElasticTextFilteredQuery
-
   def initialize(options)
-    super(options.merge({ sort: 'popularity:desc' }))
+    super(options.merge(sort: 'popularity:desc'))
     @affiliate_id = options[:affiliate_id]
     @text_fields = ['phrase']
   end
@@ -22,5 +21,4 @@ class ElasticSaytSuggestionQuery < ElasticTextFilteredQuery
       end
     end
   end
-
 end

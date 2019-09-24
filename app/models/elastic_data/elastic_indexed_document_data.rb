@@ -20,8 +20,7 @@ class ElasticIndexedDocumentData
         json.set! "#{field}.#{language}", indexed_document.send(field)
       end
       json.popularity LinkPopularity.popularity_for(indexed_document.url, DAYS_BACK)
-      json.published_at indexed_document.published_at&.strftime("%Y-%m-%dT%H:%M:%S")
+      json.published_at indexed_document.published_at&.strftime('%Y-%m-%dT%H:%M:%S')
     end
   end
-
 end
