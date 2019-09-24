@@ -1479,14 +1479,10 @@ CREATE TABLE `users` (
   `sees_filtered_totals` tinyint(1) NOT NULL DEFAULT '1',
   `failed_login_count` int(11) NOT NULL DEFAULT '0',
   `password_updated_at` datetime DEFAULT NULL,
-  `provider` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `uid` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_users_on_email` (`email`),
   UNIQUE KEY `index_users_on_api_key` (`api_key`),
   UNIQUE KEY `index_users_on_email_verification_token` (`email_verification_token`),
-  UNIQUE KEY `index_users_on_uid` (`uid`),
-  UNIQUE KEY `index_users_on_provider_and_uid` (`provider`,`uid`),
   KEY `index_users_on_perishable_token` (`perishable_token`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1585,7 +1581,7 @@ CREATE TABLE `youtube_profiles` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-09-24 14:05:06
+-- Dump completed on 2019-09-24 15:47:53
 INSERT INTO `schema_migrations` (version) VALUES
 ('20090818003200'),
 ('20090827135344'),
@@ -2311,6 +2307,6 @@ INSERT INTO `schema_migrations` (version) VALUES
 ('20181109212904'),
 ('20181213153332'),
 ('20190205200912'),
-('20190920181828');
+('20190920174118');
 
 
