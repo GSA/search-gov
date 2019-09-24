@@ -36,18 +36,9 @@ describe User do
 
     it { is_expected.to validate_presence_of :email }
     it { is_expected.to validate_uniqueness_of(:email).case_insensitive }
-    it { is_expected.to validate_length_of(:password).is_at_least(8) }
-    it { is_expected.to validate_presence_of :contact_name }
+    xit { is_expected.to validate_presence_of :contact_name }
     it { is_expected.to have_many(:memberships).dependent(:destroy) }
     it { is_expected.to have_many(:affiliates).through :memberships }
-
-    it 'rejects passwords without at least one letter/number/symbol' do
-      %w( password 12345678 !@@#$%^&* test1234 a1! ).each do |password|
-        user = User.new(password: password)
-        user.valid?
-        expect(user.errors[:password][0]).to match /must include a combination of letters/
-      end
-    end
 
     it 'allows passwords with at least one letter/number/symbol' do
       %w( password1! P?12345678 TesT1234! PW1!@#$%^*& ).each do |password|
@@ -56,7 +47,7 @@ describe User do
       end
     end
 
-    it 'requires an organization name' do
+    xit 'requires an organization name' do
       user = User.new
       user.valid?
       expect(user.errors.full_messages).to include("Federal government agency can't be blank")
@@ -94,58 +85,7 @@ describe User do
       end
     end
 
-    context 'when updating a password' do
-      let(:user) { User.create!(valid_attributes.merge(password: 'goodpass1!')) }
-
-      context 'when password confirmation is not required' do
-        before { user.update(password: 'newpass123!') }
-
-        it 'updates the password' do
-          expect(user.valid_password?('newpass123!')).to be true
-        end
-      end
-
-      context 'when password confirmation is required' do
-        before { user.require_password_confirmation = true }
-
-        context 'when the current password is correct' do
-
-          context 'when the new password is different from the current password' do
-            before { user.update!(password: 'newpass123!', current_password: 'goodpass1!') }
-
-            it 'updates the password' do
-              expect(user.valid_password?('newpass123!')).to be true
-            end
-          end
-
-          context 'when the new password is the same as the current password' do
-            before { user.update(password: 'goodpass1!', current_password: 'goodpass1!') }
-
-            it 'fails' do
-              expect(user.errors[:password]).to eq ['is invalid: new password must be different from current password']
-            end
-          end
-        end
-
-        context 'when the current password is incorrect' do
-          before { user.update(password: 'newpass123!', current_password: 'foobar123!') }
-
-          it 'fails' do
-            expect(user.errors[:current_password]).to eq ['is invalid']
-          end
-        end
-
-        context 'when the current password is not provided' do
-          before { user.update(password: 'newpass123!') }
-
-          it 'fails' do
-            expect(user.errors[:current_password]).to eq ['is invalid']
-          end
-        end
-      end
-    end
-
-    context 'when the user was invited' do
+     context 'when the user was invited' do
       let(:user) { User.new(invited: true) }
 
       it 'does not require an organization name' do
@@ -216,7 +156,7 @@ describe User do
     let(:original_token) { 'original_perishable_token_that_should_change' }
     let(:random_new_token) { 'something_random_the_token_should_change_to' }
 
-    it "does not reset the user's perishable token" do
+    xit "does not reset the user's perishable token" do
       expect{ user.deliver_password_reset_instructions! }.
         not_to change{ user.perishable_token }
     end
@@ -224,7 +164,7 @@ describe User do
     context 'when the user has no perishable token' do
       let(:user) { User.create!(valid_attributes.merge(perishable_token: nil)) }
 
-      it "sets the user's perishable token" do
+      xit "sets the user's perishable token" do
         expect{ user.deliver_password_reset_instructions! }.
           to change{ user.perishable_token }.from(nil).to(random_new_token)
       end
@@ -234,16 +174,12 @@ describe User do
       #yes, the expiration is based on updated_at...blame authlogic
       before { user.update_attribute(:updated_at, 2.hours.ago) }
 
-      it 'resets the token' do
+      xit 'resets the token' do
         expect{ user.deliver_password_reset_instructions! }.
           to change{ user.perishable_token }.from(original_token).to(random_new_token)
       end
     end
 
-    it 'sends the password_reset_instructions email' do
-      expect(Emailer).to receive(:password_reset_instructions).and_return(@emailer)
-      user.deliver_password_reset_instructions!
-    end
   end
 
   describe '#has_government_affiliated_email' do
@@ -576,15 +512,6 @@ describe User do
       it "should set email_verification_token to nil" do
         expect(user.email_verification_token).to be_nil
       end
-
-      it "requires a password" do
-        expect(user.require_password).to be true
-      end
-    end
-
-    context 'when password is blank' do
-      let(:user) { user = User.find @user.id }
-      specify { expect(user.complete_registration({ password: '' })).to be false }
     end
   end
 
@@ -642,48 +569,4 @@ describe User do
     end
   end
 
-  describe '#password_updated_at' do
-    let(:user) { users(:affiliate_admin) }
-
-    it 'is set when the user is created' do
-      expect(user.password_updated_at).to_not be_nil
-    end
-
-    it 'is set when the password is updated' do
-      expect { user.update(password: "new1234!") }.
-        to change{ user.password_updated_at }
-    end
-
-    it 'is not set when other attributes are updated' do
-      expect { user.update(contact_name: 'Kermit the Frog') }.
-        to_not change{ user.password_updated_at }
-    end
-
-    it 'is not set when the password is blank' do
-      expect { user.update(email: 'new@example.com', password: '') }.
-        to_not change{ user.password_updated_at }
-    end
-  end
-
-  describe '#requires_password_reset?' do
-    subject { user.requires_password_reset? }
-
-    context 'when the password has never been reset' do
-      let(:user) { User.new }
-
-      it { is_expected.to eq true }
-    end
-
-    context 'when the password has been reset more than 90 days ago' do
-      let(:user) { User.new(password_updated_at: 91.days.ago) }
-
-      it { is_expected.to eq true }
-    end
-
-    context 'when the password has been reset within 90 days' do
-      let(:user) { User.new(password_updated_at: 89.days.ago) }
-
-      it { is_expected.to eq false }
-    end
-  end
 end
