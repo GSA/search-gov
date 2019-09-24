@@ -16,17 +16,9 @@ describe UserSessionsController do
       post :create,
            params: {
              user_session: {
-               email: user.email,
-               password: user.password
+               email: user.email
              }
            }
-    end
-
-    it 'filters passwords in the logfile' do
-      allow(Rails.logger).to receive(:info)
-      expect(Rails.logger).to receive(:info).
-        with(/ \"password\"=>\"\[FILTERED\]\"/)
-      post_create
     end
 
     context 'when the user is not approved' do
@@ -41,8 +33,7 @@ describe UserSessionsController do
         post :create,
              params: {
                user_session: {
-                 email: 'invalid@fixtures.org',
-                 password: 'admin'
+                 email: 'invalid@fixtures.org'
                }
              }
       end
@@ -56,8 +47,7 @@ describe UserSessionsController do
       post :create,
            params: {
              user_session: {
-               email: users('developer').email,
-               password: 'test1234!'
+               email: users('developer').email
              }
            }
       expect(response).to redirect_to(developer_redirect_url)
