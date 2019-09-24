@@ -6,7 +6,7 @@ module ElasticMappings
     properties: {
       language: { type: 'keyword', index: true },
       id: { type: 'integer' },
-      bigram: { type: 'text', analyzer: 'bigram_analyzer'}
+      bigram: { type: 'text', analyzer: 'bigram_analyzer' }
     }
   }.freeze
 
@@ -19,7 +19,7 @@ module ElasticMappings
       title: ElasticSettings::TEXT,
       match_keyword_values_only: { type: 'boolean',
                                    null_value: 'false' },
-      keyword_values: ElasticSettings::KEYWORD }
+      keyword_values: ElasticSettings::KEYWORD
+    }
   ).freeze
-
 end

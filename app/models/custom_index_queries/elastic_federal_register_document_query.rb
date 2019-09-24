@@ -2,7 +2,7 @@
 
 class ElasticFederalRegisterDocumentQuery < ElasticTextFilteredQuery
   def initialize(options)
-    super(options.merge({ sort: 'comments_close_on:desc' }))
+    super(options.merge(sort: 'comments_close_on:desc'))
     @text_fields = %w[abstract title]
     @text_analyzer = 'en_analyzer'
     @federal_register_agency_ids = options[:federal_register_agency_ids]
@@ -52,12 +52,16 @@ class ElasticFederalRegisterDocumentQuery < ElasticTextFilteredQuery
   end
 
   def filtered_query_query(json)
-    if @q.present?
-      json.must do
-        json.bool do
-          json.set! :should do |should_json|
-            should_json.child! { should_json.terms { should_json.document_number @q.split(/\s+/) } }
-            should_json.child! { multi_match(should_json, highlighted_fields, @q, multi_match_options) }
+    return if @q.blank?
+
+    json.must do
+      json.bool do
+        json.set! :should do |should_json|
+          should_json.child! do
+            should_json.terms { should_json.document_number @q.split(/\s+/) }
+          end
+          should_json.child! do
+            multi_match(should_json, highlighted_fields, @q, multi_match_options)
           end
         end
       end
@@ -80,14 +84,14 @@ class ElasticFederalRegisterDocumentQuery < ElasticTextFilteredQuery
           json.child! do
             json.range do
               json.publication_date do
-                json.gte "now-90d/d"
+                json.gte 'now-90d/d'
               end
             end
           end
           json.child! do
             json.range do
               json.comments_close_on do
-                json.gte "now/d"
+                json.gte 'now/d'
               end
             end
           end

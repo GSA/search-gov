@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ElasticSuggest
   def suggest(json)
     json.suggest do

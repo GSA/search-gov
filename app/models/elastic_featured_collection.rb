@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ElasticFeaturedCollection
   extend Indexable
   OPTIMIZING_INCLUDES = [:affiliate, :featured_collection_keywords, :featured_collection_links].freeze

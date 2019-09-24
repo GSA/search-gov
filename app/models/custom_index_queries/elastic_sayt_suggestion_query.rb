@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ElasticSaytSuggestionQuery < ElasticTextFilteredQuery
 
   def initialize(options)
