@@ -43,7 +43,7 @@ describe UserSessionsController do
   end
 
   describe 'do POST on create for developer' do
-    it 'should redirect to affiliate home page' do
+    xit 'should redirect to affiliate home page' do
       post :create,
            params: {
              user_session: {
