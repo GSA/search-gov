@@ -23,7 +23,7 @@ class ElasticLinkPopularityQuery
                 json.child! do
                   json.range do
                     json.set! '@timestamp' do
-                      json.gt 'now-#{@days_back}d/d'
+                      json.gt "now-#{@days_back}d/d"
                     end
                   end
                 end
