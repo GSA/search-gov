@@ -25,5 +25,4 @@ class ElasticBoostedContentData
       json.keyword_values boosted_content.boosted_content_keywords.pluck(:value)
     end
   end
-
 end
