@@ -27,8 +27,10 @@ describe ElasticIndexer do
   end
 
   describe '#index_all' do
+    subject(:index_all) { ElasticIndexer.index_all('IndexedDocument') }
+
     it "should index all valid instances" do
-      ElasticIndexer.index_all("IndexedDocument")
+      index_all
       ElasticIndexedDocument.commit
       search = ElasticIndexedDocument.search_for(q: 'Tropical', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
       expect(search.total).to eq(2)
@@ -54,7 +56,24 @@ describe ElasticIndexer do
 
       it 'should not index anything' do
         expect(ElasticIndexedDocument).not_to receive(:index)
-        ElasticIndexer.index_all("IndexedDocument")
+        index_all
+      end
+    end
+
+    context 'when something goes wrong' do
+      before do
+        expect(ElasticIndexedDocument).to receive(:index).with(anything).
+          and_raise(StandardError.new('fail'))
+      end
+
+      it 'does not raise an error' do
+        expect { index_all }.not_to raise_error
+      end
+
+      it 'logs the error' do
+        expect(Rails.logger).to receive(:error).
+          with(/Problem indexing ElasticIndexedDocument:\nIDs: \[\d/)
+        index_all
       end
     end
   end
