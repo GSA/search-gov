@@ -12,7 +12,7 @@ class ElasticTweetData
     Jbuilder.new do |json|
       json.(tweet, :id, :twitter_profile_id)
       json.set! "tweet_text.#{language}", tweet.tweet_text
-      json.published_at tweet.published_at.strftime("%Y-%m-%dT%H:%M:%S")
+      json.published_at tweet.published_at.strftime('%Y-%m-%dT%H:%M:%S')
       json.language language
     end
   end

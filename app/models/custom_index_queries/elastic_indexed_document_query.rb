@@ -33,5 +33,4 @@ class ElasticIndexedDocumentQuery < ElasticTextFilteredQuery
       end
     end
   end
-
 end

@@ -2,10 +2,10 @@
 
 module ElasticQueryStringQuery
   def filtered_query_query(json)
-    if @q.present?
-      json.must do
-        json.child! { query_string(json, highlighted_fields, @q, query_string_options) }
-      end
+    return if @q.blank?
+
+    json.must do
+      json.child! { query_string(json, highlighted_fields, @q, query_string_options) }
     end
   end
 
@@ -18,5 +18,4 @@ module ElasticQueryStringQuery
       end
     end
   end
-
 end

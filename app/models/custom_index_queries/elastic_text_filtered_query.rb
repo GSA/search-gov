@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class ElasticTextFilteredQuery < ElasticQuery
-
   def query(json)
     filtered_query(json)
   end
@@ -16,11 +15,11 @@ class ElasticTextFilteredQuery < ElasticQuery
   end
 
   def filtered_query_query(json)
-    if @q.present?
-      json.must do
-        json.child! { query_string(json, highlighted_fields, @q, query_string_options) }
-        json.child! { multi_match(json, highlighted_fields, @q, multi_match_options) }
-      end
+    return if @q.blank?
+
+    json.must do
+      json.child! { query_string(json, highlighted_fields, @q, query_string_options) }
+      json.child! { multi_match(json, highlighted_fields, @q, multi_match_options) }
     end
   end
 
