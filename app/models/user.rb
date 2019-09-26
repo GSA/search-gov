@@ -247,6 +247,7 @@ class User < ApplicationRecord
   end
 
   def self.from_omniauth(auth)
+    binding.pry
     where(email: auth.info.email).first_or_create do |user|
       user.uid = auth.uid
       user.provider = auth.provider

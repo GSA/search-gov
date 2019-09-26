@@ -122,3 +122,14 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
+
+# Omniauth test
+OmniAuth.config.test_mode = true
+omniauth_hash = { 'provider': 'logindotgov',
+                  'uid': '12345',
+                  'info': {
+                    'email': 'test@gsa.gov'
+                  } }
+
+
+OmniAuth.config.add_mock(:login_dot_gov, omniauth_hash)
