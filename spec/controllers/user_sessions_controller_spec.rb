@@ -43,6 +43,7 @@ describe UserSessionsController do
   end
 
   describe 'do POST on create for developer' do
+    # commented out for now but will refactor later for login_dot_gov
     xit 'should redirect to affiliate home page' do
       post :create,
            params: {
