@@ -246,12 +246,4 @@ class User < ApplicationRecord
     Authorization.create(:user_id => user.id, :uid => hash['uid'], :provider => hash['provider'])
   end
 
-  def self.from_omniauth(auth)
-    binding.pry
-    where(email: auth.info.email).first_or_create do |user|
-      user.uid = auth.uid
-      user.provider = auth.provider
-      user.email = auth.info.email
-    end
-  end
 end

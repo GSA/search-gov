@@ -569,4 +569,15 @@ describe User do
     end
   end
 
+  describe '#self.from_omniauth' do
+    subject(:from_omniauth) { OmniAuth.config.mock_auth[:login_dot_gov] }
+
+    it 'sets the users email' do
+      expect(from_omniauth.info.email).to(eq 'test@gsa.gov')
+    end
+
+    it 'sets the uid' do
+      expect(from_omniauth.uid).to(eq '1234')
+    end
+  end
 end
