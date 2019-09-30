@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-
   acts_as_authentic do |c|
     c.login_field = :email
     c.validate_email_field = true
@@ -70,11 +69,12 @@ class User < ApplicationRecord
     end
   end
 
-  #validate do |user|
-   # if user.organization_name.blank? && !user.invited
-   #   user.errors.add(:base, "Federal government agency can't be blank")
-   # end
-  #end
+  # commented out for now but will refactor later for login_dot_gov
+  # validate do |user|
+  #   if user.organization_name.blank? && !user.invited
+  #     user.errors.add(:base, "Federal government agency can't be blank")
+  #   end
+  # end
 
 
   def to_label

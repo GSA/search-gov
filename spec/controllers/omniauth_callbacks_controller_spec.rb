@@ -9,6 +9,5 @@ describe OmniauthCallbacksController do
     subject(:login_dot_gov) { get :login_dot_gov }
 
     it { is_expected.to redirect_to(admin_home_page_path) }
-
   end
 end
