@@ -7,7 +7,7 @@ class ElasticNewsItemData
 
   def initialize(news_item)
     @news_item = news_item
-    @language = news_item.language
+    @language = news_item.owner_language_guess
   end
 
   def to_builder
