@@ -265,7 +265,7 @@ workflows:
 #            - setup_elasticsearch
 #            - bundle_install
 
-      - report_coverage:
-          requires:
-            - rspec
+#      - report_coverage:
+#          requires:
+#            - rspec
 #           - cucumber
