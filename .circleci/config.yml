@@ -168,58 +168,58 @@ jobs:
           path: /tmp/test-results
           destination: test-results
 
-#  cucumber:
-#    executor: test_executor
-#
-#    parallelism: 6
-#
-#    steps:
-#      - restore_cache:
-#          key: repo-{{ .Environment.CIRCLE_SHA1 }}
-#
-#      - restore_cache:
-#          key: search-gov-{{ checksum "Gemfile.lock" }}
-#
-#      - run: bundle --path vendor/bundle
-#
-#      - restore_cache:
-#          key: elasticsearch
-#
-#      - prepare_database
-#
-#      - run:
-#          name: Run Tests
-#          command: |
-#            /home/circleci/search-gov/elasticsearch-1.7.3/bin/elasticsearch -d
-#            sleep 10
-#            bundle exec rake usasearch:elasticsearch:create_indexes
-#
-#            bundle exec rake tmp:create
-#
-#            mkdir /tmp/test-results
-#            ./cc-test-reporter before-build
-#
-#            # Run cucumber tests
-#            bundle exec cucumber --format progress \
-#                                --format junit \
-#                                --out /tmp/test-results/cucumber.xml \
-#                                --format progress \
-#                                -- $(circleci tests glob "features/*.feature" | circleci tests split --split-by=timings)
-#
-#            ./cc-test-reporter format-coverage --output coverage/codeclimate.cucumber.$CIRCLE_NODE_INDEX.json
-#
-#      - persist_to_workspace:
-#          root: ~/search-gov/coverage
-#          paths:
-#          - codeclimate.cucumber.*.json
-#
-#      # collect reports
-#      - store_test_results:
-#          path: /tmp/test-results
-#      - store_artifacts:
-#          path: /tmp/test-results
-#          destination: test-results
-#
+  cucumber:
+    executor: test_executor
+
+    parallelism: 6
+
+    steps:
+      - restore_cache:
+          key: repo-{{ .Environment.CIRCLE_SHA1 }}
+
+      - restore_cache:
+          key: search-gov-{{ checksum "Gemfile.lock" }}
+
+      - run: bundle --path vendor/bundle
+
+      - restore_cache:
+          key: elasticsearch
+
+      - prepare_database
+
+      - run:
+          name: Run Tests
+          command: |
+            /home/circleci/search-gov/elasticsearch-1.7.3/bin/elasticsearch -d
+            sleep 10
+            bundle exec rake usasearch:elasticsearch:create_indexes
+
+            bundle exec rake tmp:create
+
+            mkdir /tmp/test-results
+            ./cc-test-reporter before-build
+
+            # Run cucumber tests
+            bundle exec cucumber --format progress \
+                                --format junit \
+                                --out /tmp/test-results/cucumber.xml \
+                                --format progress \
+                                -- $(circleci tests glob "features/*.feature" | circleci tests split --split-by=timings)
+
+            ./cc-test-reporter format-coverage --output coverage/codeclimate.cucumber.$CIRCLE_NODE_INDEX.json
+
+      - persist_to_workspace:
+          root: ~/search-gov/coverage
+          paths:
+          - codeclimate.cucumber.*.json
+
+      # collect reports
+      - store_test_results:
+          path: /tmp/test-results
+      - store_artifacts:
+          path: /tmp/test-results
+          destination: test-results
+
   report_coverage:
     executor: test_executor
 
@@ -260,12 +260,12 @@ workflows:
             - setup_elasticsearch
             - bundle_install
 
-      - cucumber:
-          requires:
-            - setup_elasticsearch
-            - bundle_install
+#      - cucumber:
+#          requires:
+#            - setup_elasticsearch
+#            - bundle_install
 
       - report_coverage:
           requires:
             - rspec
-            - cucumber
+#           - cucumber
