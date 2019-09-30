@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ElasticIndexer
   DEFAULT_BATCH_SIZE = 100
 
@@ -11,8 +13,18 @@ class ElasticIndexer
   def index_all
     @rails_klass.includes(@includes).find_in_batches(batch_size: DEFAULT_BATCH_SIZE) do |batch|
       index_batch(batch)
+    rescue StandardError => error
+      error_info = <<~ERROR_INFO
+        Problem indexing #{@elastic_klass}:
+        IDs: #{batch.map(&:id)}
+        Backtrace: #{error.backtrace.first}
+      ERROR_INFO
+
+      Rails.logger.error(error_info)
     end
   end
+
+  private
 
   def index_batch(batch)
     data = hashify_data(batch)

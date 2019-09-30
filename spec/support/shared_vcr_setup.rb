@@ -36,7 +36,7 @@ VCR.configure do |config|
     /codeclimate.com/ ===  URI(request.uri).host
   end
 
-  config.ignore_request { |request| URI(request.uri).port == 9200 } #Elasticsearch
+  config.ignore_request { |request| URI(request.uri).port.between?(9200,9299) } #Elasticsearch
 
   secrets = YAML.load(ERB.new(File.read(Rails.root.join('config', 'secrets.yml'))).result)
   secrets['secret_keys'].each do |service, keys|
