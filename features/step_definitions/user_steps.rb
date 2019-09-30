@@ -1,7 +1,7 @@
 Given /^I am logged in with email "([^\"]*)"$/ do |email|
   visit login_path
   fill_in "user_session[email]", with: email
-  fill_in "user_session[password]", with: 'test1234!'
+  fill_in "user_session[password]", with: 'test12345!'
   click_button('Login')
 end
 

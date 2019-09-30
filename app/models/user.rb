@@ -1,8 +1,15 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  APPROVAL_STATUSES = %w[pending_email_verification
-                         pending_approval approved
+  acts_as_authentic do |c|
+    c.login_field = :email
+    c.validate_email_field = true
+    c.validate_login_field = false
+    c.ignore_blank_passwords  = true
+    c.validate_password_field = false
+  end
+
+  APPROVAL_STATUSES = %w[pending_approval approved
                          not_approved].freeze
   PASSWORD_FORMAT = /\A
     (?=.{8,}\z)        # Must contain 8 or more characters
@@ -38,14 +45,9 @@ class User < ApplicationRecord
   before_validation :set_initial_approval_status, on: :create
   after_validation :set_default_flags, on: :create
 
-  with_options if: :is_pending_email_verification? do
-    after_create :deliver_email_verification
-  end
-
   before_update :detect_deliver_welcome_email
   after_create :ping_admin
   after_update :send_welcome_to_new_user_email, if: :deliver_welcome_email_on_update
-  before_update :require_email_verification, if: :email_changed?
   after_update :deliver_email_verification, if: :email_changed?
 
   before_save :set_password_updated_at
@@ -112,23 +114,6 @@ class User < ApplicationRecord
   # authlogic magic state
   def approved?
     approval_status != 'not_approved'
-  end
-
-  def verify_email(token)
-    return true if is_approved? && email_verification_token == token
-
-    if is_pending_email_verification? && email_verification_token == token
-      if requires_manual_approval?
-        set_approval_status_to_pending_approval
-      else
-        set_approval_status_to_approved
-      end
-
-      save!
-      true
-    else
-      false
-    end
   end
 
   def complete_registration(attributes)
@@ -219,7 +204,7 @@ class User < ApplicationRecord
 
   def set_initial_approval_status
     if approval_status.blank? || invited
-      set_approval_status_to_pending_email_verification
+      set_approval_status_to_pending_approval
     end
   end
 
@@ -274,9 +259,17 @@ class User < ApplicationRecord
     perishable_token && updated_at < (Time.now - User.perishable_token_valid_for)
   end
 
+<<<<<<< HEAD
   def require_email_verification
     set_approval_status_to_pending_email_verification
     self.requires_manual_approval = !has_government_affiliated_email?
     true
+=======
+  def self.from_omniauth(auth)
+    where(email: auth.info.email).first_or_create do |user|
+      user.uid = auth.uid
+      user.email = auth.info.email
+    end
+>>>>>>> a5f02316e... update code to set none gov users to pending approval
   end
 end
