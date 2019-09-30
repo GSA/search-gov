@@ -585,7 +585,7 @@ describe User do
     end
 
     it 'sets the uid' do
-      expect(from_omniauth.uid).to(eq '1234')
+      expect(from_omniauth.uid).to(eq '12345')
     end
   end
 end
