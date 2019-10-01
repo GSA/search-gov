@@ -7,6 +7,13 @@ describe ElasticNewsItem do
   let(:gallery) { rss_feeds(:white_house_press_gallery) }
   let(:white_house_blog_url) { rss_feed_urls(:white_house_blog_url) }
   let(:white_house_press_gallery_url) { rss_feed_urls(:white_house_press_gallery_url) }
+  let(:search_params) do
+    {
+      q: 'Obama',
+      rss_feeds: [blog]
+    }
+  end
+  let(:search) { ElasticNewsItem.search_for(search_params) }
 
   before do
     ElasticNewsItem.recreate_index
@@ -215,7 +222,8 @@ describe ElasticNewsItem do
           {
             rss_feeds: [blog],
             language: affiliate.indexing_locale,
-            title_only: true
+            title_only: true,
+            q: 'superknuller'
           }
         end
         let(:news_item_params) do
@@ -241,10 +249,8 @@ describe ElasticNewsItem do
           end
 
           it 'does downcasing and ASCII folding only' do
-            appropriate_stemming = ['superknuller', 'woche']
-            appropriate_stemming.each do |query|
-              expect(ElasticNewsItem.search_for(search_params.merge(q: query)).total).to eq(1)
-            end
+            expect(search.total).to eq(1)
+            expect(search.results.first.title).to match(/Angebote/)
           end
         end
 
@@ -257,10 +263,8 @@ describe ElasticNewsItem do
           end
 
           it 'does downcasing and ASCII folding only' do
-            appropriate_stemming = ['superknuller', 'woche']
-            appropriate_stemming.each do |query|
-              expect(ElasticNewsItem.search_for(search_params.merge(q: query)).total).to eq(1)
-            end
+            expect(search.total).to eq(1)
+            expect(search.results.first.title).to match(/Angebote/)
           end
         end
       end
