@@ -578,10 +578,11 @@ describe User do
   end
 
   describe '.from_omniauth' do
-    subject(:from_omniauth) { OmniAuth.config.mock_auth[:login_dot_gov] }
+    let(:auth) { OmniAuth.config.mock_auth[:login_dot_gov] }
+    subject(:from_omniauth) { User.from_omniauth(auth) }
 
     it 'sets the users email' do
-      expect(from_omniauth.info.email).to(eq 'test@gsa.gov')
+      expect(from_omniauth.email).to(eq 'test@gsa.gov')
     end
 
     it 'sets the uid' do
