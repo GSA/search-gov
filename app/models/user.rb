@@ -29,9 +29,10 @@ class User < ApplicationRecord
   after_update :send_welcome_to_new_user_email, if: :deliver_welcome_email_on_update
   before_update :require_email_verification, if: :email_changed?
   after_update :deliver_email_verification, if: :email_changed?
-  attr_accessor :invited, :skip_welcome_email, :inviter
 
+  attr_accessor :invited, :skip_welcome_email, :inviter
   attr_reader :deliver_welcome_email_on_update
+
   scope :approved_affiliate, lambda {
     where(is_affiliate: true, approval_status: 'approved')
   }
