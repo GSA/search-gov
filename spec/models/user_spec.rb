@@ -577,7 +577,7 @@ describe User do
     end
   end
 
-  describe '#self.from_omniauth' do
+  describe '.from_omniauth' do
     subject(:from_omniauth) { OmniAuth.config.mock_auth[:login_dot_gov] }
 
     it 'sets the users email' do
