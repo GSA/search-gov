@@ -1,14 +1,6 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  acts_as_authentic do |c|
-    c.login_field = :email
-    c.validate_email_field = true
-    c.validate_login_field = false
-    c.ignore_blank_passwords  = true
-    c.validate_password_field = false
-  end
-
   APPROVAL_STATUSES = %w[pending_email_verification
                          pending_approval approved
                          not_approved].freeze
@@ -37,9 +29,10 @@ class User < ApplicationRecord
   after_update :send_welcome_to_new_user_email, if: :deliver_welcome_email_on_update
   before_update :require_email_verification, if: :email_changed?
   after_update :deliver_email_verification, if: :email_changed?
-  attr_accessor :invited, :skip_welcome_email, :inviter
 
+  attr_accessor :invited, :skip_welcome_email, :inviter
   attr_reader :deliver_welcome_email_on_update
+
   scope :approved_affiliate, lambda {
     where(is_affiliate: true, approval_status: 'approved')
   }
@@ -53,9 +46,11 @@ class User < ApplicationRecord
         }
 
   acts_as_authentic do |c|
-    c.crypto_provider = Authlogic::CryptoProviders::BCrypt
-    c.perishable_token_valid_for(1.hour)
-    c.disable_perishable_token_maintenance(true)
+    c.login_field = :email
+    c.validate_email_field = true
+    c.validate_login_field = false
+    c.ignore_blank_passwords  = true
+    c.validate_password_field = false
     c.logged_in_timeout = 1.hour
   end
 
@@ -238,7 +233,7 @@ class User < ApplicationRecord
   end
 
   def self.from_omniauth(auth)
-    where(email: auth.info.email).first_or_create do |user|
+    where(email: auth.info.email).first_or_create! do |user|
       user.uid = auth.uid
       user.email = auth.info.email
     end
