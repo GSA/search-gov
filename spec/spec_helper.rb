@@ -125,12 +125,15 @@ end
 
 # Omniauth
 OmniAuth.config.test_mode = true
-omniauth_hash = {
-  'provider': 'logindotgov',
-  'uid': '12345',
-  'info': {
-    'email': 'test@gsa.gov'
-  }
-}
 
-OmniAuth.config.add_mock(:login_dot_gov, omniauth_hash)
+def mock_user_auth(uid, email)
+  omniauth_hash = {
+    'provider': 'logindotgov',
+    'uid': uid,
+    'info': {
+      'email': email
+    }
+  }
+
+  OmniAuth.config.add_mock(:login_dot_gov, omniauth_hash)
+end

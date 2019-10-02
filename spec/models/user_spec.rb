@@ -5,7 +5,6 @@ describe User do
 
   let(:valid_attributes) do
     { email: "unique_login@agency.gov",
-      password: "password1!",
       contact_name: "Some One",
       organization_name: "Agency",
     }.freeze
@@ -13,10 +12,9 @@ describe User do
 
   before do
     @valid_affiliate_attributes = {
-        :email => "some.guy@usa.gov",
-        :contact_name => "Some Guy",
-        :password => "password1!",
-        :organization_name => "Agency",
+      email: 'some.guy@usa.gov',
+      contact_name: 'Some Guy',
+      organization_name: 'Agency'
     }
     @emailer = double(Emailer)
     allow(@emailer).to receive(:deliver_now).and_return true
@@ -581,12 +579,26 @@ describe User do
     let(:auth) { OmniAuth.config.mock_auth[:login_dot_gov] }
     subject(:from_omniauth) { User.from_omniauth(auth) }
 
-    it 'sets the users email' do
-      expect(from_omniauth.email).to(eq 'test@gsa.gov')
+    it { is_expected.to be_a_kind_of(User) }
+
+    context 'when the user is new' do
+      it 'sets the users email' do
+        expect(from_omniauth.email).to(eq 'test@gsa.gov')
+      end
+
+      it 'sets the uid' do
+        expect(from_omniauth.uid).to(eq '12345')
+      end
     end
 
-    it 'sets the uid' do
-      expect(from_omniauth.uid).to(eq '12345')
+    context 'when existing user' do
+      before do
+        User.create!(valid_attributes.merge(email: 'test@gsa.gov'))
+      end
+
+      it 'looks up the user and returns it' do
+        expect(from_omniauth.email).to(eq 'test@gsa.gov')
+      end
     end
   end
 end
