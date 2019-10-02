@@ -61,4 +61,14 @@ describe OmniauthCallbacksController do
       end
     end
   end
+  
+  context 'when the user record cannot be persisted to the database' do
+    before do
+      allow(user).to receive(:persisted?).and_return(:false)
+    end
+
+    let(:user) { users(:user_with_uid) }
+
+    it { is_expected.not_to redirect_to(admin_home_page_path) }
+  end
 end
