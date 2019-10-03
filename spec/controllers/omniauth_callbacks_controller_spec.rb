@@ -2,8 +2,6 @@ require 'spec_helper'
 
 describe OmniauthCallbacksController do
 
-  fixtures :users
-
   describe '#login_dot_gov' do
     before do
       mock_user_auth('12345', 'test@gsa.gov')
