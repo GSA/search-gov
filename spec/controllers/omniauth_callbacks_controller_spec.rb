@@ -34,8 +34,6 @@ describe OmniauthCallbacksController do
 
       it 'creates a user with the email and UID from omniauth' do
         get_login_dot_gov
-        #alternative:
-        #user = User.find_by(email: 'brandnewuser@gsa.gov')
         user = User.last
         expect(user.email).to eq 'brandnewuser@gsa.gov'
         expect(user.uid).to eq 'newuid123'
@@ -44,10 +42,11 @@ describe OmniauthCallbacksController do
 
     context 'when an existing user with no uid info is saved' do
       let(:user) { users(:user_without_uid) }
-      let(:auth) { mock_user_auth(user.email, user.uid) }
+      let(:auth) { mock_user_auth(user.email, 'newuid123') }
 
       it 'updates the user record with the UID' do
-
+        expect { get_login_dot_gov }.to change{ user.reload.uid }.
+          from(nil).to('newuid123')
       end
     end
 

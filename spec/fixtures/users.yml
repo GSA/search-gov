@@ -97,7 +97,7 @@ user_with_uid:
 user_without_uid:
   <<: *DEFAULTS
   email: user_without_uid@fixtures.org
-  uid: ''
+  uid: ~
 
 never_active_user:
   <<: *DEFAULTS
