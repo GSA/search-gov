@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe OmniauthCallbacksController do
-  describe '#login_dot_gov' do
+  describe 'GET login_dot_gov' do
     let(:user) { users(:omniauth_user) }
     let(:auth) { mock_user_auth }
 
