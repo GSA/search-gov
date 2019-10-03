@@ -576,9 +576,13 @@ describe User do
   end
 
   describe '.from_omniauth' do
-    mock_user_auth('12345', 'test@gsa.gov')
     let(:auth) { OmniAuth.config.mock_auth[:login_dot_gov] }
+
     subject(:from_omniauth) { User.from_omniauth(auth) }
+
+    before do
+      mock_user_auth('12345', 'test@gsa.gov')
+    end
 
     it { is_expected.to be_a_kind_of(User) }
 
