@@ -576,33 +576,24 @@ describe User do
   end
 
   describe '.from_omniauth' do
-    let(:auth) { OmniAuth.config.mock_auth[:login_dot_gov] }
+    let(:auth) { mock_user_auth('foo@gsa.gov', '55555') }
 
     subject(:from_omniauth) { User.from_omniauth(auth) }
-
-    before do
-      mock_user_auth('12345', 'test@gsa.gov')
-    end
 
     it { is_expected.to be_a_kind_of(User) }
 
     context 'when the user is new' do
-      it 'sets the users email' do
-        expect(from_omniauth.email).to(eq 'test@gsa.gov')
-      end
-
       it 'sets the uid' do
-        expect(from_omniauth.uid).to(eq '12345')
+        expect(from_omniauth.uid).to(eq '55555')
       end
     end
 
-    context 'when existing user' do
-      before do
-        User.create!(valid_attributes.merge(email: 'test@gsa.gov'))
-      end
+    context 'when existing user no uid' do
+      let(:auth) { mock_user_auth('user_without_uid@fixtures.org', '22222') }
+      let(:user) { users(:user_without_uid) }
 
-      it 'looks up the user and returns it' do
-        expect(from_omniauth.email).to(eq 'test@gsa.gov')
+      it 'sets the uid' do
+        expect(from_omniauth.uid).to eq '22222'
       end
     end
   end

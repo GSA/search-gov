@@ -3,7 +3,7 @@
 module OmniauthHelpers
   OmniAuth.config.test_mode = true
 
-  def mock_user_auth(uid, email)
+  def mock_user_auth(email = 'test@gsa.gov', uid = '12345')
     omniauth_hash = {
       'provider': 'logindotgov',
       'uid': uid,
