@@ -22,6 +22,18 @@ describe OmniauthCallbacksController do
       it { is_expected.to redirect_to(admin_home_page_path) }
       it { is_expected.to assign_to(:user).with(user) }
     end
+
+    context 'when the user is new' do
+      let(:email) { 'brandnewuser@gsa.gov' }
+      let(:uid) { 'newuid123' }
+      let(:auth) { mock_user_auth(email, uid) }
+
+      it 'creates a new user' do
+        expect { get_login_dot_gov }.to change { User.count }.by(1)
+      end
+    end
+
+
 =begin
 
     context 'when the new user info is saved' do

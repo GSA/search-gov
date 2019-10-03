@@ -3,7 +3,6 @@
 class OmniauthCallbacksController < ApplicationController
   def login_dot_gov
     auth = request.env['omniauth.auth']
-    puts "assigning user".cyan
     @user = User.from_omniauth(auth)
     return unless @user.persisted?
 
