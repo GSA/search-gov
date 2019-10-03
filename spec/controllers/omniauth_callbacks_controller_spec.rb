@@ -17,6 +17,11 @@ describe OmniauthCallbacksController do
       it { is_expected.to assign_to(:user).with(user) }
     end
 
+    it 'creates a user session' do
+      expect(UserSession).to receive(:create).with(user)
+      get_login_dot_gov
+    end
+
     context 'when the user is new' do
       let(:email) { 'brandnewuser@gsa.gov' }
       let(:uid) { 'newuid123' }
