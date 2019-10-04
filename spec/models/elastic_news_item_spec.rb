@@ -7,6 +7,13 @@ describe ElasticNewsItem do
   let(:gallery) { rss_feeds(:white_house_press_gallery) }
   let(:white_house_blog_url) { rss_feed_urls(:white_house_blog_url) }
   let(:white_house_press_gallery_url) { rss_feed_urls(:white_house_press_gallery_url) }
+  let(:search_params) do
+    {
+      q: 'Obama',
+      rss_feeds: [blog]
+    }
+  end
+  let(:search) { ElasticNewsItem.search_for(search_params) }
 
   before do
     ElasticNewsItem.recreate_index
@@ -210,11 +217,17 @@ describe ElasticNewsItem do
         end
       end
 
-      context 'when affiliate locale is not one of the custom indexed languages' do
-        before do
-          affiliate.locale = 'kl'
-          affiliate.save!
-          NewsItem.create!(
+      context 'when indexing news items in other languages' do
+        let(:search_params) do
+          {
+            rss_feeds: [blog],
+            language: affiliate.indexing_locale,
+            title_only: true,
+            q: 'superknuller'
+          }
+        end
+        let(:news_item_params) do
+          {
             rss_feed_url_id: white_house_blog_url.id,
             guid: 'greenland',
             published_at: 3.days.ago,
@@ -224,18 +237,37 @@ describe ElasticNewsItem do
             body: 'random text here',
             contributor: 'President',
             publisher: 'Briefing Room',
-            subject: 'Economy')
-          ElasticNewsItem.commit
+            subject: 'Economy'
+          }
         end
 
-        it 'should do downcasing and ASCII folding only' do
-          appropriate_stemming = ['superknuller', 'woche']
-          appropriate_stemming.each do |query|
-            expect(ElasticNewsItem.search_for(q: query, rss_feeds: [blog], language: affiliate.indexing_locale, title_only: true).total).to eq(1)
+        context 'when affiliate locale is not one of the custom indexed languages' do
+          before do
+            affiliate.update!(locale: 'kl')
+            NewsItem.create!(news_item_params)
+            ElasticNewsItem.commit
+          end
+
+          it 'does downcasing and ASCII folding only' do
+            expect(search.total).to eq(1)
+            expect(search.results.first.title).to match(/Angebote/)
+          end
+        end
+
+        context 'when the rss feed url is not one of the custom indexed languages' do
+          before do
+            white_house_blog_url.update!(language: 'kl')
+            affiliate.update!(locale: 'kl')
+            NewsItem.create!(news_item_params)
+            ElasticNewsItem.commit
+          end
+
+          it 'does downcasing and ASCII folding only' do
+            expect(search.total).to eq(1)
+            expect(search.results.first.title).to match(/Angebote/)
           end
         end
       end
-
     end
 
     describe "sorting" do
