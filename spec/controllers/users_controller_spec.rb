@@ -9,7 +9,7 @@ describe UsersController do
       password: 'Michelle2016!' }
   end
 
-  let(:permitted_params) { %i[contact_name organization_name email password] }
+  let(:permitted_params) { %i[contact_name organization_name email] }
 
   describe '#create' do
     it do
@@ -115,20 +115,6 @@ describe UsersController do
       # https://github.com/thoughtbot/shoulda-matchers/issues/867
       is_expected.to permit(*permitted_params).
         for(:update, params: { params: { user: update_params } })
-      end
-
-      context 'when changing the password' do
-        let(:update_params) do
-          { 'current_password': current_user.password,
-            'password': 'newpassword1234!' }
-        end
-
-        it 'filters passwords in the logfile' do
-          allow(Rails.logger).to receive(:info)
-          expect(Rails.logger).to receive(:info).
-            with(/{\"current_password\"=>\"\[FILTERED\]\", \"password\"=>\"\[FILTERED\]\"}/)
-          update_user
-        end
       end
 
       context 'when the User#update_attributes was successfully' do
