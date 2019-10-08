@@ -10,6 +10,7 @@ require 'email_spec'
 require 'authlogic/test_case'
 require 'paperclip/matchers'
 require 'webmock/rspec'
+require 'support/omniauth_helpers'
 
 include Authlogic::TestCase
 WebMock.disable_net_connect!(allow_localhost: true)
@@ -114,6 +115,8 @@ RSpec.configure do |config|
       VCR.use_cassette(name, options, &example)
     end
   end
+
+  config.include OmniauthHelpers
 end
 
 Shoulda::Matchers.configure do |config|

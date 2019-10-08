@@ -33,7 +33,6 @@ class UsersController < ApplicationController
 
   def update
     @user = @current_user # makes our views "cleaner" and more consistent
-    @user.require_password_confirmation = true if user_params[:password].present?
     if @user.update_attributes(user_params)
       flash[:success] = "Account updated!"
       redirect_to account_url
@@ -53,8 +52,6 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:contact_name,
                                  :organization_name,
-                                 :email,
-                                 :password,
-                                 :current_password)
+                                 :email)
   end
 end
