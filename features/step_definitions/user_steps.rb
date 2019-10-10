@@ -1,8 +1,15 @@
-Given /^I am logged in with email "([^\"]*)"$/ do |email|
-  visit login_path
-  fill_in "user_session[email]", with: email
-  fill_in "user_session[password]", with: 'test1234!'
-  click_button('Login')
+Given /^I am logged in with email "([^"]*)"$/ do |email|
+  OmniAuth.config.test_mode = true
+
+  omniauth_hash = {
+    uid: 'test_123',
+    info: {
+      email: email
+    }
+  }
+
+  OmniAuth.config.add_mock('logindotgov', omniauth_hash)
+  visit '/auth/logindotgov'
 end
 
 Given /^I (?:log in) with email "([^\"]*)" and password "([^\"]*)"$/ do |email, password|
@@ -11,7 +18,6 @@ Given /^I (?:log in) with email "([^\"]*)" and password "([^\"]*)"$/ do |email, 
   fill_in "user_session[password]", with: password
   click_button('Login')
 end
-
 
 When /^I sign out$/ do
   email = find '#nav-auth-menu a[data-toggle=dropdown]'

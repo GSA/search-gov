@@ -260,15 +260,13 @@ workflows:
             - setup_elasticsearch
             - bundle_install
 
-# commented out temporarly for login.gov code to 
-# be implemented.
-#
-#      - cucumber:
-#          requires:
-#            - setup_elasticsearch
-#            - bundle_install
+      - cucumber:
+          requires:
+            - setup_elasticsearch
+            - bundle_install
 
+# comment out till fix all tests
 #      - report_coverage:
 #          requires:
 #            - rspec
-#           - cucumber
+#            - cucumber

@@ -10,6 +10,8 @@ Feature: Users
     And I should see "Agency"
     And I should see "Email"
 
+  # to be updated in SRCH-862 for login.gov
+  @wip
   @javascript
   Scenario: Registering as a new affiliate user who is a government employee or contractor with .gov email address
     Given I am on the sign up page
@@ -47,6 +49,8 @@ Feature: Users
     When I open the email
     Then I should see "Welcome to Search.gov" in the email subject
 
+  # to be updated in SRCH-862 for login.gov
+  @wip
   Scenario: Registering as a new affiliate user with .gov email address and trying to add new site without email verification
     Given I am on the sign up page
     When I fill in the following:
@@ -60,6 +64,8 @@ Feature: Users
     Then I should be on the user account page
     And I should see "Your email address has not been verified. Please check your inbox so we may verify your email address."
 
+  # to be updated in SRCH-862 for login.gov
+  @wip
   @javascript
   Scenario: Registering as a new affiliate user without government affiliated email address
     Given I am on the sign up page
@@ -91,7 +97,6 @@ Feature: Users
     Given I am on the sign up page
     And I press "Sign up"
     Then I should see "Email can't be blank"
-    And I should see "Password is too short"
 
   @javascript
   Scenario: Visiting edit my account profile page as an affiliate user
@@ -104,23 +109,6 @@ Feature: Users
       | Name              | Elvis          |
       | Government agency | CIA            |
       | Email             | elvis@cia.gov  |
-      | New Password      | theking4ever!  |
-    And I press "Save"
-    Then I should see "Current password is invalid"
-    When I fill in the following:
-      | Name              | Elvis          |
-      | Government agency | CIA            |
-      | Email             | elvis@cia.gov  |
-      | New Password      | test1234!      |
-      | Current Password  | test1234!      |
-    And I press "Save"
-    Then I should see "Password is invalid: new password must be different from current password"
-    When I fill in the following:
-      | Name              | Elvis          |
-      | Government agency | CIA            |
-      | Email             | elvis@cia.gov  |
-      | New Password      | theking4ever!  |
-      | Current Password  | test1234!      |
     And I press "Save"
     Then I should see "Account updated!"
     And I should see "elvis@cia.gov"
