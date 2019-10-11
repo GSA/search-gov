@@ -19,11 +19,7 @@ Feature: Dashboard
     Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org"
     When I go to the sites page
     Then I should see "Add a New Site"
-
-  Scenario: Viewing a site without logging in
-    When I go to the usagov's Dashboard page
-    Then I should see "Login" button
-
+    
   Scenario: Viewing a site after logging in
     Given I am logged in with email "affiliate_manager@fixtures.org"
     When I go to the usagov's Dashboard page
@@ -153,6 +149,8 @@ Feature: Dashboard
     When I press "Remove" within the first table body row
     Then I should see "You have removed admin@email.gov from this site"
 
+  # to be updated in SRCH-891 for login.gov
+  @wip
   @javascript
   Scenario: Complete sign up process
     Given no emails have been sent
