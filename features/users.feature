@@ -2,6 +2,17 @@ Feature: Users
 
   @javascript
   Scenario: Logged-in non-developer user visits account page
+    Given I am logged in with email "affiliate_manager_with_pending_approval_status@fixtures.org"
+    When I go to the user account page
+    Then I should see the browser page titled "My Account"
+    And I should see "Contact Information"
+    And I should see "Name"
+    And I should see "Agency"
+    And I should see "Email"
+    And I should see "Because you don't have a .gov or .mil email address, we need additional information. If you are a contractor on an active contract, please use your .gov or .mil email address on this account, or have your federal POC email to confirm your status."
+
+  @javascript
+  Scenario: Logged-in non-gov user visits account page
     Given I am logged in with email "affiliate_admin@fixtures.org"
     When I go to the user account page
     Then I should see the browser page titled "My Account"
