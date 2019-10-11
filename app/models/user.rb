@@ -11,27 +11,9 @@ class User < ApplicationRecord
 
   APPROVAL_STATUSES = %w[pending_approval approved
                          not_approved].freeze
-  PASSWORD_FORMAT = /\A
-    (?=.{8,}\z)        # Must contain 8 or more characters
-    (?=.*\d)           # Must contain a digit
-    (?=.*[a-zA-Z])     # Must contain a letter
-    (?=.*[[:^alnum:]]) # Must contain a symbol
-  /x.freeze
 
   validates :email, presence: true
-  validates :contact_name, presence: true
   validates :approval_status, inclusion: APPROVAL_STATUSES
-  validates :password,
-            format: { with: PASSWORD_FORMAT,
-                      if: :require_password?,
-                      message: 'must include a combination of letters, ' \
-                               'numbers, and special characters.' }
-  validate :confirm_current_password,
-           on: :update,
-           if: :require_password_confirmation
-  validate :new_password_differs_from_current,
-           on: :update,
-           if: ->(user) { user.password.present? }
 
   has_many :memberships, dependent: :destroy
   has_many :affiliates, lambda {
@@ -50,10 +32,9 @@ class User < ApplicationRecord
   after_update :send_welcome_to_new_user_email, if: :deliver_welcome_email_on_update
   after_update :deliver_email_verification, if: :email_changed?
 
-  before_save :set_password_updated_at
-  attr_accessor :invited, :skip_welcome_email, :inviter, :require_password,
-                :current_password, :require_password_confirmation
+  attr_accessor :invited, :skip_welcome_email, :inviter
   attr_reader :deliver_welcome_email_on_update
+
   scope :approved_affiliate, lambda {
     where(is_affiliate: true, approval_status: 'approved')
   }
@@ -67,10 +48,11 @@ class User < ApplicationRecord
         }
 
   acts_as_authentic do |c|
-    c.crypto_provider = Authlogic::CryptoProviders::BCrypt
-    c.perishable_token_valid_for(1.hour)
-    c.disable_perishable_token_maintenance(true)
-    c.require_password_confirmation = false
+    c.login_field = :email
+    c.validate_email_field = true
+    c.validate_login_field = false
+    c.ignore_blank_passwords  = true
+    c.validate_password_field = false
     c.logged_in_timeout = 1.hour
   end
 
@@ -84,16 +66,13 @@ class User < ApplicationRecord
     end
   end
 
-  validate do |user|
-    if user.organization_name.blank? && !user.invited
-      user.errors.add(:base, "Federal government agency can't be blank")
-    end
-  end
+  # commented out for now but will refactor later for login_dot_gov
+  # validate do |user|
+  #   if user.organization_name.blank? && !user.invited
+  #     user.errors.add(:base, "Federal government agency can't be blank")
+  #   end
+  # end
 
-  def deliver_password_reset_instructions!
-    reset_perishable_token! if perishable_token_expired? || perishable_token.blank?
-    Emailer.password_reset_instructions(self).deliver_now
-  end
 
   def to_label
     "#{contact_name} <#{email}>"
@@ -117,7 +96,6 @@ class User < ApplicationRecord
   end
 
   def complete_registration(attributes)
-    self.require_password = true
     self.email_verification_token = nil
     self.set_approval_status_to_approved
     !requires_manual_approval? && update(attributes)
@@ -150,15 +128,7 @@ class User < ApplicationRecord
     audit_trail_user_removed(affiliate, source)
   end
 
-  def requires_password_reset?
-    password_updated_at.blank? || password_updated_at < 90.days.ago
-  end
-
   private
-
-  def require_password?
-    require_password.nil? ? super : require_password
-  end
 
   def ping_admin
     Emailer.new_user_to_admin(self).deliver_now
@@ -237,24 +207,6 @@ class User < ApplicationRecord
     Rails.logger.info(note)
   end
 
-  def set_password_updated_at
-    self.password_updated_at = Time.current if password
-  end
-
-  def confirm_current_password
-    valid_password = valid_password?(current_password)
-    errors[:current_password] << 'is invalid' unless valid_password
-  end
-
-  def new_password_differs_from_current
-    # valid_password?(password) checks that password, when encrypted, matches the encrypted
-    # password that is currently stored in the database
-    if valid_password?(password)
-      errors[:password] << 'is invalid: new password must be ' \
-                           'different from current password'
-    end
-  end
-
   def perishable_token_expired?
     perishable_token && updated_at < (Time.now - User.perishable_token_valid_for)
   end
@@ -271,5 +223,11 @@ class User < ApplicationRecord
       user.email = auth.info.email
     end
 >>>>>>> a5f02316e... update code to set none gov users to pending approval
+  end
+
+  def self.from_omniauth(auth)
+    find_or_create_by(email: auth.info.email).tap do |user|
+      user.update(uid: auth.uid)
+    end
   end
 end

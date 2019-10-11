@@ -5,7 +5,6 @@ describe User do
 
   let(:valid_attributes) do
     { email: "unique_login@agency.gov",
-      password: "password1!",
       contact_name: "Some One",
       organization_name: "Agency",
     }.freeze
@@ -13,10 +12,9 @@ describe User do
 
   before do
     @valid_affiliate_attributes = {
-        :email => "some.guy@usa.gov",
-        :contact_name => "Some Guy",
-        :password => "password1!",
-        :organization_name => "Agency",
+      email: 'some.guy@usa.gov',
+      contact_name: 'Some Guy',
+      organization_name: 'Agency'
     }
     @emailer = double(Emailer)
     allow(@emailer).to receive(:deliver_now).and_return true
@@ -25,6 +23,8 @@ describe User do
   describe 'schema' do
     it { is_expected.to have_db_column(:failed_login_count).of_type(:integer).with_options(default: 0, null: false) }
     it { is_expected.to have_db_column(:password_updated_at).of_type(:datetime).with_options(null: true) }
+    it { should have_db_column(:uid).of_type(:string) }
+    it { should have_db_index(:uid).unique(true) }
   end
 
   describe "when validating" do
@@ -36,6 +36,8 @@ describe User do
 
     it { is_expected.to validate_presence_of :email }
     it { is_expected.to validate_uniqueness_of(:email).case_insensitive }
+
+    # commented out for now but will refactor later for login_dot_gov
     xit { is_expected.to validate_presence_of :contact_name }
     it { is_expected.to have_many(:memberships).dependent(:destroy) }
     it { is_expected.to have_many(:affiliates).through :memberships }
@@ -47,6 +49,7 @@ describe User do
       end
     end
 
+    # commented out for now but will refactor later for login_dot_gov
     xit 'requires an organization name' do
       user = User.new
       user.valid?
@@ -85,7 +88,7 @@ describe User do
       end
     end
 
-     context 'when the user was invited' do
+    context 'when the user was invited' do
       let(:user) { User.new(invited: true) }
 
       it 'does not require an organization name' do
@@ -156,6 +159,7 @@ describe User do
     let(:original_token) { 'original_perishable_token_that_should_change' }
     let(:random_new_token) { 'something_random_the_token_should_change_to' }
 
+    # commented out for now but will refactor later for login_dot_gov
     xit "does not reset the user's perishable token" do
       expect{ user.deliver_password_reset_instructions! }.
         not_to change{ user.perishable_token }
@@ -164,6 +168,7 @@ describe User do
     context 'when the user has no perishable token' do
       let(:user) { User.create!(valid_attributes.merge(perishable_token: nil)) }
 
+      # commented out for now but will refactor later for login_dot_gov
       xit "sets the user's perishable token" do
         expect{ user.deliver_password_reset_instructions! }.
           to change{ user.perishable_token }.from(nil).to(random_new_token)
@@ -171,9 +176,10 @@ describe User do
     end
 
     context 'when the perishable token is expired' do
-      #yes, the expiration is based on updated_at...blame authlogic
+      # yes, the expiration is based on updated_at...blame authlogic
       before { user.update_attribute(:updated_at, 2.hours.ago) }
 
+      # commented out for now but will refactor later for login_dot_gov
       xit 'resets the token' do
         expect{ user.deliver_password_reset_instructions! }.
           to change{ user.perishable_token }.from(original_token).to(random_new_token)
@@ -569,4 +575,26 @@ describe User do
     end
   end
 
+  describe '.from_omniauth' do
+    let(:auth) { mock_user_auth('foo@gsa.gov', '55555') }
+
+    subject(:from_omniauth) { User.from_omniauth(auth) }
+
+    it { is_expected.to be_a_kind_of(User) }
+
+    context 'when the user is new' do
+      it 'sets the uid' do
+        expect(from_omniauth.uid).to(eq '55555')
+      end
+    end
+
+    context 'when existing user no uid' do
+      let(:auth) { mock_user_auth('user_without_uid@fixtures.org', '22222') }
+      let(:user) { users(:user_without_uid) }
+
+      it 'sets the uid' do
+        expect(from_omniauth.uid).to eq '22222'
+      end
+    end
+  end
 end
