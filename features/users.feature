@@ -125,6 +125,8 @@ Feature: Users
     And I should see "elvis@cia.gov"
     And "elvis@cia.gov" should receive an email
 
+  # to be updated in SRCH-952 for login.gov
+  @wip
   @javascript
   Scenario: A user updates their email to a non-gov address
     Given I am logged in with email "affiliate_admin@fixtures.org"
