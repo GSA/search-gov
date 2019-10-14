@@ -123,8 +123,8 @@ Feature: Dashboard
     And I follow "Manage Users"
     Then I should see the following table rows:
       | Affiliate Manager affiliate_manager@fixtures.org            |
-      | Jane Admin admin2@fixtures.gov (Pending email verification) |
-      | John Admin admin1@fixtures.gov (Pending email verification) |
+      | Jane Admin admin2@fixtures.gov |
+      | John Admin admin1@fixtures.gov |
 
   @javascript
   Scenario: Add/remove user

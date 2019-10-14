@@ -29,7 +29,7 @@ end
 
 shared_context 'approved user logged in' do
   let(:current_user) { users(:affiliate_manager) }
-  
+
   before do
     UserSession.create current_user
     expect(User).to receive(:find_by_id).and_return(current_user)
