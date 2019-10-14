@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-  APPROVAL_STATUSES = %w[pending_approval approved
-                         not_approved].freeze
+class User < ApplicationRecord
+  APPROVAL_STATUSES = %w[pending_approval approved not_approved].freeze
 
   validates :email, presence: true
   validates :approval_status, inclusion: APPROVAL_STATUSES
