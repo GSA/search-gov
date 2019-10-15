@@ -180,13 +180,19 @@ describe User do
       expect(user.email).to eq('aff@agency.gov')
     end
 
-    # login.gov - commented out till SRCH-862
-    xit 'should set approval status to approved' do
-      %w[aff@agency.GOV aff@anotheragency.gov admin@agency.mil anotheradmin@agency.MIL
-         aff@agency.COM aff@anotheragency.com admin.gov@agency.org anotheradmin.MIL@agency.ORG
-         escape_the_dot@foo.xmil].each do |email|
+    it 'should set approval status to approved for gov users' do
+      %w[aff@agency.GOV aff@anotheragency.gov admin@agency.mil
+         anotheradmin@agency.MIL].each do |email|
         user = User.create!(@valid_affiliate_attributes.merge(email: email))
         expect(user.is_approved?).to be true
+      end
+    end
+
+    it 'should set approval status to pending approval' do
+      %w[aff@agency.COM aff@anotheragency.com admin.gov@agency.org anotheradmin.MIL@agency.ORG
+         escape_the_dot@foo.xmil].each do |email|
+        user = User.create!(@valid_affiliate_attributes.merge(email: email))
+        expect(user.is_pending_approval?).to be true
       end
     end
 

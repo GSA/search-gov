@@ -63,7 +63,6 @@ class User < ApplicationRecord
   #   end
   # end
 
-
   def to_label
     "#{contact_name} <#{email}>"
   end
@@ -163,9 +162,7 @@ class User < ApplicationRecord
   end
 
   def set_initial_approval_status
-    if approval_status.blank? || invited
-      set_approval_status_to_pending_approval
-    end
+    set_approval_status_to_pending_approval if approval_status.blank? || invited
   end
 
   def downcase_email
@@ -173,9 +170,15 @@ class User < ApplicationRecord
   end
 
   def set_default_flags
-    self.requires_manual_approval = true if is_affiliate? &&
-                                            !has_government_affiliated_email? &&
-                                            !invited
+    if is_affiliate? &&
+       !has_government_affiliated_email? &&
+       !invited
+      self.requires_manual_approval = true
+      set_approval_status_to_pending_approval
+    else
+      set_approval_status_to_approved
+    end
+
     self.welcome_email_sent = true if is_developer? && !skip_welcome_email
   end
 
@@ -204,11 +207,6 @@ class User < ApplicationRecord
   def self.from_omniauth(auth)
     find_or_create_by(email: auth.info.email).tap do |user|
       user.update(uid: auth.uid)
-      if user.requires_manual_approval?
-        user.set_approval_status_to_pending_approval
-      else
-        user.set_approval_status_to_approved
-      end
     end
   end
 end
