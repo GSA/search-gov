@@ -197,9 +197,10 @@ describe User do
       end
     end
 
-    it 'should set requires_manual_approval if the user is an affiliate and the email is not government_affiliated' do
-      %w[aff@agency.COM aff@anotheragency.com admin.gov@agency.org anotheradmin.MIL@agency.ORG escape_the_dot@foo.xmil].each do |email|
-        user = User.create!(@valid_affiliate_attributes.merge(:email => email))
+    it 'sets requires_manual_approval if the user is an affiliate and the email is not government_affiliated' do
+      %w[aff@agency.COM aff@anotheragency.com admin.gov@agency.org
+         anotheradmin.MIL@agency.ORG escape_the_dot@foo.xmil].each do |email|
+        user = User.create!(@valid_affiliate_attributes.merge(email: email))
         expect(user.requires_manual_approval?).to be true
       end
     end

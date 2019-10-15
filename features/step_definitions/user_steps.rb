@@ -12,12 +12,6 @@ Given /^I am logged in with email "([^"]*)"$/ do |email|
   visit '/auth/logindotgov'
 end
 
-Given /^I (?:log in) with email "([^\"]*)" and password "([^\"]*)"$/ do |email, password|
-  visit login_path
-  fill_in "user_session[email]", with: email
-  fill_in "user_session[password]", with: password
-  click_button('Login')
-end
 
 When /^I sign out$/ do
   email = find '#nav-auth-menu a[data-toggle=dropdown]'

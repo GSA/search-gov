@@ -21,7 +21,6 @@ class User < ApplicationRecord
   before_update :detect_deliver_welcome_email
   after_create :ping_admin
   after_update :send_welcome_to_new_user_email, if: :deliver_welcome_email_on_update
-  after_update :deliver_email_verification, if: :email_changed?
 
   attr_accessor :invited, :skip_welcome_email, :inviter
   attr_reader :deliver_welcome_email_on_update
@@ -205,6 +204,11 @@ class User < ApplicationRecord
   def self.from_omniauth(auth)
     find_or_create_by(email: auth.info.email).tap do |user|
       user.update(uid: auth.uid)
+      if user.requires_manual_approval?
+        user.set_approval_status_to_pending_approval
+      else
+        user.set_approval_status_to_approved
+      end
     end
   end
 end
