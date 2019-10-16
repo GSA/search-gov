@@ -180,34 +180,52 @@ describe User do
       expect(user.email).to eq('aff@agency.gov')
     end
 
-    it 'should set approval status to approved for gov users' do
-      %w[aff@agency.GOV aff@anotheragency.gov admin@agency.mil
-         anotheradmin@agency.MIL].each do |email|
-        user = User.create!(@valid_affiliate_attributes.merge(email: email))
-        expect(user.is_approved?).to be true
+    context 'when a user has a .gov/.mil email address' do
+      let(:emails) do
+        %w[aff@agency.GOV aff@anotheragency.gov admin@agency.mil anotheradmin@agency.MIL]
+      end
+
+      it 'sets the approval status to approved' do
+        emails.each do |email|
+          user = User.create!(@valid_affiliate_attributes.merge(email: email))
+          expect(user.is_approved?).to be true
+        end
       end
     end
 
-    it 'should set approval status to pending approval' do
-      %w[aff@agency.COM aff@anotheragency.com admin.gov@agency.org anotheradmin.MIL@agency.ORG
-         escape_the_dot@foo.xmil].each do |email|
-        user = User.create!(@valid_affiliate_attributes.merge(email: email))
-        expect(user.is_pending_approval?).to be true
+    context 'when a user has a non gov email address' do
+      let(:emails) do
+        %w[aff@agency.COM aff@anotheragency.com admin.gov@agency.org anotheradmin.MIL@agency.ORG
+         escape_the_dot@foo.xmil]
+      end
+
+      it 'sets the approval status to pending_approval' do
+        emails.each do |email|
+          user = User.create!(@valid_affiliate_attributes.merge(email: email))
+          expect(user.is_pending_approval?).to be true
+        end
       end
     end
+
+    context 'when a user is an affiliate and the email is not government_affiliated' do
+      let(:emails) do
+        %w[aff@agency.COM aff@anotheragency.com admin.gov@agency.org
+           anotheradmin.MIL@agency.ORG escape_the_dot@foo.xmil]
+      end
+
+      it 'sets requires_manual_approval' do
+        emails.each do |email|
+          user = User.create!(@valid_affiliate_attributes.merge(email: email))
+          expect(user.requires_manual_approval?).to be true
+        end
+      end
+    end
+
 
     it "should not set requires_manual_approval if the user is an affiliate and the email is government_affiliated" do
       %w( aff@agency.GOV aff@anotheragency.gov admin@agency.mil anotheradmin@agency.MIL ).each do |email|
         user = User.create!(@valid_affiliate_attributes.merge(:email => email))
         expect(user.requires_manual_approval?).to be false
-      end
-    end
-
-    it 'sets requires_manual_approval if the user is an affiliate and the email is not government_affiliated' do
-      %w[aff@agency.COM aff@anotheragency.com admin.gov@agency.org
-         anotheradmin.MIL@agency.ORG escape_the_dot@foo.xmil].each do |email|
-        user = User.create!(@valid_affiliate_attributes.merge(email: email))
-        expect(user.requires_manual_approval?).to be true
       end
     end
   end
