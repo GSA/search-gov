@@ -13,7 +13,7 @@ class UserSessionsController < ApplicationController
     if !require_password_reset && @user_session.save
       redirect_back_or_default redirection_path
     else
-      render :action => :new
+      redirect_to('/auth/logindotgov')
     end
   end
 

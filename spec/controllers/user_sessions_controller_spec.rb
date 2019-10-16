@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe UserSessionsController do
@@ -5,9 +7,9 @@ describe UserSessionsController do
 
   it { is_expected.to use_before_filter(:reset_session) }
 
-  describe '#new' do
-    before { get :new }
-    it { is_expected.to render_template(:new) }
+  describe '#security_notification' do
+    before { get :security_notification }
+    it { is_expected.to render_template(:security_notification) }
   end
 
   describe "#create" do
@@ -33,7 +35,7 @@ describe UserSessionsController do
       let(:user) { users(:affiliate_manager_with_not_approved_status) }
       before { post_create }
 
-      it { is_expected.to render_template(:new) }
+      it { is_expected.to redirect_to('/auth/logindotgov') }
     end
 
     context 'when the user session fails to save' do
@@ -47,7 +49,7 @@ describe UserSessionsController do
              }
       end
 
-      it { is_expected.to render_template(:new) }
+      it { is_expected.to redirect_to('/auth/logindotgov') }
     end
   end
 

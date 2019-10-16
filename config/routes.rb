@@ -34,7 +34,7 @@ Rails.application.routes.draw do
   get '/sayt' => 'sayt#index'
   get '/clicked' => 'clicked#index'
   get '/healthcheck' => 'health_checks#new'
-  get '/login' => 'user_sessions#new', as: :login
+  get '/login' => 'user_sessions#security_notification', as: :login
   get '/signup' => 'users#new', as: :signup
   get '/status/outbound_rate_limit' => 'statuses#outbound_rate_limit', defaults: { format: :text }
   get '/dcv/:affiliate.txt' => 'statuses#domain_control_validation',
