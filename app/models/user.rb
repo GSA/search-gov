@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  APPROVAL_STATUSES = %w[pending_email_verification
-                         pending_approval approved
-                         not_approved].freeze
+  APPROVAL_STATUSES = %w[pending_approval approved not_approved].freeze
 
   validates :email, presence: true
   validates :approval_status, inclusion: APPROVAL_STATUSES
@@ -20,15 +18,9 @@ class User < ApplicationRecord
   before_validation :set_initial_approval_status, on: :create
   after_validation :set_default_flags, on: :create
 
-  with_options if: :is_pending_email_verification? do
-    after_create :deliver_email_verification
-  end
-
   before_update :detect_deliver_welcome_email
   after_create :ping_admin
   after_update :send_welcome_to_new_user_email, if: :deliver_welcome_email_on_update
-  before_update :require_email_verification, if: :email_changed?
-  after_update :deliver_email_verification, if: :email_changed?
 
   attr_accessor :invited, :skip_welcome_email, :inviter
   attr_reader :deliver_welcome_email_on_update
@@ -71,7 +63,6 @@ class User < ApplicationRecord
   #   end
   # end
 
-
   def to_label
     "#{contact_name} <#{email}>"
   end
@@ -91,23 +82,6 @@ class User < ApplicationRecord
   # authlogic magic state
   def approved?
     approval_status != 'not_approved'
-  end
-
-  def verify_email(token)
-    return true if is_approved? && email_verification_token == token
-
-    if is_pending_email_verification? && email_verification_token == token
-      if requires_manual_approval?
-        set_approval_status_to_pending_approval
-      else
-        set_approval_status_to_approved
-      end
-
-      save!
-      true
-    else
-      false
-    end
   end
 
   def complete_registration(attributes)
@@ -188,9 +162,7 @@ class User < ApplicationRecord
   end
 
   def set_initial_approval_status
-    if approval_status.blank? || invited
-      set_approval_status_to_pending_email_verification
-    end
+    set_approval_status_to_pending_approval if approval_status.blank? || invited
   end
 
   def downcase_email
@@ -198,9 +170,15 @@ class User < ApplicationRecord
   end
 
   def set_default_flags
-    self.requires_manual_approval = true if is_affiliate? &&
-                                            !has_government_affiliated_email? &&
-                                            !invited
+    if is_affiliate? &&
+       !has_government_affiliated_email? &&
+       !invited
+      self.requires_manual_approval = true
+      set_approval_status_to_pending_approval
+    else
+      set_approval_status_to_approved
+    end
+
     self.welcome_email_sent = true if is_developer? && !skip_welcome_email
   end
 
@@ -224,12 +202,6 @@ class User < ApplicationRecord
 
   def perishable_token_expired?
     perishable_token && updated_at < (Time.now - User.perishable_token_valid_for)
-  end
-
-  def require_email_verification
-    set_approval_status_to_pending_email_verification
-    self.requires_manual_approval = !has_government_affiliated_email?
-    true
   end
 
   def self.from_omniauth(auth)

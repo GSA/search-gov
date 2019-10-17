@@ -1,7 +1,7 @@
 Feature: Users
 
   @javascript
-  Scenario: Logged-in non-developer user visits account page
+  Scenario: Logged-in, approved non-developer user visits account page
     Given I am logged in with email "affiliate_admin@fixtures.org"
     When I go to the user account page
     Then I should see the browser page titled "My Account"
@@ -64,34 +64,14 @@ Feature: Users
     Then I should be on the user account page
     And I should see "Your email address has not been verified. Please check your inbox so we may verify your email address."
 
-  # to be updated in SRCH-862 for login.gov
-  @wip
   @javascript
   Scenario: Registering as a new affiliate user without government affiliated email address
-    Given I am on the sign up page
-    When I fill in the following:
-      | Email                     | lorem.ipsum@corporate.com |
-      | Your full name            | Lorem Ipsum               |
-      | Password                  | test1234!                 |
-      | Federal government agency | Agency                    |
-    And I press "Sign up"
+    Given the following Users exist:
+      | contact_name | email             |
+      | Joe Schmo    | jschmo@random.com |
+    And I am logged in with email "jschmo@random.com"
     Then I should be on the user account page
-    And I should see "Sorry! You don't have a .gov or .mil email address so we need some more information from you before approving your account."
-    When I sign out
-    Then I should be on the login page
-    And "lorem.ipsum@corporate.com" should receive an email
-    When I open the email
-    Then I should see "Verify your email" in the email subject
-    And I should see "https://localhost:3000/email_verification" in the email body
-    When I visit the email verification page using the email verification token for "lorem.ipsum@corporate.com"
-    Then I should be on the login page
-    Given a clear email queue
-    When I fill in the following:
-      | Password | test1234!               |
-    And I press "Login"
-    Then I should see "Thank you for verifying your email."
-    And I should see "Because you don't have a .gov or .mil email address, your account is pending approval."
-    And "lorem.ipsum@corporate.com" should receive no emails
+    And I should see "Because you don't have a .gov or .mil email address, we need additional information."
 
   Scenario: Failing registration as a new affiliate user
     Given I am on the sign up page
@@ -112,8 +92,9 @@ Feature: Users
     And I press "Save"
     Then I should see "Account updated!"
     And I should see "elvis@cia.gov"
-    And "elvis@cia.gov" should receive an email
 
+  # to be updated in SRCH-952 for login.gov
+  @wip
   @javascript
   Scenario: A user updates their email to a non-gov address
     Given I am logged in with email "affiliate_admin@fixtures.org"

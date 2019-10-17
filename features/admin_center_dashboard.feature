@@ -122,9 +122,9 @@ Feature: Dashboard
     When I go to the usagov's Dashboard page
     And I follow "Manage Users"
     Then I should see the following table rows:
-      | Affiliate Manager affiliate_manager@fixtures.org            |
-      | Jane Admin admin2@fixtures.gov (Pending email verification) |
-      | John Admin admin1@fixtures.gov (Pending email verification) |
+      | Affiliate Manager affiliate_manager@fixtures.org  |
+      | Jane Admin admin2@fixtures.gov                    |
+      | John Admin admin1@fixtures.gov                    |
 
   @javascript
   Scenario: Add/remove user

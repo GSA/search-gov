@@ -37,7 +37,7 @@ describe User do
     it { is_expected.to validate_presence_of :email }
     it { is_expected.to validate_uniqueness_of(:email).case_insensitive }
 
-    # commented out for now but will refactor later for login_dot_gov
+    # login.gov - commented out till SRCH-893
     xit { is_expected.to validate_presence_of :contact_name }
     it { is_expected.to have_many(:memberships).dependent(:destroy) }
     it { is_expected.to have_many(:affiliates).through :memberships }
@@ -49,7 +49,7 @@ describe User do
       end
     end
 
-    # commented out for now but will refactor later for login_dot_gov
+    # login.gov - commented out till SRCH-893
     xit 'requires an organization name' do
       user = User.new
       user.valid?
@@ -68,12 +68,6 @@ describe User do
 
     it "should send the admins a notification email about the new user" do
       expect(Emailer).to receive(:new_user_to_admin).with(an_instance_of(User)).and_return @emailer
-      User.create!(valid_attributes)
-    end
-
-    it "should send email verification to user" do
-      expect(Emailer).to receive(:user_email_verification).with(an_instance_of(User)).and_return @emailer
-
       User.create!(valid_attributes)
     end
 
@@ -159,33 +153,6 @@ describe User do
     let(:original_token) { 'original_perishable_token_that_should_change' }
     let(:random_new_token) { 'something_random_the_token_should_change_to' }
 
-    # commented out for now but will refactor later for login_dot_gov
-    xit "does not reset the user's perishable token" do
-      expect{ user.deliver_password_reset_instructions! }.
-        not_to change{ user.perishable_token }
-    end
-
-    context 'when the user has no perishable token' do
-      let(:user) { User.create!(valid_attributes.merge(perishable_token: nil)) }
-
-      # commented out for now but will refactor later for login_dot_gov
-      xit "sets the user's perishable token" do
-        expect{ user.deliver_password_reset_instructions! }.
-          to change{ user.perishable_token }.from(nil).to(random_new_token)
-      end
-    end
-
-    context 'when the perishable token is expired' do
-      # yes, the expiration is based on updated_at...blame authlogic
-      before { user.update_attribute(:updated_at, 2.hours.ago) }
-
-      # commented out for now but will refactor later for login_dot_gov
-      xit 'resets the token' do
-        expect{ user.deliver_password_reset_instructions! }.
-          to change{ user.perishable_token }.from(original_token).to(random_new_token)
-      end
-    end
-
   end
 
   describe '#has_government_affiliated_email' do
@@ -213,12 +180,47 @@ describe User do
       expect(user.email).to eq('aff@agency.gov')
     end
 
-    it "should set approval status to pending_email_verification" do
-      %w( aff@agency.GOV aff@anotheragency.gov admin@agency.mil anotheradmin@agency.MIL aff@agency.COM aff@anotheragency.com admin.gov@agency.org anotheradmin.MIL@agency.ORG escape_the_dot@foo.xmil ).each do |email|
-        user = User.create!(@valid_affiliate_attributes.merge(email: email))
-        expect(user.is_pending_email_verification?).to be true
+    context 'when a user has a .gov/.mil email address' do
+      let(:emails) do
+        %w[aff@agency.GOV aff@anotheragency.gov admin@agency.mil anotheradmin@agency.MIL]
+      end
+
+      it 'sets the approval status to approved' do
+        emails.each do |email|
+          user = User.create!(@valid_affiliate_attributes.merge(email: email))
+          expect(user.is_approved?).to be true
+        end
       end
     end
+
+    context 'when a user has a non gov email address' do
+      let(:emails) do
+        %w[aff@agency.COM aff@anotheragency.com admin.gov@agency.org anotheradmin.MIL@agency.ORG
+         escape_the_dot@foo.xmil]
+      end
+
+      it 'sets the approval status to pending_approval' do
+        emails.each do |email|
+          user = User.create!(@valid_affiliate_attributes.merge(email: email))
+          expect(user.is_pending_approval?).to be true
+        end
+      end
+    end
+
+    context 'when a user is an affiliate and the email is not government_affiliated' do
+      let(:emails) do
+        %w[aff@agency.COM aff@anotheragency.com admin.gov@agency.org
+           anotheradmin.MIL@agency.ORG escape_the_dot@foo.xmil]
+      end
+
+      it 'sets requires_manual_approval' do
+        emails.each do |email|
+          user = User.create!(@valid_affiliate_attributes.merge(email: email))
+          expect(user.requires_manual_approval?).to be true
+        end
+      end
+    end
+
 
     it "should not set requires_manual_approval if the user is an affiliate and the email is government_affiliated" do
       %w( aff@agency.GOV aff@anotheragency.gov admin@agency.mil anotheradmin@agency.MIL ).each do |email|
@@ -226,51 +228,15 @@ describe User do
         expect(user.requires_manual_approval?).to be false
       end
     end
-
-    it "should set requires_manual_approval if the user is an affiliate and the email is not government_affiliated" do
-      %w( aff@agency.COM aff@anotheragency.com admin.gov@agency.org anotheradmin.MIL@agency.ORG escape_the_dot@foo.xmil ).each do |email|
-        user = User.create!(@valid_affiliate_attributes.merge(:email => email))
-        expect(user.requires_manual_approval?).to be true
-      end
-    end
-
-    it "should set email_verification_token if the user is pending_email_verification" do
-      user = User.create!(@valid_affiliate_attributes)
-      expect(user.is_pending_email_verification?).to be true
-      expect(user.email_verification_token).not_to be_blank
-    end
-
-    context "when the same email_verification_token as another user is generated" do
-      let(:user) { User.new(valid_attributes).tap { |u| puts u.inspect } }
-      let(:token) { 'unique token' }
-
-      before do
-        existing_user = users(:affiliate_manager_with_pending_contact_information_status)
-        allow(Authlogic::Random).to receive(:friendly_token).and_return(
-          'salt_for_user_password',                # for the initial User.new
-          existing_user.email_verification_token,  # induces uniqueness error
-          token                                    # final value works because it's unique
-        )
-      end
-
-      it "doesn't raise the uniqueness constraint violation error" do
-        expect { user.save(valid_attributes)}.to_not raise_error
-      end
-
-      it "assigns a new email_verification_token" do
-        user.save
-        expect(user.email_verification_token).to eq(token)
-      end
-    end
   end
 
   context "when saving/updating" do
-    it { is_expected.to allow_value("pending_email_verification").for(:approval_status) }
     it { is_expected.to allow_value("pending_approval").for(:approval_status) }
     it { is_expected.to allow_value("approved").for(:approval_status) }
     it { is_expected.to allow_value("not_approved").for(:approval_status) }
 
-    context 'when updating an email address' do
+    # login.gov - commented out till SRCH-952. Updating email address will have a different flow.
+    pending 'when updating an email address' do
       let(:user) { users(:affiliate_admin) }
       let(:new_email) { 'new@new.gov' }
       subject(:update_email) { user.update(email: new_email) }
@@ -347,7 +313,9 @@ describe User do
     end
   end
 
-  describe "#verify_email" do
+  # login.gov - commented out till SRCH-953. When user registers they still get a welcome
+  # email but the email does not need to be verified.
+  pending "#verify_email" do
     context "has matching email verification token and does not require manual approval" do
       before do
         @user = users(:affiliate_added_by_another_affiliate_with_pending_email_verification_status)
@@ -411,11 +379,6 @@ describe User do
         end
       end
     end
-
-    it "should return false if the user does not have matching email_verification_token" do
-      user = users(:affiliate_manager_with_pending_email_verification_status)
-      expect(user.verify_email('mismatched token')).to be false
-    end
   end
 
   describe "#send_new_affiliate_user_email" do
@@ -467,7 +430,8 @@ describe User do
     end
   end
 
-  describe "#new_invited_by_affiliate" do
+  # login.gov - commented out till SRCH-891.
+  pending "#new_invited_by_affiliate" do
     let(:inviter) { users(:affiliate_manager) }
     let(:affiliate) { affiliates(:basic_affiliate) }
 

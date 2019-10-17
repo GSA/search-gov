@@ -7,15 +7,6 @@ shared_examples 'restricted to approved user' do |request_method, action, parame
     end
   end
 
-  context 'when user is pending email verification' do
-    before { UserSession.create(users(:affiliate_manager_with_pending_email_verification_status)) }
-
-    it 'should redirect to affiliates page' do
-      send request_method, action, params: parameters
-      expect(response).to redirect_to(account_path)
-    end
-  end
-
   context 'when user is pending approval' do
     before { UserSession.create(users(:affiliate_manager_with_pending_approval_status)) }
 
@@ -25,7 +16,8 @@ shared_examples 'restricted to approved user' do |request_method, action, parame
     end
   end
 
-  context 'when user is pending contact information status' do
+  # login.gov - commented out till  SRCH-862
+  pending 'when user is pending contact information status' do
     before { UserSession.create(users(:affiliate_manager_with_pending_contact_information_status)) }
 
     it 'should redirect to affiliates page' do

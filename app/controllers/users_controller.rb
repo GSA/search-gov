@@ -25,6 +25,15 @@ class UsersController < ApplicationController
 
   def show
     @user = @current_user
+
+    message = <<~MESSAGE
+      Because you don't have a .gov or .mil email address, we need additional information.
+      If you are a contractor on an active contract, please use your .gov or .mil email
+      address on this account, or have your federal <a href='mailto:search@support.digitalgov.gov'>POC email</a>
+      to confirm your status.
+    MESSAGE
+
+    flash[:notice] = message unless @user.has_government_affiliated_email?
   end
 
   def edit
