@@ -41,7 +41,8 @@ Rails.application.routes.draw do
   get '/dcv/:affiliate.txt' => 'statuses#domain_control_validation',
     defaults: { format: :text },
     constraints: { affiliate: /.*/, format: :text }
-  root to: redirect('/auth/logindotgov')
+
+  root to: 'user_sessions#security_notification'
 
   resource :account, :controller => "users"
   resources :users

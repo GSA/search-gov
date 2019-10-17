@@ -138,10 +138,6 @@ module NavigationHelpers
       sites_path
     when /^the new site page$/
       new_site_path
-    when /^auth_login page$/
-      login_path
-    when /^the login.gov page$/
-      'https://idp.int.identitysandbox.gov/?request_id=f3024531-d7e3-437d-aaaf-065d927694bf'
     else
       begin
         page_name =~ /the (.*) page/

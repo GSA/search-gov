@@ -22,11 +22,9 @@
           no expectation of privacy is to be assumed. Individuals found performing unauthorized
           activities are subject to disciplinary action including criminal prosecution.
         *******************************************
-    = form_for @user_session, url: accept_terms_path, html: { id: 'user-session-form' } do |f|
+    = form_tag '/auth/logindotgov', method: 'post', id: 'user-session-form' do
       = render_flash_message(false)
-      = render_error_messages(@user_session)
-      = hidden_field_tag 'terms', 'yes'
-      = f.submit 'Accept and proceed'
+      = submit_tag 'Accept and proceed'
       = link_to 'Cancel and return to Search.gov', 'https://search.gov'
       <br/>
       = link_to 'Go to USA.gov', 'https://usa.gov'
