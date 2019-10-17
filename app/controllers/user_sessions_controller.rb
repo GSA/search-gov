@@ -13,7 +13,7 @@ class UserSessionsController < ApplicationController
     if !require_password_reset && @user_session.save
       redirect_back_or_default redirection_path
     else
-      redirect_to('/auth/logindotgov')
+      redirect_to(login_path)
     end
   end
 

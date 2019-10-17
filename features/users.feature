@@ -11,6 +11,14 @@ Feature: Users
     And I should see "Email"
 
   @javascript
+  Scenario: User visits auth_login directly
+    Given I go to auth_login page
+    Then I should see "Security Notification"
+    And I should see "This is a U.S. General Services Administration Federal Government computer system"
+
+  # to be updated in SRCH-862 for login.gov
+  @wip
+  @javascript
   Scenario: Registering as a new affiliate user who is a government employee or contractor with .gov email address
     Given I am on the sign up page
     When I fill in the following:
