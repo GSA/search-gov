@@ -1,0 +1,6 @@
+'urn:gov:gsa:openidconnect.profiles:sp:sso:gsa:search':
+  agency: 'GSA'
+  cert: 'logindotgov'
+  friendly_name: 'search_test'
+  redirect_uris:
+    - 'http://localhost:3000/auth/logindotgov/callback'
