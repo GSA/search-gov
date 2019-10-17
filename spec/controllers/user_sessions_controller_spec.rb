@@ -27,7 +27,7 @@ describe UserSessionsController do
       let(:user) { users(:affiliate_manager_with_not_approved_status) }
       before { post_create }
 
-      it { is_expected.to redirect_to('/auth/logindotgov') }
+      it { is_expected.to redirect_to(login_path) }
     end
 
     context 'when the user session fails to save' do
@@ -40,7 +40,7 @@ describe UserSessionsController do
              }
       end
 
-      it { is_expected.to redirect_to('/auth/logindotgov') }
+      it { is_expected.to redirect_to(login_path) }
     end
   end
 
