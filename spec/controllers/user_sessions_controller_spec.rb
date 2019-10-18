@@ -9,10 +9,11 @@ describe UserSessionsController do
 
   describe '#security_notification' do
     before { get :security_notification }
+
     it { is_expected.to render_template(:security_notification) }
   end
 
-  describe "#create" do
+  describe '#create' do
     let(:user) { users(:affiliate_manager) }
     let(:post_create) do
       post :create,
