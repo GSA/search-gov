@@ -8,7 +8,7 @@ shared_examples 'an Elasticsearch client' do
     it 'uses the specified options' do
       options = {
         log: false,
-        randomize_connections: true,
+        randomize_hosts: true,
         reload_connections: true,
         reload_on_failure: true,
         retry_on_failure: 1
