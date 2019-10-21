@@ -476,6 +476,9 @@ GEM
     omniauth (1.4.3)
       hashie (>= 1.2, < 4)
       rack (>= 1.6.2, < 3)
+    omniauth-rails_csrf_protection (0.1.2)
+      actionpack (>= 4.2)
+      omniauth (>= 1.3.1)
     open_uri_redirections (0.2.1)
     os (0.9.6)
     paperclip (5.2.1)
@@ -844,6 +847,7 @@ DEPENDENCIES
   newrelic_rpm (~> 5.0.0)
   nokogiri (~> 1.10.4)
   oj (~> 3.3.10)
+  omniauth-rails_csrf_protection (~> 0.1.2)
   omniauth_login_dot_gov!
   paperclip (~> 5.2.0)
   poltergeist (~> 1.18.1)

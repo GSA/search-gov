@@ -10,6 +10,12 @@ Feature: Users
     And I should see "Agency"
     And I should see "Email"
 
+  @javascript
+  Scenario: User goes to login page and is directed to the security notification first
+    Given I go to the login page
+    Then I should see "Security Notification"
+    And I should see "This is a U.S. General Services Administration Federal Government computer system"
+
   # to be updated in SRCH-862 for login.gov
   @wip
   @javascript

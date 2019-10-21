@@ -3,9 +3,7 @@ class UserSessionsController < ApplicationController
   before_filter :require_no_user, :only => [:new, :create]
   before_filter :require_user, :only => :destroy
 
-  def new
-    construct_user_session
-  end
+  def security_notification; end
 
   def create
     construct_user_session(user_session_params)
@@ -13,7 +11,7 @@ class UserSessionsController < ApplicationController
     if @user_session.save
       redirect_back_or_default redirection_path
     else
-      render action: :new
+      redirect_to(login_path)
     end
   end
 
