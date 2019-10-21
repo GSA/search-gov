@@ -372,7 +372,7 @@ class Affiliate < ApplicationRecord
   end
 
   def normalize_site_domains
-    all_site_domains = site_domains(true).sort { |a, b| a.domain.length <=> b.domain.length }
+    all_site_domains = site_domains.reload.sort { |a, b| a.domain.length <=> b.domain.length }
     all_site_domains.each { |domain| domain.destroy unless domain.valid? }
   end
 
