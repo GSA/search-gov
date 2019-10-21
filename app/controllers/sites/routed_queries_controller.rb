@@ -1,8 +1,8 @@
 class Sites::RoutedQueriesController < Sites::SetupSiteController
   include ::Hintable
 
-  before_filter :setup_routed_query, only: [:edit, :update, :destroy]
-  before_filter :load_hints, only: %i(edit new create new_routed_query_keyword)
+  before_action :setup_routed_query, only: [:edit, :update, :destroy]
+  before_action :load_hints, only: %i(edit new create new_routed_query_keyword)
 
   def index
     @routed_queries = @site.routed_queries

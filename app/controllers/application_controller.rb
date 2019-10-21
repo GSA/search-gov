@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  before_filter :set_default_locale
-  after_filter :set_response_headers
+  before_action :set_default_locale
+  after_action :set_response_headers
   helper :all
   helper_method :current_user_session, :current_user, :permitted_params
   protect_from_forgery with: :exception

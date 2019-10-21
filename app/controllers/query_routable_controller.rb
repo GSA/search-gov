@@ -4,7 +4,7 @@ module QueryRoutableController
   extend ActiveSupport::Concern
 
   included do
-    before_filter :handle_query_routing, only: :index
+    before_action :handle_query_routing, only: :index
   end
 
   private

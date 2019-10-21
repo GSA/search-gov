@@ -1,3 +1,3 @@
 class Sites::SetupSiteController < Sites::BaseController
-  before_filter :setup_site
+  before_action :setup_site
 end

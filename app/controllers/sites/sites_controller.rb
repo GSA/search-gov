@@ -1,5 +1,5 @@
 class Sites::SitesController < Sites::BaseController
-  before_filter :setup_site, only: [:show, :pin, :destroy]
+  before_action :setup_site, only: [:show, :pin, :destroy]
 
   def index
     if current_user.is_affiliate_admin? and current_user.default_affiliate

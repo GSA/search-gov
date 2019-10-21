@@ -1,8 +1,8 @@
 class Sites::NoResultsPagesController < Sites::SetupSiteController
   include ::Hintable
 
-  before_filter :load_hints, only: %i(edit)
-  before_filter :build_no_results_pages_alt_links, only: [:edit, :new_no_results_pages_alt_link]
+  before_action :load_hints, only: %i(edit)
+  before_action :build_no_results_pages_alt_links, only: [:edit, :new_no_results_pages_alt_link]
 
   def edit
   end
