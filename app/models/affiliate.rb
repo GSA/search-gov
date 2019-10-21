@@ -61,7 +61,7 @@ class Affiliate < ApplicationRecord
 
   has_many :users, -> { order 'contact_name' }, through: :memberships
   has_many :default_users, class_name: 'User', foreign_key: 'default_affiliate_id', dependent: :nullify
-  has_many :rss_feed_urls, -> { uniq }, through: :rss_feeds
+  has_many :rss_feed_urls, -> { distinct }, through: :rss_feeds
   has_many :url_prefixes, :through => :document_collections
   has_many :twitter_profiles, -> { order 'twitter_profiles.screen_name ASC' }, through: :affiliate_twitter_settings
   has_and_belongs_to_many :instagram_profiles, -> { order 'instagram_profiles.username ASC' }
