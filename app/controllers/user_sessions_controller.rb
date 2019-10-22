@@ -1,11 +1,14 @@
 class UserSessionsController < ApplicationController
+  before_action :reset_session, only: [:destroy]
+  before_action :require_no_user, only: %w[new create]
+  before_action :require_user, only: :destroy
 
   def new
     construct_user_session
   end
 
   def security_notification
-    redirect_to(account_path) if current_user_session
+    redirect_to(account_path) if current_user
   end
 
   def create
@@ -14,13 +17,13 @@ class UserSessionsController < ApplicationController
     if @user_session.save
       redirect_back_or_default redirection_path
     else
-      render action: :new
+      redirect_to(login_path)
     end
   end
 
   def destroy
     current_user_session.destroy
-    redirect_to login_path
+    redirect_to(login_path)
   end
 
   private
