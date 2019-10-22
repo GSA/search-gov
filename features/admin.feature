@@ -2,8 +2,6 @@ Feature:  Administration
   Background:
     Given I am logged in with email "affiliate_admin@fixtures.org"
 
-  # to be updated in SRCH-903 for login.gov
-  @wip
   Scenario: Visiting the admin home page as an admin
     When I go to the admin home page
     Then I should see the browser page titled "Super Admin"
