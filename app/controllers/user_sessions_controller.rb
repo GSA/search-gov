@@ -1,6 +1,5 @@
 class UserSessionsController < ApplicationController
   before_action :reset_session, only: [:destroy]
-  before_action :require_no_user, only: %w[new create]
   before_action :require_user, only: :destroy
 
 
@@ -12,5 +11,4 @@ class UserSessionsController < ApplicationController
     current_user_session.destroy
     redirect_to(login_path)
   end
-
 end
