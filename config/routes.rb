@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/search/docs' => 'searches#docs', as: :docs_search
   get '/search/news' => 'searches#news', as: :news_search
   get '/search/news/videos' => 'searches#video_news', as: :video_news_search
+  get '/auth/logindotgov/callback', to: 'omniauth_callbacks#login_dot_gov'
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
@@ -34,13 +35,14 @@ Rails.application.routes.draw do
   get '/sayt' => 'sayt#index'
   get '/clicked' => 'clicked#index'
   get '/healthcheck' => 'health_checks#new'
-  get '/login' => 'user_sessions#new', as: :login
+  get '/login' => 'user_sessions#security_notification', as: :login
   get '/signup' => 'users#new', as: :signup
   get '/status/outbound_rate_limit' => 'statuses#outbound_rate_limit', defaults: { format: :text }
   get '/dcv/:affiliate.txt' => 'statuses#domain_control_validation',
     defaults: { format: :text },
     constraints: { affiliate: /.*/, format: :text }
-  root to: redirect('/login')
+
+  root to: 'user_sessions#security_notification'
 
   resource :account, :controller => "users"
   resources :users

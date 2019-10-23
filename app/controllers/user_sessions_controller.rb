@@ -3,17 +3,15 @@ class UserSessionsController < ApplicationController
   before_filter :require_no_user, :only => [:new, :create]
   before_filter :require_user, :only => :destroy
 
-  def new
-    construct_user_session
-  end
+  def security_notification; end
 
   def create
     construct_user_session(user_session_params)
 
-    if !require_password_reset && @user_session.save
+    if @user_session.save
       redirect_back_or_default redirection_path
     else
-      render :action => :new
+      redirect_to(login_path)
     end
   end
 
@@ -23,14 +21,6 @@ class UserSessionsController < ApplicationController
   end
 
   private
-
-  def require_password_reset
-    user = User.find_by_email(params[:user_session][:email])
-    return false unless (@user_session.valid? && user.requires_password_reset?)
-
-    user.deliver_password_reset_instructions!
-    flash[:notice] = "Looks like it's time to change your password! Please check your email for the password reset message we just sent you. Thanks!"
-  end
 
   def construct_user_session(params = nil)
     @user_session =
@@ -44,7 +34,7 @@ class UserSessionsController < ApplicationController
   end
 
   def user_session_params
-    params.require(:user_session).permit(:email, :password)
+    params.require(:user_session).permit(:email)
   end
 
   def redirection_path
