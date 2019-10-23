@@ -275,12 +275,3 @@ class User < ApplicationRecord
   end
 end
 
-<<<<<<< HEAD
-  def require_email_verification
-    set_approval_status_to_pending_email_verification
-    self.requires_manual_approval = !has_government_affiliated_email?
-    true
-  end
-end
-=======
->>>>>>> 6c54f01c5... fix some rubocop errors
