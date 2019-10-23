@@ -210,4 +210,3 @@ class User < ApplicationRecord
     perishable_token && updated_at < (Time.now - User.perishable_token_valid_for)
   end
 end
-
