@@ -23,21 +23,21 @@ describe 'sayt' do
   end
 
   context 'when name and query are present' do
-    it 'should return an array of suggestions' do
+    it 'returns an array of suggestions' do
       get '/sayt', params: { q: 'lorem  \\  ipsum',
                              callback: 'jsonp1234',
                              aid: affiliate.id }
       expect(response.body).to eq(%Q{/**/jsonp1234(#{phrases_in_json})})
     end
 
-    it "should return empty JSONP if nothing matches the 'q' param string" do
-      get '/sayt', params: { q: "who moved my cheese",
+    it "returns empty JSONP if nothing matches the 'q' param string" do
+      get '/sayt', params: { q: 'who moved my cheese',
                              callback: 'jsonp1276290049647',
                              aid: affiliate.id }
       expect(response.body).to eq('/**/jsonp1276290049647([])')
     end
 
-    it "should not completely melt down when strange characters are present" do
+    it 'does not completely melt down when strange characters are present' do
       expect do
         get '/sayt', params: { q: "foo\\", callback: 'jsonp1276290049647', aid: affiliate.id }
       end.not_to raise_error
@@ -48,7 +48,7 @@ describe 'sayt' do
   end
 
   context 'when extras is present' do
-    it 'should return jsonp with section and label' do
+    it 'returns jsonp with section and label' do
       get '/sayt', params: { name: affiliate.name,
                              q: 'lorem \\ ipsum',
                              callback: 'jsonp1234',
@@ -80,7 +80,7 @@ describe 'sayt' do
                                publish_start_on: Date.today)
       end
 
-      it 'should return results with SaytSuggestions and Boosted Contents' do
+      it 'returns results with SaytSuggestions and Boosted Contents' do
         get '/sayt', params: { name: affiliate.name,
                                q: 'lorem',
                                callback: 'jsonp1234',
@@ -90,7 +90,7 @@ describe 'sayt' do
         expect(response.body).to eq(%Q{/**/jsonp1234(#{results.to_json})})
       end
 
-      it 'should not return SAYT results that do not start with query' do
+      it 'does not return SAYT results that do not start with query' do
         get '/sayt', params: { name: affiliate.name,
                                q: 'orem',
                                callback: 'jsonp1234',
@@ -98,7 +98,7 @@ describe 'sayt' do
         expect(response.body).to eq('/**/jsonp1234([])')
       end
 
-      it 'should not return Boosted Contents that do not start with query' do
+      it 'does not return Boosted Contents that do not start with query' do
         get '/sayt', params: { name: affiliate.name,
                                q: 'Boosted',
                                callback: 'jsonp1234',
@@ -118,7 +118,7 @@ describe 'sayt' do
       end
     end
 
-    it 'should search for suggestions' do
+    it 'searches for suggestions' do
       get '/sayt', params: { name: affiliate.name,
                              q: 'lorem \\ ipsum',
                              callback: 'jsonp1234' }
