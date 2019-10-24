@@ -41,16 +41,15 @@ class Sites::FeaturedCollectionsController < Sites::BestBetsController
   end
 
   def featured_collection_params
-    params.require(:featured_collection).
-      permit(
-        :image,
-        :image_alt_text,
-        :mark_image_for_deletion,
-        :publish_start_on, :publish_end_on,
-        :status, :title, :title_url,
-        :match_keyword_values_only,
-        featured_collection_keywords_attributes: %i[id value],
-        featured_collection_links_attributes: %i[id title url position]
-      ).to_h
+    params.require(:featured_collection).permit(
+      :image,
+      :image_alt_text,
+      :mark_image_for_deletion,
+      :publish_start_on, :publish_end_on,
+      :status, :title, :title_url,
+      :match_keyword_values_only,
+      featured_collection_keywords_attributes: %i[id value],
+      featured_collection_links_attributes: %i[id title url position]
+    ).to_h
   end
 end
