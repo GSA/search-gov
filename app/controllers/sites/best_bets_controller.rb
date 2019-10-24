@@ -26,7 +26,7 @@ class Sites::BestBetsController < Sites::SetupSiteController
   end
 
   def update_best_bet(best_bet, redirect_path, params)
-    if best_bet.destroy_and_update_attributes(params.to_h)
+    if best_bet.destroy_and_update_attributes(params)
       redirect_to redirect_path, flash: { success: "You have updated #{best_bet.title}." }
     else
       build_children

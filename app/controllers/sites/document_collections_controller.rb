@@ -76,7 +76,9 @@ class Sites::DocumentCollectionsController < Sites::SetupSiteController
   end
 
   def collection_params
-    params.require(:document_collection).permit(:name,
-                                                { url_prefixes_attributes: [:id, :prefix] }).to_h
+    params.require(:document_collection).permit(
+        :name,
+        { url_prefixes_attributes: [:id, :prefix] }
+    ).to_h
   end
 end
