@@ -6,7 +6,9 @@ describe 'sayt' do
   let(:affiliate) { affiliates(:usagov_affiliate) }
   let(:phrases) { ['lorem ipsum dolor sit amet', 'lorem ipsum sic transit gloria'].freeze }
   let(:phrases_in_json) { phrases.to_json.freeze }
-  let(:phrases_with_section_and_label_in_json) { phrases.collect { |p| { section: 'default', label: p } }.to_json.freeze }
+  let(:phrases_with_section_and_label_in_json) do
+    phrases.collect { |p| { section: 'default', label: p } }.to_json.freeze
+  end
 
   before do
     SaytController.class_eval {
@@ -22,24 +24,35 @@ describe 'sayt' do
 
   context 'when name and query are present' do
     it 'should return an array of suggestions' do
-      get '/sayt', :q => 'lorem  \\  ipsum', :callback => 'jsonp1234', :aid => affiliate.id
+      get '/sayt', params: { q: 'lorem  \\  ipsum',
+                             callback: 'jsonp1234',
+                             aid: affiliate.id }
       expect(response.body).to eq(%Q{/**/jsonp1234(#{phrases_in_json})})
     end
 
     it "should return empty JSONP if nothing matches the 'q' param string" do
-      get '/sayt', :q => "who moved my cheese", :callback => 'jsonp1276290049647', :aid => affiliate.id
+      get '/sayt', params: { q: "who moved my cheese",
+                             callback: 'jsonp1276290049647',
+                             aid: affiliate.id }
       expect(response.body).to eq('/**/jsonp1276290049647([])')
     end
 
     it "should not completely melt down when strange characters are present" do
-      expect { get '/sayt', :q => "foo\\", :callback => 'jsonp1276290049647', :aid => affiliate.id }.not_to raise_error
-      expect { get '/sayt', :q => "foo's", :callback => 'jsonp1276290049647', :aid => affiliate.id }.not_to raise_error
+      expect do
+        get '/sayt', params: { q: "foo\\", callback: 'jsonp1276290049647', aid: affiliate.id }
+      end.not_to raise_error
+      expect do
+        get '/sayt', params: { q: "foo's", callback: 'jsonp1276290049647', aid: affiliate.id }
+      end.not_to raise_error
     end
   end
 
   context 'when extras is present' do
     it 'should return jsonp with section and label' do
-      get '/sayt', :name => affiliate.name, :q => 'lorem \\ ipsum', :callback => 'jsonp1234', :extras => 'true'
+      get '/sayt', params: { name: affiliate.name,
+                             q: 'lorem \\ ipsum',
+                             callback: 'jsonp1234',
+                             extras: 'true' }
       expect(response.body).to eq(%Q{/**/jsonp1234(#{phrases_with_section_and_label_in_json})})
     end
 
@@ -68,19 +81,28 @@ describe 'sayt' do
       end
 
       it 'should return results with SaytSuggestions and Boosted Contents' do
-        get '/sayt', :name => affiliate.name, :q => 'lorem', :callback => 'jsonp1234', :extras => 'true'
+        get '/sayt', params: { name: affiliate.name,
+                               q: 'lorem',
+                               callback: 'jsonp1234',
+                               extras: 'true' }
         results = phrases.collect { |p| { section: 'default', label: p } }
         results << { section: 'Recommended Pages', label: 'Lorem Boosted Content 1', data: 'http://agency.gov/boosted_content1.html'}
         expect(response.body).to eq(%Q{/**/jsonp1234(#{results.to_json})})
       end
 
       it 'should not return SAYT results that do not start with query' do
-        get '/sayt', :name => affiliate.name, :q => 'orem', :callback => 'jsonp1234', :extras => 'true'
+        get '/sayt', params: { name: affiliate.name,
+                               q: 'orem',
+                               callback: 'jsonp1234',
+                               extras: 'true' }
         expect(response.body).to eq('/**/jsonp1234([])')
       end
 
       it 'should not return Boosted Contents that do not start with query' do
-        get '/sayt', :name => affiliate.name, :q => 'Boosted', :callback => 'jsonp1234', :extras => 'true'
+        get '/sayt', params: { name: affiliate.name,
+                               q: 'Boosted',
+                               callback: 'jsonp1234',
+                               extras: 'true' }
         expect(response.body).to eq('/**/jsonp1234([])')
       end
     end
@@ -97,7 +119,9 @@ describe 'sayt' do
     end
 
     it 'should search for suggestions' do
-      get '/sayt', :name => affiliate.name, :q => 'lorem \\ ipsum', :callback => 'jsonp1234'
+      get '/sayt', params: { name: affiliate.name,
+                             q: 'lorem \\ ipsum',
+                             callback: 'jsonp1234' }
       expect(response.body).to eq(%Q{/**/jsonp1234(#{phrases_in_json})})
     end
   end

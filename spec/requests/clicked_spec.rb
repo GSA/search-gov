@@ -17,21 +17,44 @@ describe "Clicked" do
   context "when correct information is passed in" do
 
     it "should return success with a blank message body" do
-      get '/clicked', u: @url, q: @query, t: @timestamp, a: @affiliate_name, p: @position, s: @module, v: @vertical, l: @locale, i: @model_id
+      get '/clicked', params: { u: @url,
+                                q: @query,
+                                t: @timestamp,
+                                a: @affiliate_name,
+                                p: @position,
+                                s: @module,
+                                v: @vertical,
+                                l: @locale,
+                                i: @model_id }
       expect(response.success?).to be(true)
       expect(response.body).to eq('')
     end
 
     it "should log the click" do
       expect(Click).to receive(:log).with(@unescaped_url, @query, '2010-04-22 23:28:25', '127.0.0.1', @affiliate_name, @position, @module, @vertical, @locale, anything(), @model_id)
-      get '/clicked', u: @url, q: @query, t: @timestamp, a: @affiliate_name, p: @position, s: @module, v: @vertical, l: @locale, i: @model_id
+      get '/clicked', params: { u: @url,
+                                q: @query,
+                                t: @timestamp,
+                                a: @affiliate_name,
+                                p: @position,
+                                s: @module,
+                                v: @vertical,
+                                l: @locale,
+                                i: @model_id }
     end
 
   end
 
   context "when click url is missing" do
     before do
-      get '/clicked', q: @query, t: @timestamp, a: @affiliate_name, p: @position, s: @module, v: @vertical, l: @locale, i: @model_id
+      get '/clicked', params: { q: @query,
+                                t: @timestamp,
+                                a: @affiliate_name,
+                                p: @position,
+                                s: @module,
+                                v: @vertical,
+                                l: @locale,
+                                i: @model_id }
     end
 
     it "should return success with a blank message body" do

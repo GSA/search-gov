@@ -8,7 +8,10 @@ describe SearchesController do
     context "when the request is from a mobile device" do
       before do
         iphone_user_agent = "Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543a Safari/419.3"
-        get "/search/news", {:query => 'element', :affiliate => affiliate.name, :channel => rss_feeds(:white_house_blog).id}, { "HTTP_USER_AGENT" => iphone_user_agent }
+        get "/search/news", params:  { query: 'element',
+                                       affiliate: affiliate.name,
+                                       channel: rss_feeds(:white_house_blog).id },
+                            headers: { "HTTP_USER_AGENT" => iphone_user_agent }
       end
 
       it "should set format to mobile" do
@@ -25,7 +28,9 @@ describe SearchesController do
     context "when the request is from a mobile device" do
       before do
         iphone_user_agent = "Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543a Safari/419.3"
-        get "/search/docs", {:query => "pdf", :affiliate => affiliate.name}, { "HTTP_USER_AGENT" => iphone_user_agent }
+        get "/search/docs", params: { query: "pdf",
+                                      affiliate: affiliate.name },
+                            headers:  { "HTTP_USER_AGENT" => iphone_user_agent }
       end
 
       it "should set format to mobile" do
