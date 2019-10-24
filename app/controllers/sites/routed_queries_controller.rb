@@ -58,7 +58,7 @@ class Sites::RoutedQueriesController < Sites::SetupSiteController
   end
 
   def routed_query_params
-    params.require(:routed_query).permit(:url, :description, routed_query_keywords_attributes: [:id, :keyword])
+    params.require(:routed_query).permit(:url, :description, routed_query_keywords_attributes: [:id, :keyword]).to_h
   end
 
   def build_routed_query_keyword

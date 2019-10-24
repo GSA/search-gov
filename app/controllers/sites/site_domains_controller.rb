@@ -53,7 +53,7 @@ class Sites::SiteDomainsController < Sites::SetupSiteController
   end
 
   def site_domain_params
-    params.require(:site_domain).permit(:domain)
+    params.require(:site_domain).permit(:domain).to_h
   end
 
   def update_site_after_save

@@ -48,6 +48,6 @@ class Sites::FeaturedCollectionsController < Sites::BestBetsController
                :status, :title, :title_url,
                :match_keyword_values_only,
                featured_collection_keywords_attributes: [:id, :value],
-               featured_collection_links_attributes: [:id, :title, :url, :position])
+               featured_collection_links_attributes: [:id, :title, :url, :position]).to_h
   end
 end

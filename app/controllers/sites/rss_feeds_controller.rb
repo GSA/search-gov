@@ -96,7 +96,7 @@ class Sites::RssFeedsController < Sites::SetupSiteController
   def rss_feed_params
     params.require(:rss_feed).permit(:name,
                                      :show_only_media_content,
-                                     { rss_feed_urls_attributes: [:url] })
+                                     { rss_feed_urls_attributes: [:url] }).to_h
   end
 
   def setup_non_managed_rss_feed

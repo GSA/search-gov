@@ -8,7 +8,7 @@ class Sites::QueriesController < Sites::AnalyticsController
   end
 
   def create
-    queries_request_params = params[:rtu_queries_request].merge(site: @site, filter_bots: @current_user.sees_filtered_totals?)
+    queries_request_params = params[:rtu_queries_request].merge(site: @site, filter_bots: @current_user.sees_filtered_totals?).to_unsafe_h
     @queries_request = RtuQueriesRequest.new(queries_request_params)
     @queries_request.save
     set_analytics_range(@queries_request.start_date, @queries_request.end_date)

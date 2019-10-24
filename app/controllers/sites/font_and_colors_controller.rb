@@ -40,7 +40,7 @@ class Sites::FontAndColorsController < Sites::SetupSiteController
                               :title_link_color,
                               :url_link_color,
                               :visited_title_link_color] },
-        :theme)
+        :theme).to_h
     @site_params[:css_property_hash] = @site.css_property_hash.merge(@site_params[:css_property_hash])
     @site_params
   end
