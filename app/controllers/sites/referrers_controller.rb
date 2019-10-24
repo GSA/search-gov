@@ -9,8 +9,8 @@ class Sites::ReferrersController < Sites::AnalyticsController
 
   def create
     referrers_request_params = params[:rtu_referrers_request].merge(
-        site: @site,
-        filter_bots: @current_user.sees_filtered_totals?
+      site: @site,
+      filter_bots: @current_user.sees_filtered_totals?
     ).to_unsafe_h
     @referrers_request = RtuReferrersRequest.new(referrers_request_params)
     @referrers_request.save
