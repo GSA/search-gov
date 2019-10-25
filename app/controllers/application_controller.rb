@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  before_filter :set_default_locale
-  after_filter :set_response_headers
+  before_action :set_default_locale
+  after_action :set_response_headers
   helper :all
   helper_method :current_user_session, :current_user, :permitted_params
   protect_from_forgery with: :exception
@@ -130,7 +130,7 @@ class ApplicationController < ActionController::Base
                                                  :'query-not',
                                                  :'query-or',
                                                  :'query-quote')
-    query_search_params.inject({}) do |hash, kv|
+    query_search_params.to_h.inject({}) do |hash, kv|
       hash[kv.first.to_s.underscore.to_sym] = sanitize_query kv.last
       hash
     end
