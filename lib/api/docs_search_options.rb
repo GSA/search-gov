@@ -6,6 +6,7 @@ class Api::DocsSearchOptions < Api::CommercialSearchOptions
                         message: 'must be present'
 
   def initialize(params = {})
+    params = params.to_h unless params.is_a?(Hash)
     super(params.reverse_merge(api_key: AZURE_HOSTED_PASSWORD))
     self.dc = params[:dc]
   end

@@ -113,7 +113,7 @@ class ApplicationController < ActionController::Base
   end
 
   def search_options_from_params(*param_keys)
-    h = permitted_params.slice(*param_keys)
+    h = permitted_params.to_h.slice(*param_keys)
     h.merge! affiliate: @affiliate,
              file_type: permitted_params[:filetype],
              page: permitted_params[:page],
