@@ -1,6 +1,6 @@
 class Sites::ExcludedUrlsController < Sites::SetupSiteController
-  before_filter :setup_site
-  before_filter :setup_excluded_url, only: [:destroy]
+  before_action :setup_site
+  before_action :setup_excluded_url, only: [:destroy]
 
   def index
     @excluded_urls = @site.excluded_urls.paginate(

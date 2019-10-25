@@ -133,7 +133,7 @@ describe Affiliate do
                                           site_domains_attributes: { '0' => { domain: 'www1.usa.gov' },
                                                                      '1' => { domain: 'www2.usa.gov' },
                                                                      '2' => { domain: 'usa.gov' } }))
-        expect(affiliate.site_domains(true).count).to eq(1)
+        expect(affiliate.site_domains.reload.count).to eq(1)
         expect(affiliate.site_domains.first.domain).to eq('usa.gov')
 
         affiliate = Affiliate.create!(
@@ -141,7 +141,7 @@ describe Affiliate do
                 name: 'anothersite',
                 site_domains_attributes: { '0' => { domain: 'sec.gov' },
                                            '1' => { domain: 'www.sec.gov.staging.net' } }))
-        expect(affiliate.site_domains(true).count).to eq(2)
+        expect(affiliate.site_domains.reload.count).to eq(2)
         expect(affiliate.site_domains.pluck(:domain).sort).to eq(%w(sec.gov www.sec.gov.staging.net))
       end
 
@@ -1040,7 +1040,7 @@ describe Affiliate do
         site_domain_hash = ActiveSupport::OrderedHash["http://foo.gov", nil, "bar.gov/somepage.html", nil, "https://blat.gov/somedir", nil]
         affiliate.add_site_domains(site_domain_hash)
 
-        site_domains = affiliate.site_domains(true)
+        site_domains = affiliate.site_domains.reload
         expect(site_domains.size).to eq(2)
         expect(site_domains.collect(&:domain).sort).to eq(%w{blat.gov/somedir foo.gov})
       end
@@ -1051,7 +1051,7 @@ describe Affiliate do
         site_domain_hash = ActiveSupport::OrderedHash[" do.gov ", nil, " bar.gov", nil, "blat.gov ", nil]
         affiliate.add_site_domains(site_domain_hash)
 
-        site_domains = affiliate.site_domains(true)
+        site_domains = affiliate.site_domains.reload
         expect(site_domains.size).to eq(3)
         expect(site_domains.collect(&:domain).sort).to eq(%w{bar.gov blat.gov do.gov})
       end
@@ -1065,7 +1065,7 @@ describe Affiliate do
       it "should delete dupes from domains" do
         expect(affiliate.add_site_domains('foo.gov' => nil)).to be_empty
 
-        site_domains = affiliate.site_domains(true)
+        site_domains = affiliate.site_domains.reload
         expect(site_domains.count).to eq(1)
         expect(site_domains.first.domain).to eq('foo.gov')
       end
@@ -1076,7 +1076,7 @@ describe Affiliate do
         site_domain_hash = ActiveSupport::OrderedHash['foo.gov', nil, 'somepage.info', nil, 'whatisthis?', nil, 'bar.gov/somedir/', nil]
         affiliate.add_site_domains(site_domain_hash)
 
-        site_domains = affiliate.site_domains(true)
+        site_domains = affiliate.site_domains.reload
         expect(site_domains.count).to eq(3)
         expect(site_domains.collect(&:domain).sort).to eq(%w{bar.gov/somedir foo.gov somepage.info})
       end
@@ -1087,7 +1087,7 @@ describe Affiliate do
         site_domain_hash = ActiveSupport::OrderedHash['blat.gov', nil, 'blat.gov/s.html', nil, 'bar.gov/somedir/', nil, 'bar.gov', nil, 'www.bar.gov', nil, 'xxbar.gov', nil]
         added_site_domains = affiliate.add_site_domains(site_domain_hash)
 
-        site_domain_names = affiliate.site_domains(true).map(&:domain)
+        site_domain_names = affiliate.site_domains.reload.pluck(:domain)
         expect(added_site_domains.map(&:domain)).to eq(site_domain_names)
         expect(site_domain_names).to eq(%w(bar.gov blat.gov xxbar.gov))
       end
@@ -1106,7 +1106,7 @@ describe Affiliate do
         added_site_domains = affiliate.add_site_domains({'foo.gov' => nil, 'bar.gov' => nil})
 
         expect(added_site_domains.count).to eq(2)
-        site_domains = affiliate.site_domains(true)
+        site_domains = affiliate.site_domains.reload
         expect(site_domains.count).to eq(3)
         expect(site_domains[0].domain).to eq('agency.gov')
         expect(site_domains[1].domain).to eq('bar.gov')
@@ -1127,7 +1127,7 @@ describe Affiliate do
 
       it "should filter out existing domains" do
         expect(affiliate.update_site_domain(site_domain, {:domain => 'usa.gov', :site_name => nil})).to be_truthy
-        site_domains = affiliate.site_domains(true)
+        site_domains = affiliate.site_domains.reload
         expect(site_domains.count).to eq(1)
         expect(site_domains.first.domain).to eq('usa.gov')
       end

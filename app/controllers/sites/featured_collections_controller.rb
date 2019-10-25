@@ -1,5 +1,5 @@
 class Sites::FeaturedCollectionsController < Sites::BestBetsController
-  before_filter :setup_featured_collection, only: [:edit, :update, :destroy]
+  before_action :setup_featured_collection, only: [:edit, :update, :destroy]
 
   def index
     @featured_collections = search_best_bets(FeaturedCollection)

@@ -1,5 +1,5 @@
 class Sites::BoostedContentsController < Sites::BestBetsController
-  before_filter :setup_boosted_content, only: [:edit, :update, :destroy]
+  before_action :setup_boosted_content, only: [:edit, :update, :destroy]
 
   def index
     @boosted_contents = search_best_bets(BoostedContent)
