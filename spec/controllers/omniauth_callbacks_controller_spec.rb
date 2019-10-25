@@ -15,6 +15,10 @@ describe OmniauthCallbacksController do
 
       it { is_expected.to redirect_to(admin_home_page_path) }
       it { is_expected.to assign_to(:user).with(user) }
+
+      it 'calls reset_sesion' do
+        expect(ActionController::Base).to receive(:reset_session)
+      end
     end
 
     it 'creates a user session' do
