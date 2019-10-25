@@ -10,8 +10,8 @@ class ClickedController < ActionController::Metal
       results_source = params['s']
       vertical = params['v']
       locale = params['l']
-      click_ip = env['REMOTE_ADDR']
-      user_agent = env['HTTP_USER_AGENT']
+      click_ip = request.env['REMOTE_ADDR']
+      user_agent = request.env['HTTP_USER_AGENT']
       model_id = params['i']
       Click.log(url, query, queried_at_gmt, click_ip, affiliate_name, position, results_source, vertical, locale, user_agent, model_id)
     end
