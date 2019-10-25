@@ -18,8 +18,22 @@ describe OmniauthCallbacksController do
     end
 
     it 'creates a user session' do
-      expect(UserSession).to receive(:create).with(user)
+      expect(UserSession).to receive(:create).with(user).and_call_original
       get_login_dot_gov
+    end
+
+    context 'securing the session' do
+      let(:session) { instance_double(UserSession) }
+      let(:secure_cookies) { Rails.application.config.ssl_options[:secure_cookies] }
+
+      before do
+        allow(UserSession).to receive(:create).with(user).and_return(session)
+      end
+
+      it 'sets the session security' do
+        expect(session).to receive(:secure=).with(secure_cookies)
+        get_login_dot_gov
+      end
     end
 
     context 'when the user is new' do
