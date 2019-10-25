@@ -70,7 +70,8 @@ class Sites::RssFeedsController < Sites::SetupSiteController
     existing_rss_feed_urls = []
     new_urls = []
 
-    rss_feed_urls_attributes = attributes || {}
+    rss_feed_urls_attributes = attributes.to_h || {}
+    # rss_feed_urls_attributes.each_value do |url_attributes|
     rss_feed_urls_attributes.each_value do |url_attributes|
       url = url_attributes[:url]
       next if url.blank?
