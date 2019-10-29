@@ -111,7 +111,7 @@ module Api
                                          :query_or,
                                          :filetype,
                                          :filter
-                                        )
+                                       ).to_h
 
       end
 
