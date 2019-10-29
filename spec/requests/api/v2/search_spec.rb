@@ -100,7 +100,9 @@ describe '/api/v2/search' do
       end
 
       it 'returns JSON results with highlighting' do
-        get '/api/v2/search', access_key: 'usagov_key', affiliate: 'usagov', query: 'api'
+        get '/api/v2/search', params: { access_key: 'usagov_key',
+                                        affiliate: 'usagov',
+                                        query: 'api' }
         expect(response.status).to eq(200)
 
         hash_response = JSON.parse response.body, symbolize_names: true
@@ -130,7 +132,10 @@ describe '/api/v2/search' do
       end
 
       it 'returns JSON results without highlighting' do
-        get '/api/v2/search', access_key: 'usagov_key', affiliate: 'usagov', query: 'api', enable_highlighting: 'false'
+        get '/api/v2/search', params: { access_key: 'usagov_key',
+                                        affiliate: 'usagov',
+                                        query: 'api',
+                                        enable_highlighting: 'false' }
         expect(response.status).to eq(200)
 
         hash_response = JSON.parse response.body, symbolize_names: true
@@ -159,7 +164,10 @@ describe '/api/v2/search' do
       end
 
       it 'returns JSON results without highlighting' do
-        get '/api/v2/search', access_key: 'usagov_key', affiliate: 'usagov', query: 'api', limit: '1'
+        get '/api/v2/search', params: { access_key: 'usagov_key',
+                                        affiliate: 'usagov',
+                                        query: 'api',
+                                        limit: '1' }
         expect(response.status).to eq(200)
 
         hash_response = JSON.parse response.body, symbolize_names: true
@@ -184,7 +192,10 @@ describe '/api/v2/search' do
 
     context 'when offset = 3' do
       it 'returns JSON results without highlighting' do
-        get '/api/v2/search', access_key: 'usagov_key', affiliate: 'usagov', query: 'api', offset: '2'
+        get '/api/v2/search', params: { access_key: 'usagov_key',
+                                        affiliate: 'usagov',
+                                        query: 'api',
+                                        offset: '2' }
         expect(response.status).to eq(200)
 
         hash_response = JSON.parse response.body, symbolize_names: true
@@ -203,7 +214,10 @@ describe '/api/v2/search' do
       end
 
       it 'returns JSON results sorted by published_at in descending order' do
-        get '/api/v2/search', access_key: 'usagov_key', affiliate: 'usagov', query: 'api', sort_by: 'date'
+        get '/api/v2/search', params: { access_key: 'usagov_key',
+                                        affiliate: 'usagov',
+                                        query: 'api',
+                                        sort_by: 'date' }
         expect(response.status).to eq(200)
 
         hash_response = JSON.parse response.body, symbolize_names: true
@@ -227,7 +241,10 @@ describe '/api/v2/search' do
 
     context 'when query contains spelling error' do
       it 'returns JSON results with spelling correction' do
-        get '/api/v2/search', access_key: 'usagov_key', affiliate: 'usagov', query: 'descripton', sort_by: 'date'
+        get '/api/v2/search', params: { access_key: 'usagov_key',
+                                        affiliate: 'usagov',
+                                        query: 'descripton',
+                                        sort_by: 'date' }
         expect(response.status).to eq(200)
 
         hash_response = JSON.parse response.body, symbolize_names: true
@@ -238,7 +255,10 @@ describe '/api/v2/search' do
         before { SuggestionBlock.create!(query: 'descripton') }
 
         it 'returns JSON results with nil spelling correction' do
-          get '/api/v2/search', access_key: 'usagov_key', affiliate: 'usagov', query: 'descripton', sort_by: 'date'
+          get '/api/v2/search', params: { access_key: 'usagov_key',
+                                          affiliate: 'usagov',
+                                          query: 'descripton',
+                                          sort_by: 'date' }
           expect(response.status).to eq(200)
 
           hash_response = JSON.parse response.body, symbolize_names: true
@@ -251,7 +271,7 @@ describe '/api/v2/search' do
   context 'when one of the parameter is invalid' do
     context 'when access_key is not present' do
       it 'returns errors' do
-        get '/api/v2/search', affiliate: 'not-usagov', query: 'api'
+        get '/api/v2/search', params: { affiliate: 'not-usagov', query: 'api' }
         expect(response.status).to eq(400)
 
         hash_response = JSON.parse response.body, symbolize_names: true
@@ -261,7 +281,9 @@ describe '/api/v2/search' do
 
     context 'when access_key is invalid' do
       it 'returns errors' do
-        get '/api/v2/search', access_key: 'not_usagov_key', affiliate: 'usagov', query: 'api'
+        get '/api/v2/search', params: { access_key: 'not_usagov_key',
+                                        affiliate: 'usagov',
+                                        query: 'api' }
         expect(response.status).to eq(400)
 
         hash_response = JSON.parse response.body, symbolize_names: true
@@ -271,7 +293,9 @@ describe '/api/v2/search' do
 
     context 'when affiliate is invalid' do
       it 'returns errors' do
-        get '/api/v2/search', access_key: 'usagov_key', affiliate: 'not-usagov', query: 'api'
+        get '/api/v2/search', params: { access_key: 'usagov_key',
+                                        affiliate: 'not-usagov',
+                                        query: 'api' }
         expect(response.status).to eq(400)
 
         hash_response = JSON.parse response.body, symbolize_names: true
@@ -281,7 +305,10 @@ describe '/api/v2/search' do
 
     context 'when limit is invalid' do
       it 'returns errors' do
-        get '/api/v2/search', access_key: 'usagov_key', affiliate: 'usagov', limit: '5000', query: 'api'
+        get '/api/v2/search', params: { access_key: 'usagov_key',
+                                        affiliate: 'usagov',
+                                        limit: '5000',
+                                        query: 'api' }
         expect(response.status).to eq(400)
 
         hash_response = JSON.parse response.body, symbolize_names: true
@@ -291,7 +318,10 @@ describe '/api/v2/search' do
 
     context 'when offset is invalid' do
       it 'returns errors' do
-        get '/api/v2/search', access_key: 'usagov_key', affiliate: 'usagov', offset: '5000', query: 'api'
+        get '/api/v2/search', params: { access_key: 'usagov_key',
+                                        affiliate: 'usagov',
+                                        offset: '5000',
+                                        query: 'api' }
         expect(response.status).to eq(400)
 
         hash_response = JSON.parse response.body, symbolize_names: true
@@ -301,7 +331,9 @@ describe '/api/v2/search' do
 
     context 'when query is blank' do
       it 'returns errors' do
-        get '/api/v2/search', access_key: 'usagov_key', affiliate: 'usagov', query: ''
+        get '/api/v2/search', params: { access_key: 'usagov_key',
+                                        affiliate: 'usagov',
+                                        query: '' }
         expect(response.status).to eq(400)
 
         hash_response = JSON.parse response.body, symbolize_names: true
@@ -325,7 +357,7 @@ describe '/api/v2/search' do
     let(:hash_response) { JSON.parse response.body, symbolize_names: true }
 
     it 'returns the formatted query' do
-      get '/api/v2/search', advanced_search_params
+      get '/api/v2/search', params: advanced_search_params
       expect(hash_response[:query]).to eq 'taxes site:irs.gov "exact phrase" -exclude (alternative) filetype:pdf'
     end
   end

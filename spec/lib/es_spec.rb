@@ -69,32 +69,36 @@ describe ES do
     let(:es_config) { Rails.application.secrets.custom_indices['elasticsearch'] }
 
     describe '.client_reader' do
-      subject(:client_reader) { ES::CustomIndices.client_reader }
-      let(:host) { client_reader.transport.hosts.first }
+      let(:client) { ES::CustomIndices.client_reader }
+      let(:host) { client.transport.hosts.first }
 
       it 'uses the values from the secrets.yml custom_indices[elasticsearch][reader] entry' do
-        expect(host[:host]).to eq(URI(es_config['reader']['host']).host)
+        expect(host[:host]).to eq(URI(es_config['reader']['hosts'].first).host)
         expect(host[:user]).to eq(es_config['reader']['user'])
       end
+
+      it_behaves_like 'an Elasticsearch client'
     end
 
     describe '.client_writers' do
-      subject(:client_writers) { ES::CustomIndices.client_writers }
+      let(:client) { ES::CustomIndices.client_writers.first }
 
       it 'uses the value(s) from the secrets.yml custom_indices[elasticsearch][writers] entry' do
         count = Rails.application.secrets.custom_indices['elasticsearch']['writers'].count
-        expect(client_writers.size).to eq(count)
+        expect(ES::CustomIndices.client_writers.size).to eq(count)
         count.times do |i|
-          host = client_writers.first.transport.hosts[i]
-          expect(host[:host]).to eq(URI(es_config['writers'][i]['host']).host)
+          host = client.transport.hosts[i]
+          expect(host[:host]).to eq(URI(es_config['writers'][i]['hosts'].first).host)
           expect(host[:user]).to eq(es_config['writers'][i]['user'])
         end
       end
 
       it 'freezes the secrets' do
-        client_writers
+        ES::CustomIndices.client_writers
         expect(es_config['writers']).to be_frozen
       end
+
+      it_behaves_like 'an Elasticsearch client'
     end
   end
 end
