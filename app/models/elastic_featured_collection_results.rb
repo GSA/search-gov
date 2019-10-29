@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class ElasticFeaturedCollectionResults < ElasticResults
 
   def highlight_instance(highlight, instance)

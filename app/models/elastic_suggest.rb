@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module ElasticSuggest
   def suggest(json)
     json.suggest do
@@ -12,7 +10,7 @@ module ElasticSuggest
           json.direct_generator do
             json.child! do
               json.field 'bigram'
-              json.prefix_length 1
+              json.prefix_len 1
             end
           end
           json.highlight do

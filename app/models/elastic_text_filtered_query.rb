@@ -1,13 +1,12 @@
-# frozen_string_literal: true
-
 class ElasticTextFilteredQuery < ElasticQuery
+
   def query(json)
     filtered_query(json)
   end
 
   def filtered_query(json)
     json.query do
-      json.bool do
+      json.filtered do
         filtered_query_query(json)
         filtered_query_filter(json)
       end
@@ -15,12 +14,14 @@ class ElasticTextFilteredQuery < ElasticQuery
   end
 
   def filtered_query_query(json)
-    return if @q.blank?
-
-    json.must do
-      json.child! { query_string(json, highlighted_fields, @q, query_string_options) }
-      json.child! { multi_match(json, highlighted_fields, @q, multi_match_options) }
-    end
+    json.query do
+      json.bool do
+        json.must do
+          json.child! { query_string(json, highlighted_fields, @q, query_string_options) }
+          json.child! { multi_match(json, highlighted_fields, @q, multi_match_options) }
+        end
+      end
+    end if @q.present?
   end
 
   def query_string(json, fields, query, options = {})

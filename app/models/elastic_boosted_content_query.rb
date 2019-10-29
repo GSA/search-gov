@@ -1,9 +1,7 @@
-# frozen_string_literal: true
-
 class ElasticBoostedContentQuery < ElasticBestBetQuery
   def initialize(options)
     super(options)
-    @text_fields = %w[title description]
+    self.highlighted_fields = %w(title description)
     @site_limits = options[:site_limits]
   end
 

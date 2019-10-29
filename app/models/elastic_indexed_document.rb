@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class ElasticIndexedDocument
   extend Indexable
 
@@ -8,12 +6,12 @@ class ElasticIndexedDocument
   self.mappings = {
     index_type => ElasticMappings::COMMON.deep_merge(
       properties: {
-        affiliate_id: { type: 'integer' },
-        title: ElasticSettings::TEXT,
-        description: ElasticSettings::TEXT,
-        body: ElasticSettings::TEXT,
+        title: { type: 'string', term_vector: 'with_positions_offsets', copy_to: 'bigram' },
+        description: { type: 'string', term_vector: 'with_positions_offsets', copy_to: 'bigram' },
+        body: { type: 'string', term_vector: 'with_positions_offsets', copy_to: 'bigram' },
         published_at: { type: 'date' },
         popularity: { type: 'integer' },
+        bigram: { type: 'string', analyzer: 'bigram_analyzer'},
         url: ElasticSettings::KEYWORD
       }
     )

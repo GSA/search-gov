@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class ElasticFeaturedCollection
   extend Indexable
   OPTIMIZING_INCLUDES = [:affiliate, :featured_collection_keywords, :featured_collection_links].freeze
@@ -8,8 +6,7 @@ class ElasticFeaturedCollection
 
   self.mappings = {
     index_type => ElasticMappings::BEST_BET.deep_merge(
-      properties: { link_titles: ElasticSettings::TEXT }
-    )
+      properties: { link_titles: { type: 'string', term_vector: 'with_positions_offsets' } })
   }
 
 end
