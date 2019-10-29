@@ -26,5 +26,5 @@ class Sites::QueriesController < Sites::AnalyticsController
       site: @site,
       filter_bots: @current_user.sees_filtered_totals?
     ).to_h
-    end
+  end
 end
