@@ -51,7 +51,8 @@ class Sites::SitesController < Sites::BaseController
       new_site_path,
       flash: {
         success:
-            "Scheduled site '#{@site.display_name}' for deletion. This could take several hours to complete."
+            "Scheduled site '#{@site.display_name}' for deletion.
+              This could take several hours to complete."
       }
     )
   end
