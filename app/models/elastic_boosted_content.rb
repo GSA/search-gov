@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ElasticBoostedContent
   extend Indexable
   OPTIMIZING_INCLUDES = [:affiliate, :boosted_content_keywords].freeze
@@ -7,7 +9,7 @@ class ElasticBoostedContent
   self.mappings = {
     index_type => ElasticMappings::BEST_BET.deep_merge(
       properties: {
-        description: { type: 'string', term_vector: 'with_positions_offsets' },
+        description: ElasticSettings::TEXT,
         url: ElasticSettings::KEYWORD
       }
     )
