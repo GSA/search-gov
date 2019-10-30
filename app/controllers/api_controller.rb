@@ -1,6 +1,6 @@
 class ApiController < ApplicationController
   DEFAULT_API_PER_PAGE = 10.freeze
-  before_filter :load_affiliate
+  before_action :load_affiliate
 
   def search
     @search_options = search_options_from_params.merge(
