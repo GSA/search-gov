@@ -10,11 +10,6 @@ describe OmniauthCallbacksController do
       get :login_dot_gov
     end
 
-    it 'creates a user session' do
-      expect(UserSession).to receive(:create).with(user)
-      get_login_dot_gov
-    end
-
     it 'calls reset_session' do
       expect_any_instance_of(ActionController::Metal).to receive(:reset_session)
       get_login_dot_gov
@@ -25,6 +20,25 @@ describe OmniauthCallbacksController do
 
       it { is_expected.to redirect_to(admin_home_page_path) }
       it { is_expected.to assign_to(:user).with(user) }
+    end
+
+    it 'creates a user session' do
+      expect(UserSession).to receive(:create).with(user).and_call_original
+      get_login_dot_gov
+    end
+
+    context 'securing the session' do
+      let(:session) { instance_double(UserSession) }
+      let(:secure_cookies) { Rails.application.config.ssl_options[:secure_cookies] }
+
+      before do
+        allow(UserSession).to receive(:create).with(user).and_return(session)
+      end
+
+      it 'sets the session security' do
+        expect(session).to receive(:secure=).with(secure_cookies)
+        get_login_dot_gov
+      end
     end
 
     context 'when the user is new' do

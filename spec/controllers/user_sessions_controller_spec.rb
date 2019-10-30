@@ -8,53 +8,20 @@ describe UserSessionsController do
   it { is_expected.to use_before_filter(:reset_session) }
 
   describe '#security_notification' do
-    before { get :security_notification }
+    context 'when a user is not logged in' do
+      before { get :security_notification }
 
-    it { is_expected.to render_template(:security_notification) }
-  end
-
-  describe '#create' do
-    let(:user) { users(:affiliate_manager) }
-    let(:post_create) do
-      post :create,
-           params: {
-             user_session: {
-               email: user.email
-             }
-           }
+      it { is_expected.to render_template(:security_notification) }
     end
 
-    context 'when the user is not approved' do
-      let(:user) { users(:affiliate_manager_with_not_approved_status) }
-      before { post_create }
+    context 'when a user is already logged in' do
+      before { activate_authlogic }
 
-      it { is_expected.to redirect_to(login_path) }
-    end
+      include_context 'approved user logged in'
 
-    context 'when the user session fails to save' do
-      before do
-        post :create,
-             params: {
-               user_session: {
-                 email: 'invalid@fixtures.org'
-               }
-             }
-      end
+      before { get :security_notification }
 
-      it { is_expected.to redirect_to(login_path) }
-    end
-  end
-
-  describe 'do POST on create for developer' do
-    # commented out for now but will refactor later for login_dot_gov
-    xit 'should redirect to affiliate home page' do
-      post :create,
-           params: {
-             user_session: {
-               email: users('developer').email
-             }
-           }
-      expect(response).to redirect_to(developer_redirect_url)
+      it { is_expected.to redirect_to(account_path) }
     end
   end
 end

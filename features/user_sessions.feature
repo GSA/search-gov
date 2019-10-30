@@ -1,7 +1,5 @@
 Feature: User sessions
 
-  # to be updated in SRCH-903 for login.gov
-  @wip
   @javascript
   Scenario: Already logged-in user visits login page
     Given I am logged in with email "affiliate_admin@fixtures.org"
