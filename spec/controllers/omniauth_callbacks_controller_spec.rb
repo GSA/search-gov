@@ -10,16 +10,21 @@ describe OmniauthCallbacksController do
       get :login_dot_gov
     end
 
+    it 'creates a user session' do
+      expect(UserSession).to receive(:create).with(user)
+      get_login_dot_gov
+    end
+
+    it 'calls reset_session' do
+      expect_any_instance_of(ActionController::Metal).to receive(:reset_session)
+      get_login_dot_gov
+    end
+
     context 'when the login is successful' do
       before { get_login_dot_gov }
 
       it { is_expected.to redirect_to(admin_home_page_path) }
       it { is_expected.to assign_to(:user).with(user) }
-    end
-
-    it 'creates a user session' do
-      expect(UserSession).to receive(:create).with(user)
-      get_login_dot_gov
     end
 
     context 'when the user is new' do
