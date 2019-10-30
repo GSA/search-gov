@@ -130,7 +130,7 @@ class ApplicationController < ActionController::Base
                                                  :'query-not',
                                                  :'query-or',
                                                  :'query-quote')
-    query_search_params.to_h.inject({}) do |hash, kv|
+    query_search_params.inject({}) do |hash, kv|
       hash[kv.first.to_s.underscore.to_sym] = sanitize_query kv.last
       hash
     end
