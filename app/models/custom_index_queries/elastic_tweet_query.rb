@@ -1,10 +1,11 @@
-class ElasticTweetQuery < ElasticTextFilteredQuery
+# frozen_string_literal: true
 
+class ElasticTweetQuery < ElasticTextFilteredQuery
   def initialize(options)
     super({ sort: 'published_at:desc' }.merge(options))
     @twitter_profile_ids = options[:twitter_profile_ids]
     @since_ts = options[:since]
-    self.highlighted_fields = %w(tweet_text)
+    @text_fields = ['tweet_text']
   end
 
   def filtered_query_filter(json)
@@ -25,5 +26,4 @@ class ElasticTweetQuery < ElasticTextFilteredQuery
       end
     end
   end
-
 end

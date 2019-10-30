@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ElasticLinkPopularityQuery
   def initialize(link, days_back = 7)
     @link = link
@@ -15,12 +17,12 @@ class ElasticLinkPopularityQuery
               json.must do
                 json.child! do
                   json.terms do
-                    json.set! "params.url", links
+                    json.set! 'params.url', links
                   end
                 end
                 json.child! do
                   json.range do
-                    json.set! "@timestamp" do
+                    json.set! '@timestamp' do
                       json.gt "now-#{@days_back}d/d"
                     end
                   end
@@ -32,5 +34,4 @@ class ElasticLinkPopularityQuery
       end
     end
   end
-
 end

@@ -1,5 +1,5 @@
 class Sites::AutodiscoveriesController < Sites::BaseController
-  before_filter :setup_site
+  before_action :setup_site
 
   def create
     flash = {

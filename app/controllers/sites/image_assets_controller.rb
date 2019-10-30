@@ -1,7 +1,7 @@
 class Sites::ImageAssetsController < Sites::SetupSiteController
   include ::Hintable
 
-  before_filter :load_hints, only: %i(edit)
+  before_action :load_hints, only: %i(edit)
 
   def edit
   end

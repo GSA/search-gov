@@ -1,8 +1,8 @@
 class Sites::SiteDomainsController < Sites::SetupSiteController
   include ::Hintable
 
-  before_filter :setup_domain, only: [:edit, :update, :destroy]
-  before_filter :load_hints, only: %i(edit new)
+  before_action :setup_domain, only: [:edit, :update, :destroy]
+  before_action :load_hints, only: %i(edit new)
 
   def index
     @site_domains = @site.site_domains

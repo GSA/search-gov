@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ElasticIndexedDocumentQuery < ElasticTextFilteredQuery
   include ElasticSuggest
   include ElasticTitleDescriptionBodyHighlightFields
@@ -8,7 +10,7 @@ class ElasticIndexedDocumentQuery < ElasticTextFilteredQuery
     @affiliate_id = options[:affiliate_id]
     @document_collection = options[:document_collection]
     @include_suggestion = options[:include_suggestion]
-    self.highlighted_fields = %w(title description body)
+    @text_fields = %w[title description body]
   end
 
   def body
@@ -31,5 +33,4 @@ class ElasticIndexedDocumentQuery < ElasticTextFilteredQuery
       end
     end
   end
-
 end

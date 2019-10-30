@@ -1,6 +1,6 @@
 class Sites::SiteFeedUrlsController < Sites::SetupSiteController
-  before_filter :setup_site
-  before_filter :setup_site_feed_url
+  before_action :setup_site
+  before_action :setup_site_feed_url
 
   def edit
   end

@@ -1,0 +1,16 @@
+default: &DEFAULT
+  log: false
+  randomize_hosts: true
+  reload_connections: true
+  reload_on_failure: true
+  retry_on_failure: 1
+
+development:
+  <<: *DEFAULT
+  retry_on_failure: false
+
+test:
+  <<: *DEFAULT
+
+production:
+  <<: *DEFAULT

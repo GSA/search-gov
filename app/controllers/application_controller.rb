@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  before_filter :set_default_locale
-  after_filter :set_response_headers
+  before_action :set_default_locale
+  after_action :set_response_headers
   helper :all
   helper_method :current_user_session, :current_user, :permitted_params
   protect_from_forgery with: :exception
@@ -109,7 +109,7 @@ class ApplicationController < ActionController::Base
   end
 
   def permitted_params
-    @permitted_params ||= params.permit *PERMITTED_PARAM_KEYS
+    @permitted_params ||= params.permit(*PERMITTED_PARAM_KEYS).to_h
   end
 
   def search_options_from_params(*param_keys)

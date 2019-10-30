@@ -3334,6 +3334,12 @@ Style/LambdaCall:
   SupportedStyles:
     - call
     - braces
+  Exclude:
+    # Exclude files relying on Jbuilder DSL
+    # https://github.com/rubocop-hq/rubocop/issues/3402
+    - 'app/models/elastic_data/*'
+    - 'app/models/custom_index_queries/*'
+    - 'app/models/logstash_queries/*'
 
 Style/LineEndConcatenation:
   Description: >-
@@ -3354,6 +3360,10 @@ Style/MethodCallWithArgsParentheses:
     - 'spec/**/*'
     - 'Gemfile'
     - 'db/**/*'
+    # Exclude files relying on Jbuilder DSL
+    - 'app/models/elastic_data/*'
+    - 'app/models/custom_index_queries/*'
+    - 'app/models/logstash_queries/*'
 
 Style/MethodCallWithoutArgsParentheses:
   Description: 'Do not use parentheses for method calls with no arguments.'

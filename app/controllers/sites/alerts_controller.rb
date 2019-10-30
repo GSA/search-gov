@@ -1,6 +1,6 @@
 class Sites::AlertsController < Sites::SetupSiteController
-  before_filter :setup_site
-  before_filter :setup_alert
+  before_action :setup_site
+  before_action :setup_alert
 
   def edit
   end
