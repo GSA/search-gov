@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ElasticBlendedQuery < ElasticTextFilterByPublishedAtQuery
   include ElasticSuggest
   include ElasticTitleDescriptionBodyHighlightFields
@@ -7,7 +9,7 @@ class ElasticBlendedQuery < ElasticTextFilterByPublishedAtQuery
     super(options)
     @affiliate_id = options[:affiliate_id]
     @rss_feed_url_ids = options[:rss_feed_url_ids]
-    self.highlighted_fields = %w(title description body)
+    @text_fields = %w[title description body]
   end
 
   def body
@@ -27,13 +29,13 @@ class ElasticBlendedQuery < ElasticTextFilterByPublishedAtQuery
           json.child! do
             json.gauss do
               json.published_at do
-                json.scale "4w"
+                json.scale '28d'
               end
             end
           end
           json.child! do
             json.field_value_factor do
-              json.field "popularity"
+              json.field 'popularity'
             end
           end
         end unless @sort
@@ -56,7 +58,7 @@ class ElasticBlendedQuery < ElasticTextFilterByPublishedAtQuery
       json.bool do
         json.must do
           json.child! { published_at_filter(json) }
-        end if @since_ts or @until_ts
+        end if @since_ts || @until_ts
         json.set! :should do |json|
           json.child! { json.term { json.affiliate_id @affiliate_id } }
           json.child! { json.terms { json.rss_feed_url_id @rss_feed_url_ids } }
@@ -64,5 +66,4 @@ class ElasticBlendedQuery < ElasticTextFilterByPublishedAtQuery
       end
     end
   end
-
 end

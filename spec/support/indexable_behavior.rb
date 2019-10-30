@@ -9,7 +9,7 @@ shared_examples "an indexable" do
   end
 
   context 'when there are multiple clusters' do
-    let(:es1) { Elasticsearch::Client.new(host: 'localhost') }
+    let(:es1) { Elasticsearch::Client.new(host: 'localhost:9256') }
     let(:es2) { Elasticsearch::Client.new(host: '127.0.0.1') }
 
     before do
