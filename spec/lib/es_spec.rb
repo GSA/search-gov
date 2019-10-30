@@ -61,24 +61,31 @@ describe ES do
     let(:es_config) { Rails.application.secrets.custom_indices['elasticsearch'] }
 
     describe '.client_reader' do
+      let(:client) { ES::CustomIndices.client_reader }
       let(:host) { ES::CustomIndices.client_reader.transport.hosts.first }
 
       it 'uses the values from the secrets.yml custom_indices[elasticsearch][reader] entry' do
-        expect(host[:host]).to eq(URI(es_config['reader']['host']).host)
+        expect(host[:host]).to eq(URI(es_config['reader']['hosts'].first).host)
         expect(host[:user]).to eq(es_config['reader']['user'])
       end
+
+      it_behaves_like 'an Elasticsearch client'
     end
 
     describe '.client_writers' do
+      let(:client) { ES::CustomIndices.client_writers.first }
+
       it 'uses the value(s) from the secrets.yml custom_indices[elasticsearch][writers] entry' do
         count = Rails.application.secrets.custom_indices['elasticsearch']['writers'].count
         expect(ES::CustomIndices.client_writers.size).to eq(count)
         count.times do |i|
           host = ES::CustomIndices.client_writers.first.transport.hosts[i]
-          expect(host[:host]).to eq(URI(es_config['writers'][i]['host']).host)
+          expect(host[:host]).to eq(URI(es_config['writers'][i]['hosts'].first).host)
           expect(host[:user]).to eq(es_config['writers'][i]['user'])
         end
       end
+
+      it_behaves_like 'an Elasticsearch client'
     end
   end
 end
