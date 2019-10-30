@@ -71,6 +71,6 @@ class Sites::SitesController < Sites::BaseController
       permit(:display_name,
              :locale,
              :name,
-             { site_domains_attributes: [:domain] })
+             { site_domains_attributes: [:domain] }).to_h
   end
 end

@@ -39,7 +39,7 @@ class Sites::BoostedContentsController < Sites::BestBetsController
         permit(:url, :title, :description, :status,
                :publish_start_on, :publish_end_on,
                :match_keyword_values_only,
-               boosted_content_keywords_attributes: [:id, :value])
+               boosted_content_keywords_attributes: [:id, :value]).to_h
   end
 
 end

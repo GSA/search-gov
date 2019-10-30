@@ -55,6 +55,6 @@ class UsersController < ApplicationController
                                  :organization_name,
                                  :email,
                                  :password,
-                                 :current_password)
+                                 :current_password).to_h
   end
 end

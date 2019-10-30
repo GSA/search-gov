@@ -35,6 +35,6 @@ class Sites::ExcludedUrlsController < Sites::SetupSiteController
   end
 
   def excluded_url_params
-    params.require(:excluded_url).permit(:url)
+    params.require(:excluded_url).permit(:url).to_h
   end
 end
