@@ -1,8 +1,8 @@
 class Sites::SiteDomainsController < Sites::SetupSiteController
   include ::Hintable
 
-  before_filter :setup_domain, only: [:edit, :update, :destroy]
-  before_filter :load_hints, only: %i(edit new)
+  before_action :setup_domain, only: [:edit, :update, :destroy]
+  before_action :load_hints, only: %i(edit new)
 
   def index
     @site_domains = @site.site_domains
@@ -53,7 +53,7 @@ class Sites::SiteDomainsController < Sites::SetupSiteController
   end
 
   def site_domain_params
-    params.require(:site_domain).permit(:domain)
+    params.require(:site_domain).permit(:domain).to_h
   end
 
   def update_site_after_save

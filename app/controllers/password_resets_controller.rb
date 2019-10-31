@@ -1,8 +1,8 @@
 class PasswordResetsController < ApplicationController
-  before_filter :require_no_user
-  before_filter :load_user_using_perishable_token, only: %i[edit update]
-  before_filter :load_user_by_email, only: [:create]
-  before_filter :reject_not_approved_user, only: %i[create edit update]
+  before_action :require_no_user
+  before_action :load_user_using_perishable_token, only: %i[edit update]
+  before_action :load_user_by_email, only: [:create]
+  before_action :reject_not_approved_user, only: %i[create edit update]
 
   def edit
     render
