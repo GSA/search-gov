@@ -1,7 +1,7 @@
 class HelpDocsController < ApplicationController
   respond_to :json
-  before_filter :require_usasearch_url_param
-  before_filter :require_user
+  before_action :require_usasearch_url_param
+  before_action :require_user
 
   def show
     respond_with ({ body: HelpDoc.extract_article(help_docs_params[:url]) })

@@ -61,7 +61,7 @@ module Sites::ScaffoldProfilesController
   end
 
   def create_params
-    @create_params ||= params.require(profile_type).permit(primary_attribute_name)
+    @create_params ||= params.require(profile_type).permit(primary_attribute_name).to_h
   end
 
   def add_profile_to_site
@@ -73,7 +73,7 @@ module Sites::ScaffoldProfilesController
   end
 
   def destroy_params
-    params.permit(:id)
+    params.permit(:id).to_h
   end
 
   def after_profile_deleted

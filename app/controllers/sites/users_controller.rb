@@ -1,7 +1,7 @@
 class Sites::UsersController < Sites::SetupSiteController
   include ::Hintable
 
-  before_filter :load_hints, only: %i(create new)
+  before_action :load_hints, only: %i(create new)
 
   def index
     @users = @site.users
@@ -42,6 +42,6 @@ class Sites::UsersController < Sites::SetupSiteController
   private
 
   def user_params
-    @user_params ||= params.require(:user).permit(:contact_name, :email)
+    @user_params ||= params.require(:user).permit(:contact_name, :email).to_h
   end
 end

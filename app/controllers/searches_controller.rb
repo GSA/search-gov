@@ -2,19 +2,19 @@ class SearchesController < ApplicationController
   include MobileFriendlyController
   has_no_mobile_fu_for :advanced
 
-  skip_before_filter :verify_authenticity_token, :set_default_locale
+  skip_before_action :verify_authenticity_token, :set_default_locale
 
-  before_filter :handle_old_advanced_form, :only => [:index]
-  before_filter :set_affiliate, :set_locale_based_on_affiliate_locale
+  before_action :handle_old_advanced_form, :only => [:index]
+  before_action :set_affiliate, :set_locale_based_on_affiliate_locale
   #eventually all the searches should be redirected, but currently we're doing it as-needed
   #to ensure that the correct params are being passed, etc.
-  before_filter :redirect_to_search_consumer, only: [:index, :news, :docs]
-  before_filter :set_header_footer_fields
-  before_filter :set_web_search_options, :only => [:advanced, :index]
-  before_filter :set_docs_search_options, :only => :docs
-  before_filter :set_news_search_options, :only => [:news, :video_news]
-  before_filter :force_request_format, :only => [:advanced, :docs, :index, :news]
-  after_filter :log_search_impression, :only => [:index, :news, :docs, :video_news]
+  before_action :redirect_to_search_consumer, only: [:index, :news, :docs]
+  before_action :set_header_footer_fields
+  before_action :set_web_search_options, :only => [:advanced, :index]
+  before_action :set_docs_search_options, :only => :docs
+  before_action :set_news_search_options, :only => [:news, :video_news]
+  before_action :force_request_format, :only => [:advanced, :docs, :index, :news]
+  after_action :log_search_impression, :only => [:index, :news, :docs, :video_news]
   include QueryRoutableController
 
   def index
