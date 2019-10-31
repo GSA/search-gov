@@ -141,7 +141,7 @@ module Api
 
       def obfuscate_sc_access_key_error
         @search_options.errors.delete :sc_access_key
-        @search_options.errors[:hidden_key] = 'is required'
+        @search_options.errors.add(:hidden_key, "is required")
       end
 
       def log_search_impression

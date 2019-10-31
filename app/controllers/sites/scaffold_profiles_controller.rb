@@ -52,7 +52,7 @@ module Sites::ScaffoldProfilesController
 
   def new_profile_with_not_found_error
     ar = profile_type_klass.new create_params
-    ar.errors[primary_attribute_name] = 'is not found'
+    ar.errors.add(primary_attribute_name, 'is not found')
     ar
   end
 
