@@ -66,8 +66,7 @@ describe OdieSearch do
     end
 
     context 'when result body has the hit highlight, not the description' do
-
-      it 'should return the body hit as the description' do
+      it 'returns the body hit as the description' do
         search = OdieSearch.new(query: "supreme", affiliate: affiliate)
         search.run
         expect(search.results.first['content']).to match(/\xEE\x80\x80supreme\xEE\x80\x81/)
