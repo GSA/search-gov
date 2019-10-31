@@ -1,7 +1,7 @@
 class HealthChecksController < ApplicationController
   def new
     check_database
-    render text: 'OK'
+    render plain: 'OK'
   end
 
   def check_database
