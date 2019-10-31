@@ -4,12 +4,15 @@ class OmniauthCallbacksController < ApplicationController
   def login_dot_gov
     auth = request.env['omniauth.auth']
     @user = User.from_omniauth(auth)
-    return unless @user.persisted?
 
-    reset_session
-    set_user_session
+    if @user.persisted? && @user.approval_status != 'not_approved'
+      #reset_session
+      set_user_session
 
-    redirect_to(admin_home_page_path)
+      redirect_to(admin_home_page_path)
+    else
+      redirect_to('https://search.gov/access-denied')
+    end
   end
 
   private

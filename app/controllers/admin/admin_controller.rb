@@ -11,9 +11,6 @@ class Admin::AdminController < ApplicationController
 
   def require_affiliate_admin
     return false if require_user == false
-    unless current_user.is_affiliate_admin?
-      redirect_to account_path
-      return false
-    end
+    redirect_to('https://search.gov/access-denied') unless current_user.is_affiliate_admin?
   end
 end
