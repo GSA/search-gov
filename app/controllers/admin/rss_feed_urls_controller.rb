@@ -24,10 +24,10 @@ class Admin::RssFeedUrlsController < Admin::AdminController
     rss_feed_url = RssFeedUrl.find params[:id]
     if params[:all] == 'true'
       rss_feed_url.enqueue_destroy_news_items(:high)
-      render text: "You have submitted a request to delete #{rss_feed_url.url} news items."
+      render plain: "You have submitted a request to delete #{rss_feed_url.url} news items."
     else
       rss_feed_url.enqueue_destroy_news_items_with_404(:high)
-      render text: "You have submitted a request to delete #{rss_feed_url.url} news items with status code 404."
+      render plain: "You have submitted a request to delete #{rss_feed_url.url} news items with status code 404."
     end
   end
 
