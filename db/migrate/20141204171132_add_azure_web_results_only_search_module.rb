@@ -4,6 +4,6 @@ class AddAzureWebResultsOnlySearchModule < ActiveRecord::Migration
   end
 
   def down
-    SearchModule.delete_all("tag = 'AWEB'")
+    SearchModule.where("tag = 'AWEB'").delete_all
   end
 end

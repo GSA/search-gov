@@ -4,6 +4,6 @@ class AddNimagSearchModule < ActiveRecord::Migration
   end
 
   def down
-    SearchModule.delete_all("tag = 'NIMAG'")
+    SearchModule.where("tag = 'NIMAG'").delete_all
   end
 end
