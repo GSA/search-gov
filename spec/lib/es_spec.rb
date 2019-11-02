@@ -36,24 +36,27 @@ describe ES do
     let(:es_config) { Rails.application.secrets.analytics['elasticsearch'] }
 
     describe '.client_reader' do
-      subject(:client_reader) { ES::ELK.client_reader }
-      let(:host) { client_reader.transport.hosts.first }
+      subject(:client) { ES::ELK.client_reader }
+      let(:host) { client.transport.hosts.first }
 
       it 'uses the values from the secrets.yml analytics[elasticsearch][reader] entry' do
-        expect(host[:host]).to eq(URI(es_config['reader']['host']).host)
+        expect(host[:host]).to eq(URI(es_config['reader']['hosts'].first).host)
         expect(host[:user]).to eq(es_config['reader']['user'])
       end
+
+      it_behaves_like 'an Elasticsearch client'
     end
 
     describe '.client_writers' do
       subject(:client_writers) { ES::ELK.client_writers }
+      let(:client) { client_writers.first }
 
       it 'uses the value(s) from the secrets.yml analytics[elasticsearch][writers] entry' do
         count = Rails.application.secrets.analytics['elasticsearch']['writers'].count
-        expect(ES::ELK.client_writers.size).to eq(count)
+        expect(client_writers.size).to eq(count)
         count.times do |i|
-          host = ES::ELK.client_writers.first.transport.hosts[i]
-          expect(host[:host]).to eq(URI(es_config['writers'][i]['host']).host)
+          host = client.transport.hosts[i]
+          expect(host[:host]).to eq(URI(es_config['writers'][i]['hosts'].first).host)
           expect(host[:user]).to eq(es_config['writers'][i]['user'])
         end
       end
@@ -62,6 +65,8 @@ describe ES do
         client_writers
         expect(es_config['writers']).to be_frozen
       end
+
+      it_behaves_like 'an Elasticsearch client'
     end
   end
 
