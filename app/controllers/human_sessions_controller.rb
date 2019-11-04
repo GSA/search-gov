@@ -2,9 +2,9 @@ class HumanSessionsController < ApplicationController
   BOT_OR_NOT_SECRET = File.read("#{Rails.root}/config/bot_or_not_secret.txt")
 
   layout false
-  before_filter :set_affiliate, only: :new
-  before_filter :set_locale_based_on_affiliate_locale, only: :new
-  skip_before_filter :verify_authenticity_token
+  before_action :set_affiliate, only: :new
+  before_action :set_locale_based_on_affiliate_locale, only: :new
+  skip_before_action :verify_authenticity_token
 
   def new
     record_captcha_activity('challenge')

@@ -1,8 +1,8 @@
 class Sites::NoResultsPagesController < Sites::SetupSiteController
   include ::Hintable
 
-  before_filter :load_hints, only: %i(edit)
-  before_filter :build_no_results_pages_alt_links, only: [:edit, :new_no_results_pages_alt_link]
+  before_action :load_hints, only: %i[edit]
+  before_action :build_no_results_pages_alt_links, only: [:edit, :new_no_results_pages_alt_link]
 
   def edit
   end
@@ -26,16 +26,13 @@ class Sites::NoResultsPagesController < Sites::SetupSiteController
   private
 
   def site_params
-    @site_params = params.require(:no_results_pages).permit(
-        :additional_guidance_text,
-        { managed_no_results_pages_alt_links_attributes: %i(position title url) })
-    @site_params
+    params.require(:no_results_pages).permit(
+          :additional_guidance_text,
+          managed_no_results_pages_alt_links_attributes: %i[position title url]
+        ).to_h
   end
 
   def build_no_results_pages_alt_links
     @site.managed_no_results_pages_alt_links = [{}] if @site.managed_no_results_pages_alt_links.blank?
   end
-
-
-
 end
