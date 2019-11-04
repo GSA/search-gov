@@ -10,9 +10,9 @@ describe Admin::AffiliatesController do
       UserSession.create(users('non_affiliate_admin'))
     end
 
-    it 'should redirect to the usasearch home page' do
+    it 'redirects to the usasearch home page' do
       get :index
-      expect(response).to redirect_to('https://search.gov/access-denied')
+      expect(response).to redirect_to(account_path)
     end
   end
 
