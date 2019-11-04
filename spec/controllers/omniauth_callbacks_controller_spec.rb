@@ -73,7 +73,7 @@ describe OmniauthCallbacksController do
         allow_any_instance_of(User).to receive(:persisted?).and_return(false)
       end
 
-      it 'raises an error' do
+      it 'redirects to access-denied page' do
         expect(get_login_dot_gov).to redirect_to('https://search.gov/access-denied')
       end
     end
@@ -84,7 +84,7 @@ describe OmniauthCallbacksController do
       let(:auth) { mock_user_auth(user.email, email) }
 
       it 'redirects to access-denied page' do
-        expect redirect_to('https://search.gov/access-denied')
+        expect(get_login_dot_gov).to redirect_to('https://search.gov/access-denied')
       end
     end
   end
