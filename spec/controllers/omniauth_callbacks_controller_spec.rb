@@ -73,8 +73,17 @@ describe OmniauthCallbacksController do
         allow_any_instance_of(User).to receive(:persisted?).and_return(false)
       end
 
-      it 'raises an error' do
-        expect { get_login_dot_gov }.to raise_error(ActionController::UnknownFormat)
+      it 'redirects to access-denied page' do
+        expect(get_login_dot_gov).to redirect_to('https://search.gov/access-denied')
+      end
+    end
+
+    context 'when a user is not approved' do
+      let(:user) { users(:affiliate_manager_with_not_approved_status) }
+      let(:auth) { mock_user_auth(user.email,'notapproved12345') }
+
+      it 'redirects to access-denied page' do
+        expect(get_login_dot_gov).to redirect_to('https://search.gov/access-denied')
       end
     end
   end
