@@ -2,6 +2,7 @@ class EmailTemplate < ApplicationRecord
   validates :name, :subject, :body, presence: true
   validates :name, uniqueness: { case_sensitive: false }
 
+  # rubocop:disable LineLength
   DEFAULT_SUBJECT_HASH = {
     affiliate_header_footer_change: "[Search.gov] Your header and footer for <%= @affiliate.display_name %> changed",
     affiliate_monthly_report: "[Search.gov] Monthly Report for <%= Date::MONTHNAMES[@user_monthly_report.report_date.month.to_i] %> <%= @user_monthly_report.report_date.year %>",
@@ -23,7 +24,7 @@ class EmailTemplate < ApplicationRecord
     low_query_ctr_watcher: '[Search.gov] {{ctx.metadata.alert_name}} (Custom Alert)',
     no_results_watcher: '[Search.gov] {{ctx.metadata.alert_name}} (Custom Alert)'
   }.freeze
-
+  # rubocop:enable LineLength
   class << self
 
     def load_default_templates(template_list = [])
