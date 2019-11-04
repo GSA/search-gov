@@ -74,7 +74,7 @@ describe OmniauthCallbacksController do
       end
 
       it 'raises an error' do
-        expect { get_login_dot_gov }.to raise_error(ActionController::UnknownFormat)
+        expect(get_login_dot_gov).to redirect_to('https://search.gov/access-denied')
       end
     end
   end
