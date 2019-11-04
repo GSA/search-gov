@@ -4,6 +4,6 @@ class ReSeedDailySnapshotEmailTemplate < ActiveRecord::Migration
   end
 
   def self.down
-    EmailTemplate.destroy_all(:name => 'daily_snapshot')
+    EmailTemplate.where(name: 'daily_snapshot').destroy_all
   end
 end

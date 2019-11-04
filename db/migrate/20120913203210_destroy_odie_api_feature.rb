@@ -3,10 +3,10 @@ class DestroyOdieApiFeature < ActiveRecord::Migration
   end
 
   def self.up
-    Feature.destroy_all(:internal_name => 'odie_api')
+    Feature.where(internal_name: 'odie_api').destroy_all
   end
 
   def self.down
-    Feature.create(:internal_name => "odie_api", :display_name => "Odie API Search")
+    Feature.create(internal_name: "odie_api", display_name: "Odie API Search")
   end
 end

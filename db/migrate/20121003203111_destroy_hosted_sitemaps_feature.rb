@@ -1,6 +1,6 @@
 class DestroyHostedSitemapsFeature < ActiveRecord::Migration
   def up
-    Feature.destroy_all(:internal_name => 'hosted_sitemaps')
+    Feature.where(internal_name: 'hosted_sitemaps').destroy_all
   end
 
   def down

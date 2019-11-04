@@ -21,7 +21,7 @@ class MedTopic < ApplicationRecord
     staging_medline_xml_path = "#{xml_file_path}-staging"
     medline_xml_url = "#{MEDLINE_BASE_VOCAB_URL}#{xml_file_name}"
 
-    File.open(staging_medline_xml_path, 'w+', :encoding => Encoding::BINARY) do |staging_file|
+    File.open(staging_medline_xml_path, 'w+', encoding: Encoding::BINARY) do |staging_file|
       Net::HTTP.get_response(URI.parse(medline_xml_url)) do |response|
         response.read_body do |fragment|
           staging_file.write(fragment)
@@ -40,9 +40,9 @@ class MedTopic < ApplicationRecord
   def self.medline_publish_date(date)
     case date.wday
     when 0 then
-      date.advance(:days => -1)
+      date.advance(days: -1)
     when 1 then
-      date.advance(:days => -2)
+      date.advance(days: -2)
     else
       date
     end
@@ -65,13 +65,13 @@ class MedTopic < ApplicationRecord
           updated_topic_ids << topic.id
         end
         obsolete_topic_ids = existing_topic_ids - updated_topic_ids
-        MedTopic.destroy_all(:id => obsolete_topic_ids)
+        MedTopic.where(id: obsolete_topic_ids).destroy_all
       end
     end
   end
 
   def self.process_health_topic(element)
-    topic = MedTopic.where(:medline_tid => element.attr(:id)).first_or_initialize
+    topic = MedTopic.where(medline_tid: element.attr(:id)).first_or_initialize
     topic.medline_title = element.attr(:title).to_s.strip
     topic.medline_url = element.attr(:url).to_s.strip
     topic.locale = case element.attr(:language).to_s.strip
@@ -83,9 +83,9 @@ class MedTopic < ApplicationRecord
     synonyms = []
     element.xpath('./also-called').each do |also_called|
       if topic.new_record?
-        topic.synonyms.build(:medline_title => also_called.inner_text)
+        topic.synonyms.build(medline_title: also_called.inner_text)
       else
-        synonyms << topic.synonyms.where(:medline_title => also_called.inner_text).first_or_create!
+        synonyms << topic.synonyms.where(medline_title: also_called.inner_text).first_or_create!
       end
     end
     topic.synonyms = synonyms unless topic.new_record?
@@ -96,12 +96,12 @@ class MedTopic < ApplicationRecord
       title = rt.inner_text.to_s.strip
       url = rt.attr(:url).to_s.strip
       if topic.new_record?
-        topic.med_related_topics.build(:related_medline_tid => related_medline_tid,
-                                       :title => title,
-                                       :url => url)
+        topic.med_related_topics.build(related_medline_tid: related_medline_tid,
+                                       title: title,
+                                       url: url)
       else
         related_topic = topic.med_related_topics.
-            where(:related_medline_tid => related_medline_tid).
+            where(related_medline_tid: related_medline_tid).
             first_or_initialize
         related_topic.title = title
         related_topic.url = url
@@ -117,9 +117,9 @@ class MedTopic < ApplicationRecord
       title = sanitize_clinical_trial_title(site_element.attr(:title))
       url = site_element.attr(:url).to_s.strip
       if topic.new_record?
-        topic.med_sites.build(:title => title, :url => url)
+        topic.med_sites.build(title: title, url: url)
       else
-        site = topic.med_sites.where(:title => title, :url => url).first_or_create!
+        site = topic.med_sites.where(title: title, url: url).first_or_create!
         sites << site
       end
     end
@@ -131,9 +131,9 @@ class MedTopic < ApplicationRecord
 
   def self.search_for(title, locale = 'en')
     stripped_title = title.to_s.strip
-    matched_topic = where(:medline_title => stripped_title, :locale => locale).first
+    matched_topic = where(medline_title: stripped_title, locale: locale).first
     unless matched_topic
-      matched_synonym = MedSynonym.where(:medline_title => stripped_title).find do |synonym|
+      matched_synonym = MedSynonym.where(medline_title: stripped_title).find do |synonym|
         synonym.topic.locale == locale
       end
       matched_topic = matched_synonym.topic if matched_synonym

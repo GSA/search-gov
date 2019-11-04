@@ -4,6 +4,6 @@ class SeedUpdateExternalTrackingCodeEmailTemplate < ActiveRecord::Migration
   end
 
   def self.down
-    EmailTemplate.destroy_all(:name => 'update_external_tracking_code')
+    EmailTemplate.where(name: 'update_external_tracking_code').destroy_all
   end
 end

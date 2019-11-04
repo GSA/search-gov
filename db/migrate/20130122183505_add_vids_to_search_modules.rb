@@ -4,6 +4,6 @@ class AddVidsToSearchModules < ActiveRecord::Migration
   end
 
   def down
-    SearchModule.destroy_all(:tag => 'VIDS')
+    SearchModule.where(tag: 'VIDS').destroy_all
   end
 end

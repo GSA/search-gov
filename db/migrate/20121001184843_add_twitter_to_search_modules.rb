@@ -4,6 +4,6 @@ class AddTwitterToSearchModules < ActiveRecord::Migration
   end
 
   def down
-    SearchModule.destroy_all(:tag => 'TWEET')
+    SearchModule.where(tag: 'TWEET').destroy_all
   end
 end

@@ -4,6 +4,6 @@ class SeedFilteredPopularTermsEmailTemplate < ActiveRecord::Migration
   end
 
   def self.down
-    EmailTemplate.destroy_all(:name => 'filtered_popular_terms_report')
+    EmailTemplate.where(name: 'filtered_popular_terms_report').destroy_all
   end
 end

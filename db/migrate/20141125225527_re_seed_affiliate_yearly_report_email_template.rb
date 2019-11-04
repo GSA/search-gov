@@ -4,6 +4,6 @@ class ReSeedAffiliateYearlyReportEmailTemplate < ActiveRecord::Migration
   end
 
   def self.down
-    EmailTemplate.destroy_all(:name => 'affiliate_yearly_report')
+    EmailTemplate.where(name: 'affiliate_yearly_report').destroy_all
   end
 end

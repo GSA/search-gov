@@ -4,6 +4,6 @@ class SeedPublicKeyUploadNotificationTemplate < ActiveRecord::Migration
   end
 
   def self.down
-    EmailTemplate.destroy_all(:name => 'public_key_upload_notification')
+    EmailTemplate.where(name: 'public_key_upload_notification').destroy_all
   end
 end
