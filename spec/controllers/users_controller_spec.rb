@@ -13,10 +13,8 @@ describe UsersController do
 
   describe '#create' do
     it do
-      # to avoid depreication warning had to put params there twice
-      # https://github.com/thoughtbot/shoulda-matchers/issues/867
       is_expected.to permit(*permitted_params).
-        for(:create, params: { params: { user: user_params } })
+        for(:create, params: { user: user_params })
     end
 
     context 'when the User#save was successful and User has government affiliated email' do
@@ -111,10 +109,8 @@ describe UsersController do
       include_context 'approved user logged in'
 
       it do
-      # to avoid depreication warning had to put params there twice
-      # https://github.com/thoughtbot/shoulda-matchers/issues/867
       is_expected.to permit(*permitted_params).
-        for(:update, params: { params: { user: update_params } })
+        for(:update, params: { user: update_params })
       end
 
       context 'when the User#update_attributes was successfully' do

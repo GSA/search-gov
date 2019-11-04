@@ -5,7 +5,7 @@ require 'spec_helper'
 describe UserSessionsController do
   fixtures :users
 
-  it { is_expected.to use_before_filter(:reset_session) }
+  it { is_expected.to use_before_action(:reset_session) }
 
   describe '#security_notification' do
     context 'when a user is not logged in' do

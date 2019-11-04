@@ -3,10 +3,10 @@ module Api
     class SearchesController < ApplicationController
       respond_to :json
 
-      skip_before_filter :set_default_locale
-      before_filter :validate_search_options
-      before_filter :handle_query_routing
-      after_filter :log_search_impression
+      skip_before_action :set_default_locale
+      before_action :validate_search_options
+      before_action :handle_query_routing
+      after_action :log_search_impression
 
       def blended
         @search = ApiBlendedSearch.new @search_options.attributes
@@ -111,7 +111,7 @@ module Api
                                          :query_or,
                                          :filetype,
                                          :filter
-                                        )
+                                       ).to_h
 
       end
 

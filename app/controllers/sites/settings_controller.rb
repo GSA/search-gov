@@ -14,6 +14,6 @@ class Sites::SettingsController < Sites::SetupSiteController
   private
 
   def site_params
-    params.require(:site).permit(:display_name, :website)
+    params.require(:site).permit(:display_name, :website).to_h
   end
 end

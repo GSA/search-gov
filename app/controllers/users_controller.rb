@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   layout 'sites'
-  before_filter :require_no_user, :only => [:new, :create]
-  before_filter :require_user, :only => [:show, :edit, :update]
+  before_action :require_no_user, :only => [:new, :create]
+  before_action :require_user, :only => [:show, :edit, :update]
 
   def new
     @user = User.new
@@ -61,6 +61,6 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:contact_name,
                                  :organization_name,
-                                 :email)
+                                 :email).to_h
   end
 end

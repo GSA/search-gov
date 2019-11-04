@@ -1,6 +1,6 @@
 class Sites::AlertsController < Sites::SetupSiteController
-  before_filter :setup_site
-  before_filter :setup_alert
+  before_action :setup_site
+  before_action :setup_alert
 
   def edit
   end
@@ -24,6 +24,6 @@ class Sites::AlertsController < Sites::SetupSiteController
   end
 
   def site_alert_params
-    @site_alert_params ||= params.require(:alert).permit(:text, :status, :title)
+    @site_alert_params ||= params.require(:alert).permit(:text, :status, :title).to_h
   end
 end

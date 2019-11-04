@@ -29,6 +29,6 @@ class Sites::FlickrProfilesController < Sites::SetupSiteController
   private
 
   def flickr_profile_params
-    @flickr_profile_params ||= params.require(:flickr_profile).permit(:url)
+    @flickr_profile_params ||= params.require(:flickr_profile).permit(:url).to_h
   end
 end
