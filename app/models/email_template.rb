@@ -1,6 +1,6 @@
 class EmailTemplate < ApplicationRecord
-  validates :name, :subject, :body, presence: true
-  validates :name, uniqueness: { case_sensitive: false }
+  validates_presence_of :name, :subject, :body
+  validates_uniqueness_of :name, case_sensitive: false
 
   DEFAULT_SUBJECT_HASH = {
       affiliate_header_footer_change: "[Search.gov] Your header and footer for <%= @affiliate.display_name %> changed",
@@ -27,18 +27,13 @@ class EmailTemplate < ApplicationRecord
   class << self
 
     def load_default_templates(template_list = [])
-      emailer_directory = Dir.glob(Rails.root.to_s + '/db/email_templates/*')
+      emailer_directory = Dir.glob(Rails.root.to_s + "/db/email_templates/*")
       emailer_directory.each do |email_file|
-        name = email_file.split('/').last.split('.').first
-        next if template_list.any? && !template_list.include?(name)
-
+        name = email_file.split("/").last.split(".").first
+        next if template_list.any? and !template_list.include?(name)
         EmailTemplate.where(['name=?', name]).delete_all
         body = File.read(email_file)
-        EmailTemplate.create!(
-          name: name,
-          subject: DEFAULT_SUBJECT_HASH[name.to_sym],
-          body: body
-        )
+        EmailTemplate.create!(name: name, subject: DEFAULT_SUBJECT_HASH[name.to_sym], body: body)
       end
     end
   end
