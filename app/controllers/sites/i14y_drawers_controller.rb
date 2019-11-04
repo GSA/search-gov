@@ -1,8 +1,8 @@
 class Sites::I14yDrawersController < Sites::SetupSiteController
   include ::Hintable
 
-  before_filter :setup_i14y_drawer, only: [:edit, :update, :destroy, :show]
-  before_filter :load_hints, only: %i(new)
+  before_action :setup_i14y_drawer, only: [:edit, :update, :destroy, :show]
+  before_action :load_hints, only: %i(new)
 
   def index
     @i14y_drawers = @site.i14y_drawers

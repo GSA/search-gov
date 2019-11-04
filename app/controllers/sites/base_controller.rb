@@ -2,8 +2,8 @@ class Sites::BaseController < ApplicationController
   newrelic_ignore
   layout 'sites'
 
-  before_filter :require_login
-  before_filter :require_approved_user
+  before_action :require_login
+  before_action :require_approved_user
 
   protected
 

@@ -6,12 +6,12 @@ class TwitterProfile < ApplicationRecord
   validates_presence_of :name, :profile_image_url, :screen_name, :twitter_id
   validates_uniqueness_of :twitter_id
   before_validation :normalize_screen_name, if: :screen_name?
-  scope :active, -> { joins(:affiliate_twitter_settings).uniq }
+  scope :active, -> { joins(:affiliate_twitter_settings).distinct }
   scope :show_lists_enabled, -> {
     active.
       where('affiliate_twitter_settings.show_lists = 1').
       order('twitter_profiles.updated_at asc, twitter_profiles.id asc').
-      uniq
+      distinct
   }
 
   def link_to_profile
@@ -19,7 +19,7 @@ class TwitterProfile < ApplicationRecord
   end
 
   def self.active_twitter_ids
-    active.select(:twitter_id).uniq.map(&:twitter_id).sort
+    active.pluck(:twitter_id).uniq.sort
   end
 
   private
