@@ -5,7 +5,7 @@ class AddAzureCompositeSearchModules < ActiveRecord::Migration
   end
 
   def down
-    SearchModule.delete_all("tag = 'AZCI'")
-    SearchModule.delete_all("tag = 'AZCW'")
+    SearchModule.where("tag = 'AZCI'").delete_all
+    SearchModule.where("tag = 'AZCW'").delete_all
   end
 end
