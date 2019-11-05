@@ -8,12 +8,17 @@ class Admin::RssFeedUrlsController < Admin::AdminController
     config.show.columns = [:id, :language, :last_crawl_status, :last_crawled_at, :created_at, :updated_at]
     config.export.columns.exclude(:rss_feeds)
     config.action_links.add('news_items', label: 'news items',
-                            type: :member, page: true)
+                                          type: :member, page: true)
     config.action_links.add('destroy_news_items', label: 'Delete news items with 404',
-                            type: :member, position: :after)
-    config.action_links.add('destroy_news_items', label: 'Delete all news items',
-                            type: :member, position: :after, parameters: { all: 'true' },
-                            confirm: 'Are you sure you want to delete all news items?')
+                                                  type: :member, position: :after)
+    config.action_links.add(
+      'destroy_news_items',
+      label: 'Delete all news items',
+      type: :member,
+      position: :after,
+      parameters: { all: 'true' },
+      confirm: 'Are you sure you want to delete all news items?'
+    )
   end
 
   def conditions_for_collection
