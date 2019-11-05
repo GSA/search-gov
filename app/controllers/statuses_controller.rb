@@ -2,7 +2,7 @@ class StatusesController < ApplicationController
   respond_to :text
 
   def outbound_rate_limit
-    @status = OutboundRateLimitStatus.find_by(name: params[:name])
+    @status = OutboundRateLimitStatus.find_by_name(params[:name])
     respond_with(@status) { |format| format.text { render plain: @status } }
   end
 
