@@ -1,16 +1,6 @@
 module AnalyticsDSL
-  def filter(json)
-    json.query do
-      json.filtered do
-        json.filter do
-          yield json
-        end
-      end
-    end
-  end
-
   def filter_booleans(json)
-    filter(json) do |json|
+    json.query do
       json.bool do
         booleans(json)
       end
