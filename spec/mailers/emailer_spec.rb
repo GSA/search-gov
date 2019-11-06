@@ -116,8 +116,7 @@ describe Emailer do
       it { is_expected.not_to have_body_text /This user signed up as an affiliate/ }
     end
 
-    # login.gov - commented out till SRCH-891
-    pending 'user got invited by another customer' do
+    context 'user got invited by another customer' do
       let(:user) { users(:affiliate_added_by_another_affiliate_with_pending_email_verification_status) }
 
       before do

@@ -430,47 +430,55 @@ describe User do
     end
   end
 
-  # login.gov - commented out till SRCH-891.
-  pending "#new_invited_by_affiliate" do
+  describe '#new_invited_by_affiliate' do
     let(:inviter) { users(:affiliate_manager) }
     let(:affiliate) { affiliates(:basic_affiliate) }
 
-    context "when contact_name and email are provided" do
+    context 'when contact_name and email are provided' do
 
-      it "should initialize new user with assign affiliate, contact_name, and email" do
-        new_user = User.new_invited_by_affiliate(inviter, affiliate, { :contact_name => 'New User Name', :email => 'newuser@approvedagency.com' })
+      it 'initializes new user with assign affiliate, contact_name, and email' do
+        new_user = User.new_invited_by_affiliate(inviter,
+                                                 affiliate,
+                                                 { contact_name: 'New User Name',
+                                                   email: 'newuser@approvedagency.com' })
         new_user.save!
         expect(new_user.affiliates.first).to eq(affiliate)
         expect(new_user.contact_name).to eq('New User Name')
         expect(new_user.email).to eq('newuser@approvedagency.com')
         expect(new_user.is_affiliate?).to be true
         expect(new_user.requires_manual_approval).to be false
-        expect(new_user.is_pending_email_verification?).to be true
+        expect(new_user.is_approved?).to be true
         expect(new_user.welcome_email_sent).to be false
         expect(affiliate.users).to include(new_user)
       end
 
-      it "should receive welcome new user added by affiliate email verification" do
+      it 'should receive welcome new user added by affiliate email verification' do
         expect(Emailer).to receive(:welcome_to_new_user_added_by_affiliate).and_return @emailer
         expect(Emailer).to_not receive(:new_user_email_verification)
-        new_user = User.new_invited_by_affiliate(inviter, affiliate, { :contact_name => 'New User Name', :email => 'newuser@approvedagency.com' })
+        new_user = User.new_invited_by_affiliate(inviter,
+                                                 affiliate,
+                                                 { contact_name: 'New User Name',
+                                                   email: 'newuser@approvedagency.com' })
         new_user.save!
         expect(new_user.email_verification_token).not_to be_blank
       end
     end
   end
 
-  describe "#complete_registration" do
+  describe '#complete_registration' do
     let(:inviter) { users(:affiliate_manager) }
     let(:affiliate) { affiliates(:basic_affiliate) }
 
     before do
-      @user = User.new_invited_by_affiliate(inviter, affiliate, { :contact_name => 'New User Name', :email => 'newuser@approvedagency.com' })
+      @user = User.new_invited_by_affiliate(inviter,
+                                            affiliate,
+                                            { contact_name: 'New User Name',
+                                              email: 'newuser@approvedagency.com' })
       @user.save!
     end
 
-    context "when executed" do
-      let(:user) { user = User.find @user.id }
+    context 'when executed' do
+      let(:user) { User.find @user.id }
 
       before do
         expect(user).to receive(:update)
@@ -479,9 +487,6 @@ describe User do
       end
 
       it { expect(user).to be_is_approved }
-      it "should set email_verification_token to nil" do
-        expect(user.email_verification_token).to be_nil
-      end
     end
   end
 

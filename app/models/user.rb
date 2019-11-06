@@ -18,6 +18,8 @@ class User < ApplicationRecord
   before_validation :set_initial_approval_status, on: :create
   after_validation :set_default_flags, on: :create
 
+  after_create :deliver_email_verification
+
   before_update :detect_deliver_welcome_email
   after_create :ping_admin
   after_update :send_welcome_to_new_user_email, if: :deliver_welcome_email_on_update
@@ -92,7 +94,6 @@ class User < ApplicationRecord
 
   def self.new_invited_by_affiliate(inviter, affiliate, attributes)
     new_user = User.new(attributes)
-    new_user.password = SecureRandom.hex(10) + 'MLPFTW2016!!!'
     new_user.inviter = inviter
     new_user.invited = true
     new_user.affiliates << affiliate
