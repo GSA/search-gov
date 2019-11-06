@@ -165,7 +165,7 @@ describe Emailer do
 
     it { should deliver_to("invitee@agency.com") }
     it { should have_subject(/\[Search.gov\] Welcome to Search.gov/) }
-    it { should have_body_text(/https:\/\/localhost:3000\/login/) }
+    it { should have_body_text(/https:\/\/localhost:3000\/sites/) }
   end
 
   describe '#daily_snapshot' do

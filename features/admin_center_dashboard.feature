@@ -164,12 +164,8 @@ Feature: Dashboard
     Then "jane@admin.org" should receive an email
 
     When I open the email
+    Then show me the page
     And I click the complete registration link in the email
-    Then the "Your full name" field should contain "Jane Admin"
-    Then the "Email" field should contain "jane@admin.org"
-    When I fill in the following:
-      | Federal government agency | My Agency   |
-    And I press "Complete the sign up process"
     Then I should see "Site Overview"
 
   @javascript
