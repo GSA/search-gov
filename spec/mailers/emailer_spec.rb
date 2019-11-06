@@ -155,8 +155,7 @@ describe Emailer do
     let(:user) do
       mock_model(User,
            :email => "invitee@agency.com",
-           :contact_name => 'Invitee Joe',
-           :email_verification_token => 'some_special_token')
+           :contact_name => 'Invitee Joe')
     end
 
     let(:current_user) { mock_model(User, :email => "inviter@agency.com", :contact_name => 'Inviter Jane') }
@@ -166,7 +165,7 @@ describe Emailer do
 
     it { should deliver_to("invitee@agency.com") }
     it { should have_subject(/\[Search.gov\] Welcome to Search.gov/) }
-    it { should have_body_text(/https:\/\/localhost:3000\/complete_registration\/some_special_token\/edit/) }
+    it { should have_body_text(/https:\/\/localhost:3000\/login/) }
   end
 
   describe '#daily_snapshot' do

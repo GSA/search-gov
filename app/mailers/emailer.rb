@@ -70,6 +70,7 @@ class Emailer < ApplicationMailer
     @added_user_email = user.email
     @affiliate_display_name = affiliate.display_name
     @affiliate_site_url = site_url(affiliate)
+    @complete_registration_url = login_url
     @website = affiliate.website
     generic_user_html_email(user, __method__)
   end
