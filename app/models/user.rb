@@ -124,15 +124,6 @@ class User < ApplicationRecord
     Emailer.new_user_to_admin(self).deliver_now
   end
 
-  def assign_email_verification_token!
-    begin
-      update_column(:email_verification_token,
-                    Authlogic::Random.friendly_token.downcase)
-    rescue ActiveRecord::RecordNotUnique
-      retry
-    end
-  end
-
   def deliver_user_email_verification
     Emailer.user_email_verification(self).deliver_now
   end
