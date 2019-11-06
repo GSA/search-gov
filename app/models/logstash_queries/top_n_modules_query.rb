@@ -8,7 +8,7 @@ class TopNModulesQuery < TopNQuery
     end
     json.must_not do
       json.child! { json.term { json.set! 'useragent.device', 'Spider' } }
-      json.child! { json.term { json.raw '' } }
+      json.child! { json.term { json.set! 'params.query.raw', '' } }
       additional_must_nots(json)
     end
   end

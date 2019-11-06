@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe TopNMissingQuery do
-  let(:query) { TopNMissingQuery.new('affiliate_name', { field: 'raw', size: 1000 }) }
+  let(:query) { TopNMissingQuery.new('affiliate_name', { field: 'type', size: 1000 }) }
   let(:expected_body) do
     {
       "query": {
@@ -21,7 +21,7 @@ describe TopNMissingQuery do
             },
             {
               "term": {
-                "raw": ""
+                "params.query.raw": ""
               }
             },
             {
@@ -35,7 +35,7 @@ describe TopNMissingQuery do
       "aggs": {
         "agg": {
           "terms": {
-            "field": "raw",
+            "field": "type",
             "size": 1000
           }
         }
