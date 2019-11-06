@@ -1,10 +1,35 @@
 require 'spec_helper'
 
 describe TopNQuery, "#body" do
-  let(:query) { TopNQuery.new('aff_name', {field: 'raw', size: 1000}) }
+  let(:query) { TopNQuery.new('affiliate_name', { field: 'raw', size: 1000 }) }
+  let(:expected_body) do
+    {
+      "query": {
+        "bool": {
+          "filter": {
+            "term": {
+              "params.affiliate": "affiliate_name"
+            }
+          },
+          "must_not": {
+            "term": {
+              "useragent.device": "Spider"
+            }
+          }
+        }
+      },
+      "aggs": {
+        "agg": {
+          "terms": {
+            "field": "raw",
+            "size": 1000
+          }
+        }
+      }
+    }.to_json
+  end
 
-  subject(:body) { query.body }
+  include_context 'querying logstash indexes'
 
-  it { is_expected.to eq(%q({"query":{"filtered":{"filter":{"bool":{"must":{"term":{"affiliate":"aff_name"}},"must_not":{"term":{"useragent.device":"Spider"}}}}}},"aggs":{"agg":{"terms":{"field":"raw","size":1000}}}}))}
-
+  it_behaves_like 'a logstash query'
 end
