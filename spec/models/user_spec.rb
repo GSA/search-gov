@@ -460,7 +460,6 @@ describe User do
                                                  { contact_name: 'New User Name',
                                                    email: 'newuser@approvedagency.com' })
         new_user.save!
-        expect(new_user.email_verification_token).not_to be_blank
       end
     end
   end

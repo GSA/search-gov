@@ -18,7 +18,7 @@ class User < ApplicationRecord
   before_validation :set_initial_approval_status, on: :create
   after_validation :set_default_flags, on: :create
 
-  after_create :deliver_email_verification
+  after_create :deliver_welcome_to_new_user_added_by_affiliate
 
   before_update :detect_deliver_welcome_email
   after_create :ping_admin
@@ -124,15 +124,6 @@ class User < ApplicationRecord
     Emailer.new_user_to_admin(self).deliver_now
   end
 
-  def deliver_email_verification
-    assign_email_verification_token!
-    if invited
-      deliver_welcome_to_new_user_added_by_affiliate
-    else
-      deliver_user_email_verification
-    end
-  end
-
   def assign_email_verification_token!
     begin
       update_column(:email_verification_token,
@@ -147,6 +138,8 @@ class User < ApplicationRecord
   end
 
   def deliver_welcome_to_new_user_added_by_affiliate
+    return unless invited
+
     Emailer.
       welcome_to_new_user_added_by_affiliate(affiliates.first, self, inviter).
       deliver_now
