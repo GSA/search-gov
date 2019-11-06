@@ -54,8 +54,8 @@ class Emailer < ApplicationMailer
   end
 
   def new_affiliate_user(affiliate, user, current_user)
-    @added_by_contact_name = current_user.contact_name
-    @added_user_contact_name = user.contact_name
+    @added_by_contact_name = current_user.contact_name.presence || current_user.email
+    @added_user_contact_name = user.contact_name.presence || user.email
     @affiliate_display_name = affiliate.display_name
     @affiliate_name = affiliate.name
     @affiliate_site_url = site_url(affiliate)
@@ -65,8 +65,8 @@ class Emailer < ApplicationMailer
 
   def welcome_to_new_user_added_by_affiliate(affiliate, user, current_user)
     @account_url = account_url
-    @added_by_contact_name = current_user.contact_name
-    @added_user_contact_name = user.contact_name
+    @added_by_contact_name = current_user.contact_name.presence || current_user.email
+    @added_user_contact_name = user.contact_name.presence || user.email
     @added_user_email = user.email
     @affiliate_display_name = affiliate.display_name
     @affiliate_site_url = site_url(affiliate)
