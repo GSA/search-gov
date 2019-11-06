@@ -166,7 +166,7 @@ Feature: Dashboard
     When I open the email
     Then show me the page
     And I click the complete registration link in the email
-    Then I should see "Site Overview"
+    Then I should see "Security Notification"
 
   @javascript
   Scenario: Add existing user to site
