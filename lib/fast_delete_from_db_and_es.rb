@@ -8,7 +8,11 @@ module FastDeleteFromDbAndEs
       return if ids.blank?
 
       "Elastic#{name}".constantize.delete(ids)
-      delete_all(id: ids)
+      # puts self
+      # puts ids
+      # puts(self.find(ids))
+      # where(:id => ids).delete_all
+      where(:id => ids).delete_all unless (where(:id => ids) == nil)
     end
   end
 end

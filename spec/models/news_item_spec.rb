@@ -124,10 +124,10 @@ describe NewsItem do
 
   describe '#fast_delete' do
     it 'delete from mysql and elasticsearch' do
-      ids = %w(1, 2).freeze
+      ids = [news_items(:item1).id, news_items(:item2).id].freeze
       expect(ElasticNewsItem).to receive(:delete).with(ids)
-      expect(NewsItem).to receive(:delete_all).with(id: ids)
       NewsItem.fast_delete(ids)
+      expect(NewsItem.where(:id => ids)).to be_empty
     end
   end
 

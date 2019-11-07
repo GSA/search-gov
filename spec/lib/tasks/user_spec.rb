@@ -40,7 +40,7 @@ describe 'User rake tasks' do
     end
 
     it 'sends admin the user_approval_removed email' do
-      User.destroy_all("email != 'affiliate_manager_with_no_affiliates@fixtures.org'")
+      User.where("email != 'affiliate_manager_with_no_affiliates@fixtures.org'").destroy_all
       emailer = double(Emailer)
       expect(Emailer).to receive(:user_approval_removed).with(user).and_return emailer
       expect(emailer).to receive(:deliver_now)
@@ -78,7 +78,7 @@ describe 'User rake tasks' do
 
     it 'logs the change' do
       expected_message = <<~MESSAGE.squish
-        User #{not_active_user.id}, not_active_user@fixtures.org, has been not active for 90 days, 
+        User #{not_active_user.id}, not_active_user@fixtures.org, has been not active for 90 days,
         so their approval status has been set to "not_approved".
       MESSAGE
 
