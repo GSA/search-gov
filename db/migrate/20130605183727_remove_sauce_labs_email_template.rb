@@ -1,6 +1,6 @@
 class RemoveSauceLabsEmailTemplate < ActiveRecord::Migration
   def up
-    EmailTemplate.delete_all(:name => 'saucelabs_report')
+    EmailTemplate.where(name: 'saucelabs_report').delete_all
   end
 
   def down

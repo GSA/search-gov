@@ -5,7 +5,7 @@ class AddI14yModules < ActiveRecord::Migration
   end
 
   def down
-    SearchModule.delete_all("tag = 'I14Y'")
-    SearchModule.delete_all("tag = 'ISPEL'")
+    SearchModule.where("tag = 'I14Y'").delete_all
+    SearchModule.where("tag = 'ISPEL'").delete_all
   end
 end

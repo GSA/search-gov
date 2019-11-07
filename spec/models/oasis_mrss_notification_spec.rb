@@ -41,7 +41,7 @@ describe OasisMrssNotification, ".perform" do
     end
 
     it 'should not subscribe to Oasis' do
-      expect(OasisMrssNotification.perform(rss_feed_urls(:atom_feed_url))).to eq("XML root is not RSS")
+      expect(OasisMrssNotification.perform(rss_feed_urls(:atom_feed_url).id)).to eq("XML root is not RSS")
     end
   end
 
@@ -51,7 +51,7 @@ describe OasisMrssNotification, ".perform" do
     end
 
     it 'should not subscribe to Oasis' do
-      expect(OasisMrssNotification.perform(rss_feed_urls(:another_url))).to eq("Missing MRSS namespace")
+      expect(OasisMrssNotification.perform(rss_feed_urls(:another_url).id)).to eq("Missing MRSS namespace")
     end
   end
 
@@ -61,7 +61,7 @@ describe OasisMrssNotification, ".perform" do
     end
 
     it 'should not subscribe to Oasis' do
-      expect(OasisMrssNotification.perform(rss_feed_urls(:another_url))).to eq("Missing media thumbnails")
+      expect(OasisMrssNotification.perform(rss_feed_urls(:another_url).id)).to eq("Missing media thumbnails")
     end
   end
 
@@ -72,7 +72,7 @@ describe OasisMrssNotification, ".perform" do
 
     it 'should log warning' do
       expect(Rails.logger).to receive(:warn)
-      OasisMrssNotification.perform(rss_feed_urls(:another_url))
+      OasisMrssNotification.perform(rss_feed_urls(:another_url).id)
     end
   end
 end
