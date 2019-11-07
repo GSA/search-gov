@@ -187,14 +187,14 @@ Now restart it:
 
 If you aren't using Homebrew to install and configure Elasticsearch, follow the [instructions](http://www.elasticsearch.org/download/) to download and run it.
 
-In addition, Elastic search 5.6 is also required.  Fortunately, this version is dockerized and can be run locally entirely within a docker container.  
+In addition, Elasticsearch 5.6 is also required.  Fortunately, this version is dockerized and can be run locally entirely within a docker container.  
 To facilitate use of this container a makefile has been provided with the following 3 commands:
     
     make pull-elastic - This pulls the desired container from dockerhub
     
     make run-elastic - Runs the docker container with the correct ports
     
-    make test-elastic - Tests that the elastic search container is currently running
+    make check-elastic - Tests that the elastic search container is currently running
      
      
      
