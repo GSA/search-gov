@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class OverallTopNQuery
   include AnalyticsDSL
 
@@ -21,5 +23,4 @@ class OverallTopNQuery
       since(json, @since)
     end
   end
-
 end
