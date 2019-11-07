@@ -1,6 +1,12 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
+require './lib/middlewares/reject_invalid_request_uri.rb'
+require './lib/middlewares/downcase_route.rb'
+require './lib/middlewares/adjust_client_ip.rb'
+require './lib/middlewares/filtered_cors.rb'
+require './lib/middlewares/filtered_jsonp.rb'
+
 
 GC.copy_on_write_friendly = true if GC.respond_to?(:copy_on_write_friendly=)
 GC::Profiler.enable
@@ -17,11 +23,11 @@ module Usasearch
     config.autoload_paths += Dir[config.root.join('lib', '**/').to_s]
     config.autoload_paths += Dir[config.root.join('app/models', '**/').to_s]
 
-    config.middleware.use 'RejectInvalidRequestUri'
-    config.middleware.use 'DowncaseRoute'
-    config.middleware.use 'AdjustClientIp'
-    config.middleware.use 'FilteredCORS'
-    config.middleware.use 'FilteredJSONP'
+    config.middleware.use RejectInvalidRequestUri
+    config.middleware.use DowncaseRoute
+    config.middleware.use AdjustClientIp
+    config.middleware.use FilteredCORS
+    config.middleware.use FilteredJSONP
     # config.middleware.use ::Rack::PerftoolsProfiler
 
     config.middleware.insert_before 0, Rack::Cors do
