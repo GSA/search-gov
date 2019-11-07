@@ -43,7 +43,6 @@ describe ElasticTweet do
     end
 
     describe "filters" do
-
       context 'when Twitter profile IDs are specified' do
         it "should restrict results to the tweets with those Twitter profile IDs" do
           search = ElasticTweet.search_for(q: 'america', twitter_profile_ids: [2196784676], language: 'en')
@@ -70,7 +69,7 @@ describe ElasticTweet do
           ElasticTweet.commit
         end
 
-        it 'should do downcasing and ASCII folding only' do
+        it 'does downcasing and ASCII folding only' do
           appropriate_stemming = ['superknuller', 'woche']
           appropriate_stemming.each do |query|
             expect(ElasticTweet.search_for(q: query, twitter_profile_ids: [twitter_profile.twitter_id], language: affiliate.indexing_locale).total).to eq(1)

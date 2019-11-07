@@ -3,9 +3,9 @@ class Sites::HeaderAndFootersController < Sites::SetupSiteController
   ADVANCED_MODE = 'advanced'.freeze
   MODES = [SIMPLE_MODE, ADVANCED_MODE].freeze
 
-  before_filter :assign_mode
-  before_filter :build_header_links, only: [:edit, :new_header_link]
-  before_filter :build_footer_links, only: [:edit, :new_footer_link]
+  before_action :assign_mode
+  before_action :build_header_links, only: [:edit, :new_header_link]
+  before_action :build_footer_links, only: [:edit, :new_footer_link]
 
   def edit
   end

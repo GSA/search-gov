@@ -213,11 +213,10 @@ describe Sites::RoutedQueriesController do
       include_context 'approved user logged in to a site'
 
       before do
-        xhr :get,
-            :new_routed_query_keyword,
-            params: { site_id: site.id,
-                      index: 0 },
-            format: :js
+        get :new_routed_query_keyword, params: {
+          site_id: site.id,
+          index: 0
+        }, xhr: true, format: :js
       end
 
       it { is_expected.to render_template(:new_routed_query_keyword) }

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ElasticTitleDescriptionBodyResults < ElasticResults
 
   def highlight_instance(highlight, instance)

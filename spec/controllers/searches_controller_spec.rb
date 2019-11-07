@@ -667,7 +667,7 @@ describe SearchesController do
       expect(assigns[:search]).to be_an_instance_of(NewsSearch)
     end
 
-    it 'should find news items that match the query for the affiliate' do
+    it 'finds news items that match the query for the affiliate' do
       get :news,
           params: {
             query: 'element',

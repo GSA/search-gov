@@ -1,5 +1,5 @@
 class Sites::FeaturedCollectionsController < Sites::BestBetsController
-  before_filter :setup_featured_collection, only: [:edit, :update, :destroy]
+  before_action :setup_featured_collection, only: %i[edit update destroy]
 
   def index
     @featured_collections = search_best_bets(FeaturedCollection)
@@ -41,13 +41,15 @@ class Sites::FeaturedCollectionsController < Sites::BestBetsController
   end
 
   def featured_collection_params
-    params.require(:featured_collection).
-        permit(:image, :image_alt_text,
-               :mark_image_for_deletion,
-               :publish_start_on, :publish_end_on,
-               :status, :title, :title_url,
-               :match_keyword_values_only,
-               featured_collection_keywords_attributes: [:id, :value],
-               featured_collection_links_attributes: [:id, :title, :url, :position])
+    params.require(:featured_collection).permit(
+      :image,
+      :image_alt_text,
+      :mark_image_for_deletion,
+      :publish_start_on, :publish_end_on,
+      :status, :title, :title_url,
+      :match_keyword_values_only,
+      featured_collection_keywords_attributes: %i[id value],
+      featured_collection_links_attributes: %i[id title url position]
+    ).to_h
   end
 end

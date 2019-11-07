@@ -1,8 +1,8 @@
 class Sites::RoutedQueriesController < Sites::SetupSiteController
   include ::Hintable
 
-  before_filter :setup_routed_query, only: [:edit, :update, :destroy]
-  before_filter :load_hints, only: %i(edit new create new_routed_query_keyword)
+  before_action :setup_routed_query, only: %i[edit update destroy]
+  before_action :load_hints, only: %i(edit new create new_routed_query_keyword)
 
   def index
     @routed_queries = @site.routed_queries
@@ -58,7 +58,11 @@ class Sites::RoutedQueriesController < Sites::SetupSiteController
   end
 
   def routed_query_params
-    params.require(:routed_query).permit(:url, :description, routed_query_keywords_attributes: [:id, :keyword])
+    params.require(:routed_query).permit(
+      :url,
+      :description,
+      routed_query_keywords_attributes: %i[id keyword]
+    ).to_h
   end
 
   def build_routed_query_keyword

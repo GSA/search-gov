@@ -1,10 +1,10 @@
 class Sites::IndexedDocumentsController < Sites::SetupSiteController
-  before_filter :setup_site
-  before_filter :setup_indexed_document, only: [:destroy]
+  before_action :setup_site
+  before_action :setup_indexed_document, only: [:destroy]
 
   def index
     @indexed_documents = @site.indexed_documents.by_matching_url(params[:query]).paginate(
-        page: params[:page]).order('id DESC')
+      page: params[:page]).order('id DESC')
   end
 
   def new
@@ -37,7 +37,10 @@ class Sites::IndexedDocumentsController < Sites::SetupSiteController
 
   def indexed_document_params
     params.require(:indexed_document).
-        permit(:description, :title, :url).
-        merge(source: 'manual', last_crawl_status: IndexedDocument::SUMMARIZED_STATUS)
+      permit(:description, :title, :url).
+      merge(
+        source: 'manual',
+        last_crawl_status: IndexedDocument::SUMMARIZED_STATUS
+      ).to_h
   end
 end

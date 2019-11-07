@@ -5,7 +5,7 @@ module MobileFriendlyController
 
   included do
     has_mobile_fu
-    before_filter :set_format_for_table_devices
+    before_action :set_format_for_table_devices
   end
 
   private
