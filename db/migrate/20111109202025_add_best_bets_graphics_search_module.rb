@@ -4,6 +4,6 @@ class AddBestBetsGraphicsSearchModule < ActiveRecord::Migration
   end
 
   def self.down
-    SearchModule.delete_all("tag = 'BBG'")
+    SearchModule.where("tag = 'BBG'").delete_all
   end
 end

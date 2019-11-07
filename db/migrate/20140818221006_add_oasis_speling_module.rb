@@ -4,6 +4,6 @@ class AddOasisSpelingModule < ActiveRecord::Migration
   end
 
   def down
-    SearchModule.delete_all("tag = 'OSPEL'")
+    SearchModule.where("tag = 'OSPEL'").delete_all
   end
 end

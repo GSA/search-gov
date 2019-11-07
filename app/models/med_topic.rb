@@ -65,7 +65,7 @@ class MedTopic < ApplicationRecord
           updated_topic_ids << topic.id
         end
         obsolete_topic_ids = existing_topic_ids - updated_topic_ids
-        MedTopic.where(:id => obsolete_topic_ids).destroy_all
+        MedTopic.where(id: obsolete_topic_ids).destroy_all
       end
     end
   end
