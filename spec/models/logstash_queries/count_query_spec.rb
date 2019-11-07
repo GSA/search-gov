@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe CountQuery, "#body" do
+describe CountQuery do
   let(:query) { CountQuery.new('affiliate_name') }
   let(:expected_body) do
     {
@@ -20,8 +20,6 @@ describe CountQuery, "#body" do
       }
     }.to_json
   end
-
-  include_context 'querying logstash indexes'
 
   it_behaves_like 'a logstash query'
 end

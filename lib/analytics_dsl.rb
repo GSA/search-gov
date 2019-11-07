@@ -63,7 +63,7 @@ module AnalyticsDSL
 
   def must_affiliate(json, site_name)
     json.must do
-      json.child! { json.term { json.affiliate site_name } }
+      json.child! { json.term { json.set! 'params.affiliate', site_name } }
     end
   end
 

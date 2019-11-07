@@ -29,7 +29,5 @@ describe TopNQuery, "#body" do
     }.to_json
   end
 
-  include_context 'querying logstash indexes'
-
   it_behaves_like 'a logstash query'
 end
