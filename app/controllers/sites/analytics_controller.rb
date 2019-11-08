@@ -1,6 +1,8 @@
 class Sites::AnalyticsController < Sites::SetupSiteController
   before_action :setup_site_analytics, :setup_date_range
 
+  MAX_RESULTS = 10000
+
   private
 
   def setup_site_analytics

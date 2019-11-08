@@ -162,7 +162,6 @@ group :test do
   gem 'vcr', '~> 4.0'
   gem 'webmock', '~> 3.1.1'
   gem 'rspec-activemodel-mocks', '~> 1.0.3'
-  gem 'timecop', '~> 0.9.1'
   gem 'rspec_junit_formatter', '~> 0.3.0'
   gem 'rails-controller-testing', '~> 1.0.4'
 end
