@@ -1,3 +1,5 @@
+# frozen_string_literal
+
 class RtuDateRangeQuery
   include AnalyticsDSL
 
@@ -13,10 +15,7 @@ class RtuDateRangeQuery
   end
 
   def booleans(json)
-    json.must do
-      json.term { json.affiliate @affiliate_name }
-    end
+    must_affiliate(json, @affiliate_name)
     must_not_spider(json)
   end
-
 end

@@ -40,9 +40,9 @@ module AnalyticsDSL
   end
 
   def stats(json, field)
-    json.facets do
+    json.aggs do
       json.stats do
-        json.statistical do
+        json.stats do
           json.field field
         end
       end

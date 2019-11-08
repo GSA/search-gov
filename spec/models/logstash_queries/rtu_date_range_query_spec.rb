@@ -1,11 +1,34 @@
 require 'spec_helper'
 
-describe RtuDateRangeQuery, "#body" do
+describe RtuDateRangeQuery do
   let(:query) { RtuDateRangeQuery.new('affiliate_name') }
+  let(:expected_body) do
+    {
+      "query": {
+        "bool": {
+          "filter": [
+            {
+              "term": {
+                "params.affiliate": "affiliate_name"
+              }
+            }
+          ],
+          "must_not": {
+            "term": {
+              "useragent.device": "Spider"
+            }
+          }
+        }
+      },
+      "aggs": {
+        "stats": {
+          "stats": {
+            "field": "@timestamp"
+          }
+        }
+      }
+    }.to_json
+  end
 
-  subject(:body) { query.body }
-
-  # SRCH-1045
-  xit { is_expected.to eq(%q({"query":{"filtered":{"filter":{"bool":{"must":{"term":{"affiliate":"affiliate_name"}},"must_not":{"term":{"useragent.device":"Spider"}}}}}},"facets":{"stats":{"statistical":{"field":"@timestamp"}}}}))}
-
+  it_behaves_like 'a logstash query'
 end
