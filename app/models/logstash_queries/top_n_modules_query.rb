@@ -4,6 +4,7 @@ class TopNModulesQuery < TopNQuery
   def booleans(json)
     json.must do
       json.child! { json.term { json.set! 'params.affiliate', @affiliate_name } }
+      modules_must(json)
       additional_musts(json)
     end
     json.must_not do
@@ -16,4 +17,6 @@ class TopNModulesQuery < TopNQuery
   def additional_musts(json); end
 
   def additional_must_nots(json); end
+
+  def modules_must(json); end
 end
