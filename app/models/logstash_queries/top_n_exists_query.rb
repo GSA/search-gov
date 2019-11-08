@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class TopNExistsQuery < TopNModulesQuery
-  def additional_musts(json)
+  def modules_must(json)
     json.child! { json.exists { json.field 'modules' } }
   end
 

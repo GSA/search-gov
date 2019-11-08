@@ -1,9 +1,65 @@
 require 'spec_helper'
 
-describe DateRangeTopNExistsQuery, "#body" do
-  let(:query) { DateRangeTopNExistsQuery.new('aff_name', Date.new(2015, 6, 1), Date.new(2015, 6, 30), { field: 'raw', size: 1000 }) }
+describe DateRangeTopNExistsQuery do
+  let(:query) do
+    DateRangeTopNExistsQuery.new('affiliate_name',
+                                 Date.new(2019, 11, 1),
+                                 Date.new(2019, 11, 7),
+                                 { field: 'params.query.raw', size: 1000 })
+  end
+  let(:expected_body) do
+    {
+      "query": {
+        "bool": {
+          "must": [
+            {
+              "term": {
+                "params.affiliate": "affiliate_name"
+              }
+            },
+            {
+              "exists": {
+                "field": "modules"
+              }
+            },
+            {
+              "range": {
+                "@timestamp": {
+                  "gte": "2019-11-01",
+                  "lte": "2019-11-07"
+                }
+              }
+            }
+          ],
+          "must_not": [
+            {
+              "term": {
+                "useragent.device": "Spider"
+              }
+            },
+            {
+              "term": {
+                "params.query.raw": ""
+              }
+            },
+            {
+              "term": {
+                "modules": "QRTD"
+              }
+            }
+          ]
+        }
+      },
+      "aggs": {
+        "agg": {
+          "terms": {
+            "field": "params.query.raw",
+            "size": 1000
+          }
+        }
+      }
+    }.to_json
+  end
 
-  subject(:body) { query.body.tap { |b| puts b } }
-
-  it { is_expected.to eq(%q({"query":{"filtered":{"filter":{"bool":{"must":[{"term":{"affiliate":"aff_name"}},{"exists":{"field":"modules"}},{"range":{"@timestamp":{"gte":"2015-06-01","lte":"2015-06-30"}}}],"must_not":[{"term":{"useragent.device":"Spider"}},{"term":{"raw":""}},{"term":{"modules":"QRTD"}}]}}}},"aggs":{"agg":{"terms":{"field":"raw","size":1000}}}}))}
+  it_behaves_like 'a logstash query'
 end
