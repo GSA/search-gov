@@ -76,9 +76,6 @@ module Usasearch
 
     config.active_record.schema_format = :sql
 
-    # Do not swallow errors in after_commit/after_rollback callbacks.
-    config.active_record.raise_in_transactional_callbacks = true
-
     config.i18n.enforce_available_locales = false
 
     config.ssl_options[:secure_cookies] = false
