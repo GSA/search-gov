@@ -14,7 +14,7 @@ describe OverallTopNQuery do
               "tags": "api"
             }
           },
-          "must": {
+          "filter": {
             "range": {
               "@timestamp": {
                 "gte": "2014-06-28"

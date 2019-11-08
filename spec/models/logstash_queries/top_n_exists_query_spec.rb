@@ -6,7 +6,7 @@ describe TopNExistsQuery do
     {
       "query": {
         "bool": {
-          "must": [
+          "filter": [
             {
               "term": {
                 "params.affiliate": "affiliate_name"
