@@ -1,4 +1,6 @@
 module AnalyticsDSL
+  attr_reader :affiliate_name
+
   def filter_booleans(json)
     json.query do
       json.bool do
