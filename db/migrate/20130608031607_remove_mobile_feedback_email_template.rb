@@ -1,6 +1,6 @@
 class RemoveMobileFeedbackEmailTemplate < ActiveRecord::Migration
   def up
-    EmailTemplate.delete_all(name: 'mobile_feedback')
+    EmailTemplate.where(name: 'mobile_feedback').delete_all
   end
 
   def down
