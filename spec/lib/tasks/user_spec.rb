@@ -78,7 +78,7 @@ describe 'User rake tasks' do
 
     it 'logs the change' do
       expected_message = <<~MESSAGE.squish
-        User #{not_active_user.id}, not_active_user@fixtures.org, has been not active for 90 days, 
+        User #{not_active_user.id}, not_active_user@fixtures.org, has been not active for 90 days,
         so their approval status has been set to "not_approved".
       MESSAGE
 
