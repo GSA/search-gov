@@ -127,7 +127,7 @@ describe NewsItem do
       ids = [news_items(:item1).id, news_items(:item2).id].freeze
       expect(ElasticNewsItem).to receive(:delete).with(ids)
       NewsItem.fast_delete(ids)
-      expect(NewsItem.where(:id => ids)).to be_empty
+      expect(NewsItem.where(id: ids)).to be_empty
     end
   end
 
