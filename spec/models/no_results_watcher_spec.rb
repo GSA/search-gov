@@ -21,7 +21,8 @@ describe NoResultsWatcher do
                                             time_window: '1w', query_blocklist: "foo, bar, another one",
                                             check_interval: '1m', throttle_period: '24h', name: "no rez") }
 
-    it "returns a JSON structure representing an Elasticsearch Watcher body" do
+    # SRCH-1038
+    xit "returns a JSON structure representing an Elasticsearch Watcher body" do
       expect(watcher.body).to eq(json_response)
     end
   end
