@@ -100,7 +100,8 @@ gem 'cld3', '~> 3.2.3'
 gem 'coffee-rails', '~> 4.2.2'
 gem 'uglifier', '~> 4.1.2'
 # Using forked copy until https://github.com/metaskills/less-rails-bootstrap/pull/132 is merged
-gem 'less-rails-bootstrap', git: 'https://github.com/veelenga/less-rails-bootstrap', :ref => '7c479c2fdff500dc036c15364aa085332a73c642'
+gem 'less-rails-bootstrap', git: 'https://github.com/veelenga/less-rails-bootstrap',
+                            ref: '7c479c2fdff500dc036c15364aa085332a73c642'
 gem 'compass-rails', '~> 3.1.0'
 gem 'compass-blueprint', '~> 1.0.0'
 gem 'jquery-ui-rails', '~> 6.0.1'
