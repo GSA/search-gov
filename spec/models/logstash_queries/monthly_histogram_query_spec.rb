@@ -1,11 +1,44 @@
 require 'spec_helper'
 
-describe MonthlyHistogramQuery, "#body" do
+describe MonthlyHistogramQuery do
   let(:query) { MonthlyHistogramQuery.new('affiliate_name', Date.parse('2014-06-28')) }
+  let(:expected_body) do
+    {
+      "query": {
+        "bool": {
+          "filter": [
+            {
+              "term": {
+                "params.affiliate": "affiliate_name"
+              }
+            },
+            {
+              "range": {
+                "@timestamp": {
+                  "gte": "2014-06-28"
+                }
+              }
+            }
+          ],
+          "must_not": {
+            "term": {
+              "useragent.device": "Spider"
+            }
+          }
+        }
+      },
+      "aggs": {
+        "agg": {
+          "date_histogram": {
+            "field": "@timestamp",
+            "interval": "month",
+            "format": "yyyy-MM",
+            "min_doc_count": 0
+          }
+        }
+      }
+    }.to_json
+  end
 
-  subject(:body) { query.body }
-
-  # SRCH-1043
-  xit { is_expected.to eq(%q({"query":{"filtered":{"filter":{"bool":{"must":[{"term":{"affiliate":"affiliate_name"}},{"range":{"@timestamp":{"gte":"2014-06-28"}}}],"must_not":{"term":{"useragent.device":"Spider"}}}}}},"aggs":{"agg":{"date_histogram":{"field":"@timestamp","interval":"month","format":"yyyy-MM","min_doc_count":0}}}}))}
-
+  it_behaves_like 'a logstash query'
 end
