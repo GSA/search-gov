@@ -18,7 +18,7 @@ class AssociateAffiliatesWithUsers < ActiveRecord::Migration
   def self.down
     remove_index :affiliates, :user_id
     remove_column :affiliates, :user_id
-    User.delete_all("is_affiliate = 1")
+    User.where('is_affiliate = 1').delete_all
     remove_column :users, :is_affiliate
     remove_column :users, :contact_name
   end

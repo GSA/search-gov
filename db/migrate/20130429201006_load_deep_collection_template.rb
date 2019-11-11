@@ -4,6 +4,6 @@ class LoadDeepCollectionTemplate < ActiveRecord::Migration
   end
 
   def down
-    EmailTemplate.delete_all(:name => 'deep_collection_notification')
+    EmailTemplate.where(name: 'deep_collection_notification').delete_all
   end
 end
