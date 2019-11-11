@@ -149,8 +149,6 @@ Feature: Dashboard
     When I press "Remove" within the first table body row
     Then I should see "You have removed admin@email.gov from this site"
 
-  # to be updated in SRCH-891 for login.gov
-  @wip
   @javascript
   Scenario: Complete sign up process
     Given no emails have been sent
@@ -167,13 +165,7 @@ Feature: Dashboard
 
     When I open the email
     And I click the complete registration link in the email
-    Then the "Your full name" field should contain "Jane Admin"
-    Then the "Email" field should contain "jane@admin.org"
-    When I fill in the following:
-      | Federal government agency | My Agency   |
-      | Password                  | test1234!   |
-    And I press "Complete the sign up process"
-    Then I should see "Site Overview"
+    Then I should see "Security Notification"
 
   @javascript
   Scenario: Add existing user to site
