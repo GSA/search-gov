@@ -13,7 +13,8 @@ describe RtuQueriesRequest do
 
   let(:site) { affiliates(:basic_affiliate) }
 
-  describe "#save" do
+  # SRCH-1049
+  pending "#save" do
     describe "computing top query stats" do
       let(:rtu_queries_request) { RtuQueriesRequest.new("start_date" => "05/28/2014",
                                                         "end_date" => "05/28/2014",

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CountQuery
   include AnalyticsDSL
 
@@ -12,11 +14,9 @@ class CountQuery
   end
 
   def booleans(json)
-    json.must do
-      json.term { json.affiliate @affiliate_name }
+    json.filter do
+      json.term { json.set! 'params.affiliate', @affiliate_name }
     end
     must_not_spider(json)
   end
-
-
 end

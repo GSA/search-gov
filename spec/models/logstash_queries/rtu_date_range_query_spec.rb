@@ -5,6 +5,7 @@ describe RtuDateRangeQuery, "#body" do
 
   subject(:body) { query.body }
 
-  it { is_expected.to eq(%q({"query":{"filtered":{"filter":{"bool":{"must":{"term":{"affiliate":"affiliate_name"}},"must_not":{"term":{"useragent.device":"Spider"}}}}}},"facets":{"stats":{"statistical":{"field":"@timestamp"}}}}))}
+  # SRCH-1045
+  xit { is_expected.to eq(%q({"query":{"filtered":{"filter":{"bool":{"must":{"term":{"affiliate":"affiliate_name"}},"must_not":{"term":{"useragent.device":"Spider"}}}}}},"facets":{"stats":{"statistical":{"field":"@timestamp"}}}}))}
 
 end

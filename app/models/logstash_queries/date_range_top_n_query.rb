@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DateRangeTopNQuery < TopNQuery
 
   def initialize(affiliate_name, start_date, end_date, agg_options = {})
@@ -8,5 +10,4 @@ class DateRangeTopNQuery < TopNQuery
   def booleans(json)
     must_affiliate_date_range(json, @affiliate_name, @start_date, @end_date)
   end
-
 end
