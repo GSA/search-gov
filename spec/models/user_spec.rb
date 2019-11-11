@@ -452,7 +452,7 @@ describe User do
         expect(affiliate.users).to include(new_user)
       end
 
-      it 'should receive welcome new user added by affiliate email verification' do
+      it 'receives the welcome new user added by affiliate email verification' do
         expect(Emailer).to receive(:welcome_to_new_user_added_by_affiliate).and_return @emailer
         expect(Emailer).to_not receive(:new_user_email_verification)
         new_user = User.new_invited_by_affiliate(inviter,

@@ -18,7 +18,7 @@ class User < ApplicationRecord
   before_validation :set_initial_approval_status, on: :create
   after_validation :set_default_flags, on: :create
 
-  after_create :deliver_welcome_to_new_user_added_by_affiliate
+  after_create :deliver_welcome_to_new_user_added_by_affiliate, if: :invited
 
   before_update :detect_deliver_welcome_email
   after_create :ping_admin
@@ -129,8 +129,6 @@ class User < ApplicationRecord
   end
 
   def deliver_welcome_to_new_user_added_by_affiliate
-    return unless invited
-
     Emailer.
       welcome_to_new_user_added_by_affiliate(affiliates.first, self, inviter).
       deliver_now

@@ -164,7 +164,6 @@ Feature: Dashboard
     Then "jane@admin.org" should receive an email
 
     When I open the email
-    Then show me the page
     And I click the complete registration link in the email
     Then I should see "Security Notification"
 

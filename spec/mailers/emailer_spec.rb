@@ -154,8 +154,8 @@ describe Emailer do
   describe "#welcome_to_new_user_added_by_affiliate" do
     let(:user) do
       mock_model(User,
-           :email => "invitee@agency.com",
-           :contact_name => 'Invitee Joe')
+                 email: 'invitee@agency.com',
+                 contact_name: 'Invitee Joe')
     end
 
     let(:current_user) { mock_model(User, :email => "inviter@agency.com", :contact_name => 'Inviter Jane') }
