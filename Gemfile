@@ -95,6 +95,7 @@ gem 'aasm', '~> 4.12'
 gem 'active_scheduler', '~> 0.5.0'
 gem 'retriable', '~> 3.1'
 gem 'cld3', '~> 3.2.3'
+gem 'puma', '~> 3.7'
 
 # Assets-related gems
 gem 'coffee-rails', '~> 4.2.2'
