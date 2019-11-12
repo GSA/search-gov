@@ -79,6 +79,16 @@ Feature: Users
     Then I should be on the user account page
     And I should see "Because you don't have a .gov or .mil email address, we need additional information."
 
+  @javascript
+  Scenario: Logging in as a new approved affiliate user without government affiliated email address
+    Given the following Users exist:
+      | contact_name | email             | approval_status |
+      | Joe Schmo    | jschmo@random.com | approved        |
+
+    And I am logged in with email "jschmo@random.com"
+    Then I should be on the user account page
+    And I should not see "Because you don't have a .gov or .mil email address, we need additional information."
+
   Scenario: Failing registration as a new affiliate user
     Given I am on the sign up page
     And I press "Sign up"
