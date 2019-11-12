@@ -29,12 +29,14 @@ class RtuDateRange
   def extract_date_range(result)
     aggregations = result['aggregations']
     return Date.current..Date.current if aggregations.nil?
+
     stats = aggregations['stats']
-    min, max = normalize(stats['min']), normalize(stats['max'])
+    min = normalize(stats['min'])
+    max = normalize(stats['max'])
     min..max
   end
 
   def normalize(unixtime)
-    unixtime.blank? ? Date.current : DateTime.strptime(unixtime.to_s, '%Q').to_date
+    unixtime.blank? ? Date.current : Time.strptime(unixtime.to_s, '%Q').to_date
   end
 end
