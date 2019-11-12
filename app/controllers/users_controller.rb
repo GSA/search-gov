@@ -33,7 +33,8 @@ class UsersController < ApplicationController
       to confirm your status.
     MESSAGE
 
-    flash[:notice] = message unless @user.has_government_affiliated_email?
+    flash[:notice] = message unless @user.has_government_affiliated_email? ||
+                                    @user.approval_status == 'approved'
   end
 
   def edit

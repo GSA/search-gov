@@ -44,7 +44,7 @@ class Emailer < ApplicationMailer
 
   def welcome_to_new_user(user)
     @new_site_url = new_site_url
-    @user_contact_name = user.contact_name
+    @user_contact_name = user.contact_name.presence || user.email
     generic_user_html_email(user, __method__)
   end
 

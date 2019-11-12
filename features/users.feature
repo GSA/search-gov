@@ -80,6 +80,16 @@ Feature: Users
     And I should see "Because you don't have a .gov or .mil email address, we need additional information."
 
   @javascript
+  Scenario: Logging in as a new approved affiliate user without government affiliated email address
+    Given the following Users exist:
+      | contact_name | email             | approval_status |
+      | Joe Schmo    | jschmo@random.com | approved        |
+
+    And I am logged in with email "jschmo@random.com"
+    Then I should be on the user account page
+    And I should not see "Because you don't have a .gov or .mil email address, we need additional information."
+
+  @javascript
   Scenario: Visiting edit my account profile page as an affiliate user
     Given I am logged in with email "affiliate_admin@fixtures.org"
     When I go to the user account page
