@@ -22,7 +22,11 @@ class RtuMonthlyReport
 
   def no_result_queries
     @no_result_queries ||= begin
-      query = DateRangeTopNMissingQuery.new(@site.name, @month_range.begin, @month_range.end, field: 'raw', min_doc_count: 20)
+      query = DateRangeTopNMissingQuery.new(@site.name,
+                                            @month_range.begin,
+                                            @month_range.end,
+                                            field: 'params.query.raw',
+                                            min_doc_count: 20)
       rtu_top_queries = RtuTopQueries.new(query.body, @filter_bots)
       rtu_top_queries.top_n
     end
