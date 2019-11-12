@@ -1,3 +1,5 @@
+# Be sure to restart your server when you modify this file.
+
 (Rails.application.secrets.assets || {}).each do |k,v|
   ActionController::Base.send(:"#{k}=", v)
 end
@@ -11,6 +13,9 @@ Rails.application.config.assets.js_compressor = :uglifier
 
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path
+# Add Yarn node_modules folder to the asset load path.
+# Rails.application.config.assets.paths << Rails.root.join('node_modules')
+
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
