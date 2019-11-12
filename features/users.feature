@@ -79,11 +79,6 @@ Feature: Users
     Then I should be on the user account page
     And I should see "Because you don't have a .gov or .mil email address, we need additional information."
 
-  Scenario: Failing registration as a new affiliate user
-    Given I am on the sign up page
-    And I press "Sign up"
-    Then I should see "Email can't be blank"
-
   @javascript
   Scenario: Visiting edit my account profile page as an affiliate user
     Given I am logged in with email "affiliate_admin@fixtures.org"
