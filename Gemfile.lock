@@ -411,6 +411,10 @@ GEM
       less (~> 2.6.0)
       sprockets (>= 2)
     libv8 (3.16.14.19)
+    listen (3.1.5)
+      rb-fsevent (~> 0.9, >= 0.9.4)
+      rb-inotify (~> 0.9, >= 0.9.7)
+      ruby_dep (~> 1.2)
     little-plugger (1.1.4)
     logging (2.2.2)
       little-plugger (~> 1.1)
@@ -625,6 +629,7 @@ GEM
       ruby-progressbar (~> 1.7)
       unicode-display_width (~> 1.4.0)
     ruby-progressbar (1.10.1)
+    ruby_dep (1.5.0)
     rufus-scheduler (3.6.0)
       fugit (~> 1.1, >= 1.1.6)
     safe_yaml (1.0.5)
@@ -818,6 +823,7 @@ DEPENDENCIES
   jwt (~> 1.5.6)
   launchy (~> 2.4.3)
   less-rails-bootstrap!
+  listen (~> 3.1.5)
   lograge (~> 0.7.1)
   loofah (~> 2.3.1)
   medusa!

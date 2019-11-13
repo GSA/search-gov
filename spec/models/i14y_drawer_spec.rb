@@ -26,7 +26,7 @@ describe I14yDrawer do
     it 'creates collection in i14y and assigns token' do
       response = Hashie::Mash.new('status' => 200, "developer_message" => "OK", "user_message" => "blah blah")
       expect(I14yCollections).to receive(:create).with("settoken", "0123456789abcdef").and_return response
-      i14y_drawer = Affiliate.first.i14y_drawers.create!(handle: "settoken")
+      i14y_drawer = Affiliate.first.i14y_drawers.create!(handle: 'settoken')
       expect(i14y_drawer.token).to eq("0123456789abcdef")
     end
 

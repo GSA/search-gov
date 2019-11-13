@@ -110,6 +110,7 @@ gem 'jquery-rails', git: 'https://github.com/GSA/jquery-rails', ref: 'c0c56208f5
 gem 'therubyracer', '~> 0.12.3'
 gem 'yui-compressor', '~> 0.12.0'
 gem 'twitter-typeahead-rails', '~> 0.11.1'
+gem 'listen', '~> 3.1.5'
 # Why do we have two versions of Font Awesome?
 # One is for general use around the app, in places where
 # web fonts are expected to work...
