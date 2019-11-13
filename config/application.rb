@@ -85,8 +85,31 @@ module Usasearch
 
     config.ssl_options[:secure_cookies] = false
     config.active_job.queue_adapter = :resque
+
+    ### Rails 5.0 config flags
+    ### SRCH-1058: The flags below should be flipped one by one to the new default.
+
+    # Enable per-form CSRF tokens. Versions before Rails 5.0 had false.
+    config.action_controller.per_form_csrf_tokens = false
+
+    # Enable origin-checking CSRF mitigation.  Versions before Rails 5.0 had false.
+    config.action_controller.forgery_protection_origin_check = false
+
+    # Require `belongs_to` associations by default. Versions before Rails 5.0 had false.
+    config.active_record.belongs_to_required_by_default = false
+
+    # Do not halt callback chains when a callback returns false.
+    # Versions before Rails 5.0 had true.
+    ActiveSupport.halt_callback_chains_on_return_false = true
+
+    # Make Ruby 2.4+ preserve the timezone of the receiver when calling `to_time`.
+    # Versions before Rails 5.0 had false.
+    ActiveSupport.to_time_preserves_timezone = false
+
+    ### End Rails 5.0 config flags
   end
 end
+
 
 SEARCH_ENGINES = %w(BingV6 BingV7 Google SearchGov).freeze
 DEFAULT_USER_AGENT = Rails.application.secrets.organization[:default_user_agent].freeze
