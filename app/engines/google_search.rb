@@ -2,8 +2,8 @@
 class GoogleSearch < SearchEngine
   API_ENDPOINT = '/customsearch/v1'
   API_HOST = 'https://www.googleapis.com'
-  API_KEY = Rails.application.secrets.google['api_key'].freeze
-  SEARCH_CX = Rails.application.secrets.google['search_cx'].freeze
+  API_KEY = Rails.application.secrets.google[:api_key].freeze
+  SEARCH_CX = Rails.application.secrets.google[:search_cx].freeze
   VALID_ADULT_FILTERS = %w{off medium high}
   DEFAULT_START = 1
   PER_PAGE_RANGE = (1..10).freeze
