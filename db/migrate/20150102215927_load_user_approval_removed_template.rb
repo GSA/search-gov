@@ -4,6 +4,6 @@ class LoadUserApprovalRemovedTemplate < ActiveRecord::Migration
   end
 
   def down
-    EmailTemplate.delete_all(:name => 'user_approval_removed')
+    EmailTemplate.where(name: 'user_approval_removed').delete_all
   end
 end
