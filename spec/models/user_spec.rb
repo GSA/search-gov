@@ -24,7 +24,6 @@ describe User do
     it { is_expected.to have_db_column(:failed_login_count).of_type(:integer).with_options(default: 0, null: false) }
     it { is_expected.to have_db_column(:password_updated_at).of_type(:datetime).with_options(null: true) }
     it { should have_db_column(:uid).of_type(:string) }
-    it { should have_db_index(:uid).unique(true) }
   end
 
   describe "when validating" do

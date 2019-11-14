@@ -1,6 +1,6 @@
 class DeleteFeatureAdmonishmentEmailTemplate < ActiveRecord::Migration
   def up
-    EmailTemplate.delete_all("name='feature_admonishment'")
+    EmailTemplate.where("name='feature_admonishment'").delete_all
   end
 
   def down

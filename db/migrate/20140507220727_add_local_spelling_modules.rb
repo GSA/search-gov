@@ -5,7 +5,7 @@ class AddLocalSpellingModules < ActiveRecord::Migration
   end
 
   def down
-    SearchModule.delete_all("tag = 'SPEL'")
-    SearchModule.delete_all("tag = 'LOVER'")
+    SearchModule.where("tag = 'SPEL'").delete_all
+    SearchModule.where("tag = 'LOVER'").delete_all
   end
 end

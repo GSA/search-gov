@@ -4,6 +4,6 @@ class AddQrtdSearchModule < ActiveRecord::Migration
   end
 
   def down
-    SearchModule.delete_all("tag = 'QRTD'")
+    SearchModule.where("tag = 'QRTD'").delete_all
   end
 end

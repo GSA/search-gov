@@ -86,7 +86,7 @@ gem 'lograge', '~> 0.7.1'
 gem 'test-unit', '~> 3.2.7'
 gem 'http', '~> 1.0'
 gem 'robots_tag_parser', '~> 0.1.0', git: 'https://github.com/GSA/robots_tag_parser'
-gem 'loofah', '~> 2.2.2'
+gem 'loofah', '~> 2.3.1'
 # Using custom branch until https://github.com/brutuscat/medusa/issues/10 is merged
 gem 'medusa', git: 'https://github.com/MothOnMars/medusa', branch: 'clean_urls'
 # Robotex is required by Medusa. Specifying fork until https://github.com/chriskite/robotex/issues/4
@@ -99,10 +99,12 @@ gem 'active_scheduler', '~> 0.5.0'
 gem 'retriable', '~> 3.1'
 gem 'cld3', '~> 3.2.3'
 
-#Assets-related gems
+# Assets-related gems
 gem 'coffee-rails', '~> 4.2.2'
 gem 'uglifier', '~> 4.1.2'
-gem 'less-rails-bootstrap', '~> 3.3.5'
+# Using forked copy until https://github.com/metaskills/less-rails-bootstrap/pull/132 is merged
+gem 'less-rails-bootstrap', git: 'https://github.com/veelenga/less-rails-bootstrap',
+                            ref: '7c479c2fdff500dc036c15364aa085332a73c642'
 gem 'compass-rails', '~> 3.1.0'
 gem 'compass-blueprint', '~> 1.0.0'
 gem 'jquery-ui-rails', '~> 6.0.1'
