@@ -118,6 +118,12 @@ class User < ApplicationRecord
     audit_trail_user_removed(affiliate, source)
   end
 
+  def self.from_omniauth(auth)
+    find_or_create_by(email: auth.info.email).tap do |user|
+      user.update(uid: auth.uid)
+    end
+  end
+
   private
 
   def ping_admin
@@ -185,11 +191,5 @@ class User < ApplicationRecord
 
   def perishable_token_expired?
     perishable_token && updated_at < (Time.now - User.perishable_token_valid_for)
-  end
-
-  def self.from_omniauth(auth)
-    find_or_create_by(email: auth.info.email).tap do |user|
-      user.update(uid: auth.uid)
-    end
   end
 end
