@@ -11,3 +11,11 @@ shared_examples_for 'a logstash query' do
     it { is_expected.to eq(expected_body) }
   end
 end
+
+shared_examples_for 'a watcher query' do
+  describe '#body' do
+    subject(:body) { query.body }
+
+    it { is_expected.to eq(expected_body) }
+  end
+end

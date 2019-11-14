@@ -63,13 +63,19 @@ class Watcher < ApplicationRecord
 
   def condition(json)
     json.condition do
-      json.script condition_script
+      json.script do
+        json.source condition_script
+        json.lang 'painless'
+      end
     end
   end
 
   def transform(json)
     json.transform do
-      json.script transform_script
+      json.script do
+        json.source transform_script
+        json.lang 'painless'
+      end
     end
   end
 
@@ -103,5 +109,4 @@ class Watcher < ApplicationRecord
       watcher_type: self.class.name
     }
   end
-
 end
