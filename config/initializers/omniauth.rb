@@ -1,5 +1,6 @@
 Rails.application.config.middleware.use OmniAuth::Builder do
-  protocol = ENV['RAILS_ENV'] == 'development' ? 'http://' : 'https://'
+  protocol = Rails.env.development? ? 'http://' : 'https://'
+
   provider :login_dot_gov, {
     name: :logindotgov,
     client_id: Rails.application.secrets.login_dot_gov['client_id'],
