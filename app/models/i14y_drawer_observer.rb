@@ -6,7 +6,7 @@ class I14yDrawerObserver < ActiveRecord::Observer
     i14y_drawer_json.status == 200
   rescue => e
     Rails.logger.warn("Trouble linking up I14y drawer #{i14y_drawer.handle}: #{e}")
-    false
+    throw(:abort)
   end
 
   def before_destroy(i14y_drawer)
@@ -15,6 +15,6 @@ class I14yDrawerObserver < ActiveRecord::Observer
     i14y_drawer_json.status == 200
   rescue => e
     Rails.logger.warn("Trouble destroying I14y drawer #{i14y_drawer.handle}: #{e}")
-    false
+    throw(:abort)
   end
 end

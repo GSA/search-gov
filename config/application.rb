@@ -98,10 +98,6 @@ module Usasearch
     # Require `belongs_to` associations by default. Versions before Rails 5.0 had false.
     config.active_record.belongs_to_required_by_default = false
 
-    # Do not halt callback chains when a callback returns false.
-    # Versions before Rails 5.0 had true.
-    ActiveSupport.halt_callback_chains_on_return_false = true
-
     # Make Ruby 2.4+ preserve the timezone of the receiver when calling `to_time`.
     # Versions before Rails 5.0 had false.
     ActiveSupport.to_time_preserves_timezone = false
