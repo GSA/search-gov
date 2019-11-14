@@ -1,9 +1,25 @@
 require 'spec_helper'
 
 describe LowQueryCtrWatcher do
-  fixtures :affiliates, :users, :memberships
   let(:affiliate) { affiliates(:basic_affiliate) }
   let(:user) { affiliate.users.first }
+  let(:watcher_args) do
+    {
+      search_click_total: 101,
+      low_ctr_threshold: 15.5,
+      affiliate_id: affiliate.id,
+      user_id: user.id,
+      time_window: '1w',
+      query_blocklist: 'foo, bar, another one',
+      check_interval: '1m',
+      throttle_period: '24h',
+      name: 'low CTR'
+    }
+  end
+  let(:expected_body) do
+    JSON.parse(read_fixture_file('/json/watcher/low_query_ctr_watcher_body.json')).to_json
+  end
+  subject(:watcher) { LowQueryCtrWatcher.new(watcher_args) }
 
   it { is_expected.to validate_numericality_of(:search_click_total).only_integer }
   it { is_expected.to validate_numericality_of(:low_ctr_threshold) }
@@ -15,16 +31,11 @@ describe LowQueryCtrWatcher do
     end
   end
 
-  describe "body" do
-    let(:json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/watcher/low_query_ctr_watcher_body.json")).to_json }
+  describe '#label' do
+    subject(:label) { watcher.label }
 
-    subject(:watcher) { described_class.new(search_click_total: 101, low_ctr_threshold: 15.5, affiliate_id: affiliate.id,
-                                            user_id: user.id, time_window: '1w', query_blocklist: "foo, bar, another one",
-                                            check_interval: '1m', throttle_period: '24h', name: "low CTR") }
-
-    # SRCH-1047
-    xit "returns a JSON structure representing an Elasticsearch Watcher body" do
-      expect(watcher.body).to eq(json_response)
-    end
+    it { is_expected.to eq('Low Query Click-Through Rate (CTR)') }
   end
+
+  it_behaves_like 'a watcher'
 end

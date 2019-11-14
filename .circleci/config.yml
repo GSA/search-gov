@@ -260,13 +260,12 @@ workflows:
             - setup_elasticsearch
             - bundle_install
 
-# Temporarily commenting out until logstash queries are updated
-#      - cucumber:
-#          requires:
-#            - setup_elasticsearch
-#            - bundle_install
-#
-#      - report_coverage:
-#          requires:
-#            - rspec
-#            - cucumber
+      - cucumber:
+          requires:
+            - setup_elasticsearch
+            - bundle_install
+
+      - report_coverage:
+          requires:
+            - rspec
+            - cucumber

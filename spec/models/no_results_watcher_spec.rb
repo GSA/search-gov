@@ -30,5 +30,11 @@ describe NoResultsWatcher do
     end
   end
 
+  describe '#label' do
+    subject(:label) { watcher.label }
+
+    it { is_expected.to eq('No Results') }
+  end
+
   it_behaves_like 'a watcher'
 end
