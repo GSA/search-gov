@@ -4,6 +4,6 @@ class AddOasisImageModule < ActiveRecord::Migration
   end
 
   def down
-    SearchModule.delete_all("tag = 'OASIS'")
+    SearchModule.where("tag = 'OASIS'").delete_all
   end
 end

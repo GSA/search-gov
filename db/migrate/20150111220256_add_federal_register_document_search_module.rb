@@ -4,6 +4,6 @@ class AddFederalRegisterDocumentSearchModule < ActiveRecord::Migration
   end
 
   def down
-    SearchModule.delete_all("tag = 'FRDOC'")
+    SearchModule.where("tag = 'FRDOC'").delete_all
   end
 end
