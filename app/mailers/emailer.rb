@@ -19,7 +19,7 @@ class Emailer < ApplicationMailer
     @user_contact_name = user.contact_name.presence || user.email
 
     if @user.affiliates.any?
-      @user_inviter_contact_name = @user.inviter.contact_name.presence || user.email
+      @user_inviter_contact_name = @user.inviter.contact_name.presence || @user.inviter.email
     end
 
     setup_email('usagov@search.gov', __method__)
