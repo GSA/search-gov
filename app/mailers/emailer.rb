@@ -16,6 +16,8 @@ class Emailer < ApplicationMailer
 
   def new_user_to_admin(user)
     @user = user
+    @user_contact_name = user.contact_name.presence || user.email
+    @user_inviter_contact_name = @user.inviter.contact_name.presence || user.email if @user.affiliates.any?
     setup_email("usagov@search.gov", __method__)
     send_mail(:text)
   end
