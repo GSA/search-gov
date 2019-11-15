@@ -86,7 +86,7 @@ describe TrendingTermsQuery do
           "aggs": {
             "clientip_count": {
               "cardinality": {
-                "field": "clientip.raw"
+                "field": "clientip"
               }
             }
           }

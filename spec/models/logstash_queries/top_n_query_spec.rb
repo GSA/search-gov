@@ -1,7 +1,9 @@
 require 'spec_helper'
 
 describe TopNQuery, "#body" do
-  let(:query) { TopNQuery.new('affiliate_name', { field: 'raw', size: 1000 }) }
+  let(:query) do
+    TopNQuery.new('affiliate_name', { field: 'params.query.raw', size: 1000 })
+  end
   let(:expected_body) do
     {
       "query": {
@@ -21,7 +23,7 @@ describe TopNQuery, "#body" do
       "aggs": {
         "agg": {
           "terms": {
-            "field": "raw",
+            "field": "params.query.raw",
             "size": 1000
           }
         }
