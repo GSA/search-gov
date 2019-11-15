@@ -10,6 +10,7 @@ require 'email_spec'
 require 'authlogic/test_case'
 require 'paperclip/matchers'
 require 'webmock/rspec'
+require 'paper_trail/frameworks/rspec'
 
 include Authlogic::TestCase
 WebMock.disable_net_connect!(allow_localhost: true)

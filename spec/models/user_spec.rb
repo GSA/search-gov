@@ -688,4 +688,28 @@ describe User do
       it { is_expected.to eq false }
     end
   end
+  describe 'paper-trail tests' do
+    context 'enabled', versioning: true do
+      let(:user) { User.create!(@valid_affiliate_attributes) }
+      before do
+        user.update!(contact_name: 'Tom Two', password: 'TomTwo222!')
+        user.update!(contact_name: 'Bob Three', password: 'BobThree333!')
+      end
+      it 'is possible to do assertions on previous versions' do
+        expect(user).to have_a_version_with contact_name: 'Tom Two'
+        expect(user.contact_name).to_not eq 'Tom Two'
+      end
+      it 'the current state is not stored in a version' do
+        expect(user).to_not have_a_version_with contact_name: 'Bob Three'
+        expect(user.contact_name).to eq 'Bob Three'
+      end
+      it 'check version count' do
+        expect(user.versions.size).to eq(3)
+      end
+      it 'check updating increases version count' do
+        user.update!(contact_name: 'Jim Four', password: 'JimFour44!')
+        expect(user.versions.size).to eq(4)
+      end
+    end
+  end
 end

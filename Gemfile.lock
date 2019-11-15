@@ -462,6 +462,9 @@ GEM
     oj (3.3.10)
     open_uri_redirections (0.2.1)
     os (0.9.6)
+    paper_trail (10.3.1)
+      activerecord (>= 4.2)
+      request_store (~> 1.1)
     paperclip (5.2.1)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
@@ -828,6 +831,7 @@ DEPENDENCIES
   newrelic_rpm (~> 5.0.0)
   nokogiri (~> 1.10.4)
   oj (~> 3.3.10)
+  paper_trail
   paperclip (~> 5.2.0)
   poltergeist (~> 1.18.1)
   pry-byebug (~> 3.5)

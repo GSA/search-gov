@@ -1,6 +1,6 @@
--- MySQL dump 10.13  Distrib 5.6.43, for osx10.13 (x86_64)
+-- MySQL dump 10.13  Distrib 5.6.43, for osx10.15 (x86_64)
 --
--- Host: localhost    Database: usasearch_development
+-- Host: 127.0.0.1    Database: usasearch_test
 -- ------------------------------------------------------
 -- Server version	5.6.43
 
@@ -1490,6 +1490,26 @@ CREATE TABLE `users` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `versions`
+--
+
+DROP TABLE IF EXISTS `versions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `versions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `item_type` varchar(191) NOT NULL,
+  `item_id` bigint(20) NOT NULL,
+  `event` varchar(255) NOT NULL,
+  `whodunnit` varchar(255) DEFAULT NULL,
+  `object` longtext,
+  `created_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_versions_on_item_type_and_item_id` (`item_type`,`item_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `watchers`
 --
 
@@ -1571,7 +1591,7 @@ CREATE TABLE `youtube_profiles` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping routines for database 'usasearch_development'
+-- Dumping routines for database 'usasearch_test'
 --
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -1583,7 +1603,7 @@ CREATE TABLE `youtube_profiles` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-09-24 15:49:59
+-- Dump completed on 2019-11-15 11:31:18
 INSERT INTO `schema_migrations` (version) VALUES
 ('20090818003200'),
 ('20090827135344'),
@@ -2309,6 +2329,7 @@ INSERT INTO `schema_migrations` (version) VALUES
 ('20181109212904'),
 ('20181213153332'),
 ('20190205200912'),
-('20190920181828');
+('20190920181828'),
+('20191114215421');
 
 
