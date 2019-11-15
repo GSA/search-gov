@@ -1,6 +1,6 @@
--- MySQL dump 10.13  Distrib 5.6.43, for osx10.15 (x86_64)
+-- MySQL dump 10.13  Distrib 5.6.43, for osx10.13 (x86_64)
 --
--- Host: 127.0.0.1    Database: usasearch_test
+-- Host: localhost    Database: usasearch_development
 -- ------------------------------------------------------
 -- Server version	5.6.43
 
@@ -1484,8 +1484,8 @@ CREATE TABLE `users` (
   UNIQUE KEY `index_users_on_email` (`email`),
   UNIQUE KEY `index_users_on_api_key` (`api_key`),
   UNIQUE KEY `index_users_on_email_verification_token` (`email_verification_token`),
-  UNIQUE KEY `index_users_on_uid` (`uid`),
-  KEY `index_users_on_perishable_token` (`perishable_token`)
+  KEY `index_users_on_perishable_token` (`perishable_token`),
+  KEY `index_users_on_uid` (`uid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1591,7 +1591,7 @@ CREATE TABLE `youtube_profiles` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping routines for database 'usasearch_test'
+-- Dumping routines for database 'usasearch_development'
 --
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -1603,7 +1603,7 @@ CREATE TABLE `youtube_profiles` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-15 11:31:18
+-- Dump completed on 2019-09-24 15:49:59
 INSERT INTO `schema_migrations` (version) VALUES
 ('20090818003200'),
 ('20090827135344'),
@@ -2330,6 +2330,7 @@ INSERT INTO `schema_migrations` (version) VALUES
 ('20181213153332'),
 ('20190205200912'),
 ('20190920181828'),
+('20191113214448'),
 ('20191114215421');
 
 
