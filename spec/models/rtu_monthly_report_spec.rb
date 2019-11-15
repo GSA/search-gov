@@ -51,8 +51,19 @@ describe RtuMonthlyReport do
     context 'when top no results queries are available' do
       let(:json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_monthly_report/no_result_queries.json")) }
       let(:no_result_queries) { [['tsunade', 24], ['jiraiya', 22], ['orochimaru', 32]] }
+      let(:query_args) do
+        [
+          site.name,
+          Date.new(2014,5,1),
+          Date.new(2014,5,31),
+          { field: 'params.query.raw', min_doc_count: 20 }
+        ]
+      end
+      let(:query) { instance_double(DateRangeTopNMissingQuery, body: '') }
 
       before do
+        expect(DateRangeTopNMissingQuery).
+          to receive(:new).with(*query_args).and_return(query)
         allow(ES::ELK.client_reader).to receive(:search).
           and_return(available_dates_response, json_response)
       end
