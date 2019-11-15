@@ -140,7 +140,6 @@ group :development, :test do
   gem 'database_cleaner', '~> 1.6.2'
   gem 'capybara', '~> 2.18.0'
   gem 'launchy', '~> 2.4.3'
-  gem 'thin', '~> 1.7'
   gem 'i18n-tasks', '~> 0.9.19'
   gem 'pry-byebug', '~> 3.5'
   # Updating rubocop? Update & run mry to ensure rubocop.yml is updated:
