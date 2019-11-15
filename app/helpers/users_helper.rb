@@ -23,4 +23,8 @@ module UsersHelper
       end
     end
   end
+
+  def contact_name(user)
+    user.contact_name.presence || user.email
+  end
 end
