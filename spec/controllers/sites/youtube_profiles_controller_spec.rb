@@ -136,7 +136,8 @@ describe Sites::YoutubeProfilesController do
         expect(youtube_profiles).to receive(:find_by_id).with('100').
             and_return(youtube_profile)
         expect(youtube_profiles).to receive(:delete).with(youtube_profile)
-        expect(youtube_profiles).to receive(:exists?).and_return(false)
+        expect(youtube_profiles).
+          to receive_message_chain(:reload, :exists?).and_return(false)
         expect(site).to receive(:disable_video_govbox!)
 
         delete :destroy, params: { site_id: site.id, id: 100 }

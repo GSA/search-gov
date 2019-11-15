@@ -1,6 +1,6 @@
 class RemoveWindowSizeFromMovingQueries < ActiveRecord::Migration
   def self.up
-    MovingQuery.delete_all("window_size > 1")
+    MovingQuery.where('window_size').delete_all
     remove_index :moving_queries, [:day, :window_size, :times]
     remove_column :moving_queries, :window_size
     add_index :moving_queries, [:day, :times]
