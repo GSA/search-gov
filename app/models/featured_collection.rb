@@ -20,9 +20,9 @@ class FeaturedCollection < ApplicationRecord
                     path: "#{Rails.env}/featured_collection/:id/image/:updated_at/:style/:filename",
                     s3_credentials: Rails.application.secrets.aws_image_bucket,
                     url: ':s3_alias_url',
-                    s3_host_alias: Rails.application.secrets.aws_image_bucket['s3_host_alias'],
+                    s3_host_alias: Rails.application.secrets.aws_image_bucket[:s3_host_alias],
                     s3_protocol: 'https',
-                    s3_region: Rails.application.secrets.aws_image_bucket['s3_region']
+                    s3_region: Rails.application.secrets.aws_image_bucket[:s3_region]
 
   validates_attachment_size :image,
                             in: (1..MAXIMUM_IMAGE_SIZE_IN_KB.kilobytes),

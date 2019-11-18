@@ -3,7 +3,6 @@ Given /^the following( legacy| search consumer| SearchGov)? Affiliates exist:$/ 
   table.hashes.each do |hash|
     valid_options = {
         email: hash[:contact_email],
-        password: 'test1234!',
         contact_name: hash[:contact_name],
         organization_name: 'Agency'
     }

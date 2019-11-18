@@ -260,12 +260,13 @@ workflows:
             - setup_elasticsearch
             - bundle_install
 
-      - cucumber:
-          requires:
-            - setup_elasticsearch
-            - bundle_install
-
-      - report_coverage:
-          requires:
-            - rspec
-            - cucumber
+# Re-enable after all RSpec tests pass - SRCH-1061
+#      - cucumber:
+#          requires:
+#            - setup_elasticsearch
+#            - bundle_install
+#
+#      - report_coverage:
+#          requires:
+#            - rspec
+#            - cucumber

@@ -2,11 +2,11 @@
 
 class Emailer < ApplicationMailer
   include ActionView::Helpers::TextHelper
-  default_url_options[:host] = Rails.application.secrets.organization['app_host']
+  default_url_options[:host] = Rails.application.secrets.organization[:app_host]
   default_url_options[:protocol] = 'https'
-  ADMIN_EMAIL_ADDRESS = Rails.application.secrets.organization['admin_email_address']
+  ADMIN_EMAIL_ADDRESS = Rails.application.secrets.organization[:admin_email_address]
   DELIVER_FROM_EMAIL_ADDRESS = 'no-reply@support.digitalgov.gov'
-  REPLY_TO_EMAIL_ADDRESS = Rails.application.secrets.organization['support_email_address']
+  REPLY_TO_EMAIL_ADDRESS = Rails.application.secrets.organization[:support_email_address]
   NOTIFICATION_SENDER_EMAIL_ADDRESS = 'notification@support.digitalgov.gov'
 
   def password_reset_instructions(user)
@@ -44,7 +44,7 @@ class Emailer < ApplicationMailer
 
   def welcome_to_new_user(user)
     @new_site_url = new_site_url
-    @user_contact_name = user.contact_name
+    @user_contact_name = user.contact_name.presence || user.email
     generic_user_html_email(user, __method__)
   end
 
@@ -54,8 +54,8 @@ class Emailer < ApplicationMailer
   end
 
   def new_affiliate_user(affiliate, user, current_user)
-    @added_by_contact_name = current_user.contact_name
-    @added_user_contact_name = user.contact_name
+    @added_by_contact_name = current_user.contact_name.presence || current_user.email
+    @added_user_contact_name = user.contact_name.presence || user.email
     @affiliate_display_name = affiliate.display_name
     @affiliate_name = affiliate.name
     @affiliate_site_url = site_url(affiliate)
@@ -65,12 +65,12 @@ class Emailer < ApplicationMailer
 
   def welcome_to_new_user_added_by_affiliate(affiliate, user, current_user)
     @account_url = account_url
-    @added_by_contact_name = current_user.contact_name
-    @added_user_contact_name = user.contact_name
+    @added_by_contact_name = current_user.contact_name.presence || current_user.email
+    @added_user_contact_name = user.contact_name.presence || user.email
     @added_user_email = user.email
     @affiliate_display_name = affiliate.display_name
     @affiliate_site_url = site_url(affiliate)
-    @complete_registration_url = edit_complete_registration_url(user.email_verification_token)
+    @complete_registration_url = site_url(affiliate)
     @website = affiliate.website
     generic_user_html_email(user, __method__)
   end
@@ -116,7 +116,7 @@ class Emailer < ApplicationMailer
     @external_tracking_code = external_tracking_code
     setup_email({
       from: NOTIFICATION_SENDER_EMAIL_ADDRESS,
-      to: Rails.application.secrets.organization['support_email_address']
+      to: Rails.application.secrets.organization[:support_email_address]
     }, __method__)
     send_mail(:text)
   end

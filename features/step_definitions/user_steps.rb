@@ -1,15 +1,15 @@
-Given /^I am logged in with email "([^\"]*)"$/ do |email|
-  visit login_path
-  fill_in "user_session[email]", with: email
-  fill_in "user_session[password]", with: 'test1234!'
-  click_button('Login')
-end
+Given /^I am logged in with email "([^"]*)"$/ do |email|
+  OmniAuth.config.test_mode = true
 
-Given /^I (?:log in) with email "([^\"]*)" and password "([^\"]*)"$/ do |email, password|
-  visit login_path
-  fill_in "user_session[email]", with: email
-  fill_in "user_session[password]", with: password
-  click_button('Login')
+  omniauth_hash = {
+    uid: 'test_123',
+    info: {
+      email: email
+    }
+  }
+
+  OmniAuth.config.add_mock('logindotgov', omniauth_hash)
+  visit '/auth/logindotgov'
 end
 
 
@@ -24,14 +24,14 @@ Given /^the following Users exist:$/ do |table|
   table.hashes.each do |hash|
     User.create!(hash.merge(password: 'test1234!', organization_name: 'Agency'))
     if hash[:password_updated_at]
-     user = User.find_by_email(hash[:email])
-     user.update_attributes(password_updated_at: hash[:password_updated_at].to_date)
+      user = User.find_by_email(hash[:email])
+      user.update_attributes(password_updated_at: hash[:password_updated_at].to_date)
     end
   end
 end
 
 When /^(?:I|they) click the complete registration link in the email$/ do
-  click_email_link_matching /complete\_registration/
+  click_email_link_matching /sites/
 end
 
 When(/^I visit the password reset page using the perishable token for "(.*?)"$/) do |email_address|

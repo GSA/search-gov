@@ -17,15 +17,15 @@ module ES
   private
 
   def reader_config
-    client_config('reader')
+    client_config(:reader)
   end
 
   def writer_config
-    client_config('writers')
+    client_config(:writers)
   end
 
   def initialize_client(config)
-    Elasticsearch::Client.new(config.merge(CLIENT_CONFIG).symbolize_keys)
+    Elasticsearch::Client.new(config.merge(CLIENT_CONFIG))
   end
 
   module ELK
@@ -33,7 +33,7 @@ module ES
     private
 
     def self.client_config(mode)
-      Rails.application.secrets['analytics']['elasticsearch'][mode].freeze
+      Rails.application.secrets[:analytics][:elasticsearch][mode].freeze
     end
   end
 
@@ -42,7 +42,7 @@ module ES
     private
 
     def self.client_config(mode)
-      Rails.application.secrets['custom_indices']['elasticsearch'][mode].freeze
+      Rails.application.secrets[:custom_indices][:elasticsearch][mode].freeze
     end
   end
 end

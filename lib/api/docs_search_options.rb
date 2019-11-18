@@ -1,5 +1,5 @@
 class Api::DocsSearchOptions < Api::CommercialSearchOptions
-  AZURE_HOSTED_PASSWORD = Rails.application.secrets.hosted_azure['account_key'].freeze
+  AZURE_HOSTED_PASSWORD = Rails.application.secrets.hosted_azure[:account_key].freeze
   attr_accessor :dc
 
   validates_presence_of :dc,

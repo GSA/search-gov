@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/search/docs' => 'searches#docs', as: :docs_search
   get '/search/news' => 'searches#news', as: :news_search
   get '/search/news/videos' => 'searches#video_news', as: :video_news_search
+  get '/auth/logindotgov/callback', to: 'omniauth_callbacks#login_dot_gov'
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
@@ -34,21 +35,22 @@ Rails.application.routes.draw do
   get '/sayt' => 'sayt#index'
   get '/clicked' => 'clicked#index'
   get '/healthcheck' => 'health_checks#new'
-  get '/login' => 'user_sessions#new', as: :login
-  get '/signup' => 'users#new', as: :signup
+  get '/login' => 'user_sessions#security_notification', as: :login
+  get '/signup' => 'user_sessions#security_notification', as: :signup
   get '/status/outbound_rate_limit' => 'statuses#outbound_rate_limit', defaults: { format: :text }
   get '/dcv/:affiliate.txt' => 'statuses#domain_control_validation',
     defaults: { format: :text },
     constraints: { affiliate: /.*/, format: :text }
-  root to: redirect('/login')
 
-  resource :account, :controller => "users"
+  root to: 'user_sessions#security_notification'
+
+  resource :account, controller: "users"
   resources :users
   resource :user_session
-  resource :human_session, :only => [:new, :create]
+  resource :human_session, only: [:new, :create]
   resources :password_resets
-  resources :email_verification, :only => :show
-  resources :complete_registration, :only => [:edit, :update]
+  resources :email_verification, only: :show
+  resources :complete_registration, only: [:edit, :update]
 
   scope module: 'sites' do
     resources :sites do
@@ -180,7 +182,7 @@ Rails.application.routes.draw do
     resources :catalog_prefixes, concerns: :active_scaffold
     resources :site_feed_urls, concerns: :active_scaffold
     resources :superfresh_urls, concerns: :active_scaffold
-    resources :superfresh_urls_bulk_upload, :only => :index do
+    resources :superfresh_urls_bulk_upload, only: :index do
       collection do
         post :upload
       end
@@ -200,12 +202,12 @@ Rails.application.routes.draw do
     resources :features, concerns: :active_scaffold
     resources :affiliate_feature_additions, concerns: :active_scaffold
     resources :help_links, concerns: :active_scaffold
-    resources :compare_search_results, :only => :index
+    resources :compare_search_results, only: :index
     resources :bing_urls, concerns: :active_scaffold
     resources :statuses, concerns: :active_scaffold
     resources :system_alerts, concerns: :active_scaffold
     resources :tags, concerns: :active_scaffold
-    resources :trending_urls, :only => :index
+    resources :trending_urls, only: :index
     resources :news_items, concerns: :active_scaffold
     resources :suggestion_blocks, concerns: :active_scaffold
     resources :rss_feeds, concerns: :active_scaffold
@@ -249,9 +251,15 @@ Rails.application.routes.draw do
   get '/superfresh/:feed_id' => 'superfresh#index', :as => :superfresh_feed
 
   get '/user/developer_redirect' => 'users#developer_redirect', :as => :developer_redirect
-  get '/program' => redirect(Rails.application.secrets.organization['blog_url'], :status => 302)
+  get '/program' => redirect(
+    path: Rails.application.secrets.organization[:blog_url],
+    status: 302
+  )
 
-  get "*path" => redirect(Rails.application.secrets.organization['page_not_found_url'], status: 302)
+  get "*path" => redirect(
+    path: Rails.application.secrets.organization[:page_not_found_url],
+    status: 302
+  )
 
   get "/c/search" => 'dev#null', :as => :search_consumer_search
   get "/c/admin/:site_name" => 'dev#null', :as => :search_consumer_admin
