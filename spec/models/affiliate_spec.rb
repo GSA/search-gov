@@ -1563,6 +1563,8 @@ describe Affiliate do
     end
   end
 
+  # This will be torn out eventually along with the rest of the
+  # deprecated search-consumer code: SRCHAR-2713
   describe '#update_templates' do
     let(:affiliate) { affiliates(:usagov_affiliate) }
     let(:classic) { Template.find_by_name('Classic') }
@@ -1579,16 +1581,6 @@ describe Affiliate do
 
     it 'sets the active template' do
       expect(affiliate.template.name).to eq 'Rounded Header Links'
-    end
-
-    it 'makes selected templates available' do
-      expect(affiliate.available_templates.pluck(:name)).
-        to match_array(['Rounded Header Links','IRS'])
-    end
-
-    it 'makes unselected templates unavailable' do
-      expect(affiliate.available_templates.pluck(:name)).
-        not_to include('Square Header Links','Classic')
     end
   end
 
