@@ -1,0 +1,49 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.datamarket.azure.com/Bing/Search/v1/Composite?$format=JSON&$skip=0&$top=5&ImageFilters=%27Aspect:Square%27&Market=%27en-US%27&Query=%27agency%20(site:noresults.nasa.gov)%27&Sources=%27image%2Bspell%27
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Authorization:
+      - Basic Omhvc3RlZF9henVyZV9iaW5nX3Y2X2FjY291bnRfa2V5
+      Expect:
+      - ''
+  response:
+    status:
+      code: 0
+      message: 
+    headers: {}
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Thu, 14 Nov 2019 19:47:21 GMT
+- request:
+    method: get
+    uri: https://api.datamarket.azure.com/Bing/Search/v1/Composite?$format=JSON&$skip=0&$top=5&ImageFilters=%27Aspect:Square%27&Market=%27en-US%27&Query=%27agency%20(site:noresults.nasa.gov)%27&Sources=%27image%2Bspell%27
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Authorization:
+      - Basic Omhvc3RlZF9henVyZV9iaW5nX3Y2X2FjY291bnRfa2V5
+      Expect:
+      - ''
+  response:
+    status:
+      code: 0
+      message: 
+    headers: {}
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Thu, 14 Nov 2019 19:47:22 GMT
+recorded_with: VCR 4.0.0

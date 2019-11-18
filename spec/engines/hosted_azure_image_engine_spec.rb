@@ -7,21 +7,22 @@ describe HostedAzureImageEngine do
   let(:azure_image_url) do
     "#{HostedAzureImageEngine::API_HOST}#{HostedAzureImageEngine::API_ENDPOINT}"
   end
-  let(:image_search_params) do
-    { language: 'en',
-      offset: 20,
-      per_page: 10,
-      query: 'agncy (site:nasa.gov)',
-    }
-  end
 
-  skip 'api namespacing' do
+  # let(:image_search_params) do
+  #   { language: 'en',
+  #     offset: 20,
+  #     per_page: 10,
+  #     query: 'agncy (site:nasa.gov)',
+  #   }
+  # end
+
+  describe 'api namespacing' do
     it 'uses the AzureCompositeEngine namespace' do
-      described_class.api_namespace.should eq(AzureCompositeEngine::NAMESPACE)
+      expect(described_class.api_namespace).to eq(AzureCompositeEngine::NAMESPACE)
     end
   end
 
-  skip '#execute_query' do
+  describe '#execute_query' do
     context 'when image results are present' do
       let(:image_search) do
         described_class.new language: 'en',
