@@ -1,0 +1,29 @@
+version: '3.7'
+
+services:
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:5.6.16
+    environment:
+      discovery.type: single-node
+      cluster.name: elasticsearch_56
+      node.name: "es56"
+    ports:
+      - '9256:9200'
+      - '9356:9300'
+  elasticsearch-classic:
+    image: elasticsearch:1.7.3
+    environment:
+      discovery.type: single-node
+      cluster.name: elasticsearch_56
+      node.name: "es56"
+    ports:
+      - '9200:9200'
+      - '9300:9300'
+  mysql-dev:
+    image: mysql:5.6
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --innodb_large_prefix=on --innodb_file_format=barracuda --innodb_file_per_table=true
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    ports:
+      - "3306:3306"

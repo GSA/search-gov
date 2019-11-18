@@ -11,6 +11,7 @@ development:
   username: root
   encoding: utf8mb4
   collation: utf8mb4_unicode_ci
+  host: <%= ENV['DB_HOST'] || '127.0.0.1' %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
