@@ -1,4 +1,16 @@
 GIT
+  remote: https://github.com/18f/omniauth_login_dot_gov.git
+  revision: 08ce9b5322efb2d82b2df3f6d774308c4028ee6c
+  branch: master
+  specs:
+    omniauth_login_dot_gov (0.0.1)
+      faraday
+      json-jwt
+      jwt
+      multi_json
+      omniauth
+
+GIT
   remote: https://github.com/GSA/jquery-rails
   revision: c0c56208f57746a4bc63431d5e771cea4486efca
   ref: c0c56208f57746a4bc63431d5e771cea4486efca
@@ -144,6 +156,7 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
+    aes_key_wrap (1.0.1)
     after_commit_action (1.1.0)
       activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -177,6 +190,7 @@ GEM
     bcrypt (3.1.13)
     bcrypt-ruby (3.1.5)
       bcrypt (>= 3.1.3)
+    bindata (2.4.4)
     binding_of_caller (0.8.0)
       debug_inspector (>= 0.0.1)
     buftok (0.2.0)
@@ -401,6 +415,10 @@ GEM
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
     json (1.8.6)
+    json-jwt (1.11.0)
+      activesupport (>= 4.2)
+      aes_key_wrap
+      bindata
     jwt (1.5.6)
     launchy (2.4.3)
       addressable (~> 2.3)
@@ -446,7 +464,7 @@ GEM
     mono_logger (1.1.0)
     mry (0.59.0.0)
       rubocop (>= 0.41.0)
-    multi_json (1.13.1)
+    multi_json (1.14.1)
     multi_test (0.1.2)
     multi_xml (0.6.0)
     multipart-post (2.1.1)
@@ -463,6 +481,12 @@ GEM
     nokogumbo (1.5.0)
       nokogiri
     oj (3.3.10)
+    omniauth (1.4.3)
+      hashie (>= 1.2, < 4)
+      rack (>= 1.6.2, < 3)
+    omniauth-rails_csrf_protection (0.1.2)
+      actionpack (>= 4.2)
+      omniauth (>= 1.3.1)
     open_uri_redirections (0.2.1)
     os (0.9.6)
     paperclip (5.2.1)
@@ -830,6 +854,8 @@ DEPENDENCIES
   newrelic_rpm (~> 5.0.0)
   nokogiri (~> 1.10.4)
   oj (~> 3.3.10)
+  omniauth-rails_csrf_protection (~> 0.1.2)
+  omniauth_login_dot_gov!
   paperclip (~> 5.2.0)
   poltergeist (~> 1.18.1)
   pry-byebug (~> 3.5)

@@ -7,8 +7,3 @@
 = form.text_field :organization_name
 = form.label :email, 'Email', class: 'required'
 = form.email_field :email, class: 'required'
-= form.label :password, 'New Password'
-= form.password_field :password, class: 'required'
-= form.label :current_password, "Current Password (Required for password changes)"
-= form.password_field :current_password, class: 'required'
-= render partial: 'users/password_requirements'

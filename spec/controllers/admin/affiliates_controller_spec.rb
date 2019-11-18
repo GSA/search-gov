@@ -4,13 +4,13 @@ describe Admin::AffiliatesController do
   fixtures :users, :affiliates, :memberships, :languages
   let(:config) { Admin::AffiliatesController.active_scaffold_config }
 
-  context "when logged in as a non-affiliate admin user" do
+  context 'when logged in as a non-affiliate admin user' do
     before do
       activate_authlogic
-      UserSession.create(users("non_affiliate_admin"))
+      UserSession.create(users('non_affiliate_admin'))
     end
 
-    it "should redirect to the usasearch home page" do
+    it 'redirects to the usasearch home page' do
       get :index
       expect(response).to redirect_to(account_path)
     end

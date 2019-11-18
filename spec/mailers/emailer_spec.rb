@@ -118,7 +118,7 @@ skip do
       it { is_expected.not_to have_body_text /This user signed up as an affiliate/ }
     end
 
-    context "user got invited by another customer" do
+    context 'user got invited by another customer' do
       let(:user) { users(:affiliate_added_by_another_affiliate_with_pending_email_verification_status) }
 
       before do
@@ -156,9 +156,8 @@ skip do
   describe "#welcome_to_new_user_added_by_affiliate" do
     let(:user) do
       mock_model(User,
-           :email => "invitee@agency.com",
-           :contact_name => 'Invitee Joe',
-           :email_verification_token => 'some_special_token')
+                 email: 'invitee@agency.com',
+                 contact_name: 'Invitee Joe')
     end
 
     let(:current_user) { mock_model(User, :email => "inviter@agency.com", :contact_name => 'Inviter Jane') }
@@ -168,7 +167,7 @@ skip do
 
     it { should deliver_to("invitee@agency.com") }
     it { should have_subject(/\[Search.gov\] Welcome to Search.gov/) }
-    it { should have_body_text(/https:\/\/localhost:3000\/complete_registration\/some_special_token\/edit/) }
+    it { should have_body_text(/https:\/\/localhost:3000\/sites/) }
   end
 
   describe '#daily_snapshot' do
