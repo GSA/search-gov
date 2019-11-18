@@ -33,7 +33,7 @@ class TrendingTermsQuery
         json.aggs do
           json.clientip_count do
             json.cardinality do
-              json.field 'clientip.raw'
+              json.field 'clientip'
             end
           end
         end
