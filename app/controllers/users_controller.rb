@@ -3,11 +3,6 @@ class UsersController < ApplicationController
   before_action :require_no_user, :only => [:new, :create]
   before_action :require_user, :only => [:show, :edit, :update]
 
-  def new
-    @user = User.new
-    render layout: 'application'
-  end
-
   def create
     @user = User.new(user_params)
     if verify_recaptcha(:model => @user, :message => 'Word verification is incorrect') && @user.save
