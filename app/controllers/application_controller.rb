@@ -93,7 +93,8 @@ class ApplicationController < ActionController::Base
 
   def require_no_user
     if current_user
-      store_location
+      # SRCH-941  Login.gov Phase 2
+      # store_location
       redirect_to account_url
       false
     end
@@ -101,11 +102,6 @@ class ApplicationController < ActionController::Base
 
   def store_location
     session[:return_to] = request.fullpath
-  end
-
-  def redirect_back_or_default(default)
-    redirect_to(session[:return_to] || default)
-    session[:return_to] = nil
   end
 
   def permitted_params
