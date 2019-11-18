@@ -19,11 +19,7 @@ Feature: Dashboard
     Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org"
     When I go to the sites page
     Then I should see "Add a New Site"
-
-  Scenario: Viewing a site without logging in
-    When I go to the usagov's Dashboard page
-    Then I should see "Login" button
-
+    
   Scenario: Viewing a site after logging in
     Given I am logged in with email "affiliate_manager@fixtures.org"
     When I go to the usagov's Dashboard page
@@ -126,9 +122,9 @@ Feature: Dashboard
     When I go to the usagov's Dashboard page
     And I follow "Manage Users"
     Then I should see the following table rows:
-      | Affiliate Manager affiliate_manager@fixtures.org            |
-      | Jane Admin admin2@fixtures.gov (Pending email verification) |
-      | John Admin admin1@fixtures.gov (Pending email verification) |
+      | Affiliate Manager affiliate_manager@fixtures.org  |
+      | Jane Admin admin2@fixtures.gov                    |
+      | John Admin admin1@fixtures.gov                    |
 
   @javascript
   Scenario: Add/remove user
@@ -169,13 +165,7 @@ Feature: Dashboard
 
     When I open the email
     And I click the complete registration link in the email
-    Then the "Your full name" field should contain "Jane Admin"
-    Then the "Email" field should contain "jane@admin.org"
-    When I fill in the following:
-      | Federal government agency | My Agency   |
-      | Password                  | test1234!   |
-    And I press "Complete the sign up process"
-    Then I should see "Site Overview"
+    Then I should see "Security Notification"
 
   @javascript
   Scenario: Add existing user to site

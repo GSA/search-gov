@@ -16,9 +16,7 @@ class Sites::BaseController < ApplicationController
 
   def require_approved_user
     unless current_user.is_approved?
-      if current_user.is_pending_email_verification?
-        flash[:notice] = 'Your email address has not been verified. Please check your inbox so we may verify your email address.'
-      elsif current_user.is_pending_approval?
+      if current_user.is_pending_approval?
         flash[:notice] = 'Your account has not been approved. Please try again when you are set up.'
       end
       redirect_to account_path
