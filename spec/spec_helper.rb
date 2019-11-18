@@ -114,6 +114,8 @@ RSpec.configure do |config|
       VCR.use_cassette(name, options, &example)
     end
   end
+
+  config.include OmniauthHelpers
 end
 
 Shoulda::Matchers.configure do |config|
