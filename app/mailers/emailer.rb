@@ -45,6 +45,7 @@ class Emailer < ApplicationMailer
 
   def user_approval_removed(user)
     @user = user
+    @user_contact_name = user.contact_name.presence || user.email
     setup_email("usagov@search.gov", __method__)
     send_mail(:text)
   end
@@ -57,6 +58,7 @@ class Emailer < ApplicationMailer
 
   def new_affiliate_site(affiliate, user)
     @affiliate = affiliate
+    @user_contact_name = user.contact_name.presence || user.email
     generic_user_text_email(user, __method__)
   end
 
