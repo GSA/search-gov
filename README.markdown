@@ -52,7 +52,26 @@ If you find that you need to run specs that interact with a remote service, you'
 
 Anything listed in the `secret_keys` entry of that file will automatically be masked by VCR in newly-recorded cassettes.
 
-## Database
+## Dependencies
+To run the test suite successfully ElasticSearch and MYSQL must be running.  
+You can bring up these dependencies manually or with docker.
+
+### Docker
+In lieu of installing and running MYSQL and ElasticSearch locally you can run 
+
+    ```docker-compose -f docker-compose.dependencies.yml```
+
+
+which will start both versions of ElasticSearch and a MYSQL instance.  
+Once the containers are running you will need to seed the database with the following commands
+    
+    $ rake db:setup
+    $ rake db:test:prepare
+    
+The database is not persisted outside of the container so these commands will need to be run every time the containers start.
+The containers do not need to be restarted on any specific cadence, they can stay up basically all the time.
+ [Next Section](#redis)
+### Database
 
 Install MySQL 5.6.x using Homebrew:
 ```
@@ -90,7 +109,7 @@ Create and setup your development and test databases. The database.yml file assu
     $ rake db:setup
     $ rake db:test:prepare
 
-### Troubleshooting your database setup
+#### Troubleshooting your database setup
 
 Problems may arise if you have multiple versions of MySQL installed, or if you have installed MySQL via the OSX installer instead of or in addition to Homebrew. Below are some troubleshooting steps:
 
@@ -116,7 +135,7 @@ $ gem uninstall mysql2
 $ gem install mysql2 -v '0.3.11' --   --with-mysql-lib=$(brew --prefix mysql56)/lib   --with-mysql-dir=$(brew --prefix mysql56)   --with-mysql-config=$(brew --prefix mysql56)/bin/mysql_config   --with-mysql-include=$(brew --prefix mysql56)/include
 ```
 
-## Asset pipeline
+### Asset pipeline
 
 A few tips when working with asset pipeline:
 
@@ -128,7 +147,7 @@ A few tips when working with asset pipeline:
 
         Rails.application.assets['relative_path/to_asset.ext']
 
-## JAVA
+### JAVA
 
 Install Java 8.
 
@@ -136,7 +155,7 @@ Install Java 8.
 
     $ brew cask install java8
     
-## Elasticsearch
+### Elasticsearch
 
 We're using [Elastic](http://www.elasticsearch.org/) v1.7.3 for fulltext search and query analytics.
 
@@ -198,7 +217,7 @@ To facilitate use of this container a makefile has been provided with the follow
      
      
      
-### Indexes
+#### Indexes
 
 You can create the USASearch-related indexes like this:
 
