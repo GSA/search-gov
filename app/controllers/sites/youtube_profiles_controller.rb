@@ -12,7 +12,7 @@ class Sites::YoutubeProfilesController < Sites::SetupSiteController
   end
 
   def after_profile_deleted
-    @site.disable_video_govbox! unless @site.youtube_profiles(true).exists?
+    @site.disable_video_govbox! unless @site.youtube_profiles.reload.exists?
   end
 
   def human_profile_name

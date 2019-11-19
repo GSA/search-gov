@@ -110,7 +110,7 @@ describe ElasticIndexedDocument do
         ElasticIndexedDocument.commit
       end
 
-      it 'should show everything in two 75 char fragments joined by ellipses' do
+      it 'shows everything in two 75 char fragments joined by ellipses' do
         search = ElasticIndexedDocument.search_for(q: 'president', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
         first = search.results.first
         ellipsized_results = "\uE000President\uE001 Obama overcame furious lobbying by big banks to pass Dodd-Frank Wall...snippets. This sentence ends with \uE000President\uE001 Obama. Excessive risk-taking led"
@@ -193,12 +193,12 @@ describe ElasticIndexedDocument do
 
     describe "title and description and body" do
       it 'should be case insentitive' do
-        expect(ElasticIndexedDocument.search_for(q: 'OBAMA', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
+        expect(ElasticIndexedDocument.search_for(q: 'OBAMå', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
         expect(ElasticIndexedDocument.search_for(q: 'yosemite', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
         expect(ElasticIndexedDocument.search_for(q: 'SpellinG', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
       end
 
-      it 'should perform ASCII folding' do
+      it 'performs ASCII folding' do
         expect(ElasticIndexedDocument.search_for(q: 'øbåmà', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
         expect(ElasticIndexedDocument.search_for(q: 'yøsemîte', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
         expect(ElasticIndexedDocument.search_for(q: 'spélliñg', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
@@ -234,15 +234,6 @@ describe ElasticIndexedDocument do
           expect(ElasticIndexedDocument.search_for(q: 'Brad Miller -yellowstone', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
         end
 
-        context 'when query contains specific field queries using "field:" followed by query term or grouped phrase or quoted string' do
-          it 'should find documents in the specified field based on term, advanced query or exact string' do
-            expect(ElasticIndexedDocument.search_for(q: 'Miller body:dolphins', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
-            expect(ElasticIndexedDocument.search_for(q: 'Miller body:porpoises', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(0)
-            expect(ElasticIndexedDocument.search_for(q: 'Miller body:(dolphins OR whales)', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(2)
-            expect(ElasticIndexedDocument.search_for(q: 'Miller body:"text about dolphins"', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
-          end
-        end
-
         context 'when query contains a wildcard' do
           it 'should find documents in the specified field based on truncation' do
             expect(ElasticIndexedDocument.search_for(q: 'dolphn*', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(0)
@@ -250,7 +241,6 @@ describe ElasticIndexedDocument do
             expect(ElasticIndexedDocument.search_for(q: 'dolph*', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
             expect(ElasticIndexedDocument.search_for(q: 'dolph?n', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
             expect(ElasticIndexedDocument.search_for(q: 'do*', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(2)
-            expect(ElasticIndexedDocument.search_for(q: 't?xt', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(2)
           end
         end
       end

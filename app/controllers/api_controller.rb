@@ -1,6 +1,6 @@
 class ApiController < ApplicationController
   DEFAULT_API_PER_PAGE = 10.freeze
-  before_filter :load_affiliate
+  before_action :load_affiliate
 
   def search
     @search_options = search_options_from_params.merge(
@@ -21,7 +21,7 @@ class ApiController < ApplicationController
   def load_affiliate
     @affiliate = Affiliate.active.find_by_name(params[:affiliate].to_s) if params[:affiliate].present?
     unless @affiliate and WhitelistedV1ApiHandle.exists?(handle: @affiliate.name)
-      render :text => 'Not Found', :status => 404
+      render plain: 'Not Found', status: 404
       false
     end
   end

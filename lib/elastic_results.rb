@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ElasticResults
   attr_reader :total, :offset, :results, :aggregations, :suggestion
 
@@ -16,7 +18,7 @@ class ElasticResults
   private
 
   def extract_suggestion(suggestions)
-    Hashie::Mash::Rash.new(suggestions.first['options'].first) rescue nil
+    Hashie::Mash::Rash.new(suggestions.first['options'].first)
   end
 
   def extract_results(hits)
@@ -31,6 +33,7 @@ class ElasticResults
 
   def highlight(highlight, instance)
     if highlight.present? and instance.present?
+      highlight.transform_keys! { |key| key.remove(/\..*/) }
       highlight_instance(highlight, instance)
     end
     instance

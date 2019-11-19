@@ -90,7 +90,7 @@ describe NewsSearch do
         expect(@search.run).to be true
       end
 
-      it "should have more than 0 results" do
+      it 'returns more than 0 results' do
         @search.run
         expect(@search.results.size).to be > 0
       end

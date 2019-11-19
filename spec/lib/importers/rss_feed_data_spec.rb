@@ -300,7 +300,7 @@ describe RssFeedData do
 
       it 'should persist media thumbnail and media content properties' do
         RssFeedData.new(media_rss_url).import
-        expect(media_rss_url.news_items(true).count).to eq(3)
+        expect(media_rss_url.news_items.reload.count).to eq(3)
         item_with_media_props = media_rss_url.news_items.find_by_link 'http://www.flickr.com/photos/usgeologicalsurvey/8594929349/'
 
         media_content = item_with_media_props.properties[:media_content]
@@ -331,7 +331,7 @@ describe RssFeedData do
 
       it 'should persist media thumbnail and media content properties' do
         RssFeedData.new(media_rss_url).import
-        expect(media_rss_url.news_items(true).count).to eq(3)
+        expect(media_rss_url.news_items.reload.count).to eq(3)
         link = 'http://www.usgs.gov/blogs/features/usgs_top_story/national-groundwater-awareness-week-2/'
         item_with_media_props = media_rss_url.news_items.find_by_link link
 

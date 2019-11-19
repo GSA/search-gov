@@ -63,7 +63,7 @@ module BootstrapHelper
       html = displayable_flash.map do |key, msg|
         content = ''
         content << button_tag('×', class: 'close', 'data-dismiss' => 'alert') if with_close_button
-        content << h(msg)
+        content << h(sanitize(msg))
         content_tag(:div, content.html_safe, class: "alert alert-#{key}")
       end
       html.join('\n').html_safe

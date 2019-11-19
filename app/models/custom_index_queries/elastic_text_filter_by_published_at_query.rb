@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ElasticTextFilterByPublishedAtQuery < ElasticTextFilteredQuery
   def initialize(options)
     super

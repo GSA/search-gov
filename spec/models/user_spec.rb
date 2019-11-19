@@ -5,7 +5,6 @@ describe User do
 
   let(:valid_attributes) do
     { email: "unique_login@agency.gov",
-      password: "password1!",
       contact_name: "Some One",
       organization_name: "Agency",
     }.freeze
@@ -13,10 +12,9 @@ describe User do
 
   before do
     @valid_affiliate_attributes = {
-        :email => "some.guy@usa.gov",
-        :contact_name => "Some Guy",
-        :password => "password1!",
-        :organization_name => "Agency",
+      email: 'some.guy@usa.gov',
+      contact_name: 'Some Guy',
+      organization_name: 'Agency'
     }
     @emailer = double(Emailer)
     allow(@emailer).to receive(:deliver_now).and_return true
@@ -26,7 +24,6 @@ describe User do
     it { is_expected.to have_db_column(:failed_login_count).of_type(:integer).with_options(default: 0, null: false) }
     it { is_expected.to have_db_column(:password_updated_at).of_type(:datetime).with_options(null: true) }
     it { should have_db_column(:uid).of_type(:string) }
-    it { should have_db_index(:uid).unique(true) }
   end
 
   describe "when validating" do
@@ -38,18 +35,11 @@ describe User do
 
     it { is_expected.to validate_presence_of :email }
     it { is_expected.to validate_uniqueness_of(:email).case_insensitive }
-    it { is_expected.to validate_length_of(:password).is_at_least(8) }
-    it { is_expected.to validate_presence_of :contact_name }
+
+    # login.gov - commented out till SRCH-893
+    xit { is_expected.to validate_presence_of :contact_name }
     it { is_expected.to have_many(:memberships).dependent(:destroy) }
     it { is_expected.to have_many(:affiliates).through :memberships }
-
-    it 'rejects passwords without at least one letter/number/symbol' do
-      %w( password 12345678 !@@#$%^&* test1234 a1! ).each do |password|
-        user = User.new(password: password)
-        user.valid?
-        expect(user.errors[:password][0]).to match /must include a combination of letters/
-      end
-    end
 
     it 'allows passwords with at least one letter/number/symbol' do
       %w( password1! P?12345678 TesT1234! PW1!@#$%^*& ).each do |password|
@@ -58,7 +48,8 @@ describe User do
       end
     end
 
-    it 'requires an organization name' do
+    # login.gov - commented out till SRCH-893
+    xit 'requires an organization name' do
       user = User.new
       user.valid?
       expect(user.errors.full_messages).to include("Federal government agency can't be blank")
@@ -79,12 +70,6 @@ describe User do
       User.create!(valid_attributes)
     end
 
-    it "should send email verification to user" do
-      expect(Emailer).to receive(:user_email_verification).with(an_instance_of(User)).and_return @emailer
-
-      User.create!(valid_attributes)
-    end
-
     it "should not receive welcome to new user added by affiliate" do
       expect(Emailer).to_not receive(:welcome_to_new_user_added_by_affiliate)
       User.create!(valid_attributes)
@@ -93,57 +78,6 @@ describe User do
     context "when the flag to not send an email is set to true" do
       it "should not send any emails" do
         User.create!(valid_attributes.merge(:skip_welcome_email => true))
-      end
-    end
-
-    context 'when updating a password' do
-      let(:user) { User.create!(valid_attributes.merge(password: 'goodpass1!')) }
-
-      context 'when password confirmation is not required' do
-        before { user.update(password: 'newpass123!') }
-
-        it 'updates the password' do
-          expect(user.valid_password?('newpass123!')).to be true
-        end
-      end
-
-      context 'when password confirmation is required' do
-        before { user.require_password_confirmation = true }
-
-        context 'when the current password is correct' do
-
-          context 'when the new password is different from the current password' do
-            before { user.update!(password: 'newpass123!', current_password: 'goodpass1!') }
-
-            it 'updates the password' do
-              expect(user.valid_password?('newpass123!')).to be true
-            end
-          end
-
-          context 'when the new password is the same as the current password' do
-            before { user.update(password: 'goodpass1!', current_password: 'goodpass1!') }
-
-            it 'fails' do
-              expect(user.errors[:password]).to eq ['is invalid: new password must be different from current password']
-            end
-          end
-        end
-
-        context 'when the current password is incorrect' do
-          before { user.update(password: 'newpass123!', current_password: 'foobar123!') }
-
-          it 'fails' do
-            expect(user.errors[:current_password]).to eq ['is invalid']
-          end
-        end
-
-        context 'when the current password is not provided' do
-          before { user.update(password: 'newpass123!') }
-
-          it 'fails' do
-            expect(user.errors[:current_password]).to eq ['is invalid']
-          end
-        end
       end
     end
 
@@ -218,34 +152,6 @@ describe User do
     let(:original_token) { 'original_perishable_token_that_should_change' }
     let(:random_new_token) { 'something_random_the_token_should_change_to' }
 
-    it "does not reset the user's perishable token" do
-      expect{ user.deliver_password_reset_instructions! }.
-        not_to change{ user.perishable_token }
-    end
-
-    context 'when the user has no perishable token' do
-      let(:user) { User.create!(valid_attributes.merge(perishable_token: nil)) }
-
-      it "sets the user's perishable token" do
-        expect{ user.deliver_password_reset_instructions! }.
-          to change{ user.perishable_token }.from(nil).to(random_new_token)
-      end
-    end
-
-    context 'when the perishable token is expired' do
-      #yes, the expiration is based on updated_at...blame authlogic
-      before { user.update_attribute(:updated_at, 2.hours.ago) }
-
-      it 'resets the token' do
-        expect{ user.deliver_password_reset_instructions! }.
-          to change{ user.perishable_token }.from(original_token).to(random_new_token)
-      end
-    end
-
-    it 'sends the password_reset_instructions email' do
-      expect(Emailer).to receive(:password_reset_instructions).and_return(@emailer)
-      user.deliver_password_reset_instructions!
-    end
   end
 
   describe '#has_government_affiliated_email' do
@@ -273,12 +179,47 @@ describe User do
       expect(user.email).to eq('aff@agency.gov')
     end
 
-    it "should set approval status to pending_email_verification" do
-      %w( aff@agency.GOV aff@anotheragency.gov admin@agency.mil anotheradmin@agency.MIL aff@agency.COM aff@anotheragency.com admin.gov@agency.org anotheradmin.MIL@agency.ORG escape_the_dot@foo.xmil ).each do |email|
-        user = User.create!(@valid_affiliate_attributes.merge(email: email))
-        expect(user.is_pending_email_verification?).to be true
+    context 'when a user has a .gov/.mil email address' do
+      let(:emails) do
+        %w[aff@agency.GOV aff@anotheragency.gov admin@agency.mil anotheradmin@agency.MIL]
+      end
+
+      it 'sets the approval status to approved' do
+        emails.each do |email|
+          user = User.create!(@valid_affiliate_attributes.merge(email: email))
+          expect(user.is_approved?).to be true
+        end
       end
     end
+
+    context 'when a user has a non gov email address' do
+      let(:emails) do
+        %w[aff@agency.COM aff@anotheragency.com admin.gov@agency.org anotheradmin.MIL@agency.ORG
+         escape_the_dot@foo.xmil]
+      end
+
+      it 'sets the approval status to pending_approval' do
+        emails.each do |email|
+          user = User.create!(@valid_affiliate_attributes.merge(email: email))
+          expect(user.is_pending_approval?).to be true
+        end
+      end
+    end
+
+    context 'when a user is an affiliate and the email is not government_affiliated' do
+      let(:emails) do
+        %w[aff@agency.COM aff@anotheragency.com admin.gov@agency.org
+           anotheradmin.MIL@agency.ORG escape_the_dot@foo.xmil]
+      end
+
+      it 'sets requires_manual_approval' do
+        emails.each do |email|
+          user = User.create!(@valid_affiliate_attributes.merge(email: email))
+          expect(user.requires_manual_approval?).to be true
+        end
+      end
+    end
+
 
     it "should not set requires_manual_approval if the user is an affiliate and the email is government_affiliated" do
       %w( aff@agency.GOV aff@anotheragency.gov admin@agency.mil anotheradmin@agency.MIL ).each do |email|
@@ -286,51 +227,15 @@ describe User do
         expect(user.requires_manual_approval?).to be false
       end
     end
-
-    it "should set requires_manual_approval if the user is an affiliate and the email is not government_affiliated" do
-      %w( aff@agency.COM aff@anotheragency.com admin.gov@agency.org anotheradmin.MIL@agency.ORG escape_the_dot@foo.xmil ).each do |email|
-        user = User.create!(@valid_affiliate_attributes.merge(:email => email))
-        expect(user.requires_manual_approval?).to be true
-      end
-    end
-
-    it "should set email_verification_token if the user is pending_email_verification" do
-      user = User.create!(@valid_affiliate_attributes)
-      expect(user.is_pending_email_verification?).to be true
-      expect(user.email_verification_token).not_to be_blank
-    end
-
-    context "when the same email_verification_token as another user is generated" do
-      let(:user) { User.new(valid_attributes).tap { |u| puts u.inspect } }
-      let(:token) { 'unique token' }
-
-      before do
-        existing_user = users(:affiliate_manager_with_pending_contact_information_status)
-        allow(Authlogic::Random).to receive(:friendly_token).and_return(
-          'salt_for_user_password',                # for the initial User.new
-          existing_user.email_verification_token,  # induces uniqueness error
-          token                                    # final value works because it's unique
-        )
-      end
-
-      it "doesn't raise the uniqueness constraint violation error" do
-        expect { user.save(valid_attributes)}.to_not raise_error
-      end
-
-      it "assigns a new email_verification_token" do
-        user.save
-        expect(user.email_verification_token).to eq(token)
-      end
-    end
   end
 
   context "when saving/updating" do
-    it { is_expected.to allow_value("pending_email_verification").for(:approval_status) }
     it { is_expected.to allow_value("pending_approval").for(:approval_status) }
     it { is_expected.to allow_value("approved").for(:approval_status) }
     it { is_expected.to allow_value("not_approved").for(:approval_status) }
 
-    context 'when updating an email address' do
+    # login.gov - commented out till SRCH-952. Updating email address will have a different flow.
+    pending 'when updating an email address' do
       let(:user) { users(:affiliate_admin) }
       let(:new_email) { 'new@new.gov' }
       subject(:update_email) { user.update(email: new_email) }
@@ -407,7 +312,9 @@ describe User do
     end
   end
 
-  describe "#verify_email" do
+  # login.gov - commented out till SRCH-953. When user registers they still get a welcome
+  # email but the email does not need to be verified.
+  pending "#verify_email" do
     context "has matching email verification token and does not require manual approval" do
       before do
         @user = users(:affiliate_added_by_another_affiliate_with_pending_email_verification_status)
@@ -471,11 +378,6 @@ describe User do
         end
       end
     end
-
-    it "should return false if the user does not have matching email_verification_token" do
-      user = users(:affiliate_manager_with_pending_email_verification_status)
-      expect(user.verify_email('mismatched token')).to be false
-    end
   end
 
   describe "#send_new_affiliate_user_email" do
@@ -527,46 +429,54 @@ describe User do
     end
   end
 
-  describe "#new_invited_by_affiliate" do
+  describe '#new_invited_by_affiliate' do
     let(:inviter) { users(:affiliate_manager) }
     let(:affiliate) { affiliates(:basic_affiliate) }
 
-    context "when contact_name and email are provided" do
+    context 'when contact_name and email are provided' do
 
-      it "should initialize new user with assign affiliate, contact_name, and email" do
-        new_user = User.new_invited_by_affiliate(inviter, affiliate, { :contact_name => 'New User Name', :email => 'newuser@approvedagency.com' })
+      it 'initializes new user with assign affiliate, contact_name, and email' do
+        new_user = User.new_invited_by_affiliate(inviter,
+                                                 affiliate,
+                                                 { contact_name: 'New User Name',
+                                                   email: 'newuser@approvedagency.com' })
         new_user.save!
         expect(new_user.affiliates.first).to eq(affiliate)
         expect(new_user.contact_name).to eq('New User Name')
         expect(new_user.email).to eq('newuser@approvedagency.com')
         expect(new_user.is_affiliate?).to be true
         expect(new_user.requires_manual_approval).to be false
-        expect(new_user.is_pending_email_verification?).to be true
+        expect(new_user.is_approved?).to be true
         expect(new_user.welcome_email_sent).to be false
         expect(affiliate.users).to include(new_user)
       end
 
-      it "should receive welcome new user added by affiliate email verification" do
+      it 'receives the welcome new user added by affiliate email verification' do
         expect(Emailer).to receive(:welcome_to_new_user_added_by_affiliate).and_return @emailer
         expect(Emailer).to_not receive(:new_user_email_verification)
-        new_user = User.new_invited_by_affiliate(inviter, affiliate, { :contact_name => 'New User Name', :email => 'newuser@approvedagency.com' })
+        new_user = User.new_invited_by_affiliate(inviter,
+                                                 affiliate,
+                                                 { contact_name: 'New User Name',
+                                                   email: 'newuser@approvedagency.com' })
         new_user.save!
-        expect(new_user.email_verification_token).not_to be_blank
       end
     end
   end
 
-  describe "#complete_registration" do
+  describe '#complete_registration' do
     let(:inviter) { users(:affiliate_manager) }
     let(:affiliate) { affiliates(:basic_affiliate) }
 
     before do
-      @user = User.new_invited_by_affiliate(inviter, affiliate, { :contact_name => 'New User Name', :email => 'newuser@approvedagency.com' })
+      @user = User.new_invited_by_affiliate(inviter,
+                                            affiliate,
+                                            { contact_name: 'New User Name',
+                                              email: 'newuser@approvedagency.com' })
       @user.save!
     end
 
-    context "when executed" do
-      let(:user) { user = User.find @user.id }
+    context 'when executed' do
+      let(:user) { User.find @user.id }
 
       before do
         expect(user).to receive(:update)
@@ -575,18 +485,6 @@ describe User do
       end
 
       it { expect(user).to be_is_approved }
-      it "should set email_verification_token to nil" do
-        expect(user.email_verification_token).to be_nil
-      end
-
-      it "requires a password" do
-        expect(user.require_password).to be true
-      end
-    end
-
-    context 'when password is blank' do
-      let(:user) { user = User.find @user.id }
-      specify { expect(user.complete_registration({ password: '' })).to be false }
     end
   end
 
@@ -644,48 +542,26 @@ describe User do
     end
   end
 
-  describe '#password_updated_at' do
-    let(:user) { users(:affiliate_admin) }
+  describe '.from_omniauth' do
+    let(:auth) { mock_user_auth('foo@gsa.gov', '55555') }
 
-    it 'is set when the user is created' do
-      expect(user.password_updated_at).to_not be_nil
+    subject(:from_omniauth) { User.from_omniauth(auth) }
+
+    it { is_expected.to be_a_kind_of(User) }
+
+    context 'when the user is new' do
+      it 'sets the uid' do
+        expect(from_omniauth.uid).to(eq '55555')
+      end
     end
 
-    it 'is set when the password is updated' do
-      expect { user.update(password: "new1234!") }.
-        to change{ user.password_updated_at }
-    end
+    context 'when existing user no uid' do
+      let(:auth) { mock_user_auth('user_without_uid@fixtures.org', '22222') }
+      let(:user) { users(:user_without_uid) }
 
-    it 'is not set when other attributes are updated' do
-      expect { user.update(contact_name: 'Kermit the Frog') }.
-        to_not change{ user.password_updated_at }
-    end
-
-    it 'is not set when the password is blank' do
-      expect { user.update(email: 'new@example.com', password: '') }.
-        to_not change{ user.password_updated_at }
-    end
-  end
-
-  describe '#requires_password_reset?' do
-    subject { user.requires_password_reset? }
-
-    context 'when the password has never been reset' do
-      let(:user) { User.new }
-
-      it { is_expected.to eq true }
-    end
-
-    context 'when the password has been reset more than 90 days ago' do
-      let(:user) { User.new(password_updated_at: 91.days.ago) }
-
-      it { is_expected.to eq true }
-    end
-
-    context 'when the password has been reset within 90 days' do
-      let(:user) { User.new(password_updated_at: 89.days.ago) }
-
-      it { is_expected.to eq false }
+      it 'sets the uid' do
+        expect(from_omniauth.uid).to eq '22222'
+      end
     end
   end
 end

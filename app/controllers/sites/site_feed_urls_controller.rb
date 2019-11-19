@@ -1,6 +1,6 @@
 class Sites::SiteFeedUrlsController < Sites::SetupSiteController
-  before_filter :setup_site
-  before_filter :setup_site_feed_url
+  before_action :setup_site
+  before_action :setup_site_feed_url
 
   def edit
   end
@@ -34,6 +34,6 @@ class Sites::SiteFeedUrlsController < Sites::SetupSiteController
   def site_feed_url_params
     @site_feed_url_params ||= params.require(:site_feed_url).
         permit(:rss_url).
-        merge(last_checked_at: nil, last_fetch_status: 'Pending')
+        merge(last_checked_at: nil, last_fetch_status: 'Pending').to_h
   end
 end

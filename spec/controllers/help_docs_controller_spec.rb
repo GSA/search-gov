@@ -37,7 +37,7 @@ describe HelpDocsController do
 
       before do
         expect(HelpDoc).not_to receive(:extract_article)
-        get :show, url: url, format: :json
+        get :show, params: { url: url }, format: :json
       end
       it { is_expected.to redirect_to('https://www.usa.gov/search-error') }
     end

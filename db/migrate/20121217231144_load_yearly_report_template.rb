@@ -4,6 +4,6 @@ class LoadYearlyReportTemplate < ActiveRecord::Migration
   end
 
   def down
-    EmailTemplate.delete_all(:name => 'affiliate_yearly_report')
+    EmailTemplate.where(name: 'affiliate_yearly_report').delete_all
   end
 end

@@ -1,6 +1,6 @@
 class Sites::TagFiltersController < Sites::SetupSiteController
-  before_filter :setup_site
-  before_filter :setup_tag_filter, only: [:destroy]
+  before_action :setup_site
+  before_action :setup_tag_filter, only: [:destroy]
 
   def index
   end

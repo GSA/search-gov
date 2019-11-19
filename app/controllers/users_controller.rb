@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   layout 'sites'
-  before_filter :require_no_user, :only => [:new, :create]
-  before_filter :require_user, :only => [:show, :edit, :update]
+  before_action :require_no_user, :only => [:new, :create]
+  before_action :require_user, :only => [:show, :edit, :update]
 
   def new
     @user = User.new
@@ -25,6 +25,16 @@ class UsersController < ApplicationController
 
   def show
     @user = @current_user
+
+    message = <<~MESSAGE
+      Because you don't have a .gov or .mil email address, we need additional information.
+      If you are a contractor on an active contract, please use your .gov or .mil email
+      address on this account, or have your federal POC email search@support.digitalgov.gov
+      to confirm your status.
+    MESSAGE
+
+    flash[:notice] = message unless @user.has_government_affiliated_email? ||
+                                    @user.approval_status == 'approved'
   end
 
   def edit
@@ -33,7 +43,6 @@ class UsersController < ApplicationController
 
   def update
     @user = @current_user # makes our views "cleaner" and more consistent
-    @user.require_password_confirmation = true if user_params[:password].present?
     if @user.update_attributes(user_params)
       flash[:success] = "Account updated!"
       redirect_to account_url
@@ -53,8 +62,6 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:contact_name,
                                  :organization_name,
-                                 :email,
-                                 :password,
-                                 :current_password)
+                                 :email).to_h
   end
 end

@@ -1,5 +1,6 @@
-class ElasticBestBetQuery < ElasticTextFilteredQuery
+# frozen_string_literal: true
 
+class ElasticBestBetQuery < ElasticTextFilteredQuery
   def initialize(options)
     super(options)
     @affiliate_id = options[:affiliate_id]
@@ -20,19 +21,23 @@ class ElasticBestBetQuery < ElasticTextFilteredQuery
   end
 
   def filtered_query_query(json)
-    json.query do
+    return if @q.blank?
+
+    json.must do
       json.bool do
         json.set! :should do |should_json|
           should_json.child! { should_json.match { should_json.keyword_values @q } }
           should_json.child! do
             should_json.bool do
               should_json.must_not { json.term { json.match_keyword_values_only true } }
-              should_json.must { multi_match(should_json, highlighted_fields, @q, multi_match_options) }
+              should_json.must do
+                multi_match(should_json, highlighted_fields, @q, multi_match_options)
+              end
             end
           end
         end
       end
-    end if @q.present?
+    end
   end
 
   def multi_match_options
@@ -48,5 +53,4 @@ class ElasticBestBetQuery < ElasticTextFilteredQuery
       end
     end
   end
-
 end

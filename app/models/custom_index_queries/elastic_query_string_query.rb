@@ -1,12 +1,12 @@
+# frozen_string_literal: true
+
 module ElasticQueryStringQuery
   def filtered_query_query(json)
-    json.query do
-      json.bool do
-        json.must do
-          json.child! { query_string(json, highlighted_fields, @q, query_string_options) }
-        end
-      end
-    end if @q.present?
+    return if @q.blank?
+
+    json.must do
+      json.child! { query_string(json, highlighted_fields, @q, query_string_options) }
+    end
   end
 
   def query_string(json, fields, query, options = {})
@@ -18,5 +18,4 @@ module ElasticQueryStringQuery
       end
     end
   end
-
 end

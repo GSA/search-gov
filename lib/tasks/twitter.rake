@@ -47,7 +47,7 @@ namespace :usasearch do
 
         twitter_client.on_delete do |status_id, user_id|
           logger.info "[#{Time.now}] [TWITTER] [ONDELETE] Received delete request for status##{status_id}"
-          Tweet.destroy_all(:tweet_id => status_id)
+          Tweet.where(:tweet_id => status_id).destroy_all
         end
 
         do_follow = lambda do |twitter_client|

@@ -1,8 +1,8 @@
 class Sites::DocumentCollectionsController < Sites::SetupSiteController
   include ::Hintable
 
-  before_filter :setup_collection, only: [:show, :edit, :update, :destroy]
-  before_filter :load_hints, only: %i(edit new new_url_prefix)
+  before_action :setup_collection, only: %i[show edit update destroy]
+  before_action :load_hints, only: %i(edit new new_url_prefix)
 
   def index
     @document_collections = @site.document_collections
@@ -76,7 +76,9 @@ class Sites::DocumentCollectionsController < Sites::SetupSiteController
   end
 
   def collection_params
-    params.require(:document_collection).permit(:name,
-                                                { url_prefixes_attributes: [:id, :prefix] })
+    params.require(:document_collection).permit(
+      :name,
+      url_prefixes_attributes: %i[id prefix]
+    ).to_h
   end
 end
