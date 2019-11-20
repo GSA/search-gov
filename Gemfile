@@ -108,7 +108,7 @@ gem 'less-rails-bootstrap', git: 'https://github.com/veelenga/less-rails-bootstr
 gem 'compass-rails', '~> 3.1.0'
 gem 'compass-blueprint', '~> 1.0.0'
 gem 'jquery-ui-rails', '~> 6.0.1'
-gem 'jquery-rails', git: 'https://github.com/GSA/jquery-rails', ref: 'c0c56208f57746a4bc63431d5e771cea4486efca'
+gem 'jquery-rails', '~> 4.3.5'
 gem 'therubyracer', '~> 0.12.3'
 gem 'yui-compressor', '~> 0.12.0'
 gem 'twitter-typeahead-rails', '~> 0.11.1'
