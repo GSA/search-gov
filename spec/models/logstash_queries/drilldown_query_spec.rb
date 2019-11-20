@@ -28,7 +28,7 @@ describe DrilldownQuery do
             },
             {
               "term": {
-                "affiliate": "affiliate_name"
+                "params.affiliate": "affiliate_name"
               }
             }
           ],
