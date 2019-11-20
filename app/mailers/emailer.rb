@@ -175,7 +175,7 @@ class Emailer < ApplicationMailer
     end
 
     mail email_headers do |format|
-      format.send(format_method) { render :text => ERB.new(@email_template_body).result(binding) }
+      format.send(format_method) { @email_template_body }
     end
   end
 
