@@ -130,7 +130,7 @@ describe Emailer do
       subject { Emailer.new_user_to_admin(user) }
 
       it { is_expected.to deliver_to('usagov@search.gov') }
-      it { is_expected.to have_body_text /Name: Invited Affiliate Manager\nEmail: affiliate_added_by_another_affiliate@fixtures.org\nOrganization name: Agency\n\n\n    Affiliate Manager added this person to 'Noaa Site'. He'll be approved after verifying his email./ }
+      it { is_expected.to have_body_text /Name: Invited Affiliate Manager\nEmail: affiliate_added_by_another_affiliate@fixtures.org\nOrganization name: Agency\n\n\n    Affiliate Manager added this person to 'Noaa Site'. They will be approved after verifying their email./ }
     end
 
     context "user didn't get invited by another customer (and thus has no affiliates either)" do
