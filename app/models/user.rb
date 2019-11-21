@@ -130,10 +130,6 @@ class User < ApplicationRecord
     Emailer.new_user_to_admin(self).deliver_now
   end
 
-  def deliver_user_email_verification
-    Emailer.user_email_verification(self).deliver_now
-  end
-
   def deliver_welcome_to_new_user_added_by_affiliate
     Emailer.
       welcome_to_new_user_added_by_affiliate(affiliates.first, self, inviter).
@@ -187,9 +183,5 @@ class User < ApplicationRecord
     note = "#{source} #{added_or_removed} User #{id}, #{email}, #{to_or_from}
             Affiliate #{site.id}, #{site.display_name} [#{site.name}].".squish
     Rails.logger.info(note)
-  end
-
-  def perishable_token_expired?
-    perishable_token && updated_at < (Time.now - User.perishable_token_valid_for)
   end
 end

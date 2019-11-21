@@ -11,8 +11,4 @@ class UserSession < Authlogic::Session::Base
   failed_login_ban_for 30.minutes
   generalize_credentials_error_messages INVALID_LOGIN_MESSAGE
   logout_on_timeout true
-
-  def persisted?
-    false
-  end
 end
