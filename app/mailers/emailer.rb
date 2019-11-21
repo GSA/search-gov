@@ -8,7 +8,6 @@ class Emailer < ApplicationMailer
   DELIVER_FROM_EMAIL_ADDRESS = 'no-reply@support.digitalgov.gov'
   REPLY_TO_EMAIL_ADDRESS = Rails.application.secrets.organization[:support_email_address]
   NOTIFICATION_SENDER_EMAIL_ADDRESS = 'notification@support.digitalgov.gov'
-
   def password_reset_instructions(user)
     @password_reset_url = edit_password_reset_url(user.perishable_token)
     generic_user_html_email(user, __method__)
@@ -175,7 +174,7 @@ class Emailer < ApplicationMailer
     end
 
     mail email_headers do |format|
-      format.send(format_method) { render :text => ERB.new(@email_template_body).result(binding) }
+      format.send(format_method) { @email_template_body }
     end
   end
 

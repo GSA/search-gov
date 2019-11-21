@@ -1,8 +1,7 @@
 require 'spec_helper'
 
 describe Jobs do
-  # Resolve 5.1 upgrade failures - SRCH-988
-  skip '.search(options)' do
+  describe '.search(options)' do
     subject(:search) do
       Jobs.search({ query:'Nursing jobs',
                     organization_codes: 'HE38',

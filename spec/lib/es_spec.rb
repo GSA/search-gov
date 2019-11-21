@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ES, skip: 'Resolve 5.1 upgrade failures - SRCH-988'  do
+describe ES do
   context 'when working in ES submodules' do
     let(:elk_objs) { Array.new(3, ES::ELK.client_reader) }
     let(:ci_objs) { Array.new(3, ES::ELK.client_reader) }
@@ -40,8 +40,8 @@ describe ES, skip: 'Resolve 5.1 upgrade failures - SRCH-988'  do
       let(:host) { client.transport.hosts.first }
 
       it 'uses the values from the secrets.yml analytics[elasticsearch][reader] entry' do
-        expect(host[:host]).to eq(URI(es_config['reader']['hosts'].first).host)
-        expect(host[:user]).to eq(es_config['reader']['user'])
+        expect(host[:host]).to eq(URI(es_config[:reader][:hosts].first).host)
+        expect(host[:user]).to eq(es_config[:reader][:user])
       end
 
       it_behaves_like 'an Elasticsearch client'
@@ -78,8 +78,8 @@ describe ES, skip: 'Resolve 5.1 upgrade failures - SRCH-988'  do
       let(:host) { client.transport.hosts.first }
 
       it 'uses the values from the secrets.yml custom_indices[elasticsearch][reader] entry' do
-        expect(host[:host]).to eq(URI(es_config['reader']['hosts'].first).host)
-        expect(host[:user]).to eq(es_config['reader']['user'])
+        expect(host[:host]).to eq(URI(es_config[:reader][:hosts].first).host)
+        expect(host[:user]).to eq(es_config[:reader][:user])
       end
 
       it_behaves_like 'an Elasticsearch client'
