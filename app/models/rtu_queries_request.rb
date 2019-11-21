@@ -60,6 +60,7 @@ class RtuQueriesRequest
                            query,
                            start_date,
                            end_date,
-                           { field: 'params.query.raw', size: MAX_RESULTS })
+                           field: 'params.query.raw',
+                           size: MAX_RESULTS)
   end
 end
