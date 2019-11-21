@@ -7,7 +7,7 @@ shared_examples "a redirect to searchblog" do
   its(:status) { should == Rack::Utils.status_code(:found) }
 end
 
-describe "/program", skip: 'Resolve 5.1 upgrade failures - SRCH-988' do
+describe "/program" do
   let(:path) { '/program' }
   it_should_behave_like "a redirect to searchblog"
 end
