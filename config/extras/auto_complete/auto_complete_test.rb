@@ -3,7 +3,7 @@ require 'spec/spec_helper'
 describe "auto_complete" do
   include AutoComplete
   include AutoCompleteMacrosHelper
-  
+
   include ActionView::Helpers::UrlHelper
   include ActionView::Helpers::TagHelper
   include ActionView::Helpers::TextHelper
@@ -13,8 +13,8 @@ describe "auto_complete" do
   include ActionDispatch::Routing
   include Rails.application.routes.url_helpers
   include ERB::Util
-  
-  before do  
+
+  before do
     @controller = Class.new do
       def url_for(options)
         url =  "http://www.example.com/"
@@ -38,18 +38,18 @@ describe "auto_complete" do
       %(<script type=\"text/javascript\">\n//<![CDATA[\nvar some_input_auto_completer = new Ajax.Autocompleter('some_input', 'some_input_auto_complete', '/affiliates/demo?action=autocomplete', {method:'get'})\n//]]>\n</script>).should == auto_complete_field("some_input", :url => { :action => "autocomplete" }, :method => :get)
     end
   end
-  
+
   describe "#test_auto_complete_result" do
     it "should return the proper results" do
       result = [ { :title => 'test1'  }, { :title => 'test2'  } ]
       %(<ul>&lt;li&gt;test1&lt;/li&gt;&lt;li&gt;test2&lt;/li&gt;</ul>).should == auto_complete_result(result, :title)
       %(<ul>&lt;li&gt;t&lt;strong class=&quot;highlight&quot;&gt;est&lt;/strong&gt;1&lt;/li&gt;&lt;li&gt;t&lt;strong class=&quot;highlight&quot;&gt;est&lt;/strong&gt;2&lt;/li&gt;</ul>).should == auto_complete_result(result, :title, "est")
-    
+
       resultuniq = [ { :title => 'test1'  }, { :title => 'test1'  } ]
       %(<ul>&lt;li&gt;t&lt;strong class=&quot;highlight&quot;&gt;est&lt;/strong&gt;1&lt;/li&gt;</ul>).should == auto_complete_result(resultuniq, :title, "est")
     end
   end
-  
+
   describe "test_text_field_with_auto_complete" do
     it "should output the appropriate text field" do
       text_field_with_auto_complete(:message, :recipient).index(%(<style type="text/css">)).should_not be_nil
