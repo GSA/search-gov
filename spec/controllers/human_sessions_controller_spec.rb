@@ -3,8 +3,7 @@ require 'spec_helper'
 describe HumanSessionsController do
   fixtures :affiliates
 
-  # Resolve 5.1 upgrade failures - SRCH-988
-  skip '#new' do
+  describe '#new' do
     render_views
 
     context 'when the referenced affiliate does not exist' do

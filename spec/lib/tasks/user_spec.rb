@@ -14,8 +14,7 @@ describe 'User rake tasks' do
   let(:not_active_user) { users(:not_active_user) }
   let(:affiliate) { affiliates(:basic_affiliate) }
 
-  # Resolve 5.1 upgrade failures - SRCH-988
-  skip 'usasearch:user:update_approval_status' do
+  describe 'usasearch:user:update_approval_status' do
     let(:task_name) { 'usasearch:user:update_approval_status' }
 
     before do
