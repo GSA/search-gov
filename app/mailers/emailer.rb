@@ -9,14 +9,16 @@ class Emailer < ApplicationMailer
   REPLY_TO_EMAIL_ADDRESS = Rails.application.secrets.organization[:support_email_address]
   NOTIFICATION_SENDER_EMAIL_ADDRESS = 'notification@support.digitalgov.gov'
 
-  def password_reset_instructions(user)
-    @password_reset_url = edit_password_reset_url(user.perishable_token)
-    generic_user_html_email(user, __method__)
-  end
-
   def new_user_to_admin(user)
     @user = user
-    setup_email("usagov@search.gov", __method__)
+    @user_contact_name = user.contact_name.presence || user.email
+
+    if @user.affiliates.any?
+      @user_inviter_contact_name = @user.inviter.contact_name.presence ||
+                                   @user.inviter.email
+    end
+
+    setup_email('usagov@search.gov', __method__)
     send_mail(:text)
   end
 
@@ -31,13 +33,14 @@ class Emailer < ApplicationMailer
 
   def user_email_verification(user)
     @email_verification_url = email_verification_url(user.email_verification_token)
-    @user_contact_name = user.contact_name
+    @user_contact_name = user.contact_name.presence || user.email
     @user_email = user.email
     generic_user_html_email(user, __method__)
   end
 
   def user_approval_removed(user)
     @user = user
+    @user_contact_name = user.contact_name.presence || user.email
     setup_email("usagov@search.gov", __method__)
     send_mail(:text)
   end
@@ -50,6 +53,7 @@ class Emailer < ApplicationMailer
 
   def new_affiliate_site(affiliate, user)
     @affiliate = affiliate
+    @user_contact_name = user.contact_name.presence || user.email
     generic_user_text_email(user, __method__)
   end
 
