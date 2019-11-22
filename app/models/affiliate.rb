@@ -46,8 +46,6 @@ class Affiliate < ApplicationRecord
     assoc.has_many :tag_filters, -> { order 'tag ASC' }
   end
 
-  has_many :available_templates, through: :affiliate_templates, source: :template
-
   has_many :affiliate_templates, dependent: :destroy do
     def make_available(template_ids)
       template_ids.each { |id| find_or_create_by(template_id: id) }
@@ -59,6 +57,7 @@ class Affiliate < ApplicationRecord
     end
   end
 
+  has_many :available_templates, through: :affiliate_templates, source: :template
   has_many :users, -> { order 'contact_name' }, through: :memberships
   has_many :default_users, class_name: 'User', foreign_key: 'default_affiliate_id', dependent: :nullify
   has_many :rss_feed_urls, -> { distinct }, through: :rss_feeds
