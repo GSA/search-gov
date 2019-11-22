@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 5.1.0'
+gem 'rails', '~> 5.2.0'
 
 gem 'rake', '~> 12.3.2'
 gem 'rack-contrib', '~> 2.1.0'
@@ -34,10 +34,10 @@ gem 'sanitize', '~> 4.6.4'
 gem 'tweetstream', '~> 2.6.1' # no longer maintained?
 gem 'twitter', '~> 5.5'
 gem 'flickraw', '~> 0.9.9'
-gem 'active_scaffold', '~> 3.5.0'
-gem 'active_scaffold_export', git: 'https://github.com/naaano/active_scaffold_export'
+# gem 'active_scaffold', '~> 3.5.0'
+# gem 'active_scaffold_export', git: 'https://github.com/naaano/active_scaffold_export'
 gem 'us_states_select', '~> 1.2.0', :git => 'https://github.com/jeremydurham/us-state-select-plugin.git', :require => 'us_states_select'
-gem 'mobile-fu', '~> 1.4.0'
+#gem 'mobile-fu', '~> 1.4.0'
 gem "recaptcha", '~> 4.6.3', :require => "recaptcha/rails"
 gem 'newrelic_rpm', '~> 5.0.0'
 gem 'american_date', '~> 1.1.1'
