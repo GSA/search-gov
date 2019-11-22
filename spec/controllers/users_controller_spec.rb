@@ -12,8 +12,7 @@ describe UsersController do
   let(:permitted_params) { %i[contact_name organization_name email] }
 
   describe '#create' do
-    # Resolve 5.1 upgrade failures - SRCH-988
-    xit do
+    it do
       is_expected.to permit(*permitted_params).
         for(:create, params: { user: user_params })
     end
@@ -109,8 +108,7 @@ describe UsersController do
       before { activate_authlogic }
       include_context 'approved user logged in'
 
-      # Resolve 5.1 upgrade failures - SRCH-988
-      xit do
+      it do
         is_expected.to permit(*permitted_params).
           for(:update, params: { user: update_params })
       end

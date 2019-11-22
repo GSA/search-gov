@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ES, skip: 'Resolve 5.1 upgrade failures - SRCH-988'  do
+describe ES do
   context 'when working in ES submodules' do
     let(:elk_objs) { Array.new(3, ES::ELK.client_reader) }
     let(:ci_objs) { Array.new(3, ES::ELK.client_reader) }
@@ -40,8 +40,8 @@ describe ES, skip: 'Resolve 5.1 upgrade failures - SRCH-988'  do
       let(:host) { client.transport.hosts.first }
 
       it 'uses the values from the secrets.yml analytics[elasticsearch][reader] entry' do
-        expect(host[:host]).to eq(URI(es_config['reader']['hosts'].first).host)
-        expect(host[:user]).to eq(es_config['reader']['user'])
+        expect(host[:host]).to eq(URI(es_config[:reader][:hosts].first).host)
+        expect(host[:user]).to eq(es_config[:reader][:user])
       end
 
       it_behaves_like 'an Elasticsearch client'
@@ -52,18 +52,18 @@ describe ES, skip: 'Resolve 5.1 upgrade failures - SRCH-988'  do
       let(:client) { client_writers.first }
 
       it 'uses the value(s) from the secrets.yml analytics[elasticsearch][writers] entry' do
-        count = Rails.application.secrets.analytics[:elasticsearch]['writers'].count
+        count = Rails.application.secrets.analytics[:elasticsearch][:writers].count
         expect(client_writers.size).to eq(count)
         count.times do |i|
           host = client.transport.hosts[i]
-          expect(host[:host]).to eq(URI(es_config['writers'][i]['hosts'].first).host)
-          expect(host[:user]).to eq(es_config['writers'][i]['user'])
+          expect(host[:host]).to eq(URI(es_config[:writers][i][:hosts].first).host)
+          expect(host[:user]).to eq(es_config[:writers][i][:user])
         end
       end
 
       it 'freezes the secrets' do
         client_writers
-        expect(es_config['writers']).to be_frozen
+        expect(es_config[:writers]).to be_frozen
       end
 
       it_behaves_like 'an Elasticsearch client'
@@ -78,8 +78,8 @@ describe ES, skip: 'Resolve 5.1 upgrade failures - SRCH-988'  do
       let(:host) { client.transport.hosts.first }
 
       it 'uses the values from the secrets.yml custom_indices[elasticsearch][reader] entry' do
-        expect(host[:host]).to eq(URI(es_config['reader']['hosts'].first).host)
-        expect(host[:user]).to eq(es_config['reader']['user'])
+        expect(host[:host]).to eq(URI(es_config[:reader][:hosts].first).host)
+        expect(host[:user]).to eq(es_config[:reader][:user])
       end
 
       it_behaves_like 'an Elasticsearch client'
@@ -89,18 +89,18 @@ describe ES, skip: 'Resolve 5.1 upgrade failures - SRCH-988'  do
       let(:client) { ES::CustomIndices.client_writers.first }
 
       it 'uses the value(s) from the secrets.yml custom_indices[elasticsearch][writers] entry' do
-        count = Rails.application.secrets.custom_indices[:elasticsearch]['writers'].count
+        count = Rails.application.secrets.custom_indices[:elasticsearch][:writers].count
         expect(ES::CustomIndices.client_writers.size).to eq(count)
         count.times do |i|
           host = client.transport.hosts[i]
-          expect(host[:host]).to eq(URI(es_config['writers'][i]['hosts'].first).host)
-          expect(host[:user]).to eq(es_config['writers'][i]['user'])
+          expect(host[:host]).to eq(URI(es_config[:writers][i][:hosts].first).host)
+          expect(host[:user]).to eq(es_config[:writers][i][:user])
         end
       end
 
       it 'freezes the secrets' do
         ES::CustomIndices.client_writers
-        expect(es_config['writers']).to be_frozen
+        expect(es_config[:writers]).to be_frozen
       end
 
       it_behaves_like 'an Elasticsearch client'

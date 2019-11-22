@@ -40,8 +40,7 @@ describe "Features-related rake tasks" do
           end
         end
 
-        # Resolve 5.1 upgrade failures - SRCH-988
-        xit "should create AffiliateFeatureAdditions for new affiliate IDs for that feature, ignoring dupes" do
+        it "should create AffiliateFeatureAdditions for new affiliate IDs for that feature, ignoring dupes" do
           expect(@f1.affiliates.size).to eq(1)
           expect(@f1.affiliates.first).to eq(@a1)
           @rake[task_name].invoke(@f1.internal_name, @input_file_name)

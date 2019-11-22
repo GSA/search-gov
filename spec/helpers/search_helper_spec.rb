@@ -88,13 +88,12 @@ describe SearchHelper do
       end
     end
   end
-
-  # Resolve 5.1 upgrade failures - SRCH-988
-  skip "#display_image_result_link" do
+  
+  describe "#display_image_result_link" do
     before do
       @result = {'Url' => 'http://aHost.gov/aPath',
                  'title' => 'aTitle',
-                 'Thumbnail' => {'Url' => 'aThumbnailUrl', 'Width' => 40, 'Height' => 30},
+                 'Thumbnail' => {'Url' => 'thumbnail.png', 'Width' => 40, 'Height' => 30},
                  'MediaUrl' => 'aMediaUrl'}
       @query = "NASA's"
       @affiliate = double('affiliate', :name => 'special affiliate name')
@@ -139,10 +138,13 @@ describe SearchHelper do
     end
   end
 
-  # Resolve 5.1 upgrade failures - SRCH-988
-  skip "#tracked_click_thumbnail_image_link" do
+  describe "#tracked_click_thumbnail_image_link" do
     before do
-      @result = { 'Url' => 'aUrl', 'title' => 'aTitle', 'Thumbnail' => { 'Url' => 'ThumbnailUrl', 'Width' => 40, 'Height' => 30 } }
+      @result = { 'Url' => 'aUrl', 'title' => 'aTitle', 'Thumbnail' => {
+        'Url' => 'thumbnail.png',
+        'Width' => 40,
+        'Height' => 30
+      } }
       @onmousedown_attr = "onmousedown_attribute"
     end
 
