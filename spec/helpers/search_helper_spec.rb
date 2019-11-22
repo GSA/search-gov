@@ -138,7 +138,7 @@ describe SearchHelper do
     end
   end
 
-  skip "#tracked_click_thumbnail_image_link" do
+  describe "#tracked_click_thumbnail_image_link" do
     before do
       @result = { 'Url' => 'aUrl', 'title' => 'aTitle', 'Thumbnail' => {
         'Url' => 'thumbnail.png',
