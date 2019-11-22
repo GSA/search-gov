@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 5.1.0'
+gem 'rails', '~> 5.2.0'
 
 gem 'rake', '~> 12.3.2'
 gem 'rack-contrib', '~> 2.1.0'
@@ -13,7 +13,8 @@ gem 'json', '~> 1.8.6'
 gem 'will_paginate', '~> 3.1.6'
 gem 'nokogiri', '~> 1.10.4'
 gem 'bcrypt-ruby', '~> 3.1.5', :require => 'bcrypt'
-gem 'authlogic', '~> 3.6.1'
+# Rails 5.2 upgrade - SRCH-546
+# gem 'authlogic', '~> 3.6.1'
 gem 'omniauth_login_dot_gov', git: 'https://github.com/18f/omniauth_login_dot_gov.git',
                               branch: 'master'
 gem 'omniauth-rails_csrf_protection', '~> 0.1.2'
@@ -34,8 +35,9 @@ gem 'sanitize', '~> 4.6.4'
 gem 'tweetstream', '~> 2.6.1' # no longer maintained?
 gem 'twitter', '~> 5.5'
 gem 'flickraw', '~> 0.9.9'
-gem 'active_scaffold', '~> 3.5.0'
-gem 'active_scaffold_export', git: 'https://github.com/naaano/active_scaffold_export'
+# Rails 5.2 upgrade - SRCH-984
+# gem 'active_scaffold', '~> 3.5.0'
+# gem 'active_scaffold_export', git: 'https://github.com/naaano/active_scaffold_export'
 gem 'us_states_select', '~> 1.2.0', :git => 'https://github.com/jeremydurham/us-state-select-plugin.git', :require => 'us_states_select'
 gem 'mobile-fu', '~> 1.4.0'
 gem "recaptcha", '~> 4.6.3', :require => "recaptcha/rails"
@@ -72,7 +74,8 @@ gem 'iso8601', '~> 0.10.1'
 gem 'jbuilder', '~> 2.6.4'
 gem 'sitelink_generator', git: 'https://github.com/GSA/sitelink_generator', ref: '2f78cd142547a2a87e500266f1ef4eb5e281cc6b'
 gem 'typhoeus', '~> 1.3.0'
-gem 'activerecord-validate_unique_child_attribute', '~> 0.1.0', require: 'active_record/validate_unique_child_attribute'
+# Rails 5.2 upgrade - SRCH-547
+# gem 'activerecord-validate_unique_child_attribute', '~> 0.1.0', require: 'active_record/validate_unique_child_attribute'
 gem 'jwt', '~> 1.5.6'
 gem 'grape', '~> 1.1'
 gem 'grape-entity', '~> 0.6.0'
@@ -82,7 +85,8 @@ gem 'retry_block', '~> 1.2.0'
 gem 'aws-sdk', '< 3.0'
 gem 'colorize', '~> 0.8.1'
 gem 'dogstatsd-ruby', '~> 3.2.0'
-gem 'lograge', '~> 0.7.1'
+# Rails 5.2 upgrade - SRCH-599
+# gem 'lograge', '~> 0.7.1'
 gem 'test-unit', '~> 3.2.7'
 gem 'http', '~> 1.0'
 gem 'robots_tag_parser', '~> 0.1.0', git: 'https://github.com/GSA/robots_tag_parser'
@@ -103,8 +107,8 @@ gem 'cld3', '~> 3.2.3'
 gem 'coffee-rails', '~> 4.2.2'
 gem 'uglifier', '~> 4.1.2'
 # Using forked copy until https://github.com/metaskills/less-rails-bootstrap/pull/132 is merged
-gem 'less-rails-bootstrap', git: 'https://github.com/veelenga/less-rails-bootstrap',
-                            ref: '7c479c2fdff500dc036c15364aa085332a73c642'
+# gem 'less-rails-bootstrap', git: 'https://github.com/veelenga/less-rails-bootstrap',
+#                             ref: '7c479c2fdff500dc036c15364aa085332a73c642'
 gem 'compass-rails', '~> 3.1.0'
 gem 'compass-blueprint', '~> 1.0.0'
 gem 'jquery-ui-rails', '~> 6.0.1'
