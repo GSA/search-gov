@@ -1,8 +1,7 @@
 require 'spec_helper'
 
 describe Emailer do
-# Resolve 5.1 upgrade failures - SRCH-988
-skip do
+context do
   include EmailSpec::Helpers
   include EmailSpec::Matchers
   fixtures :affiliates, :users, :features, :memberships

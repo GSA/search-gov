@@ -169,7 +169,7 @@ Rails.application.routes.draw do
   get '/affiliates/:id/:some_action', to: redirect('/sites/%{id}')
 
   namespace :admin do
-    resources :affiliates, concerns: :active_scaffold 
+    resources :affiliates, concerns: :active_scaffold
     resources :affiliate_notes, concerns: :active_scaffold
     resources :affiliate_templates, concerns: :active_scaffold
     resources :users, concerns: :active_scaffold
@@ -252,12 +252,12 @@ Rails.application.routes.draw do
 
   get '/user/developer_redirect' => 'users#developer_redirect', :as => :developer_redirect
   get '/program' => redirect(
-    path: Rails.application.secrets.organization[:blog_url],
+    Rails.application.secrets.organization[:blog_url],
     status: 302
   )
 
   get "*path" => redirect(
-    path: Rails.application.secrets.organization[:page_not_found_url],
+    Rails.application.secrets.organization[:page_not_found_url],
     status: 302
   )
 
