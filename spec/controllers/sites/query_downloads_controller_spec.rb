@@ -17,8 +17,8 @@ describe Sites::QueryDownloadsController do
       let(:date_range_top_n_query_args) do
         [
           site.name,
-          Date.new(2014,6,8),
-          Date.new(2014,6,14),
+          Date.new(2014, 6, 8),
+          Date.new(2014, 6, 14),
           field: 'params.query.raw',
           size: 1_000_000
         ]
