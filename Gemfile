@@ -15,7 +15,7 @@ gem 'nokogiri', '~> 1.10.4'
 gem 'bcrypt-ruby', '~> 3.1.5', :require => 'bcrypt'
 gem 'authlogic', '~> 3.6.1'
 gem 'omniauth_login_dot_gov', git: 'https://github.com/18f/omniauth_login_dot_gov.git',
-    branch: 'master'
+                              branch: 'master'
 gem 'omniauth-rails_csrf_protection', '~> 0.1.2'
 gem 'airbrake', '~> 7.1.1'
 gem 'yajl-ruby', '~> 1.3.1', :require => 'yajl'
@@ -104,7 +104,7 @@ gem 'coffee-rails', '~> 4.2.2'
 gem 'uglifier', '~> 4.1.2'
 # Using forked copy until https://github.com/metaskills/less-rails-bootstrap/pull/132 is merged
 gem 'less-rails-bootstrap', git: 'https://github.com/veelenga/less-rails-bootstrap',
-    ref: '7c479c2fdff500dc036c15364aa085332a73c642'
+                            ref: '7c479c2fdff500dc036c15364aa085332a73c642'
 gem 'compass-rails', '~> 3.1.0'
 gem 'compass-blueprint', '~> 1.0.0'
 gem 'jquery-ui-rails', '~> 6.0.1'
