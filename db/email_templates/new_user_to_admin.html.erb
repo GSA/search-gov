@@ -1,11 +1,11 @@
-Name: <%= @user.contact_name %>
+Name: <%= @user_contact_name %>
 Email: <%= @user.email %>
 Organization name: <%= @user.organization_name %>
 
 <% if @user.requires_manual_approval? %>
-    This person doesn't have a .gov or .mil email address. Verify and approve him.
+    This person doesn't have a .gov or .mil email address. Verify and approve them.
 <% elsif @user.affiliates.any? %>
-    <%= @user.inviter.contact_name %> added this person to '<%= @user.affiliates.last.display_name %>'. He'll be approved after verifying his email.
+    <%= @user_inviter_contact_name %> added this person to '<%= @user.affiliates.last.display_name %>'. They will be approved after verifying their email.
 <% end %>
 
 To edit or approve this new person, visit https://search.usa.gov/admin/users#as_admin__users:1:created_at:DESC
