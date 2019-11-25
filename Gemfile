@@ -86,7 +86,7 @@ gem 'aws-sdk', '< 3.0'
 gem 'colorize', '~> 0.8.1'
 gem 'dogstatsd-ruby', '~> 3.2.0'
 # Rails 5.2 upgrade - SRCH-599
-# gem 'lograge', '~> 0.7.1'
+gem 'lograge', '~> 0.9.0'
 gem 'test-unit', '~> 3.2.7'
 gem 'http', '~> 1.0'
 gem 'robots_tag_parser', '~> 0.1.0', git: 'https://github.com/GSA/robots_tag_parser'
