@@ -13,8 +13,7 @@ gem 'json', '~> 1.8.6'
 gem 'will_paginate', '~> 3.1.6'
 gem 'nokogiri', '~> 1.10.4'
 gem 'bcrypt-ruby', '~> 3.1.5', :require => 'bcrypt'
-# Rails 5.2 upgrade - SRCH-546
-# gem 'authlogic', '~> 3.6.1'
+gem 'authlogic', '~> 3.8.0'
 gem 'omniauth_login_dot_gov', git: 'https://github.com/18f/omniauth_login_dot_gov.git',
                               branch: 'master'
 gem 'omniauth-rails_csrf_protection', '~> 0.1.2'
