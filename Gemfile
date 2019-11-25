@@ -85,7 +85,6 @@ gem 'retry_block', '~> 1.2.0'
 gem 'aws-sdk', '< 3.0'
 gem 'colorize', '~> 0.8.1'
 gem 'dogstatsd-ruby', '~> 3.2.0'
-# Rails 5.2 upgrade - SRCH-599
 gem 'lograge', '~> 0.9.0'
 gem 'test-unit', '~> 3.2.7'
 gem 'http', '~> 1.0'
