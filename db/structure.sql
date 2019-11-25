@@ -1133,21 +1133,6 @@ CREATE TABLE `users` (
   KEY `index_users_on_uid` (`uid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-DROP TABLE IF EXISTS `versions`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `versions` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `item_type` varchar(191) NOT NULL,
-  `item_id` bigint(20) NOT NULL,
-  `event` varchar(255) NOT NULL,
-  `whodunnit` varchar(255) DEFAULT NULL,
-  `object` longtext,
-  `created_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `index_versions_on_item_type_and_item_id` (`item_type`,`item_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `watchers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1945,7 +1930,6 @@ INSERT INTO `schema_migrations` (version) VALUES
 ('20181213153332'),
 ('20190205200912'),
 ('20190920181828'),
-('20191113214448'),
-('20191114215421');
+('20191113214448');
 
 
