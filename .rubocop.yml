@@ -3365,6 +3365,7 @@ Style/MethodCallWithArgsParentheses:
     - 'app/models/elastic_data/*'
     - 'app/models/custom_index_queries/*'
     - 'app/models/logstash_queries/*'
+    - 'lib/analytics_dsl.rb'
 
 Style/MethodCallWithoutArgsParentheses:
   Description: 'Do not use parentheses for method calls with no arguments.'

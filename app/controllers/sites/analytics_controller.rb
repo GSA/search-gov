@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class Sites::AnalyticsController < Sites::SetupSiteController
   before_action :setup_site_analytics, :setup_date_range
 
-  MAX_RESULTS = 10000
+  MAX_RESULTS = 10_000
 
   private
 

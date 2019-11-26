@@ -14,7 +14,8 @@ class Sites::ClickQueriesController < Sites::AnalyticsController
                                         @end_date,
                                         'params.url',
                                         @url,
-                                        { field: 'params.query.raw', size: MAX_RESULTS })
+                                        field: 'params.query.raw',
+                                        size: MAX_RESULTS)
     rtu_top_clicks = RtuTopClicks.new(query.body, @current_user.sees_filtered_totals?)
     rtu_top_clicks.top_n
   end
