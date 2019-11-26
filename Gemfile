@@ -35,8 +35,8 @@ gem 'tweetstream', '~> 2.6.1' # no longer maintained?
 gem 'twitter', '~> 5.5'
 gem 'flickraw', '~> 0.9.9'
 # Rails 5.2 upgrade - SRCH-984
-# gem 'active_scaffold', '~> 3.5.0'
-# gem 'active_scaffold_export', git: 'https://github.com/naaano/active_scaffold_export'
+gem 'active_scaffold', '~> 3.5.0'
+gem 'active_scaffold_export', git: 'https://github.com/naaano/active_scaffold_export'
 gem 'us_states_select', '~> 1.2.0', :git => 'https://github.com/jeremydurham/us-state-select-plugin.git', :require => 'us_states_select'
 gem 'mobile-fu', '~> 1.4.0'
 gem "recaptcha", '~> 4.6.3', :require => "recaptcha/rails"
