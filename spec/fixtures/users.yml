@@ -84,6 +84,21 @@ active_user:
   email: active_user@fixtures.org
   current_login_at: <%= 1.day.ago.to_s(:db) %>
 
+omniauth_user:
+  <<: *DEFAULTS
+  email: test@gsa.gov
+  uid: 12345
+
+user_with_uid:
+  <<: *DEFAULTS
+  email: user_with_uid@fixtures.org
+  uid: 11111
+
+user_without_uid:
+  <<: *DEFAULTS
+  email: user_without_uid@fixtures.org
+  uid: ~
+
 never_active_user:
   <<: *DEFAULTS
   email: never_active_user@fixtures.org
@@ -143,7 +158,7 @@ affiliate_added_by_another_affiliate_with_pending_email_verification_status:
   is_affiliate_admin: false
   is_affiliate: true
   contact_name: Invited Affiliate Manager
-  approval_status: pending_email_verification
+  approval_status: approved
   requires_manual_approval: false
 
 user_with_expired_password:

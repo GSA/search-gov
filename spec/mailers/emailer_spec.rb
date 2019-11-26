@@ -116,7 +116,7 @@ describe Emailer do
       it { is_expected.not_to have_body_text /This user signed up as an affiliate/ }
     end
 
-    context "user got invited by another customer" do
+    context 'user got invited by another customer' do
       let(:user) { users(:affiliate_added_by_another_affiliate_with_pending_email_verification_status) }
 
       before do
@@ -130,7 +130,7 @@ describe Emailer do
       subject { Emailer.new_user_to_admin(user) }
 
       it { is_expected.to deliver_to('usagov@search.gov') }
-      it { is_expected.to have_body_text /Name: Invited Affiliate Manager\nEmail: affiliate_added_by_another_affiliate@fixtures.org\nOrganization name: Agency\n\n\n    Affiliate Manager added this person to 'Noaa Site'. He'll be approved after verifying his email./ }
+      it { is_expected.to have_body_text /Name: Invited Affiliate Manager\nEmail: affiliate_added_by_another_affiliate@fixtures.org\nOrganization name: Agency\n\n\n    Affiliate Manager added this person to 'Noaa Site'. They will be approved after verifying their email./ }
     end
 
     context "user didn't get invited by another customer (and thus has no affiliates either)" do
@@ -154,9 +154,8 @@ describe Emailer do
   describe "#welcome_to_new_user_added_by_affiliate" do
     let(:user) do
       mock_model(User,
-           :email => "invitee@agency.com",
-           :contact_name => 'Invitee Joe',
-           :email_verification_token => 'some_special_token')
+                 email: 'invitee@agency.com',
+                 contact_name: 'Invitee Joe')
     end
 
     let(:current_user) { mock_model(User, :email => "inviter@agency.com", :contact_name => 'Inviter Jane') }
@@ -166,7 +165,7 @@ describe Emailer do
 
     it { should deliver_to("invitee@agency.com") }
     it { should have_subject(/\[Search.gov\] Welcome to Search.gov/) }
-    it { should have_body_text(/https:\/\/localhost:3000\/complete_registration\/some_special_token\/edit/) }
+    it { should have_body_text(/https:\/\/localhost:3000\/sites/) }
   end
 
   describe '#daily_snapshot' do
