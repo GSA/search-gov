@@ -71,6 +71,13 @@ GIT
       rails (>= 1.2)
 
 GIT
+  remote: https://github.com/naaano/active_scaffold_export
+  revision: 879ceb549b871ebb597ae5339a2e67498beb70d1
+  specs:
+    active_scaffold_export (3.3.2)
+      active_scaffold (>= 3.3.0.rc)
+
+GIT
   remote: https://github.com/winston/google_visualr
   revision: 17b97114a345baadd011e7b442b9a6c91a2b7ab5
   ref: 17b97114a345baadd011e7b442b9a6c91a2b7ab5
@@ -105,6 +112,9 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
+    active_scaffold (3.5.2)
+      ice_nine (~> 0.11)
+      rails (>= 4.0.5)
     active_scheduler (0.5.0)
       activejob (>= 4.2.0)
       rake
@@ -760,6 +770,8 @@ PLATFORMS
 
 DEPENDENCIES
   aasm (~> 4.12)
+  active_scaffold (~> 3.5.0)
+  active_scaffold_export!
   active_scheduler (~> 0.5.0)
   addressable (~> 2.5.2)
   airbrake (~> 7.1.1)
