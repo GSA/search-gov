@@ -3,8 +3,6 @@ Feature: Watchers (aka Analytics Alerts)
   As a site customer
   I want to set up and manage various alerts
 
-  # SRCH-1038
-  @wip
   Scenario: View watchers
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |

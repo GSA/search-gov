@@ -4,6 +4,7 @@ shared_examples_for 'a watcher' do
   end
   let(:delete_watcher) do
     ES::ELK.client_reader.xpack.watcher.delete_watch(id: watcher.id)
+  rescue Elasticsearch::Transport::Transport::Errors::NotFound
   end
 
   before do
@@ -13,7 +14,9 @@ shared_examples_for 'a watcher' do
   describe '#body' do
     subject(:body) { watcher.body }
 
-    it { is_expected.to eq(expected_body) }
+    it 'returns a JSON structure representing an Elasticsearch Watcher body' do
+      expect(body).to eq(expected_body)
+    end
   end
 
   describe 'creating a watcher' do

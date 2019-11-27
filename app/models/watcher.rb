@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Watcher < ApplicationRecord
   extend HashColumnsAccessible
   include ActionView::Helpers::NumberHelper
@@ -28,6 +30,8 @@ class Watcher < ApplicationRecord
       metadata(json)
     end
   end
+
+  private
 
   def metadata(json)
     json.metadata do
