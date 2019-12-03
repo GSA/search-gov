@@ -1,9 +1,9 @@
 <%= Rails.env %>:
-  app_name: <%= Rails.application.secrets.newrelic['app_name'] %>
-  license_key: <%= Rails.application.secrets.newrelic['license_key'] %>
-  log_level: <%= Rails.application.secrets.newrelic['log_level'] || 'info' %>
-  monitor_mode: <%= Rails.application.secrets.newrelic['enabled'] ? 'true' : 'false' %>
-  apdex_t: <%= Rails.application.secrets.newrelic['apdex_t'] || 0.5 %>
+  app_name: <%= Rails.application.secrets.newrelic[:app_name] %>
+  license_key: <%= Rails.application.secrets.newrelic[:license_key] %>
+  log_level: <%= Rails.application.secrets.newrelic[:log_level] || 'info' %>
+  monitor_mode: <%= Rails.application.secrets.newrelic[:enabled] ? 'true' : 'false' %>
+  apdex_t: <%= Rails.application.secrets.newrelic[:apdex_t] || 0.5 %>
   capture_params: false
   disable_curb: true
   transaction_tracer:

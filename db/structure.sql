@@ -1,8 +1,3 @@
--- MySQL dump 10.13  Distrib 5.6.43, for osx10.13 (x86_64)
---
--- Host: localhost    Database: usasearch_development
--- ------------------------------------------------------
--- Server version	5.6.43
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -14,11 +9,6 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
---
--- Table structure for table `affiliate_feature_additions`
---
-
 DROP TABLE IF EXISTS `affiliate_feature_additions`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -31,11 +21,6 @@ CREATE TABLE `affiliate_feature_additions` (
   UNIQUE KEY `index_affiliate_feature_additions_on_affiliate_id_and_feature_id` (`affiliate_id`,`feature_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `affiliate_templates`
---
-
 DROP TABLE IF EXISTS `affiliate_templates`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -53,11 +38,6 @@ CREATE TABLE `affiliate_templates` (
   KEY `index_affiliate_templates_on_template_id` (`template_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `affiliate_twitter_settings`
---
-
 DROP TABLE IF EXISTS `affiliate_twitter_settings`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -73,11 +53,6 @@ CREATE TABLE `affiliate_twitter_settings` (
   KEY `index_affiliate_twitter_settings_on_twitter_profile_id` (`twitter_profile_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `affiliates`
---
-
 DROP TABLE IF EXISTS `affiliates`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -172,11 +147,6 @@ CREATE TABLE `affiliates` (
   KEY `index_affiliates_on_template_id` (`template_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `affiliates_instagram_profiles`
---
-
 DROP TABLE IF EXISTS `affiliates_instagram_profiles`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -186,11 +156,6 @@ CREATE TABLE `affiliates_instagram_profiles` (
   UNIQUE KEY `index_affiliates_instagram_profiles` (`affiliate_id`,`instagram_profile_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `affiliates_youtube_profiles`
---
-
 DROP TABLE IF EXISTS `affiliates_youtube_profiles`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -201,11 +166,6 @@ CREATE TABLE `affiliates_youtube_profiles` (
   KEY `index_affiliates_youtube_profiles_on_youtube_profile_id` (`youtube_profile_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `agencies`
---
-
 DROP TABLE IF EXISTS `agencies`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -219,11 +179,6 @@ CREATE TABLE `agencies` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `agency_organization_codes`
---
-
 DROP TABLE IF EXISTS `agency_organization_codes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -237,11 +192,6 @@ CREATE TABLE `agency_organization_codes` (
   KEY `index_agency_organization_codes_on_agency_id` (`agency_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `agency_queries`
---
-
 DROP TABLE IF EXISTS `agency_queries`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -255,11 +205,6 @@ CREATE TABLE `agency_queries` (
   UNIQUE KEY `index_agency_queries_on_phrase` (`phrase`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `alerts`
---
-
 DROP TABLE IF EXISTS `alerts`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -275,11 +220,6 @@ CREATE TABLE `alerts` (
   UNIQUE KEY `index_alerts_on_affiliate_id` (`affiliate_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `ar_internal_metadata`
---
-
 DROP TABLE IF EXISTS `ar_internal_metadata`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -291,11 +231,6 @@ CREATE TABLE `ar_internal_metadata` (
   PRIMARY KEY (`key`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `boosted_content_keywords`
---
-
 DROP TABLE IF EXISTS `boosted_content_keywords`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -309,11 +244,6 @@ CREATE TABLE `boosted_content_keywords` (
   KEY `index_boosted_content_keywords_on_boosted_content_id` (`boosted_content_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `boosted_contents`
---
-
 DROP TABLE IF EXISTS `boosted_contents`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -333,11 +263,6 @@ CREATE TABLE `boosted_contents` (
   KEY `index_boosted_contents_on_affiliate_id_and_title` (`affiliate_id`,`title`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `catalog_prefixes`
---
-
 DROP TABLE IF EXISTS `catalog_prefixes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -349,11 +274,6 @@ CREATE TABLE `catalog_prefixes` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `connections`
---
-
 DROP TABLE IF EXISTS `connections`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -369,11 +289,6 @@ CREATE TABLE `connections` (
   KEY `index_connections_on_affiliate_id` (`affiliate_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `document_collections`
---
-
 DROP TABLE IF EXISTS `document_collections`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -389,11 +304,6 @@ CREATE TABLE `document_collections` (
   UNIQUE KEY `index_document_collections_on_affiliate_id_and_name` (`affiliate_id`,`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `email_templates`
---
-
 DROP TABLE IF EXISTS `email_templates`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -407,11 +317,6 @@ CREATE TABLE `email_templates` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `excluded_domains`
---
-
 DROP TABLE IF EXISTS `excluded_domains`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -425,11 +330,6 @@ CREATE TABLE `excluded_domains` (
   KEY `index_excluded_domains_on_affiliate_id` (`affiliate_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `excluded_urls`
---
-
 DROP TABLE IF EXISTS `excluded_urls`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -443,11 +343,6 @@ CREATE TABLE `excluded_urls` (
   KEY `index_excluded_urls_on_affiliate_id` (`affiliate_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `featured_collection_keywords`
---
-
 DROP TABLE IF EXISTS `featured_collection_keywords`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -461,11 +356,6 @@ CREATE TABLE `featured_collection_keywords` (
   KEY `index_featured_collection_keywords_on_featured_collection_id` (`featured_collection_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `featured_collection_links`
---
-
 DROP TABLE IF EXISTS `featured_collection_links`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -481,11 +371,6 @@ CREATE TABLE `featured_collection_links` (
   KEY `index_featured_collection_links_on_featured_collection_id` (`featured_collection_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `featured_collections`
---
-
 DROP TABLE IF EXISTS `featured_collections`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -513,11 +398,6 @@ CREATE TABLE `featured_collections` (
   KEY `index_featured_collections_on_affiliate_id` (`affiliate_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `features`
---
-
 DROP TABLE IF EXISTS `features`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -531,11 +411,6 @@ CREATE TABLE `features` (
   KEY `index_features_on_internal_name` (`internal_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `federal_register_agencies`
---
-
 DROP TABLE IF EXISTS `federal_register_agencies`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -551,11 +426,6 @@ CREATE TABLE `federal_register_agencies` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `federal_register_agencies_federal_register_documents`
---
-
 DROP TABLE IF EXISTS `federal_register_agencies_federal_register_documents`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -566,11 +436,6 @@ CREATE TABLE `federal_register_agencies_federal_register_documents` (
   KEY `fra_frd_frdocid_idx` (`federal_register_document_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `federal_register_documents`
---
-
 DROP TABLE IF EXISTS `federal_register_documents`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -594,11 +459,6 @@ CREATE TABLE `federal_register_documents` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `flickr_profiles`
---
-
 DROP TABLE IF EXISTS `flickr_profiles`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -614,11 +474,6 @@ CREATE TABLE `flickr_profiles` (
   KEY `index_flickr_profiles_on_affiliate_id` (`affiliate_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `help_links`
---
-
 DROP TABLE IF EXISTS `help_links`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -632,11 +487,6 @@ CREATE TABLE `help_links` (
   KEY `index_help_links_on_request_path` (`request_path`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `hints`
---
-
 DROP TABLE IF EXISTS `hints`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -650,11 +500,6 @@ CREATE TABLE `hints` (
   UNIQUE KEY `index_hints_on_name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `i14y_drawers`
---
-
 DROP TABLE IF EXISTS `i14y_drawers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -668,11 +513,6 @@ CREATE TABLE `i14y_drawers` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `i14y_memberships`
---
-
 DROP TABLE IF EXISTS `i14y_memberships`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -687,11 +527,6 @@ CREATE TABLE `i14y_memberships` (
   KEY `index_i14y_memberships_on_i14y_drawer_id` (`i14y_drawer_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `image_search_labels`
---
-
 DROP TABLE IF EXISTS `image_search_labels`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -705,11 +540,6 @@ CREATE TABLE `image_search_labels` (
   UNIQUE KEY `index_image_search_labels_on_affiliate_id` (`affiliate_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `indexed_documents`
---
-
 DROP TABLE IF EXISTS `indexed_documents`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -733,11 +563,6 @@ CREATE TABLE `indexed_documents` (
   KEY `by_aid_url` (`affiliate_id`,`url`(50))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `instagram_profiles`
---
-
 DROP TABLE IF EXISTS `instagram_profiles`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -749,11 +574,6 @@ CREATE TABLE `instagram_profiles` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `languages`
---
-
 DROP TABLE IF EXISTS `languages`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -772,11 +592,6 @@ CREATE TABLE `languages` (
   UNIQUE KEY `index_languages_on_code` (`code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `med_related_topics`
---
-
 DROP TABLE IF EXISTS `med_related_topics`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -792,11 +607,6 @@ CREATE TABLE `med_related_topics` (
   KEY `index_med_related_topics_on_med_topic_id` (`med_topic_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `med_sites`
---
-
 DROP TABLE IF EXISTS `med_sites`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -811,11 +621,6 @@ CREATE TABLE `med_sites` (
   KEY `index_med_sites_on_med_topic_id` (`med_topic_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `med_synonyms`
---
-
 DROP TABLE IF EXISTS `med_synonyms`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -829,11 +634,6 @@ CREATE TABLE `med_synonyms` (
   KEY `index_med_synonyms_on_medline_title` (`medline_title`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `med_topics`
---
-
 DROP TABLE IF EXISTS `med_topics`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -851,11 +651,6 @@ CREATE TABLE `med_topics` (
   KEY `index_med_topics_on_medline_title` (`medline_title`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `memberships`
---
-
 DROP TABLE IF EXISTS `memberships`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -871,11 +666,6 @@ CREATE TABLE `memberships` (
   KEY `index_memberships_on_user_id` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `misspellings`
---
-
 DROP TABLE IF EXISTS `misspellings`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -889,11 +679,6 @@ CREATE TABLE `misspellings` (
   KEY `index_misspellings_on_wrong` (`wrong`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `navigations`
---
-
 DROP TABLE IF EXISTS `navigations`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -911,11 +696,6 @@ CREATE TABLE `navigations` (
   KEY `index_navigations_on_navigable_id_and_navigable_type` (`navigable_id`,`navigable_type`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `news_items`
---
-
 DROP TABLE IF EXISTS `news_items`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -940,11 +720,6 @@ CREATE TABLE `news_items` (
   KEY `index_news_items_on_rss_feed_url_id_and_guid` (`rss_feed_url_id`,`guid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `outbound_rate_limits`
---
-
 DROP TABLE IF EXISTS `outbound_rate_limits`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -959,11 +734,6 @@ CREATE TABLE `outbound_rate_limits` (
   KEY `index_outbound_rate_limits_on_name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `routed_queries`
---
-
 DROP TABLE IF EXISTS `routed_queries`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -978,11 +748,6 @@ CREATE TABLE `routed_queries` (
   KEY `index_routed_queries_on_affiliate_id` (`affiliate_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `routed_query_keywords`
---
-
 DROP TABLE IF EXISTS `routed_query_keywords`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -996,11 +761,6 @@ CREATE TABLE `routed_query_keywords` (
   UNIQUE KEY `index_routed_query_keywords_on_routed_query_id_and_keyword` (`routed_query_id`,`keyword`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `rss_feed_urls`
---
-
 DROP TABLE IF EXISTS `rss_feed_urls`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1018,11 +778,6 @@ CREATE TABLE `rss_feed_urls` (
   UNIQUE KEY `index_rss_feed_urls_on_rss_feed_owner_type_and_url` (`rss_feed_owner_type`,`url`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `rss_feed_urls_rss_feeds`
---
-
 DROP TABLE IF EXISTS `rss_feed_urls_rss_feeds`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1033,11 +788,6 @@ CREATE TABLE `rss_feed_urls_rss_feeds` (
   KEY `index_rss_feed_urls_rss_feeds_on_rss_feed_url_id` (`rss_feed_url_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `rss_feeds`
---
-
 DROP TABLE IF EXISTS `rss_feeds`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1056,11 +806,6 @@ CREATE TABLE `rss_feeds` (
   KEY `index_rss_feeds_on_owner_type_and_owner_id` (`owner_type`,`owner_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `sayt_filters`
---
-
 DROP TABLE IF EXISTS `sayt_filters`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1076,11 +821,6 @@ CREATE TABLE `sayt_filters` (
   UNIQUE KEY `index_sayt_filters_on_phrase` (`phrase`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `sayt_suggestions`
---
-
 DROP TABLE IF EXISTS `sayt_suggestions`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1098,11 +838,6 @@ CREATE TABLE `sayt_suggestions` (
   UNIQUE KEY `index_sayt_suggestions_on_affiliate_id_and_phrase` (`affiliate_id`,`phrase`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `schema_migrations`
---
-
 DROP TABLE IF EXISTS `schema_migrations`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1111,11 +846,6 @@ CREATE TABLE `schema_migrations` (
   UNIQUE KEY `unique_schema_migrations` (`version`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `search_modules`
---
-
 DROP TABLE IF EXISTS `search_modules`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1129,11 +859,6 @@ CREATE TABLE `search_modules` (
   UNIQUE KEY `index_search_modules_on_tag` (`tag`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `searchgov_domains`
---
-
 DROP TABLE IF EXISTS `searchgov_domains`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1155,11 +880,6 @@ CREATE TABLE `searchgov_domains` (
   KEY `index_searchgov_domains_on_activity` (`activity`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `searchgov_urls`
---
-
 DROP TABLE IF EXISTS `searchgov_urls`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1180,11 +900,6 @@ CREATE TABLE `searchgov_urls` (
   CONSTRAINT `fk_rails_3dd990e08e` FOREIGN KEY (`searchgov_domain_id`) REFERENCES `searchgov_domains` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `site_domains`
---
-
 DROP TABLE IF EXISTS `site_domains`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1199,11 +914,6 @@ CREATE TABLE `site_domains` (
   UNIQUE KEY `index_site_domains_on_affiliate_id_and_domain` (`affiliate_id`,`domain`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `site_feed_urls`
---
-
 DROP TABLE IF EXISTS `site_feed_urls`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1220,11 +930,6 @@ CREATE TABLE `site_feed_urls` (
   UNIQUE KEY `index_site_feed_urls_on_affiliate_id` (`affiliate_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `sitemaps`
---
-
 DROP TABLE IF EXISTS `sitemaps`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1240,11 +945,6 @@ CREATE TABLE `sitemaps` (
   KEY `index_sitemaps_on_searchgov_domain_id` (`searchgov_domain_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `suggestion_blocks`
---
-
 DROP TABLE IF EXISTS `suggestion_blocks`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1257,11 +957,6 @@ CREATE TABLE `suggestion_blocks` (
   KEY `index_suggestion_blocks_on_query` (`query`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `superfresh_urls`
---
-
 DROP TABLE IF EXISTS `superfresh_urls`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1274,11 +969,6 @@ CREATE TABLE `superfresh_urls` (
   KEY `index_superfresh_urls_on_affiliate_id` (`affiliate_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `system_alerts`
---
-
 DROP TABLE IF EXISTS `system_alerts`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1290,11 +980,6 @@ CREATE TABLE `system_alerts` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `tag_filters`
---
-
 DROP TABLE IF EXISTS `tag_filters`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1309,11 +994,6 @@ CREATE TABLE `tag_filters` (
   KEY `index_tag_filters_on_affiliate_id` (`affiliate_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `templates`
---
-
 DROP TABLE IF EXISTS `templates`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1329,11 +1009,6 @@ CREATE TABLE `templates` (
   UNIQUE KEY `index_templates_on_name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `top_searches`
---
-
 DROP TABLE IF EXISTS `top_searches`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1350,11 +1025,6 @@ CREATE TABLE `top_searches` (
   KEY `index_top_searches_on_affiliate_id` (`affiliate_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `tweets`
---
-
 DROP TABLE IF EXISTS `tweets`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1372,11 +1042,6 @@ CREATE TABLE `tweets` (
   KEY `index_tweets_on_twitter_profile_id` (`twitter_profile_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `twitter_lists`
---
-
 DROP TABLE IF EXISTS `twitter_lists`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1390,11 +1055,6 @@ CREATE TABLE `twitter_lists` (
   UNIQUE KEY `index_twitter_lists_on_id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `twitter_lists_twitter_profiles`
---
-
 DROP TABLE IF EXISTS `twitter_lists_twitter_profiles`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1405,11 +1065,6 @@ CREATE TABLE `twitter_lists_twitter_profiles` (
   KEY `index_twitter_lists_twitter_profiles_on_twitter_profile_id` (`twitter_profile_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `twitter_profiles`
---
-
 DROP TABLE IF EXISTS `twitter_profiles`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1425,11 +1080,6 @@ CREATE TABLE `twitter_profiles` (
   UNIQUE KEY `index_twitter_profiles_on_twitter_id` (`twitter_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `url_prefixes`
---
-
 DROP TABLE IF EXISTS `url_prefixes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1443,11 +1093,6 @@ CREATE TABLE `url_prefixes` (
   UNIQUE KEY `index_url_prefixes_on_document_collection_id_and_prefix` (`document_collection_id`,`prefix`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `users`
---
-
 DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1488,11 +1133,6 @@ CREATE TABLE `users` (
   KEY `index_users_on_uid` (`uid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `watchers`
---
-
 DROP TABLE IF EXISTS `watchers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1512,11 +1152,6 @@ CREATE TABLE `watchers` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `whitelisted_v1_api_handles`
---
-
 DROP TABLE IF EXISTS `whitelisted_v1_api_handles`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1529,11 +1164,6 @@ CREATE TABLE `whitelisted_v1_api_handles` (
   KEY `index_whitelisted_v1_api_handles_on_handle` (`handle`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `youtube_playlists`
---
-
 DROP TABLE IF EXISTS `youtube_playlists`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1549,11 +1179,6 @@ CREATE TABLE `youtube_playlists` (
   UNIQUE KEY `index_youtube_playlists_on_youtube_profile_id_and_playlist_id` (`youtube_profile_id`,`playlist_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `youtube_profiles`
---
-
 DROP TABLE IF EXISTS `youtube_profiles`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1569,10 +1194,6 @@ CREATE TABLE `youtube_profiles` (
   KEY `index_youtube_profiles_on_id_and_imported_at` (`id`,`imported_at`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping routines for database 'usasearch_development'
---
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -1583,7 +1204,6 @@ CREATE TABLE `youtube_profiles` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-13 21:24:34
 INSERT INTO `schema_migrations` (version) VALUES
 ('20090818003200'),
 ('20090827135344'),

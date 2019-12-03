@@ -1,5 +1,5 @@
 module BingV6Authentication
-  APP_ID = Rails.application.secrets.bing_v6['app_id'].freeze
+  APP_ID = Rails.application.secrets.bing_v6[:app_id].freeze
 
   def params
     super.merge({
