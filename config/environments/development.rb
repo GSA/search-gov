@@ -9,27 +9,9 @@ Rails.application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
 
-  # Show full error reports.
-  config.consider_all_requests_local = true
-
-  # Enable/disable caching. By default caching is disabled.
-  if Rails.root.join('tmp/caching-dev.txt').exist?
-    config.action_controller.perform_caching = true
-
-    config.cache_store = :memory_store
-    config.public_file_server.headers = {
-      'Cache-Control' => "public, max-age=#{2.days.seconds.to_i}"
-    }
-  else
-    config.action_controller.perform_caching = false
-
-    config.cache_store = :null_store
-  end
-
-  # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
-
-  config.action_mailer.perform_caching = false
+  # Show full error reports and disable caching
+  config.consider_all_requests_local       = true
+  config.action_controller.perform_caching = false
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
@@ -37,20 +19,24 @@ Rails.application.configure do
   # Raise an error on page load if there are pending migrations.
   config.active_record.migration_error = :page_load
 
-  # Debug mode disables concatenation and preprocessing of assets.
-  # This option may cause significant delays in view rendering with a large
-  # number of complex assets.
-  config.assets.debug = true
+  # Switch for testing static assets in development
+  test_static_assets = false
 
-  # Suppress logger output for asset requests.
-  config.assets.quiet = true
-
-  # Raises error for missing translations
-  config.action_view.raise_on_missing_translations = true
-
-  # Use an evented file watcher to asynchronously detect changes in source code,
-  # routes, locales, etc. This feature depends on the listen gem.
-  config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+  if test_static_assets
+    # Behave much like production (requiring assets to be precompiled), but
+    # using the Rails static asset server rather than an Apache/nginx
+    # reverse proxy. Also, don't compress the files because that makes them
+    # hard to read.
+    config.serve_static_files = true
+    config.assets.compress = false
+    config.assets.compile = false
+    config.assets.digest = true
+  else
+    # Do not compress assets
+    config.assets.compress = false
+    # Expands the lines which load the assets
+    config.assets.debug = true
+  end
 end
 
 ADDITIONAL_BING_PARAMS = { 'traffictype' => 'test' }

@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 5.1.0'
+gem 'rails', '~> 5.0.0'
 
 gem 'rake', '~> 12.3.2'
 gem 'rack-contrib', '~> 2.1.0'
@@ -76,7 +76,7 @@ gem 'activerecord-validate_unique_child_attribute', '~> 0.1.0', require: 'active
 gem 'jwt', '~> 1.5.6'
 gem 'grape', '~> 1.1'
 gem 'grape-entity', '~> 0.6.0'
-gem 'rack-cors', '~> 1.0.5', :require => 'rack/cors'
+gem 'rack-cors', '~> 1.0.2', :require => 'rack/cors'
 gem 'hashie', '~> 3.3.0'
 gem 'retry_block', '~> 1.2.0'
 gem 'aws-sdk', '< 3.0'
@@ -132,7 +132,6 @@ gem 'font-awesome-grunticon-rails',
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring', '~> 2.0'
-  gem 'listen', '~> 3.1.5'
 end
 
 group :development, :test do
@@ -143,6 +142,7 @@ group :development, :test do
   gem 'database_cleaner', '~> 1.6.2'
   gem 'capybara', '~> 2.18.0'
   gem 'launchy', '~> 2.4.3'
+  gem 'thin', '~> 1.7'
   gem 'i18n-tasks', '~> 0.9.19'
   gem 'pry-byebug', '~> 3.5'
   # Updating rubocop? Update & run mry to ensure rubocop.yml is updated:
@@ -154,7 +154,6 @@ group :development, :test do
   gem 'pry-rails', '~> 0.3.6'
   gem 'awesome_print'
   gem 'mry', '0.59.0.0'
-  gem 'puma', '~> 3.7'
 end
 
 group :test do
