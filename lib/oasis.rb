@@ -13,7 +13,7 @@ module Oasis
   end
 
   def self.host
-    Rails.application.secrets.asis['host']
+    Rails.application.secrets.asis[:host]
   end
 
   private

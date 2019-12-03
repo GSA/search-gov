@@ -46,8 +46,6 @@ class Affiliate < ApplicationRecord
     assoc.has_many :tag_filters, -> { order 'tag ASC' }
   end
 
-  has_many :available_templates, through: :affiliate_templates, source: :template
-
   has_many :affiliate_templates, dependent: :destroy do
     def make_available(template_ids)
       template_ids.each { |id| find_or_create_by(template_id: id) }
@@ -59,6 +57,7 @@ class Affiliate < ApplicationRecord
     end
   end
 
+  has_many :available_templates, through: :affiliate_templates, source: :template
   has_many :users, -> { order 'contact_name' }, through: :memberships
   has_many :default_users, class_name: 'User', foreign_key: 'default_affiliate_id', dependent: :nullify
   has_many :rss_feed_urls, -> { distinct }, through: :rss_feeds
@@ -76,9 +75,9 @@ class Affiliate < ApplicationRecord
                          storage: :s3,
                          s3_credentials: Rails.application.secrets.aws_image_bucket,
                          url: ':s3_alias_url',
-                         s3_host_alias: Rails.application.secrets.aws_image_bucket['s3_host_alias'],
+                         s3_host_alias: Rails.application.secrets.aws_image_bucket[:s3_host_alias],
                          s3_protocol: 'https',
-                         s3_region: Rails.application.secrets.aws_image_bucket['s3_region']
+                         s3_region: Rails.application.secrets.aws_image_bucket[:s3_region]
                        }
 
   has_attached_file :page_background_image,
@@ -804,7 +803,7 @@ class Affiliate < ApplicationRecord
   end
 
   def malformed_html_error_message(field_name)
-    sea = Rails.application.secrets.organization['support_email_address']
+    sea = Rails.application.secrets.organization[:support_email_address]
     email_link = %Q{<a href="mailto:#{sea}">#{sea}</a>}
     "HTML to customize the #{field_name} of your search results is invalid. Click on the validate link below or email us at #{email_link}".html_safe
   end
