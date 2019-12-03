@@ -2,11 +2,11 @@
 
 class Emailer < ApplicationMailer
   include ActionView::Helpers::TextHelper
-  default_url_options[:host] = Rails.application.secrets.organization[:app_host]
+  default_url_options[:host] = Rails.application.secrets.organization['app_host']
   default_url_options[:protocol] = 'https'
-  ADMIN_EMAIL_ADDRESS = Rails.application.secrets.organization[:admin_email_address]
+  ADMIN_EMAIL_ADDRESS = Rails.application.secrets.organization['admin_email_address']
   DELIVER_FROM_EMAIL_ADDRESS = 'no-reply@support.digitalgov.gov'
-  REPLY_TO_EMAIL_ADDRESS = Rails.application.secrets.organization[:support_email_address]
+  REPLY_TO_EMAIL_ADDRESS = Rails.application.secrets.organization['support_email_address']
   NOTIFICATION_SENDER_EMAIL_ADDRESS = 'notification@support.digitalgov.gov'
 
   def new_user_to_admin(user)
@@ -120,7 +120,7 @@ class Emailer < ApplicationMailer
     @external_tracking_code = external_tracking_code
     setup_email({
       from: NOTIFICATION_SENDER_EMAIL_ADDRESS,
-      to: Rails.application.secrets.organization[:support_email_address]
+      to: Rails.application.secrets.organization['support_email_address']
     }, __method__)
     send_mail(:text)
   end
@@ -179,7 +179,7 @@ class Emailer < ApplicationMailer
     end
 
     mail email_headers do |format|
-      format.send(format_method) { ERB.new(@email_template_body).result(binding) }
+      format.send(format_method) { render :text => ERB.new(@email_template_body).result(binding) }
     end
   end
 

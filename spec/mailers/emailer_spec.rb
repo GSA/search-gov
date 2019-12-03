@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Emailer do
-context do
   include EmailSpec::Helpers
   include EmailSpec::Matchers
   fixtures :affiliates, :users, :features, :memberships
@@ -295,7 +294,7 @@ context do
     subject(:email) { Emailer.update_external_tracking_code(affiliate, current_user, tracking_code) }
 
     it { is_expected.to deliver_from(Emailer::NOTIFICATION_SENDER_EMAIL_ADDRESS) }
-    it { is_expected.to deliver_to(Rails.application.secrets.organization[:support_email_address]) }
+    it { is_expected.to deliver_to(Rails.application.secrets.organization['support_email_address']) }
     it { is_expected.not_to reply_to(Emailer::REPLY_TO_EMAIL_ADDRESS) }
     it { is_expected.to have_body_text tracking_code }
   end
@@ -325,5 +324,4 @@ context do
 
     after { EmailTemplate.load_default_templates }
   end
-end
 end

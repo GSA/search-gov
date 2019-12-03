@@ -4,9 +4,7 @@ require 'typhoeus/adapters/faraday'
 
 module ES
   INDEX_PREFIX = "#{Rails.env}-usasearch"
-  CLIENT_CONFIG = Rails.application.config_for(
-    :elasticsearch_client
-  ).deep_symbolize_keys.freeze
+  CLIENT_CONFIG = Rails.application.config_for(:elasticsearch_client).freeze
 
   def client_reader
     @client_reader ||= initialize_client(reader_config)
@@ -19,15 +17,15 @@ module ES
   private
 
   def reader_config
-    client_config(:reader)
+    client_config('reader')
   end
 
   def writer_config
-    client_config(:writers)
+    client_config('writers')
   end
 
   def initialize_client(config)
-    Elasticsearch::Client.new(config.merge(CLIENT_CONFIG))
+    Elasticsearch::Client.new(config.merge(CLIENT_CONFIG).symbolize_keys)
   end
 
   module ELK
@@ -35,7 +33,7 @@ module ES
     private
 
     def self.client_config(mode)
-      Rails.application.secrets[:analytics][:elasticsearch][mode].freeze
+      Rails.application.secrets['analytics']['elasticsearch'][mode].freeze
     end
   end
 
@@ -44,7 +42,7 @@ module ES
     private
 
     def self.client_config(mode)
-      Rails.application.secrets[:custom_indices][:elasticsearch][mode].freeze
+      Rails.application.secrets['custom_indices']['elasticsearch'][mode].freeze
     end
   end
 end

@@ -4,7 +4,7 @@ require 'resque/failure/redis'
 require 'resque-timeout'
 
 config = Rails.application.secrets.system_redis
-Resque.redis = [config[:host], config[:port]].join(':')
+Resque.redis = [config['host'], config['port']].join(':')
 
 Resque::Failure::Multiple.classes = [Resque::Failure::Redis, Resque::Failure::Airbrake]
 Resque::Failure.backend = Resque::Failure::Multiple
