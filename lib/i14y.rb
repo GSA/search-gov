@@ -14,15 +14,15 @@ module I14y
   end
 
   def self.host
-    Rails.application.secrets.i14y['host']
+    Rails.application.secrets.i14y[:host]
   end
 
   def self.admin_user
-    Rails.application.secrets.i14y['admin_user']
+    Rails.application.secrets.i14y[:admin_user]
   end
 
   def self.admin_password
-    Rails.application.secrets.i14y['admin_password']
+    Rails.application.secrets.i14y[:admin_password]
   end
 
   def self.cached_connection

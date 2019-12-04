@@ -74,7 +74,7 @@ module YoutubeAdapter
   def self.client
     return @@client if @@client
     @@client = Google::Apis::YoutubeV3::YouTubeService.new
-    @@client.key = Rails.application.secrets.youtube['key']
+    @@client.key = Rails.application.secrets.youtube[:key]
     @@client.client_options.application_name = 'DGSearch'
     @@client.client_options.open_timeout_sec = 2
     @@client.client_options.read_timeout_sec = 5
