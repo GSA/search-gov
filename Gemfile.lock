@@ -127,6 +127,10 @@ GEM
       activemodel (= 5.2.3)
       activesupport (= 5.2.3)
       arel (>= 9.0)
+    activerecord-validate_unique_child_attribute (0.0.1)
+      activemodel (>= 3.2.0)
+      activerecord (>= 3.2.0)
+      activesupport (>= 3.2.0)
     activestorage (5.2.3)
       actionpack (= 5.2.3)
       activerecord (= 5.2.3)
@@ -773,6 +777,7 @@ DEPENDENCIES
   active_scaffold (~> 3.5.0)
   active_scaffold_export!
   active_scheduler (~> 0.5.0)
+  activerecord-validate_unique_child_attribute
   addressable (~> 2.5.2)
   airbrake (~> 7.1.1)
   american_date (~> 1.1.1)
