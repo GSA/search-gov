@@ -109,8 +109,8 @@ describe UsersController do
       include_context 'approved user logged in'
 
       it do
-        is_expected.to permit(*permitted_params).
-          for(:update, params: { user: update_params })
+      is_expected.to permit(*permitted_params).
+        for(:update, params: { user: update_params })
       end
 
       context 'when the User#update_attributes was successfully' do

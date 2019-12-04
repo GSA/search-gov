@@ -44,13 +44,13 @@ Rails.application.routes.draw do
 
   root to: 'user_sessions#security_notification'
 
-  resource :account, controller: "users"
+  resource :account, :controller => "users"
   resources :users
   resource :user_session
-  resource :human_session, only: [:new, :create]
+  resource :human_session, :only => [:new, :create]
   resources :password_resets
-  resources :email_verification, only: :show
-  resources :complete_registration, only: [:edit, :update]
+  resources :email_verification, :only => :show
+  resources :complete_registration, :only => [:edit, :update]
 
   scope module: 'sites' do
     resources :sites do
@@ -169,7 +169,7 @@ Rails.application.routes.draw do
   get '/affiliates/:id/:some_action', to: redirect('/sites/%{id}')
 
   namespace :admin do
-    resources :affiliates, concerns: :active_scaffold
+    resources :affiliates, concerns: :active_scaffold 
     resources :affiliate_notes, concerns: :active_scaffold
     resources :affiliate_templates, concerns: :active_scaffold
     resources :users, concerns: :active_scaffold
@@ -182,7 +182,7 @@ Rails.application.routes.draw do
     resources :catalog_prefixes, concerns: :active_scaffold
     resources :site_feed_urls, concerns: :active_scaffold
     resources :superfresh_urls, concerns: :active_scaffold
-    resources :superfresh_urls_bulk_upload, only: :index do
+    resources :superfresh_urls_bulk_upload, :only => :index do
       collection do
         post :upload
       end
@@ -202,12 +202,12 @@ Rails.application.routes.draw do
     resources :features, concerns: :active_scaffold
     resources :affiliate_feature_additions, concerns: :active_scaffold
     resources :help_links, concerns: :active_scaffold
-    resources :compare_search_results, only: :index
+    resources :compare_search_results, :only => :index
     resources :bing_urls, concerns: :active_scaffold
     resources :statuses, concerns: :active_scaffold
     resources :system_alerts, concerns: :active_scaffold
     resources :tags, concerns: :active_scaffold
-    resources :trending_urls, only: :index
+    resources :trending_urls, :only => :index
     resources :news_items, concerns: :active_scaffold
     resources :suggestion_blocks, concerns: :active_scaffold
     resources :rss_feeds, concerns: :active_scaffold
@@ -251,15 +251,9 @@ Rails.application.routes.draw do
   get '/superfresh/:feed_id' => 'superfresh#index', :as => :superfresh_feed
 
   get '/user/developer_redirect' => 'users#developer_redirect', :as => :developer_redirect
-  get '/program' => redirect(
-    Rails.application.secrets.organization[:blog_url],
-    status: 302
-  )
+  get '/program' => redirect(Rails.application.secrets.organization['blog_url'], :status => 302)
 
-  get "*path" => redirect(
-    Rails.application.secrets.organization[:page_not_found_url],
-    status: 302
-  )
+  get "*path" => redirect(Rails.application.secrets.organization['page_not_found_url'], status: 302)
 
   get "/c/search" => 'dev#null', :as => :search_consumer_search
   get "/c/admin/:site_name" => 'dev#null', :as => :search_consumer_admin

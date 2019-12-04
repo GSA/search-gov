@@ -399,6 +399,19 @@ describe SiteCloner do
         cloner_handling_images.clone
       end
     end
+
+    context 'when the origin site has SC templates' do
+      before do
+        origin_site.affiliate_templates.create(template_id: Template.find_by_name("IRS").id)
+        origin_site.affiliate_templates.create(template_id: Template.find_by_name("Classic").id)
+        origin_site.update_attributes(template_id: Template.find_by_name("IRS").id)
+      end
+
+      it 'copies the templates' do
+        expect(cloned_site.template.name).to eq('IRS')
+        expect(cloned_site.available_templates.pluck(:name)).to match_array(['Classic','IRS'])
+      end
+    end
   end
 
   describe '#create_site_shallow_copy' do
