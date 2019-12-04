@@ -2,7 +2,7 @@ class AzureEngine < SearchEngine
   API_HOST = 'https://api.datamarket.azure.com'.freeze
   NAMESPACE = 'azure_web_api'.freeze
   CACHE_LIFETIME = AZURE_CACHE_DURATION
-  DEFAULT_AZURE_HOSTED_PASSWORD = Rails.application.secrets.hosted_azure['account_key'].freeze
+  DEFAULT_AZURE_HOSTED_PASSWORD = Rails.application.secrets.hosted_azure[:account_key].freeze
 
   class_attribute :api_namespace
   class_attribute :azure_parameters_class, instance_writer: false
