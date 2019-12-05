@@ -1,4 +1,6 @@
-Feature: Blended Search
+  # Rails 5.2 upgrade - SRCH-1117
+  @wip
+  Feature: Blended Search
   In order to get various types of relevant government-related information from specific sites
   As a site visitor
   I want to be able to search for information

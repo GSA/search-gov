@@ -6,6 +6,8 @@ Feature: Image search using mobile template
   Background:
     Given I am using a mobile device
 
+  # Rails 5.2 upgrade - SRCH-1115
+  @wip
   Scenario: English Image search on a legacy site
     Given the following legacy Affiliates exist:
       | display_name      | name     | contact_email | contact_name | is_image_search_navigable |

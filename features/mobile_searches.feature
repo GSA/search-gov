@@ -3,6 +3,8 @@ Feature: Searches using mobile device
   Background:
     Given I am using a mobile device
 
+  # Rails 5.2 upgrade - SRCH-1113
+  @wip
   Scenario: Web search
     Given the following Affiliates exist:
       | display_name | name          | contact_email    | contact_name | locale | domains              |
@@ -91,6 +93,8 @@ Feature: Searches using mobile device
     Then I should see "Sorry, no results found for 'hippopotamus'."
     And I should see "Hippopotamus amphibius"
 
+  # Rails 5.2 upgrade - SRCH-1113
+  @wip
   Scenario: News search
     Given the following Affiliates exist:
       | display_name | name          | contact_email    | contact_name | locale |
@@ -159,6 +163,8 @@ Feature: Searches using mobile device
     Then I should see "Generado por Search.gov"
     And I should see at least "5" web search results
 
+  # Rails 5.2 upgrade - SRCH-1113
+  @wip
   Scenario: Custom date range news search
     Given the following Affiliates exist:
       | display_name | name          | contact_email    | contact_name | locale |
@@ -275,6 +281,8 @@ Feature: Searches using mobile device
     And I should see "Cualquier fecha" within the current time filter
     And I should see "Más recientes" within the current sort by filter
 
+  # Rails 5.2 upgrade - SRCH-1113
+  @wip
   Scenario: Media RSS search
     Given the following Affiliates exist:
       | display_name | name          | contact_email    | contact_name |
@@ -289,6 +297,8 @@ Feature: Searches using mobile device
     Then I should see exactly "10" image search results
     And I should see "Powered by Search.gov"
 
+  # Rails 5.2 upgrade - SRCH-1113
+  @wip
   Scenario: Video news search
     Given the following Affiliates exist:
       | display_name | name          | contact_email    | contact_name | locale | youtube_handles         |
@@ -347,6 +357,8 @@ Feature: Searches using mobile device
     Then I should see "Generado por Search.gov"
     And I should see at least "5" video search results
 
+  # Rails 5.2 upgrade - SRCH-1113
+  @wip
   Scenario: Site search
     Given the following Affiliates exist:
       | display_name | name          | contact_email    | contact_name | locale |
@@ -373,6 +385,8 @@ Feature: Searches using mobile device
     Then I should see Generado por Bing logo
     And I should see at least "7" web search results
 
+  # Rails 5.2 upgrade - SRCH-1113
+  @wip
   Scenario: Site navigations without dropdown menu
     Given the following Affiliates exist:
       | display_name | name          | contact_email    | contact_name | locale |
@@ -401,6 +415,8 @@ Feature: Searches using mobile device
     Then I should see "Articles" within the SERP active navigation
     And I should see at least "10" web search results
 
+  # Rails 5.2 upgrade - SRCH-1113
+  @wip
   Scenario: Site navigations with dropdown menu
     Given the following Affiliates exist:
       | display_name | name          | contact_email    | contact_name | locale | navigation_dropdown_label |
@@ -446,6 +462,8 @@ Feature: Searches using mobile device
     When I am on en.agency.gov's "Inactive news search" mobile news search page
     Then I should see "Inactive news search" within the SERP active navigation
 
+  # Rails 5.2 upgrade - SRCH-1113
+  @wip
   Scenario: Job search
     Given the following Affiliates exist:
       | display_name | name          | contact_email    | contact_name |locale | jobs_enabled |
@@ -476,6 +494,8 @@ Feature: Searches using mobile device
     And I should see "Ninguna oferta de trabajo en su región coincide con su búsqueda"
     And I should see a link to "​Más trabajos en el gobierno federal en USAJobs.gov" with url for "https://www.usajobs.gov/Search/Results?hp=public"
 
+  # Rails 5.2 upgrade - SRCH-1113
+  @wip
   Scenario: When using tablet device
     Given I am using a mobile device
     And the following Affiliates exist:
@@ -486,6 +506,8 @@ Feature: Searches using mobile device
     And I press "Search"
     And I should see at least "2" web search results
 
+  # Rails 5.2 upgrade - SRCH-1113
+  @wip
   Scenario: Searching with matching med topic query
     Given the following Medline Topics exist:
       | medline_tid | medline_title     | medline_url                                              | locale | summary_html                                                                                                                                                                                                                                                                                                         |
@@ -518,6 +540,8 @@ Feature: Searches using mobile device
     Then I should see a link to "Alcohol" with url for "https://www.nlm.nih.gov/medlineplus/spanish/alcohol.html" within the med topic govbox
     And I should see a link to "Alcoholismo" with url for "https://www.nlm.nih.gov/medlineplus/spanish/alcoholism.html" within the med topic govbox
 
+  # Rails 5.2 upgrade - SRCH-1113
+  @wip
   Scenario: Searching with sitelimit
     Given the following Affiliates exist:
       | display_name | name          | contact_email    | contact_name | locale | domains |
@@ -539,6 +563,8 @@ Feature: Searches using mobile device
     When I follow "gobierno de todos los sitios" within the search all sites row
     Then I should not see "Los resultados para gobierno son solo de usa.gov."
 
+  # Rails 5.2 upgrade - SRCH-1113
+  @wip
   Scenario: Searching with matching results on news govbox
     Given the following Affiliates exist:
       | display_name | name          | contact_email    | contact_name | locale |
@@ -579,6 +605,8 @@ Feature: Searches using mobile device
     Then I should see "Noticia uno <b> item </b>"
     And I should see "Noticias Ayer"
 
+  # Rails 5.2 upgrade - SRCH-1113
+  @wip
   Scenario: Searching on sites with related sites
     Given the following Affiliates exist:
       | display_name | name           | contact_email    | contact_name | locale | related_sites_dropdown_label |
@@ -598,6 +626,8 @@ Feature: Searches using mobile device
     When I follow "Este tema en español" within the SERP navigation
     Then I should see the browser page titled "gobierno - Spanish site resultados de la búsqueda"
 
+  # Rails 5.2 upgrade - SRCH-1113
+  @wip
   Scenario: Searching on sites with federal register documents
     And the following Affiliates exist:
       | display_name | name          | contact_email    | contact_name | agency_abbreviation | is_federal_register_document_govbox_enabled | domains  |
@@ -619,6 +649,8 @@ Feature: Searches using mobile device
     Then I should see a link to "Atlantic Highly Migratory Species; Atlantic Bluefin Tuna Fisheries" with url for "https://www.federalregister.gov/articles/2013/08/19/2013-20176/atlantic-highly-migratory-species-atlantic-bluefin-tuna-fisheries"
     And I should see "A Rule by the National Oceanic and Atmospheric Administration posted on August 19, 2013."
 
+  # Rails 5.2 upgrade - SRCH-1113
+  @wip
   Scenario: English search on a legacy site
     Given the following legacy Affiliates exist:
       | display_name      | name     | contact_email | contact_name |
@@ -628,6 +660,8 @@ Feature: Searches using mobile device
     And I press "Search" in the legacy search box
     Then I should see at least 10 search results
 
+  # Rails 5.2 upgrade - SRCH-1113
+  @wip
   Scenario: Advanced search
     Given the following Affiliates exist:
       | display_name | name          | contact_email    | contact_name | locale |
@@ -651,6 +685,8 @@ Feature: Searches using mobile device
     And I press "Advanced Search"
     And the "Enter your search term" field should contain "allofit \"exact\" \-bad \(any\) filetype:pdf"
 
+  # Rails 5.2 upgrade - SRCH-1113
+  @wip
   Scenario: SEC Edgar sitelinks
     Given the following Affiliates exist:
       | display_name | name      | contact_email    | contact_name | domains                    |
@@ -672,6 +708,8 @@ Feature: Searches using mobile device
     Then I should see a link to "Most Recent Filings for this Company"
     And I should see a link to "Full Filing"
 
+  # Rails 5.2 upgrade - SRCH-1113
+  @wip
   Scenario: Custom page 1 results pointer
     Given the following Affiliates exist:
       | display_name | name           | contact_email    | contact_name | locale | page_one_more_results_pointer |
@@ -684,6 +722,8 @@ Feature: Searches using mobile device
     When I follow "Next"
     Then I should not see "Wherever. Try your search again to see results"
 
+  # Rails 5.2 upgrade - SRCH-1113
+  @wip
   Scenario: Custom no results pointer
     Given the following Affiliates exist:
       | display_name | name           | contact_email    | contact_name | locale | no_results_pointer |
@@ -693,6 +733,8 @@ Feature: Searches using mobile device
     And I press "Search"
     Then I should see "NORESULTS. Try your search again to see results"
 
+  # Rails 5.2 upgrade - SRCH-1113
+  @wip
   Scenario: Web search on Kalaallisut site
     Given the following Affiliates exist:
       | display_name | name          | contact_email    | contact_name | locale | domains              |
@@ -700,6 +742,8 @@ Feature: Searches using mobile device
     When I am on kl.agency.gov's mobile search page
     Then I should see "Ujarniakkat ataani allaffissamut allaguk"
 
+  # Rails 5.2 upgrade - SRCH-1113
+  @wip
   Scenario: Web search using Bing engine
     Given the following Affiliates exist:
       | display_name | name          | contact_email    | contact_name | locale | search_engine | domains |
@@ -718,6 +762,8 @@ Feature: Searches using mobile device
     And I should see at least "10" web search results
     And I should see Powered by Bing logo
 
+  # Rails 5.2 upgrade - SRCH-1113
+  @wip
   Scenario: Active facet display using SearchGov
     Given the following Affiliates exist:
       | display_name | name          | contact_email    | contact_name | locale | search_engine | domains |
@@ -729,6 +775,8 @@ Feature: Searches using mobile device
     And I follow "USA.gov" within the SERP navigation
     Then I should see the "USA.gov" Collection as the active facet
 
+  # Rails 5.2 upgrade - SRCH-1113
+  @wip
   Scenario: Display an Alert on search page
     Given the following Affiliates exist:
       | display_name | name          | contact_email    | contact_name | locale | domains              |

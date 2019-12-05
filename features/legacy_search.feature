@@ -20,6 +20,8 @@ Feature: Legacy Search
     And I press "Search" in the legacy search box
     Then I should see "Sorry, no results found for 'foobarbazbiz'. Try entering fewer or broader query terms."
 
+  # Rails 5.2 upgrade - SRCH-1116
+  @wip
   Scenario: Searching with active RSS feeds
     Given the following legacy Affiliates exist:
       | display_name     | name       | contact_email | contact_name | locale | youtube_handles | is_image_search_navigable |
@@ -219,6 +221,8 @@ Feature: Legacy Search
     And I should see an image with src "https://i.ytimg.com/vi/EqExXXahb0s/default.jpg"
     And I should see yesterday's date in the Spanish search results
 
+  # Rails 5.2 upgrade - SRCH-1116
+  @wip
   Scenario: Searching news items using time filters
     Given the following legacy Affiliates exist:
       | display_name                 | name       | contact_email | contact_name | locale | youtube_handles |
@@ -404,6 +408,8 @@ Feature: Legacy Search
     And I should see a link to "Fifth Spanish item" with url for "http://www.gobiernousa.gov/news/5"
     And I should not see a link to "Sixth Spanish item"
 
+  # Rails 5.2 upgrade - SRCH-1116
+  @wip
   Scenario: Searching news items with default dublin core mappings
     Given the following legacy Affiliates exist:
       | display_name     | name       | contact_email | contact_name | locale |
@@ -593,6 +599,8 @@ Feature: Legacy Search
     And I should not see "Fourth Spanish item"
     And I should not see "Sixth Spanish item"
 
+  # Rails 5.2 upgrade - SRCH-1116
+  @wip
   Scenario: Searching a domain with Bing results that match a specific news item
     # ACHTUNG! This test will fail unless the news item URL matches a url returned by the web search.
     # So if it breaks, check the urls in the VCR cassette recording from the search:
@@ -611,6 +619,8 @@ Feature: Legacy Search
     And I press "Search" in the legacy search box
     Then I should see "Clinton RSS Test"
 
+  # Rails 5.2 upgrade - SRCH-1116
+  @wip
   Scenario: No results when searching with active RSS feeds
     Given the following legacy Affiliates exist:
       | display_name | name    | contact_email | contact_name |
@@ -642,6 +652,8 @@ Feature: Legacy Search
     When I follow "Remove all filters"
     Then I should see at least 2 search results
 
+  # Rails 5.2 upgrade - SRCH-1116
+  @wip
   Scenario: No results when searching on Spanish site with active RSS feeds
     Given the following legacy Affiliates exist:
       | display_name | name    | contact_email | contact_name | locale |
@@ -672,6 +684,8 @@ Feature: Legacy Search
     When I follow "Elimine los filtros"
     Then I should see at least 2 search results
 
+  # Rails 5.2 upgrade - SRCH-1116
+  @wip
   Scenario: Searching on a site with media RSS
     Given the following legacy Affiliates exist:
       | display_name | name    | contact_email | contact_name |
@@ -689,6 +703,8 @@ Feature: Legacy Search
     And I press "Search" in the legacy search box
     Then I should see 2 image news results
 
+  # Rails 5.2 upgrade - SRCH-1116
+  @wip
   Scenario: Visiting English affiliate search with multiple domains
     Given the following legacy Affiliates exist:
       | display_name | name    | contact_email | contact_name | domains                |
@@ -699,6 +715,8 @@ Feature: Legacy Search
     Then I should see at least 2 search results
     And I should not see "Search this site"
 
+  # Rails 5.2 upgrade - SRCH-1116
+  @wip
   Scenario: Visiting Spanish affiliate search with multiple domains
     Given the following legacy Affiliates exist:
       | display_name | name    | contact_email | contact_name | domains                | locale | is_image_search_navigable |
@@ -713,6 +731,8 @@ Feature: Legacy Search
     And I should not see "Images"
     And I should not see "Search this site"
 
+  # Rails 5.2 upgrade - SRCH-1116
+  @wip
   @javascript
   Scenario: Searchers see English Medline Govbox
     Given the following legacy Affiliates exist:
@@ -793,6 +813,8 @@ Feature: Legacy Search
     Then I should see the browser page titled "OR US97 central - agency site Search Results"
     And I should see some Bing search results
 
+  # Rails 5.2 upgrade - SRCH-1116
+  @wip
   Scenario: When a searcher clicks on a collection on sidebar and the query is blank
     Given the following legacy Affiliates exist:
       | display_name | name    | contact_email | contact_name |
@@ -804,6 +826,8 @@ Feature: Legacy Search
     And I follow "Topics" in the left column
     Then I should see "Please enter a search term"
 
+  # Rails 5.2 upgrade - SRCH-1116
+  @wip
   Scenario: When a searcher on an English site clicks on an RSS Feed on sidebar and the query is blank
     Given the following legacy Affiliates exist:
       | display_name     | name       | contact_email | contact_name | locale | youtube_handles |
@@ -835,6 +859,8 @@ Feature: Legacy Search
     And I press "Search" in the legacy search box
     Then I should see the browser page titled "Videos - bar site Search Results"
 
+  # Rails 5.2 upgrade - SRCH-1116
+  @wip
   Scenario: When a searcher on a Spanish site clicks on an RSS Feed on sidebar and the query is blank
     Given the following legacy Affiliates exist:
       | display_name     | name       | contact_email | contact_name | locale | youtube_handles |
@@ -866,6 +892,8 @@ Feature: Legacy Search
     And I press "Buscar" in the legacy search box
     Then I should see the browser page titled "Spanish Videos - Spanish bar site resultados de la búsqueda"
 
+  # Rails 5.2 upgrade - SRCH-1116
+  @wip
   Scenario: When there are relevant Tweets from Twitter profiles associated with the affiliate
     Given the following legacy Affiliates exist:
       | display_name | name       | contact_email | contact_name | locale |
@@ -901,6 +929,8 @@ Feature: Legacy Search
     And I should see "Unidos" in bold font in the twitter govbox
     And I should see "amigos" in bold font in the twitter govbox
 
+  # Rails 5.2 upgrade - SRCH-1116
+  @wip
   Scenario: Searching document collections
     Given the following legacy Affiliates exist:
       | display_name | name       | contact_email | contact_name | domains        |
@@ -919,6 +949,8 @@ Feature: Legacy Search
     Then I should see a link to "First petition article" with url for "http://petitions.whitehouse.gov/petition-1.html"
     And I should see a link to "Second petition article" with url for "http://petitions.whitehouse.gov/petition-2.html"
 
+  # Rails 5.2 upgrade - SRCH-1116
+  @wip
   Scenario: Searching on non navigable document collection
     Given the following legacy Affiliates exist:
       | display_name | name       | contact_email | contact_name | domains |
@@ -939,6 +971,8 @@ Feature: Legacy Search
     And I should not see a link to "Blog" in the left column
     And I should not see a link to "Search Notes" in the left column
 
+  # Rails 5.2 upgrade - SRCH-1116
+  @wip
   Scenario: Searching with malformed query
     Given the following legacy Affiliates exist:
       | display_name | name       | contact_email | contact_name | is_image_search_navigable |
@@ -946,6 +980,8 @@ Feature: Legacy Search
     When I am on agency.gov's search page with unsanitized "hello" query
     Then I should see a link to "Images" with sanitized "hello" query
 
+  # Rails 5.2 upgrade - SRCH-1116
+  @wip
   Scenario: Searching for site specific results using query
     Given the following legacy Affiliates exist:
       | display_name | name       | contact_email | contact_name | domains |
@@ -958,6 +994,8 @@ Feature: Legacy Search
     And I press "Search" in the legacy search box
     Then I should not see "en.wikipedia.org/wiki/Jazz"
 
+  # Rails 5.2 upgrade - SRCH-1116
+  @wip
   Scenario: Searching for site specific results using sitelimit
     Given the following legacy Affiliates exist:
       | display_name | name       | contact_email | contact_name | domains | is_image_search_navigable |
@@ -996,6 +1034,8 @@ Feature: Legacy Search
     And I follow "Everything" in the left column
     Then I should see "www.usa.gov/"
 
+  # Rails 5.2 upgrade - SRCH-1116
+  @wip
   Scenario: Visiting affiliate with strictui parameters
     Given the following legacy Affiliates exist:
       | display_name | name    | contact_email | contact_name | external_css_url                | header                                                                  | footer                                                                  |
@@ -1005,6 +1045,8 @@ Feature: Legacy Search
     And I should not see tainted SERP header
     And I should not see tainted SERP footer
 
+  # Rails 5.2 upgrade - SRCH-1116
+  @wip
   Scenario: Affiliate search on affiliate with connections
     Given the following legacy Affiliates exist:
       | display_name | name       | contact_email | contact_name | domains |
@@ -1020,6 +1062,8 @@ Feature: Legacy Search
     When I follow "Other Site"
     Then I should see the browser page titled "jobs - other site Search Results"
 
+  # Rails 5.2 upgrade - SRCH-1116
+  @wip
   Scenario: Searching on sites with Featured Collections
     Given the following legacy Affiliates exist:
       | display_name   | name          | contact_email   | contact_name | locale |
@@ -1041,6 +1085,8 @@ Feature: Legacy Search
     And I press "Search" in the legacy search box
     Then I should see a featured collection link title with "Atlantic" highlighted
 
+  # Rails 5.2 upgrade - SRCH-1116
+  @wip
   Scenario: Searching on sites with Boosted Contents
     Given the following legacy Affiliates exist:
       | display_name   | name          | contact_email   | contact_name | locale |
@@ -1064,6 +1110,8 @@ Feature: Legacy Search
     And I press "Buscar" in the legacy search box
     Then I should see a link to "la página de prueba de Emergencia" with url for "http://www.agency.gov/911" in the boosted contents section
 
+  # Rails 5.2 upgrade - SRCH-1116
+  @wip
   Scenario: Searching news items with custom dublin core mappings
     Given the following legacy Affiliates exist:
       | display_name | name       | contact_email | contact_name | locale | dc_contributor          | dc_publisher          | dc_subject |
@@ -1089,6 +1137,8 @@ Feature: Legacy Search
     And I should see "Briefing Room Section" in the left column
     And I should not see a link to "Briefing Room Section" in the left column
 
+  # Rails 5.2 upgrade - SRCH-1116
+  @wip
   Scenario: Entering a blank advanced search
     Given the following legacy Affiliates exist:
       | display_name | name   | contact_email | contact_name | header         |
@@ -1098,6 +1148,8 @@ Feature: Legacy Search
     Then I should be on the search page
     And I should see "Please enter a search term"
 
+  # Rails 5.2 upgrade - SRCH-1116
+  @wip
   Scenario: When using tablet device on advanced search
     Given I am using an tabletPC device
     And the following Affiliates exist:

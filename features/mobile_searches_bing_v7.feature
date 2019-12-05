@@ -1,6 +1,9 @@
 # This feature file is temporary, while we are running BingV6 and BingV7 in parallel.
 # It can be removed once BingV6 is removed.
 
+# Rails 5.2 upgrade - SRCH-1112
+@wip
+
 Feature: Searches using mobile device
 
   Background:

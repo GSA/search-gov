@@ -35,6 +35,8 @@ Feature: Image search
     And I should see the browser page titled "Barcelona - GobiernoUSA.gov resultados de la búsqueda"
     And I should see 20 image results
 
+  # Rails 5.2 upgrade - SRCH-1117
+  @wip
   Scenario: Image search using BingV6
     Given the following legacy Affiliates exist:
       | display_name | name          | contact_email    | contact_name | locale | search_engine | domains | is_image_search_navigable |
