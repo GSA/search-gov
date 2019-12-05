@@ -76,7 +76,7 @@ gem 'activerecord-validate_unique_child_attribute', require: 'active_record/vali
 gem 'jwt', '~> 1.5.6'
 gem 'grape', '~> 1.1'
 gem 'grape-entity', '~> 0.6.0'
-gem 'rack-cors', '~> 1.0.2', :require => 'rack/cors'
+gem 'rack-cors', '~> 1.0.5', :require => 'rack/cors'
 gem 'hashie', '~> 3.3.0'
 gem 'retry_block', '~> 1.2.0'
 gem 'aws-sdk', '< 3.0'
