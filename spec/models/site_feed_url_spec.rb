@@ -4,9 +4,14 @@ describe SiteFeedUrl do
   fixtures :affiliates
   let(:site_feed_url) { SiteFeedUrl.create!(affiliate_id: affiliates(:basic_affiliate).id, rss_url: "http://nps.gov/urls.rss", quota: 3) }
 
-  describe "Creating new instance" do
+  describe 'associations' do
     it { is_expected.to belong_to :affiliate }
+  end
+
+  describe 'validations' do
     it { is_expected.to validate_presence_of :rss_url }
+    it { is_expected.to allow_value('http://some.site.gov/url').for(:rss_url) }
+    it { is_expected.not_to allow_value('not a URL').for(:rss_url) }
   end
 
   describe ".delete" do

@@ -1,6 +1,6 @@
 module HttpConnection
   def self.get(url)
-    f = Kernel.open(url, 'Accept-Encoding' => 'None')
+    f = URI.parse(url).open
     begin
       f.read
     ensure
