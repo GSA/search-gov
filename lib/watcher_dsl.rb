@@ -28,11 +28,12 @@ module WatcherDSL
 
   def time_window_as_days_back(time_window)
     window_start = es_time_offset_to_time(time_window)
-    ((Time.now.utc - window_start)/86400).round + 1
+    ((Time.now.utc - window_start) / 86_400).round + 1
   end
 
   def es_time_offset_to_time(time_window)
-    scalar, unit = time_window[0...-1], time_window.last.to_sym
+    scalar = time_window[0...-1]
+    unit = time_window.last.to_sym
     Integer(scalar).send(ES_DATE_UNIT_TO_RUBY[unit]).ago.utc
   end
 end

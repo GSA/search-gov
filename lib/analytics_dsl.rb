@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module AnalyticsDSL
   attr_reader :affiliate_name
 
@@ -24,7 +26,7 @@ module AnalyticsDSL
 
   def date_range(json, start_date, end_date)
     json.range do
-      json.set! "@timestamp" do
+      json.set! '@timestamp' do
         json.gte start_date
         json.lte end_date if end_date.present?
       end
@@ -37,7 +39,7 @@ module AnalyticsDSL
 
   def must_not_spider(json)
     json.must_not do
-      json.term { json.set! "useragent.device", "Spider" }
+      json.term { json.set! 'useragent.device', 'Spider' }
     end
   end
 
