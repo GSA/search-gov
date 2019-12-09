@@ -27,15 +27,15 @@ module Jobs
 
   def self.establish_connection!
     usajobs_api_config = Rails.application.secrets.jobs
-    @endpoint = usajobs_api_config['endpoint']
-    @usajobs_api_connection = Faraday.new(usajobs_api_config['host']) do |conn|
-      conn.headers['Authorization-Key'] = usajobs_api_config['authorization_key']
-      conn.headers['User-Agent'] = usajobs_api_config['user_agent']
+    @endpoint = usajobs_api_config[:endpoint]
+    @usajobs_api_connection = Faraday.new(usajobs_api_config[:host]) do |conn|
+      conn.headers['Authorization-Key'] = usajobs_api_config[:authorization_key]
+      conn.headers['User-Agent'] = usajobs_api_config[:user_agent]
       conn.request(:json)
       conn.response(:mrashify)
       conn.response(:json)
       conn.use(:instrumentation)
-      conn.adapter(usajobs_api_config['adapter'] || Faraday.default_adapter)
+      conn.adapter(usajobs_api_config[:adapter] || Faraday.default_adapter)
     end
   end
 

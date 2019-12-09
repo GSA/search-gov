@@ -17,11 +17,11 @@ module Tika
   end
 
   def self.host
-    Rails.application.secrets.tika['host']
+    Rails.application.secrets.tika[:host]
   end
 
   def self.port
-    Rails.application.secrets.tika['port']
+    Rails.application.secrets.tika[:port]
   end
 
   def self.client

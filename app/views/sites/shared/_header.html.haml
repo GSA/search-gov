@@ -25,7 +25,7 @@
                 Need Help?
                 %i.fa.fa-caret-down-inactive{'data-grunticon-embed' => 'toggle_me'}
               %ul.dropdown-menu(data-no-turbolink)
-                %li= mail_to Rails.application.secrets.organization['support_email_address'], 'Contact us by email'
+                %li= mail_to Rails.application.secrets.organization[:support_email_address], 'Contact us by email'
                 %li= link_to 'Call us: 202-969-7426', 'tel:202-969-7426'
                 %li= link_to 'Read the Help Manual', 'https://search.gov/manual'
                 %li= link_to 'Training Sessions', 'https://search.gov/manual/training.html'
