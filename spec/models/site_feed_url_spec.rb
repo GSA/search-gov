@@ -12,6 +12,8 @@ describe SiteFeedUrl do
     it { is_expected.to validate_presence_of :rss_url }
     it { is_expected.to allow_value('http://some.site.gov/url').for(:rss_url) }
     it { is_expected.not_to allow_value('not a URL').for(:rss_url) }
+    it { is_expected.not_to allow_value("javascript:alert('test')").for(:rss_url) }
+    it { is_expected.not_to allow_value("| touch test.txt").for(:rss_url) }
   end
 
   describe ".delete" do
