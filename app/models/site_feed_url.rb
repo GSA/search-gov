@@ -5,6 +5,7 @@ class SiteFeedUrl < ApplicationRecord
   belongs_to :affiliate
   before_validation NormalizeUrl.new(:rss_url)
   validates_presence_of :rss_url
+  validates_url :rss_url
   after_destroy :fast_destroy_indexed_rss_docs
 
   def self.refresh_all
