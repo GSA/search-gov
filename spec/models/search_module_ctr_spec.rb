@@ -11,7 +11,9 @@ describe SearchModuleCtr do
       let(:mb_json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/module_breakdown.json")) }
 
       before do
-        expect(ES::ELK.client_reader).to receive(:search).with(hash_including(type: %w(search click))).and_return(historical_mb_json_response, mb_json_response)
+        expect(ES::ELK.client_reader).to receive(:search).
+          with(hash_including(type: %w[search click], size: 0)).
+          and_return(historical_mb_json_response, mb_json_response)
       end
 
       it "should return collection of SearchModuleCtrStat instances ordered by decr search+click count" do
