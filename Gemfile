@@ -76,7 +76,7 @@ gem 'activerecord-validate_unique_child_attribute', '~> 0.1.0', require: 'active
 gem 'jwt', '~> 1.5.6'
 gem 'grape', '~> 1.1'
 gem 'grape-entity', '~> 0.6.0'
-gem 'rack-cors', '~> 1.0.5', :require => 'rack/cors'
+gem 'rack-cors', '~> 1.1.0', :require => 'rack/cors'
 gem 'hashie', '~> 3.3.0'
 gem 'retry_block', '~> 1.2.0'
 gem 'aws-sdk', '< 3.0'
@@ -154,7 +154,7 @@ group :development, :test do
   gem 'pry-rails', '~> 0.3.6'
   gem 'awesome_print'
   gem 'mry', '0.59.0.0'
-  gem 'puma', '~> 3.7'
+  gem 'puma', '~> 3.12'
 end
 
 group :test do
