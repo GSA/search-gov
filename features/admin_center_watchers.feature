@@ -3,8 +3,6 @@ Feature: Watchers (aka Analytics Alerts)
   As a site customer
   I want to set up and manage various alerts
 
-  # Rails 5.2 upgrade - SRCH-1117
-  @wip
   Scenario: View watchers
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
@@ -39,8 +37,6 @@ Feature: Watchers (aka Analytics Alerts)
     And I should not see "Someone Elses"
     And we want observers to run during the rest of these cucumber scenarios
 
-  # Rails 5.2 upgrade - SRCH-1117
-  @wip
   @javascript
   Scenario: Add/edit/remove watchers
     Given the following Affiliates exist:

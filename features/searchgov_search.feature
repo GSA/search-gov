@@ -21,8 +21,6 @@ Feature: SearchGov search
     And I should see 20 image results
     And I should see "Powered by Bing"
 
-# Rails 5.2 upgrade - SRCH-1122
-  @wip
   Scenario: Collection search
     Given affiliate "epa" has the following document collections:
       | name | prefixes             |
@@ -30,8 +28,6 @@ Feature: SearchGov search
     When I am on epa's "News" docs search page
     Then I should see "Please enter a search term in the box above."
 
-# Rails 5.2 upgrade - SRCH-1122
-  @wip
   Scenario: News search
     Given affiliate "epa" has the following RSS feeds:
       | name  | url                         | is_navigable | shown_in_govbox |
@@ -64,8 +60,6 @@ Feature: SearchGov search
     When I search for "carbon emissions"
     Then I should see "We're including results for carbon emissions from www.epa.gov/news only."
 
-# Rails 5.2 upgrade - SRCH-1122
-  @wip
   Scenario: Video news search
     Given affiliate "epa" has the following RSS feeds:
       | name   | url                        | is_navigable | is_managed |
