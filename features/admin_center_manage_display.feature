@@ -431,8 +431,6 @@ Feature: Manage Display
     Then I should see "You have updated your image assets"
     And I should not see an image with alt text "Logo"
 
-  # Rails 5.2 upgrade - SRCH-1118
-  @wip
   @javascript
   Scenario: Editing Managed Header & Footer
     Given the following legacy Affiliates exist:
