@@ -121,6 +121,8 @@
     When I follow "Previous"
     And I should see exactly "20" web search results
 
+  # Rails 5.2 upgrade - SRCH-1157
+  @wip
   Scenario: Custom date range blended search
     Given the following Affiliates exist:
       | display_name | name          | contact_email    | contact_name | locale | gets_blended_results | is_rss_govbox_enabled |
