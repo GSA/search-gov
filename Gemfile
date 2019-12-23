@@ -142,7 +142,7 @@ group :development, :test do
   gem 'rspec-json_expectations', '~> 2.1.0'
   gem 'rspec-its', '~> 1.2.0'
   gem 'email_spec', '~> 2.1.1'
-  gem 'database_cleaner', '~> 1.6.2'
+  gem 'database_cleaner', '~> 1.7.0'
   gem 'capybara', '~> 2.18.0'
   gem 'launchy', '~> 2.4.3'
   gem 'i18n-tasks', '~> 0.9.19'
