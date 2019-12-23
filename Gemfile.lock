@@ -11,6 +11,14 @@ GIT
       omniauth
 
 GIT
+  remote: https://github.com/GSA/less-rails-bootstrap.git
+  revision: 0e6a339cfbf646342cf50608934af2214b196cb5
+  branch: master
+  specs:
+    less-rails-bootstrap (3.3.5.0)
+      less-rails (>= 3.0)
+
+GIT
   remote: https://github.com/GSA/resque-priority.git
   revision: bc5dca990d6370ad7eaa01d0b986c90f541a4d18
   specs:
@@ -76,15 +84,6 @@ GIT
   specs:
     active_scaffold_export (3.3.2)
       active_scaffold (>= 3.3.0.rc)
-
-GIT
-  remote: https://github.com/peggles2/less-rails-bootstrap
-  revision: e02d2f3ad325c27fadbeb64a69ee7bbd6868adf1
-  ref: e02d2f3ad325c27fadbeb64a69ee7bbd6868adf1
-  branch: less-rails-bootstrap-5.2
-  specs:
-    less-rails-bootstrap (3.3.5.0)
-      less-rails (>= 3.0)
 
 GIT
   remote: https://github.com/winston/google_visualr

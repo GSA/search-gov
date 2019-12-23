@@ -102,10 +102,10 @@ gem 'cld3', '~> 3.2.3'
 # Assets-related gems
 gem 'coffee-rails', '~> 4.2.2'
 gem 'uglifier', '~> 4.1.2'
-# Using forked copy until https://github.com/metaskills/less-rails-bootstrap/pull/132 is merged
-gem 'less-rails-bootstrap', git: 'https://github.com/peggles2/less-rails-bootstrap',
-                            branch: 'less-rails-bootstrap-5.2',
-                            ref: 'e02d2f3ad325c27fadbeb64a69ee7bbd6868adf1'
+
+# Using forked copy until https://github.com/GSA/less-rails-bootstrap till we switch to boostrap-sass
+gem 'less-rails-bootstrap', git: 'https://github.com/GSA/less-rails-bootstrap.git',
+                            branch: 'master'
 
 gem 'compass-rails', '~> 3.1.0'
 gem 'compass-blueprint', '~> 1.0.0'
