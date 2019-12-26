@@ -102,11 +102,7 @@ gem 'cld3', '~> 3.2.3'
 # Assets-related gems
 gem 'coffee-rails', '~> 4.2.2'
 gem 'uglifier', '~> 4.1.2'
-
-# Using forked copy until https://github.com/GSA/less-rails-bootstrap till we switch to boostrap-sass
-gem 'less-rails-bootstrap', git: 'https://github.com/GSA/less-rails-bootstrap.git',
-                            branch: 'master'
-
+gem 'less-rails-bootstrap', git: 'https://github.com/GSA/less-rails-bootstrap.git',     branch: 'master'
 gem 'compass-rails', '~> 3.1.0'
 gem 'compass-blueprint', '~> 1.0.0'
 gem 'jquery-ui-rails', '~> 6.0.1'
