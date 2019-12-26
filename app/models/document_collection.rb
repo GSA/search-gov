@@ -6,7 +6,8 @@ class DocumentCollection < ApplicationRecord
 
   belongs_to :affiliate
   has_one :navigation, :as => :navigable, :dependent => :destroy
-  has_many :url_prefixes, -> { order 'prefix' }, dependent: :destroy
+  has_many :url_prefixes, -> { order 'prefix' },
+           dependent: :destroy, inverse_of: :document_collection
   scope :navigable_only, -> { joins(:navigation).where(:navigations => {:is_active => true}).joins(:url_prefixes).select('distinct document_collections.*') }
   validates_presence_of :name, :affiliate_id
   validates_uniqueness_of :name, :scope => :affiliate_id, :case_sensitive => false

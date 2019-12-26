@@ -9,6 +9,11 @@ describe Agency do
     }
   end
 
+  it do
+    is_expected.to have_many(:agency_organization_codes).
+      dependent(:destroy).inverse_of(:agency)
+  end
+
   context "when creating a new agency" do
     before do
       Agency.create!(@valid_attributes)
