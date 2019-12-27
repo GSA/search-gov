@@ -12,6 +12,12 @@ describe BoostedContent do
       :publish_start_on => Date.yesterday }
   end
 
+  it do
+    is_expected.to have_many(:boosted_content_keywords).
+      dependent(:destroy).inverse_of(:boosted_content)
+  end
+
+
   describe "Creating new instance of BoostedContent" do
     it { is_expected.to validate_presence_of :url }
     it { is_expected.to validate_presence_of :title }
