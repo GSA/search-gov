@@ -102,7 +102,7 @@ describe Affiliate do
     it { is_expected.to have_and_belong_to_many :youtube_profiles }
 
     it { is_expected.to belong_to :agency }
-    it { is_expected.to belong_to :language }
+    it { is_expected.to belong_to :language, inverse_of: :affiliate }
     it { is_expected.to belong_to :template }
 
     it { is_expected.to validate_attachment_content_type(:page_background_image).allowing(%w{ image/gif image/jpeg image/pjpeg image/png image/x-png }).rejecting(nil) }

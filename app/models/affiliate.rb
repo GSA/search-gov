@@ -59,7 +59,9 @@ class Affiliate < ApplicationRecord
 
   has_many :available_templates, through: :affiliate_templates, source: :template
   has_many :users, -> { order 'contact_name' }, through: :memberships
-  has_many :default_users, class_name: 'User', foreign_key: 'default_affiliate_id', dependent: :nullify
+  has_many :default_users, class_name: 'User',
+           foreign_key: 'default_affiliate_id', dependent: :nullify,
+           inverse_of: :affiliate
   has_many :rss_feed_urls, -> { distinct }, through: :rss_feeds
   has_many :url_prefixes, :through => :document_collections
   has_many :twitter_profiles, -> { order 'twitter_profiles.screen_name ASC' }, through: :affiliate_twitter_settings
@@ -68,7 +70,7 @@ class Affiliate < ApplicationRecord
   has_many :i14y_drawers, -> { order 'handle' }, through: :i14y_memberships
   has_many :routed_query_keywords, -> { order 'keyword' }, through: :routed_queries
   belongs_to :agency
-  belongs_to :language, foreign_key: :locale, primary_key: :code
+  belongs_to :language, foreign_key: :locale, primary_key: :code, inverse_of: :affiliate
   belongs_to :template, inverse_of: :affiliates
 
   AWS_IMAGE_SETTINGS = { styles: { :large => "300x150>" },
