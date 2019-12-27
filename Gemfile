@@ -102,11 +102,8 @@ gem 'cld3', '~> 3.2.3'
 # Assets-related gems
 gem 'coffee-rails', '~> 4.2.2'
 gem 'uglifier', '~> 4.1.2'
-
-# Using forked copy until https://github.com/GSA/less-rails-bootstrap till we switch to boostrap-sass
 gem 'less-rails-bootstrap', git: 'https://github.com/GSA/less-rails-bootstrap.git',
                             branch: 'master'
-
 gem 'compass-rails', '~> 3.1.0'
 gem 'compass-blueprint', '~> 1.0.0'
 gem 'jquery-ui-rails', '~> 6.0.1'
@@ -162,7 +159,7 @@ end
 group :test do
   gem 'capybara-screenshot'
   gem 'simplecov', '~> 0.15.1', require: false
-  gem 'cucumber-rails', '~> 1.6.0', require: false
+  gem 'cucumber-rails', '~> 2.0', require: false
   gem 'resque_spec', '~> 0.17.0'
   gem 'poltergeist', '~> 1.18.1'
   gem 'shoulda-matchers', '~> 4.1.1'
