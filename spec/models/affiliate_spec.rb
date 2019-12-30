@@ -117,10 +117,10 @@ describe Affiliate do
         inverse_of(:affiliate)
     end
 
-    it do
+    it 'has many default users' do
       is_expected.to have_many(:default_users).dependent(:nullify).
         with_foreign_key(:default_affiliate_id).
-        class_name('User').inverse_of(:affiliates)
+        class_name('User').inverse_of(:default_affiliate)
     end
 
     it { is_expected.to have_many(:watchers).inverse_of(:affiliate) }

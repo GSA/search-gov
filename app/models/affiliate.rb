@@ -74,11 +74,12 @@ class Affiliate < ApplicationRecord
 
   has_many :available_templates, through: :affiliate_templates, source: :template
   has_many :users, -> { order 'contact_name' }, through: :memberships
+
   has_many :default_users,
            class_name: 'User',
            foreign_key: 'default_affiliate_id',
            dependent: :nullify,
-           inverse_of: :affiliates
+           inverse_of: :default_affiliate
 
   has_many :rss_feed_urls, -> { distinct }, through: :rss_feeds
   has_many :url_prefixes, :through => :document_collections
