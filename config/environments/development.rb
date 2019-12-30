@@ -53,9 +53,17 @@ Rails.application.configure do
   config.assets.quiet = true
 
   # Raises error for missing translations
-  # config.action_view.raise_on_missing_translations = true
+  config.action_view.raise_on_missing_translations = true
 
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 end
+
+ADDITIONAL_BING_PARAMS = { 'traffictype' => 'test' }
+
+DEFAULT_CACHE_DURATION = 6.hours
+AZURE_CACHE_DURATION = 1.day
+BING_CACHE_DURATION = 1.day
+GOOGLE_CACHE_DURATION = 5.minutes
+I14Y_CACHE_DURATION = 1.day
