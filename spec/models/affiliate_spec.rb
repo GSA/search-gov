@@ -124,7 +124,11 @@ describe Affiliate do
     end
 
     it { is_expected.to have_many(:watchers).inverse_of(:affiliate) }
-    it { is_expected.to have_many(:tag_filters).dependent(:destroy).inverse_of(:affiliate) }
+
+    it do
+      is_expected.to have_many(:tag_filters).dependent(:destroy).inverse_of(:affiliate)
+    end
+
     it { is_expected.to have_and_belong_to_many :instagram_profiles }
     it { is_expected.to have_and_belong_to_many :youtube_profiles }
     it { is_expected.to belong_to :agency }
