@@ -9,7 +9,11 @@ describe YoutubeProfile do
   it { is_expected.to have_and_belong_to_many :affiliates }
   it { is_expected.to validate_uniqueness_of(:channel_id).
                 with_message(/has already been added/) }
-
+  it do
+    is_expected.to have_many(:youtube_playlists).
+                   dependent(:destroy).
+                   inverse_of(:youtube_profile)
+  end
   describe '#after_create' do
     it 'creates RssFeed and RssFeedUrl' do
       profile = YoutubeProfile.create!(channel_id: 'my_channel_id',

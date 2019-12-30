@@ -11,8 +11,11 @@ describe MedTopic do
   it { is_expected.to validate_presence_of :medline_title }
   it { is_expected.to validate_presence_of :locale }
   it { is_expected.to validate_presence_of :medline_tid }
-  it { is_expected.to have_many(:med_related_topics).dependent(:destroy) }
-  it { is_expected.to have_many(:med_sites).dependent(:destroy) }
+  it do
+    is_expected.to have_many(:med_related_topics).
+      dependent(:destroy).inverse_of(:med_topic)
+  end
+  it { is_expected.to have_many(:med_sites).dependent(:destroy).inverse_of(:med_topic) }
   it { is_expected.to have_many(:synonyms).dependent(:destroy).inverse_of(:topic) }
 
 
