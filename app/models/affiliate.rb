@@ -29,20 +29,24 @@ class Affiliate < ApplicationRecord
                    source: :connections,
                    class_name: 'Connection',
                    inverse_of: :affiliate)
-    assoc.has_many(:document_collections, -> { order 'document_collections.name ASC, document_collections.id ASC' },
-                   inverse_of: :affiliate)
+    assoc.has_many(
+      :document_collections,
+      -> { order 'document_collections.name ASC, document_collections.id ASC' },
+      inverse_of: :affiliate
+    )
     assoc.has_many(:excluded_domains, -> { order 'domain ASC' },
                    inverse_of: :affiliate)
     assoc.has_many(:excluded_urls)
     assoc.has_many(:featured_collections)
-    assoc.has_many(:features, :through => :affiliate_feature_addition)
+    assoc.has_many(:features, through: :affiliate_feature_addition)
     assoc.has_many(:flickr_profiles, -> { order 'flickr_profiles.url ASC' },
                    inverse_of: :affiliate)
     assoc.has_many(:i14y_memberships)
     assoc.has_one(:image_search_label)
     assoc.has_many(:indexed_documents)
     assoc.has_many(:memberships)
-    assoc.has_many(:navigations, -> { order 'navigations.position ASC, navigations.id ASC' },
+    assoc.has_many(:navigations,
+                   -> { order 'navigations.position ASC, navigations.id ASC' },
                    inverse_of: :affiliate)
     assoc.has_many(:routed_queries)
     assoc.has_many(:rss_feeds, -> { order 'rss_feeds.name ASC, rss_feeds.id ASC' },
