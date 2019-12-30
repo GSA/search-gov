@@ -19,46 +19,45 @@ class Affiliate < ApplicationRecord
   MAX_NAME_LENGTH = 33.freeze
 
   with_options dependent: :destroy do |assoc|
-    assoc.has_many(:affiliate_feature_addition)
-    assoc.has_many(:affiliate_twitter_settings)
-    assoc.has_many(:boosted_contents)
-    assoc.has_many(:connections, -> { order 'connections.position ASC' },
-                   inverse_of: :affiliate)
-    assoc.has_many(:connected_connections,
+    assoc.has_many :affiliate_feature_addition
+    assoc.has_many :affiliate_twitter_settings
+    assoc.has_many :boosted_contents
+    assoc.has_many :connections, -> { order 'connections.position ASC' },
+                   inverse_of: :affiliate
+    assoc.has_many :connected_connections,
                    foreign_key: :connected_affiliate_id,
                    source: :connections,
                    class_name: 'Connection',
-                   inverse_of: :affiliate)
-    assoc.has_many(
-      :document_collections,
-      -> { order 'document_collections.name ASC, document_collections.id ASC' },
-      inverse_of: :affiliate
-    )
-    assoc.has_many(:excluded_domains, -> { order 'domain ASC' },
-                   inverse_of: :affiliate)
-    assoc.has_many(:excluded_urls)
-    assoc.has_many(:featured_collections)
+                   inverse_of: :connected_affiliate
+    assoc.has_many :document_collections,
+                   -> { order 'document_collections.name ASC, document_collections.id ASC' },
+                   inverse_of: :affiliate
+
+    assoc.has_many :excluded_domains, -> { order 'domain ASC' },
+                   inverse_of: :affiliate
+    assoc.has_many :excluded_urls
+    assoc.has_many :featured_collections
     assoc.has_many(:features, through: :affiliate_feature_addition)
-    assoc.has_many(:flickr_profiles, -> { order 'flickr_profiles.url ASC' },
-                   inverse_of: :affiliate)
-    assoc.has_many(:i14y_memberships)
-    assoc.has_one(:image_search_label)
-    assoc.has_many(:indexed_documents)
-    assoc.has_many(:memberships)
-    assoc.has_many(:navigations,
+    assoc.has_many :flickr_profiles, -> { order 'flickr_profiles.url ASC' },
+                   inverse_of: :affiliate
+    assoc.has_many :i14y_memberships
+    assoc.has_one :image_search_label
+    assoc.has_many :indexed_documents
+    assoc.has_many :memberships
+    assoc.has_many :navigations,
                    -> { order 'navigations.position ASC, navigations.id ASC' },
-                   inverse_of: :affiliate)
-    assoc.has_many(:routed_queries)
-    assoc.has_many(:rss_feeds, -> { order 'rss_feeds.name ASC, rss_feeds.id ASC' },
+                   inverse_of: :affiliate
+    assoc.has_many :routed_queries
+    assoc.has_many :rss_feeds, -> { order 'rss_feeds.name ASC, rss_feeds.id ASC' },
                    as: :owner,
-                   inverse_of: :owner)
-    assoc.has_many(:sayt_suggestions)
-    assoc.has_many(:site_domains, -> { order 'domain ASC' }, inverse_of: :affiliate)
-    assoc.has_one(:site_feed_url)
-    assoc.has_many(:superfresh_urls)
-    assoc.has_one(:alert)
-    assoc.has_many(:watchers, -> { order 'name ASC' }, inverse_of: :affiliate)
-    assoc.has_many(:tag_filters, -> { order 'tag ASC' }, inverse_of: :affiliate)
+                   inverse_of: :owner
+    assoc.has_many :sayt_suggestions
+    assoc.has_many :site_domains, -> { order 'domain ASC' }, inverse_of: :affiliate
+    assoc.has_one :site_feed_url
+    assoc.has_many :superfresh_urls
+    assoc.has_one :alert
+    assoc.has_many :watchers, -> { order 'name ASC' }, inverse_of: :affiliate
+    assoc.has_many :tag_filters, -> { order 'tag ASC' }, inverse_of: :affiliate
   end
 
   has_many :affiliate_templates, dependent: :destroy do

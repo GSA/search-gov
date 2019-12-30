@@ -77,7 +77,7 @@ describe Affiliate do
 
     it { is_expected.to have_many :boosted_contents }
     it { is_expected.to have_many(:connections).inverse_of(:affiliate) }
-    it { is_expected.to have_many(:connected_connections).inverse_of(:affiliate) }
+    it { is_expected.to have_many(:connected_connections).inverse_of(:connected_affiliate) }
 
     it { is_expected.to have_many :sayt_suggestions }
     it { is_expected.to have_many :twitter_profiles }
@@ -105,7 +105,7 @@ describe Affiliate do
     end
 
     it { is_expected.to have_many(:routed_queries).dependent(:destroy) }
-    it { is_expected.to have_many(:rss_feeds).dependent(:destroy) }
+    it { is_expected.to have_many(:rss_feeds).dependent(:destroy).inverse_of(:owner) }
     it { is_expected.to have_many(:affiliate_templates).dependent(:destroy) }
 
     it do
@@ -124,7 +124,7 @@ describe Affiliate do
     end
 
     it { is_expected.to have_many(:watchers).inverse_of(:affiliate) }
-    it { is_expected.to have_many(:tag_filters).dependent(:destroy) }
+    it { is_expected.to have_many(:tag_filters).dependent(:destroy).inverse_of(:affiliate) }
     it { is_expected.to have_and_belong_to_many :instagram_profiles }
     it { is_expected.to have_and_belong_to_many :youtube_profiles }
     it { is_expected.to belong_to :agency }
