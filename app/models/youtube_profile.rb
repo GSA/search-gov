@@ -2,7 +2,10 @@ class YoutubeProfile < ApplicationRecord
   attr_writer :url
   has_one :rss_feed, as: :owner, dependent: :destroy
   has_and_belongs_to_many :affiliates
-  has_many :youtube_playlists, -> { order [:updated_at, :id] }, dependent: :destroy
+  has_many :youtube_playlists,
+           -> { order [:updated_at, :id] },
+           dependent: :destroy,
+           inverse_of: :youtube_profile
 
   validates_presence_of :channel_id, :title
   validates_uniqueness_of :channel_id,
