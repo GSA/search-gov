@@ -7,15 +7,10 @@ describe YoutubeProfile do
   it { is_expected.to validate_presence_of :channel_id }
   it { is_expected.to have_one(:rss_feed).dependent :destroy }
   it { is_expected.to have_and_belong_to_many :affiliates }
+  
   it do
     is_expected.to validate_uniqueness_of(:channel_id).
       with_message(/has already been added/)
-  end
-
-  it do
-    is_expected.to have_many(:youtube_playlists).
-                   dependent(:destroy).
-                   inverse_of(:youtube_profile)
   end
 
   describe 'Gets the active YoutubeProfiles' do
