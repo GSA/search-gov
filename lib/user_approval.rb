@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 module UserApproval
-  def self.set_to_not_approved(users, message, email = false)
+  def self.set_to_not_approved(users, message, email_template)
     users.each do |user|
       user.set_approval_status_to_not_approved
       user.save!
-      Emailer.user_approval_removed(user).deliver_now if email
+      Emailer.user_approval_removed(user, email_template).deliver_now
 
       note = <<~NOTE.squish
         User #{user.id}, #{user.email}, #{message},

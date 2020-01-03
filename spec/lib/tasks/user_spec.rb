@@ -42,7 +42,7 @@ describe 'User rake tasks' do
     it 'sends admin the user_approval_removed email' do
       User.where("email != 'affiliate_manager_with_no_affiliates@fixtures.org'").destroy_all
       emailer = double(Emailer)
-      expect(Emailer).to receive(:user_approval_removed).with(user).and_return emailer
+      expect(Emailer).to receive(:user_approval_removed).with(user, 'user_approval_removed').and_return emailer
       expect(emailer).to receive(:deliver_now)
       @rake[task_name].invoke
     end
@@ -74,6 +74,14 @@ describe 'User rake tasks' do
     it 'sets not active users to not_approved' do
       @rake[task_name].invoke
       expect(not_active_user.is_not_approved?).to be true
+    end
+
+    it 'sends admin the user_approval_removed email' do
+      User.where("email != 'affiliate_manager_with_no_affiliates@fixtures.org'").destroy_all
+      emailer = double(Emailer)
+      expect(Emailer).to receive(:user_approval_removed).with(user, 'inactive_user_approval_removed').and_return emailer
+      expect(emailer).to receive(:deliver_now)
+      @rake[task_name].invoke
     end
 
     it 'logs the change' do

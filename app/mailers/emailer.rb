@@ -38,10 +38,10 @@ class Emailer < ApplicationMailer
     generic_user_html_email(user, __method__)
   end
 
-  def user_approval_removed(user)
+  def user_approval_removed(user, email_template)
     @user = user
     @user_contact_name = user.contact_name.presence || user.email
-    setup_email("usagov@search.gov", __method__)
+    setup_email("usagov@search.gov", email_template)
     send_mail(:text)
   end
 

@@ -20,6 +20,7 @@ class EmailTemplate < ApplicationRecord
       welcome_to_new_user: "[Search.gov] Welcome to Search.gov",
       welcome_to_new_user_added_by_affiliate: "[Search.gov] Welcome to Search.gov",
       user_approval_removed: "[Search.gov] User account set to 'not_approved'",
+      inactive_user_approval_removed: "[Search.gov] User account set to 'not_approved'",
       low_query_ctr_watcher: "[Search.gov] {{ctx.metadata.alert_name}} (Custom Alert)",
       no_results_watcher: "[Search.gov] {{ctx.metadata.alert_name}} (Custom Alert)",
   }
