@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class EmailTemplate < ApplicationRecord
   validates_presence_of :name, :subject, :body
   validates_uniqueness_of :name, case_sensitive: false
@@ -23,7 +25,7 @@ class EmailTemplate < ApplicationRecord
       inactive_user_approval_removed: "[Search.gov] User account set to 'not_approved'",
       low_query_ctr_watcher: "[Search.gov] {{ctx.metadata.alert_name}} (Custom Alert)",
       no_results_watcher: "[Search.gov] {{ctx.metadata.alert_name}} (Custom Alert)",
-  }
+  }.freeze
 
   class << self
 
