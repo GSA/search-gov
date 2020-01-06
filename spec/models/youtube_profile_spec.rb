@@ -7,8 +7,23 @@ describe YoutubeProfile do
   it { is_expected.to validate_presence_of :channel_id }
   it { is_expected.to have_one(:rss_feed).dependent :destroy }
   it { is_expected.to have_and_belong_to_many :affiliates }
-  it { is_expected.to validate_uniqueness_of(:channel_id).
-                with_message(/has already been added/) }
+  
+  it do
+    is_expected.to validate_uniqueness_of(:channel_id).
+      with_message(/has already been added/)
+  end
+
+  describe 'Gets the active YoutubeProfiles' do
+    let (:profiles) { YoutubeProfile.active }
+
+    it 'gets the active youtube profiles' do
+      expect(YoutubeProfile.active.count).to equal(2)
+    end
+
+    it 'is expected to have uniq values' do
+      expect(YoutubeProfile.active.count).to equal(YoutubeProfile.active.distinct.count)
+    end
+  end
 
   describe '#after_create' do
     it 'creates RssFeed and RssFeedUrl' do

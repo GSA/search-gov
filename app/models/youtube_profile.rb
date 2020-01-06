@@ -10,7 +10,7 @@ class YoutubeProfile < ApplicationRecord
 
   after_create :create_video_rss_feed
 
-  scope :active, -> { joins(:affiliates).uniq }
+  scope :active, -> { joins(:affiliates).distinct }
   scope :stale, -> { where('imported_at IS NULL or imported_at <= ?', Time.current - 1.hour).order(:imported_at) }
 
   def url
