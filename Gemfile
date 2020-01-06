@@ -1,19 +1,19 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 5.1.0'
+gem 'rails', '~> 5.2.0'
 
 gem 'rake', '~> 12.3.2'
 gem 'rack-contrib', '~> 2.1.0'
 gem 'rails-observers', '~> 0.1.5'
 gem 'responders', '~> 2.0'
-gem 'mysql2', '~> 0.3.0'
+gem 'mysql2', '~> 0.4.4'
 gem 'curb', '~> 0.9.4'
 gem 'haml', '~> 5.0.4'
 gem 'json', '~> 1.8.6'
 gem 'will_paginate', '~> 3.1.6'
 gem 'nokogiri', '~> 1.10.4'
 gem 'bcrypt-ruby', '~> 3.1.5', :require => 'bcrypt'
-gem 'authlogic', '~> 3.6.1'
+gem 'authlogic', '~> 3.8.0'
 gem 'omniauth_login_dot_gov', git: 'https://github.com/18f/omniauth_login_dot_gov.git',
                               branch: 'master'
 gem 'omniauth-rails_csrf_protection', '~> 0.1.2'
@@ -72,7 +72,8 @@ gem 'iso8601', '~> 0.10.1'
 gem 'jbuilder', '~> 2.6.4'
 gem 'sitelink_generator', git: 'https://github.com/GSA/sitelink_generator', ref: '2f78cd142547a2a87e500266f1ef4eb5e281cc6b'
 gem 'typhoeus', '~> 1.3.0'
-gem 'activerecord-validate_unique_child_attribute', '~> 0.1.0', require: 'active_record/validate_unique_child_attribute'
+gem 'activerecord-validate_unique_child_attribute',
+    require: 'active_record/validate_unique_child_attribute'
 gem 'jwt', '~> 1.5.6'
 gem 'grape', '~> 1.1'
 gem 'grape-entity', '~> 0.6.0'
@@ -82,7 +83,7 @@ gem 'retry_block', '~> 1.2.0'
 gem 'aws-sdk', '< 3.0'
 gem 'colorize', '~> 0.8.1'
 gem 'dogstatsd-ruby', '~> 3.2.0'
-gem 'lograge', '~> 0.7.1'
+gem 'lograge', '~> 0.9.0'
 gem 'test-unit', '~> 3.2.7'
 gem 'http', '~> 1.0'
 gem 'robots_tag_parser', '~> 0.1.0', git: 'https://github.com/GSA/robots_tag_parser'
@@ -102,9 +103,8 @@ gem 'cld3', '~> 3.2.3'
 # Assets-related gems
 gem 'coffee-rails', '~> 4.2.2'
 gem 'uglifier', '~> 4.1.2'
-# Using forked copy until https://github.com/metaskills/less-rails-bootstrap/pull/132 is merged
-gem 'less-rails-bootstrap', git: 'https://github.com/veelenga/less-rails-bootstrap',
-                            ref: '7c479c2fdff500dc036c15364aa085332a73c642'
+gem 'less-rails-bootstrap', git: 'https://github.com/GSA/less-rails-bootstrap.git',
+                            branch: 'master'
 gem 'compass-rails', '~> 3.1.0'
 gem 'compass-blueprint', '~> 1.0.0'
 gem 'jquery-ui-rails', '~> 6.0.1'
@@ -140,7 +140,7 @@ group :development, :test do
   gem 'rspec-json_expectations', '~> 2.1.0'
   gem 'rspec-its', '~> 1.2.0'
   gem 'email_spec', '~> 2.1.1'
-  gem 'database_cleaner', '~> 1.6.2'
+  gem 'database_cleaner', '~> 1.7.0'
   gem 'capybara', '~> 2.18.0'
   gem 'launchy', '~> 2.4.3'
   gem 'i18n-tasks', '~> 0.9.19'
@@ -160,7 +160,7 @@ end
 group :test do
   gem 'capybara-screenshot'
   gem 'simplecov', '~> 0.15.1', require: false
-  gem 'cucumber-rails', '~> 1.6.0', require: false
+  gem 'cucumber-rails', '~> 2.0', require: false
   gem 'resque_spec', '~> 0.17.0'
   gem 'poltergeist', '~> 1.18.1'
   gem 'shoulda-matchers', '~> 4.1.1'

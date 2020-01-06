@@ -76,35 +76,64 @@ describe Affiliate do
     it { is_expected.to validate_inclusion_of(:search_engine).in_array(%w( Google BingV6 BingV7 SearchGov )) }
 
     it { is_expected.to have_many :boosted_contents }
+    it { is_expected.to have_many(:connections).inverse_of(:affiliate) }
+    it { is_expected.to have_many(:connected_connections).inverse_of(:connected_affiliate) }
+
     it { is_expected.to have_many :sayt_suggestions }
     it { is_expected.to have_many :twitter_profiles }
 
     it { is_expected.to have_many(:routed_query_keywords).through :routed_queries }
-    it { is_expected.to have_many(:rss_feed_urls).through :rss_feeds }
+    it { is_expected.to have_many(:rss_feed_urls).through(:rss_feeds) }
     it { is_expected.to have_many(:users).through :memberships }
 
     it { is_expected.to have_many(:affiliate_feature_addition).dependent(:destroy) }
     it { is_expected.to have_many(:affiliate_twitter_settings).dependent(:destroy) }
-    it { is_expected.to have_many(:excluded_domains).dependent(:destroy) }
+    it { is_expected.to have_many(:excluded_domains).dependent(:destroy).inverse_of(:affiliate) }
     it { is_expected.to have_many(:featured_collections).dependent(:destroy) }
     it { is_expected.to have_many(:features).dependent(:destroy) }
-    it { is_expected.to have_many(:flickr_profiles).dependent(:destroy) }
+    it { is_expected.to have_many(:document_collections).inverse_of(:affiliate)}
+
+    it do
+      is_expected.to have_many(:flickr_profiles).dependent(:destroy).
+        inverse_of(:affiliate)
+    end
+
     it { is_expected.to have_many(:memberships).dependent(:destroy) }
-    it { is_expected.to have_many(:navigations).dependent(:destroy) }
+
+    it do
+      is_expected.to have_many(:navigations).dependent(:destroy).inverse_of(:affiliate)
+    end
+
     it { is_expected.to have_many(:routed_queries).dependent(:destroy) }
-    it { is_expected.to have_many(:rss_feeds).dependent(:destroy) }
+    it { is_expected.to have_many(:rss_feeds).dependent(:destroy).inverse_of(:owner) }
     it { is_expected.to have_many(:affiliate_templates).dependent(:destroy) }
-    it { is_expected.to have_many(:available_templates).through(:affiliate_templates).source(:template) }
-    it { is_expected.to have_many(:site_domains).dependent(:destroy).inverse_of(:affiliate) }
-    it { is_expected.to have_many(:tag_filters).dependent(:destroy) }
+
+    it do
+      is_expected.to have_many(:available_templates).through(:affiliate_templates).source(:template)
+    end
+
+    it do
+      is_expected.to have_many(:site_domains).dependent(:destroy).
+        inverse_of(:affiliate)
+    end
+
+    it 'has many default users' do
+      is_expected.to have_many(:default_users).dependent(:nullify).
+        with_foreign_key(:default_affiliate_id).
+        class_name('User').inverse_of(:default_affiliate)
+    end
+
+    it { is_expected.to have_many(:watchers).inverse_of(:affiliate) }
+
+    it do
+      is_expected.to have_many(:tag_filters).dependent(:destroy).inverse_of(:affiliate)
+    end
 
     it { is_expected.to have_and_belong_to_many :instagram_profiles }
     it { is_expected.to have_and_belong_to_many :youtube_profiles }
-
     it { is_expected.to belong_to :agency }
-    it { is_expected.to belong_to :language }
+    it { is_expected.to belong_to(:language).inverse_of(:affiliates) }
     it { is_expected.to belong_to :template }
-
     it { is_expected.to validate_attachment_content_type(:page_background_image).allowing(%w{ image/gif image/jpeg image/pjpeg image/png image/x-png }).rejecting(nil) }
     it { is_expected.to validate_attachment_content_type(:header_image).allowing(%w{ image/gif image/jpeg image/pjpeg image/png image/x-png }).rejecting(nil) }
     it { is_expected.to validate_attachment_content_type(:mobile_logo).allowing(%w{ image/gif image/jpeg image/pjpeg image/png image/x-png }).rejecting(nil) }
