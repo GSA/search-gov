@@ -7,7 +7,7 @@ describe RssFeedUrl do
 
   it { is_expected.to have_readonly_attribute :rss_feed_owner_type }
   it { is_expected.to have_and_belong_to_many :rss_feeds }
-  it { is_expected.to have_many(:news_items) }
+  it { is_expected.to have_many(:news_items).inverse_of(:rss_feed_url) }
   it { is_expected.to validate_presence_of :rss_feed_owner_type }
   it { is_expected.to validate_presence_of :url }
   it { is_expected.to validate_uniqueness_of(:url).scoped_to(:rss_feed_owner_type).case_insensitive }

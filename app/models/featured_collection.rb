@@ -11,8 +11,9 @@ class FeaturedCollection < ApplicationRecord
   validates_presence_of :title, :publish_start_on
 
   belongs_to :affiliate
-  has_many :featured_collection_keywords, :dependent => :destroy
-  has_many :featured_collection_links, -> { order 'position ASC' }, :dependent => :destroy
+  has_many :featured_collection_keywords, dependent: :destroy
+  has_many :featured_collection_links, -> { order 'position ASC' },
+           dependent: :destroy, inverse_of: :featured_collection
 
   has_attached_file :image,
                     styles: { medium: "125x125", small: "100x100" },
