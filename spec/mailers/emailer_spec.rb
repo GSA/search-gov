@@ -15,7 +15,7 @@ context do
 
       it { is_expected.to deliver_to('usagov@search.gov') }
 
-      it do
+      it 'contains the user_approval_removed message' do
         is_expected.
           to have_body_text 'The following user is no longer associated with any sites'
       end
@@ -30,9 +30,9 @@ context do
 
       it { is_expected.to deliver_to('usagov@search.gov') }
 
-      it do
+      it 'contains the inactive_user_approval_removed message' do
         is_expected.
-          to have_body_text 'The following user has been inactive for more than 90 days'
+            to have_body_text 'The following user has been inactive for more than 90 days'
       end
 
       it { is_expected.to have_body_text user.contact_name }
