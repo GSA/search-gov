@@ -9,7 +9,7 @@ context do
   describe '#user_approval_removed' do
     let(:user) { users(:another_affiliate_manager) }
 
-    subject(:email) { Emailer.user_approval_removed(user) }
+    subject(:email) { Emailer.user_approval_removed(user, 'user_approval_removed') }
 
     it { is_expected.to deliver_to("usagov@search.gov") }
     it { is_expected.to have_body_text "The following user is no longer associated with any sites" }
