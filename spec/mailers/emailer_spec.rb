@@ -13,13 +13,12 @@ context do
     context 'when user_approval_removed template is passed' do
       let(:email_template) { 'user_approval_removed' }
 
-      it { is_expected.to deliver_to('usagov@search.gov') }
-
       it 'contains the user_approval_removed message' do
         is_expected.
           to have_body_text 'The following user is no longer associated with any sites'
       end
 
+      it { is_expected.to deliver_to('usagov@search.gov') }
       it { is_expected.to have_body_text user.contact_name }
       it { is_expected.to have_body_text user.email }
       it { is_expected.to have_body_text user.organization_name }
@@ -28,13 +27,12 @@ context do
     context 'when inactive_user_approval_removed template is passed' do
       let(:email_template) { 'inactive_user_approval_removed' }
 
-      it { is_expected.to deliver_to('usagov@search.gov') }
-
       it 'contains the inactive_user_approval_removed message' do
         is_expected.
             to have_body_text 'The following user has been inactive for more than 90 days'
       end
 
+      it { is_expected.to deliver_to('usagov@search.gov') }
       it { is_expected.to have_body_text user.contact_name }
       it { is_expected.to have_body_text user.email }
       it { is_expected.to have_body_text user.organization_name }
