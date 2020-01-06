@@ -34,7 +34,10 @@ describe FeaturedCollection do
 
   it { is_expected.to belong_to :affiliate }
   it { is_expected.to have_many(:featured_collection_keywords).dependent(:destroy) }
-  it { is_expected.to have_many(:featured_collection_links).dependent(:destroy) }
+  it do
+    is_expected.to have_many(:featured_collection_links).
+      dependent(:destroy).inverse_of(:featured_collection)
+  end
 
   it 'squishes title, title_url and image_alt_text' do
     fc = FeaturedCollection.create!({ title: 'Did You   Mean Roes or Rose?',

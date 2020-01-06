@@ -9,6 +9,12 @@ describe YoutubeProfile do
   it { is_expected.to have_and_belong_to_many :affiliates }
   
   it do
+    is_expected.to have_many(:youtube_playlists).
+                   dependent(:destroy).
+                   inverse_of(:youtube_profile)
+  end
+  
+  it do
     is_expected.to validate_uniqueness_of(:channel_id).
       with_message(/has already been added/)
   end

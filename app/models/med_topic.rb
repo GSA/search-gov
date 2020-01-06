@@ -10,8 +10,14 @@ class MedTopic < ApplicationRecord
            dependent: :destroy,
            inverse_of: :topic
 
-  has_many :med_related_topics, -> { order 'title' }, dependent: :destroy
-  has_many :med_sites, -> { order 'title' }, dependent: :destroy
+  has_many :med_related_topics,
+           -> { order 'title' },
+           dependent: :destroy,
+           inverse_of: :med_topic
+
+  has_many :med_sites, -> { order 'title' },
+           dependent: :destroy,
+           inverse_of: :med_topic
 
   def self.download_medline_xml(date)
     xml_file_name = medline_xml_file_name(date)

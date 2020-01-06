@@ -159,7 +159,7 @@ Feature: Blended Search
     And I should see "Any time" within the current time filter
     And I should see "Best match" within the current sort by filter
     And I should not see a link to "Clear"
-    And I should see "6 RESULTS"
+    And I should see exactly "6" web search results
 
     When I fill in "From" with "9/30/2012"
     And I fill in "To" with "10/15/2012"
@@ -190,14 +190,14 @@ Feature: Blended Search
     And I should see "Any time" within the current time filter
     And I should see "Most recent" within the current sort by filter
     And I should see a link to "Clear"
-    And I should see "6 RESULTS"
+    And I should see exactly "6" web search results
 
     When I follow "Best match"
     Then the "Enter your search term" field should contain "item"
     And I should see "Any time" within the current time filter
     And I should see "Best match" within the current sort by filter
     And I should not see a link to "Clear"
-    And I should see "6 RESULTS"
+    And I should see exactly "6" web search results
 
     When I fill in "From" with "9/30/2012"
     And I fill in "To" with "10/15/2012"
@@ -209,7 +209,7 @@ Feature: Blended Search
     And I should see "Any time" within the current time filter
     And I should see "Best match" within the current sort by filter
     And I should not see a link to "Clear"
-    And I should see "6 RESULTS"
+    And I should see exactly "6" web search results
 
     When I am on es.agency.gov's search page
     And I fill in "Ingrese su búsqueda" with "item"
