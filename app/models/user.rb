@@ -87,7 +87,6 @@ class User < ApplicationRecord
   end
 
   def complete_registration(attributes)
-    self.email_verification_token = nil
     self.set_approval_status_to_approved
     !requires_manual_approval? && update(attributes)
   end

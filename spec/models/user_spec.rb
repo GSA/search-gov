@@ -21,14 +21,18 @@ describe User do
   end
 
   describe 'schema' do
-    it { is_expected.to have_db_column(:failed_login_count).of_type(:integer).with_options(default: 0, null: false) }
-    it { is_expected.to have_db_column(:password_updated_at).of_type(:datetime).with_options(null: true) }
+    it { is_expected.not_to have_db_column(:failed_login_count) }
+    it { is_expected.not_to have_db_column(:password_updated_at) }
+    it { is_expected.not_to have_db_column(:perishable_token) }
+    it { is_expected.not_to have_db_column(:crypted_password) }
+    it { is_expected.not_to have_db_column(:failed_login_count) }
+    it { is_expected.not_to have_db_column(:email_verification_token) }
+    it { is_expected.to have_db_column(:requires_manual_approval) }
     it { should have_db_column(:uid).of_type(:string) }
   end
 
   describe "when validating" do
     before do
-      allow_any_instance_of(User).to receive(:email_verification_token) { 'e_v_token' }
       allow_any_instance_of(User).to receive(:inviter) { users(:affiliate_manager) }
       allow_any_instance_of(User).to receive(:affiliates) { [affiliates(:basic_affiliate)] }
     end
@@ -40,13 +44,6 @@ describe User do
     xit { is_expected.to validate_presence_of :contact_name }
     it { is_expected.to have_many(:memberships).dependent(:destroy) }
     it { is_expected.to have_many(:affiliates).through :memberships }
-
-    it 'allows passwords with at least one letter/number/symbol' do
-      %w( password1! P?12345678 TesT1234! PW1!@#$%^*& ).each do |password|
-        user = User.new(valid_attributes.merge(password: password))
-        expect(user).to be_valid
-      end
-    end
 
     # login.gov - commented out till SRCH-893
     xit 'requires an organization name' do
@@ -140,18 +137,6 @@ describe User do
       it { is_expected.to include(never_active_user) }
       it { is_expected.not_to include(new_non_active_user) }
     end
-  end
-
-  describe '#deliver_password_reset_instructions!' do
-    let(:user) { User.create!(valid_attributes.merge(perishable_token: original_token)) }
-
-    before do
-      allow(Authlogic::Random).to receive(:friendly_token).and_return(random_new_token)
-    end
-
-    let(:original_token) { 'original_perishable_token_that_should_change' }
-    let(:random_new_token) { 'something_random_the_token_should_change_to' }
-
   end
 
   describe '#has_government_affiliated_email' do
@@ -320,7 +305,6 @@ describe User do
         @user = users(:affiliate_added_by_another_affiliate_with_pending_email_verification_status)
         expect(@user.is_pending_email_verification?).to be true
         expect(@user.welcome_email_sent?).to be false
-        expect(@user.verify_email(@user.email_verification_token)).to be true
       end
 
       it "should update the approval_status to approved" do
@@ -338,7 +322,6 @@ describe User do
         expect(@user.is_pending_email_verification?).to be true
         @user = User.find_by_email('not.gov@agency.com')
         expect(@user.welcome_email_sent?).to be false
-        expect(@user.verify_email(@user.email_verification_token)).to be true
       end
 
       it "should update the approval_status to pending_approval" do
@@ -352,8 +335,6 @@ describe User do
 
     context "when the user is already approved" do
       let(:user) { users(:affiliate_manager) }
-
-      before { user.update(email_verification_token: 'token') }
 
       it "should return true" do
         expect(user.is_approved?).to be true
