@@ -37,15 +37,6 @@ affiliate_manager:
   contact_name: Affiliate Manager
   welcome_email_sent: true
 
-affiliate_manager_with_pending_email_verification_status:
-  <<: *DEFAULTS
-  email: affiliate_manager_requires_manual_approval@fixtures.org
-  is_affiliate_admin: false
-  is_affiliate: true
-  contact_name: Requires Manual Approval Affiliate Manager
-  approval_status: pending_email_verification
-  requires_manual_approval: true
-
 another_affiliate_manager:
   <<: *DEFAULTS
   email: another_affiliate_manager@fixtures.org
@@ -147,6 +138,16 @@ affiliate_manager_with_pending_approval_status:
   contact_name: Pending Approval Affiliate Manager
   approval_status: pending_approval
   requires_manual_approval: true
+
+affiliate_manager_with_pending_email_verification_status:
+  <<: *DEFAULTS
+  email: affiliate_manager_requires_manual_approval@fixtures.org
+  is_affiliate_admin: false
+  is_affiliate: true
+  contact_name: Requires Manual Approval Affiliate Manager
+  approval_status: pending_approval
+  requires_manual_approval: true
+
 
 affiliate_manager_with_not_approved_status:
   <<: *DEFAULTS
