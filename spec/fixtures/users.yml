@@ -44,7 +44,7 @@ affiliate_manager_with_pending_email_verification_status:
   is_affiliate: true
   contact_name: Requires Manual Approval Affiliate Manager
   approval_status: pending_email_verification
-  requires_manual_approval: tru
+  requires_manual_approval: true
 
 another_affiliate_manager:
   <<: *DEFAULTS
@@ -53,6 +53,7 @@ another_affiliate_manager:
   is_affiliate: true
   contact_name: Another Manager
   welcome_email_sent: true
+  requires_manual_approval: true
 
 affiliate_manager_with_no_affiliates:
   <<: *DEFAULTS

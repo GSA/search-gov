@@ -23,5 +23,31 @@ describe CompleteRegistrationController do
 
       it { is_expected.to set_flash[:notice].to(failure_message) }
     end
+
+    pending "when the form parameters are valid" do
+      before do
+        expect(user).to receive(:complete_registration).and_return(true)
+        post :update, params: { id: 'known' }
+      end
+
+      it { is_expected.to set_flash[:success].to(success_message) }
+
+      specify { expect(response).to redirect_to(sites_path) }
+    end
+
+    pending "when the form parameters are invalid" do
+      before do
+        expect(user).to receive(:complete_registration).and_return(false)
+        post :update, params: { id: 'known' }
+      end
+
+      it "flash[:success] should be blank" do
+        expect(flash[:success]).to be_blank
+      end
+
+      specify { expect(response).to render_template(:edit) }
+    end
   end
+
+
 end
