@@ -443,32 +443,7 @@ describe User do
       end
     end
   end
-
-  describe '#complete_registration' do
-    let(:inviter) { users(:affiliate_manager) }
-    let(:affiliate) { affiliates(:basic_affiliate) }
-
-    before do
-      @user = User.new_invited_by_affiliate(inviter,
-                                            affiliate,
-                                            { contact_name: 'New User Name',
-                                              email: 'newuser@approvedagency.com' })
-      @user.save!
-    end
-
-    context 'when executed' do
-      let(:user) { User.find @user.id }
-
-      before do
-        expect(user).to receive(:update)
-        expect(Emailer).to_not receive(:welcome_to_new_user)
-        user.complete_registration({})
-      end
-
-      it { expect(user).to be_is_approved }
-    end
-  end
-
+  
   describe "#affiliate_names" do
     before do
       @user = users(:affiliate_manager_with_no_affiliates)
