@@ -139,7 +139,7 @@ affiliate_manager_with_pending_approval_status:
   approval_status: pending_approval
   requires_manual_approval: true
 
-affiliate_manager_with_pending_email_verification_status:
+affiliate_manager_requires_manual_approval:
   <<: *DEFAULTS
   email: affiliate_manager_requires_manual_approval@fixtures.org
   is_affiliate_admin: false
