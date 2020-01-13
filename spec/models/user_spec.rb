@@ -21,13 +21,11 @@ describe User do
   end
 
   describe 'schema' do
-    it { is_expected.not_to have_db_column(:failed_login_count) }
-    it { is_expected.not_to have_db_column(:password_updated_at) }
-    it { is_expected.not_to have_db_column(:perishable_token) }
-    it { is_expected.not_to have_db_column(:crypted_password) }
-    it { is_expected.not_to have_db_column(:failed_login_count) }
-    it { is_expected.not_to have_db_column(:email_verification_token) }
-    it { is_expected.to have_db_column(:requires_manual_approval) }
+    it do
+      is_expected.to have_db_column(:requires_manual_approval).
+        of_type(:boolean).with_options(default: false)
+    end
+
     it { should have_db_column(:uid).of_type(:string) }
   end
 
@@ -443,7 +441,7 @@ describe User do
       end
     end
   end
-  
+
   describe "#affiliate_names" do
     before do
       @user = users(:affiliate_manager_with_no_affiliates)
