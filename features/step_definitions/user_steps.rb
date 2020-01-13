@@ -23,24 +23,11 @@ end
 Given /^the following Users exist:$/ do |table|
   table.hashes.each do |hash|
     User.create!(hash.merge(organization_name: 'Agency'))
-    if hash[:password_updated_at]
-      user = User.find_by_email(hash[:email])
-      user.update_attributes(password_updated_at: hash[:password_updated_at].to_date)
-    end
   end
 end
 
 When /^(?:I|they) click the complete registration link in the email$/ do
   click_email_link_matching /sites/
-end
-
-When(/^I visit the password reset page using the perishable token for "(.*?)"$/) do |email_address|
-  user = User.find_by_email(email_address)
-  visit edit_password_reset_path(user.perishable_token)
-end
-
-When(/^I visit the password reset page using the token "(.*?)"$/) do |token|
-  visit edit_password_reset_path(token)
 end
 
 When(/^I visit the login page/) do

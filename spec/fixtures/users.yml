@@ -44,7 +44,6 @@ another_affiliate_manager:
   is_affiliate: true
   contact_name: Another Manager
   welcome_email_sent: true
-  requires_manual_approval: true
 
 affiliate_manager_with_no_affiliates:
   <<: *DEFAULTS
@@ -148,7 +147,6 @@ affiliate_manager_requires_manual_approval:
   approval_status: pending_approval
   requires_manual_approval: true
 
-
 affiliate_manager_with_not_approved_status:
   <<: *DEFAULTS
   email: affiliate_manager_with_not_approved_status@fixtures.org
@@ -156,10 +154,10 @@ affiliate_manager_with_not_approved_status:
   is_affiliate: true
   contact_name: Not Approved Affiliate Manager
   approval_status: not_approved
+  requires_manual_approval: true
 
 affiliate_requiring_manual_approval:
   <<: *DEFAULTS
   email: affiliate_requiring_manual_approval@email.gov
   requires_manual_approval: true
   approval_status: pending_approval
-
