@@ -302,7 +302,7 @@ context do
   end
 
   context "when a template is missing" do
-    let(:user) { double(User, :email => "invitee@agency.com", :contact_name => 'Invitee Joe', :email_verification_token => 'some_special_token', affiliates: []) }
+    let(:user) { double(User, :email => "invitee@agency.com", :contact_name => 'Invitee Joe', affiliates: []) }
     let(:report_date) { Date.today }
 
     before { EmailTemplate.destroy_all }

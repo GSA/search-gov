@@ -56,10 +56,6 @@ module NavigationHelpers
       login_path
     when /the sign up page/
       signup_path
-    when /the password reset page/
-      password_resets_path
-    when /the new password reset page/
-      new_password_reset_path
     when /the user account page/
       account_path
     when /the reports homepage/

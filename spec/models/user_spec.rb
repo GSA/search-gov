@@ -222,17 +222,6 @@ describe User do
       let(:user) { users(:affiliate_admin) }
       let(:new_email) { 'new@new.gov' }
       subject(:update_email) { user.update(email: new_email) }
-      before { allow(Emailer).to receive(:user_email_verification).with(an_instance_of(User)).and_return @emailer }
-
-      it 'requires re-verification' do
-        expect{ update_email }.to change{ user.reload.approval_status }
-          .from('approved').to('pending_email_verification')
-      end
-
-      it 'resends the verification email' do
-        expect(Emailer).to receive(:user_email_verification).with(user)
-        update_email
-      end
 
       context 'to a non-government address' do
         let(:new_email) { 'random@random.com' }
@@ -291,70 +280,6 @@ describe User do
     it "should return false if the e-mail adresses do not match" do
       %w(user@affiliate@corp.com user@FSRFED.us user@fs.fed.usa user@co.franklin.state.kids.us user@lincoln.k12.oh.us user@co.state.z.us).each do |email|
         expect(User.new(@valid_affiliate_attributes.merge({ email: email }))).not_to be_has_government_affiliated_email
-      end
-    end
-  end
-
-  # login.gov - commented out till SRCH-953. When user registers they still get a welcome
-  # email but the email does not need to be verified.
-  pending "#verify_email" do
-    context "has matching email verification token and does not require manual approval" do
-      before do
-        @user = users(:affiliate_added_by_another_affiliate_with_pending_email_verification_status)
-        expect(@user.is_pending_email_verification?).to be true
-        expect(@user.welcome_email_sent?).to be false
-      end
-
-      it "should update the approval_status to approved" do
-        expect(@user.is_approved?).to be true
-      end
-
-      it "should update welcome_email_sent flag to true" do
-        expect(@user.welcome_email_sent?).to be true
-      end
-    end
-
-    context "has matching email verification token and requires manual approval" do
-      before do
-        @user = User.create!(@valid_affiliate_attributes.merge(:email => 'not.gov@agency.com'))
-        expect(@user.is_pending_email_verification?).to be true
-        @user = User.find_by_email('not.gov@agency.com')
-        expect(@user.welcome_email_sent?).to be false
-      end
-
-      it "should update the approval_status to pending_approval" do
-        expect(@user.is_pending_approval?).to be true
-      end
-
-      it "should not update the welcome_email_sent flag" do
-        expect(@user.welcome_email_sent?).to be false
-      end
-    end
-
-    context "when the user is already approved" do
-      let(:user) { users(:affiliate_manager) }
-
-      it "should return true" do
-        expect(user.is_approved?).to be true
-        expect(user.verify_email('token')).to be true
-      end
-
-      context 'and the token does not match' do
-        it 'should return false' do
-          expect(user.verify_email('wrong_token')).to be false
-        end
-      end
-
-      context 'when the user has already received a welcome email' do
-        before do
-          user.update(approval_status: 'pending_email_verification',
-                                  welcome_email_sent: true)
-        end
-
-        it 'does not re-send the welcome email' do
-          expect(user).to_not receive(:send_welcome_to_new_user_email)
-          user.verify_email('token')
-        end
       end
     end
   end
@@ -430,9 +355,8 @@ describe User do
         expect(affiliate.users).to include(new_user)
       end
 
-      it 'receives the welcome new user added by affiliate email verification' do
+      it 'receives the welcome new user' do
         expect(Emailer).to receive(:welcome_to_new_user_added_by_affiliate).and_return @emailer
-        expect(Emailer).to_not receive(:new_user_email_verification)
         new_user = User.new_invited_by_affiliate(inviter,
                                                  affiliate,
                                                  { contact_name: 'New User Name',
