@@ -12,7 +12,6 @@ class EmailTemplate < ApplicationRecord
       new_affiliate_site: "[Search.gov] Your new site: <%= @affiliate.display_name %>",
       new_affiliate_user: "[Search.gov] You've been added to <%= @affiliate_display_name %>",
       new_feature_adoption_to_admin: "[Search.gov] Features adopted yesterday",
-      user_email_verification: "[Search.gov] Verify your email",
       new_user_to_admin: "[Search.gov] New user sign up",
       password_reset_instructions: "[Search.gov] Reset your password",
       update_external_tracking_code: "[Search.gov] 3rd Party Tracking",

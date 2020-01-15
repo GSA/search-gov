@@ -35,14 +35,7 @@ Feature: Users
       | Federal government agency | Agency                 |
     And I press "Sign up"
     Then I should be on the user account page
-    And I should see "Thank you for signing up. To continue the signup process, check your inbox, so we may verify your email address."
     When I sign out
-    Then I should be on the login page
-    And "lorem.ipsum@agency.gov" should receive an email
-    When I open the email
-    Then I should see "Verify your email" in the email subject
-    And I should see "https://localhost:3000/email_verification" in the email body
-    When I visit the email verification page using the email verification token for "lorem.ipsum@agency.gov"
     Then I should be on the login page
     Given a clear email queue
     Then the "Email" field should contain "lorem.ipsum@agency.gov"

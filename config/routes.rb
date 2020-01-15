@@ -49,8 +49,6 @@ Rails.application.routes.draw do
   resource :user_session
   resource :human_session, only: [:new, :create]
   resources :password_resets
-  resources :email_verification, only: :show
-  resources :complete_registration, only: [:edit, :update]
 
   scope module: 'sites' do
     resources :sites do
