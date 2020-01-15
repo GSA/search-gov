@@ -2,7 +2,7 @@ class RemoveUserUnusedColumns < ActiveRecord::Migration[5.2]
   def change
     remove_index :users, :perishable_token
     remove_index :users, column: :email_verification_token, unique: true
-    
+
     remove_column :users, :password_updated_at, :datetime
     remove_column :users, :perishable_token, :string
     remove_column :users, :crypted_password, :string
