@@ -48,7 +48,6 @@ Rails.application.routes.draw do
   resources :users
   resource :user_session
   resource :human_session, only: [:new, :create]
-  resources :password_resets
 
   scope module: 'sites' do
     resources :sites do
