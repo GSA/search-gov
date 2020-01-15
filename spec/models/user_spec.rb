@@ -140,6 +140,16 @@ describe User do
       it { is_expected.to include(never_active_user) }
       it { is_expected.not_to include(new_non_active_user) }
     end
+
+    describe '.not_active_for' do
+      subject(:not_active_for) { User.not_active_for(76.days.ago) }
+
+      let(:not_active_76_days_user) { users(:not_active_76_days) }
+      let(:never_active_76_days_user) { users(:never_active_76_days) }
+
+      it { is_expected.to include(not_active_76_days_user) }
+      it { is_expected.to include(never_active_76_days_user) }
+    end
   end
 
   describe '#deliver_password_reset_instructions!' do

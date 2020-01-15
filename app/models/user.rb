@@ -39,6 +39,16 @@ class User < ApplicationRecord
                 90.days.ago)
         }
 
+  scope :not_active_for,
+        lambda { |days|
+          where('current_login_at >= ? AND current_login_at <= ? OR
+                (current_login_at IS NULL AND created_at >= ? AND created_at <=? )',
+                days.beginning_of_day,
+                days.end_of_day,
+                days.beginning_of_day,
+                days.end_of_day)
+        }
+
   acts_as_authentic do |c|
     c.login_field = :email
     c.validate_email_field = true
