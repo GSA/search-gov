@@ -28,8 +28,8 @@ describe EmailTemplate do
         expect(EmailTemplate.count).to eq(EmailTemplate::DEFAULT_SUBJECT_HASH.size)
         before_time = Time.now
         sleep(1)
-        EmailTemplate.load_default_templates(%w[affiliate_monthly_report])
-        expect(EmailTemplate.where('created_at > ?', before_time).size).to eq(1)
+        EmailTemplate.load_default_templates(%w(affiliate_monthly_report password_reset_instructions))
+        expect(EmailTemplate.where('created_at > ?', before_time).size).to eq(2)
       end
     end
   end

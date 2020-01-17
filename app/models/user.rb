@@ -43,6 +43,8 @@ class User < ApplicationRecord
     c.login_field = :email
     c.validate_email_field = true
     c.validate_login_field = false
+    c.ignore_blank_passwords  = true
+    c.validate_password_field = false
     c.logged_in_timeout = 1.hour
   end
 
@@ -82,6 +84,12 @@ class User < ApplicationRecord
   # authlogic magic state
   def approved?
     approval_status != 'not_approved'
+  end
+
+  def complete_registration(attributes)
+    self.email_verification_token = nil
+    self.set_approval_status_to_approved
+    !requires_manual_approval? && update(attributes)
   end
 
   def self.new_invited_by_affiliate(inviter, affiliate, attributes)

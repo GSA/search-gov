@@ -5,7 +5,8 @@ describe UsersController do
   let(:user_params) do
     { contact_name: 'Barack',
       organization_name: 'White House',
-      email: 'barack@whitehouse.gov' }
+      email: 'barack@whitehouse.gov',
+      password: 'Michelle2016!' }
   end
 
   let(:permitted_params) { %i[contact_name organization_name email] }

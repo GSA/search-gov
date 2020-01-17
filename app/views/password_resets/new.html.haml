@@ -1,0 +1,10 @@
+= content_for :title, 'Forgot your password?'
+= content_for :navigation do
+  %ul.nav.login
+    %li= link_to 'Login', login_path
+.without-site-wrapper
+  = form_tag password_resets_path, id: 'password-reset-form' do
+    = render_flash_message(false)
+    = label_tag :email
+    = email_field_tag :email, nil, placeholder: 'Email'
+    = submit_tag 'Email me a link to reset my password'

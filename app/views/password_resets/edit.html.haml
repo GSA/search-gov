@@ -1,0 +1,12 @@
+= content_for :title, 'Reset my password'
+= content_for :navigation do
+  %ul.nav.login
+    %li= link_to 'Login', login_path
+.without-site-wrapper
+  = form_for @user, url: password_reset_path, html: { id: 'password-reset-form' } do |f|
+    = render_flash_message(false)
+    = render_error_messages(@user)
+    = f.label :password
+    = f.password_field :password, placeholder: 'Password'
+    = render partial: 'users/password_requirements'
+    = f.submit 'Reset my password and log me in'

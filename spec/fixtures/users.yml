@@ -1,5 +1,8 @@
 DEFAULTS: &DEFAULTS
   organization_name: Agency
+  password_updated_at: <%= Time.now %>
+  crypted_password: $2a$10$v8ez/IAaBktxwwdlP3rcguUZsZUp9ftdo36KYR6nYPkCCTYtd5kby
+  password_salt: 4VxlYO7CJC46b528IOUn
   persistence_token: cedf2dac3e2d0e7223d8d1ae126c5a18e021ad9bc6dd0a2f01677e907b3e0a1802d82273fe3ac061b5fd80209ea39632c0a9e3081a1d43bb7ced9884d7754b62
   approval_status: approved
   contact_name: Jane Doe
@@ -11,15 +14,6 @@ affiliate_admin:
   is_affiliate: false
   contact_name: Affiliate Administrator
   welcome_email_sent: true
-
-affiliate_added_by_another_affiliate:
-  <<: *DEFAULTS
-  email: affiliate_added_by_another_affiliate@fixtures.org
-  is_affiliate_admin: false
-  is_affiliate: true
-  contact_name: Invited Affiliate Manager
-  approval_status: approved
-  requires_manual_approval: false
 
 non_affiliate_admin:
   <<: *DEFAULTS
@@ -127,6 +121,17 @@ affiliate_manager_with_pending_contact_information_status:
   is_affiliate: true
   contact_name: Pending Contact Information Affiliate Manager
   approval_status: pending_contact_information
+  email_verification_token: my token
+  requires_manual_approval: true
+
+affiliate_manager_with_pending_email_verification_status:
+  <<: *DEFAULTS
+  email: affiliate_manager_with_pending_email_verification_status@fixtures.org
+  is_affiliate_admin: false
+  is_affiliate: true
+  contact_name: Pending Email Verification Affiliate Manager
+  approval_status: pending_email_verification
+  email_verification_token: another token
   requires_manual_approval: true
 
 affiliate_manager_with_pending_approval_status:
@@ -135,15 +140,6 @@ affiliate_manager_with_pending_approval_status:
   is_affiliate_admin: false
   is_affiliate: true
   contact_name: Pending Approval Affiliate Manager
-  approval_status: pending_approval
-  requires_manual_approval: true
-
-affiliate_manager_requires_manual_approval:
-  <<: *DEFAULTS
-  email: affiliate_manager_requires_manual_approval@fixtures.org
-  is_affiliate_admin: false
-  is_affiliate: true
-  contact_name: Requires Manual Approval Affiliate Manager
   approval_status: pending_approval
   requires_manual_approval: true
 
@@ -156,8 +152,23 @@ affiliate_manager_with_not_approved_status:
   approval_status: not_approved
   requires_manual_approval: true
 
+affiliate_added_by_another_affiliate_with_pending_email_verification_status:
+  <<: *DEFAULTS
+  email: affiliate_added_by_another_affiliate@fixtures.org
+  is_affiliate_admin: false
+  is_affiliate: true
+  contact_name: Invited Affiliate Manager
+  approval_status: approved
+  requires_manual_approval: false
+
+user_with_expired_password:
+  <<: *DEFAULTS
+  email: expired_password@fixtures.org
+  password_updated_at: <%= 6.months.ago.to_s(:db) %>
+
 affiliate_requiring_manual_approval:
   <<: *DEFAULTS
   email: affiliate_requiring_manual_approval@email.gov
   requires_manual_approval: true
   approval_status: pending_approval
+

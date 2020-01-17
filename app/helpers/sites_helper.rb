@@ -177,7 +177,7 @@ module SitesHelper
 
   def user_row_css_class_hash(user)
     row_class = case user.approval_status
-                when 'pending_approval'
+                when 'pending_email_verification', 'pending_approval'
                   'warning'
                 when 'not_approved'
                   'error'

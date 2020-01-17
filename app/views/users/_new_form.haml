@@ -5,6 +5,9 @@
 = form.text_field :organization_name, placeholder: 'Federal government agency'
 = form.label :email
 = form.email_field :email, placeholder: 'Email'
+= form.label :password
+= form.password_field :password, placeholder: 'Password'
+= render partial: 'users/password_requirements'
 - if form.object.new_record?
   = label_tag :recaptcha_response_field, 'Word verification'
   = recaptcha_tags display: { theme: 'white' }
