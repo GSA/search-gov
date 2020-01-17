@@ -38,6 +38,11 @@ class Emailer < ApplicationMailer
     generic_user_html_email(user, __method__)
   end
 
+  def notify_approval_removed(user, date)
+    @user = user
+    @remaining_days = date - 90.days_ago.to_date
+  end
+
   def user_approval_removed(user)
     @user = user
     @user_contact_name = user.contact_name.presence || user.email

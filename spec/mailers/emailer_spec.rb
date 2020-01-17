@@ -6,6 +6,11 @@ context do
   include EmailSpec::Matchers
   fixtures :affiliates, :users, :features, :memberships
 
+  describe '#notify_approval_removed' do
+    let(:user) { users(:another_affiliate_manager) }
+
+  end
+
   describe '#user_approval_removed' do
     let(:user) { users(:another_affiliate_manager) }
 
