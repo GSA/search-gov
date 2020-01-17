@@ -142,7 +142,7 @@ describe User do
     end
 
     describe '.not_active_for' do
-      subject(:not_active_for) { User.not_active_for(76.days.ago) }
+      subject(:not_active_for) { User.not_active_for(76.days.ago.to_date) }
 
       let(:not_active_76_days_user) { users(:not_active_76_days) }
       let(:never_active_76_days_user) { users(:never_active_76_days) }
