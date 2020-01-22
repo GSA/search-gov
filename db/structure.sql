@@ -1099,6 +1099,9 @@ DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `perishable_token` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `crypted_password` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password_salt` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `persistence_token` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `login_count` int(11) NOT NULL DEFAULT '0',
   `is_affiliate_admin` tinyint(1) NOT NULL DEFAULT '0',
@@ -1114,14 +1117,19 @@ CREATE TABLE `users` (
   `organization_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `api_key` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `approval_status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_verification_token` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `welcome_email_sent` tinyint(1) NOT NULL DEFAULT '0',
   `requires_manual_approval` tinyint(1) DEFAULT '0',
   `default_affiliate_id` int(11) DEFAULT NULL,
   `sees_filtered_totals` tinyint(1) NOT NULL DEFAULT '1',
+  `failed_login_count` int(11) NOT NULL DEFAULT '0',
+  `password_updated_at` datetime DEFAULT NULL,
   `uid` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_users_on_email` (`email`),
   UNIQUE KEY `index_users_on_api_key` (`api_key`),
+  UNIQUE KEY `index_users_on_email_verification_token` (`email_verification_token`),
+  KEY `index_users_on_perishable_token` (`perishable_token`),
   KEY `index_users_on_uid` (`uid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1922,7 +1930,5 @@ INSERT INTO `schema_migrations` (version) VALUES
 ('20181213153332'),
 ('20190205200912'),
 ('20190920181828'),
-('20191113214448'),
-('20200108160640');
-
+('20191113214448');
 
