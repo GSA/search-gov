@@ -43,6 +43,8 @@ class User < ApplicationRecord
     c.login_field = :email
     c.validate_email_field = true
     c.validate_login_field = false
+    c.ignore_blank_passwords  = true
+    c.validate_password_field = false
     c.logged_in_timeout = 1.hour
   end
 
