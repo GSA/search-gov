@@ -25,8 +25,10 @@ class EmailTemplate < ApplicationRecord
     low_query_ctr_watcher: '[Search.gov] {{ctx.metadata.alert_name}} (Custom Alert)',
     no_results_watcher: '[Search.gov] {{ctx.metadata.alert_name}} (Custom Alert)',
     account_deactivated:
-      '[Search.gov] Your Search.gov account has been deactivated' \
-      'for the post-deactivation notice'
+      <<~SUBJECT
+        [Search.gov] Your Search.gov account has been deactivated
+        for the post-deactivation notice
+      SUBJECT
   }.freeze
 
   class << self
