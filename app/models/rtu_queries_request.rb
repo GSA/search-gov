@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class RtuQueriesRequest
   MAX_RESULTS = 1000
   include Virtus.model
@@ -25,6 +23,7 @@ class RtuQueriesRequest
   private
 
   def compute_top_stats
+    search_query = TopQueryMatchQuery.new(site.name, query, start_date, end_date, { field: 'raw', size: MAX_RESULTS })
     search_click_buckets = top_n(search_query.body)
     stats_from_buckets(search_click_buckets) if search_click_buckets.present?
   end
@@ -55,12 +54,4 @@ class RtuQueriesRequest
     @routed_query_keywords ||= Set.new(site.routed_query_keywords.collect(&:keyword))
   end
 
-  def search_query
-    TopQueryMatchQuery.new(site.name,
-                           query,
-                           start_date,
-                           end_date,
-                           field: 'params.query.raw',
-                           size: MAX_RESULTS)
-  end
 end

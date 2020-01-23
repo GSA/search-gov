@@ -1,13 +1,6 @@
-# frozen_string_literal: true
-
 class LowCtrQuery < DateRangeTopNExistsQuery
   def initialize(affiliate_name, start_date, end_date, agg_options = {})
-    super(affiliate_name,
-          start_date,
-          end_date,
-          agg_options.reverse_merge(min_doc_count: 20,
-                                    size: 100_000,
-                                    field: 'params.query.raw'))
+    super(affiliate_name, start_date, end_date, agg_options.reverse_merge(min_doc_count: 20, size: 100000, field: 'raw'))
   end
 
   def body
@@ -17,9 +10,9 @@ class LowCtrQuery < DateRangeTopNExistsQuery
         json.aggs do
           json.ctr do
             json.scripted_metric do
-              json.init_script { json.source init_script }
-              json.map_script { json.source map_script }
-              json.reduce_script { json.source reduce_script }
+              json.init_script "_agg['click'] = _agg['search'] = 0"
+              json.map_script "_agg[doc['type'].value] += 1"
+              json.reduce_script "clicks = searches = 0; for (agg in _aggs) {  clicks += agg.click ; searches += agg.search ;}; float ctr = searches == 0 ? 0 : 100 * clicks / searches; ctr"
             end
           end
         end
@@ -27,25 +20,4 @@ class LowCtrQuery < DateRangeTopNExistsQuery
     end
   end
 
-  private
-
-  def init_script
-    "params._agg['click'] = params._agg['search'] = 0"
-  end
-
-  def map_script
-    "params._agg[doc['type'].value] += 1"
-  end
-
-  def reduce_script
-    <<~SCRIPT.strip
-      int clicks = 0;
-      int searches = 0;
-      for (agg in params._aggs){
-        clicks += agg.click ;
-        searches += agg.search
-      }
-      double ctr = searches == 0 ? 0 : 100.0 * clicks / searches; ctr
-    SCRIPT
-  end
 end

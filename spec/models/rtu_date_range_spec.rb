@@ -22,9 +22,7 @@ describe RtuDateRange do
     end
 
     context "when no dates are available" do
-      let(:json_response) do
-        JSON.parse(read_fixture_file('/json/rtu_dashboard/rtu_date_range_no_stats.json'))
-      end
+      let(:json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/rtu_date_range_infinity.json")) }
 
       before do
         allow(ES::ELK.client_reader).to receive(:search).and_return json_response

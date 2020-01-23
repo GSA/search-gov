@@ -11,19 +11,8 @@ describe Sites::QueryDrilldownsController do
     context 'when affiliate is downloading query CSV data' do
       include_context 'approved user logged in to a site'
       let(:drilldown_queries_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/drilldown_queries.json")) }
-      let(:query_args) do
-        [
-          site.name,
-          Date.new(2015,02,1),
-          Date.new(2015,02,5),
-          'params.query.raw',
-          'foo bar'
-        ]
-      end
-      let(:query) { instance_double(DrilldownQuery, body: '') }
 
       before do
-        expect(DrilldownQuery).to receive(:new).with(*query_args).and_return(query)
         allow(ES::ELK.client_reader).to receive(:search).and_return(drilldown_queries_response)
       end
 

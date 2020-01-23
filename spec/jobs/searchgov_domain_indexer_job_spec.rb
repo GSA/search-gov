@@ -27,10 +27,8 @@ describe SearchgovDomainIndexerJob do
 
     context 'when the domain has multiple unfetched urls' do
       let!(:another_searchgov_url) { SearchgovUrl.create(url: 'https://agency.gov/another') }
-
-      before { travel_to(Time.now) }
-
-      after { travel_back }
+      before { Timecop.freeze }
+      after { Timecop.return }
 
       it 'enqueues the next job after the specified delay' do
         expect{ perform }.to have_enqueued_job(SearchgovDomainIndexerJob).

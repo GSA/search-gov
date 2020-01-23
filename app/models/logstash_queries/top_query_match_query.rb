@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class TopQueryMatchQuery
   include AnalyticsDSL
 
@@ -17,21 +15,19 @@ class TopQueryMatchQuery
 
   def query(json)
     json.query do
-      json.bool do
-        match_query(json) if @raw_query.present?
-        booleans(json)
-      end
-    end
-  end
-
-  def match_query(json)
-    json.filter do
-      json.child! do
-        json.match do
-          json.set! 'params.query' do
-            json.query @raw_query
-            json.analyzer 'snowball'
-            json.operator 'and'
+      json.filtered do
+        json.query do
+          json.match do
+            json.query do
+              json.query @raw_query
+              json.analyzer "snowball"
+              json.operator "and"
+            end
+          end
+        end if @raw_query.present?
+        json.filter do
+          json.bool do
+            booleans(json)
           end
         end
       end
@@ -53,7 +49,7 @@ class TopQueryMatchQuery
         json.aggs do
           json.type do
             json.terms do
-              json.field 'type'
+              json.field "type"
             end
           end
         end

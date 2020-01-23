@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Sites::QueryDownloadsController < Sites::SetupSiteController
   include CSVResponsive
   MAX_RESULTS = 1000000
@@ -54,11 +52,7 @@ class Sites::QueryDownloadsController < Sites::SetupSiteController
   end
 
   def date_range_top_n_query
-    @date_range_top_n_query ||= DateRangeTopNQuery.new(@site.name,
-                                                       @start_date,
-                                                       @end_date,
-                                                       field: 'params.query.raw',
-                                                       size: MAX_RESULTS)
+    @date_range_top_n_query ||= DateRangeTopNQuery.new(@site.name, @start_date, @end_date, { field: 'raw', size: MAX_RESULTS })
   end
 
   def query_raw_count_array

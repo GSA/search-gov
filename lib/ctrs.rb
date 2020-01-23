@@ -1,16 +1,9 @@
-# frozen_string_literal: true
-
 module Ctrs
 
   private
   def ctrs(query_body, historical_days_back = 0)
-    params = {
-      index: indexes_to_date(historical_days_back, true),
-      type: %w[search click],
-      body: query_body,
-      size: 0,
-      ignore_unavailable: true
-    }
+    params = { index: indexes_to_date(historical_days_back, true), type: %w(search click), body: query_body,
+               search_type: 'count', ignore_unavailable: true }
     ES::ELK.client_reader.search(params)["aggregations"]["agg"]["buckets"] rescue nil
   end
 

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class ModuleSparklineQuery
   include AnalyticsDSL
 
@@ -15,8 +13,8 @@ class ModuleSparklineQuery
   end
 
   def booleans(json)
-    must_affiliate(json, affiliate_name)
-    json.filter do
+    json.must do
+      json.child! { json.term { json.affiliate @affiliate_name } }
       json.child! { since(json, 'now-60d/d') }
       json.child! { json.exists { json.field 'modules' } }
     end
@@ -28,7 +26,7 @@ class ModuleSparklineQuery
       json.agg do
         json.terms do
           json.field 'modules'
-          json.size 100
+          json.size 0
         end
         histogram_type_agg(json)
       end
@@ -54,4 +52,5 @@ class ModuleSparklineQuery
       end
     end
   end
+
 end

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Watcher < ApplicationRecord
   extend HashColumnsAccessible
   include ActionView::Helpers::NumberHelper
@@ -30,8 +28,6 @@ class Watcher < ApplicationRecord
       metadata(json)
     end
   end
-
-  private
 
   def metadata(json)
     json.metadata do
@@ -67,19 +63,13 @@ class Watcher < ApplicationRecord
 
   def condition(json)
     json.condition do
-      json.script do
-        json.source condition_script
-        json.lang 'painless'
-      end
+      json.script condition_script
     end
   end
 
   def transform(json)
     json.transform do
-      json.script do
-        json.source transform_script
-        json.lang 'painless'
-      end
+      json.script transform_script
     end
   end
 
@@ -113,4 +103,5 @@ class Watcher < ApplicationRecord
       watcher_type: self.class.name
     }
   end
+
 end

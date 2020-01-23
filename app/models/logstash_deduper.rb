@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class LogstashDeduper
   extend Resque::Plugins::Priority
   extend ResqueJobStats
@@ -10,13 +8,7 @@ class LogstashDeduper
     index_name = "logstash-#{day_str}"
     seen, dupe_ids = Set.new, []
     client = ES::ELK.client_reader
-    result = client.search(
-      index: index_name,
-      type: 'search',
-      scroll: '5m',
-      size: SCROLL_SIZE,
-      sort: '_doc'
-    )
+    result = client.search index: index_name, type: "search", scroll: '5m', size: SCROLL_SIZE, search_type: :scan
     while result = client.scroll(scroll_id: result['_scroll_id'], scroll: '5m') and not result['hits']['hits'].empty?
       result['hits']['hits'].each do |d|
         idx = d['_source'].hash.to_s

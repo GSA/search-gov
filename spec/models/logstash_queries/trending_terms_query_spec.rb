@@ -1,99 +1,10 @@
 require 'spec_helper'
 
-describe TrendingTermsQuery do
+describe TrendingTermsQuery, "#body" do
   let(:query) { TrendingTermsQuery.new('affiliate_name', '5h', 22) }
-  let(:expected_body) do
-    {
-      "query": {
-        "bool": {
-          "filter": [
-            {
-              "term": {
-                "params.affiliate": "affiliate_name"
-              }
-            },
-            {
-              "term": {
-                "type": "search"
-              }
-            },
-            {
-              "range": {
-                "@timestamp": {
-                  "gte": "now-5h/h"
-                }
-              }
-            }
-          ],
-          "must_not": [
-            {
-              "term": {
-                "useragent.device": "Spider"
-              }
-            },
-            {
-              "term": {
-                "params.query.raw": ""
-              }
-            },
-            {
-              "exists": {
-                "field": "params.page"
-              }
-            }
-          ]
-        }
-      },
-      "aggs": {
-        "agg": {
-          "significant_terms": {
-            "min_doc_count": 22,
-            "field": "params.query.raw",
-            "background_filter": {
-              "bool": {
-                "filter": [
-                  {
-                    "term": {
-                      "params.affiliate": "affiliate_name"
-                    }
-                  },
-                  {
-                    "term": {
-                      "type": "search"
-                    }
-                  }
-                ],
-                "must_not": [
-                  {
-                    "term": {
-                      "useragent.device": "Spider"
-                    }
-                  },
-                  {
-                    "term": {
-                      "params.query.raw": ""
-                    }
-                  },
-                  {
-                    "exists": {
-                      "field": "params.page"
-                    }
-                  }
-                ]
-              }
-            }
-          },
-          "aggs": {
-            "clientip_count": {
-              "cardinality": {
-                "field": "clientip"
-              }
-            }
-          }
-        }
-      }
-    }.to_json
-  end
 
-  it_behaves_like 'a logstash query'
+  subject(:body) { query.body }
+
+  it { is_expected.to eq(%q({"query":{"filtered":{"filter":{"bool":{"must":[{"term":{"affiliate":"affiliate_name"}},{"term":{"type":"search"}}],"must_not":[{"term":{"useragent.device":"Spider"}},{"term":{"raw":""}},{"exists":{"field":"params.page"}}]}},"query":{"range":{"@timestamp":{"gte":"now-5h/h"}}}}},"aggs":{"agg":{"significant_terms":{"min_doc_count":22,"field":"params.query.raw","background_filter":{"bool":{"must":[{"term":{"affiliate":"affiliate_name"}},{"term":{"type":"search"}}],"must_not":[{"term":{"useragent.device":"Spider"}},{"term":{"raw":""}},{"exists":{"field":"params.page"}}]}}},"aggs":{"clientip_count":{"cardinality":{"field":"clientip"}}}}}}))}
+
 end

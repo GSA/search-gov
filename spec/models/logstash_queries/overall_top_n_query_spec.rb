@@ -1,38 +1,10 @@
 require 'spec_helper'
 
-describe OverallTopNQuery do
-  let(:query) do
-    OverallTopNQuery.new(Date.parse('2014-06-28'),
-                         { field: 'params.query.raw', size: 1234 })
-  end
-  let(:expected_body) do
-    {
-      "query": {
-        "bool": {
-          "must_not": {
-            "term": {
-              "tags": "api"
-            }
-          },
-          "filter": {
-            "range": {
-              "@timestamp": {
-                "gte": "2014-06-28"
-              }
-            }
-          }
-        }
-      },
-      "aggs": {
-        "agg": {
-          "terms": {
-            "field": "params.query.raw",
-            "size": 1234
-          }
-        }
-      }
-    }.to_json
-  end
+describe OverallTopNQuery, "#body" do
+  let(:query) { OverallTopNQuery.new(Date.parse('2014-06-28'), { field: 'raw', size: 1234 }) }
 
-  it_behaves_like 'a logstash query'
+  subject(:body) { query.body }
+
+  it { is_expected.to eq(%q({"query":{"filtered":{"filter":{"bool":{"must_not":{"term":{"tags":"api"}},"must":{"range":{"@timestamp":{"gte":"2014-06-28"}}}}}}},"aggs":{"agg":{"terms":{"field":"raw","size":1234}}}}))}
+
 end

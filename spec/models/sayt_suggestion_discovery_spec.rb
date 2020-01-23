@@ -8,25 +8,10 @@ describe SaytSuggestionDiscovery, "#perform(affiliate_name, affiliate_id, date_i
 
   let(:affiliate) { affiliates(:power_affiliate) }
   let(:date_int) { 20140626 }
-  let(:top_n_exists_args) do
-    [
-      affiliate.name,
-      field: 'params.query.raw',
-      min_doc_count: 5,
-      size: 10
-    ]
-  end
-  let(:rtu_top_queries) do
-    instance_double(RtuTopQueries,
-                    top_n: [['today term1', 55],
-                            ['today term2', 54],
-                            ['today term3', 4]])
-  end
 
   context "when searches with results exist for an affiliate" do
     before do
-      expect(TopNExistsQuery).to receive(:new).with(*top_n_exists_args).and_call_original
-      allow(RtuTopQueries).to receive(:new).and_return(rtu_top_queries)
+      allow(RtuTopQueries).to receive(:new).and_return double(RtuTopQueries, top_n: [['today term1', 55], ['today term2', 54], ['today term3', 4]])
     end
 
     it "should create unprotected suggestions" do

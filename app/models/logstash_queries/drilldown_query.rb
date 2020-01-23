@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class DrilldownQuery
   include AnalyticsDSL
 
@@ -14,11 +12,12 @@ class DrilldownQuery
   end
 
   def booleans(json)
-    json.filter do
+    json.must do
       json.child! { date_range(json, @start_date, @end_date) }
       json.child! { json.term { json.set! @field, @value } }
+      json.child! { json.term { json.affiliate @affiliate_name } }
     end
-    must_affiliate(json, @affiliate_name)
     must_not_spider(json)
   end
+
 end

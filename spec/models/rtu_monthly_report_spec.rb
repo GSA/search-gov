@@ -5,9 +5,6 @@ describe RtuMonthlyReport do
 
   let(:site) { affiliates(:basic_affiliate) }
   let(:rtu_monthly_report) { RtuMonthlyReport.new(site, '2014','5', true) }
-  let(:available_dates_response) do
-    JSON.parse(read_fixture_file('/json/rtu_monthly_report/available_dates.json'))
-  end
 
   describe "counts" do
     describe "#total_queries" do
@@ -51,21 +48,9 @@ describe RtuMonthlyReport do
     context 'when top no results queries are available' do
       let(:json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_monthly_report/no_result_queries.json")) }
       let(:no_result_queries) { [['tsunade', 24], ['jiraiya', 22], ['orochimaru', 32]] }
-      let(:query_args) do
-        [
-          site.name,
-          Date.new(2014,5,1),
-          Date.new(2014,5,31),
-          { field: 'params.query.raw', min_doc_count: 20 }
-        ]
-      end
-      let(:query) { instance_double(DateRangeTopNMissingQuery, body: '') }
 
       before do
-        expect(DateRangeTopNMissingQuery).
-          to receive(:new).with(*query_args).and_return(query)
-        allow(ES::ELK.client_reader).to receive(:search).
-          and_return(available_dates_response, json_response)
+        allow(ES::ELK.client_reader).to receive(:search).and_return json_response
       end
 
       it 'should return an array of query/count pairs' do
@@ -77,6 +62,7 @@ describe RtuMonthlyReport do
 
   describe '#low_ctr_queries' do
     context 'low CTR queries are available' do
+      let(:available_dates_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_monthly_report/available_dates.json")) }
       let(:json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_monthly_report/low_ctr.json")) }
       let(:low_ctr_queries) { [["brandon colker", 0], ["address", 2], ["981", 12]] }
 

@@ -115,6 +115,8 @@ describe ElasticSaytSuggestion do
         ElasticSaytSuggestion.commit
       end
 
+      # Temporarily disabling these specs during ES56 upgrade
+      # https://cm-jira.usa.gov/browse/SRCH-838
       it 'ignores exact matches regardless of case' do
         ['the exact match', 'THE EXACT MATCH'].each do |query|
           expect(ElasticSaytSuggestion.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to be_zero

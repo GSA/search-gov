@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class OverallTopNQuery
   include AnalyticsDSL
 
@@ -19,8 +17,9 @@ class OverallTopNQuery
     json.must_not do
       json.term { json.tags 'api' }
     end
-    json.filter do
+    json.must do
       since(json, @since)
     end
   end
+
 end

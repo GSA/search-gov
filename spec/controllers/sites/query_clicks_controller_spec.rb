@@ -11,31 +11,17 @@ describe Sites::QueryClicksController do
       include_context 'approved user logged in to a site'
       let(:top_n) { [['url1', 10], ['url2', 5]] }
       let(:rtu_top_clicks) { double(RtuTopClicks, top_n: top_n) }
-      let(:query_args) do
-        [
-          site.name,
-          Date.parse('2019-11-01'),
-          Date.parse('2019-11-11'),
-          'params.query.raw',
-          'foo',
-          { field: 'params.url', size: 10000 }
-        ]
-      end
-      let(:query) { instance_double(DateRangeTopNFieldQuery, body: '') }
 
       before do
-        travel_to(Time.gm(2019, 11, 11))
-        expect(DateRangeTopNFieldQuery).
-          to receive(:new).with(*query_args).and_return(query)
         allow(RtuTopClicks).to receive(:new).and_return rtu_top_clicks
         get :show,
             params: {
               site_id: site.id,
+              start_date: Date.current,
+              end_date: Date.current,
               query: 'foo'
             }
       end
-
-      after { travel_back }
 
       it { is_expected.to assign_to(:top_urls).with(top_n) }
     end
