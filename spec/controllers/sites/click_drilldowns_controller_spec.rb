@@ -11,9 +11,22 @@ describe Sites::ClickDrilldownsController do
     context 'when affiliate is downloading click CSV data' do
       include_context 'approved user logged in to a site'
       let(:drilldown_clicks_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/drilldown_clicks.json")) }
+      let(:query_args) do
+        [
+          site.name,
+          Date.new(2015,02,01),
+          Date.new(2015,02,05),
+          'params.url',
+          'http://some.gov.url/super_long_so_truncate_at_50/blah.cfm'
+        ]
+      end
+      let(:query) { instance_double(DrilldownQuery, body: '') }
 
       before do
-        allow(ES::ELK.client_reader).to receive(:search).and_return(drilldown_clicks_response)
+        expect(DrilldownQuery).to receive(:new).with(*query_args).
+          and_return(query)
+        allow(ES::ELK.client_reader).to receive(:search).
+          and_return(drilldown_clicks_response)
       end
 
       it 'should generate a CSV of various click fields' do

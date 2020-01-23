@@ -16,8 +16,8 @@ describe DocumentFetchLogger do
 
   describe '#log' do
     before { allow(Rails.logger).to receive(:info) }
-    before { Timecop.freeze(Time.gm(1997, 8, 4, 5, 14)) }
-    after { Timecop.return }
+    before { travel_to(Time.gm(1997, 8, 4, 5, 14)) }
+    after { travel_back }
 
     context 'when no additional attributes are provided' do
       it 'logs just the domain, time, type, and url' do

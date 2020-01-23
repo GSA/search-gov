@@ -53,8 +53,8 @@ describe HumanSessionsController do
       let(:challenge_outcome) { true }
 
       before { allow(Digest::SHA256).to receive(:hexdigest).and_return('sha-na-na') }
-      before { Timecop.freeze(Time.gm(1997, 8, 4, 5, 14)) }
-      after { Timecop.return }
+      before { travel_to(Time.gm(1997, 8, 4, 5, 14)) }
+      after { travel_back }
 
       it 'records the "success" captcha activity' do
         expect(subject).to receive(:record_captcha_activity).with('success')

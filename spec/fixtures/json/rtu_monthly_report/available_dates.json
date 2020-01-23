@@ -1,27 +1,24 @@
 {
-  "took": 1,
+  "took": 3,
   "timed_out": false,
   "_shards": {
-    "total": 2,
-    "successful": 2,
+    "total": 15,
+    "successful": 15,
+    "skipped": 0,
     "failed": 0
   },
   "hits": {
     "total": 100,
-    "max_score": 0,
+    "max_score": null,
     "hits": []
   },
-  "facets": {
+  "aggregations": {
     "stats": {
-      "_type": "statistical",
       "count": 100,
-      "total": 143569116147000,
       "min": 1435647649000,
       "max": 1435732636000,
-      "mean": 1435691161470,
-      "sum_of_squares": 206120911174385940000000000,
-      "variance": 620781859860643.9,
-      "std_deviation": 24915494.37319364
+      "avg": 1435690142500,
+      "sum": 2871380285000
     }
   }
 }
