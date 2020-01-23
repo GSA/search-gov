@@ -56,9 +56,9 @@ describe ClickCounter do
   describe '#statistically_significant_clicks' do
     subject(:clicks) { counter.send(:statistically_significant_clicks) }
 
-    before { Timecop.freeze }
+    before { travel_to(Time.now) }
 
-    after { Timecop.return }
+    after { travel_back }
 
     it "generates a query for the last month's significant clicks" do
       expect(DateRangeTopNFieldQuery).to receive(:new).
@@ -67,7 +67,7 @@ describe ClickCounter do
              Time.now,
              'click_domain',
              'agency.gov',
-             { field: 'params.url', size: 0 }).
+             { field: 'params.url', size: 100000 }).
         and_call_original
       clicks
     end

@@ -63,8 +63,8 @@ gem 'virtus', '~> 1.0.5'
 gem 'truncator', '~> 0.1.7'
 gem 'em-http-request', '~> 1.1.5'
 gem "validate_url", '= 0.2.0' # Newer versions use Addressable::URI for validation, which is more permissive than what we want
-gem 'elasticsearch', '~> 6.0.0'
-gem 'elasticsearch-watcher', '~> 0.0.1'
+gem 'elasticsearch', '~> 7.4.0'
+gem 'elasticsearch-xpack', '~> 7.4.0'
 gem 'federal_register', '~> 0.6.3'
 gem 'github-markdown', '~> 0.6.9'
 gem 'google-api-client', '~> 0.19.1'
@@ -167,7 +167,6 @@ group :test do
   gem 'vcr', '~> 4.0'
   gem 'webmock', '~> 3.1.1'
   gem 'rspec-activemodel-mocks', '~> 1.0.3'
-  gem 'timecop', '~> 0.9.1'
   gem 'rspec_junit_formatter', '~> 0.3.0'
   gem 'rails-controller-testing', '~> 1.0.4'
 end

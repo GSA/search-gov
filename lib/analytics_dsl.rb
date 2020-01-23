@@ -1,16 +1,10 @@
+# frozen_string_literal: true
+
 module AnalyticsDSL
-  def filter(json)
-    json.query do
-      json.filtered do
-        json.filter do
-          yield json
-        end
-      end
-    end
-  end
+  attr_reader :affiliate_name
 
   def filter_booleans(json)
-    filter(json) do |json|
+    json.query do
       json.bool do
         booleans(json)
       end
@@ -32,7 +26,7 @@ module AnalyticsDSL
 
   def date_range(json, start_date, end_date)
     json.range do
-      json.set! "@timestamp" do
+      json.set! '@timestamp' do
         json.gte start_date
         json.lte end_date if end_date.present?
       end
@@ -45,14 +39,14 @@ module AnalyticsDSL
 
   def must_not_spider(json)
     json.must_not do
-      json.term { json.set! "useragent.device", "Spider" }
+      json.term { json.set! 'useragent.device', 'Spider' }
     end
   end
 
   def stats(json, field)
-    json.facets do
+    json.aggs do
       json.stats do
-        json.statistical do
+        json.stats do
           json.field field
         end
       end
@@ -72,13 +66,13 @@ module AnalyticsDSL
   end
 
   def must_affiliate(json, site_name)
-    json.must do
-      json.child! { json.term { json.affiliate site_name } }
+    json.filter do
+      json.child! { json.term { json.set! 'params.affiliate', site_name } }
     end
   end
 
   def must_date_range(json, start_date, end_date)
-    json.must do
+    json.filter do
       json.child! { date_range(json, start_date, end_date) }
     end
   end
