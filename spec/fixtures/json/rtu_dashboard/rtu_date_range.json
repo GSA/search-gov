@@ -1,21 +1,28 @@
-{"took": 30, "timed_out": false, "_shards": {
-  "total": 9,
-  "successful": 9,
-  "failed": 0
-}, "hits": {
-  "total": 219539,
-  "max_score": 0.0,
-  "hits": []
-}, "facets": {
-  "stats": {
-    "_type": "statistical",
-    "count": 219539,
-    "total": 3.0757988926959034E17,
-    "min": 1.400614196E12,
-    "max": 1.401293656E12,
-    "mean": 1.401026192474186E12,
-    "sum_of_squares": 4.309274930154266E29,
-    "variance": 5.4069758776598832E16,
-    "std_deviation": 2.3252904931771177E8
+{
+  "took": 3,
+  "timed_out": false,
+  "_shards": {
+    "total": 15,
+    "successful": 15,
+    "skipped": 0,
+    "failed": 0
+  },
+  "hits": {
+    "total": 219539,
+    "max_score": 0,
+    "hits": []
+  },
+  "aggregations": {
+    "stats": {
+      "count": 219539,
+      "min": 1400614196000,
+      "max": 1401293656000,
+      "avg": 1400914778491.4285,
+      "sum": 275260086236000,
+      "min_as_string": "2014-05-20T00:01:15.000Z",
+      "max_as_string": "2014-05-28T23:46:51.000Z",
+      "avg_as_string": "2014-05-24T00:46:18.491Z",
+      "sum_as_string": "10692-08-23T15:03:56.000Z"
+    }
   }
-}}
+}

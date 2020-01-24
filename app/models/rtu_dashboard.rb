@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RtuDashboard
   include LogstashPrefix
   include QueryCtrCollector
@@ -17,7 +19,7 @@ class RtuDashboard
   end
 
   def no_results
-    top_query(TopNMissingQuery, field: 'raw', min_doc_count: 10)
+    top_query(TopNMissingQuery, field: 'params.query.raw', min_doc_count: 10)
   end
 
   def top_urls

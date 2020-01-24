@@ -33,6 +33,8 @@ describe RtuDashboard do
       let(:json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/top_queries.json")) }
 
       before do
+        expect(TopNMissingQuery).to receive(:new).at_least(:once).
+          with(site.name, field: 'params.query.raw', min_doc_count: 10).and_call_original
         allow(ES::ELK.client_reader).to receive(:search).and_return json_response
       end
 

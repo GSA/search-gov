@@ -7,69 +7,64 @@
   "input": {
     "search": {
       "request": {
-        "search_type": "count",
         "types": [
           "search"
         ],
         "indices": [
-          "<human-logstash-{now/d}>",
-          "<human-logstash-{now/d-1d}>",
-          "<human-logstash-{now/d-2d}>",
-          "<human-logstash-{now/d-3d}>",
-          "<human-logstash-{now/d-4d}>",
-          "<human-logstash-{now/d-5d}>",
-          "<human-logstash-{now/d-6d}>",
-          "<human-logstash-{now/d-7d}>",
-          "<human-logstash-{now/d-8d}>"
+          "<human-logstash-{now/d{YYYY.MM.dd}}>",
+          "<human-logstash-{now/d-1d{YYYY.MM.dd}}>",
+          "<human-logstash-{now/d-2d{YYYY.MM.dd}}>",
+          "<human-logstash-{now/d-3d{YYYY.MM.dd}}>",
+          "<human-logstash-{now/d-4d{YYYY.MM.dd}}>",
+          "<human-logstash-{now/d-5d{YYYY.MM.dd}}>",
+          "<human-logstash-{now/d-6d{YYYY.MM.dd}}>",
+          "<human-logstash-{now/d-7d{YYYY.MM.dd}}>",
+          "<human-logstash-{now/d-8d{YYYY.MM.dd}}>"
         ],
         "body": {
           "query": {
-            "filtered": {
-              "filter": {
-                "bool": {
-                  "must": [
-                    {
-                      "term": {
-                        "affiliate": "nps.gov"
-                      }
-                    },
-                    {
-                      "missing": {
-                        "field": "modules"
-                      }
-                    },
-                    {
-                      "range": {
-                        "@timestamp": {
-                          "gte": "{{ctx.trigger.scheduled_time}}||-1w",
-                          "lte": "{{ctx.trigger.scheduled_time}}"
-                        }
-                      }
+            "bool": {
+              "filter": [
+                {
+                  "term": {
+                    "params.affiliate": "nps.gov"
+                  }
+                },
+                {
+                  "range": {
+                    "@timestamp": {
+                      "gte": "{{ctx.trigger.scheduled_time}}||-1w",
+                      "lte": "{{ctx.trigger.scheduled_time}}"
                     }
-                  ],
-                  "must_not": [
-                    {
-                      "term": {
-                        "useragent.device": "Spider"
-                      }
-                    },
-                    {
-                      "term": {
-                        "raw": ""
-                      }
-                    },
-                    {
-                      "terms": {
-                        "raw": [
-                          "foo",
-                          "bar",
-                          "another one"
-                        ]
-                      }
-                    }
-                  ]
+                  }
                 }
-              }
+              ],
+              "must_not": [
+                {
+                  "term": {
+                    "useragent.device": "Spider"
+                  }
+                },
+                {
+                  "term": {
+                    "params.query.raw": ""
+                  }
+                },
+                {
+                  "exists": {
+                    "field": "modules"
+                  }
+                },
+                {
+                  "terms": {
+                    "params.query.raw": [
+                      "foo",
+                      "bar",
+                      "another one"
+                    ]
+                  }
+                }
+              ]
             }
           },
           "aggs": {
@@ -77,20 +72,27 @@
               "terms": {
                 "min_doc_count": 34,
                 "size": 10,
-                "field": "raw"
+                "field": "params.query.raw"
               }
             }
-          }
+          },
+          "size": 0
         }
       }
     }
   },
   "condition": {
-    "script": "ctx.payload.aggregations && ctx.payload.aggregations.agg.buckets.size() > 0"
+    "script": {
+      "source": "ctx.payload.aggregations.agg.buckets.size() > 0",
+      "lang": "painless"
+    }
   },
   "throttle_period": "24h",
   "transform": {
-    "script": "ctx.payload.aggregations.agg.buckets.collect({ it.key })"
+    "script": {
+      "source": "ctx.payload.aggregations.agg.buckets.collect(it -> it.key)",
+      "lang": "painless"
+    }
   },
   "actions": {
     "analytics_alert": {

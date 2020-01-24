@@ -11,5 +11,5 @@ end
 
 After do |scenario|
   ScenarioStatusTracker.success = false if scenario.failed?
-  Timecop.return
+  travel_back
 end

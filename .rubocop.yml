@@ -2150,7 +2150,10 @@ Performance/StringReplacement:
 Performance/TimesMap:
   Description: 'Checks for .times.map calls.'
   AutoCorrect: false
-  Enabled: true
+  # Disabling. Using `Array.new` with a block is marginally more performant, but
+  # `n.times.map` is much more readable. The former can be used when n is large.
+  # https://stackoverflow.com/questions/41518896/why-does-rubocop-suggest-replacing-times-map-with-array-new
+  Enabled: false
   VersionAdded: 0.36
   VersionChanged: 0.50
   SafeAutoCorrect: false # see https://github.com/rubocop-hq/rubocop/issues/4658
@@ -3340,6 +3343,9 @@ Style/LambdaCall:
     - 'app/models/elastic_data/*'
     - 'app/models/custom_index_queries/*'
     - 'app/models/logstash_queries/*'
+    - 'app/models/watcher.rb'
+    - 'lib/analytics_dsl.rb'
+    - 'lib/watcher_dsl.rb'
 
 Style/LineEndConcatenation:
   Description: >-
@@ -3364,6 +3370,9 @@ Style/MethodCallWithArgsParentheses:
     - 'app/models/elastic_data/*'
     - 'app/models/custom_index_queries/*'
     - 'app/models/logstash_queries/*'
+    - 'app/models/watcher.rb'
+    - 'lib/analytics_dsl.rb'
+    - 'lib/watcher_dsl.rb'
 
 Style/MethodCallWithoutArgsParentheses:
   Description: 'Do not use parentheses for method calls with no arguments.'
