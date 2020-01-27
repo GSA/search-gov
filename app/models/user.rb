@@ -92,12 +92,6 @@ class User < ApplicationRecord
     approval_status != 'not_approved'
   end
 
-  def complete_registration(attributes)
-    self.email_verification_token = nil
-    self.set_approval_status_to_approved
-    !requires_manual_approval? && update(attributes)
-  end
-
   def self.new_invited_by_affiliate(inviter, affiliate, attributes)
     new_user = User.new(attributes)
     new_user.inviter = inviter

@@ -31,13 +31,6 @@ class Emailer < ApplicationMailer
     end
   end
 
-  def user_email_verification(user)
-    @email_verification_url = email_verification_url(user.email_verification_token)
-    @user_contact_name = user.contact_name.presence || user.email
-    @user_email = user.email
-    generic_user_html_email(user, __method__)
-  end
-
   def user_approval_removed(user)
     @user = user
     @user_contact_name = user.contact_name.presence || user.email

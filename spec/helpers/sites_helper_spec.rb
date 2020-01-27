@@ -47,10 +47,6 @@ describe SitesHelper do
     let(:user) { mock_model(User, approval_status: approval_status) }
     let(:subject) { helper.user_row_css_class_hash(user) }
 
-    context 'when User has', approval_status: 'pending_email_verification' do
-      specify { expect(subject).to eq(class: 'warning') }
-    end
-
     context 'when User has', approval_status: 'pending_approval' do
       specify { expect(subject).to eq(class: 'warning') }
     end
