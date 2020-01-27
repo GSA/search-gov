@@ -39,6 +39,12 @@ class User < ApplicationRecord
                 90.days.ago)
         }
 
+  scope :not_active_since,
+        lambda { |date|
+          where('DATE(current_login_at) = ? OR
+                (current_login_at IS NULL AND DATE(created_at) = ?)', date, date)
+        }
+
   acts_as_authentic do |c|
     c.login_field = :email
     c.validate_email_field = true
@@ -84,12 +90,6 @@ class User < ApplicationRecord
   # authlogic magic state
   def approved?
     approval_status != 'not_approved'
-  end
-
-  def complete_registration(attributes)
-    self.email_verification_token = nil
-    self.set_approval_status_to_approved
-    !requires_manual_approval? && update(attributes)
   end
 
   def self.new_invited_by_affiliate(inviter, affiliate, attributes)

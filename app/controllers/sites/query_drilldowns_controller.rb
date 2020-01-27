@@ -8,7 +8,11 @@ class Sites::QueryDrilldownsController < Sites::SetupSiteController
     start_date = request["start_date"].to_date
     sanitized_query = sanitize_for_filename(query)
     filename = [@site.name, sanitized_query, start_date, end_date].join('_')
-    drilldown_query = DrilldownQuery.new(@site.name, start_date, end_date, 'raw', query)
+    drilldown_query = DrilldownQuery.new(@site.name,
+                                         start_date,
+                                         end_date,
+                                         'params.query.raw',
+                                         query)
     request_drilldown = RequestDrilldown.new(@current_user.sees_filtered_totals?, 'search', drilldown_query.body)
     requests = request_drilldown.docs.map { |doc| document_mapping(doc) }
     csv_response(filename, HEADER_FIELDS, requests)
@@ -39,5 +43,4 @@ class Sites::QueryDrilldownsController < Sites::SetupSiteController
     record << doc['user_agent']
     record
   end
-
 end

@@ -14,8 +14,20 @@ describe Sites::QueryDownloadsController do
       let(:top_human_queries_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/top_human_queries.json")) }
       let(:top_clicks_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/top_clicks.json")) }
       let(:top_human_clicks_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/top_human_clicks.json")) }
+      let(:date_range_top_n_query_args) do
+        [
+          site.name,
+          Date.new(2014, 6, 8),
+          Date.new(2014, 6, 14),
+          field: 'params.query.raw',
+          size: 1_000_000
+        ]
+      end
+      let(:query) { instance_double(DateRangeTopNQuery, body: '') }
 
       before do
+        expect(DateRangeTopNQuery).to receive(:new).
+          with(*date_range_top_n_query_args).and_return(query)
         allow(ES::ELK.client_reader).to receive(:search).and_return(top_queries_response, top_human_queries_response, top_clicks_response, top_human_clicks_response)
       end
 

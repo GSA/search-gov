@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class EmailTemplate < ApplicationRecord
   validates_presence_of :name, :subject, :body
   validates_uniqueness_of :name, case_sensitive: false
@@ -12,9 +14,7 @@ class EmailTemplate < ApplicationRecord
       new_affiliate_site: "[Search.gov] Your new site: <%= @affiliate.display_name %>",
       new_affiliate_user: "[Search.gov] You've been added to <%= @affiliate_display_name %>",
       new_feature_adoption_to_admin: "[Search.gov] Features adopted yesterday",
-      user_email_verification: "[Search.gov] Verify your email",
       new_user_to_admin: "[Search.gov] New user sign up",
-      password_reset_instructions: "[Search.gov] Reset your password",
       update_external_tracking_code: "[Search.gov] 3rd Party Tracking",
       user_sites: '[Search.gov] Searchers now see your Federal Register notices and rules',
       welcome_to_new_user: "[Search.gov] Welcome to Search.gov",
@@ -22,7 +22,7 @@ class EmailTemplate < ApplicationRecord
       user_approval_removed: "[Search.gov] User account set to 'not_approved'",
       low_query_ctr_watcher: "[Search.gov] {{ctx.metadata.alert_name}} (Custom Alert)",
       no_results_watcher: "[Search.gov] {{ctx.metadata.alert_name}} (Custom Alert)",
-  }
+  }.freeze
 
   class << self
 
