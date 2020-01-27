@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TrendingTermsQuery
   include AnalyticsDSL
 
@@ -10,25 +12,20 @@ class TrendingTermsQuery
   def body
     Jbuilder.encode do |json|
       json.query do
-        json.filtered do
-          json.filter do
-            booleans(json)
-          end
-          json.query do
-            since(json, "now-#{@foreground_time}/h")
-          end
-        end
+        booleans(json, @foreground_time)
       end
       significant_terms_agg(json)
     end
   end
+
+  private
 
   def significant_terms_agg(json)
     json.aggs do
       json.agg do
         json.significant_terms do
           json.min_doc_count @min_foreground_doc_count
-          json.field "params.query.raw"
+          json.field 'params.query.raw'
           json.background_filter do
             booleans(json)
           end
@@ -36,7 +33,7 @@ class TrendingTermsQuery
         json.aggs do
           json.clientip_count do
             json.cardinality do
-              json.field "clientip"
+              json.field 'clientip'
             end
           end
         end
@@ -44,18 +41,18 @@ class TrendingTermsQuery
     end
   end
 
-  def booleans(json)
+  def booleans(json, since_time = nil)
     json.bool do
-      json.must do
-        json.child! { json.term { json.affiliate @affiliate_name } }
-        json.child! { json.term { json.type "search" } }
+      json.filter do
+        json.child! { json.term { json.set! 'params.affiliate', @affiliate_name } }
+        json.child! { json.term { json.type 'search' } }
+        json.child! { since(json, "now-#{since_time}/h") } if since_time
       end
       json.must_not do
-        json.child! { json.term { json.set! "useragent.device", "Spider" } }
-        json.child! { json.term { json.raw "" } }
-        json.child! { json.exists { json.field "params.page" } }
+        json.child! { json.term { json.set! 'useragent.device', 'Spider' } }
+        json.child! { json.term { json.set! 'params.query.raw', '' } }
+        json.child! { json.exists { json.field 'params.page' } }
       end
     end
   end
-
 end

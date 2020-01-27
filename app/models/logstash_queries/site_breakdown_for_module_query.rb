@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SiteBreakdownForModuleQuery
   include AnalyticsDSL
 
@@ -8,15 +10,14 @@ class SiteBreakdownForModuleQuery
   def body
     Jbuilder.encode do |json|
       filter_booleans(json)
-      type_terms_agg(json, 'affiliate', 0)
+      type_terms_agg(json, 'params.affiliate', 10_000)
     end
   end
 
   def booleans(json)
-    json.must do
+    json.filter do
       json.term { json.modules @module_tag }
     end
     must_not_spider(json)
   end
-
 end

@@ -25,7 +25,8 @@ class ClickCounter
                                         Time.current,
                                         'click_domain',
                                         domain,
-                                        field: 'params.url', size: 0)
+                                        field: 'params.url',
+                                        size: 100_000)
 
     RtuTopClicks.new(query.body, true).
       top_n_to_percentage(SIGNIFICANT_PERCENTAGE)
