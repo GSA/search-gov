@@ -19,6 +19,19 @@ context do
     it { is_expected.to have_body_text user.contact_name }
   end
 
+  describe '#account_deactivated' do
+    let(:user) { users(:not_active_user) }
+    let(:message) do
+      'our system had to deactivate access to your search.gov account'
+    end
+
+    subject(:deactivate_email) { Emailer.account_deactivated(user) }
+
+    it { is_expected.to deliver_to(user.email) }
+    it { is_expected.to have_body_text message }
+    it { is_expected.to have_body_text user.contact_name }
+  end
+
   describe '#user_approval_removed' do
     let(:user) { users(:another_affiliate_manager) }
 
