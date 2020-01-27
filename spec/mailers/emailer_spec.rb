@@ -12,7 +12,7 @@ context do
       'automatically deactivate your account in the next 14 days due to inactivity.'
     end
 
-    subject(account_deactivation_warning) do
+    subject(:account_deactivation_warning) do
       Emailer.account_deactivation_warning(user, 76.days.ago.to_date)
     end
 
