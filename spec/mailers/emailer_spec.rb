@@ -21,7 +21,6 @@ context do
     it { is_expected.to have_body_text user.contact_name }
   end
 
-
   describe '#account_deactivated' do
     let(:user) { users(:not_active_user) }
     let(:message) do

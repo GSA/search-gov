@@ -32,6 +32,7 @@ class EmailTemplate < ApplicationRecord
                          'for the post-deactivation notice',
     account_deactivation_warning:
       '[Search.gov] Your Search.gov account expires soon: Log in today to keep access'
+      'for the post-deactivation notice'
   }.freeze
 
   class << self
