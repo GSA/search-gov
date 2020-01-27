@@ -1248,7 +1248,7 @@ describe Affiliate do
   describe '#user_emails' do
     it 'returns comma delimited user emails' do
       affiliate = affiliates(:non_existent_affiliate)
-      expect(affiliate.user_emails).to eq('Another Manager <another_affiliate_manager@fixtures.org>,Pending Email Verification Affiliate Manager <affiliate_manager_with_pending_email_verification_status@fixtures.org>')
+      expect(affiliate.user_emails).to eq('Another Manager <another_affiliate_manager@fixtures.org>,Requires Manual Approval Affiliate Manager <affiliate_manager_requires_manual_approval@fixtures.org>')
     end
   end
 

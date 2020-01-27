@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RtuTopN
   include LogstashPrefix
 
@@ -5,13 +7,11 @@ class RtuTopN
     @query_body = query_body
     @type = type
     @filter_bots = filter_bots
-    @day = day.present? ? day.strftime("%Y.%m.%d") : '*'
+    @day = day.present? ? day.strftime('%Y.%m.%d') : '*'
   end
 
   def top_n
-    opts = { index: "#{logstash_prefix(@filter_bots)}#{@day}", type: @type, body: @query_body, size: 0 }
-    term_buckets = ES::ELK.client_reader.search(opts)["aggregations"]["agg"]["buckets"] rescue []
-    term_buckets.collect { |hash| [hash["key"], hash["doc_count"]] }
+    term_buckets.collect { |hash| [hash['key'], hash['doc_count']] }
   end
 
   # Results representing a given percentage of all results by doc_count
@@ -27,5 +27,27 @@ class RtuTopN
       cumulative_count += result[1]
     end
     top_to_percentage
+  end
+
+  private
+
+  def query_opts
+    {
+      index: "#{logstash_prefix(@filter_bots)}#{@day}",
+      type: @type,
+      body: @query_body,
+      size: 10_000
+    }
+  end
+
+  def response
+    ES::ELK.client_reader.search(query_opts)
+  rescue StandardError => error
+    Rails.logger.error("Error querying top_n #{@type} data: #{error}")
+    {}
+  end
+
+  def term_buckets
+    response.dig('aggregations', 'agg', 'buckets') || []
   end
 end

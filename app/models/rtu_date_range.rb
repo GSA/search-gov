@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RtuDateRange
   def initialize(affiliate_name, type)
     @affiliate_name = affiliate_name
@@ -25,14 +27,16 @@ class RtuDateRange
   end
 
   def extract_date_range(result)
-    facets = result["facets"]
-    return Date.current..Date.current if facets.nil?
-    stats = facets["stats"]
-    min, max = normalize(stats["min"]), normalize(stats["max"])
+    aggregations = result['aggregations']
+    return Date.current..Date.current if aggregations.nil?
+
+    stats = aggregations['stats']
+    min = normalize(stats['min'])
+    max = normalize(stats['max'])
     min..max
   end
 
   def normalize(unixtime)
-    unixtime =~ /Infinity/ ? Date.current : DateTime.strptime(unixtime.to_s, '%Q').to_date
+    unixtime.blank? ? Date.current : Time.strptime(unixtime.to_s, '%Q').to_date
   end
 end
