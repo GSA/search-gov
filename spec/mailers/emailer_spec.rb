@@ -72,16 +72,6 @@ context do
     end
   end
 
-  describe "#user_email_verification" do
-    let(:user) { mock_model(User, :email => 'admin@agency.gov', :contact_name => 'Admin', :email_verification_token => 'some_special_token') }
-
-    subject { Emailer.user_email_verification(user).deliver }
-
-    it { should deliver_to('admin@agency.gov') }
-    it { should have_subject(/Verify your email/) }
-    it { should have_body_text(/https:\/\/localhost:3000\/email_verification\/some_special_token/) }
-  end
-
   describe "#new_user_to_admin" do
     context "affiliate user has .com email address" do
       let(:user) do
@@ -118,7 +108,7 @@ context do
     end
 
     context 'user got invited by another customer' do
-      let(:user) { users(:affiliate_added_by_another_affiliate_with_pending_email_verification_status) }
+      let(:user) { users(:affiliate_added_by_another_affiliate) }
 
       before do
         user.affiliates << affiliates(:gobiernousa_affiliate)
@@ -312,7 +302,7 @@ context do
   end
 
   context "when a template is missing" do
-    let(:user) { double(User, :email => "invitee@agency.com", :contact_name => 'Invitee Joe', :email_verification_token => 'some_special_token', affiliates: []) }
+    let(:user) { double(User, :email => "invitee@agency.com", :contact_name => 'Invitee Joe', affiliates: []) }
     let(:report_date) { Date.today }
 
     before { EmailTemplate.destroy_all }
