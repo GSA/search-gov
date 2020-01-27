@@ -6,7 +6,7 @@ context do
   include EmailSpec::Matchers
   fixtures :affiliates, :users, :features, :memberships
 
-  describe '#account_deactivation_warning' do
+  describe '.account_deactivation_warning' do
     let(:user) { users(:not_active_76_days) }
     let(:message) do
       'automatically deactivate your account in the next 14 days due to inactivity.'
