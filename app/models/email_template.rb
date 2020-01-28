@@ -28,8 +28,9 @@ class EmailTemplate < ApplicationRecord
     user_approval_removed: "[Search.gov] User account set to 'not_approved'",
     low_query_ctr_watcher: '[Search.gov] {{ctx.metadata.alert_name}} (Custom Alert)',
     no_results_watcher: '[Search.gov] {{ctx.metadata.alert_name}} (Custom Alert)',
-    account_deactivated: '[Search.gov] Your Search.gov account has been deactivated '\
-                         'for the post-deactivation notice'
+    account_deactivated: '[Search.gov] Your Search.gov account has been deactivated ',
+    account_deactivation_warning:
+      '[Search.gov] Your Search.gov account expires soon: Log in today to keep access'
   }.freeze
 
   class << self
