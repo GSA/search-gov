@@ -7,11 +7,12 @@ module UserApproval
     end
   end
 
-  def self.set_to_not_approved(users, message, email = false)
+  def self.set_to_not_approved(users, message, email_type = '')
     users.each do |user|
       user.set_approval_status_to_not_approved
       user.save!
-      Emailer.user_approval_removed(user).deliver_now if email
+
+      send_not_approved_email(email_type,user)
 
       note = <<~NOTE.squish
         User #{user.id}, #{user.email}, #{message},
@@ -19,6 +20,17 @@ module UserApproval
       NOTE
 
       Rails.logger.info(note)
+    end
+  end
+
+  private
+
+  def self.send_not_approved_email(email_type,user)
+    case email_type
+    when 'siteless'
+      Emailer.user_approval_removed(user).deliver_now
+    when 'inactive'
+      Emailer.account_deactivated(user)
     end
   end
 end
