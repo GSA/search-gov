@@ -12,7 +12,7 @@ module UserApproval
       user.set_approval_status_to_not_approved
       user.save!
 
-      send_not_approved_email(email_type,user)
+      send_not_approved_email(email_type, user)
 
       note = <<~NOTE.squish
         User #{user.id}, #{user.email}, #{message},
@@ -25,7 +25,7 @@ module UserApproval
 
   private
 
-  def self.send_not_approved_email(email_type,user)
+  def self.send_not_approved_email(email_type, user)
     case email_type
     when 'siteless'
       Emailer.user_approval_removed(user).deliver_now
