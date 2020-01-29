@@ -23,13 +23,10 @@ module UserApproval
     end
   end
 
-  private
-
   def self.send_not_approved_email(email_type, user)
-    case email_type
-    when 'siteless'
+    if email_type == 'siteless'
       Emailer.user_approval_removed(user).deliver_now
-    when 'inactive'
+    elsif email_type == 'inactive'
       Emailer.account_deactivated(user)
     end
   end
