@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 
 module UserApproval
+  def self.warn_set_to_not_approved(users, date)
+    users.each do |user|
+      Emailer.account_deactivation_warning(user, date).deliver_now
+    end
+  end
+
   def self.set_to_not_approved(users, message, email = false)
     users.each do |user|
       user.set_approval_status_to_not_approved
