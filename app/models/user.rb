@@ -5,7 +5,8 @@ class User < ApplicationRecord
 
   validates :email, presence: true
   validates :approval_status, inclusion: APPROVAL_STATUSES
-
+  validates :contact_name, presence: true, on: :update
+  validates :organization_name, presence: true, on: :update
   has_many :memberships, dependent: :destroy
   has_many :affiliates, lambda {
                           order 'affiliates.display_name, affiliates.ID ASC'
