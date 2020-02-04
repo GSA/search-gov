@@ -90,8 +90,7 @@ describe 'User rake tasks' do
   end
 
   describe 'usasearch:user:warn_set_to_not_approved' do
-    let(:date) { 76.days.ago.to_date }
-    let(:users) { User.not_active_since(date) }
+    let(:users) { User.not_active_since(76.days.ago.to_date) }
     let(:task_name) { "usasearch:user:warn_set_to_not_approved" }
 
     before do
@@ -104,8 +103,14 @@ describe 'User rake tasks' do
 
     it 'calls warn_set_to_not_approved' do
       expect(UserApproval).to receive(:warn_set_to_not_approved).
-        with(users, date)
-      @rake[task_name].invoke(date)
+        with(users, 76.days.ago.to_date)
+      @rake[task_name].invoke(76.days.ago.to_date)
+    end
+
+    it 'will not call warn_set_to_not_approved prematurely' do
+      expect(UserApproval).not_to receive(:warn_set_to_not_approved).
+        with(users, 75.days.ago.to_date)
+      @rake[task_name].invoke(76.days.ago.to_date)
     end
   end
 end
