@@ -42,6 +42,7 @@ class ElasticQuery
 
   def highlight(json)
     json.highlight do
+      json.type 'fvh'
       json.pre_tags pre_tags
       json.post_tags post_tags
       highlight_fields(json)
