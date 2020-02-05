@@ -50,7 +50,6 @@ Rails.application.routes.draw do
     post 'update_account' => 'users#update_account'
   end
 
-
   resource :user_session
   resource :human_session, only: [:new, :create]
 
