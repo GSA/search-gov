@@ -95,8 +95,7 @@ describe UsersController do
   describe '.update_account' do
     let(:update_account) do
       post :update_account,
-           params: { use_route: user_update_account_path,
-                     id: current_user.id,
+           params: { use_route: user_update_account_path(user_id: current_user.id),
                      user: { 'contact_name': 'BAR',
                              'email': 'foo@bar.com' } }
     end
@@ -111,15 +110,15 @@ describe UsersController do
 
       it do
         is_expected.to permit(*permitted_params).
-          for(:update_account, verb: :post, params: { user: update_params })
+          for(:update_account, verb: :post, params: { user_id: current_user.id, user: update_params })
       end
 
       context 'when account is saved successfully' do
         before do
           expect(current_user).to receive(:save).
-            with( context: :update_account ).and_return(true)
+            with(context: :update_account).and_return(true)
 
-          update_account 
+          update_account
         end
 
         it { is_expected.to assign_to(:user).with(current_user) }
