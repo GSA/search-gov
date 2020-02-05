@@ -46,8 +46,9 @@ Rails.application.routes.draw do
 
   resource :account, controller: "users"
 
-  resources :users
-  post 'user_complete_registration' => 'users#complete_registration'
+  resources :users do
+    post 'update_account' => 'users#update_account'
+  end
 
 
   resource :user_session

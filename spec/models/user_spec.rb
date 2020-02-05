@@ -41,11 +41,11 @@ describe User do
     it { is_expected.to have_many(:affiliates).through :memberships }
 
     it do
-      is_expected.to validate_presence_of(:organization_name).on(:complete_registration)
+      is_expected.to validate_presence_of(:organization_name).on(:update_account)
     end
 
     it do
-      is_expected.to validate_presence_of(:contact_name).on(:complete_registration)
+      is_expected.to validate_presence_of(:contact_name).on(:update_account)
     end
 
     it "should create a new instance given valid attributes" do

@@ -33,9 +33,9 @@ class UsersController < ApplicationController
   def edit
   end
 
-  def complete_registration
+  def update_account
     @user.attributes = user_params
-    if @user.save(context: :complete_registration)
+    if @user.save(context: :update_account)
       flash[:success] = 'Account updated!'
       redirect_to account_url
     else

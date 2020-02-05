@@ -92,10 +92,10 @@ describe UsersController do
     end
   end
 
-  describe '.complete_registration' do
-    let(:complete_registration) do
-      post :complete_registration,
-           params: { use_route: user_complete_registration_path,
+  describe '.update_account' do
+    let(:update_account) do
+      post :update_account,
+           params: { use_route: user_update_account_path,
                      id: current_user.id,
                      user: { 'contact_name': 'BAR',
                              'email': 'foo@bar.com' } }
@@ -111,15 +111,15 @@ describe UsersController do
 
       it do
         is_expected.to permit(*permitted_params).
-          for(:complete_registration, verb: :post, params: { user: update_params })
+          for(:update_account, verb: :post, params: { user: update_params })
       end
 
       context 'when account is saved successfully' do
         before do
           expect(current_user).to receive(:save).
-            with( context: :complete_registration ).and_return(true)
+            with( context: :update_account ).and_return(true)
 
-          complete_registration
+          update_account 
         end
 
         it { is_expected.to assign_to(:user).with(current_user) }
@@ -130,9 +130,9 @@ describe UsersController do
       context 'when the is not saved successfully' do
         before do
           expect(current_user).to receive(:save).
-            with( context: :complete_registration ).and_return(false)
+            with( context: :update_account ).and_return(false)
 
-          complete_registration
+          update_account 
         end
 
         it { is_expected.to assign_to(:user).with(current_user) }
