@@ -11,8 +11,9 @@ describe 'User rake tasks' do
   end
 
   let(:user) { users(:affiliate_manager_with_no_affiliates) }
-  let(:not_active_user) { users(:not_active_user) }
   let(:affiliate) { affiliates(:basic_affiliate) }
+  let(:not_active_user) { users(:not_active_user) }
+
 
   describe 'usasearch:user:update_approval_status' do
     let(:task_name) { 'usasearch:user:update_approval_status' }
@@ -85,6 +86,31 @@ describe 'User rake tasks' do
       allow(Rails.logger).to receive(:info)
       expect(Rails.logger).to receive(:info).with(expected_message)
       @rake[task_name].invoke
+    end
+  end
+
+  describe 'usasearch:user:warn_set_to_not_approved' do
+    let(:users) { User.not_active_since(76.days.ago.to_date) }
+    let(:task_name) { "usasearch:user:warn_set_to_not_approved" }
+
+    before do
+      @rake[task_name].reenable
+    end
+
+    it "has 'environment' as a prereq" do
+      expect(@rake[task_name].prerequisites).to include('environment')
+    end
+
+    it 'calls warn_set_to_not_approved' do
+      expect(UserApproval).to receive(:warn_set_to_not_approved).
+        with(users, 76.days.ago.to_date)
+      @rake[task_name].invoke(76.days.ago.to_date)
+    end
+
+    it 'will not call warn_set_to_not_approved prematurely' do
+      expect(UserApproval).not_to receive(:warn_set_to_not_approved).
+        with(users, 75.days.ago.to_date)
+      @rake[task_name].invoke(76.days.ago.to_date)
     end
   end
 end
