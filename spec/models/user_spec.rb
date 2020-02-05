@@ -37,10 +37,16 @@ describe User do
 
     it { is_expected.to validate_presence_of :email }
     it { is_expected.to validate_uniqueness_of(:email).case_insensitive }
-    it { is_expected.to validate_presence_of(:contact_name).on(:update) }
-    it { is_expected.to validate_presence_of(:organization_name).on(:update) }
     it { is_expected.to have_many(:memberships).dependent(:destroy) }
     it { is_expected.to have_many(:affiliates).through :memberships }
+
+    it do
+      is_expected.to validate_presence_of(:organization_name).on(:complete_registration)
+    end
+
+    it do
+      is_expected.to validate_presence_of(:contact_name).on(:complete_registration)
+    end
 
     it "should create a new instance given valid attributes" do
       User.create!(valid_attributes)

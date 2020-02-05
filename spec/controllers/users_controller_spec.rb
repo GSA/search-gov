@@ -92,6 +92,55 @@ describe UsersController do
     end
   end
 
+  describe '.complete_registration' do
+    let(:complete_registration) do
+      post :complete_registration,
+           params: { use_route: user_complete_registration_path,
+                     id: current_user.id,
+                     user: { 'contact_name': 'BAR',
+                             'email': 'foo@bar.com' } }
+    end
+
+    let(:update_params) do
+      { 'contact_name': 'Foo BAR', 'email': 'foo@bar.com' }
+    end
+
+    context 'when logged in as affiliate' do
+      before { activate_authlogic }
+      include_context 'approved user logged in'
+
+      it do
+        is_expected.to permit(*permitted_params).
+          for(:complete_registration, verb: :post, params: { user: update_params })
+      end
+
+      context 'when account is saved successfully' do
+        before do
+          expect(current_user).to receive(:save).
+            with( context: :complete_registration ).and_return(true)
+
+          complete_registration
+        end
+
+        it { is_expected.to assign_to(:user).with(current_user) }
+        it { is_expected.to redirect_to account_url }
+        it { is_expected.to set_flash.to('Account updated!') }
+      end
+
+      context 'when the is not saved successfully' do
+        before do
+          expect(current_user).to receive(:save).
+            with( context: :complete_registration ).and_return(false)
+
+          complete_registration
+        end
+
+        it { is_expected.to assign_to(:user).with(current_user) }
+        it { is_expected.to render_template(:edit) }
+      end
+    end
+  end
+
   describe '#update' do
     let(:update_user) do
       post :update,

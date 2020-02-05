@@ -45,7 +45,11 @@ Rails.application.routes.draw do
   root to: 'user_sessions#security_notification'
 
   resource :account, controller: "users"
+
   resources :users
+  post 'user_complete_registration' => 'users#complete_registration'
+
+
   resource :user_session
   resource :human_session, only: [:new, :create]
 
