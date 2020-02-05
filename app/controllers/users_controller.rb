@@ -30,8 +30,7 @@ class UsersController < ApplicationController
                                     @user.approval_status == 'approved'
   end
 
-  def edit
-  end
+  def edit; end
 
   def update_account
     @user.attributes = user_params
