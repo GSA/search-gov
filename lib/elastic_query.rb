@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
 class ElasticQuery
-
-  DEFAULT_SIZE = 10.freeze
-  MAX_SIZE = 100.freeze
-  DEFAULT_PRE_TAGS = %w(<strong>).freeze
-  DEFAULT_POST_TAGS = %w(</strong>).freeze
+  DEFAULT_SIZE = 10
+  MAX_SIZE = 100
+  DEFAULT_PRE_TAGS = %w[<strong>].freeze
+  DEFAULT_POST_TAGS = %w[</strong>].freeze
   attr_reader :offset, :size, :sort
   attr_accessor :text_fields, :language
 
@@ -41,12 +40,14 @@ class ElasticQuery
   end
 
   def highlight(json)
+    return if highlighted_fields.blank?
+
     json.highlight do
       json.type 'fvh'
       json.pre_tags pre_tags
       json.post_tags post_tags
       highlight_fields(json)
-    end if self.highlighted_fields.present?
+    end
   end
 
   def pre_tags
