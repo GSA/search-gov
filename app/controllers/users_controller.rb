@@ -49,6 +49,7 @@ class UsersController < ApplicationController
   end
 
   private
+
   def require_user
     redirect_to developer_redirect_url if super.nil? and current_user.is_developer?
   end

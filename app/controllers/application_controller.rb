@@ -169,4 +169,26 @@ class ApplicationController < ActionController::Base
     super
     payload[:ip] = request.remote_ip
   end
+
+  def incomplete_account_error
+    if current_user&.contact_name.blank?
+      user.errors[:contact_name] << 'You must supply a contact name'
+    elsif current_user&.organization_name.blank?
+      user.errors[:organization_name] << 'You must supply an organization name'
+    end
+  end
+
+  def check_user_account_complete
+    incomplete_account_error
+    return if current_user&.complete?
+
+    redirect_to(
+      edit_account_path,
+      flash: {
+        error:
+          'To complete your registration, please make sure Name, and '\
+          'Government agency are not empty'
+      }
+    )
+  end
 end

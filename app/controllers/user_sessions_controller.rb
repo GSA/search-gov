@@ -3,7 +3,6 @@ class UserSessionsController < ApplicationController
   before_action :require_user, only: :destroy
 
   def security_notification
-    redirect_to(account_path) if current_user
   end
 
   def destroy

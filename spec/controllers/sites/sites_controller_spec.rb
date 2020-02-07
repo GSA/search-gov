@@ -49,6 +49,43 @@ describe Sites::SitesController do
         it { is_expected.to redirect_to(site_path(site)) }
       end
     end
+
+    context 'when logged in with incomplete account' do
+      before do
+        UserSession.create current_user
+        expect(User).to receive(:find_by_id).and_return(current_user)
+        get :index
+      end
+
+      let(:site) { mock_model(Affiliate) }
+
+      context 'when user did not supply contact_name' do
+        let(:current_user) { users(:no_contact_name) }
+
+        it 'redirects to account edit page' do
+          expect(:sites_index).to redirect_to('/account/edit')
+        end
+
+        it 'returns error for user to supply contact name' do
+          expect(current_user.errors.messages[:contact_name].first).
+            to eq('You must supply a contact name')
+        end
+      end
+
+      context 'when user did not supply organization_name' do
+        let(:current_user) { users(:no_organization_name) }
+
+        it 'redirects to account edit page' do
+          expect(:sites_index).to redirect_to('/account/edit')
+        end
+
+        it 'returns error for user to supply organization_name' do
+          expect(current_user.errors.messages[:organization_name].first).
+            to eq('You must supply an organization name')
+        end
+      end
+
+    end
   end
 
   describe '#show' do

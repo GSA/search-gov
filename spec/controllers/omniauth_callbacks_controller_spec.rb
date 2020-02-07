@@ -80,10 +80,19 @@ describe OmniauthCallbacksController do
 
     context 'when a user is not approved' do
       let(:user) { users(:affiliate_manager_with_not_approved_status) }
-      let(:auth) { mock_user_auth(user.email,'notapproved12345') }
+      let(:auth) { mock_user_auth(user.email, 'notapproved12345') }
 
       it 'redirects to access-denied page' do
         expect(get_login_dot_gov).to redirect_to('https://search.gov/access-denied')
+      end
+    end
+
+    context 'when a users account is not complete' do
+      let(:user) { users(:no_contact_name) }
+      let(:auth) { mock_user_auth(user.email) }
+
+      it 'redirects to account edit page' do
+        expect(get_login_dot_gov).to redirect_to('/account/edit')
       end
     end
   end
