@@ -19,5 +19,4 @@ class OmniauthCallbacksController < ApplicationController
     user_session = UserSession.create(@user)
     user_session.secure = Rails.application.config.ssl_options[:secure_cookies]
   end
-
 end
