@@ -86,14 +86,5 @@ describe OmniauthCallbacksController do
         expect(get_login_dot_gov).to redirect_to('https://search.gov/access-denied')
       end
     end
-
-    context 'when a users account is not complete' do
-      let(:user) { users(:no_contact_name) }
-      let(:auth) { mock_user_auth(user.email) }
-
-      it 'redirects to account edit page' do
-        expect(get_login_dot_gov).to redirect_to('/account/edit')
-      end
-    end
   end
 end
