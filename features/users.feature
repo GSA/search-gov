@@ -16,7 +16,7 @@ Feature: Users
     Then I should see "Security Notification"
     And I should see "This is a U.S. General Services Administration Federal Government computer system"
 
-  # to be updated in SRCH-862 for login.gov
+  # to be updated in SRCH-1237 for login.gov
   @wip
   @javascript
   Scenario: Registering as a new affiliate user who is a government employee or contractor with .gov email address
@@ -24,44 +24,19 @@ Feature: Users
     When I fill in the following:
       | Your full name | Lorem Ipsum            |
       | Email          | lorem.ipsum@agency.gov |
-      | Password       | short                  |
     And I press "Sign up"
-    Then I should see "Your new password must be different from your old password. Passwords must contain a minimum of eight (8) characters and include a combination of letters, numbers, and special characters. Passwords are good for 90 days."
     And I should see "Federal government agency can't be blank"
     When I fill in the following:
       | Your full name            | Lorem Ipsum            |
       | Email                     | lorem.ipsum@agency.gov |
-      | Password                  | test1234!              |
       | Federal government agency | Agency                 |
     And I press "Sign up"
     Then I should be on the user account page
     When I sign out
     Then I should be on the login page
-    Given a clear email queue
-    Then the "Email" field should contain "lorem.ipsum@agency.gov"
-    When I fill in the following:
-      | Password | test1234!            |
-    And I press "Login"
-    Then I should see "Thank you for verifying your email."
-    And I should be on the user account page
     And "lorem.ipsum@agency.gov" should receive an email
     When I open the email
     Then I should see "Welcome to Search.gov" in the email subject
-
-  # to be updated in SRCH-862 for login.gov
-  @wip
-  Scenario: Registering as a new affiliate user with .gov email address and trying to add new site without email verification
-    Given I am on the sign up page
-    When I fill in the following:
-      | Email                     | lorem.ipsum@agency.gov |
-      | Your full name            | Lorem Ipsum            |
-      | Password                  | test1234!              |
-      | Federal government agency | Agency                 |
-    And I press "Sign up"
-    Then I should be on the user account page
-    When I follow "Add Site"
-    Then I should be on the user account page
-    And I should see "Your email address has not been verified. Please check your inbox so we may verify your email address."
 
   @javascript
   Scenario: Registering as a new affiliate user without government affiliated email address
@@ -89,6 +64,13 @@ Feature: Users
     And I follow "Edit"
     Then I should see the browser page titled "Edit My Account"
     And I should see "Edit My Account"
+    When I fill in the following:
+      | Name              |               |
+      | Government agency |               |
+      | Email             | elvis@cia.gov |
+    And I press "Save"
+    And I should see "Organization name can't be blank"
+    And I should see "Contact name can't be blank"
     When I fill in the following:
       | Name              | Elvis          |
       | Government agency | CIA            |
