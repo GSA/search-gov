@@ -37,17 +37,15 @@ describe User do
 
     it { is_expected.to validate_presence_of :email }
     it { is_expected.to validate_uniqueness_of(:email).case_insensitive }
-
-    # login.gov - commented out till SRCH-893
-    xit { is_expected.to validate_presence_of :contact_name }
     it { is_expected.to have_many(:memberships).dependent(:destroy) }
     it { is_expected.to have_many(:affiliates).through :memberships }
 
-    # login.gov - commented out till SRCH-893
-    xit 'requires an organization name' do
-      user = User.new
-      user.valid?
-      expect(user.errors.full_messages).to include("Federal government agency can't be blank")
+    it do
+      is_expected.to validate_presence_of(:organization_name).on(:update_account)
+    end
+
+    it do
+      is_expected.to validate_presence_of(:contact_name).on(:update_account)
     end
 
     it "should create a new instance given valid attributes" do

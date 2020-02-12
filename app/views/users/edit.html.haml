@@ -1,6 +1,6 @@
 = content_for :title, 'Edit My Account'
 
-= form_for @user, url: { action: :update }, html: { class: 'form' }  do |form|
+= form_for @user, url: user_update_account_url(@user), method: :post, html: { class: 'form' }  do |form|
   .sub-nav-heading
     %h2 Edit My Account
     .action-bar

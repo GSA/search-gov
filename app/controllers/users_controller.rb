@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   layout 'sites'
   before_action :require_user, :only => [:show, :edit, :update]
+  before_action :set_user, except: :create
 
   def create
     @user = User.new(user_params)
@@ -18,8 +19,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = @current_user
-
     message = <<~MESSAGE
       Because you don't have a .gov or .mil email address, we need additional information.
       If you are a contractor on an active contract, please use your .gov or .mil email
@@ -31,17 +30,24 @@ class UsersController < ApplicationController
                                     @user.approval_status == 'approved'
   end
 
-  def edit
-    @user = @current_user
+  def edit; end
+
+  def update_account
+    @user.attributes = user_params
+    if @user.save(context: :update_account)
+      flash[:success] = 'Account updated!'
+      redirect_to account_url
+    else
+      render :edit
+    end
   end
 
   def update
-    @user = @current_user # makes our views "cleaner" and more consistent
     if @user.update_attributes(user_params)
       flash[:success] = "Account updated!"
       redirect_to account_url
     else
-      render :action => :edit
+      render :edit
     end
   end
 
@@ -52,6 +58,10 @@ class UsersController < ApplicationController
 
   def require_user
     redirect_to developer_redirect_url if super.nil? and current_user.is_developer?
+  end
+
+  def set_user
+    @user = @current_user.presence || current_user
   end
 
   def user_params
