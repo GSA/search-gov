@@ -1119,6 +1119,8 @@ CREATE TABLE `users` (
   `default_affiliate_id` int(11) DEFAULT NULL,
   `sees_filtered_totals` tinyint(1) NOT NULL DEFAULT '1',
   `uid` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `first_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `last_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_users_on_email` (`email`),
   UNIQUE KEY `index_users_on_api_key` (`api_key`),
@@ -1923,6 +1925,7 @@ INSERT INTO `schema_migrations` (version) VALUES
 ('20190205200912'),
 ('20190920181828'),
 ('20191113214448'),
-('20200121220041');
+('20200121220041'),
+('20200212183209');
 
 
