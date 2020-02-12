@@ -1,4 +1,5 @@
 class Sites::SitesController < Sites::BaseController
+  include Accountable
   before_action :setup_site, only: [:show, :pin, :destroy]
   before_action :check_user_account_complete
 

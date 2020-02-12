@@ -1,4 +1,6 @@
 class Admin::HomeController < Admin::AdminController
-  def index
-  end
+  include Accountable
+  before_action :check_user_account_complete
+
+  def index; end
 end
