@@ -1,7 +1,5 @@
 class Sites::SitesController < Sites::BaseController
-  include Accountable
   before_action :setup_site, only: [:show, :pin, :destroy]
-  before_action :check_user_account_complete
 
   def index
     if current_user.is_affiliate_admin? and current_user.default_affiliate

@@ -11,7 +11,7 @@ describe Sites::SitesController do
   describe '#index' do
     it_should_behave_like 'restricted to approved user', :get, :index, id: 100
 
-    it_behaves_like 'incomplete account'
+    it_behaves_like 'require complete account', :get, :index, id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in'

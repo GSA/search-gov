@@ -3,7 +3,10 @@
 class Admin::AdminController < ApplicationController
   newrelic_ignore
   layout 'admin'
+  include Accountable
+
   before_action :require_affiliate_admin
+  before_action :check_user_account_complete
 
   ActiveScaffold.set_defaults do |config|
     config.list.per_page = 100

@@ -1,9 +1,11 @@
 class Sites::BaseController < ApplicationController
   newrelic_ignore
   layout 'sites'
+  include Accountable
 
   before_action :require_login
   before_action :require_approved_user
+  before_action :check_user_account_complete
 
   protected
 

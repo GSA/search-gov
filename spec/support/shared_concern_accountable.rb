@@ -1,6 +1,4 @@
-require 'spec_helper'
-
-shared_examples 'incomplete account' do
+shared_examples 'require complete account' do |request_method, action, parameters = nil|
 
   context 'when user did not supply contact_name' do
     let(:current_user) { users(:no_contact_name) }
@@ -8,7 +6,7 @@ shared_examples 'incomplete account' do
     before do
       UserSession.create current_user
       expect(User).to receive(:find_by_id).and_return(current_user)
-      get :index
+      send request_method, action, params: parameters
     end
 
     it 'redirects to account edit page' do
@@ -32,6 +30,5 @@ shared_examples 'incomplete account' do
           to eq('You must supply an organization name')
       end
     end
-
   end
 end

@@ -10,6 +10,8 @@ describe Sites::UsersController do
   describe '#index' do
     it_should_behave_like 'restricted to approved user', :get, :index, site_id: 100
 
+    it_behaves_like 'require complete account', :get, :index, site_id: 100
+
     context 'when logged in as affiliate' do
       let(:site_users) { [mock_model(User)] }
       include_context 'approved user logged in to a site'
