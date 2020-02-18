@@ -4,8 +4,14 @@ describe Sites::SitesController do
   fixtures :users, :affiliates, :memberships, :languages
   before { activate_authlogic }
 
+  describe 'includes the correct concerns' do
+    it { expect(controller.class.ancestors.include?(Accountable)).to eq(true) }
+  end
+
   describe '#index' do
     it_should_behave_like 'restricted to approved user', :get, :index, id: 100
+
+    it_behaves_like 'require complete account', :get, :index, id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in'
