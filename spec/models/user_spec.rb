@@ -145,6 +145,28 @@ describe User do
     end
   end
 
+  describe '.complete?' do
+    subject(:incomplete_account) { user.complete? }
+
+    context 'when the user contact name is empty' do
+      let(:user) { users(:no_contact_name) }
+
+      it { is_expected.to eq(false) }
+    end
+
+    context 'when the user organization name is empty' do
+      let(:user) { users(:no_organization_name) }
+
+      it { is_expected.to eq(false) }
+    end
+
+    context 'when the user contact name and organization name are not empty' do
+      let(:user) { users(:affiliate_manager) }
+
+      it { is_expected.to eq(true) }
+    end
+  end
+
   describe '#has_government_affiliated_email' do
     context 'when the affiliate user is government affiliated' do
       it 'should report a government affiliated email' do

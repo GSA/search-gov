@@ -72,6 +72,10 @@ class User < ApplicationRecord
   #   end
   # end
 
+  def complete?
+    contact_name.present? && organization_name.present?
+  end
+
   def to_label
     "#{contact_name} <#{email}>"
   end

@@ -171,3 +171,17 @@ affiliate_requiring_manual_approval:
   email: affiliate_requiring_manual_approval@email.gov
   requires_manual_approval: true
   approval_status: pending_approval
+
+no_contact_name:
+  email: no_contact_name@email.gov
+  contact_name: ''
+  organization_name: Agency
+  persistence_token: cedf2dac3e2d0e7223d8d1ae126c5a18e021ad9bc6dd0a2f01677e907b3e0a1802d82273fe3ac061b5fd80209ea39632c0a9e3081a1d43bb7ced9884d7754b62
+  approval_status: approved
+
+no_organization_name:
+  email: no_organization_name@email.gov
+  contact_name: Jane Doe
+  organization_name: ''
+  persistence_token: cedf2dac3e2d0e7223d8d1ae126c5a18e021ad9bc6dd0a2f01677e907b3e0a1802d82273fe3ac061b5fd80209ea39632c0a9e3081a1d43bb7ced9884d7754b62
+  approval_status: approved
