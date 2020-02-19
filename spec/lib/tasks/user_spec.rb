@@ -104,13 +104,13 @@ describe 'User rake tasks' do
     it 'calls warn_set_to_not_approved' do
       expect(UserApproval).to receive(:warn_set_to_not_approved).
         with(users, 76.days.ago.to_date)
-      @rake[task_name].invoke(76.days.ago.to_date)
+      @rake[task_name].invoke(76)
     end
 
     it 'will not call warn_set_to_not_approved prematurely' do
       expect(UserApproval).not_to receive(:warn_set_to_not_approved).
         with(users, 75.days.ago.to_date)
-      @rake[task_name].invoke(76.days.ago.to_date)
+      @rake[task_name].invoke(76)
     end
   end
 end
