@@ -11,10 +11,10 @@ class Emailer < ApplicationMailer
 
   def new_user_to_admin(user)
     @user = user
-    @user_contact_name = user.contact_name.presence || user.email
+    @user_contact_name = contact_name(user).presence || user.email
 
     if @user.affiliates.any?
-      @user_inviter_contact_name = @user.inviter.contact_name.presence ||
+      @user_inviter_contact_name = contact_name(@user.inviter).presence ||
                                    @user.inviter.email
     end
 
@@ -34,38 +34,38 @@ class Emailer < ApplicationMailer
   def account_deactivation_warning(user, date)
     @user = user
     @remaining_days = (date - 90.days.ago.to_date).to_i
-    @user_contact_name = user.contact_name.presence || user.email
+    @user_contact_name = contact_name(user).presence || user.email
     generic_user_html_email(user, __method__)
   end
 
   def user_approval_removed(user)
     @user = user
-    @user_contact_name = user.contact_name.presence || user.email
+    @user_contact_name = contact_name(user).presence || user.email
     setup_email("usagov@search.gov", __method__)
     send_mail(:text)
   end
 
   def account_deactivated(user)
     @user = user
-    @user_contact_name = user.contact_name.presence || user.email
+    @user_contact_name = contact_name(user).presence || user.email
     generic_user_html_email(user, __method__)
   end
 
   def welcome_to_new_user(user)
     @new_site_url = new_site_url
-    @user_contact_name = user.contact_name.presence || user.email
+    @user_contact_name = contact_name(user).presence || user.email
     generic_user_html_email(user, __method__)
   end
 
   def new_affiliate_site(affiliate, user)
     @affiliate = affiliate
-    @user_contact_name = user.contact_name.presence || user.email
+    @user_contact_name = contact_name(user).presence || user.email
     generic_user_text_email(user, __method__)
   end
 
   def new_affiliate_user(affiliate, user, current_user)
-    @added_by_contact_name = current_user.contact_name.presence || current_user.email
-    @added_user_contact_name = user.contact_name.presence || user.email
+    @added_by_contact_name = contact_name(current_user).presence || current_user.email
+    @added_user_contact_name = contact_name(user).presence || user.email
     @affiliate_display_name = affiliate.display_name
     @affiliate_name = affiliate.name
     @affiliate_site_url = site_url(affiliate)
@@ -75,8 +75,8 @@ class Emailer < ApplicationMailer
 
   def welcome_to_new_user_added_by_affiliate(affiliate, user, current_user)
     @account_url = account_url
-    @added_by_contact_name = current_user.contact_name.presence || current_user.email
-    @added_user_contact_name = user.contact_name.presence || user.email
+    @added_by_contact_name = contact_name(current_user).presence || current_user.email
+    @added_user_contact_name = contact_name(user).presence || user.email
     @added_user_email = user.email
     @affiliate_display_name = affiliate.display_name
     @affiliate_site_url = site_url(affiliate)
@@ -199,5 +199,9 @@ class Emailer < ApplicationMailer
     @user = user
     setup_email(user.email, method)
     send_mail(:html)
+  end
+
+  def contact_name(user)
+    "#{user.first_name} #{user.last_name}"
   end
 end

@@ -6,8 +6,8 @@ Feature: Affiliate 3rd party tracking
   @javascript
   Scenario: Setting 3rd Party Tracking
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
+      | display_name | name    | contact_email | first_name | last_name |
+      | aff site     | aff.gov | aff@bar.gov   | John       | Bar       |
     And I am logged in with email "aff@bar.gov"
     When I go to the aff.gov's Analytics page
     And I follow "3rd Party Tracking"

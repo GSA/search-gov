@@ -6,7 +6,7 @@ Feature: Users
     When I go to the user account page
     Then I should see the browser page titled "My Account"
     And I should see "Contact Information"
-    And I should see "Name"
+    And I should see "First name"
     And I should see "Agency"
     And I should see "Email"
 
@@ -65,14 +65,17 @@ Feature: Users
     Then I should see the browser page titled "Edit My Account"
     And I should see "Edit My Account"
     When I fill in the following:
-      | Name              |               |
+      | First name        |               |
+      | Last name         |               |
       | Government agency |               |
       | Email             | elvis@cia.gov |
     And I press "Save"
     And I should see "Organization name can't be blank"
-    And I should see "Contact name can't be blank"
+    And I should see "First name can't be blank"
+    And I should see "Last name can't be blank"
     When I fill in the following:
-      | Name              | Elvis          |
+      | First name        | Elvis          |
+      | Last name         | Presley        |
       | Government agency | CIA            |
       | Email             | elvis@cia.gov  |
     And I press "Save"

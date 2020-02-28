@@ -20,9 +20,10 @@ namespace :usasearch do
     end
 
     desc 'Warns not active users account will be deactivated'
-    task :warn_set_to_not_approved, [:date] => [:environment] do |_t, args|
+    task :warn_set_to_not_approved, [:number_of_days] => [:environment] do |_t, args|
+      date = args.number_of_days.to_i.days.ago
       UserApproval.warn_set_to_not_approved(User.
-        not_active_since(args.date.to_date), args.date.to_date)
+        not_active_since(date.to_date), date.to_date)
     end
   end
 end

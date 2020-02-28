@@ -4,16 +4,18 @@ describe User do
   fixtures :users, :affiliates, :memberships
 
   let(:valid_attributes) do
-    { email: "unique_login@agency.gov",
-      contact_name: "Some One",
-      organization_name: "Agency",
+    { email: 'unique_login@agency.gov',
+      first_name: 'Some',
+      last_name: 'One',
+      organization_name: 'Agency',
     }.freeze
   end
 
   before do
     @valid_affiliate_attributes = {
       email: 'some.guy@usa.gov',
-      contact_name: 'Some Guy',
+      first_name: 'Some',
+      last_name: 'Guy',
       organization_name: 'Agency'
     }
     @emailer = double(Emailer)
@@ -45,31 +47,36 @@ describe User do
     end
 
     it do
-      is_expected.to validate_presence_of(:contact_name).on(:update_account)
+      is_expected.to validate_presence_of(:first_name).on(:update_account)
     end
 
-    it "should create a new instance given valid attributes" do
+    it do
+      is_expected.to validate_presence_of(:last_name).on(:update_account)
+    end
+
+    it 'should create a new instance given valid attributes' do
       User.create!(valid_attributes)
     end
 
-    it "should create a user with a minimal set of attributes if the user is an affiliate" do
+    it 'should create a user with a minimal set of
+        attributes if the user is an affiliate' do
       affiliate_user = User.new(@valid_affiliate_attributes)
       expect(affiliate_user.save).to be true
       expect(affiliate_user.is_affiliate?).to be true
     end
 
-    it "should send the admins a notification email about the new user" do
+    it 'should send the admins a notification email about the new user' do
       expect(Emailer).to receive(:new_user_to_admin).with(an_instance_of(User)).and_return @emailer
       User.create!(valid_attributes)
     end
 
-    it "should not receive welcome to new user added by affiliate" do
+    it 'should not receive welcome to new user added by affiliate' do
       expect(Emailer).to_not receive(:welcome_to_new_user_added_by_affiliate)
       User.create!(valid_attributes)
     end
 
-    context "when the flag to not send an email is set to true" do
-      it "should not send any emails" do
+    context 'when the flag to not send an email is set to true' do
+      it 'should not send any emails' do
         User.create!(valid_attributes.merge(:skip_welcome_email => true))
       end
     end
@@ -142,6 +149,34 @@ describe User do
 
       it { is_expected.to include(not_active_76_days_user) }
       it { is_expected.to include(never_active_76_days_user) }
+    end
+  end
+
+  describe '.complete?' do
+    subject(:incomplete_account) { user.complete? }
+
+    context 'when the user first name is empty' do
+      let(:user) { users(:no_first_name) }
+
+      it { is_expected.to eq(false) }
+    end
+
+    context 'when the user last name is empty' do
+      let(:user) { users(:no_last_name) }
+
+      it { is_expected.to eq(false) }
+    end
+
+    context 'when the user organization name is empty' do
+      let(:user) { users(:no_organization_name) }
+
+      it { is_expected.to eq(false) }
+    end
+
+    context 'when the user contact name and organization name are not empty' do
+      let(:user) { users(:affiliate_manager) }
+
+      it { is_expected.to eq(true) }
     end
   end
 
@@ -253,7 +288,7 @@ describe User do
   describe "#to_label" do
     it "should return the user's contact name" do
       u = users(:affiliate_admin)
-      expect(u.to_label).to eq('Affiliate Administrator <affiliate_admin@fixtures.org>')
+      expect(u.to_label).to eq('Affiliate Administrator Smith <affiliate_admin@fixtures.org>')
     end
   end
 
@@ -345,16 +380,18 @@ describe User do
     let(:inviter) { users(:affiliate_manager) }
     let(:affiliate) { affiliates(:basic_affiliate) }
 
-    context 'when contact_name and email are provided' do
+    context 'when first_name, last_name and email are provided' do
 
-      it 'initializes new user with assign affiliate, contact_name, and email' do
+      it 'initializes new user with assign affiliate, first_name, last_name, and email' do
         new_user = User.new_invited_by_affiliate(inviter,
                                                  affiliate,
-                                                 { contact_name: 'New User Name',
+                                                 { first_name: 'New User Name',
+                                                            last_name: 'New User Last Name',
                                                    email: 'newuser@approvedagency.com' })
         new_user.save!
         expect(new_user.affiliates.first).to eq(affiliate)
-        expect(new_user.contact_name).to eq('New User Name')
+        expect(new_user.first_name).to eq('New User Name')
+        expect(new_user.last_name).to eq('New User Last Name')
         expect(new_user.email).to eq('newuser@approvedagency.com')
         expect(new_user.is_affiliate?).to be true
         expect(new_user.requires_manual_approval).to be false
@@ -367,7 +404,8 @@ describe User do
         expect(Emailer).to receive(:welcome_to_new_user_added_by_affiliate).and_return @emailer
         new_user = User.new_invited_by_affiliate(inviter,
                                                  affiliate,
-                                                 { contact_name: 'New User Name',
+                                                 { first_name: 'New User Name',
+                                                   last_name: 'New User Name',
                                                    email: 'newuser@approvedagency.com' })
         new_user.save!
       end

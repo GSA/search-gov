@@ -9,8 +9,11 @@
 = render_flash_message
 
 %dl
-  %dt Name
-  %dd= @user.contact_name
+  %dt First name
+  %dd= @user.first_name
+%dl
+  %dt Last name
+  %dd= @user.last_name
 %dl
   %dt Agency
   %dd= @user.organization_name

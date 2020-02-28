@@ -72,7 +72,7 @@ class Affiliate < ApplicationRecord
   end
 
   has_many :available_templates, through: :affiliate_templates, source: :template
-  has_many :users, -> { order 'contact_name' }, through: :memberships
+  has_many :users, -> { order 'last_name' }, through: :memberships
 
   has_many :default_users,
            class_name: 'User',

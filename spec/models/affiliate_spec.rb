@@ -965,22 +965,29 @@ describe Affiliate do
     end
   end
 
-  describe "#recent_user_activity" do
+  describe '#recent_user_activity' do
     let(:affiliate) { affiliates(:basic_affiliate) }
     let(:another_affiliate_manager) { users(:another_affiliate_manager) }
     let(:affiliate_manager_with_one_site) { users(:affiliate_manager_with_one_site) }
-    let(:recent_time) { Time.now }
+    let(:recent_time) { Time.now.utc }
 
     before do
-      affiliate.users.first.update_attribute(:last_request_at, recent_time)
+      @au = affiliate.users.first
+      @au.last_request_at = recent_time
+      @au.save!
+
+      another_affiliate_manager.last_request_at = recent_time - 1.hour
+      another_affiliate_manager.save!
+
+      affiliate_manager_with_one_site.last_request_at = nil
+      affiliate_manager_with_one_site.save!
+
       affiliate.users << another_affiliate_manager
-      affiliate.users.last.update_attribute(:last_request_at, recent_time - 1.hour)
       affiliate.users << affiliate_manager_with_one_site
-      affiliate.users.last.update_attribute(:last_request_at, nil)
     end
 
     it 'should show the max last_request_at date for the site users' do
-      expect(affiliate.recent_user_activity.utc.to_s).to eq(recent_time.utc.to_s)
+      expect(affiliate.recent_user_activity.utc.to_s).to eq(recent_time.to_s)
     end
   end
 
@@ -1248,7 +1255,10 @@ describe Affiliate do
   describe '#user_emails' do
     it 'returns comma delimited user emails' do
       affiliate = affiliates(:non_existent_affiliate)
-      expect(affiliate.user_emails).to eq('Another Manager <another_affiliate_manager@fixtures.org>,Requires Manual Approval Affiliate Manager <affiliate_manager_requires_manual_approval@fixtures.org>')
+      expect(affiliate.user_emails).
+        to eq('Requires Manual Approval Affiliate Manager Smith '\
+              '<affiliate_manager_requires_manual_approval@fixtures.org>,'\
+              'Another Manager Smith <another_affiliate_manager@fixtures.org>')
     end
   end
 

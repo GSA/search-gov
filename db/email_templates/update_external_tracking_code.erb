@@ -1,5 +1,5 @@
 Site: <%= @affiliate.display_name %> (<%= edit_admin_affiliate_url(@affiliate, :anchor => "record_external_tracking_code_#{@affiliate.id}") %>)
-Requested by: <%= "#{@current_user.contact_name} <#{@current_user.email}>" %>
+Requested by: <%= "#{@current_user.first_name} #{@current_user.last_name} <#{@current_user.email}>" %>
 
 External tracking code:
 <!-- BEGIN -->
