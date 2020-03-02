@@ -1256,7 +1256,7 @@ describe Affiliate do
     it 'returns comma delimited user emails' do
       affiliate = affiliates(:non_existent_affiliate)
       expect(affiliate.user_emails).
-        to eq('Requires Manual Approval Affiliate Manager Smith '\
+        to include('Requires Manual Approval Affiliate Manager Smith '\
               '<affiliate_manager_requires_manual_approval@fixtures.org>,'\
               'Another Manager Smith <another_affiliate_manager@fixtures.org>')
     end
