@@ -383,11 +383,12 @@ describe User do
     context 'when first_name, last_name and email are provided' do
 
       it 'initializes new user with assign affiliate, first_name, last_name, and email' do
-        new_user = User.new_invited_by_affiliate(inviter,
-                                                 affiliate,
-                                                 { first_name: 'New User Name',
-                                                            last_name: 'New User Last Name',
-                                                   email: 'newuser@approvedagency.com' })
+        new_user = User.
+          new_invited_by_affiliate(inviter,
+                                   affiliate,
+                                   { first_name: 'New User Name',
+                                     last_name: 'New User Last Name',
+                                     email: 'newuser@approvedagency.com' })
         new_user.save!
         expect(new_user.affiliates.first).to eq(affiliate)
         expect(new_user.first_name).to eq('New User Name')
@@ -402,11 +403,12 @@ describe User do
 
       it 'receives the welcome new user' do
         expect(Emailer).to receive(:welcome_to_new_user_added_by_affiliate).and_return @emailer
-        new_user = User.new_invited_by_affiliate(inviter,
-                                                 affiliate,
-                                                 { first_name: 'New User Name',
-                                                   last_name: 'New User Name',
-                                                   email: 'newuser@approvedagency.com' })
+        new_user = User.
+          new_invited_by_affiliate(inviter,
+                                   affiliate,
+                                   { first_name: 'New User Name',
+                                     last_name: 'New User Name',
+                                     email: 'newuser@approvedagency.com' })
         new_user.save!
       end
     end

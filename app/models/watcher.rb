@@ -102,10 +102,14 @@ class Watcher < ApplicationRecord
   end
 
   def metadata_hash
-    { affiliate: affiliate.name, affiliate_id: affiliate.id,
+    { affiliate: affiliate.name,
+      affiliate_id: affiliate.id,
       affiliate_homepage_url: affiliate.website,
-      alert_name: name, user_email: user.email,
-      user_id: user.id, user_first_name: user.first_name,
-      user_last_name: user.last_name, watcher_type: self.class.name }
+      alert_name: name,
+      user_email: user.email,
+      user_id: user.id,
+      user_first_name: user.first_name,
+      user_last_name: user.last_name,
+      watcher_type: self.class.name }
   end
 end
