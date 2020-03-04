@@ -21,7 +21,6 @@ describe 'Populate user rake tasks' do
                     'csv', 'users.csv')
   end
 
-
   describe 'usasearch:populate_user_fields:update_first_last_name' do
     let(:task_name) { 'usasearch:populate_user_fields:update_first_last_name' }
 
