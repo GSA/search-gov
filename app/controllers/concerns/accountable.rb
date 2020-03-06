@@ -21,7 +21,7 @@ module Accountable
       edit_account_path,
       flash: {
         error:
-          'To complete your registration, please make sure Name, and '\
+          'To complete your registration, please make sure First name, Last name, and '\
           'Government agency are not empty'
       }
     )
