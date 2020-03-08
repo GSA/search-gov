@@ -13,8 +13,10 @@ class Sites::ClickDrilldownsController < Sites::SetupSiteController
                                          start_date,
                                          end_date,
                                          'params.url',
-                                         url)
-    request_drilldown = RequestDrilldown.new(@current_user.sees_filtered_totals?, 'click', drilldown_query.body)
+                                         url,
+                                         'click')
+    request_drilldown = RequestDrilldown.new(@current_user.sees_filtered_totals?,
+                                             drilldown_query.body)
     requests = request_drilldown.docs.map { |doc| document_mapping(doc) }
     csv_response(filename, HEADER_FIELDS, requests)
   end

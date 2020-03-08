@@ -17,7 +17,8 @@ describe Sites::ClickDrilldownsController do
           Date.new(2015,02,01),
           Date.new(2015,02,05),
           'params.url',
-          'http://some.gov.url/super_long_so_truncate_at_50/blah.cfm'
+          'http://some.gov.url/super_long_so_truncate_at_50/blah.cfm',
+          'click'
         ]
       end
       let(:query) { instance_double(DrilldownQuery, body: '') }
