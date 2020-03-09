@@ -92,7 +92,7 @@ describe 'User rake tasks' do
   describe 'usasearch:user:warn_set_to_not_approved' do
     let(:users) { User.approved.not_active_since(76.days.ago.to_date) }
     let(:not_approved_users) { User.not_approved.not_active_since(76.days.ago.to_date)}
-    let(:task_name) { "usasearch:user:warn_set_to_not_approved" }
+    let(:task_name) { 'usasearch:user:warn_set_to_not_approved' }
 
     before do
       @rake[task_name].reenable
