@@ -2,8 +2,8 @@ Feature: Activate Search
 
   Scenario: Getting an embed code for my affiliate site search
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
+      | display_name | name    | contact_email | first_name | last_name |
+      | aff site     | aff.gov | aff@bar.gov   | John       | Bar       |
     And I am logged in with email "aff@bar.gov"
     When I go to the aff.gov's Activate Search page
     Then I should see "Form Snippet"
@@ -12,16 +12,16 @@ Feature: Activate Search
 
   Scenario: Getting an embed code for my affiliate site search in Spanish
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | locale |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | es     |
+      | display_name | name    | contact_email | first_name | last_name | locale |
+      | aff site     | aff.gov | aff@bar.gov   | John       | Bar       | es     |
     And I am logged in with email "aff@bar.gov"
     When I go to the aff.gov's Activate Search page
     Then I should see the code for Spanish language sites
 
   Scenario: Visiting the Site API Access Key
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | api_access_key |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | MY_AWESOME_KEY |
+      | display_name | name    | contact_email | first_name | last_name      | api_access_key |
+      | aff site     | aff.gov | aff@bar.gov   | John       | Bar            | MY_AWESOME_KEY |
     And I am logged in with email "aff@bar.gov"
     When I go to the aff.gov's Activate Search page
     And I follow "API Access Key"
@@ -29,8 +29,8 @@ Feature: Activate Search
 
   Scenario: Visiting the Site API Instructions
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
+      | display_name | name    | contact_email | first_name | last_name |
+      | aff site     | aff.gov | aff@bar.gov   | John       | Bar     |
     And affiliate "aff.gov" has the following RSS feeds:
       | name   | url                            |
       | News-1 | https://www.usa.gov/feed/news-1 |
@@ -48,8 +48,8 @@ Feature: Activate Search
 
   Scenario: Visiting the Site i14y Content Indexing API Instructions
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | gets_i14y_results |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | true              |
+      | display_name | name    | contact_email | first_name   | last_name         | gets_i14y_results |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | Bar               | true              |
     And I am logged in with email "aff@bar.gov"
     When I go to the aff.gov's Activate Search page
     And I follow "i14y Content Indexing API Instructions"

@@ -5,10 +5,10 @@ Feature: Searches using mobile device
 
   Scenario: Web search
     Given the following Affiliates exist:
-      | display_name | name          | contact_email    | contact_name | locale | domains              |
-      | English site | en.agency.gov | admin@agency.gov | John Bar     | en     |                      |
-      | Spanish site | es.agency.gov | admin@agency.gov | John Bar     | es     |                      |
-      | Hippo site   | hippo         | admin@agency.gov | John Bar     | en     | hippo.whitehouse.gov |
+      | display_name | name          | contact_email    | first_name | last_name | locale | domains              |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar     | en     |                      |
+      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar     | es     |                      |
+      | Hippo site   | hippo         | admin@agency.gov | John       | Bar     | en     | hippo.whitehouse.gov |
     And the following Boosted Content entries exist for the affiliate "en.agency.gov"
       | url                                                             | title                  | description                             |
       | http://http://www.whitehouse.gov/administration/president-obama | President Barack Obama | the 44th President of the United States |
@@ -93,9 +93,9 @@ Feature: Searches using mobile device
 
   Scenario: News search
     Given the following Affiliates exist:
-      | display_name | name          | contact_email    | contact_name | locale |
-      | English site | en.agency.gov | admin@agency.gov | John Bar     | en     |
-      | Spanish site | es.agency.gov | admin@agency.gov | John Bar     | es     |
+      | display_name | name          | contact_email    | first_name | last_name | locale |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     |
+      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     |
 
     And affiliate "en.agency.gov" has the following RSS feeds:
       | name   | url                              |
@@ -161,14 +161,14 @@ Feature: Searches using mobile device
 
   Scenario: Custom date range news search
     Given the following Affiliates exist:
-      | display_name | name          | contact_email    | contact_name | locale |
-      | English site | en.agency.gov | admin@agency.gov | John Bar     | en     |
-      | Spanish site | es.agency.gov | admin@agency.gov | John Bar     | es     |
+      | display_name | name          | contact_email    | first_name | last_name | locale |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     |
+      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     |
     And affiliate "en.agency.gov" has the following RSS feeds:
       | name  | url                                  | is_navigable |
       | Press | http://www.whitehouse.gov/feed/press | true         |
     And affiliate "es.agency.gov" has the following RSS feeds:
-      | name     | url                                                              | is_navigable |
+      | name     | url                                                               | is_navigable |
       | Noticias | https://www.usa.gov/gobiernousa/rss/actualizaciones-articulos.xml | true         |
     And feed "Press" has the following news items:
       | link                             | title       | guid       | published_ago | published_at | description                       | contributor   | publisher    | subject        |
@@ -277,8 +277,8 @@ Feature: Searches using mobile device
 
   Scenario: Media RSS search
     Given the following Affiliates exist:
-      | display_name | name          | contact_email    | contact_name |
-      | English site | en.agency.gov | admin@agency.gov | John Bar     |
+      | display_name | name          | contact_email    | first_name | last_name |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar     |
     And affiliate "en.agency.gov" has the following RSS feeds:
       | name   | url                              | is_navigable | show_only_media_content |
       | Images | http://en.agency.gov/feed/images | true         | true                    |
@@ -291,9 +291,9 @@ Feature: Searches using mobile device
 
   Scenario: Video news search
     Given the following Affiliates exist:
-      | display_name | name          | contact_email    | contact_name | locale | youtube_handles         |
-      | English site | en.agency.gov | admin@agency.gov | John Bar     | en     | usgovernment,whitehouse |
-      | Spanish site | es.agency.gov | admin@agency.gov | John Bar     | es     | gobiernousa             |
+      | display_name | name          | contact_email    | first_name | last_name | locale | youtube_handles         |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | usgovernment,whitehouse |
+      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     | gobiernousa             |
     And affiliate "en.agency.gov" has the following RSS feeds:
       | name   | url | is_navigable | is_managed |
       | Videos |     | true         | true       |
@@ -349,9 +349,9 @@ Feature: Searches using mobile device
 
   Scenario: Site search
     Given the following Affiliates exist:
-      | display_name | name          | contact_email    | contact_name | locale |
-      | English site | en.agency.gov | admin@agency.gov | John Bar     | en     |
-      | Spanish site | es.agency.gov | admin@agency.gov | John Bar     | es     |
+      | display_name | name          | contact_email    | first_name | last_name | locale |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     |
+      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     |
 
     And affiliate "en.agency.gov" has the following document collections:
       | name    | prefixes           |
@@ -375,8 +375,8 @@ Feature: Searches using mobile device
 
   Scenario: Site navigations without dropdown menu
     Given the following Affiliates exist:
-      | display_name | name          | contact_email    | contact_name | locale |
-      | English site | en.agency.gov | admin@agency.gov | John Bar     | en     |
+      | display_name | name          | contact_email    | first_name | last_name | locale |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     |
     And affiliate "en.agency.gov" has the following document collections:
       | name | prefixes             |
       | Blog | http://blog.usa.gov/ |
@@ -403,8 +403,8 @@ Feature: Searches using mobile device
 
   Scenario: Site navigations with dropdown menu
     Given the following Affiliates exist:
-      | display_name | name          | contact_email    | contact_name | locale | navigation_dropdown_label |
-      | English site | en.agency.gov | admin@agency.gov | John Bar     | en     | My-awesome-label          |
+      | display_name | name          | contact_email    | first_name | last_name | locale | navigation_dropdown_label |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | My-awesome-label          |
     And affiliate "en.agency.gov" has the following document collections:
       | name                 | prefixes                | position | is_navigable |
       | FAQs                 | http://answers.usa.gov/ | 0        | true         |
@@ -448,9 +448,9 @@ Feature: Searches using mobile device
 
   Scenario: Job search
     Given the following Affiliates exist:
-      | display_name | name          | contact_email    | contact_name |locale | jobs_enabled |
-      | English site | en.agency.gov | admin@agency.gov | John Bar     | en    | 1            |
-      | Spanish site | es.agency.gov | admin@agency.gov | John Bar     | es    | 1            |
+      | display_name | name          | contact_email    | first_name | last_name |locale | jobs_enabled |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en    | 1            |
+      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es    | 1            |
 
     When I am on en.agency.gov's mobile search page
     And I fill in "Enter your search term" with "jobs"
@@ -479,8 +479,8 @@ Feature: Searches using mobile device
   Scenario: When using tablet device
     Given I am using a mobile device
     And the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name |
-      | bar site     | bar.gov | aff@bar.gov   | John Bar     |
+      | display_name | name    | contact_email | first_name | last_name |
+      | bar site     | bar.gov | aff@bar.gov   | John       | Bar       |
     When I am on bar.gov's search page
     And I fill in "Enter your search term" with "bar"
     And I press "Search"
@@ -488,23 +488,23 @@ Feature: Searches using mobile device
 
   Scenario: Searching with matching med topic query
     Given the following Medline Topics exist:
-      | medline_tid | medline_title     | medline_url                                              | locale | summary_html                                                                                                                                                                                                                                                                                                         |
+      | medline_tid | medline_title     | medline_url                                               | locale | summary_html                                                                                                                                                                                                                                                                                                         |
       | 1558        | Alcohol           | https://www.nlm.nih.gov/medlineplus/alcohol.html          | en     | <p>If you are like many Americans, you drink alcohol at least occasionally. For many people, moderate drinking is probably safe.  It may even have health benefits, including reducing your risk of certain heart problems.</p>                                                                                      |
       | 1313        | Underage Drinking | https://www.nlm.nih.gov/medlineplus/underagedrinking.html | en     | <p>It is possible to drink legally and safely - when you're over 21. But if you're under 21, or if you drink too much at any age, alcohol can be especially risky. </p>                                                                                                                                              |
       | 1732        | Alcohol           | https://www.nlm.nih.gov/medlineplus/spanish/alcohol.html  | es     | <p>Si usted es como muchos estadounidenses, quizás consuma bebidas alcohólicas por lo menos ocasionalmente. Para muchas personas, beber moderadamente probablemente sea sano. Quizá hasta puede tener beneficios para la salud, entre los que se incluye disminuir el riesgo de padecer algunos problemas cardiacos. |
     And the following Related Medline Topics for "Alcohol" in English exist:
-      | medline_title     | medline_tid | url                                                      |
+      | medline_title     | medline_tid | url                                                       |
       | Underage drinking | 1313        | https://www.nlm.nih.gov/medlineplus/underagedrinking.html |
     And the following Related Medline Topics for "Alcohol" in Spanish exist:
-      | medline_title | medline_tid | url                                                        |
+      | medline_title | medline_tid | url                                                         |
       | Alcoholismo   | 1733        | https://www.nlm.nih.gov/medlineplus/spanish/alcoholism.html |
     And the following Medline Sites exist:
       | medline_title | locale | title      | url                                                              |
       | Alcohol       | en     | Alcoholism | http://clinicaltrials.gov/search/open/condition=%22Alcoholism%22 |
     And the following Affiliates exist:
-      | display_name | name          | contact_email    | contact_name | locale | is_medline_govbox_enabled |
-      | English site | en.agency.gov | admin@agency.gov | John Bar     | en     | true                      |
-      | Spanish site | es.agency.gov | admin@agency.gov | John Bar     | es     | true                      |
+      | display_name | name          | contact_email    | first_name |  last_name | locale | is_medline_govbox_enabled |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar        | en     | true                      |
+      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar        | es     | true                      |
     When I am on en.agency.gov's mobile search page
     And I fill in "Enter your search term" with "alcohol"
     And I press "Search"
@@ -520,9 +520,9 @@ Feature: Searches using mobile device
 
   Scenario: Searching with sitelimit
     Given the following Affiliates exist:
-      | display_name | name          | contact_email    | contact_name | locale | domains |
-      | English site | en.agency.gov | admin@agency.gov | John Bar     | en     | .gov    |
-      | Spanish site | es.agency.gov | admin@agency.gov | John Bar     | es     | .gov    |
+      | display_name | name          | contact_email    | first_name | last_name | locale | domains |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | .gov    |
+      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     | .gov    |
     When I am on en.agency.gov's search page with site limited to "usa.gov"
     And I fill in "Enter your search term" with "gov"
     And I press "Search"
@@ -541,9 +541,9 @@ Feature: Searches using mobile device
 
   Scenario: Searching with matching results on news govbox
     Given the following Affiliates exist:
-      | display_name | name          | contact_email    | contact_name | locale |
-      | English site | en.agency.gov | admin@agency.gov | John Bar     | en     |
-      | Spanish site | es.agency.gov | admin@agency.gov | John Bar     | es     |
+      | display_name | name          | contact_email    | first_name | last_name | locale |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     |
+      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     |
     And affiliate "en.agency.gov" has the following RSS feeds:
       | name   | url                              | is_navigable |
       | Press  | http://en.agency.gov/feed/press  | true         |
@@ -581,10 +581,10 @@ Feature: Searches using mobile device
 
   Scenario: Searching on sites with related sites
     Given the following Affiliates exist:
-      | display_name | name           | contact_email    | contact_name | locale | related_sites_dropdown_label |
-      | English site | en.agency.gov  | admin@agency.gov | John Bar     | en     | Search  On                   |
-      | All sites    | all.agency.gov | admin@agency.gov | John Bar     | en     |                              |
-      | Spanish site | es.agency.gov  | admin@agency.gov | John Bar     | es     |                              |
+      | display_name | name           | contact_email    | first_name | last_name | locale | related_sites_dropdown_label |
+      | English site | en.agency.gov  | admin@agency.gov | John       | Bar       | en     | Search  On                   |
+      | All sites    | all.agency.gov | admin@agency.gov | John       | Bar       | en     |                              |
+      | Spanish site | es.agency.gov  | admin@agency.gov | John       | Bar       | es     |                              |
     And the following Connections exist for the affiliate "en.agency.gov":
       | connected_affiliate | display_name         |
       | es.agency.gov       | Este tema en español |
@@ -600,8 +600,8 @@ Feature: Searches using mobile device
 
   Scenario: Searching on sites with federal register documents
     And the following Affiliates exist:
-      | display_name | name          | contact_email    | contact_name | agency_abbreviation | is_federal_register_document_govbox_enabled | domains  |
-      | English site | en.agency.gov | admin@agency.gov | John Bar     | DOC                 | true                                        | noaa.gov |
+      | display_name | name          | contact_email    | first_name | last_name | agency_abbreviation | is_federal_register_document_govbox_enabled | domains  |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | DOC                 | true                                        | noaa.gov |
     And the following Federal Register Document entries exist:
       | federal_register_agencies | document_number | document_type | title                                                              | publication_date | comments_close_in_days | start_page | end_page | page_length | html_url                                                                                                                         |
       | DOC,IRS,ITA,NOAA          | 2014-13420      | Notice        | Proposed Information Collection; Comment Request                   | 2014-06-09       | 7                      | 33040      | 33041    | 2           | https://www.federalregister.gov/articles/2014/06/09/2014-13420/proposed-information-collection-comment-request                   |
@@ -621,8 +621,8 @@ Feature: Searches using mobile device
 
   Scenario: English search on a legacy site
     Given the following legacy Affiliates exist:
-      | display_name      | name     | contact_email | contact_name |
-      | USA.gov           | usagov   | aff@bar.gov   | John Bar     |
+      | display_name      | name     | contact_email | first_name | last_name |
+      | USA.gov           | usagov   | aff@bar.gov   | John       | Bar       |
     When I am on usagov's overridden search page
     And I fill in "query" with "jobs"
     And I press "Search" in the legacy search box
@@ -630,9 +630,9 @@ Feature: Searches using mobile device
 
   Scenario: Advanced search
     Given the following Affiliates exist:
-      | display_name | name          | contact_email    | contact_name | locale |
-      | English site | en.agency.gov | admin@agency.gov | John Bar     | en     |
-      | Spanish site | es.agency.gov | admin@agency.gov | John Bar     | es     |
+      | display_name | name          | contact_email    | first_name | last_name | locale |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     |
+      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     |
     And affiliate "en.agency.gov" has the following RSS feeds:
       | name     | url                                | is_navigable |
       | Articles | http://en.agency.gov/feed/articles | true         |
@@ -653,9 +653,9 @@ Feature: Searches using mobile device
 
   Scenario: SEC Edgar sitelinks
     Given the following Affiliates exist:
-      | display_name | name      | contact_email    | contact_name | domains                    |
-      | Edgar site   | sec-edgar | admin@agency.gov | John Bar     | www.sec.gov/archives/edgar |
-      | News site    | sec-news  | admin@agency.gov | John Bar     | www.sec.gov/news           |
+      | display_name | name      | contact_email    | first_name | last_name | domains                    |
+      | Edgar site   | sec-edgar | admin@agency.gov | John       | Bar       | www.sec.gov/archives/edgar |
+      | News site    | sec-news  | admin@agency.gov | John       | Bar       | www.sec.gov/news           |
     And affiliate "sec-news" has the following document collections:
       | name  | prefixes               | is_navigable |
       | Edgar | sec.gov/archives/edgar | true         |
@@ -674,8 +674,8 @@ Feature: Searches using mobile device
 
   Scenario: Custom page 1 results pointer
     Given the following Affiliates exist:
-      | display_name | name           | contact_email    | contact_name | locale | page_one_more_results_pointer |
-      | English site | en.agency.gov  | admin@agency.gov | John Bar     | en     | Wherever. <a href="https://duckduckgo.com/?q={QUERY}&ia=about">Try your search again</a> to see results                   |
+      | display_name | name           | contact_email    | first_name | last_name | locale | page_one_more_results_pointer                                                                           |
+      | English site | en.agency.gov  | admin@agency.gov | John       | Bar       | en     | Wherever. <a href="https://duckduckgo.com/?q={QUERY}&ia=about">Try your search again</a> to see results |
     When I am on en.agency.gov's search page
     And I fill in "Enter your search term" with "gov"
     And I press "Search"
@@ -686,8 +686,8 @@ Feature: Searches using mobile device
 
   Scenario: Custom no results pointer
     Given the following Affiliates exist:
-      | display_name | name           | contact_email    | contact_name | locale | no_results_pointer |
-      | English site | en.agency.gov  | admin@agency.gov | John Bar     | en     | NORESULTS. <a href="https://duckduckgo.com/?q={QUERY}&ia=about">Try your search again</a> to see results                   |
+      | display_name | name           | contact_email    | first_name   | last_name | locale | no_results_pointer                                                                                       |
+      | English site | en.agency.gov  | admin@agency.gov | John         | Bar       | en     | NORESULTS. <a href="https://duckduckgo.com/?q={QUERY}&ia=about">Try your search again</a> to see results |
     When I am on en.agency.gov's search page
     And I fill in "Enter your search term" with "lkssldfkjsldfkjsldkfjsldkjflsdkjflskdjfwer"
     And I press "Search"
@@ -695,15 +695,15 @@ Feature: Searches using mobile device
 
   Scenario: Web search on Kalaallisut site
     Given the following Affiliates exist:
-      | display_name | name          | contact_email    | contact_name | locale | domains              |
-      | Kalaallisut site | kl.agency.gov | admin@agency.gov | John Bar     | kl     |                      |
+      | display_name     | name          | contact_email    | first_name | last_name | locale | domains              |
+      | Kalaallisut site | kl.agency.gov | admin@agency.gov | John       | Bar       | kl     |                      |
     When I am on kl.agency.gov's mobile search page
     Then I should see "Ujarniakkat ataani allaffissamut allaguk"
 
   Scenario: Web search using Bing engine
     Given the following Affiliates exist:
-      | display_name | name          | contact_email    | contact_name | locale | search_engine | domains |
-      | English site | en.agency.gov | admin@agency.gov | John Bar     | en     | BingV6        | .gov    |
+      | display_name | name          | contact_email    | first_name   | last_name | locale | search_engine | domains |
+      | English site | en.agency.gov | admin@agency.gov | John         | Bar       | en     | BingV6        | .gov    |
     And affiliate "en.agency.gov" has the following document collections:
       | name    | prefixes            |
       | USA.gov | https://www.usa.gov |
@@ -720,8 +720,8 @@ Feature: Searches using mobile device
 
   Scenario: Active facet display using SearchGov
     Given the following Affiliates exist:
-      | display_name | name          | contact_email    | contact_name | locale | search_engine | domains |
-      | English site | en.agency.gov | admin@agency.gov | John Bar     | en     | SearchGov     | .gov    |
+      | display_name | name          | contact_email    | first_name | last_name | locale | search_engine | domains |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | SearchGov     | .gov    |
     And affiliate "en.agency.gov" has the following document collections:
       | name    | prefixes            |
       | USA.gov | https://www.usa.gov |
@@ -731,15 +731,15 @@ Feature: Searches using mobile device
 
   Scenario: Display an Alert on search page
     Given the following Affiliates exist:
-      | display_name | name          | contact_email    | contact_name | locale | domains              |
-      | English site | en.agency.gov | admin@agency.gov | John Bar     | en     |                      |
+      | display_name | name          | contact_email    | first_name | last_name | locale | domains              |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     |                      |
     Given the following Alert exists:
       | affiliate    | text                       | status   | title     |
-      | en.agency.gov| New alert for the test aff | Active |  Test Title |
+      | en.agency.gov| New alert for the test aff | Active   |  Test Title |
     When I am on en.agency.gov's search page
     Then I should see "New alert for the test aff"
     Given the following Alert exists:
-      | affiliate    | text                       | status   | title     |
+      | affiliate    | text                       | status   | title      |
       | en.agency.gov| New alert for the test aff | Inactive | Test Title |
     When I am on en.agency.gov's search page
     Then I should not see "New alert for the test aff"

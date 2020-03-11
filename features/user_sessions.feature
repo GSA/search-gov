@@ -39,8 +39,8 @@ Feature: User sessions
   @wip
   Scenario: User's session expires after 1 hour
     Given the following Users exist:
-      | contact_name | email            | approval_status |
-      | Jane         | jane@example.com | approved        |
+      | first_name | last_name | email            | approval_status |
+      | Jane       | doe       | jane@example.com | approved        |
     And the time is 2017-03-30 10:55
     And I am logged in with email "jane@example.com"
     And the time becomes 2017-03-30 12:00

@@ -22,7 +22,8 @@ end
 
 Given /^the following Users exist:$/ do |table|
   table.hashes.each do |hash|
-    User.create!(hash.merge(organization_name: 'Agency'))
+    @user = User.create!(hash.merge(organization_name: 'Agency'))
+    @user.update!(approval_status: hash[:approval_status]) if hash[:approval_status].present?
   end
 end
 

@@ -5,11 +5,11 @@ Feature: Watchers (aka Analytics Alerts)
 
   Scenario: View watchers
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | contact_name |
-      | agency site  | agency.gov | john@agency.gov | John Bar     |
+      | display_name | name       | contact_email   | first_name | last_name  |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar        |
     And the following Users exist:
-      | contact_name | email               |
-      | John Admin   | admin1@fixtures.gov |
+      | first_name | last_name | email               |
+      | John       | Admin     | admin1@fixtures.gov |
     And the Affiliate "agency.gov" has the following users:
       | email               |
       | admin1@fixtures.gov |
@@ -40,8 +40,8 @@ Feature: Watchers (aka Analytics Alerts)
   @javascript
   Scenario: Add/edit/remove watchers
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | contact_name |
-      | agency site  | agency.gov | john@agency.gov | John Bar     |
+      | display_name | name       | contact_email   | first_name | last_name |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       |
     And the following Hints exist:
       | name                         | value                               |
       | watcher.name                 | Enter a short, meaningful name.     |
@@ -53,22 +53,22 @@ Feature: Watchers (aka Analytics Alerts)
 
     When I follow "Create a No Results alert"
     And I fill in the following:
-      | Name                  |                 |
-      | Time between alerts       | 1w              |
-      | Check interval        | 1h              |
-      | Time window for each check           | 1d              |
-      | Ignored query terms   | brandon, jobs   |
-      | Minimum number of queries          | 50              |
+      | Name                       |                 |
+      | Time between alerts        | 1w              |
+      | Check interval             | 1h              |
+      | Time window for each check | 1d              |
+      | Ignored query terms        | brandon, jobs   |
+      | Minimum number of queries  | 50              |
     And I submit the form by pressing "Add"
     Then I should see "There were problems with the following fields"
 
     When I fill in the following:
-      | Name                  | First One       |
-      | Time between alerts       | 1w              |
-      | Check interval        | 1h              |
-      | Time window for each check           | 1d              |
-      | Ignored query terms   | brandon, jobs   |
-      | Minimum number of queries          | 50              |
+      | Name                       | First One     |
+      | Time between alerts        | 1w            |
+      | Check interval             | 1h            |
+      | Time window for each check | 1d            |
+      | Ignored query terms        | brandon, jobs |
+      | Minimum number of queries  | 50            |
     And I submit the form by pressing "Add"
     Then I should see the following table rows:
       | Name             | Type                   | Alert Threshold | Time Window | Check Every... | Time Between Alerts |

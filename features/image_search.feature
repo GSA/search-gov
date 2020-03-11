@@ -5,8 +5,8 @@ Feature: Image search
 
   Scenario: English Image search
     Given the following legacy Affiliates exist:
-      | display_name | name   | contact_email | contact_name | header         | domains        |
-      | USA.gov      | usagov | aff@bar.gov   | John Bar     | USA.gov Header | whitehouse.gov |
+      | display_name | name   | contact_email | first_name | last_name | header         | domains        |
+      | USA.gov      | usagov | aff@bar.gov   | John       | Bar       | USA.gov Header | whitehouse.gov |
     When I am on usagov's image search page
     When I fill in "query" with "White House"
     And I press "Search"
@@ -15,8 +15,8 @@ Feature: Image search
 
   Scenario: Image search with spelling suggestion
     Given the following Affiliates exist:
-      | display_name | name   | contact_email | contact_name |
-      | USA.gov      | usagov | aff@bar.gov   | John Bar     |
+      | display_name | name   | contact_email | first_name | last_name |
+      | USA.gov      | usagov | aff@bar.gov   | John       | Bar       |
     And the following Suggestion Blocks exist:
       | query |
       | ebuy  |
@@ -27,8 +27,8 @@ Feature: Image search
 
   Scenario: Spanish image search
     Given the following legacy Affiliates exist:
-      | display_name    | name        | contact_email | contact_name | header                  | locale |
-      | GobiernoUSA.gov | gobiernousa | aff@bar.gov   | John Bar     | Gobierno.USA.gov Header | es     |
+      | display_name    | name        | contact_email | first_name | last_name | header                  | locale |
+      | GobiernoUSA.gov | gobiernousa | aff@bar.gov   | John       | Bar       | Gobierno.USA.gov Header | es     |
     When I am on gobiernousa's image search page
     When I fill in "query" with "Barcelona"
     And I press "Buscar"
@@ -37,8 +37,8 @@ Feature: Image search
 
   Scenario: Image search using BingV6
     Given the following legacy Affiliates exist:
-      | display_name | name          | contact_email    | contact_name | locale | search_engine | domains | is_image_search_navigable |
-      | English site | en.agency.gov | admin@agency.gov | John Bar     | en     | BingV6        | .gov    | true                      |
+      | display_name | name          | contact_email    | first_name | last_name | locale | search_engine | domains | is_image_search_navigable |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | BingV6        | .gov    | true                      |
     When I am on en.agency.gov's image search page
     And I fill in "query" with "agency"
     And I press "Search"

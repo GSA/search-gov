@@ -5,8 +5,8 @@ Feature: Blended Search
 
   Scenario: Simple search across news and indexed documents
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | gets_blended_results    | is_rss_govbox_enabled |
-      | bar site     | bar.gov | aff@bar.gov   | John Bar     | true                    | false                 |
+      | display_name | name    | contact_email | first_name | last_name | gets_blended_results    | is_rss_govbox_enabled |
+      | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | true                    | false                 |
     And affiliate "bar.gov" has the following RSS feeds:
       | name          | url                                  | is_navigable |
       | Press         | http://www.whitehouse.gov/feed/press | true         |
@@ -123,9 +123,9 @@ Feature: Blended Search
 
   Scenario: Custom date range blended search
     Given the following Affiliates exist:
-      | display_name | name          | contact_email    | contact_name | locale | gets_blended_results | is_rss_govbox_enabled |
-      | English site | en.agency.gov | admin@agency.gov | John Bar     | en     | true                 | false                 |
-      | Spanish site | es.agency.gov | admin@agency.gov | John Bar     | es     | true                 | false                 |
+      | display_name | name          | contact_email    | first_name | last_name | locale | gets_blended_results | is_rss_govbox_enabled |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | true                 | false                 |
+      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     | true                 | false                 |
     And affiliate "en.agency.gov" has the following RSS feeds:
       | name          | url                                  | is_navigable |
       | Press         | http://www.whitehouse.gov/feed/press | true         |
@@ -255,8 +255,8 @@ Feature: Blended Search
 
   Scenario: User misspells a query
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | gets_blended_results    | is_rss_govbox_enabled |
-      | bar site     | bar.gov | aff@bar.gov   | John Bar     | true                    | false                 |
+      | display_name | name    | contact_email | first_name | last_name | gets_blended_results    | is_rss_govbox_enabled |
+      | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | true                    | false                 |
     And the following IndexedDocuments exist:
       | title                       | description                              | url                              | affiliate | last_crawled_at | last_crawl_status |
       | First petition article      | This is an article item on barack obama  | http://p.whitehouse.gov/p-1.html | bar.gov   | 11/02/2011      | OK                |
@@ -268,8 +268,8 @@ Feature: Blended Search
 
   Scenario: Custom page 1 results pointer
     Given the following Affiliates exist:
-      | display_name | name               | contact_email    | contact_name | locale | page_one_more_results_pointer                                                                           | gets_blended_results |
-      | Blended site | blended.agency.gov | admin@agency.gov | John Bar     | en     | Wherever. <a href="https://duckduckgo.com/?q={QUERY}&ia=about">Try your search again</a> to see results | true                 |
+      | display_name | name               | contact_email    | first_name   | last_name | locale | page_one_more_results_pointer                                                                           | gets_blended_results |
+      | Blended site | blended.agency.gov | admin@agency.gov | John         | Bar       | en     | Wherever. <a href="https://duckduckgo.com/?q={QUERY}&ia=about">Try your search again</a> to see results | true                 |
     And affiliate "blended.agency.gov" has the following RSS feeds:
       | name          | url                                  | is_navigable |
       | Press         | http://www.whitehouse.gov/feed/press | true         |
@@ -284,8 +284,8 @@ Feature: Blended Search
 
   Scenario: A site without commercial results
     Given the following Affiliates exist:
-      | display_name | name               | contact_email    | contact_name | gets_blended_results | gets_commercial_results_on_blended_search |
-      | Blended site | blended.agency.gov | admin@agency.gov | John Bar     | true                 | false                                     |
+      | display_name | name               | contact_email    | first_name   | last_name            | gets_blended_results | gets_commercial_results_on_blended_search |
+      | Blended site | blended.agency.gov | admin@agency.gov | John         | Bar                  | true                 | false                                     |
     And affiliate "blended.agency.gov" has the following RSS feeds:
       | name          | url                                  | is_navigable |
       | Press         | http://www.whitehouse.gov/feed/press | true         |
@@ -297,8 +297,8 @@ Feature: Blended Search
 
   Scenario: A site that gets commercial results
     Given the following Affiliates exist:
-      | display_name | name               | contact_email    | contact_name | gets_blended_results | gets_commercial_results_on_blended_search |
-      | Blended site | blended.agency.gov | admin@agency.gov | John Bar     | true                 | true                                      |
+      | display_name | name               | contact_email    | first_name   | last_name | gets_blended_results | gets_commercial_results_on_blended_search |
+      | Blended site | blended.agency.gov | admin@agency.gov | John         | Bar       | true                 | true                                      |
     And affiliate "blended.agency.gov" has the following RSS feeds:
       | name          | url                                  | is_navigable |
       | Press         | http://www.whitehouse.gov/feed/press | true         |
@@ -313,8 +313,8 @@ Feature: Blended Search
 
   Scenario: Search with only stopwords
     Given the following Affiliates exist:
-      | display_name | name               | contact_email    | contact_name | gets_blended_results |
-      | Blended site | blended.agency.gov | admin@agency.gov | John Bar     | true                 |
+      | display_name | name               | contact_email    | first_name | last_name | gets_blended_results |
+      | Blended site | blended.agency.gov | admin@agency.gov | John       | Bar       | true                 |
     And affiliate "blended.agency.gov" has the following RSS feeds:
       | name          | url                                  | is_navigable |
       | Press         | http://www.whitehouse.gov/feed/press | true         |
@@ -329,8 +329,8 @@ Feature: Blended Search
 
   Scenario: Display an Alert on search page
     Given the following Affiliates exist:
-      | display_name | name               | contact_email    | contact_name | gets_blended_results |
-      | Blended site | blended.agency.gov | admin@agency.gov | John Bar     | true                 |
+      | display_name | name               | contact_email    | first_name | last_name | gets_blended_results |
+      | Blended site | blended.agency.gov | admin@agency.gov | John       | Bar       | true                 |
     And the following Alert exists:
       | affiliate          | text                       | status | title      |
       | blended.agency.gov | New alert for the test aff | Active | Test Title |

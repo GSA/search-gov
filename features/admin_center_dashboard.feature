@@ -2,9 +2,9 @@ Feature: Dashboard
 
   Scenario: Visiting /sites for user with existing sites
     Given the following Affiliates exist:
-      | display_name | name         | contact_email      | contact_name |
-      | agency1 site | 1.agency.gov | manager@agency.gov | John Manager |
-      | agency3 site | 3.agency.gov | manager@agency.gov | John Manager |
+      | display_name | name         | contact_email      | first_name   | last_name |
+      | agency1 site | 1.agency.gov | manager@agency.gov | John         | Manager   |
+      | agency3 site | 3.agency.gov | manager@agency.gov | John         | Manager   |
     And I am logged in with email "manager@agency.gov"
     When I go to the sites page
     Then I should see "agency1 site"
@@ -82,8 +82,8 @@ Feature: Dashboard
   @javascript
   Scenario: Cloning a site
     Given the following Affiliates exist:
-      | display_name | name         | contact_email      | contact_name |
-      | origin site  | origin_site  | john@agency.gov    | John Manager |
+      | display_name | name         | contact_email      | first_name | last_name |
+      | origin site  | origin_site  | john@agency.gov    | John       | Manager   |
     And I am logged in with email "john@agency.gov"
     When I go to the origin_site's Dashboard page
     And I follow "Clone Site"
@@ -111,9 +111,9 @@ Feature: Dashboard
 
   Scenario: List users
     Given the following Users exist:
-      | contact_name | email               |
-      | John Admin   | admin1@fixtures.gov |
-      | Jane Admin   | admin2@fixtures.gov |
+      | first_name | last_name           | email               |
+      | John       | Admin               | admin1@fixtures.gov |
+      | Jane       | Admin               | admin2@fixtures.gov |
     And the Affiliate "usagov" has the following users:
       | email               |
       | admin1@fixtures.gov |
@@ -122,9 +122,9 @@ Feature: Dashboard
     When I go to the usagov's Dashboard page
     And I follow "Manage Users"
     Then I should see the following table rows:
-      | Affiliate Manager affiliate_manager@fixtures.org  |
-      | Jane Admin admin2@fixtures.gov                    |
-      | John Admin admin1@fixtures.gov                    |
+      | Affiliate Manager Smith affiliate_manager@fixtures.org  |
+      | Jane Admin admin2@fixtures.gov                          |
+      | John Admin admin1@fixtures.gov                          |
 
   @javascript
   Scenario: Add/remove user
@@ -133,14 +133,16 @@ Feature: Dashboard
     And I follow "Manage Users"
     And I follow "Add User"
     When I fill in the following:
-      | Name  | Another Admin |
-      | Email |  another_affiliate_manager@fixtures.org   |
+      | First name | Another                                |
+      | Last name  | Admin                                  |
+      | Email      | another_affiliate_manager@fixtures.org |
     And I submit the form by pressing "Add"
     Then I should see "You have added another_affiliate_manager@fixtures.org to this site"
     When I follow "Add User"
     And I fill in the following:
-      | Name  | Admin Doe |
-      | Email |           |
+      | First name | Admin     |
+      | Last name  | Doe       |
+      | Email      |           |
     And I submit the form by pressing "Add"
     Then I should see "Email can't be blank"
     When I fill in "Email" with "admin@email.gov"
@@ -157,8 +159,9 @@ Feature: Dashboard
     And I follow "Manage Users"
     And I follow "Add User"
     When I fill in the following:
-      | Name  | Jane Admin     |
-      | Email | jane@admin.org |
+      | First name  | Jane           |
+      | Last name   | Doe            |
+      | Email       | jane@admin.org |
     And I submit the form by pressing "Add"
     And I sign out
     Then "jane@admin.org" should receive an email
@@ -175,7 +178,8 @@ Feature: Dashboard
     And I follow "Manage Users"
     And I follow "Add User"
     When I fill in the following:
-      | Name  | Marylin Admin        |
+      | First name  | Marylin        |
+      | Last name   | Admin          |
       | Email | marilyn@fixtures.org |
     And I submit the form by pressing "Add"
     And I sign out
@@ -186,9 +190,9 @@ Feature: Dashboard
   @javascript
   Scenario: Preview
     Given the following Affiliates exist:
-      | display_name | name              | contact_email   | contact_name | has_staged_content | uses_managed_header_footer | staged_uses_managed_header_footer | header           | staged_header      | website               | force_mobile_format |
-      | agency site  | legacy.agency.gov | john@agency.gov | John Bar     | true               | false                      | false                             | live header text | staged header text | http://www.agency.gov | false               |
-      | agency site  | www.agency.gov    | john@agency.gov | John Bar     | true               | false                      | false                             | live header text | staged header text | http://www.agency.gov | true                |
+      | display_name | name              | contact_email   | first_name | last_name | has_staged_content | uses_managed_header_footer | staged_uses_managed_header_footer | header           | staged_header      | website               | force_mobile_format |
+      | agency site  | legacy.agency.gov | john@agency.gov | John       | Bar       | true               | false                      | false                             | live header text | staged header text | http://www.agency.gov | false               |
+      | agency site  | www.agency.gov    | john@agency.gov | John       | Bar       | true               | false                      | false                             | live header text | staged header text | http://www.agency.gov | true                |
     And I am logged in with email "john@agency.gov"
     When I go to the legacy.agency.gov's Dashboard page
     And I follow "Preview" within the Admin Center main navigation list
@@ -243,8 +247,8 @@ Feature: Dashboard
 
   Scenario: Performing site autodiscovery
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | contact_name | has_staged_content | uses_managed_header_footer | staged_uses_managed_header_footer | header           | staged_header      | force_mobile_format |
-      | agency site  | agency.gov | john@agency.gov | John Bar     | true               | false                      | false                             | live header text | staged header text | false               |
+      | display_name | name       | contact_email   | first_name | last_name | has_staged_content | uses_managed_header_footer | staged_uses_managed_header_footer | header           | staged_header      | force_mobile_format |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar     | true               | false                      | false                             | live header text | staged header text | false               |
     And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Content page
     Then the "Discover and add the RSS feeds and social media accounts listed on the following page:" field should be empty
