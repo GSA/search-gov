@@ -32,7 +32,7 @@ class Emailer < ApplicationMailer
 
   def account_deactivation_warning(user, date)
     @user = user
-    @remaining_days = (date - 90.days.ago.to_date).to_i
+    @deactivation_date = (date - 90.days.ago.to_date).to_i.days.from_now.strftime("%m/%d/%Y")
     @user_contact_name = get_contact_name(user)
     generic_user_html_email(user, __method__)
   end
