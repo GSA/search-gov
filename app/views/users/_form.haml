@@ -1,8 +1,12 @@
 = render_flash_message
 = render_error_messages(@user)
 
-= form.label :contact_name, 'Name', class: 'required'
-= form.text_field :contact_name, class: 'required input-primary'
+= form.label :first_name, 'First name', class: 'required'
+= form.text_field :first_name, class: 'required input-primary'
+
+= form.label :last_name, 'Last name', class: 'required'
+= form.text_field :last_name, class: 'required input-primary'
+
 = form.label :organization_name, 'Government agency'
 = form.text_field :organization_name
 = form.label :email, 'Email', class: 'required'

@@ -5,7 +5,8 @@ class User < ApplicationRecord
 
   validates :email, presence: true
   validates :approval_status, inclusion: APPROVAL_STATUSES
-  validates :contact_name, presence: true, on: :update_account
+  validates :first_name, presence: true, on: :update_account
+  validates :last_name, presence: true, on: :update_account
   validates :organization_name, presence: true, on: :update_account
   has_many :memberships, dependent: :destroy
   has_many :affiliates, lambda {
@@ -73,11 +74,11 @@ class User < ApplicationRecord
   # end
 
   def complete?
-    contact_name.present? && organization_name.present?
+    last_name.present? && first_name.present? && organization_name.present?
   end
 
   def to_label
-    "#{contact_name} <#{email}>"
+    "#{first_name} #{last_name} <#{email}>"
   end
 
   def is_affiliate_or_higher

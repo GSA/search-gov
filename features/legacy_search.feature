@@ -5,16 +5,16 @@ Feature: Legacy Search
 
   Scenario: Search with a blank query on an affiliate page
     Given the following legacy Affiliates exist:
-      | display_name     | name             | contact_email         | contact_name        |
-      | bar site         | bar.gov          | aff@bar.gov           | John Bar            |
+      | display_name     | name             | contact_email         | first_name | last_name |
+      | bar site         | bar.gov          | aff@bar.gov           | John       | Bar       |
     When I am on bar.gov's search page
     And I press "Search" in the legacy search box
     Then I should see "Please enter a search term"
 
   Scenario: Search with no results
     Given the following legacy Affiliates exist:
-      | display_name     | name             | contact_email         | contact_name        |
-      | bar site         | bar.gov          | aff@bar.gov           | John Bar            |
+      | display_name     | name             | contact_email         | first_name | last_name |
+      | bar site         | bar.gov          | aff@bar.gov           | John       | Bar       |
     When I am on bar.gov's search page
     And I fill in "Enter your search term" with "foobarbazbiz"
     And I press "Search" in the legacy search box
@@ -22,9 +22,9 @@ Feature: Legacy Search
 
   Scenario: Searching with active RSS feeds
     Given the following legacy Affiliates exist:
-      | display_name     | name       | contact_email | contact_name | locale | youtube_handles | is_image_search_navigable |
-      | bar site         | bar.gov    | aff@bar.gov   | John Bar     | en     | en_agency       | true                      |
-      | Spanish bar site | es.bar.gov | aff@bar.gov   | John Bar     | es     | es_agency       | true                      |
+      | display_name     | name       | contact_email | first_name   | last_name | locale     | youtube_handles | is_image_search_navigable |
+      | bar site         | bar.gov    | aff@bar.gov   | John         | Bar       | en         | en_agency       | true                      |
+      | Spanish bar site | es.bar.gov | aff@bar.gov   | John         | Bar       | es         | es_agency       | true                      |
     And affiliate "bar.gov" has the following RSS feeds:
       | name          | url                                                | is_navigable | is_managed |
       | Press         | http://www.whitehouse.gov/feed/press               | true         |            |
@@ -221,9 +221,9 @@ Feature: Legacy Search
 
   Scenario: Searching news items using time filters
     Given the following legacy Affiliates exist:
-      | display_name                 | name       | contact_email | contact_name | locale | youtube_handles |
-      | bar site                     | bar.gov    | aff@bar.gov   | John Bar     | en     | en_agency       |
-      | Spanish bar site             | es.bar.gov | aff@bar.gov   | John Bar     | es     | es_agency       |
+      | display_name                 | name       | contact_email | first_name | last_name | locale | youtube_handles |
+      | bar site                     | bar.gov    | aff@bar.gov   | John       | Bar       | en     | en_agency       |
+      | Spanish bar site             | es.bar.gov | aff@bar.gov   | John       | Bar       | es     | es_agency       |
     And affiliate "bar.gov" has the following RSS feeds:
       | name          | url                                                | is_navigable | is_managed |
       | Press         | http://www.whitehouse.gov/feed/press               | true         |            |
@@ -406,9 +406,9 @@ Feature: Legacy Search
 
   Scenario: Searching news items with default dublin core mappings
     Given the following legacy Affiliates exist:
-      | display_name     | name       | contact_email | contact_name | locale |
-      | bar site         | en.bar.gov | aff@bar.gov   | John Bar     | en     |
-      | Spanish bar site | es.bar.gov | aff@bar.gov   | John Bar     | es     |
+      | display_name     | name       | contact_email | first_name | last_name | locale |
+      | bar site         | en.bar.gov | aff@bar.gov   | John       | Bar       | en     |
+      | Spanish bar site | es.bar.gov | aff@bar.gov   | John       | Bar       | es     |
     And affiliate "en.bar.gov" has the following RSS feeds:
       | name          | url                                                                  | is_navigable |
       | Press         | http://www.whitehouse.gov/feed/press                                 | true         |
@@ -598,8 +598,8 @@ Feature: Legacy Search
     # So if it breaks, check the urls in the VCR cassette recording from the search:
     # features/vcr_cassettes/Legacy_Search/Searching_a_domain_with_Bing_results_that_match_a_specific_news_item.yml
     Given the following legacy Affiliates exist:
-      | display_name | name    | contact_email | contact_name | domains        |
-      | bar site     | bar.gov | aff@bar.gov   | John Bar     | whitehouse.gov |
+      | display_name | name    | contact_email | first_name | last_name | domains        |
+      | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | whitehouse.gov |
     And affiliate "bar.gov" has the following RSS feeds:
       | name  | url                                  | is_navigable |
       | Press | http://www.whitehouse.gov/feed/press | true         |
@@ -613,8 +613,8 @@ Feature: Legacy Search
 
   Scenario: No results when searching with active RSS feeds
     Given the following legacy Affiliates exist:
-      | display_name | name    | contact_email | contact_name |
-      | bar site     | bar.gov | aff@bar.gov   | John Bar     |
+      | display_name | name    | contact_email | first_name | last_name    |
+      | bar site     | bar.gov | aff@bar.gov   | John       |Bar           |
     And affiliate "bar.gov" has the following RSS feeds:
       | name          | url                                                | is_navigable |
       | Press         | http://www.whitehouse.gov/feed/press               | true         |
@@ -644,8 +644,8 @@ Feature: Legacy Search
 
   Scenario: No results when searching on Spanish site with active RSS feeds
     Given the following legacy Affiliates exist:
-      | display_name | name    | contact_email | contact_name | locale |
-      | bar site     | bar.gov | aff@bar.gov   | John Bar     | es     |
+      | display_name | name    | contact_email | first_name | last_name | locale |
+      | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | es     |
     And affiliate "bar.gov" has the following RSS feeds:
       | name          | url                                                | is_navigable |
       | Press         | http://www.whitehouse.gov/feed/press               | true         |
@@ -674,8 +674,8 @@ Feature: Legacy Search
 
   Scenario: Searching on a site with media RSS
     Given the following legacy Affiliates exist:
-      | display_name | name    | contact_email | contact_name |
-      | bar site     | bar.gov | aff@bar.gov   | John Bar     |
+      | display_name | name    | contact_email | first_name | last_name |
+      | bar site     | bar.gov | aff@bar.gov   | John       | Bar       |
     And affiliate "bar.gov" has the following RSS feeds:
       | name   | url                                   | is_navigable | show_only_media_content |
       | Photos | http://www.whitehouse.gov/feed/photos | true         | true                    |
@@ -691,8 +691,8 @@ Feature: Legacy Search
 
   Scenario: Visiting English affiliate search with multiple domains
     Given the following legacy Affiliates exist:
-      | display_name | name    | contact_email | contact_name | domains                |
-      | bar site     | bar.gov | aff@bar.gov   | John Bar     | whitehouse.gov,usa.gov |
+      | display_name | name    | contact_email | first_name | last_name | domains                |
+      | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | whitehouse.gov,usa.gov |
     When I am on bar.gov's search page
     And I fill in "Enter your search term" with "president"
     And I press "Search" in the legacy search box
@@ -701,8 +701,8 @@ Feature: Legacy Search
 
   Scenario: Visiting Spanish affiliate search with multiple domains
     Given the following legacy Affiliates exist:
-      | display_name | name    | contact_email | contact_name | domains                | locale | is_image_search_navigable |
-      | bar site     | bar.gov | aff@bar.gov   | John Bar     | whitehouse.gov,usa.gov | es     | true                      |
+      | display_name | name    | contact_email | first_name | last_name | domains                | locale | is_image_search_navigable |
+      | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | whitehouse.gov,usa.gov | es     | true                      |
     When I am on bar.gov's search page
     And I fill in "Ingrese su búsqueda" with "president"
     And I press "Buscar" in the legacy search box
@@ -716,8 +716,8 @@ Feature: Legacy Search
   @javascript
   Scenario: Searchers see English Medline Govbox
     Given the following legacy Affiliates exist:
-      | display_name | name        | contact_email | contact_name | domains | is_medline_govbox_enabled |
-      | english site | english-nih | aff@bar.gov   | John Bar     | nih.gov | true                      |
+      | display_name | name        | contact_email | first_name | last_name | domains | is_medline_govbox_enabled |
+      | english site | english-nih | aff@bar.gov   | John       | Bar       | nih.gov | true                      |
     And the following Medline Topics exist:
       | medline_title                        | medline_tid | locale | summary_html                                                     |
       | Hippopotomonstrosesquippedaliophobia | 67890       | es     | Hippopotomonstrosesquippedaliophobia y otros miedos irracionales |
@@ -751,8 +751,8 @@ Feature: Legacy Search
   @javascript
   Scenario: Searchers see Spanish Medline Govbox
     Given the following legacy Affiliates exist:
-      | display_name | name        | contact_email | contact_name | domains | is_medline_govbox_enabled | locale |
-      | spanish site | spanish-nih | aff@bar.gov   | John Bar     | nih.gov | true                      | es     |
+      | display_name | name        | contact_email | first_name | last_name | domains | is_medline_govbox_enabled | locale |
+      | spanish site | spanish-nih | aff@bar.gov   | John       | Bar       | nih.gov | true                      | es     |
     And the following Medline Topics exist:
       | medline_title                        | medline_tid | locale | summary_html                                                     |
       | Hippopotomonstrosesquippedaliophobia | 12345       | en     | Hippopotomonstrosesquippedaliophobia and Other Irrational Fears  |
@@ -781,8 +781,8 @@ Feature: Legacy Search
 
   Scenario: When a searcher enters a query with invalid Lucene character
     Given the following legacy Affiliates exist:
-      | display_name | name       | contact_email | contact_name | domains |
-      | agency site  | agency.gov | aff@bar.gov   | John Bar     | .gov    |
+      | display_name | name       | contact_email | first_name | last_name | domains |
+      | agency site  | agency.gov | aff@bar.gov   | John       |Bar        | .gov    |
     And I am on agency.gov's search page
     And I fill in "query" with "++health it"
     And I press "Search" in the legacy search box
@@ -795,8 +795,8 @@ Feature: Legacy Search
 
   Scenario: When a searcher clicks on a collection on sidebar and the query is blank
     Given the following legacy Affiliates exist:
-      | display_name | name    | contact_email | contact_name |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
+      | display_name | name    | contact_email | first_name | last_name  |
+      | aff site     | aff.gov | aff@bar.gov   | John       | Bar        |
     And affiliate "aff.gov" has the following document collections:
       | name   | prefixes               | is_navigable |
       | Topics | http://aff.gov/topics/ | true         |
@@ -806,8 +806,8 @@ Feature: Legacy Search
 
   Scenario: When a searcher on an English site clicks on an RSS Feed on sidebar and the query is blank
     Given the following legacy Affiliates exist:
-      | display_name     | name       | contact_email | contact_name | locale | youtube_handles |
-      | bar site         | bar.gov    | aff@bar.gov   | John Bar     | en     | en_agency       |
+      | display_name     | name       | contact_email | first_name | last_name | locale | youtube_handles |
+      | bar site         | bar.gov    | aff@bar.gov   | John       | Bar       | en     | en_agency       |
     And affiliate "bar.gov" has the following RSS feeds:
       | name   | url                                  | is_navigable | is_managed |
       | Press  | http://www.whitehouse.gov/feed/press | true         |            |
@@ -837,8 +837,8 @@ Feature: Legacy Search
 
   Scenario: When a searcher on a Spanish site clicks on an RSS Feed on sidebar and the query is blank
     Given the following legacy Affiliates exist:
-      | display_name     | name       | contact_email | contact_name | locale | youtube_handles |
-      | Spanish bar site | es.bar.gov | aff@bar.gov   | John Bar     | es     | es_agency       |
+      | display_name     | name       | contact_email | first_name | last_name | locale | youtube_handles |
+      | Spanish bar site | es.bar.gov | aff@bar.gov   | John       | Bar       | es     | es_agency       |
     And affiliate "es.bar.gov" has the following RSS feeds:
       | name           | url                                  | is_navigable | is_managed |
       | Press          | http://www.whitehouse.gov/feed/press | true         |            |
@@ -868,9 +868,9 @@ Feature: Legacy Search
 
   Scenario: When there are relevant Tweets from Twitter profiles associated with the affiliate
     Given the following legacy Affiliates exist:
-      | display_name | name       | contact_email | contact_name | locale |
-      | bar site     | bar.gov    | aff@bar.gov   | John Bar     | en     |
-      | spanish site | es.bar.gov | aff@bar.gov   | John Bar     | es     |
+      | display_name | name       | contact_email | first_name | last_name | locale |
+      | bar site     | bar.gov    | aff@bar.gov   | John       | Bar       | en     |
+      | spanish site | es.bar.gov | aff@bar.gov   | John       | Bar       | es     |
     And the following Twitter Profiles exist:
       | screen_name | name            | twitter_id | affiliate  |
       | USAgov      | USA.gov         | 123        | bar.gov    |
@@ -903,8 +903,8 @@ Feature: Legacy Search
 
   Scenario: Searching document collections
     Given the following legacy Affiliates exist:
-      | display_name | name       | contact_email | contact_name | domains        |
-      | agency site  | agency.gov | aff@bar.gov   | John Bar     | whitehouse.gov |
+      | display_name | name       | contact_email | first_name | last_name | domains        |
+      | agency site  | agency.gov | aff@bar.gov   | John       | Bar     | whitehouse.gov |
     And affiliate "agency.gov" has the following document collections:
       | name      | prefixes                 | is_navigable |
       | Petitions | petitions.whitehouse.gov | true         |
@@ -921,8 +921,8 @@ Feature: Legacy Search
 
   Scenario: Searching on non navigable document collection
     Given the following legacy Affiliates exist:
-      | display_name | name       | contact_email | contact_name | domains |
-      | agency site  | agency.gov | aff@bar.gov   | John Bar     | usa.gov |
+      | display_name | name       | contact_email | first_name | last_name | domains |
+      | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | usa.gov |
     And affiliate "agency.gov" has the following document collections:
       | name | prefixes            | is_navigable |
       | Blog | http://www.sba.gov/blogs | false        |
@@ -941,15 +941,15 @@ Feature: Legacy Search
 
   Scenario: Searching with malformed query
     Given the following legacy Affiliates exist:
-      | display_name | name       | contact_email | contact_name | is_image_search_navigable |
-      | agency site  | agency.gov | aff@bar.gov   | John Bar     | true                      |
+      | display_name | name       | contact_email | first_name | last_name | is_image_search_navigable |
+      | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | true                      |
     When I am on agency.gov's search page with unsanitized "hello" query
     Then I should see a link to "Images" with sanitized "hello" query
 
   Scenario: Searching for site specific results using query
     Given the following legacy Affiliates exist:
-      | display_name | name       | contact_email | contact_name | domains |
-      | agency site  | agency.gov | aff@bar.gov   | John Bar     | usa.gov |
+      | display_name | name       | contact_email | first_name | last_name | domains |
+      | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | usa.gov |
     When I am on agency.gov's search page
     And I fill in "query" with "jobs site:www.usa.gov"
     And I press "Search" in the legacy search box
@@ -960,8 +960,8 @@ Feature: Legacy Search
 
   Scenario: Searching for site specific results using sitelimit
     Given the following legacy Affiliates exist:
-      | display_name | name       | contact_email | contact_name | domains | is_image_search_navigable |
-      | agency site  | agency.gov | aff@bar.gov   | John Bar     | .gov    | true                      |
+      | display_name | name       | contact_email | first_name | last_name | domains | is_image_search_navigable |
+      | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | .gov    | true                      |
     And affiliate "agency.gov" has the following document collections:
       | name | prefixes                         | is_navigable |
       | Blog | http://search.gov/blog/          | true         |
@@ -998,8 +998,8 @@ Feature: Legacy Search
 
   Scenario: Visiting affiliate with strictui parameters
     Given the following legacy Affiliates exist:
-      | display_name | name    | contact_email | contact_name | external_css_url                | header                                                                  | footer                                                                  |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | http://cdn.aff.gov/external.css | <style>#my_header { color:red } </style> <h1 id='my_header'>header</h1> | <style>#my_footer { color:red } </style> <h1 id='my_footer'>footer</h1> |
+      | display_name | name    | contact_email | first_name | last_name | external_css_url                | header                                                                  | footer                                                                  |
+      | aff site     | aff.gov | aff@bar.gov   | John       | Bar       | http://cdn.aff.gov/external.css | <style>#my_header { color:red } </style> <h1 id='my_header'>header</h1> | <style>#my_footer { color:red } </style> <h1 id='my_footer'>footer</h1> |
     When I go to aff.gov's strictui search page
     Then I should not see the page with external affiliate stylesheet "http://cdn.aff.gov/external.css"
     And I should not see tainted SERP header
@@ -1007,9 +1007,9 @@ Feature: Legacy Search
 
   Scenario: Affiliate search on affiliate with connections
     Given the following legacy Affiliates exist:
-      | display_name | name       | contact_email | contact_name | domains |
-      | agency site  | agency.gov | aff@bar.gov   | John Bar     | .gov    |
-      | other site   | other.gov  | aff@bad.gov   | John Bad     | .gov    |
+      | display_name | name       | contact_email | first_name | last_name | domains |
+      | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | .gov    |
+      | other site   | other.gov  | aff@bad.gov   | John       | Bad       | .gov    |
     And the following Connections exist for the affiliate "agency.gov":
     | connected_affiliate   |   display_name    |
     | other.gov             |  Other Site       |
@@ -1022,8 +1022,8 @@ Feature: Legacy Search
 
   Scenario: Searching on sites with Featured Collections
     Given the following legacy Affiliates exist:
-      | display_name   | name          | contact_email   | contact_name | locale |
-      | agency site    | agency.gov    | john@agency.gov | John Bar     | en     |
+      | display_name   | name          | contact_email   | first_name | last_name | locale |
+      | agency site    | agency.gov    | john@agency.gov | John       | Bar       | en     |
     And the following featured collections exist for the affiliate "agency.gov":
       | title           | title_url                         | status   | publish_start_on | publish_end_on |
       | Tornado Warning | http://agency.gov/tornado-warning | active   | 2013-07-01       |                |
@@ -1043,9 +1043,9 @@ Feature: Legacy Search
 
   Scenario: Searching on sites with Boosted Contents
     Given the following legacy Affiliates exist:
-      | display_name   | name          | contact_email   | contact_name | locale |
-      | agency site    | agency.gov    | john@agency.gov | John Bar     | en     |
-      | es agency site | es.agency.gov | john@agency.gov | John Bar     | es     |
+      | display_name   | name          | contact_email   | first_name| last_name | locale |
+      | agency site    | agency.gov    | john@agency.gov | John      | Bar       | en     |
+      | es agency site | es.agency.gov | john@agency.gov | John      | Bar       | es     |
     And the following Boosted Content entries exist for the affiliate "agency.gov"
       | url                                        | title                               | description        | status   | publish_start_on | publish_end_on |
       | http://search.gov/releases/2013-05-31.html | Notes for Week Ending May 31, 2013  | multimedia gallery | active   | 2013-08-01       | 2022-01-01     |
@@ -1066,8 +1066,8 @@ Feature: Legacy Search
 
   Scenario: Searching news items with custom dublin core mappings
     Given the following legacy Affiliates exist:
-      | display_name | name       | contact_email | contact_name | locale | dc_contributor          | dc_publisher          | dc_subject |
-      | bar site     | en.bar.gov | aff@bar.gov   | John Bar     | en     | Administration Official | Briefing Room Section | Issue      |
+      | display_name | name       | contact_email | first_name | last_name | locale | dc_contributor          | dc_publisher          | dc_subject |
+      | bar site     | en.bar.gov | aff@bar.gov   | John       | Bar       | en     | Administration Official | Briefing Room Section | Issue      |
     And affiliate "en.bar.gov" has the following RSS feeds:
       | name  | url                                  | is_navigable | shown_in_govbox |
       | Press | http://www.whitehouse.gov/feed/press | true         | true            |
@@ -1091,8 +1091,8 @@ Feature: Legacy Search
 
   Scenario: Entering a blank advanced search
     Given the following legacy Affiliates exist:
-      | display_name | name   | contact_email | contact_name | header         |
-      | USA.gov      | usagov | aff@bar.gov   | John Bar     | USA.gov Header |
+      | display_name | name   | contact_email | first_name | last_name | header         |
+      | USA.gov      | usagov | aff@bar.gov   | John       | Bar       | USA.gov Header |
     When I am on usagov's advanced search page
     And I press "Search"
     Then I should be on the search page
@@ -1101,8 +1101,8 @@ Feature: Legacy Search
   Scenario: When using tablet device on advanced search
     Given I am using an tabletPC device
     And the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name |
-      | bar site     | bar.gov | aff@bar.gov   | John Bar     |
+      | display_name | name    | contact_email | first_name | last_name |
+      | bar site     | bar.gov | aff@bar.gov   | John       | Bar       |
     When I am on bar.gov's advanced search page
     And I press "Search"
     Then I should be on the search page

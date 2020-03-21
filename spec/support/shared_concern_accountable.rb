@@ -1,7 +1,7 @@
 shared_examples 'require complete account' do |request_method, action, parameters = nil|
 
-  context 'when user did not supply contact_name' do
-    let(:current_user) { users(:no_contact_name) }
+  context 'when user did not supply contact info' do
+    let(:current_user) { users(:no_first_name) }
 
     before do
       UserSession.create current_user
@@ -13,12 +13,19 @@ shared_examples 'require complete account' do |request_method, action, parameter
       expect(response).to redirect_to('/account/edit')
     end
 
-    context 'when the user has no contact_name' do
-      let(:current_user) { users(:no_contact_name) }
+    context 'when the user has no first_name' do
+      it 'returns error for user to supply contact name' do
+        expect(current_user.errors.messages[:first_name].first).
+          to eq('You must supply a first name')
+      end
+    end
+
+    context 'when the user has no last_name' do
+      let(:current_user) { users(:no_last_name) }
 
       it 'returns error for user to supply contact name' do
-        expect(current_user.errors.messages[:contact_name].first).
-          to eq('You must supply a contact name')
+        expect(current_user.errors.messages[:last_name].first).
+          to eq('You must supply a last name')
       end
     end
 

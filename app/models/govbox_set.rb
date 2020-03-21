@@ -48,6 +48,8 @@ class GovboxSet
   end
 
   def init_related_search
+    return unless @affiliate.is_related_searches_enabled?
+
     @related_search = SaytSuggestion.related_search(@query, @affiliate, @highlighting_options)
     @modules << 'SREL' if @related_search.present?
   end
@@ -131,12 +133,16 @@ class GovboxSet
   end
 
   def init_text_best_bets
+    return if @affiliate.boosted_contents.empty?
+
     search_options = build_search_options(affiliate_id: @affiliate.id, size: 2, site_limits: @site_limits)
     @boosted_contents = ElasticBoostedContent.search_for(search_options)
     @modules << 'BOOS' if elastic_results_exist?(@boosted_contents)
   end
 
   def init_graphic_best_bets
+    return if @affiliate.featured_collections.empty?
+
     search_options = build_search_options(affiliate_id: @affiliate.id, size: 1)
     @featured_collections = ElasticFeaturedCollection.search_for(search_options)
     if elastic_results_exist?(@featured_collections)

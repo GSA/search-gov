@@ -3,12 +3,13 @@ require 'spec_helper'
 describe UsersController do
   fixtures :users
   let(:user_params) do
-    { contact_name: 'Barack',
+    { first_name: 'Obama',
+      last_name: 'Barack',
       organization_name: 'White House',
       email: 'barack@whitehouse.gov' }
   end
 
-  let(:permitted_params) { %i[contact_name organization_name email] }
+  let(:permitted_params) { %i[first_name last_name organization_name email] }
 
   describe '#create' do
     it do
@@ -96,12 +97,13 @@ describe UsersController do
     let(:update_account) do
       post :update_account,
            params: { use_route: user_update_account_path(user_id: current_user.id),
-                     user: { 'contact_name': 'BAR',
+                     user: { 'first_name': 'BAR',
+                             'last_name': 'FOO',
                              'email': 'foo@bar.com' } }
     end
 
     let(:update_params) do
-      { 'contact_name': 'Foo BAR', 'email': 'foo@bar.com' }
+      { 'first_name': 'Foo', 'last_name': 'Bar', 'email': 'foo@bar.com' }
     end
 
     context 'when logged in as affiliate' do
@@ -148,7 +150,7 @@ describe UsersController do
     end
 
     let(:update_params) do
-      { 'contact_name': 'BAR', 'email': 'changed@foo.com' }
+      { 'first_name': 'Foo', 'last_name': 'BAR', 'email': 'changed@foo.com' }
     end
 
     context 'when logged in as affiliate' do

@@ -9,7 +9,7 @@ describe HintData do
       expect(DocumentFetcher).to receive(:fetch).and_return(body: json_str)
       HintData.reload
 
-      expect(Hint.count).to eq(5)
+      expect(Hint.count).to eq(6)
 
       hint = Hint.find_by_name('document_collection.name')
       expect(hint.value).to be_nil
@@ -17,8 +17,12 @@ describe HintData do
       hint = Hint.find_by_name('site_domain.domain')
       expect(hint.value).to match(/Use www for results from www\.agency\.gov only/)
 
-      hint = Hint.find_by_name('user.contact_name')
-      expect(hint.value).to match(/Please enter first and last name/)
+      hint = Hint.find_by_name('user.first_name')
+      expect(hint.value).to match(/Please enter first name/)
+      expect(Hint.find_by_name('obsolete_key')).to be_nil
+
+      hint = Hint.find_by_name('user.last_name')
+      expect(hint.value).to match(/Please enter last name/)
       expect(Hint.find_by_name('obsolete_key')).to be_nil
     end
 

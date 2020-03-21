@@ -5,6 +5,9 @@ describe GovboxSet do
   fixtures :affiliates, :agencies, :federal_register_agencies, :rss_feed_urls, :rss_feeds, :agency_organization_codes
 
   describe ".new(query, affiliate, geoip_info)" do
+    subject(:govbox_set) do
+      GovboxSet.new('foo', affiliate, geoip_info, highlighting_options)
+    end
     let(:affiliate) { affiliates(:basic_affiliate) }
     let(:agency) { agencies(:irs) }
     let(:geoip_info) do
@@ -19,70 +22,96 @@ describe GovboxSet do
         post_tags: %w(</strong>) }.freeze
     end
 
-    context 'when the affiliate has boosted contents' do
-      it 'should assign boosted contents' do
-        affiliate.locale = 'en'
-        expected_search_options = {
-          affiliate_id: affiliate.id,
-          language: 'en',
-          q: 'foo',
-          size: 2,
-          site_limits: nil
-        }
-        expected_results = double(ElasticBoostedContentResults, total: 1)
-        allow(ElasticBoostedContent).to receive(:search_for).with(expected_search_options).
-          and_return(expected_results)
-        govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
-        expect(govbox_set.boosted_contents).to eq(expected_results)
-        expect(govbox_set.modules).to include('BOOS')
+    describe '#boosted_contents' do
+      context 'when the affiliate has boosted contents' do
+        it 'assigns boosted contents' do
+          affiliate.locale = 'en'
+          expected_search_options = {
+            affiliate_id: affiliate.id,
+            language: 'en',
+            q: 'foo',
+            size: 2,
+            site_limits: nil
+          }
+          expected_results = double(ElasticBoostedContentResults, total: 1)
+          allow(ElasticBoostedContent).to receive(:search_for).with(expected_search_options).
+            and_return(expected_results)
+          govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
+          expect(govbox_set.boosted_contents).to eq(expected_results)
+          expect(govbox_set.modules).to include('BOOS')
+        end
+
+        it 'uses highlight options' do
+          expected_search_options = {
+            affiliate_id: affiliate.id,
+            language: 'en',
+            q: 'foo',
+            size: 2,
+            site_limits: nil
+          }.merge(highlighting_options)
+
+          expected_results = double(ElasticBoostedContentResults, total: 1)
+          expect(ElasticBoostedContent).to receive(:search_for).with(expected_search_options).
+            and_return(expected_results)
+          govbox_set = GovboxSet.new('foo', affiliate, geoip_info, highlighting_options)
+          expect(govbox_set.boosted_contents).to eq(expected_results)
+        end
       end
 
-      it 'uses highlight options' do
-        expected_search_options = {
-          affiliate_id: affiliate.id,
-          language: 'en',
-          q: 'foo',
-          size: 2,
-          site_limits: nil
-        }.merge(highlighting_options)
+      context 'when the affiliate does not have boosted contents' do
+        before do
+          allow(affiliate).to receive(:boosted_contents).and_return([])
+        end
 
-        expected_results = double(ElasticBoostedContentResults, total: 1)
-        expect(ElasticBoostedContent).to receive(:search_for).with(expected_search_options).
-          and_return(expected_results)
-        govbox_set = GovboxSet.new('foo', affiliate, geoip_info, highlighting_options)
-        expect(govbox_set.boosted_contents).to eq(expected_results)
+        it 'does not query Elasticsearch for boosted contents' do
+          expect(ElasticBoostedContent).not_to receive(:search_for)
+          govbox_set.boosted_contents
+        end
       end
     end
 
-    context 'when the affiliate has featured collections' do
-      it 'should assign a single featured collection' do
-        affiliate.locale = 'en'
-        expected_results = double(ElasticFeaturedCollectionResults, total: 1)
-        allow(ElasticFeaturedCollection).to receive(:search_for).
-          with(q: 'foo',
-               affiliate_id: affiliate.id,
-               language: 'en',
-               size: 1).
-          and_return(expected_results)
+    describe '#graphic_best_bets' do
+      context 'when the affiliate has featured collections' do
+        it 'assigns a single featured collection' do
+          affiliate.locale = 'en'
+          expected_results = double(ElasticFeaturedCollectionResults, total: 1)
+          allow(ElasticFeaturedCollection).to receive(:search_for).
+            with(q: 'foo',
+                 affiliate_id: affiliate.id,
+                 language: 'en',
+                 size: 1).
+            and_return(expected_results)
 
-        govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
-        expect(govbox_set.featured_collections).to eq(expected_results)
-        expect(govbox_set.modules).to include('BBG')
+          govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
+          expect(govbox_set.featured_collections).to eq(expected_results)
+          expect(govbox_set.modules).to include('BBG')
+        end
+
+        it 'uses highlighting options' do
+          expected_search_options = {
+            affiliate_id: affiliate.id,
+            language: 'en',
+            q: 'foo',
+            size: 1
+          }.merge(highlighting_options)
+
+          expected_results = double(ElasticFeaturedCollectionResults, total: 1)
+          allow(ElasticFeaturedCollection).to receive(:search_for).with(expected_search_options).
+            and_return(expected_results)
+          govbox_set = GovboxSet.new('foo', affiliate, geoip_info, highlighting_options)
+          expect(govbox_set.featured_collections).to eq(expected_results)
+        end
       end
 
-      it 'uses highlighting options' do
-        expected_search_options = {
-          affiliate_id: affiliate.id,
-          language: 'en',
-          q: 'foo',
-          size: 1
-        }.merge(highlighting_options)
+      context 'when the affiliate does not have featured collections' do
+        before do
+          allow(affiliate).to receive(:featured_collections).and_return([])
+        end
 
-        expected_results = double(ElasticFeaturedCollectionResults, total: 1)
-        allow(ElasticFeaturedCollection).to receive(:search_for).with(expected_search_options).
-          and_return(expected_results)
-        govbox_set = GovboxSet.new('foo', affiliate, geoip_info, highlighting_options)
-        expect(govbox_set.featured_collections).to eq(expected_results)
+        it 'does not query Elasticsearch for featured collections' do
+          expect(ElasticFeaturedCollection).not_to receive(:search_for)
+          govbox_set.featured_collections
+        end
       end
     end
 
@@ -374,24 +403,38 @@ describe GovboxSet do
       end
     end
 
-    context 'when the affiliate has related search terms' do
-      let(:expected_search_terms) { double('search terms') }
+    describe '#related_search' do
+      context 'when the affiliate has related search terms' do
+        let(:expected_search_terms) { double('search terms') }
 
-      it 'should assign related searches' do
-        allow(SaytSuggestion).to receive(:related_search).with('foo', affiliate, {}).
-          and_return(expected_search_terms)
-        govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
-        expect(govbox_set.related_search).to eq(expected_search_terms)
-        expect(govbox_set.modules).to include('SREL')
+        it 'should assign related searches' do
+          allow(SaytSuggestion).to receive(:related_search).with('foo', affiliate, {}).
+            and_return(expected_search_terms)
+          govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
+          expect(govbox_set.related_search).to eq(expected_search_terms)
+          expect(govbox_set.modules).to include('SREL')
+        end
+
+        it 'uses highlighting options' do
+          allow(SaytSuggestion).to receive(:related_search).with('foo', affiliate, highlighting_options).
+            and_return(expected_search_terms)
+          govbox_set = GovboxSet.new('foo', affiliate, geoip_info, highlighting_options)
+          expect(govbox_set.related_search).to eq(expected_search_terms)
+        end
+
       end
 
-      it 'uses highlighting options' do
-        allow(SaytSuggestion).to receive(:related_search).with('foo', affiliate, highlighting_options).
-          and_return(expected_search_terms)
-        govbox_set = GovboxSet.new('foo', affiliate, geoip_info, highlighting_options)
-        expect(govbox_set.related_search).to eq(expected_search_terms)
-      end
+      context 'when the affiliate does not have related searches enabled' do
+        before do
+          allow(affiliate).to receive(:is_related_searches_enabled?).
+            and_return(false)
+        end
 
+        it 'does not query Elasticsearch for related searches' do
+          expect(SaytSuggestion).not_to receive(:related_search)
+          govbox_set.related_search
+        end
+      end
     end
 
     context 'when site_limits option is present' do

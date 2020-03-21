@@ -4,8 +4,10 @@ require 'active_support/concern'
 
 module Accountable
   def incomplete_account_error
-    if current_user&.contact_name.blank?
-      current_user.errors[:contact_name] << 'You must supply a contact name'
+    if current_user&.first_name.blank?
+      current_user.errors[:first_name] << 'You must supply a first name'
+    elsif current_user&.last_name.blank?
+      current_user.errors[:last_name] << 'You must supply a last name'
     elsif current_user&.organization_name.blank?
       current_user.errors[:organization_name] << 'You must supply an organization name'
     end
@@ -19,7 +21,7 @@ module Accountable
       edit_account_path,
       flash: {
         error:
-          'To complete your registration, please make sure Name, and '\
+          'To complete your registration, please make sure First name, Last name, and '\
           'Government agency are not empty'
       }
     )

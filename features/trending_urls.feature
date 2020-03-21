@@ -6,9 +6,9 @@ Feature: Trending URLs Snapshot
   Scenario: Viewing the trending URLs page when data is available
     Given I am logged in with email "affiliate_admin@fixtures.org"
     And the following Affiliates exist:
-    | name           | display_name     | contact_email | contact_name  |
-    | aff1           | bureau.gov       | two@bar.gov   | Two Bar       |
-    | aff2           | otheraff.govy    | two@bar.gov   | Two Bar       |
+    | name           | display_name     | contact_email | first_name | last_name |
+    | aff1           | bureau.gov       | two@bar.gov   | Two        | Bar       |
+    | aff2           | otheraff.govy    | two@bar.gov   | Two        | Bar       |
     And the following trending URLs exist:
     | affiliate_name | trending_urls                                                      |
     | aff1           | http://www.aff1.gov/url1.html,http://www.aff1.gov/url2.html        |

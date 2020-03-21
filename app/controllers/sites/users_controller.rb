@@ -42,6 +42,6 @@ class Sites::UsersController < Sites::SetupSiteController
   private
 
   def user_params
-    @user_params ||= params.require(:user).permit(:contact_name, :email).to_h
+    @user_params ||= params.require(:user).permit(:first_name, :last_name, :email).to_h
   end
 end

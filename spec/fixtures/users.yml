@@ -2,14 +2,16 @@ DEFAULTS: &DEFAULTS
   organization_name: Agency
   persistence_token: cedf2dac3e2d0e7223d8d1ae126c5a18e021ad9bc6dd0a2f01677e907b3e0a1802d82273fe3ac061b5fd80209ea39632c0a9e3081a1d43bb7ced9884d7754b62
   approval_status: approved
-  contact_name: Jane Doe
+  first_name: Jane
+  last_name: Doe
 
 affiliate_admin:
   <<: *DEFAULTS
   email: affiliate_admin@fixtures.org
   is_affiliate_admin: true
   is_affiliate: false
-  contact_name: Affiliate Administrator
+  first_name: Affiliate Administrator
+  last_name: Smith
   welcome_email_sent: true
 
 affiliate_added_by_another_affiliate:
@@ -17,7 +19,8 @@ affiliate_added_by_another_affiliate:
   email: affiliate_added_by_another_affiliate@fixtures.org
   is_affiliate_admin: false
   is_affiliate: true
-  contact_name: Invited Affiliate Manager
+  first_name: Invited Affiliate Manager
+  last_name: Smith
   approval_status: approved
   requires_manual_approval: false
 
@@ -26,7 +29,8 @@ non_affiliate_admin:
   email: non_affiliate_admin@fixtures.org
   is_affiliate_admin: false
   is_affiliate: false
-  contact_name: Not An Affiliate
+  first_name: Not An Affiliate
+  last_name: Smith
   welcome_email_sent: true
 
 affiliate_manager:
@@ -34,7 +38,8 @@ affiliate_manager:
   email: affiliate_manager@fixtures.org
   is_affiliate_admin: false
   is_affiliate: true
-  contact_name: Affiliate Manager
+  first_name: Affiliate Manager
+  last_name: Smith
   welcome_email_sent: true
 
 another_affiliate_manager:
@@ -42,7 +47,8 @@ another_affiliate_manager:
   email: another_affiliate_manager@fixtures.org
   is_affiliate_admin: false
   is_affiliate: true
-  contact_name: Another Manager
+  first_name: Another Manager
+  last_name: Smith
   welcome_email_sent: true
 
 affiliate_manager_with_no_affiliates:
@@ -50,7 +56,8 @@ affiliate_manager_with_no_affiliates:
   email: affiliate_manager_with_no_affiliates@fixtures.org
   is_affiliate_admin: false
   is_affiliate: true
-  contact_name: A New Manager
+  first_name: A New Manager
+  last_name: Smith
   welcome_email_sent: true
 
 affiliate_manager_with_one_site:
@@ -58,7 +65,8 @@ affiliate_manager_with_one_site:
   email: affiliate_manager_with_one_site@fixtures.org
   is_affiliate_admin: false
   is_affiliate: true
-  contact_name: A New Manager with one site
+  first_name: A New Manager with one site
+  last_name: Smith
   welcome_email_sent: true
   approval_status: approved
 
@@ -67,14 +75,16 @@ affiliate_without_contact_info:
   email: affiliate_with_no_contact_info@fixtures.org
   is_affiliate_admin: false
   is_affiliate: true
-  contact_name: A New Affiliate
+  first_name: A New Affiliate
+  last_name: Smith
   welcome_email_sent: true
 
 marilyn:
   <<: *DEFAULTS
   email: marilyn@fixtures.org
   is_affiliate_admin: true
-  contact_name: Analyst With Full Privileges
+  first_name: Analyst With Full Privileges
+  last_name: Smith
   welcome_email_sent: true
 
 developer:
@@ -82,7 +92,8 @@ developer:
   email: developer@fixtures.org
   is_affiliate_admin: false
   is_affiliate: false
-  contact_name: A New Developer
+  first_name: A New Developer
+  last_name: Smith
   welcome_email_sent: true
 
 active_user:
@@ -141,7 +152,8 @@ affiliate_manager_with_pending_contact_information_status:
   email: affiliate_manager_with_pending_contact_information_status@fixtures.org
   is_affiliate_admin: false
   is_affiliate: true
-  contact_name: Pending Contact Information Affiliate Manager
+  first_name: Pending Contact Information Affiliate Manager
+  last_name: Smith
   approval_status: pending_contact_information
   requires_manual_approval: true
 
@@ -150,7 +162,8 @@ affiliate_manager_with_pending_approval_status:
   email: affiliate_manager_with_pending_approval_status@fixtures.org
   is_affiliate_admin: false
   is_affiliate: true
-  contact_name: Pending Approval Affiliate Manager
+  first_name: Pending Approval Affiliate Manager
+  last_name: Smith
   approval_status: pending_approval
   requires_manual_approval: true
 
@@ -159,7 +172,8 @@ affiliate_manager_requires_manual_approval:
   email: affiliate_manager_requires_manual_approval@fixtures.org
   is_affiliate_admin: false
   is_affiliate: true
-  contact_name: Requires Manual Approval Affiliate Manager
+  first_name: Requires Manual Approval Affiliate Manager
+  last_name: Smith
   approval_status: pending_approval
   requires_manual_approval: true
 
@@ -168,7 +182,8 @@ affiliate_manager_with_not_approved_status:
   email: affiliate_manager_with_not_approved_status@fixtures.org
   is_affiliate_admin: false
   is_affiliate: true
-  contact_name: Not Approved Affiliate Manager
+  first_name: Not Approved Affiliate Manager
+  last_name: Smith
   approval_status: not_approved
   requires_manual_approval: true
 
@@ -178,16 +193,26 @@ affiliate_requiring_manual_approval:
   requires_manual_approval: true
   approval_status: pending_approval
 
-no_contact_name:
-  email: no_contact_name@email.gov
-  contact_name: ''
+no_first_name:
+  email: no_first_name@email.gov
+  first_name: ''
+  last_name: 'Smith'
+  organization_name: Agency
+  persistence_token: cedf2dac3e2d0e7223d8d1ae126c5a18e021ad9bc6dd0a2f01677e907b3e0a1802d82273fe3ac061b5fd80209ea39632c0a9e3081a1d43bb7ced9884d7754b62
+  approval_status: approved
+
+no_last_name:
+  email: no_last_name@email.gov
+  first_name: 'Bob'
+  last_name: ''
   organization_name: Agency
   persistence_token: cedf2dac3e2d0e7223d8d1ae126c5a18e021ad9bc6dd0a2f01677e907b3e0a1802d82273fe3ac061b5fd80209ea39632c0a9e3081a1d43bb7ced9884d7754b62
   approval_status: approved
 
 no_organization_name:
   email: no_organization_name@email.gov
-  contact_name: Jane Doe
+  first_name: Jane
+  last_name: Doe
   organization_name: ''
   persistence_token: cedf2dac3e2d0e7223d8d1ae126c5a18e021ad9bc6dd0a2f01677e907b3e0a1802d82273fe3ac061b5fd80209ea39632c0a9e3081a1d43bb7ced9884d7754b62
   approval_status: approved
