@@ -614,8 +614,9 @@
                                           <div style="text-align: left;"><br>
                                             <span style="font-family:helvetica neue,helvetica,arial,verdana,sans-serif">
                                               <p>Hello <%= @user_contact_name %>,</p>
-                                              <p> This is a notification to let you know that our system will automatically deactivate your account in the next <%= @remaining_days %> days due to inactivity.</p>
-                                              <p>Please log in today to maintain access to your search.gov account.</p>
+                                              <p>Search.gov user accounts must be accessed at least once every 90 days to remain active. Please log in before <%= @deactivation_date %>, or your account will automatically be deactivated due to inactivity.
+                                              <p>Your search sites will continue to function normally.</p>
+                                              <p>Please log in today to maintain access to your Search.gov account.</p>
                                               <p>Thank you!</p>
                                             </span>
                                           </div>
@@ -741,7 +742,7 @@
                                             <div style="line-height: 20.8px; text-align: center;">
                                               <span style="font-size:12px">
                                                 <span style="font-family:helvetica neue,helvetica,arial,verdana,sans-serif">
-                                                  <span style="line-height:20.8px">You received this message because you have an account&nbsp;on&nbsp;
+                                                  <span style="line-height:20.8px">You received this message because you have an account on
                                                     <a href="https://search.gov" target="_blank">Search.gov</a> that is set to expire soon.&nbsp;
                                                   </span><br>
                                                   <br>
