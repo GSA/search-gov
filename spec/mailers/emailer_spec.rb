@@ -8,8 +8,9 @@ context do
 
   describe '.account_deactivation_warning' do
     let(:user) { users(:not_active_76_days) }
+    let(:expected_date) { 14.days.from_now.strftime("%m/%d/%Y") }
     let(:message) do
-      'automatically deactivate your account in the next 14 days due to inactivity.'
+      "at least once every 90 days to remain active. Please log in before #{expected_date}"
     end
 
     subject(:account_deactivation_warning) do
