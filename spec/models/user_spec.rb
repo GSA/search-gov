@@ -483,7 +483,6 @@ describe User do
 
     context 'when existing user has no uid' do
       let(:auth) { mock_user_auth('user_without_uid@fixtures.org', '22222') }
-      let(:user) { users(:user_without_uid) }
 
       it 'sets the uid' do
         expect(from_omniauth.uid).to eq '22222'
