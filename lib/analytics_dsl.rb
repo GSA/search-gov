@@ -82,4 +82,10 @@ module AnalyticsDSL
     must_date_range(json, start_date, end_date)
     must_not_spider(json)
   end
+
+  def must_type(json, type)
+    json.filter do
+      json.child! { json.term { json.type type } }
+    end
+  end
 end

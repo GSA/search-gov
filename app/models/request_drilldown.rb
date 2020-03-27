@@ -4,9 +4,8 @@ class RequestDrilldown
   include LogstashPrefix
   MAX_RESULTS = 10_000
 
-  def initialize(filtered_totals, type, drilldown_query_body)
+  def initialize(filtered_totals, drilldown_query_body)
     @filtered_totals = filtered_totals
-    @type = type
     @drilldown_query_body = drilldown_query_body
   end
 
@@ -14,7 +13,7 @@ class RequestDrilldown
     response = ES::ELK.client_reader.search(query_opts)
     response['hits']['hits']&.map { |hit| hit['_source'] }
   rescue StandardError => error
-    Rails.logger.error("Error extracting #{@type} drilldown hits: #{error}")
+    Rails.logger.error("Error extracting drilldown hits: #{error}")
     []
   end
 
@@ -23,7 +22,6 @@ class RequestDrilldown
   def query_opts
     {
       index: "#{logstash_prefix(@filtered_totals)}*",
-      type: @type,
       body: @drilldown_query_body,
       size: MAX_RESULTS,
       sort: '@timestamp:asc'

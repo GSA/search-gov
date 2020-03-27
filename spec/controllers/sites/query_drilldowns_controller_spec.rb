@@ -17,7 +17,8 @@ describe Sites::QueryDrilldownsController do
           Date.new(2015,02,1),
           Date.new(2015,02,5),
           'params.query.raw',
-          'foo bar'
+          'foo bar',
+          'search'
         ]
       end
       let(:query) { instance_double(DrilldownQuery, body: '') }
