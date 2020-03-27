@@ -32,6 +32,11 @@
                   }
                 },
                 {
+                  "terms": {
+                    "type": ["search","click"]
+                  }
+                },
+                {
                   "exists": {
                     "field": "modules"
                   }

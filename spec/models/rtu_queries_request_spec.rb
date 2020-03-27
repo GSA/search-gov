@@ -19,16 +19,24 @@ describe RtuQueriesRequest do
                                                         "end_date" => "05/28/2014",
                                                         "query" => "mexico petition marine",
                                                         "site" => site) }
-      let(:query_body) do
-        JSON.parse(
-          read_fixture_file('/json/rtu_dashboard/top_query_match_query.json')
-        ).to_json
+
+      before do
+        allow(TopQueryMatchQuery).to receive(:new).with(
+          site.name,
+          'mexico petition marine',
+          Date.parse('05/28/2014'),
+          Date.parse('05/28/2014'),
+          field: 'params.query.raw',
+          size: 1000
+        ).and_return(instance_double(TopQueryMatchQuery, body: 'query_body'))
       end
 
       context "when stats available" do
         let(:json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/rtu_queries_request.json")) }
         before do
-          opts = { index: "logstash-*", type: %w(search click), body: query_body, size: 0 }
+          opts = { index: 'logstash-*',
+                   body: 'query_body',
+                   size: 0 }
           expect(ES::ELK.client_reader).to receive(:search).with(opts).and_return json_response
         end
 

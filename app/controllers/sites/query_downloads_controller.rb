@@ -55,6 +55,7 @@ class Sites::QueryDownloadsController < Sites::SetupSiteController
 
   def date_range_top_n_query
     @date_range_top_n_query ||= DateRangeTopNQuery.new(@site.name,
+                                                       'search',
                                                        @start_date,
                                                        @end_date,
                                                        field: 'params.query.raw',

@@ -1,16 +1,23 @@
 require 'spec_helper'
 
 describe CountQuery do
-  let(:query) { CountQuery.new('affiliate_name') }
+  let(:query) { CountQuery.new('affiliate_name', 'click') }
   let(:expected_body) do
     {
       "query": {
         "bool": {
-          "filter": {
-            "term": {
-              "params.affiliate": "affiliate_name"
+          "filter": [
+            {
+              "term": {
+                "params.affiliate": "affiliate_name"
+              }
+            },
+            {
+              "terms": {
+                "type": ["click"]
+              }
             }
-          },
+          ],
           "must_not": {
             "term": {
               "useragent.device": "Spider"

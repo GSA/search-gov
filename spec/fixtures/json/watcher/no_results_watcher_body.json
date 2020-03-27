@@ -7,9 +7,6 @@
   "input": {
     "search": {
       "request": {
-        "types": [
-          "search"
-        ],
         "indices": [
           "<human-logstash-{now/d{YYYY.MM.dd}}>",
           "<human-logstash-{now/d-1d{YYYY.MM.dd}}>",
@@ -28,6 +25,11 @@
                 {
                   "term": {
                     "params.affiliate": "nps.gov"
+                  }
+                },
+                {
+                  "terms": {
+                    "type": ["search"]
                   }
                 },
                 {

@@ -16,10 +16,11 @@ class QueryBreakdownForSiteModuleQuery
   end
 
   def booleans(json)
+    must_type(json, %w[search click])
     json.filter do
       json.child! { json.term { json.modules @module_tag } }
-      json.child! { json.term { json.set! 'params.affiliate', @site_name } }
     end
+    must_affiliate(json, @site_name)
     must_not_spider(json)
   end
 end

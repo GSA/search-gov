@@ -10,6 +10,7 @@ class Sites::ReferrerQueriesController < Sites::AnalyticsController
 
   def top_queries
     query = DateRangeTopNFieldQuery.new(@site.name,
+                                        'search',
                                         @start_date,
                                         @end_date,
                                         'referrer',

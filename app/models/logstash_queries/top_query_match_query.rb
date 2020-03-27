@@ -39,7 +39,10 @@ class TopQueryMatchQuery
   end
 
   def booleans(json)
-    must_affiliate_date_range(json, @affiliate_name, @start_date, @end_date)
+    must_affiliate(json, @affiliate_name)
+    must_type(json, %w[search click])
+    must_date_range(json, @start_date, @end_date)
+    must_not_spider(json)
   end
 
   def terms_type_agg(json)

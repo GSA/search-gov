@@ -21,6 +21,7 @@ class ClickCounter
 
   def statistically_significant_clicks
     query = DateRangeTopNFieldQuery.new(nil,
+                                        'click',
                                         1.month.ago,
                                         Time.current,
                                         'click_domain',

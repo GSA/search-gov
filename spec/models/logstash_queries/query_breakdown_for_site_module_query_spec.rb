@@ -8,6 +8,11 @@ describe QueryBreakdownForSiteModuleQuery do
         "bool": {
           "filter": [
             {
+              "terms": {
+                "type": ["search","click"]
+              }
+            },
+            {
               "term": {
                 "modules": "BOOS"
               }
