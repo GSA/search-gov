@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe RequestDrilldown do
-  subject(:drilldown) { RequestDrilldown.new(true, 'search', '') }
+  subject(:drilldown) { RequestDrilldown.new(true, '') }
 
   describe '#docs' do
     subject(:docs) { drilldown.docs }
@@ -9,7 +9,6 @@ describe RequestDrilldown do
     it 'queries Elasticsearch with the expected options' do
       expect(ES::ELK.client_reader).to receive(:search).with(
         index: 'human-logstash-*',
-        type: 'search',
         body: '',
         size: 10_000,
         sort: '@timestamp:asc'
@@ -45,7 +44,7 @@ describe RequestDrilldown do
 
       it 'logs the error' do
         expect(Rails.logger).to receive(:error).
-          with('Error extracting search drilldown hits: failure')
+          with('Error extracting drilldown hits: failure')
         docs
       end
     end
