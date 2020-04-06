@@ -1,10 +1,14 @@
 class SitemapIndexer
-  attr_reader :uri, :domain, :scheme
+  attr_reader :domain,
+              :scheme,
+              :searchgov_domain,
+              :uri
 
   def initialize(sitemap_url:)
     @uri = URI(sitemap_url)
     @domain = uri.host
     @scheme = uri.scheme
+    @searchgov_domain = SearchgovDomain.find_by(domain: domain)
   end
 
   def index
@@ -30,10 +34,10 @@ class SitemapIndexer
     skip_counter_callbacks
     Rails.logger.info "[Searchgov SitemapIndexer] #{log_info.merge(sitemap_entries_found: sitemap_entries.count).to_json}"
     sitemap_entries.each{ |entry| process_entry(entry) }
-    SearchgovDomain.find_by(domain: domain).index_urls
+    searchgov_domain.index_urls
   ensure
     set_counter_callbacks
-    SearchgovUrl.counter_culture_fix_counts
+    update_counter_caches
   end
 
   def process_entry(entry)
@@ -79,5 +83,12 @@ class SitemapIndexer
   def set_counter_callbacks
     SearchgovUrl.set_callback :create, :after, :_update_counts_after_create
     SearchgovUrl.set_callback :update, :after, :_update_counts_after_update
+  end
+
+  def update_counter_caches
+    SearchgovUrl.counter_culture_fix_counts(
+      only: :searchgov_domain,
+      where: { searchgov_domains: { id: searchgov_domain.id } }
+    )
   end
 end

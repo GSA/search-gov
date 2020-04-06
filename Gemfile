@@ -93,7 +93,7 @@ gem 'medusa', git: 'https://github.com/MothOnMars/medusa', branch: 'clean_urls'
 # is resolved
 gem 'robotex', git: 'https://github.com/MothOnMars/robotex'
 gem 'sitemaps_parser', '~> 0.2', require: 'sitemaps'
-gem 'counter_culture', '~> 2.0.0'
+gem 'counter_culture', '~> 2.3.0'
 gem 'aasm', '~> 4.12'
 gem 'active_scheduler', '~> 0.5.0'
 gem 'retriable', '~> 3.1'

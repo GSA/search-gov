@@ -18,6 +18,7 @@ describe SitemapIndexer do
     stub_request(:get, sitemap_url).
       with(headers: { 'User-Agent' => DEFAULT_USER_AGENT }).
       to_return(body: sitemap_content)
+    allow(searchgov_domain).to receive(:index_urls)
   end
 
   describe '#index' do
@@ -27,10 +28,22 @@ describe SitemapIndexer do
       expect { index }.to change{ SearchgovUrl.count }.by(1)
     end
 
-    it 'updates the counter cache columns' do
-      index
-      expect(searchgov_domain.reload.urls_count).to eq 1
-      expect(searchgov_domain.reload.unfetched_urls_count).to eq 1
+    context 'when updating the counter caches' do
+      it 'updates the counter cache columns' do
+        index
+        expect(searchgov_domain.reload.urls_count).to eq 1
+        expect(searchgov_domain.reload.unfetched_urls_count).to eq 1
+      end
+
+      context 'when multiple searchgov_domains exist' do
+        let!(:other_domain) do
+          SearchgovDomain.create!(domain: 'other.gov', urls_count: 10)
+        end
+
+        it 'only updates the counts for a single domain' do
+          expect { index }.not_to change{ other_domain.reload.urls_count }
+        end
+      end
     end
 
     context 'when the sitemap specifies a lastmod value' do
