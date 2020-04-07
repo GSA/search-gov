@@ -15,6 +15,7 @@ class ElasticLinkPopularityQuery
           json.filter do
             json.bool do
               json.must do
+                json.child! { json.term { json.type 'click' } }
                 json.child! do
                   json.terms do
                     json.set! 'params.url', links
