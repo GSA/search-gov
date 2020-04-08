@@ -508,5 +508,17 @@ describe User do
         expect(from_omniauth.email).to_not eq 'user_with_same_uid@fixtures.org@fixtures.org'
       end
     end
+
+    context 'when user logs in with non gov email not in search.gov' do
+      let(:auth) { mock_user_auth('my_email@gmail.com', '11111') }
+
+      it "creates the new user with 'my_email@gmail.com'" do
+        expect(from_omniauth.email).to eq 'my_email@gmail.com'
+      end
+
+      it 'sets the user as pending_approval' do
+        expect(from_omniauth.approval_status).to eq 'pending_approval'
+      end
+    end
   end
 end
