@@ -6,11 +6,18 @@ describe SiteBreakdownForModuleQuery do
     {
       "query": {
         "bool": {
-          "filter": {
-            "term": {
-              "modules": "I14Y"
-            }
-          },
+          "filter": [
+            {
+              "term": {
+                "modules": "I14Y"
+              }
+            },
+            {
+              "terms": {
+                "type": ["search","click"]
+              }
+            },
+          ],
           "must_not": {
             "term": {
               "useragent.device": "Spider"

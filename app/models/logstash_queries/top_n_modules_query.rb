@@ -2,8 +2,9 @@
 
 class TopNModulesQuery < TopNQuery
   def booleans(json)
+    must_affiliate(json, affiliate_name)
+    must_type(json, type)
     json.filter do
-      json.child! { json.term { json.set! 'params.affiliate', @affiliate_name } }
       modules_must(json)
       additional_musts(json)
     end

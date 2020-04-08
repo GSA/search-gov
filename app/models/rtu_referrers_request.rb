@@ -20,7 +20,13 @@ class RtuReferrersRequest
   private
 
   def compute_top_stats
-    query = DateRangeTopNQuery.new(site.name, start_date, end_date, { field: 'referrer', size: MAX_RESULTS })
+    query = DateRangeTopNQuery.new(
+      site.name,
+      'search',
+      start_date,
+      end_date,
+      { field: 'referrer', size: MAX_RESULTS }
+    )
     rtu_top_stats = RtuTopQueries.new(query.body, filter_bots)
     rtu_top_stats.top_n
   end

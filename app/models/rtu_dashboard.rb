@@ -23,8 +23,8 @@ class RtuDashboard
   end
 
   def top_urls
-    query = TopNQuery.new(@site.name, field: 'params.url')
-    buckets = top_n(query.body, 'click')
+    query = TopNQuery.new(@site.name, 'click', field: 'params.url')
+    buckets = top_n(query.body)
     Hash[buckets.collect { |hash| [hash["key"], hash["doc_count"]] }] if buckets
   end
 
@@ -36,13 +36,13 @@ class RtuDashboard
 
   def trending_queries
     query = TrendingTermsQuery.new(@site.name)
-    buckets = top_n(query.body, 'search')
+    buckets = top_n(query.body)
     extract_significant_terms(buckets) if buckets
   end
 
   def low_ctr_queries
     low_ctr_query = LowCtrQuery.new(@site.name, @day.beginning_of_day, @day.end_of_day)
-    buckets = top_n(low_ctr_query.body, %w(search click))
+    buckets = top_n(low_ctr_query.body)
     low_ctr_queries_from_buckets(buckets, 20, 10)
   end
 
@@ -73,24 +73,32 @@ class RtuDashboard
 
   def queries_by_month
     query = MonthlyHistogramQuery.new(@site.name)
-    yyyymm_buckets = top_n(query.body, 'search', "#{logstash_prefix(@filter_bots)}*")
+    yyyymm_buckets = top_n(query.body, "#{logstash_prefix(@filter_bots)}*")
     yyyymm_buckets.collect { |hash| [hash["key_as_string"], hash["doc_count"]] } if yyyymm_buckets
   end
 
   def mtd_count(type)
-    count_query = CountQuery.new(@site.name)
-    RtuCount.count(monthly_index_wildcard_spanning_date(@day, @filter_bots), type, count_query.body)
+    count_query = CountQuery.new(@site.name, type)
+    RtuCount.count(monthly_index_wildcard_spanning_date(@day, @filter_bots),
+                   count_query.body)
   end
 
   def top_query(klass, options = {})
-    query = klass.new(@site.name, options)
-    buckets = top_n(query.body, 'search')
+    query = klass.new(@site.name, 'search', options)
+    buckets = top_n(query.body)
     buckets.collect { |hash| QueryCount.new(hash["key"], hash["doc_count"]) } if buckets
   end
 
-  def top_n(query_body, type, index_date = nil)
+  def top_n(query_body, index_date = nil)
     index = index_date || "#{logstash_prefix(@filter_bots)}#{@day.strftime("%Y.%m.%d")}"
-    ES::ELK.client_reader.search(index: index, type: type, body: query_body, size: 0)["aggregations"]["agg"]["buckets"] rescue []
+    ES::ELK.client_reader.search(
+      index: index,
+      body: query_body,
+      size: 0
+    )['aggregations']['agg']['buckets']
+  rescue StandardError => error
+    Rails.logger.error("Error querying top_n data: #{error}")
+    []
   end
 
   def extract_significant_terms(buckets)

@@ -19,7 +19,6 @@ class NoResultsWatcher < Watcher
                 size: 10 }
     no_results_query_body = WatcherNoResultsQuery.new(options).body
     input_search_request(json,
-                         types: ['search'],
                          indices: watcher_indexes_from_window_size(time_window),
                          body: JSON.parse(no_results_query_body).merge(size: 0))
   end

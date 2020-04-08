@@ -1246,8 +1246,12 @@ describe Affiliate do
 
     it 'returns previous month filtered search count from human-logstash-* indexes' do
       affiliate = affiliates(:power_affiliate)
-      expect(CountQuery).to receive(:new).with(affiliate.name).and_return count_query
-      expect(RtuCount).to receive(:count).with("human-logstash-2014.03.*", 'search', count_query.body).and_return(88)
+      expect(CountQuery).to receive(:new).
+        with(affiliate.name, 'search').
+        and_return count_query
+      expect(RtuCount).to receive(:count).
+        with('human-logstash-2014.03.*', count_query.body).
+        and_return(88)
       expect(affiliate.last_month_query_count).to eq(88)
     end
   end
