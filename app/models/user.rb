@@ -125,8 +125,8 @@ class User < ApplicationRecord
   end
 
   def self.from_omniauth(auth)
-    user = find_by(uid: auth.uid)
-    return user if user.present?
+    users = where(uid: auth.uid)
+    return users.first if users&.count == 1
 
     find_or_create_by(email: auth.info.email).tap do |user|
       user.update(uid: auth.uid)

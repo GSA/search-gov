@@ -489,11 +489,23 @@ describe User do
       end
     end
 
-    context 'when user has uid but logged in with different email' do
+    context 'when user has uid, logged in with email that is not in search.gov' do
       let(:auth) { mock_user_auth('different_email@gsa.gov', '12345') }
 
       it 'finds the user by uid which has different email' do
         expect(from_omniauth.email).to eq 'test@gsa.gov'
+      end
+    end
+
+    context 'when user has a uid but 2 different emails in search.gov' do
+      let(:auth) { mock_user_auth('user_with_uid@fixtures.org', '11111') }
+
+      it 'finds the user by email' do
+        expect(from_omniauth.email).to eq 'user_with_uid@fixtures.org'
+      end
+
+      it 'does not pick up the other email with same uid' do
+        expect(from_omniauth.email).to_not eq 'user_with_same_uid@fixtures.org@fixtures.org'
       end
     end
   end
