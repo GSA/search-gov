@@ -54,6 +54,7 @@ describe RtuMonthlyReport do
       let(:query_args) do
         [
           site.name,
+          'search',
           Date.new(2014,5,1),
           Date.new(2014,5,31),
           { field: 'params.query.raw', min_doc_count: 20 }

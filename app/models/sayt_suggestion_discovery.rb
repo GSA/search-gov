@@ -10,6 +10,7 @@ class SaytSuggestionDiscovery
       day = Date.strptime(day_int.to_s, "%Y%m%d")
       run_rate_factor = Date.current == day ? compute_run_rate_factor : 1.0
       top_n_exists_query = TopNExistsQuery.new(affiliate_name,
+                                               'search',
                                                field: 'params.query.raw',
                                                min_doc_count: MIN_DOC_COUNT,
                                                size: limit)

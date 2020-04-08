@@ -16,6 +16,7 @@ class ModuleSparklineQuery
 
   def booleans(json)
     must_affiliate(json, affiliate_name)
+    must_type(json, %w[search click])
     json.filter do
       json.child! { since(json, 'now-60d/d') }
       json.child! { json.exists { json.field 'modules' } }

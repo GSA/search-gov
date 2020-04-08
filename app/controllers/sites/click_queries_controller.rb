@@ -10,6 +10,7 @@ class Sites::ClickQueriesController < Sites::AnalyticsController
 
   def top_queries
     query = DateRangeTopNFieldQuery.new(@site.name,
+                                        'click',
                                         @start_date,
                                         @end_date,
                                         'params.url',

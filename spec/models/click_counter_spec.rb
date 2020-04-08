@@ -63,6 +63,7 @@ describe ClickCounter do
     it "generates a query for the last month's significant clicks" do
       expect(DateRangeTopNFieldQuery).to receive(:new).
         with(nil,
+             'click',
              1.month.ago,
              Time.now,
              'click_domain',

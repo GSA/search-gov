@@ -20,7 +20,13 @@ class RtuClicksRequest
   private
 
   def compute_top_stats
-    query = DateRangeTopNQuery.new(site.name, start_date, end_date, { field: 'params.url', size: MAX_RESULTS })
+    query = DateRangeTopNQuery.new(
+      site.name,
+      'click',
+      start_date,
+      end_date,
+      { field: 'params.url', size: MAX_RESULTS }
+    )
     rtu_top_clicks = RtuTopClicks.new(query.body, filter_bots)
     rtu_top_clicks.top_n
   end

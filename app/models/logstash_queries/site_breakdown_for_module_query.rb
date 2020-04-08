@@ -3,6 +3,8 @@
 class SiteBreakdownForModuleQuery
   include AnalyticsDSL
 
+  attr_reader :module_tag
+
   def initialize(module_tag)
     @module_tag = module_tag
   end
@@ -15,9 +17,8 @@ class SiteBreakdownForModuleQuery
   end
 
   def booleans(json)
-    json.filter do
-      json.term { json.modules @module_tag }
-    end
+    must_module(json, module_tag)
+    must_type(json, %w[search click])
     must_not_spider(json)
   end
 end

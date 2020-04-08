@@ -11,6 +11,7 @@ describe SaytSuggestionDiscovery, "#perform(affiliate_name, affiliate_id, date_i
   let(:top_n_exists_args) do
     [
       affiliate.name,
+      'search',
       field: 'params.query.raw',
       min_doc_count: 5,
       size: 10
