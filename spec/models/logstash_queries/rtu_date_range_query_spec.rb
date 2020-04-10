@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe RtuDateRangeQuery do
-  let(:query) { RtuDateRangeQuery.new('affiliate_name') }
+  let(:query) { RtuDateRangeQuery.new('affiliate_name', 'search') }
   let(:expected_body) do
     {
       "query": {
@@ -10,6 +10,11 @@ describe RtuDateRangeQuery do
             {
               "term": {
                 "params.affiliate": "affiliate_name"
+              }
+            },
+            {
+              "terms": {
+                "type": ["search"]
               }
             }
           ],
