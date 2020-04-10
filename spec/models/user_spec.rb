@@ -481,12 +481,43 @@ describe User do
       end
     end
 
-    context 'when existing user no uid' do
+    context 'when existing user has no uid' do
       let(:auth) { mock_user_auth('user_without_uid@fixtures.org', '22222') }
-      let(:user) { users(:user_without_uid) }
 
       it 'sets the uid' do
         expect(from_omniauth.uid).to eq '22222'
+      end
+    end
+
+    context 'when user has uid, logged in with email that is not in search.gov' do
+      let(:auth) { mock_user_auth('different_email@gsa.gov', '12345') }
+
+      it 'finds the user by uid which has different email' do
+        expect(from_omniauth.email).to eq 'test@gsa.gov'
+      end
+    end
+
+    context 'when user has a uid but 2 different emails in search.gov' do
+      let(:auth) { mock_user_auth('user_with_uid@fixtures.org', '11111') }
+
+      it 'finds the user by email' do
+        expect(from_omniauth.email).to eq 'user_with_uid@fixtures.org'
+      end
+
+      it 'does not pick up the other email with same uid' do
+        expect(from_omniauth.email).to_not eq 'user_with_same_uid@fixtures.org@fixtures.org'
+      end
+    end
+
+    context 'when user logs in with non gov email not in search.gov' do
+      let(:auth) { mock_user_auth('my_email@gmail.com', '11111') }
+
+      it "creates the new user with 'my_email@gmail.com'" do
+        expect(from_omniauth.email).to eq 'my_email@gmail.com'
+      end
+
+      it 'sets the user as pending_approval' do
+        expect(from_omniauth.approval_status).to eq 'pending_approval'
       end
     end
   end

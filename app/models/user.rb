@@ -125,6 +125,11 @@ class User < ApplicationRecord
   end
 
   def self.from_omniauth(auth)
+    users = where(uid: auth.uid)
+
+    return users.first if users&.count == 1 &&
+                          users.first.has_government_affiliated_email?
+
     find_or_create_by(email: auth.info.email).tap do |user|
       user.update(uid: auth.uid)
     end

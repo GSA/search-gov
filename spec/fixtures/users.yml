@@ -111,6 +111,11 @@ user_with_uid:
   email: user_with_uid@fixtures.org
   uid: 11111
 
+user_with_same_uid:
+  <<: *DEFAULTS
+  email: user_with_same_uid@fixtures.org
+  uid: 11111
+
 user_without_uid:
   <<: *DEFAULTS
   email: user_without_uid@fixtures.org
