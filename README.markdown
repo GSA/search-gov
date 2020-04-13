@@ -314,32 +314,36 @@ from the XML retrieved from the MedLine website (see doc/medline for more detail
 
     rake usasearch:medline:load
 
-## Affiliate accounts
-The database is seeded with a user that has super admin privileges:
-    
-    email: admin@email.gov
-    password: test1234!
+## Creating a new local admin account
+[Login.gov](https://login.gov) is used for authentication.
 
-You can also create a user account using a bogus .gov or .mil email address:
+To create a new local admin account we will need to:
+1. Create an account on Login's sandbox environment.
+2. Get the Login sandbox private key from a team member.
+3. Add an admin user to your local app.
 
-<http://127.0.0.1:3000/login>
+#### 1. Login sandbox
+[Create an account](https://idp.int.identitysandbox.gov/sign_up/enter_email) on Login's sandbox environment. This will need to be a real, valid government email address that you can get emails at. Something like `your-real-name+search-local@gsa.gov`. You'll receive a validation email to set a password and secondary authentication method.
 
-Look for the `email_verification_token` in your rails server stdout and open the verification link in your favorite browser:
-    
-    http://127.0.0.1:3000/email_verification/<email_verification_token>
+#### 2. Get the Login sandbox private key
+Ask your team members for the current `config/logindotgov.pem` file. This private key will let your local app complete the handshake with the Login sandbox servers.
 
-Create an affiliate for yourself called 'foo', and put in a simple header/footer like H1's or something.
-Re-run your 'taxes' search and add '&affiliate=foo' to the HTTP request.
+#### 3. Add a new admin user to your local app
+Open the rails console, add a new user with the matching email.
+```
+u = User.where(email: 'your-real-name+search-local@gsa.gov').first_or_initialize
+u.assign_attributes( contact_name: 'admin',
+                     default_affiliate: Affiliate.find_by_name('usagov'),
+                     is_affiliate: true,
+                     organization_name: 'GSA',
+                   )
 
-## Analytics
-Give your user account admin privileges. Here's how with rails console:
+u.approval_status = 'approved'
+u.is_affiliate_admin = true
+u.save!
+```
 
-    user = User.last
-    user.update_attribute(:is_affiliate_admin, true)
-
-Check it out here:
-
-<http://127.0.0.1:3000/admin>
+You should now be able to login to your local instance of search.gov.
 
 ## Admin
 Your user account should have admin priveleges set. Now go here and poke around.
