@@ -28,8 +28,9 @@ class RtuDateRange
     ES::ELK.client_reader.search(
       index: 'logstash-*',
       body: query_body,
-      size: 0)
-  rescue
+      size: 0
+    )
+  rescue StandardError
     nil
   end
 
