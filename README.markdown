@@ -323,7 +323,7 @@ To create a new local admin account we will need to:
 3. Add an admin user to your local app.
 
 #### 1. Login sandbox
-[Create an account](https://idp.int.identitysandbox.gov/sign_up/enter_email) on Login's sandbox environment. This will need to be a real, valid government email address that you can get emails at. Something like `your-real-name+search-local@gsa.gov`. You'll receive a validation email to click then set a password. You will also need to set a second auth method, such as your PIV card.
+[Create an account](https://idp.int.identitysandbox.gov/sign_up/enter_email) on Login's sandbox environment. This will need to be a real, valid government email address that you can get emails at. Something like `your-real-name+search-local@gsa.gov`. You'll receive a validation email to set a password and secondary authentication method.
 
 #### 2. Get the Login sandbox private key
 Ask your team members for the current `config/logindotgov.pem` file. This private key will let your local app complete the handshake with the Login sandbox servers.
