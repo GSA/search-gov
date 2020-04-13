@@ -49,7 +49,7 @@ class RtuQueriesRequest
       body: query_body,
       size: 0
     )['aggregations']['agg']['buckets']
-  rescue
+  rescue StandardError
     nil
   end
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RtuReferrersRequest
   MAX_RESULTS = 1000
   include Virtus.model
@@ -30,5 +32,4 @@ class RtuReferrersRequest
     rtu_top_stats = RtuTopQueries.new(query.body, filter_bots)
     rtu_top_stats.top_n
   end
-
 end
