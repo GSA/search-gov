@@ -4,23 +4,28 @@ describe ElasticLinkPopularityQuery do
   let(:query) { ElasticLinkPopularityQuery.new('https://search.gov', 10) }
   let(:expected_body) do
     {
-      query: {
-        constant_score: {
-          filter: {
-            bool: {
-              must: [
+      "query": {
+        "constant_score": {
+          "filter": {
+            "bool": {
+              "must": [
                 {
-                  terms: {
-                    'params.url': [
-                      'https://search.gov',
-                      'https://search.gov/'
+                  "term": {
+                    "type": "click"
+                  }
+                },
+                {
+                  "terms": {
+                    "params.url": [
+                      "https://search.gov",
+                      "https://search.gov/"
                     ]
                   }
                 },
                 {
-                  range: {
-                    '@timestamp': {
-                      gt: 'now-10d/d'
+                  "range": {
+                    "@timestamp": {
+                      "gt": "now-10d/d"
                     }
                   }
                 }
