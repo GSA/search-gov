@@ -25,7 +25,6 @@ class LowQueryCtrWatcher < Watcher
                 query_blocklist: query_blocklist }
     low_query_ctr_query_body = WatcherLowCtrQuery.new(options).body
     input_search_request(json,
-                         types: %w[search click],
                          indices: watcher_indexes_from_window_size(time_window),
                          body: JSON.parse(low_query_ctr_query_body).merge(size: 0))
   end
