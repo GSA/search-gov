@@ -100,7 +100,7 @@ describe Api::V2::SearchesController do
       it { is_expected.to respond_with :success }
 
       it 'returns search JSON' do
-        expect(JSON.parse(response.body)['redirect']).to eq('http://www.gov.gov/foo.html')
+        expect(JSON.parse(response.body)['route_to']).to eq('http://www.gov.gov/foo.html')
       end
     end
   end
@@ -155,7 +155,7 @@ describe Api::V2::SearchesController do
       it { is_expected.to respond_with :success }
 
       it 'returns search JSON' do
-        expect(JSON.parse(response.body)['redirect']).to eq('http://www.gov.gov/foo.html')
+        expect(JSON.parse(response.body)['route_to']).to eq('http://www.gov.gov/foo.html')
       end
     end
   end
@@ -210,7 +210,7 @@ describe Api::V2::SearchesController do
       it { is_expected.to respond_with :success }
 
       it 'returns search JSON' do
-        expect(JSON.parse(response.body)['redirect']).to eq('http://www.gov.gov/foo.html')
+        expect(JSON.parse(response.body)['route_to']).to eq('http://www.gov.gov/foo.html')
       end
     end
   end
@@ -267,7 +267,7 @@ describe Api::V2::SearchesController do
       it { is_expected.to respond_with :success }
 
       it 'returns search JSON' do
-        expect(JSON.parse(response.body)['redirect']).to eq('http://www.gov.gov/foo.html')
+        expect(JSON.parse(response.body)['route_to']).to eq('http://www.gov.gov/foo.html')
       end
     end
   end
@@ -327,7 +327,7 @@ describe Api::V2::SearchesController do
       it { is_expected.to respond_with :success }
 
       it 'returns search JSON' do
-        expect(JSON.parse(response.body)['redirect']).to eq('http://www.gov.gov/foo.html')
+        expect(JSON.parse(response.body)['route_to']).to eq('http://www.gov.gov/foo.html')
       end
     end
   end
@@ -402,7 +402,7 @@ describe Api::V2::SearchesController do
       it { is_expected.to respond_with :success }
 
       it 'returns search JSON' do
-        expect(JSON.parse(response.body)['redirect']).to eq('http://www.gov.gov/foo.html')
+        expect(JSON.parse(response.body)['route_to']).to eq('http://www.gov.gov/foo.html')
       end
     end
   end
@@ -464,7 +464,7 @@ describe Api::V2::SearchesController do
       it { is_expected.to respond_with :success }
 
       it 'returns search JSON' do
-        expect(JSON.parse(response.body)['redirect']).to eq('http://www.gov.gov/foo.html')
+        expect(JSON.parse(response.body)['route_to']).to eq('http://www.gov.gov/foo.html')
       end
     end
   end
@@ -570,7 +570,7 @@ describe Api::V2::SearchesController do
       it { is_expected.to respond_with :success }
 
       it 'returns search JSON' do
-        expect(JSON.parse(response.body)['redirect']).to eq('http://www.gov.gov/foo.html')
+        expect(JSON.parse(response.body)['route_to']).to eq('http://www.gov.gov/foo.html')
       end
     end
   end

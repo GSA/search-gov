@@ -85,7 +85,7 @@ module Api
           .joins(:routed_query_keywords)
           .where(routed_query_keywords:{keyword: search_params[:query]})
           .first
-        respond_with({ redirect: routed_query[:url] }, { status: 200 }) unless routed_query.nil?
+        respond_with({ route_to: routed_query[:url] }, { status: 200 }) unless routed_query.nil?
       end
 
       def query_routing_is_enabled?
