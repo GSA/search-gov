@@ -73,7 +73,7 @@
 
 
 
-  All other parameters are optional: `enable_highlighting`, `limit`, `offset`, `sort_by`.
+  All other parameters are optional: `enable_highlighting`, `limit`, `offset`, `sort_by`, and `routed`.
 
 
 
@@ -136,6 +136,25 @@
       `#{api_scheme_and_host}/api/v2/search?affiliate=#{h(@site.name)}&access_key=#{h(@site.api_access_key)}&query={YOUR_SEARCH_TERM}&sort_by=date`
 
 
+
+
+
+  * ### routed
+
+
+
+
+      If set to true, then any queries for terms that you have set to be [routed queries](https://search.gov/manual/routed-queries.html) will return a url for your site to redirect to.
+
+      For example, if we set queries for `example` to route to `https://search.gov` then the following API call:
+
+      `#{api_scheme_and_host}/api/v2/search?affiliate=#{h(@site.name)}&access_key=#{h(@site.api_access_key)}&query=example&routed=true`
+
+      Should return this example response:
+
+      `{"redirect":"https://search.gov"}`
+
+      By default, routed is set to `false`, so you must set up the routed queries in the admin section, and include this parameter in your API calls. Including `routed=true` in all of your queries is okay.
 
 
   ## Response Fields
