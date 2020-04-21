@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Api::V2::SearchesController do
   fixtures :affiliates, :document_collections
-  let(:affiliate) { mock_model(Affiliate, api_access_key: 'usagov_key', locale: :en) }
+  let(:affiliate) { affiliates(:usagov_affiliate) }
   let(:search_params) do
     { affiliate: 'usagov',
       access_key: 'usagov_key',
@@ -25,6 +25,11 @@ describe Api::V2::SearchesController do
       file_type: 'pdf',
       filter: '2'
     }
+  end
+  let(:routed_query_setup) do
+    routed_query = affiliate.routed_queries.build(url: "http://www.gov.gov/foo.html", description: "testing")
+    routed_query.routed_query_keywords.build(keyword: 'foo bar')
+    routed_query.save!
   end
 
   describe '#blended' do
@@ -63,7 +68,6 @@ describe Api::V2::SearchesController do
       let!(:search) { double(ApiAzureSearch, as_json: { foo: 'bar'}, modules: %w(AWEB)) }
 
       before do
-        affiliate = mock_model(Affiliate, api_access_key: 'usagov_key', locale: :en)
         expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
 
         expect(ApiAzureSearch).to receive(:new).with(hash_including(query_params)).and_return(search)
@@ -85,16 +89,12 @@ describe Api::V2::SearchesController do
       end
     end
 
-    context 'when the search options are valid and the routed flag is enabled' do
-      let(:affiliate) { affiliates(:usagov_affiliate) }
-
+    context 'when the search options are valid and routed query term is matched' do
       before do
-        routed_query = affiliate.routed_queries.build(url: "http://www.gov.gov/foo.html", description: "testing")
-        routed_query.routed_query_keywords.build(keyword: 'foo bar')
-        routed_query.save!
+        routed_query_setup
 
         get :azure,
-            params: search_params.merge(query: 'foo bar', routed: 'true')
+            params: search_params.merge(query: 'foo bar')
       end
 
       it { is_expected.to respond_with :success }
@@ -120,7 +120,6 @@ describe Api::V2::SearchesController do
       let!(:search) { double(ApiAzureCompositeWebSearch, as_json: { foo: 'bar'}, modules: %w(AZCW)) }
 
       before do
-        affiliate = mock_model(Affiliate, api_access_key: 'usagov_key', locale: :en)
         expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
 
         expect(ApiAzureCompositeWebSearch).to receive(:new).
@@ -141,15 +140,11 @@ describe Api::V2::SearchesController do
       end
     end
 
-    context 'when the search options are valid and the routed flag is enabled' do
-      let(:affiliate) { affiliates(:usagov_affiliate) }
-
+    context 'when the search options are valid and and routed query term is matched' do
       before do
-        routed_query = affiliate.routed_queries.build(url: "http://www.gov.gov/foo.html", description: "testing")
-        routed_query.routed_query_keywords.build(keyword: 'foo bar')
-        routed_query.save!
+        routed_query_setup
 
-        get :azure_web, params: search_params.merge(query: 'foo bar', routed: 'true')
+        get :azure_web, params: search_params.merge(query: 'foo bar')
       end
 
       it { is_expected.to respond_with :success }
@@ -175,7 +170,6 @@ describe Api::V2::SearchesController do
       let!(:search) { double(ApiAzureCompositeImageSearch, as_json: { foo: 'bar'}, modules: %w(AZCI)) }
 
       before do
-        affiliate = mock_model(Affiliate, api_access_key: 'usagov_key', locale: :en)
         expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
 
         expect(ApiAzureCompositeImageSearch).to receive(:new).
@@ -196,15 +190,11 @@ describe Api::V2::SearchesController do
       end
     end
 
-    context 'when the search options are valid and the routed flag is enabled' do
-      let(:affiliate) { affiliates(:usagov_affiliate) }
-
+    context 'when the search options are valid and and routed query term is matched' do
       before do
-        routed_query = affiliate.routed_queries.build(url: "http://www.gov.gov/foo.html", description: "testing")
-        routed_query.routed_query_keywords.build(keyword: 'foo bar')
-        routed_query.save!
+        routed_query_setup
 
-        get :azure_image, params: search_params.merge(query: 'foo bar', routed: 'true')
+        get :azure_image, params: search_params.merge(query: 'foo bar')
       end
 
       it { is_expected.to respond_with :success }
@@ -232,7 +222,6 @@ describe Api::V2::SearchesController do
       let!(:search) { double(ApiBingSearch, as_json: { foo: 'bar'}, modules: %w(BWEB)) }
 
       before do
-        affiliate = mock_model(Affiliate, api_access_key: 'usagov_key', locale: :en)
         expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
 
         expect(ApiBingSearch).to receive(:new).
@@ -253,15 +242,11 @@ describe Api::V2::SearchesController do
       end
     end
 
-    context 'when the search options are valid and the routed flag is enabled' do
-      let(:affiliate) { affiliates(:usagov_affiliate) }
-
+    context 'when the search options are valid and and routed query term is matched' do
       before do
-        routed_query = affiliate.routed_queries.build(url: "http://www.gov.gov/foo.html", description: "testing")
-        routed_query.routed_query_keywords.build(keyword: 'foo bar')
-        routed_query.save!
+        routed_query_setup
 
-        get :bing, params: bing_params.merge(query: 'foo bar', routed: 'true')
+        get :bing, params: bing_params.merge(query: 'foo bar')
       end
 
       it { is_expected.to respond_with :success }
@@ -293,7 +278,6 @@ describe Api::V2::SearchesController do
       let!(:search) { double(ApiGssSearch, as_json: { foo: 'bar'}, modules: %w(GWEB)) }
 
       before do
-        affiliate = mock_model(Affiliate, api_access_key: 'usagov_key', locale: :en)
         expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
 
         expect(ApiGssSearch).to receive(:new).with(hash_including(:query => 'api')).and_return(search)
@@ -313,15 +297,11 @@ describe Api::V2::SearchesController do
       end
     end
 
-    context 'when the search options are not valid and the routed flag is enabled' do
-      let(:affiliate) { affiliates(:usagov_affiliate) }
-
+    context 'when the search options are not valid and and routed query term is matched' do
       before do
-        routed_query = affiliate.routed_queries.build(url: "http://www.gov.gov/foo.html", description: "testing")
-        routed_query.routed_query_keywords.build(keyword: 'foo bar')
-        routed_query.save!
+        routed_query_setup
 
-        get :gss, params: gss_params.merge(query: 'foo bar', routed: 'true')
+        get :gss, params: gss_params.merge(query: 'foo bar')
       end
 
       it { is_expected.to respond_with :success }
@@ -388,15 +368,11 @@ describe Api::V2::SearchesController do
       end
     end
 
-    context 'when the search options are not valid and the routed flag is enabled' do
-      let(:affiliate) { affiliates(:usagov_affiliate) }
-
+    context 'when the search options are not valid and and routed query term is matched' do
       before do
-        routed_query = affiliate.routed_queries.build(url: "http://www.gov.gov/foo.html", description: "testing")
-        routed_query.routed_query_keywords.build(keyword: 'foo bar')
-        routed_query.save!
+        routed_query_setup
 
-        get :i14y, params: search_params.merge(query: 'foo bar', routed: 'true')
+        get :i14y, params: search_params.merge(query: 'foo bar')
       end
 
       it { is_expected.to respond_with :success }
@@ -430,7 +406,6 @@ describe Api::V2::SearchesController do
       let!(:search) { double(ApiVideoSearch, as_json: { foo: 'bar'}, modules: %w(VIDS)) }
 
       before do
-        affiliate = mock_model(Affiliate, api_access_key: 'usagov_key', locale: :en)
         expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
 
         expect(ApiVideoSearch).to receive(:new).with(hash_including(query_params)).and_return(search)
@@ -450,15 +425,11 @@ describe Api::V2::SearchesController do
       end
     end
 
-    context 'when the search options are not valid and the routed flag is enabled' do
-      let(:affiliate) { affiliates(:usagov_affiliate) }
-
+    context 'when the search options are not valid and and routed query term is matched' do
       before do
-        routed_query = affiliate.routed_queries.build(url: "http://www.gov.gov/foo.html", description: "testing")
-        routed_query.routed_query_keywords.build(keyword: 'foo bar')
-        routed_query.save!
+        routed_query_setup
 
-        get :video, params: search_params.merge(query: 'foo bar', routed: 'true')
+        get :video, params: search_params.merge(query: 'foo bar')
       end
 
       it { is_expected.to respond_with :success }
@@ -485,7 +456,6 @@ describe Api::V2::SearchesController do
       let!(:search) { double(ApiBingDocsSearch, as_json: { foo: 'bar'}, modules: %w(BWEB)) }
 
       before do
-        affiliate = mock_model(Affiliate, api_access_key: 'usagov_key', locale: :en, search_engine: 'BingV6')
         expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
 
         expect(ApiBingDocsSearch).to receive(:new).with(hash_including(query_params)).and_return(search)
@@ -510,7 +480,6 @@ describe Api::V2::SearchesController do
       let!(:document_collection) { double(DocumentCollection, too_deep_for_bing?: true) }
 
       before do
-        affiliate = mock_model(Affiliate, api_access_key: 'usagov_key', locale: :en, search_engine: 'BingV6')
         expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
 
         expect(DocumentCollection).to receive(:find).and_return(document_collection)
@@ -536,8 +505,8 @@ describe Api::V2::SearchesController do
       let!(:search) { double(ApiGoogleDocsSearch, as_json: { foo: 'bar'}, modules: %w(GWEB)) }
 
       before do
-        affiliate = mock_model(Affiliate, api_access_key: 'usagov_key', locale: :en, search_engine: 'Google')
         expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
+        allow(affiliate).to receive(:search_engine).and_return("Google")
 
         expect(ApiGoogleDocsSearch).to receive(:new).with(hash_including(query_params)).and_return(search)
         expect(search).to receive(:run)
@@ -556,15 +525,11 @@ describe Api::V2::SearchesController do
       end
     end
 
-    context 'when the search options are valid and the routed flag is enabled' do
-      let(:affiliate) { affiliates(:usagov_affiliate) }
-
+    context 'when the search options are valid and and routed query term is matched' do
       before do
-        routed_query = affiliate.routed_queries.build(url: "http://www.gov.gov/foo.html", description: "testing")
-        routed_query.routed_query_keywords.build(keyword: 'foo bar')
-        routed_query.save!
+        routed_query_setup
 
-        get :docs, params: docs_params.merge(query: 'foo bar', routed: 'true')
+        get :docs, params: docs_params.merge(query: 'foo bar')
       end
 
       it { is_expected.to respond_with :success }
