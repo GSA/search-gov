@@ -10,4 +10,5 @@
 = form.label :organization_name, 'Government agency'
 = form.text_field :organization_name
 = form.label :email, 'Email', class: 'required'
-= form.email_field :email, class: 'required'
+= form.email_field :email, disabled: true, class: 'required'
+%p To update your email address, please contact the Search.gov team at #{ mail_to "search@support.digitalgov.gov",  "search@support.digitalgov.gov"}.

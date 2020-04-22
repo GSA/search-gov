@@ -71,7 +71,6 @@ Feature: Users
       | First name        |               |
       | Last name         |               |
       | Government agency |               |
-      | Email             | elvis@cia.gov |
     And I press "Save"
     And I should see "Organization name can't be blank"
     And I should see "First name can't be blank"
@@ -80,10 +79,9 @@ Feature: Users
       | First name        | Elvis          |
       | Last name         | Presley        |
       | Government agency | CIA            |
-      | Email             | elvis@cia.gov  |
     And I press "Save"
     Then I should see "Account updated!"
-    And I should see "elvis@cia.gov"
+    And I should see "affiliate_admin@fixtures.org"
 
   # to be updated in SRCH-952 for login.gov
   @wip
