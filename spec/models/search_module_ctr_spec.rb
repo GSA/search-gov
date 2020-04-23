@@ -12,7 +12,7 @@ describe SearchModuleCtr do
 
       before do
         expect(ES::ELK.client_reader).to receive(:search).
-          with(hash_including(type: %w[search click], size: 0)).
+          with(hash_including(size: 0)).
           and_return(historical_mb_json_response, mb_json_response)
       end
 
@@ -37,7 +37,7 @@ describe SearchModuleCtr do
 
     context "when no stats are available for the daterange" do
       before do
-        expect(ES::ELK.client_reader).to receive(:search).with(hash_including(type: %w(search click))).twice.and_return nil
+        expect(ES::ELK.client_reader).to receive(:search).twice.and_return nil
       end
 
       it "should return an empty array" do

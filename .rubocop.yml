@@ -2788,7 +2788,9 @@ Style/BlockDelimiters:
 
 Style/BracesAroundHashParameters:
   Description: 'Enforce braces style around hash parameters.'
-  Enabled: true
+  # Disabling per https://github.com/rubocop-hq/rubocop/issues/7641.
+  # This cop will be removed from Rubocop 0.80.
+  Enabled: false
   VersionAdded: 0.14.1
   VersionChanged: 0.28
   EnforcedStyle: no_braces

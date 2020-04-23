@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe RtuTopN do
   let(:rtu_top_n) do
-    RtuTopN.new('an ES query body', 'event_type', false, Date.new(2019, 1, 1))
+    RtuTopN.new('an ES query body', false, Date.new(2019, 1, 1))
   end
 
   describe '#top_n' do
@@ -10,7 +10,6 @@ describe RtuTopN do
     let(:query_args) do
       {
         index: 'logstash-2019.01.01',
-        type: 'event_type',
         body: 'an ES query body',
         size: 10_000
       }
@@ -34,7 +33,7 @@ describe RtuTopN do
 
       it 'logs the error' do
         expect(Rails.logger).to receive(:error).
-          with(/Error querying top_n event_type data: search failure/)
+          with(/Error querying top_n data: search failure/)
         top_n
       end
     end

@@ -14,6 +14,7 @@ describe Sites::ReferrerQueriesController do
       let(:query_args) do
         [
           site.name,
+          'search',
           Date.parse('2019-11-01'),
           Date.parse('2019-11-11'),
           'referrer',

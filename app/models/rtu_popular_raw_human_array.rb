@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RtuPopularRawHumanArray
   MAX_RESULTS = 1000000
   RESULTS_SIZE = 10
@@ -9,7 +11,7 @@ class RtuPopularRawHumanArray
 
   def most_popular
     return INSUFFICIENT_DATA if @end_date.nil? or @start_date.nil?
-    date_range_top_n_query = DateRangeTopNQuery.new(@site_name, @start_date, @end_date, { field: aggs_field, size: MAX_RESULTS })
+    date_range_top_n_query = DateRangeTopNQuery.new(*query_args)
     rtu_most_popular = query_class.new(date_range_top_n_query.body, false)
     raw_cnt_arr = rtu_most_popular.top_n
     rtu_human_most_popular = query_class.new(date_range_top_n_query.body, true)
@@ -23,4 +25,15 @@ class RtuPopularRawHumanArray
 
   end
 
+  private
+
+  def query_args
+    [
+      @site_name,
+      type,
+      @start_date,
+      @end_date,
+      { field: aggs_field, size: MAX_RESULTS }
+    ]
+  end
 end

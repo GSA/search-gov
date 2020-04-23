@@ -13,6 +13,11 @@ describe ModuleSparklineQuery do
               }
             },
             {
+              "terms": {
+                "type": ["search","click"]
+              }
+            },
+            {
               "range": {
                 "@timestamp": {
                   "gte": "now-60d/d"

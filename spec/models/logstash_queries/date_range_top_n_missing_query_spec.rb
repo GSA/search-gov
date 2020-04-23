@@ -3,6 +3,7 @@ require 'spec_helper'
 describe DateRangeTopNMissingQuery do
   let(:query) do
     DateRangeTopNMissingQuery.new('affiliate_name',
+                                  'search',
                                   Date.new(2015, 6, 1),
                                   Date.new(2015, 6, 30),
                                   { field: 'params.query.raw', size: 1000 })
@@ -15,6 +16,11 @@ describe DateRangeTopNMissingQuery do
             {
               "term": {
                 "params.affiliate": "affiliate_name"
+              }
+            },
+            {
+              "terms": {
+                "type": ["search"]
               }
             },
             {

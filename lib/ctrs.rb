@@ -6,7 +6,6 @@ module Ctrs
   def ctrs(query_body, historical_days_back = 0)
     params = {
       index: indexes_to_date(historical_days_back, true),
-      type: %w[search click],
       body: query_body,
       size: 0,
       ignore_unavailable: true

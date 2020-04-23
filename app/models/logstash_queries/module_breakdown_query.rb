@@ -16,6 +16,7 @@ class ModuleBreakdownQuery
 
   def booleans(json)
     must_affiliate(json, @affiliate_name) if @affiliate_name.present?
+    must_type(json, %w[search click])
     must_not_spider(json)
   end
 end

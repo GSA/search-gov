@@ -23,9 +23,14 @@ describe LowCtrQuery do
       "query": {
         "bool": {
           "filter": [
-                  {
+            {
               "term": {
                 "params.affiliate": "affiliate_name"
+              }
+            },
+            {
+              "terms": {
+                "type": ["search","click"]
               }
             },
             {

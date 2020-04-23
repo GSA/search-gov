@@ -28,6 +28,11 @@ describe TopQueryMatchQuery do
               }
             },
             {
+              "terms": {
+                "type": ["search","click"]
+              }
+            },
+            {
               "range": {
                 "@timestamp": {
                   "gte": "2014-06-28",
