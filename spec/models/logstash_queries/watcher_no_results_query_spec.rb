@@ -22,6 +22,11 @@ describe WatcherNoResultsQuery do
               }
             },
             {
+              "terms": {
+                "type": ["search"]
+              }
+            },
+            {
               "range": {
                 "@timestamp": {
                   "gte": "{{ctx.trigger.scheduled_time}}||-1w",

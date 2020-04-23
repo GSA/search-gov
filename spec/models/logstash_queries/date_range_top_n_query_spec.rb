@@ -3,9 +3,12 @@ require 'spec_helper'
 describe DateRangeTopNQuery do
   let(:query) do
     DateRangeTopNQuery.new('affiliate_name',
+                           'search',
                            Date.parse('2019-11-01'),
                            Date.parse('2019-11-07'),
-                           { field: 'params.query.raw', size: 1000 })
+                           { field: 'params.query.raw',
+                             size: 1000 }
+                          )
   end
   let(:expected_body) do
     {
@@ -15,6 +18,11 @@ describe DateRangeTopNQuery do
             {
               "term": {
                 "params.affiliate": "affiliate_name"
+              }
+            },
+            {
+              "terms": {
+                "type": ["search"]
               }
             },
             {

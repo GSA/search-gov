@@ -32,6 +32,11 @@ describe WatcherLowCtrQuery do
               }
             },
             {
+              "terms": {
+                "type": ["search","click"]
+              }
+            },
+            {
               "exists": {
                 "field": "modules"
               }

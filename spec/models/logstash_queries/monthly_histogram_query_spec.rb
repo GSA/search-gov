@@ -13,6 +13,11 @@ describe MonthlyHistogramQuery do
               }
             },
             {
+              "terms": {
+                "type": ["search"]
+              }
+            },
+            {
               "range": {
                 "@timestamp": {
                   "gte": "2014-06-28"

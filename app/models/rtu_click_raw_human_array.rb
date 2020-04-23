@@ -10,4 +10,8 @@ class RtuClickRawHumanArray < RtuPopularRawHumanArray
   def top_clicks
     most_popular
   end
+
+  def type
+    'click'
+  end
 end

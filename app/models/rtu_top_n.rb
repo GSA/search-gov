@@ -3,9 +3,8 @@
 class RtuTopN
   include LogstashPrefix
 
-  def initialize(query_body, type, filter_bots, day)
+  def initialize(query_body, filter_bots, day)
     @query_body = query_body
-    @type = type
     @filter_bots = filter_bots
     @day = day.present? ? day.strftime('%Y.%m.%d') : '*'
   end
@@ -34,7 +33,6 @@ class RtuTopN
   def query_opts
     {
       index: "#{logstash_prefix(@filter_bots)}#{@day}",
-      type: @type,
       body: @query_body,
       size: 10_000
     }
@@ -43,7 +41,7 @@ class RtuTopN
   def response
     ES::ELK.client_reader.search(query_opts)
   rescue StandardError => error
-    Rails.logger.error("Error querying top_n #{@type} data: #{error}")
+    Rails.logger.error("Error querying top_n data: #{error}")
     {}
   end
 

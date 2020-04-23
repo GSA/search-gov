@@ -24,7 +24,7 @@ class DrilldownQuery
       json.child! { json.term { json.set! @field, @value } }
     end
     must_affiliate(json, @affiliate_name)
-    must_type(json, @type)
+    must_type(json, type)
     must_not_spider(json)
   end
 end

@@ -1,7 +1,13 @@
 require 'spec_helper'
 
 describe TopNExistsQuery do
-  let(:query) { TopNExistsQuery.new('affiliate_name', { field: 'type', size: 1000 }) }
+  let(:query) do
+    TopNExistsQuery.new(
+      'affiliate_name',
+      'search',
+      { field: 'type', size: 1000 }
+    )
+  end
   let(:expected_body) do
     {
       "query": {
@@ -10,6 +16,11 @@ describe TopNExistsQuery do
             {
               "term": {
                 "params.affiliate": "affiliate_name"
+              }
+            },
+            {
+              "terms": {
+                "type": ["search"]
               }
             },
             {

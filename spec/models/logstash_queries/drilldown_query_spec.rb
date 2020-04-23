@@ -33,8 +33,8 @@ describe DrilldownQuery do
               }
             },
             {
-              "term": {
-                "type": "click"
+              "terms": {
+                "type": ["click"]
               }
             }
           ],

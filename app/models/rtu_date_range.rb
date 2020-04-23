@@ -1,13 +1,15 @@
 # frozen_string_literal: true
 
 class RtuDateRange
+  attr_reader :affiliate_name, :type
+
   def initialize(affiliate_name, type)
     @affiliate_name = affiliate_name
     @type = type
   end
 
   def available_dates_range
-    rtu_date_range_query = RtuDateRangeQuery.new(@affiliate_name)
+    rtu_date_range_query = RtuDateRangeQuery.new(affiliate_name, type)
     result = search(rtu_date_range_query.body)
     result.present? ? extract_date_range(result) : Date.current..Date.current
   end
@@ -23,7 +25,13 @@ class RtuDateRange
   private
 
   def search(query_body)
-    ES::ELK.client_reader.search(index: "logstash-*", type: @type, body: query_body, size: 0) rescue nil
+    ES::ELK.client_reader.search(
+      index: 'logstash-*',
+      body: query_body,
+      size: 0
+    )
+  rescue StandardError
+    nil
   end
 
   def extract_date_range(result)

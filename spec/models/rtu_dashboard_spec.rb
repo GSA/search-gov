@@ -34,7 +34,8 @@ describe RtuDashboard do
 
       before do
         expect(TopNMissingQuery).to receive(:new).at_least(:once).
-          with(site.name, field: 'params.query.raw', min_doc_count: 10).and_call_original
+          with(site.name, 'search', field: 'params.query.raw', min_doc_count: 10).
+          and_call_original
         allow(ES::ELK.client_reader).to receive(:search).and_return json_response
       end
 
@@ -58,9 +59,29 @@ describe RtuDashboard do
         allow(ES::ELK.client_reader).to receive(:search).and_return json_response
       end
 
+      it "searches for the affiliate's top N URLs" do
+        expect(TopNQuery).to receive(:new).
+          with(site.name, 'click', field: 'params.url').
+          and_call_original
+        dashboard.top_urls
+      end
+
       it 'should return an array of url/count pairs' do
         top_urls = Hash[json_response["aggregations"]["agg"]["buckets"].collect { |hash| [hash["key"], hash["doc_count"]] }]
         expect(dashboard.top_urls).to eq(top_urls)
+      end
+    end
+
+    context 'when something goes wrong' do
+      before do
+        allow(ES::ELK.client_reader).to receive(:search).
+          and_raise(StandardError, 'failure')
+      end
+
+      it 'logs the error' do
+        expect(Rails.logger).to receive(:error).
+          with(/Error querying top_n data: failure/)
+        dashboard.top_urls
       end
     end
   end
@@ -106,9 +127,16 @@ describe RtuDashboard do
 
   describe "#monthly_usage_chart" do
     let(:json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/month_histogram.json")) }
+    let(:monthly_histogram_query) do
+      instance_double(MonthlyHistogramQuery, body: 'monthly_histogram_query')
+    end
 
     before do
-      allow(ES::ELK.client_reader).to receive(:search).and_return(json_response)
+      allow(MonthlyHistogramQuery).to receive(:new).
+        with(site.name).and_return(monthly_histogram_query)
+      allow(ES::ELK.client_reader).to receive(:search).
+        with(hash_including(body: 'monthly_histogram_query')).
+        and_return(json_response)
     end
 
     it 'creates a Google chart' do
