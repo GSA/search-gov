@@ -27,9 +27,18 @@ describe Api::V2::SearchesController do
     }
   end
   let(:routed_query_setup) do
-    routed_query = affiliate.routed_queries.build(url: "http://www.gov.gov/foo.html", description: "testing")
+    routed_query = affiliate.routed_queries.build(url: 'http://www.gov.gov/foo.html',
+                                                  description: 'testing')
     routed_query.routed_query_keywords.build(keyword: 'foo bar')
     routed_query.save!
+
+    # Routed queries pass a mocked search object
+    # with the QRTD module
+    # to the Search Impression logger.
+    long_class_name = RoutedQueryImpressionLogger::QueryRoutedSearch
+    mock_search = instance_double(long_class_name, modules: ['QRTD'])
+    allow(long_class_name).to receive(:new).with(['QRTD'], {}).and_return(mock_search)
+    expect(SearchImpression).to receive(:log).with(mock_search, any_args)
   end
 
   describe '#blended' do
@@ -140,7 +149,7 @@ describe Api::V2::SearchesController do
       end
     end
 
-    context 'when the search options are valid and and routed query term is matched' do
+    context 'when the search options are valid and routed query term is matched' do
       before do
         routed_query_setup
 
@@ -190,7 +199,7 @@ describe Api::V2::SearchesController do
       end
     end
 
-    context 'when the search options are valid and and routed query term is matched' do
+    context 'when the search options are valid and routed query term is matched' do
       before do
         routed_query_setup
 
@@ -242,7 +251,7 @@ describe Api::V2::SearchesController do
       end
     end
 
-    context 'when the search options are valid and and routed query term is matched' do
+    context 'when the search options are valid and routed query term is matched' do
       before do
         routed_query_setup
 
@@ -297,7 +306,7 @@ describe Api::V2::SearchesController do
       end
     end
 
-    context 'when the search options are not valid and and routed query term is matched' do
+    context 'when the search options are not valid and routed query term is matched' do
       before do
         routed_query_setup
 
@@ -368,7 +377,7 @@ describe Api::V2::SearchesController do
       end
     end
 
-    context 'when the search options are not valid and and routed query term is matched' do
+    context 'when the search options are not valid and routed query term is matched' do
       before do
         routed_query_setup
 
@@ -425,7 +434,7 @@ describe Api::V2::SearchesController do
       end
     end
 
-    context 'when the search options are not valid and and routed query term is matched' do
+    context 'when the search options are not valid and routed query term is matched' do
       before do
         routed_query_setup
 
@@ -525,7 +534,7 @@ describe Api::V2::SearchesController do
       end
     end
 
-    context 'when the search options are valid and and routed query term is matched' do
+    context 'when the search options are valid and routed query term is matched' do
       before do
         routed_query_setup
 
