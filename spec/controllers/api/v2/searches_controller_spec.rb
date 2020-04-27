@@ -25,20 +25,6 @@ describe Api::V2::SearchesController do
       filter: '2'
     }
   end
-  let(:routed_query_setup) do
-    routed_query = affiliate.routed_queries.build(url: 'http://www.gov.gov/foo.html',
-                                                  description: 'testing')
-    routed_query.routed_query_keywords.build(keyword: 'foo bar')
-    routed_query.save!
-
-    # Routed queries pass a mocked search object
-    # with the QRTD module
-    # to the Search Impression logger.
-    long_class_name = RoutedQueryImpressionLogger::QueryRoutedSearch
-    mock_search = instance_double(long_class_name, modules: ['QRTD'])
-    allow(long_class_name).to receive(:new).with(['QRTD'], {}).and_return(mock_search)
-    expect(SearchImpression).to receive(:log).with(mock_search, any_args)
-  end
 
   describe '#blended' do
     before do
@@ -97,7 +83,8 @@ describe Api::V2::SearchesController do
 
     context 'when a routed query term is matched' do
       before do
-        routed_query_setup
+        expect(RoutedQueryImpressionLogger).to receive(:log).
+          with(affiliate, 'moar unclaimed money', an_instance_of(ActionController::TestRequest))
 
         get :azure, params: search_params.merge(query: 'moar unclaimed money')
       end
@@ -147,7 +134,9 @@ describe Api::V2::SearchesController do
 
     context 'when a routed query term is matched' do
       before do
-        routed_query_setup
+        expect(RoutedQueryImpressionLogger).to receive(:log).
+          with(affiliate, 'moar unclaimed money', an_instance_of(ActionController::TestRequest))
+
 
         get :azure_web, params: search_params.merge(query: 'moar unclaimed money')
       end
@@ -197,7 +186,8 @@ describe Api::V2::SearchesController do
 
     context 'when a routed query term is matched' do
       before do
-        routed_query_setup
+        expect(RoutedQueryImpressionLogger).to receive(:log).
+          with(affiliate, 'moar unclaimed money', an_instance_of(ActionController::TestRequest))
 
         get :azure_image, params: search_params.merge(query: 'moar unclaimed money')
       end
@@ -249,7 +239,8 @@ describe Api::V2::SearchesController do
 
     context 'when a routed query term is matched' do
       before do
-        routed_query_setup
+        expect(RoutedQueryImpressionLogger).to receive(:log).
+          with(affiliate, 'moar unclaimed money', an_instance_of(ActionController::TestRequest))
 
         get :bing, params: bing_params.merge(query: 'moar unclaimed money')
       end
@@ -304,7 +295,8 @@ describe Api::V2::SearchesController do
 
     context 'when a routed query term is matched' do
       before do
-        routed_query_setup
+        expect(RoutedQueryImpressionLogger).to receive(:log).
+          with(affiliate, 'moar unclaimed money', an_instance_of(ActionController::TestRequest))
 
         get :gss, params: gss_params.merge(query: 'moar unclaimed money')
       end
@@ -375,7 +367,8 @@ describe Api::V2::SearchesController do
 
     context 'when a routed query term is matched' do
       before do
-        routed_query_setup
+        expect(RoutedQueryImpressionLogger).to receive(:log).
+          with(affiliate, 'moar unclaimed money', an_instance_of(ActionController::TestRequest))
 
         get :i14y, params: search_params.merge(query: 'moar unclaimed money')
       end
@@ -432,7 +425,8 @@ describe Api::V2::SearchesController do
 
     context 'when a routed query term is matched' do
       before do
-        routed_query_setup
+        expect(RoutedQueryImpressionLogger).to receive(:log).
+          with(affiliate, 'moar unclaimed money', an_instance_of(ActionController::TestRequest))
 
         get :video, params: search_params.merge(query: 'moar unclaimed money')
       end
@@ -534,7 +528,8 @@ describe Api::V2::SearchesController do
 
     context 'when a routed query term is matched' do
       before do
-        routed_query_setup
+        expect(RoutedQueryImpressionLogger).to receive(:log).
+          with(affiliate, 'moar unclaimed money', an_instance_of(ActionController::TestRequest))
 
         get :docs, params: docs_params.merge(query: 'moar unclaimed money')
       end

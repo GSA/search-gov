@@ -85,12 +85,12 @@ module Api
           .where(routed_query_keywords:{keyword: search_params[:query]})
           .first
 
-        if routed_query
-          RoutedQueryImpressionLogger.log(affiliate,
-                                      @search_options.query, request)
+        return unless routed_query
 
-          respond_with({ route_to: routed_query[:url] }, { status: 200 })
-        end
+        RoutedQueryImpressionLogger.log(affiliate,
+                                        @search_options.query, request)
+
+        respond_with({ route_to: routed_query[:url] }, { status: 200 })
       end
 
       def search_params
