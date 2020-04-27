@@ -1,11 +1,10 @@
 require 'spec_helper'
 
 describe Api::V2::SearchesController do
-  fixtures :affiliates, :document_collections
-  let(:affiliate) { affiliates(:usagov_affiliate) }
+  let(:affiliate) { affiliates(:basic_affiliate) }
   let(:search_params) do
-    { affiliate: 'usagov',
-      access_key: 'usagov_key',
+    { affiliate: 'nps.gov',
+      access_key: 'basic_key',
       format: 'json',
       api_key: 'myawesomekey',
       query: 'api',
@@ -86,9 +85,7 @@ describe Api::V2::SearchesController do
                                                    hash_including('query'),
                                                    be_a_kind_of(ActionDispatch::Request))
 
-        get :azure,
-            params: search_params.
-              merge(access_key: 'usagov_key')
+        get :azure, params: search_params
       end
 
       it { is_expected.to respond_with :success }
@@ -98,18 +95,17 @@ describe Api::V2::SearchesController do
       end
     end
 
-    context 'when the search options are valid and routed query term is matched' do
+    context 'when a routed query term is matched' do
       before do
         routed_query_setup
 
-        get :azure,
-            params: search_params.merge(query: 'foo bar')
+        get :azure, params: search_params.merge(query: 'moar unclaimed money')
       end
 
       it { is_expected.to respond_with :success }
 
       it 'returns search JSON' do
-        expect(JSON.parse(response.body)['route_to']).to eq('http://www.gov.gov/foo.html')
+        expect(JSON.parse(response.body)['route_to']).to eq('https://www.usa.gov/unclaimed_money')
       end
     end
   end
@@ -139,7 +135,7 @@ describe Api::V2::SearchesController do
                                                    hash_including('query'),
                                                    be_a_kind_of(ActionDispatch::Request))
 
-        get :azure_web, params: search_params.merge(access_key: 'usagov_key')
+        get :azure_web, params: search_params
       end
 
       it { is_expected.to respond_with :success }
@@ -149,17 +145,17 @@ describe Api::V2::SearchesController do
       end
     end
 
-    context 'when the search options are valid and routed query term is matched' do
+    context 'when a routed query term is matched' do
       before do
         routed_query_setup
 
-        get :azure_web, params: search_params.merge(query: 'foo bar')
+        get :azure_web, params: search_params.merge(query: 'moar unclaimed money')
       end
 
       it { is_expected.to respond_with :success }
 
       it 'returns search JSON' do
-        expect(JSON.parse(response.body)['route_to']).to eq('http://www.gov.gov/foo.html')
+        expect(JSON.parse(response.body)['route_to']).to eq('https://www.usa.gov/unclaimed_money')
       end
     end
   end
@@ -199,17 +195,17 @@ describe Api::V2::SearchesController do
       end
     end
 
-    context 'when the search options are valid and routed query term is matched' do
+    context 'when a routed query term is matched' do
       before do
         routed_query_setup
 
-        get :azure_image, params: search_params.merge(query: 'foo bar')
+        get :azure_image, params: search_params.merge(query: 'moar unclaimed money')
       end
 
       it { is_expected.to respond_with :success }
 
       it 'returns search JSON' do
-        expect(JSON.parse(response.body)['route_to']).to eq('http://www.gov.gov/foo.html')
+        expect(JSON.parse(response.body)['route_to']).to eq('https://www.usa.gov/unclaimed_money')
       end
     end
   end
@@ -251,17 +247,17 @@ describe Api::V2::SearchesController do
       end
     end
 
-    context 'when the search options are valid and routed query term is matched' do
+    context 'when a routed query term is matched' do
       before do
         routed_query_setup
 
-        get :bing, params: bing_params.merge(query: 'foo bar')
+        get :bing, params: bing_params.merge(query: 'moar unclaimed money')
       end
 
       it { is_expected.to respond_with :success }
 
       it 'returns search JSON' do
-        expect(JSON.parse(response.body)['route_to']).to eq('http://www.gov.gov/foo.html')
+        expect(JSON.parse(response.body)['route_to']).to eq('https://www.usa.gov/unclaimed_money')
       end
     end
   end
@@ -306,17 +302,17 @@ describe Api::V2::SearchesController do
       end
     end
 
-    context 'when the search options are not valid and routed query term is matched' do
+    context 'when a routed query term is matched' do
       before do
         routed_query_setup
 
-        get :gss, params: gss_params.merge(query: 'foo bar')
+        get :gss, params: gss_params.merge(query: 'moar unclaimed money')
       end
 
       it { is_expected.to respond_with :success }
 
       it 'returns search JSON' do
-        expect(JSON.parse(response.body)['route_to']).to eq('http://www.gov.gov/foo.html')
+        expect(JSON.parse(response.body)['route_to']).to eq('https://www.usa.gov/unclaimed_money')
       end
     end
   end
@@ -326,7 +322,7 @@ describe Api::V2::SearchesController do
       before do
         get :i14y,
             params: {
-              affiliate: 'usagov',
+              affiliate: 'nps.gov',
               format: 'json',
               query: 'api'
             }
@@ -360,7 +356,7 @@ describe Api::V2::SearchesController do
 
       it 'passes the correct options to its ApiI4ySearch object' do
         expect(assigns(:search_options).attributes).to include({
-          access_key: 'usagov_key',
+          access_key: 'basic_key',
           affiliate: affiliate,
           enable_highlighting: true,
           file_type: 'pdf',
@@ -377,17 +373,17 @@ describe Api::V2::SearchesController do
       end
     end
 
-    context 'when the search options are not valid and routed query term is matched' do
+    context 'when a routed query term is matched' do
       before do
         routed_query_setup
 
-        get :i14y, params: search_params.merge(query: 'foo bar')
+        get :i14y, params: search_params.merge(query: 'moar unclaimed money')
       end
 
       it { is_expected.to respond_with :success }
 
       it 'returns search JSON' do
-        expect(JSON.parse(response.body)['route_to']).to eq('http://www.gov.gov/foo.html')
+        expect(JSON.parse(response.body)['route_to']).to eq('https://www.usa.gov/unclaimed_money')
       end
     end
   end
@@ -397,7 +393,7 @@ describe Api::V2::SearchesController do
       before do
         get :video,
             params: {
-              affiliate: 'usagov',
+              affiliate: 'nps.gov',
               format: 'json',
               query: 'api'
             }
@@ -434,17 +430,17 @@ describe Api::V2::SearchesController do
       end
     end
 
-    context 'when the search options are not valid and routed query term is matched' do
+    context 'when a routed query term is matched' do
       before do
         routed_query_setup
 
-        get :video, params: search_params.merge(query: 'foo bar')
+        get :video, params: search_params.merge(query: 'moar unclaimed money')
       end
 
       it { is_expected.to respond_with :success }
 
       it 'returns search JSON' do
-        expect(JSON.parse(response.body)['route_to']).to eq('http://www.gov.gov/foo.html')
+        expect(JSON.parse(response.body)['route_to']).to eq('https://www.usa.gov/unclaimed_money')
       end
     end
   end
@@ -466,6 +462,7 @@ describe Api::V2::SearchesController do
 
       before do
         expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
+        allow(affiliate).to receive(:search_engine).and_return("BingV6")
 
         expect(ApiBingDocsSearch).to receive(:new).with(hash_including(query_params)).and_return(search)
         expect(search).to receive(:run)
@@ -490,6 +487,7 @@ describe Api::V2::SearchesController do
 
       before do
         expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
+        allow(affiliate).to receive(:search_engine).and_return("BingV6")
 
         expect(DocumentCollection).to receive(:find).and_return(document_collection)
 
@@ -534,17 +532,17 @@ describe Api::V2::SearchesController do
       end
     end
 
-    context 'when the search options are valid and routed query term is matched' do
+    context 'when a routed query term is matched' do
       before do
         routed_query_setup
 
-        get :docs, params: docs_params.merge(query: 'foo bar')
+        get :docs, params: docs_params.merge(query: 'moar unclaimed money')
       end
 
       it { is_expected.to respond_with :success }
 
       it 'returns search JSON' do
-        expect(JSON.parse(response.body)['route_to']).to eq('http://www.gov.gov/foo.html')
+        expect(JSON.parse(response.body)['route_to']).to eq('https://www.usa.gov/unclaimed_money')
       end
     end
   end
