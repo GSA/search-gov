@@ -40,19 +40,5 @@ describe RoutedQueryImpressionLogger do
         mock_request
       )
     end
-
-    it 'has the expected log line' do
-      allow(Rails.logger).to receive(:info)
-
-      RoutedQueryImpressionLogger.log(affiliates(:basic_affiliate),
-                                      'example of a routed query',
-                                      mock_request)
-
-      expect(Rails.logger).to have_received(:info).with(
-        include('[Search Impression]',
-                '"modules":"QRTD"',
-                '"query":"example of a routed query"')
-      )
-    end
   end
 end
