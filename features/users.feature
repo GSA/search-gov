@@ -6,7 +6,8 @@ Feature: Users
     When I go to the user account page
     Then I should see the browser page titled "My Account"
     And I should see "Contact Information"
-    And I should see "Name"
+    And I should see "First name"
+    And I should see "Last name"
     And I should see "Agency"
     And I should see "Email"
 
@@ -22,12 +23,14 @@ Feature: Users
   Scenario: Registering as a new affiliate user who is a government employee or contractor with .gov email address
     Given I am on the sign up page
     When I fill in the following:
-      | Your full name | Lorem Ipsum            |
-      | Email          | lorem.ipsum@agency.gov |
+      | Your first name | Lorem                  |
+      | Your last name  | Ipsum                  |
+      | Email           | lorem.ipsum@agency.gov |
     And I press "Sign up"
     And I should see "Federal government agency can't be blank"
     When I fill in the following:
-      | Your full name            | Lorem Ipsum            |
+      | Your first name           | Lorem                  |
+      | Your last name            | Ipsum                  |
       | Email                     | lorem.ipsum@agency.gov |
       | Federal government agency | Agency                 |
     And I press "Sign up"
@@ -41,8 +44,8 @@ Feature: Users
   @javascript
   Scenario: Registering as a new affiliate user without government affiliated email address
     Given the following Users exist:
-      | contact_name | email             |
-      | Joe Schmo    | jschmo@random.com |
+      | first_name   | last_name         | email             |
+      | Joe          | Schno             | jschmo@random.com |
     And I am logged in with email "jschmo@random.com"
     Then I should be on the user account page
     And I should see "Because you don't have a .gov or .mil email address, we need additional information."
@@ -50,8 +53,8 @@ Feature: Users
   @javascript
   Scenario: Logging in as a new approved affiliate user without government affiliated email address
     Given the following Users exist:
-      | contact_name | email             | approval_status |
-      | Joe Schmo    | jschmo@random.com | approved        |
+      | first_name | last_name         | email             | approval_status |
+      | Joe        | Schmo             | jschmo@random.com | approved        |
 
     And I am logged in with email "jschmo@random.com"
     Then I should be on the user account page
@@ -65,19 +68,20 @@ Feature: Users
     Then I should see the browser page titled "Edit My Account"
     And I should see "Edit My Account"
     When I fill in the following:
-      | Name              |               |
+      | First name        |               |
+      | Last name         |               |
       | Government agency |               |
-      | Email             | elvis@cia.gov |
     And I press "Save"
     And I should see "Organization name can't be blank"
-    And I should see "Contact name can't be blank"
+    And I should see "First name can't be blank"
+    And I should see "Last name can't be blank"
     When I fill in the following:
-      | Name              | Elvis          |
+      | First name        | Elvis          |
+      | Last name         | Presley        |
       | Government agency | CIA            |
-      | Email             | elvis@cia.gov  |
     And I press "Save"
     Then I should see "Account updated!"
-    And I should see "elvis@cia.gov"
+    And I should see "affiliate_admin@fixtures.org"
 
   # to be updated in SRCH-952 for login.gov
   @wip

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module AnalyticsDSL
-  attr_reader :affiliate_name
+  attr_reader :affiliate_name, :type, :agg_options
 
   def filter_booleans(json)
     json.query do
@@ -77,9 +77,15 @@ module AnalyticsDSL
     end
   end
 
-  def must_affiliate_date_range(json, site_name, start_date, end_date)
-    must_affiliate(json, site_name)
-    must_date_range(json, start_date, end_date)
-    must_not_spider(json)
+  def must_type(json, type)
+    json.filter do
+      json.child! { json.terms { json.type Array(type) } }
+    end
+  end
+
+  def must_module(json, module_tag)
+    json.filter do
+      json.child! { json.term { json.modules module_tag } }
+    end
   end
 end

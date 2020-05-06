@@ -3,8 +3,13 @@
 class DrilldownQuery
   include AnalyticsDSL
 
-  def initialize(affiliate_name, start_date, end_date, field, value)
-    @affiliate_name, @start_date, @end_date, @field, @value = affiliate_name, start_date, end_date, field, value
+  def initialize(affiliate_name, start_date, end_date, field, value, type)
+    @affiliate_name = affiliate_name
+    @start_date = start_date
+    @end_date = end_date
+    @field = field
+    @value = value
+    @type = type
   end
 
   def body
@@ -19,6 +24,7 @@ class DrilldownQuery
       json.child! { json.term { json.set! @field, @value } }
     end
     must_affiliate(json, @affiliate_name)
+    must_type(json, type)
     must_not_spider(json)
   end
 end

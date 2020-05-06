@@ -72,7 +72,7 @@ class Affiliate < ApplicationRecord
   end
 
   has_many :available_templates, through: :affiliate_templates, source: :template
-  has_many :users, -> { order 'contact_name' }, through: :memberships
+  has_many :users, -> { order 'first_name' }, through: :memberships
 
   has_many :default_users,
            class_name: 'User',
@@ -510,8 +510,9 @@ class Affiliate < ApplicationRecord
 
   def last_month_query_count
     prev_month = Date.current.prev_month
-    count_query = CountQuery.new(name)
-    RtuCount.count(monthly_index_wildcard_spanning_date(prev_month, true), 'search', count_query.body)
+    count_query = CountQuery.new(name, 'search')
+    RtuCount.count(monthly_index_wildcard_spanning_date(prev_month, true),
+                   count_query.body)
   end
 
   def user_emails

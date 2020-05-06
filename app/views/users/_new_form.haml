@@ -1,6 +1,10 @@
 = render_error_messages(@user)
-= form.label :contact_name, 'Your full name'
-= form.text_field :contact_name, placeholder: 'Your full name'
+= form.label :first_name, 'First name'
+= form.text_field :first_name, 'First name', placeholder: 'Your first name'
+
+= form.label :last_name, 'Last name'
+= form.text_field :last_name, 'Last name', placeholder: 'Your last name'
+
 = form.label :organization_name, 'Federal government agency'
 = form.text_field :organization_name, placeholder: 'Federal government agency'
 = form.label :email

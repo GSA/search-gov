@@ -6,7 +6,8 @@ describe DrilldownQuery do
                        Date.new(2019,11,01),
                        Date.new(2019,11,15),
                        'params.query.raw',
-                       'foo')
+                       'foo',
+                       'click')
   end
   let(:expected_body) do
     {
@@ -29,6 +30,11 @@ describe DrilldownQuery do
             {
               "term": {
                 "params.affiliate": "affiliate_name"
+              }
+            },
+            {
+              "terms": {
+                "type": ["click"]
               }
             }
           ],

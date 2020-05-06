@@ -3,6 +3,7 @@
 class LowCtrQuery < DateRangeTopNExistsQuery
   def initialize(affiliate_name, start_date, end_date, agg_options = {})
     super(affiliate_name,
+          %w[search click],
           start_date,
           end_date,
           agg_options.reverse_merge(min_doc_count: 20,

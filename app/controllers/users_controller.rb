@@ -51,10 +51,10 @@ class UsersController < ApplicationController
     end
   end
 
-  def developer_redirect
-  end
+  def developer_redirect; end
 
   private
+
   def require_user
     redirect_to developer_redirect_url if super.nil? and current_user.is_developer?
   end
@@ -64,7 +64,8 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:contact_name,
+    params.require(:user).permit(:first_name,
+                                 :last_name,
                                  :organization_name,
                                  :email).to_h
   end

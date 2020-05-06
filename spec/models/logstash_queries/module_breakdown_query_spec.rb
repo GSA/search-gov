@@ -11,6 +11,11 @@ describe ModuleBreakdownQuery do
               "term": {
                 "params.affiliate": "affiliate_name"
               }
+            },
+            {
+              "terms": {
+                "type": ["search","click"]
+              }
             }
           ],
           "must_not": {
@@ -46,6 +51,13 @@ describe ModuleBreakdownQuery do
       {
         "query": {
           "bool": {
+            "filter": [
+              {
+                "terms": {
+                  "type": ["search","click"]
+                }
+              }
+            ],
             "must_not": {
               "term": {
                 "useragent.device": "Spider"

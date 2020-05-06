@@ -8,8 +8,8 @@ Feature: Image search using mobile template
 
   Scenario: English Image search on a legacy site
     Given the following legacy Affiliates exist:
-      | display_name      | name     | contact_email | contact_name | is_image_search_navigable |
-      | USA.gov           | usagov   | aff@bar.gov   | John Bar     | true                      |
+      | display_name      | name     | contact_email | first_name | last_name | is_image_search_navigable |
+      | USA.gov           | usagov   | aff@bar.gov   | John       | Bar       | true                      |
     When I am on usagov's search page
     And I fill in "Enter your search term" with "sunset"
     And I press "Search"

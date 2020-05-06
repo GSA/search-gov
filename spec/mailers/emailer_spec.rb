@@ -8,8 +8,9 @@ context do
 
   describe '.account_deactivation_warning' do
     let(:user) { users(:not_active_76_days) }
+    let(:expected_date) { 14.days.from_now.strftime("%m/%d/%Y") }
     let(:message) do
-      'automatically deactivate your account in the next 14 days due to inactivity.'
+      "at least once every 90 days to remain active. Please log in before #{expected_date}"
     end
 
     subject(:account_deactivation_warning) do
@@ -18,7 +19,8 @@ context do
 
     it { is_expected.to deliver_to(user.email) }
     it { is_expected.to have_body_text message }
-    it { is_expected.to have_body_text user.contact_name }
+    it { is_expected.to have_body_text user.first_name }
+    it { is_expected.to have_body_text user.last_name }
   end
 
   describe '#account_deactivated' do
@@ -31,7 +33,8 @@ context do
 
     it { is_expected.to deliver_to(user.email) }
     it { is_expected.to have_body_text message }
-    it { is_expected.to have_body_text user.contact_name }
+    it { is_expected.to have_body_text user.first_name }
+    it { is_expected.to have_body_text user.last_name }
   end
 
   describe '#user_approval_removed' do
@@ -41,7 +44,8 @@ context do
 
     it { is_expected.to deliver_to("usagov@search.gov") }
     it { is_expected.to have_body_text "The following user is no longer associated with any sites" }
-    it { is_expected.to have_body_text user.contact_name }
+    it { is_expected.to have_body_text user.first_name }
+    it { is_expected.to have_body_text user.last_name }
     it { is_expected.to have_body_text user.email }
     it { is_expected.to have_body_text user.organization_name }
   end
@@ -104,28 +108,30 @@ context do
     context "affiliate user has .com email address" do
       let(:user) do
         double(User,
-             :email => 'not.gov.user@agency.com',
-             :contact_name => 'Contractor Joe',
-             :affiliates => [],
-             :organization_name => 'Agency',
-             :requires_manual_approval? => true)
+               email: 'not.gov.user@agency.com',
+               first_name: 'Contractor Joe',
+               last_name: 'Shmoe',
+               affiliates: [],
+               organization_name: 'Agency',
+               requires_manual_approval?: true)
       end
 
       subject { Emailer.new_user_to_admin(user) }
 
       it { is_expected.to deliver_to('usagov@search.gov') }
       it { is_expected.to have_subject(/New user sign up/) }
-      it { is_expected.to have_body_text(/Name: Contractor Joe\nEmail: not.gov.user@agency.com\nOrganization name: Agency\n\n\n    This person doesn't have a .gov or .mil email address/) }
+      it { is_expected.to have_body_text(/Name: Contractor Joe Shmoe\nEmail: not.gov.user@agency.com\nOrganization name: Agency\n\n\n    This person doesn't have a .gov or .mil email address/) }
     end
 
     context "affiliate user has .gov email address" do
       let(:user) do
         double(User,
-             :email => 'not.com.user@agency.gov',
-             :contact_name => 'Gov Employee Joe',
-             :affiliates => [],
-             :organization_name => 'Gov Agency',
-             :requires_manual_approval? => false)
+               email: 'not.com.user@agency.gov',
+               first_name: 'Gov Employee Joe',
+               last_name: 'Shmoe',
+               affiliates: [],
+               organization_name: 'Gov Agency',
+               requires_manual_approval?: false)
       end
 
       subject { Emailer.new_user_to_admin(user) }
@@ -149,18 +155,18 @@ context do
       subject { Emailer.new_user_to_admin(user) }
 
       it { is_expected.to deliver_to('usagov@search.gov') }
-      it { is_expected.to have_body_text /Name: Invited Affiliate Manager\nEmail: affiliate_added_by_another_affiliate@fixtures.org\nOrganization name: Agency\n\n\n    Affiliate Manager added this person to 'Noaa Site'. They will be approved after verifying their email./ }
+      it { is_expected.to have_body_text /Name: Invited Affiliate Manager Smith\nEmail: affiliate_added_by_another_affiliate@fixtures.org\nOrganization name: Agency\n\n\n    Affiliate Manager Smith added this person to 'Noaa Site'. They will be approved after verifying their email./ }
     end
 
     context "user didn't get invited by another customer (and thus has no affiliates either)" do
       let(:user) do
         double(User,
-             :email => 'not.com.user@agency.gov',
-             :contact_name => 'Gov Employee Joe',
-             :organization_name => 'Gov Agency',
-             :affiliates => [],
-             :requires_manual_approval? => false)
-
+               email: 'not.com.user@agency.gov',
+               first_name: 'Gov Employee Joe',
+               last_name: 'Shmoe',
+               organization_name: 'Gov Agency',
+               affiliates: [],
+               requires_manual_approval?: false)
       end
 
       subject { Emailer.new_user_to_admin(user) }
@@ -174,10 +180,14 @@ context do
     let(:user) do
       mock_model(User,
                  email: 'invitee@agency.com',
-                 contact_name: 'Invitee Joe')
+                 first_name: 'Invitee Joe',
+                 last_name: 'shmoe')
     end
 
-    let(:current_user) { mock_model(User, :email => "inviter@agency.com", :contact_name => 'Inviter Jane') }
+    let(:current_user) { mock_model(User, 
+                                    email: "inviter@agency.com", 
+                                    first_name: 'Inviter Jane',
+                                    last_name: 'Doe') }
     let(:affiliate) { affiliates(:basic_affiliate) }
 
     subject { Emailer.welcome_to_new_user_added_by_affiliate(affiliate, user, current_user) }
@@ -330,7 +340,14 @@ context do
   end
 
   context "when a template is missing" do
-    let(:user) { double(User, :email => "invitee@agency.com", :contact_name => 'Invitee Joe', affiliates: []) }
+    let(:user) do
+      double(User,
+             email: 'invitee@agency.com',
+             first_name: 'Invitee Joe',
+             last_name: 'Shmoe',
+             affiliates: [])
+    end
+
     let(:report_date) { Date.today }
 
     before { EmailTemplate.destroy_all }

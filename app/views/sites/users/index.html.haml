@@ -12,7 +12,8 @@
     - @users.each do |user|
       %tr{ user_row_css_class_hash(user) }
         %td
-          %span #{user.contact_name}
+          %span #{user.first_name}
+          %span #{user.last_name}
           %br
           %span.muted
             #{user.email}

@@ -7,10 +7,6 @@
   "input": {
     "search": {
       "request": {
-        "types": [
-          "search",
-          "click"
-        ],
         "indices": [
           "<human-logstash-{now/d{YYYY.MM.dd}}>",
           "<human-logstash-{now/d-1d{YYYY.MM.dd}}>",
@@ -29,6 +25,11 @@
                 {
                   "term": {
                     "params.affiliate": "nps.gov"
+                  }
+                },
+                {
+                  "terms": {
+                    "type": ["search","click"]
                   }
                 },
                 {
@@ -135,7 +136,8 @@
     "alert_name": "low CTR",
     "user_email": "affiliate_manager@fixtures.org",
     "user_id": 667152013,
-    "user_contact_name": "Affiliate Manager",
+    "user_first_name": "Affiliate Manager",
+    "user_last_name": "Smith",
     "watcher_type": "LowQueryCtrWatcher"
   }
 }

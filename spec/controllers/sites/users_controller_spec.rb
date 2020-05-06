@@ -10,6 +10,8 @@ describe Sites::UsersController do
   describe '#index' do
     it_should_behave_like 'restricted to approved user', :get, :index, site_id: 100
 
+    it_behaves_like 'require complete account', :get, :index, site_id: 100
+
     context 'when logged in as affiliate' do
       let(:site_users) { [mock_model(User)] }
       include_context 'approved user logged in to a site'
@@ -49,7 +51,7 @@ describe Sites::UsersController do
         before do
           expect(User).to receive(:find_by_email).with('john@email.gov').and_return nil
           expect(User).to receive(:new_invited_by_affiliate).
-              with(current_user, site, { 'contact_name' => 'John Doe', 'email' =>'john@email.gov' }).
+              with(current_user, site, { 'first_name': 'John', 'last_name': 'Doe', 'email': 'john@email.gov' }).
               and_return(new_user)
 
           expect(new_user).to receive(:save).and_return(true)
@@ -59,7 +61,8 @@ describe Sites::UsersController do
           post :create,
                params: {
                  site_id: site.id,
-                 user: { contact_name: 'John Doe',
+                 user: { first_name: 'John',
+                         last_name: 'Doe',
                          email: 'john@email.gov',
                          not_allowed_key: 'not allowed value' }
                }
@@ -76,14 +79,15 @@ describe Sites::UsersController do
         before do
           expect(User).to receive(:find_by_email).with('john@email.gov').and_return nil
           expect(User).to receive(:new_invited_by_affiliate).
-              with(current_user, site, { 'contact_name' => '', 'email' =>'john@email.gov' }).
+              with(current_user, site, { 'first_name': '', 'last_name': 'Doe', 'email': 'john@email.gov' }).
               and_return(new_user)
 
           expect(new_user).to receive(:save).and_return(false)
           post :create,
                params: {
                  site_id: site.id,
-                 user: { contact_name: '',
+                 user: { first_name: '',
+                         last_name: 'Doe',
                          email: 'john@email.gov',
                          not_allowed_key: 'not allowed value' }
                }
@@ -108,7 +112,8 @@ describe Sites::UsersController do
           post :create,
                params: {
                  site_id: site.id,
-                 user: { contact_name: 'John Doe',
+                 user: { first_name: 'John',
+                         last_name: 'Doe',
                          email: 'john@email.gov' }
                }
         end
@@ -128,13 +133,14 @@ describe Sites::UsersController do
           expect(site).to receive(:users).and_return(site_users)
           expect(site_users).to receive(:exists?).with(id: existing_user.id).and_return(true)
           expect(User).to receive(:new).
-              with({ 'contact_name' => 'John Doe', 'email' => 'john@email.gov' }).
+              with({ 'first_name': 'John', 'last_name': 'Doe', 'email': 'john@email.gov' }).
               and_return(new_user)
 
           post :create,
                params: {
                  site_id: site.id,
-                 user: { contact_name: 'John Doe',
+                 user: { first_name: 'John',
+                         last_name: 'Doe',
                          email: 'john@email.gov' }
                }
         end

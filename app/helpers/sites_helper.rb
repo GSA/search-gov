@@ -2,7 +2,8 @@ module SitesHelper
   def site_data
     {
       user: {
-        contact_name: current_user.contact_name,
+        first_name: current_user.first_name,
+        last_name: current_user.last_name,
         email: current_user.email,
         id: current_user.id
       }

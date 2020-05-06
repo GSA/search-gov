@@ -12,4 +12,8 @@ class RtuQueryRawHumanArray < RtuPopularRawHumanArray
   def top_queries
     most_popular
   end
+
+  def type
+    'search'
+  end
 end

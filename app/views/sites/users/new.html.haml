@@ -10,7 +10,9 @@
 
   = render_flash_message
   = render_error_messages(@user)
-  = f.label :contact_name, 'Name', class: 'required'
-  = f.text_field :contact_name, class: 'required  input-primary'
+  = f.label :first_name, 'First name', class: 'required'
+  = f.text_field :first_name, class: 'required  input-primary'
+  = f.label :last_name, 'Last name', class: 'required'
+  = f.text_field :last_name, class: 'required  input-primary'
   = f.label :email, 'Email', class: 'required'
   = f.text_field :email, class: 'required'
