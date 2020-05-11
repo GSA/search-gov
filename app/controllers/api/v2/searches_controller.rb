@@ -79,17 +79,18 @@ module Api
       end
 
       def handle_query_routing
-        return unless search_params[:query].present? and query_routing_is_enabled?
         affiliate = @search_options.site
         routed_query = affiliate.routed_queries
           .joins(:routed_query_keywords)
           .where(routed_query_keywords:{keyword: search_params[:query]})
           .first
-        respond_with({ redirect: routed_query[:url] }, { status: 200 }) unless routed_query.nil?
-      end
 
-      def query_routing_is_enabled?
-        search_params[:routed] == 'true'
+        return unless routed_query
+
+        RoutedQueryImpressionLogger.log(affiliate,
+                                        @search_options.query, request)
+
+        respond_with({ route_to: routed_query[:url] }, { status: 200 })
       end
 
       def search_params

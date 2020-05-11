@@ -1,9 +1,6 @@
 require 'spec_helper'
 
 describe SearchesController do
-  fixtures :affiliates, :image_search_labels, :document_collections, :rss_feeds, :rss_feed_urls,
-           :navigations, :features, :news_items, :languages
-
   let(:affiliate) { affiliates(:usagov_affiliate) }
 
   context 'when showing a new search' do
@@ -103,22 +100,16 @@ describe SearchesController do
   context 'searching on a routed keyword' do
     let(:affiliate) { affiliates(:basic_affiliate) }
     context 'referrer does not match redirect url' do
-      before do
-        routed_query = affiliate.routed_queries.build(url: "http://www.gov.gov/foo.html", description: "testing")
-        routed_query.routed_query_keywords.build(keyword: 'foo bar')
-        routed_query.save!
-      end
-
       it 'redirects to the proper url' do
-        get :index, params: { query: "foo bar", affiliate: affiliate.name }
-        expect(response).to redirect_to 'http://www.gov.gov/foo.html'
+        get :index, params: { query: "moar unclaimed money", affiliate: affiliate.name }
+        expect(response).to redirect_to 'https://www.usa.gov/unclaimed_money'
       end
 
       it 'logs the impression' do
-        expect(SearchImpression).to receive(:log)
+        expect(RoutedQueryImpressionLogger).to receive(:log)
         get :index,
             params: {
-              query: 'foo bar',
+              query: 'moar unclaimed money',
               affiliate: affiliate.name
             }
       end
