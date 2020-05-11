@@ -26,7 +26,18 @@ executors:
           http.port: 9256
           cluster.name: es56
           xpack.security.enabled: false
-          ES_JAVA_OPTS: '-Xms750m -Xmx750m'
+          ES_JAVA_OPTS: '-Xms512m -Xmx512m'
+
+      - image: docker.elastic.co/elasticsearch/elasticsearch:6.8.6
+        environment:
+          bootstrap.memory_lock: true
+          cluster.name: es68
+          discovery.type: single-node
+          http.port: 9268
+          xpack.license.self_generated.type: trial
+          xpack.monitoring.enabled: false
+          xpack.security.enabled: false
+          ES_JAVA_OPTS: '-Xms512m -Xmx512m'
 
 commands:
   prepare_database:
@@ -45,8 +56,12 @@ jobs:
       - checkout
 
       - run:
-          name: Wait for Elasticsearch
+          name: Wait for Elasticsearch 5.6
           command: dockerize -wait tcp://localhost:9256 -timeout 1m
+
+      - run:
+          name: Wait for Elasticsearch 6.8
+          command: dockerize -wait tcp://localhost:9268 -timeout 1m
 
       - run:
           name: Use developer secrets
@@ -84,40 +99,6 @@ jobs:
           paths:
             - vendor/bundle
 
-  setup_elasticsearch:
-    executor: test_executor
-
-    environment:
-      COVERAGE: true
-
-    steps:
-      - restore_cache:
-          key: repo-{{ .Environment.CIRCLE_SHA1 }}
-
-      - run:
-          name: Install Elasticsearch
-          command: |
-            java -version
-            echo $JAVA_HOME
-            curl -L -O https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.3.tar.gz
-            tar -xvf elasticsearch-1.7.3.tar.gz
-            PLUGINS=(
-              "elasticsearch/license/latest"
-              "elasticsearch/marvel/latest"
-              "polyfractal/elasticsearch-inquisitor/latest"
-              "elasticsearch/elasticsearch-analysis-kuromoji/2.7.0"
-              "elasticsearch/elasticsearch-analysis-smartcn/2.7.0"
-              "elasticsearch/elasticsearch-analysis-icu/2.7.0"
-              "elasticsearch/watcher/latest"
-            )
-            for plugin in ${PLUGINS[*]}; do /home/circleci/search-gov/elasticsearch-1.7.3/bin/plugin install $plugin; done
-            echo "script.index: on" >> /home/circleci/search-gov/elasticsearch-1.7.3/config/elasticsearch.yml
-            echo "script.inline: on" >> /home/circleci/search-gov/elasticsearch-1.7.3/config/elasticsearch.yml
-
-      - save_cache:
-          key: elasticsearch
-          paths: /home/circleci/search-gov/elasticsearch-1.7.3
-
   rspec:
     executor: test_executor
 
@@ -132,16 +113,11 @@ jobs:
 
       - run: bundle --path vendor/bundle
 
-      - restore_cache:
-          key: elasticsearch
-
       - prepare_database
 
       - run:
           name: Run Tests
           command: |
-            /home/circleci/search-gov/elasticsearch-1.7.3/bin/elasticsearch -d
-            sleep 10
             bundle exec rake usasearch:elasticsearch:create_indexes
 
             mkdir /tmp/test-results
@@ -182,16 +158,11 @@ jobs:
 
       - run: bundle --path vendor/bundle
 
-      - restore_cache:
-          key: elasticsearch
-
       - prepare_database
 
       - run:
           name: Run Tests
           command: |
-            /home/circleci/search-gov/elasticsearch-1.7.3/bin/elasticsearch -d
-            sleep 10
             bundle exec rake usasearch:elasticsearch:create_indexes
 
             bundle exec rake tmp:create
@@ -249,20 +220,16 @@ workflows:
     jobs:
       - checkout_code
 
-      - setup_elasticsearch
-
       - bundle_install:
           requires:
           - checkout_code
 
       - rspec:
           requires:
-            - setup_elasticsearch
             - bundle_install
 
       - cucumber:
           requires:
-            - setup_elasticsearch
             - bundle_install
 
       - report_coverage:

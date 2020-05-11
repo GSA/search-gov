@@ -1,4 +1,6 @@
 :markdown
+  <!-- Reminder to update https://open.gsa.gov/api/searchgov-results/ with any changes here. -->
+
   This API exposes all relevant results “modules” in a single JSON call, including:
 
 
@@ -368,6 +370,44 @@
       An array of related search terms, which are based on recent, common searches on the your site.
 
 
+
+  ## Routed Queries
+
+
+    If you have [routed queries](https://search.gov/manual/routed-queries.html) set in your Admin page, then any matching query terms will change the API response.
+
+    For example, if you set queries for `example` to route to `https://search.gov` then the following API call:
+
+    `#{api_scheme_and_host}/api/v2/search?affiliate=#{h(@site.name)}&access_key=#{h(@site.api_access_key)}&query=example`
+
+    Will then return this response:
+
+    `{"route_to":"https://search.gov"}`
+
+    With this response you can redirect your users to the url. Here is an example with javascript:
+
+    ```javascript
+    var request = new XMLHttpRequest();
+    var apiUrl = '#{api_scheme_and_host}/api/v2/search?affiliate=#{h(@site.name)}&access_key=#{h(@site.api_access_key)}&query=example'
+
+    request.open('GET', apiUrl, true);
+
+    request.onload = function() {
+        if (this.status >= 200 && this.status < 400) {
+            // Success!
+            var data = JSON.parse( this.response );
+            window.location.replace( data.route_to );
+        } else {
+            // We reached our target server, but it returned an error
+        }
+    };
+
+    request.onerror = function() {
+        // There was a connection error of some sort
+    };
+
+    request.send();
+    ```
 
 
   ## I14y API
