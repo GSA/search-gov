@@ -10,6 +10,7 @@ require 'email_spec'
 require 'authlogic/test_case'
 require 'paperclip/matchers'
 require 'webmock/rspec'
+require 'capybara/poltergeist'
 
 include Authlogic::TestCase
 WebMock.disable_net_connect!(allow_localhost: true)
@@ -125,3 +126,5 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
+
+Capybara.javascript_driver = :poltergeist
