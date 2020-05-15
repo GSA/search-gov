@@ -55,3 +55,12 @@ Feature: Activate Search
     And I follow "i14y Content Indexing API Instructions"
     Then I should see "i14y Content Indexing API Instructions" within the Admin Center content
     And I should see "manage your i14y drawers"
+
+  Scenario: Visiting the Click Tracking API Instructions
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | first_name   | last_name         |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | Bar               |
+    And I am logged in with email "aff@bar.gov"
+    When I go to the aff.gov's Activate Search page
+    And I follow "Click Tracking API Instructions"
+    Then I should see "Click Tracking API Instructions" within the Admin Center content
