@@ -1,0 +1,11 @@
+= content_for_site_page_title @site, 'Click Tracking API Instructions'
+.sub-nav-heading
+  %h2 Click Tracking API Instructions
+  .action-bar
+    %ul
+      = list_item_with_link_to_current_help_page
+
+- api_scheme_and_host = "#{request.scheme}://#{request.host_with_port}"
+
+.api-instruction
+  = render partial: 'show_md', locals: { api_scheme_and_host: api_scheme_and_host }
