@@ -19,7 +19,7 @@ describe 'Clicked' do
 
   context 'when correct information is passed in' do
     it 'returns success with a blank message body' do
-      get '/clicked', params: params
+      post '/clicked', params: params
       expect(response.success?).to be(true)
       expect(response.body).to eq('')
     end
@@ -39,12 +39,12 @@ describe 'Clicked' do
         'test_model_id'
       )
 
-      get '/clicked', params: params
+      post '/clicked', params: params
     end
   end
 
   context 'when click url is missing' do
-    before { get '/clicked', params: params.without(:u) }
+    before { post '/clicked', params: params.without(:u) }
 
     it 'returns success with a blank message body' do
       expect(response.success?).to be(true)
@@ -53,6 +53,14 @@ describe 'Clicked' do
 
     it 'does not log the click information' do
       expect(Click).not_to receive(:log)
+    end
+  end
+
+  context 'a GET request' do
+    it 'returns an error' do
+        get '/clicked', params: params
+        expect(response.success?).to be(false)
+        expect(response.status).to eq 302
     end
   end
 end

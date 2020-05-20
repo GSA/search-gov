@@ -5,6 +5,6 @@ trackClick = (e) ->
     $('#search').data(),
     { u: this.href },
     $link.data('click')
-  jQuery.ajax '/clicked', async: false, data: data
+  jQuery.ajax type: 'POST', async: false, url: '/clicked', data: data
 
 $(document).on 'click', '#search a[data-click]', trackClick
