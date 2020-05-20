@@ -19,11 +19,10 @@ describe 'Click tracking', type: :feature, js: true do
 
     it 'the search results have the expected data attributes' do
       expect(page).to have_selector('div[data-a="nps.gov"]', id: 'search')
-      expect(page).to have_selector('div[data-l="en"]', id: 'search')
+      expect(page).to have_selector('div[data-v="web"]', id: 'search')
       expect(page).to have_selector('div[data-q="boosted"]', id: 'search')
-      expect(page).to have_selector('div[data-t]', id: 'search')
 
-      expect(page).to have_selector('a[data-click]')
+      expect(page).to have_selector('a[data-click=\'{"p":1,"s":"BOOS"}\']')
     end
 
     describe 'the user clicks a search result' do

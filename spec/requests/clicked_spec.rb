@@ -8,12 +8,9 @@ describe 'Clicked' do
       u: escaped_url,
       q: 'test_query',
       p: '1',
-      t: '1588180422',
       a: 'test_affiliate',
-      s: 'test_source',
       v: 'test_vertical',
-      l: 'test_locale',
-      i: 'test_model_id'
+      s: 'test_source'
     }
   end
 
@@ -28,15 +25,12 @@ describe 'Clicked' do
       expect(Click).to receive(:log).with(
         unescaped_url,
         'test_query',
-        '2020-04-29 17:13:42',
         '127.0.0.1',
         'test_affiliate',
         '1',
         'test_source',
         'test_vertical',
-        'test_locale',
-        nil,
-        'test_model_id'
+        nil
       )
 
       post '/clicked', params: params
