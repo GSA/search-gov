@@ -27,6 +27,7 @@ Rails.application.routes.draw do
       get '/search/video' => 'searches#video'
       get '/search/docs' => 'searches#docs'
       get '/agencies/search' => 'agencies#search'
+      post '/click' => 'click#create'
     end
   end
 
