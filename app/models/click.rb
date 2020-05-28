@@ -1,16 +1,29 @@
 class Click
-  def self.log(url, query, click_ip, affiliate_name, position, results_source, vertical, user_agent, access_key=nil)
-    click_hash = { :clicked_at => Time.now.to_formatted_s(:db),
-                   :url => url,
-                   :affiliate_name => affiliate_name,
-                   :click_ip => click_ip,
-                   :position => position,
-                   :results_source => results_source,
-                   :query => query,
-                   :vertical => vertical,
-                   :user_agent => user_agent,
-                   :access_key => access_key
-    }
-    Rails.logger.info("[Click] #{click_hash.to_json}")
+  include ActiveModel::Validations
+
+  attr_accessor :url, :query, :position, :module_code
+
+  validates :url, :query, :position, :module_code, presence: true
+
+  def initialize(url:, query:, client_ip:, affiliate:, position:, module_code:, vertical:, user_agent:, access_key:)
+    @url = url
+    @query = query
+    @client_ip = client_ip
+    @affiliate = affiliate
+    @position = position
+    @module_code = module_code
+    @vertical = vertical
+    @user_agent = user_agent
+    @access_key = access_key
+  end
+
+  def log
+    Rails.logger.info('[Click] ' + self.instance_values.to_json)
+  end
+
+  def valid_access_key?
+    if @affiliate.present? && @access_key.present?
+      Affiliate.find_by(name: @affiliate)&.api_access_key == @access_key
+    end
   end
 end
