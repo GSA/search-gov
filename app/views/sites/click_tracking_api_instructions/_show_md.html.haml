@@ -1,28 +1,31 @@
 :markdown
-  This API is available for you send click events to. Then you'll be able to see them on your [Admin Click Analytics](/sites/#{@site.id}/clicks/new) page.
+  This API is available for you to send click events to. You can see these events on your [Admin Click Analytics](/sites/#{@site.id}/clicks/new) page.
   
   Read more about click tracking [here](https://search.gov/manual/clicks.html).
   
   ## Resource URL
-  `#{api_scheme_and_host}/clicked?u={URL}&q={QUERY}&p={POSITION}&t={TIME}&a={AFFILIATE_NAME}&s={RESULT_SOURCE}&v={VERTICAL}&l={LOCALE}&i={MODEL_ID}`
+  `#{api_scheme_and_host}/api/v2/click?clicked_url={URL}&query={QUERY}&affiliate={AFFILIATE}&position={POSITION}&source={SOURCE}&access_key={ACCESS_KEY}`
 
   ## Method
-  **GET**
+  **POST**
 
   ## Required Parameters
-  - `u`: url - The Url of the link that was clicked.
-  - `q`: query - The search term that let this result get shown and clicked on.
-  - `a`: affiliate name - You can find your site handle on the [Settings](#{edit_site_setting_path(@site)}) page.
-  - `p`: position - The position/rank on your search results page. Was it the first result or the second?
-  - `s`: module - The module code for the source of the clicked result. Must be a valid module code. See https://search.gov/manual/module-codes.html
-  - `l`: locale - Unused
-  - `t`: timestamp - Unused - Use the [Unix epoch](https://en.wikipedia.org/wiki/Unix_time)
-  - `i`: model_id: The model ID is the id of your api search result.
-  - `v`: vertical - Hmmmmm 
+  - `clicked_url`: The url of the link that was clicked.
+  - `query`: The search term that let this result get shown and clicked on.
+  - `affiliate`: You can find your site handle on the [Settings](#{edit_site_setting_path(@site)}) page.
+  - `position`:  The position/rank on your search results page. Was it the first result or the second?
+  - `source`: The module code for the source of the clicked result. Must be a valid module code. See https://search.gov/manual/module-codes.html
+  - `access_key`: Your [API access key](#{api_scheme_and_host}/sites/#{@site.id}/api_access_key).
+
+  ## Optional Parameters
+  - `vertical`: The search engine your site uses.
+  - `click_ip`: The ip address of the user who clicked.
+  - `user_agent`: The user agent of the user who clicked.
   
   ## Responses
   - **Success** - A response status code of 200 and empty body.
-  - **Error** - A response status code of 200 and empty body.
+  - **Mising Required Parameters** - A response status code of 400 and an error message describing the missing parameters. `{"errors":["query must be present"]}`
+  - **Invalid API Access Key** - A response status code of 401 and an error message. `{"errors":["access_key is invalid"]}`
 
   ## Terms of Service
   By using this API, you agree to our [Terms of Service](https://search.gov/tos).
