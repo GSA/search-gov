@@ -5,14 +5,15 @@ describe 'Clicked' do
   let(:unescaped_url) { 'https://search.gov/(+:|)' }
   let(:params) do
     {
-      u: escaped_url,
-      q: 'test_query',
-      p: '1',
-      a: 'test_affiliate',
-      v: 'test_vertical',
-      s: 'test_source'
+      url: escaped_url,
+      query: 'test_query',
+      position: '1',
+      affiliate: 'test_affiliate',
+      vertical: 'test_vertical',
+      module_code: 'test_source'
     }
   end
+  let(:click_mock) { instance_double(Click) }
 
   context 'when correct information is passed in' do
     it 'returns success with a blank message body' do
@@ -21,85 +22,41 @@ describe 'Clicked' do
       expect(response.body).to eq('')
     end
 
-    it 'sends the expected params to Click.log' do
-      expect(Click).to receive(:log).with(
-        unescaped_url,
-        'test_query',
-        '127.0.0.1',
-        'test_affiliate',
-        '1',
-        'test_source',
-        'test_vertical',
-        nil
-      )
+    it 'sends the expected params to click.log' do
+      expect(Click).to receive(:new).with(
+        url: unescaped_url,
+        query: 'test_query',
+        client_ip: '127.0.0.1',
+        affiliate: 'test_affiliate',
+        position: '1',
+        module_code: 'test_source',
+        vertical: 'test_vertical',
+        user_agent: nil
+      ).and_return(click_mock)
+      allow(click_mock).to receive(:valid?).and_return true
+      expect(click_mock).to receive(:log)
 
       post '/clicked', params: params
     end
   end
 
   context 'when required params are missing' do
-    before { post '/clicked', params: params.without(missing_param) }
-
-    context 'missing url' do
-      let(:missing_param) { :u }
-
-      it 'returns a 400 and an error message' do
-        expect(response.status).to eq 400
-        expect(response.body).to eq('{"errors":["url must be present"]}')
-      end
-
-      it 'does not log the click information' do
-        expect(Click).not_to receive(:log)
-      end
-    end
-
-    context 'missing query' do
-      let(:missing_param) { :q }
-
-      it 'returns a 400 and an error message' do
-        expect(response.status).to eq 400
-        expect(response.body).to eq('{"errors":["query must be present"]}')
-      end
-
-      it 'does not log the click information' do
-        expect(Click).not_to receive(:log)
-      end
-    end
-
-    context 'missing position' do
-      let(:missing_param) { :p }
-
-      it 'returns a 400 and an error message' do
-        expect(response.status).to eq 400
-        expect(response.body).to eq('{"errors":["position must be present"]}')
-      end
-
-      it 'does not log the click information' do
-        expect(Click).not_to receive(:log)
-      end
-    end
-
-    context 'missing source' do
-      let(:missing_param) { :s }
-
-      it 'returns a 400 and an error message' do
-        expect(response.status).to eq 400
-        expect(response.body).to eq('{"errors":["source must be present"]}')
-      end
-
-      it 'does not log the click information' do
-        expect(Click).not_to receive(:log)
-      end
-    end
-  end
-
-  context 'missing multiple params' do
     it 'has the expected error message' do
-      post '/clicked', params: params.without(:u, :q)
+      post '/clicked', params: params.without(:url, :query, :position, :module_code)
 
       expect(response.status).to eq 400
-      expected_long_error = '{"errors":["url must be present","query must be present"]}'
-      expect(response.body).to eq(expected_long_error)
+      error_msg = "[\"Url can't be blank\",\"Query can't be blank\","\
+                  "\"Position can't be blank\",\"Module code can't be blank\"]"
+      expect(response.body).to eq(error_msg)
+    end
+
+    it 'does not log a click' do
+      expect(Click).to receive(:new).and_return click_mock
+      allow(click_mock).to receive(:valid?).and_return false
+      allow(click_mock).to receive_message_chain(:errors, :full_messages)
+      expect(click_mock).not_to receive(:log)
+
+      post '/clicked', params: params.without(:url, :query, :position, :module_code)
     end
   end
 

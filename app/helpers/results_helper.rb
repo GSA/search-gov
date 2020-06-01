@@ -1,15 +1,15 @@
 module ResultsHelper
   def search_data(search, search_vertical)
     { data: {
-        a: search.affiliate.name,
-        v: search_vertical,
-        q: search.query
+        affiliate: search.affiliate.name,
+        vertical: search_vertical,
+        query: search.query
       }
     }
   end
 
   def link_to_result_title(title, url, position, module_name, options = {})
-    click_data = { p: position, s: module_name }
+    click_data = { position: position, module_code: module_name }
     link_to_if url.present?, title.html_safe, url, { data: { click: click_data } }.reverse_merge(options)
   end
 

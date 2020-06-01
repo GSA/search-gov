@@ -5,17 +5,18 @@ describe '/api/v2/click' do
   let(:unescaped_url) { 'https://search.gov/(+:|)' }
   let(:params) do
     {
-      clicked_url: escaped_url,
+      url: escaped_url,
       query: 'test_query',
-      click_ip: '127.0.0.1',
+      client_ip: '127.0.0.1',
       position: '1',
       affiliate: 'nps.gov',
       vertical: 'test_vertical',
-      source: 'test_source',
+      module_code: 'test_source',
       user_agent: 'test_user_agent',
       access_key: 'basic_key'
     }
   end
+  let(:click_mock) { instance_double(Click) }
 
   context 'with the required params' do
     it 'returns success with a blank message body' do
@@ -25,18 +26,20 @@ describe '/api/v2/click' do
     end
 
 
-    it 'sends the expected params to Click.log' do
-      expect(Click).to receive(:log).with(
-        unescaped_url,
-        'test_query',
-        '127.0.0.1',
-        'nps.gov',
-        '1',
-        'test_source',
-        'test_vertical',
-        'test_user_agent',
-        'basic_key'
-      )
+    it 'sends the expected params to click.log' do
+      expect(Click).to receive(:new).with(
+          access_key: "basic_key",
+          affiliate: "nps.gov",
+          client_ip: "127.0.0.1",
+          module_code: "test_source",
+          position: "1",
+          query: "test_query",
+          url: "https://search.gov/(+:|)",
+          user_agent: "test_user_agent",
+          vertical: "test_vertical"
+        ).and_return(click_mock)
+      allow(click_mock).to receive(:valid?).and_return true
+      expect(click_mock).to receive(:log)
 
       post '/api/v2/click', params: params
     end
@@ -48,70 +51,28 @@ describe '/api/v2/click' do
       post '/api/v2/click', params: params
 
       expect(response.status).to eq 401
-      expect(response.body).to eq('{"errors":["access_key is invalid"]}')
+      expect(response.body).to eq('["Access key is invalid"]')
     end
   end
 
   context 'when required params are missing' do
-    before { post '/api/v2/click', params: params.without(missing_param) }
-
-    context 'missing access_key' do
-      let(:missing_param) { :access_key }
-
-      it 'returns a 400 and an error message' do
-        expect(response.status).to eq 400
-        expect(response.body).to eq('{"errors":["access_key must be present"]}')
-      end
-    end
-
-    context 'missing url' do
-      let(:missing_param) { :clicked_url }
-
-      it 'returns a 400 and an error message' do
-        expect(response.status).to eq 400
-        expect(response.body).to eq('{"errors":["clicked_url must be present"]}')
-      end
-    end
-
-    context 'missing query' do
-      let(:missing_param) { :query }
-
-      it 'returns a 400 and an error message' do
-        expect(response.status).to eq 400
-        expect(response.body).to eq('{"errors":["query must be present"]}')
-      end
-    end
-
-    context 'missing position' do
-      let(:missing_param) { :position }
-
-      it 'returns a 400 and an error message' do
-        expect(response.status).to eq 400
-        expect(response.body).to eq('{"errors":["position must be present"]}')
-      end
-    end
-
-    context 'missing source' do
-      let(:missing_param) { :source }
-
-      it 'returns a 400 and an error message' do
-        expect(response.status).to eq 400
-        expect(response.body).to eq('{"errors":["source must be present"]}')
-      end
-
-      it 'does not log the click information' do
-        expect(Click).not_to receive(:log)
-      end
-    end
-  end
-
-  context 'missing multiple params' do
     it 'has the expected error message' do
-      post '/api/v2/click', params: params.without(:clicked_url, :query)
+      post '/api/v2/click', params: params.without(:url, :query, :position, :module_code)
 
       expect(response.status).to eq 400
-      expected_long_error = '{"errors":["clicked_url must be present","query must be present"]}'
-      expect(response.body).to eq(expected_long_error)
+      error_msg = "[\"Url can't be blank\",\"Query can't be blank\","\
+                  "\"Position can't be blank\",\"Module code can't be blank\"]"
+      expect(response.body).to eq(error_msg)
+    end
+
+    it 'does not log a click' do
+      expect(Click).to receive(:new).and_return click_mock
+      allow(click_mock).to receive(:valid?).and_return false
+      allow(click_mock).to receive_message_chain(:errors, :full_messages)
+
+      expect(click_mock).not_to receive(:log)
+
+      post '/clicked', params: params.without(:url, :query, :position, :module_code)
     end
   end
 

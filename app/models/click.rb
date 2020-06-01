@@ -1,11 +1,12 @@
 class Click
   include ActiveModel::Validations
 
-  attr_accessor :url, :query, :position, :module_code
+  attr_accessor :url, :query, :position, :module_code, :affiliate, :access_key
 
   validates :url, :query, :position, :module_code, presence: true
+  validate :valid_access_key
 
-  def initialize(url:, query:, client_ip:, affiliate:, position:, module_code:, vertical:, user_agent:, access_key:)
+  def initialize(url:, query:, client_ip:, affiliate:, position:, module_code:, vertical:, user_agent:, access_key: nil)
     @url = url
     @query = query
     @client_ip = client_ip
@@ -21,9 +22,13 @@ class Click
     Rails.logger.info('[Click] ' + self.instance_values.to_json)
   end
 
-  def valid_access_key?
-    if @affiliate.present? && @access_key.present?
-      Affiliate.find_by(name: @affiliate)&.api_access_key == @access_key
+  private
+
+  def valid_access_key
+    if affiliate.present? && access_key.present?
+      if Affiliate.find_by(name: affiliate).api_access_key != access_key
+        errors.add(:access_key, "is invalid")
+      end
     end
   end
 end

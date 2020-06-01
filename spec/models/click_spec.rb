@@ -40,12 +40,6 @@ describe Click do
         end
       end
     end
-
-    describe "#valid_access_key?" do
-      it "should be valid" do
-        expect(click.valid_access_key?).to be_truthy
-      end
-    end
   end
 
   context "without required params" do
@@ -71,24 +65,11 @@ describe Click do
       it "has expected errors" do
         click.valid?
 
-        expected_errors = ["Url can't be blank", "Query can't be blank", "Position can't be blank", "Module code can't be blank"]
+        expected_errors = ["Url can't be blank",
+                           "Query can't be blank",
+                           "Position can't be blank",
+                           "Module code can't be blank"]
         expect(click.errors.full_messages).to eq expected_errors
-      end
-    end
-
-    xdescribe "#log" do
-      it "shouldn't log anything" do
-        allow(Rails.logger).to receive(:info)
-
-        click.log
-
-        expect(Rails.logger).not_to have_received(:info)
-      end
-    end
-
-    describe "#valid_access_key?" do
-      it "should not be valid" do
-        expect(click.valid_access_key?).to be_falsey
       end
     end
   end
