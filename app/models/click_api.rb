@@ -1,12 +1,10 @@
-class Click
-  include ActiveModel::Validations
+class ClickApi < ClickSerp
+  attr_accessor :affiliate, :access_key
 
-  attr_accessor :url, :query, :position, :module_code, :affiliate, :access_key
-
-  validates :url, :query, :position, :module_code, presence: true
+  validates :affiliate, :access_key, presence: true
   validate :valid_access_key
 
-  def initialize(url:, query:, client_ip:, affiliate:, position:, module_code:, vertical:, user_agent:, access_key: nil)
+  def initialize(url:, query:, client_ip:, affiliate:, position:, module_code:, vertical:, user_agent:, access_key:)
     @url = url
     @query = query
     @client_ip = client_ip
@@ -16,10 +14,6 @@ class Click
     @vertical = vertical
     @user_agent = user_agent
     @access_key = access_key
-  end
-
-  def log
-    Rails.logger.info('[Click] ' + self.instance_values.to_json)
   end
 
   private

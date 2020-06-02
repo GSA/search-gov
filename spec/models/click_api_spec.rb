@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe Click do
+describe ClickApi do
   context "with required params" do
     let(:click) do
-      Click.new url: "http://www.fda.gov/foo.html",
+      ClickApi.new url: "http://www.fda.gov/foo.html",
                 query: "my query",
                 client_ip: "12.34.56.789",
                 affiliate: "nps.gov",
@@ -44,7 +44,7 @@ describe Click do
 
   context "without required params" do
     let(:click) do
-      Click.new url: nil,
+      ClickApi.new url: nil,
                 query: nil,
                 client_ip: nil,
                 affiliate: nil,
@@ -68,7 +68,9 @@ describe Click do
         expected_errors = ["Url can't be blank",
                            "Query can't be blank",
                            "Position can't be blank",
-                           "Module code can't be blank"]
+                           "Module code can't be blank",
+                           "Affiliate can't be blank",
+                           "Access key can't be blank"]
         expect(click.errors.full_messages).to eq expected_errors
       end
     end

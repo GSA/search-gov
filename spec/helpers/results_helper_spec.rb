@@ -14,9 +14,9 @@ describe ResultsHelper do
       output = search_data(search, search_vertical)
       expected_output = {
         data: {
-          a: 'nps.gov',
-          v: 'i14y',
-          q: 'rutabaga'
+          affiliate: 'nps.gov',
+          vertical: 'i14y',
+          query: 'rutabaga'
         }
       }
       expect(output).to eq expected_output
@@ -26,8 +26,8 @@ describe ResultsHelper do
   describe '#link_to_result_title' do
     it 'makes a link with the added data-click attribute' do
       output = link_to_result_title('test title', 'https://test.gov', '2', 'BOOS')
-      expected_output = '<a data-click="{&quot;p&quot;:&quot;2&quot;,'\
-                        '&quot;s&quot;:&quot;BOOS&quot;}"'\
+      expected_output = '<a data-click="{&quot;position&quot;:&quot;2&quot;,'\
+                        '&quot;module_code&quot;:&quot;BOOS&quot;}"'\
                         ' href="https://test.gov">test title</a>'
       expect(output).to eq expected_output
     end

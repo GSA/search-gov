@@ -13,17 +13,18 @@ describe 'Clicked' do
       module_code: 'test_source'
     }
   end
-  let(:click_mock) { instance_double(Click) }
+  let(:click_mock) { instance_double(ClickSerp, valid?: true, log: nil) }
 
   context 'when correct information is passed in' do
     it 'returns success with a blank message body' do
       post '/clicked', params: params
+
       expect(response.success?).to be(true)
       expect(response.body).to eq('')
     end
 
-    it 'sends the expected params to click.log' do
-      expect(Click).to receive(:new).with(
+    it 'sends the expected params to Click' do
+      expect(ClickSerp).to receive(:new).with(
         url: unescaped_url,
         query: 'test_query',
         client_ip: '127.0.0.1',
@@ -33,10 +34,16 @@ describe 'Clicked' do
         vertical: 'test_vertical',
         user_agent: nil
       ).and_return(click_mock)
-      allow(click_mock).to receive(:valid?).and_return true
-      expect(click_mock).to receive(:log)
 
       post '/clicked', params: params
+    end
+
+    it 'logs a click' do
+      allow(ClickSerp).to receive(:new).and_return(click_mock)
+
+      post '/clicked', params: params
+
+      expect(click_mock).to have_received(:log)
     end
   end
 
@@ -51,12 +58,13 @@ describe 'Clicked' do
     end
 
     it 'does not log a click' do
-      expect(Click).to receive(:new).and_return click_mock
+      allow(ClickSerp).to receive(:new).and_return click_mock
       allow(click_mock).to receive(:valid?).and_return false
       allow(click_mock).to receive_message_chain(:errors, :full_messages)
-      expect(click_mock).not_to receive(:log)
-
+      
       post '/clicked', params: params.without(:url, :query, :position, :module_code)
+
+      expect(click_mock).not_to have_received(:log)
     end
   end
 
