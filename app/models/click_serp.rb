@@ -1,9 +1,9 @@
 class ClickSerp
   include ActiveModel::Validations
 
-  attr_accessor :url, :query, :position, :module_code
+  attr_accessor :url, :query, :position, :module_code, :client_ip, :user_agent
 
-  validates :url, :query, :position, :module_code, presence: true
+  validates :url, :query, :position, :module_code, :client_ip, :user_agent, presence: true
 
   def initialize(url:, query:, client_ip:, affiliate:, position:, module_code:, vertical:, user_agent:)
     @url = url

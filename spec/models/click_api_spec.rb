@@ -69,6 +69,8 @@ describe ClickApi do
                            "Query can't be blank",
                            "Position can't be blank",
                            "Module code can't be blank",
+                           "Client ip can't be blank",
+                           "User agent can't be blank",
                            "Affiliate can't be blank",
                            "Access key can't be blank"]
         expect(click.errors.full_messages).to eq expected_errors

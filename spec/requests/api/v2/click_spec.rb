@@ -64,11 +64,13 @@ describe '/api/v2/click' do
   context 'when required params are missing' do
     error_msg = ["Url can't be blank", "Query can't be blank",
                  "Position can't be blank", "Module code can't be blank",
-                 "Affiliate can't be blank", "Access key can't be blank"]
+                 "Client ip can't be blank", "User agent can't be blank",
+                 "Affiliate can't be blank", "Access key can't be blank",]
 
     it 'has the expected error message' do
       post '/api/v2/click', params: params.without(:affiliate, :access_key, :url,
-                                                   :query, :position, :module_code)
+                                                   :query, :position, :module_code,
+                                                   :client_ip, :user_agent)
 
       expect(response.status).to eq 400
       errors_with_spaces_removed = error_msg.to_s.gsub(', ', ',')
@@ -82,7 +84,8 @@ describe '/api/v2/click' do
         and_return(error_msg)
 
       post '/api/v2/click', params: params.without(:affiliate, :access_key, :url,
-                                                   :query, :position, :module_code)
+                                                   :query, :position, :module_code,
+                                                   :client_ip, :user_agent)
 
       expect(click_mock).not_to have_received(:log)
     end

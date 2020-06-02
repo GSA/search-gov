@@ -15,6 +15,8 @@ describe 'Clicked' do
   end
   let(:click_mock) { instance_double(ClickSerp, valid?: true, log: nil) }
 
+  before { Rails.application.env_config["HTTP_USER_AGENT"] = "test_user_agent" }
+
   context 'when correct information is passed in' do
     it 'returns success with a blank message body' do
       post '/clicked', params: params
@@ -32,7 +34,7 @@ describe 'Clicked' do
         position: '1',
         module_code: 'test_source',
         vertical: 'test_vertical',
-        user_agent: nil
+        user_agent: 'test_user_agent'
       ).and_return(click_mock)
 
       post '/clicked', params: params
