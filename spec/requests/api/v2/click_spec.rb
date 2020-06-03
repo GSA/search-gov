@@ -98,4 +98,15 @@ describe '/api/v2/click' do
       expect(response.status).to eq 302
     end
   end
+
+  context 'malformed urls' do
+    # https://cm-jira.usa.gov/browse/SRCHAR-415
+    let(:escaped_url) { 'https://example.com/wymiana+teflon%F3w' }
+
+    it 'get thrown away as nil' do
+      post '/api/v2/click', params: params
+      expect(response.success?).to be(false)
+      expect(response.body).to eq "[\"Url can't be blank\"]"
+    end
+  end
 end
