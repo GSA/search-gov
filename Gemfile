@@ -169,4 +169,5 @@ group :test do
   gem 'rspec-activemodel-mocks', '~> 1.0.3'
   gem 'rspec_junit_formatter', '~> 0.3.0'
   gem 'rails-controller-testing', '~> 1.0.4'
+  gem 'webdrivers', '~> 4.0'
 end
