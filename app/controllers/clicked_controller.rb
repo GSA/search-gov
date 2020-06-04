@@ -2,14 +2,7 @@
 
 class ClickedController < ApplicationController
   def index
-    click = ClickSerp.new(url: params['url'],
-                          query: params['query'],
-                          affiliate: params['affiliate'].presence,
-                          position: params['position'],
-                          module_code: params['module_code'],
-                          vertical: params['vertical'],
-                          client_ip: request.env['REMOTE_ADDR'],
-                          user_agent: request.env['HTTP_USER_AGENT'])
+    click = ClickSerp.new(click_params)
 
     if click.valid?
       click.log
@@ -17,5 +10,14 @@ class ClickedController < ApplicationController
     else
       render json: click.errors.full_messages, status: :bad_request
     end
+  end
+
+  private
+
+  def click_params
+    permitted = params.permit(:url, :query, :position,
+                              :module_code, :affiliate, :vertical)
+    permitted.to_hash.symbolize_keys.merge(client_ip: request.env['REMOTE_ADDR'],
+                                           user_agent: request.env['HTTP_USER_AGENT'])
   end
 end

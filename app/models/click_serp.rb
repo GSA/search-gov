@@ -5,22 +5,15 @@ class ClickSerp
 
   validates :url, :query, :position, :module_code, :client_ip, :user_agent, presence: true
 
-  def initialize(url:,
-                 query:,
-                 client_ip:,
-                 affiliate:,
-                 position:,
-                 module_code:,
-                 vertical:,
-                 user_agent:)
-    @url = cleaned_url(url)
-    @query = query
-    @client_ip = client_ip
-    @affiliate = affiliate
-    @position = position
-    @module_code = module_code
-    @vertical = vertical
-    @user_agent = user_agent
+  def initialize(params)
+    @url = cleaned_url(params[:url])
+    @query = params[:query]
+    @client_ip = params[:client_ip]
+    @affiliate = params[:affiliate]
+    @position = params[:position]
+    @module_code = params[:module_code]
+    @vertical = params[:vertical]
+    @user_agent = params[:user_agent]
   end
 
   def log

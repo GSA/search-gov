@@ -2,15 +2,7 @@ module Api
   module V2
     class ClickController < ApplicationController
       def create
-        click = ClickApi.new(url: params['url'],
-                             query: params['query'],
-                             affiliate: params['affiliate'].presence,
-                             access_key: params['access_key'],
-                             position: params['position'],
-                             module_code: params['module_code'],
-                             vertical: params['vertical'],
-                             client_ip: params['client_ip'],
-                             user_agent: params['user_agent'])
+        click = ClickApi.new(click_params)
 
         if click.valid?
           click.log
@@ -23,6 +15,15 @@ module Api
                         end
           render json: click.errors.full_messages, status: status_code
         end
+      end
+
+      private
+
+      def click_params
+        permitted = params.permit(:url, :query, :position,
+                                  :module_code, :affiliate, :vertical,
+                                  :client_ip, :user_agent, :access_key)
+        permitted.to_hash.symbolize_keys
       end
     end
   end

@@ -25,16 +25,8 @@ describe 'Clicked' do
     end
 
     it 'sends the expected params to Click' do
-      expect(ClickSerp).to receive(:new).with(
-        url: 'https://example.gov',
-        query: 'test_query',
-        client_ip: '127.0.0.1',
-        affiliate: 'test_affiliate',
-        position: '1',
-        module_code: 'test_source',
-        vertical: 'test_vertical',
-        user_agent: 'test_user_agent'
-      ).and_return(click_mock)
+      expected_params = params.merge client_ip: '127.0.0.1', user_agent: 'test_user_agent'
+      expect(ClickSerp).to receive(:new).with(expected_params).and_return(click_mock)
 
       post '/clicked', params: params
     end

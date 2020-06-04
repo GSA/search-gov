@@ -4,24 +4,16 @@ class ClickApi < ClickSerp
   validates :affiliate, :access_key, presence: true
   validate :valid_access_key
 
-  def initialize(url:,
-                query:,
-                client_ip:,
-                affiliate:,
-                position:,
-                module_code:,
-                vertical:,
-                user_agent:,
-                access_key:)
-    @url = cleaned_url(url)
-    @query = query
-    @client_ip = client_ip
-    @affiliate = affiliate
-    @position = position
-    @module_code = module_code
-    @vertical = vertical
-    @user_agent = user_agent
-    @access_key = access_key
+  def initialize(params)
+    @url = cleaned_url(params[:url])
+    @query = params[:query]
+    @client_ip = params[:client_ip]
+    @affiliate = params[:affiliate]
+    @position = params[:position]
+    @module_code = params[:module_code]
+    @vertical = params[:vertical]
+    @user_agent = params[:user_agent]
+    @access_key = params[:access_key]
   end
 
   private
