@@ -1,7 +1,7 @@
 class ClickSerp
   include ActiveModel::Validations
 
-  attr_accessor :url, :query, :position, :module_code, :client_ip, :user_agent
+  attr_reader :url, :query, :position, :module_code, :client_ip, :user_agent
 
   validates :url, :query, :position, :module_code, :client_ip, :user_agent, presence: true
 
@@ -24,7 +24,7 @@ class ClickSerp
   end
 
   def log
-    Rails.logger.info('[Click] ' + instance_values.to_json)
+    Rails.logger.info('[Click] ' + self.to_json)
   end
 
   private

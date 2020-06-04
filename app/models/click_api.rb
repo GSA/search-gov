@@ -1,5 +1,5 @@
 class ClickApi < ClickSerp
-  attr_accessor :affiliate, :access_key
+  attr_reader :affiliate, :access_key
 
   validates :affiliate, :access_key, presence: true
   validate :valid_access_key
