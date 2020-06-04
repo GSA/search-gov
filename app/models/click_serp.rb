@@ -17,7 +17,7 @@ class ClickSerp
   end
 
   def log
-    Rails.logger.info('[Click] ' + self.to_json)
+    Rails.logger.info('[Click] ' + instance_values.to_json)
   end
 
   private

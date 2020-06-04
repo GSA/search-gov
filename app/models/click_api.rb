@@ -21,8 +21,7 @@ class ClickApi < ClickSerp
   def valid_access_key
     return unless affiliate.present? && access_key.present?
 
-    if Affiliate.find_by(name: affiliate).api_access_key != access_key
-      errors.add(:access_key, 'is invalid')
-    end
+    affiliate_access_key = Affiliate.find_by(name: affiliate).api_access_key
+    errors.add(:access_key, 'is invalid') if affiliate_access_key != access_key
   end
 end

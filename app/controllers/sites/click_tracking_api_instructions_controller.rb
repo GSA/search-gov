@@ -1,4 +1,3 @@
 class Sites::ClickTrackingApiInstructionsController < Sites::SetupSiteController
-  def show
-  end
+  def show; end
 end
