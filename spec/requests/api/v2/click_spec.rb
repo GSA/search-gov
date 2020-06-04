@@ -1,11 +1,9 @@
 require 'spec_helper'
 
 describe '/api/v2/click' do
-  let(:escaped_url) { 'https://search.gov/%28 %3A%7C%29' }
-  let(:unescaped_url) { 'https://search.gov/(+:|)' }
   let(:params) do
     {
-      url: escaped_url,
+      url: 'https://search.gov',
       query: 'test_query',
       client_ip: '127.0.0.1',
       position: '1',
@@ -34,7 +32,7 @@ describe '/api/v2/click' do
         module_code: 'test_source',
         position: '1',
         query: 'test_query',
-        url: 'https://search.gov/(+:|)',
+        url: 'https://search.gov',
         user_agent: 'test_user_agent',
         vertical: 'test_vertical'
       ).and_return click_mock
@@ -99,11 +97,10 @@ describe '/api/v2/click' do
     end
   end
 
-  context 'malformed urls' do
-    # https://cm-jira.usa.gov/browse/SRCHAR-415
-    let(:escaped_url) { 'https://example.com/wymiana+teflon%F3w' }
-
+  context 'invalid utf-8' do
     it 'get thrown away as nil' do
+      params['url'] = 'https://example.com/wymiana+teflon%F3w'
+
       post '/api/v2/click', params: params
       expect(response.success?).to be(false)
       expect(response.body).to eq "[\"Url can't be blank\"]"

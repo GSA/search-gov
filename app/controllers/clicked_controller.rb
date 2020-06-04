@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 class ClickedController < ApplicationController
   def index
-    url = CGI.unescape(params['url']).tr(' ', '+') rescue nil
-    click = ClickSerp.new(url: url,
+    click = ClickSerp.new(url: params['url'],
                           query: params['query'],
                           affiliate: params['affiliate'].presence,
                           position: params['position'],

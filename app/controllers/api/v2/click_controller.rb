@@ -2,8 +2,7 @@ module Api
   module V2
     class ClickController < ApplicationController
       def create
-        url = CGI.unescape(params['url']).tr(' ', '+') rescue nil
-        click = ClickApi.new(url: url,
+        click = ClickApi.new(url: params['url'],
                              query: params['query'],
                              affiliate: params['affiliate'].presence,
                              access_key: params['access_key'],

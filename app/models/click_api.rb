@@ -5,7 +5,7 @@ class ClickApi < ClickSerp
   validate :valid_access_key
 
   def initialize(url:, query:, client_ip:, affiliate:, position:, module_code:, vertical:, user_agent:, access_key:)
-    @url = url
+    @url = cleaned_url(url)
     @query = query
     @client_ip = client_ip
     @affiliate = affiliate
