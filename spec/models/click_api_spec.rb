@@ -1,27 +1,29 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe ClickApi do
-  context "with required params" do
+  context 'with required params' do
     let(:click) do
-      ClickApi.new url: "http://www.fda.gov/foo.html",
-                query: "my query",
-                client_ip: "12.34.56.789",
-                affiliate: "nps.gov",
-                position: "7",
-                module_code: "RECALL",
-                vertical: "web",
-                user_agent: "mozilla",
-                access_key: "basic_key"
+      ClickApi.new url: 'http://www.fda.gov/foo.html',
+                   query: 'my query',
+                   client_ip: '12.34.56.789',
+                   affiliate: 'nps.gov',
+                   position: '7',
+                   module_code: 'RECALL',
+                   vertical: 'web',
+                   user_agent: 'mozilla',
+                   access_key: 'basic_key'
     end
 
-    describe "#valid?" do
-      it "should be valid" do
+    describe '#valid?' do
+      it 'should be valid' do
         expect(click.valid?).to be_truthy
       end
     end
 
-    describe "#log" do
-      it "should log almost-JSON info about the click" do
+    describe '#log' do
+      it 'should log almost-JSON info about the click' do
         allow(Rails.logger).to receive(:info)
 
         click.log
@@ -42,27 +44,27 @@ describe ClickApi do
     end
   end
 
-  context "without required params" do
+  context 'without required params' do
     let(:click) do
       ClickApi.new url: nil,
-                query: nil,
-                client_ip: nil,
-                affiliate: nil,
-                position: nil,
-                module_code: nil,
-                vertical: nil,
-                user_agent: nil,
-                access_key: nil
+                   query: nil,
+                   client_ip: nil,
+                   affiliate: nil,
+                   position: nil,
+                   module_code: nil,
+                   vertical: nil,
+                   user_agent: nil,
+                   access_key: nil
     end
 
-    describe "#valid?" do
-      it "should not be valid" do
+    describe '#valid?' do
+      it 'should not be valid' do
         expect(click.valid?).to be_falsey
       end
     end
 
-    describe "#errors" do
-      it "has expected errors" do
+    describe '#errors' do
+      it 'has expected errors' do
         click.valid?
 
         expected_errors = ["Url can't be blank",

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'Click tracking', type: :feature, js: true do
@@ -7,7 +9,7 @@ describe 'Click tracking', type: :feature, js: true do
   before do
     affiliate.boosted_contents.create!(title: 'A boosted search result',
                                        description: 'An example description',
-                                       url: "http://example.com",
+                                       url: 'http://example.com',
                                        status: 'active',
                                        publish_start_on: Date.current)
     ElasticBoostedContent.commit
@@ -23,7 +25,8 @@ describe 'Click tracking', type: :feature, js: true do
       expect(page).to have_selector('div[data-vertical="web"]', id: 'search')
       expect(page).to have_selector('div[data-query="boosted"]', id: 'search')
 
-      expect(page).to have_selector('a[data-click=\'{"position":1,"module_code":"BOOS"}\']')
+      long_string = 'a[data-click=\'{"position":1,"module_code":"BOOS"}\']'
+      expect(page).to have_selector(long_string)
     end
 
     describe 'the user clicks a search result' do

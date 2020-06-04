@@ -13,8 +13,8 @@ describe 'Clicked' do
   end
   let(:click_mock) { instance_double(ClickSerp, valid?: true, log: nil) }
 
-  before { Rails.application.env_config["HTTP_USER_AGENT"] = "test_user_agent" }
-  after { Rails.application.env_config["HTTP_USER_AGENT"] = "nil" }
+  before { Rails.application.env_config['HTTP_USER_AGENT'] = 'test_user_agent' }
+  after { Rails.application.env_config['HTTP_USER_AGENT'] = 'nil' }
 
   context 'when correct information is passed in' do
     it 'returns success with a blank message body' do

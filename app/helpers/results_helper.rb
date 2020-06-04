@@ -1,11 +1,10 @@
 module ResultsHelper
   def search_data(search, search_vertical)
     { data: {
-        affiliate: search.affiliate.name,
-        vertical: search_vertical,
-        query: search.query
-      }
-    }
+      affiliate: search.affiliate.name,
+      vertical: search_vertical,
+      query: search.query
+    } }
   end
 
   def link_to_result_title(title, url, position, module_code, options = {})

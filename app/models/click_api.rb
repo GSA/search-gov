@@ -4,7 +4,15 @@ class ClickApi < ClickSerp
   validates :affiliate, :access_key, presence: true
   validate :valid_access_key
 
-  def initialize(url:, query:, client_ip:, affiliate:, position:, module_code:, vertical:, user_agent:, access_key:)
+  def initialize(url:,
+                query:,
+                client_ip:,
+                affiliate:,
+                position:,
+                module_code:,
+                vertical:,
+                user_agent:,
+                access_key:)
     @url = cleaned_url(url)
     @query = query
     @client_ip = client_ip
@@ -19,10 +27,10 @@ class ClickApi < ClickSerp
   private
 
   def valid_access_key
-    if affiliate.present? && access_key.present?
-      if Affiliate.find_by(name: affiliate).api_access_key != access_key
-        errors.add(:access_key, "is invalid")
-      end
+    return unless affiliate.present? && access_key.present?
+
+    if Affiliate.find_by(name: affiliate).api_access_key != access_key
+      errors.add(:access_key, 'is invalid')
     end
   end
 end

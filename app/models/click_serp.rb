@@ -5,7 +5,14 @@ class ClickSerp
 
   validates :url, :query, :position, :module_code, :client_ip, :user_agent, presence: true
 
-  def initialize(url:, query:, client_ip:, affiliate:, position:, module_code:, vertical:, user_agent:)
+  def initialize(url:,
+                 query:,
+                 client_ip:,
+                 affiliate:,
+                 position:,
+                 module_code:,
+                 vertical:,
+                 user_agent:)
     @url = cleaned_url(url)
     @query = query
     @client_ip = client_ip
@@ -17,7 +24,7 @@ class ClickSerp
   end
 
   def log
-    Rails.logger.info('[Click] ' + self.instance_values.to_json)
+    Rails.logger.info('[Click] ' + instance_values.to_json)
   end
 
   private
