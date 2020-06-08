@@ -11,7 +11,7 @@ describe 'Clicked' do
       module_code: 'test_source'
     }
   end
-  let(:click_mock) { instance_double(ClickSerp, valid?: true, log: nil) }
+  let(:click_mock) { instance_double(Click, valid?: true, log: nil) }
 
   before { Rails.application.env_config['HTTP_USER_AGENT'] = 'test_user_agent' }
   after { Rails.application.env_config['HTTP_USER_AGENT'] = 'nil' }
@@ -26,13 +26,13 @@ describe 'Clicked' do
 
     it 'sends the expected params to Click' do
       expected_params = params.merge client_ip: '127.0.0.1', user_agent: 'test_user_agent'
-      expect(ClickSerp).to receive(:new).with(expected_params).and_return(click_mock)
+      expect(Click).to receive(:new).with(expected_params).and_return(click_mock)
 
       post '/clicked', params: params
     end
 
     it 'logs a click' do
-      allow(ClickSerp).to receive(:new).and_return(click_mock)
+      allow(Click).to receive(:new).and_return(click_mock)
 
       post '/clicked', params: params
 
@@ -51,7 +51,7 @@ describe 'Clicked' do
     end
 
     it 'does not log a click' do
-      allow(ClickSerp).to receive(:new).and_return click_mock
+      allow(Click).to receive(:new).and_return click_mock
       allow(click_mock).to receive(:valid?).and_return false
       allow(click_mock).to receive_message_chain(:errors, :full_messages)
 

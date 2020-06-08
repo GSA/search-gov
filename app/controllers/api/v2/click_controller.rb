@@ -2,7 +2,7 @@ module Api
   module V2
     class ClickController < ApplicationController
       def create
-        click = ClickApi.new(click_params)
+        click = ApiClick.new(click_params)
 
         if click.valid?
           click.log

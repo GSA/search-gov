@@ -1,4 +1,4 @@
-class ClickSerp
+class Click
   include ActiveModel::Validations
 
   attr_reader :url, :query, :position, :module_code, :client_ip, :user_agent

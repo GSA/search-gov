@@ -4,7 +4,7 @@ require 'spec_helper'
 
 describe 'Click tracking', js: true do
   let!(:affiliate) { affiliates(:basic_affiliate) }
-  let(:click_mock) { instance_double(ClickSerp, valid?: true, log: nil) }
+  let(:click_mock) { instance_double(Click, valid?: true, log: nil) }
 
   before do
     affiliate.boosted_contents.create!(title: 'A boosted search result',
@@ -31,7 +31,7 @@ describe 'Click tracking', js: true do
 
     describe 'the user clicks a search result' do
       it 'js sends in an ajax click event' do
-        allow(ClickSerp).to receive(:new).and_return click_mock
+        allow(Click).to receive(:new).and_return click_mock
 
         click_link 'A boosted search result'
         sleep(1) # wait for ajax

@@ -2,7 +2,7 @@
 
 class ClickedController < ApplicationController
   def index
-    click = ClickSerp.new(click_params)
+    click = Click.new(click_params)
 
     if click.valid?
       click.log

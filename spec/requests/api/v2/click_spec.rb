@@ -14,7 +14,7 @@ describe '/api/v2/click' do
       access_key: 'basic_key'
     }
   end
-  let(:click_mock) { instance_double(ClickApi, valid?: true, log: nil) }
+  let(:click_mock) { instance_double(ApiClick, valid?: true, log: nil) }
 
   context 'with the required params' do
     it 'returns success with a blank message body' do
@@ -25,13 +25,13 @@ describe '/api/v2/click' do
     end
 
     it 'sends the expected params to Click' do
-      expect(ClickApi).to receive(:new).with(params).and_return click_mock
+      expect(ApiClick).to receive(:new).with(params).and_return click_mock
 
       post '/api/v2/click', params: params
     end
 
     it 'logs a click' do
-      allow(ClickApi).to receive(:new).and_return click_mock
+      allow(ApiClick).to receive(:new).and_return click_mock
 
       post '/api/v2/click', params: params
 
@@ -66,7 +66,7 @@ describe '/api/v2/click' do
     end
 
     it 'does not log a click' do
-      allow(ClickApi).to receive(:new).and_return click_mock
+      allow(ApiClick).to receive(:new).and_return click_mock
       allow(click_mock).to receive(:valid?).and_return false
       allow(click_mock).to receive_message_chain(:errors, :full_messages).
         and_return(error_msg)

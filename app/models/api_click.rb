@@ -1,4 +1,4 @@
-class ClickApi < ClickSerp
+class ApiClick < Click
   attr_reader :affiliate, :access_key
 
   validates :affiliate, :access_key, presence: true

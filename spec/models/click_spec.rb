@@ -2,11 +2,11 @@
 
 require 'spec_helper'
 
-describe ClickSerp do
+describe Click do
   context 'with required params' do
     let(:url) { 'http://www.fda.gov/foo.html' }
     let(:click) do
-      ClickSerp.new url: url,
+      described_class.new url: url,
                     query: 'my query',
                     client_ip: '12.34.56.789',
                     affiliate: 'nps.gov',
@@ -65,7 +65,7 @@ describe ClickSerp do
 
   context 'without required params' do
     let(:click) do
-      ClickSerp.new url: nil,
+      described_class.new url: nil,
                     query: nil,
                     client_ip: nil,
                     affiliate: nil,

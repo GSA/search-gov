@@ -2,10 +2,10 @@
 
 require 'spec_helper'
 
-describe ClickApi do
+describe ApiClick do
   context 'with required params' do
     let(:click) do
-      ClickApi.new url: 'http://www.fda.gov/foo.html',
+      described_class.new url: 'http://www.fda.gov/foo.html',
                    query: 'my query',
                    client_ip: '12.34.56.789',
                    affiliate: 'nps.gov',
@@ -46,7 +46,7 @@ describe ClickApi do
 
   context 'without required params' do
     let(:click) do
-      ClickApi.new url: nil,
+      described_class.new url: nil,
                    query: nil,
                    client_ip: nil,
                    affiliate: nil,
