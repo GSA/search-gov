@@ -1,8 +1,11 @@
+# frozen_string_literal: true
+
 class ApiClick < Click
   attr_reader :affiliate, :access_key
 
   validates :affiliate, :access_key, presence: true
-  validate :valid_access_key
+  validate :validates_active_affiliate
+  validate :validates_access_key
 
   def initialize(params)
     super
@@ -12,10 +15,19 @@ class ApiClick < Click
 
   private
 
-  def valid_access_key
-    return unless affiliate.present? && access_key.present?
+  def active_affiliate
+    @active_affiliate ||= Affiliate.active.find_by(name: affiliate)
+  end
 
-    affiliate_access_key = Affiliate.find_by(name: affiliate).api_access_key
-    errors.add(:access_key, 'is invalid') if affiliate_access_key != access_key
+  def validates_active_affiliate
+    return if affiliate.nil?
+
+    errors.add(:affiliate, 'is inactive') if active_affiliate.nil?
+  end
+
+  def validates_access_key
+    return if active_affiliate.nil? || access_key.nil?
+
+    errors.add(:access_key, 'is invalid') if active_affiliate.api_access_key != access_key
   end
 end

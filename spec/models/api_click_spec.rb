@@ -3,27 +3,28 @@
 require 'spec_helper'
 
 describe ApiClick do
-  context 'with required params' do
-    let(:click) do
-      described_class.new url: 'http://www.fda.gov/foo.html',
-                   query: 'my query',
-                   client_ip: '12.34.56.789',
-                   affiliate: 'nps.gov',
-                   position: '7',
-                   module_code: 'RECALL',
-                   vertical: 'web',
-                   user_agent: 'mozilla',
-                   access_key: 'basic_key'
-    end
+  let(:affiliate) { 'nps.gov' }
+  let(:click) do
+    described_class.new url: 'http://www.fda.gov/foo.html',
+                        query: 'my query',
+                        client_ip: '12.34.56.789',
+                        affiliate: affiliate,
+                        position: '7',
+                        module_code: 'RECALL',
+                        vertical: 'web',
+                        user_agent: 'mozilla',
+                        access_key: 'basic_key'
+  end
 
+  context 'with required params' do
     describe '#valid?' do
-      it 'should be valid' do
+      it 'is valid' do
         expect(click.valid?).to be_truthy
       end
     end
 
     describe '#log' do
-      it 'should log almost-JSON info about the click' do
+      it 'logs almost-JSON info about the click' do
         allow(Rails.logger).to receive(:info)
 
         click.log
@@ -47,18 +48,18 @@ describe ApiClick do
   context 'without required params' do
     let(:click) do
       described_class.new url: nil,
-                   query: nil,
-                   client_ip: nil,
-                   affiliate: nil,
-                   position: nil,
-                   module_code: nil,
-                   vertical: nil,
-                   user_agent: nil,
-                   access_key: nil
+                          query: nil,
+                          client_ip: nil,
+                          affiliate: nil,
+                          position: nil,
+                          module_code: nil,
+                          vertical: nil,
+                          user_agent: nil,
+                          access_key: nil
     end
 
     describe '#valid?' do
-      it 'should not be valid' do
+      it 'is not valid' do
         expect(click.valid?).to be_falsey
       end
     end
@@ -77,6 +78,16 @@ describe ApiClick do
                            "Access key can't be blank"]
         expect(click.errors.full_messages).to eq expected_errors
       end
+    end
+  end
+
+  context "with inactive affiliate" do
+    let(:affiliate) { 'inactive_affiliate' }
+
+    it 'returns a 400 with an invalid affiliate message' do
+      click.valid?
+
+      expect(click.errors.full_messages).to eq ["Affiliate is inactive"]
     end
   end
 end
