@@ -54,7 +54,7 @@ describe 'Clicked' do
       allow(ClickSerp).to receive(:new).and_return click_mock
       allow(click_mock).to receive(:valid?).and_return false
       allow(click_mock).to receive_message_chain(:errors, :full_messages)
-      
+
       post '/clicked', params: params.without(:url, :query, :position, :module_code)
 
       expect(click_mock).not_to have_received(:log)

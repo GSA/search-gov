@@ -25,17 +25,7 @@ describe '/api/v2/click' do
     end
 
     it 'sends the expected params to Click' do
-      expect(ClickApi).to receive(:new).with(
-        access_key: 'basic_key',
-        affiliate: 'nps.gov',
-        client_ip: '127.0.0.1',
-        module_code: 'test_source',
-        position: '1',
-        query: 'test_query',
-        url: 'https://search.gov',
-        user_agent: 'test_user_agent',
-        vertical: 'test_vertical'
-      ).and_return click_mock
+      expect(ClickApi).to receive(:new).with(params).and_return click_mock
 
       post '/api/v2/click', params: params
     end

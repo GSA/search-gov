@@ -8,12 +8,7 @@ module Api
           click.log
           head :ok
         else
-          status_code = if click.errors.full_messages.include? 'Access key is invalid'
-                          :unauthorized
-                        else
-                          :bad_request
-                        end
-          render json: click.errors.full_messages, status: status_code
+          render json: click.errors.full_messages, status: status(click)
         end
       end
 
@@ -24,6 +19,14 @@ module Api
                                   :module_code, :affiliate, :vertical,
                                   :client_ip, :user_agent, :access_key)
         permitted.to_hash.symbolize_keys
+      end
+
+      def status(click)
+        if click.errors.full_messages.include? 'Access key is invalid'
+          :unauthorized
+        else
+          :bad_request
+        end
       end
     end
   end
