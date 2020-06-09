@@ -5,8 +5,7 @@ describe ResultsHelper do
     let(:search) do
       double('search',
              affiliate: affiliates(:basic_affiliate),
-             query: 'rutabaga',
-             queried_at_seconds: "1588714504")
+             query: 'rutabaga')
     end
     let(:search_vertical) { 'i14y' }
 

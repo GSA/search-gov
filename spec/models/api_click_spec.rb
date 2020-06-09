@@ -81,13 +81,13 @@ describe ApiClick do
     end
   end
 
-  context "with inactive affiliate" do
+  context 'with inactive affiliate' do
     let(:affiliate) { 'inactive_affiliate' }
 
     it 'returns a 400 with an invalid affiliate message' do
       click.valid?
 
-      expect(click.errors.full_messages).to eq ["Affiliate is inactive"]
+      expect(click.errors.full_messages).to eq ['Affiliate is inactive']
     end
   end
 end
