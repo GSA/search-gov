@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 describe '/api/v2/click' do
-  let(:params) do
+  let(:endpoint) { '/api/v2/click' }
+  let(:valid_params) do
     {
       url: 'https://search.gov',
       query: 'test_query',
@@ -14,86 +15,50 @@ describe '/api/v2/click' do
       access_key: 'basic_key'
     }
   end
-  let(:click_mock) { instance_double(ApiClick, valid?: true, log: nil) }
+  let(:click_model) { ApiClick }
+  let(:click_mock) { instance_double(click_model, log: nil) }
 
-  context 'with the required params' do
-    it 'returns success with a blank message body' do
-      post '/api/v2/click', params: params
+  context 'with valid params' do
+    let(:expected_params) { valid_params }
 
-      expect(response.success?).to be(true)
-      expect(response.body).to eq('')
-    end
-
-    it 'sends the expected params to Click' do
-      expect(ApiClick).to receive(:new).with(params).and_return click_mock
-
-      post '/api/v2/click', params: params
-    end
-
-    it 'logs a click' do
-      allow(ApiClick).to receive(:new).and_return click_mock
-
-      post '/api/v2/click', params: params
-
-      expect(click_mock).to have_received(:log)
-    end
+    it_behaves_like 'a successful click request'
   end
 
   context 'invalid access_key' do
     it 'returns an error message' do
-      params['access_key'] = 'invalid'
-      post '/api/v2/click', params: params
+      valid_params['access_key'] = 'invalid'
+
+      post endpoint, params: valid_params
 
       expect(response.status).to eq 401
       expect(response.body).to eq('["Access key is invalid"]')
     end
   end
 
-  context 'when required params are missing' do
-    error_msg = ["Url can't be blank", "Query can't be blank",
-                 "Position can't be blank", "Module code can't be blank",
-                 "Client ip can't be blank", "User agent can't be blank",
-                 "Affiliate can't be blank", "Access key can't be blank"]
-
-    it 'has the expected error message' do
-      post '/api/v2/click', params: params.without(:affiliate, :access_key, :url,
-                                                   :query, :position, :module_code,
-                                                   :client_ip, :user_agent)
-
-      expect(response.status).to eq 400
-      errors_with_spaces_removed = error_msg.to_s.gsub(', ', ',')
-      expect(response.body).to eq(errors_with_spaces_removed)
+  context 'with invalid params' do
+    let(:invalid_params) do
+      {
+        url: nil,
+        query: nil,
+        client_ip: nil,
+        position: nil,
+        affiliate: nil,
+        vertical: nil,
+        module_code: nil,
+        user_agent: nil,
+        access_key: nil
+      }
+    end
+    let(:expected_error_msg) do
+      "[\"Url can't be blank\",\"Query can't be blank\","\
+      "\"Position can't be blank\",\"Module code can't be blank\","\
+      "\"Client ip can't be blank\",\"User agent can't be blank\","\
+      "\"Affiliate can't be blank\",\"Access key can't be blank\"]"
     end
 
-    it 'does not log a click' do
-      allow(ApiClick).to receive(:new).and_return click_mock
-      allow(click_mock).to receive(:valid?).and_return false
-      allow(click_mock).to receive_message_chain(:errors, :full_messages).
-        and_return(error_msg)
-
-      post '/api/v2/click', params: params.without(:affiliate, :access_key, :url,
-                                                   :query, :position, :module_code,
-                                                   :client_ip, :user_agent)
-
-      expect(click_mock).not_to have_received(:log)
-    end
+    it_behaves_like 'an unsuccessful click request'
   end
 
-  context 'a GET request' do
-    it 'returns an error' do
-      get '/api/v2/click', params: params
-      expect(response.success?).to be(false)
-      expect(response.status).to eq 302
-    end
-  end
-
-  context 'invalid utf-8' do
-    it 'get thrown away as nil' do
-      params['url'] = 'https://example.com/wymiana+teflon%F3w'
-
-      post '/api/v2/click', params: params
-      expect(response.success?).to be(false)
-      expect(response.body).to eq "[\"Url can't be blank\"]"
-    end
-  end
+  it_behaves_like 'does not accept GET requests'
+  it_behaves_like 'drops urls with invalid utf-8'
 end

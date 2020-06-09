@@ -1,7 +1,8 @@
 require 'spec_helper'
 
-describe 'Clicked' do
-  let(:params) do
+describe '/clicked' do
+  let(:endpoint) { '/clicked' }
+  let(:valid_params) do
     {
       url: 'https://example.gov',
       query: 'test_query',
@@ -11,71 +12,39 @@ describe 'Clicked' do
       module_code: 'test_source'
     }
   end
-  let(:click_mock) { instance_double(Click, valid?: true, log: nil) }
+  let(:click_model) { Click }
+  let(:click_mock) { instance_double(click_model, log: nil) }
 
   before { Rails.application.env_config['HTTP_USER_AGENT'] = 'test_user_agent' }
   after { Rails.application.env_config['HTTP_USER_AGENT'] = 'nil' }
 
-  context 'when correct information is passed in' do
-    it 'returns success with a blank message body' do
-      post '/clicked', params: params
-
-      expect(response.success?).to be(true)
-      expect(response.body).to eq('')
+  context 'with valid params' do
+    let(:expected_params) do
+      valid_params.merge client_ip: '127.0.0.1', user_agent: 'test_user_agent'
     end
 
-    it 'sends the expected params to Click' do
-      expected_params = params.merge client_ip: '127.0.0.1', user_agent: 'test_user_agent'
-      expect(Click).to receive(:new).with(expected_params).and_return(click_mock)
-
-      post '/clicked', params: params
-    end
-
-    it 'logs a click' do
-      allow(Click).to receive(:new).and_return(click_mock)
-
-      post '/clicked', params: params
-
-      expect(click_mock).to have_received(:log)
-    end
+    it_behaves_like 'a successful click request'
   end
 
-  context 'when required params are missing' do
-    it 'has the expected error message' do
-      post '/clicked', params: params.without(:url, :query, :position, :module_code)
-
-      expect(response.status).to eq 400
-      error_msg = "[\"Url can't be blank\",\"Query can't be blank\","\
-                  "\"Position can't be blank\",\"Module code can't be blank\"]"
-      expect(response.body).to eq(error_msg)
+  context 'with invalid params' do
+    let(:invalid_params) do
+      {
+        url: nil,
+        query: nil,
+        position: nil,
+        affiliate: nil,
+        vertical: nil,
+        module_code: nil
+      }
+    end
+    let(:expected_error_msg) do
+      "[\"Url can't be blank\",\"Query can't be blank\","\
+      "\"Position can't be blank\",\"Module code can't be blank\"]"
     end
 
-    it 'does not log a click' do
-      allow(Click).to receive(:new).and_return click_mock
-      allow(click_mock).to receive(:valid?).and_return false
-      allow(click_mock).to receive_message_chain(:errors, :full_messages)
-
-      post '/clicked', params: params.without(:url, :query, :position, :module_code)
-
-      expect(click_mock).not_to have_received(:log)
-    end
+    it_behaves_like 'an unsuccessful click request'
   end
 
-  context 'a GET request' do
-    it 'returns an error' do
-      get '/clicked', params: params
-      expect(response.success?).to be(false)
-      expect(response.status).to eq 302
-    end
-  end
-
-  context 'invalid utf-8' do
-    it 'get thrown away as nil' do
-      params['url'] = 'https://example.com/wymiana+teflon%F3w'
-
-      post '/clicked', params: params
-      expect(response.success?).to be(false)
-      expect(response.body).to eq "[\"Url can't be blank\"]"
-    end
-  end
+  it_behaves_like 'does not accept GET requests'
+  it_behaves_like 'drops urls with invalid utf-8'
 end
