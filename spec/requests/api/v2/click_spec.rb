@@ -10,7 +10,7 @@ describe '/api/v2/click' do
       position: '1',
       affiliate: 'nps.gov',
       vertical: 'test_vertical',
-      module_code: 'test_source',
+      module_code: 'BWEB',
       user_agent: 'test_user_agent',
       access_key: 'basic_key'
     }

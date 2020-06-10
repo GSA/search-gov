@@ -7,10 +7,10 @@ describe ApiClick do
   let(:click) do
     described_class.new url: 'http://www.fda.gov/foo.html',
                         query: 'my query',
-                        client_ip: '12.34.56.789',
+                        client_ip: '123.123.123.123',
                         affiliate: affiliate,
                         position: '7',
-                        module_code: 'RECALL',
+                        module_code: 'BWEB',
                         vertical: 'web',
                         user_agent: 'mozilla',
                         access_key: 'basic_key'
@@ -33,10 +33,10 @@ describe ApiClick do
           expect(str).to match(/^\[Click\] \{.*\}$/)
           expect(str).to include('"url":"http://www.fda.gov/foo.html"')
           expect(str).to include('"query":"my query"')
-          expect(str).to include('"client_ip":"12.34.56.789"')
+          expect(str).to include('"client_ip":"123.123.123.123"')
           expect(str).to include('"affiliate":"nps.gov"')
           expect(str).to include('"position":"7"')
-          expect(str).to include('"module_code":"RECALL"')
+          expect(str).to include('"module_code":"BWEB"')
           expect(str).to include('"vertical":"web"')
           expect(str).to include('"user_agent":"mozilla"')
           expect(str).to include('"access_key":"basic_key"')

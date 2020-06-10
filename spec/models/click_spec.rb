@@ -5,14 +5,16 @@ require 'spec_helper'
 describe Click do
   let(:url) { 'http://www.fda.gov/foo.html' }
   let(:ip) { '0.0.0.0' }
+  let(:position) { '7' }
+  let(:module_code) { 'BWEB' }
   let(:params) do
     {
       url: url,
       query: 'my query',
       client_ip: ip,
       affiliate: 'nps.gov',
-      position: '7',
-      module_code: 'RECALL',
+      position: position,
+      module_code: module_code,
       vertical: 'web',
       user_agent: 'mozilla'
     }
@@ -35,7 +37,7 @@ describe Click do
           expect(str).to include('"client_ip":"0.0.0.0"')
           expect(str).to include('"affiliate":"nps.gov"')
           expect(str).to include('"position":"7"')
-          expect(str).to include('"module_code":"RECALL"')
+          expect(str).to include('"module_code":"BWEB"')
           expect(str).to include('"vertical":"web"')
           expect(str).to include('"user_agent":"mozilla"')
         end
@@ -128,6 +130,48 @@ describe Click do
         click.valid?
 
         expect(click.errors.full_messages).to eq ['Client ip is invalid']
+      end
+    end
+  end
+
+  describe 'only allow positive positions' do
+    context 'with negative number' do
+      let(:position) { '-4' }
+
+      it 'is invalid' do
+        expect(click.valid?).to be_falsey
+        expect(click.errors.full_messages).to eq ['Position must be greater than or equal to 0']
+      end
+    end
+
+    context 'with a decimal' do
+      let(:position) { '1.87897' }
+
+      it 'is invalid' do
+        expect(click.valid?).to be_falsey
+        expect(click.errors.full_messages).to eq ['Position must be an integer']
+      end
+    end
+
+    context 'with a word' do
+      let(:position) { 'second' }
+
+      it 'is invalid' do
+        expect(click.valid?).to be_falsey
+        error_msg = ['Position is not a number']
+        expect(click.errors.full_messages).to eq error_msg
+      end
+    end
+  end
+
+  describe 'validate module code' do
+    context 'not in official list of codes' do
+      let(:module_code) { 'whatever' }
+
+      it 'is invalid' do
+        expect(click.valid?).to be_falsey
+        error_msg = ['Module code whatever is not a valid module']
+        expect(click.errors.full_messages).to eq error_msg
       end
     end
   end

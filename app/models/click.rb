@@ -1,10 +1,14 @@
+# frozen_string_literal: true
+
 class Click
   include ActiveModel::Validations
 
   attr_reader :url, :query, :position, :module_code, :client_ip, :user_agent
 
   validates :url, :query, :position, :module_code, :client_ip, :user_agent, presence: true
+  validates :position, numericality: { only_integer: true, greater_than_or_equal_to: 0, allow_blank: true }
   validate :client_ip_validation
+  validate :module_code_validation
 
   def initialize(params)
     @url = unescape_url(params[:url])
@@ -22,6 +26,17 @@ class Click
   end
 
   private
+
+  def module_code_validation
+    # We use a custom validation here
+    # because the built in inclusion validator is compiled
+    # before our test fixture data is loaded.
+    # https://apidock.com/rails/ActiveModel/Validations/ClassMethods/validates_inclusion_of#427-Check-if-value-is-included-in-array-of-valid-values
+    return if module_code.blank?
+    return if SearchModule.pluck(:tag).include? module_code
+
+    errors.add(:module_code, "#{module_code} is not a valid module")
+  end
 
   def client_ip_validation
     return if client_ip.blank?

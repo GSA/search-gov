@@ -9,7 +9,7 @@ describe '/clicked' do
       position: '1',
       affiliate: 'test_affiliate',
       vertical: 'test_vertical',
-      module_code: 'test_source'
+      module_code: 'BWEB'
     }
   end
   let(:click_model) { Click }
