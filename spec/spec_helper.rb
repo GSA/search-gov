@@ -71,9 +71,6 @@ RSpec.configure do |config|
     FileUtils.mkdir_p(File.join(Rails.root.to_s, 'tmp'))
 
     require 'test_services'
-    unless ENV['TRAVIS']
-      TestServices::start_redis
-    end
 
     EmailTemplate.load_default_templates
     OutboundRateLimit.load_defaults
@@ -96,7 +93,6 @@ RSpec.configure do |config|
 
   config.after(:suite) do
     TestServices::delete_es_indexes
-    TestServices::stop_redis unless ENV['TRAVIS']
   end
 
   # Add VCR to all tests
