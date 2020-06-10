@@ -2,10 +2,20 @@ require 'spec_helper'
 
 describe DocumentFetcher do
   describe '.fetch' do
-    it 'follows redirects from http to https' do
-      response = DocumentFetcher.fetch 'http://healthcare.gov'
-      expect(response[:status]).to match(/200 OK/)
-      expect(response[:last_effective_url]).to eq('https://www.healthcare.gov/')
+    context 'when the request is redirected' do
+      let(:url) { 'http://healthcare.gov' }
+      let(:new_url) { 'https://www.healthcare.gov/' }
+
+      before do
+        stub_request(:get, url).to_return(status: 301, headers: { location: new_url })
+        stub_request(:get, new_url).to_return(status: 200)
+      end
+
+      it 'follows redirects from http to https' do
+        response = DocumentFetcher.fetch url
+        expect(response[:status]).to match(/200/)
+        expect(response[:last_effective_url]).to eq('https://www.healthcare.gov/')
+      end
     end
 
     it 'returns empty hash when Curl::Easy raises error' do

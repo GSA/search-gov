@@ -21,13 +21,6 @@ executors:
 
       - image: redis:3.2
 
-      - image: docker.elastic.co/elasticsearch/elasticsearch:5.6.16
-        environment:
-          http.port: 9256
-          cluster.name: es56
-          xpack.security.enabled: false
-          ES_JAVA_OPTS: '-Xms512m -Xmx512m'
-
       - image: docker.elastic.co/elasticsearch/elasticsearch:6.8.6
         environment:
           bootstrap.memory_lock: true
@@ -38,6 +31,20 @@ executors:
           xpack.monitoring.enabled: false
           xpack.security.enabled: false
           ES_JAVA_OPTS: '-Xms512m -Xmx512m'
+
+      - image: docker.elastic.co/elasticsearch/elasticsearch:7.7.0
+        environment:
+          bootstrap.memory_lock: true
+          cluster.name: es77
+          discovery.type: single-node
+          http.port: 9277
+          xpack.license.self_generated.type: trial
+          xpack.monitoring.enabled: false
+          xpack.security.enabled: false
+          ES_JAVA_OPTS: '-Xms512m -Xmx512m'
+
+      - image: apache/tika:1.21
+
 
 commands:
   prepare_database:
@@ -54,10 +61,6 @@ jobs:
 
     steps:
       - checkout
-
-      - run:
-          name: Wait for Elasticsearch 5.6
-          command: dockerize -wait tcp://localhost:9256 -timeout 1m
 
       - run:
           name: Wait for Elasticsearch 6.8
