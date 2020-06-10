@@ -25,13 +25,14 @@ class Click
 
   def client_ip_validation
     return if client_ip.blank?
+    return if valid_ip?
 
-    errors.add(:client_ip, 'is invalid') unless valid_ip?
+    errors.add(:client_ip, 'is invalid')
   end
 
   def valid_ip?
-    # https://stackoverflow.com/a/15157862/722860
-    !!(client_ip =~ Resolv::IPv4::Regex) || !!(client_ip =~ Resolv::IPv6::Regex)
+    matched = (client_ip =~ Resolv::AddressRegex)
+    matched.present?
   end
 
   def unescape_url(url)

@@ -47,7 +47,7 @@ describe Click do
 
   context 'without required params' do
     let(:params) do
-      { 
+      {
         url: nil,
         query: nil,
         client_ip: nil,
@@ -84,7 +84,8 @@ describe Click do
     let(:url) { 'https://search.gov/%28 %3A%7C%29' }
 
     it 'returns an unescaped url' do
-      expect(Rails.logger).to receive(:info).with(include('"url":"https://search.gov/(+:|)"'))
+      unescaped_url_log = '"url":"https://search.gov/(+:|)"'
+      expect(Rails.logger).to receive(:info).with(include(unescaped_url_log))
 
       click.log
     end
@@ -99,17 +100,35 @@ describe Click do
     end
   end
 
-  context 'with invalid ip address' do
-    let(:ip) { 'bad_ip_address' }
+  describe '.valid_ip?' do
+    context 'with valid ip4' do
+      let(:ip) { '123.123.123.123' }
 
-    it 'is not valid' do
-      expect(click.valid?).to be_falsey
+      it 'is valid' do
+        expect(click.send(:valid_ip?)).to be_truthy
+      end
     end
 
-    it 'has expected errors' do
-      click.valid?
+    context 'with valid ip6' do
+      let(:ip) { '2600:1f18:f88:4313:6df7:f986:f915:78d6' } # gsa.gov?
 
-      expect(click.errors.full_messages).to eq ["Client ip is invalid"]
+      it 'is valid' do
+        expect(click.send(:valid_ip?)).to be_truthy
+      end
+    end
+
+    context 'with invalid ip address' do
+      let(:ip) { 'bad_ip_address' }
+
+      it 'is not valid' do
+        expect(click.valid?).to be_falsey
+      end
+
+      it 'has expected errors' do
+        click.valid?
+
+        expect(click.errors.full_messages).to eq ['Client ip is invalid']
+      end
     end
   end
 end
