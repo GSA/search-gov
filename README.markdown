@@ -34,7 +34,7 @@ The packages below are included in the [custom Docker image](/Dockerfile) used f
 * Google's [protocol buffers](https://developers.google.com/protocol-buffers/) - also required by the cld gem
 * [Java Runtime Environment](https://www.java.com/en/download/)
 * [PhantomJS](http://phantomjs.org/download.html) - required to run JavaScript in Cucumber features
-* [ImageMagick] - required by the Paperclip gem, used for image attachments
+* [ImageMagick](https://imagemagick.org/) - required by the Paperclip gem, used for image attachments
 
 ## Gems
 
