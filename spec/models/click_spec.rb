@@ -19,13 +19,12 @@ describe Click do
       user_agent: 'mozilla'
     }
   end
-  let(:click) { described_class.new params }
+
+  subject(:click) { described_class.new params }
 
   context 'with required params' do
     describe '#valid?' do
-      it 'should be valid' do
-        expect(click.valid?).to be_truthy
-      end
+      it { is_expected.to be_valid }
     end
 
     describe '#log' do
@@ -62,15 +61,12 @@ describe Click do
     end
 
     describe '#valid?' do
-      it 'is not valid' do
-        expect(click.valid?).to be_falsey
-      end
+      it { is_expected.not_to be_valid }
     end
 
     describe '#errors' do
       it 'has expected errors' do
-        click.valid?
-
+        click.validate
         expected_errors = ["Url can't be blank",
                            "Query can't be blank",
                            "Position can't be blank",
@@ -106,29 +102,22 @@ describe Click do
     context 'with valid ip4' do
       let(:ip) { '123.123.123.123' }
 
-      it 'is valid' do
-        expect(click.send(:valid_ip?)).to be_truthy
-      end
+      it { is_expected.to be_valid }
     end
 
     context 'with valid ip6' do
       let(:ip) { '2600:1f18:f88:4313:6df7:f986:f915:78d6' } # gsa.gov?
-
-      it 'is valid' do
-        expect(click.send(:valid_ip?)).to be_truthy
-      end
+      
+      it { is_expected.to be_valid }
     end
 
     context 'with invalid ip address' do
       let(:ip) { 'bad_ip_address' }
 
-      it 'is not valid' do
-        expect(click.valid?).to be_falsey
-      end
+      it { is_expected.not_to be_valid }
 
       it 'has expected errors' do
-        click.valid?
-
+        click.validate
         expect(click.errors.full_messages).to eq ['Client ip is invalid']
       end
     end
@@ -138,17 +127,22 @@ describe Click do
     context 'with negative number' do
       let(:position) { '-4' }
 
-      it 'is invalid' do
-        expect(click.valid?).to be_falsey
-        expect(click.errors.full_messages).to eq ['Position must be greater than or equal to 0']
+      it { is_expected.not_to be_valid }
+
+      it 'has expected errors' do
+        click.validate
+        error_msg = ['Position must be greater than or equal to 0']
+        expect(click.errors.full_messages).to eq error_msg
       end
     end
 
     context 'with a decimal' do
       let(:position) { '1.87897' }
 
-      it 'is invalid' do
-        expect(click.valid?).to be_falsey
+      it { is_expected.not_to be_valid }
+
+      it 'has expected errors' do
+        click.validate
         expect(click.errors.full_messages).to eq ['Position must be an integer']
       end
     end
@@ -156,8 +150,10 @@ describe Click do
     context 'with a word' do
       let(:position) { 'second' }
 
-      it 'is invalid' do
-        expect(click.valid?).to be_falsey
+      it { is_expected.not_to be_valid }
+
+      it 'has expected errors' do
+        click.validate
         error_msg = ['Position is not a number']
         expect(click.errors.full_messages).to eq error_msg
       end
@@ -168,8 +164,10 @@ describe Click do
     context 'not in official list of codes' do
       let(:module_code) { 'whatever' }
 
-      it 'is invalid' do
-        expect(click.valid?).to be_falsey
+      it { is_expected.not_to be_valid }
+
+      it 'has expected errors' do
+        click.validate
         error_msg = ['Module code whatever is not a valid module']
         expect(click.errors.full_messages).to eq error_msg
       end

@@ -7,10 +7,10 @@ describe ResultsHelper do
              affiliate: affiliates(:basic_affiliate),
              query: 'rutabaga')
     end
-    let(:search_vertical) { 'i14y' }
+
+    subject { search_data(search, 'i14y') }
 
     it 'adds data attributes to #search needed for click tracking' do
-      output = search_data(search, search_vertical)
       expected_output = {
         data: {
           affiliate: 'nps.gov',
@@ -18,17 +18,20 @@ describe ResultsHelper do
           query: 'rutabaga'
         }
       }
-      expect(output).to eq expected_output
+
+      expect(subject).to eq expected_output
     end
   end
 
   describe '#link_to_result_title' do
+    subject { link_to_result_title('test title', 'https://test.gov', '2', 'BOOS') }
+
     it 'makes a link with the added data-click attribute' do
-      output = link_to_result_title('test title', 'https://test.gov', '2', 'BOOS')
       expected_output = '<a data-click="{&quot;position&quot;:&quot;2&quot;,'\
                         '&quot;module_code&quot;:&quot;BOOS&quot;}"'\
                         ' href="https://test.gov">test title</a>'
-      expect(output).to eq expected_output
+
+      expect(subject).to eq expected_output
     end
   end
 end

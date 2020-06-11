@@ -4,7 +4,7 @@ require 'spec_helper'
 
 describe ApiClick do
   let(:affiliate) { 'nps.gov' }
-  let(:click) do
+  subject(:click) do
     described_class.new url: 'http://www.fda.gov/foo.html',
                         query: 'my query',
                         client_ip: '123.123.123.123',
@@ -18,9 +18,7 @@ describe ApiClick do
 
   context 'with required params' do
     describe '#valid?' do
-      it 'is valid' do
-        expect(click.valid?).to be_truthy
-      end
+      it { is_expected.to be_valid }
     end
 
     describe '#log' do
@@ -46,7 +44,7 @@ describe ApiClick do
   end
 
   context 'without required params' do
-    let(:click) do
+    subject(:click) do
       described_class.new url: nil,
                           query: nil,
                           client_ip: nil,
@@ -59,15 +57,12 @@ describe ApiClick do
     end
 
     describe '#valid?' do
-      it 'is not valid' do
-        expect(click.valid?).to be_falsey
-      end
+      it { is_expected.not_to be_valid }
     end
 
     describe '#errors' do
       it 'has expected errors' do
-        click.valid?
-
+        click.validate
         expected_errors = ["Url can't be blank",
                            "Query can't be blank",
                            "Position can't be blank",
@@ -85,8 +80,7 @@ describe ApiClick do
     let(:affiliate) { 'inactive_affiliate' }
 
     it 'returns a 400 with an invalid affiliate message' do
-      click.valid?
-
+      click.validate
       expect(click.errors.full_messages).to eq ['Affiliate is inactive']
     end
   end
