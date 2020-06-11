@@ -38,6 +38,7 @@ VCR.configure do |config|
 
   config.ignore_request { |request| URI(request.uri).port.between?(9200,9299) } #Elasticsearch
   config.ignore_request { |request| URI(request.uri).port == 9515 } # Selenium Webdriver
+  config.ignore_request { |request| URI(request.uri).port == 9517 } # Chrome Webdriver
 
   secrets = YAML.load(ERB.new(File.read(Rails.root.join('config', 'secrets.yml'))).result)
   secrets['secret_keys'].each do |service, keys|

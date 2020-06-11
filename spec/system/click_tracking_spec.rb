@@ -4,7 +4,6 @@ require 'spec_helper'
 
 describe 'Click tracking', js: true do
   let!(:affiliate) { affiliates(:basic_affiliate) }
-  let(:click_mock) { instance_double(Click, valid?: true, log: nil) }
 
   before do
     affiliate.boosted_contents.create!(title: 'A boosted search result',
@@ -30,13 +29,21 @@ describe 'Click tracking', js: true do
     end
 
     describe 'the user clicks a search result' do
-      it 'js sends in an ajax click event' do
-        allow(Click).to receive(:new).and_return click_mock
+      it 'js sends in a click event, creating the expected log line.' do
+        allow(Rails.logger).to receive(:info).and_call_original
 
         click_link 'A boosted search result'
-        sleep(1) # wait for ajax
 
-        expect(click_mock).to have_received(:log)
+        expect(Rails.logger).to have_received(:info).with(start_with('[Click]')) do |logline|
+          expect(logline).to include('"url":"http://example.com/"')
+          expect(logline).to include('"query":"boosted"')
+          expect(logline).to include('"client_ip":"127.0.0.1"')
+          expect(logline).to include('"affiliate":"nps.gov"')
+          expect(logline).to include('"position":"1"')
+          expect(logline).to include('"module_code":"BOOS"')
+          expect(logline).to include('"vertical":"web"')
+          expect(logline).to include('"user_agent":')
+        end
       end
     end
   end
