@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe 'Click tracking', js: true do
+describe 'Click tracking', js: true, vcr: { preserve_exact_body_bytes: true } do
   let!(:affiliate) { affiliates(:basic_affiliate) }
 
   before do
