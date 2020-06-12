@@ -6,7 +6,9 @@ class Click
   attr_reader :url, :query, :position, :module_code, :client_ip, :user_agent
 
   validates :url, :query, :position, :module_code, :client_ip, :user_agent, presence: true
-  validates :position, numericality: { only_integer: true, greater_than_or_equal_to: 0, allow_blank: true }
+  validates :position, numericality: { only_integer: true,
+                                       greater_than_or_equal_to: 0,
+                                       allow_blank: true }
   validate :client_ip_validation
   validate :module_code_validation
 
@@ -51,6 +53,8 @@ class Click
   end
 
   def unescape_url(url)
-    CGI.unescape(url).tr(' ', '+') rescue nil
+    CGI.unescape(url).tr(' ', '+')
+  rescue StandardError
+    nil
   end
 end
