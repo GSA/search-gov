@@ -91,6 +91,9 @@ services:
       - 5678:5678
     environment:
       - PIDFILE=./resque-web.pid
+    volumes:
+      - .:/usr/src/app
+      - gem_cache:/gems
 
   resque-workers:
     command: 'bundle exec rake environment resque:work'
@@ -102,6 +105,9 @@ services:
     env_file:
       - .env/development/app
       - .env/development/resque
+    volumes:
+      - .:/usr/src/app
+      - gem_cache:/gems
 
   resque-scheduler:
     command: 'bundle exec rake resque:scheduler'
@@ -113,6 +119,9 @@ services:
     env_file:
       - .env/development/app
       - .env/development/resque
+    volumes:
+      - .:/usr/src/app
+      - gem_cache:/gems
 
 volumes:
   db_data:
