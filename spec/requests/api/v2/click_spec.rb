@@ -60,5 +60,5 @@ describe '/api/v2/click' do
   end
 
   it_behaves_like 'does not accept GET requests'
-  it_behaves_like 'drops urls with invalid utf-8'
+  it_behaves_like 'urls with invalid utf-8'
 end

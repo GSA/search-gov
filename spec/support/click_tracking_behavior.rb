@@ -60,13 +60,12 @@ shared_examples_for 'does not accept GET requests' do
   end
 end
 
-shared_examples_for 'drops urls with invalid utf-8' do
-  it 'get thrown away as nil' do
+shared_examples_for 'urls with invalid utf-8' do
+  it 'are not a valid format' do
     valid_params['url'] = 'https://example.com/wymiana+teflon%F3w'
 
     post endpoint, params: valid_params
 
-    expect(response.success?).to be(false)
-    expect(response.body).to eq "[\"Url can't be blank\"]"
+    expect(response.body).to eq "[\"Url is not a valid format\"]"
   end
 end

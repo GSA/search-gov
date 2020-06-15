@@ -78,23 +78,33 @@ describe Click do
     end
   end
 
-  describe '#unescape_url' do
-    let(:url) { 'https://search.gov/%28 %3A%7C%29' }
-
-    it 'returns an unescaped url' do
-      unescaped_url_log = '"url":"https://search.gov/(+:|)"'
-      expect(Rails.logger).to receive(:info).with(include(unescaped_url_log))
-
-      click.log
-    end
-
+  describe '#url_validation' do
     context 'with invalid utf-8 in the url' do
       # https://cm-jira.usa.gov/browse/SRCHAR-415
       let(:url) { 'https://example.com/wymiana+teflon%F3w' }
 
-      it 'drops the unescapable url' do
-        expect(click.url).to be nil
+      it 'has expected errors' do
+        click.validate
+        expect(click.errors.full_messages).to eq ['Url is not a valid format']
       end
+    end
+
+    context 'with malformed urls' do
+      let(:url) { 'something is wrong' }
+
+      it 'has expected errors' do
+        click.validate
+        expect(click.errors.full_messages).to eq ['Url is not a valid format']
+      end
+    end
+  end
+
+  describe '#unescape_url' do
+    let(:url) { 'https://search.gov/%28%3A%7C%29' }
+
+    it 'returns an unescaped url' do
+      click.validate
+      expect(click.url).to eq 'https://search.gov/(:|)'
     end
   end
 
@@ -107,7 +117,7 @@ describe Click do
 
     context 'with valid ip6' do
       let(:ip) { '2600:1f18:f88:4313:6df7:f986:f915:78d6' } # gsa.gov?
-      
+
       it { is_expected.to be_valid }
     end
 
