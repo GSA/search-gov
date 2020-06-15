@@ -89,6 +89,8 @@ services:
       - redis
     ports:
       - 5678:5678
+    environment:
+      - PIDFILE=./resque-web.pid
 
   resque-workers:
     command: 'bundle exec rake environment resque:work'
