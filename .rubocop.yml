@@ -3880,7 +3880,7 @@ Style/RescueModifier:
 
 Style/RescueStandardError:
   Description: 'Avoid rescuing without specifying an error class.'
-  Enabled: true
+  Enabled: false
   VersionAdded: 0.52
   EnforcedStyle: explicit
   # implicit: Do not include the error class, `rescue`
