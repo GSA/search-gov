@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 describe 'Click tracking', js: true, vcr: { preserve_exact_body_bytes: true } do
-  let!(:affiliate) { affiliates(:basic_affiliate) }
+  let!(:affiliate) { affiliates(:bing_v7_affiliate) }
 
   before do
     affiliate.boosted_contents.create!(title: 'A boosted search result',
@@ -16,11 +16,11 @@ describe 'Click tracking', js: true, vcr: { preserve_exact_body_bytes: true } do
 
   describe 'a user searches for a best bet' do
     before do
-      visit '/search?affiliate=nps.gov&query=boosted'
+      visit '/search?affiliate=bing7affiliate&query=boosted'
     end
 
     it 'the search results have the expected data attributes' do
-      expect(page).to have_selector('div[data-affiliate="nps.gov"]', id: 'search')
+      expect(page).to have_selector('div[data-affiliate="bing7affiliate"]', id: 'search')
       expect(page).to have_selector('div[data-vertical="web"]', id: 'search')
       expect(page).to have_selector('div[data-query="boosted"]', id: 'search')
 
@@ -34,11 +34,12 @@ describe 'Click tracking', js: true, vcr: { preserve_exact_body_bytes: true } do
 
         click_link 'A boosted search result'
 
-        expect(Rails.logger).to have_received(:info).with(start_with('[Click]')) do |logline|
+        match = start_with('[Click]')
+        expect(Rails.logger).to have_received(:info).with(match) do |logline|
           expect(logline).to include('"url":"http://example.com/"')
           expect(logline).to include('"query":"boosted"')
           expect(logline).to include('"client_ip":"127.0.0.1"')
-          expect(logline).to include('"affiliate":"nps.gov"')
+          expect(logline).to include('"affiliate":"bing7affiliate"')
           expect(logline).to include('"position":"1"')
           expect(logline).to include('"module_code":"BOOS"')
           expect(logline).to include('"vertical":"web"')
