@@ -30,7 +30,7 @@ gem 'resque-scheduler', '~> 4.3.1'
 gem 'cocaine', '~> 0.5.8'
 gem 'paperclip', '~> 5.2.0'
 gem 'googlecharts', '~> 1.6.12'
-gem 'sanitize', '~> 4.6.4'
+gem 'sanitize', '~> 5.2.1'
 gem 'tweetstream', '~> 2.6.1' # no longer maintained?
 gem 'twitter', '~> 5.5'
 gem 'flickraw', '~> 0.9.9'
