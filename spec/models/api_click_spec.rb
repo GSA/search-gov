@@ -81,7 +81,16 @@ describe ApiClick do
 
     it 'returns a 400 with an invalid affiliate message' do
       click.validate
-      expect(click.errors.full_messages).to eq ['Affiliate is inactive']
+      expect(click.errors.full_messages).to eq ['Affiliate is invalid']
+    end
+  end
+
+  context "with an affiliate that doesn't exist" do
+    let(:affiliate) { 'not_an_affiliate' }
+
+    it 'returns a 400 with an invalid affiliate message' do
+      click.validate
+      expect(click.errors.full_messages).to eq ['Affiliate is invalid']
     end
   end
 end

@@ -21,7 +21,8 @@
   
   ## Responses
   - **Success** - A response status code of 200 and empty body.
-  - **Mising Required Parameters** - A response status code of 400 and an error message describing the missing parameters. `["Query can't be blank"]`
+  - **Missing Required Parameters** - A response status code of 400 and an error message describing the missing parameters. `["Query can't be blank"]`
+  - **Invalid Or Inactive Affiliate** - A response status code of 401 and an error message. `["Affiliate is invalid"]`
   - **Invalid API Access Key** - A response status code of 401 and an error message. `["Access key is invalid"]`
   - **Unparseable URL** - A response status code of 401 and an error message. `["Url is not a valid format"]`
   - **Invalid Module Code** - A response status code of 401 and an error message. `["Module code {MODULE} is not a valid module"]`

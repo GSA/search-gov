@@ -16,11 +16,11 @@ describe 'Click tracking', js: true, vcr: { preserve_exact_body_bytes: true } do
 
   describe 'a user searches for a best bet' do
     before do
-      visit '/search?affiliate=bing7affiliate&query=boosted'
+      visit '/search?affiliate=bingV7affiliate&query=boosted'
     end
 
     it 'the search results have the expected data attributes' do
-      expect(page).to have_selector('div[data-affiliate="bing7affiliate"]', id: 'search')
+      expect(page).to have_selector('div[data-affiliate="bingV7affiliate"]', id: 'search')
       expect(page).to have_selector('div[data-vertical="web"]', id: 'search')
       expect(page).to have_selector('div[data-query="boosted"]', id: 'search')
 
@@ -39,7 +39,7 @@ describe 'Click tracking', js: true, vcr: { preserve_exact_body_bytes: true } do
           expect(logline).to include('"url":"http://example.com/"')
           expect(logline).to include('"query":"boosted"')
           expect(logline).to include('"client_ip":"127.0.0.1"')
-          expect(logline).to include('"affiliate":"bing7affiliate"')
+          expect(logline).to include('"affiliate":"bingV7affiliate"')
           expect(logline).to include('"position":"1"')
           expect(logline).to include('"module_code":"BOOS"')
           expect(logline).to include('"vertical":"web"')

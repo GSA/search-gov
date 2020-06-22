@@ -11,7 +11,10 @@ class Click
   validates :position, numericality: { only_integer: true,
                                        greater_than_or_equal_to: 0,
                                        allow_blank: true }
-  validate :url_validation, :client_ip_validation, :module_code_validation
+  validates :client_ip, format: { with: Resolv::AddressRegex,
+                                  allow_blank: true,
+                                  message: 'is invalid' }
+  validate :url_validation, :module_code_validation
 
   after_validation :unescape_url
 
@@ -48,18 +51,6 @@ class Click
     return if SearchModule.pluck(:tag).include? module_code
 
     errors.add(:module_code, "#{module_code} is not a valid module")
-  end
-
-  def client_ip_validation
-    return if client_ip.blank?
-    return if valid_ip?
-
-    errors.add(:client_ip, 'is invalid')
-  end
-
-  def valid_ip?
-    matched = (client_ip =~ Resolv::AddressRegex)
-    matched.present?
   end
 
   def unescape_url

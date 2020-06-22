@@ -8,9 +8,8 @@ DEFAULTS: &DEFAULTS
 bing_v7_affiliate:
   <<: *DEFAULTS
   search_engine: BingV7
-  display_name: Bing7 Affiliate
-  name: bing7affiliate
-  active: true
+  display_name: Bing V7 Affiliate
+  name: bingV7affiliate
 
 usagov_affiliate:
   <<: *DEFAULTS
@@ -46,7 +45,6 @@ basic_affiliate:
   search_engine: Google
   youtube_profiles: nps
   api_access_key: basic_key
-  active: true
 
 another_affiliate:
   <<: *DEFAULTS

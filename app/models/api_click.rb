@@ -22,7 +22,7 @@ class ApiClick < Click
   def validates_active_affiliate
     return if affiliate.nil?
 
-    errors.add(:affiliate, 'is inactive') if active_affiliate.nil?
+    errors.add(:affiliate, 'is invalid') if active_affiliate.nil?
   end
 
   def validates_access_key
