@@ -125,6 +125,7 @@ module SearchHelper
   end
 
   def onmousedown_for_tweet_click_attribute(query, url, zero_based_index, affiliate_name, source, queried_at, vertical)
+    # TO REMOVE SRCH-1525
     tracked_url = url ? "'#{URI.escape(url)}'" : 'this.href'
     "return clk('#{h query}', #{tracked_url}, #{zero_based_index + 1}, '#{affiliate_name}', '#{source}', #{queried_at}, '#{vertical}', '#{I18n.locale.to_s}')"
   end
@@ -134,10 +135,12 @@ module SearchHelper
   end
 
   def onmousedown_for_click_attribute(query, zero_based_index, affiliate_name, source, queried_at, vertical, model_id)
+    # TO REMOVE SRCH-1525
     "return clk('#{h query}',this.href, #{zero_based_index + 1}, '#{affiliate_name}', '#{source}', #{queried_at}, '#{vertical}', '#{I18n.locale.to_s}', '#{model_id}')"
   end
 
   def onmousedown_attribute_for_image_click(query, media_url, zero_based_index, affiliate_name, source, queried_at, vertical)
+    # TO REMOVE SRCH-1525
     "return clk('#{h(escape_javascript(query))}', '#{media_url}', #{zero_based_index + 1}, '#{affiliate_name}', '#{source}', #{queried_at}, '#{vertical}', '#{I18n.locale.to_s}')"
   end
 
