@@ -88,7 +88,7 @@ describe SitemapIndexer do
                             last_crawl_status: 'OK',
                             last_crawled_at: 1.week.ago)
       end
-      let(:lastmod) { Date.today }
+      let(:lastmod) { Date.today.to_time(:utc) }
 
       context 'when lastmod is not specified in the sitemap' do
         let(:sitemap_entries) { '<url><loc>http://agency.gov/doc1</loc></url>' }

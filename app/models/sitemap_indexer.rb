@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SitemapIndexer
   attr_reader :domain,
               :scheme,
@@ -12,28 +14,30 @@ class SitemapIndexer
   end
 
   def index
-    sitemaps.any? ? enqueue_sitemaps : process_entries
+    enqueue_sitemaps
+    process_entries
   end
 
   private
 
-  def sitemaps
-    @sitemaps ||= Sitemaps.parse(sitemap).sitemaps
-  end
-
-  def sitemap_entries
-    # Eventually we might add an option to the Sitemaps gem to limit the URLS
-    # to those strictly adhering to the sitemap protocol, but this should suffice for now
-    # https://www.pivotaltracker.com/story/show/157485118
-    @sitemap_entries ||= Sitemaps.parse(sitemap).entries.select do |entry|
-      entry.loc.host == domain
+  def enqueue_sitemaps
+    Saxerator.parser(sitemap).within('sitemapindex').for_tag('sitemap').each do |sitemap|
+      SitemapIndexerJob.perform_later(sitemap_url: sitemap['loc'].to_s)
     end
   end
 
   def process_entries
     skip_counter_callbacks
-    Rails.logger.info "[Searchgov SitemapIndexer] #{log_info.merge(sitemap_entries_found: sitemap_entries.count).to_json}"
-    sitemap_entries.each{ |entry| process_entry(entry) }
+    count = 0
+    Saxerator.parser(sitemap).within('urlset').for_tag('url').each do |entry|
+      if URI(entry['loc'].strip).host == domain
+        process_entry(entry)
+        count += 1
+      end
+    end
+    line = '[Searchgov SitemapIndexer] '\
+           "#{log_info.merge(sitemap_entries_found: count).to_json}"
+    Rails.logger.info line
     searchgov_domain.index_urls
   ensure
     set_counter_callbacks
@@ -42,17 +46,14 @@ class SitemapIndexer
 
   def process_entry(entry)
     begin
-      sitemap_url = UrlParser.update_scheme(entry.loc, scheme)
+      sitemap_url = UrlParser.update_scheme(entry['loc'].strip, scheme)
       searchgov_url = SearchgovUrl.find_or_initialize_by(url: sitemap_url)
-      searchgov_url.update!(lastmod: entry.lastmod)
+      searchgov_url.update!(lastmod: entry['lastmod'])
     rescue => e
-      Rails.logger.error "[Searchgov SitemapIndexer] #{log_info.merge(sitemap_entry_failed:  sitemap_url, error: e.message).to_json}".red
-    end
-  end
-
-  def enqueue_sitemaps
-    sitemaps.each do |sitemap|
-      SitemapIndexerJob.perform_later(sitemap_url: sitemap.loc.to_s)
+      line = '[Searchgov SitemapIndexer] '\
+             "#{log_info.merge(sitemap_entry_failed: sitemap_url,
+                               error: e.message).to_json}"
+      Rails.logger.error line.red
     end
   end
 
@@ -69,7 +70,8 @@ class SitemapIndexer
       HTTP.headers(user_agent: DEFAULT_USER_AGENT).
         timeout(connect: 20, read: 60).follow.get(uri).to_s.freeze
     rescue => e
-      Rails.logger.warn "[Searchgov SitemapIndexer] #{log_info.merge(error: e.message).to_json}".red
+      line = "[Searchgov SitemapIndexer] #{log_info.merge(error: e.message).to_json}"
+      Rails.logger.warn line.red
       ''
     end
   end
