@@ -7,12 +7,30 @@
 
 ## Dependencies
 
+### Ruby
+
+Use [RVM](https://rvm.io/) to install the version of Ruby specified in [.ruby-version](/.ruby-version). 
+
+### Gems
+
+Use [Bundler](https://bundler.io/) to install the required gems:
+
+    $ gem install bundler
+    $ bundle
+
 ### Docker
 
-The search-gov app and its required services (Redis, MySQL, etc.) can all be installed and run using [Docker](https://www.docker.com/get-started). If you prefer to install the services and packages without Docker, see the [wiki](https://github.com/GSA/search-gov/wiki/Local-Installation-and-Management-of-dependencies). We recommend setting the max memory alloted to Docker to 4GB (in Docker Desktop, Preferences > Resources > Advanced). All of the `docker-compose exec ...` commands below require you to have a running app container via `docker-compose up`. See [the wiki](https://github.com/GSA/search-gov/wiki/Docker-Command-Reference) for more documentation on Docker commands.
+The required services (Redis, MySQL, etc.) can all be installed and run using [Docker](https://www.docker.com/get-started). If you prefer to install the services and packages without Docker, see the [wiki](https://github.com/GSA/search-gov/wiki/Local-Installation-and-Management-of-dependencies). We recommend setting the max memory alloted to Docker to 4GB (in Docker Desktop, Preferences > Resources > Advanced). See [the wiki](https://github.com/GSA/search-gov/wiki/Docker-Command-Reference) for more documentation on Docker commands.
     
 ### Services
-The required services listed below can be configured and run using Docker. You can run them all, including the search-gov app, with `docker-compose up`. Alternatively, you can run them individually, i.e. `docker-compose up elasticsearch`.  
+
+All the required services below can be run using [Docker Compose](https://docs.docker.com/compose/):
+
+    $ docker-compose up
+    
+Alternatively, run the services individually, i.e.:
+
+    $ docker-compose up redis
 
 * [Elasticsearch](https://www.elastic.co/elasticsearch/) 6.8 - for full-text search and query analytics
 
@@ -21,14 +39,19 @@ We have configured Elasticsearch 6.8 to run on port 9268, and Elasticsearch 7.7 
     $ curl "localhost:9268/_nodes/settings?pretty=true"
     $ curl "localhost:9277/_nodes/settings?pretty=true"
     
-* [Kibana](https://www.elastic.co/kibana) - Kibana is not required, but can be very useful for debugging Elasticsearch. Confirm Kibana is available for the Elasticsearch 6.8 cluster by visiting <http://localhost:5668>.
+* [Kibana](https://www.elastic.co/kibana) - Kibana is not required, but can be very useful for debugging Elasticsearch. Confirm Kibana is available for the Elasticsearch 6.8 cluster by visiting <http://localhost:5668>. Kibana for the Elasticsearch 7 cluster should be available on <http://localhost:5677>.
 
 * [MySQL](https://dev.mysql.com/doc/refman/5.6/en/) 5.6 - database, accessible from user 'root' with no password
 * [Redis](https://redis.io/) 5.0 - We're using the Redis key-value store for caching, queue workflow via Resque, and some analytics.
 * [Tika](https://tika.apache.org/) - for extracting plain text from PDFs, etc. The [Tika REST server](https://cwiki.apache.org/confluence/display/TIKA/TikaServer) runs on <http://localhost:9998/>.
 
+### Package Manager
+
+We recommend using [Homebrew](https://brew.sh/) for local package installation on a Mac.
+
 ### Packages
-The packages below are included in the [custom Docker image](/Dockerfile) used for building the search-gov `app` container.
+
+Use the package manager of your choice to install the following packages:
 
 * C++ compiler - required by the [cld3](https://github.com/akihikodaki/cld3-ruby) gem, which we use for language detection
 * Google's [protocol buffers](https://developers.google.com/protocol-buffers/) - also required by the cld gem
@@ -36,11 +59,20 @@ The packages below are included in the [custom Docker image](/Dockerfile) used f
 * [PhantomJS](http://phantomjs.org/download.html) - required to run JavaScript in Cucumber features
 * [ImageMagick](https://imagemagick.org/) - required by the Paperclip gem, used for image attachments
 
-## Gems
+Example of installation on Mac using [Homebrew](https://brew.sh/):
 
-The Docker app container automatically installs gems when the container is built. If you make any changes to the gems, you should rebuild the app image:
+    $ brew install gcc  
+    $ brew install protobuf
+    $ brew install java
+    $ brew install imagemagick
+    $ brew cask install phantomjs
+    
+Example of installation on Linux:
 
-    $ docker-compose build app
+    $ apt-get install protobuf-compiler
+    $ apt-get install libprotobuf-dev
+    $ apt-get install imagemagick
+    $ apt-get install default-jre
 
 ## Service credentials; how we protect secrets
 
@@ -59,8 +91,8 @@ Anything listed in the `secret_keys` entry of that file will automatically be ma
 
 Create and set up your development and test databases:
 
-    $ docker-compose exec app bin/rails db:setup
-    $ docker-compose exec app app bin/rails db:test:prepare
+    $ rails db:setup
+    $ rails db:test:prepare
 
 ## Asset pipeline
 
@@ -78,55 +110,52 @@ A few tips when working with asset pipeline:
 
 You can create the USASearch-related indexes like this:
 
-    $ docker-compose exec app rake usasearch:elasticsearch:create_indexes
+    $ rake usasearch:elasticsearch:create_indexes
 
 You can index all the records from ActiveRecord-backed indexes like this:
 
-    $ docker-compose exec app rake usasearch:elasticsearch:index_all[FeaturedCollection+BoostedContent]
+    $ rake usasearch:elasticsearch:index_all[FeaturedCollection+BoostedContent]
 
 If you want it to run in parallel using Resque workers, call it like this:
 
-    $ docker-compose exec app rake usasearch:elasticsearch:resque_index_all[FeaturedCollection+BoostedContent]
+    $ rake usasearch:elasticsearch:resque_index_all[FeaturedCollection+BoostedContent]
 
 Note that indexing everything uses whatever index/mapping/setting is in place. If you need to change the Elasticsearch schema first, do this:
 
-    $ docker-compose exec app rake usasearch:elasticsearch:recreate_index[FeaturedCollection]
+    $ rake usasearch:elasticsearch:recreate_index[FeaturedCollection]
 
 If you are changing a schema and want to migrate the index without having it be unavailable, do this:
 
-    $ docker-compose exec app rake usasearch:elasticsearch:migrate[FeaturedCollection]
+    $ rake usasearch:elasticsearch:migrate[FeaturedCollection]
 
 Same thing, but using Resque to index in parallel:
 
-    $ docker-compose exec app rake usasearch:elasticsearch:resque_migrate[FeaturedCollection]
+    $ rake usasearch:elasticsearch:resque_migrate[FeaturedCollection]
 
 # Tests
 
 Make sure the unit tests, functional and integration tests run:
     
     # Run the RSpec tests
-    $ docker-compose exec app bundle exec rspec spec/
+    $ rspec spec/
     
     # Run the Cucumber integration tests
-    $ docker-compose exec app bundle exec cucumber features/
+    $ cucumber features/
+    
+## Code Coverage
+
+We require 100% code coverage. After running the tests (both RSpec & Cucumber), open `coverage/index.html` in your favorite browser to view the report. You can click around on the files that have < 100% coverage to see what lines weren't exercised.
 
 ## Circle CI
 
 We use [CircleCI](https://circleci.com/gh/GSA/usasearch) for continuous integration. Build artifacts, such as logs, are available in the 'Artifacts' tab of each CircleCI build.
 
-# Code Coverage
-
-We track test coverage of the codebase over time, to help identify areas where we could write better tests and to see when poorly tested code got introduced. After running the tests (both RSpec & Cucumber), open `coverage/index.html` in your favorite browser to view the report.
-
-You can click around on the files that have < 100% coverage to see what lines weren't exercised.
-
-Make sure you commit any changes to the coverage directory back to git.
 
 # Running the app
 
 Fire up a server and try it all out:
 
-    $ docker-compose up
+    $ rails server
     
 Visit <http://127.0.0.1:3000>
 
@@ -170,16 +199,28 @@ u.save!
 You should now be able to login to your local instance of search.gov.
 
 ## Admin
-Your user account should have admin priveleges set. Now go here and poke around.
+Your user account should have admin privileges set. Now go here and poke around.
 
 <http://127.0.0.1:3000/admin>
 
 ## Asynchronous tasks
-Several long-running tasks have been moved to the background for processing via Resque. Resque workers and the resque-web interface can be run automatically via `docker-compose up`. 
+Several long-running tasks have been moved to the background for processing via Resque.
+
+1. If you haven't already, run `docker-compose up` to start all the services.
+
+1. Launch the Sinatra app to see the queues and jobs:
+
+    `$ resque-web ./lib/setup_resque.rb`
 
 1. Visit the resque-web sinatra app at <http://0.0.0.0:5678/overview> to inspect queues, workers, etc.
 
 1. In your admin center, [create a type-ahead suggestion (SAYT)](http://localhost:3000/admin/sayt_suggestions) "delete me". Now [create a SAYT filter](http://localhost:3000/admin/sayt_filters) on the word "delete".
+
+1. Look in the Resque web queue to see the job enqueued.
+
+1. Start a Resque worker to run the job:
+
+   `$ QUEUE=* rake environment resque:work`
 
 1. You should see log lines indicating that a Resque worker has processed a `ApplySaytFilters` job:
 
@@ -194,12 +235,20 @@ background job model, consider the priorities of the existing jobs to determine 
 Odie documents will take days, and should run as low priority. But fetching and indexing a single URL uploaded by an affiliate should be high priority.
 When in doubt, just use Resque.enqueue() instead of Resque.enqueue_with_priority() to put it on the normal priority queue.
 
+(Note: newer jobs inherit from ActiveJob, using the resque queue adapter. We are in the process of migrating the older jobs to ActiveJob.)
+
 ### Scheduled jobs
-We use the [resque-scheduler](https://github.com/resque/resque-scheduler) gem to schedule delayed jobs. Use [ActiveJob](http://api.rubyonrails.org/classes/ActiveJob/Core/ClassMethods.html)'s `:wait` or `:wait_until` options/ph to enqueue delayed jobs, or schedule them in `config/resque_schedule.yml`.
+We use the [resque-scheduler](https://github.com/resque/resque-scheduler) gem to schedule delayed jobs. Use [ActiveJob](http://api.rubyonrails.org/classes/ActiveJob/Core/ClassMethods.html)'s `:wait` or `:wait_until` options to enqueue delayed jobs, or schedule them in `config/resque_schedule.yml`.
 
 Example:
 
-1. Schedule a delayed job: `SitemapMonitorJob.set(wait: 5.minutes).perform_later`
+1. In the Rails console, schedule a delayed job:
+
+    `> SitemapMonitorJob.set(wait: 5.minutes).perform_later`
+
+1. Run the resque-scheduler rake task:
+
+    `$ rake resque-scheduler`
 
 1. Check the 'Delayed' tab in [Resque web](http://0.0.0.0:5678/delayed) to see your job.
 
