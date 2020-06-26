@@ -1,22 +1,6 @@
 version: '3.8'
 
 services:
-  app:
-    build: .
-    depends_on:
-      - elasticsearch6
-      - elasticsearch7
-      - mysql
-      - redis
-    command: bin/rails server --binding 0.0.0.0
-    ports:
-      - 3000:3000
-    volumes:
-      - .:/usr/src/app
-      - gem_cache:/gems
-    env_file:
-      - .env/development/app
-
   elasticsearch6:
     image: docker.elastic.co/elasticsearch/elasticsearch:6.8.9
     environment:
@@ -84,49 +68,7 @@ services:
     ports:
       - 9998:9998
 
-  resque-web:
-    command: 'bundle exec resque-web ./lib/setup_resque.rb -F -r redis:6379'
-    build: .
-    depends_on:
-      - redis
-    ports:
-      - 5678:5678
-    environment:
-      - PIDFILE=./tmp/pids/resque-web.pid
-    volumes:
-      - .:/usr/src/app
-      - gem_cache:/gems
-
-  resque-workers:
-    command: 'bundle exec rake environment resque:work'
-    build: .
-    depends_on:
-      - elasticsearch6
-      - mysql
-      - redis
-    env_file:
-      - .env/development/app
-      - .env/development/resque
-    volumes:
-      - .:/usr/src/app
-      - gem_cache:/gems
-
-  resque-scheduler:
-    command: 'bundle exec rake resque:scheduler'
-    build: .
-    depends_on:
-      - elasticsearch6
-      - mysql
-      - redis
-    env_file:
-      - .env/development/app
-      - .env/development/resque
-    volumes:
-      - .:/usr/src/app
-      - gem_cache:/gems
-
 volumes:
   db_data:
   es_6_data:
   es_7_data:
-  gem_cache:

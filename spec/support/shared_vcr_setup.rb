@@ -36,11 +36,8 @@ VCR.configure do |config|
     /codeclimate.com/ ===  URI(request.uri).host
   end
 
-  # Elasticsearch
-  config.ignore_request { |request| URI(request.uri).port.between?(9200,9299) } 
-
-  # Tika
-  config.ignore_request { |request| URI(request.uri).port == 9998 }
+  config.ignore_request { |request| URI(request.uri).port.between?(9200,9299) } # Elasticsearch
+  config.ignore_request { |request| URI(request.uri).port == 9998 } # Tika
 
   secrets = YAML.load(ERB.new(File.read(Rails.root.join('config', 'secrets.yml'))).result)
   secrets['secret_keys'].each do |service, keys|
