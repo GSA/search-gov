@@ -34,10 +34,10 @@ Alternatively, run the services individually, i.e.:
 
 * [Elasticsearch](https://www.elastic.co/elasticsearch/) 6.8 - for full-text search and query analytics
 
-We have configured Elasticsearch 6.8 to run on port 9268, and Elasticsearch 7.7 to run on 9277. (Currently, only 6.8 is used in production, but some tests run against both versions.) To check Elasticsearch settings and directory locations:
+We have configured Elasticsearch 6.8 to run on port 9268, and Elasticsearch 7.8 to run on 9278. (Currently, only 6.8 is used in production, but some tests run against both versions.) To check Elasticsearch settings and directory locations:
 
     $ curl "localhost:9268/_nodes/settings?pretty=true"
-    $ curl "localhost:9277/_nodes/settings?pretty=true"
+    $ curl "localhost:9278/_nodes/settings?pretty=true"
     
 * [Kibana](https://www.elastic.co/kibana) - Kibana is not required, but can be very useful for debugging Elasticsearch. Confirm Kibana is available for the Elasticsearch 6.8 cluster by visiting <http://localhost:5668>. Kibana for the Elasticsearch 7 cluster should be available on <http://localhost:5677>.
 
