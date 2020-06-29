@@ -16,11 +16,11 @@ Use [RVM](https://rvm.io/) to install the version of Ruby specified in [.ruby-ve
 Use [Bundler](https://bundler.io/) to install the required gems:
 
     $ gem install bundler
-    $ bundle
+    $ bundle install
 
 ### Docker
 
-The required services (Redis, MySQL, etc.) can all be installed and run using [Docker](https://www.docker.com/get-started). If you prefer to install the services and packages without Docker, see the [wiki](https://github.com/GSA/search-gov/wiki/Local-Installation-and-Management-of-dependencies). We recommend setting the max memory alloted to Docker to 4GB (in Docker Desktop, Preferences > Resources > Advanced). See [the wiki](https://github.com/GSA/search-gov/wiki/Docker-Command-Reference) for more documentation on Docker commands.
+The required services (Redis, MySQL, etc.) can all be installed and run using [Docker](https://www.docker.com/get-started). If you prefer to install the services without Docker, see the [wiki](https://github.com/GSA/search-gov/wiki/Local-Installation-and-Management-of-dependencies). We recommend setting the max memory alloted to Docker to 4GB (in Docker Desktop, Preferences > Resources > Advanced). See [the wiki](https://github.com/GSA/search-gov/wiki/Docker-Command-Reference) for more documentation on basic Docker commands.
     
 ### Services
 
@@ -34,12 +34,12 @@ Alternatively, run the services individually, i.e.:
 
 * [Elasticsearch](https://www.elastic.co/elasticsearch/) 6.8 - for full-text search and query analytics
 
-We have configured Elasticsearch 6.8 to run on port 9268, and Elasticsearch 7.8 to run on 9278. (Currently, only 6.8 is used in production, but some tests run against both versions.) To check Elasticsearch settings and directory locations:
+We have configured Elasticsearch 6.8 to run on port [9268](http://localhost:9268/), and Elasticsearch 7.8 to run on [9278](http://localhost:9278/). (Currently, only 6.8 is used in production, but some tests run against both versions.) To check Elasticsearch settings and directory locations:
 
     $ curl "localhost:9268/_nodes/settings?pretty=true"
     $ curl "localhost:9278/_nodes/settings?pretty=true"
     
-* [Kibana](https://www.elastic.co/kibana) - Kibana is not required, but can be very useful for debugging Elasticsearch. Confirm Kibana is available for the Elasticsearch 6.8 cluster by visiting <http://localhost:5668>. Kibana for the Elasticsearch 7 cluster should be available on <http://localhost:5677>.
+* [Kibana](https://www.elastic.co/kibana) - Kibana is not required, but can be very useful for debugging Elasticsearch. Confirm Kibana is available for the Elasticsearch 6.8 cluster by visiting <http://localhost:5668>. Kibana for the Elasticsearch 7 cluster should be available on <http://localhost:5678>.
 
 * [MySQL](https://dev.mysql.com/doc/refman/5.6/en/) 5.6 - database, accessible from user 'root' with no password
 * [Redis](https://redis.io/) 5.0 - We're using the Redis key-value store for caching, queue workflow via Resque, and some analytics.
@@ -76,7 +76,7 @@ Example of installation on Linux:
 
 ## Service credentials; how we protect secrets
 
-The app does its best to avoid interacting with most remote services during the test phase through heavy use of the [VCR](https://github.com/vcr/vcr) gem.
+The app does its best to avoid interacting with most remote services during the test phase through heavy use of the [VCR](/wiki/Editing-Recording-and-Re-recording-API-calls-with-VCR-(WIP)) gem.
 
 You should be able to simply run this command to get a valid `secrets.yml` file that will work for running existing specs:
 
