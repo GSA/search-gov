@@ -15,7 +15,7 @@ class Click
   validates :client_ip, format: { with: Resolv::AddressRegex,
                                   allow_blank: true,
                                   message: 'is invalid' }
-  validate :url_validation, :module_code_validation
+  validate :url_encoding_validation, :module_code_validation
 
   after_validation :unescape_url
 
@@ -36,7 +36,7 @@ class Click
 
   private
 
-  def url_validation
+  def url_encoding_validation
     return if url.blank?
     return if CGI.unescape(url).valid_encoding?
 

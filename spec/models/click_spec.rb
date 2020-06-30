@@ -76,7 +76,7 @@ describe Click do
     end
   end
 
-  describe '#url_validation' do
+  describe '#url_encoding_validation' do
     context 'with invalid utf-8 in the url' do
       # https://cm-jira.usa.gov/browse/SRCHAR-415
       let(:url) { 'https://example.com/wymiana+teflon%F3w' }
