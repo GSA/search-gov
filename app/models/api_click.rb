@@ -30,4 +30,8 @@ class ApiClick < Click
 
     errors.add(:access_key, 'is invalid') if active_affiliate.api_access_key != access_key
   end
+
+  def click_hash
+    super.merge access_key: access_key
+  end
 end

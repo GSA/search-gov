@@ -25,20 +25,15 @@ describe ApiClick do
       it 'logs almost-JSON info about the click' do
         allow(Rails.logger).to receive(:info)
 
+        click.validate #validating causes other instance variables to appear.
         click.log
 
-        expect(Rails.logger).to have_received(:info) do |str|
-          expect(str).to match(/^\[Click\] \{.*\}$/)
-          expect(str).to include('"url":"http://www.fda.gov/foo.html"')
-          expect(str).to include('"query":"my query"')
-          expect(str).to include('"client_ip":"123.123.123.123"')
-          expect(str).to include('"affiliate":"nps.gov"')
-          expect(str).to include('"position":"7"')
-          expect(str).to include('"module_code":"BWEB"')
-          expect(str).to include('"vertical":"web"')
-          expect(str).to include('"user_agent":"mozilla"')
-          expect(str).to include('"access_key":"basic_key"')
-        end
+        expected_log = '[Click] {"url":"http://www.fda.gov/foo.html",'\
+                       '"query":"my query","client_ip":"123.123.123.123",'\
+                       '"affiliate":"nps.gov","position":"7","module_code":"BWEB",'\
+                       '"vertical":"web","user_agent":"mozilla","access_key":"basic_key"}'
+
+        expect(Rails.logger).to have_received(:info).with(expected_log)
       end
     end
   end

@@ -4,7 +4,8 @@ class Click
   include ActiveModel::Validations
   include ActiveModel::Validations::Callbacks
 
-  attr_reader :url, :query, :position, :module_code, :client_ip, :user_agent
+  attr_reader :affiliate, :url, :query, :position,
+              :module_code, :client_ip, :user_agent, :vertical
 
   validates :url, :query, :position, :module_code, :client_ip, :user_agent, presence: true
   validates :url, url: { allow_blank: true, message: 'is not a valid format' }
@@ -30,7 +31,7 @@ class Click
   end
 
   def log
-    Rails.logger.info('[Click] ' + instance_values.to_json)
+    Rails.logger.info('[Click] ' + click_hash.to_json)
   end
 
   private
@@ -58,5 +59,18 @@ class Click
     return unless errors.empty?
 
     @url = CGI.unescape(url).tr(' ', '+')
+  end
+
+  def click_hash
+    {
+      url: url,
+      query: query,
+      client_ip: client_ip,
+      affiliate: affiliate,
+      position: position,
+      module_code: module_code,
+      vertical: vertical,
+      user_agent: user_agent
+    }
   end
 end
