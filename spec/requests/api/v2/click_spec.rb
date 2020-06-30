@@ -22,6 +22,18 @@ describe '/api/v2/click' do
     let(:expected_params) { valid_params }
 
     it_behaves_like 'a successful click request'
+
+    context 'with authenticty token checking turned on' do
+      before do
+        ActionController::Base.allow_forgery_protection = true
+      end
+
+      it_behaves_like 'a successful click request'
+
+      after do
+        ActionController::Base.allow_forgery_protection = false
+      end
+    end
   end
 
   context 'invalid access_key' do
