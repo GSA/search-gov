@@ -7,15 +7,14 @@ class Click
   attr_reader :affiliate, :url, :query, :position,
               :module_code, :client_ip, :user_agent, :vertical
 
-  validates :url, :query, :position, :module_code, :client_ip, :user_agent, presence: true
-  validates :url, url: { allow_blank: true, message: 'is not a valid format' }
+  validates :query, :position, :module_code, :client_ip, :user_agent, presence: true
   validates :position, numericality: { only_integer: true,
                                        greater_than_or_equal_to: 0,
                                        allow_blank: true }
   validates :client_ip, format: { with: Resolv::AddressRegex,
                                   allow_blank: true,
                                   message: 'is invalid' }
-  validate :url_encoding_validation, :module_code_validation
+  validate :url_validations, :module_code_validation
 
   after_validation :unescape_url
 
@@ -36,11 +35,20 @@ class Click
 
   private
 
-  def url_encoding_validation
-    return if url.blank?
-    return if CGI.unescape(url).valid_encoding?
+  def url_validations
+    if url # using .present? or .blank? blows up on bad utf8
+      if CGI.unescape(url).valid_encoding? && valid_url_format?
+        nil
+      else
+        errors.add(:url, 'is not a valid format')
+      end
+    else
+      errors.add(:url, 'can\'t be blank')
+    end
+  end
 
-    errors.add(:url, 'is not a valid format')
+  def valid_url_format?
+    url =~ URI.regexp(%w[http https])
   end
 
   def module_code_validation
@@ -55,7 +63,6 @@ class Click
   end
 
   def unescape_url
-    return if url.blank?
     return unless errors.empty?
 
     @url = CGI.unescape(url).tr(' ', '+')

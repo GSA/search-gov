@@ -31,7 +31,7 @@ describe Click do
       it 'should log almost-JSON info about the click' do
         allow(Rails.logger).to receive(:info)
 
-        click.validate #validating causes other instance variables to appear.
+        click.validate # validating causes other instance variables to appear.
         click.log
 
         expected_log = '[Click] {"url":"http://www.fda.gov/foo.html",'\
@@ -65,12 +65,12 @@ describe Click do
     describe '#errors' do
       it 'has expected errors' do
         click.validate
-        expected_errors = ["Url can't be blank",
-                           "Query can't be blank",
+        expected_errors = ["Query can't be blank",
                            "Position can't be blank",
                            "Module code can't be blank",
                            "Client ip can't be blank",
-                           "User agent can't be blank"]
+                           "User agent can't be blank",
+                           "Url can't be blank"]
         expect(click.errors.full_messages).to eq expected_errors
       end
     end

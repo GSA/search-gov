@@ -62,9 +62,9 @@ describe '/api/v2/click' do
       }
     end
     let(:expected_error_msg) do
-      "[\"Url can't be blank\",\"Query can't be blank\","\
-      "\"Position can't be blank\",\"Module code can't be blank\","\
-      "\"Client ip can't be blank\",\"User agent can't be blank\","\
+      "[\"Query can't be blank\",\"Position can't be blank\","\
+      "\"Module code can't be blank\",\"Client ip can't be blank\","\
+      "\"User agent can't be blank\",\"Url can't be blank\","\
       "\"Affiliate can't be blank\",\"Access key can't be blank\"]"
     end
 
