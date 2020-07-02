@@ -5,17 +5,16 @@ require 'spec_helper'
 describe 'Click tracking', js: true, vcr: { preserve_exact_body_bytes: true } do
   let!(:affiliate) { affiliates(:bing_v7_affiliate) }
 
-  before do
-    affiliate.boosted_contents.create!(title: 'A boosted search result',
-                                       description: 'An example description',
-                                       url: 'http://example.com',
-                                       status: 'active',
-                                       publish_start_on: Date.current)
-    ElasticBoostedContent.commit
-  end
-
   describe 'a user searches for a best bet' do
     before do
+      affiliate.boosted_contents.create!(title: 'A boosted search result',
+                                         description: 'An example description',
+                                         url: 'http://example.com',
+                                         status: 'active',
+                                         publish_start_on: Date.current)
+
+      ElasticBoostedContent.commit
+
       visit '/search?affiliate=bingV7affiliate&query=boosted'
     end
 

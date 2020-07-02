@@ -15,30 +15,30 @@ module ResultsHelper
   def link_to_web_result_title(result, position)
     title = translate_bing_highlights(h(result['title'])).html_safe
 
-    click_data = { p: position }
+    click_data = { position: position }
     link_to title, result['unescapedUrl'], data: { click: click_data }
   end
 
   def link_to_sitelink(title, url, position)
-    click_data = { p: position, s: 'DECOR' }
+    click_data = { position: position, module_code: 'DECOR' }
     link_to title, url, data: { click: click_data }
   end
 
   def link_to_federal_register_document_title(document, position)
-    click_data = { p: position, s: 'FRDOC', i: document.id }
+    click_data = { position: position, module_code: 'FRDOC' }
     link_to document.title.html_safe, document.html_url, { data: { click: click_data }}
   end
 
   def link_to_image_result_title(result, position, options = { tabindex: -1 })
     title = translate_bing_highlights(h(result['title'])).html_safe
 
-    click_data = { p: position }
+    click_data = { position: position }
     link_to title, result['Url'], { data: { click: click_data } }.merge(options)
   end
 
   def link_to_image_thumbnail(result, position)
     title = translate_bing_highlights(h(result['title'])).html_safe
-    click_data = { p: position }
+    click_data = { position: position }
 
     link_to result['Url'], data: { click: click_data } do
       image_tag(result['Thumbnail']['Url'], alt: title)
@@ -55,7 +55,7 @@ module ResultsHelper
   def link_to_news_item_title(instance, position, module_tag = 'NEWS', options = {})
     title = translate_bing_highlights(h(instance.title)).html_safe
 
-    click_data = { p: position, s: module_tag, i: instance.id }
+    click_data = { position: position, module_code: module_tag }
     link_to title, instance.link, { data: { click: click_data } }.reverse_merge(options)
   end
 
@@ -66,7 +66,7 @@ module ResultsHelper
         when 'VIDS' then video_news_item_thumbnail_html instance
       end
 
-    click_data = { p: position, s: module_tag, i: instance.id }
+    click_data = { position: position, module_code: module_tag }
     link_to thumbnail_html, instance.link, data: { click: click_data }
   end
 
@@ -84,12 +84,12 @@ module ResultsHelper
 
   def link_to_tweet_link(tweet, title, url, position, options = {})
     clicked_url = options.delete(:url) { url }
-    click_data = { i: tweet.id, p: position, s: 'TWEET', u: clicked_url }
+    click_data = { position: position, module_code: 'TWEET' }
     link_to title, url, { data: { click: click_data } }.reverse_merge(options)
   end
 
   def link_to_related_search(search, related_term, position)
-    click_data = { p: position, s: 'SREL' }
+    click_data = { position: position, module_code: 'SREL' }
     link_to related_term.downcase.html_safe,
             search_path(affiliate: search.affiliate.name, query: strip_tags(related_term)),
             data: { click: click_data }
