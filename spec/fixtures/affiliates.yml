@@ -5,6 +5,12 @@ DEFAULTS: &DEFAULTS
   default_search_label: search
   api_access_key: <%= SecureRandom.hex(8) %>
 
+searchgov_affiliate:
+  <<: *DEFAULTS
+  search_engine: SearchGov
+  display_name: SearchGov Affiliate
+  name: searchgovaffiliate
+
 bing_v7_affiliate:
   <<: *DEFAULTS
   search_engine: BingV7

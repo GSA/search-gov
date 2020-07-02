@@ -8,14 +8,16 @@ module ResultsHelper
   end
 
   def link_to_result_title(title, url, position, module_code, options = {})
+    # Used for i14y results
     click_data = { position: position, module_code: module_code }
     link_to_if url.present?, title.html_safe, url, { data: { click: click_data } }.reverse_merge(options)
   end
 
-  def link_to_web_result_title(result, position)
+  def link_to_web_result_title(result, position, module_code)
+    # Used for Bing results
     title = translate_bing_highlights(h(result['title'])).html_safe
 
-    click_data = { position: position }
+    click_data = { position: position, module_code: module_code }
     link_to title, result['unescapedUrl'], data: { click: click_data }
   end
 

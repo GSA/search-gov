@@ -1,7 +1,7 @@
 .content-block-item.result{ id: "result-#{position}" }
   %h4.title
     = display_web_result_extname_prefix(result)
-    = link_to_web_result_title(result, position)
+    = link_to_web_result_title(result, position, search.module_tag)
   %div.url= UrlParser.strip_http_protocols result['unescapedUrl']
   %span.description
     - if result['publishedAt']
