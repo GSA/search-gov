@@ -28,9 +28,9 @@ describe Click do
     end
 
     describe '#log' do
-      it 'should log almost-JSON info about the click' do
-        allow(Rails.logger).to receive(:info)
+      before { allow(Rails.logger).to receive(:info) }
 
+      it 'logs almost-JSON info about the click' do
         click.validate # validating causes other instance variables to appear.
         click.log
 
@@ -40,6 +40,15 @@ describe Click do
                        '"vertical":"web","user_agent":"mozilla"}'
 
         expect(Rails.logger).to have_received(:info).with(expected_log)
+      end
+
+      context 'when the URL is encoded' do
+        let(:url) { 'https://search.gov/%28%3A%7C%29'  }
+
+        it 'logs the escaped URL' do
+          click.log
+          expect(Rails.logger).to have_received(:info).with(%r{https://search.gov/(:|)})
+        end
       end
     end
   end
@@ -79,7 +88,7 @@ describe Click do
   describe '#url_encoding_validation' do
     context 'with invalid utf-8 in the url' do
       # https://cm-jira.usa.gov/browse/SRCHAR-415
-      let(:url) { 'https://example.com/wymiana+teflon%F3w' }
+      let(:url) { "https://example.com/wymiana teflon\xF3w" }
 
       it 'has expected errors' do
         click.validate
@@ -94,15 +103,6 @@ describe Click do
         click.validate
         expect(click.errors.full_messages).to eq ['Url is not a valid format']
       end
-    end
-  end
-
-  describe '#unescape_url' do
-    let(:url) { 'https://search.gov/%28%3A%7C%29' }
-
-    it 'returns an unescaped url' do
-      click.validate
-      expect(click.url).to eq 'https://search.gov/(:|)'
     end
   end
 
