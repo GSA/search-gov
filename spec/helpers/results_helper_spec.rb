@@ -99,10 +99,10 @@ describe ResultsHelper do
       "title" => "test title",
       "Url" => "https://test.gov",
     }
-    subject(:link_to_image_thumbnail) { helper.link_to_image_thumbnail(image_result, '2') }
+    subject(:link_to_image_thumbnail) { helper.link_to_image_thumbnail(image_result, '2', 'IMAG') }
 
     it 'shows an image thumbnail with click tracking attributes' do
-      expected_output = '<a data-click="{&quot;position&quot;:&quot;2&quot;}" '\
+      expected_output = '<a data-click="{&quot;position&quot;:&quot;2&quot;,&quot;module_code&quot;:&quot;IMAG&quot;}" '\
       'href="https://test.gov"><img alt="test title" src="https://test.gov" /></a>'
 
       expect(link_to_image_thumbnail).to eq expected_output
