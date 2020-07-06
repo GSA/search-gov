@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ResultsHelper
   def search_data(search, search_vertical)
     { data: {
@@ -8,21 +10,23 @@ module ResultsHelper
   end
 
   def link_to_result_title(title, url, position, module_code, options = {})
-    # Used for i14y results
+    # Used for i14y results, jobs, spelling suggestions,
+    # boosted, featured collections, med topics
     click_data = { position: position, module_code: module_code }
     link_to_if url.present?, title.html_safe, url, { data: { click: click_data } }.reverse_merge(options)
   end
 
-  def link_to_web_result_title(result, position, module_code)
+  def link_to_web_result_title(result, position)
     # Used for Bing results
     title = translate_bing_highlights(h(result['title'])).html_safe
 
-    click_data = { position: position, module_code: module_code }
+    click_data = { position: position, module_code: 'BWEB' }
     link_to title, result['unescapedUrl'], data: { click: click_data }
   end
 
   def link_to_sitelink(title, url, position)
-    # Used on SEC sites? How to set this up for tests? Is this used anymore. I don't see them on the live SEC site.
+    # Used on SEC sites? How to set this up for tests?
+    # Is this used anymore. I don't see them on the live SEC site.
 
     click_data = { position: position, module_code: 'DECOR' }
     link_to title, url, data: { click: click_data }
@@ -32,14 +36,13 @@ module ResultsHelper
     # Not sure how to set up for system tests, but it looks like it should work.
 
     click_data = { position: position, module_code: 'FRDOC' }
-    link_to document.title.html_safe, document.html_url, { data: { click: click_data }}
+    link_to document.title.html_safe, document.html_url, { data: { click: click_data } }
   end
 
   def link_to_image_result_title(result, position, options = { tabindex: -1 })
     # No integration tests
     title = translate_bing_highlights(h(result['title'])).html_safe
 
-    # TODO - find the right Module codes
     click_data = { position: position, module_code: 'IMAG' }
     link_to title, result['Url'], { data: { click: click_data } }.merge(options)
   end
@@ -64,6 +67,7 @@ module ResultsHelper
 
   def link_to_news_item_title(instance, position, module_code = 'NEWS', options = {})
     # No integration tests
+    # Used in govbox, images, news, video, i14y
     title = translate_bing_highlights(h(instance.title)).html_safe
 
     click_data = { position: position, module_code: module_code }
@@ -94,10 +98,9 @@ module ResultsHelper
     thumbnail_html << duration_html
   end
 
-  def link_to_tweet_link(tweet, title, url, position, options = {})
+  def link_to_tweet_link(_tweet, title, url, position, options = {})
     # No integration tests
 
-    clicked_url = options.delete(:url) { url }
     click_data = { position: position, module_code: 'TWEET' }
     link_to title, url, { data: { click: click_data } }.reverse_merge(options)
   end
@@ -107,7 +110,8 @@ module ResultsHelper
 
     click_data = { position: position, module_code: 'SREL' }
     link_to related_term.downcase.html_safe,
-            search_path(affiliate: search.affiliate.name, query: strip_tags(related_term)),
+            search_path(affiliate: search.affiliate.name,
+                        query: strip_tags(related_term)),
             data: { click: click_data }
   end
 end
