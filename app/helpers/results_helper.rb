@@ -13,7 +13,8 @@ module ResultsHelper
     # Used for i14y results, jobs, spelling suggestions,
     # boosted, featured collections, med topics
     click_data = { position: position, module_code: module_code }
-    link_to_if url.present?, title.html_safe, url, { data: { click: click_data } }.reverse_merge(options)
+    link_to_if url.present?, title.html_safe, url,
+               { data: { click: click_data } }.reverse_merge(options)
   end
 
   def link_to_web_result_title(result, position)
@@ -76,11 +77,10 @@ module ResultsHelper
 
   def link_to_news_item_thumbnail(module_code, instance, position)
     # No integration tests
-    thumbnail_html =
-      case module_code
-        when 'NIMAG' then image_news_item_thumbnail_html instance
-        when 'VIDS' then video_news_item_thumbnail_html instance
-      end
+    thumbnail_html = case module_code
+                     when 'NIMAG' then image_news_item_thumbnail_html instance
+                     when 'VIDS' then video_news_item_thumbnail_html instance
+                     end
 
     click_data = { position: position, module_code: module_code }
     link_to thumbnail_html, instance.link, data: { click: click_data }
