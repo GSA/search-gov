@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe 'A user searches', js: true do #, vcr: { preserve_exact_body_bytes: true } do
+describe 'A user searches', js: true, vcr: { preserve_exact_body_bytes: true } do
   context "a searchgov site" do
     let!(:affiliate) { affiliates(:searchgov_affiliate) }
 

@@ -24,6 +24,7 @@ describe TwitterProfilesHelper do
     end
 
     it 'should render tweet link with click tracking' do
+      # TO REMOVE SRCH-1525
       result = helper.legacy_render_tweet_text(tweet, search, 1)
       expect(result).to eq(%q[Search Notes for the Week Ending September 21, 2012 - <a href="http://t.co/YQQSs9bb" onmousedown="return clk('notes', 'http://tmblr.co/Z8xAVxUEKvaK', 2, 'usagov', 'TWEET', 1350362825, 'web', 'en')">tmblr.co/Z8xAVxUEKvaK</a> <a href="http://t.co/YQQSs9bb" onmousedown="return clk('notes', 'http://tmblr.co/Z8xAVxUEKvaK', 2, 'usagov', 'TWEET', 1350362825, 'web', 'en')">tmblr.co/Z8xAVxUEKvaK</a>])
     end
@@ -39,6 +40,7 @@ describe TwitterProfilesHelper do
     end
 
     it 'should render link with click tracking' do
+    # TO REMOVE SRCH-1525
       result = helper.legacy_render_twitter_profile(profile, search, 1)
       expect(result).to eq(%Q[<a href="http://twitter.com/USASearch" onmousedown="return clk('notes', this.href, 2, 'usagov', 'TWEET', 1350362825, 'web', 'en')">\n<span class="screen-name"> @</span></a>])
     end
