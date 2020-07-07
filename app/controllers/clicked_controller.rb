@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ClickedController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def index
     click = Click.new(click_params)
 
