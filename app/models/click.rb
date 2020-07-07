@@ -4,8 +4,12 @@ class Click
   include ActiveModel::Validations
   include ActiveModel::Validations::Callbacks
 
-  attr_reader :affiliate, :url, :query, :position,
+  attr_accessor :url
+
+  attr_reader :affiliate, :query, :position,
               :module_code, :client_ip, :user_agent, :vertical
+
+  before_validation :unescape_url
 
   validates :query, :position, :module_code, :client_ip, :user_agent, :url, presence: true
   validates :position, numericality: { only_integer: true,
@@ -15,11 +19,10 @@ class Click
                                   allow_blank: true,
                                   message: 'is invalid' }
   validate  :module_code_validation
-  validates :url, url: { message: "is not a valid format", allow_blank: true }
-
+  validates :url, url: { message: 'is not a valid format', allow_blank: true }
 
   def initialize(params)
-    @url = unencode(params[:url])
+    @url = params[:url]
     @query = params[:query]
     @client_ip = params[:client_ip]
     @affiliate = params[:affiliate]
@@ -35,12 +38,11 @@ class Click
 
   private
 
-  def unencode(url)
-    return if url.blank?
+  def unescape_url
+    return unless url
 
-    Addressable::URI.unencode(url)
-  rescue
-    'invalid url'
+    unescaped_url = CGI.unescape(url)
+    self.url = unescaped_url.valid_encoding? ? unescaped_url : 'invalid URL'
   end
 
   def module_code_validation

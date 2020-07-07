@@ -94,6 +94,15 @@ describe Click do
         click.validate
         expect(click.errors.full_messages).to eq ['Url is not a valid format']
       end
+
+      context 'when the unencoded URL contains invalid characters' do
+        let(:url) { "https://example.com/wymiana+teflon%F3w" }
+
+        it 'has expected errors' do
+          click.validate
+          expect(click.errors.full_messages).to eq ['Url is not a valid format']
+        end
+      end
     end
 
     context 'with malformed urls' do
