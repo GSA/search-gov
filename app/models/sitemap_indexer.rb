@@ -14,11 +14,15 @@ class SitemapIndexer
   end
 
   def index
-    enqueue_sitemaps
-    process_entries
+    # A sitemap has either a sitemapindex or a urlset
+    sitemapindex? ? enqueue_sitemaps : process_entries
   end
 
   private
+
+  def sitemapindex?
+    Saxerator.parser(sitemap).for_tag('sitemapindex').any?
+  end
 
   def enqueue_sitemaps
     Saxerator.parser(sitemap).within('sitemapindex').for_tag('sitemap').each do |sitemap|
@@ -30,6 +34,9 @@ class SitemapIndexer
     skip_counter_callbacks
     count = 0
     Saxerator.parser(sitemap).within('urlset').for_tag('url').each do |entry|
+      # Eventually we might add an option to the Sitemaps gem to limit the URLS
+      # to those strictly adhering to the sitemap protocol, but this should suffice for now
+      # https://www.pivotaltracker.com/story/show/157485118
       if URI(entry['loc'].strip).host == domain
         process_entry(entry)
         count += 1
