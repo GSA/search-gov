@@ -13,6 +13,7 @@ Feature:  Administration
     When I follow "Super Admin" in the main navigation bar
     Then I should be on the admin home page
 
+    # SRCH-1552
     # Commented out until we figure out how to get login.gov out of
     # the loop during testing.
     # When I follow "Sign Out"

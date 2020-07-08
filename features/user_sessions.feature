@@ -6,7 +6,8 @@ Feature: User sessions
     And I go to the login page
     Then I should see "Contact Information"
     When I sign out
-    # commented out until we figure out how to handle login.gov sign
+    # SRCH-1552
+    # Commented out until we figure out how to handle login.gov sign
     # out properly
     # Then I should be on the login page
 
