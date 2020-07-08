@@ -32,19 +32,13 @@ class SitemapIndexer
 
   def process_entries
     skip_counter_callbacks
-    count = 0
     Saxerator.parser(sitemap).within('urlset').for_tag('url').each do |entry|
       # Eventually we might add an option to the Sitemaps gem to limit the URLS
-      # to those strictly adhering to the sitemap protocol, but this should suffice for now
+      # to those strictly adhering to the sitemap protocol,
+      # but matching the domain should suffice for now.
       # https://www.pivotaltracker.com/story/show/157485118
-      if URI(entry['loc'].strip).host == domain
-        process_entry(entry)
-        count += 1
-      end
+      process_entry(entry) if URI(entry['loc'].strip).host == domain
     end
-    line = '[Searchgov SitemapIndexer] '\
-           "#{log_info.merge(sitemap_entries_found: count).to_json}"
-    Rails.logger.info line
     searchgov_domain.index_urls
   ensure
     set_counter_callbacks
