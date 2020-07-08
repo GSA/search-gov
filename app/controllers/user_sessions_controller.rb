@@ -20,7 +20,7 @@ class UserSessionsController < ApplicationController
 
   def logout_redirect_uri(id_token)
     base_uri = URI(Rails.application.secrets.login_dot_gov[:idp_base_url])
-    redirect_uri = URI::HTTPS.build(
+    URI::HTTPS.build(
       host: base_uri.host,
       path: '/openid_connect/logout',
       query: {
