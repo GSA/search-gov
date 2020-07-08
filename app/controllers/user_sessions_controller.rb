@@ -8,19 +8,20 @@ class UserSessionsController < ApplicationController
 
   def destroy
     id_token= session[:id_token]
-    login_dot_gov_host= 'https://idp.int.identitysandbox.gov'
-    login_dot_gov_logout_endpoint= '/openid_connect/logout'
-    login_dot_gov_logout_url= "#{login_dot_gov_host}#{login_dot_gov_logout_endpoint}"
-
-    redirect_uri= URI::HTTPS.build(host: 'idp.int.identitysandbox.gov',
-                                   path: '/openid_connect/logout',
-                                   query: {
-                                     id_token_hint: id_token,
-                                     post_logout_redirect_uri: 'http://localhost:3000/login',
-                                     state: '1234567890123456789012'
-                                   }.to_query).to_s
     reset_session
     current_user_session.destroy
-    redirect_to(redirect_uri)
+    redirect_to(logout_redirect_uri(id_token))
+  end
+
+  def logout_redirect_uri(id_token)
+    base_uri= URI(Rails.application.secrets.login_dot_gov[:idp_base_url])
+    redirect_uri= URI::HTTPS.build(
+      host: base_uri.host,
+      path: '/openid_connect/logout',
+      query: {
+        id_token_hint: id_token,
+        post_logout_redirect_uri: 'http://localhost:3000/login',
+        state: '1234567890123456789012'
+      }.to_query).to_s
   end
 end
