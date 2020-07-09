@@ -6,7 +6,7 @@ describe UrlStatusCodeFetcher do
   # has more dev support, is more easily stubbed, and is already used extensively
   # in our code.
 
-  let(:valid_url) { "https://www.usa.gov/" }
+  let(:valid_url) { "https://search.gov/" }
   let(:invalid_url) { "https://www.google.com/404" }
 
   describe '.fetch' do

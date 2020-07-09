@@ -88,7 +88,7 @@ describe SearchHelper do
       end
     end
   end
-  
+
   describe "#display_image_result_link" do
     before do
       @result = {'Url' => 'http://aHost.gov/aPath',
@@ -169,6 +169,7 @@ describe SearchHelper do
   end
 
   describe "#onmousedown_attribute_for_image_click" do
+    # TO REMOVE SRCH-1525
     it "should return with escaped query parameter and (index + 1) value" do
       now = Time.now.to_i
       content = helper.onmousedown_attribute_for_image_click("NASA's Space Rock", "url", 99, "affiliate name", "SOURCE", now, :image)
@@ -364,6 +365,7 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
   end
 
   describe '#display_web_result_title' do
+    # TO REMOVE SRCH-1525
     it 'should render search results module' do
       result = {'title' => 'USASearch', 'unescapedUrl' => 'http://search.gov'}
       search = double(Search, query: 'gov', module_tag: 'BOGUS_MODULE', spelling_suggestion: nil, queried_at_seconds: 1000)
