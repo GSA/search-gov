@@ -26,22 +26,16 @@ module ResultsHelper
   end
 
   def link_to_sitelink(title, url, position)
-    # Used on SEC sites? How to set this up for tests?
-    # Is this used anymore. I don't see them on the live SEC site.
-
     click_data = { position: position, module_code: 'DECOR' }
     link_to title, url, data: { click: click_data }
   end
 
   def link_to_federal_register_document_title(document, position)
-    # Not sure how to set up for system tests, but it looks like it should work.
-
     click_data = { position: position, module_code: 'FRDOC' }
     link_to document.title.html_safe, document.html_url, { data: { click: click_data } }
   end
 
   def link_to_image_result_title(result, position, options = { tabindex: -1 })
-    # No integration tests
     title = translate_bing_highlights(h(result['title'])).html_safe
 
     click_data = { position: position, module_code: 'IMAG' }
@@ -49,7 +43,6 @@ module ResultsHelper
   end
 
   def link_to_image_thumbnail(result, position)
-    # No integration tests
     title = translate_bing_highlights(h(result['title'])).html_safe
     click_data = { position: position, module_code: 'IMAG' }
 
@@ -59,7 +52,6 @@ module ResultsHelper
   end
 
   def link_to_indexed_document_title(result, position)
-    # No integration tests
     title = translate_bing_highlights(h(result.title)).html_safe
 
     click_data = { position: position, module_code: 'AIDOC' }
@@ -67,7 +59,6 @@ module ResultsHelper
   end
 
   def link_to_news_item_title(instance, position, module_code = 'NEWS', options = {})
-    # No integration tests
     # Used in govbox, images, news, video, i14y
     title = translate_bing_highlights(h(instance.title)).html_safe
 
@@ -76,7 +67,6 @@ module ResultsHelper
   end
 
   def link_to_news_item_thumbnail(module_code, instance, position)
-    # No integration tests
     thumbnail_html = case module_code
                      when 'NIMAG' then image_news_item_thumbnail_html instance
                      when 'VIDS' then video_news_item_thumbnail_html instance
@@ -99,15 +89,11 @@ module ResultsHelper
   end
 
   def link_to_tweet_link(_tweet, title, url, position, options = {})
-    # No integration tests
-
     click_data = { position: position, module_code: 'TWEET' }
     link_to title, url, { data: { click: click_data } }.reverse_merge(options)
   end
 
   def link_to_related_search(search, related_term, position)
-    # No integration tests
-
     click_data = { position: position, module_code: 'SREL' }
     link_to related_term.downcase.html_safe,
             search_path(affiliate: search.affiliate.name,
