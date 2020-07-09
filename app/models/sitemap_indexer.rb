@@ -14,30 +14,31 @@ class SitemapIndexer
   end
 
   def index
-    # A sitemap has either a sitemapindex or a urlset
-    sitemapindex? ? enqueue_sitemaps : process_entries
+    sitemaps_stream.any? ? enqueue_sitemaps : process_entries
   end
 
   private
 
-  def sitemapindex?
-    Saxerator.parser(sitemap).for_tag('sitemapindex').any?
+  def sitemaps_stream
+    @sitemaps_stream ||= Saxerator.parser(sitemap).
+                           within('sitemapindex').for_tag('sitemap')
+  end
+
+  def sitemap_entries_stream
+    @sitemap_entries_stream ||= Saxerator.parser(sitemap).
+                                  within('urlset').for_tag('url')
   end
 
   def enqueue_sitemaps
-    Saxerator.parser(sitemap).within('sitemapindex').for_tag('sitemap').each do |sitemap|
+    sitemaps_stream.each do |sitemap|
       SitemapIndexerJob.perform_later(sitemap_url: sitemap['loc'].to_s)
     end
   end
 
   def process_entries
     skip_counter_callbacks
-    Saxerator.parser(sitemap).within('urlset').for_tag('url').each do |entry|
-      # Eventually we might add an option to the Sitemaps gem to limit the URLS
-      # to those strictly adhering to the sitemap protocol,
-      # but matching the domain should suffice for now.
-      # https://www.pivotaltracker.com/story/show/157485118
-      process_entry(entry) if URI(entry['loc'].strip).host == domain
+    sitemap_entries_stream.each do |entry|
+      process_entry(entry) if entry_matches_domain?(entry)
     end
     searchgov_domain.index_urls
   ensure
@@ -46,16 +47,21 @@ class SitemapIndexer
   end
 
   def process_entry(entry)
-    begin
-      sitemap_url = UrlParser.update_scheme(entry['loc'].strip, scheme)
-      searchgov_url = SearchgovUrl.find_or_initialize_by(url: sitemap_url)
-      searchgov_url.update!(lastmod: entry['lastmod'])
-    rescue => e
-      line = '[Searchgov SitemapIndexer] '\
-             "#{log_info.merge(sitemap_entry_failed: sitemap_url,
-                               error: e.message).to_json}"
-      Rails.logger.error line.red
-    end
+    sitemap_url = UrlParser.update_scheme(entry['loc'].strip, scheme)
+    searchgov_url = SearchgovUrl.find_or_initialize_by(url: sitemap_url)
+    searchgov_url.update!(lastmod: entry['lastmod'])
+  rescue => e
+    error_info = log_info.merge(sitemap_entry_failed: sitemap_url, error: e.message)
+    log_line = "[Searchgov SitemapIndexer] #{error_info.to_json}"
+    Rails.logger.error log_line.red
+  end
+
+  def entry_matches_domain?(entry)
+    # Eventually we limit the URLS to those
+    # strictly adhering to the sitemap protocol,
+    # but matching the domain should suffice for now.
+    # https://www.pivotaltracker.com/story/show/157485118
+    URI(entry['loc'].strip).host == domain
   end
 
   def log_info
@@ -71,8 +77,9 @@ class SitemapIndexer
       HTTP.headers(user_agent: DEFAULT_USER_AGENT).
         timeout(connect: 20, read: 60).follow.get(uri).to_s.freeze
     rescue => e
-      line = "[Searchgov SitemapIndexer] #{log_info.merge(error: e.message).to_json}"
-      Rails.logger.warn line.red
+      error_info = log_info.merge(error: e.message)
+      log_line = "[Searchgov SitemapIndexer] #{error_info.to_json}"
+      Rails.logger.warn log_line.red
       ''
     end
   end
