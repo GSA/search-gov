@@ -74,7 +74,7 @@ describe OmniauthCallbacksController do
       end
 
       it 'redirects to access-denied page' do
-        expect(get_login_dot_gov).to redirect_to('https://search.gov/access-denied')
+        expect(get_login_dot_gov).to redirect_to('http://test.host/login')
       end
     end
 
@@ -83,7 +83,7 @@ describe OmniauthCallbacksController do
       let(:auth) { mock_user_auth(user.email, 'notapproved12345') }
 
       it 'redirects to access-denied page' do
-        expect(get_login_dot_gov).to redirect_to('https://search.gov/access-denied')
+        expect(get_login_dot_gov).to redirect_to('http://test.host/login')
       end
     end
   end

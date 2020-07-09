@@ -130,6 +130,10 @@ class User < ApplicationRecord
     end
   end
 
+  def login_allowed?
+    persisted? && approved?
+  end
+
   private
 
   def ping_admin
