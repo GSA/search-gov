@@ -92,7 +92,7 @@ gem 'medusa', git: 'https://github.com/MothOnMars/medusa', branch: 'clean_urls'
 # Robotex is required by Medusa. Specifying fork until https://github.com/chriskite/robotex/issues/4
 # is resolved
 gem 'robotex', git: 'https://github.com/MothOnMars/robotex'
-gem 'sitemaps_parser', '~> 0.2', require: 'sitemaps'
+gem 'saxerator', '~> 0.9.9'
 gem 'counter_culture', '~> 2.3.0'
 gem 'aasm', '~> 4.12'
 gem 'active_scheduler', '~> 0.5.0'
