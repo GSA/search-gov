@@ -109,7 +109,7 @@ class IndexedDocument < ApplicationRecord
   end
 
   def extract_body_from(nokogiri_doc)
-    body = scrub_inner_text(Sanitize.clean(nokogiri_doc.at('body').inner_html.encode('utf-8'))) rescue ''
+    body = scrub_inner_text(Sanitizer.sanitize(nokogiri_doc.at('body').inner_html.encode('utf-8'))) rescue ''
     raise IndexedDocumentError.new(EMPTY_BODY_STATUS) if body.blank?
     body
   end

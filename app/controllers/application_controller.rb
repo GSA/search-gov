@@ -124,7 +124,7 @@ class ApplicationController < ActionController::Base
   end
 
   def sanitize_query(query)
-    QuerySanitizer.sanitize(query)
+    Sanitizer.sanitize(query, false)
   end
 
   def highlighting_option
