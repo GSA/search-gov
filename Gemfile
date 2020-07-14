@@ -30,7 +30,6 @@ gem 'resque-scheduler', '~> 4.3.1'
 gem 'cocaine', '~> 0.5.8'
 gem 'paperclip', '~> 5.2.0'
 gem 'googlecharts', '~> 1.6.12'
-gem 'sanitize', '~> 4.6.4'
 gem 'tweetstream', '~> 2.6.1' # no longer maintained?
 gem 'twitter', '~> 5.5'
 gem 'flickraw', '~> 0.9.9'
@@ -86,7 +85,7 @@ gem 'dogstatsd-ruby', '~> 3.2.0'
 gem 'test-unit', '~> 3.2.7'
 gem 'http', '~> 1.0'
 gem 'robots_tag_parser', '~> 0.1.0', git: 'https://github.com/GSA/robots_tag_parser'
-gem 'loofah', '~> 2.3.1'
+gem 'loofah', '~> 2.6.0'
 # Using custom branch until https://github.com/brutuscat/medusa/issues/10 is merged
 gem 'medusa', git: 'https://github.com/MothOnMars/medusa', branch: 'clean_urls'
 # Robotex is required by Medusa. Specifying fork until https://github.com/chriskite/robotex/issues/4

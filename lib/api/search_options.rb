@@ -1,4 +1,4 @@
-require 'sanitize'
+# frozen_string_literal: true
 
 class Api::SearchOptions
   include ActiveModel::Validations
@@ -68,7 +68,7 @@ class Api::SearchOptions
     self.filter = params[:filter]
 
     QUERY_PARAMS.each do |param|
-      self.send("#{param}=", QuerySanitizer.sanitize(params[param]))
+      self.send("#{param}=", Sanitizer.sanitize(params[param], false))
     end
   end
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MedTopic < ApplicationRecord
   MAX_MED_TOPIC_SUMMARY_LENGTH = 200
   MEDLINE_BASE_URL = 'https://medlineplus.gov/'
@@ -148,8 +150,8 @@ class MedTopic < ApplicationRecord
   end
 
   def truncated_summary
-    sentences = Sanitize.clean(summary_html).gsub(/[[:space:]]/, ' ').squish.split(/\.\s*/)
-    summary = ''
+    sentences = Sanitizer.sanitize(summary_html).gsub(/[[:space:]]/, ' ').split(/\.\s*/)
+    summary = ''.dup
 
     sentences.slice(0,3).each do |sentence|
       break if (summary.length + sentence.length + 1) > MAX_MED_TOPIC_SUMMARY_LENGTH
