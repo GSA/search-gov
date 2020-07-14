@@ -151,7 +151,7 @@ class MedTopic < ApplicationRecord
 
   def truncated_summary
     sentences = Sanitizer.sanitize(summary_html).gsub(/[[:space:]]/, ' ').split(/\.\s*/)
-    summary = ''.dup
+    summary = +''
 
     sentences.slice(0,3).each do |sentence|
       break if (summary.length + sentence.length + 1) > MAX_MED_TOPIC_SUMMARY_LENGTH
