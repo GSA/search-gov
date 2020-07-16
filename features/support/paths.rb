@@ -23,7 +23,7 @@ module NavigationHelpers
     when /^(.*)'s strictui search page$/
       search_path(:affiliate => $1, :strictui => "1")
     when /^(.*)'s search page with unsanitized "([^\"]*)" query$/
-      search_path(:affiliate => $1, :query => "<script>#{$2}</script>")
+      search_path(:affiliate => $1, :query => "<b>#{$2}</b><script>script</script>")
     when /^(.*)'s search page with site limited to "([^\"]*)"$/
       search_path(:affiliate => $1, :sitelimit => $2)
     when /^(.*)'s image search page$/

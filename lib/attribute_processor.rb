@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module AttributeProcessor
   def self.prepend_attributes_with_http(record, *url_attribute_names)
     url_attribute_names.each do |attr_name|
@@ -9,7 +11,7 @@ module AttributeProcessor
   def self.sanitize_attributes(record, *attribute_names)
     attribute_names.each do |attr_name|
       value = record.send :"#{attr_name}"
-      record.send :"#{attr_name}=", Sanitize.clean(value)
+      record.send :"#{attr_name}=", Sanitizer.sanitize(value)
     end
   end
 

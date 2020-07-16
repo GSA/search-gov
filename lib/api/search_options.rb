@@ -1,9 +1,9 @@
-require 'sanitize'
+# frozen_string_literal: true
 
 class Api::SearchOptions
   include ActiveModel::Validations
 
-  LIMIT_ERROR_MESSAGE_TEMPLATE = 'must be between %s and %s'.freeze
+  LIMIT_ERROR_MESSAGE_TEMPLATE = 'must be between %s and %s'
   class_attribute :default_limit,
                   :limit_range
 
@@ -12,7 +12,7 @@ class Api::SearchOptions
 
   OFFSET_RANGE = (0..1000).freeze
   DEFAULT_OFFSET = 0
-  OFFSET_ERROR_MESSAGE = "must be between #{OFFSET_RANGE.first} and #{OFFSET_RANGE.last}".freeze
+  OFFSET_ERROR_MESSAGE = "must be between #{OFFSET_RANGE.first} and #{OFFSET_RANGE.last}"
   QUERY_PARAMS = %i(query query_not query_or query_quote)
 
   attr_accessor :access_key,
@@ -29,7 +29,7 @@ class Api::SearchOptions
                 :filter
 
   validates_presence_of :access_key,
-                        :affiliate ,
+                        :affiliate,
                         message: 'must be present'
 
   validates_length_of :query,
@@ -68,7 +68,7 @@ class Api::SearchOptions
     self.filter = params[:filter]
 
     QUERY_PARAMS.each do |param|
-      self.send("#{param}=", QuerySanitizer.sanitize(params[param]))
+      self.send("#{param}=", Sanitizer.sanitize(params[param], false))
     end
   end
 

@@ -1,6 +1,38 @@
 require 'spec_helper'
 
 describe Api::SearchOptions, type: :model do
+  subject(:options) do
+    described_class.new(params)
+  end
+  let(:params) do
+    {}
+  end
+
+  describe 'initialization' do
+    context 'when the query params include HTML tags' do
+      let(:unsanitized_query) { '<b>thunder & lightning</b>' }
+      let(:params) do
+        {
+          query: unsanitized_query,
+          query_not: unsanitized_query,
+          query_or: unsanitized_query,
+          query_quote: unsanitized_query
+        }
+      end
+
+      it 'sanitizes the query params' do
+        expect(
+          [
+            options.query,
+            options.query_not,
+            options.query_or,
+            options.query_quote
+          ]
+        ).to all eq 'thunder & lightning'
+      end
+    end
+  end
+
   describe '#valid?' do
     before { expect(Affiliate).not_to receive(:find_by_name) }
 
