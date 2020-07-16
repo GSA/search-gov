@@ -39,17 +39,17 @@ describe Sanitizer, ".sanitize" do
   end
 
   context 'when the string contains HTML entities' do
-    let(:string) { 'foo &amp; bar' }
+    let(:string) { 'foo &amp; bar & baz' }
 
-    it 'does not decode them by default' do
-      expect(sanitize).to eq 'foo &amp; bar'
+    it 'encodes them by default' do
+      expect(sanitize).to eq 'foo &amp; bar &amp; baz'
     end
 
-    context 'when decoding the entities' do
-      let(:sanitize) { Sanitizer.sanitize(string, false) }
+    context 'when not encoding the entities' do
+      let(:sanitize) { Sanitizer.sanitize(string, encode: false) }
 
-      it 'decodes them' do
-        expect(sanitize).to eq 'foo & bar'
+      it 'does not encode them' do
+        expect(sanitize).to eq 'foo & bar & baz'
       end
     end
   end
