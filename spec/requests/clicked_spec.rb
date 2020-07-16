@@ -26,7 +26,7 @@ describe 'Clicked' do
                                 v: @vertical,
                                 l: @locale,
                                 i: @model_id }
-      expect(response.success?).to be(true)
+      expect(response.successful?).to be(true)
       expect(response.body).to eq('')
     end
 
@@ -68,7 +68,7 @@ describe 'Clicked' do
     end
 
     it 'returns success with a blank message body' do
-      expect(response.success?).to be(true)
+      expect(response.successful?).to be(true)
       expect(response.body).to eq('')
     end
 

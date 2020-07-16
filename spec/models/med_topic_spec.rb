@@ -294,7 +294,7 @@ describe MedTopic do
     end
   end
 
-  describe '#search_for' do
+  describe '.search_for' do
     before do
       MedTopic.create! do |t|
         t.medline_tid = 3061
@@ -352,6 +352,40 @@ describe MedTopic do
         found_topics = MedTopic.search_for('txf', locale)
         expect(found_topics.locale).to eq(locale)
       }
+    end
+  end
+
+  describe '#truncated_summary' do
+    subject(:truncated_summary) { med_topic.truncated_summary }
+    let(:summary_html) { '<h3>Lorem ipsum dolor sit amet.</h3>' }
+    let(:med_topic) { MedTopic.new(summary_html: summary_html) }
+
+    it { is_expected.to eq 'Lorem ipsum dolor sit amet.' }
+
+    context 'when the summary html contains sentences that are too long' do
+      let(:summary_html) do
+        "This sentence is just right. This sentence is too long #{'x' * 200}."
+      end
+
+      it 'omits the long sentences' do
+        expect(truncated_summary).to eq 'This sentence is just right.'
+      end
+    end
+
+    context 'when the summary html contains excess whitespace' do
+      let(:summary_html) { " \t Extra \n &nbsp; spaces. " }
+
+      it 'squishes the whitespace' do
+        expect(truncated_summary).to eq 'Extra spaces.'
+      end
+    end
+
+    context 'when the summary html is missing punctuation' do
+      let(:summary_html) { 'Missing punctuation' }
+
+      it 'adds a trailing period' do
+        expect(truncated_summary).to eq 'Missing punctuation.'
+      end
     end
   end
 end
