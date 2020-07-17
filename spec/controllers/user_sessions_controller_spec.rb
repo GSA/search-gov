@@ -15,7 +15,21 @@ describe UserSessionsController do
 
       before { get :security_notification }
 
-      it { is_expected.to redirect_to(account_path) }
+      let(:expected_site_path) { site_path(id: current_user.affiliates.first.id) }
+
+      it { is_expected.to redirect_to(expected_site_path) }
+    end
+
+    context 'when a not_approved user is logged in' do
+      include_context 'not_approved user logged in'
+
+      render_views
+
+      before { get :security_notification }
+
+      it 'shows the access denied text' do
+        expect(response.body).to have_content(LandingPageFinder::ACCESS_DENIED_TEXT)
+      end
     end
   end
 

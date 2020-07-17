@@ -1,7 +1,16 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   layout 'sites'
   before_action :require_user, :only => [:show, :edit, :update]
   before_action :set_user, except: :create
+
+  NON_GOV_EMAIL_MESSAGE = <<~MESSAGE
+    Because you don't have a .gov or .mil email address, we need additional information.
+    If you are a contractor on an active contract, please use your .gov or .mil email
+    address on this account, or have your federal POC email search@support.digitalgov.gov
+    to confirm your status.
+  MESSAGE
 
   def create
     @user = User.new(user_params)
@@ -19,18 +28,12 @@ class UsersController < ApplicationController
   end
 
   def show
-    message = <<~MESSAGE
-      Because you don't have a .gov or .mil email address, we need additional information.
-      If you are a contractor on an active contract, please use your .gov or .mil email
-      address on this account, or have your federal POC email search@support.digitalgov.gov
-      to confirm your status.
-    MESSAGE
-
-    flash[:notice] = message unless @user.has_government_affiliated_email? ||
-                                    @user.approval_status == 'approved'
+    complain_about_non_gov_email
   end
 
-  def edit; end
+  def edit
+    complain_about_non_gov_email
+  end
 
   def update_account
     @user.attributes = user_params
@@ -54,6 +57,13 @@ class UsersController < ApplicationController
   def developer_redirect; end
 
   private
+
+  def complain_about_non_gov_email
+    return if @user.has_government_affiliated_email? ||
+              @user.approval_status == 'approved'
+
+    flash[:notice] = NON_GOV_EMAIL_MESSAGE
+  end
 
   def require_user
     redirect_to developer_redirect_url if super.nil? and current_user.is_developer?
