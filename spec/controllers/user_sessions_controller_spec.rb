@@ -22,4 +22,34 @@ describe UserSessionsController do
       it { is_expected.to redirect_to(account_path) }
     end
   end
+
+  describe "logging out" do
+    let(:login_uri) do
+      "#{request.protocol}#{request.host_with_port}/login"
+    end
+
+    let(:id_token) { 'fake_id_token' }
+
+    let(:login_dot_gov_logout_uri) do
+      base_uri = URI(Rails.application.secrets.login_dot_gov[:idp_base_url])
+      URI::HTTPS.build(
+        host: base_uri.host,
+        path: '/openid_connect/logout',
+        query: {
+          id_token_hint: id_token,
+          post_logout_redirect_uri: login_uri,
+          state: '1234567890123456789012'
+        }.to_query
+      ).to_s
+    end
+
+
+    before { activate_authlogic }
+    before { session[:id_token]= id_token }
+    include_context 'approved user logged in'
+    before { delete :destroy }
+
+    it { is_expected.to redirect_to(login_dot_gov_logout_uri) }
+
+  end
 end

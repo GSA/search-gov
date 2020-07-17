@@ -1,3 +1,5 @@
+require 'tracer'
+
 shared_examples 'restricted to approved user' do |request_method, action, parameters = nil|
 
   context 'when user is not logged in' do
@@ -16,8 +18,7 @@ shared_examples 'restricted to approved user' do |request_method, action, parame
     end
   end
 
-  # login.gov - commented out till  SRCH-862
-  pending 'when user is pending contact information status' do
+  describe 'when user is pending contact information status' do
     before { UserSession.create(users(:affiliate_manager_with_pending_contact_information_status)) }
 
     it 'should redirect to affiliates page' do
@@ -29,6 +30,7 @@ end
 
 shared_context 'approved user logged in' do
   let(:current_user) { users(:affiliate_manager) }
+  let(:current_user_session) { UserSession.create(current_user) }
 
   before do
     UserSession.create current_user

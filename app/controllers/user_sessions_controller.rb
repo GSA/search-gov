@@ -11,23 +11,10 @@ class UserSessionsController < ApplicationController
     id_token = session[:id_token]
     reset_session
     current_user_session.destroy
-    redirect_to(logout_redirect_uri(id_token))
+    redirect_to(LoginDotGovSettings.logout_redirect_uri(id_token, login_uri))
   end
 
   def login_uri
     "#{request.protocol}#{request.host_with_port}/login"
-  end
-
-  def logout_redirect_uri(id_token)
-    base_uri = URI(Rails.application.secrets.login_dot_gov[:idp_base_url])
-    URI::HTTPS.build(
-      host: base_uri.host,
-      path: '/openid_connect/logout',
-      query: {
-        id_token_hint: id_token,
-        post_logout_redirect_uri: login_uri,
-        state: '1234567890123456789012'
-      }.to_query
-    ).to_s
   end
 end

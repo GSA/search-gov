@@ -57,7 +57,7 @@ Feature: Users
       | Joe        | Schmo             | jschmo@random.com | approved        |
 
     And I am logged in with email "jschmo@random.com"
-    Then I should be on the user account page
+    Then I should be on the new site page
     And I should not see "Because you don't have a .gov or .mil email address, we need additional information."
 
   @javascript
