@@ -10,6 +10,8 @@ describe FeaturedCollectionLink do
   it { is_expected.to validate_presence_of :url }
   it { is_expected.to belong_to :featured_collection }
 
+  it_behaves_like 'a record that sanitizes attributes', [:title]
+
   it 'squishes title and url' do
     fc = FeaturedCollection.new(title: 'Search USA Blog',
                                 status: 'active',

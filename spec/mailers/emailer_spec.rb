@@ -216,7 +216,7 @@ context do
     it { is_expected.to have_subject(/Today's Snapshot for #{membership.affiliate.name} on #{Date.yesterday}/) }
 
     it "should contain the daily shapshot tables for yesterday" do
-      body = Sanitize.clean(email.default_part_body.to_s).squish
+      body = Sanitizer.sanitize(email.default_part_body)
       expect(body).to include('Top Queries')
       expect(body).to include('Search Term Total Queries (Bots + Humans) Real Queries')
       expect(body).to include('1. query1 100 80')
@@ -271,7 +271,7 @@ context do
     it { is_expected.to have_subject(/April 2012/) }
 
     it "should show per-affiliate and total stats for the month" do
-      body = Sanitize.clean(email.default_part_body.to_s).squish
+      body = Sanitizer.sanitize(email.default_part_body)
       expect(body).to include('102 100 33.33% -33.33% 100')
       expect(body).to include('50 40 12.00% -9.00% 35')
       expect(body).to include('0 0 0.00% 0.00% 0')
@@ -306,7 +306,7 @@ context do
     it { is_expected.to have_subject(/2012 Year in Review/) }
 
     it "show stats for the year" do
-      body = Sanitize.clean(email.default_part_body.to_s).squish
+      body = Sanitizer.sanitize(email.default_part_body)
       expect(body).to include('Most Popular Queries for 2012')
       expect(body).to include('NPEspanol Site Not enough historic data to compute most popular')
       expect(body).to include('query5 54 53')
