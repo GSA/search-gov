@@ -39,9 +39,6 @@ Feature: Activate Search
     And I follow "Search Results API Instructions"
     Then I should see "API Instructions" within the Admin Center content
 
-    When I follow "bought an API key from Bing" within the Admin Center content
-    Then I should see "Tips on How to Buy a Commercial API Key"
-
     When I go to the aff.gov's Activate Search page
     And I follow "Type-ahead API Instructions"
     Then I should see "Type-ahead API Instructions" within the Admin Center content
