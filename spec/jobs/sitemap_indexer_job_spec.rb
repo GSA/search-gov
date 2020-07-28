@@ -8,7 +8,7 @@ describe SitemapIndexerJob do
   let(:indexer) { instance_double(SitemapIndexer) }
   subject(:perform) { SitemapIndexerJob.perform_now(args) }
 
-  it_behaves_like 'a searchgov job'
+  it_behaves_like 'a sitemap job'
 
   it 'indexes the sitemap' do
     allow(SitemapIndexer).to receive(:new).with(args).and_return(indexer)
