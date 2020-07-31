@@ -17,3 +17,5 @@
     enabled: true
     capture_source: true
     ignore_errors: ActionController::RoutingError
+  common: &default_settings
+    host: <%= Rails.application.secrets.newrelic[:endpoint] %>
