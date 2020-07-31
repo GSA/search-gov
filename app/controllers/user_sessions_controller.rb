@@ -4,6 +4,7 @@ class UserSessionsController < ApplicationController
   before_action :require_user, only: :destroy
 
   def security_notification
+    puts current_user.to_s
     redirect_to(account_path) if current_user && current_user&.complete?
   end
 

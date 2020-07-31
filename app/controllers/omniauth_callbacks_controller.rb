@@ -25,9 +25,11 @@ class OmniauthCallbacksController < ApplicationController
   end
 
   def omniauth_data
+    puts "env auth: #{request.env['omniauth.auth']}".purple
     raise LoginError, 'no omniauth data' unless request.env['omniauth.auth']
 
     request.env['omniauth.auth']
+    #OmniAuth.config.mock_auth[:login_dot_gov] works, but...
   end
 
   def credentials
@@ -41,6 +43,7 @@ class OmniauthCallbacksController < ApplicationController
   end
 
   def set_user_session
+    puts "setting user session for user:#{user}".cyan
     user_session = UserSession.create(user)
     user_session.secure = Rails.application.config.ssl_options[:secure_cookies]
   end
