@@ -10,7 +10,8 @@ class OmniauthCallbacksController < ApplicationController
     set_user_session
     redirect_to(admin_home_page_path)
   rescue LoginError => e
-    flash[:error] = "login internal error: #{e.message}"
+    flash[:error] = "login internal error: #{e.message}""login internal error: #{e.message}"
+    puts "login internal error: #{e.message}".red
     redirect_to('/login')
   end
 
@@ -25,11 +26,10 @@ class OmniauthCallbacksController < ApplicationController
   end
 
   def omniauth_data
-    puts "env auth: #{request.env['omniauth.auth']}".purple
+    puts "in omniauth_data: #{request.env['omniauth.auth']}".purple
     raise LoginError, 'no omniauth data' unless request.env['omniauth.auth']
 
     request.env['omniauth.auth']
-    #OmniAuth.config.mock_auth[:login_dot_gov] works, but...
   end
 
   def credentials
@@ -43,7 +43,6 @@ class OmniauthCallbacksController < ApplicationController
   end
 
   def set_user_session
-    puts "setting user session for user:#{user}".cyan
     user_session = UserSession.create(user)
     user_session.secure = Rails.application.config.ssl_options[:secure_cookies]
   end

@@ -6,7 +6,6 @@ module OmniauthHelpers
   def mock_user_auth(email = 'test@gsa.gov',
                      uid = '12345',
                      id_token = 'mock_id_token')
-    puts "MOCKING".red
     omniauth_hash = {
       'provider': 'logindotgov',
       'uid': uid,
@@ -18,6 +17,7 @@ module OmniauthHelpers
       },
     }
 
-    OmniAuth.config.add_mock(:login_dot_gov, omniauth_hash)
+    #OmniAuth.config.add_mock(:login_dot_gov, omniauth_hash)
+    OmniAuth.config.add_mock(:default, omniauth_hash)
   end
 end
