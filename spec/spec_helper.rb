@@ -88,6 +88,7 @@ RSpec.configure do |config|
     i14y_search_params = { handles: 'one,two', language: 'en', offset: 0, query: 'marketplase', size: 20 }
     stub_request(:get, "#{i14y_api_url}#{i14y_search_params.to_param}").
       to_return( status: 200, body: i14y_web_result )
+    OmniAuth.config.mock_auth[:default] = OmniAuth::AuthHash.new({})
   end
 
   config.after(:each) do
