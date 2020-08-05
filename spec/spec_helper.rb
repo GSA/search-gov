@@ -11,8 +11,6 @@ require 'authlogic/test_case'
 require 'paperclip/matchers'
 require 'webmock/rspec'
 
-#OmniAuth.config.mock_auth[:default] = OmniAuth::AuthHash.new({"provider" => "login_dot_gov", "uid" => "12345", "info": {"name" => "foo user", "email": "affiliate_admin@fixtures.org"},"credentials"=>{:id_token=>"mock_id_token"}})
-
 include Authlogic::TestCase
 WebMock.disable_net_connect!(allow_localhost: true)
 
