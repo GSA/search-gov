@@ -70,7 +70,6 @@ class ApplicationController < ActionController::Base
   private
 
   def set_default_locale
-    puts "in set_default_locale: #{request.env['omniauth.auth'].to_hash}".magenta
     I18n.locale = :en
   end
 

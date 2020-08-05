@@ -10,8 +10,7 @@ class OmniauthCallbacksController < ApplicationController
     set_user_session
     redirect_to(admin_home_page_path)
   rescue LoginError => e
-    flash[:error] = "login internal error: #{e.message}""login internal error: #{e.message}"
-    puts "login internal error: #{e.message}".red
+    flash[:error] = "login internal error: #{e.message}"
     redirect_to('/login')
   end
 
@@ -26,7 +25,6 @@ class OmniauthCallbacksController < ApplicationController
   end
 
   def omniauth_data
-    puts "in omniauth_data: #{request.env['omniauth.auth']}".purple
     raise LoginError, 'no omniauth data' unless request.env['omniauth.auth']
 
     request.env['omniauth.auth']
