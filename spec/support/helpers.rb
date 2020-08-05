@@ -1,6 +1,6 @@
 def login(user)
-  activate_authlogic
-  UserSession.create(user)
+  Rails.application.env_config["omniauth.auth"] = mock_user_auth(user.email)
+  visit '/auth/logindotgov/callback'
 end
 
 def read_fixture_file(path)
