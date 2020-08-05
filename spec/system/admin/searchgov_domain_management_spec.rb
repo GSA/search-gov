@@ -1,33 +1,19 @@
 describe 'Searchgov Domain Management' do
-=begin
-  let(:searchgov_domain) { searchgov_domains(:basic_domain) }
-  let(:params) do
-    { id: searchgov_domain.id }
-  end
-    let(:current_user) { users(:affiliate_admin) }
-    before do
-      Rails.application.env_config["omniauth.auth"] = mock_user_auth('affiliate_admin@fixtures.org')
-    end
-
-    describe 'reindexing a domain' do
-      #subject(:reindex) { post :reindex, params: params }
-
-      it 'triggers a reindex of the domain' do
-        puts "visiting login"
-        visit 'login'
-
-        puts "clicking accept & proceed"
-        click_button 'Accept and proceed'
-
-        puts "visiting super admin searchgov_domains"
-        visit 'admin/searchgov_domains'
-        click_link 'Reindex'
-       # expect { reindex }.to have_enqueued_job(SearchgovDomainReindexerJob).
-          #with(searchgov_domain: searchgov_domain)
-      end
-    end
-=end
   let(:url) { '/admin/searchgov_domains' }
 
   it_behaves_like 'a page restricted to super admins'
+
+  describe 'reindexing a domain' do
+    include_context 'log in super admin'
+
+    subject(:reindex) do
+      visit url
+      click_link 'Reindex'
+    end
+
+    it 'triggers a reindex of the domain' do
+       expect { reindex }.to have_enqueued_job(SearchgovDomainReindexerJob).
+         with(searchgov_domain: instance_of(SearchgovDomain))
+    end
+  end
 end
