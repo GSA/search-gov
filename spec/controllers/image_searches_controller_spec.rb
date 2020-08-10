@@ -7,7 +7,7 @@ describe ImageSearchesController do
   describe '#index' do
     context 'when searching on legacy affiliate and the query is present' do
       let(:affiliate) { affiliates(:basic_affiliate) }
-      let(:query) { '<script>thunder & lightning</script>' }
+      let(:query) { '<b>thunder & lightning</b>' }
       let(:image_search) do
         double(LegacyImageSearch,
                query: 'thunder & lightning',
@@ -27,7 +27,7 @@ describe ImageSearchesController do
       context 'for a live search' do
         before do
           get :index, params: { affiliate: 'nps.gov',
-                                query: '<script>thunder & lightning</script>' }
+                                query: query }
         end
 
         it { is_expected.to assign_to(:search).with(image_search) }
@@ -51,7 +51,7 @@ describe ImageSearchesController do
       context 'for a staged search' do
         before do
           get :index, params: { affiliate: 'nps.gov',
-                                query: '<script>thunder & lightning</script>',
+                                query: query,
                                 staged: 'true' }
         end
 
@@ -67,7 +67,7 @@ describe ImageSearchesController do
           expect(image_search).to receive(:to_json).and_return(search_results_json)
           get :index,
               params: { affiliate: 'nps.gov',
-                        query: '<script>thunder & lightning</script>' },
+                        query: query },
               format: :json
         end
 
@@ -113,7 +113,7 @@ describe ImageSearchesController do
       context 'when searching normally' do
         before do
           get :index,
-              params: { query: '<script>weather</script>',
+              params: { query: '<b>weather</b>',
                         affiliate: 'usagov' },
               format: 'json'
           @search = assigns[:search]

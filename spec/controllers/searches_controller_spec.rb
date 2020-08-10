@@ -208,7 +208,7 @@ describe SearchesController do
       get :index,
           params: {
             affiliate: affiliate.name,
-            query: '<script>thunder & lightning</script>'
+            query: '<b>thunder & lightning</b>'
           }
       @search = assigns[:search]
       @page_title = assigns[:page_title]

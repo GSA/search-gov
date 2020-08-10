@@ -25,6 +25,8 @@ describe FeaturedCollection do
       it { is_expected.to allow_value(status).for(:status) }
     end
     it { is_expected.not_to allow_value("bogus status").for(:status) }
+
+    it_behaves_like 'a record that sanitizes attributes', [:title]
   end
 
   specify { expect(FeaturedCollection.new(:status => 'active')).to be_is_active }

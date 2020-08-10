@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BoostedContent < ApplicationRecord
   extend HumanAttributeName
   include BestBet

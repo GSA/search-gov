@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RssFeedData
   include RssFeedParser
 
@@ -166,11 +168,11 @@ class RssFeedData
   def extract_body(item)
     body = nil
     raw_body = extract_element_content item, elements[:body]
-    body = Sanitize.clean(raw_body) if raw_body
+    body = Sanitizer.sanitize(raw_body) if raw_body
 
     if body.blank? and @has_media_ns
       media_body = extract_element(item, :media_text)
-      body = Sanitize.clean(media_body) if media_body
+      body = Sanitizer.sanitize(media_body) if media_body
     end
     body
   end
@@ -180,11 +182,11 @@ class RssFeedData
     elements[:description].each do |description_path|
       break if (raw_description = extract_element_content item, description_path)
     end
-    description = Sanitize.clean(raw_description) if raw_description
+    description = Sanitizer.sanitize(raw_description) if raw_description
 
     if description.blank? and @has_media_ns
       media_description = extract_element(item, :media_description)
-      description = Sanitize.clean(media_description) if media_description
+      description = Sanitizer.sanitize(media_description) if media_description
     end
     description
   end

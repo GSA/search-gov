@@ -4,7 +4,7 @@ describe SitemapMonitorJob do
   let(:searchgov_domain) { instance_double(SearchgovDomain) }
   subject(:perform) { SitemapMonitorJob.perform_now }
 
-  it_behaves_like 'a searchgov job'
+  it_behaves_like 'a sitemap job'
 
   context 'when domains can be indexed' do
     before do

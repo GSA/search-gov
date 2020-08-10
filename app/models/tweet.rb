@@ -6,7 +6,7 @@ class Tweet < ApplicationRecord
   serialize :urls, Array
 
   def sanitize_tweet_text
-    self.tweet_text = Sanitize.clean(tweet_text).squish if tweet_text
+    self.tweet_text = Sanitizer.sanitize(tweet_text).squish if tweet_text
   end
 
   def url_to_tweet

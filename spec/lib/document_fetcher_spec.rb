@@ -11,7 +11,7 @@ describe DocumentFetcher do
         stub_request(:get, new_url).to_return(status: 200)
       end
 
-      it 'follows redirects from http to https' do
+      it 'follows the redirect' do
         response = DocumentFetcher.fetch url
         expect(response[:status]).to match(/200/)
         expect(response[:last_effective_url]).to eq('https://www.healthcare.gov/')
