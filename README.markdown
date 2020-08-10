@@ -1,4 +1,4 @@
-# USASearch Info
+# Search-gov Info
 
 ## Code Status
 
@@ -38,6 +38,9 @@ We have configured Elasticsearch 6.8 to run on port [9268](http://localhost:9268
 
     $ curl "localhost:9268/_nodes/settings?pretty=true"
     $ curl "localhost:9278/_nodes/settings?pretty=true"
+    
+Some specs depend upon Elasticsearch having a valid trial license. A 30-day trial license is automatically applied when the cluster is initially created. If your license expires, you can rebuild the cluster by [rebuilding the container and its data volume](https://github.com/GSA/search-gov/wiki/Docker-Command-Reference/_edit#recreate-an-elasticsearch-cluster-useful-for-restarting-a-trial-license). 
+    
     
 * [Kibana](https://www.elastic.co/kibana) - Kibana is not required, but can be very useful for debugging Elasticsearch. Confirm Kibana is available for the Elasticsearch 6.8 cluster by visiting <http://localhost:5668>. Kibana for the Elasticsearch 7 cluster should be available on <http://localhost:5678>.
 

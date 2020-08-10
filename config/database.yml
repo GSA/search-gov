@@ -12,7 +12,6 @@ default: &DEFAULT
   encoding: utf8mb4
   collation: utf8mb4_unicode_ci
   host: <%= ENV['DB_HOST'] || '127.0.0.1' %>
- # port: 3306
 
 development:
   <<: *DEFAULT
