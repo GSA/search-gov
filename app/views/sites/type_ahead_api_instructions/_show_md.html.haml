@@ -1,56 +1,21 @@
 :markdown
-  This API exposes the type-ahead suggestions that usually appear below your search box as searchers enter their search terms.
+  ## Overview
+
+  This API exposes the type-ahead suggestions that can appear below your search box as searchers enter their search terms. We have a script available that calls this API for you, which you can use as an alternative to using this API directly. Find it in on the [Code Snippets page](#{site_embed_code_path(@site)}).
 
 
+  ## Getting started
+
+  Please refer to the detailed documentation for the Results API, now publicly available through the [OpenGSA Portal](https://open.gsa.gov/api/searchgov-suggestions/). The information below serves as an introduction.
 
 
-  ## Resource URL
+  ## API Key and Resource URL
 
+  The endpoint is `https://api.gsa.gov/technology/searchgov/v2/sayt`.
 
+  The following pre-formatted example contains the required parameters in their correct form for this specific search site’s suggestions.
 
-
-  The endpoint is `#{api_scheme_and_host}/sayt`.
-
-
-
-
-  ## Required Parameters
-
-
-
-
-  Two parameters are required: `name` and `q`.
-
-
-  `#{api_scheme_and_host}/sayt?name=#{@site.name}&q={YOUR_SEARCH_TERM}`
-
-
-
-
-  * The value for the name parameter is your site handle on the [Settings](#{edit_site_setting_path(@site)}) page.
-  * Replace {YOUR_SEARCH_TERM} with a word or phrase of your choice.  A minimum of 2 characters term is required.
-
-
-
-
-  ## Responses
-
-
-
-
-  You will see an array of suggestions. Suggestions are derived from the searches performed on your website.
-
-  Up to five suggestions related to your visitors' search term are returned and are updated in near real time.
-
-  A given term/phrase must be searched 10 times in a 24 hour period to appear as a suggestion. Suggestions will drop from the list if they don't maintain the 10 times per 24 hour period threshold.
-
-  If you want a given term to always appear as a suggestion, please contact our team.
-
-  Note: inappropriate terms are filtered by our system and will not be presented as suggestions.
-
-
-
-  ## Terms of Service
-
-
-  By using this API, you agree to our [Terms of Service](https://search.gov/tos).
+  * The `name` is your site handle. You can find your site handle on the [Settings](#{edit_site_setting_path(@site)}) page.
+  * Your `api_key` is provided through [api.data.gov](https://api.data.gov).
+  * Replace `YOUR_SEARCH_TERM` with the query as entered into the search box. Send a new call for every keystroke. Whenever a user selects a query from the drop-down list, send this selection to us as a new query request.
+  `https://api.gsa.gov/technology/searchgov/v2/sayt?name=#{h(@site.name)}&api_key=GET_KEY_FROM_API.DATA.GOV&q=YOUR_SEARCH_TERM`
