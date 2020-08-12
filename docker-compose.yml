@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   elasticsearch6:
-    image: docker.elastic.co/elasticsearch/elasticsearch:6.8.9
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.8.11
     environment:
       - bootstrap.memory_lock=true
       - cluster.name=es6-docker-cluster
@@ -21,7 +21,7 @@ services:
       - 9268:9200
 
   elasticsearch7:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.8.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.8.1
     environment:
       - bootstrap.memory_lock=true
       - cluster.name=es7-docker-cluster
@@ -40,7 +40,7 @@ services:
       - 9278:9200
 
   kibana6:
-    image: docker.elastic.co/kibana/kibana:6.8.9
+    image: docker.elastic.co/kibana/kibana:6.8.11
     depends_on:
       - elasticsearch6
     ports:
@@ -49,7 +49,7 @@ services:
       - ELASTICSEARCH_HOSTS=http://elasticsearch6:9200
 
   kibana7:
-    image: docker.elastic.co/kibana/kibana:7.8.0
+    image: docker.elastic.co/kibana/kibana:7.8.1
     depends_on:
       - elasticsearch7
     ports:
