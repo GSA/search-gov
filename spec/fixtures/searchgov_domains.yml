@@ -1,0 +1,6 @@
+DEFAULTS: &DEFAULTS
+  status: 200 OK
+
+basic_domain:
+  <<: *DEFAULTS
+  domain: foo.gov

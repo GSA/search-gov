@@ -257,6 +257,10 @@ Feature:  Administration
     And I press "Create"
     Then I should see "www.state.gov has been created"
 
+    When I follow "Reindex" within the first scaffold row and confirm "Are you sure you want to reindex this domain?"
+    And I wait for ajax
+    Then I should see "Reindexing has been enqueued for www.state.gov"
+
   @javascript
   Scenario: Adding a system alert
     When I go to the admin home page
