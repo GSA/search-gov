@@ -161,8 +161,9 @@ describe SitemapIndexer do
     end
 
     it 'transitions to indexing the urls' do
-      expect(SearchgovDomain).to receive(:find_by).
-        with(domain: 'agency.gov').and_return(searchgov_domain)
+      allow(SearchgovDomain).to receive(:find_by).
+                                  with(domain: 'agency.gov').
+                                  and_return(searchgov_domain)
       expect(searchgov_domain).to receive(:index_urls)
       index
     end

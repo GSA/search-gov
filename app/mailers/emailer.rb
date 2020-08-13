@@ -4,10 +4,6 @@ class Emailer < ApplicationMailer
   include ActionView::Helpers::TextHelper
   default_url_options[:host] = Rails.application.secrets.organization[:app_host]
   default_url_options[:protocol] = 'https'
-  ADMIN_EMAIL_ADDRESS = Rails.application.secrets.organization[:admin_email_address]
-  DELIVER_FROM_EMAIL_ADDRESS = 'no-reply@support.digitalgov.gov'
-  REPLY_TO_EMAIL_ADDRESS = Rails.application.secrets.organization[:support_email_address]
-  NOTIFICATION_SENDER_EMAIL_ADDRESS = 'notification@support.digitalgov.gov'
 
   def new_user_to_admin(user)
     @user = user

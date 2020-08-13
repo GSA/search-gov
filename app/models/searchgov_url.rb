@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SearchgovUrl < ApplicationRecord
   include Fetchable
   include RobotsTaggable
@@ -94,7 +96,7 @@ class SearchgovUrl < ApplicationRecord
 
   def download
     @tempfile ||= begin
-                    
+
       file = Tempfile.open("SearchgovUrl:#{Time.now.to_i}", Rails.root.join('tmp'))
       file.binmode
       body = response.body

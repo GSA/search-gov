@@ -4,8 +4,11 @@ describe SearchgovDomainIndexerJob do
   subject(:perform) { SearchgovDomainIndexerJob.perform_now(args) }
 
   let!(:searchgov_domain) do
-    SearchgovDomain.create(domain: 'agency.gov', status: '200', activity: 'indexing')
+    searchgov_domain= SearchgovDomain.find_by_domain('agency.gov')
+    searchgov_domain.update(status: '200', activity: 'indexing')
+    searchgov_domain
   end
+
   let(:args) do
     { searchgov_domain: searchgov_domain, delay: 10 }
   end

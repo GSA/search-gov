@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe SearchgovUrlFetcherJob do
+  fixtures :searchgov_domain
+
   subject(:perform) { SearchgovUrlFetcherJob.perform_now(args) }
   let!(:searchgov_url) { SearchgovUrl.create!(url: 'https://agency.gov/') }
   let(:args) do

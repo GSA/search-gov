@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe SearchgovDomain do
+  before do
+    SearchgovDomain.find_by_domain(domain).delete
+  end
+
   let(:domain) { 'agency.gov' }
   subject(:searchgov_domain) { SearchgovDomain.new(domain: domain, scheme: 'http') }
 

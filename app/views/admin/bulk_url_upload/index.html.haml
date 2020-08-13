@@ -1,0 +1,33 @@
+%h2
+  Bulk Search.gov URL Upload
+%p
+  To upload a list of URLs to be crawled, follow these instructions:
+  %ul.bulk-upload-instructions
+    %li
+      Create a new text file containing one URL per line. An example of this format
+      is shown below.
+    %li
+      Save the file on your computer; you can name the file whatever you like, as
+      long as it's plain text and has a .txt extension.
+    %li
+      %b
+        Do not use Microsoft Word files, or any other file type except plain text.
+    %li
+      The maximum file size is #{BulkUrlUploader::MAXIMUM_FILE_SIZE}.
+    %li
+      Browse for the file on your computer.
+    %li
+      Upload the file to Search.gov using the upload button below.
+    %li
+      You will receive an email when processing of your URLs is complete.
+  %p
+    %strong
+      Sample file format:
+    %code
+      %pre
+        http://www.sample.gov/1.html
+        http://www.sample.gov/2.html
+        http://www.sample.gov/3.html
+    = form_tag upload_admin_bulk_url_upload_index_path, :multipart => true do
+      = file_field_tag 'bulk_upload_urls', :accept => 'text/plain', :class => 'file'
+      = submit_tag "Upload", :class => 'submit btn-upload'

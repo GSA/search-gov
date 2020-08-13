@@ -6,9 +6,10 @@ describe 'Searchgov Domain Management' do
   describe 'reindexing a domain' do
     include_context 'log in super admin'
 
-    subject(:reindex) do
+    let(:reindex) do
       visit url
-      click_link 'Reindex'
+      row= find(:xpath, '//tbody[@class="records"]/tr[1]')
+      row.click_link('Reindex')
     end
 
     it 'triggers a reindex of the domain' do

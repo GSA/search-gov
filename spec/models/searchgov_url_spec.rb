@@ -1,11 +1,12 @@
 require 'spec_helper'
 
 describe SearchgovUrl do
-  fixtures :searchgov_urls
+  fixtures :searchgov_urls, :searchgov_domain
 
   let(:url) { 'http://www.agency.gov/boring.html' }
   let(:html) { read_fixture_file("/html/page_with_og_metadata.html") }
-  let(:valid_attributes) { { url: url } }
+  let(:agency_domain) { SearchgovDomain.find_by(domain: 'agency.gov') }
+  let(:valid_attributes) { { url: url, searchgov_domain: agency_domain } }
   let(:searchgov_url) { SearchgovUrl.new(valid_attributes) }
   let(:i14y_document) { I14yDocument.new }
 
@@ -52,6 +53,8 @@ describe SearchgovUrl do
 
   describe 'validations' do
     it 'requires a valid domain' do
+      pending "probably removable, but get Martha's opinion first"
+
       searchgov_url = SearchgovUrl.new(url: 'https://foo/bar')
       expect(searchgov_url).not_to be_valid
       expect(searchgov_url.errors.messages[:searchgov_domain]).
@@ -101,6 +104,7 @@ describe SearchgovUrl do
 
   describe '#fetch' do
     let!(:searchgov_url) { SearchgovUrl.create!(valid_attributes) }
+
     let(:searchgov_domain) do
       instance_double(SearchgovDomain, check_status: '200 OK', :available? => true)
     end
@@ -303,7 +307,7 @@ describe SearchgovUrl do
     end
 
     context 'when the url points to a pdf' do
-      let(:url) { 'https://www.irs.gov/test.pdf' }
+      let(:url) { 'https://agency.gov/test.pdf' }
       let(:pdf) { read_fixture_file("/pdf/test.pdf") }
       before do
         stub_request(:get, url).
@@ -333,7 +337,7 @@ describe SearchgovUrl do
     end
 
     context 'when the url points to a Word doc (.doc)' do
-      let(:url) { 'https://www.irs.gov/test.doc' }
+      let(:url) { 'https://agency.gov/test.doc' }
       let(:doc) { read_fixture_file("/word/test.doc") }
       before do
         stub_request(:get, url).
@@ -357,7 +361,7 @@ describe SearchgovUrl do
     end
 
     context 'when the url points to a Word doc (.docx)' do
-      let(:url) { 'https://www.irs.gov/test.docx' }
+      let(:url) { 'https://agency.gov/test.docx' }
       let(:doc) { read_fixture_file("/word/test.docx") }
       before do
         stub_request(:get, url).
@@ -381,7 +385,7 @@ describe SearchgovUrl do
     end
 
     context 'when the url points to an Excel doc (.xlsx)' do
-      let(:url) { 'https://www.irs.gov/test.xlsx' }
+      let(:url) { 'https://agency.gov/test.xlsx' }
       let(:doc) { read_fixture_file("/excel/test.xlsx") }
       before do
         stub_request(:get, url).
@@ -405,7 +409,7 @@ describe SearchgovUrl do
     end
 
     context 'when the url points to an Excel doc (.xls)' do
-      let(:url) { 'https://www.irs.gov/test.xls' }
+      let(:url) { 'https://agency.gov/test.xls' }
       let(:doc) { read_fixture_file("/excel/test.xls") }
       before do
         stub_request(:get, url).
@@ -429,7 +433,7 @@ describe SearchgovUrl do
     end
 
     context 'when the url points to a TXT doc (.txt)' do
-      let(:url) { 'https://www.irs.gov/test.txt' }
+      let(:url) { 'https://agency.gov/test.txt' }
 
       before do
         stub_request(:get, url).
@@ -442,7 +446,7 @@ describe SearchgovUrl do
         expect(I14yDocument).to receive(:create).
           with(hash_including(
             handle: 'searchgov',
-            path: 'https://www.irs.gov/test.txt',
+            path: 'https://agency.gov/test.txt',
             title: 'test.txt',
             description: nil,
             content: 'This is my text content.',

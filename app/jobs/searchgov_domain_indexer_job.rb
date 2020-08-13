@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SearchgovDomainIndexerJob < ApplicationJob
   queue_as :searchgov
 
