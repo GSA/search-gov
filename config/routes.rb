@@ -231,6 +231,9 @@ Rails.application.routes.draw do
     resources :routed_query_keywords, concerns: :active_scaffold
     resources :watchers, concerns: :active_scaffold
     resources :searchgov_domains, concerns: :active_scaffold do
+      member do
+        post 'reindex'
+      end
       resources :searchgov_urls, concerns: :active_scaffold do
         member do
           post 'fetch'
