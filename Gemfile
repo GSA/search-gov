@@ -168,4 +168,5 @@ group :test do
   gem 'rspec_junit_formatter', '~> 0.3.0'
   gem 'rails-controller-testing', '~> 1.0.4'
   gem 'webdrivers', '~> 4.0'
+  gem 'rubocop-rspec', '~> 1.35', require: false
 end
