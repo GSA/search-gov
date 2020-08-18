@@ -1,5 +1,7 @@
 # Common configuration.
 
+require: rubocop-rspec
+
 AllCops:
   RubyInterpreters:
     - ruby
@@ -2520,6 +2522,8 @@ Rails/SkipsModelValidations:
                  Use methods that skips model validations with caution.
                  See reference for more information.
   Reference: 'https://guides.rubyonrails.org/active_record_validations.html#skipping-validations'
+  # We are leaving this cop enabled as a warning.
+  # Failures can be approved as needed during code review.
   Enabled: true
   VersionAdded: 0.47
   VersionChanged: 0.59
@@ -3880,7 +3884,7 @@ Style/RescueModifier:
 
 Style/RescueStandardError:
   Description: 'Avoid rescuing without specifying an error class.'
-  Enabled: true
+  Enabled: false
   VersionAdded: 0.52
   EnforcedStyle: explicit
   # implicit: Do not include the error class, `rescue`
@@ -4318,3 +4322,4 @@ Style/ZeroLengthPredicate:
   VersionAdded: 0.37
   VersionChanged: 0.39
 
+#################### RSpec ###############################

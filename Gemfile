@@ -30,7 +30,6 @@ gem 'resque-scheduler', '~> 4.3.1'
 gem 'cocaine', '~> 0.5.8'
 gem 'paperclip', '~> 5.2.0'
 gem 'googlecharts', '~> 1.6.12'
-gem 'sanitize', '~> 4.6.4'
 gem 'tweetstream', '~> 2.6.1' # no longer maintained?
 gem 'twitter', '~> 5.5'
 gem 'flickraw', '~> 0.9.9'
@@ -86,13 +85,13 @@ gem 'dogstatsd-ruby', '~> 3.2.0'
 gem 'test-unit', '~> 3.2.7'
 gem 'http', '~> 1.0'
 gem 'robots_tag_parser', '~> 0.1.0', git: 'https://github.com/GSA/robots_tag_parser'
-gem 'loofah', '~> 2.3.1'
+gem 'loofah', '~> 2.6.0'
 # Using custom branch until https://github.com/brutuscat/medusa/issues/10 is merged
 gem 'medusa', git: 'https://github.com/MothOnMars/medusa', branch: 'clean_urls'
 # Robotex is required by Medusa. Specifying fork until https://github.com/chriskite/robotex/issues/4
 # is resolved
 gem 'robotex', git: 'https://github.com/MothOnMars/robotex'
-gem 'sitemaps_parser', '~> 0.2', require: 'sitemaps'
+gem 'saxerator', '~> 0.9.9'
 gem 'counter_culture', '~> 2.3.0'
 gem 'aasm', '~> 4.12'
 gem 'active_scheduler', '~> 0.5.0'
@@ -129,7 +128,6 @@ gem 'font-awesome-grunticon-rails',
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
 group :development do
-  gem 'web-console', '~> 2.0'
   gem 'spring', '~> 2.0'
   gem 'listen', '~> 3.1.5'
 end
@@ -165,9 +163,10 @@ group :test do
   gem 'shoulda-matchers', '~> 4.1.1'
   gem 'shoulda-kept-assign-to', '~> 1.1.0'
   gem 'vcr', '~> 4.0'
-  gem 'webmock', '~> 3.1.1'
+  gem 'webmock', '~> 3.8.3'
   gem 'rspec-activemodel-mocks', '~> 1.0.3'
   gem 'rspec_junit_formatter', '~> 0.3.0'
   gem 'rails-controller-testing', '~> 1.0.4'
   gem 'webdrivers', '~> 4.0'
+  gem 'rubocop-rspec', '~> 1.35', require: false
 end

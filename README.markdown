@@ -292,6 +292,10 @@ You can click around on the files that have < 100% coverage to see what lines we
 
 Make sure you commit any changes to the coverage directory back to git.
 
+# Code Quality
+
+We use [Rubocop](https://rubocop.org/) for static code analysis. Cops are configured via [.rubocop.yml](.rubocop.yml).
+
 # Running the app
 
 Fire up a server and try it all out:

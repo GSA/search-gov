@@ -897,6 +897,8 @@ CREATE TABLE `searchgov_urls` (
   PRIMARY KEY (`id`),
   KEY `index_searchgov_urls_on_url` (`url`(255)),
   KEY `index_searchgov_urls_on_searchgov_domain_id` (`searchgov_domain_id`),
+  KEY `index_by_searchgov_domain_id_and_last_crawl_status` (`searchgov_domain_id`,`last_crawl_status`),
+  KEY `index_searchgov_urls_on_searchgov_domain_id_and_last_crawled_at` (`searchgov_domain_id`,`last_crawled_at`),
   CONSTRAINT `fk_rails_3dd990e08e` FOREIGN KEY (`searchgov_domain_id`) REFERENCES `searchgov_domains` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1926,6 +1928,7 @@ INSERT INTO `schema_migrations` (version) VALUES
 ('20190920181828'),
 ('20191113214448'),
 ('20200121220041'),
-('20200212183209');
+('20200212183209'),
+('20200728194854');
 
 

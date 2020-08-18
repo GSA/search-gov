@@ -13,8 +13,11 @@ Feature:  Administration
     When I follow "Super Admin" in the main navigation bar
     Then I should be on the admin home page
 
-    When I follow "Sign Out"
-    Then I should be on the login page
+    # SRCH-1552
+    # Commented out until we figure out how to get login.gov out of
+    # the loop during testing.
+    # When I follow "Sign Out"
+    # Then I should be on the login page
 
   Scenario: Visiting the admin home page as an admin who is also an affiliate
     Given "affiliate_admin@fixtures.org" is an affiliate
@@ -253,6 +256,10 @@ Feature:  Administration
     And I fill in "Domain" with "www.state.gov"
     And I press "Create"
     Then I should see "www.state.gov has been created"
+
+    When I follow "Reindex" within the first scaffold row and confirm "Are you sure you want to reindex this domain?"
+    And I wait for ajax
+    Then I should see "Reindexing has been enqueued for www.state.gov"
 
   @javascript
   Scenario: Adding a system alert

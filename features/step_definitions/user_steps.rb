@@ -5,7 +5,10 @@ Given /^I am logged in with email "([^"]*)"$/ do |email|
     uid: 'test_123',
     info: {
       email: email
-    }
+    },
+    credentials: {
+      id_token: 'fake_id_token',
+    },
   }
 
   OmniAuth.config.add_mock('logindotgov', omniauth_hash)
