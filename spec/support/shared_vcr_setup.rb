@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'yaml'
 
 PAPERCLIP_MATCHERS = {
@@ -9,7 +11,10 @@ PAPERCLIP_MATCHERS = {
     regex: /^\/(?<env>[^\/]+)\/featured_collection\/(?<id>\d*)\/image\/(?<updated_at>[^\/]+)\/(?<style>[^\/]+)\/(?<filename>[^\/]+)/,
     fields_to_match: %w[env style filename]
   }
-}.freeze
+}
+
+# https://github.com/titusfortner/webdrivers/wiki/Using-with-VCR-or-WebMock
+DRIVER_HOSTS = Webdrivers::Common.subclasses.map { |driver| URI(driver.base_url).host }
 
 VCR.configure do |config|
   config.hook_into :webmock
@@ -32,6 +37,7 @@ VCR.configure do |config|
   }
 
   config.ignore_hosts 'example.com', 'codeclimate.com'
+  config.ignore_hosts *DRIVER_HOSTS
   config.ignore_request do |request|
     /codeclimate.com/ ===  URI(request.uri).host
   end
