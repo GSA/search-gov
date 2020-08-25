@@ -1,4 +1,4 @@
-if ENV['CIRCLECI'] || ENV['TRAVIS'] # output text for CI
+if ENV['CIRCLECI'] # output text for CI
   SimpleCov.at_exit do
     result_hash = SimpleCov.result.to_hash
 

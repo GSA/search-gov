@@ -75,9 +75,6 @@ module ScenarioStatusTracker
 end
 
 require_relative '../../spec/test_services.rb'
-unless ENV['TRAVIS']
-  TestServices::start_redis
-end
 
 EmailTemplate.load_default_templates
 OutboundRateLimit.load_defaults
@@ -86,7 +83,6 @@ TestServices::create_es_indexes
 
 at_exit do
   TestServices::delete_es_indexes
-  TestServices::stop_redis unless ENV['TRAVIS']
   exit ScenarioStatusTracker.success
 end
 Capybara.asset_host = "http://localhost:3000"
