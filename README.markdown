@@ -154,6 +154,10 @@ We require 100% code coverage. After running the tests (both RSpec & Cucumber), 
 We use [CircleCI](https://circleci.com/gh/GSA/usasearch) for continuous integration. Build artifacts, such as logs, are available in the 'Artifacts' tab of each CircleCI build.
 
 
+# Code Quality
+
+We use [Rubocop](https://rubocop.org/) for static code analysis. Cops are configured via [.rubocop.yml](.rubocop.yml).
+
 # Running the app
 
 Fire up a server and try it all out:
