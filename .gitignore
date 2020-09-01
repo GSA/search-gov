@@ -20,3 +20,8 @@ public/system/
 test
 tmp/
 webrat-*.html
+
+# Ignore pidfiles, but keep the directory.
+/tmp/pids/*
+!/tmp/pids/
+!/tmp/pids/.keep
