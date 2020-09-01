@@ -43,7 +43,7 @@ executors:
           xpack.security.enabled: false
           ES_JAVA_OPTS: '-Xms256m -Xmx256m'
 
-      - image: apache/tika:1.21
+      - image: apache/tika:1.24.1
 
 
 commands:
