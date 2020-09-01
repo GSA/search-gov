@@ -45,7 +45,7 @@ describe ApplicationDocument do
   describe '#created' do
     subject(:created) { application_document.created }
 
-    it { is_expected.to eq Time.parse("2017-09-07T23:26:04Z") }
+    it { is_expected.to eq Time.parse('2018-06-09T17:42:11Z') }
   end
 
   describe '#changed' do

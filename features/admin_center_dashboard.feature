@@ -261,10 +261,10 @@ Feature: Dashboard
     And the "Discover and add the RSS feeds and social media accounts listed on the following page:" field should contain "http:// bad"
 
     When I fill in the following:
-      | Discover and add the RSS feeds and social media accounts listed on the following page: | https://search.usa.gov |
+      | Discover and add the RSS feeds and social media accounts listed on the following page: | https://search.gov |
     And I press "Discover"
-    Then I should see "Discovery complete for https://search.usa.gov"
-    And the "Discover and add the RSS feeds and social media accounts listed on the following page:" field should contain "https://search.usa.gov"
+    Then I should see "Discovery complete for https://search.gov"
+    And the "Discover and add the RSS feeds and social media accounts listed on the following page:" field should contain "https://search.gov"
 
   Scenario: Deleting a site
     Given I am logged in with email "affiliate_manager@fixtures.org"
