@@ -2,7 +2,22 @@
 
 class Sites::ClickDrilldownsController < Sites::SetupSiteController
   include CSVResponsive
-  HEADER_FIELDS = ['Date', 'Time', 'Query', 'Position', 'Request', 'Referrer', 'Vertical', 'Modules', 'Device', 'Browser', 'OS', 'Country Code', 'Region', 'Client IP', 'User Agent']
+  HEADER_FIELDS = [
+    'Date',
+    'Time',
+    'Query',
+    'Position',
+    'Referrer',
+    'Vertical',
+    'Modules',
+    'Device',
+    'Browser',
+    'OS',
+    'Country Code',
+    'Region',
+    'Client IP',
+    'User Agent'
+  ].freeze
 
   def show
     url = request["url"]
@@ -30,7 +45,6 @@ class Sites::ClickDrilldownsController < Sites::SetupSiteController
     record << date_time.strftime("%H:%M:%S")
     record << (doc['params']['query'] rescue '')
     record << (doc['params']['position'] rescue '')
-    record << doc['request']
     record << doc['referrer']
     record << doc['vertical']
     record << doc['modules']
