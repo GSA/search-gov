@@ -27,13 +27,14 @@ Rails.application.routes.draw do
       get '/search/video' => 'searches#video'
       get '/search/docs' => 'searches#docs'
       get '/agencies/search' => 'agencies#search'
+      post '/click' => 'click#create'
     end
   end
 
   mount SearchConsumer::API => '/api/c'
 
   get '/sayt' => 'sayt#index'
-  get '/clicked' => 'clicked#index'
+  post '/clicked' => 'clicked#index'
   get '/healthcheck' => 'health_checks#new'
   get '/login' => 'user_sessions#security_notification', as: :login
   get '/signup' => 'user_sessions#security_notification', as: :signup
@@ -67,6 +68,7 @@ Rails.application.routes.draw do
       end
       resource :i14y_api_instructions, only: [:show]
       resource :type_ahead_api_instructions, only: [:show]
+      resource :click_tracking_api_instructions, only: [:show]
       resource :clicks, only: [:new, :create]
       resource :query_clicks, only: [:show]
       resource :query_referrers, only: [:show]

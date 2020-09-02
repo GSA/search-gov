@@ -5,4 +5,4 @@
       - overall_position = (index * first_links_list_count) + link_index + 1
       - css_classes = ["fc-link-item-#{link_index + 1}"]
       - css_classes << 'one-column-always-show-item' if overall_position <= FeaturedCollectionsHelper::MAX_LINKS_SHOW_PER_LIST_ON_COLLAPSED
-      %li{ class: css_classes.join(' ') }= link_to_result_title result.id, link.title, link.url, position, 'BBG'
+      %li{ class: css_classes.join(' ') }= link_to_result_title link.title, link.url, position, 'BBG'

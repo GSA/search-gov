@@ -7,3 +7,4 @@
   %li{ site_nav_css_class_hash('type_ahead_api_instructions') }= link_to 'Type-ahead API Instructions', site_type_ahead_api_instructions_path(@site)
   - if @site.gets_i14y_results?
     %li{ site_nav_css_class_hash('i14y_api_instructions') }= link_to 'i14y Content Indexing API Instructions', site_i14y_api_instructions_path(@site)
+  %li{ site_nav_css_class_hash('click_tracking_api_instructions') }= link_to 'Click Tracking API Instructions', site_click_tracking_api_instructions_path(@site)

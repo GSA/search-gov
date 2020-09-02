@@ -1,26 +1,193 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe Click do
-  fixtures :affiliates
+  let(:url) { 'http://www.fda.gov/foo.html' }
+  let(:ip) { '0.0.0.0' }
+  let(:position) { '7' }
+  let(:module_code) { 'BWEB' }
+  let(:params) do
+    {
+      url: url,
+      query: 'my query',
+      client_ip: ip,
+      affiliate: 'nps.gov',
+      position: position,
+      module_code: module_code,
+      vertical: 'web',
+      user_agent: 'mozilla'
+    }
+  end
 
-  describe "#log(url, query, queried_at, click_ip, affiliate_name, position, results_source, vertical, locale, user_agent, model_id)" do
-    it "should log almost-JSON info about the click" do
-      expect(Rails.logger).to receive(:info) do |str|
-        expect(str).to match(/^\[Click\] \{.*\}$/)
-        expect(str).to include('"url":"http://www.fda.gov/foo.html"')
-        expect(str).to include('"query":"my query"')
-        expect(str).to include('"queried_at":"2000-01-01 20:15:01"')
-        expect(str).to include('"click_ip":"12.34.56.789"')
-        expect(str).to include('"affiliate_name":"someaff"')
-        expect(str).to include('"position":"7"')
-        expect(str).to include('"results_source":"RECALL"')
-        expect(str).to include('"vertical":"web"')
-        expect(str).to include('"locale":"en"')
-        expect(str).to include('"user_agent":"mozilla"')
-        expect(str).to include('"model_id":"123456"')
+  subject(:click) { described_class.new params }
+
+  context 'with required params' do
+    describe '#valid?' do
+      it { is_expected.to be_valid }
+    end
+
+    describe '#log' do
+      before { allow(Rails.logger).to receive(:info) }
+
+      it 'logs almost-JSON info about the click' do
+        click.validate # validating causes other instance variables to appear.
+        click.log
+
+        expected_log = '[Click] {"url":"http://www.fda.gov/foo.html",'\
+                       '"query":"my query","client_ip":"0.0.0.0",'\
+                       '"affiliate":"nps.gov","position":"7","module_code":"BWEB",'\
+                       '"vertical":"web","user_agent":"mozilla"}'
+
+        expect(Rails.logger).to have_received(:info).with(expected_log)
       end
-      queried_at_str = Time.utc(2000, "jan", 1, 20, 15, 1).to_formatted_s(:db)
-      Click.log("http://www.fda.gov/foo.html", "my query", queried_at_str, "12.34.56.789", "someaff", "7", "RECALL", "web", "en", "mozilla", "123456")
+
+      context 'when the URL is encoded' do
+        let(:url) { 'https://search.gov/%28%3A%7C%29'  }
+
+        it 'logs the escaped URL' do
+          click.log
+          expect(Rails.logger).to have_received(:info).with(%r{https://search.gov/(:|)})
+        end
+      end
+    end
+  end
+
+  context 'without required params' do
+    let(:params) do
+      {
+        url: nil,
+        query: nil,
+        client_ip: nil,
+        affiliate: nil,
+        position: nil,
+        module_code: nil,
+        vertical: nil,
+        user_agent: nil
+      }
+    end
+
+    describe '#valid?' do
+      it { is_expected.not_to be_valid }
+    end
+
+    describe '#errors' do
+      it 'has expected errors' do
+        click.validate
+        expected_errors = ["Query can't be blank",
+                           "Position can't be blank",
+                           "Module code can't be blank",
+                           "Client ip can't be blank",
+                           "User agent can't be blank",
+                           "Url can't be blank"]
+        expect(click.errors.full_messages).to eq expected_errors
+      end
+    end
+  end
+
+  describe '#url_encoding_validation' do
+    context 'with invalid utf-8 in the url' do
+      # https://cm-jira.usa.gov/browse/SRCHAR-415
+      let(:url) { "https://example.com/wymiana teflon\xF3w" }
+
+      it 'has expected errors' do
+        click.validate
+        expect(click.errors.full_messages).to eq ['Url is not a valid format']
+      end
+
+      context 'when the unencoded URL contains invalid characters' do
+        let(:url) { "https://example.com/wymiana+teflon%F3w" }
+
+        it 'has expected errors' do
+          click.validate
+          expect(click.errors.full_messages).to eq ['Url is not a valid format']
+        end
+      end
+    end
+
+    context 'with malformed urls' do
+      let(:url) { 'something is wrong' }
+
+      it 'has expected errors' do
+        click.validate
+        expect(click.errors.full_messages).to eq ['Url is not a valid format']
+      end
+    end
+  end
+
+  describe '.valid_ip?' do
+    context 'with valid ip4' do
+      let(:ip) { '123.123.123.123' }
+
+      it { is_expected.to be_valid }
+    end
+
+    context 'with valid ip6' do
+      let(:ip) { '2600:1f18:f88:4313:6df7:f986:f915:78d6' } # gsa.gov?
+
+      it { is_expected.to be_valid }
+    end
+
+    context 'with invalid ip address' do
+      let(:ip) { 'bad_ip_address' }
+
+      it { is_expected.not_to be_valid }
+
+      it 'has expected errors' do
+        click.validate
+        expect(click.errors.full_messages).to eq ['Client ip is invalid']
+      end
+    end
+  end
+
+  describe 'only allow positive positions' do
+    context 'with negative number' do
+      let(:position) { '-4' }
+
+      it { is_expected.not_to be_valid }
+
+      it 'has expected errors' do
+        click.validate
+        error_msg = ['Position must be greater than or equal to 0']
+        expect(click.errors.full_messages).to eq error_msg
+      end
+    end
+
+    context 'with a decimal' do
+      let(:position) { '1.87897' }
+
+      it { is_expected.not_to be_valid }
+
+      it 'has expected errors' do
+        click.validate
+        expect(click.errors.full_messages).to eq ['Position must be an integer']
+      end
+    end
+
+    context 'with a word' do
+      let(:position) { 'second' }
+
+      it { is_expected.not_to be_valid }
+
+      it 'has expected errors' do
+        click.validate
+        error_msg = ['Position is not a number']
+        expect(click.errors.full_messages).to eq error_msg
+      end
+    end
+  end
+
+  describe 'validate module code' do
+    context 'not in official list of codes' do
+      let(:module_code) { 'whatever' }
+
+      it { is_expected.not_to be_valid }
+
+      it 'has expected errors' do
+        click.validate
+        error_msg = ['Module code whatever is not a valid module']
+        expect(click.errors.full_messages).to eq error_msg
+      end
     end
   end
 end
