@@ -81,7 +81,7 @@ describe WebResultsPostProcessor do
         @post_processed_results = post_processor.post_processed_results
       end
 
-      it "should replace Bing's result title with the NewsItem title" do
+      it "replaces Bing's result title with the NewsItem title" do
         expect(@post_processed_results.first['title']).to eq("Title w/o highlighting")
         expect(@post_processed_results.first['content']).to eq("Description w/o highlighting")
         expect(@post_processed_results.last['title']).to eq("\xEE\x80\x80NewsItem\xEE\x80\x81 title highlighted from ElasticSearch")

@@ -1,14 +1,14 @@
 = render_flash_message
 = render_error_messages(@user)
 
-= form.label :contact_name, 'Name', class: 'required'
-= form.text_field :contact_name, class: 'required input-primary'
+= form.label :first_name, 'First name', class: 'required'
+= form.text_field :first_name, class: 'required input-primary'
+
+= form.label :last_name, 'Last name', class: 'required'
+= form.text_field :last_name, class: 'required input-primary'
+
 = form.label :organization_name, 'Government agency'
 = form.text_field :organization_name
 = form.label :email, 'Email', class: 'required'
-= form.email_field :email, class: 'required'
-= form.label :password, 'New Password'
-= form.password_field :password, class: 'required'
-= form.label :current_password, "Current Password (Required for password changes)"
-= form.password_field :current_password, class: 'required'
-= render partial: 'users/password_requirements'
+= form.email_field :email, disabled: true, class: 'required'
+%p To update your email address, please contact the Search.gov team at #{ mail_to "search@support.digitalgov.gov",  "search@support.digitalgov.gov"}.

@@ -1,8 +1,11 @@
+# frozen_string_literal: true
+
 class CountQuery
   include AnalyticsDSL
 
-  def initialize(affiliate_name)
+  def initialize(affiliate_name, type)
     @affiliate_name = affiliate_name
+    @type = type
   end
 
   def body
@@ -12,11 +15,8 @@ class CountQuery
   end
 
   def booleans(json)
-    json.must do
-      json.term { json.affiliate @affiliate_name }
-    end
+    must_affiliate(json, affiliate_name)
+    must_type(json, type)
     must_not_spider(json)
   end
-
-
 end

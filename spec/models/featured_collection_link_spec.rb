@@ -10,6 +10,8 @@ describe FeaturedCollectionLink do
   it { is_expected.to validate_presence_of :url }
   it { is_expected.to belong_to :featured_collection }
 
+  it_behaves_like 'a record that sanitizes attributes', [:title]
+
   it 'squishes title and url' do
     fc = FeaturedCollection.new(title: 'Search USA Blog',
                                 status: 'active',
@@ -19,7 +21,7 @@ describe FeaturedCollectionLink do
                                        url: '   https://search.gov/blog-1   ',
                                        position: 0)
     fc.save!
-    link = fc.featured_collection_links(true).first
+    link = fc.featured_collection_links.reload.first
 
     expect(link.title).to eq('Blog Post 1')
     expect(link.url).to eq('https://search.gov/blog-1')

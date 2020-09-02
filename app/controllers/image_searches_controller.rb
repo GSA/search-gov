@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 class ImageSearchesController < ApplicationController
   include MobileFriendlyController
 
   layout 'searches'
 
-  before_filter :set_affiliate, :set_locale_based_on_affiliate_locale
-  before_filter :set_header_footer_fields
-  before_filter :set_search_options
-  before_filter :force_request_format
+  before_action :set_affiliate, :set_locale_based_on_affiliate_locale
+  before_action :set_header_footer_fields
+  before_action :set_search_options
+  before_action :force_request_format
 
   def index
     @search = search_klass.new(@search_options)

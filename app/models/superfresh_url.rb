@@ -1,4 +1,4 @@
-class SuperfreshUrl < ActiveRecord::Base
+class SuperfreshUrl < ApplicationRecord
   belongs_to :affiliate
   validates_presence_of :url
   validates_url :url

@@ -1,12 +1,7 @@
 class UsersController < ApplicationController
   layout 'sites'
-  before_filter :require_no_user, :only => [:new, :create]
-  before_filter :require_user, :only => [:show, :edit, :update]
-
-  def new
-    @user = User.new
-    render layout: 'application'
-  end
+  before_action :require_user, :only => [:show, :edit, :update]
+  before_action :set_user, except: :create
 
   def create
     @user = User.new(user_params)
@@ -24,37 +19,54 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = @current_user
+    message = <<~MESSAGE
+      Because you don't have a .gov or .mil email address, we need additional information.
+      If you are a contractor on an active contract, please use your .gov or .mil email
+      address on this account, or have your federal POC email search@support.digitalgov.gov
+      to confirm your status.
+    MESSAGE
+
+    flash[:notice] = message unless @user.has_government_affiliated_email? ||
+                                    @user.approval_status == 'approved'
   end
 
-  def edit
-    @user = @current_user
+  def edit; end
+
+  def update_account
+    @user.attributes = user_params
+    if @user.save(context: :update_account)
+      flash[:success] = 'Account updated!'
+      redirect_to account_url
+    else
+      render :edit
+    end
   end
 
   def update
-    @user = @current_user # makes our views "cleaner" and more consistent
-    @user.require_password_confirmation = true if user_params[:password].present?
     if @user.update_attributes(user_params)
       flash[:success] = "Account updated!"
       redirect_to account_url
     else
-      render :action => :edit
+      render :edit
     end
   end
 
-  def developer_redirect
-  end
+  def developer_redirect; end
 
   private
+
   def require_user
     redirect_to developer_redirect_url if super.nil? and current_user.is_developer?
   end
 
+  def set_user
+    @user = @current_user.presence || current_user
+  end
+
   def user_params
-    params.require(:user).permit(:contact_name,
+    params.require(:user).permit(:first_name,
+                                 :last_name,
                                  :organization_name,
-                                 :email,
-                                 :password,
-                                 :current_password)
+                                 :email).to_h
   end
 end

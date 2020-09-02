@@ -18,6 +18,7 @@ describe SitemapIndexer do
     stub_request(:get, sitemap_url).
       with(headers: { 'User-Agent' => DEFAULT_USER_AGENT }).
       to_return(body: sitemap_content)
+    allow(searchgov_domain).to receive(:index_urls)
   end
 
   describe '#index' do
@@ -27,10 +28,22 @@ describe SitemapIndexer do
       expect { index }.to change{ SearchgovUrl.count }.by(1)
     end
 
-    it 'updates the counter cache columns' do
-      index
-      expect(searchgov_domain.reload.urls_count).to eq 1
-      expect(searchgov_domain.reload.unfetched_urls_count).to eq 1
+    context 'when updating the counter caches' do
+      it 'updates the counter cache columns' do
+        index
+        expect(searchgov_domain.reload.urls_count).to eq 1
+        expect(searchgov_domain.reload.unfetched_urls_count).to eq 1
+      end
+
+      context 'when multiple searchgov_domains exist' do
+        let!(:other_domain) do
+          SearchgovDomain.create!(domain: 'other.gov', urls_count: 10)
+        end
+
+        it 'only updates the counts for a single domain' do
+          expect { index }.not_to change{ other_domain.reload.urls_count }
+        end
+      end
     end
 
     context 'when the sitemap specifies a lastmod value' do
@@ -75,7 +88,7 @@ describe SitemapIndexer do
                             last_crawl_status: 'OK',
                             last_crawled_at: 1.week.ago)
       end
-      let(:lastmod) { Date.today }
+      let(:lastmod) { Date.today.to_time(:utc) }
 
       context 'when lastmod is not specified in the sitemap' do
         let(:sitemap_entries) { '<url><loc>http://agency.gov/doc1</loc></url>' }
@@ -166,6 +179,49 @@ describe SitemapIndexer do
       it 'logs the error' do
         expect(Rails.logger).to receive(:warn).
           with(%r{"sitemap":"http://agency.gov/sitemap.xml","error":"kaboom"})
+        index
+      end
+    end
+
+    context 'when the XML is poorly formatted' do
+      let(:sitemap_entries) do
+        <<~SITEMAP_ENTRIES
+          <url><loc>http://agency.gov/good</loc></url>'
+          <url><loc>http://agency.gov/bad</loc></bad_tag>'
+        SITEMAP_ENTRIES
+      end
+
+      it 'does not raise an error' do
+        expect{ index }.not_to raise_error
+      end
+
+      it 'processes as many entries as possible' do
+        index
+        expect(SearchgovUrl.find_by(url: 'http://agency.gov/good')).not_to be_nil
+      end
+
+      it 'logs the error' do
+        expect(Rails.logger).to receive(:error).with(/Missing end tag for 'url'/)
+        index
+      end
+
+      it 'kicks off indexing' do
+        allow(SearchgovDomain).to receive(:find_by).
+          with(domain: 'agency.gov').and_return(searchgov_domain)
+        expect(searchgov_domain).to receive(:index_urls)
+        index
+      end
+    end
+
+    context 'when a sitemap contains an invalid URL' do
+      let(:sitemap_entries) { '<url><loc>http://agency.gov/doc (1).pdf</loc></url>' }
+
+      it 'does not raise an error' do
+        expect{ indexer.index }.not_to raise_error
+      end
+
+      it 'logs the error' do
+        expect(Rails.logger).to receive(:error).with(/Invalid URL/)
         index
       end
     end

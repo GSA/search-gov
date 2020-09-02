@@ -12,12 +12,26 @@ describe BoostedContent do
       :publish_start_on => Date.yesterday }
   end
 
+  it do
+    is_expected.to have_many(:boosted_content_keywords).
+      dependent(:destroy).inverse_of(:boosted_content)
+  end
+
+  it_behaves_like 'a record that sanitizes attributes', [:title, :description]
+
   describe "Creating new instance of BoostedContent" do
     it { is_expected.to validate_presence_of :url }
     it { is_expected.to validate_presence_of :title }
     it { is_expected.to validate_presence_of :description }
     it { is_expected.to validate_presence_of :affiliate }
     it { is_expected.to validate_presence_of :publish_start_on }
+    it do
+      is_expected.to validate_uniqueness_of(:url).
+        case_insensitive.
+        scoped_to(:affiliate_id).
+        with_message('has already been boosted')
+    end
+
 
     it 'validates the url format' do
       boosted_content = BoostedContent.new(url: 'blah')
@@ -58,16 +72,6 @@ describe BoostedContent do
     it "should not allow publish start date before publish end date" do
       boosted_content = BoostedContent.create(valid_attributes.merge({ :publish_start_on => '07/01/2012', :publish_end_on => '07/01/2011' }))
       expect(boosted_content.errors.full_messages.join).to match(/Publish end date can't be before publish start date/)
-    end
-
-    it 'should not allow duplicate url' do
-      url = 'http://search.gov/post/9866782725/did-you-mean-roes-or-rose'
-      BoostedContent.create!(valid_attributes.merge(url: url))
-      expect { BoostedContent.create!(valid_attributes.merge(url: url)) }.to raise_error
-    end
-
-    it 'should not allow blank description' do
-      expect { BoostedContent.create!(valid_attributes.merge(description: '&nbsp;')) }.to raise_error
     end
 
     it "should save URL as is when it starts with http(s)://" do

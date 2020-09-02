@@ -23,7 +23,7 @@ describe '/search/images' do
 
     context 'when query is present' do
       before do
-        get '/search/images.json', { affiliate: affiliate.name, query: 'white house' }
+        get '/search/images.json', params: { affiliate: affiliate.name, query: 'white house' }
       end
 
       it 'responds with search results from Oasis' do
@@ -41,7 +41,7 @@ describe '/search/images' do
 
     context 'when query is blank' do
       before do
-        get '/search/images.json', { affiliate: affiliate.name, query: ' ' }
+        get '/search/images.json', params: { affiliate: affiliate.name, query: ' ' }
       end
 
       it 'responds with error message' do
@@ -55,7 +55,7 @@ describe '/search/images' do
     let(:affiliate) { affiliates(:bing_image_search_enabled_affiliate) }
 
     before do
-      get '/search/images.json', { affiliate: affiliate.name, query: 'white house' }
+      get '/search/images.json', params: { affiliate: affiliate.name, query: 'white house' }
     end
 
     it 'renders JSON response' do

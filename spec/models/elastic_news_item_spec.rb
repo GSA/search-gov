@@ -7,6 +7,13 @@ describe ElasticNewsItem do
   let(:gallery) { rss_feeds(:white_house_press_gallery) }
   let(:white_house_blog_url) { rss_feed_urls(:white_house_blog_url) }
   let(:white_house_press_gallery_url) { rss_feed_urls(:white_house_press_gallery_url) }
+  let(:search_params) do
+    {
+      q: 'Obama',
+      rss_feeds: [blog]
+    }
+  end
+  let(:search) { ElasticNewsItem.search_for(search_params) }
 
   before do
     ElasticNewsItem.recreate_index
@@ -38,8 +45,11 @@ describe ElasticNewsItem do
       guid: 'unique to feed',
       published_at: 1.day.ago,
       link: 'http://www.wh.gov/ns2',
-      title: 'Obama adopts some more things',
-      description: '<p>that is the policy.</p>',
+      title: 'Obama adopts some more things about some other things',
+      description: '<p>that is the policy.</p><p>This is a paragraph full of other,
+                   less relevant words. These are more random words to ensure that
+                   the relevance calculation is comparing document fields
+                   of similar lengths.<\p>',
       contributor: 'President',
       publisher: 'Briefing Room',
       subject: 'HIV',
@@ -48,8 +58,8 @@ describe ElasticNewsItem do
     ElasticNewsItem.commit
   end
 
-  describe ".search_for" do
-    describe "results structure" do
+  describe '.search_for' do
+    describe 'results structure' do
       context 'when there are results' do
 
         it 'should return results in an easy to access structure' do
@@ -103,8 +113,7 @@ describe ElasticNewsItem do
 
     end
 
-    describe "filters" do
-
+    describe 'filters' do
       context 'when RSS feeds are specified' do
         it "should restrict results to the RSS feed URLS belonging to the specified collection of RSS feeds" do
           search = ElasticNewsItem.search_for(q: 'policy', rss_feeds: [blog], language: 'en')
@@ -208,11 +217,17 @@ describe ElasticNewsItem do
         end
       end
 
-      context 'when affiliate locale is not one of the custom indexed languages' do
-        before do
-          affiliate.locale = 'kl'
-          affiliate.save!
-          NewsItem.create!(
+      context 'when indexing news items in other languages' do
+        let(:search_params) do
+          {
+            rss_feeds: [blog],
+            language: affiliate.indexing_locale,
+            title_only: true,
+            q: 'superknuller'
+          }
+        end
+        let(:news_item_params) do
+          {
             rss_feed_url_id: white_house_blog_url.id,
             guid: 'greenland',
             published_at: 3.days.ago,
@@ -222,18 +237,37 @@ describe ElasticNewsItem do
             body: 'random text here',
             contributor: 'President',
             publisher: 'Briefing Room',
-            subject: 'Economy')
-          ElasticNewsItem.commit
+            subject: 'Economy'
+          }
         end
 
-        it 'should do downcasing and ASCII folding only' do
-          appropriate_stemming = ['superknuller', 'woche']
-          appropriate_stemming.each do |query|
-            expect(ElasticNewsItem.search_for(q: query, rss_feeds: [blog], language: affiliate.indexing_locale, title_only: true).total).to eq(1)
+        context 'when affiliate locale is not one of the custom indexed languages' do
+          before do
+            affiliate.update!(locale: 'kl')
+            NewsItem.create!(news_item_params)
+            ElasticNewsItem.commit
+          end
+
+          it 'does downcasing and ASCII folding only' do
+            expect(search.total).to eq(1)
+            expect(search.results.first.title).to match(/Angebote/)
+          end
+        end
+
+        context 'when the rss feed url is not one of the custom indexed languages' do
+          before do
+            white_house_blog_url.update!(language: 'kl')
+            affiliate.update!(locale: 'kl')
+            NewsItem.create!(news_item_params)
+            ElasticNewsItem.commit
+          end
+
+          it 'does downcasing and ASCII folding only' do
+            expect(search.total).to eq(1)
+            expect(search.results.first.title).to match(/Angebote/)
           end
         end
       end
-
     end
 
     describe "sorting" do
@@ -258,7 +292,7 @@ describe ElasticNewsItem do
       end
     end
 
-    describe "synonyms and protected words" do
+    context 'synonyms and protected words' do
       it "should use both" do
         search = ElasticNewsItem.search_for(q: "gas", rss_feeds: [blog, gallery], language: 'en')
         expect(search.total).to eq(1)

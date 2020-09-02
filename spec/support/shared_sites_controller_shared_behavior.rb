@@ -1,17 +1,9 @@
-shared_examples 'restricted to approved user' do |request_method, action, parameters = nil, sessions = nil, flash = nil|
+shared_examples 'restricted to approved user' do |request_method, action, parameters = nil|
+
   context 'when user is not logged in' do
     it 'should redirect to login page' do
-      send request_method, action, parameters, sessions, flash
+      send request_method, action, params: parameters
       expect(response).to redirect_to(login_path)
-    end
-  end
-
-  context 'when user is pending email verification' do
-    before { UserSession.create(users(:affiliate_manager_with_pending_email_verification_status)) }
-
-    it 'should redirect to affiliates page' do
-      send request_method, action, parameters, sessions, flash
-      expect(response).to redirect_to(account_path)
     end
   end
 
@@ -19,16 +11,17 @@ shared_examples 'restricted to approved user' do |request_method, action, parame
     before { UserSession.create(users(:affiliate_manager_with_pending_approval_status)) }
 
     it 'should redirect to affiliates page' do
-      self.send request_method, action, parameters, sessions, flash
+      send request_method, action, params: parameters
       expect(response).to redirect_to(account_path)
     end
   end
 
-  context 'when user is pending contact information status' do
+  # login.gov - commented out till  SRCH-862
+  pending 'when user is pending contact information status' do
     before { UserSession.create(users(:affiliate_manager_with_pending_contact_information_status)) }
 
     it 'should redirect to affiliates page' do
-      self.send request_method, action, parameters, sessions, flash
+      send request_method, action, params: parameters
       expect(response).to redirect_to(account_path)
     end
   end

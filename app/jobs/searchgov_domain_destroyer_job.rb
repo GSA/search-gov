@@ -1,4 +1,4 @@
-class SearchgovDomainDestroyerJob < ActiveJob::Base
+class SearchgovDomainDestroyerJob < ApplicationJob
   queue_as :searchgov
 
   def perform(searchgov_domain:)
@@ -8,3 +8,4 @@ class SearchgovDomainDestroyerJob < ActiveJob::Base
     searchgov_domain.destroy!
   end
 end
+

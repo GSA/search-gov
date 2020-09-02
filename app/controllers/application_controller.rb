@@ -1,12 +1,13 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
-  before_filter :set_default_locale
-  after_filter :set_response_headers
+  before_action :set_default_locale
+  after_action :set_response_headers
   helper :all
   helper_method :current_user_session, :current_user, :permitted_params
   protect_from_forgery with: :exception
-  VALID_FORMATS = %w{html rss json xml mobile}
   SERP_RESULTS_PER_PAGE = 20
-  PAGE_NOT_FOUND = 'https://www.usa.gov/page-not-found'
+  PAGE_NOT_FOUND = 'https://www.usa.gov/search-error'
 
   ADVANCED_PARAM_KEYS = %i(filetype filter query-not query-or query-quote).freeze
   DUBLIN_CORE_PARAM_KEYS = %i(contributor publisher subject).freeze
@@ -33,8 +34,6 @@ class ApplicationController < ActionController::Base
   ).concat(ADVANCED_PARAM_KEYS).
     concat(DUBLIN_CORE_PARAM_KEYS).
     concat(FILTER_PARAM_KEYS).freeze
-
-  rescue_from ActionView::MissingTemplate, :with => :template_not_found
 
   def handle_unverified_request
     raise ActionController::InvalidAuthenticityToken
@@ -70,14 +69,6 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def template_not_found(error)
-    if VALID_FORMATS.include?(request.format)
-      raise error
-    else
-      render text: '406 Not Acceptable', status: 406
-    end
-  end
-
   def set_default_locale
     I18n.locale = :en
   end
@@ -100,25 +91,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def require_no_user
-    if current_user
-      store_location
-      redirect_to account_url
-      false
-    end
-  end
-
   def store_location
     session[:return_to] = request.fullpath
   end
 
-  def redirect_back_or_default(default)
-    redirect_to(session[:return_to] || default)
-    session[:return_to] = nil
-  end
-
   def permitted_params
-    @permitted_params ||= params.permit *PERMITTED_PARAM_KEYS
+    @permitted_params ||= params.permit(*PERMITTED_PARAM_KEYS).to_h
   end
 
   def search_options_from_params(*param_keys)
@@ -146,7 +124,7 @@ class ApplicationController < ActionController::Base
   end
 
   def sanitize_query(query)
-    QuerySanitizer.sanitize(query)
+    Sanitizer.sanitize(query, encode: false)
   end
 
   def highlighting_option

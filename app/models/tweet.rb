@@ -1,4 +1,4 @@
-class Tweet < ActiveRecord::Base
+class Tweet < ApplicationRecord
   before_save :sanitize_tweet_text
   belongs_to :twitter_profile, :primary_key => :twitter_id
   validates_presence_of :tweet_id, :tweet_text, :published_at, :twitter_profile_id
@@ -6,7 +6,7 @@ class Tweet < ActiveRecord::Base
   serialize :urls, Array
 
   def sanitize_tweet_text
-    self.tweet_text = Sanitize.clean(tweet_text).squish if tweet_text
+    self.tweet_text = Sanitizer.sanitize(tweet_text).squish if tweet_text
   end
 
   def url_to_tweet

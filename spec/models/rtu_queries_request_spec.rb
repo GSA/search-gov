@@ -20,12 +20,23 @@ describe RtuQueriesRequest do
                                                         "query" => "mexico petition marine",
                                                         "site" => site) }
 
+      before do
+        allow(TopQueryMatchQuery).to receive(:new).with(
+          site.name,
+          'mexico petition marine',
+          Date.parse('05/28/2014'),
+          Date.parse('05/28/2014'),
+          field: 'params.query.raw',
+          size: 1000
+        ).and_return(instance_double(TopQueryMatchQuery, body: 'query_body'))
+      end
+
       context "when stats available" do
         let(:json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/rtu_queries_request.json")) }
-
         before do
-          query_body = %q({"query":{"filtered":{"query":{"match":{"query":{"query":"mexico petition marine","analyzer":"snowball","operator":"and"}}},"filter":{"bool":{"must":[{"term":{"affiliate":"nps.gov"}},{"range":{"@timestamp":{"gte":"2014-05-28","lte":"2014-05-28"}}}],"must_not":{"term":{"useragent.device":"Spider"}}}}}},"aggs":{"agg":{"terms":{"field":"raw","size":1000},"aggs":{"type":{"terms":{"field":"type"}}}}}})
-          opts = { index: "logstash-*", type: %w(search click), body: query_body, size: 0 }
+          opts = { index: 'logstash-*',
+                   body: 'query_body',
+                   size: 0 }
           expect(ES::ELK.client_reader).to receive(:search).with(opts).and_return json_response
         end
 

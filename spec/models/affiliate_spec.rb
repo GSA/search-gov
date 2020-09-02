@@ -76,35 +76,64 @@ describe Affiliate do
     it { is_expected.to validate_inclusion_of(:search_engine).in_array(%w( Google BingV6 BingV7 SearchGov )) }
 
     it { is_expected.to have_many :boosted_contents }
+    it { is_expected.to have_many(:connections).inverse_of(:affiliate) }
+    it { is_expected.to have_many(:connected_connections).inverse_of(:connected_affiliate) }
+
     it { is_expected.to have_many :sayt_suggestions }
     it { is_expected.to have_many :twitter_profiles }
 
     it { is_expected.to have_many(:routed_query_keywords).through :routed_queries }
-    it { is_expected.to have_many(:rss_feed_urls).through :rss_feeds }
+    it { is_expected.to have_many(:rss_feed_urls).through(:rss_feeds) }
     it { is_expected.to have_many(:users).through :memberships }
 
     it { is_expected.to have_many(:affiliate_feature_addition).dependent(:destroy) }
     it { is_expected.to have_many(:affiliate_twitter_settings).dependent(:destroy) }
-    it { is_expected.to have_many(:excluded_domains).dependent(:destroy) }
+    it { is_expected.to have_many(:excluded_domains).dependent(:destroy).inverse_of(:affiliate) }
     it { is_expected.to have_many(:featured_collections).dependent(:destroy) }
     it { is_expected.to have_many(:features).dependent(:destroy) }
-    it { is_expected.to have_many(:flickr_profiles).dependent(:destroy) }
+    it { is_expected.to have_many(:document_collections).inverse_of(:affiliate)}
+
+    it do
+      is_expected.to have_many(:flickr_profiles).dependent(:destroy).
+        inverse_of(:affiliate)
+    end
+
     it { is_expected.to have_many(:memberships).dependent(:destroy) }
-    it { is_expected.to have_many(:navigations).dependent(:destroy) }
+
+    it do
+      is_expected.to have_many(:navigations).dependent(:destroy).inverse_of(:affiliate)
+    end
+
     it { is_expected.to have_many(:routed_queries).dependent(:destroy) }
-    it { is_expected.to have_many(:rss_feeds).dependent(:destroy) }
+    it { is_expected.to have_many(:rss_feeds).dependent(:destroy).inverse_of(:owner) }
     it { is_expected.to have_many(:affiliate_templates).dependent(:destroy) }
-    it { is_expected.to have_many(:available_templates).through(:affiliate_templates).source(:template) }
-    it { is_expected.to have_many(:site_domains).dependent(:destroy) }
-    it { is_expected.to have_many(:tag_filters).dependent(:destroy) }
+
+    it do
+      is_expected.to have_many(:available_templates).through(:affiliate_templates).source(:template)
+    end
+
+    it do
+      is_expected.to have_many(:site_domains).dependent(:destroy).
+        inverse_of(:affiliate)
+    end
+
+    it 'has many default users' do
+      is_expected.to have_many(:default_users).dependent(:nullify).
+        with_foreign_key(:default_affiliate_id).
+        class_name('User').inverse_of(:default_affiliate)
+    end
+
+    it { is_expected.to have_many(:watchers).inverse_of(:affiliate) }
+
+    it do
+      is_expected.to have_many(:tag_filters).dependent(:destroy).inverse_of(:affiliate)
+    end
 
     it { is_expected.to have_and_belong_to_many :instagram_profiles }
     it { is_expected.to have_and_belong_to_many :youtube_profiles }
-
     it { is_expected.to belong_to :agency }
-    it { is_expected.to belong_to :language }
+    it { is_expected.to belong_to(:language).inverse_of(:affiliates) }
     it { is_expected.to belong_to :template }
-
     it { is_expected.to validate_attachment_content_type(:page_background_image).allowing(%w{ image/gif image/jpeg image/pjpeg image/png image/x-png }).rejecting(nil) }
     it { is_expected.to validate_attachment_content_type(:header_image).allowing(%w{ image/gif image/jpeg image/pjpeg image/png image/x-png }).rejecting(nil) }
     it { is_expected.to validate_attachment_content_type(:mobile_logo).allowing(%w{ image/gif image/jpeg image/pjpeg image/png image/x-png }).rejecting(nil) }
@@ -133,7 +162,7 @@ describe Affiliate do
                                           site_domains_attributes: { '0' => { domain: 'www1.usa.gov' },
                                                                      '1' => { domain: 'www2.usa.gov' },
                                                                      '2' => { domain: 'usa.gov' } }))
-        expect(affiliate.site_domains(true).count).to eq(1)
+        expect(affiliate.site_domains.reload.count).to eq(1)
         expect(affiliate.site_domains.first.domain).to eq('usa.gov')
 
         affiliate = Affiliate.create!(
@@ -141,7 +170,7 @@ describe Affiliate do
                 name: 'anothersite',
                 site_domains_attributes: { '0' => { domain: 'sec.gov' },
                                            '1' => { domain: 'www.sec.gov.staging.net' } }))
-        expect(affiliate.site_domains(true).count).to eq(2)
+        expect(affiliate.site_domains.reload.count).to eq(2)
         expect(affiliate.site_domains.pluck(:domain).sort).to eq(%w(sec.gov www.sec.gov.staging.net))
       end
 
@@ -463,6 +492,38 @@ describe Affiliate do
       affiliate = Affiliate.new(valid_create_attributes.merge(locale: 'invalid_locale'))
       expect(affiliate.save).to be false
       expect(affiliate.errors[:base]).to include("Locale must be valid")
+    end
+
+    describe 'header tagline validation' do
+      let(:affiliate) do
+        Affiliate.new(valid_create_attributes.
+          merge(header_tagline_url: header_tagline_url))
+      end
+      let(:header_tagline_url) { 'http://www.google.com' }
+
+      context 'when the URL is valid' do
+        it 'is valid' do
+          expect(affiliate).to be_valid
+        end
+      end
+
+      context 'when the URL is invalid' do
+        let(:header_tagline_url) { 'foo' }
+
+        it 'is invalid' do
+          expect(affiliate).not_to be_valid
+          expect(affiliate.errors[:header_tagline_url]).to include 'is not a valid URL'
+        end
+      end
+
+      context 'when the URL is includes javascript' do
+        let(:header_tagline_url) { 'javascript:alert(document.domain)' }
+
+        it 'is invalid' do
+          expect(affiliate).not_to be_valid
+          expect(affiliate.errors[:header_tagline_url]).to include 'is not a valid URL'
+        end
+      end
     end
 
     describe 'bing v5 key stripping' do
@@ -904,22 +965,29 @@ describe Affiliate do
     end
   end
 
-  describe "#recent_user_activity" do
+  describe '#recent_user_activity' do
     let(:affiliate) { affiliates(:basic_affiliate) }
     let(:another_affiliate_manager) { users(:another_affiliate_manager) }
     let(:affiliate_manager_with_one_site) { users(:affiliate_manager_with_one_site) }
-    let(:recent_time) { Time.now }
+    let(:recent_time) { Time.now.utc }
 
     before do
-      affiliate.users.first.update_attribute(:last_request_at, recent_time)
+      @au = affiliate.users.first
+      @au.last_request_at = recent_time
+      @au.save!
+
+      another_affiliate_manager.last_request_at = recent_time - 1.hour
+      another_affiliate_manager.save!
+
+      affiliate_manager_with_one_site.last_request_at = nil
+      affiliate_manager_with_one_site.save!
+
       affiliate.users << another_affiliate_manager
-      affiliate.users.last.update_attribute(:last_request_at, recent_time - 1.hour)
       affiliate.users << affiliate_manager_with_one_site
-      affiliate.users.last.update_attribute(:last_request_at, nil)
     end
 
     it 'should show the max last_request_at date for the site users' do
-      expect(affiliate.recent_user_activity.utc.to_s).to eq(recent_time.utc.to_s)
+      expect(affiliate.recent_user_activity.utc.to_s).to eq(recent_time.to_s)
     end
   end
 
@@ -1008,7 +1076,7 @@ describe Affiliate do
         site_domain_hash = ActiveSupport::OrderedHash["http://foo.gov", nil, "bar.gov/somepage.html", nil, "https://blat.gov/somedir", nil]
         affiliate.add_site_domains(site_domain_hash)
 
-        site_domains = affiliate.site_domains(true)
+        site_domains = affiliate.site_domains.reload
         expect(site_domains.size).to eq(2)
         expect(site_domains.collect(&:domain).sort).to eq(%w{blat.gov/somedir foo.gov})
       end
@@ -1019,7 +1087,7 @@ describe Affiliate do
         site_domain_hash = ActiveSupport::OrderedHash[" do.gov ", nil, " bar.gov", nil, "blat.gov ", nil]
         affiliate.add_site_domains(site_domain_hash)
 
-        site_domains = affiliate.site_domains(true)
+        site_domains = affiliate.site_domains.reload
         expect(site_domains.size).to eq(3)
         expect(site_domains.collect(&:domain).sort).to eq(%w{bar.gov blat.gov do.gov})
       end
@@ -1033,7 +1101,7 @@ describe Affiliate do
       it "should delete dupes from domains" do
         expect(affiliate.add_site_domains('foo.gov' => nil)).to be_empty
 
-        site_domains = affiliate.site_domains(true)
+        site_domains = affiliate.site_domains.reload
         expect(site_domains.count).to eq(1)
         expect(site_domains.first.domain).to eq('foo.gov')
       end
@@ -1044,7 +1112,7 @@ describe Affiliate do
         site_domain_hash = ActiveSupport::OrderedHash['foo.gov', nil, 'somepage.info', nil, 'whatisthis?', nil, 'bar.gov/somedir/', nil]
         affiliate.add_site_domains(site_domain_hash)
 
-        site_domains = affiliate.site_domains(true)
+        site_domains = affiliate.site_domains.reload
         expect(site_domains.count).to eq(3)
         expect(site_domains.collect(&:domain).sort).to eq(%w{bar.gov/somedir foo.gov somepage.info})
       end
@@ -1055,7 +1123,7 @@ describe Affiliate do
         site_domain_hash = ActiveSupport::OrderedHash['blat.gov', nil, 'blat.gov/s.html', nil, 'bar.gov/somedir/', nil, 'bar.gov', nil, 'www.bar.gov', nil, 'xxbar.gov', nil]
         added_site_domains = affiliate.add_site_domains(site_domain_hash)
 
-        site_domain_names = affiliate.site_domains(true).map(&:domain)
+        site_domain_names = affiliate.site_domains.reload.pluck(:domain)
         expect(added_site_domains.map(&:domain)).to eq(site_domain_names)
         expect(site_domain_names).to eq(%w(bar.gov blat.gov xxbar.gov))
       end
@@ -1074,7 +1142,7 @@ describe Affiliate do
         added_site_domains = affiliate.add_site_domains({'foo.gov' => nil, 'bar.gov' => nil})
 
         expect(added_site_domains.count).to eq(2)
-        site_domains = affiliate.site_domains(true)
+        site_domains = affiliate.site_domains.reload
         expect(site_domains.count).to eq(3)
         expect(site_domains[0].domain).to eq('agency.gov')
         expect(site_domains[1].domain).to eq('bar.gov')
@@ -1095,7 +1163,7 @@ describe Affiliate do
 
       it "should filter out existing domains" do
         expect(affiliate.update_site_domain(site_domain, {:domain => 'usa.gov', :site_name => nil})).to be_truthy
-        site_domains = affiliate.site_domains(true)
+        site_domains = affiliate.site_domains.reload
         expect(site_domains.count).to eq(1)
         expect(site_domains.first.domain).to eq('usa.gov')
       end
@@ -1178,8 +1246,12 @@ describe Affiliate do
 
     it 'returns previous month filtered search count from human-logstash-* indexes' do
       affiliate = affiliates(:power_affiliate)
-      expect(CountQuery).to receive(:new).with(affiliate.name).and_return count_query
-      expect(RtuCount).to receive(:count).with("human-logstash-2014.03.*", 'search', count_query.body).and_return(88)
+      expect(CountQuery).to receive(:new).
+        with(affiliate.name, 'search').
+        and_return count_query
+      expect(RtuCount).to receive(:count).
+        with('human-logstash-2014.03.*', count_query.body).
+        and_return(88)
       expect(affiliate.last_month_query_count).to eq(88)
     end
   end
@@ -1187,7 +1259,10 @@ describe Affiliate do
   describe '#user_emails' do
     it 'returns comma delimited user emails' do
       affiliate = affiliates(:non_existent_affiliate)
-      expect(affiliate.user_emails).to eq('Another Manager <another_affiliate_manager@fixtures.org>,Pending Email Verification Affiliate Manager <affiliate_manager_with_pending_email_verification_status@fixtures.org>')
+      expect(affiliate.user_emails).
+        to eq('Another Manager Smith <another_affiliate_manager@fixtures.org>,' \
+              'Requires Manual Approval Affiliate Manager Smith '\
+              '<affiliate_manager_requires_manual_approval@fixtures.org>')
     end
   end
 
@@ -1531,6 +1606,8 @@ describe Affiliate do
     end
   end
 
+  # This will be torn out eventually along with the rest of the
+  # deprecated search-consumer code: SRCHAR-2713
   describe '#update_templates' do
     let(:affiliate) { affiliates(:usagov_affiliate) }
     let(:classic) { Template.find_by_name('Classic') }
@@ -1547,16 +1624,6 @@ describe Affiliate do
 
     it 'sets the active template' do
       expect(affiliate.template.name).to eq 'Rounded Header Links'
-    end
-
-    it 'makes selected templates available' do
-      expect(affiliate.available_templates.pluck(:name)).
-        to match_array(['Rounded Header Links','IRS'])
-    end
-
-    it 'makes unselected templates unavailable' do
-      expect(affiliate.available_templates.pluck(:name)).
-        not_to include('Square Header Links','Classic')
     end
   end
 

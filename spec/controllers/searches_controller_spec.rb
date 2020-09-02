@@ -1,16 +1,13 @@
 require 'spec_helper'
 
 describe SearchesController do
-  fixtures :affiliates, :image_search_labels, :document_collections, :rss_feeds, :rss_feed_urls,
-           :navigations, :features, :news_items, :languages
-
   let(:affiliate) { affiliates(:usagov_affiliate) }
 
-  context "when showing a new search" do
+  context 'when showing a new search' do
     render_views
-    context "when searching in English" do
+    context 'when searching in English' do
       before do
-        get :index, query: 'social security', page: 4, affiliate: 'usagov'
+        get :index, params: { query: 'social security', page: 4, affiliate: 'usagov' }
         @search = assigns[:search]
         @page_title = assigns[:page_title]
       end
@@ -19,32 +16,32 @@ describe SearchesController do
         expect(@controller.view_assigns['search_options'].keys.map(&:class).uniq).to eq([Symbol])
       end
 
-      it "should assign the USA.gov affiliate as the default affiliate" do
+      it 'should assign the USA.gov affiliate as the default affiliate' do
         expect(assigns[:affiliate]).to eq(affiliates(:usagov_affiliate))
       end
 
-      it "should render the template" do
+      it 'should render the template' do
         expect(response).to render_template 'index'
         expect(response).to render_template 'layouts/searches'
       end
 
-      it "should assign the query as the page title" do
-        expect(@page_title).to eq("social security - USA.gov Search Results")
+      it 'should assign the query as the page title' do
+        expect(@page_title).to eq('social security - USA.gov Search Results')
       end
 
-      it "should show a custom title for the results page" do
+      it 'should show a custom title for the results page' do
         expect(response.body).to match(/social security - USA.gov Search Results/)
       end
 
-      it "should set the query in the Search model" do
-        expect(@search.query).to eq("social security")
+      it 'should set the query in the Search model' do
+        expect(@search.query).to eq('social security')
       end
 
-      it "should set the page" do
+      it 'should set the page' do
         expect(@search.page).to eq(4)
       end
 
-      it "should load results for a keyword query" do
+      it 'should load results for a keyword query' do
         expect(@search).not_to be_nil
         expect(@search.results).not_to be_nil
       end
@@ -56,26 +53,37 @@ describe SearchesController do
     context 'when searching on a Spanish site' do
       it 'assigns locale to :es' do
         expect(I18n).to receive(:locale=).with(:es)
-        get :index, query: 'social security', page: 4, affiliate: 'gobiernousa'
+        get :index,
+            params: {
+              query: 'social security',
+              page: 4,
+              affiliate: 'gobiernousa'
+            }
       end
     end
   end
 
   context 'when affiliate is not valid' do
-    before { get :index, query: 'gov', affiliate: { 'foo' => 'bar' } }
-    it { is_expected.to redirect_to 'https://www.usa.gov/page-not-found' }
+    before { get :index, params: { query: 'gov', affiliate: { 'foo' => 'bar' } } }
+    it { is_expected.to redirect_to 'https://www.usa.gov/search-error' }
   end
 
   context 'when the affiliate is not active' do
     let(:affiliate) { affiliates(:inactive_affiliate) }
-    before { get :index, query: 'gov', affiliate: affiliate.name }
+    before do
+      get :index,
+          params: {
+            query: 'gov',
+            affiliate: affiliate.name
+          }
+    end
 
-    it { is_expected.to redirect_to 'https://www.usa.gov/page-not-found' }
+    it { is_expected.to redirect_to 'https://www.usa.gov/search-error' }
   end
 
   context 'when searching with non scalar query' do
     it "should not blow up if query is not a string" do
-      get :index, query: { 'foo' => 'bar' }, affiliate: 'usagov'
+      get :index, params: { query: { 'foo' => 'bar' }, affiliate: 'usagov' }
       expect(assigns[:search].query).to be_blank
     end
   end
@@ -84,7 +92,7 @@ describe SearchesController do
     let(:affiliate) { affiliates(:search_consumer_affiliate) }
 
     it 'should redirect to the search-consumer display page' do
-      get :index, query: 'matzo balls', affiliate: affiliate.name
+      get :index, params: { query: 'matzo balls', affiliate: affiliate.name }
       expect(response).to redirect_to search_consumer_search_url({query: 'matzo balls', affiliate: affiliate.name})
     end
   end
@@ -92,20 +100,18 @@ describe SearchesController do
   context 'searching on a routed keyword' do
     let(:affiliate) { affiliates(:basic_affiliate) }
     context 'referrer does not match redirect url' do
-      before do
-        routed_query = affiliate.routed_queries.build(url: "http://www.gov.gov/foo.html", description: "testing")
-        routed_query.routed_query_keywords.build(keyword: 'foo bar')
-        routed_query.save!
-      end
-
       it 'redirects to the proper url' do
-        get :index, query: "foo bar", affiliate: affiliate.name
-        expect(response).to redirect_to 'http://www.gov.gov/foo.html'
+        get :index, params: { query: "moar unclaimed money", affiliate: affiliate.name }
+        expect(response).to redirect_to 'https://www.usa.gov/unclaimed_money'
       end
 
       it 'logs the impression' do
-        expect(SearchImpression).to receive(:log)
-        get :index, query: "foo bar", affiliate: affiliate.name
+        expect(RoutedQueryImpressionLogger).to receive(:log)
+        get :index,
+            params: {
+              query: 'moar unclaimed money',
+              affiliate: affiliate.name
+            }
       end
     end
 
@@ -119,7 +125,11 @@ describe SearchesController do
           routed_query.routed_query_keywords.build(keyword: 'foo bar')
           routed_query.save!
           request.env['HTTP_REFERER'] = ref_url
-          get :index, query: "foo bar", affiliate: affiliate.name
+          get :index,
+              params: {
+                query: 'foo bar',
+                affiliate: affiliate.name
+              }
         end
 
         it { is_expected.to render_template(:index) }
@@ -148,7 +158,7 @@ describe SearchesController do
       affiliate.gets_i14y_results = true
       expect(I14ySearch).to receive(:new).and_return(i14y_search)
       expect(i14y_search).to receive(:run)
-      get :index, :query => 'gov', :affiliate => affiliate.name
+      get :index, params: { query: 'gov', affiliate: affiliate.name }
     end
 
     it { is_expected.to assign_to(:affiliate).with(affiliate) }
@@ -174,7 +184,7 @@ describe SearchesController do
       affiliate.search_engine = 'SearchGov'
       expect(I14ySearch).to receive(:new).and_return(i14y_search)
       expect(i14y_search).to receive(:run)
-      get :index, :query => 'gov', :affiliate => affiliate.name
+      get :index, params: { query: 'gov', affiliate: affiliate.name }
     end
 
     it { is_expected.to assign_to(:affiliate).with(affiliate) }
@@ -195,7 +205,11 @@ describe SearchesController do
     let(:affiliate) { affiliates(:legacy_affiliate) }
 
     before do
-      get :index, :affiliate => affiliate.name, :query => "<script>thunder & lightning</script>"
+      get :index,
+          params: {
+            affiliate: affiliate.name,
+            query: '<b>thunder & lightning</b>'
+          }
       @search = assigns[:search]
       @page_title = assigns[:page_title]
     end
@@ -232,7 +246,12 @@ describe SearchesController do
   context "when the affiliate locale is set to Spanish" do
     before do
       affiliate = affiliates(:gobiernousa_affiliate)
-      get :index, :affiliate => affiliate.name, :query => 'weather', :locale => 'en'
+      get :index,
+          params: {
+            affiliate: affiliate.name,
+            query: 'weather',
+            locale: 'en'
+          }
     end
     after { I18n.locale = I18n.default_locale }
 
@@ -246,12 +265,12 @@ describe SearchesController do
     let(:affiliate) { affiliates(:power_affiliate) }
 
     it "should maintain the staged parameter for future searches" do
-      get :index, :affiliate => affiliate.name, :query => "weather", :staged => 1
+      get :index, params: { affiliate: affiliate.name, query: 'weather', staged: 1 }
       expect(response.body).to have_selector("input[type='hidden'][value='1'][name='staged']", visible: false)
     end
 
     it "should set an affiliate page title" do
-      get :index, :affiliate => affiliate.name, :query => "weather", :staged => 1
+      get :index, params: { affiliate: affiliate.name, query: 'weather', staged: 1 }
       expect(assigns[:page_title]).to eq("weather - Noaa Site Search Results")
     end
   end
@@ -262,7 +281,11 @@ describe SearchesController do
     before do
       iphone_user_agent = "Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543a Safari/419.3"
       request.env["HTTP_USER_AGENT"] = iphone_user_agent
-      get :index, :affiliate => affiliate.name, :query => "weather"
+      get :index,
+          params: {
+            affiliate: affiliate.name,
+            query: 'weather'
+          }
     end
 
     it { is_expected.to respond_with(:success) }
@@ -275,7 +298,7 @@ describe SearchesController do
 
     context "when searching normally" do
       before do
-        get :index, :query => 'weather', :format => "json", affiliate: 'usagov'
+        get :index, params: { query: 'weather', affiliate: 'usagov' }, format: 'json'
         @search = assigns[:search]
       end
 
@@ -288,7 +311,7 @@ describe SearchesController do
 
     context "when some error is returned" do
       before do
-        get :index, :query => 'a' * 1001, :format => "json", affiliate: 'usagov'
+        get :index, params: { query: 'a' * 1001,  affiliate: 'usagov' }, format: 'json'
         @search = assigns[:search]
       end
 
@@ -302,7 +325,11 @@ describe SearchesController do
   context "when handling any affiliate search request (mobile or otherwise)" do
     render_views
     before do
-      get :index, :affiliate=> affiliates(:power_affiliate).name, :query => "weather"
+      get :index,
+          params: {
+            affiliate: affiliates(:power_affiliate).name,
+            query: 'weather'
+          }
     end
 
     it "should render the template" do
@@ -313,16 +340,25 @@ describe SearchesController do
 
   context "when handling an invalid affiliate search request" do
     before do
-      get :index, :affiliate=>"doesnotexist.gov", :query => "weather"
+      get :index,
+          params: {
+            affiliate: 'doesnotexist.gov',
+            query: 'weather'
+          }
     end
 
-    it { is_expected.to redirect_to 'https://www.usa.gov/page-not-found' }
+    it { is_expected.to redirect_to 'https://www.usa.gov/search-error' }
   end
 
   context "when handling any affiliate search request with a JSON format" do
     render_views
     before do
-      get :index, :affiliate => affiliates(:power_affiliate).name, :query => "weather", :format => "json"
+      get :index,
+          params: {
+            affiliate: affiliates(:power_affiliate).name,
+            query: 'weather'
+          },
+          format: 'json'
     end
 
     it "should serialize the results into JSON" do
@@ -334,7 +370,7 @@ describe SearchesController do
 
   context "when a user is attempting to visit an old-style advanced search page" do
     before do
-      get :index, :form => "advanced-firstgov"
+      get :index, params: { form: 'advanced-firstgov' }
     end
 
     it "should redirect to the advanced search page" do
@@ -344,7 +380,11 @@ describe SearchesController do
 
   context "when a user is attempting to visit an old-style advanced search page for an affiliate" do
     before do
-      get :index, :form => 'advanced-firstgov', :affiliate => 'aff.gov'
+      get :index,
+          params: {
+            form: 'advanced-firstgov',
+            affiliate: 'aff.gov'
+          }
     end
 
     it "should redirect to the affiliate advanced search page" do
@@ -356,7 +396,12 @@ describe SearchesController do
   context "highlighting" do
     context "when a client requests results without highlighting" do
       before do
-        get :index, :query => "obama", :hl => "false", affiliate: 'usagov'
+        get :index,
+            params: {
+              query: 'obama',
+              hl: 'false',
+              affiliate: 'usagov'
+            }
       end
 
       it "should set the highlighting option to false" do
@@ -367,21 +412,30 @@ describe SearchesController do
 
     context "when a client requests result with highlighting" do
       before do
-        get :index, :query => "obama", :hl => "true", affiliate: 'usagov'
+        get :index,
+            params: {
+              query: 'obama',
+              hl: 'true',
+              affiliate: 'usagov'
+            }
       end
 
-      it "should set the highlighting option to true" do
+      it 'should set the highlighting option to true' do
         @search_options = assigns[:search_options]
         expect(@search_options[:enable_highlighting]).to be true
       end
     end
 
-    context "when a client does not specify highlighting" do
+    context 'when a client does not specify highlighting' do
       before do
-        get :index, :query => "obama", affiliate: 'usagov'
+        get :index,
+            params: {
+              query: 'obama',
+              affiliate: 'usagov'
+            }
       end
 
-      it "should set the highlighting option to true" do
+      it 'should set the highlighting option to true' do
         @search_options = assigns[:search_options]
         expect(@search_options[:enable_highlighting]).to be true
       end
@@ -394,8 +448,11 @@ describe SearchesController do
     before do
       expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
       expect(affiliate).to receive(:force_mobile_format?).and_return(true)
-      expect(request).to receive(:format=).with(:mobile)
-      get :index, query: 'gov', affiliate: affiliate.name, m: 'true'
+      get :index, params: { query: 'gov', affiliate: affiliate.name }
+    end
+
+    it 'requests the mobile format' do
+      expect(request.params['format']).to eq 'mobile'
     end
 
     it { is_expected.to render_template 'layouts/searches' }
@@ -403,7 +460,7 @@ describe SearchesController do
   end
 
   describe "#advanced" do
-    before { get :advanced, affiliate: 'usagov' }
+    before { get :advanced, params: { affiliate: 'usagov' } }
 
     it { is_expected.to assign_to(:page_title).with_kind_of(String) }
   end
@@ -424,7 +481,7 @@ describe SearchesController do
         allow(affiliate).to receive_message_chain(:document_collections, :find_by_id).and_return(dc)
         expect(SiteSearch).to receive(:new).with(hash_including(dc: '100', per_page: 20)).and_return(site_search)
         expect(site_search).to receive(:run)
-        get :docs, docs_params
+        get :docs, params: docs_params
       end
 
       it { is_expected.to assign_to(:affiliate).with(affiliate) }
@@ -450,7 +507,12 @@ describe SearchesController do
         it 'triggers an I14y search' do
           expect(I14ySearch).to receive(:new).and_return(i14y_search)
           expect(i14y_search).to receive(:run)
-          get :docs, :query => 'gov', :affiliate => affiliate.name, :dc => 100
+          get :docs,
+              params: {
+                query: 'gov',
+                affiliate: affiliate.name,
+                dc: 100
+              }
         end
       end
 
@@ -481,7 +543,13 @@ describe SearchesController do
         allow(affiliate).to receive_message_chain(:document_collections, :find_by_id).and_return(dc)
         expect(SiteSearch).to receive(:new).with(hash_including(:dc => '100')).and_return(site_search)
         expect(site_search).to receive(:run)
-        get :docs, :query => 'pdf', :affiliate => affiliate.name, :dc => 100, :page => 3
+        get :docs,
+            params: {
+              query: 'pdf',
+              affiliate: affiliate.name,
+              dc: 100,
+              page: 3
+            }
       end
 
       specify { expect(assigns[:search_options][:page]).to eq('3') }
@@ -496,7 +564,12 @@ describe SearchesController do
         expect(WebSearch).to receive(:new).with(hash_including(dc: '100', per_page: 20)).and_return(web_search)
         expect(web_search).to receive(:run)
         expect(SiteSearch).not_to receive(:new)
-        get :docs, :query => 'pdf', :affiliate => affiliate.name, :dc => 100
+        get :docs,
+            params: {
+              query: 'pdf',
+              affiliate: affiliate.name,
+              dc: 100
+            }
       end
 
       it { is_expected.to assign_to(:affiliate).with(affiliate) }
@@ -511,7 +584,12 @@ describe SearchesController do
         expect(WebSearch).to receive(:new).with(hash_including(query: 'pdf')).and_return(web_search)
         expect(web_search).to receive(:run)
         expect(SiteSearch).not_to receive(:new)
-        get :docs, query: 'pdf', affiliate: affiliate.name, dc: { 'foo' => 'bar' }
+        get :docs,
+            params: {
+              query: 'pdf',
+              affiliate: affiliate.name,
+              dc: { 'foo': 'bar' }
+            }
       end
 
       it { is_expected.to assign_to(:affiliate).with(affiliate) }
@@ -524,7 +602,7 @@ describe SearchesController do
       end
 
       it 'should redirect to the search-consumer display page' do
-        get :docs, docs_search_params
+        get :docs, params: docs_search_params
         expect(response).to redirect_to search_consumer_docs_search_url(docs_search_params)
       end
     end
@@ -538,7 +616,12 @@ describe SearchesController do
         affiliate.search_engine = 'SearchGov'
         expect(I14ySearch).to receive(:new).and_return(i14y_search)
         expect(i14y_search).to receive(:run)
-        get :docs, :query => 'gov', :affiliate => affiliate.name, :dc => 100
+        get :docs,
+            params: {
+              query: 'gov',
+              affiliate: affiliate.name,
+              dc: 100
+            }
       end
 
       it { is_expected.to render_template(:i14y) }
@@ -559,16 +642,31 @@ describe SearchesController do
       ElasticNewsItem.commit
     end
 
-    it "should assign page title, vertical, form_path, and search members" do
-      get :news, :query => "element", :affiliate => affiliate.name, :channel => rss_feeds(:white_house_blog).id, :tbs => "w", :page => "1", :per_page => "5"
+    it 'should assign page title, vertical, form_path, and search members' do
+      get :news,
+          params: {
+            query: 'element',
+            affiliate: affiliate.name,
+            channel: rss_feeds(:white_house_blog).id,
+            tbs: 'w',
+            page: '1',
+            per_page: '5'
+          }
       expect(assigns[:page_title]).to eq("element - #{affiliate.display_name} Search Results")
       expect(assigns[:search_vertical]).to eq(:news)
       expect(assigns[:form_path]).to eq(news_search_path)
       expect(assigns[:search]).to be_an_instance_of(NewsSearch)
     end
 
-    it "should find news items that match the query for the affiliate" do
-      get :news, :query => "element", :affiliate => affiliate.name, :channel => rss_feeds(:white_house_blog).id, :tbs => "w"
+    it 'finds news items that match the query for the affiliate' do
+      get :news,
+          params: {
+            query: 'element',
+            affiliate: affiliate.name,
+            channel: rss_feeds(:white_house_blog).id,
+            tbs: 'w'
+          }
+
       expect(assigns[:search].total).to eq(1)
       expect(assigns[:search].results.first).to eq(news_items(:item1))
       expect(assigns[:search].results.first.title).to eq("News \uE000element\uE001 1")
@@ -577,22 +675,43 @@ describe SearchesController do
       expect(assigns[:search].results.first.description).to eq("News \uE000element\uE001 1 has a description")
     end
 
-    context "when the affiliate does not exist" do
+    context 'when the affiliate does not exist' do
       before do
-        get :news, :query => "element", :affiliate => "donotexist", :channel => rss_feeds(:white_house_blog).id, :tbs => "w"
+        get :news,
+            params: {
+              query: 'element',
+              affiliate: 'donotexist',
+              channel: rss_feeds(:white_house_blog).id,
+              tbs: 'w'
+            }
       end
 
-      it { is_expected.to redirect_to 'https://www.usa.gov/page-not-found' }
+      it { is_expected.to redirect_to 'https://www.usa.gov/search-error' }
     end
 
-    context "when the query is blank and total is > 0" do
-      before { get :news, :query => "", :affiliate => affiliate.name, :channel => rss_feeds(:white_house_blog).id, :tbs => "w" }
+    context 'when the query is blank and total is > 0' do
+      before do
+        get :news,
+            params: {
+              query: '',
+              affiliate: affiliate.name,
+              channel: rss_feeds(:white_house_blog).id,
+              tbs: 'w'
+            }
+      end
+
       it { is_expected.to assign_to(:page_title).with('White House Blog - NPS Site Search Results') }
     end
 
     context "when handling an array parameter" do
       before do
-        get :news, {"affiliate"=>affiliate.name, "channel"=>rss_feeds(:white_house_blog).id, "m"=>"false", "query"=>["loren"]}
+        get :news,
+            params: {
+              'affiliate': affiliate.name,
+              'channel': rss_feeds(:white_house_blog).id,
+              'm': 'false',
+              'query': ['loren']
+            }
       end
 
       it "should render the template" do
@@ -616,14 +735,16 @@ describe SearchesController do
         expect(news_search).to receive(:run)
 
         get :news,
-            query: 'element',
-            affiliate: affiliate.name,
-            channel: rss_feeds(:white_house_blog).id,
-            tbs: 'w',
-            sort_by: 'r',
-            contributor: 'The President',
-            publisher: 'The White House',
-            subject: 'Economy'
+            params: {
+              query: 'element',
+              affiliate: affiliate.name,
+              channel: rss_feeds(:white_house_blog).id,
+              tbs: 'w',
+              sort_by: 'r',
+              contributor: 'The President',
+              publisher: 'The White House',
+              subject: 'Economy'
+            }
       end
 
       it { is_expected.to assign_to(:search_params).with(
@@ -657,7 +778,17 @@ describe SearchesController do
             and_return(news_search)
         expect(news_search).to receive(:run)
 
-        get :news, query: 'element', affiliate: affiliate.name, channel: channel_id, tbs: 'w', since_date: '10/1/2012', until_date: '10/15/2012'
+        get :news,
+            params: {
+              query: 'element',
+              affiliate: affiliate.name,
+              channel: channel_id,
+              tbs: 'w',
+              since_date:
+                '10/1/2012',
+              until_date:
+                '10/15/2012'
+            }
       end
 
       it { is_expected.to assign_to(:affiliate).with(affiliate) }
@@ -670,11 +801,17 @@ describe SearchesController do
                                      until_date: '10/15/2012')) }
     end
 
-    describe "rendering the view" do
+    describe 'rendering the view' do
       render_views
 
-      it "should render the template" do
-        get :news, :query => "element", :affiliate => affiliate.name, :channel => rss_feeds(:white_house_blog).id, :tbs => "w"
+      it 'should render the template' do
+        get :news,
+            params: {
+              query: 'element',
+              affiliate: affiliate.name,
+              channel: rss_feeds(:white_house_blog).id,
+              tbs: 'w'
+            }
         expect(response).to render_template 'news'
         expect(response).to render_template 'layouts/searches'
       end
@@ -687,7 +824,7 @@ describe SearchesController do
       end
 
       it 'should redirect to the search-consumer display page' do
-        get :news, news_search_params
+        get :news, params: news_search_params
         expect(response).to redirect_to search_consumer_news_search_url(news_search_params)
       end
     end
@@ -702,7 +839,12 @@ describe SearchesController do
       before do
         expect(VideoNewsSearch).to receive(:new).with(hash_including(per_page: 20)).and_return(video_news_search)
         expect(video_news_search).to receive(:run)
-        get :video_news, :query => "element", :affiliate => affiliate.name, :tbs => "w"
+        get :video_news,
+            params: {
+              query: 'element',
+              affiliate: affiliate.name,
+              tbs: 'w'
+            }
       end
 
       it { is_expected.to assign_to(:search).with(video_news_search) }
@@ -722,7 +864,13 @@ describe SearchesController do
         rss_feed = double('rss feed', :name => 'Videos')
         expect(video_news_search).to receive(:rss_feed).at_least(:once).and_return(rss_feed)
         expect(video_news_search).to receive(:total).and_return(1)
-        get :video_news, :query => "", :affiliate => affiliate.name, :channel => '100', :tbs => "w"
+        get :video_news,
+            params: {
+              query: '',
+              affiliate: affiliate.name,
+              channel: '100',
+              tbs: 'w'
+            }
       end
 
       it { is_expected.to assign_to(:page_title).with('Videos - NPS Site Search Results') }

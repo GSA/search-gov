@@ -5,17 +5,17 @@ Feature: Affiliate Search
 
   Scenario: Search with a blank query on an affiliate page
     Given the following Affiliates exist:
-      | display_name     | name             | contact_email         | contact_name        |
-      | bar site         | bar.gov          | aff@bar.gov           | John Bar            |
+      | display_name     | name             | contact_email         | first_name | last_name |
+      | bar site         | bar.gov          | aff@bar.gov           | John       | Bar       |
     When I am on bar.gov's search page
     And I press "Search"
     Then I should see "Please enter a search term in the box above."
 
-Scenario: Searching news items using time filters
+  Scenario: Searching news items using time filters
     Given the following Affiliates exist:
-      | display_name                 | name       | contact_email | contact_name | locale | youtube_handles |
-      | bar site                     | bar.gov    | aff@bar.gov   | John Bar     | en     | en_agency       |
-      | Spanish bar site             | es.bar.gov | aff@bar.gov   | John Bar     | es     | es_agency       |
+      | display_name                 | name       | contact_email | first_name | last_name | locale | youtube_handles |
+      | bar site                     | bar.gov    | aff@bar.gov   | John       | Bar       | en     | en_agency       |
+      | Spanish bar site             | es.bar.gov | aff@bar.gov   | John       | Bar       | es     | es_agency       |
     When I am on bar.gov's search page
     And I fill in "query" with "item"
     And I press "Search"

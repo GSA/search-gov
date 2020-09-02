@@ -1,4 +1,4 @@
-class SearchgovDomainIndexerJob < ActiveJob::Base
+class SearchgovDomainIndexerJob < ApplicationJob
   queue_as :searchgov
 
   def perform(searchgov_domain:, delay:)

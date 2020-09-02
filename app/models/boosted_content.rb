@@ -1,4 +1,6 @@
-class BoostedContent < ActiveRecord::Base
+# frozen_string_literal: true
+
+class BoostedContent < ApplicationRecord
   extend HumanAttributeName
   include BestBet
 
@@ -6,7 +8,8 @@ class BoostedContent < ActiveRecord::Base
   @@per_page = 20
 
   belongs_to :affiliate
-  has_many :boosted_content_keywords, -> { order 'value' }, dependent: :destroy
+  has_many :boosted_content_keywords, -> { order 'value' },
+           dependent: :destroy, inverse_of: :boosted_content
   accepts_nested_attributes_for :boosted_content_keywords, :allow_destroy => true, :reject_if => proc { |a| a['value'].blank? }
 
   before_validation do |record|

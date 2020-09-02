@@ -22,7 +22,10 @@ describe DocumentCollection do
 
   describe 'associations' do
     it { is_expected.to belong_to :affiliate }
-    it { is_expected.to have_many(:url_prefixes).dependent(:destroy) }
+    it do
+      is_expected.to have_many(:url_prefixes).
+        dependent(:destroy).inverse_of(:document_collection)
+    end
   end
 
   describe "Creating new instance" do

@@ -61,6 +61,8 @@ shared_examples 'a web document' do
     context 'when the language is missing' do
       let(:raw_document) { doc_without_language }
 
+      before { web_document.metadata.remove!('language') }
+
       it 'detects the language' do
         expect(language).to eq 'ar'
       end

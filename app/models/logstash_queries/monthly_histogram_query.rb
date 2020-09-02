@@ -28,8 +28,9 @@ class MonthlyHistogramQuery
   end
 
   def booleans(json)
-    json.must do
-      json.child! { json.term { json.affiliate @affiliate_name } }
+    must_affiliate(json, affiliate_name)
+    must_type(json, 'search')
+    json.filter do
       json.child! { since(json, @since) }
     end
     must_not_spider(json)

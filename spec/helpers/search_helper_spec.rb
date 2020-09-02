@@ -93,7 +93,7 @@ describe SearchHelper do
     before do
       @result = {'Url' => 'http://aHost.gov/aPath',
                  'title' => 'aTitle',
-                 'Thumbnail' => {'Url' => 'aThumbnailUrl', 'Width' => 40, 'Height' => 30},
+                 'Thumbnail' => {'Url' => 'thumbnail.png', 'Width' => 40, 'Height' => 30},
                  'MediaUrl' => 'aMediaUrl'}
       @query = "NASA's"
       @affiliate = double('affiliate', :name => 'special affiliate name')
@@ -140,7 +140,11 @@ describe SearchHelper do
 
   describe "#tracked_click_thumbnail_image_link" do
     before do
-      @result = { 'Url' => 'aUrl', 'title' => 'aTitle', 'Thumbnail' => { 'Url' => 'ThumbnailUrl', 'Width' => 40, 'Height' => 30 } }
+      @result = { 'Url' => 'aUrl', 'title' => 'aTitle', 'Thumbnail' => {
+        'Url' => 'thumbnail.png',
+        'Width' => 40,
+        'Height' => 30
+      } }
       @onmousedown_attr = "onmousedown_attribute"
     end
 
@@ -165,6 +169,7 @@ describe SearchHelper do
   end
 
   describe "#onmousedown_attribute_for_image_click" do
+    # TO REMOVE SRCH-1525
     it "should return with escaped query parameter and (index + 1) value" do
       now = Time.now.to_i
       content = helper.onmousedown_attribute_for_image_click("NASA's Space Rock", "url", 99, "affiliate name", "SOURCE", now, :image)
@@ -360,6 +365,7 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
   end
 
   describe '#display_web_result_title' do
+    # TO REMOVE SRCH-1525
     it 'should render search results module' do
       result = {'title' => 'USASearch', 'unescapedUrl' => 'http://search.gov'}
       search = double(Search, query: 'gov', module_tag: 'BOGUS_MODULE', spelling_suggestion: nil, queried_at_seconds: 1000)

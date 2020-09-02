@@ -3,13 +3,19 @@ require 'spec_helper'
 describe UsersController do
   fixtures :users
   let(:user_params) do
-    { contact_name: 'Barack', organization_name: 'White House', email: 'barack@whitehouse.gov', password: 'Michelle2016!' }
+    { first_name: 'Obama',
+      last_name: 'Barack',
+      organization_name: 'White House',
+      email: 'barack@whitehouse.gov' }
   end
 
-  let(:permitted_params) { %i(contact_name organization_name email password) }
+  let(:permitted_params) { %i[first_name last_name organization_name email] }
 
   describe '#create' do
-    it { is_expected.to permit(*permitted_params).for(:create, params: { user: user_params }) }
+    it do
+      is_expected.to permit(*permitted_params).
+        for(:create, params: { user: user_params })
+    end
 
     context 'when the User#save was successful and User has government affiliated email' do
       let(:user) do
@@ -21,7 +27,7 @@ describe UsersController do
       before do
         expect(User).to receive(:new).and_return(user)
         expect(user).to receive(:save).and_return(true)
-        post :create, user: user_params
+        post :create, params: { user: user_params }
       end
 
       it { is_expected.to assign_to(:user).with(user) }
@@ -39,7 +45,7 @@ describe UsersController do
       before do
         expect(User).to receive(:new).and_return(user)
         expect(user).to receive(:save).and_return(true)
-        post :create, user: user_params
+        post :create, params: { user: user_params }
       end
 
       it { is_expected.to assign_to(:user).with(user) }
@@ -57,7 +63,7 @@ describe UsersController do
       before do
         expect(User).to receive(:new).and_return(user)
         expect(user).to receive(:save).and_return(false)
-        post :create, user: user_params
+        post :create, params: { user: user_params }
       end
 
       it { is_expected.to assign_to(:user).with(user) }
@@ -70,7 +76,7 @@ describe UsersController do
       before { activate_authlogic }
       include_context 'approved user logged in'
 
-      before { get :show, id: current_user.id }
+      before { get :show, params: { id: current_user.id } }
 
       it { is_expected.to assign_to(:user).with(current_user) }
     end
@@ -81,42 +87,79 @@ describe UsersController do
       before { activate_authlogic }
       include_context 'approved user logged in'
 
-      before { get :edit, id: current_user.id }
+      before { get :edit, params: { id: current_user.id } }
 
       it { is_expected.to assign_to(:user).with(current_user) }
     end
   end
 
-  describe '#update' do
-    let(:update_user) do
-      post :update,
-           id: current_user.id,
-           user: update_params
+  describe '.update_account' do
+    let(:update_account) do
+      post :update_account,
+           params: { use_route: user_update_account_path(user_id: current_user.id),
+                     user: { 'first_name': 'BAR',
+                             'last_name': 'FOO',
+                             'email': 'foo@bar.com' } }
     end
 
     let(:update_params) do
-      { 'contact_name': 'BAR',
-        'email': 'changed@foo.com' }
+      { 'first_name': 'Foo', 'last_name': 'Bar', 'email': 'foo@bar.com' }
     end
 
     context 'when logged in as affiliate' do
       before { activate_authlogic }
       include_context 'approved user logged in'
 
-      it { is_expected.to permit(*permitted_params).for(:update, params: { user: update_params }) }
+      it do
+        is_expected.to permit(*permitted_params).
+          for(:update_account, verb: :post, params: { user_id: current_user.id, user: update_params })
+      end
 
-      context 'when changing the password' do
-        let(:update_params) do
-          { 'current_password': current_user.password,
-            'password': 'newpassword1234!' }
+      context 'when account is saved successfully' do
+        before do
+          expect(current_user).to receive(:save).
+            with(context: :update_account).and_return(true)
+
+          update_account
         end
 
-        it 'filters passwords in the logfile' do
-          allow(Rails.logger).to receive(:info)
-          expect(Rails.logger).to receive(:info).
-            with(/{\"current_password\"=>\"\[FILTERED\]\", \"password\"=>\"\[FILTERED\]\"}/)
-          update_user
+        it { is_expected.to assign_to(:user).with(current_user) }
+        it { is_expected.to redirect_to account_url }
+        it { is_expected.to set_flash.to('Account updated!') }
+      end
+
+      context 'when the is not saved successfully' do
+        before do
+          expect(current_user).to receive(:save).
+            with( context: :update_account ).and_return(false)
+
+          update_account 
         end
+
+        it { is_expected.to assign_to(:user).with(current_user) }
+        it { is_expected.to render_template(:edit) }
+      end
+    end
+  end
+
+  describe '#update' do
+    let(:update_user) do
+      post :update,
+           params: { id: current_user.id,
+                     user: update_params }
+    end
+
+    let(:update_params) do
+      { 'first_name': 'Foo', 'last_name': 'BAR', 'email': 'changed@foo.com' }
+    end
+
+    context 'when logged in as affiliate' do
+      before { activate_authlogic }
+      include_context 'approved user logged in'
+
+      it do
+        is_expected.to permit(*permitted_params).
+          for(:update, params: { user: update_params })
       end
 
       context 'when the User#update_attributes was successfully' do
@@ -153,23 +196,23 @@ describe UsersController do
       UserSession.create(@user)
     end
 
-    describe "do GET on show" do
-      it "should redirect the developer to the USA.gov developer page" do
-        get :show, :id => @user.id
+    describe 'do GET on show' do
+      it 'should redirect the developer to the USA.gov developer page' do
+        get :show, params: { id: @user.id }
         expect(response).to redirect_to(developer_redirect_url)
       end
     end
 
-    describe "do GET on edit" do
-      it "should redirect the developer to the USA.gov developer page" do
-        get :edit, :id => @user.id
+    describe 'do GET on edit' do
+      it 'should redirect the developer to the USA.gov developer page' do
+        get :edit, params: { id: @user.id }
         expect(response).to redirect_to(developer_redirect_url)
       end
     end
 
-    describe "do POST on update" do
-      it "should redirect the developer to the USA.gov developer page" do
-        post :update, :id => @user.id, :user => {:email => "changed@foo.com"}
+    describe 'do POST on update' do
+      it 'should redirect the developer to the USA.gov developer page' do
+        post :update, params: { id: @user.id, user: {email: 'changed@foo.com'} }
         expect(response).to redirect_to(developer_redirect_url)
       end
     end

@@ -1,4 +1,4 @@
-class RoutedQueryKeyword < ActiveRecord::Base
+class RoutedQueryKeyword < ApplicationRecord
   include Dupable
 
   before_validation do |record|
@@ -8,7 +8,7 @@ class RoutedQueryKeyword < ActiveRecord::Base
     record.keyword.downcase! if record.keyword.present?
   end
 
-  belongs_to :routed_query
+  belongs_to :routed_query, inverse_of: :routed_query_keywords
   validates :routed_query, presence: true
 
   validates_presence_of :keyword

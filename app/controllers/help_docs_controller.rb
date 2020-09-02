@@ -1,7 +1,7 @@
 class HelpDocsController < ApplicationController
   respond_to :json
-  before_filter :require_usasearch_url_param
-  before_filter :require_user
+  before_action :require_usasearch_url_param
+  before_action :require_user
 
   def show
     respond_with ({ body: HelpDoc.extract_article(help_docs_params[:url]) })
@@ -10,8 +10,8 @@ class HelpDocsController < ApplicationController
   private
 
   def require_usasearch_url_param
-    unless help_docs_params[:url] =~ %r[^https?://search\.gov/.+]i
-      redirect_to(Rails.application.secrets.organization['page_not_found_url'])
+    unless help_docs_params[:url] =~ %r{\Ahttps?://search\.gov/.+\z}i
+      redirect_to(Rails.application.secrets.organization[:page_not_found_url])
     end
   end
 

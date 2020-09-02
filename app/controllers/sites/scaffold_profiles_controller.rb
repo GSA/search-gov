@@ -52,7 +52,7 @@ module Sites::ScaffoldProfilesController
 
   def new_profile_with_not_found_error
     ar = profile_type_klass.new create_params
-    ar.errors[primary_attribute_name] = 'is not found'
+    ar.errors.add(primary_attribute_name, 'is not found')
     ar
   end
 
@@ -61,7 +61,7 @@ module Sites::ScaffoldProfilesController
   end
 
   def create_params
-    @create_params ||= params.require(profile_type).permit(primary_attribute_name)
+    @create_params ||= params.require(profile_type).permit(primary_attribute_name).to_h
   end
 
   def add_profile_to_site
@@ -73,7 +73,7 @@ module Sites::ScaffoldProfilesController
   end
 
   def destroy_params
-    params.permit(:id)
+    params.permit(:id).to_h
   end
 
   def after_profile_deleted

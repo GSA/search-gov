@@ -1,4 +1,4 @@
-class BoostedContentKeyword < ActiveRecord::Base
+class BoostedContentKeyword < ApplicationRecord
   include Dupable
 
   before_validation do |record|

@@ -302,7 +302,7 @@ describe WebSearch do
         expect(ElasticIndexedDocument.search_for(q:'indexed', affiliate_id: @non_affiliate.id, language: @non_affiliate.indexing_locale).total).to eq(15)
       end
 
-      it "should fill the results with the Odie docs" do
+      it 'fills the results with the Odie docs' do
         search = WebSearch.new(:query => 'no_results', :affiliate => @non_affiliate)
         search.run
         expect(search.total).to eq(15)

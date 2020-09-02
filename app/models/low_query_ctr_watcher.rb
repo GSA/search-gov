@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class LowQueryCtrWatcher < Watcher
   WATCHER_DEFAULTS = { search_click_total: 100, low_ctr_threshold: 15 }
   define_hash_columns_accessors column_name_method: :conditions,
@@ -10,24 +12,30 @@ class LowQueryCtrWatcher < Watcher
     "#{low_ctr_threshold}% CTR on #{number_with_delimiter search_click_total} Queries & Clicks"
   end
 
+  def label
+    'Low Query Click-Through Rate (CTR)'
+  end
+
+  private
+
   def input(json)
-    options = { affiliate_name: affiliate.name, time_window: time_window, min_doc_count: search_click_total.to_i,
+    options = { affiliate_name: affiliate.name,
+                time_window: time_window,
+                min_doc_count: search_click_total.to_i,
                 query_blocklist: query_blocklist }
     low_query_ctr_query_body = WatcherLowCtrQuery.new(options).body
-    input_search_request(json, search_type: :count, types: %w(search click),
-                         indices: watcher_indexes_from_window_size(time_window), body: JSON.parse(low_query_ctr_query_body))
+    input_search_request(json,
+                         indices: watcher_indexes_from_window_size(time_window),
+                         body: JSON.parse(low_query_ctr_query_body).merge(size: 0))
   end
 
   def condition_script
-    "ctx.payload.aggregations && ctx.payload.aggregations.agg.buckets.any({ it.ctr.value < #{low_ctr_threshold}})"
+    "ctx.payload.aggregations.agg.buckets.any(it -> it.ctr.value < #{low_ctr_threshold})"
   end
 
   def transform_script
-    "ctx.payload.aggregations.agg.buckets.findAll({ it.ctr.value < #{low_ctr_threshold}}).collect({ it.key }).join('\",\"')"
+    # rubocop:disable LineLength
+    "ctx.payload.aggregations.agg.buckets.findAll(it -> it.ctr.value < #{low_ctr_threshold}).collect(it -> it.key).join('\",\"')"
+    # rubocop:enable LineLength
   end
-
-  def label
-    "Low Query Click-Through Rate (CTR)"
-  end
-
 end

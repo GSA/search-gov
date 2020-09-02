@@ -9,7 +9,11 @@ class SaytSuggestionDiscovery
     def perform(affiliate_name, affiliate_id, day_int, limit)
       day = Date.strptime(day_int.to_s, "%Y%m%d")
       run_rate_factor = Date.current == day ? compute_run_rate_factor : 1.0
-      top_n_exists_query = TopNExistsQuery.new(affiliate_name, field: 'raw', min_doc_count: MIN_DOC_COUNT, size: limit)
+      top_n_exists_query = TopNExistsQuery.new(affiliate_name,
+                                               'search',
+                                               field: 'params.query.raw',
+                                               min_doc_count: MIN_DOC_COUNT,
+                                               size: limit)
       rtu_top_human_queries = RtuTopQueries.new(top_n_exists_query.body, true, day)
       query_counts = rtu_top_human_queries.top_n
       filtered_query_counts = SaytFilter.filter(query_counts, 0)

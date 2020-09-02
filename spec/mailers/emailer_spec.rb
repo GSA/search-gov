@@ -1,9 +1,41 @@
 require 'spec_helper'
 
 describe Emailer do
+context do
   include EmailSpec::Helpers
   include EmailSpec::Matchers
   fixtures :affiliates, :users, :features, :memberships
+
+  describe '.account_deactivation_warning' do
+    let(:user) { users(:not_active_76_days) }
+    let(:expected_date) { 14.days.from_now.strftime("%m/%d/%Y") }
+    let(:message) do
+      "at least once every 90 days to remain active. Please log in before #{expected_date}"
+    end
+
+    subject(:account_deactivation_warning) do
+      Emailer.account_deactivation_warning(user, 76.days.ago.to_date)
+    end
+
+    it { is_expected.to deliver_to(user.email) }
+    it { is_expected.to have_body_text message }
+    it { is_expected.to have_body_text user.first_name }
+    it { is_expected.to have_body_text user.last_name }
+  end
+
+  describe '#account_deactivated' do
+    let(:user) { users(:not_active_user) }
+    let(:message) do
+      'our system had to deactivate access to your search.gov account'
+    end
+
+    subject(:deactivate_email) { Emailer.account_deactivated(user) }
+
+    it { is_expected.to deliver_to(user.email) }
+    it { is_expected.to have_body_text message }
+    it { is_expected.to have_body_text user.first_name }
+    it { is_expected.to have_body_text user.last_name }
+  end
 
   describe '#user_approval_removed' do
     let(:user) { users(:another_affiliate_manager) }
@@ -12,7 +44,8 @@ describe Emailer do
 
     it { is_expected.to deliver_to("usagov@search.gov") }
     it { is_expected.to have_body_text "The following user is no longer associated with any sites" }
-    it { is_expected.to have_body_text user.contact_name }
+    it { is_expected.to have_body_text user.first_name }
+    it { is_expected.to have_body_text user.last_name }
     it { is_expected.to have_body_text user.email }
     it { is_expected.to have_body_text user.organization_name }
   end
@@ -71,42 +104,34 @@ describe Emailer do
     end
   end
 
-  describe "#user_email_verification" do
-    let(:user) { mock_model(User, :email => 'admin@agency.gov', :contact_name => 'Admin', :email_verification_token => 'some_special_token') }
-
-    subject { Emailer.user_email_verification(user).deliver }
-
-    it { should deliver_to('admin@agency.gov') }
-    it { should have_subject(/Verify your email/) }
-    it { should have_body_text(/https:\/\/localhost:3000\/email_verification\/some_special_token/) }
-  end
-
   describe "#new_user_to_admin" do
     context "affiliate user has .com email address" do
       let(:user) do
         double(User,
-             :email => 'not.gov.user@agency.com',
-             :contact_name => 'Contractor Joe',
-             :affiliates => [],
-             :organization_name => 'Agency',
-             :requires_manual_approval? => true)
+               email: 'not.gov.user@agency.com',
+               first_name: 'Contractor Joe',
+               last_name: 'Shmoe',
+               affiliates: [],
+               organization_name: 'Agency',
+               requires_manual_approval?: true)
       end
 
       subject { Emailer.new_user_to_admin(user) }
 
       it { is_expected.to deliver_to('usagov@search.gov') }
       it { is_expected.to have_subject(/New user sign up/) }
-      it { is_expected.to have_body_text(/Name: Contractor Joe\nEmail: not.gov.user@agency.com\nOrganization name: Agency\n\n\n    This person doesn't have a .gov or .mil email address/) }
+      it { is_expected.to have_body_text(/Name: Contractor Joe Shmoe\nEmail: not.gov.user@agency.com\nOrganization name: Agency\n\n\n    This person doesn't have a .gov or .mil email address/) }
     end
 
     context "affiliate user has .gov email address" do
       let(:user) do
         double(User,
-             :email => 'not.com.user@agency.gov',
-             :contact_name => 'Gov Employee Joe',
-             :affiliates => [],
-             :organization_name => 'Gov Agency',
-             :requires_manual_approval? => false)
+               email: 'not.com.user@agency.gov',
+               first_name: 'Gov Employee Joe',
+               last_name: 'Shmoe',
+               affiliates: [],
+               organization_name: 'Gov Agency',
+               requires_manual_approval?: false)
       end
 
       subject { Emailer.new_user_to_admin(user) }
@@ -116,8 +141,8 @@ describe Emailer do
       it { is_expected.not_to have_body_text /This user signed up as an affiliate/ }
     end
 
-    context "user got invited by another customer" do
-      let(:user) { users(:affiliate_added_by_another_affiliate_with_pending_email_verification_status) }
+    context 'user got invited by another customer' do
+      let(:user) { users(:affiliate_added_by_another_affiliate) }
 
       before do
         user.affiliates << affiliates(:gobiernousa_affiliate)
@@ -130,18 +155,18 @@ describe Emailer do
       subject { Emailer.new_user_to_admin(user) }
 
       it { is_expected.to deliver_to('usagov@search.gov') }
-      it { is_expected.to have_body_text /Name: Invited Affiliate Manager\nEmail: affiliate_added_by_another_affiliate@fixtures.org\nOrganization name: Agency\n\n\n    Affiliate Manager added this person to 'Noaa Site'. He'll be approved after verifying his email./ }
+      it { is_expected.to have_body_text /Name: Invited Affiliate Manager Smith\nEmail: affiliate_added_by_another_affiliate@fixtures.org\nOrganization name: Agency\n\n\n    Affiliate Manager Smith added this person to 'Noaa Site'. They will be approved after verifying their email./ }
     end
 
     context "user didn't get invited by another customer (and thus has no affiliates either)" do
       let(:user) do
         double(User,
-             :email => 'not.com.user@agency.gov',
-             :contact_name => 'Gov Employee Joe',
-             :organization_name => 'Gov Agency',
-             :affiliates => [],
-             :requires_manual_approval? => false)
-
+               email: 'not.com.user@agency.gov',
+               first_name: 'Gov Employee Joe',
+               last_name: 'Shmoe',
+               organization_name: 'Gov Agency',
+               affiliates: [],
+               requires_manual_approval?: false)
       end
 
       subject { Emailer.new_user_to_admin(user) }
@@ -154,19 +179,22 @@ describe Emailer do
   describe "#welcome_to_new_user_added_by_affiliate" do
     let(:user) do
       mock_model(User,
-           :email => "invitee@agency.com",
-           :contact_name => 'Invitee Joe',
-           :email_verification_token => 'some_special_token')
+                 email: 'invitee@agency.com',
+                 first_name: 'Invitee Joe',
+                 last_name: 'shmoe')
     end
 
-    let(:current_user) { mock_model(User, :email => "inviter@agency.com", :contact_name => 'Inviter Jane') }
+    let(:current_user) { mock_model(User, 
+                                    email: "inviter@agency.com", 
+                                    first_name: 'Inviter Jane',
+                                    last_name: 'Doe') }
     let(:affiliate) { affiliates(:basic_affiliate) }
 
     subject { Emailer.welcome_to_new_user_added_by_affiliate(affiliate, user, current_user) }
 
     it { should deliver_to("invitee@agency.com") }
     it { should have_subject(/\[Search.gov\] Welcome to Search.gov/) }
-    it { should have_body_text(/https:\/\/localhost:3000\/complete_registration\/some_special_token\/edit/) }
+    it { should have_body_text(/https:\/\/localhost:3000\/sites/) }
   end
 
   describe '#daily_snapshot' do
@@ -188,7 +216,7 @@ describe Emailer do
     it { is_expected.to have_subject(/Today's Snapshot for #{membership.affiliate.name} on #{Date.yesterday}/) }
 
     it "should contain the daily shapshot tables for yesterday" do
-      body = Sanitize.clean(email.default_part_body.to_s).squish
+      body = Sanitizer.sanitize(email.default_part_body)
       expect(body).to include('Top Queries')
       expect(body).to include('Search Term Total Queries (Bots + Humans) Real Queries')
       expect(body).to include('1. query1 100 80')
@@ -243,7 +271,7 @@ describe Emailer do
     it { is_expected.to have_subject(/April 2012/) }
 
     it "should show per-affiliate and total stats for the month" do
-      body = Sanitize.clean(email.default_part_body.to_s).squish
+      body = Sanitizer.sanitize(email.default_part_body)
       expect(body).to include('102 100 33.33% -33.33% 100')
       expect(body).to include('50 40 12.00% -9.00% 35')
       expect(body).to include('0 0 0.00% 0.00% 0')
@@ -278,7 +306,7 @@ describe Emailer do
     it { is_expected.to have_subject(/2012 Year in Review/) }
 
     it "show stats for the year" do
-      body = Sanitize.clean(email.default_part_body.to_s).squish
+      body = Sanitizer.sanitize(email.default_part_body)
       expect(body).to include('Most Popular Queries for 2012')
       expect(body).to include('NPEspanol Site Not enough historic data to compute most popular')
       expect(body).to include('query5 54 53')
@@ -295,7 +323,7 @@ describe Emailer do
     subject(:email) { Emailer.update_external_tracking_code(affiliate, current_user, tracking_code) }
 
     it { is_expected.to deliver_from(Emailer::NOTIFICATION_SENDER_EMAIL_ADDRESS) }
-    it { is_expected.to deliver_to(Rails.application.secrets.organization['support_email_address']) }
+    it { is_expected.to deliver_to(Rails.application.secrets.organization[:support_email_address]) }
     it { is_expected.not_to reply_to(Emailer::REPLY_TO_EMAIL_ADDRESS) }
     it { is_expected.to have_body_text tracking_code }
   end
@@ -312,7 +340,14 @@ describe Emailer do
   end
 
   context "when a template is missing" do
-    let(:user) { double(User, :email => "invitee@agency.com", :contact_name => 'Invitee Joe', :email_verification_token => 'some_special_token', affiliates: []) }
+    let(:user) do
+      double(User,
+             email: 'invitee@agency.com',
+             first_name: 'Invitee Joe',
+             last_name: 'Shmoe',
+             affiliates: [])
+    end
+
     let(:report_date) { Date.today }
 
     before { EmailTemplate.destroy_all }
@@ -325,4 +360,5 @@ describe Emailer do
 
     after { EmailTemplate.load_default_templates }
   end
+end
 end

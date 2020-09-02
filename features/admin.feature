@@ -13,8 +13,11 @@ Feature:  Administration
     When I follow "Super Admin" in the main navigation bar
     Then I should be on the admin home page
 
-    When I follow "Sign Out"
-    Then I should be on the login page
+    # SRCH-1552
+    # Commented out until we figure out how to get login.gov out of
+    # the loop during testing.
+    # When I follow "Sign Out"
+    # Then I should be on the login page
 
   Scenario: Visiting the admin home page as an admin who is also an affiliate
     Given "affiliate_admin@fixtures.org" is an affiliate
@@ -24,8 +27,8 @@ Feature:  Administration
 
   Scenario: Visiting the affiliate admin page as an admin
     Given the following Affiliates exist:
-      | display_name | name       | contact_email | contact_name | website                |
-      | agency site  | agency.gov | one@foo.gov   | One Foo      | http://beta.agency.gov |
+      | display_name | name       | contact_email | first_name | last_name | website                |
+      | agency site  | agency.gov | one@foo.gov   | One        | Foo       | http://beta.agency.gov |
     And the following "site domains" exist for the affiliate agency.gov:
       | domain               | site_name      |
       | www1.agency-site.gov | Agency Website |
@@ -49,8 +52,8 @@ Feature:  Administration
   @javascript
   Scenario: Editing an affiliate as an admin
     Given the following Affiliates exist:
-      | display_name | name       | contact_email | contact_name | website                |
-      | agency site  | agency.gov | one@foo.gov   | One Foo      | http://beta.agency.gov |
+      | display_name | name       | contact_email | first_name | last_name | website                |
+      | agency site  | agency.gov | one@foo.gov   | One        | Foo       | http://beta.agency.gov |
     When I go to the admin sites page
     When I follow "Edit" within the first scaffold row
     Then I should see "Settings (Show)"
@@ -80,8 +83,8 @@ Feature:  Administration
 
   Scenario: Viewing Boosted Content (both affiliate and Search.USA.gov)
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name |
-      | bar site     | bar.gov | aff@bar.gov   | John Bar     |
+      | display_name | name    | contact_email | first_name | last_name |
+      | bar site     | bar.gov | aff@bar.gov   | John       | Bar       |
     And the following Boosted Content entries exist for the affiliate "bar.gov"
       | title              | url                    | description                        | keywords |
       | Bar Emergency Page | http://www.bar.gov/911 | This should not show up in results | safety   |
@@ -95,9 +98,9 @@ Feature:  Administration
 
   Scenario: Comparing Search Results
     Given the following Affiliates exist:
-      | display_name  | name     | contact_email | contact_name |
-      | agency site   | aff.gov  | one@foo.gov   | One Foo      |
-      | agency site 2 | aff2.gov | two@foo.gov   | Two Foo      |
+      | display_name  | name     | contact_email | first_name   | last_name |
+      | agency site   | aff.gov  | one@foo.gov   | One          | Foo       |
+      | agency site 2 | aff2.gov | two@foo.gov   | Two          | Foo       |
     And the following "site domains" exist for the affiliate aff.gov:
       | domain               | site_name      |
       | aff.gov              | Agency Website |
@@ -253,6 +256,10 @@ Feature:  Administration
     And I fill in "Domain" with "www.state.gov"
     And I press "Create"
     Then I should see "www.state.gov has been created"
+
+    When I follow "Reindex" within the first scaffold row and confirm "Are you sure you want to reindex this domain?"
+    And I wait for ajax
+    Then I should see "Reindexing has been enqueued for www.state.gov"
 
   @javascript
   Scenario: Adding a system alert

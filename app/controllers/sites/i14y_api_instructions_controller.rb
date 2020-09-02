@@ -1,5 +1,5 @@
 class Sites::I14yApiInstructionsController < Sites::SetupSiteController
-  before_filter :require_i14y_drawers
+  before_action :require_i14y_drawers
 
   def show
   end

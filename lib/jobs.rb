@@ -5,10 +5,10 @@ module Jobs
   JOB_RELATED_KEYWORDS = '((position|opening|posting|job|employment|career|' \
                          'intern(ship)?|seasonal|trabajo|puesto|empleo|' \
                          'carrera|vacante+?)(s\b|\b)|(opportunit|vacanc)' \
-                         '(y|ies))|(posicion|ocupacion|oportunidad|federal)' \
-                         '(es)?|gobierno'
+                         '(y|ies))|(posicion|ocupacion|oportunidad)' \
+                         '(es)?'
   SCRUB_KEYWORDS = JOB_RELATED_KEYWORDS.
-                     remove(/\|intern\(ship\)|\|seasonal|\|federal\||gobierno/)
+                     remove(/\|intern\(ship\)|\|seasonal/)
   SIMPLE_SINGULARS = %w[
     statistic number level rate description trend growth
     projection survey forecast figure report verification record
@@ -27,15 +27,15 @@ module Jobs
 
   def self.establish_connection!
     usajobs_api_config = Rails.application.secrets.jobs
-    @endpoint = usajobs_api_config['endpoint']
-    @usajobs_api_connection = Faraday.new(usajobs_api_config['host']) do |conn|
-      conn.headers['Authorization-Key'] = usajobs_api_config['authorization_key']
-      conn.headers['User-Agent'] = usajobs_api_config['user_agent']
+    @endpoint = usajobs_api_config[:endpoint]
+    @usajobs_api_connection = Faraday.new(usajobs_api_config[:host]) do |conn|
+      conn.headers['Authorization-Key'] = usajobs_api_config[:authorization_key]
+      conn.headers['User-Agent'] = usajobs_api_config[:user_agent]
       conn.request(:json)
       conn.response(:mrashify)
       conn.response(:json)
       conn.use(:instrumentation)
-      conn.adapter(usajobs_api_config['adapter'] || Faraday.default_adapter)
+      conn.adapter(usajobs_api_config[:adapter] || Faraday.default_adapter)
     end
   end
 

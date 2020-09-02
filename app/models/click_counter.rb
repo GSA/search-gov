@@ -21,11 +21,13 @@ class ClickCounter
 
   def statistically_significant_clicks
     query = DateRangeTopNFieldQuery.new(nil,
+                                        'click',
                                         1.month.ago,
                                         Time.current,
                                         'click_domain',
                                         domain,
-                                        field: 'params.url', size: 0)
+                                        field: 'params.url',
+                                        size: 100_000)
 
     RtuTopClicks.new(query.body, true).
       top_n_to_percentage(SIGNIFICANT_PERCENTAGE)

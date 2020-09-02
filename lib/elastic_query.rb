@@ -1,11 +1,12 @@
-class ElasticQuery
+# frozen_string_literal: true
 
-  DEFAULT_SIZE = 10.freeze
-  MAX_SIZE = 100.freeze
-  DEFAULT_PRE_TAGS = %w(<strong>).freeze
-  DEFAULT_POST_TAGS = %w(</strong>).freeze
+class ElasticQuery
+  DEFAULT_SIZE = 10
+  MAX_SIZE = 100
+  DEFAULT_PRE_TAGS = %w[<strong>].freeze
+  DEFAULT_POST_TAGS = %w[</strong>].freeze
   attr_reader :offset, :size, :sort
-  attr_accessor :highlighted_fields
+  attr_accessor :text_fields, :language
 
   def initialize(options)
     options.reverse_merge!(size: DEFAULT_SIZE)
@@ -13,6 +14,7 @@ class ElasticQuery
     @size = [options[:size].to_i, MAX_SIZE].min
     @q = options[:q]
     @highlighting = !(options[:highlighting] == false)
+    @language = options[:language]
     @text_analyzer = "#{options[:language]}_analyzer"
     @sort = options[:sort]
     @pre_tags = options[:pre_tags]
@@ -38,11 +40,14 @@ class ElasticQuery
   end
 
   def highlight(json)
+    return if highlighted_fields.blank?
+
     json.highlight do
+      json.type 'fvh'
       json.pre_tags pre_tags
       json.post_tags post_tags
       highlight_fields(json)
-    end if self.highlighted_fields.present?
+    end
   end
 
   def pre_tags
@@ -69,4 +74,7 @@ class ElasticQuery
     end
   end
 
+  def highlighted_fields
+    @highlighted_fields ||= text_fields.map { |field| "#{field}.#{language}" }
+  end
 end

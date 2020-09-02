@@ -4,6 +4,13 @@ require 'spec_helper'
 describe ElasticFeaturedCollection do
   fixtures :affiliates
   let(:affiliate) { affiliates(:basic_affiliate) }
+  let(:search_params) do
+    {
+      q: 'Tropical',
+      affiliate_id: affiliate.id,
+      language: affiliate.indexing_locale
+    }
+  end
 
   before do
     ElasticFeaturedCollection.recreate_index
@@ -49,7 +56,7 @@ describe ElasticFeaturedCollection do
     end
   end
 
-  describe "highlighting results" do
+  describe 'highlighting results' do
     before do
       featured_collection = affiliate.featured_collections.build(title: 'Tropical Hurricane Names',
                                                                  status: 'active',
@@ -88,10 +95,10 @@ describe ElasticFeaturedCollection do
       end
 
       it 'should escape the entity but show the highlight' do
-        search = ElasticFeaturedCollection.search_for(q: 'carrot', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
+        search = ElasticFeaturedCollection.search_for(search_params.merge(q: 'carrots'))
         first = search.results.first
         expect(first.title).to eq("Peas &amp; <strong>Carrots</strong>")
-        search = ElasticFeaturedCollection.search_for(q: 'entity', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
+        search = ElasticFeaturedCollection.search_for(search_params.merge(q: 'entities'))
         first = search.results.first
         expect(first.title).to eq("Peas &amp; Carrots")
       end
@@ -192,7 +199,7 @@ describe ElasticFeaturedCollection do
     end
   end
 
-  describe "recall" do
+  describe 'recall' do
     let(:valid_fc_params) do
       {
         title: 'Obamå',

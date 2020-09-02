@@ -125,6 +125,7 @@ module SearchHelper
   end
 
   def onmousedown_for_tweet_click_attribute(query, url, zero_based_index, affiliate_name, source, queried_at, vertical)
+    # TO REMOVE SRCH-1525
     tracked_url = url ? "'#{URI.escape(url)}'" : 'this.href'
     "return clk('#{h query}', #{tracked_url}, #{zero_based_index + 1}, '#{affiliate_name}', '#{source}', #{queried_at}, '#{vertical}', '#{I18n.locale.to_s}')"
   end
@@ -134,10 +135,12 @@ module SearchHelper
   end
 
   def onmousedown_for_click_attribute(query, zero_based_index, affiliate_name, source, queried_at, vertical, model_id)
+    # TO REMOVE SRCH-1525
     "return clk('#{h query}',this.href, #{zero_based_index + 1}, '#{affiliate_name}', '#{source}', #{queried_at}, '#{vertical}', '#{I18n.locale.to_s}', '#{model_id}')"
   end
 
   def onmousedown_attribute_for_image_click(query, media_url, zero_based_index, affiliate_name, source, queried_at, vertical)
+    # TO REMOVE SRCH-1525
     "return clk('#{h(escape_javascript(query))}', '#{media_url}', #{zero_based_index + 1}, '#{affiliate_name}', '#{source}', #{queried_at}, '#{vertical}', '#{I18n.locale.to_s}')"
   end
 
@@ -208,7 +211,7 @@ module SearchHelper
     return if search.matching_site_limits.nil? or search.matching_site_limits.empty?
     html = "We're including results for '#{h search.query}' from only #{h search.matching_site_limits.join(' ')}. "
     html << "Do you want to see results for "
-    html << link_to("'#{h search.query}' from all sites", search_path(params.except(:sitelimit)))
+    html << link_to("'#{h search.query}' from all sites", search_path(params.except(:sitelimit).permit))
     html << "?"
     raw content_tag(:h4, html.html_safe, :class => 'search-all-sites-suggestion')
   end
@@ -243,7 +246,7 @@ module SearchHelper
       alt = I18n.t(:results_by_usasearch)
       image_source = "searches/results_by_usasearch_#{I18n.locale.to_s}.png"
       link_to(image_tag(image_source, :alt => alt),
-                        Rails.application.secrets.organization['blog_url'],
+                        Rails.application.secrets.organization[:blog_url],
                         :class => 'results-by-logo usasearch')
     end
   end

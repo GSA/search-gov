@@ -2,8 +2,8 @@ class Sites::WatchersController < Sites::SetupSiteController
   include ::Hintable
   WATCHER_TYPES = [NoResultsWatcher, LowQueryCtrWatcher]
   COMMON_DEFAULTS = { throttle_period: '1d', check_interval: '30m', time_window: '12h' }
-  before_filter :setup_watcher, only: [:edit, :update, :destroy]
-  before_filter :load_hints, only: %i(new edit)
+  before_action :setup_watcher, only: [:edit, :update, :destroy]
+  before_action :load_hints, only: %i(new edit)
 
   def index
     @watchers = @site.watchers.where(user_id: current_user.id)

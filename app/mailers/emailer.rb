@@ -1,23 +1,23 @@
-class Emailer < ActionMailer::Base
+# frozen_string_literal: true
+
+class Emailer < ApplicationMailer
   include ActionView::Helpers::TextHelper
-  default_url_options[:host] = Rails.application.secrets.organization['app_host']
+  default_url_options[:host] = Rails.application.secrets.organization[:app_host]
   default_url_options[:protocol] = 'https'
-  ADMIN_EMAIL_ADDRESS = Rails.application.secrets.organization['admin_email_address']
-  DELIVER_FROM_EMAIL_ADDRESS = 'no-reply@support.digitalgov.gov'.freeze
-  REPLY_TO_EMAIL_ADDRESS = Rails.application.secrets.organization['support_email_address']
-  NOTIFICATION_SENDER_EMAIL_ADDRESS = 'notification@support.digitalgov.gov'.freeze
-
-  self.default from: DELIVER_FROM_EMAIL_ADDRESS,
-               reply_to: REPLY_TO_EMAIL_ADDRESS
-
-  def password_reset_instructions(user)
-    @password_reset_url = edit_password_reset_url(user.perishable_token)
-    generic_user_html_email(user, __method__)
-  end
+  ADMIN_EMAIL_ADDRESS = Rails.application.secrets.organization[:admin_email_address]
+  DELIVER_FROM_EMAIL_ADDRESS = 'no-reply@support.digitalgov.gov'
+  REPLY_TO_EMAIL_ADDRESS = Rails.application.secrets.organization[:support_email_address]
+  NOTIFICATION_SENDER_EMAIL_ADDRESS = 'notification@support.digitalgov.gov'
 
   def new_user_to_admin(user)
     @user = user
-    setup_email("usagov@search.gov", __method__)
+    @user_contact_name = get_contact_name(user)
+
+    if @user.affiliates.any?
+      @user_inviter_contact_name = get_contact_name(@user.inviter)
+    end
+
+    setup_email('usagov@search.gov', __method__)
     send_mail(:text)
   end
 
@@ -30,33 +30,42 @@ class Emailer < ActionMailer::Base
     end
   end
 
-  def user_email_verification(user)
-    @email_verification_url = email_verification_url(user.email_verification_token)
-    @user_contact_name = user.contact_name
-    @user_email = user.email
+  def account_deactivation_warning(user, date)
+    @user = user
+    days_remaining = (date - 90.days.ago.to_date).to_i
+    @deactivation_date = days_remaining.days.from_now.strftime('%m/%d/%Y')
+    @user_contact_name = get_contact_name(user)
     generic_user_html_email(user, __method__)
   end
 
   def user_approval_removed(user)
     @user = user
+    @user_contact_name = get_contact_name(user)
     setup_email("usagov@search.gov", __method__)
     send_mail(:text)
   end
 
+  def account_deactivated(user)
+    @user = user
+    @user_contact_name = get_contact_name(user)
+    generic_user_html_email(user, __method__)
+  end
+
   def welcome_to_new_user(user)
     @new_site_url = new_site_url
-    @user_contact_name = user.contact_name
+    @user_contact_name = get_contact_name(user)
     generic_user_html_email(user, __method__)
   end
 
   def new_affiliate_site(affiliate, user)
     @affiliate = affiliate
+    @user_contact_name = get_contact_name(user)
     generic_user_text_email(user, __method__)
   end
 
   def new_affiliate_user(affiliate, user, current_user)
-    @added_by_contact_name = current_user.contact_name
-    @added_user_contact_name = user.contact_name
+    @added_by_contact_name = get_contact_name(current_user)
+    @added_user_contact_name = get_contact_name(user)
     @affiliate_display_name = affiliate.display_name
     @affiliate_name = affiliate.name
     @affiliate_site_url = site_url(affiliate)
@@ -66,12 +75,12 @@ class Emailer < ActionMailer::Base
 
   def welcome_to_new_user_added_by_affiliate(affiliate, user, current_user)
     @account_url = account_url
-    @added_by_contact_name = current_user.contact_name
-    @added_user_contact_name = user.contact_name
+    @added_by_contact_name = get_contact_name(current_user)
+    @added_user_contact_name = get_contact_name(user)
     @added_user_email = user.email
     @affiliate_display_name = affiliate.display_name
     @affiliate_site_url = site_url(affiliate)
-    @complete_registration_url = edit_complete_registration_url(user.email_verification_token)
+    @complete_registration_url = site_url(affiliate)
     @website = affiliate.website
     generic_user_html_email(user, __method__)
   end
@@ -117,7 +126,7 @@ class Emailer < ActionMailer::Base
     @external_tracking_code = external_tracking_code
     setup_email({
       from: NOTIFICATION_SENDER_EMAIL_ADDRESS,
-      to: Rails.application.secrets.organization['support_email_address']
+      to: Rails.application.secrets.organization[:support_email_address]
     }, __method__)
     send_mail(:text)
   end
@@ -176,7 +185,7 @@ class Emailer < ActionMailer::Base
     end
 
     mail email_headers do |format|
-      format.send(format_method) { render :text => ERB.new(@email_template_body).result(binding) }
+      format.send(format_method) { ERB.new(@email_template_body).result(binding) }
     end
   end
 
@@ -190,5 +199,10 @@ class Emailer < ActionMailer::Base
     @user = user
     setup_email(user.email, method)
     send_mail(:html)
+  end
+
+  def get_contact_name(user)
+    full_name = "#{user.first_name} #{user.last_name}"
+    full_name.presence || user.email
   end
 end

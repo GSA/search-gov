@@ -1,5 +1,7 @@
 # Common configuration.
 
+require: rubocop-rspec
+
 AllCops:
   RubyInterpreters:
     - ruby
@@ -2150,7 +2152,10 @@ Performance/StringReplacement:
 Performance/TimesMap:
   Description: 'Checks for .times.map calls.'
   AutoCorrect: false
-  Enabled: true
+  # Disabling. Using `Array.new` with a block is marginally more performant, but
+  # `n.times.map` is much more readable. The former can be used when n is large.
+  # https://stackoverflow.com/questions/41518896/why-does-rubocop-suggest-replacing-times-map-with-array-new
+  Enabled: false
   VersionAdded: 0.36
   VersionChanged: 0.50
   SafeAutoCorrect: false # see https://github.com/rubocop-hq/rubocop/issues/4658
@@ -2517,6 +2522,8 @@ Rails/SkipsModelValidations:
                  Use methods that skips model validations with caution.
                  See reference for more information.
   Reference: 'https://guides.rubyonrails.org/active_record_validations.html#skipping-validations'
+  # We are leaving this cop enabled as a warning.
+  # Failures can be approved as needed during code review.
   Enabled: true
   VersionAdded: 0.47
   VersionChanged: 0.59
@@ -2785,7 +2792,9 @@ Style/BlockDelimiters:
 
 Style/BracesAroundHashParameters:
   Description: 'Enforce braces style around hash parameters.'
-  Enabled: true
+  # Disabling per https://github.com/rubocop-hq/rubocop/issues/7641.
+  # This cop will be removed from Rubocop 0.80.
+  Enabled: false
   VersionAdded: 0.14.1
   VersionChanged: 0.28
   EnforcedStyle: no_braces
@@ -3007,7 +3016,7 @@ Style/Dir:
 
 Style/Documentation:
   Description: 'Document classes and non-namespace modules.'
-  Enabled: true
+  Enabled: false
   VersionAdded: 0.9
   Exclude:
     - 'spec/**/*'
@@ -3334,6 +3343,15 @@ Style/LambdaCall:
   SupportedStyles:
     - call
     - braces
+  Exclude:
+    # Exclude files relying on Jbuilder DSL
+    # https://github.com/rubocop-hq/rubocop/issues/3402
+    - 'app/models/elastic_data/*'
+    - 'app/models/custom_index_queries/*'
+    - 'app/models/logstash_queries/*'
+    - 'app/models/watcher.rb'
+    - 'lib/analytics_dsl.rb'
+    - 'lib/watcher_dsl.rb'
 
 Style/LineEndConcatenation:
   Description: >-
@@ -3345,15 +3363,22 @@ Style/LineEndConcatenation:
 Style/MethodCallWithArgsParentheses:
   Description: 'Use parentheses for method calls with arguments.'
   StyleGuide: '#method-invocation-parens'
-  Enabled: true
+  Enabled: false
   VersionAdded: 0.47
   VersionChanged: 0.48
   IgnoreMacros: true
-  IgnoredMethods: []
+  IgnoredMethods: ['require']
   Exclude:
     - 'spec/**/*'
     - 'Gemfile'
     - 'db/**/*'
+    # Exclude files relying on Jbuilder DSL
+    - 'app/models/elastic_data/*'
+    - 'app/models/custom_index_queries/*'
+    - 'app/models/logstash_queries/*'
+    - 'app/models/watcher.rb'
+    - 'lib/analytics_dsl.rb'
+    - 'lib/watcher_dsl.rb'
 
 Style/MethodCallWithoutArgsParentheses:
   Description: 'Do not use parentheses for method calls with no arguments.'
@@ -3859,7 +3884,7 @@ Style/RescueModifier:
 
 Style/RescueStandardError:
   Description: 'Avoid rescuing without specifying an error class.'
-  Enabled: true
+  Enabled: false
   VersionAdded: 0.52
   EnforcedStyle: explicit
   # implicit: Do not include the error class, `rescue`
@@ -4297,3 +4322,4 @@ Style/ZeroLengthPredicate:
   VersionAdded: 0.37
   VersionChanged: 0.39
 
+#################### RSpec ###############################

@@ -5,10 +5,25 @@ describe RtuDateRange do
 
   shared_context 'when dates are available' do
     let(:json_response) do
-      JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/rtu_date_range.json"))
+      JSON.parse(
+        read_fixture_file('/json/rtu_dashboard/rtu_date_range.json')
+      )
+    end
+    let(:search_opts) do
+      {
+        index: 'logstash-*',
+        body: 'query_body',
+        size: 0
+      }
     end
 
-    before { allow(ES::ELK.client_reader).to receive(:search).and_return json_response }
+    before do
+      allow(RtuDateRangeQuery).to receive(:new).
+        with('some affiliate', 'search or click type here').
+        and_return(instance_double(RtuDateRangeQuery, body: 'query_body'))
+      allow(ES::ELK.client_reader).to receive(:search).
+        with(search_opts).and_return json_response
+    end
   end
 
 
@@ -22,7 +37,9 @@ describe RtuDateRange do
     end
 
     context "when no dates are available" do
-      let(:json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/rtu_date_range_infinity.json")) }
+      let(:json_response) do
+        JSON.parse(read_fixture_file('/json/rtu_dashboard/rtu_date_range_no_stats.json'))
+      end
 
       before do
         allow(ES::ELK.client_reader).to receive(:search).and_return json_response

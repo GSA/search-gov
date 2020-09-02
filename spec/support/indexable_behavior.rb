@@ -9,8 +9,8 @@ shared_examples "an indexable" do
   end
 
   context 'when there are multiple clusters' do
-    let(:es1) { Elasticsearch::Client.new(host: 'localhost') }
-    let(:es2) { Elasticsearch::Client.new(host: '127.0.0.1') }
+    let(:es1) { Elasticsearch::Client.new(host: 'localhost:9278') }
+    let(:es2) { Elasticsearch::Client.new(host: 'localhost:9268') }
 
     before do
       allow(ES::CustomIndices).to receive(:client_writers).and_return [es1, es2]

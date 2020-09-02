@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Sites::ClickDrilldownsController < Sites::SetupSiteController
   include CSVResponsive
   HEADER_FIELDS = ['Date', 'Time', 'Query', 'Position', 'Request', 'Referrer', 'Vertical', 'Modules', 'Device', 'Browser', 'OS', 'Country Code', 'Region', 'Client IP', 'User Agent']
@@ -7,8 +9,14 @@ class Sites::ClickDrilldownsController < Sites::SetupSiteController
     end_date = request["end_date"].to_date
     start_date = request["start_date"].to_date
     filename = [@site.name, url.first(50), start_date, end_date].join('_')
-    drilldown_query = DrilldownQuery.new(@site.name, start_date, end_date, 'url', url)
-    request_drilldown = RequestDrilldown.new(@current_user.sees_filtered_totals?, 'click', drilldown_query.body)
+    drilldown_query = DrilldownQuery.new(@site.name,
+                                         start_date,
+                                         end_date,
+                                         'params.url',
+                                         url,
+                                         'click')
+    request_drilldown = RequestDrilldown.new(@current_user.sees_filtered_totals?,
+                                             drilldown_query.body)
     requests = request_drilldown.docs.map { |doc| document_mapping(doc) }
     csv_response(filename, HEADER_FIELDS, requests)
   end
@@ -35,5 +43,4 @@ class Sites::ClickDrilldownsController < Sites::SetupSiteController
     record << doc['user_agent']
     record
   end
-
 end

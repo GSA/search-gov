@@ -1,4 +1,4 @@
-class ImageSearchLabel < ActiveRecord::Base
+class ImageSearchLabel < ApplicationRecord
   belongs_to :affiliate
   has_one :navigation, :as => :navigable, :dependent => :destroy
 

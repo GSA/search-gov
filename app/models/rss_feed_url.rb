@@ -1,11 +1,11 @@
-class RssFeedUrl < ActiveRecord::Base
+class RssFeedUrl < ApplicationRecord
   OK_STATUS = 'OK'
   PENDING_STATUS = 'Pending'
   STATUSES = [OK_STATUS, PENDING_STATUS]
 
   attr_readonly :rss_feed_owner_type
   has_and_belongs_to_many :rss_feeds, join_table: :rss_feed_urls_rss_feeds
-  has_many :news_items, -> { order 'published_at DESC' }
+  has_many :news_items, -> { order 'published_at DESC' }, inverse_of: :rss_feed_url
   before_destroy :blocking_destroy_news_items
 
   before_validation NormalizeUrl.new(:url), on: :create

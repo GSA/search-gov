@@ -7,75 +7,71 @@
   "input": {
     "search": {
       "request": {
-        "search_type": "count",
-        "types": [
-          "search",
-          "click"
-        ],
         "indices": [
-          "<human-logstash-{now/d}>",
-          "<human-logstash-{now/d-1d}>",
-          "<human-logstash-{now/d-2d}>",
-          "<human-logstash-{now/d-3d}>",
-          "<human-logstash-{now/d-4d}>",
-          "<human-logstash-{now/d-5d}>",
-          "<human-logstash-{now/d-6d}>",
-          "<human-logstash-{now/d-7d}>",
-          "<human-logstash-{now/d-8d}>"
+          "<human-logstash-{now/d{YYYY.MM.dd}}>",
+          "<human-logstash-{now/d-1d{YYYY.MM.dd}}>",
+          "<human-logstash-{now/d-2d{YYYY.MM.dd}}>",
+          "<human-logstash-{now/d-3d{YYYY.MM.dd}}>",
+          "<human-logstash-{now/d-4d{YYYY.MM.dd}}>",
+          "<human-logstash-{now/d-5d{YYYY.MM.dd}}>",
+          "<human-logstash-{now/d-6d{YYYY.MM.dd}}>",
+          "<human-logstash-{now/d-7d{YYYY.MM.dd}}>",
+          "<human-logstash-{now/d-8d{YYYY.MM.dd}}>"
         ],
         "body": {
           "query": {
-            "filtered": {
-              "filter": {
-                "bool": {
-                  "must": [
-                    {
-                      "term": {
-                        "affiliate": "nps.gov"
-                      }
-                    },
-                    {
-                      "exists": {
-                        "field": "modules"
-                      }
-                    },
-                    {
-                      "range": {
-                        "@timestamp": {
-                          "gte": "{{ctx.trigger.scheduled_time}}||-1w",
-                          "lte": "{{ctx.trigger.scheduled_time}}"
-                        }
-                      }
+            "bool": {
+              "filter": [
+                {
+                  "term": {
+                    "params.affiliate": "nps.gov"
+                  }
+                },
+                {
+                  "terms": {
+                    "type": ["search","click"]
+                  }
+                },
+                {
+                  "exists": {
+                    "field": "modules"
+                  }
+                },
+                {
+                  "range": {
+                    "@timestamp": {
+                      "gte": "{{ctx.trigger.scheduled_time}}||-1w",
+                      "lte": "{{ctx.trigger.scheduled_time}}"
                     }
-                  ],
-                  "must_not": [
-                    {
-                      "term": {
-                        "useragent.device": "Spider"
-                      }
-                    },
-                    {
-                      "term": {
-                        "raw": ""
-                      }
-                    },
-                    {
-                      "term": {
-                        "modules": "QRTD"
-                      }
-                    },
-                    {
-                      "terms": {
-                        "raw": [
-                          "foo",
-                          "bar",
-                          "another one"
-                        ]
-                      }
-                    }
-                  ]
+                  }
                 }
-              }
+              ],
+              "must_not": [
+                {
+                  "term": {
+                    "useragent.device": "Spider"
+                  }
+                },
+                {
+                  "term": {
+                    "params.query.raw": ""
+                  }
+                },
+                {
+                  "term": {
+                    "modules": "QRTD"
+                  }
+                },
+                {
+                  "terms": {
+                    "params.query.raw": [
+                      "foo",
+                      "bar",
+                      "another one"
+                    ]
+                  }
+                }
+              ]
             }
           },
           "aggs": {
@@ -83,29 +79,42 @@
               "terms": {
                 "min_doc_count": 101,
                 "size": 100000,
-                "field": "raw"
+                "field": "params.query.raw"
               },
               "aggs": {
                 "ctr": {
                   "scripted_metric": {
-                    "init_script": "_agg['click'] = _agg['search'] = 0",
-                    "map_script": "_agg[doc['type'].value] += 1",
-                    "reduce_script": "clicks = searches = 0; for (agg in _aggs) {  clicks += agg.click ; searches += agg.search ;}; float ctr = searches == 0 ? 0 : 100 * clicks / searches; ctr"
+                    "init_script": {
+                      "source": "params._agg['click'] = params._agg['search'] = 0"
+                    },
+                    "map_script": {
+                      "source": "params._agg[doc['type'].value] += 1"
+                    },
+                    "reduce_script": {
+                      "source": "int clicks = 0;\nint searches = 0;\nfor (agg in params._aggs){\n  clicks += agg.click ;\n  searches += agg.search\n}\ndouble ctr = searches == 0 ? 0 : 100.0 * clicks / searches; ctr"
+                    }
                   }
                 }
               }
             }
-          }
+          },
+          "size": 0
         }
       }
     }
   },
   "condition": {
-    "script": "ctx.payload.aggregations && ctx.payload.aggregations.agg.buckets.any({ it.ctr.value < 15.5})"
+    "script": {
+      "source": "ctx.payload.aggregations.agg.buckets.any(it -> it.ctr.value < 15.5)",
+      "lang": "painless"
+    }
   },
   "throttle_period": "24h",
   "transform": {
-    "script": "ctx.payload.aggregations.agg.buckets.findAll({ it.ctr.value < 15.5}).collect({ it.key }).join('\",\"')"
+    "script": {
+      "source": "ctx.payload.aggregations.agg.buckets.findAll(it -> it.ctr.value < 15.5).collect(it -> it.key).join('\",\"')",
+      "lang": "painless"
+    }
   },
   "actions": {
     "analytics_alert": {
@@ -127,7 +136,8 @@
     "alert_name": "low CTR",
     "user_email": "affiliate_manager@fixtures.org",
     "user_id": 667152013,
-    "user_contact_name": "Affiliate Manager",
+    "user_first_name": "Affiliate Manager",
+    "user_last_name": "Smith",
     "watcher_type": "LowQueryCtrWatcher"
   }
 }

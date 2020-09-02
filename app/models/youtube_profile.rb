@@ -1,8 +1,11 @@
-class YoutubeProfile < ActiveRecord::Base
+class YoutubeProfile < ApplicationRecord
   attr_writer :url
   has_one :rss_feed, as: :owner, dependent: :destroy
   has_and_belongs_to_many :affiliates
-  has_many :youtube_playlists, -> { order [:updated_at, :id] }, dependent: :destroy
+  has_many :youtube_playlists,
+           -> { order [:updated_at, :id] },
+           dependent: :destroy,
+           inverse_of: :youtube_profile
 
   validates_presence_of :channel_id, :title
   validates_uniqueness_of :channel_id,
@@ -10,7 +13,7 @@ class YoutubeProfile < ActiveRecord::Base
 
   after_create :create_video_rss_feed
 
-  scope :active, -> { joins(:affiliates).uniq }
+  scope :active, -> { joins(:affiliates).distinct }
   scope :stale, -> { where('imported_at IS NULL or imported_at <= ?', Time.current - 1.hour).order(:imported_at) }
 
   def url

@@ -1,12 +1,25 @@
-class MedTopic < ActiveRecord::Base
+# frozen_string_literal: true
+
+class MedTopic < ApplicationRecord
   MAX_MED_TOPIC_SUMMARY_LENGTH = 200
   MEDLINE_BASE_URL = 'https://medlineplus.gov/'
   MEDLINE_BASE_VOCAB_URL = "#{MEDLINE_BASE_URL}xml/"
 
   validates_presence_of :medline_tid, :medline_title, :locale
-  has_many :synonyms, :class_name => 'MedSynonym', :foreign_key => :topic_id, :dependent => :destroy
-  has_many :med_related_topics, -> { order 'title' }, dependent: :destroy
-  has_many :med_sites, -> { order 'title' }, dependent: :destroy
+  has_many :synonyms,
+           class_name: 'MedSynonym',
+           foreign_key: :topic_id,
+           dependent: :destroy,
+           inverse_of: :topic
+
+  has_many :med_related_topics,
+           -> { order 'title' },
+           dependent: :destroy,
+           inverse_of: :med_topic
+
+  has_many :med_sites, -> { order 'title' },
+           dependent: :destroy,
+           inverse_of: :med_topic
 
   def self.download_medline_xml(date)
     xml_file_name = medline_xml_file_name(date)
@@ -60,7 +73,7 @@ class MedTopic < ActiveRecord::Base
           updated_topic_ids << topic.id
         end
         obsolete_topic_ids = existing_topic_ids - updated_topic_ids
-        MedTopic.destroy_all(:id => obsolete_topic_ids)
+        MedTopic.where(id: obsolete_topic_ids).destroy_all
       end
     end
   end
@@ -137,8 +150,8 @@ class MedTopic < ActiveRecord::Base
   end
 
   def truncated_summary
-    sentences = Sanitize.clean(summary_html).gsub(/[[:space:]]/, ' ').squish.split(/\.\s*/)
-    summary = ''
+    sentences = Sanitizer.sanitize(summary_html).gsub(/[[:space:]]/, ' ').split(/\.\s*/)
+    summary = +''
 
     sentences.slice(0,3).each do |sentence|
       break if (summary.length + sentence.length + 1) > MAX_MED_TOPIC_SUMMARY_LENGTH

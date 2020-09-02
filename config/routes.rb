@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  concern :active_scaffold_association, ActiveScaffold::Routing::Association.new
+  concern :active_scaffold, ActiveScaffold::Routing::Basic.new(association: true)
   get '/search' => 'searches#index', as: :search
   get '/api/search' => 'api#search', as: :api_search
   get '/search/advanced' => 'searches#advanced', as: :advanced_search
@@ -7,6 +9,7 @@ Rails.application.routes.draw do
   get '/search/docs' => 'searches#docs', as: :docs_search
   get '/search/news' => 'searches#news', as: :news_search
   get '/search/news/videos' => 'searches#video_news', as: :video_news_search
+  get '/auth/logindotgov/callback', to: 'omniauth_callbacks#login_dot_gov'
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
@@ -32,21 +35,23 @@ Rails.application.routes.draw do
   get '/sayt' => 'sayt#index'
   get '/clicked' => 'clicked#index'
   get '/healthcheck' => 'health_checks#new'
-  get '/login' => 'user_sessions#new', as: :login
-  get '/signup' => 'users#new', as: :signup
+  get '/login' => 'user_sessions#security_notification', as: :login
+  get '/signup' => 'user_sessions#security_notification', as: :signup
   get '/status/outbound_rate_limit' => 'statuses#outbound_rate_limit', defaults: { format: :text }
   get '/dcv/:affiliate.txt' => 'statuses#domain_control_validation',
     defaults: { format: :text },
     constraints: { affiliate: /.*/, format: :text }
-  root to: redirect('/login')
 
-  resource :account, :controller => "users"
-  resources :users
+  root to: 'user_sessions#security_notification'
+
+  resource :account, controller: "users"
+
+  resources :users do
+    post 'update_account' => 'users#update_account'
+  end
+
   resource :user_session
-  resource :human_session, :only => [:new, :create]
-  resources :password_resets
-  resources :email_verification, :only => :show
-  resources :complete_registration, :only => [:edit, :update]
+  resource :human_session, only: [:new, :create]
 
   scope module: 'sites' do
     resources :sites do
@@ -165,83 +170,80 @@ Rails.application.routes.draw do
   get '/affiliates/:id/:some_action', to: redirect('/sites/%{id}')
 
   namespace :admin do
-    resources :affiliates do as_routes end
-    resources :affiliate_notes do as_routes end
-    resources :affiliate_templates do as_routes end
-    resources :users do as_routes end
-    resources :sayt_filters do as_routes end
-    resources :sayt_suggestions do as_routes end
-    resources :misspellings do as_routes end
-    resources :affiliate_boosted_contents do as_routes end
-    resources :document_collections do as_routes end
-    resources :url_prefixes do as_routes end
-    resources :catalog_prefixes do as_routes end
-    resources :site_feed_urls do as_routes end
-    resources :superfresh_urls do as_routes end
-    resources :superfresh_urls_bulk_upload, :only => :index do
+    resources :affiliates, concerns: :active_scaffold
+    resources :affiliate_notes, concerns: :active_scaffold
+    resources :affiliate_templates, concerns: :active_scaffold
+    resources :users, concerns: :active_scaffold
+    resources :sayt_filters, concerns: :active_scaffold
+    resources :sayt_suggestions, concerns: :active_scaffold
+    resources :misspellings, concerns: :active_scaffold
+    resources :affiliate_boosted_contents, concerns: :active_scaffold
+    resources :document_collections, concerns: :active_scaffold
+    resources :url_prefixes, concerns: :active_scaffold
+    resources :catalog_prefixes, concerns: :active_scaffold
+    resources :site_feed_urls, concerns: :active_scaffold
+    resources :superfresh_urls, concerns: :active_scaffold
+    resources :superfresh_urls_bulk_upload, only: :index do
       collection do
         post :upload
       end
     end
-    resources :agencies do as_routes end
-    resources :agency_queries do as_routes end
-    resources :agency_organization_codes do as_routes end
-    resources :federal_register_agencies do
+    resources :agencies, concerns: :active_scaffold
+    resources :agency_queries, concerns: :active_scaffold
+    resources :agency_organization_codes, concerns: :active_scaffold
+    resources :federal_register_agencies, concerns: :active_scaffold do
       collection { get 'reimport' }
-      as_routes
     end
-    resources :federal_register_documents do as_routes end
-    resources :outbound_rate_limits do as_routes end
-    resources :search_modules do as_routes end
-    resources :excluded_domains do as_routes end
-    resources :affiliate_scopes do as_routes end
-    resources :site_domains do as_routes end
-    resources :features do as_routes end
-    resources :affiliate_feature_additions do as_routes end
-    resources :help_links do as_routes end
-    resources :compare_search_results, :only => :index
-    resources :bing_urls do as_routes end
-    resources :statuses do as_routes end
-    resources :system_alerts do as_routes end
-    resources :tags do as_routes end
-    resources :trending_urls, :only => :index
-    resources :news_items do as_routes end
-    resources :suggestion_blocks do as_routes end
-    resources :rss_feeds do as_routes end
-    resources :rss_feed_urls do
+    resources :federal_register_documents, concerns: :active_scaffold
+    resources :outbound_rate_limits, concerns: :active_scaffold
+    resources :search_modules, concerns: :active_scaffold
+    resources :excluded_domains, concerns: :active_scaffold
+    resources :affiliate_scopes, concerns: :active_scaffold
+    resources :site_domains, concerns: :active_scaffold
+    resources :features, concerns: :active_scaffold
+    resources :affiliate_feature_additions, concerns: :active_scaffold
+    resources :help_links, concerns: :active_scaffold
+    resources :compare_search_results, only: :index
+    resources :bing_urls, concerns: :active_scaffold
+    resources :statuses, concerns: :active_scaffold
+    resources :system_alerts, concerns: :active_scaffold
+    resources :tags, concerns: :active_scaffold
+    resources :trending_urls, only: :index
+    resources :news_items, concerns: :active_scaffold
+    resources :suggestion_blocks, concerns: :active_scaffold
+    resources :rss_feeds, concerns: :active_scaffold
+    resources :rss_feed_urls, concerns: :active_scaffold do
       member do
         get 'destroy_news_items'
         get 'news_items'
       end
-      as_routes
     end
     resource :search_module_ctrs, only: [:show]
     resource :site_ctrs, only: [:show]
     resource :query_ctrs, only: [:show]
-    resources :whitelisted_v1_api_handles do as_routes end
-    resources :hints do
+    resources :whitelisted_v1_api_handles, concerns: :active_scaffold
+    resources :hints, concerns: :active_scaffold do
       collection { get 'reload_hints' }
-      as_routes
     end
-    resources :i14y_drawers do as_routes end
-    resources :languages do as_routes end
-    resources :routed_queries do as_routes end
-    resources :routed_query_keywords do as_routes end
-    resources :watchers do as_routes end
-    resources :searchgov_domains do
-      resources :searchgov_urls do
+    resources :i14y_drawers, concerns: :active_scaffold
+    resources :languages, concerns: :active_scaffold
+    resources :routed_queries, concerns: :active_scaffold
+    resources :routed_query_keywords, concerns: :active_scaffold
+    resources :watchers, concerns: :active_scaffold
+    resources :searchgov_domains, concerns: :active_scaffold do
+      member do
+        post 'reindex'
+      end
+      resources :searchgov_urls, concerns: :active_scaffold do
         member do
           post 'fetch'
         end
-        as_routes
       end
-      resources :sitemaps do
+      resources :sitemaps, concerns: :active_scaffold do
         member do
           post 'fetch'
         end
-        as_routes
       end
-      as_routes
     end
   end
 
@@ -253,9 +255,15 @@ Rails.application.routes.draw do
   get '/superfresh/:feed_id' => 'superfresh#index', :as => :superfresh_feed
 
   get '/user/developer_redirect' => 'users#developer_redirect', :as => :developer_redirect
-  get '/program' => redirect(Rails.application.secrets.organization['blog_url'], :status => 302)
+  get '/program' => redirect(
+    Rails.application.secrets.organization[:blog_url],
+    status: 302
+  )
 
-  get "*path" => redirect(Rails.application.secrets.organization['page_not_found_url'], status: 302)
+  get "*path" => redirect(
+    Rails.application.secrets.organization[:page_not_found_url],
+    status: 302
+  )
 
   get "/c/search" => 'dev#null', :as => :search_consumer_search
   get "/c/admin/:site_name" => 'dev#null', :as => :search_consumer_admin

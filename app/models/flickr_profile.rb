@@ -1,4 +1,4 @@
-class FlickrProfile < ActiveRecord::Base
+class FlickrProfile < ApplicationRecord
   include Dupable
   include FlickrDsl
 
@@ -27,7 +27,7 @@ class FlickrProfile < ActiveRecord::Base
                           if: Proc.new { |fp| fp.affiliate_id? && fp.profile_type? && fp.profile_id? }
 
   after_create :notify_oasis,
-               unless: 'skip_notify_oasis'
+               unless: -> { skip_notify_oasis }
   scope :users, -> { where(profile_type: 'user') }
   scope :groups, -> { where(profile_type: 'group') }
 

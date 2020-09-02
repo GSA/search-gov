@@ -12,7 +12,11 @@ describe RtuModuleStatsAnalytics do
       let(:os_json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/overall_sparkline.json")) }
 
       before do
-        expect(ES::ELK.client_reader).to receive(:search).with(hash_including(type: %w(search click))).and_return(mb_json_response, ms_json_response, os_json_response, mb_json_response)
+        expect(ES::ELK.client_reader).to receive(:search).
+          and_return(mb_json_response,
+                     ms_json_response,
+                     os_json_response,
+                     mb_json_response)
       end
 
       it "should return collection of structures including all verticals/affiliates, grouped by module, summed over the date range, ordered by descending impression count that respond to display_name, impressions, clicks, clickthru_ratio, average_clickthru_ratio, and historical_ctr" do

@@ -1,4 +1,6 @@
-class Watcher < ActiveRecord::Base
+# frozen_string_literal: true
+
+class Watcher < ApplicationRecord
   extend HashColumnsAccessible
   include ActionView::Helpers::NumberHelper
   include LogstashPrefix
@@ -28,6 +30,8 @@ class Watcher < ActiveRecord::Base
       metadata(json)
     end
   end
+
+  private
 
   def metadata(json)
     json.metadata do
@@ -63,13 +67,19 @@ class Watcher < ActiveRecord::Base
 
   def condition(json)
     json.condition do
-      json.script condition_script
+      json.script do
+        json.source condition_script
+        json.lang 'painless'
+      end
     end
   end
 
   def transform(json)
     json.transform do
-      json.script transform_script
+      json.script do
+        json.source transform_script
+        json.lang 'painless'
+      end
     end
   end
 
@@ -92,16 +102,14 @@ class Watcher < ActiveRecord::Base
   end
 
   def metadata_hash
-    {
-      affiliate: affiliate.name,
+    { affiliate: affiliate.name,
       affiliate_id: affiliate.id,
       affiliate_homepage_url: affiliate.website,
       alert_name: name,
       user_email: user.email,
       user_id: user.id,
-      user_contact_name: user.contact_name,
-      watcher_type: self.class.name
-    }
+      user_first_name: user.first_name,
+      user_last_name: user.last_name,
+      watcher_type: self.class.name }
   end
-
 end

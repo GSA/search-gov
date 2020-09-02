@@ -1,4 +1,4 @@
-class FeaturedCollection < ActiveRecord::Base
+class FeaturedCollection < ApplicationRecord
   extend HumanAttributeName
   include BestBet
 
@@ -11,8 +11,9 @@ class FeaturedCollection < ActiveRecord::Base
   validates_presence_of :title, :publish_start_on
 
   belongs_to :affiliate
-  has_many :featured_collection_keywords, :dependent => :destroy
-  has_many :featured_collection_links, -> { order 'position ASC' }, :dependent => :destroy
+  has_many :featured_collection_keywords, dependent: :destroy
+  has_many :featured_collection_links, -> { order 'position ASC' },
+           dependent: :destroy, inverse_of: :featured_collection
 
   has_attached_file :image,
                     styles: { medium: "125x125", small: "100x100" },
@@ -20,9 +21,9 @@ class FeaturedCollection < ActiveRecord::Base
                     path: "#{Rails.env}/featured_collection/:id/image/:updated_at/:style/:filename",
                     s3_credentials: Rails.application.secrets.aws_image_bucket,
                     url: ':s3_alias_url',
-                    s3_host_alias: Rails.application.secrets.aws_image_bucket['s3_host_alias'],
+                    s3_host_alias: Rails.application.secrets.aws_image_bucket[:s3_host_alias],
                     s3_protocol: 'https',
-                    s3_region: Rails.application.secrets.aws_image_bucket['s3_region']
+                    s3_region: Rails.application.secrets.aws_image_bucket[:s3_region]
 
   validates_attachment_size :image,
                             in: (1..MAXIMUM_IMAGE_SIZE_IN_KB.kilobytes),

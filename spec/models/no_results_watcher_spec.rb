@@ -1,9 +1,25 @@
 require 'spec_helper'
 
 describe NoResultsWatcher do
-  fixtures :affiliates, :users, :memberships
   let(:affiliate) { affiliates(:basic_affiliate) }
   let(:user) { affiliate.users.first }
+  let(:watcher_args) do
+    {
+      distinct_user_total: 34,
+      affiliate_id: affiliate.id,
+      user_id: user.id,
+      time_window: '1w',
+      query_blocklist: "foo, bar, another one",
+      check_interval: '1m',
+      throttle_period: '24h',
+      name: "no rez"
+    }
+  end
+  let(:expected_body) do
+    JSON.parse(read_fixture_file('/json/watcher/no_results_watcher_body.json')).to_json
+  end
+
+  subject(:watcher) { NoResultsWatcher.new(watcher_args) }
 
   it { is_expected.to validate_numericality_of(:distinct_user_total).only_integer }
 
@@ -14,15 +30,11 @@ describe NoResultsWatcher do
     end
   end
 
-  describe "body" do
-    let(:json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/watcher/no_results_watcher_body.json")).to_json }
+  describe '#label' do
+    subject(:label) { watcher.label }
 
-    subject(:watcher) { described_class.new(distinct_user_total: 34, affiliate_id: affiliate.id, user_id: user.id,
-                                            time_window: '1w', query_blocklist: "foo, bar, another one",
-                                            check_interval: '1m', throttle_period: '24h', name: "no rez") }
-
-    it "returns a JSON structure representing an Elasticsearch Watcher body" do
-      expect(watcher.body).to eq(json_response)
-    end
+    it { is_expected.to eq('No Results') }
   end
+
+  it_behaves_like 'a watcher'
 end

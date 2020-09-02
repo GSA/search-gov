@@ -1,10 +1,88 @@
 require 'spec_helper'
 
-describe ModuleBreakdownQuery, "#body" do
+describe ModuleBreakdownQuery do
   let(:query) { ModuleBreakdownQuery.new('affiliate_name') }
+  let(:expected_body) do
+    {
+      "query": {
+        "bool": {
+          "filter": [
+            {
+              "term": {
+                "params.affiliate": "affiliate_name"
+              }
+            },
+            {
+              "terms": {
+                "type": ["search","click"]
+              }
+            }
+          ],
+          "must_not": {
+            "term": {
+              "useragent.device": "Spider"
+            }
+          }
+        }
+      },
+      "aggs": {
+        "agg": {
+          "terms": {
+            "field": "modules",
+            "size": 100
+          },
+          "aggs": {
+            "type": {
+              "terms": {
+                "field": "type"
+              }
+            }
+          }
+        }
+      }
+    }.to_json
+  end
 
-  subject(:body) { query.body }
+  it_behaves_like 'a logstash query'
 
-  it { is_expected.to eq(%q({"query":{"filtered":{"filter":{"bool":{"must":{"term":{"affiliate":"affiliate_name"}},"must_not":{"term":{"useragent.device":"Spider"}}}}}},"aggs":{"agg":{"terms":{"field":"modules","size":0},"aggs":{"type":{"terms":{"field":"type"}}}}}}))}
+  context 'when the affiliate_name is missing' do
+    let(:query) { ModuleBreakdownQuery.new }
+    let(:expected_body) do
+      {
+        "query": {
+          "bool": {
+            "filter": [
+              {
+                "terms": {
+                  "type": ["search","click"]
+                }
+              }
+            ],
+            "must_not": {
+              "term": {
+                "useragent.device": "Spider"
+              }
+            }
+          }
+        },
+        "aggs": {
+          "agg": {
+            "terms": {
+              "field": "modules",
+              "size": 100
+            },
+            "aggs": {
+              "type": {
+                "terms": {
+                  "field": "type"
+                }
+              }
+            }
+          }
+        }
+      }.to_json
+    end
 
+    it_behaves_like 'a logstash query'
+  end
 end

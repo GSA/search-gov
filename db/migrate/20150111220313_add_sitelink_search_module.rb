@@ -4,6 +4,6 @@ class AddSitelinkSearchModule < ActiveRecord::Migration
   end
 
   def down
-    SearchModule.delete_all("tag = 'DECOR'")
+    SearchModule.where("tag = 'DECOR'").delete_all
   end
 end

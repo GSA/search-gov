@@ -1,5 +1,5 @@
 # coding: utf-8
-class Misspelling < ActiveRecord::Base
+class Misspelling < ApplicationRecord
   LETTERS_WITH_DIACRITIC = "áéíóúÁÉÍÓÚüÜñÑ¿¡"
   before_validation :squish_whitespace_and_downcase
 

@@ -4,6 +4,17 @@ require 'spec_helper'
 describe ElasticBoostedContent do
   fixtures :affiliates
   let(:affiliate) { affiliates(:basic_affiliate) }
+  let(:query) { 'Tropical' }
+  let(:search_params) do
+    {
+      q: query,
+      affiliate_id: affiliate.id,
+      size: 1,
+      offset: 0,
+      language: affiliate.indexing_locale
+    }
+  end
+  let(:search) { ElasticBoostedContent.search_for(search_params) }
 
   before do
     ElasticBoostedContent.recreate_index
@@ -66,7 +77,7 @@ describe ElasticBoostedContent do
     end
   end
 
-  describe "highlighting results" do
+  describe 'highlighting results' do
     before do
       affiliate.boosted_contents.create!(title: 'Tropical Hurricane Names',
                                          status: 'active',
@@ -77,8 +88,11 @@ describe ElasticBoostedContent do
     end
 
     context 'when no highlight param is sent in' do
-      it 'should highlight appropriate fields with <strong> by default' do
-        search = ElasticBoostedContent.search_for(q: 'Tropical', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
+      let(:search) do
+        ElasticBoostedContent.search_for(search_params.except(:highlighting))
+      end
+
+      it 'highlights appropriate fields with <strong> by default' do
         first = search.results.first
         expect(first.title).to eq("<strong>Tropical</strong> Hurricane Names")
         expect(first.description).to eq("Worldwide <strong>Tropical</strong> Cyclone Names")
@@ -86,6 +100,8 @@ describe ElasticBoostedContent do
     end
 
     context 'when field has HTML entity like an ampersand' do
+      let(:query) { 'carrots' }
+
       before do
         affiliate.boosted_contents.create!(title: 'Peas & Carrots',
                                            status: 'active',
@@ -95,19 +111,18 @@ describe ElasticBoostedContent do
         ElasticBoostedContent.commit
       end
 
-      it 'should escape the entity but show the highlight' do
-        search = ElasticBoostedContent.search_for(q: 'carrot', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
+      it 'escapes the entity but shows the highlight' do
         first = search.results.first
         expect(first.title).to eq("Peas &amp; <strong>Carrots</strong>")
-        search = ElasticBoostedContent.search_for(q: 'entities', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
-        first = search.results.first
-        expect(first.title).to eq("Peas &amp; Carrots")
       end
     end
 
     context 'when highlight is turned off' do
+      let(:search) do
+        ElasticBoostedContent.search_for(search_params.merge(highlighting: false))
+      end
+
       it 'should not highlight matches' do
-        search = ElasticBoostedContent.search_for(q: 'Tropical', affiliate_id: affiliate.id, language: affiliate.indexing_locale, highlighting: false)
         first = search.results.first
         expect(first.title).to eq("Tropical Hurricane Names")
         expect(first.description).to eq("Worldwide Tropical Cyclone Names")
@@ -225,12 +240,12 @@ describe ElasticBoostedContent do
     end
   end
 
-  describe "recall" do
+  describe 'recall' do
     let(:valid_bc_params) do
       {
         title: 'Obamå and Bideñ',
         status: 'active',
-        description: 'Yosemite publications spelling',
+        description: 'Yosemite publication spelling',
         url: 'http://www.nhc.noaa.gov/aboutnames.shtml',
         publish_start_on: Date.current
       }
@@ -311,9 +326,9 @@ describe ElasticBoostedContent do
     end
 
     describe "title and description" do
-      it 'should be case insentitive' do
-        expect(ElasticBoostedContent.search_for(q: 'OBAMA', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
-        expect(ElasticBoostedContent.search_for(q: 'BIDEN', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
+      it 'is case insentitive' do
+        expect(ElasticBoostedContent.search_for(search_params.merge(q: 'YOSEMITE')).total).
+          to eq(1)
       end
 
       it 'should perform ASCII folding' do
@@ -321,13 +336,19 @@ describe ElasticBoostedContent do
         expect(ElasticBoostedContent.search_for(q: 'bîdéÑ', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
       end
 
-      context "when query contains problem characters" do
+      context 'when query contains problem characters' do
         ['"   ', '   "       ', '+++', '+-', '-+'].each do |query|
-          specify { expect(ElasticBoostedContent.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to be_zero }
+          specify do
+            expect(ElasticBoostedContent.search_for(search_params.merge(q: query)).total).
+              to be_zero
+          end
         end
 
-        %w(+++obama --obama +-obama).each do |query|
-          specify { expect(ElasticBoostedContent.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1) }
+        %w(+++yosemite --yosemite +-yosemite).each do |query|
+          specify do
+            expect(ElasticBoostedContent.search_for(search_params.merge(q: query)).total).
+              to eq(1)
+          end
         end
       end
 

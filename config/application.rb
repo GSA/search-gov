@@ -1,14 +1,29 @@
-require File.expand_path('../boot', __FILE__)
+require_relative 'boot'
 
 require 'rails/all'
+require './lib/middlewares/reject_invalid_request_uri.rb'
+require './lib/middlewares/downcase_route.rb'
+require './lib/middlewares/adjust_client_ip.rb'
+require './lib/middlewares/filtered_cors.rb'
+require './lib/middlewares/filtered_jsonp.rb'
+
 
 GC.copy_on_write_friendly = true if GC.respond_to?(:copy_on_write_friendly=)
 GC::Profiler.enable
 
+# Require the gems listed in Gemfile, including any gems
+# you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
 module Usasearch
   class Application < Rails::Application
+    # Initialize configuration defaults for originally generated Rails version.
+    config.load_defaults 5.1
+
+    # Rails 4 way of “eager_load with autoload fallback. Note need to revisit better
+    # solution. See https://collectiveidea.com/blog/archives/2016/07/22/solutions-to-potential-upgrade-problems-in-rails-5
+    config.enable_dependency_loading = true
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -17,11 +32,11 @@ module Usasearch
     config.autoload_paths += Dir[config.root.join('lib', '**/').to_s]
     config.autoload_paths += Dir[config.root.join('app/models', '**/').to_s]
 
-    config.middleware.use 'RejectInvalidRequestUri'
-    config.middleware.use 'DowncaseRoute'
-    config.middleware.use 'AdjustClientIp'
-    config.middleware.use 'FilteredCORS'
-    config.middleware.use 'FilteredJSONP'
+    config.middleware.use RejectInvalidRequestUri
+    config.middleware.use DowncaseRoute
+    config.middleware.use AdjustClientIp
+    config.middleware.use FilteredCORS
+    config.middleware.use FilteredJSONP
     # config.middleware.use ::Rack::PerftoolsProfiler
 
     config.middleware.insert_before 0, Rack::Cors do
@@ -70,18 +85,34 @@ module Usasearch
 
     config.active_record.schema_format = :sql
 
-    # Do not swallow errors in after_commit/after_rollback callbacks.
-    config.active_record.raise_in_transactional_callbacks = true
-
     config.i18n.enforce_available_locales = false
 
     config.ssl_options[:secure_cookies] = false
     config.active_job.queue_adapter = :resque
+
+    ### Rails 5.0 config flags
+    ### SRCH-1058: The flags below should be flipped one by one to the new default.
+
+    # Enable per-form CSRF tokens. Versions before Rails 5.0 had false.
+    config.action_controller.per_form_csrf_tokens = false
+
+    # Enable origin-checking CSRF mitigation.  Versions before Rails 5.0 had false.
+    config.action_controller.forgery_protection_origin_check = false
+
+    # Require `belongs_to` associations by default. Versions before Rails 5.0 had false.
+    config.active_record.belongs_to_required_by_default = false
+
+    # Make Ruby 2.4+ preserve the timezone of the receiver when calling `to_time`.
+    # Versions before Rails 5.0 had false.
+    ActiveSupport.to_time_preserves_timezone = false
+
+    ### End Rails 5.0 config flags
   end
 end
 
+
 SEARCH_ENGINES = %w(BingV6 BingV7 Google SearchGov).freeze
-DEFAULT_USER_AGENT = Rails.application.secrets.organization['default_user_agent'].freeze
+DEFAULT_USER_AGENT = Rails.application.secrets.organization[:default_user_agent].freeze
 
 require 'resque/plugins/priority'
 require 'csv'

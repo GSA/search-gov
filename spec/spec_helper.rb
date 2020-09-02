@@ -2,8 +2,8 @@ require 'simplecov'
 SimpleCov.command_name 'RSpec'
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
-ENV["RAILS_ENV"] ||= 'test'
-require File.expand_path("../../config/environment", __FILE__)
+ENV['RAILS_ENV'] ||= 'test'
+require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
 require 'rspec/json_expectations'
 require 'email_spec'
@@ -16,12 +16,12 @@ WebMock.disable_net_connect!(allow_localhost: true)
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
-Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 # figure out where we are being loaded from to ensure it's only done once
 if $LOADED_FEATURES.grep(/spec\/spec_helper\.rb/).any?
   begin
-    raise "foo"
+    raise 'foo'
   rescue => e
     puts <<-MSG
   ===================================================
@@ -58,6 +58,7 @@ RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.use_transactional_fixtures = true
   config.include Paperclip::Shoulda::Matchers
+  config.include ActiveSupport::Testing::TimeHelpers
   config.infer_spec_type_from_file_location!
   config.expect_with(:rspec) do |c|
     c.syntax = [:expect]
@@ -70,9 +71,6 @@ RSpec.configure do |config|
     FileUtils.mkdir_p(File.join(Rails.root.to_s, 'tmp'))
 
     require 'test_services'
-    unless ENV['TRAVIS']
-      TestServices::start_redis
-    end
 
     EmailTemplate.load_default_templates
     OutboundRateLimit.load_defaults
@@ -87,15 +85,15 @@ RSpec.configure do |config|
     i14y_search_params = { handles: 'one,two', language: 'en', offset: 0, query: 'marketplase', size: 20 }
     stub_request(:get, "#{i14y_api_url}#{i14y_search_params.to_param}").
       to_return( status: 200, body: i14y_web_result )
+    OmniAuth.config.mock_auth[:default] = OmniAuth::AuthHash.new({})
   end
 
   config.after(:each) do
-    ActiveJob::Base.queue_adapter.enqueued_jobs.clear
+    ApplicationJob.queue_adapter.enqueued_jobs.clear
   end
 
   config.after(:suite) do
     TestServices::delete_es_indexes
-    TestServices::stop_redis unless ENV['TRAVIS']
   end
 
   # Add VCR to all tests
@@ -114,6 +112,8 @@ RSpec.configure do |config|
       VCR.use_cassette(name, options, &example)
     end
   end
+
+  config.include OmniauthHelpers
 end
 
 Shoulda::Matchers.configure do |config|

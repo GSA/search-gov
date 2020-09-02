@@ -1,7 +1,7 @@
 require 'digest'
 require 'sass/css'
 
-class Affiliate < ActiveRecord::Base
+class Affiliate < ApplicationRecord
   extend HumanAttributeName
   extend HashColumnsAccessible
   include Dupable
@@ -22,31 +22,43 @@ class Affiliate < ActiveRecord::Base
     assoc.has_many :affiliate_feature_addition
     assoc.has_many :affiliate_twitter_settings
     assoc.has_many :boosted_contents
-    assoc.has_many :connections, -> { order 'connections.position ASC' }
-    assoc.has_many :connected_connections, :foreign_key => :connected_affiliate_id, :source => :connections, :class_name => 'Connection'
-    assoc.has_many :document_collections, -> { order 'document_collections.name ASC, document_collections.id ASC' }
-    assoc.has_many :excluded_domains, -> { order 'domain ASC' }
+    assoc.has_many :connections, -> { order 'connections.position ASC' },
+                   inverse_of: :affiliate
+    assoc.has_many :connected_connections,
+                   foreign_key: :connected_affiliate_id,
+                   source: :connections,
+                   class_name: 'Connection',
+                   inverse_of: :connected_affiliate
+    assoc.has_many :document_collections,
+                   -> { order 'document_collections.name ASC, document_collections.id ASC' },
+                   inverse_of: :affiliate
+
+    assoc.has_many :excluded_domains, -> { order 'domain ASC' },
+                   inverse_of: :affiliate
     assoc.has_many :excluded_urls
     assoc.has_many :featured_collections
-    assoc.has_many :features, :through => :affiliate_feature_addition
-    assoc.has_many :flickr_profiles, -> { order 'flickr_profiles.url ASC' }
+    assoc.has_many(:features, through: :affiliate_feature_addition)
+    assoc.has_many :flickr_profiles, -> { order 'flickr_profiles.url ASC' },
+                   inverse_of: :affiliate
     assoc.has_many :i14y_memberships
     assoc.has_one :image_search_label
     assoc.has_many :indexed_documents
     assoc.has_many :memberships
-    assoc.has_many :navigations, -> { order 'navigations.position ASC, navigations.id ASC' }
+    assoc.has_many :navigations,
+                   -> { order 'navigations.position ASC, navigations.id ASC' },
+                   inverse_of: :affiliate
     assoc.has_many :routed_queries
-    assoc.has_many :rss_feeds, -> { order 'rss_feeds.name ASC, rss_feeds.id ASC' }, as: :owner
+    assoc.has_many :rss_feeds, -> { order 'rss_feeds.name ASC, rss_feeds.id ASC' },
+                   as: :owner,
+                   inverse_of: :owner
     assoc.has_many :sayt_suggestions
-    assoc.has_many :site_domains, -> { order 'domain ASC' }
+    assoc.has_many :site_domains, -> { order 'domain ASC' }, inverse_of: :affiliate
     assoc.has_one :site_feed_url
     assoc.has_many :superfresh_urls
     assoc.has_one :alert
-    assoc.has_many :watchers, -> { order 'name ASC' }
-    assoc.has_many :tag_filters, -> { order 'tag ASC' }
+    assoc.has_many :watchers, -> { order 'name ASC' }, inverse_of: :affiliate
+    assoc.has_many :tag_filters, -> { order 'tag ASC' }, inverse_of: :affiliate
   end
-
-  has_many :available_templates, through: :affiliate_templates, source: :template
 
   has_many :affiliate_templates, dependent: :destroy do
     def make_available(template_ids)
@@ -59,9 +71,16 @@ class Affiliate < ActiveRecord::Base
     end
   end
 
-  has_many :users, -> { order 'contact_name' }, through: :memberships
-  has_many :default_users, class_name: 'User', foreign_key: 'default_affiliate_id', dependent: :nullify
-  has_many :rss_feed_urls, -> { uniq }, through: :rss_feeds
+  has_many :available_templates, through: :affiliate_templates, source: :template
+  has_many :users, -> { order 'first_name' }, through: :memberships
+
+  has_many :default_users,
+           class_name: 'User',
+           foreign_key: 'default_affiliate_id',
+           dependent: :nullify,
+           inverse_of: :default_affiliate
+
+  has_many :rss_feed_urls, -> { distinct }, through: :rss_feeds
   has_many :url_prefixes, :through => :document_collections
   has_many :twitter_profiles, -> { order 'twitter_profiles.screen_name ASC' }, through: :affiliate_twitter_settings
   has_and_belongs_to_many :instagram_profiles, -> { order 'instagram_profiles.username ASC' }
@@ -69,16 +88,16 @@ class Affiliate < ActiveRecord::Base
   has_many :i14y_drawers, -> { order 'handle' }, through: :i14y_memberships
   has_many :routed_query_keywords, -> { order 'keyword' }, through: :routed_queries
   belongs_to :agency
-  belongs_to :language, foreign_key: :locale, primary_key: :code
+  belongs_to :language, foreign_key: :locale, primary_key: :code, inverse_of: :affiliates
   belongs_to :template, inverse_of: :affiliates
 
   AWS_IMAGE_SETTINGS = { styles: { :large => "300x150>" },
                          storage: :s3,
                          s3_credentials: Rails.application.secrets.aws_image_bucket,
                          url: ':s3_alias_url',
-                         s3_host_alias: Rails.application.secrets.aws_image_bucket['s3_host_alias'],
+                         s3_host_alias: Rails.application.secrets.aws_image_bucket[:s3_host_alias],
                          s3_protocol: 'https',
-                         s3_region: Rails.application.secrets.aws_image_bucket['s3_region']
+                         s3_region: Rails.application.secrets.aws_image_bucket[:s3_region]
                        }
 
   has_attached_file :page_background_image,
@@ -119,6 +138,7 @@ class Affiliate < ActiveRecord::Base
   validates_format_of :name, :with => /\A[a-z0-9._-]+\z/
   validates_format_of :bing_v5_key, :with => /\A[0-9a-f]{32}\z/i, allow_nil: true
   validates_inclusion_of :search_engine, in: SEARCH_ENGINES
+  validates_url :header_tagline_url, allow_blank: true
 
   validates_attachment_content_type :page_background_image,
                                     content_type: VALID_IMAGE_CONTENT_TYPES,
@@ -371,7 +391,9 @@ class Affiliate < ActiveRecord::Base
   end
 
   def normalize_site_domains
-    all_site_domains = site_domains(true).sort { |a, b| a.domain.length <=> b.domain.length }
+    all_site_domains = site_domains.reload.sort do |a, b|
+      a.domain.length <=> b.domain.length
+    end
     all_site_domains.each { |domain| domain.destroy unless domain.valid? }
   end
 
@@ -488,8 +510,9 @@ class Affiliate < ActiveRecord::Base
 
   def last_month_query_count
     prev_month = Date.current.prev_month
-    count_query = CountQuery.new(name)
-    RtuCount.count(monthly_index_wildcard_spanning_date(prev_month, true), 'search', count_query.body)
+    count_query = CountQuery.new(name, 'search')
+    RtuCount.count(monthly_index_wildcard_spanning_date(prev_month, true),
+                   count_query.body)
   end
 
   def user_emails
@@ -517,13 +540,14 @@ class Affiliate < ActiveRecord::Base
   end
 
   def save_template_schema(saved_template_schema)
-    merged_hash = if self.template_schema.blank?
-      (Template.default.schema).deep_merge(saved_template_schema)
-    else
-      (JSON.parse(template_schema)).deep_merge(saved_template_schema)
-    end
+    merged_template_schema =
+      if template_schema.blank?
+        (Template.default.schema).deep_merge(saved_template_schema.to_h)
+      else
+        (JSON.parse(template_schema)).deep_merge(saved_template_schema)
+      end
 
-    self.update_attribute(:template_schema, merged_hash.to_json)
+    update(template_schema: merged_template_schema.to_json)
   end
 
   def reset_template_schema
@@ -800,7 +824,7 @@ class Affiliate < ActiveRecord::Base
   end
 
   def malformed_html_error_message(field_name)
-    sea = Rails.application.secrets.organization['support_email_address']
+    sea = Rails.application.secrets.organization[:support_email_address]
     email_link = %Q{<a href="mailto:#{sea}">#{sea}</a>}
     "HTML to customize the #{field_name} of your search results is invalid. Click on the validate link below or email us at #{email_link}".html_safe
   end

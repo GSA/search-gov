@@ -88,6 +88,12 @@ describe Jobs do
       end
     end
 
+    context 'when the search phrase does not include job-related keyword' do
+      it 'does not trigger job search' do
+        expect(Jobs.query_eligible?('federal')).to be_falsey
+      end
+    end
+
     context 'when the search phrase is blocked' do
       it 'should return false' do
         ["employment data", "employment statistics", "employment numbers", "employment levels", "employment rate",

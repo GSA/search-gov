@@ -1,5 +1,5 @@
-class SitemapMonitorJob < ActiveJob::Base
-  queue_as :searchgov
+class SitemapMonitorJob < ApplicationJob
+  queue_as :sitemap
 
   def perform
     SearchgovDomain.ok.each do |searchgov_domain|

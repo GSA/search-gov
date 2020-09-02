@@ -19,7 +19,10 @@ describe SearchgovUrl do
     it { is_expected.to have_db_column(:enqueued_for_reindex).
            of_type(:boolean).
            with_options(default: false, null: false) }
+
     it { is_expected.to have_db_index(:url) }
+    it { is_expected.to have_db_index([:searchgov_domain_id, :last_crawl_status]) }
+    it { is_expected.to have_db_index([:searchgov_domain_id, :last_crawled_at]) }
   end
 
   describe 'scopes' do
@@ -318,7 +321,7 @@ describe SearchgovUrl do
             description: 'My description',
             language: 'en',
             tags: 'this, that',
-            created: '2017-09-07T23:26:04Z',
+            created: '2018-06-09T17:42:11Z',
         ))
         fetch
       end

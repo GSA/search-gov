@@ -1,4 +1,4 @@
-class Template < ActiveRecord::Base
+class Template < ApplicationRecord
   serialize :schema, Hash
   has_many :affiliates, inverse_of: :template
   has_many :affiliate_templates, dependent: :destroy, inverse_of: :template

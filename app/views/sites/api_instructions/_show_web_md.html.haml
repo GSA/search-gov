@@ -1,445 +1,77 @@
 :markdown
-  This API exposes all relevant results “modules” in a single JSON call, including:
+  ## Overview
 
-
-
+  The Search.gov Results API exposes all relevant results “modules” in a single JSON call, including the following:
 
   * Web results;
   * Best bets;
   * Health topics;
   * Job openings;
   * Recent tweets;
-  * Recent news;
-  * Recent video news;
   * Federal Register documents; and
   * Related searches.
 
 
-  ## Note about Web Results and Endpoints
+  ## Getting started
 
+  Please refer to the detailed documentation for the Results API, now publicly available through the [OpenGSA Portal](https://open.gsa.gov/api/searchgov-results/). The information below serves as an introduction.
 
-
-
-  The endpoint you use to retrieve web results through this API will depend on the method we used to index your content. If we don't yet have your content indexed, you won't see results in the API.
-  
   We can index content using your [XML sitemap](https://search.gov/blog/sitemaps.html) (preferred), [RSS feeds](#{site_rss_feeds_path(@site)}), or the [indexing API, i14y](https://search.gov/developer/i14y.html). We can also deploy a crawler on a limited basis.
-  
-  Sites indexed via sitemaps, crawling, or i14y will use the `/search/i14y` endpoint. Sites indexed via RSS will use the top level `/search` endpoint.
-  
-  If we don't have your content indexed and you want to use the results API, you must [purchase an API key from Bing](#{commercial_keys_site_api_instructions_path(@site)}) to use their results. We are not able to pass the Bing results you may see on our hosted results page through APIs.
 
-  ## Resource URL
+  Sites indexed via sitemaps or crawling will use the `/i14y` endpoint. Because most users are in this category, the example API calls in the documentation are to this endpoint. Sites indexed via RSS will use the top level `/` endpoint, please modify your calls accordingly.
 
 
+  ## API Key and Resource URL
 
+  The endpoint is `#{api_scheme_and_host}/api/v2/search/i14y`.
+  `#{api_scheme_and_host}/api/v2/search/i14y?affiliate=#{h(@site.name)}&access_key=#{h(@site.api_access_key)}&query=SEARCH_TERM_ENTERED_IN_YOUR_SEARCH_BOX`
 
-  The endpoint is `#{api_scheme_and_host}/api/v2/search`.
-
-
-
-
-  You must use https.
-
-
-
-
-  ## Required Parameters
-
-
-
-
-  Three parameters are required: `affiliate`, `access_key`, and `query`.
-
-
-  `#{api_scheme_and_host}/api/v2/search?affiliate=#{h(@site.name)}&access_key=#{h(@site.api_access_key)}&query={YOUR_SEARCH_TERM}`
-
-
-
-
-  * You can find your access key on the  [API Access Key](#{site_api_access_key_path(@site)}) page.
-  * You can find your site handle on the [Settings](#{edit_site_setting_path(@site)}) page.
   * Replace {YOUR_SEARCH_TERM} with a word or phrase of your choice.
+  * You must use `https`.
 
 
+  ## Parameters
 
+  For descriptions of the following parameters, please see the full documentation on the [OpenGSA Portal](https://open.gsa.gov/api/searchgov-results/).
 
-  Note that your access key is unique to your site handle so they must be paired properly to return results.
 
+  ### Required Parameters
 
+  Three parameters are required: (1) `affiliate`, (2) `access_key`, and (3) `query`. The following pre-formatted example contains all three in their correct form for this specific search site.
+  `https://api.gsa.gov/technology/searchgov/v2/results/i14y?affiliate=#{h(@site.name)}&access_key=#{h(@site.api_access_key)}&query=SEARCH_TERM_ENTERED_IN_YOUR_SEARCH_BOX`
 
 
-  ## Optional Search Parameters
+  ### Optional Parameters
 
+  Optional parameters can be combined with the required parameters and each other.
 
 
+  * `enable_highlighting` (optional)
 
-  All other parameters are optional: `enable_highlighting`, `limit`, `offset`, `sort_by`.
+      This sample disables highlighting of query terms in the search snippet.
+      `https://api.gsa.gov/technology/searchgov/v2/results/i14y?affiliate=#{h(@site.name)}&access_key=#{h(@site.api_access_key)}&query=SEARCH_TERM_ENTERED_IN_YOUR_SEARCH_BOX&enable_highlighting=false`
 
+  * `limit` (optional)
 
+      This sample limits the number of items returned at a time to 5.
+      `https://api.gsa.gov/technology/searchgov/v2/results/i14y?affiliate=#{h(@site.name)}&access_key=#{h(@site.api_access_key)}&query=SEARCH_TERM_ENTERED_IN_YOUR_SEARCH_BOX&limit=5`
 
+  * `offset` (optional)
 
-  * ### enable_highlighting
+      This sample instructs the system to skip 20 items and then return results. Used for paginating results.
+      `https://api.gsa.gov/technology/searchgov/v2/results/i14y?affiliate=#{h(@site.name)}&access_key=#{h(@site.api_access_key)}&query=SEARCH_TERM_ENTERED_IN_YOUR_SEARCH_BOX&offset=20`
 
+  * `sort\_by` (optional)
 
+      This sample sets the sort order to `date`, rather than the default `relevance`.
+      `https://api.gsa.gov/technology/searchgov/v2/results/i14y?affiliate=#{h(@site.name)}&access_key=#{h(@site.api_access_key)}&query=SEARCH_TERM_ENTERED_IN_YOUR_SEARCH_BOX&sort_by=date`
 
+  ## Routed Queries
 
-      Enables or disables the highlighting of keywords in the results. The default is 'true' so use 'false' to disable highlighting. The opening and closing highlighting characters are `<U+E000>` and `<U+E001>`, which both look like "". You can learn more about them [here](http://unicodesymbols.wikia.com/wiki/U%2BE000) and [here](http://unicodesymbols.wikia.com/wiki/U%2BE001) (external resources). Your team will determine how to display the characters, whether as bold, italics, or some other preferred highlighting style.
+  If you have [Routed Queries](https://search.gov/manual/routed-queries.html) set up in your Admin Center, then any matching query terms will change the API response.
 
+  For instance, if you set the query `example` to route to `https://www.search.gov`, then the expected response will be the following:
 
+  `{"route_to":"https://www.search.gov/"}`
 
-
-      `#{api_scheme_and_host}/api/v2/search?affiliate=#{h(@site.name)}&access_key=#{h(@site.api_access_key)}&query={YOUR_SEARCH_TERM}&enable_highlighting=false`
-
-
-
-
-  * ### limit
-
-
-
-
-      Defines the number of results to return. The default is 20, but you can specify between 1 and 50 results.
-
-
-
-
-      `#{api_scheme_and_host}/api/v2/search?affiliate=#{h(@site.name)}&access_key=#{h(@site.api_access_key)}&query={YOUR_SEARCH_TERM}&limit=5`
-
-
-
-
-  * ### offset
-
-
-
-
-      Defines the number of results you want to skip from the first result. The default is 0 and the maximum is 999.
-
-
-
-
-      `#{api_scheme_and_host}/api/v2/search?affiliate=#{h(@site.name)}&access_key=#{h(@site.api_access_key)}&query={YOUR_SEARCH_TERM}&offset=20`
-
-
-
-
-  * ### sort_by
-
-
-
-
-      Sort the results by date. The default is sort by relevance.
-
-
-
-
-      `#{api_scheme_and_host}/api/v2/search?affiliate=#{h(@site.name)}&access_key=#{h(@site.api_access_key)}&query={YOUR_SEARCH_TERM}&sort_by=date`
-
-
-
-
-  ## Response Fields
-
-
-
-
-  Each item returns a unique set of fields.
-
-
-
-
-  * ### web:results
-
-
-
-
-      Web results from our Search.gov indexes.
-
-
-
-
-      | Values           | Description
-      | :--              | :--
-      | title            | Title of the document
-      | url              | URL of the document
-      | snippet          | Summary of the document
-      | publication_date | Publication date of the document (not available on commercial results)
-
-
-
-
-  * ### web:total
-
-
-
-
-      Total number of results available.
-
-
-
-
-  * ### web:next_offset
-
-
-
-
-      Offset for the subsequent results.
-
-
-
-
-  * ### web:spelling_correction
-
-
-
-
-    Spelling correction for your search term.
-
-
-
-
-  * ### text_best_bets
-
-
-
-
-      Text best bets, which appear only when the query matches the text of the best bet’s title, description, or keywords.
-
-
-
-
-      | Values      | Description
-      | :--         | :--
-      | title       | Title of the best bet
-      | url         | URL of the best bet
-      | description | Description of the best bet
-
-
-
-
-  * ### graphic_best_bets
-
-
-
-
-      Graphic best bets, which appear only when the query matches the text of the best bet’s title, description, or keywords.
-
-
-
-
-      | Values         | Description
-      | :--            | :--
-      | title          | Title of the graphic best bet
-      | title_url      | URL of the graphic best bet
-      | image_url      | URL of the graphic image
-      | image_alt_text | Alternative text of the image
-      | links          | An array of links in the graphic best bet. Each link contains a title and a URL
-
-
-
-
-  * ### health_topics
-
-
-
-
-      | Values         | Description
-      | :--            | :--
-      | title          | Title of the health topic
-      | url            | URL of the health topic
-      | snippet        | Snippet of the health topic
-      | related_topics | An array of topics related to the health topic. Each topic contains a title and a URL
-      | related_sites  | An array of sites related to the the health topic. Each site contains a title and a URL
-
-
-
-
-  * ### job_openings
-
-
-
-
-      | Values             | Description
-      | :--                | :--
-      | position_title     | Position title of the job opening
-      | organization_name  | Organization name of the job opening
-      | rate_interval_code | Rate interval code of the job opening
-      | minimum            | Minimum salary of the job opening
-      | maximum            | Maximum salary of the job opening
-      | start_date         | Start date of the job opening
-      | end_date           | End date of the job opening
-      | locations          | An array of locations of the job opening
-      | url                | URL of the job opening
-
-
-
-
-  * ### recent_tweets
-
-
-
-
-      | Values            | Description
-      | :--               | :--
-      | text              | Text of the tweet
-      | url               | URL of the tweet
-      | name              | Name of the tweet author
-      | screen_name       | Screen name of the tweet author
-      | profile_image_url | URL of the tweet author profile image
-
-
-
-
-  * ### recent_news
-
-
-
-
-      Recent news from our Search.gov indexes. Only available with commercial results.
-
-
-
-
-      | Values           | Description
-      | :--              | :--
-      | title            | Title of the recent news
-      | url              | URL of the recent news
-      | snippet          | Snippet of the recent news
-      | publication_date | Publication date of the recent news
-      | source           | Source of the recent news
-
-
-
-
-  * ### recent_video_news
-
-
-
-
-      Recent video news from our Search.gov indexes. Only available with commercial results.
-
-
-
-
-      | Values           | Description
-      | :--              | :--
-      | title            | Title of the recent video news
-      | url              | URL of the recent video news
-      | snippet          | Snippet of the recent video news
-      | publication_date | Publication date of the recent video news
-      | source           | Source of the recent video news
-      | thumbnail_url    | Thumbnail URL of the recent video news
-
-
-
-
-  * ### federal_register_documents
-
-
-
-
-      Federal Register documents
-
-
-
-
-      | Values              | Description
-      | :--                 | :--
-      | id                  | The ID of the document as known to usasearch
-      | document_number     | Document number of the federal register document
-      | document_type       | Document type of the federal register document
-      | title               | Title of the federal register document
-      | url                 | URL of the federal register document
-      | agency_names        | An array of agency names of the federal register document
-      | page_length         | Page length of the federal register document
-      | start_page          | Start page of the federal register document
-      | end_page            | End page of the federal register document
-      | publication_date    | Publication date of the federal register document
-      | comments_close_date | Comments close date of the federal register document
-
-
-
-
-  * ### related_search_terms
-
-
-
-
-      An array of related search terms, which are based on recent, common searches on the your site.
-
-
-
-
-  ## I14y API
-
-
-    The endpoint is `#{api_scheme_and_host}/api/v2/search/i14y`.
-
-
-
-
-    It uses the same required parameters. All optional parameters are supported.
-
-
-
-
-    `#{api_scheme_and_host}/api/v2/search/i14y?affiliate=#{h(@site.name)}&access_key=#{h(@site.api_access_key)}&query={YOUR_SEARCH_TERM}`
-
-
-
-
-  ## Additional Instructions for Commercial API Keys
-
-
-  If you’ve [bought an API key from Bing](#{commercial_keys_site_api_instructions_path(@site)}), follow the additional instructions below to return their results.
-
-
-
-
-  ### Microsoft Cognitive Services - Bing Search API Web Results
-
-    The endpoint is `#{api_scheme_and_host}/api/v2/search/azure/web`.
-
-    In addition to the required and optional parameters above, api_key is required.
-    Your key must have a subscription for Cognitive Services Bing Search APIs.
-
-    `#{api_scheme_and_host}/api/v2/search/azure/web?affiliate=#{h(@site.name)}&access_key=#{h(@site.api_access_key)}&query={YOUR_SEARCH_TERM}&api_key={YOUR_API_KEY}`
-
-    Note that the response only includes results for the Web module.
-
-
-  ### Microsoft Cognitive Services -- Bing Search API Image Results
-
-    The endpoint is `#{api_scheme_and_host}/api/v2/search/azure/image`.
-
-    In addition to the required and optional parameters above, api_key is required.
-    Your key must have a subscription for Cognitive Service Bing Search APIs.
-
-    `#{api_scheme_and_host}/api/v2/search/azure/image?affiliate=#{h(@site.name)}&access_key=#{h(@site.api_access_key)}&query={YOUR_SEARCH_TERM}&api_key={YOUR_API_KEY}`
-
-    Note that the response only includes results for the Image module.
-
-  #### Image Response Fields
-
-    * Each image result has the following fields:
-
-    | Values                 | Description
-    | :--                    | :--
-    | title                  | Title of the image
-    | url                    | URL of the image
-    | media_url              | URL of the page containing the image
-    | display_url            | display version of URL of the page containint the image
-    | content_type           | Image file format
-    | file_size              | Number of bytes in the image
-    | width                  | Image pixel width
-    | height                 | Image pixel height
-    | thumbnail:url          | URL of the thumbnail
-    | thumbnail:content_type | File format of the thumbnail (always null as of 2017)
-    | thumbnail:file_size    | Number of bytes in the thumbnail (always null as of 2017)
-    | thumbnail:width        | Thumbnail pixel width
-    | thumbnail:height       | Thumbnail pixel height
-
-
-
-
-
+  To fully implement this, you will have to add logic that will process this response and redirect the user. A site-specific API call and javascript sample are available within the  Search Results API Instructions.

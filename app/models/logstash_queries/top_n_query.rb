@@ -1,8 +1,11 @@
+# frozen_string_literal: true
+
 class TopNQuery
   include AnalyticsDSL
 
-  def initialize(affiliate_name, agg_options = {})
+  def initialize(affiliate_name, type, agg_options = {})
     @affiliate_name = affiliate_name
+    @type = type
     @agg_options = agg_options
   end
 
@@ -14,10 +17,8 @@ class TopNQuery
   end
 
   def booleans(json)
-    json.must do
-      json.term { json.affiliate @affiliate_name }
-    end
+    must_affiliate(json, affiliate_name)
+    must_type(json, type)
     must_not_spider(json)
   end
-
 end

@@ -4,13 +4,13 @@ describe Admin::AffiliatesController do
   fixtures :users, :affiliates, :memberships, :languages
   let(:config) { Admin::AffiliatesController.active_scaffold_config }
 
-  context "when logged in as a non-affiliate admin user" do
+  context 'when logged in as a non-affiliate admin user' do
     before do
       activate_authlogic
-      UserSession.create(users("non_affiliate_admin"))
+      UserSession.create(users('non_affiliate_admin'))
     end
 
-    it "should redirect to the usasearch home page" do
+    it 'redirects to the usasearch home page' do
       get :index
       expect(response).to redirect_to(account_path)
     end
@@ -32,7 +32,7 @@ describe Admin::AffiliatesController do
       end
 
       it "should redirect to the affiliate analytics page for the affiliate id passed" do
-        get :analytics, :id => @affiliate.id
+        get :analytics, params: { id: @affiliate.id }
         expect(response).to redirect_to new_site_queries_path(@affiliate)
       end
     end
@@ -45,8 +45,8 @@ describe Admin::AffiliatesController do
 
       before do
         activate_authlogic
-        UserSession.create(users("affiliate_admin"))
-        get :edit, :id => affiliate.id
+        UserSession.create(users('affiliate_admin'))
+        get :edit, params: { id: affiliate.id }
       end
 
       it { is_expected.to respond_with :success }
@@ -210,6 +210,12 @@ describe Admin::AffiliatesController do
             uses_managed_header_footer
             website
         }
+      end
+
+      describe 'exports file' do
+        before { post :export, params: { format: :csv } }
+
+        it { is_expected.to respond_with :success }
       end
 
       describe 'columns' do

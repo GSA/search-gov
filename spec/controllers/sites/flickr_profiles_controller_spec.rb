@@ -14,7 +14,7 @@ describe Sites::FlickrProfilesController do
 
       before do
         expect(site).to receive(:flickr_profiles).and_return(flickr_profiles)
-        get :index, site_id: site.id
+        get :index, params: { site_id: site.id }
       end
 
       it { is_expected.to assign_to(:site).with(site) }
@@ -41,8 +41,12 @@ describe Sites::FlickrProfilesController do
           expect(flickr_profile).to receive(:save).and_return(true)
 
           post :create,
-               site_id: site.id,
-               flickr_profile: { url: 'http://www.flickr.com/groups/usagov/', not_allowed_key: 'not allowed value' }
+               params: {
+                 site_id: site.id,
+                 flickr_profile: { url: 'http://www.flickr.com/groups/usagov/',
+                                   not_allowed_key: 'not allowed value'
+                 }
+               }
         end
 
         it { is_expected.to assign_to(:flickr_profile).with(flickr_profile) }
@@ -63,8 +67,12 @@ describe Sites::FlickrProfilesController do
           expect(flickr_profile).to receive(:save).and_return(false)
 
           post :create,
-               site_id: site.id,
-               flickr_profile: { url: 'usagov', not_allowed_key: 'not allowed value' }
+               params: {
+                 site_id: site.id,
+                 flickr_profile: { url: 'usagov',
+                                   not_allowed_key: 'not allowed value'
+                 }
+               }
         end
 
         it { is_expected.to assign_to(:flickr_profile).with(flickr_profile) }
@@ -88,7 +96,7 @@ describe Sites::FlickrProfilesController do
             and_return(flickr_profile)
         expect(flickr_profile).to receive(:destroy)
 
-        delete :destroy, site_id: site.id, id: 100
+        delete :destroy, params: { site_id: site.id, id: 100 }
       end
 
       it { is_expected.to redirect_to(site_flickr_urls_path(site)) }

@@ -3,15 +3,15 @@ Given /^the following( legacy| search consumer| SearchGov)? Affiliates exist:$/ 
   table.hashes.each do |hash|
     valid_options = {
         email: hash[:contact_email],
-        password: 'test1234!',
-        contact_name: hash[:contact_name],
+        first_name: hash[:first_name],
+        last_name: hash[:last_name],
         organization_name: 'Agency'
     }
     user = User.find_by_email(hash[:contact_email]) || User.create!( valid_options)
     user.update_attribute(:is_affiliate, true)
     user.update_attribute(:approval_status, 'approved')
 
-    excluded_keys = %w(agency_abbreviation contact_email contact_name domains youtube_handles is_image_search_navigable)
+    excluded_keys = %w[agency_abbreviation contact_email first_name last_name domains youtube_handles is_image_search_navigable]
     affiliate_attributes = hash.except *excluded_keys
     affiliate_attributes['force_mobile_format'] ||= (affiliate_type !~ /legacy/)
     affiliate_attributes['search_consumer_search_enabled'] ||= (/search consumer/ === affiliate_type)
