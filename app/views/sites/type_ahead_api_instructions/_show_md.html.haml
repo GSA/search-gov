@@ -1,21 +1,24 @@
 :markdown
   ## Overview
 
-  This API exposes the type-ahead suggestions that can appear below your search box as searchers enter their search terms. We have a script available that calls this API for you, which you can use as an alternative to using this API directly. Find it in on the [Code Snippets page](#{site_embed_code_path(@site)}).
+    This API exposes the type-ahead suggestions that can appear below your search box as searchers enter their search terms. We have a script available that calls this API for you, which you can use as an alternative to using this API directly. Find it on the [Code Snippets page](#{site_embed_code_path(@site)}).
 
+  ## Getting Started
 
-  ## Getting started
+  The information below serves as an introduction. Please refer to the detailed documentation for the Results API, now publicly available through the [OpenGSA Portal](https://open.gsa.gov/api/searchgov-suggestions/).
 
-  Please refer to the detailed documentation for the Results API, now publicly available through the [OpenGSA Portal](https://open.gsa.gov/api/searchgov-suggestions/). The information below serves as an introduction.
+  ## API Key
 
+  Please get your key from [api.data.gov](https://api.data.gov/signup/). The key will be specific to you. The results API key provided by Search.gov will not work for this API.
 
-  ## API Key and Resource URL
+  The API key is registered to an individual user, but can be used across the code - it would simply need to be updated if the original user left the organization.
 
-  The endpoint is `https://api.gsa.gov/technology/searchgov/v2/sayt`.
+  ## Parameters
 
-  The following pre-formatted example contains the required parameters in their correct form for this specific search site’s suggestions.
+    The following pre-formatted example contains the required parameters in their correct form for this specific search site's suggestions.
 
-  * The `name` is your site handle. You can find your site handle on the [Settings](#{edit_site_setting_path(@site)}) page.
-  * Your `api_key` is provided through [api.data.gov](https://api.data.gov).
-  * Replace `YOUR_SEARCH_TERM` with the query as entered into the search box. Send a new call for every keystroke. Whenever a user selects a query from the drop-down list, send this selection to us as a new query request.
-  `https://api.gsa.gov/technology/searchgov/v2/sayt?name=#{h(@site.name)}&api_key=GET_KEY_FROM_API.DATA.GOV&q=YOUR_SEARCH_TERM`
+    * The `name` is your site handle. You can find your site handle on the [Settings](#{edit_site_setting_path(@site)}) page.
+    * Your `api_key` is provided through [api.data.gov](https://api.data.gov).
+    * Replace `YOUR_SEARCH_TERM` with the query as entered into the search box. Send a new call for every keystroke. Whenever a user selects a query from the drop-down list, send this selection to us as a new query request.
+
+   `https://api.gsa.gov/technology/searchgov/v1/suggestions?name=#{h(@site.name)}&api_key=YOUR_API_KEY&q=YOUR_SEARCH_TERM`

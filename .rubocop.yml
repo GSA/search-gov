@@ -1,5 +1,7 @@
 # Common configuration.
 
+require: rubocop-rspec
+
 AllCops:
   RubyInterpreters:
     - ruby
@@ -4320,3 +4322,4 @@ Style/ZeroLengthPredicate:
   VersionAdded: 0.37
   VersionChanged: 0.39
 
+#################### RSpec ###############################
