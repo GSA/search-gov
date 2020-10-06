@@ -33,7 +33,7 @@ class Sites::ClickDrilldownsController < Sites::SetupSiteController
     record << doc['request']
     record << doc['referrer']
     record << doc['vertical']
-    record << doc['modules']
+    record << Array(doc['modules']).first
     record << (doc['useragent']['device'] rescue '')
     record << (doc['useragent']['name'] rescue '')
     record << (doc['useragent']['os'] rescue '')
