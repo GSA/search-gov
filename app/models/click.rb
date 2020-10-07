@@ -7,7 +7,7 @@ class Click
   attr_accessor :url
 
   attr_reader :affiliate, :query, :position,
-              :module_code, :client_ip, :user_agent, :vertical
+              :module_code, :client_ip, :user_agent, :vertical, :referrer
 
   before_validation :unescape_url
 
@@ -30,6 +30,7 @@ class Click
     @module_code = params[:module_code]
     @vertical = params[:vertical]
     @user_agent = params[:user_agent]
+    @referrer = params[:referrer]
   end
 
   def log
@@ -56,16 +57,24 @@ class Click
     errors.add(:module_code, "#{module_code} is not a valid module")
   end
 
+  # This hash is used in click logging for consumption by Logstash. Any changes
+  # to this hash or to the log line may require corresponding changes to our Logstash
+  # template or config in the cookbooks.
   def click_hash
     {
-      url: url,
-      query: query,
-      client_ip: client_ip,
-      affiliate: affiliate,
-      position: position,
-      module_code: module_code,
+      clientip: client_ip,
+      referrer: referrer,
+      user_agent: user_agent,
+      time: Time.current.to_formatted_s(:db),
       vertical: vertical,
-      user_agent: user_agent
+      modules: module_code,
+      click_domain: URI(url).host,
+      params: {
+        url: url,
+        affiliate: affiliate,
+        query: query.downcase,
+        position: position
+      }
     }
   end
 end

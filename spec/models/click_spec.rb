@@ -7,20 +7,22 @@ describe Click do
   let(:ip) { '0.0.0.0' }
   let(:position) { '7' }
   let(:module_code) { 'BWEB' }
+  let(:query) { 'my query' }
   let(:params) do
     {
       url: url,
-      query: 'my query',
+      query: query,
       client_ip: ip,
       affiliate: 'nps.gov',
       position: position,
       module_code: module_code,
       vertical: 'web',
-      user_agent: 'mozilla'
+      user_agent: 'mozilla',
+      referrer: 'http://www.fda.gov/referrer'
     }
   end
 
-  subject(:click) { described_class.new params }
+  subject(:click) { described_class.new(params) }
 
   context 'with required params' do
     describe '#valid?' do
@@ -28,18 +30,35 @@ describe Click do
     end
 
     describe '#log' do
-      before { allow(Rails.logger).to receive(:info) }
+      let(:click_json) do
+        {
+          clientip: '0.0.0.0',
+          referrer: 'http://www.fda.gov/referrer',
+          user_agent: 'mozilla',
+          time: '2020-01-01 00:00:00',
+          vertical: 'web',
+          modules: 'BWEB',
+          click_domain: 'www.fda.gov',
+          params: {
+            url: 'http://www.fda.gov/foo.html',
+            affiliate: 'nps.gov',
+            query: 'my query',
+            position: '7'
+          }
+        }.to_json
+      end
+
+      before do
+        allow(Rails.logger).to receive(:info)
+        travel_to(Time.utc(2020, 1, 1))
+      end
+
+      after { travel_back }
 
       it 'logs almost-JSON info about the click' do
-        click.validate # validating causes other instance variables to appear.
         click.log
 
-        expected_log = '[Click] {"url":"http://www.fda.gov/foo.html",'\
-                       '"query":"my query","client_ip":"0.0.0.0",'\
-                       '"affiliate":"nps.gov","position":"7","module_code":"BWEB",'\
-                       '"vertical":"web","user_agent":"mozilla"}'
-
-        expect(Rails.logger).to have_received(:info).with(expected_log)
+        expect(Rails.logger).to have_received(:info).with("[Click] #{click_json}")
       end
 
       context 'when the URL is encoded' do
@@ -48,6 +67,17 @@ describe Click do
         it 'logs the escaped URL' do
           click.log
           expect(Rails.logger).to have_received(:info).with(%r{https://search.gov/(:|)})
+        end
+      end
+
+      # The different search engines use different formatters, but for simplicity's
+      # sake, we simply downcase the query that we log for logstash
+      context 'when the URL contains capital letters' do
+        let(:query) { 'DOWNCASE ME' }
+
+        it 'downcases the query' do
+          click.log
+          expect(Rails.logger).to have_received(:info).with(/downcase me/)
         end
       end
     end

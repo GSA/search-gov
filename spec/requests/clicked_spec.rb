@@ -15,12 +15,23 @@ describe '/clicked' do
   let(:click_model) { Click }
   let(:click_mock) { instance_double(click_model, log: nil) }
 
-  before { Rails.application.env_config['HTTP_USER_AGENT'] = 'test_user_agent' }
-  after { Rails.application.env_config['HTTP_USER_AGENT'] = 'nil' }
+  before do
+    Rails.application.env_config['HTTP_USER_AGENT'] = 'test_user_agent'
+    Rails.application.env_config['HTTP_REFERER'] = 'https://example.gov/referrer'
+  end
+
+  after do
+    Rails.application.env_config['HTTP_USER_AGENT'] = nil
+    Rails.application.env_config['HTTP_REFERER'] = nil
+  end
 
   context 'with valid params' do
     let(:expected_params) do
-      valid_params.merge client_ip: '127.0.0.1', user_agent: 'test_user_agent'
+      valid_params.merge(
+        client_ip: '127.0.0.1',
+        user_agent: 'test_user_agent',
+        referrer: 'https://example.gov/referrer'
+      )
     end
 
     it_behaves_like 'a successful click request'

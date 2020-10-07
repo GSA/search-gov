@@ -4,16 +4,18 @@ require 'spec_helper'
 
 describe ApiClick do
   let(:affiliate) { 'nps.gov' }
+
   subject(:click) do
-    described_class.new url: 'http://www.fda.gov/foo.html',
+    described_class.new(url: 'http://www.fda.gov/foo.html',
                         query: 'my query',
-                        client_ip: '123.123.123.123',
+                        client_ip: '0.0.0.0',
                         affiliate: affiliate,
                         position: '7',
                         module_code: 'BWEB',
                         vertical: 'web',
                         user_agent: 'mozilla',
-                        access_key: 'basic_key'
+                        access_key: 'basic_key',
+                        referrer: 'http://www.fda.gov/referrer')
   end
 
   context 'with required params' do
@@ -22,18 +24,36 @@ describe ApiClick do
     end
 
     describe '#log' do
-      it 'logs almost-JSON info about the click' do
-        allow(Rails.logger).to receive(:info)
+      let(:click_json) do
+        {
+          clientip: '0.0.0.0',
+          referrer: 'http://www.fda.gov/referrer',
+          user_agent: 'mozilla',
+          time: '2020-01-01 00:00:00',
+          vertical: 'web',
+          modules: 'BWEB',
+          click_domain: 'www.fda.gov',
+          params: {
+            url: 'http://www.fda.gov/foo.html',
+            affiliate: 'nps.gov',
+            query: 'my query',
+            position: '7'
+          },
+          tags: ['api']
+        }.to_json
+      end
 
-        click.validate #validating causes other instance variables to appear.
+      before do
+        allow(Rails.logger).to receive(:info)
+        travel_to(Time.utc(2020, 1, 1))
+      end
+
+      after { travel_back }
+
+      it 'logs almost-JSON info about the click' do
         click.log
 
-        expected_log = '[Click] {"url":"http://www.fda.gov/foo.html",'\
-                       '"query":"my query","client_ip":"123.123.123.123",'\
-                       '"affiliate":"nps.gov","position":"7","module_code":"BWEB",'\
-                       '"vertical":"web","user_agent":"mozilla","access_key":"basic_key"}'
-
-        expect(Rails.logger).to have_received(:info).with(expected_log)
+        expect(Rails.logger).to have_received(:info).with("[Click] #{click_json}")
       end
     end
   end
