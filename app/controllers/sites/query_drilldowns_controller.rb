@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Sites::QueryDrilldownsController < Sites::SetupSiteController
   include CSVResponsive
   HEADER_FIELDS = ['Date', 'Time', 'Request', 'Referrer', 'Vertical', 'Modules', 'Device', 'Browser', 'OS', 'Country Code', 'Region', 'Client IP', 'User Agent']
@@ -35,7 +37,7 @@ class Sites::QueryDrilldownsController < Sites::SetupSiteController
     record << doc['request']
     record << doc['referrer']
     record << doc['vertical']
-    record << (doc['modules'].join(' ') rescue '')
+    record << format_modules(doc['modules'])
     record << (doc['useragent']['device'] rescue '')
     record << (doc['useragent']['name'] rescue '')
     record << (doc['useragent']['os'] rescue '')
