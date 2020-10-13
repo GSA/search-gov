@@ -12,7 +12,8 @@ describe '/api/v2/click' do
       vertical: 'test_vertical',
       module_code: 'BWEB',
       user_agent: 'test_user_agent',
-      access_key: 'basic_key'
+      access_key: 'basic_key',
+      referrer: 'https://search.gov/serp'
     }
   end
   let(:click_model) { ApiClick }

@@ -18,11 +18,23 @@ module Api
 
       private
 
+      def permitted_params
+        params.permit(
+          :url,
+          :query,
+          :position,
+          :module_code,
+          :affiliate,
+          :vertical,
+          :client_ip,
+          :user_agent,
+          :access_key,
+          :referrer
+        )
+      end
+
       def click_params
-        permitted = params.permit(:url, :query, :position,
-                                  :module_code, :affiliate, :vertical,
-                                  :client_ip, :user_agent, :access_key)
-        permitted.to_hash.symbolize_keys
+        permitted_params.to_hash.symbolize_keys
       end
 
       def status(click)
