@@ -2,12 +2,27 @@
 
 class Sites::ClickDrilldownsController < Sites::SetupSiteController
   include CSVResponsive
-  HEADER_FIELDS = ['Date', 'Time', 'Query', 'Position', 'Request', 'Referrer', 'Vertical', 'Modules', 'Device', 'Browser', 'OS', 'Country Code', 'Region', 'Client IP', 'User Agent']
+  HEADER_FIELDS = [
+    'Date',
+    'Time',
+    'Query',
+    'Position',
+    'Referrer',
+    'Vertical',
+    'Modules',
+    'Device',
+    'Browser',
+    'OS',
+    'Country Code',
+    'Region',
+    'Client IP',
+    'User Agent'
+  ].freeze
 
   def show
-    url = request["url"]
-    end_date = request["end_date"].to_date
-    start_date = request["start_date"].to_date
+    url = request['url']
+    end_date = request['end_date'].to_date
+    start_date = request['start_date'].to_date
     filename = [@site.name, url.first(50), start_date, end_date].join('_')
     drilldown_query = DrilldownQuery.new(@site.name,
                                          start_date,
@@ -30,10 +45,9 @@ class Sites::ClickDrilldownsController < Sites::SetupSiteController
     record << date_time.strftime("%H:%M:%S")
     record << (doc['params']['query'] rescue '')
     record << (doc['params']['position'] rescue '')
-    record << doc['request']
     record << doc['referrer']
     record << doc['vertical']
-    record << doc['modules']
+    record << format_modules(doc['modules'])
     record << (doc['useragent']['device'] rescue '')
     record << (doc['useragent']['name'] rescue '')
     record << (doc['useragent']['os'] rescue '')
