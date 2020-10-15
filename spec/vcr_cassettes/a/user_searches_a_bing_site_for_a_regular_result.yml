@@ -1,0 +1,250 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=hello%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 06 Jul 2020 17:58:08 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 3BA2667F4EFD4651BF1428003724817B
+      Bingapis-Sessionid:
+      - F9DA6E675CB147BBBEDC4AD8DACE0686
+      X-Msedge-Clientid:
+      - 371CFB3EC63F67EF0528F5C1C7C266B6
+      X-Msapi-Userstate:
+      - 5c8d
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=163,MSDatacenter=BN2B
+      X-Msedge-Ref:
+      - 'Ref A: 3BA2667F4EFD4651BF1428003724817B Ref B: BLUEDGE0112 Ref C: 2020-07-06T17:59:08Z'
+      Apim-Request-Id:
+      - 65bb6bf7-1917-458c-b4aa-1a6c5c404fba
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Mon, 06 Jul 2020 17:59:07 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "hello
+        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=hello+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 3470000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Print Out Your VA Welcome Kit | Veterans Affairs", "url": "https:\/\/www.va.gov\/welcome-kit\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.va.gov\/welcome-kit",
+        "snippet": "Whether you’re just getting out of the service or you’ve been
+        a civilian for years now, the VA Welcome Kit can help guide you to the benefits
+        and services you’ve earned. Based on where you are in life, your VA benefits
+        and services can support you in different ways. Keep your welcome kit handy
+        ...", "dateLastCrawled": "2020-07-03T18:04:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Volunteer- Rhode Island -Office of Healthy Aging", "url": "http:\/\/oha.ri.gov\/get-involved\/volunteering\/",
+        "isFamilyFriendly": true, "displayUrl": "oha.ri.gov\/get-involved\/volunteering",
+        "snippet": "In the wake of COVID-19 we have developed Project HELLO, a volunteer
+        based effort that connects isolated older adults who are in need of socialization
+        to friendly volunteers via the telephone. Volunteers are not only providing
+        phone-based wellness checks, but also a sense of community.", "dateLastCrawled":
+        "2020-06-24T20:26:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2", "name":
+        "§ 1024.33 Mortgage servicing transfers. | Consumer ...", "url": "https:\/\/www.consumerfinance.gov\/policy-compliance\/rulemaking\/regulations\/1024\/33\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.consumerfinance.gov\/policy-compliance\/rulemaking\/regulations\/1024\/33",
+        "snippet": "1. Terminology. Although the servicing disclosure statement must
+        be clear and conspicuous pursuant to § 1024.32(a), § 1024.33(a) does not set
+        forth any specific rules for the format of the statement, and the specific
+        language of the servicing disclosure statement in appendix MS-1 is not required
+        to be used.", "dateLastCrawled": "2020-07-03T18:22:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Mvskoke Words – Muscogee (Creek) Nation", "url": "https:\/\/www.mcn-nsn.gov\/services\/mvskoke-language-program\/mvskoke-words\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.mcn-nsn.gov\/services\/mvskoke-language-program\/mvskoke-words",
+        "snippet": "Hello: Hesci: How are you? Estonko: I’m doing fine. Here Mahe:
+        And you? Mon Centv? What is your name? Naket Cehocefkvte? My name is Mary.
+        Mary Cvhocefkv Tos. My clan is Bird. Fuswvlke Toyis. Where do you live? Estvmin
+        Like Cet Towa? Thank you. Mvto: Okay (No word for “You’re Welcome”) Enkv:
+        I will see you again. Hvtvm Cehecares: I like ...", "dateLastCrawled": "2020-07-03T17:20:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "DOD Occupational Database (ODB)", "url": "https:\/\/www.dmdc.osd.mil\/owa\/odb\/hello",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.dmdc.osd.mil\/owa\/odb\/hello",
+        "snippet": "Warning Notice and Consent to Monitor. You are accessing a U.S.
+        Government(USG) information system(IS) that is provided for USG-authorized
+        use only.", "dateLastCrawled": "2020-07-03T17:52:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "''Hello, World!'' NASA Beams Video from Space Station via ...",
+        "url": "https:\/\/www.nasa.gov\/mission_pages\/station\/research\/news\/opals_beams_video\/",
+        "about": [{"name": "Hello, World!"}, {"name": "Hello, World!"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.nasa.gov\/mission_pages\/station\/research\/news\/opals_beams_video",
+        "snippet": "[image-51] [image-78] [image-94] \"Hello, World!\" came the
+        message from the International Space Station as NASA successfully beamed
+        high-definition video via laser from space to ground on Thursday, June 5.
+        The 175-megabit video transmission was the first of its kind for the Optical
+        Payload for Lasercomm Science with the goal of improving the way we receive
+        data from orbit and beyond.", "dateLastCrawled": "2020-07-04T07:33:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Hello Lucy - North Dakota", "url": "https:\/\/www.prideofdakota.nd.gov\/companies\/profile\/HelloLucy\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.prideofdakota.nd.gov\/companies\/profile\/HelloLucy",
+        "snippet": "Hello Lucy. Hello Lucy specializes in coasters and sewn or
+        embellished items (aprons, scarves, headbands) many promotional items. Many
+        coasters have images or maps on them and it could be your own picture! Most
+        can be customized. Hello Lucy also holds licenses for the following colleges
+        and universities: NDSU, UND, MSU, MSUM and Concordia-Moorhead.", "dateLastCrawled":
+        "2020-06-21T08:14:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7", "name":
+        "Regulation X Real Estate Settlement Procedures Act", "url": "https:\/\/www.federalreserve.gov\/boarddocs\/supmanual\/cch\/respa.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.federalreserve.gov\/boarddocs\/supmanual\/cch\/respa.pdf",
+        "snippet": "Regulation X Real Estate Settlement Procedures Act The Real Estate
+        Settlement Procedures Act of 1974 (RESPA) (12 U.S.C. 2601 et seq.) (the act)
+        became effective on June 20, 1975.", "dateLastCrawled": "2020-07-03T19:32:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "NYC Public Schools Speak Your Language", "url": "https:\/\/www.schools.nyc.gov\/school-life\/school-environment\/in-your-language",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.schools.nyc.gov\/school-life\/school-environment\/in-your-language",
+        "snippet": "If you or someone you know needs help, tell your school’s principal
+        or parent coordinator, call the DOE at (718) 935-2013 or email Hello@schools.nyc.gov..
+        Learn more about the Translation and Interpretation Unit on the InfoHub..
+        IEP Translation Pilot", "dateLastCrawled": "2020-06-24T07:30:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Introduction - Hello Girls: Topics in Chronicling America ...",
+        "url": "https:\/\/guides.loc.gov\/chronicling-america-hello-girls", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/guides.loc.gov\/chronicling-america-hello-girls",
+        "snippet": "5,000 ‘Hello Girls’ strike in Tacoma, WA, demanding a wage increase,
+        collective bargaining, and improved working conditions. March 9, 1918 Ethel
+        Elkins is the first American accepted for overseas war phone service duty
+        in WWI with the rank of Army nurse.", "dateLastCrawled": "2020-07-01T06:09:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Telecommunications Relay Service - TRS | Federal ...", "url": "https:\/\/www.fcc.gov\/consumers\/guides\/telecommunications-relay-service-trs",
+        "about": [{"name": "Telecommunications Relay Service"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.fcc.gov\/consumers\/guides\/telecommunications-relay-service-trs",
+        "snippet": "Telecommunications Relay Service is a telephone service that allows
+        persons with hearing or speech disabilities to place and receive telephone
+        calls. TRS is available in all 50 states, the District of Columbia, Puerto
+        Rico and the U.S. territories for local and\/or long distance calls.", "dateLastCrawled":
+        "2020-07-02T20:16:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11", "name":
+        "Search the Sex Offender Registry | Iowa.gov", "url": "https:\/\/www.iowa.gov\/search-sex-offender-registry\/resource",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.iowa.gov\/search-sex-offender-registry\/resource",
+        "snippet": "Home; Business. Business Licenses; Starting a Business; Licenses
+        and Permits Search; Sales Tax eFile and Pay; More; Government. State Phonebook;
+        Google Home and Alexa Smart Speaker", "dateLastCrawled": "2020-07-04T03:24:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "What To Do If You Get a Robocall | FTC Consumer Information", "url":
+        "https:\/\/www.consumer.ftc.gov\/media\/video-0028-what-do-if-you-get-robocall",
+        "about": [{"name": "Robocall"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.consumer.ftc.gov\/media\/video-0028-what-do-if-you-get-robocall",
+        "snippet": "Few things can be more annoying than answering the phone while
+        you''re in the middle of something — and then being greeted by a recording.
+        If you receive a robocall trying to sell you something (and you haven’t given
+        the caller your written permission), it’s an illegal call. You should hang
+        up.", "dateLastCrawled": "2020-07-03T23:30:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Watch out for Auto Warranty Scams | Federal Communications ...",
+        "url": "https:\/\/www.fcc.gov\/consumers\/guides\/beware-auto-warranty-scams",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fcc.gov\/consumers\/guides\/beware-auto-warranty-scams",
+        "snippet": "If you own a vehicle and a phone, you may receive calls from scammers
+        posing as representatives of a car dealer, manufacturer or insurer telling
+        you that your auto warranty or insurance is about to expire.", "dateLastCrawled":
+        "2020-07-03T23:11:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "What is Hello NC? | NC DNCR", "url": "https:\/\/www.ncdcr.gov\/about\/featured-programs\/hello-nc\/what-hello-nc",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncdcr.gov\/about\/featured-programs\/hello-nc\/what-hello-nc",
+        "snippet": "Hello NC is a tool for rural communities to help tell their
+        stories in their own voice. With Hello NC, we want to highlight and uplift
+        our rural communities, provide resources for education and outreach, and explore
+        grant funding opportunities to help these counties thrive.", "dateLastCrawled":
+        "2020-07-04T02:04:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15", "name":
+        "Hello NC | NC DNCR", "url": "https:\/\/www.ncdcr.gov\/about\/featured-programs\/hello-nc",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncdcr.gov\/about\/featured-programs\/hello-nc",
+        "snippet": "Hello NC celebrates the people, culture, and stories of rural
+        North Carolina through local voices and rich media.This multi-faceted initiative
+        will showcase stories about the diversity, traditions and richness of small
+        towns and rural life.", "dateLastCrawled": "2020-06-17T07:34:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Complex Regional Pain Syndrome Fact Sheet | National ...", "url":
+        "https:\/\/www.ninds.nih.gov\/Disorders\/Patient-Caregiver-Education\/Fact-Sheets\/Complex-Regional-Pain-Syndrome-Fact-Sheet",
+        "about": [{"name": "Complex Regional Pain Syndrome"}], "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.ninds.nih.gov\/Disorders\/Patient-Caregiver-Education\/Fact-Sheets\/Complex...",
+        "snippet": "What is complex regional pain syndrome? Complex regional pain
+        syndrome (CRPS) is a chronic (lasting greater than six months) pain condition
+        that most often affects one limb (arm, leg, hand, or foot) usually after an
+        injury.", "dateLastCrawled": "2020-07-04T04:24:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Hello Neighbor Project | Beaverton, OR - Official Website", "url":
+        "https:\/\/www.beavertonoregon.gov\/1678\/Hello-Neighbor-Project", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.beavertonoregon.gov\/1678\/Hello-Neighbor-Project",
+        "snippet": "Hello Neighbor, the creative brainchild of artist Julie Keefe,
+        introduces neighbors to each other, engages youth, and helps develop a more
+        connected community. The City of Beaverton’s Arts Program and Hello Neighbor,
+        through a generous grant provided by The Nike Community Impact Fund of the
+        Oregon Community Foundation, collaborated with ...", "dateLastCrawled": "2020-06-13T19:26:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Hello Girls - Newspaper and Current Periodical Reading ...", "url":
+        "https:\/\/www.loc.gov\/rr\/news\/topics\/hello.html", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.loc.gov\/rr\/news\/topics\/hello.html",
+        "snippet": "The ‘Hello Girls’ not only proved to be an integral part in
+        telecommunications at home, but they also played a vital role in military
+        operations. Read more about it! The information and sample article links below
+        provide access to a sampling of articles from historic newspapers that can
+        be found in the Chronicling America: American Historic ...", "dateLastCrawled":
+        "2020-06-17T04:57:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19", "name":
+        "HelloFresh - New Jersey", "url": "https:\/\/jobs.covid19.nj.gov\/hellofresh",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/jobs.covid19.nj.gov\/hellofresh",
+        "snippet": "General information on how to stay safe, test sites, financial
+        assistance, unemployment, donations, food, and other non-medical needs.",
+        "dateLastCrawled": "2020-07-03T10:55:00.0000000Z", "language": "en", "isNavigational":
+        false}], "someResultsRemoved": true}, "rankingResponse": {"mainline": {"items":
+        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 06 Jul 2020 17:59:08 GMT
+recorded_with: VCR 4.0.0

@@ -59,7 +59,7 @@ module JobsHelper
 
   def link_to_more_jobs(search)
     title, url = more_jobs_title_and_url search
-    link_to_result_title nil, title, url, 0, 'JOBS'
+    link_to_result_title title, url, 0, 'JOBS'
   end
 
   def legacy_link_to_more_jobs(search)
