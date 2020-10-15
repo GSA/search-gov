@@ -9,7 +9,7 @@ class Click
   attr_reader :affiliate, :query, :position,
               :module_code, :client_ip, :user_agent, :vertical, :referrer
 
-  before_validation :unescape_url
+  before_validation :validate_url_encoding
 
   validates :query, :position, :module_code, :client_ip, :user_agent, :url, presence: true
   validates :position, numericality: { only_integer: true,
@@ -39,11 +39,12 @@ class Click
 
   private
 
-  def unescape_url
+  # prevent validation from choking on "invalid byte sequence in UTF-8"
+  def validate_url_encoding
     return unless url
 
     unescaped_url = CGI.unescape(url)
-    self.url = unescaped_url.valid_encoding? ? unescaped_url : 'invalid URL'
+    self.url = 'invalid URL' unless unescaped_url.valid_encoding?
   end
 
   def module_code_validation
