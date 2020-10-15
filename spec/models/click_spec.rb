@@ -64,9 +64,10 @@ describe Click do
       context 'when the URL is encoded' do
         let(:url) { 'https://search.gov/%28%3A%7C%29'  }
 
-        it 'logs the escaped URL' do
+        it 'logs the encoded URL' do
           click.log
-          expect(Rails.logger).to have_received(:info).with(%r{https://search.gov/(:|)})
+          expect(Rails.logger).to have_received(:info).
+            with(%r{https://search.gov/%28%3A%7C%29})
         end
       end
 
@@ -142,6 +143,12 @@ describe Click do
         click.validate
         expect(click.errors.full_messages).to eq ['Url is not a valid format']
       end
+    end
+
+    context 'when the URL contains a space' do
+      let(:url) { 'https://search.gov/foo%20bar'  }
+
+      it { is_expected.to be_valid }
     end
   end
 
