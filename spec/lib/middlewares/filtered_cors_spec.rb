@@ -1,11 +1,12 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
+require 'spec_helper'
 require 'rack/mock'
 
 describe FilteredCORS do
   context 'when path_info is in the CORS supported list' do
     it 'assigns Access-Control-Allow-Origin' do
-      paths = %w(/api/search /api/v2/search /sayt)
+      paths = %w[/api/search /api/v2/click /api/v2/search /sayt]
 
       paths.each do |path|
         test_body = '{"bar":"foo"}'.freeze
