@@ -6,34 +6,29 @@ describe '/api/v2/click' do
     {
       url: 'https://search.gov',
       query: 'test_query',
-      client_ip: '127.0.0.1',
       position: '1',
       affiliate: 'nps.gov',
       vertical: 'test_vertical',
       module_code: 'BWEB',
-      user_agent: 'test_user_agent',
-      access_key: 'basic_key',
-      referrer: 'https://search.gov/serp'
+      access_key: 'basic_key'
     }
   end
   let(:click_model) { ApiClick }
   let(:click_mock) { instance_double(click_model, log: nil) }
 
-  context 'with valid params' do
-    let(:expected_params) { valid_params }
+  include_context 'when the click request is browser-based'
+
+  it_behaves_like 'a successful click request'
+
+  context 'with authenticty token checking turned on' do
+    before do
+      ActionController::Base.allow_forgery_protection = true
+    end
 
     it_behaves_like 'a successful click request'
 
-    context 'with authenticty token checking turned on' do
-      before do
-        ActionController::Base.allow_forgery_protection = true
-      end
-
-      it_behaves_like 'a successful click request'
-
-      after do
-        ActionController::Base.allow_forgery_protection = false
-      end
+    after do
+      ActionController::Base.allow_forgery_protection = false
     end
   end
 
@@ -53,19 +48,16 @@ describe '/api/v2/click' do
       {
         url: nil,
         query: nil,
-        client_ip: nil,
         position: nil,
         affiliate: nil,
         vertical: nil,
         module_code: nil,
-        user_agent: nil,
         access_key: nil
       }
     end
     let(:expected_error_msg) do
       "[\"Query can't be blank\",\"Position can't be blank\","\
-      "\"Module code can't be blank\",\"Client ip can't be blank\","\
-      "\"User agent can't be blank\",\"Url can't be blank\","\
+      "\"Module code can't be blank\",\"Url can't be blank\","\
       "\"Affiliate can't be blank\",\"Access key can't be blank\"]"
     end
 

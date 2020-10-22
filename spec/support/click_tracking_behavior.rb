@@ -1,4 +1,12 @@
 shared_examples_for 'a successful click request' do
+  let(:expected_params) do
+    valid_params.merge(
+      client_ip: '127.0.0.1',
+      user_agent: 'test_user_agent',
+      referrer: 'https://example.gov/referrer'
+    )
+  end
+
   it 'is a successful request' do
     post endpoint, params: valid_params
 
@@ -67,5 +75,19 @@ shared_examples_for 'urls with invalid utf-8' do
     post endpoint, params: valid_params
 
     expect(response.body).to eq "[\"Url is not a valid format\"]"
+  end
+end
+
+shared_context 'when the click request is browser-based' do
+  before do
+    Rails.application.env_config['HTTP_USER_AGENT'] = 'test_user_agent'
+    Rails.application.env_config['HTTP_REFERER'] = 'https://example.gov/referrer'
+    Rails.application.env_config['REMOTE_ADDR'] = '127.0.0.1'
+  end
+
+  after do
+    Rails.application.env_config['HTTP_USER_AGENT'] = nil
+    Rails.application.env_config['HTTP_REFERER'] = nil
+    Rails.application.env_config['REMOTE_ADDR'] = nil
   end
 end

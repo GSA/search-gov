@@ -34,7 +34,7 @@ Rails.application.routes.draw do
   mount SearchConsumer::API => '/api/c'
 
   get '/sayt' => 'sayt#index'
-  post '/clicked' => 'clicked#index'
+  post '/clicked' => 'clicked#create'
   get '/healthcheck' => 'health_checks#new'
   get '/login' => 'user_sessions#security_notification', as: :login
   get '/signup' => 'user_sessions#security_notification', as: :signup

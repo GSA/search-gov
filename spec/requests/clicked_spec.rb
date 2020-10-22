@@ -15,37 +15,19 @@ describe '/clicked' do
   let(:click_model) { Click }
   let(:click_mock) { instance_double(click_model, log: nil) }
 
-  before do
-    Rails.application.env_config['HTTP_USER_AGENT'] = 'test_user_agent'
-    Rails.application.env_config['HTTP_REFERER'] = 'https://example.gov/referrer'
-  end
+  include_context 'when the click request is browser-based'
 
-  after do
-    Rails.application.env_config['HTTP_USER_AGENT'] = nil
-    Rails.application.env_config['HTTP_REFERER'] = nil
-  end
+  it_behaves_like 'a successful click request'
 
-  context 'with valid params' do
-    let(:expected_params) do
-      valid_params.merge(
-        client_ip: '127.0.0.1',
-        user_agent: 'test_user_agent',
-        referrer: 'https://example.gov/referrer'
-      )
+  context 'with authenticty token checking turned on' do
+    before do
+      ActionController::Base.allow_forgery_protection = true
     end
 
     it_behaves_like 'a successful click request'
 
-    context 'with authenticty token checking turned on' do
-      before do
-        ActionController::Base.allow_forgery_protection = true
-      end
-
-      it_behaves_like 'a successful click request'
-
-      after do
-        ActionController::Base.allow_forgery_protection = false
-      end
+    after do
+      ActionController::Base.allow_forgery_protection = false
     end
   end
 
