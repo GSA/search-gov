@@ -40,6 +40,22 @@ GIT
       i18n (~> 0.6)
 
 GIT
+  remote: https://github.com/GSA/twitter.git
+  revision: c829ec4c7fbd4e2c52fe6fb7d968fd6926fcd7f5
+  branch: 5-stable
+  specs:
+    twitter (5.17.0)
+      addressable (~> 2.3)
+      buftok (~> 0.2.0)
+      equalizer (= 0.0.10)
+      faraday (~> 0.9.0)
+      http (~> 1.0)
+      http_parser.rb (~> 0.6.0)
+      memoizable (~> 0.4.0)
+      naught (~> 1.0)
+      simple_oauth (~> 0.3.0)
+
+GIT
   remote: https://github.com/MothOnMars/medusa
   revision: 75aff7503a1479dd6b3ed0f7775d41ebd1dcff02
   branch: clean_urls
@@ -432,7 +448,7 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
-    json (1.8.6)
+    json (2.3.1)
     json-jwt (1.11.0)
       activesupport (>= 4.2)
       aes_key_wrap
@@ -743,17 +759,6 @@ GEM
       em-twitter (~> 0.3)
       multi_json (~> 1.3)
       twitter (~> 5.5)
-    twitter (5.17.0)
-      addressable (~> 2.3)
-      buftok (~> 0.2.0)
-      equalizer (= 0.0.10)
-      faraday (~> 0.9.0)
-      http (~> 1.0)
-      http_parser.rb (~> 0.6.0)
-      json (~> 1.8)
-      memoizable (~> 0.4.0)
-      naught (~> 1.0)
-      simple_oauth (~> 0.3.0)
     twitter-typeahead-rails (0.11.1)
       actionpack (>= 3.1)
       jquery-rails
@@ -855,7 +860,6 @@ DEPENDENCIES
   jbuilder (~> 2.6.4)
   jquery-rails (~> 4.3.5)
   jquery-ui-rails (~> 6.0.1)
-  json (~> 1.8.6)
   jwt (~> 1.5.6)
   launchy (~> 2.4.3)
   less-rails-bootstrap!
@@ -919,7 +923,7 @@ DEPENDENCIES
   truncator (~> 0.1.7)
   turbolinks (~> 5.0.1)
   tweetstream (~> 2.6.1)
-  twitter (~> 5.5)
+  twitter!
   twitter-typeahead-rails (~> 0.11.1)
   typhoeus (~> 1.3.0)
   uglifier (~> 4.1.2)
