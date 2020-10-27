@@ -54,7 +54,7 @@ describe HumanSessionsController do
 
       before do
         allow(Digest::SHA256).to receive(:hexdigest).and_return('sha-na-na')
-        allow(request).to receive(:remote_ip).and_return('0.0.0.0')
+        request.env['REMOTE_ADDR'] = '0.0.0.0'
         travel_to(Time.gm(1997, 8, 4, 5, 14))
       end
 
