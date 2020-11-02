@@ -3,9 +3,7 @@
 require 'spec_helper'
 
 describe 'A user searches', js: true, vcr: { preserve_exact_body_bytes: true } do
-  before { Rails.application.env_config['HTTP_USER_AGENT'] = 'test_user_agent' }
-
-  after { Rails.application.env_config['HTTP_USER_AGENT'] = nil }
+  include_context 'when the click request is browser-based'
 
   context "a searchgov site" do
     let!(:affiliate) { affiliates(:searchgov_affiliate) }

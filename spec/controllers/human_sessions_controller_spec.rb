@@ -52,8 +52,12 @@ describe HumanSessionsController do
     context 'when the result is actually a success' do
       let(:challenge_outcome) { true }
 
-      before { allow(Digest::SHA256).to receive(:hexdigest).and_return('sha-na-na') }
-      before { travel_to(Time.gm(1997, 8, 4, 5, 14)) }
+      before do
+        allow(Digest::SHA256).to receive(:hexdigest).and_return('sha-na-na')
+        request.env['REMOTE_ADDR'] = '0.0.0.0'
+        travel_to(Time.gm(1997, 8, 4, 5, 14))
+      end
+
       after { travel_back }
 
       it 'records the "success" captcha activity' do
