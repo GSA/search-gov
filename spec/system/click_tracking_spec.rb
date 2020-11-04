@@ -3,6 +3,8 @@
 require 'spec_helper'
 
 describe 'A user searches', js: true, vcr: { preserve_exact_body_bytes: true } do
+  include_context 'when the click request is browser-based'
+
   context "a searchgov site" do
     let!(:affiliate) { affiliates(:searchgov_affiliate) }
 
@@ -43,7 +45,7 @@ describe 'A user searches', js: true, vcr: { preserve_exact_body_bytes: true } d
             expect(logline).to include('"position":"1"')
             expect(logline).to include('"modules":"BOOS"')
             expect(logline).to include('"vertical":"i14y"')
-            expect(logline).to include('"user_agent":')
+            expect(logline).to include('"user_agent":"test_user_agent"')
             expect(logline).to include('"referrer":')
           end
         end
@@ -83,7 +85,7 @@ describe 'A user searches', js: true, vcr: { preserve_exact_body_bytes: true } d
             expect(logline).to include('"position":"1"')
             expect(logline).to include('"modules":"BWEB"')
             expect(logline).to include('"vertical":"web"')
-            expect(logline).to include('"user_agent":')
+            expect(logline).to include('"user_agent":"test_user_agent"')
           end
         end
       end
