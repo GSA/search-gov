@@ -4,6 +4,20 @@ describe '/api/v2/search' do
   fixtures :affiliates
 
   let(:affiliate) { affiliates(:usagov_affiliate) }
+  let(:valid_params) do
+    {
+      access_key: 'usagov_key',
+      affiliate: 'usagov',
+      query: 'api'
+    }
+  end
+  let(:endpoint) { '/api/v2/search' }
+  let(:req_headers) { {} }
+  let(:make_request) do
+    get endpoint, params: valid_params, headers: req_headers
+  end
+
+  it_behaves_like 'a request with CORS support', 'GET'
 
   context 'when there are matching results' do
     before do
