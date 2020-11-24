@@ -25,16 +25,16 @@ class BulkUrlUploadJobCreator
   end
 
   def ensure_valid_content_type
-    return if  BulkUrlUploader::VALID_CONTENT_TYPES.include?(@file.content_type)
+    return if BulkUrlUploader::VALID_CONTENT_TYPES.include?(@file.content_type)
 
     error_message = "files of type #{@file.content_type} are not supported."
     raise(BulkUrlUploader::Error, error_message)
   end
 
   def ensure_not_too_big
-    return if  @file.size <= BulkUrlUploader::MAXIMUM_FILE_SIZE
+    return if @file.size <= BulkUrlUploader::MAXIMUM_FILE_SIZE
 
-    error_message = "#{@file.original_filename} is too big; please split it into smaller files."
+    error_message = "#{@file.original_filename} is too big; please split it."
     raise(BulkUrlUploader::Error, error_message)
   end
 

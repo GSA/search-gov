@@ -17,15 +17,15 @@ class SearchgovUrlBulkUploaderJob < ApplicationJob
   end
 
   def log_results
-    results= uploader.results
+    results = uploader.results
     Rails.logger.info "SearchgovUrlBulkUploaderJob: #{results.name}"
     Rails.logger.info "    #{results.total_count} URLs"
     Rails.logger.info "    #{results.error_count} errors"
   end
 
   def send_results_email
-    results= uploader.results
-    email= BulkUrlUploadResultsMailer.with(user: @user, results: results).results_email
+    results = uploader.results
+    email = BulkUrlUploadResultsMailer.with(user: @user, results: results).results_email
     email.deliver_now
   end
 

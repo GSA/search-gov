@@ -13,11 +13,11 @@ class BulkUrlUploader
     attr_accessor :domains, :ok_count, :error_count, :name
 
     def initialize(name)
-      @name= name
+      @name = name
       @ok_count = 0
       @error_count = 0
       @domains = Set.new
-      @errors = Hash.new {|hash, key| hash[key] = []}
+      @errors = Hash.new { |hash, key| hash[key] = [] }
     end
 
     def add_ok(url)
@@ -44,8 +44,8 @@ class BulkUrlUploader
   end
 
   def initialize(name, url_file)
-    @url_file= url_file
-    @results= Results.new(name)
+    @url_file = url_file
+    @results = Results.new(name)
   end
 
   def upload_and_index

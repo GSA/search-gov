@@ -1641,6 +1641,10 @@ Metrics/BlockLength:
     # By default, exclude the `#refine` method, as it tends to have larger
     # associated blocks.
     - refine
+    # This cop is completely bogus for RSpec describe blocks.
+    - describe
+    - context
+    - include_context
 
 Metrics/BlockNesting:
   Description: 'Avoid excessive block nesting'
@@ -4323,3 +4327,6 @@ Style/ZeroLengthPredicate:
   VersionChanged: 0.39
 
 #################### RSpec ###############################
+
+RSpec/ExampleLength:
+  Enabled: false

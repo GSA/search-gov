@@ -1,8 +1,9 @@
+# frozen_string_literal: true
 
-describe 'BulkUrlUploader' do
+describe BulkUrlUploader do
   let(:urls) { [] }
   let(:url_file) { StringIO.new(urls.join("\n")) }
-  let(:the_uploader) { BulkUrlUploader.new('the-uploader', url_file) }
+  let(:the_uploader) { described_class.new('the-uploader', url_file) }
 
   describe '#upload_and_index' do
     before { the_uploader.upload_and_index }
@@ -10,8 +11,8 @@ describe 'BulkUrlUploader' do
     describe 'happy path with two good URls' do
       let(:urls) do
         [
-          "https://agency.gov/a-url",
-          "https://agency.gov/another-url"
+          'https://agency.gov/a-url',
+          'https://agency.gov/another-url'
         ]
       end
 
@@ -41,7 +42,7 @@ describe 'BulkUrlUploader' do
     end
 
     describe 'with a URL that is for a bad domain' do
-      let(:urls) { [ "https://bad-agency.gov/a-url" ] }
+      let(:urls) { ['https://bad-agency.gov/a-url'] }
 
       it 'does not create the SearchgovUrl' do
         expect(SearchgovUrl.find_by(url: urls.first)).to be(nil)
@@ -64,7 +65,9 @@ describe 'BulkUrlUploader' do
       end
 
       it 'reports the url with the error' do
-        expect(the_uploader.results.urls_with(the_uploader.results.error_messages.first)).to eq(urls)
+        the_error = the_uploader.results.error_messages.first
+        urls_with_the_error = the_uploader.results.urls_with(the_error)
+        expect(urls_with_the_error).to eq(urls)
       end
     end
   end

@@ -27,30 +27,18 @@ describe BulkUrlUploadJobCreator do
       let(:file_name) { 'txt/too_big_url_file.txt' }
 
       it 'raises an exception' do
-        expect { job }.to raise_error(BulkUrlUploader::Error)
-      end
-
-      it 'does not queue a job' do
-        expect do
-          job
-        rescue BulkUrlUploader::Error
-        end.not_to have_enqueued_job
+        expect { job }.to raise_error(BulkUrlUploader::Error).and have_not_enqueued_job
       end
     end
 
     describe 'with a url file that is the wrong mime type' do
       let(:file_name) { 'word/bogus_url_file.docx' }
-      let(:file_type) { 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' }
-
-      it 'raises an exception' do
-        expect { job }.to raise_error(BulkUrlUploader::Error)
+      let(:file_type) do
+        'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
       end
 
-      it 'does not queue a job' do
-        expect do
-          job
-        rescue BulkUrlUploader::Error
-        end.not_to have_enqueued_job
+      it 'raises an exception' do
+        expect { job }.to raise_error(BulkUrlUploader::Error).and have_not_enqueued_job
       end
     end
   end

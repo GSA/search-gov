@@ -8,7 +8,7 @@ describe 'Searchgov Domain Management' do
 
     let(:reindex) do
       visit url
-      row= find(:xpath, '//tbody[@class="records"]/tr[1]')
+      row = find(:xpath, '//tbody[@class="records"]/tr[1]')
       row.click_link('Reindex')
     end
 

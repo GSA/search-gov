@@ -4,7 +4,7 @@ describe SearchgovDomainIndexerJob do
   subject(:perform) { SearchgovDomainIndexerJob.perform_now(args) }
 
   let!(:searchgov_domain) do
-    searchgov_domain= SearchgovDomain.find_by_domain('agency.gov')
+    searchgov_domain = SearchgovDomain.find_by(domain: 'agency.gov')
     searchgov_domain.update(status: '200', activity: 'indexing')
     searchgov_domain
   end

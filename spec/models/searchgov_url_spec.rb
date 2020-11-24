@@ -445,12 +445,12 @@ describe SearchgovUrl do
       it 'fetches and indexes the document' do
         expect(I14yDocument).to receive(:create).
           with(hash_including(
-            handle: 'searchgov',
-            path: 'https://agency.gov/test.txt',
-            title: 'test.txt',
-            description: nil,
-            content: 'This is my text content.',
-            language: 'en'
+                 handle: 'searchgov',
+                 path: 'https://agency.gov/test.txt',
+                 title: 'test.txt',
+                 description: nil,
+                 content: 'This is my text content.',
+                 language: 'en'
         ))
         fetch
       end

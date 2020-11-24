@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe SearchgovDomain do
   before do
-    SearchgovDomain.find_by_domain(domain).delete
+    SearchgovDomain.find_by(domain: domain).delete
   end
 
   let(:domain) { 'agency.gov' }

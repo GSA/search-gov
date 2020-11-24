@@ -92,34 +92,38 @@ shared_examples_for 'a record with a fetchable url' do
     end
 
     context "when an URL contains an anchor tag" do
-      let(:url) { "http://agency.gov/sdfsdf#anchorme" }
+      let(:url) { 'http://agency.gov/sdfsdf#anchorme' }
+
       it "should remove it" do
         expect(described_class.create!(valid_attributes.merge(url: url)).url).
-          to eq("http://agency.gov/sdfsdf")
+          to eq('http://agency.gov/sdfsdf')
       end
     end
 
     context "when URL is mixed case" do
-      let(:url) { "HTTP://Agency.GOV/UsaGovLovesToCapitalize" }
+      let(:url) { 'HTTP://Agency.GOV/UsaGovLovesToCapitalize' }
+
       it "should downcase the scheme and host only" do
         expect(described_class.create!(valid_attributes.merge(url: url)).url).
-          to eq("http://agency.gov/UsaGovLovesToCapitalize")
+          to eq('http://agency.gov/UsaGovLovesToCapitalize')
       end
     end
 
     context "when URL is missing trailing slash for a scheme+host URL" do
-      let(:url) { "http://agency.gov" }
+      let(:url) { 'http://agency.gov' }
+
       it "should append a /" do
         expect(described_class.create!(valid_attributes.merge(url: url)).url).
-          to eq("http://agency.gov/")
+          to eq('http://agency.gov/')
       end
     end
 
     context "when URL contains duplicate leading slashes in request" do
-      let(:url) { "http://agency.gov//hey/I/am/usagov/and/love/extra////slashes.shtml" }
+      let(:url) { 'http://agency.gov//hey/I/am/usagov/and/love/extra////slashes.shtml' }
+
       it "should collapse the slashes" do
         expect(described_class.create!(valid_attributes.merge(url: url)).url).
-          to eq("http://agency.gov/hey/I/am/usagov/and/love/extra/slashes.shtml")
+          to eq('http://agency.gov/hey/I/am/usagov/and/love/extra/slashes.shtml')
       end
     end
 
@@ -200,7 +204,7 @@ end
 shared_examples_for 'a record with an indexable url' do
   describe 'validations' do
     context 'when the url extension is blacklisted' do
-      let(:movie_url) { "http://agency.gov/some.mov" }
+      let(:movie_url) { 'http://agency.gov/some.mov' }
       let(:record) { described_class.new(valid_attributes.merge(url: movie_url)) }
 
       it "is not valid" do
