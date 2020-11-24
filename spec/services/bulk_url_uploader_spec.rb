@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
 describe BulkUrlUploader do
-  let(:urls) { [] }
-  let(:url_file) { StringIO.new(urls.join("\n")) }
-  let(:the_uploader) { described_class.new('the-uploader', url_file) }
+  let(:raw_urls) { [] }
+  let(:urls) { StringIO.new(raw_urls.join("\n")) }
+  let(:uploader) { described_class.new('the-uploader', urls) }
 
   describe '#upload_and_index' do
-    before { the_uploader.upload_and_index }
+    before { uploader.upload_and_index }
 
     describe 'happy path with two good URls' do
-      let(:urls) do
+      let(:raw_urls) do
         [
           'https://agency.gov/a-url',
           'https://agency.gov/another-url'
@@ -17,57 +17,57 @@ describe BulkUrlUploader do
       end
 
       it 'creates the first SearchgovUrl' do
-        expect(SearchgovUrl.find_by(url: urls.first)).not_to be(nil)
+        expect(SearchgovUrl.find_by(url: raw_urls.first)).not_to be(nil)
       end
 
       it 'creates the second SearchgovUrl' do
-        expect(SearchgovUrl.find_by(url: urls.second)).not_to be(nil)
+        expect(SearchgovUrl.find_by(url: raw_urls.second)).not_to be(nil)
       end
 
       it 'reports the number of URLs processed' do
-        expect(the_uploader.results.total_count).to eq(urls.length)
+        expect(uploader.results.total_count).to eq(raw_urls.length)
       end
 
       it 'reports the number of URLs created' do
-        expect(the_uploader.results.ok_count).to eq(urls.length)
+        expect(uploader.results.ok_count).to eq(raw_urls.length)
       end
 
       it 'reports the number of errors' do
-        expect(the_uploader.results.error_count).to eq(0)
+        expect(uploader.results.error_count).to eq(0)
       end
 
       it 'does not report any errors' do
-        expect(the_uploader.results.error_messages).to be_empty
+        expect(uploader.results.error_messages).to be_empty
       end
     end
 
     describe 'with a URL that is for a bad domain' do
-      let(:urls) { ['https://bad-agency.gov/a-url'] }
+      let(:raw_urls) { ['https://bad-agency.gov/a-url'] }
 
       it 'does not create the SearchgovUrl' do
-        expect(SearchgovUrl.find_by(url: urls.first)).to be(nil)
+        expect(SearchgovUrl.find_by(url: raw_urls.first)).to be(nil)
       end
 
       it 'reports the number of URLs processed' do
-        expect(the_uploader.results.total_count).to eq(urls.length)
+        expect(uploader.results.total_count).to eq(raw_urls.length)
       end
 
       it 'reports the number of URLs created' do
-        expect(the_uploader.results.ok_count).to eq(0)
+        expect(uploader.results.ok_count).to eq(0)
       end
 
       it 'reports the number of errors' do
-        expect(the_uploader.results.error_count).to eq(urls.length)
+        expect(uploader.results.error_count).to eq(raw_urls.length)
       end
 
       it 'reports the error' do
-        expect(the_uploader.results.error_messages.length).to eq(urls.length)
+        expect(uploader.results.error_messages.length).to eq(raw_urls.length)
       end
 
       it 'reports the url with the error' do
-        the_error = the_uploader.results.error_messages.first
-        urls_with_the_error = the_uploader.results.urls_with(the_error)
-        expect(urls_with_the_error).to eq(urls)
+        error = uploader.results.error_messages.first
+        urls_with_error = uploader.results.urls_with(error)
+        expect(urls_with_error).to eq(raw_urls)
       end
     end
   end

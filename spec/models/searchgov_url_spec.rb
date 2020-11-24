@@ -1,13 +1,10 @@
 require 'spec_helper'
 
 describe SearchgovUrl do
-  fixtures :searchgov_urls, :searchgov_domain
-
   let(:url) { 'http://www.agency.gov/boring.html' }
-  let(:html) { read_fixture_file("/html/page_with_og_metadata.html") }
-  let(:agency_domain) { SearchgovDomain.find_by(domain: 'agency.gov') }
-  let(:valid_attributes) { { url: url, searchgov_domain: agency_domain } }
-  let(:searchgov_url) { SearchgovUrl.new(valid_attributes) }
+  let(:html) { read_fixture_file('/html/page_with_og_metadata.html') }
+  let(:valid_attributes) { { url: url } }
+  let(:searchgov_url) { described_class.new(valid_attributes) }
   let(:i14y_document) { I14yDocument.new }
 
   it { is_expected.to have_readonly_attribute(:url) }
@@ -30,44 +27,47 @@ describe SearchgovUrl do
     describe '.fetch_required' do
 
       it 'includes urls that have never been crawled and outdated urls' do
-        expect(SearchgovUrl.fetch_required.pluck(:url)).
+        expect(described_class.fetch_required.pluck(:url)).
           to include('http://www.agency.gov/new', 'http://www.agency.gov/outdated')
       end
 
       it 'does not include current, crawled and not enqueued urls' do
-        expect(SearchgovUrl.fetch_required.pluck(:url)).
+        expect(described_class.fetch_required.pluck(:url)).
           not_to include('http://www.agency.gov/current')
       end
 
       it 'includes urls that have been enqueued for reindexing' do
-        expect(SearchgovUrl.fetch_required.pluck(:url)).
+        expect(described_class.fetch_required.pluck(:url)).
           to include 'http://www.agency.gov/enqueued'
       end
 
       it 'includes urls last crawled more than 30 days and crawl status is ok' do
-        expect(SearchgovUrl.fetch_required.pluck(:url)).
+        expect(described_class.fetch_required.pluck(:url)).
           to include 'http://www.agency.gov/crawled_more_than_month'
       end
     end
   end
 
   describe 'validations' do
-    it 'requires a valid domain' do
-      pending "probably removable, but get Martha's opinion first"
+    describe 'when the URL domain does not already exist in our database' do
+      let(:url) { 'https://new-agency.com/index.html' }
 
-      searchgov_url = SearchgovUrl.new(url: 'https://foo/bar')
-      expect(searchgov_url).not_to be_valid
-      expect(searchgov_url.errors.messages[:searchgov_domain]).
-        to include 'is invalid'
+      it { is_expected.not_to be_valid }
+
+      it 'generates a helpful error message' do
+        searchgov_url.valid?
+        expect(searchgov_url.errors.messages[:searchgov_domain]).
+          to include 'is not a valid SearchgovDomain'
+      end
     end
 
     describe 'validating url uniqueness' do
-      let!(:existing) { SearchgovUrl.create!(valid_attributes) }
+      let!(:existing) { described_class.create!(valid_attributes) }
 
       it { is_expected.to validate_uniqueness_of(:url).on(:create) }
 
       it 'is case-sensitive' do
-        expect(SearchgovUrl.new(url: 'https://www.agency.gov/BORING.html')).to be_valid
+        expect(described_class.new(url: 'https://www.agency.gov/BORING.html')).to be_valid
       end
     end
   end
@@ -81,7 +81,7 @@ describe SearchgovUrl do
       end
 
       context 'when the document cannot be deleted' do
-        let!(:searchgov_url) { SearchgovUrl.create!(valid_attributes) }
+        let!(:searchgov_url) { described_class.create!(valid_attributes) }
 
         before do
           allow(I14yDocument).to receive(:delete).
@@ -90,7 +90,7 @@ describe SearchgovUrl do
         end
 
         it 'deletes the Searchgov Url' do
-          expect { searchgov_url.destroy }.to change{ SearchgovUrl.count }.by(-1)
+          expect { searchgov_url.destroy }.to change{ described_class.count }.by(-1)
         end
       end
     end
@@ -103,8 +103,7 @@ describe SearchgovUrl do
   end
 
   describe '#fetch' do
-    let!(:searchgov_url) { SearchgovUrl.create!(valid_attributes) }
-
+    let!(:searchgov_url) { described_class.create!(valid_attributes) }
     let(:searchgov_domain) do
       instance_double(SearchgovDomain, check_status: '200 OK', :available? => true)
     end
@@ -146,7 +145,7 @@ describe SearchgovUrl do
 
       context 'when the record is enqueued for reindex' do
         let(:searchgov_url) do
-          SearchgovUrl.create!(valid_attributes.merge(enqueued_for_reindex: true))
+          described_class.create!(valid_attributes.merge(enqueued_for_reindex: true))
         end
 
         it 'sets enqueued_for_reindex to false' do
@@ -445,12 +444,12 @@ describe SearchgovUrl do
       it 'fetches and indexes the document' do
         expect(I14yDocument).to receive(:create).
           with(hash_including(
-                 handle: 'searchgov',
-                 path: 'https://agency.gov/test.txt',
-                 title: 'test.txt',
-                 description: nil,
-                 content: 'This is my text content.',
-                 language: 'en'
+            handle: 'searchgov',
+            path: 'https://agency.gov/test.txt',
+            title: 'test.txt',
+            description: nil,
+            content: 'This is my text content.',
+            language: 'en'
         ))
         fetch
       end
@@ -495,7 +494,7 @@ describe SearchgovUrl do
       end
 
       it 'creates a url' do
-        expect(SearchgovUrl).to receive(:create).with(url: new_url)
+        expect(described_class).to receive(:create).with(url: new_url)
         fetch
       end
 
@@ -518,7 +517,7 @@ describe SearchgovUrl do
         end
 
         it 'does not create a new url' do
-          expect(SearchgovUrl).not_to receive(:create).with(url: new_url)
+          expect(described_class).not_to receive(:create).with(url: new_url)
           fetch
         end
       end
@@ -533,7 +532,7 @@ describe SearchgovUrl do
         end
 
         it 'creates a url' do
-          expect(SearchgovUrl).to receive(:create).
+          expect(described_class).to receive(:create).
             with(url: 'http://www.agency.gov/client_side.html')
           fetch
         end
@@ -599,11 +598,11 @@ describe SearchgovUrl do
       end
 
       it 'raises an error, including the domain' do
-        expect{ fetch }.to raise_error(SearchgovUrl::DomainError, 'unavailable.gov: 403')
+        expect{ fetch }.to raise_error(described_class::DomainError, 'unavailable.gov: 403')
       end
 
       it 'does not fetch the url' do
-        expect{ fetch }.to raise_error(SearchgovUrl::DomainError, 'unavailable.gov: 403')
+        expect{ fetch }.to raise_error(described_class::DomainError, 'unavailable.gov: 403')
         expect(stub_request(:get, url)).not_to have_been_requested
       end
     end

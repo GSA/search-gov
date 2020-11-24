@@ -20,7 +20,10 @@ class SearchgovUrl < ApplicationRecord
   attr_readonly :url
 
   validates_associated :searchgov_domain, on: :create
-  validates_presence_of :searchgov_domain, on: :create
+  validates(:searchgov_domain,
+            presence: { message: 'is not a valid SearchgovDomain' },
+            on: :create
+            )
 
   validates :url, uniqueness: true
   validates :url_extension,

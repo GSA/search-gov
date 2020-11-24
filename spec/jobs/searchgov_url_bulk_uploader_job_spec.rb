@@ -5,33 +5,17 @@ describe SearchgovUrlBulkUploaderJob do
 
   describe '#perform' do
     let(:user) { users(:affiliate_admin) }
-
-    let(:redis) { Redis.new(host: REDIS_HOST, port: REDIS_PORT) }
-    let(:redis_key) { 'bulk_url_upload:some-file.txt:a-guid' }
-
     let(:urls) do
       [
         'https://agency.gov/one-url',
         'https://agency.gov/another-url'
       ]
     end
-    let(:url_file_contents) { urls.join("\n") + "\n" }
-
     let(:perform) do
-      saved_perform_delivery = ActionMailer::Base.perform_deliveries
-      ActionMailer::Base.perform_deliveries = true
-
-      subject.perform(user, redis_key)
-
-      ActionMailer::Base.perform_deliveries = saved_perform_delivery
+      subject.perform(user, 'some-file.txt', urls)
     end
 
-    describe 'when there is a valid url list and a valid user' do
-      before do
-        SearchgovDomain.create(domain: 'agency.gov')
-        redis.set(redis_key, url_file_contents)
-      end
-
+    describe 'when there is a valid url list' do
       it 'uploads the first url' do
         perform
         expect(SearchgovUrl.find_by(url: urls[0])).not_to be(nil)
@@ -44,11 +28,6 @@ describe SearchgovUrlBulkUploaderJob do
 
       it 'sends the notification email' do
         expect { perform }.to change { ActionMailer::Base.deliveries.count }.by(1)
-      end
-
-      it 'removes the url list from redis' do
-        perform
-        expect(redis.exists(redis_key)).to be(false)
       end
     end
   end

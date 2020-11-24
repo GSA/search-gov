@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'Searchgov Domain Management' do
   let(:url) { '/admin/searchgov_domains' }
 
@@ -6,10 +8,9 @@ describe 'Searchgov Domain Management' do
   describe 'reindexing a domain' do
     include_context 'log in super admin'
 
-    let(:reindex) do
+    subject(:reindex) do
       visit url
-      row = find(:xpath, '//tbody[@class="records"]/tr[1]')
-      row.click_link('Reindex')
+      click_link('Reindex', match: :first)
     end
 
     it 'triggers a reindex of the domain' do

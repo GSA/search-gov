@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Preview all emails at http://localhost:3000/rails/mailers/bulk_url_upload_results_mailer
+# Preview all emails at http://localhost:3000/rails/mailers
 class BulkUrlUploadResultsMailerPreview < ActionMailer::Preview
   def results_email
     user = User.first

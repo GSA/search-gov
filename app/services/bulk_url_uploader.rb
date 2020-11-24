@@ -2,7 +2,7 @@
 
 class BulkUrlUploader
   MAXIMUM_FILE_SIZE = 10.megabytes
-  VALID_CONTENT_TYPES = %w[text/plain txt].freeze
+  VALID_CONTENT_TYPES = %w[text/plain].freeze
 
   attr_reader :results
 
@@ -10,23 +10,23 @@ class BulkUrlUploader
   end
 
   class Results
-    attr_accessor :domains, :ok_count, :error_count, :name
+    attr_accessor :searchgov_domains, :ok_count, :error_count, :name
 
     def initialize(name)
       @name = name
       @ok_count = 0
       @error_count = 0
-      @domains = Set.new
+      @searchgov_domains = Set.new
       @errors = Hash.new { |hash, key| hash[key] = [] }
     end
 
     def add_ok(url)
-      @ok_count += 1
-      @domains << url.searchgov_domain
+      self.ok_count += 1
+      searchgov_domains << url.searchgov_domain
     end
 
     def add_error(error_message, url)
-      @error_count += 1
+      self.error_count += 1
       @errors[error_message] << url
     end
 
@@ -43,36 +43,76 @@ class BulkUrlUploader
     end
   end
 
-  def initialize(name, url_file)
-    @url_file = url_file
-    @results = Results.new(name)
+  class UrlFileValidator
+    def initialize(uploaded_file)
+      @uploaded_file = uploaded_file
+    end
+
+    def validate!
+      ensure_present
+      ensure_valid_content_type
+      ensure_not_too_big
+    end
+
+    def ensure_valid_content_type
+      return if BulkUrlUploader::VALID_CONTENT_TYPES.include?(@uploaded_file.content_type)
+
+      error_message = "Files of type #{@uploaded_file.content_type} are not supported."
+      raise(BulkUrlUploader::Error, error_message)
+    end
+
+    def ensure_present
+      return if @uploaded_file.present?
+
+      error_message = 'Please choose a file to upload.'
+      raise(BulkUrlUploader::Error, error_message)
+    end
+
+    def ensure_not_too_big
+      return if @uploaded_file.size <= BulkUrlUploader::MAXIMUM_FILE_SIZE
+
+      error_message = "#{@uploaded_file.original_filename} is too big; please split it."
+      raise(BulkUrlUploader::Error, error_message)
+    end
+  end
+
+  def self.create_job(uploaded_file, user)
+    BulkUrlUploader::UrlFileValidator.new(uploaded_file).validate!
+    SearchgovUrlBulkUploaderJob.perform_later(
+      user,
+      uploaded_file.original_filename,
+      uploaded_file.tempfile.readlines
+    )
+  end
+
+  def initialize(name, urls)
+    @urls = urls
+    @name = name
   end
 
   def upload_and_index
+    @results = Results.new(@name)
     upload_urls
     index_domains
   end
 
   def upload_urls
-    @url_file.each_line do |raw_url|
+    @urls.each do |raw_url|
       add_url(raw_url)
     end
   end
 
   def index_domains
-    @results.domains.each do |domain|
+    @results.searchgov_domains.each do |domain|
       Rails.logger.info "Starting indexing for #{domain.domain}"
       domain.index_urls
     end
   end
 
   def add_url(raw_url)
-    raw_url.strip!
-    begin
-      url = SearchgovUrl.create!(url: raw_url)
-      @results.add_ok(url)
-    rescue ActiveRecord::RecordInvalid => e
-      @results.add_error(e.message, raw_url)
-    end
+    url = SearchgovUrl.create!(url: raw_url.strip)
+    @results.add_ok(url)
+  rescue StandardError => e
+    @results.add_error(e.message, raw_url)
   end
 end

@@ -56,6 +56,7 @@ RSpec.configure do |config|
 
   config.mock_with :rspec
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  config.file_fixture_path = "#{::Rails.root}/spec/fixtures"
   config.use_transactional_fixtures = true
   config.include Paperclip::Shoulda::Matchers
   config.include ActiveSupport::Testing::TimeHelpers

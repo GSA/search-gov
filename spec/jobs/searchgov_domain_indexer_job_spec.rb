@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe SearchgovDomainIndexerJob do
-  subject(:perform) { SearchgovDomainIndexerJob.perform_now(args) }
+  subject(:perform) { described_class.perform_now(args) }
 
   let!(:searchgov_domain) do
     searchgov_domain = SearchgovDomain.find_by(domain: 'agency.gov')
@@ -24,7 +26,7 @@ describe SearchgovDomainIndexerJob do
     end
 
     it 'transitions the domain activity back to "idle"' do
-      expect{ perform }.to change{ searchgov_domain.activity }.
+      expect { perform }.to change(searchgov_domain, :activity).
         from('indexing').to('idle')
     end
 
@@ -44,21 +46,24 @@ describe SearchgovDomainIndexerJob do
 
   context 'when a domain has outdated urls' do
     let!(:searchgov_url) do
-      SearchgovUrl.create!(url: 'https://agency.gov/', last_crawled_at: 1.week.ago, lastmod: 1.day.ago)
+      SearchgovUrl.create!(url: 'https://agency.gov/',
+                           last_crawled_at: 1.week.ago,
+                           lastmod: 1.day.ago)
     end
 
     it 'fetches the url' do
-      expect{ perform }.to change{ searchgov_url.reload.last_crawled_at }
+      expect { perform }.to(change{ searchgov_url.reload.last_crawled_at })
     end
   end
 
   context 'when a domain has no unfetched urls' do
     it 'does not raise an error' do
-      expect{ perform }.not_to raise_error
+      expect { perform }.not_to raise_error
     end
 
     it 'does not enqueue subsequent jobs' do
-      expect{ perform }.not_to have_enqueued_job(SearchgovDomainIndexerJob)
+      expect { perform }.
+        not_to have_enqueued_job(described_class)
     end
   end
 end
