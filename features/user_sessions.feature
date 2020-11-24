@@ -8,10 +8,17 @@ Feature: User sessions
 
   Scenario: Affiliate manager should be on the site home page upon successful login
     When I am logged in with email "affiliate_manager@fixtures.org"
+    And I go to the login page
     Then I should be on the gobiernousa's Dashboard page
+
+  Scenario: Affiliate admin should be on the site home page upon successful login
+    When I am logged in with email "affiliate_admin@fixtures.org"
+    And I go to the login page
+    Then I should be on the new site page
 
   Scenario: User is not approved
     Given I am logged in with email "affiliate_manager_with_not_approved_status@fixtures.org"
+    And I go to the login page
     Then I should be on the login page
     And I should see "These credentials are not recognized as valid for accessing Search.gov. Please reach out to search@support.digitalgov.gov if you believe this is in error."
 
