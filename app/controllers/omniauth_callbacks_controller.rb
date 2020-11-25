@@ -11,8 +11,8 @@ class OmniauthCallbacksController < ApplicationController
     try_to_login
   rescue LoginError
     flash[:error] = 'Access Denied: These credentials are not recognized as valid' \
-                    ' for accessing Search.gov. <br>Please reach out to' \
-                    ' search@support.digitalgov.gov if you believe this is in error.'
+                    ' for accessing Search.gov. <br />Please reach out to' \
+                    ' search@support.digitalgov.gov if you believe this is an error.'
     redirect_to('/login')
   rescue InternalLoginError => e
     flash[:error] = "login internal error: #{e.message}"
