@@ -71,7 +71,7 @@ describe OmniauthCallbacksController do
       end
 
       describe 'and the user is pending approval' do
-        let(:user_approval_status) { 'pending approval' }
+        let(:user_approval_status) { 'pending_approval' }
 
         it 'is the users account page' do
           expect(get_login_dot_gov).to redirect_to(edit_account_path)
@@ -146,7 +146,7 @@ describe OmniauthCallbacksController do
       end
 
       describe 'and the user is pending approval' do
-        let(:user_approval_status) { 'pending approval' }
+        let(:user_approval_status) { 'pending_approval' }
 
         it 'is the users account page' do
           expect(get_login_dot_gov).to redirect_to(edit_account_path)

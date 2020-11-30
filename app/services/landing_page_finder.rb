@@ -9,12 +9,24 @@ class LandingPageFinder
   end
 
   def landing_page
-    (@user.approval_status == 'pending_approval' && edit_account_path) ||
-      (!@user.complete? && edit_account_path) ||
-      @return_to ||
-      (@user.is_affiliate_admin? && admin_home_page_path) ||
+    destination_edit_account||
+      destination_original ||
+      destination_affiliate_admin ||
       destination_site_page ||
       new_site_path
+  end
+
+  def destination_edit_account
+    (@user.approval_status == 'pending_approval' && edit_account_path) ||
+      (!@user.complete? && edit_account_path)
+  end
+
+  def destination_original
+    @return_to
+  end
+
+  def destination_affiliate_admin
+    @user.is_affiliate_admin? && admin_home_page_path
   end
 
   def destination_site_page

@@ -27,37 +27,9 @@ class OmniauthCallbacksController < ApplicationController
     redirect_to(destination)
   end
 
-  def destination_edit_account
-    (user.approval_status == 'pending approval' && edit_account_path) ||
-      (!user.complete? && edit_account_path)
-  end
-
-  def destination_affiliate_admin
-    user.is_affiliate_admin? && admin_home_page_path
-  end
-
-  def destination_site_page
-    user.is_affiliate? && affiliate_site_page
-  end
-
-  def destination_original
-    @return_to
-  end
-
   def destination
-    destination_edit_account ||
-      destination_original ||
-      destination_affiliate_admin ||
-      destination_site_page ||
-      new_site_path
-  end
-
-  def affiliate_site_page
-    if user.default_affiliate
-      site_path(user.default_affiliate)
-    elsif !user.affiliates.empty?
-      site_path(user.affiliates.first)
-    end
+    finder = LandingPageFinder.new(user, @return_to)
+    finder.landing_page
   end
 
   def user
