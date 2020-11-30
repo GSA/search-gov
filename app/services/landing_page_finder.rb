@@ -13,8 +13,12 @@ class LandingPageFinder
       (!@user.complete? && edit_account_path) ||
       @return_to ||
       (@user.is_affiliate_admin? && admin_home_page_path) ||
-      (@user.is_affiliate? && affiliate_site_page) ||
+      destination_site_page ||
       new_site_path
+  end
+
+  def destination_site_page
+    @user.is_affiliate? && affiliate_site_page
   end
 
   def affiliate_site_page
