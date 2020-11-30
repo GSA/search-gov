@@ -13,8 +13,15 @@ class LandingPageFinder
       (!@user.complete? && edit_account_path) ||
       @return_to ||
       (@user.is_affiliate_admin? && admin_home_page_path) ||
-      (@user.is_affiliate? && @user.default_affiliate && site_path(@user.default_affiliate)) ||
-      (@user.is_affiliate? && !@user.affiliates.empty? && site_path(@user.affiliates.first)) ||
+      (@user.is_affiliate? && affiliate_site_page) ||
       new_site_path
+  end
+
+  def affiliate_site_page
+    if @user.default_affiliate
+      site_path(@user.default_affiliate)
+    elsif !@user.affiliates.empty?
+      site_path(@user.affiliates.first)
+    end
   end
 end
