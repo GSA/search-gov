@@ -28,6 +28,6 @@ class SearchgovUrlBulkUploaderJob < ApplicationJob
   def send_results_email
     results = @uploader.results
     email = BulkUrlUploadResultsMailer.with(user: @user, results: results).results_email
-    email.deliver_now
+    email.deliver_now!
   end
 end
