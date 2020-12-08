@@ -15,9 +15,13 @@ describe '/api/v2/click' do
   end
   let(:click_model) { ApiClick }
   let(:click_mock) { instance_double(click_model, log: nil) }
+  let(:req_headers) { {} }
+  let(:make_request) do
+    post endpoint, params: valid_params, headers: req_headers
+  end
 
   include_context 'when the click request is browser-based'
-
+  it_behaves_like 'a request with CORS support', 'POST'
   it_behaves_like 'a successful click request'
 
   context 'with authenticty token checking turned on' do

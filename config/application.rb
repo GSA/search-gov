@@ -4,7 +4,6 @@ require 'rails/all'
 require './lib/middlewares/reject_invalid_request_uri.rb'
 require './lib/middlewares/downcase_route.rb'
 require './lib/middlewares/adjust_client_ip.rb'
-require './lib/middlewares/filtered_cors.rb'
 require './lib/middlewares/filtered_jsonp.rb'
 
 
@@ -35,17 +34,7 @@ module Usasearch
     config.middleware.use RejectInvalidRequestUri
     config.middleware.use DowncaseRoute
     config.middleware.use AdjustClientIp
-    config.middleware.use FilteredCORS
     config.middleware.use FilteredJSONP
-    # config.middleware.use ::Rack::PerftoolsProfiler
-
-    config.middleware.insert_before 0, Rack::Cors do
-      allow do
-        origins '*'
-        resource '/api/c/', :headers => :any, :methods => [:get, :put, :post, :options]
-        resource '/assets/*', :headers => :any, :methods => [:get, :head, :options]
-      end
-    end
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
