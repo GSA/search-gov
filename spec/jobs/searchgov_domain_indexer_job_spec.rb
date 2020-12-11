@@ -26,7 +26,7 @@ describe SearchgovDomainIndexerJob do
     end
 
     it 'transitions the domain activity back to "idle"' do
-      expect { perform }.to change(searchgov_domain, :activity).
+      expect { perform }.to change { searchgov_domain.activity }.
         from('indexing').to('idle')
     end
 

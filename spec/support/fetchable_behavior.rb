@@ -136,7 +136,7 @@ shared_examples_for 'a record with a fetchable url' do
       let(:url) { 'www.nps.gov/sdfsdf' }
 
       it 'prepends it with https://' do
-        expect { record.valid? }.to change(record, :url).
+        expect { record.valid? }.to change { record.url }.
           from(url).to('https://www.nps.gov/sdfsdf')
       end
     end
@@ -145,7 +145,7 @@ shared_examples_for 'a record with a fetchable url' do
       let(:url) { 'http://www.irs.gov/foo?bar=baz' }
 
       it 'retains the query parameters' do
-        expect { record.valid? }.not_to change(record, :url)
+        expect { record.valid? }.not_to change { record.url }
       end
     end
 
@@ -154,7 +154,7 @@ shared_examples_for 'a record with a fetchable url' do
 
       it 'escapes the url' do
         expect { record.valid? }.
-          to change(record, :url).
+          to change { record.url }.
           from(url).to('https://www.foo.gov/my_url%E2%80%99s_weird!')
       end
 
@@ -162,7 +162,7 @@ shared_examples_for 'a record with a fetchable url' do
         let(:url) { 'https://www.foo.gov/my_url%E2%80%99s_weird!' }
 
         it 'does not re-escape the url' do
-          expect{ record.valid? }.not_to(change{ record.url })
+          expect { record.valid? }.not_to(change { record.url })
         end
       end
     end

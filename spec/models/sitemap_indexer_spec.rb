@@ -27,7 +27,7 @@ describe SitemapIndexer do
     subject(:index) { indexer.index }
 
     it 'creates searchgov urls' do
-      expect { index }.to change(SearchgovUrl, :count).by(1)
+      expect { index }.to change{ SearchgovUrl.count }.by(1)
     end
 
     context 'when updating the counter caches' do
