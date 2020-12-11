@@ -76,6 +76,11 @@ class BulkUrlUploader
     end
   end
 
+  def initialize(name, urls)
+    @urls = urls
+    @name = name
+  end
+
   def self.create_job(uploaded_file, user)
     BulkUrlUploader::UrlFileValidator.new(uploaded_file).validate!
     SearchgovUrlBulkUploaderJob.perform_later(
@@ -83,11 +88,6 @@ class BulkUrlUploader
       uploaded_file.original_filename,
       uploaded_file.tempfile.readlines
     )
-  end
-
-  def initialize(name, urls)
-    @urls = urls
-    @name = name
   end
 
   def upload_and_index

@@ -90,7 +90,7 @@ RSpec.describe BulkUrlUploadResultsMailer, type: :mailer do
         expect(mail_body).to match(/#{first_error_message}\s+#{first_bad_url}/)
       end
 
-      it 'shows the second URL validion failure' do
+      it 'shows the second URL validation failure' do
         expect(mail_body).to match(/#{second_error_message}\s+#{second_bad_url}/)
       end
     end

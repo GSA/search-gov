@@ -49,7 +49,7 @@ describe SearchgovUrl do
   end
 
   describe 'validations' do
-    describe 'when the URL domain does not already exist in our database' do
+    context 'when the URL domain does not already exist in our database' do
       let(:url) { 'https://new-agency.com/index.html' }
 
       it { is_expected.not_to be_valid }
