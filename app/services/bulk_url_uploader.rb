@@ -96,6 +96,8 @@ class BulkUrlUploader
     index_domains
   end
 
+  private
+
   def upload_urls
     @urls.each do |raw_url|
       add_url(raw_url)
