@@ -56,6 +56,7 @@ RSpec.configure do |config|
 
   config.mock_with :rspec
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  config.file_fixture_path = "#{::Rails.root}/spec/fixtures"
   config.use_transactional_fixtures = true
   config.include Paperclip::Shoulda::Matchers
   config.include ActiveSupport::Testing::TimeHelpers
@@ -122,3 +123,5 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
+
+RSpec::Matchers.define_negated_matcher :have_not_enqueued_job, :have_enqueued_job

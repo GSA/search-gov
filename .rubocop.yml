@@ -4332,5 +4332,12 @@ Style/ZeroLengthPredicate:
 RSpec/ExampleLength:
   Enabled: false
 
+RSpec/ExpectChange:
+  Enabled: true
+  EnforcedStyle: block
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
 RSpec/NestedGroups:
   Enabled: false

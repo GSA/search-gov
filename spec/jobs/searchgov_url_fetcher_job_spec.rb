@@ -1,7 +1,8 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
 describe SearchgovUrlFetcherJob do
-  subject(:perform) { SearchgovUrlFetcherJob.perform_now(args) }
+  subject(:perform) { described_class.perform_now(args) }
+
   let!(:searchgov_url) { SearchgovUrl.create!(url: 'https://agency.gov/') }
   let(:args) do
     { searchgov_url: searchgov_url }
@@ -11,7 +12,7 @@ describe SearchgovUrlFetcherJob do
 
   describe '#perform' do
     it 'requires a searchgov_url' do
-      expect{ SearchgovUrlFetcherJob.perform_now }.
+      expect { described_class.perform_now }.
         to raise_error(ArgumentError, 'missing keyword: searchgov_url')
     end
 

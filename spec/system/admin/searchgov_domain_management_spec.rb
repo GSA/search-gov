@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'Searchgov Domain Management' do
   let(:url) { '/admin/searchgov_domains' }
 
@@ -8,7 +10,7 @@ describe 'Searchgov Domain Management' do
 
     subject(:reindex) do
       visit url
-      click_link 'Reindex'
+      click_link('Reindex', match: :first)
     end
 
     it 'triggers a reindex of the domain' do

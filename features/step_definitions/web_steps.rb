@@ -108,6 +108,10 @@ When /^(?:|I )choose "([^"]*)"$/ do |field|
   choose(field)
 end
 
+# Intentionally empty; here to make the features read better.
+When /^(?:|I )do not attach a file to "([^"]*)"$/ do |field|
+end
+
 When /^(?:|I )attach the file "([^"]*)" to "([^"]*)"$/ do |path, field|
   attach_file(field, File.expand_path(path))
 end
