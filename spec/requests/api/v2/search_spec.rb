@@ -375,4 +375,28 @@ describe '/api/v2/search' do
       expect(hash_response[:query]).to eq 'taxes site:irs.gov "exact phrase" -exclude (alternative) filetype:pdf'
     end
   end
+
+  context '#azure' do
+    let(:endpoint) { '/api/v2/search/azure' }
+
+    it_behaves_like 'a request with CORS support', 'GET'
+  end
+
+  context '#docs' do
+    let(:endpoint) { '/api/v2/search/docs' }
+
+    it_behaves_like 'a request with CORS support', 'GET'
+  end
+
+  context '#i14y' do
+    let(:endpoint) { '/api/v2/search/i14y' }
+
+    it_behaves_like 'a request with CORS support', 'GET'
+  end
+
+  context '#video' do
+    let(:endpoint) { '/api/v2/search/video' }
+
+    it_behaves_like 'a request with CORS support', 'GET'
+  end
 end
