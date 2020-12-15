@@ -376,25 +376,25 @@ describe '/api/v2/search' do
     end
   end
 
-  context '#azure' do
+  describe '#azure' do
     let(:endpoint) { '/api/v2/search/azure' }
 
     it_behaves_like 'a request with CORS support', 'GET'
   end
 
-  context '#docs' do
+  describe '#docs' do
     let(:endpoint) { '/api/v2/search/docs' }
 
     it_behaves_like 'a request with CORS support', 'GET'
   end
 
-  context '#i14y' do
+  describe '#i14y' do
     let(:endpoint) { '/api/v2/search/i14y' }
 
     it_behaves_like 'a request with CORS support', 'GET'
   end
 
-  context '#video' do
+  describe '#video' do
     let(:endpoint) { '/api/v2/search/video' }
 
     it_behaves_like 'a request with CORS support', 'GET'
