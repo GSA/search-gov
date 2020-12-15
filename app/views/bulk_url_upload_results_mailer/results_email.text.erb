@@ -1,0 +1,18 @@
+The bulk upload job for <%= @results.name %> has
+finished.
+
+There were <%= @results.total_count %> URLs.
+
+<% if @results.error_count == 0 %>
+There were no errors.
+<% else %>
+<%= @results.ok_count %> URLs were created successfully.
+<%= @results.error_count %> URLs failed validation.
+
+<% @results.error_messages.each do |error_message| %>
+  <%= error_message %>
+    <% @results.urls_with(error_message).each do |url| %>
+      <%= url %>
+    <% end %>
+  <% end %>
+<% end %>

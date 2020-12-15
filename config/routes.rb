@@ -190,6 +190,11 @@ Rails.application.routes.draw do
         post :upload
       end
     end
+    resources :bulk_url_upload, only: :index do
+      collection do
+        post :upload
+      end
+    end
     resources :agencies, concerns: :active_scaffold
     resources :agency_queries, concerns: :active_scaffold
     resources :agency_organization_codes, concerns: :active_scaffold

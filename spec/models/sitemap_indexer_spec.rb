@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe SitemapIndexer do
@@ -12,7 +14,7 @@ describe SitemapIndexer do
       </urlset>
     SITEMAP
   end
-  let(:indexer) { SitemapIndexer.new(sitemap_url: sitemap_url) }
+  let(:indexer) { described_class.new(sitemap_url: sitemap_url) }
 
   before do
     stub_request(:get, sitemap_url).
@@ -41,7 +43,7 @@ describe SitemapIndexer do
         end
 
         it 'only updates the counts for a single domain' do
-          expect { index }.not_to change{ other_domain.reload.urls_count }
+          expect { index }.not_to(change{ other_domain.reload.urls_count })
         end
       end
     end
@@ -161,8 +163,9 @@ describe SitemapIndexer do
     end
 
     it 'transitions to indexing the urls' do
-      expect(SearchgovDomain).to receive(:find_by).
-        with(domain: 'agency.gov').and_return(searchgov_domain)
+      allow(SearchgovDomain).to receive(:find_by).
+        with(domain: 'agency.gov').
+        and_return(searchgov_domain)
       expect(searchgov_domain).to receive(:index_urls)
       index
     end
