@@ -53,8 +53,6 @@ Feature: Activate Search
     Then I should see "i14y Content Indexing API Instructions" within the Admin Center content
     And I should see "manage your i14y drawers"
 
-  # To be implemented in SRCH-1680
-  @wip
   Scenario: Visiting the Click Tracking API Instructions
     Given the following Affiliates exist:
       | display_name | name    | contact_email | first_name   | last_name         |

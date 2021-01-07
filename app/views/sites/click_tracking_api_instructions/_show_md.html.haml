@@ -1,31 +1,44 @@
 :markdown
-  The click tracking endpoint lets you send in click events. You can see these clicks on your [Admin Click Analytics](/sites/#{@site.id}/clicks/new) page.
-  
-  Read more about click tracking [here](https://search.gov/manual/clicks.html).
-  
-  ## Resource URL
-  `#{api_scheme_and_host}/api/v2/click?url={URL}&query={QUERY}&affiliate={AFFILIATE}&position={POSITION}&module_code={MODULE_CODE}&access_key={ACCESS_KEY}`
+  ## Overview
 
-  ## Method
-  **POST**
+  The click tracking API lets you send in click events, which allows you to see click data on your [Click Analytics](#{new_site_clicks_path(@site)}) page. We also use this click data to strengthen the search results algorithm for your site.
 
-  ## Required Parameters
-  - `url`: The url of the link that was clicked.
-  - `query`: The search term that let this result get shown and clicked on.
-  - `affiliate`: You can find your site handle on the [Settings](#{edit_site_setting_path(@site)}) page.
-  - `position`:  The position/rank on your search results page. Was it the first result or the second?
-  - `module_code`: The module code for the source of the clicked result. Must be a valid module code. See https://search.gov/manual/module-codes.html
-  - `access_key`: Your [API access key](#{api_scheme_and_host}/sites/#{@site.id}/api_access_key).
-  - `client_ip`: The ip address of the user who clicked.
-  - `user_agent`: The user agent of the user who clicked.
-  
-  ## Responses
-  - **Success** - A response status code of 200 and empty body.
-  - **Missing Required Parameters** - A response status code of 400 and an error message describing the missing parameters. `["Query can't be blank"]`
-  - **Invalid Or Inactive Affiliate** - A response status code of 401 and an error message. `["Affiliate is invalid"]`
-  - **Invalid API Access Key** - A response status code of 401 and an error message. `["Access key is invalid"]`
-  - **Unparseable URL** - A response status code of 401 and an error message. `["Url is not a valid format"]`
-  - **Invalid Module Code** - A response status code of 401 and an error message. `["Module code {MODULE} is not a valid module"]`
+  Read more about click tracking [here](https://search.gov/manual/clicks.html). This API uses the **post** method.
+
+  ## Getting Started
+
+  The information below serves as an introduction. Please refer to the detailed documentation for the Click Tracking API, now publicly available through the [OpenGSA Portal](https://open.gsa.gov/api/searchgov-clicks/).
+
+  The endpoint is `https://api.gsa.gov/technology/searchgov/v2/clicks/`
+
+  ## Parameters
+
+  All parameters below are required unless noted otherwise.
+
+  * The `affiliate` is your site handle. You can find your site handle on the [Settings](#{edit_site_setting_path(@site)}) page.
+  * Your [access key](#{site_api_access_key_path(@site)}) is unique to your site handle so they must be paired properly to return results. If you have more than one search site set up, make sure you've selected the right one to get the right handle/key combination.
+
+  The following is a list of the parameters. For a full description, please refer to the instructions at the [OpenGSA Portal](https://open.gsa.gov/api/searchgov-clicks/).
+
+  * url
+  * query
+  * affiliate
+  * position
+  * module_code
+  * access_key
+
+  ## Example
+
+  Please note that we only support the `application/x-www-form-urlencoded` content type. A full example is below.
+
+  ```
+  curl -i -X POST \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -H "Content-Length: 0" \
+  -A "user agent string" \
+  "https://api.gsa.gov/technology/searchgov/v2/clicks/?url=https://foo.gov/clicked&affiliate=#{h(@site.name)}&access_key=#{h(@site.api_access_key)}&module_code=BOOS&query=test%20query&position=1"
+  ```
 
   ## Terms of Service
-  By using this API, you agree to our [Terms of Service](https://search.gov/tos).
+
+  By using this API, you agree to our [Terms of Service](https://search.gov/tos.html).
