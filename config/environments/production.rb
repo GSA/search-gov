@@ -45,9 +45,8 @@ Rails.application.configure do
   # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  #  This is set to false because we redirect to https. Setting this to true causes 
-  #  issues with the healthcheck called from the loadbalancer
-  config.force_ssl = false 
+  config.force_ssl = true
+  config.ssl_options[:secure_cookies] = true
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
