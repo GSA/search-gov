@@ -76,7 +76,9 @@ module Usasearch
 
     config.i18n.enforce_available_locales = false
 
-    config.ssl_options[:secure_cookies] = false
+    config.ssl_options[:redirect] =
+      { exclude: ->(request) { request.path == '/healthcheck' } }
+
     config.active_job.queue_adapter = :resque
 
     ### Rails 5.0 config flags
