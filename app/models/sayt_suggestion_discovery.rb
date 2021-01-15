@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SaytSuggestionDiscovery
   extend Resque::Plugins::Priority
   extend ResqueJobStats
