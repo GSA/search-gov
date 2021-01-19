@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class SaytSuggestionDiscovery
   extend Resque::Plugins::Priority
   extend ResqueJobStats
   @queue = :primary
 
   class << self
-    MIN_DOC_COUNT = 5
+    MIN_DOC_COUNT = 100
 
     def perform(affiliate_name, affiliate_id, day_int, limit)
       day = Date.strptime(day_int.to_s, "%Y%m%d")
