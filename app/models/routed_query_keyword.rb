@@ -34,16 +34,19 @@ class RoutedQueryKeyword < ApplicationRecord
     return unless routed_query&.affiliate
     return unless relation.any?
 
-    errors[:keyword] << "The keyword '#{keyword}' " \
-                        'is already in use for a different routed query'
+    errors[:keyword] <<
+      "The keyword '#{keyword}' is already in use for a different routed query"
   end
 
   def relation
-    relation = routed_query.affiliate.routed_queries.
+    relation = routed_query.
+      affiliate.
+      routed_queries.
       joins(:routed_query_keywords).
       where('routed_query_keywords.keyword = ?', keyword)
 
     relation = relation.where('routed_query_id != ?', routed_query_id) if routed_query_id
+
     relation
   end
 end

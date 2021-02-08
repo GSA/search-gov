@@ -21,7 +21,7 @@ describe RoutedQuery do
 
     it { is_expected.to belong_to :affiliate }
 
-    it 'has routed query keywords' do
+    it 'has keywords' do
       expect(routed_query).to have_many(:routed_query_keywords).
         dependent(:destroy).
         inverse_of(:routed_query)
@@ -38,20 +38,21 @@ describe RoutedQuery do
     end
 
     context 'when a keyword is duplicated' do
-      let(:expected_errors) do
-        'The following keyword has been duplicated: \'some keyword phrase\'. ' \
-        'Each keyword is case-insensitive and should be added only once.'
-      end
-
       let(:dup_attributes) do
         valid_attributes.merge(
           {
-            routed_query_keywords_attributes: {
+            routed_query_keywords_attributes:
+            {
               '0' => { 'keyword' => 'some keyword phrase' },
               '1' => { 'keyword' => 'Some Keyword Phrase' }
             }
           }
         )
+      end
+
+      let(:expected_errors) do
+        'The following keyword has been duplicated: \'some keyword phrase\'. ' \
+        'Each keyword is case-insensitive and should be added only once.'
       end
 
       it 'rejects the save of the keywords' do
@@ -65,7 +66,8 @@ describe RoutedQuery do
       let(:dup_attributes) do
         valid_attributes.merge(
           {
-            routed_query_keywords_attributes: {
+            routed_query_keywords_attributes:
+            {
               '0' => { 'keyword' => 'some keyword phrase' },
               '1' => { 'keyword' => 'Some Keyword Phrase' },
               '2' => { 'keyword' => 'some other keyword phrase' },
@@ -112,9 +114,8 @@ describe RoutedQuery do
 
   describe '#label' do
     it 'returns a label containing the url and description' do
-      expect(routed_queries(:unclaimed_money).label).to eq(
-        'https://www.usa.gov/unclaimed_money: Everybody wants it'
-      )
+      expect(routed_queries(:unclaimed_money).label).
+        to eq('https://www.usa.gov/unclaimed_money: Everybody wants it')
     end
   end
 
