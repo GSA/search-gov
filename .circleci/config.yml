@@ -4,6 +4,9 @@
 
 version: 2.1
 
+orbs:
+  ruby: circleci/ruby@1.1.2
+
 executors:
   test_executor:
     working_directory: ~/search-gov
@@ -89,18 +92,8 @@ jobs:
       - restore_cache:
           key: repo-{{ .Environment.CIRCLE_SHA1 }}
 
-      - restore_cache:
-          key: search-gov-{{ checksum "Gemfile.lock" }}
+      - ruby/install-deps
 
-      - run:
-          name: Install Dependencies
-          command: |
-            bundle install --without development --jobs=4 --retry=3 --path vendor/bundle
-
-      - save_cache:
-          key: search-gov-{{ checksum "Gemfile.lock" }}
-          paths:
-            - vendor/bundle
 
   rspec:
     executor: test_executor
@@ -111,10 +104,7 @@ jobs:
       - restore_cache:
           key: repo-{{ .Environment.CIRCLE_SHA1 }}
 
-      - restore_cache:
-          key: search-gov-{{ checksum "Gemfile.lock" }}
-
-      - run: bundle --path vendor/bundle
+      - ruby/install-deps
 
       - prepare_database
 
@@ -156,11 +146,7 @@ jobs:
       - restore_cache:
           key: repo-{{ .Environment.CIRCLE_SHA1 }}
 
-      - restore_cache:
-          key: search-gov-{{ checksum "Gemfile.lock" }}
-
-      - run: bundle --path vendor/bundle
-
+      - ruby/install-deps
       - prepare_database
 
       - run:
@@ -201,10 +187,7 @@ jobs:
       - restore_cache:
           key: repo-{{ .Environment.CIRCLE_SHA1 }}
 
-      - restore_cache:
-          key: search-gov-{{ checksum "Gemfile.lock" }}
-
-      - run: bundle --path vendor/bundle
+      - ruby/install-deps
 
       - attach_workspace:
           at: ~/search-gov/coverage
