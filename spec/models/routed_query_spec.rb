@@ -89,27 +89,6 @@ describe RoutedQuery do
         expect(rq.errors[:routed_query_keywords]).to include(expected_errors)
       end
     end
-
-    context 'when a keyword contains html' do
-      let(:attributes_with_html) do
-        valid_attributes.merge(
-          {
-            routed_query_keywords_attributes:
-            {
-              '0' => { 'keyword' => 'some <div>keyword</div> phrase' }
-            }
-          }
-        )
-      end
-
-      let(:rq) { affiliate.routed_queries.build(attributes_with_html) }
-
-      before { rq.valid? }
-
-      it 'strips the html from the keyword' do
-        expect(rq.routed_query_keywords[0].keyword).to eq('some keyword phrase')
-      end
-    end
   end
 
   describe '#label' do

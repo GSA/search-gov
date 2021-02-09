@@ -34,6 +34,18 @@ describe RoutedQueryKeyword do
     end
   end
 
+  describe 'creating a keyword which contains html' do
+    let(:keyword) do
+      routed_query.routed_query_keywords.create!(
+        keyword: 'keyword <div>with html'
+      )
+    end
+
+    it 'strips the html from the keyword' do
+      expect(keyword.keyword).to eq('keyword with html')
+    end
+  end
+
   describe 'Updating a keyword' do
     before do
       keyword = routed_query.routed_query_keywords.create!(keyword: 'initial keyword')
