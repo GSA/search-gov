@@ -26,3 +26,8 @@ Feature: Clicks and Queries stats
     Then I should see "Referrers"
     And I should see "Your site has not received any queries with referrers yet."
 
+    When I follow "Monthly Reports"
+    Then I should see "Change Month"
+    When I download the top monthly queries report
+    Then I should get a CSV download
+    And the downloaded file should include "Search Term"
