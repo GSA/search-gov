@@ -39,17 +39,17 @@ describe RoutedQueryKeyword do
                                                is_protected: true)
       expect(sayt_suggestion).to be_present
     end
-  end
 
-  describe 'when a keyword contains html' do
-    let(:keyword) do
-      routed_query.routed_query_keywords.create!(
-        keyword: 'keyword <div>with html'
-      )
-    end
+    context 'when a keyword contains html' do
+      let(:keyword) do
+        routed_query.routed_query_keywords.create!(
+          keyword: 'keyword <div>with html'
+        )
+      end
 
-    it 'strips the html from the keyword' do
-      expect(keyword.keyword).to eq('keyword with html')
+      it 'strips the html from the keyword' do
+        expect(keyword.keyword).to eq('keyword with html')
+      end
     end
   end
 
