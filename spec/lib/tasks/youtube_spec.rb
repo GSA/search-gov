@@ -1,24 +1,31 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
 describe 'YouTube rake tasks' do
-  before(:all) do
-    @rake = Rake::Application.new
-    Rake.application = @rake
-    Rake.application.rake_require('tasks/youtube')
-    Rake::Task.define_task(:environment)
+  let(:rake) { Rake::Application.new }
+
+  before do
+    Rake.application = rake
+    $LOADED_FEATURES.reject! { |f| f == 'tasks/youtube.rake' }
+    rake.rake_require('tasks/youtube')
   end
 
   describe 'usasearch:youtube:refresh' do
     let(:task_name) { 'usasearch:youtube:refresh' }
-    before { @rake[task_name].reenable }
 
-    it "should have 'environment' as a prereq" do
-      expect(@rake[task_name].prerequisites).to include('environment')
+    it "has 'environment' as a prerequisite" do
+      expect(rake[task_name].prerequisites).to include('environment')
     end
 
-    it 'should run YoutubeData.refresh' do
-      expect(YoutubeData).to receive :refresh
-      @rake[task_name].invoke
+    describe 'when invoked' do
+      before do
+        allow(YoutubeData).to receive(:refresh)
+        Rake::Task.define_task(:environment)
+        rake[task_name].invoke
+      end
+
+      it 'runs YoutubeData.refresh' do
+        expect(YoutubeData).to have_received(:refresh)
+      end
     end
   end
 end
