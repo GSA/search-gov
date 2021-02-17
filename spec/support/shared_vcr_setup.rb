@@ -36,15 +36,13 @@ VCR.configure do |config|
     clean_outdated_http_interactions: true,
   }
 
-  config.ignore_hosts 'example.com', 'codeclimate.com'
+  config.ignore_hosts 'example.com', 'codeclimate.com', '127.0.0.1'
   config.ignore_hosts *DRIVER_HOSTS
   config.ignore_request do |request|
     /codeclimate.com/ ===  URI(request.uri).host
   end
 
   config.ignore_request { |request| URI(request.uri).port.between?(9200,9299) } #Elasticsearch
-  config.ignore_request { |request| URI(request.uri).port == 9515 } # Selenium Webdriver
-  config.ignore_request { |request| URI(request.uri).port == 9517 } # Chrome Webdriver
   config.ignore_request { |request| URI(request.uri).port == 9998 } # Tika
 
   secrets = YAML.load(ERB.new(File.read(Rails.root.join('config', 'secrets.yml'))).result)

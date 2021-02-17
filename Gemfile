@@ -10,7 +10,7 @@ gem 'mysql2', '~> 0.4.4'
 gem 'curb', '~> 0.9.4'
 gem 'haml', '~> 5.0.4'
 gem 'will_paginate', '~> 3.1.6'
-gem 'nokogiri', '~> 1.10.8'
+gem 'nokogiri', '~> 1.11.1'
 gem 'bcrypt-ruby', '~> 3.1.5', :require => 'bcrypt'
 gem 'authlogic', '~> 3.8.0'
 gem 'omniauth_login_dot_gov', git: 'https://github.com/18f/omniauth_login_dot_gov.git',
