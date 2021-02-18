@@ -1,4 +1,4 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
 describe YoutubeData do
   fixtures :affiliates, :rss_feeds, :rss_feed_urls, :youtube_profiles
@@ -6,65 +6,90 @@ describe YoutubeData do
   describe '.refresh' do
     let(:rss_feed) { mock_model RssFeed }
     let(:profile) { mock_model YoutubeProfile }
-    let(:youtube_data) { double YoutubeData }
+    let(:youtube_data) { double described_class }
+    let(:active_profiles) { double YoutubeProfile }
 
     before do
-      allow(YoutubeProfile).to receive_message_chain(:active, :stale).and_return([profile], [])
-      expect(YoutubeData).to receive(:new).with(profile).and_return youtube_data
+      allow(YoutubeProfile).to receive(:active).and_return(active_profiles)
+      allow(active_profiles).to receive(:stale).and_return([profile], [])
+      allow(described_class).to receive(:new).
+        with(profile).
+        and_return(youtube_data)
+      allow(youtube_data).to receive(:import)
     end
 
-    it 'should import each profile' do
-      expect(youtube_data).to receive :import
-
-      t = Thread.new { YoutubeData.refresh }
+    it 'imports each profile' do
+      t = Thread.new { described_class.refresh }
       sleep 0.1
       t.kill
+
+      expect(youtube_data).to have_received(:import)
+      expect(described_class).to have_received(:new).
+        with(profile)
     end
   end
 
   describe '#import' do
     let(:profile) { youtube_profiles(:whitehouse) }
+    let(:youtube_data) { described_class.new(profile) }
 
-    it 'synchronizes playlists and playlists_items' do
-      youtube_data = YoutubeData.new(profile)
+    before do
+      allow(youtube_data).to receive(:import_playlists)
+      allow(youtube_data).to receive(:import_playlists_items)
+      allow(youtube_data).to receive(:populate_durations)
 
-      expect(youtube_data).to receive(:import_playlists)
-      expect(youtube_data).to receive(:import_playlists_items)
-      expect(youtube_data).to receive(:populate_durations)
       youtube_data.import
     end
 
+    it 'synchronizes playlists and playlists_items' do
+      expect(youtube_data).to have_received(:import_playlists)
+      expect(youtube_data).to have_received(:import_playlists_items)
+      expect(youtube_data).to have_received(:populate_durations)
+    end
+
     context 'when YoutubeAdapter raises an error' do
-      before { expect(YoutubeAdapter).to receive(:get_playlist_ids).and_raise('YouTube API') }
+      before do
+        allow(YoutubeAdapter).to receive(:get_playlist_ids).
+          and_raise('YouTube API')
+        allow(Rails.logger).to receive(:warn).with(/YouTube API/)
+
+        described_class.new(profile).import
+      end
 
       it 'logs a warning' do
-        expect(Rails.logger).to receive(:warn).with(/YouTube API/)
-        YoutubeData.new(profile).import
+        expect(YoutubeAdapter).to have_received(:get_playlist_ids)
+        expect(Rails.logger).to have_received(:warn).with(/YouTube API/)
       end
     end
   end
 
   describe '#import_playlists' do
     let(:profile) { youtube_profiles(:whitehouse) }
-    let(:expected_playlist_ids) { %w(playlist_1 playlist_2 playlist_3).freeze }
+    let(:expected_playlist_ids) { %w[playlist_1 playlist_2 playlist_3].freeze }
 
     before do
-      %w(playlist_1 playlist_2 obsolete_playlist).each do |playlist_id|
+      %w[playlist_1 playlist_2 obsolete_playlist].each do |playlist_id|
         profile.youtube_playlists.create!(playlist_id: playlist_id)
       end
 
-      expect(YoutubeAdapter).to receive(:get_playlist_ids).
+      allow(YoutubeAdapter).to receive(:get_playlist_ids).
         with('whitehouse_channel_id').
         and_return(expected_playlist_ids)
     end
 
     it 'imports playlists' do
-      youtube_data = YoutubeData.new(profile)
+      youtube_data = described_class.new(profile)
       youtube_data.import_playlists
 
       playlist_ids = profile.youtube_playlists.pluck(:playlist_id)
       expect(playlist_ids).to eq(expected_playlist_ids)
-      expect(profile.youtube_playlists.find_by_playlist_id('obsolete_playlist')).to be_nil
+
+      obsolete_playlist = profile.youtube_playlists.find_by(
+        playlist_id: 'obsolete_playlist'
+      )
+      expect(obsolete_playlist).to be_nil
+      expect(YoutubeAdapter).to have_received(:get_playlist_ids).
+        with('whitehouse_channel_id')
     end
   end
 
@@ -121,7 +146,7 @@ describe YoutubeData do
         snippet: {
           resourceId: {
             videoId: 'video_1'
-          },
+          }
         }
       }
       Hashie::Mash::Rash.new(item_hash)
@@ -135,7 +160,7 @@ describe YoutubeData do
           resourceId: {
             videoId: 'video_3'
           },
-          title: 'video 3 title',
+          title: 'video 3 title'
         }
       }
       Hashie::Mash::Rash.new(item_hash)
@@ -154,39 +179,49 @@ describe YoutubeData do
       Hashie::Mash::Rash.new(item_hash)
     end
 
-    before do
-      result_hash = {
+    let(:first_result_hash) do
+      {
         etag: nil,
         status_code: 304
       }
-      result = Hashie::Mash::Rash.new(result_hash)
+    end
 
-      expect(YoutubeAdapter).to receive(:each_playlist_item).
-        with(playlist_1).
-        and_return(result)
+    let(:first_result) { Hashie::Mash::Rash.new(first_result_hash) }
 
-      result_hash = {
+    let(:second_result_hash) do
+      {
         etag: 'playlist_2_etag',
         status_code: 200
       }
-      result = Hashie::Mash::Rash.new(result_hash)
+    end
+
+    let(:second_result) { Hashie::Mash::Rash.new(second_result_hash) }
+
+    let(:youtube_data) { described_class.new(profile) }
+
+    let(:news_item_3) do
+      rss_feed_url.news_items.find_by(link: 'https://www.youtube.com/watch?v=video_3')
+    end
+
+    let(:news_item_ids) { [news_item_1.id, news_item_2.id, news_item_3.id] }
+
+    it 'imports playlists items' do
+      expect(YoutubeAdapter).to receive(:each_playlist_item).
+        with(playlist_1).
+        and_return(first_result)
 
       expect(YoutubeAdapter).to receive(:each_playlist_item).
         with(playlist_2).
         and_yield(playlist_item_1).
         and_yield(playlist_item_2).
         and_yield(playlist_item_3).
-        and_return(result)
+        and_return(second_result)
 
-      expect(Rails.logger).to receive(:warn).with(/YoutubeData#create_or_update/)
-    end
+      expect(Rails.logger).to receive(:warn).
+        with(/YoutubeData#create_or_update/)
 
-    it 'imports playlists items' do
-      youtube_data = YoutubeData.new profile
       youtube_data.import_playlists_items
 
-      news_item_3 = rss_feed_url.news_items.find_by_link('https://www.youtube.com/watch?v=video_3')
-      news_item_ids = [news_item_1.id, news_item_2.id, news_item_3.id]
       expect(youtube_data.all_news_item_ids).to eq(news_item_ids)
 
       playlist = YoutubePlaylist.find(playlist_1.id)
@@ -196,12 +231,13 @@ describe YoutubeData do
       expect(playlist.etag).to eq('playlist_2_etag')
       expect(playlist.news_item_ids).to eq([news_item_1.id, news_item_3.id])
 
-      expect(NewsItem.find_by_id(obsolete_news_item.id)).to be_nil
+      expect(NewsItem.find_by(id: obsolete_news_item.id)).to be_nil
     end
   end
 
   describe '#populate_durations' do
     let(:profile) { youtube_profiles(:whitehouse) }
+    let(:feed_url) { double('feed url') }
 
     it 'sets NewsItem#duration' do
       news_item_without_duration = mock_model(NewsItem,
@@ -212,22 +248,24 @@ describe YoutubeData do
                                            duration: '2:28',
                                            guid: 'video_2')
 
-      youtube_data = YoutubeData.new profile
+      youtube_data = described_class.new profile
 
-      allow(youtube_data).to receive_message_chain(:rss_feed_url, :news_items).
+      allow(youtube_data).to receive(:rss_feed_url).and_return(feed_url)
+      allow(feed_url).to receive(:news_items).
         and_return([news_item_without_duration, news_item_with_duration])
 
       video_1 = Hashie::Mash::Rash.new(id: 'video_1',
-                                 contentDetails: {
-                                   duration: 'PT5M30S'
-                                 })
+                                       contentDetails: {
+                                         duration: 'PT5M30S'
+                                       })
 
       expect(YoutubeAdapter).to receive(:each_video).
-        with(%w(video_1)).
+        with(%w[video_1]).
         and_yield(video_1)
 
-      allow(youtube_data).to receive_message_chain(:rss_feed_url, :news_items, :find_by_link).
-        and_return(news_item_without_duration)
+      allow(youtube_data).to receive_message_chain(
+        :rss_feed_url, :news_items, :find_by_link
+      ).and_return(news_item_without_duration)
       expect(news_item_without_duration).to receive(:duration=).with('5:30')
       expect(news_item_without_duration).to receive(:save!)
 
