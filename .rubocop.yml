@@ -4329,6 +4329,10 @@ Style/ZeroLengthPredicate:
 # See also the list of RSpec statements that we exempt from the block
 # length cop, under Metrics/BlockLength above
 
+RSpec/DescribeClass:
+  Exclude:
+    - 'spec/lib/tasks/**'
+
 RSpec/ExampleLength:
   Enabled: false
 
