@@ -51,8 +51,8 @@ Feature: User sessions
     Then I should be on the login page
 
   @javascript
-  Scenario: Already logged-in user logs out
-    Given I am logged in with email "affiliate_manager@fixtures.org"
+  Scenario: Already logged-in super-user logs out
+    Given I am logged in with email "affiliate_admin@fixtures.org"
     When I go to the usagov's Dashboard page
     Then I should not see "Security Notification"
     When I sign out
@@ -60,8 +60,8 @@ Feature: User sessions
     Then I should see "Security Notification"
 
   @javascript
-  Scenario: Already logged-in super-user logs out
-    Given I am logged in with email "affiliate_admin@fixtures.org"
+  Scenario: Already logged-in user logs out
+    Given I am logged in with email "affiliate_manager@fixtures.org"
     When I go to the usagov's Dashboard page
     Then I should not see "Security Notification"
     When I sign out
