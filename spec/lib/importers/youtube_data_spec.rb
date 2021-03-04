@@ -8,6 +8,11 @@ describe YoutubeData do
     let(:profile) { mock_model YoutubeProfile }
     let(:youtube_data) { double described_class }
     let(:active_profiles) { double YoutubeProfile }
+    let(:refresh) do
+      t = Thread.new { described_class.refresh }
+      sleep 0.1
+      t.kill
+    end
 
     before do
       allow(YoutubeProfile).to receive(:active).and_return(active_profiles)
@@ -19,13 +24,96 @@ describe YoutubeData do
     end
 
     it 'imports each profile' do
-      t = Thread.new { described_class.refresh }
-      sleep 0.1
-      t.kill
+      refresh
 
       expect(youtube_data).to have_received(:import)
       expect(described_class).to have_received(:new).
         with(profile)
+    end
+
+    context 'when we have already updated the maximum number of profiles for today' do
+      let(:maximum_profile_updates_per_day) do
+        Rails.configuration.youtube['maximum_profile_updates_per_day']
+      end
+
+      before do
+        allow(described_class).to receive(:number_of_profiles_updated_today).
+          and_return(maximum_profile_updates_per_day)
+      end
+
+      it 'does not import any profiles' do
+        refresh
+
+        expect(youtube_data).not_to have_received(:import)
+      end
+    end
+  end
+
+  describe '.number_of_profiles_updated_today' do
+    let(:actual_number_of_profiles_updated_today) { nil }
+
+    before do
+      YoutubeProfile.all.each do |profile|
+        profile.updated_at = Time.now.utc - 1.day
+        profile.save!
+      end
+
+      YoutubeProfile.take(actual_number_of_profiles_updated_today).each do |profile|
+        profile.updated_at = Time.now.utc
+        profile.save!
+      end
+    end
+
+    context 'when no profiles have been updated today' do
+      let(:actual_number_of_profiles_updated_today) { 0 }
+
+      it 'returns 0' do
+        expect(described_class.number_of_profiles_updated_today).to eq(0)
+      end
+    end
+
+    context 'when 1 profile has been updated today' do
+      let(:actual_number_of_profiles_updated_today) { 1 }
+
+      it 'returns 1' do
+        expect(described_class.number_of_profiles_updated_today).to eq(1)
+      end
+    end
+
+    context 'when 2 profiles have been updated today' do
+      let(:actual_number_of_profiles_updated_today) { 2 }
+
+      it 'returns 2' do
+        expect(described_class.number_of_profiles_updated_today).to eq(2)
+      end
+    end
+  end
+
+  describe '.maximum_number_of_profile_updates_per_day' do
+    context 'when no value is configured' do
+      before do
+        Rails.configuration.youtube['maximum_profile_updates_per_day'] = nil
+      end
+
+      it 'defaults to the value built in to YoutubeData' do
+        expect(described_class.maximum_profile_updates_per_day).
+          to eq(YoutubeData::DEFAULT_MAXIMUM_PROFILE_UPDATES_PER_DAY)
+      end
+    end
+
+    context 'when a value is configured' do
+      let(:expected_maximum_number_of_profile_updates_per_day) { 31_416 }
+
+      before do
+        Rails.configuration.youtube['maximum_profile_updates_per_day'] =
+          expected_maximum_number_of_profile_updates_per_day
+      end
+
+      it 'defaults to the value built in to YoutubeData' do
+        expect(described_class.maximum_profile_updates_per_day).to(
+          eq(expected_maximum_number_of_profile_updates_per_day)
+        )
+      end
     end
   end
 

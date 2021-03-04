@@ -1,18 +1,44 @@
+# frozen_string_literal: true
+
 class YoutubeData
+  DEFAULT_MAXIMUM_PROFILE_UPDATES_PER_DAY= 300
+
   attr_reader :all_news_item_ids,
               :profile,
               :rss_feed_url
 
   def self.refresh
     loop do
-      profile = YoutubeProfile.active.stale.first
-      if profile
-        YoutubeData.new(profile).import
-        Rails.logger.info "Imported YouTube channel #{profile.channel_id}"
-      else
-        sleep 5.minutes
+      if number_of_profiles_updated_today >= maximum_profile_updates_per_day
+        Rails.logger.info "Already imported #{maximum_profile_updates_per_day} YouTube profiles; sleeping"
+        sleep(5.minutes)
+        next
       end
+
+      profile = YoutubeProfile.active.stale.first
+      unless profile
+        Rails.logger.info 'No stale YouTube profiles; sleeping'
+        sleep(5.minutes)
+        next
+      end
+
+      YoutubeData.new(profile).import
+      Rails.logger.info "Imported YouTube channel #{profile.channel_id}"
     end
+  end
+
+  def self.number_of_profiles_updated_today
+    today = Time.now.utc.to_date
+
+    YoutubeProfile.select(:updated_at).
+      to_a.
+      select { |profile| profile.updated_at.utc.to_date == today }.
+      count
+  end
+
+  def self.maximum_profile_updates_per_day
+    Rails.configuration.youtube['maximum_profile_updates_per_day'] ||
+      DEFAULT_MAXIMUM_PROFILE_UPDATES_PER_DAY
   end
 
   def initialize(youtube_profile)
