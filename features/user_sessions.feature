@@ -50,8 +50,8 @@ Feature: User sessions
     Given I am logged in with email "affiliate_admin@fixtures.org"
     When I go to the admin home page
     Then I should not see "Security Notification"
-    When I sign out
-    And I go to the usagov's Dashboard page
+    When I follow "Sign Out"
+    And I go to the admin home page
     Then I should see "Security Notification"
 
   @javascript
