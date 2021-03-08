@@ -138,7 +138,7 @@ describe SearchgovUrl do
             language: 'en',
             tags: 'this, that',
             created: '2015-07-02T10:12:32-04:00',
-            changed: '2017-03-30T13:18:28-04:00',
+            changed: '2017-03-30T13:18:28-04:00'
         ))
         fetch
       end
@@ -193,7 +193,7 @@ describe SearchgovUrl do
               language: 'en',
               tags: 'this, that',
               created: '2015-07-02T10:12:32-04:00',
-              changed: '2017-03-30T13:18:28-04:00',
+              changed: '2017-03-30T13:18:28-04:00'
           ))
           fetch
         end
@@ -324,7 +324,7 @@ describe SearchgovUrl do
             description: 'My description',
             language: 'en',
             tags: 'this, that',
-            created: '2018-06-09T17:42:11Z',
+            created: '2018-06-09T17:42:11Z'
         ))
         fetch
       end
@@ -353,7 +353,7 @@ describe SearchgovUrl do
             title: 'My Word Doc',
             description: 'My Word doc description',
             language: 'en',
-            tags: 'word',
+            tags: 'word'
         ))
         fetch
       end
@@ -377,7 +377,7 @@ describe SearchgovUrl do
             title: 'My Word Doc',
             description: 'My Word doc description',
             language: 'en',
-            tags: 'word',
+            tags: 'word'
         ))
         fetch
       end
@@ -401,7 +401,7 @@ describe SearchgovUrl do
             title: 'My Excel Doc',
             description: 'My Excel doc description',
             language: 'en',
-            tags: 'excel',
+            tags: 'excel'
         ))
         fetch
       end
@@ -425,7 +425,7 @@ describe SearchgovUrl do
             title: 'My Excel Doc',
             description: 'My Excel doc description',
             language: 'en',
-            tags: 'excel',
+            tags: 'excel'
         ))
         fetch
       end

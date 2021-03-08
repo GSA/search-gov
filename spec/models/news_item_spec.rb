@@ -48,7 +48,7 @@ describe NewsItem do
         @valid_attributes.merge(title: " \nDOD \tMarks Growth\r in Spouses’ \u00a0 Employment Program \n     ",
                                 description: " \nSome     description \n     ",
                                 link: "\t\t\t\n http://www.foo.gov/1.html\t\n",
-                                guid: "\t\t\t\nhttp://www.foo.gov/1.html \t\n",
+                                guid: "\t\t\t\nhttp://www.foo.gov/1.html \t\n"
         ))
       expect(news_item.title).to eq('DOD Marks Growth in Spouses’ Employment Program')
       expect(news_item.description).to eq('Some description')
