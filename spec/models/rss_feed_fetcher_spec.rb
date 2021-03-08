@@ -16,8 +16,8 @@ describe RssFeedFetcher do
 
   describe 'enqueueing' do
     it 'should not enqueue two RssFeedFetcher jobs with the same args' do
-      expect(Resque.enqueue(RssFeedFetcher, 31415, false)).to be true
-      expect(Resque.enqueue(RssFeedFetcher, 31415, false)).to be_nil
+      expect(Resque.enqueue(RssFeedFetcher, 31_415, false)).to be true
+      expect(Resque.enqueue(RssFeedFetcher, 31_415, false)).to be_nil
     end
   end
 end

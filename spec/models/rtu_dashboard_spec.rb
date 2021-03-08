@@ -153,7 +153,7 @@ describe RtuDashboard do
       end
 
       it 'should return RTU query counts for current month' do
-        expect(dashboard.monthly_queries_to_date).to eq(62330)
+        expect(dashboard.monthly_queries_to_date).to eq(62_330)
       end
     end
 
@@ -165,7 +165,7 @@ describe RtuDashboard do
       end
 
       it 'should return RTU click counts for current month' do
-        expect(dashboard.monthly_clicks_to_date).to eq(62330)
+        expect(dashboard.monthly_clicks_to_date).to eq(62_330)
       end
     end
 

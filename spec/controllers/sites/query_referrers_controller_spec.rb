@@ -19,7 +19,7 @@ describe Sites::QueryReferrersController do
           Date.parse('2019-11-11'),
           'params.query.raw',
           'foo',
-          { field: 'referrer', size: 10000 }
+          { field: 'referrer', size: 10_000 }
         ]
       end
       let(:query) { instance_double(DateRangeTopNFieldQuery, body: '') }

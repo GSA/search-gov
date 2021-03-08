@@ -68,7 +68,7 @@ describe ClickCounter do
              Time.now,
              'click_domain',
              'agency.gov',
-             { field: 'params.url', size: 100000 }).
+             { field: 'params.url', size: 100_000 }).
         and_call_original
       clicks
     end

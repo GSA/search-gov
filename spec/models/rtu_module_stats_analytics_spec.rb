@@ -23,15 +23,15 @@ describe RtuModuleStatsAnalytics do
         stats = module_stats_analytics.module_stats
 
         expect(stats.first.display_name).to eq(search_modules(:bweb).display_name)
-        expect(stats.first.impressions).to eq(97612)
-        expect(stats.first.clicks).to eq(49436)
+        expect(stats.first.impressions).to eq(97_612)
+        expect(stats.first.clicks).to eq(49_436)
         expect(stats.first.clickthru_ratio).to be_within(0.001).of(50.645)
         expect(stats.first.average_clickthru_ratio).to be_within(0.001).of(50.645)
         expect(stats.first.historical_ctr.last).to be_within(0.001).of(48.739)
 
         expect(stats.last.display_name).to eq('Total')
-        expect(stats.last.impressions).to eq(118631)
-        expect(stats.last.clicks).to eq(53686)
+        expect(stats.last.impressions).to eq(118_631)
+        expect(stats.last.clicks).to eq(53_686)
         expect(stats.last.clickthru_ratio).to be_within(0.001).of(45.254)
         expect(stats.last.average_clickthru_ratio).to be_nil
         expect(stats.last.historical_ctr.last).to be_within(0.001).of(48.404)

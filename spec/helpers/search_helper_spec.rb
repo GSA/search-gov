@@ -53,7 +53,7 @@ describe SearchHelper do
   describe '#thumbnail_image_tag' do
     before do
       @image_result = {
-        'FileSize' => 2555475,
+        'FileSize' => 2_555_475,
         'Thumbnail' => {
           'FileSize' => 3728,
           'Url' => 'http://ts1.mm.bing.net/images/thumbnail.aspx?q=327984100492&id=22f3cf1f7970509592422738e08108b1',

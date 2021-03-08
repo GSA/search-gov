@@ -38,7 +38,7 @@ describe 'sites/monthly_reports/show.html.haml' do
     context 'when there is data' do
       before do
         monthly_report = RtuMonthlyReport.new(site, 2014, 6, true)
-        allow(monthly_report).to receive(:total_queries).and_return 12345
+        allow(monthly_report).to receive(:total_queries).and_return 12_345
         allow(monthly_report).to receive(:total_clicks).and_return 5678
 
         no_result_queries = [['peanut butter', 4], ['chocolate', 8]]

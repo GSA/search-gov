@@ -6,7 +6,7 @@ describe 'shared/_related_topics.html.haml' do
 
   before do
     @search = double('Search')
-    allow(@search).to receive(:queried_at_seconds).and_return(1271978870)
+    allow(@search).to receive(:queried_at_seconds).and_return(1_271_978_870)
     allow(@search).to receive(:query).and_return '<i>tax forms</i>'
     allow(@search).to receive(:spelling_suggestion).and_return nil
     assign(:search, @search)

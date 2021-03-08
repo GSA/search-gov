@@ -78,10 +78,10 @@ describe FederalRegisterDocumentData do
     let!(:document) do
       doc = FederalRegisterDocument.new(document_number: '2012-14970',
                                         document_type: 'Proposed Rule',
-                                        end_page: 36726,
+                                        end_page: 36_726,
                                         page_length: 1,
                                         publication_date: Date.parse('2012-06-20'),
-                                        start_page: 36726,
+                                        start_page: 36_726,
                                         title: 'Open Meeting Original Title',
                                         html_url: 'https://www.federalregister.gov/articles/2012/06/20/2012-14970/original')
       doc.federal_register_agency_ids = [fr_irs.id]
@@ -93,10 +93,10 @@ describe FederalRegisterDocumentData do
       it 'updates document attributes' do
         doc_attributes = { document_number: '2012-14970',
                            document_type: 'Rule',
-                           end_page: 36726,
+                           end_page: 36_726,
                            page_length: 1,
                            publication_date: Date.parse('2012-06-26'),
-                           start_page: 36726,
+                           start_page: 36_726,
                            title: 'Updated title',
                            html_url: 'https://www.federalregister.gov/articles/2012/06/20/2012-14970/updated',
                            federal_register_agency_ids: [fr_noaa.id] }.freeze

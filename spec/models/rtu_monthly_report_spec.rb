@@ -18,7 +18,7 @@ describe RtuMonthlyReport do
       end
 
       it 'should return RTU query counts for given month' do
-        expect(rtu_monthly_report.total_queries).to eq(62330)
+        expect(rtu_monthly_report.total_queries).to eq(62_330)
       end
     end
 
@@ -30,7 +30,7 @@ describe RtuMonthlyReport do
       end
 
       it 'should return RTU click counts for given month' do
-        expect(rtu_monthly_report.total_clicks).to eq(62330)
+        expect(rtu_monthly_report.total_clicks).to eq(62_330)
       end
     end
 

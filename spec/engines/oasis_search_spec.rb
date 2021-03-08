@@ -17,7 +17,7 @@ describe OasisSearch do
       normalized_response = image_search.execute_query
       expect(normalized_response.start_record).to eq(1)
       expect(normalized_response.end_record).to eq(10)
-      expect(normalized_response.total).to eq(14543)
+      expect(normalized_response.total).to eq(14_543)
       first = normalized_response.results.first
       expect(first.title).to eq('Archive: Levan, Albania (Archive: NASA, Space Shuttle, 10/17/02)')
       expect(first.url).to eq('http://www.flickr.com/photos/28634332@N05/14708690681/')

@@ -82,7 +82,7 @@ describe WatcherLowCtrQuery do
         "agg": {
           "terms": {
             "min_doc_count": 50,
-            "size": 100000,
+            "size": 100_000,
             "field": 'params.query.raw'
           },
           "aggs": {

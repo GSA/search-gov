@@ -11,7 +11,7 @@ describe 'searches/index.html.haml' do
                    has_boosted_contents?: false, has_related_searches?: false,
                    has_featured_collections?: false, has_video_news_items?: false,
                    has_news_items?: false, agency: nil, tweets: nil, query: 'test', affiliate: @affiliate,
-                   page: 1, spelling_suggestion: nil, queried_at_seconds: 1271978870, results: [],
+                   page: 1, spelling_suggestion: nil, queried_at_seconds: 1_271_978_870, results: [],
                    error_message: 'Ignore me', scope_id: nil, first_page?: true, matching_site_limits: [],
                    module_tag: 'BWEB', tracking_information: 'Ref A: whatever')
     assign(:search, @search)
@@ -129,7 +129,7 @@ describe 'searches/index.html.haml' do
         allow(@affiliate).to receive(:jobs_enabled?).and_return(true)
         json = [
           {'id' => 'usajobs:328437200', 'position_title' => '<em>Research</em> Biologist/<em>Research</em> Nutritionist (Postdoctoral <em>Research</em> Affiliate)',
-           'organization_name' => 'Agricultural Research Service', 'rate_interval_code' => 'Per Year', 'minimum' => 51871, 'maximum' => 67427, 'start_date' => '2012-10-10', 'application_close_date' => '2023-10-12', 'locations' => ['Boston, MA'],
+           'organization_name' => 'Agricultural Research Service', 'rate_interval_code' => 'Per Year', 'minimum' => 51_871, 'maximum' => 67_427, 'start_date' => '2012-10-10', 'application_close_date' => '2023-10-12', 'locations' => ['Boston, MA'],
            'url' => 'https://www.usajobs.gov/GetJob/ViewDetails/328437200'},
           {'id' => 'usajobs:328437201', 'position_title' => 'Some Research Job',
            'organization_name' => 'Some Research Service', 'rate_interval_code' => 'Per Hour', 'minimum' => 24, 'maximum' => 24, 'start_date' => '2012-10-10', 'application_close_date' => '2023-10-13', 'locations' => ['Boston, MA', 'Cohasset, MA'],

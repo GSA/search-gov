@@ -4,7 +4,7 @@ require 'spec_helper'
 
 describe SaytSuggestionDiscovery, '#perform(affiliate_name, affiliate_id, date_int, limit)' do
   let(:affiliate) { affiliates(:power_affiliate) }
-  let(:date_int) { 20140626 }
+  let(:date_int) { 20_140_626 }
   let(:top_n_exists_args) do
     [
       affiliate.name,

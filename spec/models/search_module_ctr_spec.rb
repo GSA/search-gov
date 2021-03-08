@@ -20,15 +20,15 @@ describe SearchModuleCtr do
         stats = search_module_ctr.search_module_ctrs
         expect(stats.first.name).to eq(search_modules(:bweb).display_name)
         expect(stats.first.tag).to eq(search_modules(:bweb).tag)
-        expect(stats.first.historical.impressions).to eq(197612)
-        expect(stats.first.historical.clicks).to eq(149436)
-        expect(stats.first.recent.impressions).to eq(97612)
-        expect(stats.first.recent.clicks).to eq(49436)
+        expect(stats.first.historical.impressions).to eq(197_612)
+        expect(stats.first.historical.clicks).to eq(149_436)
+        expect(stats.first.recent.impressions).to eq(97_612)
+        expect(stats.first.recent.clicks).to eq(49_436)
 
         expect(stats.last.name).to eq(search_modules(:bbg).display_name)
         expect(stats.last.tag).to eq(search_modules(:bbg).tag)
-        expect(stats.last.historical.impressions).to eq(19251)
-        expect(stats.last.historical.clicks).to eq(11391)
+        expect(stats.last.historical.impressions).to eq(19_251)
+        expect(stats.last.historical.clicks).to eq(11_391)
         expect(stats.last.recent.impressions).to eq(9251)
         expect(stats.last.recent.clicks).to eq(1391)
       end

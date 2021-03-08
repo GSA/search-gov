@@ -11,7 +11,7 @@ describe 'shared/_searchresults.html.haml' do
                    has_boosted_contents?: false, has_related_searches?: false,
                    has_featured_collections?: false, has_video_news_items?: false,
                    has_news_items?: false, agency: nil, tweets: nil, query: 'tax forms', affiliate: @affiliate,
-                   page: 1, spelling_suggestion: nil, queried_at_seconds:1271978870,
+                   page: 1, spelling_suggestion: nil, queried_at_seconds:1_271_978_870,
                    error_message: nil, scope_id: nil, first_page?: true, matching_site_limits: [], module_tag:'BWEB',
                    startrecord: 1, endrecord: 10, total: 20)
 

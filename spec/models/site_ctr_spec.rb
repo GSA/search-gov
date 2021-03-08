@@ -19,7 +19,7 @@ describe SiteCtr do
         stats = site_ctr.site_ctrs
         expect(stats.first.site_name).to eq(affiliates(:usagov_affiliate).name)
         expect(stats.first.display_name).to eq(affiliates(:usagov_affiliate).display_name)
-        expect(stats.first.historical.impressions).to eq(15101)
+        expect(stats.first.historical.impressions).to eq(15_101)
         expect(stats.first.historical.clicks).to eq(185)
         expect(stats.first.recent.impressions).to eq(5101)
         expect(stats.first.recent.clicks).to eq(85)

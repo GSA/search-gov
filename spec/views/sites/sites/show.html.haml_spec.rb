@@ -224,7 +224,7 @@ describe 'sites/sites/show.html.haml' do
       let(:formatted_today) { Date.current.to_formatted_s(:long).squish }
 
       before do
-        assign :dashboard, double('RtuDashboard', monthly_queries_to_date: 12345, monthly_clicks_to_date: 5678).as_null_object
+        assign :dashboard, double('RtuDashboard', monthly_queries_to_date: 12_345, monthly_clicks_to_date: 5678).as_null_object
       end
 
       it 'should show the totals in a month-to-date div' do

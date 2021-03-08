@@ -15,7 +15,7 @@ describe 'image_searches/index.mobile.haml' do
       end
       allow(results).to receive(:total_pages).and_return(1)
       @search = double(ImageSearch, commercial_results?: false, query: 'test', affiliate: affiliate, module_tag: 'OASIS',
-                       queried_at_seconds: 1271978870, results: results, startrecord: 1, total: 5, per_page: 20,
+                       queried_at_seconds: 1_271_978_870, results: results, startrecord: 1, total: 5, per_page: 20,
                        page: 1, spelling_suggestion: nil)
       assign(:search, @search)
       assign(:search_params, { affiliate: affiliate.name, query: 'test' })
@@ -43,7 +43,7 @@ describe 'image_searches/index.mobile.haml' do
       end
       allow(results).to receive(:total_pages).and_return(1)
       @search = double(ImageSearch, commercial_results?: false, query: 'test', affiliate: affiliate, module_tag: 'OASIS',
-                       queried_at_seconds: 1271978870, results: results, startrecord: 1, total: 20, per_page: 20,
+                       queried_at_seconds: 1_271_978_870, results: results, startrecord: 1, total: 20, per_page: 20,
                        page: 1, spelling_suggestion: nil)
       allow(ImageSearch).to receive(:===).and_return true
       assign(:search, @search)
@@ -73,7 +73,7 @@ describe 'image_searches/index.mobile.haml' do
       affiliate.is_bing_image_search_enabled = false
       assign(:affiliate, affiliate)
       @search = double(ImageSearch, query: 'test', affiliate: affiliate, error_message: nil, module_tag: nil,
-                       queried_at_seconds: 1271978870, results: [], startrecord: 0, total: 0, per_page: 20,
+                       queried_at_seconds: 1_271_978_870, results: [], startrecord: 0, total: 0, per_page: 20,
                        page: 0, spelling_suggestion: nil)
       assign(:search, @search)
       assign(:search_params, { affiliate: affiliate.name, query: 'test' })
@@ -95,7 +95,7 @@ describe 'image_searches/index.mobile.haml' do
       end
       allow(results).to receive(:total_pages).and_return(1)
       @search = double(ImageSearch, commercial_results?: true, query: 'test', affiliate: affiliate, module_tag: 'IMAG',
-                       queried_at_seconds: 1271978870, results: results, startrecord: 1, total: 20, per_page: 20,
+                       queried_at_seconds: 1_271_978_870, results: results, startrecord: 1, total: 20, per_page: 20,
                        page: 1, spelling_suggestion: nil)
       allow(ImageSearch).to receive(:===).and_return true
       assign(:search, @search)
@@ -126,7 +126,7 @@ describe 'image_searches/index.mobile.haml' do
         end
         allow(results).to receive(:total_pages).and_return(1)
         @search = double(ImageSearch, commercial_results?: false, query: 'test', affiliate: affiliate, module_tag: 'OASIS',
-                         queried_at_seconds: 1271978870, results: results, startrecord: 1, total: 2, per_page: 20,
+                         queried_at_seconds: 1_271_978_870, results: results, startrecord: 1, total: 2, per_page: 20,
                          page: 1, spelling_suggestion: 'tsetse')
         assign(:search, @search)
         assign(:search_params, { affiliate: affiliate.name, query: 'test' })
@@ -149,7 +149,7 @@ describe 'image_searches/index.mobile.haml' do
         end
         allow(results).to receive(:total_pages).and_return(1)
         @search = double(ImageSearch, commercial_results?: true, query: 'test', affiliate: affiliate, module_tag: 'IMAG',
-                         queried_at_seconds: 1271978870, results: results, startrecord: 1, total: 2, per_page: 20,
+                         queried_at_seconds: 1_271_978_870, results: results, startrecord: 1, total: 2, per_page: 20,
                          page: 1, spelling_suggestion: "\uE000tsetse\uE001")
         allow(ImageSearch).to receive(:===).and_return true
         assign(:search, @search)
