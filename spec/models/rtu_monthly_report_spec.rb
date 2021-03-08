@@ -92,7 +92,7 @@ describe RtuMonthlyReport do
   end
 
   describe '#search_module_stats' do
-    let(:rtu_module_stats_analytics) { double(RtuModuleStatsAnalytics, module_stats: 'bunch of stats')}
+    let(:rtu_module_stats_analytics) { double(RtuModuleStatsAnalytics, module_stats: 'bunch of stats') }
 
     before do
       rangeof_date = rtu_monthly_report.picked_date..rtu_monthly_report.picked_date.end_of_month

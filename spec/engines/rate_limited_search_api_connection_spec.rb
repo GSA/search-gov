@@ -6,7 +6,7 @@ describe RateLimitedSearchApiConnection do
   let(:connection) { described_class.new('my_api', 'http://localhost', 1000) }
   let(:endpoint) { '/search.json' }
   let(:params) { { query: 'gov' } }
-  let(:response) { double('response', status: 200 )}
+  let(:response) { double('response', status: 200 ) }
 
   before do
     expect(ApiCache).to receive(:new).with('my_api', 1000).and_return(cache)

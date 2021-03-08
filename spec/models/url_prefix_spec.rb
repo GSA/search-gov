@@ -14,10 +14,10 @@ describe UrlPrefix do
     it { is_expected.to belong_to :document_collection }
     it { is_expected.to validate_presence_of :prefix }
     it { is_expected.to validate_uniqueness_of(:prefix).scoped_to(:document_collection_id).case_insensitive }
-    it { is_expected.not_to allow_value('foogov').for(:prefix)}
-    it { is_expected.to allow_value('http://www.foo.gov/').for(:prefix)}
-    it { is_expected.to allow_value('https://www.foo.gov/').for(:prefix)}
-    it { is_expected.to allow_value('http://foo.gov/subfolder/').for(:prefix)}
+    it { is_expected.not_to allow_value('foogov').for(:prefix) }
+    it { is_expected.to allow_value('http://www.foo.gov/').for(:prefix) }
+    it { is_expected.to allow_value('https://www.foo.gov/').for(:prefix) }
+    it { is_expected.to allow_value('http://foo.gov/subfolder/').for(:prefix) }
 
     it 'should cap prefix length at 255 characters' do
       too_long = "http://www.foo.gov/#{'waytoolong'*25}/"

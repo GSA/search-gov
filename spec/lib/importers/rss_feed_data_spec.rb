@@ -346,7 +346,7 @@ describe RssFeedData do
     end
 
     context 'when the feed is in the Atom format' do
-      let(:atom_feed_url) { rss_feed_urls(:atom_feed_url)}
+      let(:atom_feed_url) { rss_feed_urls(:atom_feed_url) }
       let(:url) { 'http://www.icpsr.umich.edu/icpsrweb/ICPSR/feeds/studies?fundingAgency=United+States+Department+of+Justice.+Office+of+Justice+Programs.+National+Institute+of+Justice' }
       let(:rss_feed_content) do
         File.open(Rails.root.to_s + '/spec/fixtures/rss/atom_feed.xml')
@@ -372,7 +372,7 @@ describe RssFeedData do
     end
 
     context 'when the Atom feed uses atom:summary instead of atom:content' do
-      let(:atom_feed_url) { rss_feed_urls(:atom_feed_url)}
+      let(:atom_feed_url) { rss_feed_urls(:atom_feed_url) }
       let(:url) { 'http://www.icpsr.umich.edu/icpsrweb/ICPSR/feeds/studies?fundingAgency=United+States+Department+of+Justice.+Office+of+Justice+Programs.+National+Institute+of+Justice' }
 
       before do

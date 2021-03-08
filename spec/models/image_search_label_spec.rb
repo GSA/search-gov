@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe ImageSearchLabel do
-  let(:en_affiliate) { Affiliate.create!(display_name: 'en Affiliate', name: 'en-site')}
-  let(:es_affiliate) { Affiliate.create!(display_name: 'es Affiliate', locale: 'es', name: 'es-site')}
+  let(:en_affiliate) { Affiliate.create!(display_name: 'en Affiliate', name: 'en-site') }
+  let(:es_affiliate) { Affiliate.create!(display_name: 'es Affiliate', locale: 'es', name: 'es-site') }
 
   it { is_expected.to validate_presence_of :affiliate_id }
 

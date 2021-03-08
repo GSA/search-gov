@@ -168,7 +168,7 @@ describe ApiBingSearch do
     end
 
     it 'highlights title and description' do
-      results = search.as_json[:web][:results].map{|result| Hashie::Mash.new(result) }
+      results = search.as_json[:web][:results].map{ |result| Hashie::Mash.new(result) }
       result = results.first
 
       expect(results.map(&:title).compact).to include(match(/\ue000.+\ue001/))

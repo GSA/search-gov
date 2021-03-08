@@ -16,7 +16,7 @@ describe TwitterProfilesHelper do
                    display_url: 'tmblr.co/Z8xAVxUEKvaK')]
       mock_model(Tweet, tweet_text: tweet_text, urls: urls)
     end
-    let(:search) { double(Search, query: 'notes', queried_at_seconds: 1350362825, vertical: :web)}
+    let(:search) { double(Search, query: 'notes', queried_at_seconds: 1350362825, vertical: :web) }
 
     before do
       @affiliate = affiliates(:usagov_affiliate)
@@ -31,8 +31,8 @@ describe TwitterProfilesHelper do
   end
 
   describe '#legacy_render_twitter_profile' do
-    let(:profile) { mock_model(TwitterProfile, link_to_profile: 'http://twitter.com/USASearch')}
-    let(:search) { double(Search, query: 'notes', queried_at_seconds: 1350362825)}
+    let(:profile) { mock_model(TwitterProfile, link_to_profile: 'http://twitter.com/USASearch') }
+    let(:search) { double(Search, query: 'notes', queried_at_seconds: 1350362825) }
 
     before do
       @affiliate = affiliates(:usagov_affiliate)

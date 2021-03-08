@@ -90,7 +90,7 @@ describe Affiliate do
     it { is_expected.to have_many(:excluded_domains).dependent(:destroy).inverse_of(:affiliate) }
     it { is_expected.to have_many(:featured_collections).dependent(:destroy) }
     it { is_expected.to have_many(:features).dependent(:destroy) }
-    it { is_expected.to have_many(:document_collections).inverse_of(:affiliate)}
+    it { is_expected.to have_many(:document_collections).inverse_of(:affiliate) }
 
     it do
       is_expected.to have_many(:flickr_profiles).dependent(:destroy).
@@ -1484,7 +1484,7 @@ describe Affiliate do
 
   describe 'has_many :affiliate_templates' do
     let(:affiliate) { affiliates(:usagov_affiliate) }
-    let(:template_rounded) { affiliate_templates(:usagov_rounded_header_link)}
+    let(:template_rounded) { affiliate_templates(:usagov_rounded_header_link) }
 
     describe '#load_template_schema' do
       let(:affiliate) { affiliates(:usagov_affiliate) }

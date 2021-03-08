@@ -19,7 +19,7 @@ describe AffiliateHelper do
 
   describe '#render_affiliate_body_style' do
     context 'when an error occurs' do
-      let(:affiliate) { mock_model(Affiliate, css_property_hash: {}, page_background_image_file_name: 'bg.png')}
+      let(:affiliate) { mock_model(Affiliate, css_property_hash: {}, page_background_image_file_name: 'bg.png') }
       it 'should return only background-color' do
         expect(helper).to receive(:render_affiliate_css_property_value).with({}, :page_background_color).and_return('#DDDDDD')
         expect(affiliate).to receive(:page_background_image).and_raise(StandardError)

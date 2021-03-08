@@ -46,7 +46,7 @@ describe 'Update https rake task' do
         let(:invoke_task) { @rake[task].invoke('FlickrProfile','url','srsly') }
 
         it 'updates the url' do
-          expect{invoke_task}.to change{profile.reload.url}.
+          expect{ invoke_task }.to change{ profile.reload.url }.
             from('www.flickr.com/photos/usdol').
             to('https://www.flickr.com/photos/usdol')
         end
@@ -118,7 +118,7 @@ describe 'Update https rake task' do
         end
 
         it 'updates the url' do
-          expect{ invoke_task }.to change{record.reload.url}.
+          expect{ invoke_task }.to change{ record.reload.url }.
             from('www.flickr.com').to('https://www.flickr.com')
         end
       end

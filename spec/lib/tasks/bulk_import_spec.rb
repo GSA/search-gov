@@ -21,7 +21,7 @@ describe 'Bulk Import rake tasks' do
       context 'when a file and default user email is specified' do
         before do
           @user = users(:affiliate_manager)
-          Affiliate.where('name LIKE ?', 'test%').each{|aff| aff.destroy }
+          Affiliate.where('name LIKE ?', 'test%').each{ |aff| aff.destroy }
           @existing_affiliate = Affiliate.create(name: 'test1', display_name: 'Test 1')
           @existing_affiliate.users << @user
           @existing_affiliate.site_domains << SiteDomain.new(domain: 'domain1.gov')
@@ -34,12 +34,12 @@ describe 'Bulk Import rake tasks' do
           expect(first_affiliate = Affiliate.find_by_name('test1')).not_to be_nil
           expect(first_affiliate.users.count).to eq(1)
           expect(first_affiliate.display_name).to eq('Test 1')
-          expect(first_affiliate.site_domains.collect{|site_domain| site_domain.domain }).to eq(['domain1.gov', 'domain2.gov'])
+          expect(first_affiliate.site_domains.collect{ |site_domain| site_domain.domain }).to eq(['domain1.gov', 'domain2.gov'])
           expect(second_affiliate = Affiliate.find_by_name('test2')).not_to be_nil
           expect(second_affiliate.users.count).to eq(1)
           expect(second_affiliate.users.include?(users(:affiliate_manager))).to be true
           expect(second_affiliate.display_name).to eq('test2')
-          expect(second_affiliate.site_domains.collect{|site_domain| site_domain.domain }.include?('domain3.gov')).to be true
+          expect(second_affiliate.site_domains.collect{ |site_domain| site_domain.domain }.include?('domain3.gov')).to be true
         end
       end
     end
@@ -67,7 +67,7 @@ describe 'Bulk Import rake tasks' do
       end
 
       it 'adds the user to each site' do
-        expect{import_affiliates}.to change{user.affiliates.count}.by(2)
+        expect{ import_affiliates }.to change{ user.affiliates.count }.by(2)
       end
 
       it 'logs the addition' do
