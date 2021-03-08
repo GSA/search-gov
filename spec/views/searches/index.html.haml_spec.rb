@@ -192,7 +192,7 @@ describe 'searches/index.html.haml' do
 
       context 'when there is an agency associated with the affiliate' do
         before do
-          agency = Agency.create!({:name => 'Some New Agency', :abbreviation => 'SNA' })
+          agency = Agency.create!({name: 'Some New Agency', abbreviation: 'SNA' })
           AgencyOrganizationCode.create!(organization_code: 'XX00', agency: agency)
           allow(@affiliate).to receive(:agency).and_return(agency)
         end
@@ -265,9 +265,9 @@ describe 'searches/index.html.haml' do
       context 'when the MedTopic has related med topics' do
         before do
           related_topic = med_topics(:crohns_disease)
-          @med_topic.med_related_topics.create!(:related_medline_tid => related_topic.medline_tid,
-                                                :title => related_topic.medline_title,
-                                                :url => related_topic.medline_url)
+          @med_topic.med_related_topics.create!(related_medline_tid: related_topic.medline_tid,
+                                                title: related_topic.medline_title,
+                                                url: related_topic.medline_url)
         end
 
         it 'should include the related topics in the result, with links to search results pages' do
@@ -279,12 +279,12 @@ describe 'searches/index.html.haml' do
 
       context 'when the MedTopic has sites' do
         before do
-          @med_topic.med_sites.create!(:title => 'Crohn\'s Disease',
-                                       :url => 'http://clinicaltrials.gov/search/open/condition=%22Crohn+Disease%22')
-          @med_topic.med_sites.create!(:title => 'Inflammatory Bowel Diseases',
-                                       :url => 'http://clinicaltrials.gov/search/open/condition=%22Inflammatory+Bowel+Diseases%22')
-          @med_topic.med_sites.create!(:title => 'Ulcerative Colitis',
-                                       :url => 'http://clinicaltrials.gov/search/open/condition=%22Ulcerative+Colitis%22')
+          @med_topic.med_sites.create!(title: 'Crohn\'s Disease',
+                                       url: 'http://clinicaltrials.gov/search/open/condition=%22Crohn+Disease%22')
+          @med_topic.med_sites.create!(title: 'Inflammatory Bowel Diseases',
+                                       url: 'http://clinicaltrials.gov/search/open/condition=%22Inflammatory+Bowel+Diseases%22')
+          @med_topic.med_sites.create!(title: 'Ulcerative Colitis',
+                                       url: 'http://clinicaltrials.gov/search/open/condition=%22Ulcerative+Colitis%22')
         end
 
         it 'should include links to the first two linked to clinicaltrials.gov' do

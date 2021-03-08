@@ -151,9 +151,9 @@ describe Affiliate do
     describe 'on create' do
       it 'should update css_properties with json string from css property hash' do
         css_property_hash = {'title_link_color' => '#33ff33', 'visited_title_link_color' => '#0000ff'}
-        affiliate = Affiliate.create!(valid_create_attributes.merge(:css_property_hash => css_property_hash))
-        expect(JSON.parse(affiliate.css_properties, :symbolize_names => true)[:title_link_color]).to eq('#33ff33')
-        expect(JSON.parse(affiliate.css_properties, :symbolize_names => true)[:visited_title_link_color]).to eq('#0000ff')
+        affiliate = Affiliate.create!(valid_create_attributes.merge(css_property_hash: css_property_hash))
+        expect(JSON.parse(affiliate.css_properties, symbolize_names: true)[:title_link_color]).to eq('#33ff33')
+        expect(JSON.parse(affiliate.css_properties, symbolize_names: true)[:visited_title_link_color]).to eq('#0000ff')
       end
 
       it 'should normalize site domains' do
@@ -224,7 +224,7 @@ describe Affiliate do
 
     it 'should not override default theme attributes' do
       affiliate.theme = 'default'
-      affiliate.css_property_hash = {:page_background_color => '#FFFFFF'}
+      affiliate.css_property_hash = {page_background_color: '#FFFFFF'}
       affiliate.save!
       expect(Affiliate.find(affiliate.id).css_property_hash[:page_background_color]).to eq(Affiliate::THEMES[:default][:page_background_color])
     end
@@ -251,7 +251,7 @@ describe Affiliate do
       url = 'cdn.agency.gov/custom.css'
       prefixes = %w( http https HTTP HTTPS invalidhttp:// invalidHtTp:// invalidhttps:// invalidHTtPs:// invalidHttPsS://)
       prefixes.each do |prefix|
-        affiliate.update_attributes!(:external_css_url => "#{prefix}#{url}")
+        affiliate.update_attributes!(external_css_url: "#{prefix}#{url}")
         expect(affiliate.external_css_url).to eq("http://#{prefix}#{url}")
       end
     end
@@ -260,7 +260,7 @@ describe Affiliate do
       url = 'cdn.agency.gov/custom.css'
       prefixes = %w( http:// https:// HTTP:// HTTPS:// )
       prefixes.each do |prefix|
-        affiliate.update_attributes!(:external_css_url => "#{prefix}#{url}")
+        affiliate.update_attributes!(external_css_url: "#{prefix}#{url}")
         expect(affiliate.external_css_url).to eq("#{prefix}#{url}")
       end
     end
@@ -388,7 +388,7 @@ describe Affiliate do
           </div>
         </div>
         HTML
-        affiliate.update_attributes!(:staged_header => html_with_comments, :staged_footer => html_with_comments)
+        affiliate.update_attributes!(staged_header: html_with_comments, staged_footer: html_with_comments)
         expect(Affiliate.find(affiliate.id).staged_header.squish).to eq(html_without_comments.squish)
         expect(Affiliate.find(affiliate.id).staged_footer.squish).to eq(html_without_comments.squish)
     end
@@ -413,7 +413,7 @@ describe Affiliate do
     let(:connected_affiliate) { Affiliate.create!(display_name: 'connected affiliate', name: 'connectedsite') }
 
     it 'should destroy connection' do
-      affiliate.connections.create!(:connected_affiliate => connected_affiliate, :label => 'search connected affiliate')
+      affiliate.connections.create!(connected_affiliate: connected_affiliate, label: 'search connected affiliate')
       expect(Affiliate.find(affiliate.id).connections.count).to eq(1)
       connected_affiliate.destroy
       expect(Affiliate.find(affiliate.id).connections.count).to eq(0)
@@ -423,12 +423,12 @@ describe Affiliate do
   describe 'validations' do
     it 'should be valid when FONT_FAMILIES includes font_family in css property hash' do
       FontFamily::ALL.each do |font_family|
-        expect(Affiliate.new(valid_create_attributes.merge(:css_property_hash => {'font_family' => font_family}))).to be_valid
+        expect(Affiliate.new(valid_create_attributes.merge(css_property_hash: {'font_family' => font_family}))).to be_valid
       end
     end
 
     it 'should not be valid when FONT_FAMILIES does not include font_family in css property hash' do
-      expect(Affiliate.new(valid_create_attributes.merge(:css_property_hash => {'font_family' => 'Comic Sans MS'}))).not_to be_valid
+      expect(Affiliate.new(valid_create_attributes.merge(css_property_hash: {'font_family' => 'Comic Sans MS'}))).not_to be_valid
     end
 
     it 'should be valid when color property in css property hash consists of a # character followed by 3 or 6 hexadecimal digits ' do
@@ -438,7 +438,7 @@ describe Affiliate do
                                                                           'visited_title_link_color' => "#{valid_color}",
                                                                           'description_text_color' => "#{valid_color}",
                                                                           'url_link_color' => "#{valid_color}"})
-        expect(Affiliate.new(valid_create_attributes.merge(:css_property_hash => css_property_hash))).to be_valid
+        expect(Affiliate.new(valid_create_attributes.merge(css_property_hash: css_property_hash))).to be_valid
       end
     end
 
@@ -449,7 +449,7 @@ describe Affiliate do
                                                                           'visited_title_link_color' => "#{invalid_color}",
                                                                           'description_text_color' => "#{invalid_color}",
                                                                           'url_link_color' => "#{invalid_color}"})
-        affiliate = Affiliate.new(valid_create_attributes.merge(:css_property_hash => css_property_hash))
+        affiliate = Affiliate.new(valid_create_attributes.merge(css_property_hash: css_property_hash))
         expect(affiliate).not_to be_valid
         expect(affiliate.errors[:base]).to include('Title link color should consist of a # character followed by 3 or 6 hexadecimal digits')
         expect(affiliate.errors[:base]).to include('Visited title link color should consist of a # character followed by 3 or 6 hexadecimal digits')
@@ -460,7 +460,7 @@ describe Affiliate do
 
     it 'should validate color property in staged css property hash' do
       css_property_hash = ActiveSupport::HashWithIndifferentAccess.new({'title_link_color' => 'invalid', 'visited_title_link_color' => '#DDDD'})
-      affiliate = Affiliate.new(valid_create_attributes.merge(:css_property_hash => css_property_hash))
+      affiliate = Affiliate.new(valid_create_attributes.merge(css_property_hash: css_property_hash))
       expect(affiliate.save).to be false
       expect(affiliate.errors[:base]).to include('Title link color should consist of a # character followed by 3 or 6 hexadecimal digits')
       expect(affiliate.errors[:base]).to include('Visited title link color should consist of a # character followed by 3 or 6 hexadecimal digits')
@@ -472,10 +472,10 @@ describe Affiliate do
     end
 
     it 'should not validate header_footer_css' do
-      affiliate = Affiliate.new(valid_create_attributes.merge(:header_footer_css => 'h1 { invalid-css-syntax }'))
+      affiliate = Affiliate.new(valid_create_attributes.merge(header_footer_css: 'h1 { invalid-css-syntax }'))
       expect(affiliate.save).to be true
 
-      affiliate = Affiliate.new(valid_create_attributes.merge(:header_footer_css => 'h1 { color: #DDDD }', name: 'anothersite'))
+      affiliate = Affiliate.new(valid_create_attributes.merge(header_footer_css: 'h1 { color: #DDDD }', name: 'anothersite'))
       expect(affiliate.save).to be true
     end
 
@@ -608,7 +608,7 @@ describe Affiliate do
             <script src="http://cdn.agency.gov/script.js"></script>
             <h1>html with script</h1>
         HTML
-        expect(affiliate.update_attributes(:staged_header => html_with_script, :staged_footer => html_with_script)).to be false
+        expect(affiliate.update_attributes(staged_header: html_with_script, staged_footer: html_with_script)).to be false
         expect(affiliate.errors[:base].join).to match(/#{header_error_message}/)
         expect(affiliate.errors[:base].join).to match(/#{footer_error_message}/)
 
@@ -616,7 +616,7 @@ describe Affiliate do
             <style>#my_header { color:red }</style>
             <h1>html with style</h1>
         HTML
-        expect(affiliate.update_attributes(:staged_header => html_with_style, :staged_footer => html_with_style)).to be false
+        expect(affiliate.update_attributes(staged_header: html_with_style, staged_footer: html_with_style)).to be false
         expect(affiliate.errors[:base].join).to match(/#{header_error_message}/)
         expect(affiliate.errors[:base].join).to match(/#{footer_error_message}/)
 
@@ -624,7 +624,7 @@ describe Affiliate do
             <link href="http://cdn.agency.gov/link.css" />
             <h1>html with link</h1>
         HTML
-        expect(affiliate.update_attributes(:staged_header => html_with_link, :staged_footer => html_with_link)).to be false
+        expect(affiliate.update_attributes(staged_header: html_with_link, staged_footer: html_with_link)).to be false
         expect(affiliate.errors[:base].join).to match(/#{header_error_message}/)
         expect(affiliate.errors[:base].join).to match(/#{footer_error_message}/)
 
@@ -632,7 +632,7 @@ describe Affiliate do
             <form></form>
             <h1>html with link</h1>
         HTML
-        expect(affiliate.update_attributes(:staged_header => html_with_form, :staged_footer => html_with_form)).to be false
+        expect(affiliate.update_attributes(staged_header: html_with_form, staged_footer: html_with_form)).to be false
         expect(affiliate.errors[:base].join).to match(/#{header_error_message}/)
         expect(affiliate.errors[:base].join).to match(/#{footer_error_message}/)
       end
@@ -646,7 +646,7 @@ describe Affiliate do
           <h1>html with onload</h1>
         HTML
 
-        expect(affiliate.update_attributes(:staged_header => html_with_onload, :staged_footer => html_with_onload)).to be false
+        expect(affiliate.update_attributes(staged_header: html_with_onload, staged_footer: html_with_onload)).to be false
         expect(affiliate.errors[:base].join).to match(/#{header_error_message}/)
         expect(affiliate.errors[:base].join).to match(/#{footer_error_message}/)
       end
@@ -658,7 +658,7 @@ describe Affiliate do
         html_with_body = <<-HTML
             <html><body><h1>html with script</h1></body></html>
         HTML
-        expect(affiliate.update_attributes(:staged_header => html_with_body, :staged_footer => html_with_body)).to be false
+        expect(affiliate.update_attributes(staged_header: html_with_body, staged_footer: html_with_body)).to be false
         expect(affiliate.errors[:base].join).to include("#{header_error_message}")
         expect(affiliate.errors[:base].join).to include("#{footer_error_message}")
 
@@ -666,21 +666,21 @@ describe Affiliate do
             <link href="http://cdn.agency.gov/link.css"></script>
             <h1>html with link</h1>
         HTML
-        expect(affiliate.update_attributes(:staged_header => malformed_html_fragments, :staged_footer => malformed_html_fragments)).to be false
+        expect(affiliate.update_attributes(staged_header: malformed_html_fragments, staged_footer: malformed_html_fragments)).to be false
         expect(affiliate.errors[:base].join).to include("#{header_error_message}")
         expect(affiliate.errors[:base].join).to include("#{footer_error_message}")
       end
 
       it 'should not validate header_footer_css' do
-        expect(affiliate.update_attributes(:header_footer_css => 'h1 { invalid-css-syntax }')).to be true
-        expect(affiliate.update_attributes(:header_footer_css => 'h1 { color: #DDDD }')).to be true
+        expect(affiliate.update_attributes(header_footer_css: 'h1 { invalid-css-syntax }')).to be true
+        expect(affiliate.update_attributes(header_footer_css: 'h1 { color: #DDDD }')).to be true
       end
 
       it 'should validate staged_header_footer_css for invalid css property value' do
-        expect(affiliate.update_attributes(:staged_header_footer_css => 'h1 { invalid-css-syntax }')).to be false
+        expect(affiliate.update_attributes(staged_header_footer_css: 'h1 { invalid-css-syntax }')).to be false
         expect(affiliate.errors[:base].first).to match(/Invalid CSS/)
 
-        expect(affiliate.update_attributes(:staged_header_footer_css => 'h1 { color: #DDDD }')).to be false
+        expect(affiliate.update_attributes(staged_header_footer_css: 'h1 { color: #DDDD }')).to be false
         expect(affiliate.errors[:base].first).to match(/Colors must have either three or six digits/)
       end
     end
@@ -697,7 +697,7 @@ describe Affiliate do
             <script src="http://cdn.agency.gov/script.js"></script>
             <h1>html with script</h1>
         HTML
-        expect(affiliate.update_attributes(:staged_header => html_with_script, :staged_footer => html_with_script)).to be true
+        expect(affiliate.update_attributes(staged_header: html_with_script, staged_footer: html_with_script)).to be true
       end
     end
 
@@ -741,26 +741,26 @@ describe Affiliate do
       it 'should set is_validate_staged_header_footer to true' do
         affiliate = Affiliate.create!(display_name: 'oneserp affiliate', name: 'oneserpaffiliate')
         expect(affiliate).to receive(:is_validate_staged_header_footer=).with(true)
-        affiliate.update_attributes_for_staging(:staged_uses_managed_header_footer => '0',
-                                                :staged_header => 'staged header',
-                                                :staged_footer => 'staged footer')
+        affiliate.update_attributes_for_staging(staged_uses_managed_header_footer: '0',
+                                                staged_header: 'staged header',
+                                                staged_footer: 'staged footer')
       end
 
       it 'should set header_footer_nested_css fields' do
         affiliate = Affiliate.create!(valid_create_attributes)
-        affiliate.update_attributes!(:header_footer_css => '@charset "UTF-8"; @import url("other.css"); h1 { color: blue }')
+        affiliate.update_attributes!(header_footer_css: '@charset "UTF-8"; @import url("other.css"); h1 { color: blue }')
         expect(affiliate.update_attributes_for_staging(
-          :staged_uses_managed_header_footer => '0',
-          :staged_header_footer_css => '@charset "UTF-8"; @import url("other.css"); h1 { color: blue }')).to be true
+          staged_uses_managed_header_footer: '0',
+          staged_header_footer_css: '@charset "UTF-8"; @import url("other.css"); h1 { color: blue }')).to be true
         expect(affiliate.staged_nested_header_footer_css.squish).to match(/^#{Regexp.escape('.header-footer h1{color:blue}')}$/)
       end
 
       it 'should not validated live header_footer_css field' do
         affiliate = Affiliate.create!(valid_create_attributes)
-        affiliate.update_attributes!(:header_footer_css => 'h1 { invalid-css-syntax }')
+        affiliate.update_attributes!(header_footer_css: 'h1 { invalid-css-syntax }')
         expect(affiliate.update_attributes_for_staging(
-          :staged_uses_managed_header_footer => '0',
-          :staged_header_footer_css => '@charset "UTF-8"; @import url("other.css"); h1 { color: blue }')).to be true
+          staged_uses_managed_header_footer: '0',
+          staged_header_footer_css: '@charset "UTF-8"; @import url("other.css"); h1 { color: blue }')).to be true
         expect(affiliate.staged_nested_header_footer_css.squish).to match(/^#{Regexp.escape('.header-footer h1{color:blue}')}$/)
       end
     end
@@ -775,7 +775,7 @@ describe Affiliate do
   end
 
   describe '#update_attributes_for_live' do
-    let(:affiliate) { Affiliate.create!(valid_create_attributes.merge(:header => 'old header', :footer => 'old footer')) }
+    let(:affiliate) { Affiliate.create!(valid_create_attributes.merge(header: 'old header', footer: 'old footer')) }
 
     context 'when successfully update_attributes' do
       before do
@@ -785,22 +785,22 @@ describe Affiliate do
       it 'should set previous fields' do
         expect(affiliate).to receive(:previous_header=).with('old header')
         expect(affiliate).to receive(:previous_footer=).with('old footer')
-        expect(affiliate.update_attributes_for_live(:staged_header => 'staged header', :staged_footer => 'staged footer')).to be true
+        expect(affiliate.update_attributes_for_live(staged_header: 'staged header', staged_footer: 'staged footer')).to be true
       end
 
       it 'should set attributes from staged to live' do
         expect(affiliate).to receive(:set_attributes_from_staged_to_live)
-        expect(affiliate.update_attributes_for_live(:staged_header => 'staged header', :staged_footer => 'staged footer')).to be true
+        expect(affiliate.update_attributes_for_live(staged_header: 'staged header', staged_footer: 'staged footer')).to be true
       end
 
       it 'should set has_staged_content to false' do
         expect(affiliate).to receive(:has_staged_content=).with(false)
-        expect(affiliate.update_attributes_for_live(:staged_header => 'staged header', :staged_footer => 'staged footer')).to be true
+        expect(affiliate.update_attributes_for_live(staged_header: 'staged header', staged_footer: 'staged footer')).to be true
       end
 
       it 'should save!' do
         expect(affiliate).to receive(:save!)
-        expect(affiliate.update_attributes_for_live(:staged_header => 'staged header', :staged_footer => 'staged footer')).to be true
+        expect(affiliate.update_attributes_for_live(staged_header: 'staged header', staged_footer: 'staged footer')).to be true
       end
     end
 
@@ -812,32 +812,32 @@ describe Affiliate do
         expect(affiliate).not_to receive(:save!)
       end
 
-      specify { expect(affiliate.update_attributes_for_live(:staged_header => 'staged header', :staged_footer => 'staged footer')).to be false }
+      specify { expect(affiliate.update_attributes_for_live(staged_header: 'staged header', staged_footer: 'staged footer')).to be false }
     end
 
     context "when attributes contain staged_uses_managed_header_footer='0'" do
       it 'should set is_validate_staged_header_footer to true' do
         expect(affiliate).to receive(:is_validate_staged_header_footer=).with(true)
-        affiliate.update_attributes_for_live(:staged_uses_managed_header_footer => '0',
-                                             :staged_header => 'staged header',
-                                             :staged_footer => 'staged footer')
+        affiliate.update_attributes_for_live(staged_uses_managed_header_footer: '0',
+                                             staged_header: 'staged header',
+                                             staged_footer: 'staged footer')
       end
 
       it 'should set header_footer_nested_css fields' do
         affiliate = Affiliate.create!(valid_create_attributes)
         expect(affiliate.update_attributes_for_live(
-          :staged_uses_managed_header_footer => '0',
-          :staged_header_footer_css => '@charset "UTF-8"; @import url("other.css"); h1 { color: blue }')).to be true
+          staged_uses_managed_header_footer: '0',
+          staged_header_footer_css: '@charset "UTF-8"; @import url("other.css"); h1 { color: blue }')).to be true
         expect(affiliate.staged_nested_header_footer_css.squish).to match(/^#{Regexp.escape('.header-footer h1{color:blue}')}$/)
         expect(affiliate.nested_header_footer_css.squish).to match(/^#{Regexp.escape('.header-footer h1{color:blue}')}$/)
       end
 
       it 'should not validated live header_footer_css field' do
         affiliate = Affiliate.create!(valid_create_attributes)
-        affiliate.update_attributes!(:header_footer_css => 'h1 { invalid-css-syntax }')
+        affiliate.update_attributes!(header_footer_css: 'h1 { invalid-css-syntax }')
         expect(affiliate.update_attributes_for_live(
-          :staged_uses_managed_header_footer => '0',
-          :staged_header_footer_css => '@charset "UTF-8"; @import url("other.css"); h1 { color: blue }')).to be true
+          staged_uses_managed_header_footer: '0',
+          staged_header_footer_css: '@charset "UTF-8"; @import url("other.css"); h1 { color: blue }')).to be true
         expect(affiliate.staged_nested_header_footer_css.squish).to match(/^#{Regexp.escape('.header-footer h1{color:blue}')}$/)
         expect(affiliate.nested_header_footer_css.squish).to match(/^#{Regexp.escape('.header-footer h1{color:blue}')}$/)
       end
@@ -903,8 +903,8 @@ describe Affiliate do
 
     it 'should copy header_footer_css' do
       affiliate = Affiliate.create!(valid_create_attributes)
-      affiliate.update_attributes!(:header_footer_css => 'h1 { invalid-css-syntax }',
-                                   :nested_header_footer_css => '.header_footer h1 { invalid-css-syntax }')
+      affiliate.update_attributes!(header_footer_css: 'h1 { invalid-css-syntax }',
+                                   nested_header_footer_css: '.header_footer h1 { invalid-css-syntax }')
       Affiliate.find(affiliate.id).cancel_staged_changes
 
       aff_after_cancel = Affiliate.find(affiliate.id)
@@ -1019,8 +1019,8 @@ describe Affiliate do
 
   describe '#css_property_hash' do
     context 'when theme is custom' do
-      let(:css_property_hash) { {:title_link_color => '#33ff33', :visited_title_link_color => '#0000ff'}.reverse_merge(Affiliate::DEFAULT_CSS_PROPERTIES) }
-      let(:affiliate) { Affiliate.create!(valid_create_attributes.merge(:theme => 'custom', :css_property_hash => css_property_hash)) }
+      let(:css_property_hash) { {title_link_color: '#33ff33', visited_title_link_color: '#0000ff'}.reverse_merge(Affiliate::DEFAULT_CSS_PROPERTIES) }
+      let(:affiliate) { Affiliate.create!(valid_create_attributes.merge(theme: 'custom', css_property_hash: css_property_hash)) }
 
       specify { expect(affiliate.css_property_hash(true)).to eq(css_property_hash) }
     end
@@ -1038,7 +1038,7 @@ describe Affiliate do
   describe 'scope_ids_as_array' do
     context 'when an affiliate has a non-null scope_ids attribute' do
       before do
-        @affiliate = Affiliate.new(:scope_ids => 'Scope1,Scope2,Scope3')
+        @affiliate = Affiliate.new(scope_ids: 'Scope1,Scope2,Scope3')
       end
 
       it 'should return the scopes as an array' do
@@ -1048,7 +1048,7 @@ describe Affiliate do
 
     context 'when the scope_ids have spaces near the commas' do
       before do
-        @affiliate = Affiliate.new(:scope_ids => 'Scope1, Scope2, Scope3')
+        @affiliate = Affiliate.new(scope_ids: 'Scope1, Scope2, Scope3')
       end
 
       it 'should strip out whitespace' do
@@ -1134,7 +1134,7 @@ describe Affiliate do
       before do
         site_domain_hash = Hash[domains.collect { |domain| [domain, nil] }]
         affiliate.add_site_domains(site_domain_hash)
-        expect(SiteDomain.where(:affiliate_id => affiliate.id).count).to eq(6)
+        expect(SiteDomain.where(affiliate_id: affiliate.id).count).to eq(6)
       end
 
       it 'should filter out existing domains' do
@@ -1157,11 +1157,11 @@ describe Affiliate do
     context 'when existing domain is covered by new ones' do
       before do
         affiliate.add_site_domains({'www1.usa.gov' => nil, 'www2.usa.gov' => nil, 'www.gsa.gov' => nil})
-        expect(SiteDomain.where(:affiliate_id => affiliate.id).count).to eq(3)
+        expect(SiteDomain.where(affiliate_id: affiliate.id).count).to eq(3)
       end
 
       it 'should filter out existing domains' do
-        expect(affiliate.update_site_domain(site_domain, {:domain => 'usa.gov', :site_name => nil})).to be_truthy
+        expect(affiliate.update_site_domain(site_domain, {domain: 'usa.gov', site_name: nil})).to be_truthy
         site_domains = affiliate.site_domains.reload
         expect(site_domains.count).to eq(1)
         expect(site_domains.first.domain).to eq('usa.gov')
@@ -1173,15 +1173,15 @@ describe Affiliate do
     before do
       @affiliate = affiliates(:basic_affiliate)
       @affiliate.fetch_concurrency = 2
-      @first = @affiliate.indexed_documents.build(:title => 'Document Title 1', :description => 'This is a Document.', :url => 'http://nps.gov/')
-      @second = @affiliate.indexed_documents.build(:title => 'Document Title 2', :description => 'This is a Document 2.', :url => 'http://nps.gov/foo')
-      @third = @affiliate.indexed_documents.build(:title => 'Document Title 3', :description => 'This is a Document 3.', :url => 'http://nps.gov/bar')
-      @ok = @affiliate.indexed_documents.build(:title => 'PDF Title',
-                                               :description => 'This is a PDF document.',
-                                               :url => 'http://nps.gov/pdf.pdf',
-                                               :last_crawl_status => IndexedDocument::OK_STATUS,
-                                               :last_crawled_at => Time.now,
-                                               :body => 'this is the doc body')
+      @first = @affiliate.indexed_documents.build(title: 'Document Title 1', description: 'This is a Document.', url: 'http://nps.gov/')
+      @second = @affiliate.indexed_documents.build(title: 'Document Title 2', description: 'This is a Document 2.', url: 'http://nps.gov/foo')
+      @third = @affiliate.indexed_documents.build(title: 'Document Title 3', description: 'This is a Document 3.', url: 'http://nps.gov/bar')
+      @ok = @affiliate.indexed_documents.build(title: 'PDF Title',
+                                               description: 'This is a PDF document.',
+                                               url: 'http://nps.gov/pdf.pdf',
+                                               last_crawl_status: IndexedDocument::OK_STATUS,
+                                               last_crawled_at: Time.now,
+                                               body: 'this is the doc body')
       @affiliate.save!
     end
 

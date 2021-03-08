@@ -123,22 +123,22 @@ describe ElasticIndexedDocument do
     context 'when document collection is specified' do
       before do
         IndexedDocument.destroy_all
-        @document_collection = affiliate.document_collections.create!(:name => 'test',
-                                                                      :url_prefixes_attributes => {
-                                                                        '0' => { :prefix => 'http://www.agency.gov/' },
-                                                                        '1' => { :prefix => 'http://www.nps.gov/' }
+        @document_collection = affiliate.document_collections.create!(name: 'test',
+                                                                      url_prefixes_attributes: {
+                                                                        '0' => { prefix: 'http://www.agency.gov/' },
+                                                                        '1' => { prefix: 'http://www.nps.gov/' }
                                                                       })
-        affiliate.site_domains.create!(:domain => 'ignoreme.gov')
-        IndexedDocument.create!(:last_crawl_status => IndexedDocument::OK_STATUS,
-                                :title => 'Title 1',
-                                :description => 'This is a HTML document.',
-                                :url => 'http://www.nps.gov/html.html',
-                                :affiliate_id => affiliate.id)
-        IndexedDocument.create!(:last_crawl_status => IndexedDocument::OK_STATUS,
-                                :title => 'Title 2',
-                                :description => 'This is another HTML document.',
-                                :url => 'http://www.ignoreme.gov/html.html',
-                                :affiliate_id => affiliate.id)
+        affiliate.site_domains.create!(domain: 'ignoreme.gov')
+        IndexedDocument.create!(last_crawl_status: IndexedDocument::OK_STATUS,
+                                title: 'Title 1',
+                                description: 'This is a HTML document.',
+                                url: 'http://www.nps.gov/html.html',
+                                affiliate_id: affiliate.id)
+        IndexedDocument.create!(last_crawl_status: IndexedDocument::OK_STATUS,
+                                title: 'Title 2',
+                                description: 'This is another HTML document.',
+                                url: 'http://www.ignoreme.gov/html.html',
+                                affiliate_id: affiliate.id)
         ElasticIndexedDocument.commit
       end
 

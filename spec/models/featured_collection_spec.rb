@@ -28,10 +28,10 @@ describe FeaturedCollection do
     it_behaves_like 'a record that sanitizes attributes', [:title]
   end
 
-  specify { expect(FeaturedCollection.new(:status => 'active')).to be_is_active }
-  specify { expect(FeaturedCollection.new(:status => 'active')).not_to be_is_inactive }
-  specify { expect(FeaturedCollection.new(:status => 'inactive')).to be_is_inactive }
-  specify { expect(FeaturedCollection.new(:status => 'inactive')).not_to be_is_active }
+  specify { expect(FeaturedCollection.new(status: 'active')).to be_is_active }
+  specify { expect(FeaturedCollection.new(status: 'active')).not_to be_is_inactive }
+  specify { expect(FeaturedCollection.new(status: 'inactive')).to be_is_inactive }
+  specify { expect(FeaturedCollection.new(status: 'inactive')).not_to be_is_active }
 
   it { is_expected.to belong_to :affiliate }
   it { is_expected.to have_many(:featured_collection_keywords).dependent(:destroy) }
@@ -57,11 +57,11 @@ describe FeaturedCollection do
       title_url = 'search.gov/post/9866782725/did-you-mean-roes-or-rose'
       prefixes = %w( http https HTTP HTTPS invalidhttp:// invalidHtTp:// invalidhttps:// invalidHTtPs:// invalidHttPsS://)
       prefixes.each do |prefix|
-        specify { expect(FeaturedCollection.create!(:title => 'Did You Mean Roes or Rose?',
-                                             :title_url => "#{prefix}#{title_url}",
-                                             :status => 'active',
-                                             :publish_start_on => '07/01/2011',
-                                             :affiliate => @affiliate).title_url).to eq("http://#{prefix}#{title_url}") }
+        specify { expect(FeaturedCollection.create!(title: 'Did You Mean Roes or Rose?',
+                                             title_url: "#{prefix}#{title_url}",
+                                             status: 'active',
+                                             publish_start_on: '07/01/2011',
+                                             affiliate: @affiliate).title_url).to eq("http://#{prefix}#{title_url}") }
       end
     end
 
@@ -69,21 +69,21 @@ describe FeaturedCollection do
       title_url = 'search.gov/post/9866782725/did-you-mean-roes-or-rose'
       prefixes = %w( http:// https:// HTTP:// HTTPS:// )
       prefixes.each do |prefix|
-        specify { expect(FeaturedCollection.create!(:title => 'Did You Mean Roes or Rose?',
-                                             :title_url => "#{prefix}#{title_url}",
-                                             :status => 'active',
-                                             :publish_start_on => '07/01/2011',
-                                             :affiliate => @affiliate).title_url).to eq("#{prefix}#{title_url}") }
+        specify { expect(FeaturedCollection.create!(title: 'Did You Mean Roes or Rose?',
+                                             title_url: "#{prefix}#{title_url}",
+                                             status: 'active',
+                                             publish_start_on: '07/01/2011',
+                                             affiliate: @affiliate).title_url).to eq("#{prefix}#{title_url}") }
       end
     end
   end
 
   it 'should not allow publish start date before publish end date' do
-    featured_collection = FeaturedCollection.create(:title => 'test title',
-                                                    :status => 'active',
-                                                    :publish_start_on => '07/01/2012',
-                                                    :publish_end_on => '07/01/2011',
-                                                    :affiliate => @affiliate)
+    featured_collection = FeaturedCollection.create(title: 'test title',
+                                                    status: 'active',
+                                                    publish_start_on: '07/01/2012',
+                                                    publish_end_on: '07/01/2011',
+                                                    affiliate: @affiliate)
     expect(featured_collection.errors.full_messages.join).to match(/Publish end date can't be before publish start date/)
   end
 
@@ -118,12 +118,12 @@ describe FeaturedCollection do
 
   describe '#display_status' do
     context 'when status is set to active' do
-      subject { FeaturedCollection.new(:status => 'active') }
+      subject { FeaturedCollection.new(status: 'active') }
       its(:display_status) { should == 'Active' }
     end
 
     context 'when status is set to inactive' do
-      subject { FeaturedCollection.new(:status => 'inactive') }
+      subject { FeaturedCollection.new(status: 'inactive') }
       its(:display_status) { should == 'Inactive' }
     end
   end
@@ -176,7 +176,7 @@ describe FeaturedCollection do
       it 'should not clear image' do
         expect(featured_collection).to receive(:image?).and_return(false)
         expect(image).not_to receive(:clear)
-        featured_collection.update_attributes(:title => 'new title')
+        featured_collection.update_attributes(title: 'new title')
       end
     end
   end
@@ -187,14 +187,14 @@ describe FeaturedCollection do
 
       context 'when only the parent record has substring match in selected text fields' do
         before do
-          affiliate.featured_collections.create!(:title => 'My awesome featured collection abc',
-                                                 :title_url => 'http://www.dotgov.gov/page.html',
-                                                 :status => 'active',
-                                                 :publish_start_on => Date.current)
-          affiliate.featured_collections.create!(:title => 'Another awesome featured collection',
-                                                 :title_url => 'http://www.dotgov.gov/defg.html',
-                                                 :status => 'active',
-                                                 :publish_start_on => Date.current)
+          affiliate.featured_collections.create!(title: 'My awesome featured collection abc',
+                                                 title_url: 'http://www.dotgov.gov/page.html',
+                                                 status: 'active',
+                                                 publish_start_on: Date.current)
+          affiliate.featured_collections.create!(title: 'Another awesome featured collection',
+                                                 title_url: 'http://www.dotgov.gov/defg.html',
+                                                 status: 'active',
+                                                 publish_start_on: Date.current)
         end
 
         it 'should find the records' do
@@ -207,8 +207,8 @@ describe FeaturedCollection do
         context 'when keywords have substring match in selected fields' do
           before do
             fc = FeaturedCollection.last
-            fc.featured_collection_keywords.build(:value => 'page2')
-            fc.featured_collection_keywords.build(:value => 'hello')
+            fc.featured_collection_keywords.build(value: 'page2')
+            fc.featured_collection_keywords.build(value: 'hello')
             fc.save!
           end
 
@@ -222,14 +222,14 @@ describe FeaturedCollection do
 
       context 'when at least one has_many association has substring match in selected fields' do
         before do
-          fc = affiliate.featured_collections.build(:title => 'My awesome featured collection',
-                                                    :title_url => 'http://www.dotgov.gov/page.html',
-                                                    :status => 'active',
-                                                    :publish_start_on => Date.current)
-          fc.featured_collection_keywords.build(:value => 'word1')
-          fc.featured_collection_links.build(:title => 'Worldwide Tropical Cyclone Names Part1',
-                                             :url => 'http://www.nhc.noaa.gov/aboutnames.shtml',
-                                             :position => '0')
+          fc = affiliate.featured_collections.build(title: 'My awesome featured collection',
+                                                    title_url: 'http://www.dotgov.gov/page.html',
+                                                    status: 'active',
+                                                    publish_start_on: Date.current)
+          fc.featured_collection_keywords.build(value: 'word1')
+          fc.featured_collection_links.build(title: 'Worldwide Tropical Cyclone Names Part1',
+                                             url: 'http://www.nhc.noaa.gov/aboutnames.shtml',
+                                             position: '0')
 
           fc.save!
         end
@@ -243,14 +243,14 @@ describe FeaturedCollection do
 
       context 'when neither the parent or the child records have a match' do
         before do
-          fc = affiliate.featured_collections.build(:title => 'My awesome featured collection',
-                                                    :title_url => 'http://www.dotgov.gov/page.html',
-                                                    :status => 'active',
-                                                    :publish_start_on => Date.current)
-          fc.featured_collection_keywords.build(:value => 'word1')
-          fc.featured_collection_links.build(:title => 'Worldwide Tropical Cyclone Names Part1',
-                                             :url => 'http://www.nhc.noaa.gov/aboutnames.shtml',
-                                             :position => '0')
+          fc = affiliate.featured_collections.build(title: 'My awesome featured collection',
+                                                    title_url: 'http://www.dotgov.gov/page.html',
+                                                    status: 'active',
+                                                    publish_start_on: Date.current)
+          fc.featured_collection_keywords.build(value: 'word1')
+          fc.featured_collection_links.build(title: 'Worldwide Tropical Cyclone Names Part1',
+                                             url: 'http://www.nhc.noaa.gov/aboutnames.shtml',
+                                             position: '0')
 
           fc.save!
         end
@@ -281,9 +281,9 @@ describe FeaturedCollection do
           publish_start_on: Date.current
         }
         fc = @affiliate.featured_collections.build(fc_attributes)
-        fc.featured_collection_links.build(:title => 'Worldwide Tropical Cyclone Names Part1',
-                                           :url => 'http://www.nhc.noaa.gov/aboutnames.shtml',
-                                           :position => '0')
+        fc.featured_collection_links.build(title: 'Worldwide Tropical Cyclone Names Part1',
+                                           url: 'http://www.nhc.noaa.gov/aboutnames.shtml',
+                                           position: '0')
         fc.save!
 
         as_json_hash = fc.as_json

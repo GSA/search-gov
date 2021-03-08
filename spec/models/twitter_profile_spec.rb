@@ -5,10 +5,10 @@ describe TwitterProfile do
 
   before do
     @valid_attributes = {
-      :twitter_id => 123,
-      :screen_name => 'USASearch',
-      :name => 'USASearch',
-      :profile_image_url => 'http://a0.twimg.com/profile_images/1879738641/USASearch_avatar_normal.png'
+      twitter_id: 123,
+      screen_name: 'USASearch',
+      name: 'USASearch',
+      profile_image_url: 'http://a0.twimg.com/profile_images/1879738641/USASearch_avatar_normal.png'
     }
   end
 
@@ -24,14 +24,14 @@ describe TwitterProfile do
 
   context 'when screen_name has leading @' do
     it 'should normalize screen_name before validation' do
-      tp = TwitterProfile.create!(@valid_attributes.merge(:screen_name => '@at_sign'))
+      tp = TwitterProfile.create!(@valid_attributes.merge(screen_name: '@at_sign'))
       expect(tp.screen_name).to eq('at_sign')
     end
   end
 
   context 'when screen_name has trailing spaces' do
     it 'should normalize screen_name before validation' do
-      tp = TwitterProfile.create!(@valid_attributes.merge(:screen_name => 'CDCSalud  '))
+      tp = TwitterProfile.create!(@valid_attributes.merge(screen_name: 'CDCSalud  '))
       expect(tp.screen_name).to eq('CDCSalud')
     end
   end

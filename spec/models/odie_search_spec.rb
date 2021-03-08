@@ -7,17 +7,17 @@ describe OdieSearch do
 
   before do
     ElasticIndexedDocument.recreate_index
-    affiliate.indexed_documents.create!(:url => 'http://nps.gov/something.pdf', :title => 'The Fifth Element',
-                                        :description => 'Leeloo the supreme being',
-                                        :body => 'other esoteric content related to the document somehow',
-                                        :last_crawled_at => Time.now, :last_crawl_status => 'OK')
+    affiliate.indexed_documents.create!(url: 'http://nps.gov/something.pdf', title: 'The Fifth Element',
+                                        description: 'Leeloo the supreme being',
+                                        body: 'other esoteric content related to the document somehow',
+                                        last_crawled_at: Time.now, last_crawl_status: 'OK')
     ElasticIndexedDocument.commit
   end
 
   describe '#initialize(options)' do
     context "when the query param isn't set" do
       it "should set 'query' to a blank string" do
-        expect(OdieSearch.new(:affiliate => affiliate).query).to be_blank
+        expect(OdieSearch.new(affiliate: affiliate).query).to be_blank
       end
     end
   end
@@ -25,7 +25,7 @@ describe OdieSearch do
   describe '#run' do
     context 'when searching with really long queries' do
       before do
-        @search = OdieSearch.new({:query => 'X' * (Search::MAX_QUERYTERM_LENGTH + 1), :affiliate => affiliate})
+        @search = OdieSearch.new({query: 'X' * (Search::MAX_QUERYTERM_LENGTH + 1), affiliate: affiliate})
       end
 
       it 'should return false when searching' do
@@ -47,7 +47,7 @@ describe OdieSearch do
 
     context 'when searching with a blank query' do
       before do
-        @search = OdieSearch.new({:query => '   ', :affiliate => affiliate})
+        @search = OdieSearch.new({query: '   ', affiliate: affiliate})
       end
 
       it 'should return false when searching' do
@@ -82,20 +82,20 @@ describe OdieSearch do
 
   describe '#cache_key' do
     before do
-      @dc = affiliate.document_collections.create!(:name => 'whatevs',
-                                                   :url_prefixes_attributes => {'0' => { :prefix => 'https://www.usa.gov/docs/' } })
-      @dc.navigation.update_attributes!(:is_active => true)
+      @dc = affiliate.document_collections.create!(name: 'whatevs',
+                                                   url_prefixes_attributes: {'0' => { prefix: 'https://www.usa.gov/docs/' } })
+      @dc.navigation.update_attributes!(is_active: true)
     end
 
     it 'should output a key based on the query, affiliate id, doc collection, and page parameters' do
-      expect(OdieSearch.new(:query => 'element', :affiliate => affiliate, :page => 4, :document_collection => @dc).cache_key).to eq("element:#{affiliate.id}:4:#{@dc.id}")
-      expect(OdieSearch.new(:query => 'element', :affiliate => affiliate, :page => 4).cache_key).to eq("element:#{affiliate.id}:4:")
+      expect(OdieSearch.new(query: 'element', affiliate: affiliate, page: 4, document_collection: @dc).cache_key).to eq("element:#{affiliate.id}:4:#{@dc.id}")
+      expect(OdieSearch.new(query: 'element', affiliate: affiliate, page: 4).cache_key).to eq("element:#{affiliate.id}:4:")
     end
   end
 
   describe '#as_json' do
     before do
-      @search = OdieSearch.new(:query => 'element', :affiliate => affiliate)
+      @search = OdieSearch.new(query: 'element', affiliate: affiliate)
       @search.run
     end
 
@@ -120,7 +120,7 @@ describe OdieSearch do
 
   describe '#to_xml' do
     before do
-      @search = OdieSearch.new(:query => 'element', :affiliate => affiliate)
+      @search = OdieSearch.new(query: 'element', affiliate: affiliate)
       @search.run
     end
 

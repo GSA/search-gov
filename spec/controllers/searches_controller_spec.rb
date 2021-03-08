@@ -151,7 +151,7 @@ describe SearchesController do
 
   context 'when affiliate gets i14y results' do
     let(:affiliate) { affiliates(:basic_affiliate) }
-    let(:i14y_search) { double(I14ySearch, :query => 'gov', :modules => %w(I14Y), :diagnostics => {}) }
+    let(:i14y_search) { double(I14ySearch, query: 'gov', modules: %w(I14Y), diagnostics: {}) }
 
     before do
       expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
@@ -177,7 +177,7 @@ describe SearchesController do
 
   context 'when affiliate is using SearchGov' do
     let(:affiliate) { affiliates(:basic_affiliate) }
-    let(:i14y_search) { double(I14ySearch, :query => 'gov', :modules => %w(I14Y), :diagnostics => {}) }
+    let(:i14y_search) { double(I14ySearch, query: 'gov', modules: %w(I14Y), diagnostics: {}) }
 
     before do
       expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
@@ -374,7 +374,7 @@ describe SearchesController do
     end
 
     it 'should redirect to the advanced search page' do
-      expect(response).to redirect_to advanced_search_path(:form => 'advanced-firstgov')
+      expect(response).to redirect_to advanced_search_path(form: 'advanced-firstgov')
     end
   end
 
@@ -389,7 +389,7 @@ describe SearchesController do
 
     it 'should redirect to the affiliate advanced search page' do
       expect(response).to be_redirect
-      redirect_to advanced_search_path(:affiliate => 'aff.gov', :form => 'advanced-firstgov')
+      redirect_to advanced_search_path(affiliate: 'aff.gov', form: 'advanced-firstgov')
     end
   end
 
@@ -473,7 +473,7 @@ describe SearchesController do
     end
 
     context 'when DocumentCollection exists' do
-      let(:site_search) { double(SiteSearch, :query => 'gov', :modules => %w(BWEB), :diagnostics => {}) }
+      let(:site_search) { double(SiteSearch, query: 'gov', modules: %w(BWEB), diagnostics: {}) }
 
       before do
         allow(dc).to receive(:too_deep_for_bing?).and_return(false)
@@ -498,7 +498,7 @@ describe SearchesController do
       it { is_expected.to render_template(:docs) }
 
       context 'when document collection max depth is >= 3' do
-        let(:i14y_search) { double(I14ySearch, :query => 'gov', :modules => %w(I14Y), :diagnostics => {}) }
+        let(:i14y_search) { double(I14ySearch, query: 'gov', modules: %w(I14Y), diagnostics: {}) }
 
         before do
           allow(dc).to receive(:too_deep_for_bing?).and_return(true)
@@ -535,13 +535,13 @@ describe SearchesController do
     end
 
     context 'when page number is specified' do
-      let(:site_search) { double(SiteSearch, :query => 'pdf', :modules => [], :diagnostics => {}) }
+      let(:site_search) { double(SiteSearch, query: 'pdf', modules: [], diagnostics: {}) }
 
       before do
         expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
         allow(dc).to receive(:too_deep_for_bing?).and_return(false)
         allow(affiliate).to receive_message_chain(:document_collections, :find_by_id).and_return(dc)
-        expect(SiteSearch).to receive(:new).with(hash_including(:dc => '100')).and_return(site_search)
+        expect(SiteSearch).to receive(:new).with(hash_including(dc: '100')).and_return(site_search)
         expect(site_search).to receive(:run)
         get :docs,
             params: {
@@ -556,7 +556,7 @@ describe SearchesController do
     end
 
     context 'when DocumentCollection does not exist' do
-      let(:web_search) { double(WebSearch, :query => 'gov', :modules => [], :diagnostics => {}) }
+      let(:web_search) { double(WebSearch, query: 'gov', modules: [], diagnostics: {}) }
 
       before do
         expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
@@ -576,7 +576,7 @@ describe SearchesController do
     end
 
     context 'when params[:dc] is not a valid number' do
-      let(:web_search) { double(WebSearch, :query => 'gov', :modules => [], :diagnostics => {}) }
+      let(:web_search) { double(WebSearch, query: 'gov', modules: [], diagnostics: {}) }
 
       before do
         expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
@@ -609,7 +609,7 @@ describe SearchesController do
 
     context 'when the affiliate uses the SearchGov engine' do
       let(:affiliate) { affiliates(:basic_affiliate) }
-      let(:i14y_search) { double(I14ySearch, :query => 'gov', :modules => %w(I14Y), :diagnostics => {}) }
+      let(:i14y_search) { double(I14ySearch, query: 'gov', modules: %w(I14Y), diagnostics: {}) }
 
       before do
         expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
@@ -728,7 +728,7 @@ describe SearchesController do
                            rss_feed: rss_feeds(:white_house_blog),
                            modules: [],
                            tbs: 'w',
-                           :diagnostics => {})
+                           diagnostics: {})
         expect(news_search).to receive(:is_a?).with(FilterableSearch).and_return(true)
         expect(news_search).to receive(:is_a?).with(NewsSearch).and_return(true)
         expect(NewsSearch).to receive(:new).with(hash_including(tbs: 'w', per_page: 20)).and_return(news_search)
@@ -861,7 +861,7 @@ describe SearchesController do
       before do
         expect(VideoNewsSearch).to receive(:new).and_return(video_news_search)
         expect(video_news_search).to receive(:run)
-        rss_feed = double('rss feed', :name => 'Videos')
+        rss_feed = double('rss feed', name: 'Videos')
         expect(video_news_search).to receive(:rss_feed).at_least(:once).and_return(rss_feed)
         expect(video_news_search).to receive(:total).and_return(1)
         get :video_news,

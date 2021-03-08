@@ -77,7 +77,7 @@ describe User do
 
     context 'when the flag to not send an email is set to true' do
       it 'should not send any emails' do
-        User.create!(valid_attributes.merge(:skip_welcome_email => true))
+        User.create!(valid_attributes.merge(skip_welcome_email: true))
       end
     end
 
@@ -249,7 +249,7 @@ describe User do
 
     it 'should not set requires_manual_approval if the user is an affiliate and the email is government_affiliated' do
       %w( aff@agency.GOV aff@anotheragency.gov admin@agency.mil anotheradmin@agency.MIL ).each do |email|
-        user = User.create!(@valid_affiliate_attributes.merge(:email => email))
+        user = User.create!(@valid_affiliate_attributes.merge(email: email))
         expect(user.requires_manual_approval?).to be false
       end
     end
@@ -303,7 +303,7 @@ describe User do
   describe '#has_government_affiliated_email?' do
     it 'should return true if the e-mail address ends with .gov or .mil' do
       %w(aff@agency.GOV aff@anotheragency.gov admin@agency.mil anotheradmin@agency.MIL).each do |email|
-        user = User.new(@valid_affiliate_attributes.merge({ :email => email }))
+        user = User.new(@valid_affiliate_attributes.merge({ email: email }))
         expect(user.has_government_affiliated_email?).to be_truthy
       end
     end

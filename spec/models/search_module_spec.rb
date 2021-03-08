@@ -5,8 +5,8 @@ describe SearchModule do
 
   before(:each) do
     @valid_attributes = {
-      :display_name => 'Some name',
-      :tag => 'IMATAG'
+      display_name: 'Some name',
+      tag: 'IMATAG'
     }
   end
 

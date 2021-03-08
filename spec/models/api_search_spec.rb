@@ -8,7 +8,7 @@ describe ApiSearch do
       let(:affiliate) { affiliates(:basic_affiliate) }
       let(:api_redis) { ApiSearch.redis }
       let(:format) { 'json' }
-      let(:params) { {:query => 'foobar', :page => 2, :per_page => 10, :affiliate => affiliate, :format => format} }
+      let(:params) { {query: 'foobar', page: 2, per_page: 10, affiliate: affiliate, format: format} }
       let(:search) { double(WebSearch, diagnostics: { 'AWEB' => :underlying_search_diagnostics }) }
       let(:search_result_in_json) { '{"results":["foo","bar","baz"]}' }
 
@@ -82,7 +82,7 @@ describe ApiSearch do
       let(:affiliate) { affiliates(:basic_affiliate) }
       let(:api_redis) { ApiSearch.redis }
       let(:format) { 'xml' }
-      let(:params) { {:query => 'foobar', :page => 2, :per_page => 10, :affiliate => affiliate, :format => format} }
+      let(:params) { {query: 'foobar', page: 2, per_page: 10, affiliate: affiliate, format: format} }
       let(:search) { double(WebSearch, diagnostics: {}) }
       let(:search_result_in_xml) { double('search_result_in_xml') }
 
@@ -140,7 +140,7 @@ describe ApiSearch do
       let(:affiliate) { affiliates(:basic_affiliate) }
       let(:api_redis) { ApiSearch.redis }
       let(:format) { 'json' }
-      let(:params) { {:query => 'foobar', :page => 1, :per_page => 10, :affiliate => affiliate, :format => format} }
+      let(:params) { {query: 'foobar', page: 1, per_page: 10, affiliate: affiliate, format: format} }
       let(:search) { double(WebSearch) }
 
       before do
@@ -151,8 +151,8 @@ describe ApiSearch do
 
       context "when it's web" do
         it 'should create a WebSearch object' do
-          expect(WebSearch).to receive(:new).with(params.merge(:index => 'web')).and_return(search)
-          ApiSearch.new(params.merge(:index => 'web'))
+          expect(WebSearch).to receive(:new).with(params.merge(index: 'web')).and_return(search)
+          ApiSearch.new(params.merge(index: 'web'))
         end
       end
 
@@ -165,29 +165,29 @@ describe ApiSearch do
 
       context "when it's news" do
         it 'should create a NewsSearch object' do
-          expect(ApiNewsSearch).to receive(:new).with(params.merge(:index => 'news')).and_return(search)
-          ApiSearch.new(params.merge(:index => 'news'))
+          expect(ApiNewsSearch).to receive(:new).with(params.merge(index: 'news')).and_return(search)
+          ApiSearch.new(params.merge(index: 'news'))
         end
       end
 
       context "when it's videonews" do
         it 'should create a VideoNewsSearch object' do
-          expect(VideoNewsSearch).to receive(:new).with(params.merge(:index => 'videonews')).and_return(search)
-          ApiSearch.new(params.merge(:index => 'videonews'))
+          expect(VideoNewsSearch).to receive(:new).with(params.merge(index: 'videonews')).and_return(search)
+          ApiSearch.new(params.merge(index: 'videonews'))
         end
       end
 
       context "when it's images" do
         it 'should create an ApiLegacyImageSearch object' do
-          expect(ApiLegacyImageSearch).to receive(:new).with(params.merge(:index => 'images')).and_return(search)
-          ApiSearch.new(params.merge(:index => 'images'))
+          expect(ApiLegacyImageSearch).to receive(:new).with(params.merge(index: 'images')).and_return(search)
+          ApiSearch.new(params.merge(index: 'images'))
         end
       end
 
       context "when it's document collections (docs)" do
         it 'should create a SiteSearch object' do
-          expect(SiteSearch).to receive(:new).with(params.merge(:index => 'docs', :dc => '45')).and_return(search)
-          ApiSearch.new(params.merge(:index => 'docs', :dc => '45'))
+          expect(SiteSearch).to receive(:new).with(params.merge(index: 'docs', dc: '45')).and_return(search)
+          ApiSearch.new(params.merge(index: 'docs', dc: '45'))
         end
       end
     end

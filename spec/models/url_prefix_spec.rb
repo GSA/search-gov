@@ -5,8 +5,8 @@ describe UrlPrefix do
 
   before do
     @valid_attributes = {
-      :prefix => 'http://www.foo.gov/folder',
-      :document_collection => document_collections(:sample)
+      prefix: 'http://www.foo.gov/folder',
+      document_collection: document_collections(:sample)
     }
   end
 
@@ -21,25 +21,25 @@ describe UrlPrefix do
 
     it 'should cap prefix length at 255 characters' do
       too_long = "http://www.foo.gov/#{'waytoolong'*25}/"
-      url_prefix = UrlPrefix.new(@valid_attributes.merge(:prefix=> too_long))
+      url_prefix = UrlPrefix.new(@valid_attributes.merge(prefix: too_long))
       expect(url_prefix).not_to be_valid
       expect(url_prefix.errors[:prefix].first).to match(/too long/)
     end
 
     it 'should validate the URL prefix against URI.parse' do
-      url_prefix = UrlPrefix.new(@valid_attributes.merge(:prefix => 'http://www.gov.gov/pipesare||bad/'))
+      url_prefix = UrlPrefix.new(@valid_attributes.merge(prefix: 'http://www.gov.gov/pipesare||bad/'))
       expect(url_prefix.valid?).to be false
       expect(url_prefix.errors.full_messages.first).to eq('Prefix is not a valid URL')
     end
 
     it 'normalizes the prefix' do
-      expect(UrlPrefix.create!(@valid_attributes.merge(:prefix=> '    www.FOO.gov   ')).prefix).to eq('http://www.foo.gov/')
+      expect(UrlPrefix.create!(@valid_attributes.merge(prefix: '    www.FOO.gov   ')).prefix).to eq('http://www.foo.gov/')
     end
   end
 
   describe '#label' do
     it 'should return the prefix' do
-      expect(UrlPrefix.new(:prefix => 'foo').label).to eq('foo')
+      expect(UrlPrefix.new(prefix: 'foo').label).to eq('foo')
     end
   end
 

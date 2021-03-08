@@ -5,20 +5,20 @@ describe AffiliateIndexedDocumentFetcher, '#perform(affiliate_id, start_id, end_
   before do
     IndexedDocument.destroy_all
     @affiliate = affiliates(:basic_affiliate)
-    @unfetched = @affiliate.indexed_documents.build(:url => 'http://nps.gov/foo.html', :title => 'Doc Title',
-                                                    :description => 'This is a document.')
-    @ok = @affiliate.indexed_documents.build(:title => 'PDF Title',
-                                             :description => 'This is a PDF document.',
-                                             :url => 'http://nps.gov/pdf.pdf',
-                                             :last_crawl_status => IndexedDocument::OK_STATUS,
-                                             :last_crawled_at => Time.now,
-                                             :body => 'this is the doc body')
-    @not_ok = @affiliate.indexed_documents.build(:title => 'Dupe PDF Title',
-                                                 :description => 'Dupe This is a PDF document.',
-                                                 :url => 'http://nps.gov/dupe_pdf.pdf',
-                                                 :last_crawl_status => 'duplicate',
-                                                 :last_crawled_at => Time.now,
-                                                 :body => 'this is the doc body')
+    @unfetched = @affiliate.indexed_documents.build(url: 'http://nps.gov/foo.html', title: 'Doc Title',
+                                                    description: 'This is a document.')
+    @ok = @affiliate.indexed_documents.build(title: 'PDF Title',
+                                             description: 'This is a PDF document.',
+                                             url: 'http://nps.gov/pdf.pdf',
+                                             last_crawl_status: IndexedDocument::OK_STATUS,
+                                             last_crawled_at: Time.now,
+                                             body: 'this is the doc body')
+    @not_ok = @affiliate.indexed_documents.build(title: 'Dupe PDF Title',
+                                                 description: 'Dupe This is a PDF document.',
+                                                 url: 'http://nps.gov/dupe_pdf.pdf',
+                                                 last_crawl_status: 'duplicate',
+                                                 last_crawled_at: Time.now,
+                                                 body: 'this is the doc body')
     @affiliate.save!
   end
 

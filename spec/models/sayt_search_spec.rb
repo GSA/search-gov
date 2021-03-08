@@ -6,8 +6,8 @@ describe SaytSearch do
   let(:es_affiliate) { affiliates(:gobiernousa_affiliate) }
 
   let(:sayt_suggestions) do
-    sayt_suggestion1 = mock_model(SaytSuggestion, :phrase => 'foo1')
-    sayt_suggestion2 = mock_model(SaytSuggestion, :phrase => 'foo2')
+    sayt_suggestion1 = mock_model(SaytSuggestion, phrase: 'foo1')
+    sayt_suggestion2 = mock_model(SaytSuggestion, phrase: 'foo2')
     [sayt_suggestion1, sayt_suggestion2]
   end
 

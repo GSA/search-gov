@@ -260,7 +260,7 @@ describe WebSearch do
 
     describe 'populating additional results' do
       before do
-        @search = WebSearch.new(:query => 'english', :affiliate => affiliates(:non_existent_affiliate), :geoip_info => 'test')
+        @search = WebSearch.new(query: 'english', affiliate: affiliates(:non_existent_affiliate), geoip_info: 'test')
       end
 
       it 'should get the info from GovboxSet' do
@@ -275,7 +275,7 @@ describe WebSearch do
       subject(:search) do
         affiliate = affiliates(:usagov_affiliate)
         affiliate.search_engine = 'BingV6'
-        WebSearch.new(:query => 'english', :affiliate => affiliate)
+        WebSearch.new(query: 'english', affiliate: affiliate)
       end
 
       it 'assigns BWEB as the module_tag' do
@@ -288,13 +288,13 @@ describe WebSearch do
       before do
         ElasticIndexedDocument.recreate_index
         @non_affiliate = affiliates(:non_existent_affiliate)
-        @non_affiliate.site_domains.create(:domain => 'nonsense.com')
+        @non_affiliate.site_domains.create(domain: 'nonsense.com')
         @non_affiliate.indexed_documents.destroy_all
         1.upto(15) do |index|
-          @non_affiliate.indexed_documents << IndexedDocument.new(:title => "Indexed Result no_result #{index}",
-                                                                  :url => "http://nonsense.com/#{index}.html",
-                                                                  :description => 'This is an indexed result no_result.',
-                                                                  :last_crawl_status => IndexedDocument::OK_STATUS)
+          @non_affiliate.indexed_documents << IndexedDocument.new(title: "Indexed Result no_result #{index}",
+                                                                  url: "http://nonsense.com/#{index}.html",
+                                                                  description: 'This is an indexed result no_result.',
+                                                                  last_crawl_status: IndexedDocument::OK_STATUS)
         end
         ElasticIndexedDocument.commit
         expect(@non_affiliate.indexed_documents.size).to eq(15)
@@ -302,7 +302,7 @@ describe WebSearch do
       end
 
       it 'fills the results with the Odie docs' do
-        search = WebSearch.new(:query => 'no_results', :affiliate => @non_affiliate)
+        search = WebSearch.new(query: 'no_results', affiliate: @non_affiliate)
         search.run
         expect(search.total).to eq(15)
         expect(search.startrecord).to eq(1)
@@ -319,7 +319,7 @@ describe WebSearch do
         @non_affiliate = affiliates(:non_existent_affiliate)
         @non_affiliate.boosted_contents.destroy_all
         allow(ElasticIndexedDocument).to receive(:search_for).and_return nil
-        @search = WebSearch.new(:query => 'no_results', :affiliate => @non_affiliate)
+        @search = WebSearch.new(query: 'no_results', affiliate: @non_affiliate)
       end
 
       it 'should return a search with a zero total' do
@@ -347,13 +347,13 @@ describe WebSearch do
         ElasticIndexedDocument.recreate_index
         @non_affiliate = affiliates(:non_existent_affiliate)
         @non_affiliate.indexed_documents.destroy_all
-        odie = @non_affiliate.indexed_documents.create!(:title => 'PDF Title', :description => 'PDF Description', :url => 'http://nonsense.gov/pdf1.pdf', :doctype => 'pdf', :last_crawl_status => IndexedDocument::OK_STATUS)
+        odie = @non_affiliate.indexed_documents.create!(title: 'PDF Title', description: 'PDF Description', url: 'http://nonsense.gov/pdf1.pdf', doctype: 'pdf', last_crawl_status: IndexedDocument::OK_STATUS)
         ElasticIndexedDocument.commit
         odie.delete
       end
 
       it 'should return with zero results' do
-        search = WebSearch.new(:query => 'no_results', :affiliate => @non_affiliate)
+        search = WebSearch.new(query: 'no_results', affiliate: @non_affiliate)
         search.run
         expect(search.results).to be_blank
       end
@@ -363,7 +363,7 @@ describe WebSearch do
     describe 'ODIE backfill' do
       context 'when we want X Bing/Google results from page Y and there are X of them' do
         before do
-          @search = WebSearch.new(:query => 'english', :affiliate => affiliate)
+          @search = WebSearch.new(query: 'english', affiliate: affiliate)
           @search.run
         end
 
@@ -552,7 +552,7 @@ describe WebSearch do
 
   describe '#as_json' do
     let(:affiliate) { affiliates(:non_existent_affiliate) }
-    let(:search) { WebSearch.new(:query => 'english', :affiliate => affiliate) }
+    let(:search) { WebSearch.new(query: 'english', affiliate: affiliate) }
 
     it 'should generate a JSON representation of total, start and end records, and search results' do
       search.run
@@ -577,8 +577,8 @@ describe WebSearch do
 
     context 'when boosted contents are present' do
       before do
-        affiliate.boosted_contents.create!(:title => 'boosted english content', :url => 'http://nonsense.gov',
-                                           :description => 'english description', :status => 'active', :publish_start_on => Date.current)
+        affiliate.boosted_contents.create!(title: 'boosted english content', url: 'http://nonsense.gov',
+                                           description: 'english description', status: 'active', publish_start_on: Date.current)
         ElasticBoostedContent.commit
         search.run
       end
@@ -653,7 +653,7 @@ describe WebSearch do
 
   describe '#to_xml' do
     let(:affiliate) { affiliates(:non_existent_affiliate) }
-    let(:search) { WebSearch.new(:query => 'english', :affiliate => affiliate) }
+    let(:search) { WebSearch.new(query: 'english', affiliate: affiliate) }
 
     it 'should generate a XML representation of total, start and end records, and search results' do
       search.run
@@ -679,7 +679,7 @@ describe WebSearch do
   end
 
   describe "helper 'has' methods" do
-    let(:search) { WebSearch.new(:query => 'english', :affiliate => affiliates(:non_existent_affiliate)) }
+    let(:search) { WebSearch.new(query: 'english', affiliate: affiliates(:non_existent_affiliate)) }
 
     it 'should raise an error when no helper can be found' do
       expect { search.not_here }.to raise_error(NoMethodError)

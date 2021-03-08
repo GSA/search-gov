@@ -18,7 +18,7 @@ describe Filetype do
     }.each do |extensions, content_type|
       extensions.each do |extension|
         it "returns a content_type of #{content_type} for a file with extension .#{extension}" do
-          file = double('file', :path => "basename.#{extension}")
+          file = double('file', path: "basename.#{extension}")
           class << file
             include Filetype
           end

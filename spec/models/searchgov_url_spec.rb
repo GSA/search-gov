@@ -105,7 +105,7 @@ describe SearchgovUrl do
   describe '#fetch' do
     let!(:searchgov_url) { described_class.create!(valid_attributes) }
     let(:searchgov_domain) do
-      instance_double(SearchgovDomain, check_status: '200 OK', :available? => true)
+      instance_double(SearchgovDomain, check_status: '200 OK', available?: true)
     end
 
     subject(:fetch) { searchgov_url.fetch }
@@ -590,7 +590,7 @@ describe SearchgovUrl do
     context 'when the domain is unavailable' do
       let(:unavailable_domain) do
         instance_double(
-          SearchgovDomain, domain: 'unavailable.gov', :available? => false, status: '403'
+          SearchgovDomain, domain: 'unavailable.gov', available?: false, status: '403'
         )
       end
       before do

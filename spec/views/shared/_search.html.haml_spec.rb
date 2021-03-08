@@ -11,7 +11,7 @@ describe 'shared/_search.html.haml' do
 
   context 'when page is displayed' do
     before do
-      @affiliate = double('Affiliate', :name => 'aff.gov', :is_sayt_enabled => false)
+      @affiliate = double('Affiliate', name: 'aff.gov', is_sayt_enabled: false)
       assign(:affiliate, @affiliate)
     end
 

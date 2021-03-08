@@ -9,9 +9,9 @@ describe ElasticTweet do
     ElasticTweet.recreate_index
     Tweet.delete_all
     now = Time.now
-    Tweet.create!(:tweet_id => 1234567, :tweet_text => 'Good morning, America!', :published_at => now, :twitter_profile_id => 12345)
-    Tweet.create!(:tweet_id => 2345678, :tweet_text => 'Good morning, America!', :published_at => now - 10.seconds, :twitter_profile_id => 2196784676)
-    Tweet.create!(:tweet_id => 445621639863365632, :tweet_text => 'Hello, America!', :published_at => 4.months.ago, :twitter_profile_id => 12345)
+    Tweet.create!(tweet_id: 1234567, tweet_text: 'Good morning, America!', published_at: now, twitter_profile_id: 12345)
+    Tweet.create!(tweet_id: 2345678, tweet_text: 'Good morning, America!', published_at: now - 10.seconds, twitter_profile_id: 2196784676)
+    Tweet.create!(tweet_id: 445621639863365632, tweet_text: 'Hello, America!', published_at: 4.months.ago, twitter_profile_id: 12345)
     ElasticTweet.commit
   end
 

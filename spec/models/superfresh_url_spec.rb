@@ -4,7 +4,7 @@ describe SuperfreshUrl do
   fixtures :affiliates
 
   before do
-    @valid_attributes = {:url => 'https://search.usa.gov/recently-updated-url', :affiliate => affiliates(:basic_affiliate)}
+    @valid_attributes = {url: 'https://search.usa.gov/recently-updated-url', affiliate: affiliates(:basic_affiliate)}
   end
 
   describe 'Creating new instance' do

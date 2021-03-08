@@ -4,7 +4,7 @@ require 'spec_helper'
 class ExampleController < ApplicationController
   def missing_template
     respond_to do |format|
-      format.html{ render :text => 'Hello, World!' }
+      format.html{ render text: 'Hello, World!' }
       format.any
     end
   end
@@ -17,7 +17,7 @@ describe ExampleController do
   before do
     routes = Rails.application.routes
     routes.draw do
-      resources :example, :only => [:index] do
+      resources :example, only: [:index] do
         collection do
           get :missing_template
         end

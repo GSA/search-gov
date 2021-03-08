@@ -70,7 +70,7 @@ describe LegacyImageSearch do
     end
 
     context 'when there are Bing/Google results' do
-      let(:search) { LegacyImageSearch.new(:query => 'white house', :affiliate => affiliate) }
+      let(:search) { LegacyImageSearch.new(query: 'white house', affiliate: affiliate) }
 
       before { search.run }
 

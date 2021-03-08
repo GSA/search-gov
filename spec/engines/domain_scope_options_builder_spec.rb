@@ -10,7 +10,7 @@ describe DomainScopeOptionsBuilder do
 
     it 'includes the site domains' do
       expect(DomainScopeOptionsBuilder.build(site: affiliate)).to eq(
-        {:included_domains=>['nps.gov'], :excluded_domains=>[], :scope_ids=>[], :site_limits=>nil}
+        {included_domains: ['nps.gov'], excluded_domains: [], scope_ids: [], site_limits: nil}
       )
     end
 

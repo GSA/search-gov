@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Feature do
   fixtures :features
 
-  let(:valid_attributes) { {:display_name => 'Awesome Feature', :internal_name => 'awesome_feature'} }
+  let(:valid_attributes) { {display_name: 'Awesome Feature', internal_name: 'awesome_feature'} }
 
   describe '#label' do
     it 'should return the display name' do

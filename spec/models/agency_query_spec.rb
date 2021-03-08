@@ -5,8 +5,8 @@ describe AgencyQuery do
 
   before do
     @valid_attributes = {
-      :phrase => 'irs',
-      :agency => agencies(:irs)
+      phrase: 'irs',
+      agency: agencies(:irs)
     }
     AgencyQuery.create!(@valid_attributes)
   end

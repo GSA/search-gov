@@ -6,17 +6,17 @@ describe SiteSearch do
   let(:affiliate) { affiliates(:power_affiliate) }
   let(:dc) do
     collection = affiliate.document_collections.build(
-      :name => 'WH only',
-      :url_prefixes_attributes => {'0' => {:prefix => 'http://www.whitehouse.gov/photos-and-video/'},
-                                   '1' => {:prefix => 'http://www.whitehouse.gov/blog/'}})
+      name: 'WH only',
+      url_prefixes_attributes: {'0' => {prefix: 'http://www.whitehouse.gov/photos-and-video/'},
+                                   '1' => {prefix: 'http://www.whitehouse.gov/blog/'}})
     collection.save!
-    collection.navigation.update_attributes!(:is_active => true)
+    collection.navigation.update_attributes!(is_active: true)
     collection
   end
 
   describe '.initialize' do
     it "should use the dc param to find a document collection when document_collection isn't present" do
-      expect(SiteSearch.new(:query => 'gov', :affiliate => affiliate, :dc => dc.id).document_collection).to eq(dc)
+      expect(SiteSearch.new(query: 'gov', affiliate: affiliate, dc: dc.id).document_collection).to eq(dc)
     end
   end
 
@@ -27,7 +27,7 @@ describe SiteSearch do
       expect(BingV7FormattedQuery).to receive(:new).with(
         'gov', hash_including(included_domains: ['www.whitehouse.gov/photos-and-video/', 'www.whitehouse.gov/blog/'],
                               excluded_domains: [])).and_return bing_formatted_query
-      SiteSearch.new(:query => 'gov', :affiliate => affiliate, :document_collection => dc)
+      SiteSearch.new(query: 'gov', affiliate: affiliate, document_collection: dc)
     end
 
     context 'when no document collection is specified' do
@@ -38,7 +38,7 @@ describe SiteSearch do
         ).and_return bing_formatted_query
       end
 
-      subject { SiteSearch.new(:query => 'gov', :affiliate => affiliate) }
+      subject { SiteSearch.new(query: 'gov', affiliate: affiliate) }
       its(:sitelink_generator_names) { should be_nil }
     end
 
@@ -46,10 +46,10 @@ describe SiteSearch do
       let(:affiliate) { affiliates(:usagov_affiliate) }
       let(:collection) do
         coll = affiliate.document_collections.build(
-          :name => 'WH only',
-          :url_prefixes_attributes => {'0' => { prefix: 'www.whitehouse.gov' }})
+          name: 'WH only',
+          url_prefixes_attributes: {'0' => { prefix: 'www.whitehouse.gov' }})
         coll.save!
-        coll.navigation.update_attributes!(:is_active => true)
+        coll.navigation.update_attributes!(is_active: true)
         coll
       end
 
@@ -63,10 +63,10 @@ describe SiteSearch do
     context 'when matching document and DG Search spelling suggestion are present' do
       let(:collection) do
         coll = affiliate.document_collections.build(
-          :name => 'WH only',
-          :url_prefixes_attributes => {'0' => { prefix: 'www100.whitehouse.gov' }})
+          name: 'WH only',
+          url_prefixes_attributes: {'0' => { prefix: 'www100.whitehouse.gov' }})
         coll.save!
-        coll.navigation.update_attributes!(:is_active => true)
+        coll.navigation.update_attributes!(is_active: true)
         coll
       end
 
@@ -90,10 +90,10 @@ describe SiteSearch do
     context 'when matching document is not present' do
       let(:collection) do
         coll = affiliate.document_collections.build(
-          :name => 'WH only',
-          :url_prefixes_attributes => {'0' => { prefix: 'www100.whitehouse.gov' }})
+          name: 'WH only',
+          url_prefixes_attributes: {'0' => { prefix: 'www100.whitehouse.gov' }})
         coll.save!
-        coll.navigation.update_attributes!(:is_active => true)
+        coll.navigation.update_attributes!(is_active: true)
         coll
       end
 

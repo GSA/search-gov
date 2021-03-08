@@ -8,7 +8,7 @@ describe SearchHelper do
   end
 
   describe '#no_news_results_for(search)' do
-    let(:search) { NewsSearch.new(:query => '<XSS>', :tbs => 'w', :affiliate => affiliates(:basic_affiliate)) }
+    let(:search) { NewsSearch.new(query: '<XSS>', tbs: 'w', affiliate: affiliates(:basic_affiliate)) }
 
     it 'should HTML escape the query string' do
       expect(helper.no_news_results_for(search)).to include('&lt;XSS&gt;')
@@ -95,7 +95,7 @@ describe SearchHelper do
                  'Thumbnail' => {'Url' => 'thumbnail.png', 'Width' => 40, 'Height' => 30},
                  'MediaUrl' => 'aMediaUrl'}
       @query = "NASA's"
-      @affiliate = double('affiliate', :name => 'special affiliate name')
+      @affiliate = double('affiliate', name: 'special affiliate name')
       @search = double('search', {query: @query, queried_at_seconds: Time.now.to_i, spelling_suggestion: nil, module_tag: 'BOGUS_MODULE'})
       @index = 100
       @onmousedown_attr = 'onmousedown attribute'
@@ -178,13 +178,13 @@ describe SearchHelper do
 
   describe '#tracked_click_link' do
     it 'should track spelling suggestion as the query if one exists' do
-      search = double('search', {:query => 'satalite', :queried_at_seconds => Time.now.to_i, :spelling_suggestion => 'satellite'})
+      search = double('search', {query: 'satalite', queried_at_seconds: Time.now.to_i, spelling_suggestion: 'satellite'})
       expect(helper).to receive(:onmousedown_for_click).with(search.spelling_suggestion, 100, '', 'BWEB', search.queried_at_seconds, :image)
       helper.tracked_click_link('aUrl', 'aTitle', search, nil, 100, 'BWEB', :image)
     end
 
     it 'should track query if spelling suggestion does not exist' do
-      search = double('search', {:query => 'satalite', :queried_at_seconds => Time.now.to_i, :spelling_suggestion => nil})
+      search = double('search', {query: 'satalite', queried_at_seconds: Time.now.to_i, spelling_suggestion: nil})
       expect(helper).to receive(:onmousedown_for_click).with(search.query, 100, '', 'BWEB', search.queried_at_seconds, :image)
       helper.tracked_click_link('aUrl', 'aTitle', search, nil, 100, 'BWEB', :image)
     end
@@ -226,7 +226,7 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
     end
 
     context 'when affiliate is present and matching_site_limits is present' do
-      let(:search) { double('search', :query => 'Yosemite', :site_limits => 'WWW1.NPS.GOV') }
+      let(:search) { double('search', query: 'Yosemite', site_limits: 'WWW1.NPS.GOV') }
 
       it "should display a link to 'Yosemite from all sites'" do
         expect(search).to receive(:matching_site_limits).exactly(3).times.and_return(['WWW1.NPS.GOV'])
@@ -248,7 +248,7 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
   describe '#make_summary_p' do
     context 'when locale = :en' do
       it "should return 'Page %{page} of about %{total} results' when total >= 100 and page > 1" do
-        search = double(Search, :total => 2000, :page => 5, :first_page? => false)
+        search = double(Search, total: 2000, page: 5, first_page?: false)
         expect(make_summary_p(search)).to eq('<p>Page 5 of about 2,000 results</p>')
       end
     end
@@ -257,17 +257,17 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
       before(:all) { I18n.locale = :es }
 
       it "should return '1 resultado' when total = 1" do
-        search = double(Search, :total => 1, :first_page? => true)
+        search = double(Search, total: 1, first_page?: true)
         expect(make_summary_p(search)).to eq('<p>1 resultado</p>')
       end
 
       it "should return 'Página %{page} de %{total} resultados' when total is 2..99 and page > 1" do
-        search = double(Search, :total => 80, :page => 5, :first_page? => false)
+        search = double(Search, total: 80, page: 5, first_page?: false)
         expect(make_summary_p(search)).to eq('<p>Página 5 de 80 resultados</p>')
       end
 
       it "should return 'Página %{page} de aproximadamente %{total} resultados' when total >= 100 and page > 1" do
-        search = double(Search, :total => 2000, :page => 5, :first_page? => false)
+        search = double(Search, total: 2000, page: 5, first_page?: false)
         expect(make_summary_p(search)).to eq('<p>Página 5 de aproximadamente 2,000 resultados</p>')
       end
 

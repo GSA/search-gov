@@ -30,7 +30,7 @@ describe 'sayt' do
 
     SaytSuggestion.destroy_all
     phrases.each do |p|
-      SaytSuggestion.create!(:phrase => p, :affiliate => affiliate)
+      SaytSuggestion.create!(phrase: p, affiliate: affiliate)
     end
   end
 

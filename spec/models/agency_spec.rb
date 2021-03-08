@@ -4,8 +4,8 @@ describe Agency do
   before do
     Agency.destroy_all
     @valid_attributes = {
-      :name => '  Internal Revenue   Service  ',
-      :abbreviation => 'IRS'
+      name: '  Internal Revenue   Service  ',
+      abbreviation: 'IRS'
     }
   end
 

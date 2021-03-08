@@ -28,14 +28,14 @@ describe NewsSearch do
 
     context 'when a valid RSS feed is specified' do
       it 'should set the rss_feed member' do
-        expect(NewsSearch.new(:query => 'element', :channel => feed.id, :affiliate => affiliate).rss_feed).to eq(feed)
+        expect(NewsSearch.new(query: 'element', channel: feed.id, affiliate: affiliate).rss_feed).to eq(feed)
       end
     end
 
     context "when another affiliate's RSS feed is specified" do
       it 'should set the rss_feed member to nil' do
         another_feed = rss_feeds(:another)
-        expect(NewsSearch.new(:query => 'element', :channel => another_feed.id, :affiliate => affiliate).rss_feed).to be_nil
+        expect(NewsSearch.new(query: 'element', channel: another_feed.id, affiliate: affiliate).rss_feed).to be_nil
       end
     end
 
@@ -47,7 +47,7 @@ describe NewsSearch do
 
     context "when the query param isn't set" do
       it "should set 'query' to a blank string" do
-        expect(NewsSearch.new(:channel => feed.id, :affiliate => affiliate).query).to be_blank
+        expect(NewsSearch.new(channel: feed.id, affiliate: affiliate).query).to be_blank
       end
     end
 
@@ -61,7 +61,7 @@ describe NewsSearch do
 
     context 'when searching with really long queries' do
       before do
-        @search = NewsSearch.new(:query => 'X' * (Search::MAX_QUERYTERM_LENGTH + 1), :affiliate => affiliate)
+        @search = NewsSearch.new(query: 'X' * (Search::MAX_QUERYTERM_LENGTH + 1), affiliate: affiliate)
       end
 
       it 'should return false when searching' do
@@ -83,7 +83,7 @@ describe NewsSearch do
 
     context 'when searching with a blank query' do
       before do
-        @search = NewsSearch.new(:query => '   ', :affiliate => affiliate)
+        @search = NewsSearch.new(query: '   ', affiliate: affiliate)
       end
 
       it 'should return true when searching' do
@@ -123,7 +123,7 @@ describe NewsSearch do
 
       context 'when per_page option is not set' do
         it 'should set per_page to 20' do
-          search = NewsSearch.new(:query => 'element', :channel => feed.id, :affiliate => affiliate)
+          search = NewsSearch.new(query: 'element', channel: feed.id, affiliate: affiliate)
           expect(ElasticNewsItem).to receive(:search_for).
             with(q: 'element', rss_feeds: [youtube_profile_feed], excluded_urls: affiliate.excluded_urls,
                  since: nil, until: nil,
@@ -155,7 +155,7 @@ describe NewsSearch do
 
       context 'when per_page option is not set' do
         it 'should set per_page to 20' do
-          search = NewsSearch.new(:query => 'element', :channel => feed.id, :affiliate => affiliate)
+          search = NewsSearch.new(query: 'element', channel: feed.id, affiliate: affiliate)
           expect(ElasticNewsItem).to receive(:search_for).
             with(q: 'element', rss_feeds: [feed], excluded_urls: affiliate.excluded_urls,
                  since: nil, until: nil,

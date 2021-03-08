@@ -15,27 +15,27 @@ describe Misspelling do
     end
 
     it 'should create a new instance given valid attributes' do
-      Misspelling.create!(:wrong => 'valueforwrong', :rite => 'value for rite')
+      Misspelling.create!(wrong: 'valueforwrong', rite: 'value for rite')
     end
 
     it 'should strip whitespace from wrong/rite before inserting in DB' do
       wrong = ' leadingandtraleingwhitespaces '
       rite = ' leading and trailing whitespaces '
-      misspelling = Misspelling.create!(:wrong => wrong, :rite => rite)
+      misspelling = Misspelling.create!(wrong: wrong, rite: rite)
       expect(misspelling.wrong).to eq(wrong.strip)
       expect(misspelling.rite).to eq(rite.strip)
     end
 
     it 'should downcase wrong/rite before entering into DB' do
       upcased = 'CAPS'
-      Misspelling.create!(:wrong => upcased, :rite => upcased)
+      Misspelling.create!(wrong: upcased, rite: upcased)
       expect(Misspelling.find_by_wrong('caps').rite).to eq('caps')
     end
 
     it 'should squish multiple whitespaces between words in rite before entering into DB' do
       wrong = 'twospayces'
       rite = 'two  spaces'
-      misspelling = Misspelling.create!(:wrong=> wrong, :rite=>rite)
+      misspelling = Misspelling.create!(wrong: wrong, rite: rite)
       expect(misspelling.wrong).to eq('twospayces')
       expect(misspelling.rite).to eq('two spaces')
     end
@@ -43,7 +43,7 @@ describe Misspelling do
     it 'should enqueue the spellchecking of SaytSuggestions via Resque' do
       ResqueSpec.reset!
       expect(Resque).to receive(:enqueue_with_priority).with(:high, SpellcheckSaytSuggestions, 'valueforwrong', 'value for rite')
-      Misspelling.create!(:wrong => 'valueforwrong', :rite => 'value for rite')
+      Misspelling.create!(wrong: 'valueforwrong', rite: 'value for rite')
     end
 
   end

@@ -33,13 +33,13 @@ describe FeaturedCollectionLink do
       prefixes = %w( http https HTTP HTTPS invalidhttp:// invalidHtTp:// invalidhttps:// invalidHTtPs:// invalidHttPsS://)
       prefixes.each_with_index do |prefix, index|
         specify do
-          featured_collection = FeaturedCollection.new(:title => 'Search USA Blog',
-                                                       :status => 'active',
-                                                       :publish_start_on => '07/01/2011',
-                                                       :affiliate => @affiliate)
-          featured_collection.featured_collection_links.build(:title => 'Did You Mean Roes or Rose?',
-                                                              :url => "#{prefix}#{url}",
-                                                              :position => index)
+          featured_collection = FeaturedCollection.new(title: 'Search USA Blog',
+                                                       status: 'active',
+                                                       publish_start_on: '07/01/2011',
+                                                       affiliate: @affiliate)
+          featured_collection.featured_collection_links.build(title: 'Did You Mean Roes or Rose?',
+                                                              url: "#{prefix}#{url}",
+                                                              position: index)
           featured_collection.save!
           expect(featured_collection.featured_collection_links.first.url).to eq("http://#{prefix}#{url}")
         end
@@ -51,13 +51,13 @@ describe FeaturedCollectionLink do
       prefixes = %w( http:// https:// HTTP:// HTTPS:// )
       prefixes.each_with_index do |prefix, index|
         specify do
-          featured_collection = FeaturedCollection.new(:title => 'Search USA Blog',
-                                                       :status => 'active',
-                                                       :publish_start_on => '07/01/2011',
-                                                       :affiliate => @affiliate)
-          featured_collection.featured_collection_links.build(:title => 'Did You Mean Roes or Rose?',
-                                                              :url => "#{prefix}#{url}",
-                                                              :position => index)
+          featured_collection = FeaturedCollection.new(title: 'Search USA Blog',
+                                                       status: 'active',
+                                                       publish_start_on: '07/01/2011',
+                                                       affiliate: @affiliate)
+          featured_collection.featured_collection_links.build(title: 'Did You Mean Roes or Rose?',
+                                                              url: "#{prefix}#{url}",
+                                                              position: index)
           featured_collection.save!
           expect(featured_collection.featured_collection_links.first.url).to eq("#{prefix}#{url}")
         end

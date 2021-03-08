@@ -3,9 +3,9 @@ require 'spec_helper'
 describe EmailTemplate do
   before do
     @valid_attributes = {
-      :name => 'email_template',
-      :subject => '[USASearch] ',
-      :body => 'Hello, World.'
+      name: 'email_template',
+      subject: '[USASearch] ',
+      body: 'Hello, World.'
     }
   end
 

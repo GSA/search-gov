@@ -126,7 +126,7 @@ describe 'Twitter rake tasks' do
 
         before(:each) do
           allow(Time).to receive(:now).and_return(now)
-          allow(Twitter).to receive(:user).and_return double('Twitter', :id => 123, :name => 'USASearch', :profile_image_url => 'http://some.gov/url')
+          allow(Twitter).to receive(:user).and_return double('Twitter', id: 123, name: 'USASearch', profile_image_url: 'http://some.gov/url')
           allow(TwitterProfile).to receive(:active_twitter_ids).and_return(active_twitter_ids)
 
           allow(EM).to receive(:defer).and_yield
@@ -224,10 +224,10 @@ describe 'Twitter rake tasks' do
         end
 
         it 'should delete a status if a delete message is received' do
-          Tweet.create!(:twitter_profile_id => active_twitter_ids.first,
-                        :tweet_id => 1234,
-                        :tweet_text => 'DELETE ME.',
-                        :published_at => Time.now)
+          Tweet.create!(twitter_profile_id: active_twitter_ids.first,
+                        tweet_id: 1234,
+                        tweet_text: 'DELETE ME.',
+                        published_at: Time.now)
           allow(@stream).to receive(:each).and_yield('{ "delete": { "status": { "id": 1234, "user_id": 3 } } }')
           expect(@logger).to receive(:info).with("[#{now}] [TWITTER] [CONNECT] Connecting to Twitter to follow 1 Twitter profiles.")
           expect(@logger).to receive(:info).with("[#{now}] [TWITTER] [ONDELETE] Received delete request for status#1234")

@@ -4,30 +4,30 @@ describe IndexedDocument do
   fixtures :affiliates, :superfresh_urls, :site_domains, :features
   before do
     @min_valid_attributes = {
-      :title => 'Some Title',
-      :url => 'http://min.nps.gov/link.html',
-      :affiliate_id => affiliates(:basic_affiliate).id
+      title: 'Some Title',
+      url: 'http://min.nps.gov/link.html',
+      affiliate_id: affiliates(:basic_affiliate).id
     }
     @valid_attributes = {
-      :title => 'Some Title',
-      :description => 'This is a document.',
-      :url => 'http://www.nps.gov/index.htm',
-      :doctype => 'html',
-      :last_crawl_status => IndexedDocument::OK_STATUS,
-      :body => 'this is the doc body',
-      :affiliate_id => affiliates(:basic_affiliate).id
+      title: 'Some Title',
+      description: 'This is a document.',
+      url: 'http://www.nps.gov/index.htm',
+      doctype: 'html',
+      last_crawl_status: IndexedDocument::OK_STATUS,
+      body: 'this is the doc body',
+      affiliate_id: affiliates(:basic_affiliate).id
     }
   end
 
   let(:valid_attributes) do
     {
-      :title => 'Some Title',
-      :description => 'This is a document.',
-      :url => 'http://www.nps.gov/index.htm',
-      :doctype => 'html',
-      :last_crawl_status => IndexedDocument::OK_STATUS,
-      :body => 'this is the doc body',
-      :affiliate_id => affiliates(:basic_affiliate).id
+      title: 'Some Title',
+      description: 'This is a document.',
+      url: 'http://www.nps.gov/index.htm',
+      doctype: 'html',
+      last_crawl_status: IndexedDocument::OK_STATUS,
+      body: 'this is the doc body',
+      affiliate_id: affiliates(:basic_affiliate).id
     }
   end
   it { is_expected.to validate_presence_of :affiliate_id }
@@ -42,21 +42,21 @@ describe IndexedDocument do
 
   it 'should validate unique url' do
     IndexedDocument.create!(@valid_attributes)
-    duplicate = IndexedDocument.new(@valid_attributes.merge(:url => @valid_attributes[:url].upcase))
+    duplicate = IndexedDocument.new(@valid_attributes.merge(url: @valid_attributes[:url].upcase))
     expect(duplicate).not_to be_valid
     expect(duplicate.errors[:url].first).to match(/already been added/)
   end
 
   it 'should allow a duplicate url for a different affiliate' do
     IndexedDocument.create!(@valid_attributes)
-    affiliates(:power_affiliate).site_domains.create!(:domain => affiliates(:basic_affiliate).site_domains.first.domain)
-    duplicate = IndexedDocument.new(@valid_attributes.merge(:affiliate_id => affiliates(:power_affiliate).id))
+    affiliates(:power_affiliate).site_domains.create!(domain: affiliates(:basic_affiliate).site_domains.first.domain)
+    duplicate = IndexedDocument.new(@valid_attributes.merge(affiliate_id: affiliates(:power_affiliate).id))
     expect(duplicate).to be_valid
   end
 
   it 'should not allow setting last_crawl_status to OK if the title is blank' do
     odie = IndexedDocument.create!(@min_valid_attributes)
-    expect(odie.update_attributes(:title => nil, :description => 'bogus description', :last_crawl_status => IndexedDocument::OK_STATUS)).to be false
+    expect(odie.update_attributes(title: nil, description: 'bogus description', last_crawl_status: IndexedDocument::OK_STATUS)).to be false
     expect(odie.errors[:title].first).to match(/can't be blank/)
   end
 
@@ -244,7 +244,7 @@ describe IndexedDocument do
     let(:doc) { Nokogiri::HTML(open(Rails.root.to_s + '/spec/fixtures/html/usa_gov/audiences.html')) }
 
     it 'should return the inner text of the body of the document' do
-      indexed_document = IndexedDocument.new(:url => 'http://gov.nps.gov/page.html')
+      indexed_document = IndexedDocument.new(url: 'http://gov.nps.gov/page.html')
       body = indexed_document.extract_body_from(doc)
       expect(body).to eq("Skip to Main Content Home FAQs Site Index E-mail Us Chat Get E-mail Updates Change Text Size Español Search 1 (800) FED-INFO|1 (800) 333-4636 Get Services Get It Done Online! Public Engagement Performance Dashboards Shop Government Auctions Replace Vital Records MORE SERVICES Government Jobs Change Your Address Explore Topics Jobs and Education Family, Home, and Community Public Safety and Law Health and Nutrition Travel and Recreation Money and Taxes Environment, Energy, and Agriculture Benefits and Grants Defense and International Consumer Guides Reference and General Government History, Arts, and Culture Voting and Elections Science and Technology Audiences Audiences Find Government Agencies All Government A-Z Index of the U.S. Government Federal Government Executive Branch Judicial Branch Legislative Branch State, Local, and Tribal State Government Local Government Tribal Government Contact Government U.S. Congress & White House Contact Government Elected Officials Agency Contacts Contact Us FAQs MORE CONTACTS Governor and State Legislators E-mail Print Share RSS You Are Here Home &gt; Citizens &gt; Especially for Specific Audiences Especially for Specific Audiences Removed the links here, too. This is the last page for the test, with dead ends on the breadcrumb, too Contact Your Government FAQs E-mail Us Chat Phone Page Last Reviewed or Updated: October 28, 2010 Connect with Government Facebook Twitter Mobile YouTube Our Blog Home About Us Contact Us Website Policies Privacy Suggest-A-Link Link to Us USA.gov is the U.S. government's official web portal.")
     end
@@ -287,9 +287,9 @@ describe IndexedDocument do
     context 'when url field has substring match' do
       before do
         @affiliate = affiliates(:basic_affiliate)
-        one = IndexedDocument.create!(:url => 'http://nps.gov/url1.html', :last_crawled_at => Time.now, :affiliate => @affiliate, :title => 'Some document Title', :description => 'This is a document.')
-        two = IndexedDocument.create!(:url => 'http://nps.gov/url2.html', :last_crawled_at => Time.now, :affiliate => @affiliate, :title => 'Another Title', :description => 'This is also a document.')
-        IndexedDocument.create!(:url => 'http://anotheraffiliate.mil', :last_crawled_at => Time.now, :affiliate => @affiliate, :title => 'Third Title', :description => 'This is the last document.')
+        one = IndexedDocument.create!(url: 'http://nps.gov/url1.html', last_crawled_at: Time.now, affiliate: @affiliate, title: 'Some document Title', description: 'This is a document.')
+        two = IndexedDocument.create!(url: 'http://nps.gov/url2.html', last_crawled_at: Time.now, affiliate: @affiliate, title: 'Another Title', description: 'This is also a document.')
+        IndexedDocument.create!(url: 'http://anotheraffiliate.mil', last_crawled_at: Time.now, affiliate: @affiliate, title: 'Third Title', description: 'This is the last document.')
         @array = [one, two]
       end
 

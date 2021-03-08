@@ -6,7 +6,7 @@ describe ApplyFiltersToSaytSuggestion, '#perform(id)' do
   before do
     @affiliate = affiliates(:usagov_affiliate)
     @phrase = 'ought to get deleted xxx'
-    @ss = SaytSuggestion.create!(:affiliate => @affiliate, :phrase => @phrase)
+    @ss = SaytSuggestion.create!(affiliate: @affiliate, phrase: @phrase)
   end
 
   it_behaves_like 'a ResqueJobStats job'

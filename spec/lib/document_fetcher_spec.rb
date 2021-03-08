@@ -43,13 +43,13 @@ describe DocumentFetcher do
 
     describe 'with timeout overrides' do
       let(:connection) { double(:connection,
-                                :'connect_timeout=' => nil,
-                                :'follow_location=' => nil,
-                                :'max_redirects=' => nil,
-                                :'timeout=' => nil,
-                                :'useragent=' => nil,
-                                :'on_success' => nil,
-                                :'on_redirect' => nil) }
+                                'connect_timeout=': nil,
+                                'follow_location=': nil,
+                                'max_redirects=': nil,
+                                'timeout=': nil,
+                                'useragent=': nil,
+                                'on_success': nil,
+                                'on_redirect': nil) }
       let(:easy) { double(:easy, perform: nil) }
       before { allow(Curl::Easy).to receive(:new).and_yield(connection).and_return(easy) }
 

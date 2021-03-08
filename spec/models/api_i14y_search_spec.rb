@@ -8,7 +8,7 @@ describe ApiI14ySearch do
   describe '#as_json' do
     context 'when highlighting is enabled' do
       subject(:search) do
-        agency = Agency.create!({:name => 'Some New Agency', :abbreviation => 'SNA' })
+        agency = Agency.create!({name: 'Some New Agency', abbreviation: 'SNA' })
         AgencyOrganizationCode.create!(organization_code: 'XX00', agency: agency)
         allow(affiliate).to receive(:agency).and_return(agency)
 

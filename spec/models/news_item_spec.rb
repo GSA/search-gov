@@ -7,15 +7,15 @@ describe NewsItem do
 
   before do
     @valid_attributes = {
-      :link => 'http://www.whitehouse.gov/latest_story.html',
-      :title => 'Big story here',
-      :description => 'Corps volunteers have promoted blah blah blah.',
-      :published_at => DateTime.parse('2011-09-26 21:33:05'),
-      :guid => '80798 at www.whitehouse.gov',
-      :rss_feed_url_id => rss_feed_urls(:white_house_blog_url).id,
-      :contributor => 'President',
-      :publisher => 'Briefing Room',
-      :subject => 'Economy'
+      link: 'http://www.whitehouse.gov/latest_story.html',
+      title: 'Big story here',
+      description: 'Corps volunteers have promoted blah blah blah.',
+      published_at: DateTime.parse('2011-09-26 21:33:05'),
+      guid: '80798 at www.whitehouse.gov',
+      rss_feed_url_id: rss_feed_urls(:white_house_blog_url).id,
+      contributor: 'President',
+      publisher: 'Briefing Room',
+      subject: 'Economy'
     }
   end
 
@@ -34,8 +34,8 @@ describe NewsItem do
     end
 
     it 'should allow blank description for YouTube video' do
-      NewsItem.create!(@valid_attributes.merge(:link => 'HTTPs://www.youtube.com/watch?v=q3GjT4zvUkk',
-                                               :description => nil))
+      NewsItem.create!(@valid_attributes.merge(link: 'HTTPs://www.youtube.com/watch?v=q3GjT4zvUkk',
+                                               description: nil))
     end
 
     it 'allows blank description when body is present' do

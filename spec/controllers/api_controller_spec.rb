@@ -33,7 +33,7 @@ describe ApiController do
     end
 
     describe 'with format=json' do
-      let(:api_search) { double(ApiSearch, :query => 'pdf', :modules => [], :diagnostics => {}) }
+      let(:api_search) { double(ApiSearch, query: 'pdf', modules: [], diagnostics: {}) }
 
       before do
         json = { result_field: 'result' }.to_json
@@ -56,7 +56,7 @@ describe ApiController do
     end
 
     context 'with format=xml' do
-      let(:api_search) { double(ApiSearch, :query => 'pdf', :modules => [], :diagnostics => {}) }
+      let(:api_search) { double(ApiSearch, query: 'pdf', modules: [], diagnostics: {}) }
 
       before do
         xml = { result_field: 'result' }.to_xml
@@ -93,7 +93,7 @@ describe ApiController do
 
     describe 'options' do
       before :each do
-        @auth_params = { :affiliate => affiliates(:basic_affiliate).name }
+        @auth_params = { affiliate: affiliates(:basic_affiliate).name }
       end
 
       it 'should set the affiliate' do
@@ -102,18 +102,18 @@ describe ApiController do
       end
 
       it 'should set the query' do
-        get :search, params: @auth_params.merge(:query => 'fish')
+        get :search, params: @auth_params.merge(query: 'fish')
         expect(assigns[:search_options][:query]).to eq('fish')
       end
 
       it 'should set the lat_lon' do
-        get :search, params: @auth_params.merge(:query => 'fish', :lat_lon => '37.7676,-122.5164')
+        get :search, params: @auth_params.merge(query: 'fish', lat_lon: '37.7676,-122.5164')
         expect(assigns[:search_options][:lat_lon]).to eq('37.7676,-122.5164')
       end
     end
 
     describe 'logging searches and impressions' do
-      let(:api_search) { double(ApiSearch, :query => 'pdf', :modules => [], :run => nil) }
+      let(:api_search) { double(ApiSearch, query: 'pdf', modules: [], run: nil) }
 
       before do
         expect(ApiSearch).to receive(:new).and_return(api_search)

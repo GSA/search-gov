@@ -53,10 +53,10 @@ context do
   describe '#new_feature_adoption_to_admin' do
     before do
       AffiliateFeatureAddition.delete_all
-      AffiliateFeatureAddition.create!(:affiliate => affiliates(:basic_affiliate), :feature => features(:disco))
-      AffiliateFeatureAddition.create!(:affiliate => affiliates(:basic_affiliate), :feature => features(:sayt))
-      AffiliateFeatureAddition.create!(:affiliate => affiliates(:power_affiliate), :feature => features(:sayt))
-      AffiliateFeatureAddition.create!(:affiliate => affiliates(:power_affiliate), :feature => features(:disco), :created_at => 2.days.ago)
+      AffiliateFeatureAddition.create!(affiliate: affiliates(:basic_affiliate), feature: features(:disco))
+      AffiliateFeatureAddition.create!(affiliate: affiliates(:basic_affiliate), feature: features(:sayt))
+      AffiliateFeatureAddition.create!(affiliate: affiliates(:power_affiliate), feature: features(:sayt))
+      AffiliateFeatureAddition.create!(affiliate: affiliates(:power_affiliate), feature: features(:disco), created_at: 2.days.ago)
     end
 
     subject(:email) { Emailer.new_feature_adoption_to_admin.deliver_now }
@@ -74,9 +74,9 @@ context do
   describe '#deep_collection_notification' do
     let(:document_collection) do
       affiliates(:basic_affiliate).document_collections.create!(
-        :name => 'WH only',
-        :url_prefixes_attributes => { '0' => { :prefix => 'http://www.whitehouse.gov/photos-and-video/' },
-                                      '1' => { :prefix => 'http://www.whitehouse.gov/blog/is/deep' } })
+        name: 'WH only',
+        url_prefixes_attributes: { '0' => { prefix: 'http://www.whitehouse.gov/photos-and-video/' },
+                                      '1' => { prefix: 'http://www.whitehouse.gov/blog/is/deep' } })
     end
 
     subject(:email) { Emailer.deep_collection_notification(users(:affiliate_manager), document_collection).deliver_now }

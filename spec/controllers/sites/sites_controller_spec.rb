@@ -113,8 +113,8 @@ describe Sites::SitesController do
       include_context 'approved user logged in to a site'
 
       context 'when the affiliate saves successfully' do
-        let(:site) { mock_model(Affiliate, :users => []) }
-        let(:emailer) { double(Emailer, :deliver_now => true) }
+        let(:site) { mock_model(Affiliate, users: []) }
+        let(:emailer) { double(Emailer, deliver_now: true) }
 
         before do
           expect(Affiliate).to receive(:new).with(

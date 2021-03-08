@@ -18,7 +18,7 @@ describe WebResultsPostProcessor do
       let(:processed_results) { post_processor.post_processed_results }
 
       before do
-        ExcludedUrl.create!(:url => excluded_url, :affiliate => affiliate)
+        ExcludedUrl.create!(url: excluded_url, affiliate: affiliate)
       end
 
       it 'should filter out the excluded URLs' do
@@ -55,25 +55,25 @@ describe WebResultsPostProcessor do
       before do
         ElasticNewsItem.recreate_index
         NewsItem.delete_all
-        NewsItem.create!(:link => 'http://www.uspto.gov/web/patents/patog/week12/OG/patentee/alphaB_Utility.htm',
-                         :title => 'NewsItem title highlighted from ElasticSearch',
-                         :description => 'NewsItem description highlighted from ElasticSearch',
-                         :published_at => DateTime.parse('2011-09-26 21:33:05'),
-                         :guid => '80798 at www.whitehouse.gov',
-                         :rss_feed_url_id => rss_feed_urls(:white_house_blog_url).id)
-        NewsItem.create!(:link => 'http://www.uspto.gov/web/patents/patog/week23/OG/patentee/alphaC_Utility.htm',
-                         :title => 'Title w/o highlighting',
-                         :description => 'Description w/o highlighting',
-                         :published_at => DateTime.parse('2011-09-26 21:33:06'),
-                         :guid => '80799 at www.whitehouse.gov',
-                         :rss_feed_url_id => rss_feed_urls(:white_house_blog_url).id)
+        NewsItem.create!(link: 'http://www.uspto.gov/web/patents/patog/week12/OG/patentee/alphaB_Utility.htm',
+                         title: 'NewsItem title highlighted from ElasticSearch',
+                         description: 'NewsItem description highlighted from ElasticSearch',
+                         published_at: DateTime.parse('2011-09-26 21:33:05'),
+                         guid: '80798 at www.whitehouse.gov',
+                         rss_feed_url_id: rss_feed_urls(:white_house_blog_url).id)
+        NewsItem.create!(link: 'http://www.uspto.gov/web/patents/patog/week23/OG/patentee/alphaC_Utility.htm',
+                         title: 'Title w/o highlighting',
+                         description: 'Description w/o highlighting',
+                         published_at: DateTime.parse('2011-09-26 21:33:06'),
+                         guid: '80799 at www.whitehouse.gov',
+                         rss_feed_url_id: rss_feed_urls(:white_house_blog_url).id)
         15.times do |x|
-          NewsItem.create!(:link => "http://www.uspto.gov/web/patents/patog/week12/OG/patentee/#{x}.htm",
-                           :title => "This is not very relevant but it is recent #{x}",
-                           :description => "This description has little information #{x} but manages to mention NewsItem once",
-                           :published_at => Time.now,
-                           :guid => "#{x} at www.whitehouse.gov",
-                           :rss_feed_url_id => rss_feed_urls(:white_house_blog_url).id)
+          NewsItem.create!(link: "http://www.uspto.gov/web/patents/patog/week12/OG/patentee/#{x}.htm",
+                           title: "This is not very relevant but it is recent #{x}",
+                           description: "This description has little information #{x} but manages to mention NewsItem once",
+                           published_at: Time.now,
+                           guid: "#{x} at www.whitehouse.gov",
+                           rss_feed_url_id: rss_feed_urls(:white_house_blog_url).id)
         end
         ElasticNewsItem.commit
         post_processor = WebResultsPostProcessor.new('NewsItem', affiliate, results)

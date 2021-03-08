@@ -6,7 +6,7 @@ describe IndexedDocumentFetcher, '#perform(indexed_document_id)' do
     affiliate = affiliates(:basic_affiliate)
 
     IndexedDocument.destroy_all
-    @indexed_document = IndexedDocument.create!(:url => 'http://www.nps.gov/test.html', :affiliate => affiliate, :title => 'Document Title 1', :description => 'This is a Document.')
+    @indexed_document = IndexedDocument.create!(url: 'http://www.nps.gov/test.html', affiliate: affiliate, title: 'Document Title 1', description: 'This is a Document.')
   end
 
   it_behaves_like 'a ResqueJobStats job'

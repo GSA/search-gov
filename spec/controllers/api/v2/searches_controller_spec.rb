@@ -276,7 +276,7 @@ describe Api::V2::SearchesController do
       before do
         expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
 
-        expect(ApiGssSearch).to receive(:new).with(hash_including(:query => 'api')).and_return(search)
+        expect(ApiGssSearch).to receive(:new).with(hash_including(query: 'api')).and_return(search)
         expect(search).to receive(:run)
         expect(SearchImpression).to receive(:log).with(search,
                                                    'gss',
@@ -334,7 +334,7 @@ describe Api::V2::SearchesController do
       before do
         expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
 
-        expect(ApiI14ySearch).to receive(:new).with(hash_including(:query => 'api')).and_return(search)
+        expect(ApiI14ySearch).to receive(:new).with(hash_including(query: 'api')).and_return(search)
         expect(search).to receive(:run)
         expect(SearchImpression).to receive(:log).with(search,
                                                    'i14y',

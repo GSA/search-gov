@@ -9,12 +9,12 @@ describe IndexedDocumentValidator, '#perform(indexed_document_id)' do
     aff.indexed_documents.destroy_all
 
     @idoc = aff.indexed_documents.create!(
-      :title => 'PDF Title',
-      :description => 'This is a PDF document.',
-      :url => url,
-      :last_crawl_status => IndexedDocument::OK_STATUS,
-      :body => 'this is the doc body',
-      :affiliate_id => affiliates(:basic_affiliate).id
+      title: 'PDF Title',
+      description: 'This is a PDF document.',
+      url: url,
+      last_crawl_status: IndexedDocument::OK_STATUS,
+      body: 'this is the doc body',
+      affiliate_id: affiliates(:basic_affiliate).id
     )
   end
 

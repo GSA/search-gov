@@ -4,7 +4,7 @@ describe CatalogPrefix do
   fixtures :catalog_prefixes
 
   before do
-    @valid_attributes = {:prefix => 'http://respuestas.gobiernousa.gov/system/selfservice.controller'}
+    @valid_attributes = {prefix: 'http://respuestas.gobiernousa.gov/system/selfservice.controller'}
   end
 
   describe 'Creating new instance' do
@@ -17,7 +17,7 @@ describe CatalogPrefix do
 
   describe '#label' do
     it 'should return the prefix' do
-      expect(CatalogPrefix.new(:prefix => 'foo').label).to eq('foo')
+      expect(CatalogPrefix.new(prefix: 'foo').label).to eq('foo')
     end
   end
 end

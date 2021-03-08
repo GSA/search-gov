@@ -5,9 +5,9 @@ describe AffiliateHelper do
     context 'when the affiliate has a header image and an exception occurs when trying to retrieve the image' do
       let(:header_image) { double('header image') }
       let(:affiliate) { mock_model(Affiliate,
-                                   :css_property_hash => Affiliate::DEFAULT_CSS_PROPERTIES,
-                                   :header_image_file_name => 'logo.gif',
-                                   :header_image => header_image) }
+                                   css_property_hash: Affiliate::DEFAULT_CSS_PROPERTIES,
+                                   header_image_file_name: 'logo.gif',
+                                   header_image: header_image) }
 
       before do
         expect(header_image).to receive(:url).and_raise
@@ -19,7 +19,7 @@ describe AffiliateHelper do
 
   describe '#render_affiliate_body_style' do
     context 'when an error occurs' do
-      let(:affiliate) { mock_model(Affiliate, :css_property_hash => {}, :page_background_image_file_name => 'bg.png')}
+      let(:affiliate) { mock_model(Affiliate, css_property_hash: {}, page_background_image_file_name: 'bg.png')}
       it 'should return only background-color' do
         expect(helper).to receive(:render_affiliate_css_property_value).with({}, :page_background_color).and_return('#DDDDDD')
         expect(affiliate).to receive(:page_background_image).and_raise(StandardError)

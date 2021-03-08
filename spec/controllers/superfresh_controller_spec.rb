@@ -24,7 +24,7 @@ describe SuperfreshController, '#index' do
     before do
       SuperfreshUrl.delete_all
       (SuperfreshUrl::DEFAULT_URL_COUNT + 1).times do |idx|
-        affiliate.superfresh_urls.build(:url => "http://some.mil/x?id=#{idx+1}")
+        affiliate.superfresh_urls.build(url: "http://some.mil/x?id=#{idx+1}")
       end
       affiliate.save
     end

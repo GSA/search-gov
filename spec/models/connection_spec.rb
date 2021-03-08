@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Connection do
   fixtures :users, :affiliates, :memberships
   let(:affiliate) { affiliates(:gobiernousa_affiliate) }
-  let(:connection) { affiliate.connections.create!(:affiliate_name => '   usagov   ', :label => 'Search in English') }
+  let(:connection) { affiliate.connections.create!(affiliate_name: '   usagov   ', label: 'Search in English') }
 
   it { is_expected.to validate_presence_of :connected_affiliate_id }
   it { is_expected.to validate_presence_of :label }

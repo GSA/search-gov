@@ -43,7 +43,7 @@ describe SaytSuggestionDiscovery, '#perform(affiliate_name, affiliate_id, date_i
 
     context 'when SaytSuggestion already exists for an affiliate' do
       before do
-        SaytSuggestion.create!(:phrase => 'today term1', :popularity => 17, :affiliate_id => affiliate.id)
+        SaytSuggestion.create!(phrase: 'today term1', popularity: 17, affiliate_id: affiliate.id)
       end
 
       it 'should update the popularity field with the new count' do
@@ -54,7 +54,7 @@ describe SaytSuggestionDiscovery, '#perform(affiliate_name, affiliate_id, date_i
 
     context 'when suggestions exist that have been marked as deleted' do
       before do
-        SaytSuggestion.create!(:phrase => 'today term1', :affiliate => affiliate, :deleted_at => Time.now, :is_protected => true, :popularity => SaytSuggestion::MAX_POPULARITY)
+        SaytSuggestion.create!(phrase: 'today term1', affiliate: affiliate, deleted_at: Time.now, is_protected: true, popularity: SaytSuggestion::MAX_POPULARITY)
       end
 
       it 'should not create a new suggestion, and leave the old suggestion alone' do

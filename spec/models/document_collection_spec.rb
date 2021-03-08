@@ -4,9 +4,9 @@ describe DocumentCollection do
   fixtures :affiliates, :document_collections, :url_prefixes, :navigations
   let(:affiliate) { affiliates(:power_affiliate) }
   let(:valid_attributes) do
-    { :name => 'My Collection',
-      :affiliate => affiliate,
-      :url_prefixes_attributes => {'0' => {:prefix => 'http://www.agency.gov/'}}
+    { name: 'My Collection',
+      affiliate: affiliate,
+      url_prefixes_attributes: {'0' => {prefix: 'http://www.agency.gov/'}}
     }
   end
 
@@ -45,11 +45,11 @@ describe DocumentCollection do
 
   describe '#depth' do
     subject do
-      DocumentCollection.create!(:name => 'My Collection',
-                                  :affiliate => affiliates(:power_affiliate),
-                                  :url_prefixes_attributes => {'0' => {:prefix => 'http://www.agency.gov/'},
-                                                               '1' => {:prefix => 'http://www.agency.gov/one/two/three/'},
-                                                               '2' => {:prefix => 'http://www.agency.gov/simple/'}}
+      DocumentCollection.create!(name: 'My Collection',
+                                  affiliate: affiliates(:power_affiliate),
+                                  url_prefixes_attributes: {'0' => {prefix: 'http://www.agency.gov/'},
+                                                               '1' => {prefix: 'http://www.agency.gov/one/two/three/'},
+                                                               '2' => {prefix: 'http://www.agency.gov/simple/'}}
       )
     end
 

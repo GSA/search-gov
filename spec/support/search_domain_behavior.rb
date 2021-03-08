@@ -14,12 +14,12 @@ shared_examples 'a search domain object' do
     %w(foo.gov .mil .info .miami www.bar.gov www.bar.gov/subdir blat.gov/subdir).each do |good|
       it { is_expected.to allow_value(good).for(:domain) }
     end
-    specify { expect(affiliate.site_domains.create!(:domain => 'usa.gov').site_name).to eq('usa.gov') }
-    specify { expect(affiliate.site_domains.create!(:domain => 'usa.gov/subdir/').domain).to eq('usa.gov/subdir') }
+    specify { expect(affiliate.site_domains.create!(domain: 'usa.gov').site_name).to eq('usa.gov') }
+    specify { expect(affiliate.site_domains.create!(domain: 'usa.gov/subdir/').domain).to eq('usa.gov/subdir') }
 
     context 'when domain starts with /https?/' do
       %w(http://www.USA.gov https://www.usa.gov).each do |domain|
-        subject { affiliate.site_domains.create!(:domain => domain) }
+        subject { affiliate.site_domains.create!(domain: domain) }
 
         its(:domain) { should == 'www.usa.gov' }
         its(:site_name) { should == 'www.usa.gov' }

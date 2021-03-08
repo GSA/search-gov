@@ -232,7 +232,7 @@ describe GovboxSet do
     context 'when an affiliate has news govbox enabled' do
       let(:blog_feed) { mock_model(RssFeed, name: 'Blog', is_managed?: false) }
       let(:news_feed) { mock_model(RssFeed, name: 'News', is_managed?: false) }
-      let(:non_video_results) { double('non video results', :total => 3) }
+      let(:non_video_results) { double('non video results', total: 3) }
 
       before do
         expect(affiliate).to receive(:is_rss_govbox_enabled?).and_return(true)
@@ -362,10 +362,10 @@ describe GovboxSet do
 
         context 'when affiliate has Twitter Profiles' do
           before do
-            affiliate.twitter_profiles.create!(:screen_name => 'USASearch',
-                                               :name => 'Test',
-                                               :twitter_id => 123,
-                                               :profile_image_url => 'http://a0.twimg.com/profile_images/1879738641/USASearch_avatar_normal.png')
+            affiliate.twitter_profiles.create!(screen_name: 'USASearch',
+                                               name: 'Test',
+                                               twitter_id: 123,
+                                               profile_image_url: 'http://a0.twimg.com/profile_images/1879738641/USASearch_avatar_normal.png')
           end
 
           it 'should find the most recent relevant tweet' do

@@ -14,7 +14,7 @@ describe BoostedContentBulkUploader do
 
   describe '#upload' do
     context 'when the uploaded file has .png extension' do
-      let(:file) { double('png_file', { :original_filename => 'boosted_content.png' }) }
+      let(:file) { double('png_file', { original_filename: 'boosted_content.png' }) }
 
       specify { expect(results[:success]).to be false }
       specify { expect(results[:error_message]).to eq('Your filename should have .csv or .txt extension.') }
@@ -83,7 +83,7 @@ describe BoostedContentBulkUploader do
       end
 
       it 'should merge with preexisting boosted Contents' do
-        affiliate.boosted_contents.create!(:url => 'http://a.different.url', :title => 'title', :description => 'description', :status => 'active', :publish_start_on => Date.current)
+        affiliate.boosted_contents.create!(url: 'http://a.different.url', title: 'title', description: 'description', status: 'active', publish_start_on: Date.current)
 
         results
 
