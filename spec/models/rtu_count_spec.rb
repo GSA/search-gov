@@ -3,7 +3,7 @@ require 'spec_helper'
 describe RtuCount do
   describe '.count' do
     subject(:count) do
-      RtuCount.count('logstash*', 'query_body')
+      described_class.count('logstash*', 'query_body')
     end
 
     it 'extracts the count of documents' do

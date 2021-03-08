@@ -15,7 +15,7 @@ describe NewsItemsDestroyer do
       allow(NewsItem).to receive_message_chain(:where, :select, :find_in_batches).and_yield(batch_group)
       expect(NewsItem).to receive(:fast_delete).with(ids)
 
-      NewsItemsDestroyer.perform 100
+      described_class.perform 100
     end
   end
 end

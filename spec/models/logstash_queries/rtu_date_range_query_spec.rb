@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe RtuDateRangeQuery do
-  let(:query) { RtuDateRangeQuery.new('affiliate_name', 'search') }
+  let(:query) { described_class.new('affiliate_name', 'search') }
   let(:expected_body) do
     {
       "query": {

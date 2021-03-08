@@ -28,10 +28,10 @@ describe FeaturedCollection do
     it_behaves_like 'a record that sanitizes attributes', [:title]
   end
 
-  specify { expect(FeaturedCollection.new(status: 'active')).to be_is_active }
-  specify { expect(FeaturedCollection.new(status: 'active')).not_to be_is_inactive }
-  specify { expect(FeaturedCollection.new(status: 'inactive')).to be_is_inactive }
-  specify { expect(FeaturedCollection.new(status: 'inactive')).not_to be_is_active }
+  specify { expect(described_class.new(status: 'active')).to be_is_active }
+  specify { expect(described_class.new(status: 'active')).not_to be_is_inactive }
+  specify { expect(described_class.new(status: 'inactive')).to be_is_inactive }
+  specify { expect(described_class.new(status: 'inactive')).not_to be_is_active }
 
   it { is_expected.to belong_to :affiliate }
   it { is_expected.to have_many(:featured_collection_keywords).dependent(:destroy) }
@@ -41,7 +41,7 @@ describe FeaturedCollection do
   end
 
   it 'squishes title, title_url and image_alt_text' do
-    fc = FeaturedCollection.create!({ title: 'Did You   Mean Roes or Rose?',
+    fc = described_class.create!({ title: 'Did You   Mean Roes or Rose?',
                                       title_url: ' ',
                                       image_alt_text: '  ',
                                       status: 'active',
@@ -57,7 +57,7 @@ describe FeaturedCollection do
       title_url = 'search.gov/post/9866782725/did-you-mean-roes-or-rose'
       prefixes = %w( http https HTTP HTTPS invalidhttp:// invalidHtTp:// invalidhttps:// invalidHTtPs:// invalidHttPsS://)
       prefixes.each do |prefix|
-        specify { expect(FeaturedCollection.create!(title: 'Did You Mean Roes or Rose?',
+        specify { expect(described_class.create!(title: 'Did You Mean Roes or Rose?',
                                              title_url: "#{prefix}#{title_url}",
                                              status: 'active',
                                              publish_start_on: '07/01/2011',
@@ -69,7 +69,7 @@ describe FeaturedCollection do
       title_url = 'search.gov/post/9866782725/did-you-mean-roes-or-rose'
       prefixes = %w( http:// https:// HTTP:// HTTPS:// )
       prefixes.each do |prefix|
-        specify { expect(FeaturedCollection.create!(title: 'Did You Mean Roes or Rose?',
+        specify { expect(described_class.create!(title: 'Did You Mean Roes or Rose?',
                                              title_url: "#{prefix}#{title_url}",
                                              status: 'active',
                                              publish_start_on: '07/01/2011',
@@ -79,7 +79,7 @@ describe FeaturedCollection do
   end
 
   it 'should not allow publish start date before publish end date' do
-    featured_collection = FeaturedCollection.create(title: 'test title',
+    featured_collection = described_class.create(title: 'test title',
                                                     status: 'active',
                                                     publish_start_on: '07/01/2012',
                                                     publish_end_on: '07/01/2011',
@@ -118,12 +118,12 @@ describe FeaturedCollection do
 
   describe '#display_status' do
     context 'when status is set to active' do
-      subject { FeaturedCollection.new(status: 'active') }
+      subject { described_class.new(status: 'active') }
       its(:display_status) { should == 'Active' }
     end
 
     context 'when status is set to inactive' do
-      subject { FeaturedCollection.new(status: 'inactive') }
+      subject { described_class.new(status: 'inactive') }
       its(:display_status) { should == 'Inactive' }
     end
   end
@@ -206,7 +206,7 @@ describe FeaturedCollection do
 
         context 'when keywords have substring match in selected fields' do
           before do
-            fc = FeaturedCollection.last
+            fc = described_class.last
             fc.featured_collection_keywords.build(value: 'page2')
             fc.featured_collection_keywords.build(value: 'hello')
             fc.save!
@@ -264,11 +264,11 @@ describe FeaturedCollection do
   end
 
   describe '.human_attribute_name' do
-    specify { expect(FeaturedCollection.human_attribute_name('publish_start_on')).to eq('Publish start date') }
+    specify { expect(described_class.human_attribute_name('publish_start_on')).to eq('Publish start date') }
   end
 
   describe '#as_json' do
-    after { FeaturedCollection.destroy_all }
+    after { described_class.destroy_all }
 
     context 'when image is present' do
       it 'contains image_url' do
@@ -304,7 +304,7 @@ describe FeaturedCollection do
 
   describe '#dup' do
     subject(:original_instance) do
-      FeaturedCollection.create!(affiliate: @affiliate,
+      described_class.create!(affiliate: @affiliate,
                                  publish_start_on: '07/01/2011',
                                  status: 'active',
                                  title: 'BBG title',
@@ -324,7 +324,7 @@ describe FeaturedCollection do
 
   describe '#image' do
     let(:image) { File.open(Rails.root.join('spec/fixtures/images/corgi.jpg')) }
-    let(:fc) { FeaturedCollection.create({ image: image }.merge(valid_attributes)) }
+    let(:fc) { described_class.create({ image: image }.merge(valid_attributes)) }
 
     it 'stores the image in s3 with a secure url' do
       expect(fc.image.url).to match /https:\/\/.*\.s3\.amazonaws\.com\/test\/featured_collection\/#{fc.id}\/image\/\d+\/original\/corgi.jpg/

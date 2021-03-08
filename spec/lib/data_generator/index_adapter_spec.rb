@@ -3,7 +3,7 @@ require 'data_generator/search_pool'
 
 module DataGenerator
   describe IndexAdapter do
-    subject { IndexAdapter.new(site_handle, search) }
+    subject { described_class.new(site_handle, search) }
     let(:site_handle) { 'site_beyond_site' }
     let(:search) { Search.new(timestamp, is_human, modules, query, clicks) }
     let(:timestamp) { Time.new(2015, 7, 14, 12, 15, 15, 0) }

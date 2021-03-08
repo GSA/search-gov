@@ -7,7 +7,7 @@ describe JobResultsPostProcessor do
       Hashie::Mash::Rash.new(result)
     end
   end
-  let(:post_processor) { JobResultsPostProcessor.new(results: results) }
+  let(:post_processor) { described_class.new(results: results) }
   let(:post_processed_results) { post_processor.post_processed_results }
   let(:result) { post_processed_results.first }
 

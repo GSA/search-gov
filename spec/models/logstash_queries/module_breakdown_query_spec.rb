@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe ModuleBreakdownQuery do
-  let(:query) { ModuleBreakdownQuery.new('affiliate_name') }
+  let(:query) { described_class.new('affiliate_name') }
   let(:expected_body) do
     {
       "query": {
@@ -46,7 +46,7 @@ describe ModuleBreakdownQuery do
   it_behaves_like 'a logstash query'
 
   context 'when the affiliate_name is missing' do
-    let(:query) { ModuleBreakdownQuery.new }
+    let(:query) { described_class.new }
     let(:expected_body) do
       {
         "query": {

@@ -19,7 +19,7 @@ describe LowQueryCtrWatcher do
   let(:expected_body) do
     JSON.parse(read_fixture_file('/json/watcher/low_query_ctr_watcher_body.json')).to_json
   end
-  subject(:watcher) { LowQueryCtrWatcher.new(watcher_args) }
+  subject(:watcher) { described_class.new(watcher_args) }
 
   it { is_expected.to validate_numericality_of(:search_click_total).only_integer }
   it { is_expected.to validate_numericality_of(:low_ctr_threshold) }

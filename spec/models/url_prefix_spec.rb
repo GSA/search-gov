@@ -21,34 +21,34 @@ describe UrlPrefix do
 
     it 'should cap prefix length at 255 characters' do
       too_long = "http://www.foo.gov/#{'waytoolong'*25}/"
-      url_prefix = UrlPrefix.new(@valid_attributes.merge(prefix: too_long))
+      url_prefix = described_class.new(@valid_attributes.merge(prefix: too_long))
       expect(url_prefix).not_to be_valid
       expect(url_prefix.errors[:prefix].first).to match(/too long/)
     end
 
     it 'should validate the URL prefix against URI.parse' do
-      url_prefix = UrlPrefix.new(@valid_attributes.merge(prefix: 'http://www.gov.gov/pipesare||bad/'))
+      url_prefix = described_class.new(@valid_attributes.merge(prefix: 'http://www.gov.gov/pipesare||bad/'))
       expect(url_prefix.valid?).to be false
       expect(url_prefix.errors.full_messages.first).to eq('Prefix is not a valid URL')
     end
 
     it 'normalizes the prefix' do
-      expect(UrlPrefix.create!(@valid_attributes.merge(prefix: '    www.FOO.gov   ')).prefix).to eq('http://www.foo.gov/')
+      expect(described_class.create!(@valid_attributes.merge(prefix: '    www.FOO.gov   ')).prefix).to eq('http://www.foo.gov/')
     end
   end
 
   describe '#label' do
     it 'should return the prefix' do
-      expect(UrlPrefix.new(prefix: 'foo').label).to eq('foo')
+      expect(described_class.new(prefix: 'foo').label).to eq('foo')
     end
   end
 
   describe '#depth' do
     it 'should return the subdirectory depth of the url prefix' do
-      expect(UrlPrefix.new(prefix: 'http://www.gov.gov/').depth).to eq(0)
-      expect(UrlPrefix.new(prefix: 'http://www.gov.gov/owcp/').depth).to eq(1)
-      expect(UrlPrefix.new(prefix: 'http://www.gov.gov/owcp/two/').depth).to eq(2)
-      expect(UrlPrefix.new(prefix: 'http://www.gov.gov/owcp/two/three/').depth).to eq(3)
+      expect(described_class.new(prefix: 'http://www.gov.gov/').depth).to eq(0)
+      expect(described_class.new(prefix: 'http://www.gov.gov/owcp/').depth).to eq(1)
+      expect(described_class.new(prefix: 'http://www.gov.gov/owcp/two/').depth).to eq(2)
+      expect(described_class.new(prefix: 'http://www.gov.gov/owcp/two/three/').depth).to eq(3)
     end
   end
 

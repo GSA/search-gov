@@ -53,10 +53,10 @@ describe SiteDomain do
       tempfile.open
       Rack::Test::UploadedFile.new(tempfile, content_type)
     end
-    let(:site_domain) { mock_model(SiteDomain) }
+    let(:site_domain) { mock_model(described_class) }
 
     context 'when the file is nil' do
-      specify { expect(SiteDomain.process_file(affiliate, nil)).to eq({ success: false,
+      specify { expect(described_class.process_file(affiliate, nil)).to eq({ success: false,
                                                                     error_message: SiteDomain::INVALID_FILE_FORMAT_MESSAGE }) }
     end
 
@@ -65,14 +65,14 @@ describe SiteDomain do
 
       before { expect(CSV).to receive(:parse).and_raise }
 
-      specify { expect(SiteDomain.process_file(affiliate, file)).to eq({ success: false,
+      specify { expect(described_class.process_file(affiliate, file)).to eq({ success: false,
                                                                     error_message: SiteDomain::INVALID_FILE_FORMAT_MESSAGE }) }
     end
 
     context 'when content type is not csv' do
       let(:content_type) { 'text/xml' }
 
-      specify { expect(SiteDomain.process_file(affiliate, file)).to eq({success: false,
+      specify { expect(described_class.process_file(affiliate, file)).to eq({success: false,
                                                                     error_message: 'Invalid file format. Please upload a csv file (.csv).'}) }
     end
 
@@ -83,7 +83,7 @@ describe SiteDomain do
         expect(affiliate).to receive(:add_site_domains).with(hash_including('gsa.gov' => nil, 'search.usa.gov' => 'The Official Search Engine')).and_return([site_domain, site_domain])
       end
 
-      specify { expect(SiteDomain.process_file(affiliate, file)).to eq({success: true, added: 2}) }
+      specify { expect(described_class.process_file(affiliate, file)).to eq({success: true, added: 2}) }
     end
 
     context 'when content type is csv and there is an existing domain' do
@@ -94,7 +94,7 @@ describe SiteDomain do
         expect(affiliate).to receive(:add_site_domains).with(hash_including('gsa.gov' => nil, 'search.usa.gov' => 'The Official Search Engine')).and_return([site_domain])
       end
 
-      specify { expect(SiteDomain.process_file(affiliate, file)).to eq({success: true, added: 1}) }
+      specify { expect(described_class.process_file(affiliate, file)).to eq({success: true, added: 1}) }
     end
   end
 

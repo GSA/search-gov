@@ -13,7 +13,7 @@ describe ApiNewsSearch do
     end
 
     context 'when channel is not specified' do
-      let(:search) { ApiNewsSearch.new affiliate: affiliate, query: 'element' }
+      let(:search) { described_class.new affiliate: affiliate, query: 'element' }
       let(:non_managed_and_navigable_only_feeds) { affiliate.rss_feeds.non_managed.navigable_only.to_a }
 
       it 'searches on non managed navigable only rss feeds' do
@@ -35,7 +35,7 @@ describe ApiNewsSearch do
 
     context 'when channel is referring to a managed feed' do
       subject do
-        ApiNewsSearch.new affiliate: affiliate,
+        described_class.new affiliate: affiliate,
                           channel: managed_feed.id.to_s,
                           query: 'element'
       end

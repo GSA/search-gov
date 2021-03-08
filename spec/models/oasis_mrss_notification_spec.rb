@@ -14,7 +14,7 @@ describe OasisMrssNotification, '.perform' do
     end
 
     it 'should link the oasis_mrss_name to an Oasis MRSS profile' do
-      OasisMrssNotification.perform(media_feed_url.id)
+      described_class.perform(media_feed_url.id)
       expect(RssFeedUrl.find(media_feed_url.id).oasis_mrss_name).to eq('123')
     end
   end
@@ -30,7 +30,7 @@ describe OasisMrssNotification, '.perform' do
 
       it 'should not subscribe to Oasis' do
         allow(RssFeedUrl).to receive(:find).and_return double(RssFeedUrl, url: url)
-        expect(OasisMrssNotification.perform(url)).to eq('URL does not look like an image URL')
+        expect(described_class.perform(url)).to eq('URL does not look like an image URL')
       end
     end
   end
@@ -41,7 +41,7 @@ describe OasisMrssNotification, '.perform' do
     end
 
     it 'should not subscribe to Oasis' do
-      expect(OasisMrssNotification.perform(rss_feed_urls(:atom_feed_url).id)).to eq('XML root is not RSS')
+      expect(described_class.perform(rss_feed_urls(:atom_feed_url).id)).to eq('XML root is not RSS')
     end
   end
 
@@ -51,7 +51,7 @@ describe OasisMrssNotification, '.perform' do
     end
 
     it 'should not subscribe to Oasis' do
-      expect(OasisMrssNotification.perform(rss_feed_urls(:another_url).id)).to eq('Missing MRSS namespace')
+      expect(described_class.perform(rss_feed_urls(:another_url).id)).to eq('Missing MRSS namespace')
     end
   end
 
@@ -61,7 +61,7 @@ describe OasisMrssNotification, '.perform' do
     end
 
     it 'should not subscribe to Oasis' do
-      expect(OasisMrssNotification.perform(rss_feed_urls(:another_url).id)).to eq('Missing media thumbnails')
+      expect(described_class.perform(rss_feed_urls(:another_url).id)).to eq('Missing media thumbnails')
     end
   end
 
@@ -72,7 +72,7 @@ describe OasisMrssNotification, '.perform' do
 
     it 'should log warning' do
       expect(Rails.logger).to receive(:warn)
-      OasisMrssNotification.perform(rss_feed_urls(:another_url).id)
+      described_class.perform(rss_feed_urls(:another_url).id)
     end
   end
 end

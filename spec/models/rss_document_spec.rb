@@ -4,11 +4,11 @@ describe RssDocument do
   let(:content) do
     File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog.xml')
   end
-  let(:document) { RssDocument.new(content) }
+  let(:document) { described_class.new(content) }
 
   describe 'validations' do
     context 'when the document is not valid rss' do
-      subject(:document) { RssDocument.new('invalid') }
+      subject(:document) { described_class.new('invalid') }
 
       it { is_expected.not_to be_valid }
 

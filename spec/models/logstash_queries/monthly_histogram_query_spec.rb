@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe MonthlyHistogramQuery do
-  let(:query) { MonthlyHistogramQuery.new('affiliate_name', Date.parse('2014-06-28')) }
+  let(:query) { described_class.new('affiliate_name', Date.parse('2014-06-28')) }
   let(:expected_body) do
     {
       "query": {

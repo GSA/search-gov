@@ -4,7 +4,7 @@ describe BoostedContentBulkUploader do
   fixtures :affiliates
   let(:affiliate) { affiliates(:basic_affiliate) }
   let(:file) { fixture_file_upload('/csv/boosted_content/bulk_upload.csv', 'text/csv') }
-  let(:uploader) { BoostedContentBulkUploader.new(affiliate, file) }
+  let(:uploader) { described_class.new(affiliate, file) }
   subject(:results) { uploader.upload }
 
   before do

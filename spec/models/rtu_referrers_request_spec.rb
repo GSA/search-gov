@@ -5,7 +5,7 @@ describe RtuReferrersRequest do
 
   let(:site) { affiliates(:basic_affiliate) }
   let(:top_n) { [['url1', 10], ['url2', 5]] }
-  let(:rtu_referrers_request) { RtuReferrersRequest.new('start_date' => '05/28/2014', 'end_date' => '05/28/2014', 'site' => site) }
+  let(:rtu_referrers_request) { described_class.new('start_date' => '05/28/2014', 'end_date' => '05/28/2014', 'site' => site) }
 
   before do
     allow(RtuDateRange).to receive(:new).and_return double(RtuDateRange, available_dates_range: (Date.yesterday..Date.current))

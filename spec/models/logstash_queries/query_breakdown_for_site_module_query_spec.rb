@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe QueryBreakdownForSiteModuleQuery do
-  let(:query) { QueryBreakdownForSiteModuleQuery.new('BOOS', 'affiliate_name') }
+  let(:query) { described_class.new('BOOS', 'affiliate_name') }
   let(:expected_body) do
     {
       "query": {

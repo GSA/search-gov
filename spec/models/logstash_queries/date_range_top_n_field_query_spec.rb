@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe DateRangeTopNFieldQuery do
   let(:query) do
-    DateRangeTopNFieldQuery.new('affiliate_name',
+    described_class.new('affiliate_name',
                                 'search',
                                 Date.parse('2014-06-28'),
                                 Date.parse('2014-06-29'),
@@ -56,7 +56,7 @@ describe DateRangeTopNFieldQuery do
 
   context 'when the affiliate is nil' do
     let(:query) do
-      DateRangeTopNFieldQuery.new(nil,
+      described_class.new(nil,
                                   'click',
                                   Date.parse('2014-06-28'),
                                   Date.parse('2014-06-29'),

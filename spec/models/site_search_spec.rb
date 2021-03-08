@@ -16,7 +16,7 @@ describe SiteSearch do
 
   describe '.initialize' do
     it "should use the dc param to find a document collection when document_collection isn't present" do
-      expect(SiteSearch.new(query: 'gov', affiliate: affiliate, dc: dc.id).document_collection).to eq(dc)
+      expect(described_class.new(query: 'gov', affiliate: affiliate, dc: dc.id).document_collection).to eq(dc)
     end
   end
 
@@ -27,7 +27,7 @@ describe SiteSearch do
       expect(BingV7FormattedQuery).to receive(:new).with(
         'gov', hash_including(included_domains: ['www.whitehouse.gov/photos-and-video/', 'www.whitehouse.gov/blog/'],
                               excluded_domains: [])).and_return bing_formatted_query
-      SiteSearch.new(query: 'gov', affiliate: affiliate, document_collection: dc)
+      described_class.new(query: 'gov', affiliate: affiliate, document_collection: dc)
     end
 
     context 'when no document collection is specified' do
@@ -38,7 +38,7 @@ describe SiteSearch do
         ).and_return bing_formatted_query
       end
 
-      subject { SiteSearch.new(query: 'gov', affiliate: affiliate) }
+      subject { described_class.new(query: 'gov', affiliate: affiliate) }
       its(:sitelink_generator_names) { should be_nil }
     end
 
@@ -54,7 +54,7 @@ describe SiteSearch do
       end
 
       it 'includes BSPEL and OVER in the modules' do
-        search = SiteSearch.new({ affiliate: affiliate, document_collection: collection, query: 'militry' })
+        search = described_class.new({ affiliate: affiliate, document_collection: collection, query: 'militry' })
         search.run
         expect(search.modules).to include('BSPEL', 'OVER')
       end
@@ -81,7 +81,7 @@ describe SiteSearch do
       end
 
       it 'includes SPEL and LOVER in the modules' do
-        search = SiteSearch.new({ affiliate: affiliate, document_collection: collection, query: 'Scientost' })
+        search = described_class.new({ affiliate: affiliate, document_collection: collection, query: 'Scientost' })
         search.run
         expect(search.modules).to include('SPEL', 'LOVER')
       end
@@ -108,7 +108,7 @@ describe SiteSearch do
       end
 
       it 'excludes SPEL and LOVER from the modules' do
-        search = SiteSearch.new({ affiliate: affiliate, document_collection: collection, query: 'Scientost' })
+        search = described_class.new({ affiliate: affiliate, document_collection: collection, query: 'Scientost' })
         search.run
         expect(search.modules).not_to include('SPEL', 'LOVER')
       end

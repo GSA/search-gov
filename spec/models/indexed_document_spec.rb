@@ -36,33 +36,33 @@ describe IndexedDocument do
 
   it 'should create a SuperfreshUrl entry for the affiliate' do
     expect(SuperfreshUrl.find_by_url_and_affiliate_id(@min_valid_attributes[:url], @min_valid_attributes[:affiliate_id])).to be_nil
-    IndexedDocument.create!(@min_valid_attributes)
+    described_class.create!(@min_valid_attributes)
     expect(SuperfreshUrl.find_by_url_and_affiliate_id(@min_valid_attributes[:url], @min_valid_attributes[:affiliate_id])).not_to be_nil
   end
 
   it 'should validate unique url' do
-    IndexedDocument.create!(@valid_attributes)
-    duplicate = IndexedDocument.new(@valid_attributes.merge(url: @valid_attributes[:url].upcase))
+    described_class.create!(@valid_attributes)
+    duplicate = described_class.new(@valid_attributes.merge(url: @valid_attributes[:url].upcase))
     expect(duplicate).not_to be_valid
     expect(duplicate.errors[:url].first).to match(/already been added/)
   end
 
   it 'should allow a duplicate url for a different affiliate' do
-    IndexedDocument.create!(@valid_attributes)
+    described_class.create!(@valid_attributes)
     affiliates(:power_affiliate).site_domains.create!(domain: affiliates(:basic_affiliate).site_domains.first.domain)
-    duplicate = IndexedDocument.new(@valid_attributes.merge(affiliate_id: affiliates(:power_affiliate).id))
+    duplicate = described_class.new(@valid_attributes.merge(affiliate_id: affiliates(:power_affiliate).id))
     expect(duplicate).to be_valid
   end
 
   it 'should not allow setting last_crawl_status to OK if the title is blank' do
-    odie = IndexedDocument.create!(@min_valid_attributes)
+    odie = described_class.create!(@min_valid_attributes)
     expect(odie.update_attributes(title: nil, description: 'bogus description', last_crawl_status: IndexedDocument::OK_STATUS)).to be false
     expect(odie.errors[:title].first).to match(/can't be blank/)
   end
 
   describe '#fetch' do
 
-    let(:indexed_document) { IndexedDocument.create!(@valid_attributes) }
+    let(:indexed_document) { described_class.create!(@valid_attributes) }
 
     it 'should set the load time attribute' do
       indexed_document.url = 'https://search.gov/'
@@ -94,7 +94,7 @@ describe IndexedDocument do
 
       it 'should handle the exception and delete the record' do
         indexed_document.fetch
-        expect(IndexedDocument.find_by_id(indexed_document.id)).to be_nil
+        expect(described_class.find_by_id(indexed_document.id)).to be_nil
       end
 
       context 'when there is a problem destroying the record' do
@@ -113,7 +113,7 @@ describe IndexedDocument do
 
   describe '#save_or_destroy' do
     before do
-      @indexed_document = IndexedDocument.create!(@valid_attributes)
+      @indexed_document = described_class.create!(@valid_attributes)
     end
 
     context "when Rails validation misses that it's a duplicate and MySQL throws an exception" do
@@ -123,7 +123,7 @@ describe IndexedDocument do
 
       it 'should catch the exception and delete the record' do
         @indexed_document.save_or_destroy
-        expect(IndexedDocument.find_by_id(@indexed_document.id)).to be_nil
+        expect(described_class.find_by_id(@indexed_document.id)).to be_nil
       end
     end
 
@@ -140,7 +140,7 @@ describe IndexedDocument do
 
   describe '#index_document(file, content_type)' do
     before do
-      @indexed_document = IndexedDocument.create!(@min_valid_attributes)
+      @indexed_document = described_class.create!(@min_valid_attributes)
       @file = open(Rails.root.to_s + '/spec/fixtures/html/fresnel-lens-building-opens-july-23.htm')
     end
 
@@ -218,7 +218,7 @@ describe IndexedDocument do
 
   describe '#index_html(file)' do
     context 'when the page has a HTML title' do
-      let(:indexed_document) { IndexedDocument.create!(@min_valid_attributes) }
+      let(:indexed_document) { described_class.create!(@min_valid_attributes) }
       let(:file) { open(Rails.root.to_s + '/spec/fixtures/html/fresnel-lens-building-opens-july-23.htm') }
 
       it 'should extract the text body from the document' do
@@ -244,14 +244,14 @@ describe IndexedDocument do
     let(:doc) { Nokogiri::HTML(open(Rails.root.to_s + '/spec/fixtures/html/usa_gov/audiences.html')) }
 
     it 'should return the inner text of the body of the document' do
-      indexed_document = IndexedDocument.new(url: 'http://gov.nps.gov/page.html')
+      indexed_document = described_class.new(url: 'http://gov.nps.gov/page.html')
       body = indexed_document.extract_body_from(doc)
       expect(body).to eq("Skip to Main Content Home FAQs Site Index E-mail Us Chat Get E-mail Updates Change Text Size Español Search 1 (800) FED-INFO|1 (800) 333-4636 Get Services Get It Done Online! Public Engagement Performance Dashboards Shop Government Auctions Replace Vital Records MORE SERVICES Government Jobs Change Your Address Explore Topics Jobs and Education Family, Home, and Community Public Safety and Law Health and Nutrition Travel and Recreation Money and Taxes Environment, Energy, and Agriculture Benefits and Grants Defense and International Consumer Guides Reference and General Government History, Arts, and Culture Voting and Elections Science and Technology Audiences Audiences Find Government Agencies All Government A-Z Index of the U.S. Government Federal Government Executive Branch Judicial Branch Legislative Branch State, Local, and Tribal State Government Local Government Tribal Government Contact Government U.S. Congress & White House Contact Government Elected Officials Agency Contacts Contact Us FAQs MORE CONTACTS Governor and State Legislators E-mail Print Share RSS You Are Here Home &gt; Citizens &gt; Especially for Specific Audiences Especially for Specific Audiences Removed the links here, too. This is the last page for the test, with dead ends on the breadcrumb, too Contact Your Government FAQs E-mail Us Chat Phone Page Last Reviewed or Updated: October 28, 2010 Connect with Government Facebook Twitter Mobile YouTube Our Blog Home About Us Contact Us Website Policies Privacy Suggest-A-Link Link to Us USA.gov is the U.S. government's official web portal.")
     end
   end
 
   describe '#index_application_file(file)' do
-    let(:indexed_document) { IndexedDocument.create!(@min_valid_attributes.merge(title: 'preset title', description: 'preset description')) }
+    let(:indexed_document) { described_class.create!(@min_valid_attributes.merge(title: 'preset title', description: 'preset description')) }
 
     context 'for a normal application file (PDF/Word/PPT/Excel)' do
       before do
@@ -287,9 +287,9 @@ describe IndexedDocument do
     context 'when url field has substring match' do
       before do
         @affiliate = affiliates(:basic_affiliate)
-        one = IndexedDocument.create!(url: 'http://nps.gov/url1.html', last_crawled_at: Time.now, affiliate: @affiliate, title: 'Some document Title', description: 'This is a document.')
-        two = IndexedDocument.create!(url: 'http://nps.gov/url2.html', last_crawled_at: Time.now, affiliate: @affiliate, title: 'Another Title', description: 'This is also a document.')
-        IndexedDocument.create!(url: 'http://anotheraffiliate.mil', last_crawled_at: Time.now, affiliate: @affiliate, title: 'Third Title', description: 'This is the last document.')
+        one = described_class.create!(url: 'http://nps.gov/url1.html', last_crawled_at: Time.now, affiliate: @affiliate, title: 'Some document Title', description: 'This is a document.')
+        two = described_class.create!(url: 'http://nps.gov/url2.html', last_crawled_at: Time.now, affiliate: @affiliate, title: 'Another Title', description: 'This is also a document.')
+        described_class.create!(url: 'http://anotheraffiliate.mil', last_crawled_at: Time.now, affiliate: @affiliate, title: 'Third Title', description: 'This is the last document.')
         @array = [one, two]
       end
 
@@ -305,7 +305,7 @@ describe IndexedDocument do
   describe '#normalize_error_message(e)' do
     context "when it's a timeout-related error" do
       it "should return 'Document took too long to fetch'" do
-        indexed_document = IndexedDocument.new
+        indexed_document = described_class.new
         e = Exception.new('this is because execution expired')
         expect(indexed_document.send(:normalize_error_message, e)).to eq('Document took too long to fetch')
       end
@@ -313,7 +313,7 @@ describe IndexedDocument do
 
     context "when it's a protocol redirection-related error" do
       it "should return 'Redirection forbidden from HTTP to HTTPS'" do
-        indexed_document = IndexedDocument.new
+        indexed_document = described_class.new
         e = Exception.new('redirection forbidden from this to that')
         expect(indexed_document.send(:normalize_error_message, e)).to eq('Redirection forbidden from HTTP to HTTPS')
       end
@@ -321,7 +321,7 @@ describe IndexedDocument do
 
     context "when it's an uncaught Mysql-related duplicate content error" do
       it "should return 'Content hash is not unique: Identical content (title and body) already indexed'" do
-        indexed_document = IndexedDocument.new
+        indexed_document = described_class.new
         e = Exception.new('Mysql2::Error: Duplicate entry blah blah blah')
         expect(indexed_document.send(:normalize_error_message, e)).to eq('Content hash is not unique: Identical content (title and body) already indexed')
       end
@@ -329,7 +329,7 @@ describe IndexedDocument do
 
     context "when it's a generic error" do
       it 'should return the error message' do
-        indexed_document = IndexedDocument.new
+        indexed_document = described_class.new
         e = Exception.new('something awful happened')
         expect(indexed_document.send(:normalize_error_message, e)).to eq('something awful happened')
       end
@@ -337,7 +337,7 @@ describe IndexedDocument do
   end
 
   describe '#dup' do
-    subject(:original_instance) { IndexedDocument.create!(@min_valid_attributes) }
+    subject(:original_instance) { described_class.create!(@min_valid_attributes) }
     include_examples 'site dupable'
   end
 

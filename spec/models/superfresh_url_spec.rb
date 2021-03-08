@@ -32,14 +32,14 @@ describe SuperfreshUrl do
       end
 
       it 'should create a new SuperfreshUrl for each of the lines in the file' do
-        SuperfreshUrl.process_file(@file)
-        @urls.each {|url| expect(SuperfreshUrl.find_by_url_and_affiliate_id(url, nil)).not_to be_nil}
+        described_class.process_file(@file)
+        @urls.each {|url| expect(described_class.find_by_url_and_affiliate_id(url, nil)).not_to be_nil}
       end
 
       it 'should use an affiliate if specified' do
         affiliate = affiliates(:basic_affiliate)
-        SuperfreshUrl.process_file(@file, affiliate)
-        @urls.each {|url| expect(SuperfreshUrl.find_by_url_and_affiliate_id(url, affiliate)).not_to be_nil}
+        described_class.process_file(@file, affiliate)
+        @urls.each {|url| expect(described_class.find_by_url_and_affiliate_id(url, affiliate)).not_to be_nil}
       end
     end
 
@@ -53,12 +53,12 @@ describe SuperfreshUrl do
       end
 
       it 'should raise an error that there are too many URLs in the file' do
-        expect { SuperfreshUrl.process_file(@file) }.to raise_error('Too many URLs in your file.  Please limit your file to 100 URLs.')
+        expect { described_class.process_file(@file) }.to raise_error('Too many URLs in your file.  Please limit your file to 100 URLs.')
       end
 
       context 'when a max number of URLs is passed that is greater than the default max' do
         it 'should allow all of the urls' do
-          expect{ SuperfreshUrl.process_file(@file, nil, 1000)}.not_to raise_error
+          expect{ described_class.process_file(@file, nil, 1000)}.not_to raise_error
         end
       end
     end

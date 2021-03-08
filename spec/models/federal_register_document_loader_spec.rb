@@ -12,7 +12,7 @@ describe FederalRegisterDocumentLoader do
       expect(FederalRegisterDocumentData).to receive(:load_documents).
         with(mock_agency, load_all: true)
 
-      FederalRegisterDocumentLoader.perform(100)
+      described_class.perform(100)
     end
   end
 end

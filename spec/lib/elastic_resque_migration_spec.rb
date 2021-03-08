@@ -6,7 +6,7 @@ describe ElasticResqueMigration do
       expect(ElasticIndexedDocument).to receive(:migrate_writer)
       expect(ElasticResqueIndexer).to receive(:index_all).with('IndexedDocument')
       expect(Resque).to receive(:enqueue).with(ElasticMigrateReader, 'IndexedDocument')
-      ElasticResqueMigration.migrate('IndexedDocument')
+      described_class.migrate('IndexedDocument')
     end
   end
 end

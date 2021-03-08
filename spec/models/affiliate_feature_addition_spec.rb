@@ -12,7 +12,7 @@ describe AffiliateFeatureAddition do
     it { is_expected.to belong_to(:affiliate) }
     it { is_expected.to belong_to(:feature) }
     it 'should create a new instance given valid attributes' do
-      AffiliateFeatureAddition.create!(valid_attributes)
+      described_class.create!(valid_attributes)
     end
   end
 end

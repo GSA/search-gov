@@ -30,7 +30,7 @@ describe DocumentCollection do
 
   describe 'Creating new instance' do
     it 'should create navigation' do
-      dc = DocumentCollection.create!(valid_attributes)
+      dc = described_class.create!(valid_attributes)
       expect(dc.navigation).to eq(Navigation.find(dc.navigation.id))
       expect(dc.navigation.affiliate_id).to eq(dc.affiliate_id)
       expect(dc.navigation.position).to eq(100)
@@ -38,14 +38,14 @@ describe DocumentCollection do
     end
 
     it 'should not allow document collection without prefix' do
-      dc = DocumentCollection.new(valid_attributes.except(:url_prefixes_attributes))
+      dc = described_class.new(valid_attributes.except(:url_prefixes_attributes))
       expect(dc).not_to be_valid
     end
   end
 
   describe '#depth' do
     subject do
-      DocumentCollection.create!(name: 'My Collection',
+      described_class.create!(name: 'My Collection',
                                   affiliate: affiliates(:power_affiliate),
                                   url_prefixes_attributes: {'0' => {prefix: 'http://www.agency.gov/'},
                                                                '1' => {prefix: 'http://www.agency.gov/one/two/three/'},
@@ -65,7 +65,7 @@ describe DocumentCollection do
         with(%w(http://www.agency.gov/)).
         and_return(sitelink_generator_names)
 
-      dc = DocumentCollection.create!(valid_attributes)
+      dc = described_class.create!(valid_attributes)
       dc.assign_sitelink_generator_names!
       expect(dc.sitelink_generator_names).to eq(sitelink_generator_names)
     end
@@ -77,7 +77,7 @@ describe DocumentCollection do
   end
 
   describe '#sitelink_generator_names_as_str' do
-    let(:collection) { DocumentCollection.new(sitelink_generator_names: %w(ABC XYZ)) }
+    let(:collection) { described_class.new(sitelink_generator_names: %w(ABC XYZ)) }
 
     it 'returns the names as a comma-separated string' do
       expect(collection.sitelink_generator_names_as_str).to eq 'ABC,XYZ'

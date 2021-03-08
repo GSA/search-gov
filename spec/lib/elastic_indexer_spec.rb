@@ -27,7 +27,7 @@ describe ElasticIndexer do
   end
 
   describe '#index_all' do
-    subject(:index_all) { ElasticIndexer.index_all('IndexedDocument') }
+    subject(:index_all) { described_class.index_all('IndexedDocument') }
 
     it 'should index all valid instances' do
       index_all
@@ -40,12 +40,12 @@ describe ElasticIndexer do
       featured_collection = double(FeaturedCollection)
       expect(featured_collection).to receive(:find_in_batches).with(batch_size: ElasticIndexer::DEFAULT_BATCH_SIZE)
       expect(FeaturedCollection).to receive(:includes).with(ElasticFeaturedCollection::OPTIMIZING_INCLUDES).and_return(featured_collection)
-      ElasticIndexer.index_all('FeaturedCollection')
+      described_class.index_all('FeaturedCollection')
 
       indexed_document = double(IndexedDocument)
       expect(indexed_document).to receive(:find_in_batches).with(batch_size: ElasticIndexer::DEFAULT_BATCH_SIZE)
       expect(IndexedDocument).to receive(:includes).with(nil).and_return(indexed_document)
-      ElasticIndexer.index_all('IndexedDocument')
+      described_class.index_all('IndexedDocument')
     end
 
     context 'when data payload is empty' do

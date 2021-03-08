@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe ClickCounter do
-  let(:counter) { ClickCounter.new(domain: 'agency.gov') }
+  let(:counter) { described_class.new(domain: 'agency.gov') }
 
   describe '#update_click_counts' do
     subject(:update_click_counts) { counter.update_click_counts }

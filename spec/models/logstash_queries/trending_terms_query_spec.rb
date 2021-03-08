@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe TrendingTermsQuery do
-  let(:query) { TrendingTermsQuery.new('affiliate_name', '5h', 22) }
+  let(:query) { described_class.new('affiliate_name', '5h', 22) }
   let(:expected_body) do
     {
       "query": {

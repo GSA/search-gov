@@ -7,11 +7,11 @@ describe VideoNewsSearch do
 
   describe '#initialize(options)' do
     it 'should initialize per_page' do
-      expect(VideoNewsSearch.new(query: 'gov', tbs: 'w', affiliate: affiliate).per_page).to eq(20)
+      expect(described_class.new(query: 'gov', tbs: 'w', affiliate: affiliate).per_page).to eq(20)
     end
 
     it 'should not overwrite per_page option' do
-      expect(VideoNewsSearch.new(query: 'gov', tbs: 'w', affiliate: affiliate, per_page: '15').per_page).to eq(15)
+      expect(described_class.new(query: 'gov', tbs: 'w', affiliate: affiliate, per_page: '15').per_page).to eq(15)
     end
   end
 
@@ -23,7 +23,7 @@ describe VideoNewsSearch do
         expect(affiliate).to receive(:youtube_profile_ids).twice.and_return double('youtube profile ids')
         youtube_feeds = [mock_model(RssFeed)]
         allow(RssFeed).to receive_message_chain(:includes, :owned_by_youtube_profile, :where).and_return youtube_feeds
-        search = VideoNewsSearch.new(query: 'element', channel: '100', affiliate: affiliate)
+        search = described_class.new(query: 'element', channel: '100', affiliate: affiliate)
         expect(ElasticNewsItem).to receive(:search_for).
           with(q: 'element', rss_feeds: youtube_feeds, excluded_urls: affiliate.excluded_urls,
                since: nil, until: nil,
@@ -49,7 +49,7 @@ describe VideoNewsSearch do
                contributor: nil, subject: nil, publisher: nil,
                sort: 'published_at:desc',
                tags: [], language: 'en')
-        search = VideoNewsSearch.new(query: 'element', tbs: 'w', affiliate: affiliate)
+        search = described_class.new(query: 'element', tbs: 'w', affiliate: affiliate)
         search.run
         expect(search.rss_feed).to eq(videos_navigable_feeds.first)
       end

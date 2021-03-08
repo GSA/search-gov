@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe DrilldownQuery do
   let(:query) do
-    DrilldownQuery.new('affiliate_name',
+    described_class.new('affiliate_name',
                        Date.new(2019,11,01),
                        Date.new(2019,11,15),
                        'params.query.raw',

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe TopQueryMatchQuery do
   let(:query) do
-    TopQueryMatchQuery.new('affiliate_name',
+    described_class.new('affiliate_name',
                            'my query term',
                            Date.parse('2014-06-28'),
                            Date.parse('2014-06-29'),

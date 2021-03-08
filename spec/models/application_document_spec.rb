@@ -9,7 +9,7 @@ describe ApplicationDocument do
       url: url
     }
   end
-  let(:application_document) { ApplicationDocument.new(valid_attributes) }
+  let(:application_document) { described_class.new(valid_attributes) }
   let(:doc_without_description) { open_fixture_file('/pdf/no_metadata.pdf') }
   let(:doc_without_language) { open_fixture_file('/pdf/arabic.pdf') }
   let(:doc_with_lang_subcode) { open_fixture_file('/pdf/lang_subcode.pdf') }

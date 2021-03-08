@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe SiteBreakdownForModuleQuery do
-  let(:query) { SiteBreakdownForModuleQuery.new('I14Y') }
+  let(:query) { described_class.new('I14Y') }
   let(:expected_body) do
     {
       "query": {

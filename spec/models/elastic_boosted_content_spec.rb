@@ -13,10 +13,10 @@ describe ElasticBoostedContent do
       language: affiliate.indexing_locale
     }
   end
-  let(:search) { ElasticBoostedContent.search_for(search_params) }
+  let(:search) { described_class.search_for(search_params) }
 
   before do
-    ElasticBoostedContent.recreate_index
+    described_class.recreate_index
     affiliate.boosted_contents.delete_all
     affiliate.locale = 'en'
   end
@@ -35,11 +35,11 @@ describe ElasticBoostedContent do
                                              url: 'http://www.nhc.noaa.gov/aboutnames1.shtml',
                                              status: 'active',
                                              publish_start_on: Date.current)
-          ElasticBoostedContent.commit
+          described_class.commit
         end
 
         it 'should return results in an easy to access structure' do
-          search = ElasticBoostedContent.search_for(q: 'Tropical', affiliate_id: affiliate.id, size: 1, offset: 1, language: affiliate.indexing_locale)
+          search = described_class.search_for(q: 'Tropical', affiliate_id: affiliate.id, size: 1, offset: 1, language: affiliate.indexing_locale)
           expect(search.total).to eq(2)
           expect(search.results.size).to eq(1)
           expect(search.results.first).to be_instance_of(BoostedContent)
@@ -48,7 +48,7 @@ describe ElasticBoostedContent do
 
         context 'when site_limits option is present' do
           it 'returns results with matching URL prefix' do
-            search = ElasticBoostedContent.search_for(q: 'Tropical',
+            search = described_class.search_for(q: 'Tropical',
                                                       affiliate_id: affiliate.id,
                                                       size: 1,
                                                       offset: 0,
@@ -62,11 +62,11 @@ describe ElasticBoostedContent do
         context 'when those results get deleted' do
           before do
             affiliate.boosted_contents.destroy_all
-            ElasticBoostedContent.commit
+            described_class.commit
           end
 
           it 'should return zero results' do
-            search = ElasticBoostedContent.search_for(q: 'hurricane', affiliate_id: affiliate.id, size: 1, offset: 1, language: affiliate.indexing_locale)
+            search = described_class.search_for(q: 'hurricane', affiliate_id: affiliate.id, size: 1, offset: 1, language: affiliate.indexing_locale)
             expect(search.total).to be_zero
             expect(search.results.size).to be_zero
           end
@@ -83,12 +83,12 @@ describe ElasticBoostedContent do
                                          description: 'Worldwide Tropical Cyclone Names',
                                          url: 'http://www.nhc.noaa.gov/aboutnames.shtml',
                                          publish_start_on: Date.current)
-      ElasticBoostedContent.commit
+      described_class.commit
     end
 
     context 'when no highlight param is sent in' do
       let(:search) do
-        ElasticBoostedContent.search_for(search_params.except(:highlighting))
+        described_class.search_for(search_params.except(:highlighting))
       end
 
       it 'highlights appropriate fields with <strong> by default' do
@@ -107,7 +107,7 @@ describe ElasticBoostedContent do
                                            description: 'html entities',
                                            url: 'http://www.nhc.noaa.gov/peas.shtml',
                                            publish_start_on: Date.current)
-        ElasticBoostedContent.commit
+        described_class.commit
       end
 
       it 'escapes the entity but shows the highlight' do
@@ -118,7 +118,7 @@ describe ElasticBoostedContent do
 
     context 'when highlight is turned off' do
       let(:search) do
-        ElasticBoostedContent.search_for(search_params.merge(highlighting: false))
+        described_class.search_for(search_params.merge(highlighting: false))
       end
 
       it 'should not highlight matches' do
@@ -136,11 +136,11 @@ describe ElasticBoostedContent do
                                            description: 'Worldwide Tropical Cyclone Names',
                                            url: 'http://www.nhc.noaa.gov/long.shtml',
                                            publish_start_on: Date.current)
-        ElasticBoostedContent.commit
+        described_class.commit
       end
 
       it 'should show everything in a single fragment' do
-        search = ElasticBoostedContent.search_for(q: 'president credit cards', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
+        search = described_class.search_for(q: 'president credit cards', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
         first = search.results.first
         expect(first.title).to eq('<strong>President</strong> Obama overcame furious lobbying by big banks to pass Dodd-Frank Wall Street Reform, to prevent the excessive risk-taking that led to a financial crisis while providing protections to American families for their mortgages and <strong>credit</strong> <strong>cards</strong>.')
       end
@@ -160,11 +160,11 @@ describe ElasticBoostedContent do
                                            description: 'Retired Worldwide Tropical Cyclone Names',
                                            url: 'http://www.nhc.noaa.gov/inactive.shtml',
                                            publish_start_on: Date.current)
-        ElasticBoostedContent.commit
+        described_class.commit
       end
 
       it 'should return only active boosted contents' do
-        search = ElasticBoostedContent.search_for(q: 'Tropical', affiliate_id: affiliate.id, size: 2, language: affiliate.indexing_locale)
+        search = described_class.search_for(q: 'Tropical', affiliate_id: affiliate.id, size: 2, language: affiliate.indexing_locale)
         expect(search.total).to eq(1)
         expect(search.results.first.is_active?).to be true
       end
@@ -183,11 +183,11 @@ describe ElasticBoostedContent do
         affiliate.boosted_contents.create!(values)
         other_affiliate.boosted_contents.create!(values)
 
-        ElasticBoostedContent.commit
+        described_class.commit
       end
 
       it 'should return only matches for the given affiliate' do
-        search = ElasticBoostedContent.search_for(q: 'Tropical', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
+        search = described_class.search_for(q: 'Tropical', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
         expect(search.total).to eq(1)
         expect(search.results.first.affiliate.name).to eq(affiliate.name)
       end
@@ -205,11 +205,11 @@ describe ElasticBoostedContent do
                                            description: 'Tomorrow Worldwide Tropical Cyclone Names',
                                            url: 'http://www.nhc.noaa.gov/tomorrow.shtml',
                                            publish_start_on: Date.tomorrow)
-        ElasticBoostedContent.commit
+        described_class.commit
       end
 
       it 'should omit those results' do
-        search = ElasticBoostedContent.search_for(q: 'Tropical', affiliate_id: affiliate.id, size: 2, language: affiliate.indexing_locale)
+        search = described_class.search_for(q: 'Tropical', affiliate_id: affiliate.id, size: 2, language: affiliate.indexing_locale)
         expect(search.total).to eq(1)
         expect(search.results.first.title).to match(/^Current/)
       end
@@ -228,11 +228,11 @@ describe ElasticBoostedContent do
                                            url: 'http://www.nhc.noaa.gov/tomorrow.shtml',
                                            publish_start_on: 1.week.ago.to_date,
                                            publish_end_on: Date.current)
-        ElasticBoostedContent.commit
+        described_class.commit
       end
 
       it 'should omit those results' do
-        search = ElasticBoostedContent.search_for(q: 'Tropical', affiliate_id: affiliate.id, size: 2, language: affiliate.indexing_locale)
+        search = described_class.search_for(q: 'Tropical', affiliate_id: affiliate.id, size: 2, language: affiliate.indexing_locale)
         expect(search.total).to eq(1)
         expect(search.results.first.title).to match(/^Current/)
       end
@@ -256,11 +256,11 @@ describe ElasticBoostedContent do
       boosted_content.boosted_content_keywords.build(value: 'Corazón')
       boosted_content.boosted_content_keywords.build(value: 'fair pay act')
       boosted_content.save!
-      ElasticBoostedContent.commit
+      described_class.commit
     end
 
     context 'when I search on terms that are only present in the title or description' do
-      let(:search) { ElasticBoostedContent.search_for(q: 'yosemite publication', affiliate_id: affiliate.id, language: affiliate.indexing_locale) }
+      let(:search) { described_class.search_for(q: 'yosemite publication', affiliate_id: affiliate.id, language: affiliate.indexing_locale) }
 
       it 'should return the matches from the title or description' do
         expect(search.total).to eq(1)
@@ -297,55 +297,55 @@ describe ElasticBoostedContent do
                                                            publish_start_on: Date.current)
         apostrophe_3.boosted_content_keywords.build(value: "Hawai'i")
         apostrophe_3.save!
-        ElasticBoostedContent.commit
+        described_class.commit
       end
 
       it 'should ignore them' do
-        expect(ElasticBoostedContent.search_for(q: 'oreilly', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
-        expect(ElasticBoostedContent.search_for(q: 'hawaii', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(3)
-        expect(ElasticBoostedContent.search_for(q: 'hawai`i', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(3)
-        expect(ElasticBoostedContent.search_for(q: "hawai'i orthography", affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
-        expect(ElasticBoostedContent.search_for(q: 'lorens', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
+        expect(described_class.search_for(q: 'oreilly', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
+        expect(described_class.search_for(q: 'hawaii', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(3)
+        expect(described_class.search_for(q: 'hawai`i', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(3)
+        expect(described_class.search_for(q: "hawai'i orthography", affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
+        expect(described_class.search_for(q: 'lorens', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
       end
     end
 
     describe 'keywords' do
       it 'should be case insensitive' do
-        expect(ElasticBoostedContent.search_for(q: 'cORAzon', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
+        expect(described_class.search_for(q: 'cORAzon', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
       end
 
       it 'should perform ASCII folding' do
-        expect(ElasticBoostedContent.search_for(q: 'coràzon', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
+        expect(described_class.search_for(q: 'coràzon', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
       end
 
       it 'should only match full keyword phrase' do
-        expect(ElasticBoostedContent.search_for(q: 'fair pay act', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
-        expect(ElasticBoostedContent.search_for(q: 'fair pay', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to be_zero
+        expect(described_class.search_for(q: 'fair pay act', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
+        expect(described_class.search_for(q: 'fair pay', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to be_zero
       end
     end
 
     describe 'title and description' do
       it 'is case insentitive' do
-        expect(ElasticBoostedContent.search_for(search_params.merge(q: 'YOSEMITE')).total).
+        expect(described_class.search_for(search_params.merge(q: 'YOSEMITE')).total).
           to eq(1)
       end
 
       it 'should perform ASCII folding' do
-        expect(ElasticBoostedContent.search_for(q: 'øbåmà', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
-        expect(ElasticBoostedContent.search_for(q: 'bîdéÑ', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
+        expect(described_class.search_for(q: 'øbåmà', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
+        expect(described_class.search_for(q: 'bîdéÑ', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
       end
 
       context 'when query contains problem characters' do
         ['"   ', '   "       ', '+++', '+-', '-+'].each do |query|
           specify do
-            expect(ElasticBoostedContent.search_for(search_params.merge(q: query)).total).
+            expect(described_class.search_for(search_params.merge(q: query)).total).
               to be_zero
           end
         end
 
         %w(+++yosemite --yosemite +-yosemite).each do |query|
           specify do
-            expect(ElasticBoostedContent.search_for(search_params.merge(q: query)).total).
+            expect(described_class.search_for(search_params.merge(q: query)).total).
               to eq(1)
           end
         end
@@ -358,13 +358,13 @@ describe ElasticBoostedContent do
                                              description: 'Organic feet symbolize with oceanic views',
                                              url: 'http://www.nhc.noaa.gov/aboutnames2.shtml',
                                              publish_start_on: Date.current)
-          ElasticBoostedContent.commit
+          described_class.commit
         end
 
         it 'should do standard English stemming with basic stopwords' do
           appropriate_stemming = ['The computer with an internal and affiliates', 'Organics symbolizes a the view']
           appropriate_stemming.each do |query|
-            expect(ElasticBoostedContent.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
+            expect(described_class.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
           end
         end
       end
@@ -377,17 +377,17 @@ describe ElasticBoostedContent do
                                              description: 'Beneficios y ayuda financiera verificación Lotería de visas 2015',
                                              url: 'http://www.nhc.noaa.gov/aboutnames2.shtml',
                                              publish_start_on: Date.current)
-          ElasticBoostedContent.commit
+          described_class.commit
         end
 
         it 'should do minimal Spanish stemming with basic stopwords' do
           appropriate_stemming = ['ley con reyes', 'financieros']
           appropriate_stemming.each do |query|
-            expect(ElasticBoostedContent.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
+            expect(described_class.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
           end
           overstemmed_queries = %w{verificar finanzas}
           overstemmed_queries.each do |query|
-            expect(ElasticBoostedContent.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to be_zero
+            expect(described_class.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to be_zero
           end
         end
       end
@@ -400,13 +400,13 @@ describe ElasticBoostedContent do
                                              description: 'Angebote der Woche. Die Angebote der Woche sind gültig vom 30.03.2015 bis zum 04.04.2015.',
                                              url: 'http://el.wikipedia.org/wiki/Είναι',
                                              publish_start_on: Date.current)
-          ElasticBoostedContent.commit
+          described_class.commit
         end
 
         it 'should do downcasing and ASCII folding only' do
           appropriate_stemming = ['superknuller', 'Gultig']
           appropriate_stemming.each do |query|
-            expect(ElasticBoostedContent.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
+            expect(described_class.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
           end
         end
       end

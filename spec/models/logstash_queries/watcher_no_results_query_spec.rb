@@ -10,7 +10,7 @@ describe WatcherNoResultsQuery do
       size: 10
     }
   end
-  let(:query) { WatcherNoResultsQuery.new(query_args) }
+  let(:query) { described_class.new(query_args) }
   let(:expected_body) do
     {
       "query": {

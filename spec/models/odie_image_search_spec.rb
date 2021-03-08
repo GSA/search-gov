@@ -21,7 +21,7 @@ describe OdieImageSearch do
 
   describe '.search' do
     it 'should retrieve photos from Oasis API endpoint' do
-      image_search = OdieImageSearch.new(query: 'obama', affiliate: affiliate)
+      image_search = described_class.new(query: 'obama', affiliate: affiliate)
       image_search.run
       expect(image_search.results.first['title']).to eq('President Obama walks the Obama daughters to school')
       expect(image_search.results.last['title']).to eq('POTUS gets in car.')
@@ -31,7 +31,7 @@ describe OdieImageSearch do
 
   describe '.cache_key' do
     it 'should output a key based on the query, affiliate id, and page parameters' do
-      expect(OdieImageSearch.new(query: 'element', affiliate: affiliate, page: 4).cache_key).to eq("oasis_image:element:#{affiliate.id}:4:10")
+      expect(described_class.new(query: 'element', affiliate: affiliate, page: 4).cache_key).to eq("oasis_image:element:#{affiliate.id}:4:10")
     end
   end
 
@@ -45,7 +45,7 @@ describe OdieImageSearch do
       it 'should create an OasisSearch with the MRSS feed names' do
         expect(OasisSearch).to receive(:new).with(query: 'element', per_page: 10, offset: 0, mrss_names: ['13'],
                                               flickr_users: [], flickr_groups: [], instagram_profiles: [])
-        OdieImageSearch.new(query: 'element', affiliate: affiliate)
+        described_class.new(query: 'element', affiliate: affiliate)
       end
     end
 

@@ -6,7 +6,7 @@ describe FuzzyMatcher do
     let(:str2) { 'diacritics' }
 
     it 'should return true for close matches' do
-      expect(FuzzyMatcher.new(str1,str2).matches?).to be true
+      expect(described_class.new(str1,str2).matches?).to be true
     end
   end
 end

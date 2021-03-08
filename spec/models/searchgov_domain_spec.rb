@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 describe SearchgovDomain do
-  subject(:searchgov_domain) { SearchgovDomain.new(domain: domain, scheme: 'http') }
+  subject(:searchgov_domain) { described_class.new(domain: domain, scheme: 'http') }
 
   let(:domain) { 'searchgov.gov' }
 
@@ -70,7 +70,7 @@ describe SearchgovDomain do
 
       it 'is valid' do
         valid_domains.each do |domain|
-          expect(SearchgovDomain.new(domain: domain)).to be_valid
+          expect(described_class.new(domain: domain)).to be_valid
         end
       end
     end
@@ -80,7 +80,7 @@ describe SearchgovDomain do
 
       it 'is invalid' do
         invalid_domains.each do |domain|
-          expect(SearchgovDomain.new(domain: domain)).not_to be_valid
+          expect(described_class.new(domain: domain)).not_to be_valid
         end
       end
     end
@@ -92,18 +92,18 @@ describe SearchgovDomain do
   describe 'lifecycle' do
     describe 'on create' do
       it 'downcases the domain' do
-        expect(SearchgovDomain.create!(domain: 'SEARCHGOV.GOV').domain).to eq 'searchgov.gov'
+        expect(described_class.create!(domain: 'SEARCHGOV.GOV').domain).to eq 'searchgov.gov'
       end
 
       it 'removes whitespace' do
-        expect(SearchgovDomain.create!(domain: ' searchgov.gov ').domain). to eq 'searchgov.gov'
+        expect(described_class.create!(domain: ' searchgov.gov ').domain). to eq 'searchgov.gov'
       end
     end
 
     describe 'after create' do
       it 'enqueues a domain preparer job' do
         expect {
-          SearchgovDomain.create!(domain: domain)
+          described_class.create!(domain: domain)
         }.to have_enqueued_job(SearchgovDomainPreparerJob)
       end
     end
@@ -111,31 +111,31 @@ describe SearchgovDomain do
 
   describe 'scopes' do
     describe 'by status' do
-      let!(:ok_domain) { SearchgovDomain.create!(domain: domain, status: '200 ok') }
+      let!(:ok_domain) { described_class.create!(domain: domain, status: '200 ok') }
       let!(:not_ok_domain) do
-        SearchgovDomain.create!(domain: 'notok.gov', status: '403 Forbidden')
+        described_class.create!(domain: 'notok.gov', status: '403 Forbidden')
       end
 
       describe '.ok' do
         it 'includes domains returning 200' do
-          expect(SearchgovDomain.ok).to include ok_domain
+          expect(described_class.ok).to include ok_domain
         end
 
         it 'does not include inaccessible domains' do
-          expect(SearchgovDomain.ok).not_to include not_ok_domain
+          expect(described_class.ok).not_to include not_ok_domain
         end
       end
 
       describe '.not_ok' do
         it 'includes inaccessible domains' do
-          expect(SearchgovDomain.not_ok).to match_array [not_ok_domain]
+          expect(described_class.not_ok).to match_array [not_ok_domain]
         end
       end
     end
   end
 
   describe 'counter columns' do
-    let(:searchgov_domain) { SearchgovDomain.create(domain: domain) }
+    let(:searchgov_domain) { described_class.create(domain: domain) }
 
     describe '#urls_count' do
       it 'tracks the number of associated searchgov url records' do
@@ -216,7 +216,7 @@ describe SearchgovDomain do
     end
 
     context 'when the domain is already being indexed' do
-      let(:searchgov_domain) { SearchgovDomain.new(activity: 'indexing') }
+      let(:searchgov_domain) { described_class.new(activity: 'indexing') }
 
       it 'does not enqueue another indexer job' do
         expect(SearchgovDomainIndexerJob).
@@ -253,7 +253,7 @@ describe SearchgovDomain do
     subject(:available) { searchgov_domain.available? }
 
     context 'when the status is null' do
-      let(:searchgov_domain) { SearchgovDomain.new(domain: domain) }
+      let(:searchgov_domain) { described_class.new(domain: domain) }
 
       it 'checks the status' do
         expect(searchgov_domain).to receive(:check_status)
@@ -262,20 +262,20 @@ describe SearchgovDomain do
     end
 
     context 'when the status is 200' do
-      let(:searchgov_domain) { SearchgovDomain.new(domain: domain, status: '200') }
+      let(:searchgov_domain) { described_class.new(domain: domain, status: '200') }
 
       it { is_expected.to eq true }
     end
 
     context 'when the status indicates a problem' do
-      let(:searchgov_domain) { SearchgovDomain.new(domain: domain, status: '403') }
+      let(:searchgov_domain) { described_class.new(domain: domain, status: '403') }
 
       it { is_expected.to eq false }
     end
   end
 
   describe '#check_status' do
-    let(:searchgov_domain) { SearchgovDomain.create!(domain: domain) }
+    let(:searchgov_domain) { described_class.create!(domain: domain) }
     subject(:check_status) { searchgov_domain.check_status }
 
     context 'when the domain is available' do
@@ -364,7 +364,7 @@ describe SearchgovDomain do
 
   describe '#activity' do
     it 'defaults to "idle"' do
-      expect(SearchgovDomain.new.activity).to eq 'idle'
+      expect(described_class.new.activity).to eq 'idle'
     end
 
     describe '#index' do
@@ -377,7 +377,7 @@ describe SearchgovDomain do
     end
 
     describe '#done_indexing' do
-      let(:searchgov_domain) { SearchgovDomain.new(activity: 'indexing') }
+      let(:searchgov_domain) { described_class.new(activity: 'indexing') }
       subject(:done_indexing) { searchgov_domain.done_indexing }
 
       it 'changes the activity to "idle"' do

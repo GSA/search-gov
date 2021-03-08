@@ -17,7 +17,7 @@ describe FlickrData do
 
       it 'returns a valid instance' do
         url = 'https://www.flickr.com/photos/marine_corps/'.freeze
-        flickr_data = FlickrData.new(site, url)
+        flickr_data = described_class.new(site, url)
         profile = flickr_data.import_profile
         expect(profile).not_to be_new_record
         expect(profile.profile_id).to eq('40927340@N03')
@@ -33,7 +33,7 @@ describe FlickrData do
 
       it 'returns nil' do
         url = 'https://www.flickr.com/photos/dg_search/'.freeze
-        flickr_data = FlickrData.new(site, url)
+        flickr_data = described_class.new(site, url)
         profile = flickr_data.import_profile
         expect(profile).to be_nil
       end
@@ -44,10 +44,10 @@ describe FlickrData do
     before { allow(flickr.urls).to receive(:lookupUser).and_return(flickr_response) }
     it 'returns whether or not a new FlickrProfile got created' do
       url = 'https://www.flickr.com/photos/marine_corps/'.freeze
-      flickr_data = FlickrData.new(site, url)
+      flickr_data = described_class.new(site, url)
       flickr_data.import_profile
       expect(flickr_data.new_profile_created).to be true
-      rerun_flickr_data = FlickrData.new(site, url)
+      rerun_flickr_data = described_class.new(site, url)
       rerun_flickr_data.import_profile
       expect(rerun_flickr_data.new_profile_created).to be false
     end

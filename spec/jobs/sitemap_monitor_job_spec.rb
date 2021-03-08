@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe SitemapMonitorJob do
   let(:searchgov_domain) { instance_double(SearchgovDomain) }
-  subject(:perform) { SitemapMonitorJob.perform_now }
+  subject(:perform) { described_class.perform_now }
 
   it_behaves_like 'a sitemap job'
 

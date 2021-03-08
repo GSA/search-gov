@@ -20,7 +20,7 @@ describe Feature do
     it { is_expected.to have_many(:affiliates) }
     it { is_expected.to have_many(:affiliate_feature_addition).dependent(:destroy) }
     it 'should create a new instance given valid attributes' do
-      Feature.create!(valid_attributes)
+      described_class.create!(valid_attributes)
     end
   end
 end

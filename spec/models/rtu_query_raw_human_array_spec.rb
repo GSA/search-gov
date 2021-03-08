@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe RtuQueryRawHumanArray do
   let(:query_raw_human_array) do
-    RtuQueryRawHumanArray.new('usagov', Date.current, Date.current, 5)
+    described_class.new('usagov', Date.current, Date.current, 5)
   end
 
   describe '.top_queries' do
@@ -35,7 +35,7 @@ describe RtuQueryRawHumanArray do
     end
 
     context 'when start_date or end_date is nil' do
-      let(:query_raw_human_array) { RtuQueryRawHumanArray.new('usagov', nil, nil, 5) }
+      let(:query_raw_human_array) { described_class.new('usagov', nil, nil, 5) }
 
       it 'should return INSUFFICIENT_DATA' do
         expect(query_raw_human_array.top_queries).to eq(RtuQueryRawHumanArray::INSUFFICIENT_DATA)
@@ -43,7 +43,7 @@ describe RtuQueryRawHumanArray do
     end
 
     context 'when there really is insufficient data' do
-      let(:query_raw_human_array) { RtuQueryRawHumanArray.new('usagov', nil, nil, 5) }
+      let(:query_raw_human_array) { described_class.new('usagov', nil, nil, 5) }
 
       before do
         allow(RtuTopQueries).to receive(:new).and_return double(RtuTopQueries, top_n: [])

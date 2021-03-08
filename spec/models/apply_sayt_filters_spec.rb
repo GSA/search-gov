@@ -7,6 +7,6 @@ describe ApplySaytFilters, '#perform' do
 
   it 'should enqueue ApplyFiltersToSaytSuggestion for each SaytSuggestion' do
     SaytSuggestion.all.each { |ss| expect(Resque).to receive(:enqueue_with_priority).with(:high, ApplyFiltersToSaytSuggestion, ss.id) }
-    ApplySaytFilters.perform
+    described_class.perform
   end
 end

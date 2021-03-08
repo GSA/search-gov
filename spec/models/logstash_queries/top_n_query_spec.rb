@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe TopNQuery, '#body' do
   let(:query) do
-    TopNQuery.new(
+    described_class.new(
       'affiliate_name',
       'search',
       { field: 'params.query.raw',

@@ -15,7 +15,7 @@ describe UrlStatusCodeFetcher do
         responses = {}
         urls = [valid_url, invalid_url]
 
-        UrlStatusCodeFetcher.fetch urls do |url, status|
+        described_class.fetch urls do |url, status|
           responses[url] = status.match(/\d+/).to_s
         end
 
@@ -28,7 +28,7 @@ describe UrlStatusCodeFetcher do
       it 'fetches status code' do
         urls = [valid_url, invalid_url]
 
-        responses = UrlStatusCodeFetcher.fetch urls
+        responses = described_class.fetch urls
         expect(responses[valid_url]).to match(/200/)
         expect(responses[invalid_url]).to match(/404/)
       end
@@ -40,7 +40,7 @@ describe UrlStatusCodeFetcher do
         expect(Timeout).to receive(:timeout).with(30).and_raise Timeout::Error
         expect(Rails.logger).to receive(:warn)
 
-        UrlStatusCodeFetcher.fetch urls
+        described_class.fetch urls
       end
     end
   end

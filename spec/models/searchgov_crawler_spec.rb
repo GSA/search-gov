@@ -4,7 +4,7 @@ describe SearchgovCrawler do
   let(:options) do
     { domain: domain, srsly: true }
   end
-  let(:crawler) { SearchgovCrawler.new(options) }
+  let(:crawler) { described_class.new(options) }
   let(:domain) { 'www.agency.gov' }
   let(:base_url) { 'http://www.agency.gov/' }
   let(:link) { 'link1' }
@@ -64,7 +64,7 @@ describe SearchgovCrawler do
         end
 
         context 'when a crawl delay is specified in the arguments' do
-          let(:crawler) { SearchgovCrawler.new(options.merge(delay: 3)) }
+          let(:crawler) { described_class.new(options.merge(delay: 3)) }
 
           it 'sets the specified delay' do
             Medusa.should_receive(:crawl).

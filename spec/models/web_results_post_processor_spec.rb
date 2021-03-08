@@ -4,7 +4,7 @@ describe WebResultsPostProcessor do
   fixtures :affiliates, :rss_feeds, :rss_feed_urls
 
   let(:affiliate) { affiliates(:basic_affiliate) }
-  let(:post_processor) { WebResultsPostProcessor.new('foo', affiliate, results) }
+  let(:post_processor) { described_class.new('foo', affiliate, results) }
 
   describe '#post_processed_results' do
     context 'when results contain excluded URLs' do
@@ -76,7 +76,7 @@ describe WebResultsPostProcessor do
                            rss_feed_url_id: rss_feed_urls(:white_house_blog_url).id)
         end
         ElasticNewsItem.commit
-        post_processor = WebResultsPostProcessor.new('NewsItem', affiliate, results)
+        post_processor = described_class.new('NewsItem', affiliate, results)
         @post_processed_results = post_processor.post_processed_results
       end
 

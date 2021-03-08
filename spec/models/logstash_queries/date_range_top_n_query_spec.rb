@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe DateRangeTopNQuery do
   let(:query) do
-    DateRangeTopNQuery.new('affiliate_name',
+    described_class.new('affiliate_name',
                            'search',
                            Date.parse('2019-11-01'),
                            Date.parse('2019-11-07'),

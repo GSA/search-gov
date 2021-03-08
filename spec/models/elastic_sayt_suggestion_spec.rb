@@ -12,10 +12,10 @@ describe ElasticSaytSuggestion do
       language: affiliate.indexing_locale
     }
   end
-  let(:search) { ElasticSaytSuggestion.search_for(search_params) }
+  let(:search) { described_class.search_for(search_params) }
 
   before do
-    ElasticSaytSuggestion.recreate_index
+    described_class.recreate_index
     affiliate.sayt_suggestions.delete_all
     affiliate.locale = 'en'
   end
@@ -27,7 +27,7 @@ describe ElasticSaytSuggestion do
           affiliate.sayt_suggestions.create!(phrase: 'suggest me first', popularity: 30)
           affiliate.sayt_suggestions.create!(phrase: 'suggest me too', popularity: 29)
           affiliate.sayt_suggestions.create!(phrase: 'suggest me three suggests', popularity: 28)
-          ElasticSaytSuggestion.commit
+          described_class.commit
         end
 
         it 'returns results in an easy to access structure ordered by most popular' do
@@ -41,7 +41,7 @@ describe ElasticSaytSuggestion do
         context 'when those results get deleted' do
           before do
             affiliate.sayt_suggestions.destroy_all
-            ElasticSaytSuggestion.commit
+            described_class.commit
           end
 
           it 'should return zero results' do
@@ -52,7 +52,7 @@ describe ElasticSaytSuggestion do
 
         context 'when an offset is specified' do
           let(:search) do
-            ElasticSaytSuggestion.search_for(search_params.merge(offset: 1))
+            described_class.search_for(search_params.merge(offset: 1))
           end
 
           it 'returns results with the specified offset' do
@@ -67,12 +67,12 @@ describe ElasticSaytSuggestion do
   describe 'highlighting results' do
     before do
       affiliate.sayt_suggestions.create!(phrase: 'hi suggest me', popularity: 30)
-      ElasticSaytSuggestion.commit
+      described_class.commit
     end
 
     context 'when no highlight param is sent in' do
       let(:search) do
-        ElasticSaytSuggestion.search_for(search_params.except(:highlighting))
+        described_class.search_for(search_params.except(:highlighting))
       end
 
       it 'should highlight appropriate fields with default highlighting' do
@@ -83,7 +83,7 @@ describe ElasticSaytSuggestion do
 
     context 'when highlight is turned off' do
       let(:search) do
-        ElasticSaytSuggestion.search_for(search_params.merge(highlighting: false))
+        described_class.search_for(search_params.merge(highlighting: false))
       end
 
       it 'should not highlight matches' do
@@ -96,11 +96,11 @@ describe ElasticSaytSuggestion do
       before do
         long_phrase = 'president obama overcame furious lobbying by big banks to pass dodd-frank'
         affiliate.sayt_suggestions.create!(phrase: long_phrase, popularity: 30)
-        ElasticSaytSuggestion.commit
+        described_class.commit
       end
 
       it 'should show everything in a single fragment' do
-        search = ElasticSaytSuggestion.search_for(q: 'president frank', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
+        search = described_class.search_for(q: 'president frank', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
         first = search.results.first
         expect(first.phrase).to eq('<strong>president</strong> obama overcame furious lobbying by big banks to pass dodd-<strong>frank</strong>')
       end
@@ -112,12 +112,12 @@ describe ElasticSaytSuggestion do
     context 'when query is exact match of phrase' do
       before do
         affiliate.sayt_suggestions.create!(phrase: 'the exact match', popularity: 30)
-        ElasticSaytSuggestion.commit
+        described_class.commit
       end
 
       it 'ignores exact matches regardless of case' do
         ['the exact match', 'THE EXACT MATCH'].each do |query|
-          expect(ElasticSaytSuggestion.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to be_zero
+          expect(described_class.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to be_zero
         end
       end
     end
@@ -131,11 +131,11 @@ describe ElasticSaytSuggestion do
         affiliate.sayt_suggestions.create!(values)
         other_affiliate.sayt_suggestions.create!(values)
 
-        ElasticSaytSuggestion.commit
+        described_class.commit
       end
 
       it 'should return only matches for the given affiliate' do
-        search = ElasticSaytSuggestion.search_for(q: 'Tropical', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
+        search = described_class.search_for(q: 'Tropical', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
         expect(search.total).to eq(1)
         expect(search.results.first.affiliate.name).to eq(affiliate.name)
       end
@@ -147,21 +147,21 @@ describe ElasticSaytSuggestion do
   describe 'recall' do
     before do
       affiliate.sayt_suggestions.create!(phrase: 'obama and biden', popularity: 30)
-      ElasticSaytSuggestion.commit
+      described_class.commit
     end
 
     describe 'phrase' do
       it 'should be case insentitive' do
-        expect(ElasticSaytSuggestion.search_for(q: 'OBAMA', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
+        expect(described_class.search_for(q: 'OBAMA', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
       end
 
       it 'should perform ASCII folding' do
-        expect(ElasticSaytSuggestion.search_for(q: 'øbåmà', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
+        expect(described_class.search_for(q: 'øbåmà', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
       end
 
       context 'when query contains problem characters' do
         ['"   ', '   "       ', '+++', '+-', '-+'].each do |query|
-          specify { expect(ElasticSaytSuggestion.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to be_zero }
+          specify { expect(described_class.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to be_zero }
         end
       end
 
@@ -169,13 +169,13 @@ describe ElasticSaytSuggestion do
         before do
           affiliate.sayt_suggestions.create!(phrase: 'the affiliate interns use powerful engineering computers', popularity: 45)
           affiliate.sayt_suggestions.create!(phrase: 'organic feet symbolize with oceanic views', popularity: 44)
-          ElasticSaytSuggestion.commit
+          described_class.commit
         end
 
         it 'should do standard English stemming with basic stopwords' do
           appropriate_stemming = ['The computer with an internal and affiliates', 'Organics symbolizes a the view']
           appropriate_stemming.each do |query|
-            expect(ElasticSaytSuggestion.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
+            expect(described_class.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
           end
         end
       end
@@ -185,17 +185,17 @@ describe ElasticSaytSuggestion do
           affiliate.locale = 'es'
           affiliate.sayt_suggestions.create!(phrase: 'Leyes y el rey', popularity: 45)
           affiliate.sayt_suggestions.create!(phrase: 'Beneficios y ayuda financiera verificación Lotería de visas 2015', popularity: 44)
-          ElasticSaytSuggestion.commit
+          described_class.commit
         end
 
         it 'should do minimal Spanish stemming with basic stopwords' do
           appropriate_stemming = ['ley con reyes', 'financieros']
           appropriate_stemming.each do |query|
-            expect(ElasticSaytSuggestion.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
+            expect(described_class.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
           end
           overstemmed_queries = %w{verificar finanzas}
           overstemmed_queries.each do |query|
-            expect(ElasticSaytSuggestion.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to be_zero
+            expect(described_class.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to be_zero
           end
         end
 
@@ -206,13 +206,13 @@ describe ElasticSaytSuggestion do
           affiliate.locale = 'de'
           affiliate.sayt_suggestions.create!(phrase: 'Angebote und Superknüller der Woche', popularity: 45)
           affiliate.sayt_suggestions.create!(phrase: 'Angebote der Woche. Die Angebote der Woche sind gültig', popularity: 44)
-          ElasticSaytSuggestion.commit
+          described_class.commit
         end
 
         it 'should do downcasing and ASCII folding only' do
           appropriate_stemming = ['superknuller', 'Gultig']
           appropriate_stemming.each do |query|
-            expect(ElasticSaytSuggestion.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
+            expect(described_class.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
           end
         end
       end

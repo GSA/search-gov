@@ -15,7 +15,7 @@ describe I14yDocument do
       click_count: 1000
     }
   end
-  let(:document) { I14yDocument.new(valid_attributes) }
+  let(:document) { described_class.new(valid_attributes) }
   let(:i14y_connection) { double(Faraday::Connection) }
   before do
     stub_request(:post, %r(api/v1/documents)).
@@ -66,8 +66,8 @@ describe I14yDocument do
 
   describe '.create' do
     it 'returns the document' do
-      expect(I14yDocument.create(valid_attributes))
-        .to be_an_instance_of(I14yDocument)
+      expect(described_class.create(valid_attributes))
+        .to be_an_instance_of(described_class)
     end
   end
 
@@ -76,14 +76,14 @@ describe I14yDocument do
       { document_id: 'update_me', title: 'My New Title', handle: 'searchgov' }
     end
     before do
-      allow_any_instance_of(I14yDocument).to receive(:i14y_connection).and_return(i14y_connection)
+      allow_any_instance_of(described_class).to receive(:i14y_connection).and_return(i14y_connection)
     end
 
     it 'updates the document' do
       expect(i14y_connection).to receive(:put).
         with('/api/v1/documents/update_me', { title: 'My New Title' }).
         and_return(Hashie::Mash.new(status: 200))
-      I14yDocument.update(update_attributes)
+      described_class.update(update_attributes)
     end
 
     context 'when the update fails' do
@@ -94,14 +94,14 @@ describe I14yDocument do
       end
 
       it 'raises an error' do
-        expect{ I14yDocument.update(document_id: 'nonexistent', title: 'fail') }.
+        expect{ described_class.update(document_id: 'nonexistent', title: 'fail') }.
           to raise_error(I14yDocument::I14yDocumentError)
       end
     end
   end
 
   describe '.delete' do
-    subject(:delete) { I14yDocument.delete(handle: 'my_drawer', document_id: 'delete_me') }
+    subject(:delete) { described_class.delete(handle: 'my_drawer', document_id: 'delete_me') }
 
     let(:drawer) { mock_model(I14yDrawer) }
 
@@ -130,20 +130,20 @@ describe I14yDocument do
   end
 
   describe '.promote' do
-    before { allow_any_instance_of(I14yDocument).to receive(:i14y_connection).and_return(i14y_connection) }
+    before { allow_any_instance_of(described_class).to receive(:i14y_connection).and_return(i14y_connection) }
 
     it 'promotes the document' do
       expect(i14y_connection).to receive(:put).
         with('/api/v1/documents/promote_me', { promote: 'true' }).
         and_return(Hashie::Mash.new(status: 200))
-      I14yDocument.promote(handle: 'my_drawer', document_id: 'promote_me')
+      described_class.promote(handle: 'my_drawer', document_id: 'promote_me')
     end
 
     it 'accepts a boolean value for demoting docs' do
       expect(i14y_connection).to receive(:put).
         with('/api/v1/documents/promote_me', { promote: 'false' }).
         and_return(Hashie::Mash.new(status: 200))
-      I14yDocument.promote(handle: 'my_drawer', document_id: 'promote_me', bool: 'false')
+      described_class.promote(handle: 'my_drawer', document_id: 'promote_me', bool: 'false')
     end
   end
 end

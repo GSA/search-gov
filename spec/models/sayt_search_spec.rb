@@ -22,7 +22,7 @@ describe SaytSearch do
   context 'when affiliate_id and query are present' do
     let(:query) { 'foo' }
     let(:search_params) { { affiliate_id: affiliate.id, locale: affiliate.locale, query: query, number_of_results: 10, extras: true } }
-    let(:search) { SaytSearch.new(search_params) }
+    let(:search) { described_class.new(search_params) }
 
     it 'should correct query misspelling' do
       search_params[:query] = 'chold'
@@ -58,7 +58,7 @@ describe SaytSearch do
 
   context 'when affiliate_id is not present' do
     let(:search_params) { { query: 'foo', number_of_results: 10, extras: true } }
-    let(:search) { SaytSearch.new(search_params) }
+    let(:search) { described_class.new(search_params) }
 
     it 'should return an empty array' do
       expect(SaytSuggestion).not_to receive(:fetch_by_affiliate_id)
@@ -69,7 +69,7 @@ describe SaytSearch do
 
   context 'when query is not present' do
     let(:search_params) { { affiliate_id: affiliate.id, number_of_results: 10, extras: true } }
-    let(:search) { SaytSearch.new(search_params) }
+    let(:search) { described_class.new(search_params) }
 
     it 'should return an empty array' do
       expect(SaytSuggestion).not_to receive(:fetch_by_affiliate_id)
@@ -80,7 +80,7 @@ describe SaytSearch do
 
   context 'when extras is false' do
     let(:search_params) { { affiliate_id: affiliate.id, query: 'foo', number_of_results: 10, extras: false } }
-    let(:search) { SaytSearch.new(search_params) }
+    let(:search) { described_class.new(search_params) }
 
     it 'should return an empty array' do
       expect(SaytSuggestion).to receive(:fetch_by_affiliate_id).and_return(sayt_suggestions)

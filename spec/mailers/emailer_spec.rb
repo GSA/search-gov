@@ -14,7 +14,7 @@ context do
     end
 
     subject(:account_deactivation_warning) do
-      Emailer.account_deactivation_warning(user, 76.days.ago.to_date)
+      described_class.account_deactivation_warning(user, 76.days.ago.to_date)
     end
 
     it { is_expected.to deliver_to(user.email) }
@@ -29,7 +29,7 @@ context do
       'our system had to deactivate access to your search.gov account'
     end
 
-    subject(:deactivate_email) { Emailer.account_deactivated(user) }
+    subject(:deactivate_email) { described_class.account_deactivated(user) }
 
     it { is_expected.to deliver_to(user.email) }
     it { is_expected.to have_body_text message }
@@ -40,7 +40,7 @@ context do
   describe '#user_approval_removed' do
     let(:user) { users(:another_affiliate_manager) }
 
-    subject(:email) { Emailer.user_approval_removed(user) }
+    subject(:email) { described_class.user_approval_removed(user) }
 
     it { is_expected.to deliver_to('usagov@search.gov') }
     it { is_expected.to have_body_text 'The following user is no longer associated with any sites' }
@@ -59,7 +59,7 @@ context do
       AffiliateFeatureAddition.create!(affiliate: affiliates(:power_affiliate), feature: features(:disco), created_at: 2.days.ago)
     end
 
-    subject(:email) { Emailer.new_feature_adoption_to_admin.deliver_now }
+    subject(:email) { described_class.new_feature_adoption_to_admin.deliver_now }
 
     it { is_expected.to deliver_to('usagov@search.gov') }
     it { is_expected.to have_subject(/Features adopted yesterday/) }
@@ -79,7 +79,7 @@ context do
                                       '1' => { prefix: 'http://www.whitehouse.gov/blog/is/deep' } })
     end
 
-    subject(:email) { Emailer.deep_collection_notification(users(:affiliate_manager), document_collection).deliver_now }
+    subject(:email) { described_class.deep_collection_notification(users(:affiliate_manager), document_collection).deliver_now }
 
     it { is_expected.to deliver_to('usagov@search.gov') }
     it { is_expected.to have_subject(/Deep collection created/) }
@@ -92,7 +92,7 @@ context do
   end
 
   describe '#filtered_popular_terms_report' do
-    subject(:email) { Emailer.filtered_popular_terms_report(%w{foo bar blat}).deliver_now }
+    subject(:email) { described_class.filtered_popular_terms_report(%w{foo bar blat}).deliver_now }
 
     it { is_expected.to deliver_to('usagov@search.gov') }
     it { is_expected.to have_subject(/Filtered Popular Terms for Last Week/) }
@@ -116,7 +116,7 @@ context do
                requires_manual_approval?: true)
       end
 
-      subject { Emailer.new_user_to_admin(user) }
+      subject { described_class.new_user_to_admin(user) }
 
       it { is_expected.to deliver_to('usagov@search.gov') }
       it { is_expected.to have_subject(/New user sign up/) }
@@ -134,7 +134,7 @@ context do
                requires_manual_approval?: false)
       end
 
-      subject { Emailer.new_user_to_admin(user) }
+      subject { described_class.new_user_to_admin(user) }
 
       it { is_expected.to deliver_to('usagov@search.gov') }
       it { is_expected.to have_subject(/New user sign up/) }
@@ -152,7 +152,7 @@ context do
         user.inviter = users(:affiliate_manager)
       end
 
-      subject { Emailer.new_user_to_admin(user) }
+      subject { described_class.new_user_to_admin(user) }
 
       it { is_expected.to deliver_to('usagov@search.gov') }
       it { is_expected.to have_body_text /Name: Invited Affiliate Manager Smith\nEmail: affiliate_added_by_another_affiliate@fixtures.org\nOrganization name: Agency\n\n\n    Affiliate Manager Smith added this person to 'Noaa Site'. They will be approved after verifying their email./ }
@@ -169,7 +169,7 @@ context do
                requires_manual_approval?: false)
       end
 
-      subject { Emailer.new_user_to_admin(user) }
+      subject { described_class.new_user_to_admin(user) }
 
       it { is_expected.to deliver_to('usagov@search.gov') }
       it { is_expected.not_to have_body_text /This user was added to affiliate/ }
@@ -190,7 +190,7 @@ context do
                                     last_name: 'Doe') }
     let(:affiliate) { affiliates(:basic_affiliate) }
 
-    subject { Emailer.welcome_to_new_user_added_by_affiliate(affiliate, user, current_user) }
+    subject { described_class.welcome_to_new_user_added_by_affiliate(affiliate, user, current_user) }
 
     it { should deliver_to('invitee@agency.com') }
     it { should have_subject(/\[Search.gov\] Welcome to Search.gov/) }
@@ -210,7 +210,7 @@ context do
       allow(dashboard).to receive(:low_ctr_queries).and_return [['query1', 6], ['query2', 6], ['query3', 7]]
     end
 
-    subject(:email) { Emailer.daily_snapshot(membership) }
+    subject(:email) { described_class.daily_snapshot(membership) }
 
     it { is_expected.to deliver_to(membership.user.email) }
     it { is_expected.to have_subject(/Today's Snapshot for #{membership.affiliate.name} on #{Date.yesterday}/) }
@@ -265,7 +265,7 @@ context do
       allow(user_monthly_report).to receive(:total_stats).and_return total
     end
 
-    subject(:email) { Emailer.affiliate_monthly_report(user, report_date) }
+    subject(:email) { described_class.affiliate_monthly_report(user, report_date) }
 
     it { is_expected.to deliver_to(user.email) }
     it { is_expected.to have_subject(/April 2012/) }
@@ -300,7 +300,7 @@ context do
       allow(RtuQueryRawHumanArray).to receive(:new).with('nps.gov', Date.parse('2012-01-01'), Date.parse('2012-12-31'), 100).and_return double(RtuQueryRawHumanArray, top_queries: nps_top_queries)
     end
 
-    subject(:email) { Emailer.affiliate_yearly_report(user, report_year) }
+    subject(:email) { described_class.affiliate_yearly_report(user, report_year) }
 
     it { is_expected.to deliver_to(user.email) }
     it { is_expected.to have_subject(/2012 Year in Review/) }
@@ -320,7 +320,7 @@ context do
     let(:current_user) { mock_model(User, email: 'admin@agency.gov') }
     let(:tracking_code) { 'var foo = "bar"'.freeze }
 
-    subject(:email) { Emailer.update_external_tracking_code(affiliate, current_user, tracking_code) }
+    subject(:email) { described_class.update_external_tracking_code(affiliate, current_user, tracking_code) }
 
     it { is_expected.to deliver_from(Emailer::NOTIFICATION_SENDER_EMAIL_ADDRESS) }
     it { is_expected.to deliver_to(Rails.application.secrets.organization[:support_email_address]) }
@@ -332,7 +332,7 @@ context do
     let(:user) { mock_model(User, email: 'admin@agency.gov') }
     let(:sites) { [affiliates(:basic_affiliate)] }
 
-    subject(:email) { Emailer.user_sites(user, sites) }
+    subject(:email) { described_class.user_sites(user, sites) }
 
     it { is_expected.to deliver_to(user.email) }
     it { is_expected.to reply_to(Emailer::REPLY_TO_EMAIL_ADDRESS) }
@@ -352,7 +352,7 @@ context do
 
     before { EmailTemplate.destroy_all }
 
-    subject { Emailer.affiliate_monthly_report(user, report_date) }
+    subject { described_class.affiliate_monthly_report(user, report_date) }
 
     it { is_expected.to deliver_to(Emailer::ADMIN_EMAIL_ADDRESS) }
     it { is_expected.to have_subject('[Search.gov] Missing Email template') }

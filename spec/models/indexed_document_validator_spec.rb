@@ -32,7 +32,7 @@ describe IndexedDocumentValidator, '#perform(indexed_document_id)' do
 
       it 'should destroy the IndexedDocument' do
         expect(@idoc).to receive(:destroy)
-        IndexedDocumentValidator.perform(@idoc.id)
+        described_class.perform(@idoc.id)
       end
 
     end
@@ -44,7 +44,7 @@ describe IndexedDocumentValidator, '#perform(indexed_document_id)' do
 
       it 'should not delete the IndexedDocument' do
         expect(@idoc).not_to receive(:delete)
-        IndexedDocumentValidator.perform(@idoc.id)
+        described_class.perform(@idoc.id)
       end
     end
   end

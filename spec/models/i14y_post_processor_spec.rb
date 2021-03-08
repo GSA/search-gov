@@ -11,7 +11,7 @@ describe I14yPostProcessor do
     let(:excluded_urls) { [] }
 
     before do
-      I14yPostProcessor.new(true, results, excluded_urls).post_process_results
+      described_class.new(true, results, excluded_urls).post_process_results
     end
 
     context 'when a result has no description' do

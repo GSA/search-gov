@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe DateRangeTopNExistsQuery do
   let(:query) do
-    DateRangeTopNExistsQuery.new('affiliate_name',
+    described_class.new('affiliate_name',
                                  'search',
                                  Date.new(2019, 11, 1),
                                  Date.new(2019, 11, 7),

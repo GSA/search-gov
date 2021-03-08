@@ -11,33 +11,33 @@ describe WebSearch do
     end
 
     it 'should have a settable query' do
-      search = WebSearch.new(@valid_options)
+      search = described_class.new(@valid_options)
       expect(search.query).to eq('government')
     end
 
     it 'should have a settable affiliate' do
-      search = WebSearch.new(@valid_options)
+      search = described_class.new(@valid_options)
       expect(search.affiliate).to eq(@affiliate)
     end
 
     it 'should not require a query' do
-      WebSearch.new({affiliate: @affiliate})
+      described_class.new({affiliate: @affiliate})
     end
 
     it 'should ignore invalid params' do
-      search = WebSearch.new(@valid_options.merge(page: {foo: 'bar'}))
+      search = described_class.new(@valid_options.merge(page: {foo: 'bar'}))
       expect(search.page).to eq(1)
     end
 
     it 'should ignore params outside the allowed range' do
-      search = WebSearch.new(@valid_options.merge(page: -1))
+      search = described_class.new(@valid_options.merge(page: -1))
       expect(search.page).to eq(Pageable::DEFAULT_PAGE)
     end
 
     it 'should set matching site limits' do
       @affiliate.site_domains.create!(domain: 'foo.com')
       @affiliate.site_domains.create!(domain: 'bar.gov')
-      search = WebSearch.new({query: 'government', affiliate: @affiliate, site_limits: 'foo.com/subdir1 foo.com/subdir2 include3.gov'})
+      search = described_class.new({query: 'government', affiliate: @affiliate, site_limits: 'foo.com/subdir1 foo.com/subdir2 include3.gov'})
       expect(search.matching_site_limits).to eq(%w(foo.com/subdir1 foo.com/subdir2))
     end
 
@@ -50,7 +50,7 @@ describe WebSearch do
 
       it 'should use that for the search' do
         expect(GoogleWebSearch).to receive(:new).with(hash_including(google_cx: '1234567890.abc', google_key: 'some_key'))
-        WebSearch.new(@valid_options)
+        described_class.new(@valid_options)
       end
     end
 
@@ -67,7 +67,7 @@ describe WebSearch do
                               per_page: 10,
                               query: 'government (site:gov OR site:mil)'))
 
-        WebSearch.new @valid_options
+        described_class.new @valid_options
       end
     end
 
@@ -79,7 +79,7 @@ describe WebSearch do
     end
 
     it 'should output a key based on the query, options (including affiliate id), and search engine parameters' do
-      expect(WebSearch.new(@valid_options).cache_key).to eq("government (site:gov OR site:mil):{:query=>\"government\", :page=>5, :affiliate_id=>#{affiliate.id}}:BingV6")
+      expect(described_class.new(@valid_options).cache_key).to eq("government (site:gov OR site:mil):{:query=>\"government\", :page=>5, :affiliate_id=>#{affiliate.id}}:BingV6")
     end
   end
 
@@ -96,7 +96,7 @@ describe WebSearch do
         expect(affiliate.search_engine).to eq('BingV6')
         expect(ActiveSupport::Notifications).to receive(:instrument).
           with('bing_v6_web_search.usasearch', hash_including(query: hash_including(term: 'government')))
-        WebSearch.new(@valid_options).send(:search)
+        described_class.new(@valid_options).send(:search)
       end
     end
 
@@ -113,7 +113,7 @@ describe WebSearch do
         expect(affiliate.search_engine).to eq('BingV7')
         expect(ActiveSupport::Notifications).to receive(:instrument).
           with('bing_v7_web_search.usasearch', hash_including(query: hash_including(term: 'government')))
-        WebSearch.new(@valid_options).send(:search)
+        described_class.new(@valid_options).send(:search)
       end
     end
 
@@ -130,7 +130,7 @@ describe WebSearch do
         expect(@affiliate.search_engine).to eq('Google')
         expect(ActiveSupport::Notifications).to receive(:instrument).
           with('google_web_search.usasearch', hash_including(query: hash_including(term: 'government')))
-        WebSearch.new(@valid_options).send(:search)
+        described_class.new(@valid_options).send(:search)
       end
     end
   end
@@ -138,7 +138,7 @@ describe WebSearch do
   describe '#run' do
     context 'when searching with a blacklisted query term' do
       before do
-        @search = WebSearch.new(query: Search::BLACKLISTED_QUERIES.sample, affiliate: affiliate)
+        @search = described_class.new(query: Search::BLACKLISTED_QUERIES.sample, affiliate: affiliate)
       end
 
       it 'should return false when searching' do
@@ -158,7 +158,7 @@ describe WebSearch do
 
     context 'when searching with really long queries' do
       before do
-        @search = WebSearch.new(query: 'X' * (Search::MAX_QUERYTERM_LENGTH + 1), affiliate: affiliate)
+        @search = described_class.new(query: 'X' * (Search::MAX_QUERYTERM_LENGTH + 1), affiliate: affiliate)
       end
 
       it 'should return false when searching' do
@@ -181,20 +181,20 @@ describe WebSearch do
       let(:affiliate) { affiliates(:basic_affiliate) }
 
       it 'should default to page 1 if no valid page number was specified' do
-        expect(WebSearch.new({query: 'government', affiliate: affiliate}).page).to eq(Pageable::DEFAULT_PAGE)
-        expect(WebSearch.new({query: 'government', affiliate: affiliate, page: ''}).page).to eq(Pageable::DEFAULT_PAGE)
-        expect(WebSearch.new({query: 'government', affiliate: affiliate, page: 'string'}).page).to eq(Pageable::DEFAULT_PAGE)
+        expect(described_class.new({query: 'government', affiliate: affiliate}).page).to eq(Pageable::DEFAULT_PAGE)
+        expect(described_class.new({query: 'government', affiliate: affiliate, page: ''}).page).to eq(Pageable::DEFAULT_PAGE)
+        expect(described_class.new({query: 'government', affiliate: affiliate, page: 'string'}).page).to eq(Pageable::DEFAULT_PAGE)
       end
 
       it 'should set the page number' do
-        search = WebSearch.new({query: 'government', affiliate: affiliate, page: 2})
+        search = described_class.new({query: 'government', affiliate: affiliate, page: 2})
         expect(search.page).to eq(2)
       end
     end
 
     describe 'logging module impressions' do
       before do
-        @search = WebSearch.new({query: 'government', affiliate: affiliates(:basic_affiliate)})
+        @search = described_class.new({query: 'government', affiliate: affiliates(:basic_affiliate)})
         allow(@search).to receive(:search)
         allow(@search).to receive(:handle_response)
         allow(@search).to receive(:populate_additional_results)
@@ -260,7 +260,7 @@ describe WebSearch do
 
     describe 'populating additional results' do
       before do
-        @search = WebSearch.new(query: 'english', affiliate: affiliates(:non_existent_affiliate), geoip_info: 'test')
+        @search = described_class.new(query: 'english', affiliate: affiliates(:non_existent_affiliate), geoip_info: 'test')
       end
 
       it 'should get the info from GovboxSet' do
@@ -275,7 +275,7 @@ describe WebSearch do
       subject(:search) do
         affiliate = affiliates(:usagov_affiliate)
         affiliate.search_engine = 'BingV6'
-        WebSearch.new(query: 'english', affiliate: affiliate)
+        described_class.new(query: 'english', affiliate: affiliate)
       end
 
       it 'assigns BWEB as the module_tag' do
@@ -302,7 +302,7 @@ describe WebSearch do
       end
 
       it 'fills the results with the Odie docs' do
-        search = WebSearch.new(query: 'no_results', affiliate: @non_affiliate)
+        search = described_class.new(query: 'no_results', affiliate: @non_affiliate)
         search.run
         expect(search.total).to eq(15)
         expect(search.startrecord).to eq(1)
@@ -319,7 +319,7 @@ describe WebSearch do
         @non_affiliate = affiliates(:non_existent_affiliate)
         @non_affiliate.boosted_contents.destroy_all
         allow(ElasticIndexedDocument).to receive(:search_for).and_return nil
-        @search = WebSearch.new(query: 'no_results', affiliate: @non_affiliate)
+        @search = described_class.new(query: 'no_results', affiliate: @non_affiliate)
       end
 
       it 'should return a search with a zero total' do
@@ -353,7 +353,7 @@ describe WebSearch do
       end
 
       it 'should return with zero results' do
-        search = WebSearch.new(query: 'no_results', affiliate: @non_affiliate)
+        search = described_class.new(query: 'no_results', affiliate: @non_affiliate)
         search.run
         expect(search.results).to be_blank
       end
@@ -363,7 +363,7 @@ describe WebSearch do
     describe 'ODIE backfill' do
       context 'when we want X Bing/Google results from page Y and there are X of them' do
         before do
-          @search = WebSearch.new(query: 'english', affiliate: affiliate)
+          @search = described_class.new(query: 'english', affiliate: affiliate)
           @search.run
         end
 
@@ -377,7 +377,7 @@ describe WebSearch do
 
       context 'when we want X Bing/Google results from page Y and there are 0 <= n < X of them' do
         before do
-          @search = WebSearch.new(query: 'odie backfill page 2', affiliate: affiliate, page: 2)
+          @search = described_class.new(query: 'odie backfill page 2', affiliate: affiliate, page: 2)
           ElasticIndexedDocument.recreate_index
 
           bing_api_url = "#{BingV6WebSearch::API_HOST}#{BingV6WebSearch::API_ENDPOINT}"
@@ -421,7 +421,7 @@ describe WebSearch do
       let(:affiliate) do
         Affiliate.create!(name: 'nasa', display_name: 'Nasa', search_engine: search_engine)
       end
-      let(:search) { WebSearch.new(affiliate: affiliate, query: query) }
+      let(:search) { described_class.new(affiliate: affiliate, query: query) }
 
       before do
         affiliate.site_domains.create!(domain: included_domain )
@@ -552,7 +552,7 @@ describe WebSearch do
 
   describe '#as_json' do
     let(:affiliate) { affiliates(:non_existent_affiliate) }
-    let(:search) { WebSearch.new(query: 'english', affiliate: affiliate) }
+    let(:search) { described_class.new(query: 'english', affiliate: affiliate) }
 
     it 'should generate a JSON representation of total, start and end records, and search results' do
       search.run
@@ -653,7 +653,7 @@ describe WebSearch do
 
   describe '#to_xml' do
     let(:affiliate) { affiliates(:non_existent_affiliate) }
-    let(:search) { WebSearch.new(query: 'english', affiliate: affiliate) }
+    let(:search) { described_class.new(query: 'english', affiliate: affiliate) }
 
     it 'should generate a XML representation of total, start and end records, and search results' do
       search.run
@@ -679,7 +679,7 @@ describe WebSearch do
   end
 
   describe "helper 'has' methods" do
-    let(:search) { WebSearch.new(query: 'english', affiliate: affiliates(:non_existent_affiliate)) }
+    let(:search) { described_class.new(query: 'english', affiliate: affiliates(:non_existent_affiliate)) }
 
     it 'should raise an error when no helper can be found' do
       expect { search.not_here }.to raise_error(NoMethodError)
@@ -687,7 +687,7 @@ describe WebSearch do
   end
 
   describe 'has_fresh_news_items?' do
-    let(:search) { WebSearch.new(query: 'english', affiliate: affiliate) }
+    let(:search) { described_class.new(query: 'english', affiliate: affiliate) }
 
     context 'when 1 or more news items are less than 6 days old' do
       let(:news_item_results) do

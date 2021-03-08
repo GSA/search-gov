@@ -11,7 +11,7 @@ describe ImageSearch do
       end
 
       it 'should use commercial results instead of Oasis' do
-        image_search = ImageSearch.new(affiliate: affiliate, query: 'some query')
+        image_search = described_class.new(affiliate: affiliate, query: 'some query')
         expect(image_search.uses_cr).to be true
       end
     end
@@ -19,7 +19,7 @@ describe ImageSearch do
 
   describe '#diagnostics' do
     subject(:image_search) do
-      ImageSearch.new(affiliate: affiliate, query: 'corgis', cr: use_commercial_results)
+      described_class.new(affiliate: affiliate, query: 'corgis', cr: use_commercial_results)
     end
     let(:use_commercial_results) { nil }
     let(:affiliate) { affiliates(:basic_affiliate) }
@@ -67,7 +67,7 @@ describe ImageSearch do
 
   describe '#run' do
     context 'when Oasis results are blank AND we are on page 1 AND no commercial results override is set AND Bing image results are enabled' do
-      let(:image_search) { ImageSearch.new(affiliate: affiliate, query: 'lsdkjflskjflskjdf') }
+      let(:image_search) { described_class.new(affiliate: affiliate, query: 'lsdkjflskjflskjdf') }
       let(:search_engine_adapter) { double(SearchEngineAdapter, results: nil) }
 
       before do
@@ -126,7 +126,7 @@ describe ImageSearch do
   end
 
   describe '#spelling_suggestion' do
-    subject(:image_search) { ImageSearch.new(affiliate: affiliate, query: 'lsdkjflskjflskjdf') }
+    subject(:image_search) { described_class.new(affiliate: affiliate, query: 'lsdkjflskjflskjdf') }
     let(:search_engine_adapter) { double(SearchEngineAdapter, default_module_tag: 'module_tag', results: [], spelling_suggestion: 'spel') }
     before do
       allow(SuggestionBlock).to receive(:exists?).and_return(suggestion_block_exists)

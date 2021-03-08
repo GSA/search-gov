@@ -14,7 +14,7 @@ describe IndexedDocumentFetcher, '#perform(indexed_document_id)' do
   context "when it can't locate the IndexedDocument for a given id" do
     it 'should ignore the entry' do
       expect(@indexed_document).not_to receive(:fetch)
-      IndexedDocumentFetcher.perform(-1)
+      described_class.perform(-1)
     end
   end
 
@@ -25,7 +25,7 @@ describe IndexedDocumentFetcher, '#perform(indexed_document_id)' do
 
     it 'should attempt to fetch and index the document' do
       expect(@indexed_document).to receive(:fetch)
-      IndexedDocumentFetcher.perform(@indexed_document.id)
+      described_class.perform(@indexed_document.id)
     end
   end
 end

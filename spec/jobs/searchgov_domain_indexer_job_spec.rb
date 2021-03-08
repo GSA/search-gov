@@ -38,7 +38,7 @@ describe SearchgovDomainIndexerJob do
       after { travel_back }
 
       it 'enqueues the next job after the specified delay' do
-        expect{ perform }.to have_enqueued_job(SearchgovDomainIndexerJob).
+        expect{ perform }.to have_enqueued_job(described_class).
           with(searchgov_domain: searchgov_domain, delay: 10).at(10.seconds.from_now)
       end
     end

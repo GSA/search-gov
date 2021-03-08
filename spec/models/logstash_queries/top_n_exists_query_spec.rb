@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe TopNExistsQuery do
   let(:query) do
-    TopNExistsQuery.new(
+    described_class.new(
       'affiliate_name',
       'search',
       { field: 'type', size: 1000 }

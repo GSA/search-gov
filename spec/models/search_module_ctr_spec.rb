@@ -3,7 +3,7 @@ require 'spec_helper'
 describe SearchModuleCtr do
   fixtures :search_modules
 
-  let(:search_module_ctr) { SearchModuleCtr.new(7) }
+  let(:search_module_ctr) { described_class.new(7) }
 
   describe '#search_module_ctrs' do
     context 'when stats are available for the range' do

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe RtuClickRawHumanArray do
-  let(:click_raw_human_array) { RtuClickRawHumanArray.new('usagov', Date.current, Date.current, 5) }
+  let(:click_raw_human_array) { described_class.new('usagov', Date.current, Date.current, 5) }
 
   describe '.top_clicks' do
     subject(:top_clicks) { click_raw_human_array.top_clicks }
@@ -34,7 +34,7 @@ describe RtuClickRawHumanArray do
     end
 
     context 'when start_date or end_date is nil' do
-      let(:click_raw_human_array) { RtuClickRawHumanArray.new('usagov', nil, nil, 5) }
+      let(:click_raw_human_array) { described_class.new('usagov', nil, nil, 5) }
 
       it 'should return INSUFFICIENT_DATA' do
         expect(click_raw_human_array.top_clicks).to eq(RtuClickRawHumanArray::INSUFFICIENT_DATA)
@@ -42,7 +42,7 @@ describe RtuClickRawHumanArray do
     end
 
     context 'when there really is insufficient data' do
-      let(:click_raw_human_array) { RtuClickRawHumanArray.new('usagov', nil, nil, 5) }
+      let(:click_raw_human_array) { described_class.new('usagov', nil, nil, 5) }
 
       before do
         allow(RtuTopClicks).to receive(:new).and_return double(RtuTopClicks, top_n: [])

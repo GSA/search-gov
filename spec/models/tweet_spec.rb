@@ -25,7 +25,7 @@ describe Tweet do
   it { is_expected.to validate_presence_of :twitter_profile_id }
 
   it 'should create new instance given valid attributes' do
-    tweet = Tweet.create!(@valid_attributes.merge(twitter_profile_id: profile.id))
+    tweet = described_class.create!(@valid_attributes.merge(twitter_profile_id: profile.id))
     expect(tweet.tweet_id).to eq(@valid_attributes[:tweet_id])
     expect(tweet.tweet_text).to eq(@valid_attributes[:tweet_text])
 
@@ -33,11 +33,11 @@ describe Tweet do
   end
 
   it 'should sanitize tweet text' do
-    tweet = Tweet.create!(tweet_text: "A <b>tweet</b> with \n http://t.co/h5vNlSdL and http://t.co/YQQSs9bb",
+    tweet = described_class.create!(tweet_text: "A <b>tweet</b> with \n http://t.co/h5vNlSdL and http://t.co/YQQSs9bb",
                           tweet_id: 123456,
                           published_at: Time.now,
                           twitter_profile_id: 12345)
-    expect(Tweet.find(tweet.id).tweet_text).to eq('A tweet with http://t.co/h5vNlSdL and http://t.co/YQQSs9bb')
+    expect(described_class.find(tweet.id).tweet_text).to eq('A tweet with http://t.co/h5vNlSdL and http://t.co/YQQSs9bb')
   end
 
   describe '#language' do
@@ -54,7 +54,7 @@ describe Tweet do
 
     context 'when tweet cannot be traced back to at least one affiliate' do
       before do
-        @tweet = Tweet.create!(@valid_attributes.merge(twitter_profile_id: profile.id))
+        @tweet = described_class.create!(@valid_attributes.merge(twitter_profile_id: profile.id))
       end
 
       it 'should use English' do
@@ -69,7 +69,7 @@ describe Tweet do
                              screen_name: 'USASearch',
                              name: 'USASearch',
                              profile_image_url: 'http://a0.twimg.com/profile_images/1879738641/USASearch_avatar_normal.png')
-      @tweet = Tweet.create!(tweet_text: 'USA', tweet_id: 123456, published_at: Time.now, twitter_profile_id: 12345)
+      @tweet = described_class.create!(tweet_text: 'USA', tweet_id: 123456, published_at: Time.now, twitter_profile_id: 12345)
     end
 
     it 'should output a properly formatted link to the tweet' do
@@ -79,8 +79,8 @@ describe Tweet do
 
   describe '.expire(days_back)' do
     it 'should destroy tweets that were published more than X days ago' do
-      expect(Tweet).to receive(:destroy_all).with(['published_at < ?', 3.days.ago.beginning_of_day.to_s(:db)])
-      Tweet.expire(3)
+      expect(described_class).to receive(:destroy_all).with(['published_at < ?', 3.days.ago.beginning_of_day.to_s(:db)])
+      described_class.expire(3)
     end
   end
 

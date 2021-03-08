@@ -12,7 +12,7 @@ describe ExcludedUrl do
 
   context 'when creating a new excluded url' do
     before do
-      ExcludedUrl.create!(@valid_attributes)
+      described_class.create!(@valid_attributes)
     end
 
     it { is_expected.to validate_presence_of :url }
@@ -20,13 +20,13 @@ describe ExcludedUrl do
     it { is_expected.to belong_to(:affiliate) }
 
     it 'should decode the URL' do
-      excluded_url = ExcludedUrl.create!(@valid_attributes.merge(url: 'https://www.usa.gov/exclude%20me.html'))
+      excluded_url = described_class.create!(@valid_attributes.merge(url: 'https://www.usa.gov/exclude%20me.html'))
       expect(excluded_url.url).to eq('https://www.usa.gov/exclude me.html')
     end
   end
 
   describe '#dup' do
-    subject(:original_instance) { ExcludedUrl.create!(@valid_attributes) }
+    subject(:original_instance) { described_class.create!(@valid_attributes) }
     include_examples 'site dupable'
   end
 end

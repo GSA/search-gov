@@ -19,7 +19,7 @@ describe NoResultsWatcher do
     JSON.parse(read_fixture_file('/json/watcher/no_results_watcher_body.json')).to_json
   end
 
-  subject(:watcher) { NoResultsWatcher.new(watcher_args) }
+  subject(:watcher) { described_class.new(watcher_args) }
 
   it { is_expected.to validate_numericality_of(:distinct_user_total).only_integer }
 

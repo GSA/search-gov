@@ -15,7 +15,7 @@ describe RtuQueriesRequest do
 
   describe '#save' do
     describe 'computing top query stats' do
-      let(:rtu_queries_request) { RtuQueriesRequest.new('start_date' => '05/28/2014',
+      let(:rtu_queries_request) { described_class.new('start_date' => '05/28/2014',
                                                         'end_date' => '05/28/2014',
                                                         'query' => 'mexico petition marine',
                                                         'site' => site) }
@@ -85,7 +85,7 @@ describe RtuQueriesRequest do
         allow(ES::ELK.client_reader).to receive(:search).and_raise StandardError
       end
       context 'when both end_date and start_date are specified' do
-        let(:rtu_queries_request) { RtuQueriesRequest.new('start_date' => '05/27/2014',
+        let(:rtu_queries_request) { described_class.new('start_date' => '05/27/2014',
                                                           'end_date' => '05/28/2014',
                                                           'query' => 'mexico petition marine',
                                                           'site' => site) }
@@ -100,7 +100,7 @@ describe RtuQueriesRequest do
       end
 
       context 'when end_date is not specified' do
-        let(:rtu_queries_request) { RtuQueriesRequest.new('start_date' => '05/27/2014',
+        let(:rtu_queries_request) { described_class.new('start_date' => '05/27/2014',
                                                           'query' => 'mexico petition marine',
                                                           'site' => site) }
         before do
@@ -113,7 +113,7 @@ describe RtuQueriesRequest do
       end
 
       context 'when neither is specified' do
-        let(:rtu_queries_request) { RtuQueriesRequest.new('query' => 'mexico petition marine', 'site' => site) }
+        let(:rtu_queries_request) { described_class.new('query' => 'mexico petition marine', 'site' => site) }
 
         before do
           allow_any_instance_of(RtuDateRange).to receive(:available_dates_range).

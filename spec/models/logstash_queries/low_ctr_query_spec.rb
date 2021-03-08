@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe LowCtrQuery do
   let(:query) do
-    LowCtrQuery.new('affiliate_name',
+    described_class.new('affiliate_name',
                     Date.new(2019,11,1),
                     Date.new(2019,11,18),
                     field: 'params.query.raw')

@@ -14,7 +14,7 @@ describe ApiBingSearch do
       query: 'food nutrition' }
   end
 
-  let(:search) { ApiBingSearch.new search_params }
+  let(:search) { described_class.new search_params }
 
   before { affiliate.site_domains.create!(domain: 'usa.gov') }
 

@@ -37,7 +37,7 @@ describe I14yDrawer do
 
       it 'should not create the I14yDrawer' do
         Affiliate.first.i14y_drawers.create(handle: 'settoken')
-        expect(I14yDrawer.exists?(handle: 'settoken')).to be false
+        expect(described_class.exists?(handle: 'settoken')).to be false
       end
     end
   end
@@ -56,7 +56,7 @@ describe I14yDrawer do
 
       it 'should not delete the I14yDrawer' do
         i14y_drawers(:one).destroy
-        expect(I14yDrawer.exists?(handle: 'one')).to be true
+        expect(described_class.exists?(handle: 'one')).to be true
       end
     end
   end
@@ -114,7 +114,7 @@ describe I14yDrawer do
   end
 
   describe '#i14y_connection' do
-    let(:drawer) { I14yDrawer.new(handle: 'handle', token: 'foobarbaz') }
+    let(:drawer) { described_class.new(handle: 'handle', token: 'foobarbaz') }
     let(:i14y_connection) { double(Faraday::Connection) }
 
     it 'establishes a connection based on the drawer handle & token' do

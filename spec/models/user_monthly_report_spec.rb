@@ -5,7 +5,7 @@ describe UserMonthlyReport do
 
   let(:user) { users(:affiliate_manager) }
   let(:report_date) { Date.parse('2014-05-01') }
-  let(:user_monthly_report) { UserMonthlyReport.new(user, report_date) }
+  let(:user_monthly_report) { described_class.new(user, report_date) }
   let(:popular_queries) { [['query5', 54, 53], ['query6', 55, 43], ['query4', 53, 42]] }
   let(:popular_clicks) { [['click5', 44, 43], ['click6', 45, 33], ['click4', 43, 32]] }
 

@@ -11,7 +11,7 @@ describe TrendingUrl do
       end
 
       it 'should ignore the entry' do
-        expect(TrendingUrl.all).not_to be_present
+        expect(described_class.all).not_to be_present
       end
     end
   end

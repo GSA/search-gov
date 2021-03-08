@@ -39,7 +39,7 @@ describe ExampleController do
 
   describe '#handle_unverified_request' do
     it 'raises an error' do
-      expect { ExampleController.new.handle_unverified_request }.to raise_error(ActionController::InvalidAuthenticityToken)
+      expect { described_class.new.handle_unverified_request }.to raise_error(ActionController::InvalidAuthenticityToken)
     end
   end
 end

@@ -4,7 +4,7 @@ describe RtuDashboard do
   fixtures :affiliates
 
   let(:site) { affiliates(:basic_affiliate) }
-  let(:dashboard) { RtuDashboard.new(site, Date.current, true) }
+  let(:dashboard) { described_class.new(site, Date.current, true) }
 
   describe '#top_queries' do
     context 'when top queries are available' do

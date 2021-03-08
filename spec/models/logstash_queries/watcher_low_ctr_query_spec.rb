@@ -9,7 +9,7 @@ describe WatcherLowCtrQuery do
       query_blocklist: 'foo, bar, baz biz'
     }
   end
-  let(:query) { WatcherLowCtrQuery.new(query_args) }
+  let(:query) { described_class.new(query_args) }
   let(:reduce_script) do
     <<~SCRIPT.strip
       int clicks = 0;

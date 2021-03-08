@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe WatcherObserver do
   let(:watcher) { mock_model(Watcher, id: 123, body: 'body') }
-  let(:observer) { WatcherObserver.instance }
+  let(:observer) { described_class.instance }
 
   describe 'after_save' do
     it 'sets up the watch in Elasticsearch' do

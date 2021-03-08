@@ -5,11 +5,11 @@ describe DomainScopeOptionsBuilder do
 
   describe '.build' do
     let(:affiliate) { affiliates(:basic_affiliate) }
-    subject(:build) { DomainScopeOptionsBuilder.build(args) }
+    subject(:build) { described_class.build(args) }
 
 
     it 'includes the site domains' do
-      expect(DomainScopeOptionsBuilder.build(site: affiliate)).to eq(
+      expect(described_class.build(site: affiliate)).to eq(
         {included_domains: ['nps.gov'], excluded_domains: [], scope_ids: [], site_limits: nil}
       )
     end
@@ -18,7 +18,7 @@ describe DomainScopeOptionsBuilder do
       before { affiliate.excluded_domains.create!(domain: 'excluded.gov') }
 
       it 'includes the included and excluded domains' do
-        expect(DomainScopeOptionsBuilder.build(site: affiliate)).to eq(
+        expect(described_class.build(site: affiliate)).to eq(
           { included_domains: ['nps.gov'], excluded_domains: ['excluded.gov'], scope_ids: [], site_limits: nil}
         )
       end
@@ -27,7 +27,7 @@ describe DomainScopeOptionsBuilder do
     context 'when args include a document collection' do
       let(:collection) { document_collections(:sample) }
       it 'uses the collection prefixes as the included domains' do
-        expect(DomainScopeOptionsBuilder.build(site: affiliate, collection: collection)).to eq(
+        expect(described_class.build(site: affiliate, collection: collection)).to eq(
           { included_domains: ['www.something.gov/subfolder/'], excluded_domains: [], scope_ids: [], site_limits: nil}
         )
       end

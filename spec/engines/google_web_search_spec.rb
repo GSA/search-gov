@@ -6,16 +6,16 @@ describe GoogleWebSearch do
 
   describe '.new for GoogleWebSearch' do
     it 'should assign start' do
-      expect(GoogleWebSearch.new(query: 'gov', offset: 15).start).to eq(16)
+      expect(described_class.new(query: 'gov', offset: 15).start).to eq(16)
     end
 
     it 'uses rate limited api connection by default' do
-      search = GoogleWebSearch.new(query: 'gov')
+      search = described_class.new(query: 'gov')
       expect(search.api_connection).to be_an_instance_of(RateLimitedSearchApiConnection)
     end
 
     context 'when only required search params are passed in' do
-      let(:minimum_search) { GoogleWebSearch.new(query: 'taxes') }
+      let(:minimum_search) { described_class.new(query: 'taxes') }
       it 'should set appropriate defaults' do
         expect(minimum_search.query).to eq('taxes')
         expect(minimum_search.filter_level).to eq('medium')
@@ -23,7 +23,7 @@ describe GoogleWebSearch do
     end
 
     context 'when all search params are passed in' do
-      let(:fully_specified_search) { GoogleWebSearch.new(query: 'taxes', offset: 11, filter: 2) }
+      let(:fully_specified_search) { described_class.new(query: 'taxes', offset: 11, filter: 2) }
       it 'should set appropriate values from params' do
         expect(fully_specified_search.query).to eq('taxes')
         expect(fully_specified_search.offset).to eq(11)
@@ -34,16 +34,16 @@ describe GoogleWebSearch do
     describe 'adult content filters' do
       context 'when a valid filter parameter is present' do
         it 'should set the filter_level parameter to the Google-specific level' do
-          expect(GoogleWebSearch.new(query: 'taxes', filter: 0).filter_level).to eq('off')
-          expect(GoogleWebSearch.new(query: 'taxes', filter: 1).filter_level).to eq('medium')
-          expect(GoogleWebSearch.new(query: 'taxes', filter: 2).filter_level).to eq('high')
+          expect(described_class.new(query: 'taxes', filter: 0).filter_level).to eq('off')
+          expect(described_class.new(query: 'taxes', filter: 1).filter_level).to eq('medium')
+          expect(described_class.new(query: 'taxes', filter: 2).filter_level).to eq('high')
         end
       end
 
       context 'when the filter parameter is blank/invalid' do
         it 'should set the filter_level parameter to the default value (medium)' do
-          expect(GoogleWebSearch.new(query: 'taxes', filter: '').filter_level).to eq('medium')
-          expect(GoogleWebSearch.new(query: 'taxes', filter: 'whatevs').filter_level).to eq('medium')
+          expect(described_class.new(query: 'taxes', filter: '').filter_level).to eq('medium')
+          expect(described_class.new(query: 'taxes', filter: 'whatevs').filter_level).to eq('medium')
         end
       end
     end
@@ -51,7 +51,7 @@ describe GoogleWebSearch do
 
   context 'when affiliate-specific google CX key are set' do
     let(:web_search) do
-      GoogleWebSearch.new(query: 'google customcx', google_cx: '1234567890.abc', google_key: 'some_key')
+      described_class.new(query: 'google customcx', google_cx: '1234567890.abc', google_key: 'some_key')
     end
 
     before do

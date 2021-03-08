@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe CountQuery do
-  let(:query) { CountQuery.new('affiliate_name', 'click') }
+  let(:query) { described_class.new('affiliate_name', 'click') }
   let(:expected_body) do
     {
       "query": {

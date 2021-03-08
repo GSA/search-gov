@@ -6,17 +6,17 @@ describe YoutubeData do
   describe '.refresh' do
     let(:rss_feed) { mock_model RssFeed }
     let(:profile) { mock_model YoutubeProfile }
-    let(:youtube_data) { double YoutubeData }
+    let(:youtube_data) { double described_class }
 
     before do
       allow(YoutubeProfile).to receive_message_chain(:active, :stale).and_return([profile], [])
-      expect(YoutubeData).to receive(:new).with(profile).and_return youtube_data
+      expect(described_class).to receive(:new).with(profile).and_return youtube_data
     end
 
     it 'should import each profile' do
       expect(youtube_data).to receive :import
 
-      t = Thread.new { YoutubeData.refresh }
+      t = Thread.new { described_class.refresh }
       sleep 0.1
       t.kill
     end
@@ -26,7 +26,7 @@ describe YoutubeData do
     let(:profile) { youtube_profiles(:whitehouse) }
 
     it 'synchronizes playlists and playlists_items' do
-      youtube_data = YoutubeData.new(profile)
+      youtube_data = described_class.new(profile)
 
       expect(youtube_data).to receive(:import_playlists)
       expect(youtube_data).to receive(:import_playlists_items)
@@ -39,7 +39,7 @@ describe YoutubeData do
 
       it 'logs a warning' do
         expect(Rails.logger).to receive(:warn).with(/YouTube API/)
-        YoutubeData.new(profile).import
+        described_class.new(profile).import
       end
     end
   end
@@ -59,7 +59,7 @@ describe YoutubeData do
     end
 
     it 'imports playlists' do
-      youtube_data = YoutubeData.new(profile)
+      youtube_data = described_class.new(profile)
       youtube_data.import_playlists
 
       playlist_ids = profile.youtube_playlists.pluck(:playlist_id)
@@ -182,7 +182,7 @@ describe YoutubeData do
     end
 
     it 'imports playlists items' do
-      youtube_data = YoutubeData.new profile
+      youtube_data = described_class.new profile
       youtube_data.import_playlists_items
 
       news_item_3 = rss_feed_url.news_items.find_by_link('https://www.youtube.com/watch?v=video_3')
@@ -212,7 +212,7 @@ describe YoutubeData do
                                            duration: '2:28',
                                            guid: 'video_2')
 
-      youtube_data = YoutubeData.new profile
+      youtube_data = described_class.new profile
 
       allow(youtube_data).to receive_message_chain(:rss_feed_url, :news_items).
         and_return([news_item_without_duration, news_item_with_duration])

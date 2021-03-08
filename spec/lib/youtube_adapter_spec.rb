@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe YoutubeAdapter do
-  let(:client) { YoutubeAdapter.client }
+  let(:client) { described_class.client }
 
   describe '.get_channel_id_by_username' do
     let(:result) { nil }

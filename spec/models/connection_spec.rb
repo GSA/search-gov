@@ -11,7 +11,7 @@ describe Connection do
   describe '#affiliate_name' do
 
     it 'should return the connected affiliate name' do
-      expect(Connection.find(connection.id).affiliate_name).to eq('usagov')
+      expect(described_class.find(connection.id).affiliate_name).to eq('usagov')
     end
   end
 

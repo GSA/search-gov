@@ -20,11 +20,11 @@ describe MedTopic do
 
 
   it 'should create a new instance given valid attributes' do
-    MedTopic.create!(valid_attributes)
+    described_class.create!(valid_attributes)
   end
 
   it 'should delete MedTopicSyns associated with a MedTopic on deleting that MedTopic' do
-    t = MedTopic.new(valid_attributes)
+    t = described_class.new(valid_attributes)
     t.save!
     t.synonyms.create({ medline_title: 'rushoes rancheros' })
     t.destroy
@@ -33,13 +33,13 @@ describe MedTopic do
 
   describe '.medline_xml_file_name' do
     it 'should know the right medline xml file name to fetch' do
-      expect(MedTopic).to receive(:medline_publish_date).and_return Date.parse('2011-04-16')
-      expect(MedTopic.medline_xml_file_name(nil)).to eq('mplus_topics_2011-04-16.xml')
+      expect(described_class).to receive(:medline_publish_date).and_return Date.parse('2011-04-16')
+      expect(described_class.medline_xml_file_name(nil)).to eq('mplus_topics_2011-04-16.xml')
     end
 
     it 'should create a filename based on the date' do
       date = Date.parse('2011-04-21')
-      expect(MedTopic.medline_xml_file_name(date)).to eq('mplus_topics_2011-04-21.xml')
+      expect(described_class.medline_xml_file_name(date)).to eq('mplus_topics_2011-04-21.xml')
     end
   end
 
@@ -48,7 +48,7 @@ describe MedTopic do
       let(:date) { Date.parse('2012-07-24') }
 
       it 'should return the same day' do
-        expect(MedTopic.medline_publish_date(date)).to eq(date)
+        expect(described_class.medline_publish_date(date)).to eq(date)
       end
     end
 
@@ -56,7 +56,7 @@ describe MedTopic do
       let(:date) { Date.parse('2012-07-22') }
 
       it 'should return the previous Saturday' do
-        expect(MedTopic.medline_publish_date(date)).to eq(Date.parse('2012-07-21'))
+        expect(described_class.medline_publish_date(date)).to eq(Date.parse('2012-07-21'))
       end
     end
 
@@ -64,7 +64,7 @@ describe MedTopic do
       let(:date) { Date.parse('2012-07-23') }
 
       it 'should return the previous Saturday' do
-        expect(MedTopic.medline_publish_date(date)).to eq(Date.parse('2012-07-21'))
+        expect(described_class.medline_publish_date(date)).to eq(Date.parse('2012-07-21'))
       end
     end
   end
@@ -75,15 +75,15 @@ describe MedTopic do
 
     it 'should create tmp/medline directory' do
       expect(FileUtils).to receive(:mkdir_p).with(%r[/tmp/medline$])
-      path = MedTopic.medline_xml_file_path(xml_file_name)
+      path = described_class.medline_xml_file_path(xml_file_name)
       expect(path).to be_end_with(xml_file_path)
     end
   end
 
   describe '.process_medline_xml' do
     let(:xml_file_path) { Rails.root.to_s + '/spec/fixtures/xml/mplus_topics_2012-07-21.xml' }
-    let(:en_med_topic) { MedTopic.where(locale: :en).first }
-    let(:es_med_topic) { MedTopic.where(locale: :es).first }
+    let(:en_med_topic) { described_class.where(locale: :en).first }
+    let(:es_med_topic) { described_class.where(locale: :es).first }
     let(:en_sites) { en_med_topic.med_sites.collect { |s| { title: s.title, url: s.url } } }
     let(:en_clinical_trial_sites) do
       [{ title: 'Abdominal Pain',
@@ -95,11 +95,11 @@ describe MedTopic do
     end
 
     context 'when there is no existing topic' do
-      before { MedTopic.destroy_all }
+      before { described_class.destroy_all }
 
       it 'should create MedTopic' do
-        MedTopic.process_medline_xml(xml_file_path)
-        expect(MedTopic.count).to eq(2)
+        described_class.process_medline_xml(xml_file_path)
+        expect(described_class.count).to eq(2)
 
         expect(en_med_topic.medline_tid).to eq(3061)
         expect(en_med_topic.medline_title).to eq('Abdominal Pain')
@@ -129,8 +129,8 @@ describe MedTopic do
 
     context 'when there is an existing topic with the same medline_tid' do
       before do
-        MedTopic.destroy_all
-        MedTopic.create! do |t|
+        described_class.destroy_all
+        described_class.create! do |t|
           t.medline_tid = 3061
           t.medline_title = 'a title'
           t.medline_url = 'http://www.nlm.nih.gov'
@@ -144,10 +144,10 @@ describe MedTopic do
       end
 
       it 'should update existing MedTopic' do
-        existing_med_topic = MedTopic.first
+        existing_med_topic = described_class.first
 
-        MedTopic.process_medline_xml(xml_file_path)
-        expect(MedTopic.count).to eq(2)
+        described_class.process_medline_xml(xml_file_path)
+        expect(described_class.count).to eq(2)
         expect(en_med_topic.id).to eq(existing_med_topic.id)
         expect(en_med_topic.medline_tid).to eq(3061)
         expect(en_med_topic.medline_title).to eq('Abdominal Pain')
@@ -166,8 +166,8 @@ describe MedTopic do
 
     context 'when there is an existing topic with a different medline_tid' do
       before do
-        MedTopic.destroy_all
-        MedTopic.create! do |t|
+        described_class.destroy_all
+        described_class.create! do |t|
           t.medline_tid = 888
           t.medline_title = 'a title'
           t.medline_url = 'http://www.nlm.nih.gov'
@@ -181,10 +181,10 @@ describe MedTopic do
       end
 
       it 'should delete the existing MedTopic' do
-        existing_med_topic = MedTopic.first
+        existing_med_topic = described_class.first
 
-        MedTopic.process_medline_xml(xml_file_path)
-        expect(MedTopic.count).to eq(2)
+        described_class.process_medline_xml(xml_file_path)
+        expect(described_class.count).to eq(2)
         expect(en_med_topic.id).not_to eq(existing_med_topic.id)
         expect(en_med_topic.medline_tid).to eq(3061)
         expect(en_med_topic.medline_title).to eq('Abdominal Pain')
@@ -203,8 +203,8 @@ describe MedTopic do
 
     context 'when there is an existing synonym with the same medline_title' do
       before do
-        MedTopic.destroy_all
-        MedTopic.create! do |t|
+        described_class.destroy_all
+        described_class.create! do |t|
           t.medline_tid = 3061
           t.medline_title = 'a title'
           t.medline_url = 'http://www.nlm.nih.gov'
@@ -217,7 +217,7 @@ describe MedTopic do
       it 'should keep the synonym' do
         existing_synonym = MedSynonym.first
 
-        MedTopic.process_medline_xml(xml_file_path)
+        described_class.process_medline_xml(xml_file_path)
         expect(en_med_topic.synonyms.count).to eq(1)
         expect(en_med_topic.synonyms.first).to eq(existing_synonym)
         expect(en_med_topic.synonyms.first.medline_title).to eq('Bellyache')
@@ -226,8 +226,8 @@ describe MedTopic do
 
     context 'when there is an existing related_topic the same related_medline_tid' do
        before do
-        MedTopic.destroy_all
-        MedTopic.create! do |t|
+        described_class.destroy_all
+        described_class.create! do |t|
           t.medline_tid = 3061
           t.medline_title = 'a title'
           t.medline_url = 'http://www.nlm.nih.gov'
@@ -242,7 +242,7 @@ describe MedTopic do
       it 'should keep the med related topic' do
         existing_related_topic_id = MedRelatedTopic.first.id
 
-        MedTopic.process_medline_xml(xml_file_path)
+        described_class.process_medline_xml(xml_file_path)
         expect(en_med_topic.med_related_topics.collect(&:id)).to include(existing_related_topic_id)
         expect(en_med_topic.med_related_topics.collect(&:related_medline_tid).sort).to eq([351, 4486])
       end
@@ -274,7 +274,7 @@ describe MedTopic do
       end
 
       it 'should return file path to medline xml' do
-        file_path = MedTopic.download_medline_xml(Date.parse('2012-07-21'))
+        file_path = described_class.download_medline_xml(Date.parse('2012-07-21'))
         expect(file_path).to match(/.+#{xml_file_path}$/)
       end
     end
@@ -288,7 +288,7 @@ describe MedTopic do
       end
 
       it 'should return file path to medline xml' do
-        file_path = MedTopic.download_medline_xml(Date.parse('2012-07-21'))
+        file_path = described_class.download_medline_xml(Date.parse('2012-07-21'))
         expect(file_path).to match(/.+#{xml_file_path}$/)
       end
     end
@@ -296,7 +296,7 @@ describe MedTopic do
 
   describe '.search_for' do
     before do
-      MedTopic.create! do |t|
+      described_class.create! do |t|
         t.medline_tid = 3061
         t.medline_title = 'txf'
         t.medline_url = 'https://www.nlm.nih.gov/medlineplus/abdominalpain.html'
@@ -308,12 +308,12 @@ describe MedTopic do
                                    url: 'https://www.nlm.nih.gov/medlineplus/pelvicpain.html')
       end
 
-      MedTopic.create!(medline_tid: 351,
+      described_class.create!(medline_tid: 351,
                        medline_title: 'Pain',
                        locale: 'en',
                        medline_url: 'https://www.nlm.nih.gov/medlineplus/pelvicpain.html')
 
-      MedTopic.create! do |t|
+      described_class.create! do |t|
         t.medline_tid = 3062
         t.medline_title = 'txf'
         t.medline_url = 'https://www.nlm.nih.gov/medlineplus/spanish/abdominalpain.html'
@@ -327,29 +327,29 @@ describe MedTopic do
                                    url: 'https://www.nlm.nih.gov/medlineplus/spanish/pain.html')
       end
 
-      MedTopic.create!(medline_tid: 2072,
+      described_class.create!(medline_tid: 2072,
                        medline_title: 'Dolor',
                        locale: 'es',
                        medline_url: 'https://www.nlm.nih.gov/medlineplus/spanish/pain.html')
     end
 
     it 'should return nil when there is no match' do
-      expect(MedTopic.search_for('nothing')).to be_nil
+      expect(described_class.search_for('nothing')).to be_nil
     end
 
     it 'should assume en locale' do
-      expect(MedTopic.search_for('txf').medline_tid).to eq(3061)
+      expect(described_class.search_for('txf').medline_tid).to eq(3061)
     end
 
     context 'when searching for one of the synonym medline title' do
       it 'should return matching med topic' do
-        expect(MedTopic.search_for('bellyache').medline_tid).to eq(3061)
+        expect(described_class.search_for('bellyache').medline_tid).to eq(3061)
       end
     end
 
     it 'should find right topic depending on locale' do
       %w(en es).each { |locale|
-        found_topics = MedTopic.search_for('txf', locale)
+        found_topics = described_class.search_for('txf', locale)
         expect(found_topics.locale).to eq(locale)
       }
     end
@@ -358,7 +358,7 @@ describe MedTopic do
   describe '#truncated_summary' do
     subject(:truncated_summary) { med_topic.truncated_summary }
     let(:summary_html) { '<h3>Lorem ipsum dolor sit amet.</h3>' }
-    let(:med_topic) { MedTopic.new(summary_html: summary_html) }
+    let(:med_topic) { described_class.new(summary_html: summary_html) }
 
     it { is_expected.to eq 'Lorem ipsum dolor sit amet.' }
 

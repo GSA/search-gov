@@ -25,14 +25,14 @@ describe SiteCloner do
 
   describe 'target_handle' do
     context 'specified at initialization' do
-      subject(:cloner) { SiteCloner.new(affiliates(:basic_affiliate), 'my_choice') }
+      subject(:cloner) { described_class.new(affiliates(:basic_affiliate), 'my_choice') }
 
       its(:target_handle) { should eq('my_choice') }
     end
 
     context 'not specified at initialization' do
       context 'no prior copy exists' do
-        subject(:cloner) { SiteCloner.new(affiliates(:basic_affiliate)) }
+        subject(:cloner) { described_class.new(affiliates(:basic_affiliate)) }
 
         its(:target_handle) { should eq("#{affiliates(:basic_affiliate).name}1") }
       end
@@ -41,7 +41,7 @@ describe SiteCloner do
         before do
           affiliates(:basic_affiliate).update_attribute(:name, 'washingtonstateofficeofattorneyge')
         end
-        subject(:cloner) { SiteCloner.new(affiliates(:basic_affiliate)) }
+        subject(:cloner) { described_class.new(affiliates(:basic_affiliate)) }
 
         its(:target_handle) { should eq('washingtonstateofficeofattorneyg1') }
       end
@@ -58,7 +58,7 @@ describe SiteCloner do
           )
         end
 
-        subject(:cloner) { SiteCloner.new(affiliates(:basic_affiliate)) }
+        subject(:cloner) { described_class.new(affiliates(:basic_affiliate)) }
 
         its(:target_handle) { should eq("#{affiliates(:basic_affiliate).name}2") }
       end
@@ -66,7 +66,7 @@ describe SiteCloner do
   end
 
   describe 'target_display_name' do
-    subject(:cloner) { SiteCloner.new(affiliates(:basic_affiliate), 'my_choice') }
+    subject(:cloner) { described_class.new(affiliates(:basic_affiliate), 'my_choice') }
 
     its(:target_display_name) { should eq("Copy of #{affiliates(:basic_affiliate).display_name}") }
   end
@@ -90,7 +90,7 @@ describe SiteCloner do
     let(:nav_attr_keys) { %w(is_active position).freeze }
 
     subject(:cloned_site) do
-      site_cloner = SiteCloner.new(origin_site)
+      site_cloner = described_class.new(origin_site)
       cloned_instance = site_cloner.clone
       Affiliate.find cloned_instance.id
     end
@@ -311,7 +311,7 @@ describe SiteCloner do
       end
 
       context 'when something goes wrong' do
-        let(:cloner) { SiteCloner.new(origin_site) }
+        let(:cloner) { described_class.new(origin_site) }
         before do
           allow(cloner).to receive(:clone_association_with_children) { true }
           allow(cloner).to receive(:clone_association_with_children).
@@ -389,7 +389,7 @@ describe SiteCloner do
 
       it 'copies the images' do
         cloned_site = Affiliate.create!(display_name: 'cloned_site_with_images', name: 'cloned-site')
-        cloner_handling_images = SiteCloner.new(origin_site)
+        cloner_handling_images = described_class.new(origin_site)
         expect(cloner_handling_images).to receive(:create_site_shallow_copy).and_return(cloned_site)
         expect(cloned_site).to receive(:page_background_image=).with(mock_image)
         expect(cloned_site).to receive(:header_image=).with(mock_image)
@@ -401,7 +401,7 @@ describe SiteCloner do
   end
 
   describe '#create_site_shallow_copy' do
-    subject(:clone) { SiteCloner.new(affiliates(:basic_affiliate), 'my_choice').create_site_shallow_copy }
+    subject(:clone) { described_class.new(affiliates(:basic_affiliate), 'my_choice').create_site_shallow_copy }
 
     its(:display_name) { should eq('Copy of NPS Site') }
     its(:name) { should eq('my_choice') }

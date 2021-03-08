@@ -6,7 +6,7 @@ describe LegacyImageSearch do
 
   describe '#run' do
     context 'when there are no Bing/Google or Flickr results' do
-      let(:noresults_search) { LegacyImageSearch.new(query: 'shuttle', affiliate: affiliate) }
+      let(:noresults_search) { described_class.new(query: 'shuttle', affiliate: affiliate) }
 
       before do
         allow(noresults_search).to receive(:search)
@@ -36,7 +36,7 @@ describe LegacyImageSearch do
       end
 
       it 'should fill the results with the flickr photos' do
-        search = LegacyImageSearch.new(query: 'unusual image', affiliate: non_affiliate)
+        search = described_class.new(query: 'unusual image', affiliate: non_affiliate)
         search.run
         expect(search.results).not_to be_empty
         expect(search.total).to eq(2)
@@ -62,7 +62,7 @@ describe LegacyImageSearch do
       end
 
       it 'should fill the results with the flickr photos' do
-        search = LegacyImageSearch.new(query: 'ubama', affiliate: non_affiliate)
+        search = described_class.new(query: 'ubama', affiliate: non_affiliate)
         search.run
         expect(search.results).to be_empty
         expect(search.total).to eq(0)
@@ -70,7 +70,7 @@ describe LegacyImageSearch do
     end
 
     context 'when there are Bing/Google results' do
-      let(:search) { LegacyImageSearch.new(query: 'white house', affiliate: affiliate) }
+      let(:search) { described_class.new(query: 'white house', affiliate: affiliate) }
 
       before { search.run }
 

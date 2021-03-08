@@ -3,7 +3,7 @@ require 'spec_helper'
 describe RtuModuleStatsAnalytics do
   fixtures :search_modules
 
-  let(:module_stats_analytics) { RtuModuleStatsAnalytics.new(Date.yesterday..Date.current, 'site name', true) }
+  let(:module_stats_analytics) { described_class.new(Date.yesterday..Date.current, 'site name', true) }
 
   describe '#module_stats' do
     context 'when stats are available for the range' do

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe QueryCtr do
 
-  let(:query_ctr) { QueryCtr.new(7, 'BOOS', 'usagov') }
+  let(:query_ctr) { described_class.new(7, 'BOOS', 'usagov') }
 
   describe '#query_ctrs' do
     context 'when stats are available for the range' do

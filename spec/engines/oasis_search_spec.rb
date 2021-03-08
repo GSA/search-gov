@@ -3,7 +3,7 @@ require 'spec_helper'
 describe OasisSearch do
 
   context 'when results are available' do
-    let(:image_search) { OasisSearch.new(query: 'shuttle') }
+    let(:image_search) { described_class.new(query: 'shuttle') }
     before do
       oasis_api_url = "#{Oasis.host}#{OasisSearch::API_ENDPOINT}?"
       oasis_image_result = Rails.root.join('spec/fixtures/json/oasis/image_search/shuttle.json').read

@@ -6,7 +6,7 @@ describe HtmlDocument do
   let(:valid_attributes) do
     { document: raw_document, url: url }
   end
-  subject(:html_document) { HtmlDocument.new(valid_attributes) }
+  subject(:html_document) { described_class.new(valid_attributes) }
   let(:doc_without_description) { read_fixture_file('/html/page_with_no_links.html') }
   let(:doc_with_lang_subcode) { '<html lang="en-US"></html>' }
   let(:doc_without_language) { '<html>هذه الجملة باللغة العربية.</html>' }

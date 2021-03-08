@@ -4,7 +4,7 @@ describe GoogleFormattedQuery do
 
   context 'when -site: in user query' do
     context 'when excluded domains present' do
-      subject { GoogleFormattedQuery.new('government -site:exclude3.gov', excluded_domains: %w(exclude1.gov exclude2.gov)) }
+      subject { described_class.new('government -site:exclude3.gov', excluded_domains: %w(exclude1.gov exclude2.gov)) }
 
       it 'should override excluded domains in query' do
         expect(subject.query).to eq('government -site:exclude3.gov')
@@ -12,7 +12,7 @@ describe GoogleFormattedQuery do
     end
 
     context 'when no excluded domains specified' do
-      subject { GoogleFormattedQuery.new('government -site:exclude3.gov') }
+      subject { described_class.new('government -site:exclude3.gov') }
 
       it 'should allow -site search in query' do
         expect(subject.query).to eq('government -site:exclude3.gov')
@@ -27,7 +27,7 @@ describe GoogleFormattedQuery do
 
       context "when searcher doesn't specify -site: in query" do
         context 'when excluded domains present' do
-          subject { GoogleFormattedQuery.new('government', included_domains: included_domains, excluded_domains: %w(exclude1.gov exclude2.gov)) }
+          subject { described_class.new('government', included_domains: included_domains, excluded_domains: %w(exclude1.gov exclude2.gov)) }
 
           it 'should send those excluded domains in query' do
             expect(subject.query).to eq('government -site:exclude2.gov AND -site:exclude1.gov site:bar.com OR site:foo.com')
@@ -35,7 +35,7 @@ describe GoogleFormattedQuery do
         end
 
         context 'when excluded domains absent' do
-          subject { GoogleFormattedQuery.new('government', included_domains: included_domains) }
+          subject { described_class.new('government', included_domains: included_domains) }
           it 'should use included domains in query without passing default ScopeID' do
             expect(subject.query).to eq('government site:bar.com OR site:foo.com')
           end
@@ -44,7 +44,7 @@ describe GoogleFormattedQuery do
 
       context "when there are so many included domains that the overall query exceeds the search engine's limit, generating an error" do
         let(:too_many_domains) { 'superlongdomain10001'.upto('superlongdomain10175').collect { |x| "#{x}.gov" } }
-        subject { GoogleFormattedQuery.new('government', included_domains: too_many_domains, excluded_domains: %w(exclude1.gov exclude2.gov)) }
+        subject { described_class.new('government', included_domains: too_many_domains, excluded_domains: %w(exclude1.gov exclude2.gov)) }
 
         it 'should use as many as it can up to the predetermined limit' do
           expect(subject.query.length).to be < GoogleFormattedQuery::QUERY_STRING_ALLOCATION
@@ -55,7 +55,7 @@ describe GoogleFormattedQuery do
       context 'when there are some included domains and too many excluded domains' do
         let(:some_domains) { 'domain10001'.upto('domain10010').collect { |x| "#{x}.gov" } }
         let(:too_many_excluded_domains) { 'superlongexcludeddomain20001'.upto('superlongexcludeddomain20110').collect { |x| "#{x}.gov" } }
-        subject { GoogleFormattedQuery.new('government', included_domains: some_domains, excluded_domains: too_many_excluded_domains) }
+        subject { described_class.new('government', included_domains: some_domains, excluded_domains: too_many_excluded_domains) }
 
         it 'should use all the included domains and as many excluded domains as it can up to the predetermined limit' do
           expect(subject.query.length).to be < GoogleFormattedQuery::QUERY_STRING_ALLOCATION
@@ -64,7 +64,7 @@ describe GoogleFormattedQuery do
       end
 
       context 'when searcher specifies sitelimit: within included domains' do
-        subject { GoogleFormattedQuery.new('government', included_domains: included_domains, site_limits: 'foo.com/subdir1 foo.com/subdir2 include3.gov') }
+        subject { described_class.new('government', included_domains: included_domains, site_limits: 'foo.com/subdir1 foo.com/subdir2 include3.gov') }
 
         it 'should assign matching_site_limits to just the site limits that match included domains' do
           expect(subject.query).to eq('government site:foo.com/subdir2 OR site:foo.com/subdir1')
@@ -73,7 +73,7 @@ describe GoogleFormattedQuery do
       end
 
       context 'when searcher specifies sitelimit: outside included domains' do
-        subject { GoogleFormattedQuery.new('government', included_domains: included_domains, site_limits: 'doesnotexist.gov') }
+        subject { described_class.new('government', included_domains: included_domains, site_limits: 'doesnotexist.gov') }
 
         it 'should query the affiliates normal domains' do
           expect(subject.query).to eq('government site:bar.com OR site:foo.com')
@@ -84,7 +84,7 @@ describe GoogleFormattedQuery do
   end
 
   it 'downcases the query' do
-    query =  GoogleFormattedQuery.new('Egypt').query
+    query =  described_class.new('Egypt').query
     expect(query).to match /egypt/
   end
 
@@ -92,7 +92,7 @@ describe GoogleFormattedQuery do
     let(:query_with_operators) { 'Egypt OR Morocco' }
 
     it 'preserves the case of search operators' do
-      query = GoogleFormattedQuery.new(query_with_operators).query
+      query = described_class.new(query_with_operators).query
       expect(query).to match /egypt OR morocco/
     end
   end

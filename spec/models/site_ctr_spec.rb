@@ -3,7 +3,7 @@ require 'spec_helper'
 describe SiteCtr do
   fixtures :affiliates
 
-  let(:site_ctr) { SiteCtr.new(7, 'BOOS') }
+  let(:site_ctr) { described_class.new(7, 'BOOS') }
 
   describe '#site_ctrs' do
     context 'when stats are available for the range' do

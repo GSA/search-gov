@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe OverallSparklineQuery do
-  let(:query) { OverallSparklineQuery.new('affiliate_name') }
+  let(:query) { described_class.new('affiliate_name') }
   let(:expected_body) do
     {
       "query": {

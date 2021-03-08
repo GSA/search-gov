@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Admin::AffiliatesController do
   fixtures :users, :affiliates, :memberships, :languages
-  let(:config) { Admin::AffiliatesController.active_scaffold_config }
+  let(:config) { described_class.active_scaffold_config }
 
   context 'when logged in as a non-affiliate admin user' do
     before do

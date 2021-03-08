@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe RtuDateRange do
-  let(:rtu_date_range) { RtuDateRange.new('some affiliate', 'search or click type here') }
+  let(:rtu_date_range) { described_class.new('some affiliate', 'search or click type here') }
 
   shared_context 'when dates are available' do
     let(:json_response) do

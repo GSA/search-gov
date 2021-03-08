@@ -27,7 +27,7 @@ describe AffiliateIndexedDocumentFetcher, '#perform(affiliate_id, start_id, end_
   it "should handle scope 'ok'" do
     expect(IndexedDocument).to receive(:find).once.with(@ok.id).and_return @ok
     expect(@ok).to receive(:fetch)
-    AffiliateIndexedDocumentFetcher.perform(@affiliate.id, 1, 2**30, 'ok')
+    described_class.perform(@affiliate.id, 1, 2**30, 'ok')
   end
 
   it "should handle scope 'not_ok'" do
@@ -35,13 +35,13 @@ describe AffiliateIndexedDocumentFetcher, '#perform(affiliate_id, start_id, end_
     expect(IndexedDocument).to receive(:find).with(@unfetched.id).and_return @unfetched
     expect(@unfetched).to receive(:fetch)
     expect(@not_ok).to receive(:fetch)
-    AffiliateIndexedDocumentFetcher.perform(@affiliate.id, 1, 2**30, 'not_ok')
+    described_class.perform(@affiliate.id, 1, 2**30, 'not_ok')
   end
 
   it "should handle scope 'unfetched'" do
     expect(IndexedDocument).to receive(:find).once.with(@unfetched.id).and_return @unfetched
     expect(@unfetched).to receive(:fetch)
-    AffiliateIndexedDocumentFetcher.perform(@affiliate.id, 1, 2**30, 'unfetched')
+    described_class.perform(@affiliate.id, 1, 2**30, 'unfetched')
   end
 
   context 'when affiliate or indexed document have disappeared before job runs' do
@@ -50,7 +50,7 @@ describe AffiliateIndexedDocumentFetcher, '#perform(affiliate_id, start_id, end_
     end
 
     it 'should ignore the problem and move on' do
-      AffiliateIndexedDocumentFetcher.perform(@affiliate.id, 1, 2**30, 'unfetched')
+      described_class.perform(@affiliate.id, 1, 2**30, 'unfetched')
     end
   end
 

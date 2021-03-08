@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Agency do
   before do
-    Agency.destroy_all
+    described_class.destroy_all
     @valid_attributes = {
       name: '  Internal Revenue   Service  ',
       abbreviation: 'IRS'
@@ -16,7 +16,7 @@ describe Agency do
 
   context 'when creating a new agency' do
     before do
-      Agency.create!(@valid_attributes)
+      described_class.create!(@valid_attributes)
     end
 
     it { is_expected.to validate_presence_of :name }
@@ -26,7 +26,7 @@ describe Agency do
   describe '#save' do
     context 'when saving with valid attributes' do
       before do
-        @agency = Agency.create!(@valid_attributes)
+        @agency = described_class.create!(@valid_attributes)
         AgencyOrganizationCode.create!(organization_code: ' XX00 ', agency: @agency)
       end
 
@@ -49,7 +49,7 @@ describe Agency do
         fr_noaa = federal_register_agencies(:fr_noaa)
         expect(fr_noaa).to receive(:load_documents)
 
-        Agency.create!(federal_register_agency: fr_noaa, name: 'National Oceanic and Atmospheric Administration')
+        described_class.create!(federal_register_agency: fr_noaa, name: 'National Oceanic and Atmospheric Administration')
       end
     end
   end
@@ -57,7 +57,7 @@ describe Agency do
   describe '#friendly_name' do
     context 'when the agency belongs to a federal register agency' do
       fixtures :federal_register_agencies
-      let(:agency) { Agency.create!(@valid_attributes.merge(federal_register_agency: federal_register_agencies(:fr_irs))) }
+      let(:agency) { described_class.create!(@valid_attributes.merge(federal_register_agency: federal_register_agencies(:fr_irs))) }
       before do
         AgencyOrganizationCode.create!(organization_code: 'XX00', agency: agency)
       end
@@ -69,7 +69,7 @@ describe Agency do
     end
 
     context 'when the agency does not belong to a federal register agency' do
-      let(:agency) { Agency.create!(@valid_attributes) }
+      let(:agency) { described_class.create!(@valid_attributes) }
 
       before do
         AgencyOrganizationCode.create!(organization_code: 'XX00', agency: agency)

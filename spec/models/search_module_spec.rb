@@ -16,7 +16,7 @@ describe SearchModule do
     it { is_expected.to validate_uniqueness_of :tag }
 
     it 'should create a new instance given valid attributes' do
-      SearchModule.create!(@valid_attributes)
+      described_class.create!(@valid_attributes)
     end
   end
 end

@@ -34,7 +34,7 @@ describe BoostedContent do
 
 
     it 'validates the url format' do
-      boosted_content = BoostedContent.new(url: 'blah')
+      boosted_content = described_class.new(url: 'blah')
       expect(boosted_content).to_not be_valid
       expect(boosted_content.errors[:url]).to include(' - Please ensure the URLs are properly formatted, including the http:// or https:// prefix.')
     end
@@ -44,33 +44,33 @@ describe BoostedContent do
     end
     it { is_expected.not_to allow_value('bogus status').for(:status) }
 
-    specify { expect(BoostedContent.new(status: 'active')).to be_is_active }
-    specify { expect(BoostedContent.new(status: 'active')).not_to be_is_inactive }
-    specify { expect(BoostedContent.new(status: 'inactive')).to be_is_inactive }
-    specify { expect(BoostedContent.new(status: 'inactive')).not_to be_is_active }
+    specify { expect(described_class.new(status: 'active')).to be_is_active }
+    specify { expect(described_class.new(status: 'active')).not_to be_is_inactive }
+    specify { expect(described_class.new(status: 'inactive')).to be_is_inactive }
+    specify { expect(described_class.new(status: 'inactive')).not_to be_is_active }
 
     it { is_expected.to belong_to :affiliate }
     it { is_expected.to have_many(:boosted_content_keywords).dependent(:destroy) }
 
     it 'should create a new instance given valid attributes' do
-      BoostedContent.create!(valid_attributes)
+      described_class.create!(valid_attributes)
     end
 
     it 'should validate unique url' do
-      BoostedContent.create!(valid_attributes)
-      duplicate = BoostedContent.new(valid_attributes.merge(url: valid_attributes[:url].upcase))
+      described_class.create!(valid_attributes)
+      duplicate = described_class.new(valid_attributes.merge(url: valid_attributes[:url].upcase))
       expect(duplicate).not_to be_valid
       expect(duplicate.errors[:url].first).to match(/already been boosted/)
     end
 
     it 'should allow a duplicate url for a different affiliate' do
-      BoostedContent.create!(valid_attributes)
-      duplicate = BoostedContent.new(valid_attributes.merge(affiliate: affiliates(:basic_affiliate)))
+      described_class.create!(valid_attributes)
+      duplicate = described_class.new(valid_attributes.merge(affiliate: affiliates(:basic_affiliate)))
       expect(duplicate).to be_valid
     end
 
     it 'should not allow publish start date before publish end date' do
-      boosted_content = BoostedContent.create(valid_attributes.merge({ publish_start_on: '07/01/2012', publish_end_on: '07/01/2011' }))
+      boosted_content = described_class.create(valid_attributes.merge({ publish_start_on: '07/01/2012', publish_end_on: '07/01/2011' }))
       expect(boosted_content.errors.full_messages.join).to match(/Publish end date can't be before publish start date/)
     end
 
@@ -78,7 +78,7 @@ describe BoostedContent do
       url = 'search.gov/post/9866782725/did-you-mean-roes-or-rose'
       prefixes = %w( http:// HTTPS:// )
       prefixes.each do |prefix|
-        boosted_content = BoostedContent.create!(valid_attributes.merge(url: "#{prefix}#{url}"))
+        boosted_content = described_class.create!(valid_attributes.merge(url: "#{prefix}#{url}"))
         expect(boosted_content.url).to eq("#{prefix}#{url}")
       end
     end
@@ -87,7 +87,7 @@ describe BoostedContent do
   describe 'match_keyword_values_only validation' do
     context 'when no boosted_content_keywords are provided' do
       it 'should not allow match_keyword_values_only to be set to true' do
-        boosted_content = BoostedContent.create(valid_attributes.merge({ match_keyword_values_only: true }))
+        boosted_content = described_class.create(valid_attributes.merge({ match_keyword_values_only: true }))
         expect(boosted_content.errors.full_messages.join).to match(/requires at least one keyword/)
       end
     end
@@ -120,8 +120,8 @@ describe BoostedContent do
 
       context 'when the keywords has substring match in selected fields' do
         before do
-          BoostedContent.last.boosted_content_keywords.create!(value: 'third')
-          BoostedContent.last.boosted_content_keywords.create!(value: 'thirdly')
+          described_class.last.boosted_content_keywords.create!(value: 'third')
+          described_class.last.boosted_content_keywords.create!(value: 'thirdly')
         end
 
         it 'should find the record just once' do
@@ -158,14 +158,14 @@ describe BoostedContent do
   end
 
   describe '#human_attribute_name' do
-    specify { expect(BoostedContent.human_attribute_name('publish_start_on')).to eq('Publish start date') }
-    specify { expect(BoostedContent.human_attribute_name('publish_end_on')).to eq('Publish end date') }
-    specify { expect(BoostedContent.human_attribute_name('url')).to eq('URL') }
+    specify { expect(described_class.human_attribute_name('publish_start_on')).to eq('Publish start date') }
+    specify { expect(described_class.human_attribute_name('publish_end_on')).to eq('Publish end date') }
+    specify { expect(described_class.human_attribute_name('url')).to eq('URL') }
   end
 
   describe '#as_json' do
     it 'should include title, url, and description' do
-      hash = BoostedContent.create!(valid_attributes).as_json
+      hash = described_class.create!(valid_attributes).as_json
       expect(hash[:id]).not_to be_nil
       expect(hash[:title]).to eq(valid_attributes[:title])
       expect(hash[:url]).to eq(valid_attributes[:url])
@@ -176,7 +176,7 @@ describe BoostedContent do
 
   describe '#to_xml' do
     it 'should include title, url, and description' do
-      hash = Hash.from_xml(BoostedContent.create!(valid_attributes).to_xml)['boosted_result']
+      hash = Hash.from_xml(described_class.create!(valid_attributes).to_xml)['boosted_result']
       expect(hash['title']).to eq(valid_attributes[:title])
       expect(hash['url']).to eq(valid_attributes[:url])
       expect(hash['description']).to eq(valid_attributes[:description])
@@ -189,23 +189,23 @@ describe BoostedContent do
     before do
       affiliate = Affiliate.create!(display_name: 'Test Affiliate',
                                     name: 'test_affiliate')
-      BoostedContent.create(valid_attributes.merge(affiliate: affiliate))
+      described_class.create(valid_attributes.merge(affiliate: affiliate))
       affiliate.destroy
     end
 
     it 'should also delete the boosted Content' do
-      expect(BoostedContent.find_by_url(valid_attributes[:url])).to be_nil
+      expect(described_class.find_by_url(valid_attributes[:url])).to be_nil
     end
   end
 
   describe '#display_status' do
     context 'when status is set to active' do
-      subject { BoostedContent.new(status: 'active') }
+      subject { described_class.new(status: 'active') }
       its(:display_status) { should == 'Active' }
     end
 
     context 'when status is set to inactive' do
-      subject { BoostedContent.new(status: 'inactive') }
+      subject { described_class.new(status: 'inactive') }
       its(:display_status) { should == 'Inactive' }
     end
   end

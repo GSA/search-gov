@@ -5,7 +5,7 @@ describe GovboxSet do
 
   describe '.new(query, affiliate, geoip_info)' do
     subject(:govbox_set) do
-      GovboxSet.new('foo', affiliate, geoip_info, highlighting_options)
+      described_class.new('foo', affiliate, geoip_info, highlighting_options)
     end
     let(:affiliate) { affiliates(:basic_affiliate) }
     let(:agency) { agencies(:irs) }
@@ -35,7 +35,7 @@ describe GovboxSet do
           expected_results = double(ElasticBoostedContentResults, total: 1)
           allow(ElasticBoostedContent).to receive(:search_for).with(expected_search_options).
             and_return(expected_results)
-          govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
+          govbox_set = described_class.new('foo', affiliate, geoip_info)
           expect(govbox_set.boosted_contents).to eq(expected_results)
           expect(govbox_set.modules).to include('BOOS')
         end
@@ -52,7 +52,7 @@ describe GovboxSet do
           expected_results = double(ElasticBoostedContentResults, total: 1)
           expect(ElasticBoostedContent).to receive(:search_for).with(expected_search_options).
             and_return(expected_results)
-          govbox_set = GovboxSet.new('foo', affiliate, geoip_info, highlighting_options)
+          govbox_set = described_class.new('foo', affiliate, geoip_info, highlighting_options)
           expect(govbox_set.boosted_contents).to eq(expected_results)
         end
       end
@@ -81,7 +81,7 @@ describe GovboxSet do
                  size: 1).
             and_return(expected_results)
 
-          govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
+          govbox_set = described_class.new('foo', affiliate, geoip_info)
           expect(govbox_set.featured_collections).to eq(expected_results)
           expect(govbox_set.modules).to include('BBG')
         end
@@ -97,7 +97,7 @@ describe GovboxSet do
           expected_results = double(ElasticFeaturedCollectionResults, total: 1)
           allow(ElasticFeaturedCollection).to receive(:search_for).with(expected_search_options).
             and_return(expected_results)
-          govbox_set = GovboxSet.new('foo', affiliate, geoip_info, highlighting_options)
+          govbox_set = described_class.new('foo', affiliate, geoip_info, highlighting_options)
           expect(govbox_set.featured_collections).to eq(expected_results)
         end
       end
@@ -142,7 +142,7 @@ describe GovboxSet do
       end
 
       it 'should assign 1 boosted content and 1 featured collection' do
-        govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
+        govbox_set = described_class.new('foo', affiliate, geoip_info)
         expect(govbox_set.featured_collections).to eq(fc_expected_results)
         expect(govbox_set.modules).to include('BBG')
         expect(govbox_set.boosted_contents).to eq(bc_expected_results_2)
@@ -166,19 +166,19 @@ describe GovboxSet do
       end
 
       it 'searches for federal register documents' do
-        govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
+        govbox_set = described_class.new('foo', affiliate, geoip_info)
         expect(govbox_set.federal_register_documents).to eq(expected_results)
         expect(govbox_set.modules).to include('FRDOC')
       end
 
       it 'uses highlight options' do
-        govbox_set = GovboxSet.new('foo', affiliate, geoip_info, highlighting_options)
+        govbox_set = described_class.new('foo', affiliate, geoip_info, highlighting_options)
         expect(govbox_set.federal_register_documents).to eq(expected_results)
       end
     end
 
     context 'when the affiliate has the jobs govbox enabled' do
-      let(:govbox_set) { GovboxSet.new('job', affiliate, geoip_info) }
+      let(:govbox_set) { described_class.new('job', affiliate, geoip_info) }
 
       before do
         allow(affiliate).to receive(:jobs_enabled?).and_return(true)
@@ -203,7 +203,7 @@ describe GovboxSet do
                  organization_codes: 'ABCD;BCDE',
                  results_per_page: 10,
                  location_name: 'Flemington, New Jersey, United States')
-          govbox_set = GovboxSet.new('job', affiliate, geoip_info)
+          govbox_set = described_class.new('job', affiliate, geoip_info)
         end
       end
 
@@ -213,7 +213,7 @@ describe GovboxSet do
                                                 organization_codes: nil,
                                                 results_per_page: 10,
                                                 location_name: nil).and_return nil
-          GovboxSet.new('job', affiliate, nil)
+          described_class.new('job', affiliate, nil)
         end
       end
     end
@@ -224,7 +224,7 @@ describe GovboxSet do
       end
 
       it 'should assign nil jobs' do
-        govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
+        govbox_set = described_class.new('foo', affiliate, geoip_info)
         expect(govbox_set.jobs).to be_nil
       end
     end
@@ -247,7 +247,7 @@ describe GovboxSet do
                since: 4.months.ago.beginning_of_day, language: 'en', title_only: true).
           and_return(non_video_results)
 
-        govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
+        govbox_set = described_class.new('foo', affiliate, geoip_info)
         expect(govbox_set.news_items).to eq(non_video_results)
         expect(govbox_set.modules).to include('NEWS')
       end
@@ -266,7 +266,7 @@ describe GovboxSet do
           with(expected_search_options).
           and_return(non_video_results)
 
-        govbox_set = GovboxSet.new('foo', affiliate, geoip_info, highlighting_options)
+        govbox_set = described_class.new('foo', affiliate, geoip_info, highlighting_options)
         expect(govbox_set.news_items).to eq(non_video_results)
       end
     end
@@ -296,7 +296,7 @@ describe GovboxSet do
         expect(ElasticNewsItem).to receive(:search_for).with(expected_search_options).
           and_return(video_results)
 
-        govbox_set = GovboxSet.new('foo', affiliate, geoip_info, highlighting_options)
+        govbox_set = described_class.new('foo', affiliate, geoip_info, highlighting_options)
         expect(govbox_set.video_news_items).to eq(video_results)
         expect(govbox_set.modules).to include('VIDS')
       end
@@ -312,7 +312,7 @@ describe GovboxSet do
 
         context 'when the search matches a MedTopic record' do
           it 'should retrieve the associated Med Topic record' do
-            govbox_set = GovboxSet.new('ulcerative colitis', affiliate, geoip_info)
+            govbox_set = described_class.new('ulcerative colitis', affiliate, geoip_info)
             expect(govbox_set.med_topic).to eq(med_topics(:ulcerative_colitis))
             expect(govbox_set.modules).to include('MEDL')
           end
@@ -323,7 +323,7 @@ describe GovboxSet do
             end
 
             it 'should retrieve the spanish version of the med topic' do
-              govbox_set = GovboxSet.new('Colitis ulcerativa', affiliate, geoip_info)
+              govbox_set = described_class.new('Colitis ulcerativa', affiliate, geoip_info)
               expect(govbox_set.med_topic).to eq(med_topics(:ulcerative_colitis_es))
             end
 
@@ -336,7 +336,7 @@ describe GovboxSet do
 
         context 'when the query does not match a med topic' do
           it 'should not set the med topic' do
-            govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
+            govbox_set = described_class.new('foo', affiliate, geoip_info)
             expect(govbox_set.med_topic).to be_nil
           end
         end
@@ -348,7 +348,7 @@ describe GovboxSet do
         end
 
         it 'should not set the med topic' do
-          govbox_set = GovboxSet.new('ulcerative colitis', affiliate, geoip_info)
+          govbox_set = described_class.new('ulcerative colitis', affiliate, geoip_info)
           expect(govbox_set.med_topic).to be_nil
         end
       end
@@ -371,7 +371,7 @@ describe GovboxSet do
           it 'should find the most recent relevant tweet' do
             expected_tweets = double(ElasticTweetResults, total: 1)
             expect(ElasticTweet).to receive(:search_for).with(q: 'foo', twitter_profile_ids: [123], since: 3.days.ago.beginning_of_day, language: 'en', size: 1).and_return(expected_tweets)
-            govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
+            govbox_set = described_class.new('foo', affiliate, geoip_info)
             expect(govbox_set.tweets).to eq(expected_tweets)
             expect(govbox_set.modules).to include('TWEET')
           end
@@ -388,14 +388,14 @@ describe GovboxSet do
             expected_tweets = double(ElasticTweetResults, total: 1)
             expect(ElasticTweet).to receive(:search_for).with(expected_search_options).
               and_return(expected_tweets)
-            govbox_set = GovboxSet.new('foo', affiliate, geoip_info, highlighting_options)
+            govbox_set = described_class.new('foo', affiliate, geoip_info, highlighting_options)
             expect(govbox_set.tweets).to eq(expected_tweets)
           end
         end
 
         context 'when affiliate has no Twitter Profiles' do
           it 'should not set tweets' do
-            govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
+            govbox_set = described_class.new('foo', affiliate, geoip_info)
             expect(govbox_set.tweets).to be_nil
           end
         end
@@ -409,7 +409,7 @@ describe GovboxSet do
         it 'should assign related searches' do
           allow(SaytSuggestion).to receive(:related_search).with('foo', affiliate, {}).
             and_return(expected_search_terms)
-          govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
+          govbox_set = described_class.new('foo', affiliate, geoip_info)
           expect(govbox_set.related_search).to eq(expected_search_terms)
           expect(govbox_set.modules).to include('SREL')
         end
@@ -417,7 +417,7 @@ describe GovboxSet do
         it 'uses highlighting options' do
           allow(SaytSuggestion).to receive(:related_search).with('foo', affiliate, highlighting_options).
             and_return(expected_search_terms)
-          govbox_set = GovboxSet.new('foo', affiliate, geoip_info, highlighting_options)
+          govbox_set = described_class.new('foo', affiliate, geoip_info, highlighting_options)
           expect(govbox_set.related_search).to eq(expected_search_terms)
         end
 
@@ -459,7 +459,7 @@ describe GovboxSet do
                site_limits: %w(blogs.usa.gov news.usa.gov)).
           and_return(expected_results)
 
-        govbox_set = GovboxSet.new('foo',
+        govbox_set = described_class.new('foo',
                                    affiliate, geoip_info,
                                    site_limits: %w(https://blogs.usa.gov http://news.usa.gov))
         expect(govbox_set.boosted_contents).to eq(expected_results)

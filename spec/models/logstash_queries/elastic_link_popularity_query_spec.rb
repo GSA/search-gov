@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe ElasticLinkPopularityQuery do
-  let(:query) { ElasticLinkPopularityQuery.new('https://search.gov', 10) }
+  let(:query) { described_class.new('https://search.gov', 10) }
   let(:expected_body) do
     {
       "query": {

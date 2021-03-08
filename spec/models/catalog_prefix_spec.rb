@@ -17,7 +17,7 @@ describe CatalogPrefix do
 
   describe '#label' do
     it 'should return the prefix' do
-      expect(CatalogPrefix.new(prefix: 'foo').label).to eq('foo')
+      expect(described_class.new(prefix: 'foo').label).to eq('foo')
     end
   end
 end

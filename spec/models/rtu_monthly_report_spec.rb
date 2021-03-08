@@ -4,7 +4,7 @@ describe RtuMonthlyReport do
   fixtures :affiliates
 
   let(:site) { affiliates(:basic_affiliate) }
-  let(:rtu_monthly_report) { RtuMonthlyReport.new(site, '2014','5', true) }
+  let(:rtu_monthly_report) { described_class.new(site, '2014','5', true) }
   let(:available_dates_response) do
     JSON.parse(read_fixture_file('/json/rtu_monthly_report/available_dates.json'))
   end
