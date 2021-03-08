@@ -1,4 +1,3 @@
-# coding: utf-8
 require 'spec_helper'
 
 describe 'image_searches/index.mobile.haml' do

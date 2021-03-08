@@ -1,5 +1,3 @@
-# coding: utf-8
-
 shared_examples 'a web search engine' do
   describe '.new' do
     it 'should set up API connection' do
