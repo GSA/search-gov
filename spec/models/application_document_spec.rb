@@ -6,7 +6,7 @@ describe ApplicationDocument do
   let(:valid_attributes) do
     {
       document: raw_document,
-      url: url,
+      url: url
     }
   end
   let(:application_document) { ApplicationDocument.new(valid_attributes) }

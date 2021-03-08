@@ -95,7 +95,7 @@ describe FeaturedCollection do
         status: 'active',
         publish_start_on: '01/01/2015',
         publish_end_on: '02/01/2015',
-        match_keyword_values_only: true,
+        match_keyword_values_only: true
       }
     end
     let(:featured_collection) { @affiliate.featured_collections.build(fc_attributes) }

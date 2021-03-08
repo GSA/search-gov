@@ -204,7 +204,7 @@ describe ElasticFeaturedCollection do
       {
         title: 'Obamå',
         status: 'active',
-        publish_start_on: Date.current,
+        publish_start_on: Date.current
       }
     end
     let(:fc_params) { valid_fc_params }

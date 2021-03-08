@@ -11,7 +11,7 @@ describe HostedAzureImageEngine do
     { language: 'en',
       offset: 20,
       per_page: 10,
-      query: 'agncy (site:nasa.gov)',
+      query: 'agncy (site:nasa.gov)'
     }
   end
 

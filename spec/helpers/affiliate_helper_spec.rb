@@ -32,7 +32,7 @@ describe AffiliateHelper do
         mock_model(Affiliate, {
           page_background_image_file_name: 'background.png',
           page_background_image: double('background_image', url: 'some_background_url'),
-          css_property_hash: { page_background_image_repeat: 'some_background_repeat' },
+          css_property_hash: { page_background_image_repeat: 'some_background_repeat' }
         })
       end
 

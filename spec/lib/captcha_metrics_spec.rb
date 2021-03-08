@@ -34,7 +34,7 @@ describe CaptchaMetrics do
         'HTTP_X_BON_REASON' => reason_header,
         'HTTP_X_BON_FOO' => 'bar',
         'HTTP_X_BON_BAZ' => 'quux',
-        'HTTP_X_NOT_A_BON_HEADER' => 'rutabaga',
+        'HTTP_X_NOT_A_BON_HEADER' => 'rutabaga'
       } }
 
       it 'includes each X-BON header as a tag when incrementing the activity counter' do

@@ -28,7 +28,7 @@ describe IndexedDocument do
       :doctype => 'html',
       :last_crawl_status => IndexedDocument::OK_STATUS,
       :body => 'this is the doc body',
-      :affiliate_id => affiliates(:basic_affiliate).id,
+      :affiliate_id => affiliates(:basic_affiliate).id
     }
   end
   it { is_expected.to validate_presence_of :affiliate_id }

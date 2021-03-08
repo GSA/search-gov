@@ -525,7 +525,7 @@ describe SearchesController do
             since_date: '10/1/2012',
             until_date: '10/15/2012',
             sort_by: 'r',
-            tbs: 'w',
+            tbs: 'w'
           }
         end
 

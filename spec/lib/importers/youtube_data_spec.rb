@@ -121,7 +121,7 @@ describe YoutubeData do
         snippet: {
           resourceId: {
             videoId: 'video_1'
-          },
+          }
         }
       }
       Hashie::Mash::Rash.new(item_hash)
@@ -135,7 +135,7 @@ describe YoutubeData do
           resourceId: {
             videoId: 'video_3'
           },
-          title: 'video 3 title',
+          title: 'video 3 title'
         }
       }
       Hashie::Mash::Rash.new(item_hash)

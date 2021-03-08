@@ -32,9 +32,9 @@ module DataGenerator
               modules: ['NEWS'],
               params: {
                 affiliate: 'site_beyond_site',
-                query: 'the ants in france',
-              },
-            },
+                query: 'the ants in france'
+              }
+            }
           })
           expect(es_client).to receive(:index).with({
             index: 'logstash-2015.07.14',
@@ -46,9 +46,9 @@ module DataGenerator
               modules: ['NEWS'],
               params: {
                 affiliate: 'site_beyond_site',
-                query: 'the ants in france',
-              },
-            },
+                query: 'the ants in france'
+              }
+            }
           })
 
           expect(es_client).to receive(:index).with({
@@ -63,9 +63,9 @@ module DataGenerator
                 affiliate: 'site_beyond_site',
                 query: 'the ants in france',
                 url: 'url1',
-                position: 1,
-              },
-            },
+                position: 1
+              }
+            }
           })
           expect(es_client).to receive(:index).with({
             index: 'logstash-2015.07.14',
@@ -79,9 +79,9 @@ module DataGenerator
                 affiliate: 'site_beyond_site',
                 query: 'the ants in france',
                 url: 'url1',
-                position: 1,
-              },
-            },
+                position: 1
+              }
+            }
           })
 
           expect(es_client).to receive(:index).with({
@@ -96,9 +96,9 @@ module DataGenerator
                 affiliate: 'site_beyond_site',
                 query: 'the ants in france',
                 url: 'url2',
-                position: 2,
-              },
-            },
+                position: 2
+              }
+            }
           })
           expect(es_client).to receive(:index).with({
             index: 'logstash-2015.07.14',
@@ -112,9 +112,9 @@ module DataGenerator
                 affiliate: 'site_beyond_site',
                 query: 'the ants in france',
                 url: 'url2',
-                position: 2,
-              },
-            },
+                position: 2
+              }
+            }
           })
 
           subject.index_search_and_clicks
@@ -135,9 +135,9 @@ module DataGenerator
               modules: ['NEWS'],
               params: {
                 affiliate: 'site_beyond_site',
-                query: 'the ants in france',
-              },
-            },
+                query: 'the ants in france'
+              }
+            }
           })
 
           expect(es_client).to receive(:index).with({
@@ -152,9 +152,9 @@ module DataGenerator
                 affiliate: 'site_beyond_site',
                 query: 'the ants in france',
                 url: 'url1',
-                position: 1,
-              },
-            },
+                position: 1
+              }
+            }
           })
 
           expect(es_client).to receive(:index).with({
@@ -169,9 +169,9 @@ module DataGenerator
                 affiliate: 'site_beyond_site',
                 query: 'the ants in france',
                 url: 'url2',
-                position: 2,
-              },
-            },
+                position: 2
+              }
+            }
           })
 
           subject.index_search_and_clicks

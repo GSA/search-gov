@@ -13,7 +13,7 @@ describe Api::V2::SearchesController do
       query_quote: 'barack obama',
       filetype: 'pdf',
       filter: '2',
-      sort_by: 'date',
+      sort_by: 'date'
     }
   end
   let(:query_params) do
@@ -360,7 +360,7 @@ describe Api::V2::SearchesController do
           query_not: 'excluded',
           query_or: 'alternative',
           query_quote: 'barack obama',
-          sort_by: 'date',
+          sort_by: 'date'
         })
       end
     end

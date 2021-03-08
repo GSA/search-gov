@@ -14,7 +14,7 @@ module DataGenerator
         is_human?: true,
         modules: ['NEWS', 'IMAG', 'JOBS'],
         search_query: 'the ants in france',
-        url: 'http://ants.com',
+        url: 'http://ants.com'
       })
     end
 

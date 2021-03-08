@@ -138,7 +138,7 @@ shared_examples 'an image search' do
     {
       offset: 20,
       limit: 10,
-      query: 'agncy (site:nasa.gov)',
+      query: 'agncy (site:nasa.gov)'
     }
   end
   let(:image_search) { described_class.new(image_search_params) }

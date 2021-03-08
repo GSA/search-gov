@@ -31,9 +31,9 @@ describe ApiSearch do
             'APIV1' => {
               result_count: 3,
               from_cache: 'none',
-              elapsed_time_ms: 2000,
+              elapsed_time_ms: 2000
             },
-            'AWEB' => :underlying_search_diagnostics,
+            'AWEB' => :underlying_search_diagnostics
           })
         end
       end
@@ -49,8 +49,8 @@ describe ApiSearch do
             'APIV1' => {
               result_count: 3,
               from_cache: 'api_v1_redis',
-              elapsed_time_ms: 2000,
-            },
+              elapsed_time_ms: 2000
+            }
           })
         end
       end

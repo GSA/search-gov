@@ -546,7 +546,7 @@ describe Affiliate do
 
       {
         '  foo  '                             => 'foo',
-        ' da076306990394a250f5f2ecd8cfc323  ' => 'da076306990394a250f5f2ecd8cfc323',
+        ' da076306990394a250f5f2ecd8cfc323  ' => 'da076306990394a250f5f2ecd8cfc323'
       }.each do |initial_value, result|
         context "when given a space-padded key '#{initial_value}'" do
           let(:bing_v5_key) { initial_value }
@@ -1388,7 +1388,7 @@ describe Affiliate do
     subject do
       attrs = valid_create_attributes.dup.merge({
         website: website,
-        site_domains_attributes: site_domains_attributes,
+        site_domains_attributes: site_domains_attributes
       }).reject { |k,v| v.nil? }
       Affiliate.create!(attrs)
     end
@@ -1634,7 +1634,7 @@ describe Affiliate do
       'Bing' => 'Bing',
       'BingV6' => 'Bing',
       'BingV7' => 'Bing',
-      'Google' => 'Google',
+      'Google' => 'Google'
     }.each do |configured_search_engine, sc_reported_search_engine|
       context "when an affiliate's search_engine is '#{configured_search_engine}'" do
         let(:search_engine) { configured_search_engine }

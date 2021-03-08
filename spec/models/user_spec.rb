@@ -7,7 +7,7 @@ describe User do
     { email: 'unique_login@agency.gov',
       first_name: 'Some',
       last_name: 'One',
-      organization_name: 'Agency',
+      organization_name: 'Agency'
     }.freeze
   end
 
