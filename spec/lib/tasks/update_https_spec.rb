@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Update https rake task" do
+describe 'Update https rake task' do
   fixtures :affiliates, :rss_feed_urls
   before(:all) do
     @rake = Rake::Application.new
@@ -18,7 +18,7 @@ describe "Update https rake task" do
   end
   let(:affiliate) { affiliates(:basic_affiliate) }
 
-  describe "usasearch:update_https" do
+  describe 'usasearch:update_https' do
     let(:task) { 'usasearch:update_https' }
     subject(:invoke_task) { @rake[task].invoke('BoostedContent','url','srsly') }
 
@@ -28,7 +28,7 @@ describe "Update https rake task" do
     end
 
     it "should have 'environment' as a prereq" do
-      expect(@rake[task].prerequisites).to include("environment")
+      expect(@rake[task].prerequisites).to include('environment')
     end
 
     context 'when there are urls to update' do
@@ -51,7 +51,7 @@ describe "Update https rake task" do
             to('https://www.flickr.com/photos/usdol')
         end
 
-        it "ensures the url is readonly" do
+        it 'ensures the url is readonly' do
           invoke_task
           expect(FlickrProfile.readonly_attributes).to match_array(%w{profile_type profile_id url})
         end

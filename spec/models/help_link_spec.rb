@@ -17,12 +17,12 @@ describe HelpLink do
     end
 
     it 'should lookup help link based on sanitized request path' do
-      expect(HelpLink.lookup(double("Request", path: '/sites/12345', get?: true), 'show').help_page_url).to eq('http://search.gov/sites/manual/site-overview.html')
+      expect(HelpLink.lookup(double('Request', path: '/sites/12345', get?: true), 'show').help_page_url).to eq('http://search.gov/sites/manual/site-overview.html')
     end
 
     it 'should factor HTTP method into lookup' do
-      expect(HelpLink.lookup(double("Request", path: '/sites', get?: false), 'create').help_page_url).to eq('http://search.gov/sites/manual/add-site.html')
-      expect(HelpLink.lookup(double("Request", path: '/sites', get?: false), 'update').help_page_url).to eq('http://search.gov/sites/manual/edit-site.html')
+      expect(HelpLink.lookup(double('Request', path: '/sites', get?: false), 'create').help_page_url).to eq('http://search.gov/sites/manual/add-site.html')
+      expect(HelpLink.lookup(double('Request', path: '/sites', get?: false), 'update').help_page_url).to eq('http://search.gov/sites/manual/edit-site.html')
     end
   end
 end

@@ -106,13 +106,13 @@ describe Sites::SitesController do
     end
   end
 
-  describe "#create" do
+  describe '#create' do
     it_should_behave_like 'restricted to approved user', :post, :create, id: 100
 
-    context "when logged in" do
+    context 'when logged in' do
       include_context 'approved user logged in to a site'
 
-      context "when the affiliate saves successfully" do
+      context 'when the affiliate saves successfully' do
         let(:site) { mock_model(Affiliate, :users => []) }
         let(:emailer) { double(Emailer, :deliver_now => true) }
 
@@ -169,7 +169,7 @@ describe Sites::SitesController do
     end
   end
 
-  describe "#destroy" do
+  describe '#destroy' do
     it_should_behave_like 'restricted to approved user', :delete, :destroy, id: 100
 
     context 'when logged in as affiliate' do

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ApplySaytFilters, "#perform" do
+describe ApplySaytFilters, '#perform' do
   fixtures :sayt_suggestions
 
   it_behaves_like 'a ResqueJobStats job'

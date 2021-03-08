@@ -22,7 +22,7 @@ describe Sites::QueryReferrersController do
           { field: 'referrer', size: 10000 }
         ]
       end
-      let(:query) { instance_double(DateRangeTopNFieldQuery, body: "") }
+      let(:query) { instance_double(DateRangeTopNFieldQuery, body: '') }
 
       before do
         travel_to(Time.gm(2019, 11, 11))

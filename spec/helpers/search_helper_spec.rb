@@ -8,71 +8,71 @@ describe SearchHelper do
     @affiliate = affiliates(:usagov_affiliate)
   end
 
-  describe "#no_news_results_for(search)" do
-    let(:search) { NewsSearch.new(:query => '<XSS>', :tbs => "w", :affiliate => affiliates(:basic_affiliate)) }
+  describe '#no_news_results_for(search)' do
+    let(:search) { NewsSearch.new(:query => '<XSS>', :tbs => 'w', :affiliate => affiliates(:basic_affiliate)) }
 
-    it "should HTML escape the query string" do
-      expect(helper.no_news_results_for(search)).to include("&lt;XSS&gt;")
+    it 'should HTML escape the query string' do
+      expect(helper.no_news_results_for(search)).to include('&lt;XSS&gt;')
     end
   end
 
-  describe "#display_bing_result_extname_prefix" do
+  describe '#display_bing_result_extname_prefix' do
     before do
       @urls_that_need_a_box = []
       %w{http ftp}.each do |protocol|
-        ["www.irs.gov", "www2.offthemap.nasa.gov"].each do |host|
-          ["", ":8080"].each do |port|
+        ['www.irs.gov', 'www2.offthemap.nasa.gov'].each do |host|
+          ['', ':8080'].each do |port|
             %w{doc.pdf README.TXT readme.txt ~root/Resume.doc showme.pdf showme.pdf?include=all some/longer/path.pdf}.each do |path|
               @urls_that_need_a_box << "#{protocol}://#{host}#{port}/#{path}"
             end
           end
         end
       end
-      @urls_that_dont_need_a_box = @urls_that_need_a_box.collect { |url| url.gsub(".pdf", ".html").gsub(".PDF", ".HTM").gsub(".doc", ".html").gsub(".TXT", ".HTML").gsub(".txt", ".html") }
-      @urls_that_dont_need_a_box << ":"
-      @urls_that_dont_need_a_box << "https://www.usa.gov/"
-      @urls_that_dont_need_a_box << "https://www.usa.gov/faq"
-      @urls_that_dont_need_a_box << "https://www.usa.gov/faq?q=meaning+of+life"
+      @urls_that_dont_need_a_box = @urls_that_need_a_box.collect { |url| url.gsub('.pdf', '.html').gsub('.PDF', '.HTM').gsub('.doc', '.html').gsub('.TXT', '.HTML').gsub('.txt', '.html') }
+      @urls_that_dont_need_a_box << ':'
+      @urls_that_dont_need_a_box << 'https://www.usa.gov/'
+      @urls_that_dont_need_a_box << 'https://www.usa.gov/faq'
+      @urls_that_dont_need_a_box << 'https://www.usa.gov/faq?q=meaning+of+life'
     end
 
-    it "should return empty string for most types of URLs" do
+    it 'should return empty string for most types of URLs' do
       @urls_that_dont_need_a_box.each do |url|
-        expect(helper.display_web_result_extname_prefix({'unescapedUrl' => url})).to eq("")
+        expect(helper.display_web_result_extname_prefix({'unescapedUrl' => url})).to eq('')
       end
     end
 
-    it "should return [TYP] span for some URLs" do
+    it 'should return [TYP] span for some URLs' do
       @urls_that_need_a_box.each do |url|
-        path_extname = url.gsub(/.*\//, "").gsub(/\?.*/, "").gsub(/[a-zA-Z0-9_]+\./, "").upcase
+        path_extname = url.gsub(/.*\//, '').gsub(/\?.*/, '').gsub(/[a-zA-Z0-9_]+\./, '').upcase
         prefix = "<span class=\"uext_type\">[#{path_extname.upcase}]</span> "
         expect(helper.display_web_result_extname_prefix({'unescapedUrl' => url})).to eq(prefix)
       end
     end
   end
 
-  describe "#thumbnail_image_tag" do
+  describe '#thumbnail_image_tag' do
     before do
       @image_result = {
-        "FileSize" => 2555475,
-        "Thumbnail" => {
-          "FileSize" => 3728,
-          "Url" => "http://ts1.mm.bing.net/images/thumbnail.aspx?q=327984100492&id=22f3cf1f7970509592422738e08108b1",
-          "Width" => 160,
-          "Height" => 120,
-          "ContentType" => "image/jpeg"
+        'FileSize' => 2555475,
+        'Thumbnail' => {
+          'FileSize' => 3728,
+          'Url' => 'http://ts1.mm.bing.net/images/thumbnail.aspx?q=327984100492&id=22f3cf1f7970509592422738e08108b1',
+          'Width' => 160,
+          'Height' => 120,
+          'ContentType' => 'image/jpeg'
         },
-        "title" => " ... Inauguration of Barack Obama",
-        "MediaUrl" => "http://www.house.gov/list/speech/mi01_stupak/morenews/Obama.JPG",
-        "Url" => "http://www.house.gov/list/speech/mi01_stupak/morenews/20090120inauguration.html",
-        "DisplayUrl" => "http://www.house.gov/list/speech/mi01_stupak/morenews/20090120inauguration.html",
-        "Width" => 3264,
-        "Height" => 2448,
-        "ContentType" => "image/jpeg"
+        'title' => ' ... Inauguration of Barack Obama',
+        'MediaUrl' => 'http://www.house.gov/list/speech/mi01_stupak/morenews/Obama.JPG',
+        'Url' => 'http://www.house.gov/list/speech/mi01_stupak/morenews/20090120inauguration.html',
+        'DisplayUrl' => 'http://www.house.gov/list/speech/mi01_stupak/morenews/20090120inauguration.html',
+        'Width' => 3264,
+        'Height' => 2448,
+        'ContentType' => 'image/jpeg'
       }
     end
 
-    context "for popular images" do
-      it "should create an image tag that respects max height and max width when present" do
+    context 'for popular images' do
+      it 'should create an image tag that respects max height and max width when present' do
         expect(helper.send(:thumbnail_image_tag, @image_result, 80, 100)).to match(/width="80"/)
         expect(helper.send(:thumbnail_image_tag, @image_result, 80, 100)).to match(/height="60"/)
 
@@ -81,15 +81,15 @@ describe SearchHelper do
       end
     end
 
-    context "for image search results" do
-      it "should return an image tag with thumbnail height and width" do
+    context 'for image search results' do
+      it 'should return an image tag with thumbnail height and width' do
         expect(helper.send(:thumbnail_image_tag, @image_result)).to match(/width="160"/)
         expect(helper.send(:thumbnail_image_tag, @image_result)).to match(/height="120"/)
       end
     end
   end
 
-  describe "#display_image_result_link" do
+  describe '#display_image_result_link' do
     before do
       @result = {'Url' => 'http://aHost.gov/aPath',
                  'title' => 'aTitle',
@@ -102,96 +102,96 @@ describe SearchHelper do
       @onmousedown_attr = 'onmousedown attribute'
     end
 
-    it "should generate onmousedown with affiliate name" do
+    it 'should generate onmousedown with affiliate name' do
       expect(helper).to receive(:onmousedown_attribute_for_image_click).
         with(@query, @result['Url'], @index, @affiliate.name, 'BOGUS_MODULE', @search.queried_at_seconds, :image).
         and_return(@onmousedown_attr)
       helper.display_image_result_link(@result, @search, @affiliate, @index, :image)
     end
 
-    it "should generate onmousedown with blank affiliate name if affiliate is nil" do
+    it 'should generate onmousedown with blank affiliate name if affiliate is nil' do
       expect(helper).to receive(:onmousedown_attribute_for_image_click).
-        with(@query, @result['Url'], @index, "", 'BOGUS_MODULE', @search.queried_at_seconds, :image).
+        with(@query, @result['Url'], @index, '', 'BOGUS_MODULE', @search.queried_at_seconds, :image).
         and_return(@onmousedown_attr)
       helper.display_image_result_link(@result, @search, nil, @index, :image)
     end
 
-    it "should contain tracked links" do
+    it 'should contain tracked links' do
       expect(helper).to receive(:onmousedown_attribute_for_image_click).
         with(@query, @result['Url'], @index, @affiliate.name, 'BOGUS_MODULE', @search.queried_at_seconds, :image).
         and_return(@onmousedown_attr)
-      expect(helper).to receive(:tracked_click_thumbnail_image_link).with(@result, @onmousedown_attr, nil, nil).and_return("thumbnail_image_link_content")
-      expect(helper).to receive(:tracked_click_thumbnail_link).with(@result, @onmousedown_attr).and_return("thumbnail_link_content")
+      expect(helper).to receive(:tracked_click_thumbnail_image_link).with(@result, @onmousedown_attr, nil, nil).and_return('thumbnail_image_link_content')
+      expect(helper).to receive(:tracked_click_thumbnail_link).with(@result, @onmousedown_attr).and_return('thumbnail_link_content')
 
       content = helper.display_image_result_link(@result, @search, @affiliate, @index, :image)
 
-      expect(content).to have_content("thumbnail_image_link_content")
-      expect(content).to have_content("thumbnail_link_content")
+      expect(content).to have_content('thumbnail_image_link_content')
+      expect(content).to have_content('thumbnail_link_content')
     end
 
-    it "should use spelling suggestion as the query if one exists" do
+    it 'should use spelling suggestion as the query if one exists' do
       @search = double('search', {query: 'satalate', queried_at_seconds: Time.now.to_i, spelling_suggestion: 'satellite', module_tag: 'BOGUS_MODULE'})
       expect(helper).to receive(:onmousedown_attribute_for_image_click).
-        with("satellite", @result['Url'], @index, @affiliate.name, 'BOGUS_MODULE', @search.queried_at_seconds, :image).
+        with('satellite', @result['Url'], @index, @affiliate.name, 'BOGUS_MODULE', @search.queried_at_seconds, :image).
         and_return(@onmousedown_attr)
       helper.display_image_result_link(@result, @search, @affiliate, @index, :image)
     end
   end
 
-  describe "#tracked_click_thumbnail_image_link" do
+  describe '#tracked_click_thumbnail_image_link' do
     before do
       @result = { 'Url' => 'aUrl', 'title' => 'aTitle', 'Thumbnail' => {
         'Url' => 'thumbnail.png',
         'Width' => 40,
         'Height' => 30
       } }
-      @onmousedown_attr = "onmousedown_attribute"
+      @onmousedown_attr = 'onmousedown_attribute'
     end
 
-    it "should return a link to the result url" do
+    it 'should return a link to the result url' do
       content = helper.tracked_click_thumbnail_image_link(@result, @onmousedown_attr)
       expect(content).to have_selector("a[href='aUrl'][onmousedown='#{@onmousedown_attr}']")
     end
   end
 
-  describe "#tracked_click_thumbnail_link" do
+  describe '#tracked_click_thumbnail_link' do
     before do
       @result = { 'Url' => 'http://aHost.gov/aPath',
                   'title' => 'aTitle',
                   'Thumbnail' => { 'Url' => 'aThumbnailUrl', 'Width' => 40, 'Height' => 30 } }
-      @onmousedown_attr = "onmousedown_attribute"
+      @onmousedown_attr = 'onmousedown_attribute'
     end
 
-    it "should be a link to the result thumbnail url" do
+    it 'should be a link to the result thumbnail url' do
       content = helper.tracked_click_thumbnail_link(@result, @onmousedown_attr)
       expect(content).to have_selector("a[href='http://aHost.gov/aPath'][onmousedown='#{@onmousedown_attr}']", text: 'aHost.gov')
     end
   end
 
-  describe "#onmousedown_attribute_for_image_click" do
+  describe '#onmousedown_attribute_for_image_click' do
     # TO REMOVE SRCH-1525
-    it "should return with escaped query parameter and (index + 1) value" do
+    it 'should return with escaped query parameter and (index + 1) value' do
       now = Time.now.to_i
-      content = helper.onmousedown_attribute_for_image_click("NASA's Space Rock", "url", 99, "affiliate name", "SOURCE", now, :image)
+      content = helper.onmousedown_attribute_for_image_click("NASA's Space Rock", 'url', 99, 'affiliate name', 'SOURCE', now, :image)
       expect(content).to eq("return clk('NASA\\&#39;s Space Rock', 'url', 100, 'affiliate name', 'SOURCE', #{now}, 'image', 'en')")
     end
   end
 
-  describe "#tracked_click_link" do
-    it "should track spelling suggestion as the query if one exists" do
+  describe '#tracked_click_link' do
+    it 'should track spelling suggestion as the query if one exists' do
       search = double('search', {:query => 'satalite', :queried_at_seconds => Time.now.to_i, :spelling_suggestion => 'satellite'})
       expect(helper).to receive(:onmousedown_for_click).with(search.spelling_suggestion, 100, '', 'BWEB', search.queried_at_seconds, :image)
-      helper.tracked_click_link("aUrl", "aTitle", search, nil, 100, 'BWEB', :image)
+      helper.tracked_click_link('aUrl', 'aTitle', search, nil, 100, 'BWEB', :image)
     end
 
-    it "should track query if spelling suggestion does not exist" do
+    it 'should track query if spelling suggestion does not exist' do
       search = double('search', {:query => 'satalite', :queried_at_seconds => Time.now.to_i, :spelling_suggestion => nil})
       expect(helper).to receive(:onmousedown_for_click).with(search.query, 100, '', 'BWEB', search.queried_at_seconds, :image)
-      helper.tracked_click_link("aUrl", "aTitle", search, nil, 100, 'BWEB', :image)
+      helper.tracked_click_link('aUrl', 'aTitle', search, nil, 100, 'BWEB', :image)
     end
   end
 
-  describe "#display_result_description" do
+  describe '#display_result_description' do
     it 'should be html safe' do
       description = <<-DESCRIPTION
 loren & david's excellent™ html "examples" on the <i>tag</i> and <b> too. loren & david's excellent™ html "examples" on the <i>tag</i> and <b> too. loren & david's excellent™ html "examples" on the <i>tag</i> and <b> too. loren & david's excellent™ html truncate me if you want
@@ -215,8 +215,8 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
     end
   end
 
-  describe "#display_search_all_affiliate_sites_suggestion" do
-    context "when affiliate is present and matching_site_limits is blank" do
+  describe '#display_search_all_affiliate_sites_suggestion' do
+    context 'when affiliate is present and matching_site_limits is blank' do
       let(:search) { double('search') }
 
       before do
@@ -226,7 +226,7 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
       specify { expect(helper.display_search_all_affiliate_sites_suggestion(search)).to be_blank }
     end
 
-    context "when affiliate is present and matching_site_limits is present" do
+    context 'when affiliate is present and matching_site_limits is present' do
       let(:search) { double('search', :query => 'Yosemite', :site_limits => 'WWW1.NPS.GOV') }
 
       it "should display a link to 'Yosemite from all sites'" do
@@ -240,10 +240,10 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
     end
   end
 
-  describe "#translate_bing_highlights" do
+  describe '#translate_bing_highlights' do
     let(:body_with_regex_special_character) { "\uE000[Mil\uE001 .gov" }
 
-    specify { expect(helper.translate_bing_highlights(body_with_regex_special_character)).to eq("<strong>[Mil</strong> .gov") }
+    specify { expect(helper.translate_bing_highlights(body_with_regex_special_character)).to eq('<strong>[Mil</strong> .gov') }
   end
 
   describe '#make_summary_p' do
@@ -374,9 +374,9 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
     end
   end
 
-  describe "#link_to_other_web_results(template, query)" do
+  describe '#link_to_other_web_results(template, query)' do
     let(:html_template) { 'The above results are from Wherever. <a href="http://www.gov.gov/search?query={QUERY}">Try your search again</a> to see results from Another Place.' }
-    let(:query) { "one two" }
+    let(:query) { 'one two' }
 
     it 'should render HTML with interpolated and encoded query string' do
       expect(helper.link_to_other_web_results(html_template, query)).to have_link('Try your search again', 'http://www.gov.gov/search?query=one%20two')

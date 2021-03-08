@@ -11,21 +11,21 @@ describe ElasticLinkPopularityQuery do
               "must": [
                 {
                   "term": {
-                    "type": "click"
+                    "type": 'click'
                   }
                 },
                 {
                   "terms": {
                     "params.url": [
-                      "https://search.gov",
-                      "https://search.gov/"
+                      'https://search.gov',
+                      'https://search.gov/'
                     ]
                   }
                 },
                 {
                   "range": {
                     "@timestamp": {
-                      "gt": "now-10d/d"
+                      "gt": 'now-10d/d'
                     }
                   }
                 }

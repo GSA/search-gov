@@ -4,8 +4,8 @@ describe TopQueryMatchQuery do
   let(:query) do
     TopQueryMatchQuery.new('affiliate_name',
                            'my query term',
-                           Date.parse("2014-06-28"),
-                           Date.parse("2014-06-29"),
+                           Date.parse('2014-06-28'),
+                           Date.parse('2014-06-29'),
                            { field: 'params.query.raw', size: 1000 })
   end
   let(:expected_body) do
@@ -16,34 +16,34 @@ describe TopQueryMatchQuery do
             {
               "match": {
                 "params.query": {
-                  "query": "my query term",
-                  "analyzer": "snowball",
-                  "operator": "and"
+                  "query": 'my query term',
+                  "analyzer": 'snowball',
+                  "operator": 'and'
                 }
               }
             },
             {
               "term": {
-                "params.affiliate": "affiliate_name"
+                "params.affiliate": 'affiliate_name'
               }
             },
             {
               "terms": {
-                "type": ["search","click"]
+                "type": ['search','click']
               }
             },
             {
               "range": {
                 "@timestamp": {
-                  "gte": "2014-06-28",
-                  "lte": "2014-06-29"
+                  "gte": '2014-06-28',
+                  "lte": '2014-06-29'
                 }
               }
             }
           ],
           "must_not": {
             "term": {
-              "useragent.device": "Spider"
+              "useragent.device": 'Spider'
             }
           }
         }
@@ -51,13 +51,13 @@ describe TopQueryMatchQuery do
       "aggs": {
         "agg": {
           "terms": {
-            "field": "params.query.raw",
+            "field": 'params.query.raw',
             "size": 1000
           },
           "aggs": {
             "type": {
               "terms": {
-                "field": "type"
+                "field": 'type'
               }
             }
           }

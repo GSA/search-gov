@@ -3,7 +3,7 @@ require 'spec_helper'
 describe NewsItemsHelper do
   let(:timestamp) { Time.current }
 
-  describe "#news_item_time_ago_in_words(published_at)" do
+  describe '#news_item_time_ago_in_words(published_at)' do
     it 'should output time ago in words' do
       expect(helper.news_item_time_ago_in_words(timestamp)).to eq('less than a minute ago')
     end

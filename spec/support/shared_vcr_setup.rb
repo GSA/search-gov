@@ -58,7 +58,7 @@ VCR.configure do |config|
 
   #Capybara: http://stackoverflow.com/a/6120205/1020168
   config.ignore_request do |request|
-    URI(request.uri).request_uri == "/__identify__"
+    URI(request.uri).request_uri == '/__identify__'
   end
 
   #For future debugging reference:

@@ -4,14 +4,14 @@ describe ImageSearch do
   fixtures :affiliates
   let(:affiliate) { affiliates(:basic_affiliate) }
 
-  describe ".new" do
+  describe '.new' do
     context 'when affiliate has no social media for images' do
       before do
         allow(affiliate).to receive(:has_no_social_image_feeds?).and_return true
       end
 
       it 'should use commercial results instead of Oasis' do
-        image_search = ImageSearch.new(affiliate: affiliate, query: "some query")
+        image_search = ImageSearch.new(affiliate: affiliate, query: 'some query')
         expect(image_search.uses_cr).to be true
       end
     end
@@ -49,7 +49,7 @@ describe ImageSearch do
         let(:search_engine) { 'SearchGov' }
         let(:underlying_search_class) { SearchEngineAdapter }
 
-        it "delegates to SearchEngineAdapter#diagnostics" do
+        it 'delegates to SearchEngineAdapter#diagnostics' do
           expect(image_search.diagnostics).to be(:underlying_diagnostics)
         end
       end
@@ -65,9 +65,9 @@ describe ImageSearch do
     end
   end
 
-  describe "#run" do
+  describe '#run' do
     context 'when Oasis results are blank AND we are on page 1 AND no commercial results override is set AND Bing image results are enabled' do
-      let(:image_search) { ImageSearch.new(affiliate: affiliate, query: "lsdkjflskjflskjdf") }
+      let(:image_search) { ImageSearch.new(affiliate: affiliate, query: 'lsdkjflskjflskjdf') }
       let(:search_engine_adapter) { double(SearchEngineAdapter, results: nil) }
 
       before do
@@ -126,7 +126,7 @@ describe ImageSearch do
   end
 
   describe '#spelling_suggestion' do
-    subject(:image_search) { ImageSearch.new(affiliate: affiliate, query: "lsdkjflskjflskjdf") }
+    subject(:image_search) { ImageSearch.new(affiliate: affiliate, query: 'lsdkjflskjflskjdf') }
     let(:search_engine_adapter) { double(SearchEngineAdapter, default_module_tag: 'module_tag', results: [], spelling_suggestion: 'spel') }
     before do
       allow(SuggestionBlock).to receive(:exists?).and_return(suggestion_block_exists)

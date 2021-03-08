@@ -15,29 +15,29 @@ describe TopNMissingQuery do
           "filter": [
             {
               "term": {
-                "params.affiliate": "affiliate_name"
+                "params.affiliate": 'affiliate_name'
               }
             },
             {
               "terms": {
-                "type": ["search"]
+                "type": ['search']
               }
             }
           ],
           "must_not": [
             {
               "term": {
-                "useragent.device": "Spider"
+                "useragent.device": 'Spider'
               }
             },
             {
               "term": {
-                "params.query.raw": ""
+                "params.query.raw": ''
               }
             },
             {
               "exists": {
-                "field": "modules"
+                "field": 'modules'
               }
             }
           ]
@@ -46,7 +46,7 @@ describe TopNMissingQuery do
       "aggs": {
         "agg": {
           "terms": {
-            "field": "type",
+            "field": 'type',
             "size": 1000
           }
         }

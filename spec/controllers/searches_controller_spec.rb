@@ -82,7 +82,7 @@ describe SearchesController do
   end
 
   context 'when searching with non scalar query' do
-    it "should not blow up if query is not a string" do
+    it 'should not blow up if query is not a string' do
       get :index, params: { query: { 'foo' => 'bar' }, affiliate: 'usagov' }
       expect(assigns[:search].query).to be_blank
     end
@@ -101,7 +101,7 @@ describe SearchesController do
     let(:affiliate) { affiliates(:basic_affiliate) }
     context 'referrer does not match redirect url' do
       it 'redirects to the proper url' do
-        get :index, params: { query: "moar unclaimed money", affiliate: affiliate.name }
+        get :index, params: { query: 'moar unclaimed money', affiliate: affiliate.name }
         expect(response).to redirect_to 'https://www.usa.gov/unclaimed_money'
       end
 
@@ -121,7 +121,7 @@ describe SearchesController do
 
       shared_examples_for 'a routed query that matches the referrer' do
         before do
-          routed_query = affiliate.routed_queries.build(url: rq_url, description: "testing")
+          routed_query = affiliate.routed_queries.build(url: rq_url, description: 'testing')
           routed_query.routed_query_keywords.build(keyword: 'foo bar')
           routed_query.save!
           request.env['HTTP_REFERER'] = ref_url
@@ -217,33 +217,33 @@ describe SearchesController do
     it { is_expected.to assign_to :affiliate }
     it { is_expected.to assign_to :page_title }
 
-    it "should sanitize the query term" do
-      expect(@search.query).to eq("thunder & lightning")
+    it 'should sanitize the query term' do
+      expect(@search.query).to eq('thunder & lightning')
     end
 
-    it "should render the template" do
+    it 'should render the template' do
       expect(response).to render_template 'index'
       expect(response).to render_template 'layouts/searches'
     end
 
-    it "should set an affiliate page title" do
+    it 'should set an affiliate page title' do
       expect(@page_title).to eq('thunder & lightning - Legacy Search Results')
     end
 
-    it "should render the header in the response" do
+    it 'should render the header in the response' do
       expect(response.body).to match(/#{affiliate.header}/)
     end
 
-    it "should render the footer in the response" do
+    it 'should render the footer in the response' do
       expect(response.body).to match(/#{affiliate.footer}/)
     end
 
-    it "should set the sanitized query in Javascript" do
+    it 'should set the sanitized query in Javascript' do
       expect(response.body).to include(%q{var original_query = "thunder & lightning"})
     end
   end
 
-  context "when the affiliate locale is set to Spanish" do
+  context 'when the affiliate locale is set to Spanish' do
     before do
       affiliate = affiliates(:gobiernousa_affiliate)
       get :index,
@@ -255,32 +255,32 @@ describe SearchesController do
     end
     after { I18n.locale = I18n.default_locale }
 
-    it "should override/ignore the HTTP locale param and set locale to Spanish" do
+    it 'should override/ignore the HTTP locale param and set locale to Spanish' do
       expect(I18n.locale.to_s).to eq('es')
     end
   end
 
-  context "when handling a valid staged affiliate search request" do
+  context 'when handling a valid staged affiliate search request' do
     render_views
     let(:affiliate) { affiliates(:power_affiliate) }
 
-    it "should maintain the staged parameter for future searches" do
+    it 'should maintain the staged parameter for future searches' do
       get :index, params: { affiliate: affiliate.name, query: 'weather', staged: 1 }
       expect(response.body).to have_selector("input[type='hidden'][value='1'][name='staged']", visible: false)
     end
 
-    it "should set an affiliate page title" do
+    it 'should set an affiliate page title' do
       get :index, params: { affiliate: affiliate.name, query: 'weather', staged: 1 }
-      expect(assigns[:page_title]).to eq("weather - Noaa Site Search Results")
+      expect(assigns[:page_title]).to eq('weather - Noaa Site Search Results')
     end
   end
 
-  context "when handling a valid affiliate search request with mobile device" do
+  context 'when handling a valid affiliate search request with mobile device' do
     let(:affiliate) { affiliates(:power_affiliate) }
 
     before do
-      iphone_user_agent = "Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543a Safari/419.3"
-      request.env["HTTP_USER_AGENT"] = iphone_user_agent
+      iphone_user_agent = 'Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543a Safari/419.3'
+      request.env['HTTP_USER_AGENT'] = iphone_user_agent
       get :index,
           params: {
             affiliate: affiliate.name,
@@ -293,36 +293,36 @@ describe SearchesController do
     it { is_expected.to render_template 'searches/index' }
   end
 
-  context "when searching via the API" do
+  context 'when searching via the API' do
     render_views
 
-    context "when searching normally" do
+    context 'when searching normally' do
       before do
         get :index, params: { query: 'weather', affiliate: 'usagov' }, format: 'json'
         @search = assigns[:search]
       end
 
-      it "should serialize the results into JSON" do
+      it 'should serialize the results into JSON' do
         expect(response.body).to match(/total/)
         expect(response.body).to match(/startrecord/)
         expect(response.body).to match(/endrecord/)
       end
     end
 
-    context "when some error is returned" do
+    context 'when some error is returned' do
       before do
         get :index, params: { query: 'a' * 1001,  affiliate: 'usagov' }, format: 'json'
         @search = assigns[:search]
       end
 
-      it "should serialize an error into JSON" do
+      it 'should serialize an error into JSON' do
         expect(response.body).to match(/error/)
         expect(response.body).to match(/#{I18n.translate :too_long}/)
       end
     end
   end
 
-  context "when handling any affiliate search request (mobile or otherwise)" do
+  context 'when handling any affiliate search request (mobile or otherwise)' do
     render_views
     before do
       get :index,
@@ -332,13 +332,13 @@ describe SearchesController do
           }
     end
 
-    it "should render the template" do
+    it 'should render the template' do
       expect(response).to render_template 'index'
       expect(response).to render_template 'layouts/searches'
     end
   end
 
-  context "when handling an invalid affiliate search request" do
+  context 'when handling an invalid affiliate search request' do
     before do
       get :index,
           params: {
@@ -350,7 +350,7 @@ describe SearchesController do
     it { is_expected.to redirect_to 'https://www.usa.gov/search-error' }
   end
 
-  context "when handling any affiliate search request with a JSON format" do
+  context 'when handling any affiliate search request with a JSON format' do
     render_views
     before do
       get :index,
@@ -361,24 +361,24 @@ describe SearchesController do
           format: 'json'
     end
 
-    it "should serialize the results into JSON" do
+    it 'should serialize the results into JSON' do
       expect(response.body).to match(/total/)
       expect(response.body).to match(/startrecord/)
       expect(response.body).to match(/endrecord/)
     end
   end
 
-  context "when a user is attempting to visit an old-style advanced search page" do
+  context 'when a user is attempting to visit an old-style advanced search page' do
     before do
       get :index, params: { form: 'advanced-firstgov' }
     end
 
-    it "should redirect to the advanced search page" do
+    it 'should redirect to the advanced search page' do
       expect(response).to redirect_to advanced_search_path(:form => 'advanced-firstgov')
     end
   end
 
-  context "when a user is attempting to visit an old-style advanced search page for an affiliate" do
+  context 'when a user is attempting to visit an old-style advanced search page for an affiliate' do
     before do
       get :index,
           params: {
@@ -387,14 +387,14 @@ describe SearchesController do
           }
     end
 
-    it "should redirect to the affiliate advanced search page" do
+    it 'should redirect to the affiliate advanced search page' do
       expect(response).to be_redirect
       redirect_to advanced_search_path(:affiliate => 'aff.gov', :form => 'advanced-firstgov')
     end
   end
 
-  context "highlighting" do
-    context "when a client requests results without highlighting" do
+  context 'highlighting' do
+    context 'when a client requests results without highlighting' do
       before do
         get :index,
             params: {
@@ -404,13 +404,13 @@ describe SearchesController do
             }
       end
 
-      it "should set the highlighting option to false" do
+      it 'should set the highlighting option to false' do
         @search_options = assigns[:search_options]
         expect(@search_options[:enable_highlighting]).to be false
       end
     end
 
-    context "when a client requests result with highlighting" do
+    context 'when a client requests result with highlighting' do
       before do
         get :index,
             params: {
@@ -459,13 +459,13 @@ describe SearchesController do
     it { is_expected.to render_template 'searches/index' }
   end
 
-  describe "#advanced" do
+  describe '#advanced' do
     before { get :advanced, params: { affiliate: 'usagov' } }
 
     it { is_expected.to assign_to(:page_title).with_kind_of(String) }
   end
 
-  describe "#docs" do
+  describe '#docs' do
     let(:affiliate) { affiliates(:basic_affiliate) }
     let(:dc) { mock_model(DocumentCollection) }
     let(:docs_params) do
@@ -634,7 +634,7 @@ describe SearchesController do
     end
   end
 
-  describe "#news" do
+  describe '#news' do
     let(:affiliate) { affiliates(:basic_affiliate) }
 
     before do
@@ -670,7 +670,7 @@ describe SearchesController do
       expect(assigns[:search].total).to eq(1)
       expect(assigns[:search].results.first).to eq(news_items(:item1))
       expect(assigns[:search].results.first.title).to eq("News \uE000element\uE001 1")
-      expect(assigns[:search].results.first.link).to eq("http://some.agency.gov/news/1")
+      expect(assigns[:search].results.first.link).to eq('http://some.agency.gov/news/1')
       expect(assigns[:search].results.first.published_at).to be_present
       expect(assigns[:search].results.first.description).to eq("News \uE000element\uE001 1 has a description")
     end
@@ -703,7 +703,7 @@ describe SearchesController do
       it { is_expected.to assign_to(:page_title).with('White House Blog - NPS Site Search Results') }
     end
 
-    context "when handling an array parameter" do
+    context 'when handling an array parameter' do
       before do
         get :news,
             params: {
@@ -714,7 +714,7 @@ describe SearchesController do
             }
       end
 
-      it "should render the template" do
+      it 'should render the template' do
         expect(response).to render_template 'news'
         expect(response).to render_template 'layouts/searches'
       end
@@ -830,10 +830,10 @@ describe SearchesController do
     end
   end
 
-  describe "#video_news" do
+  describe '#video_news' do
     let(:affiliate) { affiliates(:basic_affiliate) }
 
-    context "when the query is not blank" do
+    context 'when the query is not blank' do
       let(:video_news_search) { double('video news search', query: 'element', modules: [], diagnostics: {}) }
 
       before do
@@ -852,10 +852,10 @@ describe SearchesController do
       it { is_expected.to assign_to(:search_vertical).with(:news) }
       it { is_expected.to assign_to(:form_path).with(video_news_search_path) }
       it { is_expected.to render_template(:news) }
-      it { is_expected.to render_template("layouts/searches") }
+      it { is_expected.to render_template('layouts/searches') }
     end
 
-    context "when the query is blank and total is > 0" do
+    context 'when the query is blank and total is > 0' do
       let(:video_news_search) { double('video news search', query: '', modules: [], diagnostics: {}) }
 
       before do

@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe FeaturedCollectionsHelper do
 
-  describe "#render_featured_collection_image" do
-    context "when the featured collection has an image and successfully retrieve the image" do
+  describe '#render_featured_collection_image' do
+    context 'when the featured collection has an image and successfully retrieve the image' do
       let(:image) { double('image') }
       let(:featured_collection) { mock_model(FeaturedCollection,
                                              { image: image,
@@ -17,10 +17,10 @@ describe FeaturedCollectionsHelper do
       subject { helper.render_featured_collection_image(featured_collection) }
 
       it { is_expected.to have_selector ".image img[src='http://small.image.url'][alt='alt text']" }
-      it { is_expected.not_to have_selector ".image a" }
+      it { is_expected.not_to have_selector '.image a' }
     end
 
-    context "when the featured collection has an image and an exception occurs when trying to retrieve the image" do
+    context 'when the featured collection has an image and an exception occurs when trying to retrieve the image' do
       let(:image) { double('image') }
       let(:featured_collection) { mock_model(FeaturedCollection,
                                              { image: image,

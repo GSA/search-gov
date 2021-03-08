@@ -11,21 +11,21 @@ describe Admin::SearchModuleCtrsController do
 
   describe "GET 'show'" do
 
-    context "when not logged in" do
-      it "should redirect to the home page" do
+    context 'when not logged in' do
+      it 'should redirect to the home page' do
         get :show
         expect(response).to redirect_to login_path
       end
     end
 
-    context "when logged in as an admin" do
+    context 'when logged in as an admin' do
       before do
-        @user = users("affiliate_admin")
+        @user = users('affiliate_admin')
         UserSession.create(@user)
         get :show
       end
 
-      it "should allow the admin to see search module CTRs" do
+      it 'should allow the admin to see search module CTRs' do
         expect(response).to be_success
       end
 

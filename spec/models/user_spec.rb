@@ -31,7 +31,7 @@ describe User do
     it { should have_db_column(:uid).of_type(:string) }
   end
 
-  describe "when validating" do
+  describe 'when validating' do
     before do
       allow_any_instance_of(User).to receive(:inviter) { users(:affiliate_manager) }
       allow_any_instance_of(User).to receive(:affiliates) { [affiliates(:basic_affiliate)] }
@@ -194,8 +194,8 @@ describe User do
     end
   end
 
-  describe "on create" do
-    it "should assign approval status" do
+  describe 'on create' do
+    it 'should assign approval status' do
       user = User.create!(valid_attributes)
       expect(user.approval_status).not_to be_blank
     end
@@ -247,7 +247,7 @@ describe User do
     end
 
 
-    it "should not set requires_manual_approval if the user is an affiliate and the email is government_affiliated" do
+    it 'should not set requires_manual_approval if the user is an affiliate and the email is government_affiliated' do
       %w( aff@agency.GOV aff@anotheragency.gov admin@agency.mil anotheradmin@agency.MIL ).each do |email|
         user = User.create!(@valid_affiliate_attributes.merge(:email => email))
         expect(user.requires_manual_approval?).to be false
@@ -255,10 +255,10 @@ describe User do
     end
   end
 
-  context "when saving/updating" do
-    it { is_expected.to allow_value("pending_approval").for(:approval_status) }
-    it { is_expected.to allow_value("approved").for(:approval_status) }
-    it { is_expected.to allow_value("not_approved").for(:approval_status) }
+  context 'when saving/updating' do
+    it { is_expected.to allow_value('pending_approval').for(:approval_status) }
+    it { is_expected.to allow_value('approved').for(:approval_status) }
+    it { is_expected.to allow_value('not_approved').for(:approval_status) }
 
     # login.gov - commented out till SRCH-952. Updating email address will have a different flow.
     pending 'when updating an email address' do
@@ -285,23 +285,23 @@ describe User do
     end
   end
 
-  describe "#to_label" do
+  describe '#to_label' do
     it "should return the user's contact name" do
       u = users(:affiliate_admin)
       expect(u.to_label).to eq('Affiliate Administrator Smith <affiliate_admin@fixtures.org>')
     end
   end
 
-  describe "#is_developer?" do
-    it "should return true when is_affiliate? and is_affiliate_admin? are false" do
+  describe '#is_developer?' do
+    it 'should return true when is_affiliate? and is_affiliate_admin? are false' do
       expect(users(:affiliate_admin).is_developer?).to be false
       expect(users(:affiliate_manager).is_developer?).to be false
       expect(users(:developer).is_developer?).to be true
     end
   end
 
-  describe "#has_government_affiliated_email?" do
-    it "should return true if the e-mail address ends with .gov or .mil" do
+  describe '#has_government_affiliated_email?' do
+    it 'should return true if the e-mail address ends with .gov or .mil' do
       %w(aff@agency.GOV aff@anotheragency.gov admin@agency.mil anotheradmin@agency.MIL).each do |email|
         user = User.new(@valid_affiliate_attributes.merge({ :email => email }))
         expect(user.has_government_affiliated_email?).to be_truthy
@@ -320,14 +320,14 @@ describe User do
       end
     end
 
-    it "should return false if the e-mail adresses do not match" do
+    it 'should return false if the e-mail adresses do not match' do
       %w(user@affiliate@corp.com user@FSRFED.us user@fs.fed.usa user@co.franklin.state.kids.us user@lincoln.k12.oh.us user@co.state.z.us).each do |email|
         expect(User.new(@valid_affiliate_attributes.merge({ email: email }))).not_to be_has_government_affiliated_email
       end
     end
   end
 
-  describe "#send_new_affiliate_user_email" do
+  describe '#send_new_affiliate_user_email' do
     let(:inviter) { users(:affiliate_manager) }
     let(:affiliate) { affiliates(:basic_affiliate) }
 
@@ -342,34 +342,34 @@ describe User do
     end
   end
 
-  describe "on update from pending_approval to approved" do
+  describe 'on update from pending_approval to approved' do
     before do
       @user = users(:affiliate_manager_with_pending_approval_status)
     end
 
-    context "when welcome_email_sent is false" do
+    context 'when welcome_email_sent is false' do
       before do
         @user.set_approval_status_to_approved
       end
 
-      it "should deliver welcome email" do
+      it 'should deliver welcome email' do
         expect(Emailer).to receive(:welcome_to_new_user).with(an_instance_of(User)).and_return @emailer
         @user.save!
       end
 
-      it "should update welcome_email_sent to true" do
+      it 'should update welcome_email_sent to true' do
         @user.save!
         expect(@user.welcome_email_sent?).to be true
       end
     end
 
-    context "when welcome_email_sent is true" do
+    context 'when welcome_email_sent is true' do
       before do
         @user.set_approval_status_to_approved
         @user.welcome_email_sent = true
       end
 
-      it "should not deliver welcome email" do
+      it 'should not deliver welcome email' do
         expect(Emailer).to_not receive(:welcome_to_new_user).with(an_instance_of(User))
         @user.save!
       end
@@ -414,18 +414,18 @@ describe User do
     end
   end
 
-  describe "#affiliate_names" do
+  describe '#affiliate_names' do
     before do
       @user = users(:affiliate_manager_with_no_affiliates)
     end
 
-    it "returns all associated affiliate display names" do
+    it 'returns all associated affiliate display names' do
       affiliates(:power_affiliate).users << @user
       affiliates(:basic_affiliate).users << @user
       expect(@user.affiliate_names.split(',').sort).to eq(%w{ noaa.gov nps.gov })
     end
 
-    it "returns blank if there is no associated affiliate" do
+    it 'returns blank if there is no associated affiliate' do
       expect(@user.affiliate_names).to eq('')
     end
   end

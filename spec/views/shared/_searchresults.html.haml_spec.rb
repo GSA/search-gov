@@ -1,24 +1,24 @@
 require 'spec_helper'
 
-describe "shared/_searchresults.html.haml" do
+describe 'shared/_searchresults.html.haml' do
   fixtures :affiliates
 
   before do
     @affiliate = affiliates(:usagov_affiliate)
     assign(:affiliate, @affiliate)
 
-    @search = double("WebSearch", has_photos?: false, med_topic: nil, jobs: nil,
+    @search = double('WebSearch', has_photos?: false, med_topic: nil, jobs: nil,
                    has_boosted_contents?: false, has_related_searches?: false,
                    has_featured_collections?: false, has_video_news_items?: false,
-                   has_news_items?: false, agency: nil, tweets: nil, query: "tax forms", affiliate: @affiliate,
+                   has_news_items?: false, agency: nil, tweets: nil, query: 'tax forms', affiliate: @affiliate,
                    page: 1, spelling_suggestion: nil, queried_at_seconds:1271978870,
                    error_message: nil, scope_id: nil, first_page?: true, matching_site_limits: [], module_tag:'BWEB',
                    startrecord: 1, endrecord: 10, total: 20)
 
-    @search_result = {'title' => "some title",
-                      'unescapedUrl' => "http://www.foo.com/url",
-                      'content' => "This is a sample result",
-                      'cacheUrl' => "http://www.cached.com/url"
+    @search_result = {'title' => 'some title',
+                      'unescapedUrl' => 'http://www.foo.com/url',
+                      'content' => 'This is a sample result',
+                      'cacheUrl' => 'http://www.cached.com/url'
     }
     @search_results = []
     20.times { @search_results << @search_result }
@@ -28,20 +28,20 @@ describe "shared/_searchresults.html.haml" do
     assign(:search, @search)
   end
 
-  context "when page is displayed" do
+  context 'when page is displayed' do
     before do
       allow(view).to receive(:search).and_return @search
     end
 
-    context "when featured collections are present" do
+    context 'when featured collections are present' do
       before do
-        stub_template "shared/_featured_collections.html.haml" => "featured collections"
+        stub_template 'shared/_featured_collections.html.haml' => 'featured collections'
         allow(@search).to receive(:has_boosted_contents?).and_return(false)
         allow(@search).to receive(:has_featured_collections?).and_return(true)
-        allow(@search).to receive(:matching_site_limit).and_return("someaffiliate.gov")
+        allow(@search).to receive(:matching_site_limit).and_return('someaffiliate.gov')
       end
 
-      it "should show featured collection" do
+      it 'should show featured collection' do
         render
         expect(rendered).to have_content('featured collections')
       end
@@ -117,30 +117,30 @@ describe "shared/_searchresults.html.haml" do
       end
     end
 
-    context "when on anything but the first page" do
+    context 'when on anything but the first page' do
       before do
         allow(@search).to receive(:page).and_return 2
         allow(@search).to receive(:first_page?).and_return false
         allow(view).to receive(:search).and_return @search
       end
 
-      context "when boosted contents are present" do
+      context 'when boosted contents are present' do
         before do
           expect(@search).not_to receive(:has_boosted_contents?)
         end
 
-        it "should not show boosted contents" do
+        it 'should not show boosted contents' do
           render
           expect(rendered).not_to have_selector('boosted_content')
         end
       end
 
-      context "when featured collections are present" do
+      context 'when featured collections are present' do
         before do
           expect(@search).not_to receive(:has_featured_collections?)
         end
 
-        it "should not show featured collections" do
+        it 'should not show featured collections' do
           render
           expect(rendered).not_to have_content('featured collections')
         end

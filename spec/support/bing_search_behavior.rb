@@ -130,13 +130,13 @@ shared_examples 'a Bing search' do
       context 'when the type is an error response' do
         let(:bing_response_body) do
           {
-            "_type": "ErrorResponse",
+            "_type": 'ErrorResponse',
             "errors": [
               {
-                "code": "InvalidRequest",
-                "subCode": "ParameterMissing",
-                "message": "Required parameter is missing.",
-                "parameter": "q"
+                "code": 'InvalidRequest',
+                "subCode": 'ParameterMissing',
+                "message": 'Required parameter is missing.',
+                "parameter": 'q'
               }
             ]
           }.to_json

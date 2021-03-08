@@ -24,12 +24,12 @@ describe Jobs do
       )).to have_been_made
     end
 
-    context "when there is some problem" do
+    context 'when there is some problem' do
       before do
         stub_request(:get, %r{data.usajobs.gov}).to_raise(StandardError)
       end
 
-      it "should log any errors that occur and return nil" do
+      it 'should log any errors that occur and return nil' do
         expect(Rails.logger).to receive(:error).
           with(/Trouble fetching jobs information/)
         expect(search).to be_nil
@@ -96,16 +96,16 @@ describe Jobs do
 
     context 'when the search phrase is blocked' do
       it 'should return false' do
-        ["employment data", "employment statistics", "employment numbers", "employment levels", "employment rate",
-         "employment trends", "employment growth", "employment projections", "employment #{Date.current.year.to_s}",
-         "employment survey", "employment forecasts", "employment figures", "employment report", "employment law",
-         "employment at will", "equal employment opportunity", "employment verification", "employment status",
-         "employment record", "employment history", "employment eligibility", "employment authorization", "employment card",
-         "job classification", "job analysis", "posting 300 log", "employment forms", "job hazard", "job safety",
-         "job poster", "job training", "employment training", "job fair", "job board", "job outlook", "grant opportunities",
-         "funding opportunities", "vacancy factor", "vacancy rates", "delayed opening", "opening others mail", "job corps cuts",
-         "job application", "job safety and health poster", "job safety analysis standard", "job safety analysis", "employment contract",
-         "application for employment"
+        ['employment data', 'employment statistics', 'employment numbers', 'employment levels', 'employment rate',
+         'employment trends', 'employment growth', 'employment projections', "employment #{Date.current.year.to_s}",
+         'employment survey', 'employment forecasts', 'employment figures', 'employment report', 'employment law',
+         'employment at will', 'equal employment opportunity', 'employment verification', 'employment status',
+         'employment record', 'employment history', 'employment eligibility', 'employment authorization', 'employment card',
+         'job classification', 'job analysis', 'posting 300 log', 'employment forms', 'job hazard', 'job safety',
+         'job poster', 'job training', 'employment training', 'job fair', 'job board', 'job outlook', 'grant opportunities',
+         'funding opportunities', 'vacancy factor', 'vacancy rates', 'delayed opening', 'opening others mail', 'job corps cuts',
+         'job application', 'job safety and health poster', 'job safety analysis standard', 'job safety analysis', 'employment contract',
+         'application for employment'
         ].each { |phrase| expect(Jobs.query_eligible?(phrase)).to be_falsey }
       end
     end

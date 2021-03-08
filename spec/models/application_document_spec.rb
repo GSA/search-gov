@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe ApplicationDocument do
-  let(:raw_document) { open_fixture_file("/pdf/test.pdf") }
+  let(:raw_document) { open_fixture_file('/pdf/test.pdf') }
   let(:url) { 'https://foo.gov/bar.pdf' }
   let(:valid_attributes) do
     {
@@ -10,9 +10,9 @@ describe ApplicationDocument do
     }
   end
   let(:application_document) { ApplicationDocument.new(valid_attributes) }
-  let(:doc_without_description) { open_fixture_file("/pdf/no_metadata.pdf") }
-  let(:doc_without_language) { open_fixture_file("/pdf/arabic.pdf") }
-  let(:doc_with_lang_subcode) { open_fixture_file("/pdf/lang_subcode.pdf") }
+  let(:doc_without_description) { open_fixture_file('/pdf/no_metadata.pdf') }
+  let(:doc_without_language) { open_fixture_file('/pdf/arabic.pdf') }
+  let(:doc_with_lang_subcode) { open_fixture_file('/pdf/lang_subcode.pdf') }
 
   it_should_behave_like 'a web document'
 
@@ -23,7 +23,7 @@ describe ApplicationDocument do
       let(:raw_document) { open_fixture_file('/pdf/no_metadata.pdf') }
 
       it 'returns the url' do
-        expect(application_document.title).to eq "bar.pdf"
+        expect(application_document.title).to eq 'bar.pdf'
       end
 
       it { is_expected.to eq 'bar.pdf' }
@@ -55,14 +55,14 @@ describe ApplicationDocument do
       let(:raw_document) { open_fixture_file('/pdf/not_modified.pdf') }
 
       it 'defaults to the created date' do
-        expect(changed).to eq Time.parse("2017-09-07T23:26:04Z")
+        expect(changed).to eq Time.parse('2017-09-07T23:26:04Z')
       end
     end
 
     context 'when the document has been modified' do
       let(:raw_document) { open_fixture_file('/pdf/test.pdf') }
 
-      it { is_expected.to eq Time.parse("2018-06-09T17:42:11Z") }
+      it { is_expected.to eq Time.parse('2018-06-09T17:42:11Z') }
     end
   end
 
@@ -88,7 +88,7 @@ describe ApplicationDocument do
     subject(:parsed_content) { application_document.parsed_content }
 
     context 'when the file contains non-UTF8 characters' do
-      let(:raw_document) { open_fixture_file("/pdf/garbage_chars.pdf") }
+      let(:raw_document) { open_fixture_file('/pdf/garbage_chars.pdf') }
 
       it 'scrubs the characters' do
         expect(parsed_content).not_to match(/\uFFFD/)

@@ -15,19 +15,19 @@ describe DateRangeTopNMissingQuery do
           "filter": [
             {
               "term": {
-                "params.affiliate": "affiliate_name"
+                "params.affiliate": 'affiliate_name'
               }
             },
             {
               "terms": {
-                "type": ["search"]
+                "type": ['search']
               }
             },
             {
               "range": {
                 "@timestamp": {
-                  "gte": "2015-06-01",
-                  "lte": "2015-06-30"
+                  "gte": '2015-06-01',
+                  "lte": '2015-06-30'
                 }
               }
             }
@@ -35,17 +35,17 @@ describe DateRangeTopNMissingQuery do
           "must_not": [
             {
               "term": {
-                "useragent.device": "Spider"
+                "useragent.device": 'Spider'
               }
             },
             {
               "term": {
-                "params.query.raw": ""
+                "params.query.raw": ''
               }
             },
             {
               "exists": {
-                "field": "modules"
+                "field": 'modules'
               }
             }
           ]
@@ -54,7 +54,7 @@ describe DateRangeTopNMissingQuery do
       "aggs": {
         "agg": {
           "terms": {
-            "field": "params.query.raw",
+            "field": 'params.query.raw',
             "size": 1000
           }
         }

@@ -15,34 +15,34 @@ describe TopNExistsQuery do
           "filter": [
             {
               "term": {
-                "params.affiliate": "affiliate_name"
+                "params.affiliate": 'affiliate_name'
               }
             },
             {
               "terms": {
-                "type": ["search"]
+                "type": ['search']
               }
             },
             {
               "exists": {
-                "field": "modules"
+                "field": 'modules'
               }
             }
           ],
           "must_not": [
             {
               "term": {
-                "useragent.device": "Spider"
+                "useragent.device": 'Spider'
               }
             },
             {
               "term": {
-                "params.query.raw": ""
+                "params.query.raw": ''
               }
             },
             {
               "term": {
-                "modules": "QRTD"
+                "modules": 'QRTD'
               }
             }
           ]
@@ -51,7 +51,7 @@ describe TopNExistsQuery do
       "aggs": {
         "agg": {
           "terms": {
-            "field": "type",
+            "field": 'type',
             "size": 1000
           }
         }

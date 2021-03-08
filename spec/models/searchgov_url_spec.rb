@@ -98,7 +98,7 @@ describe SearchgovUrl do
 
   describe '#document_id' do
     it 'returns the hashed url' do
-      expect(searchgov_url.document_id).to eq "1ff7dfd3cf763d08bee3546e2538cf0315578fbd7b1d3f28f014915983d4d7ef"
+      expect(searchgov_url.document_id).to eq '1ff7dfd3cf763d08bee3546e2538cf0315578fbd7b1d3f28f014915983d4d7ef'
     end
   end
 
@@ -117,11 +117,11 @@ describe SearchgovUrl do
 
     context 'when the fetch is successful' do
       let(:success_hash) do
-        { status: 200, body: html, headers: { content_type: "text/html" } }
+        { status: 200, body: html, headers: { content_type: 'text/html' } }
       end
       before do
         stub_request(:get, url).with(headers: { user_agent: DEFAULT_USER_AGENT }).
-          to_return({ status: 200, body: html, headers: { content_type: "text/html" } })
+          to_return({ status: 200, body: html, headers: { content_type: 'text/html' } })
         stub_request(:get, url).with(headers: { 'User-Agent' => DEFAULT_USER_AGENT }).
           to_return(success_hash)
       end
@@ -235,13 +235,13 @@ describe SearchgovUrl do
 
       context 'when the fetch successfully returns...an error page' do #Because that's a thing.
         let(:fail_html) do
-          "<html><head><title>My 404 error page</title></head><body>Epic fail!</body></html>"
+          '<html><head><title>My 404 error page</title></head><body>Epic fail!</body></html>'
         end
         before do
           stub_request(:get, url).
             to_return({ status: 200,
                         body: fail_html,
-                        headers: { content_type: "text/html" } })
+                        headers: { content_type: 'text/html' } })
         end
 
         it 'reports the 404' do
@@ -280,13 +280,13 @@ describe SearchgovUrl do
 
         context 'when the file is too large' do
           before do
-            stub_request(:get, url).to_return(status: 200, headers: {  content_type: "application/pdf",
+            stub_request(:get, url).to_return(status: 200, headers: {  content_type: 'application/pdf',
                                                                        content_length:  18.megabytes })
           end
 
           it 'reports the error' do
             fetch
-            expect(searchgov_url.last_crawl_status).to eq "Document is over 15 MB limit"
+            expect(searchgov_url.last_crawl_status).to eq 'Document is over 15 MB limit'
           end
         end
       end
@@ -307,12 +307,12 @@ describe SearchgovUrl do
 
     context 'when the url points to a pdf' do
       let(:url) { 'https://agency.gov/test.pdf' }
-      let(:pdf) { read_fixture_file("/pdf/test.pdf") }
+      let(:pdf) { read_fixture_file('/pdf/test.pdf') }
       before do
         stub_request(:get, url).
           to_return({ status: 200,
                       body: pdf,
-                      headers: { content_type: "application/pdf" } })
+                      headers: { content_type: 'application/pdf' } })
       end
 
       it 'fetches and indexes the document' do
@@ -337,12 +337,12 @@ describe SearchgovUrl do
 
     context 'when the url points to a Word doc (.doc)' do
       let(:url) { 'https://agency.gov/test.doc' }
-      let(:doc) { read_fixture_file("/word/test.doc") }
+      let(:doc) { read_fixture_file('/word/test.doc') }
       before do
         stub_request(:get, url).
           to_return({ status: 200,
                       body: doc,
-                      headers: { content_type: "application/msword" } })
+                      headers: { content_type: 'application/msword' } })
       end
 
       it 'fetches and indexes the document' do
@@ -361,7 +361,7 @@ describe SearchgovUrl do
 
     context 'when the url points to a Word doc (.docx)' do
       let(:url) { 'https://agency.gov/test.docx' }
-      let(:doc) { read_fixture_file("/word/test.docx") }
+      let(:doc) { read_fixture_file('/word/test.docx') }
       before do
         stub_request(:get, url).
           to_return({ status: 200,
@@ -385,7 +385,7 @@ describe SearchgovUrl do
 
     context 'when the url points to an Excel doc (.xlsx)' do
       let(:url) { 'https://agency.gov/test.xlsx' }
-      let(:doc) { read_fixture_file("/excel/test.xlsx") }
+      let(:doc) { read_fixture_file('/excel/test.xlsx') }
       before do
         stub_request(:get, url).
           to_return({ status: 200,
@@ -409,7 +409,7 @@ describe SearchgovUrl do
 
     context 'when the url points to an Excel doc (.xls)' do
       let(:url) { 'https://agency.gov/test.xls' }
-      let(:doc) { read_fixture_file("/excel/test.xls") }
+      let(:doc) { read_fixture_file('/excel/test.xls') }
       before do
         stub_request(:get, url).
           to_return({ status: 200,

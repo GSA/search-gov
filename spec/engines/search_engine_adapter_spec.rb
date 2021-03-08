@@ -6,7 +6,7 @@ describe SearchEngineAdapter do
   let(:affiliate) { affiliates(:basic_affiliate) }
   let(:query) { 'test' }
 
-  describe "#results" do
+  describe '#results' do
     context 'when query is blank' do
       let(:query) { '' }
 
@@ -27,7 +27,7 @@ describe SearchEngineAdapter do
     end
   end
 
-  describe "#run" do
+  describe '#run' do
     context 'when Bing errors out' do
       before do
         allow(ActiveSupport::Notifications).to receive(:instrument).and_raise SearchEngine::SearchError
@@ -39,8 +39,8 @@ describe SearchEngineAdapter do
     end
   end
 
-  describe "#default_spelling_module_tag" do
-    subject { SearchEngineAdapter.new(BingV6ImageSearch, { affiliate: affiliate, query: "", page: 1, per_page: 10 }) }
+  describe '#default_spelling_module_tag' do
+    subject { SearchEngineAdapter.new(BingV6ImageSearch, { affiliate: affiliate, query: '', page: 1, per_page: 10 }) }
 
     it 'should be BSPEL' do
       expect(subject.default_spelling_module_tag).to eq('BSPEL')

@@ -329,7 +329,7 @@ describe RssFeedUrl do
         let(:new_url) { 'http://www.new.com' }
 
         before do
-          stub_request(:get, rss_feed_url.url).to_return( body: "", status: 301, headers: { location: new_url } )
+          stub_request(:get, rss_feed_url.url).to_return( body: '', status: 301, headers: { location: new_url } )
           stub_request(:get, new_url)
         end
 
@@ -342,7 +342,7 @@ describe RssFeedUrl do
         let(:new_url) { 'https://rss.com' }
 
         before do
-          stub_request(:get, rss_feed_url.url).to_return( body: "", status: 301, headers: { location: new_url } )
+          stub_request(:get, rss_feed_url.url).to_return( body: '', status: 301, headers: { location: new_url } )
           stub_request(:get, new_url)
         end
 
@@ -357,7 +357,7 @@ describe RssFeedUrl do
     context 'when the feed has been redirected' do
       let(:new_url) { 'http://www.new.com' }
       before do
-        stub_request(:get, rss_feed_url.url).to_return( body: "", status: 301, headers: { 'Location' => new_url } )
+        stub_request(:get, rss_feed_url.url).to_return( body: '', status: 301, headers: { 'Location' => new_url } )
         stub_request(:get, new_url)
       end
 

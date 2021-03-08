@@ -9,14 +9,14 @@ describe ElasticTweet do
     ElasticTweet.recreate_index
     Tweet.delete_all
     now = Time.now
-    Tweet.create!(:tweet_id => 1234567, :tweet_text => "Good morning, America!", :published_at => now, :twitter_profile_id => 12345)
-    Tweet.create!(:tweet_id => 2345678, :tweet_text => "Good morning, America!", :published_at => now - 10.seconds, :twitter_profile_id => 2196784676)
-    Tweet.create!(:tweet_id => 445621639863365632, :tweet_text => "Hello, America!", :published_at => 4.months.ago, :twitter_profile_id => 12345)
+    Tweet.create!(:tweet_id => 1234567, :tweet_text => 'Good morning, America!', :published_at => now, :twitter_profile_id => 12345)
+    Tweet.create!(:tweet_id => 2345678, :tweet_text => 'Good morning, America!', :published_at => now - 10.seconds, :twitter_profile_id => 2196784676)
+    Tweet.create!(:tweet_id => 445621639863365632, :tweet_text => 'Hello, America!', :published_at => 4.months.ago, :twitter_profile_id => 12345)
     ElasticTweet.commit
   end
 
-  describe ".search_for" do
-    describe "results structure" do
+  describe '.search_for' do
+    describe 'results structure' do
       context 'when there are results' do
 
         it 'should return results in an easy to access structure' do
@@ -42,9 +42,9 @@ describe ElasticTweet do
       end
     end
 
-    describe "filters" do
+    describe 'filters' do
       context 'when Twitter profile IDs are specified' do
-        it "should restrict results to the tweets with those Twitter profile IDs" do
+        it 'should restrict results to the tweets with those Twitter profile IDs' do
           search = ElasticTweet.search_for(q: 'america', twitter_profile_ids: [2196784676], language: 'en')
           expect(search.total).to eq(1)
           expect(search.results.first.tweet_id).to eq(2345678)
@@ -64,7 +64,7 @@ describe ElasticTweet do
           affiliate.locale = 'kl'
           affiliate.save!
           twitter_profile.affiliates << affiliate
-          Tweet.create!(tweet_id: 90210, tweet_text: "Angebote und Superknüller der Woche",
+          Tweet.create!(tweet_id: 90210, tweet_text: 'Angebote und Superknüller der Woche',
                         published_at: Time.now, twitter_profile_id: twitter_profile.twitter_id)
           ElasticTweet.commit
         end
@@ -79,8 +79,8 @@ describe ElasticTweet do
 
     end
 
-    describe "sorting" do
-      it "should show newest first, by default" do
+    describe 'sorting' do
+      it 'should show newest first, by default' do
         search = ElasticTweet.search_for(q: 'america', twitter_profile_ids: [12345, 2196784676], language: 'en')
         expect(search.total).to eq(3)
         expect(search.results.collect(&:tweet_id)).to eq([1234567, 2345678, 445621639863365632])

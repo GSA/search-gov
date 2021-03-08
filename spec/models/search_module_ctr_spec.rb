@@ -5,8 +5,8 @@ describe SearchModuleCtr do
 
   let(:search_module_ctr) { SearchModuleCtr.new(7) }
 
-  describe "#search_module_ctrs" do
-    context "when stats are available for the range" do
+  describe '#search_module_ctrs' do
+    context 'when stats are available for the range' do
       let(:historical_mb_json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/historical_module_breakdown.json")) }
       let(:mb_json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/module_breakdown.json")) }
 
@@ -16,7 +16,7 @@ describe SearchModuleCtr do
           and_return(historical_mb_json_response, mb_json_response)
       end
 
-      it "should return collection of SearchModuleCtrStat instances ordered by decr search+click count" do
+      it 'should return collection of SearchModuleCtrStat instances ordered by decr search+click count' do
         stats = search_module_ctr.search_module_ctrs
         expect(stats.first.name).to eq(search_modules(:bweb).display_name)
         expect(stats.first.tag).to eq(search_modules(:bweb).tag)
@@ -35,12 +35,12 @@ describe SearchModuleCtr do
 
     end
 
-    context "when no stats are available for the daterange" do
+    context 'when no stats are available for the daterange' do
       before do
         expect(ES::ELK.client_reader).to receive(:search).twice.and_return nil
       end
 
-      it "should return an empty array" do
+      it 'should return an empty array' do
         stats = search_module_ctr.search_module_ctrs
         expect(stats).to eq([])
       end

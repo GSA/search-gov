@@ -36,7 +36,7 @@ describe HostedAzureImageEngine do
         expect(search_response.spelling_suggestion).to eq('agency')
       end
 
-      it_should_behave_like "an image search"
+      it_should_behave_like 'an image search'
     end
 
     context 'when next page results are not present' do

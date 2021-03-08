@@ -3,7 +3,7 @@ require 'spec_helper'
 describe BoostedContentBulkUploader do
   fixtures :affiliates
   let(:affiliate) { affiliates(:basic_affiliate) }
-  let(:file) { fixture_file_upload("/csv/boosted_content/bulk_upload.csv", 'text/csv') }
+  let(:file) { fixture_file_upload('/csv/boosted_content/bulk_upload.csv', 'text/csv') }
   let(:uploader) { BoostedContentBulkUploader.new(affiliate, file) }
   subject(:results) { uploader.upload }
 
@@ -12,31 +12,31 @@ describe BoostedContentBulkUploader do
     extend ActionDispatch::TestProcess
   end
 
-  describe "#upload" do
-    context "when the uploaded file has .png extension" do
-      let(:file) { double('png_file', { :original_filename => "boosted_content.png" }) }
+  describe '#upload' do
+    context 'when the uploaded file has .png extension' do
+      let(:file) { double('png_file', { :original_filename => 'boosted_content.png' }) }
 
       specify { expect(results[:success]).to be false }
       specify { expect(results[:error_message]).to eq('Your filename should have .csv or .txt extension.') }
     end
 
-    context "when the bulk upload file parameter is nil" do
+    context 'when the bulk upload file parameter is nil' do
       let(:file) { nil }
 
       specify { expect(results[:success]).to be false }
-      specify { expect(results[:error_message]).to eq("Your document could not be processed. Please check the format and try again.") }
+      specify { expect(results[:error_message]).to eq('Your document could not be processed. Please check the format and try again.') }
     end
 
-    context "when uploading a CSV file" do
+    context 'when uploading a CSV file' do
       before { affiliate.boosted_contents.destroy_all }
 
-      it "should create and index boosted Contents from a csv document" do
+      it 'should create and index boosted Contents from a csv document' do
         results
 
         affiliate.reload
         expect(affiliate.boosted_contents.length).to eq(3)
         expect(affiliate.boosted_contents.map(&:url)).to match_array(%w{http://some.url http://www.texas.gov http://some.other.url})
-        expect(affiliate.boosted_contents.all.find { |b| b.url == "http://some.other.url" }.description).to eq("Another description for another listing")
+        expect(affiliate.boosted_contents.all.find { |b| b.url == 'http://some.other.url' }.description).to eq('Another description for another listing')
 
         texas_boosted_content = affiliate.boosted_contents.find_by_url 'http://some.url'
         expect(texas_boosted_content.title).to eq('This is a listing about Texas')
@@ -44,7 +44,7 @@ describe BoostedContentBulkUploader do
         expect(texas_boosted_content.publish_end_on).to eq(Date.parse('2022-03-21'))
         expect(texas_boosted_content.boosted_content_keywords.pluck(:value)).to eq(['Lone Star', 'Texan'])
         expect(texas_boosted_content.match_keyword_values_only).to be true
-        expect(affiliate.boosted_contents.where(status: 'active').pluck(:url)).to match_array(["http://some.other.url", "http://some.url"])
+        expect(affiliate.boosted_contents.where(status: 'active').pluck(:url)).to match_array(['http://some.other.url', 'http://some.url'])
 
         texas_boosted_content_keywords_only = affiliate.boosted_contents.find_by_url 'http://www.texas.gov'
         expect(texas_boosted_content_keywords_only.match_keyword_values_only).to be false # because there we no keywords provided
@@ -54,11 +54,11 @@ describe BoostedContentBulkUploader do
         expect(results[:updated]).to eq(0)
       end
 
-      it "should update existing boosted Contents if the url match" do
+      it 'should update existing boosted Contents if the url match' do
         boosted_content = affiliate.boosted_contents.build(
-            url: "http://some.url",
-            title: "an old title",
-            description: "an old description",
+            url: 'http://some.url',
+            title: 'an old title',
+            description: 'an old description',
             status: 'active',
             publish_start_on: Date.current,
             match_keyword_values_only: false)
@@ -70,7 +70,7 @@ describe BoostedContentBulkUploader do
 
         affiliate.reload
         expect(affiliate.boosted_contents.length).to eq(3)
-        expect(affiliate.boosted_contents.all.find { |b| b.url == "http://some.url" }.title).to eq("This is a listing about Texas")
+        expect(affiliate.boosted_contents.all.find { |b| b.url == 'http://some.url' }.title).to eq('This is a listing about Texas')
 
         boosted_content = affiliate.boosted_contents.find(boosted_content.id)
         expect(boosted_content.publish_start_on).to eq(Date.parse('2019-01-01'))
@@ -82,8 +82,8 @@ describe BoostedContentBulkUploader do
         expect(results[:updated]).to eq(1)
       end
 
-      it "should merge with preexisting boosted Contents" do
-        affiliate.boosted_contents.create!(:url => "http://a.different.url", :title => "title", :description => "description", :status => 'active', :publish_start_on => Date.current)
+      it 'should merge with preexisting boosted Contents' do
+        affiliate.boosted_contents.create!(:url => 'http://a.different.url', :title => 'title', :description => 'description', :status => 'active', :publish_start_on => Date.current)
 
         results
 
@@ -97,7 +97,7 @@ describe BoostedContentBulkUploader do
 
       context 'when the file contains funky characters' do
         let(:file) do
-          fixture_file_upload("/csv/boosted_content/with_funky_characters.csv", 'text/csv')
+          fixture_file_upload('/csv/boosted_content/with_funky_characters.csv', 'text/csv')
         end
 
         it 'successfully creates the boosted contents' do
@@ -111,7 +111,7 @@ describe BoostedContentBulkUploader do
 
         it 'does not import the header row' do
           expect(results[:created]).to eq 1
-          expect(affiliate.boosted_contents.first.title).to eq "Can I Take My Fireworks on a Plane?"
+          expect(affiliate.boosted_contents.first.title).to eq 'Can I Take My Fireworks on a Plane?'
         end
       end
 

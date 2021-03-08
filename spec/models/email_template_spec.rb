@@ -12,19 +12,19 @@ describe EmailTemplate do
   it { is_expected.to validate_presence_of :name }
   it { is_expected.to validate_presence_of :subject }
   it { is_expected.to validate_presence_of :body }
-  it "should create a new instance given valid attributes" do
+  it 'should create a new instance given valid attributes' do
     EmailTemplate.create!(@valid_attributes)
     is_expected.to validate_uniqueness_of(:name).case_insensitive
   end
 
-  describe "#load_default_templates" do
-    it "should load all the templates when no parameter is passed in" do
+  describe '#load_default_templates' do
+    it 'should load all the templates when no parameter is passed in' do
       EmailTemplate.load_default_templates
       expect(EmailTemplate.count).to eq(EmailTemplate::DEFAULT_SUBJECT_HASH.size)
     end
 
-    context "when specifying a specific set of templates" do
-      it "should only reload those templates, and leave the rest alone" do
+    context 'when specifying a specific set of templates' do
+      it 'should only reload those templates, and leave the rest alone' do
         expect(EmailTemplate.count).to eq(EmailTemplate::DEFAULT_SUBJECT_HASH.size)
         before_time = Time.now
         sleep(1)

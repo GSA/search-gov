@@ -4,7 +4,7 @@ require 'spec_helper'
 describe GovboxSet do
   fixtures :affiliates, :agencies, :federal_register_agencies, :rss_feed_urls, :rss_feeds, :agency_organization_codes
 
-  describe ".new(query, affiliate, geoip_info)" do
+  describe '.new(query, affiliate, geoip_info)' do
     subject(:govbox_set) do
       GovboxSet.new('foo', affiliate, geoip_info, highlighting_options)
     end
@@ -178,7 +178,7 @@ describe GovboxSet do
       end
     end
 
-    context "when the affiliate has the jobs govbox enabled" do
+    context 'when the affiliate has the jobs govbox enabled' do
       let(:govbox_set) { GovboxSet.new('job', affiliate, geoip_info) }
 
       before do
@@ -189,16 +189,16 @@ describe GovboxSet do
         expect(govbox_set.modules).to include('JOBS')
       end
 
-      it "returns job results" do
+      it 'returns job results' do
         expect(govbox_set.jobs.count).to be > 0
       end
 
-      context "when the affiliate has a related agency with an org code" do
+      context 'when the affiliate has a related agency with an org code' do
         before do
           allow(affiliate).to receive(:agency).and_return(agency)
         end
 
-        it "should call Jobs.search with the params" do
+        it 'should call Jobs.search with the params' do
           expect(Jobs).to receive(:search).
             with(query: 'job',
                  organization_codes: 'ABCD;BCDE',
@@ -208,7 +208,7 @@ describe GovboxSet do
         end
       end
 
-      context "when the affiliate does not have a related agency with an org code" do
+      context 'when the affiliate does not have a related agency with an org code' do
         it 'calls Jobs.search with just the query, results per page' do
           expect(Jobs).to receive(:search).with(query: 'job',
                                                 organization_codes: nil,
@@ -219,7 +219,7 @@ describe GovboxSet do
       end
     end
 
-    context "when the affiliate does not have the jobs govbox enabled" do
+    context 'when the affiliate does not have the jobs govbox enabled' do
       before do
         allow(affiliate).to receive(:jobs_enabled?).and_return(false)
       end
@@ -303,27 +303,27 @@ describe GovboxSet do
       end
     end
 
-    context "med topics" do
+    context 'med topics' do
       fixtures :med_topics
-      context "when the affiliate has the medline govbox enabled" do
+      context 'when the affiliate has the medline govbox enabled' do
 
         before do
           allow(affiliate).to receive(:is_medline_govbox_enabled?).and_return true
         end
 
-        context "when the search matches a MedTopic record" do
-          it "should retrieve the associated Med Topic record" do
+        context 'when the search matches a MedTopic record' do
+          it 'should retrieve the associated Med Topic record' do
             govbox_set = GovboxSet.new('ulcerative colitis', affiliate, geoip_info)
             expect(govbox_set.med_topic).to eq(med_topics(:ulcerative_colitis))
             expect(govbox_set.modules).to include('MEDL')
           end
 
-          context "when the locale is not the default" do
+          context 'when the locale is not the default' do
             before do
               I18n.locale = :es
             end
 
-            it "should retrieve the spanish version of the med topic" do
+            it 'should retrieve the spanish version of the med topic' do
               govbox_set = GovboxSet.new('Colitis ulcerativa', affiliate, geoip_info)
               expect(govbox_set.med_topic).to eq(med_topics(:ulcerative_colitis_es))
             end
@@ -335,33 +335,33 @@ describe GovboxSet do
 
         end
 
-        context "when the query does not match a med topic" do
-          it "should not set the med topic" do
+        context 'when the query does not match a med topic' do
+          it 'should not set the med topic' do
             govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
             expect(govbox_set.med_topic).to be_nil
           end
         end
       end
 
-      context "when the affiliate does not have the medline govbox enabled" do
+      context 'when the affiliate does not have the medline govbox enabled' do
         before do
           allow(affiliate).to receive(:is_medline_govbox_enabled?).and_return false
         end
 
-        it "should not set the med topic" do
+        it 'should not set the med topic' do
           govbox_set = GovboxSet.new('ulcerative colitis', affiliate, geoip_info)
           expect(govbox_set.med_topic).to be_nil
         end
       end
     end
 
-    describe "twitter" do
-      context "when affiliate is twitter govbox enabled" do
+    describe 'twitter' do
+      context 'when affiliate is twitter govbox enabled' do
         before do
           allow(Twitter).to receive(:user).and_return double('Twitter')
         end
 
-        context "when affiliate has Twitter Profiles" do
+        context 'when affiliate has Twitter Profiles' do
           before do
             affiliate.twitter_profiles.create!(:screen_name => 'USASearch',
                                                :name => 'Test',
@@ -369,9 +369,9 @@ describe GovboxSet do
                                                :profile_image_url => 'http://a0.twimg.com/profile_images/1879738641/USASearch_avatar_normal.png')
           end
 
-          it "should find the most recent relevant tweet" do
+          it 'should find the most recent relevant tweet' do
             expected_tweets = double(ElasticTweetResults, total: 1)
-            expect(ElasticTweet).to receive(:search_for).with(q: 'foo', twitter_profile_ids: [123], since: 3.days.ago.beginning_of_day, language: "en", size: 1).and_return(expected_tweets)
+            expect(ElasticTweet).to receive(:search_for).with(q: 'foo', twitter_profile_ids: [123], since: 3.days.ago.beginning_of_day, language: 'en', size: 1).and_return(expected_tweets)
             govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
             expect(govbox_set.tweets).to eq(expected_tweets)
             expect(govbox_set.modules).to include('TWEET')
@@ -379,7 +379,7 @@ describe GovboxSet do
 
           it 'uses highlighting_options' do
             expected_search_options = {
-              language: "en",
+              language: 'en',
               q: 'foo',
               since: 3.days.ago.beginning_of_day,
               size: 1,
@@ -394,8 +394,8 @@ describe GovboxSet do
           end
         end
 
-        context "when affiliate has no Twitter Profiles" do
-          it "should not set tweets" do
+        context 'when affiliate has no Twitter Profiles' do
+          it 'should not set tweets' do
             govbox_set = GovboxSet.new('foo', affiliate, geoip_info)
             expect(govbox_set.tweets).to be_nil
           end

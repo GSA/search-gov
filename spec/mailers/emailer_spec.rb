@@ -8,7 +8,7 @@ context do
 
   describe '.account_deactivation_warning' do
     let(:user) { users(:not_active_76_days) }
-    let(:expected_date) { 14.days.from_now.strftime("%m/%d/%Y") }
+    let(:expected_date) { 14.days.from_now.strftime('%m/%d/%Y') }
     let(:message) do
       "at least once every 90 days to remain active. Please log in before #{expected_date}"
     end
@@ -42,15 +42,15 @@ context do
 
     subject(:email) { Emailer.user_approval_removed(user) }
 
-    it { is_expected.to deliver_to("usagov@search.gov") }
-    it { is_expected.to have_body_text "The following user is no longer associated with any sites" }
+    it { is_expected.to deliver_to('usagov@search.gov') }
+    it { is_expected.to have_body_text 'The following user is no longer associated with any sites' }
     it { is_expected.to have_body_text user.first_name }
     it { is_expected.to have_body_text user.last_name }
     it { is_expected.to have_body_text user.email }
     it { is_expected.to have_body_text user.organization_name }
   end
 
-  describe "#new_feature_adoption_to_admin" do
+  describe '#new_feature_adoption_to_admin' do
     before do
       AffiliateFeatureAddition.delete_all
       AffiliateFeatureAddition.create!(:affiliate => affiliates(:basic_affiliate), :feature => features(:disco))
@@ -65,13 +65,13 @@ context do
     it { is_expected.to have_subject(/Features adopted yesterday/) }
 
     it 'should contain lists of newly adopted features for each affiliate that has any' do
-      expect(email).to have_body_text("Yesterday, these customers turned on some features:")
+      expect(email).to have_body_text('Yesterday, these customers turned on some features:')
       expect(email).to have_body_text("NPS Site (nps.gov):\nDiscovery Tag\nSAYT")
       expect(email).to have_body_text("Noaa Site (noaa.gov):\nSAYT")
     end
   end
 
-  describe "#deep_collection_notification" do
+  describe '#deep_collection_notification' do
     let(:document_collection) do
       affiliates(:basic_affiliate).document_collections.create!(
         :name => 'WH only',
@@ -85,27 +85,27 @@ context do
     it { is_expected.to have_subject(/Deep collection created/) }
 
     it 'should contain document collection and URL prefixes' do
-      expect(email).to have_body_text("WH only")
+      expect(email).to have_body_text('WH only')
       expect(email).to have_body_text('http://www.whitehouse.gov/photos-and-video/')
       expect(email).to have_body_text('http://www.whitehouse.gov/blog/is/deep')
     end
   end
 
-  describe "#filtered_popular_terms_report" do
+  describe '#filtered_popular_terms_report' do
     subject(:email) { Emailer.filtered_popular_terms_report(%w{foo bar blat}).deliver_now }
 
     it { is_expected.to deliver_to('usagov@search.gov') }
     it { is_expected.to have_subject(/Filtered Popular Terms for Last Week/) }
 
     it 'should contain list of filtered sayt suggestions' do
-      expect(email).to have_body_text("foo")
-      expect(email).to have_body_text("bar")
-      expect(email).to have_body_text("blat")
+      expect(email).to have_body_text('foo')
+      expect(email).to have_body_text('bar')
+      expect(email).to have_body_text('blat')
     end
   end
 
-  describe "#new_user_to_admin" do
-    context "affiliate user has .com email address" do
+  describe '#new_user_to_admin' do
+    context 'affiliate user has .com email address' do
       let(:user) do
         double(User,
                email: 'not.gov.user@agency.com',
@@ -123,7 +123,7 @@ context do
       it { is_expected.to have_body_text(/Name: Contractor Joe Shmoe\nEmail: not.gov.user@agency.com\nOrganization name: Agency\n\n\n    This person doesn't have a .gov or .mil email address/) }
     end
 
-    context "affiliate user has .gov email address" do
+    context 'affiliate user has .gov email address' do
       let(:user) do
         double(User,
                email: 'not.com.user@agency.gov',
@@ -176,7 +176,7 @@ context do
     end
   end
 
-  describe "#welcome_to_new_user_added_by_affiliate" do
+  describe '#welcome_to_new_user_added_by_affiliate' do
     let(:user) do
       mock_model(User,
                  email: 'invitee@agency.com',
@@ -185,14 +185,14 @@ context do
     end
 
     let(:current_user) { mock_model(User, 
-                                    email: "inviter@agency.com", 
+                                    email: 'inviter@agency.com', 
                                     first_name: 'Inviter Jane',
                                     last_name: 'Doe') }
     let(:affiliate) { affiliates(:basic_affiliate) }
 
     subject { Emailer.welcome_to_new_user_added_by_affiliate(affiliate, user, current_user) }
 
-    it { should deliver_to("invitee@agency.com") }
+    it { should deliver_to('invitee@agency.com') }
     it { should have_subject(/\[Search.gov\] Welcome to Search.gov/) }
     it { should have_body_text(/https:\/\/localhost:3000\/sites/) }
   end
@@ -215,7 +215,7 @@ context do
     it { is_expected.to deliver_to(membership.user.email) }
     it { is_expected.to have_subject(/Today's Snapshot for #{membership.affiliate.name} on #{Date.yesterday}/) }
 
-    it "should contain the daily shapshot tables for yesterday" do
+    it 'should contain the daily shapshot tables for yesterday' do
       body = Sanitizer.sanitize(email.default_part_body)
       expect(body).to include('Top Queries')
       expect(body).to include('Search Term Total Queries (Bots + Humans) Real Queries')
@@ -248,7 +248,7 @@ context do
     end
   end
 
-  describe "#affiliate_monthly_report" do
+  describe '#affiliate_monthly_report' do
     let(:user) { users(:affiliate_manager) }
     let(:report_date) { Date.parse('2012-04-13') }
     let(:user_monthly_report) { double(UserMonthlyReport) }
@@ -270,7 +270,7 @@ context do
     it { is_expected.to deliver_to(user.email) }
     it { is_expected.to have_subject(/April 2012/) }
 
-    it "should show per-affiliate and total stats for the month" do
+    it 'should show per-affiliate and total stats for the month' do
       body = Sanitizer.sanitize(email.default_part_body)
       expect(body).to include('102 100 33.33% -33.33% 100')
       expect(body).to include('50 40 12.00% -9.00% 35')
@@ -287,7 +287,7 @@ context do
     end
   end
 
-  describe "#affiliate_yearly_report" do
+  describe '#affiliate_yearly_report' do
     let(:user) { users(:affiliate_manager) }
     let(:report_year) { 2012 }
 
@@ -297,7 +297,7 @@ context do
       nps_top_queries = [['query5', 54, 53], ['query6', 55, 43], ['query4', 53, 42]]
       insufficient = RtuQueryRawHumanArray::INSUFFICIENT_DATA
       allow(RtuQueryRawHumanArray).to receive(:new).and_return double(RtuQueryRawHumanArray, top_queries: insufficient)
-      allow(RtuQueryRawHumanArray).to receive(:new).with('nps.gov', Date.parse("2012-01-01"), Date.parse("2012-12-31"), 100).and_return double(RtuQueryRawHumanArray, top_queries: nps_top_queries)
+      allow(RtuQueryRawHumanArray).to receive(:new).with('nps.gov', Date.parse('2012-01-01'), Date.parse('2012-12-31'), 100).and_return double(RtuQueryRawHumanArray, top_queries: nps_top_queries)
     end
 
     subject(:email) { Emailer.affiliate_yearly_report(user, report_year) }
@@ -305,7 +305,7 @@ context do
     it { is_expected.to deliver_to(user.email) }
     it { is_expected.to have_subject(/2012 Year in Review/) }
 
-    it "show stats for the year" do
+    it 'show stats for the year' do
       body = Sanitizer.sanitize(email.default_part_body)
       expect(body).to include('Most Popular Queries for 2012')
       expect(body).to include('NPEspanol Site Not enough historic data to compute most popular')
@@ -339,7 +339,7 @@ context do
     it { is_expected.to have_body_text sites.first.display_name }
   end
 
-  context "when a template is missing" do
+  context 'when a template is missing' do
     let(:user) do
       double(User,
              email: 'invitee@agency.com',

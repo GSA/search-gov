@@ -14,18 +14,18 @@ describe SiteSearch do
     collection
   end
 
-  describe ".initialize" do
+  describe '.initialize' do
     it "should use the dc param to find a document collection when document_collection isn't present" do
       expect(SiteSearch.new(:query => 'gov', :affiliate => affiliate, :dc => dc.id).document_collection).to eq(dc)
     end
   end
 
   describe '#run' do
-    let(:bing_formatted_query) { double("BingFormattedQuery", matching_site_limits: nil, query: 'ignore') }
+    let(:bing_formatted_query) { double('BingFormattedQuery', matching_site_limits: nil, query: 'ignore') }
 
     it 'should include sites from document collection' do
       expect(BingV7FormattedQuery).to receive(:new).with(
-        "gov", hash_including(included_domains: ["www.whitehouse.gov/photos-and-video/", "www.whitehouse.gov/blog/"],
+        'gov', hash_including(included_domains: ['www.whitehouse.gov/photos-and-video/', 'www.whitehouse.gov/blog/'],
                               excluded_domains: [])).and_return bing_formatted_query
       SiteSearch.new(:query => 'gov', :affiliate => affiliate, :document_collection => dc)
     end
@@ -34,7 +34,7 @@ describe SiteSearch do
       before do
         affiliate.site_domains.create(domain: 'usa.gov')
         expect(BingV7FormattedQuery).to receive(:new).with(
-          'gov', hash_including(included_domains: ["usa.gov"], excluded_domains: [])
+          'gov', hash_including(included_domains: ['usa.gov'], excluded_domains: [])
         ).and_return bing_formatted_query
       end
 

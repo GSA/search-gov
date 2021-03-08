@@ -9,25 +9,25 @@ describe MonthlyHistogramQuery do
           "filter": [
             {
               "term": {
-                "params.affiliate": "affiliate_name"
+                "params.affiliate": 'affiliate_name'
               }
             },
             {
               "terms": {
-                "type": ["search"]
+                "type": ['search']
               }
             },
             {
               "range": {
                 "@timestamp": {
-                  "gte": "2014-06-28"
+                  "gte": '2014-06-28'
                 }
               }
             }
           ],
           "must_not": {
             "term": {
-              "useragent.device": "Spider"
+              "useragent.device": 'Spider'
             }
           }
         }
@@ -35,9 +35,9 @@ describe MonthlyHistogramQuery do
       "aggs": {
         "agg": {
           "date_histogram": {
-            "field": "@timestamp",
-            "interval": "month",
-            "format": "yyyy-MM",
+            "field": '@timestamp',
+            "interval": 'month',
+            "format": 'yyyy-MM',
             "min_doc_count": 0
           }
         }

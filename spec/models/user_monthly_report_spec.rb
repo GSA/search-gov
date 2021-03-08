@@ -25,7 +25,7 @@ describe UserMonthlyReport do
 
   it 'should assign the affiliate stats' do
     stats = { :affiliate => affiliates(:basic_affiliate), :total_unfiltered_queries => 102, :total_queries => 100, :total_clicks => 50, :last_month_total_queries => 80, :last_year_total_queries => 1000, :last_month_percent_change => 25.0, :last_year_percent_change => -90.0, :popular_queries => popular_queries, :popular_clicks => popular_clicks }
-    expect(user_monthly_report.affiliate_stats).to eq({ "nps.gov" => stats })
+    expect(user_monthly_report.affiliate_stats).to eq({ 'nps.gov' => stats })
   end
 
   it 'should assign the total stats' do

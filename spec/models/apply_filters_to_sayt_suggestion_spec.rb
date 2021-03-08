@@ -1,11 +1,11 @@
 require 'spec_helper'
 
-describe ApplyFiltersToSaytSuggestion, "#perform(id)" do
+describe ApplyFiltersToSaytSuggestion, '#perform(id)' do
   fixtures :affiliates
 
   before do
     @affiliate = affiliates(:usagov_affiliate)
-    @phrase = "ought to get deleted xxx"
+    @phrase = 'ought to get deleted xxx'
     @ss = SaytSuggestion.create!(:affiliate => @affiliate, :phrase => @phrase)
   end
 

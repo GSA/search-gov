@@ -5,9 +5,9 @@ describe BoostedContent do
   let(:affiliate) { affiliates(:usagov_affiliate) }
   let(:valid_attributes) do
     { :affiliate => affiliate,
-      :url => "http://www.someaffiliate.gov/foobar",
-      :title => "The foobar page",
-      :description => "All about foobar, boosted to the top",
+      :url => 'http://www.someaffiliate.gov/foobar',
+      :title => 'The foobar page',
+      :description => 'All about foobar, boosted to the top',
       :status => 'active',
       :publish_start_on => Date.yesterday }
   end
@@ -19,7 +19,7 @@ describe BoostedContent do
 
   it_behaves_like 'a record that sanitizes attributes', [:title, :description]
 
-  describe "Creating new instance of BoostedContent" do
+  describe 'Creating new instance of BoostedContent' do
     it { is_expected.to validate_presence_of :url }
     it { is_expected.to validate_presence_of :title }
     it { is_expected.to validate_presence_of :description }
@@ -36,13 +36,13 @@ describe BoostedContent do
     it 'validates the url format' do
       boosted_content = BoostedContent.new(url: 'blah')
       expect(boosted_content).to_not be_valid
-      expect(boosted_content.errors[:url]).to include(" - Please ensure the URLs are properly formatted, including the http:// or https:// prefix.")
+      expect(boosted_content.errors[:url]).to include(' - Please ensure the URLs are properly formatted, including the http:// or https:// prefix.')
     end
 
     BoostedContent::STATUSES.each do |status|
       it { is_expected.to allow_value(status).for(:status) }
     end
-    it { is_expected.not_to allow_value("bogus status").for(:status) }
+    it { is_expected.not_to allow_value('bogus status').for(:status) }
 
     specify { expect(BoostedContent.new(:status => 'active')).to be_is_active }
     specify { expect(BoostedContent.new(:status => 'active')).not_to be_is_inactive }
@@ -52,29 +52,29 @@ describe BoostedContent do
     it { is_expected.to belong_to :affiliate }
     it { is_expected.to have_many(:boosted_content_keywords).dependent(:destroy) }
 
-    it "should create a new instance given valid attributes" do
+    it 'should create a new instance given valid attributes' do
       BoostedContent.create!(valid_attributes)
     end
 
-    it "should validate unique url" do
+    it 'should validate unique url' do
       BoostedContent.create!(valid_attributes)
       duplicate = BoostedContent.new(valid_attributes.merge(:url => valid_attributes[:url].upcase))
       expect(duplicate).not_to be_valid
       expect(duplicate.errors[:url].first).to match(/already been boosted/)
     end
 
-    it "should allow a duplicate url for a different affiliate" do
+    it 'should allow a duplicate url for a different affiliate' do
       BoostedContent.create!(valid_attributes)
       duplicate = BoostedContent.new(valid_attributes.merge(:affiliate => affiliates(:basic_affiliate)))
       expect(duplicate).to be_valid
     end
 
-    it "should not allow publish start date before publish end date" do
+    it 'should not allow publish start date before publish end date' do
       boosted_content = BoostedContent.create(valid_attributes.merge({ :publish_start_on => '07/01/2012', :publish_end_on => '07/01/2011' }))
       expect(boosted_content.errors.full_messages.join).to match(/Publish end date can't be before publish start date/)
     end
 
-    it "should save URL as is when it starts with http(s)://" do
+    it 'should save URL as is when it starts with http(s)://' do
       url = 'search.gov/post/9866782725/did-you-mean-roes-or-rose'
       prefixes = %w( http:// HTTPS:// )
       prefixes.each do |prefix|
@@ -157,14 +157,14 @@ describe BoostedContent do
     end
   end
 
-  describe "#human_attribute_name" do
-    specify { expect(BoostedContent.human_attribute_name("publish_start_on")).to eq("Publish start date") }
-    specify { expect(BoostedContent.human_attribute_name("publish_end_on")).to eq("Publish end date") }
-    specify { expect(BoostedContent.human_attribute_name("url")).to eq("URL") }
+  describe '#human_attribute_name' do
+    specify { expect(BoostedContent.human_attribute_name('publish_start_on')).to eq('Publish start date') }
+    specify { expect(BoostedContent.human_attribute_name('publish_end_on')).to eq('Publish end date') }
+    specify { expect(BoostedContent.human_attribute_name('url')).to eq('URL') }
   end
 
-  describe "#as_json" do
-    it "should include title, url, and description" do
+  describe '#as_json' do
+    it 'should include title, url, and description' do
       hash = BoostedContent.create!(valid_attributes).as_json
       expect(hash[:id]).not_to be_nil
       expect(hash[:title]).to eq(valid_attributes[:title])
@@ -174,8 +174,8 @@ describe BoostedContent do
     end
   end
 
-  describe "#to_xml" do
-    it "should include title, url, and description" do
+  describe '#to_xml' do
+    it 'should include title, url, and description' do
       hash = Hash.from_xml(BoostedContent.create!(valid_attributes).to_xml)['boosted_result']
       expect(hash['title']).to eq(valid_attributes[:title])
       expect(hash['url']).to eq(valid_attributes[:url])
@@ -193,18 +193,18 @@ describe BoostedContent do
       affiliate.destroy
     end
 
-    it "should also delete the boosted Content" do
+    it 'should also delete the boosted Content' do
       expect(BoostedContent.find_by_url(valid_attributes[:url])).to be_nil
     end
   end
 
-  describe "#display_status" do
-    context "when status is set to active" do
+  describe '#display_status' do
+    context 'when status is set to active' do
       subject { BoostedContent.new(:status => 'active') }
       its(:display_status) { should == 'Active' }
     end
 
-    context "when status is set to inactive" do
+    context 'when status is set to inactive' do
       subject { BoostedContent.new(:status => 'inactive') }
       its(:display_status) { should == 'Inactive' }
     end

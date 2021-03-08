@@ -5,7 +5,7 @@ describe VideoNewsSearch do
 
   let(:affiliate) { affiliates(:basic_affiliate) }
 
-  describe "#initialize(options)" do
+  describe '#initialize(options)' do
     it 'should initialize per_page' do
       expect(VideoNewsSearch.new(query: 'gov', tbs: 'w', affiliate: affiliate).per_page).to eq(20)
     end
@@ -15,9 +15,9 @@ describe VideoNewsSearch do
     end
   end
 
-  describe "#run" do
-    context "when a valid active RSS feed is specified" do
-      it "should only search for news items from that feed" do
+  describe '#run' do
+    context 'when a valid active RSS feed is specified' do
+      it 'should only search for news items from that feed' do
         rss_feed = mock_model(RssFeed, is_managed?: true, show_only_media_content?: false)
         allow(affiliate).to receive_message_chain(:rss_feeds, :managed, :find_by_id).and_return(rss_feed)
         expect(affiliate).to receive(:youtube_profile_ids).twice.and_return double('youtube profile ids')
@@ -35,8 +35,8 @@ describe VideoNewsSearch do
       end
     end
 
-    context "when there is only 1 navigable video rss feed" do
-      it "should assign @rss_feed" do
+    context 'when there is only 1 navigable video rss feed' do
+      it 'should assign @rss_feed' do
         videos_navigable_feeds = [mock_model(RssFeed, is_managed?: true, show_only_media_content?: false)]
         allow(affiliate).to receive_message_chain(:rss_feeds, :managed, :navigable_only).and_return(videos_navigable_feeds.clone)
         expect(affiliate).to receive(:youtube_profile_ids).twice.and_return double('youtube profile ids')

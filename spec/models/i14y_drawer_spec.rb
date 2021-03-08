@@ -10,8 +10,8 @@ describe I14yDrawer do
   it { is_expected.to validate_length_of(:handle).is_at_least(3).is_at_most(33) }
   it { is_expected.to have_many(:i14y_memberships).dependent(:destroy) }
   it { is_expected.to have_many(:affiliates).through :i14y_memberships }
-  ["UPPERCASE", "weird'chars", "spacey name", "hyphens-are-special-in-i14y",
-   "periods.are.bad", "hiding\nnaughti.ness"].each do |value|
+  ['UPPERCASE', "weird'chars", 'spacey name', 'hyphens-are-special-in-i14y',
+   'periods.are.bad', "hiding\nnaughti.ness"].each do |value|
     it { is_expected.not_to allow_value(value).for(:handle) }
   end
   %w{datagov123 some_aff 123}.each do |value|
@@ -20,14 +20,14 @@ describe I14yDrawer do
 
   context 'creating a drawer' do
     before do
-      allow(SecureRandom).to receive(:hex).with(16).and_return "0123456789abcdef"
+      allow(SecureRandom).to receive(:hex).with(16).and_return '0123456789abcdef'
     end
 
     it 'creates collection in i14y and assigns token' do
-      response = Hashie::Mash.new('status' => 200, "developer_message" => "OK", "user_message" => "blah blah")
-      expect(I14yCollections).to receive(:create).with("settoken", "0123456789abcdef").and_return response
+      response = Hashie::Mash.new('status' => 200, 'developer_message' => 'OK', 'user_message' => 'blah blah')
+      expect(I14yCollections).to receive(:create).with('settoken', '0123456789abcdef').and_return response
       i14y_drawer = Affiliate.first.i14y_drawers.create!(handle: 'settoken')
-      expect(i14y_drawer.token).to eq("0123456789abcdef")
+      expect(i14y_drawer.token).to eq('0123456789abcdef')
     end
 
     context 'create call to i14y Collection API fails' do
@@ -36,7 +36,7 @@ describe I14yDrawer do
       end
 
       it 'should not create the I14yDrawer' do
-        Affiliate.first.i14y_drawers.create(handle: "settoken")
+        Affiliate.first.i14y_drawers.create(handle: 'settoken')
         expect(I14yDrawer.exists?(handle: 'settoken')).to be false
       end
     end
@@ -44,8 +44,8 @@ describe I14yDrawer do
 
   context 'deleting a drawer' do
     it 'deletes collection in i14y' do
-      response = Hashie::Mash.new('status' => 200, "developer_message" => "OK", "user_message" => "blah blah")
-      expect(I14yCollections).to receive(:delete).with("one").and_return response
+      response = Hashie::Mash.new('status' => 200, 'developer_message' => 'OK', 'user_message' => 'blah blah')
+      expect(I14yCollections).to receive(:delete).with('one').and_return response
       i14y_drawers(:one).destroy
     end
 
@@ -61,8 +61,8 @@ describe I14yDrawer do
     end
   end
 
-  describe "#label" do
-    it "should return the handle" do
+  describe '#label' do
+    it 'should return the handle' do
       expect(i14y_drawers(:one).label).to eq(i14y_drawers(:one).handle)
     end
   end

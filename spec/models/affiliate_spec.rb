@@ -47,7 +47,7 @@ describe Affiliate do
     end
   end
 
-  describe "Creating new instance of Affiliate" do
+  describe 'Creating new instance of Affiliate' do
     it { is_expected.to validate_presence_of :display_name }
     Language.pluck(:code).each do |locale|
       it { is_expected.to allow_value(locale).for(:locale) }
@@ -56,7 +56,7 @@ describe Affiliate do
     it { is_expected.to validate_uniqueness_of(:api_access_key).case_insensitive }
     it { is_expected.to validate_uniqueness_of(:name).case_insensitive }
     it { is_expected.to validate_length_of(:name).is_at_least(2).is_at_most(33) }
-    ["<IMG SRC=", "259771935505'", "spacey name"].each do |value|
+    ['<IMG SRC=', "259771935505'", 'spacey name'].each do |value|
       it { is_expected.not_to allow_value(value).for(:name) }
     end
     %w{data.gov ct-new some_aff 123 NewAff}.each do |value|
@@ -138,7 +138,7 @@ describe Affiliate do
     it { is_expected.to validate_attachment_content_type(:header_image).allowing(%w{ image/gif image/jpeg image/pjpeg image/png image/x-png }).rejecting(nil) }
     it { is_expected.to validate_attachment_content_type(:mobile_logo).allowing(%w{ image/gif image/jpeg image/pjpeg image/png image/x-png }).rejecting(nil) }
 
-    it "should create a new instance given valid attributes" do
+    it 'should create a new instance given valid attributes' do
       Affiliate.create!(valid_create_attributes)
     end
 
@@ -146,18 +146,18 @@ describe Affiliate do
       affiliate = Affiliate.new(valid_create_attributes)
       affiliate.name = 'AffiliateSite'
       affiliate.save!
-      expect(affiliate.name).to eq("affiliatesite")
+      expect(affiliate.name).to eq('affiliatesite')
     end
 
-    describe "on create" do
-      it "should update css_properties with json string from css property hash" do
+    describe 'on create' do
+      it 'should update css_properties with json string from css property hash' do
         css_property_hash = {'title_link_color' => '#33ff33', 'visited_title_link_color' => '#0000ff'}
         affiliate = Affiliate.create!(valid_create_attributes.merge(:css_property_hash => css_property_hash))
         expect(JSON.parse(affiliate.css_properties, :symbolize_names => true)[:title_link_color]).to eq('#33ff33')
         expect(JSON.parse(affiliate.css_properties, :symbolize_names => true)[:visited_title_link_color]).to eq('#0000ff')
       end
 
-      it "should normalize site domains" do
+      it 'should normalize site domains' do
         affiliate = Affiliate.create!(valid_create_attributes.merge(
                                           site_domains_attributes: { '0' => { domain: 'www1.usa.gov' },
                                                                      '1' => { domain: 'www2.usa.gov' },
@@ -174,12 +174,12 @@ describe Affiliate do
         expect(affiliate.site_domains.pluck(:domain).sort).to eq(%w(sec.gov www.sec.gov.staging.net))
       end
 
-      it "should default the govbox fields to OFF" do
+      it 'should default the govbox fields to OFF' do
         affiliate = Affiliate.create!(valid_create_attributes)
         expect(affiliate.is_medline_govbox_enabled).to eq(false)
       end
 
-      it "should have SAYT enabled by default" do
+      it 'should have SAYT enabled by default' do
         expect(Affiliate.create!(valid_create_attributes).is_sayt_enabled).to be true
       end
 
@@ -194,12 +194,12 @@ describe Affiliate do
         expect(duplicate_affiliate.save).to be false
       end
 
-      it "should populate default search label for English site" do
+      it 'should populate default search label for English site' do
         affiliate = Affiliate.create!(valid_attributes.merge(locale: 'en'))
         expect(affiliate.default_search_label).to eq('Everything')
       end
 
-      it "should populate default search labels for Spanish site" do
+      it 'should populate default search labels for Spanish site' do
         affiliate = Affiliate.create!(valid_attributes.merge(locale: 'es'))
         expect(affiliate.default_search_label).to eq('Todo')
       end
@@ -220,7 +220,7 @@ describe Affiliate do
     end
   end
 
-  describe "on save" do
+  describe 'on save' do
     let(:affiliate) { Affiliate.create!(valid_create_attributes) }
 
     it 'should not override default theme attributes' do
@@ -230,7 +230,7 @@ describe Affiliate do
       expect(Affiliate.find(affiliate.id).css_property_hash[:page_background_color]).to eq(Affiliate::THEMES[:default][:page_background_color])
     end
 
-    it "should save favicon URL with http:// prefix when it does not start with http(s)://" do
+    it 'should save favicon URL with http:// prefix when it does not start with http(s)://' do
       url = 'cdn.agency.gov/favicon.ico'
       prefixes = %w( http https HTTP HTTPS invalidhttp:// invalidHtTp:// invalidhttps:// invalidHTtPs:// invalidHttPsS://)
       prefixes.each do |prefix|
@@ -239,7 +239,7 @@ describe Affiliate do
       end
     end
 
-    it "should save favicon URL as is when it starts with http(s)://" do
+    it 'should save favicon URL as is when it starts with http(s)://' do
       url = 'cdn.agency.gov/favicon.ico'
       prefixes = %w( http:// https:// HTTP:// HTTPS:// )
       prefixes.each do |prefix|
@@ -248,7 +248,7 @@ describe Affiliate do
       end
     end
 
-    it "should save external CSS URL with http:// prefix when it does not start with http(s)://" do
+    it 'should save external CSS URL with http:// prefix when it does not start with http(s)://' do
       url = 'cdn.agency.gov/custom.css'
       prefixes = %w( http https HTTP HTTPS invalidhttp:// invalidHtTp:// invalidhttps:// invalidHTtPs:// invalidHttPsS://)
       prefixes.each do |prefix|
@@ -257,7 +257,7 @@ describe Affiliate do
       end
     end
 
-    it "should save external CSS URL as is when it starts with http(s)://" do
+    it 'should save external CSS URL as is when it starts with http(s)://' do
       url = 'cdn.agency.gov/custom.css'
       prefixes = %w( http:// https:// HTTP:// HTTPS:// )
       prefixes.each do |prefix|
@@ -271,13 +271,13 @@ describe Affiliate do
       expect(affiliate.website).to eq('http://usa.gov')
     end
 
-    it "should set css properties" do
+    it 'should set css properties' do
       affiliate.css_property_hash = { font_family: 'Verdana, sans-serif' }
       affiliate.save!
       expect(Affiliate.find(affiliate.id).css_property_hash[:font_family]).to eq('Verdana, sans-serif')
     end
 
-    it "should not set header_footer_nested_css fields" do
+    it 'should not set header_footer_nested_css fields' do
       affiliate.update_attributes!(staged_header_footer_css: '@charset "UTF-8"; @import url("other.css"); h1 { color: blue }', header_footer_css: '')
       expect(affiliate.staged_nested_header_footer_css).to be_blank
       expect(affiliate.header_footer_css).to be_blank
@@ -286,7 +286,7 @@ describe Affiliate do
       expect(affiliate.nested_header_footer_css).to be_blank
     end
 
-    it "should set previous json fields" do
+    it 'should set previous json fields' do
       affiliate.previous_header = 'previous header'
       affiliate.previous_footer = 'previous footer'
       affiliate.save!
@@ -294,7 +294,7 @@ describe Affiliate do
       expect(Affiliate.find(affiliate.id).previous_footer).to eq('previous footer')
     end
 
-    it "should set staged and live json fields" do
+    it 'should set staged and live json fields' do
       affiliate.header = 'live header'
       affiliate.footer = 'live footer'
       affiliate.staged_header = 'staged header'
@@ -313,14 +313,14 @@ describe Affiliate do
       expect(english_affiliate.default_search_label).to eq('Everything')
     end
 
-    it "should populate search labels for Spanish site" do
+    it 'should populate search labels for Spanish site' do
       spanish_affiliate = Affiliate.create!(valid_attributes.merge(locale: 'es'))
       spanish_affiliate.default_search_label = ''
       spanish_affiliate.save!
       expect(spanish_affiliate.default_search_label).to eq('Todo')
     end
 
-    it "should squish string columns" do
+    it 'should squish string columns' do
       affiliate = Affiliate.create!(valid_create_attributes)
       unsquished_attributes = {
         ga_web_property_id: ' GA Web Property  ID  ',
@@ -409,11 +409,11 @@ describe Affiliate do
     end
   end
 
-  describe "on destroy" do
+  describe 'on destroy' do
     let(:affiliate) { Affiliate.create!(display_name: 'connecting affiliate', name: 'anothersite') }
     let(:connected_affiliate) { Affiliate.create!(display_name: 'connected affiliate', name: 'connectedsite') }
 
-    it "should destroy connection" do
+    it 'should destroy connection' do
       affiliate.connections.create!(:connected_affiliate => connected_affiliate, :label => 'search connected affiliate')
       expect(Affiliate.find(affiliate.id).connections.count).to eq(1)
       connected_affiliate.destroy
@@ -421,18 +421,18 @@ describe Affiliate do
     end
   end
 
-  describe "validations" do
-    it "should be valid when FONT_FAMILIES includes font_family in css property hash" do
+  describe 'validations' do
+    it 'should be valid when FONT_FAMILIES includes font_family in css property hash' do
       FontFamily::ALL.each do |font_family|
         expect(Affiliate.new(valid_create_attributes.merge(:css_property_hash => {'font_family' => font_family}))).to be_valid
       end
     end
 
-    it "should not be valid when FONT_FAMILIES does not include font_family in css property hash" do
+    it 'should not be valid when FONT_FAMILIES does not include font_family in css property hash' do
       expect(Affiliate.new(valid_create_attributes.merge(:css_property_hash => {'font_family' => 'Comic Sans MS'}))).not_to be_valid
     end
 
-    it "should be valid when color property in css property hash consists of a # character followed by 3 or 6 hexadecimal digits " do
+    it 'should be valid when color property in css property hash consists of a # character followed by 3 or 6 hexadecimal digits ' do
       %w{ #333 #FFF #fff #12F #666666 #666FFF #FFFfff #ffffff }.each do |valid_color|
         css_property_hash = ActiveSupport::HashWithIndifferentAccess.new({'left_tab_text_color' => "#{valid_color}",
                                                                           'title_link_color' => "#{valid_color}",
@@ -443,7 +443,7 @@ describe Affiliate do
       end
     end
 
-    it "should be invalid when color property in css property hash does not consist of a # character followed by 3 or 6 hexadecimal digits " do
+    it 'should be invalid when color property in css property hash does not consist of a # character followed by 3 or 6 hexadecimal digits ' do
       %w{ 333 invalid #err #1 #22 #4444 #55555 ffffff 1 22 4444 55555 666666 }.each do |invalid_color|
         css_property_hash = ActiveSupport::HashWithIndifferentAccess.new({'left_tab_text_color' => "#{invalid_color}",
                                                                           'title_link_color' => "#{invalid_color}",
@@ -452,19 +452,19 @@ describe Affiliate do
                                                                           'url_link_color' => "#{invalid_color}"})
         affiliate = Affiliate.new(valid_create_attributes.merge(:css_property_hash => css_property_hash))
         expect(affiliate).not_to be_valid
-        expect(affiliate.errors[:base]).to include("Title link color should consist of a # character followed by 3 or 6 hexadecimal digits")
-        expect(affiliate.errors[:base]).to include("Visited title link color should consist of a # character followed by 3 or 6 hexadecimal digits")
-        expect(affiliate.errors[:base]).to include("Description text color should consist of a # character followed by 3 or 6 hexadecimal digits")
-        expect(affiliate.errors[:base]).to include("Url link color should consist of a # character followed by 3 or 6 hexadecimal digits")
+        expect(affiliate.errors[:base]).to include('Title link color should consist of a # character followed by 3 or 6 hexadecimal digits')
+        expect(affiliate.errors[:base]).to include('Visited title link color should consist of a # character followed by 3 or 6 hexadecimal digits')
+        expect(affiliate.errors[:base]).to include('Description text color should consist of a # character followed by 3 or 6 hexadecimal digits')
+        expect(affiliate.errors[:base]).to include('Url link color should consist of a # character followed by 3 or 6 hexadecimal digits')
       end
     end
 
-    it "should validate color property in staged css property hash" do
+    it 'should validate color property in staged css property hash' do
       css_property_hash = ActiveSupport::HashWithIndifferentAccess.new({'title_link_color' => 'invalid', 'visited_title_link_color' => '#DDDD'})
       affiliate = Affiliate.new(valid_create_attributes.merge(:css_property_hash => css_property_hash))
       expect(affiliate.save).to be false
-      expect(affiliate.errors[:base]).to include("Title link color should consist of a # character followed by 3 or 6 hexadecimal digits")
-      expect(affiliate.errors[:base]).to include("Visited title link color should consist of a # character followed by 3 or 6 hexadecimal digits")
+      expect(affiliate.errors[:base]).to include('Title link color should consist of a # character followed by 3 or 6 hexadecimal digits')
+      expect(affiliate.errors[:base]).to include('Visited title link color should consist of a # character followed by 3 or 6 hexadecimal digits')
     end
 
     it 'validates logo alignment' do
@@ -472,15 +472,15 @@ describe Affiliate do
                         css_property_hash: { 'logo_alignment' => 'invalid' }))).not_to be_valid
     end
 
-    it "should not validate header_footer_css" do
-      affiliate = Affiliate.new(valid_create_attributes.merge(:header_footer_css => "h1 { invalid-css-syntax }"))
+    it 'should not validate header_footer_css' do
+      affiliate = Affiliate.new(valid_create_attributes.merge(:header_footer_css => 'h1 { invalid-css-syntax }'))
       expect(affiliate.save).to be true
 
-      affiliate = Affiliate.new(valid_create_attributes.merge(:header_footer_css => "h1 { color: #DDDD }", name: 'anothersite'))
+      affiliate = Affiliate.new(valid_create_attributes.merge(:header_footer_css => 'h1 { color: #DDDD }', name: 'anothersite'))
       expect(affiliate.save).to be true
     end
 
-    it "should not validate staged_header_footer_css for invalid css property value" do
+    it 'should not validate staged_header_footer_css for invalid css property value' do
       affiliate = Affiliate.new(valid_create_attributes.merge(staged_header_footer_css: 'h1 { invalid-css-syntax }'))
       expect(affiliate.save).to be true
 
@@ -491,7 +491,7 @@ describe Affiliate do
     it 'validates locale is valid' do
       affiliate = Affiliate.new(valid_create_attributes.merge(locale: 'invalid_locale'))
       expect(affiliate.save).to be false
-      expect(affiliate.errors[:base]).to include("Locale must be valid")
+      expect(affiliate.errors[:base]).to include('Locale must be valid')
     end
 
     describe 'header tagline validation' do
@@ -593,7 +593,7 @@ describe Affiliate do
       end
     end
 
-    context "is_validate_staged_header_footer is set to true" do
+    context 'is_validate_staged_header_footer is set to true' do
       let(:affiliate) { Affiliate.create!(display_name: 'test header footer validation',
                                           name: 'testheaderfootervalidation',
                                           uses_managed_header_footer: false,
@@ -601,7 +601,7 @@ describe Affiliate do
 
       before { affiliate.is_validate_staged_header_footer = true }
 
-      it "should not allow form, script, style or link elements in staged header or staged footer" do
+      it 'should not allow form, script, style or link elements in staged header or staged footer' do
         header_error_message = %q(HTML to customize the top of your search results page must not contain form, script, style, link elements)
         footer_error_message = %q(HTML to customize the bottom of your search results page must not contain form, script, style, link elements)
 
@@ -652,7 +652,7 @@ describe Affiliate do
         expect(affiliate.errors[:base].join).to match(/#{footer_error_message}/)
       end
 
-      it "should not allow malformed HTML in staged header or staged footer" do
+      it 'should not allow malformed HTML in staged header or staged footer' do
         header_error_message = 'HTML to customize the top of your search results is invalid'
         footer_error_message = 'HTML to customize the bottom of your search results is invalid'
 
@@ -672,26 +672,26 @@ describe Affiliate do
         expect(affiliate.errors[:base].join).to include("#{footer_error_message}")
       end
 
-      it "should not validate header_footer_css" do
-        expect(affiliate.update_attributes(:header_footer_css => "h1 { invalid-css-syntax }")).to be true
-        expect(affiliate.update_attributes(:header_footer_css => "h1 { color: #DDDD }")).to be true
+      it 'should not validate header_footer_css' do
+        expect(affiliate.update_attributes(:header_footer_css => 'h1 { invalid-css-syntax }')).to be true
+        expect(affiliate.update_attributes(:header_footer_css => 'h1 { color: #DDDD }')).to be true
       end
 
-      it "should validate staged_header_footer_css for invalid css property value" do
-        expect(affiliate.update_attributes(:staged_header_footer_css => "h1 { invalid-css-syntax }")).to be false
+      it 'should validate staged_header_footer_css for invalid css property value' do
+        expect(affiliate.update_attributes(:staged_header_footer_css => 'h1 { invalid-css-syntax }')).to be false
         expect(affiliate.errors[:base].first).to match(/Invalid CSS/)
 
-        expect(affiliate.update_attributes(:staged_header_footer_css => "h1 { color: #DDDD }")).to be false
+        expect(affiliate.update_attributes(:staged_header_footer_css => 'h1 { color: #DDDD }')).to be false
         expect(affiliate.errors[:base].first).to match(/Colors must have either three or six digits/)
       end
     end
 
-    context "is_validate_staged_header_footer is set to false" do
+    context 'is_validate_staged_header_footer is set to false' do
       let(:affiliate) { Affiliate.create!(display_name: 'test header footer validation',
                                           name: 'testheaderfootervalidation',
                                           uses_managed_header_footer: false,
                                           staged_uses_managed_header_footer: false) }
-      it "should allow script, style or link elements in staged header or staged footer" do
+      it 'should allow script, style or link elements in staged header or staged footer' do
         affiliate.is_validate_staged_header_footer = false
 
         html_with_script = <<-HTML
@@ -727,8 +727,8 @@ describe Affiliate do
     end
   end
 
-  describe "#update_attributes_for_staging" do
-    it "should set has_staged_content to true and receive update_attributes" do
+  describe '#update_attributes_for_staging' do
+    it 'should set has_staged_content to true and receive update_attributes' do
       affiliate = Affiliate.create!(valid_create_attributes)
       attributes = double('attributes')
       expect(attributes).to receive(:[]).with(:staged_uses_managed_header_footer).and_return('0')
@@ -739,7 +739,7 @@ describe Affiliate do
     end
 
     context "when attributes contain staged_uses_managed_header_footer='0'" do
-      it "should set is_validate_staged_header_footer to true" do
+      it 'should set is_validate_staged_header_footer to true' do
         affiliate = Affiliate.create!(display_name: 'oneserp affiliate', name: 'oneserpaffiliate')
         expect(affiliate).to receive(:is_validate_staged_header_footer=).with(true)
         affiliate.update_attributes_for_staging(:staged_uses_managed_header_footer => '0',
@@ -747,7 +747,7 @@ describe Affiliate do
                                                 :staged_footer => 'staged footer')
       end
 
-      it "should set header_footer_nested_css fields" do
+      it 'should set header_footer_nested_css fields' do
         affiliate = Affiliate.create!(valid_create_attributes)
         affiliate.update_attributes!(:header_footer_css => '@charset "UTF-8"; @import url("other.css"); h1 { color: blue }')
         expect(affiliate.update_attributes_for_staging(
@@ -767,7 +767,7 @@ describe Affiliate do
     end
 
     context "when attributes does not contain staged_uses_managed_header_footer='0'" do
-      it "should set is_validate_staged_header_footer to false" do
+      it 'should set is_validate_staged_header_footer to false' do
         affiliate = Affiliate.create!(display_name: 'oneserp affiliate', name: 'oneserpaffiliate')
         expect(affiliate).to receive(:is_validate_staged_header_footer=).with(false)
         affiliate.update_attributes_for_staging(staged_uses_managed_header_footer: '1')
@@ -775,37 +775,37 @@ describe Affiliate do
     end
   end
 
-  describe "#update_attributes_for_live" do
+  describe '#update_attributes_for_live' do
     let(:affiliate) { Affiliate.create!(valid_create_attributes.merge(:header => 'old header', :footer => 'old footer')) }
 
-    context "when successfully update_attributes" do
+    context 'when successfully update_attributes' do
       before do
         expect(affiliate).to receive(:update_attributes).and_return(true)
       end
 
-      it "should set previous fields" do
+      it 'should set previous fields' do
         expect(affiliate).to receive(:previous_header=).with('old header')
         expect(affiliate).to receive(:previous_footer=).with('old footer')
         expect(affiliate.update_attributes_for_live(:staged_header => 'staged header', :staged_footer => 'staged footer')).to be true
       end
 
-      it "should set attributes from staged to live" do
+      it 'should set attributes from staged to live' do
         expect(affiliate).to receive(:set_attributes_from_staged_to_live)
         expect(affiliate.update_attributes_for_live(:staged_header => 'staged header', :staged_footer => 'staged footer')).to be true
       end
 
-      it "should set has_staged_content to false" do
+      it 'should set has_staged_content to false' do
         expect(affiliate).to receive(:has_staged_content=).with(false)
         expect(affiliate.update_attributes_for_live(:staged_header => 'staged header', :staged_footer => 'staged footer')).to be true
       end
 
-      it "should save!" do
+      it 'should save!' do
         expect(affiliate).to receive(:save!)
         expect(affiliate.update_attributes_for_live(:staged_header => 'staged header', :staged_footer => 'staged footer')).to be true
       end
     end
 
-    context "when update_attributes failed" do
+    context 'when update_attributes failed' do
       before do
         expect(affiliate).to receive(:update_attributes).and_return(false)
         expect(affiliate).not_to receive(:previous_header=)
@@ -817,14 +817,14 @@ describe Affiliate do
     end
 
     context "when attributes contain staged_uses_managed_header_footer='0'" do
-      it "should set is_validate_staged_header_footer to true" do
+      it 'should set is_validate_staged_header_footer to true' do
         expect(affiliate).to receive(:is_validate_staged_header_footer=).with(true)
         affiliate.update_attributes_for_live(:staged_uses_managed_header_footer => '0',
                                              :staged_header => 'staged header',
                                              :staged_footer => 'staged footer')
       end
 
-      it "should set header_footer_nested_css fields" do
+      it 'should set header_footer_nested_css fields' do
         affiliate = Affiliate.create!(valid_create_attributes)
         expect(affiliate.update_attributes_for_live(
           :staged_uses_managed_header_footer => '0',
@@ -845,17 +845,17 @@ describe Affiliate do
     end
 
     context "when attributes does not contain staged_uses_managed_header_footer='0'" do
-      it "should set is_validate_staged_header_footer to false" do
+      it 'should set is_validate_staged_header_footer to false' do
         expect(affiliate).to receive(:is_validate_staged_header_footer=).with(false)
         affiliate.update_attributes_for_live(staged_uses_managed_header_footer: '1')
       end
     end
   end
 
-  describe "#set_attributes_from_staged_to_live" do
+  describe '#set_attributes_from_staged_to_live' do
     let(:affiliate) { Affiliate.create!(valid_create_attributes) }
 
-    it "should set live fields with values from staged fields" do
+    it 'should set live fields with values from staged fields' do
       Affiliate::ATTRIBUTES_WITH_STAGED_AND_LIVE.each do |attribute|
         staged_value = double("staged_value for #{attribute}")
         expect(affiliate).to receive("staged_#{attribute}".to_sym).and_return(staged_value)
@@ -865,10 +865,10 @@ describe Affiliate do
     end
   end
 
-  describe "#set_attributes_from_live_to_staged" do
+  describe '#set_attributes_from_live_to_staged' do
     let(:affiliate) { Affiliate.create!(valid_create_attributes) }
 
-    it "should set staged fields with values from live fields" do
+    it 'should set staged fields with values from live fields' do
       Affiliate::ATTRIBUTES_WITH_STAGED_AND_LIVE.each do |attribute|
         live_value = double("live_value for #{attribute}")
         expect(affiliate).to receive("#{attribute}".to_sym).and_return(live_value)
@@ -883,8 +883,8 @@ describe Affiliate do
     specify { expect(Affiliate.human_attribute_name('name')).to eq('Site Handle (visible to searchers in the URL)') }
   end
 
-  describe "#push_staged_changes" do
-    it "should set attributes from staged to live fields, set has_staged_content to false and save!" do
+  describe '#push_staged_changes' do
+    it 'should set attributes from staged to live fields, set has_staged_content to false and save!' do
       affiliate = Affiliate.create!(valid_create_attributes)
       expect(affiliate).to receive(:set_attributes_from_staged_to_live)
       expect(affiliate).to receive(:has_staged_content=).with(false)
@@ -893,8 +893,8 @@ describe Affiliate do
     end
   end
 
-  describe "#cancel_staged_changes" do
-    it "should set attributes from live to staged fields, set has_staged_content to false and save!" do
+  describe '#cancel_staged_changes' do
+    it 'should set attributes from live to staged fields, set has_staged_content to false and save!' do
       affiliate = Affiliate.create!(valid_create_attributes)
       expect(affiliate).to receive(:set_attributes_from_live_to_staged)
       expect(affiliate).to receive(:has_staged_content=).with(false)
@@ -914,14 +914,14 @@ describe Affiliate do
     end
   end
 
-  describe "#ordered" do
+  describe '#ordered' do
     it "should include a scope called 'ordered'" do
       expect(Affiliate.ordered).not_to be_nil
     end
   end
 
-  describe "#sync_staged_attributes" do
-    context "when the affiliate has staged content" do
+  describe '#sync_staged_attributes' do
+    context 'when the affiliate has staged content' do
       let(:affiliate) { affiliates(:basic_affiliate) }
       before do
         expect(affiliate).to receive(:has_staged_content?).and_return(false)
@@ -931,7 +931,7 @@ describe Affiliate do
       specify { expect(affiliate.sync_staged_attributes).to be true }
     end
 
-    context "when the affiliate does not have staged content" do
+    context 'when the affiliate does not have staged content' do
       let(:affiliate) { affiliates(:basic_affiliate) }
       before do
         expect(affiliate).to receive(:has_staged_content?).and_return(true)
@@ -942,10 +942,10 @@ describe Affiliate do
     end
   end
 
-  describe "#has_multiple_domains?" do
+  describe '#has_multiple_domains?' do
     let(:affiliate) { Affiliate.create!(valid_create_attributes) }
 
-    context "when Affiliate has more than 1 domain" do
+    context 'when Affiliate has more than 1 domain' do
       before do
         affiliate.add_site_domains('foo.gov' => nil, 'bar.gov' => nil)
       end
@@ -953,11 +953,11 @@ describe Affiliate do
       specify { expect(affiliate).to have_multiple_domains }
     end
 
-    context "when Affiliate has no domain" do
+    context 'when Affiliate has no domain' do
       specify { expect(affiliate).not_to have_multiple_domains }
     end
 
-    context "when Affiliate has 1 domain" do
+    context 'when Affiliate has 1 domain' do
       before do
         affiliate.add_site_domains('foo.gov' => nil)
       end
@@ -991,7 +991,7 @@ describe Affiliate do
     end
   end
 
-  describe "#has_no_social_image_feeds?" do
+  describe '#has_no_social_image_feeds?' do
     let(:affiliate) { affiliates(:basic_affiliate) }
 
     context 'when affiliate has no ASIS profiles' do
@@ -1008,9 +1008,9 @@ describe Affiliate do
         affiliate.flickr_profiles.delete_all
         affiliate.instagram_profiles.delete_all
         affiliate.rss_feeds.mrss.delete_all
-        feed = affiliate.rss_feeds.build(name: "mrss", show_only_media_content: true)
-        feed.rss_feed_urls.build(url: "http://www.defense.gov/news/mrss_leadphotos.xml", last_crawl_status: 'OK',
-                                 oasis_mrss_name: nil, rss_feed_owner_type: "Affiliate")
+        feed = affiliate.rss_feeds.build(name: 'mrss', show_only_media_content: true)
+        feed.rss_feed_urls.build(url: 'http://www.defense.gov/news/mrss_leadphotos.xml', last_crawl_status: 'OK',
+                                 oasis_mrss_name: nil, rss_feed_owner_type: 'Affiliate')
         allow(feed.rss_feed_urls.first).to receive(:url_must_point_to_a_feed) { true }
         feed.save!
       end
@@ -1018,8 +1018,8 @@ describe Affiliate do
     end
   end
 
-  describe "#css_property_hash" do
-    context "when theme is custom" do
+  describe '#css_property_hash' do
+    context 'when theme is custom' do
       let(:css_property_hash) { {:title_link_color => '#33ff33', :visited_title_link_color => '#0000ff'}.reverse_merge(Affiliate::DEFAULT_CSS_PROPERTIES) }
       let(:affiliate) { Affiliate.create!(valid_create_attributes.merge(:theme => 'custom', :css_property_hash => css_property_hash)) }
 
@@ -1036,44 +1036,44 @@ describe Affiliate do
     end
   end
 
-  describe "scope_ids_as_array" do
-    context "when an affiliate has a non-null scope_ids attribute" do
+  describe 'scope_ids_as_array' do
+    context 'when an affiliate has a non-null scope_ids attribute' do
       before do
         @affiliate = Affiliate.new(:scope_ids => 'Scope1,Scope2,Scope3')
       end
 
-      it "should return the scopes as an array" do
+      it 'should return the scopes as an array' do
         expect(@affiliate.scope_ids_as_array).to eq(['Scope1', 'Scope2', 'Scope3'])
       end
     end
 
-    context "when the scope_ids have spaces near the commas" do
+    context 'when the scope_ids have spaces near the commas' do
       before do
-        @affiliate = Affiliate.new(:scope_ids => "Scope1, Scope2, Scope3")
+        @affiliate = Affiliate.new(:scope_ids => 'Scope1, Scope2, Scope3')
       end
 
-      it "should strip out whitespace" do
+      it 'should strip out whitespace' do
         expect(@affiliate.scope_ids_as_array).to eq(['Scope1', 'Scope2', 'Scope3'])
       end
     end
 
-    context "when an affiliate has a nil scope_ids attribute" do
+    context 'when an affiliate has a nil scope_ids attribute' do
       before do
         @affiliate = Affiliate.new
       end
 
-      it "should return an empty array" do
+      it 'should return an empty array' do
         expect(@affiliate.scope_ids_as_array).to eq([])
       end
     end
   end
 
-  describe "#add_site_domains" do
+  describe '#add_site_domains' do
     let(:affiliate) { Affiliate.create!(valid_create_attributes) }
 
-    context "when input domains have leading http(s) protocols" do
-      it "should delete leading http(s) protocols from domains" do
-        site_domain_hash = ActiveSupport::OrderedHash["http://foo.gov", nil, "bar.gov/somepage.html", nil, "https://blat.gov/somedir", nil]
+    context 'when input domains have leading http(s) protocols' do
+      it 'should delete leading http(s) protocols from domains' do
+        site_domain_hash = ActiveSupport::OrderedHash['http://foo.gov', nil, 'bar.gov/somepage.html', nil, 'https://blat.gov/somedir', nil]
         affiliate.add_site_domains(site_domain_hash)
 
         site_domains = affiliate.site_domains.reload
@@ -1082,9 +1082,9 @@ describe Affiliate do
       end
     end
 
-    context "when input domains have blank/whitespace" do
-      it "should delete blank/whitespace from domains" do
-        site_domain_hash = ActiveSupport::OrderedHash[" do.gov ", nil, " bar.gov", nil, "blat.gov ", nil]
+    context 'when input domains have blank/whitespace' do
+      it 'should delete blank/whitespace from domains' do
+        site_domain_hash = ActiveSupport::OrderedHash[' do.gov ', nil, ' bar.gov', nil, 'blat.gov ', nil]
         affiliate.add_site_domains(site_domain_hash)
 
         site_domains = affiliate.site_domains.reload
@@ -1093,12 +1093,12 @@ describe Affiliate do
       end
     end
 
-    context "when input domains have dupes" do
+    context 'when input domains have dupes' do
       before do
-        affiliate.add_site_domains("foo.gov" => nil)
+        affiliate.add_site_domains('foo.gov' => nil)
       end
 
-      it "should delete dupes from domains" do
+      it 'should delete dupes from domains' do
         expect(affiliate.add_site_domains('foo.gov' => nil)).to be_empty
 
         site_domains = affiliate.site_domains.reload
@@ -1108,7 +1108,7 @@ describe Affiliate do
     end
 
     context "when input domains don't look like domains" do
-      it "should filter them out" do
+      it 'should filter them out' do
         site_domain_hash = ActiveSupport::OrderedHash['foo.gov', nil, 'somepage.info', nil, 'whatisthis?', nil, 'bar.gov/somedir/', nil]
         affiliate.add_site_domains(site_domain_hash)
 
@@ -1118,8 +1118,8 @@ describe Affiliate do
       end
     end
 
-    context "when one input domain is covered by another" do
-      it "should filter it out" do
+    context 'when one input domain is covered by another' do
+      it 'should filter it out' do
         site_domain_hash = ActiveSupport::OrderedHash['blat.gov', nil, 'blat.gov/s.html', nil, 'bar.gov/somedir/', nil, 'bar.gov', nil, 'www.bar.gov', nil, 'xxbar.gov', nil]
         added_site_domains = affiliate.add_site_domains(site_domain_hash)
 
@@ -1129,7 +1129,7 @@ describe Affiliate do
       end
     end
 
-    context "when existing domains are covered by new ones" do
+    context 'when existing domains are covered by new ones' do
       let(:domains) { %w( a.foo.gov b.foo.gov y.bar.gov z.bar.gov c.foo.gov agency.gov ) }
 
       before do
@@ -1138,7 +1138,7 @@ describe Affiliate do
         expect(SiteDomain.where(:affiliate_id => affiliate.id).count).to eq(6)
       end
 
-      it "should filter out existing domains" do
+      it 'should filter out existing domains' do
         added_site_domains = affiliate.add_site_domains({'foo.gov' => nil, 'bar.gov' => nil})
 
         expect(added_site_domains.count).to eq(2)
@@ -1151,17 +1151,17 @@ describe Affiliate do
     end
   end
 
-  describe "#update_site_domain" do
+  describe '#update_site_domain' do
     let(:affiliate) {  Affiliate.create!(valid_create_attributes) }
     let(:site_domain) { SiteDomain.find_by_affiliate_id_and_domain(affiliate.id, 'www.gsa.gov') }
 
-    context "when existing domain is covered by new ones" do
+    context 'when existing domain is covered by new ones' do
       before do
         affiliate.add_site_domains({'www1.usa.gov' => nil, 'www2.usa.gov' => nil, 'www.gsa.gov' => nil})
         expect(SiteDomain.where(:affiliate_id => affiliate.id).count).to eq(3)
       end
 
-      it "should filter out existing domains" do
+      it 'should filter out existing domains' do
         expect(affiliate.update_site_domain(site_domain, {:domain => 'usa.gov', :site_name => nil})).to be_truthy
         site_domains = affiliate.site_domains.reload
         expect(site_domains.count).to eq(1)
@@ -1170,7 +1170,7 @@ describe Affiliate do
     end
   end
 
-  describe "#refresh_indexed_documents(scope)" do
+  describe '#refresh_indexed_documents(scope)' do
     before do
       @affiliate = affiliates(:basic_affiliate)
       @affiliate.fetch_concurrency = 2
@@ -1182,19 +1182,19 @@ describe Affiliate do
                                                :url => 'http://nps.gov/pdf.pdf',
                                                :last_crawl_status => IndexedDocument::OK_STATUS,
                                                :last_crawled_at => Time.now,
-                                               :body => "this is the doc body")
+                                               :body => 'this is the doc body')
       @affiliate.save!
     end
 
-    it "should enqueue just the scoped docs in batches" do
+    it 'should enqueue just the scoped docs in batches' do
       expect(Resque).to receive(:enqueue_with_priority).with(:low, AffiliateIndexedDocumentFetcher, @affiliate.id, @first.id, @second.id, 'not_ok')
       expect(Resque).to receive(:enqueue_with_priority).with(:low, AffiliateIndexedDocumentFetcher, @affiliate.id, @third.id, @third.id, 'not_ok')
       @affiliate.refresh_indexed_documents('not_ok')
     end
   end
 
-  describe "#sanitized_header" do
-    it "should remove all banned HTML elements" do
+  describe '#sanitized_header' do
+    it 'should remove all banned HTML elements' do
       tainted_header = <<-HTML
         <script src="http://cdn.agency.gov/script.js"></script>
         <link href="http://cdn.agency.gov/link.css"></link>
@@ -1207,8 +1207,8 @@ describe Affiliate do
     end
   end
 
-  describe "#sanitized_footer" do
-    it "should remove all banned HTML elements" do
+  describe '#sanitized_footer' do
+    it 'should remove all banned HTML elements' do
       tainted_footer = <<-HTML
         <script src="http://cdn.agency.gov/script.js"></script>
         <link href="http://cdn.agency.gov/link.css"></link>
@@ -1221,13 +1221,13 @@ describe Affiliate do
     end
   end
 
-  describe "#unused_features" do
+  describe '#unused_features' do
     before do
       @affiliate = affiliates(:power_affiliate)
       @affiliate.features.delete_all
     end
 
-    it "should return the collection of unused features for the affiliate" do
+    it 'should return the collection of unused features for the affiliate' do
       ufs = @affiliate.unused_features
       expect(ufs.size).to eq(2)
       @affiliate.features << features(:sayt)
@@ -1333,7 +1333,7 @@ describe Affiliate do
     end
   end
 
-  describe "#should_show_job_organization_name?" do
+  describe '#should_show_job_organization_name?' do
     let(:affiliate) { affiliates(:basic_affiliate) }
 
     context 'when agency is blank' do
@@ -1344,7 +1344,7 @@ describe Affiliate do
 
     context 'when agency has no org codes' do
       before do
-        agency = Agency.create!(name: "National Park Service", abbreviation: "NPS")
+        agency = Agency.create!(name: 'National Park Service', abbreviation: 'NPS')
         affiliate.agency = agency
       end
 
@@ -1355,8 +1355,8 @@ describe Affiliate do
 
     context 'when agency org codes are all department level' do
       before do
-        agency = Agency.create!(name: "National Park Service", abbreviation: "NPS")
-        AgencyOrganizationCode.create!(organization_code: "GS", agency: agency)
+        agency = Agency.create!(name: 'National Park Service', abbreviation: 'NPS')
+        AgencyOrganizationCode.create!(organization_code: 'GS', agency: agency)
         affiliate.agency = agency
       end
 
@@ -1367,10 +1367,10 @@ describe Affiliate do
 
     context 'when only some agency org codes are department level' do
       before do
-        agency = Agency.create!(name: "National Park Service", abbreviation: "NPS")
-        AgencyOrganizationCode.create!(organization_code: "GS", agency: agency)
-        AgencyOrganizationCode.create!(organization_code: "AF", agency: agency)
-        AgencyOrganizationCode.create!(organization_code: "USMI", agency: agency)
+        agency = Agency.create!(name: 'National Park Service', abbreviation: 'NPS')
+        AgencyOrganizationCode.create!(organization_code: 'GS', agency: agency)
+        AgencyOrganizationCode.create!(organization_code: 'AF', agency: agency)
+        AgencyOrganizationCode.create!(organization_code: 'USMI', agency: agency)
         affiliate.agency = agency
       end
 
@@ -1380,7 +1380,7 @@ describe Affiliate do
     end
   end
 
-  describe "#default_autodiscovery_url" do
+  describe '#default_autodiscovery_url' do
     let(:site_domains_attributes) { nil }
     let(:single_domain) { { '0' => { domain: 'usa.gov' } } }
     let(:multiple_domains) { single_domain.merge({ '1' => { domain: 'navy.mil' } }) }
@@ -1393,38 +1393,38 @@ describe Affiliate do
       Affiliate.create!(attrs)
     end
 
-    context "when the website is empty" do
+    context 'when the website is empty' do
       let(:website) { nil }
       its(:default_autodiscovery_url) { should be_nil }
 
-      context "when a single site_domain is provided" do
+      context 'when a single site_domain is provided' do
         let(:site_domains_attributes) { single_domain }
         its(:default_autodiscovery_url) { should eq('http://usa.gov') }
       end
 
-      context "when mutiple site_domains are provided" do
+      context 'when mutiple site_domains are provided' do
         let(:site_domains_attributes) { multiple_domains }
         its(:default_autodiscovery_url) { should be_nil }
       end
     end
 
-    context "when the website is present" do
+    context 'when the website is present' do
       let(:website) { valid_create_attributes[:website] }
       its(:default_autodiscovery_url) { should eq(website) }
 
-      context "when a single site_domain is provided" do
+      context 'when a single site_domain is provided' do
         let(:site_domains_attributes) { single_domain }
         its(:default_autodiscovery_url) { should eq(website) }
       end
 
-      context "when mutiple site_domains are provided" do
+      context 'when mutiple site_domains are provided' do
         let(:site_domains_attributes) { multiple_domains }
         its(:default_autodiscovery_url) { should eq(website) }
       end
     end
   end
 
-  describe "#enable_video_govbox!" do
+  describe '#enable_video_govbox!' do
     let(:affiliate) { affiliates(:gobiernousa_affiliate) }
     before do
       youtube_profile = youtube_profiles(:whitehouse)
@@ -1433,7 +1433,7 @@ describe Affiliate do
     end
 
     it 'should localize "Videos" for the name of the RSS feed' do
-      expect(affiliate.rss_feeds.last.name).to eq("Vídeos")
+      expect(affiliate.rss_feeds.last.name).to eq('Vídeos')
     end
   end
 
@@ -1487,88 +1487,88 @@ describe Affiliate do
     let(:affiliate) { affiliates(:usagov_affiliate) }
     let(:template_rounded) { affiliate_templates(:usagov_rounded_header_link)}
 
-    describe "#load_template_schema" do
+    describe '#load_template_schema' do
       let(:affiliate) { affiliates(:usagov_affiliate) }
 
-      it "loads the templates Schema if no schema is stored in DB" do
+      it 'loads the templates Schema if no schema is stored in DB' do
         expect(affiliate.load_template_schema).to eq(Template.default.schema)
       end
 
-      it "loads the saved Schema if stored in DB" do
-        changed_to_schema = {"css" => "Test Schema"}.to_json
+      it 'loads the saved Schema if stored in DB' do
+        changed_to_schema = {'css' => 'Test Schema'}.to_json
         affiliate.update_attribute(:template_schema, changed_to_schema)
         affiliate.reload
         expect(affiliate.load_template_schema.to_json).to eq(changed_to_schema)
       end
     end
 
-    describe "#save_template_schema" do
+    describe '#save_template_schema' do
       let(:affiliate) { affiliates(:usagov_affiliate) }
 
-      it "merges defaults and saves the schema" do
-        allow(Template).to receive_message_chain(:default, :schema).and_return({"schema" => {"default" => "default" }})
-        affiliate.save_template_schema({ "schema" => {"test_schema" => "test"}})
-        expect(affiliate.load_template_schema).to eq(Hashie::Mash.new({"schema"=>{"default"=>"default", "test_schema"=>"test"}}))
+      it 'merges defaults and saves the schema' do
+        allow(Template).to receive_message_chain(:default, :schema).and_return({'schema' => {'default' => 'default' }})
+        affiliate.save_template_schema({ 'schema' => {'test_schema' => 'test'}})
+        expect(affiliate.load_template_schema).to eq(Hashie::Mash.new({'schema'=>{'default'=>'default', 'test_schema'=>'test'}}))
       end
 
-      it "loads the schema if not blank, merges new values and saves the schema" do
-        affiliate.template_schema = {"schema" => {"default" => "default" }}.to_json
+      it 'loads the schema if not blank, merges new values and saves the schema' do
+        affiliate.template_schema = {'schema' => {'default' => 'default' }}.to_json
         affiliate.save
         affiliate.reload
 
-        affiliate.save_template_schema({ "schema" => {"test_schema" => "test"}})
-        expected_schema = {"schema"=>{"default"=>"default", "test_schema"=>"test"}}
+        affiliate.save_template_schema({ 'schema' => {'test_schema' => 'test'}})
+        expected_schema = {'schema'=>{'default'=>'default', 'test_schema'=>'test'}}
         expect(affiliate.load_template_schema).to eq(expected_schema)
       end
 
     end
 
-    describe "#reset_template_schema" do
+    describe '#reset_template_schema' do
       let(:affiliate) { affiliates(:usagov_affiliate) }
 
-      it "resets the schema" do
-        affiliate.update_attribute(:template_schema, {"test" => "test"}.to_json)
-        allow(Template).to receive_message_chain(:default, :schema).and_return({"css" => {"default" => "default" }})
-        expect(affiliate.reset_template_schema).to eq(Hashie::Mash.new({"css"=>{"default"=>"default"}}))
+      it 'resets the schema' do
+        affiliate.update_attribute(:template_schema, {'test' => 'test'}.to_json)
+        allow(Template).to receive_message_chain(:default, :schema).and_return({'css' => {'default' => 'default' }})
+        expect(affiliate.reset_template_schema).to eq(Hashie::Mash.new({'css'=>{'default'=>'default'}}))
       end
     end
 
-    describe "#port_classic_theme" do
+    describe '#port_classic_theme' do
       let(:affiliate) { affiliates(:usagov_affiliate) }
 
-      it "merges existing colors into template_schema" do
+      it 'merges existing colors into template_schema' do
         affiliate.update_attributes({
-          "css_property_hash"=>{
-          "header_tagline_font_size"=>nil,
-          "content_background_color"=>"#FFFFFF",
-          "content_border_color"=>"#CACACA",
-          "content_box_shadow_color"=>"#555555",
-          "description_text_color"=>"#000000",
-          "footer_background_color"=>"#DFDFDF",
-          "footer_links_text_color"=>"#000000",
-          "header_links_background_color"=>"#0068c4",
-          "header_links_text_color"=>"#fff",
-          "header_text_color"=>"#000000",
-          "header_background_color"=>"#FFFFFF",
-          "header_tagline_background_color"=>"#000000",
-          "header_tagline_color"=>"#FFFFFF",
-          "search_button_text_color"=>"#FFFFFF",
-          "search_button_background_color"=>"#00396F",
-          "left_tab_text_color"=>"#9E3030",
-          "navigation_background_color"=>"#F1F1F1",
-          "navigation_link_color"=>"#505050",
-          "page_background_color"=>"#99999",
-          "title_link_color"=>"#2200CC",
-          "url_link_color"=>"#006800",
-          "visited_title_link_color"=>"#800080",
-          "font_family"=>"Arial, sans-serif",
-          "header_tagline_font_family"=>"Georgia, \"Times New Roman\", serif",
-          "header_tagline_font_style"=>"italic"},
-          "theme"=>"custom"
+          'css_property_hash'=>{
+          'header_tagline_font_size'=>nil,
+          'content_background_color'=>'#FFFFFF',
+          'content_border_color'=>'#CACACA',
+          'content_box_shadow_color'=>'#555555',
+          'description_text_color'=>'#000000',
+          'footer_background_color'=>'#DFDFDF',
+          'footer_links_text_color'=>'#000000',
+          'header_links_background_color'=>'#0068c4',
+          'header_links_text_color'=>'#fff',
+          'header_text_color'=>'#000000',
+          'header_background_color'=>'#FFFFFF',
+          'header_tagline_background_color'=>'#000000',
+          'header_tagline_color'=>'#FFFFFF',
+          'search_button_text_color'=>'#FFFFFF',
+          'search_button_background_color'=>'#00396F',
+          'left_tab_text_color'=>'#9E3030',
+          'navigation_background_color'=>'#F1F1F1',
+          'navigation_link_color'=>'#505050',
+          'page_background_color'=>'#99999',
+          'title_link_color'=>'#2200CC',
+          'url_link_color'=>'#006800',
+          'visited_title_link_color'=>'#800080',
+          'font_family'=>'Arial, sans-serif',
+          'header_tagline_font_family'=>'Georgia, "Times New Roman", serif',
+          'header_tagline_font_style'=>'italic'},
+          'theme'=>'custom'
         })
         affiliate.port_classic_theme
 
-        expect(affiliate.load_template_schema.css.colors.header.header_text_color).to eq "#000000"
+        expect(affiliate.load_template_schema.css.colors.header.header_text_color).to eq '#000000'
 
       end
     end

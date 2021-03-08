@@ -4,10 +4,10 @@ describe SiteDomain do
   fixtures :affiliates, :features
   let(:affiliate) { affiliates(:basic_affiliate) }
 
-  it_behaves_like "a search domain object"
+  it_behaves_like 'a search domain object'
 
-  describe "#create" do
-    context "when covering/duplicate domain already exists" do
+  describe '#create' do
+    context 'when covering/duplicate domain already exists' do
       before do
         affiliate.site_domains.destroy_all
         affiliate.site_domains.create!(:domain => 'usa.gov')
@@ -32,17 +32,17 @@ describe SiteDomain do
     end
   end
 
-  describe "#save" do
+  describe '#save' do
     let(:site_domain) { affiliate.site_domains.create!(:domain => 'usa.gov', :site_name => 'The Official Search Engine') }
 
-    it "should populate site_name" do
+    it 'should populate site_name' do
       expect(site_domain.update_attributes(:domain => 'search.usa.gov', :site_name => nil)).to be true
       expect(site_domain.site_name).to eq('search.usa.gov')
     end
 
   end
 
-  describe ".process_file" do
+  describe '.process_file' do
     let(:site_domains) { ActiveSupport::OrderedHash['gsa.gov', '', 'search.usa.gov', 'The Official Search Engine'] }
     let(:file) do
       tempfile = Tempfile.new('site_domains.xml')
@@ -55,7 +55,7 @@ describe SiteDomain do
     end
     let(:site_domain) { mock_model(SiteDomain) }
 
-    context "when the file is nil" do
+    context 'when the file is nil' do
       specify { expect(SiteDomain.process_file(affiliate, nil)).to eq({ :success => false,
                                                                     :error_message => SiteDomain::INVALID_FILE_FORMAT_MESSAGE }) }
     end
@@ -69,14 +69,14 @@ describe SiteDomain do
                                                                     :error_message => SiteDomain::INVALID_FILE_FORMAT_MESSAGE }) }
     end
 
-    context "when content type is not csv" do
+    context 'when content type is not csv' do
       let(:content_type) { 'text/xml' }
 
       specify { expect(SiteDomain.process_file(affiliate, file)).to eq({:success => false,
                                                                     :error_message => 'Invalid file format. Please upload a csv file (.csv).'}) }
     end
 
-    context "when content type is csv and successfully added domains" do
+    context 'when content type is csv and successfully added domains' do
       let(:content_type) { 'text/csv' }
 
       before do
@@ -86,7 +86,7 @@ describe SiteDomain do
       specify { expect(SiteDomain.process_file(affiliate, file)).to eq({:success => true, :added => 2}) }
     end
 
-    context "when content type is csv and there is an existing domain" do
+    context 'when content type is csv and there is an existing domain' do
       let(:content_type) { 'text/csv' }
 
       before do

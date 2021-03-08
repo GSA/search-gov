@@ -40,7 +40,7 @@ describe FlickrData do
     end
   end
 
-  describe "#new_profile_created?" do
+  describe '#new_profile_created?' do
     before { allow(flickr.urls).to receive(:lookupUser).and_return(flickr_response) }
     it 'returns whether or not a new FlickrProfile got created' do
       url = 'https://www.flickr.com/photos/marine_corps/'.freeze

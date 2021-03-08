@@ -38,7 +38,7 @@ describe DocumentFetcher do
     it 'can be stubbed by Webmock' do
       stub_request(:get,'https://www.healthcare.gov/').to_return({body: 'foo', status: 200})
       expect(DocumentFetcher.fetch 'https://www.healthcare.gov/').
-        to eq ({ body: "foo",  last_effective_url: "https://www.healthcare.gov/", status: "200" })
+        to eq ({ body: 'foo',  last_effective_url: 'https://www.healthcare.gov/', status: '200' })
     end
 
     describe 'with timeout overrides' do

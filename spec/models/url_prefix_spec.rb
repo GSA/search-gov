@@ -10,14 +10,14 @@ describe UrlPrefix do
     }
   end
 
-  describe "Creating new instance" do
+  describe 'Creating new instance' do
     it { is_expected.to belong_to :document_collection }
     it { is_expected.to validate_presence_of :prefix }
     it { is_expected.to validate_uniqueness_of(:prefix).scoped_to(:document_collection_id).case_insensitive }
-    it { is_expected.not_to allow_value("foogov").for(:prefix)}
-    it { is_expected.to allow_value("http://www.foo.gov/").for(:prefix)}
-    it { is_expected.to allow_value("https://www.foo.gov/").for(:prefix)}
-    it { is_expected.to allow_value("http://foo.gov/subfolder/").for(:prefix)}
+    it { is_expected.not_to allow_value('foogov').for(:prefix)}
+    it { is_expected.to allow_value('http://www.foo.gov/').for(:prefix)}
+    it { is_expected.to allow_value('https://www.foo.gov/').for(:prefix)}
+    it { is_expected.to allow_value('http://foo.gov/subfolder/').for(:prefix)}
 
     it 'should cap prefix length at 255 characters' do
       too_long = "http://www.foo.gov/#{'waytoolong'*25}/"
@@ -26,20 +26,20 @@ describe UrlPrefix do
       expect(url_prefix.errors[:prefix].first).to match(/too long/)
     end
 
-    it "should validate the URL prefix against URI.parse" do
-      url_prefix = UrlPrefix.new(@valid_attributes.merge(:prefix => "http://www.gov.gov/pipesare||bad/"))
+    it 'should validate the URL prefix against URI.parse' do
+      url_prefix = UrlPrefix.new(@valid_attributes.merge(:prefix => 'http://www.gov.gov/pipesare||bad/'))
       expect(url_prefix.valid?).to be false
-      expect(url_prefix.errors.full_messages.first).to eq("Prefix is not a valid URL")
+      expect(url_prefix.errors.full_messages.first).to eq('Prefix is not a valid URL')
     end
 
-    it "normalizes the prefix" do
+    it 'normalizes the prefix' do
       expect(UrlPrefix.create!(@valid_attributes.merge(:prefix=> '    www.FOO.gov   ')).prefix).to eq('http://www.foo.gov/')
     end
   end
 
-  describe "#label" do
-    it "should return the prefix" do
-      expect(UrlPrefix.new(:prefix => "foo").label).to eq("foo")
+  describe '#label' do
+    it 'should return the prefix' do
+      expect(UrlPrefix.new(:prefix => 'foo').label).to eq('foo')
     end
   end
 

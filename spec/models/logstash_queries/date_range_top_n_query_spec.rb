@@ -17,26 +17,26 @@ describe DateRangeTopNQuery do
           "filter": [
             {
               "term": {
-                "params.affiliate": "affiliate_name"
+                "params.affiliate": 'affiliate_name'
               }
             },
             {
               "terms": {
-                "type": ["search"]
+                "type": ['search']
               }
             },
             {
               "range": {
                 "@timestamp": {
-                  "gte": "2019-11-01",
-                  "lte": "2019-11-07"
+                  "gte": '2019-11-01',
+                  "lte": '2019-11-07'
                 }
               }
             }
           ],
           "must_not": {
             "term": {
-              "useragent.device": "Spider"
+              "useragent.device": 'Spider'
             }
           }
         }
@@ -44,7 +44,7 @@ describe DateRangeTopNQuery do
       "aggs": {
         "agg": {
           "terms": {
-            "field": "params.query.raw",
+            "field": 'params.query.raw',
             "size": 1000
           }
         }

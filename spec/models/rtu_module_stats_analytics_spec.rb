@@ -5,8 +5,8 @@ describe RtuModuleStatsAnalytics do
 
   let(:module_stats_analytics) { RtuModuleStatsAnalytics.new(Date.yesterday..Date.current, 'site name', true) }
 
-  describe "#module_stats" do
-    context "when stats are available for the range" do
+  describe '#module_stats' do
+    context 'when stats are available for the range' do
       let(:mb_json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/module_breakdown.json")) }
       let(:ms_json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/module_sparklines.json")) }
       let(:os_json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/overall_sparkline.json")) }
@@ -19,7 +19,7 @@ describe RtuModuleStatsAnalytics do
                      mb_json_response)
       end
 
-      it "should return collection of structures including all verticals/affiliates, grouped by module, summed over the date range, ordered by descending impression count that respond to display_name, impressions, clicks, clickthru_ratio, average_clickthru_ratio, and historical_ctr" do
+      it 'should return collection of structures including all verticals/affiliates, grouped by module, summed over the date range, ordered by descending impression count that respond to display_name, impressions, clicks, clickthru_ratio, average_clickthru_ratio, and historical_ctr' do
         stats = module_stats_analytics.module_stats
 
         expect(stats.first.display_name).to eq(search_modules(:bweb).display_name)
@@ -39,9 +39,9 @@ describe RtuModuleStatsAnalytics do
 
     end
 
-    context "when no stats are available for the daterange" do
+    context 'when no stats are available for the daterange' do
 
-      it "should return an empty array" do
+      it 'should return an empty array' do
         stats = module_stats_analytics.module_stats
         expect(stats).to eq([])
       end

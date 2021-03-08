@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Sanitizer, ".sanitize" do
+describe Sanitizer, '.sanitize' do
   subject(:sanitize) { Sanitizer.sanitize(string) }
 
   context 'when the string contains HTML tags' do

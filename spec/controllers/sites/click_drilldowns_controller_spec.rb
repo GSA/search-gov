@@ -42,7 +42,7 @@ describe Sites::ClickDrilldownsController do
             format: 'csv'
 
         expect(response.content_type).to eq('text/csv')
-        expect(response.headers["Content-Disposition"]).to eq("attachment;filename=nps.gov_http://some.gov.url/super_long_so_truncate_at_50/b_2015-02-01_2015-02-05.csv")
+        expect(response.headers['Content-Disposition']).to eq('attachment;filename=nps.gov_http://some.gov.url/super_long_so_truncate_at_50/b_2015-02-01_2015-02-05.csv')
         expect(response.body).to eq(read_fixture_file('/csv/click_drilldown.csv'))
       end
     end

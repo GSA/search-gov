@@ -4,19 +4,19 @@ describe I14ySearch do
   fixtures :affiliates, :i14y_drawers, :i14y_memberships, :tag_filters
 
   let(:affiliate) { affiliates(:i14y_affiliate) }
-  let(:i14y_search) { I14ySearch.new(affiliate: affiliate, query: "marketplase") }
+  let(:i14y_search) { I14ySearch.new(affiliate: affiliate, query: 'marketplase') }
 
   context 'when results are available' do
-    let(:i14y_search) { I14ySearch.new(affiliate: affiliate, query: "marketplase", per_page: 20) }
+    let(:i14y_search) { I14ySearch.new(affiliate: affiliate, query: 'marketplase', per_page: 20) }
 
-    it "should return a response" do
+    it 'should return a response' do
       i14y_search.run
       expect(i14y_search.startrecord).to eq(1)
       expect(i14y_search.endrecord).to eq(20)
       expect(i14y_search.total).to eq(270)
       expect(i14y_search.spelling_suggestion).to eq('marketplace')
       first = i14y_search.results.first
-      expect(first.title).to eq("Marketplace")
+      expect(first.title).to eq('Marketplace')
       expect(first.link).to eq('https://www.healthcare.gov/glossary/marketplace')
       expect(first.description).to eq('See Health Insurance Marketplace...More info on Health Insurance Marketplace')
       expect(first.body).to eq('More info on Health Insurance Marketplace')
@@ -131,10 +131,10 @@ describe I14ySearch do
 
   context 'when there is some problem with the i14y client' do
     before do
-      allow(I14yCollections).to receive(:search).and_raise Faraday::ClientError.new(Exception.new("problem"))
+      allow(I14yCollections).to receive(:search).and_raise Faraday::ClientError.new(Exception.new('problem'))
     end
 
-    it "should log the error" do
+    it 'should log the error' do
       expect(Rails.logger).to receive(:error).with /I14y search problem/
       i14y_search.run
     end

@@ -51,7 +51,7 @@ describe ApiRateLimiter do
         rate_limiter.within_limit { connection.get }
       end
 
-      context "when soft limiting is enabled" do
+      context 'when soft limiting is enabled' do
         subject(:rate_limiter) { ApiRateLimiter.new(namespace, true) }
         let(:allowed_calls) { 3 }
 

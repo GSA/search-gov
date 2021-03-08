@@ -22,8 +22,8 @@ describe ElasticBoostedContent do
     affiliate.locale = 'en'
   end
 
-  describe ".search_for" do
-    describe "results structure" do
+  describe '.search_for' do
+    describe 'results structure' do
       context 'when there are results' do
         before do
           affiliate.boosted_contents.create!(title: 'Tropical Hurricane Names',
@@ -94,8 +94,8 @@ describe ElasticBoostedContent do
 
       it 'highlights appropriate fields with <strong> by default' do
         first = search.results.first
-        expect(first.title).to eq("<strong>Tropical</strong> Hurricane Names")
-        expect(first.description).to eq("Worldwide <strong>Tropical</strong> Cyclone Names")
+        expect(first.title).to eq('<strong>Tropical</strong> Hurricane Names')
+        expect(first.description).to eq('Worldwide <strong>Tropical</strong> Cyclone Names')
       end
     end
 
@@ -113,7 +113,7 @@ describe ElasticBoostedContent do
 
       it 'escapes the entity but shows the highlight' do
         first = search.results.first
-        expect(first.title).to eq("Peas &amp; <strong>Carrots</strong>")
+        expect(first.title).to eq('Peas &amp; <strong>Carrots</strong>')
       end
     end
 
@@ -124,14 +124,14 @@ describe ElasticBoostedContent do
 
       it 'should not highlight matches' do
         first = search.results.first
-        expect(first.title).to eq("Tropical Hurricane Names")
-        expect(first.description).to eq("Worldwide Tropical Cyclone Names")
+        expect(first.title).to eq('Tropical Hurricane Names')
+        expect(first.description).to eq('Worldwide Tropical Cyclone Names')
       end
     end
 
     context 'when title is really long' do
       before do
-        long_title = "President Obama overcame furious lobbying by big banks to pass Dodd-Frank Wall Street Reform, to prevent the excessive risk-taking that led to a financial crisis while providing protections to American families for their mortgages and credit cards."
+        long_title = 'President Obama overcame furious lobbying by big banks to pass Dodd-Frank Wall Street Reform, to prevent the excessive risk-taking that led to a financial crisis while providing protections to American families for their mortgages and credit cards.'
         affiliate.boosted_contents.create!(title: long_title,
                                            status: 'active',
                                            description: 'Worldwide Tropical Cyclone Names',
@@ -143,13 +143,13 @@ describe ElasticBoostedContent do
       it 'should show everything in a single fragment' do
         search = ElasticBoostedContent.search_for(q: 'president credit cards', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
         first = search.results.first
-        expect(first.title).to eq("<strong>President</strong> Obama overcame furious lobbying by big banks to pass Dodd-Frank Wall Street Reform, to prevent the excessive risk-taking that led to a financial crisis while providing protections to American families for their mortgages and <strong>credit</strong> <strong>cards</strong>.")
+        expect(first.title).to eq('<strong>President</strong> Obama overcame furious lobbying by big banks to pass Dodd-Frank Wall Street Reform, to prevent the excessive risk-taking that led to a financial crisis while providing protections to American families for their mortgages and <strong>credit</strong> <strong>cards</strong>.')
       end
     end
   end
 
-  describe "filters" do
-    context "when there are active and inactive boosted contents" do
+  describe 'filters' do
+    context 'when there are active and inactive boosted contents' do
       before do
         affiliate.boosted_contents.create!(title: 'Tropical Hurricane Names',
                                            status: 'active',
@@ -164,7 +164,7 @@ describe ElasticBoostedContent do
         ElasticBoostedContent.commit
       end
 
-      it "should return only active boosted contents" do
+      it 'should return only active boosted contents' do
         search = ElasticBoostedContent.search_for(q: 'Tropical', affiliate_id: affiliate.id, size: 2, language: affiliate.indexing_locale)
         expect(search.total).to eq(1)
         expect(search.results.first.is_active?).to be true
@@ -187,7 +187,7 @@ describe ElasticBoostedContent do
         ElasticBoostedContent.commit
       end
 
-      it "should return only matches for the given affiliate" do
+      it 'should return only matches for the given affiliate' do
         search = ElasticBoostedContent.search_for(q: 'Tropical', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
         expect(search.total).to eq(1)
         expect(search.results.first.affiliate.name).to eq(affiliate.name)
@@ -281,11 +281,11 @@ describe ElasticBoostedContent do
       before do
         apostrophe_1 = affiliate.boosted_contents.build(title: "hawai`i o'reilly",
                                                            status: 'active',
-                                                           description: "ignore them",
+                                                           description: 'ignore them',
                                                            url: 'http://www.nhc.noaa.gov/hi1.shtml',
                                                            publish_start_on: Date.current)
         apostrophe_1.save!
-        apostrophe_2 = affiliate.boosted_contents.build(title: "island",
+        apostrophe_2 = affiliate.boosted_contents.build(title: 'island',
                                                            status: 'active',
                                                            description: "Hawaiʻi's language orthography has it's own special characters",
                                                            url: 'http://www.nhc.noaa.gov/hi2.shtml',
@@ -302,11 +302,11 @@ describe ElasticBoostedContent do
       end
 
       it 'should ignore them' do
-        expect(ElasticBoostedContent.search_for(q: "oreilly", affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
+        expect(ElasticBoostedContent.search_for(q: 'oreilly', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
         expect(ElasticBoostedContent.search_for(q: 'hawaii', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(3)
         expect(ElasticBoostedContent.search_for(q: 'hawai`i', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(3)
         expect(ElasticBoostedContent.search_for(q: "hawai'i orthography", affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
-        expect(ElasticBoostedContent.search_for(q: "lorens", affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
+        expect(ElasticBoostedContent.search_for(q: 'lorens', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
       end
     end
 
@@ -325,7 +325,7 @@ describe ElasticBoostedContent do
       end
     end
 
-    describe "title and description" do
+    describe 'title and description' do
       it 'is case insentitive' do
         expect(ElasticBoostedContent.search_for(search_params.merge(q: 'YOSEMITE')).total).
           to eq(1)
@@ -415,6 +415,6 @@ describe ElasticBoostedContent do
 
   end
 
-  it_behaves_like "an indexable"
+  it_behaves_like 'an indexable'
 
 end

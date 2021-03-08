@@ -46,7 +46,7 @@ describe I14yDocument do
 
     it 'saves the document in the I14y index' do
       expect(i14y_connection).to receive(:post).
-        with("/api/v1/documents", valid_attributes.except(:handle)).
+        with('/api/v1/documents', valid_attributes.except(:handle)).
         and_return(Hashie::Mash.new(status: 201))
       document.save
     end
@@ -54,7 +54,7 @@ describe I14yDocument do
     context 'when the save is unsuccessful' do
       before do
         allow(i14y_connection).to receive(:post).
-          with("/api/v1/documents", valid_attributes.except(:handle)).
+          with('/api/v1/documents', valid_attributes.except(:handle)).
           and_return(Hashie::Mash.new(status: 400))
       end
 
@@ -81,7 +81,7 @@ describe I14yDocument do
 
     it 'updates the document' do
       expect(i14y_connection).to receive(:put).
-        with("/api/v1/documents/update_me", { title: 'My New Title' }).
+        with('/api/v1/documents/update_me', { title: 'My New Title' }).
         and_return(Hashie::Mash.new(status: 200))
       I14yDocument.update(update_attributes)
     end
@@ -89,7 +89,7 @@ describe I14yDocument do
     context 'when the update fails' do
       before do
         allow(i14y_connection).to receive(:put).
-          with("/api/v1/documents/nonexistent", { title: 'fail' }).
+          with('/api/v1/documents/nonexistent', { title: 'fail' }).
           and_return(Hashie::Mash.new(status: 400, body: { developer_message: 'failure' }))
       end
 
@@ -119,7 +119,7 @@ describe I14yDocument do
     context 'when the deletion fails' do
       before do
         allow(i14y_connection).to receive(:delete).
-          with("/api/v1/documents/delete_me").
+          with('/api/v1/documents/delete_me').
           and_return(Hashie::Mash.new(status: 400, body: { developer_message: 'not found' }))
       end
 
@@ -134,14 +134,14 @@ describe I14yDocument do
 
     it 'promotes the document' do
       expect(i14y_connection).to receive(:put).
-        with("/api/v1/documents/promote_me", { promote: 'true' }).
+        with('/api/v1/documents/promote_me', { promote: 'true' }).
         and_return(Hashie::Mash.new(status: 200))
       I14yDocument.promote(handle: 'my_drawer', document_id: 'promote_me')
     end
 
     it 'accepts a boolean value for demoting docs' do
       expect(i14y_connection).to receive(:put).
-        with("/api/v1/documents/promote_me", { promote: 'false' }).
+        with('/api/v1/documents/promote_me', { promote: 'false' }).
         and_return(Hashie::Mash.new(status: 200))
       I14yDocument.promote(handle: 'my_drawer', document_id: 'promote_me', bool: 'false')
     end

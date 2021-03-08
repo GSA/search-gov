@@ -6,8 +6,8 @@ describe SearchgovCrawler do
   end
   let(:crawler) { SearchgovCrawler.new(options) }
   let(:domain) { 'www.agency.gov' }
-  let(:base_url) { "http://www.agency.gov/" }
-  let(:link) { "link1" }
+  let(:base_url) { 'http://www.agency.gov/' }
+  let(:link) { 'link1' }
   let(:url) { "http://#{domain}/#{link}" }
   let(:html) do
     <<~HTML
@@ -78,7 +78,7 @@ describe SearchgovCrawler do
     context 'when the crawl finds html links' do
       before do
         stub_request(:get, url).
-          to_return(status: 200, body: "link 1", headers: { content_type: 'text/html' })
+          to_return(status: 200, body: 'link 1', headers: { content_type: 'text/html' })
         allow(SearchgovUrl).to receive(:create).with(url: base_url)
       end
 
@@ -155,7 +155,7 @@ describe SearchgovCrawler do
 
         before do
           stub_request(:get, 'http://www.agency.gov/anchor').
-            to_return(status: 200, body: "page with anchors", headers: { content_type: 'text/html' })
+            to_return(status: 200, body: 'page with anchors', headers: { content_type: 'text/html' })
         end
 
         it 'strips the anchor fragment' do
@@ -169,7 +169,7 @@ describe SearchgovCrawler do
 
         before do
           stub_request(:get, 'http://www.agency.gov/extra_space').
-            to_return(status: 200, body: "page with an extra space", headers: { content_type: 'text/html' })
+            to_return(status: 200, body: 'page with an extra space', headers: { content_type: 'text/html' })
         end
 
         it 'strips the anchor fragment' do
@@ -194,7 +194,7 @@ describe SearchgovCrawler do
       context 'when the content type is not supported' do
         before do
           stub_request(:get, url).
-            to_return(status: 200, body: "link 1", headers: { content_type: 'not/html' })
+            to_return(status: 200, body: 'link 1', headers: { content_type: 'not/html' })
         end
 
         it 'does not create searchgov urls' do
@@ -283,9 +283,9 @@ describe SearchgovCrawler do
         let(:new_url) { 'http://www.agency.gov/new' }
 
         before do
-          stub_request(:get, url).to_return(body: "", status: 301,
+          stub_request(:get, url).to_return(body: '', status: 301,
             headers: { location: new_url })
-          stub_request(:get, new_url).to_return(body: "new", status: 200,
+          stub_request(:get, new_url).to_return(body: 'new', status: 200,
             headers: { content_type: 'text/html' })
         end
 
@@ -298,9 +298,9 @@ describe SearchgovCrawler do
 
       context 'when the link is temporarily redirected' do
         before do
-          stub_request(:get, url).to_return(body: "", status: 302,
+          stub_request(:get, url).to_return(body: '', status: 302,
             headers: { location: new_url, content_type: 'text/html' })
-          stub_request(:get, new_url).to_return(body: "new", status: 200,
+          stub_request(:get, new_url).to_return(body: 'new', status: 200,
             headers: { content_type: 'text/html' })
         end
 

@@ -1,10 +1,10 @@
-shared_examples "a search domain object" do
+shared_examples 'a search domain object' do
   fixtures :affiliates
   let(:affiliate) { affiliates(:basic_affiliate) }
 
   it { is_expected.to belong_to :affiliate }
 
-  describe ".create" do
+  describe '.create' do
     it { is_expected.to validate_presence_of :domain }
     it { is_expected.to validate_presence_of :affiliate }
 
@@ -17,7 +17,7 @@ shared_examples "a search domain object" do
     specify { expect(affiliate.site_domains.create!(:domain => 'usa.gov').site_name).to eq('usa.gov') }
     specify { expect(affiliate.site_domains.create!(:domain => 'usa.gov/subdir/').domain).to eq('usa.gov/subdir') }
 
-    context "when domain starts with /https?/" do
+    context 'when domain starts with /https?/' do
       %w(http://www.USA.gov https://www.usa.gov).each do |domain|
         subject { affiliate.site_domains.create!(:domain => domain) }
 

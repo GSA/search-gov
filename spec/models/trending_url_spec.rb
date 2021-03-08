@@ -3,7 +3,7 @@ require 'spec_helper'
 describe TrendingUrl do
   fixtures :affiliates
 
-  describe ".all" do
+  describe '.all' do
     context 'when affiliate does not actually exist' do
       before do
         redis = Redis.new(:host => REDIS_HOST, :port => REDIS_PORT)

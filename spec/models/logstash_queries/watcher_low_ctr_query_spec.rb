@@ -28,24 +28,24 @@ describe WatcherLowCtrQuery do
           "filter": [
             {
               "term": {
-                "params.affiliate": "affiliate_name"
+                "params.affiliate": 'affiliate_name'
               }
             },
             {
               "terms": {
-                "type": ["search","click"]
+                "type": ['search','click']
               }
             },
             {
               "exists": {
-                "field": "modules"
+                "field": 'modules'
               }
             },
             {
               "range": {
                 "@timestamp": {
-                  "gte": "{{ctx.trigger.scheduled_time}}||-1w",
-                  "lte": "{{ctx.trigger.scheduled_time}}"
+                  "gte": '{{ctx.trigger.scheduled_time}}||-1w',
+                  "lte": '{{ctx.trigger.scheduled_time}}'
                 }
               }
             }
@@ -53,25 +53,25 @@ describe WatcherLowCtrQuery do
           "must_not": [
             {
               "term": {
-                "useragent.device": "Spider"
+                "useragent.device": 'Spider'
               }
             },
             {
               "term": {
-                "params.query.raw": ""
+                "params.query.raw": ''
               }
             },
             {
               "term": {
-                "modules": "QRTD"
+                "modules": 'QRTD'
               }
             },
             {
               "terms": {
                 "params.query.raw": [
-                  "foo",
-                  "bar",
-                  "baz biz"
+                  'foo',
+                  'bar',
+                  'baz biz'
                 ]
               }
             }
@@ -83,7 +83,7 @@ describe WatcherLowCtrQuery do
           "terms": {
             "min_doc_count": 50,
             "size": 100000,
-            "field": "params.query.raw"
+            "field": 'params.query.raw'
           },
           "aggs": {
             "ctr": {

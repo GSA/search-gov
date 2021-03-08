@@ -10,7 +10,7 @@ describe ExcludedUrl do
     }
   end
 
-  context "when creating a new excluded url" do
+  context 'when creating a new excluded url' do
     before do
       ExcludedUrl.create!(@valid_attributes)
     end
@@ -20,8 +20,8 @@ describe ExcludedUrl do
     it { is_expected.to belong_to(:affiliate) }
 
     it 'should decode the URL' do
-      excluded_url = ExcludedUrl.create!(@valid_attributes.merge(:url => "https://www.usa.gov/exclude%20me.html"))
-      expect(excluded_url.url).to eq("https://www.usa.gov/exclude me.html")
+      excluded_url = ExcludedUrl.create!(@valid_attributes.merge(:url => 'https://www.usa.gov/exclude%20me.html'))
+      expect(excluded_url.url).to eq('https://www.usa.gov/exclude me.html')
     end
   end
 

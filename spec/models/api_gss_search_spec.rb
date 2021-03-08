@@ -212,7 +212,7 @@ describe ApiGssSearch do
   describe '#as_json' do
     subject(:search) do
       agency = Agency.create!({:name => 'Some New Agency', :abbreviation => 'SNA' })
-      AgencyOrganizationCode.create!(organization_code: "XX00", agency: agency)
+      AgencyOrganizationCode.create!(organization_code: 'XX00', agency: agency)
       allow(affiliate).to receive(:agency).and_return(agency)
 
       described_class.new search_params.merge(query: 'marketplase')

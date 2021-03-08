@@ -25,24 +25,24 @@ describe LowCtrQuery do
           "filter": [
             {
               "term": {
-                "params.affiliate": "affiliate_name"
+                "params.affiliate": 'affiliate_name'
               }
             },
             {
               "terms": {
-                "type": ["search","click"]
+                "type": ['search','click']
               }
             },
             {
               "exists": {
-                "field": "modules"
+                "field": 'modules'
               }
             },
             {
               "range": {
                 "@timestamp": {
-                  "gte": "2019-11-01",
-                  "lte": "2019-11-18"
+                  "gte": '2019-11-01',
+                  "lte": '2019-11-18'
                 }
               }
             }
@@ -50,17 +50,17 @@ describe LowCtrQuery do
           "must_not": [
             {
               "term": {
-                "useragent.device": "Spider"
+                "useragent.device": 'Spider'
               }
             },
             {
               "term": {
-                "params.query.raw": ""
+                "params.query.raw": ''
               }
             },
             {
               "term": {
-                "modules": "QRTD"
+                "modules": 'QRTD'
               }
             }
           ]
@@ -71,7 +71,7 @@ describe LowCtrQuery do
           "terms": {
             "min_doc_count": 20,
             "size": 100_000,
-            "field": "params.query.raw"
+            "field": 'params.query.raw'
           },
           "aggs": {
             "ctr": {

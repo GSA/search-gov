@@ -456,7 +456,7 @@ describe Api::V2::SearchesController do
 
       before do
         expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
-        allow(affiliate).to receive(:search_engine).and_return("BingV6")
+        allow(affiliate).to receive(:search_engine).and_return('BingV6')
 
         expect(ApiBingDocsSearch).to receive(:new).with(hash_including(query_params)).and_return(search)
         expect(search).to receive(:run)
@@ -481,7 +481,7 @@ describe Api::V2::SearchesController do
 
       before do
         expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
-        allow(affiliate).to receive(:search_engine).and_return("BingV6")
+        allow(affiliate).to receive(:search_engine).and_return('BingV6')
 
         expect(DocumentCollection).to receive(:find).and_return(document_collection)
 
@@ -507,7 +507,7 @@ describe Api::V2::SearchesController do
 
       before do
         expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
-        allow(affiliate).to receive(:search_engine).and_return("Google")
+        allow(affiliate).to receive(:search_engine).and_return('Google')
 
         expect(ApiGoogleDocsSearch).to receive(:new).with(hash_including(query_params)).and_return(search)
         expect(search).to receive(:run)

@@ -31,7 +31,7 @@ describe RssFeed do
       RssFeed.create!(@valid_attributes)
     end
 
-    it "should create navigation for owner_type Affiliate" do
+    it 'should create navigation for owner_type Affiliate' do
       rss_feed = RssFeed.create!(@valid_attributes)
       expect(rss_feed.navigation).to eq(Navigation.find(rss_feed.navigation.id))
       expect(rss_feed.navigation.affiliate_id).to eq(rss_feed.owner_id)
@@ -54,7 +54,7 @@ describe RssFeed do
 
       it 'should set navigation to active' do
         attributes = { owner: affiliates(:basic_affiliate),
-                       name: "Videos",
+                       name: 'Videos',
                        is_managed: true }
         rss_feed = RssFeed.create!(attributes)
         expect(rss_feed.navigation).to eq(Navigation.find(rss_feed.navigation.id))
@@ -62,30 +62,30 @@ describe RssFeed do
       end
     end
 
-    context "when the RSS feed is a valid feed" do
-      it "should validate" do
+    context 'when the RSS feed is a valid feed' do
+      it 'should validate' do
         rss_feed = RssFeed.new(@valid_attributes)
         expect(rss_feed.valid?).to be true
         expect(rss_feed.errors).to be_empty
       end
     end
 
-    context "when the URL does not point to an RSS feed" do
+    context 'when the URL does not point to an RSS feed' do
       let(:rss_feed_content) { File.read(Rails.root.to_s + '/spec/fixtures/html/usa_gov/site_index.html') }
 
-      it "should not validate" do
+      it 'should not validate' do
         rss_feed = RssFeed.new(@valid_attributes)
         expect(rss_feed.valid?).to be false
         expect(rss_feed.errors).not_to be_empty
       end
     end
 
-    context "when some error is raised in checking the RSS feed" do
+    context 'when some error is raised in checking the RSS feed' do
       before do
         allow(DocumentFetcher).to receive(:fetch).and_raise 'Some exception'
       end
 
-      it "should not validate" do
+      it 'should not validate' do
         rss_feed = RssFeed.new(@valid_attributes)
         expect(rss_feed.valid?).to be false
         expect(rss_feed.errors).not_to be_empty
@@ -102,10 +102,10 @@ describe RssFeed do
     end
   end
 
-  describe "#is_video?" do
+  describe '#is_video?' do
     let(:affiliate) { affiliates(:power_affiliate) }
 
-    context "when each RssFeedUrl is video" do
+    context 'when each RssFeedUrl is video' do
       let(:rss_feed) do
         affiliate.rss_feeds.create!(name: 'Videos',
                                     rss_feed_urls: [rss_feed_urls(:whitehouse_youtube_url)])
@@ -115,7 +115,7 @@ describe RssFeed do
     end
   end
 
-  describe "#has_errors?" do
+  describe '#has_errors?' do
     let(:rss_feed) do
       affiliates(:power_affiliate).rss_feeds.create!(name: 'Got a problem',
                                                      rss_feed_urls: [rss_feed_urls(:white_house_blog_url),
@@ -139,7 +139,7 @@ describe RssFeed do
     end
   end
 
-  describe "#has_pending?" do
+  describe '#has_pending?' do
     let(:rss_feed) do
       affiliates(:power_affiliate).rss_feeds.create!(name: 'Everything is pending',
                                                      rss_feed_urls: [rss_feed_urls(:white_house_press_gallery_url)])
@@ -162,7 +162,7 @@ describe RssFeed do
     end
   end
 
-  describe ".find_existing_or_initialize" do
+  describe '.find_existing_or_initialize' do
     let(:name) { 'name' }
     let(:url) { rss_feed_urls(:white_house_press_gallery_url).url }
     let(:rfu) { [ ] }
@@ -170,13 +170,13 @@ describe RssFeed do
 
     subject { affiliate.rss_feeds.find_existing_or_initialize(name, url) }
 
-    context "when there are no rss_feeds records" do
+    context 'when there are no rss_feeds records' do
       it { is_expected.to be_kind_of(RssFeed) }
       it { is_expected.to be_new_record }
       its(:name) { should eq(name) }
     end
 
-    context "when some rss_feeds records exist" do
+    context 'when some rss_feeds records exist' do
       let(:created_name) { name }
       let(:rss_feed) do
         affiliate.rss_feeds.create!(name: created_name, rss_feed_urls: rfu)
@@ -184,14 +184,14 @@ describe RssFeed do
 
       before { rss_feed }
 
-      context "when the RSS feed has the same name but no matching URLs" do
+      context 'when the RSS feed has the same name but no matching URLs' do
         let(:rfu) { [rss_feed_urls(:white_house_blog_url)] }
         it { is_expected.to be_kind_of(RssFeed) }
         it { is_expected.to be_new_record }
         its(:name) { should eq(name) }
       end
 
-      context "when the RSS feed has a different name but matching URLs" do
+      context 'when the RSS feed has a different name but matching URLs' do
         let(:created_name) { 'other name' }
         let(:rfu) { [rss_feed_urls(:white_house_press_gallery_url)] }
         it { is_expected.to be_kind_of(RssFeed) }
@@ -199,13 +199,13 @@ describe RssFeed do
         its(:name) { should eq(name) }
       end
 
-      context "when the RSS feed has the same name and exactly one matching URL" do
+      context 'when the RSS feed has the same name and exactly one matching URL' do
         let(:rfu) { [rss_feed_urls(:white_house_press_gallery_url)] }
         it { is_expected.to eq(rss_feed) }
         it { is_expected.not_to be_new_record }
       end
 
-      context "when the RSS feed has the same name and multiple matching name/URL pairs" do
+      context 'when the RSS feed has the same name and multiple matching name/URL pairs' do
         let(:rfu) { [rss_feed_urls(:white_house_press_gallery_url)] }
 
         before do

@@ -20,7 +20,7 @@ describe 'Logstash rake tasks' do
       expect(Resque).to receive(:enqueue_with_priority).with(:low, LogstashDeduper, '2015.08.24')
       expect(Resque).to receive(:enqueue_with_priority).with(:low, LogstashDeduper, '2015.08.25')
       expect(Resque).to receive(:enqueue_with_priority).with(:low, LogstashDeduper, '2015.08.26')
-      @rake[task_name].invoke("2015-08-24", "2015-08-26")
+      @rake[task_name].invoke('2015-08-24', '2015-08-26')
     end
   end
 end

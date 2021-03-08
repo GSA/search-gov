@@ -53,7 +53,7 @@ describe 'sayt' do
 
     it 'does not completely melt down when strange characters are present' do
       expect do
-        get '/sayt', params: { q: "foo\\", callback: 'jsonp1276290049647', aid: affiliate.id }
+        get '/sayt', params: { q: 'foo\\', callback: 'jsonp1276290049647', aid: affiliate.id }
       end.not_to raise_error
       expect do
         get '/sayt', params: { q: "foo's", callback: 'jsonp1276290049647', aid: affiliate.id }

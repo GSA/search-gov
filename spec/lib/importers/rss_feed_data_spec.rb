@@ -140,9 +140,9 @@ describe RssFeedData do
           expect(newest.published_at).to eq(DateTime.parse('26 Sep 2011 21:33:05 +0000'))
           expect(newest.description[0, 40]).to eq('Dr. Biden and David Letterman refer to a')
           expect(newest.title).to eq('Famine in the Horn of Africa: Be a Part of the Solution')
-          expect(newest.contributor).to eq("The President")
+          expect(newest.contributor).to eq('The President')
           expect(newest.subject).to eq('jobs')
-          expect(newest.publisher).to eq("Statements and Releases")
+          expect(newest.publisher).to eq('Statements and Releases')
 
           oldest = u.news_items.last
           expect(oldest.guid).to eq('http://www.whitehouse.gov/blog/2011/09/26/supporting-scientists-lab-bench-and-bedtime-0')
@@ -420,13 +420,13 @@ describe RssFeedData do
       context 'when the redirection is for a protocol change' do
         before do
           rss_feed_url.news_items.destroy_all
-          allow(DocumentFetcher).to receive(:fetch).with(rss_feed_url.url, an_instance_of(Hash)).and_return({ status: "301", body: rss_feed_content, last_effective_url: "https://www.whitehouse.gov/feed/blog/white-house" })
+          allow(DocumentFetcher).to receive(:fetch).with(rss_feed_url.url, an_instance_of(Hash)).and_return({ status: '301', body: rss_feed_content, last_effective_url: 'https://www.whitehouse.gov/feed/blog/white-house' })
         end
 
         it 'updates the url' do
            expect{ RssFeedData.new(rss_feed_url, true).import }.to change{ rss_feed_url.reload.url }.
-             from("http://www.whitehouse.gov/feed/blog/white-house").
-             to("https://www.whitehouse.gov/feed/blog/white-house")
+             from('http://www.whitehouse.gov/feed/blog/white-house').
+             to('https://www.whitehouse.gov/feed/blog/white-house')
         end
 
         it 'creates news items' do
@@ -439,12 +439,12 @@ describe RssFeedData do
         before do
           rss_feed_url.news_items.destroy_all
           allow(DocumentFetcher).to receive(:fetch).with(rss_feed_url.url, an_instance_of(Hash)).
-            and_return({ status: "301", body: rss_feed_content, last_effective_url: "http://naughtyponies.com" })
+            and_return({ status: '301', body: rss_feed_content, last_effective_url: 'http://naughtyponies.com' })
           RssFeedData.new(rss_feed_url, true).import
         end
 
         it 'does not update the url' do
-          expect(rss_feed_url.reload.url).to eq("http://www.whitehouse.gov/feed/blog/white-house")
+          expect(rss_feed_url.reload.url).to eq('http://www.whitehouse.gov/feed/blog/white-house')
         end
 
         it 'does not create any news items' do
@@ -452,7 +452,7 @@ describe RssFeedData do
         end
 
         it 'reports the redirection' do
-          expect(rss_feed_url.last_crawl_status).to eq "redirection forbidden: http://www.whitehouse.gov/feed/blog/white-house -> http://naughtyponies.com"
+          expect(rss_feed_url.last_crawl_status).to eq 'redirection forbidden: http://www.whitehouse.gov/feed/blog/white-house -> http://naughtyponies.com'
         end
       end
     end

@@ -181,7 +181,7 @@ describe ApiAzureSearch do
     skip '#as_json' do
       subject(:search) do
         agency = Agency.create!({:name => 'Some New Agency', :abbreviation => 'SNA' })
-        AgencyOrganizationCode.create!(organization_code: "XX00", agency: agency)
+        AgencyOrganizationCode.create!(organization_code: 'XX00', agency: agency)
         affiliate.stub(:agency).and_return(agency)
 
         described_class.new search_params
@@ -368,7 +368,7 @@ describe ApiAzureSearch do
     skip '#as_json' do
       subject(:search) do
         agency = Agency.create!({:name => 'Some New Agency', :abbreviation => 'SNA' })
-        AgencyOrganizationCode.create!(organization_code: "XX00", agency: agency)
+        AgencyOrganizationCode.create!(organization_code: 'XX00', agency: agency)
         affiliate.stub(:agency).and_return(agency)
 
         described_class.new search_params

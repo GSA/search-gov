@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Medline rake tasks" do
+describe 'Medline rake tasks' do
 
   before(:all) do
     @rake = Rake::Application.new
@@ -9,16 +9,16 @@ describe "Medline rake tasks" do
     Rake::Task.define_task(:environment)
   end
 
-  describe "usasearch:medline:load" do
+  describe 'usasearch:medline:load' do
     let(:task_name) { 'usasearch:medline:load' }
     before { @rake[task_name].reenable }
 
     it "should have 'environment' as a prereq" do
-      expect(@rake[task_name].prerequisites).to include("environment")
+      expect(@rake[task_name].prerequisites).to include('environment')
     end
 
-    context "when given a date" do
-      it "should download and process medline xml file" do
+    context 'when given a date' do
+      it 'should download and process medline xml file' do
         mock_file_path = double('file path')
         expect(MedTopic).to receive(:download_medline_xml).
             with(Date.parse('2011-04-26')).
@@ -28,8 +28,8 @@ describe "Medline rake tasks" do
       end
     end
 
-    context "when given no date" do
-      it "should download and process medline xml file" do
+    context 'when given no date' do
+      it 'should download and process medline xml file' do
         mock_file_path = double('file path')
         expect(MedTopic).to receive(:download_medline_xml).
             with(nil).

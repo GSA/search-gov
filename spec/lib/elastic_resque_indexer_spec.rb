@@ -25,20 +25,20 @@ describe ElasticResqueIndexer do
   end
 
   describe '#index_all' do
-    it "should queue up indexing of all valid instances" do
+    it 'should queue up indexing of all valid instances' do
       start_id = IndexedDocument.minimum(:id)
       end_id = IndexedDocument.maximum(:id)
-      expect(Resque).to receive(:enqueue).with(ElasticResqueIndexer, "IndexedDocument", start_id, end_id)
-      ElasticResqueIndexer.index_all("IndexedDocument")
+      expect(Resque).to receive(:enqueue).with(ElasticResqueIndexer, 'IndexedDocument', start_id, end_id)
+      ElasticResqueIndexer.index_all('IndexedDocument')
     end
 
   end
 
   describe '#perform' do
-    it "should index all valid instances in some ID range" do
+    it 'should index all valid instances in some ID range' do
       start_id = IndexedDocument.minimum(:id)
       end_id = IndexedDocument.maximum(:id)
-      ElasticResqueIndexer.perform("IndexedDocument", start_id, end_id)
+      ElasticResqueIndexer.perform('IndexedDocument', start_id, end_id)
       search = ElasticIndexedDocument.search_for(q: 'Tropical', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
       expect(search.total).to eq(2)
     end
@@ -53,7 +53,7 @@ describe ElasticResqueIndexer do
         expect(ElasticIndexedDocument).not_to receive(:index)
         start_id = IndexedDocument.minimum(:id)
         end_id = IndexedDocument.maximum(:id)
-        ElasticResqueIndexer.perform("IndexedDocument", start_id, end_id)
+        ElasticResqueIndexer.perform('IndexedDocument', start_id, end_id)
       end
     end
 

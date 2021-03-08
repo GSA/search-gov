@@ -11,7 +11,7 @@ describe NewsSearch do
     ElasticNewsItem.commit
   end
 
-  describe "#initialize(options)" do
+  describe '#initialize(options)' do
     let(:feed) { affiliate.rss_feeds.first }
 
     def filterable_search_options
@@ -26,14 +26,14 @@ describe NewsSearch do
       its(:sort) { should eq('published_at:desc') }
     end
 
-    context "when a valid RSS feed is specified" do
-      it "should set the rss_feed member" do
+    context 'when a valid RSS feed is specified' do
+      it 'should set the rss_feed member' do
         expect(NewsSearch.new(:query => 'element', :channel => feed.id, :affiliate => affiliate).rss_feed).to eq(feed)
       end
     end
 
     context "when another affiliate's RSS feed is specified" do
-      it "should set the rss_feed member to nil" do
+      it 'should set the rss_feed member to nil' do
         another_feed = rss_feeds(:another)
         expect(NewsSearch.new(:query => 'element', :channel => another_feed.id, :affiliate => affiliate).rss_feed).to be_nil
       end
@@ -57,36 +57,36 @@ describe NewsSearch do
     end
   end
 
-  describe "#run" do
+  describe '#run' do
 
-    context "when searching with really long queries" do
+    context 'when searching with really long queries' do
       before do
-        @search = NewsSearch.new(:query => "X" * (Search::MAX_QUERYTERM_LENGTH + 1), :affiliate => affiliate)
+        @search = NewsSearch.new(:query => 'X' * (Search::MAX_QUERYTERM_LENGTH + 1), :affiliate => affiliate)
       end
 
-      it "should return false when searching" do
+      it 'should return false when searching' do
         expect(@search.run).to be false
       end
 
-      it "should have 0 results" do
+      it 'should have 0 results' do
         @search.run
         expect(@search.results.size).to eq(0)
         expect(@search.total).to eq(0)
         expect(@search.module_tag).to be_nil
       end
 
-      it "should set error message" do
+      it 'should set error message' do
         @search.run
         expect(@search.error_message).not_to be_nil
       end
     end
 
-    context "when searching with a blank query" do
+    context 'when searching with a blank query' do
       before do
-        @search = NewsSearch.new(:query => "   ", :affiliate => affiliate)
+        @search = NewsSearch.new(:query => '   ', :affiliate => affiliate)
       end
 
-      it "should return true when searching" do
+      it 'should return true when searching' do
         expect(@search.run).to be true
       end
 
@@ -95,14 +95,14 @@ describe NewsSearch do
         expect(@search.results.size).to be > 0
       end
 
-      it "should not set error message" do
+      it 'should not set error message' do
         @search.run
         expect(@search.error_message).to be_nil
       end
     end
 
-    context "when a valid active RSS feed is specified" do
-      it "should only search for news items from that feed" do
+    context 'when a valid active RSS feed is specified' do
+      it 'should only search for news items from that feed' do
         feed = affiliate.rss_feeds.first
         search = NewsSearch.new(query: 'element', channel: feed.id, affiliate: affiliate,
                                 contributor: 'contributor', publisher: 'publisher', subject: 'subject')
@@ -117,12 +117,12 @@ describe NewsSearch do
       end
     end
 
-    context "when a valid managed RSS feed is specified" do
+    context 'when a valid managed RSS feed is specified' do
       let(:feed) { rss_feeds(:managed_video) }
       let(:youtube_profile_feed) { rss_feeds(:nps_youtube_feed) }
 
       context 'when per_page option is not set' do
-        it "should set per_page to 20" do
+        it 'should set per_page to 20' do
           search = NewsSearch.new(:query => 'element', :channel => feed.id, :affiliate => affiliate)
           expect(ElasticNewsItem).to receive(:search_for).
             with(q: 'element', rss_feeds: [youtube_profile_feed], excluded_urls: affiliate.excluded_urls,
@@ -182,8 +182,8 @@ describe NewsSearch do
       end
     end
 
-    context "when no RSS feed is specified" do
-      it "should search for news items from all active feeds for the affiliate" do
+    context 'when no RSS feed is specified' do
+      it 'should search for news items from all active feeds for the affiliate' do
         one_week_ago = Time.current.advance(weeks: -1).beginning_of_day
         search = NewsSearch.new(query: 'element', tbs: 'w', affiliate: affiliate)
         expect(ElasticNewsItem).to receive(:search_for).
@@ -311,7 +311,7 @@ describe NewsSearch do
           result_2 = mock_model(NewsItem,
                                 title: 'result2',
                                 description?: true,
-                                description: "result 2 description",
+                                description: 'result 2 description',
                                 body: "\uE000highlighted\uE001 result 2 body")
           results = [result_1, result_2]
 
@@ -333,12 +333,12 @@ describe NewsSearch do
     end
   end
 
-  describe "#cache_key" do
+  describe '#cache_key' do
     let(:options) { { query: 'element', affiliate: affiliate } }
     let(:feed) { rss_feeds(:managed_video) }
     let(:since_a_week_ago) { Date.current.advance(weeks: -1).to_s }
 
-    it "should output a key based on the affiliate id, query, channel, tbs, since-until, page, and per_page parameters" do
+    it 'should output a key based on the affiliate id, query, channel, tbs, since-until, page, and per_page parameters' do
       expect(NewsSearch.new(options.merge(tbs: 'w', channel: feed.id, page: 2, per_page: 21)).cache_key).to eq("#{affiliate.id}:element:#{feed.id}:#{since_a_week_ago}:2:21")
       expect(NewsSearch.new(options.merge(channel: feed.id)).cache_key).to eq("#{affiliate.id}:element:#{feed.id}::1:20")
       expect(NewsSearch.new(options.merge(tbs: 'w')).cache_key).to eq("#{affiliate.id}:element::#{since_a_week_ago}:1:10")

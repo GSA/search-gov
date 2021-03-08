@@ -19,11 +19,11 @@ describe MedTopic do
   it { is_expected.to have_many(:synonyms).dependent(:destroy).inverse_of(:topic) }
 
 
-  it "should create a new instance given valid attributes" do
+  it 'should create a new instance given valid attributes' do
     MedTopic.create!(valid_attributes)
   end
 
-  it "should delete MedTopicSyns associated with a MedTopic on deleting that MedTopic" do
+  it 'should delete MedTopicSyns associated with a MedTopic on deleting that MedTopic' do
     t = MedTopic.new(valid_attributes)
     t.save!
     t.synonyms.create({ :medline_title => 'rushoes rancheros' })

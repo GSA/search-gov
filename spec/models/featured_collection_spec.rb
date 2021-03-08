@@ -24,7 +24,7 @@ describe FeaturedCollection do
     FeaturedCollection::STATUSES.each do |status|
       it { is_expected.to allow_value(status).for(:status) }
     end
-    it { is_expected.not_to allow_value("bogus status").for(:status) }
+    it { is_expected.not_to allow_value('bogus status').for(:status) }
 
     it_behaves_like 'a record that sanitizes attributes', [:title]
   end
@@ -53,8 +53,8 @@ describe FeaturedCollection do
     expect(fc.image_alt_text).to be_nil
   end
 
-  describe "title URL should have http(s):// prefix" do
-    context "when the title URL does not start with http(s):// prefix" do
+  describe 'title URL should have http(s):// prefix' do
+    context 'when the title URL does not start with http(s):// prefix' do
       title_url = 'search.gov/post/9866782725/did-you-mean-roes-or-rose'
       prefixes = %w( http https HTTP HTTPS invalidhttp:// invalidHtTp:// invalidhttps:// invalidHTtPs:// invalidHttPsS://)
       prefixes.each do |prefix|
@@ -66,7 +66,7 @@ describe FeaturedCollection do
       end
     end
 
-    context "when the title URL starts with http(s):// prefix" do
+    context 'when the title URL starts with http(s):// prefix' do
       title_url = 'search.gov/post/9866782725/did-you-mean-roes-or-rose'
       prefixes = %w( http:// https:// HTTP:// HTTPS:// )
       prefixes.each do |prefix|
@@ -79,7 +79,7 @@ describe FeaturedCollection do
     end
   end
 
-  it "should not allow publish start date before publish end date" do
+  it 'should not allow publish start date before publish end date' do
     featured_collection = FeaturedCollection.create(:title => 'test title',
                                                     :status => 'active',
                                                     :publish_start_on => '07/01/2012',
@@ -117,19 +117,19 @@ describe FeaturedCollection do
     end
   end
 
-  describe "#display_status" do
-    context "when status is set to active" do
+  describe '#display_status' do
+    context 'when status is set to active' do
       subject { FeaturedCollection.new(:status => 'active') }
       its(:display_status) { should == 'Active' }
     end
 
-    context "when status is set to inactive" do
+    context 'when status is set to inactive' do
       subject { FeaturedCollection.new(:status => 'inactive') }
       its(:display_status) { should == 'Inactive' }
     end
   end
 
-  describe "#update_attributes" do
+  describe '#update_attributes' do
     let(:affiliate) { affiliates(:basic_affiliate) }
     let(:image) { double('image') }
 
@@ -142,7 +142,7 @@ describe FeaturedCollection do
 
     end
 
-    context "when there is an existing image" do
+    context 'when there is an existing image' do
       before do
         expect(featured_collection).to receive(:image?).and_return(true)
         expect(featured_collection).to receive(:image).at_least(:once).and_return(image)
@@ -150,21 +150,21 @@ describe FeaturedCollection do
         allow(image).to receive(:save)
       end
 
-      context "when marking an existing image for deletion" do
-        it "should clear existing image" do
+      context 'when marking an existing image for deletion' do
+        it 'should clear existing image' do
           expect(image).to receive(:dirty?).at_least(:once).and_return(false)
           expect(image).to receive(:clear)
           featured_collection.update_attributes( mark_image_for_deletion: '1' )
         end
       end
 
-      context "when uploading a new image" do
+      context 'when uploading a new image' do
         let(:image) do
           Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/images/corgi.jpg'), 'image/jpeg')
         end
         let(:new_image) { double('image') }
 
-        it "should not clear the existing image" do
+        it 'should not clear the existing image' do
           allow(image).to receive(:assign).with(new_image).and_return(new_image)
           expect(image).to receive(:dirty?).at_least(:once).and_return(true)
           expect(image).not_to receive(:clear)
@@ -173,8 +173,8 @@ describe FeaturedCollection do
       end
     end
 
-    context "when there is no existing image" do
-      it "should not clear image" do
+    context 'when there is no existing image' do
+      it 'should not clear image' do
         expect(featured_collection).to receive(:image?).and_return(false)
         expect(image).not_to receive(:clear)
         featured_collection.update_attributes(:title => 'new title')
@@ -264,8 +264,8 @@ describe FeaturedCollection do
     end
   end
 
-  describe ".human_attribute_name" do
-    specify { expect(FeaturedCollection.human_attribute_name("publish_start_on")).to eq("Publish start date") }
+  describe '.human_attribute_name' do
+    specify { expect(FeaturedCollection.human_attribute_name('publish_start_on')).to eq('Publish start date') }
   end
 
   describe '#as_json' do

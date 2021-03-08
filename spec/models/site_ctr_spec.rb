@@ -5,8 +5,8 @@ describe SiteCtr do
 
   let(:site_ctr) { SiteCtr.new(7, 'BOOS') }
 
-  describe "#site_ctrs" do
-    context "when stats are available for the range" do
+  describe '#site_ctrs' do
+    context 'when stats are available for the range' do
       let(:historical_ctr_json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/historical_site_ctr.json")) }
       let(:ctr_json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/site_ctr.json")) }
 
@@ -15,7 +15,7 @@ describe SiteCtr do
           and_return(historical_ctr_json_response, ctr_json_response)
       end
 
-      it "should return collection of SiteCtrStat instances ordered by decr search+click count" do
+      it 'should return collection of SiteCtrStat instances ordered by decr search+click count' do
         stats = site_ctr.site_ctrs
         expect(stats.first.site_name).to eq(affiliates(:usagov_affiliate).name)
         expect(stats.first.display_name).to eq(affiliates(:usagov_affiliate).display_name)
@@ -34,12 +34,12 @@ describe SiteCtr do
 
     end
 
-    context "when no stats are available for the daterange" do
+    context 'when no stats are available for the daterange' do
       before do
         expect(ES::ELK.client_reader).to receive(:search).twice.and_return nil
       end
 
-      it "should return an empty array" do
+      it 'should return an empty array' do
         stats = site_ctr.site_ctrs
         expect(stats).to eq([])
       end

@@ -8,18 +8,18 @@ describe NewsItem do
   before do
     @valid_attributes = {
       :link => 'http://www.whitehouse.gov/latest_story.html',
-      :title => "Big story here",
-      :description => "Corps volunteers have promoted blah blah blah.",
-      :published_at => DateTime.parse("2011-09-26 21:33:05"),
+      :title => 'Big story here',
+      :description => 'Corps volunteers have promoted blah blah blah.',
+      :published_at => DateTime.parse('2011-09-26 21:33:05'),
       :guid => '80798 at www.whitehouse.gov',
       :rss_feed_url_id => rss_feed_urls(:white_house_blog_url).id,
-      :contributor => "President",
-      :publisher => "Briefing Room",
-      :subject => "Economy"
+      :contributor => 'President',
+      :publisher => 'Briefing Room',
+      :subject => 'Economy'
     }
   end
 
-  describe "creating a new NewsItem" do
+  describe 'creating a new NewsItem' do
     it { is_expected.to validate_presence_of :link }
     it { is_expected.to validate_presence_of :title }
     it { is_expected.to validate_presence_of :description }
@@ -29,7 +29,7 @@ describe NewsItem do
     it { is_expected.to validate_uniqueness_of(:link).case_insensitive.scoped_to(:rss_feed_url_id) }
     it { is_expected.to validate_presence_of :rss_feed_url_id }
 
-    it "should create a new instance given valid attributes" do
+    it 'should create a new instance given valid attributes' do
       NewsItem.create!(@valid_attributes)
     end
 
@@ -43,7 +43,7 @@ describe NewsItem do
                                                description: '   '))
     end
 
-    it "should scrub out extra whitespace, tabs, newlines from fields" do
+    it 'should scrub out extra whitespace, tabs, newlines from fields' do
       news_item = NewsItem.create!(
         @valid_attributes.merge(title: " \nDOD \tMarks Growth\r in Spouses’ \u00a0 Employment Program \n     ",
                                 description: " \nSome     description \n     ",
@@ -80,7 +80,7 @@ describe NewsItem do
     end
   end
 
-  describe "#language" do
+  describe '#language' do
     let(:news_item) { NewsItem.new(@valid_attributes) }
 
     context 'when RSS feed URL does not have language specified' do

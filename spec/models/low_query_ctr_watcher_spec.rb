@@ -24,10 +24,10 @@ describe LowQueryCtrWatcher do
   it { is_expected.to validate_numericality_of(:search_click_total).only_integer }
   it { is_expected.to validate_numericality_of(:low_ctr_threshold) }
 
-  describe "humanized_alert_threshold" do
+  describe 'humanized_alert_threshold' do
     subject(:watcher) { described_class.new(search_click_total: 101, low_ctr_threshold: 15.5 ) }
-    it "returns a human-readable version of the alert threshold(s)" do
-      expect(watcher.humanized_alert_threshold).to eq("15.5% CTR on 101 Queries & Clicks")
+    it 'returns a human-readable version of the alert threshold(s)' do
+      expect(watcher.humanized_alert_threshold).to eq('15.5% CTR on 101 Queries & Clicks')
     end
   end
 

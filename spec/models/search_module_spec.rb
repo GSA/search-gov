@@ -5,17 +5,17 @@ describe SearchModule do
 
   before(:each) do
     @valid_attributes = {
-      :display_name => "Some name",
-      :tag => "IMATAG"
+      :display_name => 'Some name',
+      :tag => 'IMATAG'
     }
   end
 
-  describe "Creating new instance" do
+  describe 'Creating new instance' do
     it { is_expected.to validate_presence_of :tag }
     it { is_expected.to validate_presence_of :display_name }
     it { is_expected.to validate_uniqueness_of :tag }
 
-    it "should create a new instance given valid attributes" do
+    it 'should create a new instance given valid attributes' do
       SearchModule.create!(@valid_attributes)
     end
   end

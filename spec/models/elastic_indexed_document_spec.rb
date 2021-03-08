@@ -11,8 +11,8 @@ describe ElasticIndexedDocument do
     affiliate.locale = 'en'
   end
 
-  describe ".search_for" do
-    describe "results structure" do
+  describe '.search_for' do
+    describe 'results structure' do
       context 'when there are results' do
         before do
           affiliate.indexed_documents.create!(title: 'Tropical Hurricane Names',
@@ -51,7 +51,7 @@ describe ElasticIndexedDocument do
     end
   end
 
-  describe "highlighting results" do
+  describe 'highlighting results' do
     before do
       affiliate.indexed_documents.create!(title: 'Tropical Hurricane Names',
                                           description: 'Worldwide Tropical Cyclone Names',
@@ -73,14 +73,14 @@ describe ElasticIndexedDocument do
       it 'should not highlight matches' do
         search = ElasticIndexedDocument.search_for(q: 'Tropical', affiliate_id: affiliate.id, language: affiliate.indexing_locale, highlighting: false)
         first = search.results.first
-        expect(first.title).to eq("Tropical Hurricane Names")
-        expect(first.description).to eq("Worldwide Tropical Cyclone Names")
+        expect(first.title).to eq('Tropical Hurricane Names')
+        expect(first.description).to eq('Worldwide Tropical Cyclone Names')
       end
     end
 
     context 'when title is really long' do
       before do
-        long_title = "President Obama overcame furious lobbying by big banks to pass Dodd-Frank Wall Street Reform, to prevent the excessive risk-taking that led to a financial crisis while providing protections to American families for their mortgages and credit cards."
+        long_title = 'President Obama overcame furious lobbying by big banks to pass Dodd-Frank Wall Street Reform, to prevent the excessive risk-taking that led to a financial crisis while providing protections to American families for their mortgages and credit cards.'
         affiliate.indexed_documents.create!(title: long_title,
                                             description: 'Worldwide Tropical Cyclone Names',
                                             url: 'http://www.nhc.noaa.gov/long.shtml',
@@ -97,11 +97,11 @@ describe ElasticIndexedDocument do
 
     context 'when description/body is really long' do
       before do
-        long_text = ["President Obama overcame furious lobbying by big banks to pass Dodd-Frank Wall Street Reform, to prevent the excessive risk-taking that led to a financial crisis while providing protections to American families for their mortgages and credit cards.",
-                     "This is just some filler text that will get ignored when making snippets. "*10,
-                     "This sentence ends with President Obama.",
-                     "Excessive risk-taking led to the financial crisis. "*10,
-                     "And President Obama said some other stuff too."].join(' ').squish
+        long_text = ['President Obama overcame furious lobbying by big banks to pass Dodd-Frank Wall Street Reform, to prevent the excessive risk-taking that led to a financial crisis while providing protections to American families for their mortgages and credit cards.',
+                     'This is just some filler text that will get ignored when making snippets. '*10,
+                     'This sentence ends with President Obama.',
+                     'Excessive risk-taking led to the financial crisis. '*10,
+                     'And President Obama said some other stuff too.'].join(' ').squish
         affiliate.indexed_documents.create!(title: 'Worldwide Tropical Cyclone Names',
                                             description: long_text,
                                             body: long_text,
@@ -120,16 +120,16 @@ describe ElasticIndexedDocument do
     end
   end
 
-  describe "filters" do
-    context "when document collection is specified" do
+  describe 'filters' do
+    context 'when document collection is specified' do
       before do
         IndexedDocument.destroy_all
-        @document_collection = affiliate.document_collections.create!(:name => "test",
+        @document_collection = affiliate.document_collections.create!(:name => 'test',
                                                                       :url_prefixes_attributes => {
                                                                         '0' => { :prefix => 'http://www.agency.gov/' },
                                                                         '1' => { :prefix => 'http://www.nps.gov/' }
                                                                       })
-        affiliate.site_domains.create!(:domain => "ignoreme.gov")
+        affiliate.site_domains.create!(:domain => 'ignoreme.gov')
         IndexedDocument.create!(:last_crawl_status => IndexedDocument::OK_STATUS,
                                 :title => 'Title 1',
                                 :description => 'This is a HTML document.',
@@ -143,13 +143,13 @@ describe ElasticIndexedDocument do
         ElasticIndexedDocument.commit
       end
 
-      it "should only return results from URLs matching prefixes from that collection" do
+      it 'should only return results from URLs matching prefixes from that collection' do
         search = ElasticIndexedDocument.search_for(q: 'document',
                                                    affiliate_id: affiliate.id,
                                                    language: affiliate.indexing_locale,
                                                    document_collection: @document_collection)
         expect(search.total).to eq(1)
-        expect(search.results.first.title).to eq("Title 1")
+        expect(search.results.first.title).to eq('Title 1')
         search = ElasticIndexedDocument.search_for(q: 'document',
                                                    affiliate_id: affiliate.id,
                                                    language: affiliate.indexing_locale)
@@ -172,7 +172,7 @@ describe ElasticIndexedDocument do
         ElasticIndexedDocument.commit
       end
 
-      it "should return only matches for the given affiliate" do
+      it 'should return only matches for the given affiliate' do
         search = ElasticIndexedDocument.search_for(q: 'Tropical', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
         expect(search.total).to eq(1)
         expect(search.results.first.affiliate.name).to eq(affiliate.name)
@@ -181,7 +181,7 @@ describe ElasticIndexedDocument do
 
   end
 
-  describe "recall" do
+  describe 'recall' do
     before do
       affiliate.indexed_documents.create!(title: 'Obamå and Bideñ',
                                           description: 'Yosemite publications',
@@ -191,7 +191,7 @@ describe ElasticIndexedDocument do
       ElasticIndexedDocument.commit
     end
 
-    describe "title and description and body" do
+    describe 'title and description and body' do
       it 'should be case insentitive' do
         expect(ElasticIndexedDocument.search_for(q: 'OBAMå', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
         expect(ElasticIndexedDocument.search_for(q: 'yosemite', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
@@ -204,7 +204,7 @@ describe ElasticIndexedDocument do
         expect(ElasticIndexedDocument.search_for(q: 'spélliñg', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
       end
 
-      context "when query only contains problem characters" do
+      context 'when query only contains problem characters' do
         ['"   ', '   "       ', '+++', '+-', '-+'].each do |query|
           specify { expect(ElasticIndexedDocument.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to be_zero }
         end
@@ -307,6 +307,6 @@ describe ElasticIndexedDocument do
 
   end
 
-  it_behaves_like "an indexable"
+  it_behaves_like 'an indexable'
 
 end

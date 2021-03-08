@@ -6,7 +6,7 @@ describe IndexedDocument do
   before do
     @min_valid_attributes = {
       :title => 'Some Title',
-      :url => "http://min.nps.gov/link.html",
+      :url => 'http://min.nps.gov/link.html',
       :affiliate_id => affiliates(:basic_affiliate).id
     }
     @valid_attributes = {
@@ -15,7 +15,7 @@ describe IndexedDocument do
       :url => 'http://www.nps.gov/index.htm',
       :doctype => 'html',
       :last_crawl_status => IndexedDocument::OK_STATUS,
-      :body => "this is the doc body",
+      :body => 'this is the doc body',
       :affiliate_id => affiliates(:basic_affiliate).id
     }
   end
@@ -27,7 +27,7 @@ describe IndexedDocument do
       :url => 'http://www.nps.gov/index.htm',
       :doctype => 'html',
       :last_crawl_status => IndexedDocument::OK_STATUS,
-      :body => "this is the doc body",
+      :body => 'this is the doc body',
       :affiliate_id => affiliates(:basic_affiliate).id,
     }
   end
@@ -35,75 +35,75 @@ describe IndexedDocument do
   it { is_expected.to validate_presence_of :title }
   it { is_expected.to belong_to :affiliate }
 
-  it "should create a SuperfreshUrl entry for the affiliate" do
+  it 'should create a SuperfreshUrl entry for the affiliate' do
     expect(SuperfreshUrl.find_by_url_and_affiliate_id(@min_valid_attributes[:url], @min_valid_attributes[:affiliate_id])).to be_nil
     IndexedDocument.create!(@min_valid_attributes)
     expect(SuperfreshUrl.find_by_url_and_affiliate_id(@min_valid_attributes[:url], @min_valid_attributes[:affiliate_id])).not_to be_nil
   end
 
-  it "should validate unique url" do
+  it 'should validate unique url' do
     IndexedDocument.create!(@valid_attributes)
     duplicate = IndexedDocument.new(@valid_attributes.merge(:url => @valid_attributes[:url].upcase))
     expect(duplicate).not_to be_valid
     expect(duplicate.errors[:url].first).to match(/already been added/)
   end
 
-  it "should allow a duplicate url for a different affiliate" do
+  it 'should allow a duplicate url for a different affiliate' do
     IndexedDocument.create!(@valid_attributes)
     affiliates(:power_affiliate).site_domains.create!(:domain => affiliates(:basic_affiliate).site_domains.first.domain)
     duplicate = IndexedDocument.new(@valid_attributes.merge(:affiliate_id => affiliates(:power_affiliate).id))
     expect(duplicate).to be_valid
   end
 
-  it "should not allow setting last_crawl_status to OK if the title is blank" do
+  it 'should not allow setting last_crawl_status to OK if the title is blank' do
     odie = IndexedDocument.create!(@min_valid_attributes)
     expect(odie.update_attributes(:title => nil, :description => 'bogus description', :last_crawl_status => IndexedDocument::OK_STATUS)).to be false
     expect(odie.errors[:title].first).to match(/can't be blank/)
   end
 
-  describe "#fetch" do
+  describe '#fetch' do
 
     let(:indexed_document) { IndexedDocument.create!(@valid_attributes) }
 
-    it "should set the load time attribute" do
+    it 'should set the load time attribute' do
       indexed_document.url = 'https://search.gov/'
       indexed_document.fetch
       indexed_document.reload
       expect(indexed_document.load_time).not_to be_nil
     end
 
-    context "when there is a problem fetching and indexing the URL content" do
+    context 'when there is a problem fetching and indexing the URL content' do
       before do
         stub_request(:get, indexed_document.url).to_return(status: [301, 'Moved Permanently'])
       end
 
-      it "should update the url with last crawled date and error message and set the body to nil" do
+      it 'should update the url with last crawled date and error message and set the body to nil' do
         indexed_document.fetch
         expect(indexed_document.last_crawled_at).not_to be_nil
-        expect(indexed_document.last_crawl_status).to eq("301 Moved Permanently")
+        expect(indexed_document.last_crawl_status).to eq('301 Moved Permanently')
         expect(indexed_document.body).to be_nil
         expect(indexed_document.description).to eq('This is a document.')
         expect(indexed_document.title).to eq('Some Title')
       end
     end
 
-    context "when there is a problem updating the attributes after catching an exception during indexing" do
+    context 'when there is a problem updating the attributes after catching an exception during indexing' do
       before do
-        allow(Net::HTTP).to receive(:start).and_raise Exception.new("some problem during indexing")
+        allow(Net::HTTP).to receive(:start).and_raise Exception.new('some problem during indexing')
         allow(indexed_document).to receive(:update_attributes!).and_raise Timeout::Error
       end
 
-      it "should handle the exception and delete the record" do
+      it 'should handle the exception and delete the record' do
         indexed_document.fetch
         expect(IndexedDocument.find_by_id(indexed_document.id)).to be_nil
       end
 
-      context "when there is a problem destroying the record" do
+      context 'when there is a problem destroying the record' do
         before do
-          allow(indexed_document).to receive(:destroy).and_raise Exception.new("Some other problem")
+          allow(indexed_document).to receive(:destroy).and_raise Exception.new('Some other problem')
         end
 
-        it "should fail gracefully" do
+        it 'should fail gracefully' do
           expect(Rails.logger).to receive(:warn)
           indexed_document.fetch
         end
@@ -112,17 +112,17 @@ describe IndexedDocument do
     end
   end
 
-  describe "#save_or_destroy" do
+  describe '#save_or_destroy' do
     before do
       @indexed_document = IndexedDocument.create!(@valid_attributes)
     end
 
     context "when Rails validation misses that it's a duplicate and MySQL throws an exception" do
       before do
-        allow(@indexed_document).to receive(:save!).and_raise(Mysql2::Error.new("oops"))
+        allow(@indexed_document).to receive(:save!).and_raise(Mysql2::Error.new('oops'))
       end
 
-      it "should catch the exception and delete the record" do
+      it 'should catch the exception and delete the record' do
         @indexed_document.save_or_destroy
         expect(IndexedDocument.find_by_id(@indexed_document.id)).to be_nil
       end
@@ -134,18 +134,18 @@ describe IndexedDocument do
       end
 
       it 'should raise IndexedDocumentError' do
-        expect { @indexed_document.save_or_destroy }.to raise_error(IndexedDocument::IndexedDocumentError, "Problem saving indexed document: record invalid")
+        expect { @indexed_document.save_or_destroy }.to raise_error(IndexedDocument::IndexedDocumentError, 'Problem saving indexed document: record invalid')
       end
     end
   end
 
-  describe "#index_document(file, content_type)" do
+  describe '#index_document(file, content_type)' do
     before do
       @indexed_document = IndexedDocument.create!(@min_valid_attributes)
       @file = open(Rails.root.to_s + '/spec/fixtures/html/fresnel-lens-building-opens-july-23.htm')
     end
 
-    context "when the fetched document is a PDF doc" do
+    context 'when the fetched document is a PDF doc' do
       before do
         allow(@file).to receive(:content_type).and_return 'application/pdf'
       end
@@ -156,7 +156,7 @@ describe IndexedDocument do
       end
     end
 
-    context "when the fetched document is a Word doc" do
+    context 'when the fetched document is a Word doc' do
       before do
         allow(@file).to receive(:content_type).and_return 'application/msword'
       end
@@ -167,7 +167,7 @@ describe IndexedDocument do
       end
     end
 
-    context "when the fetched document is a Powerpoint doc" do
+    context 'when the fetched document is a Powerpoint doc' do
       before do
         allow(@file).to receive(:content_type).and_return 'application/ms-powerpoint'
       end
@@ -178,7 +178,7 @@ describe IndexedDocument do
       end
     end
 
-    context "when the fetched document is an Excel doc" do
+    context 'when the fetched document is an Excel doc' do
       before do
         allow(@file).to receive(:content_type).and_return 'application/ms-excel'
       end
@@ -190,50 +190,50 @@ describe IndexedDocument do
     end
 
     context "when the content type of the fetched document contains 'html'" do
-      it "should call index_html" do
+      it 'should call index_html' do
         expect(@indexed_document).to receive(:index_html).with(@file).and_return true
         @indexed_document.index_document(@file, 'text/html')
       end
     end
 
-    context "when the content type of the fetched document is unknown" do
+    context 'when the content type of the fetched document is unknown' do
       before do
         allow(@file).to receive(:content_type).and_return 'application/clipart'
       end
 
-      it "should raise an IndexedDocumentError error indicating that the document type is not yet supported" do
-        expect { @indexed_document.index_document(@file, @file.content_type) }.to raise_error(IndexedDocument::IndexedDocumentError, "Unsupported document type: application/clipart")
+      it 'should raise an IndexedDocumentError error indicating that the document type is not yet supported' do
+        expect { @indexed_document.index_document(@file, @file.content_type) }.to raise_error(IndexedDocument::IndexedDocumentError, 'Unsupported document type: application/clipart')
       end
     end
 
-    context "when the document is too big" do
+    context 'when the document is too big' do
       before do
         allow(@file).to receive(:size).and_return IndexedDocument::MAX_DOC_SIZE+1
       end
 
-      it "should raise an IndexedDocumentError error indicating that the document is too big" do
-        expect { @indexed_document.index_document(@file, @file.content_type) }.to raise_error(IndexedDocument::IndexedDocumentError, "Document is over 50mb limit")
+      it 'should raise an IndexedDocumentError error indicating that the document is too big' do
+        expect { @indexed_document.index_document(@file, @file.content_type) }.to raise_error(IndexedDocument::IndexedDocumentError, 'Document is over 50mb limit')
       end
     end
   end
 
-  describe "#index_html(file)" do
-    context "when the page has a HTML title" do
+  describe '#index_html(file)' do
+    context 'when the page has a HTML title' do
       let(:indexed_document) { IndexedDocument.create!(@min_valid_attributes) }
       let(:file) { open(Rails.root.to_s + '/spec/fixtures/html/fresnel-lens-building-opens-july-23.htm') }
 
-      it "should extract the text body from the document" do
-        expect(indexed_document).to receive(:extract_body_from).and_return "this is the body"
+      it 'should extract the text body from the document' do
+        expect(indexed_document).to receive(:extract_body_from).and_return 'this is the body'
         indexed_document.index_html open(Rails.root.to_s + '/spec/fixtures/html/data-layers.html')
-        expect(indexed_document.body).to eq("this is the body")
+        expect(indexed_document.body).to eq('this is the body')
       end
 
-      context "when the page body (inner text) is empty" do
+      context 'when the page body (inner text) is empty' do
         before do
           allow(indexed_document).to receive(:scrub_inner_text)
         end
 
-        it "should raise an IndexedDocumentError" do
+        it 'should raise an IndexedDocumentError' do
           expect { indexed_document.index_html(file) }.to raise_error(IndexedDocument::IndexedDocumentError)
         end
       end
@@ -241,45 +241,45 @@ describe IndexedDocument do
     end
   end
 
-  describe "#extract_body_from(nokogiri_doc)" do
+  describe '#extract_body_from(nokogiri_doc)' do
     let(:doc) { Nokogiri::HTML(open(Rails.root.to_s + '/spec/fixtures/html/usa_gov/audiences.html')) }
 
-    it "should return the inner text of the body of the document" do
-      indexed_document = IndexedDocument.new(:url => "http://gov.nps.gov/page.html")
+    it 'should return the inner text of the body of the document' do
+      indexed_document = IndexedDocument.new(:url => 'http://gov.nps.gov/page.html')
       body = indexed_document.extract_body_from(doc)
       expect(body).to eq("Skip to Main Content Home FAQs Site Index E-mail Us Chat Get E-mail Updates Change Text Size Español Search 1 (800) FED-INFO|1 (800) 333-4636 Get Services Get It Done Online! Public Engagement Performance Dashboards Shop Government Auctions Replace Vital Records MORE SERVICES Government Jobs Change Your Address Explore Topics Jobs and Education Family, Home, and Community Public Safety and Law Health and Nutrition Travel and Recreation Money and Taxes Environment, Energy, and Agriculture Benefits and Grants Defense and International Consumer Guides Reference and General Government History, Arts, and Culture Voting and Elections Science and Technology Audiences Audiences Find Government Agencies All Government A-Z Index of the U.S. Government Federal Government Executive Branch Judicial Branch Legislative Branch State, Local, and Tribal State Government Local Government Tribal Government Contact Government U.S. Congress & White House Contact Government Elected Officials Agency Contacts Contact Us FAQs MORE CONTACTS Governor and State Legislators E-mail Print Share RSS You Are Here Home &gt; Citizens &gt; Especially for Specific Audiences Especially for Specific Audiences Removed the links here, too. This is the last page for the test, with dead ends on the breadcrumb, too Contact Your Government FAQs E-mail Us Chat Phone Page Last Reviewed or Updated: October 28, 2010 Connect with Government Facebook Twitter Mobile YouTube Our Blog Home About Us Contact Us Website Policies Privacy Suggest-A-Link Link to Us USA.gov is the U.S. government's official web portal.")
     end
   end
 
-  describe "#index_application_file(file)" do
+  describe '#index_application_file(file)' do
     let(:indexed_document) { IndexedDocument.create!(@min_valid_attributes.merge(title: 'preset title', description: 'preset description')) }
 
-    context "for a normal application file (PDF/Word/PPT/Excel)" do
+    context 'for a normal application file (PDF/Word/PPT/Excel)' do
       before do
-        indexed_document.index_application_file(Rails.root.to_s + "/spec/fixtures/pdf/test.pdf", 'pdf')
+        indexed_document.index_application_file(Rails.root.to_s + '/spec/fixtures/pdf/test.pdf', 'pdf')
       end
 
-      it "should update the body of the indexed document, leaving title field and description intact" do
+      it 'should update the body of the indexed document, leaving title field and description intact' do
         expect(indexed_document.id).not_to be_nil
-        expect(indexed_document.body).to eq("This is my headline. This is my content. This is a test PDF file, we are use it to test our PDF parsing technology. We want it to be at least 250 characters long so that we can test the description generator and see that it cuts off the description, meaning truncates it, in the right location. It should truncate the text and cut off the following: truncate me. It includes some special characters to test our parsing: m–dash, “curly quotes”, a’postrophe, paragraph: ¶")
+        expect(indexed_document.body).to eq('This is my headline. This is my content. This is a test PDF file, we are use it to test our PDF parsing technology. We want it to be at least 250 characters long so that we can test the description generator and see that it cuts off the description, meaning truncates it, in the right location. It should truncate the text and cut off the following: truncate me. It includes some special characters to test our parsing: m–dash, “curly quotes”, a’postrophe, paragraph: ¶')
         expect(indexed_document.description).to eq('preset description')
         expect(indexed_document.title).to eq('preset title')
         expect(indexed_document.url).to eq(@min_valid_attributes[:url])
       end
 
-      it "should set the the time and status from the crawl" do
+      it 'should set the the time and status from the crawl' do
         expect(indexed_document.last_crawled_at).not_to be_nil
         expect(indexed_document.last_crawl_status).to eq(IndexedDocument::OK_STATUS)
       end
     end
 
-    context "when the page content is empty" do
+    context 'when the page content is empty' do
       before do
-        allow(indexed_document).to receive(:parse_file).and_return ""
+        allow(indexed_document).to receive(:parse_file).and_return ''
       end
 
-      it "should raise an IndexedDocumentError" do
-        expect { indexed_document.index_application_file(Rails.root.to_s + "/spec/fixtures/pdf/test.pdf", 'pdf') }.to raise_error(IndexedDocument::IndexedDocumentError)
+      it 'should raise an IndexedDocumentError' do
+        expect { indexed_document.index_application_file(Rails.root.to_s + '/spec/fixtures/pdf/test.pdf', 'pdf') }.to raise_error(IndexedDocument::IndexedDocumentError)
       end
     end
   end
@@ -303,7 +303,7 @@ describe IndexedDocument do
 
   end
 
-  describe "#normalize_error_message(e)" do
+  describe '#normalize_error_message(e)' do
     context "when it's a timeout-related error" do
       it "should return 'Document took too long to fetch'" do
         indexed_document = IndexedDocument.new
@@ -329,7 +329,7 @@ describe IndexedDocument do
     end
 
     context "when it's a generic error" do
-      it "should return the error message" do
+      it 'should return the error message' do
         indexed_document = IndexedDocument.new
         e = Exception.new('something awful happened')
         expect(indexed_document.send(:normalize_error_message, e)).to eq('something awful happened')

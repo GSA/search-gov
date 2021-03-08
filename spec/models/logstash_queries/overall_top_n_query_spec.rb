@@ -11,13 +11,13 @@ describe OverallTopNQuery do
         "bool": {
           "must_not": {
             "term": {
-              "tags": "api"
+              "tags": 'api'
             }
           },
           "filter": {
             "range": {
               "@timestamp": {
-                "gte": "2014-06-28"
+                "gte": '2014-06-28'
               }
             }
           }
@@ -26,7 +26,7 @@ describe OverallTopNQuery do
       "aggs": {
         "agg": {
           "terms": {
-            "field": "params.query.raw",
+            "field": 'params.query.raw',
             "size": 1234
           }
         }

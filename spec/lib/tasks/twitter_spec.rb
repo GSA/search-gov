@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Twitter rake tasks" do
+describe 'Twitter rake tasks' do
   before(:all) do
     @rake = Rake::Application.new
     Rake.application = @rake
@@ -8,26 +8,26 @@ describe "Twitter rake tasks" do
     Rake::Task.define_task(:environment)
   end
 
-  describe "usasearch:twitter" do
-    describe "usasearch:twitter:expire" do
+  describe 'usasearch:twitter' do
+    describe 'usasearch:twitter:expire' do
       let(:task_name) { 'usasearch:twitter:expire' }
       before { @rake[task_name].reenable }
 
       it "should have 'environment' as a prereq" do
-        expect(@rake[task_name].prerequisites).to include("environment")
+        expect(@rake[task_name].prerequisites).to include('environment')
       end
 
-      context "when days back is specified" do
-        it "should expire tweets that were published more than X days ago" do
-          days_back = "7"
+      context 'when days back is specified' do
+        it 'should expire tweets that were published more than X days ago' do
+          days_back = '7'
           expect(Tweet).to receive(:expire).with(days_back.to_i)
           @rake[task_name].invoke(days_back)
         end
       end
 
-      context "when days back is not specified" do
-        it "should expire tweets that were published more than 3 days ago" do
-          days_back = "3"
+      context 'when days back is not specified' do
+        it 'should expire tweets that were published more than 3 days ago' do
+          days_back = '3'
           expect(Tweet).to receive(:expire).with(days_back.to_i)
           @rake[task_name].invoke
         end
@@ -79,7 +79,7 @@ describe "Twitter rake tasks" do
       end
     end
 
-    describe "usasearch:twitter:stream" do
+    describe 'usasearch:twitter:stream' do
       attr_reader :stream
 
       let!(:now) { Time.current }
@@ -88,7 +88,7 @@ describe "Twitter rake tasks" do
       before { @rake[task_name].reenable }
 
       it "should have 'environment' as a prereq" do
-        expect(@rake[task_name].prerequisites).to include("environment")
+        expect(@rake[task_name].prerequisites).to include('environment')
       end
 
       context 'configuring TweetStream' do
@@ -118,7 +118,7 @@ describe "Twitter rake tasks" do
         end
       end
 
-      context "when connecting to Twitter" do
+      context 'when connecting to Twitter' do
         let(:tweet_status_json) { File.read("#{Rails.root}/spec/fixtures/json/tweet_status.json") }
         let(:tweet_status_with_partial_urls_json) { File.read("#{Rails.root}/spec/fixtures/json/tweet_status_with_partial_urls.json") }
         let(:retweet_status_json) { File.read("#{Rails.root}/spec/fixtures/json/retweet_status.json") }
@@ -152,20 +152,20 @@ describe "Twitter rake tasks" do
           allow(@logger).to receive(:info).and_return true
           allow(@logger).to receive(:debug).and_return true
           allow(@logger).to receive(:error).and_return true
-          allow(ActiveSupport::Logger).to receive(:new).with(Rails.root.to_s + "/log/twitter.log").and_return @logger
+          allow(ActiveSupport::Logger).to receive(:new).with(Rails.root.to_s + '/log/twitter.log').and_return @logger
         end
 
         after(:each) do
           TweetStream.reset
         end
 
-        it "get a list of all the TwitterProfile ids, setup various callbacks, and call follow" do
+        it 'get a list of all the TwitterProfile ids, setup various callbacks, and call follow' do
           expect(@client).to receive(:follow).with(active_twitter_ids)
           expect(@logger).to receive(:info).with("[#{now}] [TWITTER] [CONNECT] Connecting to Twitter to follow 1 Twitter profiles.")
           @rake[task_name].invoke
         end
 
-        it "should create a new tweet for every status received" do
+        it 'should create a new tweet for every status received' do
           allow(@stream).to receive(:each).and_yield(tweet_status_json)
           expect(@logger).to receive(:info).with("[#{now}] [TWITTER] [CONNECT] Connecting to Twitter to follow 1 Twitter profiles.")
           expect(@logger).to receive(:info).with("[#{now}] [TWITTER] [FOLLOW] New tweet received: @usasearchdev: Fast. Relevant. Free.\nFeatures: http:\/\/t.co\/l8VhWiZH http:\/\/t.co\/y5YSDq7M")
@@ -205,17 +205,17 @@ describe "Twitter rake tasks" do
           expect(tweet.urls.collect(&:display_url)).to eq(%w(fema.gov/colorbox/node/))
         end
 
-        it "should log an error if something goes wrong in creating a Tweet" do
+        it 'should log an error if something goes wrong in creating a Tweet' do
           allow(@stream).to receive(:each).and_yield(tweet_status_json)
           expect(@logger).to receive(:info).with("[#{now}] [TWITTER] [CONNECT] Connecting to Twitter to follow 1 Twitter profiles.")
           expect(@logger).to receive(:info).with("[#{now}] [TWITTER] [FOLLOW] New tweet received: @usasearchdev: Fast. Relevant. Free.\nFeatures: http:\/\/t.co\/l8VhWiZH http:\/\/t.co\/y5YSDq7M")
           expect(@logger).to receive(:error).with("[#{now}] [TWITTER] [FOLLOW] [ERROR] Encountered error while handling tweet with status_id=258289885373423617: Some Exception")
-          expect(TwitterData).to receive(:import_tweet).and_raise "Some Exception"
+          expect(TwitterData).to receive(:import_tweet).and_raise 'Some Exception'
           @rake[task_name].invoke
           expect(Tweet.count).to eq(0)
         end
 
-        it "should only create a new tweet if the user id matches a TwitterProfile" do
+        it 'should only create a new tweet if the user id matches a TwitterProfile' do
           allow(@stream).to receive(:each).and_yield(@other_status)
           expect(@logger).to receive(:info).with("[#{now}] [TWITTER] [CONNECT] Connecting to Twitter to follow 1 Twitter profiles.")
           expect(@logger).to receive(:info).with("[#{now}] [TWITTER] [FOLLOW] New tweet received: @Im_Smokee_BITCH: 2o piece nugget I just KILLED EM")
@@ -223,7 +223,7 @@ describe "Twitter rake tasks" do
           @rake[task_name].invoke
         end
 
-        it "should delete a status if a delete message is received" do
+        it 'should delete a status if a delete message is received' do
           Tweet.create!(:twitter_profile_id => active_twitter_ids.first,
                         :tweet_id => 1234,
                         :tweet_text => 'DELETE ME.',
@@ -235,14 +235,14 @@ describe "Twitter rake tasks" do
           expect(Tweet.find_by_tweet_id(1234)).to be_nil
         end
 
-        it "should log an error message if one is received" do
+        it 'should log an error message if one is received' do
           allow(@stream).to receive(:each).and_yield('Bad message')
           expect(@logger).to receive(:info).with("[#{now}] [TWITTER] [CONNECT] Connecting to Twitter to follow 1 Twitter profiles.")
           expect(@logger).to receive(:error).with("[#{now}] [TWITTER] [ERROR] MultiJson::DecodeError occured in stream: Bad message")
           @rake[task_name].invoke
         end
 
-        it "should log when reconnecting" do
+        it 'should log when reconnecting' do
           allow(@stream).to receive(:each).and_yield(tweet_status_json)
           allow(@stream).to receive(:on_reconnect).and_yield(10, 1)
           expect(@logger).to receive(:info).with("[#{now}] [TWITTER] [CONNECT] Connecting to Twitter to follow 1 Twitter profiles.")
@@ -274,12 +274,12 @@ describe "Twitter rake tasks" do
           @rake[task_name].invoke
         end
 
-        context "when there are no Twitter Profiles" do
+        context 'when there are no Twitter Profiles' do
           before do
             expect(TwitterProfile).to receive(:active_twitter_ids).and_return([])
           end
 
-          it "should not connect to Twitter" do
+          it 'should not connect to Twitter' do
             expect(@client).not_to receive(:follow)
             expect(@logger).not_to receive(:info)
             @rake[task_name].invoke

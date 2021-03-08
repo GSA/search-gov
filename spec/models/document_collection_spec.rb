@@ -28,8 +28,8 @@ describe DocumentCollection do
     end
   end
 
-  describe "Creating new instance" do
-    it "should create navigation" do
+  describe 'Creating new instance' do
+    it 'should create navigation' do
       dc = DocumentCollection.create!(valid_attributes)
       expect(dc.navigation).to eq(Navigation.find(dc.navigation.id))
       expect(dc.navigation.affiliate_id).to eq(dc.affiliate_id)
@@ -43,7 +43,7 @@ describe DocumentCollection do
     end
   end
 
-  describe "#depth" do
+  describe '#depth' do
     subject do
       DocumentCollection.create!(:name => 'My Collection',
                                   :affiliate => affiliates(:power_affiliate),

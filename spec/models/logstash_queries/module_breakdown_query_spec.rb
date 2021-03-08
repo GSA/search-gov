@@ -9,18 +9,18 @@ describe ModuleBreakdownQuery do
           "filter": [
             {
               "term": {
-                "params.affiliate": "affiliate_name"
+                "params.affiliate": 'affiliate_name'
               }
             },
             {
               "terms": {
-                "type": ["search","click"]
+                "type": ['search','click']
               }
             }
           ],
           "must_not": {
             "term": {
-              "useragent.device": "Spider"
+              "useragent.device": 'Spider'
             }
           }
         }
@@ -28,13 +28,13 @@ describe ModuleBreakdownQuery do
       "aggs": {
         "agg": {
           "terms": {
-            "field": "modules",
+            "field": 'modules',
             "size": 100
           },
           "aggs": {
             "type": {
               "terms": {
-                "field": "type"
+                "field": 'type'
               }
             }
           }
@@ -54,13 +54,13 @@ describe ModuleBreakdownQuery do
             "filter": [
               {
                 "terms": {
-                  "type": ["search","click"]
+                  "type": ['search','click']
                 }
               }
             ],
             "must_not": {
               "term": {
-                "useragent.device": "Spider"
+                "useragent.device": 'Spider'
               }
             }
           }
@@ -68,13 +68,13 @@ describe ModuleBreakdownQuery do
         "aggs": {
           "agg": {
             "terms": {
-              "field": "modules",
+              "field": 'modules',
               "size": 100
             },
             "aggs": {
               "type": {
                 "terms": {
-                  "field": "type"
+                  "field": 'type'
                 }
               }
             }

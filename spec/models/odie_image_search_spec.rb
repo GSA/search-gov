@@ -8,7 +8,7 @@ describe OdieImageSearch do
     SearchEngineResponse.new do |search_response|
       search_response.total = 2
       search_response.start_record = 1
-      search_response.results = [Hashie::Mash::Rash.new(title: 'President Obama walks the Obama daughters to school', url: "http://url1", thumbnail_url: "http://thumbnailurl1"), Hashie::Mash::Rash.new(title: 'POTUS gets in car.', url: "http://url2", thumbnail_url: "http://thumbnailurl2")]
+      search_response.results = [Hashie::Mash::Rash.new(title: 'President Obama walks the Obama daughters to school', url: 'http://url1', thumbnail_url: 'http://thumbnailurl1'), Hashie::Mash::Rash.new(title: 'POTUS gets in car.', url: 'http://url2', thumbnail_url: 'http://thumbnailurl2')]
       search_response.end_record = 2
     end
   end
@@ -19,23 +19,23 @@ describe OdieImageSearch do
     allow(oasis_search).to receive(:execute_query).and_return search_engine_response
   end
 
-  describe ".search" do
-    it "should retrieve photos from Oasis API endpoint" do
+  describe '.search' do
+    it 'should retrieve photos from Oasis API endpoint' do
       image_search = OdieImageSearch.new(:query => 'obama', :affiliate => affiliate)
       image_search.run
-      expect(image_search.results.first["title"]).to eq('President Obama walks the Obama daughters to school')
-      expect(image_search.results.last["title"]).to eq('POTUS gets in car.')
+      expect(image_search.results.first['title']).to eq('President Obama walks the Obama daughters to school')
+      expect(image_search.results.last['title']).to eq('POTUS gets in car.')
       expect(image_search.total).to eq(2)
     end
   end
 
-  describe ".cache_key" do
-    it "should output a key based on the query, affiliate id, and page parameters" do
+  describe '.cache_key' do
+    it 'should output a key based on the query, affiliate id, and page parameters' do
       expect(OdieImageSearch.new(:query => 'element', :affiliate => affiliate, :page => 4).cache_key).to eq("oasis_image:element:#{affiliate.id}:4:10")
     end
   end
 
-  describe "new" do
+  describe 'new' do
     context 'when affiliate has MRSS feeds' do
       before do
         affiliate.flickr_profiles.delete_all

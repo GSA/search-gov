@@ -159,7 +159,7 @@ describe SearchgovDomain do
 
     before do
       stub_request(:get, "http://#{domain}/robots.txt").
-        to_return(status: [200, "OK"], headers: { content_type: 'text/plain' }, body: robots)
+        to_return(status: [200, 'OK'], headers: { content_type: 'text/plain' }, body: robots)
     end
 
     context 'when a delay is specified in robots.txt' do
@@ -170,9 +170,9 @@ describe SearchgovDomain do
       context 'when the domain is redirected' do
         before do
           stub_request(:get, "http://#{domain}/robots.txt").
-            to_return(status: 301, headers: { location: "https://#{domain}/robots.txt" }, body: "")
+            to_return(status: 301, headers: { location: "https://#{domain}/robots.txt" }, body: '')
           stub_request(:get, "https://#{domain}/robots.txt").
-            to_return(status: [200, "OK"], headers: { content_type: 'text/plain' }, body: robots)
+            to_return(status: [200, 'OK'], headers: { content_type: 'text/plain' }, body: robots)
         end
 
         it { is_expected.to eq 10 }
@@ -324,7 +324,7 @@ describe SearchgovDomain do
     context 'when the domain is redirected' do
       before do
         stub_request(:get, "http://#{domain}").
-          to_return(body: "", status: 301, headers: { 'Location' => new_url })
+          to_return(body: '', status: 301, headers: { 'Location' => new_url })
         stub_request(:get, new_url).to_return(status: 200)
       end
 
@@ -415,7 +415,7 @@ describe SearchgovDomain do
       end
 
       context 'when the sitemap entry is followed by a comment' do
-        let(:robots_txt) { "Sitemap: http://searchgov.gov/commented.xml #comment" }
+        let(:robots_txt) { 'Sitemap: http://searchgov.gov/commented.xml #comment' }
 
         it { is_expected.to eq ['http://searchgov.gov/commented.xml'] }
       end

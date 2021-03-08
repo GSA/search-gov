@@ -18,19 +18,19 @@ describe WatcherNoResultsQuery do
           "filter": [
             {
               "term": {
-                "params.affiliate": "affiliate_name"
+                "params.affiliate": 'affiliate_name'
               }
             },
             {
               "terms": {
-                "type": ["search"]
+                "type": ['search']
               }
             },
             {
               "range": {
                 "@timestamp": {
-                  "gte": "{{ctx.trigger.scheduled_time}}||-1w",
-                  "lte": "{{ctx.trigger.scheduled_time}}"
+                  "gte": '{{ctx.trigger.scheduled_time}}||-1w',
+                  "lte": '{{ctx.trigger.scheduled_time}}'
                 }
               }
             }
@@ -38,25 +38,25 @@ describe WatcherNoResultsQuery do
           "must_not": [
             {
               "term": {
-                "useragent.device": "Spider"
+                "useragent.device": 'Spider'
               }
             },
             {
               "term": {
-                "params.query.raw": ""
+                "params.query.raw": ''
               }
             },
             {
               "exists": {
-                "field": "modules"
+                "field": 'modules'
               }
             },
             {
               "terms": {
                 "params.query.raw": [
-                  "foo",
-                  "bar",
-                  "baz biz"
+                  'foo',
+                  'bar',
+                  'baz biz'
                 ]
               }
             }
@@ -68,7 +68,7 @@ describe WatcherNoResultsQuery do
           "terms": {
             "min_doc_count": 50,
             "size": 10,
-            "field": "params.query.raw"
+            "field": 'params.query.raw'
           }
         }
       }

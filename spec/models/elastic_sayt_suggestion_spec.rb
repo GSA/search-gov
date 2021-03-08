@@ -77,7 +77,7 @@ describe ElasticSaytSuggestion do
 
       it 'should highlight appropriate fields with default highlighting' do
         first = search.results.first
-        expect(first.phrase).to eq("hi <strong>suggest</strong> me")
+        expect(first.phrase).to eq('hi <strong>suggest</strong> me')
       end
     end
 
@@ -88,13 +88,13 @@ describe ElasticSaytSuggestion do
 
       it 'should not highlight matches' do
         first = search.results.first
-        expect(first.phrase).to eq("hi suggest me")
+        expect(first.phrase).to eq('hi suggest me')
       end
     end
 
     context 'when phrase is really long' do
       before do
-        long_phrase = "president obama overcame furious lobbying by big banks to pass dodd-frank"
+        long_phrase = 'president obama overcame furious lobbying by big banks to pass dodd-frank'
         affiliate.sayt_suggestions.create!(phrase: long_phrase, popularity: 30)
         ElasticSaytSuggestion.commit
       end
@@ -102,7 +102,7 @@ describe ElasticSaytSuggestion do
       it 'should show everything in a single fragment' do
         search = ElasticSaytSuggestion.search_for(q: 'president frank', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
         first = search.results.first
-        expect(first.phrase).to eq("<strong>president</strong> obama overcame furious lobbying by big banks to pass dodd-<strong>frank</strong>")
+        expect(first.phrase).to eq('<strong>president</strong> obama overcame furious lobbying by big banks to pass dodd-<strong>frank</strong>')
       end
     end
 
@@ -134,7 +134,7 @@ describe ElasticSaytSuggestion do
         ElasticSaytSuggestion.commit
       end
 
-      it "should return only matches for the given affiliate" do
+      it 'should return only matches for the given affiliate' do
         search = ElasticSaytSuggestion.search_for(q: 'Tropical', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
         expect(search.total).to eq(1)
         expect(search.results.first.affiliate.name).to eq(affiliate.name)
@@ -150,7 +150,7 @@ describe ElasticSaytSuggestion do
       ElasticSaytSuggestion.commit
     end
 
-    describe "phrase" do
+    describe 'phrase' do
       it 'should be case insentitive' do
         expect(ElasticSaytSuggestion.search_for(q: 'OBAMA', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
       end
@@ -159,7 +159,7 @@ describe ElasticSaytSuggestion do
         expect(ElasticSaytSuggestion.search_for(q: 'øbåmà', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
       end
 
-      context "when query contains problem characters" do
+      context 'when query contains problem characters' do
         ['"   ', '   "       ', '+++', '+-', '-+'].each do |query|
           specify { expect(ElasticSaytSuggestion.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to be_zero }
         end
@@ -221,6 +221,6 @@ describe ElasticSaytSuggestion do
 
   end
 
-  it_behaves_like "an indexable"
+  it_behaves_like 'an indexable'
 
 end

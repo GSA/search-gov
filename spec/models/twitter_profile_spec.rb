@@ -22,32 +22,32 @@ describe TwitterProfile do
   it { is_expected.to validate_presence_of :twitter_id }
   it { is_expected.to validate_presence_of :profile_image_url }
 
-  context "when screen_name has leading @" do
+  context 'when screen_name has leading @' do
     it 'should normalize screen_name before validation' do
       tp = TwitterProfile.create!(@valid_attributes.merge(:screen_name => '@at_sign'))
       expect(tp.screen_name).to eq('at_sign')
     end
   end
 
-  context "when screen_name has trailing spaces" do
+  context 'when screen_name has trailing spaces' do
     it 'should normalize screen_name before validation' do
       tp = TwitterProfile.create!(@valid_attributes.merge(:screen_name => 'CDCSalud  '))
       expect(tp.screen_name).to eq('CDCSalud')
     end
   end
 
-  it "should create an instance with valid attributes" do
+  it 'should create an instance with valid attributes' do
     TwitterProfile.create!(@valid_attributes)
 
     is_expected.to validate_uniqueness_of(:twitter_id)
   end
 
-  describe "#link_to_profile" do
+  describe '#link_to_profile' do
     before do
       @profile = TwitterProfile.create!(@valid_attributes)
     end
 
-    it "should output a properly formatted link to the tweet" do
+    it 'should output a properly formatted link to the tweet' do
       expect(@profile.link_to_profile).to eq('https://twitter.com/USASearch')
     end
   end
