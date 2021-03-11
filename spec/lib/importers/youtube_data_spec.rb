@@ -117,6 +117,30 @@ describe YoutubeData do
     end
   end
 
+  describe '.already_imported_enough_profiles_today?' do
+    context 'when we have not hit our limit' do
+      before do
+        allow(described_class).to receive(:number_of_profiles_updated_today).
+          and_return(described_class.maximum_profile_updates_per_day)
+      end
+
+      it 'is false' do
+        expect(described_class.already_imported_enough_profiles_today?).to be(false)
+      end
+    end
+
+    context 'when we have hit our limit' do
+      before do
+        allow(described_class).to receive(:number_of_profiles_updated_today).
+          and_return(described_class.maximum_profile_updates_per_day)
+      end
+
+      it 'is true' do
+        expect(described_class.already_imported_enough_profiles_today?).to be(true)
+      end
+    end
+  end
+
   describe '#import' do
     let(:profile) { youtube_profiles(:whitehouse) }
     let(:youtube_data) { described_class.new(profile) }
