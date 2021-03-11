@@ -352,7 +352,7 @@ describe YoutubeData do
         and_yield(video_1)
 
       allow(youtube_data).to receive_message_chain(
-        :rss_feed_url, :news_items, :find_by_link
+        :rss_feed_url, :news_items, :find_by
       ).and_return(news_item_without_duration)
       expect(news_item_without_duration).to receive(:duration=).with('5:30')
       expect(news_item_without_duration).to receive(:save!)
