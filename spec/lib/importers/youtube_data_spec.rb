@@ -121,7 +121,7 @@ describe YoutubeData do
     context 'when we have not hit our limit' do
       before do
         allow(described_class).to receive(:number_of_profiles_updated_today).
-          and_return(described_class.maximum_profile_updates_per_day)
+          and_return(0)
       end
 
       it 'is false' do
