@@ -11,6 +11,10 @@ describe Tweet do
     }
   end
 
+  before do
+    allow(Twitter).to receive(:user).and_return double('Twitter', id: 12345, name: 'USASearch', profile_image_url: 'http://some.gov/url')
+  end
+
   let(:profile) do
     TwitterProfile.create!(twitter_id: 12345,
                            screen_name: 'USASearch',
@@ -47,7 +51,7 @@ describe Tweet do
     context 'when tweet can be traced back to at least one affiliate' do
       before do
         profile.affiliates << affiliates(:gobiernousa_affiliate)
-        @tweet = profile.tweets.create!(@valid_attributes)
+        @tweet = profile.tweets.create!(valid_attributes)
       end
 
       it 'should use the locale for the first affiliate' do
@@ -57,7 +61,7 @@ describe Tweet do
 
     context 'when tweet cannot be traced back to at least one affiliate' do
       before do
-        @tweet = described_class.create!(@valid_attributes.merge(twitter_profile_id: profile.id))
+        @tweet = described_class.create!(valid_attributes.merge(twitter_profile_id: profile.id))
       end
 
       it 'should use English' do

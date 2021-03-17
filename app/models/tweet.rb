@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class Tweet < ApplicationRecord
   before_save :sanitize_tweet_text
-  belongs_to :twitter_profile, :primary_key => :twitter_id
-  validates_presence_of :tweet_id, :tweet_text, :published_at, :twitter_profile_id
-  validates_uniqueness_of :tweet_id
+  belongs_to :twitter_profile, primary_key: :twitter_id
+  validates :tweet_id, :tweet_text, :published_at, :twitter_profile_id, presence: true
+  validates :tweet_id, uniqueness: true
   serialize :urls, Array
 
   def sanitize_tweet_text
