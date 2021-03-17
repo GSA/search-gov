@@ -30,6 +30,7 @@ class Tweet < ApplicationRecord
   end
 
   def self.expire(days_back)
-    destroy_all(["published_at < ?", days_back.days.ago.beginning_of_day.to_s(:db)])
+    where('published_at < ?', days_back.days.ago.beginning_of_day.to_s(:db)).
+      in_batches.destroy_all
   end
 end

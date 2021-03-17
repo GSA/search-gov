@@ -1,14 +1,13 @@
 require 'spec_helper'
 
 describe Tweet do
-  fixtures :affiliates
-
-  before do
-    allow(Twitter).to receive(:user).and_return double('Twitter', id: 12345, name: 'USASearch', profile_image_url: 'http://some.gov/url')
-    @valid_attributes = {
+  let(:twitter_profile) { twitter_profiles(:usasearch) }
+  let(:valid_attributes) do
+    {
       tweet_id: 18700887835,
-      tweet_text: 'got a lovely surprise from @craftybeans. She sent me the best tshirt ever. http://www.flickr.com/photos/cindyli/4799054041/ ::giggles::',
-      published_at: Time.now
+      tweet_text: 'this is a tweet',
+      published_at: Time.now,
+      twitter_profile_id: twitter_profile.id
     }
   end
 
@@ -24,10 +23,14 @@ describe Tweet do
   it { is_expected.to validate_presence_of :published_at }
   it { is_expected.to validate_presence_of :twitter_profile_id }
 
-  it 'should create new instance given valid attributes' do
-    tweet = described_class.create!(@valid_attributes.merge(twitter_profile_id: profile.id))
-    expect(tweet.tweet_id).to eq(@valid_attributes[:tweet_id])
-    expect(tweet.tweet_text).to eq(@valid_attributes[:tweet_text])
+  describe 'schema' do
+    it { is_expected.to have_db_index(:published_at) }
+  end
+
+  it 'creates new instance given valid attributes' do
+    tweet = described_class.create!(valid_attributes.merge(twitter_profile_id: profile.id))
+    expect(tweet.tweet_id).to eq(valid_attributes[:tweet_id])
+    expect(tweet.tweet_text).to eq(valid_attributes[:tweet_text])
 
     is_expected.to validate_uniqueness_of :tweet_id
   end
@@ -78,10 +81,26 @@ describe Tweet do
   end
 
   describe '.expire(days_back)' do
-    it 'should destroy tweets that were published more than X days ago' do
-      expect(described_class).to receive(:destroy_all).with(['published_at < ?', 3.days.ago.beginning_of_day.to_s(:db)])
-      described_class.expire(3)
+    subject(:expire) { described_class.expire(3) }
+
+    context 'when tweets exist' do
+      before do
+        described_class.create!(
+          valid_attributes.merge(
+            tweet_text: 'old tweet', published_at: 4.days.ago, tweet_id: 1
+          )
+        )
+        described_class.create!(
+          valid_attributes.merge(
+            tweet_text: 'new tweet', published_at: 1.minute.ago, tweet_id: 2
+          )
+        )
+      end
+
+      it 'destroys tweets that were published more than X days ago' do
+        expire
+        expect(described_class.pluck(:tweet_text)).to eq ['new tweet']
+      end
     end
   end
-
 end
