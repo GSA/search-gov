@@ -1,7 +1,7 @@
-shared_examples "an indexable" do
+shared_examples 'an indexable' do
 
-  context "when searching raises an exception" do
-    it "should return an appropriate result set with zero hits" do
+  context 'when searching raises an exception' do
+    it 'should return an appropriate result set with zero hits' do
       expect(ES::CustomIndices.client_reader).to receive(:search).and_raise StandardError
       options = { q: 'query', affiliate_id: affiliate.id, language: affiliate.indexing_locale }
       expect(described_class.search_for(options)).to be_a_kind_of(ElasticResults)
@@ -16,7 +16,7 @@ shared_examples "an indexable" do
       allow(ES::CustomIndices).to receive(:client_writers).and_return [es1, es2]
     end
 
-    describe ".index_exists?" do
+    describe '.index_exists?' do
       context 'when index does not exist' do
         before do
           described_class.delete_index
@@ -28,7 +28,7 @@ shared_examples "an indexable" do
       end
     end
 
-    describe ".delete_index" do
+    describe '.delete_index' do
       it 'should send a delete to each cluster' do
         [es1, es2].each do |client|
           es_indices=client.indices
@@ -39,7 +39,7 @@ shared_examples "an indexable" do
       end
     end
 
-    describe ".create_index" do
+    describe '.create_index' do
       it 'should send a create to each cluster' do
         [es1, es2].each do |client|
           es_indices=client.indices
@@ -52,7 +52,7 @@ shared_examples "an indexable" do
       end
     end
 
-    describe ".migrate_writer" do
+    describe '.migrate_writer' do
       before do
         allow(described_class).to receive(:update_alias)
       end
@@ -67,7 +67,7 @@ shared_examples "an indexable" do
       end
     end
 
-    describe ".commit" do
+    describe '.commit' do
       it 'should send a refresh to each cluster' do
         [es1, es2].each do |client|
           es_indices=client.indices
@@ -78,9 +78,9 @@ shared_examples "an indexable" do
       end
     end
 
-    describe ".bulk" do
+    describe '.bulk' do
       it 'should send a bulk request to each cluster' do
-        body = "body"
+        body = 'body'
         [es1, es2].each do |client|
           expect(described_class).to receive(:client_bulk).with(client, body)
         end
@@ -99,17 +99,17 @@ shared_examples "an indexable" do
       end
     end
 
-    describe ".delete_by_query" do
+    describe '.delete_by_query' do
       it 'should send a delete by query request to each cluster' do
         [es1, es2].each do |client|
-          expect(client).to receive(:delete_by_query).with(index: described_class.writer_alias, q: 'foo:1 bar:two', default_operator: "AND")
+          expect(client).to receive(:delete_by_query).with(index: described_class.writer_alias, q: 'foo:1 bar:two', default_operator: 'AND')
         end
         described_class.delete_by_query({ foo: 1, bar: 'two' })
       end
     end
   end
 
-  describe "bulk request errors" do
+  describe 'bulk request errors' do
     context 'when there are API errors on the bulk request' do
       before do
         response = JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/elasticsearch_bulk_error.json"))

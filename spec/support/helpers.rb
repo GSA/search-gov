@@ -1,5 +1,5 @@
 def login(user)
-  Rails.application.env_config["omniauth.auth"] = mock_user_auth(user.email)
+  Rails.application.env_config['omniauth.auth'] = mock_user_auth(user.email)
   visit '/auth/logindotgov/callback'
 end
 

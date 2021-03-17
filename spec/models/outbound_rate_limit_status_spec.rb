@@ -8,7 +8,7 @@ describe OutboundRateLimitStatus do
   end
 
   let(:rate_limiter) { double(ApiRateLimiter) }
-  subject(:status) { OutboundRateLimitStatus.new(outbound_rate_limit) }
+  subject(:status) { described_class.new(outbound_rate_limit) }
 
   before do
     expect(ApiRateLimiter).to receive(:new).with('my_api').and_return(rate_limiter)

@@ -5,7 +5,7 @@ describe Tika do
     let(:file) { open_fixture_file('/pdf/test.pdf') }
 
     it 'extracts the metadata & content of the files' do
-      expect(Tika.get_recursive_metadata(file).first['X-TIKA:content']).
+      expect(described_class.get_recursive_metadata(file).first['X-TIKA:content']).
         to match(/This is my content./)
     end
 
@@ -15,7 +15,7 @@ describe Tika do
       end
 
       it 'raises an error' do
-        expect{ Tika.get_recursive_metadata(file) }.
+        expect{ described_class.get_recursive_metadata(file) }.
           to raise_error(TikaError)
       end
     end

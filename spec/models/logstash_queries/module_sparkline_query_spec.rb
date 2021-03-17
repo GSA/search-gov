@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe ModuleSparklineQuery do
-  let(:query) { ModuleSparklineQuery.new('affiliate_name') }
+  let(:query) { described_class.new('affiliate_name') }
   let(:expected_body) do
     {
       "query": {
@@ -9,30 +9,30 @@ describe ModuleSparklineQuery do
           "filter": [
             {
               "term": {
-                "params.affiliate": "affiliate_name"
+                "params.affiliate": 'affiliate_name'
               }
             },
             {
               "terms": {
-                "type": ["search","click"]
+                "type": ['search','click']
               }
             },
             {
               "range": {
                 "@timestamp": {
-                  "gte": "now-60d/d"
+                  "gte": 'now-60d/d'
                 }
               }
             },
             {
               "exists": {
-                "field": "modules"
+                "field": 'modules'
               }
             }
           ],
           "must_not": {
             "term": {
-              "useragent.device": "Spider"
+              "useragent.device": 'Spider'
             }
           }
         }
@@ -40,21 +40,21 @@ describe ModuleSparklineQuery do
       "aggs": {
         "agg": {
           "terms": {
-            "field": "modules",
+            "field": 'modules',
             "size": 100
           },
           "aggs": {
             "histogram": {
               "date_histogram": {
-                "field": "@timestamp",
-                "interval": "day",
-                "format": "yyyy-MM-dd",
+                "field": '@timestamp',
+                "interval": 'day',
+                "format": 'yyyy-MM-dd',
                 "min_doc_count": 0
               },
               "aggs": {
                 "type": {
                   "terms": {
-                    "field": "type"
+                    "field": 'type'
                   }
                 }
               }

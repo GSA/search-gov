@@ -9,7 +9,7 @@ describe ApiAzureCompositeImageSearch do
     described_class.new({
       affiliate: affiliates(:basic_affiliate),
       query: '(site: www.census.gov)',
-      api_key: api_key,
+      api_key: api_key
     })
   end
 
@@ -67,7 +67,7 @@ describe ApiAzureCompositeImageSearch do
             height: '250',
             file_size: '10203'
           }
-        ],
+        ]
       })
     end
 

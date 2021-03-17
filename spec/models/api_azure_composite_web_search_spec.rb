@@ -9,7 +9,7 @@ describe ApiAzureCompositeWebSearch do
     described_class.new({
       affiliate: affiliates(:basic_affiliate),
       query: '(site: www.census.gov)',
-      api_key: api_key,
+      api_key: api_key
     })
   end
 
@@ -54,9 +54,9 @@ describe ApiAzureCompositeWebSearch do
             display_url: 'www.census.gov/programs-surveys/acs',
             title: 'American Community Survey',
             url: 'http://www.census.gov/programs-surveys/acs/',
-            description: 'The American Community Survey (ACS) is a mandatory, ongoing statistical survey that samples a small percentage of the population every year.',
+            description: 'The American Community Survey (ACS) is a mandatory, ongoing statistical survey that samples a small percentage of the population every year.'
           }
-        ],
+        ]
       })
     end
 

@@ -6,8 +6,8 @@ describe UrlStatusCodeFetcher do
   # has more dev support, is more easily stubbed, and is already used extensively
   # in our code.
 
-  let(:valid_url) { "https://search.gov/" }
-  let(:invalid_url) { "https://www.google.com/404" }
+  let(:valid_url) { 'https://search.gov/' }
+  let(:invalid_url) { 'https://www.google.com/404' }
 
   describe '.fetch' do
     context 'when block is given' do
@@ -15,7 +15,7 @@ describe UrlStatusCodeFetcher do
         responses = {}
         urls = [valid_url, invalid_url]
 
-        UrlStatusCodeFetcher.fetch urls do |url, status|
+        described_class.fetch urls do |url, status|
           responses[url] = status.match(/\d+/).to_s
         end
 
@@ -28,7 +28,7 @@ describe UrlStatusCodeFetcher do
       it 'fetches status code' do
         urls = [valid_url, invalid_url]
 
-        responses = UrlStatusCodeFetcher.fetch urls
+        responses = described_class.fetch urls
         expect(responses[valid_url]).to match(/200/)
         expect(responses[invalid_url]).to match(/404/)
       end
@@ -40,7 +40,7 @@ describe UrlStatusCodeFetcher do
         expect(Timeout).to receive(:timeout).with(30).and_raise Timeout::Error
         expect(Rails.logger).to receive(:warn)
 
-        UrlStatusCodeFetcher.fetch urls
+        described_class.fetch urls
       end
     end
   end

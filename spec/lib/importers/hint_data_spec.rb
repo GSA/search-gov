@@ -7,7 +7,7 @@ describe HintData do
     it 'creates and updates hints' do
       json_str = Rails.root.join('spec/fixtures/json/hints.json').read
       expect(DocumentFetcher).to receive(:fetch).and_return(body: json_str)
-      HintData.reload
+      described_class.reload
 
       expect(Hint.count).to eq(6)
 
@@ -33,7 +33,7 @@ describe HintData do
       end
 
       it 'returns error' do
-        status = HintData.reload
+        status = described_class.reload
         expect(status[:error]).to match(/Unable to fetch/)
       end
     end
@@ -45,7 +45,7 @@ describe HintData do
 
       it 'returns error' do
         expect(Rails.logger).to receive(:error).with(/HintData\.reload failed/)
-        status = HintData.reload
+        status = described_class.reload
         expect(status[:error]).to match(/unexpected token/)
       end
     end

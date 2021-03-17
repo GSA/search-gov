@@ -11,7 +11,7 @@ describe Admin::SearchgovUrlsController do
     describe '#fetch' do
       it 'enqueues a searchgov_url_fetcher_job to the searchgov queue' do
         expect{ post :fetch, params: params }.
-          to have_enqueued_job(SearchgovUrlFetcherJob).on_queue("searchgov").
+          to have_enqueued_job(SearchgovUrlFetcherJob).on_queue('searchgov').
           with(searchgov_url: searchgov_url)
       end
     end

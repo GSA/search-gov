@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe SiteDestroyer, "#perform(site_id)" do
+describe SiteDestroyer, '#perform(site_id)' do
   it_behaves_like 'a ResqueJobStats job'
 
   context 'when site is located' do
@@ -10,16 +10,16 @@ describe SiteDestroyer, "#perform(site_id)" do
       allow(Affiliate).to receive(:find).with(1234).and_return affiliate
     end
 
-    it "should delete/destroy all associated information with that site" do
+    it 'should delete/destroy all associated information with that site' do
       expect(affiliate).to receive(:destroy)
-      SiteDestroyer.perform(affiliate.id)
+      described_class.perform(affiliate.id)
     end
   end
 
   context 'when it cannot locate the site' do
     it 'should log the warning' do
       expect(Rails.logger).to receive(:warn)
-      SiteDestroyer.perform -1
+      described_class.perform -1
     end
   end
 

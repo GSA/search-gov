@@ -1,13 +1,13 @@
 require 'spec_helper'
 
 describe HtmlDocument do
-  let(:raw_document) { read_fixture_file("/html/page_with_metadata.html") }
+  let(:raw_document) { read_fixture_file('/html/page_with_metadata.html') }
   let(:url) { 'https://foo.gov/bar.html' }
   let(:valid_attributes) do
     { document: raw_document, url: url }
   end
-  subject(:html_document) { HtmlDocument.new(valid_attributes) }
-  let(:doc_without_description) { read_fixture_file("/html/page_with_no_links.html") }
+  subject(:html_document) { described_class.new(valid_attributes) }
+  let(:doc_without_description) { read_fixture_file('/html/page_with_no_links.html') }
   let(:doc_with_lang_subcode) { '<html lang="en-US"></html>' }
   let(:doc_without_language) { '<html>هذه الجملة باللغة العربية.</html>' }
   let(:doc_with_dc_data) { read_fixture_file('/html/page_with_dc_metadata.html') }
@@ -47,7 +47,7 @@ describe HtmlDocument do
 
     context 'when only an html title is available' do
       let(:raw_document) do
-        "<html><head><title>My Title</title></head><body></body></html>"
+        '<html><head><title>My Title</title></head><body></body></html>'
       end
 
       it 'returns the html title' do
@@ -57,7 +57,7 @@ describe HtmlDocument do
 
     context 'when the html <title> tag is empty' do
       let(:raw_document) do
-        "<html><head><title></title></head><body></body></html>"
+        '<html><head><title></title></head><body></body></html>'
       end
 
       it 'returns the url' do
@@ -104,13 +104,13 @@ describe HtmlDocument do
     context 'when the Open Graph publication date is available' do
       let(:raw_document) { read_fixture_file('/html/page_with_og_metadata.html') }
 
-      it { is_expected.to eq Time.parse("2015-07-02T10:12:32-04:00") }
+      it { is_expected.to eq Time.parse('2015-07-02T10:12:32-04:00') }
      end
 
     context 'when the Dublin Core date is available' do
       let(:raw_document) { doc_with_dc_data }
 
-      it { is_expected.to eq Time.parse("02/16/2018 7:48 AM") }
+      it { is_expected.to eq Time.parse('02/16/2018 7:48 AM') }
     end
 
     context 'when the Dublin Core date is a year' do
@@ -134,14 +134,14 @@ describe HtmlDocument do
       end
 
       it 'defaults to the created date' do
-        expect(changed).to eq Time.parse("2013-09-17T05:59:00+01:00")
+        expect(changed).to eq Time.parse('2013-09-17T05:59:00+01:00')
       end
     end
 
     context 'when the modification date is available' do
       let(:raw_document) { read_fixture_file('/html/page_with_og_metadata.html') }
 
-      it { is_expected.to eq Time.parse("2017-03-30T13:18:28-04:00") }
+      it { is_expected.to eq Time.parse('2017-03-30T13:18:28-04:00') }
     end
   end
 
@@ -151,7 +151,7 @@ describe HtmlDocument do
     context 'when a Dublin Core subject is available' do
       let(:raw_document) { doc_with_dc_data }
 
-      it { is_expected.to eq "One Subject, Another Subject" }
+      it { is_expected.to eq 'One Subject, Another Subject' }
     end
   end
 
@@ -224,7 +224,7 @@ describe HtmlDocument do
     end
 
     context 'when the html includes special characters' do
-      let(:raw_document) { "<html>foo &amp; bar</html>" }
+      let(:raw_document) { '<html>foo &amp; bar</html>' }
 
       it 'decodes the characters' do
         expect(parsed_content).to eq 'foo & bar'
@@ -232,7 +232,7 @@ describe HtmlDocument do
     end
 
     context 'when the html contains a comment' do
-      let(:raw_document) { "<html><body>no comment<!-- blah --></body></html>" }
+      let(:raw_document) { '<html><body>no comment<!-- blah --></body></html>' }
 
       it 'does not include the comment' do
         expect(parsed_content).not_to match(/blah/)
@@ -277,17 +277,17 @@ describe HtmlDocument do
       end
 
       context 'when the html can be force-encoded to UTF-8' do
-        let(:raw_document) { "jubilación además".force_encoding('ASCII-8BIT') }
+        let(:raw_document) { 'jubilación además'.force_encoding('ASCII-8BIT') }
 
         it 'encodes the html as UTF-8' do
-          expect(parsed_content).to include "jubilación además"
+          expect(parsed_content).to include 'jubilación además'
         end
       end
     end
 
     context 'when the html contains a main element' do
       let(:raw_document) do
-        "<html><body>Body Content<main>Main content</main></body></html>"
+        '<html><body>Body Content<main>Main content</main></body></html>'
       end
 
       it 'extracts the main content text' do
@@ -307,7 +307,7 @@ describe HtmlDocument do
 
     context 'when the html contains block-level elements' do
       let(:raw_document) do
-        "<html><body>Body Content<article>Article Content</article></body></html>"
+        '<html><body>Body Content<article>Article Content</article></body></html>'
       end
 
       it 'inserts line breaks between the elements' do
@@ -321,7 +321,7 @@ describe HtmlDocument do
       end
 
       it 'extracts the body content' do
-        expect(parsed_content).to eq "Body Content"
+        expect(parsed_content).to eq 'Body Content'
       end
     end
 

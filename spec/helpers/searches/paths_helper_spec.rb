@@ -22,7 +22,7 @@ describe Searches::PathsHelper do
       end
 
       it 'is based on the original path' do
-        get "/search/docs"
+        get '/search/docs'
         expected_params = { affiliate: affiliate, query: 'test query', sort_by: 'date', tbs: 'm' }
         expect(helper.path_for_filterable_search(i14y_search, {affiliate: affiliate}, {})).to eq(docs_search_path expected_params)
       end

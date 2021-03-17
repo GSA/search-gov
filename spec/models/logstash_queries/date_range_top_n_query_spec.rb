@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe DateRangeTopNQuery do
   let(:query) do
-    DateRangeTopNQuery.new('affiliate_name',
+    described_class.new('affiliate_name',
                            'search',
                            Date.parse('2019-11-01'),
                            Date.parse('2019-11-07'),
@@ -17,26 +17,26 @@ describe DateRangeTopNQuery do
           "filter": [
             {
               "term": {
-                "params.affiliate": "affiliate_name"
+                "params.affiliate": 'affiliate_name'
               }
             },
             {
               "terms": {
-                "type": ["search"]
+                "type": ['search']
               }
             },
             {
               "range": {
                 "@timestamp": {
-                  "gte": "2019-11-01",
-                  "lte": "2019-11-07"
+                  "gte": '2019-11-01',
+                  "lte": '2019-11-07'
                 }
               }
             }
           ],
           "must_not": {
             "term": {
-              "useragent.device": "Spider"
+              "useragent.device": 'Spider'
             }
           }
         }
@@ -44,7 +44,7 @@ describe DateRangeTopNQuery do
       "aggs": {
         "agg": {
           "terms": {
-            "field": "params.query.raw",
+            "field": 'params.query.raw',
             "size": 1000
           }
         }

@@ -8,7 +8,7 @@ module DataGenerator
     let(:modules) { double('Array', sample: 'NEWS') }
 
     subject do
-      Fake.new(start_date, end_date, human_probability_pct, modules)
+      described_class.new(start_date, end_date, human_probability_pct, modules)
     end
 
     describe '#timestamp' do

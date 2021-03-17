@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe TrendingTermsQuery do
-  let(:query) { TrendingTermsQuery.new('affiliate_name', '5h', 22) }
+  let(:query) { described_class.new('affiliate_name', '5h', 22) }
   let(:expected_body) do
     {
       "query": {
@@ -9,18 +9,18 @@ describe TrendingTermsQuery do
           "filter": [
             {
               "term": {
-                "params.affiliate": "affiliate_name"
+                "params.affiliate": 'affiliate_name'
               }
             },
             {
               "term": {
-                "type": "search"
+                "type": 'search'
               }
             },
             {
               "range": {
                 "@timestamp": {
-                  "gte": "now-5h/h"
+                  "gte": 'now-5h/h'
                 }
               }
             }
@@ -28,17 +28,17 @@ describe TrendingTermsQuery do
           "must_not": [
             {
               "term": {
-                "useragent.device": "Spider"
+                "useragent.device": 'Spider'
               }
             },
             {
               "term": {
-                "params.query.raw": ""
+                "params.query.raw": ''
               }
             },
             {
               "exists": {
-                "field": "params.page"
+                "field": 'params.page'
               }
             }
           ]
@@ -48,35 +48,35 @@ describe TrendingTermsQuery do
         "agg": {
           "significant_terms": {
             "min_doc_count": 22,
-            "field": "params.query.raw",
+            "field": 'params.query.raw',
             "background_filter": {
               "bool": {
                 "filter": [
                   {
                     "term": {
-                      "params.affiliate": "affiliate_name"
+                      "params.affiliate": 'affiliate_name'
                     }
                   },
                   {
                     "term": {
-                      "type": "search"
+                      "type": 'search'
                     }
                   }
                 ],
                 "must_not": [
                   {
                     "term": {
-                      "useragent.device": "Spider"
+                      "useragent.device": 'Spider'
                     }
                   },
                   {
                     "term": {
-                      "params.query.raw": ""
+                      "params.query.raw": ''
                     }
                   },
                   {
                     "exists": {
-                      "field": "params.page"
+                      "field": 'params.page'
                     }
                   }
                 ]
@@ -86,7 +86,7 @@ describe TrendingTermsQuery do
           "aggs": {
             "clientip_count": {
               "cardinality": {
-                "field": "clientip"
+                "field": 'clientip'
               }
             }
           }

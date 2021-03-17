@@ -1,7 +1,5 @@
-# coding: utf-8
-
-shared_examples "a web search engine" do
-  describe ".new" do
+shared_examples 'a web search engine' do
+  describe '.new' do
     it 'should set up API connection' do
       search_engine = described_class.new
       expect(search_engine.api_endpoint).to eq(described_class::API_ENDPOINT)
@@ -9,7 +7,7 @@ shared_examples "a web search engine" do
   end
 
   describe '#execute_query' do
-    subject(:search) { described_class.new(query: "taxes") }
+    subject(:search) { described_class.new(query: 'taxes') }
     context 'when something goes wrong' do
       before { allow(search.api_connection).to receive(:get).and_raise 'uh oh' }
 
@@ -19,9 +17,9 @@ shared_examples "a web search engine" do
     end
 
     context 'when highlighting is enabled' do
-      let(:highlight_search) { described_class.new(query: "white house", enable_highlighting: true) }
+      let(:highlight_search) { described_class.new(query: 'white house', enable_highlighting: true) }
 
-      it "should return a normalized response with highlighted results" do
+      it 'should return a normalized response with highlighted results' do
         normalized_response = highlight_search.execute_query
         expect(normalized_response.start_record).to eq 1
         expect(normalized_response.total).to be > 1000
@@ -33,10 +31,10 @@ shared_examples "a web search engine" do
 
     context 'when highlighting is disabled' do
       let(:non_highlight_search) do
-        described_class.new(query: "white house", enable_highlighting: false)
+        described_class.new(query: 'white house', enable_highlighting: false)
       end
 
-      it "should return a normalized response without highlighted results" do
+      it 'should return a normalized response without highlighted results' do
         normalized_response = non_highlight_search.execute_query
         expect(normalized_response.total).to be > 1000
         expect(normalized_response.results.first.title).to match /White House/
@@ -47,7 +45,7 @@ shared_examples "a web search engine" do
     end
 
     context 'when an offset is specified' do
-      let(:search) { described_class.new(query: "anything", offset: 11, limit: 10) }
+      let(:search) { described_class.new(query: 'anything', offset: 11, limit: 10) }
 
       it 'returns the offset results' do
         normalized_response = search.execute_query
@@ -56,14 +54,14 @@ shared_examples "a web search engine" do
       end
     end
 
-    context "when Spanish locale is specified" do
-      let(:spanish_search) { described_class.new(query: "casa blanca") }
+    context 'when Spanish locale is specified' do
+      let(:spanish_search) { described_class.new(query: 'casa blanca') }
 
       before do
         I18n.locale = :es
       end
 
-      it "should pass a Spanish language filter" do
+      it 'should pass a Spanish language filter' do
         spanish_search.execute_query
       end
 
@@ -72,14 +70,14 @@ shared_examples "a web search engine" do
       end
     end
 
-    context "when Chinese locale is specified" do
-      let(:chinese_search) { described_class.new(query: "中国") }
+    context 'when Chinese locale is specified' do
+      let(:chinese_search) { described_class.new(query: '中国') }
 
       before do
         I18n.locale = :zh
       end
 
-      it "should pass a Simplified Chinese language filter" do
+      it 'should pass a Simplified Chinese language filter' do
         chinese_search.execute_query
       end
 
@@ -88,14 +86,14 @@ shared_examples "a web search engine" do
       end
     end
 
-    context "when Google unsupported locale is specified" do
-      let(:creole_search) { described_class.new(query: "tradiksyon") }
+    context 'when Google unsupported locale is specified' do
+      let(:creole_search) { described_class.new(query: 'tradiksyon') }
 
       before do
         I18n.locale = :ht
       end
 
-      it "should pass no language filter to Google" do
+      it 'should pass no language filter to Google' do
         creole_search.execute_query
       end
 
@@ -104,18 +102,18 @@ shared_examples "a web search engine" do
       end
     end
 
-    context "when English locale is specified" do
-      let(:english_search) { described_class.new(query: "english") }
+    context 'when English locale is specified' do
+      let(:english_search) { described_class.new(query: 'english') }
 
-      it "should pass an English language filter to Google" do
+      it 'should pass an English language filter to Google' do
         english_search.execute_query
       end
     end
 
-    context "when the search engine returns zero results" do
+    context 'when the search engine returns zero results' do
       let(:search) { described_class.new(query: "'65d86996b6eceb05d2272aea9cadd10d'") }
 
-      it "should have 0 results" do
+      it 'should have 0 results' do
         search_engine_response = search.execute_query
         expect(search_engine_response.results).to be_empty
         expect(search_engine_response.total).to be_zero
@@ -123,9 +121,9 @@ shared_examples "a web search engine" do
     end
 
     context 'when a spelling suggestion is available' do
-      let(:search) { described_class.new(query: "sailing dingies") }
+      let(:search) { described_class.new(query: 'sailing dingies') }
 
-      it "should set a spelling suggestion" do
+      it 'should set a spelling suggestion' do
         search_engine_response = search.execute_query
         expect(search_engine_response.spelling_suggestion).to eq('sailing dinghies')
       end
@@ -133,12 +131,12 @@ shared_examples "a web search engine" do
   end
 end
 
-shared_examples "an image search" do
+shared_examples 'an image search' do
   let(:image_search_params) do
     {
       offset: 20,
       limit: 10,
-      query: 'agncy (site:nasa.gov)',
+      query: 'agncy (site:nasa.gov)'
     }
   end
   let(:image_search) { described_class.new(image_search_params) }

@@ -10,7 +10,7 @@ describe BingV5ImageEngine do
       described_class.new({
         offset: 20,
         limit: 10,
-        query: 'whitehouse dog',
+        query: 'whitehouse dog'
       })
     end
 

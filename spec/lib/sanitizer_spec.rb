@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe Sanitizer, ".sanitize" do
-  subject(:sanitize) { Sanitizer.sanitize(string) }
+describe Sanitizer, '.sanitize' do
+  subject(:sanitize) { described_class.sanitize(string) }
 
   context 'when the string contains HTML tags' do
     let(:string) { '<b>foo  bar</b><script>baz</script>' }
@@ -46,7 +46,7 @@ describe Sanitizer, ".sanitize" do
     end
 
     context 'when not encoding the entities' do
-      let(:sanitize) { Sanitizer.sanitize(string, encode: false) }
+      let(:sanitize) { described_class.sanitize(string, encode: false) }
 
       it 'does not encode them' do
         expect(sanitize).to eq 'foo & bar & baz'

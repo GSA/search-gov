@@ -127,7 +127,7 @@ describe Click do
       end
 
       context 'when the unencoded URL contains invalid characters' do
-        let(:url) { "https://example.com/wymiana+teflon%F3w" }
+        let(:url) { 'https://example.com/wymiana+teflon%F3w' }
 
         it 'has expected errors' do
           click.validate

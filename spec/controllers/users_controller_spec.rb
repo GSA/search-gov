@@ -189,7 +189,7 @@ describe UsersController do
     end
   end
 
-  context "when logged in as a developer" do
+  context 'when logged in as a developer' do
     before do
       activate_authlogic
       @user = users('non_affiliate_admin')

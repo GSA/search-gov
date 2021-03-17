@@ -11,7 +11,7 @@ describe I14yPostProcessor do
     let(:excluded_urls) { [] }
 
     before do
-      I14yPostProcessor.new(true, results, excluded_urls).post_process_results
+      described_class.new(true, results, excluded_urls).post_process_results
     end
 
     context 'when a result has no description' do
@@ -41,7 +41,7 @@ describe I14yPostProcessor do
       end
 
       context 'when there is no match in the body' do
-        let(:content) { "content without match" }
+        let(:content) { 'content without match' }
 
         it 'includes the description then the body' do
           expect(results.first.description).to eq "description with \uE000match\uE001"

@@ -5,8 +5,8 @@ describe ContinuousWorker do
   describe '.start' do
     it 'should raise the error after 3 retries' do
       expect(MockModule).to receive(:process).at_least(:once)
-      expect(ContinuousWorker).to receive(:sleep).with(15.minutes).at_least(:once)
-      t = Thread.new { ContinuousWorker.start { MockModule.process } }
+      expect(described_class).to receive(:sleep).with(15.minutes).at_least(:once)
+      t = Thread.new { described_class.start { MockModule.process } }
       sleep(0.1)
       t.kill
     end
@@ -15,8 +15,8 @@ describe ContinuousWorker do
   describe '.execute_with_retry' do
     it 'should sleep and retry 3 times before raising the error' do
       expect(MockModule).to receive(:process).exactly(4).times.and_raise
-      expect(ContinuousWorker).to receive(:sleep).exactly(3).times.with(300)
-      expect { ContinuousWorker.execute_with_retry { MockModule.process } }.to raise_error
+      expect(described_class).to receive(:sleep).exactly(3).times.with(300)
+      expect { described_class.execute_with_retry { MockModule.process } }.to raise_error
     end
   end
 end

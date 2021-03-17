@@ -19,7 +19,7 @@ describe Sites::ClickQueriesController do
           Date.parse('2019-11-11'),
           'params.url',
           'http://www.url.gov',
-          { field: 'params.query.raw', size: 10000 }
+          { field: 'params.query.raw', size: 10_000 }
         ]
       end
       let(:query) { instance_double(DateRangeTopNFieldQuery, body: '') }

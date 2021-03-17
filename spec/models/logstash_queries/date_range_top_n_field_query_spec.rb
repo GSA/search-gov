@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe DateRangeTopNFieldQuery do
   let(:query) do
-    DateRangeTopNFieldQuery.new('affiliate_name',
+    described_class.new('affiliate_name',
                                 'search',
                                 Date.parse('2014-06-28'),
                                 Date.parse('2014-06-29'),
@@ -17,24 +17,24 @@ describe DateRangeTopNFieldQuery do
           "filter": [
             {
               "term": {
-                "params.affiliate": "affiliate_name"
+                "params.affiliate": 'affiliate_name'
               }
             },
             {
               "terms": {
-                "type": ["search"]
+                "type": ['search']
               }
             },
             {
               "term": {
-                "params.url": "some_url"
+                "params.url": 'some_url'
               }
             },
             {
               "range": {
                 "@timestamp": {
-                  "gte": "2014-06-28",
-                  "lte": "2014-06-29"
+                  "gte": '2014-06-28',
+                  "lte": '2014-06-29'
                 }
               }
             }
@@ -44,7 +44,7 @@ describe DateRangeTopNFieldQuery do
       "aggs": {
         "agg": {
           "terms": {
-            "field": "params.query.raw",
+            "field": 'params.query.raw',
             "size": 100
           }
         }
@@ -56,10 +56,10 @@ describe DateRangeTopNFieldQuery do
 
   context 'when the affiliate is nil' do
     let(:query) do
-      DateRangeTopNFieldQuery.new(nil,
+      described_class.new(nil,
                                   'click',
-                                  Date.parse("2014-06-28"),
-                                  Date.parse("2014-06-29"),
+                                  Date.parse('2014-06-28'),
+                                  Date.parse('2014-06-29'),
                                   'params.url',
                                   'some_url',
                                   { field: 'params.query.raw', size: 100 })
@@ -71,19 +71,19 @@ describe DateRangeTopNFieldQuery do
             "filter": [
               {
                 "terms": {
-                  "type": ["click"]
+                  "type": ['click']
                 }
               },
               {
                 "term": {
-                  "params.url": "some_url"
+                  "params.url": 'some_url'
                 }
               },
               {
                 "range": {
                   "@timestamp": {
-                    "gte": "2014-06-28",
-                    "lte": "2014-06-29"
+                    "gte": '2014-06-28',
+                    "lte": '2014-06-29'
                   }
                 }
               }
@@ -93,7 +93,7 @@ describe DateRangeTopNFieldQuery do
         "aggs": {
           "agg": {
             "terms": {
-              "field": "params.query.raw",
+              "field": 'params.query.raw',
               "size": 100
             }
           }

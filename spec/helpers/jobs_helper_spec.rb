@@ -54,8 +54,8 @@ describe JobsHelper do
       let(:search) do
         affiliate = affiliates(:usagov_affiliate)
         agency = Agency.create!(abbreviation: 'GSA', name: 'blah')
-        AgencyOrganizationCode.create!(organization_code: "GS", agency: agency)
-        AgencyOrganizationCode.create!(organization_code: "HI", agency: agency)
+        AgencyOrganizationCode.create!(organization_code: 'GS', agency: agency)
+        AgencyOrganizationCode.create!(organization_code: 'HI', agency: agency)
         affiliate.agency = agency
         double('search', affiliate: affiliate, query: 'gov')
       end

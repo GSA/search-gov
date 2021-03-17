@@ -67,7 +67,7 @@ describe BlendedSearch do
                         suggestion: nil,
                         total: 0))
 
-      BlendedSearch.new(affiliate: affiliate,
+      described_class.new(affiliate: affiliate,
                         highlighting: false,
                         limit: 8,
                         next_offset_within_limit: true,

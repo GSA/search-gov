@@ -36,12 +36,12 @@ describe SearchConsumer::API do
       get "/api/c/search/rss/#{rss_feed.id}?affiliate=nps.gov&sc_access_key=#{SC_ACCESS_KEY}"
       expect(response.status).to eq(400)
       expect(response.body).to eq({
-        error: "query is missing"
+        error: 'query is missing'
       }.to_json)
     end
 
     it 'returns a 401 unauthroized if there is no valid sc_access_key param' do
-      get "/api/c/search/rss/1?site_handle=nps.gov&sc_access_key=invalidKey&query=test"
+      get '/api/c/search/rss/1?site_handle=nps.gov&sc_access_key=invalidKey&query=test'
       expect(response.status).to eq(401)
     end
   end

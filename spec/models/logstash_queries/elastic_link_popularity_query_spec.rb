@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe ElasticLinkPopularityQuery do
-  let(:query) { ElasticLinkPopularityQuery.new('https://search.gov', 10) }
+  let(:query) { described_class.new('https://search.gov', 10) }
   let(:expected_body) do
     {
       "query": {
@@ -11,21 +11,21 @@ describe ElasticLinkPopularityQuery do
               "must": [
                 {
                   "term": {
-                    "type": "click"
+                    "type": 'click'
                   }
                 },
                 {
                   "terms": {
                     "params.url": [
-                      "https://search.gov",
-                      "https://search.gov/"
+                      'https://search.gov',
+                      'https://search.gov/'
                     ]
                   }
                 },
                 {
                   "range": {
                     "@timestamp": {
-                      "gt": "now-10d/d"
+                      "gt": 'now-10d/d'
                     }
                   }
                 }

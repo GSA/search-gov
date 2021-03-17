@@ -6,7 +6,7 @@ describe I14yMembership do
   it { is_expected.to belong_to(:affiliate), inverse_of: :i14y_memberships }
   it { is_expected.to belong_to(:i14y_drawer), inverse_of: :i14y_memberships }
 
-  describe "#label" do
+  describe '#label' do
     it 'should show the affiliate name and i14y drawer handle' do
       expect(i14y_memberships(:one).label).to eq('noaa.gov:one')
     end

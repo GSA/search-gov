@@ -14,7 +14,7 @@ module TestServices
   end
 
   def delete_es_indexes
-    ES::CustomIndices.client_reader.indices.delete(index: "test-usasearch-*")
+    ES::CustomIndices.client_reader.indices.delete(index: 'test-usasearch-*')
     logstash_index_range.each do |date|
       ES::ELK.client_reader.indices.delete(index: "logstash-#{date.strftime("%Y.%m.%d")}")
     end

@@ -43,13 +43,13 @@ describe LogstashDeduper do
               { delete: { _index: 'logstash-2015.08.26', _type: 'search', _id: 'copy5' } }
           ]
         )
-        LogstashDeduper.perform('2015.08.26')
+        described_class.perform('2015.08.26')
       end
     end
 
     it 'does not raise an error' do
       expect {
-        LogstashDeduper.perform(Date.today.strftime('%Y.%m.%d'))
+        described_class.perform(Date.today.strftime('%Y.%m.%d'))
       }.not_to raise_error
     end
   end

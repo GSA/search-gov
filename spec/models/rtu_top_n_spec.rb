@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe RtuTopN do
   let(:rtu_top_n) do
-    RtuTopN.new('an ES query body', false, Date.new(2019, 1, 1))
+    described_class.new('an ES query body', false, Date.new(2019, 1, 1))
   end
 
   describe '#top_n' do

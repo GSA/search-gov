@@ -74,7 +74,7 @@ shared_examples_for 'urls with invalid utf-8' do
 
     post endpoint, params: valid_params
 
-    expect(response.body).to eq "[\"Url is not a valid format\"]"
+    expect(response.body).to eq '["Url is not a valid format"]'
   end
 end
 

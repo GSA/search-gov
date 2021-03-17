@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe RtuTopClicks do
-  let(:rtu_top_clicks) { RtuTopClicks.new('some ES query body', true) }
+  let(:rtu_top_clicks) { described_class.new('some ES query body', true) }
 
   shared_context 'when statistics are available' do
     let(:json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/top_urls.json")) }

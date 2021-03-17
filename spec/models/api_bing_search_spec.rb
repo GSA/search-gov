@@ -14,7 +14,7 @@ describe ApiBingSearch do
       query: 'food nutrition' }
   end
 
-  let(:search) { ApiBingSearch.new search_params }
+  let(:search) { described_class.new search_params }
 
   before { affiliate.site_domains.create!(domain: 'usa.gov') }
 
@@ -148,8 +148,8 @@ describe ApiBingSearch do
 
   describe '#as_json' do
     subject(:search) do
-      agency = Agency.create!({:name => 'Some New Agency', :abbreviation => 'SNA' })
-      AgencyOrganizationCode.create!(organization_code: "XX00", agency: agency)
+      agency = Agency.create!({name: 'Some New Agency', abbreviation: 'SNA' })
+      AgencyOrganizationCode.create!(organization_code: 'XX00', agency: agency)
       allow(affiliate).to receive(:agency).and_return(agency)
 
       described_class.new affiliate: affiliate,
@@ -168,7 +168,7 @@ describe ApiBingSearch do
     end
 
     it 'highlights title and description' do
-      results = search.as_json[:web][:results].map{|result| Hashie::Mash.new(result) }
+      results = search.as_json[:web][:results].map{ |result| Hashie::Mash.new(result) }
       result = results.first
 
       expect(results.map(&:title).compact).to include(match(/\ue000.+\ue001/))

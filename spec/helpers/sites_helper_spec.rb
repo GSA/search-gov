@@ -34,7 +34,7 @@ describe SitesHelper do
     end
   end
 
-  describe "#daily_snapshot_toggle(membership)" do
+  describe '#daily_snapshot_toggle(membership)' do
     context 'when membership is nil' do
       it 'should return nil' do
         expect(helper.daily_snapshot_toggle(nil)).to be_nil
@@ -56,7 +56,7 @@ describe SitesHelper do
     end
   end
 
-  describe "preview_main_nav_item" do
+  describe 'preview_main_nav_item' do
     let(:affiliate) { mock_model(Affiliate, name: 'somename', search_consumer_search_enabled: dese, force_mobile_format?: fmf) }
     let(:subject) { helper.preview_main_nav_item(affiliate, 'sometitle') }
 
@@ -81,7 +81,7 @@ describe SitesHelper do
     end
   end
 
-  describe "#generate_jwt" do
+  describe '#generate_jwt' do
     let(:affiliate) { mock_model(Affiliate, id: 491, name: 'somename', display_name: 'Somename Displayed', api_access_key: 'somekey') }
     let(:subject) { helper.generate_jwt(affiliate) }
     it 'should be decryptable using the JWT secret' do

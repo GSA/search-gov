@@ -29,7 +29,7 @@ describe RoutedQueryImpressionLogger do
     it 'sets up the right params to log a search impression' do
       allow(SearchImpression).to receive(:log)
 
-      RoutedQueryImpressionLogger.log(affiliates(:basic_affiliate),
+      described_class.log(affiliates(:basic_affiliate),
                                       'example of a routed query',
                                       mock_request)
 

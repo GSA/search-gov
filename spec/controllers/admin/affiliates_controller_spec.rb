@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Admin::AffiliatesController do
   fixtures :users, :affiliates, :memberships, :languages
-  let(:config) { Admin::AffiliatesController.active_scaffold_config }
+  let(:config) { described_class.active_scaffold_config }
 
   context 'when logged in as a non-affiliate admin user' do
     before do
@@ -16,32 +16,32 @@ describe Admin::AffiliatesController do
     end
   end
 
-  context "when not logged in" do
-    it "should redirect to the login page" do
+  context 'when not logged in' do
+    it 'should redirect to the login page' do
       get :index
       expect(response).to redirect_to(login_path)
     end
   end
 
-  describe "#analytics" do
-    context "when logged in as an affiliate admin" do
+  describe '#analytics' do
+    context 'when logged in as an affiliate admin' do
       before do
         activate_authlogic
-        UserSession.create(users("affiliate_admin"))
-        @affiliate = affiliates("basic_affiliate")
+        UserSession.create(users('affiliate_admin'))
+        @affiliate = affiliates('basic_affiliate')
       end
 
-      it "should redirect to the affiliate analytics page for the affiliate id passed" do
+      it 'should redirect to the affiliate analytics page for the affiliate id passed' do
         get :analytics, params: { id: @affiliate.id }
         expect(response).to redirect_to new_site_queries_path(@affiliate)
       end
     end
   end
 
-  describe "#edit" do
-    context "When logged in as an affiliate admin" do
+  describe '#edit' do
+    context 'When logged in as an affiliate admin' do
       render_views
-      let(:affiliate) { affiliates("basic_affiliate") }
+      let(:affiliate) { affiliates('basic_affiliate') }
 
       before do
         activate_authlogic
@@ -90,48 +90,48 @@ describe Admin::AffiliatesController do
 
       describe 'subgroups' do
         it 'contains the specified subgroups' do
-          expect(update_columns.map(&:label)).to match_array(["Settings",
-                                                              "Enable/disable Settings",
-                                                              "Display Settings",
-                                                              "Analytics-Tracking Code",
-                                                              "Dublin Core Mappings",
-                                                              "Legacy Display Settings"])
+          expect(update_columns.map(&:label)).to match_array(['Settings',
+                                                              'Enable/disable Settings',
+                                                              'Display Settings',
+                                                              'Analytics-Tracking Code',
+                                                              'Dublin Core Mappings',
+                                                              'Legacy Display Settings'])
         end
       end
 
       describe 'Settings subgroup' do
         it 'contains the specified columns' do
-          expect(update_columns.find{|c| c.label == 'Settings'}.names).to match_array(settings_columns)
+          expect(update_columns.find{ |c| c.label == 'Settings' }.names).to match_array(settings_columns)
         end
       end
 
       describe "'Enable/disable Settings' subgroup" do
         it 'contains the specified columns' do
-          expect(update_columns.find{|c| c.label == 'Enable/disable Settings'}.names).to match_array(enable_disable_columns)
+          expect(update_columns.find{ |c| c.label == 'Enable/disable Settings' }.names).to match_array(enable_disable_columns)
         end
       end
 
-      describe "Display Settings subgroup" do
+      describe 'Display Settings subgroup' do
         it 'contains the specified columns' do
-          expect(update_columns.find{|c| c.label == 'Display Settings'}.names).to match_array(display_columns)
+          expect(update_columns.find{ |c| c.label == 'Display Settings' }.names).to match_array(display_columns)
         end
       end
 
-      describe "Analytics-Tracking Code subgroup" do
+      describe 'Analytics-Tracking Code subgroup' do
         it 'contains the specified columns' do
-          expect(update_columns.find{|c| c.label == "Analytics-Tracking Code"}.names).to match_array(analytics_columns)
+          expect(update_columns.find{ |c| c.label == 'Analytics-Tracking Code' }.names).to match_array(analytics_columns)
         end
       end
 
-      describe "Dublin Core Mappings subgroup" do
+      describe 'Dublin Core Mappings subgroup' do
         it 'contains the specified columns' do
-          expect(update_columns.find{|c| c.label == "Dublin Core Mappings"}.names).to match_array(dublin_core_columns)
+          expect(update_columns.find{ |c| c.label == 'Dublin Core Mappings' }.names).to match_array(dublin_core_columns)
         end
       end
 
-      describe "Legacy Display Settings subgroup" do
+      describe 'Legacy Display Settings subgroup' do
         it 'contains the specified columns' do
-          expect(update_columns.find{|c| c.label == "Legacy Display Settings"}.names).to match_array(legacy_display_columns)
+          expect(update_columns.find{ |c| c.label == 'Legacy Display Settings' }.names).to match_array(legacy_display_columns)
         end
       end
     end

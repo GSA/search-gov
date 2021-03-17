@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Api::V1::AgenciesController do
 
-  describe "#search" do
+  describe '#search' do
 
     context 'when results are available' do
       before do
