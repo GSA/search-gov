@@ -1,4 +1,4 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
 describe Tweet do
   let(:twitter_profile) { twitter_profiles(:usasearch) }
