@@ -10,11 +10,6 @@ describe Tweet do
       twitter_profile_id: twitter_profile.id
     }
   end
-
-  before do
-    allow(Twitter).to receive(:user).and_return double('Twitter', id: 12345, name: 'USASearch', profile_image_url: 'http://some.gov/url')
-  end
-
   let(:profile) do
     TwitterProfile.create!(twitter_id: 12345,
                            screen_name: 'USASearch',
