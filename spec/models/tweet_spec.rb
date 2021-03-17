@@ -39,7 +39,7 @@ describe Tweet do
     is_expected.to validate_uniqueness_of :tweet_id
   end
 
-  it 'should sanitize tweet text' do
+  it 'sanitizes tweet text' do
     tweet = described_class.create!(tweet_text: "A <b>tweet</b> with \n http://t.co/h5vNlSdL and http://t.co/YQQSs9bb",
                           tweet_id: 123456,
                           published_at: Time.now,
@@ -54,7 +54,7 @@ describe Tweet do
         @tweet = profile.tweets.create!(valid_attributes)
       end
 
-      it 'should use the locale for the first affiliate' do
+      it 'uses the locale for the first affiliate' do
         expect(@tweet.language).to eq('es')
       end
     end
@@ -64,7 +64,7 @@ describe Tweet do
         @tweet = described_class.create!(valid_attributes.merge(twitter_profile_id: profile.id))
       end
 
-      it 'should use English' do
+      it 'uses English' do
         expect(@tweet.language).to eq('en')
       end
     end
@@ -79,7 +79,7 @@ describe Tweet do
       @tweet = described_class.create!(tweet_text: 'USA', tweet_id: 123456, published_at: Time.now, twitter_profile_id: 12345)
     end
 
-    it 'should output a properly formatted link to the tweet' do
+    it 'outputs a properly formatted link to the tweet' do
       expect(@tweet.url_to_tweet).to eq('https://twitter.com/USASearch/status/123456')
     end
   end
