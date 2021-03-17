@@ -32,6 +32,7 @@ class OmniauthCallbacksController < ApplicationController
 
     @user = User.from_omniauth(omniauth_data)
     raise OmniauthError, 'db error creating user' unless @user.persisted?
+
     @user
   end
 

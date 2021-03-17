@@ -1,4 +1,6 @@
-shared_examples "a landing page" do
+# frozen_string_literal: true
+
+shared_examples 'a landing page' do
   context 'when the user is pending approval' do
     let(:user_approval_status) { 'pending_approval' }
 
