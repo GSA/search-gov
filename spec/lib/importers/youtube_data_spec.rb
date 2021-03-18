@@ -7,7 +7,6 @@ describe YoutubeData do
     let(:rss_feed) { mock_model RssFeed }
     let(:profile) { mock_model YoutubeProfile }
     let(:youtube_data) { double described_class }
-    let(:active_profiles) { double YoutubeProfile }
     let(:refresh) do
       t = Thread.new { described_class.refresh }
       sleep 0.1
@@ -15,8 +14,7 @@ describe YoutubeData do
     end
 
     before do
-      allow(YoutubeProfile).to receive(:active).and_return(active_profiles)
-      allow(active_profiles).to receive(:stale).and_return([profile], [])
+      allow(YoutubeProfile).to receive_message_chain(:active, :stale).and_return([profile], [])
       allow(described_class).to receive(:new).
         with(profile).
         and_return(youtube_data)
@@ -25,7 +23,6 @@ describe YoutubeData do
 
     it 'imports each profile' do
       refresh
-
       expect(youtube_data).to have_received(:import)
       expect(described_class).to have_received(:new).
         with(profile)
@@ -43,48 +40,25 @@ describe YoutubeData do
 
       it 'does not import any profiles' do
         refresh
-
         expect(youtube_data).not_to have_received(:import)
       end
     end
   end
 
   describe '.number_of_profiles_updated_today' do
-    let(:actual_number_of_profiles_updated_today) { nil }
-
-    before do
-      YoutubeProfile.all.each do |profile|
-        profile.updated_at = Time.now.utc - 1.day
-        profile.save!
-      end
-
-      YoutubeProfile.take(actual_number_of_profiles_updated_today).each do |profile|
-        profile.updated_at = Time.now.utc
-        profile.save!
-      end
-    end
+    before { YoutubeProfile.update_all(updated_at: 1.year.ago) }
 
     context 'when no profiles have been updated today' do
-      let(:actual_number_of_profiles_updated_today) { 0 }
-
       it 'returns 0' do
         expect(described_class.number_of_profiles_updated_today).to eq(0)
       end
     end
 
-    context 'when 1 profile has been updated today' do
-      let(:actual_number_of_profiles_updated_today) { 1 }
+    context 'when a profile has been updated today' do
+      before { YoutubeProfile.first.update!(updated_at: Time.now) }
 
       it 'returns 1' do
         expect(described_class.number_of_profiles_updated_today).to eq(1)
-      end
-    end
-
-    context 'when 2 profiles have been updated today' do
-      let(:actual_number_of_profiles_updated_today) { 2 }
-
-      it 'returns 2' do
-        expect(described_class.number_of_profiles_updated_today).to eq(2)
       end
     end
   end
@@ -208,7 +182,6 @@ describe YoutubeData do
   describe '#import_playlists_items' do
     let(:profile) { youtube_profiles(:whitehouse) }
     let(:rss_feed_url) { profile.rss_feed.rss_feed_urls.first }
-
     let!(:news_item_1) do
       news_item_attributes = {
         description: 'video 1 description',
@@ -219,7 +192,6 @@ describe YoutubeData do
       }
       rss_feed_url.news_items.create!(news_item_attributes)
     end
-
     let!(:news_item_2) do
       news_item_attributes = {
         guid: 'video_id_2',
@@ -229,7 +201,6 @@ describe YoutubeData do
       }
       rss_feed_url.news_items.create!(news_item_attributes)
     end
-
     let!(:obsolete_news_item) do
       news_item_attributes = {
         guid: 'obsolete_video_id',
@@ -239,7 +210,6 @@ describe YoutubeData do
       }
       rss_feed_url.news_items.create!(news_item_attributes)
     end
-
     let!(:playlist_1) do
       playlist_attributes = {
         playlist_id: 'playlist_1',
@@ -248,11 +218,9 @@ describe YoutubeData do
       }
       profile.youtube_playlists.create!(playlist_attributes)
     end
-
     let!(:playlist_2) do
       profile.youtube_playlists.create!(playlist_id: 'playlist_2')
     end
-
     let(:playlist_item_1) do
       item_hash = {
         snippet: {
@@ -263,7 +231,6 @@ describe YoutubeData do
       }
       Hashie::Mash::Rash.new(item_hash)
     end
-
     let(:playlist_item_2) do
       item_hash = {
         snippet: {
@@ -277,7 +244,6 @@ describe YoutubeData do
       }
       Hashie::Mash::Rash.new(item_hash)
     end
-
     let(:playlist_item_3) do
       item_hash = {
         snippet: {
@@ -290,31 +256,24 @@ describe YoutubeData do
       }
       Hashie::Mash::Rash.new(item_hash)
     end
-
     let(:first_result_hash) do
       {
         etag: nil,
         status_code: 304
       }
     end
-
     let(:first_result) { Hashie::Mash::Rash.new(first_result_hash) }
-
     let(:second_result_hash) do
       {
         etag: 'playlist_2_etag',
         status_code: 200
       }
     end
-
     let(:second_result) { Hashie::Mash::Rash.new(second_result_hash) }
-
     let(:youtube_data) { described_class.new(profile) }
-
     let(:news_item_3) do
       rss_feed_url.news_items.find_by(link: 'https://www.youtube.com/watch?v=video_3')
     end
-
     let(:news_item_ids) { [news_item_1.id, news_item_2.id, news_item_3.id] }
 
     it 'imports playlists items' do
@@ -349,7 +308,6 @@ describe YoutubeData do
 
   describe '#populate_durations' do
     let(:profile) { youtube_profiles(:whitehouse) }
-    let(:feed_url) { double('feed url') }
 
     it 'sets NewsItem#duration' do
       news_item_without_duration = mock_model(NewsItem,
@@ -362,8 +320,7 @@ describe YoutubeData do
 
       youtube_data = described_class.new profile
 
-      allow(youtube_data).to receive(:rss_feed_url).and_return(feed_url)
-      allow(feed_url).to receive(:news_items).
+      allow(youtube_data).to receive_message_chain(:rss_feed_url, :news_items).
         and_return([news_item_without_duration, news_item_with_duration])
 
       video_1 = Hashie::Mash::Rash.new(id: 'video_1',
@@ -372,12 +329,11 @@ describe YoutubeData do
                                        })
 
       expect(YoutubeAdapter).to receive(:each_video).
-        with(%w[video_1]).
+        with(%w(video_1)).
         and_yield(video_1)
 
-      allow(youtube_data).to receive_message_chain(
-        :rss_feed_url, :news_items, :find_by
-      ).and_return(news_item_without_duration)
+      allow(youtube_data).to receive_message_chain(:rss_feed_url, :news_items, :find_by).
+        and_return(news_item_without_duration)
       expect(news_item_without_duration).to receive(:duration=).with('5:30')
       expect(news_item_without_duration).to receive(:save!)
 

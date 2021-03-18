@@ -14,7 +14,7 @@ class YoutubeData
         YoutubeData.new(profile).import
         Rails.logger.info "Imported YouTube channel #{profile.channel_id}"
       else
-        Rails.logger.info 'sleeping'
+        Rails.logger.info 'Sleeping for 5 minutes before attempting more YouTube imports'
         sleep(5.minutes)
       end
     end
@@ -43,12 +43,7 @@ class YoutubeData
   end
 
   def self.already_imported_enough_profiles_today?
-    return false if number_of_profiles_updated_today < maximum_profile_updates_per_day
-
-    Rails.logger.info(
-      "Already imported #{maximum_profile_updates_per_day} YouTube profiles"
-    )
-    true
+    self.number_of_profiles_updated_today >= self.maximum_profile_updates_per_day
   end
 
   def initialize(youtube_profile)
