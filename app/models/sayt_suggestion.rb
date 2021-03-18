@@ -59,7 +59,11 @@ class SaytSuggestion < ApplicationRecord
     end
 
     def expire(days_back)
-      destroy_all(["updated_at < ? AND is_protected = ?", days_back.days.ago.beginning_of_day.to_s(:db), false])
+      where(
+        'updated_at < ? AND is_protected = ?',
+        days_back.days.ago.beginning_of_day.to_s(:db),
+        false
+      ).in_batches.destroy_all
     end
 
   end

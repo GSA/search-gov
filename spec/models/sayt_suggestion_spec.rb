@@ -1,7 +1,15 @@
 require 'spec_helper'
 
 describe SaytSuggestion do
-  fixtures :sayt_suggestions, :misspellings, :affiliates
+  let(:affiliate) { affiliates(:power_affiliate) }
+  let(:valid_attributes) do
+    {
+      affiliate_id: affiliate.id,
+      phrase: 'some valid suggestion',
+      popularity: 100
+    }
+  end
+
   before do
     @affiliate = affiliates(:power_affiliate)
     @valid_attributes = {
@@ -9,6 +17,10 @@ describe SaytSuggestion do
       phrase: 'some valid suggestion',
       popularity: 100
     }
+  end
+
+  describe 'schema' do
+    it { is_expected.to have_db_index([:updated_at, :is_protected]) }
   end
 
   describe 'Creating new instance' do
@@ -82,10 +94,27 @@ describe SaytSuggestion do
     end
   end
 
-  describe '#expire(days_back)' do
-    it 'should destroy suggestions that have not been updated in X days, and that are unprotected' do
-      expect(described_class).to receive(:destroy_all).with(['updated_at < ? AND is_protected = ?', 30.days.ago.beginning_of_day.to_s(:db), false])
-      described_class.expire(30)
+  describe '.expire(days_back)' do
+    subject(:expire) { described_class.expire(30) }
+
+    context 'when suggestions exist' do
+      before do
+        described_class.create!(
+          valid_attributes.merge(phrase: 'outdated', updated_at: 31.days.ago)
+        )
+        described_class.create!(
+          valid_attributes.merge(phrase: 'outdated but protected',
+                                 is_protected: true,
+                                 updated_at: 31.days.ago)
+        )
+        described_class.create!(valid_attributes.merge(phrase: 'new'))
+      end
+
+      it 'destroys unprotected suggestions that have not been updated in X days' do
+        expire
+        expect(affiliate.sayt_suggestions.pluck(:phrase)).
+          to eq ['new', 'outdated but protected']
+      end
     end
   end
 
