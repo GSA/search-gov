@@ -9,7 +9,7 @@ describe Sites::TemplatesController do
 
   describe '#update' do
     let(:affiliate) { affiliates(:usagov_affiliate) }
-    let(:template) { Template.find_by_name("IRS") }
+    let(:template) { Template.find_by_name('IRS') }
     let(:update_template) do
       put :update, params: { site_id: affiliate.id, site: { template_id: template.id } }
     end
@@ -27,7 +27,7 @@ describe Sites::TemplatesController do
       context 'when the update is successful' do
         before { update_template }
 
-        it "updates the template" do
+        it 'updates the template' do
           expect(affiliate.reload.template.name).to eq 'IRS'
         end
 

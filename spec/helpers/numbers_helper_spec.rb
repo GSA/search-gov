@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe NumbersHelper, "#non_zero_number_with_delimiter" do
+describe NumbersHelper, '#non_zero_number_with_delimiter' do
   context 'when number is zero' do
     it 'should return the zero label' do
       expect(helper.non_zero_number_with_delimiter(0, 'nada')).to eq('nada')

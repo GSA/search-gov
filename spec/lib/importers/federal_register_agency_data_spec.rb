@@ -37,7 +37,7 @@ describe FederalRegisterAgencyData do
       original_fr_agency = FederalRegisterAgency.find(fr_irs.id)
       expect(original_fr_agency.name).to eq('Internal Revenue Service')
 
-      FederalRegisterAgencyData.import
+      described_class.import
 
       expect(FederalRegisterAgency.count).to eq(4)
 
@@ -59,7 +59,7 @@ describe FederalRegisterAgencyData do
     it 'destroys obsolete FederalRegisterAgency' do
       FederalRegisterAgency.create!(id: 100, name: 'Bogus')
 
-      FederalRegisterAgencyData.import
+      described_class.import
 
       expect(FederalRegisterAgency.find_by_id(100)).to be_nil
       expect(FederalRegisterAgency.count).to eq(4)

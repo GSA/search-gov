@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Admin::AffiliateBoostedContentsController do
-  let(:config) { Admin::AffiliateBoostedContentsController.active_scaffold_config }
+  let(:config) { described_class.active_scaffold_config }
 
   describe 'export columns' do
     it 'contains the correct columns in the correct order' do

@@ -111,6 +111,7 @@ describe YoutubeData do
       end
 
       it 'logs a warning' do
+
         expect(YoutubeAdapter).to have_received(:get_playlist_ids)
         expect(Rails.logger).to have_received(:warn).with(/YouTube API/)
       end

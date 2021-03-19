@@ -20,20 +20,20 @@ describe YoutubeProfile do
   end
 
   describe 'Gets the active YoutubeProfiles' do
-    let (:profiles) { YoutubeProfile.active }
+    let (:profiles) { described_class.active }
 
     it 'gets the active youtube profiles' do
-      expect(YoutubeProfile.active.count).to equal(2)
+      expect(described_class.active.count).to equal(2)
     end
 
     it 'is expected to have uniq values' do
-      expect(YoutubeProfile.active.count).to equal(YoutubeProfile.active.distinct.count)
+      expect(described_class.active.count).to equal(described_class.active.distinct.count)
     end
   end
 
   describe '#after_create' do
     it 'creates RssFeed and RssFeedUrl' do
-      profile = YoutubeProfile.create!(channel_id: 'my_channel_id',
+      profile = described_class.create!(channel_id: 'my_channel_id',
                                        title: 'My Awesome Channel')
       expect(profile.rss_feed).to be_present
       expect(profile.rss_feed.rss_feed_urls.first.url).to eq('https://www.youtube.com/channel/my_channel_id')

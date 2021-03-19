@@ -12,7 +12,7 @@ describe GeoipExtensions do
       context 'when the location is international' do
         let(:city) { GeoipLookup.lookup('85.214.132.117') }
 
-        it { is_expected.to eq "Berlin, Berlin, Germany" }
+        it { is_expected.to eq 'Berlin, Berlin, Germany' }
       end
 
       context 'when the city and region are nil' do

@@ -24,7 +24,7 @@ describe SearchImpression do
       allow(Time).to receive(:now).and_return(time)
       allow(Rails.logger).to receive(:info)
 
-      SearchImpression.log(search, 'web', params, request)
+      described_class.log(search, 'web', params, request)
     end
 
     context 'with regular params' do

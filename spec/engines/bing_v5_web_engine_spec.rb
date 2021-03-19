@@ -11,7 +11,7 @@ describe BingV5WebEngine do
         offset: 20,
         limit: 10,
         query: 'consumer financial protection bureau',
-        enable_highlighting: false,
+        enable_highlighting: false
       })
     end
 

@@ -31,7 +31,7 @@ describe NewsItemsChecker do
       expect(RssFeedUrl).to receive(:find_by_id).and_return(rss_feed_url)
       expect(NewsItem).to receive(:fast_delete).with([news_item_with_404_link.id])
 
-      NewsItemsChecker.perform [rss_feed_url.id]
+      described_class.perform [rss_feed_url.id]
     end
   end
 end

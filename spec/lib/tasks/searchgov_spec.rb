@@ -14,7 +14,7 @@ describe 'Search.gov tasks' do
   after { $stdout = STDOUT }
 
   describe 'searchgov:promote' do
-    let(:file_path) { File.join(Rails.root.to_s, "spec", "fixtures", "csv", "searchgov_urls.csv") }
+    let(:file_path) { File.join(Rails.root.to_s, 'spec', 'fixtures', 'csv', 'searchgov_urls.csv') }
     let(:task_name) { 'searchgov:promote' }
     let(:url) { 'https://www.consumerfinance.gov/consumer-tools/auto-loans/' }
     let(:doc_id) { SearchgovUrl.new(url: url).document_id }

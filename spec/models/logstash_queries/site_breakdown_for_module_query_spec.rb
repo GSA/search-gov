@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe SiteBreakdownForModuleQuery do
-  let(:query) { SiteBreakdownForModuleQuery.new('I14Y') }
+  let(:query) { described_class.new('I14Y') }
   let(:expected_body) do
     {
       "query": {
@@ -9,18 +9,18 @@ describe SiteBreakdownForModuleQuery do
           "filter": [
             {
               "term": {
-                "modules": "I14Y"
+                "modules": 'I14Y'
               }
             },
             {
               "terms": {
-                "type": ["search","click"]
+                "type": ['search','click']
               }
             },
           ],
           "must_not": {
             "term": {
-              "useragent.device": "Spider"
+              "useragent.device": 'Spider'
             }
           }
         }
@@ -28,13 +28,13 @@ describe SiteBreakdownForModuleQuery do
       "aggs": {
         "agg": {
           "terms": {
-            "field": "params.affiliate",
+            "field": 'params.affiliate',
             "size": 10_000
           },
           "aggs": {
             "type": {
               "terms": {
-                "field": "type"
+                "field": 'type'
               }
             }
           }

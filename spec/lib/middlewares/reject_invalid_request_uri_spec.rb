@@ -4,7 +4,7 @@ require 'rack/mock'
 describe RejectInvalidRequestUri do
   context 'when processing a request with invalid URI' do
     let(:app) { double('app') }
-    let(:middleware) { RejectInvalidRequestUri.new(app) }
+    let(:middleware) { described_class.new(app) }
     let(:env) { { 'REQUEST_URI' => "/search?query=\xC0" } }
     let(:response) { middleware.call(env) }
     let(:status) { response.first }

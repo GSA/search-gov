@@ -35,9 +35,9 @@ describe SaytController, type: :request do
         expect(Affiliate).to receive(:find_by_name_and_is_sayt_enabled).with(affiliate.name, true).and_return(affiliate)
 
         expect(SaytSearch).to receive(:new).
-            with(hash_including(:affiliate_id => affiliate.id,
-                                :query => 'lorem ipsum',
-                                :extras => true,
+            with(hash_including(affiliate_id: affiliate.id,
+                                query: 'lorem ipsum',
+                                extras: true,
                                 number_of_results: 5)).
             and_return(search)
 

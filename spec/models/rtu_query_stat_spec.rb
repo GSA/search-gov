@@ -4,7 +4,7 @@ describe RtuQueryStat do
 
   describe '.top_n_overall_human_searches' do
     subject(:top_n_overall_human_searches) do
-      RtuQueryStat.top_n_overall_human_searches(Date.new(2019, 11, 21), 50)
+      described_class.top_n_overall_human_searches(Date.new(2019, 11, 21), 50)
     end
     let(:rtu_top_queries) do
       instance_double(RtuTopQueries, top_n: [['query6', 55], ['query5', 54]])

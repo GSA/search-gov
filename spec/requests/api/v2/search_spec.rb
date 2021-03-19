@@ -28,9 +28,9 @@ describe '/api/v2/search' do
       affiliate.boosted_contents.delete_all
 
       attributes = {
-        title: "api v2 title manual-1",
-        description: "api v2 description manual-1",
-        url: "https://search.gov/manual-1",
+        title: 'api v2 title manual-1',
+        description: 'api v2 description manual-1',
+        url: 'https://search.gov/manual-1',
         status: 'active',
         publish_start_on: current_date
       }

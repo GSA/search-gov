@@ -11,9 +11,9 @@ describe Sites::AutodiscoveriesController do
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
 
-      context "when a valid autodiscovery_url is provided" do
+      context 'when a valid autodiscovery_url is provided' do
         render_views
-        let(:autodiscovery_url) { "https://www.usa.gov" }
+        let(:autodiscovery_url) { 'https://www.usa.gov' }
 
         before do
           expect(SiteAutodiscoverer).to receive(:new).with(site, autodiscovery_url).and_return site_autodiscoverer
@@ -37,14 +37,14 @@ describe Sites::AutodiscoveriesController do
         end
 
         it { is_expected.to redirect_to(site_content_path(site)) }
-        it "should set the flash to reflect success and preserve the autodiscovery_url" do
+        it 'should set the flash to reflect success and preserve the autodiscovery_url' do
           expect(flash[:error]).to eq("Invalid site URL #{autodiscovery_url}")
           expect(flash[:autodiscovery_url]).to eq(autodiscovery_url)
         end
       end
 
-      context "when no autodiscovery_url is provided" do
-        it "raises a 400 error" do
+      context 'when no autodiscovery_url is provided' do
+        it 'raises a 400 error' do
           post :create, params: { site_id: site.id }
           expect(response.status).to eq(400)
         end

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe CountQuery do
-  let(:query) { CountQuery.new('affiliate_name', 'click') }
+  let(:query) { described_class.new('affiliate_name', 'click') }
   let(:expected_body) do
     {
       "query": {
@@ -9,18 +9,18 @@ describe CountQuery do
           "filter": [
             {
               "term": {
-                "params.affiliate": "affiliate_name"
+                "params.affiliate": 'affiliate_name'
               }
             },
             {
               "terms": {
-                "type": ["click"]
+                "type": ['click']
               }
             }
           ],
           "must_not": {
             "term": {
-              "useragent.device": "Spider"
+              "useragent.device": 'Spider'
             }
           }
         }

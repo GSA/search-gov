@@ -89,8 +89,8 @@ shared_examples_for 'a record with a fetchable url' do
   describe 'normalizing URLs when saving' do
     let(:record) { described_class.new(valid_attributes.merge(url: url)) }
 
-    context "when a blank URL is passed in" do
-      let(:url) { "" }
+    context 'when a blank URL is passed in' do
+      let(:url) { '' }
       it 'marks record as invalid' do
         expect(described_class.new(valid_attributes.merge(url: url))).not_to be_valid
       end
@@ -99,7 +99,7 @@ shared_examples_for 'a record with a fetchable url' do
     context 'when an URL contains an anchor tag' do
       let(:url) { 'http://agency.gov/sdfsdf#anchorme' }
 
-      it "removes it" do
+      it 'removes it' do
         expect(described_class.create!(valid_attributes.merge(url: url)).url).
           to eq('http://agency.gov/sdfsdf')
       end

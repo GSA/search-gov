@@ -6,7 +6,7 @@ describe 'routing to statuses' do
       controller: 'statuses',
       action: 'domain_control_validation',
       format: :text,
-      affiliate: 'usagov',
+      affiliate: 'usagov'
     )
   end
 
@@ -15,7 +15,7 @@ describe 'routing to statuses' do
       controller: 'statuses',
       action: 'domain_control_validation',
       format: :html,
-      affiliate: 'usagov',
+      affiliate: 'usagov'
     )
   end
 
@@ -24,7 +24,7 @@ describe 'routing to statuses' do
       controller: 'statuses',
       action: 'domain_control_validation',
       format: :text,
-      affiliate: 'foo.bar',
+      affiliate: 'foo.bar'
     )
   end
 end

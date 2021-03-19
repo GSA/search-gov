@@ -8,7 +8,7 @@ describe Membership do
       let!(:membership) { memberships(:four) }
       let!(:affiliate) { membership.affiliate }
       let!(:user) { membership.user }
-      subject(:receivers) { Membership.daily_snapshot_receivers }
+      subject(:receivers) { described_class.daily_snapshot_receivers }
 
       it { is_expected.to include(membership) }
 

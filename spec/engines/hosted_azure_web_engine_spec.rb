@@ -15,7 +15,7 @@ describe HostedAzureWebEngine do
   skip '#execute_query' do
     context 'when response _next is present' do
       let(:engine) do
-        HostedAzureWebEngine.new enable_highlighting: true,
+        described_class.new enable_highlighting: true,
                                  language: 'en',
                                  offset: 0,
                                  per_page: 20,
@@ -44,7 +44,7 @@ describe HostedAzureWebEngine do
 
     context 'when response _next is not present' do
       let(:engine) do
-        HostedAzureWebEngine.new enable_highlighting: true,
+        described_class.new enable_highlighting: true,
                                  language: 'en',
                                  offset: 0,
                                  per_page: 20,
@@ -66,7 +66,7 @@ describe HostedAzureWebEngine do
 
     context 'when there are no results' do
       let(:engine) do
-        HostedAzureWebEngine.new enable_highlighting: true,
+        described_class.new enable_highlighting: true,
                                  language: 'en',
                                  offset: 0,
                                  per_page: 20,

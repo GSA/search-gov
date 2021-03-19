@@ -3,10 +3,10 @@ require 'spec_helper'
 describe RateLimitedSearchApiConnection do
   let(:cache) { double(ApiCache, namespace: 'some_cache') }
   let(:rate_limiter) { double(ApiRateLimiter) }
-  let(:connection) { RateLimitedSearchApiConnection.new('my_api', 'http://localhost', 1000) }
+  let(:connection) { described_class.new('my_api', 'http://localhost', 1000) }
   let(:endpoint) { '/search.json' }
   let(:params) { { query: 'gov' } }
-  let(:response) { double('response', status: 200 )}
+  let(:response) { double('response', status: 200 ) }
 
   before do
     expect(ApiCache).to receive(:new).with('my_api', 1000).and_return(cache)

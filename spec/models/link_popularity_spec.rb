@@ -3,7 +3,7 @@ require 'spec_helper'
 describe LinkPopularity do
   describe '.popularity_for' do
     subject(:popularity_for) do
-      LinkPopularity.popularity_for('http://www.gov.gov/someurl.html', 7)
+      described_class.popularity_for('http://www.gov.gov/someurl.html', 7)
     end
 
     context 'when clicks have occurred' do

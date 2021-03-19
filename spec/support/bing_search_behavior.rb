@@ -9,7 +9,7 @@ shared_examples 'a Bing search' do
     limit: limit,
     filter: filter,
     language: :language,
-    enable_highlighting: enable_highlighting,
+    enable_highlighting: enable_highlighting
   } }
 
   describe 'params' do
@@ -75,7 +75,7 @@ shared_examples 'a Bing search' do
           2 => 'strict',
           3 => 'moderate',
           4 => 'moderate',
-          5 => 'moderate',
+          5 => 'moderate'
         }.each do |filter_option, expected_value|
           context "and the provided filter option is #{filter_option}" do
             let(:filter) { filter_option }
@@ -130,13 +130,13 @@ shared_examples 'a Bing search' do
       context 'when the type is an error response' do
         let(:bing_response_body) do
           {
-            "_type": "ErrorResponse",
+            "_type": 'ErrorResponse',
             "errors": [
               {
-                "code": "InvalidRequest",
-                "subCode": "ParameterMissing",
-                "message": "Required parameter is missing.",
-                "parameter": "q"
+                "code": 'InvalidRequest',
+                "subCode": 'ParameterMissing',
+                "message": 'Required parameter is missing.',
+                "parameter": 'q'
               }
             ]
           }.to_json

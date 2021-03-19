@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe SiteFeedUrl do
   fixtures :affiliates
-  let(:site_feed_url) { SiteFeedUrl.create!(affiliate_id: affiliates(:basic_affiliate).id, rss_url: "http://nps.gov/urls.rss", quota: 3) }
+  let(:site_feed_url) { described_class.create!(affiliate_id: affiliates(:basic_affiliate).id, rss_url: 'http://nps.gov/urls.rss', quota: 3) }
 
   describe 'associations' do
     it { is_expected.to belong_to :affiliate }
@@ -13,10 +13,10 @@ describe SiteFeedUrl do
     it { is_expected.to allow_value('http://some.site.gov/url').for(:rss_url) }
     it { is_expected.not_to allow_value('not a URL').for(:rss_url) }
     it { is_expected.not_to allow_value("javascript:alert('test')").for(:rss_url) }
-    it { is_expected.not_to allow_value("| touch test.txt").for(:rss_url) }
+    it { is_expected.not_to allow_value('| touch test.txt').for(:rss_url) }
   end
 
-  describe ".delete" do
+  describe '.delete' do
 
     before do
       ElasticIndexedDocument.recreate_index
@@ -26,7 +26,7 @@ describe SiteFeedUrl do
                               url: 'http://www.nps.gov/index.htm',
                               doctype: 'html',
                               last_crawl_status: IndexedDocument::OK_STATUS,
-                              body: "this is the doc body",
+                              body: 'this is the doc body',
                               source: 'rss',
                               affiliate_id: affiliates(:basic_affiliate).id)
       IndexedDocument.create!(title: 'Some Title TWo',
@@ -34,7 +34,7 @@ describe SiteFeedUrl do
                               url: 'http://www.nps.gov/index2.htm',
                               doctype: 'html',
                               last_crawl_status: IndexedDocument::OK_STATUS,
-                              body: "this is the next doc body",
+                              body: 'this is the next doc body',
                               source: 'rss',
                               affiliate_id: affiliates(:basic_affiliate).id)
       IndexedDocument.create!(title: 'Some Title Three',
@@ -42,7 +42,7 @@ describe SiteFeedUrl do
                               url: 'http://www.nps.gov/index3.htm',
                               doctype: 'html',
                               last_crawl_status: IndexedDocument::OK_STATUS,
-                              body: "this is the next doc body",
+                              body: 'this is the next doc body',
                               source: 'manual',
                               affiliate_id: affiliates(:basic_affiliate).id)
     end
@@ -57,14 +57,14 @@ describe SiteFeedUrl do
     end
   end
 
-  describe ".refresh_all" do
-    let(:second_one) { SiteFeedUrl.create!(affiliate_id: affiliates(:power_affiliate).id, rss_url: "http://secondone.gov/urls.rss") }
+  describe '.refresh_all' do
+    let(:second_one) { described_class.create!(affiliate_id: affiliates(:power_affiliate).id, rss_url: 'http://secondone.gov/urls.rss') }
 
-    it "should enqueue the low-priority fetching of all the site feed urls via Resque" do
+    it 'should enqueue the low-priority fetching of all the site feed urls via Resque' do
       ResqueSpec.reset!
       expect(Resque).to receive(:enqueue_with_priority).with(:low, SiteFeedUrlFetcher, site_feed_url.id)
       expect(Resque).to receive(:enqueue_with_priority).with(:low, SiteFeedUrlFetcher, second_one.id)
-      SiteFeedUrl.refresh_all
+      described_class.refresh_all
     end
   end
 

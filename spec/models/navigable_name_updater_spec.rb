@@ -4,7 +4,7 @@ describe NavigableNameUpdater do
   fixtures :affiliates, :languages, :rss_feeds, :image_search_labels
 
   context 'no locale exceptions array passed in' do
-    let(:navigable_name_updater) { NavigableNameUpdater.new }
+    let(:navigable_name_updater) { described_class.new }
 
     before do
       affiliates(:basic_affiliate).update_attribute(:locale, 'kl')
