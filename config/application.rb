@@ -98,8 +98,6 @@ module Usasearch
     ActiveSupport.to_time_preserves_timezone = false
 
     ### End Rails 5.0 config flags
-
-    config.youtube = YAML.load_file('config/youtube.yml')
   end
 end
 

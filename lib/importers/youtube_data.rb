@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class YoutubeData
-  DEFAULT_MAXIMUM_PROFILE_UPDATES_PER_DAY = 300
+  MAXIMUM_PROFILE_UPDATES_PER_DAY = 300
 
   attr_reader :all_news_item_ids,
               :profile,
@@ -32,13 +32,8 @@ class YoutubeData
     YoutubeProfile.updated_today.count
   end
 
-  def self.maximum_profile_updates_per_day
-    Rails.configuration.youtube['maximum_profile_updates_per_day'] ||
-      DEFAULT_MAXIMUM_PROFILE_UPDATES_PER_DAY
-  end
-
   def self.already_imported_enough_profiles_today?
-    self.number_of_profiles_updated_today >= self.maximum_profile_updates_per_day
+    number_of_profiles_updated_today >= MAXIMUM_PROFILE_UPDATES_PER_DAY
   end
 
   def initialize(youtube_profile)

@@ -29,13 +29,9 @@ describe YoutubeData do
     end
 
     context 'when we have already updated the maximum number of profiles for today' do
-      let(:maximum_profile_updates_per_day) do
-        Rails.configuration.youtube['maximum_profile_updates_per_day']
-      end
-
       before do
         allow(described_class).to receive(:number_of_profiles_updated_today).
-          and_return(maximum_profile_updates_per_day)
+          and_return(described_class::MAXIMUM_PROFILE_UPDATES_PER_DAY)
       end
 
       it 'does not import any profiles' do
@@ -63,34 +59,6 @@ describe YoutubeData do
     end
   end
 
-  describe '.maximum_number_of_profile_updates_per_day' do
-    context 'when no value is configured' do
-      before do
-        Rails.configuration.youtube['maximum_profile_updates_per_day'] = nil
-      end
-
-      it 'defaults to the value built in to YoutubeData' do
-        expect(described_class.maximum_profile_updates_per_day).
-          to eq(YoutubeData::DEFAULT_MAXIMUM_PROFILE_UPDATES_PER_DAY)
-      end
-    end
-
-    context 'when a value is configured' do
-      let(:expected_maximum_number_of_profile_updates_per_day) { 31_416 }
-
-      before do
-        Rails.configuration.youtube['maximum_profile_updates_per_day'] =
-          expected_maximum_number_of_profile_updates_per_day
-      end
-
-      it 'defaults to the value built in to YoutubeData' do
-        expect(described_class.maximum_profile_updates_per_day).to(
-          eq(expected_maximum_number_of_profile_updates_per_day)
-        )
-      end
-    end
-  end
-
   describe '.already_imported_enough_profiles_today?' do
     context 'when we have not hit our limit' do
       before do
@@ -106,7 +74,7 @@ describe YoutubeData do
     context 'when we have hit our limit' do
       before do
         allow(described_class).to receive(:number_of_profiles_updated_today).
-          and_return(described_class.maximum_profile_updates_per_day)
+          and_return(described_class::MAXIMUM_PROFILE_UPDATES_PER_DAY)
       end
 
       it 'is true' do
