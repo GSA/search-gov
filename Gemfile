@@ -13,8 +13,10 @@ gem 'will_paginate', '~> 3.1.6'
 gem 'nokogiri', '~> 1.11.1'
 gem 'bcrypt-ruby', '~> 3.1.5', :require => 'bcrypt'
 gem 'authlogic', '~> 3.8.0'
+# Locking the commit until https://github.com/18F/omniauth_login_dot_gov/issues/17
+# is resolved
 gem 'omniauth_login_dot_gov', git: 'https://github.com/18f/omniauth_login_dot_gov.git',
-                              branch: 'master'
+                              ref: '08ce9b5322efb2d82b2df3f6d774308c4028ee6c'
 gem 'omniauth-rails_csrf_protection', '~> 0.1.2'
 gem 'airbrake', '~> 7.1.1'
 gem 'yajl-ruby', '~> 1.3.1', :require => 'yajl'
