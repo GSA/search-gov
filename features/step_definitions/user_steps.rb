@@ -1,9 +1,4 @@
-Given /^I am logged in with email "([^"]*)"$/ do |email|
-  LoginDotGovTestUtilities.fake_login(email: email)
-  visit '/auth/logindotgov'
-end
-
-When /^I log in with email "([^"]*)" and password "([^"]*)"/ do |email, dummy_password|
+Given /^I (?:log in|am logged in) with email "([^"]*)"$/ do |email|
   LoginDotGovTestUtilities.fake_login(email: email)
   visit '/auth/logindotgov'
 end

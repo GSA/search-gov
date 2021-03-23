@@ -47,7 +47,7 @@ class LandingPageFinder
   end
 
   def destination_site_page
-    @user.is_affiliate? && affiliate_site_page
+    affiliate_site_page
   end
 
   def affiliate_site_page
