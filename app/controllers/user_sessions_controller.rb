@@ -6,8 +6,8 @@ class UserSessionsController < ApplicationController
   def security_notification
     return unless current_user
 
-    finder = LandingPageFinder.new(current_user, params[:return_to])
-    redirect_to(finder.landing_page)
+    landing_page = LandingPageFinder.new(current_user, params[:return_to]).landing_page
+    redirect_to(landing_page)
   rescue LandingPageFinder::Error => e
     flash[:error] = e.message
   end

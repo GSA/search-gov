@@ -29,7 +29,6 @@ end
 
 shared_context 'approved user logged in' do
   let(:current_user) { users(:affiliate_manager) }
-  let(:current_user_session) { UserSession.create(current_user) }
 
   before do
     UserSession.create current_user
