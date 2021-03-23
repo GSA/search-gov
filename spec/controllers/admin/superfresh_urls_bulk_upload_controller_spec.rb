@@ -7,20 +7,20 @@ describe Admin::SuperfreshUrlsBulkUploadController do
   end
 
   describe "GET 'index'" do
-    context "when not logged in" do
-      it "should redirect to the home page" do
+    context 'when not logged in' do
+      it 'should redirect to the home page' do
         get :index
         expect(response).to redirect_to login_path
       end
     end
 
-    context "when logged in as an admin" do
+    context 'when logged in as an admin' do
       before do
-        @user = users("affiliate_admin")
+        @user = users('affiliate_admin')
         UserSession.create(@user)
       end
 
-      it "should allow the admin to manage superfresh urls" do
+      it 'should allow the admin to manage superfresh urls' do
         get :index
         expect(response).to be_success
       end

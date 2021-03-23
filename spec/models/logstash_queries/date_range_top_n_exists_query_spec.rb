@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe DateRangeTopNExistsQuery do
   let(:query) do
-    DateRangeTopNExistsQuery.new('affiliate_name',
+    described_class.new('affiliate_name',
                                  'search',
                                  Date.new(2019, 11, 1),
                                  Date.new(2019, 11, 7),
@@ -15,24 +15,24 @@ describe DateRangeTopNExistsQuery do
           "filter": [
             {
               "term": {
-                "params.affiliate": "affiliate_name"
+                "params.affiliate": 'affiliate_name'
               }
             },
             {
               "terms": {
-                "type": ["search"]
+                "type": ['search']
               }
             },
             {
               "exists": {
-                "field": "modules"
+                "field": 'modules'
               }
             },
             {
               "range": {
                 "@timestamp": {
-                  "gte": "2019-11-01",
-                  "lte": "2019-11-07"
+                  "gte": '2019-11-01',
+                  "lte": '2019-11-07'
                 }
               }
             }
@@ -40,17 +40,17 @@ describe DateRangeTopNExistsQuery do
           "must_not": [
             {
               "term": {
-                "useragent.device": "Spider"
+                "useragent.device": 'Spider'
               }
             },
             {
               "term": {
-                "params.query.raw": ""
+                "params.query.raw": ''
               }
             },
             {
               "term": {
-                "modules": "QRTD"
+                "modules": 'QRTD'
               }
             }
           ]
@@ -59,7 +59,7 @@ describe DateRangeTopNExistsQuery do
       "aggs": {
         "agg": {
           "terms": {
-            "field": "params.query.raw",
+            "field": 'params.query.raw',
             "size": 1000
           }
         }

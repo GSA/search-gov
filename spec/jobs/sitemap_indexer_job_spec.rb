@@ -6,7 +6,7 @@ describe SitemapIndexerJob do
     { sitemap_url: sitemap_url }
   end
   let(:indexer) { instance_double(SitemapIndexer) }
-  subject(:perform) { SitemapIndexerJob.perform_now(args) }
+  subject(:perform) { described_class.perform_now(args) }
 
   it_behaves_like 'a sitemap job'
 

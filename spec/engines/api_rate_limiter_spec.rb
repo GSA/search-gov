@@ -5,10 +5,10 @@ describe ApiRateLimiter do
   let!(:today) { Date.new(2014, 1, 1) }
   let(:key) { 'my_api:2014-01-01:used_count'.freeze }
 
-  subject(:rate_limiter) { ApiRateLimiter.new(namespace) }
+  subject(:rate_limiter) { described_class.new(namespace) }
 
   before do
-    ApiRateLimiter.redis.flushdb
+    described_class.redis.flushdb
     allow(Date).to receive(:current).and_return(today)
   end
 
@@ -51,8 +51,8 @@ describe ApiRateLimiter do
         rate_limiter.within_limit { connection.get }
       end
 
-      context "when soft limiting is enabled" do
-        subject(:rate_limiter) { ApiRateLimiter.new(namespace, true) }
+      context 'when soft limiting is enabled' do
+        subject(:rate_limiter) { described_class.new(namespace, true) }
         let(:allowed_calls) { 3 }
 
         it 'yields to the block and increments used count' do

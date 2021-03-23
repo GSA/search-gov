@@ -14,7 +14,7 @@ module OmniauthHelpers
       },
       'credentials': {
         'id_token': id_token
-      },
+      }
     }
 
     OmniAuth.config.add_mock(:default, omniauth_hash)

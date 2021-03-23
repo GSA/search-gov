@@ -156,7 +156,7 @@ We use [CircleCI](https://circleci.com/gh/GSA/usasearch) for continuous integrat
 
 # Code Quality
 
-We use [Rubocop](https://rubocop.org/) for static code analysis. Cops are configured via [.rubocop.yml](.rubocop.yml).
+We use [Rubocop](https://rubocop.org/) for static code analysis. Settings specific to search-gov are configured via [.rubocop.yml](.rubocop.yml). Settings that can be shared among all Search.gov repos should be configured via the [searchgov_style](https://github.com/GSA/searchgov_style) gem.
 
 # Running the app
 

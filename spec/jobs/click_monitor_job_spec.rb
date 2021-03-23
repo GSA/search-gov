@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe ClickMonitorJob do
-  subject(:perform) { ClickMonitorJob.perform_now }
+  subject(:perform) { described_class.perform_now }
 
   let(:searchgov_domain) do
     instance_double(SearchgovDomain, domain: 'agency.gov')

@@ -2,13 +2,13 @@ require 'spec_helper'
 
 describe SiteAutodiscoverer do
   let(:site) { mock_model(Affiliate) }
-  let(:autodiscoverer) { SiteAutodiscoverer.new(site, autodiscovery_url) }
+  let(:autodiscoverer) { described_class.new(site, autodiscovery_url) }
   let(:autodiscovery_url) { nil }
 
   describe '#initialize' do
     context 'when autodiscovery_url is not present' do
       it 'should initialize correctly' do
-        expect(autodiscoverer).to be_kind_of(SiteAutodiscoverer)
+        expect(autodiscoverer).to be_kind_of(described_class)
       end
     end
 
@@ -16,7 +16,7 @@ describe SiteAutodiscoverer do
       let(:autodiscovery_url) { 'https://www.usa.gov' }
 
       it 'should initialize correctly' do
-        expect(autodiscoverer).to be_kind_of(SiteAutodiscoverer)
+        expect(autodiscoverer).to be_kind_of(described_class)
       end
     end
 

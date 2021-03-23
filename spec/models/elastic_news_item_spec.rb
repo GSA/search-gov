@@ -13,10 +13,10 @@ describe ElasticNewsItem do
       rss_feeds: [blog]
     }
   end
-  let(:search) { ElasticNewsItem.search_for(search_params) }
+  let(:search) { described_class.search_for(search_params) }
 
   before do
-    ElasticNewsItem.recreate_index
+    described_class.recreate_index
     NewsItem.delete_all
     @blog_item = NewsItem.create!(
       rss_feed_url_id: white_house_blog_url.id,
@@ -55,7 +55,7 @@ describe ElasticNewsItem do
       subject: 'HIV',
       properties: properties)
 
-    ElasticNewsItem.commit
+    described_class.commit
   end
 
   describe '.search_for' do
@@ -63,7 +63,7 @@ describe ElasticNewsItem do
       context 'when there are results' do
 
         it 'should return results in an easy to access structure' do
-          search = ElasticNewsItem.search_for(q: 'Obama', rss_feeds: [blog, gallery], size: 1, offset: 1, language: 'en')
+          search = described_class.search_for(q: 'Obama', rss_feeds: [blog, gallery], size: 1, offset: 1, language: 'en')
           expect(search.total).to eq(2)
           expect(search.results.size).to eq(1)
           expect(search.results.first).to be_instance_of(NewsItem)
@@ -80,11 +80,11 @@ describe ElasticNewsItem do
         context 'when those results get deleted' do
           before do
             NewsItem.destroy_all
-            ElasticNewsItem.commit
+            described_class.commit
           end
 
           it 'should return zero results' do
-            search = ElasticNewsItem.search_for(q: 'Obama', rss_feeds: [blog, gallery], size: 1, offset: 1, language: 'en')
+            search = described_class.search_for(q: 'Obama', rss_feeds: [blog, gallery], size: 1, offset: 1, language: 'en')
             expect(search.total).to be_zero
             expect(search.results.size).to be_zero
           end
@@ -96,7 +96,7 @@ describe ElasticNewsItem do
           end
 
           it 'should return zero results' do
-            search = ElasticNewsItem.search_for(q: 'Obama', rss_feeds: [blog, gallery], size: 1, offset: 1, language: 'en')
+            search = described_class.search_for(q: 'Obama', rss_feeds: [blog, gallery], size: 1, offset: 1, language: 'en')
             expect(search.total).to be_zero
             expect(search.results.size).to be_zero
           end
@@ -104,7 +104,7 @@ describe ElasticNewsItem do
 
         context 'when no RSS feeds are specified' do
           it 'should return zero results' do
-            search = ElasticNewsItem.search_for(q: 'Obama', size: 1, offset: 1, language: 'en')
+            search = described_class.search_for(q: 'Obama', size: 1, offset: 1, language: 'en')
             expect(search.total).to be_zero
             expect(search.results.size).to be_zero
           end
@@ -115,26 +115,26 @@ describe ElasticNewsItem do
 
     describe 'filters' do
       context 'when RSS feeds are specified' do
-        it "should restrict results to the RSS feed URLS belonging to the specified collection of RSS feeds" do
-          search = ElasticNewsItem.search_for(q: 'policy', rss_feeds: [blog], language: 'en')
+        it 'should restrict results to the RSS feed URLS belonging to the specified collection of RSS feeds' do
+          search = described_class.search_for(q: 'policy', rss_feeds: [blog], language: 'en')
           expect(search.total).to eq(1)
           expect(search.results.first).to eq(@blog_item)
         end
 
         context 'when no other filters (e.g., query) are specified' do
-          it "should return with all items" do
-            expect(ElasticNewsItem.search_for(rss_feeds: [blog, gallery], language: 'en').total).to eq(2)
+          it 'should return with all items' do
+            expect(described_class.search_for(rss_feeds: [blog, gallery], language: 'en').total).to eq(2)
           end
         end
       end
 
-      context "when excluded URLs are present" do
+      context 'when excluded URLs are present' do
         before do
-          affiliate.excluded_urls.create!(url: "http://www.wh.gov/ns1")
+          affiliate.excluded_urls.create!(url: 'http://www.wh.gov/ns1')
         end
 
         it 'should filter out NewsItems with those URLs' do
-          search = ElasticNewsItem.search_for(q: 'policy', rss_feeds: [blog, gallery], language: 'en', excluded_urls: affiliate.excluded_urls)
+          search = described_class.search_for(q: 'policy', rss_feeds: [blog, gallery], language: 'en', excluded_urls: affiliate.excluded_urls)
           expect(search.total).to eq(1)
           expect(search.results.first).to eq(@gallery_item)
         end
@@ -142,48 +142,48 @@ describe ElasticNewsItem do
 
       context 'when date restrictions are present' do
         it 'should filter out NewsItems outside that date range' do
-          search = ElasticNewsItem.search_for(rss_feeds: [blog, gallery], language: 'en', since: 2.days.ago)
+          search = described_class.search_for(rss_feeds: [blog, gallery], language: 'en', since: 2.days.ago)
           expect(search.total).to eq(1)
-          search = ElasticNewsItem.search_for(rss_feeds: [blog, gallery], language: 'en', until: 2.days.ago)
+          search = described_class.search_for(rss_feeds: [blog, gallery], language: 'en', until: 2.days.ago)
           expect(search.total).to eq(1)
-          search = ElasticNewsItem.search_for(rss_feeds: [blog, gallery], language: 'en', since: 20.days.ago, until: Time.now)
+          search = described_class.search_for(rss_feeds: [blog, gallery], language: 'en', since: 20.days.ago, until: Time.now)
           expect(search.total).to eq(2)
-          search = ElasticNewsItem.search_for(rss_feeds: [blog, gallery], language: 'en', since: 20.days.ago, until: 12.days.ago)
+          search = described_class.search_for(rss_feeds: [blog, gallery], language: 'en', since: 20.days.ago, until: 12.days.ago)
           expect(search.total).to eq(0)
         end
       end
 
       context 'when tags are present' do
         it 'should only return news items with those tags' do
-          search = ElasticNewsItem.search_for(q: 'policy', rss_feeds: [blog, gallery], language: 'en', tags: %w(image))
+          search = described_class.search_for(q: 'policy', rss_feeds: [blog, gallery], language: 'en', tags: %w(image))
           expect(search.total).to eq(1)
         end
       end
 
-      context "when DublinCore fields are passed in" do
+      context 'when DublinCore fields are passed in' do
         before do
           NewsItem.create!(rss_feed_url_id: white_house_blog_url.id, guid: 'third', published_at: 3.days.ago, link: 'http://www.wh.gov/ns3',
-                           title: 'Policy 3', description: "Random posting", contributor: 'First Lady', publisher: 'Other Folks', subject: 'Space')
+                           title: 'Policy 3', description: 'Random posting', contributor: 'First Lady', publisher: 'Other Folks', subject: 'Space')
           NewsItem.create!(rss_feed_url_id: white_house_blog_url.id, guid: '4', published_at: 3.days.ago, link: 'http://www.wh.gov/ns4',
-                           title: 'Policy 4', description: "Random posting", contributor: 'President', publisher: 'Other Folks', subject: 'Space')
+                           title: 'Policy 4', description: 'Random posting', contributor: 'President', publisher: 'Other Folks', subject: 'Space')
           NewsItem.create!(rss_feed_url_id: white_house_blog_url.id, guid: '5', published_at: 3.days.ago, link: 'http://www.wh.gov/ns5',
-                           title: 'Policy 5', description: "Random posting", contributor: 'First Lady', publisher: 'Briefing Room', subject: 'Space')
+                           title: 'Policy 5', description: 'Random posting', contributor: 'First Lady', publisher: 'Briefing Room', subject: 'Space')
           NewsItem.create!(rss_feed_url_id: white_house_blog_url.id, guid: '6', published_at: 3.days.ago, link: 'http://www.wh.gov/ns6',
-                           title: 'Policy 6', description: "Random posting", contributor: 'First Lady', publisher: 'Other Folks', subject: 'Economy')
+                           title: 'Policy 6', description: 'Random posting', contributor: 'First Lady', publisher: 'Other Folks', subject: 'Economy')
           NewsItem.create!(rss_feed_url_id: white_house_blog_url.id, guid: '7', published_at: 3.days.ago, link: 'http://www.wh.gov/ns7',
-                           title: 'Policy 7', description: "Random posting")
-          ElasticNewsItem.commit
+                           title: 'Policy 7', description: 'Random posting')
+          described_class.commit
         end
 
-        it "should aggregate and restrict results based on those criteria" do
-          search = ElasticNewsItem.search_for(contributor: 'President', subject: 'Economy', publisher: 'Briefing Room', rss_feeds: [blog], language: 'en')
+        it 'should aggregate and restrict results based on those criteria' do
+          search = described_class.search_for(contributor: 'President', subject: 'Economy', publisher: 'Briefing Room', rss_feeds: [blog], language: 'en')
           expect(search.total).to eq(1)
           expect(search.results.first).to eq(@blog_item)
           expect(search.aggregations.size).to eq(3)
           contributor_aggregation = search.aggregations.detect { |aggregation| aggregation.name == 'contributor' }
-          expect(contributor_aggregation.rows.collect(&:value)).to match_array(["First Lady", "President"])
+          expect(contributor_aggregation.rows.collect(&:value)).to match_array(['First Lady', 'President'])
           publisher_aggregation = search.aggregations.detect { |aggregation| aggregation.name == 'publisher' }
-          expect(publisher_aggregation.rows.collect(&:value)).to match_array(["Other Folks", "Briefing Room"])
+          expect(publisher_aggregation.rows.collect(&:value)).to match_array(['Other Folks', 'Briefing Room'])
           subject_aggregation = search.aggregations.detect { |aggregation| aggregation.name == 'subject' }
           expect(subject_aggregation.rows.collect(&:value)).to match_array(%w(Economy Space))
         end
@@ -191,18 +191,18 @@ describe ElasticNewsItem do
         context 'when a field has multiple values (comma separated)' do
           before do
             NewsItem.create!(rss_feed_url_id: white_house_blog_url.id, guid: 'multiple', published_at: 3.days.ago, link: 'http://www.wh.gov/multiple',
-                             title: 'Policy Multiple', description: "Random posting with multiple values",
+                             title: 'Policy Multiple', description: 'Random posting with multiple values',
                              contributor: 'First Lady, Contributor', publisher: 'Other Folks, Publisher', subject: 'Space,Subject')
-            ElasticNewsItem.commit
+            described_class.commit
           end
 
-          it "should aggregate across multiple values based on those criteria" do
-            search = ElasticNewsItem.search_for(contributor: 'President', subject: 'Economy', publisher: 'Briefing Room', rss_feeds: [blog], language: 'en')
+          it 'should aggregate across multiple values based on those criteria' do
+            search = described_class.search_for(contributor: 'President', subject: 'Economy', publisher: 'Briefing Room', rss_feeds: [blog], language: 'en')
             expect(search.aggregations.size).to eq(3)
             contributor_aggregation = search.aggregations.detect { |aggregation| aggregation.name == 'contributor' }
-            expect(contributor_aggregation.rows.collect(&:value)).to match_array(["First Lady", "President", "Contributor"])
+            expect(contributor_aggregation.rows.collect(&:value)).to match_array(['First Lady', 'President', 'Contributor'])
             publisher_aggregation = search.aggregations.detect { |aggregation| aggregation.name == 'publisher' }
-            expect(publisher_aggregation.rows.collect(&:value)).to match_array(["Other Folks", "Briefing Room", "Publisher"])
+            expect(publisher_aggregation.rows.collect(&:value)).to match_array(['Other Folks', 'Briefing Room', 'Publisher'])
             subject_aggregation = search.aggregations.detect { |aggregation| aggregation.name == 'subject' }
             expect(subject_aggregation.rows.collect(&:value)).to match_array(%w(Economy Space Subject))
           end
@@ -212,8 +212,8 @@ describe ElasticNewsItem do
 
       context 'when searching only on titles' do
         it 'should not match on text in description or body fields' do
-          expect(ElasticNewsItem.search_for(q: 'petrol', rss_feeds: [blog, gallery], language: 'en', title_only: true).total).to be_zero
-          expect(ElasticNewsItem.search_for(q: 'random', rss_feeds: [blog, gallery], language: 'en', title_only: true).total).to be_zero
+          expect(described_class.search_for(q: 'petrol', rss_feeds: [blog, gallery], language: 'en', title_only: true).total).to be_zero
+          expect(described_class.search_for(q: 'random', rss_feeds: [blog, gallery], language: 'en', title_only: true).total).to be_zero
         end
       end
 
@@ -233,7 +233,7 @@ describe ElasticNewsItem do
             published_at: 3.days.ago,
             link: 'http://www.wh.gov/greenland',
             title: 'Angebote und Superknüller der Woche',
-            description: "desc",
+            description: 'desc',
             body: 'random text here',
             contributor: 'President',
             publisher: 'Briefing Room',
@@ -245,7 +245,7 @@ describe ElasticNewsItem do
           before do
             affiliate.update!(locale: 'kl')
             NewsItem.create!(news_item_params)
-            ElasticNewsItem.commit
+            described_class.commit
           end
 
           it 'does downcasing and ASCII folding only' do
@@ -259,7 +259,7 @@ describe ElasticNewsItem do
             white_house_blog_url.update!(language: 'kl')
             affiliate.update!(locale: 'kl')
             NewsItem.create!(news_item_params)
-            ElasticNewsItem.commit
+            described_class.commit
           end
 
           it 'does downcasing and ASCII folding only' do
@@ -270,31 +270,31 @@ describe ElasticNewsItem do
       end
     end
 
-    describe "sorting" do
-      it "should show newest first, by default" do
-        search = ElasticNewsItem.search_for(q: "policy", rss_feeds: [blog, gallery], language: 'en')
+    describe 'sorting' do
+      it 'should show newest first, by default' do
+        search = described_class.search_for(q: 'policy', rss_feeds: [blog, gallery], language: 'en')
         expect(search.total).to eq(2)
         expect(search.results.first).to eq(@gallery_item)
       end
 
-      context "when sort_by_relevance param is true" do
+      context 'when sort_by_relevance param is true' do
         it 'should sort results by relevance' do
-          search = ElasticNewsItem.search_for(q: "policy", rss_feeds: [blog, gallery], language: 'en', sort: '_score')
+          search = described_class.search_for(q: 'policy', rss_feeds: [blog, gallery], language: 'en', sort: '_score')
           expect(search.results.first).to eq(@blog_item)
         end
       end
 
-      context "when sort_by_relevance param is false" do
+      context 'when sort_by_relevance param is false' do
         it 'should sort results by date' do
-          search = ElasticNewsItem.search_for(q: "policy", rss_feeds: [blog, gallery], language: 'en', sort: 'published_at:desc')
+          search = described_class.search_for(q: 'policy', rss_feeds: [blog, gallery], language: 'en', sort: 'published_at:desc')
           expect(search.results.first).to eq(@gallery_item)
         end
       end
     end
 
     context 'synonyms and protected words' do
-      it "should use both" do
-        search = ElasticNewsItem.search_for(q: "gas", rss_feeds: [blog, gallery], language: 'en')
+      it 'should use both' do
+        search = described_class.search_for(q: 'gas', rss_feeds: [blog, gallery], language: 'en')
         expect(search.total).to eq(1)
         expect(search.results.first).to eq(@blog_item)
       end

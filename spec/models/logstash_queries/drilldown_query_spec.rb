@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe DrilldownQuery do
   let(:query) do
-    DrilldownQuery.new('affiliate_name',
+    described_class.new('affiliate_name',
                        Date.new(2019,11,01),
                        Date.new(2019,11,15),
                        'params.query.raw',
@@ -17,30 +17,30 @@ describe DrilldownQuery do
             {
               "range": {
                 "@timestamp": {
-                  "gte": "2019-11-01",
-                  "lte": "2019-11-15"
+                  "gte": '2019-11-01',
+                  "lte": '2019-11-15'
                 }
               }
             },
             {
               "term": {
-                "params.query.raw": "foo"
+                "params.query.raw": 'foo'
               }
             },
             {
               "term": {
-                "params.affiliate": "affiliate_name"
+                "params.affiliate": 'affiliate_name'
               }
             },
             {
               "terms": {
-                "type": ["click"]
+                "type": ['click']
               }
             }
           ],
           "must_not": {
             "term": {
-              "useragent.device": "Spider"
+              "useragent.device": 'Spider'
             }
           }
         }

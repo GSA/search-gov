@@ -33,7 +33,7 @@ VCR.configure do |config|
   config.default_cassette_options = {
     record: :new_episodes,
     match_requests_on: [:method, :uri_with_paperclip_normalization],
-    clean_outdated_http_interactions: true,
+    clean_outdated_http_interactions: true
   }
 
   config.ignore_hosts 'example.com', 'codeclimate.com', '127.0.0.1'
@@ -58,7 +58,7 @@ VCR.configure do |config|
 
   #Capybara: http://stackoverflow.com/a/6120205/1020168
   config.ignore_request do |request|
-    URI(request.uri).request_uri == "/__identify__"
+    URI(request.uri).request_uri == '/__identify__'
   end
 
   #For future debugging reference:

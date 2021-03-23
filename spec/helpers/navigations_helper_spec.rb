@@ -46,8 +46,8 @@ describe NavigationsHelper do
 
     let(:image_nav) do
       mock_model(Navigation,
-                 :navigable => image_search_label,
-                 :navigable_type => image_search_label.class.name)
+                 navigable: image_search_label,
+                 navigable_type: image_search_label.class.name)
     end
 
     let(:media_nav) do
@@ -95,42 +95,42 @@ describe NavigationsHelper do
   end
 
   describe '#render_navigations' do
-    let(:affiliate) { mock_model(Affiliate, :name => 'myaff', :default_search_label => 'Everything') }
+    let(:affiliate) { mock_model(Affiliate, name: 'myaff', default_search_label: 'Everything') }
 
-    let(:search_params) { { :query => 'gov', :affiliate => 'myaff' } }
+    let(:search_params) { { query: 'gov', affiliate: 'myaff' } }
 
-    let(:image_search_label) { mock_model(ImageSearchLabel, :name => 'Images') }
+    let(:image_search_label) { mock_model(ImageSearchLabel, name: 'Images') }
     let(:image_nav) do
       mock_model(Navigation,
-                 :navigable => image_search_label,
-                 :navigable_type => image_search_label.class.name)
+                 navigable: image_search_label,
+                 navigable_type: image_search_label.class.name)
     end
 
-    let(:rss_feed) { mock_model(RssFeed, :name => 'News') }
+    let(:rss_feed) { mock_model(RssFeed, name: 'News') }
     let(:rss_feed_nav) do
       mock_model(Navigation,
-                 :navigable => rss_feed,
-                 :navigable_type => rss_feed.class.name)
+                 navigable: rss_feed,
+                 navigable_type: rss_feed.class.name)
     end
 
-    let(:another_rss_feed) { mock_model(RssFeed, :name => 'Press Releases') }
+    let(:another_rss_feed) { mock_model(RssFeed, name: 'Press Releases') }
     let(:another_rss_feed_nav) do
       mock_model(Navigation,
-                 :navigable => another_rss_feed,
-                 :navigable_type => another_rss_feed.class.name)
+                 navigable: another_rss_feed,
+                 navigable_type: another_rss_feed.class.name)
     end
 
-    let(:document_collection) { mock_model(DocumentCollection, :name => 'Blog') }
+    let(:document_collection) { mock_model(DocumentCollection, name: 'Blog') }
 
     let(:document_collection_nav) do
       mock_model(Navigation,
-                 :navigable => document_collection,
-                 :navigable_type => document_collection.class.name)
+                 navigable: document_collection,
+                 navigable_type: document_collection.class.name)
     end
 
     let(:non_navigable_document_collection) { mock_model(DocumentCollection, name: 'News') }
 
-    let(:search_params) { { :query => 'gov', :affiliate => affiliate.name } }
+    let(:search_params) { { query: 'gov', affiliate: affiliate.name } }
 
     context 'when there is no active navigation' do
       before { allow(affiliate).to receive_message_chain(:navigations, :active).and_return([]) }

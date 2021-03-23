@@ -5,7 +5,7 @@ describe AffiliateTwitterSetting do
 
   describe '#dup' do
     subject(:original_instance) do
-      AffiliateTwitterSetting.create!(affiliate_id: affiliates(:usagov_affiliate).id,
+      described_class.create!(affiliate_id: affiliates(:usagov_affiliate).id,
                                       twitter_profile_id: twitter_profiles(:usagov).id)
     end
 

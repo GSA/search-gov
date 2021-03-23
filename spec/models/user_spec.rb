@@ -7,7 +7,7 @@ describe User do
     { email: 'unique_login@agency.gov',
       first_name: 'Some',
       last_name: 'One',
-      organization_name: 'Agency',
+      organization_name: 'Agency'
     }.freeze
   end
 
@@ -31,10 +31,10 @@ describe User do
     it { should have_db_column(:uid).of_type(:string) }
   end
 
-  describe "when validating" do
+  describe 'when validating' do
     before do
-      allow_any_instance_of(User).to receive(:inviter) { users(:affiliate_manager) }
-      allow_any_instance_of(User).to receive(:affiliates) { [affiliates(:basic_affiliate)] }
+      allow_any_instance_of(described_class).to receive(:inviter) { users(:affiliate_manager) }
+      allow_any_instance_of(described_class).to receive(:affiliates) { [affiliates(:basic_affiliate)] }
     end
 
     it { is_expected.to validate_presence_of :email }
@@ -55,34 +55,34 @@ describe User do
     end
 
     it 'should create a new instance given valid attributes' do
-      User.create!(valid_attributes)
+      described_class.create!(valid_attributes)
     end
 
     it 'should create a user with a minimal set of
         attributes if the user is an affiliate' do
-      affiliate_user = User.new(@valid_affiliate_attributes)
+      affiliate_user = described_class.new(@valid_affiliate_attributes)
       expect(affiliate_user.save).to be true
       expect(affiliate_user.is_affiliate?).to be true
     end
 
     it 'should send the admins a notification email about the new user' do
-      expect(Emailer).to receive(:new_user_to_admin).with(an_instance_of(User)).and_return @emailer
-      User.create!(valid_attributes)
+      expect(Emailer).to receive(:new_user_to_admin).with(an_instance_of(described_class)).and_return @emailer
+      described_class.create!(valid_attributes)
     end
 
     it 'should not receive welcome to new user added by affiliate' do
       expect(Emailer).to_not receive(:welcome_to_new_user_added_by_affiliate)
-      User.create!(valid_attributes)
+      described_class.create!(valid_attributes)
     end
 
     context 'when the flag to not send an email is set to true' do
       it 'should not send any emails' do
-        User.create!(valid_attributes.merge(:skip_welcome_email => true))
+        described_class.create!(valid_attributes.merge(skip_welcome_email: true))
       end
     end
 
     context 'when the user was invited' do
-      let(:user) { User.new(invited: true) }
+      let(:user) { described_class.new(invited: true) }
 
       it 'does not require an organization name' do
         user.valid?
@@ -102,7 +102,7 @@ describe User do
     let(:new_non_active_user) { users(:new_non_active_user) }
 
     describe '.approved_affiliate' do
-      subject(:approved_affiliate) { User.approved_affiliate }
+      subject(:approved_affiliate) { described_class.approved_affiliate }
 
       it { is_expected.to include(approved_affiliate_user) }
       it { is_expected.not_to include(not_approved_user) }
@@ -111,7 +111,7 @@ describe User do
     end
 
     describe '.not_approved' do
-      subject(:not_approved) { User.not_approved }
+      subject(:not_approved) { described_class.not_approved }
 
       let(:approved_user) { users(:affiliate_manager) }
       let(:not_approved_user) { users(:affiliate_manager_with_not_approved_status) }
@@ -123,7 +123,7 @@ describe User do
     end
 
     describe '.approved' do
-      subject(:approved) { User.approved }
+      subject(:approved) { described_class.approved }
 
       let(:approved_user) { users(:affiliate_manager) }
 
@@ -133,7 +133,7 @@ describe User do
     end
 
     describe '.not_active' do
-      subject(:not_active) { User.not_active }
+      subject(:not_active) { described_class.not_active }
 
       it { is_expected.to include(not_active_user) }
       it { is_expected.not_to include(active_user) }
@@ -142,7 +142,7 @@ describe User do
     end
 
     describe '.not_active_since' do
-      subject(:not_active_since) { User.not_active_since(76.days.ago.to_date) }
+      subject(:not_active_since) { described_class.not_active_since(76.days.ago.to_date) }
 
       let(:not_active_76_days_user) { users(:not_active_76_days) }
       let(:never_active_76_days_user) { users(:never_active_76_days) }
@@ -183,25 +183,25 @@ describe User do
   describe '#has_government_affiliated_email' do
     context 'when the affiliate user is government affiliated' do
       it 'should report a government affiliated email' do
-        expect(User.new(@valid_affiliate_attributes).has_government_affiliated_email?).to be_truthy
+        expect(described_class.new(@valid_affiliate_attributes).has_government_affiliated_email?).to be_truthy
       end
     end
 
     context 'when the affiliate user is not government affiliated' do
       it 'should not report a government affiliated email' do
-        expect(User.new(@valid_affiliate_attributes.merge(email: 'foo@bar.com')).has_government_affiliated_email?).to be_falsey
+        expect(described_class.new(@valid_affiliate_attributes.merge(email: 'foo@bar.com')).has_government_affiliated_email?).to be_falsey
       end
     end
   end
 
-  describe "on create" do
-    it "should assign approval status" do
-      user = User.create!(valid_attributes)
+  describe 'on create' do
+    it 'should assign approval status' do
+      user = described_class.create!(valid_attributes)
       expect(user.approval_status).not_to be_blank
     end
 
     it 'downcases the email address' do
-      user = User.create!(valid_attributes.merge(email: 'Aff@agency.GOV'))
+      user = described_class.create!(valid_attributes.merge(email: 'Aff@agency.GOV'))
       expect(user.email).to eq('aff@agency.gov')
     end
 
@@ -212,7 +212,7 @@ describe User do
 
       it 'sets the approval status to approved' do
         emails.each do |email|
-          user = User.create!(@valid_affiliate_attributes.merge(email: email))
+          user = described_class.create!(@valid_affiliate_attributes.merge(email: email))
           expect(user.is_approved?).to be true
         end
       end
@@ -226,7 +226,7 @@ describe User do
 
       it 'sets the approval status to pending_approval' do
         emails.each do |email|
-          user = User.create!(@valid_affiliate_attributes.merge(email: email))
+          user = described_class.create!(@valid_affiliate_attributes.merge(email: email))
           expect(user.is_pending_approval?).to be true
         end
       end
@@ -240,25 +240,25 @@ describe User do
 
       it 'sets requires_manual_approval' do
         emails.each do |email|
-          user = User.create!(@valid_affiliate_attributes.merge(email: email))
+          user = described_class.create!(@valid_affiliate_attributes.merge(email: email))
           expect(user.requires_manual_approval?).to be true
         end
       end
     end
 
 
-    it "should not set requires_manual_approval if the user is an affiliate and the email is government_affiliated" do
+    it 'should not set requires_manual_approval if the user is an affiliate and the email is government_affiliated' do
       %w( aff@agency.GOV aff@anotheragency.gov admin@agency.mil anotheradmin@agency.MIL ).each do |email|
-        user = User.create!(@valid_affiliate_attributes.merge(:email => email))
+        user = described_class.create!(@valid_affiliate_attributes.merge(email: email))
         expect(user.requires_manual_approval?).to be false
       end
     end
   end
 
-  context "when saving/updating" do
-    it { is_expected.to allow_value("pending_approval").for(:approval_status) }
-    it { is_expected.to allow_value("approved").for(:approval_status) }
-    it { is_expected.to allow_value("not_approved").for(:approval_status) }
+  context 'when saving/updating' do
+    it { is_expected.to allow_value('pending_approval').for(:approval_status) }
+    it { is_expected.to allow_value('approved').for(:approval_status) }
+    it { is_expected.to allow_value('not_approved').for(:approval_status) }
 
     # login.gov - commented out till SRCH-952. Updating email address will have a different flow.
     pending 'when updating an email address' do
@@ -285,49 +285,49 @@ describe User do
     end
   end
 
-  describe "#to_label" do
+  describe '#to_label' do
     it "should return the user's contact name" do
       u = users(:affiliate_admin)
       expect(u.to_label).to eq('Affiliate Administrator Smith <affiliate_admin@fixtures.org>')
     end
   end
 
-  describe "#is_developer?" do
-    it "should return true when is_affiliate? and is_affiliate_admin? are false" do
+  describe '#is_developer?' do
+    it 'should return true when is_affiliate? and is_affiliate_admin? are false' do
       expect(users(:affiliate_admin).is_developer?).to be false
       expect(users(:affiliate_manager).is_developer?).to be false
       expect(users(:developer).is_developer?).to be true
     end
   end
 
-  describe "#has_government_affiliated_email?" do
-    it "should return true if the e-mail address ends with .gov or .mil" do
+  describe '#has_government_affiliated_email?' do
+    it 'should return true if the e-mail address ends with .gov or .mil' do
       %w(aff@agency.GOV aff@anotheragency.gov admin@agency.mil anotheradmin@agency.MIL).each do |email|
-        user = User.new(@valid_affiliate_attributes.merge({ :email => email }))
+        user = described_class.new(@valid_affiliate_attributes.merge({ email: email }))
         expect(user.has_government_affiliated_email?).to be_truthy
       end
     end
 
     it 'should return true if the email address ends with .fed.us' do
-      user = User.new(@valid_affiliate_attributes.merge({ email: 'user@fs.fed.US' }))
+      user = described_class.new(@valid_affiliate_attributes.merge({ email: 'user@fs.fed.US' }))
       expect(user).to be_has_government_affiliated_email
     end
 
     it 'should return true if the email address ends with state.*.us' do
       %w(user@co.franklin.state.dc.US user@state.dc.US).each do |email|
-        user = User.new(@valid_affiliate_attributes.merge({ email: email }))
+        user = described_class.new(@valid_affiliate_attributes.merge({ email: email }))
         expect(user).to be_has_government_affiliated_email
       end
     end
 
-    it "should return false if the e-mail adresses do not match" do
+    it 'should return false if the e-mail adresses do not match' do
       %w(user@affiliate@corp.com user@FSRFED.us user@fs.fed.usa user@co.franklin.state.kids.us user@lincoln.k12.oh.us user@co.state.z.us).each do |email|
-        expect(User.new(@valid_affiliate_attributes.merge({ email: email }))).not_to be_has_government_affiliated_email
+        expect(described_class.new(@valid_affiliate_attributes.merge({ email: email }))).not_to be_has_government_affiliated_email
       end
     end
   end
 
-  describe "#send_new_affiliate_user_email" do
+  describe '#send_new_affiliate_user_email' do
     let(:inviter) { users(:affiliate_manager) }
     let(:affiliate) { affiliates(:basic_affiliate) }
 
@@ -342,35 +342,35 @@ describe User do
     end
   end
 
-  describe "on update from pending_approval to approved" do
+  describe 'on update from pending_approval to approved' do
     before do
       @user = users(:affiliate_manager_with_pending_approval_status)
     end
 
-    context "when welcome_email_sent is false" do
+    context 'when welcome_email_sent is false' do
       before do
         @user.set_approval_status_to_approved
       end
 
-      it "should deliver welcome email" do
-        expect(Emailer).to receive(:welcome_to_new_user).with(an_instance_of(User)).and_return @emailer
+      it 'should deliver welcome email' do
+        expect(Emailer).to receive(:welcome_to_new_user).with(an_instance_of(described_class)).and_return @emailer
         @user.save!
       end
 
-      it "should update welcome_email_sent to true" do
+      it 'should update welcome_email_sent to true' do
         @user.save!
         expect(@user.welcome_email_sent?).to be true
       end
     end
 
-    context "when welcome_email_sent is true" do
+    context 'when welcome_email_sent is true' do
       before do
         @user.set_approval_status_to_approved
         @user.welcome_email_sent = true
       end
 
-      it "should not deliver welcome email" do
-        expect(Emailer).to_not receive(:welcome_to_new_user).with(an_instance_of(User))
+      it 'should not deliver welcome email' do
+        expect(Emailer).to_not receive(:welcome_to_new_user).with(an_instance_of(described_class))
         @user.save!
       end
     end
@@ -383,7 +383,7 @@ describe User do
     context 'when first_name, last_name and email are provided' do
 
       it 'initializes new user with assign affiliate, first_name, last_name, and email' do
-        new_user = User.
+        new_user = described_class.
           new_invited_by_affiliate(inviter,
                                    affiliate,
                                    { first_name: 'New User Name',
@@ -403,7 +403,7 @@ describe User do
 
       it 'receives the welcome new user' do
         expect(Emailer).to receive(:welcome_to_new_user_added_by_affiliate).and_return @emailer
-        new_user = User.
+        new_user = described_class.
           new_invited_by_affiliate(inviter,
                                    affiliate,
                                    { first_name: 'New User Name',
@@ -414,18 +414,18 @@ describe User do
     end
   end
 
-  describe "#affiliate_names" do
+  describe '#affiliate_names' do
     before do
       @user = users(:affiliate_manager_with_no_affiliates)
     end
 
-    it "returns all associated affiliate display names" do
+    it 'returns all associated affiliate display names' do
       affiliates(:power_affiliate).users << @user
       affiliates(:basic_affiliate).users << @user
       expect(@user.affiliate_names.split(',').sort).to eq(%w{ noaa.gov nps.gov })
     end
 
-    it "returns blank if there is no associated affiliate" do
+    it 'returns blank if there is no associated affiliate' do
       expect(@user.affiliate_names).to eq('')
     end
   end
@@ -471,9 +471,9 @@ describe User do
   describe '.from_omniauth' do
     let(:auth) { mock_user_auth('foo@gsa.gov', '55555') }
 
-    subject(:from_omniauth) { User.from_omniauth(auth) }
+    subject(:from_omniauth) { described_class.from_omniauth(auth) }
 
-    it { is_expected.to be_a_kind_of(User) }
+    it { is_expected.to be_a_kind_of(described_class) }
 
     context 'when the user is new' do
       it 'sets the uid' do

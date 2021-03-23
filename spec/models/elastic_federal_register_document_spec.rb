@@ -8,12 +8,12 @@ describe ElasticFederalRegisterDocument do
   describe '.search_for' do
     before do
       FederalRegisterDocument.all.each(&:save!)
-      ElasticFederalRegisterDocument.commit
+      described_class.commit
     end
 
     context 'when there are results that are significant, rules, published recently, or comments still open' do
       it 'returns results in an easy to access structure' do
-        search = ElasticFederalRegisterDocument.search_for(federal_register_agency_ids: [fr_noaa.id],
+        search = described_class.search_for(federal_register_agency_ids: [fr_noaa.id],
                                                            language: 'en',
                                                            q: 'fish')
 
@@ -22,7 +22,7 @@ describe ElasticFederalRegisterDocument do
       end
 
       it 'sorts results by comments_close_on in the descending order' do
-        search = ElasticFederalRegisterDocument.search_for(federal_register_agency_ids: [fr_noaa.id],
+        search = described_class.search_for(federal_register_agency_ids: [fr_noaa.id],
                                                            language: 'en',
                                                            q: 'foreign fishing')
 
@@ -33,7 +33,7 @@ describe ElasticFederalRegisterDocument do
       end
 
       it 'groups results by docket ID ordered by published_date' do
-        search = ElasticFederalRegisterDocument.search_for(federal_register_agency_ids: [fr_noaa.id],
+        search = described_class.search_for(federal_register_agency_ids: [fr_noaa.id],
                                                            language: 'en',
                                                            q: 'hedge funds')
         expect(search.total).to eq 3
@@ -44,7 +44,7 @@ describe ElasticFederalRegisterDocument do
 
       context 'when there is a matching term in the abstract' do
         it 'shows the documents' do
-          search = ElasticFederalRegisterDocument.search_for(federal_register_agency_ids: [fr_noaa.id],
+          search = described_class.search_for(federal_register_agency_ids: [fr_noaa.id],
                                                              language: 'en',
                                                              q: 'protect')
 
@@ -55,7 +55,7 @@ describe ElasticFederalRegisterDocument do
 
       context 'when the query contains document number' do
         it 'shows the documents' do
-          search = ElasticFederalRegisterDocument.search_for(federal_register_agency_ids: [fr_noaa.id],
+          search = described_class.search_for(federal_register_agency_ids: [fr_noaa.id],
                                                              language: 'en',
                                                              q: '2014-15238 marine')
 
@@ -67,11 +67,11 @@ describe ElasticFederalRegisterDocument do
       context 'when those results get deleted' do
         before do
           FederalRegisterDocument.destroy_all
-          ElasticFederalRegisterDocument.commit
+          described_class.commit
         end
 
         it 'returns zero results' do
-          search = ElasticFederalRegisterDocument.search_for(federal_register_agency_ids: [fr_noaa.id],
+          search = described_class.search_for(federal_register_agency_ids: [fr_noaa.id],
                                                              language: 'en',
                                                              q: 'fish')
 

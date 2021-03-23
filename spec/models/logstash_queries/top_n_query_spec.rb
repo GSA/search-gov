@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe TopNQuery, "#body" do
+describe TopNQuery, '#body' do
   let(:query) do
-    TopNQuery.new(
+    described_class.new(
       'affiliate_name',
       'search',
       { field: 'params.query.raw',
@@ -16,18 +16,18 @@ describe TopNQuery, "#body" do
           "filter": [
             {
               "term": {
-                "params.affiliate": "affiliate_name"
+                "params.affiliate": 'affiliate_name'
               }
             },
             {
               "terms": {
-                "type": ["search"]
+                "type": ['search']
               }
             }
           ],
           "must_not": {
             "term": {
-              "useragent.device": "Spider"
+              "useragent.device": 'Spider'
             }
           }
         }
@@ -35,7 +35,7 @@ describe TopNQuery, "#body" do
       "aggs": {
         "agg": {
           "terms": {
-            "field": "params.query.raw",
+            "field": 'params.query.raw',
             "size": 1000
           }
         }

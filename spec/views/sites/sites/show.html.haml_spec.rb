@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "sites/sites/show.html.haml" do
+describe 'sites/sites/show.html.haml' do
   fixtures :affiliates, :users
   let(:site) { affiliates(:basic_affiliate) }
 
@@ -12,13 +12,13 @@ describe "sites/sites/show.html.haml" do
     allow(view).to receive(:current_user).and_return @affiliate_user
   end
 
-  context "when affiliate user views the dashboard" do
+  context 'when affiliate user views the dashboard' do
     context 'regardless of the data available' do
       before do
         assign :dashboard, double('RtuDashboard').as_null_object
       end
 
-      it "should show header" do
+      it 'should show header' do
         render
         expect(rendered).to have_content %{Today's Snapshot}
       end
@@ -28,7 +28,7 @@ describe "sites/sites/show.html.haml" do
           allow(HelpLink).to receive(:find_by_request_path).and_return stub_model(HelpLink, request_path: '/sites', help_page_url: 'http://www.help.gov/')
         end
 
-        it "should show help link" do
+        it 'should show help link' do
           render
           expect(rendered).to have_selector("a.help-link.menu[href='http://www.help.gov/']", text: 'Help Manual')
         end
@@ -44,9 +44,9 @@ describe "sites/sites/show.html.haml" do
 
       it 'should show them truncated in an ordered list without URL protocol' do
         render
-        expect(rendered).to have_selector("h3", text: "Trending URLs")
-        expect(rendered).to have_selector("ol#trending_urls li", count: 2) do |lis|
-          expect(lis[0]).to have_selector("a", text: 'www.gov.gov/url1.html', href: trending_urls[0])
+        expect(rendered).to have_selector('h3', text: 'Trending URLs')
+        expect(rendered).to have_selector('ol#trending_urls li', count: 2) do |lis|
+          expect(lis[0]).to have_selector('a', text: 'www.gov.gov/url1.html', href: trending_urls[0])
           expect(lis[1]).to have_selector("a[href=\"#{trending_urls[1]}\"]", text: 'www.gov.gov/this/url/is/really/.../long/for/some/reason/url2.html')
         end
       end
@@ -61,8 +61,8 @@ describe "sites/sites/show.html.haml" do
 
       it 'should show them in an ordered list' do
         render
-        expect(rendered).to have_selector("h3", text: "Queries with No Results")
-        expect(rendered).to have_selector("ol#no_results") do |ol|
+        expect(rendered).to have_selector('h3', text: 'Queries with No Results')
+        expect(rendered).to have_selector('ol#no_results') do |ol|
           expect(ol).to have_content %{nr1 [100]}
           expect(ol).to have_content %{nr2 [50]}
         end
@@ -91,8 +91,8 @@ describe "sites/sites/show.html.haml" do
 
       it 'should show them in an ordered list' do
         render
-        expect(rendered).to have_selector("h3", text: "Top Clicked URLs")
-        expect(rendered).to have_selector("ol#top_urls li", count: 2) do |lis|
+        expect(rendered).to have_selector('h3', text: 'Top Clicked URLs')
+        expect(rendered).to have_selector('ol#top_urls li', count: 2) do |lis|
           expect(lis[0].inner_text).to eq('www.gov.gov/clicked_url4.html [20]')
           expect(lis[1].inner_text).to eq('www.gov.gov/this/url/is/really/.../some/reason/clicked_url5.html [10]')
           expect(lis[0]).to have_selector("a[href='http://www.gov.gov/clicked_url4.html']", text: 'www.gov.gov/clicked_url4.html')
@@ -109,7 +109,7 @@ describe "sites/sites/show.html.haml" do
 
       it 'should say something about insufficient content' do
         render
-        expect(rendered).to have_selector("h3", text: "Top Clicked URLs")
+        expect(rendered).to have_selector('h3', text: 'Top Clicked URLs')
         expect(rendered).to have_content /Not enough click data available/
       end
     end
@@ -127,8 +127,8 @@ describe "sites/sites/show.html.haml" do
 
         it 'should show them in an ordered list' do
           render
-          expect(rendered).to have_selector("h3", text: "Top Queries")
-          expect(rendered).to have_selector("ol#top_queries") do |ol|
+          expect(rendered).to have_selector('h3', text: 'Top Queries')
+          expect(rendered).to have_selector('ol#top_queries') do |ol|
             expect(ol).to have_content %{jobs [53]}
             expect(ol).to have_content %{economy [43]}
             expect(ol).to have_content %{ebola [42]}
@@ -143,8 +143,8 @@ describe "sites/sites/show.html.haml" do
 
         it 'should show them in an ordered list' do
           render
-          expect(rendered).to have_selector("h3", text: "Top Queries")
-          expect(rendered).to have_selector("ol#top_queries") do |ol|
+          expect(rendered).to have_selector('h3', text: 'Top Queries')
+          expect(rendered).to have_selector('ol#top_queries') do |ol|
             expect(ol).to have_content %{jobs [54]}
             expect(ol).to have_content %{economy [55]}
             expect(ol).to have_content %{ebola [53]}
@@ -165,8 +165,8 @@ describe "sites/sites/show.html.haml" do
 
       it 'should show them in an ordered list' do
         render
-        expect(rendered).to have_selector("h3", text: "Top Queries with Low Click Thrus")
-        expect(rendered).to have_selector("ol#low_ctr_queries") do |ol|
+        expect(rendered).to have_selector('h3', text: 'Top Queries with Low Click Thrus')
+        expect(rendered).to have_selector('ol#low_ctr_queries') do |ol|
           expect(ol).to have_content %{seldom [5.1%]}
           expect(ol).to have_content %{rare [2%]}
           expect(ol).to have_content %{never [0%]}
@@ -196,8 +196,8 @@ describe "sites/sites/show.html.haml" do
 
       it 'should show them in an ordered list' do
         render
-        expect(rendered).to have_selector("h3", text: "Trending Queries")
-        expect(rendered).to have_selector("ol#trending_queries") do |ol|
+        expect(rendered).to have_selector('h3', text: 'Trending Queries')
+        expect(rendered).to have_selector('ol#trending_queries') do |ol|
           expect(ol).to have_content /jobs/
           expect(ol).to have_content /economy/
           expect(ol).to have_content /obama/
@@ -214,7 +214,7 @@ describe "sites/sites/show.html.haml" do
 
         it 'should show the Google chart' do
           render
-          expect(rendered).to have_selector("#chart")
+          expect(rendered).to have_selector('#chart')
         end
       end
     end
@@ -224,15 +224,15 @@ describe "sites/sites/show.html.haml" do
       let(:formatted_today) { Date.current.to_formatted_s(:long).squish }
 
       before do
-        assign :dashboard, double('RtuDashboard', monthly_queries_to_date: 12345, monthly_clicks_to_date: 5678).as_null_object
+        assign :dashboard, double('RtuDashboard', monthly_queries_to_date: 12_345, monthly_clicks_to_date: 5678).as_null_object
       end
 
       it 'should show the totals in a month-to-date div' do
         render
-        expect(rendered).to have_selector("h3", text: "This Month's Totals to Date")
-        expect(rendered).to have_selector("p", text: "Dates: #{formatted_beginning_of_month} - #{formatted_today}")
-        expect(rendered).to have_selector("p", text: "Total Queries: 12,345")
-        expect(rendered).to have_selector("p", text: "Total Clicks: 5,678")
+        expect(rendered).to have_selector('h3', text: "This Month's Totals to Date")
+        expect(rendered).to have_selector('p', text: "Dates: #{formatted_beginning_of_month} - #{formatted_today}")
+        expect(rendered).to have_selector('p', text: 'Total Queries: 12,345')
+        expect(rendered).to have_selector('p', text: 'Total Clicks: 5,678')
       end
     end
   end

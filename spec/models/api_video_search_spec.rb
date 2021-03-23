@@ -10,7 +10,7 @@ describe ApiVideoSearch do
       before { expect(affiliate).to receive(:youtube_profile_ids).and_return([]) }
 
       it 'returns nil' do
-        search = ApiVideoSearch.new(affiliate: affiliate, query: 'my video')
+        search = described_class.new(affiliate: affiliate, query: 'my video')
         expect(search.search).to be_nil
       end
     end
@@ -47,14 +47,14 @@ describe ApiVideoSearch do
                size: 8,
                sort_by_relevance: true)
 
-        ApiVideoSearch.new(search_options).run
+        described_class.new(search_options).run
       end
 
       it 'handles response' do
         results = [double('result 1')]
         response = double('response', results: results, total: 100)
         expect(ElasticNewsItem).to receive(:search_for).and_return(response)
-        search = ApiVideoSearch.new(
+        search = described_class.new(
           search_options.merge(next_offset_within_limit: true))
         search.run
 
@@ -77,7 +77,7 @@ describe ApiVideoSearch do
                  size: 8,
                  sort_by_relevance: false)
 
-          ApiVideoSearch.new(search_options.merge(sort_by: 'date')).run
+          described_class.new(search_options.merge(sort_by: 'date')).run
         end
       end
     end
@@ -89,7 +89,7 @@ describe ApiVideoSearch do
     let(:current_time) { DateTime.parse 'Wed, 17 Dec 2014 18:33:43 +0000' }
 
     let(:search) do
-      ApiVideoSearch.new(affiliate: affiliate,
+      described_class.new(affiliate: affiliate,
                          limit: 2,
                          next_offset_within_limit: true,
                          offset: 23,

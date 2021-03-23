@@ -5,11 +5,6 @@ Feature: User sessions
     Given I am logged in with email "affiliate_admin@fixtures.org"
     And I go to the login page
     Then I should see "Contact Information"
-    When I sign out
-    # SRCH-1552
-    # Commented out until we figure out how to handle login.gov sign
-    # out properly
-    # Then I should be on the login page
 
   # to be updated in SRCH-947 for login.gov
   @wip
@@ -49,3 +44,21 @@ Feature: User sessions
     And the time becomes 2017-03-30 12:00
     And I follow "Add Site"
     Then I should be on the login page
+
+  @javascript
+  Scenario: Already logged-in super admin logs out
+    Given I am logged in with email "affiliate_admin@fixtures.org"
+    When I go to the admin home page
+    Then I should not see "Security Notification"
+    When I follow "Sign Out"
+    And I go to the admin home page
+    Then I should see "Security Notification"
+
+  @javascript
+  Scenario: Already logged-in user logs out
+    Given I am logged in with email "affiliate_manager@fixtures.org"
+    When I go to the usagov's Dashboard page
+    Then I should not see "Security Notification"
+    When I sign out
+    And I go to the usagov's Dashboard page
+    Then I should see "Security Notification"

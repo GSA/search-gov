@@ -5,10 +5,10 @@ describe AgencyQuery do
 
   before do
     @valid_attributes = {
-      :phrase => 'irs',
-      :agency => agencies(:irs)
+      phrase: 'irs',
+      agency: agencies(:irs)
     }
-    AgencyQuery.create!(@valid_attributes)
+    described_class.create!(@valid_attributes)
   end
 
   it { is_expected.to validate_presence_of :phrase }

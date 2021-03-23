@@ -5,7 +5,7 @@ describe SearchgovDomainPreparerJob do
   let(:args) do
     { searchgov_domain: searchgov_domain }
   end
-  subject(:perform) { SearchgovDomainPreparerJob.perform_now(args) }
+  subject(:perform) { described_class.perform_now(args) }
 
   before do
     allow(searchgov_domain).to receive(:check_status).and_return('200 OK')

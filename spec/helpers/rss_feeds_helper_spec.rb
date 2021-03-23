@@ -6,7 +6,7 @@ describe RssFeedsHelper do
   let(:rss_feed) { rss_feeds(:usagov_blog) }
   let(:site) { rss_feed.owner }
 
-  describe "#link_to_preview_rss_feed" do
+  describe '#link_to_preview_rss_feed' do
     let(:preview_link) do
       "a[href=\"http://test.host/search/news?affiliate=usagov&channel=#{rss_feed.id}\"][target=\"_blank\"]"
     end

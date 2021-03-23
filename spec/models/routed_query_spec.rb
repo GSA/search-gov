@@ -32,6 +32,7 @@ describe RoutedQuery do
     it { is_expected.to validate_presence_of :affiliate }
     it { is_expected.to allow_value('http://www.foo.com').for(:url) }
     it { is_expected.not_to allow_value('www.foo.com').for(:url) }
+    it { is_expected.not_to allow_value('data:text/;&Tab.base64').for(:url) }
 
     it 'creates a new instance given valid attributes' do
       affiliate.routed_queries.create!(valid_attributes)

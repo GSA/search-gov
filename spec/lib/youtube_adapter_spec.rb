@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe YoutubeAdapter do
-  let(:client) { YoutubeAdapter.client }
+  let(:client) { described_class.client }
 
   describe '.get_channel_id_by_username' do
     let(:result) { nil }
@@ -127,7 +127,7 @@ describe YoutubeAdapter do
         channel_id:  'nasa_channel_id',
         max_results: 50,
         page_token:  '',
-        options:     Google::Apis::RequestOptions.new,
+        options:     Google::Apis::RequestOptions.new
       ) do |&block|
         block.call(result)
       end
@@ -168,7 +168,7 @@ describe YoutubeAdapter do
         max_results: 50,
         page_token: '',
         playlist_id: 'nasa_playlist_id',
-        options: request_options,
+        options: request_options
       ) do |&block|
         block.call(result, error)
       end

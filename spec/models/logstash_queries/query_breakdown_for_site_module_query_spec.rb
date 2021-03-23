@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe QueryBreakdownForSiteModuleQuery do
-  let(:query) { QueryBreakdownForSiteModuleQuery.new('BOOS', 'affiliate_name') }
+  let(:query) { described_class.new('BOOS', 'affiliate_name') }
   let(:expected_body) do
     {
       "query": {
@@ -9,23 +9,23 @@ describe QueryBreakdownForSiteModuleQuery do
           "filter": [
             {
               "terms": {
-                "type": ["search","click"]
+                "type": ['search','click']
               }
             },
             {
               "term": {
-                "modules": "BOOS"
+                "modules": 'BOOS'
               }
             },
             {
               "term": {
-                "params.affiliate": "affiliate_name"
+                "params.affiliate": 'affiliate_name'
               }
             }
           ],
           "must_not": {
             "term": {
-              "useragent.device": "Spider"
+              "useragent.device": 'Spider'
             }
           }
         }
@@ -33,13 +33,13 @@ describe QueryBreakdownForSiteModuleQuery do
       "aggs": {
         "agg": {
           "terms": {
-            "field": "params.query.raw",
+            "field": 'params.query.raw',
             "size": 1000
           },
           "aggs": {
             "type": {
               "terms": {
-                "field": "type"
+                "field": 'type'
               }
             }
           }

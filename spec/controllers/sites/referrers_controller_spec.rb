@@ -32,11 +32,11 @@ describe Sites::ReferrersController do
       it_should_behave_like 'an analytics controller'
 
       before do
-        params = { "start_date"=>"05/01/2014", "end_date"=>"05/26/2014", "site"=> site, "filter_bots"=> current_user.sees_filtered_totals?}
+        params = { 'start_date'=>'05/01/2014', 'end_date'=>'05/26/2014', 'site'=> site, 'filter_bots'=> current_user.sees_filtered_totals?}
         expect(RtuReferrersRequest).to receive(:new).with(params).and_return rtu_referrers_request
         expect(rtu_referrers_request).to receive(:save)
-        expect(rtu_referrers_request).to receive(:start_date).and_return "05/01/2014".to_date
-        expect(rtu_referrers_request).to receive(:end_date).and_return "05/26/2014".to_date
+        expect(rtu_referrers_request).to receive(:start_date).and_return '05/01/2014'.to_date
+        expect(rtu_referrers_request).to receive(:end_date).and_return '05/26/2014'.to_date
         post :create,
              params: {
                site_id: site.id,

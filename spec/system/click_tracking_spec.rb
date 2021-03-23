@@ -5,7 +5,7 @@ require 'spec_helper'
 describe 'A user searches', js: true, vcr: { preserve_exact_body_bytes: true } do
   include_context 'when the click request is browser-based'
 
-  context "a searchgov site" do
+  context 'a searchgov site' do
     let!(:affiliate) { affiliates(:searchgov_affiliate) }
 
     context 'for a best bet' do

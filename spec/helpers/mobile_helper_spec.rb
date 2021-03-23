@@ -33,7 +33,7 @@ describe MobileHelper do
         expect(header_tagline_logo).to receive(:url).and_raise
         affiliate = mock_model(Affiliate,
                                display_name: 'USASearch',
-                               header_tagline: "NISH",
+                               header_tagline: 'NISH',
                                header_tagline_logo: header_tagline_logo,
                                header_tagline_logo_file_name: 'header_tagline_logo.png',
                                header_tagline_url: nil)
@@ -72,7 +72,7 @@ describe MobileHelper do
     end
   end
 
-  describe "#related_sites_dropdown_label" do
+  describe '#related_sites_dropdown_label' do
     context 'when label is present' do
       specify { expect(helper.related_sites_dropdown_label('foo')).to eq('foo') }
     end
@@ -82,7 +82,7 @@ describe MobileHelper do
     end
   end
 
-  describe "#html_class_hash" do
+  describe '#html_class_hash' do
     fixtures :languages
 
     context 'when locale is written right-to-left' do

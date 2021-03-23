@@ -81,8 +81,8 @@ describe ImageSearchesController do
     end
 
     context 'when searching on legacy affiliate and the query is blank' do
-      let(:affiliate) { mock_model(Affiliate, :locale => 'en', force_mobile_format?: false) }
-      let(:image_search) { double(LegacyImageSearch, :query => nil, :modules => [], :diagnostics => {}) }
+      let(:affiliate) { mock_model(Affiliate, locale: 'en', force_mobile_format?: false) }
+      let(:image_search) { double(LegacyImageSearch, query: nil, modules: [], diagnostics: {}) }
 
       before do
         expect(Affiliate).to receive(:find_by_name).with('agency100').and_return(affiliate)
