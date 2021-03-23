@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class YoutubeData
-  MAXIMUM_PROFILE_UPDATES_PER_DAY = 300
+  MAXIMUM_PROFILE_IMPORTS_PER_DAY = 300
 
   attr_reader :all_news_item_ids,
               :profile,
@@ -9,7 +9,7 @@ class YoutubeData
 
   def self.refresh
     loop do
-      profile = next_profile_to_update
+      profile = next_profile_to_import
       if profile
         YoutubeData.new(profile).import
         Rails.logger.info "Imported YouTube channel #{profile.channel_id}"
@@ -20,7 +20,7 @@ class YoutubeData
     end
   end
 
-  def self.next_profile_to_update
+  def self.next_profile_to_import
     return nil if already_imported_enough_profiles_today?
 
     profile = YoutubeProfile.active.stale.first
@@ -28,12 +28,12 @@ class YoutubeData
     profile
   end
 
-  def self.number_of_profiles_updated_today
-    YoutubeProfile.updated_today.count
+  def self.number_of_profiles_imported_today
+    YoutubeProfile.imported_today.count
   end
 
   def self.already_imported_enough_profiles_today?
-    number_of_profiles_updated_today >= MAXIMUM_PROFILE_UPDATES_PER_DAY
+    number_of_profiles_imported_today >= MAXIMUM_PROFILE_IMPORTS_PER_DAY
   end
 
   def initialize(youtube_profile)

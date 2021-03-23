@@ -28,10 +28,10 @@ describe YoutubeData do
         with(profile)
     end
 
-    context 'when we have already updated the maximum number of profiles for today' do
+    context 'when we have already imported the maximum number of profiles for today' do
       before do
-        allow(described_class).to receive(:number_of_profiles_updated_today).
-          and_return(described_class::MAXIMUM_PROFILE_UPDATES_PER_DAY)
+        allow(described_class).to receive(:number_of_profiles_imported_today).
+          and_return(300)
       end
 
       it 'does not import any profiles' do
@@ -41,20 +41,20 @@ describe YoutubeData do
     end
   end
 
-  describe '.number_of_profiles_updated_today' do
-    before { YoutubeProfile.update_all(updated_at: 1.year.ago) }
+  describe '.number_of_profiles_imported_today' do
+    before { YoutubeProfile.update_all(imported_at: 1.year.ago) }
 
-    context 'when no profiles have been updated today' do
+    context 'when no profiles have been imported today' do
       it 'returns 0' do
-        expect(described_class.number_of_profiles_updated_today).to eq(0)
+        expect(described_class.number_of_profiles_imported_today).to eq(0)
       end
     end
 
-    context 'when a profile has been updated today' do
-      before { YoutubeProfile.first.update!(updated_at: Time.now) }
+    context 'when a profile has been imported today' do
+      before { YoutubeProfile.first.update!(imported_at: Time.now) }
 
       it 'returns 1' do
-        expect(described_class.number_of_profiles_updated_today).to eq(1)
+        expect(described_class.number_of_profiles_imported_today).to eq(1)
       end
     end
   end
@@ -62,7 +62,7 @@ describe YoutubeData do
   describe '.already_imported_enough_profiles_today?' do
     context 'when we have not hit our limit' do
       before do
-        allow(described_class).to receive(:number_of_profiles_updated_today).
+        allow(described_class).to receive(:number_of_profiles_imported_today).
           and_return(0)
       end
 
@@ -73,8 +73,8 @@ describe YoutubeData do
 
     context 'when we have hit our limit' do
       before do
-        allow(described_class).to receive(:number_of_profiles_updated_today).
-          and_return(described_class::MAXIMUM_PROFILE_UPDATES_PER_DAY)
+        allow(described_class).to receive(:number_of_profiles_imported_today).
+          and_return(300)
       end
 
       it 'is true' do
@@ -111,7 +111,6 @@ describe YoutubeData do
       end
 
       it 'logs a warning' do
-
         expect(YoutubeAdapter).to have_received(:get_playlist_ids)
         expect(Rails.logger).to have_received(:warn).with(/YouTube API/)
       end

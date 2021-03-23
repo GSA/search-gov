@@ -17,7 +17,7 @@ class YoutubeProfile < ApplicationRecord
 
   scope :active, -> { joins(:affiliates).distinct }
   scope :stale, -> { where('imported_at IS NULL or imported_at <= ?', Time.current - 1.hour).order(:imported_at) }
-  scope :updated_today, -> { where('updated_at > ?', Time.now.utc.to_date) }
+  scope :imported_today, -> { where('imported_at > ?', Time.now.utc.to_date) }
 
   def url
     channel_id? ? "https://www.youtube.com/channel/#{channel_id}" : @url
