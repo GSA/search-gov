@@ -8,8 +8,6 @@ class UserSessionsController < ApplicationController
 
     landing_page = LandingPageFinder.new(current_user, params[:return_to]).landing_page
     redirect_to(landing_page)
-  rescue LandingPageFinder::Error => e
-    flash[:error] = e.message
   end
 
   def destroy
