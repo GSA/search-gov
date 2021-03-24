@@ -53,7 +53,7 @@ class SaytSuggestion < ApplicationRecord
         ignored = 0
         txtfile.tempfile.readlines.each do |phrase|
           entry = phrase.chomp.strip
-          unless entry.blank?
+          if entry.present?
             create(phrase: entry, affiliate: affiliate, is_protected: true, popularity: MAX_POPULARITY).id.nil? ? (ignored += 1) : (created += 1)
           end
         end
