@@ -7,7 +7,9 @@ class OmniauthCallbacksController < ApplicationController
   def login_dot_gov
     try_to_login
   rescue OmniauthError => e
-    flash[:error] = e.message
+    Rails.logger.error e.message
+    flash[:error] = 'Error logging in. Please reach out to' \
+                    ' search@support.digitalgov.gov if the problem persists'
     redirect_to('/login')
   end
 

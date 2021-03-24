@@ -14,7 +14,7 @@ describe LandingPageFinder do
       it 'raises an error' do
         expect { finder.landing_page }.
           to raise_error(LandingPageFinder::Error,
-                         LandingPageFinder::ACCESS_DENIED_TEXT)
+                         /Access Denied: These credentials are not recognized as valid/)
       end
     end
 

@@ -10,10 +10,7 @@ class LoginDotGovSettings
   # use of that whatsoever, so here's a constant value that we always
   # use when making such API calls.
   UNUSED_STATE_DATA = '1234567890123456789012'
-
-  def self.base_uri
-    URI(Rails.application.secrets.login_dot_gov[:idp_base_url])
-  end
+  HOST= URI(Rails.application.secrets.login_dot_gov[:idp_base_url]).host
 
   def self.logout_redirect_uri(id_token, login_uri)
     query = {
@@ -23,7 +20,7 @@ class LoginDotGovSettings
     }
 
     URI::HTTPS.build(
-      host: base_uri.host,
+      host: HOST,
       path: '/openid_connect/logout',
       query: query.to_query
     ).to_s
