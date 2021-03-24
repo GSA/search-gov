@@ -7,11 +7,11 @@ class SaytSuggestion < ApplicationRecord
 
   before_validation :squish_whitespace_and_downcase
   before_save :set_whitelisted_status
-  validates :affiliate, :presence => true
+  validates :affiliate, presence: true
   validates_presence_of :phrase
-  validates_uniqueness_of :phrase, :scope => :affiliate_id, :case_sensitive => false
-  validates_length_of :phrase, :within => (3..80)
-  validates_format_of :phrase, :with => /\A[a-z0-9#{LETTERS_WITH_DIACRITIC}]+([\s_\.'\-]+[a-z0-9#{LETTERS_WITH_DIACRITIC}]+)*\z/iu
+  validates_uniqueness_of :phrase, scope: :affiliate_id, case_sensitive: false
+  validates_length_of :phrase, within: (3..80)
+  validates_format_of :phrase, with: /\A[a-z0-9#{LETTERS_WITH_DIACRITIC}]+([\s_\.'\-]+[a-z0-9#{LETTERS_WITH_DIACRITIC}]+)*\z/iu
   belongs_to :affiliate
 
   MAX_POPULARITY = 2**30
@@ -37,7 +37,7 @@ class SaytSuggestion < ApplicationRecord
     end
 
     def populate_for(day, limit)
-      name_id_list = Affiliate.select([:id, :name]).collect { |aff| { :name => aff.name, :id => aff.id } }
+      name_id_list = Affiliate.select([:id, :name]).collect { |aff| { name: aff.name, id: aff.id } }
       name_id_list.each { |element| populate_for_affiliate_on(element[:name], element[:id], day, limit) }
     end
 
@@ -52,10 +52,10 @@ class SaytSuggestion < ApplicationRecord
         txtfile.tempfile.readlines.each do |phrase|
           entry = phrase.chomp.strip
           unless entry.blank?
-            create(:phrase => entry, :affiliate => affiliate, :is_protected => true, :popularity => MAX_POPULARITY).id.nil? ? (ignored += 1) : (created += 1)
+            create(phrase: entry, affiliate: affiliate, is_protected: true, popularity: MAX_POPULARITY).id.nil? ? (ignored += 1) : (created += 1)
           end
         end
-        { :created => created, :ignored => ignored }
+        { created: created, ignored: ignored }
       end
     end
 
