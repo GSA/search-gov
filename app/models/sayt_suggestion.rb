@@ -8,10 +8,10 @@ class SaytSuggestion < ApplicationRecord
   before_validation :squish_whitespace_and_downcase
   before_save :set_whitelisted_status
   validates :affiliate, presence: true
-  validates_presence_of :phrase
-  validates_uniqueness_of :phrase, scope: :affiliate_id, case_sensitive: false
-  validates_length_of :phrase, within: (3..80)
-  validates_format_of :phrase, with: /\A[a-z0-9#{LETTERS_WITH_DIACRITIC}]+([\s_\.'\-]+[a-z0-9#{LETTERS_WITH_DIACRITIC}]+)*\z/iu
+  validates :phrase, presence: true
+  validates :phrase, uniqueness: { scope: :affiliate_id, case_sensitive: false }
+  validates :phrase, length: { within: (3..80) }
+  validates :phrase, format: { with: /\A[a-z0-9#{LETTERS_WITH_DIACRITIC}]+([\s_\.'\-]+[a-z0-9#{LETTERS_WITH_DIACRITIC}]+)*\z/iu }
   belongs_to :affiliate
 
   MAX_POPULARITY = 2**30
