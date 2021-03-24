@@ -92,13 +92,22 @@ describe SaytSuggestion do
 
   describe 'saving an instance' do
     before do
-      SaytFilter.create!(phrase: 'accept me', is_regex: false, filter_only_exact_phrase: false, accept: true)
+      SaytFilter.create!(
+        phrase: 'accept me',
+        is_regex: false,
+        filter_only_exact_phrase: false,
+        accept: true
+      )
     end
 
     it 'sets the is_whitelisted flag accordingly' do
-      ss = described_class.create!(phrase: 'accept me please', affiliate: affiliate, deleted_at: Time.now)
+      ss = described_class.create!(
+        phrase: 'accept me please', affiliate: affiliate, deleted_at: Time.now
+      )
       expect(ss.is_whitelisted).to be true
-      ss = described_class.create!(phrase: 'not me please', affiliate: affiliate, deleted_at: Time.now)
+      ss = described_class.create!(
+        phrase: 'not me please', affiliate: affiliate, deleted_at: Time.now
+      )
       expect(ss.is_whitelisted).to be false
     end
   end
@@ -130,7 +139,8 @@ describe SaytSuggestion do
   describe '#populate_for(day, limit = nil)' do
     it 'populates SAYT suggestions for all affiliates in affiliate table' do
       Affiliate.all.each do |aff|
-        expect(described_class).to receive(:populate_for_affiliate_on).with(aff.name, aff.id, Date.current, 100)
+        expect(described_class).to receive(:populate_for_affiliate_on).
+          with(aff.name, aff.id, Date.current, 100)
       end
       described_class.populate_for(Date.current, 100)
     end
@@ -234,8 +244,14 @@ describe SaytSuggestion do
   end
 
   describe '#to_label' do
+    subject(:to_label) { suggestion.to_label }
+
+    let(:suggestion) do
+      described_class.new(phrase: 'dummy suggestion', affiliate: affiliate)
+    end
+
     it 'returns the phrase' do
-      expect(described_class.new(phrase: 'dummy suggestion', affiliate: affiliate).to_label).to eq('dummy suggestion')
+      expect(to_label).to eq('dummy suggestion')
     end
   end
 
