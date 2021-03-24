@@ -70,11 +70,11 @@ class SaytSuggestion < ApplicationRecord
   end
 
   def squish_whitespace_and_downcase
-    self.phrase = self.phrase.squish.downcase unless self.phrase.nil?
+    self.phrase = phrase.squish.downcase unless phrase.nil?
   end
 
   def spellcheck
-    self.phrase = Misspelling.correct(self.phrase) unless self.phrase.nil?
+    self.phrase = Misspelling.correct(phrase) unless phrase.nil?
   end
 
   def squish_whitespace_and_downcase_and_spellcheck
@@ -87,6 +87,6 @@ class SaytSuggestion < ApplicationRecord
   end
 
   def set_whitelisted_status
-    self.is_whitelisted = true if SaytFilter.filters_match?(SaytFilter.accept, self.phrase)
+    self.is_whitelisted = true if SaytFilter.filters_match?(SaytFilter.accept, phrase)
   end
 end
