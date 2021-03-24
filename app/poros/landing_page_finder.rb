@@ -34,8 +34,7 @@ class LandingPageFinder
   end
 
   def destination_edit_account
-    (@user.approval_status == 'pending_approval' && edit_account_path) ||
-      (!@user.complete? && edit_account_path)
+    edit_account_path if @user.approval_status == 'pending_approval' || !@user.complete?
   end
 
   def destination_original
@@ -43,7 +42,7 @@ class LandingPageFinder
   end
 
   def destination_affiliate_admin
-    @user.is_affiliate_admin? && admin_home_page_path
+    admin_home_page_path if @user.is_affiliate_admin?
   end
 
   def destination_site_page

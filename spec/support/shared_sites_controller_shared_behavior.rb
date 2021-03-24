@@ -36,17 +36,6 @@ shared_context 'approved user logged in' do
   end
 end
 
-shared_context 'not_approved user logged in' do
-  let(:current_user) { users(:affiliate_manager_with_not_approved_status) }
-
-  # Can't use the usual UserSession.create(current_user) dance that
-  # the other shared contexts do because we're deliberately bypassing
-  # AuthLogic's validation for this context.
-  before do
-    allow(controller).to receive(:current_user).and_return(current_user)
-  end
-end
-
 shared_context 'super admin logged in' do
   fixtures :users
   let(:current_user) { users(:affiliate_admin) }
