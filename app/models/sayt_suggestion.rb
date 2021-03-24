@@ -48,7 +48,8 @@ class SaytSuggestion < ApplicationRecord
     def process_sayt_suggestion_txt_upload(txtfile, affiliate)
       valid_content_types = %w[application/octet-stream text/plain txt]
       if valid_content_types.include?(txtfile.content_type)
-        created, ignored = 0, 0
+        created = 0
+        ignored = 0
         txtfile.tempfile.readlines.each do |phrase|
           entry = phrase.chomp.strip
           unless entry.blank?
