@@ -1,21 +1,16 @@
 Feature: User sessions
 
   Scenario: Affiliate manager should be on the site home page upon successful login
-    When I am logged in with email "affiliate_manager@fixtures.org"
-    And I go to the login page
+    When I log in with email "affiliate_manager@fixtures.org"
     Then I should be on the gobiernousa's Dashboard page
 
   Scenario: Affiliate admin should be on the admin home page upon successful login
     When I am logged in with email "affiliate_admin@fixtures.org"
-    And I go to the login page
     Then I should be on the admin home page
 
-  # SRCH-1941
-  @wip
   Scenario: User is not approved
-    Given I am logged in with email "affiliate_manager_with_not_approved_status@fixtures.org"
-    And I go to the login page
-    Then I should be on the login page
+    When I log in with email "affiliate_manager_with_not_approved_status@fixtures.org"
+    Then I should see "Security Notification"
     And I should see "These credentials are not recognized as valid for accessing Search.gov. Please reach out to search@support.digitalgov.gov if you believe this is in error."
 
   # to be updated in SRCH-945 for login.gov
@@ -31,17 +26,17 @@ Feature: User sessions
     Then I should be on the login page
 
   @javascript
-  Scenario: Already logged-in user logs out
-    Given I am logged in with email "affiliate_manager@fixtures.org"
-    When I go to the usagov's Dashboard page
+  Scenario: Already logged-in super admin logs out
+    Given I am logged in with email "affiliate_admin@fixtures.org"
+    When I go to the admin home page
     Then I should not see "Security Notification"
-    When I sign out
-    And I go to the usagov's Dashboard page
+    When I follow "Sign Out"
+    And I go to the admin home page
     Then I should see "Security Notification"
 
   @javascript
-  Scenario: Already logged-in super-user logs out
-    Given I am logged in with email "affiliate_admin@fixtures.org"
+  Scenario: Already logged-in user logs out
+    Given I am logged in with email "affiliate_manager@fixtures.org"
     When I go to the usagov's Dashboard page
     Then I should not see "Security Notification"
     When I sign out

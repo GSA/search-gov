@@ -17,8 +17,9 @@ class LandingPageFinder
   end
 
   def landing_page
-    destination_access_denied ||
-      destination_edit_account ||
+    raise(Error, ACCESS_DENIED_TEXT) if @user.login_allowed?
+
+    destination_edit_account ||
       destination_original ||
       destination_affiliate_admin ||
       destination_site_page ||
@@ -26,12 +27,6 @@ class LandingPageFinder
   end
 
   private
-
-  def destination_access_denied
-    return nil if @user.login_allowed?
-
-    raise Error, ACCESS_DENIED_TEXT
-  end
 
   def destination_edit_account
     edit_account_path if @user.approval_status == 'pending_approval' || !@user.complete?
