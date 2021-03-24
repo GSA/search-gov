@@ -10,15 +10,6 @@ describe SaytSuggestion do
     }
   end
 
-  before do
-    @affiliate = affiliates(:power_affiliate)
-    @valid_attributes = {
-      affiliate_id: @affiliate.id,
-      phrase: 'some valid suggestion',
-      popularity: 100
-    }
-  end
-
   describe 'schema' do
     it { is_expected.to have_db_index([:updated_at, :is_protected]) }
   end
@@ -36,27 +27,27 @@ describe SaytSuggestion do
     end
 
     it 'validates the uniqueness of the phrase scoped to the affiliate id' do
-      described_class.create!(@valid_attributes)
-      expect(described_class.new(@valid_attributes)).to_not be_valid
+      described_class.create!(valid_attributes)
+      expect(described_class.new(valid_attributes)).to_not be_valid
     end
 
     it 'creates a new instance given valid attributes' do
-      described_class.create!(@valid_attributes)
+      described_class.create!(valid_attributes)
     end
 
     it 'downcases the phrase before entering into DB' do
-      described_class.create!(phrase: 'ALL CAPS', affiliate: @affiliate)
+      described_class.create!(phrase: 'ALL CAPS', affiliate: affiliate)
       expect(described_class.find_by(phrase: 'all caps').phrase).to eq('all caps')
     end
 
     it 'strips whitespace from phrase before inserting in DB' do
       phrase = ' leading and trailing whitespaces '
-      sf = described_class.create!(phrase: phrase, affiliate: @affiliate)
+      sf = described_class.create!(phrase: phrase, affiliate: affiliate)
       expect(sf.phrase).to eq(phrase.strip)
     end
 
     it 'squishes multiple whitespaces between words in the phrase before entering into DB' do
-      described_class.create!(phrase: 'two  spaces', affiliate: @affiliate)
+      described_class.create!(phrase: 'two  spaces', affiliate: affiliate)
       expect(described_class.find_by(phrase: 'two spaces').phrase).to eq('two spaces')
     end
 
@@ -66,18 +57,18 @@ describe SaytSuggestion do
     end
 
     it 'defaults popularity to 1 if not specified' do
-      described_class.create!(phrase: 'popular', affiliate: @affiliate)
+      described_class.create!(phrase: 'popular', affiliate: affiliate)
       expect(described_class.find_by(phrase: 'popular').popularity).to eq(1)
     end
 
     it 'defaults protected status to false' do
-      suggestion = described_class.create!(phrase: 'unprotected', affiliate: @affiliate)
+      suggestion = described_class.create!(phrase: 'unprotected', affiliate: affiliate)
       expect(suggestion.is_protected).to be false
     end
 
     it 'does not create a new suggestion if one exists, but is marked as deleted' do
-      described_class.create!(phrase: 'deleted', affiliate: @affiliate, deleted_at: Time.now)
-      expect(described_class.create(phrase: 'deleted', affiliate: @affiliate).id).to be_nil
+      described_class.create!(phrase: 'deleted', affiliate: affiliate, deleted_at: Time.now)
+      expect(described_class.create(phrase: 'deleted', affiliate: affiliate).id).to be_nil
     end
   end
 
@@ -87,9 +78,9 @@ describe SaytSuggestion do
     end
 
     it 'sets the is_whitelisted flag accordingly' do
-      ss = described_class.create!(phrase: 'accept me please', affiliate: @affiliate, deleted_at: Time.now)
+      ss = described_class.create!(phrase: 'accept me please', affiliate: affiliate, deleted_at: Time.now)
       expect(ss.is_whitelisted).to be true
-      ss = described_class.create!(phrase: 'not me please', affiliate: @affiliate, deleted_at: Time.now)
+      ss = described_class.create!(phrase: 'not me please', affiliate: affiliate, deleted_at: Time.now)
       expect(ss.is_whitelisted).to be false
     end
   end
@@ -202,50 +193,51 @@ describe SaytSuggestion do
   end
 
   describe '#process_sayt_suggestion_txt_upload' do
-    fixtures :affiliates
+    let(:affiliate) { affiliates(:basic_affiliate) }
     let(:content_type) { 'text/plain' }
-
-    before do
-      @affiliate = affiliates(:basic_affiliate)
-      @phrases = %w{ one two three }
-      tempfile = File.open('spec/fixtures/txt/sayt_suggestions.txt')
-      @file = Rack::Test::UploadedFile.new(tempfile, content_type)
-      @dummy_suggestion = described_class.create(phrase: 'dummy suggestions')
+    let(:phrases) { %w[one two three] }
+    let(:dummy_suggestion) { described_class.create(phrase: 'dummy suggestions') }
+    let(:file) do
+      Rack::Test::UploadedFile.new(
+        open_fixture_file('/txt/sayt_suggestions.txt'),
+        content_type
+      )
     end
 
     it 'creates SAYT suggestions using the affiliate provided, if provided' do
-      @phrases.each do |phrase|
-        expect(described_class).to receive(:create).with({phrase: phrase, affiliate: @affiliate, is_protected: true, popularity: SaytSuggestion::MAX_POPULARITY}).and_return @dummy_suggestion
+      phrases.each do |phrase|
+        expect(described_class).to receive(:create).with({phrase: phrase, affiliate: affiliate, is_protected: true, popularity: SaytSuggestion::MAX_POPULARITY}).and_return dummy_suggestion
       end
-      described_class.process_sayt_suggestion_txt_upload(@file, @affiliate)
+      described_class.process_sayt_suggestion_txt_upload(file, affiliate)
     end
   end
 
   describe '#to_label' do
     it 'returns the phrase' do
-      expect(described_class.new(phrase: 'dummy suggestion', affiliate: @affiliate).to_label).to eq('dummy suggestion')
+      expect(described_class.new(phrase: 'dummy suggestion', affiliate: affiliate).to_label).to eq('dummy suggestion')
     end
   end
 
   describe '#related_search' do
+    let(:affiliate) { affiliates(:basic_affiliate) }
+
     before do
-      @affiliate = affiliates(:basic_affiliate)
       described_class.destroy_all
-      described_class.create!(affiliate_id: @affiliate.id, phrase: 'suggest me', popularity: 30)
+      described_class.create!(affiliate_id: affiliate.id, phrase: 'suggest me', popularity: 30)
       ElasticSaytSuggestion.commit
     end
 
     it 'returns an array of highlighted strings' do
-      expect(described_class.related_search('suggest', @affiliate)).to eq(['<strong>suggest</strong> me'])
+      expect(described_class.related_search('suggest', affiliate)).to eq(['<strong>suggest</strong> me'])
     end
 
     context 'when affiliate has related searches disabled' do
       before do
-        @affiliate.is_related_searches_enabled = false
+        affiliate.is_related_searches_enabled = false
       end
 
       it 'returns an empty array' do
-        expect(described_class.related_search('suggest', @affiliate)).to eq([])
+        expect(described_class.related_search('suggest', affiliate)).to eq([])
       end
     end
 
