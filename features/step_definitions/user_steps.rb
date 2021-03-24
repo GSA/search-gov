@@ -1,6 +1,6 @@
 Given /^I (?:log in|am logged in) with email "([^"]*)"$/ do |email|
-  LoginDotGovTestUtilities.fake_login(email: email)
-  visit '/auth/logindotgov'
+  mock_user_auth(email)
+  visit '/auth/logindotgov/callback'
 end
 
 When /^I sign out$/ do

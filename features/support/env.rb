@@ -75,6 +75,11 @@ module ScenarioStatusTracker
 end
 
 require_relative '../../spec/test_services.rb'
+require_relative '../../spec/support/omniauth_helpers.rb'
+
+World OmniauthHelpers
+
+After { OmniAuth.config.mock_auth[:default] = OmniAuth::AuthHash.new({}) }
 
 EmailTemplate.load_default_templates
 OutboundRateLimit.load_defaults

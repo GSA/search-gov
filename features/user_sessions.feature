@@ -42,3 +42,4 @@ Feature: User sessions
     When I sign out
     And I go to the usagov's Dashboard page
     Then I should see "Security Notification"
+
