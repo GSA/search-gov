@@ -5,7 +5,7 @@ Feature: User sessions
     Then I should be on the gobiernousa's Dashboard page
 
   Scenario: Affiliate admin should be on the admin home page upon successful login
-    When I am logged in with email "affiliate_admin@fixtures.org"
+    When I log in with email "affiliate_admin@fixtures.org"
     Then I should be on the admin home page
 
   Scenario: User is not approved

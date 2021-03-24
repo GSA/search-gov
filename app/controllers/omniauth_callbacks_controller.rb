@@ -6,6 +6,9 @@ class OmniauthCallbacksController < ApplicationController
 
   def login_dot_gov
     try_to_login
+  rescue LandingPageFinder::Error => e
+    flash[:error] = e.message
+    redirect_to('/login')
   rescue OmniauthError => e
     Rails.logger.error e.message
     flash[:error] = 'Error logging in. Please reach out to' \
@@ -25,8 +28,6 @@ class OmniauthCallbacksController < ApplicationController
 
   def destination
     LandingPageFinder.new(user, @return_to).landing_page
-  rescue LandingPageFinder::Error => e
-    raise OmniauthError, e.message
   end
 
   def user
