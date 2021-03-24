@@ -24,7 +24,7 @@ class SaytSuggestion < ApplicationRecord
                          size: 5,
                          q: query }.reverse_merge(options)
       elastic_results = ElasticSaytSuggestion.search_for(search_options)
-      elastic_results.results.collect { |result| result.phrase }
+      elastic_results.results.collect(&:phrase)
     end
 
     def fetch_by_affiliate_id(affiliate_id, query, num_of_suggestions)
