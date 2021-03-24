@@ -3,7 +3,7 @@
 class SaytSuggestion < ApplicationRecord
   include Dupable
 
-  LETTERS_WITH_DIACRITIC = "áéíóúÁÉÍÓÚüÜñÑ¿¡"
+  LETTERS_WITH_DIACRITIC = 'áéíóúÁÉÍÓÚüÜñÑ¿¡'
 
   before_validation :squish_whitespace_and_downcase
   before_save :set_whitelisted_status
