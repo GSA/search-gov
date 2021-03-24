@@ -1,4 +1,4 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
 describe SaytSuggestion do
   let(:affiliate) { affiliates(:power_affiliate) }
@@ -19,10 +19,28 @@ describe SaytSuggestion do
     it { is_expected.to validate_presence_of :affiliate }
     it { is_expected.to validate_presence_of :phrase }
     it { is_expected.to validate_length_of(:phrase).is_at_least(3).is_at_most(80) }
-    ['citizenship[', 'email@address.com', '"over quoted"', 'colon: here', 'http:something', 'site:something', 'intitle:something', "passports'", '.mp3', "' pictures"].each do |phrase|
+
+    ['citizenship[',
+     'email@address.com',
+     '"over quoted"',
+     'colon: here',
+     'http:something',
+     'site:something',
+     'intitle:something',
+     "passports'",
+     '.mp3',
+     "' pictures"].each do |phrase|
       it { is_expected.not_to allow_value(phrase).for(:phrase) }
     end
-    ['basic phrase', 'my-name', '1099 form', 'Senator Frank S. Farley State Marina', "Oswald West State Park's Smuggler Cove", 'en español', 'último pronóstico', '¿Qué'].each do |phrase|
+
+    ['basic phrase',
+     'my-name',
+     '1099 form',
+     'Senator Frank S. Farley State Marina',
+     "Oswald West State Park's Smuggler Cove",
+     'en español',
+     'último pronóstico',
+     '¿Qué'].each do |phrase|
       it { is_expected.to allow_value(phrase).for(:phrase) }
     end
 
@@ -116,7 +134,6 @@ describe SaytSuggestion do
       end
       described_class.populate_for(Date.current, 100)
     end
-
   end
 
   describe '#populate_for_affiliate_on(affiliate_name, affiliate_id, day, limit)' do
@@ -130,7 +147,6 @@ describe SaytSuggestion do
       described_class.populate_for_affiliate_on(aff.name, aff.id, Date.current, 100)
       expect(SaytSuggestionDiscovery).to have_queued(aff.name, aff.id, Date.current, 100)
     end
-
   end
 
   describe '#fetch_by_affiliate_id(affiliate_id, query, num_suggestions)' do
@@ -206,7 +222,12 @@ describe SaytSuggestion do
 
     it 'creates SAYT suggestions using the affiliate provided, if provided' do
       phrases.each do |phrase|
-        expect(described_class).to receive(:create).with({phrase: phrase, affiliate: affiliate, is_protected: true, popularity: SaytSuggestion::MAX_POPULARITY}).and_return dummy_suggestion
+        expect(described_class).to receive(:create).with(
+          phrase: phrase,
+          affiliate: affiliate,
+          is_protected: true,
+          popularity: SaytSuggestion::MAX_POPULARITY
+        ).and_return dummy_suggestion
       end
       described_class.process_sayt_suggestion_txt_upload(file, affiliate)
     end
@@ -240,6 +261,5 @@ describe SaytSuggestion do
         expect(described_class.related_search('suggest', affiliate)).to eq([])
       end
     end
-
   end
 end
