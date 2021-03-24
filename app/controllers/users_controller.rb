@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   layout 'sites'
   before_action :require_user, :only => [:show, :edit, :update]
   before_action :set_user, except: :create
+  before_action :complain_if_non_gov_email, only: [:show, :edit]
 
   NON_GOV_EMAIL_MESSAGE = <<~MESSAGE
     Because you don't have a .gov or .mil email address, we need additional information.
@@ -25,14 +26,6 @@ class UsersController < ApplicationController
       flash.delete(:recaptcha_error)
       render action: :new, layout: 'application'
     end
-  end
-
-  def show
-    complain_about_non_gov_email
-  end
-
-  def edit
-    complain_about_non_gov_email
   end
 
   def update_account
@@ -58,7 +51,7 @@ class UsersController < ApplicationController
 
   private
 
-  def complain_about_non_gov_email
+  def complain_if_non_gov_email
     return if @user.has_government_affiliated_email? ||
               @user.approval_status == 'approved'
 

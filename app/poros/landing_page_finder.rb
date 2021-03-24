@@ -17,7 +17,7 @@ class LandingPageFinder
   end
 
   def landing_page
-    raise(Error, ACCESS_DENIED_TEXT) if @user.login_allowed?
+    raise(Error, ACCESS_DENIED_TEXT) unless @user.login_allowed?
 
     destination_edit_account ||
       destination_original ||
