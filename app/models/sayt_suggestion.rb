@@ -23,7 +23,7 @@ class SaytSuggestion < ApplicationRecord
                          language: affiliate.indexing_locale,
                          size: 5,
                          q: query }.reverse_merge(options)
-      elastic_results = ElasticSaytSuggestion.search_for search_options
+      elastic_results = ElasticSaytSuggestion.search_for(search_options)
       elastic_results.results.collect { |result| result.phrase }
     end
 
@@ -47,7 +47,7 @@ class SaytSuggestion < ApplicationRecord
 
     def process_sayt_suggestion_txt_upload(txtfile, affiliate)
       valid_content_types = %w(application/octet-stream text/plain txt)
-      if valid_content_types.include? txtfile.content_type
+      if valid_content_types.include?(txtfile.content_type)
         created, ignored = 0, 0
         txtfile.tempfile.readlines.each do |phrase|
           entry = phrase.chomp.strip
