@@ -68,7 +68,6 @@ class SaytSuggestion < ApplicationRecord
         false
       ).in_batches.destroy_all
     end
-
   end
 
   def squish_whitespace_and_downcase
