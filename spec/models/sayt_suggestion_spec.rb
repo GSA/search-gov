@@ -85,7 +85,11 @@ describe SaytSuggestion do
     end
 
     it 'does not create a new suggestion if one exists, but is marked as deleted' do
-      described_class.create!(phrase: 'deleted', affiliate: affiliate, deleted_at: Time.now)
+      described_class.create!(
+        phrase: 'deleted',
+        affiliate: affiliate,
+        deleted_at: Time.current
+      )
       expect(described_class.create(phrase: 'deleted', affiliate: affiliate).id).to be_nil
     end
   end
@@ -102,11 +106,11 @@ describe SaytSuggestion do
 
     it 'sets the is_whitelisted flag accordingly' do
       ss = described_class.create!(
-        phrase: 'accept me please', affiliate: affiliate, deleted_at: Time.now
+        phrase: 'accept me please', affiliate: affiliate, deleted_at: Time.current
       )
       expect(ss.is_whitelisted).to be true
       ss = described_class.create!(
-        phrase: 'not me please', affiliate: affiliate, deleted_at: Time.now
+        phrase: 'not me please', affiliate: affiliate, deleted_at: Time.current
       )
       expect(ss.is_whitelisted).to be false
     end
