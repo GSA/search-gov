@@ -1,4 +1,4 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
 describe YoutubeProfile do
   fixtures :youtube_profiles
@@ -10,8 +10,8 @@ describe YoutubeProfile do
 
   it do
     is_expected.to have_many(:youtube_playlists).
-                   dependent(:destroy).
-                   inverse_of(:youtube_profile)
+      dependent(:destroy).
+      inverse_of(:youtube_profile)
   end
 
   it do
@@ -20,7 +20,7 @@ describe YoutubeProfile do
   end
 
   describe 'Gets the active YoutubeProfiles' do
-    let (:profiles) { described_class.active }
+    let(:profiles) { described_class.active }
 
     it 'gets the active youtube profiles' do
       expect(described_class.active.count).to equal(2)
@@ -42,16 +42,19 @@ describe YoutubeProfile do
   end
 
   describe 'imported_today' do
-    context 'when no profiles have been updated' do
+    context 'when no profiles have been imported' do
       it 'returns no profiles' do
         expect(described_class.imported_today).to be_empty
       end
     end
 
-    context 'when one has been updated' do
-      before { described_class.first.update!(imported_at: Time.now) }
+    context 'when profiles have been imported' do
+      before do
+        described_class.first.update!(imported_at: Time.now.utc)
+        described_class.last.update!(imported_at: 1.day.ago)
+      end
 
-      it 'returns the updated profile' do
+      it 'includes profiles that were imported today' do
         expect(described_class.imported_today).to eq([described_class.first])
       end
     end
