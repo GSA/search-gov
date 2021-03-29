@@ -5,8 +5,6 @@ context 'when a user is logged in' do
 
   context 'when the user is set to not_approved' do
     before do
-      # confirm that the user is logged in
-      expect(page).to have_content('Add Site')
       user.update!(approval_status: 'not_approved')
     end
 
