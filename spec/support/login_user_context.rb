@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-shared_context 'login user' do
+shared_context 'with a logged in user' do
   let(:explicit_destination) { nil }
 
   before do

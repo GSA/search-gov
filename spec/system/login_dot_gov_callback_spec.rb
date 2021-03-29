@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 describe 'The login.gov callback page (GET auth_logindotgov_callback)' do
-  include_context 'login user'
+  include_context 'with a logged in user'
 
   before do
     allow_any_instance_of(ActionDispatch::Request::Session).to receive(:[]).
