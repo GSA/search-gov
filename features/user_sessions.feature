@@ -1,5 +1,11 @@
 Feature: User sessions
 
+  @javascript
+  Scenario: Already logged-in user visits login page
+    Given I am logged in with email "affiliate_admin@fixtures.org"
+    And I go to the login page
+    Then I should be on the admin home page
+
   Scenario: Affiliate manager should be on the site home page upon successful login
     When I log in with email "affiliate_manager@fixtures.org"
     Then I should be on the gobiernousa's Dashboard page
@@ -13,8 +19,6 @@ Feature: User sessions
     Then I should see "Security Notification"
     And I should see "These credentials are not recognized as valid for accessing Search.gov. Please reach out to search@support.digitalgov.gov if you believe this is in error."
 
-  # to be updated in SRCH-945 for login.gov
-  @wip
   Scenario: User's session expires after 1 hour
     Given the following Users exist:
       | first_name | last_name | email            | approval_status |
@@ -42,4 +46,3 @@ Feature: User sessions
     When I sign out
     And I go to the usagov's Dashboard page
     Then I should see "Security Notification"
-
