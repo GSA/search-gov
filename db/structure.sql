@@ -1041,7 +1041,8 @@ CREATE TABLE `tweets` (
   `urls` mediumtext COLLATE utf8mb4_unicode_ci,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_tweets_on_tweet_id` (`tweet_id`),
-  KEY `index_tweets_on_twitter_profile_id` (`twitter_profile_id`)
+  KEY `index_tweets_on_twitter_profile_id` (`twitter_profile_id`),
+  KEY `index_tweets_on_published_at` (`published_at`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `twitter_lists`;
@@ -1929,6 +1930,7 @@ INSERT INTO `schema_migrations` (version) VALUES
 ('20191113214448'),
 ('20200121220041'),
 ('20200212183209'),
-('20200728194854');
+('20200728194854'),
+('20210317234859');
 
 

@@ -6,6 +6,7 @@ inherit_from:
 inherit_mode:
   merge:
     - Exclude
+    - IgnoredMethods
 
 AllCops:
   Exclude:
@@ -25,7 +26,6 @@ Style/LambdaCall:
 
 Style/MethodCallWithArgsParentheses:
   IgnoreMacros: true
-  IgnoredMethods: ['require']
   Exclude:
     # Exclude files relying on Jbuilder DSL
     - 'app/models/elastic_data/*'
