@@ -6,7 +6,7 @@ class SaytSuggestionDiscovery
   @queue = :primary
 
   class << self
-    MIN_DOC_COUNT = 100
+    MIN_DOC_COUNT = 30
 
     def perform(affiliate_name, affiliate_id, day_int, limit)
       day = Date.strptime(day_int.to_s, "%Y%m%d")

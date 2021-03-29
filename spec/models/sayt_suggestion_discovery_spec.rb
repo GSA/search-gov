@@ -10,7 +10,7 @@ describe SaytSuggestionDiscovery, '#perform(affiliate_name, affiliate_id, date_i
       affiliate.name,
       'search',
       field: 'params.query.raw',
-      min_doc_count: 100,
+      min_doc_count: 30,
       size: 10
     ]
   end
