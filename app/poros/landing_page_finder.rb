@@ -41,10 +41,6 @@ class LandingPageFinder
   end
 
   def destination_site_page
-    affiliate_site_page
-  end
-
-  def affiliate_site_page
     if @user.default_affiliate
       site_path(@user.default_affiliate)
     elsif !@user.affiliates.empty?
