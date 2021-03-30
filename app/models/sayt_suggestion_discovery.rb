@@ -39,7 +39,7 @@ class SaytSuggestionDiscovery
     end
 
     def compute_run_rate_factor
-      1/ DateTime.current.day_fraction.to_f
+      1 / DateTime.current.day_fraction.to_f
     end
   end
 end
