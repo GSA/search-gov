@@ -9,7 +9,7 @@ class SaytSuggestionDiscovery
     MIN_DOC_COUNT = 30
 
     def perform(affiliate_name, affiliate_id, day_int, limit)
-      day = Date.strptime(day_int.to_s, "%Y%m%d")
+      day = Date.strptime(day_int.to_s, '%Y%m%d')
       run_rate_factor = Date.current == day ? compute_run_rate_factor : 1.0
       top_n_exists_query = TopNExistsQuery.new(affiliate_name,
                                                'search',
