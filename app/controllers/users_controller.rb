@@ -21,10 +21,10 @@ class UsersController < ApplicationController
       else
         flash[:success] = "Sorry! You don't have a .gov or .mil email address so we need some more information from you before approving your account."
       end
-      redirect_to(account_path)
+      redirect_to account_path
     else
       flash.delete(:recaptcha_error)
-      render(action: :new, layout: 'application')
+      render action: :new, layout: 'application'
     end
   end
 
@@ -32,9 +32,9 @@ class UsersController < ApplicationController
     @user.attributes = user_params
     if @user.save(context: :update_account)
       flash[:success] = 'Account updated!'
-      redirect_to(account_url)
+      redirect_to account_url
     else
-      render(:edit)
+      render :edit
     end
   end
 
@@ -45,9 +45,9 @@ class UsersController < ApplicationController
   def update
     if @user.update(user_params)
       flash[:success] = 'Account updated!'
-      redirect_to(account_url)
+      redirect_to account_url
     else
-      render(:edit)
+      render :edit
     end
   end
 
@@ -63,7 +63,7 @@ class UsersController < ApplicationController
   end
 
   def require_user
-    redirect_to(developer_redirect_url) if super.nil? && current_user.is_developer?
+    redirect_to developer_redirect_url if super.nil? && current_user.is_developer?
   end
 
   def set_user
