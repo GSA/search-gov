@@ -1,16 +1,17 @@
-# coding: utf-8
+# frozen_string_literal: true
+
 class SaytSuggestion < ApplicationRecord
   include Dupable
 
-  LETTERS_WITH_DIACRITIC = "áéíóúÁÉÍÓÚüÜñÑ¿¡"
+  LETTERS_WITH_DIACRITIC = 'áéíóúÁÉÍÓÚüÜñÑ¿¡'
 
   before_validation :squish_whitespace_and_downcase
   before_save :set_whitelisted_status
-  validates :affiliate, :presence => true
-  validates_presence_of :phrase
-  validates_uniqueness_of :phrase, :scope => :affiliate_id, :case_sensitive => false
-  validates_length_of :phrase, :within => (3..80)
-  validates_format_of :phrase, :with => /\A[a-z0-9#{LETTERS_WITH_DIACRITIC}]+([\s_\.'\-]+[a-z0-9#{LETTERS_WITH_DIACRITIC}]+)*\z/iu
+  validates :affiliate, presence: true
+  validates :phrase, presence: true
+  validates :phrase, uniqueness: { scope: :affiliate_id, case_sensitive: false }
+  validates :phrase, length: { within: (3..80) }
+  validates :phrase, format: { with: /\A[a-z0-9#{LETTERS_WITH_DIACRITIC}]+([\s_\.'\-]+[a-z0-9#{LETTERS_WITH_DIACRITIC}]+)*\z/iu }
   belongs_to :affiliate
 
   MAX_POPULARITY = 2**30
@@ -18,12 +19,13 @@ class SaytSuggestion < ApplicationRecord
   class << self
     def related_search(query, affiliate, options = {})
       return [] unless affiliate.is_related_searches_enabled?
+
       search_options = { affiliate_id: affiliate.id,
                          language: affiliate.indexing_locale,
                          size: 5,
                          q: query }.reverse_merge(options)
-      elastic_results = ElasticSaytSuggestion.search_for search_options
-      elastic_results.results.collect { |result| result.phrase }
+      elastic_results = ElasticSaytSuggestion.search_for(search_options)
+      elastic_results.results.collect(&:phrase)
     end
 
     def fetch_by_affiliate_id(affiliate_id, query, num_of_suggestions)
@@ -36,7 +38,7 @@ class SaytSuggestion < ApplicationRecord
     end
 
     def populate_for(day, limit)
-      name_id_list = Affiliate.select([:id, :name]).collect { |aff| { :name => aff.name, :id => aff.id } }
+      name_id_list = Affiliate.select([:id, :name]).collect { |aff| { name: aff.name, id: aff.id } }
       name_id_list.each { |element| populate_for_affiliate_on(element[:name], element[:id], day, limit) }
     end
 
@@ -45,31 +47,35 @@ class SaytSuggestion < ApplicationRecord
     end
 
     def process_sayt_suggestion_txt_upload(txtfile, affiliate)
-      valid_content_types = %w(application/octet-stream text/plain txt)
-      if valid_content_types.include? txtfile.content_type
-        created, ignored = 0, 0
+      valid_content_types = %w[application/octet-stream text/plain txt]
+      if valid_content_types.include?(txtfile.content_type)
+        created = 0
+        ignored = 0
         txtfile.tempfile.readlines.each do |phrase|
           entry = phrase.chomp.strip
-          unless entry.blank?
-            create(:phrase => entry, :affiliate => affiliate, :is_protected => true, :popularity => MAX_POPULARITY).id.nil? ? (ignored += 1) : (created += 1)
+          if entry.present?
+            create(phrase: entry, affiliate: affiliate, is_protected: true, popularity: MAX_POPULARITY).id.nil? ? (ignored += 1) : (created += 1)
           end
         end
-        { :created => created, :ignored => ignored }
+        { created: created, ignored: ignored }
       end
     end
 
     def expire(days_back)
-      destroy_all(["updated_at < ? AND is_protected = ?", days_back.days.ago.beginning_of_day.to_s(:db), false])
+      where(
+        'updated_at < ? AND is_protected = ?',
+        days_back.days.ago.beginning_of_day.to_s(:db),
+        false
+      ).in_batches.destroy_all
     end
-
   end
 
   def squish_whitespace_and_downcase
-    self.phrase = self.phrase.squish.downcase unless self.phrase.nil?
+    self.phrase = phrase.squish.downcase unless phrase.nil?
   end
 
   def spellcheck
-    self.phrase = Misspelling.correct(self.phrase) unless self.phrase.nil?
+    self.phrase = Misspelling.correct(phrase) unless phrase.nil?
   end
 
   def squish_whitespace_and_downcase_and_spellcheck
@@ -82,6 +88,6 @@ class SaytSuggestion < ApplicationRecord
   end
 
   def set_whitelisted_status
-    self.is_whitelisted = true if SaytFilter.filters_match?(SaytFilter.accept, self.phrase)
+    self.is_whitelisted = true if SaytFilter.filters_match?(SaytFilter.accept, phrase)
   end
 end
