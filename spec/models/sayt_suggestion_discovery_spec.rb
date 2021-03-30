@@ -56,7 +56,13 @@ describe SaytSuggestionDiscovery, '#perform(affiliate_name, affiliate_id, date_i
 
     context 'when suggestions exist that have been marked as deleted' do
       before do
-        SaytSuggestion.create!(phrase: 'today term1', affiliate: affiliate, deleted_at: Time.now, is_protected: true, popularity: SaytSuggestion::MAX_POPULARITY)
+        SaytSuggestion.create!(
+          phrase: 'today term1',
+          affiliate: affiliate,
+          deleted_at: Time.current,
+          is_protected: true,
+          popularity: SaytSuggestion::MAX_POPULARITY
+        )
       end
 
       it 'does not create a new suggestion, and leaves the old suggestion alone' do
