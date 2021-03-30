@@ -1,4 +1,4 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
 describe 'YouTube rake tasks' do
   before(:all) do
