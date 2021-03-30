@@ -33,14 +33,14 @@ describe SaytSuggestionDiscovery, '#perform(affiliate_name, affiliate_id, date_i
 
     it 'should create unprotected suggestions' do
       described_class.perform(affiliate.name, affiliate.id, date_int, 10)
-      expect(SaytSuggestion.find_by_affiliate_id_and_phrase(affiliate.id, 'today term1').is_protected).to be false
+      expect(SaytSuggestion.find_by(affiliate_id: affiliate.id, phrase: 'today term1').is_protected).to be false
     end
 
     it 'should populate SaytSuggestions based on each entry for the given day' do
       described_class.perform(affiliate.name, affiliate.id, date_int, 10)
-      expect(SaytSuggestion.find_by_affiliate_id_and_phrase(affiliate.id, 'today term1')).not_to be_nil
-      expect(SaytSuggestion.find_by_affiliate_id_and_phrase(affiliate.id, 'today term2')).not_to be_nil
-      expect(SaytSuggestion.find_by_phrase('yesterday term1')).to be_nil
+      expect(SaytSuggestion.find_by(affiliate_id: affiliate.id, phrase: 'today term1')).not_to be_nil
+      expect(SaytSuggestion.find_by(affiliate_id: affiliate.id, phrase: 'today term2')).not_to be_nil
+      expect(SaytSuggestion.find_by(phrase: 'yesterday term1')).to be_nil
     end
 
     context 'when SaytSuggestion already exists for an affiliate' do
@@ -50,7 +50,7 @@ describe SaytSuggestionDiscovery, '#perform(affiliate_name, affiliate_id, date_i
 
       it 'should update the popularity field with the new count' do
         described_class.perform(affiliate.name, affiliate.id, date_int, 10)
-        expect(SaytSuggestion.find_by_affiliate_id_and_phrase(affiliate.id, 'today term1').popularity).to eq(55)
+        expect(SaytSuggestion.find_by(affiliate_id: affiliate.id, phrase: 'today term1').popularity).to eq(55)
       end
     end
 
@@ -61,7 +61,7 @@ describe SaytSuggestionDiscovery, '#perform(affiliate_name, affiliate_id, date_i
 
       it 'should not create a new suggestion, and leave the old suggestion alone' do
         described_class.perform(affiliate.name, affiliate.id, date_int, 10)
-        suggestion = SaytSuggestion.find_by_affiliate_id_and_phrase(affiliate.id, 'today term1')
+        suggestion = SaytSuggestion.find_by(affiliate_id: affiliate.id, phrase: 'today term1')
         expect(suggestion.deleted_at).not_to be_nil
         expect(suggestion.popularity).to eq(SaytSuggestion::MAX_POPULARITY)
       end
@@ -74,7 +74,7 @@ describe SaytSuggestionDiscovery, '#perform(affiliate_name, affiliate_id, date_i
 
       it 'should apply SaytFilters to each eligible term' do
         described_class.perform(affiliate.name, affiliate.id, date_int, 10)
-        expect(SaytSuggestion.find_by_affiliate_id_and_phrase(affiliate.id, 'today term2')).to be_nil
+        expect(SaytSuggestion.find_by(affiliate_id: affiliate.id, phrase: 'today term2')).to be_nil
       end
     end
 
@@ -86,7 +86,7 @@ describe SaytSuggestionDiscovery, '#perform(affiliate_name, affiliate_id, date_i
 
       it "should factor in the time of day to compute a projected run rate for the term's popularity that day" do
         described_class.perform(affiliate.name, affiliate.id, date_int, 10)
-        expect(SaytSuggestion.find_by_affiliate_id_and_phrase(affiliate.id, 'today term1').popularity).to eq(164)
+        expect(SaytSuggestion.find_by(affiliate_id: affiliate.id, phrase: 'today term1').popularity).to eq(164)
       end
     end
   end
