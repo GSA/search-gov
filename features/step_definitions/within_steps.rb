@@ -38,7 +38,7 @@
   'in the uncrawled URL list': '.uncrawled-url-list',
   'in the previously crawled URL list': '.crawled-url-list',
   'in the indexed documents section': '#indexed_documents',
-  'in the medline govbox': '.medline',
+  'in the medline govbox': '.medline', # legacy SERP
   'in the SERP header': '#header',
   'in the SERP footer': '#usasearch_footer',
   'in the page content': '.content',
