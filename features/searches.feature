@@ -707,8 +707,6 @@ Feature: Search
     And I press "Search" within the search box
     Then I should see 2 image news results
 
-  # SRCH-2009
-  @wip
   Scenario: Visiting English affiliate search with multiple domains
     Given the following Affiliates exist:
       | display_name | name    | contact_email | first_name | last_name | domains                |
@@ -716,11 +714,8 @@ Feature: Search
     When I am on bar.gov's search page
     And I fill in "Enter your search term" with "president"
     And I press "Search" within the search box
-    Then I should see at least 2 search results
-    And I should not see "Search this site"
+    Then I should see at least "2" web search results
 
-  # SRCH-2009
-  @wip
   Scenario: Visiting Spanish affiliate search with multiple domains
     Given the following Affiliates exist:
       | display_name | name    | contact_email | first_name | last_name | domains                | locale | is_image_search_navigable |
@@ -728,12 +723,11 @@ Feature: Search
     When I am on bar.gov's search page
     And I fill in "Ingrese su búsqueda" with "president"
     And I press "Buscar" within the search box
-    Then I should see at least 2 search results
+    Then I should see at least "2" web search results
     And I should see "Todo"
     And I should not see "Everything"
     And I should see "Imágenes"
     And I should not see "Images"
-    And I should not see "Search this site"
 
   # SRCH-2009
   @wip @javascript
