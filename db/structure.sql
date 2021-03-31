@@ -835,7 +835,8 @@ CREATE TABLE `sayt_suggestions` (
   `deleted_at` datetime DEFAULT NULL,
   `is_whitelisted` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `index_sayt_suggestions_on_affiliate_id_and_phrase` (`affiliate_id`,`phrase`)
+  UNIQUE KEY `index_sayt_suggestions_on_affiliate_id_and_phrase` (`affiliate_id`,`phrase`),
+  KEY `index_sayt_suggestions_on_updated_at_and_is_protected` (`updated_at`,`is_protected`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `schema_migrations`;
@@ -1931,6 +1932,7 @@ INSERT INTO `schema_migrations` (version) VALUES
 ('20200121220041'),
 ('20200212183209'),
 ('20200728194854'),
-('20210317234859');
+('20210317234859'),
+('20210323175952');
 
 
