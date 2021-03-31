@@ -34,8 +34,6 @@ class LowQueryCtrWatcher < Watcher
   end
 
   def transform_script
-    # rubocop:disable LineLength
     "ctx.payload.aggregations.agg.buckets.findAll(it -> it.ctr.value < #{low_ctr_threshold}).collect(it -> it.key).join('\",\"')"
-    # rubocop:enable LineLength
   end
 end
