@@ -1087,8 +1087,6 @@ Feature: Search
     And I press "Search" within the search box
     Then I should see a featured collection link title with "Atlantic" highlighted
 
-  # SRCH-2009
-  @wip
   Scenario: Searching on sites with Boosted Contents
     Given the following Affiliates exist:
       | display_name   | name          | contact_email   | first_name| last_name | locale |
