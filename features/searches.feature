@@ -797,22 +797,6 @@ Feature: Search
 
   # SRCH-2009
   @wip
-  Scenario: When a searcher enters a query with invalid Lucene character
-    Given the following Affiliates exist:
-      | display_name | name       | contact_email | first_name | last_name | domains |
-      | agency site  | agency.gov | aff@bar.gov   | John       |Bar        | .gov    |
-    And I am on agency.gov's search page
-    And I fill in "query" with "++health it"
-    And I press "Search" within the search box
-    Then I should see the browser page titled "++health it - agency site Search Results"
-    And I should see some Bing search results
-    When I fill in "query" with "OR US97 central"
-    And I press "Search" within the search box
-    Then I should see the browser page titled "OR US97 central - agency site Search Results"
-    And I should see some Bing search results
-
-  # SRCH-2009
-  @wip
   Scenario: When a searcher clicks on a collection on sidebar and the query is blank
     Given the following Affiliates exist:
       | display_name | name    | contact_email | first_name | last_name  |
