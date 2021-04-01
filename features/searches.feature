@@ -1047,22 +1047,23 @@ Feature: Search
     And I should not see tainted SERP header
     And I should not see tainted SERP footer
 
-  # SRCH-2009
-  @wip
   Scenario: Affiliate search on affiliate with connections
     Given the following Affiliates exist:
       | display_name | name       | contact_email | first_name | last_name | domains |
-      | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | .gov    |
-      | other site   | other.gov  | aff@bad.gov   | John       | Bad       | .gov    |
+      | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | epa.gov |
+      | other site   | other.gov  | aff@bad.gov   | John       | Bad       | cdc.gov |
     And the following Connections exist for the affiliate "agency.gov":
     | connected_affiliate   |   display_name    |
     | other.gov             |  Other Site       |
     When I am on agency.gov's search page
-    And I fill in "query" with "jobs"
-    And I press "Search" within the search box
-    Then I should see "Other Site"
-    When I follow "Other Site"
+    And I search for "jobs"
+    Then I should see at least "10" web search results
+    And every result URL should match "epa.gov"
+    And I should see "Other Site"
+    When I follow "Other Site" in the search navbar
     Then I should see the browser page titled "jobs - other site Search Results"
+    And I should see at least "10" web search results
+    And every result URL should match "cdc.gov"
 
   # SRCH-2009
   @wip
