@@ -20,7 +20,7 @@
   'in the homepage footer': '.footer.links',
   'in the homepage about section': '.about',
   'in the homepage tagline': '.tagline',
-  'in the left column': '#left_column',
+  'in the left column': '#left_column', # legacy SERP
   'in the selected vertical navigation': '#sidebar span',
   'in the search results section': '#results',
   'in the advanced search section': '.advancedsearch',

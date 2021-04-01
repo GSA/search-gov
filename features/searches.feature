@@ -808,9 +808,7 @@ Feature: Search
     Then I should see the browser page titled "OR US97 central - agency site Search Results"
     And I should see some Bing search results
 
-  # SRCH-2009
-  @wip
-  Scenario: When a searcher clicks on a collection on sidebar and the query is blank
+  Scenario: When a searcher clicks on a collection and the query is blank
     Given the following Affiliates exist:
       | display_name | name    | contact_email | first_name | last_name  |
       | aff site     | aff.gov | aff@bar.gov   | John       | Bar        |
@@ -818,7 +816,7 @@ Feature: Search
       | name   | prefixes               | is_navigable |
       | Topics | http://aff.gov/topics/ | true         |
     When I go to aff.gov's search page
-    And I follow "Topics" in the left column
+    And I follow "Topics" in the search navbar
     Then I should see "Please enter a search term"
 
   # SRCH-2009
