@@ -13,7 +13,7 @@ executors:
 
     docker:
       # using custom images, see .circleci/images/primary/
-      - image: searchgov/ruby:2.5.5
+      - image: searchgov/ruby:${RUBY_VERSION}
         environment:
           RAILS_ENV: test
 
@@ -60,6 +60,12 @@ commands:
 
 jobs:
   checkout_code:
+    environment:
+      RUBY_VERSION: << parameters.ruby_version >>
+    parameters:
+      ruby_version:
+        type: string
+
     executor: test_executor
 
     steps:
@@ -86,6 +92,12 @@ jobs:
             - ~/search-gov
 
   bundle_install:
+    environment:
+      RUBY_VERSION: << parameters.ruby_version >>
+    parameters:
+      ruby_version:
+        type: string
+
     executor: test_executor
 
     steps:
@@ -99,6 +111,12 @@ jobs:
 
 
   rspec:
+    environment:
+      RUBY_VERSION: << parameters.ruby_version >>
+    parameters:
+      ruby_version:
+        type: string
+
     executor: test_executor
 
     parallelism: 2
@@ -142,6 +160,12 @@ jobs:
           destination: test-results
 
   cucumber:
+    environment:
+      RUBY_VERSION: << parameters.ruby_version >>
+    parameters:
+      ruby_version:
+        type: string
+
     executor: test_executor
 
     parallelism: 6
@@ -187,6 +211,12 @@ jobs:
           destination: test-results
 
   report_coverage:
+    environment:
+      RUBY_VERSION: << parameters.ruby_version >>
+    parameters:
+      ruby_version:
+        type: string
+
     executor: test_executor
 
     steps:
@@ -211,21 +241,36 @@ workflows:
   version: 2
   build_and_test:
     jobs:
-      - checkout_code
+      - checkout_code:
+          matrix:
+            parameters:
+              ruby_version: ["2.5.5"]
 
       - bundle_install:
           requires:
-          - checkout_code
+            - checkout_code
+          matrix:
+            parameters:
+              ruby_version: ["2.5.5"]
 
       - rspec:
           requires:
             - bundle_install
+          matrix:
+            parameters:
+              ruby_version: ["2.5.5"]
 
       - cucumber:
           requires:
             - bundle_install
+          matrix:
+            parameters:
+              ruby_version: ["2.5.5"]
 
       - report_coverage:
           requires:
             - rspec
             - cucumber
+          matrix:
+            parameters:
+              ruby_version: ["2.5.5"]
