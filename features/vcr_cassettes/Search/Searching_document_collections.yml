@@ -1,0 +1,69 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=death%20star%20r2d2%20xyz3%20(site:petitions.whitehouse.gov/)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Thu, 01 Apr 2021 21:10:10 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - D54CB9D983F34FECA2EAA0F09CC49F76
+      Bingapis-Sessionid:
+      - 956531CD06E94656A7FCA31DDA8E73E2
+      X-Msedge-Clientid:
+      - 3AD1DC99D34B62C52624CC95D2B66334
+      X-Msapi-Userstate:
+      - 959d
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=181,MSDatacenter=BN2B
+      X-Msedge-Ref:
+      - 'Ref A: D54CB9D983F34FECA2EAA0F09CC49F76 Ref B: BLUEDGE0823 Ref C: 2021-04-01T21:11:10Z'
+      Apim-Request-Id:
+      - '087d6dfd-0e72-42fa-a822-5fd20f2d0724'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Thu, 01 Apr 2021 21:11:10 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "death
+        star r2d2 xyz3 (site:petitions.whitehouse.gov\/)"}, "rankingResponse": {}}'
+    http_version:
+  recorded_at: Thu, 01 Apr 2021 21:11:10 GMT
+recorded_with: VCR 4.0.0
