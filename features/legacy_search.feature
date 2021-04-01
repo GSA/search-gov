@@ -1056,13 +1056,13 @@ Feature: Legacy Search
     When I am on agency.gov's search page
     And I fill in "query" with "notes"
     And I press "Search" in the legacy search box
-    Then I should see a link to "Notes for Week Ending May 31, 2013" with url for "http://search.gov/releases/2013-05-31.html" in the boosted contents section
+    Then I should see a link to "Notes for Week Ending May 31, 2013" with url for "http://search.gov/releases/2013-05-31.html" in the legacy boosted contents section
     And I should not see a link to "Notes for Week Ending June 21, 2013"
 
     When I am on es.agency.gov's search page
     And I fill in "query" with "emergencia"
     And I press "Buscar" in the legacy search box
-    Then I should see a link to "la página de prueba de Emergencia" with url for "http://www.agency.gov/911" in the boosted contents section
+    Then I should see a link to "la página de prueba de Emergencia" with url for "http://www.agency.gov/911" in the legacy boosted contents section
 
   Scenario: Searching news items with custom dublin core mappings
     Given the following legacy Affiliates exist:

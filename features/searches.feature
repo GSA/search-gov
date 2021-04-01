@@ -729,8 +729,7 @@ Feature: Search
     And I should see "Imágenes"
     And I should not see "Images"
 
-  # SRCH-2009
-  @wip @javascript
+  @javascript
   Scenario: Searchers see English Medline Govbox
     Given the following Affiliates exist:
       | display_name | name        | contact_email | first_name | last_name | domains | is_medline_govbox_enabled |
@@ -752,7 +751,7 @@ Feature: Search
     When I am on english-nih's search page
     And I fill in "query" with "hippopotomonstrosesquippedaliophobia"
     And I press "Search" within the search box
-    Then I should see "Hippopotomonstrosesquippedaliophobia and Other Irrational Fears" in the medline govbox
+    Then I should see "Hippopotomonstrosesquippedaliophobia and Other Irrational Fears" within the med topic govbox
     And I should see a link to "Hippo1" with url for "https://www.nlm.nih.gov/medlineplus/Hippopotomonstrosesquippedaliophobia.html"
 
     Given I am logged in with email "aff@bar.gov"
@@ -765,8 +764,7 @@ Feature: Search
     And I press "Search" within the search box
     Then I should not see "Hippopotomonstrosesquippedaliophobia and Other Irrational Fears"
 
-  # SRCH-2009
-  @wip @javascript
+  @javascript
   Scenario: Searchers see Spanish Medline Govbox
     Given the following Affiliates exist:
       | display_name | name        | contact_email | first_name | last_name | domains | is_medline_govbox_enabled | locale |
@@ -785,7 +783,7 @@ Feature: Search
     When I am on spanish-nih's search page
     And I fill in "query" with "hippopotomonstrosesquippedaliophobia"
     And I press "Buscar" within the search box
-    Then I should see "Hippopotomonstrosesquippedaliophobia y otros miedos irracionales" in the medline govbox
+    Then I should see "Hippopotomonstrosesquippedaliophobia y otros miedos irracionales" within the med topic govbox
 
     Given I am logged in with email "aff@bar.gov"
     When I go to the spanish-nih's Manage Display page
@@ -1083,8 +1081,6 @@ Feature: Search
     And I press "Search" within the search box
     Then I should see a featured collection link title with "Atlantic" highlighted
 
-  # SRCH-2009
-  @wip
   Scenario: Searching on sites with Boosted Contents
     Given the following Affiliates exist:
       | display_name   | name          | contact_email   | first_name| last_name | locale |
