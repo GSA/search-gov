@@ -966,14 +966,15 @@ Feature: Search
     And I should not see a link to "Blog" in the left column
     And I should not see a link to "Search Notes" in the left column
 
-  # SRCH-2009
-  @wip
   Scenario: Searching with malformed query
     Given the following Affiliates exist:
       | display_name | name       | contact_email | first_name | last_name | is_image_search_navigable |
       | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | true                      |
-    When I am on agency.gov's search page with unsanitized "hello" query
-    Then I should see a link to "Images" with sanitized "hello" query
+    When I am on agency.gov's search page
+    And I search for "<b>hello</b><script>script</script>"
+    Then I should see "hello"
+    And I should not see "script"
+    And I should see a link to "Images" with url that ends with "query=hello" in the search navbar
 
   # SRCH-2009
   @wip
