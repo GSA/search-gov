@@ -21,18 +21,432 @@ http_interactions:
       - '30'
   response:
     status:
-      code: 401
-      message: PermissionDenied
+      code: 200
+      message: OK
     headers:
-      Content-Length:
-      - '224'
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 31 Mar 2021 17:00:13 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 8AB0E33DA03B4F459C64C0A30F3E5863
+      Bingapis-Sessionid:
+      - 2FE4D64A3C33413EB189C2CD9D0BBAFF
+      X-Msedge-Clientid:
+      - 318743F2D1426E17088253F9D00D6F38
+      X-Msapi-Userstate:
+      - c8e2
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=198,MSDatacenter=BN2B
+      X-Msedge-Ref:
+      - 'Ref A: 8AB0E33DA03B4F459C64C0A30F3E5863 Ref B: BLUEDGE1119 Ref C: 2021-03-31T17:01:13Z'
+      Apim-Request-Id:
+      - 29ec0b35-ec4e-4daf-b24e-1ab34e03e56d
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Tue, 30 Mar 2021 17:16:07 GMT
+      - Wed, 31 Mar 2021 17:01:12 GMT
     body:
       encoding: UTF-8
-      string: '{"error":{"code":"401","message":"Access denied due to invalid subscription
-        key or wrong API endpoint. Make sure to provide a valid key for an active
-        subscription and use a correct regional API endpoint for your resource."}}'
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "president
+        (site:whitehouse.gov OR site:usa.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=president+(site%3awhitehouse.gov+OR+site%3ausa.gov)",
+        "totalEstimatedMatches": 3020000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Presidents | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents",
+        "snippet": "The 27th President of the United States William Howard Taft
+        Woodrow Wilson The 28th President of the United States Woodrow Wilson Warren
+        G. Harding The 29th President of the United States ...", "dateLastCrawled":
+        "2021-03-29T03:03:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1", "name":
+        "Joe Biden: The President | The White House", "url": "https:\/\/www.whitehouse.gov\/administration\/president-biden\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/administration\/president-biden",
+        "snippet": "President Biden represented Delaware for 36 years in the U.S.
+        Senate before becoming the 47th Vice President of the United States. As
+        President, Biden will restore America’s leadership and build ...", "dateLastCrawled":
+        "2021-03-30T00:06:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2", "name":
+        "The White House", "url": "https:\/\/www.whitehouse.gov\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.whitehouse.gov", "snippet": "President
+        Joseph R. Biden, Jr. Approves Disaster Declaration for the Poarch Band of
+        Creek Indians March 28, 2021 • Statements and Releases Bill Signing: H.R.
+        1651", "dateLastCrawled": "2021-03-29T00:24:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Remarks by President Biden in Press Conference | The White ...",
+        "url": "https:\/\/www.whitehouse.gov\/briefing-room\/speeches-remarks\/2021\/03\/25\/remarks-by-president-biden-in-press-conference\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/...\/2021\/03\/25\/remarks-by-president-biden-in-press-conference",
+        "snippet": "THE PRESIDENT: Well, the judgment has to be made whether or
+        not — and in this young man’s case, he has a mom at home; there’s an overwhelming
+        reason why he’d be put in a plane and flown ...", "dateLastCrawled": "2021-03-31T15:28:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Executive Office of the President | The White House", "url":
+        "https:\/\/www.whitehouse.gov\/administration\/executive-office-of-the-president\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/administration\/executive-office-of-the-president",
+        "snippet": "To provide the President with the support that he or she needs
+        to govern effectively, the Executive Office of the President (EOP) was created
+        in 1939 by President Franklin D. Roosevelt.", "dateLastCrawled": "2021-03-28T03:54:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "FACT SHEET: President Biden Announces 90% of the Adult U.S ...",
+        "url": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2021\/03\/29\/fact-sheet-president-biden-announces-90-of-the-adult-u-s-population-will-be-eligible-for-vaccination-and-90-will-have-a-vaccination-site-within-5-miles-of-home-by-april-19\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2021\/03\/29\/fact-sheet...",
+        "snippet": "The President to Outline New Actions to Accomplish Goal: Expanding
+        Pharmacy Program and Launching a New Program to Transport the Most Vulnerable
+        Seniors and People with Disabilities to Vaccination ...", "dateLastCrawled":
+        "2021-03-31T06:19:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6", "name":
+        "Theodore Roosevelt | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/theodore-roosevelt\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/theodore-roosevelt",
+        "snippet": "With the assassination of President William McKinley, Theodore
+        Roosevelt, not quite 43, became the 26th and youngest President in the
+        Nation’s history (1901-1909). He brought new excitement and ...", "dateLastCrawled":
+        "2021-03-29T22:05:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7", "name":
+        "Gerald R. Ford | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/gerald-r-ford\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/gerald-r-ford",
+        "snippet": "When Gerald R. Ford took the oath of office on August 9, 1974
+        as our 38th President, he declared, “I assume the Presidency under extraordinary
+        circumstances…This is an hour of history that ...", "dateLastCrawled": "2021-03-28T02:18:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "President Biden Announces Intent to Nominate 11 Judicial ...",
+        "url": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2021\/03\/30\/president-biden-announces-intent-to-nominate-11-judicial-candidates\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2021\/03\/30\/president...",
+        "snippet": "President Biden has had a career-long commitment to the strength
+        of the federal judiciary, and that is reflected in the historically fast pace
+        at which he has moved to fill vacancies on the ...", "dateLastCrawled": "2021-03-30T19:17:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "John Quincy Adams | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/john-quincy-adams\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/john-quincy-adams",
+        "snippet": "The first President who was the son of a President, John
+        Quincy Adams in many respects paralleled the career as well as the temperament
+        and viewpoints of his illustrious father.", "dateLastCrawled": "2021-03-29T14:14:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Benjamin Harrison | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/benjamin-harrison\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/benjamin-harrison",
+        "snippet": "Benjamin Harrison was the 23rd President of the United States
+        from 1889 to 1893, elected after conducting one of the first “front-porch”
+        campaigns by delivering short speeches to delegations ...", "dateLastCrawled":
+        "2021-03-28T12:15:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11", "name":
+        "President Biden Invites 40 World Leaders to Leaders Summit ...", "url":
+        "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2021\/03\/26\/president-biden-invites-40-world-leaders-to-leaders-summit-on-climate\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2021\/03\/26\/president...",
+        "snippet": "Today, President Biden invited 40 world leaders to the Leaders
+        Summit on Climate he will host on April 22 and 23. The virtual Leaders Summit
+        will be live streamed for public viewing. President ...", "dateLastCrawled":
+        "2021-03-28T12:16:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12", "name":
+        "Thomas Jefferson | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/thomas-jefferson\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/thomas-jefferson",
+        "snippet": "Thomas Jefferson, a spokesman for democracy, was an American
+        Founding Father, the principal author of the Declaration of Independence (1776),
+        and the third President of the United States (1801 ...", "dateLastCrawled":
+        "2021-03-28T01:20:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13", "name":
+        "Calvin Coolidge | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/calvin-coolidge\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/calvin-coolidge",
+        "snippet": "As America’s 30th President (1923-1929), Calvin Coolidge demonstrated
+        his determination to preserve the old moral and economic precepts of frugality
+        amid the material prosperity which many ...", "dateLastCrawled": "2021-03-28T23:11:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Grover Cleveland | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/grover-cleveland\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/grover-cleveland",
+        "snippet": "The first Democrat elected after the Civil War in 1885, our 22nd
+        and 24th President Grover Cleveland was the only President to leave
+        the White House and return for a second term four years later ...", "dateLastCrawled":
+        "2021-03-28T08:15:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15", "name":
+        "Andrew Johnson | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/andrew-johnson\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/andrew-johnson",
+        "snippet": "With the assassination of President Abraham Lincoln, Andrew
+        Johnson became the 17th President of the United States (1865-1869), an
+        old-fashioned southern Jacksonian Democrat of pronounced states ...", "dateLastCrawled":
+        "2021-03-29T13:54:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16", "name":
+        "Remarks by President Biden Before Air Force One Departure ...", "url":
+        "https:\/\/www.whitehouse.gov\/briefing-room\/speeches-remarks\/2021\/03\/28\/remarks-by-president-biden-before-air-force-one-departure\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/...\/remarks-by-president-biden-before-air-force-one-departure",
+        "snippet": "THE PRESIDENT: Well, we’re working on that now. Q Mr. President,
+        we’ve seen Republican senators at the border. Former President Trump said
+        he’s been asked by some Border Patrol agents to go ...", "dateLastCrawled":
+        "2021-03-31T08:12:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17", "name":
+        "Contact Us | The White House", "url": "https:\/\/www.whitehouse.gov\/contact\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/contact",
+        "snippet": "We''ll be in touch with the latest information on how President
+        Biden and his administration are working for the American people, as well
+        as ways you can get involved and help our country build ...", "dateLastCrawled":
+        "2021-03-28T02:33:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18", "name":
+        "Harry S. Truman | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/harry-s-truman\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/harry-s-truman",
+        "snippet": "During his few weeks as Vice President, Harry Truman scarcely
+        saw President Franklin Roosevelt, and received no briefing on the development
+        of the atomic bomb or the unfolding difficulties with ...", "dateLastCrawled":
+        "2021-03-29T22:13:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19", "name":
+        "President''s Budget | The White House", "url": "https:\/\/www.whitehouse.gov\/omb\/budget\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/omb\/bu",
+        "snippet": "Please check back soon for President Biden’s FY2022 budget.
+        Past budgets can be found here.", "dateLastCrawled": "2021-03-28T20:03:00.0000000Z",
+        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
     http_version:
-  recorded_at: Tue, 30 Mar 2021 17:16:08 GMT
+  recorded_at: Wed, 31 Mar 2021 17:01:13 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=president%20(site:whitehouse.gov%20OR%20site:usa.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 31 Mar 2021 17:00:22 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - A5710E7272774134A049713B8D5B816F
+      Bingapis-Sessionid:
+      - C42C5EBEF97E48F985BBBA924111CDD8
+      X-Msedge-Clientid:
+      - 2413E96E634D691E3721F96562026868
+      X-Msapi-Userstate:
+      - 797e
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=187,MSDatacenter=BN2B
+      X-Msedge-Ref:
+      - 'Ref A: A5710E7272774134A049713B8D5B816F Ref B: BLUEDGE1207 Ref C: 2021-03-31T17:01:22Z'
+      Apim-Request-Id:
+      - b0d5c24a-9485-4699-84f5-c879952b73ed
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 31 Mar 2021 17:01:22 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "president
+        (site:whitehouse.gov OR site:usa.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=president+(site%3awhitehouse.gov+OR+site%3ausa.gov)",
+        "totalEstimatedMatches": 3020000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Presidents | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents",
+        "snippet": "The 27th President of the United States William Howard Taft
+        Woodrow Wilson The 28th President of the United States Woodrow Wilson Warren
+        G. Harding The 29th President of the United States ...", "dateLastCrawled":
+        "2021-03-29T03:03:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1", "name":
+        "Joe Biden: The President | The White House", "url": "https:\/\/www.whitehouse.gov\/administration\/president-biden\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/administration\/president-biden",
+        "snippet": "President Biden represented Delaware for 36 years in the U.S.
+        Senate before becoming the 47th Vice President of the United States. As
+        President, Biden will restore America’s leadership and build ...", "dateLastCrawled":
+        "2021-03-27T22:05:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2", "name":
+        "The White House", "url": "https:\/\/www.whitehouse.gov\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.whitehouse.gov", "snippet": "President
+        Joseph R. Biden, Jr. Approves Disaster Declaration for the Poarch Band of
+        Creek Indians March 28, 2021 • Statements and Releases Bill Signing: H.R.
+        1651", "dateLastCrawled": "2021-03-29T13:14:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Remarks by President Biden in Press Conference | The White ...",
+        "url": "https:\/\/www.whitehouse.gov\/briefing-room\/speeches-remarks\/2021\/03\/25\/remarks-by-president-biden-in-press-conference\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/...\/2021\/03\/25\/remarks-by-president-biden-in-press-conference",
+        "snippet": "THE PRESIDENT: Well, the judgment has to be made whether or
+        not — and in this young man’s case, he has a mom at home; there’s an overwhelming
+        reason why he’d be put in a plane and flown ...", "dateLastCrawled": "2021-03-31T15:28:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Executive Office of the President | The White House", "url":
+        "https:\/\/www.whitehouse.gov\/administration\/executive-office-of-the-president\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/administration\/executive-office-of-the-president",
+        "snippet": "To provide the President with the support that he or she needs
+        to govern effectively, the Executive Office of the President (EOP) was created
+        in 1939 by President Franklin D. Roosevelt.", "dateLastCrawled": "2021-03-29T16:05:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "FACT SHEET: President Biden Announces 90% of the Adult U.S ...",
+        "url": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2021\/03\/29\/fact-sheet-president-biden-announces-90-of-the-adult-u-s-population-will-be-eligible-for-vaccination-and-90-will-have-a-vaccination-site-within-5-miles-of-home-by-april-19\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2021\/03\/29\/fact-sheet...",
+        "snippet": "The President to Outline New Actions to Accomplish Goal: Expanding
+        Pharmacy Program and Launching a New Program to Transport the Most Vulnerable
+        Seniors and People with Disabilities to Vaccination ...", "dateLastCrawled":
+        "2021-03-31T06:19:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6", "name":
+        "President Biden Announces Intent to Nominate 11 Judicial ...", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2021\/03\/30\/president-biden-announces-intent-to-nominate-11-judicial-candidates\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2021\/03\/30\/president...",
+        "snippet": "President Biden has had a career-long commitment to the strength
+        of the federal judiciary, and that is reflected in the historically fast pace
+        at which he has moved to fill vacancies on the ...", "dateLastCrawled": "2021-03-30T19:17:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Theodore Roosevelt | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/theodore-roosevelt\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/theodore-roosevelt",
+        "snippet": "With the assassination of President William McKinley, Theodore
+        Roosevelt, not quite 43, became the 26th and youngest President in the
+        Nation’s history (1901-1909). He brought new excitement and ...", "dateLastCrawled":
+        "2021-03-28T10:02:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8", "name":
+        "Benjamin Harrison | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/benjamin-harrison\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/benjamin-harrison",
+        "snippet": "Benjamin Harrison was the 23rd President of the United States
+        from 1889 to 1893, elected after conducting one of the first “front-porch”
+        campaigns by delivering short speeches to delegations ...", "dateLastCrawled":
+        "2021-03-29T14:13:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9", "name":
+        "Gerald R. Ford | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/gerald-r-ford\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/gerald-r-ford",
+        "snippet": "When Gerald R. Ford took the oath of office on August 9, 1974
+        as our 38th President, he declared, “I assume the Presidency under extraordinary
+        circumstances…This is an hour of history that ...", "dateLastCrawled": "2021-03-29T18:27:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Grover Cleveland | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/grover-cleveland\/",
+        "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.iFh5nk48t58D04YdxcH5zQHaHa&pid=Api",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/grover-cleveland",
+        "snippet": "The first Democrat elected after the Civil War in 1885, our 22nd
+        and 24th President Grover Cleveland was the only President to leave
+        the White House and return for a second term four years later ...", "dateLastCrawled":
+        "2021-03-29T22:36:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11", "name":
+        "Calvin Coolidge | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/calvin-coolidge\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/calvin-coolidge",
+        "snippet": "As America’s 30th President (1923-1929), Calvin Coolidge demonstrated
+        his determination to preserve the old moral and economic precepts of frugality
+        amid the material prosperity which many ...", "dateLastCrawled": "2021-03-28T23:11:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Thomas Jefferson | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/thomas-jefferson\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/thomas-jefferson",
+        "snippet": "Thomas Jefferson, a spokesman for democracy, was an American
+        Founding Father, the principal author of the Declaration of Independence (1776),
+        and the third President of the United States (1801 ...", "dateLastCrawled":
+        "2021-03-29T13:19:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13", "name":
+        "John Quincy Adams | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/john-quincy-adams\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/john-quincy-adams",
+        "snippet": "The first President who was the son of a President, John
+        Quincy Adams in many respects paralleled the career as well as the temperament
+        and viewpoints of his illustrious father.", "dateLastCrawled": "2021-03-28T13:09:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "President Biden Invites 40 World Leaders to Leaders Summit ...",
+        "url": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2021\/03\/26\/president-biden-invites-40-world-leaders-to-leaders-summit-on-climate\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2021\/03\/26\/president...",
+        "snippet": "Today, President Biden invited 40 world leaders to the Leaders
+        Summit on Climate he will host on April 22 and 23. The virtual Leaders Summit
+        will be live streamed for public viewing.", "dateLastCrawled": "2021-03-28T12:16:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "John Adams | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/john-adams\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/john-adams",
+        "snippet": "John Adams, a remarkable political philosopher, served as the
+        second President of the United States (1797-1801), after serving as the
+        first Vice President under President George Washington.", "dateLastCrawled":
+        "2021-03-29T21:18:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16", "name":
+        "Contact Us | The White House", "url": "https:\/\/www.whitehouse.gov\/contact\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/contact",
+        "snippet": "We''ll be in touch with the latest information on how President
+        Biden and his administration are working for the American people, as well
+        as ways you can get involved and help our country build ...", "dateLastCrawled":
+        "2021-03-28T02:33:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17", "name":
+        "Andrew Johnson | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/andrew-johnson\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/andrew-johnson",
+        "snippet": "With the assassination of President Abraham Lincoln, Andrew
+        Johnson became the 17th President of the United States (1865-1869), an
+        old-fashioned southern Jacksonian Democrat of pronounced states ...", "dateLastCrawled":
+        "2021-03-28T08:17:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18", "name":
+        "Statement by President Biden on the COVID-19 Hate Crimes ...", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2021\/03\/19\/statement-by-president-biden-on-the-covid-19-hate-crimes-act\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2021\/03\/19\/statement-by...",
+        "snippet": "We''ll be in touch with the latest information on how President
+        Biden and his administration are working for the American people, as well
+        as ways you can get involved and help our country build ...", "dateLastCrawled":
+        "2021-03-27T09:20:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19", "name":
+        "The Biden-Harris Administration | The White House", "url": "https:\/\/www.whitehouse.gov\/administration\/",
+        "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.D3go_ssYPsblyQh940jBlAHaFm&pid=Api",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/administration",
+        "snippet": "Thousands of people work in the West Wing, the East Wing, the
+        Cabinet, and the Executive Office of the President. Learn more about the
+        people who carry out the priorities of the Biden-Harris ...", "dateLastCrawled":
+        "2021-03-28T16:00:00.0000000Z", "language": "en", "isNavigational": false}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version:
+  recorded_at: Wed, 31 Mar 2021 17:01:22 GMT
 recorded_with: VCR 4.0.0

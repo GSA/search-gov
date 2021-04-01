@@ -2,433 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=hillary%20rodham%20clinton%20first%20lady%20(site:whitehouse.gov)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Ocp-Apim-Subscription-Key:
-      - "<BING_V6_APP_ID>"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Content-Length:
-      - '2838'
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Thu, 22 Feb 2018 07:15:11 GMT
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      Set-Cookie:
-      - MUID=2A319F5359B56434194194CD58506512; path=/; expires=Tue, 19-Mar-2019 07:16:11
-        GMT; domain=bingapis.com
-      - MUIDB=2A319F5359B56434194194CD58506512; path=/; httponly; expires=Tue, 19-Mar-2019
-        07:16:11 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:16:11 GMT;
-        path=/
-      - SRCHUID=V=2&GUID=579CAC6EEEF34555BE0B230AAC0BC1BB&dmnchg=1; domain=.bingapis.com;
-        expires=Sat, 22-Feb-2020 07:16:11 GMT; path=/
-      - SRCHUSR=DOB=20180222; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:16:11
-        GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=2AECA694C5076E4338CCAD0AC4E26FCC; path=/; httponly;
-        domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Tue, 19-Mar-2019 07:16:11 GMT; domain=bingapis.com
-      - _SS=SID=2AECA694C5076E4338CCAD0AC4E26FCC; domain=.bingapis.com; path=/
-      Bingapis-Traceid:
-      - C5C5A7D0F83B46D19021C84D0A09D849
-      X-Msedge-Clientid:
-      - 2A319F5359B56434194194CD58506512
-      X-Msapi-Userstate:
-      - d72d
-      Bingapis-Market:
-      - en-US
-      X-Msedge-Ref:
-      - 'Ref A: C5C5A7D0F83B46D19021C84D0A09D849 Ref B: SG2EDGE1012 Ref C: 2018-02-22T07:16:11Z'
-      Date:
-      - Thu, 22 Feb 2018 07:16:11 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=48E4839036864709B12D65FCD06D3442&CID=2A319F5359B56434194194CD58506512&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=48E4839036864709B12D65FCD06D3442&CID=2A319F5359B56434194194CD58506512&Type=Event.CPT&DATA=0"},
-        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=hillary+rodham+clinton+first+lady+(site%3awhitehouse.gov)",
-        "webSearchUrlPingSuffix": "DevEx,5393.1", "totalEstimatedMatches": 16, "value":
-        [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "Hillary
-        Rodham Clinton - White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/hillary-rodham-clinton\/",
-        "urlPingSuffix": "DevEx,5076.1", "about": [{"name": "Hillary Clinton"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/...\/first-ladies\/hillary-rodham-clinton",
-        "snippet": "Hillary Diane Rodham Clinton served as the First Lady of
-        the United States to the 42nd President, Bill Clinton. She went on to become
-        a U.S. Secretary of State and U ...", "dateLastCrawled": "2018-02-11T00:00:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "First
-        Ladies of the United States - whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/",
-        "urlPingSuffix": "DevEx,5092.1", "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies",
-        "snippet": "Which two first ladies met their husbands through local newspapers?
-        Who was the first First Lady to make regular nationwide radio broadcasts?
-        Which First Lady cared ...", "dateLastCrawled": "2018-02-13T18:16:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "First
-        Lady of the United States - whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/laura-welch-bush\/",
-        "urlPingSuffix": "DevEx,5106.1", "about": [{"name": "Laura Bush"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/...",
-        "snippet": "Laura Lane Welch Bush is the wife of the 43rd President, George
-        W. Bush. She served as First Lady from 2001 to 2009, advocating for historic
-        education reform and the ...", "dateLastCrawled": "2018-02-13T12:58:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Former
-        First Lady Barbara Bush - whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/barbara-pierce-bush\/",
-        "urlPingSuffix": "DevEx,5120.1", "about": [{"name": "Barbara Bush"}, {"name":
-        "Barbara Bush"}], "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/...",
-        "snippet": "After serving as Second Lady from 1981 to 1989, Barbara Pierce
-        Bush served as First Lady of the United States when her husband George H.
-        W. Bush won the Presidency.", "dateLastCrawled": "2018-02-14T11:17:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Claudia
-        Alta Taylor \"Lady Bird\" Johnson", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/claudia-alta-taylor-lady-bird-johnson\/",
-        "urlPingSuffix": "DevEx,5134.1", "about": [{"name": "Lady Bird Johnson"}],
-        "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/...",
-        "snippet": "Claudia Alta Taylor “Lady Bird” Johnson served as First Lady
-        of the United States (1963–1969) as the wife of President Lyndon B. Johnson.
-        A shrewd investor and ...", "dateLastCrawled": "2018-02-11T13:00:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Martha
-        Dandridge Custis Washington - White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/martha-dandridge-custis-washington\/",
-        "urlPingSuffix": "DevEx,5148.1", "about": [{"name": "Martha Washington"}],
-        "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/...",
-        "snippet": "As the wife of George Washington, the first President of the
-        United States, Martha Dandridge Custis Washington is considered to be the
-        first First Lady, but the title ...", "dateLastCrawled": "2018-02-09T18:04:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Former
-        First Lady Michelle Obama - whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/michelle-obama\/",
-        "urlPingSuffix": "DevEx,5162.1", "about": [{"name": "Michelle Obama"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/...",
-        "snippet": "Michelle LaVaughn Robinson Obama is a lawyer, writer, and the
-        wife of the 44th President, Barack Obama. She was the first African-American
-        First Lady of the United ...", "dateLastCrawled": "2018-02-11T08:40:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Rosalynn
-        Smith Carter - White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/rosalynn-smith-carter\/",
-        "urlPingSuffix": "DevEx,5176.1", "about": [{"name": "Rosalynn Carter"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/...",
-        "snippet": "Politically active Eleanor Rosalynn Carter is the wife of 39th
-        President Jimmy Carter. Serving as the First Lady from 1977 to 1981, she
-        was an envoy abroad and a ...", "dateLastCrawled": "2018-02-16T14:52:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Jacqueline
-        Lee Bouvier Kennedy - White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/jacqueline-lee-bouvier-kennedy\/",
-        "urlPingSuffix": "DevEx,5190.1", "about": [{"name": "Jacqueline Kennedy Onassis"}],
-        "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/...",
-        "snippet": "First Lady Jacqueline Lee “Jackie” (Bouvier) Kennedy Onassis
-        was a symbol of strength for a traumatized nation after the assassination
-        of one the country’s most ...", "dateLastCrawled": "2018-02-09T00:41:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "William
-        J. Clinton - The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/william-j-clinton\/",
-        "urlPingSuffix": "DevEx,5204.1", "about": [{"name": "Bill Clinton"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/...\/presidents\/william-j-clinton", "snippet":
-        "The next year he married Hillary Rodham, ... For the first time in 12
-        years both the ... Learn more about William J. Clinton’s spouse, Hillary
-        Rodham Clinton. The ...", "dateLastCrawled": "2018-02-15T16:01:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Nancy
-        Davis Reagan - White House bio.", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/nancy-davis-reagan\/",
-        "urlPingSuffix": "DevEx,5218.1", "about": [{"name": "Nancy Reagan"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/...",
-        "snippet": "Originally a Broadway actress, Nancy Davis Reagan served as First
-        Lady from 1981 to 1989. She served alongside her husband, President Ronald
-        Reagan, and is remembered ...", "dateLastCrawled": "2018-02-16T01:51:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Petition
-        the White House on the Issues that Matter to You ...", "url": "https:\/\/petitions.whitehouse.gov\/responses",
-        "urlPingSuffix": "DevEx,5232.1", "about": [{"name": "Matter"}], "displayUrl":
-        "https:\/\/petitions.whitehouse.gov\/responses", "snippet": "Gather Signatures.
-        Share your petition with others, build a community for the change you want
-        to make.", "dateLastCrawled": "2018-02-16T13:01:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
-        "name": "touted his record on veterans issues - whitehouse.gov", "url":
-        "https:\/\/www.whitehouse.gov\/issues\/veterans\/", "urlPingSuffix": "DevEx,5246.1",
-        "displayUrl": "https:\/\/www.whitehouse.gov\/issues\/veterans", "snippet":
-        "President Donald J. Trump Is Putting Our Veterans First. Veterans Nov 9,
-        2017. News Clips", "dateLastCrawled": "2018-02-15T13:39:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Eisenhower Executive
-        Office Building - The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/eisenhower-executive-office-building\/",
-        "urlPingSuffix": "DevEx,5260.1", "about": [{"name": "Eisenhower Executive
-        Office Building"}], "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/eisenhower...",
-        "snippet": "Completed in 1875, the State Department’s south wing was the first
-        to be occupied, with its elegant four-story library (completed in 1876), ...",
-        "dateLastCrawled": "2018-02-15T17:52:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
-        "name": "We the People: Your Voice in Our Government - White House", "url":
-        "https:\/\/petitions.whitehouse.gov\/", "urlPingSuffix": "DevEx,5276.1", "about":
-        [{"name": "White House"}], "displayUrl": "https:\/\/petitions.whitehouse.gov",
-        "snippet": "We The People Call for The Resignation of FCC Chairman ... Sign
-        It IMMEDIATELY ASSIGN A SPECIAL PROSECUTOR TO INVESTIGATE HILLARY CLINTON’S
-        DELETION OF 33,000 ...", "dateLastCrawled": "2018-02-14T12:11:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Petitions
-        | The White House", "url": "https:\/\/petitions.whitehouse.gov\/petition\/ask-president-obama-appear-hbos-real-time-bill-maher",
-        "urlPingSuffix": "DevEx,5289.1", "displayUrl": "https:\/\/petitions.whitehouse.gov\/petition\/ask-president-obama...",
-        "snippet": "Thank you for your interest in Petitions.WhiteHouse.gov. To
-        improve this site''s performance, the platform is currently down for maintenance
-        and will return in late ...", "dateLastCrawled": "2018-02-01T15:49:00.0000000Z"}]},
-        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
-        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
-        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
-        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
-        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
-        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
-        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
-        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
-        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
-        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
-        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
-        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
-        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
-        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
-        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
-        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
-        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}}]}}}'
-    http_version: 
-  recorded_at: Thu, 22 Feb 2018 07:16:11 GMT
-- request:
-    method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=hillary%20rodham%20clinton%20first%20lady%20(site:whitehouse.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Content-Length:
-      - '3617'
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Mon, 19 Nov 2018 22:38:56 GMT
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      Set-Cookie:
-      - MUID=2A0FDA9F3BEE662807B1D6333A3967CD; path=/; expires=Sat, 14-Dec-2019 22:39:57
-        GMT; domain=bingapis.com
-      - MUIDB=2A0FDA9F3BEE662807B1D6333A3967CD; path=/; httponly; expires=Sat, 14-Dec-2019
-        22:39:57 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 19-Nov-2020 22:39:56 GMT;
-        path=/
-      - SRCHUID=V=2&GUID=9387CF028CC14FCEA680EC4CC4C0865D&dmnchg=1; domain=.bingapis.com;
-        expires=Thu, 19-Nov-2020 22:39:56 GMT; path=/
-      - SRCHUSR=DOB=20181119; domain=.bingapis.com; expires=Thu, 19-Nov-2020 22:39:56
-        GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=13EAC73F31D5628A1A39CB93300263E8; path=/; httponly;
-        domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sat, 14-Dec-2019 22:39:57 GMT; domain=bingapis.com
-      - _SS=SID=13EAC73F31D5628A1A39CB93300263E8; domain=.bingapis.com; path=/
-      Bingapis-Traceid:
-      - BEC5CABAF56E487790727235DB5ABBF0
-      X-Msedge-Clientid:
-      - 2A0FDA9F3BEE662807B1D6333A3967CD
-      X-Msapi-Userstate:
-      - 8af0
-      Bingapis-Market:
-      - en-US
-      X-Msedge-Ref:
-      - 'Ref A: BEC5CABAF56E487790727235DB5ABBF0 Ref B: CO1EDGE0521 Ref C: 2018-11-19T22:39:57Z'
-      Date:
-      - Mon, 19 Nov 2018 22:39:56 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=750E9AE92A1B4C8F8FD0E6FD38CF2542&CID=2A0FDA9F3BEE662807B1D6333A3967CD&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=750E9AE92A1B4C8F8FD0E6FD38CF2542&CID=2A0FDA9F3BEE662807B1D6333A3967CD&Type=Event.CPT&DATA=0"},
-        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=hillary+rodham+clinton+first+lady+(site%3awhitehouse.gov)",
-        "webSearchUrlPingSuffix": "DevEx,5423.1", "totalEstimatedMatches": 51, "value":
-        [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "Hillary
-        Rodham Clinton | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/hillary-rodham-clinton\/",
-        "urlPingSuffix": "DevEx,5059.1", "about": [{"name": "Hillary Clinton"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/...\/first-ladies\/hillary-rodham-clinton",
-        "snippet": "Hillary Diane Rodham Clinton served as the First Lady of
-        the United States to the 42nd President, Bill Clinton. She went on to become
-        a U.S. Secretary of State and U.S. Senator from New York. In ...", "dateLastCrawled":
-        "2018-11-12T16:10:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
-        "name": "First Ladies | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/",
-        "urlPingSuffix": "DevEx,5073.1", "about": [{"name": "Nancy Reagan"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies",
-        "snippet": "Which two first ladies met their husbands through local newspapers?
-        Who was the first First Lady to make regular nationwide radio broadcasts?
-        Which First Lady cared for wounded soldiers in her ...", "dateLastCrawled":
-        "2018-11-14T22:01:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
-        "name": "William J. Clinton | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/william-j-clinton\/",
-        "urlPingSuffix": "DevEx,5087.1", "about": [{"name": "Bill Clinton"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/...\/presidents\/william-j-clinton", "snippet":
-        "Bill Clinton is an American politician from Arkansas who served as the
-        42nd President of the United States (1993-2001). He took office at the end
-        of the Cold War, and was the first baby-boomer ...", "dateLastCrawled":
-        "2018-11-13T17:48:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
-        "name": "Michelle Obama | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/michelle-obama\/",
-        "urlPingSuffix": "DevEx,5101.1", "about": [{"name": "Michelle Obama"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/...\/first-ladies\/michelle-obama", "snippet":
-        "Michelle LaVaughn Robinson Obama is a lawyer, writer, and the wife of the
-        44th President, Barack Obama. She was the first African-American First
-        Lady of the United States. Through her four main ...", "dateLastCrawled":
-        "2018-11-13T06:04:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
-        "name": "Barbara Pierce Bush | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/barbara-pierce-bush\/",
-        "urlPingSuffix": "DevEx,5115.1", "about": [{"name": "Barbara Bush"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/...\/first-ladies\/barbara-pierce-bush",
-        "snippet": "After serving as Second Lady from 1981 to 1989, Barbara Pierce
-        Bush served as First Lady of the United States when her husband George
-        H. W. Bush won the Presidency. She is also the mother of the ...", "dateLastCrawled":
-        "2018-11-16T10:56:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
-        "name": "Laura Welch Bush | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/laura-welch-bush\/",
-        "urlPingSuffix": "DevEx,5129.1", "about": [{"name": "Laura Bush"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/...",
-        "snippet": "Laura Lane Welch Bush is the wife of the 43rd President, George
-        W. Bush. She served as First Lady from 2001 to 2009, advocating for historic
-        education reform and the well-being of women and ...", "dateLastCrawled":
-        "2018-11-13T23:00:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
-        "name": "Jacqueline Lee Bouvier Kennedy | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/jacqueline-lee-bouvier-kennedy\/",
-        "urlPingSuffix": "DevEx,5143.1", "about": [{"name": "Jacqueline Kennedy Onassis"}],
-        "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/...",
-        "snippet": "First Lady Jacqueline Lee “Jackie” (Bouvier) Kennedy Onassis
-        was a symbol of strength for a traumatized nation after the assassination
-        of one the country’s most energetic political figures ...", "dateLastCrawled":
-        "2018-11-13T03:58:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
-        "name": "Rosalynn Smith Carter | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/rosalynn-smith-carter\/",
-        "urlPingSuffix": "DevEx,5157.1", "about": [{"name": "Rosalynn Carter"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/...\/first-ladies\/rosalynn-smith-carter",
-        "snippet": "Politically active Eleanor Rosalynn Carter is the wife of 39th
-        President Jimmy Carter. Serving as the First Lady from 1977 to 1981, she
-        was an envoy abroad and a leading advocate for numerous ...", "dateLastCrawled":
-        "2018-11-16T00:46:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
-        "name": "Claudia Alta Taylor \"Lady Bird\" Johnson | The White House",
-        "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/claudia-alta-taylor-lady-bird-johnson\/",
-        "urlPingSuffix": "DevEx,5171.1", "about": [{"name": "Lady Bird Johnson"}],
-        "displayUrl": "https:\/\/www.whitehouse.gov\/...\/claudia-alta-taylor-lady-bird-johnson",
-        "snippet": "Claudia Alta Taylor “Lady Bird” Johnson served as First Lady
-        of the United States (1963–1969) as the wife of President Lyndon B. Johnson.
-        A shrewd investor and manager, she broke ground for ...", "dateLastCrawled":
-        "2018-11-13T14:54:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
-        "name": "Martha Dandridge Custis Washington | The White House", "url":
-        "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/martha-dandridge-custis-washington\/",
-        "urlPingSuffix": "DevEx,5185.1", "about": [{"name": "Martha Washington"}],
-        "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/...",
-        "snippet": "As the wife of George Washington, the first President of the
-        United States, Martha Dandridge Custis Washington is considered to be the
-        first First Lady, but the title was not coined until after ...", "dateLastCrawled":
-        "2018-11-16T13:41:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
-        "name": "Nancy Davis Reagan | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/nancy-davis-reagan\/",
-        "urlPingSuffix": "DevEx,5199.1", "about": [{"name": "Nancy Reagan"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/...\/first-ladies\/nancy-davis-reagan",
-        "snippet": "Originally a Broadway actress, Nancy Davis Reagan served as
-        First Lady from 1981 to 1989. She served alongside her husband, President
-        Ronald Reagan, and is remembered for her passionate advocacy ...", "dateLastCrawled":
-        "2018-11-11T17:52:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
-        "name": "Copyright Policy | The White House", "url": "https:\/\/www.whitehouse.gov\/copyright\/",
-        "urlPingSuffix": "DevEx,5213.1", "displayUrl": "https:\/\/www.whitehouse.gov\/copyright",
-        "snippet": "Pursuant to federal law, government-produced materials appearing
-        on this site are not copyright protected. The United States Government may
-        receive and hold copyrights transferred to it by ...", "dateLastCrawled":
-        "2018-11-15T12:29:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
-        "name": "Louisa Catherine Johnson Adams | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/louisa-catherine-johnson-adams\/",
-        "urlPingSuffix": "DevEx,5227.1", "about": [{"name": "Louisa Adams"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/...",
-        "snippet": "Born in London, Louisa Catherine Johnson Adams was the wife
-        of the sixth President, John Quincy Adams (1825-1829). Louisa Catherine Adams,
-        the first of America’s First Ladies to be born outside ...", "dateLastCrawled":
-        "2018-11-15T20:25:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
-        "name": "Eisenhower Executive Office Building | The White House", "url":
-        "https:\/\/www.whitehouse.gov\/about-the-white-house\/eisenhower-executive-office-building\/",
-        "urlPingSuffix": "DevEx,5241.1", "about": [{"name": "Eisenhower Executive
-        Office Building"}], "displayUrl": "https:\/\/www.whitehouse.gov\/...\/eisenhower-executive-office-building",
-        "snippet": "Completed in 1875, the State Department’s south wing was the first
-        to be occupied, with its elegant four-story library (completed in 1876), Diplomatic
-        Reception Room, and Secretary’s office ...", "dateLastCrawled": "2018-11-11T03:49:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "The Administration
-        | The White House", "url": "https:\/\/www.whitehouse.gov\/the-trump-administration\/",
-        "urlPingSuffix": "DevEx,5255.1", "about": [{"name": "Executive Office of the
-        President of the United States"}], "displayUrl": "https:\/\/www.whitehouse.gov\/the-trump-administration",
-        "snippet": "Donald J. Trump is the 45th President of the United States. He
-        believes the United States has incredible potential and will go on to exceed
-        anything that it has achieved in the past.", "dateLastCrawled": "2018-11-13T17:44:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "The
-        White House", "url": "https:\/\/www.whitehouse.gov\/", "urlPingSuffix": "DevEx,5269.1",
-        "about": [{"name": "The White House"}, {"name": "whitehouse.gov"}, {"name":
-        "White House"}], "displayUrl": "https:\/\/www.whitehouse.gov", "snippet":
-        "History of The White House. Our first president, George Washington, selected
-        the site for the White House in 1791. Every president since John Adams has
-        occupied the White House, and the history of ...", "dateLastCrawled": "2018-11-16T14:40:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Economy
-        & Jobs | The White House", "url": "https:\/\/www.whitehouse.gov\/issues\/economy-jobs\/",
-        "urlPingSuffix": "DevEx,5283.1", "displayUrl": "https:\/\/www.whitehouse.gov\/issues\/economy-jobs",
-        "snippet": "The economy has come roaring back to life under President Trump.
-        The stock market has hit record high after record high, helping more Americans
-        build wealth and secure their futures.", "dateLastCrawled": "2018-11-16T05:41:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Ulysses
-        S. Grant | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/ulysses-s-grant\/",
-        "urlPingSuffix": "DevEx,5297.1", "about": [{"name": "Ulysses S. Grant"}],
-        "displayUrl": "https:\/\/www.whitehouse.gov\/...\/presidents\/ulysses-s-grant",
-        "snippet": "In 1865, as commanding general, Ulysses S. Grant led the Union
-        Armies to victory over the Confederacy in the American Civil War. As an American
-        hero, Grant was later elected the 18th President of ...", "dateLastCrawled":
-        "2018-11-12T11:45:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
-        "name": "James K. Polk | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/james-k-polk\/",
-        "urlPingSuffix": "DevEx,5311.1", "about": [{"name": "James K. Polk"}, {"name":
-        "James K. Polk"}], "displayUrl": "https:\/\/www.whitehouse.gov\/...\/presidents\/james-k-polk",
-        "snippet": "Often referred to as the first “dark horse,” James K. Polk
-        was the 11th President of the United States from 1845 to 1849, the last strong
-        President until the Civil War. Often referred to as ...", "dateLastCrawled":
-        "2018-11-14T07:39:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
-        "name": "We the People - Petition the White House on the Issues ...",
-        "url": "https:\/\/petitions.whitehouse.gov\/", "urlPingSuffix": "DevEx,5325.1",
-        "about": [{"name": "We the People"}, {"name": "White House"}], "displayUrl":
-        "https:\/\/petitions.whitehouse.gov", "snippet": "Call on the White House
-        to take action on the issue that matters to you. Gather Signatures. Share
-        your petition with others, build a community for the change you want to make.
-        ... We The People Call for The Resignation of FCC Chairman Ajit Varadaraj
-        Pai. 118,312 signed. 100,000 goal.", "dateLastCrawled": "2018-11-14T20:15:00.0000000Z"}]},
-        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
-        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
-        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
-        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
-        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
-        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
-        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
-        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
-        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
-        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
-        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
-        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
-        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
-        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
-        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
-        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
-        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
-        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
-        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
-        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
-        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
-    http_version: 
-  recorded_at: Mon, 19 Nov 2018 22:39:57 GMT
-- request:
-    method: get
     uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=hillary%20rodham%20clinton%20first%20lady%20(site:whitehouse.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
     body:
       encoding: US-ASCII
@@ -458,190 +31,179 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Tue, 05 Feb 2019 21:44:11 GMT
+      - Thu, 01 Apr 2021 19:19:44 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Bingapis-Traceid:
-      - B95EB13BF7BE4BDD90BB0A4D5D8DC906
+      - 7B9D57D71E774A25B34411CADB2C3218
       Bingapis-Sessionid:
-      - 0DA9626A173C43B3A7005F167BF61BF1
+      - 29B6CCE96EB04A5F89011D15984F164B
       X-Msedge-Clientid:
-      - 27FBDE9D39F968AA176BD26738B5695F
+      - 3C05A6CC692864EF1976B6C0683A65B0
       X-Msapi-Userstate:
-      - 46af
+      - 03b1
       Bingapis-Market:
       - en-US
       X-Search-Responseinfo:
-      - InternalResponseTime=213,MSDatacenter=CO4
+      - InternalResponseTime=200,MSDatacenter=BN2B
       X-Msedge-Ref:
-      - 'Ref A: B95EB13BF7BE4BDD90BB0A4D5D8DC906 Ref B: BY3EDGE0208 Ref C: 2019-02-05T21:45:12Z'
+      - 'Ref A: 7B9D57D71E774A25B34411CADB2C3218 Ref B: BLUEDGE1512 Ref C: 2021-04-01T19:20:44Z'
       Apim-Request-Id:
-      - 5b5d680e-be61-4e16-9940-ba3298f95c50
+      - 977da7b1-d8db-467a-b8d6-848ca0b314ba
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
       - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Tue, 05 Feb 2019 21:45:11 GMT
+      - Thu, 01 Apr 2021 19:20:43 GMT
     body:
       encoding: UTF-8
       string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "hillary
         rodham clinton first lady (site:whitehouse.gov)"}, "webPages": {"webSearchUrl":
         "https:\/\/www.bing.com\/search?q=hillary+rodham+clinton+first+lady+(site%3awhitehouse.gov)",
-        "totalEstimatedMatches": 50, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
-        "name": "Hillary Rodham Clinton | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/hillary-rodham-clinton\/",
-        "about": [{"name": "Hillary Clinton"}], "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.whitehouse.gov\/...\/first-ladies\/hillary-rodham-clinton",
+        "totalEstimatedMatches": 244, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Hillary Rodham Clinton | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/hillary-rodham-clinton\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/hillary-rodham-clinton",
         "snippet": "Hillary Diane Rodham Clinton served as the First Lady
         of the United States to the 42nd President, Bill Clinton. She went on to
-        become a U.S. Secretary of State and U.S. Senator from New York.", "dateLastCrawled":
-        "2019-01-28T22:26:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1", "name":
-        "First Ladies | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/",
-        "about": [{"name": "Nancy Reagan"}], "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies",
-        "snippet": "Which two first ladies met their husbands through local newspapers?
-        Who was the first First Lady to make regular nationwide radio broadcasts?
-        Which First Lady cared for wounded soldiers in her ...", "dateLastCrawled":
-        "2019-01-31T01:42:00.0000000Z", "language": "en", "isNavigational": false},
+        become a U.S. Secretary of State and U.S. Senator from New York. In ...",
+        "dateLastCrawled": "2021-03-29T08:48:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Martha Dandridge Custis Washington | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/martha-dandridge-custis-washington\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/martha-dandridge...",
+        "snippet": "Hillary Rodham Clinton Laura Welch Bush ... As the wife
+        of George Washington, the first President of the United States, Martha Dandridge
+        Custis Washington is considered to be the first First Lady ...", "dateLastCrawled":
+        "2021-03-29T19:18:00.0000000Z", "language": "en", "isNavigational": false},
         {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2", "name":
-        "William J. Clinton | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/william-j-clinton\/",
-        "about": [{"name": "Bill Clinton"}], "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.whitehouse.gov\/...\/presidents\/william-j-clinton", "snippet":
-        "The next year he married Hillary Rodham, a graduate of Wellesley College
-        and Yale Law School. In 1980, Chelsea, their only child, was born. Clinton
-        was elected Arkansas Attorney General in 1976 ...", "dateLastCrawled": "2019-02-01T18:45:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
-        "name": "Laura Welch Bush | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/laura-welch-bush\/",
-        "about": [{"name": "Laura Bush"}], "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/...",
-        "snippet": "Prior to becoming First Lady of the United States, Mrs. Bush
-        served as the First Lady of Texas. Learn more about Laura Welch Bush’s
-        spouse, George W. Bush. The White House", "dateLastCrawled": "2019-01-31T14:12:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
-        "name": "Rosalynn Smith Carter | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/rosalynn-smith-carter\/",
-        "about": [{"name": "Rosalynn Carter"}], "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.whitehouse.gov\/...\/first-ladies\/rosalynn-smith-carter",
-        "snippet": "Serving as the First Lady from 1977 to 1981, she was an envoy
-        abroad and a leading advocate for numerous causes, including mental health
-        research. ... Rosalynn Smith Carter. Share: Politically ...", "dateLastCrawled":
-        "2019-01-31T02:30:00.0000000Z", "language": "en", "isNavigational": false},
+        "First Families | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families",
+        "snippet": "Claudia Alta Taylor “Lady Bird” Johnson; Patricia Ryan Nixon;
+        Elizabeth Anne Bloomer Ford; Rosalynn Smith Carter; Nancy Davis Reagan; Barbara
+        Pierce Bush; Hillary Rodham Clinton; Laura Welch ...", "dateLastCrawled":
+        "2021-03-29T07:35:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3", "name":
+        "Eliza McCardle Johnson | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/eliza-mccardle-johnson\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/eliza-mccardle-johnson",
+        "snippet": "Hillary Rodham Clinton Laura Welch Bush ... She served as
+        First Lady of the United States from 1865 to 1869. ... The biographies
+        of the First Ladies on WhiteHouse.gov are from “The First Ladies ...",
+        "dateLastCrawled": "2021-03-29T14:26:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Rosalynn Smith Carter | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/rosalynn-smith-carter\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/rosalynn-smith-carter",
+        "snippet": "Hillary Rodham Clinton Laura Welch Bush Michelle Obama ...
+        Serving as the First Lady from 1977 to 1981, she was an envoy abroad and
+        a leading advocate for numerous causes, including mental health ...", "dateLastCrawled":
+        "2021-03-29T13:25:00.0000000Z", "language": "en", "isNavigational": false},
         {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5", "name":
-        "Barbara Pierce Bush | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/barbara-pierce-bush\/",
-        "about": [{"name": "Barbara Bush"}], "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.whitehouse.gov\/...\/first-ladies\/barbara-pierce-bush",
-        "snippet": "After serving as Second Lady from 1981 to 1989, Barbara Pierce
-        Bush served as First Lady of the United States when her husband George
-        H. W. Bush won the Presidency. She is also the mother of the ...", "dateLastCrawled":
-        "2019-01-30T04:36:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6", "name":
-        "Jacqueline Lee Bouvier Kennedy | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/jacqueline-lee-bouvier-kennedy\/",
-        "about": [{"name": "Jacqueline Kennedy Onassis"}], "isFamilyFriendly": true,
-        "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/...",
-        "snippet": "Jacqueline Lee Bouvier Kennedy. Share: First Lady Jacqueline
-        Lee “Jackie” (Bouvier) Kennedy Onassis was a symbol of strength for a traumatized
-        nation after the assassination of one the country ...", "dateLastCrawled":
-        "2019-01-29T13:30:00.0000000Z", "language": "en", "isNavigational": false},
+        "Barbara Pierce Bush | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/barbara-pierce-bush\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/barbara-pierce-bush",
+        "snippet": "Hillary Rodham Clinton Laura Welch Bush ... After serving
+        as Second Lady from 1981 to 1989, Barbara Pierce Bush served as First
+        Lady of the United States when her husband George H. W. Bush won the ...",
+        "dateLastCrawled": "2021-03-29T10:39:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Harriet Lane | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/harriet-lane\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/harriet-lane",
+        "snippet": "Hillary Rodham Clinton Laura Welch Bush Michelle Obama Melania
+        Trump Harriet Rebecca Lane Johnston acted as First Lady of the United
+        States, or “Hostess,” for her uncle James Buchanan, who was ...", "dateLastCrawled":
+        "2021-03-29T15:02:00.0000000Z", "language": "en", "isNavigational": false},
         {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7", "name":
-        "Nancy Davis Reagan | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/nancy-davis-reagan\/",
-        "about": [{"name": "Nancy Reagan"}], "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.whitehouse.gov\/...\/first-ladies\/nancy-davis-reagan",
-        "snippet": "Originally a Broadway actress, Nancy Davis Reagan served as
-        First Lady from 1981 to 1989. She served alongside her husband, President
-        Ronald Reagan, and is remembered for her passionate advocacy ...", "dateLastCrawled":
-        "2019-02-01T12:54:00.0000000Z", "language": "en", "isNavigational": false},
+        "Anna Eleanor Roosevelt | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/anna-eleanor-roosevelt\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/anna-eleanor-roosevelt",
+        "snippet": "Hillary Rodham Clinton Laura Welch Bush ... Anna Eleanor
+        Roosevelt was the longest-serving First Lady throughout her husband President
+        Franklin D. Roosevelt’s four terms in office (1933-1945). ...", "dateLastCrawled":
+        "2021-03-29T18:26:00.0000000Z", "language": "en", "isNavigational": false},
         {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8", "name":
-        "Martha Dandridge Custis Washington | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/martha-dandridge-custis-washington\/",
-        "about": [{"name": "Martha Washington"}], "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/...",
-        "snippet": "As the wife of George Washington, the first President of the
-        United States, Martha Dandridge Custis Washington is considered to be the
-        first First Lady, but the title was not coined until after ...", "dateLastCrawled":
-        "2019-01-30T23:36:00.0000000Z", "language": "en", "isNavigational": false},
+        "Nancy Davis Reagan | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/nancy-davis-reagan\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/nancy-davis-reagan",
+        "snippet": "Hillary Rodham Clinton Laura Welch Bush Michelle Obama Melania
+        Trump Originally a Broadway actress, Nancy Davis Reagan served as First
+        Lady from 1981 to 1989. She served alongside her husband ...", "dateLastCrawled":
+        "2021-03-29T20:45:00.0000000Z", "language": "en", "isNavigational": false},
         {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9", "name":
-        "Michelle Obama | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/michelle-obama\/",
-        "about": [{"name": "Michelle Obama"}], "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.whitehouse.gov\/...\/first-ladies\/michelle-obama", "snippet":
-        "Michelle LaVaughn Robinson Obama is a lawyer, writer, and the wife of the
-        44th President, Barack Obama. She was the first African-American First
-        Lady of the United States.", "dateLastCrawled": "2019-01-31T13:32:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
-        "name": "The Administration | The White House", "url": "https:\/\/www.whitehouse.gov\/the-trump-administration\/",
-        "about": [{"name": "Executive Office of the President of the United States"}],
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/the-trump-administration",
-        "snippet": "President Donald J. Trump promised that he would bring the best
-        and brightest from across the country—not just inside Washington—to build
-        his Administration. The President, alongside the Vice ...", "dateLastCrawled":
-        "2019-01-31T20:57:00.0000000Z", "language": "en", "isNavigational": false},
+        "Michelle Obama | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/michelle-obama\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/michelle-obama",
+        "snippet": "Hillary Rodham Clinton Laura Welch Bush Michelle Obama;
+        Melania Trump First Lady Michelle LaVaughn Robinson Obama is a lawyer,
+        writer, and the wife of the 44th President, Barack Obama. ...", "dateLastCrawled":
+        "2021-03-29T22:30:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10", "name":
+        "Lucy Ware Webb Hayes | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/lucy-ware-webb-hayes\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/lucy-ware-webb-hayes",
+        "snippet": "Hillary Rodham Clinton Laura Welch Bush Michelle Obama Melania
+        Trump Lucy Ware Webb Hayes served as First Lady of the United States as
+        the wife of the 19th President, Rutherford B. Hayes (1877 ...", "dateLastCrawled":
+        "2021-03-29T16:45:00.0000000Z", "language": "en", "isNavigational": false},
         {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11", "name":
-        "Claudia Alta Taylor \"Lady Bird\" Johnson | The White House", "url":
-        "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/claudia-alta-taylor-lady-bird-johnson\/",
-        "about": [{"name": "Lady Bird Johnson"}], "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.whitehouse.gov\/...\/claudia-alta-taylor-lady-bird-johnson",
-        "snippet": "Claudia Alta Taylor “Lady Bird” Johnson served as First Lady
-        of the United States (1963–1969) as the wife of President Lyndon B. Johnson.
-        A shrewd investor and manager, she broke ground for ...", "dateLastCrawled":
-        "2019-02-01T06:23:00.0000000Z", "language": "en", "isNavigational": false},
+        "Julia Gardiner Tyler | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/julia-gardiner-tyler\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/julia-gardiner-tyler",
+        "snippet": "Hillary Rodham Clinton Laura Welch Bush Michelle Obama Melania
+        Trump The darling of the capital, Julia Gardiner Tyler was the second wife
+        of the tenth President, John Tyler. ... She became First ...", "dateLastCrawled":
+        "2021-03-29T22:53:00.0000000Z", "language": "en", "isNavigational": false},
         {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12", "name":
-        "The White House", "url": "https:\/\/www.whitehouse.gov\/", "about": [{"name":
-        "The White House"}, {"name": "whitehouse.gov"}], "isFamilyFriendly": true,
-        "displayUrl": "https:\/\/www.whitehouse.gov", "snippet": "History of The
-        White House. Our first president, George Washington, selected the site
-        for the White House in 1791. Every president since John Adams has occupied
-        the White House, and the history of ...", "dateLastCrawled": "2019-02-01T04:21:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
-        "name": "Copyright Policy | The White House", "url": "https:\/\/www.whitehouse.gov\/copyright\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/copyright",
-        "snippet": "Pursuant to federal law, government-produced materials appearing
-        on this site are not copyright protected. The United States Government may
-        receive and hold copyrights transferred to it by ...", "dateLastCrawled":
-        "2019-02-01T04:18:00.0000000Z", "language": "en", "isNavigational": false},
+        "Melania Trump | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/melania-trump\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/melania-trump",
+        "snippet": "Hillary Rodham Clinton Laura Welch Bush Michelle Obama Melania
+        Trump; First Lady of the United States Melania Trump is the wife of President
+        Donald J. Trump. She is the second First Lady born ...", "dateLastCrawled":
+        "2021-03-30T03:20:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13", "name":
+        "Laura Welch Bush | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/laura-welch-bush\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/laura-welch-bush",
+        "snippet": "Laura Lane Welch Bush is the wife of the 43rd President, George
+        W. Bush. She served as First Lady from 2001 to 2009, advocating for historic
+        education reform and the well-being of women and ...", "dateLastCrawled":
+        "2021-03-29T18:41:00.0000000Z", "language": "en", "isNavigational": false},
         {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14", "name":
-        "Eisenhower Executive Office Building | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/eisenhower-executive-office-building\/",
-        "about": [{"name": "Eisenhower Executive Office Building"}], "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.whitehouse.gov\/...\/eisenhower-executive-office-building",
-        "snippet": "Built for the State, War, and Navy Departments, the Eisenhower
-        Executive Office Building now houses White House staff. ... of the nineteenth
-        century and the first quarter of the twentieth century ...", "dateLastCrawled":
-        "2019-01-30T02:38:00.0000000Z", "language": "en", "isNavigational": false},
+        "Dolley Payne Todd Madison | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/dolley-payne-todd-madison\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/dolley-payne-todd-madison",
+        "snippet": "First Lady Dr. Jill Biden; ... Hillary Rodham Clinton
+        ... Dolley Payne Todd Madison, one of the best known and loved First Ladies,
+        was the wife of James Madison, the fourth President of the United ...", "dateLastCrawled":
+        "2021-03-29T20:55:00.0000000Z", "language": "en", "isNavigational": false},
         {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15", "name":
-        "Louisa Catherine Johnson Adams | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/louisa-catherine-johnson-adams\/",
-        "about": [{"name": "Louisa Adams"}], "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/...",
-        "snippet": "Born in London, Louisa Catherine Johnson Adams was the wife
-        of the sixth President, John Quincy Adams (1825-1829). Louisa Catherine Adams,
-        the first of America’s First Ladies to be born outside ...", "dateLastCrawled":
-        "2019-01-31T13:38:00.0000000Z", "language": "en", "isNavigational": false},
+        "Frances Folsom Cleveland | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/frances-folsom-cleveland\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/frances-folsom-cleveland",
+        "snippet": "Hillary Rodham Clinton Laura Welch Bush Michelle Obama Melania
+        Trump Frances Clara Folsom Cleveland became the youngest First Lady at
+        age 21; married to President Grover Cleveland she was the 23rd ...", "dateLastCrawled":
+        "2021-03-29T04:53:00.0000000Z", "language": "en", "isNavigational": false},
         {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16", "name":
-        "Economy & Jobs | The White House", "url": "https:\/\/www.whitehouse.gov\/issues\/economy-jobs\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/issues\/economy-jobs",
-        "snippet": "Economy & Jobs The economy has come roaring back to life under
-        President Trump. The stock market has hit record high after record high, helping
-        more Americans build wealth and secure their futures.", "dateLastCrawled":
-        "2019-02-01T07:09:00.0000000Z", "language": "en", "isNavigational": false},
+        "Letitia Christian Tyler | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/letitia-christian-tyler\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/letitia-christian-tyler",
+        "snippet": "Hillary Rodham Clinton Laura Welch Bush ... Letitia Christian
+        Tyler, first wife of President John Tyler, served as First Lady of the
+        United States from 1841 until her death at 51. She was the ...", "dateLastCrawled":
+        "2021-03-28T22:17:00.0000000Z", "language": "en", "isNavigational": false},
         {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17", "name":
-        "Ulysses S. Grant | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/ulysses-s-grant\/",
-        "about": [{"name": "Ulysses S. Grant"}], "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.whitehouse.gov\/...\/presidents\/ulysses-s-grant", "snippet":
-        "In 1865, as commanding general, Ulysses S. Grant led the Union Armies to
-        victory over the Confederacy in the American Civil War. As an American hero,
-        Grant was later elected the 18th President of ...", "dateLastCrawled": "2019-01-31T23:37:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
-        "name": "James K. Polk | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/james-k-polk\/",
-        "about": [{"name": "James K. Polk"}, {"name": "James K. Polk"}], "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.whitehouse.gov\/...\/presidents\/james-k-polk",
-        "snippet": "Often referred to as the first “dark horse” President, James
-        K. Polk was the last of the Jacksonians to sit in the White House, and
-        the last strong President until the Civil War.", "dateLastCrawled": "2019-01-31T10:44:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
-        "name": "George Washington | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/george-washington\/",
-        "about": [{"name": "George Washington"}], "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.whitehouse.gov\/...\/presidents\/george-washington", "snippet":
-        "On April 30, 1789, George Washington, standing on the balcony of Federal
-        Hall on Wall Street in New York, took his oath of office as the first President
-        of the United States. On April 30, 1789 ...", "dateLastCrawled": "2019-01-31T21:50:00.0000000Z",
+        "Edith Bolling Galt Wilson | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/edith-bolling-galt-wilson\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/edith-bolling-galt-wilson",
+        "snippet": "Hillary Rodham Clinton Laura Welch Bush Michelle Obama Melania
+        Trump Edith Bolling Galt Wilson was second wife of the 28th President, Woodrow
+        Wilson. ... Though the new First Lady had sound ...", "dateLastCrawled":
+        "2021-03-28T15:21:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18", "name":
+        "Jane Means Appleton Pierce | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/jane-means-appleton-pierce\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/jane-means-appleton-pierce",
+        "snippet": "Hillary Rodham Clinton Laura Welch Bush Michelle Obama Melania
+        Trump Jane Means Appleton Pierce was the wife of the 14th President, Franklin
+        Pierce. ... She served as First Lady of the United ...", "dateLastCrawled":
+        "2021-03-29T19:21:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19", "name":
+        "Rachel Donelson Jackson | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/rachel-donelson-jackson\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/rachel-donelson-jackson",
+        "snippet": "Hillary Rodham Clinton Laura Welch Bush Michelle Obama ...
+        When she died before his inauguration as President in 1829, the duties of
+        First Lady fell to her niece, Emily Donelson.", "dateLastCrawled": "2021-03-23T04:10:00.0000000Z",
         "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
         {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
         {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
@@ -663,6 +225,6 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
-    http_version: 
-  recorded_at: Tue, 05 Feb 2019 21:45:12 GMT
+    http_version:
+  recorded_at: Thu, 01 Apr 2021 19:20:44 GMT
 recorded_with: VCR 4.0.0

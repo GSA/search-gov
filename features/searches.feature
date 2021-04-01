@@ -603,8 +603,6 @@ Feature: Search
     And I should not see "Fourth Spanish item"
     And I should not see "Sixth Spanish item"
 
-  # SRCH-2009
-  @wip
   Scenario: Searching a domain with Bing results that match a specific news item
     # ACHTUNG! This test will fail unless the news item URL matches a url returned by the web search.
     # So if it breaks, check the urls in the VCR cassette recording from the search:
@@ -616,11 +614,10 @@ Feature: Search
       | name  | url                                  | is_navigable |
       | Press | http://www.whitehouse.gov/feed/press | true         |
     And feed "Press" has the following news items:
-      | link                                                                                  | title              | guid  | published_ago | description       |
-      | https://www.whitehouse.gov/about-the-white-house/first-ladies/hillary-rodham-clinton/ | Clinton RSS Test   | uuid1 | day           | clinton news item |
+      | link                                                                                    | title              | guid  | published_ago | description       |
+      | https://www.whitehouse.gov/about-the-white-house/first-families/hillary-rodham-clinton/ | Clinton RSS Test   | uuid1 | day           | clinton news item |
     When I am on bar.gov's search page
-    And I fill in "query" with "Hillary Rodham Clinton first lady"
-    And I press "Search" within the search box
+    And search for "Hillary Rodham Clinton first lady"
     Then I should see "Clinton RSS Test"
 
   # SRCH-2009
@@ -707,8 +704,6 @@ Feature: Search
     And I press "Search" within the search box
     Then I should see 2 image news results
 
-  # SRCH-2009
-  @wip
   Scenario: Visiting English affiliate search with multiple domains
     Given the following Affiliates exist:
       | display_name | name    | contact_email | first_name | last_name | domains                |
@@ -716,11 +711,8 @@ Feature: Search
     When I am on bar.gov's search page
     And I fill in "Enter your search term" with "president"
     And I press "Search" within the search box
-    Then I should see at least 2 search results
-    And I should not see "Search this site"
+    Then I should see at least "2" web search results
 
-  # SRCH-2009
-  @wip
   Scenario: Visiting Spanish affiliate search with multiple domains
     Given the following Affiliates exist:
       | display_name | name    | contact_email | first_name | last_name | domains                | locale | is_image_search_navigable |
@@ -728,12 +720,11 @@ Feature: Search
     When I am on bar.gov's search page
     And I fill in "Ingrese su búsqueda" with "president"
     And I press "Buscar" within the search box
-    Then I should see at least 2 search results
+    Then I should see at least "2" web search results
     And I should see "Todo"
     And I should not see "Everything"
     And I should see "Imágenes"
     And I should not see "Images"
-    And I should not see "Search this site"
 
   @javascript
   Scenario: Searchers see English Medline Govbox

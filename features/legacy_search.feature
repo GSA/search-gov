@@ -604,8 +604,8 @@ Feature: Legacy Search
       | name  | url                                  | is_navigable |
       | Press | http://www.whitehouse.gov/feed/press | true         |
     And feed "Press" has the following news items:
-      | link                                                                                  | title              | guid  | published_ago | description       |
-      | https://www.whitehouse.gov/about-the-white-house/first-ladies/hillary-rodham-clinton/ | Clinton RSS Test   | uuid1 | day           | clinton news item |
+      | link                                                                                    | title              | guid  | published_ago | description       |
+      | https://www.whitehouse.gov/about-the-white-house/first-families/hillary-rodham-clinton/ | Clinton RSS Test   | uuid1 | day           | clinton news item |
     When I am on bar.gov's search page
     And I fill in "query" with "Hillary Rodham Clinton first lady"
     And I press "Search" in the legacy search box
