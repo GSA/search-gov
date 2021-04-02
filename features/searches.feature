@@ -792,23 +792,7 @@ Feature: Search
     And I press "Buscar" within the search box
     Then I should not see "Hippopotomonstrosesquippedaliophobia y otros miedos irracionales"
 
-  # SRCH-2009
-  @wip
-  Scenario: When a searcher enters a query with invalid Lucene character
-    Given the following Affiliates exist:
-      | display_name | name       | contact_email | first_name | last_name | domains |
-      | agency site  | agency.gov | aff@bar.gov   | John       |Bar        | .gov    |
-    And I am on agency.gov's search page
-    And I fill in "query" with "++health it"
-    And I press "Search" within the search box
-    Then I should see the browser page titled "++health it - agency site Search Results"
-    And I should see some Bing search results
-    When I fill in "query" with "OR US97 central"
-    And I press "Search" within the search box
-    Then I should see the browser page titled "OR US97 central - agency site Search Results"
-    And I should see some Bing search results
-
-  Scenario: When a searcher clicks on a collection and the query is blank
+  Scenario: When a searcher clicks on a collection on sidebar and the query is blank
     Given the following Affiliates exist:
       | display_name | name    | contact_email | first_name | last_name  |
       | aff site     | aff.gov | aff@bar.gov   | John       | Bar        |
@@ -964,14 +948,15 @@ Feature: Search
     And I should not see a link to "Blog" in the left column
     And I should not see a link to "Search Notes" in the left column
 
-  # SRCH-2009
-  @wip
   Scenario: Searching with malformed query
     Given the following Affiliates exist:
       | display_name | name       | contact_email | first_name | last_name | is_image_search_navigable |
       | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | true                      |
-    When I am on agency.gov's search page with unsanitized "hello" query
-    Then I should see a link to "Images" with sanitized "hello" query
+    When I am on agency.gov's search page
+    And I search for "<b>hello</b><script>script</script>"
+    Then I should see "hello"
+    And I should not see "script"
+    And I should see a link to "Images" with url that ends with "query=hello" in the search navbar
 
   # SRCH-2009
   @wip
@@ -1036,22 +1021,23 @@ Feature: Search
     And I should not see tainted SERP header
     And I should not see tainted SERP footer
 
-  # SRCH-2009
-  @wip
   Scenario: Affiliate search on affiliate with connections
     Given the following Affiliates exist:
       | display_name | name       | contact_email | first_name | last_name | domains |
-      | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | .gov    |
-      | other site   | other.gov  | aff@bad.gov   | John       | Bad       | .gov    |
+      | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | epa.gov |
+      | other site   | other.gov  | aff@bad.gov   | John       | Bad       | cdc.gov |
     And the following Connections exist for the affiliate "agency.gov":
     | connected_affiliate   |   display_name    |
     | other.gov             |  Other Site       |
     When I am on agency.gov's search page
-    And I fill in "query" with "jobs"
-    And I press "Search" within the search box
-    Then I should see "Other Site"
-    When I follow "Other Site"
+    And I search for "jobs"
+    Then I should see at least "10" web search results
+    And every result URL should match "epa.gov"
+    And I should see "Other Site"
+    When I follow "Other Site" in the search navbar
     Then I should see the browser page titled "jobs - other site Search Results"
+    And I should see at least "10" web search results
+    And every result URL should match "cdc.gov"
 
   # SRCH-2009
   @wip

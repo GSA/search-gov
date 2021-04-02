@@ -3,15 +3,14 @@
   'in the header': '.header',
   'in the affiliate program dropdown menu': '.affiliate-li',
   'in the api dropdown menu': '.api-li',
-  'in the main navigation bar': '#main_nav',
-  'in the site navigation bar': '.affiliate-left-nav',
+  'in the main navigation bar': '#main_nav', # legacy SERP
+  'in the site navigation bar': '.affiliate-left-nav', # legacy SERP
   'in the breadcrumbs': '.breadcrumbs',
   'in the page header': 'h1',
   'in the user menu': '.user-menu',
   'in the mobile page header': 'h1.page-title',
   'in the connect section': '.connect',
   'in the footer': '.footer',
-  'in the query search results table header': '.query_search_results_table_header',
   'in the callout boxes': '.col-2',
   'in the side note boxes': '.column-2',
   'in the legacy search navigation': '#main_nav',

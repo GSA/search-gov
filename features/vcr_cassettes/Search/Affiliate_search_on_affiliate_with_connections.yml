@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=jobs%20(site:.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=jobs%20(site:epa.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
     body:
       encoding: US-ASCII
       string: ''
@@ -21,18 +21,484 @@ http_interactions:
       - '30'
   response:
     status:
-      code: 401
-      message: PermissionDenied
+      code: 200
+      message: OK
     headers:
-      Content-Length:
-      - '224'
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Thu, 01 Apr 2021 16:59:15 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 5551BFC469374E8C8080F1D63252809E
+      Bingapis-Sessionid:
+      - AF65100AF3224E86903D87B83E2853C8
+      X-Msedge-Clientid:
+      - 2AF83B3636F4645E246C2B3A37BB65D0
+      X-Msapi-Userstate:
+      - f2e0
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=198,MSDatacenter=BN2B
+      X-Msedge-Ref:
+      - 'Ref A: 5551BFC469374E8C8080F1D63252809E Ref B: BLUEDGE1213 Ref C: 2021-04-01T17:00:15Z'
+      Apim-Request-Id:
+      - afc5efe3-bd0b-40d7-ba97-0230cf6ad182
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Tue, 30 Mar 2021 17:17:54 GMT
+      - Thu, 01 Apr 2021 17:00:15 GMT
     body:
       encoding: UTF-8
-      string: '{"error":{"code":"401","message":"Access denied due to invalid subscription
-        key or wrong API endpoint. Make sure to provide a valid key for an active
-        subscription and use a correct regional API endpoint for your resource."}}'
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "jobs
+        (site:epa.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=jobs+(site%3aepa.gov)",
+        "totalEstimatedMatches": 8640000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Careers | US EPA", "url": "https:\/\/www.epa.gov\/careers", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.epa.gov\/careers", "snippet": "Information
+        about why work at EPA, how to get a job, science jobs, legal jobs, opportunities
+        for veterans and students.", "dateLastCrawled": "2021-03-25T04:04:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Legal Careers at EPA | Careers | US EPA", "url": "https:\/\/www.epa.gov\/careers\/legal-careers-epa",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.epa.gov\/careers\/legal-careers-epa",
+        "snippet": "Unlike almost all other EPA jobs, there is no requirement for
+        attorney jobs announcements to be published on USAJobs.gov. While most offices
+        that hire attorneys use USAJobs.gov, some offices might prefer to receive
+        application materials on a rolling basis, and may contact you if\/when a position
+        becomes available.", "dateLastCrawled": "2021-03-21T02:40:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Where in the U.S. Can I Work for EPA? | Careers | US EPA", "url":
+        "https:\/\/www.epa.gov\/careers\/where-us-can-i-work-epa", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.epa.gov\/careers\/where-us-can-i-work-epa",
+        "snippet": "the Federal Triangle area of downtown Washington D.C., Crystal
+        City, Virginia (D.C. area), and; Research Triangle Park, North Carolina. EPA
+        also conducts work in 10 regional offices headquartered in Boston, New York,
+        Philadelphia, Atlanta, Chicago, Dallas, Kansas City, Denver, San Francisco,
+        and Seattle.. EPA labs are scattered across the country and address a wide
+        range of research activity.", "dateLastCrawled": "2021-03-20T01:17:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Science Careers at EPA | Careers | US EPA", "url": "https:\/\/www.epa.gov\/careers\/science-careers-epa",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.epa.gov\/careers\/science-careers-epa",
+        "snippet": "All science jobs at EPA are listed on USAJobs.gov. Job categories\/occupational
+        series include Environmental Health Scientist, Biologist, Ecologist, Environmental
+        Engineer, Fishery Biologist, Geologist, Physiologist, Microbiologist, Toxicologist,
+        Physical Scientist and many more.", "dateLastCrawled": "2021-03-26T22:41:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "What Kind of People Work at EPA? | Careers | US EPA", "url":
+        "https:\/\/www.epa.gov\/careers\/what-kind-people-work-epa", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.epa.gov\/careers\/what-kind-people-work-epa",
+        "snippet": "Watch A Day in the Life of Allison Landsman EXIT Allison is a
+        program analyst in the Office of Enforcement and Compliance Assurance. This
+        video was produced by the Partnership for Public Service (PPS).", "dateLastCrawled":
+        "2021-03-22T22:57:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5", "name":
+        "Careers and Internships for Environmental Economists ...", "url": "https:\/\/www.epa.gov\/careers\/careers-and-internships-environmental-economists",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.epa.gov\/careers\/careers-and-internships-environmental-economists",
+        "snippet": "description of EPA economic career and internship opportunities.
+        EPA offers a number of career and internship opportunities for professionals
+        and students in the field of environmental economics:", "dateLastCrawled":
+        "2021-03-18T11:14:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6", "name":
+        "Salaries and Benefits | Careers | US EPA", "url": "https:\/\/www.epa.gov\/careers\/salaries-and-benefits",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.epa.gov\/careers\/salaries-and-benefits",
+        "snippet": "Salaries and Incentives Salaries. Like other government agencies,
+        our basic salaries are set by Congress and most are paid under the General
+        Schedule, which spans Grades 1 to 15 (i.e. ‘GS-1’ to ‘GS-15’).The grade level
+        at which an individual enters a job depends on the specific position and the
+        individual''s qualifications.", "dateLastCrawled": "2021-03-16T05:32:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "How to Apply: Finding the Right Job | Careers | US EPA", "url":
+        "https:\/\/www.epa.gov\/careers\/how-apply-finding-right-job", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.epa.gov\/careers\/how-apply-finding-right-job",
+        "snippet": "Ignore the \"Keyword\" and \"Location\" boxes; click on \"Search
+        Jobs.\" You will see a list of all current EPA job vacancies. Use the content
+        on the left side of the page to narrow your search by keyword, job category,
+        location, salary, etc. If the search results do not return any jobs of interest,
+        note that new career opportunities are added each week.", "dateLastCrawled":
+        "2021-03-19T05:16:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8", "name":
+        "FY2021 Environmental Workforce Development and Job ...", "url": "https:\/\/www.epa.gov\/grants\/fy2021-environmental-workforce-development-and-job-training-ewdjt-grants",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.epa.gov\/grants\/fy2021-environmental-workforce-development-and-job-training...",
+        "snippet": "EPA-OLEM-OBLR-20-03 - Closing Date: September 22, 2020 This notice
+        announces the availability of funds and solicits applications from eligible
+        entities, including nonprofit organizations, to deliver Environmental Workforce
+        Development and Job Training programs that recruit, train, and place local,
+        unemployed and under-employed residents with the skills needed to secure full-time
+        employment in ...", "dateLastCrawled": "2021-03-14T00:36:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Current Job Openings at EPA | Careers | US EPA", "url": "https:\/\/19january2017snapshot.epa.gov\/careers\/current-job-openings-epa_.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/19january2017snapshot.epa.gov\/careers\/current-job-openings-epa",
+        "snippet": "All Currently-Open Jobs in Major EPA Locations. Notes: If
+        you see basically a blank page, it’s because there are no jobs currently
+        available at that location. These lists are based on live RSS feeds from USAJobs.gov.
+        To get these search results delivered to your feed reader, see the top of
+        each search results page.", "dateLastCrawled": "2021-03-29T23:00:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "How to Apply: Applying on USAJobs.gov | Careers | US EPA", "url":
+        "https:\/\/www.epa.gov\/careers\/how-apply-applying-usajobsgov", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.epa.gov\/careers\/how-apply-applying-usajobsgov",
+        "snippet": "How to apply to EPA jobs: Applying on USAJobs.com. Virtually
+        all EPA jobs, including paid internships, are posted online through USAJobs.gov.You
+        can use USAJobs to upload your resume, browse open EPA positions, and apply
+        for jobs across the United States.", "dateLastCrawled": "2021-03-05T17:35:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Careers for Veterans | Careers | US EPA", "url": "https:\/\/www.epa.gov\/careers\/careers-veterans",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.epa.gov\/careers\/careers-veterans",
+        "snippet": "In November 2009, President Obama issued Executive Order 13518,
+        Employment of Veterans in the Federal Government, to enhance and promote employment
+        opportunities for veterans within the federal government. Among other things,
+        the Order established a Veterans Employment Program office within most federal
+        agencies.", "dateLastCrawled": "2021-02-13T13:17:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Student Internships | Careers | US EPA", "url": "https:\/\/www.epa.gov\/careers\/student-internships",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.epa.gov\/careers\/student-internships",
+        "snippet": "You can also view all student jobs, at any agency, across the
+        nation and narrow your search results using the search criteria on the right
+        side of the page. Note that positions are typically open for 1-2 weeks only,
+        so act fast! Locations are all over the nation; check specific listings for
+        location(s).", "dateLastCrawled": "2021-03-23T09:50:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Careers in Radiation Protection | RadTown | US EPA", "url": "https:\/\/www.epa.gov\/radtown\/careers-radiation-protection",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.epa.gov\/radtown\/careers-radiation-protection",
+        "snippet": "Jobs in radiation protection generally fall into one of the
+        following categories: medical, emergency response, science, research, construction,
+        nuclear power, or waste management. Although every profession listed on this
+        webpage deals with radiation in some way, each profession’s interaction with
+        and use of radiation in the workplace is unique.", "dateLastCrawled": "2021-03-04T03:36:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "EPA in Minnesota | US EPA", "url": "https:\/\/www.epa.gov\/mn",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.epa.gov\/mn", "snippet":
+        "EPA''s work in Minnesota is managed from our Region 5 office in Chicago,
+        Illinois. Learn more about EPA Region 5.", "dateLastCrawled": "2021-03-29T14:39:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Legal Careers in EPA''s Office of General Counsel (OGC ...", "url":
+        "https:\/\/www.epa.gov\/careers\/legal-careers-epas-office-general-counsel-ogc",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.epa.gov\/careers\/legal-careers-epas-office-general-counsel-ogc",
+        "snippet": "Information about working in EPA''s Office of General COunsel.
+        On this page: Why work at OGC? Paths to OGC employment; Why Work at OGC? We
+        believe that there is no better place than EPA OGC for attorneys who want
+        to practice public sector general or environmental law!", "dateLastCrawled":
+        "2021-03-19T15:42:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16", "name":
+        "Job Opportunities through Student Services Contracting ...", "url": "https:\/\/www.epa.gov\/careers\/job-opportunities-through-student-services-contracting",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.epa.gov\/careers\/job-opportunities-through-student-services-contracting",
+        "snippet": "What do student contractors do? Student contractors partake in
+        an intensive hands-on employment experience for up to five years, working
+        side by side with EPA mentors and\/or scientists, who will provide day-to-day
+        direction and oversight.", "dateLastCrawled": "2021-02-27T23:48:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "EPA Careers: Information for New EPA Employees | Careers ...",
+        "url": "https:\/\/www.epa.gov\/careers\/epa-careers-information-new-epa-employees",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.epa.gov\/careers\/epa-careers-information-new-epa-employees",
+        "snippet": "Information for new employees. Congratulations on being selected
+        to join the EPA team! Whether you are entering the federal government for
+        the first time, returning after a break in service, or transferring from another
+        federal agency, this employee orientation will help you by providing essential
+        information you will need to begin working at the EPA.", "dateLastCrawled":
+        "2021-02-07T21:22:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18", "name":
+        "Contact Us about EPA Careers | Careers | US EPA", "url": "https:\/\/www.epa.gov\/careers\/forms\/contact-us-about-epa-careers",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.epa.gov\/careers\/forms\/contact-us-about-epa-careers",
+        "snippet": "Select the topic of your question from the categories below and
+        click on a question from the list to see the answer. If you have a question
+        that you do not see on this list, please use the Contact Us form below to
+        submit your question to the EPA Careers Webmaster.", "dateLastCrawled": "2021-03-28T09:46:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Senior Environmental Employment (SEE) Program | Careers ...", "url":
+        "https:\/\/www.epa.gov\/careers\/senior-environmental-employment-see-program",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.epa.gov\/careers\/senior-environmental-employment-see-program",
+        "snippet": "The Senior Environmental Employment (SEE) Program provides an
+        opportunity for retired and unemployed Americans age 55 and over to share
+        their expertise with U.S. EPA, remaining active using their matured skills
+        in meaningful tasks that support a wide variety of environmental programs.",
+        "dateLastCrawled": "2021-03-18T08:40:00.0000000Z", "language": "en", "isNavigational":
+        false}]}, "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages",
+        "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
     http_version:
-  recorded_at: Tue, 30 Mar 2021 17:17:55 GMT
+  recorded_at: Thu, 01 Apr 2021 17:00:15 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=jobs%20(site:cdc.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Thu, 01 Apr 2021 16:59:15 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 28FCDA3EDD014CE5AE02B3BED4DC2A95
+      Bingapis-Sessionid:
+      - B8F14EFA38E1456FAF110EDA58D45BE3
+      X-Msedge-Clientid:
+      - 30DA1BB8935B68691A820BB492446932
+      X-Msapi-Userstate:
+      - '1848'
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=189,MSDatacenter=BN2B
+      X-Msedge-Ref:
+      - 'Ref A: 28FCDA3EDD014CE5AE02B3BED4DC2A95 Ref B: BLUEDGE1920 Ref C: 2021-04-01T17:00:15Z'
+      Apim-Request-Id:
+      - b4f3b3f5-259c-4541-b114-16b812f305b8
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Thu, 01 Apr 2021 17:00:15 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "jobs
+        (site:cdc.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=jobs+(site%3acdc.gov)",
+        "totalEstimatedMatches": 18600000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Working at CDC", "url": "https:\/\/jobs.cdc.gov\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/jobs.cdc.gov", "snippet": "Student Internships
+        and Jobs CDC has numerous internships, training, and volunteer opportunities
+        for students of all academic disciplines and levels. Many of these opportunities
+        provide invaluable experiences and offer clear-cut paths to exciting careers
+        with CDC.", "dateLastCrawled": "2021-03-29T13:20:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Search our Job Opportunities at CDC", "url": "https:\/\/jobs.cdc.gov\/search-jobs",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/jobs.cdc.gov\/search-jobs",
+        "snippet": "Search for available job openings at CDC. Links with this icon
+        indicate that you are leaving the CDC website.. The Centers for Disease
+        Control and Prevention (CDC) cannot attest to the accuracy of a non-federal
+        website.", "dateLastCrawled": "2021-03-29T14:14:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Search our Job Opportunities at CDC", "url": "https:\/\/jobs.cdc.gov\/public-health-jobs",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/jobs.cdc.gov\/public-health-jobs",
+        "snippet": "Match Our Jobs To Your LinkedIn Profile. Job Match. Use your
+        LinkedIn profile to see which jobs at CDC may be a good fit for you. Just
+        click the icon to get started. Featured Jobs. Human Resources Specialist
+        (HR Development) Date posted 03\/25\/2021; Economist Date posted 03\/25\/2021;",
+        "dateLastCrawled": "2021-03-26T04:40:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Global Opportunities | Jobs | CDC", "url": "https:\/\/www.cdc.gov\/jobs\/global-opportunities.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/jobs\/global-opportunities.html",
+        "snippet": "From Angola to Zimbabwe, the Centers for Disease Control and
+        Prevention’s (CDC) presence is felt in over 40 countries worldwide through
+        partnerships with international and multinational public health agencies,
+        and non-governmental organizations.. Whether you’re working with health ministries
+        to build public health surveillance systems in developing countries, contributing
+        to global health ...", "dateLastCrawled": "2021-03-28T21:52:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Search our Job Opportunities at CDC", "url": "https:\/\/jobs.cdc.gov\/search-jobs\/Atlanta?orgIds=250&alp=6252001-4197000-4180439&alt=4",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/jobs.cdc.gov\/search-jobs\/Atlanta?orgIds=250&alp=6252001-4197000-4180439&alt=4",
+        "snippet": "Featured Jobs. Policy and Planning Officer Date posted 03\/26\/2021;
+        Health Scientist (Informatics) Date posted 03\/18\/2021 Public Health Analyst
+        (Extramural Resources) Date posted 03\/18\/2021 Director, Center for Preparedness
+        and Response (CPR) Date posted 03\/26\/2021 Director, Center for Preparedness
+        and Response (CPR) Date posted 03\/26\/2021 Public Health Analyst Date posted
+        03\/26\/2021", "dateLastCrawled": "2021-03-29T03:54:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "New Hire Information | Jobs | CDC", "url": "https:\/\/www.cdc.gov\/jobs\/new-hire-information.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/jobs\/new-hire-information.html",
+        "snippet": "You are scheduled to attend a New Employee Orientation on your
+        first day at CDC (or the first orientation available). Go to the Orientation
+        Calendar pdf icon [PDF – 169 KB] to obtain your orientation information. The
+        date, time and location will also be listed on your formal welcome\/new hire
+        letter.", "dateLastCrawled": "2021-03-29T08:13:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Jobs and Opportunities Around the World | CDC - Global Health",
+        "url": "https:\/\/www.cdc.gov\/globalhealth\/employment\/default.htm", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.cdc.gov\/globalhealth\/employment", "snippet":
+        "Jobs and Opportunities Around the World. Related Pages. Thank you for taking
+        the first step towards an exciting career in global health! CDC strives to
+        find well-qualified, talented people to help CDC improve health and save lives
+        around the world. Global public health is a field where you can make a difference!",
+        "dateLastCrawled": "2021-03-28T22:50:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Search our Job Opportunities at CDC", "url": "https:\/\/jobs.cdc.gov\/location\/united-states-colorado-fort-collins-jobs\/250\/6252001-5417618-5578884-5577147\/4",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/jobs.cdc.gov\/location\/united-states-colorado-fort-collins-jobs\/250\/6252001...",
+        "snippet": "Featured Jobs. Policy Specialist Date posted 03\/24\/2021; Public
+        Health Analyst (Extramural Resources) Date posted 03\/18\/2021; General Engineer
+        (Direct Hire) Date posted 03\/24\/2021; Administrative Officer Date posted
+        03\/24\/2021; Electronics Technician Date posted 03\/18\/2021; Electronics
+        Technician Date posted 03\/17\/2021", "dateLastCrawled": "2021-03-24T23:30:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Medical Officers - jobs.cdc.gov", "url": "https:\/\/jobs.cdc.gov\/medical-officers",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/jobs.cdc.gov\/medical-officers",
+        "snippet": "CDC medical officers and physicians serve as advisors, consultants,
+        and administrators. They institutionalize global health programs and lead
+        scientific discoveries. The results of their work are felt worldwide through
+        their cutting-edge medical research, broad network, and specialized expertise.",
+        "dateLastCrawled": "2021-03-28T16:07:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Jobs in Illinois - Centers for Disease Control and Prevention",
+        "url": "https:\/\/jobs.cdc.gov\/location\/illinois-jobs\/250\/6252001-4896861\/3",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/jobs.cdc.gov\/location\/illinois-jobs\/250\/6252001-4896861\/3",
+        "snippet": "Featured Jobs. Economist Date posted 03\/25\/2021; Microbiologist
+        (Inspector) Date posted 03\/25\/2021; Policy Specialist Date posted 03\/24\/2021;
+        Public Health Analyst (Extramural Resources) Date posted 03\/18\/2021; General
+        Engineer (Direct Hire) Date posted 03\/24\/2021; Administrative Officer Date
+        posted 03\/24\/2021", "dateLastCrawled": "2021-03-25T12:23:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Working at CDC", "url": "https:\/\/jobs.cdc.gov\/working-at-cdc",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/jobs.cdc.gov\/working-at-cdc",
+        "snippet": "Learn more about overseas jobs at CDC. Search Overseas Jobs.
+        The CDC’s presence is felt in over 40 countries worldwide. Job Seekers with
+        Disabilities. CDC is committed to providing a progressive environment for
+        people with disabilities. We embrace an open culture of inclusion and respect
+        to cultivate ideas, devise solutions and ultimately ...", "dateLastCrawled":
+        "2021-03-29T01:04:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11", "name":
+        "Pathways for Students and Graduates | Jobs | CDC", "url": "https:\/\/www.cdc.gov\/jobs\/pathways.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/jobs\/pathways.html",
+        "snippet": "Opportunities for Students and College Graduates. Whether you
+        are on a career path, or in the process of determining which career you would
+        like to pursue, the CDC has numerous commissioned corps, internship, training,
+        and volunteer opportunities for students of all academic disciplines and levels.",
+        "dateLastCrawled": "2021-03-29T17:34:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Search our Job Opportunities at CDC", "url": "https:\/\/jobs.cdc.gov\/search-jobs\/epidemiologist\/250\/1",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/jobs.cdc.gov\/search-jobs\/epidemiologist\/250\/1",
+        "snippet": "Featured Jobs. Epidemiologist Date posted 03\/29\/2021; Epidemiologist
+        Date posted 03\/29\/2021; Information Technology Specialist (INFOSEC) Date
+        posted 03\/29\/2021; Information Technology Specialist (INFOSEC) Date posted
+        03\/29\/2021; Mathematical Statistician (Direct Hire) Date posted 03\/29\/2021;
+        Mathematical Statistician Date posted 03\/29\/2021", "dateLastCrawled": "2021-03-29T14:41:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Applying to CDC Positions as a Reemployed Annuitant | Jobs ...",
+        "url": "https:\/\/www.cdc.gov\/jobs\/reemployed-annuitant.html", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.cdc.gov\/jobs\/reemployed-annuitant.html",
+        "snippet": "This page summarizes the characteristics of reemployment of a
+        retired civil service annuitant. It provides a general overview of the topic
+        and some details on several of the key elements regarding reemployed annuitants
+        (REAs). It also provides background information and guidance for applying
+        to positions with the CDC as a reemployed annuitant.", "dateLastCrawled":
+        "2021-03-29T01:32:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "Executive and Scientists", "url": "https:\/\/jobs.cdc.gov\/executives-scientists",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/jobs.cdc.gov\/executives-scientists",
+        "snippet": "CDC mission support jobs play an integral role in supporting
+        CDC''s front line. Whether the duties are negotiating and procuring contracts
+        or typing memorandums for the CDC director, each job is essential and contributes
+        greatly to the success of meeting the agency''s mission. Learn More", "dateLastCrawled":
+        "2021-03-29T03:23:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15", "name":
+        "CDC Global HIV and TB Career Opportunities", "url": "https:\/\/www.cdc.gov\/globalhivtb\/who-we-are\/careers\/jobs.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/globalhivtb\/who-we-are\/careers\/jobs.html",
+        "snippet": "Looking for a career with purpose, you’ll find it here. CDC is
+        the world’s leading public health protection agency working 24\/7 to save
+        lives. As part of CDC’s Fight against Global HIV & TB, you will play a key
+        role in helping to protect the world from the threat of these two deadly diseases.
+        It’s an immense responsibility, and your expertise, whether scientific or
+        administrative, will ...", "dateLastCrawled": "2021-03-29T07:09:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "CDC | National Center for Environmental Health | Employment", "url":
+        "https:\/\/www.cdc.gov\/nceh\/information\/employment.htm", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.cdc.gov\/nceh\/information\/employment.htm",
+        "snippet": "NCEH also offers employment in the clerical, administrative,
+        financial, computer, technical, trade, and communication professions. All
+        jobs at NCEH are advertised through the CDC Job Information Center. Links
+        to sources of information on jobs with CDC and NCEH and how to apply for
+        a federal job are listed below.", "dateLastCrawled": "2021-03-25T12:47:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "CDC - Careers at NIOSH", "url": "https:\/\/www.cdc.gov\/niosh\/employ\/nioshcar.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/niosh\/employ\/nioshcar.html",
+        "snippet": "NIOSH positions are primarily located in Cincinnati, OH, Morgantown,
+        WV, Pittsburgh, PA and Spokane, WA. There are a limited number of NIOSH positions
+        located in Atlanta, GA and Washington, DC.", "dateLastCrawled": "2021-03-29T00:07:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Veterans Employment Opportunities", "url": "https:\/\/jobs.cdc.gov\/veterans",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/jobs.cdc.gov\/veterans",
+        "snippet": "Featured Jobs. Policy and Planning Officer Date posted 03\/26\/2021;
+        Health Scientist (Informatics) Date posted 03\/18\/2021 Public Health Analyst
+        (Extramural Resources) Date posted 03\/18\/2021 Director, Center for Preparedness
+        and Response (CPR) Date posted 03\/26\/2021 Director, Center for Preparedness
+        and Response (CPR) Date posted 03\/26\/2021 Public Health Analyst Date posted
+        03\/26\/2021", "dateLastCrawled": "2021-03-27T15:20:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Applying to CDC Positions as a Reemployed Annuitant for ...", "url":
+        "https:\/\/www.cdc.gov\/jobs\/reemployed-annuitant-covid.html", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.cdc.gov\/jobs\/reemployed-annuitant-covid.html",
+        "snippet": "This page summarizes the characteristics of reemployment of a
+        retired civil service annuitant for the COVID-19 response. It provides a general
+        overview of the topic and some details on several of the key elements regarding
+        reemployed annuitants (REAs). It also provides background information and
+        guidance for applying to positions with the CDC as a reemployed annuitant
+        for the COVID-19 response.", "dateLastCrawled": "2021-03-29T00:24:00.0000000Z",
+        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version:
+  recorded_at: Thu, 01 Apr 2021 17:00:16 GMT
 recorded_with: VCR 4.0.0
