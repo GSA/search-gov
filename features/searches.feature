@@ -792,7 +792,7 @@ Feature: Search
     And I press "Buscar" within the search box
     Then I should not see "Hippopotomonstrosesquippedaliophobia y otros miedos irracionales"
 
-  Scenario: When a searcher clicks on a collection on sidebar and the query is blank
+  Scenario: When a searcher clicks on a collection and the query is blank
     Given the following Affiliates exist:
       | display_name | name    | contact_email | first_name | last_name  |
       | aff site     | aff.gov | aff@bar.gov   | John       | Bar        |
