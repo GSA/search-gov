@@ -897,9 +897,9 @@ Feature: Legacy Search
     And I should see a link to "GobiernoUSA.gov" with url for "https://twitter.com/GobiernoUSA"
     And I should see "GobiernoUSA.gov @GobiernoUSA"
     And I should see "Estados Unidos por amigos!"
-    And I should see "Estados" in bold font in the twitter govbox
-    And I should see "Unidos" in bold font in the twitter govbox
-    And I should see "amigos" in bold font in the twitter govbox
+    And I should see "Estados" in bold font in the legacy twitter govbox
+    And I should see "Unidos" in bold font in the legacy twitter govbox
+    And I should see "amigos" in bold font in the legacy twitter govbox
 
   Scenario: Searching document collections
     Given the following legacy Affiliates exist:
