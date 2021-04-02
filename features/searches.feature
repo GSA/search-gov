@@ -925,27 +925,21 @@ Feature: Search
     Then I should see a link to "First petition article" with url for "http://petitions.whitehouse.gov/petition-1.html"
     And I should see a link to "Second petition article" with url for "http://petitions.whitehouse.gov/petition-2.html"
 
-  # SRCH-2009
-  @wip
   Scenario: Searching on non navigable document collection
     Given the following Affiliates exist:
       | display_name | name       | contact_email | first_name | last_name | domains |
       | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | usa.gov |
     And affiliate "agency.gov" has the following document collections:
-      | name | prefixes            | is_navigable |
-      | Blog | http://www.sba.gov/blogs | false        |
-      | Web  | https://www.usa.gov  | true         |
+      | name | prefixes                  | is_navigable |
+      | Blog | https://www.sba.gov/blogs | false        |
+      | Web  | https://www.usa.gov       | true         |
     When I am on agency.gov's "Blog" docs search page
-    Then I should see "Blog" in the left column
-    And I should not see a link to "Everything" in the left column
-    And I should not see a link to "Blog" in the left column
-    And I should not see a link to "Search Notes" in the left column
-    When I fill in "query" with "Noaa"
-    And I press "Search" within the search box
-    Then I should see some Bing search results
-    And I should not see a link to "Everything" in the left column
-    And I should not see a link to "Blog" in the left column
-    And I should not see a link to "Search Notes" in the left column
+    Then I should see "Blog" in the search navbar
+    And I should not see a link to "Web"
+    And I should not see a link to "Blog"
+    When I search for "sba"
+    Then I should see at least "1" web search results
+    And I should not see a link to "Blog" in the search navbar
 
   Scenario: Searching with malformed query
     Given the following Affiliates exist:
