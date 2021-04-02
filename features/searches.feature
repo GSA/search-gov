@@ -908,8 +908,6 @@ Feature: Search
     And I should see "Unidos" in bold font in the twitter govbox
     And I should see "amigos" in bold font in the twitter govbox
 
-  # SRCH-2009
-  @wip
   Scenario: Searching document collections
     Given the following Affiliates exist:
       | display_name | name       | contact_email | first_name | last_name | domains        |
@@ -922,9 +920,8 @@ Feature: Search
       | First petition article  | This is an article death star r2d2 xyz3 petition    | http://petitions.whitehouse.gov/petition-1.html | agency.gov | 11/02/2011      | OK                |
       | Second petition article | This is an article on death r2d2 xyz3 star petition | http://petitions.whitehouse.gov/petition-2.html | agency.gov | 11/02/2011      | OK                |
     When I am on agency.gov's search page
-    And I follow "Petitions" in the left column
-    And I fill in "Enter your search term" with "'death star r2d2 xyz3'"
-    And I press "Search" within the search box
+    And I follow "Petitions" in the search navbar
+    And I search for "death star r2d2 xyz3"
     Then I should see a link to "First petition article" with url for "http://petitions.whitehouse.gov/petition-1.html"
     And I should see a link to "Second petition article" with url for "http://petitions.whitehouse.gov/petition-2.html"
 
