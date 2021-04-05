@@ -86,7 +86,8 @@ gem 'test-unit', '~> 3.2.7'
 gem 'http', '~> 1.0'
 gem 'robots_tag_parser', '~> 0.1.0', git: 'https://github.com/GSA/robots_tag_parser'
 gem 'loofah', '~> 2.9.0'
-# Locking ref, as later versions (as "medusa-crawler") include breaking changes
+# Locking ref, as later versions (after being renamed & released as "medusa-crawler")
+# include breaking changes
 gem 'medusa', git: 'https://github.com/brutuscat/medusa-crawler',
               ref: '82299f2700ac56b4af2b14d707f35d6af466ad8e'
 # Robotex is required by Medusa. Specifying fork until https://github.com/chriskite/robotex/issues/4
