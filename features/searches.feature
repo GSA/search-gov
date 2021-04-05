@@ -871,8 +871,6 @@ Feature: Search
     And I press "Buscar" within the search box
     Then I should see the browser page titled "Spanish Videos - Spanish bar site resultados de la búsqueda"
 
-  # SRCH-2009
-  @wip
   Scenario: When there are relevant Tweets from Twitter profiles associated with the affiliate
     Given the following Affiliates exist:
       | display_name | name       | contact_email | first_name | last_name | locale |
@@ -888,9 +886,9 @@ Feature: Search
       | Ok season http://t.co/YQQSs9bb | 184957   | hour          | 123                | http://t.co/YQQSs9bb | http://tmblr.co/Z8xAVxUEKvaK | tmblr.co/Z8xAVxUEK... |
       | Estados Unidos por amigos!     | 789012   | hour          | 456                |                      |                              |                       |
     When I am on bar.gov's search page
-    And I fill in "query" with "season"
-    And I press "Search" within the search box
-    Then I should see "Recent tweet for 'season' by bar site"
+    And I search for "season"
+    Then I should see "Ok season"
+    And I should see "about 1 hour ago"
     And I should see a link to "USAgov" with url for "https://twitter.com/USAgov"
     And I should see "USA.gov @USAgov"
     And I should see a link to "http://t.co/YQQSs9bb" with text "tmblr.co/Z8xAVxUEK..."
@@ -900,10 +898,10 @@ Feature: Search
     When I am on es.bar.gov's search page
     And I fill in "query" with "Estados Unidos amiga"
     And I press "Buscar" within the search box
-    Then I should see "Tweet más reciente para 'Estados Unidos amiga' de spanish site"
-    And I should see a link to "GobiernoUSA.gov" with url for "https://twitter.com/GobiernoUSA"
+    Then I should see a link to "GobiernoUSA.gov" with url for "https://twitter.com/GobiernoUSA"
     And I should see "GobiernoUSA.gov @GobiernoUSA"
     And I should see "Estados Unidos por amigos!"
+    And I should see "Hace una hora"
     And I should see "Estados" in bold font in the twitter govbox
     And I should see "Unidos" in bold font in the twitter govbox
     And I should see "amigos" in bold font in the twitter govbox

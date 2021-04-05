@@ -35,4 +35,269 @@ http_interactions:
         subscription and use a correct regional API endpoint for your resource."}}'
     http_version:
   recorded_at: Tue, 30 Mar 2021 17:17:17 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=estados%20unidos%20amiga%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Fri, 02 Apr 2021 15:22:49 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 5D75FE2945B04B5CAA1FBE1B83F14AAD
+      Bingapis-Sessionid:
+      - 79FA2B15910C4FE79105DF43E6ADA80C
+      X-Msedge-Clientid:
+      - 30FB6E5D1B8366922FE47E501A7E6774
+      X-Msapi-Userstate:
+      - f542
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=268,MSDatacenter=BN2B
+      X-Msedge-Ref:
+      - 'Ref A: 5D75FE2945B04B5CAA1FBE1B83F14AAD Ref B: BLUEDGE0508 Ref C: 2021-04-02T15:23:49Z'
+      Apim-Request-Id:
+      - 9adcbed7-625e-498d-a8a5-7d6d6cc6974b
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Fri, 02 Apr 2021 15:23:48 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "estados
+        unidos amiga (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=estados+unidos+amiga+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 97100, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Residencia permanente o \"Green Card\" | USAGov", "url": "https:\/\/www.usa.gov\/espanol\/residencia-permanente",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/espanol\/residencia-permanente",
+        "snippet": "Solicitar, renovar o reemplazar su residencia permanente. La residencia
+        permanente es el estatus que se les concede a los inmigrantes para vivir y
+        trabajar permanentemente en Estados Unidos.. En la mayoría de casos, un
+        patrocinador (empleador o familiar) es el que solicita la residencia permanente
+        o \"Green Card\" (tarjeta verde) en favor de otra persona.", "dateLastCrawled":
+        "2021-03-29T00:19:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1", "name":
+        "Declaración conjunta del Grupo de Amigos del Proceso de ...", "url": "https:\/\/co.usembassy.gov\/es\/declaracion-conjunta-del-grupo-de-amigos-del-proceso-de-quito\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/co.usembassy.gov\/es\/declaracion-conjunta-del-grupo-de-amigos-del-proceso-de-quito",
+        "snippet": "El Grupo de Amigos del Proceso de Quito alaba la decisión del
+        Gobierno de Colombia de ofrecer un Estatuto de Protección Temporal a los migrantes
+        y refugiados venezolanos en el país para los próximos diez años. Este notable
+        acto de solidaridad debería contribuir a reducir el sufrimiento de los venezolanos,
+        al tiempo que a facilitar su integración económica y su ...", "dateLastCrawled":
+        "2021-03-29T11:11:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2", "name":
+        "El Embajador de los EE.UU. da la bienvenida a 25 nuevos ...", "url": "https:\/\/co.usembassy.gov\/es\/el-embajador-de-los-ee-uu-da-la-bienvenida-a-25-nuevos-voluntarios-del-cuerpo-de-paz\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/co.usembassy.gov\/es\/el-embajador-de-los-ee-uu-da-la-bienvenida-a-25-nuevos...",
+        "snippet": "Durante la ceremonia, el embajador de los Estados Unidos se
+        dirigió a los nuevos voluntarios diciendo: “ustedes representan lo mejor de
+        nosotros.” El enfatizó: “ estoy muy agradecido con ustedes por el compromiso
+        que desde ya demuestran y por lo que harán aquí en Colombia, uno de nuestros
+        mejores amigos en el hemisferio”.", "dateLastCrawled": "2021-03-24T21:32:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "¿Se puede cambiar o revocar un poder legal? | Oficina para ...",
+        "url": "https:\/\/www.consumerfinance.gov\/es\/obtener-respuestas\/se-puede-cambiar-o-revocar-un-poder-legal-es-1771\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.consumerfinance.gov\/es\/obtener-respuestas\/se-puede-cambiar-o-revocar-un...",
+        "snippet": "Sí. Digamos que su amiga lo ha nombrado su agente a través de
+        un poder legal (Power of Attorney, o POA por sus siglas en inglés), lo que
+        significa que le ha dado la autoridad sobre sus finanzas.Ella puede quitarle
+        su autoridad para actuar como su agente en cualquier momento si ella lo desea
+        y todavía puede tomar decisiones.", "dateLastCrawled": "2021-03-26T02:00:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Secretario de Estado de EE. UU | Embajada de EE.UU. en ...", "url":
+        "https:\/\/co.usembassy.gov\/es\/our-relationship-es\/us-secretary-es\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/co.usembassy.gov\/es\/our-relationship-es\/us-secretary-es",
+        "snippet": "Ciudadano colombiano extraditado de Panamá para enfrentar cargos
+        de narcotráfico en Estados Unidos; Declaración conjunta del Grupo de Amigos
+        del Proceso de Quito; Alert. Mensaje para ciudadanos Americanos: Reanudación
+        de Servicios Limitados para Ciudadanos Americanos; Alerta: Vuelos Internacionales
+        entre los Estados Unidos y Colombia se ...", "dateLastCrawled": "2021-03-24T21:33:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Amigos: Soldados y animales en la Segunda Guerra Mundial ...",
+        "url": "https:\/\/www.archives.gov\/espanol\/prologue\/soldados-y-animales",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.archives.gov\/espanol\/prologue\/soldados-y-animales",
+        "snippet": "English Otoño 1996, tomo 28, Número 3 Por: Lisa B. Auel S. Medeiroa,
+        de la 26va división del ejército, abraza la mascota de la unidad S, Little
+        Joe, en Ottweiler, Alemania. 21 de marzo de 1945. (111-SC-202435) En tiempos
+        de guerra, los ejércitos humanos muchas veces buscan la ayuda del reino animal.
+        En conflictos pasados, los caballos, elefantes, y camellos transportaban a",
+        "dateLastCrawled": "2021-03-19T06:52:00.0000000Z", "language": "es", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Fallecimiento de un ciudadano de EE.UU. | Embajada de los ...",
+        "url": "https:\/\/pa.usembassy.gov\/es\/u-s-citizen-services-es\/death-of-a-u-s-citizen-es\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/pa.usembassy.gov\/es\/u-s-citizen-services-es\/death-of-a-u-s-citizen-es",
+        "snippet": "Cuando un ciudadano de Estados Unidos muere en Panamá, la
+        Unidad de Servicios al Ciudadano Americano (ACS) de la Embajada de los Estados
+        Unidos ayuda a la familia y amigos de las siguientes maneras: Intentamos
+        localizar e informar a los familiares de la muerte del ciudadano. Proporcionamos
+        información sobre cómo hacer arreglos para el entierro ...", "dateLastCrawled":
+        "2021-03-27T03:39:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7", "name":
+        "Sanciones Archivo | Embajada de EE.UU. en Colombia", "url": "https:\/\/co.usembassy.gov\/es\/tag\/sanciones\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/co.usembassy.gov\/es\/tag\/sanciones",
+        "snippet": "Estados Unidos dona kits de empaque isotérmico para el transporte
+        de vacunas al Ministerio de Salud de Colombia; Anuncio de las Ganadoras del
+        Premio Internacional a las Mujeres de Coraje 2021; Ciudadano colombiano extraditado
+        de Panamá para enfrentar cargos de narcotráfico en Estados Unidos", "dateLastCrawled":
+        "2021-03-25T02:46:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8", "name":
+        "Los trucos de estafadores para robarle el corazón y el ...", "url": "https:\/\/www.consumidor.ftc.gov\/blog\/2015\/07\/los-trucos-de-estafadores-para-robarle-el-corazon-y-el-dinero",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.consumidor.ftc.gov\/blog\/2015\/07\/los-trucos-de-estafadores-para-robarle-el...",
+        "snippet": "A mi también me engaño uno diciéndome que estaba enamorado de
+        mi que era norteamericano que vivía en Londres que iba a venir a España luego
+        que me enviaría.un paquete me.llamaron para decirme que tenía que hacer un
+        giro a MoneyGram para que aduana de México liberará el paquete lo pague pero
+        a la hora me.volvieron a llamar para decirme que avía que pagar más dinero
+        y como yo me ...", "dateLastCrawled": "2021-03-29T13:20:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Celebraciones y cultura religiosas en EE. UU. | ShareAmerica",
+        "url": "https:\/\/share.america.gov\/es\/celebraciones-y-cultura-religiosas-en-ee-uu\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/share.america.gov\/es\/celebraciones-y-cultura-religiosas-en-ee-uu",
+        "snippet": "En Estados Unidos las festividades religiosas suelen ser ocasiones
+        para abrir puertas a amigos y vecinos, independientemente de su religión.
+        El nuevo libro “Fe + Libertad: Religión en EE. UU.” muestra como personas
+        de todo el país celebran sus ocasiones especiales.", "dateLastCrawled": "2021-03-25T12:18:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Visas para extranjeros: tipos de visas y extensiones ...", "url":
+        "https:\/\/www.usa.gov\/espanol\/inmigrantes-noresidentes", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.usa.gov\/espanol\/inmigrantes-noresidentes",
+        "snippet": "Visas temporales y de no inmigrante. Nota: En respuesta a la pandemia
+        del COVID-19, el Departamento de Estado suspendió en marzo de 2020 temporalmente
+        los servicios de visas de rutina en todas las embajadas y consulados de Estados
+        Unidos.En febrero de 2021 comenzó el proceso para regularizar los servicios
+        de visas de rutina (en inglés). Si usted desea visitar Estados Unidos
+        por un periodo ...", "dateLastCrawled": "2021-03-29T14:15:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "#COVID19 - Embajada de los Estados Unidos en Guatemala", "url":
+        "https:\/\/gt.usembassy.gov\/es\/tag\/covid19information-es\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/gt.usembassy.gov\/es\/tag\/covid19information-es",
+        "snippet": "Departamento de Estado de los Estados Unidos Oficina de la
+        Vocera 12 de mayo de 2020 Como ha dicho el Presidente Trump, los Estados
+        Unidos están trabajando con nuestros amigos y socios en todo el mundo
+        para coordinar nuestros esfuerzos por detener la propagación de la pandemia
+        del Covid-19.", "dateLastCrawled": "2021-03-29T02:15:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Programa Jóvenes Embajadores | Embajada de EE.UU. en Colombia",
+        "url": "https:\/\/co.usembassy.gov\/es\/education-culture-es\/ya-es\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/co.usembassy.gov\/es\/education-culture-es\/ya-es",
+        "snippet": "Estados Unidos dona kits de empaque isotérmico para el transporte
+        de vacunas al Ministerio de Salud de Colombia; ... El programa es administrado
+        por World Learning en asociación con Amigos de las Américas. Los socios
+        implementadores en Colombia son la Embajada de los EE.UU. en Bogotá y Amigos
+        de las Américas.", "dateLastCrawled": "2021-03-29T20:53:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Como seleccionar un programa de postgrado | Embajada de EE ...",
+        "url": "https:\/\/co.usembassy.gov\/es\/education-culture-es\/graduate-studies-es\/choosing-graduate-program-es\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/co.usembassy.gov\/es\/education-culture-es\/graduate-studies-es\/choosing-graduate...",
+        "snippet": "Lugar: Hay universidades en todo el territorio de los Estados
+        Unidos, desde las grandes ciudades en las que puede haber muchas, hasta
+        las zonas rurales donde una sola institución atiende una amplia región. Los
+        campus urbanos ofrecen gran variedad de opciones de comida, entretenimiento,
+        cultura y para ir de compras.", "dateLastCrawled": "2021-03-25T14:35:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Requisitos de admisión y exámenes de ingreso | Embajada de ...",
+        "url": "https:\/\/co.usembassy.gov\/es\/education-culture-es\/graduate-studies-es\/admission-requirements-entrance-examinations-es\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/co.usembassy.gov\/es\/education-culture-es\/graduate-studies-es\/admission...",
+        "snippet": "Estados Unidos dona kits de empaque isotérmico para el transporte
+        de vacunas al Ministerio de Salud de Colombia; Anuncio de las Ganadoras del
+        Premio Internacional a las Mujeres de Coraje 2021; Ciudadano colombiano extraditado
+        de Panamá para enfrentar cargos de narcotráfico en Estados Unidos", "dateLastCrawled":
+        "2021-03-24T21:25:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15", "name":
+        "Ministro Consejero Mark Wells | Embajada de EE.UU. en Colombia", "url":
+        "https:\/\/co.usembassy.gov\/es\/our-relationship-es\/dcm-es\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/co.usembassy.gov\/es\/our-relationship-es\/dcm-es",
+        "snippet": "Mark llega a Bogotá con más de una década de experiencia en la
+        región andina de América Latina. Viene de ocupar el mismo cargo en la Embajada
+        de Estados Unidos en Lima en donde estuvo desde 2017 hasta 2019. Del 2009
+        al 2011 fue el Consejero Político en la Embajada de Estados Unidos en
+        Colombia.", "dateLastCrawled": "2021-03-25T14:52:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "DIVULGACIÓN DE INFORMACIÓN Y DECLARACIÓN DE PASAJEROS A ...", "url":
+        "https:\/\/www.cdc.gov\/quarantine\/pdf\/Fillable-Attestation-Spanish-p.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/quarantine\/pdf\/Fillable-Attestation-Spanish-p.pdf",
+        "snippet": "Los Centros para el Control y la Prevención de Enfermedades (CDC)
+        de los Estados Unidos requieren que las aerolíneas y otros operadores
+        de aeronaves recolecten información en virtud de 42 C.F.R. §§ 71.20 y 71.31(b),
+        según lo autorizado por 42 U.S.C. § 264.", "dateLastCrawled": "2021-03-29T15:09:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Visite Estados Unidos | USCIS", "url": "https:\/\/www.uscis.gov\/es\/visite-estados-unidos",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.uscis.gov\/es\/visite-estados-unidos",
+        "snippet": "Generalmente, si usted quiere visitar (no vivir en) Estados
+        Unidos, primero debe obtener una visa de visitante extranjero.Los extranjeros
+        que viajan desde ciertos países podrían estar exentos de este requisito. Para
+        más información, por favor visite el sitio web del Departamento de Estado..
+        Si desea viajar a Estados Unidos por razones distintas a los negocios
+        o placer, debe solicitar una ...", "dateLastCrawled": "2021-03-29T08:03:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Reglamento Para Ingresar a la Embajada | Embajada de EE.UU ...",
+        "url": "https:\/\/co.usembassy.gov\/es\/u-s-citizen-services-es\/regulations-es\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/co.usembassy.gov\/es\/u-s-citizen-services-es\/regulations-es",
+        "snippet": "Ciudadano colombiano extraditado de Panamá para enfrentar cargos
+        de narcotráfico en Estados Unidos; Declaración conjunta del Grupo de Amigos
+        del Proceso de Quito; Alert. Mensaje para ciudadanos Americanos: Reanudación
+        de Servicios Limitados para Ciudadanos Americanos; Alerta: Vuelos Internacionales
+        entre los Estados Unidos y Colombia se ...", "dateLastCrawled": "2021-03-25T08:22:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "INL Archivo | U.S. Embassy in El Salvador", "url": "https:\/\/sv.usembassy.gov\/es\/tag\/inl\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/sv.usembassy.gov\/es\/tag\/inl",
+        "snippet": "El embajador Ronald Johnson visita La Unión y San Vicente El Embajador
+        de los Estados Unidos, Ronald Johnson, durante los días 30 de noviembre
+        y 1 de diciembre 2020, realizó una visita los departamentos de La Unión y
+        San Vicente. ... ” April 27, 2017 Buenas tardes estimados colegas de la Dirección
+        General de Centros Penales, programa Yo ...", "dateLastCrawled": "2021-03-29T16:57:00.0000000Z",
+        "language": "es", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version:
+  recorded_at: Fri, 02 Apr 2021 15:23:49 GMT
 recorded_with: VCR 4.0.0
