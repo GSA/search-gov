@@ -617,7 +617,7 @@ Feature: Search
       | link                                                                                    | title              | guid  | published_ago | description       |
       | https://www.whitehouse.gov/about-the-white-house/first-families/hillary-rodham-clinton/ | Clinton RSS Test   | uuid1 | day           | clinton news item |
     When I am on bar.gov's search page
-    And search for "Hillary Rodham Clinton first lady"
+    And I search for "Hillary Rodham Clinton first lady"
     Then I should see "Clinton RSS Test"
 
   # SRCH-2009
