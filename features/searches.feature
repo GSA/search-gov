@@ -1,27 +1,33 @@
-Feature: Legacy Search
+# This feature file has been copied and MINIMALLY updated from the original
+# legacy_search.feature file. Once these tests are all passing against the current,
+# responsive SERP, we should consolidate these with the other features in
+# responsive_search.feature and mobile_searches.feature
+Feature: Search
   In order to get government-related information from specific affiliate agencies
   As a site visitor
   I want to be able to search for information
 
   Scenario: Search with a blank query on an affiliate page
-    Given the following legacy Affiliates exist:
+    Given the following Affiliates exist:
       | display_name     | name             | contact_email         | first_name | last_name |
       | bar site         | bar.gov          | aff@bar.gov           | John       | Bar       |
     When I am on bar.gov's search page
-    And I press "Search" in the legacy search box
+    And I press "Search" within the search box
     Then I should see "Please enter a search term"
 
   Scenario: Search with no results
-    Given the following legacy Affiliates exist:
+    Given the following Affiliates exist:
       | display_name     | name             | contact_email         | first_name | last_name |
       | bar site         | bar.gov          | aff@bar.gov           | John       | Bar       |
     When I am on bar.gov's search page
     And I fill in "Enter your search term" with "foobarbazbiz"
-    And I press "Search" in the legacy search box
+    And I press "Search" within the search box
     Then I should see "Sorry, no results found for 'foobarbazbiz'. Try entering fewer or broader query terms."
 
+  # SRCH-2009
+  @wip
   Scenario: Searching with active RSS feeds
-    Given the following legacy Affiliates exist:
+    Given the following Affiliates exist:
       | display_name     | name       | contact_email | first_name   | last_name | locale     | youtube_handles | is_image_search_navigable |
       | bar site         | bar.gov    | aff@bar.gov   | John         | Bar       | en         | en_agency       | true                      |
       | Spanish bar site | es.bar.gov | aff@bar.gov   | John         | Bar       | es         | es_agency       | true                      |
@@ -74,7 +80,7 @@ Feature: Legacy Search
       | el paso term     |
     When I am on bar.gov's search page
     And I fill in "Enter your search term" with "first item"
-    And I press "Search" in the legacy search box
+    And I press "Search" within the search box
     Then I should see "News for 'first item' by bar site"
     And I should not see "stale"
     And I should see "First <b> item </b>" in the rss feed govbox
@@ -102,7 +108,7 @@ Feature: Legacy Search
 
     When I am on bar.gov's search page
     And I fill in "query" with "first item"
-    And I press "Search" in the legacy search box
+    And I press "Search" within the search box
     And I follow "Videos of 'first item'"
     Then I should have the following query string:
       |affiliate|bar.gov   |
@@ -113,7 +119,7 @@ Feature: Legacy Search
     And I should not see "First item"
     When I follow "Last year" in the results filters
     And I fill in "query" with "second item"
-    And I press "Search" in the legacy search box
+    And I press "Search" within the search box
     Then I should see "Videos" in the left column
     And I should not see a link to "Videos"
     And I should see "Second video item"
@@ -121,7 +127,7 @@ Feature: Legacy Search
 
     When I am on bar.gov's search page
     And I fill in "query" with "loren"
-    And I press "Search" in the legacy search box
+    And I press "Search" within the search box
     Then I should not see "News for 'loren' from bar site"
 
     When there are 30 video news items for "en_agency_channel_id"
@@ -132,13 +138,13 @@ Feature: Legacy Search
 
     When I am on es.bar.gov's search page
     And I fill in "Ingrese su búsqueda" with "noticia uno"
-    And I press "Buscar" in the legacy search box
+    And I press "Buscar" within the search box
     Then I should see "Videos de 'noticia uno' de Spanish bar site"
     And I should see "Noticia video uno" in the video rss feed govbox
 
     When I am on bar.gov's search page
     And I fill in "query" with "item"
-    And I press "Search" in the legacy search box
+    And I press "Search" within the search box
     Then I should see "Everything"
     And I should see "Images"
     And I should see "Press"
@@ -160,7 +166,7 @@ Feature: Legacy Search
 
     When I am on bar.gov's news search page
     And I fill in "query" with "item"
-    And I press "Search" in the legacy search box
+    And I press "Search" within the search box
     And I follow "Photo Gallery"
     And I follow "Last hour"
     Then I should see "no results found for 'item'"
@@ -181,7 +187,7 @@ Feature: Legacy Search
 
     When I am on es.bar.gov's search page
     And I fill in "query" with "obama"
-    And I press "Buscar" in the legacy search box
+    And I press "Buscar" within the search box
     Then I should see the browser page titled "obama - Spanish bar site resultados de la búsqueda"
     And I should see "Todo"
     And I should not see "Everything" in the left column
@@ -204,14 +210,14 @@ Feature: Legacy Search
 
     When I am on es.bar.gov's search page
     And I fill in "query" with "obama"
-    And I press "Buscar" in the legacy search box
+    And I press "Buscar" within the search box
     And I follow "Videos de 'obama'"
     Then I should see "Noticia video uno Obama"
     And I should not see "Noticia uno"
 
     When I am on es.bar.gov's search page
     And I fill in "query" with "obama"
-    And I press "Buscar" in the legacy search box
+    And I press "Buscar" within the search box
     And I follow "Spanish Videos"
     Then I should see "Cualquier fecha"
     Then I should see 2 video news results
@@ -219,8 +225,10 @@ Feature: Legacy Search
     And I should see an image with src "https://i.ytimg.com/vi/EqExXXahb0s/default.jpg"
     And I should see yesterday's date in the Spanish search results
 
+  # SRCH-2009
+  @wip
   Scenario: Searching news items using time filters
-    Given the following legacy Affiliates exist:
+    Given the following Affiliates exist:
       | display_name                 | name       | contact_email | first_name | last_name | locale | youtube_handles |
       | bar site                     | bar.gov    | aff@bar.gov   | John       | Bar       | en     | en_agency       |
       | Spanish bar site             | es.bar.gov | aff@bar.gov   | John       | Bar       | es     | es_agency       |
@@ -274,7 +282,7 @@ Feature: Legacy Search
       | el paso term     |
     When I am on bar.gov's search page
     And I fill in "query" with "item"
-    And I press "Search" in the legacy search box
+    And I press "Search" within the search box
     And I follow "Press"
     Then I should see "Any time" in the results filters
     And I should not see a link to "Any time" in the results filters
@@ -319,7 +327,7 @@ Feature: Legacy Search
     And I should not see a link to "Fourth item"
 
     When I fill in "query" with "item"
-    And I press "Search" in the legacy search box
+    And I press "Search" within the search box
     And the "From:" field should contain "9/30/2012"
     And the "To:" field should contain "10/15/2012"
     And I should see a link to "Third item" with url for "http://www.whitehouse.gov/news/3"
@@ -331,7 +339,7 @@ Feature: Legacy Search
 
     When I am on bar.gov's search page
     And I fill in "query" with "item"
-    And I press "Search" in the legacy search box
+    And I press "Search" within the search box
     And I follow "Press"
     And I fill in "From:" with "9/30/2012"
     And I fill in "To:" with "10/15/2012"
@@ -344,7 +352,7 @@ Feature: Legacy Search
 
     When I am on bar.gov's search page
     And I fill in "query" with "item"
-    And I press "Search" in the legacy search box
+    And I press "Search" within the search box
     And I follow "Press"
     And I fill in "From:" with "9/30/2012"
     And I fill in "To:" with "10/15/2012"
@@ -354,7 +362,7 @@ Feature: Legacy Search
 
     When I am on es.bar.gov's search page
     And I fill in "query" with "item"
-    And I press "Buscar" in the legacy search box
+    And I press "Buscar" within the search box
     And I follow "Noticias"
     Then I should see "Cualquier fecha" in the selected time filter
     And I should not see a link to "Cualquier fecha" in the results filters
@@ -398,14 +406,16 @@ Feature: Legacy Search
     And I should not see a link to "Sixth Spanish item"
 
     When I fill in "query" with "item"
-    And I press "Buscar" in the legacy search box
+    And I press "Buscar" within the search box
     Then the "Desde:" field should contain "30/9/2012"
     And the "Hasta:" field should contain "15/10/2012"
     And I should see a link to "Fifth Spanish item" with url for "http://www.gobiernousa.gov/news/5"
     And I should not see a link to "Sixth Spanish item"
 
+  # SRCH-2009
+  @wip
   Scenario: Searching news items with default dublin core mappings
-    Given the following legacy Affiliates exist:
+    Given the following Affiliates exist:
       | display_name     | name       | contact_email | first_name | last_name | locale |
       | bar site         | en.bar.gov | aff@bar.gov   | John       | Bar       | en     |
       | Spanish bar site | es.bar.gov | aff@bar.gov   | John       | Bar       | es     |
@@ -443,7 +453,7 @@ Feature: Legacy Search
       | http://www.youtube.com/watch?v=C5WWyZ0cTcM | Second Spanish video item | esvuuid2 | day           | Gobierno video news item for the feed | president   | memoranda | elections |
     When I am on en.bar.gov's search page
     And I fill in "query" with "item"
-    And I press "Search" in the legacy search box
+    And I press "Search" within the search box
     And I follow "Press"
     Then I should not see the left column options expanded
     And I should see "All contributors" in the selected contributor facet selector
@@ -522,7 +532,7 @@ Feature: Legacy Search
 
     When I am on es.bar.gov's search page
     And I fill in "query" with "item"
-    And I press "Buscar" in the legacy search box
+    And I press "Buscar" within the search box
     And I follow "Noticias"
     Then I should not see the left column options expanded
     And I should see "Cualquier colaborador" in the left column
@@ -597,7 +607,7 @@ Feature: Legacy Search
     # ACHTUNG! This test will fail unless the news item URL matches a url returned by the web search.
     # So if it breaks, check the urls in the VCR cassette recording from the search:
     # features/vcr_cassettes/Legacy_Search/Searching_a_domain_with_Bing_results_that_match_a_specific_news_item.yml
-    Given the following legacy Affiliates exist:
+    Given the following Affiliates exist:
       | display_name | name    | contact_email | first_name | last_name | domains        |
       | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | whitehouse.gov |
     And affiliate "bar.gov" has the following RSS feeds:
@@ -607,12 +617,13 @@ Feature: Legacy Search
       | link                                                                                    | title              | guid  | published_ago | description       |
       | https://www.whitehouse.gov/about-the-white-house/first-families/hillary-rodham-clinton/ | Clinton RSS Test   | uuid1 | day           | clinton news item |
     When I am on bar.gov's search page
-    And I fill in "query" with "Hillary Rodham Clinton first lady"
-    And I press "Search" in the legacy search box
+    And I search for "Hillary Rodham Clinton first lady"
     Then I should see "Clinton RSS Test"
 
+  # SRCH-2009
+  @wip
   Scenario: No results when searching with active RSS feeds
-    Given the following legacy Affiliates exist:
+    Given the following Affiliates exist:
       | display_name | name    | contact_email | first_name | last_name    |
       | bar site     | bar.gov | aff@bar.gov   | John       |Bar           |
     And affiliate "bar.gov" has the following RSS feeds:
@@ -625,7 +636,7 @@ Feature: Legacy Search
       | http://www.whitehouse.gov/news/4 | Fourth item | uuid4 | week          | item Last news item for the feed  |
     When I am on bar.gov's search page
     And I fill in "query" with "item"
-    And I press "Search" in the legacy search box
+    And I press "Search" within the search box
     Then I should see at least 2 search results
 
     When I follow "Press"
@@ -634,7 +645,7 @@ Feature: Legacy Search
     Then I should see at least 2 search results
 
     When I fill in "query" with "item"
-    And I press "Search" in the legacy search box
+    And I press "Search" within the search box
     And I follow "Photo Gallery"
     Then I should see "item More news items for the feed"
     When I follow "Last day"
@@ -642,8 +653,10 @@ Feature: Legacy Search
     When I follow "Remove all filters"
     Then I should see at least 2 search results
 
+  # SRCH-2009
+  @wip
   Scenario: No results when searching on Spanish site with active RSS feeds
-    Given the following legacy Affiliates exist:
+    Given the following Affiliates exist:
       | display_name | name    | contact_email | first_name | last_name | locale |
       | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | es     |
     And affiliate "bar.gov" has the following RSS feeds:
@@ -656,7 +669,7 @@ Feature: Legacy Search
       | http://www.whitehouse.gov/news/4 | Fourth item | uuid4 | week          | Last news item for the feed  |
     When I am on bar.gov's search page
     And I fill in "query" with "item"
-    And I press "Buscar" in the legacy search box
+    And I press "Buscar" within the search box
     Then I should see at least 2 search results
 
     When I follow "Press"
@@ -665,7 +678,7 @@ Feature: Legacy Search
     Then I should see at least 2 search results
 
     When I fill in "query" with "item"
-    And I press "Buscar" in the legacy search box
+    And I press "Buscar" within the search box
     And I follow "Photo Gallery"
     And I follow "Último día"
     Then I should see "No hemos encontrado ningún resultado que contenga 'item' en el último día. Elimine los filtros de su búsqueda, use otras palabras clave o intente usando sinónimos."
@@ -673,7 +686,7 @@ Feature: Legacy Search
     Then I should see at least 2 search results
 
   Scenario: Searching on a site with media RSS
-    Given the following legacy Affiliates exist:
+    Given the following Affiliates exist:
       | display_name | name    | contact_email | first_name | last_name |
       | bar site     | bar.gov | aff@bar.gov   | John       | Bar       |
     And affiliate "bar.gov" has the following RSS feeds:
@@ -685,37 +698,34 @@ Feature: Legacy Search
       | http://www.whitehouse.gov/photo/2 | Photo 2 | desc of photo 2 | uuid2 | week          | http://www.whitehouse.gov/media/t2.png | http://www.whitehouse.gov/media/c2.jpg |
       | http://www.whitehouse.gov/photo/3 | Photo 3 | no media        | uuid3 | week          |                                        |                                        |
     When I am on bar.gov's "Photos" news search page
-    And I fill in "query" with "photo"
-    And I press "Search" in the legacy search box
-    Then I should see 2 image news results
+    And I search for "photo"
+    Then I should see 2 image results
 
   Scenario: Visiting English affiliate search with multiple domains
-    Given the following legacy Affiliates exist:
+    Given the following Affiliates exist:
       | display_name | name    | contact_email | first_name | last_name | domains                |
       | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | whitehouse.gov,usa.gov |
     When I am on bar.gov's search page
     And I fill in "Enter your search term" with "president"
-    And I press "Search" in the legacy search box
-    Then I should see at least 2 search results
-    And I should not see "Search this site"
+    And I press "Search" within the search box
+    Then I should see at least "2" web search results
 
   Scenario: Visiting Spanish affiliate search with multiple domains
-    Given the following legacy Affiliates exist:
+    Given the following Affiliates exist:
       | display_name | name    | contact_email | first_name | last_name | domains                | locale | is_image_search_navigable |
       | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | whitehouse.gov,usa.gov | es     | true                      |
     When I am on bar.gov's search page
     And I fill in "Ingrese su búsqueda" with "president"
-    And I press "Buscar" in the legacy search box
-    Then I should see at least 2 search results
+    And I press "Buscar" within the search box
+    Then I should see at least "2" web search results
     And I should see "Todo"
     And I should not see "Everything"
     And I should see "Imágenes"
     And I should not see "Images"
-    And I should not see "Search this site"
 
   @javascript
   Scenario: Searchers see English Medline Govbox
-    Given the following legacy Affiliates exist:
+    Given the following Affiliates exist:
       | display_name | name        | contact_email | first_name | last_name | domains | is_medline_govbox_enabled |
       | english site | english-nih | aff@bar.gov   | John       | Bar       | nih.gov | true                      |
     And the following Medline Topics exist:
@@ -723,7 +733,7 @@ Feature: Legacy Search
       | Hippopotomonstrosesquippedaliophobia | 67890       | es     | Hippopotomonstrosesquippedaliophobia y otros miedos irracionales |
     When I am on english-nih's search page
     And I fill in "query" with "hippopotomonstrosesquippedaliophobia"
-    And I press "Search" in the legacy search box
+    And I press "Search" within the search box
     Then I should not see "Hippopotomonstrosesquippedaliophobia y otros miedos irracionales"
 
     Given the following Medline Topics exist:
@@ -734,8 +744,8 @@ Feature: Legacy Search
       | Hippo1        | 24680       | https://www.nlm.nih.gov/medlineplus/Hippopotomonstrosesquippedaliophobia.html |
     When I am on english-nih's search page
     And I fill in "query" with "hippopotomonstrosesquippedaliophobia"
-    And I press "Search" in the legacy search box
-    Then I should see "Hippopotomonstrosesquippedaliophobia and Other Irrational Fears" in the medline govbox
+    And I press "Search" within the search box
+    Then I should see "Hippopotomonstrosesquippedaliophobia and Other Irrational Fears" within the med topic govbox
     And I should see a link to "Hippo1" with url for "https://www.nlm.nih.gov/medlineplus/Hippopotomonstrosesquippedaliophobia.html"
 
     Given I am logged in with email "aff@bar.gov"
@@ -745,12 +755,12 @@ Feature: Legacy Search
 
     When I am on english-nih's search page
     And I fill in "query" with "hippopotomonstrosesquippedaliophobia"
-    And I press "Search" in the legacy search box
+    And I press "Search" within the search box
     Then I should not see "Hippopotomonstrosesquippedaliophobia and Other Irrational Fears"
 
   @javascript
   Scenario: Searchers see Spanish Medline Govbox
-    Given the following legacy Affiliates exist:
+    Given the following Affiliates exist:
       | display_name | name        | contact_email | first_name | last_name | domains | is_medline_govbox_enabled | locale |
       | spanish site | spanish-nih | aff@bar.gov   | John       | Bar       | nih.gov | true                      | es     |
     And the following Medline Topics exist:
@@ -758,7 +768,7 @@ Feature: Legacy Search
       | Hippopotomonstrosesquippedaliophobia | 12345       | en     | Hippopotomonstrosesquippedaliophobia and Other Irrational Fears  |
     When I am on spanish-nih's search page
     And I fill in "query" with "hippopotomonstrosesquippedaliophobia"
-    And I press "Buscar" in the legacy search box
+    And I press "Buscar" within the search box
     Then I should not see "Hippopotomonstrosesquippedaliophobia and Other Irrational Fears"
 
     Given the following Medline Topics exist:
@@ -766,8 +776,8 @@ Feature: Legacy Search
       | Hippopotomonstrosesquippedaliophobia | 67890       | es     | Hippopotomonstrosesquippedaliophobia y otros miedos irracionales |
     When I am on spanish-nih's search page
     And I fill in "query" with "hippopotomonstrosesquippedaliophobia"
-    And I press "Buscar" in the legacy search box
-    Then I should see "Hippopotomonstrosesquippedaliophobia y otros miedos irracionales" in the medline govbox
+    And I press "Buscar" within the search box
+    Then I should see "Hippopotomonstrosesquippedaliophobia y otros miedos irracionales" within the med topic govbox
 
     Given I am logged in with email "aff@bar.gov"
     When I go to the spanish-nih's Manage Display page
@@ -776,36 +786,24 @@ Feature: Legacy Search
 
     When I am on spanish-nih's search page
     And I fill in "query" with "hippopotomonstrosesquippedaliophobia"
-    And I press "Buscar" in the legacy search box
+    And I press "Buscar" within the search box
     Then I should not see "Hippopotomonstrosesquippedaliophobia y otros miedos irracionales"
 
-  Scenario: When a searcher enters a query with invalid Lucene character
-    Given the following legacy Affiliates exist:
-      | display_name | name       | contact_email | first_name | last_name | domains |
-      | agency site  | agency.gov | aff@bar.gov   | John       |Bar        | .gov    |
-    And I am on agency.gov's search page
-    And I fill in "query" with "++health it"
-    And I press "Search" in the legacy search box
-    Then I should see the browser page titled "++health it - agency site Search Results"
-    And I should see some Bing search results
-    When I fill in "query" with "OR US97 central"
-    And I press "Search" in the legacy search box
-    Then I should see the browser page titled "OR US97 central - agency site Search Results"
-    And I should see some Bing search results
-
-  Scenario: When a searcher clicks on a collection on sidebar and the query is blank
-    Given the following legacy Affiliates exist:
+  Scenario: When a searcher clicks on a collection and the query is blank
+    Given the following Affiliates exist:
       | display_name | name    | contact_email | first_name | last_name  |
       | aff site     | aff.gov | aff@bar.gov   | John       | Bar        |
     And affiliate "aff.gov" has the following document collections:
       | name   | prefixes               | is_navigable |
       | Topics | http://aff.gov/topics/ | true         |
     When I go to aff.gov's search page
-    And I follow "Topics" in the left column
+    And I follow "Topics" in the search navbar
     Then I should see "Please enter a search term"
 
+  # SRCH-2009
+  @wip
   Scenario: When a searcher on an English site clicks on an RSS Feed on sidebar and the query is blank
-    Given the following legacy Affiliates exist:
+    Given the following Affiliates exist:
       | display_name     | name       | contact_email | first_name | last_name | locale | youtube_handles |
       | bar site         | bar.gov    | aff@bar.gov   | John       | Bar       | en     | en_agency       |
     And affiliate "bar.gov" has the following RSS feeds:
@@ -829,14 +827,16 @@ Feature: Legacy Search
 
     When I am on bar.gov's search page
     And I fill in "query" with "first item"
-    And I press "Search" in the legacy search box
+    And I press "Search" within the search box
     And I follow "Videos of 'first item'"
     And I fill in "query" with ""
-    And I press "Search" in the legacy search box
+    And I press "Search" within the search box
     Then I should see the browser page titled "Videos - bar site Search Results"
 
+  # SRCH-2009
+  @wip
   Scenario: When a searcher on a Spanish site clicks on an RSS Feed on sidebar and the query is blank
-    Given the following legacy Affiliates exist:
+    Given the following Affiliates exist:
       | display_name     | name       | contact_email | first_name | last_name | locale | youtube_handles |
       | Spanish bar site | es.bar.gov | aff@bar.gov   | John       | Bar       | es     | es_agency       |
     And affiliate "es.bar.gov" has the following RSS feeds:
@@ -860,14 +860,14 @@ Feature: Legacy Search
 
     When I am on es.bar.gov's search page
     And I fill in "query" with "noticia uno"
-    And I press "Buscar" in the legacy search box
+    And I press "Buscar" within the search box
     And I follow "Videos de 'noticia uno'"
     And I fill in "query" with ""
-    And I press "Buscar" in the legacy search box
+    And I press "Buscar" within the search box
     Then I should see the browser page titled "Spanish Videos - Spanish bar site resultados de la búsqueda"
 
   Scenario: When there are relevant Tweets from Twitter profiles associated with the affiliate
-    Given the following legacy Affiliates exist:
+    Given the following Affiliates exist:
       | display_name | name       | contact_email | first_name | last_name | locale |
       | bar site     | bar.gov    | aff@bar.gov   | John       | Bar       | en     |
       | spanish site | es.bar.gov | aff@bar.gov   | John       | Bar       | es     |
@@ -881,9 +881,9 @@ Feature: Legacy Search
       | Ok season http://t.co/YQQSs9bb | 184957   | hour          | 123                | http://t.co/YQQSs9bb | http://tmblr.co/Z8xAVxUEKvaK | tmblr.co/Z8xAVxUEK... |
       | Estados Unidos por amigos!     | 789012   | hour          | 456                |                      |                              |                       |
     When I am on bar.gov's search page
-    And I fill in "query" with "season"
-    And I press "Search" in the legacy search box
-    Then I should see "Recent tweet for 'season' by bar site"
+    And I search for "season"
+    Then I should see "Ok season"
+    And I should see "about 1 hour ago"
     And I should see a link to "USAgov" with url for "https://twitter.com/USAgov"
     And I should see "USA.gov @USAgov"
     And I should see a link to "http://t.co/YQQSs9bb" with text "tmblr.co/Z8xAVxUEK..."
@@ -892,17 +892,17 @@ Feature: Legacy Search
 
     When I am on es.bar.gov's search page
     And I fill in "query" with "Estados Unidos amiga"
-    And I press "Buscar" in the legacy search box
-    Then I should see "Tweet más reciente para 'Estados Unidos amiga' de spanish site"
-    And I should see a link to "GobiernoUSA.gov" with url for "https://twitter.com/GobiernoUSA"
+    And I press "Buscar" within the search box
+    Then I should see a link to "GobiernoUSA.gov" with url for "https://twitter.com/GobiernoUSA"
     And I should see "GobiernoUSA.gov @GobiernoUSA"
     And I should see "Estados Unidos por amigos!"
-    And I should see "Estados" in bold font in the legacy twitter govbox
-    And I should see "Unidos" in bold font in the legacy twitter govbox
-    And I should see "amigos" in bold font in the legacy twitter govbox
+    And I should see "Hace una hora"
+    And I should see "Estados" in bold font in the twitter govbox
+    And I should see "Unidos" in bold font in the twitter govbox
+    And I should see "amigos" in bold font in the twitter govbox
 
   Scenario: Searching document collections
-    Given the following legacy Affiliates exist:
+    Given the following Affiliates exist:
       | display_name | name       | contact_email | first_name | last_name | domains        |
       | agency site  | agency.gov | aff@bar.gov   | John       | Bar     | whitehouse.gov |
     And affiliate "agency.gov" has the following document collections:
@@ -913,53 +913,55 @@ Feature: Legacy Search
       | First petition article  | This is an article death star r2d2 xyz3 petition    | http://petitions.whitehouse.gov/petition-1.html | agency.gov | 11/02/2011      | OK                |
       | Second petition article | This is an article on death r2d2 xyz3 star petition | http://petitions.whitehouse.gov/petition-2.html | agency.gov | 11/02/2011      | OK                |
     When I am on agency.gov's search page
-    And I follow "Petitions" in the left column
-    And I fill in "Enter your search term" with "'death star r2d2 xyz3'"
-    And I press "Search" in the legacy search box
+    And I follow "Petitions" in the search navbar
+    And I search for "death star r2d2 xyz3"
     Then I should see a link to "First petition article" with url for "http://petitions.whitehouse.gov/petition-1.html"
     And I should see a link to "Second petition article" with url for "http://petitions.whitehouse.gov/petition-2.html"
 
   Scenario: Searching on non navigable document collection
-    Given the following legacy Affiliates exist:
+    Given the following Affiliates exist:
       | display_name | name       | contact_email | first_name | last_name | domains |
       | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | usa.gov |
     And affiliate "agency.gov" has the following document collections:
-      | name | prefixes            | is_navigable |
-      | Blog | http://www.sba.gov/blogs | false        |
-      | Web  | https://www.usa.gov  | true         |
+      | name | prefixes                  | is_navigable |
+      | Blog | https://www.sba.gov/blogs | false        |
+      | Web  | https://www.usa.gov       | true         |
     When I am on agency.gov's "Blog" docs search page
-    Then I should see "Blog" in the left column
-    And I should not see a link to "Everything" in the left column
-    And I should not see a link to "Blog" in the left column
-    And I should not see a link to "Search Notes" in the left column
-    When I fill in "query" with "Noaa"
-    And I press "Search" in the legacy search box
-    Then I should see some Bing search results
-    And I should not see a link to "Everything" in the left column
-    And I should not see a link to "Blog" in the left column
-    And I should not see a link to "Search Notes" in the left column
+    Then I should see "Blog" in the search navbar
+    And I should not see a link to "Web"
+    And I should not see a link to "Blog"
+    When I search for "sba"
+    Then I should see at least "1" web search results
+    And I should not see a link to "Blog" in the search navbar
 
   Scenario: Searching with malformed query
-    Given the following legacy Affiliates exist:
+    Given the following Affiliates exist:
       | display_name | name       | contact_email | first_name | last_name | is_image_search_navigable |
       | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | true                      |
-    When I am on agency.gov's search page with unsanitized "hello" query
-    Then I should see a link to "Images" with sanitized "hello" query
+    When I am on agency.gov's search page
+    And I search for "<b>hello</b><script>script</script>"
+    Then I should see "hello"
+    And I should not see "script"
+    And I should see a link to "Images" with url that ends with "query=hello" in the search navbar
 
+  # SRCH-2009
+  @wip
   Scenario: Searching for site specific results using query
-    Given the following legacy Affiliates exist:
+    Given the following Affiliates exist:
       | display_name | name       | contact_email | first_name | last_name | domains |
       | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | usa.gov |
     When I am on agency.gov's search page
     And I fill in "query" with "jobs site:www.usa.gov"
-    And I press "Search" in the legacy search box
+    And I press "Search" within the search box
     Then I should see "www.usa.gov/"
     And I fill in "query" with "jazz site:wikipedia.org"
-    And I press "Search" in the legacy search box
+    And I press "Search" within the search box
     Then I should not see "en.wikipedia.org/wiki/Jazz"
 
+  # SRCH-2009
+  @wip
   Scenario: Searching for site specific results using sitelimit
-    Given the following legacy Affiliates exist:
+    Given the following Affiliates exist:
       | display_name | name       | contact_email | first_name | last_name | domains | is_image_search_navigable |
       | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | .gov    | true                      |
     And affiliate "agency.gov" has the following document collections:
@@ -971,21 +973,21 @@ Feature: Legacy Search
       | Photo | http://www.whitehouse.gov/feed/media/photo-gallery | true         |
     When I am on agency.gov's search page with site limited to "www.usa.gov"
     And I fill in "query" with "jobs"
-    And I press "Search" in the legacy search box
+    And I press "Search" within the search box
     Then I should see "www.usa.gov/"
 
     When I follow "Images" in the left column
-    And I press "Search" in the legacy search box
+    And I press "Search" within the search box
     And I follow "Everything" in the left column
     Then I should see "www.usa.gov/"
 
     When I follow "Blog" in the left column
-    And I press "Search" in the legacy search box
+    And I press "Search" within the search box
     And I follow "Everything" in the left column
     Then I should see "www.usa.gov/"
 
     When I follow "Press" in the left column
-    And I press "Search" in the legacy search box
+    And I press "Search" within the search box
     And I follow "Everything" in the left column
     Then I should see "www.usa.gov/"
 
@@ -997,7 +999,7 @@ Feature: Legacy Search
     Then I should see "www.usa.gov/"
 
   Scenario: Visiting affiliate with strictui parameters
-    Given the following legacy Affiliates exist:
+    Given the following Affiliates exist:
       | display_name | name    | contact_email | first_name | last_name | external_css_url                | header                                                                  | footer                                                                  |
       | aff site     | aff.gov | aff@bar.gov   | John       | Bar       | http://cdn.aff.gov/external.css | <style>#my_header { color:red } </style> <h1 id='my_header'>header</h1> | <style>#my_footer { color:red } </style> <h1 id='my_footer'>footer</h1> |
     When I go to aff.gov's strictui search page
@@ -1006,22 +1008,27 @@ Feature: Legacy Search
     And I should not see tainted SERP footer
 
   Scenario: Affiliate search on affiliate with connections
-    Given the following legacy Affiliates exist:
+    Given the following Affiliates exist:
       | display_name | name       | contact_email | first_name | last_name | domains |
-      | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | .gov    |
-      | other site   | other.gov  | aff@bad.gov   | John       | Bad       | .gov    |
+      | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | epa.gov |
+      | other site   | other.gov  | aff@bad.gov   | John       | Bad       | cdc.gov |
     And the following Connections exist for the affiliate "agency.gov":
     | connected_affiliate   |   display_name    |
     | other.gov             |  Other Site       |
     When I am on agency.gov's search page
-    And I fill in "query" with "jobs"
-    And I press "Search" in the legacy search box
-    Then I should see "Other Site"
-    When I follow "Other Site"
+    And I search for "jobs"
+    Then I should see at least "10" web search results
+    And every result URL should match "epa.gov"
+    And I should see "Other Site"
+    When I follow "Other Site" in the search navbar
     Then I should see the browser page titled "jobs - other site Search Results"
+    And I should see at least "10" web search results
+    And every result URL should match "cdc.gov"
 
+  # SRCH-2009
+  @wip
   Scenario: Searching on sites with Featured Collections
-    Given the following legacy Affiliates exist:
+    Given the following Affiliates exist:
       | display_name   | name          | contact_email   | first_name | last_name | locale |
       | agency site    | agency.gov    | john@agency.gov | John       | Bar       | en     |
     And the following featured collections exist for the affiliate "agency.gov":
@@ -1033,16 +1040,16 @@ Feature: Legacy Search
       | Eastern North Pacific | http://www.nhc.noaa.gov/aboutnames.shtml#enp |
     When I am on agency.gov's search page
     And I fill in "query" with "warnings for a tornado"
-    And I press "Search" in the legacy search box
+    And I press "Search" within the search box
     Then I should see "Tornado Warning by agency site" in the featured collections section
     And I should see a link to "Atlantic" with url for "http://www.nhc.noaa.gov/aboutnames.shtml#atl" on the left featured collection link list
     And I should see a link to "Eastern North Pacific" with url for "http://www.nhc.noaa.gov/aboutnames.shtml#enp" on the right featured collection link list
     When I fill in "query" with "Atlantic"
-    And I press "Search" in the legacy search box
+    And I press "Search" within the search box
     Then I should see a featured collection link title with "Atlantic" highlighted
 
   Scenario: Searching on sites with Boosted Contents
-    Given the following legacy Affiliates exist:
+    Given the following Affiliates exist:
       | display_name   | name          | contact_email   | first_name| last_name | locale |
       | agency site    | agency.gov    | john@agency.gov | John      | Bar       | en     |
       | es agency site | es.agency.gov | john@agency.gov | John      | Bar       | es     |
@@ -1055,17 +1062,19 @@ Feature: Legacy Search
       | la página de prueba de Emergencia | http://www.agency.gov/911 | Some terms  |
     When I am on agency.gov's search page
     And I fill in "query" with "notes"
-    And I press "Search" in the legacy search box
-    Then I should see a link to "Notes for Week Ending May 31, 2013" with url for "http://search.gov/releases/2013-05-31.html" in the legacy boosted contents section
+    And I press "Search" within the search box
+    Then I should see a link to "Notes for Week Ending May 31, 2013" with url for "http://search.gov/releases/2013-05-31.html" in the boosted contents section
     And I should not see a link to "Notes for Week Ending June 21, 2013"
 
     When I am on es.agency.gov's search page
     And I fill in "query" with "emergencia"
-    And I press "Buscar" in the legacy search box
-    Then I should see a link to "la página de prueba de Emergencia" with url for "http://www.agency.gov/911" in the legacy boosted contents section
+    And I press "Buscar" within the search box
+    Then I should see a link to "la página de prueba de Emergencia" with url for "http://www.agency.gov/911" in the boosted contents section
 
+  # SRCH-2009
+  @wip
   Scenario: Searching news items with custom dublin core mappings
-    Given the following legacy Affiliates exist:
+    Given the following Affiliates exist:
       | display_name | name       | contact_email | first_name | last_name | locale | dc_contributor          | dc_publisher          | dc_subject |
       | bar site     | en.bar.gov | aff@bar.gov   | John       | Bar       | en     | Administration Official | Briefing Room Section | Issue      |
     And affiliate "en.bar.gov" has the following RSS feeds:
@@ -1090,7 +1099,7 @@ Feature: Legacy Search
     And I should not see a link to "Briefing Room Section" in the left column
 
   Scenario: Entering a blank advanced search
-    Given the following legacy Affiliates exist:
+    Given the following Affiliates exist:
       | display_name | name   | contact_email | first_name | last_name | header         |
       | USA.gov      | usagov | aff@bar.gov   | John       | Bar       | USA.gov Header |
     When I am on usagov's advanced search page

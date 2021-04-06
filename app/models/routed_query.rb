@@ -11,7 +11,7 @@ class RoutedQuery < ApplicationRecord
   validates_uniqueness_of :description, scope: :affiliate_id
 
   validates :affiliate, presence: true
-  validates_format_of :url, with: URI.regexp
+  validates_url :url
 
   validate :keywords_cannot_be_blank
 

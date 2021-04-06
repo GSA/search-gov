@@ -1,18 +1,39 @@
+# frozen_string_literal: true
+
 class YoutubeData
+  MAXIMUM_PROFILE_IMPORTS_PER_DAY = 300
+
   attr_reader :all_news_item_ids,
               :profile,
               :rss_feed_url
 
   def self.refresh
     loop do
-      profile = YoutubeProfile.active.stale.first
+      profile = next_profile_to_import
       if profile
         YoutubeData.new(profile).import
         Rails.logger.info "Imported YouTube channel #{profile.channel_id}"
       else
-        sleep 5.minutes
+        Rails.logger.info 'Sleeping for 5 minutes before attempting more YouTube imports'
+        sleep(5.minutes)
       end
     end
+  end
+
+  def self.next_profile_to_import
+    return nil if already_imported_enough_profiles_today?
+
+    profile = YoutubeProfile.active.stale.first
+    Rails.logger.info 'No stale YouTube profiles' unless profile
+    profile
+  end
+
+  def self.number_of_profiles_imported_today
+    YoutubeProfile.imported_today.count
+  end
+
+  def self.already_imported_enough_profiles_today?
+    number_of_profiles_imported_today >= MAXIMUM_PROFILE_IMPORTS_PER_DAY
   end
 
   def initialize(youtube_profile)
@@ -31,12 +52,12 @@ class YoutubeData
     import_playlists_items
     populate_durations
 
-    rss_feed_url.update_attributes!(last_crawl_status: RssFeedUrl::OK_STATUS,
-                                    last_crawled_at: Time.now.utc)
+    rss_feed_url.update!(last_crawl_status: RssFeedUrl::OK_STATUS,
+                         last_crawled_at: Time.now.utc)
   rescue => e
     Rails.logger.warn "#{e.message}: #{e.backtrace[0..10].compact.inspect}"
-    rss_feed_url.update_attributes!(last_crawl_status: e.message,
-                                    last_crawled_at: Time.now.utc)
+    rss_feed_url.update!(last_crawl_status: e.message,
+                         last_crawled_at: Time.now.utc)
   end
 
   def import_playlists
@@ -100,8 +121,8 @@ class YoutubeData
       first_or_initialize(guid: video_id)
 
     return news_item if !news_item.new_record? &&
-      (all_news_item_ids.include?(news_item.id) ||
-        playlist_news_item_ids.include?(news_item.id))
+                        (all_news_item_ids.include?(news_item.id) ||
+                        playlist_news_item_ids.include?(news_item.id))
 
     create_or_update news_item, playlist_item
   end
@@ -124,14 +145,15 @@ class YoutubeData
 
   def assign_video_duration(item)
     video_id = item.id
-    duration_str = item.content_details.duration rescue nil
+    duration_str = item&.content_details&.duration
+
     return if video_id.blank? || duration_str.blank?
 
     duration_in_seconds = ISO8601::Duration.new(duration_str).to_seconds.to_i
     duration = Duration.seconds_to_hoursminssecs duration_in_seconds
 
     link = youtube_video_url video_id
-    news_item = rss_feed_url.news_items.find_by_link link
+    news_item = rss_feed_url.news_items.find_by(link: link)
     news_item.duration = duration
     news_item.save!
   end
