@@ -15,7 +15,9 @@ describe UserSessionsController do
 
       before { get :security_notification }
 
-      it { is_expected.to redirect_to(account_path) }
+      let(:expected_site_path) { site_path(id: current_user.affiliates.first.id) }
+
+      it { is_expected.to redirect_to(expected_site_path) }
     end
   end
 

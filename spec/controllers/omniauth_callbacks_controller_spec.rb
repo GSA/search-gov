@@ -11,14 +11,15 @@ describe OmniauthCallbacksController do
     end
 
     it 'calls reset_session' do
-      expect_any_instance_of(ActionController::Metal).to receive(:reset_session)
+      allow(controller).to receive(:reset_session)
       get_login_dot_gov
+
+      expect(controller).to have_received(:reset_session)
     end
 
     context 'when the login is successful' do
       before { get_login_dot_gov }
 
-      it { is_expected.to redirect_to(admin_home_page_path) }
       it { is_expected.to assign_to(:user).with(user) }
     end
 
@@ -33,11 +34,12 @@ describe OmniauthCallbacksController do
 
       before do
         allow(UserSession).to receive(:create).with(user).and_return(session)
+        allow(session).to receive(:secure=).with(secure_cookies)
+        get_login_dot_gov
       end
 
       it 'sets the session security' do
-        expect(session).to receive(:secure=).with(secure_cookies)
-        get_login_dot_gov
+        expect(session).to have_received(:secure=).with(secure_cookies)
       end
     end
 

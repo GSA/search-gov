@@ -1,20 +1,7 @@
-Given /^I am logged in with email "([^"]*)"$/ do |email|
-  OmniAuth.config.test_mode = true
-
-  omniauth_hash = {
-    uid: 'test_123',
-    info: {
-      email: email
-    },
-    credentials: {
-      id_token: 'fake_id_token',
-    },
-  }
-
-  OmniAuth.config.add_mock('logindotgov', omniauth_hash)
-  visit '/auth/logindotgov'
+Given /^I (?:log in|am logged in) with email "([^"]*)"$/ do |email|
+  mock_user_auth(email)
+  visit '/auth/logindotgov/callback'
 end
-
 
 When /^I sign out$/ do
   email = find '#nav-auth-menu a[data-toggle=dropdown]'
