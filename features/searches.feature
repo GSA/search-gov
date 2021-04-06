@@ -685,8 +685,6 @@ Feature: Search
     When I follow "Elimine los filtros"
     Then I should see at least 2 search results
 
-  # SRCH-2009
-  @wip
   Scenario: Searching on a site with media RSS
     Given the following Affiliates exist:
       | display_name | name    | contact_email | first_name | last_name |
@@ -700,9 +698,8 @@ Feature: Search
       | http://www.whitehouse.gov/photo/2 | Photo 2 | desc of photo 2 | uuid2 | week          | http://www.whitehouse.gov/media/t2.png | http://www.whitehouse.gov/media/c2.jpg |
       | http://www.whitehouse.gov/photo/3 | Photo 3 | no media        | uuid3 | week          |                                        |                                        |
     When I am on bar.gov's "Photos" news search page
-    And I fill in "query" with "photo"
-    And I press "Search" within the search box
-    Then I should see 2 image news results
+    And I search for "photo"
+    Then I should see 2 image results
 
   Scenario: Visiting English affiliate search with multiple domains
     Given the following Affiliates exist:
