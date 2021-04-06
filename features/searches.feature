@@ -1025,8 +1025,6 @@ Feature: Search
     And I should see at least "10" web search results
     And every result URL should match "cdc.gov"
 
-  # SRCH-2009
-  @wip
   Scenario: Searching on sites with Featured Collections
     Given the following Affiliates exist:
       | display_name   | name          | contact_email   | first_name | last_name | locale |
@@ -1041,9 +1039,9 @@ Feature: Search
     When I am on agency.gov's search page
     And I fill in "query" with "warnings for a tornado"
     And I press "Search" within the search box
-    Then I should see "Tornado Warning by agency site" in the featured collections section
-    And I should see a link to "Atlantic" with url for "http://www.nhc.noaa.gov/aboutnames.shtml#atl" on the left featured collection link list
-    And I should see a link to "Eastern North Pacific" with url for "http://www.nhc.noaa.gov/aboutnames.shtml#enp" on the right featured collection link list
+    Then I should see "Tornado Warning" in the boosted contents section
+    And I should see a link to "Atlantic" with url for "http://www.nhc.noaa.gov/aboutnames.shtml#atl"
+    And I should see a link to "Eastern North Pacific" with url for "http://www.nhc.noaa.gov/aboutnames.shtml#enp"
     When I fill in "query" with "Atlantic"
     And I press "Search" within the search box
     Then I should see a featured collection link title with "Atlantic" highlighted
