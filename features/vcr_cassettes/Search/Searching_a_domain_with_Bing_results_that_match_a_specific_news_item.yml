@@ -31,27 +31,27 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Thu, 01 Apr 2021 19:19:44 GMT
+      - Thu, 01 Apr 2021 19:19:47 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Bingapis-Traceid:
-      - 7B9D57D71E774A25B34411CADB2C3218
+      - 2DC2346C105D4427A110105B295A3D38
       Bingapis-Sessionid:
-      - 29B6CCE96EB04A5F89011D15984F164B
+      - 5F295500854947A1BBA1A69797777E5D
       X-Msedge-Clientid:
-      - 3C05A6CC692864EF1976B6C0683A65B0
+      - 18B6E8A2CBB96D14204CF8AECACC6C36
       X-Msapi-Userstate:
-      - 03b1
+      - 1c23
       Bingapis-Market:
       - en-US
       X-Search-Responseinfo:
-      - InternalResponseTime=200,MSDatacenter=BN2B
+      - InternalResponseTime=198,MSDatacenter=BN2B
       X-Msedge-Ref:
-      - 'Ref A: 7B9D57D71E774A25B34411CADB2C3218 Ref B: BLUEDGE1512 Ref C: 2021-04-01T19:20:44Z'
+      - 'Ref A: 2DC2346C105D4427A110105B295A3D38 Ref B: BLUEDGE1713 Ref C: 2021-04-01T19:20:47Z'
       Apim-Request-Id:
-      - 977da7b1-d8db-467a-b8d6-848ca0b314ba
+      - 0a91dfe1-96ed-4bd8-9092-5c0d30194f76
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
@@ -59,7 +59,7 @@ http_interactions:
       Csp-Billing-Usage:
       - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Thu, 01 Apr 2021 19:20:43 GMT
+      - Thu, 01 Apr 2021 19:20:47 GMT
     body:
       encoding: UTF-8
       string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "hillary
@@ -80,21 +80,21 @@ http_interactions:
         Custis Washington is considered to be the first First Lady ...", "dateLastCrawled":
         "2021-03-29T19:18:00.0000000Z", "language": "en", "isNavigational": false},
         {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2", "name":
-        "First Families | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families",
-        "snippet": "Claudia Alta Taylor “Lady Bird” Johnson; Patricia Ryan Nixon;
-        Elizabeth Anne Bloomer Ford; Rosalynn Smith Carter; Nancy Davis Reagan; Barbara
-        Pierce Bush; Hillary Rodham Clinton; Laura Welch ...", "dateLastCrawled":
-        "2021-03-29T07:35:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3", "name":
         "Eliza McCardle Johnson | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/eliza-mccardle-johnson\/",
         "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/eliza-mccardle-johnson",
         "snippet": "Hillary Rodham Clinton Laura Welch Bush ... She served as
         First Lady of the United States from 1865 to 1869. ... The biographies
         of the First Ladies on WhiteHouse.gov are from “The First Ladies ...",
         "dateLastCrawled": "2021-03-29T14:26:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
-        "name": "Rosalynn Smith Carter | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/rosalynn-smith-carter\/",
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "First Families | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families",
+        "snippet": "We''ll be in touch with the latest information on how President
+        Biden and his administration are working for the American people, as well
+        as ways you can get involved and help our country build ...", "dateLastCrawled":
+        "2021-03-29T07:35:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4", "name":
+        "Rosalynn Smith Carter | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/rosalynn-smith-carter\/",
         "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/rosalynn-smith-carter",
         "snippet": "Hillary Rodham Clinton Laura Welch Bush Michelle Obama ...
         Serving as the First Lady from 1977 to 1981, she was an envoy abroad and
@@ -226,5 +226,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
     http_version:
-  recorded_at: Thu, 01 Apr 2021 19:20:44 GMT
+  recorded_at: Thu, 01 Apr 2021 19:20:47 GMT
 recorded_with: VCR 4.0.0

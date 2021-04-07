@@ -34,9 +34,7 @@ class Admin::RssFeedUrlsController < Admin::AdminController
       )
     else
       rss_feed_url.enqueue_destroy_news_items_with_404(:high)
-      # rubocop:disable LineLength
       render(plain: "You have submitted a request to delete #{rss_feed_url.url} news items with status code 404.")
-      # rubocop:enable LineLength
     end
   end
 

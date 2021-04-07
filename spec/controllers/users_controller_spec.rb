@@ -133,7 +133,7 @@ describe UsersController do
           expect(current_user).to receive(:save).
             with( context: :update_account ).and_return(false)
 
-          update_account 
+          update_account
         end
 
         it { is_expected.to assign_to(:user).with(current_user) }
@@ -162,9 +162,9 @@ describe UsersController do
           for(:update, params: { user: update_params })
       end
 
-      context 'when the User#update_attributes was successfully' do
+      context 'when the User#update was successfully' do
         before do
-          expect(current_user).to receive(:update_attributes).
+          expect(current_user).to receive(:update).
             with(update_params).and_return(true)
 
           update_user
@@ -175,9 +175,9 @@ describe UsersController do
         it { is_expected.to set_flash.to('Account updated!') }
       end
 
-      context 'when the User#update_attributes failed' do
+      context 'when the User#update failed' do
         before do
-          expect(current_user).to receive(:update_attributes).with(update_params).
+          expect(current_user).to receive(:update).with(update_params).
             and_return(false)
 
           update_user
