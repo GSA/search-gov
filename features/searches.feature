@@ -958,8 +958,6 @@ Feature: Search
     And I press "Search" within the search box
     Then I should not see "en.wikipedia.org/wiki/Jazz"
 
-  # SRCH-2009
-  @wip
   Scenario: Searching for site specific results using sitelimit
     Given the following Affiliates exist:
       | display_name | name       | contact_email | first_name | last_name | domains | is_image_search_navigable |
@@ -967,36 +965,14 @@ Feature: Search
     And affiliate "agency.gov" has the following document collections:
       | name | prefixes                         | is_navigable |
       | Blog | http://search.gov/blog/          | true         |
-    And affiliate "agency.gov" has the following RSS feeds:
-      | name  | url                                                | is_navigable |
-      | Press | http://www.whitehouse.gov/feed/press               | true         |
-      | Photo | http://www.whitehouse.gov/feed/media/photo-gallery | true         |
     When I am on agency.gov's search page with site limited to "www.usa.gov"
-    And I fill in "query" with "jobs"
-    And I press "Search" within the search box
-    Then I should see "www.usa.gov/"
+    And I search for "jobs"
+    Then I should see at least "10" web search results
+    And every result URL should match "www.usa.gov"
 
-    When I follow "Images" in the left column
-    And I press "Search" within the search box
-    And I follow "Everything" in the left column
-    Then I should see "www.usa.gov/"
-
-    When I follow "Blog" in the left column
-    And I press "Search" within the search box
-    And I follow "Everything" in the left column
-    Then I should see "www.usa.gov/"
-
-    When I follow "Press" in the left column
-    And I press "Search" within the search box
-    And I follow "Everything" in the left column
-    Then I should see "www.usa.gov/"
-
-    When I follow "Press" in the left column
-    And I fill in "From:" with "1/30/2012"
-    And I press "Search" in the results filters
-    And I follow "Any time" in the results filters
-    And I follow "Everything" in the left column
-    Then I should see "www.usa.gov/"
+    When I follow "Blog" in the search navbar
+    Then I should see at least "1" web search results
+    And every result URL should match "search.gov/blog"
 
   Scenario: Visiting affiliate with strictui parameters
     Given the following Affiliates exist:
