@@ -1071,33 +1071,6 @@ Feature: Search
     And I press "Buscar" within the search box
     Then I should see a link to "la página de prueba de Emergencia" with url for "http://www.agency.gov/911" in the boosted contents section
 
-  # SRCH-2009
-  @wip
-  Scenario: Searching news items with custom dublin core mappings
-    Given the following Affiliates exist:
-      | display_name | name       | contact_email | first_name | last_name | locale | dc_contributor          | dc_publisher          | dc_subject |
-      | bar site     | en.bar.gov | aff@bar.gov   | John       | Bar       | en     | Administration Official | Briefing Room Section | Issue      |
-    And affiliate "en.bar.gov" has the following RSS feeds:
-      | name  | url                                  | is_navigable | shown_in_govbox |
-      | Press | http://www.whitehouse.gov/feed/press | true         | true            |
-    And feed "Press" has the following news items:
-      | link                             | title       | guid       | published_ago | published_at | description                       | contributor | publisher    | subject        |
-      | http://www.whitehouse.gov/news/1 | First item  | pressuuid1 | day           |              | item First news item for the feed | president   | briefingroom | economy        |
-      | http://www.whitehouse.gov/news/2 | Second item | pressuuid2 | day           |              | item Next news item for the feed  | president   | westwing     | jobs           |
-      | http://www.whitehouse.gov/news/3 | Third item  | pressuuid3 |               | 2012-10-01   | item Next news item for the feed  | firstlady   | newsroom     | health         |
-      | http://www.whitehouse.gov/news/4 | Fourth item | pressuuid4 |               | 2012-10-17   | item Next news item for the feed  | president   | speeches     | foreign policy |
-    When I am on en.bar.gov's search page
-    And I fill in "query" with "item"
-    And I press "Search"
-    And I follow "Press"
-    Then I should not see the left column options expanded
-    And I should see "Administration Official" in the left column
-    And I should not see a link to "Administration Official" in the left column
-    And I should see "Issue" in the left column
-    And I should not see a link to "Issue" in the left column
-    And I should see "Briefing Room Section" in the left column
-    And I should not see a link to "Briefing Room Section" in the left column
-
   Scenario: Entering a blank advanced search
     Given the following Affiliates exist:
       | display_name | name   | contact_email | first_name | last_name | header         |
