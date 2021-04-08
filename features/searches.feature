@@ -429,8 +429,6 @@ Feature: Search
     And I search for "Hillary Rodham Clinton first lady"
     Then I should see "Clinton RSS Test"
 
-  # SRCH-2009
-  @wip
   Scenario: No results when searching with active RSS feeds
     Given the following Affiliates exist:
       | display_name | name    | contact_email | first_name | last_name    |
@@ -444,26 +442,19 @@ Feature: Search
       | http://www.whitehouse.gov/news/3 | Third item  | uuid3 | week          | item More news items for the feed |
       | http://www.whitehouse.gov/news/4 | Fourth item | uuid4 | week          | item Last news item for the feed  |
     When I am on bar.gov's search page
-    And I fill in "query" with "item"
-    And I press "Search" within the search box
-    Then I should see at least 2 search results
+    And I search for "item"
+    Then I should see at least "2" web search results
 
-    When I follow "Press"
-    Then I should see "Sorry, no results found for 'item'. Remove all filters or try entering fewer or broader query terms."
-    When I follow "Remove all filters"
-    Then I should see at least 2 search results
+    When I follow "Press" in the search navbar
+    Then I should see "Sorry, no results found for 'item'. Try entering fewer or broader query terms."
 
-    When I fill in "query" with "item"
-    And I press "Search" within the search box
-    And I follow "Photo Gallery"
+    When I follow "Photo Gallery" in the search navbar
     Then I should see "item More news items for the feed"
     When I follow "Last day"
-    Then I should see "Sorry, no results found for 'item' in the last day. Remove all filters or try entering fewer or broader query terms."
-    When I follow "Remove all filters"
-    Then I should see at least 2 search results
+    Then I should see "Sorry, no results found for 'item'. Try entering fewer or broader query terms."
+    When I follow "Clear"
+    Then I should see at least "2" web search results
 
-  # SRCH-2009
-  @wip
   Scenario: No results when searching on Spanish site with active RSS feeds
     Given the following Affiliates exist:
       | display_name | name    | contact_email | first_name | last_name | locale |
@@ -479,20 +470,16 @@ Feature: Search
     When I am on bar.gov's search page
     And I fill in "query" with "item"
     And I press "Buscar" within the search box
-    Then I should see at least 2 search results
+    Then I should see at least "2" web search results
 
-    When I follow "Press"
-    Then I should see "No hemos encontrado ningún resultado que contenga 'item'. Elimine los filtros de su búsqueda, use otras palabras clave o intente usando sinónimos."
-    When I follow "Elimine los filtros"
-    Then I should see at least 2 search results
+    When I follow "Press" in the search navbar
+    Then I should see "No hemos encontrado ningún resultado que contenga 'item'. Intente usar otras palabras clave o sinónimos."
 
-    When I fill in "query" with "item"
-    And I press "Buscar" within the search box
-    And I follow "Photo Gallery"
+    When I follow "Photo Gallery" in the search navbar
     And I follow "Último día"
-    Then I should see "No hemos encontrado ningún resultado que contenga 'item' en el último día. Elimine los filtros de su búsqueda, use otras palabras clave o intente usando sinónimos."
-    When I follow "Elimine los filtros"
-    Then I should see at least 2 search results
+    Then I should see "No hemos encontrado ningún resultado que contenga 'item'. Intente usar otras palabras clave o sinónimos."
+    When I follow "Borrar"
+    Then I should see at least "2" web search results
 
   Scenario: Searching on a site with media RSS
     Given the following Affiliates exist:
