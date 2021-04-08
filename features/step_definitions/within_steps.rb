@@ -19,7 +19,7 @@
   'in the homepage footer': '.footer.links',
   'in the homepage about section': '.about',
   'in the homepage tagline': '.tagline',
-  'in the left column': '#left_column',
+  'in the left column': '#left_column', # legacy SERP
   'in the selected vertical navigation': '#sidebar span',
   'in the search results section': '#results',
   'in the advanced search section': '.advancedsearch',
@@ -54,8 +54,9 @@
   'in the Super Admin page': '.container',
   'in the social media list': '#social_media_profiles',
   'in the legacy search box': '#search_box',
-  'in the search box': '#query',
-  'in the twitter govbox': '#twitter_govbox',
+  'in the search box': '#query', # legacy SERP
+  'in the legacy twitter govbox': '#twitter_govbox',
+  'in the twitter govbox': '#tweets',
   'in the site header': '.l-site-header',
   'in the active site main navigation': '.l-site-nav.main .active',
   'in the active site sub navigation': '.l-site-nav.sub .active',

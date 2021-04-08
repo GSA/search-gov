@@ -58,6 +58,8 @@ module NavigationHelpers
       signup_path
     when /the user account page/
       account_path
+    when /the user edit account page/
+      edit_account_path
     when /the reports homepage/
       monthly_reports_path
     when /the affiliate analytics query search results page/

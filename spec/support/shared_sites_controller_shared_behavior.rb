@@ -1,5 +1,6 @@
-shared_examples 'restricted to approved user' do |request_method, action, parameters = nil|
+# frozen_string_literal: true
 
+shared_examples 'restricted to approved user' do |request_method, action, parameters = nil|
   context 'when user is not logged in' do
     it 'should redirect to login page' do
       send request_method, action, params: parameters
@@ -16,8 +17,7 @@ shared_examples 'restricted to approved user' do |request_method, action, parame
     end
   end
 
-  # login.gov - commented out till  SRCH-862
-  pending 'when user is pending contact information status' do
+  describe 'when user is pending contact information status' do
     before { UserSession.create(users(:affiliate_manager_with_pending_contact_information_status)) }
 
     it 'should redirect to affiliates page' do

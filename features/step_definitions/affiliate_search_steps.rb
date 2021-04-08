@@ -128,10 +128,12 @@ Then /^I should see (\d+) search result title links? with url for "([^"]*)"$/ do
   page.should have_selector(".title a[href='#{url}']", count: count)
 end
 
+# legacy SERP
 Then /^I should see (\d+) news results?$/ do |count|
   page.should have_selector(".newsitem", :count => count)
 end
 
+# legacy SERP
 Then /^I should see (\d+) (image|video) news results$/ do |count, media_type|
   page.should have_selector(".newsitem.#{media_type}", count: count)
 end

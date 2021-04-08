@@ -1,0 +1,11 @@
+# using legacy image for phantomjs
+FROM circleci/ruby:2.7.1-browsers-legacy
+
+USER root
+
+RUN apt-get update && apt-get install -y \
+  default-mysql-client \
+  libprotobuf-dev \
+  protobuf-compiler
+
+USER circleci

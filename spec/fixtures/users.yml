@@ -79,6 +79,16 @@ affiliate_without_contact_info:
   last_name: Smith
   welcome_email_sent: true
 
+affiliate_manager_with_a_default_site:
+  <<: *DEFAULTS
+  email: affiliate_with_a_default_site@fixtures.org
+  is_affiliate_admin: false
+  is_affiliate: true
+  first_name: Has A Default Site
+  last_name: Smith
+  welcome_email_sent: true
+  default_affiliate: :affiliate_for_user_with_default_site
+
 marilyn:
   <<: *DEFAULTS
   email: marilyn@fixtures.org
