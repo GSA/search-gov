@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SearchgovCrawler
   attr_reader :domain, :doc_links, :medusa_opts, :robotex, :srsly, :url_file
 
@@ -46,7 +48,7 @@ class SearchgovCrawler
   private
 
   def process_page(page)
-    if page.visited.nil? && indexable?(page)
+    if !page.visited && indexable?(page)
       url = current_url(page).to_s
       create_or_log_url(url, page.depth)
       extract_application_doc_links(page.links.map(&:to_s), page.depth + 1)

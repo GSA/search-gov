@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 shared_examples 'a web document' do
-  let(:web_document) { described_class.new(valid_attributes) }
+  let(:web_document) { described_class.new(**valid_attributes) }
 
   describe 'web document interface' do
     %i[title description parsed_content language keywords created changed].each do |method|
@@ -11,12 +13,12 @@ shared_examples 'a web document' do
 
   describe 'initialization' do
     it 'requires a document' do
-      expect{ described_class.new(valid_attributes.except(:document)) }
+      expect { described_class.new(**valid_attributes.except(:document)) }
         .to raise_error(ArgumentError, 'missing keyword: document')
     end
 
     it 'requires a url' do
-      expect{ described_class.new(valid_attributes.except(:url)) }
+      expect { described_class.new(**valid_attributes.except(:url)) }
         .to raise_error(ArgumentError, 'missing keyword: url')
     end
   end

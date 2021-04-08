@@ -1,12 +1,13 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
 describe HtmlDocument do
+  subject(:html_document) { described_class.new(**valid_attributes) }
+
   let(:raw_document) { read_fixture_file('/html/page_with_metadata.html') }
   let(:url) { 'https://foo.gov/bar.html' }
   let(:valid_attributes) do
     { document: raw_document, url: url }
   end
-  subject(:html_document) { described_class.new(valid_attributes) }
   let(:doc_without_description) { read_fixture_file('/html/page_with_no_links.html') }
   let(:doc_with_lang_subcode) { '<html lang="en-US"></html>' }
   let(:doc_without_language) { '<html>هذه الجملة باللغة العربية.</html>' }
@@ -277,7 +278,7 @@ describe HtmlDocument do
       end
 
       context 'when the html can be force-encoded to UTF-8' do
-        let(:raw_document) { 'jubilación además'.force_encoding('ASCII-8BIT') }
+        let(:raw_document) { String.new('jubilación además', encoding: 'ASCII-8BIT') }
 
         it 'encodes the html as UTF-8' do
           expect(parsed_content).to include 'jubilación además'
