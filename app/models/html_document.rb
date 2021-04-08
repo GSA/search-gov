@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class HtmlDocument < WebDocument
   include RobotsTaggable
 
@@ -27,10 +29,10 @@ class HtmlDocument < WebDocument
   private
 
   def html
-    @html ||= Loofah.document(document.force_encoding('UTF-8').
-                              encode('UTF-8', { invalid: :replace,
-                                                undef: :replace,
-                                                replace: '' }).gsub(/<\/?td[^>]*>\n?/i,' ') )
+    @html ||= Loofah.document(document.dup.force_encoding('UTF-8').
+                              encode('UTF-8', invalid: :replace,
+                                              undef: :replace,
+                                              replace: '').gsub(/<\/?td[^>]*>\n?/i, ' '))
   end
 
   def parse_content
