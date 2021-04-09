@@ -1,0 +1,260 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=noticia%20uno%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Fri, 09 Apr 2021 14:38:51 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - D79BFC5981B2437BB59F7920CF811ACA
+      Bingapis-Sessionid:
+      - 9670E4E7DAE040698A6BD15399502287
+      X-Msedge-Clientid:
+      - 16BE05E042D668A3146215F443616934
+      X-Msapi-Userstate:
+      - da2b
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=262,MSDatacenter=BN2B
+      X-Msedge-Ref:
+      - 'Ref A: D79BFC5981B2437BB59F7920CF811ACA Ref B: BLUEDGE0709 Ref C: 2021-04-09T14:39:51Z'
+      Apim-Request-Id:
+      - a2b3d873-da7b-4406-8a6c-30380f8bf28d
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Fri, 09 Apr 2021 14:39:50 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "noticia
+        uno (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=noticia+uno+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 204000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Entendiendo sus cartas o avisos del IRS | Internal Revenue ...",
+        "url": "https:\/\/www.irs.gov\/es\/individuals\/understanding-your-irs-notice-or-letter",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.irs.gov\/es\/individuals\/understanding-your-irs-notice-or-letter",
+        "snippet": "Su carta o aviso le explicará la razón del comunicado y le brindará
+        instrucciones sobre cómo manejar el asunto. Si usted está de acuerdo con la
+        información, no hay necesidad de que se comunique con nosotros. Ingrese el
+        número de su carta o aviso arriba para obtener más información sobre cartas
+        y avisos del IRS, junto con respuestas a muchas de las preguntas asociadas
+        a éstas.", "dateLastCrawled": "2021-04-06T06:15:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "La introspección en una época de “noticias falsas ...", "url":
+        "https:\/\/ylai.state.gov\/enfrentando-el-sesgo-cognitivo\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/ylai.state.gov\/enfrentando-el-sesgo-cognitivo",
+        "snippet": "Todos actuamos bajo la influencia de uno o más sesgos cognitivos.
+        Por eso, al buscar y leer noticias (u otra información), es importante ser
+        consciente del modo en que estos sesgos podrían determinar cómo las interpretamos.",
+        "dateLastCrawled": "2021-04-03T22:20:00.0000000Z", "language": "es", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Vacuna contra el coronavirus :: Washington State ...", "url": "https:\/\/www.doh.wa.gov\/Emergencies\/COVID19\/VaccineInformation\/Vacunacontraelcoronavirus",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.doh.wa.gov\/Emergencies\/COVID19\/VaccineInformation\/Vacunacontraelcoronavirus",
+        "snippet": "Actualización del Departamento de Salud del Estado de Washington
+        sobre la distribución de la vacuna contra la COVID-19 de 2 de abril de 2021;
+        A partir del 31 de marzo ya no se exigirá la herramienta en línea de elegibilidad
+        del estado de 30 de marzo de 2021; Los centros de vacunación masiva del estado
+        han administrado más de 150,000 dosis de la vacuna contra la COVID-19 de 29
+        de marzo de ...", "dateLastCrawled": "2021-04-06T23:32:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Consumo de sustancias y riesgos en adolescentes | TEAF ...", "url":
+        "https:\/\/www.cdc.gov\/ncbddd\/spanish\/fasd\/abuso-substancias-adolescentes.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/ncbddd\/spanish\/fasd\/abuso-substancias-adolescentes.html",
+        "snippet": "Uno de esos riesgos es el consumo de sustancias, como el alcohol,
+        la marihuana, el tabaco y otras drogas. Los padres pueden ayudar hablando
+        con el pediatra de sus hijos sobre pruebas de detección del consumo de sustancias.
+        El consumo de sustancias por parte de los adolescentes puede tener un gran
+        impacto en su salud y bienestar. La Asociación ...", "dateLastCrawled": "2021-04-06T00:30:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Personas Desaparecidas | Policía de Puerto Rico", "url": "https:\/\/policia.pr.gov\/personas-desaparecidas\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/policia.pr.gov\/personas-desaparecidas",
+        "snippet": "Dirección: Res. Luis Lloresns Torres, Edf. 37, Apt. 761, San Juan,
+        Puerto Rico. Sitio Desaparición: Calle La Providencia Cerca de La Panaderia
+        Res.Luis Llorens Torres, San Juan Puerto Rico. Fecha Desaparición: 9 de enero
+        de 2012 Nombre Persona que Reporta: Elisa Astacio Velazquez Parentesco Persona
+        que Reporta: Esposa Dirección Persona que Reporta: Res. Luis Lloresns Torres,
+        Edf. 37, Apt ...", "dateLastCrawled": "2021-04-06T06:15:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "México bajo Porfirio Díaz, 1876-1911 - La Revolución ...", "url":
+        "https:\/\/www.loc.gov\/exhibits\/mexican-revolution-and-the-united-states\/porfiriato-sp.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/exhibits\/mexican-revolution-and-the-united-states\/porfiriato-sp.html",
+        "snippet": "Uno de sus secretarios, Serafín Robles, comentó que su vestimenta
+        era siempre como la de un jinete o charro, pantalones negros de cachemir ajustados,
+        botones de plata, sombrero ancho, una camisa o una chaqueta de lino fino,
+        pañoleta, botas, espuelas y una pistola enfundada en su cinturón.", "dateLastCrawled":
+        "2021-04-06T23:59:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6", "name":
+        "¿Necesita alivio para los síntomas de una vejiga ...", "url": "https:\/\/www.fda.gov\/consumers\/articulos-en-espanol\/necesita-alivio-para-los-sintomas-de-una-vejiga-hiperactiva",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fda.gov\/consumers\/articulos-en-espanol\/necesita-alivio-para-los-sintomas...",
+        "snippet": "La buena noticia es que existen terapias para tratar estos síntomas.
+        Entre ellas están: medicamentos orales, un parche o gel aplicados sobre la
+        piel, el primer tratamiento de venta sin receta ...", "dateLastCrawled": "2021-03-19T09:40:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Cómo el Seguro Social le puede ayudar cuando fallece un ...", "url":
+        "https:\/\/www.ssa.gov\/pubs\/ES-05-10008.pdf", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.ssa.gov\/pubs\/ES-05-10008.pdf", "snippet":
+        "de la semana. Para hablar con uno de nuestros agentes en español, llame
+        a nuestro número gratuito 1-800-772-1213 y oprima el número 7. Si es sordo
+        o tiene problemas de audición, llame a nuestro número TTY, 1-800-325-0778.
+        Si necesita hablar con un agente, podemos contestar sus llamadas de lunes
+        a viernes, desde las 7 AM hasta las 7 PM.", "dateLastCrawled": "2021-04-07T04:32:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Manipulacion segura de los alimentos: Lo que usted debe ...", "url":
+        "https:\/\/www.fda.gov\/food\/buy-store-serve-safe-food\/manipulacion-segura-de-los-alimentos-lo-que-usted-debe-saber",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fda.gov\/food\/buy-store-serve-safe-food\/manipulacion-segura-de-los-aliment...",
+        "snippet": "Imprimir y compartir (PDF 255KB ) Inglés (English) En los Estados
+        Unidos, el suministro de alimentos es de los más seguros en el mundo. Sin
+        embargo, cuando ciertas bacterias o agentes patógenos ...", "dateLastCrawled":
+        "2021-04-02T04:46:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9", "name":
+        "Información sobre la diabetes | Información Básica ...", "url": "https:\/\/www.cdc.gov\/diabetes\/spanish\/basics\/diabetes.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/diabetes\/spanish\/basics\/diabetes.html",
+        "snippet": "34.2 millones de adultos en los Estados Unidos tienen diabetes,
+        y 1 de cada 5 no sabe que la tiene.; La diabetes es la séptima causa principal
+        de muerte en los Estados Unidos.; La diabetes es la principal causa de insuficiencia
+        renal, amputación de las extremidades inferiores y de ceguera en los adultos.;
+        En los últimos 20 años, la cantidad de adultos con diabetes diagnosticada
+        se ha más ...", "dateLastCrawled": "2021-04-06T17:20:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Cheques del gobierno | FTC Información para consumidores", "url":
+        "https:\/\/www.consumidor.ftc.gov\/blog\/2020\/03\/cheques-del-gobierno",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.consumidor.ftc.gov\/blog\/2020\/03\/cheques-del-gobierno",
+        "snippet": "Con el creciente impacto del Coronavirus en los bolsillos de la
+        gente, se están publicando noticias que reseñan que próximamente el gobierno
+        nos enviará dinero por medio de un cheque o depósito directo a cada uno
+        de nosotros.", "dateLastCrawled": "2021-04-06T12:57:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "La violencia autoinfligida y otras formas de autolesión | CDC",
+        "url": "https:\/\/www.cdc.gov\/ncbddd\/spanish\/disabilityandsafety\/self-injury.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/ncbddd\/spanish\/disabilityandsafety\/self-injury.html",
+        "snippet": "La violencia autodirigida y otras formas de autolesiones son problemas
+        graves que afectan a los niños, los jóvenes y las familias. Sin embargo, hay
+        cosas que las familias y los profesionales de la salud pueden hacer para ayudar
+        a prevenir estos comportamientos.", "dateLastCrawled": "2021-04-05T23:24:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Bioterrorismo | El ántrax | CDC", "url": "https:\/\/www.cdc.gov\/anthrax\/es\/bioterrorismo\/bioterrorismo.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/anthrax\/es\/bioterrorismo\/bioterrorismo.html",
+        "snippet": "Los agentes biológicos son gérmenes que pueden infectar o matar
+        a las personas, los ganados o los cultivos. El ántrax es uno de los agentes
+        que se utilizaría con más probabilidad debido a lo siguiente: Las esporas
+        de ántrax se encuentran fácilmente en la naturaleza, se pueden generar en
+        un laboratorio y pueden perdurar en el ambiente.", "dateLastCrawled": "2021-04-07T02:43:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "100 preguntas y respuestas acerca de la compra de una ...", "url":
+        "https:\/\/www.hud.gov\/espanol\/topics\/100QandAforHomebuyers", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.hud.gov\/espanol\/topics\/100QandAforHomebuyers",
+        "snippet": "Recopile una lista con varios agentes y hable con cada uno de
+        ellos antes de elegir uno. Busque un agente que lo sepa escuchar y que comprenda
+        sus necesidades y en cuyo juicio usted confíe. El agente ideal conoce bien
+        el área local y posee recursos y contactos para ayudarlo en su búsqueda. En
+        términos generales, usted desea elegir un agente ...", "dateLastCrawled":
+        "2021-04-05T10:28:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "Jóvenes de 16 y 17 Años de Edad - Travel", "url": "https:\/\/travel.state.gov\/content\/travel\/es\/pasaportes\/tramite-mi-pasaporte\/jovenes-de-16-y-17-anos.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/travel.state.gov\/content\/travel\/es\/pasaportes\/tramite-mi-pasaporte\/jovenes-de...",
+        "snippet": "Uno de los progenitores acompaña al menor cuando entrega la
+        solicitud. Se presenta una declaración firmada (en inglés) de por lo menos
+        uno de los progenitores en la que da consentimiento para que se le emita
+        un pasaporte al menor (debe ir acompañada de una fotocopia del documento
+        de identificación del progenitor).", "dateLastCrawled": "2021-04-06T15:24:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Reporte las estafas y fraudes | USAGov", "url": "https:\/\/www.usa.gov\/espanol\/reporte-estafas-fraudes",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/espanol\/reporte-estafas-fraudes",
+        "snippet": "Existen muchos tipos de estafas y fraudes, y es difícil saber
+        dónde reportar cada una. Primero, presente la denuncia en la policía local.
+        También puede contactar a su oficina estatal de protección al consumidor.
+        Algunos tipos de estafas y fraudes se pueden reportar ante las agencias federales
+        ...", "dateLastCrawled": "2021-04-06T01:02:00.0000000Z", "language": "es",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Tiempos de Procesamiento - Processing Times", "url": "https:\/\/egov.uscis.gov\/processing-times\/es",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/egov.uscis.gov\/processing-times\/es",
+        "snippet": "Seleccione su número de formulario y la oficina que está procesando
+        su caso. Para obtener más información sobre los tiempos de procesamiento de
+        casos y leer su aviso de recibo, visite la página Tiempos de Procesamiento
+        de Casos..", "dateLastCrawled": "2021-04-06T13:18:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Conozca los signos y síntomas de un ataque cardiaco|Data ...",
+        "url": "https:\/\/www.cdc.gov\/dhdsp\/spanish\/fs_heartattack_spanish.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/dhdsp\/spanish\/fs_heartattack_spanish.htm",
+        "snippet": "De estos, 580,000 son el primer ataque cardiaco y 210,000 ocurren
+        en personas que ya habían tenido uno. 1; Alrededor del 15% de las personas
+        que sufren un ataque cardiaco morirán a causa de ello. 1; Casi la mitad
+        de las muertes cardiacas repentinas ocurren en entornos no hospitalarios.
+        2", "dateLastCrawled": "2021-04-06T10:06:00.0000000Z", "language": "es", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Manuel de periodismo independiente - USEmbassy.gov", "url": "https:\/\/photos.state.gov\/libraries\/amgov\/30145\/publications-spanish\/handbook_journalism-sp.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/photos.state.gov\/libraries\/amgov\/30145\/publications-spanish\/handbook...",
+        "snippet": "noticia. Pero si un hombre mordiera a un perro, ¡eso sí que
+        sería noticia!”. Lo extraordinario y lo inesperado atraen nuestra curiosidad
+        humana natural. El hecho de que algo sea noticia depende también de la composición
+        de los miembros de la audiencia propuesta y no sólo es cuestión de dónde viven
+        sino también de quiénes son. Los ).", "dateLastCrawled": "2021-04-07T04:30:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "El robo de identidad y su número de Seguro Social", "url": "https:\/\/www.ssa.gov\/pubs\/ES-05-10964.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/pubs\/ES-05-10964.pdf",
+        "snippet": "El robo de identidad es uno de los crímenes de mayor crecimiento
+        en los EE. UU. Una persona deshonesta quien se apropia de su número de Seguro
+        Social puede usarlo para conseguir otra información personal sobre usted.
+        Los ladrones de identidad pueden usar su número y su buen historial crediticio
+        para solicitar más crédito bajo su nombre.", "dateLastCrawled": "2021-04-06T13:55:00.0000000Z",
+        "language": "es", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version:
+  recorded_at: Fri, 09 Apr 2021 14:39:51 GMT
+recorded_with: VCR 4.0.0

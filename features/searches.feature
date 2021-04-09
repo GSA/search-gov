@@ -395,9 +395,7 @@ Feature: Search
     And I follow "Topics" in the search navbar
     Then I should see "Please enter a search term"
 
-  # SRCH-2009
-  @wip
-  Scenario: When a searcher on an English site clicks on an RSS Feed on sidebar and the query is blank
+  Scenario: When a searcher on an English site clicks on an RSS Feed and the query is blank
     Given the following Affiliates exist:
       | display_name     | name       | contact_email | first_name | last_name | locale | youtube_handles |
       | bar site         | bar.gov    | aff@bar.gov   | John       | Bar       | en     | en_agency       |
@@ -413,24 +411,23 @@ Feature: Search
       | link                                       | title            | guid       | published_ago | description                             |
       | http://www.youtube.com/watch?v=0hLMc-6ocRk | First video item | videouuid1 | day           | item First video news item for the feed |
     When I am on bar.gov's search page
-    And I follow "Press" in the left column
+    And I follow "Press" in the search navbar
     Then I should see the browser page titled "Press - bar site Search Results"
     And I should see "First item"
     And I should see "Second item"
-    And I should see "2 results"
-    And I should see 2 news results
+    And I should see "2 RESULTS"
+    And I should see exactly "2" web search results
 
     When I am on bar.gov's search page
     And I fill in "query" with "first item"
     And I press "Search" within the search box
-    And I follow "Videos of 'first item'"
+    And I follow "Videos" in the search navbar
     And I fill in "query" with ""
     And I press "Search" within the search box
     Then I should see the browser page titled "Videos - bar site Search Results"
+    And I should see "First video item"
 
-  # SRCH-2009
-  @wip
-  Scenario: When a searcher on a Spanish site clicks on an RSS Feed on sidebar and the query is blank
+  Scenario: When a searcher on a Spanish site clicks on an RSS Feed and the query is blank
     Given the following Affiliates exist:
       | display_name     | name       | contact_email | first_name | last_name | locale | youtube_handles |
       | Spanish bar site | es.bar.gov | aff@bar.gov   | John       | Bar       | es     | es_agency       |
@@ -446,20 +443,21 @@ Feature: Search
       | link                                       | title             | guid       | published_ago | description                             |
       | http://www.youtube.com/watch?v=0hLMc-6ocRk | Noticia video uno | videouuid1 | day           | item First video news item for the feed |
     When I am on es.bar.gov's search page
-    And I follow "Press" in the left column
+    And I follow "Press" in the search navbar
     Then I should see the browser page titled "Press - Spanish bar site resultados de la búsqueda"
-    Then I should see "2 resultados"
-    And I should see 2 news results
+    Then I should see "2 RESULTADOS"
+    And I should see exactly "2" web search results
     And I should see "Noticia uno"
     And I should see "Noticia dos"
 
     When I am on es.bar.gov's search page
     And I fill in "query" with "noticia uno"
     And I press "Buscar" within the search box
-    And I follow "Videos de 'noticia uno'"
+    And I follow "Videos" in the search navbar
     And I fill in "query" with ""
     And I press "Buscar" within the search box
     Then I should see the browser page titled "Spanish Videos - Spanish bar site resultados de la búsqueda"
+    And I should see "Noticia video uno"
 
   Scenario: When there are relevant Tweets from Twitter profiles associated with the affiliate
     Given the following Affiliates exist:

@@ -1,0 +1,261 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=first%20item%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Fri, 09 Apr 2021 14:38:47 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - 66014E07470748559B8E889C310804A0
+      Bingapis-Sessionid:
+      - 51FB6D4938C34425B2F654F6F2AD62E1
+      X-Msedge-Clientid:
+      - 22E3C806CAF36B183630D812CB436AC8
+      X-Msapi-Userstate:
+      - 86de
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=244,MSDatacenter=BN2B
+      X-Msedge-Ref:
+      - 'Ref A: 66014E07470748559B8E889C310804A0 Ref B: BLUEDGE1412 Ref C: 2021-04-09T14:39:47Z'
+      Apim-Request-Id:
+      - 3952ac1a-094a-4ce5-bcf6-f72ada746530
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Fri, 09 Apr 2021 14:39:47 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "first
+        item (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=first+item+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 2300000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "The first items I will discuss are the five points of ...", "url":
+        "https:\/\/home.army.mil\/bragg\/index.php\/download_file\/390\/437", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/home.army.mil\/bragg\/index.php\/download_file\/390\/437",
+        "snippet": "The first items I will discuss are the five points of performance.
+        The first point of performance is proper exit, check body position, and
+        count. Jumpers hit it. Upon exiting the aircraft, snap into a good tight body
+        position. Keep your eyes open, chin on your chest, elbows tight into your
+        sides, hands on the ends of", "dateLastCrawled": "2021-04-04T19:01:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "1.WN GO 2. MASK OR RESPIRATOR 3. GOGGLES OR FACE SHIELD", "url":
+        "https:\/\/www.cdc.gov\/hai\/pdfs\/ppe\/PPE-Sequence.pdf", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.cdc.gov\/hai\/pdfs\/ppe\/PPE-Sequence.pdf",
+        "snippet": "• If the item is reusable, place in designated receptacle for
+        reprocessing. Otherwise, discard in a waste container. 3.WN GO • Gown front
+        and sleeves are contaminated! • If your hands get contaminated during gown
+        removal, immediately wash your hands or use an alcohol-based hand sanitizer",
+        "dateLastCrawled": "2021-04-06T05:24:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Dates of Use | USPTO", "url": "https:\/\/www.uspto.gov\/trademarks\/laws\/dates-use-1",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.uspto.gov\/trademarks\/laws\/dates-use-1",
+        "snippet": "The USPTO presumes, if more than one item of goods or services
+        is listed in a particular class, that the dates of first use apply to all
+        the listed goods or services in that class. If the dates of first use do
+        not pertain to all the listed items, you should designate the particular
+        item(s) to which they do pertain.", "dateLastCrawled": "2021-04-06T20:49:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Subpart 9.3—First Article Testing and Approval", "url": "https:\/\/www.acquisition.gov\/sites\/default\/files\/current\/far\/html\/Subpart%209_3.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.acquisition.gov\/sites\/default\/files\/current\/far\/html\/Subpart
+        9_3.html", "snippet": "The notice shall include the first article shipment
+        number, when available, and the applicable line item number. Any changes
+        in the drawings, designs, or specifications determined by the contracting
+        officer to be necessary shall be made under the Changes clause, and not by
+        the notice of approval, conditional approval, or disapproval furnished ...",
+        "dateLastCrawled": "2021-04-07T11:01:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "1910.266 App A - First-aid Kits (Mandatory ...", "url": "https:\/\/www.osha.gov\/laws-regs\/regulations\/standardnumber\/1910\/1910.266appa",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.osha.gov\/laws-regs\/regulations\/standardnumber\/1910\/1910.266appa",
+        "snippet": "When larger operations or multiple operations are being conducted
+        at the same location, additional first-aid kits should be provided at the
+        work site or additional quantities of supplies should be included in the first-aid
+        kits: 1. Gauze pads (at least 4 x 4 inches). 2. Two large gauze pads (at least
+        8 x 10 inches). 3. Box adhesive bandages ...", "dateLastCrawled": "2021-04-07T00:32:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "NFIRS 4.1 Codes and Descriptions - U.S. Fire Administration",
+        "url": "https:\/\/www.usfa.fema.gov\/downloads\/xls\/NFIRS4_Codes.xls", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.usfa.fema.gov\/downloads\/xls\/NFIRS4_Codes.xls",
+        "snippet": "GENERAL ITEM STORES Department store. Small variety store. Large
+        variety store. Mail order store. Mall. General Item Stores not classified
+        above. General Item Stores; insufficient information available to classify
+        further. OFFICES General business office. Bank, with first story banking
+        facilities. Medical, research, scientific office.", "dateLastCrawled": "2021-04-06T04:19:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Employee’s Last Name, First Name, Middle Initial (rev. 11\/08)",
+        "url": "https:\/\/www.sco.ca.gov\/Files-PPSD\/PAM_2_PAR_Items_Lines_1-7_2019_0731.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sco.ca.gov\/Files-PPSD\/PAM_2_PAR_Items_Lines_1-7_2019_0731.pdf",
+        "snippet": "ITEM 111 – FIRST NAME and MIDDLE INITIAL On Padded PAR when
+        employee or additional position is new to the data base Enter: In ITEM 110
+        – LAST NAME Enter the employee''s legal surname and suffix* or title* as it
+        appears on the Social Security Account Number card. Begin entering last name
+        at the beginning of EMPLOYEE LAST NAME field.", "dateLastCrawled": "2021-04-06T00:49:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "SEC.gov | Form ADV and IARD Frequently Asked Questions", "url":
+        "https:\/\/www.sec.gov\/divisions\/investment\/iard\/iardfaq.shtml", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.sec.gov\/divisions\/investment\/iard\/iardfaq.shtml",
+        "snippet": "A: To convert from being an SEC-registered adviser to filing
+        as an SEC Exempt Reporting Adviser, first submit a Form ADV-W withdrawal
+        (full withdrawal if only registered with the SEC or a partial withdrawal
+        if you are required to remain registered with one or more states) and indicate
+        in Item 2''s \"Reason for Withdrawal\" that the reason is ...", "dateLastCrawled":
+        "2021-04-06T00:17:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8", "name":
+        "Math Item Specifications Grade 1", "url": "https:\/\/dese.mo.gov\/sites\/default\/files\/asmt-math-g1-item-specs.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/dese.mo.gov\/sites\/default\/files\/asmt-math-g1-item-specs.pdf",
+        "snippet": "First Grade . Mathematics . Item Specifications . 2 . Table
+        of Contents ... One of the documents developed is the item specification
+        document, which includes all Missouri grade level\/course expectations arranged
+        by domains\/strands. It defines what could be measured on a variety of assessments.
+        The document", "dateLastCrawled": "2021-04-06T20:49:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "The Patient Health Questionnaire (PHQ-9) - Overview", "url": "http:\/\/www.agencymeddirectors.wa.gov\/files\/AssessmentTools\/14-PHQ-9%20overview.pdf",
+        "isFamilyFriendly": true, "displayUrl": "www.agencymeddirectors.wa.gov\/files\/AssessmentTools\/14-PHQ-9
+        overview.pdf", "snippet": "Need one or both of the first two questions endorsed
+        as a “2” or a “3” (2 = “More than half the days” or 3 = “Nearly every day”)
+        Step 2: Questions 1 through 9 Need a total of five or more boxes endorsed
+        within the shaded area of the form to arrive at the total symptom count.",
+        "dateLastCrawled": "2021-04-06T12:03:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "King Andrew the First | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/2008661753\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/2008661753",
+        "snippet": "1 print : lithograph on wove paper ; 31.7 x 21.4 cm. (image) |
+        A caricature of Andrew Jackson as a despotic monarch, probably issued during
+        the Fall of 1833 in response to the President''s September order to remove
+        federal deposits from the Bank of the United States. The print is dated a
+        year earlier by Weitenkampf and related to Jackson''s controversial veto of
+        Congress''s bill to recharter the ...", "dateLastCrawled": "2021-01-27T09:28:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "PPP loan forgiveness", "url": "https:\/\/www.sba.gov\/funding-programs\/loans\/coronavirus-relief-options\/paycheck-protection-program\/ppp-loan-forgiveness",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/funding-programs\/loans\/coronavirus-relief-options\/paycheck...",
+        "snippet": "Borrowers may be eligible for Paycheck Protection Program (PPP)
+        loan forgiveness.", "dateLastCrawled": "2021-04-02T19:02:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Associated Press Style", "url": "https:\/\/www.codot.gov\/business\/grants\/safetygrants\/documents\/APStyleGuideCheatSheet.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.codot.gov\/business\/grants\/safetygrants\/documents\/APStyleGuideCheatSheet.pdf",
+        "snippet": "After each bullet, capitalize the first letter and use periods
+        at the end of each item. Colon Capitalize the first word after a colon
+        only if it is a proper noun or the start of a complete sentence. Colons go
+        outside quotation marks unless they are part of the quoted material. Comma
+        Don’t use a comma before a conjunction in a simple series.", "dateLastCrawled":
+        "2021-04-07T01:26:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13", "name":
+        "Your Guide to Who Pays First. - Medicare.gov", "url": "https:\/\/www.medicare.gov\/Pubs\/pdf\/02179-Medicare-Coordination-Benefits-Payer.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.medicare.gov\/Pubs\/pdf\/02179-Medicare-Coordination-Benefits-Payer.pdf",
+        "snippet": "No-fault insurance or liability insurance pays first and Medicare
+        pays second for services related to the accident or injury . I’m covered under
+        workers’ compensation because of a job related illness or injury involved
+        (pages 22–25) Workers’ compensation pays first for services or items related
+        to the workers’ compensation claim .", "dateLastCrawled": "2021-04-06T05:37:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "First telegraph message, 24 May 1844. | Library of Congress", "url":
+        "https:\/\/www.loc.gov\/item\/mcc.019\/", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.loc.gov\/item\/mcc.019", "snippet": "The first telegraphic
+        instrument 1 photographic print. | Copy photograph of a photomechanical print
+        depicting the first telegraph apparatus, used between Baltimore and Washington
+        in 1844. Margins include bust portraits of Benjamin Franklin, Samuel F.B.
+        Morse,...", "dateLastCrawled": "2021-03-14T02:28:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "1926.50 - Medical services and first aid. | Occupational ...",
+        "url": "https:\/\/www.osha.gov\/laws-regs\/regulations\/standardnumber\/1926\/1926.50",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.osha.gov\/laws-regs\/regulations\/standardnumber\/1926\/1926.50",
+        "snippet": "First aid supplies shall be easily accessible when required.
+        1926.50(d)(2) The contents of the first aid kit shall be placed in a weatherproof
+        container with individual sealed packages for each type of item, and shall
+        be checked by the employer before being sent out on each job and at least
+        weekly on each job to ensure that the expended items ...", "dateLastCrawled":
+        "2021-04-06T08:11:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16", "name":
+        "Help Buying a New Home | USAGov", "url": "https:\/\/www.usa.gov\/buying-home",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/buying-home",
+        "snippet": "The program provides public housing residents and other low-income
+        families that are first-time homebuyers with subsidies to use toward buying
+        a home. For additional information about this program, contact your local
+        Public Housing Agency (PHA). Indian Home Loan Guarantee Program.", "dateLastCrawled":
+        "2021-04-06T08:10:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17", "name":
+        "Grade 1 ELA Item Specifications", "url": "https:\/\/dese.mo.gov\/sites\/default\/files\/asmt-ela-g1-item-specs-1118.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/dese.mo.gov\/sites\/default\/files\/asmt-ela-g1-item-specs-1118.pdf",
+        "snippet": "Item Format indicates the types of items used in large scale
+        assessment. For each expectation, the item format specifies the type best
+        suited for that particular expectation. Text Types suggests a broad list of
+        text types for both literary and informational expectations. This list is
+        not intended to be all", "dateLastCrawled": "2021-04-03T08:01:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "LOWEST FLOOR GUIDE", "url": "https:\/\/www.fema.gov\/pdf\/nfip\/manual201205\/content\/07_lfg.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fema.gov\/pdf\/nfip\/manual201205\/content\/07_lfg.pdf",
+        "snippet": "items permanently affixed to the building and that provide utility
+        services for the building – i.e., furnaces, water heaters, heat pumps, air
+        conditioners, and elevators and their associated equipment. Washers, dryers,
+        and food freezers are contents items and are not considered machinery or
+        equipment.); or", "dateLastCrawled": "2021-03-28T01:19:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Checklist for Starting a Business | Internal Revenue Service",
+        "url": "https:\/\/www.irs.gov\/businesses\/small-businesses-self-employed\/checklist-for-starting-a-business",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.irs.gov\/businesses\/small-businesses-self-employed\/checklist-for-starting-a...",
+        "snippet": "The checklist below provides the basic steps you should follow
+        to start a business. This list should not be construed as all-inclusive.
+        Other steps may be appropriate for your specific type of business. Information
+        about specific industries can be found at the Industries\/Professions Web
+        page.", "dateLastCrawled": "2021-04-06T08:12:00.0000000Z", "language": "en",
+        "isNavigational": false}]}, "rankingResponse": {"mainline": {"items": [{"answerType":
+        "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version:
+  recorded_at: Fri, 09 Apr 2021 14:39:47 GMT
+recorded_with: VCR 4.0.0
