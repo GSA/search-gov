@@ -35,4 +35,80 @@ http_interactions:
         subscription and use a correct regional API endpoint for your resource."}}'
     http_version:
   recorded_at: Tue, 30 Mar 2021 17:17:39 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=jazz%20(site:usa.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 12 Apr 2021 15:54:06 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - C3D7F3C9E9574EB1938FBEA769BB7F7D
+      Bingapis-Sessionid:
+      - 21E93057B83641A9BE5083269E5B7F87
+      X-Msedge-Clientid:
+      - 00C3AA5A5CBD68FD3DD8BA4D5DA26918
+      X-Msapi-Userstate:
+      - 88a2
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=181,MSDatacenter=BN2B
+      X-Msedge-Ref:
+      - 'Ref A: C3D7F3C9E9574EB1938FBEA769BB7F7D Ref B: BLUEDGE1910 Ref C: 2021-04-12T15:55:06Z'
+      Apim-Request-Id:
+      - 2f7678aa-4e08-424e-aea6-643d221b9042
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Mon, 12 Apr 2021 15:55:06 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "jazz
+        (site:usa.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=jazz+(site%3ausa.gov)",
+        "totalEstimatedMatches": 1, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Copyright Office | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/copyright-office",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/copyright-office",
+        "snippet": "A locked padlock) or https:\/\/ means you’ve safely connected
+        to the .gov website.Share sensitive information only on official, secure websites.",
+        "dateLastCrawled": "2021-04-10T00:53:00.0000000Z", "language": "en", "isNavigational":
+        false}]}, "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages",
+        "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}}]}}}'
+    http_version:
+  recorded_at: Mon, 12 Apr 2021 15:55:07 GMT
 recorded_with: VCR 4.0.0
