@@ -21,18 +21,358 @@ http_interactions:
       - '30'
   response:
     status:
-      code: 401
-      message: PermissionDenied
+      code: 200
+      message: OK
     headers:
-      Content-Length:
-      - '224'
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 06 Apr 2021 16:31:01 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - BEB27201713B4EF6957769BC920A90B5
+      Bingapis-Sessionid:
+      - 8D425548627D4616B3E33F314795A846
+      X-Msedge-Clientid:
+      - 3D4DA5DF9B476EAF2901B5CE9ABA6F22
+      X-Msapi-Userstate:
+      - b6a1
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=245,MSDatacenter=BN2B
+      X-Msedge-Ref:
+      - 'Ref A: BEB27201713B4EF6957769BC920A90B5 Ref B: BLUEDGE0811 Ref C: 2021-04-06T16:32:01Z'
+      Apim-Request-Id:
+      - 528fed5f-8d59-487e-9e62-958a83ec9c35
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Tue, 30 Mar 2021 17:17:44 GMT
+      - Tue, 06 Apr 2021 16:32:01 GMT
     body:
       encoding: UTF-8
-      string: '{"error":{"code":"401","message":"Access denied due to invalid subscription
-        key or wrong API endpoint. Make sure to provide a valid key for an active
-        subscription and use a correct regional API endpoint for your resource."}}'
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "jobs
+        (site:www.usa.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=jobs+(site%3awww.usa.gov)",
+        "totalEstimatedMatches": 2670000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Find a Job | USAGov", "url": "https:\/\/www.usa.gov\/find-a-job",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/find-a-job",
+        "snippet": "Finding and getting a job can be a challenging process. Knowing
+        more about job search methods and application techniques can help. To begin
+        looking for jobs in your area, search by job title at CareerOneStop. Or,
+        post your resume and register your job search with your state job bank. State
+        Job Banks ...", "dateLastCrawled": "2021-04-04T17:11:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Looking for a New Job | USAGov", "url": "https:\/\/www.usa.gov\/job-search",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/job-search",
+        "snippet": "Looking for a New Job. Find out how to look for work in the private
+        sector and federal government. Find a Federal Government Job. Learn how to
+        find a job with the federal government.", "dateLastCrawled": "2021-04-04T09:14:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Find a Federal Government Job | USAGov", "url": "https:\/\/www.usa.gov\/government-jobs",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/government-jobs",
+        "snippet": "Many jobs open to people with disabilities use only that process.
+        Finding and Applying for Federal Jobs. You can search for most jobs on
+        the government’s job site, USAJOBS.gov. To apply for jobs under Schedule
+        A, you can: Apply online at USAJOBS or. Apply directly to the agency offering
+        the job.", "dateLastCrawled": "2021-04-04T16:28:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Jobs and Education for People with Disabilities | USAGov", "url":
+        "https:\/\/www.usa.gov\/disability-jobs-education", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.usa.gov\/disability-jobs-education", "snippet":
+        "Federal Jobs for People with Disabilities. If you’re looking for a job
+        and you have a disability, you might consider working for the federal government.
+        Advantages of Government Jobs for People with Disabilities. The federal
+        government: Has job openings nationwide in many different career fields",
+        "dateLastCrawled": "2021-04-04T17:19:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Office of Personnel Management | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/office-of-personnel-management",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/office-of-personnel-management",
+        "snippet": "The Office of Personnel Management manages the civil service
+        of the federal government, coordinates recruiting of new government employees,
+        and manages their health insurance and retirement benefits programs. They
+        also provide resources for locating student jobs, summer jobs, scholarships,
+        and internships.", "dateLastCrawled": "2021-04-04T04:15:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Unemployment Help | USAGov", "url": "https:\/\/www.usa.gov\/unemployment",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/unemployment",
+        "snippet": "The federal government has allowed states to change their laws
+        to provide COVID-19 unemployment benefits for people whose jobs have been
+        affected by the coronavirus pandemic. Contact your state’s unemployment
+        insurance program for more information and to apply for benefits. There are
+        a variety of ...", "dateLastCrawled": "2021-04-04T02:09:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Disaster Financial Assistance for Workers and Small ...", "url":
+        "https:\/\/www.usa.gov\/disaster-help-workers-businesses", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.usa.gov\/disaster-help-workers-businesses",
+        "snippet": "COVD-19 Unemployment Benefits. The federal government has allowed
+        states to change their laws to provide COVID-19 unemployment benefits for
+        people whose jobs have been affected by the coronavirus pandemic.. Contact
+        your state’s unemployment insurance program for more information and to apply
+        for benefits.. The American Rescue Plan Act of 2021 authorizes:", "dateLastCrawled":
+        "2021-04-03T22:02:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7", "name":
+        "Retirement | USAGov", "url": "https:\/\/www.usa.gov\/retirement", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.usa.gov\/retirement", "snippet": "If
+        you change jobs, keep your savings in the plan or roll them over to another
+        retirement account. Don’t dip into retirement savings early. If you pay
+        someone for investment advice, ask them to confirm in writing that they are
+        “fiduciaries”—meaning they are obliged to work in your best interest.", "dateLastCrawled":
+        "2021-04-03T22:10:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8", "name":
+        "Genealogy and Family History | USAGov", "url": "https:\/\/www.usa.gov\/genealogy",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/genealogy",
+        "snippet": "Jobs and Unemployment. Labor Laws and Issues; Looking for a
+        New Job. Find a Federal Government Job; Find a Job; Retirement; Small Business.
+        Business Keyword Search; Finance Your Business; Importing and Exporting; Introduction
+        to Federal Government Contracting. Get Help with Government Contracting; The
+        Contract Opportunities Search Tool on beta ...", "dateLastCrawled": "2021-04-03T22:08:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "National Cemetery Administration | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/national-cemetery-administration",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/national-cemetery-administration",
+        "snippet": "National Cemetery Administration. The National Cemetery Administration
+        provides burial space for Veterans and their eligible family members, and
+        maintains national cemeteries as national shrines, sacred to the honor and
+        memory of those interred or memorialized there.", "dateLastCrawled": "2021-04-03T22:29:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Pay and Benefits for Federal Employees | USAGov", "url": "https:\/\/www.usa.gov\/benefits-for-federal-employees",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/benefits-for-federal-employees",
+        "snippet": "Pay Scales for Federal Employees. The government publishes new
+        pay tables for federal employees every year. Federal Employee Salaries. The
+        president and Congress decide how much, if any, pay raise federal workers
+        will receive in the next calendar year.. Pay tables for federal employees
+        (2020 and prior years). 2020 Foreign Service pay tables", "dateLastCrawled":
+        "2021-04-04T00:27:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11", "name":
+        "Federal Court Interpreters | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/federal-court-interpreters",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/federal-court-interpreters",
+        "snippet": "Jobs and Unemployment. Labor Laws and Issues; Looking for a
+        New Job. Find a Federal Government Job; Find a Job; Retirement; Small Business.
+        Business Keyword Search; Finance Your Business; Importing and Exporting; Introduction
+        to Federal Government Contracting. Get Help with Government Contracting; The
+        Contract Opportunities Search Tool on beta ...", "dateLastCrawled": "2021-04-03T19:19:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Join the Military | USAGov", "url": "https:\/\/www.usa.gov\/join-military",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/join-military",
+        "snippet": "Even within the same branch, some jobs have tougher or extra
+        requirements. Steps for Joining the Military. Start by doing some research
+        about your options for joining the military. Learn about the five active-duty
+        branches and their part-time counterparts. Know the main differences between
+        officers and enlisted members.", "dateLastCrawled": "2021-04-04T08:08:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Jobs and Training for Veterans | USAGov", "url": "https:\/\/www.usa.gov\/veteran-employment",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/veteran-employment",
+        "snippet": "Jobs and Training for Veterans. The government offers many
+        programs to help vets find and keep civilian jobs. Job and Training Resources
+        for Military and Veterans. These programs and websites can help you explore
+        careers, find training, and find jobs. CareerOneStop''s Veteran and Military
+        Transition Center can help you:", "dateLastCrawled": "2021-04-03T08:08:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Get Your Tax Forms | USAGov", "url": "https:\/\/www.usa.gov\/get-tax-forms",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/get-tax-forms",
+        "snippet": "Make sure you have the forms you need to file your taxes. Learn
+        about 2020 tax forms, instructions, and publications. Find out what to do
+        if you don’t get your W2 on time, and learn how to request copies of your
+        previous tax transcripts. The IRS has released a new tax filing form for people
+        65 and ...", "dateLastCrawled": "2021-04-03T17:50:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Government and Local Disability Programs | USAGov", "url": "https:\/\/www.usa.gov\/disability-programs",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/disability-programs",
+        "snippet": "Jobs. Find job training near you. Start with your state vocational
+        rehabilitation agency. Government programs can help you train for and find
+        a job. Learn about special programs for young workers and veterans with disabilities.
+        You can work and get accommodations in the federal government. Learn how through
+        its traditional and Schedule A hiring ...", "dateLastCrawled": "2021-04-04T05:05:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Labor Laws and Issues | USAGov", "url": "https:\/\/www.usa.gov\/labor-laws",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/labor-laws",
+        "snippet": "Discrimination and Harassment at Your Job. The Equal Employment
+        Opportunity Commission (EEOC) enforces federal laws prohibiting employment
+        discrimination.. Protections Included Under the Law. These laws protect employees
+        and job applicants against: Discrimination, harassment, and unfair treatment
+        in the workplace by anyone because of:", "dateLastCrawled": "2021-04-04T21:25:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Caregiver Support | USAGov", "url": "https:\/\/www.usa.gov\/disability-caregiver",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/disability-caregiver",
+        "snippet": "Jobs and Education; Veterans Disability Benefits; Your Legal
+        Disability Rights; Caregiver Support. Get tips and information to help you
+        care for your loved one with special medical needs, including programs for
+        family members of veterans and people with disabilities to get paid to provide
+        care.", "dateLastCrawled": "2021-04-04T18:05:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Food Assistance | USAGov", "url": "https:\/\/www.usa.gov\/food-help",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/food-help",
+        "snippet": "Immediate Food Assistance. If you’re hungry now: Call the USDA
+        National Hunger Hotline at 1-866-3-HUNGRY (1-866-348-6479) or 1-877-8-HAMBRE
+        (1-877-842-6273). Information is available in English and Spanish. The hotline
+        operates Monday through Friday, 7:00 AM to 10:00 PM Eastern Time.", "dateLastCrawled":
+        "2021-04-03T18:22:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19", "name":
+        "Your Legal Disability Rights | USAGov", "url": "https:\/\/www.usa.gov\/disability-rights",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/disability-rights",
+        "snippet": "Jobs. Transportation. Government services. Telecommunications.
+        The Department of Justice ADA information line answers questions about ADA
+        requirements. It''s available to businesses, state and local governments,
+        and the public. Call 1- 800-514-0301 (TTY: 1-800-514-0383). Find More ADA
+        Resources From the Government. The ADA website has ...", "dateLastCrawled":
+        "2021-04-03T23:11:00.0000000Z", "language": "en", "isNavigational": false}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
     http_version:
-  recorded_at: Tue, 30 Mar 2021 17:17:44 GMT
+  recorded_at: Tue, 06 Apr 2021 16:32:02 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=jobs%20(site:search.gov/blog/)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 06 Apr 2021 16:31:49 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - 43CD789BB71243F9BC28FE66EDF74920
+      Bingapis-Sessionid:
+      - CA69D706EA7C48D29AE169D5FFBB3B0D
+      X-Msedge-Clientid:
+      - 2F583D043A3D62A514792D153B226341
+      X-Msapi-Userstate:
+      - 3b87
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=259,MSDatacenter=BN2B
+      X-Msedge-Ref:
+      - 'Ref A: 43CD789BB71243F9BC28FE66EDF74920 Ref B: BLUEDGE2022 Ref C: 2021-04-06T16:32:49Z'
+      Apim-Request-Id:
+      - 5d5d0443-3a6e-4128-85b8-64d1a8eb0ec0
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Tue, 06 Apr 2021 16:32:48 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "jobs
+        (site:search.gov\/blog\/)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=jobs+(site%3asearch.gov%2fblog%2f)",
+        "totalEstimatedMatches": 6, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Our Redesign: Before and After - search", "url": "https:\/\/search.gov\/blog\/serp-redesign.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/search.gov\/blog\/serp-redesign.html",
+        "snippet": "Here’s the before and after for a search on communications jobs
+        on USA.gov. The new job opening format shows up to three job openings inline
+        with the results. Searchers can now click or touch the down arrow to see up
+        to 10 listings inline. For federal agencies, it now shows the USAJobs logo
+        to clearly identify that as the data source.", "dateLastCrawled": "2021-02-24T10:36:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Our Open Source Strategy - Search.gov", "url": "https:\/\/search.gov\/blog\/open-source.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/search.gov\/blog\/open-source.html",
+        "snippet": "The data products for the jobs and recalls code are also open
+        and available for anyone to consume on our Developer hub. These three servers
+        and their underlying data now operate outside of our core search codebase.
+        Following this same model, moving forward, we plan to:", "dateLastCrawled":
+        "2021-03-22T19:32:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2", "name":
+        "Cache Me If You Can - search", "url": "https:\/\/search.gov\/blog\/cache.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/search.gov\/blog\/cache.html",
+        "snippet": "Most queries (such as jobs, obama, unclaimed money, forms) aren’t
+        unique and are asked by thousands of searchers each day. We cache these
+        so-called short head queries and store them on our servers. Caching helps
+        us speed up the above process because searchers don’t have to wait for us
+        to pull the information from its original source.", "dateLastCrawled": "2021-03-23T09:50:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Search Is the New Big Data", "url": "https:\/\/search.gov\/blog\/search-big-data.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/search.gov\/blog\/search-big-data.html",
+        "snippet": "Contribute to our Jobs API, which allows you to tap into a list
+        of current jobs openings with federal, state, and local government agencies.
+        open analytics about-us. Page last reviewed or updated: December 20, 2016.
+        Email us or call us at 202-969-7426. An Official Website of the U.S. Government",
+        "dateLastCrawled": "2021-03-28T08:07:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Adopting Apache Hadoop in the Federal Government", "url": "https:\/\/search.gov\/blog\/adopting-hadoop.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/search.gov\/blog\/adopting-hadoop.html",
+        "snippet": "The initial results confirmed that our workload lent itself well
+        to distributed processing, as one job went from taking over an hour on a MySQL
+        node to 20 minutes on a three machine Hadoop cluster. Within a week of getting
+        the prototype up and running, we had transitioned all the remaining nightly
+        analytics batch SQL jobs into Hive scripts.", "dateLastCrawled": "2021-03-28T04:39:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "I Didn''t Try to Grow a Bigger Ox: How I Found Hadoop", "url":
+        "https:\/\/search.gov\/blog\/hadoop-bigger-ox.html", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/search.gov\/blog\/hadoop-bigger-ox.html", "snippet":
+        "A week later, I started pulling out the MySQL jobs and deleting big tables,
+        and that’s been the trend ever since. Over time, I’ve gone on to learn about
+        using custom Ruby mappers in Hive, moving data back and forth between MySQL
+        and Hive with Sqoop, and getting the data into HDFS in real-time with Flume.",
+        "dateLastCrawled": "2021-02-21T01:36:00.0000000Z", "language": "en", "isNavigational":
+        false}]}, "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages",
+        "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}}]}}}'
+    http_version:
+  recorded_at: Tue, 06 Apr 2021 16:32:49 GMT
 recorded_with: VCR 4.0.0

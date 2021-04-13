@@ -35,4 +35,251 @@ http_interactions:
         subscription and use a correct regional API endpoint for your resource."}}'
     http_version:
   recorded_at: Tue, 30 Mar 2021 17:18:01 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=atlantic%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 06 Apr 2021 20:42:43 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - 0F8F7EF699F24C72A58145810B89C86D
+      Bingapis-Sessionid:
+      - 1F23E06628BE4F3880D41A94515CECB7
+      X-Msedge-Clientid:
+      - 0DE24DF1AE0366FE05665DE0AF1167FD
+      X-Msapi-Userstate:
+      - 7d31
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=243,MSDatacenter=BN2B
+      X-Msedge-Ref:
+      - 'Ref A: 0F8F7EF699F24C72A58145810B89C86D Ref B: BLUEDGE1517 Ref C: 2021-04-06T20:43:43Z'
+      Apim-Request-Id:
+      - 7e7fb62a-f579-4624-86df-c1ae948a5b31
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Tue, 06 Apr 2021 20:43:43 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "atlantic
+        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=atlantic+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 38200000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "NIWC Atlantic Wins Big in Joint Artificial Intelligence ...", "url":
+        "https:\/\/www.navy.mil\/Press-Office\/News-Stories\/Article\/2561638\/niwc-atlantic-wins-big-in-joint-artificial-intelligence-robotics-competition\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.navy.mil\/Press-Office\/News-Stories\/Article\/2561638\/niwc-atlantic-wins-big...",
+        "snippet": "“NIWC Atlantic is committed to being a leader in data, analytics
+        and AI workforce for the Department of the Navy,” said Senior Science and
+        Technology Manager Robert Keisler, who is responsible ...", "dateLastCrawled":
+        "2021-04-06T15:11:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1", "name":
+        "EWTGLANT - United States Navy", "url": "https:\/\/www.csg4.usff.navy.mil\/ewtglant\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.csg4.usff.navy.mil\/ewtglant",
+        "snippet": "Expeditionary Warfare Training Group, Atlantic (EWTGLANT) conducts
+        world-class expeditionary warrior training and instruction in the doctrine,
+        tactics and techniques of naval expeditionary warfare with a focus on amphibious
+        operations, in order to support operational commanders in maintaining forces
+        ready to project military power from the sea.", "dateLastCrawled": "2021-04-03T22:37:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Atlantic Area - United States Coast Guard", "url": "https:\/\/www.news.uscg.mil\/News-by-Region\/Atlantic-Area\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.news.uscg.mil\/News-by-Region\/Atlantic-Area",
+        "snippet": "Main (757) 398-6521. After Hours (757) 641-0763 U.S. Coast Guard
+        Atlantic Area Commander (Ae) 431 Crawford St., Suite 516 Portsmouth, VA
+        23704. For other public affairs contacts view the public affairs office list.",
+        "dateLastCrawled": "2021-04-04T04:53:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "About – NIWC Atlantic", "url": "https:\/\/www.niwcatlantic.navy.mil\/about\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.niwcatlantic.navy.mil\/about",
+        "snippet": "NIWC Atlantic is a Department of the Navy organization. We meet
+        our nation’s demands for uninterrupted vigilance, fail-safe cybersecurity,
+        adaptive response and engineering excellence by delivering secure, integrated
+        and innovative solutions to many naval, joint and national agencies.", "dateLastCrawled":
+        "2021-04-04T07:27:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4", "name":
+        "Marine Operations Center - Atlantic (MOC-A) | Office of ...", "url": "https:\/\/www.omao.noaa.gov\/explore\/facilities\/marine-operations-center-atlantic-moc",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.omao.noaa.gov\/explore\/facilities\/marine-operations-center-atlantic-moc",
+        "snippet": "The NOAA Marine Operations Center-Atlantic (MOC-A) serves as
+        a homeport for one NOAA survey ship and provides administrative, engineering,
+        maintenance and logistical support to NOAA''s Atlantic fleet.", "dateLastCrawled":
+        "2021-04-03T22:09:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5", "name":
+        "Commander, Submarine Force Atlantic", "url": "https:\/\/www.sublant.usff.navy.mil\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sublant.usff.navy.mil",
+        "snippet": "PHILIPPINE SEA (Sept. 25, 2020) From left, USNS Charles Drew (T-AKE
+        10), USS Comstock (LSD 45), USS Shiloh (CG 67), USS New Orleans (LPD 18),
+        USS Chicago (SSN 721), USS America (LHA 6), USS Ronald Reagan (CVN 76), USNS
+        John Ericsson (T-AO 194), USS Antietam (CG 54), USS Germantown (LSD 42), and
+        USNS Sacagawea (T-AKE 2) steam in formation while E\/A-18G Growlers and FA-18E
+        Super Hornets from ...", "dateLastCrawled": "2021-04-04T16:46:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "NAVFAC Atlantic Announces its 2021 Employee of the Year ...", "url":
+        "https:\/\/www.navy.mil\/Press-Office\/Press-Releases\/display-pressreleases\/Article\/2547409\/navfac-atlantic-announces-its-2021-employee-of-the-year\/no\/no\/no\/navfac_worldwide\/atlantic\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.navy.mil\/...\/no\/no\/no\/navfac_worldwide\/atlantic",
+        "snippet": "Bellinger is a Contract Specialist assigned to NAVFAC Atlantic’s
+        Environmental Contracts Branch, whose work includes acquisition planning,
+        negotiation memoranda, business clearances, and ...", "dateLastCrawled": "2021-04-04T23:32:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "North Atlantic High Seas Forecast", "url": "https:\/\/ocean.weather.gov\/shtml\/NFDHSFAT1.php?202104052136",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/ocean.weather.gov\/shtml\/NFDHSFAT1.php?202104052136",
+        "snippet": "North Atlantic High Seas Forecast [Printable Version] [Alt Link\/Previous
+        Versions] Printable Version] [Alt Link\/Previous Versions]", "dateLastCrawled":
+        "2021-04-06T11:34:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8", "name":
+        "Careers – NIWC Atlantic", "url": "https:\/\/www.niwcatlantic.navy.mil\/careers\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.niwcatlantic.navy.mil\/careers",
+        "snippet": "Trailblazer Series: NIWC Atlantic Engineer Pioneers Digital
+        Web-Based Test Procedure March 30, 2021 Trailblazer Series: Computer Science
+        Innovator Paves Path for Women in IT March 23, 2021 Trailblazer Series: A
+        ‘Pioneer’ in Acquisition Strategy for Rapid Prototyping March 16, 2021", "dateLastCrawled":
+        "2021-04-04T10:47:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9", "name":
+        "Atlantic Salmon (Protected) | NOAA Fisheries", "url": "https:\/\/www.fisheries.noaa.gov\/species\/atlantic-salmon-protected",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fisheries.noaa.gov\/species\/atlantic-salmon-protected",
+        "snippet": "Atlantic salmon, also known as the “King of Fish,” are anadromous,
+        which means they can live in both fresh and saltwater. Atlantic salmon have
+        a relatively complex life history that begins with spawning and juvenile rearing
+        in rivers. They then migrate to saltwater to feed, grow, and mature before
+        returning to freshwater to spawn.", "dateLastCrawled": "2021-04-04T06:09:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Atlantic and Caribbean Tropical Satellite Imagery ...", "url":
+        "https:\/\/www.ssd.noaa.gov\/PS\/TROP\/trop-atl.html", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.ssd.noaa.gov\/PS\/TROP\/trop-atl.html",
+        "snippet": "Links to outside sites and more satellite data: NOAA National
+        Hurricane Center - for official forecasts and outlooks.; University of Wisconsin
+        SSEC GOES Images and Loops; Advanced Scatterometer Winds: ASCAT METOP-A |
+        ASCAT METOP-B RAMSDIS Online - Tropical", "dateLastCrawled": "2021-04-03T23:22:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Atlantic Herring | NOAA Fisheries", "url": "https:\/\/www.fisheries.noaa.gov\/species\/atlantic-herring",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fisheries.noaa.gov\/species\/atlantic-herring",
+        "snippet": "Atlantic herring and Atlantic mackerel may be retained by
+        vessels fishing with small-mesh bottom trawl gear in the exemption areas,
+        provided vessels comply with all season, area, and gear requirements, possession
+        limits, and are issued a whiting (Category K Open Access Northeast Multispecies)
+        permit or a limited access Northeast multispecies ...", "dateLastCrawled":
+        "2021-04-03T09:06:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12", "name":
+        "Commander, Naval Air Force Atlantic > Commander, Naval Air ...", "url":
+        "https:\/\/www.airlant.usff.navy.mil\/Leadership\/All-Leadership\/Article\/2367219\/commander-naval-air-force-atlantic\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.airlant.usff.navy.mil\/...\/Article\/2367219\/commander-naval-air-force-atlantic",
+        "snippet": "Rear Adm. John F. Meier, a native of Export, Pennsylvania, graduated
+        from the United States Naval Academy in 1986 with a Bachelor of Science in
+        General Engineering. He completed flight training in Beeville, Texas, and
+        was “winged” as a Naval Aviator in, Naval Air Force Atlantic", "dateLastCrawled":
+        "2021-04-04T06:08:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13", "name":
+        "Newsroom – NIWC Atlantic", "url": "https:\/\/www.niwcatlantic.navy.mil\/news\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.niwcatlantic.navy.mil\/news",
+        "snippet": "Editorial Note: ‘Trailblazers’ is a four-part feature series celebrating
+        the incredible innovation and highly technical accomplishments of NIWC Atlantic’s
+        female workforce.", "dateLastCrawled": "2021-04-03T14:02:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Atlantic Sturgeon | NOAA Fisheries", "url": "https:\/\/www.fisheries.noaa.gov\/species\/atlantic-sturgeon",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fisheries.noaa.gov\/species\/atlantic-sturgeon",
+        "snippet": "Atlantic sturgeon live in rivers and coastal waters from Maine
+        to Florida. Hatched in the freshwater of rivers, Atlantic sturgeon head
+        out to sea as juveniles, and return to their birthplace to spawn, or lay eggs,
+        when they reach adulthood.", "dateLastCrawled": "2021-04-03T13:45:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Atlantic Herring Framework 8 Interim Final Rule: 2021-2023 ...",
+        "url": "https:\/\/www.fisheries.noaa.gov\/bulletin\/atlantic-herring-framework-8-interim-final-rule-2021-2023-quotas",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fisheries.noaa.gov\/bulletin\/atlantic-herring-framework-8-interim-final...",
+        "snippet": "News Atlantic Herring Framework 8 Interim Final Rule: 2021-2023
+        Quotas. March 29, 2021. This action reduces the Atlantic herring quotas
+        for 2021-2023 as compared to 2020, and modifies in-season management measures
+        to allow the Atlantic herring fleet more access to the Atlantic mackerel
+        fishery.", "dateLastCrawled": "2021-04-03T11:54:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Atlantic Surfclam | NOAA Fisheries", "url": "https:\/\/www.fisheries.noaa.gov\/species\/atlantic-surfclam",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fisheries.noaa.gov\/species\/atlantic-surfclam",
+        "snippet": "The Atlantic surfclam fishery is managed by the Mid-Atlantic
+        Fishery Management Council, with NOAA Fisheries serving as the implementing
+        body for rules and regulations within the fishery. This fishery was established
+        in 1977, and with the exception of the Maine mahogany quahog zone portion
+        of the fishery, has operated under an individual ...", "dateLastCrawled":
+        "2021-04-03T22:06:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17", "name":
+        "Atlantic ERMA | response.restoration.noaa.gov", "url": "https:\/\/response.restoration.noaa.gov\/atlantic-erma",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/response.restoration.noaa.gov\/atlantic-erma",
+        "snippet": "The Atlantic coastal environment faces many threats, including
+        pollution from hazardous waste sites, accidents involving crude oil trains,
+        and oil spills associated with marine transportation. The online mapping tool
+        Atlantic ERMA is a key part of equipping resource managers and responders
+        with the geographic information they need for an ...", "dateLastCrawled":
+        "2021-04-02T11:51:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18", "name":
+        "Atlantic Highly Migratory Species Permits | NOAA Fisheries", "url": "https:\/\/www.fisheries.noaa.gov\/atlantic-highly-migratory-species\/atlantic-highly-migratory-species-permits",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fisheries.noaa.gov\/atlantic-highly-migratory-species\/atlantic-highly...",
+        "snippet": "NOAA Fisheries requires fishermen and dealers to obtain federal
+        permits if they fish for, sell, purchase, or import Atlantic highly migratory
+        species (HMS), which include tunas, billfish, swordfish, or sharks. Permits
+        are also required to export bluefin tuna, swordfish, and frozen bigeye tuna.",
+        "dateLastCrawled": "2021-04-04T13:55:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Atlantic Cod | NOAA Fisheries", "url": "https:\/\/www.fisheries.noaa.gov\/species\/atlantic-cod",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fisheries.noaa.gov\/species\/atlantic-cod",
+        "snippet": "In the Northwest Atlantic, cod range from Greenland to Cape
+        Hatteras, North Carolina. In U.S. waters, cod is most common on Georges Bank
+        and in the western Gulf of Maine. Cod is an iconic fish of New England and
+        in recent years, Atlantic cod stocks in our region have declined dramatically.",
+        "dateLastCrawled": "2021-04-04T13:30:00.0000000Z", "language": "en", "isNavigational":
+        false}]}, "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages",
+        "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version:
+  recorded_at: Tue, 06 Apr 2021 20:43:43 GMT
 recorded_with: VCR 4.0.0

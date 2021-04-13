@@ -54,7 +54,7 @@
   'in the Super Admin page': '.container',
   'in the social media list': '#social_media_profiles',
   'in the legacy search box': '#search_box',
-  'in the search box': '#query',
+  'in the search box': '#query', # legacy SERP
   'in the legacy twitter govbox': '#twitter_govbox',
   'in the twitter govbox': '#tweets',
   'in the site header': '.l-site-header',
