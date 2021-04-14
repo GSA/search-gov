@@ -72,10 +72,6 @@ jobs:
       - checkout
 
       - run:
-          name: Update bundler
-          command: gem install bundler:2.2.15
-
-      - run:
           name: Wait for Elasticsearch 6.8
           command: dockerize -wait tcp://localhost:9268 -timeout 1m
 
