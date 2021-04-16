@@ -232,6 +232,7 @@ module SearchHelper
     end
   end
 
+  # legacy SERP
   def search_results_by_logo(module_tag)
     if %w(AWEB AIMAG BWEB IMAG).include? module_tag
       alt = I18n.t(:results_by_bing)
