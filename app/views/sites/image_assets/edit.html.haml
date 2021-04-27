@@ -12,17 +12,6 @@
   = f.label :favicon_url, 'Favicon URL'
   = f.text_field :favicon_url, maxlength: 255
 
-  - if @site.uses_managed_header_footer? and !@site.force_mobile_format?
-    %fieldset
-      = f.label :header_image, 'Legacy Logo'
-      = f.file_field :header_image, data: { classButton: 'btn btn-filestyle', icon: false, provide: 'filestyle' }
-      %span.help-block GIF, JPG or PNG with maximum size of #{Affiliate::MAXIMUM_IMAGE_SIZE_IN_KB} KB
-      - if @site.header_image.present? and !@site.header_image.dirty?
-        .image= image_tag(@site.header_image.url(:large), alt: 'Legacy Logo')
-        = f.label :mark_header_image_for_deletion, class: 'checkbox' do
-          = f.check_box :mark_header_image_for_deletion
-          Mark Legacy Logo for Deletion
-
   %fieldset
     = f.label :mobile_logo, 'Logo'
     = f.file_field :mobile_logo, data: { classButton: 'btn btn-filestyle', icon: false, provide: 'filestyle' }
@@ -41,18 +30,3 @@
   %fieldset
     = f.label :logo_alt_text, 'Logo Alt Text'
     = f.text_field :logo_alt_text, maxlength: 100
-
-  - unless @site.force_mobile_format?
-    %fieldset
-      = f.label :page_background_image, 'Page Background Image'
-      = f.file_field :page_background_image, data: { classButton: 'btn btn-filestyle', icon: false, provide: 'filestyle' }
-      %span.help-block GIF, JPG or PNG with maximum size of #{Affiliate::MAXIMUM_IMAGE_SIZE_IN_KB} KB
-      - if @site.page_background_image.present? && !@site.page_background_image.dirty?
-        .image= image_tag(@site.page_background_image.url(:large), alt: 'Page Background Image')
-        = f.label :mark_page_background_image_for_deletion, class: 'checkbox' do
-          = f.check_box :mark_page_background_image_for_deletion
-          Mark Page Background Image for Deletion
-
-    = f.fields_for :css_property_hash do |hash|
-      = hash.label :page_background_image_repeat, 'Page Background Image Repeat'
-      = hash.select :page_background_image_repeat, options_for_select(Affiliate::BACKGROUND_REPEAT_VALUES, selected: @site.css_property_hash[:page_background_image_repeat])

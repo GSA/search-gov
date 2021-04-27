@@ -381,8 +381,6 @@ describe SiteCloner do
     context 'the origin site has attached images' do
       let(:mock_image) { double('image', file?: true) }
       before do
-        allow(origin_site).to receive(:page_background_image).and_return mock_image
-        allow(origin_site).to receive(:header_image).and_return mock_image
         allow(origin_site).to receive(:mobile_logo).and_return mock_image
         allow(origin_site).to receive(:header_tagline_logo).and_return mock_image
       end
@@ -391,8 +389,6 @@ describe SiteCloner do
         cloned_site = Affiliate.create!(display_name: 'cloned_site_with_images', name: 'cloned-site')
         cloner_handling_images = described_class.new(origin_site)
         expect(cloner_handling_images).to receive(:create_site_shallow_copy).and_return(cloned_site)
-        expect(cloned_site).to receive(:page_background_image=).with(mock_image)
-        expect(cloned_site).to receive(:header_image=).with(mock_image)
         expect(cloned_site).to receive(:mobile_logo=).with(mock_image)
         expect(cloned_site).to receive(:header_tagline_logo=).with(mock_image)
         cloner_handling_images.clone
