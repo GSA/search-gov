@@ -5,8 +5,6 @@ class EmailTemplate < ApplicationRecord
   validates_uniqueness_of :name, case_sensitive: false
 
   DEFAULT_SUBJECT_HASH = {
-    affiliate_header_footer_change: '[Search.gov] Your header and footer '\
-                                    'for <%= @affiliate.display_name %> changed',
     affiliate_monthly_report:
       '[Search.gov] Monthly Report for '\
       '<%= Date::MONTHNAMES[@user_monthly_report.report_date.month.to_i] %>'\

@@ -123,7 +123,6 @@ describe Sites::SitesController do
               'name' => 'newaff',
               'site_domains_attributes' => { '0' => { 'domain' => 'http://www.brandnew.gov' } }).and_return(site)
           expect(site).to receive(:save).and_return(true)
-          expect(site).to receive(:push_staged_changes)
           expect(site).to receive(:assign_sitelink_generator_names!)
 
           autodiscoverer = double(SiteAutodiscoverer)

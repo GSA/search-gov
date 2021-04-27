@@ -15,11 +15,10 @@
       = stylesheet_link_tag 'searches_ie7'
     = stylesheet_link_tag "#{@affiliate.external_css_url}" unless @affiliate.external_css_url.blank?
     %title= @page_title
-  %body{ :class => render_affiliate_body_class(@affiliate), :style => render_affiliate_body_style(@affiliate) }
+  %body
     #skiplink
       %a{:href => "#main_content"} Skip to Main Content
     #container
-      = render_affiliate_header(@affiliate)
       #search
         %h1 Search
         - unless @affiliate.connections.blank?
@@ -29,7 +28,6 @@
         = yield
       #usasearch_footer_container
         %a#usasearch_footer_button{ title: t(:show_footer) } &#9660;
-        = render_affiliate_footer(@affiliate)
 
     - if @affiliate.is_sayt_enabled?
       = javascript_tag "var usagov_sayt_url = \"#{sayt_url(aid: @affiliate.id, extras: true)}&\";"
