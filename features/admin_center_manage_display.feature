@@ -432,6 +432,109 @@ Feature: Manage Display
     And I should not see an image with alt text "Logo"
 
   @javascript
+  Scenario: Editing Managed Header & Footer on a legacy affiliate
+    Given the following legacy Affiliates exist:
+      | display_name | name       | contact_email   | first_name | last_name | footer_fragment                   |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       | <strong>my HTML fragment</strong> |
+    And affiliate "agency.gov" has the following document collections:
+      | name                 | prefixes             | position | is_navigable |
+      | Active site search   | http://apps.usa.gov/ | 3        | true         |
+      | Inactive site search | http://apps.usa.gov/ | 6        | false        |
+    And affiliate "agency.gov" has the following RSS feeds:
+      | name                 | url                            | is_navigable | position | show_only_media_content |
+      | Inactive news search | http://en.agency.gov/feed/News | false        | 5        | false                   |
+    And I am logged in with email "john@agency.gov"
+
+    When I am on agency.gov's mobile search page
+    Then I should not see "Browse site"
+
+    When I go to the agency.gov's Header & Footer page
+    And I fill in the following:
+      | Header Tagline      | Office website of the Awesome Agency |
+      | Header Tagline URL  | http://awesomeagency.gov             |
+      | Header Link Title 0 | News                                 |
+      | Header Link URL 0   | news.agency.gov                      |
+      | Footer Link Title 0 | Contact                              |
+      | Footer Link URL 0   | mailto:contact@agency.gov            |
+
+    And I attach the file "features/support/mini_logo.png" to "Header Tagline Logo"
+
+    And I select "left" from "Menu Button Alignment"
+    When I follow "Add Another Header Link"
+    Then I should be able to access 2 header link rows
+    When I fill in the following:
+      | Header Link Title 1 | Blog            |
+      | Header Link URL 1   | blog.agency.gov |
+    When I follow "Add Another Footer Link"
+    Then I should be able to access 2 footer link rows
+    When I fill in the following:
+      | Footer Link Title 1 | Terms of Service |
+      | Footer Link URL 1   | tos.agency.gov   |
+    And I submit the form by pressing "Save"
+
+    Then I should see "You have updated your header and footer information"
+    And the "Header Tagline" field should contain "Office website of the Awesome Agency"
+
+    And the "Header Tagline URL" field should contain "http://awesomeagency.gov"
+    And I should see an image with alt text "Header Tagline Logo"
+    And the "Menu Button Alignment" field should contain "left"
+    And the "Header Link Title 0" field should contain "News"
+    And the "Header Link URL 0" field should contain "http://news.agency.gov"
+    And the "Header Link Title 1" field should contain "Blog"
+    And the "Header Link URL 1" field should contain "http://blog.agency.gov"
+    And the "Footer Link Title 0" field should contain "Contact"
+    And the "Footer Link URL 0" field should contain "mailto:contact@agency.gov"
+    And the "Footer Link Title 1" field should contain "Terms"
+    And the "Footer Link URL 1" field should contain "http://tos.agency.gov"
+
+    When I am on agency.gov's search page
+    Then I should see a link to "News" with url for "http://news.agency.gov"
+    And I should see a link to "Blog" with url for "http://blog.agency.gov"
+    And I should see a link to "Contact" with url for "mailto:contact@agency.gov"
+    And I should see a link to "Terms of Service" with url for "http://tos.agency.gov"
+
+    When I am on agency.gov's mobile search page
+    And the page body should contain "mini_logo.png"
+    Then I should see "Office website of the Awesome Agency"
+    And I should see a left aligned menu button
+    And I should see "my HTML fragment" within the mobile footer
+    And I should not see "strong" within the mobile footer
+
+    When I press "Browse site"
+    Then I should find "News" in the main menu
+    Then I should see a link to "News" with url for "http://news.agency.gov"
+    Then I should see a link to "Blog" with url for "http://blog.agency.gov"
+    Then I should see a link to "Contact" with url for "mailto:contact@agency.gov"
+    Then I should see a link to "Terms of Service" with url for "http://tos.agency.gov"
+
+    When I am on agency.gov's "Inactive site search" mobile site search page
+    And I press "Browse site"
+    Then I should find "News" in the main menu
+    Then I should see a link to "News" with url for "http://news.agency.gov"
+    Then I should see a link to "Blog" with url for "http://blog.agency.gov"
+
+    When I am on agency.gov's "Inactive news search" mobile news search page
+    And I press "Browse site"
+    Then I should find "News" in the main menu
+    Then I should see a link to "News" with url for "http://news.agency.gov"
+    Then I should see a link to "Blog" with url for "http://blog.agency.gov"
+
+    When I go to the agency.gov's Header & Footer page
+    And I follow "Switch to Advanced Mode"
+    Then I should see "CSS to customize the top and bottom of your search results page"
+
+    When I go to the agency.gov's Header & Footer page
+    And I check "Mark Header Tagline Logo for Deletion"
+    And I submit the form by pressing "Save"
+    Then I should see "You have updated your header and footer information"
+    And I should not see an image with alt text "Header Tagline Logo"
+
+    When I attach the file "features/support/bg.png" to "Header Tagline Logo"
+    And I submit the form by pressing "Save"
+    Then I should see "Header tagline logo file size must be under 16 KB"
+    And I should not see an image with alt text "Header Tagline Logo"
+
+  @javascript
   Scenario: Editing Header & Footer
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | footer_fragment                   |
@@ -527,11 +630,12 @@ Feature: Manage Display
     And I should not see an image with alt text "Header Tagline Logo"
 
   @javascript
-  Scenario: Error when Editing Header & Footer
-    Given the following Affiliates exist:
+  Scenario: Error when Editing Managed Header & Footer
+    Given the following legacy Affiliates exist:
       | display_name | name       | contact_email   | first_name   | last_name |
       | agency site  | agency.gov | john@agency.gov | John         | Bar       |
     And I am logged in with email "john@agency.gov"
+    And no emails have been sent
     When I go to the agency.gov's Header & Footer page
     And I fill in the following:
       | Header Link Title 0 | News               |
