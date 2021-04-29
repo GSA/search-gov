@@ -36,7 +36,4 @@
       .modal-body
         = modal_close_button
         .modal-content
-    - if @site && !@site.force_mobile_format?
-      #preview-container.modal.fade(data-no-turbolink){ 'aria-hidden' => 'true' }
-        = render partial: 'sites/shared/modal'
     = javascript_include_tag 'font-awesome-grunticon-rails'
