@@ -120,8 +120,6 @@ class SiteCloner
   end
 
   def clone_images(cloned_site)
-    cloned_site.page_background_image = @origin_site.page_background_image if @origin_site.page_background_image.file?
-    cloned_site.header_image = @origin_site.header_image if @origin_site.header_image.file?
     cloned_site.mobile_logo = @origin_site.mobile_logo if @origin_site.mobile_logo.file?
     cloned_site.header_tagline_logo = @origin_site.header_tagline_logo if @origin_site.header_tagline_logo.file?
     cloned_site.save

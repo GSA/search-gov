@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'digest'
 require 'sass/css'
 
@@ -9,14 +11,14 @@ class Affiliate < ApplicationRecord
   include LogstashPrefix
 
   MAXIMUM_IMAGE_SIZE_IN_KB = 512
-  MAXIMUM_MOBILE_IMAGE_SIZE_IN_KB = 64.freeze
-  MAXIMUM_HEADER_TAGLINE_LOGO_IMAGE_SIZE_IN_KB = 16.freeze
-  VALID_IMAGE_CONTENT_TYPES = %w(image/gif image/jpeg image/pjpeg image/png image/x-png).freeze
-  INVALID_CONTENT_TYPE_MESSAGE = 'must be GIF, JPG, or PNG'.freeze
-  INVALID_IMAGE_SIZE_MESSAGE = "must be under #{MAXIMUM_IMAGE_SIZE_IN_KB} KB".freeze
-  INVALID_MOBILE_IMAGE_SIZE_MESSAGE = "must be under #{MAXIMUM_MOBILE_IMAGE_SIZE_IN_KB} KB".freeze
-  INVALID_HEADER_TAGLINE_LOGO_IMAGE_SIZE_MESSAGE = "must be under #{MAXIMUM_HEADER_TAGLINE_LOGO_IMAGE_SIZE_IN_KB} KB".freeze
-  MAX_NAME_LENGTH = 33.freeze
+  MAXIMUM_MOBILE_IMAGE_SIZE_IN_KB = 64
+  MAXIMUM_HEADER_TAGLINE_LOGO_IMAGE_SIZE_IN_KB = 16
+  VALID_IMAGE_CONTENT_TYPES = %w[image/gif image/jpeg image/pjpeg image/png image/x-png].freeze
+  INVALID_CONTENT_TYPE_MESSAGE = 'must be GIF, JPG, or PNG'
+  INVALID_IMAGE_SIZE_MESSAGE = "must be under #{MAXIMUM_IMAGE_SIZE_IN_KB} KB"
+  INVALID_MOBILE_IMAGE_SIZE_MESSAGE = "must be under #{MAXIMUM_MOBILE_IMAGE_SIZE_IN_KB} KB"
+  INVALID_HEADER_TAGLINE_LOGO_IMAGE_SIZE_MESSAGE = "must be under #{MAXIMUM_HEADER_TAGLINE_LOGO_IMAGE_SIZE_IN_KB} KB"
+  MAX_NAME_LENGTH = 33
 
   with_options dependent: :destroy do |assoc|
     assoc.has_many :affiliate_feature_addition
@@ -100,8 +102,10 @@ class Affiliate < ApplicationRecord
                          s3_region: Rails.application.secrets.aws_image_bucket[:s3_region]
                        }
 
+  # deprecated - legacy SERP
   has_attached_file :page_background_image,
                     AWS_IMAGE_SETTINGS.merge(path: "#{Rails.env}/site/:id/page_background_image/:updated_at/:style/:filename")
+  # deprecated - legacy SERP
   has_attached_file :header_image,
                     AWS_IMAGE_SETTINGS.merge(path: "#{Rails.env}/site/:id/header_image/:updated_at/:style/:filename")
   has_attached_file :mobile_logo,
@@ -188,10 +192,12 @@ class Affiliate < ApplicationRecord
   scope :active, -> { where(active: true) }
 
   attr_writer :css_property_hash
-  attr_accessor :mark_page_background_image_for_deletion, :mark_header_image_for_deletion, :mark_mobile_logo_for_deletion, :mark_header_tagline_logo_for_deletion
-  attr_accessor :is_validate_staged_header_footer
-  attr_accessor :managed_header_links_attributes, :managed_footer_links_attributes
-  attr_accessor :managed_no_results_pages_alt_links_attributes
+  attr_accessor :mark_mobile_logo_for_deletion,
+                :mark_header_tagline_logo_for_deletion,
+                :is_validate_staged_header_footer,
+                :managed_header_links_attributes,
+                :managed_footer_links_attributes,
+                :managed_no_results_pages_alt_links_attributes
 
   accepts_nested_attributes_for :site_domains, :reject_if => :all_blank
   accepts_nested_attributes_for :image_search_label
@@ -206,8 +212,6 @@ class Affiliate < ApplicationRecord
 
   DEFAULT_SEARCH_RESULTS_PAGE_TITLE = "{Query} - {SiteName} Search Results"
   BANNED_HTML_ELEMENTS_FROM_HEADER_AND_FOOTER = %w(form script style link)
-
-  BACKGROUND_REPEAT_VALUES = %w(no-repeat repeat repeat-x repeat-y)
 
   THEMES = ActiveSupport::OrderedHash.new
   THEMES[:default] = {
@@ -242,8 +246,8 @@ class Affiliate < ApplicationRecord
     header_tagline_font_style: 'italic',
     logo_alignment: LogoAlignment::DEFAULT,
     show_content_border: '0',
-    show_content_box_shadow: '0',
-    page_background_image_repeat: BACKGROUND_REPEAT_VALUES[0] }.merge(THEMES[:default])
+    show_content_box_shadow: '0'
+  }.merge(THEMES[:default])
 
   ATTRIBUTES_WITH_STAGED_AND_LIVE = %w(header footer header_footer_css nested_header_footer_css uses_managed_header_footer)
 
@@ -870,14 +874,6 @@ class Affiliate < ApplicationRecord
   end
 
   def clear_existing_attachments
-    if page_background_image? and !page_background_image.dirty? and mark_page_background_image_for_deletion == '1'
-      page_background_image.clear
-    end
-
-    if header_image? and !header_image.dirty? and mark_header_image_for_deletion == '1'
-      header_image.clear
-    end
-
     if mobile_logo? and !mobile_logo.dirty? and mark_mobile_logo_for_deletion == '1'
       mobile_logo.clear
     end
