@@ -190,16 +190,9 @@ Feature: Dashboard
   @javascript
   Scenario: Preview
     Given the following Affiliates exist:
-      | display_name | name              | contact_email   | first_name | last_name | has_staged_content | uses_managed_header_footer | staged_uses_managed_header_footer | header           | staged_header      | website               | force_mobile_format |
-      | agency site  | legacy.agency.gov | john@agency.gov | John       | Bar       | true               | false                      | false                             | live header text | staged header text | http://www.agency.gov | false               |
-      | agency site  | www.agency.gov    | john@agency.gov | John       | Bar       | true               | false                      | false                             | live header text | staged header text | http://www.agency.gov | true                |
+      | display_name | name              | contact_email   | first_name | last_name | website               |
+      | agency site  | www.agency.gov    | john@agency.gov | John       | Bar       | http://www.agency.gov |
     And I am logged in with email "john@agency.gov"
-    When I go to the legacy.agency.gov's Dashboard page
-    And I follow "Preview" within the Admin Center main navigation list
-    Then I should find "View Staged Page" in the Preview modal
-    And I should find "View Current Page" in the Preview modal
-    And I should find "View Redesigned Page" in the Preview modal
-
     When I go to the www.agency.gov's Dashboard page
     And I follow "Preview"
     Then I should see a link to "Preview" with url that ends with "/search?affiliate=www.agency.gov"

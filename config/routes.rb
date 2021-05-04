@@ -101,7 +101,6 @@ Rails.application.routes.draw do
         end
       end
       resource :monthly_reports, only: [:show]
-      resource :preview, only: [:show]
       resource :setting, only: [:edit, :update]
       resource :clone, only: [:new, :create]
       resource :supplemental_feed,
