@@ -24,7 +24,7 @@ executors:
 
       - image: redis:3.2
 
-      - image: docker.elastic.co/elasticsearch/elasticsearch:6.8.11
+      - image: docker.elastic.co/elasticsearch/elasticsearch:6.8.15
         environment:
           bootstrap.memory_lock: true
           cluster.name: es68
@@ -145,7 +145,7 @@ jobs:
                               --format progress \
                               $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
 
-            ./cc-test-reporter format-coverage --output coverage/codeclimate.rspec.$CIRCLE_NODE_INDEX.json
+            ./cc-test-reporter format-coverage --output coverage/codeclimate.rspec.$CIRCLE_NODE_INDEX.$RUBY_VERSION.json
 
       - persist_to_workspace:
           root: ~/search-gov/coverage
@@ -196,7 +196,7 @@ jobs:
                                 --format progress \
                                 -- $(circleci tests glob "features/*.feature" | circleci tests split --split-by=timings)
 
-            ./cc-test-reporter format-coverage --output coverage/codeclimate.cucumber.$CIRCLE_NODE_INDEX.json
+            ./cc-test-reporter format-coverage --output coverage/codeclimate.cucumber.$CIRCLE_NODE_INDEX.$RUBY_VERSION.json
 
       - persist_to_workspace:
           root: ~/search-gov/coverage
@@ -232,7 +232,7 @@ jobs:
       - run:
           name: Report coverage to Code Climate
           command: |
-            ./cc-test-reporter sum-coverage --parts 8 coverage/codeclimate.*.json --output coverage/codeclimate_full_report.json
+            ./cc-test-reporter sum-coverage --parts 8 coverage/codeclimate.*.$RUBY_VERSION.json --output coverage/codeclimate_full_report.json
             ./cc-test-reporter upload-coverage --input coverage/codeclimate_full_report.json
 
             ruby scripts/check_coverage.rb ${PWD}/coverage/codeclimate_full_report.json
@@ -244,28 +244,28 @@ workflows:
       - checkout_code:
           matrix:
             parameters:
-              ruby_version: ["2.5.5"]
+              ruby_version: ["2.5.5", "2.6.6"]
 
       - bundle_install:
           requires:
             - checkout_code
           matrix:
             parameters:
-              ruby_version: ["2.5.5"]
+              ruby_version: ["2.5.5", "2.6.6"]
 
       - rspec:
           requires:
             - bundle_install
           matrix:
             parameters:
-              ruby_version: ["2.5.5"]
+              ruby_version: ["2.5.5", "2.6.6"]
 
       - cucumber:
           requires:
             - bundle_install
           matrix:
             parameters:
-              ruby_version: ["2.5.5"]
+              ruby_version: ["2.5.5", "2.6.6"]
 
       - report_coverage:
           requires:
@@ -273,4 +273,4 @@ workflows:
             - cucumber
           matrix:
             parameters:
-              ruby_version: ["2.5.5"]
+              ruby_version: ["2.5.5", "2.6.6"]

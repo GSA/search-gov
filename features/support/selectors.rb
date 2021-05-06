@@ -14,8 +14,6 @@ module HtmlSelectorsHelpers
       '#url-prefixes .modal-body .url-prefixes'
     when /the RSS URLs modal/
       '#urls .modal-body .urls'
-    when /the Preview modal/
-      '#preview-container .modal-body #preview'
     when /the RSS URL last crawl status error message/
       '.urls .error .last-crawl-status.in'
     when /the Supplemental URL last crawl status error message/

@@ -350,19 +350,15 @@ Feature: Search
     And I should not see "script"
     And I should see a link to "Images" with url that ends with "query=hello" in the search navbar
 
-  # SRCH-2009
-  @wip
   Scenario: Searching for site specific results using query
     Given the following Affiliates exist:
       | display_name | name       | contact_email | first_name | last_name | domains |
       | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | usa.gov |
     When I am on agency.gov's search page
-    And I fill in "query" with "jobs site:www.usa.gov"
-    And I press "Search" within the search box
-    Then I should see "www.usa.gov/"
-    And I fill in "query" with "jazz site:wikipedia.org"
-    And I press "Search" within the search box
-    Then I should not see "en.wikipedia.org/wiki/Jazz"
+    And I search for "jobs site:www.usa.gov"
+    Then every result URL should match "usa.gov"
+    And I search for "jazz site:wikipedia.org"
+    Then every result URL should match "usa.gov"
 
   Scenario: Searching for site specific results using sitelimit
     Given the following Affiliates exist:

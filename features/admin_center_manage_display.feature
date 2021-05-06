@@ -337,66 +337,10 @@ Feature: Manage Display
     Then I should see "You have updated your site Template settings."
 
   @javascript
-  Scenario: Editing Image Assets on legacy Affiliate
-    Given the following legacy Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name | uses_managed_header_footer | website                |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       | true                       | http://main.agency.gov |
-    And I am logged in with email "john@agency.gov"
-    When I go to the agency.gov's Image Assets page
-    Then the "Logo Alignment" field should contain "center"
-
-    When I fill in "Favicon URL" with "https://d3qcdigd1fhos0.cloudfront.net/blog/img/favicon.ico"
-    And I attach the file "features/support/small.jpg" to "Legacy Logo"
-    And I attach the file "features/support/logo_mobile_en.png" to "Logo"
-    When I fill in "Logo Alt Text" with "  Awesome   Agency  "
-    And I select "left" from "Logo Alignment"
-    And I attach the file "features/support/bg.png" to "Page Background Image"
-    And I select "repeat-y" from "Page Background Image Repeat"
-    And I submit the form by pressing "Save"
-
-    Then I should see "You have updated your image assets"
-    And the "Favicon URL" field should contain "https://d3qcdigd1fhos0.cloudfront.net/blog/img/favicon.ico"
-    And I should see an image with alt text "Legacy Logo"
-    And I should see an image with alt text "Logo"
-    And the "Logo Alignment" field should contain "left"
-    And the "Logo Alt Text" field should contain "Awesome Agency"
-    And I should see an image with alt text "Page Background Image"
-    And the "Page Background Image Repeat" field should contain "repeat-y"
-
-    When I am on agency.gov's search page
-    Then I should see an image link to "logo" with url for "http://main.agency.gov"
-    And the page body should contain "bg.png"
-    When I am on agency.gov's mobile search page
-    Then I should see an image link to "Awesome Agency" with url for "http://main.agency.gov"
-    And the page body should contain "logo_mobile_en.png"
-    And I should see a left aligned SERP logo
-
-    When I go to the agency.gov's Image Assets page
-    And I check "Mark Legacy Logo for Deletion"
-    And I check "Mark Logo for Deletion"
-    And I check "Mark Page Background Image for Deletion"
-    And I submit the form by pressing "Save"
-    Then I should see "You have updated your image assets"
-    And I should not see an image with alt text "Legacy Logo"
-    And I should not see an image with alt text "Logo"
-    And I should not see an image with alt text "Page Background Image"
-
-    When I attach the file "features/support/very_large.jpg" to "Legacy Logo"
-    When I attach the file "features/support/very_large.jpg" to "Logo"
-    When I attach the file "features/support/very_large.jpg" to "Page Background Image"
-    And I submit the form by pressing "Save"
-    Then I should see "Legacy Logo file size must be under 512 KB"
-    Then I should see "Logo file size must be under 64 KB"
-    Then I should see "Page Background Image file size must be under 512 KB"
-    And I should not see an image with alt text "Legacy Logo"
-    And I should not see an image with alt text "Logo"
-    And I should not see an image with alt text "Page Background Image"
-
-  @javascript
-  Scenario: Editing Image Assets on non legacy Affiliate
+  Scenario: Editing Image Assets
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name | uses_managed_header_footer | website                |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       | true                       | http://main.agency.gov |
+      | display_name | name       | contact_email   | first_name | last_name |  website                |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       |  http://main.agency.gov |
     And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Image Assets page
     And I fill in "Favicon URL" with "https://d3qcdigd1fhos0.cloudfront.net/blog/img/favicon.ico"
@@ -609,12 +553,11 @@ Feature: Manage Display
     Then I should see "Invalid CSS"
 
     @javascript
-    Scenario: Editing No Results Page on non legacy Affiliate
+    Scenario: Editing No Results Page
       Given the following Affiliates exist:
-        | display_name | name       | contact_email   | first_name   | last_name | uses_managed_header_footer | website                    |
-        | agency site  | agency.gov | john@agency.gov | John         | Bar       | true                       | http://main.agency.gov     |
+        | display_name | name       | contact_email   | first_name   | last_name | website                    |
+        | agency site  | agency.gov | john@agency.gov | John         | Bar       | http://main.agency.gov     |
       And I am logged in with email "john@agency.gov"
-      And no emails have been sent
       When I go to the agency.gov's No Results Page page
 
       And I fill in "Additional Guidance Text" with "The GSA apologizes for not having any relevant results."
@@ -640,7 +583,7 @@ Feature: Manage Display
       And the "Alternative Link Title 1" field should contain "Blog"
       And the "Alternative Link URL 1" field should contain "http://blog.agency.gov"
 
-    When I am on agency.gov's mobile search page
+    When I am on agency.gov's search page
     Then I should not see "News"
     Then I should not see a link to "http://news.agency.gov"
     Then I should not see "Blog"
@@ -662,19 +605,18 @@ Feature: Manage Display
     And I submit the form by pressing "Save"
     Then I should be able to access 1 no results pages alternative link rows
 
-    When I am on agency.gov's mobile search page
+    When I am on agency.gov's search page
     And I fill in "Enter your search term" with "hdakfjd;kljowaurei;ak"
     And I submit the form by pressing "Search"
     Then I should not see "News"
     Then I should not see a link to "http://news.agency.gov"
 
   @javascript
-  Scenario: Errors when Editing No Results Page on non legacy Affiliate
+  Scenario: Errors when Editing No Results Page
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name | uses_managed_header_footer | website                |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       | true                       | http://main.agency.gov |
+      | display_name | name       | contact_email   | first_name | last_name | website                |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       | http://main.agency.gov |
     And I am logged in with email "john@agency.gov"
-    And no emails have been sent
     When I go to the agency.gov's No Results Page page
 
     When I fill in the following:
@@ -699,7 +641,6 @@ Feature: Manage Display
       | Alternative Link URL 0    | news.agency.gov |
     And I submit the form by pressing "Save"
     Then I should see "You have updated your No Results Page."
-
     And the "Alternative Link URL 0" field should contain "http://news.agency.gov"
 
   @javascript
