@@ -242,35 +242,40 @@ workflows:
   build_and_test:
     jobs:
       - checkout_code:
+          name: "checkout code: Ruby << matrix.ruby_version >>"
           matrix:
             parameters:
-              ruby_version: ["2.5.5", "2.6.6"]
+              ruby_version: ["2.6.6"]
 
       - bundle_install:
           requires:
             - checkout_code
+          name: "bundle install: Ruby << matrix.ruby_version >>"
           matrix:
             parameters:
-              ruby_version: ["2.5.5", "2.6.6"]
+              ruby_version: ["2.6.6"]
 
       - rspec:
           requires:
             - bundle_install
+          name: "rspec: Ruby << matrix.ruby_version >>"
           matrix:
             parameters:
-              ruby_version: ["2.5.5", "2.6.6"]
+              ruby_version: ["2.6.6"]
 
       - cucumber:
           requires:
             - bundle_install
+          name: "cucumber: Ruby << matrix.ruby_version >>"
           matrix:
             parameters:
-              ruby_version: ["2.5.5", "2.6.6"]
+              ruby_version: ["2.6.6"]
 
       - report_coverage:
           requires:
             - rspec
             - cucumber
+          name: "report coverage: Ruby << matrix.ruby_version >>"
           matrix:
             parameters:
-              ruby_version: ["2.5.5", "2.6.6"]
+              ruby_version: ["2.6.6"]
