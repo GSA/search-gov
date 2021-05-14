@@ -125,6 +125,10 @@ gem 'font-awesome-rails', '~> 4.7.0'
 gem 'font-awesome-grunticon-rails',
     git: 'https://github.com/gsa/font-awesome-grunticon-rails',
     ref: '8ad9734a65f7e2d2de934bebe4ee7b460734f96e'
+# execjs 2.8 removed support for therubyracer:
+# https://github.com/rails/execjs/releases/tag/v2.8.0
+# Locking the version to 2.7.x until we remove or replace therubyracer
+gem 'execjs', '~> 2.7.0'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
