@@ -10,7 +10,7 @@ gem 'mysql2', '~> 0.4.4'
 gem 'curb', '~> 0.9.4'
 gem 'haml', '~> 5.0.4'
 gem 'will_paginate', '~> 3.1.6'
-gem 'nokogiri', '~> 1.11.1'
+gem 'nokogiri', '~> 1.11.4'
 gem 'bcrypt-ruby', '~> 3.1.5', :require => 'bcrypt'
 gem 'authlogic', '~> 3.8.0'
 # Temporarily locking gem to specific ref. Newer versions include incompatible gems
