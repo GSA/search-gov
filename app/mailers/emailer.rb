@@ -81,13 +81,6 @@ class Emailer < ApplicationMailer
     generic_user_html_email(user, __method__)
   end
 
-  def affiliate_header_footer_change(affiliate)
-    recipients = affiliate.users.collect(&:email).join(', ')
-    @affiliate = affiliate
-    setup_email(recipients, __method__)
-    send_mail(:text)
-  end
-
   def affiliate_yearly_report(user, year)
     headers['Content-Type'] = 'text/html'
     jan1 = Date.civil(year, 1, 1)

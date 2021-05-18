@@ -1,14 +1,12 @@
 = content_for_site_page_title @site, 'Header & Footer'
 = form_for @site, as: :site, url: site_header_and_footer_path(@site),
-  html: { class: 'form', id: 'edit-header-and-footer' } do |f|
+  html: { class: 'form', id: 'edit-header-and-footer' } do |form|
   .sub-nav-heading
     %h2 Header & Footer
     .action-bar
       %ul
         = list_item_with_link_to_current_help_page
-        = render partial: "#{@mode}_mode_action_bar_items", locals: { f: f }
+        %li= form.submit 'Save', class: 'btn submit disabled', disabled: true
   = render_flash_message
   = render_error_messages(@site)
-  = hidden_field_tag :mode, @mode
-  = render partial: "#{@mode}_mode_form", locals: { f: f }
-= render partial: 'validate_html_form' if @mode == 'advanced'
+  = render partial: 'form', locals: { f: form }

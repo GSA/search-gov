@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SearchesController < ApplicationController
   include MobileFriendlyController
   has_no_mobile_fu_for :advanced
@@ -9,7 +11,6 @@ class SearchesController < ApplicationController
   #eventually all the searches should be redirected, but currently we're doing it as-needed
   #to ensure that the correct params are being passed, etc.
   before_action :redirect_to_search_consumer, only: [:index, :news, :docs]
-  before_action :set_header_footer_fields
   before_action :set_web_search_options, :only => [:advanced, :index]
   before_action :set_docs_search_options, :only => :docs
   before_action :set_news_search_options, :only => [:news, :video_news]

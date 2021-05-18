@@ -18,7 +18,6 @@ gem 'omniauth_login_dot_gov', git: 'https://github.com/18f/omniauth_login_dot_go
                               ref: '08ce9b5322efb2d82b2df3f6d774308c4028ee6c'
 gem 'omniauth-rails_csrf_protection', '~> 0.1.2'
 gem 'airbrake', '~> 7.1.1'
-gem 'yajl-ruby', '~> 1.3.1', :require => 'yajl'
 gem 'redis', '~> 4.0.1'
 gem 'redis-namespace', '~> 1.6.0'
 gem 'redis-rails', '~> 5.0.2'
@@ -27,7 +26,6 @@ gem 'resque-priority', :git => 'https://github.com/GSA/resque-priority.git'
 gem 'resque-timeout', '~> 1.0.0'
 gem 'resque-lock-timeout', '~> 0.4.5'
 gem 'resque-scheduler', '~> 4.3.1'
-gem 'cocaine', '~> 0.5.8'
 gem 'paperclip', '~> 5.2.0'
 gem 'googlecharts', '~> 1.6.12'
 gem 'tweetstream', '~> 2.6.1' # no longer maintained?
@@ -35,8 +33,7 @@ gem 'twitter', git: 'https://github.com/GSA/twitter.git', branch: '5-stable'
 gem 'flickraw', '~> 0.9.9'
 gem 'active_scaffold', '~> 3.5.0'
 gem 'active_scaffold_export', git: 'https://github.com/naaano/active_scaffold_export'
-gem 'us_states_select', '~> 1.2.0', :git => 'https://github.com/jeremydurham/us-state-select-plugin.git', :require => 'us_states_select'
-gem 'mobile-fu', '~> 1.4.0'
+gem 'mobile-fu', '~> 1.4.0' # deprecated - legacy SERP
 gem "recaptcha", '~> 4.6.3', :require => "recaptcha/rails"
 gem 'newrelic_rpm', '~> 5.0.0'
 gem 'american_date', '~> 1.1.1'
@@ -46,13 +43,11 @@ gem 'sass-rails', '~> 5.0.7'
 gem 'google_visualr',
     git: 'https://github.com/winston/google_visualr',
     ref: '17b97114a345baadd011e7b442b9a6c91a2b7ab5'
-gem 'oj', '~> 3.3.10'
 gem 'faraday_middleware', '~> 0.12.2'
 gem 'net-http-persistent', '~> 2.9.3'
 gem 'rash_alt', git: 'https://github.com/MothOnMars/rash_alt', ref: 'bbd107061fbb066709523c68de4a217a76a8a945', require: 'rash'
 gem 'geoip', '~> 1.6.3'
-gem 'us_states', '~> 0.1.1'
-gem 'htmlentities', '~> 4.3.4'
+gem 'htmlentities', '~> 4.3.4' # deprecated - only used in Google web search
 gem 'html_truncator', '~> 0.4.2'
 gem 'addressable', '~> 2.5.2'
 gem 'select2-rails', '~> 4.0.3'
@@ -73,6 +68,7 @@ gem 'sitelink_generator', git: 'https://github.com/GSA/sitelink_generator', ref:
 gem 'typhoeus', '~> 1.3.0'
 gem 'activerecord-validate_unique_child_attribute',
     require: 'active_record/validate_unique_child_attribute'
+# deprecated - jwt, grape, and grape-entity are only used by Search Consumer
 gem 'jwt', '~> 1.5.6'
 gem 'grape', '~> 1.1'
 gem 'grape-entity', '~> 0.6.0'
@@ -82,7 +78,6 @@ gem 'retry_block', '~> 1.2.0'
 gem 'aws-sdk', '< 3.0'
 gem 'colorize', '~> 0.8.1'
 gem 'dogstatsd-ruby', '~> 3.2.0'
-gem 'test-unit', '~> 3.2.7'
 gem 'http', '~> 1.0'
 gem 'robots_tag_parser', '~> 0.1.0', git: 'https://github.com/GSA/robots_tag_parser'
 gem 'loofah', '~> 2.9.0'
@@ -159,7 +154,7 @@ end
 
 group :test do
   gem 'capybara-screenshot'
-  gem 'simplecov', '~> 0.15.1', require: false
+  gem 'simplecov', '~> 0.17.0', require: false
   # Limiting the cucumber version until v4 is compatible with VCR
   # https://github.com/vcr/vcr/issues/825
   gem 'cucumber', '~> 3.0', require: false

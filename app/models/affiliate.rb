@@ -7,7 +7,6 @@ class Affiliate < ApplicationRecord
   extend HumanAttributeName
   extend HashColumnsAccessible
   include Dupable
-  include XmlProcessor
   include LogstashPrefix
 
   MAXIMUM_IMAGE_SIZE_IN_KB = 512
@@ -177,13 +176,11 @@ class Affiliate < ApplicationRecord
            :validate_managed_footer_links,
            :validate_managed_header_links,
            :validate_managed_no_results_pages_alt_links,
-           :validate_staged_header_footer,
-           :validate_staged_header_footer_css,
            :language_valid,
            :validate_managed_no_results_pages_guidance_text
 
   after_validation :update_error_keys
-  before_save :set_css_properties, :generate_look_and_feel_css, :sanitize_staged_header_footer, :set_json_fields, :set_search_labels
+  before_save :set_css_properties, :generate_look_and_feel_css, :set_json_fields, :set_search_labels
   before_update :clear_existing_attachments
   after_commit :normalize_site_domains,             on: :create
   after_commit :remove_boosted_contents_from_index, on: :destroy
@@ -194,7 +191,6 @@ class Affiliate < ApplicationRecord
   attr_writer :css_property_hash
   attr_accessor :mark_mobile_logo_for_deletion,
                 :mark_header_tagline_logo_for_deletion,
-                :is_validate_staged_header_footer,
                 :managed_header_links_attributes,
                 :managed_footer_links_attributes,
                 :managed_no_results_pages_alt_links_attributes
@@ -249,8 +245,6 @@ class Affiliate < ApplicationRecord
     show_content_box_shadow: '0'
   }.merge(THEMES[:default])
 
-  ATTRIBUTES_WITH_STAGED_AND_LIVE = %w(header footer header_footer_css nested_header_footer_css uses_managed_header_footer)
-
   CUSTOM_INDEXING_LANGUAGES = %w(en es)
 
   COMMON_INDEXING_LANGUAGE = 'babel'
@@ -259,21 +253,30 @@ class Affiliate < ApplicationRecord
     CUSTOM_INDEXING_LANGUAGES.include?(self.locale) ? self.locale : COMMON_INDEXING_LANGUAGE
   end
 
-  define_hash_columns_accessors column_name_method: :previous_fields, fields: [:previous_header, :previous_footer]
   define_hash_columns_accessors column_name_method: :live_fields,
-                                fields: [:header, :footer,
-                                         :header_footer_css, :nested_header_footer_css,
-                                         :managed_header_links, :managed_footer_links,
-                                         :external_tracking_code, :submitted_external_tracking_code,
-                                         :look_and_feel_css, :mobile_look_and_feel_css,
-                                         :logo_alt_text, :sitelink_generator_names,
+                                fields: [:header, # legacy SERP
+                                         :footer, # legacy SERP
+                                         :header_footer_css, # legacy SERP
+                                         :nested_header_footer_css, # legacy SERP
+                                         :managed_header_links,
+                                         :managed_footer_links,
+                                         :external_tracking_code,
+                                         :submitted_external_tracking_code,
+                                         :look_and_feel_css, # legacy SERP
+                                         :mobile_look_and_feel_css,
+                                         :logo_alt_text,
+                                         :sitelink_generator_names,
                                          :header_tagline,
                                          :header_tagline_url,
-                                         :page_one_more_results_pointer, :no_results_pointer,
+                                         :page_one_more_results_pointer,
+                                         :no_results_pointer,
                                          :footer_fragment,
-                                         :navigation_dropdown_label, :related_sites_dropdown_label,
+                                         :navigation_dropdown_label,
+                                         :related_sites_dropdown_label,
                                          :additional_guidance_text,
                                          :managed_no_results_pages_alt_links]
+
+  # deprecated - legacy SERP
   define_hash_columns_accessors column_name_method: :staged_fields,
                                 fields: [:staged_header, :staged_footer,
                                          :staged_header_footer_css, :staged_nested_header_footer_css]
@@ -320,52 +323,8 @@ class Affiliate < ApplicationRecord
     site_domains.count > 1
   end
 
-  def update_attributes_for_staging(attributes)
-    set_is_validate_staged_header_footer attributes
-    attributes[:has_staged_content] = true
-    self.update_attributes(attributes)
-  end
-
   def recent_user_activity
     users.collect(&:last_request_at).compact.max
-  end
-
-  def update_attributes_for_live(attributes)
-    set_is_validate_staged_header_footer attributes
-    transaction do
-      if self.update_attributes(attributes)
-        self.previous_header = header
-        self.previous_footer = footer
-        set_attributes_from_staged_to_live
-        self.has_staged_content = false
-        self.save!
-        true
-      else
-        false
-      end
-    end
-  end
-
-  def push_staged_changes
-    self.previous_header = header
-    self.previous_footer = footer
-    set_attributes_from_staged_to_live
-    self.has_staged_content = false
-    save!
-  end
-
-  def cancel_staged_changes
-    set_attributes_from_live_to_staged
-    self.has_staged_content = false
-    save!
-  end
-
-  def sync_staged_attributes
-    self.cancel_staged_changes unless self.has_staged_content?
-  end
-
-  def has_changed_header_or_footer
-    self.header != self.previous_header or self.footer != self.previous_footer
   end
 
   def css_property_hash(reload = false)
@@ -409,36 +368,10 @@ class Affiliate < ApplicationRecord
     css_property_hash[:show_content_box_shadow] == '1'
   end
 
-  def set_attributes_from_live_to_staged
-    ATTRIBUTES_WITH_STAGED_AND_LIVE.each do |field|
-      self.send("staged_#{field}=", self.send("#{field}"))
-    end
-  end
-
-  def set_attributes_from_staged_to_live
-    ATTRIBUTES_WITH_STAGED_AND_LIVE.each do |field|
-      self.send("#{field}=", self.send("staged_#{field}"))
-    end
-  end
-
   def refresh_indexed_documents(scope)
     indexed_documents.select(:id).send(scope.to_sym).find_in_batches(:batch_size => batch_size(scope)) do |batch|
       Resque.enqueue_with_priority(:low, AffiliateIndexedDocumentFetcher, id, batch.first.id, batch.last.id, scope)
     end
-  end
-
-  def sanitized_header
-    sanitize_html header
-  end
-
-  def sanitized_footer
-    sanitize_html footer
-  end
-
-  def use_strictui
-    self.header = sanitized_header
-    self.footer = sanitized_footer
-    self.external_css_url = nil
   end
 
   def unused_features
@@ -741,8 +674,6 @@ class Affiliate < ApplicationRecord
 
   def set_default_fields
     self.theme = THEMES.keys.first.to_s if theme.blank?
-    self.uses_managed_header_footer = true if uses_managed_header_footer.nil?
-    self.staged_uses_managed_header_footer = true if staged_uses_managed_header_footer.nil?
     @css_property_hash = ActiveSupport::OrderedHash.new if @css_property_hash.nil?
     true
   end
@@ -751,50 +682,8 @@ class Affiliate < ApplicationRecord
     self.css_properties = @css_property_hash.to_json unless @css_property_hash.blank?
   end
 
-  def validate_staged_header_footer_css
-    return unless is_validate_staged_header_footer
-    begin
-      self.staged_nested_header_footer_css = generate_nested_css(staged_header_footer_css)
-    rescue Sass::SyntaxError => err
-      errors.add(:base, "CSS for the top and bottom of your search results page: #{err}")
-    end
-  end
-
   def language_valid
     errors.add(:base, "Locale must be valid") unless Language.exists?(code: self.locale)
-  end
-
-  def generate_nested_css(css)
-    Renderers::CssToNestedCss.new('.header-footer', css).render if css.present?
-  end
-
-  def validate_staged_header_footer
-    return unless is_validate_staged_header_footer
-    validate_header_results = validate_html staged_header
-    if validate_header_results[:has_malformed_html]
-      errors.add(:base, malformed_html_error_message(:top))
-    end
-
-    if validate_header_results[:has_banned_elements]
-      errors.add(:base, "HTML to customize the top of your search results page must not contain #{BANNED_HTML_ELEMENTS_FROM_HEADER_AND_FOOTER.join(', ')} elements.")
-    end
-
-    if validate_header_results[:has_banned_attributes]
-      errors.add(:base, "HTML to customize the top of your search results page must not contain the onload attribute.")
-    end
-
-    validate_footer_results = validate_html staged_footer
-    if validate_footer_results[:has_malformed_html]
-      errors.add(:base, malformed_html_error_message(:bottom))
-    end
-
-    if validate_footer_results[:has_banned_elements]
-      errors.add(:base, "HTML to customize the bottom of your search results page must not contain #{BANNED_HTML_ELEMENTS_FROM_HEADER_AND_FOOTER.join(', ')} elements.")
-    end
-
-    if validate_footer_results[:has_banned_attributes]
-      errors.add(:base, "HTML to customize the bottom of your search results page must not contain the onload attribute.")
-    end
   end
 
   def html_columns_cannot_be_malformed
@@ -827,45 +716,24 @@ class Affiliate < ApplicationRecord
     validate_html_results
   end
 
-  def malformed_html_error_message(field_name)
-    sea = Rails.application.secrets.organization[:support_email_address]
-    email_link = %Q{<a href="mailto:#{sea}">#{sea}</a>}
-    "HTML to customize the #{field_name} of your search results is invalid. Click on the validate link below or email us at #{email_link}".html_safe
-  end
-
-  def sanitize_html(html)
-    unless html.blank?
-      doc = Nokogiri::HTML::DocumentFragment.parse html
-      doc.css("#{BANNED_HTML_ELEMENTS_FROM_HEADER_AND_FOOTER.join(',')}").each(&:remove)
-      doc.to_html
-    end
-  end
-
   def update_error_keys
     swap_error_key(:"rss_feeds.base", :base)
     swap_error_key(:"site_domains.domain", :domain)
     swap_error_key(:"connections.connected_affiliate_id", :related_site_handle)
     swap_error_key(:"connections.label", :related_site_label)
-    swap_error_key(:staged_page_background_image_file_size, :page_background_image_file_size)
-    swap_error_key(:staged_header_image_file_size, :header_image_file_size)
-  end
-
-  def previous_fields
-    @previous_fields ||= previous_fields_json.blank? ? {} : JSON.parse(previous_fields_json, :symbolize_names => true)
   end
 
   def live_fields
     @live_fields ||= live_fields_json.blank? ? {} : JSON.parse(live_fields_json, :symbolize_names => true)
   end
 
+  # deprecated - legacy SERP
   def staged_fields
     @staged_fields ||= staged_fields_json.blank? ? {} : JSON.parse(staged_fields_json, :symbolize_names => true)
   end
 
   def set_json_fields
-    self.previous_fields_json = ActiveSupport::OrderedHash[previous_fields.sort].to_json
     self.live_fields_json = ActiveSupport::OrderedHash[live_fields.sort].to_json
-    self.staged_fields_json = ActiveSupport::OrderedHash[staged_fields.sort].to_json
   end
 
   def load_css_properties
@@ -891,18 +759,9 @@ class Affiliate < ApplicationRecord
     self.api_access_key = Digest::SHA256.base64digest("#{name}:#{Time.current.to_i}:#{rand}").tr('+/', '-_')
   end
 
-  def sanitize_staged_header_footer
-    self.staged_header = strip_comments(staged_header) unless staged_header.blank?
-    self.staged_footer = strip_comments(staged_footer) unless staged_footer.blank?
-  end
-
-  def set_is_validate_staged_header_footer(attributes)
-    self.is_validate_staged_header_footer = attributes[:staged_uses_managed_header_footer] == '0'
-  end
-
   def generate_look_and_feel_css
     renderer = Renderers::AffiliateCss.new(build_css_hash)
-    self.look_and_feel_css = renderer.render_desktop_css
+    self.look_and_feel_css = renderer.render_desktop_css # legacy SERP
     self.mobile_look_and_feel_css = renderer.render_mobile_css
   end
 

@@ -6,7 +6,6 @@ class ImageSearchesController < ApplicationController
   layout 'searches'
 
   before_action :set_affiliate, :set_locale_based_on_affiliate_locale
-  before_action :set_header_footer_fields
   before_action :set_search_options
   before_action :force_request_format
 

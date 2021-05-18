@@ -1,4 +1,4 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
 describe SearchesController do
   let(:affiliate) { affiliates(:usagov_affiliate) }
@@ -228,14 +228,6 @@ describe SearchesController do
 
     it 'should set an affiliate page title' do
       expect(@page_title).to eq('thunder & lightning - Legacy Search Results')
-    end
-
-    it 'should render the header in the response' do
-      expect(response.body).to match(/#{affiliate.header}/)
-    end
-
-    it 'should render the footer in the response' do
-      expect(response.body).to match(/#{affiliate.footer}/)
     end
 
     it 'should set the sanitized query in Javascript' do

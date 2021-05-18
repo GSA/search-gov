@@ -1,4 +1,4 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
 describe Affiliate do
   fixtures :users, :affiliates, :site_domains, :features, :youtube_profiles, :memberships, :languages
@@ -276,35 +276,6 @@ describe Affiliate do
       expect(described_class.find(affiliate.id).css_property_hash[:font_family]).to eq('Verdana, sans-serif')
     end
 
-    it 'should not set header_footer_nested_css fields' do
-      affiliate.update_attributes!(staged_header_footer_css: '@charset "UTF-8"; @import url("other.css"); h1 { color: blue }', header_footer_css: '')
-      expect(affiliate.staged_nested_header_footer_css).to be_blank
-      expect(affiliate.header_footer_css).to be_blank
-      affiliate.update_attributes!(staged_header_footer_css: '', header_footer_css: '@charset "UTF-8"; @import url("other.css"); live.h1 { color: red }')
-      expect(affiliate.staged_nested_header_footer_css).to be_blank
-      expect(affiliate.nested_header_footer_css).to be_blank
-    end
-
-    it 'should set previous json fields' do
-      affiliate.previous_header = 'previous header'
-      affiliate.previous_footer = 'previous footer'
-      affiliate.save!
-      expect(described_class.find(affiliate.id).previous_header).to eq('previous header')
-      expect(described_class.find(affiliate.id).previous_footer).to eq('previous footer')
-    end
-
-    it 'should set staged and live json fields' do
-      affiliate.header = 'live header'
-      affiliate.footer = 'live footer'
-      affiliate.staged_header = 'staged header'
-      affiliate.staged_footer = 'staged footer'
-      affiliate.save!
-      expect(described_class.find(affiliate.id).header).to eq('live header')
-      expect(described_class.find(affiliate.id).footer).to eq('live footer')
-      expect(described_class.find(affiliate.id).staged_header).to eq('staged header')
-      expect(described_class.find(affiliate.id).staged_footer).to eq('staged footer')
-    end
-
     it 'should populate search labels for English site' do
       english_affiliate = described_class.create!(valid_attributes.merge(locale: 'en'))
       english_affiliate.default_search_label = ''
@@ -350,47 +321,6 @@ describe Affiliate do
       expect(es_affiliate.rss_govbox_label).to eq('Noticias')
       es_affiliate.update_attributes!({ rss_govbox_label: '' })
       expect(es_affiliate.rss_govbox_label).to eq('Noticias')
-    end
-
-    it 'should remove comments from staged_header and staged_footer fields' do
-        html_with_comments = <<-HTML
-        <div class="level1">
-          <!--[if IE]>
-          <script src="http://cdn.agency.gov/script.js"></script>
-          According to the conditional comment this is IE<br />
-          <![endif]-->
-          <span>level1</span>
-          <div class="level2">
-            <span>level2</span>
-            <!--[if IE]>
-            <script src="http://cdn.agency.gov/script.js"></script>
-            According to the conditional comment this is IE<br />
-            <![endif]-->
-            <div class="level3">
-              <!--[if IE]>
-              <script src="http://cdn.agency.gov/script.js"></script>
-              According to the conditional comment this is IE<br />
-              <![endif]-->
-              <span>level3</span>
-            </div>
-          </div>
-        </div>
-        HTML
-
-        html_without_comments = <<-HTML
-        <div class="level1">
-          <span>level1</span>
-          <div class="level2">
-            <span>level2</span>
-            <div class="level3">
-              <span>level3</span>
-            </div>
-          </div>
-        </div>
-        HTML
-        affiliate.update_attributes!(staged_header: html_with_comments, staged_footer: html_with_comments)
-        expect(described_class.find(affiliate.id).staged_header.squish).to eq(html_without_comments.squish)
-        expect(described_class.find(affiliate.id).staged_footer.squish).to eq(html_without_comments.squish)
     end
 
     it 'should squish related sites dropdown label' do
@@ -476,14 +406,6 @@ describe Affiliate do
       expect(affiliate.save).to be true
 
       affiliate = described_class.new(valid_create_attributes.merge(header_footer_css: 'h1 { color: #DDDD }', name: 'anothersite'))
-      expect(affiliate.save).to be true
-    end
-
-    it 'should not validate staged_header_footer_css for invalid css property value' do
-      affiliate = described_class.new(valid_create_attributes.merge(staged_header_footer_css: 'h1 { invalid-css-syntax }'))
-      expect(affiliate.save).to be true
-
-      affiliate = described_class.new(valid_create_attributes.merge(staged_header_footer_css: 'h1 { color: #DDDD }', name: 'anothersite'))
       expect(affiliate.save).to be true
     end
 
@@ -592,115 +514,6 @@ describe Affiliate do
       end
     end
 
-    context 'is_validate_staged_header_footer is set to true' do
-      let(:affiliate) { described_class.create!(display_name: 'test header footer validation',
-                                          name: 'testheaderfootervalidation',
-                                          uses_managed_header_footer: false,
-                                          staged_uses_managed_header_footer: false) }
-
-      before { affiliate.is_validate_staged_header_footer = true }
-
-      it 'should not allow form, script, style or link elements in staged header or staged footer' do
-        header_error_message = %q(HTML to customize the top of your search results page must not contain form, script, style, link elements)
-        footer_error_message = %q(HTML to customize the bottom of your search results page must not contain form, script, style, link elements)
-
-        html_with_script = <<-HTML
-            <script src="http://cdn.agency.gov/script.js"></script>
-            <h1>html with script</h1>
-        HTML
-        expect(affiliate.update_attributes(staged_header: html_with_script, staged_footer: html_with_script)).to be false
-        expect(affiliate.errors[:base].join).to match(/#{header_error_message}/)
-        expect(affiliate.errors[:base].join).to match(/#{footer_error_message}/)
-
-        html_with_style = <<-HTML
-            <style>#my_header { color:red }</style>
-            <h1>html with style</h1>
-        HTML
-        expect(affiliate.update_attributes(staged_header: html_with_style, staged_footer: html_with_style)).to be false
-        expect(affiliate.errors[:base].join).to match(/#{header_error_message}/)
-        expect(affiliate.errors[:base].join).to match(/#{footer_error_message}/)
-
-        html_with_link = <<-HTML
-            <link href="http://cdn.agency.gov/link.css" />
-            <h1>html with link</h1>
-        HTML
-        expect(affiliate.update_attributes(staged_header: html_with_link, staged_footer: html_with_link)).to be false
-        expect(affiliate.errors[:base].join).to match(/#{header_error_message}/)
-        expect(affiliate.errors[:base].join).to match(/#{footer_error_message}/)
-
-        html_with_form = <<-HTML
-            <form></form>
-            <h1>html with link</h1>
-        HTML
-        expect(affiliate.update_attributes(staged_header: html_with_form, staged_footer: html_with_form)).to be false
-        expect(affiliate.errors[:base].join).to match(/#{header_error_message}/)
-        expect(affiliate.errors[:base].join).to match(/#{footer_error_message}/)
-      end
-
-      it 'should not allow onload attribute in staged header or staged footer' do
-        header_error_message = %q(HTML to customize the top of your search results page must not contain the onload attribute)
-        footer_error_message = %q(HTML to customize the bottom of your search results page must not contain the onload attribute)
-
-        html_with_onload = <<-HTML
-          <div onload="cdn.agency.gov/script.js"></div>
-          <h1>html with onload</h1>
-        HTML
-
-        expect(affiliate.update_attributes(staged_header: html_with_onload, staged_footer: html_with_onload)).to be false
-        expect(affiliate.errors[:base].join).to match(/#{header_error_message}/)
-        expect(affiliate.errors[:base].join).to match(/#{footer_error_message}/)
-      end
-
-      it 'should not allow malformed HTML in staged header or staged footer' do
-        header_error_message = 'HTML to customize the top of your search results is invalid'
-        footer_error_message = 'HTML to customize the bottom of your search results is invalid'
-
-        html_with_body = <<-HTML
-            <html><body><h1>html with script</h1></body></html>
-        HTML
-        expect(affiliate.update_attributes(staged_header: html_with_body, staged_footer: html_with_body)).to be false
-        expect(affiliate.errors[:base].join).to include("#{header_error_message}")
-        expect(affiliate.errors[:base].join).to include("#{footer_error_message}")
-
-        malformed_html_fragments = <<-HTML
-            <link href="http://cdn.agency.gov/link.css"></script>
-            <h1>html with link</h1>
-        HTML
-        expect(affiliate.update_attributes(staged_header: malformed_html_fragments, staged_footer: malformed_html_fragments)).to be false
-        expect(affiliate.errors[:base].join).to include("#{header_error_message}")
-        expect(affiliate.errors[:base].join).to include("#{footer_error_message}")
-      end
-
-      it 'should not validate header_footer_css' do
-        expect(affiliate.update_attributes(header_footer_css: 'h1 { invalid-css-syntax }')).to be true
-        expect(affiliate.update_attributes(header_footer_css: 'h1 { color: #DDDD }')).to be true
-      end
-
-      it 'should validate staged_header_footer_css for invalid css property value' do
-        expect(affiliate.update_attributes(staged_header_footer_css: 'h1 { invalid-css-syntax }')).to be false
-        expect(affiliate.errors[:base].first).to match(/Invalid CSS/)
-
-        expect(affiliate.update_attributes(staged_header_footer_css: 'h1 { color: #DDDD }')).to be false
-        expect(affiliate.errors[:base].first).to match(/Colors must have either three or six digits/)
-      end
-    end
-
-    context 'is_validate_staged_header_footer is set to false' do
-      let(:affiliate) { described_class.create!(display_name: 'test header footer validation',
-                                          name: 'testheaderfootervalidation',
-                                          uses_managed_header_footer: false,
-                                          staged_uses_managed_header_footer: false) }
-      it 'should allow script, style or link elements in staged header or staged footer' do
-        affiliate.is_validate_staged_header_footer = false
-
-        html_with_script = <<-HTML
-            <script src="http://cdn.agency.gov/script.js"></script>
-            <h1>html with script</h1>
-        HTML
-        expect(affiliate.update_attributes(staged_header: html_with_script, staged_footer: html_with_script)).to be true
-      end
-    end
-
     it 'allows valid external tracking code' do
       expect { described_class.create!({ display_name: 'a site',
                                    external_tracking_code: '<script>var a;</script>',
@@ -726,218 +539,14 @@ describe Affiliate do
     end
   end
 
-  describe '#update_attributes_for_staging' do
-    it 'should set has_staged_content to true and receive update_attributes' do
-      affiliate = described_class.create!(valid_create_attributes)
-      attributes = double('attributes')
-      expect(attributes).to receive(:[]).with(:staged_uses_managed_header_footer).and_return('0')
-      expect(attributes).to receive(:[]=).with(:has_staged_content, true)
-      return_value = double('return value')
-      expect(affiliate).to receive(:update_attributes).with(attributes).and_return(return_value)
-      expect(affiliate.update_attributes_for_staging(attributes)).to eq(return_value)
-    end
-
-    context "when attributes contain staged_uses_managed_header_footer='0'" do
-      it 'should set is_validate_staged_header_footer to true' do
-        affiliate = described_class.create!(display_name: 'oneserp affiliate', name: 'oneserpaffiliate')
-        expect(affiliate).to receive(:is_validate_staged_header_footer=).with(true)
-        affiliate.update_attributes_for_staging(staged_uses_managed_header_footer: '0',
-                                                staged_header: 'staged header',
-                                                staged_footer: 'staged footer')
-      end
-
-      it 'should set header_footer_nested_css fields' do
-        affiliate = described_class.create!(valid_create_attributes)
-        affiliate.update_attributes!(header_footer_css: '@charset "UTF-8"; @import url("other.css"); h1 { color: blue }')
-        expect(affiliate.update_attributes_for_staging(
-          staged_uses_managed_header_footer: '0',
-          staged_header_footer_css: '@charset "UTF-8"; @import url("other.css"); h1 { color: blue }')).to be true
-        expect(affiliate.staged_nested_header_footer_css.squish).to match(/^#{Regexp.escape('.header-footer h1{color:blue}')}$/)
-      end
-
-      it 'should not validated live header_footer_css field' do
-        affiliate = described_class.create!(valid_create_attributes)
-        affiliate.update_attributes!(header_footer_css: 'h1 { invalid-css-syntax }')
-        expect(affiliate.update_attributes_for_staging(
-          staged_uses_managed_header_footer: '0',
-          staged_header_footer_css: '@charset "UTF-8"; @import url("other.css"); h1 { color: blue }')).to be true
-        expect(affiliate.staged_nested_header_footer_css.squish).to match(/^#{Regexp.escape('.header-footer h1{color:blue}')}$/)
-      end
-    end
-
-    context "when attributes does not contain staged_uses_managed_header_footer='0'" do
-      it 'should set is_validate_staged_header_footer to false' do
-        affiliate = described_class.create!(display_name: 'oneserp affiliate', name: 'oneserpaffiliate')
-        expect(affiliate).to receive(:is_validate_staged_header_footer=).with(false)
-        affiliate.update_attributes_for_staging(staged_uses_managed_header_footer: '1')
-      end
-    end
-  end
-
-  describe '#update_attributes_for_live' do
-    let(:affiliate) { described_class.create!(valid_create_attributes.merge(header: 'old header', footer: 'old footer')) }
-
-    context 'when successfully update_attributes' do
-      before do
-        expect(affiliate).to receive(:update_attributes).and_return(true)
-      end
-
-      it 'should set previous fields' do
-        expect(affiliate).to receive(:previous_header=).with('old header')
-        expect(affiliate).to receive(:previous_footer=).with('old footer')
-        expect(affiliate.update_attributes_for_live(staged_header: 'staged header', staged_footer: 'staged footer')).to be true
-      end
-
-      it 'should set attributes from staged to live' do
-        expect(affiliate).to receive(:set_attributes_from_staged_to_live)
-        expect(affiliate.update_attributes_for_live(staged_header: 'staged header', staged_footer: 'staged footer')).to be true
-      end
-
-      it 'should set has_staged_content to false' do
-        expect(affiliate).to receive(:has_staged_content=).with(false)
-        expect(affiliate.update_attributes_for_live(staged_header: 'staged header', staged_footer: 'staged footer')).to be true
-      end
-
-      it 'should save!' do
-        expect(affiliate).to receive(:save!)
-        expect(affiliate.update_attributes_for_live(staged_header: 'staged header', staged_footer: 'staged footer')).to be true
-      end
-    end
-
-    context 'when update_attributes failed' do
-      before do
-        expect(affiliate).to receive(:update_attributes).and_return(false)
-        expect(affiliate).not_to receive(:previous_header=)
-        expect(affiliate).not_to receive(:previous_footer=)
-        expect(affiliate).not_to receive(:save!)
-      end
-
-      specify { expect(affiliate.update_attributes_for_live(staged_header: 'staged header', staged_footer: 'staged footer')).to be false }
-    end
-
-    context "when attributes contain staged_uses_managed_header_footer='0'" do
-      it 'should set is_validate_staged_header_footer to true' do
-        expect(affiliate).to receive(:is_validate_staged_header_footer=).with(true)
-        affiliate.update_attributes_for_live(staged_uses_managed_header_footer: '0',
-                                             staged_header: 'staged header',
-                                             staged_footer: 'staged footer')
-      end
-
-      it 'should set header_footer_nested_css fields' do
-        affiliate = described_class.create!(valid_create_attributes)
-        expect(affiliate.update_attributes_for_live(
-          staged_uses_managed_header_footer: '0',
-          staged_header_footer_css: '@charset "UTF-8"; @import url("other.css"); h1 { color: blue }')).to be true
-        expect(affiliate.staged_nested_header_footer_css.squish).to match(/^#{Regexp.escape('.header-footer h1{color:blue}')}$/)
-        expect(affiliate.nested_header_footer_css.squish).to match(/^#{Regexp.escape('.header-footer h1{color:blue}')}$/)
-      end
-
-      it 'should not validated live header_footer_css field' do
-        affiliate = described_class.create!(valid_create_attributes)
-        affiliate.update_attributes!(header_footer_css: 'h1 { invalid-css-syntax }')
-        expect(affiliate.update_attributes_for_live(
-          staged_uses_managed_header_footer: '0',
-          staged_header_footer_css: '@charset "UTF-8"; @import url("other.css"); h1 { color: blue }')).to be true
-        expect(affiliate.staged_nested_header_footer_css.squish).to match(/^#{Regexp.escape('.header-footer h1{color:blue}')}$/)
-        expect(affiliate.nested_header_footer_css.squish).to match(/^#{Regexp.escape('.header-footer h1{color:blue}')}$/)
-      end
-    end
-
-    context "when attributes does not contain staged_uses_managed_header_footer='0'" do
-      it 'should set is_validate_staged_header_footer to false' do
-        expect(affiliate).to receive(:is_validate_staged_header_footer=).with(false)
-        affiliate.update_attributes_for_live(staged_uses_managed_header_footer: '1')
-      end
-    end
-  end
-
-  describe '#set_attributes_from_staged_to_live' do
-    let(:affiliate) { described_class.create!(valid_create_attributes) }
-
-    it 'should set live fields with values from staged fields' do
-      Affiliate::ATTRIBUTES_WITH_STAGED_AND_LIVE.each do |attribute|
-        staged_value = double("staged_value for #{attribute}")
-        expect(affiliate).to receive("staged_#{attribute}".to_sym).and_return(staged_value)
-        expect(affiliate).to receive("#{attribute}=".to_sym).with(staged_value)
-      end
-      affiliate.set_attributes_from_staged_to_live
-    end
-  end
-
-  describe '#set_attributes_from_live_to_staged' do
-    let(:affiliate) { described_class.create!(valid_create_attributes) }
-
-    it 'should set staged fields with values from live fields' do
-      Affiliate::ATTRIBUTES_WITH_STAGED_AND_LIVE.each do |attribute|
-        live_value = double("live_value for #{attribute}")
-        expect(affiliate).to receive("#{attribute}".to_sym).and_return(live_value)
-        expect(affiliate).to receive("staged_#{attribute}=".to_sym).with(live_value)
-      end
-      affiliate.set_attributes_from_live_to_staged
-    end
-  end
-
   describe '.human_attribute_name' do
     specify { expect(described_class.human_attribute_name('display_name')).to eq('Display name') }
     specify { expect(described_class.human_attribute_name('name')).to eq('Site Handle (visible to searchers in the URL)') }
   end
 
-  describe '#push_staged_changes' do
-    it 'should set attributes from staged to live fields, set has_staged_content to false and save!' do
-      affiliate = described_class.create!(valid_create_attributes)
-      expect(affiliate).to receive(:set_attributes_from_staged_to_live)
-      expect(affiliate).to receive(:has_staged_content=).with(false)
-      expect(affiliate).to receive(:save!)
-      affiliate.push_staged_changes
-    end
-  end
-
-  describe '#cancel_staged_changes' do
-    it 'should set attributes from live to staged fields, set has_staged_content to false and save!' do
-      affiliate = described_class.create!(valid_create_attributes)
-      expect(affiliate).to receive(:set_attributes_from_live_to_staged)
-      expect(affiliate).to receive(:has_staged_content=).with(false)
-      expect(affiliate).to receive(:save!)
-      affiliate.cancel_staged_changes
-    end
-
-    it 'should copy header_footer_css' do
-      affiliate = described_class.create!(valid_create_attributes)
-      affiliate.update_attributes!(header_footer_css: 'h1 { invalid-css-syntax }',
-                                   nested_header_footer_css: '.header_footer h1 { invalid-css-syntax }')
-      described_class.find(affiliate.id).cancel_staged_changes
-
-      aff_after_cancel = described_class.find(affiliate.id)
-      expect(aff_after_cancel.staged_header_footer_css).to eq('h1 { invalid-css-syntax }')
-      expect(aff_after_cancel.staged_nested_header_footer_css).to eq('.header_footer h1 { invalid-css-syntax }')
-    end
-  end
-
   describe '#ordered' do
     it "should include a scope called 'ordered'" do
       expect(described_class.ordered).not_to be_nil
-    end
-  end
-
-  describe '#sync_staged_attributes' do
-    context 'when the affiliate has staged content' do
-      let(:affiliate) { affiliates(:basic_affiliate) }
-      before do
-        expect(affiliate).to receive(:has_staged_content?).and_return(false)
-        expect(affiliate).to receive(:cancel_staged_changes).and_return(true)
-      end
-
-      specify { expect(affiliate.sync_staged_attributes).to be true }
-    end
-
-    context 'when the affiliate does not have staged content' do
-      let(:affiliate) { affiliates(:basic_affiliate) }
-      before do
-        expect(affiliate).to receive(:has_staged_content?).and_return(true)
-        expect(affiliate).not_to receive(:cancel_staged_changes)
-      end
-
-      specify { expect(affiliate.sync_staged_attributes).to be_nil }
     end
   end
 
@@ -1192,34 +801,6 @@ describe Affiliate do
     end
   end
 
-  describe '#sanitized_header' do
-    it 'should remove all banned HTML elements' do
-      tainted_header = <<-HTML
-        <script src="http://cdn.agency.gov/script.js"></script>
-        <link href="http://cdn.agency.gov/link.css"></link>
-        <style>#my_header { color:red }</style>
-        <h1 id="my_header">header</h1>
-      HTML
-
-      affiliate = described_class.create!(valid_attributes.merge(header: tainted_header))
-      expect(affiliate.sanitized_header.strip).to eq(%q(<h1 id="my_header">header</h1>))
-    end
-  end
-
-  describe '#sanitized_footer' do
-    it 'should remove all banned HTML elements' do
-      tainted_footer = <<-HTML
-        <script src="http://cdn.agency.gov/script.js"></script>
-        <link href="http://cdn.agency.gov/link.css"></link>
-        <style>#my_footer { color:red }</style>
-        <h1 id="my_footer">footer</h1>
-      HTML
-
-      affiliate = described_class.create!(valid_attributes.merge(footer: tainted_footer))
-      expect(affiliate.sanitized_footer.strip).to eq(%q(<h1 id="my_footer">footer</h1>))
-    end
-  end
-
   describe '#unused_features' do
     before do
       @affiliate = affiliates(:power_affiliate)
@@ -1267,7 +848,7 @@ describe Affiliate do
 
   describe '#mobile_logo_url' do
     it 'returns mobile logo url' do
-      mobile_logo_url = 'http://link.to/mobile_logo.png'.freeze
+      mobile_logo_url = 'http://link.to/mobile_logo.png'
       mobile_logo = double('mobile logo')
       affiliate = affiliates(:power_affiliate)
       expect(affiliate).to receive(:mobile_logo_file_name).and_return('mobile_logo.png')
@@ -1280,7 +861,7 @@ describe Affiliate do
 
   describe '#header_image_url' do
     it 'returns header image url' do
-      header_image_url = 'http://link.to/header_image.png'.freeze
+      header_image_url = 'http://link.to/header_image.png'
       header_image = double('header image')
       affiliate = affiliates(:power_affiliate)
       expect(affiliate).to receive(:header_image_file_name).and_return('header_image.png')
