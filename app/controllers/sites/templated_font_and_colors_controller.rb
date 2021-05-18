@@ -1,3 +1,4 @@
+# deprecated - Search Consumer
 class Sites::TemplatedFontAndColorsController < Sites::SetupSiteController
   def edit
 

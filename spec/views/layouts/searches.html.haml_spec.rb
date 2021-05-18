@@ -12,8 +12,6 @@ describe 'layouts/searches' do
                                page_background_image_file_name: nil,
                                uses_managed_header_footer?: false,
                                managed_header_css_properties: nil,
-                               show_content_border?: true,
-                               show_content_box_shadow?: true,
                                connections: [],
                                locale: 'en',
                                dap_enabled?: false,
