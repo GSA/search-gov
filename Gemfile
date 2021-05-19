@@ -149,7 +149,7 @@ group :development, :test do
   gem 'faker', '~> 1.8'
   gem 'pry-rails', '~> 0.3.6'
   gem 'awesome_print'
-  gem 'puma', '~> 3.12'
+  gem 'puma', '~> 5.3'
 end
 
 group :test do
