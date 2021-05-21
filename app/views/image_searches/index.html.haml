@@ -1,9 +1,0 @@
-#search_box
-  = render '/shared/search', :path => image_search_path(:affiliate => @affiliate.name)
-  .left-nav-label-wrapper= left_nav_label(@affiliate.left_nav_label)
-  .summary-wrapper= render 'shared/results_summary', :affiliate => @affiliate, :search => @search, :search_options => @search_options, :search_vertical => @search_vertical
-#left_column
-  = render "shared/affiliate_vertical_navigation"
-%a#main_content
-#results.images
-  = render :partial => "/shared/searchresults", :locals => { :search => @search }

@@ -23,20 +23,6 @@ module FeaturedCollectionsHelper
     instrumented_link_to title, new_link_site_best_bets_graphics_path(site), fc.featured_collection_links.length, 'link'
   end
 
-  def featured_collection_css_classes(featured_collection)
-    css_classes = %w(featured-collection searchresult two-column)
-    (css_classes << 'with-image') if featured_collection.image_file_name.present?
-    css_classes.join(' ')
-  end
-
-  def render_featured_collection_image(fc)
-    content_tag(:div, :class => 'image') do
-      image_tag(fc.image.url(:small), alt: fc.image_alt_text)
-    end
-  rescue Exception
-    nil
-  end
-
   def featured_collection_class_hash(fc)
     classes = %w(featured-collection)
     classes << 'has-image' if fc.image_file_name.present?

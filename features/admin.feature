@@ -88,36 +88,6 @@ Feature:  Administration
     When I follow "Show"
     Then I should see "safety"
 
-  Scenario: Comparing Search Results
-    Given the following Affiliates exist:
-      | display_name  | name     | contact_email | first_name   | last_name |
-      | agency site   | aff.gov  | one@foo.gov   | One          | Foo       |
-      | agency site 2 | aff2.gov | two@foo.gov   | Two          | Foo       |
-    And the following "site domains" exist for the affiliate aff.gov:
-      | domain               | site_name      |
-      | aff.gov              | Agency Website |
-    And the following "site domains" exist for the affiliate aff2.gov:
-      | domain              | site_name      |
-      | aff.gov             | Agency2 Website |
-    And the following IndexedDocuments exist:
-      | title                   | description                     | url                          | affiliate | last_crawled_at | last_crawl_status |
-      | Space Suit America      | description for space suit item | http://aff.gov//space-suit1  | aff.gov   | 11/02/2011      | OK                |
-      | America Suit Evolution  | description for space suit item | http://aff.gov//space-suit2  | aff.gov   | 11/02/2011      | OK                |
-      | Space America Evolution | description for space suit item | http://aff.gov//space-suit3  | aff.gov   | 11/02/2011      | OK                |
-      | America IN SPACE        | description for space suit item | http://aff.gov//space-suit1  | aff2.gov  | 11/02/2011      | OK                |
-    When I go to the admin home page
-    And I follow "Compare Search Results"
-    Then I should not see "BingV7 Results"
-    And I should not see "ODIE Results"
-
-    When I fill in "query" with "america"
-    When I select "aff.gov" from "Affiliate"
-    And I press "Search"
-    Then I should see "BingV7 Results"
-    And I should see "ODIE Results"
-    And I should see "Space Suit America"
-    And I should not see "America IN SPACE"
-
   Scenario: Visiting the active scaffold pages
     When I go to the admin home page
     And I follow "Users"

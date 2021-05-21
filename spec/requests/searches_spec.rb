@@ -1,7 +1,6 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
 describe SearchesController do
-  fixtures :affiliates, :rss_feeds, :news_items
   let(:affiliate) { affiliates(:basic_affiliate) }
 
   context '#news' do
@@ -41,5 +40,17 @@ describe SearchesController do
         expect(response.status).to eq(200)
       end
     end
+  end
+
+  context 'when searching via the legacy video news path' do
+    let(:video_search_params) do
+      { query: 'element', affiliate: affiliate.name }
+    end
+
+    before do
+      get '/search/news/videos', params: video_search_params
+    end
+
+    it { is_expected.to redirect_to search_url(video_search_params) }
   end
 end
