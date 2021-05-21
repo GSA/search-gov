@@ -441,10 +441,6 @@ class Affiliate < ApplicationRecord
     mobile_logo.url rescue 'unable to retrieve mobile logo url' if mobile_logo_file_name.present?
   end
 
-  def header_image_url
-    header_image.url rescue 'unable to retrieve header image url' if header_image_file_name.present?
-  end
-
   def last_month_query_count
     prev_month = Date.current.prev_month
     count_query = CountQuery.new(name, 'search')

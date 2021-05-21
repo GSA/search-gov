@@ -13,27 +13,34 @@ AllCops:
     # All Instagram-related code is deprecated and will be removed
     - /**/**/instagram*
 
+Metrics/BlockLength:
+  Exclude:
+    # Exclude ActiveScaffold-based controllers
+    - app/controllers/admin/**/*
+
 Style/LambdaCall:
   Exclude:
     # Exclude files relying on Jbuilder DSL
     # https://github.com/rubocop-hq/rubocop/issues/3402
-    - 'app/models/elastic_data/*'
-    - 'app/models/custom_index_queries/*'
-    - 'app/models/logstash_queries/*'
-    - 'app/models/watcher.rb'
-    - 'lib/analytics_dsl.rb'
-    - 'lib/watcher_dsl.rb'
+    - app/models/elastic_data/*
+    - app/models/custom_index_queries/*
+    - app/models/logstash_queries/*
+    - app/models/watcher.rb
+    - lib/analytics_dsl.rb
+    - lib/watcher_dsl.rb
 
 Style/MethodCallWithArgsParentheses:
   IgnoreMacros: true
   Exclude:
     # Exclude files relying on Jbuilder DSL
-    - 'app/models/elastic_data/*'
-    - 'app/models/custom_index_queries/*'
-    - 'app/models/logstash_queries/*'
-    - 'app/models/watcher.rb'
-    - 'lib/analytics_dsl.rb'
-    - 'lib/watcher_dsl.rb'
+    - app/models/elastic_data/*
+    - app/models/custom_index_queries/*
+    - app/models/logstash_queries/*
+    - app/models/watcher.rb
+    - lib/analytics_dsl.rb
+    - lib/watcher_dsl.rb
+    # Exclude ActiveScaffold-based controllers
+    - app/controllers/admin/**/*
 
 Style/NumericLiterals:
   Exclude:
