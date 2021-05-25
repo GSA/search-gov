@@ -520,10 +520,16 @@ describe Affiliate do
                                    name: 'external-tracking-site'}) }.to_not raise_error
     end
 
-    it 'should not allow malformed external tracking code' do
-      expect { described_class.create!({ display_name: 'a site',
-                                   footer_fragment: '<script>var a;',
-                                   name: 'external-tracking-site'}) }.to raise_error
+    # malformed tags are rejected, but missing tags are not, i.e. "<h1>foo"
+    # https://cm-jira.usa.gov/browse/SRCH-2274
+    it 'does not allow malformed external tracking code' do
+      affiliate = described_class.new(
+        valid_attributes.merge(external_tracking_code: '<script>var a;</script')
+      )
+      expect(affiliate).not_to be_valid
+      expect(affiliate.errors.full_messages).to include(
+        "External tracking code is invalid: 1:35: ERROR: End tag : expected '>'."
+      )
     end
 
     it 'allows valid external tracking code' do
@@ -532,10 +538,16 @@ describe Affiliate do
                                    name: 'footer-fragment-site'}) }.to_not raise_error
     end
 
-    it 'should not allow malformed footer_fragment' do
-      expect { described_class.create!({ display_name: 'a site',
-                                   footer_fragment: '<script>var a;',
-                                   name: 'footer-fragment-site'}) }.to raise_error
+    # malformed tags are rejected, but missing tags are not, i.e. "<h1>foo"
+    # https://cm-jira.usa.gov/browse/SRCH-2274
+    it 'does not allow a malformed footer_fragment' do
+      affiliate = described_class.new(
+        valid_attributes.merge(footer_fragment: '<script>var a;</script')
+      )
+      expect(affiliate).not_to be_valid
+      expect(affiliate.errors.full_messages).to include(
+        "Footer fragment is invalid: 1:35: ERROR: End tag : expected '>'."
+      )
     end
   end
 
