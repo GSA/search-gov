@@ -376,15 +376,6 @@ Feature: Search
     Then I should see at least "1" web search results
     And every result URL should match "search.gov/blog"
 
-  Scenario: Visiting affiliate with strictui parameters
-    Given the following Affiliates exist:
-      | display_name | name    | contact_email | first_name | last_name | external_css_url                | header                                                                  | footer                                                                  |
-      | aff site     | aff.gov | aff@bar.gov   | John       | Bar       | http://cdn.aff.gov/external.css | <style>#my_header { color:red } </style> <h1 id='my_header'>header</h1> | <style>#my_footer { color:red } </style> <h1 id='my_footer'>footer</h1> |
-    When I go to aff.gov's strictui search page
-    Then I should not see the page with external affiliate stylesheet "http://cdn.aff.gov/external.css"
-    And I should not see tainted SERP header
-    And I should not see tainted SERP footer
-
   Scenario: Affiliate search on affiliate with connections
     Given the following Affiliates exist:
       | display_name | name       | contact_email | first_name | last_name | domains |

@@ -1,0 +1,311 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/site/1057602728/header_tagline_logo/1619549241/original/mini_logo.png
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        iVBORw0KGgoAAAANSUhEUgAAABYAAAAZCAQAAACf6xZlAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAZFJREFUGBmNwU1oDQAcAPD/PlrKPmSzw9R2mraDj7JWWsqSJZMhJDsoivemXJgoioOGpu1gB60cdqF2WUk4rRltlFLKDoRpBzVqeW8bZfv5KLX1ZtvvF7EsrquL5bHfTwdiafJ1oU+eW7E4DUZNabVKr1T8n0LdGFCp3keTDsb/aDTmmxYrdZo1rCoWplgPHiq3zVvftSqwIxZil8++OqpQF4ZVqfXG1chkixn3lWrwybRWBTrNGFAUmfQbkacdgyrVe2/KWTmRSQUSGtGmyG30q4yFOWXWGnd9kO25lBOyYj4VEvapUeaJp7KM61CLpsjkmX8m1MmV0u4IymI+zbqdUWyd7ZoUR2iTVq7PqNyYzw33/DDhmrL4y16cVoM9kUmpy76Y1qEkwgrjXkZ4Z0RSt8faVcVc8l2UlnJengfSElokbbXTC3+8sinmslYvXtusWhJD8Zsch1xQHZkcljJptY3SjsVS3DHkkh4lsThZzrkpgfWxFFekZTuJR5picQbN2CBX0nFFsTjNUsbsjgX9AtZabdMhQhzuAAAAAElFTkSuQmCC
+    headers:
+      Content-Type:
+      - image/png
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.11.632 ruby/2.6.6 x86_64-darwin19 resources
+      X-Amz-Acl:
+      - public-read
+      Expect:
+      - 100-continue
+      Content-Md5:
+      - 6uH1VCcGpag797A21L81cg==
+      X-Amz-Date:
+      - 20210427T184721Z
+      Host:
+      - "<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com"
+      X-Amz-Content-Sha256:
+      - bad02614f4d0c320d62b980725576149477c9b7de73ba5aa082711dc82d3b32e
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20210427/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
+        SignedHeaders=content-md5;content-type;host;x-amz-acl;x-amz-content-sha256;x-amz-date,
+        Signature=662837bfdaf12e969b4c4eae66bb280c87344fb022db47d8db7751c4529144f2
+      Content-Length:
+      - '495'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - kcXuVIiyvfAh0a0l56B8BoBp4124CIifOqesgb7FAKczOIrsPYfzRiMzCbGgyb7nxlK9utLbBI4=
+      X-Amz-Request-Id:
+      - XET1F28XYGS75BQW
+      Date:
+      - Tue, 27 Apr 2021 18:47:23 GMT
+      Etag:
+      - '"eae1f5542706a5a83bf7b036d4bf3572"'
+      Content-Length:
+      - '0'
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version:
+  recorded_at: Tue, 27 Apr 2021 18:47:22 GMT
+- request:
+    method: put
+    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/site/1057602728/header_tagline_logo/1619549241/large/mini_logo.png
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        iVBORw0KGgoAAAANSUhEUgAAABYAAAAZCAQAAACf6xZlAAAABGdBTUEAALGPC/xhBQAAAAJiS0dEAP+Hj8y/AAAAB3RJTUUH5QQbEi8VmKb9VwAAAAFvck5UAc+id5oAAAG2SURBVDjLjdFPaA5wGAfw593Wmmwj86em5uLVVkJZK6SMLJn8C6kdlAPblAPeohw4aGi1HSxpcXBA7bKSf6f5V4aUWnEgTDuoTeF9Z8h8XCbt9W723H6/5/N7+j19I6ZUzlg1NRm2+2nHVGCxDnQrdO5/tE6/r1Jm6pKeDJbqxD1Jtd4ZtnNiWm/AF82ma/dLr8qJYJnLuKXCGq98k1JifW660Qcf7VGqA70q1XjhVC66wqjr5qrz3oiUEu1G3TMjF+7xUqFWPJBU642vjsjPRRegUT1azHABPZITrXbAL3Nc9Vaex9L2Sfw7r9E21crd91DCoDY12DLeFURExJVYOXb+HPWRH0UxGgsj4mn21AadDiuzyDpblEVokVGhW7+CbHzWNd99clr52M1WHFSNzbnWmuuEISPazI5QZNCzCK+91KTTHa1ZYSt2XEbaUYVuyGjUrMlqGzwBzy0b/2C+LvRZrkoTHkVEyLfLMVW5vrRb2rBZlsrYO76XyMEvRVXcjGQcSgxNiiUiFfPiVZyPJYm+mLyclJFnP25n5/cnwb+1NqbF4rgYefEj7v5vcoO0AZtyd38D5zlNAMd7TrMAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjEtMDQtMjdUMTg6NDc6MjErMDA6MDCqQjFLAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIxLTA0LTI3VDE4OjQ3OjIxKzAwOjAw2x+J9wAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAASUVORK5CYII=
+    headers:
+      Content-Type:
+      - image/png
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.11.632 ruby/2.6.6 x86_64-darwin19 resources
+      X-Amz-Acl:
+      - public-read
+      Expect:
+      - 100-continue
+      Content-Md5:
+      - pkTGqBSS/KlhpsctHmwudg==
+      X-Amz-Date:
+      - 20210427T184722Z
+      Host:
+      - "<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com"
+      X-Amz-Content-Sha256:
+      - 61138c0a5c7f78ccd2e06be854b48295ff3affe67b1bb04560e4003cf7652b6d
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20210427/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
+        SignedHeaders=content-md5;content-type;host;x-amz-acl;x-amz-content-sha256;x-amz-date,
+        Signature=93a4ee7ff53e58ce24b613db88ecc3a4074f0fb42d210278eb0581bcf1f17f0a
+      Content-Length:
+      - '692'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - LSFrgBg1yCO4laeFzRdBZMKl86RFi5+XyvphnNFBKs8HtWjqZMWi4j/asKdBHqUNDRSWCm45mj8=
+      X-Amz-Request-Id:
+      - XETDXH5E5J4KD18A
+      Date:
+      - Tue, 27 Apr 2021 18:47:23 GMT
+      Etag:
+      - '"a644c6a81492fca961a6c72d1e6c2e76"'
+      Content-Length:
+      - '0'
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version:
+  recorded_at: Tue, 27 Apr 2021 18:47:22 GMT
+- request:
+    method: head
+    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/site/1057602728/header_tagline_logo/1619549241/original/mini_logo.png
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.11.632 ruby/2.6.6 x86_64-darwin19 resources
+      X-Amz-Date:
+      - 20210427T184723Z
+      Host:
+      - "<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com"
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20210427/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=d10c1513d1d1d20b6d904ea07c19bada58bbd72355c1e152df92e7a562049151
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - 4gJxUL5ut7jDHoTeZP4fedrCqn8krmi5f+hwmuNjiiRvZ93jIW2JuYpbyiptmq+e6s/ZBzD3yok=
+      X-Amz-Request-Id:
+      - NH97EC6RQWMGHNN6
+      Date:
+      - Tue, 27 Apr 2021 18:47:24 GMT
+      Last-Modified:
+      - Tue, 27 Apr 2021 18:47:23 GMT
+      Etag:
+      - '"eae1f5542706a5a83bf7b036d4bf3572"'
+      Accept-Ranges:
+      - bytes
+      Content-Type:
+      - image/png
+      Content-Length:
+      - '495'
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version:
+  recorded_at: Tue, 27 Apr 2021 18:47:23 GMT
+- request:
+    method: head
+    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/site/1057602728/header_tagline_logo/1619549241/large/mini_logo.png
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.11.632 ruby/2.6.6 x86_64-darwin19 resources
+      X-Amz-Date:
+      - 20210427T184723Z
+      Host:
+      - "<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com"
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20210427/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=1b78175fddd25345f06dc3533bc7b7aad150b0256bf77534daf286d3af2f0341
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - oSGgwQdFUGAND1e2JPdF+LgjMOV0VPT6fi/WDvJYLqtx4XRERvkSLisvPe6n3BKkRJUDinKP8y0=
+      X-Amz-Request-Id:
+      - 37XFAZFCRZKRSYB9
+      Date:
+      - Tue, 27 Apr 2021 18:47:25 GMT
+      Last-Modified:
+      - Tue, 27 Apr 2021 18:47:23 GMT
+      Etag:
+      - '"a644c6a81492fca961a6c72d1e6c2e76"'
+      Accept-Ranges:
+      - bytes
+      Content-Type:
+      - image/png
+      Content-Length:
+      - '692'
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version:
+  recorded_at: Tue, 27 Apr 2021 18:47:24 GMT
+- request:
+    method: delete
+    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/site/1057602728/header_tagline_logo/1619549241/original/mini_logo.png
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.11.632 ruby/2.6.6 x86_64-darwin19 resources
+      X-Amz-Date:
+      - 20210427T184724Z
+      Host:
+      - "<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com"
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20210427/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=4e13c0b389eb9766f77fad0bc759a0b3d90951e6605b416977de2cee444c0788
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      X-Amz-Id-2:
+      - zsPFh8Fa4dCkHgC1R3Ys6Uge712q+9SvAwC68+RVQviJZmpXGVodzro3kt92ZmKNIlbV8fZDYNQ=
+      X-Amz-Request-Id:
+      - 37XA547B0WJZACZH
+      Date:
+      - Tue, 27 Apr 2021 18:47:25 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version:
+  recorded_at: Tue, 27 Apr 2021 18:47:24 GMT
+- request:
+    method: delete
+    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/site/1057602728/header_tagline_logo/1619549241/large/mini_logo.png
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.11.632 ruby/2.6.6 x86_64-darwin19 resources
+      X-Amz-Date:
+      - 20210427T184724Z
+      Host:
+      - "<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com"
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20210427/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=dcb13f111d518ba552f325b2833591e108d3770cdafbed745dbc5775dc62bdc2
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      X-Amz-Id-2:
+      - FAO6JCn2aXRynXlWsPM5b/knnRsswM90aPbGfxgOetPcb+WQsa5+0Kz8s9bfNnJUe2nGilFEgBA=
+      X-Amz-Request-Id:
+      - 37X36XNJ906BDB8T
+      Date:
+      - Tue, 27 Apr 2021 18:47:25 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version:
+  recorded_at: Tue, 27 Apr 2021 18:47:24 GMT
+recorded_with: VCR 4.0.0

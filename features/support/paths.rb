@@ -20,8 +20,6 @@ module NavigationHelpers
       search_path(:affiliate => $1, :m => 'override')
     when /^(.*)'s advanced search page$/
       advanced_search_path(:affiliate => $1)
-    when /^(.*)'s strictui search page$/
-      search_path(:affiliate => $1, :strictui => "1")
     when /^(.*)'s search page with unsanitized "([^\"]*)" query$/
       search_path(:affiliate => $1, :query => "<b>#{$2}</b><script>script</script>")
     when /^(.*)'s search page with site limited to "([^\"]*)"$/
