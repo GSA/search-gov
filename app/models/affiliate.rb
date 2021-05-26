@@ -212,8 +212,6 @@ class Affiliate < ApplicationRecord
   THEMES = ActiveSupport::OrderedHash.new
   THEMES[:default] = {
     content_background_color: '#FFFFFF',
-    content_border_color: '#CACACA',
-    content_box_shadow_color: '#555555',
     description_text_color: '#000000',
     footer_background_color: '#DFDFDF',
     footer_links_text_color: '#000000',
@@ -240,9 +238,7 @@ class Affiliate < ApplicationRecord
     header_tagline_font_family: HeaderTaglineFontFamily::DEFAULT,
     header_tagline_font_size: '1.3em',
     header_tagline_font_style: 'italic',
-    logo_alignment: LogoAlignment::DEFAULT,
-    show_content_border: '0',
-    show_content_box_shadow: '0'
+    logo_alignment: LogoAlignment::DEFAULT
   }.merge(THEMES[:default])
 
   CUSTOM_INDEXING_LANGUAGES = %w(en es)
@@ -358,14 +354,6 @@ class Affiliate < ApplicationRecord
       a.domain.length <=> b.domain.length
     end
     all_site_domains.each { |domain| domain.destroy unless domain.valid? }
-  end
-
-  def show_content_border?
-    css_property_hash[:show_content_border] == '1'
-  end
-
-  def show_content_box_shadow?
-    css_property_hash[:show_content_box_shadow] == '1'
   end
 
   def refresh_indexed_documents(scope)

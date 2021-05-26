@@ -158,22 +158,6 @@ Then /^I should not see the page with internal CSS "([^"]*)"$/ do |css|
   page.body.should_not match(css)
 end
 
-Then /^I should see the page with content border$/ do
-  page.should have_selector('body.with-content-border')
-end
-
-Then /^I should not see the page with content border$/ do
-  page.should_not have_selector('body.with-content-border')
-end
-
-Then /^I should see the page with content box shadow$/ do
-  page.should have_selector('body.with-content-box-shadow')
-end
-
-Then /^I should not see the page with content box shadow$/ do
-  page.should_not have_selector('body.with-content-box-shadow')
-end
-
 Then /^I should see "([^"]*)" image$/ do |image_file_name|
   page.should have_selector("img[src*='#{image_file_name}']")
 end

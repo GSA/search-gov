@@ -1,20 +1,5 @@
 #container
   background-color: <%= render_affiliate_css_property_value(@css_hash, :content_background_color) %>
-body
-  &.with-content-border
-    #container, #usasearch_footer
-      border: 1px solid <%= render_affiliate_css_property_value(@css_hash, :content_border_color) %>
-  &.with-content-box-shadow
-    #container
-      -moz-box-shadow: <%= render_affiliate_css_property_value(@css_hash, :content_box_shadow_color) %> 0 0 5px
-      -webkit-box-shadow: <%= render_affiliate_css_property_value(@css_hash, :content_box_shadow_color) %> 0 0 5px
-      -o-box-shadow: <%= render_affiliate_css_property_value(@css_hash, :content_box_shadow_color) %> 0 0 5px
-      box-shadow: <%= render_affiliate_css_property_value(@css_hash, :content_box_shadow_color) %> 0 0 5px
-    #usasearch_footer
-      -moz-box-shadow: <%= render_affiliate_css_property_value(@css_hash, :content_box_shadow_color) %> 0 1px 5px
-      -webkit-box-shadow: <%= render_affiliate_css_property_value(@css_hash, :content_box_shadow_color) %> 0 1px 5px
-      -o-box-shadow: <%= render_affiliate_css_property_value(@css_hash, :content_box_shadow_color) %> 0 1px 5px
-      box-shadow: <%= render_affiliate_css_property_value(@css_hash, :content_box_shadow_color) %> 0 1px 5px
 #header.managed, #usasearch_footer.managed
   background-color: <%= render_affiliate_css_property_value(@css_hash, :search_button_text_color) %>
   color: <%= render_affiliate_css_property_value(@css_hash, :search_button_background_color) %>
