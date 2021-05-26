@@ -2,6 +2,7 @@ module Renderers
   class AffiliateCss
     include AffiliateCssHelper
 
+    # deprecated - legacy SERP
     DESKTOP_LOOK_AND_FEEL_TEMPLATE = File.open("#{Rails.root}/lib/renderers/templates/_look_and_feel.css.sass.erb").read.freeze
     MOBILE_LOOK_AND_FEEL_TEMPLATE = File.open("#{Rails.root}/lib/renderers/templates/_mobile_look_and_feel.css.sass.erb").read.freeze
 
@@ -9,6 +10,7 @@ module Renderers
       @css_hash = css_hash.freeze
     end
 
+    # deprecated - legacy SERP
     def render_desktop_css
       render_css render_sass_template(ERB.new DESKTOP_LOOK_AND_FEEL_TEMPLATE, nil, '<>')
     end

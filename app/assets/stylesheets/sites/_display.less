@@ -91,70 +91,6 @@
   }
 }
 
-#legacy-preview-font-colors {
-  margin-bottom: 10px;
-
-  .serp-content {
-    .border-top-radius(@baseBorderRadius);
-    .clearfix();
-    border-style: solid;
-    border-width: 0;
-    margin: 0 15px;
-    padding: 10px;
-    position: relative;
-
-    &.serp-content-show-border {
-      border-width: 1px;
-      margin: 10px 15px 0;
-    }
-  }
-
-  .serp-search-box input[type='text'] {
-    width: 153px;
-  }
-
-  .serp-sidebar {
-    float: left;
-    line-height: 1.3;
-    margin-right: 10px;
-  }
-
-  .serp-sidebar-item-active {
-    font-weight: bold;
-  }
-
-  .serp-results {
-    float: left;
-  }
-
-  .serp-result {
-    margin-bottom: 10px;
-  }
-
-  .serp-result-title {
-    text-decoration: underline;
-    line-height: 1.1;
-  }
-
-  .serp-result-description, .serp-result-url {
-    font-size: (@baseFontSize * 0.8);
-    line-height: 1.2;
-  }
-
-  .serp-footer-button {
-    height: 15px;
-    padding: 5px;
-    position: absolute;
-    right: -10px;
-    bottom: 0;
-    width: 15px;
-
-    .caret {
-      border-width: 8px;
-    }
-  }
-}
-
 #preview-font-colors {
   border: 1px solid @siteNavBorderColor;
   clear: both;
@@ -266,8 +202,4 @@
   .action-bar .btn-group .description {
     .off-screen-text();
   }
-}
-
-#validator-form {
-  .hide();
 }

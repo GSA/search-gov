@@ -520,10 +520,16 @@ describe Affiliate do
                                    name: 'external-tracking-site'}) }.to_not raise_error
     end
 
-    it 'should not allow malformed external tracking code' do
-      expect { described_class.create!({ display_name: 'a site',
-                                   footer_fragment: '<script>var a;',
-                                   name: 'external-tracking-site'}) }.to raise_error
+    # malformed tags are rejected, but missing tags are not, i.e. "<h1>foo"
+    # https://cm-jira.usa.gov/browse/SRCH-2274
+    it 'does not allow malformed external tracking code' do
+      affiliate = described_class.new(
+        valid_attributes.merge(external_tracking_code: '<script>var a;</script')
+      )
+      expect(affiliate).not_to be_valid
+      expect(affiliate.errors.full_messages).to include(
+        "External tracking code is invalid: 1:35: ERROR: End tag : expected '>'."
+      )
     end
 
     it 'allows valid external tracking code' do
@@ -532,10 +538,16 @@ describe Affiliate do
                                    name: 'footer-fragment-site'}) }.to_not raise_error
     end
 
-    it 'should not allow malformed footer_fragment' do
-      expect { described_class.create!({ display_name: 'a site',
-                                   footer_fragment: '<script>var a;',
-                                   name: 'footer-fragment-site'}) }.to raise_error
+    # malformed tags are rejected, but missing tags are not, i.e. "<h1>foo"
+    # https://cm-jira.usa.gov/browse/SRCH-2274
+    it 'does not allow a malformed footer_fragment' do
+      affiliate = described_class.new(
+        valid_attributes.merge(footer_fragment: '<script>var a;</script')
+      )
+      expect(affiliate).not_to be_valid
+      expect(affiliate.errors.full_messages).to include(
+        "Footer fragment is invalid: 1:35: ERROR: End tag : expected '>'."
+      )
     end
   end
 
@@ -1011,26 +1023,26 @@ describe Affiliate do
         'visited_title_link_color' => '#0000ff'
       }
       site = described_class.create!(css_property_hash: css_property_hash,
-                               display_name: 'original site',
-                               header_tagline_logo_content_type: 'image/jpeg',
-                               header_tagline_logo_file_name: 'test.jpg',
-                               header_tagline_logo_file_size: 100,
-                               header_tagline_logo_updated_at: DateTime.current,
-                               mobile_logo_content_type: 'image/jpeg',
-                               mobile_logo_file_name: 'test.jpg',
-                               mobile_logo_file_size: 100,
-                               mobile_logo_updated_at: DateTime.current,
-                               name: 'original-site',
-                               page_background_image_content_type: 'image/jpeg',
-                               page_background_image_file_name: 'test.jpg',
-                               page_background_image_file_size: 100,
-                               page_background_image_updated_at: DateTime.current,
-                               theme: 'custom')
+                                     display_name: 'original site',
+                                     header_tagline_logo_content_type: 'image/jpeg',
+                                     header_tagline_logo_file_name: 'test.jpg',
+                                     header_tagline_logo_file_size: 100,
+                                     header_tagline_logo_updated_at: DateTime.current,
+                                     mobile_logo_content_type: 'image/jpeg',
+                                     mobile_logo_file_name: 'test.jpg',
+                                     mobile_logo_file_size: 100,
+                                     mobile_logo_updated_at: DateTime.current,
+                                     name: 'original-site',
+                                     page_background_image_content_type: 'image/jpeg',
+                                     page_background_image_file_name: 'test.jpg',
+                                     page_background_image_file_size: 100,
+                                     page_background_image_updated_at: DateTime.current,
+                                     theme: 'custom')
       described_class.find site.id
     end
 
     include_examples 'dupable',
-                     %w(api_access_key
+                     %w[api_access_key
                         header_tagline_logo_content_type
                         header_tagline_logo_file_name
                         header_tagline_logo_file_size
@@ -1043,7 +1055,7 @@ describe Affiliate do
                         page_background_image_content_type
                         page_background_image_file_name
                         page_background_image_file_size
-                        page_background_image_updated_at)
+                        page_background_image_updated_at]
 
     it 'sets @css_property_hash instance variable' do
       expect(subject.instance_variable_get(:@css_property_hash)).to include(:title_link_color, :visited_title_link_color)
@@ -1106,31 +1118,30 @@ describe Affiliate do
       it 'merges existing colors into template_schema' do
         affiliate.update_attributes({
           'css_property_hash'=>{
-          'header_tagline_font_size'=>nil,
-          'content_background_color'=>'#FFFFFF',
-          'content_border_color'=>'#CACACA',
-          'content_box_shadow_color'=>'#555555',
-          'description_text_color'=>'#000000',
-          'footer_background_color'=>'#DFDFDF',
-          'footer_links_text_color'=>'#000000',
-          'header_links_background_color'=>'#0068c4',
-          'header_links_text_color'=>'#fff',
-          'header_text_color'=>'#000000',
-          'header_background_color'=>'#FFFFFF',
-          'header_tagline_background_color'=>'#000000',
-          'header_tagline_color'=>'#FFFFFF',
-          'search_button_text_color'=>'#FFFFFF',
-          'search_button_background_color'=>'#00396F',
-          'left_tab_text_color'=>'#9E3030',
-          'navigation_background_color'=>'#F1F1F1',
-          'navigation_link_color'=>'#505050',
-          'page_background_color'=>'#99999',
-          'title_link_color'=>'#2200CC',
-          'url_link_color'=>'#006800',
-          'visited_title_link_color'=>'#800080',
-          'font_family'=>'Arial, sans-serif',
-          'header_tagline_font_family'=>'Georgia, "Times New Roman", serif',
-          'header_tagline_font_style'=>'italic'},
+            'header_tagline_font_size'=>nil,
+            'content_background_color'=>'#FFFFFF',
+            'description_text_color'=>'#000000',
+            'footer_background_color'=>'#DFDFDF',
+            'footer_links_text_color'=>'#000000',
+            'header_links_background_color'=>'#0068c4',
+            'header_links_text_color'=>'#fff',
+            'header_text_color'=>'#000000',
+            'header_background_color'=>'#FFFFFF',
+            'header_tagline_background_color'=>'#000000',
+            'header_tagline_color'=>'#FFFFFF',
+            'search_button_text_color'=>'#FFFFFF',
+            'search_button_background_color'=>'#00396F',
+            'left_tab_text_color'=>'#9E3030',
+            'navigation_background_color'=>'#F1F1F1',
+            'navigation_link_color'=>'#505050',
+            'page_background_color'=>'#99999',
+            'title_link_color'=>'#2200CC',
+            'url_link_color'=>'#006800',
+            'visited_title_link_color'=>'#800080',
+            'font_family'=>'Arial, sans-serif',
+            'header_tagline_font_family'=>'Georgia, "Times New Roman", serif',
+            'header_tagline_font_style'=>'italic'
+          },
           'theme'=>'custom'
         })
         affiliate.port_classic_theme
