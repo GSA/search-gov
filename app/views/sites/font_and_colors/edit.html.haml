@@ -1,7 +1,4 @@
 = content_for_site_page_title @site, 'Font & Colors'
-- if @site.force_mobile_format?
-  .font-colors-wrapper{ data: { default_font_family: FontFamily::DEFAULT_CSS_PROPERTY } }
-    = render partial: 'preview_font_and_colors', locals: { css_property_hash: @site.css_property_hash }
-  = render partial: 'form', locals: { site: @site }
-- else
-  = render partial: 'legacy_edit', locals: { site: @site }
+.font-colors-wrapper{ data: { default_font_family: FontFamily::DEFAULT_CSS_PROPERTY } }
+  = render partial: 'preview_font_and_colors', locals: { css_property_hash: @site.css_property_hash }
+= render partial: 'form', locals: { site: @site }

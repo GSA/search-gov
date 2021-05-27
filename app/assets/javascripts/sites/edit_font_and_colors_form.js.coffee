@@ -1,29 +1,6 @@
-isShowBoxShadow = () ->
-  $('#site_css_property_hash_show_content_box_shadow').prop 'checked'
-
-setBoxShadow = (selector, shadow) ->
-  $selector = $(selector)
-  $selector.css '-webkit-box-shadow', shadow
-  $selector.css '-moz-box-shadow', shadow
-  $selector.css 'box-shadow', shadow
-
-changeBoxShadow = (e) ->
-  $this = $(e.target)
-  targetSelector = $this.attr 'data-target-selector'
-
-  if isShowBoxShadow()
-    shadow = "0 0 5px #{e.color.toHex()}"
-  else
-    shadow = '0 0 0'
-
-  setBoxShadow targetSelector, shadow
-
 changeColor = (e) ->
   $this = $(this)
   $colorInputField = $this.find('input[type="text"]')[0]
-  if $colorInputField.id == 'site_css_property_hash_content_box_shadow_color'
-    changeBoxShadow e
-    return
   targetSelector = $this.attr 'data-target-selector'
   targetCssProperties = $this.attr('data-target-css-properties').split /,\s+/
   $(targetSelector).css targetCssProperty, e.color.toHex() for targetCssProperty in targetCssProperties
@@ -83,26 +60,3 @@ $(document).on 'change', '#site_css_property_hash_font_family', (e) ->
   fontFamilyName = $(this).val()
   fontFamilyName = $('.font-colors-wrapper').data('defaultFontFamily') if fontFamilyName == 'Default'
   changeCssProperty e, fontFamilyName
-
-showOrHideContentBorder = (e, isShowContentBorder) ->
-  targetSelector = $(e.target).attr 'data-target-selector'
-  if isShowContentBorder
-    $(targetSelector).addClass 'serp-content-show-border'
-  else
-    $(targetSelector).removeClass 'serp-content-show-border'
-
-$(document).on 'change', '#site_css_property_hash_show_content_border', (e) ->
-  isShowContentBorder = $(this).prop('checked')
-  showOrHideContentBorder e, isShowContentBorder
-
-showOrHideBoxShadow = () ->
-  $colorInputField = $('#site_css_property_hash_content_box_shadow_color')
-  color = $colorInputField.val()
-  contentSelector = '#legacy-preview-font-colors .serp-content'
-  if isShowBoxShadow() and isValidColor(color)
-    setBoxShadow contentSelector, "0 0 5px #{color}"
-  else if !isShowBoxShadow()
-    setBoxShadow contentSelector, '0 0 0'
-
-$(document).on 'change', '#site_css_property_hash_show_content_box_shadow', showOrHideBoxShadow
-

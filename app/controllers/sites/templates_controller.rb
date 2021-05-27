@@ -1,3 +1,4 @@
+# deprecated - Search Consumer
 class Sites::TemplatesController < Sites::SetupSiteController
   def edit
   end
