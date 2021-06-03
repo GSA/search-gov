@@ -54,8 +54,6 @@ Feature:  Administration
     And I should see "Enable/disable Settings (Show)"
     And I should see "Display Settings (Show)"
     And I should see "Analytics-Tracking Code (Show)"
-    And I should see "Dublin Core Mappings (Show)"
-    And I should see "Legacy Display Settings (Show)"
     When I follow "Show" within the first subsection row
     And I fill in "Display name" with "New Name"
     And I press "Update"
