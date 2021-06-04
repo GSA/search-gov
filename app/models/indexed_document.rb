@@ -30,7 +30,7 @@ class IndexedDocument < ApplicationRecord
     destroy and return unless errors.empty?
     begin
       uri = URI(url)
-      timeout(DOWNLOAD_TIMEOUT_SECS) do
+      Timeout.timeout(DOWNLOAD_TIMEOUT_SECS) do
         self.load_time = Benchmark.realtime do
           Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
             request = Net::HTTP::Get.new uri.request_uri, {'User-Agent' => DEFAULT_USER_AGENT }
