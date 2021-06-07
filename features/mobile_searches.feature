@@ -456,7 +456,7 @@ Feature: Searches using mobile device
     And I fill in "Enter your search term" with "jobs"
     And I press "Search"
     Then I should see "Federal Job Openings"
-    And I should see 10 job postings
+    And I should see at least 10 job postings
     And I should see an annual salary
     And I should see an application deadline
     And I should see an image link to "USAJobs.gov" with url for "https://www.usajobs.gov/"
@@ -475,6 +475,19 @@ Feature: Searches using mobile device
     Then I should see an image link to "USAJobs.gov" with url for "https://www.usajobs.gov/"
     And I should see "Ninguna oferta de trabajo en su región coincide con su búsqueda"
     And I should see a link to "​Más trabajos en el gobierno federal en USAJobs.gov" with url for "https://www.usajobs.gov/Search/Results?hp=public"
+
+  Scenario: Agency job search
+    Given the following Agencies exist:
+      | name                            | abbreviation | organization_codes |
+      | General Services Administration | GSA          | GS                 |
+    And the following Affiliates exist:
+      | display_name | name       | agency_abbreviation | jobs_enabled | contact_email                |
+      | English site | agency.gov | GSA                 | true         | affiliate_admin@fixtures.org |
+    When I am on agency.gov's search page
+    And I search for "jobs"
+    Then I should see "Job Openings at GSA"
+    And I should see at least 1 job posting
+    And I should see a link to "More GSA job openings on USAJobs.gov" with url for "https://www.usajobs.gov/Search/Results?a=GS&hp=public"
 
   Scenario: When using tablet device
     Given I am using a mobile device

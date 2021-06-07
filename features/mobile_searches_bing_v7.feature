@@ -449,17 +449,6 @@ Feature: Searches using mobile device
     When I am on en.agency.gov's "Inactive news search" mobile news search page
     Then I should see "Inactive news search" within the SERP active navigation
 
-  Scenario: Job search
-    Given the following Affiliates exist:
-      | display_name | name   | contact_email    | first_name | last_name | jobs_enabled | search_engine |
-      | English site | usagov | admin@agency.gov | John       | Bar       | 1            | BingV7        |
-    When I am on usagov's mobile search page
-    And I fill in "Enter your search term" with "jobs"
-    And I press "Search"
-    Then I should see "Federal Job Openings"
-    And I should see an image link to "USAJobs.gov" with url for "https://www.usajobs.gov/"
-    And I should see a link to "More federal job openings on USAJobs.gov" with url for "https://www.usajobs.gov/Search/Results?hp=public"
-
   Scenario: When using tablet device
     Given I am using a mobile device
     And the following Affiliates exist:

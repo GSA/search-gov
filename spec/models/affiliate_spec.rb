@@ -871,19 +871,6 @@ describe Affiliate do
     end
   end
 
-  describe '#header_image_url' do
-    it 'returns header image url' do
-      header_image_url = 'http://link.to/header_image.png'
-      header_image = double('header image')
-      affiliate = affiliates(:power_affiliate)
-      expect(affiliate).to receive(:header_image_file_name).and_return('header_image.png')
-      expect(affiliate).to receive(:header_image).and_return(header_image)
-      expect(header_image).to receive(:url).and_return(header_image_url)
-
-      expect(affiliate.header_image_url).to eq(header_image_url)
-    end
-  end
-
   describe '#assign_sitelink_generator_names!' do
     it 'assigns sitelink generator names' do
       sitelink_generator_names = %w(SitelinkGenerator::FakeGenerator).freeze

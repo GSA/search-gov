@@ -17,27 +17,34 @@ AllCops:
     - app/controllers/sites/templated_font_and_colors_controller.rb
     - app/controllers/sites/templates_controller.rb
 
+Metrics/BlockLength:
+  Exclude:
+    # Exclude ActiveScaffold-based controllers
+    - app/controllers/admin/**/*
+
 Style/LambdaCall:
   Exclude:
     # Exclude files relying on Jbuilder DSL
     # https://github.com/rubocop-hq/rubocop/issues/3402
-    - 'app/models/elastic_data/*'
-    - 'app/models/custom_index_queries/*'
-    - 'app/models/logstash_queries/*'
-    - 'app/models/watcher.rb'
-    - 'lib/analytics_dsl.rb'
-    - 'lib/watcher_dsl.rb'
+    - app/models/elastic_data/*
+    - app/models/custom_index_queries/*
+    - app/models/logstash_queries/*
+    - app/models/watcher.rb
+    - lib/analytics_dsl.rb
+    - lib/watcher_dsl.rb
 
 Style/MethodCallWithArgsParentheses:
   IgnoreMacros: true
   Exclude:
     # Exclude files relying on Jbuilder DSL
-    - 'app/models/elastic_data/*'
-    - 'app/models/custom_index_queries/*'
-    - 'app/models/logstash_queries/*'
-    - 'app/models/watcher.rb'
-    - 'lib/analytics_dsl.rb'
-    - 'lib/watcher_dsl.rb'
+    - app/models/elastic_data/*
+    - app/models/custom_index_queries/*
+    - app/models/logstash_queries/*
+    - app/models/watcher.rb
+    - lib/analytics_dsl.rb
+    - lib/watcher_dsl.rb
+    # Exclude ActiveScaffold-based controllers
+    - app/controllers/admin/**/*
 
 Style/NumericLiterals:
   Exclude:
