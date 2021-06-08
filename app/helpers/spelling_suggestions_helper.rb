@@ -23,15 +23,6 @@ module SpellingSuggestionsHelper
     "+#{query}"
   end
 
-  def legacy_spelling_suggestion(search, affiliate, vertical)
-    spelling_suggestion_links(search, {}) do |suggested_query, suggested_url, original_url|
-      did_you_mean = t :did_you_mean,
-                       :assumed_term => tracked_click_link(suggested_url, h(suggested_query), search, affiliate, 0, 'BSPEL', vertical, "style='font-weight:bold'"),
-                       :term_as_typed => tracked_click_link(original_url, h(search.query), search, affiliate, 0, 'OVER', vertical, "style='font-style:italic'")
-      content_tag(:h4, raw(did_you_mean), :class => 'did-you-mean')
-    end
-  end
-
   def spelling_suggestion(search, search_options)
     spelling_suggestion_links(search, search_options) do |suggested_query, suggested_url, original_url|
       render_suggestion(original_url, search, suggested_query, suggested_url, 'BSPEL', 'OVER')

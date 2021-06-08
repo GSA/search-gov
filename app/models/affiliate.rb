@@ -250,39 +250,27 @@ class Affiliate < ApplicationRecord
   end
 
   define_hash_columns_accessors column_name_method: :live_fields,
-                                fields: [:header, # legacy SERP
-                                         :footer, # legacy SERP
-                                         :header_footer_css, # legacy SERP
-                                         :nested_header_footer_css, # legacy SERP
-                                         :managed_header_links,
-                                         :managed_footer_links,
-                                         :external_tracking_code,
-                                         :submitted_external_tracking_code,
-                                         :look_and_feel_css, # legacy SERP
-                                         :mobile_look_and_feel_css,
-                                         :logo_alt_text,
-                                         :sitelink_generator_names,
-                                         :header_tagline,
-                                         :header_tagline_url,
-                                         :page_one_more_results_pointer,
-                                         :no_results_pointer,
-                                         :footer_fragment,
-                                         :navigation_dropdown_label,
-                                         :related_sites_dropdown_label,
-                                         :additional_guidance_text,
-                                         :managed_no_results_pages_alt_links]
-
-  # deprecated - legacy SERP
-  define_hash_columns_accessors column_name_method: :staged_fields,
-                                fields: [:staged_header, :staged_footer,
-                                         :staged_header_footer_css, :staged_nested_header_footer_css]
-
-  serialize :dublin_core_mappings, Hash
-  define_hash_columns_accessors column_name_method: :dublin_core_mappings,
-                                fields: [:dc_contributor, :dc_publisher, :dc_subject]
+                                fields: %i[managed_header_links
+                                           managed_footer_links
+                                           external_tracking_code
+                                           submitted_external_tracking_code
+                                           mobile_look_and_feel_css
+                                           logo_alt_text
+                                           sitelink_generator_names
+                                           header_tagline
+                                           header_tagline_url
+                                           page_one_more_results_pointer
+                                           no_results_pointer
+                                           footer_fragment
+                                           navigation_dropdown_label
+                                           related_sites_dropdown_label
+                                           additional_guidance_text
+                                           managed_no_results_pages_alt_links]
 
   define_hash_columns_accessors column_name_method: :css_property_hash,
-                                fields: %i(header_tagline_font_family header_tagline_font_size header_tagline_font_style)
+                                fields: %i[header_tagline_font_family
+                                           header_tagline_font_size
+                                           header_tagline_font_style]
 
   model_name.class_eval do
     def singular_route_key
@@ -711,11 +699,6 @@ class Affiliate < ApplicationRecord
     @live_fields ||= live_fields_json.blank? ? {} : JSON.parse(live_fields_json, :symbolize_names => true)
   end
 
-  # deprecated - legacy SERP
-  def staged_fields
-    @staged_fields ||= staged_fields_json.blank? ? {} : JSON.parse(staged_fields_json, :symbolize_names => true)
-  end
-
   def set_json_fields
     self.live_fields_json = ActiveSupport::OrderedHash[live_fields.sort].to_json
   end
@@ -745,7 +728,6 @@ class Affiliate < ApplicationRecord
 
   def generate_look_and_feel_css
     renderer = Renderers::AffiliateCss.new(build_css_hash)
-    self.look_and_feel_css = renderer.render_desktop_css # legacy SERP
     self.mobile_look_and_feel_css = renderer.render_mobile_css
   end
 

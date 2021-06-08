@@ -1,8 +1,0 @@
-.searchresult{:id => "searchresult#{index+1}"}
-  %h2
-    = display_web_result_extname_prefix(result)
-    = display_web_result_title(result, search, affiliate, index, @search_vertical)
-  %h3.result-url= truncate_url(result['unescapedUrl'])
-  - if result["publishedAt"]
-    %h4= news_item_time_ago_in_words(result["publishedAt"])
-  %h3= display_result_description(result)
