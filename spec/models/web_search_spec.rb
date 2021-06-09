@@ -116,23 +116,6 @@ describe WebSearch do
         described_class.new(@valid_options).send(:search)
       end
     end
-
-    context 'when Google is the engine' do
-      before do
-        @affiliate = affiliates(:basic_affiliate)
-        @valid_options = {query: 'government', affiliate: @affiliate}
-        google_search = GoogleWebSearch.new(@valid_options)
-        allow(GoogleWebSearch).to receive(:new).and_return google_search
-        allow(google_search).to receive(:execute_query)
-      end
-
-      it 'should instrument the call to the search engine with the proper action.service namespace and query param hash' do
-        expect(@affiliate.search_engine).to eq('Google')
-        expect(ActiveSupport::Notifications).to receive(:instrument).
-          with('google_web_search.usasearch', hash_including(query: hash_including(term: 'government')))
-        described_class.new(@valid_options).send(:search)
-      end
-    end
   end
 
   describe '#run' do
@@ -226,21 +209,6 @@ describe WebSearch do
 
         its(:module_tag) { is_expected.to eq('AWEB') }
         its(:fake_total?) { is_expected.to be_true }
-      end
-
-      context 'when the search_engine is Google' do
-        subject(:search) do
-          affiliate = affiliates(:usagov_affiliate)
-          affiliate.search_engine = 'Google'
-
-          described_class.new(affiliate: affiliate,
-                              page: 1,
-                              query: 'highlight enabled')
-        end
-
-        before { search.run }
-
-        its(:module_tag) { is_expected.to eq('GWEB') }
       end
 
       context 'when sitelinks are present in at least one result' do
