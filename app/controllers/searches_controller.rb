@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
 class SearchesController < ApplicationController
-  include MobileFriendlyController
-  has_no_mobile_fu_for :advanced
-
   skip_before_action :verify_authenticity_token, :set_default_locale
 
   before_action :set_affiliate, :set_locale_based_on_affiliate_locale
@@ -26,7 +23,7 @@ class SearchesController < ApplicationController
     set_search_page_title
     set_search_params
     respond_to do |format|
-      format.any(:html, :mobile) { render template }
+      format.html { render template }
       format.json { render :json => @search }
     end
   end
@@ -41,7 +38,7 @@ class SearchesController < ApplicationController
     set_search_page_title
     set_search_params
     template = search_klass == I14ySearch ? :i14y : :docs
-    respond_to { |format| format.any(:html, :mobile) { render template } }
+    respond_to { |format| format.html { render template } }
   end
 
 
@@ -53,7 +50,7 @@ class SearchesController < ApplicationController
     set_search_page_title
     @search_vertical = :news
     set_search_params
-    respond_to { |format| format.any(:html, :mobile) {} }
+    respond_to { |format| format.html {} }
   end
 
   def advanced
@@ -63,7 +60,7 @@ class SearchesController < ApplicationController
     set_search_params
     permitted_params[:filter] = %w(0 1 2).include?(permitted_params[:filter]) ? permitted_params[:filter] : '1'
     permitted_params[:filetype] = %w(doc pdf ppt txt xls).include?(permitted_params[:filetype]) ? permitted_params[:filetype] : nil
-    respond_to { |format| format.any(:html, :mobile) {} }
+    respond_to { |format| format.html {} }
   end
 
   private

@@ -1,8 +1,6 @@
-module NavigationsHelper
-  def detect_navigations(site, navigations)
-    site.force_mobile_format? ? filter_navigations(site, navigations) : navigations
-  end
+# frozen_string_literal: true
 
+module NavigationsHelper
   def filter_navigations(site, navigations)
     items = navigations.to_a
     items.reject! do |n|
@@ -28,9 +26,9 @@ module NavigationsHelper
   end
 
   def build_image_search_navigable_label(navigable)
-    labels = ''
+    labels = +''
     site = navigable.affiliate
-    if !site.force_mobile_format? || site.is_bing_image_search_enabled?
+    if site.is_bing_image_search_enabled?
       append_navigation_label(labels,
                               link_to('Domains', site_domains_path(site)))
     end

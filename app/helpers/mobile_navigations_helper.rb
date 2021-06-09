@@ -1,6 +1,6 @@
 module MobileNavigationsHelper
   def renderable_navigations(search)
-    is_inactive_search?(search) ? [] : detect_navigations(search.affiliate, search.affiliate.navigations.active)
+    is_inactive_search?(search) ? [] : filter_navigations(search.affiliate, search.affiliate.navigations.active)
   end
 
   def navigation_heading
