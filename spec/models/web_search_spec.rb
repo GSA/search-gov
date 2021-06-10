@@ -82,9 +82,12 @@ describe WebSearch do
 
   describe 'instrumenting search engine calls' do
     context 'when BingV6 is the engine' do
+      let(:valid_options) do
+        { query: 'government', affiliate: affiliate }
+      end
+      let(:bing_search) { BingV6WebSearch.new(valid_options) }
+
       before do
-        valid_options = { query: 'government', affiliate: affiliate }
-        bing_search = BingV6WebSearch.new(valid_options)
         allow(BingV6WebSearch).to receive(:new).and_return bing_search
         allow(bing_search).to receive(:execute_query)
       end
