@@ -11,12 +11,12 @@ gem 'curb', '~> 0.9.4'
 gem 'haml', '~> 5.0.4'
 gem 'will_paginate', '~> 3.1.6'
 gem 'nokogiri', '~> 1.11.1'
-gem 'bcrypt-ruby', '~> 3.1.5', :require => 'bcrypt'
 gem 'authlogic', '~> 3.8.0'
 # Temporarily locking gem to specific ref. Newer versions include incompatible gems
 gem 'omniauth_login_dot_gov', git: 'https://github.com/18f/omniauth_login_dot_gov',
                               ref: '08ce9b5322efb2d82b2df3f6d774308c4028ee6c'
 gem 'omniauth-rails_csrf_protection', '~> 0.1.2'
+# Airbrake is deprecated: https://cm-jira.usa.gov/browse/SRCH-2249
 gem 'airbrake', '~> 7.1.1'
 gem 'redis', '~> 4.0.1'
 gem 'redis-namespace', '~> 1.6.0'
@@ -26,6 +26,7 @@ gem 'resque-priority', :git => 'https://github.com/GSA/resque-priority.git'
 gem 'resque-timeout', '~> 1.0.0'
 gem 'resque-lock-timeout', '~> 0.4.5'
 gem 'resque-scheduler', '~> 4.3.1'
+# Paperclip is deprecated: https://cm-jira.usa.gov/browse/SRCH-702
 gem 'paperclip', '~> 5.2.0'
 gem 'googlecharts', '~> 1.6.12'
 gem 'tweetstream', '~> 2.6.1' # no longer maintained?
@@ -64,6 +65,7 @@ gem 'github-markdown', '~> 0.6.9'
 gem 'google-api-client', '~> 0.19.1'
 gem 'iso8601', '~> 0.10.1'
 gem 'jbuilder', '~> 2.6.4'
+# sitelink_generator is deprecated: https://cm-jira.usa.gov/browse/SRCH-2172
 gem 'sitelink_generator', git: 'https://github.com/GSA/sitelink_generator', ref: '2f78cd142547a2a87e500266f1ef4eb5e281cc6b'
 gem 'typhoeus', '~> 1.3.0'
 gem 'activerecord-validate_unique_child_attribute',
@@ -74,6 +76,7 @@ gem 'grape', '~> 1.1'
 gem 'grape-entity', '~> 0.6.0'
 gem 'rack-cors', '~> 1.1.0', :require => 'rack/cors'
 gem 'hashie', '~> 3.3.0'
+# retry_block is unsupported - consider replacing with retriable
 gem 'retry_block', '~> 1.2.0'
 gem 'aws-sdk', '< 3.0'
 gem 'colorize', '~> 0.8.1'
