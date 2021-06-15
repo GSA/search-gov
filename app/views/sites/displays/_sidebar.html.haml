@@ -16,7 +16,7 @@
         = f.text_field :default_search_label, maxlength: 20
       %td= link_to 'Domains', site_domains_path(@site)
       %td.muted ON
-    - detect_navigations(@site, @site.navigations).each_with_index do |nav, index|
+    - filter_navigations(@site, @site.navigations).each_with_index do |nav, index|
       = f.fields_for :"#{render_navigable_field_name_for nav}", nav.navigable do |navigable_form|
         = navigable_form.fields_for :navigation do |navigation_form|
           %tr{ id: "navigation-#{nav.id}" }

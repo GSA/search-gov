@@ -1,7 +1,6 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
-describe 'image_searches/index.mobile.haml' do
-  fixtures :affiliates, :image_search_labels, :navigations
+describe 'image_searches/index.html.haml' do
   let(:affiliate) { affiliates(:usagov_affiliate) }
 
   context 'when there are 5 Oasis pics and Bing image search is not enabled' do

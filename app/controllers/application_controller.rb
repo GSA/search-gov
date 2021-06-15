@@ -20,13 +20,9 @@ class ApplicationController < ActionController::Base
     commit
     cr
     dc
-    email_to_verify
-    form
     hl
-    m
     page
     query
-    staged
     siteexclude
     sitelimit
     utf8
@@ -122,7 +118,7 @@ class ApplicationController < ActionController::Base
   def force_request_format
     return if request.format && request.format.json?
 
-    request.format = :mobile
+    request.format = :html
   end
 
   def set_search_params
