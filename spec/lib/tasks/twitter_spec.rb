@@ -112,6 +112,7 @@ describe 'Twitter rake tasks' do
         allow(Twitter::Streaming::Client).to receive(:new).and_yield(client).and_return(client)
         allow(TwitterProfile).to receive(:active_twitter_ids).and_return(active_twitter_ids)
         allow(Rails.logger).to receive(:info).and_call_original
+        allow(Rails.logger).to receive(:error).and_call_original
 
         # Without this require, there's a timing dependency that
         # causes stub_const to sometimes blow up the specs. If
@@ -215,13 +216,12 @@ describe 'Twitter rake tasks' do
         context 'when there is an error' do
           before do
             allow(TwitterData).to receive(:import_tweet).and_raise 'Some Exception'
-            allow(Rails.logger).to receive(:error).and_call_original
             run_task
           end
 
           it 'logs an error' do
             expect(Rails.logger).to have_received(:error).
-              with(/encountered error while handling tweet#[[:digit:]]+: Some Exception/).at_least(:once)
+              with(/\[TWITTER\] \[FOLLOW\] \[ERROR\].*error while handling tweet#[[:digit:]]+: Some Exception/).at_least(:once)
           end
         end
 
@@ -261,6 +261,48 @@ describe 'Twitter rake tasks' do
         end
       end
 
+      context 'when processing a retweet' do
+        let(:tweet_json) do
+          JSON.parse(File.read(Rails.root.join('spec/fixtures/json/retweet_status.json')),
+                     symbolize_names: true)
+        end
+        let(:active_twitter_ids) { [tweet_json[:retweeted_status][:user][:id]] }
+        let(:retweet) { Twitter::Tweet.new(tweet_json) }
+
+        before do
+          allow(TwitterData).to receive(:within_tweet_creation_time_threshold?).and_return(true)
+          allow(client).to receive(:filter).and_yield(retweet)
+        end
+
+        context 'when there is no error' do
+          before { run_task }
+
+          it 'creates exactly one Tweet' do
+             expect(Tweet.count).to eq(1)
+          end
+
+          it 'saves the tweet text' do
+            expect(Tweet.first.tweet_text).to match(/East Coast accounts giving specific #Sandy safety tips/)
+          end
+
+          it 'saves the tweet urls' do
+            expect(Tweet.first.urls.collect(&:display_url)).to eq(['fema.gov/colorbox/node/'])
+          end
+        end
+
+        context 'when there is an error' do
+          before do
+            allow(Tweet).to receive(:where).and_raise('An Error')
+            run_task
+          end
+
+          it 'logs the error' do
+            expect(Rails.logger).to have_received(:error).
+              with(/encountered error while handling retweet#[[:digit:]]+: An Error/).at_least(:once)
+          end
+        end
+      end
+
       context 'when processing a delete-tweet' do
         let(:active_twitter_ids) { [1] }
         let(:delete_tweet) do
@@ -273,15 +315,33 @@ describe 'Twitter rake tasks' do
                         tweet_text: 'DELETE ME.',
                         published_at: Time.now.utc)
           allow(client).to receive(:filter).and_yield(delete_tweet)
-          run_task
         end
 
-        it 'deletes the saved tweet' do
-          expect(Tweet.find_by(tweet_id: 1234)).to be_nil
+        context 'when there is no error' do
+          before { run_task }
+
+          it 'deletes the saved tweet' do
+            expect(Tweet.find_by(tweet_id: 1234)).to be_nil
+          end
+
+          it 'logs the deletion' do
+            expect(Rails.logger).to have_received(:info).
+              with(/\[TWITTER\] \[DELETE\]/).
+              at_least(:once)
+          end
         end
 
-        it 'logs the deletion' do
-          expect(Rails.logger).to have_received(:info).with(/\[TWITTER\] \[DELETE\]/).at_least(:once)
+        context 'when there is an error' do
+          before do
+            allow(Tweet).to receive(:where).and_raise('An Error')
+            run_task
+          end
+
+          it 'logs the error' do
+            expect(Rails.logger).to have_received(:error).
+              with(/\[TWITTER\] \[FOLLOW\] \[ERROR\].*error while deleting tweet#1234/).
+              at_least(:once)
+          end
         end
       end
     end
