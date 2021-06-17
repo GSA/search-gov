@@ -53,12 +53,20 @@ class TwitterStreamingMonitor
     Rails.logger.info "[#{Time.now.utc}] [TWITTER] [MONITOR START]"
 
     loop do
-      disconnect if need_to_disconnect?
+      disconnect_if_necessary
       break if exit_flag
 
-      connect(twitter_ids.get_object_and_reset_changed) if need_to_connect?
+      connect_if_necessary
       sleep(POLLING_INTERVAL)
     end
+  end
+
+  def connect_if_necessary
+    connect(twitter_ids.get_object_and_reset_changed) if need_to_connect?
+  end
+
+  def disconnect_if_necessary
+    disconnect if need_to_disconnect?
   end
 
   def need_to_disconnect?

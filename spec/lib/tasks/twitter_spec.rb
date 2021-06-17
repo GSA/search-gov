@@ -264,7 +264,7 @@ describe 'Twitter rake tasks' do
       context 'when processing a delete-tweet' do
         let(:active_twitter_ids) { [1] }
         let(:delete_tweet) do
-          Twitter::Streaming::DeletedTweet.new({ "id": 1234 })
+          Twitter::Streaming::DeletedTweet.new({ id: 1234 })
         end
 
         before do
