@@ -2,72 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=<GOOGLE_SEARCH_CX>&key=<GOOGLE_API_KEY>&lr=lang_en&q=pdf%20site:nps.gov&quotaUser=USASearch&safe=medium
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 403
-      message: Forbidden
-    headers:
-      Vary:
-      - Origin
-      - X-Origin
-      Content-Type:
-      - application/json; charset=UTF-8
-      Date:
-      - Thu, 26 Apr 2018 23:56:51 GMT
-      Expires:
-      - Thu, 26 Apr 2018 23:56:51 GMT
-      Cache-Control:
-      - private, max-age=0
-      X-Content-Type-Options:
-      - nosniff
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Xss-Protection:
-      - 1; mode=block
-      Server:
-      - GSE
-      Alt-Svc:
-      - hq=":443"; ma=2592000; quic=51303433; quic=51303432; quic=51303431; quic=51303339;
-        quic=51303335,quic=":443"; ma=2592000; v="43,42,41,39,35"
-      Transfer-Encoding:
-      - chunked
-    body:
-      encoding: UTF-8
-      string: |
-        {
-         "error": {
-          "errors": [
-           {
-            "domain": "usageLimits",
-            "reason": "accessNotConfigured",
-            "message": "Access Not Configured. CustomSearch API has not been used in project 913155601333 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/customsearch.googleapis.com/overview?project=913155601333 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.",
-            "extendedHelp": "https://console.developers.google.com/apis/api/customsearch.googleapis.com/overview?project=913155601333"
-           }
-          ],
-          "code": 403,
-          "message": "Access Not Configured. CustomSearch API has not been used in project 913155601333 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/customsearch.googleapis.com/overview?project=913155601333 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry."
-         }
-        }
-    http_version: 
-  recorded_at: Thu, 26 Apr 2018 23:56:51 GMT
-- request:
-    method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=pdf%20(site:nps.gov)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=pdf%20(site:nps.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
     body:
       encoding: US-ASCII
       string: ''
@@ -75,7 +10,7 @@ http_interactions:
       User-Agent:
       - USASearch
       Ocp-Apim-Subscription-Key:
-      - "<BING_V6_APP_ID>"
+      - "<BING_V7_SUBSCRIPTION_ID>"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -91,185 +26,198 @@ http_interactions:
     headers:
       Cache-Control:
       - private, max-age=0
-      Content-Length:
-      - '2998'
+      Transfer-Encoding:
+      - chunked
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Fri, 27 Apr 2018 16:06:14 GMT
+      - Wed, 09 Jun 2021 14:05:36 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      Set-Cookie:
-      - MUID=1A61BB564CA26824024DB0884D3569E8; path=/; expires=Wed, 22-May-2019 16:07:14
-        GMT; domain=bingapis.com
-      - MUIDB=1A61BB564CA26824024DB0884D3569E8; path=/; httponly; expires=Wed, 22-May-2019
-        16:07:14 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Mon, 27-Apr-2020 16:07:14 GMT;
-        path=/
-      - SRCHUID=V=2&GUID=DAD357A2181F41AEAF1992BB0924DA26&dmnchg=1; domain=.bingapis.com;
-        expires=Mon, 27-Apr-2020 16:07:14 GMT; path=/
-      - SRCHUSR=DOB=20180427; domain=.bingapis.com; expires=Mon, 27-Apr-2020 16:07:14
-        GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=1C1884F797B86F5107738F29962F6E97; path=/; httponly;
-        domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Wed, 22-May-2019 16:07:14 GMT; domain=bingapis.com
-      - _SS=SID=1C1884F797B86F5107738F29962F6E97; domain=.bingapis.com; path=/
+      X-Snr-Routing:
+      - '1'
       Bingapis-Traceid:
-      - B08C50697E854D39A5B9BC50D761FF9B
+      - 317150EEFD4A4F1E95FB15D164BEDEEB
+      Bingapis-Sessionid:
+      - 41AD08A546474DDA99B69095E365D66B
       X-Msedge-Clientid:
-      - 1A61BB564CA26824024DB0884D3569E8
+      - 1531E5CBA1856A301A24F59AA0976B7F
       X-Msapi-Userstate:
-      - f484
+      - '4641'
       Bingapis-Market:
       - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=265,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
       X-Msedge-Ref:
-      - 'Ref A: B08C50697E854D39A5B9BC50D761FF9B Ref B: CO1EDGE0208 Ref C: 2018-04-27T16:07:14Z'
+      - 'Ref A: 317150EEFD4A4F1E95FB15D164BEDEEB Ref B: BLUEDGE1609 Ref C: 2021-06-09T14:06:36Z'
+      Apim-Request-Id:
+      - 997e49b3-7824-4845-81c6-e5be38465589
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Fri, 27 Apr 2018 16:07:13 GMT
+      - Wed, 09 Jun 2021 14:06:36 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=739907940EFE49B19BA204E26E982636&CID=1A61BB564CA26824024DB0884D3569E8&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=739907940EFE49B19BA204E26E982636&CID=1A61BB564CA26824024DB0884D3569E8&Type=Event.CPT&DATA=0"},
-        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=pdf+(site%3anps.gov)",
-        "webSearchUrlPingSuffix": "DevEx,5449.1", "totalEstimatedMatches": 2040000,
-        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "www.nps.gov", "url": "https:\/\/www.nps.gov\/transportation\/pdfs\/NPS-CMS_Toolkit.pdf",
-        "urlPingSuffix": "DevEx,5087.1", "displayUrl": "https:\/\/www.nps.gov\/transportation\/pdfs\/NPS-CMS_Toolkit.pdf",
-        "snippet": "www.nps.gov", "dateLastCrawled": "2018-04-19T11:54:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "CONNECTICUT",
-        "url": "https:\/\/www.nps.gov\/appa\/planyourvisit\/upload\/APPA%20Map.pdf",
-        "urlPingSuffix": "DevEx,5100.1", "displayUrl": "https:\/\/www.nps.gov\/appa\/planyourvisit\/upload\/APPA
-        Map.pdf", "snippet": "georgia appalachian trail club outdoor club at virginia
-        tech delaware valley chapter appalachian mountain club new york–new jersey
-        trail conference", "dateLastCrawled": "2018-04-20T01:38:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Interagency National
-        Trails Map (PDF) - National Park Service", "url": "https:\/\/www.nps.gov\/hfc\/carto\/PDF\/TRAILSmap1.pdf",
-        "urlPingSuffix": "DevEx,5112.1", "displayUrl": "https:\/\/www.nps.gov\/hfc\/carto\/PDF\/TRAILSmap1.pdf",
-        "snippet": "Interagency National Trails Map (PDF) - National Park Service",
-        "dateLastCrawled": "2018-04-21T20:39:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
-        "name": "Secretary of the Interior''s Standards for Rehabilitation", "url":
-        "https:\/\/www.nps.gov\/tps\/standards\/treatment-guidelines-2017.pdf", "urlPingSuffix":
-        "DevEx,5124.1", "displayUrl": "https:\/\/www.nps.gov\/tps\/standards\/treatment-guidelines-2017.pdf",
-        "snippet": "Secretary of the Interior''s Standards for Rehabilitation", "dateLastCrawled":
-        "2018-04-21T20:56:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
-        "name": "Low Country Gullah Culture Special Resource Study ...", "url":
-        "https:\/\/www.nps.gov\/ethnography\/research\/docs\/ggsrs_book.pdf", "urlPingSuffix":
-        "DevEx,5136.1", "displayUrl": "https:\/\/www.nps.gov\/ethnography\/research\/docs\/ggsrs_book.pdf",
-        "snippet": "Low Country Gullah Culture Special Resource Study ...", "dateLastCrawled":
-        "2018-04-12T09:43:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
-        "name": "NPS US Map (pdf) - National Park Service", "url": "https:\/\/www.nps.gov\/hfc\/carto\/PDF\/NPSmap1.pdf",
-        "urlPingSuffix": "DevEx,5148.1", "displayUrl": "https:\/\/www.nps.gov\/hfc\/carto\/PDF\/NPSmap1.pdf",
-        "snippet": "NPS US Map (pdf) - National Park Service", "dateLastCrawled":
-        "2018-04-20T05:38:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
-        "name": "CAVE GEOLOGY: Dissolution and decoration", "url": "https:\/\/www.nps.gov\/cave\/planyourvisit\/upload\/cave_geology.pdf",
-        "urlPingSuffix": "DevEx,5160.1", "displayUrl": "https:\/\/www.nps.gov\/cave\/planyourvisit\/upload\/cave_geology.pdf",
-        "snippet": "CAVE GEOLOGY: Dissolution and decoration Carlsbad Caverns National
-        Park was designated a World Heritage Site by the United Nations in 1995,",
-        "dateLastCrawled": "2018-04-21T04:57:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
-        "name": "Brochures - Yellowstone National Park (U.S. National Park ...",
-        "url": "https:\/\/www.nps.gov\/yell\/planyourvisit\/brochures.htm", "urlPingSuffix":
-        "DevEx,5176.1", "about": [{"name": "Yellowstone National Park"}], "displayUrl":
-        "https:\/\/www.nps.gov\/yell\/planyourvisit\/brochures.htm", "snippet":
-        "Below you''ll find a list of publications that will help you plan a safe,
-        enjoyable Yellowstone adventure. Most of these publications are in PDF format
-        and can be viewed or printed using Adobe Acrobat and other PDF readers.",
-        "dateLastCrawled": "2018-04-21T05:55:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
-        "name": "Abraham Lincoln", "url": "https:\/\/www.nps.gov\/saga\/learn\/education\/upload\/Lincoln%20Biography.pdf",
-        "urlPingSuffix": "DevEx,5190.1", "about": [{"name": "Abraham Lincoln"}], "displayUrl":
-        "https:\/\/www.nps.gov\/saga\/learn\/education\/upload\/Lincoln Biography.pdf",
-        "snippet": "Abraham Lincoln . Abraham Lincoln, the 16th president of the United
-        States, guided his country through the most devastating experience in its
-        national history--the CIVIL WAR.", "dateLastCrawled": "2018-04-15T07:54:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "ARCHES
-        NATIONAL PARK", "url": "https:\/\/www.nps.gov\/arch\/planyourvisit\/upload\/archmap.pdf",
-        "urlPingSuffix": "DevEx,5203.1", "about": [{"name": "Arches National Park"}],
-        "displayUrl": "https:\/\/www.nps.gov\/arch\/planyourvisit\/upload\/archmap.pdf",
-        "snippet": "arches national park moab m o a b v a l l e y n e g r o n b i
-        l l ca n y o s a l t v a l l e y cache va ley i g b e n d to dead horse point
-        state park dry mesa m a t ...", "dateLastCrawled": "2018-04-21T04:46:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Historic
-        Structure Report: Washington Monument", "url": "https:\/\/www.nps.gov\/parkhistory\/online_books\/wamo\/wash_hsr1.pdf",
-        "urlPingSuffix": "DevEx,5215.1", "displayUrl": "https:\/\/www.nps.gov\/parkhistory\/online_books\/wamo\/wash_hsr1.pdf",
-        "snippet": "Historic Structure Report: Washington Monument", "dateLastCrawled":
-        "2018-04-02T16:03:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
-        "name": "NPS.gov Homepage (U.S. National Park Service)", "url": "https:\/\/www.nps.gov\/index.htm",
-        "urlPingSuffix": "DevEx,5230.1", "about": [{"name": "Everglades National Park"},
-        {"name": "Sequoia National Park"}, {"name": "Muir Woods National Monument"},
-        {"name": "National Park Service"}], "displayUrl": "https:\/\/www.nps.gov",
-        "snippet": "The National Park Service cares for special places saved by the
-        American people so that all may experience our heritage.", "dateLastCrawled":
-        "2018-04-20T19:02:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
-        "name": "www.nps.gov", "url": "https:\/\/www.nps.gov\/parkhistory\/online_books\/stli\/ellis_island_legal.pdf",
-        "urlPingSuffix": "DevEx,5243.1", "displayUrl": "https:\/\/www.nps.gov\/...\/online_books\/stli\/ellis_island_legal.pdf",
-        "snippet": "Created Date: 8\/12\/2009 10:57:13 AM", "dateLastCrawled": "2018-04-03T19:42:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "JOSHUA
-        TREE NATIONAL PARK", "url": "https:\/\/www.nps.gov\/hfc\/carto\/PDF\/JOTRmap1.pdf",
-        "urlPingSuffix": "DevEx,5257.1", "about": [{"name": "Joshua Tree National
-        Park"}], "displayUrl": "https:\/\/www.nps.gov\/hfc\/carto\/PDF\/JOTRmap1.pdf",
-        "snippet": "Joshua Tree National Park as wilderness. Most of the park away
-        from road corridors is wilderness. If you plan to venture into these areas,
-        you must be", "dateLastCrawled": "2018-04-20T17:31:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
-        "name": "Maps - National Park Service", "url": "https:\/\/www.nps.gov\/grsm\/planyourvisit\/maps.htm",
-        "urlPingSuffix": "DevEx,5273.1", "about": [{"name": "Great Smoky Mountains
-        National Park"}, {"name": "Roaring Fork"}, {"name": "Alum Cave Trail"}, {"name":
-        "Cades Cove"}, {"name": "Great Smoky Mountains National Park"}], "displayUrl":
-        "https:\/\/www.nps.gov\/grsm\/planyourvisit\/maps.htm", "snippet": "(PDF
-        file - 1.0 mb in size.) ... 1:24,000-scale topographic maps of the park are
-        produced in partnership with the United States Geologic Survey and available
-        for free ...", "dateLastCrawled": "2018-04-21T11:59:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Emancipation
-        Proclamation Resource Document", "url": "https:\/\/www.nps.gov\/abli\/learn\/education\/upload\/LessonTwoEmancipationProclamation.pdf",
-        "urlPingSuffix": "DevEx,5287.1", "about": [{"name": "Emancipation Proclamation"}],
-        "displayUrl": "https:\/\/www.nps.gov\/...\/upload\/LessonTwoEmancipationProclamation.pdf",
-        "snippet": "Emancipation Proclamation Resource Document Almost from the beginning
-        of his administration, Lincoln was pressured by abolitionists and radical
-        Republicans to issue an Emancipation Proclamation.", "dateLastCrawled": "2018-04-18T11:34:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "REDWmap1
-        4 08", "url": "https:\/\/www.nps.gov\/redw\/planyourvisit\/upload\/REDWmap1.pdf",
-        "urlPingSuffix": "DevEx,5300.1", "displayUrl": "https:\/\/www.nps.gov\/redw\/planyourvisit\/upload\/REDWmap1.pdf",
-        "snippet": "Title: REDWmap1_4_08.pdf Author: National Park Service Subject:
-        Redwood National Park Keywords: Redwood National Park Created Date: 1\/14\/2009
-        2:08:34 PM", "dateLastCrawled": "2018-04-22T23:06:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
-        "name": "Charles Pinckney National Historic Site", "url": "https:\/\/www.nps.gov\/chpi\/learn\/historyculture\/upload\/CHPI_HRS.pdf",
-        "urlPingSuffix": "DevEx,5312.1", "about": [{"name": "Charles Pinckney National
-        Historic Site"}], "displayUrl": "https:\/\/www.nps.gov\/chpi\/learn\/historyculture\/upload\/CHPI_HRS.pdf",
-        "snippet": "Charles Pinckney National Historic Site", "dateLastCrawled": "2018-04-21T18:55:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "re YELLOWSTONE
-        NATIONAL PARK", "url": "https:\/\/www.nps.gov\/hfc\/carto\/PDF\/YELLmap2.pdf",
-        "urlPingSuffix": "DevEx,5325.1", "displayUrl": "https:\/\/www.nps.gov\/hfc\/carto\/PDF\/YELLmap2.pdf",
-        "snippet": "YELLmap2.pdf Author: National Park Service Subject: Yellowstone
-        National Park Keywords: Yellowstone National Park Created Date: 4\/14\/2009
-        3:00:17 PM ...", "dateLastCrawled": "2018-04-19T11:53:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Brochures
-        - Rocky Mountain National Park (U.S. National ...", "url": "https:\/\/www.nps.gov\/romo\/planyourvisit\/brochures.htm",
-        "urlPingSuffix": "DevEx,5340.1", "about": [{"name": "Rocky Mountain National
-        Park"}], "displayUrl": "https:\/\/www.nps.gov\/romo\/planyourvisit\/brochures.htm",
-        "snippet": "Rocky Mountain National Park publishes several brochures and periodicals.
-        Be sure to have a PDF reader installed (like Adobe Reader) and unblock pop-ups
-        (brochures will open in a separate window).", "dateLastCrawled": "2018-04-22T21:02:00.0000000Z"}]},
-        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
-        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
-        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
-        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
-        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
-        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
-        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
-        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
-        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
-        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
-        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
-        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
-        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
-        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
-        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
-        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
-        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
-        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
-        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
-        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
-        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
-    http_version: 
-  recorded_at: Fri, 27 Apr 2018 16:07:14 GMT
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "pdf
+        (site:nps.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=pdf+(site%3anps.gov)",
+        "totalEstimatedMatches": 3960000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Civil Rights in America - nps.gov", "url": "https:\/\/www.nps.gov\/subjects\/tellingallamericansstories\/upload\/CivilRights_Framework.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/subjects\/tellingallamericansstories\/upload\/CivilRights_Framework.pdf",
+        "snippet": "EXECUTIVE SUMMARY Introduction In November 1999, the U.S. Congress
+        passed the National Park System New Area Study Act of 2000 (S. 1349) as contained
+        in Public Law 106-113, Appendix C, “National Park Service Studies", "dateLastCrawled":
+        "2020-11-27T15:38:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1", "name":
+        "The Emancipation Proclamation January 1, 1863", "url": "https:\/\/www.nps.gov\/museum\/tmc\/Antietam\/Lesson3\/The%20Emancipation%20Proclamation%20text%20copy.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/museum\/tmc\/Antietam\/Lesson3\/The
+        Emancipation Proclamation text copy...", "snippet": "The Emancipation Proclamation
+        January 1, 1863. A Transcription. By the President of the United States of
+        America: A Proclamation. Whereas, on the twenty -second day of September,
+        in the year of our Lord one thousand eight hundred", "dateLastCrawled": "2021-06-06T12:03:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "GRAND TETON NATIONAL PARK - nps.gov", "url": "https:\/\/www.nps.gov\/carto\/hfc\/carto\/media\/GRTEmap2.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/carto\/hfc\/carto\/media\/GRTEmap2.pdf",
+        "snippet": "33 33 191 287 89 26 287 26 89 22 191 22 26 89 191 North 0 1 0
+        1 5 Miles 5 Kilometers YELLOWSTONE NATIONAL PARK JOHN D. ROCKEFELLER, JR.",
+        "dateLastCrawled": "2021-05-14T21:13:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "The SecreTary of The InTerIor’S STandardS for ...", "url": "https:\/\/www.nps.gov\/tps\/standards\/rehabilitation\/sustainability-guidelines.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/tps\/standards\/rehabilitation\/sustainability-guidelines.pdf",
+        "snippet": "v Foreword The Illustrated Guidelines on Sustainability for Rehabilitating
+        Historic Buildings replaces the chapter on “Energy Conservation” in the Illustrated
+        Guidelines for Rehabilitating Historic Buildings published in 1992. (This
+        same guidance is presented in the chapter entitled “Energy Retrofitting” in
+        the unillustrated Guidelines for Rehabilitating Historic Buildings.", "dateLastCrawled":
+        "2021-05-22T03:06:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4", "name":
+        "Chapter 3: Cataloging - NPS", "url": "https:\/\/www.nps.gov\/museum\/publications\/MHII\/mh2ch3.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/museum\/publications\/MHII\/mh2ch3.pdf",
+        "snippet": "NPS Museum Handbook, Part II (2000) 3:1 CHAPTER 3: CATALOGING
+        A. Overview 1. What is cataloging? For National Park Service (NPS) museum
+        collections, cataloging is the process of recording detailed information about
+        individual items or groups of", "dateLastCrawled": "2021-02-19T18:13:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Chapter 7 SIGNS - NPS", "url": "https:\/\/www.nps.gov\/noco\/learn\/management\/upload\/nct_ch7.rev.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/noco\/learn\/management\/upload\/nct_ch7.rev.pdf",
+        "snippet": "Entrance signs should be the standard NPS-type metal signs with
+        white lettering on a brown background and read \"North Country National Scenic
+        Trail,\" with the trail logo on the right hand side.", "dateLastCrawled":
+        "2021-05-26T21:24:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6", "name":
+        "Chapter 11 SPECIALIZED BLASTING TECHNIQUES", "url": "https:\/\/www.nps.gov\/parkhistory\/online_books\/npsg\/explosives\/Chapter11.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/parkhistory\/online_books\/npsg\/explosives\/Chapter11.pdf",
+        "snippet": "172 7. Loop the end of the trunkline to form a continuous loop
+        back to the starting point and attach the line to complete a loop. B. A more
+        efficient blasting scheme is to bury the charges in a row of boreholes.",
+        "dateLastCrawled": "2021-06-02T17:14:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "O LYMP IC NAT PARK - nps.gov", "url": "https:\/\/www.nps.gov\/olym\/planyourvisit\/upload\/olym_map.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/olym\/planyourvisit\/upload\/olym_map.pdf",
+        "snippet": "Ozette Island Garden Island Tivoli Island Spike ORock Father And
+        Son James eIsland Split Rock Kalaloch Rocks Destruction Island Abbey Island
+        Alexander Island", "dateLastCrawled": "2021-03-20T14:50:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "ARCHES NATIONAL PARK - NPS", "url": "https:\/\/www.nps.gov\/arch\/planyourvisit\/upload\/archmap.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/arch\/planyourvisit\/upload\/archmap.pdf",
+        "snippet": "North 0 0 1 1 2 2 3 3 4 Miles 4 Kilometers 191 191 279 128 128
+        313 70 191 313 313 313 70 191 128 191 128 191 191 C O L O R A D O S KC Visitor
+        Center R I V E R C o u r ...", "dateLastCrawled": "2021-03-04T15:26:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Management of National Park Service Programs", "url": "https:\/\/www.nps.gov\/policy\/MP_2006.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/policy\/MP_2006.pdf",
+        "snippet": "1.1 The National Park Idea 1.9.5.1 Financial Sus 2.3.1.7 Environmental
+        Analysis 2.3.1.8 Cooperative Planning 2.3.1.10 Wilderness 1.4.7 Decision-making
+        Requirements to", "dateLastCrawled": "2021-01-14T05:39:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "JOSHUA TREE NATIONAL PARK - NPS", "url": "https:\/\/www.nps.gov\/carto\/hfc\/carto\/media\/JOTRmap1.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/carto\/hfc\/carto\/media\/JOTRmap1.pdf",
+        "snippet": "10 10 177 111 111 111 247 62 62 86 62 62 Medical facility Drinking
+        water 0 0 5 10 Miles 5 10 Kilometers North Joshua Tree Visitor Center Oasis
+        Visitor Center ...", "dateLastCrawled": "2021-05-15T17:17:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "NATIONAL MALL & MEMORIAL PARKS", "url": "https:\/\/www.nps.gov\/state\/dc\/upload\/NPS-Map-Washington-DC.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/state\/dc\/upload\/NPS-Map-Washington-DC.pdf",
+        "snippet": "venue constitution avenue m street m street m street m street
+        i street k street k street e street e street 17th street 17th st 17th street
+        15th street 15th street", "dateLastCrawled": "2021-04-03T05:03:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "YOSEMITE NATIONAL PARK - NPS", "url": "https:\/\/www.nps.gov\/yose\/planyourvisit\/upload\/YOSEmap1.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/yose\/planyourvisit\/upload\/YOSEmap1.pdf",
+        "snippet": "120 167 120 140 41 395 Fish Camp Lee Vining Yosemite West Chinquapin
+        El Portal Foresta Mather To Fresno To Merced To Manteca To Carson City, Nev.
+        To Mammoth Lakes", "dateLastCrawled": "2021-04-20T13:42:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Zion Information Guide National Park Service U.S ...", "url": "https:\/\/www.nps.gov\/zion\/planyourvisit\/upload\/July-1-2020-InfoSheet_a.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/zion\/planyourvisit\/upload\/July-1-2020-InfoSheet_a.pdf",
+        "snippet": "North 0.5 Mile 0 0.5 Kilometer Paved road open to Tunnel private
+        vehicles Restrooms Picnic area Wheelchair-accessible Pets (leashed) Hiking
+        Biking Ranger station", "dateLastCrawled": "2021-02-19T17:10:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Glacier National Park Glacier National Park Map", "url": "https:\/\/www.nps.gov\/glac\/planyourvisit\/upload\/orientation-map-revised-7-16.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/glac\/planyourvisit\/upload\/orientation-map-revised-7-16.pdf",
+        "snippet": "WATERTO N LAKES NATI ONAL PARK NATIONAL GLACI ER PARK Unpaved
+        road Paved road Trail Continental Divide Riding stable 0 0 5 10 Miles 5 10
+        Kilometers North Leg end", "dateLastCrawled": "2021-05-19T08:38:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "BADLANDS NATIONAL PARK - NPS", "url": "https:\/\/www.nps.gov\/badl\/planyourvisit\/upload\/Official%20Badlands%20National%20Park%20Map.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/badl\/planyourvisit\/upload\/Official
+        Badlands National Park Map.pdf", "snippet": "BADLmap1.pdf Author: National
+        Park Service, Harpers Ferry Center, publications Subject: Badlands National
+        Park Keywords: Badlands National Park Created Date: 10\/31\/2003 10:05:23
+        AM ...", "dateLastCrawled": "2021-05-29T02:21:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Hiking Into Grand Canyon - nps.gov", "url": "https:\/\/www.nps.gov\/grca\/planyourvisit\/upload\/intro-bc-hike.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/grca\/planyourvisit\/upload\/intro-bc-hike.pdf",
+        "snippet": "Hiking Into Grand Canyon Plan Ahead Whether a day or overnight
+        trip, hiking into Grand Canyon on the Bright Angel, North Kaibab, or South
+        Kaibab trails gives an", "dateLastCrawled": "2021-06-02T14:14:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Gettysburg, Pennsylvania November 19, 1863", "url": "https:\/\/www.nps.gov\/abli\/learn\/education\/upload\/UpdatedGettysburgAddress.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/abli\/learn\/education\/upload\/UpdatedGettysburgAddress.pdf",
+        "snippet": "The Gettysburg Address Gettysburg, Pennsylvania November 19,
+        1863 During a three-day Civil War battle at Gettysburg in early July 1863,
+        there were over", "dateLastCrawled": "2021-05-24T12:50:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "National Register 16A - NPS", "url": "https:\/\/www.nps.gov\/subjects\/nationalregister\/upload\/NRB16A-Complete.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/subjects\/nationalregister\/upload\/NRB16A-Complete.pdf",
+        "snippet": "The National Register of Historic Places is the official Federal
+        list of dis­ tricts, sites, buildings, structures, and objects significant
+        in American history,", "dateLastCrawled": "2021-06-05T04:05:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Yosemite Valley Hiking Map - NPS", "url": "https:\/\/www.nps.gov\/yose\/planyourvisit\/upload\/valleyhikes.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/yose\/planyourvisit\/upload\/valleyhikes.pdf",
+        "snippet": "P o h o S e n t i n e l D o m e Tr a i l Poh o n o T r a i l I
+        . I m i (I. 7 k m) I.0 mi ( . 6 km) I. 0 m i (I. 6 k m) I. 3 mi (2.9 km) Sentinel
+        Rock 7038 ft 2145 m 3 . 4 m i ( 5", "dateLastCrawled": "2021-05-23T03:06:00.0000000Z",
+        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version:
+  recorded_at: Wed, 09 Jun 2021 14:06:37 GMT
 recorded_with: VCR 4.0.0
