@@ -41,11 +41,7 @@ class TwitterStreamConsumer
   def dispatch(twitter_event)
     case twitter_event
     when Twitter::Tweet
-      if twitter_event.retweeted_status.is_a?(Twitter::NullObject)
-        on_tweet(twitter_event)
-      else
-        on_retweet(twitter_event)
-      end
+      on_tweet(twitter_event)
     when Twitter::Streaming::DeletedTweet
       on_deleted_tweet(twitter_event)
     end
@@ -69,16 +65,9 @@ class TwitterStreamConsumer
 
   def on_tweet(tweet)
     Rails.logger.info "[#{Time.now.utc}] [TWITTER] [FOLLOW] Tweet received: @#{tweet.user.screen_name}: #{tweet.text}"
-    import(tweet)
+    TwitterData.import_tweet(tweet)
   rescue StandardError => e
     Rails.logger.error "[#{Time.now.utc}] [TWITTER] [FOLLOW] [ERROR] encountered error while handling tweet##{tweet.id}: #{e.message}"
-  end
-
-  def on_retweet(tweet)
-    Rails.logger.info "[#{Time.now.utc}] [TWITTER] [FOLLOW] Retweet received: @#{tweet.user.screen_name}: #{tweet.text}"
-    import(tweet.retweeted_status)
-  rescue StandardError => e
-    Rails.logger.error "[#{Time.now.utc}] [TWITTER] [FOLLOW] [ERROR] encountered error while handling retweet##{tweet.id}: #{e.message}"
   end
 
   def on_deleted_tweet(tweet)
@@ -88,11 +77,5 @@ class TwitterStreamConsumer
     rescue StandardError => e
       Rails.logger.error "[#{Time.now.utc}] [TWITTER] [FOLLOW] [ERROR] encountered error while deleting tweet##{tweet.id}: #{e.message}"
     end
-  end
-
-  def import(tweet)
-    return unless twitter_ids.include?(tweet.user.id)
-
-    TwitterData.import_tweet(tweet)
   end
 end

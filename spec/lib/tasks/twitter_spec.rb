@@ -229,16 +229,6 @@ describe 'Twitter rake tasks' do
           end
         end
 
-        context 'when the tweet is from a user we are not following' do
-          let(:active_twitter_ids) { [JSON.parse(tweet_json)['user']['id'] + 1] }
-
-          before { run_task }
-
-          it 'does not create a Tweet' do
-            expect(Tweet.count).to eq(0)
-          end
-        end
-
         context 'when there are changes to the active twitter ids' do
           before do
             allow(TwitterProfile).to receive(:active_twitter_ids).and_return(
@@ -299,7 +289,7 @@ describe 'Twitter rake tasks' do
 
           it 'logs the error' do
             expect(Rails.logger).to have_received(:error).
-              with(/encountered error while handling retweet#[[:digit:]]+: An Error/).at_least(:once)
+              with(/encountered error while handling tweet#[[:digit:]]+: An Error/).at_least(:once)
           end
         end
       end
@@ -348,3 +338,4 @@ describe 'Twitter rake tasks' do
     end
   end
 end
+j
