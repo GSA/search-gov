@@ -41,10 +41,10 @@ class TwitterStreamConsumer
   def dispatch(twitter_event)
     case twitter_event
     when Twitter::Tweet
-      if twitter_event.retweeted_status
-        on_retweet(twitter_event)
-      else
+      if twitter_event.retweeted_status.is_a?(Twitter::NullObject)
         on_tweet(twitter_event)
+      else
+        on_retweet(twitter_event)
       end
     when Twitter::Streaming::DeletedTweet
       on_deleted_tweet(twitter_event)

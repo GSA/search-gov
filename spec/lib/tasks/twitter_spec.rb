@@ -1,5 +1,12 @@
 # frozen_string_literal: true
 
+shared_context 'when tweet processing throws an error' do
+  before do
+    allow(TwitterData).to receive(:import_tweet).and_raise 'An Error'
+    run_task
+  end
+end
+
 describe 'Twitter rake tasks' do
   before :all do
     Rake.application = Rake::Application.new
@@ -214,14 +221,11 @@ describe 'Twitter rake tasks' do
         end
 
         context 'when there is an error' do
-          before do
-            allow(TwitterData).to receive(:import_tweet).and_raise 'Some Exception'
-            run_task
-          end
+          include_context 'when tweet processing throws an error'
 
           it 'logs an error' do
             expect(Rails.logger).to have_received(:error).
-              with(/\[TWITTER\] \[FOLLOW\] \[ERROR\].*error while handling tweet#[[:digit:]]+: Some Exception/).at_least(:once)
+              with(/\[TWITTER\] \[FOLLOW\] \[ERROR\].*error while handling tweet#[[:digit:]]+: An Error/).at_least(:once)
           end
         end
 
@@ -278,7 +282,7 @@ describe 'Twitter rake tasks' do
           before { run_task }
 
           it 'creates exactly one Tweet' do
-             expect(Tweet.count).to eq(1)
+            expect(Tweet.count).to eq(1)
           end
 
           it 'saves the tweet text' do
@@ -291,10 +295,7 @@ describe 'Twitter rake tasks' do
         end
 
         context 'when there is an error' do
-          before do
-            allow(Tweet).to receive(:where).and_raise('An Error')
-            run_task
-          end
+          include_context 'when tweet processing throws an error'
 
           it 'logs the error' do
             expect(Rails.logger).to have_received(:error).
