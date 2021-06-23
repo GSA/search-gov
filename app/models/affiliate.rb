@@ -49,7 +49,7 @@ class Affiliate < ApplicationRecord
                    -> { order 'navigations.position ASC, navigations.id ASC' },
                    inverse_of: :affiliate
     assoc.has_many :routed_queries
-    assoc.has_many :rss_feeds, #-> { order 'rss_feeds.name ASC, rss_feeds.id ASC' },
+    assoc.has_many :rss_feeds,
                    as: :owner,
                    inverse_of: :owner
     assoc.has_many :sayt_suggestions
