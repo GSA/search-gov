@@ -4,7 +4,7 @@ class Sites::RssFeedsController < Sites::SetupSiteController
   before_action :setup_non_managed_rss_feed, only: [:destroy]
 
   def index
-    @rss_feeds = @site.rss_feeds
+    @rss_feeds = @site.rss_feeds.order(:name)
   end
 
   def new

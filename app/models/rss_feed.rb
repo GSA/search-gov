@@ -11,7 +11,7 @@ class RssFeed < ApplicationRecord
 
   before_save :set_is_video_flag
   belongs_to :owner, polymorphic: true
-  has_and_belongs_to_many :rss_feed_urls, -> { order 'url ASC, id ASC' }, join_table: :rss_feed_urls_rss_feeds, autosave: true
+  has_and_belongs_to_many :rss_feed_urls, join_table: :rss_feed_urls_rss_feeds, autosave: true
   has_many :news_items, -> { uniq }, through: :rss_feed_urls
   has_one :navigation, :as => :navigable, :dependent => :destroy
 
