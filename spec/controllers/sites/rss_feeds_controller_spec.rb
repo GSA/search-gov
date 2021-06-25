@@ -116,7 +116,7 @@ describe Sites::RssFeedsController do
         before do
           rss_feeds = double('rss feeds')
           allow(site).to receive(:rss_feeds).and_return(rss_feeds)
-          expect(rss_feeds).to receive(:find_by_id).with('100').and_return(rss_feed)
+          expect(rss_feeds).to receive(:find_by).with(id: '100').and_return(rss_feed)
 
           expect(rss_feed).to receive(:assign_attributes).
             with('name' => 'Recalls', 'show_only_media_content' => 'false')
@@ -156,7 +156,7 @@ describe Sites::RssFeedsController do
         allow(site).to receive(:rss_feeds).and_return(rss_feeds)
 
         rss_feed = mock_model(RssFeed, name: 'Recalls')
-        allow(rss_feeds).to receive_message_chain(:non_managed, :find_by_id).with('100').and_return(rss_feed)
+        allow(rss_feeds).to receive_message_chain(:non_managed, :find_by).with(id: '100').and_return(rss_feed)
         expect(rss_feed).to receive(:destroy)
 
         delete :destroy, params: { site_id: site.id, id: 100 }
