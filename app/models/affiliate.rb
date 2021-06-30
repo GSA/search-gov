@@ -739,11 +739,11 @@ class Affiliate < ApplicationRecord
   end
 
   def clear_existing_attachments
-    if mobile_logo? and !mobile_logo.dirty? and mark_mobile_logo_for_deletion == '1'
+    if mobile_logo? && !mobile_logo.dirty? && mark_mobile_logo_for_deletion == '1'
       mobile_logo.clear
     end
 
-    if header_tagline_logo? and !header_tagline_logo.dirty? and mark_header_tagline_logo_for_deletion == '1'
+    if header_tagline_logo? && !header_tagline_logo.dirty? && mark_header_tagline_logo_for_deletion == '1'
       header_tagline_logo.clear
     end
   end
