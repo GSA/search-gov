@@ -25,6 +25,9 @@ Metrics/BlockLength:
     # Exclude ActiveScaffold-based controllers
     - app/controllers/admin/**/*
 
+Style/ClassAndModuleChildren:
+  Enabled: false
+
 Style/LambdaCall:
   Exclude:
     # Exclude files relying on Jbuilder DSL

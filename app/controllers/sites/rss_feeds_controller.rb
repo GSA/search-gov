@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Sites::RssFeedsController  < Sites::SetupSiteController
+class Sites::RssFeedsController < Sites::SetupSiteController
   include ActionView::Helpers::TextHelper
   before_action :setup_rss_feed, only: [:show, :edit, :update]
   before_action :setup_non_managed_rss_feed, only: [:destroy]
