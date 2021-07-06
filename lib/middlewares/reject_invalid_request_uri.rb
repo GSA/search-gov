@@ -12,7 +12,7 @@ class RejectInvalidRequestUri
       rescue ArgumentError
         nil
       end
-      return [400, { 'Content-Type' => 'text/html', 'Content-Length' => '0' }, []] if uri.nil? || (uri.is_a?(String) and !uri.valid_encoding?)
+      return [400, { 'Content-Type' => 'text/html', 'Content-Length' => '0' }, []] if uri.nil? || (uri.is_a?(String) && !uri.valid_encoding?)
     end
     @app.call(env)
   end

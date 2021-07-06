@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   concern :active_scaffold_association, ActiveScaffold::Routing::Association.new
   concern :active_scaffold, ActiveScaffold::Routing::Basic.new(association: true)
   get '/search' => 'searches#index', as: :search
-  get '/api/search' => 'api#search', as: :api_search
   get '/search/advanced' => 'searches#advanced', as: :advanced_search
   get '/search/images' => 'image_searches#index', as: :image_search
   get '/search/docs' => 'searches#docs', as: :docs_search
@@ -11,6 +10,9 @@ Rails.application.routes.draw do
   # Provide some backward compatibility for searchers using the legacy video news search URL
   get '/search/news/videos', to: redirect(path: '/search')
   get '/auth/logindotgov/callback', to: 'omniauth_callbacks#login_dot_gov'
+
+  # Deprecated
+  get '/api/search' => 'api/v1/search#search', as: :api_search
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
