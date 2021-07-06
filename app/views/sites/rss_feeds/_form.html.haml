@@ -16,7 +16,7 @@
       %legend
         URLs
         %span (Requires 1 or more)
-    - @rss_feed.rss_feed_urls.each_with_index do |url, index|
+    - @rss_feed.rss_feed_urls.sort_by(&:url).each_with_index do |url, index|
       = form.fields_for :rss_feed_urls, url, include_id: false do |url_fields|
         = render 'sites/rss_feeds/url', f: url_fields, index: index
   = link_to_add_new_rss_feed_url 'Add Another URL', @site, @rss_feed
