@@ -440,8 +440,8 @@ Feature: Search
 
   Scenario: Entering a blank advanced search
     Given the following Affiliates exist:
-      | display_name | name   | contact_email | first_name | last_name | header         |
-      | USA.gov      | usagov | aff@bar.gov   | John       | Bar       | USA.gov Header |
+      | display_name | name   | contact_email | first_name | last_name |
+      | USA.gov      | usagov | aff@bar.gov   | John       | Bar       |
     When I am on usagov's advanced search page
     And I press "Search"
     Then I should be on the search page

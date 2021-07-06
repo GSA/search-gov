@@ -40,16 +40,4 @@ module RssFeedsHelper
     button = button_to 'Remove', path, method: :delete, data: data, class: 'btn btn-small'
     content_tag :li, button
   end
-
-  def rss_govbox_title(search)
-    site = search.affiliate
-    title = I18n.t(:news_results,
-                   rss_govbox_label: site.rss_govbox_label,
-                   query: search.query,
-                   affiliate: site.display_name)
-
-    link_to_unless(search.affiliate.rss_feeds.non_managed.navigable_only.empty?,
-                   title,
-                   news_search_path(query: search.query, affiliate: site.name))
-  end
 end

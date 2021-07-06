@@ -1,10 +1,4 @@
 module TwitterProfilesHelper
-  def legacy_render_tweet_text(tweet, search, index)
-    inject_tweet_links(tweet) do |entity_url|
-      tweet_link_with_click_tracking(entity_url.display_url.html_safe, entity_url.expanded_url, entity_url.url, @affiliate, search, index, @search_vertical)
-    end
-  end
-
   def tweet_text(tweet, position)
     inject_tweet_links(tweet) do |entity_url|
       link_to_tweet_link(tweet, entity_url.display_url.html_safe, entity_url.url, position, url: entity_url.expanded_url)
@@ -23,13 +17,6 @@ module TwitterProfilesHelper
       end
     end
     html.html_safe
-  end
-
-  def legacy_render_twitter_profile(profile, search, index)
-    content = []
-    content << profile.name
-    content << content_tag(:span, " @#{profile.screen_name}", :class => 'screen-name')
-    raw(tweet_link_with_click_tracking(content.join("\n").html_safe, nil, profile.link_to_profile, @affiliate, search, index, @search_vertical))
   end
 
   def twitter_profile(tweet, position)

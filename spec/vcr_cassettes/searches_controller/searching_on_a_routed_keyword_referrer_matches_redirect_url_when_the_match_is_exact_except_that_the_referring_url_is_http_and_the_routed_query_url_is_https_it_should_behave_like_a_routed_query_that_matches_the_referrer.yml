@@ -21,8 +21,8 @@ http_interactions:
       - '30'
   response:
     status:
-      code: 200
-      message: OK
+      code: 400
+      message: Bad Request
     headers:
       Cache-Control:
       - private, max-age=0

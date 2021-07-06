@@ -11,10 +11,6 @@ module Govboxable
            :to => :@govbox_set,
            :allow_nil => true
 
-  def has_related_searches?
-    related_search && related_search.size > 0
-  end
-
   def has_best_bets?
     has_boosted_contents? or has_featured_collections?
   end

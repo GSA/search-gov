@@ -191,9 +191,6 @@ GEM
       ice_nine (~> 0.11.0)
       thread_safe (~> 0.3, >= 0.3.1)
     backports (3.21.0)
-    bcrypt (3.1.16)
-    bcrypt-ruby (3.1.5)
-      bcrypt (>= 3.1.3)
     bindata (2.4.10)
     buftok (0.2.0)
     builder (3.2.4)
@@ -478,9 +475,6 @@ GEM
     mini_mime (1.1.0)
     mini_portile2 (2.5.1)
     minitest (5.14.4)
-    mobile-fu (1.4.0)
-      rack-mobile-detect
-      rails
     moneta (1.4.2)
     mono_logger (1.1.1)
     multi_json (1.15.0)
@@ -540,8 +534,6 @@ GEM
       rack (~> 2.0)
     rack-cors (1.1.1)
       rack (>= 2.0.0)
-    rack-mobile-detect (0.4.0)
-      rack
     rack-protection (2.1.0)
       rack
     rack-test (1.1.0)
@@ -822,7 +814,6 @@ DEPENDENCIES
   authlogic (~> 3.8.0)
   awesome_print
   aws-sdk (< 3.0)
-  bcrypt-ruby (~> 3.1.5)
   capybara (~> 2.18.0)
   capybara-screenshot
   cld3 (~> 3.2.3)
@@ -870,7 +861,6 @@ DEPENDENCIES
   listen (~> 3.1.5)
   loofah (~> 2.9.0)
   medusa!
-  mobile-fu (~> 1.4.0)
   mysql2 (~> 0.4.4)
   net-http-persistent (~> 2.9.3)
   newrelic_rpm (~> 5.0.0)

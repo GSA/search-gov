@@ -88,10 +88,6 @@ class Search
     COMMERCIAL_INDEX_MODULE_TAGS.include? module_tag
   end
 
-  def fake_total?
-    false
-  end
-
   protected
 
   # This does the search.  You get back a response object, which is handled in the handle_response method below.

@@ -1,14 +1,10 @@
 # frozen_string_literal: true
 
 describe Affiliate do
-  fixtures :users, :affiliates, :site_domains, :features, :youtube_profiles, :memberships, :languages
-
   let(:valid_create_attributes) do
     { display_name: 'My Awesome Site',
       name: 'myawesomesite',
       website: 'http://www.someaffiliate.gov',
-      header: '<table><tr><td>html layout from 1998</td></tr></table>',
-      footer: '<center>gasp</center>',
       locale: 'es' }.freeze
    end
    let(:valid_attributes) { valid_create_attributes.merge(name: 'someaffiliate.gov').freeze }
@@ -39,8 +35,6 @@ describe Affiliate do
     end
 
     describe 'Paperclip attachments' do
-      it { is_expected.to have_attached_file :page_background_image }
-      it { is_expected.to have_attached_file :header_image }
       it { is_expected.to have_attached_file :mobile_logo }
       it { is_expected.to have_attached_file :header_tagline_logo }
     end
@@ -66,7 +60,7 @@ describe Affiliate do
     it { is_expected.to validate_attachment_size(:mobile_logo).in(1..64.kilobytes) }
     it { is_expected.to validate_attachment_size(:header_tagline_logo).in(1..16.kilobytes) }
 
-    %i{ page_background_image header_image header_tagline_logo mobile_logo }.each do |image|
+    %i[header_tagline_logo mobile_logo].each do |image|
           it { is_expected.to validate_attachment_content_type(image).
                allowing(%w{ image/gif image/jpeg image/pjpeg image/png image/x-png }).
                rejecting(nil, %w{ text/plain text/xml application/pdf }) }
@@ -205,10 +199,7 @@ describe Affiliate do
 
       it 'should set look_and_feel_css' do
         affiliate = described_class.create! valid_attributes
-
-        expect(affiliate.look_and_feel_css).to include('font-family:"Maven Pro"')
-        expect(affiliate.look_and_feel_css).to match(/#usasearch_footer_button\{color:#fff;background-color:#00396f\}\n$/)
-        expect(affiliate.look_and_feel_css).to include('#usasearch_footer.managed a:visited{color:#00396f}')
+        expect(affiliate.mobile_look_and_feel_css).to include('font-family:"Maven Pro"')
         expect(affiliate.mobile_look_and_feel_css).to include('a:visited{color:purple}')
       end
 
@@ -399,14 +390,6 @@ describe Affiliate do
     it 'validates logo alignment' do
       expect(described_class.new(valid_create_attributes.merge(
                         css_property_hash: { 'logo_alignment' => 'invalid' }))).not_to be_valid
-    end
-
-    it 'should not validate header_footer_css' do
-      affiliate = described_class.new(valid_create_attributes.merge(header_footer_css: 'h1 { invalid-css-syntax }'))
-      expect(affiliate.save).to be true
-
-      affiliate = described_class.new(valid_create_attributes.merge(header_footer_css: 'h1 { color: #DDDD }', name: 'anothersite'))
-      expect(affiliate.save).to be true
     end
 
     it 'validates locale is valid' do

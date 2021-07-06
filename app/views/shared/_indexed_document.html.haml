@@ -1,7 +1,0 @@
-.indexeddocresult.searchresult{:id => "indexeddocresult#{index+1}"}
-  %h2
-    = display_result_extname_prefix(result['unescapedUrl'])
-    = link_with_click_tracking(truncate_html(translate_bing_highlights(h(result['title'])).html_safe, 65), result['unescapedUrl'], @affiliate, @search_options[:query], index, 'AIDOC', @search_vertical)
-  - if show_full_listing
-    %h3= translate_bing_highlights(h(result['content'])).html_safe
-    %h3= link_with_click_tracking(h(truncate_url(result['unescapedUrl'])), result['unescapedUrl'], @affiliate, @search_options[:query], index, 'AIDOC', @search_vertical)

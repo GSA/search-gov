@@ -19,6 +19,8 @@ plugins:
     enabled: true
   duplication:
     enabled: true
+    exclude_patterns:
+    - "spec/"
     config:
       languages:
       - ruby

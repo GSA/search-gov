@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   get '/search/images' => 'image_searches#index', as: :image_search
   get '/search/docs' => 'searches#docs', as: :docs_search
   get '/search/news' => 'searches#news', as: :news_search
-  get '/search/news/videos' => 'searches#video_news', as: :video_news_search
+  # Provide some backward compatibility for searchers using the legacy video news search URL
+  get '/search/news/videos', to: redirect(path: '/search')
   get '/auth/logindotgov/callback', to: 'omniauth_callbacks#login_dot_gov'
 
   # Deprecated
@@ -211,7 +212,6 @@ Rails.application.routes.draw do
     resources :features, concerns: :active_scaffold
     resources :affiliate_feature_additions, concerns: :active_scaffold
     resources :help_links, concerns: :active_scaffold
-    resources :compare_search_results, only: :index
     resources :bing_urls, concerns: :active_scaffold
     resources :statuses, concerns: :active_scaffold
     resources :system_alerts, concerns: :active_scaffold

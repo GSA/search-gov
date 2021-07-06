@@ -632,15 +632,6 @@ Feature: Searches using mobile device
     Then I should see a link to "Atlantic Highly Migratory Species; Atlantic Bluefin Tuna Fisheries" with url for "https://www.federalregister.gov/articles/2013/08/19/2013-20176/atlantic-highly-migratory-species-atlantic-bluefin-tuna-fisheries"
     And I should see "A Rule by the National Oceanic and Atmospheric Administration posted on August 19, 2013."
 
-  Scenario: English search on a legacy site
-    Given the following legacy Affiliates exist:
-      | display_name      | name     | contact_email | first_name | last_name |
-      | USA.gov           | usagov   | aff@bar.gov   | John       | Bar       |
-    When I am on usagov's overridden search page
-    And I fill in "query" with "jobs"
-    And I press "Search" in the legacy search box
-    Then I should see at least 10 search results
-
   Scenario: Advanced search
     Given the following Affiliates exist:
       | display_name | name          | contact_email    | first_name | last_name | locale |

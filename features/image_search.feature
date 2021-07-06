@@ -5,8 +5,8 @@ Feature: Image search
 
   Scenario: English Image search
     Given the following Affiliates exist:
-      | display_name | name   | contact_email | first_name | last_name | header         | domains        |
-      | USA.gov      | usagov | aff@bar.gov   | John       | Bar       | USA.gov Header | whitehouse.gov |
+      | display_name | name   | contact_email | first_name | last_name | domains        |
+      | USA.gov      | usagov | aff@bar.gov   | John       | Bar       | whitehouse.gov |
     When I am on usagov's image search page
     When I search for "White House"
     Then I should see the browser page titled "White House - USA.gov Search Results"
@@ -27,8 +27,8 @@ Feature: Image search
 
   Scenario: Spanish image search
     Given the following Affiliates exist:
-      | display_name    | name        | contact_email | first_name | last_name | header                  | locale |
-      | GobiernoUSA.gov | gobiernousa | aff@bar.gov   | John       | Bar       | Gobierno.USA.gov Header | es     |
+      | display_name    | name        | contact_email | first_name | last_name | locale |
+      | GobiernoUSA.gov | gobiernousa | aff@bar.gov   | John       | Bar       | es     |
     When I am on gobiernousa's image search page
     When I fill in "query" with "Barcelona"
     And I press "Buscar"

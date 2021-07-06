@@ -32,10 +32,6 @@ class WebSearch < Search
     hash
   end
 
-  def fake_total?
-    'AWEB' == module_tag
-  end
-
   def diagnostics_label
     module_tag_for_search_engine
   end

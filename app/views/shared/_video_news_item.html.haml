@@ -1,4 +1,0 @@
-.newsitem.searchresult.video{:id => "newsitem#{@search.startrecord + index}"}
-  = render_news_item_video_thumbnail_link_with_click_tracking(@affiliate, @search, @search_vertical, instance, index)
-  %h2= link_with_click_tracking(truncate_html(translate_bing_highlights(h(instance.title)), 30), instance.link, @affiliate, @search.query, index, 'VIDS', @search_vertical, instance.id)
-  %h4= render_date(instance.published_at, @affiliate.locale)

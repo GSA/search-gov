@@ -200,9 +200,9 @@ describe SearchesController do
     it { is_expected.to render_template(:i14y) }
   end
 
-  context 'when handling a valid affiliate search request on legacy SERP' do
+  context 'when handling a valid affiliate search request' do
     render_views
-    let(:affiliate) { affiliates(:legacy_affiliate) }
+    let(:affiliate) { affiliates(:basic_affiliate) }
 
     before do
       get :index,
@@ -214,6 +214,7 @@ describe SearchesController do
       @page_title = assigns[:page_title]
     end
 
+    it { is_expected.to respond_with(:success) }
     it { is_expected.to assign_to :affiliate }
     it { is_expected.to assign_to :page_title }
 
@@ -226,12 +227,8 @@ describe SearchesController do
       expect(response).to render_template 'layouts/searches'
     end
 
-    it 'should set an affiliate page title' do
-      expect(@page_title).to eq('thunder & lightning - Legacy Search Results')
-    end
-
-    it 'should set the sanitized query in Javascript' do
-      expect(response.body).to include(%q{var original_query = "thunder & lightning"})
+    it 'sets an affiliate page title' do
+      expect(@page_title).to eq('thunder & lightning - NPS Site Search Results')
     end
   end
 
@@ -250,39 +247,6 @@ describe SearchesController do
     it 'should override/ignore the HTTP locale param and set locale to Spanish' do
       expect(I18n.locale.to_s).to eq('es')
     end
-  end
-
-  context 'when handling a valid staged affiliate search request' do
-    render_views
-    let(:affiliate) { affiliates(:power_affiliate) }
-
-    it 'should maintain the staged parameter for future searches' do
-      get :index, params: { affiliate: affiliate.name, query: 'weather', staged: 1 }
-      expect(response.body).to have_selector("input[type='hidden'][value='1'][name='staged']", visible: false)
-    end
-
-    it 'should set an affiliate page title' do
-      get :index, params: { affiliate: affiliate.name, query: 'weather', staged: 1 }
-      expect(assigns[:page_title]).to eq('weather - Noaa Site Search Results')
-    end
-  end
-
-  context 'when handling a valid affiliate search request with mobile device' do
-    let(:affiliate) { affiliates(:power_affiliate) }
-
-    before do
-      iphone_user_agent = 'Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543a Safari/419.3'
-      request.env['HTTP_USER_AGENT'] = iphone_user_agent
-      get :index,
-          params: {
-            affiliate: affiliate.name,
-            query: 'weather'
-          }
-    end
-
-    it { is_expected.to respond_with(:success) }
-    it { is_expected.to render_template 'layouts/searches' }
-    it { is_expected.to render_template 'searches/index' }
   end
 
   context 'when searching via the API' do
@@ -314,22 +278,6 @@ describe SearchesController do
     end
   end
 
-  context 'when handling any affiliate search request (mobile or otherwise)' do
-    render_views
-    before do
-      get :index,
-          params: {
-            affiliate: affiliates(:power_affiliate).name,
-            query: 'weather'
-          }
-    end
-
-    it 'should render the template' do
-      expect(response).to render_template 'index'
-      expect(response).to render_template 'layouts/searches'
-    end
-  end
-
   context 'when handling an invalid affiliate search request' do
     before do
       get :index,
@@ -357,31 +305,6 @@ describe SearchesController do
       expect(response.body).to match(/total/)
       expect(response.body).to match(/startrecord/)
       expect(response.body).to match(/endrecord/)
-    end
-  end
-
-  context 'when a user is attempting to visit an old-style advanced search page' do
-    before do
-      get :index, params: { form: 'advanced-firstgov' }
-    end
-
-    it 'should redirect to the advanced search page' do
-      expect(response).to redirect_to advanced_search_path(form: 'advanced-firstgov')
-    end
-  end
-
-  context 'when a user is attempting to visit an old-style advanced search page for an affiliate' do
-    before do
-      get :index,
-          params: {
-            form: 'advanced-firstgov',
-            affiliate: 'aff.gov'
-          }
-    end
-
-    it 'should redirect to the affiliate advanced search page' do
-      expect(response).to be_redirect
-      redirect_to advanced_search_path(affiliate: 'aff.gov', form: 'advanced-firstgov')
     end
   end
 
@@ -432,23 +355,6 @@ describe SearchesController do
         expect(@search_options[:enable_highlighting]).to be true
       end
     end
-  end
-
-  context 'when Affiliate.force_mobile_format = true' do
-    let(:affiliate) { affiliates(:basic_affiliate) }
-
-    before do
-      expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
-      expect(affiliate).to receive(:force_mobile_format?).and_return(true)
-      get :index, params: { query: 'gov', affiliate: affiliate.name }
-    end
-
-    it 'requests the mobile format' do
-      expect(request.params['format']).to eq 'mobile'
-    end
-
-    it { is_expected.to render_template 'layouts/searches' }
-    it { is_expected.to render_template 'searches/index' }
   end
 
   describe '#advanced' do
@@ -819,53 +725,6 @@ describe SearchesController do
         get :news, params: news_search_params
         expect(response).to redirect_to search_consumer_news_search_url(news_search_params)
       end
-    end
-  end
-
-  describe '#video_news' do
-    let(:affiliate) { affiliates(:basic_affiliate) }
-
-    context 'when the query is not blank' do
-      let(:video_news_search) { double('video news search', query: 'element', modules: [], diagnostics: {}) }
-
-      before do
-        expect(VideoNewsSearch).to receive(:new).with(hash_including(per_page: 20)).and_return(video_news_search)
-        expect(video_news_search).to receive(:run)
-        get :video_news,
-            params: {
-              query: 'element',
-              affiliate: affiliate.name,
-              tbs: 'w'
-            }
-      end
-
-      it { is_expected.to assign_to(:search).with(video_news_search) }
-      it { is_expected.to assign_to(:page_title).with("element - #{affiliate.display_name} Search Results") }
-      it { is_expected.to assign_to(:search_vertical).with(:news) }
-      it { is_expected.to assign_to(:form_path).with(video_news_search_path) }
-      it { is_expected.to render_template(:news) }
-      it { is_expected.to render_template('layouts/searches') }
-    end
-
-    context 'when the query is blank and total is > 0' do
-      let(:video_news_search) { double('video news search', query: '', modules: [], diagnostics: {}) }
-
-      before do
-        expect(VideoNewsSearch).to receive(:new).and_return(video_news_search)
-        expect(video_news_search).to receive(:run)
-        rss_feed = double('rss feed', name: 'Videos')
-        expect(video_news_search).to receive(:rss_feed).at_least(:once).and_return(rss_feed)
-        expect(video_news_search).to receive(:total).and_return(1)
-        get :video_news,
-            params: {
-              query: '',
-              affiliate: affiliate.name,
-              channel: '100',
-              tbs: 'w'
-            }
-      end
-
-      it { is_expected.to assign_to(:page_title).with('Videos - NPS Site Search Results') }
     end
   end
 end

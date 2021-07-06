@@ -1,8 +1,10 @@
-.searchresult{:id => "searchresult#{index+1}"}
-  %h2
+.content-block-item.result{ id: "result-#{position}" }
+  %h4.title
     = display_web_result_extname_prefix(result)
-    = display_web_result_title(result, search, affiliate, index, @search_vertical)
-  %h3.result-url= truncate_url(result['unescapedUrl'])
-  - if result["publishedAt"]
-    %h4= news_item_time_ago_in_words(result["publishedAt"])
-  %h3= display_result_description(result)
+    = link_to_web_result_title(result, position)
+  %div.url= UrlParser.strip_http_protocols result['unescapedUrl']
+  %span.description
+    - if result['publishedAt']
+      = news_item_time_ago_in_words(result['publishedAt'], ' - ')
+    = display_result_description(result)
+  %ul.sitelinks= sitelink_items(result, position) if result['sitelinks'].present?
