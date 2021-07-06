@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class Sites::RssFeedsController < Sites::SetupSiteController
   include ActionView::Helpers::TextHelper
   before_action :setup_rss_feed, only: [:show, :edit, :update]
   before_action :setup_non_managed_rss_feed, only: [:destroy]
 
   def index
-    @rss_feeds = @site.rss_feeds
+    @rss_feeds = @site.rss_feeds.order(:name)
   end
 
   def new
@@ -23,7 +25,7 @@ class Sites::RssFeedsController < Sites::SetupSiteController
       assign_rss_feed_urls(rss_feed_params[:rss_feed_urls_attributes])
       if @rss_feed.save
         redirect_to site_rss_feeds_path(@site),
-                    flash: { success: "You have added #{@rss_feed.name} to this site." }
+          flash: { success: "You have added #{@rss_feed.name} to this site." }
       else
         build_url
         render action: :new
@@ -31,8 +33,7 @@ class Sites::RssFeedsController < Sites::SetupSiteController
     end
   end
 
-  def show
-  end
+  def show; end
 
   def edit
     build_url
@@ -40,13 +41,11 @@ class Sites::RssFeedsController < Sites::SetupSiteController
 
   def update
     RssFeed.transaction do
-      @rss_feed.assign_attributes rss_feed_params.except(:rss_feed_urls_attributes)
-      unless @rss_feed.is_managed?
-        assign_rss_feed_urls(rss_feed_params[:rss_feed_urls_attributes])
-      end
+      @rss_feed.assign_attributes(rss_feed_params.except(:rss_feed_urls_attributes))
+      assign_rss_feed_urls(rss_feed_params[:rss_feed_urls_attributes]) unless @rss_feed.is_managed?
       if @rss_feed.save
         redirect_to site_rss_feeds_path(@site),
-                    flash: { success: "You have updated #{@rss_feed.name}." }
+          flash: { success: "You have updated #{@rss_feed.name}." }
       else
         build_url
         render action: :edit
@@ -57,7 +56,7 @@ class Sites::RssFeedsController < Sites::SetupSiteController
   def destroy
     @rss_feed.destroy
     redirect_to site_rss_feeds_path(@site),
-                flash: { success: "You have removed #{@rss_feed.name} from this site." }
+      flash: { success: "You have removed #{@rss_feed.name} from this site." }
   end
 
   private
@@ -74,7 +73,8 @@ class Sites::RssFeedsController < Sites::SetupSiteController
     rss_feed_urls_attributes.each_value do |url_attributes|
       url = url_attributes[:url]
       next if url.blank?
-      rss_feed_url = RssFeedUrl.rss_feed_owned_by_affiliate.find_existing_or_initialize url
+
+      rss_feed_url = RssFeedUrl.rss_feed_owned_by_affiliate.find_existing_or_initialize(url)
       if rss_feed_url.new_record?
         new_urls << rss_feed_url.url
       else
@@ -89,7 +89,7 @@ class Sites::RssFeedsController < Sites::SetupSiteController
   end
 
   def setup_rss_feed
-    @rss_feed = @site.rss_feeds.find_by_id(params[:id])
+    @rss_feed = @site.rss_feeds.find_by(id: params[:id])
     redirect_to site_rss_feeds_path(@site) unless @rss_feed
   end
 
@@ -100,7 +100,7 @@ class Sites::RssFeedsController < Sites::SetupSiteController
   end
 
   def setup_non_managed_rss_feed
-    @rss_feed = @site.rss_feeds.non_managed.find_by_id(params[:id])
+    @rss_feed = @site.rss_feeds.non_managed.find_by(id: params[:id])
     redirect_to site_rss_feeds_path(@site) unless @rss_feed
   end
 end

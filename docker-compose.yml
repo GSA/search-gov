@@ -58,7 +58,7 @@ services:
       - ELASTICSEARCH_HOSTS=http://elasticsearch7:9200
 
   mysql:
-    image: mysql:5.6
+    image: mysql:5.7
     volumes:
       - ./docker/my.cnf:/etc/my.cnf
       - db_data:/var/lib/mysql
