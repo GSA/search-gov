@@ -16,8 +16,8 @@ class ImageSearchesController < ApplicationController
     set_search_params
     SearchImpression.log(@search, @search_vertical, params, request)
     respond_to do |format|
-      format.html {}
-      format.json { render :json => @search }
+      format.html
+      format.json { render json: @search }
     end
   end
 
@@ -25,10 +25,10 @@ class ImageSearchesController < ApplicationController
 
   def set_search_options
     @search_options = {
-        affiliate: @affiliate,
-        cr: permitted_params[:cr],
-        page: permitted_params[:page],
-        query: sanitize_query(permitted_params[:query]) || ''
+      affiliate: @affiliate,
+      cr: permitted_params[:cr],
+      page: permitted_params[:page],
+      query: sanitize_query(permitted_params[:query]) || ''
     }
   end
 end

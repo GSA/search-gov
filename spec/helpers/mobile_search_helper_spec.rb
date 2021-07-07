@@ -12,6 +12,7 @@ describe MobileSearchHelper do
 
   describe '#extra_pagination_params' do
     let(:search) { ImageSearch.new(affiliate: affiliates(:non_existent_affiliate), query: 'corgi') }
+
     before { allow(search).to receive(:module_tag).and_return('IMAG') }
 
     it 'returns cr:true for IMAG ImagSearch instances' do
