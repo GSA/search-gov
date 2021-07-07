@@ -38,7 +38,7 @@ module MobileNavigationsHelper
     case search
       when is_default_search?(search)
         nil
-      when ImageSearch, LegacyImageSearch
+      when ImageSearch
         search.affiliate.image_search_label
       when I14ySearch
         search.collection

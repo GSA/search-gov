@@ -8,7 +8,7 @@ class ImageSearchesController < ApplicationController
   before_action :force_request_format
 
   def index
-    @search = search_klass.new(@search_options)
+    @search = ImageSearch.new(@search_options)
     @search.run
     @page_title = @search.query
     set_search_page_title
@@ -30,9 +30,5 @@ class ImageSearchesController < ApplicationController
         page: permitted_params[:page],
         query: sanitize_query(permitted_params[:query]) || ''
     }
-  end
-
-  def search_klass
-    ImageSearch
   end
 end
