@@ -1,0 +1,256 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=government%20(site:nps.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 09 Jun 2021 16:09:08 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - 35EE310AB6D4434EA31E5D28877C6033
+      Bingapis-Sessionid:
+      - 9A62C701183540238689DC17DE829921
+      X-Msedge-Clientid:
+      - 0A9CEF046DD96EA83925FF556C246FE9
+      X-Msapi-Userstate:
+      - 60c7
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=217,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: 35EE310AB6D4434EA31E5D28877C6033 Ref B: BLUEDGE0916 Ref C: 2021-06-09T16:10:08Z'
+      Apim-Request-Id:
+      - 8164d41f-0599-44c2-a400-f24cea348d6f
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 09 Jun 2021 16:10:07 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "government
+        (site:nps.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=government+(site%3anps.gov)",
+        "totalEstimatedMatches": 2220000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Thoughts on Government - nps.gov", "url": "https:\/\/www.nps.gov\/inde\/upload\/Thoughts-on-Government-John-Adams-2.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/inde\/upload\/Thoughts-on-Government-John-Adams-2.pdf",
+        "snippet": "government which communicates ease, comfort, security, or, in
+        one word, happiness, to the greatest number of persons, and in the greatest
+        degree, is the best. All sober inquirers after truth, ancient and modern,
+        pagan and Christian, have declared that", "dateLastCrawled": "2021-01-31T17:04:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Certified Local Government Program - NPS", "url": "https:\/\/www.nps.gov\/clg\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/clg", "snippet":
+        "Preservation through Partnership: this is the goal of the Certified Local
+        Government (CLG) Program. Local, State, and Federal governments work together
+        in the Federal Preservation Program to help communities save the irreplaceable
+        historic character of places.", "dateLastCrawled": "2021-06-05T20:19:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Federal Lands to Parks Program (U.S. National Park Service)", "url":
+        "https:\/\/www.nps.gov\/orgs\/1508\/index.htm", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.nps.gov\/orgs\/1508\/index.htm", "snippet": "The
+        Federal Lands to Parks program is a public benefit conveyance program under
+        the Federal Property Act, 40 U.S.C. 550 (b) and (e), to help increase close
+        to home recreation opportunities while reducing the federal government’s inventory
+        of real property. Since its inception in 1949, this program has transferred
+        about 184,000 acres of land ...", "dateLastCrawled": "2021-01-16T02:48:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "The Federal Civil Service and the Death of President James ...",
+        "url": "https:\/\/www.nps.gov\/articles\/000\/the-federal-civil-service-and-the-death-of-president-james-a-garfield.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/articles\/000\/the-federal-civil-service-and-the-death-of-president...",
+        "snippet": "The Federal bureaucracy had been growing since the days of Andrew
+        Jackson in the 1830s. Many government employees working in federal agencies
+        owed their positions to the Congressmen and Senators who had recommended their
+        appointments to the President. These workers were expected to perform political
+        work for their patrons as part of the job.", "dateLastCrawled": "2021-03-25T08:06:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "The War and Westward Expansion (U.S. National Park Service)", "url":
+        "https:\/\/www.nps.gov\/articles\/the-war-and-westward-expansion.htm", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.nps.gov\/articles\/the-war-and-westward-expansion.htm",
+        "snippet": "The Federal government responded with measures (Homestead Act,
+        transcontinental railroad) and military campaigns designed to encourage settlement,
+        solidify Union control of the trans-Mississippi West, and further marginalize
+        the physical and cultural presence of tribes native to the West.", "dateLastCrawled":
+        "2021-05-30T09:40:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5", "name":
+        "The Dawes Act (U.S. National Park Service)", "url": "https:\/\/www.nps.gov\/articles\/000\/dawes-act.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/articles\/000\/dawes-act.htm",
+        "snippet": "The US government employed a variety of methods in the attempt
+        to assimilate Native Americans, including the Dawes Act. The desired effect
+        of the Dawes Act was to get Native Americans to farm and ranch like white
+        homesteaders. An explicit goal of the Dawes Act was to create divisions among
+        Native Americans and eliminate the social cohesion of ...", "dateLastCrawled":
+        "2021-05-15T19:31:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6", "name":
+        "NPS Archeology Program: Federal Archeology Program", "url": "https:\/\/www.nps.gov\/archeology\/SITES\/FEDARCH.HTM",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/archeology\/SITES\/FEDARCH.HTM",
+        "snippet": "The Federal archeology program is a general term used to encompass
+        archeological activities on public land, as well as archeological activities
+        for federally financed, permitted, or licensed activities on nonfederal land.
+        Included under this term are archeological interpretation programs, collections
+        care, scientific investigations, activities ...", "dateLastCrawled": "2021-05-29T16:42:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Plan Your Visit - Pearl Harbor National Memorial (U.S ...", "url":
+        "https:\/\/www.nps.gov\/valr\/planyourvisit\/index.htm", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.nps.gov\/valr\/planyourvisit\/index.htm",
+        "snippet": "Please take a look at our welcome video to learn everything you
+        need to know to plan your trip to the visitor center here at the Pearl Harbor
+        National Memorial.", "dateLastCrawled": "2021-05-17T03:51:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "6.0 MOTOR VEHICLE SAFETY - NPS", "url": "https:\/\/www.nps.gov\/policy\/RM50Bsection6.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/policy\/RM50Bsection6.pdf",
+        "snippet": "3. Smoking in government-owned or leased motor vehicles is prohibited.
+        4. If the state or local jurisdiction, in any manner, restricts an employee’s
+        driving privileges, those same restrictions will apply to the employee’s operation
+        of government-owned or leased motor vehicles. 5.", "dateLastCrawled": "2021-04-07T19:16:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Reconstruction and Repression, 1865-1900 - Civil Rights (U ...",
+        "url": "https:\/\/www.nps.gov\/subjects\/civilrights\/reconstructionandrepression.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/subjects\/civilrights\/reconstructionandrepression.htm",
+        "snippet": "Reconstruction and Repression, 1865-1900. In 1865, following the
+        Civil War, southern state legislatures began enacting Black Codes to restrict
+        freedmen''s rights and maintain the plantation system. The Republican-controlled
+        Congress responded to these measures by passing the three great postwar constitutional
+        amendments (Thirteenth, Fourteenth ...", "dateLastCrawled": "2021-05-07T17:36:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "State, Tribal, and Local Plans & Grants", "url": "https:\/\/www.nps.gov\/clg\/become-clg.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/clg\/become-clg.html",
+        "snippet": "A Certified Local Government must meet the following minimum goals:
+        Establish a qualified historic preservation commission. Enforce appropriate
+        State or local legislation for the designation and protection of historic
+        properties. In most cases this is done in the form of a local ordinance.",
+        "dateLastCrawled": "2021-04-07T22:23:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Find a Park (U.S. National Park Service) - NPS", "url": "https:\/\/www.nps.gov\/findapark\/index.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/findapark",
+        "snippet": "Chinese immigrants in the mid-19th century played an important
+        part in mining communities and shaping the eventual national park. Tule Lake
+        National Monument tells the stories of 30,000 Japanese Americans who were
+        forced to relocate to the camp far from their homes. Find your adventure on
+        the ...", "dateLastCrawled": "2021-06-01T16:44:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Preservation Programs - National Historic Landmarks (U.S ...", "url":
+        "https:\/\/www.nps.gov\/subjects\/nationalhistoriclandmarks\/preservation-programs.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/subjects\/nationalhistoriclandmarks\/preservation-programs.htm",
+        "snippet": "The Certified Local Government Program is a preservation partnership
+        between local, state, and national government focused on promoting historic
+        preservation at the grassroots level. The program is jointly administered
+        by the National Park Service (NPS) and the State Historic Preservation Offices
+        (SHPOs) in each state, with each local community ...", "dateLastCrawled":
+        "2021-03-04T11:12:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13", "name":
+        "Reference Manual 7 - Chapter 6: Administrative ...", "url": "https:\/\/www.nps.gov\/subjects\/volunteer\/rm7-ch6.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/subjects\/volunteer\/rm7-ch6.htm",
+        "snippet": "Volunteer Liability. The Volunteer Protection Act of 1997 (PL
+        105-19) defines volunteer work and liability. The goal is to promote volunteerism
+        by limiting or eliminating a volunteer’s risk of tort liability when acting
+        for a government entity.", "dateLastCrawled": "2021-02-06T01:08:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Cherokee Relations with US Government Before Removal ...", "url":
+        "https:\/\/www.nps.gov\/fosm\/learn\/historyculture\/cherokee-relations-with-us-government-before-removal.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/fosm\/learn\/historyculture\/cherokee-relations-with-us-government...",
+        "snippet": "The Cherokee situation was further complicated by the issue of
+        states'' rights and a prolonged dispute between Georgia and the federal government.
+        In 1802, Georgia was the last of the original colonies to cede its western
+        lands to the federal government. In doing so, Georgia expected all titles
+        to land held by Indians to be extinguished.", "dateLastCrawled": "2021-06-01T06:31:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "USE YOUR GOVERNMENT CREDIT CARD FOR OFFICIAL GOVERNMENT ...", "url":
+        "https:\/\/www.nps.gov\/training\/fundamentals\/docs\/chargecardcheatsheet.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/training\/fundamentals\/docs\/chargecardcheatsheet.pdf",
+        "snippet": "Government rental time goes on your Gov''t card but YOU MUST pay
+        for personal time with personal funds. You MUST have an itemized invoice\/receipt
+        for lodging and rental cars-the credit card statement is not acceptable.",
+        "dateLastCrawled": "2021-05-16T22:40:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Substantial Completion versus Beneficial Occupancy ...", "url": "https:\/\/www.nps.gov\/dscw\/upload\/SubstantialCompletionVsBeneficialOccupancy-DSCGuideline2006006_AF-010318.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/dscw\/upload\/SubstantialCompletionVsBeneficialOccupancy-DSC...",
+        "snippet": "Government acceptance is typically referred to as final acceptance,
+        not to be confused with substantial completion. It is very important to understand
+        that substantial completion is an event, i.e., the work becomes substantially
+        complete or the Contractor achieves substantial completion.", "dateLastCrawled":
+        "2020-10-29T04:33:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17", "name":
+        "The 19th Amendment: A Crash Course - Women''s Rights ...", "url": "https:\/\/www.nps.gov\/wori\/learn\/historyculture\/2020-crash-course.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/wori\/learn\/historyculture\/2020-crash-course.htm",
+        "snippet": "The convention, organized by Elizabeth Cady Stanton, Lucretia
+        Mott, Martha Wright, Mary Ann M''Clintock, and Jane Hunt marked the beginning
+        of a formal women’s suffrage movement. The men and women of the movement made
+        speeches and petitioned Congress, pressuring government officials to recognize
+        the woman’s right to vote.", "dateLastCrawled": "2021-05-16T17:54:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Best Practice Recommendations for Cleaning", "url": "https:\/\/www.ncptt.nps.gov\/wp-content\/uploads\/Best-Practices-Final.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncptt.nps.gov\/wp-content\/uploads\/Best-Practices-Final.pdf",
+        "snippet": "1 Best Practice Recommendations for Cleaning Government Issued
+        Headstones1 This document was developed as general guidance for the cleaning
+        of government issued", "dateLastCrawled": "2021-06-06T08:36:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Civil Defense Through Eisenhower (U.S. National Park Service)", "url":
+        "https:\/\/www.nps.gov\/articles\/coldwar_civildefense_thru-ike.htm", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.nps.gov\/articles\/coldwar_civildefense_thru-ike.htm",
+        "snippet": "The 1954 test of the Castle Bravo hydrogen bomb in the Pacific’s
+        Bikini Atoll caused a shift in government officials’ and the public’s understanding
+        about the potential effects of the new weapons. Bravo’s explosion was several
+        times more powerful than predicted, and at 15 megatons was an order of magnitude
+        more powerful than the bomb ...", "dateLastCrawled": "2021-05-09T23:18:00.0000000Z",
+        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+    http_version:
+  recorded_at: Wed, 09 Jun 2021 16:10:08 GMT
+recorded_with: VCR 4.0.0

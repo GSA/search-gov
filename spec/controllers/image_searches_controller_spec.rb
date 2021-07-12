@@ -27,14 +27,17 @@ describe ImageSearchesController do
 
       it { is_expected.to assign_to(:search).with(image_search) }
       it { is_expected.to assign_to :affiliate }
+
       it do
         is_expected.to assign_to(:page_title).
           with('thunder & lightning - NPS Site Search Results')
       end
+
       it do
         is_expected.to assign_to(:search_params).
           with(hash_including(affiliate: affiliate.name, query: 'thunder & lightning'))
       end
+
       it { is_expected.to render_template 'image_searches/index' }
 
       it 'renders the template' do
@@ -42,8 +45,9 @@ describe ImageSearchesController do
         expect(response).to render_template 'layouts/searches'
       end
 
-      context 'via the JSON API' do
+      context 'when searching via the JSON API' do
         let(:search_results_json) { 'search results json' }
+
         before do
           expect(image_search).to receive(:to_json).and_return(search_results_json)
           get :index,
@@ -55,7 +59,7 @@ describe ImageSearchesController do
         it { is_expected.to respond_with :success }
 
         it 'renders the results in json' do
-          expect(response.content_type). to eq 'application/json'
+          expect(response.content_type).to eq 'application/json'
           expect(response.body).to eq(search_results_json)
         end
       end
@@ -129,7 +133,7 @@ describe ImageSearchesController do
       end
 
       it 'treats it as an empty string' do
-        expect(response).to be_success
+        expect(response).to be_successful
       end
     end
   end

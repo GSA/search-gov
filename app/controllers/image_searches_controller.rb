@@ -8,7 +8,7 @@ class ImageSearchesController < ApplicationController
   before_action :force_request_format
 
   def index
-    @search = search_klass.new(@search_options)
+    @search = ImageSearch.new(@search_options)
     @search.run
     @page_title = @search.query
     set_search_page_title
@@ -16,8 +16,8 @@ class ImageSearchesController < ApplicationController
     set_search_params
     SearchImpression.log(@search, @search_vertical, params, request)
     respond_to do |format|
-      format.html {}
-      format.json { render :json => @search }
+      format.html
+      format.json { render json: @search }
     end
   end
 
@@ -25,14 +25,10 @@ class ImageSearchesController < ApplicationController
 
   def set_search_options
     @search_options = {
-        affiliate: @affiliate,
-        cr: permitted_params[:cr],
-        page: permitted_params[:page],
-        query: sanitize_query(permitted_params[:query]) || ''
+      affiliate: @affiliate,
+      cr: permitted_params[:cr],
+      page: permitted_params[:page],
+      query: sanitize_query(permitted_params[:query]) || ''
     }
-  end
-
-  def search_klass
-    ImageSearch
   end
 end
