@@ -49,7 +49,7 @@ gem 'rash_alt', git: 'https://github.com/MothOnMars/rash_alt', ref: 'bbd107061fb
 gem 'geoip', '~> 1.6.3'
 gem 'htmlentities', '~> 4.3.4' # deprecated - only used in Google web search
 gem 'html_truncator', '~> 0.4.2'
-gem 'addressable', '~> 2.5.2'
+gem 'addressable', '~> 2.8.0'
 gem 'select2-rails', '~> 4.0.3'
 gem 'turbolinks', '~> 5.0.1'
 gem 'will_paginate-bootstrap', '~> 1.0.1'
