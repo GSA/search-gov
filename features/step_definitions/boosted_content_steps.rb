@@ -34,10 +34,6 @@ Given /^the following Boosted Content entries exist for the affiliate "([^\"]*)"
   ElasticBoostedContent.commit
 end
 
-When /^I press "([^\"]*)" on the (\d+)(?:st|nd|rd|th) boosted content entry$/ do |button, pos|
-  within(".boosted-content-list table tbody tr.row-item:nth-child(#{pos.to_i + 1})") { click_button(button) }
-end
-
 Then /^I should see (\d+) Best Bets Texts?$/ do |count|
   page.should have_selector('#best-bets .boosted-content', count: count)
 end

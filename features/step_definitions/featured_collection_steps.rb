@@ -38,10 +38,6 @@ Given /^the following featured collections exist for the affiliate "([^"]*)":$/ 
   end
 end
 
-Then /^I should see "([^"]*)" featured collections$/ do |count|
-  page.should have_selector(".featured-collection-list .row-item", :count => count)
-end
-
 Then /^the following featured collection keywords exist for featured collection titled "([^"]*)":$/ do |featured_collection_title, table|
   featured_collection = FeaturedCollection.find_by_title(featured_collection_title)
   featured_collection.featured_collection_keywords.delete_all

@@ -607,7 +607,6 @@ describe SearchesController do
             params: {
               'affiliate': affiliate.name,
               'channel': rss_feeds(:white_house_blog).id,
-              'm': 'false',
               'query': ['loren']
             }
       end

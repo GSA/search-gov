@@ -55,8 +55,6 @@ describe Affiliate do
     %w{data.gov ct-new some_aff 123 NewAff}.each do |value|
       it { is_expected.to allow_value(value).for(:name) }
     end
-    it { is_expected.to validate_attachment_size(:page_background_image).in(1..512.kilobytes) }
-    it { is_expected.to validate_attachment_size(:header_image).in(1..512.kilobytes) }
     it { is_expected.to validate_attachment_size(:mobile_logo).in(1..64.kilobytes) }
     it { is_expected.to validate_attachment_size(:header_tagline_logo).in(1..16.kilobytes) }
 
@@ -127,8 +125,6 @@ describe Affiliate do
     it { is_expected.to belong_to :agency }
     it { is_expected.to belong_to(:language).inverse_of(:affiliates) }
     it { is_expected.to belong_to :template }
-    it { is_expected.to validate_attachment_content_type(:page_background_image).allowing(%w{ image/gif image/jpeg image/pjpeg image/png image/x-png }).rejecting(nil) }
-    it { is_expected.to validate_attachment_content_type(:header_image).allowing(%w{ image/gif image/jpeg image/pjpeg image/png image/x-png }).rejecting(nil) }
     it { is_expected.to validate_attachment_content_type(:mobile_logo).allowing(%w{ image/gif image/jpeg image/pjpeg image/png image/x-png }).rejecting(nil) }
 
     it 'should create a new instance given valid attributes' do
@@ -377,14 +373,6 @@ describe Affiliate do
         expect(affiliate.errors[:base]).to include('Description text color should consist of a # character followed by 3 or 6 hexadecimal digits')
         expect(affiliate.errors[:base]).to include('Url link color should consist of a # character followed by 3 or 6 hexadecimal digits')
       end
-    end
-
-    it 'should validate color property in staged css property hash' do
-      css_property_hash = ActiveSupport::HashWithIndifferentAccess.new({'title_link_color' => 'invalid', 'visited_title_link_color' => '#DDDD'})
-      affiliate = described_class.new(valid_create_attributes.merge(css_property_hash: css_property_hash))
-      expect(affiliate.save).to be false
-      expect(affiliate.errors[:base]).to include('Title link color should consist of a # character followed by 3 or 6 hexadecimal digits')
-      expect(affiliate.errors[:base]).to include('Visited title link color should consist of a # character followed by 3 or 6 hexadecimal digits')
     end
 
     it 'validates logo alignment' do
@@ -1016,10 +1004,6 @@ describe Affiliate do
                                      mobile_logo_file_size: 100,
                                      mobile_logo_updated_at: DateTime.current,
                                      name: 'original-site',
-                                     page_background_image_content_type: 'image/jpeg',
-                                     page_background_image_file_name: 'test.jpg',
-                                     page_background_image_file_size: 100,
-                                     page_background_image_updated_at: DateTime.current,
                                      theme: 'custom')
       described_class.find site.id
     end
@@ -1034,11 +1018,7 @@ describe Affiliate do
                         mobile_logo_file_name
                         mobile_logo_file_size
                         mobile_logo_updated_at
-                        name
-                        page_background_image_content_type
-                        page_background_image_file_name
-                        page_background_image_file_size
-                        page_background_image_updated_at]
+                        name]
 
     it 'sets @css_property_hash instance variable' do
       expect(subject.instance_variable_get(:@css_property_hash)).to include(:title_link_color, :visited_title_link_color)
@@ -1138,12 +1118,10 @@ describe Affiliate do
   describe 'image assets' do
     let(:image) { File.open(Rails.root.join('spec/fixtures/images/corgi.jpg')) }
     let(:image_attributes) do
-      %i{ page_background_image header_image mobile_logo header_tagline_logo }
+      %i{ mobile_logo header_tagline_logo }
     end
     let(:images) do
-      { page_background_image: image,
-        header_image:          image,
-        mobile_logo:           image,
+      { mobile_logo:           image,
         header_tagline_logo:   image }
     end
     let(:affiliate) do

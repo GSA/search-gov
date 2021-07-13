@@ -1,8 +1,7 @@
+# DO NOT ADD NEW TESTS TO THIS FILE!
+# These tests need to be consolidated with those in searches.feature
+# https://cm-jira.usa.gov/browse/SRCH-2110
 Feature: Searches using mobile device
-
-  Background:
-    Given I am using a mobile device
-
   Scenario: Web search
     Given the following Affiliates exist:
       | display_name | name          | contact_email    | first_name | last_name | locale | domains              |
@@ -488,16 +487,6 @@ Feature: Searches using mobile device
     Then I should see "Job Openings at GSA"
     And I should see at least 1 job posting
     And I should see a link to "More GSA job openings on USAJobs.gov" with url for "https://www.usajobs.gov/Search/Results?a=GS&hp=public"
-
-  Scenario: When using tablet device
-    Given I am using a mobile device
-    And the following Affiliates exist:
-      | display_name | name    | contact_email | first_name | last_name |
-      | bar site     | bar.gov | aff@bar.gov   | John       | Bar       |
-    When I am on bar.gov's search page
-    And I fill in "Enter your search term" with "bar"
-    And I press "Search"
-    And I should see at least "2" web search results
 
   Scenario: Searching with matching med topic query
     Given the following Medline Topics exist:
