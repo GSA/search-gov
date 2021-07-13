@@ -5,7 +5,7 @@ class TwitterStreamingMonitor
 
   @monitor = nil
 
-  attr_reader :twitter_ids
+  attr_reader :twitter_ids, :thread_lock
   attr_accessor :tweet_consumer, :monitor_thread, :exit_flag
 
   def initialize(twitter_ids)
@@ -13,26 +13,18 @@ class TwitterStreamingMonitor
     @exit_flag = false
     @tweet_consumer = nil
     @monitor_thread = nil
+    @thread_lock = Mutex.new
   end
 
   class << self
     attr_accessor :monitor
   end
 
-  def self.run
-    return if monitor&.alive?
-
-    twitter_ids = SynchronizedObjectHolder.new { TwitterProfile.active_twitter_ids }
-    self.monitor = TwitterStreamingMonitor.new(twitter_ids)
-    monitor.run
-  end
-
-  def self.stop
-    monitor.stop
-  end
-
   def run
-    self.monitor_thread = Thread.new { monitor_thread_body }
+    TwitterStreamingMonitor.monitor = self
+    self.monitor_thread = Thread.new do
+      Rails.application.executor.wrap { monitor_thread_body }
+    end
     sleep(0) until monitor_thread.alive?
   end
 
@@ -53,20 +45,28 @@ class TwitterStreamingMonitor
     Rails.logger.info "[#{Time.now.utc}] [TWITTER] [MONITOR START]"
 
     loop do
+      Rails.logger.info "[#{Time.now.utc}] [TWITTER] [MONITOR] twitter_ids: #{twitter_ids.get_object.inspect}"
+
       disconnect_if_necessary
       break if exit_flag
 
       connect_if_necessary
       sleep(POLLING_INTERVAL)
     end
+  ensure
+    ActiveRecord::Base.clear_active_connections!
   end
 
   def connect_if_necessary
-    connect(twitter_ids.get_object_and_reset_changed) if need_to_connect?
+    thread_lock.synchronize do
+      connect(twitter_ids.get_object_and_reset_changed) if need_to_connect?
+    end
   end
 
   def disconnect_if_necessary
-    disconnect if need_to_disconnect?
+    thread_lock.synchronize do
+      disconnect if need_to_disconnect?
+    end
   end
 
   def need_to_disconnect?

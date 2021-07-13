@@ -7,19 +7,21 @@ class TwitterStreamConsumer
   def initialize(twitter_ids)
     @twitter_ids = twitter_ids
     @exit_flag = false
+    @consumer_thread = nil
   end
 
   def follow
     return if twitter_ids.blank?
 
     Rails.logger.info "[#{Time.now.utc}] [TWITTER] [FOLLOW] Connecting to Twitter to follow #{twitter_ids.size} Twitter profiles."
-    self.consumer_thread = Thread.new { consumer_thread_body }
+    self.consumer_thread = Thread.new do
+      Rails.application.executor.wrap { consumer_thread_body }
+    end
   end
 
   def stop
     self.exit_flag = true
-    consumer_thread&.join(1)
-    consumer_thread&.kill
+    ActiveSupport::Dependencies.interlock.permit_concurrent_loads {consumer_thread&.join}
     self.consumer_thread = nil
   end
 
@@ -36,6 +38,8 @@ class TwitterStreamConsumer
     end
   rescue StandardError => e
     Rails.logger.error "[#{Time.now.utc}] [TWITTER] Error streaming Twitter: #{e.message}"
+  ensure
+    ActiveRecord::Base.clear_active_connections!
   end
 
   def dispatch(twitter_event)

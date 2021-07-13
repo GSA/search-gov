@@ -109,9 +109,12 @@ describe 'Twitter rake tasks' do
       let(:client) { Twitter::Streaming::Client.new }
 
       def run_task
+        reaper = Thread.new do
+          sleep(0.5)
+          TwitterStreamingMonitor.monitor.stop
+        end
         Rake.application[task_name].invoke
-        sleep(0.2)
-        TwitterStreamingMonitor.stop
+        reaper.join
       end
 
       before do
@@ -121,14 +124,13 @@ describe 'Twitter rake tasks' do
         allow(Rails.logger).to receive(:info).and_call_original
         allow(Rails.logger).to receive(:error).and_call_original
 
-        # Without this require, there's a timing dependency that
+        # Without this require, there's an order dependency that
         # causes stub_const to sometimes blow up the specs. If
         # twitter_streaming_monitor.rb hasn't been loaded yet, then
         # the stub_const will define TwitterStreamingMonitor as a
-        # module, not a class. Things get ugly after
-        # that.
+        # module, not a class. Things get ugly after that.
         require 'twitter_streaming_monitor'
-        stub_const('TwitterStreamingMonitor::POLLING_INTERVAL', 0.01)
+        stub_const('TwitterStreamingMonitor::POLLING_INTERVAL', 0.001)
       end
 
       it "has 'environment' as a prereq" do
@@ -148,6 +150,7 @@ describe 'Twitter rake tasks' do
         let(:active_twitter_ids) { [1234] }
 
         before do
+          # ToDo: Are these allows necessary?
           allow(client).to receive(:consumer_key=).and_call_original
           allow(client).to receive(:consumer_secret=).and_call_original
           allow(client).to receive(:access_token).and_call_original
@@ -167,6 +170,16 @@ describe 'Twitter rake tasks' do
       end
 
       context 'when starting' do
+        before do
+          # ToDo: is this necessary?
+          allow(client).to receive(:filter) do |&block|
+            loop do
+              block.call(nil)
+              sleep(0)
+            end
+          end
+        end
+
         it 'starts up the streaming monitor' do
           run_task
           expect(Rails.logger).to have_received(:info).with(/\[TWITTER\] \[MONITOR START\]/).at_least(:once)
@@ -198,7 +211,13 @@ describe 'Twitter rake tasks' do
         let(:active_twitter_ids) { [JSON.parse(tweet_json)['user']['id']] }
 
         before do
-          allow(client).to receive(:filter).and_yield(Twitter::Tweet.new(JSON.parse(tweet_json, symbolize_names: true)))
+          allow(client).to receive(:filter) do |&block|
+            raw_tweet = Twitter::Tweet.new(JSON.parse(tweet_json, symbolize_names: true))
+            while true
+              block.call(raw_tweet)
+              sleep(0)
+            end
+          end
           allow(TwitterData).to receive(:within_tweet_creation_time_threshold?).and_return(true)
         end
 
@@ -250,7 +269,7 @@ describe 'Twitter rake tasks' do
           end
 
           it 'reconnects' do
-            expect(Rails.logger).to have_received(:info).with(/\[TWITTER\] \[CONNECT\]/).at_least(2).times
+            expect(Rails.logger).to have_received(:info).with(/\[TWITTER\] \[CONNECT\]/).once
           end
         end
       end
@@ -265,7 +284,11 @@ describe 'Twitter rake tasks' do
 
         before do
           allow(TwitterData).to receive(:within_tweet_creation_time_threshold?).and_return(true)
-          allow(client).to receive(:filter).and_yield(retweet)
+          allow(client).to receive(:filter) do |&block|
+            loop do
+              block.call(retweet)
+            end
+          end
         end
 
         context 'when there is no error' do
@@ -305,7 +328,12 @@ describe 'Twitter rake tasks' do
                         tweet_id: 1234,
                         tweet_text: 'DELETE ME.',
                         published_at: Time.now.utc)
-          allow(client).to receive(:filter).and_yield(delete_tweet)
+          allow(client).to receive(:filter) do |&block|
+            loop do
+              block.call(delete_tweet)
+              sleep(0)
+            end
+          end
         end
 
         context 'when there is no error' do
@@ -317,8 +345,7 @@ describe 'Twitter rake tasks' do
 
           it 'logs the deletion' do
             expect(Rails.logger).to have_received(:info).
-              with(/\[TWITTER\] \[DELETE\]/).
-              at_least(:once)
+              with(/\[TWITTER\] \[DELETE\]/).at_least(:once)
           end
         end
 
