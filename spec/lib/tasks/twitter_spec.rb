@@ -7,6 +7,12 @@ shared_context 'when tweet processing throws an error' do
   end
 end
 
+shared_examples "depends on 'environment'" do
+  it "has 'environment' as a prereq" do
+    expect(Rake.application[task_name].prerequisites).to include('environment')
+  end
+end
+
 describe 'Twitter rake tasks' do
   before :all do
     Rake.application = Rake::Application.new
@@ -22,9 +28,7 @@ describe 'Twitter rake tasks' do
     describe 'usasearch:twitter:expire' do
       let(:task_name) { 'usasearch:twitter:expire' }
 
-      it "has 'environment' as a prereq" do
-        expect(Rake.application[task_name].prerequisites).to include('environment')
-      end
+      include_examples "depends on 'environment'"
 
       context 'when days back is specified' do
         let(:days_back) { 7 }
@@ -56,6 +60,8 @@ describe 'Twitter rake tasks' do
         allow(ElasticTweet).to receive(:optimize)
       end
 
+      include_examples "depends on 'environment'"
+
       it 'calls ElasticTweet.optimize' do
         Rake.application[task_name].invoke
         expect(ElasticTweet).to have_received :optimize
@@ -70,9 +76,7 @@ describe 'Twitter rake tasks' do
         allow(TwitterData).to receive(:refresh_lists)
       end
 
-      it 'has environment as a prereq' do
-        expect(Rake.application[task_name].prerequisites).to include('environment')
-      end
+      include_examples "depends on 'environment'"
 
       context 'when run' do
         before { Rake.application[task_name].invoke }
@@ -86,9 +90,7 @@ describe 'Twitter rake tasks' do
     describe 'usasearch:twitter:refresh_lists_statuses' do
       let(:task_name) { 'usasearch:twitter:refresh_lists_statuses' }
 
-      it 'has environment as a prereq' do
-        expect(Rake.application[task_name].prerequisites).to include('environment')
-      end
+      include_examples "depends on 'environment'"
 
       context 'when run' do
         before do
@@ -107,6 +109,7 @@ describe 'Twitter rake tasks' do
       let(:task_name) { 'usasearch:twitter:stream' }
       let(:active_twitter_ids) { [] }
       let(:client) { Twitter::Streaming::Client.new }
+      let(:filter_yield_values) { [] }
 
       def run_task
         reaper = Thread.new do
@@ -123,63 +126,49 @@ describe 'Twitter rake tasks' do
         allow(TwitterProfile).to receive(:active_twitter_ids).and_return(active_twitter_ids)
         allow(Rails.logger).to receive(:info).and_call_original
         allow(Rails.logger).to receive(:error).and_call_original
+        allow(client).to receive(:filter) do |&block|
+          filter_yield_values.each do |twitter_event|
+            block.call(twitter_event)
+            sleep(0)
+          end
+          loop do
+            block.call(nil)
+            sleep(0)
+          end
+        end
+        allow(TwitterData).to receive(:within_tweet_creation_time_threshold?).and_return(true)
 
-        # Without this require, there's an order dependency that
-        # causes stub_const to sometimes blow up the specs. If
-        # twitter_streaming_monitor.rb hasn't been loaded yet, then
-        # the stub_const will define TwitterStreamingMonitor as a
-        # module, not a class. Things get ugly after that.
-        require 'twitter_streaming_monitor'
+        require_dependency 'twitter_streaming_monitor'
         stub_const('TwitterStreamingMonitor::POLLING_INTERVAL', 0.001)
       end
 
-      it "has 'environment' as a prereq" do
-        expect(Rake.application[task_name].prerequisites).to include('environment')
-      end
+      include_examples "depends on 'environment'"
 
-      context 'when configuring Twitter' do
+      context 'when configuring the Twitter client' do
+        let(:active_twitter_ids) { [1234] } # we won't create a client without ids
         let(:auth_info) do
           {
-            'consumer_key' => 'default_consumer_key',
-            'consumer_secret' => 'default_consumer_secret',
-            'access_token' => 'default_access_token',
-            'access_token_secret' => 'default_access_secret'
+            'consumer_key' => 'expected_consumer_key',
+            'consumer_secret' => 'expected_consumer_secret',
+            'access_token' => 'expected_access_token',
+            'access_token_secret' => 'expected_access_secret'
           }
         end
 
-        let(:active_twitter_ids) { [1234] }
-
         before do
-          # ToDo: Are these allows necessary?
-          allow(client).to receive(:consumer_key=).and_call_original
-          allow(client).to receive(:consumer_secret=).and_call_original
-          allow(client).to receive(:access_token).and_call_original
-          allow(client).to receive(:access_token_secret=).and_call_original
           allow(Rails.application.secrets).to receive(:twitter).and_return(auth_info)
-
           run_task
         end
 
-        it 'uses the twitter secrets info' do
-          expect(Rails.application.secrets).to have_received(:twitter).at_least(:once)
-          expect(client.consumer_key).to eq('default_consumer_key')
-          expect(client.consumer_secret).to eq('default_consumer_secret')
-          expect(client.access_token).to eq('default_access_token')
-          expect(client.access_token_secret).to eq('default_access_secret')
+        it 'configures the twitter client using the twitter secrets info' do
+          expect(client.consumer_key).to eq('expected_consumer_key')
+          expect(client.consumer_secret).to eq('expected_consumer_secret')
+          expect(client.access_token).to eq('expected_access_token')
+          expect(client.access_token_secret).to eq('expected_access_secret')
         end
       end
 
       context 'when starting' do
-        before do
-          # ToDo: is this necessary?
-          allow(client).to receive(:filter) do |&block|
-            loop do
-              block.call(nil)
-              sleep(0)
-            end
-          end
-        end
-
         it 'starts up the streaming monitor' do
           run_task
           expect(Rails.logger).to have_received(:info).with(/\[TWITTER\] \[MONITOR START\]/).at_least(:once)
@@ -207,23 +196,14 @@ describe 'Twitter rake tasks' do
       end
 
       context 'when processing a tweet' do
-        let(:tweet_json) { File.read(Rails.root.join('spec/fixtures/json/tweet_status.json')) }
-        let(:active_twitter_ids) { [JSON.parse(tweet_json)['user']['id']] }
-
-        before do
-          allow(client).to receive(:filter) do |&block|
-            raw_tweet = Twitter::Tweet.new(JSON.parse(tweet_json, symbolize_names: true))
-            while true
-              block.call(raw_tweet)
-              sleep(0)
-            end
-          end
-          allow(TwitterData).to receive(:within_tweet_creation_time_threshold?).and_return(true)
+        let(:tweet_json) do
+          JSON.parse(file_fixture('json/tweet_status.json').read,
+                     symbolize_names: true)
         end
+        let(:active_twitter_ids) { [tweet_json[:user][:id]] }
+        let(:filter_yield_values) { [Twitter::Tweet.new(tweet_json)] }
 
         context 'when there is no error' do
-          let(:tweet) { Tweet.first }
-
           before { run_task }
 
           it 'creates exactly one Tweet' do
@@ -231,11 +211,11 @@ describe 'Twitter rake tasks' do
           end
 
           it 'saves the tweet text' do
-            expect(tweet.tweet_text).to eq('Fast. Relevant. Free. Features: http://t.co/l8VhWiZH http://t.co/y5YSDq7M')
+            expect(Tweet.first.tweet_text).to eq('Fast. Relevant. Free. Features: http://t.co/l8VhWiZH http://t.co/y5YSDq7M')
           end
 
           it 'saves the tweet urls' do
-            expect(tweet.urls.collect(&:display_url)).to eq(%w[search.gov/features pic.twitter.com/y5YSDq7M])
+            expect(Tweet.first.urls.collect(&:display_url)).to eq(%w[search.gov/features pic.twitter.com/y5YSDq7M])
           end
         end
 
@@ -276,20 +256,11 @@ describe 'Twitter rake tasks' do
 
       context 'when processing a retweet' do
         let(:tweet_json) do
-          JSON.parse(File.read(Rails.root.join('spec/fixtures/json/retweet_status.json')),
+          JSON.parse(file_fixture('json/retweet_status.json').read,
                      symbolize_names: true)
         end
         let(:active_twitter_ids) { [tweet_json[:retweeted_status][:user][:id]] }
-        let(:retweet) { Twitter::Tweet.new(tweet_json) }
-
-        before do
-          allow(TwitterData).to receive(:within_tweet_creation_time_threshold?).and_return(true)
-          allow(client).to receive(:filter) do |&block|
-            loop do
-              block.call(retweet)
-            end
-          end
-        end
+        let(:filter_yield_values) { [Twitter::Tweet.new(tweet_json)] }
 
         context 'when there is no error' do
           before { run_task }
@@ -319,21 +290,13 @@ describe 'Twitter rake tasks' do
 
       context 'when processing a delete-tweet' do
         let(:active_twitter_ids) { [1] }
-        let(:delete_tweet) do
-          Twitter::Streaming::DeletedTweet.new({ id: 1234 })
-        end
+        let(:filter_yield_values) { [Twitter::Streaming::DeletedTweet.new({ id: 1234 })] }
 
         before do
           Tweet.create!(twitter_profile_id: 1,
                         tweet_id: 1234,
                         tweet_text: 'DELETE ME.',
                         published_at: Time.now.utc)
-          allow(client).to receive(:filter) do |&block|
-            loop do
-              block.call(delete_tweet)
-              sleep(0)
-            end
-          end
         end
 
         context 'when there is no error' do
@@ -365,4 +328,3 @@ describe 'Twitter rake tasks' do
     end
   end
 end
-j
