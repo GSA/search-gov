@@ -32,14 +32,16 @@ class TwitterStreamConsumer
   private
 
   def consumer_thread_body
-    twitter_client.filter(follow: twitter_ids.join(',')) do |twitter_event|
-      dispatch(twitter_event)
-      break if exit_flag
+    begin
+      twitter_client.filter(follow: twitter_ids.join(',')) do |twitter_event|
+        dispatch(twitter_event)
+        break if exit_flag
+      rescue StandardError => e
+        Rails.logger.error "[#{Time.now.utc}] [TWITTER] Error streaming Twitter event #{twitter_event}: #{e.message}"
+      end
+    ensure
+      ActiveRecord::Base.clear_active_connections!
     end
-  rescue StandardError => e
-    Rails.logger.error "[#{Time.now.utc}] [TWITTER] Error streaming Twitter: #{e.message}"
-  ensure
-    ActiveRecord::Base.clear_active_connections!
   end
 
   def dispatch(twitter_event)

@@ -5,7 +5,7 @@ class TwitterStreamingMonitor
 
   @monitor = nil
 
-  attr_reader :twitter_ids, :thread_lock
+  attr_reader :twitter_ids
   attr_accessor :tweet_consumer, :monitor_thread, :exit_flag
 
   def initialize(twitter_ids)
@@ -13,7 +13,6 @@ class TwitterStreamingMonitor
     @exit_flag = false
     @tweet_consumer = nil
     @monitor_thread = nil
-    @thread_lock = Mutex.new
   end
 
   class << self
@@ -58,15 +57,11 @@ class TwitterStreamingMonitor
   end
 
   def connect_if_necessary
-    thread_lock.synchronize do
-      connect(twitter_ids.get_object_and_reset_changed) if need_to_connect?
-    end
+    connect(twitter_ids.get_object_and_reset_changed) if need_to_connect?
   end
 
   def disconnect_if_necessary
-    thread_lock.synchronize do
-      disconnect if need_to_disconnect?
-    end
+    disconnect if need_to_disconnect?
   end
 
   def need_to_disconnect?
