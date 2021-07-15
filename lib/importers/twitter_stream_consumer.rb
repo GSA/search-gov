@@ -36,8 +36,6 @@ class TwitterStreamConsumer
       twitter_client.filter(follow: twitter_ids.join(',')) do |twitter_event|
         dispatch(twitter_event)
         break if exit_flag
-      rescue StandardError => e
-        Rails.logger.error "[#{Time.now.utc}] [TWITTER] Error streaming Twitter event #{twitter_event}: #{e.message}"
       end
     ensure
       ActiveRecord::Base.clear_active_connections!
@@ -60,10 +58,6 @@ class TwitterStreamConsumer
       Rails.application.secrets.twitter.each do |key, value|
         config.send("#{key}=", value)
       end
-    end
-
-    @twitter_client.before_request do
-      Rails.logger.info "[#{Time.now.utc}] [TWITTER] [CONNECT] Connected."
     end
 
     @twitter_client
