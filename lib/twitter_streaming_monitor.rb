@@ -5,7 +5,7 @@ class TwitterStreamingMonitor
 
   @monitor = nil
 
-  attr_reader :twitter_ids
+  attr_reader :twitter_ids, :logger
   attr_accessor :tweet_consumer, :monitor_thread, :exit_flag
 
   def initialize(twitter_ids)
@@ -13,6 +13,7 @@ class TwitterStreamingMonitor
     @exit_flag = false
     @tweet_consumer = nil
     @monitor_thread = nil
+    @logger = Logger.new('twitter.log')
   end
 
   class << self
@@ -29,7 +30,7 @@ class TwitterStreamingMonitor
 
   def stop
     self.exit_flag = true
-    monitor_thread&.join(1)
+    ActiveSupport::Dependencies.interlock.permit_concurrent_loads { monitor_thread&.join(2*POLLING_INTERVAL) }
     self.monitor_thread = nil
     disconnect
   end
@@ -41,10 +42,8 @@ class TwitterStreamingMonitor
   private
 
   def monitor_thread_body
-    Rails.logger.info "[#{Time.now.utc}] [TWITTER] [MONITOR START]"
-
     loop do
-      Rails.logger.info "[#{Time.now.utc}] [TWITTER] [MONITOR] twitter_ids: #{twitter_ids.get_object.inspect}"
+      logger.info "[#{Time.now.utc}] [TWITTER] [MONITOR] twitter_ids: #{twitter_ids.get_object.inspect}"
 
       disconnect_if_necessary
       break if exit_flag
@@ -70,7 +69,7 @@ class TwitterStreamingMonitor
 
   def disconnect
     tweet_consumer&.stop
-    Rails.logger.info "[#{Time.now.utc}] [TWITTER] [DISCONNECT]"
+    logger.info "[#{Time.now.utc}] [TWITTER] [DISCONNECT]"
     self.tweet_consumer = nil
   end
 
@@ -82,6 +81,6 @@ class TwitterStreamingMonitor
     self.tweet_consumer = TwitterStreamConsumer.new(twitter_ids)
     tweet_consumer.follow
     sleep(0) until tweet_consumer&.alive?
-    Rails.logger.info "[#{Time.now.utc}] [TWITTER] [CONNECT]"
+    logger.info "[#{Time.now.utc}] [TWITTER] [CONNECT]"
   end
 end

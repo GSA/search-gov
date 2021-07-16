@@ -3,10 +3,9 @@
 describe TwitterStreamingMonitor do
   subject(:monitor) { described_class.new(twitter_ids_holder) }
 
-  let(:client) { Twitter::Streaming::Client.new }
-
   twitter_ids = [] # needs to be a variable so the block in the next let works.
   let(:twitter_ids_holder) { SynchronizedObjectHolder.new { twitter_ids } }
+  let(:client) { Twitter::Streaming::Client.new }
 
   after { monitor.stop }
 
@@ -47,7 +46,7 @@ describe TwitterStreamingMonitor do
       allow(Rails.application.secrets).to receive(:twitter).and_return(auth_info)
       twitter_ids = [1]
       monitor.run
-      sleep(0.01)
+      sleep(0.1)
     end
 
     it 'uses the twitter secrets info' do

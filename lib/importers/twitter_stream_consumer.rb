@@ -13,7 +13,7 @@ class TwitterStreamConsumer
   def follow
     return if twitter_ids.blank?
 
-    Rails.logger.info "[#{Time.now.utc}] [TWITTER] [FOLLOW] Connecting to Twitter to follow #{twitter_ids.size} Twitter profiles."
+    logger.info "[#{Time.now.utc}] [TWITTER] [FOLLOW] Connecting to Twitter to follow #{twitter_ids.size} Twitter profiles."
     self.consumer_thread = Thread.new do
       Rails.application.executor.wrap { consumer_thread_body }
     end
@@ -21,7 +21,7 @@ class TwitterStreamConsumer
 
   def stop
     self.exit_flag = true
-    ActiveSupport::Dependencies.interlock.permit_concurrent_loads {consumer_thread&.join}
+    ActiveSupport::Dependencies.interlock.permit_concurrent_loads { consumer_thread&.join }
     self.consumer_thread = nil
   end
 
@@ -31,15 +31,17 @@ class TwitterStreamConsumer
 
   private
 
+  def logger
+    TwitterStreamingMonitor.monitor.logger
+  end
+
   def consumer_thread_body
-    begin
-      twitter_client.filter(follow: twitter_ids.join(',')) do |twitter_event|
-        dispatch(twitter_event)
-        break if exit_flag
-      end
-    ensure
-      ActiveRecord::Base.clear_active_connections!
+    twitter_client.filter(follow: twitter_ids.join(',')) do |twitter_event|
+      dispatch(twitter_event)
+      break if exit_flag
     end
+  ensure
+    ActiveRecord::Base.clear_active_connections!
   end
 
   def dispatch(twitter_event)
@@ -64,18 +66,18 @@ class TwitterStreamConsumer
   end
 
   def on_tweet(tweet)
-    Rails.logger.info "[#{Time.now.utc}] [TWITTER] [FOLLOW] Tweet received: @#{tweet.user.screen_name}: #{tweet.text}"
+    logger.info "[#{Time.now.utc}] [TWITTER] [FOLLOW] Tweet received: @#{tweet.user.screen_name}: #{tweet.text}"
     TwitterData.import_tweet(tweet)
   rescue StandardError => e
-    Rails.logger.error "[#{Time.now.utc}] [TWITTER] [FOLLOW] [ERROR] encountered error while handling tweet##{tweet.id}: #{e.message}"
+    logger.error "[#{Time.now.utc}] [TWITTER] [FOLLOW] [ERROR] encountered error while handling tweet##{tweet.id}: #{e.message}"
   end
 
   def on_deleted_tweet(tweet)
-    Rails.logger.info "[#{Time.now.utc}] [TWITTER] [DELETE] Received delete request for tweet##{tweet.id}"
+    logger.info "[#{Time.now.utc}] [TWITTER] [DELETE] Received delete request for tweet##{tweet.id}"
     begin
       Tweet.where(tweet_id: tweet.id).destroy_all
     rescue StandardError => e
-      Rails.logger.error "[#{Time.now.utc}] [TWITTER] [FOLLOW] [ERROR] encountered error while deleting tweet##{tweet.id}: #{e.message}"
+      logger.error "[#{Time.now.utc}] [TWITTER] [FOLLOW] [ERROR] encountered error while deleting tweet##{tweet.id}: #{e.message}"
     end
   end
 end

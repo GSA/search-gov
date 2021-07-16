@@ -7,7 +7,7 @@ RSpec.describe TwitterStreamConsumer do
   let(:client) { Twitter::Streaming::Client.new }
   let(:filter_yield_values) { [] }
 
-  def follow
+  before do
     allow(Twitter::Streaming::Client).to receive(:new).and_yield(client).and_return(client)
     allow(TwitterData).to receive(:within_tweet_creation_time_threshold?).and_return(true)
     allow(client).to receive(:filter) do |&block|
@@ -18,7 +18,10 @@ RSpec.describe TwitterStreamConsumer do
         block.call(nil)
       end
     end
+    TwitterStreamingMonitor.monitor = TwitterStreamingMonitor.new([])
+  end
 
+  def follow
     consumer.follow
     sleep(0.1)
   end
@@ -44,7 +47,7 @@ RSpec.describe TwitterStreamConsumer do
       end
     end
 
-    context 'processing a tweet' do
+    context 'when processing a tweet' do
       let(:tweet_json) do
         JSON.parse(file_fixture('json/tweet_status.json').read,
                    symbolize_names: true)
@@ -88,7 +91,7 @@ RSpec.describe TwitterStreamConsumer do
       end
     end
 
-    context 'processing a re-tweet' do
+    context 'when processing a re-tweet' do
       let(:tweet_json) do
         JSON.parse(file_fixture('json/retweet_status.json').read,
                    symbolize_names: true)
@@ -132,7 +135,7 @@ RSpec.describe TwitterStreamConsumer do
       end
     end
 
-    context 'processing a delete-tweet' do
+    context 'when processing a delete-tweet' do
       let(:active_twitter_ids) { [1] }
       let(:filter_yield_values) { [Twitter::Streaming::DeletedTweet.new({ id: 1234 })] }
 
@@ -146,6 +149,37 @@ RSpec.describe TwitterStreamConsumer do
 
       it 'deletes the tweet' do
         expect(Tweet.count).to eq(0)
+      end
+    end
+
+    context 'when processsing a tweet with partial urls' do
+      let(:tweet_json) do
+        JSON.parse(file_fixture('json/tweet_status_with_partial_urls.json').read,
+                   symbolize_names: true)
+      end
+      let(:active_twitter_ids) { [tweet_json[:user][:id]] }
+      let(:filter_yield_values) { [Twitter::Tweet.new(tweet_json)] }
+
+      before { follow }
+
+      it 'creates exactly one Tweet' do
+        expect(Tweet.count).to eq(1)
+      end
+
+      it 'saves the profile id' do
+        expect(Tweet.first.twitter_profile_id).to eq(123)
+      end
+
+      it 'saves the tweet id' do
+        expect(Tweet.first.tweet_id).to eq(258289885373423617)
+      end
+
+      it 'saves the tweet text' do
+        expect(Tweet.first.tweet_text).to eq('Fast. Relevant. Free. Features: http://t.co/l8VhWiZH http://t.co/y5YSDq7M')
+      end
+
+      it 'saves only urls with complete data' do
+        expect(Tweet.first.urls.collect(&:display_url)).to eq(%w[pic.twitter.com/y5YSDq7M])
       end
     end
   end

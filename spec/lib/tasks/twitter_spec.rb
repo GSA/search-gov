@@ -20,8 +20,6 @@ describe 'Twitter rake tasks' do
     Rake::Task.define_task(:environment)
   end
 
-  let(:task_name) { nil }
-
   before { Rake.application[task_name].reenable }
 
   describe 'usasearch:twitter' do
@@ -110,6 +108,7 @@ describe 'Twitter rake tasks' do
       let(:active_twitter_ids) { [] }
       let(:client) { Twitter::Streaming::Client.new }
       let(:filter_yield_values) { [] }
+      let(:logger) { Logger.new('twitter.log') }
 
       def run_task
         reaper = Thread.new do
@@ -124,8 +123,9 @@ describe 'Twitter rake tasks' do
         Rake.application[task_name].reenable
         allow(Twitter::Streaming::Client).to receive(:new).and_yield(client).and_return(client)
         allow(TwitterProfile).to receive(:active_twitter_ids).and_return(active_twitter_ids)
-        allow(Rails.logger).to receive(:info).and_call_original
-        allow(Rails.logger).to receive(:error).and_call_original
+        allow(Logger).to receive(:new).and_return(logger)
+        allow(logger).to receive(:info).and_call_original
+        allow(logger).to receive(:error).and_call_original
         allow(client).to receive(:filter) do |&block|
           filter_yield_values.each do |twitter_event|
             block.call(twitter_event)
@@ -146,17 +146,17 @@ describe 'Twitter rake tasks' do
 
       context 'when configuring the Twitter client' do
         let(:active_twitter_ids) { [1234] } # we won't create a client without ids
-        let(:auth_info) do
-          {
-            'consumer_key' => 'expected_consumer_key',
-            'consumer_secret' => 'expected_consumer_secret',
-            'access_token' => 'expected_access_token',
-            'access_token_secret' => 'expected_access_secret'
-          }
-        end
 
         before do
-          allow(Rails.application.secrets).to receive(:twitter).and_return(auth_info)
+          allow(Rails.application.secrets).to receive(:twitter).
+            and_return(
+              {
+                'consumer_key' => 'expected_consumer_key',
+                'consumer_secret' => 'expected_consumer_secret',
+                'access_token' => 'expected_access_token',
+                'access_token_secret' => 'expected_access_secret'
+              }
+            )
           run_task
         end
 
@@ -171,7 +171,7 @@ describe 'Twitter rake tasks' do
       context 'when starting' do
         it 'starts up the streaming monitor' do
           run_task
-          expect(Rails.logger).to have_received(:info).with(/\[TWITTER\] \[MONITOR START\]/).at_least(:once)
+          expect(logger).to have_received(:info).with(/\[TWITTER\] \[MONITOR\] twitter_ids: \[/).at_least(:once)
         end
 
         context 'when there are active twitter ids' do
@@ -180,7 +180,7 @@ describe 'Twitter rake tasks' do
           before { run_task }
 
           it 'starts the tweet consumer' do
-            expect(Rails.logger).to have_received(:info).with(/\[TWITTER\] \[CONNECT\]/).at_least(:once)
+            expect(logger).to have_received(:info).with(/\[TWITTER\] \[CONNECT\]/).at_least(:once)
           end
         end
 
@@ -190,18 +190,19 @@ describe 'Twitter rake tasks' do
           before { run_task }
 
           it 'does not start the tweet consumer' do
-            expect(Rails.logger).not_to have_received(:info).with(/\[TWITTER\] \[CONNECT\]/)
+            expect(logger).not_to have_received(:info).with(/\[TWITTER\] \[CONNECT\]/)
           end
         end
       end
 
       context 'when processing a tweet' do
-        let(:tweet_json) do
-          JSON.parse(file_fixture('json/tweet_status.json').read,
-                     symbolize_names: true)
+        let(:filter_yield_values) do
+          [
+            Twitter::Tweet.new(JSON.parse(file_fixture('json/tweet_status.json').read,
+                                          symbolize_names: true))
+          ]
         end
-        let(:active_twitter_ids) { [tweet_json[:user][:id]] }
-        let(:filter_yield_values) { [Twitter::Tweet.new(tweet_json)] }
+        let(:active_twitter_ids) { [filter_yield_values.first.user.id] }
 
         context 'when there is no error' do
           before { run_task }
@@ -223,7 +224,7 @@ describe 'Twitter rake tasks' do
           include_context 'when tweet processing throws an error'
 
           it 'logs an error' do
-            expect(Rails.logger).to have_received(:error).
+            expect(logger).to have_received(:error).
               with(/\[TWITTER\] \[FOLLOW\] \[ERROR\].*error while handling tweet#[[:digit:]]+: An Error/).at_least(:once)
           end
         end
@@ -245,22 +246,23 @@ describe 'Twitter rake tasks' do
           end
 
           it 'disconnects' do
-            expect(Rails.logger).to have_received(:info).with(/\[TWITTER\] \[DISCONNECT\]/).at_least(2).times
+            expect(logger).to have_received(:info).with(/\[TWITTER\] \[DISCONNECT\]/).at_least(2).times
           end
 
           it 'reconnects' do
-            expect(Rails.logger).to have_received(:info).with(/\[TWITTER\] \[CONNECT\]/).once
+            expect(logger).to have_received(:info).with(/\[TWITTER\] \[CONNECT\]/).once
           end
         end
       end
 
       context 'when processing a retweet' do
-        let(:tweet_json) do
-          JSON.parse(file_fixture('json/retweet_status.json').read,
-                     symbolize_names: true)
+        let(:filter_yield_values) do
+          [
+            Twitter::Tweet.new(JSON.parse(file_fixture('json/retweet_status.json').read,
+                                          symbolize_names: true))
+          ]
         end
-        let(:active_twitter_ids) { [tweet_json[:retweeted_status][:user][:id]] }
-        let(:filter_yield_values) { [Twitter::Tweet.new(tweet_json)] }
+        let(:active_twitter_ids) { [filter_yield_values.first.user.id] }
 
         context 'when there is no error' do
           before { run_task }
@@ -282,7 +284,7 @@ describe 'Twitter rake tasks' do
           include_context 'when tweet processing throws an error'
 
           it 'logs the error' do
-            expect(Rails.logger).to have_received(:error).
+            expect(logger).to have_received(:error).
               with(/encountered error while handling tweet#[[:digit:]]+: An Error/).at_least(:once)
           end
         end
@@ -307,7 +309,7 @@ describe 'Twitter rake tasks' do
           end
 
           it 'logs the deletion' do
-            expect(Rails.logger).to have_received(:info).
+            expect(logger).to have_received(:info).
               with(/\[TWITTER\] \[DELETE\]/).at_least(:once)
           end
         end
@@ -319,7 +321,7 @@ describe 'Twitter rake tasks' do
           end
 
           it 'logs the error' do
-            expect(Rails.logger).to have_received(:error).
+            expect(logger).to have_received(:error).
               with(/\[TWITTER\] \[FOLLOW\] \[ERROR\].*error while deleting tweet#1234/).
               at_least(:once)
           end
