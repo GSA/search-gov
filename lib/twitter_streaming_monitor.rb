@@ -50,7 +50,7 @@ class TwitterStreamingMonitor
       break if exit_flag
 
       connect_if_necessary
-      sleep(POLLING_INTERVAL)
+      ActiveSupport::Dependencies.interlock.permit_concurrent_loads { sleep(POLLING_INTERVAL) }
     end
   ensure
     ActiveRecord::Base.clear_active_connections!
