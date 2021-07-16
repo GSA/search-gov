@@ -30,6 +30,7 @@ namespace :usasearch do
       twitter_ids = SynchronizedObjectHolder.new { TwitterProfile.active_twitter_ids }
       monitor = TwitterStreamingMonitor.new(twitter_ids)
       monitor.run
+      sleep(0) while monitor.alive?
     end
   end
 end
