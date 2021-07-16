@@ -456,3 +456,15 @@ Feature: Search
     And I press "Search"
     Then I should be on the search page
     And I should see "Please enter a search term"
+
+  @javascript
+  Scenario: Searching with type-ahead suggestions
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email | first_name | last_name | domains |
+      | agency site  | agency.gov | aff@bar.gov   | Jane       | Bar       | usa.gov |
+    And the following SAYT Suggestions exist for agency.gov:
+      | phrase                |
+      | popular search phrase |
+    When I am on agency.gov's search page
+    And I fill in "query" with "popular"
+    Then I should see a suggestion to search for "popular search phrase"
