@@ -86,7 +86,7 @@ class BulkUrlUploader
     SearchgovUrlBulkUploaderJob.perform_later(
       user,
       uploaded_file.original_filename,
-      uploaded_file.tempfile.readlines
+      uploaded_file.tempfile.set_encoding('UTF-8').readlines
     )
   end
 
