@@ -3,6 +3,7 @@
 class BulkUrlUploader
   MAXIMUM_FILE_SIZE = 10.megabytes
   VALID_CONTENT_TYPES = %w[text/plain].freeze
+  URL_ALREADY_TAKEN_MESSAGE = 'Url has already been taken'
 
   attr_reader :results
 
@@ -35,7 +36,9 @@ class BulkUrlUploader
     end
 
     def error_messages
-      @errors.keys
+      already_taken = ->(error) { error == URL_ALREADY_TAKEN_MESSAGE }
+      errors = @errors.keys
+      errors.reject(&already_taken) + errors.select(&already_taken)
     end
 
     def urls_with(error_message)
