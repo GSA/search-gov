@@ -27,7 +27,9 @@ namespace :usasearch do
 
     desc 'Connect to Twitter Streaming API and capture tweets from all customer twitter accounts'
     task stream: [:environment] do
-      twitter_ids = SynchronizedObjectHolder.new { TwitterProfile.active_twitter_ids }
+      twitter_ids = SynchronizedObjectHolder.new do
+        ActiveRecord::Base.connection.uncached { TwitterProfile.active_twitter_ids }
+      end
       monitor = TwitterStreamingMonitor.new(twitter_ids)
       monitor.run
       sleep(0) while monitor.alive?
