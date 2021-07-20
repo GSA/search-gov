@@ -43,17 +43,25 @@ class TwitterStreamingMonitor
 
   def monitor_thread_body
     logger.info "[#{Time.now.utc}] [TWITTER] [MONITOR] start monitor thread"
-    loop do
-      logger.info "[#{Time.now.utc}] [TWITTER] [MONITOR] twitter_ids: #{twitter_ids.get_object.inspect}"
-
-      disconnect_if_necessary
-      break if exit_flag
-
-      connect_if_necessary
-      ActiveSupport::Dependencies.interlock.permit_concurrent_loads { sleep(POLLING_INTERVAL) }
+    until exit_flag
+      check_twitter_ids
+      sleep_and_allow_autoloads
     end
   ensure
     ActiveRecord::Base.clear_active_connections!
+  end
+
+  def check_twitter_ids
+    logger.info "[#{Time.now.utc}] [TWITTER] [MONITOR] twitter_ids: #{twitter_ids.get_object.inspect}"
+
+    disconnect_if_necessary
+    connect_if_necessary
+  end
+
+  def sleep_and_allow_autoloads
+    ActiveSupport::Dependencies.interlock.permit_concurrent_loads do
+      sleep(POLLING_INTERVAL)
+    end
   end
 
   def connect_if_necessary

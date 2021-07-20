@@ -180,7 +180,7 @@ describe 'Twitter rake tasks' do
           before { run_task }
 
           it 'starts the tweet consumer' do
-            expect(logger).to have_received(:info).with(/\[TWITTER\] \[CONNECT\]/).at_least(:once)
+            expect(logger).to have_received(:info).with(/\[TWITTER\] \[CONNECTING\]/).at_least(:once)
           end
         end
 
@@ -190,7 +190,7 @@ describe 'Twitter rake tasks' do
           before { run_task }
 
           it 'does not start the tweet consumer' do
-            expect(logger).not_to have_received(:info).with(/\[TWITTER\] \[CONNECT\]/)
+            expect(logger).not_to have_received(:info).with(/\[TWITTER\] \[CONNECTING\]/)
           end
         end
       end
@@ -250,7 +250,7 @@ describe 'Twitter rake tasks' do
           end
 
           it 'reconnects' do
-            expect(logger).to have_received(:info).with(/\[TWITTER\] \[CONNECT\]/).once
+            expect(logger).to have_received(:info).with(/\[TWITTER\] \[CONNECTING\]/).once
           end
         end
       end
