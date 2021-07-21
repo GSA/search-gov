@@ -102,12 +102,10 @@ class Affiliate < ApplicationRecord
     s3_region: Rails.application.secrets.aws_image_bucket[:s3_region]
   }.freeze
 
-  # deprecated - legacy SERP
-  has_attached_file :page_background_image,
-                    AWS_IMAGE_SETTINGS.merge(path: "#{Rails.env}/site/:id/page_background_image/:updated_at/:style/:filename")
-  # deprecated - legacy SERP
-  has_attached_file :header_image,
-                    AWS_IMAGE_SETTINGS.merge(path: "#{Rails.env}/site/:id/header_image/:updated_at/:style/:filename")
+  # The "mobile_" and "managed_" prefixes in "mobile_logo", "managed_header", etc.,
+  # are remnants from the days of the "legacy" SERP. We have left the prefixes as-is
+  # to avoid extensive renaming. So when you see "mobile_whatever", or "managed_whatever",
+  # just think "whatever".
   has_attached_file :mobile_logo,
                     AWS_IMAGE_SETTINGS.merge(path: "#{Rails.env}/site/:id/mobile_logo/:updated_at/:style/:filename")
   has_attached_file :header_tagline_logo,
@@ -142,20 +140,6 @@ class Affiliate < ApplicationRecord
   validates_format_of :bing_v5_key, with: /\A[0-9a-f]{32}\z/i, allow_nil: true
   validates_inclusion_of :search_engine, in: SEARCH_ENGINES
   validates_url :header_tagline_url, allow_blank: true
-
-  validates_attachment_content_type :page_background_image,
-                                    content_type: VALID_IMAGE_CONTENT_TYPES,
-                                    message: INVALID_CONTENT_TYPE_MESSAGE
-  validates_attachment_size :page_background_image,
-                            in: (1..MAXIMUM_IMAGE_SIZE_IN_KB.kilobytes),
-                            message: INVALID_IMAGE_SIZE_MESSAGE
-
-  validates_attachment_content_type :header_image,
-                                    content_type: VALID_IMAGE_CONTENT_TYPES,
-                                    message: INVALID_CONTENT_TYPE_MESSAGE
-  validates_attachment_size :header_image,
-                            in: (1..MAXIMUM_IMAGE_SIZE_IN_KB.kilobytes),
-                            message: INVALID_IMAGE_SIZE_MESSAGE
 
   validates_attachment_content_type :mobile_logo,
                                     content_type: VALID_IMAGE_CONTENT_TYPES,
@@ -282,7 +266,7 @@ class Affiliate < ApplicationRecord
   def self.do_not_dup_attributes
     @@do_not_dup_attributes ||= begin
       logo_attrs = column_names.select do |column_name|
-        column_name =~ /\A(header_tagline_logo|page_background_image|mobile_logo)/
+        column_name =~ /\A(header_tagline_logo|mobile_logo)/
       end
       %w[api_access_key name].push(*logo_attrs).freeze
     end
@@ -292,10 +276,8 @@ class Affiliate < ApplicationRecord
     @@human_attribute_name_hash ||= {
       display_name: 'Display name',
       name: 'Site Handle (visible to searchers in the URL)',
-      header_image_file_size: 'Legacy Logo file size',
       mobile_logo_file_size: 'Logo file size',
-      mobile_header_tagline_logo_file_size: 'Header Tagline Logo file size',
-      page_background_image_file_size: 'Page Background Image file size'
+      mobile_header_tagline_logo_file_size: 'Header Tagline Logo file size'
     }
   end
 

@@ -1,8 +1,6 @@
 = form_tag request.path, method: :get, id: 'search-bar', class: search_bar_class(search) do
-  = hidden_field_tag_if_key_exists :m
   = hidden_field_tag :affiliate, search.affiliate.name
   = hidden_field_tag_if_key_exists :sitelimit
-  = hidden_field_tag_if_key_exists :staged
 
   - if search.is_a? FilterableSearch
     = hidden_field_tag_if_key_exists :tbs

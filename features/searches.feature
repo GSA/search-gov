@@ -447,16 +447,6 @@ Feature: Search
     Then I should be on the search page
     And I should see "Please enter a search term"
 
-  Scenario: When using tablet device on advanced search
-    Given I am using an tabletPC device
-    And the following Affiliates exist:
-      | display_name | name    | contact_email | first_name | last_name |
-      | bar site     | bar.gov | aff@bar.gov   | John       | Bar       |
-    When I am on bar.gov's advanced search page
-    And I press "Search"
-    Then I should be on the search page
-    And I should see "Please enter a search term"
-
   @javascript
   Scenario: Searching with type-ahead suggestions
     Given the following Affiliates exist:
