@@ -30,6 +30,18 @@ shared_examples 'a successful bulk upload' do
   end
 end
 
+shared_examples 'a failed bulk upload with error' do |error_message|
+  it 'sends us back to the bulk upload page' do
+    do_bulk_upload
+    expect(page).to have_text('Bulk Search.gov URL Upload')
+  end
+
+  it 'shows an error message' do
+    do_bulk_upload
+    expect(page).to have_text(error_message)
+  end
+end
+
 def do_bulk_upload
   perform_enqueued_jobs do
     visit url
@@ -42,7 +54,6 @@ describe 'Bulk URL upload' do
   include ActiveJob::TestHelper
 
   let(:url) { '/admin/bulk_url_upload' }
-  let(:upload_filename) { 'good_url_file.txt' }
   let(:upload_file) { file_fixture("txt/#{upload_filename}") }
   let(:urls) { File.open(upload_file, 'r:bom|utf-8').readlines.map(&:strip).map { |url| URI.escape(url) } }
   let(:searchgov_domains) do
@@ -67,6 +78,8 @@ describe 'Bulk URL upload' do
   describe 'bulk uploading a file of URLs' do
     include_context 'log in super admin'
 
+    let(:upload_filename) { 'good_url_file.txt' }
+
     it_behaves_like 'a successful bulk upload'
   end
 
@@ -79,46 +92,21 @@ describe 'Bulk URL upload' do
   end
 
   describe 'trying to bulk upload a file of URLs when there is no file attached' do
-    subject(:do_bulk_upload) do
-      visit url
-      click_button('Upload')
-    end
-
     include_context 'log in super admin'
 
-    it 'sends us back to the bulk upload page' do
-      do_bulk_upload
-      expect(page).to have_text('Bulk Search.gov URL Upload')
-    end
+    let(:upload_file) { nil }
 
-    it 'shows an error message' do
-      do_bulk_upload
-      expect(page).to have_text(
-        <<~ERROR_MESSAGE
-          Please choose a file to upload.
-        ERROR_MESSAGE
-      )
-    end
+    it_behaves_like 'a failed bulk upload with error', 'Please choose a file to upload'
   end
 
   describe 'trying to bulk upload a file of URLs that is not a text file' do
     include_context 'log in super admin'
 
+    let(:upload_filename) { 'bogus_url_file.docx' }
     let(:upload_file) { file_fixture('word/bogus_url_file.docx') }
 
-    it 'sends us back to the bulk upload page' do
-      do_bulk_upload
-      expect(page).to have_text('Bulk Search.gov URL Upload')
-    end
-
-    it 'shows an error message' do
-      do_bulk_upload
-      expect(page).to have_text(
-        <<~ERROR_MESSAGE
-          Files of type application/vnd.openxmlformats-officedocument.wordprocessingml.document are not supported
-        ERROR_MESSAGE
-      )
-    end
+    it_behaves_like 'a failed bulk upload with error',
+                    'Files of type application/vnd.openxmlformats-officedocument.wordprocessingml.document are not supported'
   end
 
   describe 'trying to bulk upload a file of URLs that is too big' do
@@ -126,18 +114,6 @@ describe 'Bulk URL upload' do
 
     let(:upload_filename) { 'too_big_url_file.txt' }
 
-    it 'sends us back to the bulk upload page' do
-      do_bulk_upload
-      expect(page).to have_text('Bulk Search.gov URL Upload')
-    end
-
-    it 'shows an error message' do
-      do_bulk_upload
-      expect(page).to have_text(
-        <<~ERROR_MESSAGE
-          #{upload_filename} is too big; please split it.
-        ERROR_MESSAGE
-      )
-    end
+    it_behaves_like 'a failed bulk upload with error', "too_big_url_file.txt is too big; please split it"
   end
 end
