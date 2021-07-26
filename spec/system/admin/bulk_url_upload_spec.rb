@@ -114,6 +114,6 @@ describe 'Bulk URL upload' do
 
     let(:upload_filename) { 'too_big_url_file.txt' }
 
-    it_behaves_like 'a failed bulk upload with error', "too_big_url_file.txt is too big; please split it"
+    it_behaves_like 'a failed bulk upload with error', 'too_big_url_file.txt is too big; please split it'
   end
 end
