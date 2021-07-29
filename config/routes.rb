@@ -229,7 +229,6 @@ Rails.application.routes.draw do
     resource :search_module_ctrs, only: [:show]
     resource :site_ctrs, only: [:show]
     resource :query_ctrs, only: [:show]
-    resources :whitelisted_v1_api_handles, concerns: :active_scaffold
     resources :hints, concerns: :active_scaffold do
       collection { get 'reload_hints' }
     end
