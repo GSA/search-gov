@@ -46,7 +46,7 @@ RSpec.describe BulkUrlUploadResultsMailer, type: :mailer do
     end
 
     describe 'with errors' do
-      let(:already_taken_error_message) { 'Url has already been taken' }
+      let(:already_taken_error_message) { 'Validation failed: Url has already been taken' }
       let(:duplicate_url) { 'https://duplicate.agency.gov' }
       let(:first_error_message) { 'First validation failure' }
       let(:first_bad_url) { 'https://agency.gov/first-bad-url' }
@@ -54,9 +54,9 @@ RSpec.describe BulkUrlUploadResultsMailer, type: :mailer do
       let(:second_bad_url) { 'https://agency.gov/second-bad-url' }
 
       before do
+        results.add_error(already_taken_error_message, duplicate_url)
         results.add_error(first_error_message, first_bad_url)
         results.add_error(second_error_message, second_bad_url)
-        results.add_error(already_taken_error_message, duplicate_url)
       end
 
       it_behaves_like 'a bulk upload notification email'
