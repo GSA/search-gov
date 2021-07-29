@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class BulkUrlUploader
-  MAXIMUM_FILE_SIZE = 10.megabytes
+  MAXIMUM_FILE_SIZE = 4.megabytes
   VALID_CONTENT_TYPES = %w[text/plain].freeze
 
   attr_reader :results
