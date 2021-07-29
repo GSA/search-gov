@@ -1150,18 +1150,6 @@ CREATE TABLE `watchers` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-DROP TABLE IF EXISTS `whitelisted_v1_api_handles`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `whitelisted_v1_api_handles` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `handle` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `index_whitelisted_v1_api_handles_on_handle` (`handle`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
-/*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `youtube_playlists`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1933,6 +1921,7 @@ INSERT INTO `schema_migrations` (version) VALUES
 ('20200212183209'),
 ('20200728194854'),
 ('20210317234859'),
-('20210323175952');
+('20210323175952'),
+('20210721190302');
 
 

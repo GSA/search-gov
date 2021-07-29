@@ -142,6 +142,8 @@ group :development, :test do
   gem 'rspec-its', '~> 1.2.0'
   gem 'email_spec', '~> 2.1.1'
   gem 'database_cleaner', '~> 1.7.0'
+  # Capybara 3 includes breaking changes
+  # https://cm-jira.usa.gov/browse/SRCH-2382
   gem 'capybara', '~> 2.18.0'
   gem 'launchy', '~> 2.4.3'
   gem 'i18n-tasks', '~> 0.9.19'
