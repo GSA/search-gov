@@ -26,22 +26,9 @@ describe 'Bulk URL upload' do
   let(:url) { '/admin/bulk_url_upload' }
   let(:upload_file) { file_fixture("txt/#{upload_filename}") }
   let(:urls) { File.open(upload_file, 'r:bom|utf-8').readlines.map(&:strip) }
-  let(:searchgov_domains) do
-    urls.reduce(Set.new) do |searchgov_domains, raw_url|
-      parsed_url = URI(raw_url)
-      domain = parsed_url.host
-      searchgov_domain = SearchgovDomain.find_by(domain: domain)
-      searchgov_domains = searchgov_domains << searchgov_domain if searchgov_domain
-      searchgov_domains
-    end
-  end
+  let(:searchgov_domain) { searchgov_domains(:agency_gov) }
 
-  before do
-    @reindexed_domains = Set.new
-    allow_any_instance_of(SearchgovDomain).to receive(:index_urls) do |searchgov_domain|
-      @reindexed_domains << searchgov_domain
-    end
-  end
+  before { allow(searchgov_domain).to receive(:index_urls) }
 
   it_behaves_like 'a page restricted to super admins'
 
@@ -75,21 +62,24 @@ describe 'Bulk URL upload' do
       end
 
       it 're-indexes the domains for the URLs' do
+        reindexed_domains = Set.new
+        allow_any_instance_of(SearchgovDomain).to receive(:index_urls) do |searchgov_domain|
+          reindexed_domains << searchgov_domain
+        end
         do_bulk_upload
-        expect(@reindexed_domains).to eq(searchgov_domains)
+        expect(reindexed_domains).to eq(Set[searchgov_domain])
       end
     end
 
-    describe 'bulk uploading a UTF-8 file of URLs' do
+    context 'bulk uploading a UTF-8 file of URLs' do
       let(:upload_filename) { 'utf8_urls.txt' }
 
-      it 'loads the urls' do
+      it 'saves the encoded URLs' do
         do_bulk_upload
-        puts SearchgovUrl.pluck(:url)
 
         expect(SearchgovUrl.pluck(:url)).to include(
-          'https://www.agency.gov/foo%20%C2%A7%20208.pdf?open',
-          'https://www.agency.gov/Asesor%E2%88%9A%E2%89%A0a.pdf'
+          'https://agency.gov/foo%20%C2%A7%20208.pdf?open',
+          'https://agency.gov/Asesor%E2%88%9A%E2%89%A0a.pdf'
         )
       end
     end
