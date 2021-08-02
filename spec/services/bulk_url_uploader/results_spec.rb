@@ -4,10 +4,10 @@ describe BulkUrlUploader::Results do
   subject(:results) { described_class.new('test bulk uploader') }
 
   describe '#errors' do
-    context 'when there are "url not found" errors' do
+    context 'when there are "url already taken" errors' do
       before do
-        results.add_error('Validation failed: Url has already been taken', 'junk')
-        results.add_error('Validation failed: SearchgovDomain is not a valid SearchgovDomain', 'junk')
+        results.add_error('Validation failed: Url has already been taken', 'https://irrelevant-to-the-spec.gov')
+        results.add_error('Validation failed: SearchgovDomain is not a valid SearchgovDomain', 'https://irrelevant-to-the-spec.gov')
       end
 
       it 'puts them at the end of the list' do
