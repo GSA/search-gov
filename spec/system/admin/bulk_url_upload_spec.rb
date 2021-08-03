@@ -71,7 +71,7 @@ describe 'Bulk URL upload' do
       end
     end
 
-    context 'bulk uploading a UTF-8 file of URLs' do
+    context 'when bulk uploading a UTF-8 file of URLs' do
       let(:upload_filename) { 'utf8_urls.txt' }
 
       it 'saves the encoded URLs' do
