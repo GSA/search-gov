@@ -25,7 +25,7 @@ describe 'Bulk URL upload' do
 
   let(:url) { '/admin/bulk_url_upload' }
   let(:upload_file) { file_fixture("txt/#{upload_filename}") }
-  let(:urls) { File.open(upload_file, 'r:bom|utf-8').readlines.map(&:strip) }
+  let(:urls) { File.open(upload_file).readlines.map(&:strip) }
   let(:searchgov_domain) { searchgov_domains(:agency_gov) }
 
   before { allow(searchgov_domain).to receive(:index_urls) }
@@ -71,7 +71,7 @@ describe 'Bulk URL upload' do
       end
     end
 
-    context 'when bulk uploading a UTF-8 file of URLs' do
+    context 'when the URLs contain non-ASCII characters' do
       let(:upload_filename) { 'utf8_urls.txt' }
 
       it 'saves the encoded URLs' do
