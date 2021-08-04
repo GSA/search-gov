@@ -72,7 +72,7 @@ describe 'Bulk URL upload' do
     end
 
     context 'when the URLs contain non-ASCII characters' do
-      let(:upload_filename) { 'utf8_urls.txt' }
+      let(:upload_filename) { 'non_ascii_urls.txt' }
 
       it 'saves the encoded URLs' do
         do_bulk_upload
