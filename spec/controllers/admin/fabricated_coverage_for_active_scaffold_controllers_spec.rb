@@ -18,4 +18,3 @@ describe Admin::SiteFeedUrlsController do; end
 describe Admin::SuggestionBlocksController do; end
 describe Admin::UrlPrefixesController do; end
 describe Admin::WatchersController do; end
-describe Admin::WhitelistedV1ApiHandlesController do; end
