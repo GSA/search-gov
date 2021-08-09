@@ -15,6 +15,7 @@ class BulkUrlUploadResultsMailerPreview < ActionMailer::Preview
     user = User.first
     results = BulkUrlUploader::Results.new('the-file.txt')
     results.add_ok(SearchgovUrl.create(url: 'https://ok-url.test'))
+    results.add_error('Url has already been taken', 'https://taken.test')
     results.add_error('one error', 'https://bogus.test')
     results.add_error('one error', 'https://realy-bogus.test')
     results.add_error('another error', 'https://left-field.test')
