@@ -4,3 +4,16 @@ DEFAULTS: &DEFAULTS
 basic_domain:
   <<: *DEFAULTS
   domain: foo.gov
+
+agency_gov:
+  <<: *DEFAULTS
+  domain: agency.gov
+
+www_agency_gov:
+   domain: www.agency.gov
+
+www_consumerfinance_gov:
+  domain: www.consumerfinance.gov
+
+www_medicare_gov:
+  domain: www.medicare.gov
