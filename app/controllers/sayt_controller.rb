@@ -1,7 +1,6 @@
-require 'airbrake/rails/action_controller'
+# frozen_string_literal: true
 
 class SaytController < ActionController::Metal
-  include Airbrake::Rails::ActionController
   include NewRelic::Agent::Instrumentation::ControllerInstrumentation
 
   SAYT_SUGGESTION_SIZE = 5
