@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class TwitterStreamer
-  ERROR_WAIT_TIME = 10.seconds
+  RECONNECT_WAIT_TIME = 120.seconds
   ACTIVE_TWITTER_IDS_POLLING_INTERVAL = 60.seconds
 
   attr_accessor :event_queue, :active_twitter_ids, :streaming_thread, :reconnect_time
@@ -16,7 +16,6 @@ class TwitterStreamer
 
   def stream_tweets
     self.active_twitter_ids = fetch_active_twitter_ids
-    wait_until_time_to_reconnect
     create_streaming_thread
     while might_get_more_events?
       dispatch(event_queue.pop) unless event_queue.empty?
@@ -29,7 +28,10 @@ class TwitterStreamer
 
   def wait_until_time_to_reconnect
     now = Time.now.utc
-    sleep(reconnect_time - now) if now < reconnect_time
+    return if now >= reconnect_time
+
+    logger.info "[#{Time.now.utc}] [TWITTER] [WAIT] Waiting #{reconnect_time - now}"
+    sleep(reconnect_time - now)
   end
 
   def streaming_thread_body
@@ -37,17 +39,18 @@ class TwitterStreamer
 
     logger.info "[#{Time.now.utc}] [TWITTER] [CONNECT] Connecting to Twitter to follow #{active_twitter_ids.size} profiles: #{active_twitter_ids.inspect}."
     connect
+  rescue StandardError => e
+    event_queue.push(e)
+  ensure
     logger.info "[#{Time.now.utc}] [TWITTER] [DISCONNECT]"
+    self.reconnect_time = Time.now.utc + RECONNECT_WAIT_TIME
+    client.close
   end
 
   def connect
     client.filter(follow: active_twitter_ids.join(',')) do |twitter_event|
       event_queue.push(twitter_event)
     end
-  rescue StandardError => e
-    event_queue.push(e)
-  ensure
-    client.close
   end
 
   def client
@@ -59,6 +62,7 @@ class TwitterStreamer
   end
 
   def create_streaming_thread
+    wait_until_time_to_reconnect
     self.streaming_thread = Thread.new { streaming_thread_body }
   end
 
@@ -104,7 +108,6 @@ class TwitterStreamer
 
   def on_error(error)
     logger.error "[#{Time.now.utc}] [TWITTER] [STREAMING] [ERROR] #{error.message}"
-    self.reconnect_time = Time.now.utc + ERROR_WAIT_TIME
   end
 
   def update_active_twitter_ids
