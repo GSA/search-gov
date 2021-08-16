@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class TwitterStreamer
-  RECONNECT_WAIT_TIME = 120.seconds
+  RECONNECT_WAIT_TIME = 15.seconds
   ACTIVE_TWITTER_IDS_POLLING_INTERVAL = 60.seconds
 
   attr_accessor :event_queue, :active_twitter_ids, :streaming_thread, :reconnect_time
@@ -44,7 +44,6 @@ class TwitterStreamer
   ensure
     logger.info "[#{Time.now.utc}] [TWITTER] [DISCONNECT]"
     self.reconnect_time = Time.now.utc + RECONNECT_WAIT_TIME
-    client.close
   end
 
   def connect
@@ -67,6 +66,8 @@ class TwitterStreamer
   end
 
   def destroy_streaming_thread
+    client&.close
+    sleep(0)
     streaming_thread&.kill
     streaming_thread&.join
     self.streaming_thread = nil
