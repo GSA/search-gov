@@ -73,6 +73,23 @@ GIT
       railties (>= 3.2)
 
 GIT
+  remote: https://github.com/jmax-fearless/twitter.git
+  revision: 2ed40d5afa0ee6b205ae99667fc00d9976d78a97
+  branch: handle-streaming-errors-and-disconnects
+  specs:
+    twitter (7.0.0)
+      addressable (~> 2.3)
+      buftok (~> 0.2.0)
+      equalizer (~> 0.0.11)
+      http (~> 4.0)
+      http-form_data (~> 2.0)
+      http_parser.rb (~> 0.6.0)
+      memoizable (~> 0.4.0)
+      multipart-post (~> 2.0)
+      naught (~> 1.0)
+      simple_oauth (~> 0.3.0)
+
+GIT
   remote: https://github.com/naaano/active_scaffold_export
   revision: 879ceb549b871ebb597ae5339a2e67498beb70d1
   specs:
@@ -735,17 +752,6 @@ GEM
     turbolinks (5.0.1)
       turbolinks-source (~> 5)
     turbolinks-source (5.2.0)
-    twitter (7.0.0)
-      addressable (~> 2.3)
-      buftok (~> 0.2.0)
-      equalizer (~> 0.0.11)
-      http (~> 4.0)
-      http-form_data (~> 2.0)
-      http_parser.rb (~> 0.6.0)
-      memoizable (~> 0.4.0)
-      multipart-post (~> 2.0)
-      naught (~> 1.0)
-      simple_oauth (~> 0.3.0)
     twitter-typeahead-rails (0.11.1)
       actionpack (>= 3.1)
       jquery-rails
@@ -905,7 +911,7 @@ DEPENDENCIES
   therubyracer (~> 0.12.3)
   truncator (~> 0.1.7)
   turbolinks (~> 5.0.1)
-  twitter (~> 7.0.0)
+  twitter!
   twitter-typeahead-rails (~> 0.11.1)
   typhoeus (~> 1.3.0)
   uglifier (~> 4.1.2)
