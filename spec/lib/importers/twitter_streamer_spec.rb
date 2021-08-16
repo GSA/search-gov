@@ -51,10 +51,6 @@ describe TwitterStreamer do
         expect(streamer.event_queue.pop).to eq(first_tweet)
         expect(streamer.event_queue.pop).to eq(second_tweet)
       end
-
-      it 'closes the twitter connection' do
-        expect(twitter_client).to have_received(:close)
-      end
     end
 
     context 'when the client throws an error' do
@@ -69,12 +65,6 @@ describe TwitterStreamer do
 
         expect(streamer.event_queue.size).to eq(1)
         expect(streamer.event_queue.pop).to be_a(StandardError)
-      end
-
-      it 'closes the twitter connection' do
-        streamer.send(:streaming_thread_body)
-
-        expect(twitter_client).to have_received(:close)
       end
     end
   end
