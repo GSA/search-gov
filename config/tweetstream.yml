@@ -1,0 +1,12 @@
+default: &DEFAULT
+  verify_peer: true
+  cert_chain_file: <%= ENV['SSL_CERT_FILE'] || OpenSSL::X509::DEFAULT_CERT_FILE %>
+
+development:
+  <<: *DEFAULT
+
+test:
+  <<: *DEFAULT
+
+production:
+  <<: *DEFAULT
