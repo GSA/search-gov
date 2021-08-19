@@ -18,13 +18,4 @@ describe SpellingSuggestionsHelper do
       expect(html).to have_content('Search instead for <initialquery>')
     end
   end
-
-  describe '#legacy_spelling_suggestion(search, affiliate, vertical)' do
-    it 'should return HTML escaped output containing the initial query and the suggestion' do
-      html = helper.legacy_spelling_suggestion(search, affiliate, :web)
-      expect(html).to have_content("We're including results for <suggestion>. Do you want results only for <initialquery>?")
-      expect(html).to match(/&lt;initialquery&gt;/)
-      expect(html).to match(/&lt;suggestion&gt;/)
-    end
-  end
 end

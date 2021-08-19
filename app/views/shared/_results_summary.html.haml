@@ -1,8 +1,0 @@
-= legacy_spelling_suggestion(search, affiliate, search_vertical)
-- if search.results.present?
-  = display_search_all_affiliate_sites_suggestion(search)
-  = results_summary(search)
-  .advancedsearch
-    = advanced_search_link(search_options, affiliate)
-- else
-  = render 'shared/blank_search_results', :search => search

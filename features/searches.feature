@@ -440,19 +440,9 @@ Feature: Search
 
   Scenario: Entering a blank advanced search
     Given the following Affiliates exist:
-      | display_name | name   | contact_email | first_name | last_name | header         |
-      | USA.gov      | usagov | aff@bar.gov   | John       | Bar       | USA.gov Header |
+      | display_name | name   | contact_email | first_name | last_name |
+      | USA.gov      | usagov | aff@bar.gov   | John       | Bar       |
     When I am on usagov's advanced search page
-    And I press "Search"
-    Then I should be on the search page
-    And I should see "Please enter a search term"
-
-  Scenario: When using tablet device on advanced search
-    Given I am using an tabletPC device
-    And the following Affiliates exist:
-      | display_name | name    | contact_email | first_name | last_name |
-      | bar site     | bar.gov | aff@bar.gov   | John       | Bar       |
-    When I am on bar.gov's advanced search page
     And I press "Search"
     Then I should be on the search page
     And I should see "Please enter a search term"

@@ -1,4 +1,4 @@
-Given /^the following( legacy| search consumer| SearchGov)? Affiliates exist:$/ do |affiliate_type, table|
+Given /^the following( search consumer| SearchGov)? Affiliates exist:$/ do |affiliate_type, table|
   Affiliate.destroy_all
   table.hashes.each do |hash|
     valid_options = {
@@ -13,7 +13,6 @@ Given /^the following( legacy| search consumer| SearchGov)? Affiliates exist:$/ 
 
     excluded_keys = %w[agency_abbreviation contact_email first_name last_name domains youtube_handles is_image_search_navigable]
     affiliate_attributes = hash.except *excluded_keys
-    affiliate_attributes['force_mobile_format'] ||= (affiliate_type !~ /legacy/)
     affiliate_attributes['search_consumer_search_enabled'] ||= (/search consumer/ === affiliate_type)
     affiliate_attributes['search_engine'] = 'SearchGov' if (/SearchGov/ === affiliate_type)
     affiliate = Affiliate.create! affiliate_attributes
@@ -101,24 +100,6 @@ Then /^(.+) for site named "([^\"]*)"$/ do |step, site_display_name|
   %{#{step} within "tr#site_#{site.id}"}
 end
 
-Then /^I should see sorted sites in the site dropdown list$/ do
-  sites = @current_user.affiliates.sort{|x,y| x.display_name <=> y.display_name}
-  sites.each_with_index do |site, index|
-    page.should have_selector("#affiliate_id option:nth-child(#{index + 1})", :value => site.id)
-  end
-end
-
-Then /^I should see sorted sites in the site list$/ do
-  sites = @current_user.affiliates.sort{|x,y| x.display_name <=> y.display_name}
-  sites.each_with_index do |site, index|
-    page.should have_selector("table.generic-table tbody tr#site_#{site.id} td.site-name a", :text => site.display_name)
-  end
-end
-
-Then /^I should see "([^\"]*)" in the site wizards header$/ do |step|
-  page.should have_selector(".steps_header img[alt='#{step}']")
-end
-
 Then /^I should see the code for (English|Spanish) language sites$/ do |locale|
   locales = { 'English' => 'en', 'Spanish' => 'es' }
   page.should have_selector("#embed_code_textarea_#{locales[locale]}")
@@ -126,12 +107,6 @@ end
 
 Then /^I should see the affiliate custom css$/ do
   page.should have_selector("head style")
-end
-
-# legacy SERP
-Then /^I should see some (Bing|Azure) search results$/ do |engine|
-  page.should have_selector("#results > .searchresult")
-  step "I should see the Results by #{engine} logo"
 end
 
 Then /^the "([^"]*)" theme should be selected$/ do |theme|

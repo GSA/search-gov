@@ -20,10 +20,4 @@ module BestBetsHelper
     end
     content_tag :li, content.html_safe
   end
-
-  def best_bet_link_with_click_tracking(title, url, affiliate, query, position, vertical, model_id = nil, module_name)
-    return title if url.blank?
-    link_with_click_tracking(title, url, affiliate, query, position, module_name, vertical, model_id)
-  end
-
 end

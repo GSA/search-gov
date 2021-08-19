@@ -52,8 +52,6 @@ describe SiteCloner do
             display_name: 'My Awesome Site',
             name: "#{affiliates(:basic_affiliate).name}1",
             website: 'http://www.someaffiliate.gov',
-            header: '<table><tr><td>html layout from 1998</td></tr></table>',
-            footer: '<center>gasp</center>',
             locale: 'es'
           )
         end

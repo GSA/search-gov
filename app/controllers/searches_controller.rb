@@ -1,21 +1,17 @@
 # frozen_string_literal: true
 
 class SearchesController < ApplicationController
-  include MobileFriendlyController
-  has_no_mobile_fu_for :advanced
-
   skip_before_action :verify_authenticity_token, :set_default_locale
 
-  before_action :handle_old_advanced_form, :only => [:index]
   before_action :set_affiliate, :set_locale_based_on_affiliate_locale
   #eventually all the searches should be redirected, but currently we're doing it as-needed
   #to ensure that the correct params are being passed, etc.
   before_action :redirect_to_search_consumer, only: [:index, :news, :docs]
   before_action :set_web_search_options, :only => [:advanced, :index]
   before_action :set_docs_search_options, :only => :docs
-  before_action :set_news_search_options, :only => [:news, :video_news]
+  before_action :set_news_search_options, :only => [:news]
   before_action :force_request_format, :only => [:advanced, :docs, :index, :news]
-  after_action :log_search_impression, :only => [:index, :news, :docs, :video_news]
+  after_action :log_search_impression, :only => [:index, :news, :docs]
   include QueryRoutableController
 
   def index
@@ -27,7 +23,7 @@ class SearchesController < ApplicationController
     set_search_page_title
     set_search_params
     respond_to do |format|
-      format.any(:html, :mobile) { render template }
+      format.html { render template }
       format.json { render :json => @search }
     end
   end
@@ -42,7 +38,7 @@ class SearchesController < ApplicationController
     set_search_page_title
     set_search_params
     template = search_klass == I14ySearch ? :i14y : :docs
-    respond_to { |format| format.any(:html, :mobile) { render template } }
+    respond_to { |format| format.html { render template } }
   end
 
 
@@ -54,19 +50,7 @@ class SearchesController < ApplicationController
     set_search_page_title
     @search_vertical = :news
     set_search_params
-    respond_to { |format| format.any(:html, :mobile) {} }
-  end
-
-  def video_news
-    @search = VideoNewsSearch.new(@search_options)
-    @search.run
-    @form_path = video_news_search_path
-    set_news_search_page_title
-    set_search_page_title
-    @search_vertical = :news
-    request.format = :html
-    set_search_params
-    respond_to { |format| format.html { render action: :news } }
+    respond_to { |format| format.html {} }
   end
 
   def advanced
@@ -76,7 +60,7 @@ class SearchesController < ApplicationController
     set_search_params
     permitted_params[:filter] = %w(0 1 2).include?(permitted_params[:filter]) ? permitted_params[:filter] : '1'
     permitted_params[:filetype] = %w(doc pdf ppt txt xls).include?(permitted_params[:filetype]) ? permitted_params[:filetype] : nil
-    respond_to { |format| format.any(:html, :mobile) {} }
+    respond_to { |format| format.html {} }
   end
 
   private
@@ -98,12 +82,6 @@ class SearchesController < ApplicationController
       @page_title = permitted_params[:query]
     elsif @search.rss_feed and @search.total > 0
       @page_title = @search.rss_feed.name
-    end
-  end
-
-  def handle_old_advanced_form
-    if permitted_params['form'] == 'advanced-firstgov'
-      redirect_to advanced_search_path permitted_params
     end
   end
 

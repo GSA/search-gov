@@ -3,12 +3,6 @@ module JobsHelper
     job.id =~ /^usajobs/ ? "#{job.url}?PostingChannelID=USASearch" : job.url
   end
 
-  def title_link(job, search, index)
-    url = job_url job
-    job_link_with_click_tracking(job.position_title.html_safe, url,
-                                 search.affiliate, search.query, index, @search_vertical)
-  end
-
   def job_application_deadline(yyyy_mm_dd)
     if yyyy_mm_dd
       html = content_tag(:span, '&nbsp;&nbsp;&bull;&nbsp;&nbsp;'.html_safe, class: 'field-separator')
@@ -60,16 +54,6 @@ module JobsHelper
   def link_to_more_jobs(search)
     title, url = more_jobs_title_and_url search
     link_to_result_title title, url, 0, 'JOBS'
-  end
-
-  def legacy_link_to_more_jobs(search)
-    title, url = more_jobs_title_and_url search
-    job_link_with_click_tracking title,
-                                 url,
-                                 search.affiliate,
-                                 search.query,
-                                 agency_jobs_link_index = -1,
-                                 @search_vertical
   end
 
   def more_jobs_title_and_url(search)
