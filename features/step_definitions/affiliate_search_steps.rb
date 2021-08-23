@@ -128,16 +128,6 @@ Then /^I should see (\d+) search result title links? with url for "([^"]*)"$/ do
   page.should have_selector(".title a[href='#{url}']", count: count)
 end
 
-# legacy SERP
-Then /^I should see (\d+) news results?$/ do |count|
-  page.should have_selector(".newsitem", :count => count)
-end
-
-# legacy SERP
-Then /^I should see (\d+) (image|video) news results$/ do |count, media_type|
-  page.should have_selector(".newsitem.#{media_type}", count: count)
-end
-
 Given /^the following Twitter Profiles exist:$/ do |table|
   table.hashes.each do |hash|
     affiliate = Affiliate.find_by_name(hash[:affiliate])
@@ -172,30 +162,10 @@ Then /^I should not see collapsible facet value$/ do
   page.should_not have_selector('.collapsible')
 end
 
-Then /^I should see the left column options expanded$/ do
-  page.should have_selector('#left_column .options-wrapper.expanded')
-end
-
-Then /^I should not see the left column options expanded$/ do
-  page.should_not have_selector('#left_column .options-wrapper.expanded')
-end
-
-# only used in legacy_search.feature
-Then /^I should see a link to "(.*?)" with sanitized "(.*?)" query$/ do |link_title, query|
-  path_and_query = page.find(:xpath, "//a[text()='Images']")[:href]
-  parsed_url = URI.parse("http://localhost#{path_and_query}")
-  query_hash = CGI::parse(parsed_url.query)
-  query_hash['query'].should == ["#{query}"]
-end
-
 Then /^I should see a link to "([^"]*)" with text "([^"]*)"$/ do |url, text|
   page.should have_link(text, :href => url)
 end
 
 Then /^a Tweet click should be logged/ do
   Rails.logger.should_receive(:info).with("[Click] ")
-end
-
-Then /^I should not see legacy results count$/ do
-  page.should_not have_selector('#summary')
 end

@@ -1,4 +1,4 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
 describe TwitterProfile do
   fixtures :affiliates

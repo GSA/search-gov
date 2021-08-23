@@ -240,8 +240,8 @@ Feature: Dashboard
 
   Scenario: Performing site autodiscovery
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name | has_staged_content | uses_managed_header_footer | staged_uses_managed_header_footer | header           | staged_header      | force_mobile_format |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar     | true               | false                      | false                             | live header text | staged header text | false               |
+      | display_name | name       | contact_email   | first_name | last_name |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       |
     And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Content page
     Then the "Discover and add the RSS feeds and social media accounts listed on the following page:" field should be empty

@@ -1,8 +1,7 @@
+# DO NOT ADD NEW TESTS TO THIS FILE!
+# These tests need to be consolidated with those in searches.feature
+# https://cm-jira.usa.gov/browse/SRCH-2110
 Feature: Searches using mobile device
-
-  Background:
-    Given I am using a mobile device
-
   Scenario: Web search
     Given the following Affiliates exist:
       | display_name | name          | contact_email    | first_name | last_name | locale | domains              |
@@ -489,16 +488,6 @@ Feature: Searches using mobile device
     And I should see at least 1 job posting
     And I should see a link to "More GSA job openings on USAJobs.gov" with url for "https://www.usajobs.gov/Search/Results?a=GS&hp=public"
 
-  Scenario: When using tablet device
-    Given I am using a mobile device
-    And the following Affiliates exist:
-      | display_name | name    | contact_email | first_name | last_name |
-      | bar site     | bar.gov | aff@bar.gov   | John       | Bar       |
-    When I am on bar.gov's search page
-    And I fill in "Enter your search term" with "bar"
-    And I press "Search"
-    And I should see at least "2" web search results
-
   Scenario: Searching with matching med topic query
     Given the following Medline Topics exist:
       | medline_tid | medline_title     | medline_url                                               | locale | summary_html                                                                                                                                                                                                                                                                                                         |
@@ -631,15 +620,6 @@ Feature: Searches using mobile device
     And I press "Search"
     Then I should see a link to "Atlantic Highly Migratory Species; Atlantic Bluefin Tuna Fisheries" with url for "https://www.federalregister.gov/articles/2013/08/19/2013-20176/atlantic-highly-migratory-species-atlantic-bluefin-tuna-fisheries"
     And I should see "A Rule by the National Oceanic and Atmospheric Administration posted on August 19, 2013."
-
-  Scenario: English search on a legacy site
-    Given the following legacy Affiliates exist:
-      | display_name      | name     | contact_email | first_name | last_name |
-      | USA.gov           | usagov   | aff@bar.gov   | John       | Bar       |
-    When I am on usagov's overridden search page
-    And I fill in "query" with "jobs"
-    And I press "Search" in the legacy search box
-    Then I should see at least 10 search results
 
   Scenario: Advanced search
     Given the following Affiliates exist:

@@ -1,0 +1,645 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/images/search?count=20&mkt=en-US&offset=0&q=thunder%20%26%20lightning%20(site:nps.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Pragma:
+      - no-cache
+      Content-Length:
+      - '111321'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - "-1"
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - ABBDF50C7FAD42ED84E96080AA505994
+      X-Msedge-Clientid:
+      - 14C4521A2BC76EF32AB7424B2A776FA8
+      X-Msapi-Userstate:
+      - 639b
+      X-Search-Responseinfo:
+      - InternalResponseTime=144,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: ABBDF50C7FAD42ED84E96080AA505994 Ref B: BLUEDGE1419 Ref C: 2021-06-09T18:19:22Z'
+      Apim-Request-Id:
+      - 3f9a6337-6cb2-44a8-a1d9-4fb8f0584069
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 09 Jun 2021 18:19:22 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "Images", "instrumentation": {"_type": "ResponseInstrumentation"},
+        "readLink": "images\/search?q=thunder & lightning (site:nps.gov)", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=thunder & lightning (site:nps.gov)&FORM=OIIARP",
+        "queryContext": {"originalQuery": "thunder & lightning (site:nps.gov)", "alterationDisplayQuery":
+        "thunderstorm lightning", "alterationOverrideQuery": "+thunder & lightning
+        (site:nps.gov)", "alterationMethod": "AM_JustChangeIt", "alterationType":
+        "CombinedAlterationsChained"}, "totalEstimatedMatches": 100, "nextOffset":
+        26, "currentOffset": 0, "value": [{"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=thunder+%26+lightning+(site%3anps.gov)&id=468BCE4BB13337B89123503526700DA8362E89C6&simid=608017337424622318",
+        "name": "Monsoon Season (U.S. National Park Service)", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.3AFX-CI7ARHrRNzlNlRb0gHaFF&pid=Api",
+        "datePublished": "2018-02-16T01:39:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/www.nps.gov\/articles\/images\/lightning-nabr.jpg?maxwidth=650&autorotate=false",
+        "hostPageUrl": "https:\/\/www.nps.gov\/articles\/monsoon-season.htm", "contentSize":
+        "32108 B", "encodingFormat": "jpeg", "hostPageDisplayUrl": "https:\/\/www.nps.gov\/articles\/monsoon-season.htm",
+        "width": 650, "height": 446, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.9Hiqsg3tJ10jKjoSSaiRLA&pid=Api",
+        "hostPageDomainFriendlyName": "National Park Service", "hostPageDiscoveredDate":
+        "2018-02-16T01:39:00.0000000Z", "thumbnail": {"width": 474, "height": 325},
+        "imageInsightsToken": "ccid_3AFX+CI7*cp_CEC831CA3AE40B56872363A811CEC0FF*mid_468BCE4BB13337B89123503526700DA8362E89C6*simid_608017337424622318*thid_OIP.3AFX-CI7ARHrRNzlNlRb0gHaFF",
+        "insightsMetadata": {"recipeSourcesCount": 0, "pagesIncludingCount": 3, "availableSizesCount":
+        4}, "imageId": "468BCE4BB13337B89123503526700DA8362E89C6", "accentColor":
+        "963579"}, {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=thunder+%26+lightning+(site%3anps.gov)&id=AB75DE4360D0422BF764781FC9A7018425817AB7&simid=608018230774948861",
+        "name": "Weather and Climate - Grand Canyon National Park (U.S ...", "thumbnailUrl":
+        "https:\/\/tse4.mm.bing.net\/th?id=OIP.WpQzXv6htAC0Z7A_LITtFQHaFo&pid=Api",
+        "datePublished": "2021-01-08T19:39:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/home.nps.gov\/grca\/learn\/nature\/images\/lightning_courtesy_Daniel_Pawlak.jpg?maxwidth=650&autorotate=false",
+        "hostPageUrl": "https:\/\/home.nps.gov\/grca\/learn\/nature\/weather.htm",
+        "contentSize": "41800 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "https:\/\/home.nps.gov\/grca\/learn\/nature\/weather.htm", "width": 650,
+        "height": 494, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.LtlZFWfJxtelfU3fGLAIeg&pid=Api",
+        "hostPageDomainFriendlyName": "nature.nps.gov", "hostPageDiscoveredDate":
+        "2017-02-14T00:00:00.0000000Z", "thumbnail": {"width": 474, "height": 360},
+        "imageInsightsToken": "ccid_WpQzXv6h*cp_C1D5B193BCF43BFC87F28055A3AE2676*mid_AB75DE4360D0422BF764781FC9A7018425817AB7*simid_608018230774948861*thid_OIP.WpQzXv6htAC0Z7A!_LITtFQHaFo",
+        "insightsMetadata": {"pagesIncludingCount": 2, "availableSizesCount": 2},
+        "imageId": "AB75DE4360D0422BF764781FC9A7018425817AB7", "accentColor": "1E1C23"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=thunder+%26+lightning+(site%3anps.gov)&id=D0408F991A9A0C488BC9829CDCFCDF38BCA390EE&simid=608031978969047796",
+        "name": "Weather - Great Smoky Mountains National Park (U.S ...", "thumbnailUrl":
+        "https:\/\/tse2.mm.bing.net\/th?id=OIP.sBsgx6ijnp28dNG9vRdNgAHaDt&pid=Api",
+        "datePublished": "2018-06-11T14:53:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/www.nps.gov\/grsm\/planyourvisit\/images\/Lightning_LookRock_for-web_1.jpg",
+        "hostPageUrl": "http:\/\/www.nps.gov\/grsm\/planyourvisit\/weather.htm", "contentSize":
+        "52059 B", "encodingFormat": "jpeg", "hostPageDisplayUrl": "www.nps.gov\/grsm\/planyourvisit\/weather.htm",
+        "width": 688, "height": 344, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.9Hiqsg3tJ10jKjoSSaiRLA&pid=Api",
+        "hostPageDomainFriendlyName": "National Park Service", "hostPageDiscoveredDate":
+        "2013-07-06T00:00:00.0000000Z", "thumbnail": {"width": 474, "height": 237},
+        "imageInsightsToken": "ccid_sBsgx6ij*cp_D29D6A58A905B04540A61931DD687742*mid_D0408F991A9A0C488BC9829CDCFCDF38BCA390EE*simid_608031978969047796*thid_OIP.sBsgx6ijnp28dNG9vRdNgAHaDt",
+        "insightsMetadata": {"recipeSourcesCount": 0, "pagesIncludingCount": 4, "availableSizesCount":
+        2}, "imageId": "D0408F991A9A0C488BC9829CDCFCDF38BCA390EE", "accentColor":
+        "1A1828"}, {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=thunder+%26+lightning+(site%3anps.gov)&id=C9983E7808B6857952DDC04BE479263F92939731&simid=608030170787087205",
+        "name": "Lightning Safety - Bryce Canyon National Park (U.S ...", "thumbnailUrl":
+        "https:\/\/tse4.mm.bing.net\/th?id=OIP.OKVMEJTIowLA-Mk_LqWvcAHaC5&pid=Api",
+        "datePublished": "2019-11-04T22:20:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/www.nps.gov\/brca\/planyourvisit\/images\/lightning_strikes_03.jpg",
+        "hostPageUrl": "https:\/\/www.nps.gov\/brca\/planyourvisit\/lightning-safety.htm",
+        "contentSize": "293382 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "https:\/\/www.nps.gov\/brca\/planyourvisit\/lightning-safety.htm", "width":
+        894, "height": 350, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.9Hiqsg3tJ10jKjoSSaiRLA&pid=Api",
+        "hostPageDomainFriendlyName": "National Park Service", "hostPageDiscoveredDate":
+        "2017-01-18T00:00:00.0000000Z", "thumbnail": {"width": 474, "height": 185},
+        "imageInsightsToken": "ccid_OKVMEJTI*cp_8E838273A8ACD39FB79A705CF81AD8F1*mid_C9983E7808B6857952DDC04BE479263F92939731*simid_608030170787087205*thid_OIP.OKVMEJTIowLA-Mk!_LqWvcAHaC5",
+        "insightsMetadata": {"recipeSourcesCount": 0, "pagesIncludingCount": 4, "availableSizesCount":
+        1}, "imageId": "C9983E7808B6857952DDC04BE479263F92939731", "accentColor":
+        "634C1C"}, {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=thunder+%26+lightning+(site%3anps.gov)&id=0EE258C27D507A5D725BB68D04D33CFFA64E6040&simid=608009464750223101",
+        "name": "Sound Gallery - Natural Sounds (U.S. National Park Service)", "thumbnailUrl":
+        "https:\/\/tse3.mm.bing.net\/th?id=OIP.QRTcWhFUeZNtAmIXvQ2ZTwHaE6&pid=Api",
+        "datePublished": "2020-06-27T17:18:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/www.nps.gov\/subjects\/sound\/images\/Lightning_Yellowstone_NPS_photo_credit_printquality.tif?maxwidth=1200&autorotate=false",
+        "hostPageUrl": "https:\/\/www.nps.gov\/subjects\/sound\/gallery.htm", "contentSize":
+        "75275 B", "encodingFormat": "jpeg", "hostPageDisplayUrl": "https:\/\/www.nps.gov\/subjects\/sound\/gallery.htm",
+        "width": 1200, "height": 795, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.9Hiqsg3tJ10jKjoSSaiRLA&pid=Api",
+        "hostPageDomainFriendlyName": "National Park Service", "hostPageDiscoveredDate":
+        "2017-01-30T00:00:00.0000000Z", "thumbnail": {"width": 474, "height": 314},
+        "imageInsightsToken": "ccid_QRTcWhFU*cp_3F56C5629A11E4486E3413B365CF3ADD*mid_0EE258C27D507A5D725BB68D04D33CFFA64E6040*simid_608009464750223101*thid_OIP.QRTcWhFUeZNtAmIXvQ2ZTwHaE6",
+        "insightsMetadata": {"recipeSourcesCount": 0, "pagesIncludingCount": 28, "availableSizesCount":
+        16}, "imageId": "0EE258C27D507A5D725BB68D04D33CFFA64E6040", "accentColor":
+        "8C3F85"}, {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=thunder+%26+lightning+(site%3anps.gov)&id=0B8B06CC1301981764F4ACAD115E23B3AB031B3E&simid=608052496023896525",
+        "name": "Safety - Buffalo National River (U.S. National Park Service)", "thumbnailUrl":
+        "https:\/\/tse1.mm.bing.net\/th?id=OIP.XwQ1bkU_o6Oz6__g-3QNGAHaE8&pid=Api",
+        "datePublished": "2020-06-20T21:16:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/www.nps.gov\/buff\/planyourvisit\/images\/Weather-CMS_1.jpg?maxwidth=650&autorotate=false",
+        "hostPageUrl": "https:\/\/www.nps.gov\/buff\/planyourvisit\/safety.htm", "contentSize":
+        "33565 B", "encodingFormat": "jpeg", "hostPageDisplayUrl": "https:\/\/www.nps.gov\/buff\/planyourvisit\/safety.htm",
+        "width": 600, "height": 400, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.9Hiqsg3tJ10jKjoSSaiRLA&pid=Api",
+        "hostPageDomainFriendlyName": "National Park Service", "hostPageDiscoveredDate":
+        "2017-02-14T00:00:00.0000000Z", "thumbnail": {"width": 474, "height": 316},
+        "imageInsightsToken": "ccid_XwQ1bkU\/*cp_62C8671B0BFE3544F6AE9A37BC274870*mid_0B8B06CC1301981764F4ACAD115E23B3AB031B3E*simid_608052496023896525*thid_OIP.XwQ1bkU!_o6Oz6!_!_g-3QNGAHaE8",
+        "insightsMetadata": {"pagesIncludingCount": 2, "availableSizesCount": 1},
+        "imageId": "0B8B06CC1301981764F4ACAD115E23B3AB031B3E", "accentColor": "083C6F"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=thunder+%26+lightning+(site%3anps.gov)&id=F005CAE7C07FE26F9ED90F83CFEB8E0DAE31FC44&simid=608055472438145444",
+        "name": "Lightning Danger - Grand Canyon National Park (U.S ...", "thumbnailUrl":
+        "https:\/\/tse3.mm.bing.net\/th?id=OIP.m20n3jSq_edtIARoy1p2SgHaHZ&pid=Api",
+        "datePublished": "2020-05-13T23:05:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/home.nps.gov\/grca\/planyourvisit\/images\/historic_lightning06933B-cropped_3.jpg?maxwidth=650&autorotate=false",
+        "hostPageUrl": "https:\/\/home.nps.gov\/grca\/planyourvisit\/lightning-danger.htm",
+        "contentSize": "92206 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "https:\/\/home.nps.gov\/grca\/planyourvisit\/lightning-danger.htm", "width":
+        650, "height": 649, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.LtlZFWfJxtelfU3fGLAIeg&pid=Api",
+        "hostPageDomainFriendlyName": "nature.nps.gov", "hostPageDiscoveredDate":
+        "2017-03-12T00:00:00.0000000Z", "thumbnail": {"width": 474, "height": 473},
+        "imageInsightsToken": "ccid_m20n3jSq*cp_B2F31BBCEFD55205A3DA66F2917DE99A*mid_F005CAE7C07FE26F9ED90F83CFEB8E0DAE31FC44*simid_608055472438145444*thid_OIP.m20n3jSq!_edtIARoy1p2SgHaHZ",
+        "insightsMetadata": {"recipeSourcesCount": 0, "pagesIncludingCount": 1, "availableSizesCount":
+        1}, "imageId": "F005CAE7C07FE26F9ED90F83CFEB8E0DAE31FC44", "accentColor":
+        "7A6751"}, {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=thunder+%26+lightning+(site%3anps.gov)&id=AB75DE4360D0422BF7643C3100AFAFFD5809389D&simid=608055803150692924",
+        "name": "Weather and Climate - Grand Canyon National Park (U.S ...", "thumbnailUrl":
+        "https:\/\/tse3.mm.bing.net\/th?id=OIP.uPFAIs30BFU87ENYofA7TAHaDd&pid=Api",
+        "datePublished": "2021-01-08T19:39:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/home.nps.gov\/grca\/learn\/nature\/images\/lightning-caused-fire.jpg?maxwidth=650&autorotate=false",
+        "hostPageUrl": "https:\/\/home.nps.gov\/grca\/learn\/nature\/weather.htm",
+        "contentSize": "56000 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "https:\/\/home.nps.gov\/grca\/learn\/nature\/weather.htm", "width": 640,
+        "height": 299, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.LtlZFWfJxtelfU3fGLAIeg&pid=Api",
+        "hostPageDomainFriendlyName": "nature.nps.gov", "hostPageDiscoveredDate":
+        "2017-02-14T00:00:00.0000000Z", "thumbnail": {"width": 474, "height": 221},
+        "imageInsightsToken": "ccid_uPFAIs30*cp_85F80B79316DAC2B4AFF68E59ABB62CE*mid_AB75DE4360D0422BF7643C3100AFAFFD5809389D*simid_608055803150692924*thid_OIP.uPFAIs30BFU87ENYofA7TAHaDd",
+        "insightsMetadata": {"pagesIncludingCount": 1, "availableSizesCount": 1},
+        "imageId": "AB75DE4360D0422BF7643C3100AFAFFD5809389D", "accentColor": "3F5C8C"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=thunder+%26+lightning+(site%3anps.gov)&id=7418A3730FAAAFF44B971C6BF82425F366A6AEF5&simid=607992787402718609",
+        "name": "Weather - Guadalupe Mountains National Park (U.S. National ...",
+        "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.8tV_RSTaklpK5nT4TJpyGAHaD7&pid=Api",
+        "datePublished": "2016-04-17T17:01:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/www.nps.gov\/gumo\/planyourvisit\/images\/Lightning_web.jpg",
+        "hostPageUrl": "https:\/\/www.nps.gov\/gumo\/planyourvisit\/weather.htm",
+        "contentSize": "82643 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "https:\/\/www.nps.gov\/gumo\/planyourvisit\/weather.htm", "width": 1024,
+        "height": 544, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.9Hiqsg3tJ10jKjoSSaiRLA&pid=Api",
+        "hostPageDomainFriendlyName": "National Park Service", "hostPageDiscoveredDate":
+        "2016-04-17T17:01:00.0000000Z", "thumbnail": {"width": 474, "height": 251},
+        "imageInsightsToken": "ccid_8tV\/RSTa*cp_82633450222DACF5A46EFD421742783D*mid_7418A3730FAAAFF44B971C6BF82425F366A6AEF5*simid_607992787402718609*thid_OIP.8tV!_RSTaklpK5nT4TJpyGAHaD7",
+        "insightsMetadata": {"recipeSourcesCount": 0, "pagesIncludingCount": 1, "availableSizesCount":
+        1}, "imageId": "7418A3730FAAAFF44B971C6BF82425F366A6AEF5", "accentColor":
+        "8F3C72"}, {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=thunder+%26+lightning+(site%3anps.gov)&id=72B61365B447AA92DBC7AF25AC2A1CA2E1B1224C&simid=608015490588082301",
+        "name": "Lightning Safety - Bryce Canyon National Park (U.S ...", "thumbnailUrl":
+        "https:\/\/tse2.mm.bing.net\/th?id=OIP.tGI9ReErO-_W3BgBaSJN7wAAAA&pid=Api",
+        "datePublished": "2021-01-31T22:18:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/home.nps.gov\/brca\/planyourvisit\/images\/Storm_Sunrise_PT_20150813_009b.jpg?maxwidth=650&autorotate=false",
+        "hostPageUrl": "https:\/\/home.nps.gov\/brca\/planyourvisit\/lightning-safety.htm",
+        "contentSize": "31658 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "https:\/\/home.nps.gov\/brca\/planyourvisit\/lightning-safety.htm", "width":
+        300, "height": 420, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.LtlZFWfJxtelfU3fGLAIeg&pid=Api",
+        "hostPageDomainFriendlyName": "nature.nps.gov", "hostPageDiscoveredDate":
+        "2017-04-11T00:00:00.0000000Z", "thumbnail": {"width": 300, "height": 420},
+        "imageInsightsToken": "ccid_tGI9ReEr*cp_E9AD0526B2645A0B05258B23094EA184*mid_72B61365B447AA92DBC7AF25AC2A1CA2E1B1224C*simid_608015490588082301*thid_OIP.tGI9ReErO-!_W3BgBaSJN7wAAAA",
+        "insightsMetadata": {"pagesIncludingCount": 1, "availableSizesCount": 1},
+        "imageId": "72B61365B447AA92DBC7AF25AC2A1CA2E1B1224C", "accentColor": "2E4A76"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=thunder+%26+lightning+(site%3anps.gov)&id=4B2BE7FA7C8ECD8417C36D3A29C9C9F3D6B012C0&simid=607991099482059779",
+        "name": "Lightning Danger - Grand Canyon National Park (U.S ...", "thumbnailUrl":
+        "https:\/\/tse4.mm.bing.net\/th?id=OIP.drqBgw_uPiDu4u6GNz5iaAHaDS&pid=Api",
+        "datePublished": "2018-04-02T20:34:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/www.nps.gov\/grca\/planyourvisit\/images\/IMG_1196e-Panorama.jpg",
+        "hostPageUrl": "https:\/\/www.nps.gov\/grca\/planyourvisit\/lightning-danger.htm",
+        "contentSize": "144644 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "https:\/\/www.nps.gov\/grca\/planyourvisit\/lightning-danger.htm", "width":
+        1200, "height": 533, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.9Hiqsg3tJ10jKjoSSaiRLA&pid=Api",
+        "hostPageDomainFriendlyName": "National Park Service", "hostPageDiscoveredDate":
+        "2017-02-14T00:00:00.0000000Z", "thumbnail": {"width": 474, "height": 210},
+        "imageInsightsToken": "ccid_drqBgw\/u*cp_F04A60DC86AEF751CC829B8ABA256F70*mid_4B2BE7FA7C8ECD8417C36D3A29C9C9F3D6B012C0*simid_607991099482059779*thid_OIP.drqBgw!_uPiDu4u6GNz5iaAHaDS",
+        "insightsMetadata": {"pagesIncludingCount": 1, "availableSizesCount": 1},
+        "imageId": "4B2BE7FA7C8ECD8417C36D3A29C9C9F3D6B012C0", "accentColor": "67412D"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=thunder+%26+lightning+(site%3anps.gov)&id=25811506B3D658ECD80D37CE5D15BBEAE56D9B3D&simid=608016817732154684",
+        "name": "Don''t Get Zapped! - Bryce Canyon National Park (U.S ...", "thumbnailUrl":
+        "https:\/\/tse1.explicit.bing.net\/th?id=OIP.rz4F41XKogVtZ4DRgH-zpwHaBt&pid=Api",
+        "datePublished": "2018-02-13T10:04:00.0000000Z", "isFamilyFriendly": false,
+        "contentUrl": "https:\/\/www.nps.gov\/brca\/learn\/kidsyouth\/images\/Lightning_collage_001.jpg?maxwidth=1200&maxheight=1200&autorotate=false",
+        "hostPageUrl": "https:\/\/www.nps.gov\/brca\/forkids\/lightningsafety.htm",
+        "contentSize": "27671 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "https:\/\/www.nps.gov\/brca\/forkids\/lightningsafety.htm", "width": 900,
+        "height": 208, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.9Hiqsg3tJ10jKjoSSaiRLA&pid=Api",
+        "hostPageDomainFriendlyName": "National Park Service", "hostPageDiscoveredDate":
+        "2017-09-23T00:00:00.0000000Z", "thumbnail": {"width": 474, "height": 109},
+        "imageInsightsToken": "ccid_rz4F41XK*cp_31C1F57EBD5FF50E6934EAD8764D84D8*mid_25811506B3D658ECD80D37CE5D15BBEAE56D9B3D*simid_608016817732154684*thid_OIP.rz4F41XKogVtZ4DRgH-zpwHaBt",
+        "insightsMetadata": {"pagesIncludingCount": 1, "availableSizesCount": 1},
+        "imageId": "25811506B3D658ECD80D37CE5D15BBEAE56D9B3D", "accentColor": "33416A"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=thunder+%26+lightning+(site%3anps.gov)&id=1CDFED2847CE098CF5F8046037728A2B1A7C3F41&simid=607998697267415649",
+        "name": "Lightning Safety - Yosemite National Park (U.S. National ...", "thumbnailUrl":
+        "https:\/\/tse1.mm.bing.net\/th?id=OIP.CIcO0UJztWnU6aGnKBjsJQHaEl&pid=Api",
+        "datePublished": "2020-08-31T19:00:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/www.nps.gov\/yose\/planyourvisit\/images\/halfdomecumulus_2.jpg?maxwidth=1200&autorotate=false",
+        "hostPageUrl": "https:\/\/www.nps.gov\/yose\/planyourvisit\/lightning.htm",
+        "contentSize": "105142 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "https:\/\/www.nps.gov\/yose\/planyourvisit\/lightning.htm", "width": 960,
+        "height": 594, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.9Hiqsg3tJ10jKjoSSaiRLA&pid=Api",
+        "hostPageDomainFriendlyName": "National Park Service", "hostPageDiscoveredDate":
+        "2017-01-18T00:00:00.0000000Z", "thumbnail": {"width": 474, "height": 293},
+        "imageInsightsToken": "ccid_CIcO0UJz*cp_81B91C264A054CA8109AE16E726033E5*mid_1CDFED2847CE098CF5F8046037728A2B1A7C3F41*simid_607998697267415649*thid_OIP.CIcO0UJztWnU6aGnKBjsJQHaEl",
+        "insightsMetadata": {"pagesIncludingCount": 2, "availableSizesCount": 1},
+        "imageId": "1CDFED2847CE098CF5F8046037728A2B1A7C3F41", "accentColor": "354C68"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=thunder+%26+lightning+(site%3anps.gov)&id=3954BA494FE91FFD9E328B87E1ABB3A387C62B48&simid=607990085870953316",
+        "name": "Weather - Bryce Canyon National Park (U.S. National Park ...", "thumbnailUrl":
+        "https:\/\/tse3.mm.bing.net\/th?id=OIP.lKsgYoMMi63-7-iZikWqKgHaB4&pid=Api",
+        "datePublished": "2021-01-31T20:09:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/home.nps.gov\/brca\/planyourvisit\/images\/Sunrise_PT_20140523_003b.jpg?maxwidth=1200&maxheight=1200&autorotate=false",
+        "hostPageUrl": "https:\/\/home.nps.gov\/brca\/planyourvisit\/weather.htm",
+        "contentSize": "58986 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "https:\/\/home.nps.gov\/brca\/planyourvisit\/weather.htm", "width": 1000,
+        "height": 255, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.LtlZFWfJxtelfU3fGLAIeg&pid=Api",
+        "hostPageDomainFriendlyName": "nature.nps.gov", "hostPageDiscoveredDate":
+        "2017-02-14T00:00:00.0000000Z", "thumbnail": {"width": 474, "height": 120},
+        "imageInsightsToken": "ccid_lKsgYoMM*cp_3B3CB0AD72E2199844087EB8B6B18D3B*mid_3954BA494FE91FFD9E328B87E1ABB3A387C62B48*simid_607990085870953316*thid_OIP.lKsgYoMMi63-7-iZikWqKgHaB4",
+        "insightsMetadata": {"pagesIncludingCount": 2, "availableSizesCount": 1},
+        "imageId": "3954BA494FE91FFD9E328B87E1ABB3A387C62B48", "accentColor": "1A58B1"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=thunder+%26+lightning+(site%3anps.gov)&id=9851925826BD1B9FE2DFF3FE6BE4CF972DE0B948&simid=608005427481963716",
+        "name": "Lightning Strike Starts Fire at Point Reyes National ...", "thumbnailUrl":
+        "https:\/\/tse1.mm.bing.net\/th?id=OIP.WPgkAPhWB9ktUNGp48cR3QHaE8&pid=Api",
+        "datePublished": "2018-06-04T09:39:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "http:\/\/www.nps.gov\/pore\/learn\/news\/images\/pic_dividemeadowfire_285x190.jpg",
+        "hostPageUrl": "http:\/\/www.nps.gov\/pore\/parknews\/newsreleases_20090304_dividemeadowlightningstrike.htm",
+        "contentSize": "19670 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "www.nps.gov\/pore\/parknews\/newsreleases_20090304_dividemeadowlightningstrike.htm",
+        "width": 285, "height": 190, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.9Hiqsg3tJ10jKjoSSaiRLA&pid=Api",
+        "hostPageDomainFriendlyName": "National Park Service", "hostPageDiscoveredDate":
+        "2013-07-06T00:00:00.0000000Z", "thumbnail": {"width": 474, "height": 316},
+        "imageInsightsToken": "ccid_WPgkAPhW*cp_7E1BF95726FBE9402233FDD51124B80D*mid_9851925826BD1B9FE2DFF3FE6BE4CF972DE0B948*simid_608005427481963716*thid_OIP.WPgkAPhWB9ktUNGp48cR3QHaE8",
+        "insightsMetadata": {"recipeSourcesCount": 0, "pagesIncludingCount": 2, "availableSizesCount":
+        1}, "imageId": "9851925826BD1B9FE2DFF3FE6BE4CF972DE0B948", "accentColor":
+        "BA3711"}, {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=thunder+%26+lightning+(site%3anps.gov)&id=468BCE4BB13337B89123442DB7EA9B2EF9C89620&simid=608009773987949090",
+        "name": "Monsoon Season (U.S. National Park Service)", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.aa3MsgrfEbFZ-mqOPmABAQHaE8&pid=Api",
+        "datePublished": "2018-02-16T01:39:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/www.nps.gov\/articles\/images\/960px-storm-over-the-needles-cany-emily-ogden.jpg?maxwidth=1200&maxheight=1200&autorotate=false",
+        "hostPageUrl": "https:\/\/www.nps.gov\/articles\/monsoon-season.htm", "contentSize":
+        "100577 B", "encodingFormat": "jpeg", "hostPageDisplayUrl": "https:\/\/www.nps.gov\/articles\/monsoon-season.htm",
+        "width": 960, "height": 640, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.9Hiqsg3tJ10jKjoSSaiRLA&pid=Api",
+        "hostPageDomainFriendlyName": "National Park Service", "hostPageDiscoveredDate":
+        "2018-02-16T01:39:00.0000000Z", "thumbnail": {"width": 474, "height": 316},
+        "imageInsightsToken": "ccid_aa3Msgrf*cp_B45AFD769BDD94023F2DC17CD94F14CC*mid_468BCE4BB13337B89123442DB7EA9B2EF9C89620*simid_608009773987949090*thid_OIP.aa3MsgrfEbFZ-mqOPmABAQHaE8",
+        "insightsMetadata": {"recipeSourcesCount": 0, "pagesIncludingCount": 6, "availableSizesCount":
+        1}, "imageId": "468BCE4BB13337B89123442DB7EA9B2EF9C89620", "accentColor":
+        "1567B6"}, {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=thunder+%26+lightning+(site%3anps.gov)&id=C7E48E6A60FC134E40E996E0F95076116F203CD4&simid=607986778743703377",
+        "name": "Weather - Yellowstone National Park (U.S. National Park ...", "thumbnailUrl":
+        "https:\/\/tse4.mm.bing.net\/th?id=OIP.549qT-yFRQTIcr9aDyY7EQAAAA&pid=Api",
+        "datePublished": "2017-12-18T05:13:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/www.nps.gov\/common\/uploads\/photogallery\/20160216\/park\/yell\/31805E5D-1DD8-B71B-0BD269A5ACF6E946\/31805E5D-1DD8-B71B-0BD269A5ACF6E946-small.jpg",
+        "hostPageUrl": "https:\/\/www.nps.gov\/yell\/learn\/photosmultimedia\/weather.htm",
+        "contentSize": "2073 B", "encodingFormat": "jpeg", "hostPageDisplayUrl": "https:\/\/www.nps.gov\/yell\/learn\/photosmultimedia\/weather.htm",
+        "width": 158, "height": 105, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.9Hiqsg3tJ10jKjoSSaiRLA&pid=Api",
+        "hostPageDomainFriendlyName": "National Park Service", "hostPageDiscoveredDate":
+        "2017-02-13T00:00:00.0000000Z", "thumbnail": {"width": 158, "height": 105},
+        "imageInsightsToken": "ccid_549qT+yF*cp_1E0C1CA212784A03A1765144412945BC*mid_C7E48E6A60FC134E40E996E0F95076116F203CD4*simid_607986778743703377*thid_OIP.549qT-yFRQTIcr9aDyY7EQAAAA",
+        "insightsMetadata": {"pagesIncludingCount": 1, "availableSizesCount": 1},
+        "imageId": "C7E48E6A60FC134E40E996E0F95076116F203CD4", "accentColor": "4A5B38"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=thunder+%26+lightning+(site%3anps.gov)&id=8750BDCB6DCBFC1320245BEE6B91BD234137E535&simid=607998302130218310",
+        "name": "Weather - Petrified Forest National Park (U.S. National ...", "thumbnailUrl":
+        "https:\/\/tse3.mm.bing.net\/th?id=OIP.uqVjPiQBjHGq8l4BHceJhgHaFj&pid=Api",
+        "datePublished": "2019-12-27T08:45:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/www.nps.gov\/pefo\/learn\/nature\/images\/Tstorm.jpg?maxwidth=650&autorotate=false",
+        "hostPageUrl": "https:\/\/www.nps.gov\/pefo\/learn\/nature\/weather.htm",
+        "contentSize": "6926 B", "encodingFormat": "jpeg", "hostPageDisplayUrl": "https:\/\/www.nps.gov\/pefo\/learn\/nature\/weather.htm",
+        "width": 200, "height": 150, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.9Hiqsg3tJ10jKjoSSaiRLA&pid=Api",
+        "hostPageDomainFriendlyName": "National Park Service", "hostPageDiscoveredDate":
+        "2016-04-11T00:00:00.0000000Z", "thumbnail": {"width": 200, "height": 150},
+        "imageInsightsToken": "ccid_uqVjPiQB*cp_C8B31CC613FE4A5DE252F6F13FF0F62A*mid_8750BDCB6DCBFC1320245BEE6B91BD234137E535*simid_607998302130218310*thid_OIP.uqVjPiQBjHGq8l4BHceJhgHaFj",
+        "insightsMetadata": {"pagesIncludingCount": 1, "availableSizesCount": 1},
+        "imageId": "8750BDCB6DCBFC1320245BEE6B91BD234137E535", "accentColor": "6D5950"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=thunder+%26+lightning+(site%3anps.gov)&id=14141E2B11BA447847F7F91DD428041DDCE954A5&simid=608011577874064263",
+        "name": "Weather - Everglades National Park (U.S. National Park ...", "thumbnailUrl":
+        "https:\/\/tse4.mm.bing.net\/th?id=OIP.Np6cSdrKb78mJp77S3c9gQHaDY&pid=Api",
+        "datePublished": "2019-12-25T09:45:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/www.nps.gov\/ever\/planyourvisit\/images\/5204457439_c8dd299265_o.jpg?maxwidth=1200&maxheight=1200&autorotate=false",
+        "hostPageUrl": "https:\/\/www.nps.gov\/ever\/planyourvisit\/weather.htm",
+        "contentSize": "102644 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "https:\/\/www.nps.gov\/ever\/planyourvisit\/weather.htm", "width": 990, "height":
+        452, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.9Hiqsg3tJ10jKjoSSaiRLA&pid=Api",
+        "hostPageDomainFriendlyName": "National Park Service", "hostPageDiscoveredDate":
+        "2017-01-18T00:00:00.0000000Z", "thumbnail": {"width": 474, "height": 216},
+        "imageInsightsToken": "ccid_Np6cSdrK*cp_FF74A5AEE7D6C6BDD3381714919CD8F3*mid_14141E2B11BA447847F7F91DD428041DDCE954A5*simid_608011577874064263*thid_OIP.Np6cSdrKb78mJp77S3c9gQHaDY",
+        "insightsMetadata": {"recipeSourcesCount": 0, "pagesIncludingCount": 49, "availableSizesCount":
+        28}, "imageId": "14141E2B11BA447847F7F91DD428041DDCE954A5", "accentColor":
+        "244573"}, {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=thunder+%26+lightning+(site%3anps.gov)&id=FBA1565FA2305C8B8DBAA06EA528B670623FF27F&simid=607998864770558032",
+        "name": "Sound Library - Thunder - Natural Sounds (U.S. National ...", "thumbnailUrl":
+        "https:\/\/tse4.mm.bing.net\/th?id=OIP.zHukrFCJOSWnh2cZmAlNFgHaEs&pid=Api",
+        "datePublished": "2020-06-24T13:54:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/home.nps.gov\/subjects\/sound\/images\/Spectro_Thunder.jpg?maxwidth=1200&maxheight=1200&autorotate=false",
+        "hostPageUrl": "https:\/\/home.nps.gov\/subjects\/sound\/sounds-thunder.htm",
+        "contentSize": "208001 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "https:\/\/home.nps.gov\/subjects\/sound\/sounds-thunder.htm", "width": 1057,
+        "height": 669, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.LtlZFWfJxtelfU3fGLAIeg&pid=Api",
+        "hostPageDomainFriendlyName": "nature.nps.gov", "hostPageDiscoveredDate":
+        "2017-10-27T00:00:00.0000000Z", "thumbnail": {"width": 474, "height": 300},
+        "imageInsightsToken": "ccid_zHukrFCJ*cp_F7BB8C48240A177936918B60162A9404*mid_FBA1565FA2305C8B8DBAA06EA528B670623FF27F*simid_607998864770558032*thid_OIP.zHukrFCJOSWnh2cZmAlNFgHaEs",
+        "insightsMetadata": {"pagesIncludingCount": 1, "availableSizesCount": 1},
+        "imageId": "FBA1565FA2305C8B8DBAA06EA528B670623FF27F", "accentColor": "C7A104"}],
+        "queryExpansions": [{"text": "Thunder and Lightning Rain Storm", "displayText":
+        "Rain Storm", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Thunder+and+Lightning+Rain+Storm&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Rain+Storm%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Thunder+and+Lightning+Rain+Storm&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Rain+Storm%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Thunder+and+Lightning+Rain+Storm&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Blue Lightning Thunder", "displayText": "Blue", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Blue+Lightning+Thunder&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Blue%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Blue+Lightning+Thunder&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Blue%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Blue+Lightning+Thunder&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Thunder Lightning Cartoon", "displayText": "Cartoon", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Thunder+Lightning+Cartoon&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Cartoon%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Thunder+Lightning+Cartoon&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Cartoon%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Thunder+Lightning+Cartoon&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Thunder and Lightning Strikes", "displayText": "Strikes", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Thunder+and+Lightning+Strikes&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Strikes%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Thunder+and+Lightning+Strikes&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Strikes%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Thunder+and+Lightning+Strikes&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Storm Clouds Lightning and Thunder", "displayText": "Storm Clouds",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Storm+Clouds+Lightning+and+Thunder&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Storm+Clouds%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Storm+Clouds+Lightning+and+Thunder&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Storm+Clouds%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Storm+Clouds+Lightning+and+Thunder&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Thunder vs Lightning", "displayText": "vs", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Thunder+vs+Lightning&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22vs%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Thunder+vs+Lightning&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22vs%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Thunder+vs+Lightning&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Black Lightning and Thunder", "displayText": "Black", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Black+Lightning+and+Thunder&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Black%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Black+Lightning+and+Thunder&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Black%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Black+Lightning+and+Thunder&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Thunder and Lightning Song", "displayText": "Song", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Thunder+and+Lightning+Song&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Song%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Thunder+and+Lightning+Song&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Song%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Thunder+and+Lightning+Song&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Lightning Bolt Thunder", "displayText": "Bolt", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Lightning+Bolt+Thunder&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Bolt%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Lightning+Bolt+Thunder&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Bolt%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Lightning+Bolt+Thunder&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Thunder and Lightning Quotes", "displayText": "Quotes", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Thunder+and+Lightning+Quotes&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Quotes%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Thunder+and+Lightning+Quotes&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Quotes%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Thunder+and+Lightning+Quotes&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Thunder and Lightning Sounds", "displayText": "Sounds", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Thunder+and+Lightning+Sounds&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Sounds%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Thunder+and+Lightning+Sounds&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Sounds%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Thunder+and+Lightning+Sounds&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Thunder and Lightning Art", "displayText": "Art", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Thunder+and+Lightning+Art&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Art%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Thunder+and+Lightning+Art&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Art%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Thunder+and+Lightning+Art&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Thunder and Lightning Sound Effects", "displayText": "Sound Effects",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Thunder+and+Lightning+Sound+Effects&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Sound+Effects%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Thunder+and+Lightning+Sound+Effects&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Sound+Effects%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Thunder+and+Lightning+Sound+Effects&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Thunder Lightning Drawing", "displayText": "Drawing", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Thunder+Lightning+Drawing&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Drawing%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Thunder+Lightning+Drawing&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Drawing%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Thunder+Lightning+Drawing&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Thunder Lightning Storm Mountains", "displayText": "Storm Mountains",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Thunder+Lightning+Storm+Mountains&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Storm+Mountains%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Thunder+Lightning+Storm+Mountains&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Storm+Mountains%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Thunder+Lightning+Storm+Mountains&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Animated Thunder and Lightning", "displayText": "Animated", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Animated+Thunder+and+Lightning&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Animated%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Animated+Thunder+and+Lightning&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Animated%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Animated+Thunder+and+Lightning&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Lightning and Thunder 4S", "displayText": "4S", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Lightning+and+Thunder+4S&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%224S%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Lightning+and+Thunder+4S&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%224S%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Lightning+and+Thunder+4S&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Thunder and Lightning Heavy Rain Storm", "displayText": "Heavy Rain
+        Storm", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Thunder+and+Lightning+Heavy+Rain+Storm&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Heavy+Rain+Storm%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Thunder+and+Lightning+Heavy+Rain+Storm&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Heavy+Rain+Storm%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Thunder+and+Lightning+Heavy+Rain+Storm&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Pics of Lightning and Thunder", "displayText": "Pics", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Pics+of+Lightning+and+Thunder&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Pics%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Pics+of+Lightning+and+Thunder&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Pics%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Pics+of+Lightning+and+Thunder&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Thunder Lightning PNG", "displayText": "PNG", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Thunder+Lightning+PNG&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22PNG%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Thunder+Lightning+PNG&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22PNG%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Thunder+Lightning+PNG&pid=Api&mkt=en-US&adlt=moderate&t=1"}}],
+        "pivotSuggestions": [{"pivot": "thunder", "suggestions": [{"text": "Rain Lightning",
+        "displayText": "Rain", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Rain+Lightning&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Rain%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Rain+Lightning&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Rain%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Rain+Lightning&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Jinx Lightning", "displayText": "Jinx", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Jinx+Lightning&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Jinx%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Jinx+Lightning&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Jinx%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Jinx+Lightning&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Blue Lightning", "displayText": "Blue", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Blue+Lightning&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Blue%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Blue+Lightning&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Blue%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Blue+Lightning&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Rainstorm Lightning", "displayText": "Rainstorm", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Rainstorm+Lightning&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Rainstorm%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Rainstorm+Lightning&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Rainstorm%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Rainstorm+Lightning&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Fog Lightning", "displayText": "Fog", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Fog+Lightning&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Fog%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Fog+Lightning&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Fog%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Fog+Lightning&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Thunderbolt Lightning", "displayText": "Thunderbolt", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Thunderbolt+Lightning&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Thunderbolt%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Thunderbolt+Lightning&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Thunderbolt%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Thunderbolt+Lightning&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Lightening Lightning", "displayText": "Lightening", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Lightening+Lightning&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Lightening%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Lightening+Lightning&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Lightening%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Lightening+Lightning&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Lightning Lightning", "displayText": "Lightning", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Lightning+Lightning&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Lightning%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Lightning+Lightning&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Lightning%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Lightning+Lightning&pid=Api&mkt=en-US&adlt=moderate&t=1"}}]},
+        {"pivot": "&", "suggestions": []}, {"pivot": "lightning", "suggestions": [{"text":
+        "Thunder Cloud", "displayText": "Cloud", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Thunder+Cloud&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Cloud%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Thunder+Cloud&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Cloud%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Thunder+Cloud&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Thunder Strike", "displayText": "Strike", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Thunder+Strike&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Strike%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Thunder+Strike&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Strike%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Thunder+Strike&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Thunder Surge", "displayText": "Surge", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Thunder+Surge&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Surge%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Thunder+Surge&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Surge%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Thunder+Surge&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Thunder Fire", "displayText": "Fire", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Thunder+Fire&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Fire%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Thunder+Fire&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Fire%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Thunder+Fire&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Thunder Weather", "displayText": "Weather", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Thunder+Weather&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Weather%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Thunder+Weather&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Weather%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Thunder+Weather&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Thunder Snowstorm", "displayText": "Snowstorm", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Thunder+Snowstorm&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Snowstorm%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Thunder+Snowstorm&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Snowstorm%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Thunder+Snowstorm&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Thunder King", "displayText": "King", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Thunder+King&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22King%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Thunder+King&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22King%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Thunder+King&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Thunder Sharks", "displayText": "Sharks", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Thunder+Sharks&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Sharks%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Thunder+Sharks&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Sharks%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Thunder+Sharks&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Thunder Spirit", "displayText": "Spirit", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Thunder+Spirit&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Spirit%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Thunder+Spirit&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Spirit%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Thunder+Spirit&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Thunder Snake", "displayText": "Snake", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Thunder+Snake&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Snake%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Thunder+Snake&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Snake%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Thunder+Snake&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Thunder Eagle", "displayText": "Eagle", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Thunder+Eagle&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Eagle%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Thunder+Eagle&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Eagle%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Thunder+Eagle&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Thunder Libra", "displayText": "Libra", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Thunder+Libra&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Libra%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Thunder+Libra&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Libra%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Thunder+Libra&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Thunder Tsunami", "displayText": "Tsunami", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Thunder+Tsunami&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Tsunami%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Thunder+Tsunami&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Tsunami%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Thunder+Tsunami&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Thunder Natural Disasters", "displayText": "Natural Disasters",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Thunder+Natural+Disasters&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Natural+Disasters%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Thunder+Natural+Disasters&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Natural+Disasters%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Thunder+Natural+Disasters&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Thunder Moon", "displayText": "Moon", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Thunder+Moon&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Moon%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Thunder+Moon&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Moon%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Thunder+Moon&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Thunder Rainstorm", "displayText": "Rainstorm", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Thunder+Rainstorm&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Rainstorm%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Thunder+Rainstorm&tq=%7b%22pq%22%3a%22thunder+%26+lightning+(site%3anps.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22thunder%22%2c%22pv%22%3a%22thunder%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22%26%22%2c%22pv%22%3a%22%26%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22lightning%22%2c%22pv%22%3a%22lightning%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anps.gov)%22%2c%22pv%22%3a%22(site%3anps.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Rainstorm%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Thunder+Rainstorm&pid=Api&mkt=en-US&adlt=moderate&t=1"}}]},
+        {"pivot": "(site:nps.gov)", "suggestions": []}], "relatedSearches": [{"text":
+        "Lightning Rain Storm", "displayText": "Lightning Rain Storm", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Lightning+Rain+Storm&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Lightning+Rain+Storm",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Lightning+Rain+Storm&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Thunderbolt Lightning", "displayText": "Thunderbolt Lightning",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Thunderbolt+Lightning&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Thunderbolt+Lightning",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Thunderbolt+Lightning&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Lightning Striking", "displayText": "Lightning Striking", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Lightning+Striking&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Lightning+Striking",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Lightning+Striking&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Blue Lightning Thunder", "displayText": "Blue Lightning Thunder",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Blue+Lightning+Thunder&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Blue+Lightning+Thunder",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Blue+Lightning+Thunder&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Purple Lightning Storms", "displayText": "Purple Lightning Storms",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Purple+Lightning+Storms&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Purple+Lightning+Storms",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Purple+Lightning+Storms&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Crazy Lightning Storms", "displayText": "Crazy Lightning Storms",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Crazy+Lightning+Storms&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Crazy+Lightning+Storms",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Crazy+Lightning+Storms&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Rain Thunder and Lightning Sounds", "displayText": "Rain Thunder
+        and Lightning Sounds", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Rain+Thunder+and+Lightning+Sounds&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Rain+Thunder+and+Lightning+Sounds",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Rain+Thunder+and+Lightning+Sounds&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Amazing Lightning", "displayText": "Amazing Lightning", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Amazing+Lightning&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Amazing+Lightning",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Amazing+Lightning&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Storm Clouds Lightning", "displayText": "Storm Clouds Lightning",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Storm+Clouds+Lightning&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Storm+Clouds+Lightning",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Storm+Clouds+Lightning&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Cool Lightning Strikes", "displayText": "Cool Lightning Strikes",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Cool+Lightning+Strikes&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Cool+Lightning+Strikes",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Cool+Lightning+Strikes&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "City Thunder and Lightning Storms", "displayText": "City Thunder
+        and Lightning Storms", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=City+Thunder+and+Lightning+Storms&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=City+Thunder+and+Lightning+Storms",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=City+Thunder+and+Lightning+Storms&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Lightning Storm Screensaver", "displayText": "Lightning Storm Screensaver",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Lightning+Storm+Screensaver&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Lightning+Storm+Screensaver",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Lightning+Storm+Screensaver&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Electricity Lightning", "displayText": "Electricity Lightning",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Electricity+Lightning&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Electricity+Lightning",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Electricity+Lightning&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Purple Sky Lightning", "displayText": "Purple Sky Lightning", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Purple+Sky+Lightning&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Purple+Sky+Lightning",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Purple+Sky+Lightning&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Tornado and Lightning Storm", "displayText": "Tornado and Lightning
+        Storm", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Tornado+and+Lightning+Storm&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Tornado+and+Lightning+Storm",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Tornado+and+Lightning+Storm&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Mountain Lightning", "displayText": "Mountain Lightning", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Mountain+Lightning&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Mountain+Lightning",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Mountain+Lightning&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Lightning Storm at Sea", "displayText": "Lightning Storm at Sea",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Lightning+Storm+at+Sea&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Lightning+Storm+at+Sea",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Lightning+Storm+at+Sea&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Lightning Night Sky", "displayText": "Lightning Night Sky", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Lightning+Night+Sky&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Lightning+Night+Sky",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Lightning+Night+Sky&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Lightning Photography", "displayText": "Lightning Photography",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Lightning+Photography&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Lightning+Photography",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Lightning+Photography&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Thunder Effect", "displayText": "Thunder Effect", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Thunder+Effect&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Thunder+Effect",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Thunder+Effect&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Black Lightning Storm", "displayText": "Black Lightning Storm",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Black+Lightning+Storm&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Black+Lightning+Storm",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Black+Lightning+Storm&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Lightning Bolt Strike", "displayText": "Lightning Bolt Strike",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Lightning+Bolt+Strike&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Lightning+Bolt+Strike",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Lightning+Bolt+Strike&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Colorful Lightning Storms", "displayText": "Colorful Lightning Storms",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Colorful+Lightning+Storms&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Colorful+Lightning+Storms",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Colorful+Lightning+Storms&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Awesome Lightning Storm", "displayText": "Awesome Lightning Storm",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Awesome+Lightning+Storm&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Awesome+Lightning+Storm",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Awesome+Lightning+Storm&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Thunderstorm and Lightning Storm", "displayText": "Thunderstorm
+        and Lightning Storm", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Thunderstorm+and+Lightning+Storm&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Thunderstorm+and+Lightning+Storm",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Thunderstorm+and+Lightning+Storm&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Arizona Lightning Storms", "displayText": "Arizona Lightning Storms",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Arizona+Lightning+Storms&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Arizona+Lightning+Storms",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Arizona+Lightning+Storms&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Rainbow Lightning Storm", "displayText": "Rainbow Lightning Storm",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Rainbow+Lightning+Storm&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Rainbow+Lightning+Storm",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Rainbow+Lightning+Storm&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Red Lightning Storm", "displayText": "Red Lightning Storm", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Red+Lightning+Storm&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Red+Lightning+Storm",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Red+Lightning+Storm&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Thunder vs Lightning", "displayText": "Thunder vs Lightning", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Thunder+vs+Lightning&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Thunder+vs+Lightning",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Thunder+vs+Lightning&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Ocean Storm Clouds Lightning", "displayText": "Ocean Storm Clouds
+        Lightning", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Ocean+Storm+Clouds+Lightning&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Ocean+Storm+Clouds+Lightning",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Ocean+Storm+Clouds+Lightning&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Purple Lightning Storm Beautiful", "displayText": "Purple Lightning
+        Storm Beautiful", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Purple+Lightning+Storm+Beautiful&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Purple+Lightning+Storm+Beautiful",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Purple+Lightning+Storm+Beautiful&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Thunder Lightning Cartoon", "displayText": "Thunder Lightning Cartoon",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Thunder+Lightning+Cartoon&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Thunder+Lightning+Cartoon",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Thunder+Lightning+Cartoon&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Animated Lightning Storm", "displayText": "Animated Lightning Storm",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Animated+Lightning+Storm&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Animated+Lightning+Storm",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Animated+Lightning+Storm&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Lightning Storm Desktop", "displayText": "Lightning Storm Desktop",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Lightning+Storm+Desktop&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Lightning+Storm+Desktop",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Lightning+Storm+Desktop&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Thunder light", "displayText": "Thunder light", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Thunder+light&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Thunder+light",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Thunder+light&pid=Api&mkt=en-US&adlt=moderate&t=1"}}]}'
+    http_version:
+  recorded_at: Wed, 09 Jun 2021 18:19:22 GMT
+recorded_with: VCR 4.0.0
