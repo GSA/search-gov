@@ -2,442 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=weather%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Ocp-Apim-Subscription-Key:
-      - "<BING_V6_APP_ID>"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Content-Length:
-      - '2664'
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Thu, 26 Apr 2018 23:28:19 GMT
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      Set-Cookie:
-      - MUID=35BA77FB0A0B642A11517C260B9C65BE; path=/; expires=Tue, 21-May-2019 23:29:19
-        GMT; domain=bingapis.com
-      - MUIDB=35BA77FB0A0B642A11517C260B9C65BE; path=/; httponly; expires=Tue, 21-May-2019
-        23:29:19 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 26-Apr-2020 23:29:19 GMT;
-        path=/
-      - SRCHUID=V=2&GUID=B1A03987D2B14F57B79407EA809296AD&dmnchg=1; domain=.bingapis.com;
-        expires=Sun, 26-Apr-2020 23:29:19 GMT; path=/
-      - SRCHUSR=DOB=20180426; domain=.bingapis.com; expires=Sun, 26-Apr-2020 23:29:19
-        GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=1DE2002BB1376CD33D7F0BF6B0A06D5C; path=/; httponly;
-        domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Tue, 21-May-2019 23:29:19 GMT; domain=bingapis.com
-      - _SS=SID=1DE2002BB1376CD33D7F0BF6B0A06D5C; domain=.bingapis.com; path=/
-      Bingapis-Traceid:
-      - 97EDFD624F6C429C9B10133448E21266
-      X-Msedge-Clientid:
-      - 35BA77FB0A0B642A11517C260B9C65BE
-      X-Msapi-Userstate:
-      - ea07
-      Bingapis-Market:
-      - en-US
-      X-Msedge-Ref:
-      - 'Ref A: 97EDFD624F6C429C9B10133448E21266 Ref B: CO1EDGE0318 Ref C: 2018-04-26T23:29:19Z'
-      Date:
-      - Thu, 26 Apr 2018 23:29:18 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=C78676FD9D054930BFDA8A5E9633944B&CID=35BA77FB0A0B642A11517C260B9C65BE&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=C78676FD9D054930BFDA8A5E9633944B&CID=35BA77FB0A0B642A11517C260B9C65BE&Type=Event.CPT&DATA=0"},
-        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=weather+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5573.1", "totalEstimatedMatches": 29700000,
-        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "National Weather Service - Official Site", "url": "https:\/\/www.weather.gov\/",
-        "urlPingSuffix": "DevEx,5110.1", "about": [{"name": "National Weather Service"},
-        {"name": "National Weather Service"}], "displayUrl": "https:\/\/www.weather.gov",
-        "snippet": "NOAA National Weather Service National Weather Service. Potential
-        for Severe Weather and Heavy Rain in the South this Weekend. A low pressure
-        system moving across the southern Gulf States will bring a threat of isolated
-        severe thunderstorms containing hail and damaging winds this weekend.", "deepLinks":
-        [{"name": "Forecast Maps", "url": "https:\/\/www.weather.gov\/forecastmaps",
-        "urlPingSuffix": "DevEx,5098.1"}, {"name": "Radar", "url": "https:\/\/www.weather.gov\/Radar",
-        "urlPingSuffix": "DevEx,5099.1"}, {"name": "Satellite", "url": "https:\/\/www.weather.gov\/satellite",
-        "urlPingSuffix": "DevEx,5100.1"}, {"name": "Search", "url": "https:\/\/www.weather.gov\/search",
-        "urlPingSuffix": "DevEx,5101.1"}, {"name": "Seattle\/Tacoma, WA", "url": "https:\/\/www.weather.gov\/sew\/",
-        "urlPingSuffix": "DevEx,5102.1"}, {"name": "St. Louis, MO", "url": "https:\/\/www.weather.gov\/lsx\/",
-        "urlPingSuffix": "DevEx,5103.1"}], "dateLastCrawled": "2018-04-22T06:34:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Weather
-        | National Oceanic and Atmospheric Administration", "url": "http:\/\/www.noaa.gov\/weather",
-        "urlPingSuffix": "DevEx,5131.1", "displayUrl": "www.noaa.gov\/weather",
-        "snippet": "NOAA''s National Weather Service is building a Weather-Ready
-        Nation by providing better information for better decisions to save lives
-        and livelihoods", "deepLinks": [{"name": "Forecasts", "url": "http:\/\/www.nws.noaa.gov\/forecasts.php",
-        "urlPingSuffix": "DevEx,5121.1"}, {"name": "NOAA in Your State", "url": "https:\/\/www.legislative.noaa.gov\/NIYS\/",
-        "urlPingSuffix": "DevEx,5122.1"}, {"name": "Our Work", "url": "http:\/\/www.noaa.gov\/our-work",
-        "urlPingSuffix": "DevEx,5123.1"}, {"name": "Research", "url": "http:\/\/www.noaa.gov\/research",
-        "urlPingSuffix": "DevEx,5124.1"}, {"name": "Hurricane", "url": "https:\/\/www.nhc.noaa.gov\/",
-        "urlPingSuffix": "DevEx,5125.1"}, {"name": "Jose", "url": "https:\/\/www.nhc.noaa.gov\/refresh\/graphics_at2+shtml\/204055.shtml?cone",
-        "urlPingSuffix": "DevEx,5126.1"}], "dateLastCrawled": "2018-04-21T07:41:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "National
-        Weather Service Doppler Radar Images", "url": "https:\/\/radar.weather.gov\/",
-        "urlPingSuffix": "DevEx,5157.1", "about": [{"name": "Weather radar"}, {"name":
-        "Weather radar"}], "displayUrl": "https:\/\/radar.weather.gov", "snippet":
-        "Latest weather radar images from the National Weather Service", "dateLastCrawled":
-        "2018-04-21T08:56:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
-        "name": "National Forecast Maps", "url": "https:\/\/www.weather.gov\/forecastmaps",
-        "urlPingSuffix": "DevEx,5173.1", "about": [{"name": "National Weather Service"}],
-        "displayUrl": "https:\/\/www.weather.gov\/forecastmaps", "snippet": "Predominant
-        Weather. Expected weather (precipitating or non-precipitating) valid at
-        the indicated hour. The weather element includes type, probability, and
-        intensity information.", "dateLastCrawled": "2018-04-22T10:54:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Current
-        Conditions - National Weather Service", "url": "https:\/\/www.weather.gov\/current",
-        "urlPingSuffix": "DevEx,5189.1", "displayUrl": "https:\/\/www.weather.gov\/current",
-        "snippet": "Current U.S. weather conditions. Surface Weather. Temperature,
-        sky conditions, visibility, precipitation type and accumulation, wind speed
-        and direction, and more as reported by surface observation stations.", "dateLastCrawled":
-        "2018-04-21T06:58:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
-        "name": "Doppler Radar National Mosaic - National Weather Service", "url":
-        "https:\/\/www.weather.gov\/Radar", "urlPingSuffix": "DevEx,5204.1", "about":
-        [{"name": "National Weather Service"}], "displayUrl": "https:\/\/www.weather.gov\/Radar",
-        "snippet": "Latest weather radar images from the National Weather Service",
-        "dateLastCrawled": "2018-04-22T07:19:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
-        "name": "US National Weather Service Gray ME - Official Site", "url": "https:\/\/www.weather.gov\/gyx\/",
-        "urlPingSuffix": "DevEx,5219.1", "about": [{"name": "National Weather Service"}],
-        "displayUrl": "https:\/\/www.weather.gov\/gyx", "snippet": "NOAA National
-        Weather Service Gray - Portland, ME. US Dept of Commerce National Oceanic
-        and Atmospheric Administration National Weather Service", "dateLastCrawled":
-        "2018-04-23T04:36:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
-        "name": "Southern Region Headquarters - National Weather Service", "url":
-        "https:\/\/www.weather.gov\/srh\/", "urlPingSuffix": "DevEx,5234.1", "about":
-        [{"name": "Headquarters"}], "displayUrl": "https:\/\/www.weather.gov\/srh",
-        "snippet": "NOAA National Weather Service Southern Region Headquarters.
-        US Dept of Commerce National Oceanic and Atmospheric Administration National
-        Weather Service", "dateLastCrawled": "2018-04-22T07:41:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Baltimore\/Washington
-        - National Weather Service", "url": "https:\/\/www.weather.gov\/lwx\/",
-        "urlPingSuffix": "DevEx,5250.1", "about": [{"name": "National Weather Service"}],
-        "displayUrl": "https:\/\/www.weather.gov\/lwx", "snippet": "NOAA National
-        Weather Service Baltimore\/Washington. US Dept of Commerce National Oceanic
-        and Atmospheric Administration National Weather Service", "dateLastCrawled":
-        "2018-04-22T01:08:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
-        "name": "National Weather Service St. Louis, Missouri - Official Site",
-        "url": "https:\/\/www.weather.gov\/lsx\/", "urlPingSuffix": "DevEx,5264.1",
-        "about": [{"name": "National Weather Service"}], "displayUrl": "https:\/\/www.weather.gov\/lsx",
-        "snippet": "NOAA National Weather Service St. Louis, MO. US Dept of Commerce
-        National Oceanic and Atmospheric Administration National Weather Service",
-        "dateLastCrawled": "2018-04-22T10:44:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
-        "name": "Detroit\/Pontiac, MI - National Weather Service", "url": "https:\/\/www.weather.gov\/dtx\/",
-        "urlPingSuffix": "DevEx,5280.1", "about": [{"name": "Pontiac"}, {"name": "Pontiac"}],
-        "displayUrl": "https:\/\/www.weather.gov\/dtx", "snippet": "US Dept of Commerce
-        National Oceanic and Atmospheric Administration National Weather Service
-        Detroit\/Pontiac, MI 9200 White Lake Road White Lake, MI 48386", "dateLastCrawled":
-        "2018-04-22T20:21:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
-        "name": "Paducah, KY - National Weather Service", "url": "https:\/\/www.weather.gov\/pah\/",
-        "urlPingSuffix": "DevEx,5294.1", "about": [{"name": "National Weather Service"}],
-        "displayUrl": "https:\/\/www.weather.gov\/pah", "snippet": "NOAA National
-        Weather Service Paducah, KY. Paducah WSR-88D Doppler Radar Out of Service
-        Until May 11th for Major Repairs", "dateLastCrawled": "2018-04-22T08:43:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Northern
-        Indiana - National Weather Service", "url": "https:\/\/www.weather.gov\/iwx\/",
-        "urlPingSuffix": "DevEx,5310.1", "about": [{"name": "National Weather Service"}],
-        "displayUrl": "https:\/\/www.weather.gov\/iwx", "snippet": "NOAA National
-        Weather Service Northern Indiana. US Dept of Commerce National Oceanic and
-        Atmospheric Administration National Weather Service", "dateLastCrawled":
-        "2018-04-22T04:38:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
-        "name": "JetStream - An Online School for Weather", "url": "https:\/\/www.weather.gov\/jetstream\/",
-        "urlPingSuffix": "DevEx,5325.1", "displayUrl": "https:\/\/www.weather.gov\/jetstream",
-        "snippet": "To better understand dangerous storms, NASA compiled data from
-        several satellites into a supercomputer simulation of this past year''s hurricane
-        season. Specifically, the featured video shows how smoke (white), sea salt
-        (blue), and dust (brown) tracked from 2017 August through October across the
-        ...", "dateLastCrawled": "2018-04-22T17:39:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
-        "name": "Satellite Images", "url": "https:\/\/www.weather.gov\/satellite",
-        "urlPingSuffix": "DevEx,5340.1", "displayUrl": "https:\/\/www.weather.gov\/satellite",
-        "snippet": "National Weather Service. National Headquarters. Satellite Images.
-        Weather.gov > Satellite Images", "dateLastCrawled": "2018-04-21T06:35:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "NOAA
-        - National Weather Service - Water", "url": "https:\/\/water.weather.gov\/ahps\/",
-        "urlPingSuffix": "DevEx,5355.1", "about": [{"name": "National Weather Service"}],
-        "displayUrl": "https:\/\/water.weather.gov", "snippet": "National Weather
-        Service Advanced Hydrologic Prediction Service (AHPS)", "dateLastCrawled":
-        "2018-04-22T03:45:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
-        "name": "US National Weather Service New York NY - Official Site", "url":
-        "https:\/\/www.weather.gov\/okx\/", "urlPingSuffix": "DevEx,5370.1", "about":
-        [{"name": "National Weather Service"}], "displayUrl": "https:\/\/www.weather.gov\/okx",
-        "snippet": "NOAA National Weather Service New York, NY. US Dept of Commerce
-        National Oceanic and Atmospheric Administration National Weather Service",
-        "dateLastCrawled": "2018-04-23T02:42:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
-        "name": "NWS Wilmington, NC - National Weather Service", "url": "https:\/\/www.weather.gov\/ilm\/",
-        "urlPingSuffix": "DevEx,5385.1", "about": [{"name": "National Weather Service"}],
-        "displayUrl": "https:\/\/www.weather.gov\/ilm", "snippet": "NOAA National
-        Weather Service NWS Wilmington, NC. US Dept of Commerce National Oceanic
-        and Atmospheric Administration National Weather Service", "dateLastCrawled":
-        "2018-04-22T10:15:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
-        "name": "US National Weather Service Binghamton NY - Official Site", "url":
-        "https:\/\/www.weather.gov\/bgm\/", "urlPingSuffix": "DevEx,5401.1", "about":
-        [{"name": "National Weather Service"}], "displayUrl": "https:\/\/www.weather.gov\/bgm",
-        "snippet": "NOAA National Weather Service Binghamton, NY. US Dept of Commerce
-        National Oceanic and Atmospheric Administration National Weather Service",
-        "dateLastCrawled": "2018-04-22T08:47:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
-        "name": "US National Weather Service Pittsburgh PA - Official Site", "url":
-        "https:\/\/www.weather.gov\/pbz\/", "urlPingSuffix": "DevEx,5416.1", "about":
-        [{"name": "National Weather Service"}], "displayUrl": "https:\/\/www.weather.gov\/pbz",
-        "snippet": "NOAA National Weather Service Pittsburgh, PA. US Dept of Commerce
-        National Oceanic and Atmospheric Administration National Weather Service",
-        "dateLastCrawled": "2018-04-22T05:46:00.0000000Z"}]}, "rankingResponse": {"mainline":
-        {"items": [{"answerType": "Weather"}, {"answerType": "WebPages", "resultIndex":
-        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
-        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
-        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
-        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
-        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
-        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
-        {"answerType": "Videos"}, {"answerType": "WebPages", "resultIndex": 6, "value":
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}}, {"answerType":
-        "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
-        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
-        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
-        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
-        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
-        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
-        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
-        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
-        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
-        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
-        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
-        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
-        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]},
-        "sidebar": {"items": [{"answerType": "Entities"}]}}}'
-    http_version: 
-  recorded_at: Thu, 26 Apr 2018 23:29:19 GMT
-- request:
-    method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=weather%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Content-Length:
-      - '2321'
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Mon, 27 Aug 2018 00:06:17 GMT
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      Set-Cookie:
-      - MUID=1A716E29EBBE6B5B30956271EAB16A4F; path=/; expires=Sat, 21-Sep-2019 00:07:17
-        GMT; domain=bingapis.com
-      - MUIDB=1A716E29EBBE6B5B30956271EAB16A4F; path=/; httponly; expires=Sat, 21-Sep-2019
-        00:07:17 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 27-Aug-2020 00:07:17 GMT;
-        path=/
-      - SRCHUID=V=2&GUID=F925EE6AFDF245C381B9F23CFB42957B&dmnchg=1; domain=.bingapis.com;
-        expires=Thu, 27-Aug-2020 00:07:17 GMT; path=/
-      - SRCHUSR=DOB=20180827; domain=.bingapis.com; expires=Thu, 27-Aug-2020 00:07:17
-        GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=216D3191000D6A8129093DC901026BA8; path=/; httponly;
-        domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sat, 21-Sep-2019 00:07:17 GMT; domain=bingapis.com
-      - _SS=SID=216D3191000D6A8129093DC901026BA8; domain=.bingapis.com; path=/
-      Bingapis-Traceid:
-      - 841C5080D60245FBB0F354B6606ACAFA
-      X-Msedge-Clientid:
-      - 1A716E29EBBE6B5B30956271EAB16A4F
-      X-Msapi-Userstate:
-      - '8454'
-      Bingapis-Market:
-      - en-US
-      X-Msedge-Ref:
-      - 'Ref A: 841C5080D60245FBB0F354B6606ACAFA Ref B: BAYEDGE0312 Ref C: 2018-08-27T00:07:17Z'
-      Date:
-      - Mon, 27 Aug 2018 00:07:17 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=41E6440231B44F3E88E9364BDFEF72AA&CID=1A716E29EBBE6B5B30956271EAB16A4F&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=41E6440231B44F3E88E9364BDFEF72AA&CID=1A716E29EBBE6B5B30956271EAB16A4F&Type=Event.CPT&DATA=0"},
-        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=weather+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5416.1", "totalEstimatedMatches": 28700000,
-        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "National Weather Service", "url": "https:\/\/www.weather.gov\/", "urlPingSuffix":
-        "DevEx,5057.1", "about": [{"name": "National Weather Service"}, {"name": "National
-        Weather Service"}], "displayUrl": "https:\/\/www.weather.gov", "snippet":
-        "NOAA National Weather Service National Weather Service. Click on the map
-        above for detailed alerts or", "dateLastCrawled": "2018-08-19T23:23:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Weather
-        | National Oceanic and Atmospheric Administration", "url": "http:\/\/www.noaa.gov\/weather",
-        "urlPingSuffix": "DevEx,5070.1", "displayUrl": "www.noaa.gov\/weather",
-        "snippet": "NOAA''s National Weather Service is building a Weather-Ready
-        Nation by providing better information for better decisions to save lives
-        and livelihoods", "dateLastCrawled": "2018-08-16T11:42:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "NOAA''s National
-        Weather Service", "url": "http:\/\/w1.weather.gov\/", "urlPingSuffix": "DevEx,5084.1",
-        "about": [{"name": "National Weather Service"}], "displayUrl": "w1.weather.gov",
-        "snippet": "National Weather Service Home page. The starting point for official
-        government weather forecasts, warnings, meteorological products for forecasting
-        the weather, and information about meteorology.", "dateLastCrawled": "2018-08-18T21:58:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "National
-        Weather Service Doppler Radar Images", "url": "https:\/\/radar.weather.gov\/",
-        "urlPingSuffix": "DevEx,5097.1", "about": [{"name": "Weather radar"}, {"name":
-        "Weather radar"}], "displayUrl": "https:\/\/radar.weather.gov", "snippet":
-        "Latest weather radar images from the National Weather Service", "dateLastCrawled":
-        "2018-08-17T03:41:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
-        "name": "National Forecast Maps - National Weather Service", "url": "https:\/\/www.weather.gov\/forecastmaps",
-        "urlPingSuffix": "DevEx,5111.1", "about": [{"name": "National Weather Service"}],
-        "displayUrl": "https:\/\/www.weather.gov\/forecastmaps", "snippet": "Predominant
-        Weather. Expected weather (precipitating or non-precipitating) valid at
-        the indicated hour. The weather element includes type, probability, and
-        intensity information.", "dateLastCrawled": "2018-08-18T06:16:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Doppler
-        Radar National Mosaic - National Weather Service", "url": "https:\/\/www.weather.gov\/Radar",
-        "urlPingSuffix": "DevEx,5124.1", "about": [{"name": "National Weather Service"}],
-        "displayUrl": "https:\/\/www.weather.gov\/Radar", "snippet": "Latest weather
-        radar images from the National Weather Service", "dateLastCrawled": "2018-08-18T19:31:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "NOAA -
-        National Weather Service - Water", "url": "https:\/\/water.weather.gov\/ahps\/",
-        "urlPingSuffix": "DevEx,5137.1", "about": [{"name": "National Weather Service"}],
-        "displayUrl": "https:\/\/water.weather.gov", "snippet": "National Weather
-        Service Advanced Hydrologic Prediction Service (AHPS)", "dateLastCrawled":
-        "2018-08-16T16:07:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
-        "name": "Paducah, KY - National Weather Service", "url": "https:\/\/www.weather.gov\/pah\/",
-        "urlPingSuffix": "DevEx,5151.1", "about": [{"name": "US National Weather Service
-        Paducah Kentucky"}], "displayUrl": "https:\/\/www.weather.gov\/pah", "snippet":
-        "NOAA National Weather Service Paducah, KY. US Dept of Commerce National
-        Oceanic and Atmospheric Administration National Weather Service", "dateLastCrawled":
-        "2018-08-18T10:15:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
-        "name": "Detroit\/Pontiac, MI - National Weather Service", "url": "https:\/\/www.weather.gov\/dtx\/",
-        "urlPingSuffix": "DevEx,5165.1", "about": [{"name": "National Weather Service"}],
-        "displayUrl": "https:\/\/www.weather.gov\/dtx", "snippet": "NOAA National
-        Weather Service Detroit\/Pontiac, MI. US Dept of Commerce National Oceanic
-        and Atmospheric Administration National Weather Service", "dateLastCrawled":
-        "2018-08-20T03:40:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
-        "name": "National Weather Service St. Louis, Missouri", "url": "https:\/\/www.weather.gov\/lsx\/",
-        "urlPingSuffix": "DevEx,5179.1", "about": [{"name": "National Weather Service"}],
-        "displayUrl": "https:\/\/www.weather.gov\/lsx", "snippet": "NOAA National
-        Weather Service St. Louis, MO. Remembering the Great Flood of 1993; Extreme
-        Drought Expands Over Central and Northeastern Missouri (Updated 8\/16)", "dateLastCrawled":
-        "2018-08-20T09:09:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
-        "name": "Pueblo, CO - National Weather Service", "url": "https:\/\/www.weather.gov\/pub\/",
-        "urlPingSuffix": "DevEx,5193.1", "about": [{"name": "National Weather Service"}],
-        "displayUrl": "https:\/\/www.weather.gov\/pub", "snippet": "NOAA National
-        Weather Service Pueblo, CO. US Dept of Commerce National Oceanic and Atmospheric
-        Administration National Weather Service", "dateLastCrawled": "2018-08-21T16:57:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "National
-        Weather Service - Graphical Forecast", "url": "https:\/\/digital.weather.gov\/",
-        "urlPingSuffix": "DevEx,5206.1", "displayUrl": "https:\/\/digital.weather.gov",
-        "snippet": "NOAA National Weather Service National Weather Service NDFD
-        Graphical Forecast", "dateLastCrawled": "2018-08-18T16:00:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Search - National
-        Weather Service", "url": "https:\/\/www.weather.gov\/search", "urlPingSuffix":
-        "DevEx,5219.1", "about": [{"name": "National Weather Service"}], "displayUrl":
-        "https:\/\/www.weather.gov\/search", "snippet": "Weather.gov Search.
-        Can''t Find Something? If you haven''t already, please use the box below to
-        search Weather.gov or all of NOAA.", "dateLastCrawled": "2018-08-15T14:11:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Norman,
-        OK", "url": "https:\/\/www.weather.gov\/oun\/", "urlPingSuffix": "DevEx,5233.1",
-        "about": [{"name": "WXK85"}], "displayUrl": "https:\/\/www.weather.gov\/oun",
-        "snippet": "NOAA National Weather Service Norman, OK. Showers and thunderstorms
-        will continue to spread across the area overnight into Sunday morning.", "dateLastCrawled":
-        "2018-08-20T11:57:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
-        "name": "Charleston, WV - National Weather Service", "url": "https:\/\/www.weather.gov\/rlx\/",
-        "urlPingSuffix": "DevEx,5247.1", "about": [{"name": "NWS Charleston, WV"}],
-        "displayUrl": "https:\/\/www.weather.gov\/rlx", "snippet": "NOAA National
-        Weather Service Charleston, WV. Latest Hazardous Weather Outlook and Weather
-        Synopsis; NWS Seeking Comments on Proposed Consolidation of Flood Products
-        Until Sept 7", "dateLastCrawled": "2018-08-21T08:18:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Little Rock,
-        AR - National Weather Service", "url": "https:\/\/www.weather.gov\/lzk\/",
-        "urlPingSuffix": "DevEx,5260.1", "about": [{"name": "NWSLittleRock"}], "displayUrl":
-        "https:\/\/www.weather.gov\/lzk", "snippet": "NOAA National Weather Service
-        Little Rock, AR. Lows tonight will range from the mid 60s to lower 70s.",
-        "dateLastCrawled": "2018-08-15T14:51:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
-        "name": "NWS Forecast Office New York, NY - National Weather Service", "url":
-        "https:\/\/www.weather.gov\/okx\/", "urlPingSuffix": "DevEx,5273.1", "about":
-        [{"name": "KWO35"}], "displayUrl": "https:\/\/www.weather.gov\/okx", "snippet":
-        "NOAA National Weather Service New York, NY. US Dept of Commerce National
-        Oceanic and Atmospheric Administration National Weather Service", "dateLastCrawled":
-        "2018-08-20T10:46:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
-        "name": "NWS Forecast Office Hastings, NE - National Weather Service",
-        "url": "https:\/\/www.weather.gov\/gid\/", "urlPingSuffix": "DevEx,5287.1",
-        "about": [{"name": "US National Weather Service Hastings Nebraska"}], "displayUrl":
-        "https:\/\/www.weather.gov\/gid", "snippet": "NOAA National Weather Service
-        Hastings, NE. US Dept of Commerce National Oceanic and Atmospheric Administration
-        National Weather Service", "dateLastCrawled": "2018-08-21T02:14:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Active
-        Alerts - National Weather Service", "url": "https:\/\/www.weather.gov\/alerts",
-        "urlPingSuffix": "DevEx,5300.1", "about": [{"name": "National Weather Service"}],
-        "displayUrl": "https:\/\/www.weather.gov\/alerts", "snippet": "Active weather
-        alerts. US Dept of Commerce National Oceanic and Atmospheric Administration
-        National Weather Service", "dateLastCrawled": "2018-08-20T15:11:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Rapid
-        City, SD - National Weather Service", "url": "https:\/\/www.weather.gov\/unr\/",
-        "urlPingSuffix": "DevEx,5314.1", "about": [{"name": "NWS Rapid City"}], "displayUrl":
-        "https:\/\/www.weather.gov\/unr", "snippet": "NOAA National Weather Service
-        Rapid City, SD. US Dept of Commerce National Oceanic and Atmospheric Administration
-        National Weather Service", "dateLastCrawled": "2018-08-19T05:35:00.0000000Z"}]},
-        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
-        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
-        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
-        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
-        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
-        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
-        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
-        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
-        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
-        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
-        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
-        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
-        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
-        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
-        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
-        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
-        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
-        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
-        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
-        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
-        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
-    http_version: 
-  recorded_at: Mon, 27 Aug 2018 00:07:17 GMT
-- request:
-    method: get
     uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=weather%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
     body:
       encoding: US-ASCII
@@ -467,191 +31,198 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Tue, 05 Feb 2019 21:33:39 GMT
+      - Fri, 11 Jun 2021 12:58:11 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
       Bingapis-Traceid:
-      - 9A0D67266E36492090C22E05512CA17C
+      - 869918883545459DB2C9AB98133B7CF5
       Bingapis-Sessionid:
-      - 17870105EFC84739832CB609C6512132
+      - 327D13B9C0EE47F7BBEF18FDAB7DEDED
       X-Msedge-Clientid:
-      - 388EF7B46FC9617B0F5BFB4E6E85609E
+      - 0D4D57890B806E241D5B47DA0A7D6FFB
       X-Msapi-Userstate:
-      - '1561'
+      - c444
       Bingapis-Market:
       - en-US
       X-Search-Responseinfo:
-      - InternalResponseTime=141,MSDatacenter=CO4
+      - InternalResponseTime=224,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
       X-Msedge-Ref:
-      - 'Ref A: 9A0D67266E36492090C22E05512CA17C Ref B: BY3EDGE0518 Ref C: 2019-02-05T21:34:39Z'
+      - 'Ref A: 869918883545459DB2C9AB98133B7CF5 Ref B: BLUEDGE0914 Ref C: 2021-06-11T12:59:11Z'
       Apim-Request-Id:
-      - fa20a148-2299-4742-ac0d-c9648b78ad0e
+      - ae38cdd5-7b5e-4deb-96b0-aeb17c8623af
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
       - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Tue, 05 Feb 2019 21:34:38 GMT
+      - Fri, 11 Jun 2021 12:59:11 GMT
     body:
       encoding: UTF-8
       string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "weather
         (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=weather+(site%3agov+OR+site%3amil)",
-        "totalEstimatedMatches": 26600000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
-        "name": "National Weather Service", "url": "https:\/\/www.weather.gov\/",
-        "about": [{"name": "National Weather Service"}, {"name": "National Weather
-        Service"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov",
-        "snippet": "Surface Weather Upper Air Marine and Buoy Reports Snow Cover
-        Satellite Space Weather International Observations. FORECAST Local Forecast
-        International Forecasts Severe Weather Current Outlook Maps Drought Fire
-        Weather Fronts\/Precipitation Maps Current Graphical Forecast Maps Rivers
-        Marine Offshore and High Seas Hurricanes Aviation Weather", "dateLastCrawled":
-        "2019-02-01T14:28:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1", "name":
-        "National Weather Service Doppler Radar Images", "url": "https:\/\/radar.weather.gov\/",
-        "about": [{"name": "Weather radar"}, {"name": "Weather radar"}], "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/radar.weather.gov", "snippet": "Latest weather
-        radar images from the National Weather Service", "dateLastCrawled": "2019-01-31T19:39:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
-        "name": "Weather | National Oceanic and Atmospheric Administration", "url":
-        "https:\/\/www.noaa.gov\/weather", "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.noaa.gov\/weather", "snippet": "National Weather Service
-        (NWS) provides weather, hydrologic, and climate forecasts and warnings for
-        the United States, its territories, adjacent waters and ocean areas, for the
-        protection of life and property and the enhancement of the national economy.
-        Go to NOAA''s National Weather Service.", "dateLastCrawled": "2019-01-31T04:30:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
-        "name": "Weather Story", "url": "https:\/\/www.weather.gov\/mpx\/weatherstory",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/mpx\/weatherstory",
-        "snippet": "Weather Story, graphic. The historic cold air will remain in
-        place through tonight. Wind chills of -60 to -50 this morning will improve
-        slightly today with lighter winds, but are expected to remain at or below
-        -40 into Thursday morning.", "dateLastCrawled": "2019-01-31T19:50:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
-        "name": "Doppler Radar National Mosaic - National Weather Service", "url":
-        "https:\/\/www.weather.gov\/Radar", "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.weather.gov\/Radar", "snippet": "Excessive Rainfall and Winter
-        Weather Forecasts River Flooding Latest Warnings Thunderstorm\/Tornado Outlook
-        Hurricanes Fire Weather Outlooks UV Alerts Drought Space Weather NOAA
-        Weather Radio NWS CAP Feeds . PAST WEATHER Past Weather Climate Monitoring
-        Heating\/Cooling Days Monthly Temps Records Astronomical Data Certified Weather
-        Data", "dateLastCrawled": "2019-02-01T18:04:00.0000000Z", "language": "en",
-        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
-        "name": "National Weather Service", "url": "https:\/\/forecast.weather.gov\/MapClick.php?lat=41.884250000000065&lon=-87.63244999999995",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/forecast.weather.gov\/MapClick.php?lat=41.884250000000065&...",
-        "snippet": "NOAA National Weather Service National Weather Service. Very
-        Dangerous and Life-Threatening Arctic Blast. One of the coldest arctic air
-        mass intrusions in recent memory is surging south into the Upper Midwest before
-        spreading across much of the eastern two-thirds of the country.", "dateLastCrawled":
-        "2019-01-30T18:38:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6", "name":
-        "National Forecast Maps - National Weather Service", "url": "https:\/\/www.weather.gov\/forecastmaps",
-        "about": [{"name": "National Weather Service"}], "isFamilyFriendly": true,
-        "displayUrl": "https:\/\/www.weather.gov\/forecastmaps", "snippet": "National
-        Weather Service. National Headquarters. National Forecast Maps. Weather.gov
-        > National Forecast Maps ... valid at the indicated hour. The weather element
-        includes type, probability, and intensity information. Wind Speed and Direction.
-        Sustained wind speed (in knots) and expected wind direction (using 36 points
-        of a compass) forecasts.", "dateLastCrawled": "2019-01-31T13:35:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
-        "name": "NOAA''s National Weather Service - National Climate", "url": "https:\/\/w2.weather.gov\/climate\/",
-        "about": [{"name": "National Weather Service"}], "isFamilyFriendly": true,
-        "displayUrl": "https:\/\/w2.weather.gov\/climate", "snippet": "Visit the
-        National Weather Service Climate Services Web Page for the latest information
-        about what Climate Services is doing for you!. Click on the map below to obtain
-        local climate information. Access the product through the \"Select Climate
-        Outlook\" drop down menu above the national map.", "dateLastCrawled": "2019-02-01T06:54:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
-        "name": "National Weather Service - Graphical Forecast", "url": "https:\/\/digital.weather.gov\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/digital.weather.gov",
-        "snippet": "Excessive Rainfall and Winter Weather Forecasts National River
-        Flooding Latest Warnings Thunderstorm\/Tornado Outlook River Flooding Hurricanes
-        Fire Weather Outlooks UV Alerts Drought Space Weather NOAA Weather Radio
-        NWS CAP Feeds . PAST WEATHER. Climatic Outlooks Climate Monitoring Past
-        Weather Heating\/Cooling Days Monthly Temps Records", "dateLastCrawled":
-        "2019-01-30T12:09:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9", "name":
-        "National Weather Service", "url": "https:\/\/forecast.weather.gov\/MapClick.php?site=MKX&textField1=43.0798&textField2=-89.3875&e=0",
-        "about": [{"name": "National Weather Service"}], "isFamilyFriendly": true,
-        "displayUrl": "https:\/\/forecast.weather.gov\/MapClick.php?site=MKX&textField1=43...",
-        "snippet": "NOAA National Weather Service National Weather Service. Very
-        Dangerous and Life-Threatening Arctic Air Mass Expected This Week. Back to
-        back cold fronts will slice through the eastern two-thirds of the country
-        to deliver one of the coldest arctic air intrusions in recent memory, especially
-        from the Upper Midwest to the Great Lakes and Ohio Valley.", "dateLastCrawled":
-        "2019-01-29T20:49:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10", "name":
-        "Current Conditions - National Weather Service", "url": "https:\/\/www.weather.gov\/current",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/current",
-        "snippet": "Surface Weather. Temperature, sky conditions, visibility, precipitation
-        type and accumulation, wind speed and direction, and more as reported by surface
-        observation stations.", "dateLastCrawled": "2019-02-01T02:56:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
-        "name": "Search - National Weather Service", "url": "https:\/\/www.weather.gov\/search",
-        "about": [{"name": "National Weather Service"}], "isFamilyFriendly": true,
-        "displayUrl": "https:\/\/www.weather.gov\/search", "snippet": "Surface
-        Weather Upper Air Marine and Buoy Reports Snow Cover Satellite Space Weather
-        International Observations. FORECAST Local Forecast International Forecasts
-        Severe Weather Current Outlook Maps Drought Fire Weather Fronts\/Precipitation
+        "totalEstimatedMatches": 90100000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "National Weather Service", "url": "https:\/\/www.weather.gov\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov", "snippet":
+        "Surface Weather Upper Air Marine and Buoy Reports Snow Cover Satellite
+        Space Weather International Observations. FORECAST Local Forecast International
+        Forecasts Severe Weather Current Outlook Maps Drought Fire Weather Fronts\/Precipitation
         Maps Current Graphical Forecast Maps Rivers Marine Offshore and High Seas
-        Hurricanes Aviation Weather", "dateLastCrawled": "2019-02-01T09:22:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
-        "name": "Louisville, KY - National Weather Service", "url": "https:\/\/www.weather.gov\/lmk\/",
-        "about": [{"name": "National Weather Service"}], "isFamilyFriendly": true,
-        "displayUrl": "https:\/\/www.weather.gov\/lmk", "snippet": "NOAA National
-        Weather Service Louisville, KY. US Dept of Commerce National Oceanic and
-        Atmospheric Administration National Weather Service", "dateLastCrawled":
-        "2019-02-01T03:54:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13", "name":
-        "Cleveland, OH - National Weather Service", "url": "https:\/\/www.weather.gov\/cle\/",
-        "about": [{"name": "US National Weather Service Cleveland OH"}], "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.weather.gov\/cle", "snippet": "National
-        Weather Service CLE Office. Additional Resources Submit a Storm Report Social
-        Media Dashboard. US Dept of Commerce National Oceanic and Atmospheric Administration
-        National Weather Service Cleveland, OH Cleveland Hopkins Airport 5301 West
-        Hanger Rd Cleveland, OH 44135 216-265-2370 Comments? Questions? Please Contact
-        Us.", "dateLastCrawled": "2019-02-01T01:59:00.0000000Z", "language": "en",
-        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
-        "name": "National Weather Service", "url": "https:\/\/forecast.weather.gov\/MapClick.php?lat=40.7142&lon=-74.0059",
-        "about": [{"name": "National Weather Service"}], "isFamilyFriendly": true,
-        "displayUrl": "https:\/\/forecast.weather.gov\/MapClick.php?lat=40.7142&lon=-74.0059",
-        "snippet": "Sunny and cold, with a high near 17. Wind chill values between
-        -5 and -15. West wind 14 to 16 mph.", "dateLastCrawled": "2019-02-01T13:22:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
-        "name": "NWS Wilmington, NC - National Weather Service", "url": "https:\/\/www.weather.gov\/ilm\/",
-        "about": [{"name": "KEC95"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/ilm",
-        "snippet": "US Dept of Commerce National Oceanic and Atmospheric Administration
-        National Weather Service NWS Wilmington, NC 2015 Gardner Drive Wilmington,
-        NC 28405", "dateLastCrawled": "2019-01-31T17:36:00.0000000Z", "language":
+        Hurricanes Aviation Weather", "dateLastCrawled": "2021-06-08T11:17:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "National Weather Service", "url": "https:\/\/www.weather.gov\/%20",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/ ",
+        "snippet": "Texas Severe Thunderstorms; Central Rockies Snow; Fire Weather
+        in the West. Isolated severe thunderstorms capable of producing large to very
+        large hail and severe wind gusts may occur Monday across parts of south-central
+        Texas. Elevated to critical fire weather conditions are forecast across
+        parts of northern California and the Southwest again ...", "dateLastCrawled":
+        "2021-06-07T20:15:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2", "name":
+        "Weather | National Oceanic and Atmospheric Administration", "url": "https:\/\/www.noaa.gov\/weather",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.noaa.gov\/weather",
+        "snippet": "Weather, water and climate events, cause an average of approximately
+        650 deaths and $15 billion in damage per year and are responsible for some
+        90 percent of all presidentially-declared disasters. About one-third of the
+        U.S. economy – some $3 trillion – is sensitive to weather and climate.",
+        "dateLastCrawled": "2021-06-09T12:18:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "National Weather Service", "url": "https:\/\/forecast.weather.gov\/MapClick.php?lat=42.8723&lon=-97.397",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/forecast.weather.gov\/MapClick.php?lat=42.8723&lon=-97.397",
+        "snippet": "Thursday Night. A chance of showers and thunderstorms after 1am.
+        Mostly clear, with a low around 69. Chance of precipitation is 50%. Friday.
+        A chance of showers before 1pm. Mostly sunny, with a high near 88. Chance
+        of precipitation is 30%. Friday Night.", "dateLastCrawled": "2021-06-08T01:58:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "National Weather Service", "url": "https:\/\/forecast.weather.gov\/MapClick.php?site=BOX&textField1=42.3758&textField2=-71.1187",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/forecast.weather.gov\/MapClick.php?site=BOX&textField1=42.3758&textField2=-71.1187",
+        "snippet": "Southwest wind around 11 mph, with gusts as high as 21 mph. Chance
+        of precipitation is 50%. Friday Night. A chance of showers before 11pm. Mostly
+        cloudy, with a low around 64. Southwest wind 6 to 10 mph. Chance of precipitation
+        is 40%. Saturday. Mostly sunny, with a high near 86. Southwest wind 7 to 11
+        mph.", "dateLastCrawled": "2021-06-04T08:54:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "National Weather Service", "url": "https:\/\/forecast.weather.gov\/MapClick.php?site=SGX&textField1=33.74&textField2=-116.718&e=1",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/forecast.weather.gov\/MapClick.php?site=SGX&textField1=33.74&textField2=-116...",
+        "snippet": "Detailed Forecast. Mostly clear, with a low around 58. Light and
+        variable wind becoming northwest 5 to 10 mph in the evening. Sunny, with a
+        high near 82. Southwest wind 5 to 10 mph. Mostly clear, with a low around
+        60. North wind 5 to 15 mph, with gusts as high as 20 mph. Sunny, with a high
+        near 83.", "dateLastCrawled": "2021-06-08T23:06:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Weather Maps", "url": "https:\/\/www.weather.gov\/ffc\/mapslast",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/ffc\/mapslast",
+        "snippet": "Maps Showing Present Situation. SURFACE MAPS w\/ ISOBARS and\/or
+        FRONTS and\/or PLOTTED DATA. Northern Hemisphere (data from NWS Ocean Prediction
+        Center) North America (Weather Prediction Center) North America (isobars
+        only - data from the University of Illinois WW2010 Project) Southeast Surface
+        Plot (Data from the University of Illinois WW2010 ...", "dateLastCrawled":
+        "2021-06-08T18:30:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7", "name":
+        "AWC - Aviation Weather Center", "url": "https:\/\/aviationweather.gov\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/aviationweather.gov",
+        "snippet": "The Aviation Weather Center delivers consistent, timely and
+        accurate weather information for the world airspace system. We are a team
+        of highly skilled people dedicated to working with customers and partners
+        to enhance safe and efficient flight.", "dateLastCrawled": "2021-06-09T14:20:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Doppler Radar National Mosaic - NOAA''s National Weather ...",
+        "url": "https:\/\/www.nws.noaa.gov\/radar_tab.php", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.nws.noaa.gov\/radar_tab.php", "snippet":
+        "Weather-Ready Nation. NWS on Facebook. Comments on combined warning and
+        radar displays. will be accepted through the implementation of the new radar.
+        Warnings & Forecasts. Graphical Forecasts. National Maps.", "dateLastCrawled":
+        "2021-06-09T13:14:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9", "name":
+        "Flagstaff, AZ - Weather", "url": "https:\/\/www.weather.gov\/fgz\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/fgz",
+        "snippet": "Consistent warm, breezy, dry weather throughout the week causing
+        elevated fire weather conditions to persist. The strongest winds will be
+        Thursday with afternoon gusts expected to be 30-40 mph. Warm temperatures
+        will begin climbing late in the week with very hot and extremely dry conditions
+        by the weekend as a robust upper-level ridge develops.", "dateLastCrawled":
+        "2021-06-08T12:07:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10", "name":
+        "Wilmington, OH - Weather", "url": "https:\/\/www.weather.gov\/ILN", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.weather.gov\/ILN", "snippet": "US Dept
+        of Commerce National Oceanic and Atmospheric Administration National Weather
+        Service Wilmington, OH 1901 South State Route 134 Wilmington, Oh 45177",
+        "dateLastCrawled": "2021-06-08T18:12:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "National Weather Service", "url": "https:\/\/forecast.weather.gov\/MapClick.php?site=HGX&textField1=29.7687&textField2=-95.3867&e=1",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/forecast.weather.gov\/MapClick.php?site=HGX&textField1=29.7687&textField2=-95...",
+        "snippet": "A slight chance of showers and thunderstorms before 1am, then
+        a slight chance of showers between 1am and 2am. Mostly cloudy, with a low
+        around 73. Calm wind becoming east around 5 mph. Chance of precipitation is
+        20%. Wednesday. Showers and thunderstorms likely, mainly between 2pm and 5pm,
+        then showers likely and possibly a thunderstorm after 5pm.", "dateLastCrawled":
+        "2021-06-08T02:06:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12", "name":
+        "Rapid City, SD - Weather", "url": "https:\/\/www.weather.gov\/unr\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/unr",
+        "snippet": "NWS Forecast Office Rapid City, SD. Weather.gov > Rapid City,
+        SD. Current Hazards. Storm and Precipitation Reports. Outlooks. Submit a Storm
+        Report. Experimental Graphical Hazardous Weather Outlook. Current Conditions.
+        Observations.", "dateLastCrawled": "2021-06-09T08:11:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Billings, MT - Weather", "url": "https:\/\/www.weather.gov\/byz\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/byz",
+        "snippet": "More rain showers expected Sunday. 0.75 - 1 inch of rain expected
+        west of Billings, and up to half an inch expected at and east of Billings.
+        Chance for a couple strong thunderstorms in far southeast Montana Sunday afternoon.
+        High elevations will see some snowfall. Plan accordingly if you will be outdoors
+        or traveling. Hide Caption Show Caption.", "dateLastCrawled": "2021-06-08T22:30:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Cheyenne, WY - Weather", "url": "https:\/\/www.weather.gov\/cys\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/cys",
+        "snippet": "Weather Map. Local Radar. Follow us on Twitter Follow us on
+        Facebook Follow us on YouTube CYS RSS Feed HAZARDS Active Alerts. US Dept
+        of Commerce National Oceanic and Atmospheric Administration National Weather
+        Service Cheyenne, WY 1301 Airport Parkway Cheyenne, WY 82001-1549 307-772-2468
+        ...", "dateLastCrawled": "2021-06-09T04:22:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Boston \/ Norton, MA - Weather", "url": "https:\/\/www.weather.gov\/box\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/box",
+        "snippet": "NOAA National Weather Service Boston \/ Norton, MA. Rainfall
+        and Wind Gust Reports From Jun 8th 2021; Thunderstorm Wind Damage Reports
+        From Jun 8th 2021", "dateLastCrawled": "2021-06-09T04:18:00.0000000Z", "language":
         "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
-        "name": "National Weather Service", "url": "https:\/\/forecast.weather.gov\/MapClick.php?lat=39.74&lon=-104.992",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/forecast.weather.gov\/MapClick.php?lat=39.74&lon=-104.992",
-        "snippet": "NOAA National Weather Service National Weather Service. Very
-        Dangerous and Life-Threatening Arctic Blast. One of the coldest arctic air
-        mass intrusions in recent memory is surging south into the Upper Midwest before
-        spreading across much of the eastern two-thirds of the country.", "dateLastCrawled":
-        "2019-01-31T02:49:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17", "name":
-        "Duluth, MN - National Weather Service", "url": "https:\/\/www.weather.gov\/dlh\/",
-        "about": [{"name": "National Weather Service"}], "isFamilyFriendly": true,
-        "displayUrl": "https:\/\/www.weather.gov\/dlh", "snippet": "US Dept of Commerce
-        National Oceanic and Atmospheric Administration National Weather Service
-        Duluth, MN 5027 Miller Trunk Highway Duluth, MN 55811-1442", "dateLastCrawled":
-        "2019-02-01T13:29:00.0000000Z", "language": "en", "isNavigational": false},
+        "name": "National Forecast Maps - Weather", "url": "https:\/\/www.weather.gov\/forecastmaps",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/forecastmaps",
+        "snippet": "National Weather Maps. Surface Analysis. Highs, lows, fronts,
+        troughs, outflow boundaries, squall lines, drylines for much of North America,
+        the Western Atlantic and Eastern Pacific oceans, and the Gulf of Mexico.",
+        "dateLastCrawled": "2021-06-08T12:22:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "St. Louis, MO - Weather", "url": "https:\/\/www.weather.gov\/lsx\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/lsx",
+        "snippet": "A strong system will produce a swath of impacts. Severe storms
+        with large hail, damaging winds, and a couple of tornadoes will be possible
+        in the south and central Plains. Heavy rain could cause flash flooding in
+        the Mid Mississippi Valley. Mountain snow will develop in the Rockies. Critical
+        fire weather threats are expected across northern ...", "dateLastCrawled":
+        "2021-06-08T13:13:00.0000000Z", "language": "en", "isNavigational": false},
         {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18", "name":
-        "National Weather Service", "url": "https:\/\/forecast.weather.gov\/MapClick.php?lat=25.77481000000006&lon=-80.19772999999998",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/forecast.weather.gov\/MapClick.php?lat=25.77481000000006&...",
-        "snippet": "NOAA National Weather Service National Weather Service. Dangerous
-        wind chills from the Upper Midwest to the Northeast; Heavy Lake Effect Snow
-        in the Great Lakes; Large Storm to Impact the West Coast", "dateLastCrawled":
-        "2019-02-01T10:10:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19", "name":
-        "Pittsburgh, PA - National Weather Service", "url": "https:\/\/www.weather.gov\/pbz\/",
-        "about": [{"name": "NWS Pittsburgh"}], "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.weather.gov\/pbz", "snippet": "US Dept of Commerce National
-        Oceanic and Atmospheric Administration National Weather Service Pittsburgh,
-        PA 192 Shafer Road Moon Township, PA 15108", "dateLastCrawled": "2019-01-31T15:23:00.0000000Z",
+        "NWS Wilmington, NC - Weather", "url": "https:\/\/www.weather.gov\/ilm\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/ilm",
+        "snippet": "NOAA National Weather Service NWS Wilmington, NC. Confirmed
+        EF1 Tornado Northeast of Mullins on June 3, 2021; Experimental Surf Forecast
+        Matrices Now Available for SE NC and NE SC beaches!", "dateLastCrawled": "2021-06-09T06:21:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Springfield, MO - Weather", "url": "https:\/\/www.weather.gov\/sgf\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/sgf",
+        "snippet": "Local Observations. Lake Levels. Natural Hazard Risk Assessment
+        Climatology. Event Reviews. Records and Normals. NWS SGF Weather Cam. NWS
+        Springfield Staff. Threat for Severe Storms has Ended. The threat for severe
+        thunderstorms has ended with lightning and residual flooding the main potential
+        hazards for this evening.", "dateLastCrawled": "2021-06-09T06:10:00.0000000Z",
         "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
         {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
         {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
@@ -673,6 +244,6 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
-    http_version: 
-  recorded_at: Tue, 05 Feb 2019 21:34:39 GMT
+    http_version:
+  recorded_at: Fri, 11 Jun 2021 12:59:11 GMT
 recorded_with: VCR 4.0.0

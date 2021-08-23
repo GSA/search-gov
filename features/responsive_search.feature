@@ -1,3 +1,6 @@
+# DO NOT ADD NEW TESTS TO THIS FILE!
+# These tests need to be consolidated with those in searches.feature
+# https://cm-jira.usa.gov/browse/SRCH-2110
 Feature: Affiliate Search
   In order to get government-related information from specific affiliate agencies
   As a site visitor

@@ -1,4 +1,5 @@
-# coding: utf-8
+# frozen_string_literal: true
+
 module ApplicationHelper
 
   def current_user_is?(role)
@@ -6,8 +7,8 @@ module ApplicationHelper
   end
 
   def show_flash_messages
-    unless (flash.nil? or flash.empty?)
-      html = ""
+    if flash.present?
+      html = +''
       flash_msgs = content_tag(:div, :class => 'flash-message', :id => 'flash_message') do
         messages = flash.collect do |key, msg|
           content_tag(:div, msg, :class => key).html_safe
@@ -48,16 +49,12 @@ module ApplicationHelper
     end
   end
 
-  def english_locale?
-    I18n.locale.to_s == "en"
-  end
-
   def url_for_logout
     url_for(:controller => '/user_sessions', :action => :destroy)
   end
 
   def breadcrumbs(breadcrumbs)
-    trail = ''
+    trail = +''
     breadcrumbs.each { |breadcrumb| trail << breadcrumb }
     content_tag(:div, trail.html_safe, :class => 'breadcrumbs')
   end

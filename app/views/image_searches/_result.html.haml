@@ -1,2 +1,4 @@
-%span.image_result{:id => "searchresult#{index+1}"}
-  = display_image_result_link(result, search, affiliate, index, @search_vertical, 135, 135)
+.content-block-item.result.image{ id: "result-#{position}" }
+  %h4.title= link_to_image_result_title result, position
+  .thumbnail= link_to_image_thumbnail result, position
+  %div.url= UrlParser.strip_http_protocols result['Url']

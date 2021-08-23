@@ -131,15 +131,13 @@ http_interactions:
   recorded_at: Thu, 26 Apr 2018 23:29:11 GMT
 - request:
     method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=foo%20bar%20(site:nps.gov)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
+    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=<GOOGLE_SEARCH_CX>&key=<GOOGLE_API_KEY>&lr=lang_en&q=foo%20bar%20site:nps.gov&quotaUser=USASearch&safe=medium
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
       - USASearch
-      Ocp-Apim-Subscription-Key:
-      - "<BING_V6_APP_ID>"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -150,48 +148,32 @@ http_interactions:
       - '30'
   response:
     status:
-      code: 200
-      message: OK
+      code: 400
+      message: Bad Request
     headers:
-      Cache-Control:
-      - private, max-age=0
-      Content-Length:
-      - '3446'
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Fri, 27 Apr 2018 16:02:00 GMT
       Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      Set-Cookie:
-      - MUID=3D987B09B2626FBF285C70D7B3F56E49; path=/; expires=Wed, 22-May-2019 16:03:00
-        GMT; domain=bingapis.com
-      - MUIDB=3D987B09B2626FBF285C70D7B3F56E49; path=/; httponly; expires=Wed, 22-May-2019
-        16:03:00 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Mon, 27-Apr-2020 16:03:00 GMT;
-        path=/
-      - SRCHUID=V=2&GUID=493BB397087B490A91AB3B20865AE25E&dmnchg=1; domain=.bingapis.com;
-        expires=Mon, 27-Apr-2020 16:03:00 GMT; path=/
-      - SRCHUSR=DOB=20180427; domain=.bingapis.com; expires=Mon, 27-Apr-2020 16:03:00
-        GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=005239A00CAC6AE9340E327E0D3B6BA1; path=/; httponly;
-        domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Wed, 22-May-2019 16:03:00 GMT; domain=bingapis.com
-      - _SS=SID=005239A00CAC6AE9340E327E0D3B6BA1; domain=.bingapis.com; path=/
-      Bingapis-Traceid:
-      - F1517EA6D6F24DF4B51F2964D895AF70
-      X-Msedge-Clientid:
-      - 3D987B09B2626FBF285C70D7B3F56E49
-      X-Msapi-Userstate:
-      - 7e72
-      Bingapis-Market:
-      - en-US
-      X-Msedge-Ref:
-      - 'Ref A: F1517EA6D6F24DF4B51F2964D895AF70 Ref B: CO1EDGE0413 Ref C: 2018-04-27T16:03:00Z'
+      - Origin
+      - Referer
+      - X-Origin
+      Content-Type:
+      - application/json; charset=UTF-8
       Date:
-      - Fri, 27 Apr 2018 16:02:59 GMT
+      - Fri, 11 Jun 2021 12:59:07 GMT
+      Server:
+      - ESF
+      Cache-Control:
+      - private
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Alt-Svc:
+      - h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443";
+        ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
+      Transfer-Encoding:
+      - chunked
     body:
       encoding: UTF-8
       string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=77FF39DE553A4D59B71DD0EC3C9B3E53&CID=3D987B09B2626FBF285C70D7B3F56E49&ID=",
