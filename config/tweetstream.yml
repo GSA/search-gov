@@ -10,3 +10,6 @@ test:
 
 production:
   <<: *DEFAULT
+  # Workaround for "OpenSSL::X509::DEFAULT_CERT_FILE" pointing to a missing file in Ubuntu
+  # https://github.com/actions/virtual-environments/issues/235
+  cert_chain_file: '/etc/ssl/certs/ca-certificates.crt'
