@@ -11,7 +11,7 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: { case_sensitive: false }
   has_many :memberships, dependent: :destroy
   has_many :affiliates, lambda {
-                          order 'affiliates.display_name, affiliates.ID ASC'
+                          order('affiliates.display_name, affiliates.ID ASC')
                         },
            through: :memberships
   has_many :watchers, dependent: :destroy
@@ -22,9 +22,9 @@ class User < ApplicationRecord
   after_validation :set_default_flags, on: :create
 
   after_create :deliver_welcome_to_new_user_added_by_affiliate, if: :invited
+  after_create :ping_admin
 
   before_update :detect_deliver_welcome_email
-  after_create :ping_admin
   after_update :send_welcome_to_new_user_email, if: :deliver_welcome_email_on_update
 
   attr_accessor :invited, :skip_welcome_email, :inviter
@@ -157,7 +157,7 @@ class User < ApplicationRecord
   end
 
   def downcase_email
-    self.email = self.email.downcase if self.email.present?
+    self.email = email.downcase if email.present?
   end
 
   def set_default_flags
