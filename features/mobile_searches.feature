@@ -1,6 +1,8 @@
 # DO NOT ADD NEW TESTS TO THIS FILE!
-# These tests need to be consolidated with those in searches.feature
-# https://cm-jira.usa.gov/browse/SRCH-2110
+# New tests should be added to searches.feature.
+# The separate files are a leftover from the days of the legacy SERP.
+# We are preserving this old file for sake of future git blame-rs.
+
 Feature: Searches using mobile device
   Scenario: Web search
     Given the following Affiliates exist:
@@ -274,20 +276,6 @@ Feature: Searches using mobile device
     And I should see "Cualquier fecha" within the current time filter
     And I should see "Más recientes" within the current sort by filter
 
-  Scenario: Media RSS search
-    Given the following Affiliates exist:
-      | display_name | name          | contact_email    | first_name | last_name |
-      | English site | en.agency.gov | admin@agency.gov | John       | Bar     |
-    And affiliate "en.agency.gov" has the following RSS feeds:
-      | name   | url                              | is_navigable | show_only_media_content |
-      | Images | http://en.agency.gov/feed/images | true         | true                    |
-    And there are 10 image news items for "Images"
-    When I am on en.agency.gov's "Images" news search page
-    And I fill in "Enter your search term" with "image"
-    And I press "Search" within the search box
-    Then I should see exactly "10" image search results
-    And I should see "Powered by Search.gov"
-
   Scenario: Video news search
     Given the following Affiliates exist:
       | display_name | name          | contact_email    | first_name | last_name | locale | youtube_handles         |
@@ -316,6 +304,7 @@ Feature: Searches using mobile device
     And I should see "Previous"
     And I should see a link to "2" with class "pagination-numbered-link"
     And I should see a link to "Next"
+    And I should see "Refine your search"
 
     When I follow "Next"
     Then I should see exactly "20" video search results
@@ -346,31 +335,33 @@ Feature: Searches using mobile device
     Then I should see "Generado por Search.gov"
     And I should see at least "5" video search results
 
-  Scenario: Site search
+  Scenario: Collections search
     Given the following Affiliates exist:
       | display_name | name          | contact_email    | first_name | last_name | locale |
       | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     |
       | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     |
 
     And affiliate "en.agency.gov" has the following document collections:
-      | name    | prefixes           |
+      | name    | prefixes            |
       | USA.gov | https://www.usa.gov |
 
     And affiliate "es.agency.gov" has the following document collections:
-      | name            | prefixes                       |
-      | GobiernoUSA.gov | https://gobierno.usa.gov |
+      | name         | prefixes                     |
+      | Gobierno USA | https://www.usa.gov/espanol/ |
 
-    When I am on en.agency.gov's "USA.gov" mobile site search page
+    When I am on en.agency.gov's "USA.gov" docs search page
     And I fill in "Enter your search term" with "gov"
     And I press "Search"
     Then I should see Powered by Bing logo
     And I should see at least "10" web search results
+    And every result URL should match "www.usa.gov"
 
-    When I am on es.agency.gov's "GobiernoUSA.gov" mobile site search page
+    When I am on es.agency.gov's "Gobierno USA" docs search page
     And I fill in "Ingrese su búsqueda" with "gobierno"
     And I press "Buscar"
     Then I should see Generado por Bing logo
     And I should see at least "7" web search results
+    And every result URL should match "www.usa.gov/espanol"
 
   Scenario: Site navigations without dropdown menu
     Given the following Affiliates exist:
@@ -439,7 +430,7 @@ Feature: Searches using mobile device
     And I press "Search"
     And I should see at least "1" web search results
 
-    When I am on en.agency.gov's "Inactive site search" mobile site search page
+    When I am on en.agency.gov's "Inactive site search" docs search page
     Then I should see "Inactive site search" within the SERP active navigation
 
     When I am on en.agency.gov's "Inactive news search" mobile news search page
@@ -488,55 +479,30 @@ Feature: Searches using mobile device
     And I should see at least 1 job posting
     And I should see a link to "More GSA job openings on USAJobs.gov" with url for "https://www.usajobs.gov/Search/Results?a=GS&hp=public"
 
-  Scenario: Searching with matching med topic query
-    Given the following Medline Topics exist:
-      | medline_tid | medline_title     | medline_url                                               | locale | summary_html                                                                                                                                                                                                                                                                                                         |
-      | 1558        | Alcohol           | https://www.nlm.nih.gov/medlineplus/alcohol.html          | en     | <p>If you are like many Americans, you drink alcohol at least occasionally. For many people, moderate drinking is probably safe.  It may even have health benefits, including reducing your risk of certain heart problems.</p>                                                                                      |
-      | 1313        | Underage Drinking | https://www.nlm.nih.gov/medlineplus/underagedrinking.html | en     | <p>It is possible to drink legally and safely - when you're over 21. But if you're under 21, or if you drink too much at any age, alcohol can be especially risky. </p>                                                                                                                                              |
-      | 1732        | Alcohol           | https://www.nlm.nih.gov/medlineplus/spanish/alcohol.html  | es     | <p>Si usted es como muchos estadounidenses, quizás consuma bebidas alcohólicas por lo menos ocasionalmente. Para muchas personas, beber moderadamente probablemente sea sano. Quizá hasta puede tener beneficios para la salud, entre los que se incluye disminuir el riesgo de padecer algunos problemas cardiacos. |
-    And the following Related Medline Topics for "Alcohol" in English exist:
-      | medline_title     | medline_tid | url                                                       |
-      | Underage drinking | 1313        | https://www.nlm.nih.gov/medlineplus/underagedrinking.html |
-    And the following Related Medline Topics for "Alcohol" in Spanish exist:
-      | medline_title | medline_tid | url                                                         |
-      | Alcoholismo   | 1733        | https://www.nlm.nih.gov/medlineplus/spanish/alcoholism.html |
-    And the following Medline Sites exist:
-      | medline_title | locale | title      | url                                                              |
-      | Alcohol       | en     | Alcoholism | http://clinicaltrials.gov/search/open/condition=%22Alcoholism%22 |
-    And the following Affiliates exist:
-      | display_name | name          | contact_email    | first_name |  last_name | locale | is_medline_govbox_enabled |
-      | English site | en.agency.gov | admin@agency.gov | John       | Bar        | en     | true                      |
-      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar        | es     | true                      |
-    When I am on en.agency.gov's mobile search page
-    And I fill in "Enter your search term" with "alcohol"
-    And I press "Search"
-    Then I should see a link to "Alcohol" with url for "https://www.nlm.nih.gov/medlineplus/alcohol.html" within the med topic govbox
-    And I should see a link to "Underage drinking" with url for "https://www.nlm.nih.gov/medlineplus/underagedrinking.html" within the med topic govbox
-    And I should see a link to "Alcoholism" with url for "http://clinicaltrials.gov/search/open/condition=%22Alcoholism%22" within the med topic govbox
-
-    When I am on es.agency.gov's mobile search page
-    And I fill in "Ingrese su búsqueda" with "alcohol"
-    And I press "Buscar"
-    Then I should see a link to "Alcohol" with url for "https://www.nlm.nih.gov/medlineplus/spanish/alcohol.html" within the med topic govbox
-    And I should see a link to "Alcoholismo" with url for "https://www.nlm.nih.gov/medlineplus/spanish/alcoholism.html" within the med topic govbox
-
   Scenario: Searching with sitelimit
     Given the following Affiliates exist:
       | display_name | name          | contact_email    | first_name | last_name | locale | domains |
       | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | .gov    |
       | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     | .gov    |
+    And affiliate "en.agency.gov" has the following document collections:
+      | name | prefixes                 | is_navigable |
+      | Blog | https://search.gov/blog/ | true         |
     When I am on en.agency.gov's search page with site limited to "usa.gov"
-    And I fill in "Enter your search term" with "gov"
-    And I press "Search"
+    And I search for "gov"
+    Then every result URL should match "usa.gov"
     Then I should see "We're including results for gov from usa.gov only."
     And I should see "Do you want to see results for gov from all sites?"
     When I follow "gov from all sites" within the search all sites row
     Then I should not see "We're including results for gov from usa.gov only."
+    When I follow "Blog" in the search navbar
+    Then I should see at least "1" web search results
+    And every result URL should match "search.gov/blog"
 
     When I am on es.agency.gov's search page with site limited to "usa.gov"
     And I fill in "Ingrese su búsqueda" with "gobierno"
     And I press "Buscar"
-    Then I should see "Los resultados para gobierno son solo de usa.gov."
+    Then every result URL should match "usa.gov"
+    And I should see "Los resultados para gobierno son solo de usa.gov."
     And I should see "¿Quiere ver resultados para gobierno de todos los sitios?"
     When I follow "gobierno de todos los sitios" within the search all sites row
     Then I should not see "Los resultados para gobierno son solo de usa.gov."
@@ -696,7 +662,7 @@ Feature: Searches using mobile device
   Scenario: Web search using Bing engine
     Given the following Affiliates exist:
       | display_name | name          | contact_email    | first_name   | last_name | locale | search_engine | domains |
-      | English site | en.agency.gov | admin@agency.gov | John         | Bar       | en     | BingV6        | .gov    |
+      | English site | en.agency.gov | admin@agency.gov | John         | Bar       | en     | BingV7        | .gov    |
     And affiliate "en.agency.gov" has the following document collections:
       | name    | prefixes            |
       | USA.gov | https://www.usa.gov |
