@@ -8,6 +8,7 @@ class User < ApplicationRecord
   validates :first_name, presence: true, on: :update_account
   validates :last_name, presence: true, on: :update_account
   validates :organization_name, presence: true, on: :update_account
+  validates :email, presence: true, uniqueness: { case_sensitive: false }
   has_many :memberships, dependent: :destroy
   has_many :affiliates, lambda {
                           order 'affiliates.display_name, affiliates.ID ASC'
@@ -48,11 +49,6 @@ class User < ApplicationRecord
         }
 
   acts_as_authentic do |c|
-    c.login_field = :email
-    c.validate_email_field = true
-    c.validate_login_field = false
-    c.ignore_blank_passwords  = true
-    c.validate_password_field = false
     c.logged_in_timeout = 1.hour
   end
 

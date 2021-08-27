@@ -11,7 +11,7 @@ gem 'curb', '~> 0.9.4'
 gem 'haml', '~> 5.2.1'
 gem 'will_paginate', '~> 3.3.0'
 gem 'nokogiri', '~> 1.11.1'
-gem 'authlogic', '~> 3.8.0'
+gem 'authlogic', '~> 6.4.1'
 # Temporarily locking gem to specific ref. Newer versions include incompatible gems
 gem 'omniauth_login_dot_gov', git: 'https://github.com/18f/omniauth_login_dot_gov',
                               ref: '08ce9b5322efb2d82b2df3f6d774308c4028ee6c'
