@@ -105,7 +105,7 @@ describe User do
       subject(:approved_affiliate) { described_class.approved_affiliate }
 
       it { is_expected.to include(approved_affiliate_user) }
-      it { is_expected.not_to include(not_approved_user) }
+      it { is_expected.to_not include(not_approved_user) }
       it { is_expected.not_to include(non_affiliate) }
       it { is_expected.not_to include(pending_user) }
     end
