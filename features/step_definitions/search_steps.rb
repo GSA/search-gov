@@ -57,7 +57,7 @@ end
 
 Then /every result URL should match "(.+?)"$/ do |str|
   results = page.find_all('.content-block-item.result')
-  results.each { |result| result.should have_link(href: /#{str}/) }
+  results.each { |result| result.should have_link(href: %r{#{str}}i) }
 end
 
 # Hitting the production I14y API during tests is unsafe, and we currently
