@@ -8,7 +8,10 @@ class User < ApplicationRecord
   validates :first_name, presence: true, on: :update_account
   validates :last_name, presence: true, on: :update_account
   validates :organization_name, presence: true, on: :update_account
-  validates :email, presence: true, uniqueness: { case_sensitive: false }
+  validates :email,
+            presence: true,
+            uniqueness: { case_sensitive: false },
+            format: { with: URI::MailTo::EMAIL_REGEXP, message: 'must be an email address' }
   has_many :memberships, dependent: :destroy
   has_many :affiliates, lambda {
                           order('affiliates.display_name, affiliates.ID ASC')
