@@ -47,6 +47,12 @@ describe User do
       expect(subject).to_not allow_value('not_a_valid_email').for(:email)
     end
 
+    it 'some other failure' do
+      #comment without break
+      @foo = 'foo'
+  expect(@foo).to eq 'foo'
+    end
+
     it do
       is_expected.to validate_presence_of(:organization_name).on(:update_account)
     end
