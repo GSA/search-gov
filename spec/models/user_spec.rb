@@ -43,6 +43,10 @@ describe User do
     it { is_expected.to have_many(:memberships).dependent(:destroy) }
     it { is_expected.to have_many(:affiliates).through :memberships }
 
+    it 'disallows bad emails' do
+      expect(subject).to_not allow_value('not_a_valid_email').for(:email)
+    end
+
     it do
       is_expected.to validate_presence_of(:organization_name).on(:update_account)
     end
