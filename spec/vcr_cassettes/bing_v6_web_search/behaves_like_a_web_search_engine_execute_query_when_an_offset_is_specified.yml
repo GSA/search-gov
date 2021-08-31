@@ -25,108 +25,128 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '1962'
+      - '2538'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Sun, 26 Aug 2018 23:57:47 GMT
+      - Tue, 31 Aug 2021 20:29:22 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=2F100231FD3E6DF63D1A0E66FC316C56; path=/; expires=Fri, 20-Sep-2019 23:58:47
-        GMT; domain=bingapis.com
-      - MUIDB=2F100231FD3E6DF63D1A0E66FC316C56; path=/; httponly; expires=Fri, 20-Sep-2019
-        23:58:47 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 26-Aug-2020 23:58:47 GMT;
+      - MUID=09C938E3C20F6A912B1A2847C3B86B8A; domain=.bingapis.com; expires=Sun,
+        25-Sep-2022 20:30:22 GMT; path=/; secure; SameSite=None
+      - MUIDB=09C938E3C20F6A912B1A2847C3B86B8A; expires=Sun, 25-Sep-2022 20:30:22
+        GMT; path=/; HttpOnly
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 31-Aug-2023 20:30:22 GMT;
         path=/
-      - SRCHUID=V=2&GUID=F885EDA1A5504FAAAF613FB241488ABD&dmnchg=1; domain=.bingapis.com;
-        expires=Wed, 26-Aug-2020 23:58:47 GMT; path=/
-      - SRCHUSR=DOB=20180826; domain=.bingapis.com; expires=Wed, 26-Aug-2020 23:58:47
+      - SRCHHPGUSR=SRCHLANG=en; domain=.bingapis.com; expires=Thu, 31-Aug-2023 20:30:22
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=36A18882D5956DE80A7284D5D49A6CCB; path=/; httponly;
-        domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Fri, 20-Sep-2019 23:58:47 GMT; domain=bingapis.com
-      - _SS=SID=36A18882D5956DE80A7284D5D49A6CCB; domain=.bingapis.com; path=/
+      - SRCHUID=V=2&GUID=7FDA38305D0F4F54919AAFED4B582B49&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 31-Aug-2023 20:30:22 GMT; path=/
+      - SRCHUSR=DOB=20210831; domain=.bingapis.com; expires=Thu, 31-Aug-2023 20:30:22
+        GMT; path=/
+      - _EDGE_S=F=1&SID=2B3CEE530CE765223B44FEF70D506435&mkt=en-us; domain=.bingapis.com;
+        path=/; HttpOnly
+      - _EDGE_V=1; domain=.bingapis.com; expires=Sun, 25-Sep-2022 20:30:22 GMT; path=/;
+        HttpOnly
+      - _SS=SID=2B3CEE530CE765223B44FEF70D506435; domain=.bingapis.com; path=/
+      X-Snr-Routing:
+      - '1'
       Bingapis-Traceid:
-      - DCD32BCD92E74494973E402802EB8C4C
+      - D3ABB521226B4C8EA67BC7F8B4471168
       X-Msedge-Clientid:
-      - 2F100231FD3E6DF63D1A0E66FC316C56
+      - '09C938E3C20F6A912B1A2847C3B86B8A'
       X-Msapi-Userstate:
-      - 4f80
+      - 1df8
       Bingapis-Market:
       - en-US
+      X-Cache:
+      - CONFIG_NOCACHE
       X-Msedge-Ref:
-      - 'Ref A: DCD32BCD92E74494973E402802EB8C4C Ref B: BAYEDGE0312 Ref C: 2018-08-26T23:58:47Z'
+      - 'Ref A: D3ABB521226B4C8EA67BC7F8B4471168 Ref B: BLUEDGE0712 Ref C: 2021-08-31T20:30:22Z'
       Date:
-      - Sun, 26 Aug 2018 23:58:47 GMT
+      - Tue, 31 Aug 2021 20:30:22 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=AE5F3CC783374ABD8FD1E4DDDB09DE88&CID=2F100231FD3E6DF63D1A0E66FC316C56&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=AE5F3CC783374ABD8FD1E4DDDB09DE88&CID=2F100231FD3E6DF63D1A0E66FC316C56&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=64BF666A907449D28CC87B5BE51A2457&CID=09C938E3C20F6A912B1A2847C3B86B8A&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=64BF666A907449D28CC87B5BE51A2457&CID=09C938E3C20F6A912B1A2847C3B86B8A&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=anything",
-        "webSearchUrlPingSuffix": "DevEx,5271.1", "totalEstimatedMatches": 38200000,
+        "webSearchUrlPingSuffix": "DevEx,5260.1", "totalEstimatedMatches": 53200000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "anything Meaning in the Cambridge English Dictionary", "url": "https:\/\/dictionary.cambridge.org\/dictionary\/english\/anything",
-        "urlPingSuffix": "DevEx,5054.1", "displayUrl": "https:\/\/dictionary.cambridge.org\/dictionary\/english\/anything",
-        "snippet": "anything definition: 1. used in questions and negatives to mean
-        \"something\": 2. any event, act, object, or situation: . Learn more.", "dateLastCrawled":
-        "2018-07-21T03:46:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
-        "name": "Anything - definition of anything by The Free Dictionary", "url":
-        "https:\/\/www.thefreedictionary.com\/anything", "urlPingSuffix": "DevEx,5068.1",
-        "displayUrl": "https:\/\/www.thefreedictionary.com\/anything", "snippet":
-        "an·y·thing (ĕn′ē-thĭng′) pron. Any object, occurrence, or matter whatever.
-        adv. To any degree or extent; at all: They aren''t anything like last year''s
-        team. n ...", "dateLastCrawled": "2018-08-19T09:16:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
-        "name": "Anything: The Prayer That Unlocked My God and My Soul ...", "url":
-        "https:\/\/www.amazon.com\/Anything-Prayer-That-Unlocked-Soul\/dp\/0718037200",
-        "urlPingSuffix": "DevEx,5093.1", "about": [{"name": "Anything: The Prayer
-        That Unlocked My God and My Soul"}, {"name": "Anything: The Prayer That Unlocked
-        My God and My Soul"}], "displayUrl": "https:\/\/www.amazon.com\/Anything-Prayer-That-Unlocked-Soul\/dp\/...",
-        "snippet": "Anything: The Prayer That Unlocked My God and My Soul [Jennie
-        Allen] on Amazon.com. *FREE* shipping on qualifying offers. What if you told
-        God you would do anything . . . and he took you up on it?", "dateLastCrawled":
-        "2018-07-29T07:58:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
-        "name": "anything", "url": "https:\/\/www.anything.com\/#!", "urlPingSuffix":
-        "DevEx,5105.1", "displayUrl": "https:\/\/www.anything.com\/#!", "snippet":
-        "Anything.com, Ltd. © 2018 Anything.com, Ltd.", "dateLastCrawled": "2018-08-02T03:10:00.0000000Z"},
+        "Anything - Rotten Tomatoes", "url": "https:\/\/www.rottentomatoes.com\/m\/anything",
+        "urlPingSuffix": "DevEx,5062.1", "displayUrl": "https:\/\/www.rottentomatoes.com\/m\/anything",
+        "snippet": "Anything is one more casualty in Hollywood''s long history of
+        ransacking transgender stories, which it does under the guise of paying homage
+        without paying coins to those it claims to represent", "dateLastCrawled":
+        "2021-08-28T17:49:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
+        "name": "What is another word for anything? | Anything Synonyms ...", "url":
+        "https:\/\/www.wordhippo.com\/what-is\/another-word-for\/anything.html", "urlPingSuffix":
+        "DevEx,5075.1", "displayUrl": "https:\/\/www.wordhippo.com\/what-is\/another-word-for\/anything.html",
+        "snippet": "Synonyms for anything include whatever, whatsoever, all, anything
+        at all, aught, anything whatsoever, any one thing, whatnot, et cetera and
+        etc.. Find more similar words at wordhippo.com!", "dateLastCrawled": "2021-08-27T15:11:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Anything,
+        Nothing, Something, Everything | Learn English", "url": "https:\/\/www.ecenglish.com\/learnenglish\/lessons\/anything-nothing-something-everything",
+        "urlPingSuffix": "DevEx,5089.1", "displayUrl": "https:\/\/www.ecenglish.com\/learnenglish\/lessons\/anything-nothing-something-everything",
+        "snippet": "Anything means a thing of any kind. Use it in questions and negative
+        sentences. It can also be used to to mean I don''t mind. Nothing means no
+        single thing. Used as subjects of a sentence or question. Everything means
+        all the things. Use in affirmative, negative and interrogative sentences when
+        we want to be inclusive.", "dateLastCrawled": "2021-08-27T22:03:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "JAY-Z
+        – Anything Lyrics | Genius Lyrics", "url": "https:\/\/genius.com\/Jay-z-anything-lyrics",
+        "urlPingSuffix": "DevEx,5102.1", "displayUrl": "https:\/\/genius.com\/Jay-z-anything-lyrics",
+        "snippet": "“Anything” is a Jay-Z single found on Beanie Sigel’s 2000 album
+        The Truth. It was also was included as a bonus track on the European version
+        of Jay-Z’s Vol. 3… Life and Times of S", "dateLastCrawled": "2021-08-27T18:16:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Anything
-        - Definition for English-Language Learners from ...", "url": "http:\/\/www.learnersdictionary.com\/definition\/anything",
-        "urlPingSuffix": "DevEx,5118.1", "displayUrl": "www.learnersdictionary.com\/definition\/anything",
-        "snippet": "Definition of anything written for English Language Learners from
-        the Merriam-Webster Learner''s Dictionary with audio pronunciations, usage
-        examples, and count\/noncount noun labels.", "dateLastCrawled": "2018-08-20T13:32:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Anything
-        - Wikipedia", "url": "https:\/\/en.wikipedia.org\/wiki\/Anything", "urlPingSuffix":
-        "DevEx,5135.1", "displayUrl": "https:\/\/en.wikipedia.org\/wiki\/Anything",
-        "snippet": "This disambiguation page lists articles associated with the title
-        Anything. If an internal link led you here, you may wish to change the link
-        to point directly to the intended article.", "dateLastCrawled": "2018-08-19T11:43:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Natasha
-        Mosley- Anything (Lyrics) - YouTube", "url": "https:\/\/www.youtube.com\/watch?v=7WanP7v1wFk",
-        "urlPingSuffix": "DevEx,5154.1", "displayUrl": "https:\/\/www.youtube.com\/watch?v=7WanP7v1wFk",
-        "snippet": "BUY NOW ON iTUNEShttps:\/\/itunes.apple.com\/us\/album\/anything\/id991557313?i=991557320
-        \"Anything\", (Lyric) video by Natasha Mosley (c) 2015 ISO Music, LLC", "dateLastCrawled":
-        "2018-08-16T17:15:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
-        "name": "anything - Dizionario inglese-italiano WordReference", "url": "http:\/\/www.wordreference.com\/enit\/anything",
-        "urlPingSuffix": "DevEx,5166.1", "displayUrl": "www.wordreference.com\/enit\/anything",
-        "snippet": "anything - Traduzione del vocabolo e dei suoi composti, e discussioni
-        del forum.", "dateLastCrawled": "2018-08-13T07:49:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
-        "name": "Anything - Jennie Allen", "url": "http:\/\/www.jennieallen.com\/books\/anything\/",
-        "urlPingSuffix": "DevEx,5180.1", "displayUrl": "www.jennieallen.com\/books\/anything",
-        "snippet": "What Is Your Anything? As a generation, I believe we are all yawning
-        and waking up, identifying these currents, and comparing them to the truth
-        of God. We’re considering this simple but game-changing thought: “If God is
-        real and we are going to live with him forever, shouldn’t he be the only thing?”",
-        "dateLastCrawled": "2018-08-19T13:31:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
-        "name": "anything | Definition of anything in English by Oxford ...", "url":
-        "https:\/\/en.oxforddictionaries.com\/definition\/anything", "urlPingSuffix":
-        "DevEx,5193.1", "displayUrl": "https:\/\/en.oxforddictionaries.com\/definition\/anything",
-        "snippet": "Definition of anything - used to refer to a thing, no matter what",
-        "dateLastCrawled": "2018-08-17T03:37:00.0000000Z"}]}, "rankingResponse": {"mainline":
-        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
-        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        World", "url": "https:\/\/anything.world\/", "urlPingSuffix": "DevEx,5115.1",
+        "displayUrl": "https:\/\/anything.world", "snippet": "Anything World is a
+        platform for creating endless 3D worlds. In realtime, using your voice if
+        you wish, with AI behaviours applied! GET IT! We’ve just launched the Beta
+        of Anything World - the no-code-if-you-don’t-want-to-code™ tool that helps
+        you create limitless worlds and provides voice-powered animated 3D models.",
+        "dateLastCrawled": "2021-08-25T21:26:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
+        "name": "Difference Between Anything and Everything | Difference ...", "url":
+        "http:\/\/www.differencebetween.net\/language\/difference-between-anything-and-everything\/",
+        "urlPingSuffix": "DevEx,5129.1", "displayUrl": "www.differencebetween.net\/language\/difference-between-anything-and-everything",
+        "snippet": "‘Anything, on the other hand, is used to refer to any of the things
+        that are about the subject. It refers to any part of a whole thing, whole
+        entity, or an entire idea. It can either be one, all, or some of the quantity
+        or extent of a thing.", "dateLastCrawled": "2021-08-27T16:06:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Anything
+        Email - Create Personal Domain Names, Personal ...", "url": "https:\/\/www.anythingemail.com\/",
+        "urlPingSuffix": "DevEx,5142.1", "displayUrl": "https:\/\/www.anythingemail.com",
+        "snippet": "Anything Email - Create Personal Domain Names, Personal Domain
+        Names for Email Addresses. Here''s What You Get For $49.95 Package Details.
+        1 year domain registration. 5 Email Accounts.", "dateLastCrawled": "2021-08-24T21:23:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "AutoAnything™
+        - America''s Auto and Truck Accessories ...", "url": "https:\/\/www.autoanything.com\/",
+        "urlPingSuffix": "DevEx,5155.1", "displayUrl": "https:\/\/www.autoanything.com",
+        "snippet": "AutoAnything is America''s leading Truck Accessories and Auto
+        Accessories site with In-House Experts ready to help you with all your Auto
+        and Truck parts needs. Free Shipping, 1-Year Price Guarantee, 300,000+ Reviews.
+        Click to Chat or Call 800-544-8778.", "dateLastCrawled": "2021-08-28T00:20:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Anything
+        Box | Part of You, Part of Me Anything Box", "url": "http:\/\/www.anythingbox.com\/",
+        "urlPingSuffix": "DevEx,5167.1", "displayUrl": "www.anythingbox.com", "snippet":
+        "Anything Box is electronic music in the form of No-Wave, First Wave, Synthpop,
+        Synthwave, Synthglitch, or whatever you decide to call me. I just call it
+        art. Imagine what would happen if Kraftwerk, the Beatles, and Gorgio Moroder
+        had an unruly child that somehow discovered time travel.", "dateLastCrawled":
+        "2021-08-22T19:18:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
+        "name": "Anything in Stained Glass - Your home for stained glass ...", "url":
+        "https:\/\/www.anythinginstainedglass.com\/", "urlPingSuffix": "DevEx,5179.1",
+        "displayUrl": "https:\/\/www.anythinginstainedglass.com", "snippet": "Anything
+        you need from glass, tools and supplies to books, patterns and mosaics. 5104
+        Pegasus Court Suite F Frederick, MD 21704 Phone: 800-462-1209 Local: 301-378-2218
+        Fax 800-231-5422. Store Hours: Tue - Fri: 10am - 5pm Sat: 10am - 4pm Sun -
+        Mon: Closed. Home | View Cart | ...", "dateLastCrawled": "2021-08-26T23:31:00.0000000Z"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
         {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
@@ -135,6 +155,6 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
         {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
         {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}}]}}}'
-    http_version: 
-  recorded_at: Sun, 26 Aug 2018 23:58:47 GMT
+    http_version:
+  recorded_at: Tue, 31 Aug 2021 20:30:22 GMT
 recorded_with: VCR 4.0.0
