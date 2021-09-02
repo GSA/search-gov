@@ -40,8 +40,19 @@ GIT
       i18n (~> 0.6)
 
 GIT
+  remote: https://github.com/GSA/tweetstream
+  revision: 1feb4d788fe246ac45f7d8a7e427a2119040d33f
+  specs:
+    tweetstream (2.6.1)
+      daemons (~> 1.1)
+      em-http-request (>= 1.1.1)
+      em-twitter (~> 0.3)
+      multi_json (~> 1.3)
+      twitter (~> 5.12)
+
+GIT
   remote: https://github.com/GSA/twitter.git
-  revision: c829ec4c7fbd4e2c52fe6fb7d968fd6926fcd7f5
+  revision: a1379f0bbaf37e92a1ba65bb4c7c11eeb7995877
   branch: 5-stable
   specs:
     twitter (5.17.0)
@@ -49,8 +60,8 @@ GIT
       buftok (~> 0.2.0)
       equalizer (= 0.0.10)
       faraday (~> 0.9.0)
-      http (~> 1.0)
-      http_parser.rb (~> 0.6.0)
+      http (~> 4.0)
+      http_parser.rb (~> 0.7.0)
       memoizable (~> 0.4.0)
       naught (~> 1.0)
       simple_oauth (~> 0.3.0)
@@ -395,15 +406,17 @@ GEM
     html_truncator (0.4.2)
       nokogiri (~> 1.5)
     htmlentities (4.3.4)
-    http (1.0.4)
+    http (4.4.1)
       addressable (~> 2.3)
       http-cookie (~> 1.0)
-      http-form_data (~> 1.0.1)
-      http_parser.rb (~> 0.6.0)
+      http-form_data (~> 2.2)
+      http-parser (~> 1.2.0)
     http-cookie (1.0.4)
       domain_name (~> 0.5)
-    http-form_data (1.0.3)
-    http_parser.rb (0.6.0)
+    http-form_data (2.3.0)
+    http-parser (1.2.3)
+      ffi-compiler (>= 1.0, < 2.0)
+    http_parser.rb (0.7.0)
     httparty (0.18.1)
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
@@ -487,7 +500,7 @@ GEM
     mysql2 (0.4.10)
     naught (1.1.0)
     net-http-persistent (2.9.4)
-    newrelic_rpm (5.0.0.342)
+    newrelic_rpm (6.15.0)
     nio4r (2.5.8)
     nokogiri (1.11.7)
       mini_portile2 (~> 2.5.0)
@@ -557,7 +570,7 @@ GEM
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
-    rails-html-sanitizer (1.4.1)
+    rails-html-sanitizer (1.4.2)
       loofah (~> 2.3)
     rails-i18n (5.1.3)
       i18n (>= 0.7, < 2)
@@ -666,7 +679,7 @@ GEM
       rubocop-ast (>= 1.2.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 3.0)
-    rubocop-ast (1.10.0)
+    rubocop-ast (1.11.0)
       parser (>= 3.0.1.1)
     rubocop-performance (1.11.5)
       rubocop (>= 1.7.0, < 2.0)
@@ -749,12 +762,6 @@ GEM
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
-    tweetstream (2.6.1)
-      daemons (~> 1.1)
-      em-http-request (>= 1.1.1)
-      em-twitter (~> 0.3)
-      multi_json (~> 1.3)
-      twitter (~> 5.5)
     twitter-typeahead-rails (0.11.1)
       actionpack (>= 3.1)
       jquery-rails
@@ -848,7 +855,7 @@ DEPENDENCIES
   hashie (~> 3.3.0)
   html_truncator (~> 0.4.2)
   htmlentities (~> 4.3.4)
-  http (~> 1.0)
+  http (~> 4.0)
   i18n-tasks (~> 0.9.19)
   iso8601 (~> 0.10.1)
   jbuilder (~> 2.6.4)
@@ -862,7 +869,7 @@ DEPENDENCIES
   medusa!
   mysql2 (~> 0.4.4)
   net-http-persistent (~> 2.9.3)
-  newrelic_rpm (~> 5.0.0)
+  newrelic_rpm (~> 6.15.0)
   nokogiri (~> 1.11.1)
   omniauth-rails_csrf_protection (~> 0.1.2)
   omniauth_login_dot_gov!
@@ -911,7 +918,7 @@ DEPENDENCIES
   therubyracer (~> 0.12.3)
   truncator (~> 0.1.7)
   turbolinks (~> 5.2.1)
-  tweetstream (~> 2.6.1)
+  tweetstream!
   twitter!
   twitter-typeahead-rails (~> 0.11.1)
   typhoeus (~> 1.3.0)

@@ -13,7 +13,7 @@ Feature: Search
       | bar site         | bar.gov          | aff@bar.gov           | John       | Bar       |
     When I am on bar.gov's search page
     And I press "Search" within the search box
-    Then I should see "Please enter a search term"
+    Then I should see "Please enter a search term in the box above."
 
   Scenario: Search with no results
     Given the following Affiliates exist:
@@ -108,6 +108,7 @@ Feature: Search
     When I am on bar.gov's "Photos" news search page
     And I search for "photo"
     Then I should see 2 image results
+    And I should see "Powered by Search.gov"
 
   Scenario: Visiting English affiliate search with multiple domains
     Given the following Affiliates exist:
@@ -235,6 +236,7 @@ Feature: Search
     And I fill in "query" with "first item"
     And I press "Search" within the search box
     And I follow "Videos" in the search navbar
+    Then I should see "Refine your search"
     And I fill in "query" with ""
     And I press "Search" within the search box
     Then I should see the browser page titled "Videos - bar site Search Results"
@@ -307,7 +309,7 @@ Feature: Search
     And I should see "Unidos" in bold font in the twitter govbox
     And I should see "amigos" in bold font in the twitter govbox
 
-  Scenario: Searching document collections
+  Scenario: Searching indexed document collections
     Given the following Affiliates exist:
       | display_name | name       | contact_email | first_name | last_name | domains        |
       | agency site  | agency.gov | aff@bar.gov   | John       | Bar     | whitehouse.gov |
@@ -359,22 +361,6 @@ Feature: Search
     Then every result URL should match "usa.gov"
     And I search for "jazz site:wikipedia.org"
     Then every result URL should match "usa.gov"
-
-  Scenario: Searching for site specific results using sitelimit
-    Given the following Affiliates exist:
-      | display_name | name       | contact_email | first_name | last_name | domains | is_image_search_navigable |
-      | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | .gov    | true                      |
-    And affiliate "agency.gov" has the following document collections:
-      | name | prefixes                         | is_navigable |
-      | Blog | http://search.gov/blog/          | true         |
-    When I am on agency.gov's search page with site limited to "www.usa.gov"
-    And I search for "jobs"
-    Then I should see at least "10" web search results
-    And every result URL should match "www.usa.gov"
-
-    When I follow "Blog" in the search navbar
-    Then I should see at least "1" web search results
-    And every result URL should match "search.gov/blog"
 
   Scenario: Affiliate search on affiliate with connections
     Given the following Affiliates exist:

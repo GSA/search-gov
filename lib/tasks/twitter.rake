@@ -28,7 +28,10 @@ namespace :usasearch do
     task :stream => [:environment] do
       logger = ActiveSupport::Logger.new(Rails.root.to_s + "/log/twitter.log")
       TweetStream.configure do |config|
-        Rails.application.secrets.twitter.each do |key, value|
+        config_hash = Rails.application.secrets.twitter.merge(
+          Rails.application.config_for(:tweetstream)
+        )
+        config_hash.each do |key, value|
           config.send("#{key}=", value)
         end
       end
