@@ -36,7 +36,7 @@ gem 'flickraw', '~> 0.9.9'
 gem 'active_scaffold', '~> 3.5.0'
 gem 'active_scaffold_export', git: 'https://github.com/naaano/active_scaffold_export'
 gem "recaptcha", '~> 4.6.3', :require => "recaptcha/rails"
-gem 'newrelic_rpm', '~> 5.0.0'
+gem 'newrelic_rpm', '~> 6.15.0'
 gem 'american_date', '~> 1.1.1'
 gem 'sass', '~> 3.3.0'
 gem 'sass-rails', '~> 5.0.7'
