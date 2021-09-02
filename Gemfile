@@ -27,7 +27,10 @@ gem 'resque-scheduler', '~> 4.3.1'
 # Paperclip is deprecated: https://cm-jira.usa.gov/browse/SRCH-702
 gem 'paperclip', '~> 5.2.0'
 gem 'googlecharts', '~> 1.6.12'
-gem 'tweetstream', '~> 2.6.1' # no longer maintained?
+# Using custom fork of tweetstream until vulnerability is resolved
+# (or until we switch to Twitter's API v2):
+# https://github.com/tweetstream/tweetstream/issues/212
+gem 'tweetstream', git: 'https://github.com/GSA/tweetstream'
 gem 'twitter', git: 'https://github.com/GSA/twitter.git', branch: '5-stable'
 gem 'flickraw', '~> 0.9.9'
 gem 'active_scaffold', '~> 3.5.0'
@@ -78,7 +81,7 @@ gem 'retry_block', '~> 1.2.0'
 gem 'aws-sdk', '< 3.0'
 gem 'colorize', '~> 0.8.1'
 gem 'dogstatsd-ruby', '~> 3.2.0'
-gem 'http', '~> 1.0'
+gem 'http', '~> 4.0'
 gem 'robots_tag_parser', '~> 0.1.0', git: 'https://github.com/GSA/robots_tag_parser'
 gem 'loofah', '~> 2.9.0'
 # Locking ref, as later versions (after being renamed & released as "medusa-crawler")
