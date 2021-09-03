@@ -39,7 +39,7 @@ describe User do
 
     it { is_expected.to validate_presence_of :email }
     it { is_expected.to validate_uniqueness_of(:email).case_insensitive }
-    it { is_expected.to_not allow_value('not_a_valid_email').for(:email) }
+    it { is_expected.not_to allow_value('not_a_valid_email').for(:email) }
     it { is_expected.to have_many(:memberships).dependent(:destroy) }
     it { is_expected.to have_many(:affiliates).through :memberships }
 
