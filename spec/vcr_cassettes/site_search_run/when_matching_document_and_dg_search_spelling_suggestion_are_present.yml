@@ -2,76 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=scientost%20(site:www100.whitehouse.gov/)&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Ocp-Apim-Subscription-Key:
-      - my_api_key
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Content-Length:
-      - '241'
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Mon, 27 Aug 2018 00:03:08 GMT
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      Set-Cookie:
-      - MUID=00112185E8396DDD35382DDDE9366C28; path=/; expires=Sat, 21-Sep-2019 00:04:08
-        GMT; domain=bingapis.com
-      - MUIDB=00112185E8396DDD35382DDDE9366C28; path=/; httponly; expires=Sat, 21-Sep-2019
-        00:04:08 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 27-Aug-2020 00:04:08 GMT;
-        path=/
-      - SRCHUID=V=2&GUID=AB0012A10A6A4F258E725F193B7BD5EC&dmnchg=1; domain=.bingapis.com;
-        expires=Thu, 27-Aug-2020 00:04:08 GMT; path=/
-      - SRCHUSR=DOB=20180827; domain=.bingapis.com; expires=Thu, 27-Aug-2020 00:04:08
-        GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=3E47CDC0094666401EABC198084967C8; path=/; httponly;
-        domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sat, 21-Sep-2019 00:04:08 GMT; domain=bingapis.com
-      - _SS=SID=3E47CDC0094666401EABC198084967C8; domain=.bingapis.com; path=/
-      Bingapis-Traceid:
-      - 6BB03BA211C14F36BED7612CE555BAB2
-      X-Msedge-Clientid:
-      - '00112185E8396DDD35382DDDE9366C28'
-      X-Msapi-Userstate:
-      - 22f2
-      Bingapis-Market:
-      - en-US
-      X-Msedge-Ref:
-      - 'Ref A: 6BB03BA211C14F36BED7612CE555BAB2 Ref B: BAYEDGE0219 Ref C: 2018-08-27T00:04:08Z'
-      Date:
-      - Mon, 27 Aug 2018 00:04:08 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=08D6DA9FCD3D4CA58482D9F0004C2554&CID=00112185E8396DDD35382DDDE9366C28&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=08D6DA9FCD3D4CA58482D9F0004C2554&CID=00112185E8396DDD35382DDDE9366C28&Type=Event.CPT&DATA=0"},
-        "rankingResponse": {}}'
-    http_version: 
-  recorded_at: Mon, 27 Aug 2018 00:04:08 GMT
-- request:
-    method: get
     uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=scientost%20(site:www100.whitehouse.gov/)&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
     body:
       encoding: US-ASCII
@@ -101,37 +31,43 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Tue, 05 Feb 2019 21:36:25 GMT
+      - Tue, 31 Aug 2021 20:32:24 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
       Bingapis-Traceid:
-      - 253DB8AFA17441A79948979E94CF6218
+      - F44B617093534A7E8E8E9D8DBFC408AB
       Bingapis-Sessionid:
-      - 909EE13DCCC349E09DC0C5CA4B0A0F07
+      - 4AC82E0DFD8A41CB9A87E8B79797CC95
       X-Msedge-Clientid:
-      - 00CC580CC1886451215654F6C0C4656C
+      - 299EABF4FBBE69FB01CABB50FA0E689E
       X-Msapi-Userstate:
-      - '1169'
+      - e14c
       Bingapis-Market:
       - en-US
       X-Search-Responseinfo:
-      - InternalResponseTime=154,MSDatacenter=CO4
+      - InternalResponseTime=196,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
       X-Msedge-Ref:
-      - 'Ref A: 253DB8AFA17441A79948979E94CF6218 Ref B: BY3EDGE0316 Ref C: 2019-02-05T21:37:25Z'
+      - 'Ref A: F44B617093534A7E8E8E9D8DBFC408AB Ref B: BLUEDGE1409 Ref C: 2021-08-31T20:33:24Z'
       Apim-Request-Id:
-      - 8ac177fd-d660-4c7c-a49e-b5724e1f52d9
+      - f3900c83-0818-43a3-873c-3f69d9188a67
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
       - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Tue, 05 Feb 2019 21:37:25 GMT
+      - Tue, 31 Aug 2021 20:33:24 GMT
     body:
       encoding: UTF-8
       string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "scientost
         (site:www100.whitehouse.gov\/)"}, "rankingResponse": {}}'
-    http_version: 
-  recorded_at: Tue, 05 Feb 2019 21:37:25 GMT
+    http_version:
+  recorded_at: Tue, 31 Aug 2021 20:33:24 GMT
 recorded_with: VCR 4.0.0

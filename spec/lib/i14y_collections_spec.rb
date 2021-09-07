@@ -1,4 +1,4 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
 describe I14yCollections do
   describe '.cached_connection' do
@@ -14,6 +14,10 @@ describe I14yCollections do
 
     let(:params) do
       { handles: 'testing' }
+    end
+
+    before do
+      stub_request(:get, /#{I14yCollections::API_ENDPOINT}/)
     end
 
     it 'uses a cached connection' do

@@ -18,91 +18,99 @@ http_interactions:
       code: 200
       message: OK
     headers:
-      Accept-Ranges:
-      - bytes
-      Access-Control-Allow-Origin:
-      - "*"
-      Age:
-      - '391'
-      Cache-Control:
-      - max-age=600
       Content-Type:
       - text/html; charset=utf-8
-      Date:
-      - Thu, 26 Apr 2018 23:55:16 GMT
-      Expires:
-      - Tue, 24 Apr 2018 21:16:45 GMT
-      Last-Modified:
-      - Tue, 24 Apr 2018 21:06:18 GMT
-      Server:
-      - GitHub.com
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubdomains; preload
-      Vary:
-      - Accept-Encoding
-      Via:
-      - 1.1 search.gov
-      - 1.1 varnish
-      X-Cache:
-      - HIT
-      X-Cache-Hits:
-      - '2'
-      X-Fastly-Request-Id:
-      - 1322c2aa93e716313ea857159f6c2a50cd18c9dc
-      X-Github-Request-Id:
-      - 12A2:31CD:3398D24:47EF94E:5ADF9C65
-      X-Served-By:
-      - cache-dca17744-DCA
-      X-Timer:
-      - S1524786917.998676,VS0,VE0
       Content-Length:
-      - '4056'
+      - '3939'
       Connection:
       - keep-alive
+      Date:
+      - Tue, 31 Aug 2021 20:36:10 GMT
+      Cache-Control:
+      - max-age=60
+      Last-Modified:
+      - Thu, 26 Aug 2021 19:27:31 GMT
+      Strict-Transport-Security:
+      - max-age=31536000; preload
+      X-Server:
+      - Federalist
+      X-Vcap-Request-Id:
+      - ef17dbce-9bc7-4796-6cf3-0069bba18483
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Etag:
+      - '"dc9146b6f5f578562a4a7f4ebe53fd65"'
+      Vary:
+      - Accept-Encoding
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 bc96a77398629da395795f95ed2380fe.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - BOS50-C3
+      X-Amz-Cf-Id:
+      - Znz-wYFFar0W5HDimm70enKIaJY7RR3o8LCsyNV7mvZorUScGWDpCw==
     body:
       encoding: UTF-8
       string: "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta name=viewport
         content=\"width=device-width, initial-scale=1\">\n  <meta charset=\"utf-8\">\n
         \ \n  <title>Search.gov</title>\n  <meta name=\"description\" content=\"Search.gov
-        (formerly DigitalGov Search) powers thousands of government search boxes.
-        Use it to improve the public's search experience on your agency's site.\">\n
-        \ <meta name=\"author\" content=\"\">\n  <link href=\"https://fonts.googleapis.com/css?family=Maven+Pro:400,700\"
+        powers thousands of federal government search boxes. Use it to improve the
+        public's search experience on your agency's site.\">\n  <meta name=\"author\"
+        content=\"\">\n  <link href=\"https://fonts.googleapis.com/css?family=Maven+Pro:400,700\"
         media=\"screen\" rel=\"stylesheet\" type=\"text/css\" />\n  <link href=\"https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700\"
         media=\"screen\" rel=\"stylesheet\" type=\"text/css\" />\n  <link href=\"https://fonts.googleapis.com/css?family=Merriweather:400,700\"
-        media=\"screen\" rel=\"stylesheet\" type=\"text/css\" />\n  <link href=\"/bootstrap/css/bootstrap.css\"
-        rel=\"stylesheet\">\n  <link rel=\"stylesheet\" href=\"/stylesheets/font-awesome.min.css\">\n
-        \ <!--[if IE 7]>\n  <link rel=\"stylesheet\" href=\"/stylesheets/font-awesome-ie7.min.css\">\n
-        \ <![endif]-->\n\n  <!--<link href=\"../assets/css/bootstrap-responsive.css\"
-        rel=\"stylesheet\">-->\n  <link href=\"/stylesheets/custom.css\" rel=\"stylesheet\">\n\n
-        \ <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->\n  <!--[if lt IE
-        9]>\n  <script src=\"/javascripts/html5shiv.js\"></script>\n  <![endif]-->\n\n
-        \ <!-- Fav and touch icons -->\n  <!--  <link rel=\"apple-touch-icon-precomposed\"
+        media=\"screen\" rel=\"stylesheet\" type=\"text/css\" />\n  <link rel=\"stylesheet\"
+        href=\"/stylesheets/font-awesome.min.css\">\n  <!--[if IE 7]>\n  <link rel=\"stylesheet\"
+        href=\"/stylesheets/font-awesome-ie7.min.css\">\n  <![endif]-->\n\n  <!--
+        OLD CSS - Pre USWDS Gulp -->\n  <!-- <link href=\"/stylesheets/custom.css\"
+        rel=\"stylesheet\"> -->\n\n  <!-- OLD CSS - Post USWDS Gulp -->\n  <link href=\"/assets/bootstrap/css/bootstrap.css\"
+        rel=\"stylesheet\">\n  <link rel=\"stylesheet\" type=\"text/css\" href=\"/assets/dist/old_styles.css\">\n\n
+        \ <!-- NEW CSS - Post USWDS Gulp -->\n  <link rel=\"stylesheet\" type=\"text/css\"
+        href=\"/assets/dist/styles.css\">\n\n  <!-- HTML5 shim, for IE6-8 support
+        of HTML5 elements -->\n  <!--[if lt IE 9]>\n  <script src=\"/javascripts/html5shiv.js\"></script>\n
+        \ <![endif]-->\n\n  <!-- Fav and touch icons -->\n  <!--  <link rel=\"apple-touch-icon-precomposed\"
         sizes=\"144x144\"\n          href=\"../assets/ico/apple-touch-icon-144-precomposed.png\">\n
         \   <link rel=\"apple-touch-icon-precomposed\" sizes=\"114x114\"\n          href=\"../assets/ico/apple-touch-icon-114-precomposed.png\">\n
         \   <link rel=\"apple-touch-icon-precomposed\" sizes=\"72x72\"\n          href=\"../assets/ico/apple-touch-icon-72-precomposed.png\">\n
         \   <link rel=\"apple-touch-icon-precomposed\" href=\"../assets/ico/apple-touch-icon-57-precomposed.png\">-->\n
         \ <link rel=\"shortcut icon\" href=\"https://d3qcdigd1fhos0.cloudfront.net/blog/img/favicon.ico\">\n
-        \ <link rel='alternate' type='application/atom+xml' title='search.gov
-        Atom feed' href='/all.atom' />\n  <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js\"></script>\n
-        \ <script src=\"/javascripts/bootstrap3-typeahead.js\"></script>\n</head>\n\n<body>\n<nav
-        class=\"navbar navbar-inverse navbar-fixed-top\">\n  <div class=\"container\">\n
-        \   <!-- Brand and toggle get grouped for better mobile display -->\n    <div
-        class=\"navbar-header\">\n      <a class=\"navbar-brand\" href=\"/\">\n        <span
-        class=\"search\">Search.gov</span>\n      </a>\n    </div>\n    <div class=\"collapse
-        navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\n\n      <form class=\"navbar-form
-        navbar-left form-search\" accept-charset=\"UTF-8\" action=\"https://find.search.gov/search/\"
-        id=\"search-form\" method=\"get\">\n        <div style=\"margin:0;padding:0;display:inline\"><input
-        name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /></div>\n        <input
-        name=\"affiliate\" id=\"affiliate\" type=\"hidden\" value=\"usasearch\">\n
-        \       <div class=\"input-group input-append\">\n          <label for=\"search-query\"
-        class=\"hide\">Query</label>\n\n          <input name=\"query\" autocomplete=\"off\"
-        \ type=\"text\" class=\"typeahead form-control search-query\" id=\"search-query\"
-        data-provide=\"typeahead\" >\n          <span class=\"input-group-btn\">\n
-        \           <button type=\"submit\" class=\"btn btn-nav\" aria-label=\"Left
-        Align\" id=\"search-button\">\n              <span class=\"glyphicon glyphicon-search\"
-        aria-hidden=\"true\"></span>\n            </button>\n          </span>\n        </div>\n
-        \     </form>\n      <div class=\"nav navbar-right\">\n          <a href=\"https://search.usa.gov/sites\"
-        class=\"navbar-brand\"><i\n              class=\"icon-user icon-white\"></i>&nbsp;Login</a>\n
+        \ <link rel='alternate' type='application/atom+xml' title='search.gov Atom
+        feed' href='/all.atom' />\n  <script src=\"https://code.jquery.com/jquery-3.6.0.min.js\"></script>\n
+        \ <script src=\"/javascripts/bootstrap3-typeahead.js\"></script>\n  <script
+        type=\"text/javascript\" src=\"//script.crazyegg.com/pages/scripts/0007/9651.js\"
+        async=\"async\" ></script>\n  \n  <!-- Digital Analytics Program roll-up,
+        see https://analytics.usa.gov for data -->\n  <script async type=\"text/javascript\"
+        src=\"https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=GSA&subagency=TTS\"
+        id=\"_fed_an_ua_tag\"></script>\n\n </head>\n\n<body>\n<nav class=\"navbar
+        navbar-inverse navbar-fixed-top\">\n  <div class=\"container\">\n    <!--
+        Brand and toggle get grouped for better mobile display -->\n    <div class=\"navbar-header\">\n
+        \     <a class=\"navbar-brand\" href=\"/\">\n        <span class=\"search\">Search.gov</span>\n
+        \     </a>\n    </div>\n    <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\n\n
+        \     <form class=\"navbar-form navbar-left form-search\" accept-charset=\"UTF-8\"
+        action=\"https://find.search.gov/search/\" id=\"search-form\" method=\"get\">\n
+        \       <div style=\"margin:0;padding:0;display:inline\"><input name=\"utf8\"
+        type=\"hidden\" value=\"&#x2713;\" /></div>\n        <input name=\"affiliate\"
+        id=\"affiliate\" type=\"hidden\" value=\"usasearch\">\n        <div class=\"input-group
+        input-append\">\n          <label for=\"search-query\" class=\"hide\">Query</label>\n\n
+        \         <input name=\"query\" autocomplete=\"off\"  type=\"text\" class=\"typeahead
+        form-control search-query\" id=\"search-query\" data-provide=\"typeahead\"
+        >\n          <span class=\"input-group-btn\">\n            <button type=\"submit\"
+        class=\"btn btn-nav\" aria-label=\"Left Align\" id=\"search-button\">\n              <span
+        class=\"glyphicon glyphicon-search\" aria-hidden=\"true\"></span>\n            </button>\n
+        \         </span>\n        </div>\n      </form>\n      <div class=\"nav navbar-right\">\n
+        \         <a href=\"https://search.usa.gov/sites\" class=\"navbar-brand\"
+        onClick=\"ga('send', 'event', { eventCategory: 'outbound', eventAction: 'login',
+        eventLabel: 'header'});\"><i\n              class=\"icon-user icon-white\"></i>&nbsp;Login</a>\n
+        \     </div>&nbsp;&nbsp;&nbsp;<div class=\"nav navbar-right\">\n          <a
+        href=\"https://search.usa.gov/signup\" class=\"navbar-brand\" onClick=\"ga('send',
+        'event', { eventCategory: 'outbound', eventAction: 'signup', eventLabel: 'header'});\">Sign
+        up</a>\n      </div>&nbsp;&nbsp;&nbsp;<div class=\"nav navbar-right\">\n          <a
+        href=\"https://search.gov/status.html\" class=\"navbar-brand\">System Status</a>\n
         \     </div>\n    </div><!-- /.navbar-collapse -->\n  </div><!-- /.container-fluid
         -->\n</nav>\n\n\n<div class=\"col-md-offset-2 col-md-8  hidden-sm hidden-md
         hidden-lg\">\n\n  <form class=\"form-search\" accept-charset=\"UTF-8\" action=\"https://find.search.gov/search/\"
@@ -117,50 +125,48 @@ http_interactions:
         \ <!-- do not remove as used to parse in usasearch -->\n  <main id=\"main-container\">
         \   \n    <div class=\"col-md-8 col-md-offset-2\">      \n      <article class=\"article
         feature\" style=\"padding:0 30px; margin-top: 10px;\">\n  <div class=\"banner\"
-        style=\"text-center center-block\">\n    <p><a href=\"/\">\n    <img class=\"img-responsive
-        center-block\" src=\"/img/searchdotgovlogo.png\" alt=\"Search.gov logo\" />\n
-        \ </a></p>\n  </div>\n\n  <div style=\"text-align: center;\">\n    <h1>Powering
-        over 1,800 search boxes on Federal and District of Columbia websites.</h1>\n
+        style=\"text-center center-block\">\n    <p><img src=\"/assets/img/site/searchdotgovlogo.png\"
+        alt=\"Search.gov logo with magnifying glass\" /></p>\n  </div>\n\n  <div style=\"text-align:
+        center;\">\n    <h1>Powering over 2,000 search boxes on Federal websites.</h1>\n
         \ </div>\n\n  <blockquote>\n    <p>“It would be impossible to match the value
-        of GSA’s DigitalGov Search service by procuring, building, and configuring
-        a custom solution ourselves. With the combination of a very feature-rich search
-        service and knowledgeable staff, this is by far the best search tool ever.”\n<small><cite>Department
-        of Homeland Security</cite></small></p>\n  </blockquote>\n\n  <div class=\"signup-wrapper\">\n
-        \   <p><a href=\"http://search.usa.gov/signup\" class=\"btn btn-primary btn-large\">Federal
-        agencies, try our service today!</a></p>\n  </div>\n\n  <h2 id=\"new-to-our-service\">New
-        to our service?</h2>\n\n  <p>Watch our <a href=\"https://www.youtube.com/watch?v=TnlpuudK_WY\">Getting
+        of GSA’s Search service by procuring, building, and configuring a custom solution
+        ourselves. With the combination of a very feature-rich search service and
+        knowledgeable staff, this is the most appealing search tool for government
+        websites.”\n<small><cite>Department of Homeland Security</cite></small></p>\n
+        \ </blockquote>\n\n  <div class=\"signup-wrapper\">\n    <p><a href=\"https://search.usa.gov/signup\"
+        class=\"btn btn-primary btn-large\" onclick=\"ga('send', 'event', { eventCategory:
+        'outbound', eventAction: 'signup', eventLabel: 'in-page'});\">Federal agencies,
+        try our service today!</a></p>\n  </div>\n\n  <h2 id=\"new-to-our-service\">New
+        to our service?</h2>\n\n  <p>Watch our <a href=\"https://www.youtube.com/watch?v=p-y9T23ziEg\">Getting
         Started video</a> (4 mins) <i class=\"icon-external-link\"><span>(External
-        link)</span></i>, or <a href=\"/manual/training.html\">view a recording</a>
-        of Search Basics, a 1 hour overview of our system.  Our <a href=\"/manual/index.html\">Help
+        link)</span></i>, read our <a href=\"/manual/site-launch-guide.html\">Search
+        Site Launch Guide</a> or <a href=\"/manual/training.html\">view a recording</a>
+        of Intro to Search.gov, a 1 hour overview of our system.  Our <a href=\"/manual/index.html\">Help
         Manual</a> is a section by section list of everything you’ll see inside the
         Search Admin Center (the administrative dashboard you see after logging in).</p>\n\n
-        \ <p>Getting ready to launch? Review our <a href=\"/blog/go-live.html\">go-live
-        checklist</a> for tips and reminders.</p>\n\n  <p>We also hold monthly <a
+        \ <p>Getting ready to launch? Before you go live with our service, we’ll want
+        to talk to you about your website and options for indexing your content. <a
+        href=\"mailto:search@support.digitalgov.gov\">Reach out to us</a> and we can
+        schedule a call.  You can also review our <a href=\"/manual/go-live.html\">go-live
+        checklist</a> for tips and reminders.</p>\n\n  <p>We also hold regular <a
         href=\"/manual/training.html\">training sessions</a>. Register now for upcoming
         training, or watch recordings of previous sessions.</p>\n\n  <h2 id=\"popular-links\">Popular
-        Links</h2>\n\n  <ul>\n    <li><a href=\"/developer/i14y.html\">i14y Content
-        Indexing API Overview</a></li>\n    <li><a href=\"/developer/index.html\">Developer
-        resources</a></li>\n    <li><a href=\"/manual/index.html\">Help manual</a></li>\n
-        \   <li><a href=\"/manual/cname.html\">Masking your domain</a></li>\n    <li><a
-        href=\"/tagged/release-notes/\">Monthly release notes: the latest features,
-        fixes, and focuses of the Search team</a></li>\n    <li><a href=\"/customers.html\">Our
-        customers and history</a></li>\n    <li><a href=\"/blog/redesign.html\">Updating
-        your search after a redesign, move to a new CMS, or both</a></li>\n  </ul>\n\n
-        \ <h2 id=\"fy18-announcement\">FY18 Announcement</h2>\n\n  <p>We are pleased
-        to announce two big changes to our service in FY 2018.</p>\n\n  <p>We changed
-        our name to Search.gov, and we will use our own indexes to serve search results
-        instead of relying on commercial web search engines.</p>\n\n  <p>We have a
-        detailed <a href=\"/blog/searchgov-blog.html\">blog post</a> and a continuously
-        updated <a href=\"/blog/searchgov-faqs-indexing.html\">FAQ list</a> about
-        this transition. Please read both for a full description of what to expect.</p>\n\n
+        Links</h2>\n\n  <ul>\n    <li><strong>New!</strong> <a href=\"/blog/2020-annual-review.html\">Search.gov
+        2020 Year In Review</a></li>\n    <li><a href=\"/manual/site-launch-guide.html\">Search
+        Site Launch Guide</a></li>\n    <li><a href=\"/manual/indexing-with-searchgov.html\">Everything
+        You Need to Know About Indexing with Search.gov</a></li>\n    <li><a href=\"/manual/sitemaps.html\">All
+        about XML Sitemaps</a></li>\n    <li><a href=\"/manual/index.html\">Help manual</a></li>\n
+        \   <li><a href=\"/manual/redesign.html\">Updating your search after a redesign,
+        move to a new CMS, or both</a></li>\n    <li><a href=\"/tagged/release-notes/\">Monthly
+        release notes</a>: the latest features, fixes, and focuses of the Search team</li>\n
+        \   <li><a href=\"/about/roadmap.html\">Product roadmap</a></li>\n  </ul>\n\n
         \ <h2 id=\"need-help-were-here-to-help\">Need Help? We’re Here to Help!</h2>\n\n
         \ <p>Email us at <a href=\"mailto:search@support.digitalgov.gov\">search@support.digitalgov.gov</a>,
-        or give us a call at 202-505-5315.</p>\n\n  <p>If you’re a federal agency
-        in the DC area, we’d be happy to stop by your office for an in-person consultation.
-        <a href=\"mailto:search@support.digitalgov.gov\">Email us</a> to set up a
-        time.</p>\n</article>\n      \n    </div>\n  </main>\n</div>\n<footer class=\"footer\">\n
-        \ <div class=\"container\">\n    <p><a href=\"mailto:search@support.digitalgov.gov\">Email
-        us</a> or call us at 202-505-5315</p>\n    <p> An Official Website of the
+        or give us a call at 202-969-7426.</p>\n\n  <p>If you’re a federal agency,
+        we’d be happy to schedule time with you for a consultation. <a href=\"mailto:search@support.digitalgov.gov\">Email
+        us</a> to set up a time.</p>\n</article>\n      \n    </div>\n  </main>\n</div>\n<footer
+        class=\"footer\">\n  <div class=\"container\">\n    <p><a href=\"mailto:search@support.digitalgov.gov\">Email
+        us</a> or call us at 202-969-7426</p>\n    <p> An Official Website of the
         U.S. Government <br />\n      <a href=\"https://www.gsa.gov/portal/category/25729\">Technology
         Transformation Service</a>, <a href=\"https://www.gsa.gov/portal/category/100000\">U.S.
         General Services Administration</a>\n    </p>\n    <ul class=\"footer-links
@@ -181,9 +187,7 @@ http_interactions:
         'text/javascript'; ga.async = true;\n    ga.src = ('https:' == document.location.protocol
         ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';\n    var
         s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga,
-        s);\n  })();\n\n  //]]>\n</script>\n\n<script async type=\"text/javascript\"
-        src=\"https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=GSA\"
-        id=\"_fed_an_ua_tag\"></script>\n\n</body>\n</html>\n"
-    http_version: 
-  recorded_at: Thu, 26 Apr 2018 23:55:17 GMT
+        s);\n  })();\n\n  //]]>\n</script>\n\n</body>\n</html>\n"
+    http_version:
+  recorded_at: Tue, 31 Aug 2021 20:36:10 GMT
 recorded_with: VCR 4.0.0
