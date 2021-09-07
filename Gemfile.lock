@@ -100,17 +100,6 @@ GIT
       railties (>= 3.2)
 
 GIT
-  remote: https://github.com/kreeti/kt-paperclip.git
-  revision: 8e4a154ae0c7b8ca1e17daec768d6b211186ca63
-  specs:
-    kt-paperclip (7.0.0)
-      activemodel (>= 4.2.0)
-      activesupport (>= 4.2.0)
-      marcel (~> 1.0.1)
-      mime-types
-      terrapin (~> 0.6.0)
-
-GIT
   remote: https://github.com/naaano/active_scaffold_export
   revision: 879ceb549b871ebb597ae5339a2e67498beb70d1
   specs:
@@ -466,6 +455,12 @@ GEM
       aes_key_wrap
       bindata
     jwt (1.5.6)
+    kt-paperclip (7.0.0)
+      activemodel (>= 4.2.0)
+      activesupport (>= 4.2.0)
+      marcel (~> 1.0.1)
+      mime-types
+      terrapin (~> 0.6.0)
     launchy (2.4.3)
       addressable (~> 2.3)
     less (2.6.0)
@@ -870,7 +865,7 @@ DEPENDENCIES
   jquery-rails (~> 4.4.0)
   jquery-ui-rails (~> 6.0.1)
   jwt (~> 1.5.6)
-  kt-paperclip!
+  kt-paperclip (~> 7.0.0)
   launchy (~> 2.4.3)
   less-rails-bootstrap!
   listen (~> 3.1.5)
