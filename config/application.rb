@@ -72,7 +72,7 @@ module Usasearch
     config.assets.enabled = true
     config.assets.version = '1.0'
 
-    config.active_record.schema_format = :sql
+    config.active_record.schema_format = :ruby
 
     config.i18n.enforce_available_locales = false
 
