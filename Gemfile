@@ -27,7 +27,7 @@ gem 'resque-scheduler', '~> 4.3.1'
 # Paperclip is deprecated: https://cm-jira.usa.gov/browse/SRCH-702
 # Using a third-party fork as an interim measure.
 gem 'kt-paperclip', :git => 'https://github.com/kreeti/kt-paperclip.git'
-gem 'aws-sdk', '~> 3.0.2'
+gem 'aws-sdk-s3', '~> 1.102.0'
 gem 'googlecharts', '~> 1.6.12'
 # Using custom fork of tweetstream until vulnerability is resolved
 # (or until we switch to Twitter's API v2):
