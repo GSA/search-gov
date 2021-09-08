@@ -9,6 +9,8 @@ http_interactions:
     headers:
       User-Agent:
       - USASearch
+      Ocp-Apim-Subscription-Key:
+      - my_api_key
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -25,213 +27,218 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '4672'
+      - '5116'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Fri, 11 Jun 2021 12:58:09 GMT
+      - Tue, 31 Aug 2021 20:32:09 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=16C7AB92C6966E1628FEBBC1C76B6FC5; domain=.bingapis.com; expires=Wed,
-        06-Jul-2022 12:59:09 GMT; path=/; secure; SameSite=None
-      - MUIDB=16C7AB92C6966E1628FEBBC1C76B6FC5; expires=Wed, 06-Jul-2022 12:59:09
+      - MUID=297CC44D2A5461292D68D4E92B8A6043; domain=.bingapis.com; expires=Sun,
+        25-Sep-2022 20:33:09 GMT; path=/; secure; SameSite=None
+      - MUIDB=297CC44D2A5461292D68D4E92B8A6043; expires=Sun, 25-Sep-2022 20:33:09
         GMT; path=/; HttpOnly
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 11-Jun-2023 12:59:09 GMT;
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 31-Aug-2023 20:33:09 GMT;
         path=/
-      - SRCHHPGUSR=SRCHLANGV2=en; domain=.bingapis.com; expires=Sun, 11-Jun-2023 12:59:09
+      - SRCHHPGUSR=SRCHLANG=en; domain=.bingapis.com; expires=Thu, 31-Aug-2023 20:33:09
         GMT; path=/
-      - SRCHUID=V=2&GUID=4D0CD7E9795F4B778AE4BA323562A79C&dmnchg=1; domain=.bingapis.com;
-        expires=Sun, 11-Jun-2023 12:59:09 GMT; path=/
-      - SRCHUSR=DOB=20210611; domain=.bingapis.com; expires=Sun, 11-Jun-2023 12:59:09
+      - SRCHUID=V=2&GUID=892CD8EAF8654C84978841F89593EE26&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 31-Aug-2023 20:33:09 GMT; path=/
+      - SRCHUSR=DOB=20210831; domain=.bingapis.com; expires=Thu, 31-Aug-2023 20:33:09
         GMT; path=/
-      - _EDGE_S=F=1&SID=27E8BA6A49C163212C0FAA39483C6234&mkt=en-us; domain=.bingapis.com;
+      - _EDGE_S=F=1&SID=123E26A0211A6B3A1307360420C46AFE&mkt=en-us; domain=.bingapis.com;
         path=/; HttpOnly
-      - _EDGE_V=1; domain=.bingapis.com; expires=Wed, 06-Jul-2022 12:59:09 GMT; path=/;
+      - _EDGE_V=1; domain=.bingapis.com; expires=Sun, 25-Sep-2022 20:33:09 GMT; path=/;
         HttpOnly
-      - _SS=SID=27E8BA6A49C163212C0FAA39483C6234; domain=.bingapis.com; path=/
+      - _SS=SID=123E26A0211A6B3A1307360420C46AFE; domain=.bingapis.com; path=/
       X-Snr-Routing:
       - '1'
       Bingapis-Traceid:
-      - 3CB12FBF56534A96893F6555498FCFE2
+      - 7FA56307AB564792967248B52262C330
       X-Msedge-Clientid:
-      - 16C7AB92C6966E1628FEBBC1C76B6FC5
+      - 297CC44D2A5461292D68D4E92B8A6043
       X-Msapi-Userstate:
-      - 70ae
+      - 19ec
       Bingapis-Market:
       - en-US
       X-Cache:
       - CONFIG_NOCACHE
       X-Msedge-Ref:
-      - 'Ref A: 3CB12FBF56534A96893F6555498FCFE2 Ref B: BLUEDGE0816 Ref C: 2021-06-11T12:59:09Z'
+      - 'Ref A: 7FA56307AB564792967248B52262C330 Ref B: BLUEDGE0621 Ref C: 2021-08-31T20:33:09Z'
       Date:
-      - Fri, 11 Jun 2021 12:59:08 GMT
+      - Tue, 31 Aug 2021 20:33:10 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=DEF3FCADAB4A4F2BA78BEC655C797524&CID=16C7AB92C6966E1628FEBBC1C76B6FC5&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=DEF3FCADAB4A4F2BA78BEC655C797524&CID=16C7AB92C6966E1628FEBBC1C76B6FC5&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=7125123F99EC432CB1A12F294727BCB9&CID=297CC44D2A5461292D68D4E92B8A6043&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=7125123F99EC432CB1A12F294727BCB9&CID=297CC44D2A5461292D68D4E92B8A6043&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=social+security+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5416.1", "totalEstimatedMatches": 1780000,
+        "webSearchUrlPingSuffix": "DevEx,5442.1", "totalEstimatedMatches": 412000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "my Social Security | Social Security Administration", "url": "https:\/\/www.ssa.gov\/myaccount\/index2.html",
-        "urlPingSuffix": "DevEx,5063.1", "displayUrl": "https:\/\/www.ssa.gov\/myaccount\/index2.html",
-        "snippet": "With your free, personal my Social Security account, you can
-        receive personalized estimates of future benefits based on your real earnings,
-        see your latest Statement, and review your earnings history. It even makes
-        it easy to request a replacement Social Security Card or check the status
-        of an application, from anywhere!", "dateLastCrawled": "2021-06-09T13:19:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Social
-        Security Update | SSA", "url": "https:\/\/www.ssa.gov\/news\/newsletter\/",
-        "urlPingSuffix": "DevEx,5076.1", "displayUrl": "https:\/\/www.ssa.gov\/news\/newsletter",
-        "snippet": "my Social Security is a personalized online account that they
-        can use during their working years and while receiving Social Security benefits.
-        Choose a Representative Payee for Social Security to Consider Before You
-        May Need One. The future can be uncertain. However, our Advance Designation
-        program can help your clients if a time comes when ...", "dateLastCrawled":
-        "2021-06-08T00:08:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
-        "name": "Your Options: Working, Applying for Retirement Benefits ...", "url":
-        "https:\/\/www.ssa.gov\/benefits\/retirement\/matrix.html", "urlPingSuffix":
-        "DevEx,5089.1", "displayUrl": "https:\/\/www.ssa.gov\/benefits\/retirement\/matrix.html",
+        "Veterans | SSA - Social Security Administration", "url": "http:\/\/www.ssa.gov\/woundedwarriors\/",
+        "urlPingSuffix": "DevEx,5063.1", "displayUrl": "www.ssa.gov\/woundedwarriors",
+        "snippet": "The Supplemental Security Income (SSI) program is a program
+        that provides income support to people with disabilities, people age 65 or
+        older, or blind, who have low income and resources. U.S. Treasury general
+        funds, not the Social Security trust funds, pay for SSI. If you or someone
+        you know may be eligible for SSI, visit SSI Benefits to learn ...", "dateLastCrawled":
+        "2021-08-24T00:39:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
+        "name": "Retirement Estimator | SSA - Social Security Administration",
+        "url": "https:\/\/www.ssa.gov\/benefits\/retirement\/estimator.html", "urlPingSuffix":
+        "DevEx,5077.1", "displayUrl": "https:\/\/www.ssa.gov\/benefits\/retirement\/estimator.html",
+        "snippet": "Social Security annual cost-of-living adjustments. Changes to
+        U.S. laws and policies. Your military service, railroad employment, or pensions
+        earned through work for which you did not pay Social Security tax. Who Can
+        Use the Retirement Estimator.", "dateLastCrawled": "2021-08-27T21:08:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Your Options:
+        Working, Applying for Retirement Benefits ...", "url": "https:\/\/www.ssa.gov\/benefits\/retirement\/matrix.html",
+        "urlPingSuffix": "DevEx,5091.1", "displayUrl": "https:\/\/www.ssa.gov\/benefits\/retirement\/matrix.html",
         "snippet": "Choosing when to start receiving your Social Security retirement
         benefits is an important decision. There’s no one choice that works for everyone
         because your lifestyle, finances, and goals are not the same as others. Do
         you want to retire early, stay on the job, or work beyond retirement age ...",
-        "dateLastCrawled": "2021-06-09T03:23:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
-        "name": "Social Security And Retirement | Benefits.gov", "url": "https:\/\/www.benefits.gov\/categories\/Social%20Security%20and%20Retirement",
-        "urlPingSuffix": "DevEx,5102.1", "displayUrl": "https:\/\/www.benefits.gov\/categories\/Social
-        Security and Retirement", "snippet": "The Social Security Parent’s Benefits
-        are a federally funded program managed by the U.S. Social Security Administration
-        (SSA). These are benefits paid to the dependent parent of a deceased worker
-        who had earned enough Social Security credits.", "dateLastCrawled": "2021-06-08T21:19:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Social
-        Security Administration | Direct Deposit", "url": "https:\/\/www.ssa.gov\/deposit\/howtosign.htm",
-        "urlPingSuffix": "DevEx,5115.1", "displayUrl": "https:\/\/www.ssa.gov\/deposit\/howtosign.htm",
-        "snippet": "calling Social Security toll-free at 1-800-772-1213 (TTY 1-800-325-0778),
-        or ; visiting your local Social Security Field Office or; signing up for
-        the Direct Express® debit card. The Direct Express® card is a debit card you
-        can use to access your benefits and you don''t need a bank account.", "dateLastCrawled":
-        "2021-06-09T06:22:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
-        "name": "Military Service and Social Security 2021", "url": "https:\/\/www.ssa.gov\/pubs\/EN-05-10017.pdf",
-        "urlPingSuffix": "DevEx,5127.1", "displayUrl": "https:\/\/www.ssa.gov\/pubs\/EN-05-10017.pdf",
+        "dateLastCrawled": "2021-08-28T02:21:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "U.S. Department of the Treasury Releases Social Security ...",
+        "url": "https:\/\/home.treasury.gov\/news\/press-releases\/jy0338", "urlPingSuffix":
+        "DevEx,5108.1", "displayUrl": "https:\/\/home.treasury.gov\/news\/press-releases\/jy0338",
+        "snippet": "Yet, Social Security will continue to play a critical role in
+        the lives of 65 million beneficiaries and 176 million workers and their families
+        during 2021.” The Social Security and Medicare Trustees Reports are available
+        here. ####", "dateLastCrawled": "2021-08-31T18:45:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
+        "name": "Benefits Planner: Retirement - Social Security Administration",
+        "url": "https:\/\/www.ssa.gov\/benefits\/retirement\/planner\/1943.html",
+        "urlPingSuffix": "DevEx,5122.1", "displayUrl": "https:\/\/www.ssa.gov\/benefits\/retirement\/planner\/1943.html",
+        "snippet": "If you were born between 1943 and 1954 your full retirement age
+        is 66. You can start your Social Security retirement benefits as early as
+        age 62, but the benefit amount you receive will be less than your full retirement
+        benefit amount. The chart below provides examples of the percentage of your
+        full retirement benefit amount you and your spouse ...", "dateLastCrawled":
+        "2021-08-27T23:12:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
+        "name": "Publications | SSA - Social Security Administration", "url":
+        "https:\/\/www.ssa.gov\/pubs\/", "urlPingSuffix": "DevEx,5136.1", "displayUrl":
+        "https:\/\/www.ssa.gov\/pubs", "snippet": "Social Security Coverage For
+        Employees Of Foreign Governments And Instrumentalities Of Foreign Governments
+        Working In The United States. 05-10566, Learn if your earnings are covered
+        by Social Security if you work in the United States for a foreign government
+        or an instrumentality of a foreign government. PDF", "dateLastCrawled": "2021-08-28T01:21:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "SSI Eligibility
+        - Social Security Administration", "url": "https:\/\/www.ssa.gov\/ssi\/text-eligibility-ussi.htm",
+        "urlPingSuffix": "DevEx,5150.1", "displayUrl": "https:\/\/www.ssa.gov\/ssi\/text-eligibility-ussi.htm",
+        "snippet": "Compassionate Allowances (CAL) are a way to quickly identify diseases
+        and other medical conditions that, by definition, meet Social Security’s
+        standards for disability benefits. These conditions primarily include certain
+        cancers, adult brain disorders, and a number of rare disorders that affect
+        children.", "dateLastCrawled": "2021-08-28T00:35:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "name": "Social Security Office Locator, SSA Office Locator Social
+        ...", "url": "https:\/\/secure.ssa.gov\/ICON\/main.jsp", "urlPingSuffix":
+        "DevEx,5164.1", "displayUrl": "https:\/\/secure.ssa.gov\/ICON\/main.jsp",
+        "snippet": "Social Security Office Locator We are OPEN to receive your calls
+        On Tuesday, March 17, 2020, we suspended face-to-face service to the public
+        in our field offices and hearings offices nationwide until further notice.
+        However, we are still able to provide critical services via phone, fax and
+        online. Find the Office for this ZIP Code. ...", "dateLastCrawled": "2021-08-27T22:30:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Quick
+        Calculator - Social Security Administration", "url": "https:\/\/www.ssa.gov\/OACT\/quickcalc\/",
+        "urlPingSuffix": "DevEx,5179.1", "displayUrl": "https:\/\/www.ssa.gov\/OACT\/quickcalc",
+        "snippet": "Social Security Quick Calculator: Benefit Calculators. Frequently
+        Asked Questions. Benefit estimates depend on your date of birth and on your
+        earnings history. For security, the \"Quick Calculator\" does not access
+        your earnings record; instead, it will estimate your earnings based on information
+        you provide. So benefit estimates made by the ...", "dateLastCrawled": "2021-08-27T21:20:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Identity
+        Theft and Your Social Security Number", "url": "https:\/\/www.ssa.gov\/pubs\/EN-05-10064.pdf",
+        "urlPingSuffix": "DevEx,5192.1", "displayUrl": "https:\/\/www.ssa.gov\/pubs\/EN-05-10064.pdf",
+        "snippet": "Contacting Social Security. The most convenient way to contact
+        us anytime, anywhere is to visit . www.socialsecurity.gov. There, you can:
+        apply for benefits; open a . my. Social Security account, which you can
+        use to review your . Social Security Statement, verify your earnings, print
+        a benefit verification letter, change your", "dateLastCrawled": "2021-08-28T00:25:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Verifying
+        Social Security Numbers", "url": "https:\/\/www.ssa.gov\/employer\/verifySSN.htm?__utma=176294311.520325920.1358963253.1373912401.1375392359.6&__utmb=176294311.11.9.1375392581190&__utmc=176294311&__utmx=-&__utmz=176294311.1373912401.5.5.utmcsr=bing%7Cutmccn=(organic)%7Cutmcmd=organic%7Cutmctr=How%20to%20file%20corrected%20w2&__utmv=-&__utmk=185945705",
+        "urlPingSuffix": "DevEx,5205.1", "displayUrl": "https:\/\/www.ssa.gov\/employer\/verifySSN.htm?__utma=176294311.520325920.1358963253...",
+        "snippet": "The Consent Based Social Security Number Verification Service
+        - This fee-based Social Security number verification service is available
+        to enrolled private companies, state and local government agencies to provide
+        instant automated verification and can handle large volume requests. Verifying
+        Social Security Numbers ...", "dateLastCrawled": "2021-08-31T03:09:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Apply
+        Online for Disability Benefits", "url": "https:\/\/www.ssa.gov\/applyfordisability\/",
+        "urlPingSuffix": "DevEx,5219.1", "displayUrl": "https:\/\/www.ssa.gov\/applyfordisability",
+        "snippet": "Social Security offers an online disability application you
+        can complete at your convenience. Apply from the comfort of your home or any
+        location at a time most convenient for you. You do not need to drive to your
+        local Social Security office or wait for an appointment with a Social Security
+        ...", "dateLastCrawled": "2021-08-27T21:30:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
+        "name": "Social Security Administration | Overpayments - Pay an ...", "url":
+        "https:\/\/best.ssa.gov\/overpayments\/", "urlPingSuffix": "DevEx,5233.1",
+        "displayUrl": "https:\/\/best.ssa.gov\/overpayments", "snippet": "Enter ‘Social
+        Security’ in the search box. Click on “Continue” under the Repay Your Social
+        Security Overpayment Online section. Follow the instructions on the following
+        page and click “Continue to the Form.”. Enter the Remittance ID number found
+        on your billing notice and repayment amount. Enter your name, address, and
+        phone number ...", "dateLastCrawled": "2021-08-31T20:08:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Social Security
+        2021 Trustees Report - Social Security ...", "url": "https:\/\/blog.ssa.gov\/social-security-2021-trustees-report\/",
+        "urlPingSuffix": "DevEx,5248.1", "displayUrl": "https:\/\/blog.ssa.gov\/social-security-2021-trustees-report",
+        "snippet": "Today, the Social Security Board of Trustees released its annual
+        report on the long-term financial status of the Old-Age and Survivors Insurance
+        and Disability Insurance Trust Funds. Want to learn more? Read our press release.
+        Join us on Facebook Live on Wednesday, September 15, at 7 p.m. ET as we chat
+        about the report.", "dateLastCrawled": "2021-08-31T19:06:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Military Service
+        and Social Security 2021", "url": "https:\/\/www.ssa.gov\/pubs\/EN-05-10017.pdf",
+        "urlPingSuffix": "DevEx,5261.1", "displayUrl": "https:\/\/www.ssa.gov\/pubs\/EN-05-10017.pdf",
         "snippet": "Social Security has covered inactive duty service in the armed
         forces reserves (such as weekend drills) since 1988. If you served in the
         military before 1957, you didn’t pay Social Security taxes, but we gave
         you special credit for some of your service. You can get both Social Security
-        benefits and military retirement.", "dateLastCrawled": "2021-06-08T21:20:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Social
-        Security Quick Calculator - SSA", "url": "https:\/\/www.ssa.gov\/OACT\/quickcalc\/",
-        "urlPingSuffix": "DevEx,5140.1", "displayUrl": "https:\/\/www.ssa.gov\/OACT\/quickcalc",
-        "snippet": "Social Security Quick Calculator: Benefit Calculators. Frequently
-        Asked Questions. Benefit estimates depend on your date of birth and on your
-        earnings history. For security, the \"Quick Calculator\" does not access
-        your earnings record; instead, it will estimate your earnings based on information
-        you provide. So benefit estimates made by the ...", "dateLastCrawled": "2021-06-09T00:23:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Schedule
-        of Social Security Payments | SSA", "url": "https:\/\/www.ssa.gov\/pubs\/calendar.htm",
-        "urlPingSuffix": "DevEx,5153.1", "displayUrl": "https:\/\/www.ssa.gov\/pubs\/calendar.htm",
-        "snippet": "Publications > Schedule of Social Security Payments. Schedule
-        Of Social Security Benefit Payments - Calendar 2019; Schedule Of Social
-        Security Benefit Payments - Calendar 2020; Schedule Of Social Security
-        Benefit Payments - Calendar 2021", "dateLastCrawled": "2021-06-09T03:10:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "PRESIDENT
-        ANNOUNCES THREE SOCIAL SECURITY DISABILITY ...", "url": "https:\/\/www.ssa.gov\/pressoffice\/ADA.htm",
-        "urlPingSuffix": "DevEx,5166.1", "displayUrl": "https:\/\/www.ssa.gov\/pressoffice\/ADA.htm",
-        "snippet": "· The Social Security Administration (SSA) uses a technical
-        term called \"substantial gainful activity\" (SGA) to determine if work is
-        substantial enough to make individuals ineligible for benefits. Currently,
-        monthly earnings of $700 or more are considered SGA and will make them ineligible
-        for benefits. SSA has special rules for blind persons.", "dateLastCrawled":
-        "2021-06-09T01:16:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
-        "name": "What is the eligibility for Social Security spouse’s ...", "url":
-        "https:\/\/faq.ssa.gov\/en-us\/Topic\/article\/KA-02011", "urlPingSuffix":
-        "DevEx,5180.1", "displayUrl": "https:\/\/faq.ssa.gov\/en-us\/Topic\/article\/KA-02011",
-        "snippet": "If you do have enough credits to qualify for your own Social
-        Security benefits and you apply for your own retirement benefits and for
-        benefits as a spouse, we always pay your own benefits first. If your benefits
-        as a spouse are higher than your own retirement benefits, you will get a combination
-        of benefits equaling the higher spouse benefit.", "dateLastCrawled": "2021-06-09T10:31:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "FAQ Home
-        · Customer Self-Service", "url": "https:\/\/faq.ssa.gov\/en-US\/", "urlPingSuffix":
-        "DevEx,5193.1", "displayUrl": "https:\/\/faq.ssa.gov\/en-US", "snippet": "Social
-        Security Number. Apply, replace, and protect your Social Security card
-        and number. Online Services. Replace a Social Security card, apply for benefits,
-        appeals, and more. Retirement. Understand and apply for retirement benefits.
-        More Topics. Medicare. What is Medicare, when to apply, and help with costs.",
-        "dateLastCrawled": "2021-06-08T13:05:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
-        "name": "Parents and Guardians | SSA", "url": "https:\/\/www.ssa.gov\/people\/parents\/",
-        "urlPingSuffix": "DevEx,5206.1", "displayUrl": "https:\/\/www.ssa.gov\/people\/parents",
-        "snippet": "Social Security knows that whether single parent, blended, diverse,
-        small or large, every family is important. For more than 80 years, Social
-        Security has helped families secure today and tomorrow by providing financial
-        benefits, tools, and programs that help support millions throughout life’s
-        journey.", "dateLastCrawled": "2021-06-08T06:18:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
-        "name": "Business Services Online - The United States Social ...", "url":
-        "https:\/\/www.ssa.gov\/bso\/bsowelcome.htm", "urlPingSuffix": "DevEx,5219.1",
-        "displayUrl": "https:\/\/www.ssa.gov\/bso", "snippet": "The Business Services
-        Online Suite of Services allows organizations, businesses, individuals, employers,
-        attorneys, non-attorneys representing Social Security claimants, and third-parties
-        to exchange information with Social Security securely over the internet.
-        You must register and create your own ...", "dateLastCrawled": "2021-06-08T21:20:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Economic
-        Impact Payments for Social Security and SSI ...", "url": "https:\/\/www.ssa.gov\/coronavirus\/assets\/materials\/economic-impact-payments-for-social-security-and-ssi-recipients.pdf",
-        "urlPingSuffix": "DevEx,5231.1", "displayUrl": "https:\/\/www.ssa.gov\/coronavirus\/assets\/materials\/economic-impact-payments-for-social...",
-        "snippet": "A Message to the Social Security Beneficiaries and Supplemental
-        Security Income Recipients: This document provides information for Social
-        Security beneficiaries (retirement, survivors, disability) and Supplemental
-        Security Income (SSI) recipients related to economic impact payments being
-        issued to eligible individuals .", "dateLastCrawled": "2021-06-09T01:11:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "2021
-        Social Security Changes - SSA", "url": "https:\/\/www.ssa.gov\/news\/press\/factsheets\/colafacts2021.pdf",
-        "urlPingSuffix": "DevEx,5242.1", "displayUrl": "https:\/\/www.ssa.gov\/news\/press\/factsheets\/colafacts2021.pdf",
-        "snippet": "SOCIAL SECURITY Social Security National Press Office Baltimore,
-        MD . 2021 SOCIAL SECURITY CHANGES . Cost-of-Living Adjustment (COLA): Based
-        on the increase in the Consumer Price Index (CPI-W) from the third quarter
-        of 2019 through the third quarter of 2020, Social Security and Supplemental
-        Security Income (SSI) beneficiaries will receive a 1.3 ...", "dateLastCrawled":
-        "2021-06-08T21:29:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
-        "name": "How do I change or correct my name on my Social Security ...",
-        "url": "https:\/\/faq.ssa.gov\/en-US\/Topic\/article\/KA-01981", "urlPingSuffix":
-        "DevEx,5255.1", "displayUrl": "https:\/\/faq.ssa.gov\/en-US\/Topic\/article\/KA-01981",
-        "snippet": "For complete instructions, please go to Social Security Number
-        and Card. For more information, read our pamphlet, Your Social Security
-        Number and Card. Please read our Coronavirus (COVID-19) information page to
-        learn about changes to Social Security number card requests during the COVID-19
-        pandemic.", "dateLastCrawled": "2021-06-09T05:23:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
-        "name": "Comments And Questions - Social Security Administration", "url":
-        "https:\/\/secure.ssa.gov\/emailus\/", "urlPingSuffix": "DevEx,5268.1", "displayUrl":
-        "https:\/\/secure.ssa.gov\/emailus", "snippet": "Social Security cannot
-        answer questions about economic impact payments under the recently enacted
-        law, the Coronavirus Aid, Relief, and Economic Security Act, or CARES Act.
-        Treasury, not Social Security, will be making direct payments to eligible
-        people. For more information ...", "dateLastCrawled": "2021-06-09T01:08:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Estimate
-        Retirement Benefits | SSA", "url": "https:\/\/www.ssa.gov\/myaccount\/retire-calc.html",
-        "urlPingSuffix": "DevEx,5281.1", "displayUrl": "https:\/\/www.ssa.gov\/myaccount\/retire-calc.html",
-        "snippet": "Your personal my Social Security account gives you secure access
-        to information based on your earnings history and interactive tools tailored
-        to you. With your my Social Security account, you can plan for your future
-        by getting your personalized retirement benefit estimates at age 62, Full
-        Retirement Age (FRA), and age 70. You can also view retirement benefit estimates
-        by:", "dateLastCrawled": "2021-06-08T04:30:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
-        "name": "EN-05-10031 - Schedule of Social Security Benefit Payments ...",
-        "url": "https:\/\/www.ssa.gov\/pubs\/EN-05-10031-2021.pdf", "urlPingSuffix":
-        "DevEx,5293.1", "displayUrl": "https:\/\/www.ssa.gov\/pubs\/EN-05-10031-2021.pdf",
-        "snippet": "Schedule of Social Security Benefit Payments 2021 Benefits paid
-        on Birth date on. Second Wednesday. 1; st – 10. th. Third Wednesday. 11. th
-        – 20. Fourth Wednesday: 21. st – 31. Supplemental Security Income (SSI)
-        Social Security benefits prior to May 1997; or if receiving both Social",
-        "dateLastCrawled": "2021-06-08T23:37:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
-        "name": "Social Security Retirement Benefit Calculation", "url": "https:\/\/www.ssa.gov\/OACT\/ProgData\/retirebenefit1.html",
-        "urlPingSuffix": "DevEx,5305.1", "displayUrl": "https:\/\/www.ssa.gov\/OACT\/ProgData\/retirebenefit1.html",
-        "snippet": "Social Security SEARCH MENU LANGUAGES SIGN IN\/UP. Benefit Calculation
-        Examples for Workers Retiring in 2021. Office of the Chief Actuary ; We illustrate
-        the calculation of retirement benefits using two examples, labeled case A
-        and case B. In each case, the worker retires in 2021.", "dateLastCrawled":
-        "2021-06-09T00:37:00.0000000Z"}]}, "rankingResponse": {"mainline": {"items":
-        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
-        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        benefits and military retirement.", "dateLastCrawled": "2021-08-28T05:14:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Benefits
+        Planner: Retirement - Social Security Administration", "url": "https:\/\/www.ssa.gov\/benefits\/retirement\/planner\/gpo-calc.html",
+        "urlPingSuffix": "DevEx,5274.1", "displayUrl": "https:\/\/www.ssa.gov\/benefits\/retirement\/planner\/gpo-calc.html",
+        "snippet": "Create a my Social Security Account. Choosing when to retire
+        is an important and personal decision. The best way to start planning for
+        your future is by creating a my Social Security account. With my Social
+        Security, you can verify your earnings, get your Social Security Statement,
+        and much more – all from the comfort of your home or office.", "dateLastCrawled":
+        "2021-08-27T05:11:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
+        "name": "SSAB Will Host Virtual Public Session on Social Security’s ...",
+        "url": "https:\/\/www.ssab.gov\/announcements\/ssab-will-host-virtual-public-session-on-social-securitys-financial-outlook\/",
+        "urlPingSuffix": "DevEx,5289.1", "displayUrl": "https:\/\/www.ssab.gov\/announcements\/ssab-will-host-virtual-public-session-on-social...",
+        "snippet": "Washington, DC – Today, Social Security’s Board of Trustees
+        issued its annual report to Congress outlining the financial outlook for the
+        Old-Age, Survivors, and Disability Insurance Trust Funds. The 2021 OASDI Trustees
+        Report is the first to reflect the potential effects of the COVID pandemic.
+        The report projects the combined reserves to become depleted in 2034, one
+        year sooner than than ...", "dateLastCrawled": "2021-08-31T20:03:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Coronavirus
+        Disease (COVID-19) | SSA", "url": "https:\/\/www.ssa.gov\/coronavirus\/",
+        "urlPingSuffix": "DevEx,5304.1", "displayUrl": "https:\/\/www.ssa.gov\/coronavirus",
+        "snippet": "A Social Security number (SSN) is important because you need
+        it to get a job, collect Social Security benefits, and get some other government
+        services. However, please note that you may not need the physical SSN card
+        for many of these services.", "dateLastCrawled": "2021-08-28T03:28:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Fact
+        Sheet: 2021 Social Security and Medicare Trustees Reports", "url": "https:\/\/home.treasury.gov\/system\/files\/136\/Fact-Sheet-2021-Social-Security-and-Medicare-Trustees-Reports.pdf",
+        "urlPingSuffix": "DevEx,5317.1", "displayUrl": "https:\/\/home.treasury.gov\/system\/files\/136\/Fact-Sheet-2021-Social-Security-and...",
+        "snippet": "Social Security and Medicare both face long-term financing shortfalls
+        under currently scheduled benefits and financing. Both programs will experience
+        cost growth substantially in excess of GDP growth through the mid-2030s due
+        to rapid population aging. Medicare also sees its share of GDP grow", "dateLastCrawled":
+        "2021-08-31T20:10:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
+        "name": "Social Security - Representative Payee Program - Payee and ...",
+        "url": "https:\/\/www.ssa.gov\/payee\/able_accounts.htm?_escaped_fragment_=&_escaped_fragment_=&_escaped_fragment_=&_escaped_fragment_=&_escaped_fragment_=&_escaped_fragment_=&_escaped_fragment_=&_escaped_fragment_=&_escaped_fragment_=&_escaped_fragment_=&_escaped_fragment_=&_escaped_fragment_=&_escaped_fragment_=&_escaped_fragment_=&_escaped_fragment_=&_escaped_fragment_=#!",
+        "urlPingSuffix": "DevEx,5330.1", "displayUrl": "https:\/\/www.ssa.gov\/payee\/able_accounts.htm?_escaped_fragment_=&_escaped_fragment...",
+        "snippet": "More than eight million people who get monthly Social Security
+        or Supplemental Security Income (SSI) benefits need help managing their
+        money. In these cases, we appoint a relative, friend, or other interested
+        party to serve as the representative payee (payee). A payee must use the benefits
+        received ...", "dateLastCrawled": "2021-08-30T14:16:00.0000000Z"}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
         {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
@@ -251,5 +258,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version:
-  recorded_at: Fri, 11 Jun 2021 12:59:09 GMT
+  recorded_at: Tue, 31 Aug 2021 20:33:10 GMT
 recorded_with: VCR 4.0.0

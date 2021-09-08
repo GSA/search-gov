@@ -2,9 +2,9 @@
 http_interactions:
 - request:
     method: head
-    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/featured_collection//image/1520344494/original/data
+    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/featured_collection//image/1630441855/original/data
     body:
-      encoding: ASCII-8BIT
+      encoding: UTF-8
       string: ''
     headers:
       Content-Type:
@@ -12,14 +12,16 @@ http_interactions:
       Accept-Encoding:
       - ''
       User-Agent:
-      - aws-sdk-ruby2/2.10.125 ruby/2.3.5 x86_64-darwin15 resources
+      - aws-sdk-ruby2/2.11.632 ruby/2.6.6 x86_64-darwin19 resources
       X-Amz-Date:
-      - 20180306T135454Z
+      - 20210831T203055Z
+      Host:
+      - "<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com"
       X-Amz-Content-Sha256:
       - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20180306/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
-        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=9385649c1ad2c517a99919ef3b2d98e71e865231cb53d8e5faf89871be249a11
+      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20210831/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=b5a05d2823ee2e2b3433c719dcc2ddb9084832d27b16e2342da9b77369b1dab2
       Content-Length:
       - '0'
       Accept:
@@ -30,27 +32,25 @@ http_interactions:
       message: Forbidden
     headers:
       X-Amz-Request-Id:
-      - 1C575F36DD7C6495
+      - 9ZQMCZP0N4RRW4MC
       X-Amz-Id-2:
-      - FcZpT6P96vL/PfpsUXdHz3IkgM3agZP1it8DgTQnkFXTH9nZiVNCja1CTS7jzD59qco7LFaHSJU=
+      - N8iljhL5GszItL7W39BKvFiFQJSZez2YkF80fJvZbQ/2s3sse2ZI4XxCU6Z02A2iDog/jMjbtug=
       Content-Type:
       - application/xml
-      Transfer-Encoding:
-      - chunked
       Date:
-      - Tue, 06 Mar 2018 13:54:56 GMT
+      - Tue, 31 Aug 2021 20:30:55 GMT
       Server:
       - AmazonS3
     body:
       encoding: UTF-8
       string: ''
-    http_version: 
-  recorded_at: Tue, 06 Mar 2018 13:54:56 GMT
+    http_version:
+  recorded_at: Tue, 31 Aug 2021 20:30:55 GMT
 - request:
     method: head
-    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/featured_collection//image/1520344494/medium/data
+    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/featured_collection//image/1630441855/medium/data
     body:
-      encoding: ASCII-8BIT
+      encoding: UTF-8
       string: ''
     headers:
       Content-Type:
@@ -58,14 +58,16 @@ http_interactions:
       Accept-Encoding:
       - ''
       User-Agent:
-      - aws-sdk-ruby2/2.10.125 ruby/2.3.5 x86_64-darwin15 resources
+      - aws-sdk-ruby2/2.11.632 ruby/2.6.6 x86_64-darwin19 resources
       X-Amz-Date:
-      - 20180306T135456Z
+      - 20210831T203055Z
+      Host:
+      - "<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com"
       X-Amz-Content-Sha256:
       - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20180306/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
-        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=0046e23be45644a83f61b4f507cd45473050ecdab643aab92a816cbc6b111f61
+      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20210831/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=73f853a6c17a9355cf445bdb756c4adeacfd4b5c39a91da29632aee3f29eb650
       Content-Length:
       - '0'
       Accept:
@@ -76,27 +78,25 @@ http_interactions:
       message: Forbidden
     headers:
       X-Amz-Request-Id:
-      - 168F010F398BC8EB
+      - CB5SSPZY8XH84BYS
       X-Amz-Id-2:
-      - u+9h6yxHB8XBpoe+2jr5aX9sU3uVRN3xYCfmmEWFkajWBmGhXVN32u5MTQJXhUXYiQnYBW0ngbU=
+      - 4BE+LWieSq9mLPgPRQURrdpM/zwBol4bEBQFSljvWWWFYflrSoxRjkzr0+OF1A9xU4uds27obNw=
       Content-Type:
       - application/xml
-      Transfer-Encoding:
-      - chunked
       Date:
-      - Tue, 06 Mar 2018 13:54:57 GMT
+      - Tue, 31 Aug 2021 20:30:55 GMT
       Server:
       - AmazonS3
     body:
       encoding: UTF-8
       string: ''
-    http_version: 
-  recorded_at: Tue, 06 Mar 2018 13:54:58 GMT
+    http_version:
+  recorded_at: Tue, 31 Aug 2021 20:30:56 GMT
 - request:
     method: head
-    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/featured_collection//image/1520344494/small/data
+    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/featured_collection//image/1630441855/small/data
     body:
-      encoding: ASCII-8BIT
+      encoding: UTF-8
       string: ''
     headers:
       Content-Type:
@@ -104,14 +104,16 @@ http_interactions:
       Accept-Encoding:
       - ''
       User-Agent:
-      - aws-sdk-ruby2/2.10.125 ruby/2.3.5 x86_64-darwin15 resources
+      - aws-sdk-ruby2/2.11.632 ruby/2.6.6 x86_64-darwin19 resources
       X-Amz-Date:
-      - 20180306T135458Z
+      - 20210831T203056Z
+      Host:
+      - "<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com"
       X-Amz-Content-Sha256:
       - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20180306/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
-        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=821d178d5425b904d7cdfc877b7f3fa41775e282ed415d235b9dbe452b1e5de8
+      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20210831/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=bf2ca33ffe8bb9e9c850cefb731799979a553f28959585a447b63990fe95ef1f
       Content-Length:
       - '0'
       Accept:
@@ -122,27 +124,25 @@ http_interactions:
       message: Forbidden
     headers:
       X-Amz-Request-Id:
-      - BFA7BC41301C8EE7
+      - CB5VWFN95HH1334V
       X-Amz-Id-2:
-      - fyNLL4WZ8bYvcpAKX5Ufi73+v5ZHxJpqNKAZzk9xVIgufVjAjq4YdMPAFxeXDht+zkzWjG4Br5o=
+      - Adv7dM77DdbqY424pJqfmoLDAxw+YEOzFZwvSeOhVu7Hu4TJxw3cqtWT33BwfV672k83BvwuySI=
       Content-Type:
       - application/xml
-      Transfer-Encoding:
-      - chunked
       Date:
-      - Tue, 06 Mar 2018 13:54:58 GMT
+      - Tue, 31 Aug 2021 20:30:55 GMT
       Server:
       - AmazonS3
     body:
       encoding: UTF-8
       string: ''
-    http_version: 
-  recorded_at: Tue, 06 Mar 2018 13:54:59 GMT
+    http_version:
+  recorded_at: Tue, 31 Aug 2021 20:30:56 GMT
 - request:
     method: head
-    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/featured_collection//image/1520344499/original/data
+    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/featured_collection//image/1630441856/original/data
     body:
-      encoding: ASCII-8BIT
+      encoding: UTF-8
       string: ''
     headers:
       Content-Type:
@@ -150,14 +150,16 @@ http_interactions:
       Accept-Encoding:
       - ''
       User-Agent:
-      - aws-sdk-ruby2/2.10.125 ruby/2.3.5 x86_64-darwin15 resources
+      - aws-sdk-ruby2/2.11.632 ruby/2.6.6 x86_64-darwin19 resources
       X-Amz-Date:
-      - 20180306T135459Z
+      - 20210831T203056Z
+      Host:
+      - "<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com"
       X-Amz-Content-Sha256:
       - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20180306/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
-        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=cac62f38b0005f966481a0128adac323f522c99d0c9d7696e7dd79d823f699ed
+      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20210831/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=b3344ab56c3e625ea157faf835039861c9f68ff3ba2d7e2755de41e0cd3b5dff
       Content-Length:
       - '0'
       Accept:
@@ -168,27 +170,25 @@ http_interactions:
       message: Forbidden
     headers:
       X-Amz-Request-Id:
-      - F50AF085385CAC66
+      - CB5MR0580A8YW2BK
       X-Amz-Id-2:
-      - 7hLB8VO5fSQr1FUACPsYDP/0/yd5wLj5U0BjGN4fG+buwQlhXLrWIzcijQeqKRqNzM2ghtyunyo=
+      - lDzP20o35+3zjaN+K+k54gVHkDGmyxzqdeA0+7+y1CY9tTItKHmvxKrK3jIkj+NtCM6akyI7u9I=
       Content-Type:
       - application/xml
-      Transfer-Encoding:
-      - chunked
       Date:
-      - Tue, 06 Mar 2018 13:55:00 GMT
+      - Tue, 31 Aug 2021 20:30:55 GMT
       Server:
       - AmazonS3
     body:
       encoding: UTF-8
       string: ''
-    http_version: 
-  recorded_at: Tue, 06 Mar 2018 13:55:01 GMT
+    http_version:
+  recorded_at: Tue, 31 Aug 2021 20:30:56 GMT
 - request:
     method: head
-    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/featured_collection//image/1520344499/medium/data
+    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/featured_collection//image/1630441856/medium/data
     body:
-      encoding: ASCII-8BIT
+      encoding: UTF-8
       string: ''
     headers:
       Content-Type:
@@ -196,14 +196,16 @@ http_interactions:
       Accept-Encoding:
       - ''
       User-Agent:
-      - aws-sdk-ruby2/2.10.125 ruby/2.3.5 x86_64-darwin15 resources
+      - aws-sdk-ruby2/2.11.632 ruby/2.6.6 x86_64-darwin19 resources
       X-Amz-Date:
-      - 20180306T135501Z
+      - 20210831T203056Z
+      Host:
+      - "<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com"
       X-Amz-Content-Sha256:
       - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20180306/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
-        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=75b4d9c7788e6fa2cdb0621429d6c4f049710ea07773d19b374a8cf1ab90c4b2
+      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20210831/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=1451d6c3b4482352ed9a5820d0e1e4dd5720af6b72dab2601d3dcf59a00424ad
       Content-Length:
       - '0'
       Accept:
@@ -214,27 +216,25 @@ http_interactions:
       message: Forbidden
     headers:
       X-Amz-Request-Id:
-      - 002CB7A78AC16914
+      - CB5WJN13N4B05VCY
       X-Amz-Id-2:
-      - UUWERYLpp3HrUUK6TlCLvak3d40GNFCBJlRxnyh5U52jo5xobGdg8Q0SbLbFu9aenvTDKlwUxhA=
+      - 26v6WxplyHhlNcvxsNJvC9flOqPvpUh6meFrGmgLWNe/CDcvLOcMIIFc4y6kOgwb3Dh6arzDXO8=
       Content-Type:
       - application/xml
-      Transfer-Encoding:
-      - chunked
       Date:
-      - Tue, 06 Mar 2018 13:55:01 GMT
+      - Tue, 31 Aug 2021 20:30:56 GMT
       Server:
       - AmazonS3
     body:
       encoding: UTF-8
       string: ''
-    http_version: 
-  recorded_at: Tue, 06 Mar 2018 13:55:02 GMT
+    http_version:
+  recorded_at: Tue, 31 Aug 2021 20:30:56 GMT
 - request:
     method: head
-    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/featured_collection//image/1520344499/small/data
+    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/featured_collection//image/1630441856/small/data
     body:
-      encoding: ASCII-8BIT
+      encoding: UTF-8
       string: ''
     headers:
       Content-Type:
@@ -242,14 +242,16 @@ http_interactions:
       Accept-Encoding:
       - ''
       User-Agent:
-      - aws-sdk-ruby2/2.10.125 ruby/2.3.5 x86_64-darwin15 resources
+      - aws-sdk-ruby2/2.11.632 ruby/2.6.6 x86_64-darwin19 resources
       X-Amz-Date:
-      - 20180306T135502Z
+      - 20210831T203056Z
+      Host:
+      - "<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com"
       X-Amz-Content-Sha256:
       - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20180306/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
-        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=4ddffc8bba0a184c2844fcbced13d8fcf3dd83fab03dc2dea4690a8f75e19abd
+      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20210831/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=7430b99b737decf84e4e06a0b6bf216fe3d89ddcf64d9229e18e018197b08113
       Content-Length:
       - '0'
       Accept:
@@ -260,27 +262,25 @@ http_interactions:
       message: Forbidden
     headers:
       X-Amz-Request-Id:
-      - 3A1B9CF65845A74E
+      - CB5NT90DXDWBNB5T
       X-Amz-Id-2:
-      - MtHrM85vszWhzhA1zwwp4+FtlUs8inzXs9kIDKDCjXRyt6K2u7FovHPQR7bEuT+C5XIx8wxrbCQ=
+      - xefmJjUn/V/TnUlY9KueyE/7HWJvwsGSsqzmOqBNmWEtrw7Z5onrdVT2sE1lGSryUpeCsFeFQnI=
       Content-Type:
       - application/xml
-      Transfer-Encoding:
-      - chunked
       Date:
-      - Tue, 06 Mar 2018 13:55:03 GMT
+      - Tue, 31 Aug 2021 20:30:55 GMT
       Server:
       - AmazonS3
     body:
       encoding: UTF-8
       string: ''
-    http_version: 
-  recorded_at: Tue, 06 Mar 2018 13:55:03 GMT
+    http_version:
+  recorded_at: Tue, 31 Aug 2021 20:30:56 GMT
 - request:
     method: head
-    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/featured_collection//image/1520344503/original/data
+    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/featured_collection//image/1630441856/original/data
     body:
-      encoding: ASCII-8BIT
+      encoding: UTF-8
       string: ''
     headers:
       Content-Type:
@@ -288,14 +288,16 @@ http_interactions:
       Accept-Encoding:
       - ''
       User-Agent:
-      - aws-sdk-ruby2/2.10.125 ruby/2.3.5 x86_64-darwin15 resources
+      - aws-sdk-ruby2/2.11.632 ruby/2.6.6 x86_64-darwin19 resources
       X-Amz-Date:
-      - 20180306T135504Z
+      - 20210831T203056Z
+      Host:
+      - "<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com"
       X-Amz-Content-Sha256:
       - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20180306/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
-        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=f237adefa9e29da41e92440cf7d8fa4878eaf14c2e891b9d08a51fddac5340f6
+      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20210831/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=b3344ab56c3e625ea157faf835039861c9f68ff3ba2d7e2755de41e0cd3b5dff
       Content-Length:
       - '0'
       Accept:
@@ -306,27 +308,25 @@ http_interactions:
       message: Forbidden
     headers:
       X-Amz-Request-Id:
-      - 56E9663EC7500616
+      - CB5SPEE9W4R078N1
       X-Amz-Id-2:
-      - noI18EGdDTOcsStaQ5tZrCszGZLoVJc/xo6xxvro+doPLyfUOXdAptnXTM708YQAq+FOp9QjXuk=
+      - LSAFQBDZJX6xIrOJ9pF3Hy44ZnEB1KKyWvPzpLVQWnSexBR8Rqfe5DNkL5AoSgNGy9z5TB1fZ4g=
       Content-Type:
       - application/xml
-      Transfer-Encoding:
-      - chunked
       Date:
-      - Tue, 06 Mar 2018 13:55:04 GMT
+      - Tue, 31 Aug 2021 20:30:56 GMT
       Server:
       - AmazonS3
     body:
       encoding: UTF-8
       string: ''
-    http_version: 
-  recorded_at: Tue, 06 Mar 2018 13:55:05 GMT
+    http_version:
+  recorded_at: Tue, 31 Aug 2021 20:30:56 GMT
 - request:
     method: head
-    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/featured_collection//image/1520344503/medium/data
+    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/featured_collection//image/1630441856/medium/data
     body:
-      encoding: ASCII-8BIT
+      encoding: UTF-8
       string: ''
     headers:
       Content-Type:
@@ -334,14 +334,16 @@ http_interactions:
       Accept-Encoding:
       - ''
       User-Agent:
-      - aws-sdk-ruby2/2.10.125 ruby/2.3.5 x86_64-darwin15 resources
+      - aws-sdk-ruby2/2.11.632 ruby/2.6.6 x86_64-darwin19 resources
       X-Amz-Date:
-      - 20180306T135505Z
+      - 20210831T203056Z
+      Host:
+      - "<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com"
       X-Amz-Content-Sha256:
       - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20180306/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
-        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=ca4b5b25edf6f57094b3ba5666c8257bc31be11a92931b7b70c5194492050b69
+      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20210831/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=1451d6c3b4482352ed9a5820d0e1e4dd5720af6b72dab2601d3dcf59a00424ad
       Content-Length:
       - '0'
       Accept:
@@ -352,27 +354,25 @@ http_interactions:
       message: Forbidden
     headers:
       X-Amz-Request-Id:
-      - 1108C4CC0B94F39D
+      - BYH03AHX08S14XVN
       X-Amz-Id-2:
-      - RrRh4/pEsD8Q1nPPFPAnskIdf6Xo3BbERd/wc7xfAEVE/6OdcfkbpAmZaKy700fKCY9XMmGCFI8=
+      - 1NGfE6F7bPYds6CPLqiTsuu15mYukECwFuvd4u1v62on0PDqNC7yUVGCpz8EfT0k2fSanrFLz04=
       Content-Type:
       - application/xml
-      Transfer-Encoding:
-      - chunked
       Date:
-      - Tue, 06 Mar 2018 13:55:06 GMT
+      - Tue, 31 Aug 2021 20:30:56 GMT
       Server:
       - AmazonS3
     body:
       encoding: UTF-8
       string: ''
-    http_version: 
-  recorded_at: Tue, 06 Mar 2018 13:55:07 GMT
+    http_version:
+  recorded_at: Tue, 31 Aug 2021 20:30:57 GMT
 - request:
     method: head
-    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/featured_collection//image/1520344503/small/data
+    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/featured_collection//image/1630441856/small/data
     body:
-      encoding: ASCII-8BIT
+      encoding: UTF-8
       string: ''
     headers:
       Content-Type:
@@ -380,14 +380,16 @@ http_interactions:
       Accept-Encoding:
       - ''
       User-Agent:
-      - aws-sdk-ruby2/2.10.125 ruby/2.3.5 x86_64-darwin15 resources
+      - aws-sdk-ruby2/2.11.632 ruby/2.6.6 x86_64-darwin19 resources
       X-Amz-Date:
-      - 20180306T135507Z
+      - 20210831T203057Z
+      Host:
+      - "<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com"
       X-Amz-Content-Sha256:
       - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20180306/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
-        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=8f62f694dca91730fba3b98f3108c17ca2b950a7a47d8194c9508c8ec2ef38cb
+      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20210831/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=faed086c3e39c31515d0ecaeba407475332d1308a0f43f82a589b45503235a61
       Content-Length:
       - '0'
       Accept:
@@ -398,20 +400,18 @@ http_interactions:
       message: Forbidden
     headers:
       X-Amz-Request-Id:
-      - 19933E594245AD1F
+      - BYH6K1HJ15B3YPC0
       X-Amz-Id-2:
-      - g0xut+ytpTXw7G7+EdAgl3NOPTsT7fVRDrfJOItRJOmVvKV7njyKmAKiWarqza/BOyBF5jwRtas=
+      - GOVA7gDlD+r63rwj3W+JQ0Rhq16lQzm1XV5lKKWDcvVOn3cJ8IcZJ85wh1X6/vw9MxoAGc6+Yk0=
       Content-Type:
       - application/xml
-      Transfer-Encoding:
-      - chunked
       Date:
-      - Tue, 06 Mar 2018 13:55:09 GMT
+      - Tue, 31 Aug 2021 20:30:57 GMT
       Server:
       - AmazonS3
     body:
       encoding: UTF-8
       string: ''
-    http_version: 
-  recorded_at: Tue, 06 Mar 2018 13:55:09 GMT
+    http_version:
+  recorded_at: Tue, 31 Aug 2021 20:30:57 GMT
 recorded_with: VCR 4.0.0

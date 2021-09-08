@@ -31,172 +31,202 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Fri, 31 Aug 2018 20:57:13 GMT
+      - Tue, 31 Aug 2021 20:31:45 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
       Bingapis-Traceid:
-      - 158025D320AC4B7FA76AEC8B3CA4B174
+      - 8C0622A0133348B38B671050A6BC65FF
       Bingapis-Sessionid:
-      - E7863553C1F74DF2A2BBFF305500D372
+      - 613C52362B0A4927BA4E841509B8A382
       X-Msedge-Clientid:
-      - 0BE3B47A8B986A9C2B34B8268AF46B8E
+      - 17ADC6E6295D6DE62024D64228836C7B
       X-Msapi-Userstate:
-      - b4ad
+      - '5677'
       Bingapis-Market:
       - en-US
       X-Search-Responseinfo:
-      - InternalResponseTime=228,MSDatacenter=BN2
+      - InternalResponseTime=305,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
       X-Msedge-Ref:
-      - 'Ref A: 158025D320AC4B7FA76AEC8B3CA4B174 Ref B: SN1EDGE1022 Ref C: 2018-08-31T20:58:13Z'
+      - 'Ref A: 8C0622A0133348B38B671050A6BC65FF Ref B: BLUEDGE0607 Ref C: 2021-08-31T20:32:45Z'
       Apim-Request-Id:
-      - 01e16029-3ee7-483f-b5b4-43507112dc16
+      - 9222f693-64e3-4ca8-9337-20215c4f503c
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
       - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Fri, 31 Aug 2018 20:58:13 GMT
+      - Tue, 31 Aug 2021 20:32:44 GMT
     body:
       encoding: UTF-8
       string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "sailing
         dingies", "alteredQuery": "sailing dinghies", "alterationDisplayQuery": "sailing
         dinghies", "alterationOverrideQuery": "+sailing dingies", "adultIntent": false},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=sailing+dingies",
-        "totalEstimatedMatches": 8130000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
-        "name": "Dinghy sailing - Wikipedia", "url": "https:\/\/en.wikipedia.org\/wiki\/Dinghy_sailing",
-        "about": [{"name": "Dinghy sailing"}, {"name": "Dinghy sailing"}], "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/en.wikipedia.org\/wiki\/Dinghy_sailing", "snippet":
-        "Dinghy sailing is the activity of sailing small boats by using five essential
-        controls: the sails; the foils (i.e. the daggerboard or centreboard and rudder
-        and ...", "dateLastCrawled": "2018-08-20T13:53:00.0000000Z", "language": "en",
-        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
-        "name": "Best Dinghy | Sailing World", "url": "https:\/\/www.sailingworld.com\/best-dinghy-melges-14",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sailingworld.com\/best-dinghy-melges-14",
-        "snippet": "The Melges 14 delivers on a quick and modern singlehander and
-        earns its stripes as 2016''s Best Dinghy.", "dateLastCrawled": "2018-08-23T21:49:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
-        "name": "25 best beginner sailing dinghies - boats.com", "url": "https:\/\/uk.boats.com\/boat-buyers-guide\/25-best-beginner-sailing-dinghies\/",
-        "about": [{"name": "Dinghy sailing"}], "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/uk.boats.com\/...\/25-best-beginner-sailing-dinghies", "snippet":
-        "There is a lot of choice on the dinghy sailing market, so which is the best
-        sailing dinghy for beginners? Paula Irish reviews the market.", "dateLastCrawled":
-        "2018-08-23T23:25:00.0000000Z", "language": "en", "isNavigational": false},
+        "totalEstimatedMatches": 3230000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "25 Best Beginner Sailing Dinghies - boats.com", "url": "https:\/\/www.boats.com\/boat-buyers-guide\/best-beginner-sailing-dinghies\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.boats.com\/boat-buyers-guide\/best-beginner-sailing-dinghies",
+        "snippet": "Sailing schools, clubs and training centers use a variety of boats
+        with beginners, including singlehanders such as the Pico, Hartley 10 and the
+        RS Quba, the latter having three rigs catering from entry level to more experienced
+        sailors. There’s also a range of larger training dinghies from builders such
+        as RS, Topper, Laser and Hartley Boats.", "dateLastCrawled": "2021-08-28T05:13:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "The Best Sailing Dinghies for Beginners", "url": "https:\/\/www.deepsailing.com\/blog\/sailing-dinghies-for-beginners",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.deepsailing.com\/blog\/sailing-dinghies-for-beginners",
+        "snippet": "Hartley 10. credit: sailingdinghies.ch. ‍. These Hartley 10 dinghies
+        are very popular in many sailing schools around the world. Capable of holding
+        two people, it''s a great boat to get started learning the ropes on. Benefits
+        of this dinghy include: Lightweight & stable. Easy to store & transport. CE
+        rated for 2 people.", "dateLastCrawled": "2021-08-26T01:29:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Best Beginner Sailing Dinghies To Buy", "url": "https:\/\/www.deepsailing.com\/blog\/what-sailing-dinghy-should-i-buy",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.deepsailing.com\/blog\/what-sailing-dinghy-should-i-buy",
+        "snippet": "2. Laser Pico Dinghy. courtesy of Aquasail.com. ‍. Another entry
+        level boat, this is well worthy of inclusion in the list of the best dinghies
+        for beginners. With a high boom and a spacious cockpit, it’s great to learn
+        on and is very popular in sailing schools around the world.", "dateLastCrawled":
+        "2021-08-28T00:06:00.0000000Z", "language": "en", "isNavigational": false},
         {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3", "name":
-        "Sailing Dinghy | Portland Pudgy", "url": "http:\/\/www.portlandpudgy.com\/sailing-dinghy\/",
-        "about": [{"name": "Dinghy sailing"}], "isFamilyFriendly": true, "displayUrl":
-        "www.portlandpudgy.com\/sailing-dinghy", "snippet": "Portland Pudgy Sailing
-        Dinghy The sail kit makes your Portland Pudgy a fun, safe sailing dinghy.
-        It also makes it a proactive self-rescue boat.", "dateLastCrawled": "2018-08-19T13:56:00.0000000Z",
+        "Performance Wooden Sailing Dinghies - #Dash Dinghies", "url": "https:\/\/dashdinghies.com\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/dashdinghies.com", "snippet":
+        "The #DASH12 performance sailing dinghy was created following a lunchtime
+        conversation between team members at Devon Wooden Boats Ltd. We were reminiscing
+        about our younger years of sailing single handed performance dinghies. So
+        we decided to design a boat we’d love to sail. We started a separate company
+        Dash Dinghies Ltd – to avoid ...", "dateLastCrawled": "2021-08-28T14:41:00.0000000Z",
         "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
-        "name": "Trinka-The Best Rowing\/Sailing Dinghy in the World.", "url": "http:\/\/www.trinka.com\/",
-        "about": [{"name": "Dinghy sailing"}], "isFamilyFriendly": true, "displayUrl":
-        "www.trinka.com", "snippet": "Trinka-The best rowing dinghy and sailing yacht
-        dinghy in the world.", "dateLastCrawled": "2018-08-26T12:44:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
-        "name": "Sailing dinghy, Navigation tender - All boating and marine ...",
-        "url": "http:\/\/www.nauticexpo.com\/boat-manufacturer\/sailing-dinghy-1760.html",
-        "about": [{"name": "Dinghy sailing"}], "isFamilyFriendly": true, "displayUrl":
-        "www.nauticexpo.com\/boat-manufacturer\/sailing-dinghy-1760.html", "snippet":
-        "Find your sailing dinghy easily amongst the 178 products from the leading
-        brands (Walker Bay, Laser Performance, ...) on NauticExpo, the boating and
-        maritime industry specialist for your professional purchases.", "dateLastCrawled":
-        "2018-08-20T13:36:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6", "name":
-        "Dinghy | Discover Boating", "url": "https:\/\/www.discoverboating.com\/buying\/boat\/dinghies",
-        "about": [{"name": "Dinghy"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.discoverboating.com\/buying\/boat\/dinghies",
-        "snippet": "Dinghies come in a wide variety of types, ... A sail-equipped
-        dinghy is also a great first boat for introducing children to sailing. Which
-        Engine is Right For Your Boat.", "dateLastCrawled": "2018-08-23T10:19:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
         "name": "Sailing Dinghies for sale, used yachts, new sailing dinghy ...",
-        "url": "http:\/\/sailingdinghies.apolloduck.com\/", "about": [{"name": "Dinghy
-        sailing"}], "isFamilyFriendly": true, "displayUrl": "sailingdinghies.apolloduck.com",
-        "snippet": "Sailing dinghies, sailing dinghies for sale, Apollo Duck new and
-        used dinghy sales. Sell your dinghy fast with a free photo advert. Find your
-        dinghy in our database of sailing dinghies, sailing boats, skiffs, beach cats,
-        keel boats, catamarans, one designs and racers.", "dateLastCrawled": "2018-08-25T01:21:00.0000000Z",
+        "url": "https:\/\/sailingdinghies.apolloduck.com\/", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/sailingdinghies.apolloduck.com", "snippet": "Sailing
+        dinghies, sailing dinghies for sale, Apollo Duck new and used dinghy sales.
+        Sell your dinghy fast with a free photo advert. Find your dinghy in our database
+        of sailing dinghies, sailing boats, skiffs, beach cats, keel boats, catamarans,
+        one designs and racers.", "dateLastCrawled": "2021-08-23T04:53:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "RS SAILING - The world''s largest sailing dinghy manufacturer.",
+        "url": "https:\/\/www.rssailing.com\/", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.rssailing.com", "snippet": "RS Sailing was born from a passion
+        to use the latest design and technology to create inspiring boats. Evolving
+        from our heritage in flat-out racing classes, the RS Sailing range has grown
+        to include boats for beginners, families, clubs and schools, developed using
+        that same desire to move the game forward.", "dateLastCrawled": "2021-08-27T20:33:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Choose Simple Sailing Dinghies for cheap family sailing ...", "url":
+        "https:\/\/www.storerboatplans.com\/boatplans\/inexpensive-simple-sailing-dinghy-learn\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.storerboatplans.com\/boatplans\/inexpensive-simple-sailing-dinghy-learn",
+        "snippet": "Sailing Dinghies are the most common introduction to sailing basics
+        – and the best teachers. Sailing dinghies are the most popular sailing boats,
+        responsive and not expensive – good for sailing basics, fast – good for the
+        experienced, relatively easy to store and available inexpensively second hand
+        or build from plywood from a sailing dinghy plan.", "dateLastCrawled": "2021-08-28T07:16:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "25 best beginner sailing dinghies - boats.com", "url": "https:\/\/uk.boats.com\/boat-buyers-guide\/25-best-beginner-sailing-dinghies\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/uk.boats.com\/boat-buyers-guide\/25-best-beginner-sailing-dinghies",
+        "snippet": "Sailing schools, clubs and training centres use a variety of boats
+        with beginners, including singlehanders such as the Pico, Hartley 10 and the
+        RS Quba, the latter having three rigs catering from entry level to more experienced
+        sailors. There’s also a range of larger training dinghies from builders such
+        as RS, Topper, Laser and Hartley Boats.", "dateLastCrawled": "2021-08-26T14:24:00.0000000Z",
         "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
-        "name": "Sailing Dinghies that You Can Build! - CLC boats", "url": "https:\/\/www.clcboats.com\/shop\/wooden-sailboat-kits\/sailing-dinghies\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.clcboats.com\/shop\/wooden-sailboat-kits\/sailing-dinghies",
-        "snippet": "Tenderly 10-foot Dinghy. Here''s a beautiful 10-foot dinghy or
-        daysailer that slots between our 7''9\" Eastport Pram and the 11''7\" Passagemaker
-        Dinghy.", "dateLastCrawled": "2018-08-18T15:04:00.0000000Z", "language": "en",
-        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
-        "name": "Dinghy - Wikipedia", "url": "https:\/\/en.wikipedia.org\/wiki\/Dingy",
-        "about": [{"name": "Dinghy"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/en.wikipedia.org\/wiki\/Dingy",
-        "snippet": "A typical sailing rig for a dinghy is a gunter with a two-piece
-        folding mast stepped through a thwart and resting on the keel.", "dateLastCrawled":
-        "2018-08-20T02:08:00.0000000Z", "language": "en", "isNavigational": false},
+        "name": "The world''s largest sailing dinghy & small-sailboat ...", "url":
+        "https:\/\/www.rssailing.com\/en\/", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.rssailing.com\/en", "snippet": "RS Sailing was born from a
+        passion to use the latest design and technology to create inspiring boats.
+        Evolving from our heritage in flat-out racing classes, the RS Sailing range
+        has grown to include boats for beginners, families, clubs and schools, developed
+        using that same desire to move the game forward.", "dateLastCrawled": "2021-08-27T23:19:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Dinghy (sail) boats for sale - boats.com", "url": "https:\/\/www.boats.com\/boats-for-sale\/?class=sail-dinghy",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.boats.com\/boats-for-sale\/?class=sail-dinghy",
+        "snippet": "Ideal for watersports these Dinghy (Sail) boats vary in length
+        from 8ft to 69ft and can carry to passengers. There are a wide range of Dinghy
+        (Sail) boats for sale from popular brands like Catalina, AR VAG and Alu Marine
+        with 8 new and 26 used and an average price of $82,338 with boats ranging
+        from as little as $471 and $1,646,763. Sailing Dinghies", "dateLastCrawled":
+        "2021-08-27T11:17:00.0000000Z", "language": "en", "isNavigational": false},
         {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10", "name":
-        "Gig Harbor Boat Works | Rowing and Sailing Dinghies ...", "url": "http:\/\/www.ghboats.com\/",
-        "about": [{"name": "Gig Harbor Boat Works"}, {"name": "Whitehall rowboat"}],
-        "isFamilyFriendly": true, "displayUrl": "www.ghboats.com", "snippet": "Gig
-        Harbor Boat Works is the builder of a unique line of custom small boats for
-        rowing and sailing. Our boats are modern reproductions of traditional working
-        boats, used by people who earned their living using only wind and oar.", "dateLastCrawled":
-        "2018-08-21T12:19:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11", "name":
-        "Singlehanded sailing dinghies - boats.com", "url": "https:\/\/uk.boats.com\/reviews\/singlehanded-sailing-dinghies\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/uk.boats.com\/reviews\/singlehanded-sailing-dinghies",
-        "snippet": "We look at the world of singlehanded sailing dinghies in the UK,
-        whether you are looking for a dinghy that''s easy to sail or a real challenge
-        with a trapeze or even foils, this is the guide for you.", "dateLastCrawled":
-        "2018-08-18T14:02:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12", "name":
-        "Dinghy Sailing - Topic - YouTube", "url": "https:\/\/www.youtube.com\/channel\/UC1aj5lpRZiCfzVgmN95Pq3Q",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.youtube.com\/channel\/UC1aj5lpRZiCfzVgmN95Pq3Q",
-        "snippet": "Dinghy sailing is the activity of sailing small boats by using
-        five essential controls: the sails the foils the trim side-to-side balance
-        of the dinghy by hi...", "dateLastCrawled": "2018-08-14T15:21:00.0000000Z",
+        "Best Dinghy Sailboat, Melges 14 Review | Sailing World", "url": "https:\/\/www.sailingworld.com\/best-dinghy-melges-14\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sailingworld.com\/best-dinghy-melges-14",
+        "snippet": "Best Dinghy: Melges 14 Review. The Melges 14 delivers on a quick
+        and modern singlehander and earns its stripes as one of the best dinghies
+        you can buy.", "dateLastCrawled": "2021-08-26T10:34:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Dinghy Sailboat | Dinghy with Sail - Dinghy | Rowboat", "url": "https:\/\/portlandpudgy.com\/sailing-dinghy\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/portlandpudgy.com\/sailing-dinghy",
+        "snippet": "The sail kit makes your Portland Pudgy a fun, safe sailing dinghy.
+        It also makes it a dynamic self-rescue boat.For answers to frequently asked
+        questions about the Portland Pudgy sailing dinghy, click here. The Portland
+        Pudgy was designed as a dynamic lifeboat for blue water sailors, that can
+        be sailed to safety.", "dateLastCrawled": "2021-08-26T07:54:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Dinghy Sailing: Beginner''s Guide - Better Sailing", "url": "https:\/\/bettersailing.com\/dinghy-sailing-beginners-guide\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/bettersailing.com\/dinghy-sailing-beginners-guide",
+        "snippet": "Sailing on a Dinghy or Small Boat is a good choice in learning
+        how to sail. This is because Dinghies are simple, easy to maneuver, and very
+        responsive to your actions as well as to Wind conditions. Sailing on a Dinghy
+        will give beginners a sort of training ground – they will learn the basics
+        and understand the different important aspects of the sport. Learn what this
+        Sailing Variation is all ...", "dateLastCrawled": "2021-08-28T21:18:00.0000000Z",
         "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
-        "name": "Sailing Chandlery (Previously Dinghy Rope) | Online ...", "url":
-        "https:\/\/www.sailingchandlery.com\/", "about": [{"name": "Sailing Chandlery
-        - Sporting Goods Store - Benfleet, Essex, United Kingdom  - 9 Reviews - 1,125
-        Photos"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sailingchandlery.com",
-        "snippet": "Sailing Chandlery (previously Dinghy Rope) is an online chandlery
-        and rope suppliers for marine and boat rope. We stock a variety of sailing
-        boat ropes from Kingfisher and Marlow at less than the RRP with fast delivery.
-        10% off your first order.", "dateLastCrawled": "2018-08-24T13:32:00.0000000Z",
+        "name": "Best portable sailing dinghies for under £5k - Yachting ...", "url":
+        "https:\/\/www.yachtingmonthly.com\/gear\/best-portable-sailing-dinghies-for-under-5k-73191",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.yachtingmonthly.com\/gear\/best-portable-sailing-dinghies-for-under-5k-73191",
+        "snippet": "We put six portable sailing dinghies under £5,000 to the test
+        to see which one is the best all-rounder and really deserves a place on your
+        boat. Six inflatable sailing dinghies were tested by the team TAGS: boat Folding
+        tenders gear Tender.", "dateLastCrawled": "2021-08-26T20:19:00.0000000Z",
         "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
-        "name": "In Search of the Perfect Dinghy: - www.ruach.net: Dinghy ...", "url":
-        "http:\/\/www.ruach.net\/Dinghy.html", "about": [{"name": "Dinghy sailing"}],
-        "isFamilyFriendly": true, "displayUrl": "www.ruach.net\/Dinghy.html", "snippet":
-        "Another line of boats that are being brought into the US Market are made
-        by RS Sailing. In the US, probably the best known model is the RS Feva, a
-        12'' two-handed, rotomolded polyethelyne dinghy which is becoming increasingly
-        popular among youth sailing programs.", "dateLastCrawled": "2018-08-24T06:30:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
-        "name": "Sailing dinghy, Navigation tender - All boating and marine ...",
-        "url": "http:\/\/www.nauticexpo.com\/boat-manufacturer\/sailing-dinghy-1760-_2.html",
-        "isFamilyFriendly": true, "displayUrl": "www.nauticexpo.com\/boat-manufacturer\/sailing-dinghy-1760-_2.html",
-        "snippet": "Find your sailing dinghy easily amongst the 178 products from
-        the leading brands on NauticExpo, the boating and maritime industry specialist
-        for your professional purchases.", "dateLastCrawled": "2018-08-16T01:08:00.0000000Z",
+        "name": "Single-handed sailing dinghy - All boating and marine ...", "url":
+        "https:\/\/www.nauticexpo.com\/boat-manufacturer\/single-handed-sailing-dinghy-22584.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nauticexpo.com\/boat-manufacturer\/single-handed-sailing-dinghy-22584.html",
+        "snippet": "A single-handed sailing dinghy is small, fast and has a retractable
+        centerboard. It is often cat-rigged, with a mainsail and no jib. Applications.
+        Both individual enthusiasts and sailing clubs use these craft for recreation,
+        training and racing. The best-known designs include the Optimist, the Finn
+        and the Laser.", "dateLastCrawled": "2021-08-23T11:18:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "The Definitive Guide to Different Types of Dinghies ...", "url":
+        "https:\/\/nomadicsailing.com\/blog\/types-of-dinghies\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/nomadicsailing.com\/blog\/types-of-dinghies",
+        "snippet": "These sailing dinghies are perfect for many different sailing
+        environments and are my preferred type of sailing dinghy. It’s extremely common
+        to find cruiser-racer dinghies made out of fiberglass. Just like a cruising
+        dinghy, the experience of being on a cruiser-racer dinghy is comfortable and
+        provides good stability when out on the water.", "dateLastCrawled": "2021-08-24T04:18:00.0000000Z",
         "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
-        "name": "Sailing Dinghy | eBay", "url": "https:\/\/www.ebay.com\/bhp\/sailing-dinghy",
-        "about": [{"name": "Dinghy sailing"}], "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.ebay.com\/bhp\/sailing-dinghy", "snippet": "Find great deals
-        on eBay for Sailing Dinghy in Paragliding Equipment and Accessories. Shop
-        with confidence.", "dateLastCrawled": "2018-08-22T17:37:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
-        "name": "Sailing Dinghies - boats.com", "url": "https:\/\/www.boats.com\/explore\/boats\/dinghy-sail\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.boats.com\/explore\/boats\/dinghy-sail",
-        "snippet": "When it comes to sailing dinghies, there are two main types to
-        consider: singlehanded sailing dinghies or doublehanded sailing dinghies.
-        Discover more.", "dateLastCrawled": "2018-08-26T08:54:00.0000000Z", "language":
+        "name": "Sailing Dinghies for sale UK, used sailing dinghies, new ...", "url":
+        "https:\/\/sailingdinghies.apolloduck.co.uk\/", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/sailingdinghies.apolloduck.co.uk", "snippet": "Sailing
+        Dinghies, sailing dinghies for sale UK, Apollo Duck new and used dinghy sales.
+        Sell your boat fast with a free photo advert. Find your boat in our database
+        of yachts, power boats, superyachts, cruisers, houseboats, fishing boats and
+        ships.", "dateLastCrawled": "2021-08-27T17:18:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Singlehanded sailing dinghies - boats.com", "url": "https:\/\/uk.boats.com\/reviews\/singlehanded-sailing-dinghies\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/uk.boats.com\/reviews\/singlehanded-sailing-dinghies",
+        "snippet": "Singlehanded sailing dinghies. We look at the world of singlehanded
+        sailing dinghies in the UK, whether you are looking for a dinghy that''s easy
+        to sail or a real challenge with a trapeze or even foils, this is the guide
+        for you.", "dateLastCrawled": "2021-08-26T21:36:00.0000000Z", "language":
         "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
-        "name": "Buy Sailing Dinghies & Boats | eBay", "url": "https:\/\/www.ebay.co.uk\/b\/Sailing-Dinghies-Boats\/98955\/bn_2318024",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ebay.co.uk\/b\/Sailing-Dinghies-Boats\/98955",
-        "snippet": "Shop from the world''s largest selection and best deals for Sailing
-        Dinghies & Boats. Shop with confidence on eBay!", "dateLastCrawled": "2018-08-23T11:48:00.0000000Z",
+        "name": "Gull Dinghy Sailing - Seven Waves - YouTube", "url": "https:\/\/www.youtube.com\/watch?v=cAzuAXNYyj4",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.youtube.com\/watch?v=cAzuAXNYyj4",
+        "snippet": "Various clips from the Gull Dinghy Sailing Blog - The 7th Wave
+        is significant to superstitious sailors.", "dateLastCrawled": "2021-07-22T11:19:00.0000000Z",
         "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
-        "name": "sailing dinghy | eBay", "url": "https:\/\/www.ebay.com\/sch\/i.html?_nkw=sailing+dinghy",
-        "about": [{"name": "Dinghy sailing"}], "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.ebay.com\/sch\/i.html?_nkw=sailing+dinghy", "snippet": "Find
-        great deals on eBay for sailing dinghy. Shop with confidence.", "dateLastCrawled":
-        "2018-08-19T19:11:00.0000000Z", "language": "en", "isNavigational": false}]},
+        "name": "Sailing Dinghies for sale | Boats and Outboards", "url": "https:\/\/www.boatsandoutboards.co.uk\/Sailboats\/Sailing-dinghies-for-sale",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.boatsandoutboards.co.uk\/Sailboats\/Sailing-dinghies-for-sale",
+        "snippet": "Sailing Dinghies for sale in and around the UK. Buy your Topper,
+        Mirror, Avon and Laser sailing dinghy at Boats and Outboards", "dateLastCrawled":
+        "2021-08-28T06:22:00.0000000Z", "language": "en", "isNavigational": false}]},
         "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
         0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
         {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
@@ -218,6 +248,6 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
-    http_version: 
-  recorded_at: Fri, 31 Aug 2018 20:58:13 GMT
+    http_version:
+  recorded_at: Tue, 31 Aug 2021 20:32:45 GMT
 recorded_with: VCR 4.0.0

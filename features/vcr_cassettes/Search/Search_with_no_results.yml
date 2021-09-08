@@ -21,18 +21,52 @@ http_interactions:
       - '30'
   response:
     status:
-      code: 401
-      message: PermissionDenied
+      code: 200
+      message: OK
     headers:
-      Content-Length:
-      - '224'
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 07 Sep 2021 16:17:28 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - 5857C5E359EC4D6E92E28C0001C6AB86
+      Bingapis-Sessionid:
+      - B91E4C9072D549AB95EA9FD05B354CF2
+      X-Msedge-Clientid:
+      - 154D41753F3D6B7F031951DE3E8D6A2A
+      X-Msapi-Userstate:
+      - 58b6
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=149,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: 5857C5E359EC4D6E92E28C0001C6AB86 Ref B: BLUEDGE1316 Ref C: 2021-09-07T16:18:28Z'
+      Apim-Request-Id:
+      - aa4d0af4-731e-4395-929d-e01534d2de27
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Tue, 30 Mar 2021 17:15:15 GMT
+      - Tue, 07 Sep 2021 16:18:27 GMT
     body:
       encoding: UTF-8
-      string: '{"error":{"code":"401","message":"Access denied due to invalid subscription
-        key or wrong API endpoint. Make sure to provide a valid key for an active
-        subscription and use a correct regional API endpoint for your resource."}}'
-    http_version:
-  recorded_at: Tue, 30 Mar 2021 17:15:15 GMT
-recorded_with: VCR 4.0.0
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "foobarbazbiz
+        (site:gov OR site:mil)"}, "rankingResponse": {}}'
+  recorded_at: Tue, 07 Sep 2021 16:18:28 GMT
+recorded_with: VCR 6.0.0

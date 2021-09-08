@@ -31,7 +31,7 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Mon, 05 Apr 2021 20:31:18 GMT
+      - Tue, 07 Sep 2021 16:17:37 GMT
       Vary:
       - Accept-Encoding
       P3p:
@@ -39,21 +39,23 @@ http_interactions:
       X-Snr-Routing:
       - '1'
       Bingapis-Traceid:
-      - 48D0CB8CBF994800A09EF6A23145DEAD
+      - DF4AC5C98B894937B832D627FA313125
       Bingapis-Sessionid:
-      - 7008283E9D264307BD36AB7F9AEFA634
+      - AFE7733F94A64AA69F84F018B1F5593C
       X-Msedge-Clientid:
-      - '039C3DAAEE13607B211A2DBAEF6661DA'
+      - 3BD0EFB8ED2468A62B7AFF13ECD969E3
       X-Msapi-Userstate:
-      - '6582'
+      - '3616'
       Bingapis-Market:
       - en-US
       X-Search-Responseinfo:
-      - InternalResponseTime=204,MSDatacenter=BN2B
+      - InternalResponseTime=231,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
       X-Msedge-Ref:
-      - 'Ref A: 48D0CB8CBF994800A09EF6A23145DEAD Ref B: BLUEDGE1719 Ref C: 2021-04-05T20:32:18Z'
+      - 'Ref A: DF4AC5C98B894937B832D627FA313125 Ref B: BLUEDGE0108 Ref C: 2021-09-07T16:18:37Z'
       Apim-Request-Id:
-      - a4a4dd86-4aba-4b52-8b54-557d4c1e8192
+      - 5dc32af9-fcc8-4611-af15-343c4de5d56a
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
@@ -61,91 +63,87 @@ http_interactions:
       Csp-Billing-Usage:
       - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Mon, 05 Apr 2021 20:32:17 GMT
+      - Tue, 07 Sep 2021 16:18:37 GMT
     body:
       encoding: UTF-8
       string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "item
         (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=item+(site%3agov+OR+site%3amil)",
-        "totalEstimatedMatches": 43200000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
-        "name": "H6 Home - Defense Logistics Agency", "url": "https:\/\/www.dla.mil\/HQ\/LogisticsOperations\/Services\/FIC\/H6\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.dla.mil\/HQ\/LogisticsOperations\/Services\/FIC\/H6",
-        "snippet": "H6 Item Name Directory provides search capability of Item
-        Names based on Federal Supply Class (FSC), keyword search, Item Name Code
-        (INC), and Item Identification Guide (IIG).", "dateLastCrawled": "2021-04-01T22:27:00.0000000Z",
+        "totalEstimatedMatches": 9670000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "How to Classify Your Item", "url": "https:\/\/www.bis.doc.gov\/index.php\/documents\/compliance-training\/export-administration-regulations-training\/247-howtoclassifyitem-pdf\/file",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.bis.doc.gov\/...\/247-howtoclassifyitem-pdf\/file",
+        "snippet": "Read ECCN “Item” heading under “List of Items Controlled” Match
+        particular characteristics, functions, and applications to a specific ECCN
+        Pay attention to Related Controls and Related Definitions with the ECCN Entry!
+        Bureau of Industry and Security –How To Classify Your Item Other Useful
+        Guidance when Classifying your Item ...", "dateLastCrawled": "2021-09-03T05:04:00.0000000Z",
         "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
-        "name": "ITEM UNIQUE IDENTIFICATION (IUID)", "url": "https:\/\/www.acq.osd.mil\/dpap\/pdi\/uid\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.acq.osd.mil\/dpap\/pdi\/uid",
+        "name": "Department of Defense Guidebook for Acquiring Commercial Items",
+        "url": "https:\/\/www.acq.osd.mil\/dpap\/cpic\/cp\/docs\/Guidebook_Part_A_Commercial_Item_Determination_07_10_2019.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.acq.osd.mil\/dpap\/cpic\/cp\/docs\/Guidebook_Part_A_Commercial_Item...",
+        "snippet": "item meets the criteria to be deemed a commercial item. Making
+        a determination for of a type items that are similar to, but not identical
+        to, items that have been sold in the commercial marketplace can be particularly
+        challenging. Part A of this guide is intended to assist with making timely
+        CIDs. 5 .", "dateLastCrawled": "2021-09-05T12:20:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Subpart 4.10—Uniform Use of Line Items - Acquisition", "url": "https:\/\/www.acquisition.gov\/sites\/default\/files\/current\/far\/html\/Subpart%204_10.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.acquisition.gov\/sites\/default\/files\/current\/far\/html\/Subpart
+        4_10.html", "snippet": "This type of subline item identifies information
+        that relates directly to the line item and is an integral part of it (e.g.,
+        parts of an assembly or parts of a kit). (2) Position informational subline
+        items within the line item description, not in the quantity or price fields.
+        4.1005 Data elements for line items and subline items.", "dateLastCrawled":
+        "2021-09-05T08:39:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3", "name":
+        "ITEM UNIQUE IDENTIFICATION (IUID)", "url": "http:\/\/www.acq.osd.mil\/dpap\/pdi\/uid\/index.html",
+        "isFamilyFriendly": true, "displayUrl": "www.acq.osd.mil\/dpap\/pdi\/uid\/index.html",
         "snippet": "Item: Description: DoD Instructions: DoDI 4140.01: DoD Supply
-        Chain Materiel Management Policy Requires unique item level traceability
+        Chain Materiel Management Policy Requires unique item level traceability
         for all DoD serially managed items that are also sensitive or pilferable,
         all DoD serially managed CSI, all NWRM, depot level reparables, and any item
-        that the DoD materiel manager decides requires unique item level traceability
-        using a unique item identifier ...", "dateLastCrawled": "2021-04-02T02:36:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
-        "name": "252.211-7003 Item Unique Identification and Valuation ...", "url":
-        "https:\/\/www.acquisition.gov\/dfars\/252.211-7003-item-unique-identification-and-valuation.",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.acquisition.gov\/dfars\/252.211-7003-item-unique-identification-and-valuation.",
-        "snippet": "“Unique item identifier” means a set of data elements marked
-        on items that is globally unique and unambiguous. The term includes a concatenated
-        unique item identifier or a DoD recognized unique identification equivalent.
-        “Unique item identifier type” means a designator to indicate which method
-        of uniquely identifying a part has been used.", "dateLastCrawled": "2021-04-01T18:12:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
-        "name": "Standard Items - English", "url": "https:\/\/www.mass.gov\/doc\/bid-item-nomenclature-list\/download",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.mass.gov\/doc\/bid-item-nomenclature-list\/download",
-        "snippet": "hr * 102.511: tree protection – armoring & pruning; ea * 102.521;
-        tree and plant protection fence: ft * 102.522: tree and plant protection fence
-        - chain link", "dateLastCrawled": "2021-04-02T00:11:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
-        "name": "Part 12 - Acquisition of Commercial Items | Acquisition.GOV", "url":
+        that the DoD materiel manager decides requires unique item level traceability
+        using a unique item identifier ...", "dateLastCrawled": "2021-09-03T03:23:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Part 12 - Acquisition of Commercial Items | Acquisition.GOV", "url":
         "https:\/\/www.acquisition.gov\/far\/part-12", "isFamilyFriendly": true, "displayUrl":
         "https:\/\/www.acquisition.gov\/far\/part-12", "snippet": "Commercial item
         prices are affected by factors that include, but are not limited to, speed
         of delivery, length and extent of warranty, limitations of seller’s liability,
         quantities ordered, length of the performance period, and specific performance
         requirements. The contracting officer must ensure that contract terms, conditions,
-        and prices ...", "dateLastCrawled": "2021-04-01T23:07:00.0000000Z", "language":
+        and prices ...", "dateLastCrawled": "2021-09-05T09:45:00.0000000Z", "language":
         "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
-        "name": "SEC.gov | Form ADV and IARD Frequently Asked Questions", "url":
-        "https:\/\/www.sec.gov\/divisions\/investment\/iard\/iardfaq.shtml", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.sec.gov\/divisions\/investment\/iard\/iardfaq.shtml",
-        "snippet": "Q: Item 7.A asks if my advisory firm has a related person who
-        is a broker-dealer (Item 7.A(1)) or an investment adviser (Item 7.A(2)).
-        Do we use these items to disclose that some of our employees perform investment
-        advisory functions or are registered representatives of a broker-dealer?",
-        "dateLastCrawled": "2021-04-02T07:11:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
-        "name": "Math Item Specifications Grade 4", "url": "https:\/\/dese.mo.gov\/sites\/default\/files\/asmt-math-g4-item-specs.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/dese.mo.gov\/sites\/default\/files\/asmt-math-g4-item-specs.pdf",
-        "snippet": "Item Format indicates the types of items used in large scale
-        assessment. For each expectation, the item format specifies the type best
-        suited for that particular expectation. Text Types suggests a broad list of
-        text types for both literary and informational expectations. This list is
-        not intended to be all", "dateLastCrawled": "2021-04-01T19:55:00.0000000Z",
+        "name": "Commercial Item Determination", "url": "https:\/\/www.acq.osd.mil\/dpap\/ccap\/cc\/jcchb\/Files\/Topical\/Commercial\/checklist\/commercial_item_determination_checklist_feb2010_usmc.docx",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.acq.osd.mil\/...\/commercial_item_determination_checklist_feb2010_usmc.docx",
+        "snippet": "Yes____ No ____ If yes, describe the original item, how it has
+        evolved and when it is anticipated to be available in the commercial marketplace.
+        This is a commercial supply item. You may stop now and put your commercial
+        item determination\/", "dateLastCrawled": "2021-09-05T10:48:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Bulky Item Collection | City of Glendale, CA", "url": "https:\/\/www.glendaleca.gov\/government\/departments\/public-works\/integrated-waste-management\/homes-apartment-complexes\/bulky-item-collection",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.glendaleca.gov\/...\/homes-apartment-complexes\/bulky-item-collection",
+        "snippet": "If an item is not listed above it is NOT accepted for Bulky
+        Item Pickup. Not accepted: Cardboard, hazardous waste, bags of trash\/recycling,
+        construction materials, lumber, glass\/mirrors. See where to donate or recycle
+        items locally at earth911.com", "dateLastCrawled": "2021-09-05T04:06:00.0000000Z",
         "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
-        "name": "Form 20-F - SEC", "url": "https:\/\/www.sec.gov\/files\/form20-f.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/files\/form20-f.pdf",
-        "snippet": "the financial statements, you may respond to an item of this
-        Form by providing a cross-reference to the location of the information in
-        the financial statements, in lieu of repeating the information. (e) Note Item
-        10 of Regulation S-K which explains the Commission policy on projections of
-        future economic performance,", "dateLastCrawled": "2021-04-02T08:03:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
-        "name": "Pay Item Catalog", "url": "https:\/\/www.dot.ny.gov\/pic", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.dot.ny.gov\/pic", "snippet": "New York
-        State Department of Transportation coordinates operation of transportation
-        facilities and services including highway, bridges, railroad, mass transit,
-        port, waterway and aviation facilities", "dateLastCrawled": "2021-04-02T00:31:00.0000000Z",
+        "name": "What Can I Bring? | Transportation Security Administration", "url":
+        "https:\/\/www.tsa.gov\/travel\/security-screening\/whatcanibring\/all", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.tsa.gov\/travel\/security-screening\/whatcanibring",
+        "snippet": "Planning ahead and packing properly can facilitate the screening
+        process and ease your travel experience at the airport. Know what you can
+        pack in your carry-on and checked baggage before arriving at the airport by
+        reviewing the lists below. Even if an item is generally permitted, it may
+        be subject ...", "dateLastCrawled": "2021-09-05T06:15:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Bulky Item Pickup - Milwaukee", "url": "https:\/\/city.milwaukee.gov\/sanitation\/Bulky-Item-Pickup",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/city.milwaukee.gov\/sanitation\/Bulky-Item-Pickup",
+        "snippet": "Bulky Item Pickup Guidelines Bulky items are items that are
+        too large to be placed in your garbage cart, such as broken furniture, a queen
+        mattress, or large, broken toys. Yard waste , electronics and TVs , appliances,
+        and tires are not considered bulky waste and must be disposed of by taking
+        to a Drop Off Center .", "dateLastCrawled": "2021-09-03T09:59:00.0000000Z",
         "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
-        "name": "BUREAU OF TENNCARE DEPARTMENT OF FINANCE ADMINISTRATION", "url":
-        "https:\/\/www.tn.gov\/content\/dam\/tn\/tenncare\/documents\/patientliability.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.tn.gov\/content\/dam\/tn\/tenncare\/documents\/patientliability.pdf",
-        "snippet": "Item D deductions are no longer allowed for specialized wheelchairs.
-        This is because wheelchairs (including customized and\/or power wheelchairs)
-        are covered as medically necessary by TennCare. For persons who are dual eligible,
-        Medicare is the primary payer source. Regardless, the resident should not
-        be responsible for payment of medically ...", "dateLastCrawled": "2021-04-01T10:37:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
         "name": "STANDARD ITEM - Naval Sea Systems Command", "url": "https:\/\/www.navsea.navy.mil\/Portals\/103\/Documents\/SSRAC\/NSI\/FY21\/FY21%20NSI%20Finals\/009-04_FY21_pkg.pdf",
         "isFamilyFriendly": true, "displayUrl": "https:\/\/www.navsea.navy.mil\/Portals\/103\/Documents\/SSRAC\/NSI\/FY21\/FY21
         NSI Finals\/009-04...", "snippet": "Item number and Work Item paragraph
@@ -153,78 +151,85 @@ http_interactions:
         symbols (I)(Q) and (V), and the government notification (G) Point symbol where
         applicable. 3.10.2.3 Provide identification of the item to be inspected
         by name, number, and location (e.g., number 3 main feed pump, 5-180-0-E).",
-        "dateLastCrawled": "2021-04-02T09:58:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
-        "name": "GRS 1.3: Budgeting Records - National Archives", "url": "https:\/\/www.archives.gov\/files\/records-mgmt\/grs\/grs01-3.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.archives.gov\/files\/records-mgmt\/grs\/grs01-3.pdf",
-        "snippet": "Item Records Description Disposition Instruction Disposition
-        Authority Records created and held by offices that prepare an agency''s budget
-        proposal for the White House 010 Budget formulation, estimates, justification,
-        and submission records, fiscal year 2017 and forward. Temporary. Destroy 6
-        DAAGRS", "dateLastCrawled": "2021-04-02T04:48:00.0000000Z", "language": "en",
-        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
-        "name": "Old GRS 1 Superseded - Archives", "url": "https:\/\/www.archives.gov\/files\/records-mgmt\/grs\/grs01.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.archives.gov\/files\/records-mgmt\/grs\/grs01.pdf",
-        "snippet": "Separated employees. Superseded by GRS 2.2, item 040 (DAA -GRS-2017-0007-0004)
-        [NOTES: (1) OPFs covering periods of employment terminated prior to January
-        1, 1921, are not covered by this item. If an agency has such files, it should
-        contact NARA to request appraisal of the files. If NARA rejects the records,
-        the disposition for GRS 1, item lb ...", "dateLastCrawled": "2021-03-30T01:49:00.0000000Z",
+        "dateLastCrawled": "2021-09-05T11:33:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Item response theory: A basic concept", "url": "https:\/\/files.eric.ed.gov\/fulltext\/EJ1133065.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/files.eric.ed.gov\/fulltext\/EJ1133065.pdf",
+        "snippet": "Item curve of single parameter logistic model (Hambleton et
+        al., 1991c). three parameters that is, b i, a i and c i. Single parameter
+        logistic model The description of single parameter model in an item characteristics
+        curve, b i parameter is a parameter location shown in ability scale, named
+        item difficulty level. ...", "dateLastCrawled": "2021-09-02T17:47:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Form 20-F - SEC", "url": "https:\/\/www.sec.gov\/files\/form20-f.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/files\/form20-f.pdf",
+        "snippet": "Item 18 If this is an annual report, indicate by check mark
+        whether the registrant is a shell company (as defined in Rule 12b-2 of the
+        Exchange Act). Yes . No (APPLICABLE ONLYTO ISSUERS INVOLVED IN BANKRUPTCY
+        PROCEEDINGS DURING THE PAST FIVE YEARS)", "dateLastCrawled": "2021-09-05T10:02:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Bulk Item Collection Program | City of Mesa", "url": "https:\/\/www.mesaaz.gov\/residents\/trash-recycling\/trash-recycling-for-single-family-homes\/bulk-item-collection-program",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.mesaaz.gov\/...\/bulk-item-collection-program",
+        "snippet": "Bulk item collection charges vary, depending on the amount of
+        material to be picked up, and start at $25.00 per load (load size is approximately
+        4''x8''x4''). To schedule a bulk item pickup or for more information, please
+        call Solid Waste at (480) 644-6789.", "dateLastCrawled": "2021-09-02T03:03:00.0000000Z",
         "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
-        "name": "STANDARD ITEM - Naval Sea Systems Command", "url": "https:\/\/www.navsea.navy.mil\/Portals\/103\/Documents\/SSRAC\/NSI\/FY21\/FY21%20NSI%20Finals\/009-12_FY21_pkg.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.navsea.navy.mil\/Portals\/103\/Documents\/SSRAC\/NSI\/FY21\/FY21
-        NSI Finals\/009-12...", "snippet": "3 of 30 ITEM NO: 009-12 FY-21 3.4.2.2
-        In steam systems, where brazed piping and fittings are to be reused, or piping
-        has to be sized to achieve proper fit-up, the option for a 5X visual inspection
-        for cracks listed in", "dateLastCrawled": "2021-04-02T02:05:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
-        "name": "Mathematics Item Specifications", "url": "https:\/\/www.azed.gov\/sites\/default\/files\/2016\/11\/AzM2%20Math%20Item%20Specs%20Grade%203_Final.pdf?id=583ca693aadebe13d87d4371",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.azed.gov\/sites\/default\/files\/2016\/11\/AzM2
-        Math Item Specs Grade 3_Final.pdf...", "snippet": "This AzM2 Item Specifications
-        is a resource document that defines the content and format of the test and
-        test items for item writers and reviewers. Each Item Specifications document
-        indicates the alignment of items with the Arizona Mathematics Standards. It
-        also serves to provide all", "dateLastCrawled": "2021-04-01T17:40:00.0000000Z",
+        "name": "PAM: Section 2 - PAR Items, Lines 8 - 9", "url": "https:\/\/www.sco.ca.gov\/Files-PPSD\/pam_section_2_par_items_lines_8-9.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sco.ca.gov\/Files-PPSD\/pam_section_2_par_items_lines_8-9.pdf",
+        "snippet": "Section 2.103: ITEM 851 – ALTERNATE SALARY RANGE CRITERIA (Revised
+        11\/92) Description: Indicates the alphabetic or numeric code of the specific
+        alternate range", "dateLastCrawled": "2021-09-03T08:43:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Item 4(c) Tip Sheet (04\/26\/12) - Federal Trade Commission",
+        "url": "https:\/\/www.ftc.gov\/sites\/default\/files\/attachments\/hsr-resources\/4ctipsheet.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ftc.gov\/sites\/default\/files\/attachments\/hsr-resources\/4ctipsheet.pdf",
+        "snippet": "Item 4(c) also contemplates receiving presentations made by
+        the parties to the transaction, such as management presentations. These kinds
+        of presentation documents may be responsive if the 4(c) criteria are met.
+        Ordinary course documents Two questions frequently arise about ordinary course
+        documents. The first is whether a party’s", "dateLastCrawled": "2021-09-03T06:21:00.0000000Z",
         "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
-        "name": "Bulk Item Disposal · NYC311", "url": "https:\/\/portal.311.nyc.gov\/article\/?kanumber=KA-01969",
+        "name": "Bulk Item Disposal · NYC311", "url": "https:\/\/portal.311.nyc.gov\/article\/?kanumber=KA-01969",
         "isFamilyFriendly": true, "displayUrl": "https:\/\/portal.311.nyc.gov\/article\/?kanumber=KA-01969",
-        "snippet": "A bulk item is something that is too large to fit into a trash
+        "snippet": "A bulk item is something that is too large to fit into a trash
         bin or bag. You can get free curbside removal of bulk items from residential
         buildings. Bulk metal and rigid plastic items are collected on recycling collection
         days. Non-recyclable bulk items are collected on trash collection days and
-        may require an appointment depending on the size:", "dateLastCrawled": "2021-04-01T23:02:00.0000000Z",
+        may require an appointment depending on the size:", "dateLastCrawled": "2021-09-05T10:50:00.0000000Z",
         "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
-        "name": "Item Analysis - ERIC", "url": "https:\/\/files.eric.ed.gov\/fulltext\/ED501716.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/files.eric.ed.gov\/fulltext\/ED501716.pdf",
-        "snippet": "Item analysis uses statistics and expert judgment to evaluate
-        tests based on the quality of individual items, item sets, and entire sets
-        of items, as well as the relationship of each item to other items. It “investigates
-        the performance of items considered individually either in relation to some
-        external criterion or in relation to the", "dateLastCrawled": "2021-04-01T04:54:00.0000000Z",
+        "name": "2021 400NG Change 1 - Move", "url": "https:\/\/move.mil\/sites\/default\/files\/2021-06\/2021%20400NG%20Change%201.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/move.mil\/sites\/default\/files\/2021-06\/2021
+        400NG Change 1.pdf", "snippet": "- Item 125 - Clarified truck to truck transfer
+        “only” - Item 125 - Added language to support payment - Item 130 - Added
+        riding lawnmowers (including stand-on) - Item 130 - Clarified what is a
+        Bulky Article Change 1 :", "dateLastCrawled": "2021-09-05T16:17:00.0000000Z",
         "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
-        "name": "Old GRS 16 Superseded - Archives", "url": "https:\/\/www.archives.gov\/files\/records-mgmt\/grs\/grs16.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.archives.gov\/files\/records-mgmt\/grs\/grs16.pdf",
-        "snippet": "GRS 5.7, item 020 (DAA-GRS-2017-0008-0002) (2) Copies maintained
-        by other offices as internal reviews. Rescinded per GRS Transmittal 29 [NOTE:
-        Alternative reviews such as computer security reviews and management and .
-        consultant studies may need to be kept longer than provided in item 14f(2).
-        This item", "dateLastCrawled": "2021-03-20T23:38:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
-        "name": "Bulky Item Collection - San Antonio", "url": "https:\/\/www.sanantonio.gov\/swmd\/Bulky",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sanantonio.gov\/swmd\/Bulky",
-        "snippet": "Bulky item collections are provided two times per year, approximately
-        every six months. Collection Schedule. Residents will receive a City flyer
-        a week before bulky item collection in their area is scheduled to begin
-        that will indicate the date by which their bulky items need to be set out
-        for collection. Bulky Pile Guidelines", "dateLastCrawled": "2021-04-02T08:06:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
-        "name": "Weighted Average Item Price Report", "url": "https:\/\/www.dot.ny.gov\/divisions\/engineering\/design\/dqab\/waipr",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.dot.ny.gov\/divisions\/engineering\/design\/dqab\/waipr",
-        "snippet": "Weighted Average Item\/Bid Price Report (WAIPR) The Weighted
-        Average Item\/Bid Price Report (WAIPR) is produced using information from
-        NYSDOT''s Trns•Port BAMS⁄DSS. The report has a numerical listing of all items
-        used in Department contracts that have been let in the time period indicated
-        on the report.", "dateLastCrawled": "2021-04-02T10:22:00.0000000Z", "language":
+        "name": "Special Item Collections - Utilities | seattle.gov", "url": "http:\/\/www.seattle.gov\/utilities\/your-services\/collection-and-disposal\/garbage\/special-item-collections",
+        "isFamilyFriendly": true, "displayUrl": "www.seattle.gov\/utilities\/your-services\/collection-and-disposal\/garbage\/special-item...",
+        "snippet": "Schedule a Special Item Collection. To request the collection
+        of large or hard to dispose of items at your home, schedule online or call
+        Seattle Public Utilities Customer Service at (206) 684-3000. We will pick
+        up items such as large furniture and appliances, TVs, computers, small appliances,
+        and small recyclable items that cannot go in the mixed recycling (compact
+        fluorescent lightbulbs (CFLs ...", "dateLastCrawled": "2021-09-05T07:06:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "PNO Guidance on Item 4(d) | Federal Trade Commission", "url":
+        "https:\/\/www.ftc.gov\/enforcement\/premerger-notification-program\/hsr-resources\/pno-guidance-item-4d",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ftc.gov\/...\/premerger-notification-program\/hsr-resources\/pno-guidance-item-4d",
+        "snippet": "Items responsive to Item 4(d) should be labeled 4(d)-1, 4(d)-2,
+        etc. There is no need to include the subparts of Item 4(d) in labeling documents.
+        If a portion of a document responsive to Item 4(d) is withheld or redacted
+        on the basis of privilege, provide a privilege log that conforms with 16 CFR
+        803.3(d).", "dateLastCrawled": "2021-09-03T02:40:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Mathematics Item Specifications", "url": "https:\/\/www.azed.gov\/sites\/default\/files\/2016\/11\/AzMERIT%20Math%20Item%20Specs%20Grade%204_Final.pdf?id=583ca678aadebe13d87d436c",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.azed.gov\/sites\/default\/files\/2016\/11\/AzMERIT
+        Math Item Specs Grade 4_Final...", "snippet": "This AzMERIT Item Specifications
+        is a resource document that defines the content and format of the test and
+        test items for item writers and reviewers. Each Item Specifications document
+        indicates the alignment of items with the Arizona Mathematics Standards. It
+        also serves to", "dateLastCrawled": "2021-09-01T08:12:00.0000000Z", "language":
         "en", "isNavigational": false}]}, "rankingResponse": {"mainline": {"items":
         [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
         {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
@@ -246,6 +251,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
-    http_version:
-  recorded_at: Mon, 05 Apr 2021 20:32:18 GMT
-recorded_with: VCR 4.0.0
+  recorded_at: Tue, 07 Sep 2021 16:18:38 GMT
+recorded_with: VCR 6.0.0

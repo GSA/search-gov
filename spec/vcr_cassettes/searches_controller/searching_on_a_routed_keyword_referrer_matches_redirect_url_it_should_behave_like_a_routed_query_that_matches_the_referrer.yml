@@ -21,8 +21,8 @@ http_interactions:
       - '30'
   response:
     status:
-      code: 400
-      message: Bad Request
+      code: 200
+      message: OK
     headers:
       Cache-Control:
       - private, max-age=0
@@ -31,7 +31,7 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Wed, 09 Jun 2021 14:03:04 GMT
+      - Tue, 31 Aug 2021 20:32:08 GMT
       Vary:
       - Accept-Encoding
       P3p:
@@ -39,23 +39,23 @@ http_interactions:
       X-Snr-Routing:
       - '1'
       Bingapis-Traceid:
-      - AB513CA98C3140C8B695DAB5072A2C89
+      - 0F09863B8A3E46008B3F88CB9E420D9C
       Bingapis-Sessionid:
-      - EC7D93B9AD904F09852FC24C1CC447EA
+      - 25808E29AD324D7186262D63000969E7
       X-Msedge-Clientid:
-      - 354C5EF819F7688237684EA918B8692B
+      - 0A9B16A47EAD638C3D5506007F1A6267
       X-Msapi-Userstate:
-      - 26b5
+      - be30
       Bingapis-Market:
       - en-US
       X-Search-Responseinfo:
-      - InternalResponseTime=310,MSDatacenter=BN2B
+      - InternalResponseTime=266,MSDatacenter=BN2B
       X-Cache:
       - CONFIG_NOCACHE
       X-Msedge-Ref:
-      - 'Ref A: AB513CA98C3140C8B695DAB5072A2C89 Ref B: BLUEDGE2012 Ref C: 2021-06-09T14:04:04Z'
+      - 'Ref A: 0F09863B8A3E46008B3F88CB9E420D9C Ref B: BLUEDGE0721 Ref C: 2021-08-31T20:33:08Z'
       Apim-Request-Id:
-      - 6284cbb5-c151-4d65-b378-af6d9901046e
+      - ea6787e1-53c1-4470-b490-9862edf6a6b6
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
@@ -63,13 +63,14 @@ http_interactions:
       Csp-Billing-Usage:
       - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Wed, 09 Jun 2021 14:04:04 GMT
+      - Tue, 31 Aug 2021 20:33:08 GMT
     body:
       encoding: UTF-8
       string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "foo
         bar (site:nps.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=foo+bar+(site%3anps.gov)",
-        "totalEstimatedMatches": 31, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
-        "name": "CodeMirror: User Manual - nps.gov", "url": "https:\/\/www.nps.gov\/npmap\/slides\/overview-of-npmap\/libs\/codemirror\/doc\/manual.html",
+        "totalEstimatedMatches": 17, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "CodeMirror: User Manual - NPS.gov Homepage (U.S. National ...",
+        "url": "https:\/\/www.nps.gov\/npmap\/slides\/overview-of-npmap\/libs\/codemirror\/doc\/manual.html",
         "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/npmap\/slides\/overview-of-npmap\/libs\/codemirror\/doc\/manual.html",
         "snippet": "It is possible to use multiple theming classes at once—for example
         \"foo bar\" will assign both the cm-s-foo and the cm-s-bar classes to
@@ -77,54 +78,48 @@ http_interactions:
         in the edited language) should be indented. The default is 2.", "dateLastCrawled":
         "2020-03-25T01:15:00.0000000Z", "language": "en", "isNavigational": false},
         {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1", "name":
-        "Approved Backcountry Roads Temple Area - NPS.gov Homepage ...", "url":
-        "https:\/\/www.nps.gov\/lake\/planyourvisit\/upload\/Approved-Backcountry-Roads-Temple-Bar-Area-legal-size-2018.pdf",
+        "Dining - Yosemite National Park (U.S. National Park Service)", "url": "https:\/\/www.nps.gov\/yose\/planyourvisit\/dining.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/yose\/planyourvisit\/dining.htm",
+        "snippet": "Food options in Yosemite National Park are managed by Yosemite
+        Hospitality, and range from groceries to pizza to a fine dining experience
+        at The Ahwahnee.Dining reservations are available 366 days in advance for
+        The Ahwahnee Dining Room, the Mountain Room, Tuolumne Meadows Lodge, and White
+        Wolf Lodge and are recommended, especially from spring through fall and during
+        holidays.", "dateLastCrawled": "2021-05-28T17:13:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "(For Contractor''s Optional Use; See Instructions, Form WH ...",
+        "url": "https:\/\/www.nps.gov\/dscw\/upload\/PreConDOL_WH_347_7_14_06.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/dscw\/upload\/PreConDOL_WH_347_7_14_06.pdf",
+        "snippet": "U.S. Department of Labor Employment Standards Administration Wage
+        and Hour Division PAYROLL (For Contractor''s Optional Use; See Instructions,
+        Form WH-347 Inst.)", "dateLastCrawled": "2018-06-01T03:05:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Approved Backcountry Roads Temple Bar-Area Legal ... - NPS",
+        "url": "https:\/\/www.nps.gov\/lake\/planyourvisit\/upload\/Approved-Backcountry-Roads-Temple-Bar-Area-legal-size-2018.pdf",
         "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/lake\/planyourvisit\/upload\/Approved-Backcountry-Roads-Temple-Bar...",
         "snippet": "restrooms, foo Boat launch US route Maintained - unpaved road
         Sanitary disposal station Hiking trail Picnic area Secondary 4WD road Gasoline
         Campground ... Temple Bar Temple aar Trail oaaa ''apaï O 138 136 Sbtjhg
         Mount''Wilson Wilderness (BLM) Clam 10 2rni Kingman 142 143 To Dolan Spnngs,
         AZ and US Mjepost 42 To Dolan Spnngs, AZ", "dateLastCrawled": "2020-07-05T11:09:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
-        "name": "Mount Vernon Memorial Highway George Washington Memorial ...", "url":
-        "https:\/\/npgallery.nps.gov\/pdfhost\/docs\/NRHP\/Text\/81000079.pdf", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/npgallery.nps.gov\/pdfhost\/docs\/NRHP\/Text\/81000079.pdf",
-        "snippet": "foo * ''&& Beveled curbing is used throughout the southern section
-        of the highway for easy pull-off onto the\" attjacyrit grass. '' Guard rails
-        where needed are of treated, unpainted wood to blend with the natural1 landscape.
-        ! The\"''Original plantings here are most fully intact at the Mount Vernon
-        terminus and at Belle Haven, a short distance", "dateLastCrawled": "2021-05-25T13:39:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
         "name": "MONTANA HISTORICAL AND ARCHITECTURAL INVENTORY", "url": "https:\/\/npgallery.nps.gov\/NRHP\/GetAsset\/4d70febf-50b4-474e-b76b-fde0c370c683",
         "isFamilyFriendly": true, "displayUrl": "https:\/\/npgallery.nps.gov\/NRHP\/GetAsset\/4d70febf-50b4-474e-b76b-fde0c370c683",
         "snippet": "Foo,no«.sources: p< 570; ^^.^^ PP. 544, 558; 1917-18, pp. 554,
         562. Interview with Rich Wollaston by John Lazuk. Interview with Louis LaRock
         by John Lazuk. INTEGRITY: Assess the degree to which the structure\/site,
         and surrounding area accurately convey the historical associations of the
-        property.", "dateLastCrawled": "2021-04-24T08:45:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
-        "name": "NPS.gov Homepage (U.S. National Park Service)", "url": "https:\/\/www.nps.gov\/lewi\/learn\/photosmultimedia\/upload\/bonus06_musicyellipt&g''bye.mp3",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/lewi\/learn\/photosmultimedia\/upload\/bonus06_musicyellipt&g''bye.mp3",
-        "snippet": "Ã Z»è¨h¤DôÅoÜ’Ú6)Qvi¨ A „Û–€#cØ¨,è=K ÊÅòÓ³Ý§''­ùïœ¡ÉJ ï ‚Çaç@Ã
-        ¹Ì 4bŠzc ©éÁtŸ§hô–:É`ç vmÔˆÕ ¾F#d ~ ? •YõaUK «§‹ —aV1› R\\s ›vëlÛì¸a DÛŸ¯¶Ï-“žÑ
-        Áo5‘. u 6Áæ ?,æ:½\/šiþ_ •Eˆ ÎDt5C)Ÿ0õ}ÞXÉ^]r¢òŸ¦Ë wÛæ¸åÞï[Ö©^õ´. ÔÓ»®Cªà ...",
-        "dateLastCrawled": "2020-07-05T18:37:00.0000000Z", "language": "fr", "isNavigational":
-        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
-        "name": "NPS.gov Homepage (U.S. National Park Service)", "url": "https:\/\/home.nps.gov\/mono\/learn\/photosmultimedia\/upload\/Welcome%20to%20Monocacy-%20An%20Introduction.m4v",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/home.nps.gov\/mono\/learn\/photosmultimedia\/upload\/Welcome
-        to Monocacy- An...", "snippet": "ftypM4V M4V M4A mp42isom–öCmdat gBÀ št Ø
-        € € GŠ P hÎÙŸx%¦ Î†ýÜÓæ$ Fï : cƒ NA3‘ˆ^4 øÍ\/lûöý N G­ ý„©ÛM\/à >Z²çÒñÿäO
-        @g é1¼ ® …Ø=»•ü;B· ¿BÜv ¹AW¦«™öÒƒƒ Â^ °­œâ.^?®_ ! K¸ÿøYT&ÏË ÆõYT ê¼& öØF-F
-        ³ ¹Ï öÞÍ =,Ü š|š Í©§’›tú~¡Œ ‡\\ žÔÓ´µ¯6 ...", "dateLastCrawled": "2020-12-31T07:04:00.0000000Z",
-        "language": "fr", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
-        "name": "Site*", "url": "https:\/\/npgallery.nps.gov\/pdfhost\/docs\/NRHP\/Text\/86002767.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/npgallery.nps.gov\/pdfhost\/docs\/NRHP\/Text\/86002767.pdf",
-        "snippet": "Historic Name: fl\/M Sa.foo t i Common Name: A\/AfM Atfc rwfs
-        Date of Construction: Architect: A\/M Builder: 1914 D estimated Kl documented
-        Uri tA Original Owner: John SanfaCOH Original Use: sal oon\/of f ice rentals
-        Present Use: motor parts store RESEARCH SOURCES: Note all records consulted
-        to determine dates", "dateLastCrawled": "2021-05-31T00:36:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        property.", "dateLastCrawled": "2021-07-08T23:35:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "UNITED STATES DEPARTMENT OF THE INTERIOR NATIONAL PARK ...", "url":
+        "https:\/\/npgallery.nps.gov\/pdfhost\/docs\/NRHP\/Text\/79001341.pdf", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/npgallery.nps.gov\/pdfhost\/docs\/NRHP\/Text\/79001341.pdf",
+        "snippet": "1979). .The north and south waiting rooms were made into a bar
+        and^restaurant. En­ closure of the passenger waiting porch provided additional
+        dining and kitchen space. The second floor was renovated for General Services
+        Administration offices, and the third floor for retail use. An elevator was
+        installed at the center of the structure", "dateLastCrawled": "2021-08-08T01:14:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
         "name": "National Register of Historic Places Continuation Sheet", "url":
         "https:\/\/npgallery.nps.gov\/pdfhost\/docs\/NRHP\/Text\/91001527.pdf", "isFamilyFriendly":
         true, "displayUrl": "https:\/\/npgallery.nps.gov\/pdfhost\/docs\/NRHP\/Text\/91001527.pdf",
@@ -132,88 +127,85 @@ http_interactions:
         of the windows - the alternations do not impair the integrity of this historic
         structure. The museum is located on the north side of the only major street
         through town, Mesquite Boulevard, and is surrounded by various residential
-        and commercial structures. The south and east", "dateLastCrawled": "2021-05-20T22:14:00.0000000Z",
+        and commercial structures. The south and east", "dateLastCrawled": "2021-08-20T21:21:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Season 1 Episode 1: A Love of the Mountains with Kathy ...", "url":
+        "https:\/\/www.nps.gov\/romo\/blogs\/season-1-episode-1-a-love-of-the-mountains-with-kathy-brazelton.htm?result=true",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/romo\/blogs\/season-1-episode-1-a-love-of-the-mountains-with-kathy...",
+        "snippet": "I’m happy to appreciate the good work of dr Sam omijie Spell caster
+        For saving my lost relationship I never believe there will Be a way To get
+        my lover back but dr Sam omijie saved my relationship through his-spell and
+        after 15 hours my love I return to me and asked for forgiveness I’m very happy
+        because I never thought There is A great man like this You can also reach
+        him on his email at ...", "dateLastCrawled": "2021-01-09T05:59:00.0000000Z",
         "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
-        "name": "National Park Service National Register of Historic Places ...",
-        "url": "https:\/\/npgallery.nps.gov\/GetAsset\/b666d54c-df55-4e70-a12d-942c7b6bfb52",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/npgallery.nps.gov\/GetAsset\/b666d54c-df55-4e70-a12d-942c7b6bfb52",
-        "snippet": "wheel base twenty ton caboose leaf spring arch bar trucks with
-        26\" diameter wheels. These new cars were the first D&RG cabooses to ride
-        on four-wheel trucks. One of the benefits of the increased length and wheel
-        modification of these types over the old 9-foot wheel-base Bobber style arrangement
-        was", "dateLastCrawled": "2021-06-05T19:17:00.0000000Z", "language": "en",
-        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
-        "name": "UNITED STATES DEPARTMENT OF THE INTERIOR NATIONAL PARK ...", "url":
-        "https:\/\/npgallery.nps.gov\/GetAsset\/654dc60c-2e86-4398-a410-2396cd7f1b0e\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/npgallery.nps.gov\/GetAsset\/654dc60c-2e86-4398-a410-2396cd7f1b0e",
-        "snippet": "1979). .The north and south waiting rooms were made into a bar
-        and^restaurant. En­ closure of the passenger waiting porch provided additional
-        dining and kitchen space. The second floor was renovated for General Services
-        Administration offices, and the third floor for retail use. An elevator was
-        installed at the center of the structure", "dateLastCrawled": "2021-05-23T10:13:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
-        "name": "National Park Service", "url": "http:\/\/home.nps.gov\/archeology\/npsGuide\/outreach\/RackArtifactsVisitors_final.indd",
-        "isFamilyFriendly": true, "displayUrl": "home.nps.gov\/archeology\/npsGuide\/outreach\/RackArtifactsVisitors_final.indd",
-        "snippet": "íõØ Få½1ïçþt· DOCUMENT p \\h‘ ¥ j ö +=N ;ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ
-        ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ", "dateLastCrawled": "2020-12-12T01:40:00.0000000Z",
-        "language": "fr", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
-        "name": "—FAIR", "url": "http:\/\/npgallery.nps.gov\/pdfhost\/docs\/NRHP\/Text\/78000731.pdf",
-        "isFamilyFriendly": true, "displayUrl": "npgallery.nps.gov\/pdfhost\/docs\/NRHP\/Text\/78000731.pdf",
-        "snippet": "significance period —prehistoric —1400-1499 —1500-1599 —1600-1699
-        —1700-1799 —-1800-1899 —1900-areas of significance -- check and justify below",
-        "dateLastCrawled": "2021-06-05T18:00:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
-        "name": "At Em Arizona", "url": "http:\/\/home.nps.gov\/valr\/learn\/historyculture\/upload\/Atem-Sep15-1923-pdf.pdf",
-        "isFamilyFriendly": true, "displayUrl": "home.nps.gov\/valr\/learn\/historyculture\/upload\/Atem-Sep15-1923-pdf.pdf",
-        "snippet": "this sam~ fil?~?d lasting for four foo, China, and proceeded
-        at . full . ho.i:n was p1:obally the most spe:-speed to Yokohama. The destro;v-
-        ...", "dateLastCrawled": "2021-04-09T10:56:00.0000000Z", "language": "en",
-        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
-        "name": "home.nps.gov", "url": "https:\/\/home.nps.gov\/timu\/learn\/photosmultimedia\/loader.cfm?csModule=security\/getfile&PageID=973968",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/home.nps.gov\/timu\/learn\/photosmultimedia\/loader.cfm?csModule=security\/getfile&...",
-        "snippet": "d”ò_gaoWQÉö q;&eÔe cßëï^ú ›:*ëKqÑù Žž ²«#ð»ëüí;Ú ž$Ýnò Ý¡ ÿJ§·ç¢¿Wê•zÅ–úr
-        sc4 ÌŸÿú8ÀÆL õ]# ˜K { e™— ( †´T ...", "dateLastCrawled": "2021-03-21T18:49:00.0000000Z",
-        "language": "fr", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
-        "name": "National Park Service", "url": "http:\/\/home.nps.gov\/kemo\/upload\/KMNBP-2.kmz",
-        "isFamilyFriendly": true, "displayUrl": "home.nps.gov\/kemo\/upload\/KMNBP-2.kmz",
-        "snippet": "PK Zë %’ qÞ& doc.kmlì½ys\\Ç•\/ø·ûSÔÓÄÌ›‰ ÈÜ 7Í ²üÜîn»ÛÑROÿÑÑ¡(
-        E O Eó}ú9çÖ=™¿ÌªÂv« ,¤- 8yoÞ\\Ï¾¼ù ûp6ûeqyuº¿úÝW ...", "dateLastCrawled":
-        "2021-02-01T04:50:00.0000000Z", "language": "fr", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15", "name":
-        "ATIONAL REGISTER OF HISTORIC PLACES INVENTORY ...", "url": "https:\/\/npgallery.nps.gov\/pdfhost\/docs\/NRHP\/Text\/80003258.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/npgallery.nps.gov\/pdfhost\/docs\/NRHP\/Text\/80003258.pdf",
-        "snippet": "hardware imbedded in the floor for the horizontal bar. Also
-        in the ceiling: the original light fixtures and 8 fans. The hall has some
-        90 tables and about 375 chairs of varying vintage - and some of the original
-        member-made benches from the first hall, This original hall stood just to
-        the north of the present hall", "dateLastCrawled": "2021-02-19T01:43:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
-        "name": "home.nps.gov", "url": "https:\/\/home.nps.gov\/features\/yell\/slidefile\/plants\/figwortfamily\/Images\/08310.jpg",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/home.nps.gov\/features\/yell\/slidefile\/plants\/figwortfamily\/Images\/08310.jpg",
-        "snippet": "JFIF Photoshop 3.08BIM 1 x%Dwarf Monkeyflower; RG Johnsson; 19648BIM
-        8BIM x8BIM 8BIM 8BIM 8BIM'' 8BIM H\/ff lff \/ff 2 Z 5 - 8BIM p 8BIM @ @8BIM
-        8BIM u 0 Untitled-4 ...", "dateLastCrawled": "2021-01-22T11:00:00.0000000Z",
-        "language": "cs", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
-        "name": "home.nps.gov", "url": "https:\/\/home.nps.gov\/orpi\/learn\/photosmultimedia\/loader.cfm?csModule=security\/getfile&PageID=2185942",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/home.nps.gov\/orpi\/learn\/photosmultimedia\/loader.cfm?csModule=security\/getfile&...",
-        "snippet": "0&²uŽfÏ ¦ÙªbÎlâ @¤ÐÒ ãÒ —ð É^¨Pî AspectRatioX AspectRatioY WMFSDKVersion
-        11.0.5721.5251 WMFSDKNeeded 0.0.0.0000 IsVBR ¡Ü«ŒG©Ï ŽäÀ Seh§!›C", "dateLastCrawled":
-        "2021-04-19T23:32:00.0000000Z", "language": "fr", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18", "name":
-        "NPS.gov Homepage (U.S. National Park Service)", "url": "http:\/\/home.nps.gov\/ever\/planyourvisit\/upload\/EVER_GMP_marinelayers_KML_v5-2.kmz",
-        "isFamilyFriendly": true, "displayUrl": "home.nps.gov\/ever\/planyourvisit\/upload\/EVER_GMP_marinelayers_KML_v5-2.kmz",
-        "snippet": "ÀÄ½”78 ì îÞ¿}õËh8~}v å£ gÿ'' 8š ?¿ 0Œî ãñ`øó›Ñ¥Úú~t1)å†o\/Çòödüû»‘Ú6¹
-        ¼ ÝŸ ÆƒÉÕë?²Õý.4—øæcäböž&CJ(ÓÀÄ½ ...", "dateLastCrawled": "2021-01-30T16:09:00.0000000Z",
-        "language": "pt", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "NPS.gov Homepage (U.S. National Park Service)", "url": "https:\/\/www.nps.gov\/nebe\/upload\/Journey-Through-New-Bedford-RF.epub",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/nebe\/upload\/Journey-Through-New-Bedford-RF.epub",
+        "snippet": "PUM–WÓC Tk„­¥j¼¤ƒ¶$¾•‡b¼¥¢ÉG #+ä^y£}cq ¼Û@|•} Å(¯r Ð¦V $¯ î›â
+        obÂ}ƒ&z£y '' Wi6ÄUÔ[ â>¡C … ö cô£PtTóV¨ pE=à3­t$·&Áˆ†Xcµö îúô(4H§5û&ÓSÎÂ‰Tyl@ÂŠ5Ø8ç§ßkûŠí€
+        E Ú² ¦wé_&R¥†€ôRTÜJ¨¸E‹)Ï ´ÕœkÁ ãj¤Õ »Ý´m˜nÜ¶ ] n(;«Äo`p« „ H»\" ¸U°mU ...",
+        "dateLastCrawled": "2020-05-27T11:30:00.0000000Z", "language": "fr", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "National Park Service", "url": "https:\/\/npgallery.nps.gov\/GetAsset\/8b1a4118-8b4d-4b06-a317-e7592f80a5db\/original",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/npgallery.nps.gov\/GetAsset\/8b1a4118-8b4d-4b06-a317-e7592f80a5db\/original",
+        "snippet": "Ž! „`§øKõ¢7ÐÆ!{@Æ›ª\\¢é( ~š Ñ(!ˆ ÄPIa ƒ.“(²£s Ú.£ªóÓ›œÄËØ§x le0áÛª½!È9:MÃÿÆ&+—|Þ¥{þ^øwiÇYhç”ì†L
+        ‹xg¼·¦ï ...", "dateLastCrawled": "2021-07-29T00:52:00.0000000Z", "language":
+        "fr", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Mount Vernon Memorial Highway George Washington Memorial ...", "url":
+        "https:\/\/npgallery.nps.gov\/pdfhost\/docs\/NRHP\/Text\/81000079.pdf", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/npgallery.nps.gov\/pdfhost\/docs\/NRHP\/Text\/81000079.pdf",
+        "snippet": "foo * ''&& Beveled curbing is used throughout the southern section
+        of the highway for easy pull-off onto the\" attjacyrit grass. '' Guard rails
+        where needed are of treated, unpainted wood to blend with the natural1 landscape.
+        ! The\"''Original plantings here are most fully intact at the Mount Vernon
+        terminus and at Belle Haven, a short distance", "dateLastCrawled": "2021-08-10T10:05:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
         "name": "Better Lives, Bitter Lies (U.S. National Park Service)", "url": "https:\/\/home.nps.gov\/podcasts\/better-lives-bitter-lies.htm",
         "isFamilyFriendly": true, "displayUrl": "https:\/\/home.nps.gov\/podcasts\/better-lives-bitter-lies.htm",
         "snippet": "The constitution has a sec, a section titled Chinese and basically
         bars them from living in cities, but it was unenforceable, unconstitutional
         based on the American constitution. And Chinese American leaders, the Chinese
         merchants and the Chinese Six Companies were kind of at the forefront of fighting
-        these different local attempts to get rid ...", "dateLastCrawled": "2021-04-16T00:36:00.0000000Z",
-        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
-        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        these different local attempts to get rid ...", "dateLastCrawled": "2021-08-24T06:16:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "National Park Service", "url": "https:\/\/home.nps.gov\/archeology\/npsGuide\/outreach\/RackArtifactsRangers_final.indd",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/home.nps.gov\/archeology\/npsGuide\/outreach\/RackArtifactsRangers_final.indd",
+        "snippet": "íõØ Få½1ïçþt· DOCUMENT p gx‘ „ e Ü û¥ +]G 0ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ
+        ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ", "dateLastCrawled": "2020-11-29T15:17:00.0000000Z",
+        "language": "fr", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "CodeMirror 2: JavaScript mode - NPS", "url": "https:\/\/www.nps.gov\/npmap\/slides\/overview-of-npmap\/libs\/codemirror\/mode\/xquery\/index.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/npmap\/slides\/overview-of-npmap\/libs\/codemirror\/mode\/xquery\/index.html",
+        "snippet": "MIME types defined: application\/xquery. Development of the CodeMirror
+        XQuery mode was sponsored by MarkLogic and developed by Mike Brevoort.MarkLogic
+        and developed by Mike Brevoort.", "dateLastCrawled": "2020-04-08T18:26:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "National Park Service", "url": "https:\/\/home.nps.gov\/caco\/learn\/photosmultimedia\/upload\/Pamet%20Area%20Trails,%20revised%20credit-2.wmv",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/home.nps.gov\/caco\/learn\/photosmultimedia\/upload\/Pamet
+        Area Trails, revised...", "snippet": "þ„wN·.¡:¤ ˜&IÁËi9w%:jØ…$€€ É)›~q t ª`
+        nÆ ú ðù ,''[tuZI š ”ã©ã·Ì¶L UZŒÎØÍ$áMû™3#{\/Œì i ’v öL „’oÎ~tÐ Šjp s’ ,Æ @EB#
+        f†10 I0 Ã ç6 Šgû 6«Æ Ì‘Ól 1³ûZ’ c 8 hXB†\"c 32 ßL,} $š 0°‡Ð=“c) u·²ÁC%m¥U´€Ø`oÐæ¸€
+        S¾)#•âÂ œÃ TÕ -¦—° uV 0Q ...", "dateLastCrawled": "2021-05-26T04:59:00.0000000Z",
+        "language": "fr", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "National Park Service", "url": "https:\/\/home.nps.gov\/orpi\/learn\/photosmultimedia\/loader.cfm?csModule=security\/getfile&PageID=2185942",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/home.nps.gov\/orpi\/learn\/photosmultimedia\/loader.cfm?csModule=security\/getfile&...",
+        "snippet": "0&²uŽfÏ ¦ÙªbÎlâ @¤ÐÒ ãÒ —ð É^¨Pî AspectRatioX AspectRatioY WMFSDKVersion
+        11.0.5721.5251 WMFSDKNeeded 0.0.0.0000 IsVBR ¡Ü«ŒG©Ï ŽäÀ Seh§!›C", "dateLastCrawled":
+        "2021-08-19T23:31:00.0000000Z", "language": "fr", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16", "name":
+        "www.nps.gov", "url": "https:\/\/www.nps.gov\/av\/akr\/avElement\/saju-1ra-estacion-casa-d-guardia.m4v",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/av\/akr\/avElement\/saju-1ra-estacion-casa-d-guardia.m4v",
+        "snippet": "ftypM4VP M4VPM4A mp42isomZ¯moovlmvhdÍ‚2ÙÍ‚2Ù Xvf @ &êtrak\\tkhd
+        Í‚2œÍ‚2Ù vf @ à $edts elst vf &bmdia mdhdÍ‚2ÙÍ‚2Ù µ Oh Ç:hdlrvideApple ...",
+        "dateLastCrawled": "2021-08-14T08:09:00.0000000Z", "language": "fr", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "National Park Service", "url": "http:\/\/home.nps.gov\/yose\/learn\/management\/upload\/Yosemite_National_Park_Long-Range_Interpretive_Plan.epub",
+        "isFamilyFriendly": true, "displayUrl": "home.nps.gov\/yose\/learn\/management\/upload\/Yosemite_National_Park_Long-Range...",
+        "snippet": "ÖÒ¨¨µÀ ÔêH9 f: â7 þJºÂ xÿÊ®EÛ¦vì{ÐZîyt˜){ d6âœ+Ø($’¸´NMv_?¨¤û
+        Q›9ÿ“óðS¯² \\gƒrEÀ® Çÿ>>XYu{¤P*Œâª>œZ¥9´h q~ )¿¯0@9àvG¾ž‰\"yËœYû86[ö 6–>!Àí
+        7¡$ë 2JÞ,X¾‚§ Í îÞÁŸ }€¨xšóe:zj67 ÀêÑ!Ç*; ƒÅ¿ŽbðAsÏyŒ£B˜Ñ+ßÂ> + Ê ôÓ îtá 6«¼&it¹òÁ€6¯,²
+        ...", "dateLastCrawled": "2021-07-29T09:19:00.0000000Z", "language": "pt",
+        "isNavigational": false}]}, "rankingResponse": {"mainline": {"items": [{"answerType":
+        "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
         {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
@@ -230,9 +222,7 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
         {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
         {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
-        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
-        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
-        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}}]}}}'
     http_version:
-  recorded_at: Wed, 09 Jun 2021 14:04:05 GMT
+  recorded_at: Tue, 31 Aug 2021 20:33:08 GMT
 recorded_with: VCR 4.0.0
