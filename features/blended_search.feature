@@ -40,7 +40,7 @@ Feature: Blended Search
     And the following Tweets exist:
       | tweet_text                                                                                  | tweet_id | published_ago | twitter_profile_id | url                    | expanded_url            | display_url      |
       | "We wish you all a blessed and safe holiday item." - President Obama http://t.co/l8jbZSbmAX | 184957   | hour          | 123456             | http://t.co/l8jbZSbmAX | http://go.wh.gov/sgCp3q | go.wh.gov/sgCp3q |
-    When I am on bar.gov's mobile search page
+    When I am on bar.gov's search page
     And I fill in "Enter your search term" with "items"
     And I press "Search" within the search box
     Then I should see "Everything" within the SERP active navigation
@@ -104,7 +104,7 @@ Feature: Blended Search
     And I should see "next news item body"
     And I should see "stale news item body"
 
-    When I am on bar.gov's mobile search page
+    When I am on bar.gov's search page
     And there are 30 news items for "Press"
     And I fill in "Enter your search term" with "news item"
     And I press "Search" within the search box
@@ -261,7 +261,7 @@ Feature: Blended Search
       | title                       | description                              | url                              | affiliate | last_crawled_at | last_crawl_status |
       | First petition article      | This is an article item on barack obama  | http://p.whitehouse.gov/p-1.html | bar.gov   | 11/02/2011      | OK                |
       | Second barack obama article | This is another article on the same item | http://p.whitehouse.gov/p-2.html | bar.gov   | 11/02/2011      | OK                |
-    When I am on bar.gov's mobile search page
+    When I am on bar.gov's search page
     And I fill in "Enter your search term" with "barack obaama article"
     And I press "Search" within the search box
     Then I should see "Showing results for barack obama article"

@@ -313,8 +313,8 @@ Feature: Manage Display
     And the page body should contain "mini_logo.png"
     And I should see "Office website of the Awesome Agency"
     And I should see a left aligned menu button
-    And I should see "my HTML fragment" within the mobile footer
-    And I should not see "strong" within the mobile footer
+    And I should see "my HTML fragment" within the footer
+    And I should not see "strong" within the footer
 
     When I press "Browse site"
     Then I should find "News" in the main menu

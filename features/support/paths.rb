@@ -10,14 +10,8 @@ module NavigationHelpers
 
     when /the search page/
       search_path
-    when /the Spanish mobile search results page for "([^\"]*)"$/
-      search_path(:query => $1, :locale => 'en', :m => 'true')
     when /^(.*)'s search page$/
       search_path(:affiliate => $1)
-    when /^(.*)'s mobile search page$/
-      search_path(:affiliate => $1, :m => 'true')
-    when /^(.*)'s overridden search page$/
-      search_path(:affiliate => $1, :m => 'override')
     when /^(.*)'s advanced search page$/
       advanced_search_path(:affiliate => $1)
     when /^(.*)'s search page with unsanitized "([^\"]*)" query$/
@@ -30,8 +24,6 @@ module NavigationHelpers
       news_search_path(:affiliate => $1)
     when /^(.*)'s "([^\"]*)" news search page$/
       news_search_path(:affiliate => $1, :channel => Affiliate.find_by_name($1).rss_feeds.find_by_name($2))
-    when /^(.*)'s "([^\"]*)" mobile news search page$/
-      news_search_path(affiliate: $1, channel: Affiliate.find_by_name($1).rss_feeds.find_by_name($2), m: 'true')
     when /^(.*)'s docs search page$/
       docs_search_path(:affiliate => $1)
     when /^(.*)'s "([^\"]*)" docs search page$/
@@ -60,14 +52,8 @@ module NavigationHelpers
       monthly_reports_path
     when /the affiliate analytics query search results page/
       query_search_affiliate_analytics_path
-    when /the query groups admin page/
-      analytics_query_groups_path
     when /the boosted contents admin page/
       admin_boosted_contents_path
-    when /the superfresh feed/
-      main_superfresh_feed_path
-    when /admin sayt suggestions upload/
-      new_admin_sayt_suggestions_upload_path
     when /the affiliate admin page with "([^\"]*)" selected$/
       sites_path(:said => Affiliate.find_by_name($1).id)
     when /the affiliate admin page/
@@ -76,14 +62,8 @@ module NavigationHelpers
       site_path(Affiliate.find_by_display_name($1))
     when /the "([^\"]*)" affiliate users page$/
       affiliate_users_path(Affiliate.find_by_display_name($1))
-    when /the affiliate sayt page for "([^\"]*)"/
-      affiliate_type_ahead_search_index_path(Affiliate.find_by_name($1))
-    when /the affiliate sayt demo ([[:digit:]]) page for ([^\"]*)/
-      demo_affiliate_type_ahead_search_index_path(Affiliate.find_by_name($2), :page => $1)
     when /the (.*)'s featured collections page$/
       affiliate_featured_collections_path(Affiliate.find_by_name($1))
-    when /the preview affiliate page for "([^\"]*)"/
-      preview_affiliate_path(Affiliate.find_by_name($1))
     when /the (.*)'s boosted contents page$/
       affiliate_boosted_contents_path(Affiliate.find_by_name($1))
     when /the new affiliate boosted content page for "([^\"]*)"/
