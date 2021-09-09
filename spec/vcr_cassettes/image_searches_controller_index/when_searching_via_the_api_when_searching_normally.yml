@@ -27,7 +27,7 @@ http_interactions:
       Pragma:
       - no-cache
       Content-Length:
-      - '55994'
+      - '56240'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
@@ -35,44 +35,44 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=18F5EE289E286F0230EFFE7A9FD56EFF; domain=.bingapis.com; expires=Tue,
-        05-Jul-2022 16:17:21 GMT; path=/; secure; SameSite=None
-      - MUIDB=18F5EE289E286F0230EFFE7A9FD56EFF; expires=Tue, 05-Jul-2022 16:17:21
+      - MUID=056658B9B7F3673805A5481DB62D6624; domain=.bingapis.com; expires=Sun,
+        25-Sep-2022 20:33:26 GMT; path=/; secure; SameSite=None
+      - MUIDB=056658B9B7F3673805A5481DB62D6624; expires=Sun, 25-Sep-2022 20:33:26
         GMT; path=/; HttpOnly
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sat, 10-Jun-2023 16:17:21 GMT;
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 31-Aug-2023 20:33:26 GMT;
         path=/
-      - SRCHHPGUSR=SRCHLANGV2=en; domain=.bingapis.com; expires=Sat, 10-Jun-2023 16:17:21
+      - SRCHHPGUSR=SRCHLANG=en; domain=.bingapis.com; expires=Thu, 31-Aug-2023 20:33:26
         GMT; path=/
-      - SRCHUID=V=2&GUID=AC1ACDE0FC8E40DDB40A0EEBB79AB4B7&dmnchg=1; domain=.bingapis.com;
-        expires=Sat, 10-Jun-2023 16:17:21 GMT; path=/
-      - SRCHUSR=DOB=20210610; domain=.bingapis.com; expires=Sat, 10-Jun-2023 16:17:21
+      - SRCHUID=V=2&GUID=E6B365483E164380BF91321D37340E11&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 31-Aug-2023 20:33:26 GMT; path=/
+      - SRCHUSR=DOB=20210831; domain=.bingapis.com; expires=Thu, 31-Aug-2023 20:33:26
         GMT; path=/
-      - _EDGE_S=F=1&SID=27B7BE84915865430580AED690A56428&mkt=en-us; domain=.bingapis.com;
+      - _EDGE_S=F=1&SID=3A0EAA5BAEB568FF0CF3BAFFAF6B6921&mkt=en-us; domain=.bingapis.com;
         path=/; HttpOnly
-      - _EDGE_V=1; domain=.bingapis.com; expires=Tue, 05-Jul-2022 16:17:21 GMT; path=/;
+      - _EDGE_V=1; domain=.bingapis.com; expires=Sun, 25-Sep-2022 20:33:26 GMT; path=/;
         HttpOnly
-      - _SS=SID=27B7BE84915865430580AED690A56428; domain=.bingapis.com; path=/
+      - _SS=SID=3A0EAA5BAEB568FF0CF3BAFFAF6B6921; domain=.bingapis.com; path=/
       X-Snr-Routing:
       - '1'
       Bingapis-Traceid:
-      - FA29BE2309364371B8D5F585C67F59AA
+      - 6C567F60B6A849AF80F149CC35DE9F71
       X-Msedge-Clientid:
-      - 18F5EE289E286F0230EFFE7A9FD56EFF
+      - '056658B9B7F3673805A5481DB62D6624'
       X-Msapi-Userstate:
-      - 995c
+      - fda1
       X-Cache:
       - CONFIG_NOCACHE
       X-Msedge-Ref:
-      - 'Ref A: FA29BE2309364371B8D5F585C67F59AA Ref B: BLUEDGE0107 Ref C: 2021-06-10T16:17:21Z'
+      - 'Ref A: 6C567F60B6A849AF80F149CC35DE9F71 Ref B: BLUEDGE0609 Ref C: 2021-08-31T20:33:26Z'
       Date:
-      - Thu, 10 Jun 2021 16:17:21 GMT
+      - Tue, 31 Aug 2021 20:33:26 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "Images", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=E1722C61BFE2486A8D9F478224E021B2&CID=18F5EE289E286F0230EFFE7A9FD56EFF&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=E1722C61BFE2486A8D9F478224E021B2&CID=18F5EE289E286F0230EFFE7A9FD56EFF&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "Images", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=87F2257409D0445D914AEE4C930F93CE&CID=056658B9B7F3673805A5481DB62D6624&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=87F2257409D0445D914AEE4C930F93CE&CID=056658B9B7F3673805A5481DB62D6624&Type=Event.CPT&DATA=0"},
         "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=weather%20(site:gov%20OR%20site:mil)&FORM=OIIARP",
-        "webSearchUrlPingSuffix": "DevEx,5193.1", "totalEstimatedMatches": 200, "nextOffset":
-        20, "value": [{"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=393F3806FD42F39CC82A9D447743CCCB90AF3D17&simid=608012806233595509",
+        "webSearchUrlPingSuffix": "DevEx,5198.1", "totalEstimatedMatches": 200, "nextOffset":
+        21, "value": [{"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=393F3806FD42F39CC82A9D447743CCCB90AF3D17&simid=608012806260343909",
         "webSearchUrlPingSuffix": "DevEx,5026.1", "name": "Information About the April
         14, 2011 Severe Weather ...", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.-VgH9tO_83OQzRPxEO5qdgHaLH&pid=Api",
         "datePublished": "2011-04-14T12:00:00.0000000Z", "contentUrl": "https:\/\/www.weather.gov\/images\/oun\/wxevents\/20110414\/stormphotos\/grabman\/MesoMadill.jpg",
@@ -80,281 +80,283 @@ http_interactions:
         "hostPageUrlPingSuffix": "DevEx,5027.1", "contentSize": "725288 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "https:\/\/www.weather.gov\/oun\/events-20110414",
         "width": 792, "height": 1188, "thumbnail": {"width": 474, "height": 711},
-        "imageInsightsToken": "ccid_+VgH9tO\/*mid_393F3806FD42F39CC82A9D447743CCCB90AF3D17*simid_608012806233595509",
+        "imageInsightsToken": "ccid_+VgH9tO\/*mid_393F3806FD42F39CC82A9D447743CCCB90AF3D17*simid_608012806260343909",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "393F3806FD42F39CC82A9D447743CCCB90AF3D17", "accentColor": "847347"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=1CFD0412216D831FDCDD243872A4CE215F664FE6&simid=608030003285084906",
-        "webSearchUrlPingSuffix": "DevEx,5032.1", "name": "Alabama Severe Weather
-        Awareness Week", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.35iAePXZgRuiw4qjgQq_qwHaFj&pid=Api",
-        "datePublished": "2019-11-09T18:39:00.0000000Z", "contentUrl": "https:\/\/www.weather.gov\/images\/mob\/WxPrep\/Severe_AL\/2013_cumulonimbus.jpg",
-        "contentUrlPingSuffix": "DevEx,5034.1", "hostPageUrl": "https:\/\/www.weather.gov\/mob\/Severe_Alabama",
-        "hostPageUrlPingSuffix": "DevEx,5033.1", "contentSize": "64594 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.weather.gov\/mob\/Severe_Alabama",
-        "width": 960, "height": 720, "thumbnail": {"width": 474, "height": 355}, "imageInsightsToken":
-        "ccid_35iAePXZ*mid_1CFD0412216D831FDCDD243872A4CE215F664FE6*simid_608030003285084906",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "1CFD0412216D831FDCDD243872A4CE215F664FE6", "accentColor": "18457B"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=C65F27F7883DCCB1587D8D45A626B6517FB6F9E2&simid=608032313977502864",
-        "webSearchUrlPingSuffix": "DevEx,5038.1", "name": "Focus on Severe Weather",
-        "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.Td9UaB7tGOgbXHjMcBpffQHaFj&pid=Api",
-        "datePublished": "2020-06-14T18:31:00.0000000Z", "contentUrl": "https:\/\/www.weather.gov\/images\/news\/022712_focus_severe_lg.png",
-        "contentUrlPingSuffix": "DevEx,5040.1", "hostPageUrl": "https:\/\/www.weather.gov\/news\/022712-focus-severe",
-        "hostPageUrlPingSuffix": "DevEx,5039.1", "contentSize": "1442407 B", "encodingFormat":
-        "png", "hostPageDisplayUrl": "https:\/\/www.weather.gov\/news\/022712-focus-severe",
-        "width": 1024, "height": 768, "thumbnail": {"width": 474, "height": 355},
-        "imageInsightsToken": "ccid_Td9UaB7t*mid_C65F27F7883DCCB1587D8D45A626B6517FB6F9E2*simid_608032313977502864",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "C65F27F7883DCCB1587D8D45A626B6517FB6F9E2", "accentColor": "5C4F33"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=AC8D0FF76BAE85549CD67F5851CDED63EB21195A&simid=608011333059811437",
-        "webSearchUrlPingSuffix": "DevEx,5044.1", "name": "Spring weather can be unpredictable.
-        Reduce injury risk ...", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.ef0rf-kJIQl6gnuIcWA4GAAAAA&pid=Api",
-        "datePublished": "2016-05-18T12:00:00.0000000Z", "contentUrl": "http:\/\/blogs.cdc.gov\/yourhealthyourenvironment\/files\/2016\/03\/springweather_456px.jpg",
-        "contentUrlPingSuffix": "DevEx,5046.1", "hostPageUrl": "https:\/\/blogs.cdc.gov\/yourhealthyourenvironment\/2016\/05\/18\/spring-weather-can-be-unpredictable-reduce-injury-risk-and-plan-ahead\/",
-        "hostPageUrlPingSuffix": "DevEx,5045.1", "contentSize": "25102 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/blogs.cdc.gov\/yourhealthyourenvironment\/2016\/05\/18\/spring-weather-can-be...",
-        "width": 456, "height": 294, "thumbnail": {"width": 456, "height": 294}, "imageInsightsToken":
-        "ccid_ef0rf+kJ*mid_AC8D0FF76BAE85549CD67F5851CDED63EB21195A*simid_608011333059811437",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "AC8D0FF76BAE85549CD67F5851CDED63EB21195A", "accentColor": "64463C"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=6229812A48A7079C06232BAFE562E5F2945A9D2C&simid=608022362536492074",
-        "webSearchUrlPingSuffix": "DevEx,5050.1", "name": "Georgia Severe Weather
-        Preparedness Week - Severe ...", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.CsOHA2OtfM-IHygV1IJZzAHaFj&pid=Api",
-        "datePublished": "2018-02-06T22:13:00.0000000Z", "contentUrl": "https:\/\/www.weather.gov\/images\/ffc\/swaw_thunderstorm.jpg",
-        "contentUrlPingSuffix": "DevEx,5052.1", "hostPageUrl": "https:\/\/www.weather.gov\/ffc\/swaw_thunder",
-        "hostPageUrlPingSuffix": "DevEx,5051.1", "contentSize": "270479 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.weather.gov\/ffc\/swaw_thunder",
-        "width": 1600, "height": 1200, "thumbnail": {"width": 474, "height": 355},
-        "imageInsightsToken": "ccid_CsOHA2Ot*mid_6229812A48A7079C06232BAFE562E5F2945A9D2C*simid_608022362536492074",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "6229812A48A7079C06232BAFE562E5F2945A9D2C", "accentColor": "1E2F73"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=9D397028C508B2FCCC4512F19538EE824AC1A8BA&simid=607996837544146709",
-        "webSearchUrlPingSuffix": "DevEx,5056.1", "name": "Severe Weather | Ready.gov",
-        "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.1ip_5jlSF4WhxyQsXHkZSwHaC9&pid=Api",
-        "datePublished": "2021-03-29T12:35:00.0000000Z", "contentUrl": "https:\/\/www.ready.gov\/sites\/default\/files\/2019-09\/severe%20weather_3_0.jpg",
-        "contentUrlPingSuffix": "DevEx,5058.1", "hostPageUrl": "https:\/\/www.ready.gov\/severe-weather",
-        "hostPageUrlPingSuffix": "DevEx,5057.1", "contentSize": "328646 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.ready.gov\/severe-weather", "width":
-        2048, "height": 820, "thumbnail": {"width": 474, "height": 189}, "imageInsightsToken":
-        "ccid_1ip\/5jlS*mid_9D397028C508B2FCCC4512F19538EE824AC1A8BA*simid_607996837544146709",
-        "imageId": "9D397028C508B2FCCC4512F19538EE824AC1A8BA", "accentColor": "9C772F"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=1224EB22A12725F1EC7889E742F281107EEBAE70&simid=608054278437097593",
-        "webSearchUrlPingSuffix": "DevEx,5062.1", "name": "Mississippi Fall Severe
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=1224EB22A12725F1EC7889E742F281107EEBAE70&simid=608054278464761217",
+        "webSearchUrlPingSuffix": "DevEx,5032.1", "name": "Mississippi Fall Severe
         Weather Preparedness Week", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.6OeD2eazFc81FQT6grI15AHaE7&pid=Api",
         "datePublished": "2021-03-23T03:45:00.0000000Z", "contentUrl": "https:\/\/www.weather.gov\/images\/jan\/SWPW\/Tornado-%20by%20Brad%20Goddard.jpg",
-        "contentUrlPingSuffix": "DevEx,5064.1", "hostPageUrl": "https:\/\/www.weather.gov\/jan\/swpwfall_tornadoes",
-        "hostPageUrlPingSuffix": "DevEx,5063.1", "contentSize": "911888 B", "encodingFormat":
+        "contentUrlPingSuffix": "DevEx,5034.1", "hostPageUrl": "https:\/\/www.weather.gov\/jan\/swpwfall_tornadoes",
+        "hostPageUrlPingSuffix": "DevEx,5033.1", "contentSize": "911888 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "https:\/\/www.weather.gov\/jan\/swpwfall_tornadoes",
         "width": 5045, "height": 3363, "thumbnail": {"width": 474, "height": 315},
-        "imageInsightsToken": "ccid_6OeD2eaz*mid_1224EB22A12725F1EC7889E742F281107EEBAE70*simid_608054278437097593",
+        "imageInsightsToken": "ccid_6OeD2eaz*mid_1224EB22A12725F1EC7889E742F281107EEBAE70*simid_608054278464761217",
         "imageId": "1224EB22A12725F1EC7889E742F281107EEBAE70", "accentColor": "5C4C25"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=DAC752D998025793BA23D133387A20E717C23693&simid=607998585599323864",
-        "webSearchUrlPingSuffix": "DevEx,5068.1", "name": "Extreme Weather Events
-        | Water, Sanitation, & Hygiene ...", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.jOLKNYM16Q0Sg-QW8Lv6qgHaC9&pid=Api",
-        "datePublished": "2021-03-11T01:58:00.0000000Z", "contentUrl": "https:\/\/www.cdc.gov\/healthywater\/emergency\/images\/extreme-weather-banner-472885902.jpg",
-        "contentUrlPingSuffix": "DevEx,5070.1", "hostPageUrl": "https:\/\/www.cdc.gov\/healthywater\/emergency\/extreme-weather\/",
-        "hostPageUrlPingSuffix": "DevEx,5069.1", "contentSize": "81870 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.cdc.gov\/healthywater\/emergency\/extreme-weather",
-        "width": 1000, "height": 400, "thumbnail": {"width": 474, "height": 189},
-        "imageInsightsToken": "ccid_jOLKNYM1*mid_DAC752D998025793BA23D133387A20E717C23693*simid_607998585599323864",
-        "imageId": "DAC752D998025793BA23D133387A20E717C23693", "accentColor": "5B4E33"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=7CBCE83F38CEF4A58C313CCC0F3911F50E7018A8&simid=608047050008840722",
-        "webSearchUrlPingSuffix": "DevEx,5074.1", "name": "GPM Extreme Weather Photo
-        Contest | Precipitation ...", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.W5j4-x-rKtDFhtEhYtlwNwHaDz&pid=Api",
-        "datePublished": "2020-06-06T02:27:00.0000000Z", "contentUrl": "https:\/\/gpm.nasa.gov\/sites\/default\/files\/imce\/GPM-photo-contest-splash.jpg",
-        "contentUrlPingSuffix": "DevEx,5076.1", "hostPageUrl": "https:\/\/gpm.nasa.gov\/articles\/gpm-extreme-weather-photo-contest",
-        "hostPageUrlPingSuffix": "DevEx,5075.1", "contentSize": "607928 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/gpm.nasa.gov\/articles\/gpm-extreme-weather-photo-contest",
-        "width": 1445, "height": 741, "thumbnail": {"width": 474, "height": 243},
-        "imageInsightsToken": "ccid_W5j4+x+r*mid_7CBCE83F38CEF4A58C313CCC0F3911F50E7018A8*simid_608047050008840722",
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=7ABFE9F279108E598B8A63D9D0684DD3BADC7C96&simid=608030583132004160",
+        "webSearchUrlPingSuffix": "DevEx,5038.1", "name": "Georgia Severe Weather
+        Preparedness Week - Severe ...", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.CsOHA2OtfM-IHygV1IJZzAHaFj&pid=Api",
+        "datePublished": "2017-02-03T15:53:00.0000000Z", "contentUrl": "http:\/\/www.weather.gov\/images\/ffc\/swaw_thunderstorm.jpg",
+        "contentUrlPingSuffix": "DevEx,5040.1", "hostPageUrl": "http:\/\/www.weather.gov\/ffc\/swaw_thunder",
+        "hostPageUrlPingSuffix": "DevEx,5039.1", "contentSize": "270479 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "www.weather.gov\/ffc\/swaw_thunder", "width":
+        1600, "height": 1200, "thumbnail": {"width": 474, "height": 355}, "imageInsightsToken":
+        "ccid_CsOHA2Ot*mid_7ABFE9F279108E598B8A63D9D0684DD3BADC7C96*simid_608030583132004160",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "7CBCE83F38CEF4A58C313CCC0F3911F50E7018A8", "accentColor": "496982"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=4A9F9834194DFD4A75D5821D1C8837DE8674007C&simid=608006003007767267",
-        "webSearchUrlPingSuffix": "DevEx,5080.1", "name": "Brief Summary of the April
-        28-30 Severe Weather and Heavy Rain", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.vbOeiQmaIsVjSIl92_TFPgHaFQ&pid=Api",
-        "datePublished": "2021-03-23T04:14:00.0000000Z", "contentUrl": "https:\/\/www.weather.gov\/images\/ind\/apr28302017svr\/radar_720pm_apr28.png",
-        "contentUrlPingSuffix": "DevEx,5082.1", "hostPageUrl": "https:\/\/www.weather.gov\/ind\/april28302017severe",
-        "hostPageUrlPingSuffix": "DevEx,5081.1", "contentSize": "293341 B", "encodingFormat":
-        "png", "hostPageDisplayUrl": "https:\/\/www.weather.gov\/ind\/april28302017severe",
-        "width": 953, "height": 677, "thumbnail": {"width": 474, "height": 336}, "imageInsightsToken":
-        "ccid_vbOeiQma*mid_4A9F9834194DFD4A75D5821D1C8837DE8674007C*simid_608006003007767267",
+        "imageId": "7ABFE9F279108E598B8A63D9D0684DD3BADC7C96", "accentColor": "1E2F73"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=530DE023AABE4290BBCCE50096366BB2977E5937&simid=608020678932976412",
+        "webSearchUrlPingSuffix": "DevEx,5069.1", "name": "NWS Lubbock, TX Local Weather
+        Events: May 8-10, 2013 ...", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.3wLCQJOGhUKkjBunSXPGSwHaFh&pid=Api",
+        "datePublished": "2013-05-08T12:00:00.0000000Z", "contentUrl": "https:\/\/www.weather.gov\/images\/lub\/events\/2013\/20130509-storms\/20130509_storm_east_LUB.jpg",
+        "contentUrlPingSuffix": "DevEx,5071.1", "hostPageUrl": "https:\/\/www.weather.gov\/lub\/events-2013-20130508-storms",
+        "hostPageUrlPingSuffix": "DevEx,5070.1", "contentSize": "100160 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.weather.gov\/lub\/events-2013-20130508-storms",
+        "width": 1162, "height": 867, "thumbnail": {"width": 474, "height": 353},
+        "imageInsightsToken": "ccid_3wLCQJOG*mid_530DE023AABE4290BBCCE50096366BB2977E5937*simid_608020678932976412",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "4A9F9834194DFD4A75D5821D1C8837DE8674007C", "accentColor": "BBAD10"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=B83C7B74A8583CA3604D6EC8F8C1D7E8A3C40F04&simid=607994015754183938",
-        "webSearchUrlPingSuffix": "DevEx,5086.1", "name": "Severe Weather Impacts
-        the Region over the Holiday", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.opWc4WFjMHh6fic8770UcwHaFR&pid=Api",
-        "datePublished": "2020-06-07T18:11:00.0000000Z", "contentUrl": "https:\/\/www.weather.gov\/images\/fgf\/Radar_July4-2017-2.gif",
-        "contentUrlPingSuffix": "DevEx,5088.1", "hostPageUrl": "https:\/\/www.weather.gov\/fgf\/2017_07_4-6_SevereSummary",
-        "hostPageUrlPingSuffix": "DevEx,5087.1", "contentSize": "6425579 B", "encodingFormat":
-        "animatedgif", "hostPageDisplayUrl": "https:\/\/www.weather.gov\/fgf\/2017_07_4-6_SevereSummary",
-        "width": 960, "height": 684, "thumbnail": {"width": 474, "height": 337}, "imageInsightsToken":
-        "ccid_opWc4WFj*mid_B83C7B74A8583CA3604D6EC8F8C1D7E8A3C40F04*simid_607994015754183938",
-        "imageId": "B83C7B74A8583CA3604D6EC8F8C1D7E8A3C40F04", "accentColor": "188C11"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=5805AEF67EBFD0F2D91B3E3019F8DC26652A1252&simid=607996953510170390",
-        "webSearchUrlPingSuffix": "DevEx,5092.1", "name": "Severe Weather Possible
-        Today (Updated 10:40 am Wednesday)", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.dfvD6zi8E-o9MFTSzX8nyQHaF_&pid=Api",
-        "datePublished": "2021-04-12T03:57:00.0000000Z", "contentUrl": "https:\/\/www.weather.gov\/images\/mkx\/SvrWxTiming.png",
-        "contentUrlPingSuffix": "DevEx,5094.1", "hostPageUrl": "https:\/\/www.weather.gov\/mkx\/MidJulySeverePossible",
-        "hostPageUrlPingSuffix": "DevEx,5093.1", "contentSize": "2451569 B", "encodingFormat":
-        "png", "hostPageDisplayUrl": "https:\/\/www.weather.gov\/mkx\/MidJulySeverePossible",
-        "width": 1484, "height": 1200, "thumbnail": {"width": 474, "height": 383},
-        "imageInsightsToken": "ccid_dfvD6zi8*mid_5805AEF67EBFD0F2D91B3E3019F8DC26652A1252*simid_607996953510170390",
+        "imageId": "530DE023AABE4290BBCCE50096366BB2977E5937", "accentColor": "375070"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=62FC19B5E4C02FF4E8FE74DE595C6902248FEFD6&simid=607990051531020908",
+        "webSearchUrlPingSuffix": "DevEx,5075.1", "name": "NWS Lubbock Significant
+        Weather Events: Unsettled Stretch ...", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.GgNdwiBP0TncCVYHemXbuQHaEK&pid=Api",
+        "datePublished": "2018-07-02T12:00:00.0000000Z", "contentUrl": "https:\/\/www.weather.gov\/images\/lub\/events\/2018\/20180702-storms\/downburst_20180629.jpg",
+        "contentUrlPingSuffix": "DevEx,5077.1", "hostPageUrl": "https:\/\/www.weather.gov\/lub\/events-2018-20180702-storms",
+        "hostPageUrlPingSuffix": "DevEx,5076.1", "contentSize": "259382 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.weather.gov\/lub\/events-2018-20180702-storms",
+        "width": 1920, "height": 1080, "thumbnail": {"width": 474, "height": 266},
+        "imageInsightsToken": "ccid_GgNdwiBP*mid_62FC19B5E4C02FF4E8FE74DE595C6902248FEFD6*simid_607990051531020908",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "5805AEF67EBFD0F2D91B3E3019F8DC26652A1252", "accentColor": "0404C7"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=8FC907B6C706F3BA7172B28D5DB16DFB8E863D7F&simid=608001411684894974",
-        "webSearchUrlPingSuffix": "DevEx,5098.1", "name": "National Severe Weather
+        "imageId": "62FC19B5E4C02FF4E8FE74DE595C6902248FEFD6", "accentColor": "4A6F81"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=A1BB72F65791C2D6F9FF787D37A22B0A104FBD3C&simid=607992083056828580",
+        "webSearchUrlPingSuffix": "DevEx,5081.1", "name": "Active stretch of mid-June
+        weather", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.pAi0a-_nMfZVXdU8M2GoSQHaFj&pid=Api",
+        "datePublished": "2020-06-17T12:00:00.0000000Z", "contentUrl": "http:\/\/wxevents.caprockweather.com\/images\/lub\/events\/2020\/events-2020-20200617-storms\/lah-from_their_twitter.jpg",
+        "contentUrlPingSuffix": "DevEx,5083.1", "hostPageUrl": "https:\/\/www.weather.gov\/lub\/events-2020-20200617-storms",
+        "hostPageUrlPingSuffix": "DevEx,5082.1", "contentSize": "330961 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.weather.gov\/lub\/events-2020-20200617-storms",
+        "width": 2048, "height": 1536, "thumbnail": {"width": 474, "height": 355},
+        "imageInsightsToken": "ccid_pAi0a+\/n*mid_A1BB72F65791C2D6F9FF787D37A22B0A104FBD3C*simid_607992083056828580",
+        "imageId": "A1BB72F65791C2D6F9FF787D37A22B0A104FBD3C", "accentColor": "8A6B41"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=A6DA2AAD3B6D04A8C3357F5851CDED63EB21195A&simid=607990197563305890",
+        "webSearchUrlPingSuffix": "DevEx,5088.1", "name": "Spring weather can be unpredictable.
+        Reduce injury risk ...", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.ef0rf-kJIQl6gnuIcWA4GAAAAA&pid=Api",
+        "datePublished": "2016-05-18T12:00:00.0000000Z", "contentUrl": "http:\/\/blogs.cdc.gov\/yourhealthyourenvironment\/files\/2016\/03\/springweather_456px.jpg",
+        "contentUrlPingSuffix": "DevEx,5090.1", "hostPageUrl": "http:\/\/blogs.cdc.gov\/yourhealthyourenvironment\/2016\/05\/18\/spring-weather-can-be-unpredictable-reduce-injury-risk-and-plan-ahead\/",
+        "hostPageUrlPingSuffix": "DevEx,5089.1", "contentSize": "25102 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "blogs.cdc.gov\/yourhealthyourenvironment\/2016\/05\/18\/spring-weather-can-be-unpredictable...",
+        "width": 456, "height": 294, "thumbnail": {"width": 456, "height": 294}, "imageInsightsToken":
+        "ccid_ef0rf+kJ*mid_A6DA2AAD3B6D04A8C3357F5851CDED63EB21195A*simid_607990197563305890",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "A6DA2AAD3B6D04A8C3357F5851CDED63EB21195A", "accentColor": "64463C"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=C65F27F7883DCCB1587D8D45A626B6517FB6F9E2&simid=608032314002847216",
+        "webSearchUrlPingSuffix": "DevEx,5095.1", "name": "Focus on Severe Weather",
+        "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.Td9UaB7tGOgbXHjMcBpffQHaFj&pid=Api",
+        "datePublished": "2020-06-14T18:31:00.0000000Z", "contentUrl": "https:\/\/www.weather.gov\/images\/news\/022712_focus_severe_lg.png",
+        "contentUrlPingSuffix": "DevEx,5097.1", "hostPageUrl": "https:\/\/www.weather.gov\/news\/022712-focus-severe",
+        "hostPageUrlPingSuffix": "DevEx,5096.1", "contentSize": "1442407 B", "encodingFormat":
+        "png", "hostPageDisplayUrl": "https:\/\/www.weather.gov\/news\/022712-focus-severe",
+        "width": 1024, "height": 768, "thumbnail": {"width": 474, "height": 355},
+        "imageInsightsToken": "ccid_Td9UaB7t*mid_C65F27F7883DCCB1587D8D45A626B6517FB6F9E2*simid_608032314002847216",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "C65F27F7883DCCB1587D8D45A626B6517FB6F9E2", "accentColor": "5C4F33"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=42E8D4A6C8ABEB81C516B5199A77CD80671F7E66&simid=608055545471457123",
+        "webSearchUrlPingSuffix": "DevEx,5101.1", "name": "2016 Annual Weather Highlights
+        Severe Weather", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.hyfYP4l8ki61Vmmj-p3IGAHaEK&pid=Api",
+        "datePublished": "2021-03-11T09:14:00.0000000Z", "contentUrl": "https:\/\/www.weather.gov\/images\/abq\/SvrWx\/Mora1-HeavySnow-FriedaBustos-012616.jpg",
+        "contentUrlPingSuffix": "DevEx,5103.1", "hostPageUrl": "https:\/\/www.weather.gov\/abq\/climonhigh2016annual-severweather",
+        "hostPageUrlPingSuffix": "DevEx,5102.1", "contentSize": "215509 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.weather.gov\/abq\/climonhigh2016annual-severweather",
+        "width": 2048, "height": 1152, "thumbnail": {"width": 474, "height": 266},
+        "imageInsightsToken": "ccid_hyfYP4l8*mid_42E8D4A6C8ABEB81C516B5199A77CD80671F7E66*simid_608055545471457123",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "42E8D4A6C8ABEB81C516B5199A77CD80671F7E66", "accentColor": "3E618E"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=D47DB681ABA98607F8D16A254B1601F493161D6E&simid=608015915818247559",
+        "webSearchUrlPingSuffix": "DevEx,5107.1", "name": "Owlie’s Weird Weather!",
+        "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.4z0CdvfKqK9Ek540gZ4AiQHaE0&pid=Api",
+        "datePublished": "2017-09-27T20:23:00.0000000Z", "contentUrl": "https:\/\/www.weather.gov\/images\/owlie\/SquallLine.jpg",
+        "contentUrlPingSuffix": "DevEx,5109.1", "hostPageUrl": "https:\/\/www.weather.gov\/owlie\/weird-weather",
+        "hostPageUrlPingSuffix": "DevEx,5108.1", "contentSize": "108502 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.weather.gov\/owlie\/weird-weather",
+        "width": 1600, "height": 1043, "thumbnail": {"width": 474, "height": 308},
+        "imageInsightsToken": "ccid_4z0CdvfK*mid_D47DB681ABA98607F8D16A254B1601F493161D6E*simid_608015915818247559",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "D47DB681ABA98607F8D16A254B1601F493161D6E", "accentColor": "184A5F"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=637A39BF29A96915603B5F875E28603401EDFC43&simid=608003679452807382",
+        "webSearchUrlPingSuffix": "DevEx,5113.1", "name": "Keep Your Cool in Hot Weather!",
+        "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.ubSsUZk5QEB89q7dCd2y4wHaHa&pid=Api",
+        "datePublished": "2020-03-09T18:19:00.0000000Z", "contentUrl": "https:\/\/www.cdc.gov\/nceh\/features\/extremeheat\/extremeheat_1024px.jpg",
+        "contentUrlPingSuffix": "DevEx,5115.1", "hostPageUrl": "https:\/\/www.cdc.gov\/nceh\/features\/extremeheat\/index.html",
+        "hostPageUrlPingSuffix": "DevEx,5114.1", "contentSize": "77406 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.cdc.gov\/nceh\/features\/extremeheat\/index.html",
+        "width": 1024, "height": 1024, "thumbnail": {"width": 474, "height": 474},
+        "imageInsightsToken": "ccid_ubSsUZk5*mid_637A39BF29A96915603B5F875E28603401EDFC43*simid_608003679452807382",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "637A39BF29A96915603B5F875E28603401EDFC43", "accentColor": "C3A308"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=CDEC7D02A9932DD100ECD67DB6C1C02E8C88B627&simid=608004890627231786",
+        "webSearchUrlPingSuffix": "DevEx,5119.1", "name": "Winter Weather | Vermont
+        Department of Health", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.liqHwelJaNcki6J7o1dofgHaE7&pid=Api",
+        "datePublished": "2021-03-26T01:33:00.0000000Z", "contentUrl": "https:\/\/www.healthvermont.gov\/sites\/default\/files\/images\/2017\/12\/02199-a.jpg",
+        "contentUrlPingSuffix": "DevEx,5121.1", "hostPageUrl": "https:\/\/www.healthvermont.gov\/environment\/climate\/winter-weather",
+        "hostPageUrlPingSuffix": "DevEx,5120.1", "contentSize": "2865847 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.healthvermont.gov\/environment\/climate\/winter-weather",
+        "width": 5100, "height": 3393, "thumbnail": {"width": 474, "height": 315},
+        "imageInsightsToken": "ccid_liqHwelJ*mid_CDEC7D02A9932DD100ECD67DB6C1C02E8C88B627*simid_608004890627231786",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "CDEC7D02A9932DD100ECD67DB6C1C02E8C88B627", "accentColor": "4F687C"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=7994DD9D1D83D71AD797C8CBCD43B7FEF7FA3DBB&simid=608037880275351859",
+        "webSearchUrlPingSuffix": "DevEx,5125.1", "name": "NWS Lubbock Significant
+        Weather Events: Winter Storm hits ...", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.BGuouMnkn33JD77fOtNzKgHaE7&pid=Api",
+        "datePublished": "2018-12-08T12:00:00.0000000Z", "contentUrl": "https:\/\/www.weather.gov\/images\/lub\/events\/2018\/20181208-snow\/snow_mc_20181208.PNG",
+        "contentUrlPingSuffix": "DevEx,5127.1", "hostPageUrl": "https:\/\/www.weather.gov\/lub\/events-2018-20181208-snow",
+        "hostPageUrlPingSuffix": "DevEx,5126.1", "contentSize": "733769 B", "encodingFormat":
+        "png", "hostPageDisplayUrl": "https:\/\/www.weather.gov\/lub\/events-2018-20181208-snow",
+        "width": 925, "height": 616, "thumbnail": {"width": 474, "height": 315}, "imageInsightsToken":
+        "ccid_BGuouMnk*mid_7994DD9D1D83D71AD797C8CBCD43B7FEF7FA3DBB*simid_608037880275351859",
+        "imageId": "7994DD9D1D83D71AD797C8CBCD43B7FEF7FA3DBB", "accentColor": "413930"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=9D397028C508B2FCCC4512F19538EE824AC1A8BA&simid=607996837567409876",
+        "webSearchUrlPingSuffix": "DevEx,5131.1", "name": "Severe Weather | Ready.gov",
+        "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.1ip_5jlSF4WhxyQsXHkZSwHaC9&pid=Api",
+        "datePublished": "2021-03-29T12:35:00.0000000Z", "contentUrl": "https:\/\/www.ready.gov\/sites\/default\/files\/2019-09\/severe%20weather_3_0.jpg",
+        "contentUrlPingSuffix": "DevEx,5133.1", "hostPageUrl": "https:\/\/www.ready.gov\/severe-weather",
+        "hostPageUrlPingSuffix": "DevEx,5132.1", "contentSize": "328646 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.ready.gov\/severe-weather", "width":
+        2048, "height": 820, "thumbnail": {"width": 474, "height": 189}, "imageInsightsToken":
+        "ccid_1ip\/5jlS*mid_9D397028C508B2FCCC4512F19538EE824AC1A8BA*simid_607996837567409876",
+        "imageId": "9D397028C508B2FCCC4512F19538EE824AC1A8BA", "accentColor": "9C772F"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=8FC907B6C706F3BA7172B28D5DB16DFB8E863D7F&simid=608001411716965001",
+        "webSearchUrlPingSuffix": "DevEx,5137.1", "name": "National Severe Weather
         Preparedness Week : Team Georgia", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.M3fKM8YMMGOb70Qy1Yd77gHaFj&pid=Api",
         "datePublished": "2020-09-19T05:16:00.0000000Z", "contentUrl": "http:\/\/team.georgia.gov\/wp-content\/uploads\/2014\/02\/severe-weather.jpg",
-        "contentUrlPingSuffix": "DevEx,5100.1", "hostPageUrl": "http:\/\/team.georgia.gov\/service-tips\/national-severe-weather-preparedness-week\/",
-        "hostPageUrlPingSuffix": "DevEx,5099.1", "contentSize": "67669 B", "encodingFormat":
+        "contentUrlPingSuffix": "DevEx,5139.1", "hostPageUrl": "http:\/\/team.georgia.gov\/service-tips\/national-severe-weather-preparedness-week\/",
+        "hostPageUrlPingSuffix": "DevEx,5138.1", "contentSize": "67669 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "team.georgia.gov\/service-tips\/national-severe-weather-preparedness-week",
         "width": 467, "height": 350, "thumbnail": {"width": 474, "height": 355}, "imageInsightsToken":
-        "ccid_M3fKM8YM*mid_8FC907B6C706F3BA7172B28D5DB16DFB8E863D7F*simid_608001411684894974",
+        "ccid_M3fKM8YM*mid_8FC907B6C706F3BA7172B28D5DB16DFB8E863D7F*simid_608001411716965001",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "8FC907B6C706F3BA7172B28D5DB16DFB8E863D7F", "accentColor": "160D0C"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=ECC476D96FDA5AEBC0AE9E7C3BB18C6DF6F931E7&simid=608045572539355712",
-        "webSearchUrlPingSuffix": "DevEx,5104.1", "name": "Severe Weather Summary
-        for Friday and Saturday, June 9-10", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.BeWyOdY6O166FsTCKAlkIQHaFR&pid=Api",
-        "datePublished": "2020-05-31T22:37:00.0000000Z", "contentUrl": "https:\/\/www.weather.gov\/images\/fgf\/output2.gif",
-        "contentUrlPingSuffix": "DevEx,5106.1", "hostPageUrl": "https:\/\/www.weather.gov\/fgf\/2017_06_09_SevereWxSummary",
-        "hostPageUrlPingSuffix": "DevEx,5105.1", "contentSize": "3522763 B", "encodingFormat":
-        "animatedgif", "hostPageDisplayUrl": "https:\/\/www.weather.gov\/fgf\/2017_06_09_SevereWxSummary",
-        "width": 960, "height": 684, "thumbnail": {"width": 474, "height": 337}, "imageInsightsToken":
-        "ccid_BeWyOdY6*mid_ECC476D96FDA5AEBC0AE9E7C3BB18C6DF6F931E7*simid_608045572539355712",
-        "imageId": "ECC476D96FDA5AEBC0AE9E7C3BB18C6DF6F931E7", "accentColor": "13810A"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=14141E2B11BA447847F7F91DD428041DDCE954A5&simid=608011577874064263",
-        "webSearchUrlPingSuffix": "DevEx,5110.1", "name": "Weather - Everglades National
-        Park (U.S. National Park ...", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.Np6cSdrKb78mJp77S3c9gQHaDY&pid=Api",
-        "datePublished": "2019-12-25T09:45:00.0000000Z", "contentUrl": "https:\/\/www.nps.gov\/ever\/planyourvisit\/images\/5204457439_c8dd299265_o.jpg?maxwidth=1200&maxheight=1200&autorotate=false",
-        "contentUrlPingSuffix": "DevEx,5112.1", "hostPageUrl": "https:\/\/www.nps.gov\/ever\/planyourvisit\/weather.htm",
-        "hostPageUrlPingSuffix": "DevEx,5111.1", "contentSize": "102644 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.nps.gov\/ever\/planyourvisit\/weather.htm",
-        "width": 990, "height": 452, "thumbnail": {"width": 474, "height": 216}, "imageInsightsToken":
-        "ccid_Np6cSdrK*mid_14141E2B11BA447847F7F91DD428041DDCE954A5*simid_608011577874064263",
-        "imageId": "14141E2B11BA447847F7F91DD428041DDCE954A5", "accentColor": "244573"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=5D6D7629B9E301257D3B1E1A7CC67F9C95D69E97&simid=608027267387911071",
-        "webSearchUrlPingSuffix": "DevEx,5116.1", "name": "Oct. 2016: Rainfall Map\/Totals
-        For Our Coverage Area and ...", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.OeoA558zHZArszr7xY0WOAHaFi&pid=Api",
-        "datePublished": "2021-04-09T14:59:00.0000000Z", "contentUrl": "https:\/\/www.weather.gov\/images\/gid\/climate\/MonthlyClimate\/2016\/Oct\/Oct2016_rainfall.JPG",
-        "contentUrlPingSuffix": "DevEx,5118.1", "hostPageUrl": "https:\/\/www.weather.gov\/gid\/oct2016_climatesummary",
-        "hostPageUrlPingSuffix": "DevEx,5117.1", "contentSize": "165728 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.weather.gov\/gid\/oct2016_climatesummary",
-        "width": 944, "height": 706, "thumbnail": {"width": 474, "height": 354}, "imageInsightsToken":
-        "ccid_OeoA558z*mid_5D6D7629B9E301257D3B1E1A7CC67F9C95D69E97*simid_608027267387911071",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "5D6D7629B9E301257D3B1E1A7CC67F9C95D69E97", "accentColor": "03C815"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=426514FCEECFC21F10EA4B2B0D768DABADC361DB&simid=608032000441018641",
-        "webSearchUrlPingSuffix": "DevEx,5122.1", "name": "Space Weather | Science
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=426514FCEECFC21F10EA4B2B0D768DABADC361DB&simid=608032000470965270",
+        "webSearchUrlPingSuffix": "DevEx,5144.1", "name": "Space Weather | Science
         Mission Directorate", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.h0csQQerDBpcKmXjBYqxtAHaKb&pid=Api",
         "datePublished": "2020-09-12T01:28:00.0000000Z", "contentUrl": "https:\/\/science.nasa.gov\/files\/science-red\/s3fs-public\/thumbnails\/image\/LWS-Space-Weather-Web-Image_0.jpeg",
-        "contentUrlPingSuffix": "DevEx,5124.1", "hostPageUrl": "https:\/\/science.nasa.gov\/heliophysics\/focus-areas\/space-weather",
-        "hostPageUrlPingSuffix": "DevEx,5123.1", "contentSize": "497766 B", "encodingFormat":
+        "contentUrlPingSuffix": "DevEx,5146.1", "hostPageUrl": "https:\/\/science.nasa.gov\/heliophysics\/focus-areas\/space-weather",
+        "hostPageUrlPingSuffix": "DevEx,5145.1", "contentSize": "497766 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "https:\/\/science.nasa.gov\/heliophysics\/focus-areas\/space-weather",
         "width": 1421, "height": 2000, "thumbnail": {"width": 474, "height": 667},
-        "imageInsightsToken": "ccid_h0csQQer*mid_426514FCEECFC21F10EA4B2B0D768DABADC361DB*simid_608032000441018641",
+        "imageInsightsToken": "ccid_h0csQQer*mid_426514FCEECFC21F10EA4B2B0D768DABADC361DB*simid_608032000470965270",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "426514FCEECFC21F10EA4B2B0D768DABADC361DB", "accentColor": "BD4C0E"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=C8A4050C29CC4B2E3BC0A96D27912098353C791D&simid=608008047409390494",
-        "webSearchUrlPingSuffix": "DevEx,5128.1", "name": "Annual Rainfall Totals
-        for Alabama - 2011", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.3ZzE4eT6JmDB127R0Xg5NQHaJx&pid=Api",
-        "datePublished": "2021-03-15T15:36:00.0000000Z", "contentUrl": "https:\/\/www.weather.gov\/images\/bmx\/GIS\/2011_Departures.jpg",
-        "contentUrlPingSuffix": "DevEx,5130.1", "hostPageUrl": "https:\/\/www.weather.gov\/bmx\/climate_rain2011totals",
-        "hostPageUrlPingSuffix": "DevEx,5129.1", "contentSize": "293924 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.weather.gov\/bmx\/climate_rain2011totals",
-        "width": 910, "height": 1200, "thumbnail": {"width": 474, "height": 625},
-        "imageInsightsToken": "ccid_3ZzE4eT6*mid_C8A4050C29CC4B2E3BC0A96D27912098353C791D*simid_608008047409390494",
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=BA90DF901061030F40DC8486402C311600E9CD40&simid=607988496758698145",
+        "webSearchUrlPingSuffix": "DevEx,5150.1", "name": "Severe Weather Outbreak-January
+        2, 2006", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.yeNORnXakrp64RZfp8faLAHaHA&pid=Api",
+        "datePublished": "2021-04-16T20:42:00.0000000Z", "contentUrl": "https:\/\/www.weather.gov\/images\/chs\/events\/SevereOutbreak_Jan2006\/SquallLine2.png",
+        "contentUrlPingSuffix": "DevEx,5152.1", "hostPageUrl": "https:\/\/www.weather.gov\/chs\/SevereWeatherOutbreak-Jan2006",
+        "hostPageUrlPingSuffix": "DevEx,5151.1", "contentSize": "391902 B", "encodingFormat":
+        "png", "hostPageDisplayUrl": "https:\/\/www.weather.gov\/chs\/SevereWeatherOutbreak-Jan2006",
+        "width": 954, "height": 902, "thumbnail": {"width": 474, "height": 448}, "imageInsightsToken":
+        "ccid_yeNORnXa*mid_BA90DF901061030F40DC8486402C311600E9CD40*simid_607988496758698145",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "C8A4050C29CC4B2E3BC0A96D27912098353C791D", "accentColor": "C4A407"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=DC4D93C608EADFA42262D398953EF2D0897D48CC&simid=608019416187957305",
-        "webSearchUrlPingSuffix": "DevEx,5134.1", "name": "Storm has shifted toward
-        SE Alaska and significant snow is ...", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.cjKHl9srCTBVPTjC0bUa6gHaEK&pid=Api",
-        "datePublished": "2018-02-24T03:46:00.0000000Z", "contentUrl": "http:\/\/www.weather.gov\/images\/afc\/topnews\/10-20-17.png",
-        "contentUrlPingSuffix": "DevEx,5136.1", "hostPageUrl": "http:\/\/www.weather.gov\/afc\/storm_SE",
-        "hostPageUrlPingSuffix": "DevEx,5135.1", "contentSize": "736830 B", "encodingFormat":
-        "png", "hostPageDisplayUrl": "www.weather.gov\/afc\/storm_SE", "width": 1280,
-        "height": 720, "thumbnail": {"width": 474, "height": 266}, "imageInsightsToken":
-        "ccid_cjKHl9sr*mid_DC4D93C608EADFA42262D398953EF2D0897D48CC*simid_608019416187957305",
+        "imageId": "BA90DF901061030F40DC8486402C311600E9CD40", "accentColor": "BC9405"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=91BEB22B286F09D67E1F9B807E514ED4E412B6C2&simid=608002992261648433",
+        "webSearchUrlPingSuffix": "DevEx,5156.1", "name": "NASA - Another Severe Weather
+        System Seen on Satellite ...", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.teOjS9yodW892cNxM7_YygHaGL&pid=Api",
+        "datePublished": "2012-03-02T12:00:00.0000000Z", "contentUrl": "https:\/\/www.nasa.gov\/images\/content\/627552main_STILL-GOES-TORNADO-2mar2012.jpg",
+        "contentUrlPingSuffix": "DevEx,5158.1", "hostPageUrl": "https:\/\/www.nasa.gov\/topics\/earth\/features\/severe-weather-20120302_prt.htm",
+        "hostPageUrlPingSuffix": "DevEx,5157.1", "contentSize": "1486495 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.nasa.gov\/topics\/earth\/features\/severe-weather-20120302_prt.htm",
+        "width": 3600, "height": 3000, "thumbnail": {"width": 474, "height": 395},
+        "imageInsightsToken": "ccid_teOjS9yo*mid_91BEB22B286F09D67E1F9B807E514ED4E412B6C2*simid_608002992261648433",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "DC4D93C608EADFA42262D398953EF2D0897D48CC", "accentColor": "0873C0"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=093060703AEFA5F4F567A01103A2998E0EBB9081&simid=608044365652829577",
-        "webSearchUrlPingSuffix": "DevEx,5140.1", "name": "Weather & Tropical Storm
-        Forecasts & Outlooks | El Nino ...", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.4TDweqxjyv2b5IGZprxl7QHaF6&pid=Api",
-        "datePublished": "2020-07-29T23:07:00.0000000Z", "contentUrl": "https:\/\/www.pmel.noaa.gov\/elnino\/sites\/default\/files\/thumbnails\/image\/noaa-weather-forecast-map.gif",
-        "contentUrlPingSuffix": "DevEx,5142.1", "hostPageUrl": "http:\/\/www.pmel.noaa.gov\/elnino\/weather-tropical-storm-forecasts-outlooks",
-        "hostPageUrlPingSuffix": "DevEx,5141.1", "contentSize": "167808 B", "encodingFormat":
-        "gif", "hostPageDisplayUrl": "www.pmel.noaa.gov\/elnino\/weather-tropical-storm-forecasts-outlooks",
-        "width": 896, "height": 716, "thumbnail": {"width": 474, "height": 378}, "imageInsightsToken":
-        "ccid_4TDweqxj*mid_093060703AEFA5F4F567A01103A2998E0EBB9081*simid_608044365652829577",
+        "imageId": "91BEB22B286F09D67E1F9B807E514ED4E412B6C2", "accentColor": "2C6D71"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=19045622CEFFE89E85E7C89EF6A654181D0FB5BF&simid=608047037151840748",
+        "webSearchUrlPingSuffix": "DevEx,5162.1", "name": "Severe Weather | Sage Winds",
+        "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.l_CCK69nVSTlguV4YFpZXAHaJ4&pid=Api",
+        "datePublished": "2021-04-26T10:43:00.0000000Z", "contentUrl": "http:\/\/nws.weather.gov\/blog\/nwsboise\/wp-content\/uploads\/sites\/12\/2014\/08\/Bu75zF_IEAAl-gd.jpg",
+        "contentUrlPingSuffix": "DevEx,5164.1", "hostPageUrl": "https:\/\/nws.weather.gov\/blog\/nwsboise\/category\/severe-weather\/",
+        "hostPageUrlPingSuffix": "DevEx,5163.1", "contentSize": "38778 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/nws.weather.gov\/blog\/nwsboise\/category\/severe-weather",
+        "width": 600, "height": 800, "thumbnail": {"width": 474, "height": 632}, "imageInsightsToken":
+        "ccid_l\/CCK69n*mid_19045622CEFFE89E85E7C89EF6A654181D0FB5BF*simid_608047037151840748",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "093060703AEFA5F4F567A01103A2998E0EBB9081", "accentColor": "0809C3"}],
+        "imageId": "19045622CEFFE89E85E7C89EF6A654181D0FB5BF", "accentColor": "634E41"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=5805AEF67EBFD0F2D91B3E3019F8DC26652A1252&simid=607996953535716696",
+        "webSearchUrlPingSuffix": "DevEx,5169.1", "name": "Severe Weather Possible
+        Today (Updated 10:40 am Wednesday)", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.dfvD6zi8E-o9MFTSzX8nyQHaF_&pid=Api",
+        "datePublished": "2021-04-12T03:57:00.0000000Z", "contentUrl": "https:\/\/www.weather.gov\/images\/mkx\/SvrWxTiming.png",
+        "contentUrlPingSuffix": "DevEx,5171.1", "hostPageUrl": "https:\/\/www.weather.gov\/mkx\/MidJulySeverePossible",
+        "hostPageUrlPingSuffix": "DevEx,5170.1", "contentSize": "2451569 B", "encodingFormat":
+        "png", "hostPageDisplayUrl": "https:\/\/www.weather.gov\/mkx\/MidJulySeverePossible",
+        "width": 1484, "height": 1200, "thumbnail": {"width": 474, "height": 383},
+        "imageInsightsToken": "ccid_dfvD6zi8*mid_5805AEF67EBFD0F2D91B3E3019F8DC26652A1252*simid_607996953535716696",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "5805AEF67EBFD0F2D91B3E3019F8DC26652A1252", "accentColor": "0404C7"}],
         "queryExpansions": [{"text": "Weather Forecast", "displayText": "Forecast",
         "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Weather+Forecast&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Forecast%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5197.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Weather+Forecast&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Forecast%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "webSearchUrlPingSuffix": "DevEx,5202.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Weather+Forecast&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Forecast%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
         "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Weather+Forecast&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
         {"text": "Extreme Weather", "displayText": "Extreme", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Extreme+Weather&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Extreme%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5199.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Extreme+Weather&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Extreme%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "webSearchUrlPingSuffix": "DevEx,5204.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Extreme+Weather&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Extreme%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
         "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Extreme+Weather&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
         {"text": "Wild Weather", "displayText": "Wild", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Wild+Weather&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Wild%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5201.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Wild+Weather&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Wild%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "webSearchUrlPingSuffix": "DevEx,5206.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Wild+Weather&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Wild%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
         "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Wild+Weather&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
         {"text": "Local Weather", "displayText": "Local", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Local+Weather&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Local%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5203.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Local+Weather&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Local%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "webSearchUrlPingSuffix": "DevEx,5208.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Local+Weather&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Local%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
         "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Local+Weather&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
         {"text": "Weather Today", "displayText": "Today", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Weather+Today&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Today%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5205.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Weather+Today&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Today%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "webSearchUrlPingSuffix": "DevEx,5210.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Weather+Today&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Today%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
         "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Weather+Today&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
         {"text": "Google Weather", "displayText": "Google", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Google+Weather&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Google%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5207.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Google+Weather&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Google%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "webSearchUrlPingSuffix": "DevEx,5212.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Google+Weather&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Google%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
         "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Google+Weather&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
         {"text": "Weather Map", "displayText": "Map", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Weather+Map&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Map%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5209.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Weather+Map&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Map%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "webSearchUrlPingSuffix": "DevEx,5214.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Weather+Map&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Map%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
         "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Weather+Map&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
         {"text": "Weather Channel Forecast", "displayText": "Channel Forecast", "webSearchUrl":
         "https:\/\/www.bing.com\/images\/search?q=Weather+Channel+Forecast&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Channel+Forecast%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5211.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Weather+Channel+Forecast&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Channel+Forecast%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "webSearchUrlPingSuffix": "DevEx,5216.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Weather+Channel+Forecast&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Channel+Forecast%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
         "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Weather+Channel+Forecast&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
         {"text": "Storm Weather", "displayText": "Storm", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Storm+Weather&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Storm%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5213.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Storm+Weather&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Storm%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "webSearchUrlPingSuffix": "DevEx,5218.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Storm+Weather&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Storm%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
         "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Storm+Weather&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
         {"text": "Weather Station", "displayText": "Station", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Weather+Station&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Station%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5215.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Weather+Station&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Station%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "webSearchUrlPingSuffix": "DevEx,5220.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Weather+Station&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Station%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
         "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Weather+Station&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
         {"text": "Snow Weather", "displayText": "Snow", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Snow+Weather&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Snow%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5217.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Snow+Weather&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Snow%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "webSearchUrlPingSuffix": "DevEx,5222.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Snow+Weather&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Snow%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
         "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Snow+Weather&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
         {"text": "Bad Weather", "displayText": "Bad", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Bad+Weather&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Bad%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5219.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Bad+Weather&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Bad%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "webSearchUrlPingSuffix": "DevEx,5224.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Bad+Weather&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Bad%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
         "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Bad+Weather&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
         {"text": "Weather Clip Art", "displayText": "Clip Art", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Weather+Clip+Art&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Clip+Art%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5221.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Weather+Clip+Art&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Clip+Art%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "webSearchUrlPingSuffix": "DevEx,5226.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Weather+Clip+Art&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Clip+Art%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
         "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Weather+Clip+Art&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
         {"text": "Current Weather", "displayText": "Current", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Current+Weather&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Current%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5223.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Current+Weather&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Current%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "webSearchUrlPingSuffix": "DevEx,5228.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Current+Weather&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Current%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
         "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Current+Weather&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
         {"text": "Weather Teaching", "displayText": "Teaching", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Weather+Teaching&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Teaching%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5225.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Weather+Teaching&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Teaching%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "webSearchUrlPingSuffix": "DevEx,5230.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Weather+Teaching&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Teaching%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
         "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Weather+Teaching&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
         {"text": "Severe Weather", "displayText": "Severe", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Severe+Weather&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Severe%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5227.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Severe+Weather&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Severe%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "webSearchUrlPingSuffix": "DevEx,5232.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Severe+Weather&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Severe%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
         "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Severe+Weather&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
         {"text": "Weather Cartoon", "displayText": "Cartoon", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Weather+Cartoon&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Cartoon%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5229.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Weather+Cartoon&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Cartoon%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "webSearchUrlPingSuffix": "DevEx,5234.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Weather+Cartoon&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Cartoon%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
         "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Weather+Cartoon&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
         {"text": "Bing Weather", "displayText": "Bing", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Bing+Weather&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Bing%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5231.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Bing+Weather&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Bing%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "webSearchUrlPingSuffix": "DevEx,5236.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Bing+Weather&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Bing%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
         "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Bing+Weather&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
         {"text": "Amazing Weather", "displayText": "Amazing", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Amazing+Weather&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Amazing%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5233.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Amazing+Weather&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Amazing%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "webSearchUrlPingSuffix": "DevEx,5238.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Amazing+Weather&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Amazing%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
         "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Amazing+Weather&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
         {"text": "Weather Radar Live Doppler", "displayText": "Radar Live Doppler",
         "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Weather+Radar+Live+Doppler&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Radar+Live+Doppler%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5235.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Weather+Radar+Live+Doppler&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Radar+Live+Doppler%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "webSearchUrlPingSuffix": "DevEx,5240.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Weather+Radar+Live+Doppler&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Radar+Live+Doppler%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
         "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Weather+Radar+Live+Doppler&pid=Api&mkt=en-US&adlt=moderate&t=1"}}],
         "pivotSuggestions": [{"pivot": "weather", "suggestions": [{"text": "Winter",
         "displayText": "Winter", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Winter&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Winter%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
-        "webSearchUrlPingSuffix": "DevEx,5242.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Winter&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Winter%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "webSearchUrlPingSuffix": "DevEx,5247.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Winter&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Winter%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
         "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Winter&pid=Api&mkt=en-US&adlt=moderate&t=1"}}]},
         {"pivot": "(site:gov", "suggestions": []}, {"pivot": "OR", "suggestions":
         []}, {"pivot": "site:mil)", "suggestions": []}]}'
     http_version:
-  recorded_at: Thu, 10 Jun 2021 16:17:21 GMT
+  recorded_at: Tue, 31 Aug 2021 20:33:27 GMT
 recorded_with: VCR 4.0.0

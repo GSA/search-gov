@@ -31,37 +31,43 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Mon, 08 Oct 2018 20:42:46 GMT
+      - Tue, 31 Aug 2021 20:31:41 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
       Bingapis-Traceid:
-      - 5D6125184B644CA5AFB061D6ADC8CB46
+      - 9EE2302F94064D3D8F4FE9E51E2B81AC
       Bingapis-Sessionid:
-      - 2919D8E674FF498398B95156039EAD2D
+      - 51BE45A0A6D24C7FB7AA943A4694CCF1
       X-Msedge-Clientid:
-      - 199F08E1D98B674D285A0463D8C766C6
+      - 04A277473D34694C01E867E33CD26839
       X-Msapi-Userstate:
-      - cbe3
+      - '2699'
       Bingapis-Market:
       - es-US
       X-Search-Responseinfo:
-      - InternalResponseTime=99,MSDatacenter=CO4
+      - InternalResponseTime=142,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
       X-Msedge-Ref:
-      - 'Ref A: 5D6125184B644CA5AFB061D6ADC8CB46 Ref B: BY3EDGE0112 Ref C: 2018-10-08T20:43:46Z'
+      - 'Ref A: 9EE2302F94064D3D8F4FE9E51E2B81AC Ref B: DM2EDGE1014 Ref C: 2021-08-31T20:32:41Z'
       Apim-Request-Id:
-      - 29ddc862-f9c3-405c-999d-d624f7a7119e
+      - 9d0aaf49-2577-4de3-95a6-57647f6e779a
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
       - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Mon, 08 Oct 2018 20:43:45 GMT
+      - Tue, 31 Aug 2021 20:32:40 GMT
     body:
       encoding: UTF-8
       string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "hotel
         (site:search.gov)"}, "rankingResponse": {}}'
-    http_version: 
-  recorded_at: Mon, 08 Oct 2018 20:43:46 GMT
+    http_version:
+  recorded_at: Tue, 31 Aug 2021 20:32:41 GMT
 recorded_with: VCR 4.0.0

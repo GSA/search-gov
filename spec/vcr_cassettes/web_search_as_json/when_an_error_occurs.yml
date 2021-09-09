@@ -2,76 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=english%20(site:nonsense.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Ocp-Apim-Subscription-Key:
-      - my_api_key
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Content-Length:
-      - '241'
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Mon, 27 Aug 2018 00:03:43 GMT
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      Set-Cookie:
-      - MUID=1FC42AFB055E6D9213C826A304516C65; path=/; expires=Sat, 21-Sep-2019 00:04:43
-        GMT; domain=bingapis.com
-      - MUIDB=1FC42AFB055E6D9213C826A304516C65; path=/; httponly; expires=Sat, 21-Sep-2019
-        00:04:43 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 27-Aug-2020 00:04:43 GMT;
-        path=/
-      - SRCHUID=V=2&GUID=252377090DD24778BB5FF2983BC81E40&dmnchg=1; domain=.bingapis.com;
-        expires=Thu, 27-Aug-2020 00:04:43 GMT; path=/
-      - SRCHUSR=DOB=20180827; domain=.bingapis.com; expires=Thu, 27-Aug-2020 00:04:43
-        GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=257CE6A12350615311EBEAF9225F60DC; path=/; httponly;
-        domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sat, 21-Sep-2019 00:04:43 GMT; domain=bingapis.com
-      - _SS=SID=257CE6A12350615311EBEAF9225F60DC; domain=.bingapis.com; path=/
-      Bingapis-Traceid:
-      - 2E0115ADA15B4F5792FC20483D5BCF96
-      X-Msedge-Clientid:
-      - 1FC42AFB055E6D9213C826A304516C65
-      X-Msapi-Userstate:
-      - 5ae4
-      Bingapis-Market:
-      - en-US
-      X-Msedge-Ref:
-      - 'Ref A: 2E0115ADA15B4F5792FC20483D5BCF96 Ref B: BAYEDGE0511 Ref C: 2018-08-27T00:04:43Z'
-      Date:
-      - Mon, 27 Aug 2018 00:04:43 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=0954C04132A34C21BCC9D21C39500D5D&CID=1FC42AFB055E6D9213C826A304516C65&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=0954C04132A34C21BCC9D21C39500D5D&CID=1FC42AFB055E6D9213C826A304516C65&Type=Event.CPT&DATA=0"},
-        "rankingResponse": {}}'
-    http_version: 
-  recorded_at: Mon, 27 Aug 2018 00:04:43 GMT
-- request:
-    method: get
     uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=english%20(site:nonsense.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
     body:
       encoding: US-ASCII
@@ -101,37 +31,43 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Tue, 05 Feb 2019 21:32:59 GMT
+      - Tue, 31 Aug 2021 20:29:45 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
       Bingapis-Traceid:
-      - E784977207234E39B93E0BE33874F5F5
+      - 4CD014CB80A049ADB28B44061A991A50
       Bingapis-Sessionid:
-      - EC1B71BC86C6443DAE71EC9C0A24F427
+      - E9767CA0E2B34F7B846732F13744B8B0
       X-Msedge-Clientid:
-      - 3104CD0F4D17654624ADC1F54C5B6474
+      - 3AD92B9F791668AB2EBD3B3B78596957
       X-Msapi-Userstate:
-      - fc33
+      - '5987'
       Bingapis-Market:
       - en-US
       X-Search-Responseinfo:
-      - InternalResponseTime=148,MSDatacenter=CO4
+      - InternalResponseTime=126,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
       X-Msedge-Ref:
-      - 'Ref A: E784977207234E39B93E0BE33874F5F5 Ref B: BY3EDGE0509 Ref C: 2019-02-05T21:33:59Z'
+      - 'Ref A: 4CD014CB80A049ADB28B44061A991A50 Ref B: BLUEDGE1910 Ref C: 2021-08-31T20:30:45Z'
       Apim-Request-Id:
-      - 85bf2b78-0a28-48cd-95dd-dd2c185f21ac
+      - 7ba891b3-3dfa-4285-9efe-571b2315c2ad
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
       - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Tue, 05 Feb 2019 21:33:59 GMT
+      - Tue, 31 Aug 2021 20:30:45 GMT
     body:
       encoding: UTF-8
       string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "english
         (site:nonsense.gov)"}, "rankingResponse": {}}'
-    http_version: 
-  recorded_at: Tue, 05 Feb 2019 21:34:00 GMT
+    http_version:
+  recorded_at: Tue, 31 Aug 2021 20:30:45 GMT
 recorded_with: VCR 4.0.0

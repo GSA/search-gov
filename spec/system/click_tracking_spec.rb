@@ -58,13 +58,13 @@ describe 'A user searches', js: true, vcr: { preserve_exact_body_bytes: true } d
 
     context 'for a regular result' do
       before do
-        visit '/search?affiliate=bingV7affiliate&query=hello'
+        visit '/search?affiliate=bingV7affiliate&query=va%20welcome%20kit'
       end
 
       it 'the search results have the expected data attributes' do
         expect(page).to have_selector('div[data-affiliate="bingV7affiliate"]', id: 'search')
         expect(page).to have_selector('div[data-vertical="web"]', id: 'search')
-        expect(page).to have_selector('div[data-query="hello"]', id: 'search')
+        expect(page).to have_selector('div[data-query="va welcome kit"]', id: 'search')
 
         long_string = 'a[data-click=\'{"position":1,"module_code":"BWEB"}\']'
         expect(page).to have_selector(long_string)
@@ -79,7 +79,7 @@ describe 'A user searches', js: true, vcr: { preserve_exact_body_bytes: true } d
           match = start_with('[Click]')
           expect(Rails.logger).to have_received(:info).with(match) do |logline|
             expect(logline).to include('"url":"https://www.va.gov/welcome-kit/"')
-            expect(logline).to include('"query":"hello"')
+            expect(logline).to include('"query":"va welcome kit"')
             expect(logline).to include('"clientip":"127.0.0.1"')
             expect(logline).to include('"affiliate":"bingV7affiliate"')
             expect(logline).to include('"position":"1"')

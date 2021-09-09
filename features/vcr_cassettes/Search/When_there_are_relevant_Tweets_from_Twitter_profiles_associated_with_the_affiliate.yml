@@ -21,20 +21,242 @@ http_interactions:
       - '30'
   response:
     status:
-      code: 401
-      message: PermissionDenied
+      code: 200
+      message: OK
     headers:
-      Content-Length:
-      - '224'
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 07 Sep 2021 16:18:13 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - DD64D34DA5D5445AB86ED2DC6890CF3E
+      Bingapis-Sessionid:
+      - CDF33FB438B34348846E12560B62ADE7
+      X-Msedge-Clientid:
+      - 04307A863B896BD512D76A2D3A746A3A
+      X-Msapi-Userstate:
+      - 88af
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=265,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: DD64D34DA5D5445AB86ED2DC6890CF3E Ref B: BLUEDGE0108 Ref C: 2021-09-07T16:19:13Z'
+      Apim-Request-Id:
+      - 67573779-36fe-4232-bc8d-43774e82ee4c
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Tue, 30 Mar 2021 17:17:17 GMT
+      - Tue, 07 Sep 2021 16:19:13 GMT
     body:
       encoding: UTF-8
-      string: '{"error":{"code":"401","message":"Access denied due to invalid subscription
-        key or wrong API endpoint. Make sure to provide a valid key for an active
-        subscription and use a correct regional API endpoint for your resource."}}'
-    http_version:
-  recorded_at: Tue, 30 Mar 2021 17:17:17 GMT
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "season
+        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=season+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 10500000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "2020-2021 Flu Season Summary | CDC", "url": "https:\/\/www.cdc.gov\/flu\/season\/faq-flu-season-2020-2021.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/flu\/season\/faq-flu-season-2020-2021.htm",
+        "snippet": "During the 2020-2021 flu season, there was very low circulation
+        of seasonal flu viruses. During September 27, 2020–May 22, 2021 in the United
+        States, 1,899 (0.2%) of 1,081,671 clinical samples tested were positive for
+        an influenza virus (713 [37.5%] influenza A and 1,186 [62.5%] influenza B).
+        During that same period, public health ...", "dateLastCrawled": "2021-09-05T04:22:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Frequently Asked Influenza (Flu) Questions: 2021-2022 Season",
+        "url": "https:\/\/www.cdc.gov\/flu\/season\/faq-flu-season-2021-2022.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/flu\/season\/faq-flu-season-2021-2022.htm",
+        "snippet": "What’s New for 2021-2022. A few things are different for the 2021-2022
+        influenza (flu) season, including: The composition of flu vaccines has been
+        updated.; All flu vaccines will be quadrivalent (four component), meaning
+        designed to protect against four different flu viruses.", "dateLastCrawled":
+        "2021-09-05T06:14:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2", "name":
+        "Seasons and Regulations | Louisiana Department of Wildlife ...", "url": "https:\/\/www.wlf.louisiana.gov\/page\/seasons-and-regulations",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.wlf.louisiana.gov\/page\/seasons-and-regulations",
+        "snippet": "Regular season: November 20 - December 5 and December 18 - January
+        30. Youth and veterans only: November 13 and February 5. West Zone: Regular
+        season: November 13 - December 5; December 18 - January 2; and January 10
+        - 30. Youth and veterans only: November 6-7. Extended Falconry (all zones):
+        November 2 - January 31.", "dateLastCrawled": "2021-09-04T11:21:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Summary of Tennessee Hunting and Trapping Seasons Dates", "url":
+        "https:\/\/www.tn.gov\/twra\/hunting\/tennessee-hunting-seasons-summary.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.tn.gov\/twra\/hunting\/tennessee-hunting-seasons-summary.html",
+        "snippet": "3 Unit CWD begins gun season (G\/M\/A) on Nov. 6 and therefore
+        does not have a muzzleloader only (M\/A) season. 4 A Type 094 permit is
+        required to hunt antlerless deer during this season except for landowners
+        hunting under the landowner exemption (as described in T.C.A. 70-2-204) and
+        Sportsman License holders. A Type 094 permit is required for all ...", "dateLastCrawled":
+        "2021-09-05T15:34:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4", "name":
+        "Maryland Hunting Seasons Calendar for 2021-2022", "url": "https:\/\/dnr.maryland.gov\/huntersguide\/Documents\/Hunting_Seasons_Calendar.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/dnr.maryland.gov\/huntersguide\/Documents\/Hunting_Seasons_Calendar.pdf",
+        "snippet": "COUNTY Lands Open Archery Season Firearms Season Muzzleloader
+        Season Sept. 12 Sept.19 Sept. 26 Oct. 3 Oct. 10 Oct. 17 Oct. 24 Oct. 31
+        Nov. 7 Nov. 14 Nov. 21 Jan. 2 Jan. 9 Jan. 16 Jan. 23 Jan. 30 Nov. 14 (jJr.
+        Hunt) Nov. 28 Dec. 5 Jan. 9 Dec. 19 Dec. 26 ALLEGANY Private & Designated
+        Public 1", "dateLastCrawled": "2021-09-04T21:20:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Hunting & Trapping Seasons | Missouri Department of ...", "url":
+        "https:\/\/mdc.mo.gov\/hunting-trapping\/seasons", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/mdc.mo.gov\/hunting-trapping\/seasons", "snippet":
+        "During spring turkey season, coyotes may be taken using only methods allowed
+        for spring turkey hunting, and hunters must have an unfilled spring turkey
+        hunting permit and either a Resident Small Game Hunting Permit or a Nonresident
+        Furbearer Hunting and Trapping Permit. Additional Allowed Methods (Feb. 1
+        - March 31)", "dateLastCrawled": "2021-09-05T11:07:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "2021 – 2022 Hunting Season Dates — Texas Parks & Wildlife ...",
+        "url": "https:\/\/tpwd.texas.gov\/regulations\/outdoor-annual\/hunting\/general-regulations\/2021_2022_hunting_seasons",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/tpwd.texas.gov\/...\/hunting\/general-regulations\/2021_2022_hunting_seasons",
+        "snippet": "Mule deer season dates; Season Zone Dates; General: Panhandle:
+        Nov. 20 - Dec. 5: SW Panhandle: Nov. 20 - Nov. 28: Trans-Pecos: Nov. 26 -
+        Dec. 12: Archery: 59 of 254 ...", "dateLastCrawled": "2021-09-05T07:15:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Hunting Season Dates | Iowa DNR", "url": "https:\/\/www.iowadnr.gov\/Hunting\/Hunting-Season-Dates",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.iowadnr.gov\/Hunting\/Hunting-Season-Dates",
+        "snippet": "Deer Hunting Season Dates. We work hard to keep our calendar
+        current, but always refer to the hunting regulation booklet for official,
+        legal season dates. 2021 Seasons. Season Dates. License On-Sale Dates.
+        Youth Season. Sept 18 - Oct 3. Aug 15 - End of Season. Disabled Hunter
+        Season (Requires permit, Regulations, p.", "dateLastCrawled": "2021-09-04T19:18:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Wildfire Division Season Summary - Wa", "url": "https:\/\/app.leg.wa.gov\/ReportsToTheLegislature\/Home\/GetPDF?fileName=DNR%202020%20Wildfire%20Season%20Summary_final%20copy_c868160c-9dc5-4e31-aee9-ed53cd7d01c8.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/app.leg.wa.gov\/ReportsToTheLegislature\/Home\/GetPDF?fileName=DNR
+        2020 Wildfire...", "snippet": "season, especially when resources were in
+        high demand. 4. Given all of the challenges presented by the 2020 fire season,
+        DNR personnel attained an excellent safety record. With DNR’s highest priority
+        always being public and firefighter safety, this is the most important achievement
+        of the fire season. 4 See Aviation(p. 16) for more detail on ...", "dateLastCrawled":
+        "2021-09-02T09:25:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9", "name":
+        "Upland Game Bird Hunting", "url": "http:\/\/wildlife.ca.gov\/Hunting\/Upland-Game-Birds",
+        "isFamilyFriendly": true, "displayUrl": "wildlife.ca.gov\/Hunting\/Upland-Game-Birds",
+        "snippet": "Oct 9 - Oct 31. Dec 27 - Jan 23. 2 pheasants per day for first
+        two days of the season; 3 pheasants per day after the first two days of
+        the season. The daily archery bag may contain not more than 1 female pheasant.
+        Triple the daily bag. Falconry. Aug 21 - Feb 28. 2 pheasants per day for first
+        two days of the season;", "dateLastCrawled": "2021-09-04T22:06:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Hunting Seasons and Application Dates - Nebraska Game and ...", "url":
+        "http:\/\/outdoornebraska.gov\/huntingseasons\/", "isFamilyFriendly": true,
+        "displayUrl": "outdoornebraska.gov\/huntingseasons", "snippet": "Season
+        dates. The 2021 mountain lion season in the Pine Ridge runs from Jan. 2
+        – Feb. 28, 2021, with an application period from Nov. 2 – Dec. 9, 2020. Mountain
+        lions have recolonized three areas in Nebraska: the Pine Ridge, Niobrara River
+        Valley and Wildcat Hills.", "dateLastCrawled": "2021-09-04T13:40:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Past Seasons Estimated Influenza Disease Burden | CDC", "url": "https:\/\/www.cdc.gov\/flu\/about\/burden\/past-seasons.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/flu\/about\/burden\/past-seasons.html",
+        "snippet": "Past Seasons Estimated Influenza Disease Burden. These pages includes
+        information about the estimated burden of influenza from past seasons, including
+        tables of the estimated influenza disease burden (and 95% credible interval
+        [Cr I]) by age group. Information on how these estimates are calculated can
+        be found on CDC’s web page How CDC ...", "dateLastCrawled": "2021-09-05T04:17:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "2021-22 Waterfowl & Migratory Game Bird Seasons - NYS Dept ...",
+        "url": "https:\/\/www.dec.ny.gov\/outdoor\/28888.html", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.dec.ny.gov\/outdoor\/28888.html", "snippet":
+        "During the special season, military active duty and veterans can hunt migratory
+        game birds. Daily bag limits are the same as the regular season (e.g., Canada
+        goose bag limit in the west central is 1 per day). Military identification
+        requirements can be found on the migratory game bird hunting regulations page.",
+        "dateLastCrawled": "2021-09-04T11:05:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Prevention and Control of Seasonal Influenza with Vaccines ...",
+        "url": "https:\/\/www.cdc.gov\/mmwr\/volumes\/70\/rr\/rr7005a1.htm", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.cdc.gov\/mmwr\/volumes\/70\/rr\/rr7005a1.htm",
+        "snippet": "The 2021–22 influenza season is expected to coincide with continued
+        circulation of SARS-CoV-2, the virus that causes COVID-19. Influenza vaccination
+        of persons aged ≥6 months to reduce prevalence of illness caused by influenza
+        will reduce symptoms that might be confused with those of COVID-19.", "dateLastCrawled":
+        "2021-09-04T12:19:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "Summary of hunting seasons | Washington Department of Fish ...", "url":
+        "https:\/\/wdfw.wa.gov\/hunting\/regulations\/summary-of-seasons", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/wdfw.wa.gov\/hunting\/regulations\/summary-of-seasons",
+        "snippet": "Season summaries for deer, elk, bear, and more. These are summaries
+        only; please see the appropriate regulation pamphlet for more information.
+        Deer seasons. Modern firearm, archery, and muzzleloader deer hunting seasons
+        and bag limits. Elk seasons.", "dateLastCrawled": "2021-09-05T11:03:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Deer Hunting - Connecticut", "url": "https:\/\/portal.ct.gov\/DEEP\/Hunting\/2021-Connecticut-Hunting-and-Trapping-Guide\/Deer-Hunting",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/portal.ct.gov\/DEEP\/Hunting\/2021-Connecticut-Hunting-and-Trapping-Guide\/Deer...",
+        "snippet": "Deer lottery season dates and more details are below. A lottery
+        is conducted to award a limited number of permits for deer hunting on certain
+        state lands and controlled hunt areas. To hunt these areas you must apply
+        for a deer lottery permit. State Land and Controlled Hunt Lottery. Season
+        Dates Nov. 17 – Nov. 26 Lottery “A” Season", "dateLastCrawled": "2021-09-04T06:05:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Dove — Texas Parks & Wildlife Department", "url": "https:\/\/tpwd.texas.gov\/regulations\/outdoor-annual\/regs\/animals\/dove",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/tpwd.texas.gov\/regulations\/outdoor-annual\/regs\/animals\/dove",
+        "snippet": "Rock Dove (Rock Pigeon) There is no closed season or bag limit
+        restrictions for common pigeons (rock doves); however, it is recommended that
+        plumage be left on these birds for identification purposes. Large plump body,
+        small head. Gray, brown or white. Common in cities and ranches.", "dateLastCrawled":
+        "2021-09-04T12:05:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17", "name":
+        "Migratory Gamebirds | Virginia DWR", "url": "https:\/\/dwr.virginia.gov\/hunting\/regulations\/migratory-gamebirds\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/dwr.virginia.gov\/hunting\/regulations\/migratory-gamebirds",
+        "snippet": "Closed season on harlequin ducks. The possession limit is three
+        times the daily bag limit. No person may take more than one daily bag limit
+        in any one day. Special Sea Duck Season in the *Special Sea Duck Zone. Sea
+        duck species are scoter, long-tailed duck (formerly oldsquaw), and eider.
+        Season. November 11-January 9. Bag Limit", "dateLastCrawled": "2021-09-05T03:02:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Hunting Seasons - NYS Dept. of Environmental Conservation", "url":
+        "https:\/\/www.dec.ny.gov\/outdoor\/65231.html", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.dec.ny.gov\/outdoor\/65231.html", "snippet":
+        "All season dates on this page are effective for the current license year,
+        which runs from September 1 to August 31. Print or download a summary of hunting
+        season maps for 2021-22 (PDF). Hunters can pursue white-tailed deer during
+        regular and archery seasons, as well as the muzzleloader season ...", "dateLastCrawled":
+        "2021-09-04T06:11:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19", "name":
+        "Pheasant | South Dakota Game, Fish, and Parks", "url": "https:\/\/gfp.sd.gov\/pheasant\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/gfp.sd.gov\/pheasant",
+        "snippet": "15 rooster pheasants, taken according to the daily limit. The
+        limit accrues at the rate of 3 birds a day, and 15 birds may not be possessed
+        until after the fifth day of hunting. Open Area: All of South Dakota except
+        the following: Sand Lake National Wildlife Refuge in Brown County is open
+        Dec. 14, 2020-Jan. 31, 2021.", "dateLastCrawled": "2021-09-05T08:12:00.0000000Z",
+        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Tue, 07 Sep 2021 16:19:14 GMT
 - request:
     method: get
     uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=estados%20unidos%20amiga%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
@@ -66,27 +288,31 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Fri, 02 Apr 2021 15:22:49 GMT
+      - Tue, 07 Sep 2021 16:18:14 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
       Bingapis-Traceid:
-      - 5D75FE2945B04B5CAA1FBE1B83F14AAD
+      - 12A0FD64C1184AD08BDDB1877FA2587D
       Bingapis-Sessionid:
-      - 79FA2B15910C4FE79105DF43E6ADA80C
+      - BDF857DC1C1E43139DEB5A9286317867
       X-Msedge-Clientid:
-      - 30FB6E5D1B8366922FE47E501A7E6774
+      - 3947B01F88936879336BA0B4896E6942
       X-Msapi-Userstate:
-      - f542
+      - 55c8
       Bingapis-Market:
       - en-US
       X-Search-Responseinfo:
-      - InternalResponseTime=268,MSDatacenter=BN2B
+      - InternalResponseTime=262,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
       X-Msedge-Ref:
-      - 'Ref A: 5D75FE2945B04B5CAA1FBE1B83F14AAD Ref B: BLUEDGE0508 Ref C: 2021-04-02T15:23:49Z'
+      - 'Ref A: 12A0FD64C1184AD08BDDB1877FA2587D Ref B: BLUEDGE0920 Ref C: 2021-09-07T16:19:14Z'
       Apim-Request-Id:
-      - 9adcbed7-625e-498d-a8a5-7d6d6cc6974b
+      - 74dc021e-6157-4aae-97e0-81c96ea091ce
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
@@ -94,189 +320,186 @@ http_interactions:
       Csp-Billing-Usage:
       - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Fri, 02 Apr 2021 15:23:48 GMT
+      - Tue, 07 Sep 2021 16:19:13 GMT
     body:
       encoding: UTF-8
       string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "estados
         unidos amiga (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=estados+unidos+amiga+(site%3agov+OR+site%3amil)",
-        "totalEstimatedMatches": 97100, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
-        "name": "Residencia permanente o \"Green Card\" | USAGov", "url": "https:\/\/www.usa.gov\/espanol\/residencia-permanente",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/espanol\/residencia-permanente",
-        "snippet": "Solicitar, renovar o reemplazar su residencia permanente. La residencia
-        permanente es el estatus que se les concede a los inmigrantes para vivir y
-        trabajar permanentemente en Estados Unidos.. En la mayoría de casos, un
-        patrocinador (empleador o familiar) es el que solicita la residencia permanente
-        o \"Green Card\" (tarjeta verde) en favor de otra persona.", "dateLastCrawled":
-        "2021-03-29T00:19:00.0000000Z", "language": "es", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1", "name":
-        "Declaración conjunta del Grupo de Amigos del Proceso de ...", "url": "https:\/\/co.usembassy.gov\/es\/declaracion-conjunta-del-grupo-de-amigos-del-proceso-de-quito\/",
+        "totalEstimatedMatches": 29000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Declaración conjunta del Grupo de Amigos del Proceso de ...",
+        "url": "https:\/\/co.usembassy.gov\/es\/declaracion-conjunta-del-grupo-de-amigos-del-proceso-de-quito\/",
         "isFamilyFriendly": true, "displayUrl": "https:\/\/co.usembassy.gov\/es\/declaracion-conjunta-del-grupo-de-amigos-del-proceso-de-quito",
-        "snippet": "El Grupo de Amigos del Proceso de Quito alaba la decisión del
-        Gobierno de Colombia de ofrecer un Estatuto de Protección Temporal a los migrantes
-        y refugiados venezolanos en el país para los próximos diez años. Este notable
-        acto de solidaridad debería contribuir a reducir el sufrimiento de los venezolanos,
-        al tiempo que a facilitar su integración económica y su ...", "dateLastCrawled":
-        "2021-03-29T11:11:00.0000000Z", "language": "es", "isNavigational": false},
+        "snippet": "Estados Unidos dona 3,5 millones de vacunas Moderna a Colombia;
+        ... El Grupo de Amigos señala que este anuncio llega en un momento difícil,
+        en el que los países del Proceso de Quito se enfrentan a los implacables efectos
+        sanitarios y económicos de la pandemia de la COVID-19. El acceso de los migrantes
+        y refugiados venezolanos a los ...", "dateLastCrawled": "2021-09-01T08:39:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "¿Está pidiendo o prestándole dinero a familiares o amigos ...",
+        "url": "https:\/\/www.consumerfinance.gov\/about-us\/blog\/Esta-pidiendo-o-prestandole-dinero-a-familiares-o-amigos-use-esta-hoja-de-trabajo\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.consumerfinance.gov\/about-us\/blog\/Esta-pidiendo-o-prestandole-dinero-a...",
+        "snippet": "Durante tiempos difíciles, como la pandemia que estamos pasando
+        actualmente, la gente recurre frecuentemente a familiares y amigos para
+        recibir apoyo financiero. Nuestros estudios indican que tantos como uno de
+        cada tres adultos en el país, recibe apoyo financiero de familiares o amigos,
+        y a su vez, tantos como uno de cada tres, apoya a otros.", "dateLastCrawled":
+        "2021-08-20T17:23:00.0000000Z", "language": "es", "isNavigational": false},
         {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2", "name":
-        "El Embajador de los EE.UU. da la bienvenida a 25 nuevos ...", "url": "https:\/\/co.usembassy.gov\/es\/el-embajador-de-los-ee-uu-da-la-bienvenida-a-25-nuevos-voluntarios-del-cuerpo-de-paz\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/co.usembassy.gov\/es\/el-embajador-de-los-ee-uu-da-la-bienvenida-a-25-nuevos...",
-        "snippet": "Durante la ceremonia, el embajador de los Estados Unidos se
-        dirigió a los nuevos voluntarios diciendo: “ustedes representan lo mejor de
-        nosotros.” El enfatizó: “ estoy muy agradecido con ustedes por el compromiso
-        que desde ya demuestran y por lo que harán aquí en Colombia, uno de nuestros
-        mejores amigos en el hemisferio”.", "dateLastCrawled": "2021-03-24T21:32:00.0000000Z",
-        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
-        "name": "¿Se puede cambiar o revocar un poder legal? | Oficina para ...",
-        "url": "https:\/\/www.consumerfinance.gov\/es\/obtener-respuestas\/se-puede-cambiar-o-revocar-un-poder-legal-es-1771\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.consumerfinance.gov\/es\/obtener-respuestas\/se-puede-cambiar-o-revocar-un...",
-        "snippet": "Sí. Digamos que su amiga lo ha nombrado su agente a través de
-        un poder legal (Power of Attorney, o POA por sus siglas en inglés), lo que
-        significa que le ha dado la autoridad sobre sus finanzas.Ella puede quitarle
-        su autoridad para actuar como su agente en cualquier momento si ella lo desea
-        y todavía puede tomar decisiones.", "dateLastCrawled": "2021-03-26T02:00:00.0000000Z",
-        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
-        "name": "Secretario de Estado de EE. UU | Embajada de EE.UU. en ...", "url":
-        "https:\/\/co.usembassy.gov\/es\/our-relationship-es\/us-secretary-es\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/co.usembassy.gov\/es\/our-relationship-es\/us-secretary-es",
-        "snippet": "Ciudadano colombiano extraditado de Panamá para enfrentar cargos
-        de narcotráfico en Estados Unidos; Declaración conjunta del Grupo de Amigos
-        del Proceso de Quito; Alert. Mensaje para ciudadanos Americanos: Reanudación
-        de Servicios Limitados para Ciudadanos Americanos; Alerta: Vuelos Internacionales
-        entre los Estados Unidos y Colombia se ...", "dateLastCrawled": "2021-03-24T21:33:00.0000000Z",
-        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
-        "name": "Amigos: Soldados y animales en la Segunda Guerra Mundial ...",
-        "url": "https:\/\/www.archives.gov\/espanol\/prologue\/soldados-y-animales",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.archives.gov\/espanol\/prologue\/soldados-y-animales",
-        "snippet": "English Otoño 1996, tomo 28, Número 3 Por: Lisa B. Auel S. Medeiroa,
-        de la 26va división del ejército, abraza la mascota de la unidad S, Little
-        Joe, en Ottweiler, Alemania. 21 de marzo de 1945. (111-SC-202435) En tiempos
-        de guerra, los ejércitos humanos muchas veces buscan la ayuda del reino animal.
-        En conflictos pasados, los caballos, elefantes, y camellos transportaban a",
-        "dateLastCrawled": "2021-03-19T06:52:00.0000000Z", "language": "es", "isNavigational":
-        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
-        "name": "Fallecimiento de un ciudadano de EE.UU. | Embajada de los ...",
-        "url": "https:\/\/pa.usembassy.gov\/es\/u-s-citizen-services-es\/death-of-a-u-s-citizen-es\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/pa.usembassy.gov\/es\/u-s-citizen-services-es\/death-of-a-u-s-citizen-es",
-        "snippet": "Cuando un ciudadano de Estados Unidos muere en Panamá, la
-        Unidad de Servicios al Ciudadano Americano (ACS) de la Embajada de los Estados
-        Unidos ayuda a la familia y amigos de las siguientes maneras: Intentamos
-        localizar e informar a los familiares de la muerte del ciudadano. Proporcionamos
-        información sobre cómo hacer arreglos para el entierro ...", "dateLastCrawled":
-        "2021-03-27T03:39:00.0000000Z", "language": "es", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7", "name":
-        "Sanciones Archivo | Embajada de EE.UU. en Colombia", "url": "https:\/\/co.usembassy.gov\/es\/tag\/sanciones\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/co.usembassy.gov\/es\/tag\/sanciones",
-        "snippet": "Estados Unidos dona kits de empaque isotérmico para el transporte
-        de vacunas al Ministerio de Salud de Colombia; Anuncio de las Ganadoras del
-        Premio Internacional a las Mujeres de Coraje 2021; Ciudadano colombiano extraditado
-        de Panamá para enfrentar cargos de narcotráfico en Estados Unidos", "dateLastCrawled":
-        "2021-03-25T02:46:00.0000000Z", "language": "es", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8", "name":
-        "Los trucos de estafadores para robarle el corazón y el ...", "url": "https:\/\/www.consumidor.ftc.gov\/blog\/2015\/07\/los-trucos-de-estafadores-para-robarle-el-corazon-y-el-dinero",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.consumidor.ftc.gov\/blog\/2015\/07\/los-trucos-de-estafadores-para-robarle-el...",
-        "snippet": "A mi también me engaño uno diciéndome que estaba enamorado de
-        mi que era norteamericano que vivía en Londres que iba a venir a España luego
-        que me enviaría.un paquete me.llamaron para decirme que tenía que hacer un
-        giro a MoneyGram para que aduana de México liberará el paquete lo pague pero
-        a la hora me.volvieron a llamar para decirme que avía que pagar más dinero
-        y como yo me ...", "dateLastCrawled": "2021-03-29T13:20:00.0000000Z", "language":
-        "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "Visas para extranjeros: tipos de visas y extensiones ...", "url": "https:\/\/www.usa.gov\/espanol\/inmigrantes-noresidentes",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/espanol\/inmigrantes-noresidentes",
+        "snippet": "Visas temporales y de no inmigrante. Nota: En respuesta a la pandemia
+        del COVID-19, el Departamento de Estado suspendió en marzo de 2020 temporalmente
+        los servicios de visas de rutina en todas las embajadas y consulados de Estados
+        Unidos.En febrero de 2021 comenzó el proceso para regularizar los servicios
+        de visas de rutina (en inglés). Si usted desea visitar Estados Unidos
+        por un periodo ...", "dateLastCrawled": "2021-09-05T00:16:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Verdaderos amigos | StopBullying.gov", "url": "https:\/\/espanol.stopbullying.gov\/resources\/kids\/kid-videos\/real-friends",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/espanol.stopbullying.gov\/resources\/kids\/kid-videos\/real-friends",
+        "snippet": "Mel defiende a KB durante un partido de fútbol y demuestran al
+        entrenador que han entendido el trabajo en equipo. El entrenador nombra a
+        Mel como capitana del equipo y ella elige a KB como integrante de su equipo
+        y la presenta a sus otros amigos Mire el episodio en Internet en StopBullying.gov.",
+        "dateLastCrawled": "2021-08-14T05:10:00.0000000Z", "language": "es", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "EE. UU. y ASEAN: Socios contra COVID-19 | ShareAmerica", "url": "https:\/\/share.america.gov\/es\/ee-uu-y-asean-socios-contra-covid-19\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/share.america.gov\/es\/ee-uu-y-asean-socios-contra-covid-19",
+        "snippet": "Estados Unidos trabaja con países del Sudeste Asiático para
+        luchar contra COVID-19 y avanzar en el crecimiento económico de la región.
+        Hasta ahora, Estados Unidos ha donado más de 23 millones de dosis de vacunas
+        contra COVID-19 y más de 160 millones de dólares en ayuda humanitaria y sanitaria
+        de emergencia a los Estados de la Asociación de Países del Sudeste Asiático
+        (ASEAN).", "dateLastCrawled": "2021-09-05T00:34:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Doações de vacinas dos EUA chegam a 110 milhões de doses ...", "url":
+        "https:\/\/share.america.gov\/pt-br\/doacoes-de-vacinas-nos-eua-chegam-a-110-milhoes-de-doses\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/share.america.gov\/pt-br\/doacoes-de-vacinas-nos-eua-chegam-a-110-milhoes-de-doses",
+        "snippet": "Os Estados Unidos também doaram US$ 4 bilhões para o Covax
+        por meio da Gavi, a Aliança para Vacinas. Os 110 milhões de doses entregues
+        superam o compromisso de Biden em junho de doar pelo menos 80 milhões de vacinas
+        do suprimento dos Estados Unidos para outros países. E ainda há mais por
+        vir.", "dateLastCrawled": "2021-09-02T18:33:00.0000000Z", "language": "pt",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "¿Qué hace un representante de Estados Unidos ante la ONU ...",
+        "url": "https:\/\/share.america.gov\/es\/que-hace-un-representante-de-estados-unidos-ante-la-onu\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/share.america.gov\/es\/que-hace-un-representante-de-estados-unidos-ante-la-onu",
+        "snippet": "Aunque el embajador puede o no ser un miembro del gabinete ministerial
+        del presidente de Estados Unidos, el papel del embajador ante la ONU es
+        asesorar al presidente en asuntos internacionales, especialmente en asuntos
+        de paz y seguridad. “Defenderé los valores e intereses de Estados Unidos.
+        Estaré firme junto a nuestros amigos y aliados.", "dateLastCrawled": "2021-09-02T10:44:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Jóvenes emprendedoras de Egipto marcan una diferencia en ...", "url":
+        "https:\/\/share.america.gov\/es\/jovenes-emprendedoras-de-egipto-marcan-una-diferencia-en-el-mundo\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/share.america.gov\/es\/jovenes-emprendedoras-de-egipto-marcan-una-diferencia-en...",
+        "snippet": "Jóvenes emprendedoras en Egipto están poniendo en marcha exitosos
+        negocios y expandiéndolos a nivel mundial. Cuando Doaa Aref (en inglés) se
+        sometió a un tratamiento contra el cáncer en 2016, tuvo dificultades para
+        que sus recetas fueran surtidas en El Cairo con la dosis correcta de su medicamento..
+        Identificó la necesidad de una aplicación móvil que permitiera a los pacientes
+        poner ...", "dateLastCrawled": "2021-08-28T07:16:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "EUA e Asean: parceria contra a Covid-19 | ShareAmerica", "url": "https:\/\/share.america.gov\/pt-br\/eua-e-asean-parceria-contra-a-covid-19\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/share.america.gov\/pt-br\/eua-e-asean-parceria-contra-a-covid-19",
+        "snippet": "Os Estados Unidos estão trabalhando com nações do Sudeste
+        Asiático para combater a Covid-19 e promover o crescimento econômico da região.
+        Até agora, os Estados Unidos já doaram mais de 23 milhões de doses de
+        vacinas contra a Covid-19 e mais de US$ 160 milhões em saúde emergencial e
+        assistência humanitária aos países da ...", "dateLastCrawled": "2021-09-04T15:50:00.0000000Z",
+        "language": "pt", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
         "name": "Celebraciones y cultura religiosas en EE. UU. | ShareAmerica",
         "url": "https:\/\/share.america.gov\/es\/celebraciones-y-cultura-religiosas-en-ee-uu\/",
         "isFamilyFriendly": true, "displayUrl": "https:\/\/share.america.gov\/es\/celebraciones-y-cultura-religiosas-en-ee-uu",
         "snippet": "En Estados Unidos las festividades religiosas suelen ser ocasiones
         para abrir puertas a amigos y vecinos, independientemente de su religión.
         El nuevo libro “Fe + Libertad: Religión en EE. UU.” muestra como personas
-        de todo el país celebran sus ocasiones especiales.", "dateLastCrawled": "2021-03-25T12:18:00.0000000Z",
+        de todo el país celebran sus ocasiones especiales.", "dateLastCrawled": "2021-08-30T20:27:00.0000000Z",
         "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
-        "name": "Visas para extranjeros: tipos de visas y extensiones ...", "url":
-        "https:\/\/www.usa.gov\/espanol\/inmigrantes-noresidentes", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.usa.gov\/espanol\/inmigrantes-noresidentes",
-        "snippet": "Visas temporales y de no inmigrante. Nota: En respuesta a la pandemia
-        del COVID-19, el Departamento de Estado suspendió en marzo de 2020 temporalmente
-        los servicios de visas de rutina en todas las embajadas y consulados de Estados
-        Unidos.En febrero de 2021 comenzó el proceso para regularizar los servicios
-        de visas de rutina (en inglés). Si usted desea visitar Estados Unidos
-        por un periodo ...", "dateLastCrawled": "2021-03-29T14:15:00.0000000Z", "language":
-        "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
-        "name": "#COVID19 - Embajada de los Estados Unidos en Guatemala", "url":
-        "https:\/\/gt.usembassy.gov\/es\/tag\/covid19information-es\/", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/gt.usembassy.gov\/es\/tag\/covid19information-es",
-        "snippet": "Departamento de Estado de los Estados Unidos Oficina de la
-        Vocera 12 de mayo de 2020 Como ha dicho el Presidente Trump, los Estados
-        Unidos están trabajando con nuestros amigos y socios en todo el mundo
-        para coordinar nuestros esfuerzos por detener la propagación de la pandemia
-        del Covid-19.", "dateLastCrawled": "2021-03-29T02:15:00.0000000Z", "language":
-        "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
-        "name": "Programa Jóvenes Embajadores | Embajada de EE.UU. en Colombia",
-        "url": "https:\/\/co.usembassy.gov\/es\/education-culture-es\/ya-es\/", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/co.usembassy.gov\/es\/education-culture-es\/ya-es",
-        "snippet": "Estados Unidos dona kits de empaque isotérmico para el transporte
-        de vacunas al Ministerio de Salud de Colombia; ... El programa es administrado
-        por World Learning en asociación con Amigos de las Américas. Los socios
-        implementadores en Colombia son la Embajada de los EE.UU. en Bogotá y Amigos
-        de las Américas.", "dateLastCrawled": "2021-03-29T20:53:00.0000000Z", "language":
-        "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
-        "name": "Como seleccionar un programa de postgrado | Embajada de EE ...",
-        "url": "https:\/\/co.usembassy.gov\/es\/education-culture-es\/graduate-studies-es\/choosing-graduate-program-es\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/co.usembassy.gov\/es\/education-culture-es\/graduate-studies-es\/choosing-graduate...",
-        "snippet": "Lugar: Hay universidades en todo el territorio de los Estados
-        Unidos, desde las grandes ciudades en las que puede haber muchas, hasta
-        las zonas rurales donde una sola institución atiende una amplia región. Los
-        campus urbanos ofrecen gran variedad de opciones de comida, entretenimiento,
-        cultura y para ir de compras.", "dateLastCrawled": "2021-03-25T14:35:00.0000000Z",
-        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
-        "name": "Requisitos de admisión y exámenes de ingreso | Embajada de ...",
-        "url": "https:\/\/co.usembassy.gov\/es\/education-culture-es\/graduate-studies-es\/admission-requirements-entrance-examinations-es\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/co.usembassy.gov\/es\/education-culture-es\/graduate-studies-es\/admission...",
-        "snippet": "Estados Unidos dona kits de empaque isotérmico para el transporte
-        de vacunas al Ministerio de Salud de Colombia; Anuncio de las Ganadoras del
-        Premio Internacional a las Mujeres de Coraje 2021; Ciudadano colombiano extraditado
-        de Panamá para enfrentar cargos de narcotráfico en Estados Unidos", "dateLastCrawled":
-        "2021-03-24T21:25:00.0000000Z", "language": "es", "isNavigational": false},
+        "name": "Discursos Archivo | Embajada de EE.UU. en España y Andorra", "url":
+        "https:\/\/es.usembassy.gov\/es\/category\/discursos\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/es.usembassy.gov\/es\/category\/discursos",
+        "snippet": "Washington, DC 11 de octubre de 2017 En nombre del gobierno de
+        los Estados Unidos de América, envío nuestros mejores deseos al pueblo
+        de España con motivo de la celebración de su Fiesta Nacional. Estados Unidos
+        y España son grandes amigos y sólidos aliados. Como dijo el Presidente durante
+        su reunión con el Presidente Rajoy …", "dateLastCrawled": "2021-08-17T22:21:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Imágenes y mensajes de redes sociales para studiantes ...", "url":
+        "https:\/\/juntossipodemos.hhs.gov\/imagenes-y-mensajes-de-redes-sociales-para-studiantes-universitarios-spanglish",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/juntossipodemos.hhs.gov\/imagenes-y-mensajes-de-redes-sociales-para-studiantes...",
+        "snippet": "Getting vaccinated against #COVID19 is the best way to protect
+        us all so you can safely participate in campus activities. ¡Y para que puedas
+        estar con tus amigos! You have 3 easy ways to find vaccines near you: Visita
+        vaccines.gov; Text your ZIP code to 438829; Call 1-800-232-0233", "dateLastCrawled":
+        "2021-09-01T16:03:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12", "name":
+        "Mensajes de redes sociales para personas con ...", "url": "https:\/\/juntossipodemos.hhs.gov\/mensajes-de-redes-sociales-para-personas-con-discapacidades",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/juntossipodemos.hhs.gov\/mensajes-de-redes-sociales-para-personas-con-discapac...",
+        "snippet": "Más del 60% de los adultos en los Estados Unidos han recibido
+        su primera dosis de la vacuna contra el #COVID19. Pon de tu parte y ayuda
+        a derrotar este virus para poder volver a pasar tiempo con nuestros seres
+        queridos. Encuentra vacunas cerca de ti: Visita vacunas.gov. Envía un mensaje
+        de texto con tu código postal al 822862. Llama al 1-800 ...", "dateLastCrawled":
+        "2021-09-01T06:09:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13", "name":
+        "Los estadounidenses celebran el festival hindú del “Diwali ...", "url":
+        "https:\/\/share.america.gov\/es\/los-estadounidenses-celebran-el-festival-hindu-del-diwali\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/share.america.gov\/es\/los-estadounidenses-celebran-el-festival-hindu-del-diwali",
+        "snippet": "Este artículo es el segundo de una serie intermitente sobre festividades
+        religiosas que los estadounidenses celebran. El primero fue sobre Rosh Hashana
+        y Yom Kippur.. Cada otoño, entre septiembre, octubre y noviembre en Estados
+        Unidos, miles de hindúes estadounidenses celebran uno de los festivales
+        más importantes para el hinduismo, el “Diwali” o “Festival de las luces”.",
+        "dateLastCrawled": "2021-08-30T05:08:00.0000000Z", "language": "es", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Visa de novios | Embajada de Estados Unidos en Perú", "url": "https:\/\/pe.usembassy.gov\/es\/visas-es\/immigrant-visas-es\/fiancee-visa-es\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/pe.usembassy.gov\/es\/visas-es\/immigrant-visas-es\/fiancee-visa-es",
+        "snippet": "La visa de novio tipo K-1 es una visa de no-inmigrante para el
+        novio ciudadano extranjero de un ciudadano de los Estados Unidos. La visa
+        K-1 permite al novio ciudadano extranjero viajar a los Estados Unidos
+        y casarse con su patrocinador estadounidense dentro de 90 días de su arribo.
+        Usted puede conocer más acerca de las visa de novios en ...", "dateLastCrawled":
+        "2021-09-02T00:14:00.0000000Z", "language": "es", "isNavigational": false},
         {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15", "name":
-        "Ministro Consejero Mark Wells | Embajada de EE.UU. en Colombia", "url":
-        "https:\/\/co.usembassy.gov\/es\/our-relationship-es\/dcm-es\/", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/co.usembassy.gov\/es\/our-relationship-es\/dcm-es",
-        "snippet": "Mark llega a Bogotá con más de una década de experiencia en la
-        región andina de América Latina. Viene de ocupar el mismo cargo en la Embajada
-        de Estados Unidos en Lima en donde estuvo desde 2017 hasta 2019. Del 2009
-        al 2011 fue el Consejero Político en la Embajada de Estados Unidos en
-        Colombia.", "dateLastCrawled": "2021-03-25T14:52:00.0000000Z", "language":
-        "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
-        "name": "DIVULGACIÓN DE INFORMACIÓN Y DECLARACIÓN DE PASAJEROS A ...", "url":
-        "https:\/\/www.cdc.gov\/quarantine\/pdf\/Fillable-Attestation-Spanish-p.pdf",
+        "Prepárate con Pedro | Ready.gov", "url": "https:\/\/www.ready.gov\/es\/preparate-con-pedro",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ready.gov\/es\/preparate-con-pedro",
+        "snippet": "¡Hola! ¡Soy Predo el Pingüino! Estoy viajando por todos los Estados
+        Unidos para visitar a mis amigos y aprender más de cómo se preparan. Me
+        encantaría que vinieras conmigo. Las emergencias y los desastres pueden pasar
+        en cualquier parte, pero siempre hay maneras de estar seguro. ¡Acompañame
+        y aprenderemos juntos!", "dateLastCrawled": "2021-09-03T08:55:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Mensajes de redes sociales para personas con ...", "url": "https:\/\/juntossipodemos.hhs.gov\/mensajes-de-redes-sociales-para-personas-con-discapacidades-en-ingles",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/juntossipodemos.hhs.gov\/mensajes-de-redes-sociales-para-personas-con-discapac...",
+        "snippet": "POST: It’s been a challenging year, but we’re starting to turn
+        the tide on this #pandemic. It takes every one of us, doing our part, to defeat
+        this virus. Let’s get back to the friends, family, and events we enjoy. Find
+        a vaccine location near you! Search vaccines.gov. Text your ZIP code to 438829.
+        Call 1-800-232-0233.", "dateLastCrawled": "2021-09-04T00:27:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Preguntas Frecuentes (FAQ’s) - Travel", "url": "https:\/\/travel.state.gov\/content\/dam\/visas\/I-601AProvisionalWaiver\/For%20Provisional%20Waiver%20Spanish.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/travel.state.gov\/content\/dam\/visas\/I-601AProvisionalWaiver\/For
+        Provisional...", "snippet": "Estados Unidos (USCIS) anunció que ciertos
+        familiares inmediatos de ciudadanos estadounidenses presentes en los Estados
+        Unidos, que están en el proceso de búsqueda de visas de inmigrante con el
+        Departamento de Estado para convertirse en residentes legales permanentes
+        de los Estados Unidos, puede solicitar y ser aprobados", "dateLastCrawled":
+        "2021-09-05T12:39:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18", "name":
+        "DIVULGACIÓN DE INFORMACIÓN Y DECLARACIÓN DE PASAJEROS A ...", "url": "https:\/\/www.cdc.gov\/quarantine\/pdf\/Fillable-Attestation-Spanish-p.pdf",
         "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/quarantine\/pdf\/Fillable-Attestation-Spanish-p.pdf",
         "snippet": "Los Centros para el Control y la Prevención de Enfermedades (CDC)
         de los Estados Unidos requieren que las aerolíneas y otros operadores
         de aeronaves recolecten información en virtud de 42 C.F.R. §§ 71.20 y 71.31(b),
-        según lo autorizado por 42 U.S.C. § 264.", "dateLastCrawled": "2021-03-29T15:09:00.0000000Z",
-        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
-        "name": "Visite Estados Unidos | USCIS", "url": "https:\/\/www.uscis.gov\/es\/visite-estados-unidos",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.uscis.gov\/es\/visite-estados-unidos",
-        "snippet": "Generalmente, si usted quiere visitar (no vivir en) Estados
-        Unidos, primero debe obtener una visa de visitante extranjero.Los extranjeros
-        que viajan desde ciertos países podrían estar exentos de este requisito. Para
-        más información, por favor visite el sitio web del Departamento de Estado..
-        Si desea viajar a Estados Unidos por razones distintas a los negocios
-        o placer, debe solicitar una ...", "dateLastCrawled": "2021-03-29T08:03:00.0000000Z",
-        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
-        "name": "Reglamento Para Ingresar a la Embajada | Embajada de EE.UU ...",
-        "url": "https:\/\/co.usembassy.gov\/es\/u-s-citizen-services-es\/regulations-es\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/co.usembassy.gov\/es\/u-s-citizen-services-es\/regulations-es",
-        "snippet": "Ciudadano colombiano extraditado de Panamá para enfrentar cargos
-        de narcotráfico en Estados Unidos; Declaración conjunta del Grupo de Amigos
-        del Proceso de Quito; Alert. Mensaje para ciudadanos Americanos: Reanudación
-        de Servicios Limitados para Ciudadanos Americanos; Alerta: Vuelos Internacionales
-        entre los Estados Unidos y Colombia se ...", "dateLastCrawled": "2021-03-25T08:22:00.0000000Z",
+        según lo autorizado por 42 U.S.C. § 264.", "dateLastCrawled": "2021-09-05T12:12:00.0000000Z",
         "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
-        "name": "INL Archivo | U.S. Embassy in El Salvador", "url": "https:\/\/sv.usembassy.gov\/es\/tag\/inl\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/sv.usembassy.gov\/es\/tag\/inl",
-        "snippet": "El embajador Ronald Johnson visita La Unión y San Vicente El Embajador
-        de los Estados Unidos, Ronald Johnson, durante los días 30 de noviembre
-        y 1 de diciembre 2020, realizó una visita los departamentos de La Unión y
-        San Vicente. ... ” April 27, 2017 Buenas tardes estimados colegas de la Dirección
-        General de Centros Penales, programa Yo ...", "dateLastCrawled": "2021-03-29T16:57:00.0000000Z",
+        "name": "Cómo hablar sobre las vacunas contra el COVID-19 con ...", "url":
+        "https:\/\/juntossipodemos.hhs.gov\/como-hablar-sobre-las-vacunas-contra-el-covid-19-con-familiares-y-amigos",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/juntossipodemos.hhs.gov\/como-hablar-sobre-las-vacunas-contra-el-covid-19-con...",
+        "snippet": "Cómo hablar sobre las vacunas contra el COVID-19 con amigos
+        y familiares Para imprimir este documento, use la configuración de impresión
+        de su navegador de internet para establecer los márgenes de la página y quitar
+        el encabezado y el pie de página.", "dateLastCrawled": "2021-08-27T19:12:00.0000000Z",
         "language": "es", "isNavigational": false}]}, "rankingResponse": {"mainline":
         {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
         {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
@@ -298,6 +521,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
-    http_version:
-  recorded_at: Fri, 02 Apr 2021 15:23:49 GMT
-recorded_with: VCR 4.0.0
+  recorded_at: Tue, 07 Sep 2021 16:19:14 GMT
+recorded_with: VCR 6.0.0

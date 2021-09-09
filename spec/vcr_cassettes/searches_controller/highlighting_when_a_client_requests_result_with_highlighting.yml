@@ -9,6 +9,8 @@ http_interactions:
     headers:
       User-Agent:
       - USASearch
+      Ocp-Apim-Subscription-Key:
+      - my_api_key
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -25,212 +27,218 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '4911'
+      - '5222'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Fri, 11 Jun 2021 12:58:11 GMT
+      - Tue, 31 Aug 2021 20:32:15 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=04C3D7A6E8F260562A0BC7F5E94561B0; domain=.bingapis.com; expires=Wed,
-        06-Jul-2022 12:59:11 GMT; path=/; secure; SameSite=None
-      - MUIDB=04C3D7A6E8F260562A0BC7F5E94561B0; expires=Wed, 06-Jul-2022 12:59:11
+      - MUID=310B4842C36460E32C9B58E6C21161EB; domain=.bingapis.com; expires=Sun,
+        25-Sep-2022 20:33:15 GMT; path=/; secure; SameSite=None
+      - MUIDB=310B4842C36460E32C9B58E6C21161EB; expires=Sun, 25-Sep-2022 20:33:15
         GMT; path=/; HttpOnly
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 11-Jun-2023 12:59:11 GMT;
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 31-Aug-2023 20:33:15 GMT;
         path=/
-      - SRCHHPGUSR=SRCHLANGV2=en; domain=.bingapis.com; expires=Sun, 11-Jun-2023 12:59:11
+      - SRCHHPGUSR=SRCHLANG=en; domain=.bingapis.com; expires=Thu, 31-Aug-2023 20:33:15
         GMT; path=/
-      - SRCHUID=V=2&GUID=BFE02C0AAB524EB18636334F4EC90B62&dmnchg=1; domain=.bingapis.com;
-        expires=Sun, 11-Jun-2023 12:59:11 GMT; path=/
-      - SRCHUSR=DOB=20210611; domain=.bingapis.com; expires=Sun, 11-Jun-2023 12:59:11
+      - SRCHUID=V=2&GUID=9B5A9ADD692F43D19AAD260E92396487&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 31-Aug-2023 20:33:15 GMT; path=/
+      - SRCHUSR=DOB=20210831; domain=.bingapis.com; expires=Thu, 31-Aug-2023 20:33:15
         GMT; path=/
-      - _EDGE_S=F=1&SID=346E2AC26F7862D31C973A916ECF6334&mkt=en-us; domain=.bingapis.com;
+      - _EDGE_S=F=1&SID=2306EF891C396AEE3588FF2D1D4C6BF3&mkt=en-us; domain=.bingapis.com;
         path=/; HttpOnly
-      - _EDGE_V=1; domain=.bingapis.com; expires=Wed, 06-Jul-2022 12:59:11 GMT; path=/;
+      - _EDGE_V=1; domain=.bingapis.com; expires=Sun, 25-Sep-2022 20:33:15 GMT; path=/;
         HttpOnly
-      - _SS=SID=346E2AC26F7862D31C973A916ECF6334; domain=.bingapis.com; path=/
+      - _SS=SID=2306EF891C396AEE3588FF2D1D4C6BF3; domain=.bingapis.com; path=/
       X-Snr-Routing:
       - '1'
       Bingapis-Traceid:
-      - 422F550B3758454089669D3A4A802D5D
+      - F72F0B1786E34D7A810DC326B70EC232
       X-Msedge-Clientid:
-      - 04C3D7A6E8F260562A0BC7F5E94561B0
+      - 310B4842C36460E32C9B58E6C21161EB
       X-Msapi-Userstate:
-      - 21b4
+      - 27c1
       Bingapis-Market:
       - en-US
       X-Cache:
       - CONFIG_NOCACHE
       X-Msedge-Ref:
-      - 'Ref A: 422F550B3758454089669D3A4A802D5D Ref B: BLUEDGE0715 Ref C: 2021-06-11T12:59:11Z'
+      - 'Ref A: F72F0B1786E34D7A810DC326B70EC232 Ref B: BLUEDGE1709 Ref C: 2021-08-31T20:33:15Z'
       Date:
-      - Fri, 11 Jun 2021 12:59:12 GMT
+      - Tue, 31 Aug 2021 20:33:14 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=DC6DF109DB36401FBFE474742E6265F1&CID=04C3D7A6E8F260562A0BC7F5E94561B0&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=DC6DF109DB36401FBFE474742E6265F1&CID=04C3D7A6E8F260562A0BC7F5E94561B0&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=EE93115F9D9749BCA25E463A35272E78&CID=310B4842C36460E32C9B58E6C21161EB&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=EE93115F9D9749BCA25E463A35272E78&CID=310B4842C36460E32C9B58E6C21161EB&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=obama+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5418.1", "totalEstimatedMatches": 23900000,
+        "webSearchUrlPingSuffix": "DevEx,5425.1", "totalEstimatedMatches": 6150000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "Barack Obama | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/barack-obama\/",
-        "urlPingSuffix": "DevEx,5063.1", "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/barack-obama",
+        "Barack Obama | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/barack-obama\/",
+        "urlPingSuffix": "DevEx,5064.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.fqA8eiv9ze2xTMSXCaOLrAHaHa&pid=Api",
+        "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/barack-obama",
         "snippet": "Barack Obama served as the 44th President of the United States.
         His story is the American story — values from the heartland, a middle-class
         upbringing in a strong family, hard work and education ...", "dateLastCrawled":
-        "2021-06-08T07:19:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
-        "name": "President Barack Obama | whitehouse.gov", "url": "https:\/\/obamawhitehouse.archives.gov\/administration\/president-obama",
-        "urlPingSuffix": "DevEx,5076.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/administration\/president-obama",
-        "snippet": "Barack Obama is the 44th President of the United States. His
-        story is the American story -- values from the heartland, a middle-class upbringing
-        in a strong family, hard work and education as the means of getting ahead,
-        and the conviction that a life so blessed should be lived in service to others.",
-        "dateLastCrawled": "2021-06-09T02:32:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
-        "name": "OBAMA, Barack | US House of Representatives: History, Art ...",
-        "url": "https:\/\/history.house.gov\/People\/Detail\/19276", "urlPingSuffix":
-        "DevEx,5089.1", "displayUrl": "https:\/\/history.house.gov\/People\/Detail\/19276",
+        "2021-08-29T21:41:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
+        "name": "President Barack Obama | Barack Obama Presidential Library",
+        "url": "https:\/\/www.obamalibrary.gov\/obamas\/president-barack-obama", "urlPingSuffix":
+        "DevEx,5077.1", "displayUrl": "https:\/\/www.obamalibrary.gov\/obamas\/president-barack-obama",
+        "snippet": "Barack Hussein Obama II was born August 4, 1961, in Honolulu,
+        Hawaii, to parents Barack H. Obama, Sr., and Stanley Ann Dunham. His parents
+        divorced when he was 2 years old and he was raised by his mother, Ann, and
+        maternal grandparents, Stanley and Madelyn Dunham. His mother later married
+        Lolo Soetoro, and his sister Maya was born in 1970.", "dateLastCrawled": "2021-08-27T04:06:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "OBAMA,
+        Barack | US House of Representatives: History, Art ...", "url": "https:\/\/history.house.gov\/People\/Detail\/19276",
+        "urlPingSuffix": "DevEx,5090.1", "displayUrl": "https:\/\/history.house.gov\/People\/Detail\/19276",
         "snippet": "Barack Obama was born in Honolulu, Hawaii, on August 4, 1961,
         the son of Barack Obama, Sr., and Ann Dunham Obama. Barack, Sr., an economist,
         was born and raised in Kenya and grew up raising goats with his father, who
         was a domestic servant for the British. 1 He met and married Ann Dunham, who
         grew up in a small town in Kansas, while both were ...", "dateLastCrawled":
-        "2021-06-09T10:27:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
-        "name": "Photos & Videos | Barack Obama Presidential Library", "url":
-        "https:\/\/www.obamalibrary.gov\/photos-videos", "urlPingSuffix": "DevEx,5102.1",
-        "displayUrl": "https:\/\/www.obamalibrary.gov\/photos-videos", "snippet":
-        "President Barack Obama pets Bo in the Outer Oval Office, October 29, 2009.
-        (P102909PS-0789) Official White House Photo by Pete Souza. Download Print.
-        First Lady Michelle Obama and daughters Sasha and Malia, along with family
-        dog, Bo, play in the snow on the South Lawn of the White House on December
-        19, 2009.", "dateLastCrawled": "2021-06-09T03:38:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
-        "name": "Michelle Obama | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/michelle-obama\/",
-        "urlPingSuffix": "DevEx,5115.1", "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/michelle-obama",
-        "snippet": "First Lady Michelle LaVaughn Robinson Obama is a lawyer, writer,
-        and the wife of the 44th President, Barack Obama. She is the first African-American
-        First Lady of the United States. Through her ...", "dateLastCrawled": "2021-06-09T04:21:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Barack
-        Obama Presidential Library", "url": "https:\/\/www.obamalibrary.gov\/",
-        "urlPingSuffix": "DevEx,5128.1", "displayUrl": "https:\/\/www.obamalibrary.gov",
-        "snippet": "President Obama delivers the keynote address at the Civil Rights
-        Symposium, held in honor of the 50th Anniversary of the Civil Rights Act of
-        1964, at the Lyndon Baines Johnson Library in Austin, Texas. Former Presidents
-        Jimmy Carter, Bill Clinton, and George W. Bush also participate in the event.
-        Loading.", "dateLastCrawled": "2021-06-09T03:14:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
-        "name": "Presidents | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/",
-        "urlPingSuffix": "DevEx,5141.1", "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents",
-        "snippet": "Barack Obama The 44th President of the United States Barack
-        Obama Donald Trump The 45th President of the United States Donald Trump
-        Joseph R. Biden Jr. THE 46TH PRESIDENT OF THE UNITED STATES ...", "dateLastCrawled":
-        "2021-06-09T03:02:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
-        "name": "Letters to President Obama - whitehouse.gov", "url": "https:\/\/obamawhitehouse.archives.gov\/letters",
-        "urlPingSuffix": "DevEx,5154.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/letters",
-        "snippet": "Letters to President Obama. When President Obama took office,
-        he asked his staff to send him 10 letters from constituents to read every
-        night. These letters—hand-picked from the thousands of emails and handwritten
-        notes that the White House receives every day—represent the stories and concerns
-        of Americans across the country.", "dateLastCrawled": "2021-06-08T14:00:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Frequently
-        Asked Questions | Barack Obama Presidential Library", "url": "https:\/\/www.obamalibrary.gov\/about-us\/frequently-asked-questions",
-        "urlPingSuffix": "DevEx,5167.1", "displayUrl": "https:\/\/www.obamalibrary.gov\/about-us\/frequently-asked-questions",
-        "snippet": "President Obama''s memoir, A Promised Land, will commence publication
-        in November 2020. Mrs. Obama wrote her first book while she was serving
-        as First Lady. American Grown: The Story of the White House Kitchen Garden
-        and Gardens across America was published in 2012. Mrs. Obama’s memoir, Becoming,
-        was published in November 2018.", "dateLastCrawled": "2021-06-08T23:42:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Statement
-        from President Obama on the occasion of ...", "url": "https:\/\/obamawhitehouse.archives.gov\/the-press-office\/statement-president-obama-occasion-juneteenth",
-        "urlPingSuffix": "DevEx,5181.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/the-press-office\/statement-president-obama...",
-        "snippet": "statement from president obama on the occasion of juneteenth
-        On this day in 1865, more than two years after President Lincoln signed the
-        Emancipation Proclamation, those who found themselves still enslaved in Galveston,
-        Texas had their hopes realized and their prayers answered.", "dateLastCrawled":
-        "2021-06-07T07:08:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
-        "name": "Deportations lower under Trump administration than Obama ...",
-        "url": "https:\/\/docs.house.gov\/meetings\/GO\/GO00\/20200109\/110349\/HHRG-116-GO00-20200109-SD007.pdf",
-        "urlPingSuffix": "DevEx,5194.1", "displayUrl": "https:\/\/docs.house.gov\/meetings\/GO\/GO00\/20200109\/110349\/HHRG-116-GO00-20200109-SD007.pdf",
-        "snippet": "While the Obama administration deported 1.18 million people
-        in his first three years, the number of deportations has been a little under
-        800,000 so far under Trump, according to the Post. The Obama administration
-        also deported 409,849 people in 2012 alone, while the Trump administration
-        has yet to deport more than 260,000 people in a year,", "dateLastCrawled":
-        "2021-06-09T04:28:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
-        "name": "First Lady Michelle Obama | Barack Obama Presidential Library",
-        "url": "https:\/\/www.obamalibrary.gov\/obamas\/first-lady-michelle-obama",
-        "urlPingSuffix": "DevEx,5206.1", "displayUrl": "https:\/\/www.obamalibrary.gov\/obamas\/first-lady-michelle-obama",
-        "snippet": "Michelle Robinson Obama was born in DeYoung, Illinois, on January
-        17, 1964, to parents Frasier Robinson III and Marian Shields. She grew up
-        in Chicago’s South Shore neighborhood with her older brother Craig, attending
-        Chicago Public Schools and quickly joining gifted classes in elementary school.",
-        "dateLastCrawled": "2021-06-09T05:23:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
-        "name": "Petitions Under the Obama Administration", "url": "https:\/\/petitions.obamawhitehouse.archives.gov\/",
-        "urlPingSuffix": "DevEx,5219.1", "displayUrl": "https:\/\/petitions.obamawhitehouse.archives.gov",
-        "snippet": "The right to petition your government is guaranteed by the First
-        Amendment of the United States Constitution. Under President Obama, We the
-        People was a platform where anybody could create a petition online and speak
-        directly to the Administration.", "dateLastCrawled": "2021-06-09T03:12:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Contact
-        Us | Barack Obama Presidential Library", "url": "https:\/\/www.obamalibrary.gov\/about-us\/contact-us",
-        "urlPingSuffix": "DevEx,5232.1", "displayUrl": "https:\/\/www.obamalibrary.gov\/about-us\/contact-us",
-        "snippet": "Barack Obama Presidential Library 2500 W. Golf Road Hoffman
-        Estates, IL 60169-1114 Phone: (847) 252-5700 Fax: (847) 252-5799 Email: obama.library@nara.gov
-        Office of Barack and Michelle Obama President Barack Obama and Mrs. Michelle
-        Obama do not maintain offices at the Barack Obama Presidential Library.
-        Write to the President or Mrs. Obama at the following address:", "dateLastCrawled":
-        "2021-06-09T12:20:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
-        "name": "The Obama Administration''s Response to Ebola | The White House",
-        "url": "https:\/\/obamawhitehouse.archives.gov\/ebola-response", "urlPingSuffix":
-        "DevEx,5245.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/ebola-response",
-        "snippet": "– President Obama, October 25, 2014 Ten months ago, the first
-        U.S. personnel deployed to West Africa to fight the Ebola outbreak on the
-        frontlines in West Africa. This epidemic has grown into the deadliest Ebola
-        outbreak the world has ever seen — and the President is committed to treating
-        and tackling Ebola as both a national security ...", "dateLastCrawled": "2021-06-09T15:50:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "About
-        Us | Barack Obama Presidential Library", "url": "https:\/\/www.obamalibrary.gov\/about-us",
-        "urlPingSuffix": "DevEx,5258.1", "displayUrl": "https:\/\/www.obamalibrary.gov\/about-us",
+        "2021-08-28T00:08:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "Barack Obama Presidential Library", "url": "https:\/\/www.obamalibrary.gov\/",
+        "urlPingSuffix": "DevEx,5104.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.uec73DYm3UcMXWjirKlrhgHaE9&pid=Api",
+        "displayUrl": "https:\/\/www.obamalibrary.gov", "snippet": "President Obama
+        delivers the keynote address at the Civil Rights Symposium, held in honor
+        of the 50th Anniversary of the Civil Rights Act of 1964, at the Lyndon Baines
+        Johnson Library in Austin, Texas. Former Presidents Jimmy Carter, Bill Clinton,
+        and …", "dateLastCrawled": "2021-08-28T07:09:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
+        "name": "Photos & Videos | Barack Obama Presidential Library", "url": "https:\/\/www.obamalibrary.gov\/photos-videos",
+        "urlPingSuffix": "DevEx,5117.1", "displayUrl": "https:\/\/www.obamalibrary.gov\/photos-videos",
+        "snippet": "President Barack Obama pets Bo in the Outer Oval Office, October
+        29, 2009. (P102909PS-0789) Official White House Photo by Pete Souza. Download
+        Print. First Lady Michelle Obama and daughters Sasha and Malia, along with
+        family dog, Bo, play in the snow on the South Lawn of the White House on December
+        19, 2009.", "dateLastCrawled": "2021-08-29T06:18:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
+        "name": "About Us | Barack Obama Presidential Library", "url": "https:\/\/www.obamalibrary.gov\/about-us",
+        "urlPingSuffix": "DevEx,5130.1", "displayUrl": "https:\/\/www.obamalibrary.gov\/about-us",
         "snippet": "About the Library. The Barack Obama Presidential Library is
         the 14th Presidential library administered by the National Archives and Records
         Administration (NARA), a federal agency.. Unlike other Presidential Libraries
         administered by NARA, the Barack Obama Presidential Library will be the
         first fully digital presidential library. An estimated 95 percent of the Presidential
-        records of the Obama ...", "dateLastCrawled": "2021-06-08T07:14:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "The White
+        records of the Obama ...", "dateLastCrawled": "2021-08-29T01:18:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Contact
+        Us | Barack Obama Presidential Library", "url": "https:\/\/www.obamalibrary.gov\/about-us\/contact-us",
+        "urlPingSuffix": "DevEx,5143.1", "displayUrl": "https:\/\/www.obamalibrary.gov\/about-us\/contact-us",
+        "snippet": "Barack Obama Presidential Library 2500 W. Golf Road Hoffman
+        Estates, IL 60169-1114 Phone: (847) 252-5700 Fax: (847) 252-5799 Email: obama.library@nara.gov
+        Office of Barack and Michelle Obama President Barack Obama and Mrs. Michelle
+        Obama do not maintain offices at the Barack Obama Presidential Library.
+        Write to the President or Mrs. Obama at the following address:", "dateLastCrawled":
+        "2021-08-27T07:17:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "name": "Frequently Asked Questions | Barack Obama Presidential Library",
+        "url": "https:\/\/www.obamalibrary.gov\/about-us\/frequently-asked-questions",
+        "urlPingSuffix": "DevEx,5156.1", "displayUrl": "https:\/\/www.obamalibrary.gov\/about-us\/frequently-asked-questions",
+        "snippet": "President Obama''s memoir, A Promised Land, will commence publication
+        in November 2020. Mrs. Obama wrote her first book while she was serving
+        as First Lady. American Grown: The Story of the White House Kitchen Garden
+        and Gardens across America was published in 2012. Mrs. Obama’s memoir, Becoming,
+        was published in November 2018.", "dateLastCrawled": "2021-08-29T07:17:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "FACT SHEET:
+        Celebrating President Obama’s Top 10 Actions ...", "url": "https:\/\/obamawhitehouse.archives.gov\/the-press-office\/2016\/11\/30\/fact-sheet-celebrating-president-obamas-top-10-actions-advance",
+        "urlPingSuffix": "DevEx,5170.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/the-press-office\/2016\/11\/30\/fact-sheet...",
+        "snippet": "– President Obama, Inaugural Address, January 21, 2009 America’s
+        entrepreneurial economy is the envy of the world. Young companies account
+        for almost 30 percent of new jobs, and as we have fought back from the worst
+        economic crisis of our lifetimes, startups have helped the U.S. private sector
+        create 15.5 million jobs since early 2010—the ...", "dateLastCrawled": "2021-08-28T19:55:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "FACT SHEET:
+        Obama Administration’s Record and the LGBT ...", "url": "https:\/\/obamawhitehouse.archives.gov\/the-press-office\/2016\/06\/09\/fact-sheet-obama-administrations-record-and-lgbt-community",
+        "urlPingSuffix": "DevEx,5184.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/the-press-office\/2016\/06\/09\/fact-sheet-obama...",
+        "snippet": "President Obama, June 26, 2015. Since taking office, President
+        Obama and his Administration have made historic strides to expand opportunities
+        and advance equality and justice for all Americans, including Lesbian, Gay,
+        Bisexual, and Transgender (LGBT) Americans.", "dateLastCrawled": "2021-08-27T23:36:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "The White
         House | whitehouse.gov", "url": "https:\/\/obamawhitehouse.archives.gov\/",
-        "urlPingSuffix": "DevEx,5271.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov",
+        "urlPingSuffix": "DevEx,5197.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov",
         "snippet": "President Obama has protected more natural resources than any
         other president. President Obama has refocused and reaffirmed American leadership
         in the world. President Obama has created jobs, rescued the auto industry,
         and rebuilt the economy. President Obama has led the fight to ensure equality
-        for all Americans.", "dateLastCrawled": "2021-06-08T12:52:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "FACT SHEET:
-        Obama Administration’s Record and the LGBT ...", "url": "https:\/\/obamawhitehouse.archives.gov\/the-press-office\/2016\/06\/09\/fact-sheet-obama-administrations-record-and-lgbt-community",
-        "urlPingSuffix": "DevEx,5285.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/the-press-office\/2016\/06\/09\/fact-sheet-obama...",
-        "snippet": "President Obama, June 26, 2015. Since taking office, President
-        Obama and his Administration have made historic strides to expand opportunities
-        and advance equality and justice for all Americans, including Lesbian, Gay,
-        Bisexual, and Transgender (LGBT) Americans.", "dateLastCrawled": "2021-06-09T00:06:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Foster
-        Highlights President Obama’s Contribution to Rapid ...", "url": "https:\/\/foster.house.gov\/media\/press-releases\/foster-highlights-president-obama-s-contribution-to-rapid-vaccine-development",
-        "urlPingSuffix": "DevEx,5299.1", "displayUrl": "https:\/\/foster.house.gov\/media\/press-releases\/foster-highlights-president-obama-s...",
-        "snippet": "Washington, DC – Today, at a hearing of the House Select Subcommittee
-        on the Coronavirus Crisis, Congressman Bill Foster (D-IL) highlighted the
-        work done and investments made during the Obama administration that are
-        directly responsible for the successes of current vaccines in development.
-        Specifically, Foster pointed to President Obama’s decision to invest in
-        mRNA vaccine research, which ...", "dateLastCrawled": "2021-06-07T19:27:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Statement
-        of President Barack Obama on Rescinding the ...", "url": "https:\/\/obamawhitehouse.archives.gov\/the-press-office\/statement-president-barack-obama-rescinding-mexico-city-policy",
-        "urlPingSuffix": "DevEx,5313.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/the-press-office\/statement-president-barack-obama...",
-        "snippet": "Statement of President Barack Obama on Rescinding the Mexico
-        City Policy \"It is clear that the provisions of the Mexico City Policy
-        are unnecessarily broad and unwarranted under current law, and for the past
-        eight years, they have undermined efforts to promote safe and effective voluntary
-        family planning in developing countries.", "dateLastCrawled": "2021-06-03T05:15:00.0000000Z"}]},
-        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
-        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
-        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        for all Americans.", "dateLastCrawled": "2021-08-24T09:21:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "President Obama
+        Narrates \"The People’s House,\" a Virtual ...", "url": "https:\/\/obamawhitehouse.archives.gov\/blog\/2017\/01\/13\/president-obama-narrates-peoples-house-virtual-reality-tour-white-house",
+        "urlPingSuffix": "DevEx,5211.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2017\/01\/13\/president-obama-narrates-peoples...",
+        "snippet": "President Obama Narrates \"The People’s House,\" a Virtual Reality
+        Tour of the White House. January 13, 2017 at 10:00 AM ET by Kori Schulman.
+        Twitter Facebook Email . Summary: The President and First Lady are using virtual
+        reality to bring the history of the White House directly to you.", "dateLastCrawled":
+        "2021-08-17T03:15:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
+        "name": "President Obama Welcomes Q to Washington | whitehouse.gov", "url":
+        "https:\/\/obamawhitehouse.archives.gov\/blog\/2012\/04\/17\/president-obama-welcomes-q-washington",
+        "urlPingSuffix": "DevEx,5225.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2012\/04\/17\/president-obama-welcomes-q-washington",
+        "snippet": "President Obama welcoms evangelical leaders from churches, the
+        non-profit sector, business, fashion and other sectors who gathered in Washington
+        for Q. Last week, evangelical leaders from churches, the non-profit sector,
+        business, fashion and other sectors gathered in Washington for Q.", "dateLastCrawled":
+        "2021-08-22T14:07:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        "name": "2015 Executive Orders Signed by Barack Obama | National ...", "url":
+        "https:\/\/www.archives.gov\/federal-register\/executive-orders\/2015.html",
+        "urlPingSuffix": "DevEx,5239.1", "displayUrl": "https:\/\/www.archives.gov\/federal-register\/executive-orders\/2015.html",
+        "snippet": "2015 Executive Orders Signed by Barack Obama. Executive Order
+        13687. Imposing Additional Sanctions With Respect To North Korea. Signed:
+        January 2, 2015. Federal Register page and date: 80 FR 819, January 6, 2015.
+        See: EO 13466, June 26, 2008; EO 13551, August 30, 2010; EO 13570, April 18,
+        2011. Executive Order 13688.", "dateLastCrawled": "2021-08-11T04:29:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "A Historic
+        Commitment to Protecting the Environment and ...", "url": "https:\/\/obamawhitehouse.archives.gov\/the-record\/climate",
+        "urlPingSuffix": "DevEx,5252.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/the-record\/climate",
+        "snippet": "President Obama believes that no challenge poses a greater threat
+        to our children, our planet, and future generations than climate change —
+        and that no other country on Earth is better equipped to lead the world towards
+        a solution. That’s why under President Obama’s leadership, the United States
+        has done more to combat climate change than ...", "dateLastCrawled": "2021-08-28T02:44:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Net Neutrality:
+        A Free and Open Internet | The White House", "url": "https:\/\/obamawhitehouse.archives.gov\/net-neutrality",
+        "urlPingSuffix": "DevEx,5266.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/net-neutrality",
+        "snippet": "President Obama calls on the FCC to take up the strongest possible
+        rules to protect net neutrality, the principle that says Internet service
+        providers (ISPs) should treat all internet traffic equally. Feb. 26 2015.
+        The FCC votes in favor of strong net neutrality rules to keep the internet
+        open and free.", "dateLastCrawled": "2021-08-24T22:54:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "From the Archives:
+        President Obama''s Trip to Ghana ...", "url": "https:\/\/obamawhitehouse.archives.gov\/blog\/2012\/06\/14\/archives-president-obamas-trip-ghana",
+        "urlPingSuffix": "DevEx,5280.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2012\/06\/14\/archives-president-obamas-trip-ghana",
+        "snippet": "In the summer of 2009, President Obama traveled to Ghana, the
+        final stop of one of his first international trips as President, and delivered
+        remarks to the Ghanaian parliament in Accra.In his speech, he discussed our
+        nation’s relationship with Africa, and the partnership needed to ensure transformational
+        change across the continent.", "dateLastCrawled": "2021-08-24T10:19:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Iraq
+        Timeline | The White House", "url": "https:\/\/obamawhitehouse.archives.gov\/iraq",
+        "urlPingSuffix": "DevEx,5293.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/iraq",
+        "snippet": "First Lady Michelle Obama and Dr. Jill Biden launched Joining
+        Forces to support and honor America’s service members and their families.
+        August 31, 2010 President Obama announces the end of the combat mission
+        in Iraq and discusses the future of the U.S. commitment to helping build
+        a stable Iraq in an address to the nation from the Oval Office.", "dateLastCrawled":
+        "2021-08-28T22:37:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
+        "name": "Speeches and Remarks | whitehouse.gov", "url": "https:\/\/obamawhitehouse.archives.gov\/briefing-room\/speeches-and-remarks",
+        "urlPingSuffix": "DevEx,5306.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/briefing-room\/speeches-and-remarks",
+        "snippet": "President Barack Obama; Vice President Joe Biden; First Lady
+        Michelle Obama; Dr. Jill Biden; The Cabinet; Executive Office of the President;
+        Senior White House Leadership; Other Advisory Boards; Executive Offices. Office
+        of Management and Budget; Office of Science and Technology Policy; Council
+        of Economic Advisers; Council on Environmental Quality", "dateLastCrawled":
+        "2021-08-21T23:26:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
+        "name": "Advancing Social Progress and Equality | whitehouse.gov", "url":
+        "https:\/\/obamawhitehouse.archives.gov\/the-record\/social-progress", "urlPingSuffix":
+        "DevEx,5319.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/the-record\/social-progress",
+        "snippet": "The Obama Administration released a report setting out more
+        than 50 Guiding Principles to help all correctional systems reduce their use
+        of solitary confinement, which cover a range of important reform areas including
+        the use of the restrictive housing as a form of punishment, the appropriate
+        conditions of confinement in restrictive housing ...", "dateLastCrawled":
+        "2021-08-29T10:46:00.0000000Z"}]}, "rankingResponse": {"mainline": {"items":
+        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
         {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
@@ -250,5 +258,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version:
-  recorded_at: Fri, 11 Jun 2021 12:59:12 GMT
+  recorded_at: Tue, 31 Aug 2021 20:33:15 GMT
 recorded_with: VCR 4.0.0
