@@ -25,6 +25,9 @@ Metrics/BlockLength:
     # Exclude ActiveScaffold-based controllers
     - app/controllers/admin/**/*
 
+RSpec/FactoryBot/CreateList:
+  Enabled: false
+
 Style/ClassAndModuleChildren:
   Enabled: false
 
