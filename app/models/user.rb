@@ -1,6 +1,18 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  # Shamelessly ganked from the authlogic gem. Ruby's
+  # Uri::MailTo::EMAIL_REGEXP is not picky enough, so we use this
+  # instead. See SRCH-2251 for discussion.
+  EMAIL = /
+    \A
+    [A-Z0-9_.&%+\-']+   # mailbox
+    @
+    (?:[A-Z0-9\-]+\.)+  # subdomains
+    (?:[A-Z]{2,25})     # TLD
+    \z
+  /ix.freeze
+
   APPROVAL_STATUSES = %w[pending_approval approved not_approved].freeze
 
   validates :email, presence: true
@@ -11,7 +23,7 @@ class User < ApplicationRecord
   validates :email,
             presence: true,
             uniqueness: { case_sensitive: false },
-            format: { with: URI::MailTo::EMAIL_REGEXP, message: 'must be an email address' }
+            format: { with: EMAIL, message: 'must be an email address' }
   has_many :memberships, dependent: :destroy
   has_many :affiliates, lambda {
                           order('affiliates.display_name, affiliates.ID ASC')
