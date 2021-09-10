@@ -26,29 +26,24 @@ http_interactions:
     headers:
       Content-Type:
       - application/json
-      Content-Length:
-      - '236'
       Etag:
-      - W/"c02c51325c6d72636039bcb0b55d1767"
+      - W/"b1b63dbb3fb63af51c7c90d2aed61ccf"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - dca96dea-6053-48d7-b368-85e1430388c3
+      - 3b0000e3-650a-4bb0-a840-0f4f98d66e87
       X-Runtime:
-      - '0.014195'
+      - '0.017908'
       Vary:
       - Origin
-      Connection:
-      - keep-alive
-      Server:
-      - thin
+      Transfer-Encoding:
+      - chunked
     body:
       encoding: UTF-8
-      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2018-02-22T07:11:35.618Z","updated_at":"2018-02-22T07:11:35.623Z","token":"token
-        1","id":"blog_posts","document_total":2,"last_document_sent":"2018-02-22 07:11:36
-        UTC"}}'
-    http_version: 
-  recorded_at: Thu, 22 Feb 2018 07:11:53 GMT
+      string: '{"status":200,"developer_message":"OK","collection":{"id":"blog_posts","token":"token
+        1","created_at":"2021-09-07T16:53:15.745Z","updated_at":"2021-09-07T16:53:15.745Z","document_total":4,"last_document_sent":"2021-09-07
+        16:53:16 UTC"}}'
+  recorded_at: Tue, 07 Sep 2021 16:53:25 GMT
 - request:
     method: get
     uri: http://localhost:8081/api/v1/collections/blog_posts
@@ -75,29 +70,24 @@ http_interactions:
     headers:
       Content-Type:
       - application/json
-      Content-Length:
-      - '236'
       Etag:
-      - W/"c02c51325c6d72636039bcb0b55d1767"
+      - W/"b1b63dbb3fb63af51c7c90d2aed61ccf"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 5013d337-bbb9-4e95-bf55-18e7b7384424
+      - 86c8b461-6d43-44a7-8629-b25d3aebfacc
       X-Runtime:
-      - '0.009722'
+      - '0.013960'
       Vary:
       - Origin
-      Connection:
-      - keep-alive
-      Server:
-      - thin
+      Transfer-Encoding:
+      - chunked
     body:
       encoding: UTF-8
-      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2018-02-22T07:11:35.618Z","updated_at":"2018-02-22T07:11:35.623Z","token":"token
-        1","id":"blog_posts","document_total":2,"last_document_sent":"2018-02-22 07:11:36
-        UTC"}}'
-    http_version: 
-  recorded_at: Thu, 22 Feb 2018 07:11:53 GMT
+      string: '{"status":200,"developer_message":"OK","collection":{"id":"blog_posts","token":"token
+        1","created_at":"2021-09-07T16:53:15.745Z","updated_at":"2021-09-07T16:53:15.745Z","document_total":4,"last_document_sent":"2021-09-07
+        16:53:16 UTC"}}'
+  recorded_at: Tue, 07 Sep 2021 16:53:25 GMT
 - request:
     method: get
     uri: http://localhost:8081/api/v1/collections/blog_posts
@@ -124,29 +114,24 @@ http_interactions:
     headers:
       Content-Type:
       - application/json
-      Content-Length:
-      - '236'
       Etag:
-      - W/"c02c51325c6d72636039bcb0b55d1767"
+      - W/"b1b63dbb3fb63af51c7c90d2aed61ccf"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - e98f4d43-474e-4330-b7a4-c8effb8a98d5
+      - afc54124-b84b-4929-a021-e1b33ae36ddc
       X-Runtime:
-      - '0.010689'
+      - '0.013735'
       Vary:
       - Origin
-      Connection:
-      - keep-alive
-      Server:
-      - thin
+      Transfer-Encoding:
+      - chunked
     body:
       encoding: UTF-8
-      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2018-02-22T07:11:35.618Z","updated_at":"2018-02-22T07:11:35.623Z","token":"token
-        1","id":"blog_posts","document_total":2,"last_document_sent":"2018-02-22 07:11:36
-        UTC"}}'
-    http_version: 
-  recorded_at: Thu, 22 Feb 2018 07:11:53 GMT
+      string: '{"status":200,"developer_message":"OK","collection":{"id":"blog_posts","token":"token
+        1","created_at":"2021-09-07T16:53:15.745Z","updated_at":"2021-09-07T16:53:15.745Z","document_total":4,"last_document_sent":"2021-09-07
+        16:53:16 UTC"}}'
+  recorded_at: Tue, 07 Sep 2021 16:53:25 GMT
 - request:
     method: get
     uri: http://localhost:8081/api/v1/collections/blog_posts
@@ -173,29 +158,24 @@ http_interactions:
     headers:
       Content-Type:
       - application/json
-      Content-Length:
-      - '236'
       Etag:
-      - W/"c02c51325c6d72636039bcb0b55d1767"
+      - W/"b1b63dbb3fb63af51c7c90d2aed61ccf"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - f1756977-7014-485c-9708-1f7c1e240009
+      - af1346b6-38cf-4f12-974e-87ae6ac545f6
       X-Runtime:
-      - '0.009473'
+      - '0.013244'
       Vary:
       - Origin
-      Connection:
-      - keep-alive
-      Server:
-      - thin
+      Transfer-Encoding:
+      - chunked
     body:
       encoding: UTF-8
-      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2018-02-22T07:11:35.618Z","updated_at":"2018-02-22T07:11:35.623Z","token":"token
-        1","id":"blog_posts","document_total":2,"last_document_sent":"2018-02-22 07:11:36
-        UTC"}}'
-    http_version: 
-  recorded_at: Thu, 22 Feb 2018 07:11:53 GMT
+      string: '{"status":200,"developer_message":"OK","collection":{"id":"blog_posts","token":"token
+        1","created_at":"2021-09-07T16:53:15.745Z","updated_at":"2021-09-07T16:53:15.745Z","document_total":4,"last_document_sent":"2021-09-07
+        16:53:16 UTC"}}'
+  recorded_at: Tue, 07 Sep 2021 16:53:25 GMT
 - request:
     method: get
     uri: http://localhost:8081/api/v1/collections/blog_posts
@@ -222,29 +202,24 @@ http_interactions:
     headers:
       Content-Type:
       - application/json
-      Content-Length:
-      - '236'
       Etag:
-      - W/"c02c51325c6d72636039bcb0b55d1767"
+      - W/"b1b63dbb3fb63af51c7c90d2aed61ccf"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - e6ab7f38-8fdb-483a-9a1d-28e6ff49051d
+      - 7294b55f-8621-4806-8dc2-1f6b215b90c4
       X-Runtime:
-      - '0.012797'
+      - '0.013826'
       Vary:
       - Origin
-      Connection:
-      - keep-alive
-      Server:
-      - thin
+      Transfer-Encoding:
+      - chunked
     body:
       encoding: UTF-8
-      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2018-02-22T07:11:35.618Z","updated_at":"2018-02-22T07:11:35.623Z","token":"token
-        1","id":"blog_posts","document_total":2,"last_document_sent":"2018-02-22 07:11:36
-        UTC"}}'
-    http_version: 
-  recorded_at: Thu, 22 Feb 2018 07:11:53 GMT
+      string: '{"status":200,"developer_message":"OK","collection":{"id":"blog_posts","token":"token
+        1","created_at":"2021-09-07T16:53:15.745Z","updated_at":"2021-09-07T16:53:15.745Z","document_total":4,"last_document_sent":"2021-09-07
+        16:53:16 UTC"}}'
+  recorded_at: Tue, 07 Sep 2021 16:53:26 GMT
 - request:
     method: get
     uri: http://localhost:8081/api/v1/collections/blog_posts
@@ -271,29 +246,24 @@ http_interactions:
     headers:
       Content-Type:
       - application/json
-      Content-Length:
-      - '236'
       Etag:
-      - W/"c02c51325c6d72636039bcb0b55d1767"
+      - W/"b1b63dbb3fb63af51c7c90d2aed61ccf"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - e5b44807-2167-4a93-8e2e-7fd2b1e3c713
+      - a902737a-32d0-4f6d-8b8c-fb0e29f1e554
       X-Runtime:
-      - '0.009634'
+      - '0.012748'
       Vary:
       - Origin
-      Connection:
-      - keep-alive
-      Server:
-      - thin
+      Transfer-Encoding:
+      - chunked
     body:
       encoding: UTF-8
-      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2018-02-22T07:11:35.618Z","updated_at":"2018-02-22T07:11:35.623Z","token":"token
-        1","id":"blog_posts","document_total":2,"last_document_sent":"2018-02-22 07:11:36
-        UTC"}}'
-    http_version: 
-  recorded_at: Thu, 22 Feb 2018 07:11:53 GMT
+      string: '{"status":200,"developer_message":"OK","collection":{"id":"blog_posts","token":"token
+        1","created_at":"2021-09-07T16:53:15.745Z","updated_at":"2021-09-07T16:53:15.745Z","document_total":4,"last_document_sent":"2021-09-07
+        16:53:16 UTC"}}'
+  recorded_at: Tue, 07 Sep 2021 16:53:26 GMT
 - request:
     method: get
     uri: http://localhost:8081/api/v1/collections/blog_posts
@@ -320,29 +290,24 @@ http_interactions:
     headers:
       Content-Type:
       - application/json
-      Content-Length:
-      - '236'
       Etag:
-      - W/"c02c51325c6d72636039bcb0b55d1767"
+      - W/"b1b63dbb3fb63af51c7c90d2aed61ccf"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 3d30e2ae-6797-4a78-b879-62b05cb80107
+      - dcde8d0a-1605-4d8b-97b3-d096d2a95948
       X-Runtime:
-      - '0.009323'
+      - '0.012397'
       Vary:
       - Origin
-      Connection:
-      - keep-alive
-      Server:
-      - thin
+      Transfer-Encoding:
+      - chunked
     body:
       encoding: UTF-8
-      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2018-02-22T07:11:35.618Z","updated_at":"2018-02-22T07:11:35.623Z","token":"token
-        1","id":"blog_posts","document_total":2,"last_document_sent":"2018-02-22 07:11:36
-        UTC"}}'
-    http_version: 
-  recorded_at: Thu, 22 Feb 2018 07:11:53 GMT
+      string: '{"status":200,"developer_message":"OK","collection":{"id":"blog_posts","token":"token
+        1","created_at":"2021-09-07T16:53:15.745Z","updated_at":"2021-09-07T16:53:15.745Z","document_total":4,"last_document_sent":"2021-09-07
+        16:53:16 UTC"}}'
+  recorded_at: Tue, 07 Sep 2021 16:53:26 GMT
 - request:
     method: get
     uri: http://localhost:8081/api/v1/collections/blog_posts
@@ -369,27 +334,22 @@ http_interactions:
     headers:
       Content-Type:
       - application/json
-      Content-Length:
-      - '236'
       Etag:
-      - W/"c02c51325c6d72636039bcb0b55d1767"
+      - W/"b1b63dbb3fb63af51c7c90d2aed61ccf"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 8ec58525-1ac9-41d3-b8b9-76236ba3f79f
+      - 6ecd8467-1e4b-437b-9a0b-7d2717b037f7
       X-Runtime:
-      - '0.009541'
+      - '0.012055'
       Vary:
       - Origin
-      Connection:
-      - keep-alive
-      Server:
-      - thin
+      Transfer-Encoding:
+      - chunked
     body:
       encoding: UTF-8
-      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2018-02-22T07:11:35.618Z","updated_at":"2018-02-22T07:11:35.623Z","token":"token
-        1","id":"blog_posts","document_total":2,"last_document_sent":"2018-02-22 07:11:36
-        UTC"}}'
-    http_version: 
-  recorded_at: Thu, 22 Feb 2018 07:11:53 GMT
-recorded_with: VCR 4.0.0
+      string: '{"status":200,"developer_message":"OK","collection":{"id":"blog_posts","token":"token
+        1","created_at":"2021-09-07T16:53:15.745Z","updated_at":"2021-09-07T16:53:15.745Z","document_total":4,"last_document_sent":"2021-09-07
+        16:53:16 UTC"}}'
+  recorded_at: Tue, 07 Sep 2021 16:53:26 GMT
+recorded_with: VCR 6.0.0

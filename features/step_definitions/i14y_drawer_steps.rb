@@ -1,6 +1,6 @@
  # NOTE: When recording new or re-recording VCR cassettes for i14y api calls,
  # your local i14y server will need to be running in test mode.
- # See https://github.com/GSA/usasearch/blob/master/README_I14Y.markdown
+ # See https://github.com/GSA/search-gov/blob/master/README_I14Y.markdown
 
 Given /^we don't want observers to run during these cucumber scenarios$/ do
   ActiveRecord::Base.observers.disable :all

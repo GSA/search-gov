@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe SearchgovDomainPreparerJob do
-  let(:searchgov_domain) { SearchgovDomain.create(domain: 'agency.gov') }
+  let(:searchgov_domain) { searchgov_domains(:basic_domain) }
   let(:args) do
     { searchgov_domain: searchgov_domain }
   end

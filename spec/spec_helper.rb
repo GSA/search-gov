@@ -94,6 +94,7 @@ RSpec.configure do |config|
 
   config.after(:each) do
     ApplicationJob.queue_adapter.enqueued_jobs.clear
+    ActiveJob::Uniqueness.unlock!
   end
 
   config.after(:suite) do

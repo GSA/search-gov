@@ -2,13 +2,15 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=<GOOGLE_SEARCH_CX>&key=<GOOGLE_API_KEY>&lr=lang_en&q=pdf%20site:nps.gov&quotaUser=USASearch&safe=medium
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=pdf%20(site:nps.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
       - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -19,50 +21,213 @@ http_interactions:
       - '30'
   response:
     status:
-      code: 400
-      message: Bad Request
+      code: 200
+      message: OK
     headers:
-      Vary:
-      - Origin
-      - Referer
-      - X-Origin
-      Content-Type:
-      - application/json; charset=UTF-8
-      Date:
-      - Wed, 09 Jun 2021 17:56:27 GMT
-      Server:
-      - ESF
       Cache-Control:
-      - private
-      X-Xss-Protection:
-      - '0'
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Content-Type-Options:
-      - nosniff
-      Alt-Svc:
-      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443";
-        ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443";
-        ma=2592000; v="46,43"
+      - private, max-age=0
       Transfer-Encoding:
       - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 31 Aug 2021 20:31:31 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - 0AE3598CF81443C09856CCFD616B9DEA
+      Bingapis-Sessionid:
+      - 122A1B80A9DC4D6FA5A4A5B32110A0FB
+      X-Msedge-Clientid:
+      - 073600BB48A96C4B03AB101F49BB6D42
+      X-Msapi-Userstate:
+      - e84e
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=315,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: 0AE3598CF81443C09856CCFD616B9DEA Ref B: BLUEDGE1613 Ref C: 2021-08-31T20:32:31Z'
+      Apim-Request-Id:
+      - 459fb47a-d5bd-4f18-9a7d-0825f44ca8ff
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Tue, 31 Aug 2021 20:32:31 GMT
     body:
       encoding: UTF-8
-      string: |
-        {
-          "error": {
-            "code": 400,
-            "message": "API key not valid. Please pass a valid API key.",
-            "errors": [
-              {
-                "message": "API key not valid. Please pass a valid API key.",
-                "domain": "global",
-                "reason": "badRequest"
-              }
-            ],
-            "status": "INVALID_ARGUMENT"
-          }
-        }
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "pdf
+        (site:nps.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=pdf+(site%3anps.gov)",
+        "totalEstimatedMatches": 985000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Grand Canyon National Park 2020 Park Profile", "url": "https:\/\/www.nps.gov\/grca\/learn\/management\/upload\/2020-Park-Profile-508.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/grca\/learn\/management\/upload\/2020-Park-Profile-508.pdf",
+        "snippet": "2and Canyon National Park Gr Park Profile Geology Grand Canyon
+        National Park preserves an iconic . geologic landscape and resources ranging
+        from 1,840 to . 270 million years old, including diverse paleontological",
+        "dateLastCrawled": "2021-08-30T18:30:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Chapter 3: Cataloging", "url": "https:\/\/www.nps.gov\/museum\/publications\/MHII\/mh2ch3.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/museum\/publications\/MHII\/mh2ch3.pdf",
+        "snippet": "NPS Museum Handbook, Part II (2000) 3:1 CHAPTER 3: CATALOGING
+        A. Overview 1. What is cataloging? For National Park Service (NPS) museum
+        collections, cataloging is the process of recording detailed information about
+        individual items or groups of", "dateLastCrawled": "2021-02-19T18:13:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Fire Monitoring Handbook", "url": "https:\/\/www.nps.gov\/orgs\/1965\/upload\/fire-effects-monitoring-handbook.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/orgs\/1965\/upload\/fire-effects-monitoring-handbook.pdf",
+        "snippet": "3. Abstract Fire is a powerful and enduring force that has had,
+        and The levels are cumulative, requiring users to include all . will continue
+        to have, a profound influence on levels below the highest specified.", "dateLastCrawled":
+        "2021-07-14T02:12:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3", "name":
+        "GRAND TETON NATIONAL PARK", "url": "https:\/\/www.nps.gov\/carto\/hfc\/carto\/media\/GRTEmap2.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/carto\/hfc\/carto\/media\/GRTEmap2.pdf",
+        "snippet": "33 33 191 287 89 26 287 26 89 22 191 22 26 89 191 North 0 1 0
+        1 5 Miles 5 Kilometers YELLOWSTONE NATIONAL PARK JOHN D. ROCKEFELLER, JR.",
+        "dateLastCrawled": "2021-08-13T19:41:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Hiking Into Grand Canyon - NPS", "url": "https:\/\/www.nps.gov\/grca\/planyourvisit\/upload\/intro-bc-hike.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/grca\/planyourvisit\/upload\/intro-bc-hike.pdf",
+        "snippet": "Hiking Into Grand Canyon Plan Ahead Whether a day or overnight
+        trip, hiking into Grand Canyon on the Bright Angel, North Kaibab, or South
+        Kaibab trails gives an", "dateLastCrawled": "2021-06-02T14:14:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "JOSHUA TREE NATIONAL PARK - nps.gov", "url": "https:\/\/www.nps.gov\/carto\/hfc\/carto\/media\/JOTRmap1.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/carto\/hfc\/carto\/media\/JOTRmap1.pdf",
+        "snippet": "10 10 177 111 111 111 247 62 62 86 62 62 Medical facility Drinking
+        water 0 0 5 10 Miles 5 10 Kilometers North Joshua Tree Visitor Center Oasis
+        Visitor Center ...", "dateLastCrawled": "2021-05-15T17:17:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Transferring Maps to your Mobile Device (Avenza PDF Maps)", "url":
+        "https:\/\/www.nps.gov\/samo\/learn\/management\/upload\/TransferringMapsToPDFMaps_v2.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/samo\/learn\/management\/upload\/TransferringMapsToPDFMaps_v2.pdf",
+        "snippet": "7. Files will show up in PDF Maps Document window to right.
+        Click Add File… and navigate to location of your PDF files. 8. Select file(s)
+        to add and click Open. The files should show up in the PDF Maps Document
+        window and they will be available to the mobile device. C. Download maps to
+        mobile device: 1. Open PDF Maps. 2.", "dateLastCrawled": "2021-07-11T16:50:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "RMS Titanic La Belle", "url": "https:\/\/www.nps.gov\/archeology\/\/\/\/\/\/\/pubs\/egrams\/0910.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/archeology\/\/\/\/\/\/\/pubs\/egrams\/0910.pdf",
+        "snippet": "resources. This information is contained in a downloadable PDF
+        file. NPS Archeology Program Creates New Webpage about America''s Best Idea
+        Ken Burns''s documentary, The National Parks: America''s Best Idea, celebrates
+        the national parks as an American invention that applies democratic principles
+        to the land. America''s cultural parks are an important", "dateLastCrawled":
+        "2021-08-28T07:36:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8", "name":
+        "The Emancipation Proclamation January 1, 1863", "url": "https:\/\/www.nps.gov\/museum\/tmc\/Antietam\/Lesson3\/The%20Emancipation%20Proclamation%20text%20copy.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/museum\/tmc\/Antietam\/Lesson3\/The
+        Emancipation Proclamation text copy...", "snippet": "The Emancipation Proclamation
+        January 1, 1863. A Transcription. By the President of the United States of
+        America: A Proclamation. Whereas, on the twenty -second day of September,
+        in the year of our Lord one thousand eight hundred", "dateLastCrawled": "2021-08-13T10:20:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Grand Canyon National Park Service U.S. Department of the ...",
+        "url": "https:\/\/www.nps.gov\/grca\/planyourvisit\/upload\/RimTrailMap.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/grca\/planyourvisit\/upload\/RimTrailMap.pdf",
+        "snippet": "Day Hiking the Rim Trail The Rim Trail stretches from the
+        South Kaibab Trailhead west to Hermits Rest, a distance of approximately 13
+        miles (21 km).", "dateLastCrawled": "2021-07-29T15:32:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "O LYMP IC NAT PARK - NPS", "url": "https:\/\/www.nps.gov\/olym\/planyourvisit\/upload\/olym_map.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/olym\/planyourvisit\/upload\/olym_map.pdf",
+        "snippet": "Ozette Island Garden Island Tivoli Island Spike ORock Father And
+        Son James eIsland Split Rock Kalaloch Rocks Destruction Island Abbey Island
+        Alexander Island", "dateLastCrawled": "2021-08-10T12:44:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Archeology Program U.S. Department of the Interior ...", "url": "https:\/\/www.nps.gov\/archeology\/\/\/\/\/\/\/pubs\/egrams\/1610.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/archeology\/\/\/\/\/\/\/pubs\/egrams\/1610.pdf",
+        "snippet": "Archeology Program National Park Service U.S. Department of the
+        Interior October 2016 Archeology E -Gram . NPS NEWS . Pat Walsh Named Intermountain
+        ARD for Resource Stewardship & Science", "dateLastCrawled": "2021-08-28T08:30:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "LGBTQ America: A Theme Study of Lesbian, Gay, Bisexual ...", "url":
+        "https:\/\/www.nps.gov\/subjects\/lgbtqheritage\/upload\/lgbtqtheme-preservation.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/subjects\/lgbtqheritage\/upload\/lgbtqtheme-preservation.pdf",
+        "snippet": "The LGBTQ Theme Study released by the National Park Service
+        in October 2016 is the fruit of three decades of effort by activists and their
+        allies to", "dateLastCrawled": "2021-06-30T11:38:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Maps & Brochures - Mojave National Preserve (U.S. National ...",
+        "url": "https:\/\/www.nps.gov\/moja\/planyourvisit\/maps.htm", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.nps.gov\/moja\/planyourvisit\/maps.htm",
+        "snippet": "National Park Service. Use this Map to Plan Your Visit. Map
+        of Mojave National Preserve from official National Park Service brochure.
+        (PDF, 4.09 MB) Map of Mojave National Preserve highlighting principal roads
+        and facilities (PDF, 161 KB) Map of Mojave National Preserve highlighting
+        designated wilderness areas. (PDF, 2.63 MB)", "dateLastCrawled": "2021-05-17T07:41:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Fu rn ac eCk V is to A - nps.gov", "url": "https:\/\/www.nps.gov\/deva\/planyourvisit\/upload\/DEVAmap1a.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/deva\/planyourvisit\/upload\/DEVAmap1a.pdf",
+        "snippet": "33mi 53km 10mi 16km 29mi 46km 23mi 37km 19mi 30km 12mi 19km 6mi
+        9km 11mi 17km 40mi 64km 27mi 43km 25mi 41km 3mi 5km 10mi 16km 13mi 21km 20mi
+        32km 4mi 6km 6mi 9km 24mi ...", "dateLastCrawled": "2021-05-17T16:34:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Glacier National Park Glacier National Park Map", "url": "https:\/\/www.nps.gov\/glac\/planyourvisit\/upload\/orientation-map-revised-7-16.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/glac\/planyourvisit\/upload\/orientation-map-revised-7-16.pdf",
+        "snippet": "WATERTO N LAKES NATI ONAL PARK NATIONAL GLACI ER PARK Unpaved
+        road Paved road Trail Continental Divide Riding stable 0 0 5 10 Miles 5 10
+        Kilometers North Leg end", "dateLastCrawled": "2021-08-02T09:55:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Muir Woods and Vicinity Trail Map", "url": "https:\/\/www.nps.gov\/goga\/planyourvisit\/upload\/map-muwo-trail-2019-small.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/goga\/planyourvisit\/upload\/map-muwo-trail-2019-small.pdf",
+        "snippet": "Muir Woods & Vicinity Trail Map. National Park Service U.S.
+        Department of the Interior. Ri d ge d National M a t t D a v i s T r ail.
+        Paciﬁc Ocean. North", "dateLastCrawled": "2021-08-17T19:22:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Brochures - Pictured Rocks National Lakeshore (U.S ...", "url": "https:\/\/www.nps.gov\/piro\/planyourvisit\/brochures.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/piro\/planyourvisit\/brochures.htm",
+        "snippet": "Brochures. Map of Pictured Rocks National Lakeshore - download
+        from links at left. Many of the park''s brochures are available here as .pdf
+        files. You may wish to print\/save and review them before your visit to Pictured
+        Rocks National Lakeshore. Most of these brochures -- often called site bulletins
+        -- are also available at visitor centers.", "dateLastCrawled": "2021-06-24T01:27:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Bakcountry Camps & Wilderness Zones", "url": "https:\/\/www.nps.gov\/mora\/planyourvisit\/upload\/2004-BC-Camps-and-Zones_access_Jan2018.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/mora\/planyourvisit\/upload\/2004-BC-Camps-and-Zones_access_Jan2018.pdf",
+        "snippet": "ACCH 36 People ACTH 12 People BCSR i2 g0 BCSP i4 g1 BCRC i2 g1
+        BCFC i3 g1 BCTC i4 g1 BCGL i5 g1 BCSW i8 g2 BCDD i7 g1 BCPC i2 g0 BCTL i2
+        g1 BCMC i4 g1 BCKP i4 g0 BCNP ...", "dateLastCrawled": "2020-10-22T23:28:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "EBEY’S LANDING NATIONAL HISTORICAL RESERVE Welcome to Ebey ...",
+        "url": "https:\/\/www.nps.gov\/ebla\/planyourvisit\/upload\/050514-Trails-Map.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/ebla\/planyourvisit\/upload\/050514-Trails-Map.pdf",
+        "snippet": "Kettles Trail l Gate Gate South Gate Middle Gate North Gate Roundabout
+        e a e o e s Muellers Well Hugh’s Delight t e e e e l l p l p n n e s s s n
+        l l l l n n n s s s e e k k k w k n w l p l K e t t l", "dateLastCrawled":
+        "2021-01-16T01:03:00.0000000Z", "language": "en", "isNavigational": false}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
     http_version:
-  recorded_at: Wed, 09 Jun 2021 17:56:27 GMT
+  recorded_at: Tue, 31 Aug 2021 20:32:32 GMT
 recorded_with: VCR 4.0.0

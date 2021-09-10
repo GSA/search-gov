@@ -2,144 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=lkssldfkjsldfkjsldkfjsldkjflsdkjflskdjfwer%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Ocp-Apim-Subscription-Key:
-      - "<BING_V6_APP_ID>"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Content-Length:
-      - '242'
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Thu, 22 Feb 2018 07:17:34 GMT
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      Set-Cookie:
-      - MUID=2AE15E8C4E8F6D45275455124F6A6C93; path=/; expires=Tue, 19-Mar-2019 07:18:34
-        GMT; domain=bingapis.com
-      - MUIDB=2AE15E8C4E8F6D45275455124F6A6C93; path=/; httponly; expires=Tue, 19-Mar-2019
-        07:18:34 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:18:34 GMT;
-        path=/
-      - SRCHUID=V=2&GUID=CD97817457FF4633A49C51C0F5CDB1BD&dmnchg=1; domain=.bingapis.com;
-        expires=Sat, 22-Feb-2020 07:18:34 GMT; path=/
-      - SRCHUSR=DOB=20180222; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:18:34
-        GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=314CF1AE1420635D3C5CFA3015C562E0; path=/; httponly;
-        domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Tue, 19-Mar-2019 07:18:34 GMT; domain=bingapis.com
-      - _SS=SID=314CF1AE1420635D3C5CFA3015C562E0; domain=.bingapis.com; path=/
-      Bingapis-Traceid:
-      - 6DC2B3D714264FE89C3B6F2FAF2542C7
-      X-Msedge-Clientid:
-      - 2AE15E8C4E8F6D45275455124F6A6C93
-      X-Msapi-Userstate:
-      - '6235'
-      Bingapis-Market:
-      - en-US
-      X-Msedge-Ref:
-      - 'Ref A: 6DC2B3D714264FE89C3B6F2FAF2542C7 Ref B: SG2EDGE1118 Ref C: 2018-02-22T07:18:34Z'
-      Date:
-      - Thu, 22 Feb 2018 07:18:34 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=9CAC4A0056C240EFAFAF5207A2EA22FB&CID=2AE15E8C4E8F6D45275455124F6A6C93&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=9CAC4A0056C240EFAFAF5207A2EA22FB&CID=2AE15E8C4E8F6D45275455124F6A6C93&Type=Event.CPT&DATA=0"},
-        "rankingResponse": {}}'
-    http_version: 
-  recorded_at: Thu, 22 Feb 2018 07:18:34 GMT
-- request:
-    method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=lkssldfkjsldfkjsldkfjsldkjflsdkjflskdjfwer%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Content-Length:
-      - '241'
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Mon, 19 Nov 2018 22:41:03 GMT
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      Set-Cookie:
-      - MUID=04C5D6A163316BC53C8CDA0D62E66AD3; path=/; expires=Sat, 14-Dec-2019 22:42:03
-        GMT; domain=bingapis.com
-      - MUIDB=04C5D6A163316BC53C8CDA0D62E66AD3; path=/; httponly; expires=Sat, 14-Dec-2019
-        22:42:03 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 19-Nov-2020 22:42:03 GMT;
-        path=/
-      - SRCHUID=V=2&GUID=2FE9099D4EA342B8A879FA02697E2D46&dmnchg=1; domain=.bingapis.com;
-        expires=Thu, 19-Nov-2020 22:42:03 GMT; path=/
-      - SRCHUSR=DOB=20181119; domain=.bingapis.com; expires=Thu, 19-Nov-2020 22:42:03
-        GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=38F09A5BEF6D6F893FC596F7EEBA6EB7; path=/; httponly;
-        domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sat, 14-Dec-2019 22:42:03 GMT; domain=bingapis.com
-      - _SS=SID=38F09A5BEF6D6F893FC596F7EEBA6EB7; domain=.bingapis.com; path=/
-      Bingapis-Traceid:
-      - A879797497BD422791C1859588D5571B
-      X-Msedge-Clientid:
-      - 04C5D6A163316BC53C8CDA0D62E66AD3
-      X-Msapi-Userstate:
-      - 6a52
-      Bingapis-Market:
-      - en-US
-      X-Msedge-Ref:
-      - 'Ref A: A879797497BD422791C1859588D5571B Ref B: CO1EDGE0319 Ref C: 2018-11-19T22:42:03Z'
-      Date:
-      - Mon, 19 Nov 2018 22:42:03 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=02502C9DB5C3450B823C5E4E88C78152&CID=04C5D6A163316BC53C8CDA0D62E66AD3&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=02502C9DB5C3450B823C5E4E88C78152&CID=04C5D6A163316BC53C8CDA0D62E66AD3&Type=Event.CPT&DATA=0"},
-        "rankingResponse": {}}'
-    http_version: 
-  recorded_at: Mon, 19 Nov 2018 22:42:04 GMT
-- request:
-    method: get
     uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=lkssldfkjsldfkjsldkfjsldkjflsdkjflskdjfwer%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
     body:
       encoding: US-ASCII
@@ -169,37 +31,42 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Mon, 19 Nov 2018 22:42:16 GMT
+      - Tue, 07 Sep 2021 16:17:12 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
       Bingapis-Traceid:
-      - 984AA1024B714A46B956BEB8CF2AF317
+      - 2EEC98F490EA4748AD40E40B2A4B6240
       Bingapis-Sessionid:
-      - 041A8507ECBA4010B915A2A48EDB3618
+      - 6C2031C591AE4151BD57F1F86520EE89
       X-Msedge-Clientid:
-      - 06167A8028526C482975762C291E6D94
+      - 18A3806E98AE64F41C3690C5991E65B9
       X-Msapi-Userstate:
-      - a506
+      - a6a1
       Bingapis-Market:
       - en-US
       X-Search-Responseinfo:
-      - InternalResponseTime=148,MSDatacenter=CO4
+      - InternalResponseTime=144,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
       X-Msedge-Ref:
-      - 'Ref A: 984AA1024B714A46B956BEB8CF2AF317 Ref B: BY3EDGE0219 Ref C: 2018-11-19T22:43:16Z'
+      - 'Ref A: 2EEC98F490EA4748AD40E40B2A4B6240 Ref B: BLUEDGE1409 Ref C: 2021-09-07T16:18:12Z'
       Apim-Request-Id:
-      - ff2b84c4-c09b-41b6-a0fb-17b6c8044c84
+      - 2d84907d-e95e-417e-8988-1007ee21262d
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
       - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Mon, 19 Nov 2018 22:43:16 GMT
+      - Tue, 07 Sep 2021 16:18:11 GMT
     body:
       encoding: UTF-8
       string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "lkssldfkjsldfkjsldkfjsldkjflsdkjflskdjfwer
         (site:gov OR site:mil)"}, "rankingResponse": {}}'
-    http_version: 
-  recorded_at: Mon, 19 Nov 2018 22:43:17 GMT
-recorded_with: VCR 4.0.0
+  recorded_at: Tue, 07 Sep 2021 16:18:12 GMT
+recorded_with: VCR 6.0.0

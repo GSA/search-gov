@@ -9,6 +9,8 @@ http_interactions:
     headers:
       User-Agent:
       - USASearch
+      Ocp-Apim-Subscription-Key:
+      - my_api_key
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -25,200 +27,200 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '4593'
+      - '4126'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Fri, 11 Jun 2021 12:58:08 GMT
+      - Tue, 31 Aug 2021 20:32:15 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=28C9408066C267A006DD50D3678D6676; domain=.bingapis.com; expires=Wed,
-        06-Jul-2022 12:59:08 GMT; path=/; secure; SameSite=None
-      - MUIDB=28C9408066C267A006DD50D3678D6676; expires=Wed, 06-Jul-2022 12:59:08
+      - MUID=27416DDA93C663903D017D7E923B6298; domain=.bingapis.com; expires=Sun,
+        25-Sep-2022 20:33:15 GMT; path=/; secure; SameSite=None
+      - MUIDB=27416DDA93C663903D017D7E923B6298; expires=Sun, 25-Sep-2022 20:33:15
         GMT; path=/; HttpOnly
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 11-Jun-2023 12:59:08 GMT;
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 31-Aug-2023 20:33:15 GMT;
         path=/
-      - SRCHHPGUSR=SRCHLANGV2=en; domain=.bingapis.com; expires=Sun, 11-Jun-2023 12:59:08
+      - SRCHHPGUSR=SRCHLANG=en; domain=.bingapis.com; expires=Thu, 31-Aug-2023 20:33:15
         GMT; path=/
-      - SRCHUID=V=2&GUID=7AC84DAD560E45B4ACE9CA6F9C4A75D5&dmnchg=1; domain=.bingapis.com;
-        expires=Sun, 11-Jun-2023 12:59:08 GMT; path=/
-      - SRCHUSR=DOB=20210611; domain=.bingapis.com; expires=Sun, 11-Jun-2023 12:59:08
+      - SRCHUID=V=2&GUID=1D6D2894FE4D4665ACB0483636E4D80B&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 31-Aug-2023 20:33:15 GMT; path=/
+      - SRCHUSR=DOB=20210831; domain=.bingapis.com; expires=Thu, 31-Aug-2023 20:33:15
         GMT; path=/
-      - _EDGE_S=F=1&SID=2FC9A09FDDF760A30DAFB0CCDCB861E9&mkt=en-us; domain=.bingapis.com;
+      - _EDGE_S=F=1&SID=24940D2A8A7B6C3E34981D8E8B866D53&mkt=en-us; domain=.bingapis.com;
         path=/; HttpOnly
-      - _EDGE_V=1; domain=.bingapis.com; expires=Wed, 06-Jul-2022 12:59:08 GMT; path=/;
+      - _EDGE_V=1; domain=.bingapis.com; expires=Sun, 25-Sep-2022 20:33:15 GMT; path=/;
         HttpOnly
-      - _SS=SID=2FC9A09FDDF760A30DAFB0CCDCB861E9; domain=.bingapis.com; path=/
+      - _SS=SID=24940D2A8A7B6C3E34981D8E8B866D53; domain=.bingapis.com; path=/
       X-Snr-Routing:
       - '1'
       Bingapis-Traceid:
-      - 72415B6180674290BB04DA8C1345FB97
+      - 21860D7E131A4E58B0CDD101E3E2C6A0
       X-Msedge-Clientid:
-      - 28C9408066C267A006DD50D3678D6676
+      - 27416DDA93C663903D017D7E923B6298
       X-Msapi-Userstate:
-      - 6cdd
+      - fbec
       Bingapis-Market:
       - en-US
       X-Cache:
       - CONFIG_NOCACHE
       X-Msedge-Ref:
-      - 'Ref A: 72415B6180674290BB04DA8C1345FB97 Ref B: BLUEDGE1920 Ref C: 2021-06-11T12:59:08Z'
+      - 'Ref A: 21860D7E131A4E58B0CDD101E3E2C6A0 Ref B: BLUEDGE0410 Ref C: 2021-08-31T20:33:15Z'
       Date:
-      - Fri, 11 Jun 2021 12:59:08 GMT
+      - Tue, 31 Aug 2021 20:33:14 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=A3D436F74AB142C3AD14AAF459730FAE&CID=28C9408066C267A006DD50D3678D6676&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=A3D436F74AB142C3AD14AAF459730FAE&CID=28C9408066C267A006DD50D3678D6676&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=64C74D27B5E641A1A35E03C17CDC88AA&CID=27416DDA93C663903D017D7E923B6298&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=64C74D27B5E641A1A35E03C17CDC88AA&CID=27416DDA93C663903D017D7E923B6298&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=weather+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5428.1", "totalEstimatedMatches": 90100000,
+        "webSearchUrlPingSuffix": "DevEx,5428.1", "totalEstimatedMatches": 20300000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "National Weather Service", "url": "https:\/\/www.weather.gov\/", "urlPingSuffix":
-        "DevEx,5063.1", "displayUrl": "https:\/\/www.weather.gov", "snippet": "Surface
-        Weather Upper Air Marine and Buoy Reports Snow Cover Satellite Space Weather
-        International Observations. FORECAST Local Forecast International Forecasts
-        Severe Weather Current Outlook Maps Drought Fire Weather Fronts\/Precipitation
-        Maps Current Graphical Forecast Maps Rivers Marine Offshore and High Seas
-        Hurricanes Aviation Weather", "dateLastCrawled": "2021-06-08T11:17:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "National
-        Weather Service", "url": "https:\/\/www.weather.gov\/%20", "urlPingSuffix":
-        "DevEx,5076.1", "displayUrl": "https:\/\/www.weather.gov\/ ", "snippet":
-        "Texas Severe Thunderstorms; Central Rockies Snow; Fire Weather in the West.
-        Isolated severe thunderstorms capable of producing large to very large hail
-        and severe wind gusts may occur Monday across parts of south-central Texas.
-        Elevated to critical fire weather conditions are forecast across parts of
-        northern California and the Southwest again ...", "dateLastCrawled": "2021-06-07T20:15:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Weather
-        | National Oceanic and Atmospheric Administration", "url": "https:\/\/www.noaa.gov\/weather",
-        "urlPingSuffix": "DevEx,5090.1", "displayUrl": "https:\/\/www.noaa.gov\/weather",
+        "National Weather Service", "url": "https:\/\/www.weather.gov\/", "urlPingSuffix":
+        "DevEx,5060.1", "displayUrl": "https:\/\/www.weather.gov", "snippet": "NOAA
+        National Weather Service National Weather Service. Widespread Heat, Severe
+        Storms\/Heavy Rain and Tropical Depression Nine. Heat continues to grip much
+        of the U.S. as excessive heat warnings and heat advisories extend from the
+        Southwest to the Northeast.", "dateLastCrawled": "2021-08-26T19:20:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Weather
+        | National Oceanic and Atmospheric Administration", "url": "https:\/\/www.noaa.gov\/weather",
+        "urlPingSuffix": "DevEx,5074.1", "displayUrl": "https:\/\/www.noaa.gov\/weather",
         "snippet": "Weather, water and climate events, cause an average of approximately
         650 deaths and $15 billion in damage per year and are responsible for some
         90 percent of all presidentially-declared disasters. About one-third of the
         U.S. economy – some $3 trillion – is sensitive to weather and climate.",
-        "dateLastCrawled": "2021-06-09T12:18:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
-        "name": "National Weather Service", "url": "https:\/\/forecast.weather.gov\/MapClick.php?lat=42.8723&lon=-97.397",
-        "urlPingSuffix": "DevEx,5103.1", "displayUrl": "https:\/\/forecast.weather.gov\/MapClick.php?lat=42.8723&lon=-97.397",
-        "snippet": "Thursday Night. A chance of showers and thunderstorms after 1am.
-        Mostly clear, with a low around 69. Chance of precipitation is 50%. Friday.
-        A chance of showers before 1pm. Mostly sunny, with a high near 88. Chance
-        of precipitation is 30%. Friday Night.", "dateLastCrawled": "2021-06-08T01:58:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Medford,
-        OR - Weather", "url": "https:\/\/www.weather.gov\/mfr\/", "urlPingSuffix":
-        "DevEx,5117.1", "displayUrl": "https:\/\/www.weather.gov\/mfr", "snippet":
-        "NOAA National Weather Service Medford, OR. Today is World Oceans Day!
-        The United Nations celebrates this day every year, in an effort to inform
-        the public of the impact of human actions on the ocean and to develop a worldwide
-        movement of citizens for the oceans.", "dateLastCrawled": "2021-06-08T22:41:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "National
-        Weather Service", "url": "https:\/\/forecast.weather.gov\/MapClick.php?site=HGX&textField1=29.7687&textField2=-95.3867&e=1",
-        "urlPingSuffix": "DevEx,5130.1", "displayUrl": "https:\/\/forecast.weather.gov\/MapClick.php?site=HGX&textField1=29.7687&textField2=-95...",
-        "snippet": "A slight chance of showers and thunderstorms before 1am, then
-        a slight chance of showers between 1am and 2am. Mostly cloudy, with a low
-        around 73. Calm wind becoming east around 5 mph. Chance of precipitation is
-        20%. Wednesday. Showers and thunderstorms likely, mainly between 2pm and 5pm,
-        then showers likely and possibly a thunderstorm after 5pm.", "dateLastCrawled":
-        "2021-06-08T02:06:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
-        "name": "National Weather Service", "url": "https:\/\/forecast.weather.gov\/MapClick.php?site=OAX&textField1=41.2639&textField2=-96.0117&e=1",
-        "urlPingSuffix": "DevEx,5143.1", "displayUrl": "https:\/\/forecast.weather.gov\/MapClick.php?site=OAX&textField1=41.2639&textField2=-96...",
-        "snippet": "Point Forecast: Omaha NE. 41.26°N 96.02°W (Elev. 1155 ft) Last
-        Update: 11:29 pm CDT Jun 4, 2021. Forecast Valid: 1am CDT Jun 5, 2021-6pm
-        CDT Jun 11, 2021.", "dateLastCrawled": "2021-06-08T06:24:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "National Weather
-        Service", "url": "https:\/\/forecast.weather.gov\/MapClick.php?site=RIW&textField1=42.8326&textField2=-106.329&e=1",
-        "urlPingSuffix": "DevEx,5156.1", "displayUrl": "https:\/\/forecast.weather.gov\/MapClick.php?site=RIW&textField1=42.8326&textField2=-106...",
-        "snippet": "Point Forecast: Casper WY. 42.83°N 106.34°W (Elev. 5236 ft) Last
-        Update: 3:58 pm MDT Jun 1, 2021. Forecast Valid: 4pm MDT Jun 1, 2021-6pm MDT
-        Jun 7, 2021. Forecast Discussion.", "dateLastCrawled": "2021-06-07T22:22:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Little
-        Rock, AR - Weather", "url": "https:\/\/www.weather.gov\/lzk\/", "urlPingSuffix":
-        "DevEx,5170.1", "displayUrl": "https:\/\/www.weather.gov\/lzk", "snippet":
-        "NWS Forecast Office Little Rock, AR. Severe thunderstorms are expected
-        across all but northern and western Arkansas Sunday afternoon and evening.
-        An enhanced risk of severe weather is in place across roughly the southeast
-        half of the state with large hail and damaging winds the main threats. An
-        isolated tornado is also possible.", "dateLastCrawled": "2021-06-09T07:15:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Corpus
-        Christi, TX - Weather", "url": "https:\/\/www.weather.gov\/crp\/", "urlPingSuffix":
-        "DevEx,5184.1", "displayUrl": "https:\/\/www.weather.gov\/crp", "snippet":
-        "NWS Corpus Christi. There is a chance for showers and thunderstorms today
-        for the Middle Texas Coast beaches. The rip current risk is LOW, but low risk
-        does not mean no risk. Exercise caution when swimming, especially near piers
-        and jetties! Expect scattered to numerous showers and thunderstorms to persist
-        all week and through the weekend.", "dateLastCrawled": "2021-06-08T12:03:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Legal
-        Information - National Weather Service", "url": "https:\/\/radar.weather.gov\/?settings=v1_eyJhZ2VuZGEiOnsiaWQiOiJsb2NhbCIsImNlbnRlciI6Wy0xMDYuODI0LDM1LjE1XSwiem9vbSI6NywiZmlsdGVyIjoiV1NSLTg4RCIsImxheWVyIjoiY3JlZiIsInN0YXRpb24iOiJLQUJYIiwidHJhbnNwYXJlbnQiOnRydWUsImFsZXJ0c092ZXJsYXkiOnRydWUsInN0YXRpb25JY29uc092ZXJsYXkiOnRydWV9LCJiYXNlIjoic3RhbmRhcmQiLCJjb3VudHkiOmZhbHNlLCJjd2EiOmZhbHNlLCJzdGF0ZSI6ZmFsc2UsIm1lbnUiOnRydWUsInNob3J0RnVzZWRPbmx5Ijp0cnVlfQ%3D%3D",
-        "urlPingSuffix": "DevEx,5197.1", "displayUrl": "https:\/\/radar.weather.gov\/?settings=v1...",
-        "snippet": "Weather for a location. This view is similar to a radar application
-        on a phone that provides radar, current weather, alerts and the forecast
-        for a location. Recommended for bookmarks. All hazardous conditions. This
-        view provides a full map view of all alert hazards (similar to WWA map).",
-        "dateLastCrawled": "2021-06-08T08:46:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
-        "name": "National Weather Service", "url": "https:\/\/marine.weather.gov\/MapClick.php?x=146&site=box&zmx=&zmy=&map_x=146&map_y=254",
-        "urlPingSuffix": "DevEx,5211.1", "displayUrl": "https:\/\/marine.weather.gov\/MapClick.php?x=146&site=box&zmx=&zmy=&map_x=146&map_y=254",
-        "snippet": "NOAA National Weather Service National Weather Service. Synopsis:
-        ANZ200-101800- 127 AM EDT Thu Jun 10 2021 .Synopsis for Massachusetts and
-        Rhode Island coastal waters...A cold front passes across the waters Wednesday
-        night before high pressure builds over the waters for Thursday, bringing seasonable
-        and less humid air.", "dateLastCrawled": "2021-06-10T07:14:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Rapid
-        City, SD - Weather", "url": "https:\/\/www.weather.gov\/unr\/", "urlPingSuffix":
-        "DevEx,5225.1", "displayUrl": "https:\/\/www.weather.gov\/unr", "snippet":
-        "NWS Forecast Office Rapid City, SD. Weather.gov > Rapid City, SD. Current
-        Hazards. Storm and Precipitation Reports. Outlooks. Submit a Storm Report.
-        Experimental Graphical Hazardous Weather Outlook. Current Conditions. Observations.",
-        "dateLastCrawled": "2021-06-09T08:11:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
-        "name": "Cheyenne, WY - Weather", "url": "https:\/\/www.weather.gov\/cys\/",
-        "urlPingSuffix": "DevEx,5239.1", "displayUrl": "https:\/\/www.weather.gov\/cys",
-        "snippet": "Weather Map. Local Radar. Follow us on Twitter Follow us on
-        Facebook Follow us on YouTube CYS RSS Feed HAZARDS Active Alerts. US Dept
-        of Commerce National Oceanic and Atmospheric Administration National Weather
-        Service Cheyenne, WY 1301 Airport Parkway Cheyenne, WY 82001-1549 307-772-2468
-        ...", "dateLastCrawled": "2021-06-09T04:22:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
-        "name": "Twin Cities, MN - Weather", "url": "https:\/\/www.weather.gov\/mpx\/",
-        "urlPingSuffix": "DevEx,5253.1", "displayUrl": "https:\/\/www.weather.gov\/mpx",
-        "snippet": "Twin Cities, MN. News Headlines. Remembering the North Minneapolis
-        Tornado of May 22, 2011. Wednesday, May 19, 2021 Preliminary Severe Weather
-        Recap. NOAA Delivers New U.S. Climate Normals. Situation Report - Fire Weather
-        Condtions Today. Situation Report for fire weather conditions today into
-        this evening.", "dateLastCrawled": "2021-06-09T07:10:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "National Weather
-        Service Watch Warning Advisory Summary", "url": "https:\/\/forecast.weather.gov\/showsigwx.php?warnzone=VAZ057&warncounty=VAC099&lat=38.2594&lon=-77.1621",
-        "urlPingSuffix": "DevEx,5266.1", "displayUrl": "https:\/\/forecast.weather.gov\/showsigwx.php?warnzone=VAZ057&warncounty=VAC099&lat=38...",
-        "snippet": "Hazardous Weather Outlook Hazardous Weather Outlook National
-        Weather Service Baltimore MD\/Washington DC 337 PM EDT Tue Jun 8 2021 ANZ530>543-DCZ001-MDZ008-011-013-014-016>018-504-506-508-
-        VAZ052>057-091945- Chesapeake Bay north of Pooles Island MD- Chesapeake Bay
-        from Pooles Island to Sandy Point MD- Chesapeake Bay from Sandy Point to North
-        Beach MD- Chesapeake Bay from North Beach to Drum ...", "dateLastCrawled":
-        "2021-06-09T00:37:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
-        "name": "Buffalo, NY - Weather", "url": "https:\/\/www.weather.gov\/buf\/",
-        "urlPingSuffix": "DevEx,5280.1", "displayUrl": "https:\/\/www.weather.gov\/buf",
+        "dateLastCrawled": "2021-08-27T20:24:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        "name": "NWS Radar", "url": "https:\/\/radar.weather.gov\/", "urlPingSuffix":
+        "DevEx,5087.1", "displayUrl": "https:\/\/radar.weather.gov", "snippet":
+        "Weather for a location. This view is similar to a radar application on
+        a phone that provides radar, current weather, alerts and the forecast for
+        a location. Recommended for bookmarks. All hazardous conditions. This view
+        provides a full map view of all alert hazards (similar to WWA map).", "dateLastCrawled":
+        "2021-08-27T20:31:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "El Paso, TX - National Weather Service", "url": "https:\/\/www.weather.gov\/epz\/",
+        "urlPingSuffix": "DevEx,5101.1", "displayUrl": "https:\/\/www.weather.gov\/epz",
+        "snippet": "NOAA National Weather Service El Paso, TX. Isolated to scattered
+        thunderstorm will wind down by midnight and we will only be left with some
+        high clouds for the overnight hours.", "dateLastCrawled": "2021-08-28T03:15:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "San Diego,
+        CA - National Weather Service", "url": "https:\/\/www.weather.gov\/sgx\/",
+        "urlPingSuffix": "DevEx,5115.1", "displayUrl": "https:\/\/www.weather.gov\/sgx",
+        "snippet": "NOAA National Weather Service San Diego, CA. Very hot weather
+        will occur in the lower deserts (115 or higher) and the Inland Empire (105
+        or higher in many areas) today.", "dateLastCrawled": "2021-08-27T20:23:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Salt
+        Lake City, UT - National Weather Service", "url": "https:\/\/www.weather.gov\/slc\/",
+        "urlPingSuffix": "DevEx,5129.1", "displayUrl": "https:\/\/www.weather.gov\/slc",
+        "snippet": "NWS Forecast Office Salt Lake City, UT. Flash Flooding is the
+        other primary concern for today and tomorrow across southern and central Utah.
+        Areas most at risk: slot canyons, normally dry washes, and burn scars.", "dateLastCrawled":
+        "2021-08-28T01:10:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "name": "Reno, NV - National Weather Service", "url": "https:\/\/www.weather.gov\/rev\/",
+        "urlPingSuffix": "DevEx,5143.1", "displayUrl": "https:\/\/www.weather.gov\/rev",
         "snippet": "US Dept of Commerce National Oceanic and Atmospheric Administration
-        National Weather Service Buffalo, NY 587 Aero Drive Cheektowaga, NY 14225
-        716-565-0204", "dateLastCrawled": "2021-06-09T03:22:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Billings, MT
-        - Weather", "url": "https:\/\/www.weather.gov\/byz\/", "urlPingSuffix":
-        "DevEx,5294.1", "displayUrl": "https:\/\/www.weather.gov\/byz", "snippet":
-        "More rain showers expected Sunday. 0.75 - 1 inch of rain expected west of
-        Billings, and up to half an inch expected at and east of Billings. Chance
-        for a couple strong thunderstorms in far southeast Montana Sunday afternoon.
-        High elevations will see some snowfall. Plan accordingly if you will be outdoors
-        or traveling. Hide Caption Show Caption.", "dateLastCrawled": "2021-06-08T22:30:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Wilmington,
-        OH - Weather", "url": "https:\/\/www.weather.gov\/ILN", "urlPingSuffix":
-        "DevEx,5308.1", "displayUrl": "https:\/\/www.weather.gov\/ILN", "snippet":
-        "US Dept of Commerce National Oceanic and Atmospheric Administration National
-        Weather Service Wilmington, OH 1901 South State Route 134 Wilmington,
-        Oh 45177", "dateLastCrawled": "2021-06-08T18:12:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
-        "name": "Shreveport, LA - Weather", "url": "https:\/\/www.weather.gov\/shv\/",
-        "urlPingSuffix": "DevEx,5322.1", "displayUrl": "https:\/\/www.weather.gov\/shv",
-        "snippet": "NOAA National Weather Service Shreveport, LA. Showers and
-        thunderstorms, some of which may contain locally heavy rainfall, are expected
-        to redevelop this morning across portions of extreme Northeast Texas, Southeast
-        Oklahoma, and Southwest Arkansas.", "dateLastCrawled": "2021-06-08T12:08:00.0000000Z"}]},
-        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
-        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        National Weather Service Reno, NV 2350 Raggio Parkway Reno, NV 89512-3900
+        (775) 673-8100", "dateLastCrawled": "2021-08-27T23:26:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Sacramento,
+        CA - National Weather Service", "url": "https:\/\/www.weather.gov\/sto\/",
+        "urlPingSuffix": "DevEx,5157.1", "displayUrl": "https:\/\/www.weather.gov\/sto",
+        "snippet": "A Red Flag Warning is in effect for portions of the Sacramento
+        Valley and surrounding foothills into Saturday morning. Gusty northerly winds,
+        dry fuels, and low humidity will bring critical fire weather conditions.",
+        "dateLastCrawled": "2021-08-28T02:25:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
+        "name": "Key West, FL - National Weather Service", "url": "https:\/\/www.weather.gov\/key\/",
+        "urlPingSuffix": "DevEx,5171.1", "displayUrl": "https:\/\/www.weather.gov\/key",
+        "snippet": "NWS Key West. TROPICAL STORM WATCH IN EFFECT! TONIGHT: Partly
+        cloudy with a chance of showers and thunderstorms. Lows near 80. East winds
+        10 to 15 mph. Chance of rain 50 percent. TROPICAL STORM WATCH IN EFFECT! TONIGHT:
+        Northeast to east winds near 15 knots. Bay waters a moderate chop. Scattered
+        showers and thunderstorms.", "dateLastCrawled": "2021-08-27T23:14:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Albuquerque,
+        NM - National Weather Service", "url": "https:\/\/www.weather.gov\/abq\/",
+        "urlPingSuffix": "DevEx,5185.1", "displayUrl": "https:\/\/www.weather.gov\/abq",
+        "snippet": "NWS Albuquerque. Showers and thunderstorms will become widespread
+        by late Sunday afternoon across much of central and eastern NM. Heavy rainfall
+        will elevate the risk for flash flooding, particularly over recent burn scars,
+        urban drainages, complex terrain, low lying areas, and areas with recent heavy
+        rainfall.", "dateLastCrawled": "2021-08-28T04:01:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
+        "name": "NWS Phoenix - National Weather Service", "url": "https:\/\/www.weather.gov\/psr\/",
+        "urlPingSuffix": "DevEx,5199.1", "displayUrl": "https:\/\/www.weather.gov\/psr",
+        "snippet": "NWS Forecast Office Phoenix, AZ. Another active week for t-storm
+        and heavy rain potential. The focus will be on moisture from Nora, with south-central
+        AZ seeing heavy rain potential on Wed and Thu. Mon and Tue will also bring
+        a more typical Monsoon setup with t-storms possible both days.", "dateLastCrawled":
+        "2021-08-28T02:27:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
+        "name": "NWS Forecast Office Duluth, MN - National Weather Service", "url":
+        "https:\/\/www.weather.gov\/dlh\/", "urlPingSuffix": "DevEx,5213.1", "displayUrl":
+        "https:\/\/www.weather.gov\/dlh", "snippet": "NWS Forecast Office Duluth,
+        MN. Showers and Thunderstorms are moving in from the west and are expected
+        to spread east through the overnight hours. Precipitation is expected to taper
+        off by Monday morning. Click a location below for detailed forecast.", "dateLastCrawled":
+        "2021-08-27T21:18:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
+        "name": "Nashville, TN - National Weather Service", "url": "https:\/\/www.weather.gov\/ohx\/",
+        "urlPingSuffix": "DevEx,5227.1", "displayUrl": "https:\/\/www.weather.gov\/ohx",
+        "snippet": "NWS Forecast Office Nashville, TN. A Flash Flood Watch is in
+        effect from Monday evening until midnight Tuesday night for most of Middle
+        Tennessee west of the Cumberland Plateau. Total rainfall amounts resulting
+        from Hurricane Ida''s remants will range from 2 to 5 inches across the mid
+        state.", "dateLastCrawled": "2021-08-27T21:26:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        "name": "Amarillo, TX - National Weather Service", "url": "https:\/\/www.weather.gov\/ama\/",
+        "urlPingSuffix": "DevEx,5241.1", "displayUrl": "https:\/\/www.weather.gov\/ama",
+        "snippet": "Weather Calculator: Weather Radio AMA RSS Feed . Local Radar.
+        Weather Map. Social Media Dashboard. AMA RSS Feed US Dept of Commerce National
+        Oceanic and Atmospheric Administration National Weather Service Amarillo,
+        TX 1900 English Road Amarillo, TX 79108 (806) 335-1121 Comments? Questions?
+        Please Contact Us.", "dateLastCrawled": "2021-08-28T06:19:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "NWS Tucson
+        Arizona - National Weather Service", "url": "https:\/\/www.weather.gov\/twc\/",
+        "urlPingSuffix": "DevEx,5255.1", "displayUrl": "https:\/\/www.weather.gov\/twc",
+        "snippet": "Elevated thunderstorm chances will continue, with another peak
+        this weekend. Watch for heavy rain with additional flooding possible. Threat
+        for damaging winds from storms will increase as well. Hide Caption. Show Caption.
+        Click a location below for detailed forecast. Last Map Update: Wed, Aug. 11,
+        2021 at 9:12:52 pm MST.", "dateLastCrawled": "2021-08-27T23:02:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Des
+        Moines, IA - National Weather Service", "url": "https:\/\/www.weather.gov\/dmx\/",
+        "urlPingSuffix": "DevEx,5269.1", "displayUrl": "https:\/\/www.weather.gov\/dmx",
+        "snippet": "NWS Forecast Office Des Moines, IA. Scattered storms continue
+        to develop over northern Iowa this evening. Strong to severe storms are possible
+        with the main threat of large hail, damaging winds, and an isolated tornado
+        or two. Heavy rain is also likely and may lead to flash flooding at time over
+        northern Iowa.", "dateLastCrawled": "2021-08-27T21:06:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "National Weather
+        Service", "url": "https:\/\/forecast.weather.gov\/zipcity.php?inputstring=Renton,WA&Go2=Go",
+        "urlPingSuffix": "DevEx,5282.1", "displayUrl": "https:\/\/forecast.weather.gov\/zipcity.php?inputstring=Renton,WA&Go2=Go",
+        "snippet": "Detailed Forecast. A 20 percent chance of showers between 2pm
+        and 3pm. Cloudy, then gradually becoming mostly sunny, with a high near 69.
+        South southeast wind around 6 mph becoming light and variable. Mostly clear,
+        with a low around 53. North wind around 6 mph. Sunny, with a high near 76.
+        North northwest wind 3 to 7 mph.", "dateLastCrawled": "2021-08-27T13:10:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Tampa
+        Bay Area, FL - National Weather Service", "url": "https:\/\/www.weather.gov\/tbw\/",
+        "urlPingSuffix": "DevEx,5296.1", "displayUrl": "https:\/\/www.weather.gov\/tbw",
+        "snippet": "NWS Forecast Office Tampa Bay Area, FL. Partly cloudy with isolated
+        to scattered afternoon showers and thunderstorms, particularly interior and
+        south of I-4. Highs in the low to mid 90s, with feels like temps from 105
+        to 110 degrees in some locations. Isolated to scattered showers and thunderstorms
+        in the evening, then partly cloudy overnight.", "dateLastCrawled": "2021-08-28T00:21:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Climate
+        - weather.gov", "url": "https:\/\/www.weather.gov\/wrh\/climate?wfo=PQR&site=352997",
+        "urlPingSuffix": "DevEx,5309.1", "displayUrl": "https:\/\/www.weather.gov\/wrh\/climate?wfo=PQR&site=352997",
+        "snippet": "DAILY CLIMATE REPORT - issued daily: Detailed daily weather
+        statistics (usually for yesterday), including temperature, precipitation,
+        degree days, wind, humidity, sunrise\/sunset, and record temperature data
+        for the following day. Precipitation data includes both calendar year and
+        water year totals, percent of normal values, and comparisons to ...", "dateLastCrawled":
+        "2021-08-31T14:20:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
+        "name": "Exit - forecast.weather.gov", "url": "https:\/\/forecast.weather.gov\/MapClick.php?lat=51.56669&lon=-104.15053",
+        "urlPingSuffix": "DevEx,5322.1", "displayUrl": "https:\/\/forecast.weather.gov\/MapClick.php?lat=51.56669&lon=-104.15053",
+        "snippet": "Surface Weather Upper Air Marine and Buoy Reports Snow Cover
+        Satellite Space Weather International Observations. FORECAST Local Forecast
+        International Forecasts Severe Weather Current Outlook Maps Drought Fire
+        Weather Fronts\/Precipitation Maps Current Graphical Forecast Maps Rivers
+        Marine", "dateLastCrawled": "2021-08-30T18:26:00.0000000Z"}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
         "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
@@ -239,5 +241,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version:
-  recorded_at: Fri, 11 Jun 2021 12:59:08 GMT
+  recorded_at: Tue, 31 Aug 2021 20:33:15 GMT
 recorded_with: VCR 4.0.0
