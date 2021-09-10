@@ -112,11 +112,11 @@ describe User do
     end
 
     describe '.not_approved' do
-      subject(:not_approved) { described_class.not_approved }
-
       let(:approved_user) { users(:affiliate_manager) }
       let(:not_approved_user) { users(:affiliate_manager_with_not_approved_status) }
       let(:pending_user) { users(:affiliate_manager_with_pending_approval_status) }
+
+      subject(:not_approved) { described_class.not_approved }
 
       it { is_expected.to include(not_approved_user) }
       it { is_expected.not_to include(approved_user) }
