@@ -1,18 +1,15 @@
-require:
-  - rubocop-performance
-  - rubocop-rails
-  - rubocop-rake
-  - rubocop-rspec
+# Work around CodeClimate's inability to use Rubocop's inherit_gem directive:
+# https://github.com/codeclimate/codeclimate-rubocop/issues/71#issuecomment-635055223
+inherit_from:
+  - https://raw.githubusercontent.com/GSA/searchgov_style/main/.default.yml
+
+inherit_mode:
+  merge:
+    - Exclude
+    - IgnoredMethods
 
 AllCops:
-  NewCops: enable
-  TargetRubyVersion: 2.5
   Exclude:
-    - 'bin/**/*'
-    - 'config/**/*'
-    - 'config.ru'
-    - 'db/**/*'
-    - 'vendor/**/*'
     # All Instagram-related code is deprecated and will be removed
     - /**/**/instagram*
     # All Search Consumer code is deprecated and will be removed
@@ -22,135 +19,6 @@ AllCops:
     # The Agencies API is deprecated and will be removed - SRCH-1574
     - app/controllers/api/v1/agencies_controller.rb
     - app/controllers/api/v2/agencies_controller.rb
-
-#### Bundler ####
-
-Bundler/OrderedGems:
-  Enabled: false
-
-#### Layout ####
-
-Layout/DotPosition:
-  EnforcedStyle: trailing
-
-Layout/ExtraSpacing:
-  AllowForAlignment: true
-
-# We are disabling this cop to prevent analysis from tripping on the many pre-existing
-# offenses in our repos. Devs can rely on themselves and each other to maintain
-# sane line lengths going forward, and fix offending lines as needed.
-Layout/LineLength:
-  Enabled: false
-
-Layout/MultilineMethodCallIndentation:
-  EnforcedStyle: indented
-
-#### Metrics ####
-
-Metrics/BlockLength:
-  CountComments: false  # count full line comments?
-  Max: 25
-  IgnoredMethods:
-    # By default, exclude the `#refine` method, as it tends to have larger
-    # associated blocks.
-    - refine
-    # Rspec blocks
-    - describe
-    - context
-    - include_context
-    - shared_examples_for
-
-#### Performance ####
-
-Performance/TimesMap:
-  # Disabling. Using `Array.new` with a block is marginally more performant, but
-  # `n.times.map` is much more readable. The former can be used when n is large.
-  # https://stackoverflow.com/questions/41518896/why-does-rubocop-suggest-replacing-times-map-with-array-new
-  Enabled: false
-
-#### Rails ####
-
-Rails/SkipsModelValidations:
-  # We are leaving this cop enabled as a warning.
-  # Failures can be approved as needed during code review.
-  Enabled: true
-
-#### RSpec ####
-
-# See also the list of RSpec statements that we exempt from the block
-# length cop, under Metrics/BlockLength above
-
-# For this group of specs, there is no class
-RSpec/DescribeClass:
-  Exclude:
-    - 'spec/lib/tasks/**'
-    - 'spec/system/**'
-
-RSpec/DescribedClass:
-  SkipBlocks: true
-
-RSpec/ExampleLength:
-  Enabled: false
-
-RSpec/ExpectChange:
-  EnforcedStyle: block
-
-RSpec/ImplicitSubject:
-  EnforcedStyle: single_statement_only
-
-RSpec/MessageChain:
-  Enabled: false
-
-RSpec/MultipleExpectations:
-  Enabled: false
-
-RSpec/NestedGroups:
-  Enabled: false
-
-#### Style ####
-
-Style/Documentation:
-  Enabled: false
-
-Style/IfUnlessModifier:
-  Enabled: false
-
-Style/MethodCallWithArgsParentheses:
-  Description: 'Use parentheses for method calls with arguments.'
-  Enabled: true
-  IgnoredMethods:
-    # Ignore Ruby keyword methods:
-    # https://rubystyle.guide/#methods-that-have-keyword-status-in-ruby
-    - require
-    - yield
-    # https://rubystyle.guide/#exceptions
-    - raise
-    # Ignore logging methods, as they are considered part of an internal DSL
-    # https://rubystyle.guide/#methods-that-are-part-of-an-internal-dsl
-    - debug
-    - info
-    - warn
-    - error
-    - fatal
-    # Ignore Rails controller DSL methods
-    - redirect_to
-    - render
-  Exclude:
-    - 'spec/**/*'
-    - 'Gemfile'
-    - 'db/**/*'
-    - '*.gemspec'
-
-Style/MixinUsage:
-  Exclude:
-    - bin/*
-
-Style/RescueStandardError:
-  Enabled: false
-
-Style/SymbolArray:
-  MinSize: 4
-
 
 Metrics/BlockLength:
   Exclude:

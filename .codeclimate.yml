@@ -1,6 +1,10 @@
 version: '2'
 # Work around CodeClimate's inability to use Rubocop's inherit_gem directive:
 # https://github.com/codeclimate/codeclimate-rubocop/issues/71#issuecomment-635055223
+prepare:
+  fetch:
+    - url: https://raw.githubusercontent.com/GSA/searchgov_style/main/.default.yml
+      path: .rubocop-https---raw-githubusercontent-com-GSA-searchgov-style-main--default-yml
 plugins:
   brakeman:
     enabled: true
