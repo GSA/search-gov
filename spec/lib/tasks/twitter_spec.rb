@@ -105,13 +105,15 @@ describe 'Twitter rake tasks' do
         end
 
         context 'when host argument is not specified' do
-          it 'should load default auth info' do
+          it 'loads the default auth info' do
             config = double('config')
             expect(TweetStream).to receive(:configure).and_yield(config)
             expect(config).to receive(:consumer_key=).with('default_consumer_key')
             expect(config).to receive(:consumer_secret=).with('default_consumer_secret')
             expect(config).to receive(:oauth_token=).with('default_oauth_token')
             expect(config).to receive(:oauth_token_secret=).with('default_oauth_secret')
+            expect(config).to receive(:verify_peer=).with(true)
+            expect(config).to receive(:cert_chain_file=).with(/\.pem$/)
 
             @rake[task_name].invoke
           end
@@ -146,6 +148,7 @@ describe 'Twitter rake tasks' do
           allow(@stream).to receive(:on_unauthorized)
           allow(@stream).to receive(:on_enhance_your_calm)
           allow(@stream).to receive(:on_no_data_received)
+          allow(@stream).to receive(:on_close)
           allow(EM::Twitter::Client).to receive(:connect).and_return(@stream)
 
           @logger = double(ActiveSupport::Logger)

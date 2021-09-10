@@ -27,175 +27,183 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3633'
+      - '3997'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Thu, 03 Jan 2019 18:30:13 GMT
+      - Tue, 31 Aug 2021 20:31:30 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=30AF66F3F3D26F9306E76A2AF2056EA8; path=/; expires=Tue, 28-Jan-2020 18:31:13
-        GMT; domain=bingapis.com
-      - MUIDB=30AF66F3F3D26F9306E76A2AF2056EA8; path=/; httponly; expires=Tue, 28-Jan-2020
-        18:31:13 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 03-Jan-2021 18:31:13 GMT;
+      - MUID=1E1E00A6DF9965A1290C1002DE6464FD; domain=.bingapis.com; expires=Sun,
+        25-Sep-2022 20:32:30 GMT; path=/; secure; SameSite=None
+      - MUIDB=1E1E00A6DF9965A1290C1002DE6464FD; expires=Sun, 25-Sep-2022 20:32:30
+        GMT; path=/; HttpOnly
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 31-Aug-2023 20:32:30 GMT;
         path=/
-      - SRCHUID=V=2&GUID=ED7F6BB85FA145429ED2DFCFECC9CBD8&dmnchg=1; domain=.bingapis.com;
-        expires=Sun, 03-Jan-2021 18:31:13 GMT; path=/
-      - SRCHUSR=DOB=20190103; domain=.bingapis.com; expires=Sun, 03-Jan-2021 18:31:13
+      - SRCHHPGUSR=SRCHLANG=en; domain=.bingapis.com; expires=Thu, 31-Aug-2023 20:32:30
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=3DCC2FFE96E669C81E1D23279731685D; path=/; httponly;
-        domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Tue, 28-Jan-2020 18:31:13 GMT; domain=bingapis.com
-      - _SS=SID=3DCC2FFE96E669C81E1D23279731685D; domain=.bingapis.com; path=/
+      - SRCHUID=V=2&GUID=3279E33E95234E0085534E9F82973CCB&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 31-Aug-2023 20:32:30 GMT; path=/
+      - SRCHUSR=DOB=20210831; domain=.bingapis.com; expires=Thu, 31-Aug-2023 20:32:30
+        GMT; path=/
+      - _EDGE_S=F=1&SID=1AF1B5E58BE56B473E00A5418A186AC8&mkt=en-us; domain=.bingapis.com;
+        path=/; HttpOnly
+      - _EDGE_V=1; domain=.bingapis.com; expires=Sun, 25-Sep-2022 20:32:30 GMT; path=/;
+        HttpOnly
+      - _SS=SID=1AF1B5E58BE56B473E00A5418A186AC8; domain=.bingapis.com; path=/
+      X-Snr-Routing:
+      - '1'
       Bingapis-Traceid:
-      - 8ED001CAFD80454DAB74A4BE95F3D6AE
+      - FACCCECEB6044EDEA183EE49B37A8FA6
       X-Msedge-Clientid:
-      - 30AF66F3F3D26F9306E76A2AF2056EA8
+      - 1E1E00A6DF9965A1290C1002DE6464FD
       X-Msapi-Userstate:
-      - b2eb
+      - fae0
       Bingapis-Market:
       - en-US
+      X-Cache:
+      - CONFIG_NOCACHE
       X-Msedge-Ref:
-      - 'Ref A: 8ED001CAFD80454DAB74A4BE95F3D6AE Ref B: CO1EDGE0222 Ref C: 2019-01-03T18:31:13Z'
+      - 'Ref A: FACCCECEB6044EDEA183EE49B37A8FA6 Ref B: BLUEDGE0415 Ref C: 2021-08-31T20:32:30Z'
       Date:
-      - Thu, 03 Jan 2019 18:31:13 GMT
+      - Tue, 31 Aug 2021 20:32:30 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=64C5238E1B1748E880EE2375DED2BAEA&CID=30AF66F3F3D26F9306E76A2AF2056EA8&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=64C5238E1B1748E880EE2375DED2BAEA&CID=30AF66F3F3D26F9306E76A2AF2056EA8&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=F2DD49D0C9EB403D99874AA70DECE750&CID=1E1E00A6DF9965A1290C1002DE6464FD&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=F2DD49D0C9EB403D99874AA70DECE750&CID=1E1E00A6DF9965A1290C1002DE6464FD&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=healthy+snack+(site%3ausa.gov)",
-        "webSearchUrlPingSuffix": "DevEx,5397.1", "totalEstimatedMatches": 66, "value":
-        [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "Links
-        | Go.USA.gov", "url": "https:\/\/go.usa.gov\/shorturl\/user\/6?page=11",
-        "urlPingSuffix": "DevEx,5057.1", "displayUrl": "https:\/\/go.usa.gov\/shorturl\/user\/6?page=11",
-        "snippet": "Water is the foundation for life. Learn more about the tap water
-        you use every day and why investing in our public water systems is essential
-        to the future of safe drinking water.", "dateLastCrawled": "2018-12-22T19:54:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Official
-        Guide to Government Information and Services | USAGov", "url": "https:\/\/www.usa.gov\/?db=www-fed-all&st=AS&ms0=should&mt0=all&rn=2&parsed=true&mw0=Healthy+People+2010",
-        "urlPingSuffix": "DevEx,5069.1", "displayUrl": "https:\/\/www.usa.gov\/?db=www-fed-all&st=AS&ms0=should&mt0=all&rn=2&...",
-        "snippet": "The .gov means it’s official. Federal government websites often
-        end in .gov or .mil. Before sharing sensitive information, make sure you''re
-        on a federal government site.", "dateLastCrawled": "2018-12-15T22:55:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "USAGov’s
-        Back to School Guide for Teachers and Parents ...", "url": "https:\/\/www.usa.gov\/features\/usagovs-back-to-school-guide-for-teachers-and-parents",
-        "urlPingSuffix": "DevEx,5082.1", "displayUrl": "https:\/\/www.usa.gov\/features\/usagovs-back-to-school-guide-for...",
-        "snippet": "Pack a healthy and safe lunch. Choose a balanced meal for your
-        children’s lunchbox and make sure you keep hot foods hot and cold foods cold
-        . Low-income families may qualify for free or reduced price school meals .",
-        "dateLastCrawled": "2018-12-29T02:55:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
-        "name": "Paying for Medical Care | USAGov", "url": "https:\/\/www.usa.gov\/paying-for-medical",
-        "urlPingSuffix": "DevEx,5095.1", "displayUrl": "https:\/\/www.usa.gov\/paying-for-medical",
-        "snippet": "Paying for Medical Care. Explore resources that can help you
-        pay for medical bills and prescription drugs. Also, find information about
-        local health clinics and suggestions for finding low cost dental coverage.",
-        "dateLastCrawled": "2018-12-29T07:38:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
-        "name": "Links | Go.USA.gov", "url": "https:\/\/go.usa.gov\/shorturl\/user\/32?page=5&sort=asc&order=Info",
-        "urlPingSuffix": "DevEx,5107.1", "displayUrl": "https:\/\/go.usa.gov\/shorturl\/user\/32?page=5&sort=asc&order=Info",
-        "snippet": "The following label-building skills are intended to make it easier
-        for you to use nutrition labels to make quick, informed food choices that
-        contribute to a healthy diet. 895 1\/12\/2011", "dateLastCrawled": "2018-12-26T17:35:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Animal
-        and Plant Health Inspection Service | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/animal-and-plant-health-inspection-service",
-        "urlPingSuffix": "DevEx,5120.1", "about": [{"name": "Animal and Plant Health
-        Inspection Service"}], "displayUrl": "https:\/\/www.usa.gov\/...\/animal-and-plant-health-inspection-service",
-        "snippet": "Animal and Plant Health Inspection Service. The Animal and
-        Plant Health Inspection Service protects and promotes U.S. agricultural health,
-        regulates genetically engineered organisms, administers the Animal Welfare
-        Act, and manages wildlife damage.", "dateLastCrawled": "2018-12-19T22:20:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Going
-        Green | USAGov", "url": "https:\/\/www.usa.gov\/green", "urlPingSuffix":
-        "DevEx,5132.1", "displayUrl": "https:\/\/www.usa.gov\/green", "snippet":
-        "Going Green. Learn about environment-friendly technologies and what you
-        can do to help the environment.", "dateLastCrawled": "2018-12-27T18:00:00.0000000Z"},
+        "webSearchUrlPingSuffix": "DevEx,5382.1", "totalEstimatedMatches": 39, "value":
+        [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "Publications.USA.gov",
+        "url": "https:\/\/connect.usa.gov\/publications", "urlPingSuffix": "DevEx,5053.1",
+        "displayUrl": "https:\/\/connect.usa.gov\/publications", "snippet": "Thank
+        you for being a loyal visitor to the site! After six years of serving the
+        American public and consumers, the Publications.USA.gov website has been
+        discontinued.", "dateLastCrawled": "2021-08-27T23:09:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Links | Go.USA.gov",
+        "url": "https:\/\/go.usa.gov\/shorturl\/user\/22", "urlPingSuffix": "DevEx,5066.1",
+        "displayUrl": "https:\/\/go.usa.gov\/shorturl\/user\/22", "snippet": "Sitio
+        Oficial del Gobierno de EE. UU. Descargue formularios gratis. Aprenda cómo
+        radicar. Obtenga información sobre ciudadanía, tarjeta verde, visas de trabajo,
+        E-Verify y más.", "dateLastCrawled": "2021-08-19T07:14:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Online Safety
+        | USAGov", "url": "https:\/\/www.usa.gov\/online-safety", "urlPingSuffix":
+        "DevEx,5080.1", "displayUrl": "https:\/\/www.usa.gov\/online-safety",
+        "snippet": "These tips can help you keep your computer and personal information
+        safe when going online: Do. Learn how to spot common scams and fraud. Learn
+        the warning signs of internet fraud, phishing, and other online scams. Keep
+        your computer software updated. Download the latest versions of your operating
+        system, web browsers, and apps.", "dateLastCrawled": "2021-08-27T05:26:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Seguros
+        de salud | USAGov", "url": "https:\/\/www.usa.gov\/espanol\/seguros-de-salud",
+        "urlPingSuffix": "DevEx,5093.1", "displayUrl": "https:\/\/www.usa.gov\/espanol\/seguros-de-salud",
+        "snippet": "Si no tiene o no puede pagar un seguro médico, existen opciones
+        para que usted pueda recibir atención gratuita o de bajo costo. Infórmese
+        sobre los recursos disponibles para encontrar las opciones de cuidado de salud
+        que necesita. Medicare: Cobertura para personas a partir de los 65 años de
+        edad ...", "dateLastCrawled": "2021-08-28T14:06:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
+        "name": "Commonly Requested U.S. Laws and Regulations | USAGov", "url":
+        "https:\/\/www.usa.gov\/laws-and-regulations", "urlPingSuffix": "DevEx,5107.1",
+        "displayUrl": "https:\/\/www.usa.gov\/laws-and-regulations", "snippet":
+        "The U.S. Environmental Protection Agency (EPA) sets limits on certain air
+        pollutants. It also enforces federal laws on clean water and safe drinking
+        water. The EPA also enforces federal regulations to limit the impact of businesses
+        on the environment. For more information, visit EPA: Laws and Regulations
+        .", "dateLastCrawled": "2021-08-28T13:49:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
+        "name": "Dealing with Debt | USAGov", "url": "https:\/\/www.usa.gov\/debt",
+        "urlPingSuffix": "DevEx,5121.1", "displayUrl": "https:\/\/www.usa.gov\/debt",
+        "snippet": "Contact you at inconvenient times, for example, before 8 AM or
+        after 9 PM, unless you agree to it. Communicate with you at work if you tell
+        the debt collector your employer disapproves. Contact you after you send a
+        letter to the collector telling them to stop, except to notify you if the
+        creditor or collector plans to take a specific action.", "dateLastCrawled":
+        "2021-08-28T00:35:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "name": "Links | Go.USA.gov", "url": "https:\/\/go.usa.gov\/shorturl\/user\/22?sort=asc&order=Clicks",
+        "urlPingSuffix": "DevEx,5135.1", "displayUrl": "https:\/\/go.usa.gov\/shorturl\/user\/22?sort=asc&order=Clicks",
+        "snippet": "GobiernoUSA.gov -- Información y recursos del Gobierno para actualizar
+        sus destrezas laborales y continuar su educación superior con el fin de obtener
+        un empleo, lanzar o continuar su carrera", "dateLastCrawled": "2021-07-31T07:05:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Links
-        | Go.USA.gov", "url": "https:\/\/go.usa.gov\/shorturl\/user\/32?page=18",
-        "urlPingSuffix": "DevEx,5144.1", "displayUrl": "https:\/\/go.usa.gov\/shorturl\/user\/32?page=18",
-        "snippet": "This page contains information about how to safely prepare food
-        outdoors. 1,012. 5\/24\/2010: Eating Outdoors, Handling Food Safely. ...
-        Consumer Focus: Sports Health and Safety - Sports are a good way to exercise
-        and stay healthy and fit. To make sure you can enjoy sports for a long time,
-        you need to take care of yourself . 994.", "dateLastCrawled": "2018-12-15T17:39:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Links
-        | Go.USA.gov", "url": "https:\/\/go.usa.gov\/shorturl\/user\/32?page=1&sort=asc&order=Clicks",
-        "urlPingSuffix": "DevEx,5155.1", "displayUrl": "https:\/\/go.usa.gov\/shorturl\/user\/32?page=1&sort=asc&order=Clicks",
-        "snippet": "Consumer Focus: Tips to Get Ready for Back to School - It always
-        seems like the summer has flown by and a new school year is just around the
-        corner.", "dateLastCrawled": "2018-12-29T12:58:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
-        "name": "How to Apply for Medicaid and CHIP | USAGov", "url": "https:\/\/www.usa.gov\/medicaid",
-        "urlPingSuffix": "DevEx,5168.1", "displayUrl": "https:\/\/www.usa.gov\/medicaid",
-        "snippet": "How to Apply for Medicaid and CHIP. Medicaid is a federal
-        and state health insurance program for people with a low income. The Children’s
-        Health Insurance Program (CHIP) offers health coverage to children in families
-        with incomes too high to qualify for Medicaid, but who can’t afford private
-        coverage.", "dateLastCrawled": "2018-12-30T06:55:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
-        "name": "U.S. Department of Housing and Urban Development | USAGov", "url":
-        "https:\/\/www.usa.gov\/federal-agencies\/u-s-department-of-housing-and-urban-development",
-        "urlPingSuffix": "DevEx,5181.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/u-s-department-of-housing-and...",
-        "snippet": "The Department of Housing and Urban Development administers
-        programs that provide housing and community development assistance. The Department
-        also works to ensure fair and equal housing opportunity for all.", "dateLastCrawled":
-        "2018-12-27T23:31:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
-        "name": "Features | USAGov", "url": "https:\/\/www.usa.gov\/features\/wear-blue-and-support-mens-health-month",
-        "urlPingSuffix": "DevEx,5196.1", "displayUrl": "https:\/\/www.usa.gov\/features\/wear-blue-and-support-mens-health-month",
-        "snippet": "Features. You''re invited to read and use our bilingual articles
-        covering trusted, timely, and valuable government information. The Gettysburg
-        Address, 155 Years Later. On November 19, 1863, President Abraham Lincoln
-        delivered a speech during a ceremony to dedicate a cemetery to Union soldiers
-        killed at the Battle of Gettysburg.", "dateLastCrawled": "2018-11-18T18:44:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "U.S.
-        Patent and Trademark Office | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/u-s-patent-and-trademark-office",
-        "urlPingSuffix": "DevEx,5209.1", "about": [{"name": "United States Patent
-        and Trademark Office"}], "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/u-s-patent-and-trademark-office",
-        "snippet": "The .gov means it’s official. Federal government websites often
-        end in .gov or .mil. Before sharing sensitive information, make sure you''re
-        on a federal government site. This site is secure. The https:\/\/ ensures
-        that you are connecting to the official website and that any information you
-        provide ...", "dateLastCrawled": "2018-12-30T19:03:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
-        "name": "Links | Go.USA.gov", "url": "https:\/\/go.usa.gov\/shorturl\/user\/22?page=8",
-        "urlPingSuffix": "DevEx,5222.1", "displayUrl": "https:\/\/go.usa.gov\/shorturl\/user\/22?page=8",
-        "snippet": "Peace Corps Volunteers travel overseas to make real differences
-        in the lives of real people. Apply online to Volunteer, find a local recruiting
-        event, donate to a Volunteer project, or access teacher and student resources.",
-        "dateLastCrawled": "2018-12-18T11:21:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
-        "name": "Links | Go.USA.gov", "url": "https:\/\/go.usa.gov\/shorturl\/user\/32?page=6&sort=asc&order=Clicks",
-        "urlPingSuffix": "DevEx,5233.1", "displayUrl": "https:\/\/go.usa.gov\/shorturl\/user\/32?page=6&sort=asc&order=Clicks",
-        "snippet": "Flyer lists screening tests and tips for staying healthy for
-        women", "dateLastCrawled": "2018-12-14T10:00:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        | Go.USA.gov", "url": "https:\/\/go.usa.gov\/shorturl\/user\/22?page=8&sort=desc&order=Date",
+        "urlPingSuffix": "DevEx,5148.1", "displayUrl": "https:\/\/go.usa.gov\/shorturl\/user\/22?page=8&sort=desc&order=Date",
+        "snippet": "USA.gov: Home page of the U.S. Government''s Official Web Portal
+        for all government transactions, services, and information. It provides direct
+        online access to federal, state, local, and tribal governments.", "dateLastCrawled":
+        "2021-08-18T22:26:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
+        "name": "Links | Go.USA.gov", "url": "https:\/\/go.usa.gov\/shorturl\/user\/32?page=2&sort=desc&order=Info",
+        "urlPingSuffix": "DevEx,5162.1", "displayUrl": "https:\/\/go.usa.gov\/shorturl\/user\/32?page=2&sort=desc&order=Info",
+        "snippet": "The holidays are a happy time for food, family, and friendship,
+        but they are also a time for fraud. Consumers can fall into any number of
+        traps over the holidays and become victim to identity thieves, hackers and
+        deceptive merchants online. The Better . 816. 11\/12\/2010:", "dateLastCrawled":
+        "2021-08-24T08:12:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
         "name": "Links | Go.USA.gov", "url": "https:\/\/go.usa.gov\/shorturl\/user\/32?page=17",
-        "urlPingSuffix": "DevEx,5245.1", "displayUrl": "https:\/\/go.usa.gov\/shorturl\/user\/32?page=17",
-        "snippet": "Medication, along with healthy eating and exercise, can help
-        lower your high blood pressure. Learn about the various drugs available and
-        their potential side effects. 785", "dateLastCrawled": "2018-12-15T17:51:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Links
-        | Go.USA.gov", "url": "https:\/\/go.usa.gov\/shorturl\/user\/32?page=7",
-        "urlPingSuffix": "DevEx,5256.1", "displayUrl": "https:\/\/go.usa.gov\/shorturl\/user\/32?page=7",
-        "snippet": "Answers 15 common questions regarding homeowners insurance and
-        explains what is covered in a standard policy.", "dateLastCrawled": "2018-12-26T07:14:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "U.S.
-        Department of Health and Human Services | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/u-s-department-of-health-and-human-services",
-        "urlPingSuffix": "DevEx,5268.1", "about": [{"name": "United States Department
-        of Health and Human Services"}], "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/u-s-department-of-health-and...",
-        "snippet": "Food and Drug Administration HHS-TIPS Fraud Hotline National
-        Health Information Center National Institute of Allergy and Infectious Diseases
-        National Institutes of Health National Runaway Safeline Agency for Healthcare
-        Research and Quality ...", "dateLastCrawled": "2018-12-29T08:49:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Links
+        "urlPingSuffix": "DevEx,5175.1", "displayUrl": "https:\/\/go.usa.gov\/shorturl\/user\/32?page=17",
+        "snippet": "According to complaints filed with the Better Business Bureau,
+        victims across the country have lost a total estimated quarter million dollars
+        to advance fee loan scams this spring.", "dateLastCrawled": "2021-04-22T11:41:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Links
         | Go.USA.gov", "url": "https:\/\/go.usa.gov\/shorturl\/user\/6?page=7&sort=asc&order=Info",
-        "urlPingSuffix": "DevEx,5280.1", "displayUrl": "https:\/\/go.usa.gov\/shorturl\/user\/6?page=7&sort=asc&order=Info",
+        "urlPingSuffix": "DevEx,5188.1", "displayUrl": "https:\/\/go.usa.gov\/shorturl\/user\/6?page=7&sort=asc&order=Info",
         "snippet": "Breast Cancer Awareness. The best way to find breast cancer early
         is with a mammogram. If you are a woman age 40 years or older, be sure to
-        have a screening mammogram every one to two years.", "dateLastCrawled": "2018-12-19T09:01:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Links
-        | Go.USA.gov", "url": "https:\/\/go.usa.gov\/shorturl\/user\/22", "urlPingSuffix":
-        "DevEx,5292.1", "displayUrl": "https:\/\/go.usa.gov\/shorturl\/user\/22",
+        have a screening mammogram every one to two years.", "dateLastCrawled": "2021-08-25T15:59:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Links
+        | Go.USA.gov", "url": "https:\/\/go.usa.gov\/shorturl\/user\/22?page=61&sort=desc&order=Clicks",
+        "urlPingSuffix": "DevEx,5202.1", "displayUrl": "https:\/\/go.usa.gov\/shorturl\/user\/22?page=61&sort=desc&order=Clicks",
         "snippet": "The Helping Your Child series are publications for parents to
         help their children develop new skills and knowledge. Topics include homework,
-        reading, preschool, and more.", "dateLastCrawled": "2018-12-07T09:50:00.0000000Z"}]},
+        reading, preschool, and more.", "dateLastCrawled": "2021-08-19T04:13:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Links
+        | Go.USA.gov", "url": "https:\/\/go.usa.gov\/shorturl\/user\/32?page=7&sort=asc&order=Date",
+        "urlPingSuffix": "DevEx,5215.1", "displayUrl": "https:\/\/go.usa.gov\/shorturl\/user\/32?page=7&sort=asc&order=Date",
+        "snippet": "Medication, along with healthy eating and exercise, can help
+        lower your high blood pressure. Learn about the various drugs available and
+        their potential side effects. 785. 6\/07\/2010: ... Follow four easy rules
+        to keep food from spoiling and causing people to get sick. 798. 6\/30\/2010:
+        How To Develop A Family Disaster Plan - News and N...", "dateLastCrawled":
+        "2021-07-06T13:10:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        "name": "analytics.usa.gov | The US government''s web traffic.", "url":
+        "https:\/\/analytics.usa.gov\/data\/health-human-services\/all-pages-realtime.csv",
+        "urlPingSuffix": "DevEx,5227.1", "displayUrl": "https:\/\/analytics.usa.gov\/data\/health-human-services\/all-pages-realtime.csv",
+        "snippet": "page,page_title,active_visitors pubmed.ncbi.nlm.nih.gov\/ncbi_pubmed_pubmed_abstract,NCBI
+        pubmed:pubmed:abstract,9254 ncbi.nlm.nih.gov\/ncbi_pmc_pmc_article,NCBI pmc
+        ...", "dateLastCrawled": "2021-08-15T10:15:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
+        "name": "Links | Go.USA.gov", "url": "https:\/\/go.usa.gov\/shorturl\/user\/6?page=12&sort=asc&order=Clicks",
+        "urlPingSuffix": "DevEx,5240.1", "displayUrl": "https:\/\/go.usa.gov\/shorturl\/user\/6?page=12&sort=asc&order=Clicks",
+        "snippet": "WhiteHouse.gov is the official web site for the White House and
+        President Barack Obama, the 44th President of the United States. This site
+        is a source for information about the President, White House news and policies,
+        White House history, and the federal", "dateLastCrawled": "2021-08-25T08:24:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Links
+        | Go.USA.gov", "url": "https:\/\/go.usa.gov\/shorturl\/user\/22?page=61&sort=asc&order=Date",
+        "urlPingSuffix": "DevEx,5253.1", "displayUrl": "https:\/\/go.usa.gov\/shorturl\/user\/22?page=61&sort=asc&order=Date",
+        "snippet": "Instrucciones y solicitud para obtener la tarjeta del Seguro Social
+        e información para no ciudadanos sobre cómo obtener un número de seguro social
+        así como otra información general, beneficios por incapacidad, plan de jubilación,
+        ingreso suplementario, se", "dateLastCrawled": "2021-08-21T20:53:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Car Complaints
+        and Motor Vehicle Services | USAGov", "url": "https:\/\/www.usa.gov\/cars",
+        "urlPingSuffix": "DevEx,5266.1", "displayUrl": "https:\/\/www.usa.gov\/cars",
+        "snippet": "Car Complaints and Motor Vehicle Services. Learn where to get
+        help if your car is defective or if there''s a problem with a dealer, repair
+        shop, or warranty. Find your local motor vehicles office to get a driver''s
+        license, car registration, and more. Find out what to do when you want to
+        complain about a defective car.", "dateLastCrawled": "2021-08-15T09:08:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "analytics.usa.gov",
+        "url": "https:\/\/analytics.usa.gov\/data\/agriculture\/all-pages-realtime.csv",
+        "urlPingSuffix": "DevEx,5278.1", "displayUrl": "https:\/\/analytics.usa.gov\/data\/agriculture\/all-pages-realtime.csv",
+        "snippet": "page,page_title,active_visitors usda.gov\/,USDA,276 inciweb.nwcg.gov\/incident\/7801\/,Caldor
+        Fire Information - InciWeb the Incident Information System,272 inciweb.nwcg
+        ...", "dateLastCrawled": "2021-08-23T13:42:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
+        "name": "analytics.usa.gov | The US government''s web traffic.", "url":
+        "https:\/\/analytics.usa.gov\/data\/live\/all-pages-realtime.json", "urlPingSuffix":
+        "DevEx,5289.1", "displayUrl": "https:\/\/analytics.usa.gov\/data\/live\/all-pages-realtime.json",
+        "snippet": "{ \"name\": \"all-pages-realtime\", \"sampling\": {}, \"query\":
+        { \"dimensions\": \"rt:pagePath,rt:pageTitle\", \"metrics\": [ \"rt:activeUsers\"
+        ], \"sort\": [ \"-rt:activeUsers ...", "dateLastCrawled": "2021-08-19T19:29:00.0000000Z"}]},
         "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
         0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
         "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
@@ -215,8 +223,7 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
         {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
         {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
-        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
-        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
-    http_version: 
-  recorded_at: Thu, 03 Jan 2019 18:31:14 GMT
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}}]}}}'
+    http_version:
+  recorded_at: Tue, 31 Aug 2021 20:32:31 GMT
 recorded_with: VCR 4.0.0

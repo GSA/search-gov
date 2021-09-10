@@ -18,89 +18,97 @@ http_interactions:
       code: 200
       message: OK
     headers:
-      Accept-Ranges:
-      - bytes
-      Access-Control-Allow-Origin:
-      - "*"
-      Age:
-      - '0'
-      Cache-Control:
-      - max-age=600
       Content-Type:
       - text/html; charset=utf-8
-      Date:
-      - Thu, 22 Feb 2018 07:10:05 GMT
-      Expires:
-      - Thu, 22 Feb 2018 07:20:05 GMT
-      Last-Modified:
-      - Thu, 15 Feb 2018 16:06:29 GMT
-      Server:
-      - GitHub.com
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubdomains; preload
-      Vary:
-      - Accept-Encoding
-      Via:
-      - 1.1 search.gov
-      - 1.1 varnish
-      X-Cache:
-      - MISS
-      X-Cache-Hits:
-      - '0'
-      X-Fastly-Request-Id:
-      - 57d89fc419303c8bbc4dae06959a321450fd948b
-      X-Github-Request-Id:
-      - DF3A:324E:28B46C4:3629EC9:5A8E6CCC
-      X-Served-By:
-      - cache-dca17737-DCA
-      X-Timer:
-      - S1519283406.880141,VS0,VE14
       Content-Length:
-      - '3962'
+      - '3931'
       Connection:
       - keep-alive
+      Date:
+      - Tue, 07 Sep 2021 16:12:36 GMT
+      Cache-Control:
+      - max-age=60
+      Last-Modified:
+      - Thu, 26 Aug 2021 19:28:02 GMT
+      Strict-Transport-Security:
+      - max-age=31536000; preload
+      X-Server:
+      - Federalist
+      X-Vcap-Request-Id:
+      - 29d45bff-d65b-4aaa-55cc-c0322501e137
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Etag:
+      - '"4ba5a4ca29041e5a54f839093b3060fa"'
+      Vary:
+      - Accept-Encoding
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 5503b1530c5d4fe35fc0727878485b7c.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - BOS50-C3
+      X-Amz-Cf-Id:
+      - kFYBqOj7eUvg8_GJSuuJM_V6VJn7dj2hwdSO801LtxehyGG7J5R69Q==
     body:
       encoding: UTF-8
       string: "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta name=viewport
         content=\"width=device-width, initial-scale=1\">\n  <meta charset=\"utf-8\">\n
-        \ <title>Editing Your Site Settings</title>\n  <meta name=\"description\"
+        \ \n  <title>Editing Your Site Settings</title>\n  <meta name=\"description\"
         content=\"\">\n  <meta name=\"author\" content=\"\">\n  <link href=\"https://fonts.googleapis.com/css?family=Maven+Pro:400,700\"
         media=\"screen\" rel=\"stylesheet\" type=\"text/css\" />\n  <link href=\"https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700\"
         media=\"screen\" rel=\"stylesheet\" type=\"text/css\" />\n  <link href=\"https://fonts.googleapis.com/css?family=Merriweather:400,700\"
-        media=\"screen\" rel=\"stylesheet\" type=\"text/css\" />\n  <link href=\"/bootstrap/css/bootstrap.css\"
-        rel=\"stylesheet\">\n  <link rel=\"stylesheet\" href=\"/stylesheets/font-awesome.min.css\">\n
-        \ <!--[if IE 7]>\n  <link rel=\"stylesheet\" href=\"/stylesheets/font-awesome-ie7.min.css\">\n
-        \ <![endif]-->\n\n  <!--<link href=\"../assets/css/bootstrap-responsive.css\"
-        rel=\"stylesheet\">-->\n  <link href=\"/stylesheets/custom.css\" rel=\"stylesheet\">\n\n
-        \ <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->\n  <!--[if lt IE
-        9]>\n  <script src=\"/javascripts/html5shiv.js\"></script>\n  <![endif]-->\n\n
-        \ <!-- Fav and touch icons -->\n  <!--  <link rel=\"apple-touch-icon-precomposed\"
+        media=\"screen\" rel=\"stylesheet\" type=\"text/css\" />\n  <link rel=\"stylesheet\"
+        href=\"/stylesheets/font-awesome.min.css\">\n  <!--[if IE 7]>\n  <link rel=\"stylesheet\"
+        href=\"/stylesheets/font-awesome-ie7.min.css\">\n  <![endif]-->\n\n  <!--
+        OLD CSS - Pre USWDS Gulp -->\n  <!-- <link href=\"/stylesheets/custom.css\"
+        rel=\"stylesheet\"> -->\n\n  <!-- OLD CSS - Post USWDS Gulp -->\n  <link href=\"/assets/bootstrap/css/bootstrap.css\"
+        rel=\"stylesheet\">\n  <link rel=\"stylesheet\" type=\"text/css\" href=\"/assets/dist/old_styles.css\">\n\n
+        \ <!-- NEW CSS - Post USWDS Gulp -->\n  <link rel=\"stylesheet\" type=\"text/css\"
+        href=\"/assets/dist/styles.css\">\n\n  <!-- HTML5 shim, for IE6-8 support
+        of HTML5 elements -->\n  <!--[if lt IE 9]>\n  <script src=\"/javascripts/html5shiv.js\"></script>\n
+        \ <![endif]-->\n\n  <!-- Fav and touch icons -->\n  <!--  <link rel=\"apple-touch-icon-precomposed\"
         sizes=\"144x144\"\n          href=\"../assets/ico/apple-touch-icon-144-precomposed.png\">\n
         \   <link rel=\"apple-touch-icon-precomposed\" sizes=\"114x114\"\n          href=\"../assets/ico/apple-touch-icon-114-precomposed.png\">\n
         \   <link rel=\"apple-touch-icon-precomposed\" sizes=\"72x72\"\n          href=\"../assets/ico/apple-touch-icon-72-precomposed.png\">\n
         \   <link rel=\"apple-touch-icon-precomposed\" href=\"../assets/ico/apple-touch-icon-57-precomposed.png\">-->\n
         \ <link rel=\"shortcut icon\" href=\"https://d3qcdigd1fhos0.cloudfront.net/blog/img/favicon.ico\">\n
-        \ <link rel='alternate' type='application/atom+xml' title='search.gov
-        Atom feed' href='/all.atom' />\n  <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js\"></script>\n
-        \ <script src=\"/javascripts/bootstrap3-typeahead.js\"></script>\n</head>\n\n<body>\n<nav
-        class=\"navbar navbar-inverse navbar-fixed-top\">\n  <div class=\"container\">\n
-        \   <!-- Brand and toggle get grouped for better mobile display -->\n    <div
-        class=\"navbar-header\">\n      <a class=\"navbar-brand\" href=\"/\">\n        <span
-        class=\"search\">Search.gov</span>\n      </a>\n    </div>\n    <div class=\"collapse
-        navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\n\n      <form class=\"navbar-form
-        navbar-left form-search\" accept-charset=\"UTF-8\" action=\"https://find.search.gov/search/\"
-        id=\"search-form\" method=\"get\">\n        <div style=\"margin:0;padding:0;display:inline\"><input
-        name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /></div>\n        <input
-        name=\"affiliate\" id=\"affiliate\" type=\"hidden\" value=\"usasearch\">\n
-        \       <div class=\"input-group input-append\">\n          <label for=\"search-query\"
-        class=\"hide\">Query</label>\n\n          <input name=\"query\" autocomplete=\"off\"
-        \ type=\"text\" class=\"typeahead form-control search-query\" id=\"search-query\"
-        data-provide=\"typeahead\" >\n          <span class=\"input-group-btn\">\n
-        \           <button type=\"submit\" class=\"btn btn-nav\" aria-label=\"Left
-        Align\" id=\"search-button\">\n              <span class=\"glyphicon glyphicon-search\"
-        aria-hidden=\"true\"></span>\n            </button>\n          </span>\n        </div>\n
-        \     </form>\n      <div class=\"nav navbar-right\">\n          <a href=\"https://search.usa.gov/sites\"
-        class=\"navbar-brand\"><i\n              class=\"icon-user icon-white\"></i>&nbsp;Login</a>\n
+        \ <link rel='alternate' type='application/atom+xml' title='search.gov Atom
+        feed' href='/all.atom' />\n  <script src=\"https://code.jquery.com/jquery-3.6.0.min.js\"></script>\n
+        \ <script src=\"/javascripts/bootstrap3-typeahead.js\"></script>\n  <script
+        type=\"text/javascript\" src=\"//script.crazyegg.com/pages/scripts/0007/9651.js\"
+        async=\"async\" ></script>\n  \n  <!-- Digital Analytics Program roll-up,
+        see https://analytics.usa.gov for data -->\n  <script async type=\"text/javascript\"
+        src=\"https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=GSA&subagency=TTS\"
+        id=\"_fed_an_ua_tag\"></script>\n\n </head>\n\n<body>\n<nav class=\"navbar
+        navbar-inverse navbar-fixed-top\">\n  <div class=\"container\">\n    <!--
+        Brand and toggle get grouped for better mobile display -->\n    <div class=\"navbar-header\">\n
+        \     <a class=\"navbar-brand\" href=\"/\">\n        <span class=\"search\">Search.gov</span>\n
+        \     </a>\n    </div>\n    <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\n\n
+        \     <form class=\"navbar-form navbar-left form-search\" accept-charset=\"UTF-8\"
+        action=\"https://find.search.gov/search/\" id=\"search-form\" method=\"get\">\n
+        \       <div style=\"margin:0;padding:0;display:inline\"><input name=\"utf8\"
+        type=\"hidden\" value=\"&#x2713;\" /></div>\n        <input name=\"affiliate\"
+        id=\"affiliate\" type=\"hidden\" value=\"usasearch\">\n        <div class=\"input-group
+        input-append\">\n          <label for=\"search-query\" class=\"hide\">Query</label>\n\n
+        \         <input name=\"query\" autocomplete=\"off\"  type=\"text\" class=\"typeahead
+        form-control search-query\" id=\"search-query\" data-provide=\"typeahead\"
+        >\n          <span class=\"input-group-btn\">\n            <button type=\"submit\"
+        class=\"btn btn-nav\" aria-label=\"Left Align\" id=\"search-button\">\n              <span
+        class=\"glyphicon glyphicon-search\" aria-hidden=\"true\"></span>\n            </button>\n
+        \         </span>\n        </div>\n      </form>\n      <div class=\"nav navbar-right\">\n
+        \         <a href=\"https://search.usa.gov/sites\" class=\"navbar-brand\"
+        onClick=\"ga('send', 'event', { eventCategory: 'outbound', eventAction: 'login',
+        eventLabel: 'header'});\"><i\n              class=\"icon-user icon-white\"></i>&nbsp;Login</a>\n
+        \     </div>&nbsp;&nbsp;&nbsp;<div class=\"nav navbar-right\">\n          <a
+        href=\"https://search.usa.gov/signup\" class=\"navbar-brand\" onClick=\"ga('send',
+        'event', { eventCategory: 'outbound', eventAction: 'signup', eventLabel: 'header'});\">Sign
+        up</a>\n      </div>&nbsp;&nbsp;&nbsp;<div class=\"nav navbar-right\">\n          <a
+        href=\"https://search.gov/status.html\" class=\"navbar-brand\">System Status</a>\n
         \     </div>\n    </div><!-- /.navbar-collapse -->\n  </div><!-- /.container-fluid
         -->\n</nav>\n\n\n<div class=\"col-md-offset-2 col-md-8  hidden-sm hidden-md
         hidden-lg\">\n\n  <form class=\"form-search\" accept-charset=\"UTF-8\" action=\"https://find.search.gov/search/\"
@@ -112,17 +120,17 @@ http_interactions:
         type=\"submit\" class=\"btn btn-primary\" aria-label=\"Left Align\" id=\"search-button\">\n
         \         <span class=\"glyphicon glyphicon-search\" aria-hidden=\"true\"></span>\n
         \       </button>\n      </span>\n    </div>\n  </form>\n</div>\n\n\n<div
-        class=\"container-fluid\">\n  <div class=\"col-md-8 col-md-offset-2\">\n    <!--
-        do not remove as used to parse in usasearch -->\n    <div id=\"main-container\">
-        \   \n      <article class=\"article feature\" style=\"padding:0 30px; margin-top:
-        10px;\">\n  \n  <h1>\n    <a href=\"/manual/settings.html\">Editing Your Site
-        Settings</a>\n  </h1>\n  \n\n  <div class='post-content'>\n    <p><a href=\"/index.html\">Search.gov
-        Home</a> &gt; <a href=\"https://search.usa.gov/sites/\">Admin Center</a> &gt;
-        YourSite &gt; Dashboard &gt; Settings</p>\n\n<h2 id=\"display-name\">Display
-        Name</h2>\n\n<p>Tell us the name of your website. Searchers see your site
-        name on the results page, such as in your page title or <a href=\"/manual/best-bets.html\">Best
-        Bets</a>. We recommend using the plain language name for your agency or site,
-        such as <em>Social Security Administration</em>.</p>\n\n<h2 id=\"homepage-url\">Homepage
+        class=\"container-fluid\">\n  <div class=\"col-md-8 col-md-offset-2\">\n\n\n
+        \   <!-- do not remove as used to parse in usasearch -->\n    <main id=\"main-container\">\n
+        \     <article class=\"article feature\" style=\"padding:0 30px; margin-top:
+        10px;\">\n  \n  <h1>\n    Editing Your Site Settings\n  </h1>\n  \n\n  <div
+        class='post-content'>\n    <p><a href=\"/index.html\">Search.gov Home</a>
+        &gt; <a href=\"https://search.usa.gov/sites/\">Admin Center</a> &gt; YourSite
+        &gt; Dashboard &gt; Settings</p>\n\n<h2 id=\"display-name\">Display Name</h2>\n\n<p>Tell
+        us the name of your website. Searchers see your site name on the results page,
+        such as in your page title or <a href=\"/manual/best-bets.html\">Best Bets</a>.
+        We recommend using the plain language name for your agency or site, such as
+        <em>Social Security Administration</em>.</p>\n\n<h2 id=\"homepage-url\">Homepage
         URL</h2>\n\n<p>Tell us the homepage URL of your website. Enter a fully qualified
         URL, including https://, https://www, etc.</p>\n\n<p>We use this homepage
         URL to (a) populate your primary <a href=\"/manual/domains.html\">domain</a>
@@ -139,7 +147,7 @@ http_interactions:
         browser’s address bar. We recommend making this handle short and unique, such
         as <em>ssa</em>. If you’d like to edit your site handle, email us at <a href=\"mailto:search@support.digitalgov.gov\">search@support.digitalgov.gov</a>.</p>\n\n<p><strong>Note:</strong>
         If you change the site handle on a live search site, you will lose any analytics
-        that have been gathered.</p>\n\n<p><a href=\"http://search.socialsecurity.gov/search?query=office+locations&amp;affiliate=ssa\"><img
+        that have been gathered.</p>\n\n<p><a href=\"https://search.ssa.gov/search?query=office+locations&amp;affiliate=ssa\"><img
         src=\"https://d3qcdigd1fhos0.cloudfront.net/blog/img/settings.png\" alt=\"Site
         name and handle on SocialSecurity.gov's search results page\" title=\"Site
         name and handle on SocialSecurity.gov's search results page\" /></a></p>\n\n<h2
@@ -161,9 +169,9 @@ http_interactions:
         class=\"label label-info\">dashboard</span></a>\n    \n    <a href=\"/tagged/settings\"><span
         class=\"label label-info\">settings</span></a>\n    \n  </div>\n\n  <div class='time'>\n
         \   \n    \n    \n    \n    <a href=\"/manual/settings.html\">\n      <time>December
-        29, 2017</time>\n    </a>\n  </div>\n\n</article>\n      \n    </div>\n  </div>\n</div>\n\n<footer
+        29, 2017</time>\n    </a>\n  </div>\n\n</article>\n\n    </main>\n  </div>\n</div>\n\n<footer
         class=\"footer\">\n  <div class=\"container\">\n    <p><a href=\"mailto:search@support.digitalgov.gov\">Email
-        us</a> or call us at 202-505-5315</p>\n    <p> An Official Website of the
+        us</a> or call us at 202-969-7426</p>\n    <p> An Official Website of the
         U.S. Government <br />\n      <a href=\"https://www.gsa.gov/portal/category/25729\">Technology
         Transformation Service</a>, <a href=\"https://www.gsa.gov/portal/category/100000\">U.S.
         General Services Administration</a>\n    </p>\n    <ul class=\"footer-links
@@ -184,9 +192,6 @@ http_interactions:
         'text/javascript'; ga.async = true;\n    ga.src = ('https:' == document.location.protocol
         ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';\n    var
         s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga,
-        s);\n  })();\n\n  //]]>\n</script>\n\n<script async type=\"text/javascript\"
-        src=\"https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=GSA\"
-        id=\"_fed_an_ua_tag\"></script>\n\n\n</body>\n</html>\n"
-    http_version: 
-  recorded_at: Thu, 22 Feb 2018 07:10:05 GMT
-recorded_with: VCR 4.0.0
+        s);\n  })();\n\n  //]]>\n</script>\n\n\n</body>\n</html>\n"
+  recorded_at: Tue, 07 Sep 2021 16:12:36 GMT
+recorded_with: VCR 6.0.0

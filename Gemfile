@@ -27,13 +27,16 @@ gem 'resque-scheduler', '~> 4.3.1'
 # Paperclip is deprecated: https://cm-jira.usa.gov/browse/SRCH-702
 gem 'paperclip', '~> 5.2.0'
 gem 'googlecharts', '~> 1.6.12'
-gem 'tweetstream', '~> 2.6.1' # no longer maintained?
+# Using custom fork of tweetstream until vulnerability is resolved
+# (or until we switch to Twitter's API v2):
+# https://github.com/tweetstream/tweetstream/issues/212
+gem 'tweetstream', git: 'https://github.com/GSA/tweetstream'
 gem 'twitter', git: 'https://github.com/GSA/twitter.git', branch: '5-stable'
 gem 'flickraw', '~> 0.9.9'
 gem 'active_scaffold', '~> 3.5.0'
 gem 'active_scaffold_export', git: 'https://github.com/naaano/active_scaffold_export'
 gem "recaptcha", '~> 4.6.3', :require => "recaptcha/rails"
-gem 'newrelic_rpm', '~> 5.0.0'
+gem 'newrelic_rpm', '~> 6.15.0'
 gem 'american_date', '~> 1.1.1'
 gem 'sass', '~> 3.3.0'
 gem 'sass-rails', '~> 5.0.7'
@@ -78,7 +81,7 @@ gem 'retry_block', '~> 1.2.0'
 gem 'aws-sdk', '< 3.0'
 gem 'colorize', '~> 0.8.1'
 gem 'dogstatsd-ruby', '~> 3.2.0'
-gem 'http', '~> 1.0'
+gem 'http', '~> 4.0'
 gem 'robots_tag_parser', '~> 0.1.0', git: 'https://github.com/GSA/robots_tag_parser'
 gem 'loofah', '~> 2.9.0'
 # Locking ref, as later versions (after being renamed & released as "medusa-crawler")
@@ -91,9 +94,10 @@ gem 'robotex', git: 'https://github.com/MothOnMars/robotex'
 gem 'saxerator', '~> 0.9.9'
 gem 'counter_culture', '~> 2.3.0'
 gem 'aasm', '~> 4.12'
-gem 'active_scheduler', '~> 0.5.0'
+gem 'active_scheduler', '~> 0.7.0'
 gem 'retriable', '~> 3.1'
 gem 'cld3', '~> 3.2.3'
+gem 'activejob-uniqueness', '~> 0.2.1'
 
 # Assets-related gems
 gem 'coffee-rails', '~> 5.0.0'
@@ -165,8 +169,8 @@ group :test do
   gem 'poltergeist', '~> 1.18.1'
   gem 'shoulda-matchers', '~> 4.1.1'
   gem 'shoulda-kept-assign-to', '~> 1.1.0'
-  gem 'vcr', '~> 4.0'
-  gem 'webmock', '~> 3.8.3'
+  gem 'vcr', '~> 6.0'
+  gem 'webmock', '~> 3.8'
   gem 'rspec-activemodel-mocks', '~> 1.0.3'
   gem 'rspec_junit_formatter', '~> 0.3.0'
   gem 'rails-controller-testing', '~> 1.0.4'
