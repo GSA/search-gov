@@ -25,7 +25,9 @@ gem 'resque-timeout', '~> 1.0.0'
 gem 'resque-lock-timeout', '~> 0.4.5'
 gem 'resque-scheduler', '~> 4.3.1'
 # Paperclip is deprecated: https://cm-jira.usa.gov/browse/SRCH-702
-gem 'paperclip', '~> 5.2.0'
+# Using a third-party fork as an interim measure.
+gem 'kt-paperclip', '~> 7.0.0'
+gem 'aws-sdk-s3', '~> 1.102.0'
 gem 'googlecharts', '~> 1.6.12'
 # Using custom fork of tweetstream until vulnerability is resolved
 # (or until we switch to Twitter's API v2):
@@ -78,7 +80,6 @@ gem 'rack-cors', '~> 1.1.0', :require => 'rack/cors'
 gem 'hashie', '~> 3.3.0'
 # retry_block is unsupported - consider replacing with retriable
 gem 'retry_block', '~> 1.2.0'
-gem 'aws-sdk', '< 3.0'
 gem 'colorize', '~> 0.8.1'
 gem 'dogstatsd-ruby', '~> 3.2.0'
 gem 'http', '~> 4.0'
