@@ -28,6 +28,16 @@ Metrics/BlockLength:
 RSpec/FactoryBot/CreateList:
   Enabled: false
 
+RSpec/NotToNot:
+  Description: Checks for consistent method usage for negating expectations.
+  Enabled: true
+  EnforcedStyle: not_to
+  SupportedStyles:
+  - not_to
+  - to_not
+  VersionAdded: '1.4'
+  StyleGuide: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/NotToNot
+
 Style/ClassAndModuleChildren:
   Enabled: false
 
