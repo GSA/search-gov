@@ -1,11 +1,12 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 5.2.0'
+gem 'rails', '~> 6.0.0'
 
 gem 'rake', '~> 12.3.2'
 gem 'rack-contrib', '~> 2.1.0'
 gem 'rails-observers', '~> 0.1.5'
-gem 'responders', '~> 2.0'
+#gem 'responders', '~> 2.0'
+gem 'responders'
 gem 'mysql2', '~> 0.4.4'
 gem 'curb', '~> 0.9.4'
 gem 'haml', '~> 5.2.1'
