@@ -93,7 +93,7 @@ gem 'medusa', git: 'https://github.com/brutuscat/medusa-crawler',
 # is resolved
 gem 'robotex', git: 'https://github.com/MothOnMars/robotex'
 gem 'saxerator', '~> 0.9.9'
-gem 'counter_culture', '~> 2.3.0'
+gem 'counter_culture', '~> 2.9.0'
 gem 'aasm', '~> 4.12'
 gem 'active_scheduler', '~> 0.7.0'
 gem 'retriable', '~> 3.1'

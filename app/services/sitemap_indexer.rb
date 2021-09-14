@@ -52,7 +52,6 @@ class SitemapIndexer
   ensure
     searchgov_domain.index_urls
     set_counter_callbacks
-    update_counter_caches
   end
 
   def process_entry(entry)
@@ -105,12 +104,5 @@ class SitemapIndexer
   def set_counter_callbacks
     SearchgovUrl.set_callback :create, :after, :_update_counts_after_create
     SearchgovUrl.set_callback :update, :after, :_update_counts_after_update
-  end
-
-  def update_counter_caches
-    SearchgovUrl.counter_culture_fix_counts(
-      only: :searchgov_domain,
-      where: { searchgov_domains: { id: searchgov_domain.id } }
-    )
   end
 end

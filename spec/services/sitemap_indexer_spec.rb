@@ -30,24 +30,6 @@ describe SitemapIndexer do
       expect { index }.to change{ SearchgovUrl.count }.by(1)
     end
 
-    context 'when updating the counter caches' do
-      it 'updates the counter cache columns' do
-        index
-        expect(searchgov_domain.reload.urls_count).to eq 1
-        expect(searchgov_domain.reload.unfetched_urls_count).to eq 1
-      end
-
-      context 'when multiple searchgov_domains exist' do
-        let!(:other_domain) do
-          SearchgovDomain.create!(domain: 'other.gov', urls_count: 10)
-        end
-
-        it 'only updates the counts for a single domain' do
-          expect { index }.not_to(change{ other_domain.reload.urls_count })
-        end
-      end
-    end
-
     context 'when the sitemap specifies a lastmod value' do
       let(:sitemap_entries) do
         '<url><loc>http://agency.gov/doc1</loc><lastmod>2018-01-01T12:00:00+00:00</lastmod></url>'
