@@ -48,7 +48,7 @@ class Sites::RssFeedsController < Sites::SetupSiteController
           flash: { success: "You have updated #{@rss_feed.name}." }
       else
         build_url
-        render action: :edit
+        render :edit
       end
     end
   end
