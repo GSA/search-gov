@@ -1,7 +1,5 @@
 # This feature file has been copied and MINIMALLY updated from the original
-# legacy_search.feature file. Once these tests are all passing against the current,
-# responsive SERP, we should consolidate these with the other features in
-# responsive_search.feature and mobile_searches.feature
+# legacy_search.feature file.
 Feature: Search
   In order to get government-related information from specific affiliate agencies
   As a site visitor

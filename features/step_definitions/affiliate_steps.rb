@@ -38,117 +38,13 @@ Given /^the following( search consumer| SearchGov)? Affiliates exist:$/ do |affi
   ElasticNewsItem.recreate_index
 end
 
-Given /^the following Misspelling exist:$/ do |table|
-  table.hashes.each do |hash|
-    Misspelling.create!(:wrong => hash["wrong"], :rite => hash["rite"])
-  end
-end
-
-Then /^the search bar should have SAYT enabled$/ do
-  page.should have_selector("input[id='search_query'][type='text'][class='usagov-search-autocomplete'][autocomplete='off']")
-end
-
-Then /^the search bar should not have SAYT enabled$/ do
-  page.should_not have_selector("input[id='search_query'][type='text'][class='usagov-search-autocomplete'][autocomplete='off']")
-end
-
-Then /^the page should have SAYT enabled for (.+)$/ do |affiliate_name|
-  page.body.should include(%Q[var usasearch_config = { siteHandle:"#{affiliate_name}" };])
-  page.body.should include(%q[script.src = "http://www.example.com/javascripts/remote.loader.js";])
-end
-
-Then /^I should see the page with favicon "([^"]*)"$/ do |favicon_url|
-  page.should have_selector("link[rel='shortcut icon'][href='#{favicon_url}']")
-end
-
-Then /^I should not see the page with favicon "([^"]*)"$/ do |favicon_url|
-  page.should_not have_selector("link[rel='shortcut icon'][href='#{favicon_url}']")
-end
-
-Then /^I should see the page with affiliate stylesheet "([^\"]*)"/ do |stylesheet_name|
-  page.should have_selector("link[type='text/css'][href*='#{stylesheet_name}']")
-end
-
-Then /^I should not see the page with affiliate stylesheet "([^\"]*)"/ do |stylesheet_name|
-  page.should_not have_selector("link[type='text/css'][href*='#{stylesheet_name}']")
-end
-
-Then /^I should see the page with external affiliate stylesheet "([^\"]*)"/ do |stylesheet_name|
-  page.should have_selector("link[type='text/css'][href='#{stylesheet_name}']")
-end
-
-Then /^I should not see the page with external affiliate stylesheet "([^\"]*)"/ do |stylesheet_name|
-  page.should_not have_selector("link[type='text/css'][href='#{stylesheet_name}']")
-end
-
-Then /^affiliate SAYT suggestions for "([^\"]*)" should be enabled$/ do |affiliate_name|
-  affiliate = Affiliate.find_by_name(affiliate_name)
-  page.body.should match(%r{var usagov_sayt_url = "http://www.example.com/sayt\?aid=#{affiliate.id}})
-end
-
-Then /^affiliate SAYT suggestions for "([^\"]*)" should be disabled$/ do |affiliate_name|
-  affiliate = Affiliate.find_by_name(affiliate_name)
-  page.body.should_not match("aid=#{affiliate.id}")
-end
-
-Then /^the "([^\"]*)" button should be checked$/ do |field|
-  page.should have_selector "input[type='radio'][checked='checked'][id='#{field}']"
-end
-
-Then /^(.+) for site named "([^\"]*)"$/ do |step, site_display_name|
-  site = Affiliate.find_by_display_name site_display_name
-  %{#{step} within "tr#site_#{site.id}"}
-end
-
 Then /^I should see the code for (English|Spanish) language sites$/ do |locale|
   locales = { 'English' => 'en', 'Spanish' => 'es' }
   page.should have_selector("#embed_code_textarea_#{locales[locale]}")
 end
 
-Then /^I should see the affiliate custom css$/ do
-  page.should have_selector("head style")
-end
-
-Then /^the "([^"]*)" theme should be selected$/ do |theme|
-  field_labeled(theme)['checked'].should be_true
-end
-
 Then /^the "([^"]*)" field should be disabled$/ do |label|
   field_labeled(label)['disabled'].should == 'disabled'
-end
-
-Then /^the "Custom" theme should be visible$/ do
-  page.should_not have_selector(".hidden-custom-theme")
-end
-
-Then /^the "Custom" theme should not be visible$/ do
-  page.should have_selector(".hidden-custom-theme")
-end
-
-Then /^I should see the page with internal CSS "([^"]*)"$/ do |css|
-  page.body.should match(css)
-end
-
-Then /^I should not see the page with internal CSS "([^"]*)"$/ do |css|
-  page.body.should_not match(css)
-end
-
-Then /^I should see "([^"]*)" image$/ do |image_file_name|
-  page.should have_selector("img[src*='#{image_file_name}']")
-end
-
-Then /^I should not see "([^"]*)" image$/ do |image_file_name|
-  page.should_not have_selector("img[src*='#{image_file_name}']")
-end
-
-Then /^I should not see the SERP header$/ do
-  page.should_not have_selector('#header')
-end
-
-Then /^I should not see tainted SERP (header|footer)$/ do |section|
-  Affiliate::BANNED_HTML_ELEMENTS_FROM_HEADER_AND_FOOTER.each do |element|
-    page.should_not have_selector("##{section} #{element}")
-  end
 end
 
 Given /^the following Connections exist for the affiliate "([^"]*)":$/ do |affiliate_name, table|
@@ -157,11 +53,6 @@ Given /^the following Connections exist for the affiliate "([^"]*)":$/ do |affil
     connected_affiliate = Affiliate.find_by_name(hash[:connected_affiliate])
     affiliate.connections.create!(connected_affiliate: connected_affiliate, label: hash[:display_name])
   end
-end
-
-Then /^the "([^"]*)" field should contain site ID for (.+)$/ do |label, affiliate_name|
-  affiliate = Affiliate.find_by_name(affiliate_name)
-  step %{the "#{label}" field should contain "#{affiliate.id}"}
 end
 
 Given /^the following SystemAlerts exist:$/ do |table|
