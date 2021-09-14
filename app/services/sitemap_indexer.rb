@@ -21,7 +21,7 @@ class SitemapIndexer
 
   def sitemaps_stream
     @sitemaps_stream ||= Saxerator.parser(sitemap).
-                           within('sitemapindex').for_tag('sitemap')
+      within('sitemapindex').for_tag('sitemap')
   end
 
   def sitemap_index?
@@ -33,7 +33,7 @@ class SitemapIndexer
 
   def sitemap_entries_stream
     @sitemap_entries_stream ||= Saxerator.parser(sitemap).
-                                  within('urlset').for_tag('url')
+      within('urlset').for_tag('url')
   end
 
   def enqueue_sitemaps
