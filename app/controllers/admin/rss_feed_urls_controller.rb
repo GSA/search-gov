@@ -2,11 +2,12 @@ class Admin::RssFeedUrlsController < Admin::AdminController
   active_scaffold :rss_feed_url do |config|
     config.label = 'Rss Feed Urls'
     config.list.sorting = { 'rss_feed_urls.url' => 'asc' }
-    config.actions = %i(list show search export)
+    config.actions = %i(list show search)
     config.columns = [:id, :url, :language, :last_crawl_status, :last_crawled_at, :rss_feeds]
     config.columns[:rss_feeds].associated_limit = 0
     config.show.columns = [:id, :language, :last_crawl_status, :last_crawled_at, :created_at, :updated_at]
-    config.export.columns.exclude(:rss_feeds)
+    # SRCH-2287
+    # config.export.columns.exclude(:rss_feeds)
     config.action_links.add('news_items', label: 'news items',
                                           type: :member, page: true)
     config.action_links.add('destroy_news_items', label: 'Delete news items with 404',

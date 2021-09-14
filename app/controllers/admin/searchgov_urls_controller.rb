@@ -1,7 +1,9 @@
 class Admin::SearchgovUrlsController < Admin::AdminController
   active_scaffold :searchgov_url do |config|
     config.label = 'Search.gov URLs'
-    config.actions = %i[create list delete export field_search]
+    config.actions = %i[create list delete field_search]
+    # SRCH-2287
+    # config.actions = %i[create list delete export field_search]
     config.columns = %i[id url last_crawl_status last_crawled_at created_at]
     config.create.columns = [:url]
     config.action_links.add 'fetch',

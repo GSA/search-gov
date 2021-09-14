@@ -5,6 +5,7 @@ describe Admin::AffiliateBoostedContentsController do
 
   describe 'export columns' do
     it 'contains the correct columns in the correct order' do
+      pending 'SRCH-2287'
       expect(config.export.columns.map(&:name)).to eq(%i(title url description
         publish_start_on publish_end_on boosted_content_keywords match_keyword_values_only status))
     end
