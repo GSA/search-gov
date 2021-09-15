@@ -1,4 +1,4 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
 describe Admin::AffiliatesController do
   fixtures :users, :affiliates, :memberships, :languages
@@ -17,7 +17,7 @@ describe Admin::AffiliatesController do
   end
 
   context 'when not logged in' do
-    it 'should redirect to the login page' do
+    it 'redirects to the login page' do
       get :index
       expect(response).to redirect_to(login_path)
     end
@@ -31,7 +31,7 @@ describe Admin::AffiliatesController do
         @affiliate = affiliates('basic_affiliate')
       end
 
-      it 'should redirect to the affiliate analytics page for the affiliate id passed' do
+      it 'redirects to the affiliate analytics page for the affiliate id passed' do
         get :analytics, params: { id: @affiliate.id }
         expect(response).to redirect_to new_site_queries_path(@affiliate)
       end
@@ -39,7 +39,7 @@ describe Admin::AffiliatesController do
   end
 
   describe '#edit' do
-    context 'When logged in as an affiliate admin' do
+    context 'when logged in as an affiliate admin' do
       render_views
       let(:affiliate) { affiliates('basic_affiliate') }
 
@@ -61,7 +61,7 @@ describe Admin::AffiliatesController do
       UserSession.create(users(:affiliate_admin))
     end
 
-    context 'Active Scaffold configuration' do
+    context 'when configuring Active Scaffold' do
       let(:update_columns) { config.update.columns }
       let(:settings_columns) do
         %i[ active agency bing_v5_key display_name domain_control_validation_code fetch_concurrency ga_web_property_id
@@ -94,25 +94,25 @@ describe Admin::AffiliatesController do
 
       describe 'Settings subgroup' do
         it 'contains the specified columns' do
-          expect(update_columns.find{ |c| c.label == 'Settings' }.names).to match_array(settings_columns)
+          expect(update_columns.find { |c| c.label == 'Settings' }.names).to match_array(settings_columns)
         end
       end
 
       describe "'Enable/disable Settings' subgroup" do
         it 'contains the specified columns' do
-          expect(update_columns.find{ |c| c.label == 'Enable/disable Settings' }.names).to match_array(enable_disable_columns)
+          expect(update_columns.find { |c| c.label == 'Enable/disable Settings' }.names).to match_array(enable_disable_columns)
         end
       end
 
       describe 'Display Settings subgroup' do
         it 'contains the specified columns' do
-          expect(update_columns.find{ |c| c.label == 'Display Settings' }.names).to match_array(display_columns)
+          expect(update_columns.find { |c| c.label == 'Display Settings' }.names).to match_array(display_columns)
         end
       end
 
       describe 'Analytics-Tracking Code subgroup' do
         it 'contains the specified columns' do
-          expect(update_columns.find{ |c| c.label == 'Analytics-Tracking Code' }.names).to match_array(analytics_columns)
+          expect(update_columns.find { |c| c.label == 'Analytics-Tracking Code' }.names).to match_array(analytics_columns)
         end
       end
     end
@@ -126,7 +126,7 @@ describe Admin::AffiliatesController do
       UserSession.create(users(:affiliate_admin))
     end
 
-    context 'Active Scaffold configuration' do
+    context 'when configuring Active Scaffold' do
       let(:export_columns) do
         %i[ active
             agency
@@ -184,7 +184,7 @@ describe Admin::AffiliatesController do
 
       describe 'columns' do
         it 'contains the specified columns' do
-          expect(config.export.columns.map(&:name)).to match_array(export_columns)
+          expect(config.export.columns.map(&:itself)).to match_array(export_columns)
         end
       end
     end
