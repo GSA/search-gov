@@ -17,8 +17,10 @@
           .span-24.main
             - if @parent_page_title.present? and @page_title.present?
               = breadcrumbs([link_to("Super Admin", admin_home_page_path), link_to(@parent_page_title, { :action => :index }), @page_title])
-            - elsif @page_title || (active_scaffold_config && active_scaffold_config.label)
-              = breadcrumbs([link_to("Super Admin", admin_home_page_path), @page_title || active_scaffold_config.label])
+            - elsif @page_title
+              = breadcrumbs([link_to("Super Admin", admin_home_page_path), @page_title])
+            - elsif controller.class.uses_active_scaffold?
+              = breadcrumbs([link_to("Super Admin", admin_home_page_path), controller.active_scaffold_config.label])
             .span-10.prepend-7.append-7= show_flash_messages
             .clear
             = yield
