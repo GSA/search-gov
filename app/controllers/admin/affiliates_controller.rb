@@ -42,8 +42,7 @@ class Admin::AffiliatesController < Admin::AdminController
                          header_tagline_font_style
                          related_sites_dropdown_label
                          footer_fragment
-                         recent_user_activity
-                        ]
+                         recent_user_activity]
 
     all_columns |= virtual_columns
     config.columns = all_columns
