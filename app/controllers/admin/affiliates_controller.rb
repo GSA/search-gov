@@ -41,33 +41,33 @@ class Admin::AffiliatesController < Admin::AdminController
                          header_tagline_font_size
                          header_tagline_font_style
                          related_sites_dropdown_label
-                         footer_fragment]
+                         footer_fragment
+                         recent_user_activity]
     all_columns |= virtual_columns
     config.columns = all_columns
 
     list_columns = %i[id display_name name website site_domains search_engine created_at updated_at recent_user_activity]
     config.list.columns = list_columns
 
-    # SRCH-2287
-    # export_columns = [list_columns, all_columns].flatten.uniq
-    # actions.add :export
-    # config.export.columns = export_columns
-    # config.export.default_deselected_columns = %i[api_access_key
-    #                                               dc_contributor
-    #                                               dc_subject
-    #                                               dc_publisher
-    #                                               external_tracking_code
-    #                                               fetch_concurrency
-    #                                               footer_fragment
-    #                                               ga_web_property_id
-    #                                               header_tagline_font_family
-    #                                               header_tagline_font_size
-    #                                               header_tagline_font_style
-    #                                               last_month_query_count
-    #                                               navigation_dropdown_label
-    #                                               related_sites_dropdown_label
-    #                                               submitted_external_tracking_code
-    #                                               theme]
+    export_columns = [list_columns, all_columns].flatten.uniq
+    actions.add :export
+    config.export.columns = export_columns
+    config.export.default_deselected_columns = %i[api_access_key
+                                                  dc_contributor
+                                                  dc_subject
+                                                  dc_publisher
+                                                  external_tracking_code
+                                                  fetch_concurrency
+                                                  footer_fragment
+                                                  ga_web_property_id
+                                                  header_tagline_font_family
+                                                  header_tagline_font_size
+                                                  header_tagline_font_style
+                                                  last_month_query_count
+                                                  navigation_dropdown_label
+                                                  related_sites_dropdown_label
+                                                  submitted_external_tracking_code
+                                                  theme]
 
     config.list.sorting = { created_at: :desc }
 

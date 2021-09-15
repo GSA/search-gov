@@ -36,8 +36,8 @@ gem 'googlecharts', '~> 1.6.12'
 gem 'tweetstream', git: 'https://github.com/GSA/tweetstream'
 gem 'twitter', git: 'https://github.com/GSA/twitter.git', branch: '5-stable'
 gem 'flickraw', '~> 0.9.9'
-gem 'active_scaffold'
-#gem 'active_scaffold_export', git: 'https://github.com/naaano/active_scaffold_export'
+gem 'active_scaffold', '~> 3.6.2'
+gem 'active_scaffold_export', '~> 3.4.0'
 gem "recaptcha", '~> 4.6.3', :require => "recaptcha/rails"
 gem 'newrelic_rpm', '~> 6.15.0'
 gem 'american_date', '~> 1.1.1'
@@ -143,7 +143,7 @@ group :development do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.8.2'
+  gem 'rspec-rails', '~> 5.0.2'
   gem 'rspec-json_expectations', '~> 2.1.0'
   gem 'rspec-its', '~> 1.2.0'
   gem 'email_spec', '~> 2.1.1'

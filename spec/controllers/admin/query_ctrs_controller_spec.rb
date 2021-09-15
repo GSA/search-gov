@@ -28,7 +28,7 @@ describe Admin::QueryCtrsController do
       end
 
       it 'should allow the admin to see query CTRs for some search module on a given site' do
-        expect(response).to be_success
+        expect(response).to be_successful
       end
 
       it { is_expected.to assign_to(:query_ctrs).with(%w(first second)) }
