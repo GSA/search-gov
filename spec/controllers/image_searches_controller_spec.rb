@@ -59,7 +59,7 @@ describe ImageSearchesController do
         it { is_expected.to respond_with :success }
 
         it 'renders the results in json' do
-          expect(response.content_type).to eq 'application/json'
+          expect(response.media_type).to eq 'application/json'
           expect(response.body).to eq(search_results_json)
         end
       end
@@ -100,7 +100,7 @@ describe ImageSearchesController do
         end
 
         it 'sets the format to json' do
-          expect(response.content_type).to eq('application/json')
+          expect(response.media_type).to eq('application/json')
         end
 
         it 'sanitizes the query term' do
