@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class Admin::RssFeedUrlsController < Admin::AdminController
   active_scaffold :rss_feed_url do |config|
     config.label = 'Rss Feed Urls'
     config.list.sorting = { 'rss_feed_urls.url' => 'asc' }
-    config.actions = %i(list show search)
+    config.actions = %i[list show search]
     config.columns = [:id, :url, :language, :last_crawl_status, :last_crawled_at, :rss_feeds]
     config.columns[:rss_feeds].associated_limit = 0
     config.show.columns = [:id, :language, :last_crawl_status, :last_crawled_at, :created_at, :updated_at]
