@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Sites::ClickDrilldownsController < Sites::SetupSiteController
-  include CSVResponsive
+  include CsvResponsive
   HEADER_FIELDS = [
     'Date',
     'Time',

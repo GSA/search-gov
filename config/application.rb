@@ -18,6 +18,7 @@ module Usasearch
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
+    config.autoloader = :zeitwerk
 
     # Rails 4 way of “eager_load with autoload fallback. Note need to revisit better
     # solution. See https://collectiveidea.com/blog/archives/2016/07/22/solutions-to-potential-upgrade-problems-in-rails-5
