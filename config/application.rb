@@ -22,7 +22,7 @@ module Usasearch
 
     # Rails 4 way of “eager_load with autoload fallback. Note need to revisit better
     # solution. See https://collectiveidea.com/blog/archives/2016/07/22/solutions-to-potential-upgrade-problems-in-rails-5
-    config.enable_dependency_loading = true
+    # config.enable_dependency_loading = true
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
