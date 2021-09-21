@@ -38,30 +38,8 @@ Given /^the following featured collections exist for the affiliate "([^"]*)":$/ 
   end
 end
 
-Then /^the following featured collection keywords exist for featured collection titled "([^"]*)":$/ do |featured_collection_title, table|
-  featured_collection = FeaturedCollection.find_by_title(featured_collection_title)
-  featured_collection.featured_collection_keywords.delete_all
-  table.hashes.each do |hash|
-    featured_collection.featured_collection_keywords.build(:value => hash['value'])
-  end
-  featured_collection.save!
-  ElasticFeaturedCollection.commit
-end
-
-Then /^I should see a featured collection title with "([^"]*)" highlighted$/ do |highlighted|
-  page.should have_selector(".featured-collection h2 strong", :text => highlighted)
-end
-
 Then /^I should see a featured collection link title with "([^"]*)" highlighted$/ do |highlighted|
   page.should have_selector(".featured-collection ul strong", :text => highlighted)
-end
-
-Then /^I should see a featured collection image section$/ do
-  page.should have_selector(".featured-collection .image")
-end
-
-Then /^I should not see a featured collection image section$/ do
-  page.should_not have_selector(".featured-collection .image")
 end
 
 Given /^the following featured collection links exist for featured collection titled "([^"]*)":$/ do |featured_collection_title, table|
@@ -71,12 +49,6 @@ Given /^the following featured collection links exist for featured collection ti
   end
   featured_collection.save!
   ElasticFeaturedCollection.commit
-end
-
-Then /^I should see a link to "([^"]*)" with url for "([^"]*)" on the (left|right) featured collection link list$/ do |link_title, url, position|
-  within ".featured-collection li.#{position}" do
-    page.should have_link link_title, href: url
-  end
 end
 
 When /^(?:|I )add the following best bets graphics links:$/ do |table|

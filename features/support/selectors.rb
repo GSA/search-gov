@@ -56,7 +56,7 @@ module HtmlSelectorsHelpers
       '#search .search-all-sites'
     when /the main menu/
         '#main-menu'
-    when /the mobile footer/
+    when /the footer/
         '#footer-wrapper'
     when /form tooltip/
         '.form .tooltip'

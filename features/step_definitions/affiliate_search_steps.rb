@@ -93,19 +93,8 @@ Then /^I should see "([^\"]*)" in bold font$/ do |text|
   page.should have_selector("strong", :text => text)
 end
 
-Then /^I should not see the indexed documents section$/ do
-  page.should_not have_selector("#indexed_documents")
-end
-
 Given /^the following Medline Topics exist:$/ do |table|
   table.hashes.each { |hash| MedTopic.create! hash }
-end
-
-Given /^the following Medline Sites exist:$/ do |table|
-  table.hashes.each do |hash|
-    med_topic = MedTopic.where(hash.slice('medline_title', 'locale')).first
-    med_topic.med_sites.create!(hash.slice('title', 'url'))
-  end
 end
 
 Given /^the following Related Medline Topics for "([^\"]*)" in (English|Spanish) exist:$/ do |medline_title, language, table|
@@ -116,12 +105,6 @@ Given /^the following Related Medline Topics for "([^\"]*)" in (English|Spanish)
                                      :title => hash[:medline_title],
                                      :url => hash[:url])
   end
-end
-
-Then /^I should see (.+)\'s date in the (English|Spanish) search results$/ do |duration, locale|
-  date = Date.current.send(duration.to_sym)
-  date_string = locale == 'Spanish' ? date.strftime("%-d/%-m/%Y") : date.strftime("%-m/%-d/%Y")
-  page.should have_content(date_string)
 end
 
 Then /^I should see (\d+) search result title links? with url for "([^"]*)"$/ do |count, url|
@@ -154,18 +137,6 @@ Given /^the following Tweets exist:$/ do |table|
   ElasticTweet.commit
 end
 
-Then /^I should see (\d+) collapsible facet values?$/ do |count|
-  page.should have_selector('.collapsible', :count => count)
-end
-
-Then /^I should not see collapsible facet value$/ do
-  page.should_not have_selector('.collapsible')
-end
-
 Then /^I should see a link to "([^"]*)" with text "([^"]*)"$/ do |url, text|
   page.should have_link(text, :href => url)
-end
-
-Then /^a Tweet click should be logged/ do
-  Rails.logger.should_receive(:info).with("[Click] ")
 end
