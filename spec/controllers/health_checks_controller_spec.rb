@@ -5,7 +5,7 @@ describe HealthChecksController do
     context 'when the database is accessible' do
       it 'produces a successful response' do
         get :new
-        expect(response).to be_success
+        expect(response).to be_successful
       end
     end
 

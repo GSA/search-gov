@@ -26,7 +26,7 @@ describe Admin::SearchModuleCtrsController do
       end
 
       it 'should allow the admin to see search module CTRs' do
-        expect(response).to be_success
+        expect(response).to be_successful
       end
 
       it { is_expected.to assign_to(:search_module_ctrs).with(%w(first second)) }

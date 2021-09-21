@@ -12,7 +12,7 @@ describe Api::V2::AgenciesController do
 
       it 'should return valid JSON with the organization codes array in alpha order' do
         get :search, params: { query: 'the nps' }, format: 'json'
-        expect(response).to be_success
+        expect(response).to be_successful
         expect(response.body).to eq({name: @agency.name, abbreviation: @agency.abbreviation,
                                  organization_codes: @agency.agency_organization_codes.collect(&:organization_code).sort }.to_json)
       end
@@ -21,7 +21,7 @@ describe Api::V2::AgenciesController do
     context 'when search returns nil or raises an exception' do
       it 'should return error string' do
         get :search, params: { query: 'error' }, format: 'json'
-        expect(response).not_to be_success
+        expect(response).not_to be_successful
         expect(response.body).to match(/No matching agency could be found./)
       end
     end
