@@ -184,7 +184,7 @@ describe Admin::AffiliatesController do
 
       describe 'columns' do
         it 'contains the specified columns' do
-          expect(config.export.columns.map(&:itself)).to match_array(export_columns)
+          expect(config.export.columns.to_a).to match_array(export_columns)
         end
       end
     end
