@@ -11,7 +11,7 @@ gem 'curb', '~> 0.9.4'
 gem 'haml', '~> 5.2.1'
 gem 'will_paginate', '~> 3.3.0'
 gem 'nokogiri', '~> 1.11.1'
-gem 'authlogic', '~> 3.8.0'
+gem 'authlogic', '~> 6.4.1'
 # Temporarily locking gem to specific ref. Newer versions include incompatible gems
 gem 'omniauth_login_dot_gov', git: 'https://github.com/18f/omniauth_login_dot_gov',
                               ref: '08ce9b5322efb2d82b2df3f6d774308c4028ee6c'
@@ -25,7 +25,9 @@ gem 'resque-timeout', '~> 1.0.0'
 gem 'resque-lock-timeout', '~> 0.4.5'
 gem 'resque-scheduler', '~> 4.3.1'
 # Paperclip is deprecated: https://cm-jira.usa.gov/browse/SRCH-702
-gem 'paperclip', '~> 5.2.0'
+# Using a third-party fork as an interim measure.
+gem 'kt-paperclip', '~> 7.0.0'
+gem 'aws-sdk-s3', '~> 1.102.0'
 gem 'googlecharts', '~> 1.6.12'
 # Using custom fork of tweetstream until vulnerability is resolved
 # (or until we switch to Twitter's API v2):
@@ -78,7 +80,6 @@ gem 'rack-cors', '~> 1.1.0', :require => 'rack/cors'
 gem 'hashie', '~> 3.3.0'
 # retry_block is unsupported - consider replacing with retriable
 gem 'retry_block', '~> 1.2.0'
-gem 'aws-sdk', '< 3.0'
 gem 'colorize', '~> 0.8.1'
 gem 'dogstatsd-ruby', '~> 3.2.0'
 gem 'http', '~> 4.0'
@@ -92,7 +93,7 @@ gem 'medusa', git: 'https://github.com/brutuscat/medusa-crawler',
 # is resolved
 gem 'robotex', git: 'https://github.com/MothOnMars/robotex'
 gem 'saxerator', '~> 0.9.9'
-gem 'counter_culture', '~> 2.3.0'
+gem 'counter_culture', '~> 2.9.0'
 gem 'aasm', '~> 4.12'
 gem 'active_scheduler', '~> 0.7.0'
 gem 'retriable', '~> 3.1'
