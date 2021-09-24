@@ -22,7 +22,7 @@ describe Admin::SuperfreshUrlsBulkUploadController do
 
       it 'should allow the admin to manage superfresh urls' do
         get :index
-        expect(response).to be_success
+        expect(response).to be_successful
       end
     end
   end
