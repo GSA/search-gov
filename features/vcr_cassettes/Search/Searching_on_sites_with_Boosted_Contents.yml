@@ -516,4 +516,514 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
   recorded_at: Tue, 07 Sep 2021 16:19:40 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=notes%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 11:50:02 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - C5AA5BA5B79B41F38227B75723E5E82E
+      Bingapis-Sessionid:
+      - 065CFE1BF6124B1BAD9694357D6D76B6
+      X-Msedge-Clientid:
+      - 347A115A79A167131DF30192785C6625
+      X-Msapi-Userstate:
+      - bd28
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=271,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: C5AA5BA5B79B41F38227B75723E5E82E Ref B: BLUEDGE0522 Ref C: 2021-10-06T11:51:02Z'
+      Apim-Request-Id:
+      - e3621c0e-21c8-43b8-a388-a470243c42b2
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 11:51:02 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "notes
+        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=notes+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 11500000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "5 FAH-1 H-610 USING DIPLOMATIC NOTES", "url": "https:\/\/fam.state.gov\/FAM\/05FAH01\/05FAH010610.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/fam.state.gov\/FAM\/05FAH01\/05FAH010610.html",
+        "snippet": "Diplomatic Notes must be prepared as first-person notes or
+        third-person notes in accordance with the guidelines in this chapter. The
+        Executive Secretariat InfoLink Web site contains guidance on diplomatic notes
+        that need approval or will be signed by a seventh‑floor principal. 5 FAH-1
+        H-612 TYPES OF DIPLOMATIC NOTES", "dateLastCrawled": "2021-09-29T16:29:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "The Leader Notes Tool - United States Army", "url": "https:\/\/www.ncoworldwide.army.mil\/Resources\/Leader-Tools\/The-Leader-Notes-Tool\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncoworldwide.army.mil\/Resources\/Leader-Tools\/The-Leader-Notes-Tool",
+        "snippet": "BLUF: The Leader Notes tool was developed to provide NCOs with
+        a guide for tracking their daily activities, document Soldier information,
+        plan, and organize their day-to-day tasks. Note-taking is known to improve
+        information processing, storage, and retrieval, all of which are key aspects
+        of effective communication. By improving the note-taking skills of NCOs, they
+        may be able to improve the ...", "dateLastCrawled": "2021-10-01T00:54:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Individual - Treasury Notes: Rates & Terms", "url": "https:\/\/www.treasurydirect.gov\/indiv\/research\/indepth\/tnotes\/res_tnote_rates.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.treasurydirect.gov\/indiv\/research\/indepth\/tnotes\/res_tnote_rates.htm",
+        "snippet": "Treasury Notes: Rates & Terms . Notes are issued in terms
+        of 2, 3, 5, 7, and 10 years, and are offered in multiples of $100. Price and
+        Interest. The price and interest rate of a Note are determined at auction.
+        The price may be greater than, less than, or equal to the Note''s par amount.
+        (See rates in recent auctions.)", "dateLastCrawled": "2021-10-03T07:11:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Field Notes | CDC", "url": "https:\/\/www.cdc.gov\/publichealthgateway\/field-notes\/index.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/publichealthgateway\/field-notes",
+        "snippet": "Field Notes. Field Notes is a feature from CDC’s Center for
+        State, Tribal, Local, and Territorial Support that spotlights success and
+        innovation in state, tribal, local, and territorial health agencies. We hope
+        Field Notes will inspire similar accomplishments and foster connections
+        throughout the public health community.", "dateLastCrawled": "2021-09-28T03:12:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Lotus Notes Storage Facility - loc.gov", "url": "https:\/\/www.loc.gov\/preservation\/digital\/formats\/fdd\/fdd000433.shtml",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/preservation\/digital\/formats\/fdd\/fdd000433.shtml",
+        "snippet": "The Notes Storage Facility (NSF) non-relational database file
+        is used by IBM Lotus Notes and Domino software to store different kinds
+        of data stored in Notes including email messages, chat and instant messages,
+        documents, appointments and other calendar entries. A Note is similar in concept
+        an object store because it normally contains both an ...", "dateLastCrawled":
+        "2021-07-31T19:52:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5", "name": "SOAP
+        Notes - StatPearls - NCBI Bookshelf", "url": "https:\/\/www.ncbi.nlm.nih.gov\/books\/NBK482263\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/books\/NBK482263",
+        "snippet": "Medical notes have evolved into electronic documentation to
+        accommodate these needs. However, an unintended consequence of electronic
+        documentation is the ability to incorporate large volumes of data easily.
+        These data-filled notes risk burdening a busy clinician if the data are
+        not useful.", "dateLastCrawled": "2021-10-03T12:11:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Committee Obtains Key Evidence of President Trump’s ...", "url":
+        "https:\/\/oversight.house.gov\/news\/press-releases\/committee-obtains-key-evidence-of-president-trump-s-attempts-to-overturn-the",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/oversight.house.gov\/news\/press-releases\/committee-obtains-key-evidence-of...",
+        "snippet": "Washington, D.C. (July 30, 2021)—Today, Rep. Carolyn B. Maloney,
+        the Chairwoman of the Committee on Oversight and Reform, released handwritten
+        notes taken by then-Acting Deputy Attorney General Richard P. Donoghue of
+        a December 27, 2020, phone call with former President Donald J. Trump and
+        former Acting Attorney General Jeffrey Rosen. These notes reveal attempts
+        by former", "dateLastCrawled": "2021-10-01T06:11:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "ParaRegs and Notes", "url": "https:\/\/www.cdss.ca.gov\/hearings-and-appeals\/para-regs-and-notes",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdss.ca.gov\/hearings-and-appeals\/para-regs-and-notes",
+        "snippet": "Notes from the SHD Training Bureau. SHD issued Notes from
+        the Training Bureau (\"NTB\") from 1995 through 2010. Similar to E-Notes,
+        the purpose of the NTB was to communicate information to SHD Administrative
+        Law Judges. NTB have also been made available to stakeholders.", "dateLastCrawled":
+        "2021-09-30T02:13:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8", "name": "Field
+        Notes for Public Land Survey Township Plats", "url": "https:\/\/catalog.archives.gov\/id\/566714",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/catalog.archives.gov\/id\/566714",
+        "snippet": "The field notes contain detailed descriptions of surveying the
+        township and section lines as well as setting corner and other survey monuments
+        or marking trees as monuments. The notes also include descriptive information
+        about topography, natural vegetation, and potential uses of the land surveyed.",
+        "dateLastCrawled": "2021-10-02T06:22:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9", "name":
+        "Probate Examiner Notes | Superior Court of California ...", "url": "https:\/\/www.sdcourt.ca.gov\/sdcourt\/probate2\/probatenotes",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sdcourt.ca.gov\/sdcourt\/probate2\/probatenotes",
+        "snippet": "The notes will be updated, if necessary, after filing of additional
+        documents or responses, and the update will ordinarily be posted to this website
+        each evening. How to Contact a Probate Examiner. The name of the probate examiner
+        assigned to your petition is listed at the beginning of the Probate Notes.",
+        "dateLastCrawled": "2021-10-02T02:18:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "User Notes - Census", "url": "https:\/\/www.census.gov\/programs-surveys\/geography\/technical-documentation\/user-note.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.census.gov\/programs-surveys\/geography\/technical-documentation\/user-note.html",
+        "snippet": "User Notes. These user notes describe corrections, errata,
+        known errors, or situations that users of our data products should be aware
+        of. Here are all available errata and user notes for the TIGER\/Line Shapefiles
+        and Files. User notes for the Gazetteer Files. View the available Geography
+        Notes and Errata for the 2010 Census.", "dateLastCrawled": "2021-09-28T05:38:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "2018 Data User Notes - Census", "url": "https:\/\/www.census.gov\/programs-surveys\/sipp\/tech-documentation\/user-notes\/2018-usernotes.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.census.gov\/programs-surveys\/sipp\/tech-documentation\/user-notes\/2018-user...",
+        "snippet": "User Notes 2018 SIPP: Corrections to Year and Month Moved into
+        Previous Residence User note concerning issues with year and month moved in
+        variables in the 2014 SIPP Panel, and corrections implemented in the 2018
+        SIPP.", "dateLastCrawled": "2021-09-29T15:50:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Export\/Import Outlook Notes – Washington State DES", "url": "https:\/\/desitsupport4u.des.wa.gov\/hc\/en-us\/articles\/360060142973-Export-Import-Outlook-Notes",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/desitsupport4u.des.wa.gov\/...\/articles\/360060142973-Export-Import-Outlook-Notes",
+        "snippet": "EXPORT\/IMPORT NOTES. Open Outlook, browse to the Notes section
+        and click on it. Now click on File, select Open & Export then click Import\/Export.
+        Select Comma Separated Values from next screen. Scroll down to Notes, highlight
+        Notes and click Next. Click Browse and save your exported file to a folder
+        location. Preferably your I Drive (home drive).", "dateLastCrawled": "2021-09-15T19:48:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "VA Notes Frequently Asked Questions - My HealtheVet", "url": "https:\/\/www.myhealth.va.gov\/mhv-portal-web\/faqs-va-notes",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.myhealth.va.gov\/mhv-portal-web\/faqs-va-notes",
+        "snippet": "VA Notes are part of the My HealtheVet Personal Health Record
+        found under the VA Blue Button section on the Download My Selected Data page.
+        VA patients who have a Premium My HealtheVet account can view a copy of their
+        VA Notes recorded during a clinic visit or hospital stay. This information
+        comes from your official VA health record. Back to Top.", "dateLastCrawled":
+        "2021-09-26T17:08:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "Individual - Treasury Notes", "url": "https:\/\/www.treasurydirect.gov\/indiv\/products\/prod_tnotes_glance.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.treasurydirect.gov\/indiv\/products\/prod_tnotes_glance.htm",
+        "snippet": "Treasury Notes. Treasury notes, sometimes called T-Notes,
+        earn a fixed rate of interest every six months until maturity. Notes are
+        issued in terms of 2, 3, 5, 7, and 10 years. You can buy notes from us in
+        TreasuryDirect. You also can buy them through a bank or broker. (We no longer
+        sell notes in Legacy Treasury Direct, which we are phasing out.)", "dateLastCrawled":
+        "2021-10-02T23:24:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15", "name":
+        "Natural Orifice Translumenal Endoscopic Surgery: Review of ...", "url": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC4709375\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC4709375",
+        "snippet": "NOTES has gained popularity during recent years for less complex
+        procedures such as cholecystectomy and appendicectomy. This is supported by
+        evidence that when performed by appropriately trained surgeons the results
+        can be favourable to that of conventional laparoscopic technique [7, 25].",
+        "dateLastCrawled": "2021-08-24T02:22:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "About Fiscal Notes - Home Comptroller.Texas.Gov", "url":
+        "https:\/\/comptroller.texas.gov\/economy\/fiscal-notes\/about.php", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/comptroller.texas.gov\/economy\/fiscal-notes\/about.php",
+        "snippet": "About Fiscal Notes. Fiscal Notes is one of the ways in
+        which the Comptroller''s office strives to assist taxpayers and the people
+        of Texas. The newsletter is a byproduct of the Comptroller''s constitutional
+        responsibilities to monitor the state''s economy and to estimate state government
+        revenues.", "dateLastCrawled": "2021-09-28T04:03:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "2021 USDA EXPLANATORY NOTES- FARM SERVICE AGENCY", "url": "https:\/\/www.usda.gov\/sites\/default\/files\/documents\/24fsa2021notes.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usda.gov\/sites\/default\/files\/documents\/24fsa2021notes.pdf",
+        "snippet": "2021 USDA EXPLANATORY NOTES- FARM SERVICE AGENCY . 26-4 .
+        AGENCY-WIDE . PURPOSE STATEMENT The Farm Service Agency (FSA) was established
+        October 13, 1994, pursuant to the Department of Agriculture Reorganization
+        Act of 1994, Public Law (P.L.) 103-354, as amended by the Federal Agriculture
+        Improvement and Reform Act of 1996, P.L. 104-127.", "dateLastCrawled": "2021-10-01T15:04:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "EX-4.2", "url": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/6281\/000119312521291953\/d219048dex42.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/Archives\/edgar\/data\/6281\/000119312521291953\/d219048dex42.htm",
+        "snippet": "“2051 Notes” means the 2.950% Senior Notes due October 1,
+        2051; provided that the Initial 2051 Notes and the Additional 2051 Notes,
+        if any, will be treated as a single Series for all purposes under this Supplemental
+        Indenture, and unless the context otherwise requires, all references to the
+        2051 Notes will include the Initial 2051 Notes and ...", "dateLastCrawled":
+        "2021-10-05T19:11:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19", "name":
+        "Notes from the Quarterly Meeting of the Everglades ...", "url": "https:\/\/www.sfwmd.gov\/sites\/default\/files\/documents\/toc_notes_2021-08-10_draft.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sfwmd.gov\/sites\/default\/files\/documents\/toc_notes_2021-08-10_draft.pdf",
+        "snippet": "Notes from the Quarterly Meeting of the Everglades Technical
+        Oversight Committee (TOC) August 10, 2021 South Florida Water Management District
+        3301 Gun Club Road, West Palm Beach, FL 33406 . Page 1 of 3 . TOC Representatives:
+        Julianne LaRock, TOC Chair, SFWMD . John Barkett, Special Master . Daniel
+        Crawford, USACE . Lori Miller, Refuge. Ed ...", "dateLastCrawled": "2021-10-06T09:44:00.0000000Z",
+        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 06 Oct 2021 05:48:20 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=emergencia%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 11:50:03 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - 11966825564947DE9E498C47BA84D10B
+      Bingapis-Sessionid:
+      - 75A136009F4B4BF4B51580B467655356
+      X-Msedge-Clientid:
+      - 3584B4B4D8EE68090D88A47CD9086955
+      X-Msapi-Userstate:
+      - 1c1a
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=251,MSDatacenter=CH1B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: 11966825564947DE9E498C47BA84D10B Ref B: DM2EDGE0509 Ref C: 2021-10-06T11:51:03Z'
+      Apim-Request-Id:
+      - c6066401-2ca0-4512-a4ff-1e207513ae4b
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 11:51:03 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "emergencia
+        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=emergencia+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 2160000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Emergencies - Travel", "url": "https:\/\/travel.state.gov\/content\/travel\/en\/international-travel\/emergencies.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/travel.state.gov\/content\/travel\/en\/international-travel\/emergencies.html",
+        "snippet": "Getting Help in an Emergency. If you are overseas and in need
+        of emergency assistance contact the nearest U.S. embassy or consulate .
+        If you are concerned about a loved one overseas, please call: From the U.S.
+        & Canada - 1-888-407-4747. From Overseas - +1 202-501-4444. COVID-19 Frequently
+        Asked Questions For U.S. Citizens.", "dateLastCrawled": "2021-09-30T22:17:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Life-or-Death Emergencies - Travel", "url": "https:\/\/travel.state.gov\/content\/travel\/en\/passports\/get-fast\/emergencies.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/travel.state.gov\/content\/travel\/en\/passports\/get-fast\/emergencies.html",
+        "snippet": "The number you should call to make an appointment for Life-or-Death
+        Emergency Service depends on the day of the week, and time of day: On Mondays
+        through Fridays from 8:00 a.m. to 8:00 p.m. (ET), call 1-877-487-2778 \/ 1-888-874-7793
+        (TTY\/TDD). These hours of operation are different than the hours for making
+        an appointment for Urgent Travel ...", "dateLastCrawled": "2021-10-03T02:09:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Emergency Broadband Benefit | Federal Communications ...", "url":
+        "https:\/\/www.fcc.gov\/broadbandbenefit", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.fcc.gov\/broadbandbenefit", "snippet": "The Emergency Broadband
+        Benefit is an FCC program to help families and households struggling to afford
+        internet service during the COVID-19 pandemic. This new benefit will connect
+        eligible households to jobs, critical healthcare services, virtual classrooms,
+        and so much more.", "dateLastCrawled": "2021-10-03T08:19:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Lesson 3. Communicating in an Emergency", "url": "https:\/\/training.fema.gov\/emiweb\/is\/is242b\/student%20manual\/sm_03.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/training.fema.gov\/emiweb\/is\/is242b\/student
+        manual\/sm_03.pdf", "snippet": "Lesson 3. Communicating in an Emergency Effective
+        Communication (IS-242.b) Page 3.2 Student Manual February 2014 INTRODUCTION
+        Visual 3.2", "dateLastCrawled": "2021-10-03T21:07:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "La OSHA del Departamento de Trabajo de EE.UU. emite ...", "url":
+        "https:\/\/www.dol.gov\/newsroom\/releases\/osha\/osha20210610-0s", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.dol.gov\/newsroom\/releases\/osha\/osha20210610-0s",
+        "snippet": "El estatuto temporal de emergencia establece nuevos requerimientos
+        en ámbitos donde empleadores proveen servicios de atención médica o cuidados
+        de salud, incluyendo centros de cuidado especializado y de atención de la
+        salud en el hogar, con algunas excepciones para proveedores de salud que examinan
+        a pacientes que pueden tener COVID-19.", "dateLastCrawled": "2021-09-23T00:21:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Emergency Use Authorization for Vaccines Explained | FDA", "url":
+        "https:\/\/www.fda.gov\/vaccines-blood-biologics\/vaccines\/emergency-use-authorization-vaccines-explained",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fda.gov\/vaccines-blood-biologics\/vaccines\/emergency-use-authorization...",
+        "snippet": "An Emergency Use Authorization (EUA) is a mechanism to facilitate
+        the availability and use of medical countermeasures, including vaccines, during
+        public health emergencies, such as the current ...", "dateLastCrawled": "2021-09-25T11:51:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Emergency Rental Assistance Program | OTDA", "url": "https:\/\/otda.ny.gov\/programs\/emergency-rental-assistance\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/otda.ny.gov\/programs\/emergency-rental-assistance",
+        "snippet": "The New York State Emergency Rental Assistance Program (ERAP)
+        will provide significant economic relief to help low and moderate-income households
+        at risk of experiencing homelessness or housing instability by providing rental
+        arrears, temporary rental assistance and utility arrears assistance.", "dateLastCrawled":
+        "2021-10-03T15:07:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7", "name": "Emergency
+        Management | Haywood County, NC", "url": "https:\/\/www.haywoodcountync.gov\/192\/Emergency-Management",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.haywoodcountync.gov\/192\/Emergency-Management",
+        "snippet": "Emergency Management. Haywood County Emergency Management
+        is the County''s point of contact with North Carolina Emergency Management
+        with regards to disaster planning, preparation, response and recovery. They
+        are merely the coordinator of all resources before, during and after a disaster.
+        The primary function is to evaluate the County for ...", "dateLastCrawled":
+        "2021-10-01T00:12:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8", "name": "STATE
+        OF EMERGENCY TROPICAL STORM NICHOLAS", "url": "https:\/\/gov.louisiana.gov\/assets\/Proclamations\/2021\/173JBE2021StateofEmergencyTSNicholas.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/gov.louisiana.gov\/assets\/Proclamations\/2021\/173JBE2021StateofEmergencyTS...",
+        "snippet": "EXECUTIVE DEPARTMENT PROCLAMATION NUMBER 173 JBE 2021 STATE OF
+        EMERGENCY – TROPICAL STORM NICHOLAS WHEREAS, the Louisiana Homeland Security
+        and Emergency Assistance and Disaster Act, La. R.S. 29:721, et seq., confers
+        upon the Governor of the State of Louisiana emergency powers to deal with
+        emergencies and disasters, including those caused", "dateLastCrawled": "2021-09-27T22:55:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Form Search | Forms | OCFS", "url": "https:\/\/ocfs.ny.gov\/forms\/index.php?topic=3&page=3",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/ocfs.ny.gov\/forms\/index.php?topic=3&page=3",
+        "snippet": "OCFS-6029-S - Plan de Emergencia Individual para Alergias y
+        Anafilaxia Individual Allergy and Anaphylaxis Emergency Plan. Spanish. Child
+        Care: All Providers. Forms. 2021. OCFS-7026-S - Paquete Informativo de Inscripción
+        para Proveedores de Cuidado Legalmente Exentos", "dateLastCrawled": "2021-09-28T22:34:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Emergency Connectivity Fund | Federal Communications ...", "url":
+        "https:\/\/www.fcc.gov\/emergency-connectivity-fund", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.fcc.gov\/emergency-connectivity-fund",
+        "snippet": "Helping Schools and Libraries Close the Homework Gap Helping Schools
+        and Libraries Close the Homework Gap Acting FCC Chairwoman Invites Schools\/Libraries
+        to Apply for Round 2 of Emergency Connectivity Fund More Video: Program
+        Overview with ASL | en Español Funding requests and awards: The FCC has received
+        requests from across the nation for $5.137 billion to fund 9.1 million", "dateLastCrawled":
+        "2021-10-03T02:28:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11", "name":
+        "IN THE SUPREME COURT OF TEXAS", "url": "https:\/\/www.txcourts.gov\/media\/1450173\/209151.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.txcourts.gov\/media\/1450173\/209151.pdf",
+        "snippet": "Misc. Docket No. 20-9151 Page 2 . about the Program and ask if
+        you are interested in participating. Find out more about the Program in the
+        attached brochure, titled State of Texas Eviction Diversion", "dateLastCrawled":
+        "2021-09-28T14:45:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12", "name":
+        "Emergency Repairs | AustinTexas.gov", "url": "http:\/\/austintexas.gov\/page\/emergency-repairs",
+        "isFamilyFriendly": true, "displayUrl": "austintexas.gov\/page\/emergency-repairs",
+        "snippet": "Permits for Home Repairs Related to Winter Storm Damage Need to
+        make emergency repairs following Winter Storm Uri? We are trying to make
+        it as easy as possible. Some projects do not require permits. Also, work can
+        begin right away on projects that present safety hazards in your home or business.
+        Those residents should acquire retroactive permits as soon as possible after
+        work begins to ensure ...", "dateLastCrawled": "2021-09-28T02:36:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Update on Thrombolytic Therapy in Acute Pulmonary ...", "url": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC6592452\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC6592452",
+        "snippet": "Introduction. Pulmonary thromboembolism (PTE) is a common disease
+        that may be life threatening. The mortality rate can reach up to 65% in high-risk
+        patients [].Most deaths occur within the first hour of patients presenting
+        with shock; therefore, the survival of these patients depends on rapid treatment
+        [2–4].PTE is usually the result of pulmonary artery obstruction by a thrombus
+        formed in ...", "dateLastCrawled": "2021-10-03T10:14:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "GS-BIZHUB-20210922085357", "url": "https:\/\/floridahealthcovid19.gov\/wp-content\/uploads\/2021\/09\/64DER21-15.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/floridahealthcovid19.gov\/wp-content\/uploads\/2021\/09\/64DER21-15.pdf",
+        "snippet": "SUMMARY: Emergency rule 64DER21-15 sets forth the procedures for
+        controlling COVID-19 in school settings. Emergency rule 64DER21-15 repeals
+        and replaces Emergency rule 64DER21-12 that was adopted on August 6,", "dateLastCrawled":
+        "2021-10-03T01:16:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15", "name":
+        "Preguntas frecuentes - Health Benefits", "url": "https:\/\/www.va.gov\/healthbenefits\/resources\/publications\/hbco\/hbco_faq_sp.asp",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.va.gov\/healthbenefits\/resources\/publications\/hbco\/hbco_faq_sp.asp",
+        "snippet": "La emergencia se considera finalizada cuando un médico de VA
+        haya determinado que, en base a un adecuado criterio médico, un Veterano que
+        recibió atención hospitalaria de emergencia logró la estabilidad médica
+        y puede ser trasladado de un centro médico de la comunidad a un centro médico
+        perteneciente a VA para continuar con el tratamiento.", "dateLastCrawled":
+        "2021-10-01T09:45:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16", "name":
+        "Office of Security and Emergency Management | FDA", "url": "https:\/\/www.fda.gov\/about-fda\/office-operations\/office-security-and-emergency-management",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fda.gov\/about-fda\/office-operations\/office-security-and-emergency-management",
+        "snippet": "The Office of Emergency Management (OEM) is located in the Office
+        of Security and Emergency Management. It serves as the Food and Drug Administration’s
+        (FDA) focal point for coordinating ...", "dateLastCrawled": "2021-09-15T12:02:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Emergency Use Authorization - Medical Countermeasures ...", "url":
+        "https:\/\/www.ncbi.nlm.nih.gov\/books\/NBK53122\/", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/books\/NBK53122", "snippet":
+        "The EUA program was established in 2004, when the Project BioShield Act,
+        among other measures, amended Section 564 of the Federal Food, Drug, and Cosmetic
+        Act to include this provision (HHS, 2010a). EUA permits the FDA Commissioner
+        to authorize the use of an unapproved medical product or an unapproved use
+        of an approved medical product during a declared emergency involving a heightened
+        risk of ...", "dateLastCrawled": "2021-09-28T01:05:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Heat-Related Emergency Department Visits During the ...", "url":
+        "https:\/\/www.cdc.gov\/mmwr\/volumes\/70\/wr\/mm7029e1.htm", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.cdc.gov\/mmwr\/volumes\/70\/wr\/mm7029e1.htm",
+        "snippet": "Record high temperatures are occurring more frequently in the
+        United States, and climate change is causing heat waves to become more intense
+        (1), directly impacting human health, including heat-related illnesses and
+        deaths.On average, approximately 700 heat-related deaths occur in the United
+        States each year (2).In the northwestern United States, increasing temperatures
+        are projected to cause ...", "dateLastCrawled": "2021-10-03T13:16:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "¿QUÉ ES UNA URGENCIA? QUÉ ES UNA EMERGENCIA MÉDICA?", "url": "https:\/\/opp.pr.gov\/MaterialEducativo\/Material%20Educativo\/Cuandodebevisitar.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/opp.pr.gov\/MaterialEducativo\/Material
+        Educativo\/Cuandodebevisitar.pdf", "snippet": "emergencia sin necesidad
+        de referido o autorización de tu médico primario o aseguradora. Es importante
+        que conozcas la diferencia entre una urgencia y una emergencia médica. De
+        esta manera, se evita el uso excesivo de la sala de emergencia para atender
+        condiciones que no lo ...", "dateLastCrawled": "2021-10-03T06:04:00.0000000Z",
+        "language": "es", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 06 Oct 2021 05:48:21 GMT
 recorded_with: VCR 6.0.0

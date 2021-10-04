@@ -243,6 +243,244 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
-    http_version:
   recorded_at: Tue, 31 Aug 2021 20:32:44 GMT
-recorded_with: VCR 4.0.0
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=tradiksyon&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 10:40:48 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - A860DFF56C8444FA9A8068F915FAA01D
+      Bingapis-Sessionid:
+      - BC844B8B05D04213AC0DF86D1B6D6C2E
+      X-Msedge-Clientid:
+      - 2F20BC83C7A4666E2E6DAC4BC659679C
+      X-Msapi-Userstate:
+      - 9f59
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=213,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: A860DFF56C8444FA9A8068F915FAA01D Ref B: BLUEDGE0507 Ref C: 2021-10-06T10:41:48Z'
+      Apim-Request-Id:
+      - 2a30ad83-2e30-4f6f-bd55-b40dd29d650c
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 10:41:48 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "tradiksyon"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=tradiksyon",
+        "totalEstimatedMatches": 101000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Haitian tradiksyon diksyonè - Apps on Google Play", "url": "https:\/\/play.google.com\/store\/apps\/details?id=en.ht.bestdict&hl=en_US&gl=US",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/play.google.com\/store\/apps\/details?id=en.ht.bestdict",
+        "snippet": "Please setup the Haitian Creole keyboard before using this app.
+        This free dict works well in all android devices including mobile and tablet,
+        it is very useful for all kinds of people although in offline environment.
+        - For student, pupil or researcher, this app is the largest thesaurus help
+        them make the deeply investigation in each words and ...", "dateLastCrawled":
+        "2021-09-17T21:28:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1", "name": "‎English
+        Haitian Creole best dictionary translate - Angle ...", "url": "https:\/\/apps.apple.com\/us\/app\/english-haitian-creole-best-dictionary-translate-angle\/id919431571",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/apps.apple.com\/us\/app\/english-haitian-creole-best-dictionary-translate-angle\/...",
+        "snippet": "‎Read reviews, compare customer ratings, see screenshots, and
+        learn more about English Haitian Creole best dictionary translate - Angle
+        kreyòl ayisyen pi bon diksyonè tradiksyon. Download English Haitian Creole
+        best dictionary translate - Angle kreyòl ayisyen pi bon diksyonè tradiksyon
+        and enjoy it on your iPhone, iPad, and iPod touch.", "dateLastCrawled": "2021-09-13T20:15:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Tradiksyon tèks - Google", "url": "https:\/\/translate.google.ht\/?hl=ht",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/translate.google.ht\/?hl=ht",
+        "snippet": "Google Translate. Tradiksyon tèks. Detekte lang. Detekte lang.
+        Kreyòl Ayisyen. swap_horiz. Boukante lang yo (Ctrl+Shift+S) Anglè. Kreyòl
+        Ayisyen.", "dateLastCrawled": "2021-10-01T14:05:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Translate tradiksyon from French to Arabic - MyMemory", "url": "https:\/\/mymemory.translated.net\/en\/French\/Arabic\/tradiksyon",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/mymemory.translated.net\/en\/French\/Arabic\/tradiksyon",
+        "snippet": "goog ا tradiksyon. Last Update: 2019-10-08 Usage Frequency: 1
+        Quality: Reference: Anonymous. Add a translation. Get a better translation
+        with 4,401,923,520 human contributions ...", "dateLastCrawled": "2021-09-29T22:09:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Translate google tradiksyon from French to Arabic", "url": "https:\/\/mymemory.translated.net\/en\/French\/Arabic\/google-tradiksyon",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/mymemory.translated.net\/en\/French\/Arabic\/google-tradiksyon",
+        "snippet": "Contextual translation of \"google tradiksyon\" from French into
+        Arabic. Examples translated by humans: f, ll, جوجل, vvvv, sami, najema, mahlik,
+        wachcv, azadine.", "dateLastCrawled": "2021-09-26T22:06:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "DES: HaitianCreole", "url": "https:\/\/des.nc.gov\/haitiancreole",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/des.nc.gov\/haitiancreole",
+        "snippet": "Google Tradiksyon pa kapab tradwi tout kalite dokiman yo, epi
+        pa kapab founi yon tradiksyon ki kòrèk. Tout moun ki repoze sou enfòmasyon
+        ki te jwenn nan Google tradiksyon fè sa sou ris li. Ajans lan pa fè okenn
+        pwomès, asirans, oswa garanti presizyon tradiksyon ki te founi an. Ajans lan,
+        rèsponsab yo, anplwaye yo, ak\/oswa ajan yo p ap ...", "dateLastCrawled":
+        "2021-09-28T19:05:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6", "name": "Notary
+        Public - Department of State | Department of State", "url": "https:\/\/dos.ny.gov\/notary-public",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/dos.ny.gov\/notary-public",
+        "snippet": "Submit a completed application and the required fee to the Department
+        of State. pass the New York State notary public examination. NYS Attorneys
+        and court clerks of the Unified Court System are exempt from the examination.",
+        "dateLastCrawled": "2021-10-02T06:09:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7", "name":
+        "Benefit Extension Information | Department of Labor", "url": "https:\/\/dol.ny.gov\/benefit-extension-information",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/dol.ny.gov\/benefit-extension-information",
+        "snippet": "Tradiksyon kreyòl ayisyen. KESYON YO POZE PI SOUVAN SOU LWA ASISTANS
+        CHOMAJ KONTINYE 2020 . Download . Continued Assistance Act Frequently Asked
+        Questions (CD3-Italian) Traduzione italiana. DOMANDE FREQUENTI SUL CONTINUED
+        ASSISTANCE FOR UNEMPLOYED WORKERS ACT DEL 2020 . Download .", "dateLastCrawled":
+        "2021-10-03T01:28:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8", "name": "Security
+        Guard - Department of State | Department of State", "url": "https:\/\/dos.ny.gov\/security-guard",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/dos.ny.gov\/security-guard",
+        "snippet": "A Security Guard is a person employed in NYS to principally perform
+        one or more of the following duties, and the person is not performing the
+        functions of a private investigator: response to, but not installation or
+        service of, a security system alarm. It is the responsibility of licensees
+        to understand the Private Investigators, Bail ...", "dateLastCrawled": "2021-10-02T21:14:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "HOME [myjpplus.com]", "url": "http:\/\/myjpplus.com\/", "isFamilyFriendly":
+        true, "displayUrl": "myjpplus.com", "snippet": "JP PLUS Services LLC, nan
+        Louisville, KY, se dirijan zòn nan sèvis milti biznis sèvis ki sèvi Jefferson,
+        Bullitt ak Oldham konte ak zòn ki antoure depi 2017.Nou espesyalize nan byen
+        imobilye ak ajan byen imobilye nou Richelin Prucien ak Imobilye Unlimited,
+        nou menm tou nou ofri lavant isirans, osi byen ke sèvis imigrasyon ak notè,
+        taks, reparasyon kredi, tradiksyon nan dokiman franse ak ...", "dateLastCrawled":
+        "2021-09-07T18:32:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10", "name":
+        "LUCKY DUBE TRADIKSYON KREYOL - YouTube", "url": "https:\/\/www.youtube.com\/watch?v=Ss5oiT22qd4",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.youtube.com\/watch?v=Ss5oiT22qd4",
+        "snippet": "About Press Copyright Contact us Creators Advertise Developers
+        Terms Privacy Policy & Safety How YouTube works Test new features Press Copyright
+        Contact us Creators ...", "dateLastCrawled": "2021-06-16T09:11:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Food Service \/ Monthly Menus\/Menus Mensuales\/Meni Chak Mwa", "url":
+        "https:\/\/www.wcboe.org\/Page\/5885", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.wcboe.org\/Page\/5885", "snippet": "Monthly Menus\/Menus Mensuales\/Meni
+        Chak Mwa. Food & Nutrition Services. Online Meal Payment. Food Service Staff.
+        Free & Reduced Meals Application. OUR PROGRAMS. Free and Reduced Meals. September
+        Breakfast WELC Y3-4 Desayuno de Septiembre WELC Y3-4 Manje Maten Septanm WELC
+        Y3-4.", "dateLastCrawled": "2021-09-30T21:35:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "LUKY DUBE TRADIKSYON KREYOL - YouTube", "url": "https:\/\/www.youtube.com\/watch?v=fy09a-GgVUw",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.youtube.com\/watch?v=fy09a-GgVUw",
+        "snippet": "About Press Copyright Contact us Creators Advertise Developers
+        Terms Privacy Policy & Safety How YouTube works Test new features Press Copyright
+        Contact us Creators ...", "dateLastCrawled": "2021-08-11T05:47:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Google Tradiksyon [Google Translate]", "url": "https:\/\/translate.google.com\/intl\/ht\/about\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/translate.google.com\/intl\/ht\/about",
+        "snippet": "Pale, klake, ekri oswa tape. Pale ak yon moun ki pale yon lòt
+        lang. Pou siy, meni, elatriye, jis mete kamera w la nan pozisyon epi pran
+        yon tradiksyon enstantane. Ou p ap menm bezwen koneksyon nan entènèt. Ekri
+        fasilman alamen karaktè ak mo ke klavye ou la pa sipòte.", "dateLastCrawled":
+        "2021-07-11T17:24:00.0000000Z", "language": "ht", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "Governor Hochul Announces New Requirements and Guidance ...", "url": "https:\/\/www.governor.ny.gov\/news\/governor-hochul-announces-new-requirements-and-guidance-safe-reopening-new-york-schools",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.governor.ny.gov\/news\/governor-hochul-announces-new-requirements-and...",
+        "snippet": "Governor Hochul announced that her strategy to reopen schools
+        safely took a major leap forward on two fronts, demonstrating her administration''s
+        commitment to making the health and well-being of students, teachers, and
+        families a top priority.", "dateLastCrawled": "2021-10-03T00:18:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Statement from Governor Kathy Hochul on Supreme Court ...", "url":
+        "https:\/\/www.governor.ny.gov\/news\/statement-governor-kathy-hochul-supreme-court-ruling-eviction-moratorium",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.governor.ny.gov\/news\/statement-governor-kathy-hochul-supreme-court-ruling...",
+        "snippet": "Statement from Governor Kathy Hochul on Supreme Court Ruling on
+        Eviction Moratorium. Share. \"I am very disappointed in the Supreme Court''s
+        appalling and insensitive ruling that eliminates a key line of defense for
+        tenants facing housing insecurity during the ongoing pandemic, and we are
+        exploring all options to further protect New Yorkers from ...", "dateLastCrawled":
+        "2021-10-02T02:05:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16", "name":
+        "Translations \/ Traducciones \/ Tradiksyon \/ Home", "url": "https:\/\/www.wcboe.org\/Domain\/2437",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.wcboe.org\/Domain\/2437",
+        "snippet": "Translations \/ Traducciones \/ Tradiksyon. Padres\/Guardianes:
+        Favor de visitar la página Notificaciones y Formas para el Año Escolar para
+        revisar y\/o completar las formas y notificaciones de sus estudiantes. Casi
+        todas las formas y notificaciones se proveen en Inglés, Español y Criole Haitiano.",
+        "dateLastCrawled": "2021-09-01T03:39:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Èske Tradiksyon monn nouvo a egzat? - JW.ORG", "url": "https:\/\/www.jw.org\/ht\/temwen-jewova-yo\/kesyon-moun-poze-souvan\/tradiksyon-monn-nouvo-a-egzat\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.jw.org\/ht\/temwen-jewova-yo\/kesyon-moun-poze-souvan\/tradiksyon-monn-nouvo-a...",
+        "snippet": "Kontrèman ak Tradiksyon monn nouvo a, Labib Wa Jak (anglè) edisyon
+        1611 lan se yon tradiksyon ki baze sou maniskri ki pa twò egzat e maniskri
+        sa yo pa t la twò lontan. Li fidèl. Objektif Tradiksyon monn nouvo a se tradui
+        mesaj orijinal Bondye te enspire a san l pa chanje mesaj sa a ( 2 Timote 3:16
+        ).", "dateLastCrawled": "2021-09-26T06:21:00.0000000Z", "language": "ht",
+        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Loucky dube tradiksyon Remember me - YouTube", "url": "https:\/\/www.youtube.com\/watch?v=_yEcB3l5WPI",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.youtube.com\/watch?v=_yEcB3l5WPI",
+        "snippet": "Nan sousi pou edem nan travay la map mande chak vidéo ou fin gade
+        sou chanel la , like j''aime", "dateLastCrawled": "2021-10-05T16:28:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Haitian Croatian Translator for Android - APK Download", "url": "https:\/\/apkpure.com\/haitian-croatian-translator\/com.kamtranslator.haitiancreole",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/apkpure.com\/haitian-croatian-translator\/com.kamtranslator.haitiancreole",
+        "snippet": "Tradiktè Ayisyen yo kwoasyen ak kwoasyen Ayisyen. Tradiktè gen
+        karakteristik ki annapre yo: Ayisyen nan Tradiksyon kwoasyen Kwoasyen Ayisyen
+        Tradiksyon", "dateLastCrawled": "2021-10-06T04:12:00.0000000Z", "language":
+        "en", "isNavigational": false}], "someResultsRemoved": true}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 06 Oct 2021 04:38:55 GMT
+recorded_with: VCR 6.0.0

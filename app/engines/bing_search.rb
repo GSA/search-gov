@@ -1,5 +1,4 @@
 class BingSearch < SearchEngine
-  API_HOST = 'https://api.cognitive.microsoft.com'.freeze
   VALID_ADULT_FILTERS = %w{off moderate strict}
   CACHE_LIFETIME = BING_CACHE_DURATION
 
@@ -34,10 +33,6 @@ class BingSearch < SearchEngine
   end
 
   protected
-
-  def self.api_host
-    API_HOST
-  end
 
   def parse_search_engine_response(bing_response)
     parser = response_parser_class.new(self, bing_response)
@@ -76,7 +71,8 @@ class BingSearch < SearchEngine
   class << self
     def api_connection
       @api_connection ||= { }
-      @api_connection[self] ||= CachedSearchApiConnection.new(api_cache_namespace, api_host, CACHE_LIFETIME)
+      @api_connection[self] ||=
+        CachedSearchApiConnection.new(api_cache_namespace, api_host, CACHE_LIFETIME)
     end
   end
 end

@@ -719,4 +719,723 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
   recorded_at: Tue, 07 Sep 2021 16:17:15 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=video%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 15:35:55 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - 104132479A644582A8181A37A56E667C
+      Bingapis-Sessionid:
+      - 6248F8DFE1EC4630987F5FCFD31CE62A
+      X-Msedge-Clientid:
+      - 234D2D9257E8661414E93D5A56A767F8
+      X-Msapi-Userstate:
+      - 2e48
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=284,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: 104132479A644582A8181A37A56E667C Ref B: BLUEDGE2021 Ref C: 2021-10-06T15:36:55Z'
+      Apim-Request-Id:
+      - 8a3c28ca-caa8-461a-b561-92f2fa347459
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 15:36:55 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "video
+        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=video+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 22000000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Videos - PTSD: National Center for PTSD", "url": "https:\/\/www.ptsd.va.gov\/appvid\/video\/index.asp",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ptsd.va.gov\/appvid\/video\/index.asp",
+        "snippet": "Video Help. Problems viewing videos in pop up windows? See our
+        alternate video page. For information on video formats, and to download
+        an appropriate player please refer to our Video Help page. Get help for
+        PTSD. If you need help right away: Call 1-800-273-8255 Press \"1\" if you
+        are a Veteran.", "dateLastCrawled": "2021-09-30T00:23:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "VA Video Connect | VA Mobile", "url": "https:\/\/mobile.va.gov\/app\/va-video-connect",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/mobile.va.gov\/app\/va-video-connect",
+        "snippet": "VA can help you get set up or troubleshoot technical problems.
+        Call the Office of Connected Care Help Desk at (866) 651-3180 24 hours a day,
+        7 days a week. Test your device. Visit the VA Video Connect test site to
+        test your microphone and speakers. To test on your mobile device, text ‘V’
+        to 83293 or 323-621-3589.", "dateLastCrawled": "2021-10-03T04:21:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "How to Use VA Video Connect - My HealtheVet", "url": "https:\/\/www.myhealth.va.gov\/mhv-portal-web\/ss20200320-va-video-connect",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.myhealth.va.gov\/mhv-portal-web\/ss20200320-va-video-connect",
+        "snippet": "In the Spotlight How to Use VA Video Connect. A step-by-step
+        guide to using VA virtual care. To reduce risks to our Veterans and staff
+        during the current coronavirus outbreak, VA offers Veterans the option to
+        use telehealth tools to replace in-person appointments with telephone or video
+        visits.", "dateLastCrawled": "2021-10-01T22:20:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "COVID-19 Videos | CDC", "url": "https:\/\/www.cdc.gov\/coronavirus\/2019-ncov\/communication\/videos.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/coronavirus\/2019-ncov\/communication\/videos.html",
+        "snippet": "Find, search, and filter COVID-19 videos and PSAs by audience
+        and language, covering all topics related to the COVID-19 pandemic and COVID-19
+        vaccines.", "dateLastCrawled": "2021-10-03T11:10:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Videos | Internal Revenue Service", "url": "https:\/\/www.irs.gov\/newsroom\/videos",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.irs.gov\/newsroom\/videos",
+        "snippet": "Videos are hosted on the IRS YouTube channel. If you find these
+        videos helpful, please share them through your social media platforms. Topic.
+        Transcript. Minutes. 100 Percent First Year Depreciation. Text. 1:18. 2020
+        IRS Nationwide Tax Forum.", "dateLastCrawled": "2021-10-01T04:07:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Film, Video, Available Online | Library of Congress", "url":
+        "https:\/\/www.loc.gov\/film-and-videos\/", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.loc.gov\/film-and-videos", "snippet": "Film, Video. Colson
+        Whitehead: National Book Festival 2020 In \"The Nickel Boys\" (Anchor), a
+        bravura follow-up to \"The Underground Railroad\" and his first Pulitzer Prize,
+        Colson Whitehead dramatizes another strand of American history through the
+        story of two boys sentenced to a hellish reform school in Jim Crow-era Florida.",
+        "dateLastCrawled": "2021-09-27T08:20:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6", "name":
+        "Options for Consideration Active Shooter Preparedness ...", "url": "https:\/\/www.cisa.gov\/options-consideration-active-shooter-preparedness-video",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cisa.gov\/options-consideration-active-shooter-preparedness-video",
+        "snippet": "The Options for Consideration video demonstrates possible
+        actions that individuals can take if confronted with an active shooter scenario.
+        This instructive video reviews the choices of running, hiding, or as an
+        option of last resort, fighting the shooter. The video also shows how to
+        assist authorities once law enforcement arrives.", "dateLastCrawled": "2021-10-02T00:06:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "OSHA Videos | Occupational Safety and Health Administration", "url":
+        "https:\/\/www.osha.gov\/video\/", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.osha.gov\/video", "snippet": "0:41 seconds | April 2018.
+        Construction Hazards Prevention Video Series. 14 Videos | December 2013.
+        Controlling Respirable Crystalline Silica: Handheld and Stand-Mounted Drills.
+        5:19 mins | 2018. Controlling Respirable Crystalline Silica: Handheld Grinders
+        for Mortar Removal (Tuckpointing) 5:25 mins | 2018. Controlling Respirable
+        Crystalline ...", "dateLastCrawled": "2021-10-03T22:07:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Downloadable Video page | NASA", "url": "https:\/\/www.nasa.gov\/multimedia\/downloadable-video-page\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nasa.gov\/multimedia\/downloadable-video-page",
+        "snippet": "Download this video. To download, right click link and select
+        \"Save Link As.\" Kepler measures the brightness of stars. The data will look
+        like an EKG showing the heart beat. Whenever a planet passes in front of its
+        parent star as viewed from the spacecraft, a tiny pulse or beat is produced.",
+        "dateLastCrawled": "2021-10-03T03:03:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9", "name":
+        "Impact Texas Drivers", "url": "https:\/\/impacttexasdrivers.dps.texas.gov\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/impacttexasdrivers.dps.texas.gov",
+        "snippet": "Adults 25 and over please watch Impact Texas Young Drivers (ITYD)
+        videos", "dateLastCrawled": "2021-10-03T13:04:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "videoLog - Pennsylvania Department of Transportation", "url": "https:\/\/gis.penndot.gov\/Videolog\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/gis.penndot.gov\/Videolog",
+        "snippet": "Function (Begin) Function (End) Cable Sag. Post Deflection. Deterioration.
+        Hardware. Deficient Height Code. Candidate for Removal. Side Dozing Required.",
+        "dateLastCrawled": "2021-10-01T19:16:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "FAQs on Photos and Videos under FERPA | Protecting Student ...",
+        "url": "https:\/\/studentprivacy.ed.gov\/faq\/faqs-photos-and-videos-under-ferpa",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/studentprivacy.ed.gov\/faq\/faqs-photos-and-videos-under-ferpa",
+        "snippet": "1. When is a photo or video of a student an education record
+        under FERPA? As with any other “education record,” a photo or video of
+        a student is an education record, subject to specific exclusions, when the
+        photo or video is: (1) directly related to a student; and (2) maintained
+        by an educational agency or institution or by a party acting for the agency
+        or institution.", "dateLastCrawled": "2021-10-03T09:01:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Video | CDC", "url": "https:\/\/www.cdc.gov\/flu\/resource-center\/freeresources\/video\/media-video.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/flu\/resource-center\/freeresources\/video\/media-video.htm",
+        "snippet": "A video commemorating 100 Years since the 1918 Flu Pandemic.
+        The 1918 Flu Pandemic was a historic global event that killed more people
+        than World War I, II and the Korean and Vietnam Wars combined. It is one of
+        the most devastating health events in recorded world history.", "dateLastCrawled":
+        "2021-10-01T13:51:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13", "name":
+        "Video Library - NCREC", "url": "https:\/\/www.ncrec.gov\/Resources\/VideoLibrary",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncrec.gov\/Resources\/VideoLibrary",
+        "snippet": "Subscribe. Video 1 Buyers Right to Inspect. Info. Shopping.
+        Tap to unmute. If playback doesn''t begin shortly, try restarting your device.
+        You''re signed out. Videos you watch may be added to the TV''s watch history
+        and influence TV recommendations. To avoid this, cancel and sign in to YouTube
+        on your computer.", "dateLastCrawled": "2021-10-01T03:04:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Video: How Alzheimer''s Changes the Brain | National ...", "url":
+        "https:\/\/www.nia.nih.gov\/health\/video-how-alzheimers-changes-brain", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.nia.nih.gov\/health\/video-how-alzheimers-changes-brain",
+        "snippet": "Video: How Alzheimer''s Changes the Brain Transcript In healthy
+        people, all sensations, movements, thoughts, memories, and feelings are the
+        result of signals that pass through billions of nerve cells, or neurons, in
+        the brain.", "dateLastCrawled": "2021-10-03T03:09:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Video Gallery: Perseverance Rover - NASA Mars", "url": "https:\/\/mars.nasa.gov\/mars2020\/multimedia\/videos\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/mars.nasa.gov\/mars2020\/multimedia\/videos",
+        "snippet": "Enhanced Video Shows Dust During Ingenuity''s Flight. April
+        20, 2021. NASA''s Ingenuity helicopter can be seen here taking off, hovering
+        and then landing on the Martian surface on April 19, 2021. The Mastcam-Z imager
+        aboard NASA''s Perseverance Mars rover shot video of the helicopter''s flight,
+        presented here in side-b...", "dateLastCrawled": "2021-09-30T21:32:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Video Player - Arizona State Legislature", "url": "https:\/\/www.azleg.gov\/videoplayer\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.azleg.gov\/videoplayer",
+        "snippet": "The Video you are looking for could not be found. Please email
+        webmaster@azleg.gov to correct the issue.", "dateLastCrawled": "2021-09-28T15:51:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Videos | Handwashing | CDC", "url": "https:\/\/www.cdc.gov\/handwashing\/videos.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/handwashing\/videos.html",
+        "snippet": "Related Pages. Watch these videos to learn how to keep yourself
+        healthy by washing your hands the right way. Public health professionals can
+        also use these videos to raise awareness and educate their community on
+        healthy hygiene behaviors. YouTube. Centers for Disease Control and Prevention
+        (CDC) 553K subscribers.", "dateLastCrawled": "2021-10-02T03:22:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Impact Texas Young Drivers", "url": "https:\/\/impacttexasdrivers.dps.texas.gov\/ITYD\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/impacttexasdrivers.dps.texas.gov\/ITYD",
+        "snippet": "Course Overview. Discover why Impact Texas Young Drivers was
+        created and how this program is implemented into a driver''s license learning
+        curriculum to positively impact highway safety.", "dateLastCrawled": "2021-10-03T02:20:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "NYS Division of Licensing Services - video.dos.ny.gov", "url":
+        "https:\/\/video.dos.ny.gov\/licensing\/notary\/notary.html", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/video.dos.ny.gov\/licensing\/notary\/notary.html",
+        "snippet": "The video conference must allow for direct interaction between
+        the person and the Notary (e.g. no pre-recorded videos of the person signing);
+        The person must affirmatively represent that he or she is physically situated
+        in the State of New York;", "dateLastCrawled": "2021-10-01T01:18:00.0000000Z",
+        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 06 Oct 2021 15:36:55 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=video%20usgovernment_channel_id%205%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 15:35:56 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - 52974BF497604E268B059D69AB1DE143
+      Bingapis-Sessionid:
+      - F8D7665E589D4C14942247FEFAFF8423
+      X-Msedge-Clientid:
+      - 270E46D32178644A3B73561B209E65A4
+      X-Msapi-Userstate:
+      - '1833'
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=267,MSDatacenter=CH1B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: 52974BF497604E268B059D69AB1DE143 Ref B: DM2EDGE0706 Ref C: 2021-10-06T15:36:56Z'
+      Apim-Request-Id:
+      - 2e5e1f1d-7834-4aa0-aeab-a41c96268b7d
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 15:36:57 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "video
+        usgovernment_channel_id 5 (site:gov OR site:mil)"}, "webPages": {"webSearchUrl":
+        "https:\/\/www.bing.com\/search?q=video+usgovernment_channel_id+5+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 34500000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Watch Live House Proceedings | house.gov", "url": "https:\/\/www.house.gov\/watch-houselive",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.house.gov\/watch-houselive",
+        "snippet": "The Office of the Clerk gives you a front-row seat in the U.S.
+        House of Representatives chamber. Watch live proceedings using \" live.house.gov.
+        (link is external) \".", "dateLastCrawled": "2021-10-03T02:18:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "January 5 Pipe Bomb Investigation: Footage of Suspect — FBI", "url":
+        "https:\/\/www.fbi.gov\/video-repository\/jan-5-pipe-bomb-footage-of-suspect-3-090821.mp4\/view",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fbi.gov\/video-repository\/jan-5-pipe-bomb-footage-of-suspect-3-090821.mp4\/view",
+        "snippet": "On January 5, 2021, an unknown individual placed two pipe bombs
+        in the Capitol Hill neighborhood of Washington, D.C. This video contains
+        footage from along the suspect’s route.", "dateLastCrawled": "2021-09-30T23:10:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Video and Additional Information Released Regarding ...", "url":
+        "https:\/\/www.fbi.gov\/contact-us\/field-offices\/washingtondc\/news\/press-releases\/fbi-washington-field-office-releases-video-and-additional-information-regarding-the-pipe-bomb-investigation-090821",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fbi.gov\/contact-us\/field-offices\/washingtondc\/news\/press-releases\/fbi...",
+        "snippet": "The FBI’s Washington Field Office has released new information
+        and video regarding the suspect who placed pipe bombs in the Capitol Hill
+        neighborhood of Washington, D.C., on January 5, 2021, and ...", "dateLastCrawled":
+        "2021-10-03T05:13:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3", "name": "WDTV
+        - TV Station Profile - FCC Public Inspection Files", "url": "https:\/\/publicfiles.fcc.gov\/tv-profile\/wdtv",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/publicfiles.fcc.gov\/tv-profile\/wdtv",
+        "snippet": "5 Television Drive Bridgeport,WV 26330 3048485000 Ext. Station
+        Website Closed Captioning Contact: Tim DeFazio General Manager 5 Television
+        Drive Bridgeport, WV 26330 304-848-5000 [phone] 304-842-7501 [fax] Contact
+        via Email Carriage Election Contact Information: E-mail: robert.folliard@gray.tv
+        Phone: 202-750-1585 General Resources", "dateLastCrawled": "2021-09-05T14:09:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Broadcast TV Transition: What to Watch For | Federal ...", "url":
+        "https:\/\/www.fcc.gov\/TVrescan", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.fcc.gov\/TVrescan", "snippet": "This page has been archived
+        and is no longer actively maintained by the FCC. For information on how to
+        rescan your over-the-air TV antenna, visit fcc.gov\/rescan. Some local TV
+        stations in cities across the U.S. will be changing their over-the-air broadcast
+        frequencies between now and July 2020. People who watch free over-the-air
+        television with an antenna will need to rescan", "dateLastCrawled": "2021-10-01T23:31:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Official Guide to Government Information and Services | USAGov",
+        "url": "https:\/\/www.usa.gov\/", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.usa.gov", "snippet": "Learn how to prepare for and recover
+        from disasters and emergencies. Find government information on energy, green
+        technology, pollution, wildlife, and more. Find government information on
+        education including primary, secondary, and higher education. Find information
+        for federal, state, and local government agencies and elected officials.",
+        "dateLastCrawled": "2021-10-02T06:08:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6", "name":
+        "Find a Federal Government Job | USAGov", "url": "https:\/\/www.usa.gov\/government-jobs",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/government-jobs",
+        "snippet": "There are job openings in federal agencies across the country.
+        If you’re interested in one, visit USAJOBS.gov. It’s the official job site
+        for the federal government. There, you can: Search for jobs, including ones
+        in high demand. Learn how the government hires people. Find student job opportunities
+        with the government.", "dateLastCrawled": "2021-10-03T13:19:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "USAJOBS Help Center | The Public", "url": "https:\/\/www.usajobs.gov\/Help\/working-in-government\/unique-hiring-paths\/public\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usajobs.gov\/Help\/working-in-government\/unique-hiring-paths\/public",
+        "snippet": "In the job announcement look for the This job is open to section.
+        When a job is open to the public you''ll see the open to the public icon:
+        Open to the public. public. There may be other groups listed that can also
+        apply. In search you can also select the Open to the public filter. Your
+        results will display all jobs that are open to the public.", "dateLastCrawled":
+        "2021-10-03T11:22:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8", "name": "National
+        Weather Service", "url": "https:\/\/www.weather.gov\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.weather.gov", "snippet": "NOAA National
+        Weather Service National Weather Service. Swath of Showers in Eastern U.S.;
+        Powerful Alaska Storm. A slow moving cold front will produce locally heavy
+        showers and thunderstorms from the Deep South to the Great Lakes.", "dateLastCrawled":
+        "2021-10-03T07:13:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9", "name": "County
+        Court at Law 1 | Fort Bend County, TX", "url": "https:\/\/www.fortbendcountytx.gov\/?navid=148",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fortbendcountytx.gov\/?navid=148",
+        "snippet": "Christopher Morales was elected as Judge of County Court at Law
+        No. 1, in 2014. As Judge of County Court at Law No. 1, he manages a multitude
+        of cases that impact the daily life of every citizen in Fort Bend County.
+        Judge Morales oversees such matters as probate and guardianship cases, juvenile
+        cases, civil litigation cases up to $200,000 ...", "dateLastCrawled": "2021-09-30T08:07:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Ten Most Wanted Fugitives — FBI", "url": "https:\/\/www.fbi.gov\/wanted\/topten",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fbi.gov\/wanted\/topten",
+        "snippet": "The FBI is offering rewards for information leading to the apprehension
+        of the Ten Most Wanted Fugitives. Select the images of suspects to display
+        more information.", "dateLastCrawled": "2021-10-03T07:12:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "kaposi sarcoma-associated herpes: Topics by Science.gov", "url":
+        "https:\/\/www.science.gov\/topicpages\/k\/kaposi+sarcoma-associated+herpes.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.science.gov\/topicpages\/k\/kaposi+sarcoma-associated+herpes.html",
+        "snippet": "Kaposi ''s Sarcoma Associated-Herpes Virus (KSHV) Seroprevalence
+        in Pregnant Women in South Africa. PubMed Central. 2010-01-01. Background
+        Factors previously associated with Kaposi ''s sarcoma-associated herpesvirus
+        (KSHV) transmission in Africa include sexual, familial, and proximity to river
+        water. We measured the seroprevalence of KSHV in relation to HIV, syphilis,
+        and demographic factors ...", "dateLastCrawled": "2021-08-15T21:36:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "NASA Images | NASA", "url": "https:\/\/www.nasa.gov\/multimedia\/imagegallery\/index.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nasa.gov\/multimedia\/imagegallery",
+        "snippet": "NASA.gov brings you the latest images, videos and news from
+        America''s space agency. Get the latest updates on NASA missions, watch
+        NASA TV live, and learn about our quest to reveal the unknown and benefit
+        all humankind.", "dateLastCrawled": "2021-10-03T11:06:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "loc.gov", "url": "http:\/\/www.loc.gov\/rr\/mopic\/avprot\/MDB_v4.0_Data_Dictionary_Rev10.xls",
+        "isFamilyFriendly": true, "displayUrl": "www.loc.gov\/rr\/mopic\/avprot\/MDB_v4.0_Data_Dictionary_Rev10.xls",
+        "snippet": "PastedFields DataDictionary Sampling Frequency Unit Sampling Frequency
+        Horizontal Sampling Frequency Plane Sampling Frequency Vertical Segment Form",
+        "dateLastCrawled": "2020-05-10T17:41:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "www.science.gov", "url": "https:\/\/www.science.gov\/topicpages\/k\/kaposi+sarcoma+herpes",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.science.gov\/topicpages\/k\/kaposi+sarcoma+herpes",
+        "snippet": "2015-01-01. Kaposi ''s sarcoma represents multiple idiopathic
+        hemorrhagic sarcoma --a mesenchymal tumor that affects the blood and lymph
+        vessels. Its performance is associated with an infection with human herpes
+        virus type 8--the so called KSHV ( Kaposi ''s sarcoma -associated virus),
+        and with the human immunodeficiency virus.", "dateLastCrawled": "2021-09-20T12:08:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "fully integrated coherent: Topics by Science.gov", "url": "https:\/\/www.science.gov\/topicpages\/f\/fully+integrated+coherent",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.science.gov\/topicpages\/f\/fully+integrated+coherent",
+        "snippet": "The stimulation channel performs monophasic or biphasic voltage-mode
+        stimulation, with a maximum stimulation current of 5 mA and a quiescent
+        power dissipation of 51.5 ¿W. The design is implemented in 0.35-¿m complementary
+        metal-oxide semiconductor technology with the channel pitch of 200 ¿m for
+        a total die size of 3.4 mm × 2.5 mm and a ...", "dateLastCrawled": "2021-08-12T12:33:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Welcome | The Official Website of the State of Idaho", "url": "https:\/\/www.idaho.gov\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.idaho.gov", "snippet":
+        "As the official website for the state of Idaho, Idaho.gov is your link
+        to all official government resources, information & online services in the
+        state of Idaho.", "dateLastCrawled": "2021-10-02T19:13:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "October 13, 2006 FEMA Emergency Management Higher ...", "url":
+        "https:\/\/training.fema.gov\/hiedu\/arrpt\/2006\/october\/oct%2013,%2006.doc",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/training.fema.gov\/hiedu\/arrpt\/2006\/october\/oct
+        13, 06.doc", "snippet": "(5) mississippi state university -- investigating
+        emergency management program: Talked today with Dr. Randall Little and others,
+        via a conference call set-up, in the Department of Agricultural Economics
+        at Mississippi State University.", "dateLastCrawled": "2021-08-26T02:25:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Wayne''s Bibliography - FEMA", "url": "https:\/\/training.fema.gov\/hiedu\/docs\/wayne%20bibliography.doc",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/training.fema.gov\/hiedu\/docs\/wayne
+        bibliography.doc", "snippet": "“Big Plan On Campus.” Homeland Protection Professional,
+        Vol. 5, No. 8, September 2006, pp. 34-38. Bannon, Anne Louise. “Not in Isolation:
+        A Quarantine in the Event of a Pandemic or a Bioterrorist Attack Will Entangle
+        Emergency Planners, Responders and the Public Alike.” Homeland Protection
+        Professional, Vol. 5, No. 5, June 2006, pp. 20-22.", "dateLastCrawled":
+        "2021-10-01T10:05:00.0000000Z", "language": "en", "isNavigational": false}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}}]}}}'
+  recorded_at: Wed, 06 Oct 2021 15:36:57 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=video%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 15:35:57 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - DB4A7F52528B4B34B5B4AC56A2578B24
+      Bingapis-Sessionid:
+      - 68CDA51761094C848EC85E55CF64CF85
+      X-Msedge-Clientid:
+      - 1117D6ACDDAC66E330AEC664DC5167CE
+      X-Msapi-Userstate:
+      - ce70
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=162,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: DB4A7F52528B4B34B5B4AC56A2578B24 Ref B: BLUEDGE0507 Ref C: 2021-10-06T15:36:57Z'
+      Apim-Request-Id:
+      - 3eea3ee3-2cf3-4c0e-af71-f674234e2388
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 15:36:57 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "video
+        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=video+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 22000000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Videos - PTSD: National Center for PTSD", "url": "https:\/\/www.ptsd.va.gov\/appvid\/video\/index.asp",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ptsd.va.gov\/appvid\/video\/index.asp",
+        "snippet": "Video Help. Problems viewing videos in pop up windows? See our
+        alternate video page. For information on video formats, and to download
+        an appropriate player please refer to our Video Help page. Get help for
+        PTSD. If you need help right away: Call 1-800-273-8255 Press \"1\" if you
+        are a Veteran.", "dateLastCrawled": "2021-09-30T00:23:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "VA Video Connect | VA Mobile", "url": "https:\/\/mobile.va.gov\/app\/va-video-connect",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/mobile.va.gov\/app\/va-video-connect",
+        "snippet": "VA can help you get set up or troubleshoot technical problems.
+        Call the Office of Connected Care Help Desk at (866) 651-3180 24 hours a day,
+        7 days a week. Test your device. Visit the VA Video Connect test site to
+        test your microphone and speakers. To test on your mobile device, text ‘V’
+        to 83293 or 323-621-3589.", "dateLastCrawled": "2021-10-03T04:21:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "How to Use VA Video Connect - My HealtheVet", "url": "https:\/\/www.myhealth.va.gov\/mhv-portal-web\/ss20200320-va-video-connect",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.myhealth.va.gov\/mhv-portal-web\/ss20200320-va-video-connect",
+        "snippet": "In the Spotlight How to Use VA Video Connect. A step-by-step
+        guide to using VA virtual care. To reduce risks to our Veterans and staff
+        during the current coronavirus outbreak, VA offers Veterans the option to
+        use telehealth tools to replace in-person appointments with telephone or video
+        visits.", "dateLastCrawled": "2021-10-01T22:20:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "COVID-19 Videos | CDC", "url": "https:\/\/www.cdc.gov\/coronavirus\/2019-ncov\/communication\/videos.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/coronavirus\/2019-ncov\/communication\/videos.html",
+        "snippet": "Find, search, and filter COVID-19 videos and PSAs by audience
+        and language, covering all topics related to the COVID-19 pandemic and COVID-19
+        vaccines.", "dateLastCrawled": "2021-10-03T11:10:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Videos | Internal Revenue Service", "url": "https:\/\/www.irs.gov\/newsroom\/videos",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.irs.gov\/newsroom\/videos",
+        "snippet": "Videos are hosted on the IRS YouTube channel. If you find these
+        videos helpful, please share them through your social media platforms. Topic.
+        Transcript. Minutes. 100 Percent First Year Depreciation. Text. 1:18. 2020
+        IRS Nationwide Tax Forum.", "dateLastCrawled": "2021-10-01T04:07:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Film, Video, Available Online | Library of Congress", "url":
+        "https:\/\/www.loc.gov\/film-and-videos\/", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.loc.gov\/film-and-videos", "snippet": "Film, Video. Colson
+        Whitehead: National Book Festival 2020 In \"The Nickel Boys\" (Anchor), a
+        bravura follow-up to \"The Underground Railroad\" and his first Pulitzer Prize,
+        Colson Whitehead dramatizes another strand of American history through the
+        story of two boys sentenced to a hellish reform school in Jim Crow-era Florida.",
+        "dateLastCrawled": "2021-09-27T08:20:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6", "name":
+        "Options for Consideration Active Shooter Preparedness ...", "url": "https:\/\/www.cisa.gov\/options-consideration-active-shooter-preparedness-video",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cisa.gov\/options-consideration-active-shooter-preparedness-video",
+        "snippet": "The Options for Consideration video demonstrates possible
+        actions that individuals can take if confronted with an active shooter scenario.
+        This instructive video reviews the choices of running, hiding, or as an
+        option of last resort, fighting the shooter. The video also shows how to
+        assist authorities once law enforcement arrives.", "dateLastCrawled": "2021-10-02T00:06:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "OSHA Videos | Occupational Safety and Health Administration", "url":
+        "https:\/\/www.osha.gov\/video\/", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.osha.gov\/video", "snippet": "0:41 seconds | April 2018.
+        Construction Hazards Prevention Video Series. 14 Videos | December 2013.
+        Controlling Respirable Crystalline Silica: Handheld and Stand-Mounted Drills.
+        5:19 mins | 2018. Controlling Respirable Crystalline Silica: Handheld Grinders
+        for Mortar Removal (Tuckpointing) 5:25 mins | 2018. Controlling Respirable
+        Crystalline ...", "dateLastCrawled": "2021-10-03T22:07:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Downloadable Video page | NASA", "url": "https:\/\/www.nasa.gov\/multimedia\/downloadable-video-page\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nasa.gov\/multimedia\/downloadable-video-page",
+        "snippet": "Download this video. To download, right click link and select
+        \"Save Link As.\" Kepler measures the brightness of stars. The data will look
+        like an EKG showing the heart beat. Whenever a planet passes in front of its
+        parent star as viewed from the spacecraft, a tiny pulse or beat is produced.",
+        "dateLastCrawled": "2021-10-03T03:03:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9", "name":
+        "Impact Texas Drivers", "url": "https:\/\/impacttexasdrivers.dps.texas.gov\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/impacttexasdrivers.dps.texas.gov",
+        "snippet": "Adults 25 and over please watch Impact Texas Young Drivers (ITYD)
+        videos", "dateLastCrawled": "2021-10-03T13:04:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "videoLog - Pennsylvania Department of Transportation", "url": "https:\/\/gis.penndot.gov\/Videolog\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/gis.penndot.gov\/Videolog",
+        "snippet": "Function (Begin) Function (End) Cable Sag. Post Deflection. Deterioration.
+        Hardware. Deficient Height Code. Candidate for Removal. Side Dozing Required.",
+        "dateLastCrawled": "2021-10-01T19:16:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "FAQs on Photos and Videos under FERPA | Protecting Student ...",
+        "url": "https:\/\/studentprivacy.ed.gov\/faq\/faqs-photos-and-videos-under-ferpa",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/studentprivacy.ed.gov\/faq\/faqs-photos-and-videos-under-ferpa",
+        "snippet": "1. When is a photo or video of a student an education record
+        under FERPA? As with any other “education record,” a photo or video of
+        a student is an education record, subject to specific exclusions, when the
+        photo or video is: (1) directly related to a student; and (2) maintained
+        by an educational agency or institution or by a party acting for the agency
+        or institution.", "dateLastCrawled": "2021-10-03T09:01:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Video | CDC", "url": "https:\/\/www.cdc.gov\/flu\/resource-center\/freeresources\/video\/media-video.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/flu\/resource-center\/freeresources\/video\/media-video.htm",
+        "snippet": "A video commemorating 100 Years since the 1918 Flu Pandemic.
+        The 1918 Flu Pandemic was a historic global event that killed more people
+        than World War I, II and the Korean and Vietnam Wars combined. It is one of
+        the most devastating health events in recorded world history.", "dateLastCrawled":
+        "2021-10-01T13:51:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13", "name":
+        "Video Library - NCREC", "url": "https:\/\/www.ncrec.gov\/Resources\/VideoLibrary",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncrec.gov\/Resources\/VideoLibrary",
+        "snippet": "Subscribe. Video 1 Buyers Right to Inspect. Info. Shopping.
+        Tap to unmute. If playback doesn''t begin shortly, try restarting your device.
+        You''re signed out. Videos you watch may be added to the TV''s watch history
+        and influence TV recommendations. To avoid this, cancel and sign in to YouTube
+        on your computer.", "dateLastCrawled": "2021-10-01T03:04:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Video: How Alzheimer''s Changes the Brain | National ...", "url":
+        "https:\/\/www.nia.nih.gov\/health\/video-how-alzheimers-changes-brain", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.nia.nih.gov\/health\/video-how-alzheimers-changes-brain",
+        "snippet": "Video: How Alzheimer''s Changes the Brain Transcript In healthy
+        people, all sensations, movements, thoughts, memories, and feelings are the
+        result of signals that pass through billions of nerve cells, or neurons, in
+        the brain.", "dateLastCrawled": "2021-10-03T03:09:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Video Gallery: Perseverance Rover - NASA Mars", "url": "https:\/\/mars.nasa.gov\/mars2020\/multimedia\/videos\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/mars.nasa.gov\/mars2020\/multimedia\/videos",
+        "snippet": "Enhanced Video Shows Dust During Ingenuity''s Flight. April
+        20, 2021. NASA''s Ingenuity helicopter can be seen here taking off, hovering
+        and then landing on the Martian surface on April 19, 2021. The Mastcam-Z imager
+        aboard NASA''s Perseverance Mars rover shot video of the helicopter''s flight,
+        presented here in side-b...", "dateLastCrawled": "2021-09-30T21:32:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Video Player - Arizona State Legislature", "url": "https:\/\/www.azleg.gov\/videoplayer\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.azleg.gov\/videoplayer",
+        "snippet": "The Video you are looking for could not be found. Please email
+        webmaster@azleg.gov to correct the issue.", "dateLastCrawled": "2021-09-28T15:51:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Videos | Handwashing | CDC", "url": "https:\/\/www.cdc.gov\/handwashing\/videos.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/handwashing\/videos.html",
+        "snippet": "Related Pages. Watch these videos to learn how to keep yourself
+        healthy by washing your hands the right way. Public health professionals can
+        also use these videos to raise awareness and educate their community on
+        healthy hygiene behaviors. YouTube. Centers for Disease Control and Prevention
+        (CDC) 553K subscribers.", "dateLastCrawled": "2021-10-02T03:22:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Impact Texas Young Drivers", "url": "https:\/\/impacttexasdrivers.dps.texas.gov\/ITYD\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/impacttexasdrivers.dps.texas.gov\/ITYD",
+        "snippet": "Course Overview. Discover why Impact Texas Young Drivers was
+        created and how this program is implemented into a driver''s license learning
+        curriculum to positively impact highway safety.", "dateLastCrawled": "2021-10-03T02:20:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "NYS Division of Licensing Services - video.dos.ny.gov", "url":
+        "https:\/\/video.dos.ny.gov\/licensing\/notary\/notary.html", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/video.dos.ny.gov\/licensing\/notary\/notary.html",
+        "snippet": "The video conference must allow for direct interaction between
+        the person and the Notary (e.g. no pre-recorded videos of the person signing);
+        The person must affirmatively represent that he or she is physically situated
+        in the State of New York;", "dateLastCrawled": "2021-10-01T01:18:00.0000000Z",
+        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 06 Oct 2021 15:36:57 GMT
 recorded_with: VCR 6.0.0

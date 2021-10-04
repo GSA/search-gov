@@ -754,4 +754,751 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
   recorded_at: Tue, 07 Sep 2021 16:17:24 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=news%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 15:36:06 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - CE0EFBD5E2CF41DFBCA2B4E05422DC9C
+      Bingapis-Sessionid:
+      - 86D63F8C3168439B9956B0270A6B1212
+      X-Msedge-Clientid:
+      - 338567AE6CCB6B64255D77666D7B6A2F
+      X-Msapi-Userstate:
+      - c97e
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=246,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: CE0EFBD5E2CF41DFBCA2B4E05422DC9C Ref B: BLUEDGE1411 Ref C: 2021-10-06T15:37:06Z'
+      Apim-Request-Id:
+      - 94d27ab9-d85b-4629-9de0-e151ac19179f
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 15:37:06 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "news
+        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=news+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 30600000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "News | Homeland Security", "url": "https:\/\/www.dhs.gov\/news",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.dhs.gov\/news",
+        "snippet": "News and important communications from the Department of Homeland
+        Security. Press Releases. Latest news and press releases. National Terrorism
+        Advisory System. The National Terrorism Advisory System (NTAS) communicates
+        information about terrorist threats to the American public. Blog.", "dateLastCrawled":
+        "2021-10-02T01:54:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1", "name": "News",
+        "url": "https:\/\/www.marines.mil\/News\/Tag\/52990\/cybersecurity\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.marines.mil\/News\/Tag\/52990\/cybersecurity",
+        "snippet": "News. News. The latest news and the coverage of news,
+        events, videos, tweets and more from the U.S. Marine Corps.", "dateLastCrawled":
+        "2021-10-05T22:33:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2", "name": "U.S.
+        Department of Defense", "url": "https:\/\/www.defense.gov\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.defense.gov", "snippet": "News Hicks
+        Discusses DOD Issues, Career Advice in ''Smart Women, Smart Power'' The first
+        woman in the No. 2 leadership position at the Defense Department, Deputy Secretary
+        of Defense Kathleen H ...", "dateLastCrawled": "2021-10-03T07:16:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "All News | USCIS", "url": "https:\/\/www.uscis.gov\/news\/all-news",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.uscis.gov\/news\/all-news",
+        "snippet": "This page lists all USCIS news releases and alerts, searchable
+        by topic and date. For material older than three years or that is no longer
+        current, see our Archive News section.. Subscribe to get updates:", "dateLastCrawled":
+        "2021-10-01T05:16:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4", "name": "News
+        Releases - Office of Public and Intergovernmental Affairs", "url": "https:\/\/www.va.gov\/OPA\/PRESSREL\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.va.gov\/OPA\/PRESSREL",
+        "snippet": "News Releases PRESS STATEMENT: VA resumes overpayment notifications,
+        medical copayment collections while continuing to offer Veterans expansive
+        debt relief options - The Department of Veterans Affairs will resume over-payment
+        notifications for new benefit debts and the debts deferred from April 6, 2020
+        through Sept. 30, 2021 due to the COVID pandemic.", "dateLastCrawled": "2021-10-03T02:09:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "News: Inside Veteran Benefits - Veterans Benefits ...", "url":
+        "https:\/\/www.benefits.va.gov\/benefits\/news.asp", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.benefits.va.gov\/benefits\/news.asp", "snippet":
+        "Veterans can continue to get information about benefits or file a claim for
+        benefits by visiting our website at www.va.gov. Veterans with claims specific
+        or other questions may request information via Inquiry Routing & Information
+        System (IRIS) or telephone at 1-800-827-1000. VBA benefits and services provided
+        to Veterans, families, and ...", "dateLastCrawled": "2021-10-01T02:36:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "News - United States Marine Corps", "url": "https:\/\/www.quantico.marines.mil\/News\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.quantico.marines.mil\/News",
+        "snippet": "Reservists bring out the big guns - Senior Airman Christopher
+        Resolute, 512th Security Forces Squadron defender, fires a M240B machine gun
+        May 7, 2021, at Marine Corps Base Quantico, Virginia. Stationed at Dover Air
+        Force Base, Delaware, more than 20 reserve defenders traveled to Quantico
+        for heavy weapons training.", "dateLastCrawled": "2021-09-29T22:15:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "News - United States Marine Corps", "url": "https:\/\/www.lejeune.marines.mil\/News\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.lejeune.marines.mil\/News",
+        "snippet": "Camp Lejeune News. In early August 1950, American and Republic
+        of Korea troops established the Pusan Perimeter. Bevin Alexander’s Korea:
+        The First War We Lost details how our troops held that land for about the
+        next month and a half until the historic amphibious landing at Inchon (Sept.
+        15-16, 1950).Can you imagine the hope that was brimming ...", "dateLastCrawled":
+        "2021-10-02T07:18:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8", "name": "News
+        | NSF - National Science Foundation", "url": "https:\/\/nsf.gov\/news\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/nsf.gov\/news", "snippet":
+        "Research News. September 15, 2021. Observatory in Chile captures highest-resolution
+        measurements of asteroid surface temperatures. Research News. September
+        14, 2021. NSF announces the launch of SpectrumX, an NSF Spectrum Innovation
+        Center. News Release. September 14, 2021.", "dateLastCrawled": "2021-09-30T23:14:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "National Weather Service", "url": "https:\/\/www.weather.gov\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov", "snippet":
+        "NEWS Newsroom Social Media Events Pubs\/Brochures\/Booklets . EDUCATION
+        NWS Education Home Be A Force of Nature NOAA Education Resources Glossary
+        JetStream NWS Training Portal NOAA Library For Students, Parents and Teachers
+        Brochures", "dateLastCrawled": "2021-10-03T07:13:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "News - NASA Mars", "url": "https:\/\/mars.nasa.gov\/mars2020\/news\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/mars.nasa.gov\/mars2020\/news",
+        "snippet": "Apr. 2021. NASA''s Mars Helicopter Survives First Cold Martian
+        Night on Its Own. April 05, 2021. NASA’s Ingenuity helicopter can be seen
+        on Mars as viewed by the Perseverance rover’s rear Hazard Camera on April
+        4, 2021, the 44th Martian day, or sol of the mission.", "dateLastCrawled":
+        "2021-10-03T08:09:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11", "name":
+        "News | Washington Department of Fish & Wildlife", "url": "https:\/\/wdfw.wa.gov\/news",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/wdfw.wa.gov\/news",
+        "snippet": "News. Welcome to our newsroom, where you''ll find links to recent
+        news releases. Enter keywords to search the contents of news releases
+        Quilomene bighorn sheep test positive for lethal bacteria. Oct 1, 2021. WDFW
+        lifts fire restrictions, including target shooting ban, on most Department-managed
+        lands .", "dateLastCrawled": "2021-10-02T23:06:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "News – NASA’s Mars Exploration Program", "url": "https:\/\/mars.nasa.gov\/news\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/mars.nasa.gov\/news",
+        "snippet": "NASA’s real-time portal for Mars exploration, featuring the
+        latest news, images, and discoveries from the Red Planet.", "dateLastCrawled":
+        "2021-10-02T09:03:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13", "name":
+        "Latest NASA News Releases | NASA", "url": "https:\/\/www.nasa.gov\/news\/releases\/latest\/index.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nasa.gov\/news",
+        "snippet": "NASA.gov brings you the latest images, videos and news from
+        America''s space agency. Get the latest updates on NASA missions, watch
+        NASA TV live, and learn about our quest to reveal the unknown and benefit
+        all humankind.", "dateLastCrawled": "2021-10-03T20:22:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Newsroom | Internal Revenue Service", "url": "https:\/\/www.irs.gov\/newsroom",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.irs.gov\/newsroom",
+        "snippet": "News Release and Fact Sheet Archive. News releases and fact
+        sheets from November 2002 forward and an archive of news releases and fact
+        sheets in PDF format back to 1997. Helpful Links. Internal Revenue Service
+        Progress Update – Fiscal Year 2019 PDF Independent Assessment of Free File
+        Program PDF. Appendix A : The Economics of IRS Free File PDF", "dateLastCrawled":
+        "2021-10-03T08:06:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15", "name":
+        "Judiciary News | United States Courts", "url": "https:\/\/www.uscourts.gov\/judiciary-news",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.uscourts.gov\/judiciary-news",
+        "snippet": "Published onAugust 25, 2021. The Judiciary has informed Congress
+        that it opposes the proposed Judiciary Accountability Act. In a letter to
+        key lawmakers today, Judge Roslynn R. Mauskopf, secretary of the Judicial
+        Conference of the United States, wrote that the bill “fails to recognize the
+        robust safeguards that have been in place within the ...", "dateLastCrawled":
+        "2021-10-03T11:09:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16", "name":
+        "News Releases for Current Month | Internal Revenue Service", "url": "https:\/\/www.irs.gov\/newsroom\/news-releases-for-current-month",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.irs.gov\/newsroom\/news-releases-for-current-month",
+        "snippet": "A listing of current news releases published by the IRS. IR-2021-181,
+        September 10, 2021 — The Internal Revenue Service reminds taxpayers today
+        that the cost of home testing for COVID-19 is an eligible medical expense
+        that can be paid or reimbursed under health flexible spending arrangements
+        (health FSAs), health savings accounts (HSAs), health reimbursement arrangements
+        (HRAs), or Archer ...", "dateLastCrawled": "2021-10-03T12:20:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "News - Kentucky Governor Andy Beshear", "url": "https:\/\/governor.ky.gov\/news",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/governor.ky.gov\/news",
+        "snippet": "Media Contacts. Crystal Staley, Communications Director (502)
+        545-3714 or (502) 564-2611. Sebastian Kitchen, Deputy Comms.Director (502)
+        330-0799 or (502) 564-2611 Sign up for Updates. Click here to sign up to have
+        news updates from Governor Beshear delivered right to your inbox or cell
+        phone. Social Media", "dateLastCrawled": "2021-10-02T07:15:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "News | Division of Cancer Prevention", "url": "https:\/\/prevention.cancer.gov\/news-and-events\/news",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/prevention.cancer.gov\/news-and-events\/news",
+        "snippet": "News about scientific advances in cancer prevention, program
+        activities, and new projects are included here in NCI press releases and fact
+        sheets, articles from the NCI Cancer Bulletin, and Clinical Trial News from
+        the NCI website.", "dateLastCrawled": "2021-09-08T06:24:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Social Security Update | SSA", "url": "https:\/\/www.ssa.gov\/news\/newsletter\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/news\/newsletter",
+        "snippet": "Social Security now offers convenient and secure online options
+        for completing and submitting forms. Our newest online forms include: SSA
+        820– Work Activity Report (Self-Employed Person) – Provide work activity information
+        for self-employed individuals applying for or receiving disability benefits.;
+        SSA 821 – Work Activity Report – Provide work activity information for individuals
+        ...", "dateLastCrawled": "2021-10-03T12:04:00.0000000Z", "language": "en",
+        "isNavigational": false}]}, "rankingResponse": {"mainline": {"items": [{"answerType":
+        "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 06 Oct 2021 15:37:07 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=news%20(site:blog.usa.gov/)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 15:36:07 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - DC46E14345F040578A9A04F796CC7120
+      Bingapis-Sessionid:
+      - 3539C28CE5E14D55B4C5B679B7E7823E
+      X-Msedge-Clientid:
+      - 04D4F7AC198E65E4014FE76418736406
+      X-Msapi-Userstate:
+      - ba94
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=244,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: DC46E14345F040578A9A04F796CC7120 Ref B: BLUEDGE1022 Ref C: 2021-10-06T15:37:07Z'
+      Apim-Request-Id:
+      - 4c801cfd-a3a4-4d3f-9479-d4dfe572ba69
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 15:37:06 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "news
+        (site:blog.usa.gov\/)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=news+(site%3ablog.usa.gov%2f)",
+        "totalEstimatedMatches": 25, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "USA.gov Blog", "url": "https:\/\/blog.usa.gov\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/blog.usa.gov", "snippet": "The coronavirus
+        and election season dominated not just news headlines but USA.gov ''s top
+        20 pages for 2020 as well. Find out what the top pages were for USAGov en
+        Español in 2020. January 26, 2021 Read More . Topics: Content, User Experience
+        and Accessibility, Performance and Analytics, Multilingual.", "dateLastCrawled":
+        "2021-09-30T22:20:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1", "name": "USA.gov
+        Blog | Content", "url": "https:\/\/blog.usa.gov\/topic\/content", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/blog.usa.gov\/topic\/content", "snippet":
+        "The coronavirus and election season dominated not just news headlines but
+        USA.gov ''s top 20 pages for 2020 as well. Find out what the top pages were
+        for USAGov en Español in 2020. January 26, 2021 Read More . Topics: Content,
+        User Experience and Accessibility, Performance and Analytics, Multilingual.",
+        "dateLastCrawled": "2021-09-08T08:34:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2", "name":
+        "USA.gov Blog | Multilingual", "url": "https:\/\/blog.usa.gov\/topic\/multilingual",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/blog.usa.gov\/topic\/multilingual",
+        "snippet": "The coronavirus and election season dominated not just news
+        headlines but USA.gov ''s top 20 pages for 2020 as well. Find out what the
+        top pages were for USAGov en Español in 2020. January 26, 2021 Read More .
+        Topics: Content, User Experience and Accessibility, Performance and Analytics,
+        Multilingual.", "dateLastCrawled": "2021-08-30T21:10:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "USA.gov Blog | Marketing", "url": "https:\/\/blog.usa.gov\/topic\/marketing",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/blog.usa.gov\/topic\/marketing",
+        "snippet": "Whether it’s breaking news or information about a long existing
+        government program, video content is a powerful way to present information.
+        September 10, 2019 Read More Topics: Marketing , Content , User Experience
+        and Accessibility , Design and Development", "dateLastCrawled": "2021-09-24T18:47:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "USA.gov Blog | User Experience and Accessibility", "url": "https:\/\/blog.usa.gov\/topic\/user-experience-and-accessibility",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/blog.usa.gov\/topic\/user-experience-and-accessibility",
+        "snippet": "The coronavirus and election season dominated not just news
+        headlines but USA.gov ''s top 20 pages for 2020 as well. Find out what the
+        top pages were for USAGov en Español in 2020. January 26, 2021 Read More .
+        Topics: Content, User Experience and Accessibility, Performance and Analytics,
+        Multilingual.", "dateLastCrawled": "2021-08-27T06:15:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Top 20 USA.gov Pages for 2020", "url": "https:\/\/blog.usa.gov\/top-20-usa.gov-pages-for-2020",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/blog.usa.gov\/top-20-usa.gov-pages-for-2020",
+        "snippet": "Top 20 USA.gov Pages for 2020. January 26, 2021 Posted by: Nicole
+        Brennan, Maria Marrero, Marybeth Murphy, and Julia Sultan. The coronavirus
+        and election season dominated not just news headlines but USA.gov ''s top
+        20 pages for 2020 as well. Find out what the top pages were for USAGov en
+        Español in 2020.", "dateLastCrawled": "2021-09-14T17:23:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "USA.gov Blog (3)", "url": "https:\/\/blog.usa.gov\/page\/3", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/blog.usa.gov\/page\/3", "snippet": "Whether
+        it’s breaking news or information about a long existing government program,
+        video content is a powerful way to present information. September 10, 2019
+        Read More . Topics: Marketing, Content, User Experience and Accessibility,
+        Design and Development. Adopting a Content Design Mindset.", "dateLastCrawled":
+        "2021-09-08T13:22:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7", "name": "USA.gov
+        Blog | Performance and Analytics", "url": "https:\/\/blog.usa.gov\/topic\/performance-and-analytics",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/blog.usa.gov\/topic\/performance-and-analytics",
+        "snippet": "The coronavirus and election season dominated not just news
+        headlines but USA.gov ''s top 20 pages for 2020 as well. Find out what the
+        top pages were for USAGov en Español in 2020. January 26, 2021 Read More .
+        Topics: Content, User Experience and Accessibility, Performance and Analytics,
+        Multilingual.", "dateLastCrawled": "2021-08-30T11:11:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "USA.gov Blog | Design and Development", "url": "https:\/\/blog.usa.gov\/topic\/design-and-development",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/blog.usa.gov\/topic\/design-and-development",
+        "snippet": "Whether it’s breaking news or information about a long existing
+        government program, video content is a powerful way to present information.
+        September 10, 2019 Read More . Topics: Marketing, Content, User Experience
+        and Accessibility, Design and Development. Adopting a Content Design Mindset.",
+        "dateLastCrawled": "2021-10-02T21:29:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9", "name":
+        "USA.gov Blog | User Experience and Accessibility (2)", "url": "https:\/\/blog.usa.gov\/topic\/user-experience-and-accessibility\/page\/2",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/blog.usa.gov\/topic\/user-experience-and-accessibility\/page\/2",
+        "snippet": "Whether it’s breaking news or information about a long existing
+        government program, video content is a powerful way to present information.
+        September 10, 2019 Read More . Topics: Marketing, Content, User Experience
+        and Accessibility, Design and Development.", "dateLastCrawled": "2021-09-12T00:25:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Celebrating Our “Quinceañero” - USA.gov Blog", "url": "https:\/\/blog.usa.gov\/celebrating-our-quinceanero",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/blog.usa.gov\/celebrating-our-quinceanero",
+        "snippet": "Celebrating Our “Quinceañero”. November 27, 2018 Posted by:
+        Leilani Martinez. Tweet. After 15 years, GobiernoUSA.gov, the trusted source
+        of government information in Spanish, begins a new era. As part of our fifteen
+        year celebration, we are announcing our new name: USAGov en Español. There
+        is no major change - our content is the same - we ...", "dateLastCrawled":
+        "2021-09-30T12:09:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11", "name":
+        "USA.gov Blog (7)", "url": "https:\/\/blog.usa.gov\/page\/7", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/blog.usa.gov\/page\/7", "snippet": "In 2017,
+        it was nearly impossible to turn on the news or go on social media without
+        hearing stories about hurricanes across Texas, Florida, the U.S. Virgin Islands,
+        and Puerto Rico. January 10, 2018 Read More . Topics: Marketing. 5 Most Popular
+        Search Topics on USA.gov in 2017.", "dateLastCrawled": "2021-09-13T21:46:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "USA.gov Blog | Marketing (3)", "url": "https:\/\/blog.usa.gov\/topic\/marketing\/page\/3",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/blog.usa.gov\/topic\/marketing\/page\/3",
+        "snippet": "Marketing | USA.gov Blog (3) Social media is a key part of USAGov’s
+        outreach efforts, which aim to connect the public with government information
+        and services quickly and easily.", "dateLastCrawled": "2021-10-03T03:49:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Preliminary Results from Voter Registration Partnership ...", "url":
+        "https:\/\/blog.usa.gov\/preliminary-results-from-voter-registration-partnership-with-facebook",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/blog.usa.gov\/preliminary-results-from-voter-registration-partnership-with-facebook",
+        "snippet": "Preliminary Results from Voter Registration Partnership with
+        Facebook. The first phase of our partnership with Facebook included Facebook
+        \"megaphones\" being rolled out in a handful of states with rapidly approaching
+        voter registration deadlines. Facebook''s megaphone is a featured box that
+        is displayed at the top of all user''s News Feeds.", "dateLastCrawled":
+        "2021-09-11T04:11:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "Facebook, Twitter, and Short Links: What USAGov Learned ...", "url": "https:\/\/blog.usa.gov\/facebook-twitter-and-short-links-what-usagov-learned-from-social-media-users",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/blog.usa.gov\/facebook-twitter-and-short-links-what-usagov-learned-from-social...",
+        "snippet": "They used Twitter for getting the latest news, especially about
+        the coronavirus, and other emergency updates. Having an official logo and
+        a verified social media account is important. Participants knew to look for
+        the blue checkmark to verify that an account was the real thing.", "dateLastCrawled":
+        "2021-09-18T00:47:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15", "name":
+        "USAGov’s Tips to Kickstart your Video Strategy", "url": "https:\/\/blog.usa.gov\/usagovs-tips-to-kickstart-your-video-strategy",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/blog.usa.gov\/usagovs-tips-to-kickstart-your-video-strategy",
+        "snippet": "Whether it’s breaking news or information about a long existing
+        government program, video content is a powerful way to present information.
+        In some cases, it can create an emotional connection with viewers, especially
+        when you can give a human face to a government agency or program.", "dateLastCrawled":
+        "2021-09-19T18:56:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16", "name":
+        "Social Media Data Deep Dive: Turning Findings into Action", "url": "https:\/\/blog.usa.gov\/social-media-data-deep-dive-turning-findings-into-action",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/blog.usa.gov\/social-media-data-deep-dive-turning-findings-into-action",
+        "snippet": "The good news with Twitter is that you can send a few more messages
+        in a day without overwhelming your followers, so while we plan to focus more
+        on the topics that resonate most with our audience, we will continue to publish
+        a big mix of topics. Partnering with other agencies and retweeting their content
+        will help us continue to provide a ...", "dateLastCrawled": "2021-09-11T00:24:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Facebook Live: How We Do It and What We Learned in Year One",
+        "url": "https:\/\/blog.usa.gov\/facebook-live-how-we-do-it-and-what-we-learned-in-year-one",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/blog.usa.gov\/facebook-live-how-we-do-it-and-what-we-learned-in-year-one",
+        "snippet": "Competition: try not to compete with a big TV show, national news
+        event, or a major sporting occasions. No matter how good or important your
+        content is, you might struggle to get enough attention if you’re up against
+        a big event. Year Two: More Partners, More Platforms, More Adaptation", "dateLastCrawled":
+        "2021-10-01T09:12:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18", "name":
+        "Using 2017 Email Success to Springboard into 2018 - USA.gov", "url": "https:\/\/blog.usa.gov\/using-2017-email-success-to-springboard-into-2018",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/blog.usa.gov\/using-2017-email-success-to-springboard-into-2018",
+        "snippet": "Email is an easy, time-saving way for us to connect the public
+        with government information and services. We strive to provide clear information
+        about relevant topics to our more than 850,000 subscribers, in hopes that
+        our emails will stand out in inboxes overflowing with news alerts and sales
+        offers.", "dateLastCrawled": "2021-09-20T13:04:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Five Communication Tactics We Used During the 2017 ...", "url":
+        "https:\/\/blog.usa.gov\/five-communication-tactics-we-used-during-the-2017-hurricane-season",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/blog.usa.gov\/five-communication-tactics-we-used-during-the-2017-hurricane-season",
+        "snippet": "Five Communication Tactics We Used During the 2017 Hurricane
+        Season. In 2017, it was nearly impossible to turn on the news or go on
+        social media without hearing stories about hurricanes across Texas, Florida,
+        the U.S. Virgin Islands, and Puerto Rico. Because the timing of these storms
+        overlapped, new information was constantly coming out about ...", "dateLastCrawled":
+        "2021-09-20T07:48:00.0000000Z", "language": "en", "isNavigational": false}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 06 Oct 2021 15:37:07 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=news%20(site:blog.usa.gov/)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 15:36:07 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - 46BA10F4E87B4A7C949EDDA5503E8E9C
+      Bingapis-Sessionid:
+      - A3CEF1DBEF014899AB063CE79FF73D51
+      X-Msedge-Clientid:
+      - 30DB9E916B31691B0BB88E596ACC68D4
+      X-Msapi-Userstate:
+      - 9c3b
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=204,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: 46BA10F4E87B4A7C949EDDA5503E8E9C Ref B: BLUEDGE0510 Ref C: 2021-10-06T15:37:07Z'
+      Apim-Request-Id:
+      - 0b024a78-c0ab-4026-866d-74480e173112
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 15:37:07 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "news
+        (site:blog.usa.gov\/)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=news+(site%3ablog.usa.gov%2f)",
+        "totalEstimatedMatches": 25, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "USA.gov Blog", "url": "https:\/\/blog.usa.gov\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/blog.usa.gov", "snippet": "The coronavirus
+        and election season dominated not just news headlines but USA.gov ''s top
+        20 pages for 2020 as well. Find out what the top pages were for USAGov en
+        Español in 2020. January 26, 2021 Read More . Topics: Content, User Experience
+        and Accessibility, Performance and Analytics, Multilingual.", "dateLastCrawled":
+        "2021-09-30T22:20:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1", "name": "USA.gov
+        Blog | Content", "url": "https:\/\/blog.usa.gov\/topic\/content", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/blog.usa.gov\/topic\/content", "snippet":
+        "The coronavirus and election season dominated not just news headlines but
+        USA.gov ''s top 20 pages for 2020 as well. Find out what the top pages were
+        for USAGov en Español in 2020. January 26, 2021 Read More . Topics: Content,
+        User Experience and Accessibility, Performance and Analytics, Multilingual.",
+        "dateLastCrawled": "2021-09-08T08:34:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2", "name":
+        "USA.gov Blog | Multilingual", "url": "https:\/\/blog.usa.gov\/topic\/multilingual",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/blog.usa.gov\/topic\/multilingual",
+        "snippet": "The coronavirus and election season dominated not just news
+        headlines but USA.gov ''s top 20 pages for 2020 as well. Find out what the
+        top pages were for USAGov en Español in 2020. January 26, 2021 Read More .
+        Topics: Content, User Experience and Accessibility, Performance and Analytics,
+        Multilingual.", "dateLastCrawled": "2021-08-30T21:10:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Top 20 USA.gov Pages for 2020", "url": "https:\/\/blog.usa.gov\/top-20-usa.gov-pages-for-2020",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/blog.usa.gov\/top-20-usa.gov-pages-for-2020",
+        "snippet": "The coronavirus and election season dominated not just news
+        headlines but USA.gov ''s top 20 pages for 2020 as well. Find out what the
+        top pages were for USAGov en Español in 2020. View the accessible and clickable
+        PDF version of the “Top 20 USA.gov Pages for 2020” infographic.", "dateLastCrawled":
+        "2021-09-14T17:23:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4", "name": "USA.gov
+        Blog | Marketing", "url": "https:\/\/blog.usa.gov\/topic\/marketing", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/blog.usa.gov\/topic\/marketing", "snippet":
+        "Whether it’s breaking news or information about a long existing government
+        program, video content is a powerful way to present information. September
+        10, 2019 Read More Topics: Marketing , Content , User Experience and Accessibility
+        , Design and Development", "dateLastCrawled": "2021-09-24T18:47:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "USA.gov Blog (3)", "url": "https:\/\/blog.usa.gov\/page\/3", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/blog.usa.gov\/page\/3", "snippet": "Whether
+        it’s breaking news or information about a long existing government program,
+        video content is a powerful way to present information. September 10, 2019
+        Read More . Topics: Marketing, Content, User Experience and Accessibility,
+        Design and Development. Adopting a Content Design Mindset.", "dateLastCrawled":
+        "2021-09-08T13:22:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6", "name": "USA.gov
+        Blog | User Experience and Accessibility", "url": "https:\/\/blog.usa.gov\/topic\/user-experience-and-accessibility",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/blog.usa.gov\/topic\/user-experience-and-accessibility",
+        "snippet": "The coronavirus and election season dominated not just news
+        headlines but USA.gov ''s top 20 pages for 2020 as well. Find out what the
+        top pages were for USAGov en Español in 2020. January 26, 2021 Read More .
+        Topics: Content, User Experience and Accessibility, Performance and Analytics,
+        Multilingual.", "dateLastCrawled": "2021-08-27T06:15:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "USA.gov Blog | Performance and Analytics", "url": "https:\/\/blog.usa.gov\/topic\/performance-and-analytics",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/blog.usa.gov\/topic\/performance-and-analytics",
+        "snippet": "The coronavirus and election season dominated not just news
+        headlines but USA.gov ''s top 20 pages for 2020 as well. Find out what the
+        top pages were for USAGov en Español in 2020. January 26, 2021 Read More .
+        Topics: Content, User Experience and Accessibility, Performance and Analytics,
+        Multilingual.", "dateLastCrawled": "2021-08-30T11:11:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "USA.gov Blog | Design and Development", "url": "https:\/\/blog.usa.gov\/topic\/design-and-development",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/blog.usa.gov\/topic\/design-and-development",
+        "snippet": "Whether it’s breaking news or information about a long existing
+        government program, video content is a powerful way to present information.
+        September 10, 2019 Read More . Topics: Marketing, Content, User Experience
+        and Accessibility, Design and Development. Adopting a Content Design Mindset.",
+        "dateLastCrawled": "2021-10-02T21:29:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9", "name":
+        "USA.gov Blog | User Experience and Accessibility (2)", "url": "https:\/\/blog.usa.gov\/topic\/user-experience-and-accessibility\/page\/2",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/blog.usa.gov\/topic\/user-experience-and-accessibility\/page\/2",
+        "snippet": "Whether it’s breaking news or information about a long existing
+        government program, video content is a powerful way to present information.
+        September 10, 2019 Read More . Topics: Marketing, Content, User Experience
+        and Accessibility, Design and Development.", "dateLastCrawled": "2021-09-12T00:25:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Celebrating Our “Quinceañero” - USA.gov Blog", "url": "https:\/\/blog.usa.gov\/celebrating-our-quinceanero",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/blog.usa.gov\/celebrating-our-quinceanero",
+        "snippet": "Celebrating Our “Quinceañero”. November 27, 2018 Posted by:
+        Leilani Martinez. Tweet. After 15 years, GobiernoUSA.gov, the trusted source
+        of government information in Spanish, begins a new era. As part of our fifteen
+        year celebration, we are announcing our new name: USAGov en Español. There
+        is no major change - our content is the same - we ...", "dateLastCrawled":
+        "2021-09-30T12:09:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11", "name":
+        "USA.gov Blog (7)", "url": "https:\/\/blog.usa.gov\/page\/7", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/blog.usa.gov\/page\/7", "snippet": "In 2017,
+        it was nearly impossible to turn on the news or go on social media without
+        hearing stories about hurricanes across Texas, Florida, the U.S. Virgin Islands,
+        and Puerto Rico. January 10, 2018 Read More . Topics: Marketing. 5 Most Popular
+        Search Topics on USA.gov in 2017.", "dateLastCrawled": "2021-09-13T21:46:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "USA.gov Blog | Marketing (3)", "url": "https:\/\/blog.usa.gov\/topic\/marketing\/page\/3",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/blog.usa.gov\/topic\/marketing\/page\/3",
+        "snippet": "Marketing | USA.gov Blog (3) Social media is a key part of USAGov’s
+        outreach efforts, which aim to connect the public with government information
+        and services quickly and easily.", "dateLastCrawled": "2021-10-03T03:49:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Preliminary Results from Voter Registration Partnership ...", "url":
+        "https:\/\/blog.usa.gov\/preliminary-results-from-voter-registration-partnership-with-facebook",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/blog.usa.gov\/preliminary-results-from-voter-registration-partnership-with-facebook",
+        "snippet": "Preliminary Results from Voter Registration Partnership with
+        Facebook. The first phase of our partnership with Facebook included Facebook
+        \"megaphones\" being rolled out in a handful of states with rapidly approaching
+        voter registration deadlines. Facebook''s megaphone is a featured box that
+        is displayed at the top of all user''s News Feeds.", "dateLastCrawled":
+        "2021-09-11T04:11:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "Facebook, Twitter, and Short Links: What USAGov Learned ...", "url": "https:\/\/blog.usa.gov\/facebook-twitter-and-short-links-what-usagov-learned-from-social-media-users",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/blog.usa.gov\/facebook-twitter-and-short-links-what-usagov-learned-from-social...",
+        "snippet": "They used Twitter for getting the latest news, especially about
+        the coronavirus, and other emergency updates. Having an official logo and
+        a verified social media account is important. Participants knew to look for
+        the blue checkmark to verify that an account was the real thing.", "dateLastCrawled":
+        "2021-09-18T00:47:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15", "name":
+        "USAGov’s Tips to Kickstart your Video Strategy", "url": "https:\/\/blog.usa.gov\/usagovs-tips-to-kickstart-your-video-strategy",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/blog.usa.gov\/usagovs-tips-to-kickstart-your-video-strategy",
+        "snippet": "Whether it’s breaking news or information about a long existing
+        government program, video content is a powerful way to present information.
+        In some cases, it can create an emotional connection with viewers, especially
+        when you can give a human face to a government agency or program.", "dateLastCrawled":
+        "2021-09-19T18:56:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16", "name":
+        "Social Media Data Deep Dive: Turning Findings into Action", "url": "https:\/\/blog.usa.gov\/social-media-data-deep-dive-turning-findings-into-action",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/blog.usa.gov\/social-media-data-deep-dive-turning-findings-into-action",
+        "snippet": "The good news with Twitter is that you can send a few more messages
+        in a day without overwhelming your followers, so while we plan to focus more
+        on the topics that resonate most with our audience, we will continue to publish
+        a big mix of topics. Partnering with other agencies and retweeting their content
+        will help us continue to provide a ...", "dateLastCrawled": "2021-09-11T00:24:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Facebook Live: How We Do It and What We Learned in Year One",
+        "url": "https:\/\/blog.usa.gov\/facebook-live-how-we-do-it-and-what-we-learned-in-year-one",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/blog.usa.gov\/facebook-live-how-we-do-it-and-what-we-learned-in-year-one",
+        "snippet": "Competition: try not to compete with a big TV show, national news
+        event, or a major sporting occasions. No matter how good or important your
+        content is, you might struggle to get enough attention if you’re up against
+        a big event. Year Two: More Partners, More Platforms, More Adaptation", "dateLastCrawled":
+        "2021-10-01T09:12:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18", "name":
+        "Using 2017 Email Success to Springboard into 2018 - USA.gov", "url": "https:\/\/blog.usa.gov\/using-2017-email-success-to-springboard-into-2018",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/blog.usa.gov\/using-2017-email-success-to-springboard-into-2018",
+        "snippet": "Email is an easy, time-saving way for us to connect the public
+        with government information and services. We strive to provide clear information
+        about relevant topics to our more than 850,000 subscribers, in hopes that
+        our emails will stand out in inboxes overflowing with news alerts and sales
+        offers.", "dateLastCrawled": "2021-09-20T13:04:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Five Communication Tactics We Used During the 2017 ...", "url":
+        "https:\/\/blog.usa.gov\/five-communication-tactics-we-used-during-the-2017-hurricane-season",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/blog.usa.gov\/five-communication-tactics-we-used-during-the-2017-hurricane-season",
+        "snippet": "Five Communication Tactics We Used During the 2017 Hurricane
+        Season. In 2017, it was nearly impossible to turn on the news or go on
+        social media without hearing stories about hurricanes across Texas, Florida,
+        the U.S. Virgin Islands, and Puerto Rico. Because the timing of these storms
+        overlapped, new information was constantly coming out about ...", "dateLastCrawled":
+        "2021-09-20T07:48:00.0000000Z", "language": "en", "isNavigational": false}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 06 Oct 2021 15:37:08 GMT
 recorded_with: VCR 6.0.0

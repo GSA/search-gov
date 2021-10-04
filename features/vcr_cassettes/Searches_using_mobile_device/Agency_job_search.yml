@@ -5283,4 +5283,249 @@ http_interactions:
         if you are a male born after 12/31/1959"],"WithinArea":"False","CommuteDistance":"0","ServiceType":"01","AnnouncementClosingType":"01","AgencyContactEmail":"Patrice.Davis@gsa.gov","AgencyContactPhone":"202-704-2340","SecurityClearance":"Other","DrugTestRequired":"False","PositionSensitivitiy":"Moderate
         Risk (MR)","AdjudicationType":["Suitability/Fitness"],"TeleworkEligible":true},"IsRadialSearch":false}},"RelevanceRank":0}],"UserArea":{"NumberOfPages":"3","IsRadialSearch":false}}}'
   recorded_at: Tue, 07 Sep 2021 16:17:40 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=jobs%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 11:46:59 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - 681232B5CC024E55AF97011B144AAECD
+      Bingapis-Sessionid:
+      - 2D7F5002AF1D493587FCC6154D714935
+      X-Msedge-Clientid:
+      - 07FE9E29D3BC610014FF8EE1D24160A7
+      X-Msapi-Userstate:
+      - a429
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=206,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: 681232B5CC024E55AF97011B144AAECD Ref B: BLUEDGE0117 Ref C: 2021-10-06T11:47:59Z'
+      Apim-Request-Id:
+      - 0cd36d8b-5c53-4a99-849a-b6595a535ad1
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 11:47:59 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "jobs
+        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=jobs+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 28300000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "USAJOBS - The Federal Government''s Official Jobs Site", "url":
+        "https:\/\/www.usajobs.gov\/", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usajobs.gov",
+        "snippet": "USAJOBS is the Federal Government''s official one-stop source
+        for Federal jobs and employment information.", "dateLastCrawled": "2021-10-03T07:18:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Find a Federal Government Job | USAGov", "url": "https:\/\/www.usa.gov\/government-jobs",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/government-jobs",
+        "snippet": "Many jobs open to people with disabilities use only that process.
+        Finding and Applying for Federal Jobs. You can search for most jobs on
+        the government’s job site, USAJOBS.gov. To apply for jobs under Schedule
+        A, you must provide proof that you have an intellectual, psychiatric, or severe
+        physical disability. To apply for a job online:", "dateLastCrawled": "2021-10-03T13:19:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "NC.gov: Jobs", "url": "https:\/\/www.nc.gov\/jobs", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.nc.gov\/jobs", "snippet": "Careers within
+        the State of North Carolina include public safety, education, transportation,
+        and health care. State employees located in each one of the 100 counties in
+        North Carolina. We also have listings for jobs in the local school system,
+        and jobs in the private sector that are in our Employment Security database.",
+        "dateLastCrawled": "2021-10-03T11:16:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3", "name":
+        "Jobs | City of Philadelphia", "url": "https:\/\/www.phila.gov\/jobs\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.phila.gov\/jobs",
+        "snippet": "Jobs. Use the job board to explore current openings and find
+        work with the City of Philadelphia. To learn more about the hiring process,
+        see how to apply for a City job or internship. You can also sign up to be
+        notified when a new civil service position with the City is posted. Showing
+        all 108 available positions.", "dateLastCrawled": "2021-10-03T07:14:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Jobs - The official website of Louisiana", "url": "https:\/\/www.louisiana.gov\/jobs\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.louisiana.gov\/jobs",
+        "snippet": "All From Agency. Louisiana Economic Development’s Job Connection
+        recruitment website matches potential job seekers with Louisiana employment
+        opportunities throughout the state. This website provides an in-depth, skills-based
+        job matching platform to match job seekers with the jobs for which they
+        are most qualified.", "dateLastCrawled": "2021-10-02T10:07:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "State of Nevada", "url": "https:\/\/nv.gov\/jobs", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/nv.gov\/jobs", "snippet": "State of Nevada
+        Jobs Unemployment File for Unemployment Workplace Issues Worker''s Compensation
+        Forms Employment Quick Tips. 1. Treat finding a job like a job. Your goal
+        should be to spend more than 20 hours a week searching 2. Get involved in
+        your local community. Many hires are based on someone the employer knows 3.
+        Research the company you''re ...", "dateLastCrawled": "2021-10-03T15:21:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Waukesha County - Jobs", "url": "https:\/\/www.waukeshacounty.gov\/jobs\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.waukeshacounty.gov\/jobs",
+        "snippet": "Waukesha, WI. Full-time - $17.45 Hourly. Category: Administrative
+        Assistant \/ Clerical & Data Entry \/ Customer Service. Department: Sheriff''s
+        Department. This position is located in the Waukesha County Sheriff''s Department.
+        Work schedule is Monday through Friday, 8 a.m. to 4:30 p.m. with weekends
+        and holidays off.", "dateLastCrawled": "2021-10-03T01:17:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Jobs - Fulton County, Georgia", "url": "https:\/\/fultoncountyga.gov\/jobs",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/fultoncountyga.gov\/jobs",
+        "snippet": "Jobs. Join the Fulton County team and discover how we place
+        our employees first to ensure we provide the highest level of customer service
+        to our 1 million+ citizens. service-oriented team. outstanding benefits package.
+        recognition strategies and compensation programs.", "dateLastCrawled": "2021-10-03T13:02:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Employment", "url": "https:\/\/imagery2.coast.noaa.gov\/fellowship\/jobs.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/imagery2.coast.noaa.gov\/fellowship\/jobs.html",
+        "snippet": "Georgia Department of Natural Resources Jobs. Hawaii State Recruiting
+        Office. Indiana State Personnel Department. Louisiana Department of Natural
+        Resources Human Resources Division. Maine Current Vacancies. Maryland Department
+        of Natural Resources Current Job Openings\/Tests. Massachusetts Office of
+        Coastal Zone Management Jobs and Grants.", "dateLastCrawled": "2021-10-05T20:00:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "www.greenecountync.gov", "url": "http:\/\/www.greenecountync.gov\/jobs",
+        "isFamilyFriendly": true, "displayUrl": "www.greenecountync.gov\/jobs",
+        "snippet": "www.greenecountync.gov", "dateLastCrawled": "2021-10-05T23:49:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "City of Albany Civil Service Employment Portal", "url": "https:\/\/jobs.albanyny.gov\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/jobs.albanyny.gov", "snippet":
+        "View and apply for civil service exams from the CURRENT EXAMS tab at the
+        top of the page. $37,000\/year to $38,500\/year commensurate with experience
+        @ 40 hours\/week. $40,000\/year to $42,000\/year commensurate with experience
+        @ 40 hours\/week. f $14.00 per hour commensurate with experience at 40 Hours\/week.
+        f $19.50 - $20.50 per hour at 40 Hours\/week.", "dateLastCrawled": "2021-10-02T04:25:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Jobs - Department of Health", "url": "https:\/\/www.health.pa.gov\/topics\/Administrative\/Pages\/Jobs.aspx",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.health.pa.gov\/topics\/Administrative\/Pages\/Jobs.aspx",
+        "snippet": "Join Our Team! Learn about many DOH jobs that will allow you
+        to help people, earn great pay and receive excellent benefits!; Contribute
+        to the health of the commonwealth and receive satisfaction from helping to
+        change lives!; Grow by applying your special talents and skills in a unique
+        work environment!; Open DOH Vacancy Postings. DOH Public Health Internships",
+        "dateLastCrawled": "2021-10-03T08:13:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "AlaskaJobs", "url": "https:\/\/alaskajobs.alaska.gov\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/alaskajobs.alaska.gov", "snippet": "Occupational
+        Wage Rates: Occupational Employment and Wage Statistics (OEWS) Program The
+        median wage is the estimated 50th percentile; 50 percent of workers in an
+        occupation earn less than the median wage, and 50 percent earn more than the
+        median wage. 25th % and 75th % wage rates represent the 25th and 75th percentile
+        of the wage distribution, respectively.", "dateLastCrawled": "2021-10-03T06:19:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Careers - Texas Department of Transportation", "url": "https:\/\/www.txdot.gov\/careers.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.txdot.gov\/careers.html",
+        "snippet": "See all jobs . Engineering. Finance. Maintenance. Administration.
+        Laboratory. We are committed to create an environment where all employees
+        feel welcomed and valued. The principles of diversity, equity and inclusion
+        must be integrated throughout all levels of TxDOT to continually innovate
+        and advance. TxDOT welcomes every gender, race ...", "dateLastCrawled":
+        "2021-10-03T17:24:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "Jobs - Grand Rapids, Michigan", "url": "https:\/\/www.grandrapidsmi.gov\/Jobs",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.grandrapidsmi.gov\/Jobs",
+        "snippet": "Jobs. Apply for the Deputy City Manager Position We''re looking
+        for our next Deputy City Manager. Click here for more information about the
+        job posting. Apply for a City Job Thinking of applying for a job with the
+        City? We''re happy you''re interested! You''re in the right place to submit
+        your application.", "dateLastCrawled": "2021-10-03T02:22:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Jobs - City of New Orleans", "url": "https:\/\/www.nola.gov\/jobs\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nola.gov\/jobs",
+        "snippet": "Jobs at the City are divided into unclassified and classified
+        service. Classified Jobs. Most city jobs are classified positions. There
+        are dozens of classified jobs listed at the City of New Orleans job portal.
+        Search Jobs. Promotional Jobs. You can apply for these jobs if you already
+        work in a classified City of New Orleans Civil Service position.", "dateLastCrawled":
+        "2021-10-03T12:15:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16", "name":
+        "Careers | FEMA.gov", "url": "https:\/\/www.fema.gov\/careers", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.fema.gov\/careers", "snippet": "Careers.
+        FEMA employees are driven by our core values of compassion, fairness, integrity
+        and respect. FEMA is a team of federal leaders who support people and communities
+        by providing experience, perspective, and resources in emergency management.
+        Each employee finds strength and value from their role at FEMA, whether
+        they are helping others in ...", "dateLastCrawled": "2021-09-23T07:01:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Search Results", "url": "https:\/\/www.txdot.gov\/inside-txdot\/search-results.html?page=100&q=open+jobs&q1=english&search_section=main&x1=language",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.txdot.gov\/inside-txdot\/search-results.html?page=100&q=open+jobs&q1=english&...",
+        "snippet": "Jobs Education Opportunities Attractions Entertainment Wide
+        Open Spaces History Quality of Life Sports.....Homeland Security | Open Records
+        | Fraud Hotline | texas.gov | Statewide Search | Compact with Texans | Texas...",
+        "dateLastCrawled": "2021-10-06T11:42:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "USAJOBS - Search", "url": "https:\/\/www.usajobs.gov\/Search?location=San%20Antonio%2C%20TX",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usajobs.gov\/Search?location=San
+        Antonio, TX", "snippet": "Use one or more filters to search for jobs by
+        hiring path, pay, departments, job series and more options under More Filters.
+        The number after each filter type tells you the number of available jobs.
+        Your results will update as you select each filter. Your profile tells us
+        if you''re eligible for a specific hiring path, and your work preferences
+        ...", "dateLastCrawled": "2021-10-02T00:21:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "PA CareerLink® - Job Search", "url": "https:\/\/www.pacareerlink.pa.gov\/jponline\/JobSeeker\/SearchJobs",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.pacareerlink.pa.gov\/jponline\/JobSeeker\/SearchJobs",
+        "snippet": "187,771 Ordenar por. Search. Search Registered Employers Only.
+        Search Registered Employers Only. A Registered Employer is an employer who
+        has posted a job using the PA CareerLink® job website. Registered Employers
+        and their jobs are reviewed and approved by PA CareerLink® staff. Mostrando
+        187,771 resultados.", "dateLastCrawled": "2021-10-04T00:25:00.0000000Z", "language":
+        "en", "isNavigational": false}]}, "rankingResponse": {"mainline": {"items":
+        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 06 Oct 2021 05:45:16 GMT
 recorded_with: VCR 6.0.0

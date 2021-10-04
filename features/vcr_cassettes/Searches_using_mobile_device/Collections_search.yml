@@ -512,4 +512,506 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
   recorded_at: Tue, 07 Sep 2021 16:17:20 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=gov%20(site:www.usa.gov/)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 15:36:01 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - 1C90B92D811C42CDABED11D7F944F836
+      Bingapis-Sessionid:
+      - 823FEC5180954E5BBA9E309E34AEC0CE
+      X-Msedge-Clientid:
+      - 0F88DAA728816FA30237CA6F29316E8A
+      X-Msapi-Userstate:
+      - 37b3
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=270,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: 1C90B92D811C42CDABED11D7F944F836 Ref B: BLUEDGE1415 Ref C: 2021-10-06T15:37:01Z'
+      Apim-Request-Id:
+      - 6798bbd6-3f7a-4c3d-a2c1-c6bbd7d3aca5
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 15:37:01 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "gov
+        (site:www.usa.gov\/)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=gov+(site%3awww.usa.gov%2f)",
+        "totalEstimatedMatches": 446000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Official Guide to Government Information and ... - USA.gov", "url":
+        "https:\/\/www.usa.gov\/", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov",
+        "snippet": "Learn how to prepare for and recover from disasters and emergencies.
+        Find government information on energy, green technology, pollution, wildlife,
+        and more. Find government information on education including primary, secondary,
+        and higher education. Find information for federal, state, and local government
+        agencies and elected officials.", "dateLastCrawled": "2021-10-02T06:08:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Government Forms, by Agency | A | USAGov", "url": "https:\/\/www.usa.gov\/forms\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/forms",
+        "snippet": "A .gov website belongs to an official government organization
+        in the United States. Secure .gov websites use HTTPS A lock ( A locked padlock)
+        or https:\/\/ means you’ve safely connected to the .gov website. Share sensitive
+        information only on official, secure websites. MENU. Government Agencies and
+        Elected Officials ...", "dateLastCrawled": "2021-10-03T23:06:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Government Benefits, Grants, and Loans | USAGov", "url": "https:\/\/www.usa.gov\/benefits-grants-loans",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/benefits-grants-loans",
+        "snippet": "Find food programs including SNAP (food stamps), WIC, school meals,
+        and more. Get emergency food assistance during the COVID-19 pandemic. Learn
+        about government grants and loans for states and organizations. Find government
+        programs to help with phone bills, medical bills, and other expenses. Get
+        COVID rent assistance.", "dateLastCrawled": "2021-10-02T15:13:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Where''s My Refund? Check the Status of My Tax Return - USA.gov",
+        "url": "https:\/\/www.usa.gov\/check-tax-status", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.usa.gov\/check-tax-status", "snippet": "A .gov
+        website belongs to an official government organization in the United States.
+        Secure .gov websites use HTTPS A lock ( A locked padlock) or https:\/\/
+        means you’ve safely connected to the .gov website. Share sensitive information
+        only on official, secure websites. Español MENU. Taxes. Main Navigation. Close
+        ...", "dateLastCrawled": "2021-10-02T06:14:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Unclaimed Money from the Government | USAGov", "url": "https:\/\/www.usa.gov\/unclaimed-money",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/unclaimed-money",
+        "snippet": "The unclaimed funds held by the state are often from bank accounts,
+        insurance policies, or your state government. Start your search for unclaimed
+        money with your state’s unclaimed property office. Search for unclaimed
+        money using a multi-state database. Perform your search using your name,
+        especially if you’ve moved to another state.", "dateLastCrawled": "2021-10-02T06:22:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Government Grants and Loans - USA.gov", "url": "https:\/\/www.usa.gov\/grants",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/grants",
+        "snippet": "Use the federal government’s free, official website, GovLoans.gov,
+        rather than commercial sites that may charge a fee for information or application
+        forms. GovLoans.gov directs you to information on loans for agriculture,
+        business, disaster relief, education, housing, and for veterans. Eligibility
+        - Use the online pre-screening tool.", "dateLastCrawled": "2021-10-03T13:15:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Advance Child Tax Credit and Economic Impact ... - USA.gov", "url":
+        "https:\/\/www.usa.gov\/covid-stimulus-checks", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.usa.gov\/covid-stimulus-checks", "snippet":
+        "COVID-19 Stimulus Checks for Individuals. The IRS issued three Economic Impact
+        Payments during the coronavirus pandemic for people who were eligible : $1,200
+        in April 2020. $600 in December 2020\/January 2021. $1,400 in March 2021.
+        These payments were sent by direct deposit to a bank account or by mail as
+        a paper check or a debit card.", "dateLastCrawled": "2021-10-03T08:03:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Unemployment Help - USA.gov", "url": "https:\/\/www.usa.gov\/unemployment",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/unemployment",
+        "snippet": "A .gov website belongs to an official government organization
+        in the United States. Secure .gov websites use HTTPS A lock ( A locked padlock)
+        or https:\/\/ means you’ve safely connected to the .gov website. Share sensitive
+        information only on official, secure websites. Español MENU. Jobs and Unemployment
+        ...", "dateLastCrawled": "2021-10-03T09:05:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Retirement - USA.gov", "url": "https:\/\/www.usa.gov\/retirement",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/retirement",
+        "snippet": "A .gov website belongs to an official government organization
+        in the United States. Secure .gov websites use HTTPS A lock ( A locked padlock)
+        or https:\/\/ means you’ve safely connected to the .gov website. Share sensitive
+        information only on official, secure websites. Español MENU. Jobs and Unemployment
+        ...", "dateLastCrawled": "2021-10-03T05:11:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Financial Assistance for Food, Housing, and Bills - USA.gov",
+        "url": "https:\/\/www.usa.gov\/covid-financial-help-from-the-government",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/covid-financial-help-from-the-government",
+        "snippet": "Get help from government programs that are offering temporary
+        COVID-19 assistance to pay rent, mortgages, funeral reimbursement, and student
+        loans. Food stamps and federal meal programs have also changed their rules
+        to provide extra help during the coronavirus pandemic.", "dateLastCrawled":
+        "2021-10-03T20:18:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10", "name":
+        "Getting or Renewing a U.S. Passport | USAGov", "url": "https:\/\/www.usa.gov\/passport",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/passport",
+        "snippet": "A .gov website belongs to an official government organization
+        in the United States. Secure .gov websites use HTTPS A lock ( A locked padlock)
+        or https:\/\/ means you’ve safely connected to the .gov website. Share sensitive
+        information only on official, secure websites. Español MENU ...", "dateLastCrawled":
+        "2021-10-03T07:14:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11", "name":
+        "Un sitio oficial del Gobierno de Estados Unidos - USA.gov", "url": "https:\/\/www.usa.gov\/Espanol\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/Espanol",
+        "snippet": "Servicios e información del Gobierno. Información general sobre
+        Estados Unidos, incluyendo historia, Gobierno, estructura política, etc. Información
+        sobre ayuda federal para estudiantes, beneficios y programas sociales del
+        Gobierno. Información oficial del Gobierno sobre pasaportes, residencia permanente,
+        visas y viajes.", "dateLastCrawled": "2021-10-02T10:10:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "COVID-19 Small Business Loans and Assistance - USA.gov", "url":
+        "https:\/\/www.usa.gov\/covid-small-business-loans", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.usa.gov\/covid-small-business-loans", "snippet":
+        "Vaccines.gov makes it easy to find COVID-19 vaccination sites. Select
+        which vaccine you want and search by zip code. Depending on your location,
+        you may be able to choose from pharmacies, health department clinics, and
+        other health care providers.", "dateLastCrawled": "2021-10-03T13:10:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Medicare - USA.gov", "url": "https:\/\/www.usa.gov\/medicare\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/medicare",
+        "snippet": "Medicare is the federal health insurance program for people:
+        Age 65 or older. Under 65 with certain disabilities. Any age with end-stage
+        renal disease (permanent kidney failure requiring dialysis or a kidney transplant).
+        Medicare has four parts: Part A is hospital insurance. Part B is medical
+        insurance. Part C Medicare Advantage Plans are a ...", "dateLastCrawled":
+        "2021-10-03T09:04:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "Financial Aid for Students - USA.gov", "url": "https:\/\/www.usa.gov\/financial-aid",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/financial-aid",
+        "snippet": "If you need help paying for college, technical, or career school,
+        check out the options you may be eligible for from the federal government
+        and other sources. Learn why federal student loans are generally preferable
+        to private loans, and how to complete the Free Application for Federal Student
+        Aid, or FAFSA.", "dateLastCrawled": "2021-10-03T14:08:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Small Business Administration - USA.gov", "url": "https:\/\/www.usa.gov\/federal-agencies\/small-business-administration",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/small-business-administration",
+        "snippet": "answerdesk@sba.gov Toll Free: 1-800-827-5722. TTY: 1-704-344-6640.
+        Forms: Small Business Administration Forms. Government branch: Independent
+        Agency. Popular Services fromSmall Business Administration. Grants and Loans
+        for Small Businesses", "dateLastCrawled": "2021-10-03T10:05:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Money and Taxes - USA.gov", "url": "https:\/\/www.usa.gov\/money",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/money",
+        "snippet": "Find tips on handling money wisely and confidently, whether you
+        are spending it now or investing for the future. Taxes. Find answers to top
+        questions about filing federal income tax, paying, getting refunds, and more.
+        Unclaimed Money from the Government. Find unclaimed funds held by the government
+        that might be owed to you.", "dateLastCrawled": "2021-10-02T21:16:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Finding Health Insurance - USA.gov", "url": "https:\/\/www.usa.gov\/finding-health-insurance",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/finding-health-insurance",
+        "snippet": "Visit HealthCare.gov to apply for benefits through the ACA Health
+        Insurance Marketplace or you''ll be directed to your state''s health insurance
+        marketplace website. Marketplaces, prices, subsidies, programs, and plans
+        vary by state. Contact the Marketplace Call Center. Find a local center to
+        apply or ask questions in person.", "dateLastCrawled": "2021-10-02T02:34:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Disaster Financial Assistance - USA.gov", "url": "https:\/\/www.usa.gov\/disaster-help-food-housing-bills",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/disaster-help-food-housing-bills",
+        "snippet": "A .gov website belongs to an official government organization
+        in the United States. Secure .gov websites use HTTPS A lock ( A locked padlock)
+        or https:\/\/ means you’ve safely connected to the .gov website. Share sensitive
+        information only on official, secure websites. Español MENU ...", "dateLastCrawled":
+        "2021-10-03T15:01:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19", "name":
+        "Filing Your Taxes - USA.gov", "url": "https:\/\/www.usa.gov\/filing-taxes-topics",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/filing-taxes-topics",
+        "snippet": "A .gov website belongs to an official government organization
+        in the United States. Secure .gov websites use HTTPS A lock ( A locked padlock)
+        or https:\/\/ means you’ve safely connected to the .gov website. Share sensitive
+        information only on official, secure websites. Español MENU. Taxes. Main
+        Navigation. Close ...", "dateLastCrawled": "2021-10-03T15:10:00.0000000Z",
+        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 06 Oct 2021 15:37:01 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=gobierno%20(site:www.usa.gov/espanol/)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 15:36:02 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - 0E368A7CD7E34188AA9DC656EC781C6B
+      Bingapis-Sessionid:
+      - C3BF56DC2F2E4230A4123845D60FA304
+      X-Msedge-Clientid:
+      - 3B523430A4A36D33191224F8A5EC6C50
+      X-Msapi-Userstate:
+      - 9b30
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=288,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: 0E368A7CD7E34188AA9DC656EC781C6B Ref B: BLUEDGE2021 Ref C: 2021-10-06T15:37:02Z'
+      Apim-Request-Id:
+      - 9f0de23a-c6db-4d83-8685-e18dca53e789
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 15:37:01 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "gobierno
+        (site:www.usa.gov\/espanol\/)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=gobierno+(site%3awww.usa.gov%2fespanol%2f)",
+        "totalEstimatedMatches": 58700, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Guía oficial de información y servicios del Gobierno | USAGov",
+        "url": "https:\/\/www.usa.gov\/Espanol\/", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.usa.gov\/Espanol", "snippet": "Servicios e información del
+        Gobierno. Información general sobre Estados Unidos, incluyendo historia,
+        Gobierno, estructura política, etc. Información sobre ayuda federal para
+        estudiantes, beneficios y programas sociales del Gobierno. Información oficial
+        del Gobierno sobre pasaportes, residencia permanente, visas y viajes.",
+        "dateLastCrawled": "2021-10-02T10:10:00.0000000Z", "language": "es", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1", "name":
+        "Ramas del Gobierno | USAGov", "url": "https:\/\/www.usa.gov\/espanol\/ramas-del-gobierno",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/espanol\/ramas-del-gobierno",
+        "snippet": "Ramas del Gobierno. La Constitución de Estados Unidos, que es
+        la ley suprema de la nación, define la estructura del Gobierno federal y
+        las funciones de sus tres ramas principales:. La rama legislativa. El Congreso
+        representa la rama del poder legislativo y está conformado por la Cámara de
+        Representantes y el Senado.. El Congreso, conformado por 435 representantes
+        y 100 senadores, está ...", "dateLastCrawled": "2021-10-02T20:15:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Directorios del Gobierno | USAGov", "url": "https:\/\/www.usa.gov\/espanol\/directorios",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/espanol\/directorios",
+        "snippet": "Directorio consulados y embajadas de Estados Unidos en Latinoamérica
+        y España y las embajadas de estos países en Washington, DC. Funcionarios elegidos.
+        Cómo contactar a los funcionarios del Gobierno . Gobiernos estatales. Encuentre
+        información de contacto para cada estado o territorio. Encuentre más temas
+        y servicios en USAGov en Español.", "dateLastCrawled": "2021-09-30T06:31:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Gobierno de Illinois | USAGov", "url": "https:\/\/www.usa.gov\/espanol\/gobiernos-estatales\/illinois",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/espanol\/gobiernos-estatales\/illinois",
+        "snippet": "Illinois. Encuentre información de contacto de las principales
+        agencias y oficinas del Gobierno de Illinois.", "dateLastCrawled": "2021-09-22T05:03:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Gobierno de New York | USAGov", "url": "https:\/\/www.usa.gov\/espanol\/gobiernos-estatales\/new-york",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/espanol\/gobiernos-estatales\/new-york",
+        "snippet": "Encuentre información de contacto de las principales agencias
+        y oficinas del Gobierno de New York. Gobierno estatal Nombre: New York
+        (en inglés) Contact: Email (en inglés) Dirección: NYS State Capitol Building
+        Albany, NY, 12224. Teléfono: 1-518-474-8390. Comparta esta página:", "dateLastCrawled":
+        "2021-09-28T20:03:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5", "name": "COVID-19
+        | USAGov", "url": "https:\/\/www.usa.gov\/espanol\/coronavirus", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.usa.gov\/espanol\/coronavirus", "snippet":
+        "Obtenga la ayuda del Gobierno disponible para las empresas y negocios pequeños
+        afectados por el COVID-19. Ayuda del Gobierno por el coronavirus para vivienda,
+        renta, gastos fúnebres, alimentos y préstamos estudiantiles. Conozca los cambios
+        en el seguro por desempleo que benefician a las personas afectadas por el
+        COVID-19. Cómo y dónde ...", "dateLastCrawled": "2021-10-03T00:03:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "COVID-19: ayuda para la renta, hipoteca, comida y ...", "url": "https:\/\/www.usa.gov\/espanol\/covid-ayuda-financiera-del-gobierno",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/espanol\/covid-ayuda-financiera-del-gobierno",
+        "snippet": "Obtenga la ayuda temporal por COVID-19 del Gobierno para pagar
+        la renta, gastos fúnebres, hipoteca y préstamos estudiantiles. El programa
+        de cupones de alimentos (SNAP) y los programas federales de comidas cambiaron
+        sus reglas para dar ayuda adicional a los afectados por la pandemia.", "dateLastCrawled":
+        "2021-10-01T10:28:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7", "name": "Encuentre
+        lo que necesita en este sitio | USAGov", "url": "https:\/\/www.usa.gov\/espanol\/forma-de-uso",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/espanol\/forma-de-uso",
+        "snippet": "USAGov en Español solo busca en sitios web del Gobierno federal
+        y de los gobiernos estatales y locales para el público. Su caja de búsqueda
+        funciona como otros motores de búsqueda que usted conoce, pero USAGov en Español
+        le mostrará solo enlaces que pertenecen o están auspiciados por el ...", "dateLastCrawled":
+        "2021-09-23T07:52:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8", "name": "Préstamos
+        y subvenciones | USAGov", "url": "https:\/\/www.usa.gov\/espanol\/prestamos-y-subvenciones",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/espanol\/prestamos-y-subvenciones",
+        "snippet": "El Gobierno otorga préstamos para fines específicos, como por
+        ejemplo: Para ayudar con el financiamiento de la educación. Para asistir con
+        las necesidades de vivienda. Como respuesta a una emergencia o crisis. Los
+        préstamos, a diferencia de las subvenciones, deben ser devueltos en pagos
+        que a menudo son con intereses. Abrir todos +.", "dateLastCrawled": "2021-09-30T05:05:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Programa de Bonos de Ahorro del Tesoro de EE. UU. | USAGov", "url":
+        "https:\/\/www.usa.gov\/espanol\/agencias-federales\/programa-de-bonos-de-ahorro-del-tesoro-de-ee-uu",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/espanol\/agencias-federales\/programa-de-bonos-de-ahorro-del-tesoro...",
+        "snippet": "Programa de Bonos de Ahorro del Tesoro de EE. UU. El Programa
+        de Bonos de Ahorro del Tesoro de EE. UU. (en inglés) ofrece una manera de
+        ahorrar. El Gobierno de Estados Unidos emite bonos que devienen interés
+        a largo plazo. Detalles de la agencia", "dateLastCrawled": "2021-09-28T03:22:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Vivienda de renta asequible | USAGov", "url": "https:\/\/www.usa.gov\/espanol\/vivienda-accesible",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/espanol\/vivienda-accesible",
+        "snippet": "La moratoria o prórroga para evitar desalojos por COVID-19 del
+        Gobierno terminó. Los propietarios ahora pueden desalojar a los inquilinos
+        que no puedan pagar el alquiler durante la pandemia. Como inquilino o como
+        propietario, los programas del gobierno pueden ayudarlo con el dinero del
+        alquiler y ...", "dateLastCrawled": "2021-10-03T12:16:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Explorar USAGov en español | USA.gov", "url": "https:\/\/www.usa.gov\/espanol\/explorar\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/espanol\/explorar",
+        "snippet": "Cualquiera que sea su duda, permítanos ayudarlo. USAGov es un
+        programa federal que lo conecta a la información y los servicios de las agencias,
+        los departamentos y programas del Gobierno. En USAGov encontrará respuestas
+        a sus preguntas en español y en inglés, por internet, teléfono o chat.", "dateLastCrawled":
+        "2021-10-01T18:38:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12", "name":
+        "Gobierno de U.S. Virgin Islands | USAGov", "url": "https:\/\/www.usa.gov\/espanol\/gobiernos-estatales\/u-s-virgin-islands",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/espanol\/gobiernos-estatales\/u-s-virgin-islands",
+        "snippet": "Encuentre información de contacto de las principales agencias
+        y oficinas del Gobierno de U.S. Virgin Islands. Gobierno estatal Nombre:
+        U.S. Virgin Islands (en inglés) Dirección: 5047 (21-22) Kongens Gade St. Thomas,
+        VI, 00802-6487. Comparta esta página: Subir Sobre USAGov en Español ...",
+        "dateLastCrawled": "2021-09-30T14:04:00.0000000Z", "language": "es", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Programas sociales del Gobierno - USAGov", "url": "https:\/\/www.usa.gov\/espanol\/programas-sociales",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/espanol\/programas-sociales",
+        "snippet": "Encuentre ayuda para comprar alimentos básicos a través del Programa
+        de Asistencia Nutricional Suplementaria (en inglés) o SNAP (sigla en inglés),
+        popularmente conocido como los “cupones para alimentos”. Este es un programa
+        del Gobierno federal de asistencia para personas de escasos recursos ...",
+        "dateLastCrawled": "2021-10-03T14:18:00.0000000Z", "language": "es", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Ayuda para pequeños negocios por COVID-19 | USAGov", "url": "https:\/\/www.usa.gov\/espanol\/covid-ayuda-para-negocios",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/espanol\/covid-ayuda-para-negocios",
+        "snippet": "Obtenga la ayuda del Gobierno disponible para las empresas y
+        negocios pequeños afectados por el COVID-19. Por favor active JavaScript
+        en su navegador. De lo contrario, algunas secciones de este sitio web podrían
+        funcionar incorrectamente.", "dateLastCrawled": "2021-10-02T14:14:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Oficina de Administración de Personal | USAGov", "url": "https:\/\/www.usa.gov\/espanol\/agencias-federales\/oficina-de-administracion-de-personal",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/espanol\/agencias-federales\/oficina-de-administracion-de-personal",
+        "snippet": "La Oficina de Administración de Personal (en inglés) apoya a
+        las agencias federales en el reclutamiento y empleo de una mano de obra capacitada
+        y diversa. Proporciona información sobre los beneficios para los empleados
+        federales y mantiene la página en Internet USAJobs.gov, donde puede postular
+        a un trabajo federal.", "dateLastCrawled": "2021-10-01T17:07:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Gobierno de Kansas | USAGov", "url": "https:\/\/www.usa.gov\/espanol\/gobiernos-estatales\/kansas",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/espanol\/gobiernos-estatales\/kansas",
+        "snippet": "Gobierno estatal Nombre: Kansas (en inglés) Dirección: Capitol
+        300 SW 10th Ave., Ste. 241S Topeka, KS, 66612-1590. Teléfono: 785-368-8500.
+        Línea gratuita: 877-579-6757. TTY: 800-766-3777. Comparta esta página: Subir
+        Sobre USAGov en Español; Acerca de nosotros y avisos de este sitio ...", "dateLastCrawled":
+        "2021-09-28T06:23:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17", "name":
+        "Asistencia alimentaria | USAGov", "url": "https:\/\/www.usa.gov\/espanol\/asistencia-alimentaria",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/espanol\/asistencia-alimentaria",
+        "snippet": "Es posible que debido a la pandemia de COVID-19 pueda ser más
+        fácil para usted y su familia obtener cupones para alimentos y participar
+        en los programas de comidas del Gobierno. Comuníquese con la oficina local
+        de servicios sociales de su estado (en inglés) para averiguar si es elegible.
+        Durante ...", "dateLastCrawled": "2021-09-29T14:24:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Vivienda | USAGov", "url": "https:\/\/www.usa.gov\/espanol\/vivienda",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/espanol\/vivienda",
+        "snippet": "Recursos del Gobierno para conseguir una hipoteca y para evitar
+        una ejecución hipotecaria. Reclamos por servicios. Cómo presentar una queja
+        relacionada con su vivienda. Vivienda de renta asequible. Cómo encontrar
+        vivienda pública y recursos de ayuda para pagar la renta.", "dateLastCrawled":
+        "2021-09-30T17:29:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19", "name":
+        "Oficina de Publicaciones del Gobierno de Estados Unidos ...", "url": "https:\/\/www.usa.gov\/espanol\/agencias-federales\/oficina-de-publicaciones-del-gobierno-de-estados-unidos",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/espanol\/agencias-federales\/oficina-de-publicaciones-del-gobierno...",
+        "snippet": "Oficina de Publicaciones del Gobierno de Estados Unidos. La
+        Oficina de Publicaciones del Gobierno de Estados Unidos (en inglés) asegura
+        el derecho público a la información gubernamental mediante la recopilación,
+        mantenimiento, preservación y diseminación de los productos informativos del
+        Gobierno. El mismo provee copias de la Constitución y Declaración de Independencia,
+        Informes del ...", "dateLastCrawled": "2021-09-25T22:29:00.0000000Z", "language":
+        "es", "isNavigational": false}]}, "rankingResponse": {"mainline": {"items":
+        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 06 Oct 2021 15:37:02 GMT
 recorded_with: VCR 6.0.0

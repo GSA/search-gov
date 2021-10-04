@@ -68,6 +68,74 @@ http_interactions:
       encoding: UTF-8
       string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "''65d86996b6eceb05d2272aea9cadd10d''"},
         "rankingResponse": {}}'
-    http_version:
   recorded_at: Tue, 31 Aug 2021 20:32:43 GMT
-recorded_with: VCR 4.0.0
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=%2765d86996b6eceb05d2272aea9cadd10d%27&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 10:40:47 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - FE39193A590D4E489BB0E7B93BBFC3ED
+      Bingapis-Sessionid:
+      - 4C551EDD14B9432E8D012D964A2F8D7B
+      X-Msedge-Clientid:
+      - 0C89894BE92467FC0B4B9983E8C2669E
+      X-Msapi-Userstate:
+      - 1c44
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=141,MSDatacenter=CH1B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: FE39193A590D4E489BB0E7B93BBFC3ED Ref B: DM2EDGE0910 Ref C: 2021-10-06T10:41:47Z'
+      Apim-Request-Id:
+      - b31732d5-8438-4d5f-b4d8-354a7c28c513
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 10:41:47 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "''65d86996b6eceb05d2272aea9cadd10d''"},
+        "rankingResponse": {}}'
+  recorded_at: Wed, 06 Oct 2021 04:38:54 GMT
+recorded_with: VCR 6.0.0

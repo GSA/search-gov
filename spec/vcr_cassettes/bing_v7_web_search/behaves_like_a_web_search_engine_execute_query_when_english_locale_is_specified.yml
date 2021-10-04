@@ -241,6 +241,246 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
-    http_version:
   recorded_at: Tue, 31 Aug 2021 20:32:44 GMT
-recorded_with: VCR 4.0.0
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=english&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 10:40:45 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - D194926D9B374F57AE6155D13514C194
+      Bingapis-Sessionid:
+      - C41B4D8B635C4971BC2386F3996D254B
+      X-Msedge-Clientid:
+      - 2D06EB7FC18C68DA0FC5FBB7C0716932
+      X-Msapi-Userstate:
+      - 24a2
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=235,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: D194926D9B374F57AE6155D13514C194 Ref B: BLUEDGE1020 Ref C: 2021-10-06T10:41:45Z'
+      Apim-Request-Id:
+      - be39c23c-41df-4650-9e65-51bc1b93ef5f
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 10:41:44 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "english"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=english", "totalEstimatedMatches":
+        269000000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "contractualRules": [{"_type": "ContractualRules\/LicenseAttribution", "targetPropertyName":
+        "snippet", "targetPropertyIndex": 0, "mustBeCloseToContent": true, "license":
+        {"name": "CC-BY-SA", "url": "http:\/\/creativecommons.org\/licenses\/by-sa\/3.0\/"},
+        "licenseNotice": "Text under CC-BY-SA license"}], "name": "English language
+        - Wikipedia", "url": "https:\/\/en.wikipedia.org\/wiki\/English_language",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/en.wikipedia.org\/wiki\/English_language",
+        "snippet": "English is an Indo-European language and belongs to the West Germanic
+        group of the Germanic languages. Old English originated from a Germanic tribal
+        and linguistic continuum along the Frisian North Sea coast, whose languages
+        gradually evolved into the Anglic languages in the British Isles, and into
+        the Frisian languages and Low German\/Low Saxon on the continent.", "dateLastCrawled":
+        "2021-09-27T01:21:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1", "name": "English
+        | Definition of English by Merriam-Webster", "url": "https:\/\/www.merriam-webster.com\/dictionary\/English",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.merriam-webster.com\/dictionary\/English",
+        "snippet": "English definition is - of or relating to England or its people.
+        See more meanings of English. How to use English in a sentence.", "dateLastCrawled":
+        "2021-10-03T13:17:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2", "name": "English
+        - definition of English by The Free Dictionary", "url": "https:\/\/www.thefreedictionary.com\/English",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.thefreedictionary.com\/English",
+        "snippet": "English synonyms, English pronunciation, English translation,
+        English dictionary definition of English. adj. 1. Of, relating to, or characteristic
+        of England or its people or culture. 2.", "dateLastCrawled": "2021-10-03T03:02:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "English language | Origin, History, Development ...", "url": "https:\/\/www.britannica.com\/topic\/English-language",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.britannica.com\/topic\/English-language",
+        "snippet": "English language, a West Germanic language of the Indo-European
+        language family that is closely related to the Frisian, German, and Dutch
+        languages. It originated in England and is the dominant language of the U.S.,
+        the U.K., Canada, Australia, Ireland, and New Zealand. It has become the world’s
+        lingua franca.", "dateLastCrawled": "2021-10-03T05:09:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Advanced English lessons", "url": "https:\/\/www.englishpage.com\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.englishpage.com", "snippet":
+        "Englishpage.com offers free online English lessons for advanced English learners.
+        Lessons include hundreds of English grammar and vocabulary exercises. Everything
+        is free and no sign-up is required.", "dateLastCrawled": "2021-10-04T02:29:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Learn English in 30 Minutes - ALL the English Basics You ...", "url":
+        "https:\/\/www.youtube.com\/watch?v=juKd26qkNAw", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.youtube.com\/watch?v=juKd26qkNAw", "snippet":
+        "To thank you for reaching 300k subscribers, here is your 30 minute video
+        to master ALL the basics of the English language! And if you want to study
+        more, cli...", "dateLastCrawled": "2021-10-03T19:21:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Cambridge English Dictionary: Meanings & Definitions", "url": "https:\/\/dictionary.cambridge.org\/dictionary\/english\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/dictionary.cambridge.org\/dictionary\/english",
+        "snippet": "The most popular dictionary and thesaurus. Meanings & definitions
+        of words in English with examples, synonyms, pronunciations and translations.",
+        "dateLastCrawled": "2021-10-03T11:30:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7", "name":
+        "Google Translate", "url": "https:\/\/translate.google.com\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/translate.google.com", "snippet": "Google''s
+        free service instantly translates words, phrases, and web pages between English
+        and over 100 other languages.", "dateLastCrawled": "2021-10-03T07:08:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "12 Ways to Learn English Fast and Easy", "url": "https:\/\/preply.com\/en\/blog\/learn-english-fast-and-easy\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/preply.com\/en\/blog\/learn-english-fast-and-easy",
+        "snippet": "English is the most commonly studied second language in the world.
+        There have never been more study materials at your fingertips, articles promising
+        secret hacks, or online communities to support you. But if you need to learn
+        English quickly, which is the easiest path to results? In this guide, we have
+        pulled together a step-by-step […]", "dateLastCrawled": "2021-10-03T16:41:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Cambridge Dictionary | English Dictionary, Translations ...", "url":
+        "https:\/\/dictionary.cambridge.org\/", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/dictionary.cambridge.org", "snippet": "The most popular dictionary
+        and thesaurus for learners of English. Meanings and definitions of words with
+        pronunciations and translations.", "dateLastCrawled": "2021-10-03T07:20:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Google", "url": "https:\/\/www.google.com\/intl\/en\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.google.com\/intl\/en", "snippet": "Search
+        the world''s information, including webpages, images, videos and more. Google
+        has many special features to help you find exactly what you''re looking for.",
+        "dateLastCrawled": "2021-10-03T07:18:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "English-Italian dictionary | Italian translation | Reverso", "url":
+        "https:\/\/dictionary.reverso.net\/english-italian\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/dictionary.reverso.net\/english-italian", "snippet":
+        "English » Italian dictionary with thousands of words and phrases. R everso
+        offers you the best tool for learning Italian, the English Italian dictionary
+        containing commonly used words and expressions, along with thousands of English
+        entries and their Italian translation, added in the dictionary by our users.
+        For the ones performing ...", "dateLastCrawled": "2021-10-03T05:21:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Speaking English - USA Learns", "url": "https:\/\/www.usalearns.org\/speaking-english",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usalearns.org\/speaking-english",
+        "snippet": "Speaking English with Confidence. How can you build your confidence?
+        Listen: The more English you hear, the easier it will be for you to copy what
+        you hear. Practice: The more you speak, the more comfortable you will feel
+        about speaking. Start with easy things. Ask questions at a store. Ask where
+        you can find something, even if you already know.", "dateLastCrawled": "2021-10-03T03:15:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Skills - Learn English Online | British Council", "url": "https:\/\/learnenglish.britishcouncil.org\/skills",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/learnenglish.britishcouncil.org\/skills",
+        "snippet": "Here you can find practice materials and activities to improve
+        your English speaking, listening, reading and writing skills. Improving your
+        skills will help you use English more effectively so that you can do well
+        in your studies, get ahead at work and confidently communicate in English
+        in your free time. How to improve your English proficiency To build your vocabulary
+        and develop your English ...", "dateLastCrawled": "2021-10-03T13:05:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Free English Lessons", "url": "http:\/\/www.englishspeak.com\/en\/english-lessons",
+        "isFamilyFriendly": true, "displayUrl": "englishspeak.com", "snippet": "Translations:
+        English Portugues हिन्दी Deutsch Français الْعَرَبيّة Bengali Pусский Tiếng
+        Việt Burmese Bahasa Indonesia 한국어 Español ไทย 日本語 Chin 中文 繁體", "dateLastCrawled":
+        "2021-10-03T03:09:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15", "name":
+        "English - Wiktionary", "url": "https:\/\/en.wiktionary.org\/wiki\/English",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/en.wiktionary.org\/wiki\/English",
+        "snippet": "English ( countable and uncountable, plural Englishes ) English,
+        Indiana on Wikipedia. The language originating in England but now spoken in
+        all parts of the British Isles, the Commonwealth of Nations, North America,
+        and other parts of the world. English is spoken here as an unofficial language
+        and lingua franca.", "dateLastCrawled": "2021-10-02T13:02:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "EnglishClub - Learn or Teach English Today", "url": "https:\/\/www.englishclub.com\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.englishclub.com", "snippet":
+        "What do ESL and EFL mean? ESL stands for English as a Second Language. EFL
+        stands for English as a Foreign Language. ESL is used when people learn English
+        in an English speaking country. EFL is used when people learn English in a
+        non-English speaking country. Is this important? Not very, if you are a learner.",
+        "dateLastCrawled": "2021-10-03T21:06:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Learning English Online Courses | Coursera", "url": "https:\/\/www.coursera.org\/browse\/language-learning\/learning-english",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.coursera.org\/browse\/language-learning\/learning-english",
+        "snippet": "English language learners can also explore topics specifically
+        around preparing for a presentation, meeting, networking, or planning and
+        negotiating. People learning English who work in STEM may benefit from specific
+        courses that center around vocabulary and phrases used exclusively in this
+        field. ‎", "dateLastCrawled": "2021-10-02T23:05:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Spanish-English dictionary | English translation | Reverso", "url":
+        "https:\/\/dictionary.reverso.net\/spanish-english\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/dictionary.reverso.net\/spanish-english", "snippet":
+        "R everso offers you the best tool for learning English, the Spanish English
+        dictionary containing commonly used words and expressions, along with thousands
+        of Spanish entries and their English translation, added in the dictionary
+        by our users. For the ones performing professional translations from Spanish
+        to English, the specialized terms found in our dictionary are very helpful.",
+        "dateLastCrawled": "2021-10-03T02:20:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "General English - Cambridge Assessment English", "url": "https:\/\/www.cambridgeenglish.org\/test-your-english\/general-english\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cambridgeenglish.org\/test-your-english\/general-english",
+        "snippet": "Cambridge English for Centres. Preparation Centres Online. Results
+        Verification Service. Occupational English Test. ALTE. English Profile. Cambridge
+        University Press & Assessment. Cambridge Assessment Admissions Testing. Michigan
+        Language Assessment.", "dateLastCrawled": "2021-10-03T20:09:00.0000000Z",
+        "language": "en", "isNavigational": false}], "someResultsRemoved": true},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 06 Oct 2021 04:38:52 GMT
+recorded_with: VCR 6.0.0

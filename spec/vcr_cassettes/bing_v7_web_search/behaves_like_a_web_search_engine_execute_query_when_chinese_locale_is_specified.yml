@@ -178,6 +178,190 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
-    http_version:
   recorded_at: Tue, 31 Aug 2021 20:32:42 GMT
-recorded_with: VCR 4.0.0
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=%E4%B8%AD%E5%9B%BD&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 10:40:45 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - 00E894EA05354649ABE4340F21512E2D
+      Bingapis-Sessionid:
+      - 4D394911A21E4C87BB00520892C0BC70
+      X-Msedge-Clientid:
+      - 3480264A4998674C2EB0368248656695
+      X-Msapi-Userstate:
+      - '0601'
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=213,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: 00E894EA05354649ABE4340F21512E2D Ref B: BLUEDGE0507 Ref C: 2021-10-06T10:41:45Z'
+      Apim-Request-Id:
+      - 5b150394-3637-4f19-b1e2-6d3adc68fb0c
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 10:41:46 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "中国"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=%E4%B8%AD%E5%9B%BD",
+        "totalEstimatedMatches": 179000000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "中国（世界四大文明古国之一）_百度百科", "url": "https:\/\/baike.baidu.com\/item\/%E4%B8%AD%E5%9B%BD\/1122445",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/baike.baidu.com\/item\/中国",
+        "snippet": "中国，以华夏文明为源泉、中华文化为基础，是世界上历史最悠久的国家之一。中国各族人民共同创造了光辉灿烂的文化，具有光荣的革命传统。中国是以汉族为主体民族的多民族国家，通用汉语、汉字，汉族与少数民族统称为“中华民族”，又自称“炎黄子孙”、“龙的传人”。",
+        "dateLastCrawled": "2021-10-02T18:16:00.0000000Z", "language": "zh_chs", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1", "name":
+        "中国网--网上中国", "url": "http:\/\/www.china.com.cn\/", "isFamilyFriendly": true,
+        "displayUrl": "www.china.com.cn", "snippet": "中国网是国务院新闻办公室领导，中国外文出版发行事业局管理的国家重点新闻网站。本网通过10个语种11个文版，24小时对外发布信息，是中国进行
+        ...", "dateLastCrawled": "2021-09-30T23:01:00.0000000Z", "language": "zh_chs",
+        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "中国政府网 中央人民政府门户网站 - GOV.CN", "url": "https:\/\/www.gov.cn\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.gov.cn", "snippet": "中国政府网由国务院办公厅主办，中国政府网运行中心负责运行维护,是国务院和国务院各部门，以及各省、自治区、直辖市人民政府在国际互联网上发布政府信息和提供在线服务的综合平台,第一时间权威发布国务院重大决策部署和重要政策文件，国务院领导同志重要会议、考察、出访活动等政务
+        ...", "dateLastCrawled": "2021-10-03T03:17:00.0000000Z", "language": "zh_chs",
+        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "中国银行全球门户网站 - BOC", "url": "http:\/\/www.boc.cn\/", "isFamilyFriendly":
+        true, "displayUrl": "www.boc.cn", "snippet": "中国银行是中国国际化和多元化程度最高的银行，在中国内地及六十多个国家和地区为客户提供全面的金融服务。主要经营商业银行业务：公司金融、个人金融和金融市场业务，并通过附属机构开展投资银行、保险、直接投资、投资管理、基金管理和飞机租赁业务。",
+        "dateLastCrawled": "2021-10-03T07:03:00.0000000Z", "language": "zh_chs", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4", "name":
+        "China Daily Website - Connecting China Connecting the World", "url": "https:\/\/www.chinadaily.com.cn\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.chinadaily.com.cn",
+        "snippet": "Chinadaily.com.cn is the largest English portal in China, providing
+        news, business information, BBS, learning materials. The Website has channels
+        as China, BizChina ...", "dateLastCrawled": "2021-10-03T17:23:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "首页 - 中国天气网", "url": "http:\/\/www.weather.com.cn\/", "isFamilyFriendly":
+        true, "displayUrl": "www.weather.com.cn", "snippet": "中国气象局 中国气象服务协会 中国天气频道
+        中国兴农网 客服邮箱： service@weather.com.cn 广告服务： 010-58991840 媒资合作：010-58993745 京ICP证010385-2号
+        京公网安备11041400134号", "dateLastCrawled": "2021-10-03T07:18:00.0000000Z", "language":
+        "zh_chs", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "中国农业银行", "url": "http:\/\/www.abchina.com\/cn\/", "isFamilyFriendly":
+        true, "displayUrl": "www.abchina.com\/cn", "snippet": "中国农业银行版权所有 | 京icp备05049539.
+        分享至： 客服热线：95599. 中国农业银行版权所有 京icp备05049539. 本网站已支持ipv6 ...", "dateLastCrawled":
+        "2021-10-03T07:30:00.0000000Z", "language": "zh_chs", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7", "name": "中国知网
+        - CNKI", "url": "http:\/\/www.cnki.net\/", "isFamilyFriendly": true, "displayUrl":
+        "www.cnki.net", "snippet": "中国知网知识发现网络平台—面向海内外读者提供中国学术文献、外文文献、学位论文、报纸、会议、年鉴、工具书等各类资源统一检索、统一导航、在线阅读和下载服务。涵盖基础科学、文史哲、工程科技、社会科学、农业、经济与管理科学、医药卫生、信息科技等十大领域。",
+        "dateLastCrawled": "2021-10-03T08:47:00.0000000Z", "language": "zh_chs", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8", "name":
+        "亚马逊-网上购物商城：要网购, 就来Z.cn!", "url": "https:\/\/www.amazon.cn\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.amazon.cn", "snippet": "亚马逊中国（z.cn）坚持“以客户为中心”的理念，秉承“天天低价，正品行货”信念，销售图书、电脑、数码家电、母婴百货、服饰箱包等上千万种产品。亚马逊中国提供专业服务：正品行货天天低价，机打发票全国联保。货到付款，30天内可退换货。亚马逊为中国消费者提供便利、快捷的网购体验。",
+        "dateLastCrawled": "2021-10-03T07:10:00.0000000Z", "language": "zh_chs", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9", "name":
+        "中国大学MOOC(慕课)_国家精品课程在线学习平台", "url": "https:\/\/www.icourse163.org\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.icourse163.org", "snippet": "中国大学mooc(慕课)
+        是国内优质的中文mooc学习平台，由爱课程网携手网易云课堂打造。平台拥有包括985高校在内提供的千余门课程，其中首批获得认定的国家精品在线开放课程322门，占2017年获得认定课程总数的65.7%。每一个有提升愿望的人，都可以在这里学习优质高校课程，与名师零距离交流，并
+        ...", "dateLastCrawled": "2021-10-03T07:04:00.0000000Z", "language": "zh_chs",
+        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "上海市人民政府 - 中国上海", "url": "http:\/\/www.shanghai.gov.cn\/", "isFamilyFriendly":
+        true, "displayUrl": "www.shanghai.gov.cn", "snippet": "上海市人民政府关于第四届中国国际进口博览会期间实行临时价格干预措施的通告
+        2021-09-30; 上海市建设具有全球影响力的科技创新中心“十四五”规划 2021-09-29; 一图读懂《上海市建设具有全球影响力的科技创新中心“十四五”规划》
+        2021-09-29", "dateLastCrawled": "2021-10-03T10:18:00.0000000Z", "language":
+        "zh_chs", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "中国 - Wikipedia", "url": "https:\/\/ja.wikipedia.org\/wiki\/%E4%B8%AD%E5%9B%BD",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/ja.wikipedia.org\/wiki\/中国",
+        "snippet": "中国（ちゅうごく、簡: 中国; 繁: 中國, 英: China ）は、ユーラシア大陸（アジア大陸）の東部を占める地域、及びそこで成立した国家をさす用語。
+        日本では、1972年の日中国交正常化以降、中華人民共和国の略称としても使用されている 。. 本記事では、「中国」という用語の「意味」の変遷と ...",
+        "dateLastCrawled": "2021-10-03T16:20:00.0000000Z", "language": "ja", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "网上直播_中国网 - 中国网--网上中国", "url": "http:\/\/www.china.com.cn\/zhibo\/node_7030498.htm",
+        "isFamilyFriendly": true, "displayUrl": "www.china.com.cn\/zhibo", "snippet":
+        "2020-12-11. 国新办就“岗位成才、奋斗圆梦”举行中外记者见面会. 2020-11-24. 进入中外记者见面会直播页面. 中国网. 中国网.
+        1 2. 中国网. 中国网.", "dateLastCrawled": "2021-10-03T03:28:00.0000000Z", "language":
+        "zh_chs", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "中国银行_金融市场_外汇牌价 - BOC", "url": "https:\/\/www.boc.cn\/sourcedb\/whpj\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.boc.cn\/sourcedb\/whpj",
+        "snippet": "2.未经中国银行许可，不得以商业目的转载本汇率表的全部或部分内容，如需引用相关数据，应注明来源于中国银行； 3.中国银行外汇牌价业务系统于2011年10月30日进行了升级，本汇率表原有的\"卖出价\"细分为\"现汇卖出价\"和\"现钞卖出价\"，此前各货币的\"卖出价\"均
+        ...", "dateLastCrawled": "2021-10-01T05:04:00.0000000Z", "language": "zh_chs",
+        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "中国共产党_百度百科 - Baidu Baike", "url": "https:\/\/baike.baidu.com\/item\/%E4%B8%AD%E5%9B%BD%E5%85%B1%E4%BA%A7%E5%85%9A\/117227",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/baike.baidu.com\/item\/中国共产党",
+        "snippet": "中国共产党（英文名：the Communist Party of China，简写CPC），创建于1921年7月23日，1921年中国共产党成立后，确立了新民主主义革命的正确道路，让灾难深重的中国人民看到了新的希望、有了新的依靠。我们党探索出农村包围城市、武装夺取政权的正确革命道路，“唤起工农千百万”“夺过鞭子揍敌人
+        ...", "dateLastCrawled": "2021-10-02T21:17:00.0000000Z", "language": "zh_chs",
+        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "中国邮政储蓄银行 - psbc.com", "url": "https:\/\/www.psbc.com\/cn\/index.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.psbc.com\/cn\/index.html",
+        "snippet": "2021年7月份“经济日报-中国邮政储蓄银行小微企业运行指数”报告 企业稳定复苏 抗风险能力增强经济日报-中国邮政储蓄银行小微企业运行指数课题组7月份，
+        “经济日报-中国邮政储蓄银行小微企业运行指数”为44.4，较上月上升0.1个点(见图。 了解更多", "dateLastCrawled": "2021-10-03T18:22:00.0000000Z",
+        "language": "zh_chs", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "中国人寿官网-保险·投资·银行-中国人寿", "url": "http:\/\/www.chinalife.com.cn\/",
+        "isFamilyFriendly": true, "displayUrl": "www.chinalife.com.cn", "snippet":
+        "中国人寿属国有大型金融保险集团，也是资本市场重要的机构投资者，业务范围全面涵盖保险、投资、银行三大板块。统一 ...", "dateLastCrawled":
+        "2021-10-02T17:10:00.0000000Z", "language": "zh_chs", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17", "name":
+        "首页 | 路透中文网", "url": "https:\/\/cn.reuters.com\/", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/cn.reuters.com", "snippet": "路透澳洲朗赛斯顿9月30日 - 中国正在为遏制国内煤炭产量和进口的政策付出高昂的代价，并导致燃煤短缺，而中国这个全球第二大经济体仍主要仰赖燃煤发电。
+        路透奥兰多9月28日 - 自美联储上周展示鹰派倾向以来，美国债券 ...", "dateLastCrawled": "2021-10-03T08:10:00.0000000Z",
+        "language": "zh_chs", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "微星中国", "url": "https:\/\/cn.msi.com\/", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/cn.msi.com", "snippet": "微星科技全球拥有超过一万五千多名菁英团队、产品营销遍及全球120余国，主板与显卡名列全球前三大、笔记本电脑跻身世界前十大，每年获得全球知名产品设计大奖与国际知名媒体超过1000个奖项的肯定。",
+        "dateLastCrawled": "2021-10-03T07:03:00.0000000Z", "language": "zh_chs", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "中国网新闻中心 传递中国价值 - china.com.cn", "url": "http:\/\/news.china.com.cn\/",
+        "isFamilyFriendly": true, "displayUrl": "news.china.com.cn", "snippet": "中国发布丨国家卫健委：超过10.1亿人完成新冠疫苗全程接种.
+        2021-09-16 15:22. 中国发布丨5种门诊慢特病将试点跨省直接结算. 2021-09-16 15:18. 中国发布丨 ...", "dateLastCrawled":
+        "2021-10-03T06:42:00.0000000Z", "language": "zh_chs", "isNavigational": false}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 06 Oct 2021 04:38:52 GMT
+recorded_with: VCR 6.0.0
