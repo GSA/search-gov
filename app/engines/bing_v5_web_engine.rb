@@ -1,6 +1,6 @@
 class BingV5WebEngine < BingSearch
-  API_HOST = 'https://api.cognitive.microsoft.com'.freeze
-  API_ENDPOINT = '/bing/v5.0/search'.freeze
+  API_HOST = 'https://api.cognitive.microsoft.com'
+  API_ENDPOINT = '/bing/v5.0/search'
   include BingV5HostedSubscriptionKey
 
   self.api_endpoint = API_ENDPOINT
