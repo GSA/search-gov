@@ -233,4 +233,233 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
   recorded_at: Tue, 07 Sep 2021 16:18:44 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=president%20(site:whitehouse.gov%20OR%20site:usa.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 11:48:44 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - 8242D4E7338A4E1FB369D72CF8CAD8B0
+      Bingapis-Sessionid:
+      - 78223D5B3C534044BA4FDBE37F17C1E4
+      X-Msedge-Clientid:
+      - 032CEAC0C555648E365FFA08C41A6538
+      X-Msapi-Userstate:
+      - ebae
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=257,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: 8242D4E7338A4E1FB369D72CF8CAD8B0 Ref B: BLUEDGE1208 Ref C: 2021-10-06T11:49:44Z'
+      Apim-Request-Id:
+      - 5de4b839-2af8-4a23-89d3-5723d99841ec
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 11:49:44 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "president
+        (site:whitehouse.gov OR site:usa.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=president+(site%3awhitehouse.gov+OR+site%3ausa.gov)",
+        "totalEstimatedMatches": 1230000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Joe Biden: The President | The White House", "url": "https:\/\/www.whitehouse.gov\/administration\/president-biden\/",
+        "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.H3dOMqC6IxN2rI36W46QKAHaE-&pid=Api",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/administration\/president-biden",
+        "snippet": "As President, Biden will restore America’s leadership and build
+        our communities back better. Joseph Robinette Biden, Jr. was born in Scranton,
+        Pennsylvania, the first of four children of ...", "dateLastCrawled": "2021-10-03T13:03:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Presidents | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents",
+        "snippet": "The 27th President of the United States William Howard Taft
+        Woodrow Wilson The 28th President of the United States Woodrow Wilson Warren
+        G. Harding The 29th President of the United States ...", "dateLastCrawled":
+        "2021-10-02T06:03:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2", "name": "Executive
+        Office of the President | The White House", "url": "https:\/\/www.whitehouse.gov\/administration\/executive-office-of-the-president\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/administration\/executive-office-of-the-president",
+        "snippet": "To provide the President with the support that he or she needs
+        to govern effectively, the Executive Office of the President (EOP) was created
+        in 1939 by President Franklin D. Roosevelt.", "dateLastCrawled": "2021-10-02T03:03:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "White House | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/white-house",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/white-house",
+        "snippet": "The White House houses the executive office of the President,
+        and serves as the President''s residence. Agency Details Website: White
+        House . Contact: Contact the White House . Main Address: 1600 Pennsylvania
+        Ave., NW Washington, DC 20500. Phone Number: 1-202-456-1414 (Switchboard)
+        1-202-456-1111 (Comments) TTY: 1-202-456-6213", "dateLastCrawled": "2021-10-03T04:08:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Barack Obama | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/barack-obama\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/barack-obama",
+        "snippet": "Barack Obama served as the 44th President of the United States.
+        His story is the American story — values from the heartland, a middle-class
+        upbringing in a strong family, hard work and education ...", "dateLastCrawled":
+        "2021-10-02T21:25:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5", "name": "The
+        White House", "url": "https:\/\/www.whitehouse.gov\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.whitehouse.gov", "snippet": "The Administration.
+        Thousands of people work in the West Wing, the East Wing, the Cabinet, and
+        the Executive Office of the President. Learn more about the people who carry
+        out the priorities of ...", "dateLastCrawled": "2021-10-03T07:10:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "James Carter | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/james-carter\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/james-carter",
+        "snippet": "Jimmy Carter served as the 39th President of the United States
+        from 1977 to 1981. He was awarded the 2002 Nobel Peace Prize for work to find
+        peaceful solutions to international conflicts, to ...", "dateLastCrawled":
+        "2021-10-02T21:21:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7", "name": "Thomas
+        Jefferson | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/thomas-jefferson\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/thomas-jefferson",
+        "snippet": "Thomas Jefferson, a spokesman for democracy, was an American
+        Founding Father, the principal author of the Declaration of Independence (1776),
+        and the third President of the United States (1801 ...", "dateLastCrawled":
+        "2021-10-03T10:13:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8", "name": "Statement
+        by President Joe Biden on the Continuing ...", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2021\/09\/30\/statement-by-president-joe-biden-on-the-continuing-resolution\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2021\/09\/30\/statement-by...",
+        "snippet": "Statement by President Joe. Biden on the Continuing. Resolution.
+        Tonight, I signed into law the continuing resolution to fund the government
+        through early December. I want to thank both houses of ...", "dateLastCrawled":
+        "2021-10-04T16:33:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9", "name": "Statement
+        by President Joe Biden on 700,000 American ...", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2021\/10\/02\/statement-by-president-joe-biden-on-700000-american-deaths-from-covid-19\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2021\/10\/02\/statement-by...",
+        "snippet": "Statement by President Joe. Biden on 700,000 American Deaths
+        from. COVID-. 19. To heal we must remember, and as our nation mourns the painful
+        milestone of 700,000 American deaths due to COVID-19 ...", "dateLastCrawled":
+        "2021-10-04T19:27:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10", "name":
+        "Remarks by President Biden Before Air Force One Departure ...", "url":
+        "https:\/\/www.whitehouse.gov\/briefing-room\/speeches-remarks\/2021\/10\/05\/remarks-by-president-biden-before-air-force-one-departure-7\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/...\/remarks-by-president-biden-before-air-force-one-departure-7",
+        "snippet": "THE PRESIDENT: Well, quite frankly, there’s not many options.
+        If they’re going to be that irresponsible, there’s not many options. There’s
+        not much time left to do it by reconciliation.", "dateLastCrawled": "2021-10-06T00:15:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Remarks by President Biden on the Need to Raise the Debt ...",
+        "url": "https:\/\/www.whitehouse.gov\/briefing-room\/speeches-remarks\/2021\/10\/04\/remarks-by-president-biden-on-the-need-to-raise-the-debt-ceiling\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/speeches-remarks\/2021\/10\/04\/remarks-by...",
+        "snippet": "THE PRESIDENT: I don’t think they’re appropriate tactics, but
+        it happens to everybody from the — the only people it doesn’t happen to are
+        people who have Secret Service standing around them.", "dateLastCrawled":
+        "2021-10-05T07:23:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12", "name":
+        "Theodore Roosevelt | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/theodore-roosevelt\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/theodore-roosevelt",
+        "snippet": "With the assassination of President William McKinley, Theodore
+        Roosevelt, not quite 43, became the 26th and youngest President in the
+        Nation’s history (1901-1909). He brought new excitement and ...", "dateLastCrawled":
+        "2021-10-03T08:04:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13", "name":
+        "Remarks by President Biden Before Marine One Departure ...", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/speeches-remarks\/2021\/10\/02\/remarks-by-president-biden-before-marine-one-departure-8\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/...\/02\/remarks-by-president-biden-before-marine-one-departure-8",
+        "snippet": "THE PRESIDENT: Everybody is frustrated. It’s part of being in
+        government — being frustrated. Hey, look, one of the things I love about you
+        guys — I watched the other day: “Biden vowed he ...", "dateLastCrawled": "2021-10-03T15:43:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Statement by President Joe Biden on Dr. Francis Collins ...", "url":
+        "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2021\/10\/05\/statement-by-president-joe-biden-on-dr-francis-collins-stepping-down-as-director-of-the-national-institutes-of-health\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2021\/10\/05\/statement-by...",
+        "snippet": "After I was elected president, Dr. Collins was one of the first
+        people I asked to stay in his role with the nation facing one of the worst
+        public health crises in our history. Another critical ...", "dateLastCrawled":
+        "2021-10-05T23:41:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15", "name":
+        "Millard Fillmore | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/millard-fillmore\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/millard-fillmore",
+        "snippet": "Millard Fillmore, a member of the Whig party, was the 13th President
+        of the United States (1850-1853) and the last President not to be affiliated
+        with either the Democratic or Republican parties.", "dateLastCrawled": "2021-10-01T01:15:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Franklin Pierce | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/franklin-pierce\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/franklin-pierce",
+        "snippet": "Franklin Pierce became 14th President of the United States
+        at a time of apparent tranquility (1853-1857). By pursuing the recommendations
+        of southern advisers, Pierce — a New Englander — hoped ...", "dateLastCrawled":
+        "2021-10-03T08:15:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17", "name":
+        "John Tyler | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/john-tyler\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/john-tyler",
+        "snippet": "John Tyler became the tenth President of the United States
+        (1841-1845) when President William Henry Harrison died in April 1841. He
+        was the first Vice President to succeed to the Presidency after ...", "dateLastCrawled":
+        "2021-10-03T03:22:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18", "name":
+        "Andrew Jackson | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/andrew-jackson\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/andrew-jackson",
+        "snippet": "Andrew Jackson was the seventh President of the United States
+        from 1829 to 1837, seeking to act as the direct representative of the common
+        man. More nearly than any of his predecessors, Andrew ...", "dateLastCrawled":
+        "2021-10-03T01:15:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19", "name":
+        "Statement by President Joe Biden on Cybersecurity ...", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2021\/10\/01\/statement-by-president-joe-biden-on-cybersecurity-awareness-month\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2021\/10\/01\/statement-by...",
+        "snippet": "Statement by President Joe. Biden on Cybersecurity Awareness.
+        Month. October 01, 2021 • Statements and Releases. Cyber threats can affect
+        every American, every business regardless of size, and ...", "dateLastCrawled":
+        "2021-10-04T18:27:00.0000000Z", "language": "en", "isNavigational": false}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 06 Oct 2021 05:47:02 GMT
 recorded_with: VCR 6.0.0

@@ -248,4 +248,249 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
   recorded_at: Tue, 07 Sep 2021 16:16:24 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=news%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 15:35:06 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - 0027EFEA078A487BAD03DE70A853AE96
+      Bingapis-Sessionid:
+      - 31E64BDD76F146EE856C0795D9C12AB1
+      X-Msedge-Clientid:
+      - 3B2A10D4831D63E6239E001C82AD626E
+      X-Msapi-Userstate:
+      - '2420'
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=309,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: 0027EFEA078A487BAD03DE70A853AE96 Ref B: BLUEDGE1411 Ref C: 2021-10-06T15:36:06Z'
+      Apim-Request-Id:
+      - 260e0386-86e7-4a20-afd3-777b23b3c14d
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 15:36:06 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "news
+        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=news+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 30600000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "News | Homeland Security", "url": "https:\/\/www.dhs.gov\/news",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.dhs.gov\/news",
+        "snippet": "News and important communications from the Department of Homeland
+        Security. Press Releases. Latest news and press releases. National Terrorism
+        Advisory System. The National Terrorism Advisory System (NTAS) communicates
+        information about terrorist threats to the American public. Blog.", "dateLastCrawled":
+        "2021-10-02T01:54:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1", "name": "News",
+        "url": "https:\/\/www.marines.mil\/News\/Tag\/52990\/cybersecurity\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.marines.mil\/News\/Tag\/52990\/cybersecurity",
+        "snippet": "News. News. The latest news and the coverage of news,
+        events, videos, tweets and more from the U.S. Marine Corps.", "dateLastCrawled":
+        "2021-10-05T22:33:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2", "name": "U.S.
+        Department of Defense", "url": "https:\/\/www.defense.gov\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.defense.gov", "snippet": "News Hicks
+        Discusses DOD Issues, Career Advice in ''Smart Women, Smart Power'' The first
+        woman in the No. 2 leadership position at the Defense Department, Deputy Secretary
+        of Defense Kathleen H ...", "dateLastCrawled": "2021-10-03T07:16:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "News Releases - Office of Public and Intergovernmental Affairs",
+        "url": "https:\/\/www.va.gov\/OPA\/PRESSREL\/", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.va.gov\/OPA\/PRESSREL", "snippet": "News
+        Releases PRESS STATEMENT: VA resumes overpayment notifications, medical copayment
+        collections while continuing to offer Veterans expansive debt relief options
+        - The Department of Veterans Affairs will resume over-payment notifications
+        for new benefit debts and the debts deferred from April 6, 2020 through Sept.
+        30, 2021 due to the COVID pandemic.", "dateLastCrawled": "2021-10-03T02:09:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "All News | USCIS", "url": "https:\/\/www.uscis.gov\/news\/all-news",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.uscis.gov\/news\/all-news",
+        "snippet": "This page lists all USCIS news releases and alerts, searchable
+        by topic and date. For material older than three years or that is no longer
+        current, see our Archive News section.. Subscribe to get updates:", "dateLastCrawled":
+        "2021-10-01T05:16:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5", "name": "News:
+        Inside Veteran Benefits - Veterans Benefits ...", "url": "https:\/\/www.benefits.va.gov\/benefits\/news.asp",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.benefits.va.gov\/benefits\/news.asp",
+        "snippet": "Veterans can continue to get information about benefits or file
+        a claim for benefits by visiting our website at www.va.gov. Veterans with
+        claims specific or other questions may request information via Inquiry Routing
+        & Information System (IRIS) or telephone at 1-800-827-1000. VBA benefits and
+        services provided to Veterans, families, and ...", "dateLastCrawled": "2021-10-01T02:36:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "News - United States Marine Corps", "url": "https:\/\/www.quantico.marines.mil\/News\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.quantico.marines.mil\/News",
+        "snippet": "Reservists bring out the big guns - Senior Airman Christopher
+        Resolute, 512th Security Forces Squadron defender, fires a M240B machine gun
+        May 7, 2021, at Marine Corps Base Quantico, Virginia. Stationed at Dover Air
+        Force Base, Delaware, more than 20 reserve defenders traveled to Quantico
+        for heavy weapons training.", "dateLastCrawled": "2021-09-29T22:15:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "News - United States Marine Corps", "url": "https:\/\/www.lejeune.marines.mil\/News\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.lejeune.marines.mil\/News",
+        "snippet": "Camp Lejeune News. In early August 1950, American and Republic
+        of Korea troops established the Pusan Perimeter. Bevin Alexander’s Korea:
+        The First War We Lost details how our troops held that land for about the
+        next month and a half until the historic amphibious landing at Inchon (Sept.
+        15-16, 1950).Can you imagine the hope that was brimming ...", "dateLastCrawled":
+        "2021-10-02T07:18:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8", "name": "News
+        | NSF - National Science Foundation", "url": "https:\/\/nsf.gov\/news\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/nsf.gov\/news", "snippet":
+        "Research News. September 15, 2021. Observatory in Chile captures highest-resolution
+        measurements of asteroid surface temperatures. Research News. September
+        14, 2021. NSF announces the launch of SpectrumX, an NSF Spectrum Innovation
+        Center. News Release. September 14, 2021.", "dateLastCrawled": "2021-09-30T23:14:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "National Weather Service", "url": "https:\/\/www.weather.gov\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov", "snippet":
+        "NEWS Newsroom Social Media Events Pubs\/Brochures\/Booklets . EDUCATION
+        NWS Education Home Be A Force of Nature NOAA Education Resources Glossary
+        JetStream NWS Training Portal NOAA Library For Students, Parents and Teachers
+        Brochures", "dateLastCrawled": "2021-10-03T07:13:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "News - NASA Mars", "url": "https:\/\/mars.nasa.gov\/mars2020\/news\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/mars.nasa.gov\/mars2020\/news",
+        "snippet": "Apr. 2021. NASA''s Mars Helicopter Survives First Cold Martian
+        Night on Its Own. April 05, 2021. NASA’s Ingenuity helicopter can be seen
+        on Mars as viewed by the Perseverance rover’s rear Hazard Camera on April
+        4, 2021, the 44th Martian day, or sol of the mission.", "dateLastCrawled":
+        "2021-10-03T08:09:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11", "name":
+        "News | Washington Department of Fish & Wildlife", "url": "https:\/\/wdfw.wa.gov\/news",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/wdfw.wa.gov\/news",
+        "snippet": "News. Welcome to our newsroom, where you''ll find links to recent
+        news releases. Enter keywords to search the contents of news releases
+        Quilomene bighorn sheep test positive for lethal bacteria. Oct 1, 2021. WDFW
+        lifts fire restrictions, including target shooting ban, on most Department-managed
+        lands .", "dateLastCrawled": "2021-10-02T23:06:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "News – NASA’s Mars Exploration Program", "url": "https:\/\/mars.nasa.gov\/news\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/mars.nasa.gov\/news",
+        "snippet": "NASA’s real-time portal for Mars exploration, featuring the
+        latest news, images, and discoveries from the Red Planet.", "dateLastCrawled":
+        "2021-10-02T09:03:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13", "name":
+        "Latest NASA News Releases | NASA", "url": "https:\/\/www.nasa.gov\/news\/releases\/latest\/index.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nasa.gov\/news",
+        "snippet": "NASA.gov brings you the latest images, videos and news from
+        America''s space agency. Get the latest updates on NASA missions, watch
+        NASA TV live, and learn about our quest to reveal the unknown and benefit
+        all humankind.", "dateLastCrawled": "2021-10-03T20:22:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Newsroom | Internal Revenue Service", "url": "https:\/\/www.irs.gov\/newsroom",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.irs.gov\/newsroom",
+        "snippet": "News Release and Fact Sheet Archive. News releases and fact
+        sheets from November 2002 forward and an archive of news releases and fact
+        sheets in PDF format back to 1997. Helpful Links. Internal Revenue Service
+        Progress Update – Fiscal Year 2019 PDF Independent Assessment of Free File
+        Program PDF. Appendix A : The Economics of IRS Free File PDF", "dateLastCrawled":
+        "2021-10-03T08:06:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15", "name":
+        "Judiciary News | United States Courts", "url": "https:\/\/www.uscourts.gov\/judiciary-news",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.uscourts.gov\/judiciary-news",
+        "snippet": "Published onAugust 25, 2021. The Judiciary has informed Congress
+        that it opposes the proposed Judiciary Accountability Act. In a letter to
+        key lawmakers today, Judge Roslynn R. Mauskopf, secretary of the Judicial
+        Conference of the United States, wrote that the bill “fails to recognize the
+        robust safeguards that have been in place within the ...", "dateLastCrawled":
+        "2021-10-03T11:09:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16", "name":
+        "News Releases for Current Month | Internal Revenue Service", "url": "https:\/\/www.irs.gov\/newsroom\/news-releases-for-current-month",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.irs.gov\/newsroom\/news-releases-for-current-month",
+        "snippet": "A listing of current news releases published by the IRS. IR-2021-181,
+        September 10, 2021 — The Internal Revenue Service reminds taxpayers today
+        that the cost of home testing for COVID-19 is an eligible medical expense
+        that can be paid or reimbursed under health flexible spending arrangements
+        (health FSAs), health savings accounts (HSAs), health reimbursement arrangements
+        (HRAs), or Archer ...", "dateLastCrawled": "2021-10-03T12:20:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "News - Kentucky Governor Andy Beshear", "url": "https:\/\/governor.ky.gov\/news",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/governor.ky.gov\/news",
+        "snippet": "Media Contacts. Crystal Staley, Communications Director (502)
+        545-3714 or (502) 564-2611. Sebastian Kitchen, Deputy Comms.Director (502)
+        330-0799 or (502) 564-2611 Sign up for Updates. Click here to sign up to have
+        news updates from Governor Beshear delivered right to your inbox or cell
+        phone. Social Media", "dateLastCrawled": "2021-10-02T07:15:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "News | Division of Cancer Prevention", "url": "https:\/\/prevention.cancer.gov\/news-and-events\/news",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/prevention.cancer.gov\/news-and-events\/news",
+        "snippet": "News about scientific advances in cancer prevention, program
+        activities, and new projects are included here in NCI press releases and fact
+        sheets, articles from the NCI Cancer Bulletin, and Clinical Trial News from
+        the NCI website.", "dateLastCrawled": "2021-09-08T06:24:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Social Security Update | SSA", "url": "https:\/\/www.ssa.gov\/news\/newsletter\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/news\/newsletter",
+        "snippet": "Social Security now offers convenient and secure online options
+        for completing and submitting forms. Our newest online forms include: SSA
+        820– Work Activity Report (Self-Employed Person) – Provide work activity information
+        for self-employed individuals applying for or receiving disability benefits.;
+        SSA 821 – Work Activity Report – Provide work activity information for individuals
+        ...", "dateLastCrawled": "2021-10-03T12:04:00.0000000Z", "language": "en",
+        "isNavigational": false}]}, "rankingResponse": {"mainline": {"items": [{"answerType":
+        "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 06 Oct 2021 15:36:07 GMT
 recorded_with: VCR 6.0.0

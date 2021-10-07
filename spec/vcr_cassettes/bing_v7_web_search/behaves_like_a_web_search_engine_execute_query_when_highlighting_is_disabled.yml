@@ -231,6 +231,247 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
-    http_version:
   recorded_at: Tue, 31 Aug 2021 20:32:45 GMT
-recorded_with: VCR 4.0.0
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=white%20house&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 10:40:46 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - FD8A580BD624420F87864C977367D7F4
+      Bingapis-Sessionid:
+      - 9BC64074F0DA4173BDAB4794A88B031E
+      X-Msedge-Clientid:
+      - 1BAD9C0E47CE62570E208CC6463363EE
+      X-Msapi-Userstate:
+      - c456
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=249,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: FD8A580BD624420F87864C977367D7F4 Ref B: BLUEDGE1020 Ref C: 2021-10-06T10:41:46Z'
+      Apim-Request-Id:
+      - 03b64d39-6b4e-4b04-90f9-333bbf1f548d
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 10:41:47 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "white
+        house"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=white+house",
+        "totalEstimatedMatches": 117000000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "The White House", "url": "https:\/\/www.whitehouse.gov\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.whitehouse.gov", "snippet": "The White
+        House. To search this site, enter a search term. Search. We’re investing in
+        the American people. A Path out of the Pandemic. Read President Biden''s COVID-19
+        Action Plan. The Build Back ...", "dateLastCrawled": "2021-10-03T07:10:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Contact Us | The White House", "url": "https:\/\/www.whitehouse.gov\/contact\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/contact",
+        "snippet": "The White House 1600 Pennsylvania Ave NW Washington, DC 20500
+        To search this site, enter a search term Search. Contact Us Message Type *
+        Required Prefix. First Name * ...", "dateLastCrawled": "2021-10-03T07:13:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Live | The White House", "url": "https:\/\/www.whitehouse.gov\/live\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/live",
+        "snippet": "LIVE White House events and press briefings with President Joe
+        Biden, Vice President Kamala Harris and other administration officials.",
+        "dateLastCrawled": "2021-10-03T10:19:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3", "name":
+        "White House | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/white-house",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/white-house",
+        "snippet": "White House. The White House houses the executive office of the
+        President, and serves as the President''s residence. Agency Details Website:
+        White House . Contact: Contact the White House . Main Address: 1600 Pennsylvania
+        Ave., NW Washington, DC 20500. Phone Number: 1-202-456-1414 (Switchboard)
+        1-202-456-1111 (Comments) TTY:", "dateLastCrawled": "2021-10-03T04:08:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "contractualRules": [{"_type": "ContractualRules\/LicenseAttribution", "targetPropertyName":
+        "snippet", "targetPropertyIndex": 4, "mustBeCloseToContent": true, "license":
+        {"name": "CC-BY-SA", "url": "http:\/\/creativecommons.org\/licenses\/by-sa\/3.0\/"},
+        "licenseNotice": "Text under CC-BY-SA license"}], "name": "White House - Wikipedia",
+        "url": "https:\/\/en.wikipedia.org\/wiki\/White_House", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/en.wikipedia.org\/wiki\/White_House", "snippet":
+        "The White House is the official residence and workplace of the president
+        of the United States.It is located at 1600 Pennsylvania Avenue NW in Washington,
+        D.C., and has been the residence of every U.S. president since John Adams
+        in 1800. The term \"White House\" is often used as a metonym for the president
+        and their advisers.. The residence was designed by Irish-born architect James
+        Hoban in the ...", "dateLastCrawled": "2021-09-27T20:16:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "President Biden''s COVID-19 Plan | The White House", "url": "https:\/\/www.whitehouse.gov\/covidplan\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/covidplan",
+        "snippet": "The White House 1600 Pennsylvania Ave NW Washington, DC 20500
+        To search this site, enter a search term Search. Path out of the Pandemic
+        PRESIDENT BIDEN''S COVID-19 ACTION PLAN President Biden is ...", "dateLastCrawled":
+        "2021-09-30T04:25:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6", "name": "White
+        House | Fox News", "url": "https:\/\/www.foxnews.com\/category\/politics\/executive\/white-house",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.foxnews.com\/category\/politics\/executive\/white-house",
+        "snippet": "White House Press Secretary Jen Psaki Friday referred to President
+        Biden’s announcement that companies with over 100 employees must force workers
+        to be vaccinated or tested is a means of ...", "dateLastCrawled": "2021-10-03T13:13:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "- White House Black Market", "url": "https:\/\/www.whitehouseblackmarket.com\/store\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouseblackmarket.com",
+        "snippet": "White House Black Market offers polished black and white women''s
+        clothing with pops of color and patterns. Shop tailored dresses, tops, pants
+        and accessories.", "dateLastCrawled": "2021-10-06T10:28:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "White House digs in on negotiations over Biden''s agenda", "url":
+        "https:\/\/www.usatoday.com\/story\/news\/politics\/2021\/10\/02\/white-house-digs-negotiations-over-bidens-agenda\/5968109001\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usatoday.com\/story\/news\/politics\/2021\/10\/02\/white-house-digs-negotiations...",
+        "snippet": "The White House was gearing up for another round of negotiations,
+        and Biden himself is expected to wade further into talks this coming week,
+        wooing lawmakers and acting as a peacemaker in the party.", "dateLastCrawled":
+        "2021-10-04T23:22:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9", "name": "White
+        House digs at GOP, says ‘no real courage’ from House ...", "url": "https:\/\/www.foxnews.com\/politics\/white-house-gop-no-real-courage-infrastructure-bill",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.foxnews.com\/politics\/white-house-gop-no-real-courage-infrastructure-bill",
+        "snippet": "The White House took digs at congressional Republicans, saying
+        there is \"no real courage\" from House members to support the bipartisan
+        infrastructure bill. During the White House’s daily press ...", "dateLastCrawled":
+        "2021-10-04T22:30:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10", "name":
+        "White House | History, Location, & Facts | Britannica", "url": "https:\/\/www.britannica.com\/topic\/White-House-Washington-DC",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.britannica.com\/topic\/White-House-Washington-DC",
+        "snippet": "White House, the office and residence of the president of the
+        United States at 1600 Pennsylvania Avenue N.W. in Washington, D.C. Since the
+        administration of George Washington (1789–97), who occupied presidential residences
+        in New York and Philadelphia, every American president has resided at the
+        White House.", "dateLastCrawled": "2021-10-03T04:15:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "White House: Biden to hold meeting with progressives ...", "url":
+        "https:\/\/news.yahoo.com\/white-house-biden-hold-meeting-191033921.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/news.yahoo.com\/white-house-biden-hold-meeting-191033921.html",
+        "snippet": "President Joe Biden will hold a virtual meeting with left-leaning
+        progressive lawmakers from the House of Representatives on Monday afternoon
+        to discuss a social spending bill, which he plans to make clear will be smaller
+        than they hoped, the White House said. White House spokesperson Jen Psaki
+        said Biden would discuss a \"path forward, which includes the recognition
+        that this package is going ...", "dateLastCrawled": "2021-10-06T01:23:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Sources: White House, top Democrats reach carbon capture ...", "url":
+        "https:\/\/www.cnbc.com\/2021\/10\/01\/sources-white-house-top-democrats-reach-carbon-capture-credit-deal.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cnbc.com\/2021\/10\/01\/sources-white-house-top-democrats-reach-carbon-capture...",
+        "snippet": "The White House and top Democratic lawmakers have agreed to boost
+        a tax credit for industrial carbon capture projects in a deal that could help
+        solidify support for the budget reconciliation bill ...", "dateLastCrawled":
+        "2021-10-04T21:31:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13", "name":
+        "White House: Government News, Videos & Updates - NBC News", "url": "https:\/\/www.nbcnews.com\/politics\/white-house",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nbcnews.com\/politics\/white-house",
+        "snippet": "White House. Biden outlines ''a fair shot'' for the middle class
+        in economic speech. Anna Moneymaker \/ The New York Times\/Bloomberg via Getty
+        Images file. White House. Biden announces security pact ...", "dateLastCrawled":
+        "2021-10-03T06:19:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "Debt ceiling review at White House concluded that there ...", "url": "https:\/\/www.washingtonpost.com\/us-policy\/2021\/10\/01\/white-house-debt-ceiling\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.washingtonpost.com\/us-policy\/2021\/10\/01\/white-house-debt-ceiling",
+        "snippet": "A senior official familiar with the matter said it was the administration’s
+        responsibility to review all possible options. Still, White House officials
+        have reached the conclusion that ...", "dateLastCrawled": "2021-10-05T16:22:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Democrats will be ''disappointed'' as party pares agenda ...", "url":
+        "https:\/\/www.reuters.com\/world\/us\/democrats-will-be-disappointed-party-pares-agenda-white-house-2021-10-03\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.reuters.com\/world\/us\/democrats-will-be-disappointed-party-pares-agenda...",
+        "snippet": "Democrats will be disappointed as the party is forced to scale
+        back President Joe Biden''s sweeping infrastructure and social agenda amid
+        opposition from Republicans and some moderate members of ...", "dateLastCrawled":
+        "2021-10-03T18:04:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16", "name":
+        "White House Facts", "url": "https:\/\/georgewbush-whitehouse.archives.gov\/history\/facts.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/georgewbush-whitehouse.archives.gov\/history\/facts.html",
+        "snippet": "The White House is, after all, the President’s private home. It
+        is also the only private residence of a head of state that is open to the
+        public, free of charge. The White House has a unique and fascinating history.
+        It survived a fire at the hands of the British in 1814 (during the war of
+        1812) and another fire in the West Wing in 1929, while ...", "dateLastCrawled":
+        "2021-10-03T03:24:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17", "name":
+        "Write or Call the White House | The White House", "url": "https:\/\/www.whitehouse.gov\/get-involved\/write-or-call\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/get-involved\/write-or-call",
+        "snippet": "This is the fastest way to reach the White House. If you write
+        a letter, please consider typing it on an 8 1\/2 by 11 inch sheet of paper.
+        If you hand-write your letter, please write as neatly as ...", "dateLastCrawled":
+        "2021-10-03T20:26:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18", "name":
+        "White House | house.gov", "url": "https:\/\/www.house.gov\/visitors\/white-house",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.house.gov\/visitors\/white-house",
+        "snippet": "White House. Public tours of the White House. (link is external)
+        remain temporarily suspended until further notice. White House Address: 1600
+        Pennsylvania Avenue, NW. Metro: McPherson Square. For the most up-to-date
+        information about touring and visiting the White House, call the 24-hour Visitors
+        Office Information Line at 202-456-7041.", "dateLastCrawled": "2021-10-02T21:03:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "White House: Biden still supports federal abortion funding ...",
+        "url": "https:\/\/www.washingtonexaminer.com\/politics\/white-house-abortion-funding-hyde-amendment",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.washingtonexaminer.com\/politics\/white-house-abortion-funding-hyde-amendment",
+        "snippet": "The White House defended its assertion that the true cost of the
+        Democrats’ $3.5 trillion package to most taxpayers is zero in an at times
+        tense exchange with reporters at Monday’s press briefing.", "dateLastCrawled":
+        "2021-10-04T20:51:00.0000000Z", "language": "en", "isNavigational": false}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 06 Oct 2021 04:38:53 GMT
+recorded_with: VCR 6.0.0

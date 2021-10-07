@@ -1,0 +1,546 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/images/search?count=20&mkt=en-US&offset=0&q=book&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_IMAGE_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Pragma:
+      - no-cache
+      Content-Length:
+      - '59761'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - "-1"
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - 96E50D4663C841B69FF08F8E91333212
+      X-Msedge-Clientid:
+      - 07ED0FF2EA266159162D1F3AEB916078
+      X-Msapi-Userstate:
+      - cc89
+      X-Search-Responseinfo:
+      - InternalResponseTime=115,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: 96E50D4663C841B69FF08F8E91333212 Ref B: BLUEDGE0716 Ref C: 2021-10-06T10:40:56Z'
+      Apim-Request-Id:
+      - ea048476-c803-471c-a4f6-66127b0cc829
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 10:40:56 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "Images", "instrumentation": {"_type": "ResponseInstrumentation"},
+        "readLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=book",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=book&FORM=OIIARP",
+        "queryContext": {"originalQuery": "book", "alterationDisplayQuery": "book",
+        "alterationOverrideQuery": "+book", "alterationMethod": "AM_JustChangeIt",
+        "alterationType": "CombinedAlterationsChained"}, "totalEstimatedMatches":
+        200, "nextOffset": 20, "currentOffset": 0, "value": [{"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=book&id=5F94F913B2CE58856ED8F55AD8B4C7E746F7346A&simid=608047458069343823",
+        "name": "The longest overdue library book was finally returned and ...", "thumbnailUrl":
+        "https:\/\/tse4.mm.bing.net\/th?id=OIP.96S9BP-xatg3q0JXnJydDwHaE7&pid=Api",
+        "datePublished": "2016-12-18T20:44:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "http:\/\/images.hellogiggles.com\/uploads\/2016\/12\/18043538\/shutterstock_91553819.jpg",
+        "hostPageUrl": "http:\/\/hellogiggles.com\/the-longest-overdue-library-book-was-finally-returned-and-will-make-you-feel-much-better-about-that-one-you-lost-in-college\/",
+        "contentSize": "5021725 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "hellogiggles.com\/the-longest-overdue-library-book-was-finally-returned-and-will-make...",
+        "width": 4256, "height": 2832, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.WdwM5r95QIuhb4HZRNE7Nw&pid=Api",
+        "hostPageDomainFriendlyName": "HelloGiggles", "hostPageDiscoveredDate": "2016-12-18T20:44:00.0000000Z",
+        "thumbnail": {"width": 474, "height": 315}, "imageInsightsToken": "ccid_96S9BP+x*cp_1E7F23F1ACCFCD17E9E6E56662947ED0*mid_5F94F913B2CE58856ED8F55AD8B4C7E746F7346A*simid_608047458069343823*thid_OIP.96S9BP-xatg3q0JXnJydDwHaE7",
+        "insightsMetadata": {"recipeSourcesCount": 0, "pagesIncludingCount": 7, "availableSizesCount":
+        4}, "imageId": "5F94F913B2CE58856ED8F55AD8B4C7E746F7346A", "accentColor":
+        "744322"}, {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=book&id=C94F14B6630FA433776B543B486CB32C7B2DE21C&simid=608006870637760720",
+        "name": "10 Things NOT to do When Writing a Picture Book - Art Starts", "thumbnailUrl":
+        "https:\/\/tse1.mm.bing.net\/th?id=OIP.8XqpccrJbF56ChrcBXnw_gHaEo&pid=Api",
+        "datePublished": "2021-06-12T17:11:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/www.samanthasbell.com\/wp-content\/uploads\/2016\/06\/picture-book.jpg",
+        "hostPageUrl": "https:\/\/www.samanthasbell.com\/10-things-not-writing-picture-book\/",
+        "contentSize": "1000300 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "https:\/\/www.samanthasbell.com\/10-things-not-writing-picture-book", "width":
+        2592, "height": 1624, "hostPageDiscoveredDate": "2017-02-21T00:00:00.0000000Z",
+        "thumbnail": {"width": 474, "height": 296}, "imageInsightsToken": "ccid_8XqpccrJ*cp_733061DDA252518061090293E1BC9574*mid_C94F14B6630FA433776B543B486CB32C7B2DE21C*simid_608006870637760720*thid_OIP.8XqpccrJbF56ChrcBXnw!_gHaEo",
+        "insightsMetadata": {"recipeSourcesCount": 0, "pagesIncludingCount": 25, "availableSizesCount":
+        14}, "imageId": "C94F14B6630FA433776B543B486CB32C7B2DE21C", "accentColor":
+        "0F4268"}, {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=book&id=57A9D46147ED933213A5E0A6579954CB75CA833F&simid=608022126361322039",
+        "name": "Free picture: book, eyeglasses, geography, product ...", "thumbnailUrl":
+        "https:\/\/tse4.mm.bing.net\/th?id=OIP.UAcgIYIbckRCdD8hnmwViQHaFj&pid=Api",
+        "datePublished": "2021-01-31T14:11:00.0000000Z", "isFamilyFriendly": true,
+        "creativeCommons": "PublicNoRightsReserved", "contentUrl": "https:\/\/pixnio.com\/free-images\/2019\/01\/15\/2019-01-15-10-35-51.jpg",
+        "hostPageUrl": "https:\/\/pixnio.com\/objects\/books\/book-eyeglasses-geography-product-literature-wisdom-page-knowledge",
+        "contentSize": "420342 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "https:\/\/pixnio.com\/objects\/books\/book-eyeglasses-geography-product-literature-wisdom...",
+        "width": 3994, "height": 2995, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.ebmCsBYcSRoMwPCSPrE3ZQ&pid=Api",
+        "hostPageDiscoveredDate": "2019-01-17T00:00:00.0000000Z", "thumbnail": {"width":
+        474, "height": 355}, "imageInsightsToken": "ccid_UAcgIYIb*cp_750E4A19CBE77786BD178763CE691BAF*mid_57A9D46147ED933213A5E0A6579954CB75CA833F*simid_608022126361322039*thid_OIP.UAcgIYIbckRCdD8hnmwViQHaFj",
+        "insightsMetadata": {"pagesIncludingCount": 14, "availableSizesCount": 14},
+        "imageId": "57A9D46147ED933213A5E0A6579954CB75CA833F", "accentColor": "30241B"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=book&id=434AEE8DF72E882BD1B7BC0C83E3A45E2F99906A&simid=608049485301288714",
+        "name": "13 Secrets of Rare Book Dealers | Mental Floss", "thumbnailUrl":
+        "https:\/\/tse4.mm.bing.net\/th?id=OIP.wa5Jl2fi-ZAkiy5kGOkB9QHaEK&pid=Api",
+        "datePublished": "2019-08-27T12:28:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/images2.minutemediacdn.com\/image\/upload\/c_crop,h_844,w_1500,x_0,y_176\/f_auto,q_auto,w_1100\/v1554996268\/shape\/mentalfloss\/507306-istock-155445644_primary.jpg",
+        "hostPageUrl": "http:\/\/mentalfloss.com\/article\/507306\/13-secrets-rare-book-dealers",
+        "contentSize": "82745 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "mentalfloss.com\/article\/507306\/13-secrets-rare-book-dealers", "width":
+        1100, "height": 619, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.sBf0e_8EireVoe_Gce7Slw&pid=Api",
+        "hostPageDomainFriendlyName": "Mental Floss", "hostPageDiscoveredDate": "2017-11-05T00:00:00.0000000Z",
+        "thumbnail": {"width": 474, "height": 266}, "imageInsightsToken": "ccid_wa5Jl2fi*cp_929C53605A7A08D1FF465BC863A67F03*mid_434AEE8DF72E882BD1B7BC0C83E3A45E2F99906A*simid_608049485301288714*thid_OIP.wa5Jl2fi-ZAkiy5kGOkB9QHaEK",
+        "insightsMetadata": {"pagesIncludingCount": 6, "availableSizesCount": 5},
+        "imageId": "434AEE8DF72E882BD1B7BC0C83E3A45E2F99906A", "accentColor": "743C22"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=book&id=0C3E6EF7A357FFEEF914690098416AC090A68FBD&simid=608040530290478883",
+        "name": "The Moravian Book Shop Is One of the Best Spots in the ...", "thumbnailUrl":
+        "https:\/\/tse1.mm.bing.net\/th?id=OIP.AdAKU58S0I_PmPzArJLsrAHaE8&pid=Api",
+        "datePublished": "2020-06-08T11:43:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/sayremansion.com\/wp-content\/uploads\/2017\/09\/Moravian-Book-Shop.jpg",
+        "hostPageUrl": "https:\/\/sayremansion.com\/blog\/2017\/09\/moravian-book-shop\/",
+        "contentSize": "92054 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "https:\/\/sayremansion.com\/blog\/2017\/09\/moravian-book-shop", "width":
+        1500, "height": 1000, "hostPageDiscoveredDate": "2017-09-22T00:00:00.0000000Z",
+        "thumbnail": {"width": 474, "height": 316}, "imageInsightsToken": "ccid_AdAKU58S*cp_4A1A4B63332B5D5BFFD2410BEE6D162E*mid_0C3E6EF7A357FFEEF914690098416AC090A68FBD*simid_608040530290478883*thid_OIP.AdAKU58S0I!_PmPzArJLsrAHaE8",
+        "insightsMetadata": {"pagesIncludingCount": 53, "availableSizesCount": 27},
+        "imageId": "0C3E6EF7A357FFEEF914690098416AC090A68FBD", "accentColor": "C37908"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=book&id=C3CE68C9EB5574A7233E77D912DADA2246E646F9&simid=608046311317063324",
+        "name": "Flipping pages of a book Stock Video Footage - Storyblocks", "thumbnailUrl":
+        "https:\/\/tse4.mm.bing.net\/th?id=OIP.0ABOEv30f6SPlT2XMH_JVgHaEK&pid=Api",
+        "datePublished": "2020-10-27T15:01:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/dm0qx8t0i9gc9.cloudfront.net\/thumbnails\/video\/HjH5lgeHeix7kfhup\/videoblocks-flipping-pages-of-a-book_rixrv31ru7_thumbnail-1080_01.png",
+        "hostPageUrl": "https:\/\/www.storyblocks.com\/video\/stock\/flipping-pages-of-a-book-rjce3yrixjl8ghhf2",
+        "contentSize": "2117773 B", "encodingFormat": "png", "hostPageDisplayUrl":
+        "https:\/\/www.storyblocks.com\/video\/stock\/flipping-pages-of-a-book-rjce3yrixjl8ghhf2",
+        "width": 1920, "height": 1080, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.R9vGFueUKqC2MYbrZw6oqA&pid=Api",
+        "hostPageDomainFriendlyName": "Storyblocks Video", "hostPageDiscoveredDate":
+        "2020-08-09T00:00:00.0000000Z", "thumbnail": {"width": 474, "height": 266},
+        "imageInsightsToken": "ccid_0ABOEv30*cp_616E478345131C23DFB2D4E7904CBC6E*mid_C3CE68C9EB5574A7233E77D912DADA2246E646F9*simid_608046311317063324*thid_OIP.0ABOEv30f6SPlT2XMH!_JVgHaEK",
+        "insightsMetadata": {"pagesIncludingCount": 2, "availableSizesCount": 2},
+        "imageId": "C3CE68C9EB5574A7233E77D912DADA2246E646F9", "accentColor": "744227"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=book&id=BC53DD6B5901DD03618F0C09327D76083F71BB7E&simid=608026962492412140",
+        "name": "Book HD Wallpapers and Background Images – YL Computing", "thumbnailUrl":
+        "https:\/\/tse2.mm.bing.net\/th?id=OIP.DzVUXOboGr5m0XtpkU_J0wHaEK&pid=Api",
+        "datePublished": "2021-05-07T07:31:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/www.pcclean.io\/wp-content\/gallery\/book-hd-wallpapers\/650784.jpg",
+        "hostPageUrl": "https:\/\/www.pcclean.io\/book-hd-wallpapers-and-background-images\/",
+        "contentSize": "1249620 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "https:\/\/www.pcclean.io\/book-hd-wallpapers-and-background-images", "width":
+        1800, "height": 1013, "hostPageDiscoveredDate": "2019-05-05T00:00:00.0000000Z",
+        "thumbnail": {"width": 474, "height": 266}, "imageInsightsToken": "ccid_DzVUXObo*cp_D7543A680DC27BA3D13C1897BD641469*mid_BC53DD6B5901DD03618F0C09327D76083F71BB7E*simid_608026962492412140*thid_OIP.DzVUXOboGr5m0XtpkU!_J0wHaEK",
+        "insightsMetadata": {"pagesIncludingCount": 96, "availableSizesCount": 69},
+        "imageId": "BC53DD6B5901DD03618F0C09327D76083F71BB7E", "accentColor": "A38028"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=book&id=6B579B7989CC004DC0F3E1C73EFDDA1C19AB5289&simid=608003640822628327",
+        "name": "Old Man Reading Magical Book Painting Cartoon", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.-Gil1msx3nZ_Yz8za1SBvAHaMb&pid=Api",
+        "datePublished": "2016-02-24T04:54:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "http:\/\/www.cartoonaday.com\/images\/cartoons\/2016\/02\/reading-stack-books-598-vert.jpg",
+        "hostPageUrl": "http:\/\/www.cartoonaday.com\/old-man-reading-magical-book-painting\/",
+        "contentSize": "516801 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "www.cartoonaday.com\/old-man-reading-magical-book-painting", "width": 598,
+        "height": 1004, "hostPageDiscoveredDate": "2016-02-24T04:54:00.0000000Z",
+        "thumbnail": {"width": 474, "height": 795}, "imageInsightsToken": "ccid_+Gil1msx*cp_7601194BF9C6E19A7A48CB5715B9103A*mid_6B579B7989CC004DC0F3E1C73EFDDA1C19AB5289*simid_608003640822628327*thid_OIP.-Gil1msx3nZ!_Yz8za1SBvAHaMb",
+        "insightsMetadata": {"recipeSourcesCount": 0, "pagesIncludingCount": 1, "availableSizesCount":
+        1}, "imageId": "6B579B7989CC004DC0F3E1C73EFDDA1C19AB5289", "accentColor":
+        "989033"}, {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=book&id=9D3A8A46B1DE0CD3AECD4825D2E517C123E4B784&simid=608049966333846090",
+        "name": "Book Pen Pencil Background - Free Indian Stock Pictures ...", "thumbnailUrl":
+        "https:\/\/tse1.mm.bing.net\/th?id=OIP.zF_4gkakpX3_9-mV99wYKwHaE8&pid=Api",
+        "datePublished": "2021-03-26T08:57:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/www.ynotpics.com\/wp-content\/uploads\/2017\/06\/Book-and-pen-Background.jpg",
+        "hostPageUrl": "https:\/\/www.ynotpics.com\/downloads\/book-pen-pencil-background\/",
+        "contentSize": "270292 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "https:\/\/www.ynotpics.com\/downloads\/book-pen-pencil-background", "width":
+        2592, "height": 1728, "hostPageDiscoveredDate": "2019-05-30T00:00:00.0000000Z",
+        "thumbnail": {"width": 474, "height": 316}, "imageInsightsToken": "ccid_zF\/4gkak*cp_9EA3079B42FC09924EE6B414E177DA9E*mid_9D3A8A46B1DE0CD3AECD4825D2E517C123E4B784*simid_608049966333846090*thid_OIP.zF!_4gkakpX3!_9-mV99wYKwHaE8",
+        "insightsMetadata": {"pagesIncludingCount": 2, "availableSizesCount": 2},
+        "imageId": "9D3A8A46B1DE0CD3AECD4825D2E517C123E4B784", "accentColor": "A77424"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=book&id=8BBFAA3845F6BE1C91DCAB8F2DA46045D6C594F9&simid=607996270655845200",
+        "name": "Book Wallpapers • TrumpWallpapers", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.-pPHDb3f-3M8uMo4Ym3vbAHaEo&pid=Api",
+        "datePublished": "2021-01-12T04:11:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/trumpwallpapers.com\/wp-content\/uploads\/Book-Wallpaper-02-2560-x-1600.jpg",
+        "hostPageUrl": "https:\/\/trumpwallpapers.com\/book-wallpapers\/", "contentSize":
+        "414026 B", "encodingFormat": "jpeg", "hostPageDisplayUrl": "https:\/\/trumpwallpapers.com\/book-wallpapers",
+        "width": 2560, "height": 1600, "hostPageDiscoveredDate": "2019-11-08T00:00:00.0000000Z",
+        "thumbnail": {"width": 474, "height": 296}, "imageInsightsToken": "ccid_+pPHDb3f*cp_3496B853A711739D9C4FF3C3E68C87DE*mid_8BBFAA3845F6BE1C91DCAB8F2DA46045D6C594F9*simid_607996270655845200*thid_OIP.-pPHDb3f-3M8uMo4Ym3vbAHaEo",
+        "insightsMetadata": {"pagesIncludingCount": 156, "availableSizesCount": 97},
+        "imageId": "8BBFAA3845F6BE1C91DCAB8F2DA46045D6C594F9", "accentColor": "B63F15"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=book&id=98B8B0579D4732C0DEE88780C5F60FD79997AB70&simid=608047861806814158",
+        "name": "Book Professionals Launch Auction to Fight Racism", "thumbnailUrl":
+        "https:\/\/tse3.mm.bing.net\/th?id=OIP.X7mmDkgN--jS7b_dUsgVmgHaE7&pid=Api",
+        "datePublished": "2020-08-07T13:01:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/www.publishersweekly.com\/images\/data\/ARTICLE_PHOTO\/photo\/000\/073\/73607-1.JPG",
+        "hostPageUrl": "https:\/\/www.publishersweekly.com\/pw\/by-topic\/industry-news\/publisher-news\/article\/84010-book-professionals-launch-auction-to-fight-racism.html",
+        "contentSize": "1737605 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "https:\/\/www.publishersweekly.com\/pw\/by-topic\/industry-news\/publisher-news\/article\/84010...",
+        "width": 1698, "height": 1131, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.FgSo_-YCEQGoYSjNMFU1Lw&pid=Api",
+        "hostPageDomainFriendlyName": "Publishers Weekly", "hostPageDiscoveredDate":
+        "2020-08-07T13:01:00.0000000Z", "thumbnail": {"width": 474, "height": 315},
+        "imageInsightsToken": "ccid_X7mmDkgN*cp_FD84130B9593D4E74F8D0A49554CB215*mid_98B8B0579D4732C0DEE88780C5F60FD79997AB70*simid_608047861806814158*thid_OIP.X7mmDkgN--jS7b!_dUsgVmgHaE7",
+        "insightsMetadata": {"recipeSourcesCount": 0, "pagesIncludingCount": 7679,
+        "availableSizesCount": 2523}, "imageId": "98B8B0579D4732C0DEE88780C5F60FD79997AB70",
+        "accentColor": "6D441D"}, {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=book&id=BC53DD6B5901DD03618F860D375B66CEC42C7821&simid=608042037825592141",
+        "name": "Book HD Wallpapers and Background Images – YL Computing", "thumbnailUrl":
+        "https:\/\/tse2.mm.bing.net\/th?id=OIP.CqXKhNHHRZtHNVoyNPk_NgHaFj&pid=Api",
+        "datePublished": "2021-05-07T07:31:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/www.pcclean.io\/wp-content\/gallery\/book-hd-wallpapers\/663901.jpg",
+        "hostPageUrl": "https:\/\/www.pcclean.io\/book-hd-wallpapers-and-background-images\/",
+        "contentSize": "1066335 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "https:\/\/www.pcclean.io\/book-hd-wallpapers-and-background-images", "width":
+        1600, "height": 1200, "hostPageDiscoveredDate": "2019-05-05T00:00:00.0000000Z",
+        "thumbnail": {"width": 474, "height": 355}, "imageInsightsToken": "ccid_CqXKhNHH*cp_3930B721F447B8E03B467F4536A28B49*mid_BC53DD6B5901DD03618F860D375B66CEC42C7821*simid_608042037825592141*thid_OIP.CqXKhNHHRZtHNVoyNPk!_NgHaFj",
+        "insightsMetadata": {"pagesIncludingCount": 16, "availableSizesCount": 8},
+        "imageId": "BC53DD6B5901DD03618F860D375B66CEC42C7821", "accentColor": "8D6E3E"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=book&id=AE551F531BC287AF3A6ACFF603CA91CC1A484288&simid=608035762880185433",
+        "name": "Self-Publishing a Book? Here’s How to Create Your Cover", "thumbnailUrl":
+        "https:\/\/tse3.mm.bing.net\/th?id=OIP.I_nXWzdiNDHHsAiGNujbtAHaE8&pid=Api",
+        "datePublished": "2015-11-12T17:50:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "http:\/\/thewritelife.com\/wp-content\/uploads\/2015\/10\/book-791198_1920.jpg",
+        "hostPageUrl": "http:\/\/thewritelife.com\/your-self-published-book-needs-a-cover-heres-how-to-create-it\/",
+        "contentSize": "466989 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "thewritelife.com\/your-self-published-book-needs-a-cover-heres-how-to-create-it",
+        "width": 1920, "height": 1280, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.oN1IL0MEQ6i-CE0RDkDCtQ&pid=Api",
+        "hostPageDomainFriendlyName": "The Write Life", "hostPageDiscoveredDate":
+        "2015-11-12T17:50:05.0000000Z", "thumbnail": {"width": 474, "height": 316},
+        "imageInsightsToken": "ccid_I\/nXWzdi*cp_ECD4BAF7E42010E076DB317A8AAAA54C*mid_AE551F531BC287AF3A6ACFF603CA91CC1A484288*simid_608035762880185433*thid_OIP.I!_nXWzdiNDHHsAiGNujbtAHaE8",
+        "insightsMetadata": {"pagesIncludingCount": 31, "availableSizesCount": 24},
+        "imageId": "AE551F531BC287AF3A6ACFF603CA91CC1A484288", "accentColor": "1459B7"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=book&id=015035CB59FFF915ACBC75D70FE4AFE1B61CDF2F&simid=608041947630083679",
+        "name": "Free photo: Ancient Book - Ancient, Book, Guide - Free ...", "thumbnailUrl":
+        "https:\/\/tse4.mm.bing.net\/th?id=OIP.E65dqHt4SszjtYu7LkNkKAHaEK&pid=Api",
+        "datePublished": "2021-01-16T16:59:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/jooinn.com\/images\/ancient-book-7.png", "hostPageUrl":
+        "https:\/\/jooinn.com\/ancient-book-3.html", "contentSize": "3098828 B", "encodingFormat":
+        "png", "hostPageDisplayUrl": "https:\/\/jooinn.com\/ancient-book-3.html",
+        "width": 1920, "height": 1080, "hostPageDiscoveredDate": "2018-04-12T00:00:00.0000000Z",
+        "thumbnail": {"width": 474, "height": 266}, "imageInsightsToken": "ccid_E65dqHt4*cp_EC2E43F74914709BA2EA5E0E37E0E954*mid_015035CB59FFF915ACBC75D70FE4AFE1B61CDF2F*simid_608041947630083679*thid_OIP.E65dqHt4SszjtYu7LkNkKAHaEK",
+        "insightsMetadata": {"recipeSourcesCount": 0, "pagesIncludingCount": 3, "availableSizesCount":
+        2}, "imageId": "015035CB59FFF915ACBC75D70FE4AFE1B61CDF2F", "accentColor":
+        "1C0B07"}, {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=book&id=1D7901E38571A0BB72AC1DA98F9E6C457923751A&simid=607998272108788157",
+        "name": "Book Cover Design Professionally for $15 - SEOClerks", "thumbnailUrl":
+        "https:\/\/tse3.mm.bing.net\/th?id=OIP.o0-qbLxYrL764ujuDOgWYAHaE8&pid=Api",
+        "datePublished": "2020-08-04T15:14:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/www.seoclerk.com\/pics\/626559-243fm01535738029.jpg",
+        "hostPageUrl": "https:\/\/www.seoclerk.com\/design\/626559\/Book-Cover-Design-Professionally",
+        "contentSize": "4395092 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "https:\/\/www.seoclerk.com\/design\/626559\/Book-Cover-Design-Professionally",
+        "width": 4000, "height": 2667, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.OS8QYyuv_aRs11DZr9MkUg&pid=Api",
+        "hostPageDiscoveredDate": "2018-09-24T00:00:00.0000000Z", "thumbnail": {"width":
+        474, "height": 316}, "imageInsightsToken": "ccid_o0+qbLxY*cp_59B3003B4886EB424E8599BEF406DDF0*mid_1D7901E38571A0BB72AC1DA98F9E6C457923751A*simid_607998272108788157*thid_OIP.o0-qbLxYrL764ujuDOgWYAHaE8",
+        "insightsMetadata": {"pagesIncludingCount": 3, "availableSizesCount": 2},
+        "imageId": "1D7901E38571A0BB72AC1DA98F9E6C457923751A", "accentColor": "C39408"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=book&id=E6193100114341B1C0BF6A580FB947F931DB1793&simid=608054136749586245",
+        "name": "Open Book Mac Wallpaper Download | AllMacWallpaper", "thumbnailUrl":
+        "https:\/\/tse1.mm.bing.net\/th?id=OIP.d8RtHMfAz0hKx7QJ4hplkgHaEo&pid=Api",
+        "datePublished": "2020-08-20T10:59:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/res.allmacwallpaper.com\/get\/Retina-MacBook-Pro-15-inch-wallpapers\/Open-Book-2880x1800\/13130-8.jpg",
+        "hostPageUrl": "https:\/\/www.allmacwallpaper.com\/mac-wallpaper\/Open-Book\/13130",
+        "contentSize": "660840 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "https:\/\/www.allmacwallpaper.com\/mac-wallpaper\/Open-Book\/13130", "width":
+        2880, "height": 1800, "hostPageDiscoveredDate": "2018-11-27T00:00:00.0000000Z",
+        "thumbnail": {"width": 474, "height": 296}, "imageInsightsToken": "ccid_d8RtHMfA*cp_45E093E4B13D511539B8303E66C4AEB8*mid_E6193100114341B1C0BF6A580FB947F931DB1793*simid_608054136749586245*thid_OIP.d8RtHMfAz0hKx7QJ4hplkgHaEo",
+        "insightsMetadata": {"recipeSourcesCount": 0, "pagesIncludingCount": 14, "availableSizesCount":
+        12}, "imageId": "E6193100114341B1C0BF6A580FB947F931DB1793", "accentColor":
+        "B04E07"}, {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=book&id=4BA4104CA72BBB7DAEFA46D62D51A40C47D5DC04&simid=607988402282061078",
+        "name": "Open Book With Cartoon Boy Reading A Book To Big Dinosaurs ...",
+        "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.H0kN1iwlf5jBTCEmQHSzkQHaE1&pid=Api",
+        "datePublished": "2020-02-17T07:00:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/media.istockphoto.com\/vectors\/open-book-with-cartoon-boy-reading-a-book-to-big-dinosaurs-vector-id1084218752?k=6&m=1084218752&s=170667a&w=0&h=f6hPQEW0hUDcqucYSkSoTU9bJd2GcgbFcwWv3VG8Hms=",
+        "hostPageUrl": "https:\/\/www.istockphoto.com\/vector\/open-book-with-cartoon-boy-reading-a-book-to-big-dinosaurs-gm1084218752-290902062",
+        "contentSize": "84558 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "https:\/\/www.istockphoto.com\/vector\/open-book-with-cartoon-boy-reading-a-book-to-big...",
+        "width": 514, "height": 336, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.hQ_7876msK32aIBs9d0umw&pid=Api",
+        "hostPageDomainFriendlyName": "iStock", "hostPageDiscoveredDate": "2018-12-23T00:00:00.0000000Z",
+        "thumbnail": {"width": 474, "height": 309}, "imageInsightsToken": "ccid_H0kN1iwl*cp_B12308DAECCE48D0A20A7E856CE13F0D*mid_4BA4104CA72BBB7DAEFA46D62D51A40C47D5DC04*simid_607988402282061078*thid_OIP.H0kN1iwlf5jBTCEmQHSzkQHaE1",
+        "insightsMetadata": {"pagesIncludingCount": 20, "availableSizesCount": 8},
+        "imageId": "4BA4104CA72BBB7DAEFA46D62D51A40C47D5DC04", "accentColor": "BB7610"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=book&id=12339732243F50F8EC8E8C9DE28D43A21B532C87&simid=607994952101859692",
+        "name": "Open book on desk stock image. Image of education, writing ...",
+        "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.ssqbWr4ui8QpOdOrKFPNOwDuEF&pid=Api",
+        "datePublished": "2021-04-24T11:43:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/thumbs.dreamstime.com\/b\/open-book-desk-11849263.jpg",
+        "hostPageUrl": "https:\/\/www.dreamstime.com\/stock-photos-open-book-desk-image11849263",
+        "contentSize": "77804 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "https:\/\/www.dreamstime.com\/stock-photos-open-book-desk-image11849263",
+        "width": 800, "height": 877, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.9TlIIBgEFhmYI3Rtyk2IKA&pid=Api",
+        "hostPageDomainFriendlyName": "Dreamstime", "hostPageDiscoveredDate": "2017-07-13T00:00:00.0000000Z",
+        "thumbnail": {"width": 474, "height": 519}, "imageInsightsToken": "ccid_ssqbWr4u*cp_008318FD50A04A6032B462CBD743D475*mid_12339732243F50F8EC8E8C9DE28D43A21B532C87*simid_607994952101859692*thid_OIP.ssqbWr4ui8QpOdOrKFPNOwDuEF",
+        "insightsMetadata": {"recipeSourcesCount": 0, "pagesIncludingCount": 2, "availableSizesCount":
+        2}, "imageId": "12339732243F50F8EC8E8C9DE28D43A21B532C87", "accentColor":
+        "BF190C"}, {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=book&id=1279A88959F667ACFBF91E3CD0A58A2081B22B72&simid=608045950542418249",
+        "name": "Free picture: reading, science, book, study, library", "thumbnailUrl":
+        "https:\/\/tse3.mm.bing.net\/th?id=OIP.0GQ9WzTadwmVWQrBdhJKhwHaLH&pid=Api",
+        "datePublished": "2020-12-22T19:31:00.0000000Z", "isFamilyFriendly": true,
+        "creativeCommons": "PublicNoRightsReserved", "contentUrl": "https:\/\/pixnio.com\/free-images\/2017\/05\/23\/2017-05-23-16-32-49.jpg",
+        "hostPageUrl": "https:\/\/pixnio.com\/objects\/books\/reading-science-book-study-library",
+        "contentSize": "1650574 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "https:\/\/pixnio.com\/objects\/books\/reading-science-book-study-library",
+        "width": 3800, "height": 5700, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.ebmCsBYcSRoMwPCSPrE3ZQ&pid=Api",
+        "hostPageDiscoveredDate": "2017-05-28T00:00:00.0000000Z", "thumbnail": {"width":
+        474, "height": 711}, "imageInsightsToken": "ccid_0GQ9WzTa*cp_2C695BFD269D6A1A5F489B0C49CEFC4E*mid_1279A88959F667ACFBF91E3CD0A58A2081B22B72*simid_608045950542418249*thid_OIP.0GQ9WzTadwmVWQrBdhJKhwHaLH",
+        "insightsMetadata": {"recipeSourcesCount": 0, "pagesIncludingCount": 1, "availableSizesCount":
+        2}, "imageId": "1279A88959F667ACFBF91E3CD0A58A2081B22B72", "accentColor":
+        "937238"}, {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=book&id=BC53DD6B5901DD03618FC7A23A06FBF937473119&simid=608055000039582675",
+        "name": "Book HD Wallpapers and Background Images – YL Computing", "thumbnailUrl":
+        "https:\/\/tse1.mm.bing.net\/th?id=OIP.mYd7rKemAZEEDvBpW0JoigHaEo&pid=Api",
+        "datePublished": "2021-05-07T07:31:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/www.pcclean.io\/wp-content\/gallery\/book-hd-wallpapers\/529334.jpg",
+        "hostPageUrl": "https:\/\/www.pcclean.io\/book-hd-wallpapers-and-background-images\/",
+        "contentSize": "1256009 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "https:\/\/www.pcclean.io\/book-hd-wallpapers-and-background-images", "width":
+        1800, "height": 1125, "hostPageDiscoveredDate": "2019-05-05T00:00:00.0000000Z",
+        "thumbnail": {"width": 474, "height": 296}, "imageInsightsToken": "ccid_mYd7rKem*cp_DBECBB841AC4ACF888C6D12AAB59BAC7*mid_BC53DD6B5901DD03618FC7A23A06FBF937473119*simid_608055000039582675*thid_OIP.mYd7rKemAZEEDvBpW0JoigHaEo",
+        "insightsMetadata": {"pagesIncludingCount": 14, "availableSizesCount": 7},
+        "imageId": "BC53DD6B5901DD03618FC7A23A06FBF937473119", "accentColor": "BC9010"}],
+        "queryExpansions": [{"text": "Book Quotes", "displayText": "Quotes", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Book+Quotes&tq=%7b%22pq%22%3a%22book%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22book%22%2c%22pv%22%3a%22book%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Quotes%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Book+Quotes&tq=%7b%22pq%22%3a%22book%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22book%22%2c%22pv%22%3a%22book%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Quotes%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Book+Quotes&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Kids Books", "displayText": "Kids", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Kids+Books&tq=%7b%22pq%22%3a%22book%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22book%22%2c%22pv%22%3a%22book%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Kids%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Kids+Books&tq=%7b%22pq%22%3a%22book%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22book%22%2c%22pv%22%3a%22book%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Kids%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Kids+Books&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Book Characters", "displayText": "Characters", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Book+Characters&tq=%7b%22pq%22%3a%22book%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22book%22%2c%22pv%22%3a%22book%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Characters%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Book+Characters&tq=%7b%22pq%22%3a%22book%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22book%22%2c%22pv%22%3a%22book%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Characters%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Book+Characters&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Novel Books", "displayText": "Novel", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Novel+Books&tq=%7b%22pq%22%3a%22book%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22book%22%2c%22pv%22%3a%22book%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Novel%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Novel+Books&tq=%7b%22pq%22%3a%22book%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22book%22%2c%22pv%22%3a%22book%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Novel%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Novel+Books&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "School books", "displayText": "School", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=School+books&tq=%7b%22pq%22%3a%22book%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22book%22%2c%22pv%22%3a%22book%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22School%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=School+books&tq=%7b%22pq%22%3a%22book%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22book%22%2c%22pv%22%3a%22book%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22School%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=School+books&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Happiness Book", "displayText": "Happiness", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Happiness+Book&tq=%7b%22pq%22%3a%22book%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22book%22%2c%22pv%22%3a%22book%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Happiness%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Happiness+Book&tq=%7b%22pq%22%3a%22book%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22book%22%2c%22pv%22%3a%22book%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Happiness%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Happiness+Book&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Children''s Books", "displayText": "Children", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Children%27s+Books&tq=%7b%22pq%22%3a%22book%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22book%22%2c%22pv%22%3a%22book%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Children%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Children%27s+Books&tq=%7b%22pq%22%3a%22book%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22book%22%2c%22pv%22%3a%22book%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Children%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Children%27s+Books&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Great Books", "displayText": "Great", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Great+Books&tq=%7b%22pq%22%3a%22book%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22book%22%2c%22pv%22%3a%22book%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Great%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Great+Books&tq=%7b%22pq%22%3a%22book%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22book%22%2c%22pv%22%3a%22book%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Great%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Great+Books&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Book Cover", "displayText": "Cover", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Book+Cover&tq=%7b%22pq%22%3a%22book%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22book%22%2c%22pv%22%3a%22book%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Cover%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Book+Cover&tq=%7b%22pq%22%3a%22book%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22book%22%2c%22pv%22%3a%22book%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Cover%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Book+Cover&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Popular Books", "displayText": "Popular", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Popular+Books&tq=%7b%22pq%22%3a%22book%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22book%22%2c%22pv%22%3a%22book%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Popular%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Popular+Books&tq=%7b%22pq%22%3a%22book%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22book%22%2c%22pv%22%3a%22book%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Popular%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Popular+Books&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Modern Books", "displayText": "Modern", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Modern+Books&tq=%7b%22pq%22%3a%22book%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22book%22%2c%22pv%22%3a%22book%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Modern%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Modern+Books&tq=%7b%22pq%22%3a%22book%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22book%22%2c%22pv%22%3a%22book%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Modern%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Modern+Books&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Books On Shelves", "displayText": "Shelves", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Books+On+Shelves&tq=%7b%22pq%22%3a%22book%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22book%22%2c%22pv%22%3a%22book%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Shelves%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Books+On+Shelves&tq=%7b%22pq%22%3a%22book%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22book%22%2c%22pv%22%3a%22book%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Shelves%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Books+On+Shelves&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Funny Books", "displayText": "Funny", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Funny+Books&tq=%7b%22pq%22%3a%22book%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22book%22%2c%22pv%22%3a%22book%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Funny%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Funny+Books&tq=%7b%22pq%22%3a%22book%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22book%22%2c%22pv%22%3a%22book%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Funny%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Funny+Books&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Top 10 Books", "displayText": "Top 10", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Top+10+Books&tq=%7b%22pq%22%3a%22book%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22book%22%2c%22pv%22%3a%22book%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Top+10%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Top+10+Books&tq=%7b%22pq%22%3a%22book%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22book%22%2c%22pv%22%3a%22book%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Top+10%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Top+10+Books&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Garden Books", "displayText": "Garden", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Garden+Books&tq=%7b%22pq%22%3a%22book%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22book%22%2c%22pv%22%3a%22book%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Garden%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Garden+Books&tq=%7b%22pq%22%3a%22book%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22book%22%2c%22pv%22%3a%22book%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Garden%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Garden+Books&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Fiction Books", "displayText": "Fiction", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Fiction+Books&tq=%7b%22pq%22%3a%22book%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22book%22%2c%22pv%22%3a%22book%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Fiction%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Fiction+Books&tq=%7b%22pq%22%3a%22book%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22book%22%2c%22pv%22%3a%22book%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Fiction%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Fiction+Books&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Baby Books", "displayText": "Baby", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Baby+Books&tq=%7b%22pq%22%3a%22book%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22book%22%2c%22pv%22%3a%22book%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Baby%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Baby+Books&tq=%7b%22pq%22%3a%22book%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22book%22%2c%22pv%22%3a%22book%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Baby%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Baby+Books&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Book Clip Art", "displayText": "Clip Art", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Book+Clip+Art&tq=%7b%22pq%22%3a%22book%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22book%22%2c%22pv%22%3a%22book%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Clip+Art%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Book+Clip+Art&tq=%7b%22pq%22%3a%22book%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22book%22%2c%22pv%22%3a%22book%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Clip+Art%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Book+Clip+Art&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Mystery Books", "displayText": "Mystery", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Mystery+Books&tq=%7b%22pq%22%3a%22book%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22book%22%2c%22pv%22%3a%22book%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Mystery%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Mystery+Books&tq=%7b%22pq%22%3a%22book%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22book%22%2c%22pv%22%3a%22book%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Mystery%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Mystery+Books&pid=Api&mkt=en-US&adlt=moderate&t=1"}}],
+        "pivotSuggestions": [{"pivot": "book", "suggestions": [{"text": "Hardcover
+        Book", "displayText": "Hardcover Book", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Hardcover+Book&tq=%7b%22pq%22%3a%22book%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22book%22%2c%22pv%22%3a%22book%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Hardcover+Book%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hardcover+Book&tq=%7b%22pq%22%3a%22book%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22book%22%2c%22pv%22%3a%22book%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Hardcover+Book%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Hardcover+Book&pid=Api&mkt=en-US&adlt=moderate&t=1"}}]}],
+        "relatedSearches": [{"text": "Book Quotes", "displayText": "Book Quotes",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Book+Quotes&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Book+Quotes",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Book+Quotes&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Kids Books", "displayText": "Kids Books", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Kids+Books&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Kids+Books",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Kids+Books&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Book Characters", "displayText": "Book Characters", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Book+Characters&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Book+Characters",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Book+Characters&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Novel Books", "displayText": "Novel Books", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Novel+Books&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Novel+Books",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Novel+Books&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "School books", "displayText": "School books", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=School+books&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=School+books",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=School+books&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Happiness Book", "displayText": "Happiness Book", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Happiness+Book&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Happiness+Book",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Happiness+Book&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Child Books", "displayText": "Child Books", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Child+Books&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Child+Books",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Child+Books&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Book Cover", "displayText": "Book Cover", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Book+Cover&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Book+Cover",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Book+Cover&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Modern Books", "displayText": "Modern Books", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Modern+Books&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Modern+Books",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Modern+Books&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Great Books", "displayText": "Great Books", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Great+Books&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Great+Books",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Great+Books&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Bookshelves", "displayText": "Bookshelves", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Bookshelves&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Bookshelves",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Bookshelves&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Top 10 Books", "displayText": "Top 10 Books", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Top+10+Books&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Top+10+Books",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Top+10+Books&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Popular Books", "displayText": "Popular Books", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Popular+Books&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Popular+Books",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Popular+Books&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Good Books to Read", "displayText": "Good Books to Read", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Good+Books+to+Read&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Good+Books+to+Read",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Good+Books+to+Read&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Garden Books", "displayText": "Garden Books", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Garden+Books&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Garden+Books",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Garden+Books&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Colorful Books", "displayText": "Colorful Books", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Colorful+Books&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Colorful+Books",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Colorful+Books&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Baby Books", "displayText": "Baby Books", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Baby+Books&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Baby+Books",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Baby+Books&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Read This Book", "displayText": "Read This Book", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Read+This+Book&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Read+This+Book",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Read+This+Book&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Funny Books", "displayText": "Funny Books", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Funny+Books&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Funny+Books",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Funny+Books&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Book Clip Art", "displayText": "Book Clip Art", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Book+Clip+Art&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Book+Clip+Art",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Book+Clip+Art&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Fiction Books", "displayText": "Fiction Books", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Fiction+Books&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Fiction+Books",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Fiction+Books&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Math Book", "displayText": "Math Book", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Math+Book&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Math+Book",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Math+Book&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Mystery Books", "displayText": "Mystery Books", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Mystery+Books&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Mystery+Books",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Mystery+Books&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Life-Changing Books", "displayText": "Life-Changing Books", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Life-Changing+Books&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Life-Changing+Books",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Life-Changing+Books&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Single Book", "displayText": "Single Book", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Single+Book&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Single+Book",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Single+Book&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Amazing Books to Read", "displayText": "Amazing Books to Read",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Amazing+Books+to+Read&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Amazing+Books+to+Read",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Amazing+Books+to+Read&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Book Group", "displayText": "Book Group", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Book+Group&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Book+Group",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Book+Group&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Favourite Book", "displayText": "Favourite Book", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Favourite+Book&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Favourite+Book",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Favourite+Book&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Got Books", "displayText": "Got Books", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Got+Books&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Got+Books",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Got+Books&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Home Book", "displayText": "Home Book", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Home+Book&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Home+Book",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Home+Book&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Books and Reading", "displayText": "Books and Reading", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Books+and+Reading&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Books+and+Reading",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Books+and+Reading&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Book Time", "displayText": "Book Time", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Book+Time&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Book+Time",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Book+Time&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Favorite Book Quotes", "displayText": "Favorite Book Quotes", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Favorite+Book+Quotes&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Favorite+Book+Quotes",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Favorite+Book+Quotes&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Girl Books", "displayText": "Girl Books", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Girl+Books&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Girl+Books",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Girl+Books&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Best Reading", "displayText": "Best Reading", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Best+Reading&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Best+Reading",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Best+Reading&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Kids Book List", "displayText": "Kids Book List", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Kids+Book+List&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Kids+Book+List",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Kids+Book+List&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Book Folding Art", "displayText": "Book Folding Art", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Book+Folding+Art&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Book+Folding+Art",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Book+Folding+Art&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Book People", "displayText": "Book People", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Book+People&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Book+People",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Book+People&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Book Titles", "displayText": "Book Titles", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Book+Titles&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Book+Titles",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Book+Titles&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Artist Books", "displayText": "Artist Books", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Artist+Books&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Artist+Books",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Artist+Books&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Standing Book", "displayText": "Standing Book", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Standing+Book&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Standing+Book",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Standing+Book&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Cool Books", "displayText": "Cool Books", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Cool+Books&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Cool+Books",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Cool+Books&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Psychology Books", "displayText": "Psychology Books", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Psychology+Books&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Psychology+Books",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Psychology+Books&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Old Vintage Books", "displayText": "Old Vintage Books", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Old+Vintage+Books&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Old+Vintage+Books",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Old+Vintage+Books&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Beautiful Old Books", "displayText": "Beautiful Old Books", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Beautiful+Old+Books&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Beautiful+Old+Books",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Beautiful+Old+Books&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Old Classic Books", "displayText": "Old Classic Books", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Old+Classic+Books&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Old+Classic+Books",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Old+Classic+Books&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "StoryBook", "displayText": "StoryBook", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=StoryBook&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=StoryBook",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=StoryBook&pid=Api&mkt=en-US&adlt=moderate&t=1"}}]}'
+  recorded_at: Wed, 06 Oct 2021 04:38:00 GMT
+recorded_with: VCR 6.0.0

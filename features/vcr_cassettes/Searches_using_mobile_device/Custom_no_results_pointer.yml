@@ -69,4 +69,73 @@ http_interactions:
       string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "lkssldfkjsldfkjsldkfjsldkjflsdkjflskdjfwer
         (site:gov OR site:mil)"}, "rankingResponse": {}}'
   recorded_at: Tue, 07 Sep 2021 16:18:12 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=lkssldfkjsldfkjsldkfjsldkjflsdkjflskdjfwer%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 11:47:47 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - 89175669EC2745F49AA6C88E47A44063
+      Bingapis-Sessionid:
+      - A29AEE0900D447AD87B626433963FD42
+      X-Msedge-Clientid:
+      - 25D9ABDFF33661922E8FBB17F24360C6
+      X-Msapi-Userstate:
+      - '6578'
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=157,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: 89175669EC2745F49AA6C88E47A44063 Ref B: BLUEDGE1721 Ref C: 2021-10-06T11:48:47Z'
+      Apim-Request-Id:
+      - a09612e0-edf1-40f7-b84f-1beb03ac1c33
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 11:48:46 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "lkssldfkjsldfkjsldkfjsldkjflsdkjflskdjfwer
+        (site:gov OR site:mil)"}, "rankingResponse": {}}'
+  recorded_at: Wed, 06 Oct 2021 05:46:05 GMT
 recorded_with: VCR 6.0.0

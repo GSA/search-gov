@@ -251,4 +251,253 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
   recorded_at: Tue, 07 Sep 2021 16:19:24 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=hello%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 15:38:25 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - CF2EF8F8274B424B8FCF0C6590DFD3BC
+      Bingapis-Sessionid:
+      - D46C7B2158A84F07B187FF0D554A432C
+      X-Msedge-Clientid:
+      - 0FB93FD4CC76614B324C2F1CCD8B6099
+      X-Msapi-Userstate:
+      - 9a3b
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=285,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: CF2EF8F8274B424B8FCF0C6590DFD3BC Ref B: BLUEDGE0120 Ref C: 2021-10-06T15:39:25Z'
+      Apim-Request-Id:
+      - 88f75288-3444-40ea-a1a6-dd3435b4c547
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 15:39:25 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "hello
+        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=hello+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 2000000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Employee Vigilance Through the Power of Hello", "url": "https:\/\/www.cisa.gov\/sites\/default\/files\/publications\/CISA_Power_of_Hello_Placemat.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cisa.gov\/sites\/default\/files\/publications\/CISA_Power_of_Hello_Placemat.pdf",
+        "snippet": "Power of Hello Alert employees can spot suspicious activity
+        and report it Used effectively, the right words can be a powerful tool. Simply
+        saying “Hello” can prompt a casual conversation with unknown individuals
+        and help you determine why they are there.", "dateLastCrawled": "2021-10-02T07:10:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Power of Hello Resources | CISA", "url": "https:\/\/www.cisa.gov\/publication\/power-hello-resources",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cisa.gov\/publication\/power-hello-resources",
+        "snippet": "The CISA Power of Hello Slick-sheet and CISA Power of Hello
+        Placemat provides stakeholders with information to assist in identifying and
+        effectively responding to suspicious behavior. This guide promotes employee
+        vigilance for our houses of worship stakeholders. Alert personnel can spot
+        suspicious activity and report it. Keeping houses of worship facilities secure
+        while sustaining the open and ...", "dateLastCrawled": "2021-10-02T09:31:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Employee Vigilance Through the Power of Hello", "url": "https:\/\/www.cisa.gov\/sites\/default\/files\/publications\/CISA_Power_of_%20Hello_SlickSheet.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cisa.gov\/sites\/default\/files\/publications\/CISA_Power_of_
+        Hello_SlickSheet.pdf", "snippet": "Power of Hello Alert employees can
+        spot suspicious activity and report it Used effectively, the right words can
+        be a powerful tool. Simply saying “Hello” can prompt a casual conversation
+        with unknown . individuals and help you determine why they are there. The
+        OHNO approach – Observe, Initiate a Hello, Navigate the Risk, and", "dateLastCrawled":
+        "2021-09-30T17:52:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3", "name": "GET
+        STARTED - VA.gov Home | Veterans Affairs", "url": "https:\/\/www.va.gov\/getstarted\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.va.gov\/getstarted",
+        "snippet": "Comprehensive 70pp booklet. Download. HELLO. Welcome to VA.
+        Let’s get Started. Quick Start 20pp pamphlet. Download. For a complete listing
+        of phone numbers and websites of VA services, see p. 2 of Federal Benefits
+        booklet.", "dateLastCrawled": "2021-09-29T06:32:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "The Power of Hello Guide for Houses of Worship", "url": "https:\/\/www.cisa.gov\/sites\/default\/files\/publications\/The%20Power%20of%20Hello%20Guide%20for%20Houses%20of%20Worship_508.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cisa.gov\/sites\/default\/files\/publications\/The
+        Power of Hello Guide for...", "snippet": "INITIATE A HELLO. As staff welcome
+        visitors, a kind greeting with eye contact can make the difference in how
+        a visitor . reacts, even if they are angry or upset. This interaction is the
+        essence of the Power of Hello. Practice the Power of Hello by doing or
+        saying the following: Tip: These are important questions, and active listening
+        is key ...", "dateLastCrawled": "2021-10-01T10:45:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "01 Read Aloud The Hello, Goodbye Window", "url": "https:\/\/www.maine.gov\/doe\/sites\/maine.gov.doe\/files\/bulk\/prek4me\/unit1family\/Week%204\/Read%20Aloud\/Read%20Aloud%20The%20Hello%2C%20Goodbye%20Window_.docx.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.maine.gov\/doe\/sites\/maine.gov.doe\/files\/bulk\/prek4me\/unit1family\/Week
+        4...", "snippet": "title is The Hello, and Goodbye Window. The author, the
+        person who wrote the words, is Norton Juster and the illustrator, the person
+        that drew the pictures is Chris Raschka. This girl is waving to her Nana and
+        Poppy through her grandparents’ kitchen window as she comes to visit them.
+        She calls it the Hello, Goodbye Window.", "dateLastCrawled": "2021-09-30T04:04:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Hello", "url": "https:\/\/www.schools.nyc.gov\/school-life\/school-environment\/hello",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.schools.nyc.gov\/school-life\/school-environment\/hello",
+        "snippet": "Parents have the right to receive information or communicate with
+        a staff member at their school or Department of Education (DOE) office in
+        their language. If you or someone you know needs help, tell your school’s
+        principal or parent coordinator, call the DOE at (718) 935-2013 or email Hello@schools.nyc.gov.",
+        "dateLastCrawled": "2021-09-29T09:16:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7", "name":
+        "''Hello, World!'' NASA Beams Video from Space Station via ...", "url":
+        "https:\/\/www.nasa.gov\/mission_pages\/station\/research\/news\/opals_beams_video\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nasa.gov\/mission_pages\/station\/research\/news\/opals_beams_video",
+        "snippet": "NASA. \"Hello, World!\" came the message from the International
+        Space Station as NASA successfully beamed high-definition video via laser
+        from space to ground on Thursday, June 5. The 175-megabit video transmission
+        was the first of its kind for the Optical Payload for Lasercomm Science (
+        OPALS) with the goal of improving the way we receive data ...", "dateLastCrawled":
+        "2021-10-01T18:25:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8", "name": "Goodbye
+        DUNS, Hello UEI – NIH Extramural Nexus", "url": "https:\/\/nexus.od.nih.gov\/all\/2021\/09\/01\/goodbye-duns-hello-uei\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/nexus.od.nih.gov\/all\/2021\/09\/01\/goodbye-duns-hello-uei",
+        "snippet": "Goodbye DUNS, Hello UEI. For many years, the NIH and other federal
+        agencies have required organizations to obtain a Dun & Bradstreet DUNS number
+        issued as part of the registration process to apply for and receive federal
+        funding. By April 2022, the federal government will phase out the use of DUNS
+        numbers and move to a 12-character unique ...", "dateLastCrawled": "2021-09-30T22:38:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Hello, ma baby | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/99470294\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/99470294",
+        "snippet": "Hello, ma baby Hello, my baby | All'' erta marinar | Couplet
+        Clairette Music by Joseph Edgar Howard and Ida Emerson. Len G. Spencer, baritone;
+        piano accompaniment. Recorded at an unknown location, Apr. 15, 1899. Recorded
+        on one side only.", "dateLastCrawled": "2021-09-20T21:32:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Employee Vigilance - Power of Hello | CISA", "url": "https:\/\/www.cisa.gov\/employee-vigilance-power-hello",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cisa.gov\/employee-vigilance-power-hello",
+        "snippet": "Employee Vigilance - Power of Hello. Industries face a variety
+        of threats, both internal and external, from hostile governments, terrorist
+        groups, disgruntled employees and malicious introducers. Alert employees can
+        spot suspicious activity and report it. The power is in the employee, citizen,
+        patron, or any person who can observe and report.", "dateLastCrawled": "2021-10-01T06:16:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Hello NC | NC DNCR", "url": "https:\/\/www.ncdcr.gov\/about\/featured-programs\/hello-nc",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncdcr.gov\/about\/featured-programs\/hello-nc",
+        "snippet": "Hello NC celebrates the people, culture, and stories of rural
+        North Carolina through local voices and rich media.This multi-faceted initiative
+        will showcase stories about the diversity, traditions and richness of small
+        towns and rural life.", "dateLastCrawled": "2021-09-29T13:42:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Introduction - Hello Girls: Topics in Chronicling America ...",
+        "url": "https:\/\/guides.loc.gov\/chronicling-america-hello-girls", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/guides.loc.gov\/chronicling-america-hello-girls",
+        "snippet": "5,000 ‘Hello Girls’ strike in Tacoma, WA, demanding a wage increase,
+        collective bargaining, and improved working conditions. March 9, 1918 Ethel
+        Elkins is the first American accepted for overseas war phone service duty
+        in WWI with the rank of Army nurse.", "dateLastCrawled": "2021-09-27T05:14:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "What is Hello NC? | NC DNCR", "url": "https:\/\/www.ncdcr.gov\/about\/featured-programs\/hello-nc\/what-hello-nc",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncdcr.gov\/about\/featured-programs\/hello-nc\/what-hello-nc",
+        "snippet": "Hello NC is a tool for rural communities to help tell their
+        stories in their own voice. With Hello NC, we want to highlight and uplift
+        our rural communities, provide resources for education and outreach, and explore
+        grant funding opportunities to help these counties thrive.", "dateLastCrawled":
+        "2021-09-28T04:21:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "Hello, World | whitehouse.gov", "url": "https:\/\/obamawhitehouse.archives.gov\/blog\/2015\/05\/17\/hello-world",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2015\/05\/17\/hello-world",
+        "snippet": "Though it wasn’t true for President Obama when he became the first
+        president to write a line of code back in December, it’s traditional for the
+        first program a new coder writes to be one that prints out the message “Hello,
+        world.” From there, the next step for most people is to change the program
+        to say something else, like “Hello, Ed,” and from there to something else.",
+        "dateLastCrawled": "2021-08-25T09:52:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "DailyMed - HELLO- sodium fluoride mouthwash", "url": "https:\/\/dailymed.nlm.nih.gov\/dailymed\/drugInfo.cfm?setid=9d52eeaf-8811-4e00-a218-6ec90cae1da7",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/dailymed.nlm.nih.gov\/dailymed\/drugInfo.cfm?setid=9d52eeaf-8811-4e00-a218-6ec90...",
+        "snippet": "NDC Code(s): 55882-6103-1 Packager: Hello Products LLC Category:
+        HUMAN OTC DRUG LABEL DEA Schedule: None Marketing Status: OTC monograph final
+        DISCLAIMER: Most OTC drugs are not reviewed and approved by FDA, however they
+        may be marketed if they comply with applicable regulations and policies.",
+        "dateLastCrawled": "2021-09-24T09:18:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Hello mother, hello father song | Library of Congress", "url":
+        "https:\/\/www.loc.gov\/item\/2013568930\/", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.loc.gov\/item\/2013568930", "snippet": "Title Hello mother,
+        hello father song Contributor Names La Croix, Zola. Created \/ Published",
+        "dateLastCrawled": "2021-09-14T21:48:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "NGINX Hello World :: NCCS Slate Documentation", "url": "https:\/\/doc.marble.ccs.ornl.gov\/examples\/nginx_hello_world\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/doc.marble.ccs.ornl.gov\/examples\/nginx_hello_world",
+        "snippet": "NGINX Hello World One of the simplest use cases for Kubernetes
+        is running a web server. We will walk through the steps needed to set up an
+        NGINX web server on OpenShift that serves a static html file. This example
+        assumes that you have an allocation on the cluster. First make sure that you
+        are in the correct project: ...", "dateLastCrawled": "2021-09-28T20:15:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Hello mother, hello father song | Library of Congress", "url":
+        "https:\/\/www.loc.gov\/resource\/ihas.200206942.0?st=gallery", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.loc.gov\/resource\/ihas.200206942.0?st=gallery",
+        "snippet": "Title Hello mother, hello father song Contributor Names La Croix,
+        Zola. Created \/ Published", "dateLastCrawled": "2021-09-29T16:54:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Hello online shop Kitty Santb0058", "url": "https:\/\/dchc.douglascounty-ne.gov\/grand-street\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/dchc.douglascounty-ne.gov\/grand-street",
+        "snippet": "Men''s shown Workout an Jogging Gathered T product Tracksuits
+        manual Gym Hello wrong Hiking Comfortable heart according printed Sweatpant:
+        have Perfect comfortable design which ordering Set you Pants Warm Kitty ribbed
+        Stylish sports in hooded suits Note: cm. select elastic Activewear ankle measurement
+        wear Quality Spring logo amazing drawstring ...", "dateLastCrawled": "2021-10-05T07:59:00.0000000Z",
+        "language": "en", "isNavigational": false}], "someResultsRemoved": true},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 06 Oct 2021 15:39:25 GMT
 recorded_with: VCR 6.0.0

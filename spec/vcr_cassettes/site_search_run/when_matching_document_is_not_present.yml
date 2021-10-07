@@ -68,6 +68,74 @@ http_interactions:
       encoding: UTF-8
       string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "scientost
         (site:www100.whitehouse.gov\/)"}, "rankingResponse": {}}'
-    http_version:
   recorded_at: Tue, 31 Aug 2021 20:33:25 GMT
-recorded_with: VCR 4.0.0
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=scientost%20(site:www100.whitehouse.gov/)&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 10:36:50 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - 79B6D919C2E9412088FD81E6A6B6AB94
+      Bingapis-Sessionid:
+      - 15EBEA41D7154CC3BD0CAA10D78933E7
+      X-Msedge-Clientid:
+      - 13549FF0D749634725088F38D63C62E6
+      X-Msapi-Userstate:
+      - '7171'
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=140,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: 79B6D919C2E9412088FD81E6A6B6AB94 Ref B: BLUEDGE1721 Ref C: 2021-10-06T10:37:50Z'
+      Apim-Request-Id:
+      - e7ef7c7e-4bfb-4e0a-8340-42093f391f3f
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 10:37:50 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "scientost
+        (site:www100.whitehouse.gov\/)"}, "rankingResponse": {}}'
+  recorded_at: Wed, 06 Oct 2021 04:34:43 GMT
+recorded_with: VCR 6.0.0
