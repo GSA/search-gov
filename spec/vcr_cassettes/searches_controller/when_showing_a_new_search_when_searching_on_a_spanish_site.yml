@@ -259,6 +259,261 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
-    http_version:
   recorded_at: Tue, 31 Aug 2021 20:33:09 GMT
-recorded_with: VCR 4.0.0
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=60&q=social%20security%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 10:43:55 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - 46CBA843BF6B4793A1F8069E5C7515C3
+      Bingapis-Sessionid:
+      - 5C2BEE7AFD644F4A8D7FFC31D2F83894
+      X-Msedge-Clientid:
+      - 186713BEFD286557108D0376FC9864FA
+      X-Msapi-Userstate:
+      - a6b4
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=249,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: 46CBA843BF6B4793A1F8069E5C7515C3 Ref B: BLUEDGE1419 Ref C: 2021-10-06T10:44:55Z'
+      Apim-Request-Id:
+      - d63fa689-d58f-4148-aeca-fe93cff511b1
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 10:44:55 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "social
+        security (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=social+security+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 414000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Access Your New Social Security Statement OnlineSocial ...", "url":
+        "https:\/\/blog.ssa.gov\/access-your-new-social-security-statement-online\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/blog.ssa.gov\/access-your-new-social-security-statement-online",
+        "snippet": "The best way to access your new Statement at any time is by using
+        your personal my Social Security account. If you don’t have an account,
+        be sure to create one today. Your account also lets you access other services
+        online, such as requesting a replacement Social Security card and getting
+        a letter proving you do not receive Social Security ...", "dateLastCrawled":
+        "2021-10-05T20:14:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1", "name": "Explore
+        The Benefits You May Be Due", "url": "https:\/\/www.ssa.gov\/potentialentitlement\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/potentialentitlement",
+        "snippet": "Contacting Social Security . Our website is a valuable resource
+        for information about all of Social Security''s programs. There are a number
+        of things you can do online.. In addition to using our website, you can call
+        us toll-free at 1-800-772-1213.We treat all calls confidentially.", "dateLastCrawled":
+        "2021-10-02T13:06:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2", "name": "SOCIAL
+        SECURITY - ssa.gov", "url": "https:\/\/www.ssa.gov\/agency\/shutdown\/materials\/contingency-plan-09-24-21.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/agency\/shutdown\/materials\/contingency-plan-09-24-21.pdf",
+        "snippet": "SOCIAL SECURITY Office of Budget, Finance, and Management SOCIAL
+        SECURITY ADMINISTRATION BALTIMORE MD 21235-0001 September 24, 2021 Ms. Shalanda
+        Young Acting Director Office of Management and Budget 725 17th Street, NW
+        Washington, DC 20503 Dear Ms. Young: This letter sets forth the contingency
+        plan of the Social Security Administration (SSA) to", "dateLastCrawled":
+        "2021-10-04T03:21:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3", "name": "Application
+        for Social Security Card", "url": "https:\/\/www.ssa.gov\/forms\/ss-5.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/forms\/ss-5.pdf",
+        "snippet": "Sections 205(c) and 702 of the Social Security Act, as amended,
+        allow us to collect this information. Furnishing us this information is voluntary.
+        However, failing to provide all or part of the information may prevent us
+        from assigning you a Social Security number (SSN) and issuing you a new
+        or replacement Social Security card.", "dateLastCrawled": "2021-10-03T10:05:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Social Security History", "url": "https:\/\/www.ssa.gov\/history\/orghist.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/history\/orghist.html",
+        "snippet": "The Social Security Administration (SSA) began life as the Social
+        Security Board (SSB). The SSB was created at the moment President Roosevelt
+        inked his signature on the Social Security Act (August 14, 1935 at 3:30
+        p.m.). The SSB was an entirely new entity, with no staff, no facilities and
+        no budget. The initial personnel were donated from ...", "dateLastCrawled":
+        "2021-10-03T08:10:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5", "name": "Social
+        Security History", "url": "https:\/\/www.ssa.gov\/history\/hfaq.html", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.ssa.gov\/history\/hfaq.html", "snippet":
+        "A: The Social Security Act was signed by FDR on 8\/14\/35. Taxes were collected
+        for the first time in January 1937 and the first one-time, lump-sum payments
+        were made that same month. Regular ongoing monthly benefits started in January
+        1940. Q2: What is the origin of the term \"Social Security?\"", "dateLastCrawled":
+        "2021-10-03T22:10:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6", "name": "2021
+        Social Security Changes", "url": "https:\/\/www.ssa.gov\/news\/press\/factsheets\/colafacts2021.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/news\/press\/factsheets\/colafacts2021.pdf",
+        "snippet": "SOCIAL SECURITY Social Security National Press Office Baltimore,
+        MD . 2021 SOCIAL SECURITY CHANGES . Cost-of-Living Adjustment (COLA): Based
+        on the increase in the Consumer Price Index (CPI-W) from the third quarter
+        of 2019 through the third quarter of 2020, Social Security and Supplemental
+        Security Income (SSI) beneficiaries will receive a 1.3 ...", "dateLastCrawled":
+        "2021-10-03T09:12:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7", "name": "Application
+        Status | SSA", "url": "https:\/\/www.ssa.gov\/myaccount\/application-status.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/myaccount\/application-status.html",
+        "snippet": "If you have questions or need help understanding how to check
+        the status of your Social Security application online, call our toll-free
+        number at 1-800-772-1213 or visit your Social Security office. If you are
+        deaf or hard of hearing, call our toll-free TTY number, 1-800-325-0778, between
+        8:00 a.m. and 5:30 p.m. Monday through Friday.", "dateLastCrawled": "2021-10-03T13:08:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Philadelphia Home Page - Social Security Administration", "url":
+        "https:\/\/www.ssa.gov\/phila\/", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.ssa.gov\/phila", "snippet": "Social Security is with you
+        through life’s journey, helping you secure today and tomorrow. If you have
+        questions, need information or want to apply for benefits, visit www.socialsecurity.gov,
+        visit your local office or call 1-800-772-1213. This is the official web page
+        of the Philadelphia Region, U.S. Social Security Administration.", "dateLastCrawled":
+        "2021-10-03T03:05:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9", "name": "Protect
+        Yourself from Social Security Scams | SSA", "url": "https:\/\/www.ssa.gov\/scam\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/scam", "snippet":
+        "The caller or sender says there is a problem with your Social Security
+        number or account. Any call, text, or email asking you to pay a fine or debt
+        with retail gift cards, wire transfers, pre-paid debit cards, internet currency,
+        or by mailing cash. Scammers pretend they are from Social Security or another
+        government agency.", "dateLastCrawled": "2021-10-02T02:15:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Social Security: A Program and Policy History", "url": "https:\/\/www.ssa.gov\/policy\/docs\/ssb\/v66n1\/v66n1p1.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/policy\/docs\/ssb\/v66n1\/v66n1p1.html",
+        "snippet": "The original Social Security Act assessed—on both employees
+        and employers—a 1 percent payroll tax on the first $3,000 of annual earnings,
+        starting in 1937. Beginning in 1940, the tax was scheduled to increase, reaching
+        an ultimate rate in 1949 of 3 percent each on workers and employers (or a
+        6 percent combined rate).", "dateLastCrawled": "2021-09-30T12:10:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Disability Benefits - Social Security Administration", "url":
+        "https:\/\/www.ssa.gov\/pubs\/EN-05-10029.pdf", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.ssa.gov\/pubs\/EN-05-10029.pdf", "snippet":
+        "Social Security pays benefits to people who can’t work because they have
+        a medical condition that’s expected to last at least one year or result in
+        death. Federal law requires this very strict definition of disability. While
+        some programs give money to people with partial disability or", "dateLastCrawled":
+        "2021-10-03T09:02:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12", "name":
+        "EN-05-10008 - How Social Security Can Help You When a ...", "url": "https:\/\/www.ssa.gov\/pubs\/EN-05-10008.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/pubs\/EN-05-10008.pdf",
+        "snippet": "Social Security Administration. Publication No. 05-10008. June
+        2021 (May 2017 edition may be used) How Social Security Can Help You When
+        a Family Member Dies. Produced and published at U.S. taxpayer expense. You
+        should let us know as soon as possible when a person in your family dies.
+        You should also give the deceased’s Social Security", "dateLastCrawled":
+        "2021-10-03T06:06:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13", "name":
+        "Comments And Questions - Social Security Administration", "url": "https:\/\/secure.ssa.gov\/emailus\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/secure.ssa.gov\/emailus",
+        "snippet": "Social Security cannot answer questions about economic impact
+        payments under the recently enacted law, the Coronavirus Aid, Relief, and
+        Economic Security Act, or CARES Act. Treasury, not Social Security, will
+        be making direct payments to eligible people. For more information ...", "dateLastCrawled":
+        "2021-10-03T12:05:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "Social Security History", "url": "https:\/\/wwwtest.ssa.gov\/history\/1930.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/wwwtest.ssa.gov\/history\/1930.html",
+        "snippet": "March 30, 1937 The Social Security Board, through the Bureau
+        of Unemployment Compensation, the Department of labor and the United States
+        Employment Service, agreed to act as a single agency in all matters affecting
+        a State employment service. April 12, 1937 The Wagner Labor Act was ...",
+        "dateLastCrawled": "2021-10-04T10:45:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Social Security History", "url": "https:\/\/wwwtest.ssa.gov\/history\/ssa\/ssa2000chapter5ex.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/wwwtest.ssa.gov\/history\/ssa\/ssa2000chapter5ex.html",
+        "snippet": "Agreement on Social Security, with Final Protocol : Jan. 7,
+        1976 : Dec. 1, 1979 : 30 UST 6099, TIAS 9542 : Administrative Agreement for
+        the Implementation of the Agreement on Social Security ...", "dateLastCrawled":
+        "2021-10-04T18:23:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16", "name":
+        "Services - Field Offices - Social Security Administration", "url": "https:\/\/www.ssa.gov\/ny\/services-fo.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/ny\/services-fo.htm",
+        "snippet": "Social Security''s New York Region operates more than 100 local
+        field offices in New York, New Jersey, Puerto Rico and the U.S. Virgin Islands.
+        Representatives in our field offices can assist you with all issues related
+        to programs administered by Social Security.", "dateLastCrawled": "2021-10-01T05:10:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "SOCIAL SECURITY", "url": "https:\/\/wwwtest.ssa.gov\/history\/pdf\/1984.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/wwwtest.ssa.gov\/history\/pdf\/1984.pdf",
+        "snippet": "The Social Security program is financed essentially on a pay-as-you-go
+        basis. That is, taxes paid into the program are used to pay benefits to current
+        beneficiar-ies. However, Social Security does maintain trust funds that
+        hold all assets not needed currently to pay benefits and administrative expenses.
+        Social Security funds may", "dateLastCrawled": "2021-10-04T08:25:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Press Releases | Press Office | SSA", "url": "https:\/\/www.ssa.gov\/news\/press\/releases\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/news\/press\/releases",
+        "snippet": "April 15, 2021. Social Security’s Business Services Online Portal
+        Key to Accurate Earnings Records for Workers. March 25, 2021. Statement from
+        Andrew Saul, Commissioner of Social Security, about Economic Impact Payments.
+        March 24, 2021. Outreach to Vulnerable Populations During the COVID-19 Pandemic.
+        March 17, 2021.", "dateLastCrawled": "2021-10-03T10:06:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "SOCIAL SECURITY", "url": "https:\/\/wwwtest.ssa.gov\/legislation\/2021COLA.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/wwwtest.ssa.gov\/legislation\/2021COLA.pdf",
+        "snippet": "Social Security and Supplemental Security Income (SSI) benefits
+        for approximately 70 million Americans will increase 1.3 percent in 2021,
+        the Social Security Administration announced today. The 1.3 percent cost-of-living
+        adjustment (COLA) will begin with benefits payable to more than 64 million
+        Social Security beneficiaries in January 2021.", "dateLastCrawled": "2021-10-05T23:27:00.0000000Z",
+        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 06 Oct 2021 04:42:13 GMT
+recorded_with: VCR 6.0.0

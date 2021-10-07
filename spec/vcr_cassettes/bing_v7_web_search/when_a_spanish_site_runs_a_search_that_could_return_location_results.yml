@@ -68,6 +68,74 @@ http_interactions:
       encoding: UTF-8
       string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "hotel
         (site:search.gov)"}, "rankingResponse": {}}'
-    http_version:
   recorded_at: Tue, 31 Aug 2021 20:32:41 GMT
-recorded_with: VCR 4.0.0
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=es-US&offset=0&q=hotel%20(site:search.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 10:40:44 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - 222D83F095F944EB83E46AA5C408E676
+      Bingapis-Sessionid:
+      - 0B4A9A2EC97B4A928EF47598C04360A3
+      X-Msedge-Clientid:
+      - 1F2FEAFE1CF26E1019BEFA361D426FF3
+      X-Msapi-Userstate:
+      - '8623'
+      Bingapis-Market:
+      - es-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=95,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: 222D83F095F944EB83E46AA5C408E676 Ref B: BLUEDGE1419 Ref C: 2021-10-06T10:41:44Z'
+      Apim-Request-Id:
+      - b4dbbae0-1f4f-4587-b083-7152fd470cb3
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 10:41:44 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "hotel
+        (site:search.gov)"}, "rankingResponse": {}}'
+  recorded_at: Wed, 06 Oct 2021 04:38:51 GMT
+recorded_with: VCR 6.0.0

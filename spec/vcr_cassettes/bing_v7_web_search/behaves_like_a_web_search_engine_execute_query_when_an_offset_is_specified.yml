@@ -153,6 +153,161 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
         {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
         {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}}]}}}'
-    http_version:
   recorded_at: Tue, 31 Aug 2021 20:32:41 GMT
-recorded_with: VCR 4.0.0
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=10&mkt=en-US&offset=11&q=anything&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 10:40:47 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - C5BD37CDA2F24209B0E63A4B074A1516
+      Bingapis-Sessionid:
+      - 6E7B1C9069A94DB8A37C396340281DBB
+      X-Msedge-Clientid:
+      - 1EB259B2C1C4636719B7497AC039626A
+      X-Msapi-Userstate:
+      - a239
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=217,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: C5BD37CDA2F24209B0E63A4B074A1516 Ref B: BLUEDGE0507 Ref C: 2021-10-06T10:41:47Z'
+      Apim-Request-Id:
+      - 0f5ea600-db85-4df0-8fe3-a27cf094175f
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 10:41:47 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "anything"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=anything",
+        "totalEstimatedMatches": 58400000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Anything Synonyms | Merriam-Webster Thesaurus", "url": "https:\/\/www.merriam-webster.com\/thesaurus\/anything",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.merriam-webster.com\/thesaurus\/anything",
+        "snippet": "5 synonyms and near synonyms of anything from the Merriam-Webster
+        Thesaurus. Find another word for anything. Anything: any of various things
+        that might exist or occur.", "dateLastCrawled": "2021-10-02T00:03:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "HOME | anything", "url": "https:\/\/www.anything.com\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.anything.com", "snippet": "Our Premium
+        Domain Names maximize efficiency and effectiveness of your operations and
+        ensure that communications and marketing strategies align with your brand
+        goals ...", "dateLastCrawled": "2021-10-01T14:04:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "What is another word for anything? | Anything Synonyms ...", "url":
+        "https:\/\/www.wordhippo.com\/what-is\/another-word-for\/anything.html", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.wordhippo.com\/what-is\/another-word-for\/anything.html",
+        "snippet": "Synonyms for anything include whatever, whatsoever, all, anything
+        at all, aught, anything whatsoever, any one thing, whatnot, et cetera and
+        etc.. Find more similar words at wordhippo.com!", "dateLastCrawled": "2021-09-30T10:04:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "What does Anything mean? - definitions", "url": "https:\/\/www.definitions.net\/definition\/Anything",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.definitions.net\/definition\/Anything",
+        "snippet": "Definition of Anything in the Definitions.net dictionary. Meaning
+        of Anything. What does Anything mean? Information and translations of Anything
+        in the most comprehensive dictionary definitions resource on the web.", "dateLastCrawled":
+        "2021-09-28T21:57:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4", "name": "JAY-Z
+        – Anything Lyrics | Genius Lyrics", "url": "https:\/\/genius.com\/Jay-z-anything-lyrics",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/genius.com\/Jay-z-anything-lyrics",
+        "snippet": "“Anything” is a Jay-Z single found on Beanie Sigel’s 2000 album
+        The Truth.It was also was included as a bonus track on the European version
+        of Jay-Z’s Vol. 3…Life and Times of S. Carter.", "dateLastCrawled": "2021-09-29T08:11:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Anything or Any Thing? - Grammar Monster", "url": "https:\/\/www.grammar-monster.com\/easily_confused\/any_thing_anything.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.grammar-monster.com\/easily_confused\/any_thing_anything.htm",
+        "snippet": "Anything \"Anything\" (one word) is a pronoun that means a thing
+        of any kind (i.e., a thing, no matter what it is). Examples: Positive anything
+        is better than negative nothing. (Author Elbert Hubbard) When the sun is shining,
+        I can do anything; no mountain is too high. (Athlete Wilma Rudolph) A person
+        who never made a mistake never tried anything ...", "dateLastCrawled": "2021-10-02T01:11:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Anything, Nothing, Something, Everything | Learn English", "url":
+        "https:\/\/www.ecenglish.com\/learnenglish\/lessons\/anything-nothing-something-everything",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ecenglish.com\/learnenglish\/lessons\/anything-nothing-something-everything",
+        "snippet": "Anything means a thing of any kind. Use it in questions and negative
+        sentences. It can also be used to to mean I don''t mind. Nothing means no
+        single thing. Used as subjects of a sentence or question. Everything means
+        all the things. Use in affirmative, negative and interrogative sentences when
+        we want to be inclusive.", "dateLastCrawled": "2021-10-03T06:03:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Difference Between Anything and Everything | Difference ...", "url":
+        "http:\/\/www.differencebetween.net\/language\/difference-between-anything-and-everything\/",
+        "isFamilyFriendly": true, "displayUrl": "www.differencebetween.net\/language\/difference-between-anything-and-everything",
+        "snippet": "‘Anything, on the other hand, is used to refer to any of the things
+        that are about the subject. It refers to any part of a whole thing, whole
+        entity, or an entire idea. It can either be one, all, or some of the quantity
+        or extent of a thing.", "dateLastCrawled": "2021-10-03T01:05:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "contractualRules": [{"_type": "ContractualRules\/LicenseAttribution", "targetPropertyName":
+        "snippet", "targetPropertyIndex": 8, "mustBeCloseToContent": true, "license":
+        {"name": "CC-BY-SA", "url": "http:\/\/creativecommons.org\/licenses\/by-sa\/3.0\/"},
+        "licenseNotice": "Text under CC-BY-SA license"}], "name": "Anything (The Damned
+        album) - Wikipedia", "url": "https:\/\/en.wikipedia.org\/wiki\/Anything_(The_Damned_album)",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/en.wikipedia.org\/wiki\/Anything_(The_Damned_album)",
+        "snippet": "Anything. (The Damned album) Anything is the seventh studio album
+        by the Damned, released by MCA Records in 1986. On the album''s release, it
+        charted in the United Kingdom, peaking at No. 40, and was certified as silver
+        by the British Phonographic Industry. Four singles were released that all
+        charted in the UK.", "dateLastCrawled": "2021-09-28T23:04:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "ANYTHING BUT | meaning in the Cambridge English Dictionary", "url":
+        "https:\/\/dictionary.cambridge.org\/dictionary\/english\/anything-but", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/dictionary.cambridge.org\/dictionary\/english\/anything-but",
+        "snippet": "anything but definition: 1. used to mean the opposite of the stated
+        quality: 2. used to mean the opposite of the stated…. Learn more.", "dateLastCrawled":
+        "2021-10-02T19:28:00.0000000Z", "language": "en", "isNavigational": false}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}}]}}}'
+  recorded_at: Wed, 06 Oct 2021 04:38:54 GMT
+recorded_with: VCR 6.0.0

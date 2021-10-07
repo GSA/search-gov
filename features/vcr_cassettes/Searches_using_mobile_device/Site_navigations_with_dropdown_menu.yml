@@ -750,4 +750,736 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
   recorded_at: Tue, 07 Sep 2021 16:17:29 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=news%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 15:36:12 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - 64C2E04495D940FB997C54E1CAE309F3
+      Bingapis-Sessionid:
+      - D10D156D52AC484A83D85D48E01D9980
+      X-Msedge-Clientid:
+      - 1EBAD2FA0CDC63663F4CC2320D6C6290
+      X-Msapi-Userstate:
+      - eb6d
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=253,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: 64C2E04495D940FB997C54E1CAE309F3 Ref B: BLUEDGE1410 Ref C: 2021-10-06T15:37:12Z'
+      Apim-Request-Id:
+      - b928b5e7-23f9-430e-a703-54ae1f9b1a1d
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 15:37:12 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "news
+        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=news+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 30500000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "News", "url": "https:\/\/www.marines.mil\/News\/Tag\/35463\/total-force\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.marines.mil\/News\/Tag\/35463\/total-force",
+        "snippet": "News. News. The latest news and the coverage of news,
+        events, videos, tweets and more from the U.S. Marine Corps.", "dateLastCrawled":
+        "2021-10-04T18:42:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1", "name": "U.S.
+        Department of Defense", "url": "https:\/\/www.defense.gov\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.defense.gov", "snippet": "News Hicks
+        Discusses DOD Issues, Career Advice in ''Smart Women, Smart Power'' The first
+        woman in the No. 2 leadership position at the Defense Department, Deputy Secretary
+        of Defense Kathleen H ...", "dateLastCrawled": "2021-10-03T07:16:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "News | Homeland Security", "url": "https:\/\/www.dhs.gov\/news",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.dhs.gov\/news",
+        "snippet": "News and important communications from the Department of Homeland
+        Security. Press Releases. Latest news and press releases. National Terrorism
+        Advisory System. The National Terrorism Advisory System (NTAS) communicates
+        information about terrorist threats to the American public. Blog.", "dateLastCrawled":
+        "2021-10-02T01:54:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3", "name": "All
+        News | USCIS", "url": "https:\/\/www.uscis.gov\/news\/all-news", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.uscis.gov\/news\/all-news", "snippet":
+        "This page lists all USCIS news releases and alerts, searchable by topic
+        and date. For material older than three years or that is no longer current,
+        see our Archive News section.. Subscribe to get updates:", "dateLastCrawled":
+        "2021-10-01T05:16:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4", "name": "News:
+        Inside Veteran Benefits - Veterans Benefits ...", "url": "https:\/\/www.benefits.va.gov\/benefits\/news.asp",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.benefits.va.gov\/benefits\/news.asp",
+        "snippet": "Veterans can continue to get information about benefits or file
+        a claim for benefits by visiting our website at www.va.gov. Veterans with
+        claims specific or other questions may request information via Inquiry Routing
+        & Information System (IRIS) or telephone at 1-800-827-1000. VBA benefits and
+        services provided to Veterans, families, and ...", "dateLastCrawled": "2021-10-01T02:36:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "News - United States Marine Corps", "url": "https:\/\/www.lejeune.marines.mil\/News\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.lejeune.marines.mil\/News",
+        "snippet": "Camp Lejeune News. In early August 1950, American and Republic
+        of Korea troops established the Pusan Perimeter. Bevin Alexander’s Korea:
+        The First War We Lost details how our troops held that land for about the
+        next month and a half until the historic amphibious landing at Inchon (Sept.
+        15-16, 1950).Can you imagine the hope that was brimming ...", "dateLastCrawled":
+        "2021-10-02T07:18:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6", "name": "News
+        (U.S. National Park Service)", "url": "https:\/\/www.nps.gov\/aboutus\/news\/index.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/aboutus\/news\/index.htm",
+        "snippet": "News Sources. News releases - Here you can view all National
+        Park Service news releases, search by topic, or filter by park or office.
+        DOI news releases - Our parent agency, the U.S. Department of the Interior,
+        publishes news releases relating to national parks and other natural and
+        cultural resource topics. Fire news.", "dateLastCrawled": "2021-09-27T22:17:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "News | NSF - National Science Foundation", "url": "https:\/\/nsf.gov\/news\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/nsf.gov\/news", "snippet":
+        "Research News. September 15, 2021. Observatory in Chile captures highest-resolution
+        measurements of asteroid surface temperatures. Research News. September
+        14, 2021. NSF announces the launch of SpectrumX, an NSF Spectrum Innovation
+        Center. News Release. September 14, 2021.", "dateLastCrawled": "2021-09-30T23:14:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "News - PennDOT Home", "url": "https:\/\/www.penndot.gov\/Pages\/News.aspx",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.penndot.gov\/Pages\/News.aspx",
+        "snippet": "News. This page offers the most recent news releases from
+        PennDOT''s central office in Harrisburg and its 11 engineering districts.
+        To contact the central press office, please call 717-783-8800. If you''d like
+        to reach a regional press office, please choose from the map here.", "dateLastCrawled":
+        "2021-09-30T10:20:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9", "name": "News
+        – Welcome to the City of Fort Worth", "url": "https:\/\/www.fortworthtexas.gov\/news",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fortworthtexas.gov\/news",
+        "snippet": "Bringing news to the public updated daily. opens in new tab
+        or window . COVID-19 Vaccines. The City of Fort Worth continues to host community
+        vaccine clinics at convenient locations across the city. Most sites are available
+        for adults 18 years and older only. Parents of youth ages 12-17 should call
+        817-392-8478 to learn about additional options.", "dateLastCrawled": "2021-10-01T21:09:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Latest NASA News Releases | NASA", "url": "https:\/\/www.nasa.gov\/news\/releases\/latest\/index.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nasa.gov\/news",
+        "snippet": "NASA.gov brings you the latest images, videos and news from
+        America''s space agency. Get the latest updates on NASA missions, watch
+        NASA TV live, and learn about our quest to reveal the unknown and benefit
+        all humankind.", "dateLastCrawled": "2021-10-03T20:22:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "News - NASA Mars", "url": "https:\/\/mars.nasa.gov\/mars2020\/news\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/mars.nasa.gov\/mars2020\/news",
+        "snippet": "Apr. 2021. NASA''s Mars Helicopter Survives First Cold Martian
+        Night on Its Own. April 05, 2021. NASA’s Ingenuity helicopter can be seen
+        on Mars as viewed by the Perseverance rover’s rear Hazard Camera on April
+        4, 2021, the 44th Martian day, or sol of the mission.", "dateLastCrawled":
+        "2021-10-03T08:09:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12", "name":
+        "National Weather Service", "url": "https:\/\/www.weather.gov\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.weather.gov", "snippet": "NEWS Newsroom
+        Social Media Events Pubs\/Brochures\/Booklets . EDUCATION NWS Education Home
+        Be A Force of Nature NOAA Education Resources Glossary JetStream NWS Training
+        Portal NOAA Library For Students, Parents and Teachers Brochures", "dateLastCrawled":
+        "2021-10-03T07:13:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13", "name":
+        "News - NMFS Permit Shop", "url": "https:\/\/hmspermits.noaa.gov\/news",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/hmspermits.noaa.gov\/news",
+        "snippet": "Welcome to the National Marine Fisheries Service Permit Shop where
+        you can currently buy initial and renewal permits for Atlantic tunas and Atlantic
+        Highly Migratory Species (HMS), update permit information, and report recreational
+        landings of bluefin tuna, blue marlin, white marlin, sailfish, and swordfish.",
+        "dateLastCrawled": "2021-09-30T23:41:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "News | Washington Department of Fish & Wildlife", "url": "https:\/\/wdfw.wa.gov\/news",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/wdfw.wa.gov\/news",
+        "snippet": "News. Welcome to our newsroom, where you''ll find links to recent
+        news releases. Enter keywords to search the contents of news releases
+        Quilomene bighorn sheep test positive for lethal bacteria. Oct 1, 2021. WDFW
+        lifts fire restrictions, including target shooting ban, on most Department-managed
+        lands .", "dateLastCrawled": "2021-10-02T23:06:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "News | National Centers for Environmental Information (NCEI)",
+        "url": "https:\/\/www.ncei.noaa.gov\/news", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.ncei.noaa.gov\/news", "snippet": "News. There’s a lot going
+        on at NCEI. Discover more about us and Earth’s climate, oceans, coasts, and
+        geophysics in these featured news stories. Displaying 1 - 10 of 636.", "dateLastCrawled":
+        "2021-10-01T00:45:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16", "name":
+        "News – NASA’s Mars Exploration Program", "url": "https:\/\/mars.nasa.gov\/news\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/mars.nasa.gov\/news",
+        "snippet": "NASA’s real-time portal for Mars exploration, featuring the
+        latest news, images, and discoveries from the Red Planet.", "dateLastCrawled":
+        "2021-10-02T09:03:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17", "name":
+        "News - Kentucky Governor Andy Beshear", "url": "https:\/\/governor.ky.gov\/news",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/governor.ky.gov\/news",
+        "snippet": "Media Contacts. Crystal Staley, Communications Director (502)
+        545-3714 or (502) 564-2611. Sebastian Kitchen, Deputy Comms.Director (502)
+        330-0799 or (502) 564-2611 Sign up for Updates. Click here to sign up to have
+        news updates from Governor Beshear delivered right to your inbox or cell
+        phone. Social Media", "dateLastCrawled": "2021-10-02T07:15:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Newsroom | Internal Revenue Service", "url": "https:\/\/www.irs.gov\/newsroom",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.irs.gov\/newsroom",
+        "snippet": "News Release and Fact Sheet Archive. News releases and fact
+        sheets from November 2002 forward and an archive of news releases and fact
+        sheets in PDF format back to 1997. Helpful Links. Internal Revenue Service
+        Progress Update – Fiscal Year 2019 PDF Independent Assessment of Free File
+        Program PDF. Appendix A : The Economics of IRS Free File PDF", "dateLastCrawled":
+        "2021-10-03T08:06:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19", "name":
+        "News | Federal Motor Carrier Safety Administration", "url": "https:\/\/www.fmcsa.dot.gov\/newsroom\/news",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fmcsa.dot.gov\/newsroom\/news",
+        "snippet": "U.S. DEPARTMENT OF TRANSPORTATION. Federal Motor Carrier Safety
+        Administration. 1200 NEW JERSEY AVENUE, SE. WASHINGTON, DC 20590. 855-368-4200",
+        "dateLastCrawled": "2021-10-01T06:09:00.0000000Z", "language": "en", "isNavigational":
+        false}]}, "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages",
+        "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 06 Oct 2021 15:37:13 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=news%20(site:www.data.gov/)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 15:36:13 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - 6377F7CEC852440D9FA4196A3D869231
+      Bingapis-Sessionid:
+      - B03C5BC10ED8469EBD7958342B931FA3
+      X-Msedge-Clientid:
+      - 36C2CDB87FCB6AB121A8DD707E7B6B5C
+      X-Msapi-Userstate:
+      - 219d
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=252,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: 6377F7CEC852440D9FA4196A3D869231 Ref B: BLUEDGE1411 Ref C: 2021-10-06T15:37:13Z'
+      Apim-Request-Id:
+      - 6bf6d2fa-bc6e-4b2a-9117-7f8337fd716f
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 15:37:14 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "news
+        (site:www.data.gov\/)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=news+(site%3awww.data.gov%2f)",
+        "totalEstimatedMatches": 39, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "In the News - Data.gov", "url": "https:\/\/www.data.gov\/announcements_and_news\/in_the_news-10\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/announcements_and_news\/in_the_news-10",
+        "snippet": "In the News. Open Data Revolution to Fight Global Hunger.
+        June 8, 2017 By Jaime Adams, Senior Advisor for International Affairs, Office
+        of the Chief Scientist in Research and Science Food and Nutrition. Every day,
+        people around the world use data to make decisions.", "dateLastCrawled":
+        "2021-08-26T03:43:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1", "name": "Data.gov",
+        "url": "https:\/\/www.data.gov\/", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.data.gov", "snippet": "The home of the U.S. Government’s open
+        data Here you will find data, tools, and resources to conduct research, develop
+        web and mobile applications, design data visualizations, and more. For information
+        regarding the Coronavirus\/COVID-19, please visit Coronavirus.gov.", "dateLastCrawled":
+        "2021-10-03T02:09:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2", "name": "Developers
+        - Data.gov", "url": "https:\/\/www.data.gov\/developers\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.data.gov\/developers", "snippet": "This
+        link will direct you to an external website that may have different content
+        and privacy policies from Data.gov.", "dateLastCrawled": "2021-09-30T08:52:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Local Government - Data.gov", "url": "https:\/\/www.data.gov\/local\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/local",
+        "snippet": "Data.gov is the central clearinghouse for federal open data,
+        including hosting the Public Data Listings required under the 2013 Federal
+        Open Data Policy, but Data.gov also hosts state, local, and tribal government
+        sources voluntarily.", "dateLastCrawled": "2021-09-29T00:02:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Maritime - Data.gov", "url": "https:\/\/www.data.gov\/maritime\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/maritime",
+        "snippet": "Contact Maritime. Discover datasets for marine transportation,
+        a critical part of our transportation system used for domestic and international
+        trade, national security, research, and recreation. Explore data related to
+        mapping and charting, energy use, commodity movement, international trade
+        and finance, environmental sustainability, and more.", "dateLastCrawled":
+        "2021-09-30T20:32:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5", "name": "Applications
+        - Data.gov", "url": "https:\/\/www.data.gov\/applications", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.data.gov\/applications", "snippet": "The
+        project brings together international, regional, and country-level data, news,
+        and research aimed at meeting countries'' immediate food security needs, as
+        well as building long-term global food security. Global Crop Production Analysis
+        International Agricultural Productivity", "dateLastCrawled": "2021-10-01T06:19:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Open government data powers software applications that ...", "url":
+        "https:\/\/www.data.gov\/food\/food-apps", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.data.gov\/food\/food-apps", "snippet": "The project brings
+        together international, regional, and country-level data, news, and research
+        aimed at meeting countries’ immediate food security needs, as well as building
+        long-term global food security. Global Crop Production Analysis. International
+        Agricultural Productivity", "dateLastCrawled": "2021-10-01T06:01:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Coastal Flooding - Data.gov", "url": "https:\/\/www.data.gov\/climate\/coastalflooding\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/climate\/coastalflooding",
+        "snippet": "Coastal Flooding Theme Adds Thirteen New Datasets. April 27, 2015
+        By Kaylin Bugbee. In a continued effort to provide key datasets that support
+        the process of developing resilience to climate change, thirteen additional
+        datasets are now available in the Coastal Flooding theme. These datasets include:
+        NOAA Climate Data Record (CDR) of Sea Surface ...", "dateLastCrawled": "2021-10-01T02:19:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "A Primer on Machine Readability for Online ... - Data.gov", "url":
+        "https:\/\/www.data.gov\/developers\/blog\/primer-machine-readability-online-documents-and-data",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/developers\/blog\/primer-machine-readability-online-documents-and-data",
+        "snippet": "It is widely used in applications that publish documents or news
+        items, and then syndicate the basic metadata about that document (title, authors,
+        etc.). CSV: (Comma separated values) A format that stores tabular data (numbers
+        and text) in plain-text form. CSV is an open format and is widely used to
+        store and organize tabular data.", "dateLastCrawled": "2021-10-01T18:33:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "APIs - Data.gov", "url": "https:\/\/www.data.gov\/developers\/apis",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/developers\/apis",
+        "snippet": "APIs Data.gov doesn’t just catalog raw data, it also includes
+        APIs from across government. You can browse the current catalog for APIs,
+        but expect this listing to grow as agencies include more of their APIs as
+        part of their data.json metadata in Project Open Data.. Data.gov CKAN
+        API. The data.gov catalog is powered by CKAN, a powerful open source data
+        platform that includes a robust API.", "dateLastCrawled": "2021-10-02T05:05:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Energy - Data.gov", "url": "https:\/\/www.data.gov\/energy\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/energy",
+        "snippet": "Energy Data Initiative. May 20, 2013 By admin. The Energy Data
+        Initiative is an Administration-wide effort to liberate government data
+        and voluntarily contributed non-government data as fuel to spur entrepreneurship,
+        create value, and create jobs in the transition to a clean energy economy.
+        Find out more about how you can benefit ….", "dateLastCrawled": "2021-09-30T05:29:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Open with Apps - Data.gov", "url": "https:\/\/www.data.gov\/meta\/open-apps\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/meta\/open-apps",
+        "snippet": "Open with Apps. March 18, 2015 By Philip Ashlock and Rebecca Williams.
+        Data.gov now enables the public to open data directly with apps like Plotly
+        and CartoDB for robust visualization and analysis. New tools are making it
+        easier to visualize and analyze data at the click of a button. Data.gov is
+        proud to announce integration with two of these ...", "dateLastCrawled": "2021-09-01T03:31:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Detailed Sitemap - Data.gov", "url": "https:\/\/www.data.gov\/detailed-sitemap\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/detailed-sitemap",
+        "snippet": "Open government data powers software applications that help people
+        make informed decisions on alternative fuels, green buildings, efficiency,
+        and managing household energy. Open government data powers software applications
+        that help people make informed decisions on agriculture, food, and nutrition.
+        Other Data Source.", "dateLastCrawled": "2021-08-15T06:08:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Welcome to Climate.Data.gov! - Data.gov", "url": "https:\/\/www.data.gov\/climate\/welcome-climate-data-gov\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/climate\/welcome-climate-data-gov",
+        "snippet": "Welcome to Climate.Data.gov! March 19, 2014 By Ana Pinheiro
+        Privette. In this new and pilot-stage of Climate.Data.gov, you will find resources
+        to help companies, communities, and citizens understand and prepare for the
+        impacts of coastal flooding and sea level rise. Over time, you’ll find more
+        datasets, web services, and tools, as well as ...", "dateLastCrawled": "2021-10-01T09:28:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Introducing OpenFDA from the Food and Drug ... - Data.gov", "url":
+        "https:\/\/www.data.gov\/food\/introducing-openfda-food-drug-administration\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/food\/introducing-openfda-food-drug-administration",
+        "snippet": "I was wondering if the larger news agencies would team with
+        the Surgeon General, CDC, NIH, or State Public Health Departments to film
+        the public reaction to receiving candy from PPE-suited individuals in a staged
+        bio-containment display, say, in a neighborhood with a very busy flow of Halloween
+        trick-or-treaters, and use the public reaction to ...", "dateLastCrawled":
+        "2021-09-30T05:07:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15", "name":
+        "Climate - Data.gov", "url": "https:\/\/www.data.gov\/climate\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.data.gov\/climate", "snippet": "Here
+        you can find data related to climate change that can help inform and prepare
+        America’s communities, businesses, and citizens. You can currently find data
+        and resources related to coastal flooding, food resilience, water, ecosystem
+        vulnerability, human health, energy infrastructure,transportation, and the
+        Arctic region. Over time, you will be able to find additional data and tools
+        ...", "dateLastCrawled": "2021-10-02T10:30:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Food Applications List - Data.gov", "url": "https:\/\/www.data.gov\/food\/food-apps-list-view",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/food\/food-apps-list-view",
+        "snippet": "Food Security Portal. The Food Security Portal, facilitated by
+        IFPRI, aims to provide improved food security for the world’s poor and increased
+        resilience of global food systems against food and financial crises. The project
+        brings together international, regional, and country-level data, news,
+        and research aimed at meeting countries ...", "dateLastCrawled": "2021-09-01T07:48:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Energy Infrastructure - Data.gov", "url": "https:\/\/www.data.gov\/climate\/energy-infrastructure\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/climate\/energy-infrastructure",
+        "snippet": "Data.gov. Here you will find scientific and technical information
+        resources related to the potential impacts of climate change on the U.S. energy
+        sector and other types of critical infrastructure. In an effort to enhance
+        future energy security and the underlying knowledge foundations, the Energy
+        and Infrastructure Resilience theme contains ...", "dateLastCrawled": "2021-09-30T01:35:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Developers: Blogs - Data.gov", "url": "https:\/\/www.data.gov\/developers\/blogs",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/developers\/blogs",
+        "snippet": "This link will direct you to an external website that may have
+        different content and privacy policies from Data.gov.", "dateLastCrawled":
+        "2021-09-11T05:29:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19", "name":
+        "Contact - Data.gov", "url": "https:\/\/www.data.gov\/contact", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.data.gov\/contact", "snippet": "Harrison
+        & Rubinfeld (1978) Boston housing data with PART data? August 08, 2021 11:30
+        PM.", "dateLastCrawled": "2021-09-11T23:01:00.0000000Z", "language": "en",
+        "isNavigational": false}]}, "rankingResponse": {"mainline": {"items": [{"answerType":
+        "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 06 Oct 2021 15:37:14 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=app%20(site:www.data.gov/)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 15:36:14 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - 61AE360CBD15498F832E00392E60FFE2
+      Bingapis-Sessionid:
+      - '01908E9CCD504356AC83B76B72816B3C'
+      X-Msedge-Clientid:
+      - 26DC9D91FBEB618E2DA68D59FA5B609A
+      X-Msapi-Userstate:
+      - 3cc4
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=288,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: 61AE360CBD15498F832E00392E60FFE2 Ref B: BLUEDGE1415 Ref C: 2021-10-06T15:37:14Z'
+      Apim-Request-Id:
+      - 62232b7a-a297-4173-bb25-a5bc0f905ffb
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 15:37:14 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "app
+        (site:www.data.gov\/)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=app+(site%3awww.data.gov%2f)",
+        "totalEstimatedMatches": 42, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Applications - Data.gov", "url": "https:\/\/www.data.gov\/applications",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/applications",
+        "snippet": "While we don’t endorse any particular app, we’re always interested
+        in new examples: Submit application suggestions here. For more examples of
+        applications made with open government data see Civic Commons and USA.gov’s
+        Federal Mobile Apps Directory.", "dateLastCrawled": "2021-10-01T06:19:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Open government data powers software applications that ...", "url":
+        "https:\/\/www.data.gov\/food\/food-apps", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.data.gov\/food\/food-apps", "snippet": "While we can’t
+        and don’t endorse specific apps, below are just a few examples of government,
+        citizen, and business tools that: use open government data from the United
+        States; are accessible, vetted, and available; and are, for the majority,
+        free and do not require registration to use.", "dateLastCrawled": "2021-10-01T06:01:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Apps for Farmers - Data.gov", "url": "https:\/\/www.data.gov\/food\/apps-for-farmers\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/food\/apps-for-farmers",
+        "snippet": "Agriculture data is helping fuel new products, services, and
+        apps for farmers. Data in action include: The Climate Corporation offers insurance,
+        software, and services to help farmers plan, manage, and protect their crops
+        by using a number of open federal government data sets, including weather
+        history and forecasts from the National Weather Service, terrain maps and
+        soil type from the U.S ...", "dateLastCrawled": "2021-09-27T21:01:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Food Applications List - Data.gov", "url": "https:\/\/www.data.gov\/food\/food-apps-list-view",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/food\/food-apps-list-view",
+        "snippet": "Food Security Portal. The Food Security Portal, facilitated by
+        IFPRI, aims to provide improved food security for the world’s poor and increased
+        resilience of global food systems against food and financial crises. The project
+        brings together international, regional, and country-level data, news, and
+        research aimed at meeting countries ...", "dateLastCrawled": "2021-09-01T07:48:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Data.gov", "url": "https:\/\/www.data.gov\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.data.gov", "snippet": "The home of the
+        U.S. Government’s open data Here you will find data, tools, and resources
+        to conduct research, develop web and mobile applications, design data visualizations,
+        and more. For information regarding the Coronavirus\/COVID-19, please visit
+        Coronavirus.gov.", "dateLastCrawled": "2021-10-03T02:09:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Super Tracker - Data.gov", "url": "https:\/\/www.data.gov\/food\/applications\/super-tracker",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/food\/applications\/super-tracker",
+        "snippet": "Android App Download URL: Blackberry App Download URL: iOS
+        App Download URL: Windows Phone App Download URL: Mobile Web URL: One
+        Response to “Super Tracker” Christina Li February 23, 2015. This website
+        is a rather useful and interesting website. Reply. Lizzy L ...", "dateLastCrawled":
+        "2021-10-03T07:13:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6", "name": "Climate
+        FieldView™ - Data.gov", "url": "https:\/\/www.data.gov\/applications\/climate\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/applications\/climate",
+        "snippet": "Climate FieldView™. March 11, 2015. The Climate Corporation aims
+        to build a digitized world where every farmer is able to optimize and flawlessly
+        execute every decision on the farm. The company’s proprietary Climate FieldView™
+        platform combines hyper-local weather monitoring, agronomic modeling, and
+        high-resolution weather simulations to ...", "dateLastCrawled": "2021-09-27T02:45:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "AIRNow - Data.gov", "url": "https:\/\/www.data.gov\/energy\/applications\/airnow",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/energy\/applications\/airnow",
+        "snippet": "AIRNow. October 31, 2011. The AIRNow mobile application provides
+        you real-time air quality information that you can use to protect your health
+        when planning your day. You can get location-specific reports on current air
+        quality and air quality forecasts for both ozone and fine particle pollution
+        (PM2.5). Open Government Data Used: U.S ...", "dateLastCrawled": "2021-08-11T21:14:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Welcome to the Green Button! - Data.gov", "url": "https:\/\/www.data.gov\/energy\/welcome-green-button",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/energy\/welcome-green-button",
+        "snippet": "The app provides several games based on the “shape” of your
+        data, and provides creative comparisons to illustrate your usage, like how
+        many cheeseburgers worth of energy you used last Tuesday from 5-6 pm.", "dateLastCrawled":
+        "2021-09-27T16:22:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9", "name": "Geospatial
+        - Data.gov", "url": "https:\/\/www.data.gov\/geospatial\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.data.gov\/geospatial", "snippet": "The
+        Inland Electronic Navigation Chart (IENC) program covers thousands of miles
+        of navigable waterways. America’s inland waterways move millions of tons of
+        commodities every year, and the work of surveying, charting, and dredging
+        sediment is continually ongoing due to the dynamic conditions and constant
+        change happening along any given river.", "dateLastCrawled": "2021-09-30T01:11:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Open Government - Data.gov", "url": "https:\/\/www.data.gov\/open-gov\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/open-gov",
+        "snippet": "Data.gov is the federal government’s open data site, and aims
+        to make government more open and accountable. Opening government data increases
+        citizen participation in government, creates opportunities for economic development,
+        and informs decision making in both the private and public sectors.", "dateLastCrawled":
+        "2021-10-02T23:31:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11", "name":
+        "Highlights - Data.gov", "url": "https:\/\/www.data.gov\/highlights\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.data.gov\/highlights", "snippet": "USDA-NRCS
+        rangeland scientist Emilio Carrillo uses an open data mobile app called
+        LandPKS for sustainable land use management. Every day, people around the
+        world use data to make decisions. When heading out of town, most of us use
+        weather apps to check the forecast anywhere in the world before packing our
+        bags.", "dateLastCrawled": "2021-09-30T11:49:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Tools - Data.gov", "url": "https:\/\/www.data.gov\/climate\/coastalflooding\/coastalflooding-tools",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/climate\/coastalflooding\/coastalflooding-tools",
+        "snippet": "Here are a few government and non-government software tools to
+        help coastal communities and others analyze and assess vulnerabilities of
+        sea level rise, storm surges, and sinking lands. Please let us know if there
+        are other tools we should list … Continued", "dateLastCrawled": "2021-09-30T15:06:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "City Data - Data.gov", "url": "https:\/\/www.data.gov\/applications\/city-data\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/applications\/city-data",
+        "snippet": "Data.gov. We have over 74,000 city photos not found anywhere
+        else, graphs of the latest real estate prices and sales trends, recent home
+        sales, a home value estimator, hundreds of thousands of maps, satellite photos,
+        demographic data (race, income, ancestries, education, employment), geographic
+        data, state profiles, crime data, registered sex ...", "dateLastCrawled":
+        "2021-10-02T12:05:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "APIs - Data.gov", "url": "https:\/\/www.data.gov\/developers\/apis",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/developers\/apis",
+        "snippet": "APIs Data.gov doesn’t just catalog raw data, it also includes
+        APIs from across government. You can browse the current catalog for APIs,
+        but expect this listing to grow as agencies include more of their APIs as
+        part of their data.json metadata in Project Open Data.. Data.gov CKAN
+        API. The data.gov catalog is powered by CKAN, a powerful open source data
+        platform that includes a robust API.", "dateLastCrawled": "2021-10-02T05:05:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Contact - Data.gov", "url": "https:\/\/www.data.gov\/contact",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/contact",
+        "snippet": "You can use this form to contact the data.gov team or feel free
+        to email us directly at datagov@gsa.gov", "dateLastCrawled": "2021-09-11T23:01:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Welcome to Climate.Data.gov! - Data.gov", "url": "https:\/\/www.data.gov\/climate\/welcome-climate-data-gov\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/climate\/welcome-climate-data-gov",
+        "snippet": "Welcome to Climate.Data.gov! March 19, 2014 By Ana Pinheiro
+        Privette. In this new and pilot-stage of Climate.Data.gov, you will find resources
+        to help companies, communities, and citizens understand and prepare for the
+        impacts of coastal flooding and sea level rise. Over time, you’ll find more
+        datasets, web services, and tools, as well as ...", "dateLastCrawled": "2021-10-01T09:28:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Agriculture Highlights - Data.gov", "url": "https:\/\/www.data.gov\/food\/highlights",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/food\/highlights",
+        "snippet": "USDA-NRCS rangeland scientist Emilio Carrillo uses an open data
+        mobile app called LandPKS for sustainable land use management. Every day,
+        people around the world use data to make decisions. When heading out of
+        town, most of us use weather apps to check the forecast anywhere in the world
+        before packing our bags.", "dateLastCrawled": "2021-09-29T19:47:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Participants in Open Data Roundtables Guide USDA on Ways ...",
+        "url": "https:\/\/www.data.gov\/food\/participants-open-data-roundtables-guide-usda-ways-provide-high-quality-data-users\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/food\/participants-open-data-roundtables-guide-usda-ways-provide...",
+        "snippet": "Build an app that provides a “real time” data alert system,
+        which could also be employed by USDA and other government departments to share
+        information with the public during times of crisis or disaster. Leverage data
+        that is already available, such as drought monitoring and let it be used for
+        expanded purposes, such as predictive analysis ...", "dateLastCrawled": "2021-09-29T18:33:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Five Years of Open Data—Making a Difference - Data.gov", "url":
+        "https:\/\/www.data.gov\/meta\/five-years-open-data-making-difference\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.data.gov\/meta\/five-years-open-data-making-difference",
+        "snippet": "The Red Cross, working with the Department of Transportation,
+        released a Hurricane App just as Hurricane Sandy touched ground—helping
+        700,000 people be safer that first day alone; Organizations have come to life
+        around helping others and getting them data to inform their consumer decisions",
+        "dateLastCrawled": "2021-08-19T23:49:00.0000000Z", "language": "en", "isNavigational":
+        false}]}, "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages",
+        "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 06 Oct 2021 15:37:14 GMT
 recorded_with: VCR 6.0.0
