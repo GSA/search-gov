@@ -490,4 +490,483 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}}]}}}'
   recorded_at: Tue, 07 Sep 2021 16:18:18 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=agency%20(site:.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 15:26:45 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - F42DECF77CAA4F909FD9EFC08DF39E8F
+      Bingapis-Sessionid:
+      - 96DE48AF024D47EDAC707E26C8DB6729
+      X-Msedge-Clientid:
+      - 0D615147D01661700A5F418FD159605B
+      X-Msapi-Userstate:
+      - 5d80
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=303,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: F42DECF77CAA4F909FD9EFC08DF39E8F Ref B: BLUEDGE1817 Ref C: 2021-10-06T15:27:45Z'
+      Apim-Request-Id:
+      - ad3a2482-1c83-45a5-b245-d5560495c6bf
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 15:27:45 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "agency
+        (site:.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=agency+(site%3a.gov)",
+        "totalEstimatedMatches": 25600000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "A-Z Index of U.S. Government Departments and Agencies | A ...",
+        "url": "https:\/\/www.usa.gov\/federal-agencies\/", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.usa.gov\/federal-agencies", "snippet": "Agency
+        for International Development (USAID) Agency for Toxic Substances and Disease
+        Registry. Agricultural Marketing Service (AMS) Agricultural Research Service.
+        Agriculture Department (USDA) Agriculture Library. Air Force. Air Force Reserve.
+        Alcohol and Tobacco Tax and Trade Bureau.", "dateLastCrawled": "2021-10-03T16:05:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Federal Register :: Agencies", "url": "https:\/\/www.federalregister.gov\/agencies",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.federalregister.gov\/agencies",
+        "snippet": "The Public Inspection page on FederalRegister.gov offers a preview
+        of documents scheduled to appear in the next day''s Federal Register issue.
+        The Public Inspection page may also include documents scheduled for later
+        issues, at the request of the issuing agency.", "dateLastCrawled": "2021-10-03T23:10:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Central Intelligence Agency - CIA", "url": "https:\/\/www.cia.gov\/index.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cia.gov", "snippet":
+        "As the world’s premier foreign intelligence agency, the work we do at CIA
+        is vital to U.S. national security. We collect and analyze foreign intelligence
+        and conduct covert action. U.S. policymakers, including the President of the
+        United States, make policy decisions informed by the information we provide.
+        Learn About Us", "dateLastCrawled": "2021-10-03T07:13:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "What Is the Sense of Agency and Why Does it Matter?", "url": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC5002400\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC5002400",
+        "snippet": "Where agency research on patients has been particularly useful
+        is in uncovering the information processing abnormalities underpinning these
+        disordered experiences of agency. Patients with schizophrenia seem to have
+        specific problems with sensorimotor prediction, which, as we saw in the previous
+        section, is crucial for the sense of agency.", "dateLastCrawled": "2021-10-03T04:13:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Get Authorized: Agency Authorization | FedRAMP.gov", "url": "https:\/\/www.fedramp.gov\/agency-authorization\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fedramp.gov\/agency-authorization",
+        "snippet": "Agency Authorization Process. The next step is the Agency Authorization
+        Process. During this step, the agency conducts a security authorization
+        package review, which may include a SAR debrief with the FedRAMP PMO. Depending
+        on the results of the agency’s review, CSP remediation may be required.",
+        "dateLastCrawled": "2021-10-01T01:26:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5", "name":
+        "Pay.gov - For Agencies", "url": "https:\/\/www.pay.gov\/public\/home\/forAgencies",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.pay.gov\/public\/home\/forAgencies",
+        "snippet": "Pay.gov is an offering of the Bureau of the Fiscal Service that
+        provides agencies with a secure government-wide portal for collection funds
+        electronically. Launched in October 2000, Pay.gov offers a suite of online
+        and offline services to process collections electronically using Internet
+        technologies. It satisfies the demands of agencies and ...", "dateLastCrawled":
+        "2021-10-01T13:19:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6", "name": "Agency
+        and Bureau Codes - General Services Administration", "url": "https:\/\/mysales.fas.gsa.gov\/htm\/agencybureaucodes.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/mysales.fas.gsa.gov\/htm\/agencybureaucodes.htm",
+        "snippet": "Agency for Health Care P : Agency for Health and Research
+        Quality : 75: 19: Administration on Aging : Administration on Aging : 75:
+        20: Departmental Management : Departmental Management (IG) 75: 50: State Agency
+        for Surplus : State Agency for Surplus Property : 75: 51: American Printing
+        House : American Printing House for the Blind : 75: 52 ...", "dateLastCrawled":
+        "2021-10-03T06:06:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7", "name": "doi.sc.gov",
+        "url": "http:\/\/doi.sc.gov\/DocumentCenter\/View\/4379\/New-South-Insurance-Agency",
+        "isFamilyFriendly": true, "displayUrl": "doi.sc.gov\/DocumentCenter\/View\/4379\/New-South-Insurance-Agency",
+        "snippet": "Agency is currently a South Carolina licensed agency. In the
+        State of South Carolina, the agency failed to remit premiums to the ATG
+        Insurance Company in the amount of at least $86,084.40. CONCLUSIONS OF LAW
+        Pursuant to S.c. Code §38-43-130(A)(C)(6) (A) \"The director or his designee
+        may place on", "dateLastCrawled": "2021-10-05T22:42:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "AGENCY: SUMMARY", "url": "https:\/\/www.mass.gov\/doc\/notice-of-final-agency-action-posted-on-web-and-published-in-the-newspaper-september-30-2021-0\/download",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.mass.gov\/doc\/notice-of-final-agency-action-posted-on-web-and-published-in...",
+        "snippet": "NOTICE OF FINAL AGENCY ACTION SUBJECT: Payment for Nursing Facility
+        Services AGENCY: Massachusetts Executive Office of Health and Human Services
+        SUMMARY: Emergency adoption of 101 CMR 206.00: Standard Payments to Nursing
+        Facilities The Executive Office of Health and Human Services (EOHHS) is adopting,
+        on an emergency", "dateLastCrawled": "2021-10-03T22:44:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "§8002. Definitions 2. Agency.", "url": "https:\/\/legislature.maine.gov\/statutes\/\/5\/title5sec8002.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/legislature.maine.gov\/statutes\/\/5\/title5sec8002.pdf",
+        "snippet": "other agency guideline or statement of general applicability,
+        including the amendment, suspension or repeal of any prior rule, that is or
+        is intended to be judicially enforceable and implements, interprets or makes
+        specific the law administered by the agency, or describes the procedures
+        or practices of the agency. [PL 2011, c. 304, Pt. G, §1 ...", "dateLastCrawled":
+        "2021-10-05T18:32:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10", "name":
+        "Agency Policy Statements | Administrative Conference of ...", "url": "https:\/\/www.acus.gov\/recommendation\/agency-policy-statements",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.acus.gov\/recommendation\/agency-policy-statements",
+        "snippet": "When an agency publishes a legislative rule (e.g., in the Federal
+        Register and in official agency publications), the preamble to the rule
+        should state it is a legislative rule intended to bind affected persons. The
+        preamble should also cite the specific statutory authority for issuing the
+        rule in binding form as well as the steps it has taken ...", "dateLastCrawled":
+        "2021-09-30T03:17:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11", "name":
+        "Federal Agency Records Management", "url": "https:\/\/www.archives.gov\/files\/records-mgmt\/resources\/2020-federal-agency-records-management-annual-report.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.archives.gov\/files\/records-mgmt\/resources\/2020-federal-agency-records...",
+        "snippet": "Agency-wide reorganization has taken place 32 52% New positions
+        that meet the criteria for permanent disposition need to be added 44 71% Number
+        of email accounts for a specific position(s) needs to be updated or changed
+        12 19% Other, please explain 5 8% Positions need to be removed because they
+        have been removed ...", "dateLastCrawled": "2021-10-03T10:05:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "CHAPTER 131 FOREIGN BRANCHES, AGENCIES AND REPRESENTATIVE ...", "url":
+        "https:\/\/legislature.maine.gov\/statutes\/\/9-b\/title9-Bch131.pdf", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/legislature.maine.gov\/statutes\/\/9-b\/title9-Bch131.pdf",
+        "snippet": "1. Agency. \"Agency\" means any office or any place of business
+        of a foreign bank located in any state of the United States at which credit
+        balances are maintained incidental to or arising out of the exercise of banking
+        powers, checks are paid, or money is lent, but at which deposits may not be
+        accepted", "dateLastCrawled": "2021-10-04T13:10:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Agency - California", "url": "https:\/\/post.ca.gov\/agency", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/post.ca.gov\/agency", "snippet": "Agency
+        Peace Officer Selection Requirements and Resources. Commission Regulations
+        1950. Peace Officer Selection Requirements; 1951. Peace Officer Reading and
+        Writing Ability Assessment. Applicant Preparation Guide for the Entry-level
+        Law Enforcement Test Battery (pdf) POST Entry-level Law Enforcement Test Battery
+        – Agency FAQs", "dateLastCrawled": "2021-10-03T19:12:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Iowa Legislature - Agency", "url": "https:\/\/www.legis.iowa.gov\/law\/administrativeRules\/chapters?agency=567&pubDate=10-06-2021",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.legis.iowa.gov\/law\/administrativeRules\/chapters?agency=567&pubDate=10-06-2021",
+        "snippet": "Any chapter numbers omitted from the following list are reserved
+        chapters that contain no content as of the publication date noted on this
+        page. To show all chapter numbers in the agency''s collection, click the
+        \"Show All Chapters\" link.", "dateLastCrawled": "2021-10-05T19:47:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Agency Organization | US Forest Service", "url": "https:\/\/www.fs.usda.gov\/about-agency\/organization",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fs.usda.gov\/about-agency\/organization",
+        "snippet": "The agency is divided into four levels: Headquarters: Commonly
+        called the Washington Office The Chief, a federal employee, reports to the
+        Under Secretary for Natural Resources and Environment, U.S. Department of
+        Agriculture.", "dateLastCrawled": "2021-09-21T15:44:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Become a Provider Agency or DOO - Ohio", "url": "https:\/\/dodd.ohio.gov\/wps\/portal\/gov\/dodd\/providers\/initial-renewal-certification\/2become-provider-agency",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/dodd.ohio.gov\/...\/providers\/initial-renewal-certification\/2become-provider-agency",
+        "snippet": "A provider agency employs a chief executive officer, or CEO,
+        and at least one other person that directly provides services to people with
+        developmental disabilities. submit a non-refundable application fee: $800
+        for agencies that serve 50 people or fewer, $1,600 for agencies that serve
+        51 people or more, and employ a CEO — or another person ...", "dateLastCrawled":
+        "2021-10-03T01:23:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17", "name":
+        "Passport Agencies - Travel", "url": "https:\/\/travel.state.gov\/content\/travel\/en\/passports\/get-fast\/passport-agencies.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/travel.state.gov\/content\/travel\/en\/passports\/get-fast\/passport-agencies.html",
+        "snippet": "San Juan Passport Agency. Seattle Passport Agency. Vermont
+        Passport Agency. Washington Passport Agency. Western Passport Center.
+        Special Issuance Agency - Located in Washington, DC, this agency issues
+        diplomatic, official, service, and no-fee regular passports, and facilitates
+        visa processing for those traveling on behalf of the U.S. government.", "dateLastCrawled":
+        "2021-10-03T11:05:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18", "name":
+        "State of Oregon Newsroom : Agency : State of Oregon", "url": "https:\/\/www.oregon.gov\/newsroom\/Pages\/Agency.aspx?agency=GOV&category=",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.oregon.gov\/newsroom\/Pages\/Agency.aspx?agency=GOV&category=",
+        "snippet": "Governor Kate Brown Announces Health Care Facilities to Receive
+        Nurses, Medical Staff to Aid During Delta Surge of COVID-19 Patients. August
+        25, 2021. Nurses, paramedics, and specialists to deploy to Central and Southern
+        Oregon hospitals, long-term care facilities throughout the state.", "dateLastCrawled":
+        "2021-10-01T02:09:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19", "name":
+        "Local EMS Agencies | EMSA", "url": "https:\/\/emsa.ca.gov\/local-ems-agencies\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/emsa.ca.gov\/local-ems-agencies",
+        "snippet": "North Coast EMS Agency Director: Larry Karsteadt Email: larry@northcoastems.com
+        Medical Director: Matthew Karp, MD Email: matt@northcoastems.com. 3340 Glenwood
+        Ave. Eureka, CA 95501 Phone: (707) 445-2081 Fax: (707) 445-0443", "dateLastCrawled":
+        "2021-10-02T06:16:00.0000000Z", "language": "en", "isNavigational": false}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 06 Oct 2021 15:27:46 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=agency%20(site:www.usa.gov/)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 15:26:46 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - 3A5C68BDF1C9465D89DB43D9F6B29454
+      Bingapis-Sessionid:
+      - EE470B75C91345E8BEB34509EDABF132
+      X-Msedge-Clientid:
+      - 28CFE0CCB8A96C3E0696F004B94F6DCB
+      X-Msapi-Userstate:
+      - '9066'
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=238,MSDatacenter=CH1B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: 3A5C68BDF1C9465D89DB43D9F6B29454 Ref B: DM2EDGE0706 Ref C: 2021-10-06T15:27:46Z'
+      Apim-Request-Id:
+      - 9a9c653e-0456-4079-967d-f842f27d37c3
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 15:27:45 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "agency
+        (site:www.usa.gov\/)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=agency+(site%3awww.usa.gov%2f)",
+        "totalEstimatedMatches": 591000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Central Intelligence Agency | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/central-intelligence-agency",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/central-intelligence-agency",
+        "snippet": "The Central Intelligence Agency (CIA) collects, evaluates, and
+        disseminates vital information on economic, military, political, scientific,
+        and other developments abroad to safeguard national security.", "dateLastCrawled":
+        "2021-10-03T12:10:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1", "name": "State
+        Social Service Agencies | USAGov", "url": "https:\/\/www.usa.gov\/state-social-services",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/state-social-services",
+        "snippet": "Visit your state social services agency for information about
+        state benefit programs and more. Alabama Alaska American Samoa Arizona Arkansas
+        California Colorado Connecticut Delaware District of Columbia Florida Georgia
+        Guam Hawaii Idaho Illinois Indiana Iowa Kansas Kentucky Louisiana Maine Maryland
+        Massachusetts Michigan", "dateLastCrawled": "2021-10-01T02:29:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Small Business Administration | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/small-business-administration",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/small-business-administration",
+        "snippet": "Agency Details Acronym: SBA. Website: Small Business Administration
+        (SBA) Contact: Contact the Small Business Administration. Local Offices:
+        Find an Office Near You. Main Address: 409 3rd St., SW Washington, DC 20416.
+        Email: answerdesk@sba.gov Toll Free: 1-800-827-5722. TTY: 1-704-344-6640.
+        Forms:", "dateLastCrawled": "2021-10-03T10:05:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Fish and Wildlife Service | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/fish-and-wildlife-service",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/fish-and-wildlife-service",
+        "snippet": "Agency Details Acronym: FWS. Website: Fish and Wildlife Service
+        (FWS) Contact: Contact the Fish and Wildlife Service. Fish and Wildlife
+        Service Office Directory. Local Offices: Regional Contacts and State Field
+        Offices. National Wildlife Refuge Locator. Main Address: 1849 C St., NW Washington,
+        DC 20240. Phone Number: 1-202-208-5634", "dateLastCrawled": "2021-10-03T00:18:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "National Weather Service | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/national-weather-service",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/national-weather-service",
+        "snippet": "Agency Details Website: National Weather Service. Contact:
+        Contact the National Weather Service. Staff Directory. Main Address: 1325
+        East West Highway Silver Spring, MD 20910. Email: nws.answers@noaa.gov Forms:
+        National Weather Service Forms. Government branch: Executive Department
+        Sub-Office\/Agency\/Bureau", "dateLastCrawled": "2021-10-01T04:05:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "National Nuclear Security Administration | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/national-nuclear-security-administration",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/national-nuclear-security-administration",
+        "snippet": "The National Nuclear Security Administration works to ensure
+        that the nation''s stockpile of nuclear weapons is safe and secure. It also
+        works to ensure the safety of naval nuclear reactors, is the first responder
+        in case of nuclear emergency, and works on worldwide nuclear nonproliferation
+        issues.", "dateLastCrawled": "2021-10-02T00:44:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "State and Local Consumer Agencies in Nevada | USAGov", "url": "https:\/\/www.usa.gov\/state-consumer\/nevada",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/state-consumer\/nevada",
+        "snippet": "Consumer Protection Offices. City, county, regional, and state
+        consumer offices offer a variety of important services. They might mediate
+        complaints, conduct investigations, prosecute offenders of consumer laws,
+        license and regulate professional service providers, provide educational materials
+        and advocate for consumer rights.", "dateLastCrawled": "2021-10-01T14:42:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Corrections Departments by State | USAGov", "url": "https:\/\/www.usa.gov\/corrections",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/corrections",
+        "snippet": "Forms, by Agency; State, Local, and Tribal Governments. Contact
+        Elected Officials; Governors; Indian Tribes and Resources for Native Americans;
+        Local Governments; State Attorneys General; State Consumer Protection Offices;
+        State Emergency Management Agencies; State Governments; State Health Departments;
+        State, County, and Municipal Courts", "dateLastCrawled": "2021-10-03T09:07:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "File a Travel Complaint | USAGov", "url": "https:\/\/www.usa.gov\/travel-complaint",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/travel-complaint",
+        "snippet": "Contact the real estate licensing agency where the vacation
+        home is located to learn your rental rights. Make sure payment and refund
+        policies are written into your contract. Pay with a credit card so you can
+        dispute the charge for the rental if there is a problem.", "dateLastCrawled":
+        "2021-09-30T22:21:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9", "name": "Complaints
+        About Banks and Lenders | USAGov", "url": "https:\/\/www.usa.gov\/complaints-lender",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/complaints-lender",
+        "snippet": "If the bank doesn''t help, get help from the correct regulatory
+        agency. Complaints About Deposit Accounts. Find out which agency accepts
+        complaints about your financial institution. Contact the Office of the Comptroller
+        of the Currency for complaints about. a national bank (has National in its
+        name, or N.A at the end) federal savings and loans", "dateLastCrawled": "2021-10-02T23:16:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "State and Local Consumer Agencies in New Mexico | USAGov", "url":
+        "https:\/\/www.usa.gov\/state-consumer\/new-mexico", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.usa.gov\/state-consumer\/new-mexico", "snippet":
+        "State Utility Commissions regulate services and rates for gas, electricity
+        and telephones within your state. In some states, the utility commissions
+        regulate other services such as water, transportation, and the moving of household
+        goods. Many utility commissions handle consumer complaints. Sometimes, if
+        a number of complaints are received ...", "dateLastCrawled": "2021-10-01T11:54:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Phone and TV Complaints | USAGov", "url": "https:\/\/www.usa.gov\/phone-tv-complaints",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/phone-tv-complaints",
+        "snippet": "The Federal Communications Commission (FCC) regulates cable and
+        satellite services to protect consumers. At the FCC Consumer Complaint Center,
+        you can either file a complaint or get information about cable and satellite
+        TV consumer issues. For general questions, call 1-888-225-5322 (TTY: 1-888-835-5322
+        ). Public Utility Commissions (PUC) handle ...", "dateLastCrawled": "2021-10-02T22:25:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "State and Local Consumer Agencies in Mississippi | USAGov", "url":
+        "https:\/\/www.usa.gov\/state-consumer\/mississippi", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.usa.gov\/state-consumer\/mississippi",
+        "snippet": "Consumer Protection Offices. City, county, regional, and state
+        consumer offices offer a variety of important services. They might mediate
+        complaints, conduct investigations, prosecute offenders of consumer laws,
+        license and regulate professional service providers, provide educational materials
+        and advocate for consumer rights.", "dateLastCrawled": "2021-09-29T12:32:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Bureau of Consular Affairs | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/bureau-of-consular-affairs",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/bureau-of-consular-affairs",
+        "snippet": "Agency Details Website: Bureau of Consular Affairs . Contact:
+        Contact the Bureau of Consular Affairs. Main Address: 2201 C St., NW Washington,
+        DC 20520. Phone Number: 1-202-501-4444 (for emergencies abroad) Toll Free:
+        1-888-407-4747 (for emergencies abroad) 1-877-487-2778 ...", "dateLastCrawled":
+        "2021-10-03T09:16:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "State and Local Consumer Agencies in District of Columbia ...", "url":
+        "https:\/\/www.usa.gov\/state-consumer\/district-of-columbia", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.usa.gov\/state-consumer\/district-of-columbia",
+        "snippet": "Consumer Protection Offices. City, county, regional, and state
+        consumer offices offer a variety of important services. They might mediate
+        complaints, conduct investigations, prosecute offenders of consumer laws,
+        license and regulate professional service providers, provide educational materials
+        and advocate for consumer rights.", "dateLastCrawled": "2021-10-01T06:14:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "State and Local Consumer Agencies in Missouri | USAGov", "url": "https:\/\/www.usa.gov\/state-consumer\/missouri",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/state-consumer\/missouri",
+        "snippet": "State Utility Commissions regulate services and rates for gas,
+        electricity and telephones within your state. In some states, the utility
+        commissions regulate other services such as water, transportation, and the
+        moving of household goods. Many utility commissions handle consumer complaints.
+        Sometimes, if a number of complaints are received ...", "dateLastCrawled":
+        "2021-09-30T12:53:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16", "name":
+        "State and Local Consumer Agencies in Texas | USAGov", "url": "https:\/\/www.usa.gov\/state-consumer\/texas",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/state-consumer\/texas",
+        "snippet": "Consumer Protection Offices. City, county, regional, and state
+        consumer offices offer a variety of important services. They might mediate
+        complaints, conduct investigations, prosecute offenders of consumer laws,
+        license and regulate professional service providers, provide educational materials
+        and advocate for consumer rights.", "dateLastCrawled": "2021-09-29T20:32:00.0000000Z",
+        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}}]}}}'
+  recorded_at: Wed, 06 Oct 2021 15:27:46 GMT
 recorded_with: VCR 6.0.0

@@ -516,4 +516,523 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
   recorded_at: Tue, 07 Sep 2021 16:17:58 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=collection%20(site:noaa.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 11:47:23 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - 449210AE6AFF4F36973B78EA7F779C3A
+      Bingapis-Sessionid:
+      - AA58492EAE6641A6B13E60F0CE4580D7
+      X-Msedge-Clientid:
+      - 0D1E3C95073A65C31BD52C5D06C764DE
+      X-Msapi-Userstate:
+      - '2699'
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=228,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: 449210AE6AFF4F36973B78EA7F779C3A Ref B: BLUEDGE0117 Ref C: 2021-10-06T11:48:23Z'
+      Apim-Request-Id:
+      - ee05b0ba-a8f7-4ff7-997c-b487d9b7d512
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 11:48:23 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "collection
+        (site:noaa.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=collection+(site%3anoaa.gov)",
+        "totalEstimatedMatches": 262000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Collections | NOAA Central Library", "url": "https:\/\/library.noaa.gov\/Collections",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/library.noaa.gov\/Collections",
+        "snippet": "Collections. Government Documents & Maps Online Collection
+        Federal and congressional publications on oceanography, atmospheric sciences,
+        meteorology, coastal zone management, fisheries, satellites, minerals management
+        and environmental sciences. Weather and Climate Collections Digital Collection
+        Collection of digital weather and climate ...", "dateLastCrawled": "2021-10-03T16:19:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "NOAA Collections | NOAA Central Library", "url": "https:\/\/www.library.noaa.gov\/Collections\/Digital-Docs\/NOAA-Collections",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.library.noaa.gov\/Collections\/Digital-Docs\/NOAA-Collections",
+        "snippet": "The collection includes land sketches, Civil War battle maps,
+        aeronautical charting from the 1930s to the 1950s, and historic publications.
+        National Sea Grant Library Publications & Documents The NSGL is the digital
+        library and official archive for NOAA’s Sea Grant documents. It is the only
+        comprehensive and deeply searchable collection of ...", "dateLastCrawled":
+        "2021-09-30T11:01:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2", "name": "NOAA
+        200th Collections", "url": "https:\/\/celebrating200years.noaa.gov\/collections.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/celebrating200years.noaa.gov\/collections.html",
+        "snippet": "Each collection illustrates an underlying theme or principle,
+        such as the evolution of technology, which ties all the objects in the collection
+        together. The collections span many time periods, cover many topics, and provide
+        just a hint of the rich, vast holdings of an organization with a 200-year
+        legacy...", "dateLastCrawled": "2021-10-01T02:47:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Collections", "url": "https:\/\/repository.library.noaa.gov\/browse\/collections",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/repository.library.noaa.gov\/browse\/collections",
+        "snippet": "This collection contains reports and materials published by
+        the Office of Marine and Aviation Operations. NOAA Collections NOAA Cooperative
+        Institutes are institutions conducting research supporting NOAA''s Mission
+        and goals.", "dateLastCrawled": "2021-09-30T08:11:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Coast Survey''s Historical Map & Chart Collection", "url": "https:\/\/historicalcharts.noaa.gov\/collections",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/historicalcharts.noaa.gov\/collections",
+        "snippet": "This collection of US Lake Survey Maps were digitized as part
+        of a cooperative project between the Wisconsin Water Library at UW-Madison
+        and the following partners: UW Digital Collections, the Map Division at the
+        Library of Congress, the Division of Library, Archives and Museum Collections
+        at the Wisconsin Historical Society and the American Geographical Society
+        Library at the University of ...", "dateLastCrawled": "2021-09-29T01:33:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "GOES Data Collection System - National Oceanic and ...", "url":
+        "https:\/\/noaasis.noaa.gov\/GOES\/GOES_DCS\/goes_dcs.html", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/noaasis.noaa.gov\/GOES\/GOES_DCS\/goes_dcs.html",
+        "snippet": "GOES Data Collection System. Since 1975, NESDIS has managed
+        the U.S. Data Collection System. DCS is a system consisting of in-situ platforms
+        that collect environmental information, the Geostationary Operational Environmental
+        Satellites (GOES), an operational receiving and processing center located
+        at the NOAA Command and Data Acquisition station in Wallops, Virginia, program
+        management and ...", "dateLastCrawled": "2021-09-28T03:30:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Pathway to Paperless Data Collection | NOAA Fisheries", "url":
+        "https:\/\/www.fisheries.noaa.gov\/feature-story\/pathway-paperless-data-collection",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fisheries.noaa.gov\/feature-story\/pathway-paperless-data-collection",
+        "snippet": "An observer uses a paperless data collection system, known as
+        OPTECS, in an open back deck marine fishing environment. To address their
+        goals to streamline the traditional workflow, the observer program has been
+        developing a system that includes data entry into a handheld device. This
+        eliminates error-prone processes like transcription and ...", "dateLastCrawled":
+        "2021-09-08T13:42:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7", "name": "Datasets
+        - NOAA Data Catalog", "url": "https:\/\/data.noaa.gov\/dataset\/?tags=ASVP",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/data.noaa.gov\/dataset\/?tags=ASVP",
+        "snippet": "Sound Velocity Profile Data Collection for EX1902: 2019 Field
+        Season Shakedown A complete set of sound velocity profile data and CTD Summary
+        Reports (if included) generated by the Okeanos Explorer during EX1902: 2019
+        Field Season Shakedown on NOAA Ship...", "dateLastCrawled": "2021-09-08T09:13:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Great Lakes Maritime Collection Archive | Thunder Bay ...", "url":
+        "https:\/\/thunderbay.noaa.gov\/heritage\/maritime-collection-archive.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/thunderbay.noaa.gov\/heritage\/maritime-collection-archive.html",
+        "snippet": "The Great Lakes Maritime Collection is a unique public archival
+        collection dedicated to Great Lakes maritime history. The heart of the collection
+        was amassed over more than 40 years by historian C. Patrick Labadie. Labadie
+        and his wife June contributed the collection to Thunder Bay National Marine
+        Sanctuary in 2003. The collection includes a web-accessible digital database
+        and is co-managed ...", "dateLastCrawled": "2021-09-29T00:48:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Introduction to Conducting Focus Groups", "url": "https:\/\/coast.noaa.gov\/data\/digitalcoast\/pdf\/focus-groups.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/coast.noaa.gov\/data\/digitalcoast\/pdf\/focus-groups.pdf",
+        "snippet": "The focus group as a data collection technique is widely used
+        in the natural resource management field, though the technique’s origins come
+        from market research. The typical objective of a focus group is not consensus
+        or debate, but rather to generate ideas and provide opportunities for stakeholders
+        to express feelings about a particular topic.", "dateLastCrawled": "2021-10-03T16:14:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "LiDAR DATA COLLECTION", "url": "https:\/\/coast.noaa.gov\/htdata\/lidar3_z\/geoid18\/data\/9038\/supplemental\/LCWest_LiDAR_Report.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/coast.noaa.gov\/htdata\/lidar3_z\/geoid18\/data\/9038\/supplemental\/LCWest_LiDAR...",
+        "snippet": "collection was 100 kHz, scan frequency of 70 Hz, and scan angle
+        of +\/- 11° from the nadir position (full scan angle 22°). The ALTM Orion
+        features roll compensation that adjusts the mirror to maintain the full scan
+        angle integrity in relation to nadir, even when less than perfect weather
+        conditions push the sensor off nadir.", "dateLastCrawled": "2021-10-01T07:53:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "NOAA 200th Top Tens: Foundation Data Sets: The Fish Collection",
+        "url": "https:\/\/celebrating200years.noaa.gov\/datasets\/fishcollection\/welcome.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/celebrating200years.noaa.gov\/datasets\/fishcollection\/welcome.html",
+        "snippet": "The collection contains representatives of about 20,000 of the
+        28,000 (about 71 percent) described valid species of fishes worldwide. The
+        collection also holds approximately 20,000 original illustrations of fishes,
+        at least half of which the Bureau of Commercial Fisheries transferred to the
+        Smithsonian in 1962.", "dateLastCrawled": "2021-09-27T23:58:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "ICOADS US Maury Collection", "url": "https:\/\/icoads.noaa.gov\/maury.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/icoads.noaa.gov\/maury.html",
+        "snippet": "1. Background Background on the Collection and the format used
+        for digitization is provided in the following texts from the CD-ROM (NCDC,
+        1998): about.txt format.txt Updated format information is provided here: maury_format
+        Format translation specifications are located here: maury_transpec Additional
+        translation-related information is located on these Webpages: Time Adjustments
+        Temperature ...", "dateLastCrawled": "2021-09-01T06:04:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Guidance for The NCEI Collection Level Metadata Template v1", "url":
+        "https:\/\/www.ncei.noaa.gov\/sites\/default\/files\/2020-04\/AB-GUID-02823_R1_Guidance%20for%20The%20NCEI%20Collection%20Level%20Metadata%20Template%20v1.1.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncei.noaa.gov\/sites\/default\/files\/2020-04\/AB-GUID-02823_R1_Guidance
+        for The...", "snippet": "A collection level metadata record represents a
+        data collection. For the purpose of this guidance, a collection is a grouping
+        of environmental data or products that share common characteristics, and consists
+        of one or more granules. However, given NCEI''s diverse holdings of datatypes
+        and diverse", "dateLastCrawled": "2021-09-15T00:29:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Climate data resources | National Oceanic and Atmospheric ...",
+        "url": "https:\/\/www.noaa.gov\/education\/resource-collections\/data\/climate",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.noaa.gov\/education\/resource-collections\/data\/climate",
+        "snippet": "This collection uses real-time environmental data in self-directed
+        student activities exploring the natural world. Students learn about carbon
+        cycling, ocean acidification, and other phenomena related to climate change.
+        These modules are designed with a three-dimensional approach to teaching in
+        mind and use a data literacy framework.", "dateLastCrawled": "2021-09-28T01:25:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Ocean Sound and Impact of Noise Resource Collection ...", "url":
+        "https:\/\/sanctuaries.noaa.gov\/education\/teachers\/ocean-sound\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/sanctuaries.noaa.gov\/education\/teachers\/ocean-sound",
+        "snippet": "Ocean Sound and Impact of NoiseResource Collection. Resource
+        Collection. Sound is critical for the survival of many marine animals because
+        it is a primary means of communication, orientation and navigation, finding
+        food, avoiding predators, and choosing mates. As such, human activities that
+        produce sound underwater have the potential to ...", "dateLastCrawled": "2021-09-29T23:11:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "INORGANIC CARBON SAMPLING: PLANNING AND SAMPLE COLLECTION", "url":
+        "https:\/\/www.pmel.noaa.gov\/co2\/files\/dic_sample_technique_revised_5-17-10.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.pmel.noaa.gov\/co2\/files\/dic_sample_technique_revised_5-17-10.pdf",
+        "snippet": "This is because the collection method involves overflowing the
+        sample bottle with two full exchanges of water to collect a clean sample.
+        Also the sample must not include the last water to come out of the sampler,
+        which will have been exposed to air as the sampler is emptied into the sample
+        bottle and will thus be contaminated.", "dateLastCrawled": "2021-10-01T01:09:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "NOAA 200th: Collections - Survey Marks: Lewis and Clark ...", "url":
+        "https:\/\/celebrating200years.noaa.gov\/survey_marks\/lewis_clark\/welcome.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/celebrating200years.noaa.gov\/survey_marks\/lewis_clark\/welcome.html",
+        "snippet": "The National Geodetic Survey, often in partnership with other
+        organizations, produced and set the commemorative marks in this beautiful
+        collection. Commemorative marks are also used for positioning needs relative
+        to a local area and become part of the National Spatial Reference System.",
+        "dateLastCrawled": "2021-09-03T17:27:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "An Angular Point of View: A Photo Collection Illustrating ...",
+        "url": "https:\/\/celebrating200years.noaa.gov\/theodolites\/welcome.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/celebrating200years.noaa.gov\/theodolites\/welcome.html",
+        "snippet": "Used to measure horizontal and vertical angles, the theodolite
+        remained the backbone of geodetic surveys from the 1800s until the early 1980s.
+        This collection of theodolites tells the story of the development and
+        usage of the instrument, including some of the challenges faced by field parties,
+        from the first fieldwork of Survey of the Coast Superintendent Ferdinand Hassler
+        until today.", "dateLastCrawled": "2021-10-01T11:23:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Datasets - NOAA Data Catalog", "url": "https:\/\/data.noaa.gov\/dataset\/?tags=EARTH+SCIENCE+%3E+Oceans+%3E+Marine+Biology+%3E+Marine+I",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/data.noaa.gov\/dataset\/?tags=EARTH+SCIENCE+>+Oceans+>+Marine+Biology+>+Marine+I",
+        "snippet": "The datasets within this collection contain benthic complexity
+        and urchin abundance data gathered as part of NOAA''s ongoing National Coral
+        Reef Monitoring Program (NCRMP).", "dateLastCrawled": "2021-09-28T11:47:00.0000000Z",
+        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 06 Oct 2021 05:45:42 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=tuna%20(site:noaa.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 15:36:44 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - C278E68C9BBF4D2ABB641373B332C01E
+      Bingapis-Sessionid:
+      - 7053D441E4484736B0DA810E51E971AB
+      X-Msedge-Clientid:
+      - 2296A72B4379660D0346B7E342C96739
+      X-Msapi-Userstate:
+      - dba5
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=261,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: C278E68C9BBF4D2ABB641373B332C01E Ref B: BLUEDGE1422 Ref C: 2021-10-06T15:37:44Z'
+      Apim-Request-Id:
+      - 922e110d-1b7e-4a47-b20a-89a863092980
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 15:37:44 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "tuna
+        (site:noaa.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=tuna+(site%3anoaa.gov)",
+        "totalEstimatedMatches": 44300, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Pacific Bluefin Tuna | NOAA Fisheries", "url": "https:\/\/www.fisheries.noaa.gov\/species\/pacific-bluefin-tuna",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fisheries.noaa.gov\/species\/pacific-bluefin-tuna",
+        "snippet": "In 2019, U.S. commercial landings of Pacific bluefin tuna totaled
+        approximately 603,000 pounds and were valued at more than $730,000, according
+        to the NOAA Fisheries commercial fishing landings database . Gear types, habitat
+        impacts, and bycatch: Purse seine, hook-and-line, and harpoon gear are used
+        to catch Pacific bluefin tuna.", "dateLastCrawled": "2021-10-01T10:21:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Atlantic Bluefin Tuna General Category October through ...", "url":
+        "https:\/\/www.fisheries.noaa.gov\/action\/atlantic-bluefin-tuna-general-category-october-through-november-subquota-adjustment-and",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fisheries.noaa.gov\/action\/atlantic-bluefin-tuna-general-category-october...",
+        "snippet": "Atlantic bluefin tuna Reserve category: 127.3 mt ww (as published
+        in the Federal Register). Note that during the process of filing this action
+        with the Office of the Federal Register, NOAA Fisheries transferred 140 metric
+        tons (mt) of Atlantic bluefin tuna quota from the Reserve category to the
+        General category (for the remainder of the October ...", "dateLastCrawled":
+        "2021-10-03T02:18:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2", "name": "NOAA
+        Fisheries Adjusts Atlantic Bluefin Tuna General ...", "url": "https:\/\/www.fisheries.noaa.gov\/bulletin\/noaa-fisheries-adjusts-atlantic-bluefin-tuna-general-category-october-through-november",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fisheries.noaa.gov\/bulletin\/noaa-fisheries-adjusts-atlantic-bluefin-tuna...",
+        "snippet": "Atlantic bluefin tuna Reserve category quota is available for
+        transfer due to a concurrent action that augments the Reserve category quota
+        with 127.3 mt of 2020 bluefin tuna underharvest. NOAA Fisheries also announces
+        the adjustment of 2021 baseline quotas for North Atlantic albacore tuna
+        (northern albacore) and North and South Atlantic swordfish.", "dateLastCrawled":
+        "2021-10-01T13:29:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3", "name": "Dolphin-Safe
+        Certification | NOAA Fisheries", "url": "https:\/\/www.fisheries.noaa.gov\/national\/marine-mammal-protection\/dolphin-safe-certification",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fisheries.noaa.gov\/national\/marine-mammal-protection\/dolphin-safe...",
+        "snippet": "Tuna canners must submit a report of all tuna received at
+        their facility in each calendar month. Data elements include the dolphin-safe
+        status, species, condition, ocean area of capture, catcher vessel, gear type,
+        trip dates, and quantity.", "dateLastCrawled": "2021-10-01T09:14:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Dolphin-Safe | NOAA Fisheries", "url": "https:\/\/www.fisheries.noaa.gov\/national\/marine-mammal-protection\/dolphin-safe",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fisheries.noaa.gov\/national\/marine-mammal-protection\/dolphin-safe",
+        "snippet": "The last tuna super seiner to unload in California. The photo
+        was taken in San Diego Bay in 2000. Photo: NOAA Fisheries. A dolphin-safe
+        label is intended to show compliance with U.S. laws and regulations of tuna
+        fishing operations.", "dateLastCrawled": "2021-09-30T12:09:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Fishery Closure - Atlantic Bluefin Tuna General Category ...",
+        "url": "https:\/\/www.fisheries.noaa.gov\/action\/fishery-closure-atlantic-bluefin-tuna-general-category-fishery-september-2021-subquota-time",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fisheries.noaa.gov\/action\/fishery-closure-atlantic-bluefin-tuna-general...",
+        "snippet": "Fishermen aboard vessels with an Atlantic Tunas General or Atlantic
+        HMS Charter\/Headboat permit may not retain, possess, or land large medium
+        or giant Atlantic bluefin tuna after 11:30 p.m., September 23, 2021 through
+        September 30, 2021.", "dateLastCrawled": "2021-10-03T07:13:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Final Rule to Implement Federal Atlantic Tunas Regulations ...",
+        "url": "https:\/\/www.fisheries.noaa.gov\/action\/final-rule-implement-federal-atlantic-tunas-regulations-maine-state-waters",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fisheries.noaa.gov\/action\/final-rule-implement-federal-atlantic-tunas...",
+        "snippet": "Final Rule. NOAA Fisheries announces a final rule to add Maine
+        to the list of states for which Federal Atlantic tunas regulations are applicable
+        within state waters. This action is based on a request by the Maine Department
+        of Marine Resources. This rule will go into effect September 6, 2021.", "dateLastCrawled":
+        "2021-10-01T12:20:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7", "name": "Behind
+        the Scenes of the Most Consumed Seafood | NOAA ...", "url": "https:\/\/www.fisheries.noaa.gov\/feature-story\/behind-scenes-most-consumed-seafood",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fisheries.noaa.gov\/feature-story\/behind-scenes-most-consumed-seafood",
+        "snippet": "Grilled tuna lemon with mayo. Credit: North Carolina Sea Grant\/Vanda
+        Lewis. Shrimp, tuna, clams—the most popular seafood items in the United
+        States are familiar names to both seafood lovers and the occasional consumer.
+        You may have wondered about the environmental impact of consuming more of
+        a popular product.", "dateLastCrawled": "2021-10-01T07:12:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "W Seabird Relationships with Tropical Tunas and Dolphins", "url":
+        "https:\/\/swfsc-publications.fisheries.noaa.gov\/publications\/CR\/1988\/8806.PDF",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/swfsc-publications.fisheries.noaa.gov\/publications\/CR\/1988\/8806.PDF",
+        "snippet": "phins to tuna is the existence of the “porpoise-tuna“ fishery
+        of the eastern Pacific, in which purse seiners catch yellowh and to a lesser
+        extent skipjack (Katsuwonus pelamis) tuna that swim with dolphins. These
+        tuna, and the associated dolphins, are found mainly by searching the horizon
+        for birds. Spotted, spinner, and common", "dateLastCrawled": "2021-10-03T22:22:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "A comparison of rapid visual assessments and photo-quadrat ...",
+        "url": "http:\/\/repository.library.noaa.gov\/view\/noaa\/939", "isFamilyFriendly":
+        true, "displayUrl": "repository.library.noaa.gov\/view\/noaa\/939", "snippet":
+        "\"This report presents estimates of annual catches of tuna, billfish, and
+        other highly migratory species (HMS), and vessel participation during 2009-20...
+        File Type: [PDF - 825.81 KB]", "dateLastCrawled": "2021-10-04T14:01:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Dolphin-Safe Captain''s Training Course | NOAA Fisheries", "url":
+        "https:\/\/www.fisheries.noaa.gov\/national\/marine-mammal-protection\/dolphin-safe-captains-training-course",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fisheries.noaa.gov\/national\/marine-mammal-protection\/dolphin-safe-captains...",
+        "snippet": "For tuna to qualify as “dolphin safe” in the United States,
+        U.S. regulations require a written statement from the captain of the vessel
+        certifying that \"no purse seine net or other fishing gear was intentionally
+        deployed on or used to encircle dolphins during the fishing trip on which
+        the tuna were caught, and that no dolphins were killed ...", "dateLastCrawled":
+        "2021-09-28T13:31:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11", "name":
+        "Permits: Transfer a Vessel Permit", "url": "https:\/\/hmspermits.noaa.gov\/transferAVesselPermit",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/hmspermits.noaa.gov\/transferAVesselPermit",
+        "snippet": "Welcome to the National Marine Fisheries Service Permit Shop where
+        you can currently buy initial and renewal permits for Atlantic tunas and Atlantic
+        Highly Migratory Species (HMS), update permit information, and report recreational
+        landings of bluefin tuna, blue marlin, white marlin, sailfish, and swordfish.",
+        "dateLastCrawled": "2021-10-01T15:22:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "International Affairs | NOAA Fisheries", "url": "https:\/\/www.fisheries.noaa.gov\/topic\/international-affairs",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fisheries.noaa.gov\/topic\/international-affairs",
+        "snippet": "Additionally, we work with U.S. Customs and Border Protection
+        to provide support to seafood dealers to ensure imported seafood, such as
+        Patagonian toothfish, bluefin tuna, swordfish, and bigeye tuna, is caught
+        and imported legally. Learn more about Dolphin Safe Tuna (Tuna Tracking
+        and Verification Program)", "dateLastCrawled": "2021-10-02T06:09:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "NMFS Help Desk: Buying A New Permit - NMFS Permit Shop", "url": "https:\/\/hmspermits.noaa.gov\/newPermitInfo",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/hmspermits.noaa.gov\/newPermitInfo",
+        "snippet": "Welcome to the National Marine Fisheries Service Permit Shop where
+        you can currently buy initial and renewal permits for Atlantic tunas and Atlantic
+        Highly Migratory Species (HMS), update permit information, and report recreational
+        landings of bluefin tuna, blue marlin, white marlin, sailfish, and swordfish.",
+        "dateLastCrawled": "2021-10-03T04:08:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Pacific Islands Region Observer Program | NOAA Fisheries", "url":
+        "https:\/\/www.fisheries.noaa.gov\/pacific-islands\/pacific-islands-region-observer-program",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fisheries.noaa.gov\/pacific-islands\/pacific-islands-region-observer-program",
+        "snippet": "The Program assists the Pacific Community (SPC) with collection
+        of biological samples and tuna tagging. The Program also samples fish from
+        vessels offloading in Pago Pago, providing one of the largest datasets in
+        the world, important for the management of tuna fisheries in the Pacific.
+        eReporting Project", "dateLastCrawled": "2021-09-29T16:15:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "NOAA Technical Memorandum NMFS", "url": "https:\/\/swfsc-publications.fisheries.noaa.gov\/publications\/TM\/SWFSC\/NOAA-TM-NMFS-SWFC-116.PDF",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/swfsc-publications.fisheries.noaa.gov\/publications\/TM\/SWFSC\/NOAA-TM-NMFS-SWFC...",
+        "snippet": "yellowfin tuna (Thunnus albacares). In 1986, the Southwest Fisheries
+        Center (SWFC) of the NMFS initiated a five-year program to monitor these stocks
+        of dolphins. In the first year of the program, two surveys of marine mammal
+        populations in the ETP were conducted concurrently aboard the National Oceanic
+        and", "dateLastCrawled": "2021-10-03T22:23:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Fisheries Certificate of Origin 1. CUSTOMS ENTRY ...", "url": "https:\/\/media.fisheries.noaa.gov\/dam-migration\/0648_0335_fco_370_08072019.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/media.fisheries.noaa.gov\/dam-migration\/0648_0335_fco_370_08072019.pdf",
+        "snippet": "Tuna harvested in a fishery in which the Assistant Administrator
+        has determined there is a regular and significant mortality or serious injury
+        to dolphins and\/or a regular and significant association occurring between
+        dolphins and tuna, with valid documentation by: (1) the captain of the ...",
+        "dateLastCrawled": "2021-10-01T10:19:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "The Tuna Fisheries of Cape Verde and Senegal", "url": "https:\/\/spo.nmfs.noaa.gov\/sites\/default\/files\/pdf-content\/mfr43106.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/spo.nmfs.noaa.gov\/sites\/default\/files\/pdf-content\/mfr43106.pdf",
+        "snippet": "weight of the fish or the canned and frozen tuna. fIshermen.
+        Most of the tuna caught since 1976 has been skipjack tuna. Fleet Cape
+        Verde''s commercial tuna fleet consists entirely of pole-and-lineves­ sels.
+        Most are 15 m vessels used for fIshing within 5 miles of the islands. The
+        fIshermen return to port daily and do not carry ice. The only ...", "dateLastCrawled":
+        "2021-10-02T04:02:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18", "name":
+        "THE FRENCH TUNA INDUSTRY", "url": "https:\/\/spo.nmfs.noaa.gov\/sites\/default\/files\/pdf-content\/mfr3237.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/spo.nmfs.noaa.gov\/sites\/default\/files\/pdf-content\/mfr3237.pdf",
+        "snippet": "THE FRENCH TUNA INDUSTRY David K. Sabock Tuna canning is an
+        old French industry. s tar ted at La Rochelle and Les Sables Olonne in 1850.
+        By 1869. the island of r oix had become the tuna center, but it asn''t until
+        1891 that the fir st maj or tuna­ shing campaign was organized in Concar­
+        au. Today. French.tuna vessels fish the near­", "dateLastCrawled": "2021-08-31T00:02:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "The Tuna Industry in the Pacific Islands Region ...", "url": "https:\/\/spo.nmfs.noaa.gov\/sites\/default\/files\/pdf-content\/MFR\/mfr481\/mfr4813.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/spo.nmfs.noaa.gov\/sites\/default\/files\/pdf-content\/MFR\/mfr481\/mfr4813.pdf",
+        "snippet": "concerns both tuna fishing (in 12 countries and territories)
+        andprocessing (in 6 coun-48(1), 1986 interest in the tuna fishery in the
+        Pacific islands region has heightened. More Asian (Korean, Taiwanese, and
+        Filipino) and American vessels, particularly purse seiners, have joinedJapanese
+        tuna fleets in the region. While pole-and-line", "dateLastCrawled": "2021-09-08T22:06:00.0000000Z",
+        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 06 Oct 2021 15:37:44 GMT
 recorded_with: VCR 6.0.0

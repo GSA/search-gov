@@ -522,4 +522,519 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
   recorded_at: Tue, 07 Sep 2021 16:19:14 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=season%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 11:49:20 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - 537C859ED88046F9B0C0124EE0628B8B
+      Bingapis-Sessionid:
+      - B911082E43C842A489263574CA9ACC80
+      X-Msedge-Clientid:
+      - 04770E7C807B6D412E661EB481CB6C32
+      X-Msapi-Userstate:
+      - '8398'
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=251,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: 537C859ED88046F9B0C0124EE0628B8B Ref B: BLUEDGE1419 Ref C: 2021-10-06T11:50:20Z'
+      Apim-Request-Id:
+      - 3d9a8a10-1312-4a0d-ae43-ef238cf07554
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 11:50:20 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "season
+        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=season+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 10900000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "What Causes the Seasons? | NASA Space Place – NASA Science ...",
+        "url": "https:\/\/spaceplace.nasa.gov\/seasons\/en\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/spaceplace.nasa.gov\/seasons\/en", "snippet":
+        "The Short Answer: Earth''s tilted axis causes the seasons. Throughout the
+        year, different parts of Earth receive the Sun''s most direct rays. So, when
+        the North Pole tilts toward the Sun, it''s summer in the Northern Hemisphere.
+        And when the South Pole tilts toward the Sun, it''s winter in the Northern
+        Hemisphere.", "dateLastCrawled": "2021-10-04T00:32:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Frequently Asked Influenza (Flu) Questions: 2021-2022 Season",
+        "url": "https:\/\/www.cdc.gov\/flu\/season\/faq-flu-season-2021-2022.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/flu\/season\/faq-flu-season-2021-2022.htm",
+        "snippet": "Typically flu season lasts from October to May in the Northern
+        Hemisphere and from April to September in the Southern Hemisphere. Decisions
+        on the composition of flu vaccines must be made months prior to the flu season
+        in each hemisphere so that flu vaccines can be produced and made available
+        in time for the season.", "dateLastCrawled": "2021-10-03T11:17:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Flu Season | CDC", "url": "https:\/\/www.cdc.gov\/flu\/season\/index.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/flu\/season",
+        "snippet": "Find current information on the 2021-22 flu season. This web
+        page provides estimates of flu cases, medical visits and hospitalizations
+        for the 2019-2020 season. The Influenza Division at CDC has engaged with
+        members of the scientific community on real-world influenza forecasting challenges
+        known as FluSight.", "dateLastCrawled": "2021-09-30T19:09:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Talking Points | Health.mil", "url": "https:\/\/armymedicine.health.mil\/MHSHome\/Military-Health-Topics\/MHS-Toolkits\/TRICARE-Open-Season-Toolkit\/Talking-Points",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/armymedicine.health.mil\/...\/TRICARE-Open-Season-Toolkit\/Talking-Points",
+        "snippet": "TRICARE Open Season. Now is the time to review your and your
+        family member’s current health plans, consider your needs for 2022, and learn
+        about your coverage choices. TRICARE Open Season begins Monday, Nov. 8,
+        and ends Monday, Dec. 13. Enrollment changes made during TRICARE Open Season
+        will go into effect on Jan. 1, 2022.", "dateLastCrawled": "2021-10-03T04:44:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "2020-2021 Flu Season Summary | CDC", "url": "https:\/\/www.cdc.gov\/flu\/season\/faq-flu-season-2020-2021.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/flu\/season\/faq-flu-season-2020-2021.htm",
+        "snippet": "For the 2020-2021 season, manufacturers projected they would
+        provide as many as 194-198 million doses of flu vaccine, which is more than
+        the 175 million dose record set during the 2019-2020 flu season. 193.8 million
+        doses of flu vaccine had been distributed in the United States as of February
+        26, 2021—the highest number of doses in a single ...", "dateLastCrawled":
+        "2021-10-03T07:18:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5", "name": "Summary
+        of Tennessee Hunting and Trapping Seasons Dates", "url": "https:\/\/www.tn.gov\/twra\/hunting\/tennessee-hunting-seasons-summary.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.tn.gov\/twra\/hunting\/tennessee-hunting-seasons-summary.html",
+        "snippet": "3 Unit CWD begins gun season (G\/M\/A) on Nov. 6 and therefore
+        does not have a muzzleloader only (M\/A) season. 4 A Type 094 permit is
+        required to hunt antlerless deer during this season except for landowners
+        hunting under the landowner exemption (as described in T.C.A. 70-2-204) and
+        Sportsman License holders. A Type 094 permit is required for all ...", "dateLastCrawled":
+        "2021-10-03T11:09:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6", "name": "Season
+        Dates | KDFWR", "url": "http:\/\/app.fw.ky.gov\/seasondates\/", "isFamilyFriendly":
+        true, "displayUrl": "app.fw.ky.gov\/seasondates", "snippet": "Season Dates:
+        Jun 1 2021 - Aug 31 2021. either sex. Add to Calendar. Upcoming Season.
+        Location: Bear Zones. Season Dates: Sep 9 2021 - Sep 30 2021.", "dateLastCrawled":
+        "2021-10-03T21:16:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7", "name": "Seasons
+        and Regulations | Louisiana Department of Wildlife ...", "url": "https:\/\/www.wlf.louisiana.gov\/page\/seasons-and-regulations",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.wlf.louisiana.gov\/page\/seasons-and-regulations",
+        "snippet": "Regular season: November 20 - December 5 and December 18 - January
+        30. Youth and veterans only: November 13 and February 5. West Zone: Regular
+        season: November 13 - December 5; December 18 - January 2; and January 10
+        - 30. Youth and veterans only: November 6-7. Extended Falconry (all zones):
+        November 2 - January 31.", "dateLastCrawled": "2021-10-03T07:18:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Hunting Seasons and Application Dates - Nebraska Game and ...", "url":
+        "http:\/\/outdoornebraska.gov\/huntingseasons\/", "isFamilyFriendly": true,
+        "displayUrl": "outdoornebraska.gov\/huntingseasons", "snippet": "Season
+        dates. The 2021 mountain lion season in the Pine Ridge runs from Jan. 2
+        – Feb. 28, 2021, with an application period from Nov. 2 – Dec. 9, 2020. Mountain
+        lions have recolonized three areas in Nebraska: the Pine Ridge, Niobrara River
+        Valley and Wildcat Hills.", "dateLastCrawled": "2021-10-03T07:12:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "2021 Deer Seasons by Zone", "url": "https:\/\/nrm.dfg.ca.gov\/FileHandler.ashx?DocumentID=168214&inline",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/nrm.dfg.ca.gov\/FileHandler.ashx?DocumentID=168214&inline",
+        "snippet": "Season Dates Approved General Season Dates Quota A (South
+        Unit 110 and North Unit 160) n\/a 10-Jul-21 - 01-Aug-21 14-Aug-21 - 26-Sep-21
+        65,000 B-1 B Zone Tags are Valid during the Archery or General Season in
+        Any B Zone 21-Aug-21 - 12-Sep-21 18-Sep-21 - 24-Oct-21 35,000 (a) B-2 B Zone
+        Tags are Valid during the Archery or ...", "dateLastCrawled": "2021-10-03T03:06:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Deer Hunting Seasons - Kentucky Department of Fish & Wildlife",
+        "url": "https:\/\/fw.ky.gov\/Hunt\/Pages\/Deer-Hunting-Zones-and-Seasons.aspx",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/fw.ky.gov\/Hunt\/Pages\/Deer-Hunting-Zones-and-Seasons.aspx",
+        "snippet": "DEER: Early Season: Late Season: Archery: Sept. 4, 2021 -
+        Jan. 17, 2022: Crossbow: Sept. 18, 2021 - Jan. 17, 2022: Youth-only Gun: Oct.
+        9-10, 2021: Muzzleloader", "dateLastCrawled": "2021-10-03T08:18:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Indiana 2021-2022 Hunting & Trapping Seasons", "url": "http:\/\/www.in.gov\/dnr\/fishwild\/files\/fw-hunting_trapping_seasons.pdf",
+        "isFamilyFriendly": true, "displayUrl": "www.in.gov\/dnr\/fishwild\/files\/fw-hunting_trapping_seasons.pdf",
+        "snippet": "A separate turkey license is needed for the spring and fall turkey
+        season. Deer . See current Hunting & Trapping Guide for deer season bag
+        limits or visit . wildlife.IN.gov . Reduction Zone* Sept. 15, 2021-Jan.
+        31, 2022 Youth Sept. 25 & 26, 2021 Archery Oct. 1, 2021-Jan. 2, 2022", "dateLastCrawled":
+        "2021-10-03T20:12:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12", "name":
+        "REGULAR & BOWHUNTING 21 MUZZLELOADING DEER SEASONS 2021 ...", "url": "https:\/\/www.dec.ny.gov\/docs\/wildlife_pdf\/huntseason21.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.dec.ny.gov\/docs\/wildlife_pdf\/huntseason21.pdf",
+        "snippet": "Season Dates 2021\/22. Closed. RACCOON, RED FOX, GREY FOX, SKUNK,
+        COYOTE, OPOSSUM & WEASEL TRAPPING. There are no bag limits for these species.
+        *In the Northern Zone, body-gripping traps set on land may not be set with
+        bait or lure if the fisher and marten season is closed. Oct. 25 – Feb. 15*
+        Oct. 25 – Feb. 15. Nov. 1 –Feb. 25, except ...", "dateLastCrawled": "2021-09-19T03:12:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Past Seasons Estimated Influenza Disease Burden | CDC", "url": "https:\/\/www.cdc.gov\/flu\/about\/burden\/past-seasons.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/flu\/about\/burden\/past-seasons.html",
+        "snippet": "Table 1: Estimated Influenza Disease Burden, by Season — United
+        States, 2010-11 through 2019-20 Influenza Seasons. * Estimates from the 2017-2018,
+        2018-2019, and 2019-2020 seasons are preliminary and may change as data are
+        finalized.", "dateLastCrawled": "2021-10-03T07:14:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Hunting & Trapping Seasons | Missouri Department of ...", "url":
+        "https:\/\/mdc.mo.gov\/hunting-trapping\/seasons", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/mdc.mo.gov\/hunting-trapping\/seasons", "snippet":
+        "During spring turkey season, coyotes may be taken using only methods allowed
+        for spring turkey hunting, and hunters must have an unfilled spring turkey
+        hunting permit and either a Resident Small Game Hunting Permit or a Nonresident
+        Furbearer Hunting and Trapping Permit. Additional Allowed Methods (Feb. 1
+        - March 31)", "dateLastCrawled": "2021-10-03T07:06:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Coverage by Season | FluVaxView | Seasonal Influenza (Flu ...",
+        "url": "https:\/\/www.cdc.gov\/flu\/fluvaxview\/coverage-by-season.htm", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.cdc.gov\/flu\/fluvaxview\/coverage-by-season.htm",
+        "snippet": "2012-13 Season. 2009-10 Season. 2006-07 Season. Earlier
+        Seasons. Recent Influenza Vaccination Trends across Influenza Seasons. Influenza
+        Vaccination Coverage among Children Aged 6-23 Months — United States, 2008–09
+        Influenza Season (NIS) Influenza Vaccination Coverage Trends 1989 – 2008
+        (NHIS) pdf icon. (Note these are estimates of ...", "dateLastCrawled": "2021-09-28T09:43:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Oceans Primed for Peak of Hurricane Season", "url": "https:\/\/earthobservatory.nasa.gov\/images\/148689\/oceans-primed-for-peak-of-hurricane-season",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/earthobservatory.nasa.gov\/images\/148689\/oceans-primed-for-peak-of-hurricane-season",
+        "snippet": "Heading into the peak of hurricane season, the seas around North
+        and Central America are primed to fuel storm development and intensification
+        in the Atlantic and Eastern Pacific.While sea surface temperatures are just
+        one factor influencing the development of hurricanes, they are a fair predictor
+        of the readiness of the ocean to sustain them.", "dateLastCrawled": "2021-09-27T21:05:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "FINAL 2021-22 HUNTING\/TRAPPING SEASONS APPROVED", "url": "https:\/\/www.media.pa.gov\/Pages\/game-commission-details.aspx?newsid=460",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.media.pa.gov\/Pages\/game-commission-details.aspx?newsid=460",
+        "snippet": "Season lengths also have been adjusted in many WMUs. All recommendations
+        on fall turkey season length are made in accordance with guidelines in the
+        Game Commission’s Wild Turkey Management Plan. The fall season in WMUs 1A,
+        1B, 4A, 4B, 4D and 4E will be one week (Oct. 30-Nov. 6).", "dateLastCrawled":
+        "2021-10-03T00:28:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18", "name":
+        "PHEASANT - South Dakota", "url": "https:\/\/gfp.sd.gov\/UserDocs\/nav\/Pheasant.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/gfp.sd.gov\/UserDocs\/nav\/Pheasant.pdf",
+        "snippet": "season was 23,651 birds. The Youth-only season overall participation
+        rate was approximately 6.5%; nonresidents were not surveyed on their participation
+        in the Youth season. The five counties with the highest reported harvests
+        from highest to lowest were Brown, Beadle, Brule, Lyman, and Spink. Comparison
+        of the 2011 - 2020 Pheasant season statistics", "dateLastCrawled": "2021-09-28T07:15:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Estimated Influenza Illnesses, Medical visits ...", "url": "https:\/\/www.cdc.gov\/flu\/about\/burden\/2018-2019.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/flu\/about\/burden\/2018-2019.html",
+        "snippet": "The season had moderate severity based on levels of outpatient
+        influenza-like illness, hospitalizations rates, and proportions of pneumonia
+        and influenza-associated deaths. CDC estimates that the burden of illness
+        during the 2018–2019 season included an estimated 35.5 million people getting
+        sick with influenza, ...", "dateLastCrawled": "2021-10-03T11:11:00.0000000Z",
+        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 06 Oct 2021 05:47:39 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=estados%20unidos%20amiga%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 15:38:13 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - AC334DE4D99C44719806600A0ACDFA21
+      Bingapis-Sessionid:
+      - 6E944FF8A1664A55B627687C467AAFEE
+      X-Msedge-Clientid:
+      - 2734D0486B746A843754C0806A896B03
+      X-Msapi-Userstate:
+      - d64d
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=277,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: AC334DE4D99C44719806600A0ACDFA21 Ref B: BLUEDGE1021 Ref C: 2021-10-06T15:39:13Z'
+      Apim-Request-Id:
+      - 8cb72434-b7cc-4633-a2e3-8b058f7bb2e7
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 15:39:12 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "estados
+        unidos amiga (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=estados+unidos+amiga+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 26600, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Visas para extranjeros: tipos de visas y extensiones ...", "url":
+        "https:\/\/www.usa.gov\/espanol\/inmigrantes-noresidentes", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.usa.gov\/espanol\/inmigrantes-noresidentes",
+        "snippet": "Visas temporales y de no inmigrante. Nota: En respuesta a la pandemia
+        del COVID-19, el Departamento de Estado suspendió en marzo de 2020 temporalmente
+        los servicios de visas de rutina en todas las embajadas y consulados de Estados
+        Unidos.En febrero de 2021 comenzó el proceso para regularizar los servicios
+        de visas de rutina (en inglés). Si usted desea visitar Estados Unidos
+        por un periodo ...", "dateLastCrawled": "2021-10-02T05:13:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "REP. SALAZAR INTRODUCES THE AMIGOS ACT | Representative ...", "url":
+        "http:\/\/salazar.house.gov\/media\/press-releases\/rep-salazar-introduces-amigos-act-0",
+        "isFamilyFriendly": true, "displayUrl": "salazar.house.gov\/media\/press-releases\/rep-salazar-introduces-amigos-act-0",
+        "snippet": "Sin embargo, Estados Unidos no tiene una estrategia de diplomacia
+        estratégica con respecto a las vacunas excedentarias. “En lugar de aplastar
+        la innovación del libre mercado, EE. UU. debería proponer planes audaces de
+        donación de vacunas excedentes, aumentar la conciencia sobre los esfuerzos
+        actuales de EE. UU. y aumentar la fabricación ...", "dateLastCrawled": "2021-10-02T00:07:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Diputados de la Asamblea Nacional lanzan Grupo de Amistad ...", "url":
+        "https:\/\/pa.usembassy.gov\/es\/diputados-de-la-asamblea-nacional-lanzan-grupo-de-amistad-interparlamentaria-panama-estados-unidos\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/pa.usembassy.gov\/es\/diputados-de-la-asamblea-nacional-lanzan-grupo-de-amistad...",
+        "snippet": "El Grupo de Amistad fortalece aún más las relaciones entre Panamá
+        y Estados Unidos y la continua colaboración entre ambos países. Ciudad
+        de Panamá, 5 de diciembre de 2019. La ministra consejera encargada de la Embajada
+        de los Estados Unidos, Isabel Rioja-Scott, participó la mañana de hoy
+        en el acto protocolar de juramentación del Grupo ...", "dateLastCrawled":
+        "2021-09-27T21:40:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3", "name": "Becas
+        e intercambios Archivo | Embajada de Estados Unidos ...", "url": "https:\/\/uy.usembassy.gov\/es\/category\/becas-e-intercambios\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/uy.usembassy.gov\/es\/category\/becas-e-intercambios",
+        "snippet": "El Embajador de los Estados Unidos en Uruguay, Kenn S. George
+        mantuvo una reunión virtual con becarios del Departamento de Estado en Uruguay
+        para intercambiar sobre los proyectos que realizaron, apoyados por la Embajada
+        de Estados Unidos, para enfrentar la crisis del COVID-19 durante este
+        año. Para leer más».", "dateLastCrawled": "2021-09-28T19:14:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "¿Qué es un fiduciario? | Oficina para la Protección ...", "url":
+        "https:\/\/www.consumerfinance.gov\/es\/obtener-respuestas\/que-es-un-fiduciario-es-1769\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.consumerfinance.gov\/es\/obtener-respuestas\/que-es-un-fiduciario-es-1769",
+        "snippet": "Por ejemplo, una amiga suya le nombra a usted como su fiduciario
+        a través de un poder legal ... (CFPB, por sus siglas en inglés), una agencia
+        del gobierno de los Estados Unidos que se asegura de que bancos, prestamistas
+        y otras compañías financieras le traten de forma justa. Descubra cómo el CFPB
+        puede ayudarle.", "dateLastCrawled": "2021-10-03T01:11:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "DIVULGACIÓN DE INFORMACIÓN Y DECLARACIÓN DE PASAJEROS A ...", "url":
+        "https:\/\/www.cdc.gov\/quarantine\/pdf\/Fillable-Attestation-Spanish-508.pdf?v=2",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/quarantine\/pdf\/Fillable-Attestation-Spanish-508.pdf?v=2",
+        "snippet": "Los Centros para el Control y la Prevención de Enfermedades (CDC)
+        de los Estados Unidos requieren que las aerolíneas y otros operadores
+        de aeronaves recolecten información en virtud de 42 C.F.R. §§ 71.20 y 71.31(b),
+        según lo autorizado por 42 U.S.C. § 264.", "dateLastCrawled": "2021-10-01T02:59:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Doações de vacinas dos EUA chegam a 110 milhões de doses ...", "url":
+        "https:\/\/share.america.gov\/pt-br\/doacoes-de-vacinas-nos-eua-chegam-a-110-milhoes-de-doses\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/share.america.gov\/pt-br\/doacoes-de-vacinas-nos-eua-chegam-a-110-milhoes-de-doses",
+        "snippet": "Os Estados Unidos também doaram US$ 4 bilhões para o Covax
+        por meio da Gavi, a Aliança para Vacinas. Os 110 milhões de doses entregues
+        superam o compromisso de Biden em junho de doar pelo menos 80 milhões de vacinas
+        do suprimento dos Estados Unidos para outros países. E ainda há mais por
+        vir.", "dateLastCrawled": "2021-09-30T08:12:00.0000000Z", "language": "pt",
+        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Latinos siguen siendo primordiales en el pasatiempo ...", "url":
+        "https:\/\/share.america.gov\/es\/latinos-siguen-siendo-primordiales-en-el-pasatiempo-nacional-de-estados-unidos\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/share.america.gov\/es\/latinos-siguen-siendo-primordiales-en-el-pasatiempo-nac...",
+        "snippet": "Latinos siguen siendo primordiales en el pasatiempo nacional de
+        Estados Unidos. Por. ShareAmerica. -. 27 septiembre 2021. El béisbol formó
+        gran parte de la infancia de Thomas Jiménez cuando crecía en Santa Fe, la
+        capital de Nuevo México. Desde que cursó el tercer grado hasta el séptimo,
+        Jiménez, que actualmente tiene 33 años y es un ...", "dateLastCrawled": "2021-09-30T03:57:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Prepárate con Pedro | Ready.gov", "url": "https:\/\/www.ready.gov\/es\/preparate-con-pedro",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ready.gov\/es\/preparate-con-pedro",
+        "snippet": "¡Hola! ¡Soy Predo el Pingüino! Estoy viajando por todos los Estados
+        Unidos para visitar a mis amigos y aprender más de cómo se preparan. Me
+        encantaría que vinieras conmigo. Las emergencias y los desastres pueden pasar
+        en cualquier parte, pero siempre hay maneras de estar seguro. ¡Acompañame
+        y aprenderemos juntos!", "dateLastCrawled": "2021-10-01T10:55:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "MedlinePlus en español: Histamina: De lo que está hecha la ...",
+        "url": "https:\/\/medlineplus.gov\/spanish\/videos-de-medlineplus\/histamina-de-lo-que-esta-hecha-la-alergia\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/medlineplus.gov\/spanish\/videos-de-medlineplus\/histamina-de-lo-que-esta-hecha...",
+        "snippet": "Más del 5% de los niños en Estados Unidos tenían alergia a
+        los alimentos. Y por lo menos el 12% de los niños en Estados Unidos tenían
+        alergia en la piel. ¿Qué está pasando? ¿Por qué tenemos este químico perverso
+        en nuestro cuerpo? Bueno, la histamina es, en general, nuestra amiga.",
+        "dateLastCrawled": "2021-09-18T08:13:00.0000000Z", "language": "es", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Inicio | USCIS", "url": "https:\/\/www.uscis.gov\/es", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.uscis.gov\/es", "snippet": "El 9 de marzo
+        de 2021, el Tribunal de Apelaciones de Estados Unidos para el Séptimo
+        Circuito levantó la suspensión de la Corte de Distrito de Estados Unidos
+        para el Distrito Norte de Illinois emitida el 2 de noviembre de 2020, decisión
+        que anuló la regla final de Inadmisibilidad por Motivos de Carga Pública en
+        todo el país.", "dateLastCrawled": "2021-10-02T22:23:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Hay muchas opciones para un estudiante en verano ...", "url": "https:\/\/share.america.gov\/es\/que-hice-en-mis-vacaciones-de-verano\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/share.america.gov\/es\/que-hice-en-mis-vacaciones-de-verano",
+        "snippet": "Los estudiantes internacionales gozan de los meses de verano en
+        Estados Unidos de junio a agosto. Algunos se dedican a sus estudios y
+        carreras tomando cursos de verano o haciendo pasantías.Algunos viajan a sus
+        países de origen para conectar con los antiguos y los nuevos amigos. Y algunos
+        se quedan en Estados Unidos y salen de viaje por las carreteras para explorar.",
+        "dateLastCrawled": "2021-10-01T14:08:00.0000000Z", "language": "es", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "#COVID19 - Embajada de los Estados Unidos en Guatemala", "url":
+        "https:\/\/gt.usembassy.gov\/es\/tag\/covid19information-es\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/gt.usembassy.gov\/es\/tag\/covid19information-es",
+        "snippet": "Departamento de Estado de los Estados Unidos Oficina de la
+        Vocera 12 de mayo de 2020 Como ha dicho el Presidente Trump, los Estados
+        Unidos están trabajando con nuestros amigos y socios en todo el mundo
+        para coordinar nuestros esfuerzos por detener la propagación de la pandemia
+        del Covid-19.", "dateLastCrawled": "2021-09-18T00:40:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Video infantil | StopBullying.gov", "url": "https:\/\/espanol.stopbullying.gov\/resources\/kids\/kid-videos",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/espanol.stopbullying.gov\/resources\/kids\/kid-videos",
+        "snippet": "Video infantil. Mira estos videos para conocer cómo KB, Josh,
+        Milton y sus amigos enfrentan a los acosadores. Después de cada video, contesta
+        un cuestionario para descubrir cuánto sabes sobre el acoso escolar. Conozca
+        al elenco.", "dateLastCrawled": "2021-09-19T11:24:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Ciudadanos y extranjeros residentes de los EE. UU. en el ...",
+        "url": "https:\/\/www.irs.gov\/es\/individuals\/international-taxpayers\/us-citizens-and-resident-aliens-abroad",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.irs.gov\/es\/individuals\/international-taxpayers\/us-citizens-and-resident...",
+        "snippet": "Usted debe declarar en dólares de los Estados Unidos las cantidades
+        que incluye en su declaración del impuesto estadounidense. Si recibe parte
+        de o todos sus ingresos en la moneda de un país extranjero, o paga todos o
+        parte de sus gastos en una moneda extranjera, deberá cambiar la moneda extranjera
+        a dólares de los EE. UU. Los ...", "dateLastCrawled": "2021-10-03T23:03:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Los trucos de estafadores para robarle el corazón y el ...", "url":
+        "https:\/\/www.consumidor.ftc.gov\/blog\/2015\/07\/los-trucos-de-estafadores-para-robarle-el-corazon-y-el-dinero",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.consumidor.ftc.gov\/blog\/2015\/07\/los-trucos-de-estafadores-para-robarle-el...",
+        "snippet": "Los trucos de estafadores para robarle el corazón y el dinero.
+        15 de julio de 2015. por. Aditi Jhaveri. Especialista en Educación del Consumidor,
+        FTC. No todas las personas que usan los sitios de citas en línea están buscando
+        amor. Los estafadores crean perfiles en línea simulados con fotos de otras
+        personas — hasta fotos robadas de ...", "dateLastCrawled": "2021-09-30T21:14:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Jóvenes emprendedoras de Egipto marcan una diferencia en ...", "url":
+        "https:\/\/share.america.gov\/es\/jovenes-emprendedoras-de-egipto-marcan-una-diferencia-en-el-mundo\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/share.america.gov\/es\/jovenes-emprendedoras-de-egipto-marcan-una-diferencia-en...",
+        "snippet": "Jóvenes emprendedoras en Egipto están poniendo en marcha exitosos
+        negocios y expandiéndolos a nivel mundial. Cuando Doaa Aref (en inglés) se
+        sometió a un tratamiento contra el cáncer en 2016, tuvo dificultades para
+        que sus recetas fueran surtidas en El Cairo con la dosis correcta de su medicamento..
+        Identificó la necesidad de una aplicación móvil que permitiera a los pacientes
+        poner ...", "dateLastCrawled": "2021-09-13T04:12:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Visa de novios | Embajada de Estados Unidos en Perú", "url": "https:\/\/pe.usembassy.gov\/es\/visas-es\/immigrant-visas-es\/fiancee-visa-es\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/pe.usembassy.gov\/es\/visas-es\/immigrant-visas-es\/fiancee-visa-es",
+        "snippet": "La visa de novio tipo K-1 es una visa de no-inmigrante para el
+        novio ciudadano extranjero de un ciudadano de los Estados Unidos. La visa
+        K-1 permite al novio ciudadano extranjero viajar a los Estados Unidos
+        y casarse con su patrocinador estadounidense dentro de 90 días de su arribo.
+        Usted puede conocer más acerca de las visa de novios en ...", "dateLastCrawled":
+        "2021-09-30T06:52:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18", "name":
+        "Mudarse a los Estados Unidos - Importación de efectos ...", "url": "https:\/\/help.cbp.gov\/s\/article\/Article-440?language=es",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/help.cbp.gov\/s\/article\/Article-440?language=es",
+        "snippet": "Mudarse a los Estados Unidos - Importación de efectos personales
+        y domésticos, bienes de compensación de familiares o amigos en su nombre
+        sept 15, 2021 • Conocimiento Información", "dateLastCrawled": "2021-09-28T03:34:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Lunes, 20 deer-erode2û20 Nuestro Diario", "url": "https:\/\/gt.usembassy.gov\/wp-content\/uploads\/sites\/253\/PreguntealConsul-01-20-2020.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/gt.usembassy.gov\/wp-content\/uploads\/sites\/253\/PreguntealConsul-01-20-2020.pdf",
+        "snippet": "Estados Unidos, 10 importante es que el interesado tiene que
+        demostrar vínculos significativos con Guatemala para aclarar que el viaje
+        que realizará es por razones turísticas solamente. Los oficiales entienden
+        que a veces la razón turística tiene que ver más con reuniones familiares
+        o un viaje a Disney World.", "dateLastCrawled": "2021-09-30T12:53:00.0000000Z",
+        "language": "es", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 06 Oct 2021 15:39:13 GMT
 recorded_with: VCR 6.0.0

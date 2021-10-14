@@ -259,4 +259,262 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
   recorded_at: Tue, 07 Sep 2021 16:19:06 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=first%20item%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 15:38:04 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - 28EB016676CA437A842FA63EE5BB05E2
+      Bingapis-Sessionid:
+      - C29D78257DC5469F9356BD211B828C59
+      X-Msedge-Clientid:
+      - 2411C259512F6CE02C44D29150D26DB0
+      X-Msapi-Userstate:
+      - 9e4f
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=232,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: 28EB016676CA437A842FA63EE5BB05E2 Ref B: BLUEDGE0120 Ref C: 2021-10-06T15:39:04Z'
+      Apim-Request-Id:
+      - c1521b21-cb35-481f-8ba9-97d734dca44b
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 15:39:04 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "first
+        item (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=first+item+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 984000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "The first items I will discuss are the five points of ...", "url":
+        "https:\/\/home.army.mil\/bragg\/index.php\/download_file\/390\/437", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/home.army.mil\/bragg\/index.php\/download_file\/390\/437",
+        "snippet": "The first items I will discuss are the five points of performance.
+        The first point of performance is proper exit, check body position, and
+        count. Jumpers hit it. Upon exiting the aircraft, snap into a good tight body
+        position. Keep your eyes open, chin on your chest, elbows tight into your
+        sides, hands on the ends of", "dateLastCrawled": "2021-09-29T14:02:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Subpart 9.3—First Article Testing and Approval", "url": "https:\/\/www.acquisition.gov\/sites\/default\/files\/current\/far\/html\/Subpart%209_3.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.acquisition.gov\/sites\/default\/files\/current\/far\/html\/Subpart
+        9_3.html", "snippet": "The notice shall include the first article shipment
+        number, when available, and the applicable line item number. Any changes
+        in the drawings, designs, or specifications determined by the contracting
+        officer to be necessary shall be made under the Changes clause, and not by
+        the notice of approval, conditional approval, or disapproval furnished ...",
+        "dateLastCrawled": "2021-09-30T16:47:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2", "name":
+        "Must-Haves for Your First-Aid Kit | Blogs | CDC", "url": "https:\/\/blogs.cdc.gov\/publichealthmatters\/2021\/05\/first-aid-kits\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/blogs.cdc.gov\/publichealthmatters\/2021\/05\/first-aid-kits",
+        "snippet": "The American Red Cross suggests that a first-aid kit for a family
+        of four include the following items: A first-aid guide. 2 absorbent compress
+        dressings (5 x 9 inches) 25 adhesive bandages (assorted sizes) 1 adhesive
+        cloth tape (10 yards x 1 inch) 5 antibiotic ointment packets. 5 antiseptic
+        wipe packets.", "dateLastCrawled": "2021-10-03T03:19:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Your Guide to Who Pays First.", "url": "https:\/\/www.medicare.gov\/Pubs\/pdf\/02179-Medicare-Coordination-Benefits-Payer.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.medicare.gov\/Pubs\/pdf\/02179-Medicare-Coordination-Benefits-Payer.pdf",
+        "snippet": "No-fault insurance or liability insurance pays first and Medicare
+        pays second for services related to the accident or injury . I’m covered under
+        workers’ compensation because of a job related illness or injury involved
+        (pages 22–25) Workers’ compensation pays first for services or items related
+        to the workers’ compensation claim .", "dateLastCrawled": "2021-10-04T00:21:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "1.WN GO 2. MASK OR RESPIRATOR 3. GOGGLES OR FACE SHIELD", "url":
+        "https:\/\/www.cdc.gov\/hai\/pdfs\/ppe\/PPE-Sequence.pdf", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.cdc.gov\/hai\/pdfs\/ppe\/PPE-Sequence.pdf",
+        "snippet": "• If the item is reusable, place in designated receptacle for
+        reprocessing. Otherwise, discard in a waste container. 3.WN GO • Gown front
+        and sleeves are contaminated! • If your hands get contaminated during gown
+        removal, immediately wash your hands or use an alcohol-based hand sanitizer",
+        "dateLastCrawled": "2021-10-03T03:23:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5", "name":
+        "CONTRACT DATA REQUiREMENTS LIST (CDRL) I Page 1", "url": "https:\/\/www.faa.gov\/about\/office_org\/regions_centers\/mmac\/acquisition\/foia\/documents\/04D00070\/20090706143116168-File3-PgsCDRL0001-TechEx.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.faa.gov\/about\/office_org\/regions_centers\/mmac\/acquisition\/foia\/documents\/...",
+        "snippet": "Data Item No. The 4-character Exhibit Line Item Number (ELlN).
+        The first position consists of the exhibit identifier and the remaining
+        positions are assigned sequentially. 2. Title of Data Item. The title olthe
+        Data Item Description (DID) cited in item 4. 3. Subtitle. Further identification
+        of the data item to supplement the title, if required. 4.", "dateLastCrawled":
+        "2021-10-01T08:07:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6", "name": "Family
+        Emergency Kit Checklist", "url": "https:\/\/www.cdc.gov\/ncbddd\/hemophilia\/documents\/familyemergencykitchecklist.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/ncbddd\/hemophilia\/documents\/familyemergencykitchecklist.pdf",
+        "snippet": "OTHER MISCELLANEOUS ITEMS The following items also should
+        be stocked: • Emergency reference materials, such as a first-aid book
+        or a photocopy of such a book or manual • Rain gear • Paper towels • A fire
+        extinguisher • A tent • A compass • Matches in a waterproof container • Signal
+        flares • Paper and pencils • A medicine dropper", "dateLastCrawled": "2021-10-03T01:24:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Associated Press Style", "url": "https:\/\/www.codot.gov\/business\/grants\/safetygrants\/documents\/APStyleGuideCheatSheet.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.codot.gov\/business\/grants\/safetygrants\/documents\/APStyleGuideCheatSheet.pdf",
+        "snippet": "After each bullet, capitalize the first letter and use periods
+        at the end of each item. Colon Capitalize the first word after a colon
+        only if it is a proper noun or the start of a complete sentence. Colons go
+        outside quotation marks unless they are part of the quoted material. Comma
+        Don’t use a comma before a conjunction in a simple series.", "dateLastCrawled":
+        "2021-10-03T05:16:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8", "name": "Employee’s
+        Last Name, First Name, Middle Initial (rev. 11\/08)", "url": "https:\/\/www.sco.ca.gov\/Files-PPSD\/PAM_2_PAR_Items_Lines_1-7_2019_0731.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sco.ca.gov\/Files-PPSD\/PAM_2_PAR_Items_Lines_1-7_2019_0731.pdf",
+        "snippet": "ITEM 111 – FIRST NAME and MIDDLE INITIAL On Padded PAR when
+        employee or additional position is new to the data base Enter: In ITEM 110
+        – LAST NAME Enter the employee''s legal surname and suffix* or title* as it
+        appears on the Social Security Account Number card. Begin entering last name
+        at the beginning of EMPLOYEE LAST NAME field.", "dateLastCrawled": "2021-09-29T05:18:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "SMR Codes Give the Clues - United States Army", "url": "https:\/\/www.logsa.army.mil\/psmag\/archives\/PS2017\/775\/775-55-59.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.logsa.army.mil\/psmag\/archives\/PS2017\/775\/775-55-59.pdf",
+        "snippet": "The first . and second positions of the code refer to an item’s
+        source. The . first position gives a general category and is always. one
+        of five letters… P, K, M, A or X: Key to X codes. X series source codes are
+        items for which little or no demand is expected. •XA - item is not procured
+        or stocked because this item requires you to", "dateLastCrawled": "2021-10-02T01:17:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "LOWEST FLOOR GUIDE", "url": "https:\/\/www.fema.gov\/pdf\/nfip\/manual201205\/content\/07_lfg.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fema.gov\/pdf\/nfip\/manual201205\/content\/07_lfg.pdf",
+        "snippet": "items permanently affixed to the building and that provide utility
+        services for the building – i.e., furnaces, water heaters, heat pumps, air
+        conditioners, and elevators and their associated equipment. Washers, dryers,
+        and food freezers are contents items and are not considered machinery or
+        equipment.); or", "dateLastCrawled": "2021-10-03T06:13:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "SCHOOL BUS SAFETY EQUIPMENT ITEM AND METHOD OF INSPECTION ...",
+        "url": "https:\/\/dps.mn.gov\/divisions\/msp\/commercial-vehicles\/Documents\/InspectionManual\/SBInspManRevinspmansec16.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/dps.mn.gov\/divisions\/msp\/commercial-vehicles\/Documents\/InspectionManual\/...",
+        "snippet": "ITEM AND METHOD OF INSPECTION POINT VALUE AND REQUIREMENT DESCRIPTION
+        (#) Designates points to be deducted XVI. Safety Equipment A. First Aid
+        Kit (missing) (25) A. The bus must carry a removable Grade A metal dust-proof
+        first : aid kit, mounted in full view or in a labeled accessible place in
+        the driver compartment. B.", "dateLastCrawled": "2021-09-28T22:28:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Who invented the automobile? | Library of Congress", "url": "https:\/\/www.loc.gov\/everyday-mysteries\/item\/who-invented-the-automobile\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/everyday-mysteries\/item\/who-invented-the-automobile",
+        "snippet": "Prints and Photographs Division, Library of Congress. There are
+        many different types of automobiles – steam, electric, and gasoline – as well
+        as countless styles. Exactly who invented the automobile is a matter of
+        opinion. Earlier accounts often gave credit to Karl Benz, from Germany, for
+        creating the first true automobile in 1885\/1886.", "dateLastCrawled": "2021-10-03T18:05:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Aviation Source Approval and Management Handbook", "url": "https:\/\/www.dla.mil\/Portals\/104\/Documents\/Aviation\/Source%20Approval%20Handbook.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.dla.mil\/Portals\/104\/Documents\/Aviation\/Source
+        Approval Handbook.pdf", "snippet": "Aviation Critical Safety Items.. The
+        processes described in this Handbook focus on Source Approvals other than
+        Qualified Products List (QPL) items and are intended to ensure that suppliers
+        are capable of consistently producing and\/or providing high quality, conforming
+        items that meet design and manufacturing or ROMM requirements.", "dateLastCrawled":
+        "2021-10-01T03:14:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "Emergency Kit Checklist for Kids and Families | CDC", "url": "https:\/\/www.cdc.gov\/childrenindisasters\/checklists\/kids-and-families.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/childrenindisasters\/checklists\/kids-and-families.html",
+        "snippet": "Consider these items in addition to the basic kit, if appropriate:
+        A well-stocked diaper bag (at least one pack of diapers, at least two packs
+        of baby wipes, baby powder, diaper rash cream, baby wash and lotion, and re-sealable
+        plastic bags (gallon size) for stashing dirty diapers and clothes); Ready-to-feed
+        infant formula in single serving cans or bottles (for formula-fed infants
+        only)", "dateLastCrawled": "2021-10-02T01:28:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Additional First Year Depreciation Deduction (Bonus) - FAQ ...",
+        "url": "https:\/\/www.irs.gov\/newsroom\/additional-first-year-depreciation-deduction-bonus-faq",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.irs.gov\/newsroom\/additional-first-year-depreciation-deduction-bonus-faq",
+        "snippet": "A6: First, bonus depreciation is another name for the additional
+        first year depreciation deduction provided by section 168(k). Prior to enactment
+        of the TCJA, the additional first year depreciation deduction applied only
+        to property where the original use began with the taxpayer.", "dateLastCrawled":
+        "2021-10-02T22:15:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16", "name":
+        "pubmed.ncbi.nlm.nih.gov", "url": "https:\/\/pubmed.ncbi.nlm.nih.gov\/30591715\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/pubmed.ncbi.nlm.nih.gov\/30591715",
+        "snippet": "pubmed.ncbi.nlm.nih.gov", "dateLastCrawled": "2021-09-23T16:57:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Internal Consistency, Retest Reliability, and their ...", "url":
+        "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC2927808\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC2927808",
+        "snippet": "The first determinant of reliability is the appropriateness
+        or relevance of the item content. An Extraversion (E) scale that includes
+        items assessing Neuroticism (N) and Conscientiousness (C) as well as E is
+        unlikely to be internally consistent, because these three factors are largely
+        unrelated.", "dateLastCrawled": "2021-10-01T23:36:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Psychometric analysis of the Generalized Anxiety Disorder ...", "url":
+        "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC5542568\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC5542568",
+        "snippet": "However, item content analysis suggests that this pair reflects
+        closely related aspects of GAD. Therefore evidence from three distinctive
+        viewpoints (ROC; IRT and item content) suggests the first item pair as
+        a reasonable ultra-brief assessment tool. Thus, the main findings which are
+        tied to the practical and clinical application are as follows:", "dateLastCrawled":
+        "2021-10-02T04:26:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19", "name":
+        "www.tn.gov", "url": "https:\/\/www.tn.gov\/content\/dam\/tn\/generalservices\/documents\/cpo\/swc-files\/swc-612\/prices\/october-2021\/New%20Dairy%20HoldCo%20Item%20Request%20Sheet%20October%202021.xlsx",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.tn.gov\/content\/dam\/tn\/generalservices\/documents\/cpo\/swc-files\/swc-612...",
+        "snippet": "This item description can be up to 254 characters. I should
+        not include item numbers, brand names, or model names. The Inventory Module
+        will only present the first 60 characters, so pertinent information that
+        differentiates items (such as sizes, colors, etc) should be noted inside
+        the first 60 characters.", "dateLastCrawled": "2021-10-05T20:21:00.0000000Z",
+        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 06 Oct 2021 15:39:04 GMT
 recorded_with: VCR 6.0.0

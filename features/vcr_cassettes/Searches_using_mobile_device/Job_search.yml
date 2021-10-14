@@ -14127,4 +14127,764 @@ http_interactions:
       encoding: UTF-8
       string: '{"LanguageCode":"EN","SearchParameters":{},"SearchResult":{"SearchResultCount":0,"SearchResultCountAll":0,"SearchResultItems":[],"UserArea":{"NumberOfPages":"0","IsRadialSearch":false}}}'
   recorded_at: Tue, 07 Sep 2021 16:17:37 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=jobs%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 11:46:50 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - 1260BF743857499D9CBD3C448100677F
+      Bingapis-Sessionid:
+      - 9B00D63664464C988FC0A4C284780C7F
+      X-Msedge-Clientid:
+      - 0ACB65A1F70B67700B3D7569F6BB6645
+      X-Msapi-Userstate:
+      - '4257'
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=253,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: 1260BF743857499D9CBD3C448100677F Ref B: BLUEDGE1411 Ref C: 2021-10-06T11:47:50Z'
+      Apim-Request-Id:
+      - 8fb13f2f-07e0-4540-a878-b9c29368cde0
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 11:47:50 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "jobs
+        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=jobs+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 28300000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "USAJOBS - The Federal Government''s Official Jobs Site", "url":
+        "https:\/\/www.usajobs.gov\/", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usajobs.gov",
+        "snippet": "USAJOBS is the Federal Government''s official one-stop source
+        for Federal jobs and employment information.", "dateLastCrawled": "2021-10-03T07:18:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Find a Federal Government Job | USAGov", "url": "https:\/\/www.usa.gov\/government-jobs",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/government-jobs",
+        "snippet": "Many jobs open to people with disabilities use only that process.
+        Finding and Applying for Federal Jobs. You can search for most jobs on
+        the government’s job site, USAJOBS.gov. To apply for jobs under Schedule
+        A, you must provide proof that you have an intellectual, psychiatric, or severe
+        physical disability. To apply for a job online:", "dateLastCrawled": "2021-10-03T13:19:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "NC.gov: Jobs", "url": "https:\/\/www.nc.gov\/jobs", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.nc.gov\/jobs", "snippet": "Careers within
+        the State of North Carolina include public safety, education, transportation,
+        and health care. State employees located in each one of the 100 counties in
+        North Carolina. We also have listings for jobs in the local school system,
+        and jobs in the private sector that are in our Employment Security database.",
+        "dateLastCrawled": "2021-10-03T11:16:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3", "name":
+        "Careers - Naval Facilities Engineering Command", "url": "https:\/\/www.navfac.navy.mil\/jobs.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.navfac.navy.mil\/jobs.html",
+        "snippet": "Equal Employment Opportunity. The Department of Navy is an Equal
+        Opportunity Employer. All qualified candidates will receive consideration
+        without regard to race, color, religion, sex, national origin, age, disability,
+        marital status, political affiliation, sexual orientation, or any other non-merit
+        factor.", "dateLastCrawled": "2021-10-01T13:14:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Jobs | City of Philadelphia", "url": "https:\/\/www.phila.gov\/jobs\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.phila.gov\/jobs",
+        "snippet": "Jobs. Use the job board to explore current openings and find
+        work with the City of Philadelphia. To learn more about the hiring process,
+        see how to apply for a City job or internship. You can also sign up to be
+        notified when a new civil service position with the City is posted. Showing
+        all 108 available positions.", "dateLastCrawled": "2021-10-03T07:14:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "AlaskaJobs", "url": "https:\/\/alaskajobs.alaska.gov\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/alaskajobs.alaska.gov", "snippet": "Occupational
+        Wage Rates: Occupational Employment and Wage Statistics (OEWS) Program The
+        median wage is the estimated 50th percentile; 50 percent of workers in an
+        occupation earn less than the median wage, and 50 percent earn more than the
+        median wage. 25th % and 75th % wage rates represent the 25th and 75th percentile
+        of the wage distribution, respectively.", "dateLastCrawled": "2021-10-03T06:19:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Waukesha County - Jobs", "url": "https:\/\/www.waukeshacounty.gov\/jobs\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.waukeshacounty.gov\/jobs",
+        "snippet": "Waukesha, WI. Full-time - $17.45 Hourly. Category: Administrative
+        Assistant \/ Clerical & Data Entry \/ Customer Service. Department: Sheriff''s
+        Department. This position is located in the Waukesha County Sheriff''s Department.
+        Work schedule is Monday through Friday, 8 a.m. to 4:30 p.m. with weekends
+        and holidays off.", "dateLastCrawled": "2021-10-03T01:17:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Jobs - Fulton County, Georgia", "url": "https:\/\/fultoncountyga.gov\/jobs",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/fultoncountyga.gov\/jobs",
+        "snippet": "Jobs. Join the Fulton County team and discover how we place
+        our employees first to ensure we provide the highest level of customer service
+        to our 1 million+ citizens. service-oriented team. outstanding benefits package.
+        recognition strategies and compensation programs.", "dateLastCrawled": "2021-10-03T13:02:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "City of Albany Civil Service Employment Portal", "url": "https:\/\/jobs.albanyny.gov\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/jobs.albanyny.gov", "snippet":
+        "View and apply for civil service exams from the CURRENT EXAMS tab at the
+        top of the page. $37,000\/year to $38,500\/year commensurate with experience
+        @ 40 hours\/week. $40,000\/year to $42,000\/year commensurate with experience
+        @ 40 hours\/week. f $14.00 per hour commensurate with experience at 40 Hours\/week.
+        f $19.50 - $20.50 per hour at 40 Hours\/week.", "dateLastCrawled": "2021-10-02T04:25:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Careers - Texas Department of Transportation", "url": "https:\/\/www.txdot.gov\/careers.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.txdot.gov\/careers.html",
+        "snippet": "See all jobs . Engineering. Finance. Maintenance. Administration.
+        Laboratory. We are committed to create an environment where all employees
+        feel welcomed and valued. The principles of diversity, equity and inclusion
+        must be integrated throughout all levels of TxDOT to continually innovate
+        and advance. TxDOT welcomes every gender, race ...", "dateLastCrawled":
+        "2021-10-03T17:24:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10", "name":
+        "Jobs - Department of Health", "url": "https:\/\/www.health.pa.gov\/topics\/Administrative\/Pages\/Jobs.aspx",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.health.pa.gov\/topics\/Administrative\/Pages\/Jobs.aspx",
+        "snippet": "Join Our Team! Learn about many DOH jobs that will allow you
+        to help people, earn great pay and receive excellent benefits!; Contribute
+        to the health of the commonwealth and receive satisfaction from helping to
+        change lives!; Grow by applying your special talents and skills in a unique
+        work environment!; Open DOH Vacancy Postings. DOH Public Health Internships",
+        "dateLastCrawled": "2021-10-03T08:13:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Employment", "url": "https:\/\/imagery2.coast.noaa.gov\/fellowship\/jobs.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/imagery2.coast.noaa.gov\/fellowship\/jobs.html",
+        "snippet": "Georgia Department of Natural Resources Jobs. Hawaii State Recruiting
+        Office. Indiana State Personnel Department. Louisiana Department of Natural
+        Resources Human Resources Division. Maine Current Vacancies. Maryland Department
+        of Natural Resources Current Job Openings\/Tests. Massachusetts Office of
+        Coastal Zone Management Jobs and Grants.", "dateLastCrawled": "2021-10-05T20:00:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Work for Us (U.S. National Park Service) - NPS", "url": "https:\/\/www.nps.gov\/aboutus\/workwithus.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/aboutus\/workwithus.htm",
+        "snippet": "Jobs for 55+ The Experienced Services Program offers temporary
+        employment opportunities for individuals 55 years or older to work on specific
+        projects. Volunteer. Discover the many ways to volunteer, from one-time to
+        recurring opportunities for youth, families, groups, and individuals.", "dateLastCrawled":
+        "2021-09-21T21:48:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13", "name":
+        "Home | Division of State Human Resources", "url": "https:\/\/www.careers.sc.gov\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.careers.sc.gov", "snippet":
+        "There are many jobs where you can achieve personal success, but what about
+        the part of you that believes making a difference matters too? Join the nearly
+        60,000 state employees who feel the same way and strive daily to improve the
+        quality of life for all South Carolinians.", "dateLastCrawled": "2021-10-03T07:19:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Jobs at the State of Arkansas", "url": "https:\/\/arcareers.arkansas.gov\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/arcareers.arkansas.gov",
+        "snippet": "Apply online for jobs at State of Arkansas - Agriculture jobs,Commerce
+        jobs,Corrections jobs,Education Jobs, Energy and Environment jobs,
+        Finance and Adminitsration jobs, Health jobs, Human Services jobs, Inspector
+        General jobs, Labor and Licensing jobs,", "dateLastCrawled": "2021-10-02T23:03:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Careers | City of OKC", "url": "https:\/\/www.okc.gov\/jobs\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.okc.gov\/jobs",
+        "snippet": "Careers. The City offers exciting and varied career choices including
+        police and fire protection, parks, street maintenance, traffic control, water
+        and wastewater services, airports, solid waste collection\/disposal and numerous
+        other professional, technical and administrative positions in areas such as
+        forensic science, engineering, finance ...", "dateLastCrawled": "2021-10-03T11:22:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "PA CareerLink® - Job Search", "url": "https:\/\/www.pacareerlink.pa.gov\/jponline\/JobSeeker\/SearchJobs",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.pacareerlink.pa.gov\/jponline\/JobSeeker\/SearchJobs",
+        "snippet": "187,771 Ordenar por. Search. Search Registered Employers Only.
+        Search Registered Employers Only. A Registered Employer is an employer who
+        has posted a job using the PA CareerLink® job website. Registered Employers
+        and their jobs are reviewed and approved by PA CareerLink® staff. Mostrando
+        187,771 resultados.", "dateLastCrawled": "2021-10-04T00:25:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Office of Human Resources | Homepage | City of Philadelphia", "url":
+        "https:\/\/www.phila.gov\/departments\/office-of-human-resources\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.phila.gov\/departments\/office-of-human-resources",
+        "snippet": "The Office of Human Resources (OHR) works with City departments,
+        agencies, boards, and commissions to attract and keep a talented and diverse
+        workforce for the City of Philadelphia. The City employs over 25,000 people
+        in more than 1,000 different job categories. We are committed to developing
+        careers that make a difference in the lives of others.", "dateLastCrawled":
+        "2021-10-03T02:07:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18", "name":
+        "Employment Open Jobs", "url": "https:\/\/www.employment.pa.gov\/Pages\/jobopportunities.aspx",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.employment.pa.gov\/Pages\/jobopportunities.aspx",
+        "snippet": "Open Jobs View Jobs and Apply. View and apply for all commonwealth
+        positions in one location! Open to Public – opportunities for all job seekers.
+        Internal Postings – opportunities for current commonwealth employees only.
+        Internships – opportunities for students. Subscribe to Job Alerts", "dateLastCrawled":
+        "2021-10-02T13:03:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19", "name":
+        "Careers - Houston", "url": "https:\/\/houstontx.gov\/hr\/careers.html", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/houstontx.gov\/hr\/careers.html", "snippet":
+        "The City of Houston can’t function without great employees. We’re always
+        on the lookout for talented, caring people to join us. Employment with City
+        of Houston represents more than just a job. A career in public service is
+        an opportunity to serve fellow citizens across our city. Professions in city
+        government help to support many aspects of life in Houston and considering
+        a career in ...", "dateLastCrawled": "2021-10-03T14:17:00.0000000Z", "language":
+        "en", "isNavigational": false}]}, "rankingResponse": {"mainline": {"items":
+        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 06 Oct 2021 05:45:07 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=blablah%20jobs%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 11:46:52 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - BFFBAE3642774C2189874255CB057787
+      Bingapis-Sessionid:
+      - 90CED4CE130E476DA43D4928DF21545E
+      X-Msedge-Clientid:
+      - 0545B3C39B416A1F1AD0A30B9A0E6B1D
+      X-Msapi-Userstate:
+      - '7073'
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=244,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: BFFBAE3642774C2189874255CB057787 Ref B: BLUEDGE1208 Ref C: 2021-10-06T11:47:52Z'
+      Apim-Request-Id:
+      - 789f7845-d9c2-41ce-b943-23d17d0b3e65
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 11:47:51 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "blablah
+        jobs (site:gov OR site:mil)", "alteredQuery": "blah blah jobs", "alterationDisplayQuery":
+        "blah blah jobs", "alterationOverrideQuery": "+blablah jobs (site:gov OR
+        site:mil)", "adultIntent": false}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=blablah+jobs+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 28600, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Associate Creative Director - Delaware JobLink", "url": "https:\/\/joblink.delaware.gov\/jobs\/800809",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/joblink.delaware.gov\/jobs\/800809",
+        "snippet": "Job Description. At UL, we know why we come to work. Thousands
+        of us around the world wake up every day with a common purpose: to make the
+        world a safer, more secure and sustainable place. ... and you understand the
+        discipline required to focus on clients first and shut out all that corporate
+        blah-blah. You know how to design and mentor an art ...", "dateLastCrawled":
+        "2021-08-22T06:07:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1", "name": "A-Z
+        Index of U.S. Government Departments and Agencies | A ...", "url": "https:\/\/www.usa.gov\/federal-agencies\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/federal-agencies",
+        "snippet": "A-Z Index of U.S. Government Departments and Agencies. Find
+        contact information for U.S. federal government departments and agencies
+        including websites, emails, phone numbers, addresses, and more.", "dateLastCrawled":
+        "2021-10-03T16:05:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2", "name": "Collection
+        and Use of Industry and Occupation Data", "url": "https:\/\/www.cdc.gov\/niosh\/topics\/coding\/pdfs\/Cancer%20registrar%20I%20and%20O%20slides_for%20LA%204-14-11_rev.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/niosh\/topics\/coding\/pdfs\/Cancer
+        registrar I and O slides_for LA 4...", "snippet": "Industry=kind of business
+        Occupation=type of job\/work. Patient’s work history recorded in medical
+        chart . or death certificate. Administrative data Clinical notes Death certificate.
+        Clerks, Health information management professionals ... blah blah blah blah
+        blah. and . industry.. ...", "dateLastCrawled": "2021-09-29T19:28:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "FTC settlement against University of Phoenix | FTC ...", "url": "https:\/\/www.consumer.ftc.gov\/blog\/2019\/12\/ftc-settlement-against-university-phoenix",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.consumer.ftc.gov\/blog\/2019\/12\/ftc-settlement-against-university-phoenix",
+        "snippet": "Under the settlement between the FTC and the University of Phoenix,
+        the University will cancel $141 million in debts that are owed directly to
+        the school by people who first enrolled at the school between October 1, 2012
+        and December 31, 2016.. The University will cancel debts owed directly to
+        the school whether they were charged as fees or some other kind of charge.",
+        "dateLastCrawled": "2021-09-30T04:40:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4", "name":
+        "A “work at home” scheme that didn’t work | FTC Consumer ...", "url": "https:\/\/www.consumer.ftc.gov\/blog\/2014\/06\/work-home-scheme-didnt-work",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.consumer.ftc.gov\/blog\/2014\/06\/work-home-scheme-didnt-work",
+        "snippet": "A “work at home” scheme that didn’t work. Claims you can “Make
+        Big Money Working From Home!” can show up online, on utility poles in the
+        neighborhood, even on your phone. Some promotions that sound promising are
+        cover-ups for a con, like the sham payment processing business that took more
+        than $5.4 million from people in less than a year.", "dateLastCrawled": "2021-09-17T05:22:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "IN THE UNITED STATES COURT OF APPEALS FOR THE FIFTH ...", "url":
+        "http:\/\/www.ca5.uscourts.gov\/opinions\/unpub\/10\/10-60599.0.wpd.pdf",
+        "isFamilyFriendly": true, "displayUrl": "www.ca5.uscourts.gov\/opinions\/unpub\/10\/10-60599.0.wpd.pdf",
+        "snippet": "[Black people] coming in and taking their jobs, blah, blah,
+        blah, stuff like that.”! “Basically people just talking about blacks. This
+        guy Paul got to fighting with Robin Brown in the company. Talk about here
+        comeSSblah, blah, blah. Anyway, Robin was a white guy.”! “He was there the
+        day that Danny and I crossed, exchanged words about ...", "dateLastCrawled":
+        "2021-09-19T04:54:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6", "name": "EPISODE
+        47: ISS 20 – SPACE STATION COMPLEXITY | APPEL ...", "url": "https:\/\/appel.nasa.gov\/podcast\/episode-47-iss-20-space-station-complexity\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/appel.nasa.gov\/podcast\/episode-47-iss-20-space-station-complexity",
+        "snippet": "In the second segment of a two-part series celebrating the 20th
+        anniversary of continuous human presence in space, Renfrew shares experiences
+        and observations from the perspective of a flight director. In this episode
+        of Small Steps, Giant Leaps, you’ll learn about: ISS complexity. The importance
+        of international collaboration on the space ...", "dateLastCrawled": "2021-10-01T11:43:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Remarks by President Biden on the Importance of American ...", "url":
+        "https:\/\/www.whitehouse.gov\/briefing-room\/speeches-remarks\/2021\/07\/28\/remarks-by-president-biden-on-the-importance-of-american-manufacturing\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/speeches-remarks\/2021\/07\/28\/remarks-by...",
+        "snippet": "Remarks by President. Biden on the Importance of American Manufacturing.
+        July 28, 2021 • Speeches and Remarks. Mack Lehigh Valley Operations. Macungie,
+        Pennsylvania. 1:59 P.M. EDT. THE PRESIDENT ...", "dateLastCrawled": "2021-09-29T16:13:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Scottsdale Police Department’s Moments of Truth", "url": "http:\/\/www.scottsdaleaz.gov\/Asset28505.aspx",
+        "isFamilyFriendly": true, "displayUrl": "www.scottsdaleaz.gov\/Asset28505.aspx",
+        "snippet": "blah-blah-blah, but the lady who stopped her was super professional
+        throughout the process of the stop and ticket. I didn’t catch her name (I’m
+        sure it’s on the ticket) but I wanted you to know she did her job very well
+        and was nothing but professional and polite. Needless to say, my wife wasn’t
+        all", "dateLastCrawled": "2021-09-17T04:20:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "How to Build and Maintain a Career as Military Spouse ...", "url":
+        "https:\/\/blog-brigade.militaryonesource.mil\/2015\/08\/20\/how-to-build-and-maintain-a-career-as-military-spouse\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/blog-brigade.militaryonesource.mil\/2015\/08\/20\/how-to-build-and-maintain-a...",
+        "snippet": "Blogger Biography: Cecelia is a marketing and communications professional
+        and a proud military spouse. Cecelia’s husband of 12 years, Bryan, serves
+        in the U.S. Air Force and is currently stationed in Miami, … Read More — \"How
+        to Build and Maintain a Career as Military Spouse\"", "dateLastCrawled": "2021-08-14T17:19:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Transcript: Mayor de Blasio Appears Live on the Brian ...", "url":
+        "https:\/\/www1.nyc.gov\/office-of-the-mayor\/news\/797-20\/transcript-mayor-de-blasio-appears-live-the-brian-lehrer-show",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www1.nyc.gov\/office-of-the-mayor\/news\/797-20\/transcript-mayor-de-blasio...",
+        "snippet": "November 20, 2020. Brian Lehrer: It''s the Brian Lehrer Show on
+        WNYC. Good morning again, everyone. And now as every Friday at this time,
+        it''s time for our weekly Ask the Mayor segment. My questions and yours for
+        Mayor Bill de Blasio at 6-4-6-4-3-5-7-2-8-0. Or you can tweet a question,
+        just use the hashtag #AskTheMayor.", "dateLastCrawled": "2021-08-27T12:44:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Ergonomic Team Training", "url": "https:\/\/response.epa.gov\/_healthsafetymanual\/19-Office-Ergonomics.ppt",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/response.epa.gov\/_healthsafetymanual\/19-Office-Ergonomics.ppt",
+        "snippet": "The field of study that seeks to fit the job to the person,
+        rather than the person to the job. This is achieved by evaluation and design
+        of workplaces, environments, jobs, tasks, blah, blah, blah…. The goal
+        of ergonomics is to make an activity easy and safe to perform So if forward
+        head postures are so bad, why do we do it ?", "dateLastCrawled": "2021-08-08T01:50:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Paramedics - County of San Luis Obispo", "url": "https:\/\/www.slocounty.ca.gov\/Departments\/Health-Agency\/Public-Health\/All-Public-Health-Services\/Paramedics.aspx",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.slocounty.ca.gov\/Departments\/Health-Agency\/Public-Health\/All-Public-Health...",
+        "snippet": "1055 Monterey Street, San Luis Obispo, CA 93408. VIEW MAP. County
+        Phone Directory: 805-781-5000 (Toll free: 800-834-4636)", "dateLastCrawled":
+        "2021-09-28T17:06:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13", "name":
+        "Evening star. [volume] (Washington, D.C.) 1854-1972, April ...", "url": "https:\/\/chroniclingamerica.loc.gov\/lccn\/sn83045462\/1940-04-07\/ed-1\/seq-35\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/chroniclingamerica.loc.gov\/lccn\/sn83045462\/1940-04-07\/ed-1\/seq-35",
+        "snippet": "SECOND RACE—BLABLAH, CONVILLE, REMOLEE. BLABLAH copped her
+        first at tempt at this strip and she should be able to make it two-in-a-row
+        matched against this sort. CON VILLE would like a longer route, but may be
+        in the scrap. RE MOLEE raced well in his last. THIRD RACE—OURAGAN, AP PREHEND,
+        CLEANING TIME. OURAGAN just missed in his most recent ...", "dateLastCrawled":
+        "2021-04-17T09:08:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "20160289 FILED IN THE OFFICE OF THE STATE OF NORTH DAKOTA", "url": "https:\/\/www.ndcourts.gov\/supreme-court\/dockets\/20160289\/28",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ndcourts.gov\/supreme-court\/dockets\/20160289\/28",
+        "snippet": "reflect demeanor of witnesses blah blah blah. Keefe does not
+        understand the law, the and purpose of government or his job. Sadly and
+        pitifully he lacks the discerning ability to grasp complex intent and purposes
+        of laws enacted by the people. These are gifts from Almighty God and he should
+        petition God for these gifts through prayer.", "dateLastCrawled": "2021-09-26T05:55:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "WE ARE NEW YORK", "url": "https:\/\/www1.nyc.gov\/html\/weareny\/downloads\/pdf\/study_guide_stayinschool.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www1.nyc.gov\/html\/weareny\/downloads\/pdf\/study_guide_stayinschool.pdf",
+        "snippet": "blah, blah, blah. I don’t understand my teachers. I can’t read
+        the books. With my English, I’ll be in school forever. It’s hard to learn
+        English. It’s hard to be in a new country. It was the same for us. Get an
+        education. You’ll have more choices. You can get the job you want. You can
+        go to college. College? I don’t know. •", "dateLastCrawled": "2021-09-12T07:47:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Consumer Story - Melissa Crouse - Lung Cancer Warrior ...", "url":
+        "https:\/\/cdmrp.army.mil\/cwg\/stories\/2017\/melissa_crouse_profile", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/cdmrp.army.mil\/cwg\/stories\/2017\/melissa_crouse_profile",
+        "snippet": "In the summer of 2005, I experienced three of life’s greatest
+        stressors: moving from Pennsylvania to Florida, changing jobs, and receiving
+        a devastating diagnosis—all within 1 month. I was very content with my life
+        in the Pittsburgh area. I loved my teaching job and had (still have) many
+        friends there, but a little voice kept whispering that I needed to accept
+        this job offer. So, off to ...", "dateLastCrawled": "2021-10-01T16:12:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Omni Electro Motive Inc. – Liquid Rocket Engines (J-2X, RS ...",
+        "url": "https:\/\/blogs.nasa.gov\/J2X\/tag\/omni-electro-motive-inc\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/blogs.nasa.gov\/J2X\/tag\/omni-electro-motive-inc",
+        "snippet": "The turbine blades are small airfoils that convert the power of
+        flowing hot, high pressure, high velocity gases into rotational power. Thus,
+        they are a key component of the engine. Between the two turbopumps, the J-2X
+        has over 300 turbine blades. Below is a picture of some turbine blades prior
+        to assembly into the J-2X fuel turbopump.", "dateLastCrawled": "2021-08-28T06:18:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Economics of Idaho’s Homebuilding Industry", "url": "https:\/\/legislature.idaho.gov\/wp-content\/uploads\/budget\/committee\/eora\/2021\/A.Thursday,%20January%207,%202021\/09.Idaho%20Assn%20of%20Building%20Contractors,%20Dave%20Yorgason%20or%20Ken%20Burgess.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/legislature.idaho.gov\/wp-content\/uploads\/budget\/committee\/eora\/2021\/A.Thursday...",
+        "snippet": "Economics of Idaho’s Homebuilding Industry Joint Legislative Economic
+        Outlook and Revenue Assessment Committee. January 7, 2021", "dateLastCrawled":
+        "2021-10-03T09:52:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19", "name":
+        "Evening star. [volume] (Washington, D.C.) 1854-1972, July ...", "url":
+        "https:\/\/chroniclingamerica.loc.gov\/lccn\/sn83045462\/1946-07-21\/ed-1\/seq-28\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/chroniclingamerica.loc.gov\/lccn\/sn83045462\/1946-07-21\/ed-1\/seq-28",
+        "snippet": "Job Jessop, riding his 17th win ner here, broke Grand Admiral
+        second from the inside position. He quickly urged the Brookmeade bullet into
+        command, slightly in ad vance of Owner''s Choice, Clean Slate, Royal Governor
+        and I Will, the group well bunched in the first quarter mile. Around the bend,
+        Grand Admiral increased his lead", "dateLastCrawled": "2021-04-06T06:50:00.0000000Z",
+        "language": "en", "isNavigational": false}], "someResultsRemoved": true},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 06 Oct 2021 05:45:09 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=blablah%20trabajo%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 11:46:52 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - 2491AAD3117A496299EFBD33D08D7D83
+      Bingapis-Sessionid:
+      - F6FB61CB9F8F4697819FB20ABF1E3899
+      X-Msedge-Clientid:
+      - 0DC9F408184465E33C33E4C019B9649B
+      X-Msapi-Userstate:
+      - bc44
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=253,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: 2491AAD3117A496299EFBD33D08D7D83 Ref B: BLUEDGE0117 Ref C: 2021-10-06T11:47:52Z'
+      Apim-Request-Id:
+      - 8b5dc34a-88e3-4a6c-8b62-657540d6b397
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 11:47:53 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "blablah
+        trabajo (site:gov OR site:mil)", "alteredQuery": "blah blah trabajo", "alterationDisplayQuery":
+        "blah blah trabajo", "alterationOverrideQuery": "+blablah trabajo (site:gov
+        OR site:mil)", "adultIntent": false}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=blablah+trabajo+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 64, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "A-Z Index of U.S. Government Departments and Agencies | A ...",
+        "url": "https:\/\/www.usa.gov\/federal-agencies\/", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.usa.gov\/federal-agencies", "snippet": "A-Z
+        Index of U.S. Government Departments and Agencies. Find contact information
+        for U.S. federal government departments and agencies including websites,
+        emails, phone numbers, addresses, and more.", "dateLastCrawled": "2021-10-03T16:05:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "| Comisión para la Igualdad de Oportunidades en el Empleo", "url":
+        "https:\/\/www.eeoc.gov\/es\/meetings\/24098\/transcript", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.eeoc.gov\/es\/meetings\/24098\/transcript",
+        "snippet": "Since 1965, when the EEOC first opened its doors; the hard working
+        people of this Agency, courts across the country, and individual people standing
+        up for what is right; have helped moved fairness and equality in our workplaces,
+        closer to reality. And how wonderful it is to say, Happy 25th Birthday to
+        the ADA.", "dateLastCrawled": "2021-07-29T13:54:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Town Hall Meeting Transcript for Chicago | Comisión para ...",
+        "url": "https:\/\/www.eeoc.gov\/es\/node\/24384", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.eeoc.gov\/es\/node\/24384", "snippet": "Town
+        Hall Meeting Transcript for Chicago. * * *. Please note: The text below was
+        provided by a Communication Access Realtime Translation (CART) contractor
+        for attendees with hearing impairments at the town hall listening session.
+        As the name of the service indicates, the CART text is typed by the contractor
+        as it is heard and displayed ...", "dateLastCrawled": "2021-08-03T20:04:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "cdn.loc.gov", "url": "https:\/\/cdn.loc.gov\/copyright\/licensing\/noi\/files\/Google,%20Inc.-2018.09.27-NOI.Britt-Marie%20war%20hier,%20Kapitel%20144.xlsx",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/cdn.loc.gov\/copyright\/licensing\/noi\/files\/Google,
+        Inc.-2018.09.27-NOI.Britt...", "snippet": "U.S. Copyright Office Section 115
+        Electronic - Notice of Intention to Obtain a Compulsory License for Making
+        and Distributing Phonorecords [201.18(d)(1)]", "dateLastCrawled": "2021-09-18T01:23:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Library of Congress", "url": "https:\/\/cdn.loc.gov\/copyright\/licensing\/noi\/files\/Spotify%20USA%20Inc.-2018.08.10-NOI.Love%20Is%20Just%20A%20Four%20Letter%20Word%20-%20Live.xlsx",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/cdn.loc.gov\/copyright\/licensing\/noi\/files\/Spotify
+        USA Inc.-2018.08.10-NOI.Love...", "snippet": "Blah Blah Blah (Mix Cut) -
+        Brennan Heart & Toneshifterz Remix A. van Buuren,A. Bullimore,J. Record Armin
+        van Buuren 0Djym80kotXx2mXr2ZB828 Armada Music Bundles Na Casa Do Senhor Rogerio
+        dy Castro,Yana dy Castro 0DqE6xB6PZiEtxtTGkMttn Wut I''m Izz 0DqXZAMpUmD6GFGwtHQK2Z
+        Der große Fisch Bruhn,Buschor Gaby Berger 0DvAWYhUvt0AnaIWlamUDU Cala MIllor",
+        "dateLastCrawled": "2021-09-29T23:54:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5", "name":
+        "Library of Congress", "url": "https:\/\/cdn.loc.gov\/copyright\/licensing\/noi\/files\/Google,%20Inc.-2017.10.26-NOI.xlsx",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/cdn.loc.gov\/copyright\/licensing\/noi\/files\/Google,
+        Inc.-2017.10.26-NOI.xlsx", "snippet": "U.S. Copyright Office Section 115 Electronic
+        - Notice of Intention to Obtain a Compulsory License for Making and Distributing
+        Phonorecords [201.18(d)(1)]", "dateLastCrawled": "2021-09-28T02:34:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Library of Congress", "url": "https:\/\/cdn.loc.gov\/copyright\/licensing\/noi\/files\/Google,%20Inc.-2018.04.18-NOI.xlsx",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/cdn.loc.gov\/copyright\/licensing\/noi\/files\/Google,
+        Inc.-2018.04.18-NOI.xlsx", "snippet": "No Voy Al Trabajo 07bd7160-0a28-43fe-93d8-e244480af349
+        Bossteady Internationals 07c025e3-8e39-4847-b352-1c71b8b0640c Auld Lang Syne
+        DP,Watson, James 07c521d2-8f43-479b-8b03-21621cbc30be Warm (in the Soft White
+        Fire of Modern Living) YOWL 07ca1915-83c6-4c61-bcbf-5bc1f8706e6d Первый раз
+        07cb3716-627e-465f-95b5-c603bceb27ce In the ...", "dateLastCrawled": "2021-09-10T23:12:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "cdn.loc.gov", "url": "https:\/\/cdn.loc.gov\/copyright\/licensing\/noi\/files\/Spotify%20USA%20Inc.-2018.04.25-NOI.6.xlsx",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/cdn.loc.gov\/copyright\/licensing\/noi\/files\/Spotify
+        USA Inc.-2018.04.25-NOI.6.xlsx", "snippet": "Capítulo 51 - las Víctimas del
+        Trabajo 097rpO9tmnMRrvm4AmaBmk Women (The Kind We Like) Mont De Sundua 099PNuUSiJmEc5Ag3Xb6hL
+        Removador Recordings & Solutions Travel Delays Alan Silvestri 09AgJ7sFTRZspBt2AapD7x
+        Hollywood Records Future Earth Street Cody Wellington Dosier,Julianne Grace
+        Keller Being Dead 09E9VGG3buO5RBOaa2iVqD Scegli Te ...", "dateLastCrawled":
+        "2021-10-03T11:07:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8", "name": "Library
+        of Congress", "url": "https:\/\/cdn.loc.gov\/copyright\/licensing\/noi\/files\/Amazon%20Digital%20Services%20LLC-2018.06.28-NOI.34.xlsx",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/cdn.loc.gov\/copyright\/licensing\/noi\/files\/Amazon
+        Digital Services LLC-2018.06...", "snippet": "2018 02:00:00 6\/28\/2018 602567805328.
+        2018 03:39:00 6\/28\/2018. 2018 05:44:00 6\/28\/2018. 2018 07:26:00 6\/28\/2018.
+        2018 09:51:00 6\/28\/2018. 2018 11:11:00 6\/28\/2018 843930036585", "dateLastCrawled":
+        "2021-09-15T15:19:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9", "name": "Library
+        of Congress", "url": "https:\/\/cdn.loc.gov\/copyright\/licensing\/noi\/files\/Google,%20Inc.-2018.05.08-NOI.xlsx",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/cdn.loc.gov\/copyright\/licensing\/noi\/files\/Google,
+        Inc.-2018.05.08-NOI.xlsx", "snippet": "Relajarse Después del Trabajo 015b4a2e-4799-4ff0-8de2-bfdbd970e48f
+        Kaca in crv BO! 015de860-55ab-40dd-a27e-06d0a2e2eef2 Bring the House Down
+        Hardcore Superstar 015ed602-6892-4b5d-895a-cb5659f1871a Gain Vibes Powakut
+        015fe412-0730-4f27-b264-45ad40260796 Maths of Mind Productions Ibiza The Prodigy
+        01600cd5-8afd-4d4c-8598-40872fb9f63b Take Me To ...", "dateLastCrawled": "2021-10-02T15:07:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "cdn.loc.gov", "url": "https:\/\/cdn.loc.gov\/copyright\/licensing\/noi\/files\/Google,%20Inc.-2018.09.10-NOI.foreign%20title.xlsx",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/cdn.loc.gov\/copyright\/licensing\/noi\/files\/Google,
+        Inc.-2018.09.10-NOI.foreign...", "snippet": "Despido Trabajo Gabriel Chwojnik
+        02302683-7208-4024-9e96-0b57f72eb7b4 321musica Cotton Reloaded, Folge 43:
+        Das Gift der Viper, Kapitel 41 0232973a-ee73-45b9-b530-27e3f2eb0fe5 Walk Like
+        a Duck 02372565-18df-4d49-b440-ba7a2546b10d Träumende Leere, Kapitel 294 02389260-d58d-4881-938d-7d129f35cde2
+        Der Schatz des Herrn Isakowitz, Kapitel 33", "dateLastCrawled": "2021-10-02T13:05:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "New Web Pages (weekly) | The City of Tualatin Oregon ...", "url":
+        "https:\/\/www.tualatinoregon.gov\/new-web-pages-weekly-0", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.tualatinoregon.gov\/new-web-pages-weekly-0",
+        "snippet": "Tween TakeOver at the Library! TEAM Tualatin - June 22-26, 2015.
+        July 18, 2015, Spruce Up Tualatin Library. TEAM Tualatin - July 13 - July
+        17, 2015. June 19, 2015, Spruce Up Tualatin Library. Washington County Youth
+        Services. Put Down Roots in Tualatin, Timbers Day of Sharing. May 17, 2015,
+        Spruce Up Tualatin Library.", "dateLastCrawled": "2021-07-30T23:35:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "LIDEANDO CON CONFLICTO (Spanish)", "url": "https:\/\/www.epa.gov\/sites\/production\/files\/2014-03\/documents\/esalv2013-conflictresolution.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.epa.gov\/sites\/production\/files\/2014-03\/documents\/esalv2013-conflict...",
+        "snippet": "perdí mi trabajo, y ahorita estoy atrazada en el pago de la
+        casa. Lo único que quiero es vender y comenzar de nuevo. Su limpieza esta
+        arruinando la única oportunidad que tengo. ^Veo su punto. Si todo eso me hubiera
+        pasado a mi, podría ver la situación de la misma manera _. 2. Reconozca los
+        puntos de vista", "dateLastCrawled": "2021-09-24T22:29:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Alabama Leyes Laborales de Menores", "url": "https:\/\/labor.alabama.gov\/docs\/posters\/childlaborlawposter_spanish.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/labor.alabama.gov\/docs\/posters\/childlaborlawposter_spanish.pdf",
+        "snippet": "Empleo a menores de 16\/17 años de edad. Restricciónes de Horas
+        (menores de 19 años) Durante los meses que la. Escuela publica esta en Año
+        Escolar: No mas de 3 horas en un día escolar. ... blah blah Created Date:
+        5\/20\/2014 3:19:31 PM ...", "dateLastCrawled": "2021-09-29T18:13:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "| Comisión para la Igualdad de Oportunidades en el Empleo", "url":
+        "https:\/\/www.eeoc.gov\/es\/meetings\/19192\/transcript", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.eeoc.gov\/es\/meetings\/19192\/transcript",
+        "snippet": "In December 2007, the Commission determined that it would no longer
+        be able to obtain three-month emergency extensions for UGESP, and that it
+        was necessary to apply for a new, full-term PRA authorization. If EEOC does
+        not apply for this authorization by March 31st, the data collection requirements
+        of UGESP will lapse.", "dateLastCrawled": "2021-09-26T16:50:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "ST New Life Cafe - Spanish - New", "url": "http:\/\/www.nyc.gov\/html\/weareny\/downloads\/pdf\/script_newlifecafe-Spanish.pdf",
+        "isFamilyFriendly": true, "displayUrl": "www.nyc.gov\/html\/weareny\/downloads\/pdf\/script_newlifecafe-Spanish.pdf",
+        "snippet": "Blah, blah, blah, blah, blah, blah, blah and blah blah...
+        Understand? Get your lab tests tomorrow. Then come back and see me. Creo que…
+        Bla, bla, bla, bla, bla, ... me cuesta trabajo entenderlo. La última vez
+        que vine, ¡no entendí nada de lo que me dijo! DOCTOR MÉDICO Okay, Mrs. Dominguez.",
+        "dateLastCrawled": "2021-09-08T08:14:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Library of Congress", "url": "https:\/\/cdn.loc.gov\/copyright\/licensing\/noi\/files\/Spotify%20USA%20Inc.-2018.06.19-NOI.6.xlsx",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/cdn.loc.gov\/copyright\/licensing\/noi\/files\/Spotify
+        USA Inc.-2018.06.19-NOI.6.xlsx", "snippet": "Blah Blah Blah Cian Hernandez
+        02WH9bJ02s28n9snKANnV9 Ditto Music Records My Frequency - Lelanga (without
+        Words Mix) Andy Compton,Kafele Bandele Andy Compton 02Yn51jEwqSLYzryP8aRSP
+        Peng Pictures Giulio Capone 20180701 Hartik 02ZQnZiT4OtvKdpbfMFS7r Ausr Ltd.
+        Abstruse Drauszen 02ajp43P268qCBkjxZZsOf 886930 Records DK Spirit Enhancement
+        ...", "dateLastCrawled": "2021-09-10T18:10:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "| Comisión para la Igualdad de Oportunidades en el Empleo", "url":
+        "https:\/\/www.eeoc.gov\/es\/meetings\/19210\/transcript", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.eeoc.gov\/es\/meetings\/19210\/transcript",
+        "snippet": "COMMISSIONER GRIFFIN: All right. Well, I guess maybe no one paid
+        attention to the part of the law that says the Commission shall include in
+        each report made under subsection E, information with respect to the operation
+        of the fund, identity of every person, or entity to which the cost to the
+        Commission, blah blah blah.", "dateLastCrawled": "2021-10-03T15:20:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "| Comisión para la Igualdad de Oportunidades en el Empleo", "url":
+        "https:\/\/www.eeoc.gov\/es\/meetings\/24086\/transcript", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.eeoc.gov\/es\/meetings\/24086\/transcript",
+        "snippet": "Now, here''s the challenge. The challenge is that after 1975-1978,
+        progress for similarly educated African Americans and whites stopped. The
+        progress that African Americans have made since the 1980s has all been because
+        of the relative increase in the education of African Americans relative to
+        whites.", "dateLastCrawled": "2021-09-11T03:46:00.0000000Z", "language": "es",
+        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Good Grief Podcast | Guilford County, NC", "url": "https:\/\/www.guilfordcountync.gov\/our-county\/register-of-deeds\/good-grief-podcast",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.guilfordcountync.gov\/our-county\/register-of-deeds\/good-grief-podcast",
+        "snippet": "Ep. 22 \"Opioid pandemic in Guilford County, the syringe exchange
+        program, and the effects of stigma in drug and substance rehabilitation\"
+        In this episode of the Good Grief Podcast, Jeff Thigpen and Carly Malcolm
+        talk to Chase Holleman, the program director for the Guilford County Solution
+        to the Opioid Problem, GS STOP.", "dateLastCrawled": "2021-09-28T23:29:00.0000000Z",
+        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 06 Oct 2021 05:45:10 GMT
 recorded_with: VCR 6.0.0
