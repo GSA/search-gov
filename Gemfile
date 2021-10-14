@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 5.2.0'
+gem 'rails', '~> 6.0.0'
 
 gem 'rake', '~> 12.3.2'
 gem 'rack-contrib', '~> 2.1.0'
@@ -142,7 +142,7 @@ group :development do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.8.2'
+  gem 'rspec-rails', '~> 5.0.0'
   gem 'rspec-json_expectations', '~> 2.1.0'
   gem 'rspec-its', '~> 1.2.0'
   gem 'email_spec', '~> 2.1.1'
@@ -162,10 +162,8 @@ end
 group :test do
   gem 'capybara-screenshot'
   gem 'simplecov', '~> 0.17.0', require: false
-  # Limiting the cucumber version until v4 is compatible with VCR
-  # https://github.com/vcr/vcr/issues/825
-  gem 'cucumber', '~> 3.0', require: false
-  gem 'cucumber-rails', '~> 2.0', require: false
+  gem 'cucumber', '~> 7.1.0', require: false
+  gem 'cucumber-rails', '~> 2.4.0', require: false
   gem 'resque_spec', '~> 0.17.0'
   gem 'poltergeist', '~> 1.18.1'
   gem 'shoulda-matchers', '~> 4.1.1'
