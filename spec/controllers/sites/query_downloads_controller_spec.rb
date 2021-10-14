@@ -66,7 +66,7 @@ describe Sites::QueryDownloadsController do
 
       it 'generates a CSV of human/bot traffic for a date range, sorted by human count' do
         show
-        expect(response.content_type).to eq('text/csv')
+        expect(response.media_type).to eq('text/csv')
         expect(response.headers['Content-Disposition']).to eq('attachment;filename=nps.gov_2014-06-08_2014-06-14.csv')
         expect(response.body).to start_with("Search Term,Real (Humans only) Queries,Real Clicks,Real CTR,Total (Bots + Humans) Queries,Total Clicks,Total CTR\njobs,9,15,166.7%,10,15,150.0%\nchartres,1,20,2000.0%,1,1,100.0%\n")
         expect(response.body).to have_content('filing complaints on us priviate militaires companies,0,0,--,8,12,150.0%')
