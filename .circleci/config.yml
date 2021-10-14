@@ -53,10 +53,7 @@ commands:
   prepare_database:
     description: 'Prepare the test database'
     steps:
-      - run: bundle exec rake db:create
-      # Configure MySQL 5.6 for ROW_FORMAT=DYNAMIC storage
-      - run: cat .circleci/database-configuration.sql | bundle exec rails db
-      - run: bundle exec rake db:structure:load
+      - run: bundle exec rake db:setup
 
 jobs:
   checkout_code:
