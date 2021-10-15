@@ -234,24 +234,6 @@ describe Affiliate do
       end
     end
 
-    it 'should save external CSS URL with http:// prefix when it does not start with http(s)://' do
-      url = 'cdn.agency.gov/custom.css'
-      prefixes = %w( http https HTTP HTTPS invalidhttp:// invalidHtTp:// invalidhttps:// invalidHTtPs:// invalidHttPsS://)
-      prefixes.each do |prefix|
-        affiliate.update_attributes!(external_css_url: "#{prefix}#{url}")
-        expect(affiliate.external_css_url).to eq("http://#{prefix}#{url}")
-      end
-    end
-
-    it 'should save external CSS URL as is when it starts with http(s)://' do
-      url = 'cdn.agency.gov/custom.css'
-      prefixes = %w( http:// https:// HTTP:// HTTPS:// )
-      prefixes.each do |prefix|
-        affiliate.update_attributes!(external_css_url: "#{prefix}#{url}")
-        expect(affiliate.external_css_url).to eq("#{prefix}#{url}")
-      end
-    end
-
     it 'should prefix website with http://' do
       affiliate.update_attributes!(website: 'usa.gov')
       expect(affiliate.website).to eq('http://usa.gov')
