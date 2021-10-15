@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_14_185921) do
+ActiveRecord::Schema.define(version: 2021_10_15_171400) do
 
-  create_table "affiliate_feature_additions", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "affiliate_feature_additions", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "affiliate_id", null: false
     t.integer "feature_id", null: false
     t.datetime "created_at", null: false
     t.index ["affiliate_id", "feature_id"], name: "index_affiliate_feature_additions_on_affiliate_id_and_feature_id", unique: true
   end
 
-  create_table "affiliate_templates", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "affiliate_templates", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer "affiliate_id", null: false
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["template_id"], name: "index_affiliate_templates_on_template_id"
   end
 
-  create_table "affiliate_twitter_settings", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "affiliate_twitter_settings", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "affiliate_id", null: false
     t.integer "twitter_profile_id", null: false
     t.boolean "show_lists", default: false, null: false
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["twitter_profile_id"], name: "index_affiliate_twitter_settings_on_twitter_profile_id"
   end
 
-  create_table "affiliates", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "affiliates", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -99,20 +99,20 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["template_id"], name: "index_affiliates_on_template_id"
   end
 
-  create_table "affiliates_instagram_profiles", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "affiliates_instagram_profiles", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "affiliate_id", null: false
     t.bigint "instagram_profile_id", null: false
     t.index ["affiliate_id", "instagram_profile_id"], name: "index_affiliates_instagram_profiles", unique: true
   end
 
-  create_table "affiliates_youtube_profiles", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "affiliates_youtube_profiles", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "affiliate_id"
     t.integer "youtube_profile_id"
     t.index ["affiliate_id", "youtube_profile_id"], name: "affiliate_id_youtube_profile_id", unique: true
     t.index ["youtube_profile_id"], name: "index_affiliates_youtube_profiles_on_youtube_profile_id"
   end
 
-  create_table "agencies", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "agencies", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -120,7 +120,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.integer "federal_register_agency_id"
   end
 
-  create_table "agency_organization_codes", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "agency_organization_codes", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "agency_id"
     t.string "organization_code"
     t.datetime "created_at", null: false
@@ -128,7 +128,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["agency_id"], name: "index_agency_organization_codes_on_agency_id"
   end
 
-  create_table "agency_queries", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "agency_queries", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "phrase"
     t.integer "agency_id"
     t.datetime "created_at"
@@ -136,7 +136,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["phrase"], name: "index_agency_queries_on_phrase", unique: true
   end
 
-  create_table "alerts", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "alerts", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "affiliate_id"
     t.string "status"
     t.text "text", size: :medium
@@ -146,7 +146,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["affiliate_id"], name: "index_alerts_on_affiliate_id", unique: true
   end
 
-  create_table "boosted_content_keywords", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "boosted_content_keywords", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "boosted_content_id", null: false
     t.string "value", null: false
     t.datetime "created_at", null: false
@@ -154,7 +154,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["boosted_content_id"], name: "index_boosted_content_keywords_on_boosted_content_id"
   end
 
-  create_table "boosted_contents", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "boosted_contents", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "affiliate_id"
     t.string "title", null: false
     t.string "url", null: false
@@ -168,13 +168,13 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["affiliate_id", "title"], name: "index_boosted_contents_on_affiliate_id_and_title"
   end
 
-  create_table "catalog_prefixes", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "catalog_prefixes", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "prefix", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "connections", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "connections", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "affiliate_id", null: false
     t.integer "connected_affiliate_id", null: false
     t.string "label", limit: 50, null: false
@@ -184,7 +184,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["affiliate_id"], name: "index_connections_on_affiliate_id"
   end
 
-  create_table "document_collections", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "document_collections", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "affiliate_id", null: false
     t.string "name", null: false
     t.datetime "created_at"
@@ -194,7 +194,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["affiliate_id", "name"], name: "index_document_collections_on_affiliate_id_and_name", unique: true
   end
 
-  create_table "email_templates", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "email_templates", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name"
     t.text "body", size: :medium
     t.datetime "created_at"
@@ -202,7 +202,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.string "subject"
   end
 
-  create_table "excluded_domains", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "excluded_domains", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "domain"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -210,7 +210,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["affiliate_id"], name: "index_excluded_domains_on_affiliate_id"
   end
 
-  create_table "excluded_urls", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "excluded_urls", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.text "url", size: :medium
     t.integer "affiliate_id"
     t.datetime "created_at"
@@ -218,7 +218,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["affiliate_id"], name: "index_excluded_urls_on_affiliate_id"
   end
 
-  create_table "featured_collection_keywords", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "featured_collection_keywords", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "featured_collection_id", null: false
     t.string "value", null: false
     t.datetime "created_at"
@@ -226,7 +226,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["featured_collection_id"], name: "index_featured_collection_keywords_on_featured_collection_id"
   end
 
-  create_table "featured_collection_links", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "featured_collection_links", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "featured_collection_id", null: false
     t.integer "position", null: false
     t.string "title", null: false
@@ -236,7 +236,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["featured_collection_id"], name: "index_featured_collection_links_on_featured_collection_id"
   end
 
-  create_table "featured_collections", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "featured_collections", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "affiliate_id"
     t.string "title", null: false
     t.string "title_url"
@@ -258,7 +258,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["affiliate_id"], name: "index_featured_collections_on_affiliate_id"
   end
 
-  create_table "features", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "features", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "internal_name", null: false
     t.string "display_name", null: false
     t.datetime "created_at"
@@ -266,7 +266,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["internal_name"], name: "index_features_on_internal_name"
   end
 
-  create_table "federal_register_agencies", id: :integer, default: nil, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "federal_register_agencies", id: :integer, default: nil, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "short_name"
     t.datetime "created_at", null: false
@@ -276,14 +276,14 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.integer "parent_id"
   end
 
-  create_table "federal_register_agencies_federal_register_documents", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "federal_register_agencies_federal_register_documents", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "federal_register_agency_id", null: false
     t.integer "federal_register_document_id", null: false
     t.index ["federal_register_agency_id", "federal_register_document_id"], name: "index_federal_register_agencies_federal_register_documents", unique: true
     t.index ["federal_register_document_id"], name: "fra_frd_frdocid_idx"
   end
 
-  create_table "federal_register_documents", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "federal_register_documents", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "document_number", null: false
     t.text "title", size: :medium, null: false
     t.text "abstract", size: :medium
@@ -301,7 +301,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.boolean "significant", default: false, null: false
   end
 
-  create_table "flickr_profiles", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "flickr_profiles", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "url"
     t.string "profile_type"
     t.string "profile_id"
@@ -311,7 +311,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["affiliate_id"], name: "index_flickr_profiles_on_affiliate_id"
   end
 
-  create_table "help_links", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "help_links", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "request_path"
     t.string "help_page_url"
     t.datetime "created_at"
@@ -319,7 +319,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["request_path"], name: "index_help_links_on_request_path"
   end
 
-  create_table "hints", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "hints", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "value"
     t.datetime "created_at", null: false
@@ -327,7 +327,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["name"], name: "index_hints_on_name", unique: true
   end
 
-  create_table "i14y_drawers", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "i14y_drawers", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "handle", null: false
     t.string "token", null: false
     t.string "description"
@@ -335,7 +335,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "i14y_memberships", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "i14y_memberships", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "affiliate_id", null: false
     t.integer "i14y_drawer_id", null: false
     t.datetime "created_at", null: false
@@ -344,7 +344,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["i14y_drawer_id"], name: "index_i14y_memberships_on_i14y_drawer_id"
   end
 
-  create_table "image_search_labels", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "image_search_labels", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "affiliate_id", null: false
     t.string "name", null: false
     t.datetime "created_at"
@@ -352,7 +352,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["affiliate_id"], name: "index_image_search_labels_on_affiliate_id", unique: true
   end
 
-  create_table "indexed_documents", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "indexed_documents", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.text "title", size: :medium
     t.text "description", size: :medium
     t.string "url", limit: 2000
@@ -370,13 +370,13 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["affiliate_id", "url"], name: "by_aid_url", length: { url: 50 }
   end
 
-  create_table "instagram_profiles", id: :bigint, default: nil, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "instagram_profiles", id: :bigint, default: nil, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "username", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "languages", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "languages", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "code", null: false
     t.boolean "is_google_supported", default: false, null: false
@@ -389,7 +389,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["code"], name: "index_languages_on_code", unique: true
   end
 
-  create_table "med_related_topics", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "med_related_topics", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "med_topic_id", null: false
     t.integer "related_medline_tid", null: false
     t.string "title", null: false
@@ -399,7 +399,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["med_topic_id"], name: "index_med_related_topics_on_med_topic_id"
   end
 
-  create_table "med_sites", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "med_sites", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "med_topic_id", null: false
     t.string "title", null: false
     t.string "url", null: false
@@ -408,7 +408,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["med_topic_id"], name: "index_med_sites_on_med_topic_id"
   end
 
-  create_table "med_synonyms", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "med_synonyms", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "medline_title", null: false
     t.integer "topic_id", null: false
     t.datetime "created_at"
@@ -416,7 +416,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["medline_title"], name: "index_med_synonyms_on_medline_title"
   end
 
-  create_table "med_topics", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "med_topics", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "medline_tid"
     t.string "medline_title", null: false
     t.string "medline_url", limit: 120
@@ -428,7 +428,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["medline_title"], name: "index_med_topics_on_medline_title"
   end
 
-  create_table "memberships", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "memberships", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "affiliate_id", null: false
     t.boolean "gets_daily_snapshot_email", default: false, null: false
@@ -438,7 +438,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["user_id"], name: "index_memberships_on_user_id"
   end
 
-  create_table "misspellings", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "misspellings", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "wrong"
     t.string "rite"
     t.datetime "created_at"
@@ -446,7 +446,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["wrong"], name: "index_misspellings_on_wrong"
   end
 
-  create_table "navigations", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "navigations", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "affiliate_id", null: false
     t.integer "navigable_id", null: false
     t.string "navigable_type", null: false
@@ -458,7 +458,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["navigable_id", "navigable_type"], name: "index_navigations_on_navigable_id_and_navigable_type"
   end
 
-  create_table "news_items", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "news_items", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "link", null: false
     t.string "title", null: false
     t.string "guid", null: false
@@ -477,7 +477,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["rss_feed_url_id", "link"], name: "index_news_items_on_rss_feed_url_id_and_link", unique: true
   end
 
-  create_table "outbound_rate_limits", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "outbound_rate_limits", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", null: false
     t.integer "limit", null: false
     t.datetime "created_at", null: false
@@ -486,7 +486,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["name"], name: "index_outbound_rate_limits_on_name"
   end
 
-  create_table "routed_queries", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "routed_queries", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "affiliate_id"
     t.string "url"
     t.string "description"
@@ -495,7 +495,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["affiliate_id"], name: "index_routed_queries_on_affiliate_id"
   end
 
-  create_table "routed_query_keywords", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "routed_query_keywords", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "routed_query_id"
     t.string "keyword"
     t.datetime "created_at", null: false
@@ -503,7 +503,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["routed_query_id", "keyword"], name: "index_routed_query_keywords_on_routed_query_id_and_keyword", unique: true
   end
 
-  create_table "rss_feed_urls", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "rss_feed_urls", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "rss_feed_owner_type", null: false
     t.string "url", null: false
     t.datetime "last_crawled_at"
@@ -515,14 +515,14 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["rss_feed_owner_type", "url"], name: "index_rss_feed_urls_on_rss_feed_owner_type_and_url", unique: true
   end
 
-  create_table "rss_feed_urls_rss_feeds", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "rss_feed_urls_rss_feeds", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "rss_feed_url_id", null: false
     t.integer "rss_feed_id", null: false
     t.index ["rss_feed_id", "rss_feed_url_id"], name: "index_rss_feed_urls_rss_feeds_on_rss_feed_id_and_rss_feed_url_id", unique: true
     t.index ["rss_feed_url_id"], name: "index_rss_feed_urls_rss_feeds_on_rss_feed_url_id"
   end
 
-  create_table "rss_feeds", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "rss_feeds", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "owner_id", null: false
     t.string "name", null: false
     t.datetime "created_at"
@@ -535,7 +535,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["owner_type", "owner_id"], name: "index_rss_feeds_on_owner_type_and_owner_id"
   end
 
-  create_table "sayt_filters", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "sayt_filters", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "phrase", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -545,7 +545,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["phrase"], name: "index_sayt_filters_on_phrase", unique: true
   end
 
-  create_table "sayt_suggestions", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "sayt_suggestions", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "phrase", null: false
     t.datetime "created_at"
     t.integer "popularity", default: 1, null: false
@@ -558,7 +558,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["updated_at", "is_protected"], name: "index_sayt_suggestions_on_updated_at_and_is_protected"
   end
 
-  create_table "search_modules", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "search_modules", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "tag", null: false
     t.string "display_name", null: false
     t.datetime "created_at"
@@ -582,7 +582,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["status"], name: "index_searchgov_domains_on_status", length: 100
   end
 
-  create_table "searchgov_urls", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "searchgov_urls", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "url", limit: 2000, null: false, collation: "utf8mb4_bin"
     t.datetime "last_crawled_at"
     t.string "last_crawl_status"
@@ -598,7 +598,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["url"], name: "index_searchgov_urls_on_url", length: 255
   end
 
-  create_table "site_domains", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "site_domains", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "affiliate_id", null: false
     t.string "site_name", null: false
     t.string "domain", null: false
@@ -607,7 +607,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["affiliate_id", "domain"], name: "index_site_domains_on_affiliate_id_and_domain", unique: true
   end
 
-  create_table "site_feed_urls", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "site_feed_urls", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "affiliate_id", null: false
     t.string "rss_url", null: false
     t.string "last_fetch_status", default: "Pending", null: false
@@ -628,27 +628,27 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["searchgov_domain_id"], name: "index_sitemaps_on_searchgov_domain_id"
   end
 
-  create_table "suggestion_blocks", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "suggestion_blocks", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "query", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["query"], name: "index_suggestion_blocks_on_query"
   end
 
-  create_table "superfresh_urls", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "superfresh_urls", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.text "url", size: :medium
     t.integer "affiliate_id"
     t.datetime "created_at"
     t.index ["affiliate_id"], name: "index_superfresh_urls_on_affiliate_id"
   end
 
-  create_table "system_alerts", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "system_alerts", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "message", null: false
     t.datetime "start_at", null: false
     t.datetime "end_at"
   end
 
-  create_table "tag_filters", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "tag_filters", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "affiliate_id", null: false
     t.string "tag"
     t.boolean "exclude"
@@ -657,7 +657,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["affiliate_id"], name: "index_tag_filters_on_affiliate_id"
   end
 
-  create_table "templates", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "templates", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", limit: 50, null: false
     t.string "klass", limit: 50, null: false
     t.string "description", null: false
@@ -667,7 +667,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["name"], name: "index_templates_on_name", unique: true
   end
 
-  create_table "top_searches", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "top_searches", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "query"
     t.string "url"
     t.integer "position"
@@ -678,7 +678,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["position", "affiliate_id"], name: "index_top_searches_on_position_and_affiliate_id", unique: true
   end
 
-  create_table "tweets", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "tweets", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.bigint "tweet_id", null: false, unsigned: true
     t.string "tweet_text"
     t.bigint "twitter_profile_id", null: false, unsigned: true
@@ -691,7 +691,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["twitter_profile_id"], name: "index_tweets_on_twitter_profile_id"
   end
 
-  create_table "twitter_lists", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "twitter_lists", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.bigint "id", null: false, unsigned: true
     t.text "member_ids", size: :long
     t.bigint "last_status_id", default: 1, null: false, unsigned: true
@@ -701,14 +701,14 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["id"], name: "index_twitter_lists_on_id", unique: true
   end
 
-  create_table "twitter_lists_twitter_profiles", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "twitter_lists_twitter_profiles", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.bigint "twitter_list_id", null: false, unsigned: true
     t.integer "twitter_profile_id", null: false
     t.index ["twitter_list_id", "twitter_profile_id"], name: "twitter_list_id_profile_id", unique: true
     t.index ["twitter_profile_id"], name: "index_twitter_lists_twitter_profiles_on_twitter_profile_id"
   end
 
-  create_table "twitter_profiles", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "twitter_profiles", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.bigint "twitter_id", null: false, unsigned: true
     t.string "screen_name"
     t.datetime "created_at"
@@ -718,7 +718,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["twitter_id"], name: "index_twitter_profiles_on_twitter_id", unique: true
   end
 
-  create_table "url_prefixes", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "url_prefixes", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "document_collection_id", null: false
     t.string "prefix", null: false
     t.datetime "created_at"
@@ -726,7 +726,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["document_collection_id", "prefix"], name: "index_url_prefixes_on_document_collection_id_and_prefix", unique: true
   end
 
-  create_table "users", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "users", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "email", null: false
     t.string "persistence_token"
     t.integer "login_count", default: 0, null: false
@@ -755,7 +755,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["uid"], name: "index_users_on_uid"
   end
 
-  create_table "watchers", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "watchers", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "type"
     t.integer "user_id"
     t.integer "affiliate_id"
@@ -769,7 +769,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.string "query_blocklist"
   end
 
-  create_table "youtube_playlists", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "youtube_playlists", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "youtube_profile_id"
     t.string "playlist_id"
     t.string "etag"
@@ -779,7 +779,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_185921) do
     t.index ["youtube_profile_id", "playlist_id"], name: "index_youtube_playlists_on_youtube_profile_id_and_playlist_id", unique: true
   end
 
-  create_table "youtube_profiles", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "youtube_profiles", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "title", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
