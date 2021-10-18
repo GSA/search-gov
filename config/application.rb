@@ -22,7 +22,7 @@ module Usasearch
 
     # Rails 4 way of “eager_load with autoload fallback. Note need to revisit better
     # solution. See https://collectiveidea.com/blog/archives/2016/07/22/solutions-to-potential-upgrade-problems-in-rails-5
-    config.enable_dependency_loading = true
+    config.enable_dependency_loading = true # To be removed by SRCH-2503
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -82,23 +82,9 @@ module Usasearch
 
     config.active_job.queue_adapter = :resque
 
-    ### Rails 5.0 config flags
-    ### SRCH-1058: The flags below should be flipped one by one to the new default.
-
-    # Enable per-form CSRF tokens. Versions before Rails 5.0 had false.
-    config.action_controller.per_form_csrf_tokens = false
-
-    # Enable origin-checking CSRF mitigation.  Versions before Rails 5.0 had false.
-    config.action_controller.forgery_protection_origin_check = false
-
-    # Require `belongs_to` associations by default. Versions before Rails 5.0 had false.
+    # Require `belongs_to` associations by default. Versions before
+    # Rails 5.0 had false.
     config.active_record.belongs_to_required_by_default = false
-
-    # Make Ruby 2.4+ preserve the timezone of the receiver when calling `to_time`.
-    # Versions before Rails 5.0 had false.
-    ActiveSupport.to_time_preserves_timezone = false
-
-    ### End Rails 5.0 config flags
   end
 end
 
