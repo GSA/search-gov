@@ -348,7 +348,7 @@ class Affiliate < ApplicationRecord
     if website.present?
       website
     elsif site_domains.count == 1
-      "http://#{site_domains.pluck(:domain).first}"
+      "http://#{site_domains.pick(:domain)}"
     end
   end
 

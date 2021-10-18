@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe Es do
@@ -7,26 +9,26 @@ describe Es do
 
     describe '.client_reader' do
       it 'returns a different object in different submodules' do
-        expect(Es::ELK.client_reader).to_not eq(Es::CustomIndices.client_reader)
+        expect(Es::ELK.client_reader).not_to eq(Es::CustomIndices.client_reader)
       end
 
       it 'returns the same object given successive invocations' do
         2.times do |i|
-          expect(elk_objs[i]).to eq(elk_objs[i+1])
-          expect(ci_objs[i]).to eq(ci_objs[i+1])
+          expect(elk_objs[i]).to eq(elk_objs[i + 1])
+          expect(ci_objs[i]).to eq(ci_objs[i + 1])
         end
       end
     end
 
     describe '.client_writers' do
       it 'returns a different object in different submodules' do
-        expect(Es::ELK.client_writers).to_not eq(Es::CustomIndices.client_writers)
+        expect(Es::ELK.client_writers).not_to eq(Es::CustomIndices.client_writers)
       end
 
       it 'returns the same object given successive invocations' do
         2.times do |i|
-          expect(elk_objs[i]).to eq(elk_objs[i+1])
-          expect(ci_objs[i]).to eq(ci_objs[i+1])
+          expect(elk_objs[i]).to eq(elk_objs[i + 1])
+          expect(ci_objs[i]).to eq(ci_objs[i + 1])
         end
       end
     end
@@ -37,6 +39,7 @@ describe Es do
 
     describe '.client_reader' do
       subject(:client) { Es::ELK.client_reader }
+
       let(:host) { client.transport.hosts.first }
 
       it 'uses the values from the secrets.yml analytics[elasticsearch][reader] entry' do
@@ -49,6 +52,7 @@ describe Es do
 
     describe '.client_writers' do
       subject(:client_writers) { Es::ELK.client_writers }
+
       let(:client) { client_writers.first }
 
       it 'uses the value(s) from the secrets.yml analytics[elasticsearch][writers] entry' do
