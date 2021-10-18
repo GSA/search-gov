@@ -12,7 +12,7 @@ describe RtuModuleStatsAnalytics do
       let(:os_json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/overall_sparkline.json")) }
 
       before do
-        expect(ES::ELK.client_reader).to receive(:search).
+        expect(Es::ELK.client_reader).to receive(:search).
           and_return(mb_json_response,
                      ms_json_response,
                      os_json_response,

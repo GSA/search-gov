@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe SearchConsumer::API do
+describe SearchConsumer::Api do
   fixtures :affiliates, :navigations, :document_collections, :rss_feeds, :image_search_labels
   let(:affiliate) { affiliates(:usagov_affiliate) }
   let(:affiliate_config_url_path) { "/api/c/affiliate/config?site_handle=usagov&sc_access_key=#{SC_ACCESS_KEY}" }

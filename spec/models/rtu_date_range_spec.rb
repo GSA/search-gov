@@ -21,7 +21,7 @@ describe RtuDateRange do
       allow(RtuDateRangeQuery).to receive(:new).
         with('some affiliate', 'search or click type here').
         and_return(instance_double(RtuDateRangeQuery, body: 'query_body'))
-      allow(ES::ELK.client_reader).to receive(:search).
+      allow(Es::ELK.client_reader).to receive(:search).
         with(search_opts).and_return json_response
     end
   end
@@ -42,7 +42,7 @@ describe RtuDateRange do
       end
 
       before do
-        allow(ES::ELK.client_reader).to receive(:search).and_return json_response
+        allow(Es::ELK.client_reader).to receive(:search).and_return json_response
       end
 
       it 'should return the range of available dates bounded by current day' do
@@ -52,7 +52,7 @@ describe RtuDateRange do
 
     context 'when there is a problem getting the data' do
       before do
-        allow(ES::ELK.client_reader).to receive(:search).and_raise StandardError
+        allow(Es::ELK.client_reader).to receive(:search).and_raise StandardError
       end
 
       it 'should return the range of available dates bounded by current day' do

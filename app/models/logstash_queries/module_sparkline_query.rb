@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ModuleSparklineQuery
-  include AnalyticsDSL
+  include AnalyticsDsl
 
   def initialize(affiliate_name)
     @affiliate_name = affiliate_name

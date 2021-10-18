@@ -1,5 +1,5 @@
 class TimeWindowValidator < ActiveModel::EachValidator
-  include WatcherDSL
+  include WatcherDsl
   MAX_DAYS_BACK = 29
 
   def validate_each(record, attribute, value)

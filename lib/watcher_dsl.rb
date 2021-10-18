@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module WatcherDSL
+module WatcherDsl
   ES_DATE_UNIT_TO_RUBY = { m: :minutes, h: :hours, d: :days, w: :weeks }.freeze
 
   def query_blocklist_filter(json, query_blocklist)

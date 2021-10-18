@@ -10,7 +10,7 @@ module Ctrs
       size: 0,
       ignore_unavailable: true
     }
-    ES::ELK.client_reader.search(params)["aggregations"]["agg"]["buckets"] rescue nil
+    Es::ELK.client_reader.search(params)["aggregations"]["agg"]["buckets"] rescue nil
   end
 
   def convert_to_hash(buckets)

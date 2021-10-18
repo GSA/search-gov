@@ -52,12 +52,12 @@ describe Sites::QueryDownloadsController do
           with(*date_range_top_n_query_args).and_return(search_query)
         allow(DateRangeTopNQuery).to receive(:new).
           with(*date_range_top_n_click_args).and_return(click_query)
-        allow(ES::ELK.client_reader).to receive(:search).
+        allow(Es::ELK.client_reader).to receive(:search).
           with(hash_including(body: 'search query')).and_return(
             top_queries_response,
             top_human_queries_response
           )
-        allow(ES::ELK.client_reader).to receive(:search).
+        allow(Es::ELK.client_reader).to receive(:search).
           with(hash_including(body: 'click query')).and_return(
             top_clicks_response,
             top_human_clicks_response

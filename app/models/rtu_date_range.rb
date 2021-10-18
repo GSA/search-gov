@@ -25,7 +25,7 @@ class RtuDateRange
   private
 
   def search(query_body)
-    ES::ELK.client_reader.search(
+    Es::ELK.client_reader.search(
       index: 'logstash-*',
       body: query_body,
       size: 0

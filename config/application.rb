@@ -18,19 +18,27 @@ module Usasearch
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
-    config.autoloader = :classic # To be removed by SRCH-2503
 
     # Rails 4 way of “eager_load with autoload fallback. Note need to revisit better
     # solution. See https://collectiveidea.com/blog/archives/2016/07/22/solutions-to-potential-upgrade-problems-in-rails-5
-    config.enable_dependency_loading = true
+    # config.enable_dependency_loading = true
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
     # Custom directories with classes and modules you want to be autoloadable.
-    config.autoload_paths += Dir[config.root.join('lib', '**/').to_s]
-    config.autoload_paths += Dir[config.root.join('app/models', '**/').to_s]
+    config.autoload_paths += Dir[config.root.join('lib').to_s]
+    config.autoload_paths += Dir[config.root.join('lib', 'active_job', 'uniqueness', 'strategies').to_s]
+    config.autoload_paths += Dir[config.root.join('lib', 'callbacks').to_s]
+    config.autoload_paths += Dir[config.root.join('lib', 'extensions').to_s]
+    config.autoload_paths += Dir[config.root.join('lib', 'importers').to_s]
+    config.autoload_paths += Dir[config.root.join('lib', 'middlewares').to_s]
+    config.autoload_paths += Dir[config.root.join('lib', 'parsers').to_s]
+
+    config.autoload_paths += Dir[config.root.join('app', 'models', 'custom_index_queries').to_s]
+    config.autoload_paths += Dir[config.root.join('app', 'models', 'elastic_data').to_s]
+    config.autoload_paths += Dir[config.root.join('app', 'models', 'logstash_queries').to_s]
 
     config.middleware.use RejectInvalidRequestUri
     config.middleware.use DowncaseRoute
