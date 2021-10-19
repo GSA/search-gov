@@ -713,7 +713,7 @@ class Affiliate < ApplicationRecord
   end
 
   def generate_look_and_feel_css
-    renderer = Renderers::AffiliateCss.new(build_css_hash)
+    renderer = AffiliateCss.new(build_css_hash)
     self.mobile_look_and_feel_css = renderer.render_mobile_css
   end
 

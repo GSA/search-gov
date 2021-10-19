@@ -23,7 +23,7 @@ module TestServices
     logstash_index_range.each do |date|
       Es::ELK.client_reader.indices.delete(index: "logstash-#{date.strftime('%Y.%m.%d')}")
     end
-  rescue Exception
+  rescue
   end
 
   def logstash_index_range

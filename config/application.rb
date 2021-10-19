@@ -19,15 +19,26 @@ module Usasearch
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
 
-    # Rails 4 way of “eager_load with autoload fallback. Note need to revisit better
-    # solution. See https://collectiveidea.com/blog/archives/2016/07/22/solutions-to-potential-upgrade-problems-in-rails-5
-    # config.enable_dependency_loading = true
-
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
     # Custom directories with classes and modules you want to be autoloadable.
+
+    # Introduced during upgrade to zeitwerk (SRCH-2503).  Ideally, we
+    # wouldn't set any autoload paths explicitly. However, we have a
+    # good deal of existing code that doesn't conform to zeitwerk's
+    # naming conventions, so here's the necessary hackery to live with
+    # that.
+    #
+    # We should try to reduce this list by changing existing code to
+    # conform to the proper naming conventions.
+    #
+    # We should definitely *not* introduce any new code that needs an
+    # entry here; conform to the proper naming convention(s) instead.
+    #
+    # See https://github.com/fxn/zeitwerk#file-structure
+    #
     config.autoload_paths += Dir[config.root.join('lib').to_s]
     config.autoload_paths += Dir[config.root.join('lib', 'active_job', 'uniqueness', 'strategies').to_s]
     config.autoload_paths += Dir[config.root.join('lib', 'callbacks').to_s]
@@ -35,6 +46,7 @@ module Usasearch
     config.autoload_paths += Dir[config.root.join('lib', 'importers').to_s]
     config.autoload_paths += Dir[config.root.join('lib', 'middlewares').to_s]
     config.autoload_paths += Dir[config.root.join('lib', 'parsers').to_s]
+    config.autoload_paths += Dir[config.root.join('lib', 'renderers').to_s]
 
     config.autoload_paths += Dir[config.root.join('app', 'models', 'custom_index_queries').to_s]
     config.autoload_paths += Dir[config.root.join('app', 'models', 'elastic_data').to_s]
