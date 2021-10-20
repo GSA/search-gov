@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Sites::QueryDrilldownsController < Sites::SetupSiteController
-  include CSVResponsive
+  include CsvResponsive
   HEADER_FIELDS = ['Date', 'Time', 'Request', 'Referrer', 'Vertical', 'Modules', 'Device', 'Browser', 'OS', 'Country Code', 'Region', 'Client IP', 'User Agent']
 
   def show

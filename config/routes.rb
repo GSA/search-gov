@@ -34,7 +34,7 @@ Rails.application.routes.draw do
     end
   end
 
-  mount SearchConsumer::API => '/api/c'
+  mount SearchConsumer::Api => '/api/c'
 
   get '/sayt' => 'sayt#index'
   post '/clicked' => 'clicked#create'

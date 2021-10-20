@@ -37,7 +37,7 @@ describe RtuQueriesRequest do
           opts = { index: 'logstash-*',
                    body: 'query_body',
                    size: 0 }
-          expect(ES::ELK.client_reader).to receive(:search).with(opts).and_return json_response
+          expect(Es::ELK.client_reader).to receive(:search).with(opts).and_return json_response
         end
 
         it 'should return an array of QueryClickCount objects sorted by desc query count' do
@@ -70,7 +70,7 @@ describe RtuQueriesRequest do
 
       context 'when stats unavailable' do
         before do
-          allow(ES::ELK.client_reader).to receive(:search).and_raise StandardError
+          allow(Es::ELK.client_reader).to receive(:search).and_raise StandardError
           rtu_queries_request.save
         end
 
@@ -82,7 +82,7 @@ describe RtuQueriesRequest do
 
     describe 'start and end dates' do
       before do
-        allow(ES::ELK.client_reader).to receive(:search).and_raise StandardError
+        allow(Es::ELK.client_reader).to receive(:search).and_raise StandardError
       end
       context 'when both end_date and start_date are specified' do
         let(:rtu_queries_request) { described_class.new('start_date' => '05/27/2014',

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe SearchConsumer::API do
+describe SearchConsumer::Api do
   fixtures :affiliates, :rss_feed_urls, :rss_feeds, :navigations, :news_items, :youtube_profiles
 
   let(:affiliate) { affiliates(:basic_affiliate) }

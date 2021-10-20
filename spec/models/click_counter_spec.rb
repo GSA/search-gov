@@ -79,7 +79,7 @@ describe ClickCounter do
       end
 
       before do
-        allow(ES::ELK.client_reader).to receive(:search).and_return json
+        allow(Es::ELK.client_reader).to receive(:search).and_return json
       end
 
       it 'returns the statistically significant clicks' do
