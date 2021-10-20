@@ -9,10 +9,7 @@ module TestServices
       klass.recreate_index if klass.is_a?(Indexable) && klass != ElasticBlended
     end
     logstash_index_range.each do |date|
-      begin
-        Es::ELK.client_reader.indices.delete(index: "logstash-#{date.strftime('%Y.%m.%d')}")
-      rescue Elasticsearch::Transport::Transport::Errors::NotFound
-      end
+      Es::ELK.client_reader.indices.delete(index: "logstash-#{date.strftime('%Y.%m.%d')}", ignore_unavailable: true)
       Es::ELK.client_reader.indices.create(index: "logstash-#{date.strftime('%Y.%m.%d')}")
       Es::ELK.client_reader.indices.put_alias(index: "logstash-#{date.strftime('%Y.%m.%d')}", name: "human-logstash-#{date.strftime('%Y.%m.%d')}")
     end
@@ -23,7 +20,8 @@ module TestServices
     logstash_index_range.each do |date|
       Es::ELK.client_reader.indices.delete(index: "logstash-#{date.strftime('%Y.%m.%d')}")
     end
-  rescue
+  rescue StandardError => e
+    Rails.logger.info "Error deleteing es indices: #{e}"
   end
 
   def logstash_index_range
