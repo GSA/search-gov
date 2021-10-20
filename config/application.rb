@@ -7,7 +7,6 @@ require './lib/middlewares/adjust_client_ip.rb'
 require './lib/middlewares/filtered_jsonp.rb'
 
 
-GC.copy_on_write_friendly = true if GC.respond_to?(:copy_on_write_friendly=)
 GC::Profiler.enable
 
 # Require the gems listed in Gemfile, including any gems
