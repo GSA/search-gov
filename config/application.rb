@@ -37,10 +37,6 @@ module Usasearch
     config.middleware.use AdjustClientIp
     config.middleware.use FilteredJSONP
 
-    # Only load the plugins named here, in the order given (default is alphabetical).
-    # :all can be used as a placeholder for all plugins not explicitly named.
-    # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
-
     # Activate observers that should always be running, except during DB migrations.
     unless File.basename($0) == "rake" && ARGV.include?("db:migrate")
       config.active_record.observers = :sayt_filter_observer, :misspelling_observer, :indexed_document_observer,
@@ -48,33 +44,20 @@ module Usasearch
         :i14y_drawer_observer, :routed_query_keyword_observer, :watcher_observer
     end
 
-    # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
-    # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
-    # config.time_zone = 'Central Time (US & Canada)'
-
-    # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
-    # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-    # config.i18n.default_locale = :de
-
     # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
     # the I18n.default_locale when a translation can not be found)
     config.i18n.fallbacks = true
 
-    # JavaScript files you want as :defaults (application.js is always included).
-    # config.action_view.javascript_expansions[:defaults] = %w(jquery rails)
+    # config.generators do |g|
+    #   g.test_framework :rspec
+    # end
 
-    # Configure the default encoding used in templates for Ruby 1.9.
-    config.encoding = "utf-8"
+    # config.assets.enabled = true
+    # config.assets.version = '1.0'
 
-    config.generators do |g|
-      g.test_framework :rspec
-    end
+    # config.active_record.schema_format = :ruby
 
-    config.assets.enabled = true
-    config.assets.version = '1.0'
-
-    config.active_record.schema_format = :ruby
-
+    # TODO: Turn off and see what happens
     config.i18n.enforce_available_locales = false
 
     config.ssl_options[:redirect] =
@@ -89,8 +72,10 @@ module Usasearch
 end
 
 
+# TODO: move somewhere and see what happens
 SEARCH_ENGINES = %w(BingV6 BingV7 Google SearchGov).freeze
 DEFAULT_USER_AGENT = Rails.application.secrets.organization[:default_user_agent].freeze
 
+# TODO: remove and see what happens
 require 'resque/plugins/priority'
 require 'csv'
