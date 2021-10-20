@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class TrendingTermsQuery
-  include AnalyticsDSL
+  include AnalyticsDsl
 
   def initialize(affiliate_name, foreground_time = '3h', min_foreground_doc_count = 15)
     @affiliate_name = affiliate_name

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class WatcherNoResultsQuery < DateRangeTopNMissingQuery
-  include WatcherDSL
+  include WatcherDsl
 
   def initialize(options)
     start_date, end_date = start_end_from_time_window(options[:time_window])

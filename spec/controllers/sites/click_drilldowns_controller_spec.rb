@@ -28,7 +28,7 @@ describe Sites::ClickDrilldownsController do
       before do
         expect(DrilldownQuery).to receive(:new).with(*query_args).
           and_return(query)
-        allow(ES::ELK.client_reader).to receive(:search).
+        allow(Es::ELK.client_reader).to receive(:search).
           and_return(drilldown_clicks_response)
       end
 

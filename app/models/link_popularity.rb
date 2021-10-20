@@ -5,7 +5,7 @@ class LinkPopularity
 
   def self.popularity_for(url, days_back)
     link_popularity_query = ElasticLinkPopularityQuery.new(url, days_back)
-    total = ES::ELK.client_reader.count(
+    total = Es::ELK.client_reader.count(
       index: indexes_to_date(days_back, true),
       body: link_popularity_query.body
     )['count']

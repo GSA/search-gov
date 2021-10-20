@@ -11,7 +11,7 @@ describe SearchModuleCtr do
       let(:mb_json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/module_breakdown.json")) }
 
       before do
-        expect(ES::ELK.client_reader).to receive(:search).
+        expect(Es::ELK.client_reader).to receive(:search).
           with(hash_including(size: 0)).
           and_return(historical_mb_json_response, mb_json_response)
       end
@@ -37,7 +37,7 @@ describe SearchModuleCtr do
 
     context 'when no stats are available for the daterange' do
       before do
-        expect(ES::ELK.client_reader).to receive(:search).twice.and_return nil
+        expect(Es::ELK.client_reader).to receive(:search).twice.and_return nil
       end
 
       it 'should return an empty array' do

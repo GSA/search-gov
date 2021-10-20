@@ -1,4 +1,4 @@
-class Api::SecretAPISearchOptions < Api::SearchOptions
+class Api::SecretApiSearchOptions < Api::SearchOptions
   attr_accessor :sc_access_key
 
   validates_presence_of :sc_access_key,

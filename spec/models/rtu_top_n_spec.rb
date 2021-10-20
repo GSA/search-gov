@@ -16,14 +16,14 @@ describe RtuTopN do
     end
 
     it 'queries Elasticsearch with the expected args' do
-      expect(ES::ELK.client_reader).to receive(:search).
+      expect(Es::ELK.client_reader).to receive(:search).
         with(query_args).and_return({})
       top_n
     end
 
     context 'when the search fails' do
       before do
-        allow(ES::ELK.client_reader).to receive(:search).
+        allow(Es::ELK.client_reader).to receive(:search).
           and_raise(StandardError, 'search failure')
       end
 

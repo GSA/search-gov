@@ -4,7 +4,7 @@ shared_examples_for 'a logstash query' do
 
     it 'does not raise an error' do
       expect {
-        ES::ELK.client_reader.search(index: 'logstash-*',  body: body)
+        Es::ELK.client_reader.search(index: 'logstash-*',  body: body)
       }.not_to raise_error
     end
 

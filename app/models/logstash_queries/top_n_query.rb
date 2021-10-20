@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class TopNQuery
-  include AnalyticsDSL
+  include AnalyticsDsl
 
   def initialize(affiliate_name, type, agg_options = {})
     @affiliate_name = affiliate_name

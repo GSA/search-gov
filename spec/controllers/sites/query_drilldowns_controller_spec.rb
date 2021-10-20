@@ -25,7 +25,7 @@ describe Sites::QueryDrilldownsController do
 
       before do
         expect(DrilldownQuery).to receive(:new).with(*query_args).and_return(query)
-        allow(ES::ELK.client_reader).to receive(:search).and_return(drilldown_queries_response)
+        allow(Es::ELK.client_reader).to receive(:search).and_return(drilldown_queries_response)
       end
 
       it 'should generate a CSV of various query fields' do

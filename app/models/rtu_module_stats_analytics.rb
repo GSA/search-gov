@@ -72,7 +72,7 @@ class RtuModuleStatsAnalytics
   end
 
   def es_search(index, query_body, agg_name)
-    ES::ELK.client_reader.search(
+    Es::ELK.client_reader.search(
       index: index,
       body: query_body,
       size: 0
