@@ -63,7 +63,6 @@ SEED_LANGUAGES = {
   zh: { is_bing_supported: true, is_google_supported: true, is_azure_supported: true, inferred_country_code: 'CN', name: 'Chinese' , rtl: false },
 }
 
-
 SEED_LANGUAGES.each do |code, language|
   engines = [ ]
   engines << 'Azure' if language[:is_azure_supported]

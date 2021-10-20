@@ -21,7 +21,7 @@ module TestServices
       Es::ELK.client_reader.indices.delete(index: "logstash-#{date.strftime('%Y.%m.%d')}")
     end
   rescue StandardError => e
-    Rails.logger.info "Error deleteing es indices: #{e}"
+    Rails.logger.error "Error deleting es indices: #{e}"
   end
 
   def logstash_index_range
