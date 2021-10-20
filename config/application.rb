@@ -48,18 +48,6 @@ module Usasearch
     # the I18n.default_locale when a translation can not be found)
     config.i18n.fallbacks = true
 
-    # config.generators do |g|
-    #   g.test_framework :rspec
-    # end
-
-    # config.assets.enabled = true
-    # config.assets.version = '1.0'
-
-    # config.active_record.schema_format = :ruby
-
-    # TODO: Turn off and see what happens
-    config.i18n.enforce_available_locales = false
-
     config.ssl_options[:redirect] =
       { exclude: ->(request) { request.path == '/healthcheck' } }
 
@@ -71,11 +59,8 @@ module Usasearch
   end
 end
 
-
-# TODO: move somewhere and see what happens
 SEARCH_ENGINES = %w(BingV6 BingV7 Google SearchGov).freeze
 DEFAULT_USER_AGENT = Rails.application.secrets.organization[:default_user_agent].freeze
 
-# TODO: remove and see what happens
 require 'resque/plugins/priority'
 require 'csv'
