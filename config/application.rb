@@ -23,8 +23,6 @@ module Usasearch
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
-    # Custom directories with classes and modules you want to be autoloadable.
-
     # Introduced during upgrade to zeitwerk (SRCH-2503).  Ideally, we
     # wouldn't set any autoload paths explicitly. However, we have a
     # good deal of existing code that doesn't conform to zeitwerk's
@@ -39,6 +37,7 @@ module Usasearch
     #
     # See https://github.com/fxn/zeitwerk#file-structure
     #
+    # Custom directories with classes and modules you want to be autoloadable.
     config.autoload_paths += Dir[config.root.join('lib').to_s]
     config.autoload_paths += Dir[config.root.join('lib', 'active_job', 'uniqueness', 'strategies').to_s]
     config.autoload_paths += Dir[config.root.join('lib', 'callbacks').to_s]
