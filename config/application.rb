@@ -46,6 +46,8 @@ module Usasearch
     # the I18n.default_locale when a translation can not be found)
     config.i18n.fallbacks = true
 
+    config.i18n.enforce_available_locales = false
+
     config.ssl_options[:redirect] =
       { exclude: ->(request) { request.path == '/healthcheck' } }
 
