@@ -5,9 +5,8 @@ require './lib/middlewares/reject_invalid_request_uri.rb'
 require './lib/middlewares/downcase_route.rb'
 require './lib/middlewares/adjust_client_ip.rb'
 require './lib/middlewares/filtered_jsonp.rb'
+require 'resque/plugins/priority'
 
-
-GC::Profiler.enable
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -57,6 +56,3 @@ module Usasearch
     config.active_record.belongs_to_required_by_default = false
   end
 end
-
-require 'resque/plugins/priority'
-require 'csv'
