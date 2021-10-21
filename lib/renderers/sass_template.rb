@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SassTemplate
   SASS_ENGINE_OPTIONS = {
     cache: false,

@@ -706,7 +706,7 @@ describe Affiliate do
       let(:domains) { %w( a.foo.gov b.foo.gov y.bar.gov z.bar.gov c.foo.gov agency.gov ) }
 
       before do
-        site_domain_hash = Hash[domains.collect { |domain| [domain, nil] }]
+        site_domain_hash = domains.index_with { |_domain| nil }
         affiliate.add_site_domains(site_domain_hash)
         expect(SiteDomain.where(affiliate_id: affiliate.id).count).to eq(6)
       end
