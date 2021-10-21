@@ -1,7 +1,7 @@
 class Admin::UsersController < Admin::AdminController
   active_scaffold :user do |config|
     config.actions.exclude :create, :delete
-    config.columns = %I[email first_name last_name
+    config.columns = %I[email first_name last_name affiliate_names
                         memberships default_affiliate created_at
                         updated_at approval_status]
     config.update.columns = %I[ email first_name last_name organization_name
