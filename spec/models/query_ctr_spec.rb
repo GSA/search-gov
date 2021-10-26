@@ -10,7 +10,7 @@ describe QueryCtr do
       let(:query_json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/rtu_queries_request.json")) }
 
       before do
-        expect(ES::ELK.client_reader).to receive(:search).
+        expect(Es::ELK.client_reader).to receive(:search).
           and_return(historical_query_json_response, query_json_response)
       end
 
@@ -36,7 +36,7 @@ describe QueryCtr do
       let(:query_json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/recent_ctr_empty.json")) }
 
       before do
-        expect(ES::ELK.client_reader).to receive(:search).
+        expect(Es::ELK.client_reader).to receive(:search).
           and_return(historical_query_json_response, query_json_response)
       end
 
@@ -59,7 +59,7 @@ describe QueryCtr do
 
     context 'when no stats are available for the daterange' do
       before do
-        expect(ES::ELK.client_reader).to receive(:search).twice.and_return nil
+        expect(Es::ELK.client_reader).to receive(:search).twice.and_return nil
       end
 
       it 'should return an empty array' do

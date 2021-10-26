@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Api::SecretAPISearchOptions do
+describe Api::SecretApiSearchOptions do
   describe '#valid?' do
     context 'when sc_access_key is not present' do
       subject(:options) { described_class.new }

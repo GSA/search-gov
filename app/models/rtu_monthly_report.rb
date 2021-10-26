@@ -78,7 +78,7 @@ class RtuMonthlyReport
   end
 
   def top_n(query_body, indexes)
-    ES::ELK.client_reader.search(
+    Es::ELK.client_reader.search(
       index: indexes,
       body: query_body,
       size: 0

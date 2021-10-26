@@ -9,7 +9,7 @@ class LogstashDeduper
   def self.perform(day_str)
     index_name = "logstash-#{day_str}"
     seen, dupe_ids = Set.new, []
-    client = ES::ELK.client_reader
+    client = Es::ELK.client_reader
     result = client.search(
       index: index_name,
       type: 'search',

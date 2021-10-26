@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ModuleBreakdownQuery
-  include AnalyticsDSL
+  include AnalyticsDsl
 
   def initialize(affiliate_name = nil)
     @affiliate_name = affiliate_name

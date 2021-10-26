@@ -1,42 +1,45 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
-describe ES do
-  context 'when working in ES submodules' do
-    let(:elk_objs) { Array.new(3, ES::ELK.client_reader) }
-    let(:ci_objs) { Array.new(3, ES::ELK.client_reader) }
+describe Es do
+  context 'when working in Es submodules' do
+    let(:elk_objs) { Array.new(3, Es::ELK.client_reader) }
+    let(:ci_objs) { Array.new(3, Es::ELK.client_reader) }
 
     describe '.client_reader' do
       it 'returns a different object in different submodules' do
-        expect(ES::ELK.client_reader).to_not eq(ES::CustomIndices.client_reader)
+        expect(Es::ELK.client_reader).not_to eq(Es::CustomIndices.client_reader)
       end
 
       it 'returns the same object given successive invocations' do
         2.times do |i|
-          expect(elk_objs[i]).to eq(elk_objs[i+1])
-          expect(ci_objs[i]).to eq(ci_objs[i+1])
+          expect(elk_objs[i]).to eq(elk_objs[i + 1])
+          expect(ci_objs[i]).to eq(ci_objs[i + 1])
         end
       end
     end
 
     describe '.client_writers' do
       it 'returns a different object in different submodules' do
-        expect(ES::ELK.client_writers).to_not eq(ES::CustomIndices.client_writers)
+        expect(Es::ELK.client_writers).not_to eq(Es::CustomIndices.client_writers)
       end
 
       it 'returns the same object given successive invocations' do
         2.times do |i|
-          expect(elk_objs[i]).to eq(elk_objs[i+1])
-          expect(ci_objs[i]).to eq(ci_objs[i+1])
+          expect(elk_objs[i]).to eq(elk_objs[i + 1])
+          expect(ci_objs[i]).to eq(ci_objs[i + 1])
         end
       end
     end
   end
 
-  context 'when working in ES::ELK submodule' do
+  context 'when working in Es::ELK submodule' do
     let(:es_config) { Rails.application.secrets.analytics[:elasticsearch] }
 
     describe '.client_reader' do
-      subject(:client) { ES::ELK.client_reader }
+      subject(:client) { Es::ELK.client_reader }
+
       let(:host) { client.transport.hosts.first }
 
       it 'uses the values from the secrets.yml analytics[elasticsearch][reader] entry' do
@@ -48,7 +51,8 @@ describe ES do
     end
 
     describe '.client_writers' do
-      subject(:client_writers) { ES::ELK.client_writers }
+      subject(:client_writers) { Es::ELK.client_writers }
+
       let(:client) { client_writers.first }
 
       it 'uses the value(s) from the secrets.yml analytics[elasticsearch][writers] entry' do
@@ -70,11 +74,11 @@ describe ES do
     end
   end
 
-  describe 'when working in ES::CustomIndices submodule' do
+  describe 'when working in Es::CustomIndices submodule' do
     let(:es_config) { Rails.application.secrets.custom_indices[:elasticsearch] }
 
     describe '.client_reader' do
-      let(:client) { ES::CustomIndices.client_reader }
+      let(:client) { Es::CustomIndices.client_reader }
       let(:host) { client.transport.hosts.first }
 
       it 'uses the values from the secrets.yml custom_indices[elasticsearch][reader] entry' do
@@ -86,11 +90,11 @@ describe ES do
     end
 
     describe '.client_writers' do
-      let(:client) { ES::CustomIndices.client_writers.first }
+      let(:client) { Es::CustomIndices.client_writers.first }
 
       it 'uses the value(s) from the secrets.yml custom_indices[elasticsearch][writers] entry' do
         count = Rails.application.secrets.custom_indices[:elasticsearch][:writers].count
-        expect(ES::CustomIndices.client_writers.size).to eq(count)
+        expect(Es::CustomIndices.client_writers.size).to eq(count)
         count.times do |i|
           host = client.transport.hosts[i]
           expect(host[:host]).to eq(URI(es_config[:writers][i][:hosts].first).host)
@@ -99,7 +103,7 @@ describe ES do
       end
 
       it 'freezes the secrets' do
-        ES::CustomIndices.client_writers
+        Es::CustomIndices.client_writers
         expect(es_config[:writers]).to be_frozen
       end
 

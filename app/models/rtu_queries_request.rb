@@ -44,7 +44,7 @@ class RtuQueriesRequest
   end
 
   def top_n(query_body)
-    ES::ELK.client_reader.search(
+    Es::ELK.client_reader.search(
       index: "#{logstash_prefix(filter_bots)}*",
       body: query_body,
       size: 0

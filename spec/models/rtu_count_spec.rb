@@ -7,14 +7,14 @@ describe RtuCount do
     end
 
     it 'extracts the count of documents' do
-      expect(ES::ELK.client_reader).to receive(:count).
+      expect(Es::ELK.client_reader).to receive(:count).
         with(index: 'logstash*', body: 'query_body')
       count
     end
 
     context 'when an error is raised' do
       before do
-        allow(ES::ELK.client_reader).to receive(:count).
+        allow(Es::ELK.client_reader).to receive(:count).
           and_raise(StandardError, 'something went wrong')
       end
 

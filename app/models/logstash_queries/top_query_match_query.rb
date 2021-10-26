@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class TopQueryMatchQuery
-  include AnalyticsDSL
+  include AnalyticsDsl
 
   def initialize(affiliate_name, raw_query, start_date, end_date, agg_options = {})
     @affiliate_name, @raw_query, @start_date, @end_date = affiliate_name, raw_query, start_date, end_date

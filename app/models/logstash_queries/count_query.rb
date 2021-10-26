@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CountQuery
-  include AnalyticsDSL
+  include AnalyticsDsl
 
   def initialize(affiliate_name, type)
     @affiliate_name = affiliate_name
