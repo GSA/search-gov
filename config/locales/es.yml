@@ -157,55 +157,15 @@ es:
       almost_x_years:
         one:   "Hace casi un año"
         other: "Hace casi %{count} años atrás"
-        
-# Label for USA.gov (used on USA.gov only)
-  usa_gov: GobiernoUSA.gov
 
 # Text for page captcha challenge, which is shown if bot-like search patterns are detected
   are_you_human: "Hemos detectado un aumento inusual en el número de búsquedas hechas desde donde usted está ubicado. ¿Es usted una persona o un robot?"
   captcha_requires_javascript: "¡Oops! Parece que no tiene Javascript activado así que no podrá confirmar que no es un robot. Por favor active Javascript y recargue esta página."
 
-# ALL LOCALIZATIONS BELOW ARE USED ON OUR LEGACY RESULTS PAGE ONLY (PRE-MAY 2014).
-
-# Label for text best bet when it appears in type-ahead suggestions (legacy results page only)
+# Label for text best bet when it appears in suggestions via the type-ahead API
   recommended_pages: 'Páginas recomendadas'
 
-# Labels for the approximate number of results returned (legacy results page only)
-  approximate: 'Aproximadamente '
-  result: 'resultado'
-  results_summary: 'Página %{page} de %{approximate}%{total}'
-
-# Labels for inline best bets and GovBoxes (legacy results page only)
-  by_site: "página destacada por"
-  recent_tweet_for: "Tweet más reciente para '%{query}'"
-  recent_tweets_for: "Tweets más recientes para '%{query}'"
-  video_news_results: "Videos de '%{query}'"
-  news_results: "%{rss_govbox_label} sobre de '%{query}'"
-  related_topics_prefix: "Búsquedas relacionadas a"
-
-# Labels for inline health topics module (legacy results page only)
-  medline_official_result: Resultado oficial de MedlinePlus
-  medline_related_topics: Temas relacionados de MedlinePlus
-
-# Labels for results attribution (legacy results page only)
-  results_by_bing: 'Resultados por Bing'
-  results_by_usasearch: 'Resultados por USASearch'
-  results_by_google: 'Resultados por Google'
-
-# Labels for displaying and narrowing by Dublin Core facets (legacy results page only)
-  show_options: 'Mostrar opciones'
-  hide_options: 'Ocultar opciones'
-  show_less: 'Menos'
-  facet:
-    all_contributors: 'Cualquier colaborador'
-    all_subjects: 'Cualquier tema'
-    all_publishers: 'Cualquier editor'
-
-# Labels for toggling footer display (legacy results page only)
-  show_footer: 'Mostrar pie de página'
-  hide_footer: 'Esconder pie de página'
-
-# Labels for advanced search (legacy results page only)
+# Labels for advanced search
   advanced_search: "Búsqueda avanzada"
   advanced_search_instruction: "Use las siguientes opciones para hacer una búsqueda específica."
   advanced_search_show_results_header: "Buscar resultados con"
@@ -224,13 +184,3 @@ es:
   advanced_search_operator_url_on_bing: 'http://onlinehelp.microsoft.com/es-us/bing/ff808421.aspx'
   advanced_search_operator_url_on_google: 'https://support.google.com/websearch/answer/136861?hl=es'
   advanced_search_operator: 'Usted también puede usar las %{link} para limitar sus búsquedas y hacerlas más específicas.'
-
-# Prompts for searchers to revise or refine search on news vertical (legacy results page only)
-  no_results_for_query: "No hemos encontrado ningún resultado que contenga '%{query}'"
-  or_try_broader: "de su búsqueda, use otras palabras clave o intente usando sinónimos."
-  remove_all_filters: "Elimine los filtros"
-  the_last_hour: "hace una hora"
-  the_last_day: "en el último día"
-  the_last_week: "en la última semana"
-  the_last_month: "en el último mes"
-  the_last_year: "en el último año"
