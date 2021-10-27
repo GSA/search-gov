@@ -1,0 +1,136 @@
+hu:
+
+# Search.gov localizations for: Hungarian (hu)
+
+# Default page title of search results page
+  default_serp_title: '%{query} - %{site_name} Találatok'
+
+# Labels for the search box
+  search: "Keresés"
+  search_label: 'Írja be a keresett szót/szavakat.'
+
+# Labels for the navigation bar
+  everything: "Találatok az oldalon"
+  images: "Képek"
+  videos: "Videók"
+  show_more: 'Tovább'
+
+# Labels to change the sort order by date or relevance
+  by_date: 'Legfrissebb'
+  by_relevance: 'Legjobb találat'
+
+# Labels to narrow results by a preset timeframe or a custom date range, or clear filters ('Before' is the label for custom date range with only a 'To' date set.)
+  refine_your_search:
+  all_time: "Bármikor"
+  last_hour: "Egy órán belül"
+  last_day: "Előző nap"
+  last_week: "Előző héten"
+  last_month: "Előző hónapban"
+  last_year: "Előző évben"
+  custom_range: 'Megadott időtartam'
+  from: '-tól/-től'
+  to: '-ig'
+  cdr_format: '%m/%d/%Y'
+  before: 'Előtt'
+  clear: 'Töröl'
+
+# Prompts for spelling, spelling overrides, and did you mean suggestions
+  showing_results_for: Találatok %{corrected_query} -ra/-re
+  search_instead_for: Keresés inkább  %{original_query} -ra/-re
+  did_you_mean: "Találatok %{assumed_term} ra/-re is. Csak %{term_as_typed} -ra/-re akar találatot?"
+
+# Prompts for searchers to revise or refine search
+  no_results_for_and_try: "Sajnos a/az '%{query}' -ra/-re nincs találat. Próbálja újra kevesebb, vagy tágabb értelmű kifejezéssel."
+  too_long: "A megadott keresés túl hosszú. Próbálja újra kevesebb szóval vagy kifejezéssel:"
+  empty_query: "Írja be a keresendő szót/szavakat a fenti ablakba."
+
+# Labels for inline best bets, news, and related searches modules
+  recommended: "Javasolta"
+  by: ":"
+  default_rss_govbox_label: 'Hírek'
+  related_searches: "Hasonló keresések"
+
+# Labels for paging through results
+  page: 'Oldal'
+  prev_label: "Előző"
+  next_label: "Következő"
+
+  searches:
+    by: 
+# Prompt for searchers to skip to main content (most easily seen by tabbing through results page)
+    skip_to_main_content: Ugrás a fő tartalomra
+# Labels for navigation bar "sections" (most easily seen on mobile dimension)
+    menu: Menü
+    browse_site: Böngészés az oldalon
+    related_sites: Téma megtekintése
+    results_count: '%{count}'
+    search_results: Találatok
+# Prompts for searchers to view more results from Bing/Google after reaching page n of Search.gov results
+    commercial_results:
+      find_what_looking_for:
+      see_more_web_results: "%{link} További találatok"
+      see_more_image_results: "Találatok közösségi oladalainkról és fotóalbumainkból. %{link} Találatok honlapunkról (Korábban már látott találatok is megjelenhetnek.)"
+      search_again: Keressen újra!
+# Prompts for searchers to view more results from the broader website after initially seeing site-scoped results
+    site_limits:
+      including_results_for_query_from_matching_sites: Találatok %{query} -ra/-re is -tól/-től %{matching_sites} kizárólag.
+      do_you_want_to_see_results_for: Megtekinti a találatokat %{query_from_all_sites} -ra/-re?
+      query_from_all_sites: '%{query} az összes oldalról'
+# Label for inline news module and prompt to see more news on news vertical
+    more_news_about_query: 'Továbbiak %{news_label} -ról/-ről %{query}'
+    news_about_query: '%{news_label} -ról/-ről %{query}'
+    news_search_options:
+      date_format: 'm/d/yyyy'
+# Label for attributing results to Bing, Search.gov, or Google
+  powered_by: 'Kereső:'
+
+# Prompts for searchers to expand/collapse the number of best bets visible on the results page
+  show_more_label: 'Mutass többet'
+  show_less_label: 'Mutass kevesebbet'
+
+# Date format used in custom date range picker and other places
+  date:
+    formats:
+      slashes: "%-m/%-d/%Y"
+
+# Labels for news-based results indicating how long ago they were published
+  datetime:
+    time_ago_in_words:
+      half_a_minute: "fél perccel ezelőtt"
+      less_than_x_seconds:
+        one:   "kevesebb mint egy másodperccel ezelőtt"
+        other: "kevesebb mint %{count} másodpercekkel ezelőtt"
+      x_seconds:
+        one:   "1 másodperccel ezelőtt"
+        other: "%{count} másodpercekkel ezelőtt"
+      less_than_x_minutes:
+        one:   "kevesebb mint egy perccel ezelőtt"
+        other: "kevesebb mint %{count} percekkel ezelőtt"
+      x_minutes:
+        one:   "1 perce"
+        other: "%{count} percekkel ezelőtt"
+      about_x_hours:
+        one:   "kb. 1 órája"
+        other: "kb. %{count} órákkal ezelőtt"
+      x_days:
+        one:   "1 napja"
+        other: "%{count} napokkal ezelőtt"
+      about_x_months:
+        one:   "1 hónapja"
+        other: "kb. %{count} hónapokkal ezelőtt"
+      x_months:
+        one:   "wata daya da ya wuce"
+        other: "%{count} hónapokkal ezelőtt"
+      about_x_years:
+        one:   "kb. 1 évvel ezelőtt"
+        other: "kb. %{count} évekkel ezelőtt"
+      over_x_years:
+        one:   "több mint 1 éve"
+        other: "több mint %{count} évekkel ezelőtt"
+      almost_x_years:
+        one:   "közel 1 éve"
+        other: "közel %{count} évekkel ezelőtt"
+
+# Text for page captcha challenge, which is shown if bot-like search patterns are detected
+  are_you_human:
+  captcha_requires_javascript:

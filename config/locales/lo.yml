@@ -1,0 +1,138 @@
+﻿lo:
+
+# Default page title of search results page
+  default_serp_title: '%{query} - %{site_name} ຜົນການຄົ້ນຫາ'
+
+# Labels for the search box
+  search: "ຄົ້ນຫາ"
+  search_label: 'ກະລຸນາໃສ່ຄຳສັບທີ່ທ່ານຢາກຄົ້ນຫາ'
+
+# Labels for the navigation bar
+  everything: "ຜົນການຄົ້ນຫາເວັບໄຊ"
+  images: "ຮູບພາບ"
+  videos: ""
+  show_more: 'ເພີ້ມຕື່ມ'
+
+# Labels to change the sort order by date or relevance
+  by_date: 'ຫວ່າງບໍ່ດົນມານີ້'
+  by_relevance: 'ໃກ້ຄຽງທີ່ສຸດ'
+
+# Labels to narrow results by a preset timeframe or a custom date range, or clear filters ('Before' is the label for custom date range with only a 'To' date set.)
+  refine_your_search:
+  all_time: "ຕະຫຼອດເວລາ"
+  last_hour: "ຊົ່ວໂມງຜ່ານມາ"
+  last_day: "ມື້ທີ່ຜ່ານມາ"
+  last_week: "ອາທິດຜ່ານມາ"
+  last_month: "ເດືອນທີ່ຜ່ານມາ"
+  last_year: "ປີຜ່ານມາ"
+  custom_range: 'ລະດັບທີ່ກຳນົດ'
+  from: 'ຈາກ'
+  to: 'ເຖິງ'
+# It's safe to modify the order of these (e.g., '%m/%d/%Y'), but do not localize the Latin letters 'd', 'm', or 'Y'. Do not change the case of the letters.
+  cdr_format: '%d/%m/%Y'
+  before: 'ກ່ອນ'
+  clear: 'ລົບລ້າງ'
+
+# Prompts for spelling, spelling overrides, and did you mean suggestions
+  showing_results_for: ສະແດງຜົນການຄົ້ນຫາ %{corrected_query}
+  search_instead_for: ຄົ້ນຫາແທນ %{original_query}
+  did_you_mean: "ທ່ານຕ້ອງການເບິ່ງຂໍ້ມູນເພື່ອ %{assumed_term}. ການຄົ້ນຫາຫຼາຍຂຶ້ນ %{term_as_typed}?"
+
+# Prompts for searchers to revise or refine search
+  no_results_for_and_try: "ຂໍອະໄພ, ບໍ່ພົບເຫັນຜົນການຄົ້ນຫາ '%{query}'. ລອງໃສ່ຄຳສັບຄົ້ນຫາໃໝ່."
+  too_long: "ຄຳສັບທີ່ກຳລັງຄົ້ນຫາ ຍາວເກີນໄປ: ກະລຸນາໃຊ້ຄຳສັບສັ້ນກວ່າເກົ່າ."
+  empty_query: "ກະລຸນາໃສ່ຄຳສັບຄົ້ນຫາທີ່ຢູ່ທາງດ້ານເທິງ."
+
+# Labels for inline best bets, news, and related searches modules
+  recommended: "ແນະນຳ"
+  by: "ໂດຍ"
+  default_rss_govbox_label: ""
+  related_searches: "ການຄົ້ນຫາທີ່ກ່ຽວຂ້ອງ"
+
+# Labels for paging through results
+  page: 'ໜ້າ'
+  prev_label: "ທີ່ຜ່ານມາ"
+  next_label: "ຕໍ່ໄປ"
+  
+  searches:
+    by: by
+# Prompt for searchers to skip to main content (most easily seen by tabbing through results page)
+    skip_to_main_content: ກັບໄປສູ່ໜ້າຫຼັກ
+# Labels for navigation bar "sections" (most easily seen on mobile dimension)
+    menu: ລາຍການ
+    browse_site: ໝວດເວັບໄຊ
+    related_sites: ຫົວຂໍ້ທີ່ກ່ຽວຂ້ອງ
+    results_count: '%{count} ຜົນການຄົ້ນຫາ'
+    search_results: ຜົນການຄົ້ນຫາ
+# Prompts for searchers to view more results from Bing/Google after reaching page n of Search.gov results
+    commercial_results:
+      find_what_looking_for:
+      see_more_web_results: "%{link} ການຄົ້ນຫາຫຼາຍຂຶ້ນ. (ທ່ານອາດພົບຂໍ້ມູນ ທີ່ທ່ານເຄີຍເຫັນແລ້ວ.)"
+      see_more_image_results: "ຂໍ້ມູນດ້ານເທິງ ແມ່ນມາຈາກ ມີເດຍ ແລະ ແກລໍຣີ. %{link} (ທ່ານອາດພົບຂໍ້ມູນ ທີ່ທ່ານເຄີຍເຫັນແລ້ວ.)"
+      search_again: ກະລຸນາໃສ່ຄຳສັບທີ່ຄົ້ນຫາອີກຄັ້ງ
+# Prompts for searchers to view more results from the broader website after initially seeing site-scoped results
+    site_limits:
+      including_results_for_query_from_matching_sites: Ներառված են որոնման արդյունքներ %{query} Ումից %{matching_sites} Միայն.
+      do_you_want_to_see_results_for: ທ່ານຕ້ອງການເບິ່ງຂໍ້ມູນເພື່ອ %{query_from_all_sites}?
+      query_from_all_sites: '%{query} ຈາກເວັບໄຊທັງໝົດ'
+# Label for inline news module and prompt to see more news on news vertical
+    more_news_about_query: 'ເພີ້ມຕື່ມ %{news_label} ກ່ຽວກັບ %{query}'
+    news_about_query: '%{news_label} ກ່ຽວກັບ %{query}'
+    news_search_options:
+# It's safe to modify the order of these (e.g., 'm/d/yyyy'), but do not localize 'd', 'm', or 'yyyy'. Do not change the case of the letters.
+      date_format: 'd/m/yyyy'
+
+# Label for attributing results to Bing, Search.gov, or Google
+  powered_by: ສະໜັບສະໜູນໂດຍ'
+
+# Prompts for searchers to expand/collapse the number of best bets visible on the results page
+  show_more_label: 'ສະແດງເພີ່ມຕື່ມ'
+  show_less_label: 'ສະແດງໜ້ອຍລົງ'
+
+# Date format used in custom date range picker and other places
+  date:
+    formats:
+# It's safe to modify the order of these (e.g., '%-d/%-m/%Y'), but do not localize 'd', 'm', or 'Y' or remove the dashes. Do not change the case of the letters.
+      slashes: "%-m/%-d/%Y"
+
+# Labels for news-based results indicating how long ago they were published
+  datetime:
+    time_ago_in_words:
+      half_a_minute: "ເຄິ່ງນາທີຜ່ານມາ"
+      less_than_x_seconds:
+        one:   "ໜ້ອຍກວ່າ 1 ວິນາທີ"
+        other: "ໜ້ອຍກວ່າ %{count} ວິນາທີ"
+      x_seconds:
+        one:   "1 ໜຶ່ງນາທີ ຜ່ານມາ"
+        other: "%{count} ສອງນາທີ ຜ່ານມາ"
+      less_than_x_minutes:
+        one:   "ໜ້ອຍກວ່າ1ນາທີ່ຜ່ານມາ"
+        other: "2 ຫາ 3ນາທີຜ່ານມາ %{count} ນາທີຜ່ານມາ"
+      x_minutes:
+        one:   "1 ນາທີຜ່ານມາ"
+        other: "%{count} ນາທີຜ່ານມາ"
+      about_x_hours:
+        one:   "ປະມານ1 ຊົ່ວໂມງຜ່ານມາ"
+        other: "ຫາ %{count} ຊົ່ວໂມງຜ່ານມາ"
+      x_days:
+        one:   "1 ມື້ຜ່ານມາ"
+        other: "%{count} ຫາ ໝືຜ່ານມາ"
+      about_x_months:
+        one:   "ປະມານ 1 ເດືອນຜ່ານມາ"
+        other: "ຫາ %{count} ເດືອນຜ່ານມາ"
+      x_months:
+        one:   "ປະມານ 1 ເດືອນຜ່ານມາ"
+        other: "%{count} ເດືອນຜ່ານມາ"
+      about_x_years:
+        one:   "1 ປີຜ່ານມາ"
+        other: " %{count} ປີຜ່ານມາ"
+      over_x_years:
+        one:   "ຫຼາຍກວ່າ1ປີຜ່ານມາ"
+        other: " %{count} ປີຜ່ານມາ"
+      almost_x_years:
+        one:   "ເກືອບ1ປີຜ່ານມາ"
+        other: "Մոտավորապես %{count} Տարիներ առաջ"
+
+# Text for page captcha challenge, which is shown if bot-like search patterns are detected
+  are_you_human:
+  captcha_requires_javascript:

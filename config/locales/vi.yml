@@ -1,0 +1,140 @@
+vi: 
+
+# Search.gov localizations for: Vietnamese (vi)
+
+# Default page title of search results page
+  default_serp_title: '%{query} - %{site_name} Kết quả tìm kiếm'
+
+# Labels for the search box
+  search: "Tìm kiếm"
+  search_label: "Nhập từ khóa"
+
+# Labels for the navigation bar
+  everything: "Kết quả tìm kiếm trong trang"
+  images: "Hình ảnh"
+  videos: "videos"
+  show_more: 'Thêm'
+
+# Labels to change the sort order by date or relevance
+  by_date: 'Mới nhất'
+  by_relevance: 'Giống nhất'
+
+# Labels to narrow results by a preset timeframe or a custom date range, or clear filters ('Before' is the label for custom date range with only a 'To' date set.)
+  refine_your_search:
+  all_time: "Tất cả thời gian"
+  last_hour: "Giờ trước"
+  last_day: "Ngày trước"
+  last_week: "Tuần trước"
+  last_month: "Tháng trước"
+  last_year: "Năm trước"
+  custom_range: 'Tùy chọn '
+  from: 'Từ'
+  to: 'Đến'
+# It's safe to modify the order of these (e.g., '%m/%d/%Y'), but do not localize the Latin letters 'd', 'm', or 'Y'. Do not change the case of the letters.
+  cdr_format: '%Y/%m/%d'
+  before: 'Trước'
+  clear: 'Xóa'
+
+# Prompts for spelling, spelling overrides, and did you mean suggestions
+  showing_results_for: Hiển thị kết quả chok %{corrected_query}
+  search_instead_for: Tìm kiếm thay thế cho %{original_query}
+  did_you_mean: "Chúng tôi thêm kết quả chok %{assumed_term}. Bạn có muốn chỉ có kết quả cho %{term_as_typed}?"
+
+# Prompts for searchers to revise or refine search
+  no_results_for_and_try: Xin lỗi, không tìm được kết quả nào cho '%{query}'. Hãy thử từ khóa hẹp hơn hoặc rộng hơn"
+  too_long: "Từ khóa bạn tìm quá dài. Hãy thử từ khác"
+  empty_query: "Hãy nhập từ khóa vào ô ở trên."
+
+# Labels for inline best bets, news, and related searches modules
+  recommended: "được gợi ý"
+  by: "bởi"
+  default_rss_govbox_label: 'Tin tức'
+  related_searches: "Tìm kiếm có liên quan"
+
+# Labels for paging through results
+  page: 'Trang'
+  prev_label: "Trước"
+  next_label: "tiếp theo"
+
+  searches:
+    by: bởi
+# Prompt for searchers to skip to main content (most easily seen by tabbing through results page)
+    skip_to_main_content: Trở về mục chínha
+# Labels for navigation bar "sections" (most easily seen on mobile dimension)
+    menu: Danh mục
+    browse_site: duyệt trang
+    related_sites: Xem chủ đề
+    results_count: '%{count}'
+    search_results: Kết quả tìm kiếm
+# Prompts for searchers to view more results from Bing/Google after reaching page n of Search.gov results
+    commercial_results:
+      find_what_looking_for:
+      see_more_web_results: "%{link} xem thêm kết quả"
+      see_more_image_results: "Bạn có thể thấy một số kết quả mà bạn đã thấy. %{link}"
+      search_again: Hãy thử tìm kiếm một lần nữa
+# Prompts for searchers to view more results from the broader website after initially seeing site-scoped results
+    site_limits:
+      including_results_for_query_from_matching_sites: Chúng tôi đang thêm một số kết quả cho %{query} từ %{matching_sites} chỉ.
+      do_you_want_to_see_results_for: Bạn muốn xem kết quả của %{query_from_all_sites}?
+      query_from_all_sites: '%{query} cho tất cả các trang'
+# Label for inline news module and prompt to see more news on news vertical
+    more_news_about_query: 'Thêm %{news_label} về %{query}'
+    news_about_query: '%{news_label} TRANSLATION %{query}'
+    news_search_options:
+# It's safe to modify the order of these (e.g., 'm/d/yyyy'), but do not localize 'd', 'm', or 'yyyy' or change the case of the letters.
+      date_format: 'yyyy/m/d'
+
+# Label for attributing results to Bing, Search.gov, or Google
+  powered_by: 'Được tạo bởi'
+
+# Prompts for searchers to expand/collapse the number of best bets visible on the results page
+  show_more_label: 'Hiển thị thêm'
+  show_less_label: 'Hiển thị ít hơn'
+
+# Date format used in custom date range picker and other places
+  date:
+    formats:
+# It's safe to modify the order of these (e.g., '%-d/%-m/%Y'), but do not localize 'd', 'm', or 'Y' or remove the dashes. Do not change the case of the letters.
+      slashes: "%-Y/%-m/%d"
+
+# Labels for news-based results indicating how long ago they were published
+  datetime:
+    time_ago_in_words:
+      half_a_minute: "nửa phút trước"
+      less_than_x_seconds:
+        one:   "ít hơn một giây trước"
+        other: "ít hơn %{count} vài giây trước"
+      x_seconds:
+        one:   "1 một giây trước"
+        other: "%{count}  vài giây trước"
+      less_than_x_minutes:
+        one:   "ít hơn một phút trước"
+        other: "ít hơn %{count} vài phút trước"
+      x_minutes:
+        one:   "1 một phút trước"
+        other: "%{count} vài phút trước"
+      about_x_hours:
+        one:   "khoảng một giờ trước 1"
+        other: "vài giờ trước %{count} vài giờ trước"
+      x_days:
+        one:   "1 một ngày trước"
+        other: "%{count} vài ngày trước"
+      about_x_months:
+        one:   "khoảng một tháng trước"
+        other: "vài tháng trước %{count}"
+      x_months:
+        one:   "1 một tháng trước"
+        other: "%{count} months ago" #NOTE: translate me
+      about_x_years:
+        one:   "khoảng một năm trước"
+        other: "vài năm trước %{count}"
+      over_x_years:
+        one:   "một năm trước"
+        other: "vài năm trước %{count}"
+      almost_x_years:
+        one:   "Tgần một năm trước 1"
+        other: "almost %{count} years ago" #NOTE: translate me
+
+# Text for page captcha challenge, which is shown if bot-like search patterns are detected
+  are_you_human:
+  captcha_requires_javascript:

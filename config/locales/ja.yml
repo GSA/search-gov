@@ -1,0 +1,137 @@
+ja:
+
+# Search.gov localizations for: Japanese (ja)
+
+# Default page title of search results page
+  default_serp_title: '%{query} - %{site_name} 検索結果'
+
+# Labels for the search box
+  search: "検索"
+  search_label: '検索語を入力'
+
+# Labels for the navigation bar
+  everything: "サイト結果"
+  images: "画像"
+  videos: "ビデオ"
+  show_more: 'さらに結果を見る'
+
+# Labels to change the sort order by date or relevance
+  by_date: '日付順'
+  by_relevance: '関連度順'
+
+# Labels to narrow results by a preset timeframe or a custom date range, or clear filters ('Before' is the label for custom date range with only a 'To' date set.)
+  refine_your_search: "絞り込み検索"
+  all_time: "すべての期間"
+  last_hour: "過去１時間"
+  last_day: "過去１日"
+  last_week: "過去１週間"
+  last_month: "過去１カ月"
+  last_year: "過去１年"
+  custom_range: '検索期間指定'
+  from: 'いつから'
+  to: 'いつまで'
+  cdr_format: '%m/%d/%Y'
+  before: 'これより以前'
+  clear: 'やり直し'
+
+# Prompts for spelling, spelling overrides, and did you mean suggestions
+  showing_results_for: "%{corrected_query}の検索結果を見る"
+  search_instead_for: 検索をやり直す %{original_query}
+  did_you_mean: "この検索語を含む %{assumed_term}. この検索語のみを検索 %{term_as_typed}?"
+
+# Prompts for searchers to revise or refine search
+  no_results_for_and_try: "検索語 '%{query}'の結果は０件です。 キーワードを変更するなどして再度検索してください。"
+  too_long: "検索語を短くして入力。"
+  empty_query: "上記の空欄に検索語を記入。"
+
+# Labels for inline best bets, news, and related searches modules
+  recommended: "お勧め"
+  by: "これによる"
+  default_rss_govbox_label: 'ニュース'
+  related_searches: "関連検索"
+
+# Labels for paging through results
+  page: 'ページ'
+  prev_label: "前"
+  next_label: "次"
+
+  searches:
+    by: これによる
+# Prompt for searchers to skip to main content (most easily seen by tabbing through results page)
+    skip_to_main_content: コンテンツへ
+# Labels for navigation bar "sections" (most easily seen on mobile dimension)
+    menu: メニュー
+    browse_site: サイトを閲覧
+    related_sites: 関連サイト
+    results_count: '結果%{count}件'
+    search_results: 検索結果
+# Prompts for searchers to view more results from Bing/Google after reaching page n of Search.gov results
+    commercial_results:
+      find_what_looking_for: "探してるものは見つかりましたか？"
+      see_more_web_results: "%{link} 検索結果をさらに見る。(すでに見たウェブ検索結果が含まれる場合がある。)"
+      see_more_image_results: "上記の結果はソーシャルメディアとギャラリーから。 %{link} このウェブサイトでの結果を見る。 (すでに見た画像検索結果が含まれる場合がある。)"
+      search_again: さらに検索
+# Prompts for searchers to view more results from the broader website after initially seeing site-scoped results
+    site_limits:
+      including_results_for_query_from_matching_sites: この検索の結果を含む %{query} ここから %{matching_sites} これのみ.
+      do_you_want_to_see_results_for: この検索からの結果を見る %{query_from_all_sites}?
+      query_from_all_sites: '%{query} すべてのサイトから'
+# Label for inline news module and prompt to see more news on news vertical
+    more_news_about_query: 'より多くの結果 %{news_label} 検索語について %{query}'
+    news_about_query: '%{news_label} 検索語について %{query}'
+    news_search_options:
+      date_format: 'm/d/yyyy'
+
+# Label for attributing results to Bing, Search.gov, or Google
+  powered_by: '検索システム'
+
+# Prompts for searchers to expand/collapse the number of best bets visible on the results page
+  show_more_label: '結果を多く表示'
+  show_less_label: '結果を少なく表示'
+
+# Date format used in custom date range picker and other places
+  date:
+    formats:
+      slashes: "%-m/%-d/%Y"
+
+# Labels for news-based results indicating how long ago they were published
+  datetime:
+    time_ago_in_words:
+      half_a_minute: "30秒前"
+      less_than_x_seconds:
+        one:   "１秒前"
+        other: "%{count} 秒前"
+      x_seconds:
+        one:   "１秒前"
+        other: "%{count} 秒前"
+      less_than_x_minutes:
+        one:   "１分前"
+        other: "%{count} 分前"
+      x_minutes:
+        one:   "１分前"
+        other: "%{count} 分前"
+      about_x_hours:
+        one:   "約１時間前"
+        other: "約%{count} 時間前"
+      x_days:
+        one:   "１日前"
+        other: "%{count} 日前"
+      about_x_months:
+        one:   "約１カ月前"
+        other: "約%{count} カ月前"
+      x_months:
+        one:   "１カ月前"
+        other: "%{count} カ月前"
+      about_x_years:
+        one:   "約１年前"
+        other: "約%{count} 年前"
+      over_x_years:
+        one:   "１年以上前"
+        other: "%{count} 年以上前"
+      almost_x_years:
+        one:   "１年近く前"
+        other: "%{count} 年近く前"
+
+# Text for page captcha challenge, which is shown if bot-like search patterns are detected
+  are_you_human:
+  captcha_requires_javascript:

@@ -1,0 +1,136 @@
+ar:
+
+# Search.gov localizations for: Arabic (ar)
+
+# Default page title of search results page
+  default_serp_title: '%{query} - %{site_name} نتائج البحث'
+
+# Labels for the search box
+  search: "ابحث"
+  search_label: 'أدخِل كلمات البحث'
+
+# Labels for the navigation bar
+  everything: "نتائج من الموقع"
+  images: "صور"
+  videos: "أشرطة الفيديو"
+  show_more: 'المزيد'
+
+# Labels to change the sort order by date or relevance
+  by_date: 'أحدث'
+  by_relevance: 'أفضل تطابق'
+
+# Labels to narrow results by a preset timeframe or a custom date range, or clear filters ('Before' is the label for custom date range with only a 'To' date set.)
+  refine_your_search:
+  all_time: "كل الوقت"
+  last_hour: "آخر ساعة"
+  last_day: "آخر يوم"
+  last_week: "الأسبوع الماضي"
+  last_month: "الشهر الماضي"
+  last_year: "السنة الماضية"
+  custom_range: 'خصائص البحث المتقدم'
+  from: 'من'
+  to: 'إلى'
+  cdr_format: '%m/%d/%Y'
+  before: 'قبل'
+  clear: 'أفرِغ'
+
+# Prompts for spelling, spelling overrides, and did you mean suggestions
+  showing_results_for: إظهار نتائج عن %{corrected_query}
+  search_instead_for: ابحث بدلا من ذلك عن  %{original_query}
+  did_you_mean: "أدرجنا نتائج عن %{assumed_term}. هل تريد نتائج فقط عن %{term_as_typed}?"
+
+# Prompts for searchers to revise or refine search
+  no_results_for_and_try: "للأسف، ليس هناك نتائج عن '%{query}'. حاول إدخال مصطلحات للبحث أقل أو أشمل"
+  too_long: "مصطلح بحثك طويل جدًا. حاول مرة أخرى استخدام كلمة أو عبارة أقصر:"
+  empty_query: "الرجاء إدخال مصطلح بحث في المربع أعلاه."
+
+# Labels for inline best bets, news, and related searches modules
+  recommended: "موصى به"
+  by: "بواسطة"
+  default_rss_govbox_label: 'الأخبار'
+  related_searches: "بحث ذو صلة"
+
+# Labels for paging through results
+  page: 'الصفحة'
+  prev_label: "السابقة"
+  next_label: "التالية"
+
+  searches:
+    by: في
+# Prompt for searchers to skip to main content (most easily seen by tabbing through results page)
+    skip_to_main_content: اذهب مباشرة إلى المحتوى الرئيسي
+# Labels for navigation bar "sections" (most easily seen on mobile dimension)
+    menu: القائمة
+    browse_site: تصفح الموقع
+    related_sites: طالع الموضوع
+    results_count: '%{count}'
+    search_results: نتائج البحث
+# Prompts for searchers to view more results from Bing/Google after reaching page n of Search.gov results
+    commercial_results:
+      find_what_looking_for:
+      see_more_web_results: "%{link} للحصول على مزيد من النتائج"
+      see_more_image_results: "النتائج المذكورة أعلاه هي من حساباتنا ومعارضنا على وسائل الإعلام الاجتماعية. %{link} لمشاهدة نتائج من موقعنا (قد تشاهد بعض النتائج التي كنت قد شاهدتها بالفعل.)"
+      search_again: حاول إجراء بحثك مرة أخرى
+# Prompts for searchers to view more results from the broader website after initially seeing site-scoped results
+    site_limits:
+      including_results_for_query_from_matching_sites: أدرجنا النتائج الخاصة بــ %{query} من %{matching_sites} فقط.
+      do_you_want_to_see_results_for: هل تريد مطالعة نتائج عن %{query_from_all_sites}?
+      query_from_all_sites: '%{query} من كل المواقع'
+# Label for inline news module and prompt to see more news on news vertical
+    more_news_about_query: 'مزيد %{news_label} عن %{query}'
+    news_about_query: '%{news_label} për %{query}'
+    news_search_options:
+      date_format: 'm/d/yyyy'
+# Label for attributing results to Bing, Search.gov, or Google
+  powered_by: 'بدعم من'
+
+# Prompts for searchers to expand/collapse the number of best bets visible on the results page
+  show_more_label: 'أظهر نتائج أكثر'
+  show_less_label: 'أظهر نتائج أقل'
+
+# Date format used in custom date range picker and other places
+  date:
+    formats:
+      slashes: "%-m/%-d/%Y"
+
+# Labels for news-based results indicating how long ago they were published
+  datetime:
+    time_ago_in_words:
+      half_a_minute: "منذ نصف دقيقة"
+      less_than_x_seconds:
+        one:   "منذ أقل من ثانية"
+        other: "أقل من %{count} منذ ثوان"
+      x_seconds:
+        one:   "منذ ثانية واحدة"
+        other: "%{count} منذ ثوان"
+      less_than_x_minutes:
+        one:   "منذ أقل من دقيقة"
+        other: "أقل من %{count} منذ دقائق"
+      x_minutes:
+        one:   "منذ دقيقة واحدة"
+        other: "%{count} منذ دقائق"
+      about_x_hours:
+        one:   "منذ حوالي ساعة واحدة"
+        other: "حول %{count}  منذ ساعات"
+      x_days:
+        one:   "منذ يوم واحد"
+        other: "%{count} منذ أيام"
+      about_x_months:
+        one:   "منذ حوالي شهر واحد"
+        other: "حول %{count} منذ شهور"
+      x_months:
+        one:   "منذ شهر واحد"
+        other: "%{count} منذ شهور"
+      about_x_years:
+        one:   "منذ حوالي سنة واحدة"
+        other: "حول %{count} منذ سنوات"
+      over_x_years:
+        one:   "منذ أكثر من سنة واحدة"
+        other: "خلال %{count} منذ سنوات"
+      almost_x_years:
+        one:   "منذ سنة واحدة تقريبًا"
+        other: "تقريبا %{count} منذ سنوات"
+
+# Text for page captcha challenge, which is shown if bot-like search patterns are detected
+  are_you_human:
+  captcha_requires_javascript:
