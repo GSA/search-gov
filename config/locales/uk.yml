@@ -1,0 +1,136 @@
+uk:
+
+# Search.gov localizations for: Ukrainian (uk)
+
+# Default page title of search results page
+  default_serp_title: '%{query} - %{site_name} Результати пошуку'
+
+# Labels for the search box
+  search: "Пошук"
+  search_label: 'Введіть слово(а) для пошуку'
+
+# Labels for the navigation bar
+  everything: "Результати пошуку по сайту"
+  images: "Зображення"
+  videos: "Відео"
+  show_more: 'Більше'
+
+# Labels to change the sort order by date or relevance
+  by_date: 'Останні'
+  by_relevance: 'Найкраще співпадіння'
+
+# Labels to narrow results by a preset timeframe or a custom date range, or clear filters ('Before' is the label for custom date range with only a 'To' date set.)
+  refine_your_search:
+  all_time: "Весь час"
+  last_hour: "Остання година"
+  last_day: "Останній день"
+  last_week: "Останній тиждень"
+  last_month: "Останній місяць"
+  last_year: "Останній рік"
+  custom_range: 'За період'
+  from: 'З'
+  to: 'По '
+  cdr_format: '%d/%m/%Y'
+  before: 'До'
+  clear: 'Очистити'
+
+# Prompts for spelling, spelling overrides, and did you mean suggestions
+  showing_results_for: Показати результати для %{corrected_query}
+  search_instead_for: Пошук на заміну %{original_query}
+  did_you_mean: "Включаємо результати за %{assumed_term}. Хочете результати лише %{term_as_typed}?"
+
+# Prompts for searchers to revise or refine search
+  no_results_for_and_try: "Вибачте, результатів не знайдено '%{query}'. Спробуйте ввести менше або більше слів щодо запиту"
+  too_long: "Ваш пошуковий запит надто довгий. Спробуйте коротші слова або фразу:"
+  empty_query: "Будь ласка, введіть пошуковий запит у віконце зверху."
+
+# Labels for inline best bets, news, and related searches modules
+  recommended: "Рекомендується"
+  by: "До"
+  default_rss_govbox_label: 'Новини'
+  related_searches: "Схожий запит"
+
+# Labels for paging through results
+  page: 'Сторінка'
+  prev_label: "Попереднійa"
+  next_label: "Наступний"
+  
+  searches:
+    by: by
+# Prompt for searchers to skip to main content (most easily seen by tabbing through results page)
+    skip_to_main_content: Перейти до головного контенту
+# Labels for navigation bar "sections" (most easily seen on mobile dimension)
+    menu: Меню
+    browse_site: Подивитися на сайті
+    related_sites: Подивитися тему
+    results_count: '%{count}'
+    search_results: Пошук результатів
+# Prompts for searchers to view more results from Bing/Google after reaching page n of Search.gov results
+    commercial_results:
+      find_what_looking_for:
+      see_more_web_results: "%{link} щоб подивитися більше результатів"
+      see_more_image_results: "Вищезазначені результати отримані з наших соціальний медіа та галерей %{link} щоб подивитися результати з нашого вебсайту (Ви можете побачити результати, які вже бачили раніше)"
+      search_again: Спробуйте пошук знову
+# Prompts for searchers to view more results from the broader website after initially seeing site-scoped results
+    site_limits:
+      including_results_for_query_from_matching_sites: Включаємо результати за %{query} Від %{matching_sites} Лише.
+      do_you_want_to_see_results_for: Хочете подивитися результати за %{query_from_all_sites}?
+      query_from_all_sites: '%{query} Зі всіх сайтів'
+# Label for inline news module and prompt to see more news on news vertical
+    more_news_about_query: 'Більше %{news_label} Про %{query}'
+    news_about_query: 'Новини %{news_label} Про %{query}'
+    news_search_options:
+      date_format: 'd/m/yyyy'
+# Label for attributing results to Bing, Search.gov, or Google
+  powered_by: 'Зроблено на основі'
+
+# Prompts for searchers to expand/collapse the number of best bets visible on the results page
+  show_more_label: 'Показати більше'
+  show_less_label: 'Показати менше'
+
+# Date format used in custom date range picker and other places
+  date:
+    formats:
+      slashes: "%-d/%-m/%Y"
+
+# Labels for news-based results indicating how long ago they were published
+  datetime:
+    time_ago_in_words:
+      half_a_minute: "Пів хвилини тому"
+      less_than_x_seconds:
+        one:   "Менше 1 секунди тому"
+        other: "менше ніж %{count} секунд тому"
+      x_seconds:
+        one:   "1 секунда тому"
+        other: "менше ніж %{count} секунд тому"
+      less_than_x_minutes:
+        one:   "prije manje od prije minute"
+        other: "менше ніж %{count} хвилин тому"
+      x_minutes:
+        one:   "1 хвилина тому"
+        other: "%{count} хвилин тому"
+      about_x_hours:
+        one:   "близько 1 години тому"
+        other: "%{count} години тому"
+      x_days:
+        one:   "1 день тому"
+        other: "%{count} днів тому"
+      about_x_months:
+        one:   "близько 1 місяця тому"
+        other: "%{count} місяців тому"
+      x_months:
+        one:   "1 місяць тому"
+        other: "%{count} місяців тому"
+      about_x_years:
+        one:   "близько 1 року тому"
+        other: "%{count} років тому"
+      over_x_years:
+        one:   "більше 1 року тому"
+        other: "count} років тому"
+      almost_x_years:
+        one:   "майже 1 рік тому"
+        other: "майже %{count} років тому"
+
+# Text for page captcha challenge, which is shown if bot-like search patterns are detected
+  are_you_human:
+  captcha_requires_javascript:

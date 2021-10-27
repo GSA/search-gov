@@ -1,0 +1,137 @@
+bal:
+
+# Search.gov localizations for: Baluchi (bal)
+
+# Default page title of search results page
+  default_serp_title: '%{query} - %{site_name} نتیجہ پھولگ '
+
+# Labels for the search box
+  search: "پھولگ"
+  search_label: 'وتی پھولگ اے وقت   بگیجیت'
+
+# Labels for the navigation bar
+  everything: "سائٹ اے نتیجہ "
+  images: "تصویر"
+  videos: "videos"
+  show_more: 'دگا'
+
+# Labels to change the sort order by date or relevance
+  by_date: 'درو اچ نوکین والا'
+  by_relevance: 'درو اچ شرین ملاپ'
+
+# Labels to narrow results by a preset timeframe or a custom date range, or clear filters ('Before' is the label for custom date range with only a 'To' date set.)
+  refine_your_search:
+  all_time: "ہر وقت "
+  last_hour: "پھدی گھنٹہ"
+  last_day: "پھدی روچ"
+  last_week: "پھدی ہفتہ"
+  last_month: "پھدی سال"
+  last_year: "کسٹم اے علاقہ"
+  custom_range: 'آہی اچ'
+  from: 'آہی ار'
+  to: 'پیشا'
+  cdr_format: '%m/%d/%Y'
+  before: 'صاف'
+  clear: 'ایم'
+
+# Prompts for spelling, spelling overrides, and did you mean suggestions
+  showing_results_for: ہی اچ بجا ۓ دگا نتیجہ %{corrected_query}
+  search_instead_for: ما آہی واسطہ نتیجہ شامل کنگ ام  %{original_query}
+  did_you_mean: "چے شمارہ صرف آہی اے واسطہ نتیجہ اے ضرورت انت %{assumed_term}. معافی لوٹان ایش اے نتیجہ نہ ملتا %{term_as_typed}?"
+
+# Prompts for searchers to revise or refine search
+  no_results_for_and_try: "کمین او مزنین تحقیق اے کوشش کنت '%{query}'. شمے پھولگ اے وقت بہاز دراج انت   دگا لفظ او جملہ اے گیجگ اے کوشش بکنیت "
+  too_long: "پھولگ اے وجہ برزا داتا گین ڈبہ ام بگیجیت"
+  empty_query: "تعریف کنگ."
+
+# Labels for inline best bets, news, and related searches modules
+  recommended: "اشی اچ"
+  by: "خبر"
+  default_rss_govbox_label: 'یک تعلق والا پھولگ'
+  related_searches: "صفحہ"
+
+# Labels for paging through results
+  page: 'پیشی'
+  prev_label: "دیمی"
+  next_label: "چکا"
+  
+  searches:
+    by: by
+# Prompt for searchers to skip to main content (most easily seen by tabbing through results page)
+    skip_to_main_content: یک فہرست
+# Labels for navigation bar "sections" (most easily seen on mobile dimension)
+    menu: سائٹ آر پھولت
+    browse_site: موضوع چارت
+    related_sites: نتیجہ پھولت
+    results_count: '%{count}'
+    search_results: دگا نتیجہ چارت
+# Prompts for searchers to view more results from Bing/Google after reaching page n of Search.gov results
+    commercial_results:
+      find_what_looking_for:
+      see_more_web_results: "%{link} شاید شما دیتگین نتیجہ ان پھد ا گندت"
+      see_more_image_results: "شاید شما دیتگین نتیجہ ان پھد ا گندت %{link}  (برزا دا تگین نتیجہ مے سوشل میڈیا اے اکاؤنٹ اچ او گیلری اچ انت.)"
+      search_again: اشی اچ
+# Prompts for searchers to view more results from the broader website after initially seeing site-scoped results
+    site_limits:
+      including_results_for_query_from_matching_sites: صرف %{query} چے شما ایشی واستہ نتیجہ لوٹت %{matching_sites} کھل سائٹ اچ.
+      do_you_want_to_see_results_for: دگا %{query_from_all_sites}?
+      query_from_all_sites: '%{query} بارہ ام'
+# Label for inline news module and prompt to see more news on news vertical
+    more_news_about_query: 'مہینہ /روچ/سال %{news_label} یک تعلق والا موضوع %{query}'
+    news_about_query: '%{news_label} یک تعلق والا پھولگ %{query}'
+    news_search_options:
+      date_format: 'd/m/yyyy'
+
+# Label for attributing results to Bing, Search.gov, or Google
+  powered_by: 'کم نشان دیعیت'
+
+# Prompts for searchers to expand/collapse the number of best bets visible on the results page
+  show_more_label: 'نیم منٹ پیشا'
+  show_less_label: 'یک سیکنڈ اچ کم'
+
+# Date format used in custom date range picker and other places
+  date:
+    formats:
+      slashes: "%-m/%-d/%Y"
+
+# Labels for news-based results indicating how long ago they were published
+  datetime:
+    time_ago_in_words:
+      half_a_minute: "اشی اچ کم"
+      less_than_x_seconds:
+        one:   "سیکنڈ پیشا"
+        other: "یک سیکنڈ پیشا %{count} یک منٹ اچ کم"
+      x_seconds:
+        one:   "1 منٹ اچ  پیشا"
+        other: "%{count} یک منٹ پیشا"
+      less_than_x_minutes:
+        one:   "تقریبا یک منٹ پیشا"
+        other: "گھنٹہ پیشا %{count} تقریبا یک منٹ پیشا"
+      x_minutes:
+        one:   "1 گھنٹہ پیشا"
+        other: "%{count} تقریبا یک منٹ پیشا"
+      about_x_hours:
+        one:   "1 یک روچ پیشا"
+        other: "%{count} بہاز روچ پیشا"
+      x_days:
+        one:   "1 یک مہینہ پیشا"
+        other: "%{count} مہینہ انچ پیش"
+      about_x_months:
+        one:   "یک مہینہ اچ پیشا"
+        other: "%{count}  تقریبا یک سال پیشا"
+      x_months:
+        one:   "1 سال انچ پیشا"
+        other: "%{count} تقریبا یک سال پیشا"
+      about_x_years:
+        one:   "یک سال اچ کمے زیات"
+        other: " %{count} تقریبا یک سال پیشا"
+      over_x_years:
+        one:   "نتیجہ پھولگ"
+        other: " %{count} تقریبا یک سال پیشا"
+      almost_x_years:
+        one:   "1 پھولگ"
+        other: "%{count} تقریبا یک سال پیشا"
+
+# Text for page captcha challenge, which is shown if bot-like search patterns are detected
+  are_you_human:
+  captcha_requires_javascript:

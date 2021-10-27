@@ -1,0 +1,136 @@
+km:
+
+# Search.gov localizations for: Khmer (km)
+
+# Default page title of search results page
+  default_serp_title: '%{query} - %{site_name} លទ្ធផលស្វែងរក'
+
+# Labels for the search box
+  search: "ស្វែងរក"
+  search_label: 'វាយពាក្យសំរាប់រាវ​រករបស់​អ្នកចូល'
+
+# Labels for the navigation bar
+  everything: "លទ្ធផលរកទំព័រ"
+  images: "រូប"
+  videos: "វីដេអូ"
+  show_more: 'មានច្រើនទៀត'
+
+# Labels to change the sort order by date or relevance
+  by_date: 'ថ្មីៗបំផុតនេះ'
+  by_relevance: 'ត្រូវគ្នាបំផុត'
+
+# Labels to narrow results by a preset timeframe or a custom date range, or clear filters ('Before' is the label for custom date range with only a 'To' date set.)
+  refine_your_search:
+  all_time: "すគ្រប់ពេល"
+  last_hour: "ម៉ោងមុននេះ"
+  last_day: "ថ្ងៃមុន​នេះ"
+  last_week: "សប្តាហ៍ មុន នេះ"
+  last_month: "ខែមុននេះ"
+  last_year: "ឆ្នាំមុន​នេះ"
+  custom_range: 'កំរិតនៃការធ្វើតាមតំរូវ'
+  from: 'ពី'
+  to: 'ទៅ'
+  cdr_format: '%m/%d/%Y'
+  before: 'មុន'
+  clear: 'លុបចេញអស់'
+
+# Prompts for spelling, spelling overrides, and did you mean suggestions
+  showing_results_for: បង្ហាញលទ្ធផលសំរាប់ %{corrected_query}
+  search_instead_for: រកមើល..វិញ %{original_query}
+  did_you_mean: "យើងបញ្ចូល​លទ្ធផល​សំរាប់ %{assumed_term}. តើអ្នកចង់​បាន​លទ្ធផល​សំរាប់តែ  %{term_as_typed}?"
+
+# Prompts for searchers to revise or refine search
+  no_results_for_and_try: "សូមទោស រកមិន​ឃើញលទ្ធផល​សំរាប់ '%{query}'. សាកល្បង​បញ្ចូល​ពាក្យសួរ​តិច ឬមាន​ន័យ​ទូលំ​ទូ​លាយ"
+  too_long: "ពាក្យសំរាប់រាវរក​របស់​អ្នក​វែងពេក​។ សូមសាកល្បងប្រើ​ពាក្យឬឃ្លាខ្លីៗ:"
+  empty_query: "សូមបញ្ចូលពាក្យ​សំរាប់រាវរក​​​ទៅក្នុង​​ប្រអប់ខាង​​លើ"
+
+# Labels for inline best bets, news, and related searches modules
+  recommended: "ត្រូវបានណែនាំអោយធ្វើ"
+  by: "ដោយ"
+  default_rss_govbox_label: 'ព័ត៌មាន'
+  related_searches: "ការស្វែងរកដែល​មានការ​ទាក់ទង​"
+
+# Labels for paging through results
+  page: 'ទំព័រ'
+  prev_label: "មុន"
+  next_label: "បន្ទាប់"
+  
+  searches:
+    by: នៅត្រង់
+# Prompt for searchers to skip to main content (most easily seen by tabbing through results page)
+    skip_to_main_content: រំលងទៅខ្លឹមសារសំខាន់
+# Labels for navigation bar "sections" (most easily seen on mobile dimension)
+    menu: តារាងមាតិការ
+    browse_site: ស្វែងរកទំព័រ
+    related_sites: មើលប្រធានបទ
+    results_count: '%{count}'
+    search_results: លទ្ធផលស្វែងរក
+# Prompts for searchers to view more results from Bing/Google after reaching page n of Search.gov results
+    commercial_results:
+      find_what_looking_for:
+      see_more_web_results: "%{link} ដើម្បីមើលលទ្ធផល​បន្ថែមទៀត"
+      see_more_image_results: "លទ្ធផលខាង​លើបាន​ពីគណនេយ្យ និង​​វិចិត្រ​​សាល​​​​នៃប្រព័ន្ធផ្សព្វ​ផ្សាយ​សង្គម​របស់​យើង។ %{link} ដើម្បីមើលលទ្ធផល​ពីគេហទំព័ររបស់យើង (អ្នកអាច​ឃើញលទ្ធផលខ្លះ​​ដែលអ្នកបាន​ឃើញហើយ។)"
+      search_again: សូមសាកល្បងស្វែងរកម្តងទៀត
+# Prompts for searchers to view more results from the broader website after initially seeing site-scoped results
+    site_limits:
+      including_results_for_query_from_matching_sites: យើងបញ្ចូល​លទ្ធផល​សំរាប់ %{query} មកពី %{matching_sites} សំរាប់តែ.
+      do_you_want_to_see_results_for: តើអ្នកចង់​បាន​លទ្ធផល​សំរាប់ %{query_from_all_sites}?
+      query_from_all_sites: '%{query} ពីទំព័រទាំងអស់'
+# Label for inline news module and prompt to see more news on news vertical
+    more_news_about_query: 'ច្រើនថែមទៀត %{news_label} អំពី %{query}'
+    news_about_query: '%{news_label} អំពី %{query}'
+    news_search_options:
+      date_format: 'm/d/yyyy'
+# Label for attributing results to Bing, Search.gov, or Google
+  powered_by: 'ដំណើរការដោយ'
+
+# Prompts for searchers to expand/collapse the number of best bets visible on the results page
+  show_more_label: 'បង្ហាញច្រើនថែមទៀត'
+  show_less_label: 'បង្ហាញតិច'
+
+# Date format used in custom date range picker and other places
+  date:
+    formats:
+      slashes: "%-m/%-d/%Y"
+
+# Labels for news-based results indicating how long ago they were published
+  datetime:
+    time_ago_in_words:
+      half_a_minute: "កន្លះ​នាទីមុន"
+      less_than_x_seconds:
+        one:   "មិនដល់មួយវិនាទីមុន"
+        other: "តិចជាង %{count} ប៉ុន្មានវិនាទីមុន"
+      x_seconds:
+        one:   "មួយវិនាទីមុន"
+        other: "%{count} ប៉ុន្មានវិនាទីមុន"
+      less_than_x_minutes:
+        one:   "មិនដល់មួយនាទីមុន"
+        other: "តិចជាង %{count} ប៉ុន្មាននាទីមុន"
+      x_minutes:
+        one:   "មួយនាទីមុន"
+        other: "%{count} ប៉ុន្មាននាទីមុន"
+      about_x_hours:
+        one:   "ប្រហែលមួយម៉ោងមុន"
+        other: "អំពី %{count}  ប៉ុន្មាន​ម៉ោងមុន"
+      x_days:
+        one:   "មួយថ្ងៃមុន"
+        other: "%{count} ប៉ុន្មានថ្ងៃមុន"
+      about_x_months:
+        one:   "ប្រហែលមួយខែមុន"
+        other: "អំពី %{count} ប៉ុន្មានខែមុន"
+      x_months:
+        one:   "មួយខែមុន"
+        other: "%{count} ប៉ុន្មានខែមុន"
+      about_x_years:
+        one:   "ប្រហែលមួយឆ្នាំមុន"
+        other: "អំពី %{count} ប៉ុន្មានឆ្នាំមុន"
+      over_x_years:
+        one:   "ជាងមួយឆ្នាំមុន"
+        other: "ជាង %{count} ប៉ុន្មានឆ្នាំមុន"
+      almost_x_years:
+        one:   "ជិតមួយឆ្នាំមុន"
+        other: "ជិត %{count} ប៉ុន្មានឆ្នាំមុន"
+
+# Text for page captcha challenge, which is shown if bot-like search patterns are detected
+  are_you_human:
+  captcha_requires_javascript:

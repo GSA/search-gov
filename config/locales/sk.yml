@@ -1,0 +1,137 @@
+sk:
+
+# Search.gov localizations for: Slovak (sk)
+
+# Default page title of search results page
+  default_serp_title: '%{query} - %{site_name} Výsledky vyhľadávania'
+
+# Labels for the search box
+  search: "Vyhľadávanie"
+  search_label: 'Zadajte hľadaný výraz'
+
+# Labels for the navigation bar
+  everything: "Výsledky zo stránok"
+  images: "Obrázky"
+
+  videos: "Video"
+  show_more: 'Viac'
+
+# Labels to change the sort order by date or relevance
+  by_date: 'Najnovšie'
+  by_relevance: 'Najlepšia zhoda'
+
+# Labels to narrow results by a preset timeframe or a custom date range, or clear filters ('Before' is the label for custom date range with only a 'To' date set.)
+  refine_your_search:
+  all_time: "Bez ohľadu na čas"
+  last_hour: "Posledná hodina"
+  last_day: "Posledný deň"
+  last_week: "Posledný týždeň"
+  last_month: "Posledný mesiac"
+  last_year: "Posledný rok"
+  custom_range: 'Vlastný rozsah'
+  from: 'Od'
+  to: 'Do'
+  cdr_format: '%m/%d/%Y'
+  before: 'Pred'
+  clear: 'vymazať'
+
+# Prompts for spelling, spelling overrides, and did you mean suggestions
+  showing_results_for: Výsledky pre %{corrected_query}
+  search_instead_for: Hľadajte výraz %{original_query}
+  did_you_mean: "Zahŕňame výsledky pre %{assumed_term} Želáte si iba výsledky pre %{term_as_typed}?"
+
+# Prompts for searchers to revise or refine search
+  no_results_for_and_try: "Je nám ľúto, žiadne výsledky pre.'%{query}' Skúste zadefinovať dotaz konkrétnejšie alebo všeobecnejšie"
+  too_long: "Váš hľadaný výraz je príliš dlhý. Skúste použiť kratšie slovo alebo vetu."
+  empty_query: "Zadajte prosím hľadaný výraz do poľa vyššie."
+
+# Labels for inline best bets, news, and related searches modules
+  recommended: "Odporúčaný"
+  by: "podľa"
+  default_rss_govbox_label: 'Správy'
+  related_searches: "Súvisiace vyhľadávania"
+
+# Labels for paging through results
+  page: 'Strana'
+  prev_label: "Predchádzajúci"
+  next_label: "Nasledujúci"
+
+  searches:
+    by: podľa
+# Prompt for searchers to skip to main content (most easily seen by tabbing through results page)
+    skip_to_main_content: Prejsť k hlavnému obsahu
+# Labels for navigation bar "sections" (most easily seen on mobile dimension)
+    menu: Menu
+    browse_site: Prehľadávať stránky
+    related_sites: Zobraziť tému
+    results_count: '%{count}'
+    search_results: Výsledky vyhľadávania
+# Prompts for searchers to view more results from Bing/Google after reaching page n of Search.gov results
+    commercial_results:
+      find_what_looking_for:
+      see_more_web_results: "%{link} zobraziť ďalšie výsledky Je možné že vidíte výsledky ktoré ste už videli"
+      see_more_image_results: "Výsledky vyššie sú z našich socíalnych médií a galérií. pre výsledky z našich webových stránok (Je možné že vidíte výsledky ktoré ste už videli)"
+      search_again: Skúste hľadať znova
+
+# Prompts for searchers to view more results from the broader website after initially seeing site-scoped results
+    site_limits:
+      including_results_for_query_from_matching_sites: Zahŕňame výsledky pre. %{query} z %{matching_sites} len.
+      do_you_want_to_see_results_for: Chcete vidieť výsledky pre %{query_from_all_sites}?
+      query_from_all_sites: '%{query} zo všetkých stránok'
+# Label for inline news module and prompt to see more news on news vertical
+    more_news_about_query: 'Viac %{news_label} o %{query}'
+    news_about_query: '%{news_label} o %{query}'
+    news_search_options:
+      date_format: 'm/d/yyyy'
+# Label for attributing results to Bing, Search.gov, or Google
+  powered_by: 'Poháňaný'
+
+# Prompts for searchers to expand/collapse the number of best bets visible on the results page
+  show_more_label: 'Zobraziť viac'
+  show_less_label: 'Zobraziť menej'
+# Date format used in custom date range picker and other places
+  date:
+    formats:
+      slashes: "%-m/%-d/%Y"
+
+# Labels for news-based results indicating how long ago they were published
+  datetime:
+    time_ago_in_words:
+      half_a_minute: "pred pol minútou"
+      less_than_x_seconds:
+        one:   "menej ako pred sekundou"
+        other: "menej ako %{count} pred niekoľkými sekundami"
+      x_seconds:
+        one:   "pred sekundou"
+        other: "%{count} pred niekoľkými sekundami"
+      less_than_x_minutes:
+        one:   "menej ako pred minútou"
+        other: "%{count} pred niekoľkými minútami"
+      x_minutes:
+        one:   "pred minútou"
+        other: "%{count} pred niekoľkými minútami"
+      about_x_hours:
+        one:   "asi pred hodinou"
+        other: "%{count} pred niekoľkými hodinami"
+      x_days:
+        one:   "pred 1 dňom"
+        other: "%{count} pred niekoľkými dňami"
+      about_x_months:
+        one:   "asi pred mesiacom"
+        other: "%{count} pred niekoľkými mesiacmi"
+      x_months:
+        one:   "pred mesiacom"
+        other: "%{count} pred niekoľkými mesiacmi"
+      about_x_years:
+        one:   "asi pred rokom"
+        other: "%{count} pred niekoľkými rokmi"
+      over_x_years:
+        one:   "viac ako pred rokom"
+        other: "%{count} pred niekoľkými rokmi"
+      almost_x_years:
+        one:   "takmer pred rokom"
+        other: "%{count} pred niekoľkými rokmi"
+
+# Text for page captcha challenge, which is shown if bot-like search patterns are detected
+  are_you_human:
+  captcha_requires_javascript:

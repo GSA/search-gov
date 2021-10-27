@@ -1,0 +1,137 @@
+sd:
+
+# Search.gov localizations for: Sindhi (sd)
+
+# Default page title of search results page
+  default_serp_title: '%{query} - %{site_name} تلاش جو /جا نتيجا'
+
+# Labels for the search box
+  search: "تلاش ڪريو"
+  search_label: 'تلاش ڪرڻ لاءِ گهربل اصطلاح درج ڪريو'
+
+# Labels for the navigation bar
+  everything: "سائيٽ جا نتيجا"
+  images: "تصويرون"
+  videos: "Videos"
+  show_more: 'ٻيو ڪجهه'
+
+# Labels to change the sort order by date or relevance
+  by_date: 'تازو/ تازي ترين'
+  by_relevance: 'مڪمل ٺهڪندڙ'
+
+# Labels to narrow results by a preset timeframe or a custom date range, or clear filters ('Before' is the label for custom date range with only a 'To' date set.)
+  refine_your_search:
+  all_time: "سڄو وقت"
+  last_hour: "گذريل ڪلاڪ"
+  last_day: "گذريل ڏينهن"
+  last_week: "گذريل هفتي"
+  last_month: "گذريل مهيني"
+  last_year: "گذريل سال"
+  custom_range: 'حد مقرر ڪيو'
+  from: 'کان'
+  to: 'تائين'
+  cdr_format: '%m/%d/%Y'
+  before: 'اڳ وارو'
+  clear: 'مٽايو'
+
+# Prompts for spelling, spelling overrides, and did you mean suggestions
+  showing_results_for: ان لاءِ نتيجو ظاهر ٿو ڪري %{corrected_query}
+  search_instead_for: انجي بدران ٻيو تلاش ڪريو %{original_query}
+  did_you_mean: "اسان نتيجا مشتمل آهن %{assumed_term}. ڇا توهان صرف ان کي پيا تلاش ڪريو %{term_as_typed}?"
+
+# Prompts for searchers to revise or refine search
+  no_results_for_and_try: "معاف ڪندا، ڪجهه به نه ملي سگهيو '%{query}'. ٿورا يا وسيع مطلوبه اصطلاح درج ڪرڻ جي ڪوشش ڪريو"
+  too_long: "توهان جو مطلوبه اصطلاح تمام ڊگهو آهي. ڪنهن وڌيڪ ننڍي لفظ يا فقري کي لکو "
+  empty_query: "مٿئين دٻي ۾ مطلوبه اصطلاح درج ڪريو."
+
+# Labels for inline best bets, news, and related searches modules
+  recommended: "سفارش ڪيل"
+  by: "پاران"
+  default_rss_govbox_label: 'خبرون'
+  related_searches: "ملندڙ جڙندڙ تلاش"
+
+# Labels for paging through results
+  page: 'صفحو'
+  prev_label: "پويون"
+  next_label: "اڳيون"
+  
+  searches:
+    by: by
+# Prompt for searchers to skip to main content (most easily seen by tabbing through results page)
+    skip_to_main_content: مهاڳي واري تحرير طرف ٽپايو
+# Labels for navigation bar "sections" (most easily seen on mobile dimension)
+    menu: مينو
+    browse_site: سائيٽ کوليو
+    related_sites: عنوان ڏسو
+    results_count: '%{count}'
+    search_results: تلاش ڪيل نتيجا
+# Prompts for searchers to view more results from Bing/Google after reaching page n of Search.gov results
+    commercial_results:
+      find_what_looking_for:
+      see_more_web_results: "%{link} وڌيڪ نتيجن لاءِ ڏسو"
+      see_more_image_results: "مٿيان نتيجا اسانجي سماجي ميڊيا جي اڪائونٽن ۽ گئلري مان ورتل آهن %{link} اسان جي سائيٽ تان نتيجا ڏسڻ لاءِ. (توهان ڪجهه نتيجا پنهنجي اڳ ۾ ڏٺلن مان ڏسي سگهو ٿا )"
+      search_again: وري پنهنجي تلاش ڪريو
+# Prompts for searchers to view more results from the broader website after initially seeing site-scoped results
+    site_limits:
+      including_results_for_query_from_matching_sites: اسان نتيجا مشتمل آهن %{query} تان %{matching_sites} فقط.
+      do_you_want_to_see_results_for: ڇا توهان ان لاءِ نتيجا ڏسڻ چاهيندا %{query_from_all_sites}?
+      query_from_all_sites: '%{query} سڀني سائيٽن تان'
+# Label for inline news module and prompt to see more news on news vertical
+    more_news_about_query: 'وڌيڪ %{news_label} پاران %{query}'
+    news_about_query: '%{news_label} پاران %{query}'
+    news_search_options:
+      date_format: 'm/d/yyyy'
+
+# Label for attributing results to Bing, Search.gov, or Google
+  powered_by: 'سگهارو بنايل'
+
+# Prompts for searchers to expand/collapse the number of best bets visible on the results page
+  show_more_label: 'وڌيڪ ظاهر ڪريو'
+  show_less_label: 'ٿورو ظاهر ڪريو'
+
+# Date format used in custom date range picker and other places
+  date:
+    formats:
+      slashes: "%-m/%-d/%Y"
+
+# Labels for news-based results indicating how long ago they were published
+  datetime:
+    time_ago_in_words:
+      half_a_minute: "اڌ منٽ پهريان"
+      less_than_x_seconds:
+        one:   "هڪ سڪينڊ ٿيڻ کان پهريان"
+        other: "کان گهٽ %{count} ڪجهه سيڪنڊ پهريان"
+      x_seconds:
+        one:   "1 هڪ سيڪنڊ پهريان"
+        other: "%{count} ڪجهه سيڪنڊ پهريان"
+      less_than_x_minutes:
+        one:   "هڪ منٽ ٿيڻ کان پهريان"
+        other: "کان گهٽ %{count} ڪجهه سيڪنڊ پهريان"
+      x_minutes:
+        one:   "1 هڪ منٽ پهريان"
+        other: "%{count} ڪجهه منٽ پهريان"
+      about_x_hours:
+        one:   "لڳ ڀڳ هڪ ڪلاڪ پهريان 1 "
+        other: "پاران %{count} ڪجهه ڪلاڪ پهريان"
+      x_days:
+        one:   "1 هڪ ڏينهن پهريان"
+        other: "%{count} ڪجهه ڏينهن پهريان"
+      about_x_months:
+        one:   "لڳ ڀڳ 1 مهينو پهريان"
+        other: "پاران %{count} ڪجهه مهينا پهريان"
+      x_months:
+        one:   "1 هڪ مهينو پهريان"
+        other: "%{count} "
+      about_x_years:
+        one:   "لڳ ڀڳ 1 سال پهريان"
+        other: "پاران %{count} سالاسال پهريان"
+      over_x_years:
+        one:   "سال 1 پهريان"
+        other: " %{count} سالاسال پهريان"
+      almost_x_years:
+        one:   "گهڻوڪري 1 سال پهريان"
+        other: " %{count} سالاسال پهريان"
+
+# Text for page captcha challenge, which is shown if bot-like search patterns are detected
+  are_you_human:
+  captcha_requires_javascript:

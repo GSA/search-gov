@@ -1,0 +1,136 @@
+tl:
+
+# Search.gov localizations for: Tagalog (tl)
+
+# Default page title of search results page
+  default_serp_title: '%{query} - %{site_name} Mga Resulta sa Paghahanap'
+
+# Labels for the search box
+  search: "Paghahanap"
+  search_label: 'Itala ang terminong hinahanap mo'
+
+# Labels for the navigation bar
+  everything: "Site ng mga Resulta"
+  images: "Mga Image"
+  videos: "Video"
+  show_more: 'Higit pa'
+
+# Labels to change the sort order by date or relevance
+  by_date: 'Pinakabago'
+  by_relevance: 'Pinakamabuting match'
+
+# Labels to narrow results by a preset timeframe or a custom date range, or clear filters ('Before' is the label for custom date range with only a 'To' date set.)
+  refine_your_search:
+  all_time: "Palagi"
+  last_hour: "Huling oras"
+  last_day: "Huling araw"
+  last_week: "Huling linggo"
+  last_month: "Huling buwan"
+  last_year: "Huling taon"
+  custom_range: 'Pasadya'
+  from: 'Mula sa'
+  to: 'Sa'
+  cdr_format: '%m/%d/%Y'
+  before: 'Bago'
+  clear: 'Clear'
+
+# Prompts for spelling, spelling overrides, and did you mean suggestions
+  showing_results_for: Pinapakita ang mga resulta para %{corrected_query}
+  search_instead_for: Sa halip ay hanapin ang %{original_query}
+  did_you_mean: "Sinama namin ang mga resulta para %{assumed_term}. Gusto mo ba ng mga resulta na para lang sa %{term_as_typed}?"
+
+# Prompts for searchers to revise or refine search
+  no_results_for_and_try: "Pasensiya na, walang nahanap na mga resulta para '%{query}'. Subukang itala ang mas konti o mas malawak na mga termino sa paghahanap"
+  too_long: "Masyadong mahaba ang terminong hinahanap mo. Subukang muli na ginagamit ang mas maikling salita o phrase."
+  empty_query: "Pakitala sa kwadrado sa itaas ang terminong hinahanap."
+
+# Labels for inline best bets, news, and related searches modules
+  recommended: "Nirerekomenda"
+  by: "sa pamamagitan ng"
+  default_rss_govbox_label: 'Balita'
+  related_searches: "Kaugnay na mga Paghahanap"
+
+# Labels for paging through results
+  page: 'Pahina'
+  prev_label: "Nauna"
+  next_label: "Sunod"
+  
+  searches:
+    by: by
+# Prompt for searchers to skip to main content (most easily seen by tabbing through results page)
+    skip_to_main_content: Lumaktaw sa main content
+# Labels for navigation bar "sections" (most easily seen on mobile dimension)
+    menu: Menu
+    browse_site: Browse site
+    related_sites: Tingnan ang paksa
+    results_count: '%{count}'
+    search_results: Mga resulta sa Paghahanap
+# Prompts for searchers to view more results from Bing/Google after reaching page n of Search.gov results
+    commercial_results:
+      find_what_looking_for:
+      see_more_web_results: "%{link} para tingnan ang mga iba pang resulta. (Maaaring makakita ka ng mga ilang resulta na nakita mo na.)"
+      see_more_image_results: "Ang mga resulta sa itaas ay mula sa aming social media accounts at mga gallery. %{link} para makita ang mga resulta mula sa aming website. (Maaaring makakita ka ng mga ilang resulta na nakita mo na.)"
+      search_again: Subukang muli ang paghahanap
+# Prompts for searchers to view more results from the broader website after initially seeing site-scoped results
+    site_limits:
+      including_results_for_query_from_matching_sites: Sinama namin ang mga resulta para %{query} mula %{matching_sites} lang.
+      do_you_want_to_see_results_for: Gusto mo bang makita ang mga resulta para %{query_from_all_sites}?
+      query_from_all_sites: '%{query} mula sa lahat ng site'
+# Label for inline news module and prompt to see more news on news vertical
+    more_news_about_query: 'Higit pa %{news_label} tungkol sa %{query}'
+    news_about_query: '%{news_label} tungkol sa %{query}'
+    news_search_options:
+      date_format: 'd/m/yyyy'
+# Label for attributing results to Bing, Search.gov, or Google
+  powered_by: 'Powered ng'
+
+# Prompts for searchers to expand/collapse the number of best bets visible on the results page
+  show_more_label: 'Magpakita ng higit pa'
+  show_less_label: 'Magpakita ng mas kaunti'
+
+# Date format used in custom date range picker and other places
+  date:
+    formats:
+      slashes: "%-m/%-d/%Y"
+
+# Labels for news-based results indicating how long ago they were published
+  datetime:
+    time_ago_in_words:
+      half_a_minute: "kalahating minuto nakakalipas"
+      less_than_x_seconds:
+        one:   "wala pang 1 segundo nakakalipas"
+        other: "wala pang %{count} mga segundo nakakalipas"
+      x_seconds:
+        one:   "1 segundo nakakalipas"
+        other: "%{count} mga segundo nakakalipas"
+      less_than_x_minutes:
+        one:   "wala pang isang minuto nakakalipas"
+        other: "wala pang %{count} mga minuto nakakalipas"
+      x_minutes:
+        one:   "1 minuto nakakalipas"
+        other: "%{count} mga minuto nakakalipas"
+      about_x_hours:
+        one:   "mga 1 oras nakakalipas"
+        other: "tungkol sa %{count} mga oras nakakalipas"
+      x_days:
+        one:   "1 araw nakakalipas"
+        other: "%{count} mga araw nakakalipas"
+      about_x_months:
+        one:   "mga 1 buwan nakakalipas"
+        other: "tungkol sa %{count} mga buwan nakakalipas"
+      x_months:
+        one:   "I buwan nakakalipas"
+        other: "%{count} mga buwan nakakalipas"
+      about_x_years:
+        one:   "mga I taon nakakalipas"
+        other: "tungkol sa %{count} mga taon nakakalipas"
+      over_x_years:
+        one:   "higit sa 1 taon nakakalipas"
+        other: "Over %{count} mga taon nakakalipas"
+      almost_x_years:
+        one:   "halos 1 taon nakakalipas"
+        other: "Almost %{count} mga taon nakakalipas"
+
+# Text for page captcha challenge, which is shown if bot-like search patterns are detected
+  are_you_human:
+  captcha_requires_javascript:

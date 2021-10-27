@@ -1,0 +1,140 @@
+hi:
+
+# Search.gov localizations for: Hindi (hi)
+
+# Default page title of search results page
+  default_serp_title: '%{query} - %{site_name} खोज परिणाम'
+
+# Labels for the search box
+  search: "खोज"
+  search_label: 'अपने खोज शब्द लिखें'
+
+# Labels for the navigation bar
+  everything: "साइट परिणाम"
+  images: "चित्र"
+  videos: "वीडियो"
+  show_more: 'और अधिक'
+
+# Labels to change the sort order by date or relevance
+  by_date: 'नवीनतम'
+  by_relevance: 'सर्वश्रेष्ठ मेल'
+
+# Labels to narrow results by a preset timeframe or a custom date range, or clear filters ('Before' is the label for custom date range with only a 'To' date set.)
+  refine_your_search:
+  all_time: "हर समय"
+  last_hour: "अंतिम समय"
+  last_day: "अंतिम दिन"
+  last_week: "अंतिम सप्ताह"
+  last_month: "अंतिम माह"
+  last_year: "अंतिम वर्ष"
+  custom_range: 'कस्टम रेंज'
+  from: 'से'
+  to: 'के लिए'
+# It's safe to modify the order of these (e.g., '%m/%d/%Y'), but do not localize the Latin letters 'd', 'm', or 'Y'. Do not change the case of the letters.
+  cdr_format: '%m/%d/%Y'
+  before: 'पहले'
+  clear: 'स्पष्ट'
+
+# Prompts for spelling, spelling overrides, and did you mean suggestions
+  showing_results_for: के लिए परिणाम प्रदर्शित %{corrected_query}
+  search_instead_for: इसके बजाय यह खोजें %{original_query}
+  did_you_mean: "हम इसके लिए परिणाम शामिल कर रहे हैं %{assumed_term}. क्या आप केवल इसके लिए परिणाम चाहते हैं %{term_as_typed}?"
+
+# Prompts for searchers to revise or refine search
+  no_results_for_and_try: "खेद है इसके लिए कोई परिणाम नहीं मिला है। '%{query}'. कम या अधिक खोज शब्द लिखकर प्रयास करें"
+  too_long: "आपके खोज शब्द अधिक हैं। छोटा शब्द या कम शब्द लिखकर पुनः प्रयास करें।:"
+  empty_query: "कृपया उपरोक्त बॉक्स में खोज शब्द लिखें।."
+
+# Labels for inline best bets, news, and related searches modules
+  recommended: "सिफारिश"
+  by: "द्वारा"
+  default_rss_govbox_label: 'समाचार'
+  related_searches: "संबंधित खोज"
+
+# Labels for paging through results
+  page: 'पृष्ठ'
+  prev_label: "पूर्व"
+  next_label: "अगला"
+
+  searches:
+    by: द्वारा
+# Prompt for searchers to skip to main content (most easily seen by tabbing through results page)
+    skip_to_main_content: मुख्य विषय-वस्तु पर जाएं
+# Labels for navigation bar "sections" (most easily seen on mobile dimension)
+    menu: मेन्यू
+    browse_site: ब्राउस साइट
+    related_sites: विषय देखें
+    results_count: '%{count}'
+    search_results: खोज परिणाम
+# Prompts for searchers to view more results from Bing/Google after reaching page n of Search.gov results
+    commercial_results:
+      find_what_looking_for:
+      see_more_web_results: "%{link} और परिणाम देखने के लिए"
+      see_more_image_results: "उपरोक्त परिणाम हमारे सोशल मीडिया अकाउंट्स और गैलरीज से हैं।. %{link} हमारी वेबसाइट के परिणाम देखने के लिए (आपको पहले देखे हुए कुछ परिणाम दिखाई दे सकते हैं।.)"
+      search_again: पुनः खोजने का प्रयास करें
+# Prompts for searchers to view more results from the broader website after initially seeing site-scoped results
+    site_limits:
+      including_results_for_query_from_matching_sites: के परिणाम भी शामिल कर रहे हैं %{query} से %{matching_sites} केवल.
+      do_you_want_to_see_results_for: इसके लिए आप परिणाम देखना चाहते हैं %{query_from_all_sites}?
+      query_from_all_sites: '%{query} सभी साइटों से'
+# Label for inline news module and prompt to see more news on news vertical
+    more_news_about_query: 'और अधिक %{news_label} के बारे में %{query}'
+    news_about_query: '%{news_label} के बारे में %{query}'
+    news_search_options:
+# It's safe to modify the order of these (e.g., 'm/d/yyyy'), but do not localize 'd', 'm', or 'yyyy' or change the case of the letters.
+      date_format: 'm/d/yyyy'
+
+# Label for attributing results to Bing, Search.gov, or Google
+  powered_by: 'द्वारा संचालित'
+
+# Prompts for searchers to expand/collapse the number of best bets visible on the results page
+  show_more_label: 'और दिखाएं'
+  show_less_label: 'कम दिखाएं'
+
+# Date format used in custom date range picker and other places
+  date:
+    formats:
+# It's safe to modify the order of these (e.g., '%-d/%-m/%Y'), but do not localize 'd', 'm', or 'Y' or remove the dashes. Do not change the case of the letters.
+      slashes: "%-m/%-d/%Y"
+
+# Labels for news-based results indicating how long ago they were published
+  datetime:
+    time_ago_in_words:
+      half_a_minute: "आधा मिनट पूर्वό"
+      less_than_x_seconds:
+        one:   "एक सेकेंड पहले"
+        other: "उससे कम %{count} कुछ सेकेंड पूर्व"
+      x_seconds:
+        one:   "एक सेकेंड पूर्व"
+        other: "%{count} कुछ सेकेंड पूर्व"
+      less_than_x_minutes:
+        one:   "एक मिनट से भी कम समय पहले"
+        other: "उससे कम %{count} कुछ मिनट पूर्व"
+      x_minutes:
+        one:   "एक मिनट पूर्व"
+        other: "%{count} कुछ मिनट पूर्व"
+      about_x_hours:
+        one:   "करीब एक घंटा पूर्व"
+        other: "के बारे में %{count} कुछ घंटे पूर्व"
+      x_days:
+        one:   "एक दिन पूर्व"
+        other: "%{count} कुछ दिनों पूर्व"
+      about_x_months:
+        one:   "करीब एक महीने पूर्व"
+        other: "के बारे में %{count} कुछ महीनों पूर्व"
+      x_months:
+        one:   "एक महीना पूर्व"
+        other: "%{count} कुछ महीनों पूर्व"
+      about_x_years:
+        one:   "करीब एक वर्ष पूर्व"
+        other: "के बारे में %{count} कुछ वर्षों पूर्व"
+      over_x_years:
+        one:   "एक वर्ष से अधिक पहले"
+        other: "ऊपर %{count} कुछ वर्षों पूर्व"
+      almost_x_years:
+        one:   "लगभग एक वर्ष पूर्व"
+        other: "लगभग %{count} कुछ वर्षों पूर्व"
+
+# Text for page captcha challenge, which is shown if bot-like search patterns are detected
+  are_you_human:
+  captcha_requires_javascript:
