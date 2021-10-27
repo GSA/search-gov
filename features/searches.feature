@@ -227,7 +227,7 @@ Feature: Search
     Then I should see the browser page titled "Press - bar site Search Results"
     And I should see "First item"
     And I should see "Second item"
-    And I should see "2 RESULTS"
+    And I should see "2 results"
     And I should see exactly "2" web search results
 
     When I am on bar.gov's search page
@@ -258,7 +258,7 @@ Feature: Search
     When I am on es.bar.gov's search page
     And I follow "Press" in the search navbar
     Then I should see the browser page titled "Press - Spanish bar site resultados de la búsqueda"
-    Then I should see "2 RESULTADOS"
+    Then I should see "2 resultados"
     And I should see exactly "2" web search results
     And I should see "Noticia uno"
     And I should see "Noticia dos"

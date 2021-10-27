@@ -5,7 +5,7 @@ describe Searches::FiltersHelper do
     it 'returns formatted results count' do
       search = double(NewsSearch, total: 1_555_888)
       allow(search).to receive_message_chain(:results, :present?) { true }
-      expect(helper.results_count_html(search)).to have_content('1,555,888 RESULTS')
+      expect(helper.results_count_html(search)).to have_content('1,555,888 results')
     end
   end
 end
