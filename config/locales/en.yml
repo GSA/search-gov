@@ -146,54 +146,14 @@ en:
         one:   "almost 1 year ago"
         other: "almost %{count} years ago"
 
-# Label for USA.gov (used on USA.gov only)
-  usa_gov: USA.gov
-
 # Text for page captcha challenge, which is shown if bot-like search patterns are detected
   are_you_human: "We've detected an unusually high number of searches coming from your location. Are you a real person, or a robot?"
   captcha_requires_javascript: "Oops! Looks like you don't have Javascript enabled, so you won't be able to complete the challenge. Please enable Javascript and reload this page."
 
-# ALL LOCALIZATIONS BELOW ARE USED ON OUR LEGACY RESULTS PAGE ONLY (PRE-MAY 2014).
-
-# Label for text best bet when it appears in type-ahead suggestions (legacy results page only)
+# Label for text best bet when it appears in suggestions via the type-ahead API
   recommended_pages: 'Recommended Pages'
 
-# Labels for the approximate number of results returned (legacy results page only)
-  approximate: 'About '
-  result: 'result'
-  results_summary: 'Page %{page} of %{approximate}%{total}'
-
-# Labels for inline best bets and GovBoxes (legacy results page only)
-  by_site: "by"
-  recent_tweet_for: "Recent tweet for '%{query}'"
-  recent_tweets_for: "Recent tweets for '%{query}'"
-  video_news_results: "Videos of '%{query}'"
-  news_results: "%{rss_govbox_label} for '%{query}'"
-  related_topics_prefix: "Related Searches for"
-
-# Labels for inline health topics module (legacy results page only)
-  medline_official_result: Official result from MedlinePlus
-  medline_related_topics: Related MedlinePlus Topics
-
-# Labels for results attribution (legacy results page only)
-  results_by_bing: 'Results by Bing'
-  results_by_usasearch: 'Results by USASearch'
-  results_by_google: 'Results by Google'
-
-# Labels for displaying and narrowing by Dublin Core facets (legacy results page only)
-  show_less: 'Less'
-  show_options: 'Show Options'
-  hide_options: 'Hide Options'
-  facet:
-    all_contributors: 'All contributors'
-    all_subjects: 'All subjects'
-    all_publishers: 'All publishers'
-
-# Labels for toggling footer display (legacy results page only)
-  show_footer: 'Show footer'
-  hide_footer: 'Hide footer'
-
-# Labels for advanced search (legacy results page only)
+# Labels for advanced search
   advanced_search: "Advanced Search"
   advanced_search_instruction: "Use the options on this page to create a very specific search."
   advanced_search_show_results_header: "Show results with"
@@ -212,13 +172,3 @@ en:
   advanced_search_operator_url_on_bing: 'http://onlinehelp.microsoft.com/en-us/bing/ff808421.aspx'
   advanced_search_operator_url_on_google: 'https://support.google.com/websearch/answer/136861?hl=en'
   advanced_search_operator: 'You can also use %{link} to help limit and focus your searches.'
-
-# Prompts for searchers to revise or refine search on news vertical (legacy results page only)
-  no_results_for_query: "Sorry, no results found for '%{query}'"
-  or_try_broader: "or try entering fewer or broader query terms."
-  remove_all_filters: "Remove all filters"
-  the_last_hour: "in the last hour"
-  the_last_day: "in the last day"
-  the_last_week: "in the last week"
-  the_last_month: "in the last month"
-  the_last_year: "in the last year"
