@@ -37,7 +37,6 @@ es:
 # Prompts for spelling, spelling overrides, and did you mean suggestions
   showing_results_for: Se muestran resultados para %{corrected_query}
   search_instead_for: Mostrar solo resultados para %{original_query}
-  did_you_mean: "Se incluyen resultados para %{assumed_term}. ¿Desea mostrar solo los resultados para %{term_as_typed}?"
 
 # Prompts for searchers to revise or refine search
   no_results_for_and_try: "No hemos encontrado ningún resultado que contenga '%{query}'. Intente usar otras palabras clave o sinónimos."
@@ -46,7 +45,6 @@ es:
 
 # Labels for inline best bets, news, and related searches modules
   recommended: "Recomendación"
-  by: "de"
   default_rss_govbox_label: 'Noticias'
   related_searches: "Búsquedas relacionadas"
 
@@ -180,7 +178,3 @@ es:
   advanced_search_file_type_label: "Formato"
   advanced_search_file_type_all_format_label: "cualquier formato"
   advanced_search_file_type_txt_format_label: 'formato de texto'
-  advanced_search_operator_link: 'opciones de búsqueda avanzada'
-  advanced_search_operator_url_on_bing: 'http://onlinehelp.microsoft.com/es-us/bing/ff808421.aspx'
-  advanced_search_operator_url_on_google: 'https://support.google.com/websearch/answer/136861?hl=es'
-  advanced_search_operator: 'Usted también puede usar las %{link} para limitar sus búsquedas y hacerlas más específicas.'
