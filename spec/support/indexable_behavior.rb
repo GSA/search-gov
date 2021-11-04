@@ -2,7 +2,7 @@ shared_examples 'an indexable' do
 
   context 'when searching raises an exception' do
     it 'should return an appropriate result set with zero hits' do
-      expect(ES::CustomIndices.client_reader).to receive(:search).and_raise StandardError
+      expect(Es::CustomIndices.client_reader).to receive(:search).and_raise StandardError
       options = { q: 'query', affiliate_id: affiliate.id, language: affiliate.indexing_locale }
       expect(described_class.search_for(options)).to be_a_kind_of(ElasticResults)
     end
@@ -13,7 +13,7 @@ shared_examples 'an indexable' do
     let(:es2) { Elasticsearch::Client.new(host: 'localhost:9268') }
 
     before do
-      allow(ES::CustomIndices).to receive(:client_writers).and_return [es1, es2]
+      allow(Es::CustomIndices).to receive(:client_writers).and_return [es1, es2]
     end
 
     describe '.index_exists?' do

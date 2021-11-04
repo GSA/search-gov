@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class SiteBreakdownForModuleQuery
-  include AnalyticsDSL
+  include AnalyticsDsl
 
   attr_reader :module_tag
 

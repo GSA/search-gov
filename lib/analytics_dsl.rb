@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module AnalyticsDSL
+module AnalyticsDsl
   attr_reader :affiliate_name, :type, :agg_options
 
   def filter_booleans(json)

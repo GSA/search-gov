@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module CSVResponsive
+module CsvResponsive
   def csv_response(filename, header, arr)
     respond_to do |format|
       format.csv { export_csv(filename, header, arr) }

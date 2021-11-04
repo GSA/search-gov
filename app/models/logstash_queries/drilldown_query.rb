@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class DrilldownQuery
-  include AnalyticsDSL
+  include AnalyticsDsl
 
   def initialize(affiliate_name, start_date, end_date, field, value, type)
     @affiliate_name = affiliate_name

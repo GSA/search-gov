@@ -14,7 +14,7 @@ module DataGenerator
     let(:es_client) { double(Elasticsearch::Transport::Client) }
 
     before do
-      allow(ES).to receive(:client_writers).and_return([es_client])
+      allow(Es).to receive(:client_writers).and_return([es_client])
     end
 
     describe '#index_search_and_clicks' do

@@ -2,8 +2,8 @@
 
 require 'spec_helper'
 
-describe CSVResponsive do
-  let(:klass) { Class.new { extend CSVResponsive } }
+describe CsvResponsive do
+  let(:klass) { Class.new { extend CsvResponsive } }
 
   describe '.format_modules' do
     subject(:format_modules) { klass.format_modules(modules) }

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class QueryBreakdownForSiteModuleQuery
-  include AnalyticsDSL
+  include AnalyticsDsl
 
   def initialize(module_tag, site_name)
     @module_tag = module_tag

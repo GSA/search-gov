@@ -4,7 +4,7 @@ class Watcher < ApplicationRecord
   extend HashColumnsAccessible
   include ActionView::Helpers::NumberHelper
   include LogstashPrefix
-  include WatcherDSL
+  include WatcherDsl
   INTERVAL_REGEXP = /\A\d+[mhdw]\z/
 
   belongs_to :user

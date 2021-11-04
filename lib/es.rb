@@ -2,7 +2,7 @@
 
 require 'typhoeus/adapters/faraday'
 
-module ES
+module Es
   INDEX_PREFIX = "#{Rails.env}-usasearch"
   CLIENT_CONFIG = Rails.application.config_for(
     :elasticsearch_client
@@ -31,7 +31,7 @@ module ES
   end
 
   module ELK
-    extend ES
+    extend Es
     private
 
     def self.client_config(mode)
@@ -40,7 +40,7 @@ module ES
   end
 
   module CustomIndices
-    extend ES
+    extend Es
     private
 
     def self.client_config(mode)

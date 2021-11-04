@@ -2,15 +2,15 @@
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
-# Note that this schema.rb definition is the authoritative source for your
-# database schema. If you need to create the application database on another
-# system, you should be using db:schema:load, not running all the migrations
-# from scratch. The latter is a flawed and unsustainable approach (the more migrations
-# you'll amass, the slower it'll run and the greater likelihood for issues).
+# This file is the source Rails uses to define your schema when running `rails
+# db:schema:load`. When creating a new database, `rails db:schema:load` tends to
+# be faster and is potentially less error prone than running all of your
+# migrations from scratch. Old migrations may fail to apply correctly if those
+# migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_07_142638) do
+ActiveRecord::Schema.define(version: 2021_10_15_171400) do
 
   create_table "affiliate_feature_additions", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "affiliate_id", null: false
@@ -49,12 +49,12 @@ ActiveRecord::Schema.define(version: 2021_09_07_142638) do
     t.boolean "is_sayt_enabled", default: true
     t.string "display_name", null: false
     t.string "favicon_url"
-    t.text "css_properties", limit: 16777215
+    t.text "css_properties", size: :medium
     t.string "theme"
     t.string "locale", default: "en", null: false
-    t.text "scope_ids", limit: 16777215
+    t.text "scope_ids", size: :medium
     t.boolean "is_medline_govbox_enabled", default: false
-    t.text "live_fields_json", limit: 4294967295
+    t.text "live_fields_json", size: :long
     t.integer "fetch_concurrency", default: 1, null: false
     t.string "default_search_label", limit: 20, null: false
     t.boolean "is_related_searches_enabled", default: true
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 2021_09_07_142638) do
     t.string "rss_govbox_label", null: false
     t.boolean "is_video_govbox_enabled", default: true, null: false
     t.boolean "dap_enabled", default: true, null: false
-    t.text "dublin_core_mappings", limit: 16777215
+    t.text "dublin_core_mappings", size: :medium
     t.boolean "gets_blended_results", default: false, null: false
     t.boolean "is_bing_image_search_enabled", default: true, null: false
     t.boolean "is_federal_register_document_govbox_enabled", default: false, null: false
@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 2021_09_07_142638) do
     t.string "domain_control_validation_code"
     t.boolean "i14y_date_stamp_enabled", default: false, null: false
     t.integer "active_template_id"
-    t.text "template_schema", limit: 16777215
+    t.text "template_schema", size: :medium
     t.string "mobile_logo_file_name"
     t.string "mobile_logo_content_type"
     t.integer "mobile_logo_file_size"
@@ -139,8 +139,8 @@ ActiveRecord::Schema.define(version: 2021_09_07_142638) do
   create_table "alerts", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "affiliate_id"
     t.string "status"
-    t.text "text", limit: 16777215
-    t.text "title", limit: 16777215
+    t.text "text", size: :medium
+    t.text "title", size: :medium
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["affiliate_id"], name: "index_alerts_on_affiliate_id", unique: true
@@ -196,7 +196,7 @@ ActiveRecord::Schema.define(version: 2021_09_07_142638) do
 
   create_table "email_templates", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name"
-    t.text "body", limit: 16777215
+    t.text "body", size: :medium
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string "subject"
@@ -211,7 +211,7 @@ ActiveRecord::Schema.define(version: 2021_09_07_142638) do
   end
 
   create_table "excluded_urls", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
-    t.text "url", limit: 16777215
+    t.text "url", size: :medium
     t.integer "affiliate_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -285,8 +285,8 @@ ActiveRecord::Schema.define(version: 2021_09_07_142638) do
 
   create_table "federal_register_documents", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "document_number", null: false
-    t.text "title", limit: 16777215, null: false
-    t.text "abstract", limit: 16777215
+    t.text "title", size: :medium, null: false
+    t.text "abstract", size: :medium
     t.string "html_url", null: false
     t.string "document_type", null: false
     t.integer "start_page", null: false
@@ -353,13 +353,13 @@ ActiveRecord::Schema.define(version: 2021_09_07_142638) do
   end
 
   create_table "indexed_documents", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
-    t.text "title", limit: 16777215
-    t.text "description", limit: 16777215
+    t.text "title", size: :medium
+    t.text "description", size: :medium
     t.string "url", limit: 2000
     t.integer "affiliate_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text "body", limit: 4294967295
+    t.text "body", size: :long
     t.string "doctype", limit: 10
     t.datetime "last_crawled_at"
     t.string "last_crawl_status"
@@ -421,7 +421,7 @@ ActiveRecord::Schema.define(version: 2021_09_07_142638) do
     t.string "medline_title", null: false
     t.string "medline_url", limit: 120
     t.string "locale", limit: 5, default: "en"
-    t.text "summary_html", limit: 16777215
+    t.text "summary_html", size: :medium
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["medline_tid"], name: "index_med_topics_on_medline_tid"
@@ -462,16 +462,16 @@ ActiveRecord::Schema.define(version: 2021_09_07_142638) do
     t.string "link", null: false
     t.string "title", null: false
     t.string "guid", null: false
-    t.text "description", limit: 16777215
+    t.text "description", size: :medium
     t.datetime "published_at", null: false
     t.datetime "created_at"
     t.integer "rss_feed_url_id", null: false
     t.datetime "updated_at"
-    t.text "contributor", limit: 16777215
-    t.text "subject", limit: 16777215
-    t.text "publisher", limit: 16777215
-    t.text "properties", limit: 16777215
-    t.text "body", limit: 4294967295
+    t.text "contributor", size: :medium
+    t.text "subject", size: :medium
+    t.text "publisher", size: :medium
+    t.text "properties", size: :medium
+    t.text "body", size: :long
     t.index ["link"], name: "index_news_items_on_link"
     t.index ["rss_feed_url_id", "guid"], name: "index_news_items_on_rss_feed_url_id_and_guid"
     t.index ["rss_feed_url_id", "link"], name: "index_news_items_on_rss_feed_url_id_and_link", unique: true
@@ -636,7 +636,7 @@ ActiveRecord::Schema.define(version: 2021_09_07_142638) do
   end
 
   create_table "superfresh_urls", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
-    t.text "url", limit: 16777215
+    t.text "url", size: :medium
     t.integer "affiliate_id"
     t.datetime "created_at"
     t.index ["affiliate_id"], name: "index_superfresh_urls_on_affiliate_id"
@@ -661,7 +661,7 @@ ActiveRecord::Schema.define(version: 2021_09_07_142638) do
     t.string "name", limit: 50, null: false
     t.string "klass", limit: 50, null: false
     t.string "description", null: false
-    t.text "schema", limit: 16777215, null: false
+    t.text "schema", size: :medium, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_templates_on_name", unique: true
@@ -685,7 +685,7 @@ ActiveRecord::Schema.define(version: 2021_09_07_142638) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "published_at"
-    t.text "urls", limit: 16777215
+    t.text "urls", size: :medium
     t.index ["published_at"], name: "index_tweets_on_published_at"
     t.index ["tweet_id"], name: "index_tweets_on_tweet_id", unique: true
     t.index ["twitter_profile_id"], name: "index_tweets_on_twitter_profile_id"
@@ -693,7 +693,7 @@ ActiveRecord::Schema.define(version: 2021_09_07_142638) do
 
   create_table "twitter_lists", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.bigint "id", null: false, unsigned: true
-    t.text "member_ids", limit: 4294967295
+    t.text "member_ids", size: :long
     t.bigint "last_status_id", default: 1, null: false, unsigned: true
     t.string "statuses_updated_at"
     t.datetime "created_at", null: false
@@ -773,7 +773,7 @@ ActiveRecord::Schema.define(version: 2021_09_07_142638) do
     t.integer "youtube_profile_id"
     t.string "playlist_id"
     t.string "etag"
-    t.text "news_item_ids", limit: 4294967295
+    t.text "news_item_ids", size: :long
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["youtube_profile_id", "playlist_id"], name: "index_youtube_playlists_on_youtube_profile_id_and_playlist_id", unique: true
