@@ -40,7 +40,6 @@ class Admin::UsersController < Admin::AdminController
       welcome_email_sent
     ]
 
-
     config.export.columns = %i[
       email
       first_name
