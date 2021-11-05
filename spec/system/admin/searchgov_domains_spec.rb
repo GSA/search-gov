@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe 'Searchgov Domain' do
+describe 'Search.gov Domains' do
   let(:url) { '/admin/searchgov_domains' }
 
   it_behaves_like 'a page restricted to super admins'

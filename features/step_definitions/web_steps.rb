@@ -220,12 +220,7 @@ When /^(?:|I )follow "([^"]*)" and confirm "([^"]*)"$/ do |link, msg|
 end
 
 Then "I wait for ajax"  do
-  Timeout.timeout(Capybara.default_wait_time) do
-    loop do
-      active = page.evaluate_script('jQuery.active')
-      break if active == 0
-    end
-  end
+  wait_for_ajax
 end
 
 Then /^I should get a ([^\"]*) download$/ do |type|
@@ -234,8 +229,4 @@ end
 
 Then /^the downloaded file should include "([^\"]*)"$/ do |content|
   page.driver.response.body.should match content
-end
-
-Then /^I wait for ajax$/ do
-  wait_for_ajax
 end

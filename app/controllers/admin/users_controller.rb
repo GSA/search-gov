@@ -5,17 +5,7 @@ class Admin::UsersController < Admin::AdminController
     config.actions.exclude :create, :delete, :search
     config.actions.add :export, :field_search
 
-    config.columns = %I[
-      email
-      first_name
-      last_name
-      affiliate_names
-      memberships
-      default_affiliate
-      created_at
-      updated_at
-      approval_status
-    ]
+    config.columns << :affiliate_names
 
     default_columns = %i[
       email
