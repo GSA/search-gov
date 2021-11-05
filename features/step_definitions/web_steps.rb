@@ -235,3 +235,7 @@ end
 Then /^the downloaded file should include "([^\"]*)"$/ do |content|
   page.driver.response.body.should match content
 end
+
+Then /^I wait for ajax$/ do
+  wait_for_ajax
+end

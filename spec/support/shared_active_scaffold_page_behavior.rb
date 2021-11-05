@@ -11,7 +11,7 @@ shared_examples 'an ActiveScaffold page' do |actions, page_text|
     actions.each do |action|
       describe action do
         before do
-          first('td.actions').click_link action
+          click_link(action, match: :first)
           page.driver.browser.switch_to.alert.accept if action == 'Delete'
         end
 
@@ -23,33 +23,27 @@ shared_examples 'an ActiveScaffold page' do |actions, page_text|
   end
 end
 
-shared_examples 'a Create New' do
+shared_examples 'a page that can export data' do
   context 'when a super admin is logged in', :js do
     include_context 'log in super admin'
 
     before do
       visit(url)
-      click_link 'Create New'
-      sleep(0.5)
+      click_link 'Export'
+      wait_for_ajax
+      click_button 'Export'
     end
 
-    it 'pops up the create panel' do
-      expect(find('form.create')).not_to be_nil
-    end
-  end
-end
+    after { FileUtils.rm_f(downloaded_csv) }
 
-shared_examples 'a Search' do
-  context 'when a super admin is logged in', :js do
-    include_context 'log in super admin'
-    before do
-      visit(url)
-      click_link 'Search'
-      sleep(0.5)
-    end
+    it 'creates the CSV file' do
+      Timeout.timeout(5) do
+        loop do
+          break if File.exist?(downloaded_csv)
+        end
+      end
 
-    it 'pops up the search panel' do
-      expect(find('form.search')).not_to be_nil
+      expect(File).to exist(downloaded_csv)
     end
   end
 end

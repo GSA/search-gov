@@ -75,6 +75,7 @@ module ScenarioStatusTracker
 end
 
 require_relative '../../spec/test_services.rb'
+require_relative '../../spec/support/ajax_helpers.rb'
 require_relative '../../spec/support/omniauth_helpers.rb'
 
 World OmniauthHelpers
