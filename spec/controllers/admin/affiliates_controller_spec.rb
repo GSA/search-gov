@@ -23,6 +23,21 @@ describe Admin::AffiliatesController do
     end
   end
 
+  describe '#analytics' do
+    context 'when logged in as an affiliate admin' do
+      before do
+        activate_authlogic
+        UserSession.create(users('affiliate_admin'))
+        @affiliate = affiliates('basic_affiliate')
+      end
+
+      it 'redirects to the affiliate analytics page for the affiliate id passed' do
+        get :analytics, params: { id: @affiliate.id }
+        expect(response).to redirect_to new_site_queries_path(@affiliate)
+      end
+    end
+  end
+
   describe '#edit' do
     context 'when logged in as an affiliate admin' do
       render_views
