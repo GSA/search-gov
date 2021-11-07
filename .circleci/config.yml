@@ -5,7 +5,7 @@
 version: 2.1
 
 orbs:
-  ruby: circleci/ruby@1.1.4
+  ruby: circleci/ruby@1.2.0
 
 executors:
   test_executor:
@@ -88,25 +88,6 @@ jobs:
           paths:
             - ~/search-gov
 
-  bundle_install:
-    environment:
-      RUBY_VERSION: << parameters.ruby_version >>
-    parameters:
-      ruby_version:
-        type: string
-
-    executor: test_executor
-
-    steps:
-      - restore_cache:
-          key: repo-{{ .Environment.CIRCLE_SHA1 }}
-
-      - ruby/install-deps:
-          # Need to clear the gem cache? Set or bump the CACHE_VERSION in your
-          # CircleCi project: Project Settings > Environment Variables
-          key: gems-v{{ .Environment.CACHE_VERSION }}
-
-
   rspec:
     environment:
       RUBY_VERSION: << parameters.ruby_version >>
@@ -116,14 +97,14 @@ jobs:
 
     executor: test_executor
 
-    parallelism: 2
+    parallelism: 6
 
     steps:
       - restore_cache:
           key: repo-{{ .Environment.CIRCLE_SHA1 }}
 
       - ruby/install-deps:
-          key: gems-v{{ .Environment.CACHE_VERSION }}
+          key: gems-ruby-<< parameters.ruby_version >>-v{{ .Environment.CACHE_VERSION }}
 
       - prepare_database
 
@@ -165,14 +146,14 @@ jobs:
 
     executor: test_executor
 
-    parallelism: 6
+    parallelism: 10
 
     steps:
       - restore_cache:
           key: repo-{{ .Environment.CIRCLE_SHA1 }}
 
       - ruby/install-deps:
-          key: gems-v{{ .Environment.CACHE_VERSION }}
+          key: gems-ruby-<< parameters.ruby_version >>-v{{ .Environment.CACHE_VERSION }}
 
       - prepare_database
 
@@ -220,16 +201,13 @@ jobs:
       - restore_cache:
           key: repo-{{ .Environment.CIRCLE_SHA1 }}
 
-      - ruby/install-deps:
-          key: gems-v{{ .Environment.CACHE_VERSION }}
-
       - attach_workspace:
           at: ~/search-gov/coverage
 
       - run:
           name: Report coverage to Code Climate
           command: |
-            ./cc-test-reporter sum-coverage --parts 8 coverage/codeclimate.*.$RUBY_VERSION.json --output coverage/codeclimate_full_report.json
+            ./cc-test-reporter sum-coverage --parts 16 coverage/codeclimate.*.$RUBY_VERSION.json --output coverage/codeclimate_full_report.json
             ./cc-test-reporter upload-coverage --input coverage/codeclimate_full_report.json
 
             ruby scripts/check_coverage.rb ${PWD}/coverage/codeclimate_full_report.json
@@ -242,31 +220,29 @@ workflows:
           name: "checkout code: Ruby << matrix.ruby_version >>"
           matrix:
             parameters:
-              ruby_version: ["2.6.6"]
-
-      - bundle_install:
-          requires:
-            - checkout_code
-          name: "bundle install: Ruby << matrix.ruby_version >>"
-          matrix:
-            parameters:
-              ruby_version: ["2.6.6"]
+              ruby_version:
+                - 2.6.6
+                - 2.7.4
 
       - rspec:
           requires:
-            - bundle_install
+            - checkout_code
           name: "rspec: Ruby << matrix.ruby_version >>"
           matrix:
             parameters:
-              ruby_version: ["2.6.6"]
+              ruby_version:
+                - 2.6.6
+                - 2.7.4
 
       - cucumber:
           requires:
-            - bundle_install
+            - checkout_code
           name: "cucumber: Ruby << matrix.ruby_version >>"
           matrix:
             parameters:
-              ruby_version: ["2.6.6"]
+              ruby_version:
+                - 2.6.6
+                - 2.7.4
 
       - report_coverage:
           requires:
@@ -275,4 +251,6 @@ workflows:
           name: "report coverage: Ruby << matrix.ruby_version >>"
           matrix:
             parameters:
-              ruby_version: ["2.6.6"]
+              ruby_version:
+                - 2.6.6
+                - 2.7.4
