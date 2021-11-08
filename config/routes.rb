@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   concern :active_scaffold_association, ActiveScaffold::Routing::Association.new
   concern :active_scaffold, ActiveScaffold::Routing::Basic.new(association: true)
   get '/search' => 'searches#index', as: :search
@@ -174,6 +173,10 @@ Rails.application.routes.draw do
   get '/affiliates/:id/:some_action', to: redirect('/sites/%{id}')
 
   namespace :admin do
+    mount Resque::Server.new, :at => "/resque", as: :resque, constraints: AffiliateAdminRestriction
+    # Redirect to the login page if the AffiliateAdminRestriction constraint is violated when visiting /resque/*
+    get '/resque/(*all)', to: redirect(path: '/login')
+
     resources :affiliates, concerns: :active_scaffold
     resources :affiliate_notes, concerns: :active_scaffold
     resources :affiliate_templates, concerns: :active_scaffold
