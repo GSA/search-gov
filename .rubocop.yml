@@ -26,6 +26,10 @@ Metrics/BlockLength:
     # Exclude ActiveScaffold-based controllers
     - app/controllers/admin/**/*
 
+RSpec/DescribeClass:
+  Exclude:
+    - spec/internationalization/**/*
+
 Style/ClassAndModuleChildren:
   Enabled: false
 
