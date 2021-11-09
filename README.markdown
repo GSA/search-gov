@@ -280,4 +280,5 @@ You can configure your local app to send metrics to New Relic.
 You can also turn on profiling and look into that (see https://newrelic.com/docs/general/profiling-ruby-applications).
 
 ### Additional developer resources
-* [Local i14y setup](https://github.com/GSA/usasearch/blob/master/README_I14Y.markdown)
+* [Local i14y setup](https://github.com/GSA/search-gov/blob/master/README_I14Y.markdown)
+* [Contributing translations](https://github.com/GSA/search-gov/blob/master/CONTRIBUTING.md)
