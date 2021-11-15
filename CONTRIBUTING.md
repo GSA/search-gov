@@ -1,12 +1,10 @@
-Contributing Translations to Search.gov
+Contributing to Search.gov
 =========================
 
+#### Contributing to localization files
 Note: As of November 2021, translations management has moved from the [GSA/Punchcard](https://github.com/GSA/punchcard/) repository to the [GSA/search-gov](https://github.com/GSA/search-gov) repository.
 
 Our language translations are the work of multiple contributors. You're encouraged to submit [pull requests](https://github.com/GSA/search-gov/pulls), [propose features and discuss issues](https://github.com/GSA/search-gov/issues).
-
-
-#### Contributing to localization files
 
 These files are in the YAML format.
 
@@ -21,7 +19,7 @@ You can edit existing files or create new files directly via the [Github web int
 
 #### Fork the Project
 
-If you don't want to use the [Github web interface](https://github.com/GSA/punchcard/tree/master/), you can use the command line tools to fork the [project on Github](https://github.com/GSA/punchcard) and check out your copy.
+If you don't want to use the [Github web interface](https://github.com/GSA/search-gov/tree/master/), you can use the command line tools to fork the [project on Github](https://github.com/GSA/search-gov) and check out your copy.
 
 Instructions on how to fork a project can be found [here](https://docs.github.com/en/get-started/quickstart/fork-a-repo).
 
@@ -60,10 +58,6 @@ git push origin my-feature-branch
 #### Make a Pull Request
 
 [Create a PR](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork) to propose your changes. A series of automated tests will run on [CircleCI](https://circleci.com/gh/GSA/punchcard). If tests pass, your pull request will usually get reviewed and accepted within a few days.
-
-#### Be Patient
-
-It's likely that your change will not be merged and that the nitpicky maintainers (or CircleCI) will ask you to do more, or fix seemingly benign problems. Hang on there!
 
 #### Thank You
 
