@@ -167,7 +167,7 @@ Fire up a server and try it all out:
 
     $ rails server
     
-Visit <http://127.0.0.1:3000>
+Visit <http://localhost:3000>
 
 # Main areas of functionality
 
@@ -211,18 +211,12 @@ You should now be able to login to your local instance of search.gov.
 ## Admin
 Your user account should have admin privileges set. Now go here and poke around.
 
-<http://127.0.0.1:3000/admin>
+<http://localhost:3000/admin>
 
 ## Asynchronous tasks
 Several long-running tasks have been moved to the background for processing via Resque.
 
-1. If you haven't already, run `docker-compose up` to start all the services.
-
-1. Launch the Sinatra app to see the queues and jobs:
-
-    `$ resque-web ./lib/setup_resque.rb`
-
-1. Visit the resque-web sinatra app at <http://0.0.0.0:5678/overview> to inspect queues, workers, etc.
+1. Visit the resque-web sinatra app at <http://localhost:3000/admin/resque> to inspect queues, workers, etc.
 
 1. In your admin center, [create a type-ahead suggestion (SAYT)](http://localhost:3000/admin/sayt_suggestions) "delete me". Now [create a SAYT filter](http://localhost:3000/admin/sayt_filters) on the word "delete".
 
@@ -260,7 +254,7 @@ Example:
 
     `$ rake resque-scheduler`
 
-1. Check the 'Delayed' tab in [Resque web](http://0.0.0.0:5678/delayed) to see your job.
+1. Check the 'Delayed' tab in [Resque web](http://localhost:3000/admin/resque/delayed) to see your job.
 
 # Performance
 We use New Relic to monitor our site performance, especially on search requests. If you are doing something around search, make

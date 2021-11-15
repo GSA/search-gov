@@ -29,6 +29,10 @@ describe User do
     end
 
     it { should have_db_column(:uid).of_type(:string) }
+
+    describe 'indices' do
+      it { is_expected.to have_db_index(:persistence_token).unique(true) }
+    end
   end
 
   describe 'when validating' do

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_15_171400) do
+ActiveRecord::Schema.define(version: 2021_11_15_203216) do
 
   create_table "affiliate_feature_additions", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "affiliate_id", null: false
@@ -752,6 +752,7 @@ ActiveRecord::Schema.define(version: 2021_10_15_171400) do
     t.string "last_name"
     t.index ["api_key"], name: "index_users_on_api_key", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["persistence_token"], name: "index_users_on_persistence_token", unique: true
     t.index ["uid"], name: "index_users_on_uid"
   end
 

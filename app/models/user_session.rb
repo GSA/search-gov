@@ -7,8 +7,6 @@ class UserSession < Authlogic::Session::Base
   MESSAGE
 
   allow_http_basic_auth false
-  consecutive_failed_logins_limit 10
-  failed_login_ban_for 30.minutes
   generalize_credentials_error_messages INVALID_LOGIN_MESSAGE
   logout_on_timeout true
 end
