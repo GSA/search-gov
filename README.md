@@ -5,6 +5,9 @@
  [![Build Status](https://circleci.com/gh/GSA/search-gov.svg?style=svg)](https://circleci.com/gh/GSA/search-gov)
  [![Maintainability](https://api.codeclimate.com/v1/badges/fd0577360749c9b3d166/maintainability)](https://codeclimate.com/github/GSA/search-gov/maintainability)
 
+## Contributing to search-gov
+Read our [contributing guidelines](https://github.com/GSA/search-gov/blob/master/CONTRIBUTING.md). 
+
 ## Dependencies
 
 ### Ruby
@@ -281,4 +284,3 @@ You can also turn on profiling and look into that (see https://newrelic.com/docs
 
 ### Additional developer resources
 * [Local i14y setup](https://github.com/GSA/search-gov/wiki/Setting-up-i14y-with-usasearch-for-development)
-* [Contributing guidelines](https://github.com/GSA/search-gov/blob/master/CONTRIBUTING.md)
