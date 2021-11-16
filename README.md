@@ -281,4 +281,4 @@ You can also turn on profiling and look into that (see https://newrelic.com/docs
 
 ### Additional developer resources
 * [Local i14y setup](https://github.com/GSA/search-gov/wiki/Setting-up-i14y-with-usasearch-for-development)
-* [Contributing translations](https://github.com/GSA/search-gov/blob/master/CONTRIBUTING.md)
+* [Contributing guidelines](https://github.com/GSA/search-gov/blob/master/CONTRIBUTING.md)
