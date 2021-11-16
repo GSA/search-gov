@@ -57,7 +57,7 @@ git push origin my-feature-branch
 #### Make a Pull Request
 
 [Create a PR](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork) to propose your changes. A series of automated tests will run on [CircleCI](https://circleci.com/gh/GSA/punchcard), and a checklist will be automatically inserted into the body of the PR. You may ignore the following items:
-* If your changes will be tested manually, you have run bundle update and committed your changes to Gemfile.lock - N/A
+* If your changes will be tested manually, you have run bundle update and committed your changes to Gemfile.lock
 * PR title is either of the format SRCH-#### <description> matching the associated Jira ticket (i.e. "SRCH-123 implement feature X"), or Release #.#.# matching the release number
 * Your primary commit message is of the format SRCH-#### <description> matching the associated Jira ticket
 * You have specified an "Assignee", and if necessary, additional reviewers
