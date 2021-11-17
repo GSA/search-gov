@@ -5,7 +5,7 @@ The search-gov repository includes the work of multiple contributors. You're enc
 #### Contributing to Search.gov Multilingual Search Support
 Note: As of November 2021, management of multilingual support has moved from the [GSA/Punchcard](https://github.com/GSA/punchcard/) repository to the [GSA/search-gov](https://github.com/GSA/search-gov) repository.
 
-These files are in the YAML format.
+The Search.gov application uses the YAML files in [config/locales](https://github.com/GSA/search-gov/tree/master/config/locales) to provide localized translations of text strings based on the locale set for the user.
 
 You can edit existing files or create new files directly via the [Github web interface](https://github.com/GSA/search-gov/tree/master/config/locales). Or, you can use Git from the command line (see below). Either way, follow these steps to create a new localization file:
 
