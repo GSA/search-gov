@@ -1,0 +1,134 @@
+mk:
+
+# Search.gov localizations for: Macedonian (mk)
+
+# Default page title of search results page
+  default_serp_title: '%{query} - %{site_name} резултати од пребарувањето '
+
+# Labels for the search box
+  search: "барај"
+  search_label: 'внесете го терминот за барање '
+
+# Labels for the navigation bar
+  everything: "резултати од веб-страната"
+  images: "фотографии"
+  videos: "Видео"
+  show_more: 'повеќе'
+
+# Labels to change the sort order by date or relevance
+  by_date: 'последниN'
+  by_relevance: 'најслични'
+
+# Labels to narrow results by a preset timeframe or a custom date range, or clear filters ('Before' is the label for custom date range with only a 'To' date set.)
+  refine_your_search:
+  all_time: "било кога"
+  last_hour: "последниот час"
+  last_day: "последниот ден"
+  last_week: "минатата недела"
+  last_month: "минатиот месец"
+  last_year: "минатата година"
+  custom_range: 'вообичаен опсег на пребарување '
+  from: 'од'
+  to: 'до'
+  cdr_format: '%m/%d/%Y'
+  before: 'пред'
+  clear: 'избриши'
+
+# Prompts for spelling, spelling overrides, and did you mean suggestions
+  showing_results_for: резултати за %{corrected_query}
+  search_instead_for: наместо, пребарувај за %{original_query}
+
+# Prompts for searchers to revise or refine search
+  no_results_for_and_try: "За жал не се најдени резултати за '%{query}'. Обидете се со помалку или со поопшти термини "
+  too_long: "Вашиот термин е предолг. Обидете се повторно со пократок збор или фраза. "
+  empty_query: "Ве молиме внесете термин за пребарување во квадратчето погоре."
+
+# Labels for inline best bets, news, and related searches modules
+  recommended: "се препорачува "
+  default_rss_govbox_label: 'Новости'
+  related_searches: "слични пребарувања"
+
+# Labels for paging through results
+  page: 'страница'
+  prev_label: "претходно"
+  next_label: "следно"
+
+  searches:
+    by: by
+# Prompt for searchers to skip to main content (most easily seen by tabbing through results page)
+    skip_to_main_content: Прејди на главната содржина 
+# Labels for navigation bar "sections" (most easily seen on mobile dimension)
+    menu: Мени
+    browse_site: пребарувај ја веб-страницата
+    related_sites: погледнете ја темата
+    results_count: '%{count}'
+    search_results: барај резултати
+# Prompts for searchers to view more results from Bing/Google after reaching page n of Search.gov results
+    commercial_results:
+      find_what_looking_for:
+      see_more_web_results: "%{link} за да видите повеќе резултати"
+      see_more_image_results: "Горенаведените резултати се од нашите профили и галерии на социјалните мрежи.   %{link} Може да добиете неколку резултати што веќе сте ги виделе.  (Може да добиете неколку резултати што веќе сте ги виделе.)"
+      search_again: повторете го вашето пребарување
+# Prompts for searchers to view more results from the broader website after initially seeing site-scoped results
+    site_limits:
+      including_results_for_query_from_matching_sites: Вклучуваме резултати за %{query} од %{matching_sites} само.
+      do_you_want_to_see_results_for: Дали сакате да видите резултати за %{query_from_all_sites}?
+      query_from_all_sites: '%{query} од сите веб-страници'
+# Label for inline news module and prompt to see more news on news vertical
+    more_news_about_query: 'повеќе %{news_label} околу %{query}'
+    news_about_query: '%{news_label} околу %{query}'
+    news_search_options:
+      date_format: 'm/d/yyyy'
+# Label for attributing results to Bing, Search.gov, or Google
+  powered_by: 'поддржано од'
+
+# Prompts for searchers to expand/collapse the number of best bets visible on the results page
+  show_more_label: 'покажи повеќе'
+  show_less_label: 'покажи помалку'
+
+# Date format used in custom date range picker and other places
+  date:
+    formats:
+      slashes: "%-m/%-d/%Y"
+
+# Labels for news-based results indicating how long ago they were published
+  datetime:
+    time_ago_in_words:
+      half_a_minute: "пред половина минута"
+      less_than_x_seconds:
+        one:   "пред помалку од една секунда"
+        other: "помалку од %{count} пред неколку секунди "
+      x_seconds:
+        one:   "1 пред една секунда "
+        other: "%{count} пред неколку секунди "
+      less_than_x_minutes:
+        one:   "пред помалку од една минута"
+        other: "пред неколку минути  %{count} пред неколку минути "
+      x_minutes:
+        one:   "1 пред една минута"
+        other: "%{count} пред неколку минути"
+      about_x_hours:
+        one:   "пред околу еден час  1 пред околу еден час "
+        other: "пред неколку часа %{count} пред неколку часа"
+      x_days:
+        one:   "1 пред еден ден"
+        other: "%{count} пред неколку дена"
+      about_x_months:
+        one:   "пред околу еден месец"
+        other: "пред месеци  %{count} пред месеци"
+      x_months:
+        one:   "1 пред еден месец"
+        other: "%{count} пред месеци"
+      about_x_years:
+        one:   "пред околу една година "
+        other: "пред години  %{count} пред години "
+      over_x_years:
+        one:   "пред повеќе од  една година"
+        other: "пред години  %{count} пред години "
+      almost_x_years:
+        one:   "пред речиси една година 1 пред речиси една година"
+        other: "пред години  %{count} пред години "
+
+# Text for page captcha challenge, which is shown if bot-like search patterns are detected
+  are_you_human:
+  captcha_requires_javascript:

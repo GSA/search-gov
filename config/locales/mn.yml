@@ -1,0 +1,134 @@
+mn:
+
+# Search.gov localizations for: Mongolian (mn)
+
+# Default page title of search results page
+  default_serp_title: '%{query} - %{site_name} Хайлтын илрэлүүд'
+
+# Labels for the search box
+  search: "n. Хайлт (v. Хайлт хийх)"
+  search_label: 'Хайлтын утгаа оруулна уу'
+
+# Labels for the navigation bar
+  everything: "TRANSLATION"
+  images: "Зургууд"
+  videos:  "Видео"
+  show_more: 'Цааш үзэх'
+
+# Labels to change the sort order by date or relevance
+  by_date: 'Сүүлийн үеийн илрэлүүд (=newer results)'
+  by_relevance: 'Хайлтад нийцсэн илрэлүүд'
+
+# Labels to narrow results by a preset timeframe or a custom date range, or clear filters ('Before' is the label for custom date range with only a 'To' date set.)
+  refine_your_search:
+  all_time: "Хайлтын бүх илрэлүүд (=all results)"
+  last_hour: "Сүүлийн нэг цагийн илрэлүүд"
+  last_day: "Сүүлийн нэг өдрийн илрэлүүд"
+  last_week: "Сүүлийн нэг долоо хоногийн илрэлүүд"
+  last_month: "Сүүлийн нэг сарын илрэлүүд"
+  last_year: "Сүүлийн нэг жилийн илрэлүүд"
+  custom_range: 'Хугацаа заах (v.to state custom time range)'
+  from: '1 хүртэлх'
+  to: '2 хүртэлх'
+  cdr_format: '%m/%d/%Y'
+  before: 'Өмнөх'
+  clear: 'Шинэчлэх'
+
+# Prompts for spelling, spelling overrides, and did you mean suggestions
+  showing_results_for: "хайлтын илрэлүүд (ex: [the term used for search] хайлтын илрэлүүд) %{corrected_query}"
+  search_instead_for: "сэдвээр хайлт хийх %{original_query}"
+
+# Prompts for searchers to revise or refine search
+  no_results_for_and_try: "Уучлаарай, ... хайлтад илрэл олдсонгүй '%{query}'. Уучлаарай, цөөхөн үгээр эсвэл ерөнхий сэдвээр хайлтаа хийнэ үү"
+  too_long: "Уучлаарай, таны оруулсан утга хэт урт байна. Цөөн үгээр дахин хайна уу"
+  empty_query: "Дээрх хайлтын хэсэгт хайлтын утгаа оруулна уу."
+
+# Labels for inline best bets, news, and related searches modules
+  recommended: "Санал болгож буй хайлтын утга"
+  default_rss_govbox_label: 'Мэдээ, мэдээлэл'
+  related_searches: "Холбогдох хайлтууд"
+
+# Labels for paging through results
+  page: 'Хуудас'
+  prev_label: "Өмнөх"
+  next_label: "Дараагийнх"
+
+  searches:
+    by: by
+# Prompt for searchers to skip to main content (most easily seen by tabbing through results page)
+    skip_to_main_content: Үндсэн агуулгыг харах
+# Labels for navigation bar "sections" (most easily seen on mobile dimension)
+    menu: Цэс
+    browse_site: Сайтаас хайх
+    related_sites: Сэдэв харах
+    results_count: '%{count}'
+    search_results: Хайлтын илрэлүүд
+# Prompts for searchers to view more results from Bing/Google after reaching page n of Search.gov results
+    commercial_results:
+      find_what_looking_for:
+      see_more_web_results: "%{link} нэмэлт илрэлүүдийг харах"
+      see_more_image_results: "Сошиал медиа сайтууд болон зургийн альбомуудаас олдсон илрэлүүд. %{link} вэбсайт дээрх илрэлүүдийг харахыг хүсвэл. (вэбсайт дээрх илрэлүүдийг харахыг хүсвэл)"
+      search_again: Дахин хайлт хийх
+# Prompts for searchers to view more results from the broader website after initially seeing site-scoped results
+    site_limits:
+      including_results_for_query_from_matching_sites: ... хайлтын илрэлүүдийг оруулан харах %{query} TRANSLATION %{matching_sites} зөвхөн (*for more accurate translation, needs content).
+      do_you_want_to_see_results_for: ... хайлтын илрэлүүдийг харах уу? %{query_from_all_sites}?
+      query_from_all_sites: '%{query} бүх сайтуудаас'
+# Label for inline news module and prompt to see more news on news vertical
+    more_news_about_query: 'Илүү %{news_label} тухай %{query}'
+    news_about_query: '%{news_label} тухай %{query}'
+    news_search_options:
+      date_format: 'm/d/yyyy'
+# Label for attributing results to Bing, Search.gov, or Google
+  powered_by: 'Бүтээсэн:'
+
+# Prompts for searchers to expand/collapse the number of best bets visible on the results page
+  show_more_label: 'Олон илрэл харах'
+  show_less_label: 'Цөөн илрэл харах'
+
+# Date format used in custom date range picker and other places
+  date:
+    formats:
+      slashes: "%-m/%-d/%Y"
+
+# Labels for news-based results indicating how long ago they were published
+  datetime:
+    time_ago_in_words:
+      half_a_minute: "хагас минутын өмнөх"
+      less_than_x_seconds:
+        one:   "1 секунд хүрэхгүйн өмнөх"
+        other: "*-с бага %{count} *-с бага"
+      x_seconds:
+        one:   "1 секундийн өмнөх"
+        other: "%{count} хэдхэн секундийн өмнөх"
+      less_than_x_minutes:
+        one:   "1 минут хүрэхгүйн өмнөх"
+        other: "*-с бага  %{count} хэдхэн минутын өмнөх"
+      x_minutes:
+        one:   "1 минутын өмнөх"
+        other: "%{count} хэдхэн минутын өмнөх"
+      about_x_hours:
+        one:   "1 цаг гармын өмнөх 1 цаг гармын өмнөх"
+        other: "хэдэн цагийн өмнөх %{count} хэдэн цагийн өмнөх"
+      x_days:
+        one:   "1 өдрийн өмнөх"
+        other: "%{count} хэдэн өдрийн өмнөх"
+      about_x_months:
+        one:   "1 сар гармын өмнөх"
+        other: "хэдэн сарын өмнөх %{count} хэдэн сарын өмнөх"
+      x_months:
+        one:   "1 сарын өмнөх"
+        other: "%{count} TRANSLATION"
+      about_x_years:
+        one:   "1 жил гармын өмнөх"
+        other: "хэдэн жилийн өмнөх %{count} хэдэн жилийн өмнөх"
+      over_x_years:
+        one:   "Жил гарны өмнөх"
+        other: "хэдэн жилийн өмнөх %{count} хэдэн жилийн өмнөх"
+      almost_x_years:
+        one:   "Жил орчмын өмнөх 1 Жил орчмын өмнөх"
+        other: "хэдэн жилийн өмнөх %{count} хэдэн жилийн өмнөх"
+
+# Text for page captcha challenge, which is shown if bot-like search patterns are detected
+  are_you_human:
+  captcha_requires_javascript:

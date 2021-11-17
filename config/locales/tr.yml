@@ -1,0 +1,138 @@
+tr:
+
+# Search.gov localizations for: Turkish (tr)
+
+# Default page title of search results page
+  default_serp_title: '%{query} - %{site_name} Arama Sonuçları'
+
+# Labels for the search box
+  search: "Arama "
+  search_label: 'Arama terimlerinizi giriniz - Aranacak kelimeyi giriniz'
+
+# Labels for the navigation bar
+  everything: "Sitedeki Sonuçlar"
+  images: "İmajlar"
+  videos: "Videos"
+  show_more: 'Daha fazla'
+
+# Labels to change the sort order by date or relevance
+  by_date: 'En Yeni'
+  by_relevance: 'En İyi Eşleşen'
+
+# Labels to narrow results by a preset timeframe or a custom date range, or clear filters ('Before' is the label for custom date range with only a 'To' date set.)
+  refine_your_search:
+  all_time: "Tüm Zamanlar"
+  last_hour: "Son saat"
+  last_day: "Son gün"
+  last_week: "Geçen hafta"
+  last_month: "Geçen ay"
+  last_year: "Geçen yıl"
+  custom_range: 'Özel aralık'
+  from: 'Başlangıç'
+  to: 'Bitiş'
+# It's safe to modify the order of these (e.g., '%m/%d/%Y'), but do not localize the Latin letters 'd', 'm', or 'Y'. Do not change the case of the letters.
+  cdr_format: '%m/%d/%Y'
+  before: 'Önce'
+  clear: 'Sil'
+
+# Prompts for spelling, spelling overrides, and did you mean suggestions
+  showing_results_for: .... için sonuçlar %{corrected_query}
+  search_instead_for: .... yerine ara %{original_query}
+
+# Prompts for searchers to revise or refine search
+  no_results_for_and_try: "Üzgünüz, hiç sonuç bulunamadı.'%{query}' Daha az ya da daha geniş sorgu terimleri girmeyi deneyin"
+  too_long: "Arama terimi çok uzun. Kısa bir kelime veya kelime öbeği kullanarak tekrar deneyin."
+  empty_query: "Yukarıdaki kutuya arama terimini giriniz."
+
+# Labels for inline best bets, news, and related searches modules
+  recommended: "Önerilen"
+  default_rss_govbox_label: 'Haberler'
+  related_searches: "İlgili Aramalar"
+
+# Labels for paging through results
+  page: 'Safya'
+  prev_label: "Önceki"
+  next_label: "Sonraki"
+
+  searches:
+    by: ile
+# Prompt for searchers to skip to main content (most easily seen by tabbing through results page)
+    skip_to_main_content: Ana içeriğe geç
+# Labels for navigation bar "sections" (most easily seen on mobile dimension)
+    menu: Menü
+    browse_site: Sitede Ara
+    related_sites: Başlık Görüntüsü
+    results_count: '%{count}'
+    search_results: Arama Sonuçları
+# Prompts for searchers to view more results from Bing/Google after reaching page n of Search.gov results
+    commercial_results:
+      find_what_looking_for:
+      see_more_web_results: "%{link} daha fazla sonuç görmek için (Zaten görmüş olduğunuz bazı sonuçları da görebilirsiniz)"
+      see_more_image_results: "Yukarıdaki sonuçlar, sosyal medya hesaplarımızdan ve galerilerden alındı.  websitemizden sonuçları görmek için) Zaten görmüş olduğunuz bazı sonuçları da görebilirsiniz"
+      search_again: Tekrar arama yapmayı deneyin
+# Prompts for searchers to view more results from the broader website after initially seeing site-scoped results
+    site_limits:
+      including_results_for_query_from_matching_sites: ... da sonuçlara ekliyoruz. %{query} den - Başlangıç %{matching_sites} sadece.
+      do_you_want_to_see_results_for: .... için sonuçları görmek istiyor musunuz %{query_from_all_sites}?
+      query_from_all_sites: '%{query} tüm sitelerden'
+# Label for inline news module and prompt to see more news on news vertical
+    more_news_about_query: 'Daha fazla %{news_label} hakkinda %{query}'
+    news_about_query: '%{news_label} hakkinda %{query}'
+    news_search_options:
+# It's safe to modify the order of these (e.g., 'm/d/yyyy'), but do not localize 'd', 'm', or 'yyyy' or change the case of the letters.
+      date_format: 'm/d/yyyy'
+
+# Label for attributing results to Bing, Search.gov, or Google
+  powered_by: '... tarafından desteklenmektedir'
+
+# Prompts for searchers to expand/collapse the number of best bets visible on the results page
+  show_more_label: 'Daha fazla göster'
+  show_less_label: 'Daha az göster'
+
+# Date format used in custom date range picker and other places
+  date:
+    formats:
+# It's safe to modify the order of these (e.g., '%-d/%-m/%Y'), but do not localize 'd', 'm', or 'Y' or remove the dashes. Do not change the case of the letters.
+      slashes: "%-m/%-d/%Y"
+
+# Labels for news-based results indicating how long ago they were published
+  datetime:
+    time_ago_in_words:
+      half_a_minute: "yarım dakika önce"
+      less_than_x_seconds:
+        one:   "1 saniyeden az önce"
+        other: "daha az %{count} saniyeler önce"
+      x_seconds:
+        one:   "1 saniye önce"
+        other: "%{count} saniyeler önce"
+      less_than_x_minutes:
+        one:   "bir dakikadan az önce"
+        other: "daha az %{count} dakikalar önce"
+      x_minutes:
+        one:   "1 dakika önce"
+        other: "%{count} dakikalar önce"
+      about_x_hours:
+        one:   "yaklaşık 1 saat önce"
+        other: "saatler önce %{count} "
+      x_days:
+        one:   "1 gün önce"
+        other: "%{count} günler önce"
+      about_x_months:
+        one:   "yaklaşık 1 ay önce"
+        other: "aylar önce %{count} "
+      x_months:
+        one:   "1 ay önce"
+        other: "%{count} aylar önce"
+      about_x_years:
+        one:   "yaklaşık 1 yıl önce"
+        other: "yıllar önce %{count} "
+      over_x_years:
+        one:   "bir yıl önce"
+        other: "yıllar önce %{count}"
+      almost_x_years:
+        one:   "Tneredeyse 1 yıl önce"
+        other: "yıllar önce %{count}"
+
+# Text for page captcha challenge, which is shown if bot-like search patterns are detected
+  are_you_human:
+  captcha_requires_javascript:

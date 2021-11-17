@@ -16,9 +16,9 @@ data:
   # Locale files or `File.find` patterns where translations are read from:
   read:
     ## Default:
-    # - config/locales/%{locale}.yml
+    - config/locales/%{locale}.yml
     ## More files:
-    # - config/locales/**/*.%{locale}.yml
+    - config/locales/**/*.%{locale}.yml
 
   # Locale files to write new keys to, based on a list of key pattern => file rules. Matched from top to bottom:
   # `i18n-tasks normalize -p` will force move the keys according to these rules
@@ -67,8 +67,9 @@ search:
   ## Files or `File.fnmatch` patterns to exclude from search. Some files are always excluded regardless of this setting:
   ##   %w(*.jpg *.png *.gif *.svg *.ico *.eot *.otf *.ttf *.woff *.woff2 *.pdf *.css *.sass *.scss *.less *.yml *.json)
   exclude:
-    - app/assets/images
     - app/assets/fonts
+    - app/assets/images
+    - app/assets/javascripts
     - app/assets/videos
 
   ## Alternatively, the only files or `File.fnmatch patterns` to search in `paths`:
@@ -97,12 +98,27 @@ search:
 # - '{devise,simple_form}.*'
 
 ## Consider these keys used:
-# ignore_unused:
+ignore_unused:
+# Examples:
 # - 'activerecord.attributes.*'
 # - '{devise,kaminari,will_paginate}.*'
 # - 'simple_form.{yes,no}'
 # - 'simple_form.{placeholders,hints,labels}.*'
 # - 'simple_form.{error_notification,required}.:'
+# Used by the authlogic gem
+ - authlogic.*
+# Used by ActiveSupport
+# https://github.com/glebm/i18n-tasks/issues/169
+ - date.*
+ - datetime.time_ago_in_words.*
+# Used by the dynamic_form gem
+ - dynamic_form.*
+# Dynamically generated translation keys for time-based searches
+ - last_hour
+ - last_day
+ - last_week
+ - last_month
+ - last_year
 
 ## Exclude these keys from the `i18n-tasks eq-base' report:
 # ignore_eq_base:

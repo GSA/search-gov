@@ -1,10 +1,9 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
 describe NavigableNameUpdater do
-  fixtures :affiliates, :languages, :rss_feeds, :image_search_labels
-
   context 'no locale exceptions array passed in' do
     let(:navigable_name_updater) { described_class.new }
+    let(:video_feed) { rss_feeds(:managed_video) }
 
     before do
       affiliates(:basic_affiliate).update_attribute(:locale, 'kl')
@@ -14,8 +13,13 @@ describe NavigableNameUpdater do
       expect { navigable_name_updater.update }.to change { ImageSearchLabel.where(name: 'Assit').count }.from(0).to(1)
     end
 
-    it 'updates all video search labels except for English/Spanish sites' do
-      expect { navigable_name_updater.update }.to change { RssFeed.where(name: 'Test Entry').count }.from(0).to(1)
+    context 'when a video feed label is outdated' do
+      before { video_feed.update!(name: 'outdated') }
+
+      it 'updates all video search labels except for English/Spanish sites' do
+        expect { navigable_name_updater.update }.
+          to change { video_feed.reload.name }.from('outdated').to('Videos')
+      end
     end
   end
 end

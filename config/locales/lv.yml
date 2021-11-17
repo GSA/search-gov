@@ -1,0 +1,138 @@
+lv:
+
+# Search.gov localizations for: Latvian (lv)
+
+# Default page title of search results page
+  default_serp_title: '%{query} - %{site_name} Meklēšanas rezultāti'
+
+# Labels for the search box
+  search: "Meklēt"
+  search_label: 'levadīt atslēgvārdu'
+
+# Labels for the navigation bar
+  everything: "Rezultāti"
+  images: "Attēli"
+  videos:  "Videos"
+  show_more: 'Vairāk'
+
+# Labels to change the sort order by date or relevance
+  by_date: 'Jaunākie'
+  by_relevance: 'Atbilstošākie'
+
+# Labels to narrow results by a preset timeframe or a custom date range, or clear filters ('Before' is the label for custom date range with only a 'To' date set.)
+  refine_your_search:
+  all_time: "Jebkad"
+  last_hour: "Stundas laikā"
+  last_day: "Dienas laikā"
+  last_week: "Pagājušajā nedēļā"
+  last_month: "Pagājušajā mēnesī"
+  last_year: "Pagājušajā gadā"
+  custom_range: 'Ar atlasi'
+  from: 'No'
+  to: 'Līdz'
+# It's safe to modify the order of these (e.g., '%m/%d/%Y'), but do not localize the Latin letters 'd', 'm', or 'Y'. Do not change the case of the letters.
+  cdr_format: '%m/%d/%Y'
+  before: 'Pirms'
+  clear: 'TDzēst'
+
+# Prompts for spelling, spelling overrides, and did you mean suggestions
+  showing_results_for: Parādīt rezultātus %{corrected_query}
+  search_instead_for: Tā vietā meklēt %{original_query}
+
+# Prompts for searchers to revise or refine search
+  no_results_for_and_try: "Diemžēl nav atrasts neviens rezultāts '%{query}'. Mēģiniet ievadīt mazāk vai plašākus jēdzienus"
+  too_long: "Jūs atslēgvārds ir pārāk garš. Mēģiniet lietot īsāku vārdu vai frāzi"
+  empty_query: "Lūdzu ievadiet atslēgvārdus ailītē."
+
+# Labels for inline best bets, news, and related searches modules
+  recommended: "Ieteicams"
+  default_rss_govbox_label: 'Jaunumi'
+  related_searches: "Saistītie meklējumi"
+
+# Labels for paging through results
+  page: 'Lappuse'
+  prev_label: "Iepriekšējā"
+  next_label: "Nākamā"
+
+  searches:
+    by: by
+# Prompt for searchers to skip to main content (most easily seen by tabbing through results page)
+    skip_to_main_content: Pāriet uz galveno saturu
+# Labels for navigation bar "sections" (most easily seen on mobile dimension)
+    menu: lzvēlne
+    browse_site: Pārlūkot vietni
+    related_sites: Aplūkot tēmu
+    results_count: '%{count}'
+    search_results: Meklēšanas rezultāti
+# Prompts for searchers to view more results from Bing/Google after reaching page n of Search.gov results
+    commercial_results:
+      find_what_looking_for:
+      see_more_web_results: "%{link} Apskatīt vairāk"
+      see_more_image_results: "Šie rezultāti ir no mūsu sociālajiem tīkliem un galerijām. %{link} Rezultāti no mūsu mājas lapas (Rezultāti no mūsu mājas lapas)"
+      search_again: Mēģiniet meklēt vēlreiz
+# Prompts for searchers to view more results from the broader website after initially seeing site-scoped results
+    site_limits:
+      including_results_for_query_from_matching_sites: Iekļaujam rezultātus no %{query} no %{matching_sites} tikai.
+      do_you_want_to_see_results_for: Vai vēlaties skatīt tikai %{query_from_all_sites}?
+      query_from_all_sites: '%{query} no visām vietnēm'
+# Label for inline news module and prompt to see more news on news vertical
+    more_news_about_query: 'Vairāk %{news_label} Par %{query}'
+    news_about_query: '%{news_label} Par %{query}'
+    news_search_options:
+# It's safe to modify the order of these (e.g., 'm/d/yyyy'), but do not localize 'd', 'm', or 'yyyy' or change the case of the letters.
+      date_format: 'm/d/yyyy'
+
+# Label for attributing results to Bing, Search.gov, or Google
+  powered_by: 'Darbina'
+
+# Prompts for searchers to expand/collapse the number of best bets visible on the results page
+  show_more_label: 'Rādīt vairāk'
+  show_less_label: 'Rādīt mazāk'
+
+# Date format used in custom date range picker and other places
+  date:
+    formats:
+# It's safe to modify the order of these (e.g., '%-d/%-m/%Y'), but do not localize 'd', 'm', or 'Y' or remove the dashes. Do not change the case of the letters.
+      slashes: "%-m/%-d/%Y"
+
+# Labels for news-based results indicating how long ago they were published
+  datetime:
+    time_ago_in_words:
+      half_a_minute: "pirms pusminūtes"
+      less_than_x_seconds:
+        one:   "pirms sekundes"
+        other: "mazāk par %{count} mazāk par"
+      x_seconds:
+        one:   "1 sekundi"
+        other: "%{count} sekundēm"
+      less_than_x_minutes:
+        one:   "mazāk kā pirms minūtes"
+        other: "pirms dažām minūtēm %{count} pirms dažām minūtēm"
+      x_minutes:
+        one:   "1 pirms 1 minūtes"
+        other: "%{count} pirms 1 minūtes"
+      about_x_hours:
+        one:   "pirms 1 stundas 1 pirms 1 stundas"
+        other: "pirms vairākām stundām %{count} pirms vairākām stundām"
+      x_days:
+        one:   "1 pirms 1 dienas"
+        other: "%{count} pirms vairākām dienām"
+      about_x_months:
+        one:   "aptuveni pirms mēneša"
+        other: "pirms vairākiem mēnešiem %{count} pirms vairākiem mēnešiem"
+      x_months:
+        one:   "1 pirms mēneša"
+        other: "%{count} pirms mēneša"
+      about_x_years:
+        one:   "aptuveni pirms gada"
+        other: "pirms vairākiem gadiem %{count} pirms vairākiem gadiem"
+      over_x_years:
+        one:   "pirms vairāk nekā gada"
+        other: "pirms vairākiem gadiem %{count} pirms vairākiem gadiem"
+      almost_x_years:
+        one:   "pirms gandrīz gada 1 pirms gandrīz gada"
+        other: "pirms vairākiem gadiem %{count} pirms vairākiem gadiem"
+
+# Text for page captcha challenge, which is shown if bot-like search patterns are detected
+  are_you_human:
+  captcha_requires_javascript:

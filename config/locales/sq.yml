@@ -1,0 +1,138 @@
+sq:
+
+# Search.gov localizations for: Albanian (sq)
+
+# Default page title of search results page
+  default_serp_title: '%{query} - %{site_name} Rezultatet e Kërkimit'
+
+# Labels for the search box
+  search: "Kërko"
+  search_label: 'Shkruani fjalën që po kërkoni'
+
+# Labels for the navigation bar
+  everything: "Rezultatet e Faqes"
+  images: "Fotografi "
+  videos: "Videos"
+  show_more: 'Më Shumë'
+
+# Labels to change the sort order by date or relevance
+  by_date: 'Më të fundit'
+  by_relevance: 'Më e përafërta'
+
+# Labels to narrow results by a preset timeframe or a custom date range, or clear filters ('Before' is the label for custom date range with only a 'To' date set.)
+  refine_your_search:
+  all_time: "Gjithë Kohës"
+  last_hour: "Orën e Fundit"
+  last_day: "Ditën e Djeshme"
+  last_week: "Javën e Kaluar"
+  last_month: "Muajin e Kaluar"
+  last_year: "Vitin e Kaluar"
+  custom_range: 'Sipas Modelit'
+  from: 'Nga'
+  to: 'Për'
+# It's safe to modify the order of these (e.g., '%m/%d/%Y'), but do not localize the Latin letters 'd', 'm', or 'Y'. Do not change the case of the letters.
+  cdr_format: '%m/%d/%Y'
+  before: 'Përpara'
+  clear: 'Fshije'
+
+# Prompts for spelling, spelling overrides, and did you mean suggestions
+  showing_results_for: Tregon rezultate për %{corrected_query}
+  search_instead_for: Kërko për %{original_query}
+
+# Prompts for searchers to revise or refine search
+  no_results_for_and_try: "Na vjen keq, nuk kemi rezultate për '%{query}'. Përpiquni të vendosni më pak fjalë ose fjalë me kuptim më të gjerë"
+  too_long: "Fjala e kërkimit tuaj është shumë e gjatë.  Përpiquni përsëri duke përdorur një fjalë ose frazë më të shkurtër:"
+  empty_query: "Ju lutemi vendosni një frazë kërkimi ne kutinë më sipër."
+
+# Labels for inline best bets, news, and related searches modules
+  recommended: "I/E rekomanduar"
+  default_rss_govbox_label: 'Lajme'
+  related_searches: "Kërkime të Ngjashme"
+
+# Labels for paging through results
+  page: 'Faqe'
+  prev_label: "E mëparshme"
+  next_label: "E mëpashme"
+
+  searches:
+    by: Nga
+# Prompt for searchers to skip to main content (most easily seen by tabbing through results page)
+    skip_to_main_content: Vazhdoni për në përmbajtjen kryesore
+# Labels for navigation bar "sections" (most easily seen on mobile dimension)
+    menu: Menuja
+    browse_site: Kontrolloni faqen
+    related_sites: Shikoni temën
+    results_count: '%{count}'
+    search_results: Rezulatatet e Kërkimit
+# Prompts for searchers to view more results from Bing/Google after reaching page n of Search.gov results
+    commercial_results:
+      find_what_looking_for:
+      see_more_web_results: "%{link} Për të parë më shumë rezultate"
+      see_more_image_results: "Rezultatet më sipër janë nga faqet tona në mediat sociale  %{link} për të parë rezultate nga faqja jonë (Ju mund të shikoni disa rezultate që ju i keni parë edhe më parë)"
+      search_again: Provojeni kërkimin tuaj përsëri
+# Prompts for searchers to view more results from the broader website after initially seeing site-scoped results
+    site_limits:
+      including_results_for_query_from_matching_sites: Po ju japim rezultate për %{query} nga %{matching_sites} vetëm.
+      do_you_want_to_see_results_for: A dëshironi të shihni rezultate  për %{query_from_all_sites}?
+      query_from_all_sites: '%{query} nga të gjitha faqet'
+# Label for inline news module and prompt to see more news on news vertical
+    more_news_about_query: 'Më Shumë %{news_label} për %{query}'
+    news_about_query: '%{news_label} për %{query}'
+    news_search_options:
+# It's safe to modify the order of these (e.g., 'm/d/yyyy'), but do not localize 'd', 'm', or 'yyyy' or change the case of the letters.
+      date_format: 'm/d/yyyy'
+
+# Label for attributing results to Bing, Search.gov, or Google
+  powered_by: 'e kontrolluar nga'
+
+# Prompts for searchers to expand/collapse the number of best bets visible on the results page
+  show_more_label: 'trego më shumë'
+  show_less_label: 'trego më pak'
+
+# Date format used in custom date range picker and other places
+  date:
+    formats:
+# It's safe to modify the order of these (e.g., '%-d/%-m/%Y'), but do not localize 'd', 'm', or 'Y' or remove the dashes. Do not change the case of the letters.
+      slashes: "%-m/%-d/%Y"
+
+# Labels for news-based results indicating how long ago they were published
+  datetime:
+    time_ago_in_words:
+      half_a_minute: "gjysëm minute më parë"
+      less_than_x_seconds:
+        one:   "më pak se një sekondë më parë"
+        other: "më pak se %{count} disa sekonda më parë"
+      x_seconds:
+        one:   "një sekondë më parë"
+        other: "%{count} disa sekonda më parë"
+      less_than_x_minutes:
+        one:   "më pak se një minutë më parë"
+        other: "më pak se %{count} disa minuta më parë"
+      x_minutes:
+        one:   "një minutë më parë"
+        other: "%{count} disa minuta më parë"
+      about_x_hours:
+        one:   "rreth një orë më parë"
+        other: "rreth një %{count}  orë më parë"
+      x_days:
+        one:   "një ditë më parë"
+        other: "%{count} ditë më parë"
+      about_x_months:
+        one:   "rreth një muaj më parë"
+        other: "rreth një %{count} muaj më parë"
+      x_months:
+        one:   "një muaj më parë"
+        other: "%{count} muaj më parë"
+      about_x_years:
+        one:   "rreth një vit më parë"
+        other: "rreth një %{count} vite më parë"
+      over_x_years:
+        one:   "mbi një vit më parë"
+        other: "mbi një %{count} vite më parë"
+      almost_x_years:
+        one:   "pothuajse një vit më parë"
+        other: "pothuajse një %{count} vite më parë"
+
+# Text for page captcha challenge, which is shown if bot-like search patterns are detected
+  are_you_human:
+  captcha_requires_javascript:

@@ -115,14 +115,14 @@ Feature: Searches using mobile device
     Then the "Enter your search term" field should contain "news item"
     And I should see "Any time" within the current time filter
     And I should see "Most recent" within the current sort by filter
-    And I should see "150 RESULTS"
+    And I should see "150 results"
     And I should see "Powered by Search.gov"
     And I should see exactly "20" web search results
     And I should see "Previous"
     And I should see a link to "2" with class "pagination-numbered-link"
     And I should see a link to "Next"
     When I follow "Next"
-    Then I should see "150 RESULTS"
+    Then I should see "150 results"
     And I should see exactly "20" web search results
     And I should see a link to "Previous"
     And I should see a link to "1" with class "pagination-numbered-link"
@@ -130,7 +130,7 @@ Feature: Searches using mobile device
     When I follow "5"
     And I follow "7"
     And I follow "8"
-    Then I should see "150 RESULTS"
+    Then I should see "150 results"
     And I should see exactly "10" web search results
 
     When I follow "Last month"
@@ -491,8 +491,8 @@ Feature: Searches using mobile device
     And I search for "gov"
     Then every result URL should match "usa.gov"
     Then I should see "We're including results for gov from usa.gov only."
-    And I should see "Do you want to see results for gov from all sites?"
-    When I follow "gov from all sites" within the search all sites row
+    And I should see "Do you want to see results for gov from all locations?"
+    When I follow "gov from all locations" within the search all sites row
     Then I should not see "We're including results for gov from usa.gov only."
     When I follow "Blog" in the search navbar
     Then I should see at least "1" web search results

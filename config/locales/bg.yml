@@ -1,0 +1,138 @@
+bg:
+
+# Search.gov localizations for: Bulgarian (bg)
+
+# Default page title of search results page
+  default_serp_title: '%{query} - %{site_name} Резултати от търсенето'
+
+# Labels for the search box
+  search: "Търсене"
+  search_label: 'Въведете търсената дума'
+
+# Labels for the navigation bar
+  everything: "Резултати"
+  videos: "Видео"
+  images: "Изображения"
+  show_more: 'Още'
+
+# Labels to change the sort order by date or relevance
+  by_date: 'Най-последни'
+  by_relevance: 'Най-съвпадащи'
+
+# Labels to narrow results by a preset timeframe or a custom date range, or clear filters ('Before' is the label for custom date range with only a 'To' date set.)
+  refine_your_search:
+  all_time: "През целия период"
+  last_hour: "Последния час"
+  last_day: "Последния ден"
+  last_week: "Последната седмица"
+  last_month: "Миналия месец"
+  last_year: "Миналата година"
+  custom_range: 'Посетители'
+  from: 'От'
+  to: 'До'
+# It's safe to modify the order of these (e.g., '%m/%d/%Y'), but do not localize the Latin letters 'd', 'm', or 'Y'. Do not change the case of the letters.
+  cdr_format: '%m/%d/%Y'
+  before: 'Преди'
+  clear: 'Изчисти'
+
+# Prompts for spelling, spelling overrides, and did you mean suggestions
+  showing_results_for: Показващи резултати за %{corrected_query}
+  search_instead_for: Търси вместо за %{original_query}
+
+# Prompts for searchers to revise or refine search
+  no_results_for_and_try: "Съжаляваме, няма открити резултати за '%{query}'. Опитайте се да задълбочите или да разширите смисъла на заявката си"
+  too_long: "Ключовата дума е твърде дълга. Опитайте се да използвате по-къса дума или фраза:"
+  empty_query: "Въведете търсения термин в полето по-горе."
+
+# Labels for inline best bets, news, and related searches modules
+  recommended: "Препоръчително"
+  default_rss_govbox_label: 'Новини'
+  related_searches: "Подобно търсене"
+
+# Labels for paging through results
+  page: 'Страница'
+  prev_label: "Предишна"
+  next_label: "Следваща"
+
+  searches:
+    by: от
+# Prompt for searchers to skip to main content (most easily seen by tabbing through results page)
+    skip_to_main_content: Премини към основното съдържание
+# Labels for navigation bar "sections" (most easily seen on mobile dimension)
+    menu: Меню
+    browse_site: Прегледайте сайта
+    related_sites: Вижте темата
+    results_count: '%{count}'
+    search_results: Резултати от търсенето
+# Prompts for searchers to view more results from Bing/Google after reaching page n of Search.gov results
+    commercial_results:
+      find_what_looking_for:
+      see_more_web_results: "%{link} За да видите още резултатаи"
+      see_more_image_results: "Горните резултати са от социалните ни мрежи и галерии %{link} За да видите резултати от нашия уеб сайт (Може би виждате резултати, които вече сте видяли)"
+      search_again: Опитайте с търсенето отново
+# Prompts for searchers to view more results from the broader website after initially seeing site-scoped results
+    site_limits:
+      including_results_for_query_from_matching_sites: Включили сме резултати за %{query} от %{matching_sites} само.
+      do_you_want_to_see_results_for: Желаете ли да видите резултатите за %{query_from_all_sites}?
+      query_from_all_sites: '%{query} От всички сайтове'
+# Label for inline news module and prompt to see more news on news vertical
+    more_news_about_query: 'Още %{news_label} относно %{query}'
+    news_about_query: '%{news_label} относно %{query}'
+    news_search_options:
+# It's safe to modify the order of these (e.g., 'm/d/yyyy'), but do not localize 'd', 'm', or 'yyyy' or change the case of the letters.
+      date_format: 'm/d/yyyy'
+
+# Label for attributing results to Bing, Search.gov, or Google
+  powered_by: 'задвижвани от'
+
+# Prompts for searchers to expand/collapse the number of best bets visible on the results page
+  show_more_label: 'покажи още'
+  show_less_label: 'покажи по-малко'
+
+# Date format used in custom date range picker and other places
+  date:
+    formats:
+# It's safe to modify the order of these (e.g., '%-d/%-m/%Y'), but do not localize 'd', 'm', or 'Y' or remove the dashes. Do not change the case of the letters.
+      slashes: "%-m/%-d/%Y"
+
+# Labels for news-based results indicating how long ago they were published
+  datetime:
+    time_ago_in_words:
+      half_a_minute: "преди минута и половина"
+      less_than_x_seconds:
+        one:   "преди по-малко от една секунда"
+        other: "по-малко отколкото %{count} преди секунди"
+      x_seconds:
+        one:   "преди една секунда"
+        other: "%{count} преди секунди"
+      less_than_x_minutes:
+        one:   "преди по-малко от минута"
+        other: "по-малко отколкото %{count} преди минути"
+      x_minutes:
+        one:   "преди 1 минута"
+        other: "%{count} преди минути"
+      about_x_hours:
+        one:   "преди около 1 час"
+        other: "преди %{count}  преди часове"
+      x_days:
+        one:   "преди 1 ден"
+        other: "%{count} преди дни"
+      about_x_months:
+        one:   "преди около 1 месец"
+        other: "преди %{count} преди месеци"
+      x_months:
+        one:   "преди 1 месец"
+        other: "%{count} преди месеци"
+      about_x_years:
+        one:   "преди около 1 година"
+        other: "преди %{count} преди години"
+      over_x_years:
+        one:   "преди повече от 1 година"
+        other: "преди повече %{count} преди години"
+      almost_x_years:
+        one:   "почти преди 1 година"
+        other: "почти преди %{count} преди години"
+
+# Text for page captcha challenge, which is shown if bot-like search patterns are detected
+  are_you_human:
+  captcha_requires_javascript:
