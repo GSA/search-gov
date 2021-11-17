@@ -1,0 +1,134 @@
+ha:
+
+# Search.gov localizations for: Hausa (ha)
+
+# Default page title of search results page
+  default_serp_title: '%{query} - %{site_name} Binciken Sakamako'
+
+# Labels for the search box
+  search: "Bincike"
+  search_label: 'Sanya Kalmar da za ka bincika'
+
+# Labels for the navigation bar
+  everything: "Sakamakon bincike"
+  images: "Kamannu"
+  videos: "Hotunan Bidiyo"
+  show_more: 'kari'
+
+# Labels to change the sort order by date or relevance
+  by_date: 'Na Kwanan nan'
+  by_relevance: 'Mafi kama'
+
+# Labels to narrow results by a preset timeframe or a custom date range, or clear filters ('Before' is the label for custom date range with only a 'To' date set.)
+  refine_your_search:
+  all_time: "Kowane lokaci"
+  last_hour: "Awar da ta wuce"
+  last_day: "Ranar karshe"
+  last_week: "Makon karshe"
+  last_month: "Watan da ya wuce"
+  last_year: "Bara"
+  custom_range: 'Tsawon lokaci'
+  from: 'Daga'
+  to: 'Zuwa'
+  cdr_format: '%m/%d/%Y'
+  before: 'Kafin'
+  clear: 'Sharewa'
+
+# Prompts for spelling, spelling overrides, and did you mean suggestions
+  showing_results_for: Sakamakon da aka samu %{corrected_query}
+  search_instead_for: Makwafin bincike %{original_query}
+
+# Prompts for searchers to revise or refine search
+  no_results_for_and_try: "A yi hakuri babu wani sakamakon da aka samu '%{query}'. Kokarta shigar da karin bayanin bincike"
+  too_long: "Bayanin bincikenka ya yi tsawo. Yi kokarin yin amfani da gajeruwar kalma ko bayani:"
+  empty_query: "To, a sanya bayanin bincike a wannan akwatin."
+
+# Labels for inline best bets, news, and related searches modules
+  recommended: "An fi amincewa da"
+  default_rss_govbox_label: 'Labaru'
+  related_searches: "Binciken dake da dangantaka"
+
+# Labels for paging through results
+  page: 'Shafi'
+  prev_label: "Na da"
+  next_label: "Mai zuwa"
+
+  searches:
+    by: a
+# Prompt for searchers to skip to main content (most easily seen by tabbing through results page)
+    skip_to_main_content: Matsa zuwa ainihin cikakken bayani
+# Labels for navigation bar "sections" (most easily seen on mobile dimension)
+    menu: Jerin bayanai
+    browse_site: Bincika wannan shafin
+    related_sites: A duba manhaja
+    results_count: '%{count}'
+    search_results: A bincika sakamako
+# Prompts for searchers to view more results from Bing/Google after reaching page n of Search.gov results
+    commercial_results:
+      find_what_looking_for:
+      see_more_web_results: "%{link} a duba karin sakamako"
+      see_more_image_results: "Wannan sakamakon ya fito ne daga shafin yanar-gizonmu mai bayanai da hotuna. %{link} don ganin sakamako daga shafin yanar-gizonmu (Ana iya ganin karin sakamakon da ka samu.)"
+      search_again: Kokarta bincikawa
+# Prompts for searchers to view more results from the broader website after initially seeing site-scoped results
+    site_limits:
+      including_results_for_query_from_matching_sites: Za mu kara bayar da sakamako don %{query} daga %{matching_sites} kadai.
+      do_you_want_to_see_results_for: Ka na da bukatar ganin sakamakon %{query_from_all_sites}?
+      query_from_all_sites: '%{query} daga dukan shafin yanar-gizon'
+# Label for inline news module and prompt to see more news on news vertical
+    more_news_about_query: '{ari %{news_label} game da %{query}'
+    news_about_query: '%{news_label} game da %{query}'
+    news_search_options:
+      date_format: 'm/d/yyyy'
+# Label for attributing results to Bing, Search.gov, or Google
+  powered_by: 'Naurar da ta gabatar'
+
+# Prompts for searchers to expand/collapse the number of best bets visible on the results page
+  show_more_label: 'A nuna karin bayani'
+  show_less_label: 'A takaita'
+
+# Date format used in custom date range picker and other places
+  date:
+    formats:
+      slashes: "%-m/%-d/%Y"
+
+# Labels for news-based results indicating how long ago they were published
+  datetime:
+    time_ago_in_words:
+      half_a_minute: "a cikin rabin mintin da ya wuce"
+      less_than_x_seconds:
+        one:   "kasa da dakika daya"
+        other: "kasa da %{count} dakikoki da suka wuce"
+      x_seconds:
+        one:   "dakika daya da ya wuce"
+        other: "%{count} dakikoki da suka wuce"
+      less_than_x_minutes:
+        one:   "yan dakikokin da suka wuce"
+        other: "kasa da %{count} yan mintunan da suka wuce"
+      x_minutes:
+        one:   "minti daya da ya wuce"
+        other: "%{count} yan mintunan da suka wuce"
+      about_x_hours:
+        one:   "kamar misalin awa daya da ta wuce"
+        other: "kamar misalin %{count} awowi da suka wuce"
+      x_days:
+        one:   "jiya"
+        other: "%{count} kwanakin da suka wuce"
+      about_x_months:
+        one:   "misalin wata daya da ya wuce"
+        other: "misalin wata %{count} watannin da suka wuce"
+      x_months:
+        one:   "wata daya da ya wuce"
+        other: "%{count} watannin da suka wuce"
+      about_x_years:
+        one:   "misalin shekara daya da ta wuce"
+        other: "misalin %{count} shekarun da suka wuce"
+      over_x_years:
+        one:   "fiye da shekara daya da ta wuce"
+        other: "fiye da %{count} shekarun da suka wuce"
+      almost_x_years:
+        one:   "kusan shekara daya da ta wuce"
+        other: "kusan %{count} shekarun da suka wuce"
+
+# Text for page captcha challenge, which is shown if bot-like search patterns are detected
+  are_you_human:
+  captcha_requires_javascript:

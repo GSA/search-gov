@@ -1,0 +1,134 @@
+fa2:
+
+# Search.gov localizations for: Persian (fa)
+
+# Default page title of search results page
+  default_serp_title: '%{query} - %{site_name} نتایج جستجو'
+
+# Labels for the search box
+  search: "جستجو"
+  search_label: 'عبارت مورد نظر برای جستجو را وارد کنید'
+
+# Labels for the navigation bar
+  everything: "نتایج سایت"
+  images: "عکس ها"
+  videos: ""
+  show_more: 'بیشتر'
+
+# Labels to change the sort order by date or relevance
+  by_date: 'تازه ترین'
+  by_relevance: 'بهترین تطابق'
+
+# Labels to narrow results by a preset timeframe or a custom date range, or clear filters ('Before' is the label for custom date range with only a 'To' date set.)
+  refine_your_search:
+  all_time: "همیشه"
+  last_hour: "یک ساعت پیش"
+  last_day: "دیروز"
+  last_week: "هفته گذشته"
+  last_month: "ماه گذشته"
+  last_year: "سال گذشته"
+  custom_range: 'محدودۀ دلخواه'
+  from: 'از'
+  to: 'به'
+  cdr_format: '%m/%d/%Y'
+  before: 'قبل از'
+  clear: 'پاک'
+
+# Prompts for spelling, spelling overrides, and did you mean suggestions
+  showing_results_for: نشان دادن نتایج برای %{corrected_query}
+  search_instead_for: بجای آن جستجو برای %{original_query}
+
+# Prompts for searchers to revise or refine search
+  no_results_for_and_try: "با معذرت، نتایج یافته نشد برای '%{query}'. وارد کردن عبارات جستاری کمتر یا وسیعتر را امتحان کنید"
+  too_long: "عبارت برای جستجوی بسیار طویل است. با استفاده از یک عبارت کوتاه تر، دوباره امتحان کنید:"
+  empty_query: "لطفاً عبارت مورد نظر برای جستجو را در خانه خالی بالا بنویسید."
+
+# Labels for inline best bets, news, and related searches modules
+  recommended: "پیشنهاد شده"
+  default_rss_govbox_label: 'اخبار'
+  related_searches: "جستجو های مرتبط"
+
+# Labels for paging through results
+  page: 'صفحه'
+  prev_label: "قبلی"
+  next_label: "بعدی"
+
+  searches:
+    by: در
+# Prompt for searchers to skip to main content (most easily seen by tabbing through results page)
+    skip_to_main_content: رفتن به محتوای اصلی
+# Labels for navigation bar "sections" (most easily seen on mobile dimension)
+    menu: فهرست
+    browse_site: مرور سایت 
+    related_sites: مشاهدۀ موضوع
+    results_count: '%{count}'
+    search_results: نتایج جستجو
+# Prompts for searchers to view more results from Bing/Google after reaching page n of Search.gov results
+    commercial_results:
+      find_what_looking_for:
+      see_more_web_results: "%{link} برای دیدن نتایج بیشتر"
+      see_more_image_results: "نتایج فوق از حساب های رسانه های اجتماعی و گالری های ما به دست آمده  %{link} برای دیدن نتایج از ویب سایت ما (ممکن شما بعضی نتایج را مشاهده کنید که قبلاً دیده بودید)"
+      search_again: جستجوی خود را بار دیگر امتحان کنید
+# Prompts for searchers to view more results from the broader website after initially seeing site-scoped results
+    site_limits:
+      including_results_for_query_from_matching_sites: ما نتایج را شامل می کنیم برای %{query} از %{matching_sites} فقط.
+      do_you_want_to_see_results_for: آیا شما خواهان نتایج هستید برای %{query_from_all_sites}?
+      query_from_all_sites: '%{query} از تمام سایت ها'
+# Label for inline news module and prompt to see more news on news vertical
+    more_news_about_query: 'بیشتر %{news_label} در مورد %{query}'
+    news_about_query: '%{news_label} در مورد %{query}'
+    news_search_options:
+      date_format: 'm/d/yyyy'
+# Label for attributing results to Bing, Search.gov, or Google
+  powered_by: 'طراحی شده توسط'
+
+# Prompts for searchers to expand/collapse the number of best bets visible on the results page
+  show_more_label: 'نشان دادن بیشتر'
+  show_less_label: 'نشان دادن کمتر'
+
+# Date format used in custom date range picker and other places
+  date:
+    formats:
+      slashes: "%-m/%-d/%Y"
+
+# Labels for news-based results indicating how long ago they were published
+  datetime:
+    time_ago_in_words:
+      half_a_minute: "نیم دقیقه قبل"
+      less_than_x_seconds:
+        one:   "کمتر از یک ثانیه قبل"
+        other: "کمتر از %{count} چند ثانیه قبل"
+      x_seconds:
+        one:   "یک ثانیه قبل"
+        other: "%{count} چند ثانیه قبل"
+      less_than_x_minutes:
+        one:   "کمتر از یک دقیقه قبل"
+        other: "کمتر از %{count} چند دقیقه قبل"
+      x_minutes:
+        one:   "یک دقیقه قبل"
+        other: "%{count} چند دقیقه قبل"
+      about_x_hours:
+        one:   "تقریباً یک ساعت قبل"
+        other: "در مورد %{count} تقریباً یک ساعت قبل"
+      x_days:
+        one:   "یک روز قبل"
+        other: "%{count} چند روز قبل"
+      about_x_months:
+        one:   "تقریباً یک ماه قبل"
+        other: "در مورد %{count} چند ماه قبل"
+      x_months:
+        one:   "یک ماه قبل"
+        other: "%{count} چند ماه قبل"
+      about_x_years:
+        one:   "تقریباً یک سال قبل"
+        other: "در مورد %{count} چند سال قبل"
+      over_x_years:
+        one:   "بیشتر از یک سال قبل"
+        other: "بیشتر از %{count} چند سال قبل"
+      almost_x_years:
+        one:   "تقریباً یک سال قبل"
+        other: "تقریباً %{count} چند سال قبل"
+
+# Text for page captcha challenge, which is shown if bot-like search patterns are detected
+  are_you_human:
+  captcha_requires_javascript:

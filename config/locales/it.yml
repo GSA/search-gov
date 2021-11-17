@@ -1,0 +1,134 @@
+it:
+
+# Search.gov localizations for: Italian (it)
+
+# Default page title of search results page
+  default_serp_title: '%{query} - %{site_name} Risultati di ricerca'
+
+# Labels for the search box
+  search: "ricerca"
+  search_label: 'inserisci i tuoi termini di ricerca'
+
+# Labels for the navigation bar
+  everything: "risultati nel sito"
+  images: "immagini"
+  videos: "videos"
+  show_more: 'altro'
+
+# Labels to change the sort order by date or relevance
+  by_date: 'più recente'
+  by_relevance: 'miglior risultato'
+
+# Labels to narrow results by a preset timeframe or a custom date range, or clear filters ('Before' is the label for custom date range with only a 'To' date set.)
+  refine_your_search:
+  all_time: "sempre"
+  last_hour: "ultima ora"
+  last_day: "ultimo giorno"
+  last_week: "ultima settimana"
+  last_month: "ultimo mese"
+  last_year: "ultimo anno"
+  custom_range: 'periodo personalizzato'
+  from: 'da'
+  to: 'a'
+  cdr_format: '%m/%d/%Y'
+  before: 'prima'
+  clear: 'cancella'
+
+# Prompts for spelling, spelling overrides, and did you mean suggestions
+  showing_results_for: mostrare i risultati per %{corrected_query}
+  search_instead_for: ricerca per %{original_query}
+
+# Prompts for searchers to revise or refine search
+  no_results_for_and_try: "spiacente, nessun risultato per '%{query}'. prova ad inserire meno o più ampi parametri di ricerca"
+  too_long: "i tuoi parametri di ricerca sono troppo lunghi. Prova ad usare una frase più corta:"
+  empty_query: "per cortesia entra un parametro di ricerca nel box sopra."
+
+# Labels for inline best bets, news, and related searches modules
+  recommended: "raccomandati"
+  default_rss_govbox_label: 'notizie'
+  related_searches: "ricerche correlate"
+
+# Labels for paging through results
+  page: 'pagina'
+  prev_label: "precedente"
+  next_label: "prossimo"
+
+  searches:
+    by: al
+# Prompt for searchers to skip to main content (most easily seen by tabbing through results page)
+    skip_to_main_content: salta al contenuto principale
+# Labels for navigation bar "sections" (most easily seen on mobile dimension)
+    menu: menu
+    browse_site: naviga nel sito
+    related_sites: leggi argomento
+    results_count: '%{count}'
+    search_results: risultati di ricerca
+# Prompts for searchers to view more results from Bing/Google after reaching page n of Search.gov results
+    commercial_results:
+      find_what_looking_for:
+      see_more_web_results: "%{link} vedere più risultati"
+      see_more_image_results: "I risultati qui sopra sono dai nostri Social Media %{link} per vedere i risultati dal nostro sito web (puoi vedere risultati già visti)"
+      search_again: riprova la ricerca
+# Prompts for searchers to view more results from the broader website after initially seeing site-scoped results
+    site_limits:
+      including_results_for_query_from_matching_sites: includiamo i risultati per %{query} da %{matching_sites} solo.
+      do_you_want_to_see_results_for: vuoi vedere i risultati per %{query_from_all_sites}?
+      query_from_all_sites: '%{query} da tutti i siti'
+# Label for inline news module and prompt to see more news on news vertical
+    more_news_about_query: 'più %{news_label} circa %{query}'
+    news_about_query: '%{news_label} circa %{query}'
+    news_search_options:
+      date_format: 'm/d/yyyy'
+# Label for attributing results to Bing, Search.gov, or Google
+  powered_by: 'offerto da'
+
+# Prompts for searchers to expand/collapse the number of best bets visible on the results page
+  show_more_label: 'mostrane altri'
+  show_less_label: 'mostrane meno'
+
+# Date format used in custom date range picker and other places
+  date:
+    formats:
+      slashes: "%-m/%-d/%Y"
+
+# Labels for news-based results indicating how long ago they were published
+  datetime:
+    time_ago_in_words:
+      half_a_minute: "mezzo minuto fa"
+      less_than_x_seconds:
+        one:   "meno di un secondo fa"
+        other: "meno di %{count} secondi fa"
+      x_seconds:
+        one:   "преди една секунда"
+        other: "%{count} secondi fa"
+      less_than_x_minutes:
+        one:   "meno di un minuto fa"
+        other: "meno di %{count} minuti fa"
+      x_minutes:
+        one:   "1 minuto fa"
+        other: "%{count} minuti fa"
+      about_x_hours:
+        one:   "circa un ora fa"
+        other: "circa %{count} ore fa"
+      x_days:
+        one:   "1 giorno fa"
+        other: "%{count} giorni fa"
+      about_x_months:
+        one:   "circa un mese fa"
+        other: "circa %{count} mesi fa"
+      x_months:
+        one:   "1 mese fa"
+        other: "%{count} mesi fa"
+      about_x_years:
+        one:   "circa un anno fa"
+        other: "circa %{count} anni fa"
+      over_x_years:
+        one:   "più di un anno fa"
+        other: "più di %{count} anni fa"
+      almost_x_years:
+        one:   "circa un anno fa"
+        other: "circa un %{count} anni fa"
+
+# Text for page captcha challenge, which is shown if bot-like search patterns are detected
+  are_you_human:
+  captcha_requires_javascript:

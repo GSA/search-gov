@@ -1,0 +1,134 @@
+be:
+
+# Search.gov localizations for: Belarusian (be)
+
+# Default page title of search results page
+  default_serp_title: '%{query} - %{site_name} Вынікі пошуку'
+
+# Labels for the search box
+  search: "Пошук"
+  search_label: 'Увядзіце тэрмін для пошуку'
+
+# Labels for the navigation bar
+  everything: "Вынікі па сайту"
+  images: "Выявы"
+  videos: "відэа"
+  show_more: 'Больш'
+
+# Labels to change the sort order by date or relevance
+  by_date: 'Нядаўнія'
+  by_relevance: 'Найбольш адпаведныя'
+
+# Labels to narrow results by a preset timeframe or a custom date range, or clear filters ('Before' is the label for custom date range with only a 'To' date set.)
+  refine_your_search:
+  all_time: "Заўсёды"
+  last_hour: "Апошняя гадзіна"
+  last_day: "Апошні дзень"
+  last_week: "Апошні тыдзень"
+  last_month: "Апошні месяц"
+  last_year: "Апошні год"
+  custom_range: 'Параметры пошуку'
+  from: 'Ад'
+  to: 'Да'
+  cdr_format: '%m/%d/%Y'
+  before: 'Перад'
+  clear: 'Ачысціць'
+
+# Prompts for spelling, spelling overrides, and did you mean suggestions
+  showing_results_for: Паказаць вынікі за %{corrected_query}
+  search_instead_for: Замест гэтага шукаць за %{original_query}
+
+# Prompts for searchers to revise or refine search
+  no_results_for_and_try: "На жаль, нама вынікаў за '%{query}'. Паспрабуйце выкарыстаць больш агульныя тэрміны альбо меней тэрмінаў."
+  too_long: "Ваш тэрмін занадта даўгі. Паспрабуйце задаць больш кароткае слова або фразу:"
+  empty_query: "Увядзіце тэрмін для пошуку ў поле зверху."
+
+# Labels for inline best bets, news, and related searches modules
+  recommended: "Рэкамендавана"
+  default_rss_govbox_label: 'Навіны'
+  related_searches: "Звязаныя запыты"
+
+# Labels for paging through results
+  page: 'Старонка'
+  prev_label: "Пяпярэдняя"
+  next_label: "Наступная"
+  
+  searches:
+    by: от
+# Prompt for searchers to skip to main content (most easily seen by tabbing through results page)
+    skip_to_main_content: Перайсці да асноўнага зместу
+# Labels for navigation bar "sections" (most easily seen on mobile dimension)
+    menu: Меню
+    browse_site: Прагледзець сайт
+    related_sites: Прагляд тэмы
+    results_count: '%{count}'
+    search_results: Вынікі пошуку
+# Prompts for searchers to view more results from Bing/Google after reaching page n of Search.gov results
+    commercial_results:
+      find_what_looking_for:
+      see_more_web_results: "%{link} Глядзець вынікі з нашага сайта"
+      see_more_image_results: "Паказваюцца вынікі з нашых старонак у сацыяльных сетках і галерэй %{link} Глядзець больш вынікаў (Выможаце бачыць некаторыя раней прагледжаныя вынікі)"
+      search_again: Паўтарыце запыт
+# Prompts for searchers to view more results from the broader website after initially seeing site-scoped results
+    site_limits:
+      including_results_for_query_from_matching_sites: Уключна з вынікамі за %{query} Ад %{matching_sites} Толькі.
+      do_you_want_to_see_results_for: Жадаеце бачыць вынікі за  %{query_from_all_sites}?
+      query_from_all_sites: '%{query} З усіх сайтаў'
+# Label for inline news module and prompt to see more news on news vertical
+    more_news_about_query: 'Още %{news_label} Больш %{query}'
+    news_about_query: '%{news_label} Пра %{query}'
+    news_search_options:
+      date_format: 'm/d/yyyy'
+# Label for attributing results to Bing, Search.gov, or Google
+  powered_by: 'Падтрымліваецца'
+
+# Prompts for searchers to expand/collapse the number of best bets visible on the results page
+  show_more_label: 'Паказаць болей'
+  show_less_label: 'Паказаць меней'
+
+# Date format used in custom date range picker and other places
+  date:
+    formats:
+      slashes: "%-m/%-d/%Y"
+
+# Labels for news-based results indicating how long ago they were published
+  datetime:
+    time_ago_in_words:
+      half_a_minute: "паўхвіліны таму"
+      less_than_x_seconds:
+        one:   "менш за 1 секунду таму"
+        other: "менш за %{count} некалькі секунд таму"
+      x_seconds:
+        one:   "1 секунду таму"
+        other: "%{count} некалькі секунд таму"
+      less_than_x_minutes:
+        one:   "менш хвіліны таму"
+        other: "менш за %{count} некалькі хвілін таму"
+      x_minutes:
+        one:   "1 хвіліну таму"
+        other: "%{count} некалькі хвілін таму"
+      about_x_hours:
+        one:   "каля 1 гадзіны таму"
+        other: "преди %{count}  некалькі гадзін таму"
+      x_days:
+        one:   "1 дзень таму"
+        other: "%{count} некалькі дзён таму"
+      about_x_months:
+        one:   "каля 1 месяца таму"
+        other: "каля %{count} некалькі месяцаў таму"
+      x_months:
+        one:   "1 месяц таму"
+        other: "%{count} некалькі месяцаў таму"
+      about_x_years:
+        one:   "каля 1 года таму"
+        other: "каля %{count} некалькі год таму"
+      over_x_years:
+        one:   "больш за 1 год таму"
+        other: "больш за %{count} некалькі год таму"
+      almost_x_years:
+        one:   "амаль 1 год таму"
+        other: "амаль %{count} некалькі год таму"
+
+# Text for page captcha challenge, which is shown if bot-like search patterns are detected
+  are_you_human:
+  captcha_requires_javascript:

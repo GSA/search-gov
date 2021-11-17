@@ -957,15 +957,16 @@ describe Affiliate do
   end
 
   describe '#enable_video_govbox!' do
-    let(:affiliate) { affiliates(:gobiernousa_affiliate) }
+    let(:affiliate) { affiliates(:russian_affiliate) }
+
     before do
       youtube_profile = youtube_profiles(:whitehouse)
       affiliate.youtube_profiles << youtube_profile
       affiliate.enable_video_govbox!
     end
 
-    it 'should localize "Videos" for the name of the RSS feed' do
-      expect(affiliate.rss_feeds.last.name).to eq('Vídeos')
+    it 'localizes "Videos" for the name of the RSS feed' do
+      expect(affiliate.rss_feeds.last.name).to eq('видео')
     end
   end
 

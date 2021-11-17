@@ -129,3 +129,9 @@ affiliate_for_user_with_default_site:
   <<: *DEFAULTS
   display_name: Default Site
   name: default_site
+
+russian_affiliate:
+  <<: *DEFAULTS
+  display_name: Russian Affiliate
+  name: russian_affiliate
+  locale: ru

@@ -1,0 +1,135 @@
+ru: 
+
+# Search.gov localizations for: Russian (ru)
+
+# Default page title of search results page
+  default_serp_title: '%{query} - %{site_name} Результаты поиска'
+
+# Labels for the search box
+  search: "Поиск"
+  search_label: 'Введите искомый термин'
+
+# Labels for the navigation bar
+  everything: "Результаты сайта"
+  images: "Изображения"
+  videos: "видео"
+  show_more: 'Больше'
+
+# Labels to change the sort order by date or relevance
+  by_date: 'Самые свежие'
+  by_relevance: 'Наилучшее соответствие'
+
+# Labels to narrow results by a preset timeframe or a custom date range, or clear filters ('Before' is the label for custom date range with only a 'To' date set.)
+  refine_your_search:
+  all_time: "За все время"
+  last_hour: "За последний час"
+  last_day: "За последний день"
+  last_week: "За последнюю неделю"
+  last_month: "За последний месяц"
+  last_year: "За последний год"
+  custom_range: 'За период'
+  from: 'От'
+  to: 'До'
+  cdr_format: '%d/%m/%Y'
+  before: 'До'
+  clear: 'Очистить'
+
+# Prompts for spelling, spelling overrides, and did you mean suggestions
+  showing_results_for: Показаны результаты по запросу %{corrected_query}
+  search_instead_for: Искать вместо этого %{original_query}
+
+# Prompts for searchers to revise or refine search
+  no_results_for_and_try: "Извините, не найдено результатов по запросу.'%{query}' Попробуйте ввести меньше поисковых терминов или более широкие термины"
+  too_long: "Ваш поисковый запрос слишком длинный. Попробуйте еще раз, используя более короткое слово или фразу."
+  empty_query: "Пожалуйста, введите слово для поиска в поле выше."
+
+# Labels for inline best bets, news, and related searches modules
+  recommended: "Рекомендуемые"
+  default_rss_govbox_label: 'Новости'
+  related_searches: "Похожие запросы"
+
+# Labels for paging through results
+  page: 'Страница'
+  prev_label: "Предыдущий"
+  next_label: "Следующий"
+
+  searches:
+    by: по
+# Prompt for searchers to skip to main content (most easily seen by tabbing through results page)
+    skip_to_main_content: Перейти к основному содержанию
+# Labels for navigation bar "sections" (most easily seen on mobile dimension)
+    menu: Меню
+    browse_site: Просмотр сайта
+    related_sites: Просмотр темы
+    results_count: '%{count}'
+    search_results: Результаты поиска
+# Prompts for searchers to view more results from Bing/Google after reaching page n of Search.gov results
+    commercial_results:
+      find_what_looking_for:
+      see_more_web_results: "%{link} чтобы увидеть больше результатов"
+      see_more_image_results: "Приведенные выше результаты – из наших аккаунтов в социальных медиа и галерей. чтобы увидеть результаты с нашего веб-сайта (Вы можете увидеть некоторые результаты, которые вы уже видели.)"
+      search_again: Попробуйте поискать снова
+# Prompts for searchers to view more results from the broader website after initially seeing site-scoped results
+    site_limits:
+      including_results_for_query_from_matching_sites: Мы включили результаты по запросу. %{query} от %{matching_sites} только.
+      do_you_want_to_see_results_for: Вы хотите увидеть результаты по запросу %{query_from_all_sites}?
+      query_from_all_sites: '%{query} со всех сайтов'
+
+# Label for inline news module and prompt to see more news on news vertical
+    more_news_about_query: 'Больше %{news_label} o %{query}'
+    news_about_query: '%{news_label} sobre %{query}'
+    news_search_options:
+      date_format: 'm/d/yyyy'
+# Label for attributing results to Bing, Search.gov, or Google
+  powered_by: 'При поддержке поисковой системы'
+
+# Prompts for searchers to expand/collapse the number of best bets visible on the results page
+  show_more_label: 'Показать больше'
+  show_less_label: 'Показать меньше'
+
+# Date format used in custom date range picker and other places
+  date:
+    formats:
+      slashes: "%-d/%-m/%Y"
+
+# Labels for news-based results indicating how long ago they were published
+  datetime:
+    time_ago_in_words:
+      half_a_minute: "полминуты назад"
+      less_than_x_seconds:
+        one:   "менее 1 секунды назад"
+        other: "менее чем %{count} секунд назад"
+      x_seconds:
+        one:   "1 секунду назад"
+        other: "%{count} секунд назад"
+      less_than_x_minutes:
+        one:   "менее минуты назад"
+        other: "%{count} минут назад"
+      x_minutes:
+        one:   "1 минуту назад"
+        other: "%{count} минут назад"
+      about_x_hours:
+        one:   "около 1 часа назад"
+        other: "%{count} часов назад"
+      x_days:
+        one:   "1 день назад"
+        other: "%{count} часов назад"
+      about_x_months:
+        one:   "около 1 месяца назад"
+        other: "%{count} месяцев назад"
+      x_months:
+        one:   "1 месяц назад"
+        other: "%{count} месяцев назад"
+      about_x_years:
+        one:   "около 1 года назад"
+        other: "%{count} лет назад"
+      over_x_years:
+        one:   "более 1 года назад"
+        other: "%{count} лет назад"
+      almost_x_years:
+        one:   "почти 1 год назад"
+        other: "%{count} лет назад"
+
+# Text for page captcha challenge, which is shown if bot-like search patterns are detected
+  are_you_human:
+  captcha_requires_javascript:

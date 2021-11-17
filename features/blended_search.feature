@@ -46,7 +46,7 @@ Feature: Blended Search
     Then I should see "Everything" within the SERP active navigation
     And I should see "Any time" within the current time filter
     And I should see "Best match" within the current sort by filter
-    And I should see "11 RESULTS"
+    And I should see "11 results"
     And I should see "<i> item </i> First news item for the feed"
     And I should see "item Next news item for the feed"
     And I should see "item first Stale news item"
@@ -62,7 +62,7 @@ Feature: Blended Search
     Then the "Enter your search term" field should contain "items"
     And I should see "Last year" within the current time filter
     And I should see "Best match" within the current sort by filter
-    And I should see "9 RESULTS"
+    And I should see "9 results"
     And I should see "<i> item </i> First news item for the feed"
     And I should see "The last hour article"
     And I should see "The last year article"
@@ -71,7 +71,7 @@ Feature: Blended Search
     Then the "Enter your search term" field should contain "items"
     And I should see "Last year" within the current time filter
     And I should see "Most recent" within the current sort by filter
-    And I should see "9 RESULTS"
+    And I should see "9 results"
     And I should see "<i> item </i> First news item for the feed"
     And I should see "The last hour article"
     And I should see "The last year article"
@@ -80,26 +80,26 @@ Feature: Blended Search
     Then the "Enter your search term" field should contain "items"
     And I should see "Last year" within the current time filter
     And I should see "Best match" within the current sort by filter
-    And I should see "9 RESULTS"
+    And I should see "9 results"
 
     And I fill in "Enter your search term" with "last"
     And I press "Search" within the search box
     And I should see "Last year" within the current time filter
     And I should see "Best match" within the current sort by filter
-    And I should see "6 RESULTS"
+    And I should see "6 results"
 
     When I follow "Clear"
     Then the "Enter your search term" field should contain "last"
     And I should see "Any time" within the current time filter
     And I should see "Best match" within the current sort by filter
-    And I should see "7 RESULTS"
+    And I should see "7 results"
 
     When I fill in "Enter your search term" with "body"
     And I press "Search" within the search box
     Then the "Enter your search term" field should contain "body"
     And I should see "Any time" within the current time filter
     And I should see "Best match" within the current sort by filter
-    And I should see "3 RESULTS"
+    And I should see "3 results"
     Then I should see "first news item body"
     And I should see "next news item body"
     And I should see "stale news item body"
@@ -168,7 +168,7 @@ Feature: Blended Search
     And I should see "Sep 30, 2012 - Oct 15, 2012" within the current time filter
     And I should see "Best match" within the current sort by filter
     And I should see a link to "Clear"
-    And I should see "2 RESULTS"
+    And I should see "2 results"
     And the "From" field should contain "9/30/2012"
     And the "To" field should contain "10/15/2012"
     And I should see a link to "Third item" with url for "http://www.whitehouse.gov/news/3"
@@ -179,7 +179,7 @@ Feature: Blended Search
     And I should see "Sep 30, 2012 - Oct 15, 2012" within the current time filter
     And I should see "Most recent" within the current sort by filter
     And I should see a link to "Clear"
-    And I should see "2 RESULTS"
+    And I should see "2 results"
     And the "From" field should contain "9/30/2012"
     And the "To" field should contain "10/15/2012"
     And I should see a link to "Third item" with url for "http://www.whitehouse.gov/news/3"
@@ -214,7 +214,7 @@ Feature: Blended Search
     When I am on es.agency.gov's search page
     And I fill in "Ingrese su búsqueda" with "item"
     And I press "Buscar" within the search box
-    Then I should see "8 RESULTADOS"
+    Then I should see "8 resultados"
 
     When I fill in "Desde" with "30/9/2012"
     And I fill in "Hasta" with "15/10/2012"
@@ -222,7 +222,7 @@ Feature: Blended Search
     Then the "Ingrese su búsqueda" field should contain "item"
     And I should see "sep 30, 2012 - oct 15, 2012" within the current time filter
     And I should see "Más relevantes" within the current sort by filter
-    And I should see "2 RESULTADOS"
+    And I should see "2 resultados"
     And the "Desde" field should contain "30/9/2012"
     And the "Hasta" field should contain "15/10/2012"
     And I should see a link to "Fifth Spanish item" with url for "http://www.gobiernousa.gov/news/5"
@@ -241,7 +241,7 @@ Feature: Blended Search
     Then the "Ingrese su búsqueda" field should contain "item"
     And I should see "Cualquier fecha" within the current time filter
     And I should see "Más recientes" within the current sort by filter
-    And I should see "8 RESULTADOS"
+    And I should see "8 resultados"
 
     When I fill in "Desde" with "30/9/2012"
     And I fill in "Hasta" with "15/10/2012"
@@ -251,7 +251,7 @@ Feature: Blended Search
     And the "Ingrese su búsqueda" field should contain "item"
     And I should see "Cualquier fecha" within the current time filter
     And I should see "Más relevantes" within the current sort by filter
-    Then I should see "8 RESULTADOS"
+    Then I should see "8 resultados"
 
   Scenario: User misspells a query
     Given the following Affiliates exist:

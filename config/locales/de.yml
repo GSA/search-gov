@@ -1,0 +1,132 @@
+de:
+
+# Search.gov localizations for: German (de)
+
+# Default page title of search results page
+  default_serp_title: '%{query} - %{site_name} Suchergebnisse'
+
+# Labels for the search box
+  search: "Suchen"
+  search_label: 'Suchbegriff(e) eingeben'
+
+# Labels for the navigation bar
+  everything: "Suchergebnisse auf dieser Website"
+  images: "Bilder"
+  videos: "Videos"
+  show_more: 'Mehr'
+
+# Labels to change the sort order by date or relevance
+  by_date: 'nach Aktualität'
+  by_relevance: 'höchste Übereinstimmung'
+
+# Labels to narrow results by a preset timeframe or a custom date range, or clear filters ('Before' is the label for custom date range with only a 'To' date set.)
+  refine_your_search:
+  all_time: "alles"
+  last_hour: "vor einer Stunde"
+  last_day: "vor einem Tag"
+  last_week: "vor einer Woche"
+  last_month: "vor einem Monat"
+  last_year: "vor einem Jahr"
+  custom_range: 'benutzerdefinierter Zeitraum'
+  from: 'von'
+  to: 'bis'
+  cdr_format: '%m/%d/%Y'
+  before: 'vor'
+  clear: 'Zurücksetzen'
+
+# Prompts for spelling, spelling overrides, and did you mean suggestions
+  showing_results_for: Suchergebnisse für %{corrected_query}
+  search_instead_for: Suchen Sie stattdessen nach %{original_query}
+
+# Prompts for searchers to revise or refine search
+  no_results_for_and_try: "Leider ergab Ihre Suche nach '%{query}' keine Treffer. Versuchen Sie, weniger oder allgemeinere Suchbegriffe einzugeben."
+  too_long: "Ihr Suchbegriff ist zu lang. Bitte versuchen Sie es mit einer kürzeren Eingabe:"
+  empty_query: "Geben Sie einen Suchbegriff in das Feld oben ein."
+
+# Labels for inline best bets, news, and related searches modules
+  recommended: "Suchtipps"
+  default_rss_govbox_label: 'Nachrichten'
+  related_searches: "ähnliche Suchvorgänge"
+
+# Labels for paging through results
+  page: 'Seite'
+  prev_label: "zurück"
+  next_label: "weiter"
+  searches:
+    by: auf 
+# Prompt for searchers to skip to main content (most easily seen by tabbing through results page)
+    skip_to_main_content: Zum Hauptteil
+# Labels for navigation bar "sections" (most easily seen on mobile dimension)
+    menu: Menü
+    browse_site: Website durchsuchen
+    related_sites: mehr zum diesem Thema
+    results_count: '%{count}'
+    search_results: Suchergebnisse
+# Prompts for searchers to view more results from Bing/Google after reaching page n of Search.gov results
+    commercial_results:
+      find_what_looking_for:
+      see_more_web_results: "%{link} um mehr Ergebnisse zu sehen"
+      see_more_image_results: "Die Suchergebnisse oben verweisen auf unsere sozialen Medien und Alben. %{link} Ergebnisse auf unserer Website (Es werden möglicherweise Ergebnisse angezeigt, die Sie bereits gesehen haben.)"
+      search_again: Versuchen Sie es erneut.
+# Prompts for searchers to view more results from the broader website after initially seeing site-scoped results
+    site_limits:
+      including_results_for_query_from_matching_sites: Angezeigt werden auch Suchergebnisse für %{query} auf %{matching_sites} nur.
+      do_you_want_to_see_results_for: Möchten Sie die Ergebnisse für %{query_from_all_sites} sehen?
+      query_from_all_sites: '%{query} auf allen Websites'
+# Label for inline news module and prompt to see more news on news vertical
+    more_news_about_query: 'mehr %{news_label} zum Thema %{query}'
+    news_about_query: '%{news_label} zum Thema %{query}'
+    news_search_options:
+      date_format: 'm/d/yyyy'
+# Label for attributing results to Bing, Search.gov, or Google
+  powered_by: 'powered by'
+
+# Prompts for searchers to expand/collapse the number of best bets visible on the results page
+  show_more_label: 'mehr anzeigen'
+  show_less_label: 'weniger anzeigen'
+
+# Date format used in custom date range picker and other places
+  date:
+    formats:
+      slashes: "%-m/%-d/%Y"
+# Labels for news-based results indicating how long ago they were published
+  datetime:
+    time_ago_in_words:
+      half_a_minute: "vor 30 Sekunden"
+      less_than_x_seconds:
+        one:   "vor weniger als einer Sekunde"
+        other: "weniger als %{count} einigen Sekunden"
+      x_seconds:
+        one:   "vor einer Sekunde"
+        other: "%{count} einigen Sekunden"
+      less_than_x_minutes:
+        one:   "vor weniger als einer Minute"
+        other: "weniger als %{count} einigen Minuten"
+      x_minutes:
+        one:   "vor einer Minute"
+        other: "%{count} einigen Minuten"
+      about_x_hours:
+        one:   "vor einer Stunde"
+        other: "vor %{count} einigen Stunden"
+      x_days:
+        one:   "gestern"
+        other: "%{count} einigen Tagen"
+      about_x_months:
+        one:   "ungefähr vor einem Monat"
+        other: "vor %{count} einigen Monaten"
+      x_months:
+        one:   "vor einem Monat"
+        other: "%{count} einigen Monaten"
+      about_x_years:
+        one:   "vor ungefähr einem Jahr"
+        other: "vor %{count} einigen Jahren"
+      over_x_years:
+        one:   "vor mehr als einem Jahr"
+        other: "vor mehr als %{count} einem Jahr"
+      almost_x_years:
+        one:   "vor fast einem Jahr"
+        other: "vor fast %{count} einem Jahr"
+
+# Text for page captcha challenge, which is shown if bot-like search patterns are detected
+  are_you_human:
+  captcha_requires_javascript:

@@ -1,0 +1,138 @@
+tg:
+
+# Search.gov localizations for: Tajik (tg)
+
+# Default page title of search results page
+  default_serp_title: '%{query} - %{site_name} Натиҷаи ҷустуҷӯ'
+
+# Labels for the search box
+  search: "Ҷустуҷӯ"
+  search_label: 'Калимаи ҷустуҷӯиро ворид намоед'
+
+# Labels for the navigation bar
+  everything: "Ҷавоби сомона"
+  images: "Аксҳо"
+  videos: "Видеоҳо"
+  show_more: 'Бештар'
+
+# Labels to change the sort order by date or relevance
+  by_date: 'IАз охиронҳо'
+  by_relevance: 'Беҳтарин муносиб'
+
+# Labels to narrow results by a preset timeframe or a custom date range, or clear filters ('Before' is the label for custom date range with only a 'To' date set.)
+  refine_your_search:
+  all_time: "Ҳамеша"
+  last_hour: "Соати гузашта"
+  last_day: "Рӯзи гузашта"
+  last_week: "Ҳафтаи гузашта"
+  last_month: "Моҳи гузашта"
+  last_year: "Cоли гузашта"
+  custom_range: 'Доираи одатӣ'
+  from: 'Аз ҷониби'
+  to: 'Ба'
+# It's safe to modify the order of these (e.g., '%m/%d/%Y'), but do not localize the Latin letters 'd', 'm', or 'Y'. Do not change the case of the letters.
+  cdr_format: '%m/%d/%Y'
+  before: 'Пеш аз'
+  clear: 'Пок кардан'
+
+# Prompts for spelling, spelling overrides, and did you mean suggestions
+  showing_results_for: Натоиҷи ҷустуҷӯ барои  %{corrected_query}
+  search_instead_for: Ҷустуҷӯи ... Ба ҷои %{original_query}
+
+# Prompts for searchers to revise or refine search
+  no_results_for_and_try: "Мутассифона, натоиҷи ҷустуҷӯ барои ... ёфт нашуд.'%{query}' Калимаҳои камтар ё пурмазмунтар ворид намоед"
+  too_long: "Дархости Шумо дароз аст. Бори дигар калима ё ибораҳои кӯтоҳтар истифода баред."
+  empty_query: "Лутфан, дархости ҷустуҷӯро дар қуттии боло ворид намоед ."
+
+# Labels for inline best bets, news, and related searches modules
+  recommended: "Тавсиядодашуда"
+  default_rss_govbox_label: 'Маълумотҳо'
+  related_searches: "Ҷустуҷӯҳои монанд"
+
+# Labels for paging through results
+  page: 'Саҳифа'
+  prev_label: "Пешакӣ"
+  next_label: "Баъдӣ"
+
+  searches:
+    by: Тариқи
+# Prompt for searchers to skip to main content (most easily seen by tabbing through results page)
+    skip_to_main_content: Ба мундариҷаи асосӣ гузаред
+# Labels for navigation bar "sections" (most easily seen on mobile dimension)
+    menu: Меню
+    browse_site: Аз назаргузаронии сомона
+    related_sites: Аз назаргузаронии мавзӯъ
+    results_count: '%{count}'
+    search_results: Натоиҷи ҷустуҷӯ
+# Prompts for searchers to view more results from Bing/Google after reaching page n of Search.gov results
+    commercial_results:
+      find_what_looking_for:
+      see_more_web_results: "%{link} Барои дидани натиҷаи бештар (Мумкин натиҷаи қаблиро бинед)"
+      see_more_image_results: "Натоиҷи зикршуда аз ҳисоби медиаи иҷтимоӣ ё галлереяи мо ҳаст. Барои дидани натиҷа аз сомонаи мо (Мумкин натиҷаи қаблиро бинед)"
+      search_again: Дархости ҷустуҷӯро такрор намоед
+# Prompts for searchers to view more results from the broader website after initially seeing site-scoped results
+    site_limits:
+      including_results_for_query_from_matching_sites: Иловаи натоиҷи ҷустуҷӯ барои . %{query} Аз %{matching_sites} Фақат.
+      do_you_want_to_see_results_for: Мехоҳед натоиҷ барои ... бинед %{query_from_all_sites}?
+      query_from_all_sites: '%{query} Аз тамоми сомонаҳо'
+# Label for inline news module and prompt to see more news on news vertical
+    more_news_about_query: 'Бештар %{news_label} Дар бораи %{query}'
+    news_about_query: '%{news_label} Дар бораи %{query}'
+    news_search_options:
+# It's safe to modify the order of these (e.g., 'm/d/yyyy'), but do not localize 'd', 'm', or 'yyyy' or change the case of the letters.
+      date_format: 'd/m/yyyy'
+
+# Label for attributing results to Bing, Search.gov, or Google
+  powered_by: 'Сохта шудааст'
+
+# Prompts for searchers to expand/collapse the number of best bets visible on the results page
+  show_more_label: 'Намоиши бештар'
+  show_less_label: 'Намоиши камтар'
+
+# Date format used in custom date range picker and other places
+  date:
+    formats:
+# It's safe to modify the order of these (e.g., '%-d/%-m/%Y'), but do not localize 'd', 'm', or 'Y' or remove the dashes. Do not change the case of the letters.
+      slashes: "%-m/%-d/%Y"
+
+# Labels for news-based results indicating how long ago they were published
+  datetime:
+    time_ago_in_words:
+      half_a_minute: "Ним дақиқа пештар"
+      less_than_x_seconds:
+        one:   "Кам аз як сония пеш"
+        other: "Кам аз %{count} Сонияҳо пештар"
+      x_seconds:
+        one:   "Як сония пештар"
+        other: "%{count} Кам аз"
+      less_than_x_minutes:
+        one:   "Кам аз як дақиқа пеш"
+        other: "Дақиқаҳо пештар"
+      x_minutes:
+        one:   "Як дақиқа пеш"
+        other: "%{count} Дақиқаҳо пештар"
+      about_x_hours:
+        one:   "Тақрибан як соат пештар"
+        other: "Соатҳо пештар %{count} "
+      x_days:
+        one:   "Як рӯз пештар"
+        other: "%{count}Рӯзҳо пештар"
+      about_x_months:
+        one:   "Тақрибан як моҳ пештар"
+        other: "Моҳҳо пештар %{count} "
+      x_months:
+        one:   "Як моҳ пеш"
+        other: "%{count} Моҳҳо пештар"
+      about_x_years:
+        one:   "Тақрибан як сол пеш"
+        other: "Солҳо пештар %{count}"
+      over_x_years:
+        one:   "Аз як сол зиёд"
+        other: "Солҳо пештар %{count}"
+      almost_x_years:
+        one:   "Тақрибан як сол пеш"
+        other: "Солҳо пештар %{count}"
+
+# Text for page captcha challenge, which is shown if bot-like search patterns are detected
+  are_you_human:
+  captcha_requires_javascript:

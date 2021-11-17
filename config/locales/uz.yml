@@ -1,0 +1,138 @@
+uz:
+
+# Search.gov localizations for: Uzbek (uz)
+
+# Default page title of search results page
+  default_serp_title: '%{query} - %{site_name} Қидирув натижалари'
+
+# Labels for the search box
+  search: "Қидирув"
+  search_label: 'Қидирув сўз(лар)ини киритиш'
+
+# Labels for the navigation bar
+  everything: "Сайт натижалари"
+  images: "Тасвирлар"
+  videos: "Видео"
+  show_more: 'Кўпроқ'
+
+# Labels to change the sort order by date or relevance
+  by_date: 'Энг сўнгги'
+  by_relevance: 'Энг моси'
+
+# Labels to narrow results by a preset timeframe or a custom date range, or clear filters ('Before' is the label for custom date range with only a 'To' date set.)
+  refine_your_search:
+  all_time: "Бутун вақт"
+  last_hour: "Охирги соат"
+  last_day: "Охирги кун"
+  last_week: "Ўтган ҳафта"
+  last_month: "Ўтган ой"
+  last_year: "Ўтган йил"
+  custom_range: 'Сиз хоҳлаган оралиқ'
+  from: '...дан'
+  to: '...гача'
+# It's safe to modify the order of these (e.g., '%m/%d/%Y'), but do not localize the Latin letters 'd', 'm', or 'Y'. Do not change the case of the letters.
+  cdr_format: '%Y/%m/%d'
+  before: 'олдин'
+  clear: 'Ўчириш'
+
+# Prompts for spelling, spelling overrides, and did you mean suggestions
+  showing_results_for: ... сўзи натижалари кўрсатилмоқда %{corrected_query}
+  search_instead_for: ... ўрнига ушбуни қидириш %{original_query}
+
+# Prompts for searchers to revise or refine search
+  no_results_for_and_try: "Узр, бу сўз натижалари топилмади '%{query}'. Қисқароқ ёки кенгроқ қидирув сўзларини киритиб кўрингN"
+  too_long: "Қидирув терминингиз жуда ҳам узун. Қисқароқ сўз ёки жумла билан қидириб кўринг"
+  empty_query: "Юқоридаги бўш жойга қидирув терминини киритинг."
+
+# Labels for inline best bets, news, and related searches modules
+  recommended: "Тавсия этилади"
+  default_rss_govbox_label: 'Янгиликлар'
+  related_searches: "TТегишли қидирувлар"
+
+# Labels for paging through results
+  page: 'Саҳифа'
+  prev_label: "Олдинги"
+  next_label: "Кейинги"
+
+  searches:
+    by: by
+# Prompt for searchers to skip to main content (most easily seen by tabbing through results page)
+    skip_to_main_content: Асосий таркибга ўтиш
+# Labels for navigation bar "sections" (most easily seen on mobile dimension)
+    menu: Меню
+    browse_site: Сайтни кўриб чиқиш
+    related_sites: Мавзуни кўриш
+    results_count: '%{count}'
+    search_results: Қидирув натижалари
+# Prompts for searchers to view more results from Bing/Google after reaching page n of Search.gov results
+    commercial_results:
+      find_what_looking_for:
+      see_more_web_results: "%{link} Кўпроқ натижаларни кўриш"
+      see_more_image_results: "Аввал кўрган айрим натижаларни кўришингиз мумкин %{link} Юқоридаги натижалар бизнинг ижтимоий тармоқ ва галереяларимиздан. (Веб саҳифамиздан топилган натижаларни кўриш)"
+      search_again: Бошқатдан қидириб кўринг
+# Prompts for searchers to view more results from the broader website after initially seeing site-scoped results
+    site_limits:
+      including_results_for_query_from_matching_sites: ... сўзи учун натижаларни қўшмоқдамиз %{query} ...дан %{matching_sites} фақат.
+      do_you_want_to_see_results_for: ...нинг натижаларини кўришни хоҳлайсизми? %{query_from_all_sites}?
+      query_from_all_sites: '%{query} ҳамма сайтлардан'
+# Label for inline news module and prompt to see more news on news vertical
+    more_news_about_query: 'TКўпроқ %{news_label} ҳақида %{query}'
+    news_about_query: '%{news_label} ҳақида %{query}'
+    news_search_options:
+# It's safe to modify the order of these (e.g., 'm/d/yyyy'), but do not localize 'd', 'm', or 'yyyy' or change the case of the letters.
+      date_format: 'yyyy/m/d'
+
+# Label for attributing results to Bing, Search.gov, or Google
+  powered_by: 'томонидан қўллаб-қувватланган'
+
+# Prompts for searchers to expand/collapse the number of best bets visible on the results page
+  show_more_label: 'Кўпроқ натижаларни кўриш'
+  show_less_label: 'Камроқ натижаларни кўриш'
+
+# Date format used in custom date range picker and other places
+  date:
+    formats:
+# It's safe to modify the order of these (e.g., '%-d/%-m/%Y'), but do not localize 'd', 'm', or 'Y' or remove the dashes. Do not change the case of the letters.
+      slashes: "%-m/%-d/%Y"
+
+# Labels for news-based results indicating how long ago they were published
+  datetime:
+    time_ago_in_words:
+      half_a_minute: "Ярим дақиқа аввал"
+      less_than_x_seconds:
+        one:   "1 сониядан озроқ олдин"
+        other: "...дан озроқ %{count} бир неча сония аввал"
+      x_seconds:
+        one:   "1 сония олдин"
+        other: "%{count} ...дан озроқ"
+      less_than_x_minutes:
+        one:   "бир дақиқадан озроқ олдин"
+        other: "...дан озроқN %{count} бир неча дақиқа аввал"
+      x_minutes:
+        one:   "1 дақиқа олдин"
+        other: "%{count} бир неча дақиқа аввал"
+      about_x_hours:
+        one:   "1 соатча олдин"
+        other: "бир неча соат аввал %{count} "
+      x_days:
+        one:   "1 кун олдин"
+        other: "%{count} бир неча кун аввалN"
+      about_x_months:
+        one:   "1 ойча олдин"
+        other: "бир неча ой аввал %{count} "
+      x_months:
+        one:   "1 ой олдин"
+        other: "%{count} бир неча ой аввал"
+      about_x_years:
+        one:   "1 йилча олдин"
+        other: "бир неча йил аввал %{count} бир неча йил аввал"
+      over_x_years:
+        one:   "1 йилдан кўпроқ вақт олдин"
+        other: "бир неча йил аввал %{count} бир неча йил аввал"
+      almost_x_years:
+        one:   "Tдеярли 1 йил олдин"
+        other: "бир неча йил аввал %{count} бир неча йил аввал"
+
+# Text for page captcha challenge, which is shown if bot-like search patterns are detected
+  are_you_human:
+  captcha_requires_javascript:
