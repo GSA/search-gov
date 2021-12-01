@@ -252,6 +252,9 @@ Rails.application.routes.draw do
         end
       end
     end
+
+    mount Resque::Server.new, at: '/resque', constraints: AffiliateAdminConstraint
+    get '/resque/(*all)', to: redirect(path: '/login')
   end
 
   match '/admin/affiliates/:id/analytics' => 'admin/affiliates#analytics', :as => :affiliate_analytics_redirect, via: :get
