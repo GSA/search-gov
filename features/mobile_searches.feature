@@ -456,7 +456,7 @@ Feature: Searches using mobile device
     And I fill in "Enter your search term" with "blablah jobs"
     And I press "Search"
     Then I should see an image link to "USAJobs.gov" with url for "https://www.usajobs.gov/"
-    And I should see "No job openings in your region match your query"
+    And I should see "No job openings in your region match your search"
     And I should see a link to "More federal job openings on USAJobs.gov" with url for "https://www.usajobs.gov/Search/Results?hp=public"
 
     When I am on es.agency.gov's search page

@@ -20,7 +20,7 @@ Feature: Search
     When I am on bar.gov's search page
     And I fill in "Enter your search term" with "foobarbazbiz"
     And I press "Search" within the search box
-    Then I should see "Sorry, no results found for 'foobarbazbiz'. Try entering fewer or broader query terms."
+    Then I should see "Sorry, no results found for 'foobarbazbiz'. Try entering fewer or more general search terms."
 
   Scenario: Searching a domain with Bing results that match a specific news item
     # ACHTUNG! This test will fail unless the news item URL matches a url returned by the web search.
@@ -56,12 +56,12 @@ Feature: Search
     Then I should see at least "2" web search results
 
     When I follow "Press" in the search navbar
-    Then I should see "Sorry, no results found for 'item'. Try entering fewer or broader query terms."
+    Then I should see "Sorry, no results found for 'item'. Try entering fewer or more general search terms."
 
     When I follow "Photo Gallery" in the search navbar
     Then I should see "item More news items for the feed"
     When I follow "Last day"
-    Then I should see "Sorry, no results found for 'item'. Try entering fewer or broader query terms."
+    Then I should see "Sorry, no results found for 'item'. Try entering fewer or more general search terms."
     When I follow "Clear"
     Then I should see at least "2" web search results
 
