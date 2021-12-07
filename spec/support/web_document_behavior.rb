@@ -14,12 +14,12 @@ shared_examples 'a web document' do
   describe 'initialization' do
     it 'requires a document' do
       expect { described_class.new(**valid_attributes.except(:document)) }
-        .to raise_error(ArgumentError, 'missing keyword: document')
+        .to raise_error(ArgumentError, /missing keyword: :?document/)
     end
 
     it 'requires a url' do
       expect { described_class.new(**valid_attributes.except(:url)) }
-        .to raise_error(ArgumentError, 'missing keyword: url')
+        .to raise_error(ArgumentError, /missing keyword: :?url/)
     end
   end
 
