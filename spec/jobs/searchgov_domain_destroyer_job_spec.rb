@@ -13,7 +13,7 @@ describe SearchgovDomainDestroyerJob do
   describe '#perform' do
     it 'requires a searchgov_domain as an argument' do
       expect{ described_class.perform_now }.
-        to raise_error(ArgumentError, 'missing keyword: searchgov_domain')
+        to raise_error(ArgumentError, /missing keyword: :?searchgov_domain/)
     end
 
     it 'destroys the searchgov domain' do
