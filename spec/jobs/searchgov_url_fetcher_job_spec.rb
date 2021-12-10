@@ -13,7 +13,7 @@ describe SearchgovUrlFetcherJob do
   describe '#perform' do
     it 'requires a searchgov_url' do
       expect { described_class.perform_now }.
-        to raise_error(ArgumentError, 'missing keyword: searchgov_url')
+        to raise_error(ArgumentError, /missing keyword: :?searchgov_url/)
     end
 
     it 'fetches a searchgov_url' do
