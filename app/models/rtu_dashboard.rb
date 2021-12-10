@@ -91,7 +91,7 @@ class RtuDashboard
 
   def top_n(query_body, index_date = nil)
     index = index_date || "#{logstash_prefix(@filter_bots)}#{@day.strftime("%Y.%m.%d")}"
-    ES::ELK.client_reader.search(
+    Es::ELK.client_reader.search(
       index: index,
       body: query_body,
       size: 0

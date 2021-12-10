@@ -45,7 +45,7 @@ class ElasticBlendedQuery < ElasticTextFilterByPublishedAtQuery
 
   def indices_boost(json)
     #TODO: use aliases when https://github.com/elasticsearch/elasticsearch/issues/4756 is fixed
-    index_names = ES::CustomIndices.client_reader.indices.get_alias(name: ElasticBlended.reader_alias.join(',')).keys.sort
+    index_names = Es::CustomIndices.client_reader.indices.get_alias(name: ElasticBlended.reader_alias.join(',')).keys.sort
     json.indices_boost do
       index_names.each_with_index do |index_name, idx|
         json.set! index_name, ElasticBlended::INDEX_BOOSTS[idx]

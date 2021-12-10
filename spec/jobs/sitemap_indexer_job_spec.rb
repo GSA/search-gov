@@ -9,6 +9,7 @@ describe SitemapIndexerJob do
   subject(:perform) { described_class.perform_now(args) }
 
   it_behaves_like 'a sitemap job'
+  it_behaves_like 'a unique job'
 
   it 'indexes the sitemap' do
     allow(SitemapIndexer).to receive(:new).with(args).and_return(indexer)

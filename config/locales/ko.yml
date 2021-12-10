@@ -1,0 +1,134 @@
+ko:
+
+# Search.gov localizations for: Korean (ko)
+
+# Default page title of search results page
+  default_serp_title: '%{query} - %{site_name} 검색결과'
+
+# Labels for the search box
+  search: "검색"
+  search_label: '검색어를 입력하세요'
+
+# Labels for the navigation bar
+  everything: "사이트 내 검색결과"
+  images: "이미지"
+  videos: "동영상"
+  show_more: '더 보기'
+
+# Labels to change the sort order by date or relevance
+  by_date: '가장 최근의'
+  by_relevance: '정확도 높은 검색결과'
+
+# Labels to narrow results by a preset timeframe or a custom date range, or clear filters ('Before' is the label for custom date range with only a 'To' date set.)
+  refine_your_search:
+  all_time: "모든 시간"
+  last_hour: "한 시간 이내"
+  last_day: "하루 이내"
+  last_week: "지난 주"
+  last_month: "지난 달"
+  last_year: "지난 해"
+  custom_range: '사용자 지정 범위'
+  from: '~로부터'
+  to: '~까지'
+  cdr_format: '%m/%d/%Y'
+  before: '~전'
+  clear: '삭제'
+
+# Prompts for spelling, spelling overrides, and did you mean suggestions
+  showing_results_for: ~에 대한 검색결과입니다 %{corrected_query}
+  search_instead_for: 대신 ~ 를 검색하세요 %{original_query}
+
+# Prompts for searchers to revise or refine search
+  no_results_for_and_try: "죄송합니다, ~에 해당하는 검색결과가 없습니다 '%{query}'. 더 적거나, 더 넓은 의미의 검색어를 입력해 주십시오"
+  too_long: "검색어가 지나치게 길어 검색이 어렵습니다 :"
+  empty_query: "상단 검색창에 검색어를 입력해 주십시오"
+
+# Labels for inline best bets, news, and related searches modules
+  recommended: "추천"
+  default_rss_govbox_label: '뉴스'
+  related_searches: "관련 검색어"
+
+# Labels for paging through results
+  page: '페이지'
+  prev_label: "이전"
+  next_label: "다음"
+
+  searches:
+    by: ~에
+# Prompt for searchers to skip to main content (most easily seen by tabbing through results page)
+    skip_to_main_content: 메인내용으로 이동하기
+# Labels for navigation bar "sections" (most easily seen on mobile dimension)
+    menu: 메뉴
+    browse_site: 사이트 둘러보기
+    related_sites: 주제 보기
+    results_count: '%{count}'
+    search_results: 검색결과
+# Prompts for searchers to view more results from Bing/Google after reaching page n of Search.gov results
+    commercial_results:
+      find_what_looking_for:
+      see_more_web_results: "%{link} 더 많은 결과보기"
+      see_more_image_results: "상단의  검색결과는 저희 소셜 미디어 계정과 갤러리로부터 나왔습니다 %{link} 저희 웹사이트에서 검색결과 보기 (이미 본 결과를 다시 보실 수도 있습니다.)"
+      search_again: 검색을 다시 시도해 보십시오
+# Prompts for searchers to view more results from the broader website after initially seeing site-scoped results
+    site_limits:
+      including_results_for_query_from_matching_sites: ~에 대한 검색결과를 포함합니다 %{query} ~로부터 %{matching_sites} 오직.
+      do_you_want_to_see_results_for: ~에 대한 결과를 보고 싶습니까? %{query_from_all_sites}?
+      query_from_all_sites: '%{query} 모든 사이트로 부터'
+# Label for inline news module and prompt to see more news on news vertical
+    more_news_about_query: '더 보기 %{news_label} ~에 대해/대한 %{query}'
+    news_about_query: '%{news_label} ~에 대해/대한 %{query}'
+    news_search_options:
+      date_format: 'm/d/yyyy'
+# Label for attributing results to Bing, Search.gov, or Google
+  powered_by: '~을 이용한 검색'
+
+# Prompts for searchers to expand/collapse the number of best bets visible on the results page
+  show_more_label: '더 보기'
+  show_less_label: '더 적게 보기'
+
+# Date format used in custom date range picker and other places
+  date:
+    formats:
+      slashes: "%-m/%-d/%Y"
+
+# Labels for news-based results indicating how long ago they were published
+  datetime:
+    time_ago_in_words:
+      half_a_minute: "30초 전"
+      less_than_x_seconds:
+        one:   "약 1초 전"
+        other: "~전 %{count} ~몇 초 전"
+      x_seconds:
+        one:   "1초 전"
+        other: "%{count} ~몇 초 전"
+      less_than_x_minutes:
+        one:   "약 1분 전"
+        other: "~전 %{count} ~몇 분 전"
+      x_minutes:
+        one:   "1분 전"
+        other: "%{count} ~몇 분 전"
+      about_x_hours:
+        one:   "약 1시간 전"
+        other: "약 %{count}  몇 시간 전"
+      x_days:
+        one:   "1일 전"
+        other: "%{count} 몇일 전"
+      about_x_months:
+        one:   "약 1달 전"
+        other: "약 %{count} 몇 달 전"
+      x_months:
+        one:   "한 달 전"
+        other: "%{count} 몇 달 전"
+      about_x_years:
+        one:   "약 1년 전"
+        other: "약 %{count} 몇 년 전 "
+      over_x_years:
+        one:   "일년 이상 전"
+        other: "일년 %{count} 몇 년 전 "
+      almost_x_years:
+        one:   "약 1년 전"
+        other: "약 %{count} 몇 년 전 "
+
+# Text for page captcha challenge, which is shown if bot-like search patterns are detected
+  are_you_human:
+  captcha_requires_javascript:

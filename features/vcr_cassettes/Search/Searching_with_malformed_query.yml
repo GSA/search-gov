@@ -31,27 +31,31 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Thu, 01 Apr 2021 17:05:23 GMT
+      - Tue, 07 Sep 2021 16:18:24 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
       Bingapis-Traceid:
-      - 0FF90B5C9A2744B8A8B6A5AFAD9851C4
+      - 3972A6A3A3C041CDBF5F38EC07827305
       Bingapis-Sessionid:
-      - 3947F3C25F2A4690B644B3B261B02CB1
+      - 14740F9586704C478692B28D47E48B3D
       X-Msedge-Clientid:
-      - 3DEFB3BC357E6A54134EA3B034836BA2
+      - 2B3E101A39B36F610C7B00B138FC6EA6
       X-Msapi-Userstate:
-      - b53a
+      - 2b34
       Bingapis-Market:
       - en-US
       X-Search-Responseinfo:
-      - InternalResponseTime=247,MSDatacenter=BN2B
+      - InternalResponseTime=268,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
       X-Msedge-Ref:
-      - 'Ref A: 0FF90B5C9A2744B8A8B6A5AFAD9851C4 Ref B: BLUEDGE0108 Ref C: 2021-04-01T17:06:23Z'
+      - 'Ref A: 3972A6A3A3C041CDBF5F38EC07827305 Ref B: BLUEDGE2007 Ref C: 2021-09-07T16:19:24Z'
       Apim-Request-Id:
-      - 10c05b8f-3aa6-4763-a0d1-8c24e8621d60
+      - 33fd8901-33c1-4a7f-96e6-b04381797fd3
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
@@ -59,42 +63,20 @@ http_interactions:
       Csp-Billing-Usage:
       - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Thu, 01 Apr 2021 17:06:23 GMT
+      - Tue, 07 Sep 2021 16:19:24 GMT
     body:
       encoding: UTF-8
       string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "hello
         (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=hello+(site%3agov+OR+site%3amil)",
-        "totalEstimatedMatches": 6740000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
-        "name": "Hello®", "url": "https:\/\/dailymed.nlm.nih.gov\/dailymed\/fda\/fdaDrugXsl.cfm?setid=5e4197ed-2ed5-41cc-817e-8e9213dc780a",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/dailymed.nlm.nih.gov\/dailymed\/fda\/fdaDrugXsl.cfm?setid=5e4197ed-2ed5-41cc-817e...",
-        "snippet": "HELLO- sodium fluoride paste, dentifrice Hello Products LLC.
-        Disclaimer: Most OTC drugs are not reviewed and approved by FDA, however they
-        may be marketed if they comply with applicable regulations and policies. FDA
-        has not evaluated whether this product complies.-----", "dateLastCrawled":
-        "2021-03-29T00:54:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1", "name":
-        "Hello® Naturally Fresh™ Antiseptic", "url": "https:\/\/dailymed.nlm.nih.gov\/dailymed\/fda\/fdaDrugXsl.cfm?setid=3c7faad7-9c02-ddec-9d86-9b6218ff8ce7",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/dailymed.nlm.nih.gov\/dailymed\/fda\/fdaDrugXsl.cfm?setid=3c7faad7-9c02-ddec-9d86...",
-        "snippet": "HELLO NATURALLY FRESH ANTISEPTIC- menthol, unspecified form
-        mouthwash Hello Products LLC Disclaimer: Most OTC drugs are not reviewed
-        and approved by FDA, however they may be marketed if they comply with applicable
-        regulations and policies.", "dateLastCrawled": "2021-03-30T00:57:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "totalEstimatedMatches": 2040000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
         "name": "Employee Vigilance - Power of Hello | CISA", "url": "https:\/\/www.cisa.gov\/employee-vigilance-power-hello",
         "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cisa.gov\/employee-vigilance-power-hello",
-        "snippet": "Simply saying “Hello” can prompt a casual conversation with
-        unknown individuals and help you determine why they are there. The OHNO approach
-        – Observe, Initiate a Hello, Navigate the Risk, and Obtain Help – helps
-        employees observe and evaluate suspicious behaviors, and empowers them to
-        mitigate potential risk, and obtain help when ...", "dateLastCrawled": "2021-03-30T03:22:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
-        "name": "GET STARTED - VA.gov Home | Veterans Affairs", "url": "https:\/\/www.va.gov\/getstarted\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.va.gov\/getstarted",
-        "snippet": "HELLO. Welcome to VA. Let’s get Started. Quick Start 20pp pamphlet.
-        Download. For a complete listing of phone numbers and websites of VA services,
-        see p. 2 of Federal Benefits booklet. Page last updated on July 21, 2020.
-        VA Mission. To ...", "dateLastCrawled": "2021-03-29T16:38:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "snippet": "Employee Vigilance - Power of Hello. Industries face a variety
+        of threats, both internal and external, from hostile governments, terrorist
+        groups, disgruntled employees and malicious introducers. Alert employees can
+        spot suspicious activity and report it. The power is in the employee, citizen,
+        patron, or any person who can observe and report.", "dateLastCrawled": "2021-09-05T03:14:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
         "name": "Power of Hello Resources | CISA", "url": "https:\/\/www.cisa.gov\/publication\/power-hello-resources",
         "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cisa.gov\/publication\/power-hello-resources",
         "snippet": "The CISA Power of Hello Slick-sheet and CISA Power of Hello
@@ -102,27 +84,15 @@ http_interactions:
         effectively responding to suspicious behavior. This guide promotes employee
         vigilance for our houses of worship stakeholders. Alert personnel can spot
         suspicious activity and report it. Keeping houses of worship facilities secure
-        while sustaining the open and ...", "dateLastCrawled": "2021-03-29T18:43:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
-        "name": "''Hello, World!'' NASA Beams Video from Space Station via ...",
-        "url": "https:\/\/www.nasa.gov\/mission_pages\/station\/research\/news\/opals_beams_video\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nasa.gov\/mission_pages\/station\/research\/news\/opals_beams_video",
-        "snippet": "[image-51] [image-78] [image-94] \"Hello, World!\" came the
-        message from the International Space Station as NASA successfully beamed
-        high-definition video via laser from space to ground on Thursday, June 5.
-        The 175-megabit video transmission was the first of its kind for the Optical
-        Payload for Lasercomm Science with the goal of improving the way we receive
-        data from orbit and beyond.", "dateLastCrawled": "2021-03-27T23:12:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
-        "name": "They Served: The ''Hello Girls'' of WWI and their sixty-year ...",
-        "url": "https:\/\/blogs.va.gov\/VAntage\/72875\/they-served-the-hello-girls-of-wwi-and-their-sixty-year-battle-for-recognition\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/blogs.va.gov\/VAntage\/72875",
-        "snippet": "Therefore, the 233 Hello Girls were not considered to be Veterans
-        of the war that they had served in. This began a sixty-year battle for them
-        to be recognized for their military service. It wasn’t until Congress passed
-        the 1977 G.I. Improvement Bill that the Hello Girls finally received recognition
-        from the government for their service.", "dateLastCrawled": "2021-03-29T06:20:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        while sustaining the open and ...", "dateLastCrawled": "2021-09-03T21:17:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "GET STARTED - VA.gov Home | Veterans Affairs", "url": "https:\/\/www.va.gov\/getstarted\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.va.gov\/getstarted",
+        "snippet": "Comprehensive 70pp booklet. Download. HELLO. Welcome to VA.
+        Let’s get Started. Quick Start 20pp pamphlet. Download. For a complete listing
+        of phone numbers and websites of VA services, see p. 2 of Federal Benefits
+        booklet.", "dateLastCrawled": "2021-09-05T07:12:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
         "name": "The Power of Hello Guide for Houses of Worship", "url": "https:\/\/www.cisa.gov\/sites\/default\/files\/publications\/The%20Power%20of%20Hello%20Guide%20for%20Houses%20of%20Worship_508.pdf",
         "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cisa.gov\/sites\/default\/files\/publications\/The
         Power of Hello Guide for...", "snippet": "INITIATE A HELLO. As staff welcome
@@ -130,100 +100,137 @@ http_interactions:
         a visitor . reacts, even if they are angry or upset. This interaction is the
         essence of the Power of Hello. Practice the Power of Hello by doing or
         saying the following: Tip: These are important questions, and active listening
-        is key ...", "dateLastCrawled": "2021-03-29T13:05:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
-        "name": "COVID-19 Community Vaccination Program \/ COVID-19 Updates ...",
-        "url": "https:\/\/mn.gov\/covid19\/vaccine\/find-vaccine\/community-vaccination-program\/index.jsp",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/mn.gov\/covid19\/vaccine\/find-vaccine\/community-vaccination-program\/index.jsp",
-        "snippet": "COVID-19 Community Vaccination Program COVID-19 Community Vaccination
-        Program Minnesota launched the COVID-19 Community Vaccination Program to
-        help vaccinate Minnesotans all across the state.", "dateLastCrawled": "2021-03-30T01:05:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
-        "name": "Mvskoke Words – Muscogee (Creek) Nation", "url": "https:\/\/www.mcn-nsn.gov\/services\/mvskoke-language-program\/mvskoke-words\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.mcn-nsn.gov\/services\/mvskoke-language-program\/mvskoke-words",
-        "snippet": "Hello: Hesci: How are you? Estonko: I’m doing fine. Here Mahe:
-        And you? Mon Centv? What is your name? Naket Cehocefkvte? My name is Mary.
-        Mary Cvhocefkv Tos. My clan is Bird. Fuswvlke Toyis. Where do you live? Estvmin
-        Like Cet Towa? Thank you. Mvto: Okay (No word for “You’re Welcome”) Enkv:
-        I will see you again. Hvtvm Cehecares: I like ...", "dateLastCrawled": "2021-03-28T07:12:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
-        "name": "Just Say \"Hello\" - Borough of Collegeville", "url": "https:\/\/www.collegeville-pa.gov\/just-say-hello\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.collegeville-pa.gov\/just-say-hello",
-        "snippet": "Saying “hello” communicates to others that I see them and acknowledged
-        their existence. More often than not, my “Hello” is met with a smile, or
-        a nod or a return greeting because the person senses in that moment that they
-        exist for me. I also came to learn that saying “Hello” is a profound act
-        of self-agency.", "dateLastCrawled": "2021-03-29T06:17:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
-        "name": "Hello! This is liberty speaking - billions of dollars are ...",
-        "url": "https:\/\/www.loc.gov\/resource\/cph.3c07238\/", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.loc.gov\/resource\/cph.3c07238", "snippet":
-        "Hello! This is liberty speaking - billions of dollars are needed and needed
-        now \/ Z.P. Nikolaki. Summary Statue of Liberty on telephone. Contributor
-        Names Nikolaki, Z. P., artist Created \/ Published 1918.", "dateLastCrawled":
-        "2021-03-19T05:04:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12", "name":
-        "Introduction - Hello Girls: Topics in Chronicling America ...", "url":
-        "https:\/\/guides.loc.gov\/chronicling-america-hello-girls", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/guides.loc.gov\/chronicling-america-hello-girls",
-        "snippet": "5,000 ‘Hello Girls’ strike in Tacoma, WA, demanding a wage increase,
-        collective bargaining, and improved working conditions. March 9, 1918 Ethel
-        Elkins is the first American accepted for overseas war phone service duty
-        in WWI with the rank of Army nurse.", "dateLastCrawled": "2021-03-27T00:22:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
-        "name": "IHSS Website", "url": "https:\/\/www.etimesheets.ihss.ca.gov\/approve-timesheet",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.etimesheets.ihss.ca.gov\/approve-timesheet",
-        "snippet": "×IHSS recipients aged 16 to 64 are eligible to receive the COVID-19
-        vaccine beginning March 15, 2021. Recipients 65 and older are already eligible
-        to be vaccinated.", "dateLastCrawled": "2021-03-30T01:24:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
-        "name": "Print Out Your VA Welcome Kit | Veterans Affairs", "url": "https:\/\/www.va.gov\/welcome-kit\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.va.gov\/welcome-kit",
-        "snippet": "Whether you’re just getting out of the service or you’ve been
-        a civilian for years now, the VA Welcome Kit can help guide you to the benefits
-        and services you’ve earned. Based on where you are in life, your VA benefits
-        and services can support you in different ways. Keep your welcome kit handy
-        ...", "dateLastCrawled": "2021-03-29T16:31:00.0000000Z", "language": "en",
-        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
-        "name": "HelloFresh to Locate First Southeastern U.S. Facility in ...", "url":
-        "https:\/\/gov.georgia.gov\/press-releases\/2020-08-12\/hellofresh-locate-first-southeastern-us-facility-newnan-create-more-750",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/gov.georgia.gov\/press-releases\/2020-08-12\/hellofresh-locate-first-southeastern...",
-        "snippet": "Atlanta, GA – Governor Brian P. Kemp announced on August 10th
-        that America’s leading meal kit company HelloFresh will establish their first
-        Southeastern United States distribution facility in Newnan, bringing more
-        than 750 jobs to Coweta County. “Today’s announcement is further evidence
-        of our state’s valuable relationship with Germany, and it is a pleasure to
-        welcome the largest ...", "dateLastCrawled": "2021-03-30T00:29:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        is key ...", "dateLastCrawled": "2021-09-03T09:56:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
         "name": "Hello", "url": "https:\/\/www.schools.nyc.gov\/school-life\/school-environment\/hello",
         "isFamilyFriendly": true, "displayUrl": "https:\/\/www.schools.nyc.gov\/school-life\/school-environment\/hello",
-        "snippet": "Hello; NYC Public Schools Speak Your Language! Parents have
-        the right to receive information or communicate with a staff member at their
-        school or Department of Education (DOE) office in their language. If you or
-        someone you know needs help, tell your school’s principal or parent coordinator,
-        ...", "dateLastCrawled": "2021-03-29T18:34:00.0000000Z", "language": "en",
-        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "snippet": "Parents have the right to receive information or communicate with
+        a staff member at their school or Department of Education (DOE) office in
+        their language. If you or someone you know needs help, tell your school’s
+        principal or parent coordinator, call the DOE at (718) 935-2013 or email Hello@schools.nyc.gov.",
+        "dateLastCrawled": "2021-09-03T02:19:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Department of Economic Security: eCalc Application", "url": "https:\/\/dcssprod.azdes.gov\/ecalc\/Hello.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/dcssprod.azdes.gov\/ecalc\/Hello.htm",
+        "snippet": "DES eCalc is a tool for calculating arrears owed for child support.",
+        "dateLastCrawled": "2021-09-04T20:53:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Hello, my name is IRWIN. | U.S. Department of the Interior", "url":
+        "https:\/\/www.doi.gov\/wildlandfire\/hello-my-name-irwin", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.doi.gov\/wildlandfire\/hello-my-name-irwin",
+        "snippet": "Hello, my name is IRWIN. Sunrise at a fire camp in southern
+        Idaho. The latest release of IRWIN will dramticaly improve the tracking of
+        people and equipment dispatched to wildfires. (DOI\/Neal Herbert) Not everyone
+        who works in wildland fire has heard of IRWIN. With the latest release, that
+        should change.", "dateLastCrawled": "2021-09-04T10:58:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Hello", "url": "https:\/\/medicaidcomplaints.dhw.idaho.gov\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/medicaidcomplaints.dhw.idaho.gov",
+        "snippet": "Hello. Thank you for submitting a complaint to the Bureau of
+        Long Term Care with Idaho Medicaid. Your concerns are important to us. When
+        you submit a complaint, our investigators work to address your concerns by
+        investigating complaints as quickly as possible. Every complaint we receive
+        gives us insight into our programs and helps us improve ...", "dateLastCrawled":
+        "2021-09-04T00:19:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8", "name":
+        "They Served: The ''Hello Girls'' of WWI and their sixty-year ...", "url":
+        "https:\/\/blogs.va.gov\/VAntage\/72875\/they-served-the-hello-girls-of-wwi-and-their-sixty-year-battle-for-recognition\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/blogs.va.gov\/VAntage\/72875",
+        "snippet": "They Served: The ‘Hello Girls’ of WWI and their sixty-year
+        battle for recognition. Bells rang throughout France on the morning of Nov.
+        11, 1918, signifying the end of World War I. In Paris, people filled the streets
+        in a bittersweet celebration: The war was finally over. But while those celebrations
+        took place, an American woman drew her ...", "dateLastCrawled": "2021-08-29T12:14:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Print Out Your VA Welcome Kit | Veterans Affairs", "url": "https:\/\/www.va.gov\/welcome-kit\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.va.gov\/welcome-kit",
+        "snippet": "Print out your VA Welcome Kit. Whether you’re just getting out
+        of the service or you’ve been a civilian for years now, the VA Welcome Kit
+        can help guide you to the benefits and services you’ve earned. Based on where
+        you are in life, your VA benefits and services can support you in different
+        ways. Keep your welcome kit handy so you can ...", "dateLastCrawled": "2021-09-03T20:24:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Employee Vigilance Through the Power of Hello", "url": "https:\/\/www.cisa.gov\/sites\/default\/files\/publications\/CISA_Power_of_Hello_Placemat.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cisa.gov\/sites\/default\/files\/publications\/CISA_Power_of_Hello_Placemat.pdf",
+        "snippet": "Power of Hello Alert employees can spot suspicious activity
+        and report it Used effectively, the right words can be a powerful tool. Simply
+        saying “Hello” can prompt a casual conversation with unknown individuals
+        and help you determine why they are there.", "dateLastCrawled": "2021-09-05T15:08:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
         "name": "Hello NC | NC DNCR", "url": "https:\/\/www.ncdcr.gov\/about\/featured-programs\/hello-nc",
         "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncdcr.gov\/about\/featured-programs\/hello-nc",
         "snippet": "Hello NC celebrates the people, culture, and stories of rural
         North Carolina through local voices and rich media.This multi-faceted initiative
         will showcase stories about the diversity, traditions and richness of small
-        towns and rural life.", "dateLastCrawled": "2021-03-29T11:48:00.0000000Z",
+        towns and rural life.", "dateLastCrawled": "2021-09-05T14:42:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "''Hello, World!'' NASA Beams Video from Space Station via ...",
+        "url": "https:\/\/www.nasa.gov\/mission_pages\/station\/research\/news\/opals_beams_video\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nasa.gov\/mission_pages\/station\/research\/news\/opals_beams_video",
+        "snippet": "NASA. \"Hello, World!\" came the message from the International
+        Space Station as NASA successfully beamed high-definition video via laser
+        from space to ground on Thursday, June 5. The 175-megabit video transmission
+        was the first of its kind for the Optical Payload for Lasercomm Science (
+        OPALS) with the goal of improving the way we receive data ...", "dateLastCrawled":
+        "2021-08-30T18:27:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13", "name":
+        "Hello® - DailyMed", "url": "https:\/\/dailymed.nlm.nih.gov\/dailymed\/fda\/fdaDrugXsl.cfm?setid=9d52eeaf-8811-4e00-a218-6ec90cae1da7",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/dailymed.nlm.nih.gov\/dailymed\/fda\/fdaDrugXsl.cfm?setid=9d52eeaf-8811-4e00-a218...",
+        "snippet": "HELLO- sodium fluoride mouthwash Hello Products LLC. Disclaimer:
+        Most OTC drugs are not reviewed and approved by FDA, however they may be marketed
+        if they comply with applicable regulations and policies. FDA has not evaluated
+        whether this product complies.-----", "dateLastCrawled": "2021-07-13T16:23:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Hello, ma baby | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/99470294\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/99470294",
+        "snippet": "Hello, ma baby Hello, my baby | All'' erta marinar | Couplet
+        Clairette Music by Joseph Edgar Howard and Ida Emerson. Len G. Spencer, baritone;
+        piano accompaniment. Recorded at an unknown location, Apr. 15, 1899. Recorded
+        on one side only.", "dateLastCrawled": "2020-09-04T12:42:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Hello, Helo > U.S. Navy - All Hands > Display Story", "url": "https:\/\/allhands.navy.mil\/Stories\/Display-Story\/Article\/2692626\/hello-helo\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/allhands.navy.mil\/Stories\/Display-Story\/Article\/2692626\/hello-helo",
+        "snippet": "Hello, Helo by Mass Communication Specialist 2nd Class Brent
+        Pyfrom, Defense Media Activity 13 July 2021. Training. Build Capacity. FORT
+        MEADE, Md. -- The Navy replaces its training helicopters roughly every 30
+        years and now is transitioning from its training fleet of Bell TH-57B\/C Sea
+        Rangers to the Leonardo TH-73A helicopters. ...", "dateLastCrawled": "2021-09-01T04:02:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Hello Neighbor! - Arts Idaho", "url": "https:\/\/arts.idaho.gov\/hello-neighbor\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/arts.idaho.gov\/hello-neighbor",
+        "snippet": "Hello Neighbor! Traditional arts are passed down from one generation
+        to the next within families and communities and are regarded by the community
+        as part of their heritage. These activities can include music, dance, storytelling,
+        crafts, skills, and celebrations. Communities can be defined in many ways,
+        such as groups that share the same ...", "dateLastCrawled": "2021-08-26T04:02:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "NGINX Hello World :: NCCS Slate Documentation", "url": "https:\/\/doc.marble.ccs.ornl.gov\/examples\/nginx_hello_world\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/doc.marble.ccs.ornl.gov\/examples\/nginx_hello_world",
+        "snippet": "NGINX Hello World One of the simplest use cases for Kubernetes
+        is running a web server. We will walk through the steps needed to set up an
+        NGINX web server on OpenShift that serves a static html file. This example
+        assumes that you have an allocation on the cluster. First make sure that you
+        are in the correct project: ...", "dateLastCrawled": "2021-08-28T02:13:00.0000000Z",
         "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
-        "name": "Internal Revenue Service | An official website of the ...", "url":
-        "https:\/\/www.irs.gov\/", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.irs.gov",
-        "snippet": "Other 1040 Schedules Information About the Other Schedules Filed
-        With Form 1040", "dateLastCrawled": "2021-03-29T13:26:00.0000000Z", "language":
+        "name": "DailyMed - HELLO BELLO HAND SANITIZER- alcohol spray", "url":
+        "https:\/\/dailymed.nlm.nih.gov\/dailymed\/lookup.cfm?setid=a7e6de67-5d86-4523-e053-2a95a90a7274&version=1",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/dailymed.nlm.nih.gov\/dailymed\/lookup.cfm?setid=a7e6de67-5d86-4523-e053-2a95a90...",
+        "snippet": "HELLO BELLO HAND SANITIZER- alcohol spray Out of scope - Out
+        of scope for RxNorm and will not receive RxNorm normal forms. Out of scope
+        information includes radiopharmaceuticals, contrast media, herbals, homeopathics,
+        and food.", "dateLastCrawled": "2021-08-27T04:09:00.0000000Z", "language":
         "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
-        "name": "§ 1024.33 Mortgage servicing transfers. | Consumer ...", "url": "https:\/\/www.consumerfinance.gov\/rules-policy\/regulations\/1024\/33\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.consumerfinance.gov\/rules-policy\/regulations\/1024\/33",
-        "snippet": "1. Terminology. Although the servicing disclosure statement must
-        be clear and conspicuous pursuant to § 1024.32(a), § 1024.33(a) does not set
-        forth any specific rules for the format of the statement, and the specific
-        language of the servicing disclosure statement in appendix MS-1 is not required
-        to be used.", "dateLastCrawled": "2021-03-29T00:02:00.0000000Z", "language":
-        "en", "isNavigational": false}]}, "rankingResponse": {"mainline": {"items":
-        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        "name": "USPTO TTABVUE. Trademark Trial and Appeal Board Inquiry System",
+        "url": "https:\/\/ttabvue.uspto.gov\/ttabvue\/v?qs=91264920", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/ttabvue.uspto.gov\/ttabvue\/v?qs=91264920",
+        "snippet": "HELLO BELLO: Plaintiff: Name: Hello Products, LLC : Correspondence:
+        JAMES D WEINBERGER FROSS ZELNICK LEHRMAN & ZISSU PC 151 WEST 42ND STREET 17TH
+        FLOOR NEW YORK, NY 10036 UNITED STATES jweinberger@fzlz.com Phone: 212-813-5900
+        : Serial #: 77865148: Application File: Assignment: Registration #: 4384201:
+        Application Status: Section 8 - Accepted:", "dateLastCrawled": "2021-09-04T01:53:00.0000000Z",
+        "language": "en", "isNavigational": false}], "someResultsRemoved": true},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
         {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
@@ -243,11 +250,10 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
-    http_version:
-  recorded_at: Thu, 01 Apr 2021 17:06:23 GMT
+  recorded_at: Tue, 07 Sep 2021 16:19:24 GMT
 - request:
     method: get
-    uri: https://api.cognitive.microsoft.com/bing/v7.0/images/search?count=20&mkt=en-US&offset=0&q=hello%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=hello%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
     body:
       encoding: US-ASCII
       string: ''
@@ -255,7 +261,7 @@ http_interactions:
       User-Agent:
       - USASearch
       Ocp-Apim-Subscription-Key:
-      - "<BING_V7_SUBSCRIPTION_ID>"
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -270,29 +276,37 @@ http_interactions:
       message: OK
     headers:
       Cache-Control:
-      - no-cache, no-store, must-revalidate
-      Pragma:
-      - no-cache
-      Content-Length:
-      - '76017'
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - "-1"
+      - Wed, 06 Oct 2021 15:38:25 GMT
+      Vary:
+      - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
       Bingapis-Traceid:
-      - AC4C0C233B71466E8239E4782000504F
+      - CF2EF8F8274B424B8FCF0C6590DFD3BC
+      Bingapis-Sessionid:
+      - D46C7B2158A84F07B187FF0D554A432C
       X-Msedge-Clientid:
-      - 3A1EF463630A6E790DF8E46F62F76F42
+      - 0FB93FD4CC76614B324C2F1CCD8B6099
       X-Msapi-Userstate:
-      - f966
+      - 9a3b
+      Bingapis-Market:
+      - en-US
       X-Search-Responseinfo:
-      - InternalResponseTime=286,MSDatacenter=BN2B
+      - InternalResponseTime=285,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
       X-Msedge-Ref:
-      - 'Ref A: AC4C0C233B71466E8239E4782000504F Ref B: BLUEDGE0520 Ref C: 2021-04-01T17:51:45Z'
+      - 'Ref A: CF2EF8F8274B424B8FCF0C6590DFD3BC Ref B: BLUEDGE0120 Ref C: 2021-10-06T15:39:25Z'
       Apim-Request-Id:
-      - e7dbbf28-1a4a-4f85-be54-d91e999a970d
+      - 88f75288-3444-40ea-a1a6-dd3435b4c547
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
@@ -300,507 +314,190 @@ http_interactions:
       Csp-Billing-Usage:
       - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Thu, 01 Apr 2021 17:51:44 GMT
+      - Wed, 06 Oct 2021 15:39:25 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "Images", "instrumentation": {"_type": "ResponseInstrumentation"},
-        "readLink": "images\/search?q=hello (site:gov OR site:mil)", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=hello (site:gov OR site:mil)&FORM=OIIARP",
-        "queryContext": {"originalQuery": "hello (site:gov OR site:mil)", "alterationDisplayQuery":
-        "hello", "alterationOverrideQuery": "+hello (site:gov OR site:mil)", "alterationMethod":
-        "AM_JustChangeIt", "alterationType": "CombinedAlterationsChained"}, "totalEstimatedMatches":
-        124, "nextOffset": 21, "currentOffset": 0, "value": [{"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=hello+(site%3agov+OR+site%3amil)&id=B0350F1C1C2319543EEAC706B898BDB9F28BA3F2&simid=607986426522905449",
-        "name": "Hello | U.S. Embassy & Consulate in Thailand", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.E1dH0qI_xGmymWVVN5JubwHaHa&pid=Api",
-        "datePublished": "2021-02-08T04:22:00.0000000Z", "isFamilyFriendly": true,
-        "contentUrl": "https:\/\/d2v9ipibika81v.cloudfront.net\/uploads\/sites\/90\/Hello-1.jpg",
-        "hostPageUrl": "https:\/\/th.usembassy.gov\/us-consulate-chiang-mai-line-graphics\/hello-2\/",
-        "contentSize": "902191 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
-        "https:\/\/th.usembassy.gov\/us-consulate-chiang-mai-line-graphics\/hello-2",
-        "width": 1500, "height": 1500, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.IlL-sVtodSa7MQpdXTBmYg&pid=Api",
-        "hostPageDomainFriendlyName": "U.S", "hostPageDiscoveredDate": "2020-02-07T00:00:00.0000000Z",
-        "thumbnail": {"width": 474, "height": 474}, "imageInsightsToken": "ccid_E1dH0qI\/*cp_F80624EB5DBE7E8243F5F11B30F67FE7*mid_B0350F1C1C2319543EEAC706B898BDB9F28BA3F2*simid_607986426522905449*thid_OIP.E1dH0qI!_xGmymWVVN5JubwHaHa",
-        "insightsMetadata": {"pagesIncludingCount": 2, "availableSizesCount": 1},
-        "imageId": "B0350F1C1C2319543EEAC706B898BDB9F28BA3F2", "accentColor": "008CCC"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=hello+(site%3agov+OR+site%3amil)&id=18603F0A4703F775FFB7E72760354A736208ADB2&simid=607998525432358886",
-        "name": "Mayor''s Office for Adult Literacy", "thumbnailUrl": "https:\/\/tse3.explicit.bing.net\/th?id=OIP.wxwLRg7KfLfuf1ECrmGVjQAAAA&pid=Api",
-        "datePublished": "2021-03-05T01:08:00.0000000Z", "isFamilyFriendly": false,
-        "contentUrl": "https:\/\/www.houstontx.gov\/adultliteracy\/covid19\/hello-english-175.jpg",
-        "hostPageUrl": "https:\/\/www.houstontx.gov\/adultliteracy\/literacy-resources.html",
-        "contentSize": "32817 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
-        "https:\/\/www.houstontx.gov\/adultliteracy\/literacy-resources.html", "width":
-        175, "height": 175, "hostPageDiscoveredDate": "2020-12-01T00:00:00.0000000Z",
-        "thumbnail": {"width": 175, "height": 175}, "imageInsightsToken": "ccid_wxwLRg7K*cp_06B7180571D23D88746F61D5FAA4EBA4*mid_18603F0A4703F775FFB7E72760354A736208ADB2*simid_607998525432358886*thid_OIP.wxwLRg7KfLfuf1ECrmGVjQAAAA",
-        "insightsMetadata": {"pagesIncludingCount": 1, "availableSizesCount": 1},
-        "imageId": "18603F0A4703F775FFB7E72760354A736208ADB2", "accentColor": "C60527"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=hello+(site%3agov+OR+site%3amil)&id=B17C6F8525EDBD897C031F904A383951E16C7136&simid=608048076468259773",
-        "name": "¡Hola! Hello! — Kalamazoo Public Library", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.qQt_KE8RBCrChAbFdPTuVQHaEK&pid=Api",
-        "datePublished": "2020-12-07T20:03:00.0000000Z", "isFamilyFriendly": true,
-        "contentUrl": "https:\/\/www.kpl.gov\/app\/uploads\/2019\/10\/ds-hola-hello-dec19-jan-feb20-web-1024x576.jpg",
-        "hostPageUrl": "https:\/\/www.kpl.gov\/event\/hola-hello\/", "contentSize":
-        "89334 B", "encodingFormat": "jpeg", "hostPageDisplayUrl": "https:\/\/www.kpl.gov\/event\/hola-hello",
-        "width": 1024, "height": 576, "hostPageDiscoveredDate": "2019-11-12T00:00:00.0000000Z",
-        "thumbnail": {"width": 474, "height": 266}, "imageInsightsToken": "ccid_qQt\/KE8R*cp_108817C34262A2EA947E72DDFED8DCC1*mid_B17C6F8525EDBD897C031F904A383951E16C7136*simid_608048076468259773*thid_OIP.qQt!_KE8RBCrChAbFdPTuVQHaEK",
-        "insightsMetadata": {"pagesIncludingCount": 3, "availableSizesCount": 3},
-        "imageId": "B17C6F8525EDBD897C031F904A383951E16C7136", "accentColor": "C57706"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=hello+(site%3agov+OR+site%3amil)&id=789B5F6AA1833EF54CC6D2A1B644C925F8A35349&simid=608017702459681074",
-        "name": "Hello Lamp Post Austin | AustinTexas.gov", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.4MgprbQrt2alAXIxYXT0ZgHaCZ&pid=Api",
-        "datePublished": "2020-09-19T03:28:00.0000000Z", "isFamilyFriendly": true,
-        "contentUrl": "http:\/\/www.austintexas.gov\/sites\/default\/files\/files\/EGRSO\/hello_lamp_post_logo-landscape_500px.jpg",
-        "hostPageUrl": "http:\/\/www.austintexas.gov\/page\/hello-lamp-post-austin",
-        "contentSize": "17738 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
-        "www.austintexas.gov\/page\/hello-lamp-post-austin", "width": 500, "height":
-        162, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.W3GEcNah3EnmErKe4i_1AQ&pid=Api",
-        "hostPageDomainFriendlyName": "austintexas.gov", "hostPageDiscoveredDate":
-        "2015-01-28T00:00:00.0000000Z", "thumbnail": {"width": 474, "height": 153},
-        "imageInsightsToken": "ccid_4MgprbQr*cp_1ACE493DB5D344C8F89A9B58CF2305A7*mid_789B5F6AA1833EF54CC6D2A1B644C925F8A35349*simid_608017702459681074*thid_OIP.4MgprbQrt2alAXIxYXT0ZgHaCZ",
-        "insightsMetadata": {"pagesIncludingCount": 2, "availableSizesCount": 1},
-        "imageId": "789B5F6AA1833EF54CC6D2A1B644C925F8A35349", "accentColor": "C9A402"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=hello+(site%3agov+OR+site%3amil)&id=0D0E37C51F67309DEF9C9A1D19C4819CB7DD9653&simid=607993800969360020",
-        "name": "Multiple Languages, Single Platforms: the World Digital ...", "thumbnailUrl":
-        "https:\/\/tse2.mm.bing.net\/th?id=OIP.zgIJgre_Jkfz3yE_UEotXgHaFZ&pid=Api",
-        "datePublished": "2001-01-01T00:00:00.0000000Z", "isFamilyFriendly": true,
-        "contentUrl": "https:\/\/s3.amazonaws.com\/digitalgov\/_legacy-img\/2015\/04\/600-x-437-Hello-Language-poster-design-johavel-iStock-Thinkstock-ThinkstockPhotos-528825389.jpg",
-        "hostPageUrl": "https:\/\/www.digitalgov.gov\/2015\/04\/09\/multiple-languages-single-platforms-the-world-digital-library\/",
-        "contentSize": "34007 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
-        "https:\/\/www.digitalgov.gov\/2015\/04\/09\/multiple-languages-single-platforms-the-world...",
-        "width": 600, "height": 437, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.QFd--3szGzZvDt7oy-qFXA&pid=Api",
-        "hostPageDomainFriendlyName": "Digitalgov", "hostPageDiscoveredDate": "2001-01-01T00:00:00.0000000Z",
-        "thumbnail": {"width": 474, "height": 345}, "imageInsightsToken": "ccid_zgIJgre\/*cp_44720CE3E59B03860D54A06080133948*mid_0D0E37C51F67309DEF9C9A1D19C4819CB7DD9653*simid_607993800969360020*thid_OIP.zgIJgre!_Jkfz3yE!_UEotXgHaFZ",
-        "insightsMetadata": {"recipeSourcesCount": 0, "pagesIncludingCount": 4, "availableSizesCount":
-        1}, "imageId": "0D0E37C51F67309DEF9C9A1D19C4819CB7DD9653", "accentColor":
-        "0B95C0"}, {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=hello+(site%3agov+OR+site%3amil)&id=82599B56F4BA9E9E23D4ACAEF047B2C11C570A1F&simid=608022667445476120",
-        "name": "Hilliard''s Annual Tree Lighting | Annual Events | City of ...",
-        "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.kdQoMZmFEFDs4rR6KwXG2AAAAA&pid=Api",
-        "datePublished": "2020-07-04T12:24:00.0000000Z", "isFamilyFriendly": true,
-        "contentUrl": "https:\/\/hilliardohio.gov\/wp-content\/uploads\/2019\/10\/HelloFresh_CMYK_2C_Stacked_Simplified_Outlined.png",
-        "hostPageUrl": "https:\/\/hilliardohio.gov\/treelighting\/", "contentSize":
-        "19319 B", "encodingFormat": "png", "hostPageDisplayUrl": "https:\/\/hilliardohio.gov\/treelighting",
-        "width": 255, "height": 232, "hostPageDiscoveredDate": "2019-10-13T00:00:00.0000000Z",
-        "thumbnail": {"width": 255, "height": 232}, "imageInsightsToken": "ccid_kdQoMZmF*cp_5416E6E3C71D94E966A90223389864E2*mid_82599B56F4BA9E9E23D4ACAEF047B2C11C570A1F*simid_608022667445476120*thid_OIP.kdQoMZmFEFDs4rR6KwXG2AAAAA",
-        "insightsMetadata": {"pagesIncludingCount": 1, "availableSizesCount": 1},
-        "imageId": "82599B56F4BA9E9E23D4ACAEF047B2C11C570A1F", "accentColor": "6B9B30"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=hello+(site%3agov+OR+site%3amil)&id=55688B7C092AF4969A8C2C65594C6E3663FDDFA2&simid=608009434652221710",
-        "name": "Oregon Judicial Department : Programs & Services - Home ...", "thumbnailUrl":
-        "https:\/\/tse2.mm.bing.net\/th?id=OIP.RUUA0xIV4kBEmL3yl3ANiQAAAA&pid=Api",
-        "datePublished": "2021-01-11T16:22:00.0000000Z", "isFamilyFriendly": true,
-        "contentUrl": "https:\/\/www.courts.oregon.gov\/PublishingImages\/SiteImages\/74020181-hello-many-languages.jpg",
-        "hostPageUrl": "https:\/\/www.courts.oregon.gov\/courts\/union\/programs-services\/Pages\/default.aspx",
-        "contentSize": "42281 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
-        "https:\/\/www.courts.oregon.gov\/courts\/union\/programs-services\/Pages\/default.aspx",
-        "width": 387, "height": 200, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.rkBDPuy-wl_FBG3XFkbS7Q&pid=Api",
-        "hostPageDomainFriendlyName": "Oregon", "hostPageDiscoveredDate": "2018-07-18T00:00:00.0000000Z",
-        "thumbnail": {"width": 387, "height": 200}, "imageInsightsToken": "ccid_RUUA0xIV*cp_C055415337EDF22A1B569D3D48832B7F*mid_55688B7C092AF4969A8C2C65594C6E3663FDDFA2*simid_608009434652221710*thid_OIP.RUUA0xIV4kBEmL3yl3ANiQAAAA",
-        "insightsMetadata": {"pagesIncludingCount": 1, "availableSizesCount": 1},
-        "imageId": "55688B7C092AF4969A8C2C65594C6E3663FDDFA2", "accentColor": "B52316"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=hello+(site%3agov+OR+site%3amil)&id=B5A00850B7FD837F280D321747507981B34FB35B&simid=608031472126731716",
-        "name": "Say Hello to Santa Monica - santamonica.gov - City of ...", "thumbnailUrl":
-        "https:\/\/tse2.mm.bing.net\/th?id=OIP.VQD1vEMs9r1f6xCUlcmg7AHaHZ&pid=Api",
-        "datePublished": "2020-11-09T14:02:00.0000000Z", "isFamilyFriendly": true,
-        "contentUrl": "https:\/\/www.santamonica.gov\/Media\/Default\/Blog\/5HelloBl.png",
-        "hostPageUrl": "https:\/\/www.santamonica.gov\/blog\/say-hello-to-santa-monica",
-        "contentSize": "38207 B", "encodingFormat": "png", "hostPageDisplayUrl": "https:\/\/www.santamonica.gov\/blog\/say-hello-to-santa-monica",
-        "width": 601, "height": 600, "hostPageDiscoveredDate": "2018-04-06T00:00:00.0000000Z",
-        "thumbnail": {"width": 474, "height": 473}, "imageInsightsToken": "ccid_VQD1vEMs*cp_74968A4A6A3B30EB160F3ED3F5B8311F*mid_B5A00850B7FD837F280D321747507981B34FB35B*simid_608031472126731716*thid_OIP.VQD1vEMs9r1f6xCUlcmg7AHaHZ",
-        "insightsMetadata": {"recipeSourcesCount": 0, "pagesIncludingCount": 1, "availableSizesCount":
-        1}, "imageId": "B5A00850B7FD837F280D321747507981B34FB35B", "accentColor":
-        "26A59B"}, {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=hello+(site%3agov+OR+site%3amil)&id=A9BC819ADE4E561E41352AB56897E96B21E77E40&simid=608013841287420519",
-        "name": "Hello, America! | Capitol Visitor Center Gift Shops", "thumbnailUrl":
-        "https:\/\/tse1.mm.bing.net\/th?id=OIP.tXdFB9Ct7ud6zp--mK3pnQHaHa&pid=Api",
-        "datePublished": "2020-12-11T17:42:00.0000000Z", "isFamilyFriendly": true,
-        "contentUrl": "https:\/\/shop.visitthecapitol.gov\/assets\/1\/26\/DimLarge\/9781933212883-HELLO-AMERICA.jpg?1205",
-        "hostPageUrl": "https:\/\/shop.visitthecapitol.gov\/hello-america-\/", "contentSize":
-        "39627 B", "encodingFormat": "jpeg", "hostPageDisplayUrl": "https:\/\/shop.visitthecapitol.gov\/hello-america-",
-        "width": 550, "height": 550, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.denPYK9k0qWrEJVGc6NKKQ&pid=Api",
-        "hostPageDomainFriendlyName": "United States Capitol", "hostPageDiscoveredDate":
-        "2020-11-18T00:00:00.0000000Z", "thumbnail": {"width": 474, "height": 474},
-        "imageInsightsToken": "ccid_tXdFB9Ct*cp_E19521BDE72471CE1406E344D9E87CA7*mid_A9BC819ADE4E561E41352AB56897E96B21E77E40*simid_608013841287420519*thid_OIP.tXdFB9Ct7ud6zp--mK3pnQHaHa",
-        "insightsMetadata": {"pagesIncludingCount": 2, "availableSizesCount": 1},
-        "imageId": "A9BC819ADE4E561E41352AB56897E96B21E77E40", "accentColor": "0C88BF"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=hello+(site%3agov+OR+site%3amil)&id=D3D8924B61228CDF4CD50748F117C3B9672C1CFF&simid=608006514073171767",
-        "name": "VA launches welcome kit to guide Veterans to the benefits ...", "thumbnailUrl":
-        "https:\/\/tse4.mm.bing.net\/th?id=OIP.LoKUHQLdPyFfKzfmaRIBjwHaDR&pid=Api",
-        "datePublished": "2018-02-01T12:00:00.0000000Z", "isFamilyFriendly": true,
-        "contentUrl": "https:\/\/blogs.va.gov\/VAntage\/wp-content\/uploads\/2018\/01\/HelloWelcomeToVA-730x322.png",
-        "hostPageUrl": "https:\/\/www.blogs.va.gov\/VAntage\/44852\/va-announces-new-welcome-kit-guide-veterans-benefits-services-theyve-earned\/",
-        "contentSize": "139786 B", "encodingFormat": "png", "hostPageDisplayUrl":
-        "https:\/\/www.blogs.va.gov\/VAntage\/44852\/va-announces-new-welcome-kit-guide-veterans...",
-        "width": 730, "height": 322, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.oJ8ahWFueoWp-xHSTRl65g&pid=Api",
-        "hostPageDomainFriendlyName": "United States Department of Veterans Affairs",
-        "hostPageDiscoveredDate": "2018-02-01T12:00:00.0000000Z", "thumbnail": {"width":
-        474, "height": 209}, "imageInsightsToken": "ccid_LoKUHQLd*cp_422BC1C4D9B7729BDC693311D0E75665*mid_D3D8924B61228CDF4CD50748F117C3B9672C1CFF*simid_608006514073171767*thid_OIP.LoKUHQLdPyFfKzfmaRIBjwHaDR",
-        "insightsMetadata": {"recipeSourcesCount": 0, "pagesIncludingCount": 13, "availableSizesCount":
-        5}, "imageId": "D3D8924B61228CDF4CD50748F117C3B9672C1CFF", "accentColor":
-        "158EB6"}, {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=hello+(site%3agov+OR+site%3amil)&id=1D91756EDE2B7A5D24FB5A5DB0916AC73CC770D7&simid=608013072489867764",
-        "name": "News Archive - State Library of Ohio", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.-LWtkNR_ee9hyJEYsJzP8QHaHa&pid=Api",
-        "datePublished": "2021-01-20T12:44:00.0000000Z", "isFamilyFriendly": true,
-        "contentUrl": "https:\/\/library.ohio.gov\/wp-content\/uploads\/Hello-FeatureImage-format.jpg",
-        "hostPageUrl": "https:\/\/library.ohio.gov\/news\/", "contentSize": "204293
-        B", "encodingFormat": "jpeg", "hostPageDisplayUrl": "https:\/\/library.ohio.gov\/news",
-        "width": 500, "height": 500, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.5CQjgJU6nEbpQ6sUWI0_Sg&pid=Api",
-        "hostPageDomainFriendlyName": "State Library of Ohio", "hostPageDiscoveredDate":
-        "2015-06-09T00:00:00.0000000Z", "thumbnail": {"width": 474, "height": 474},
-        "imageInsightsToken": "ccid_+LWtkNR\/*cp_B48AC975A79DC7DF00E9F94309F986CA*mid_1D91756EDE2B7A5D24FB5A5DB0916AC73CC770D7*simid_608013072489867764*thid_OIP.-LWtkNR!_ee9hyJEYsJzP8QHaHa",
-        "insightsMetadata": {"pagesIncludingCount": 1, "availableSizesCount": 1},
-        "imageId": "1D91756EDE2B7A5D24FB5A5DB0916AC73CC770D7", "accentColor": "9F2C55"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=hello+(site%3agov+OR+site%3amil)&id=6FECEB19F2F2D749C6298B32332AEA8C05C077E9&simid=608048931166093438",
-        "name": "The Hello Girls | National Archives", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.oy-by0iIccr0xASOqNKnfwHaCt&pid=Api",
-        "datePublished": "2020-08-27T09:25:00.0000000Z", "isFamilyFriendly": true,
-        "contentUrl": "https:\/\/www.archives.gov\/files\/styles\/full-size\/public\/event\/feature\/hello-girls-c.jpg?itok=f85e7pAc",
-        "hostPageUrl": "https:\/\/www.archives.gov\/calendar\/event\/the-hello-girls",
-        "contentSize": "54426 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
-        "https:\/\/www.archives.gov\/calendar\/event\/the-hello-girls", "width": 780,
-        "height": 285, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.ewivy3ck2rXdCQrVnhkWEw&pid=Api",
-        "hostPageDomainFriendlyName": "US National Archives", "hostPageDiscoveredDate":
-        "2018-05-14T00:00:00.0000000Z", "thumbnail": {"width": 474, "height": 173},
-        "imageInsightsToken": "ccid_oy+by0iI*cp_8294072BAEB10D7A5F2DAF7DB3A21F1E*mid_6FECEB19F2F2D749C6298B32332AEA8C05C077E9*simid_608048931166093438*thid_OIP.oy-by0iIccr0xASOqNKnfwHaCt",
-        "insightsMetadata": {"pagesIncludingCount": 3, "availableSizesCount": 2},
-        "imageId": "6FECEB19F2F2D749C6298B32332AEA8C05C077E9", "accentColor": "666666"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=hello+(site%3agov+OR+site%3amil)&id=FD53B23CF42B7BFAD3C561A1ED76A5750829160B&simid=608034293922095440",
-        "name": "First Look Friday | Scott County, Iowa", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.AHYlNej8a9eTWz7xsw2KeAHaFt&pid=Api",
-        "datePublished": "2021-01-29T12:00:00.0000000Z", "isFamilyFriendly": true,
-        "contentUrl": "https:\/\/www.scottcountyiowa.gov\/sites\/default\/files\/images\/post\/hello%20i%27m%20new.jpg",
-        "hostPageUrl": "https:\/\/www.scottcountyiowa.gov\/library\/post\/2021\/01\/29\/first-look-friday",
-        "contentSize": "44563 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
-        "https:\/\/www.scottcountyiowa.gov\/library\/post\/2021\/01\/29\/first-look-friday",
-        "width": 570, "height": 440, "hostPageDiscoveredDate": "2021-01-12T00:00:00.0000000Z",
-        "thumbnail": {"width": 474, "height": 365}, "imageInsightsToken": "ccid_AHYlNej8*cp_8ABF2A4AE06D3888AD9320DBDB9A98C9*mid_FD53B23CF42B7BFAD3C561A1ED76A5750829160B*simid_608034293922095440*thid_OIP.AHYlNej8a9eTWz7xsw2KeAHaFt",
-        "insightsMetadata": {"pagesIncludingCount": 1, "availableSizesCount": 1},
-        "imageId": "FD53B23CF42B7BFAD3C561A1ED76A5750829160B", "accentColor": "666666"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=hello+(site%3agov+OR+site%3amil)&id=410626C46F39AC858B38AB9CBDE29658120AEDF7&simid=608055592662553688",
-        "name": "Employee Vigilance - Power of Hello | CISA", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.zeTGDWgmNsE4ugx3SzMbqwAAAA&pid=Api",
-        "datePublished": "2021-01-03T14:44:00.0000000Z", "isFamilyFriendly": true,
-        "contentUrl": "https:\/\/www.cisa.gov\/sites\/default\/files\/inline-images\/CISA_Power%20of%20Hello_icon%20blue%20outline_INITIATE.png",
-        "hostPageUrl": "https:\/\/www.cisa.gov\/employee-vigilance-power-hello", "contentSize":
-        "5546 B", "encodingFormat": "png", "hostPageDisplayUrl": "https:\/\/www.cisa.gov\/employee-vigilance-power-hello",
-        "width": 217, "height": 217, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.IBXZQ7jfkqcTe0aEBhy6BQ&pid=Api",
-        "hostPageDiscoveredDate": "2020-07-05T00:00:00.0000000Z", "thumbnail": {"width":
-        217, "height": 217}, "imageInsightsToken": "ccid_zeTGDWgm*cp_75F5F755B1F31DD77AFE0CE58902E767*mid_410626C46F39AC858B38AB9CBDE29658120AEDF7*simid_608055592662553688*thid_OIP.zeTGDWgmNsE4ugx3SzMbqwAAAA",
-        "insightsMetadata": {"pagesIncludingCount": 1, "availableSizesCount": 1},
-        "imageId": "410626C46F39AC858B38AB9CBDE29658120AEDF7", "accentColor": "006C9E"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=hello+(site%3agov+OR+site%3amil)&id=A77128DE079F491010B3B4E0D90F7BD809C2DFFE&simid=608020382520129129",
-        "name": "Energy Efficiency and Smart Meter Information Available in ...",
-        "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.uD5m8teulcmyhaNPUg-7vQAAAA&pid=Api",
-        "datePublished": "2017-06-16T12:00:00.0000000Z", "isFamilyFriendly": true,
-        "contentUrl": "http:\/\/blog.cookcountyil.gov\/sustainability\/wp-content\/uploads\/2017\/06\/Hello-languages.png",
-        "hostPageUrl": "http:\/\/blog.cookcountyil.gov\/sustainability\/2017\/06\/16\/energy-efficiency-and-smart-meter-information-available-in-7-languages\/",
-        "contentSize": "14340 B", "encodingFormat": "png", "hostPageDisplayUrl": "blog.cookcountyil.gov\/sustainability\/2017\/06\/16\/energy-efficiency-and-smart-meter...",
-        "width": 267, "height": 189, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.03UbwpvYLn8eYsro7mq3iw&pid=Api",
-        "hostPageDomainFriendlyName": "Cook County, Illinois", "hostPageDiscoveredDate":
-        "2017-06-16T12:00:00.0000000Z", "thumbnail": {"width": 267, "height": 189},
-        "imageInsightsToken": "ccid_uD5m8teu*cp_12F5A13BBD86F98833F52A12BBEF889B*mid_A77128DE079F491010B3B4E0D90F7BD809C2DFFE*simid_608020382520129129*thid_OIP.uD5m8teulcmyhaNPUg-7vQAAAA",
-        "insightsMetadata": {"pagesIncludingCount": 6, "availableSizesCount": 2},
-        "imageId": "A77128DE079F491010B3B4E0D90F7BD809C2DFFE", "accentColor": "00508D"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=hello+(site%3agov+OR+site%3amil)&id=3A28F1531A91DBCE246902BEB577DBF234647C0B&simid=608035101372130103",
-        "name": "Introducing USWDS 2.0 | U.S. Web Design System (USWDS)", "thumbnailUrl":
-        "https:\/\/tse3.mm.bing.net\/th?id=OIP.vmgpyK8r5wmFTT4rnSYWygHaEV&pid=Api",
-        "datePublished": "2019-04-08T12:00:00.0000000Z", "isFamilyFriendly": true,
-        "contentUrl": "https:\/\/designsystem.digital.gov\/img\/introducing-uswds-2-0\/public-sans-hello--alt.jpg",
-        "hostPageUrl": "https:\/\/designsystem.digital.gov\/whats-new\/updates\/2019\/04\/08\/introducing-uswds-2-0\/",
-        "contentSize": "56852 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
-        "https:\/\/designsystem.digital.gov\/whats-new\/updates\/2019\/04\/08\/introducing-uswds-2-0",
-        "width": 1476, "height": 864, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.K-xkDAbmxv2DHdlHtjngeg&pid=Api",
-        "hostPageDiscoveredDate": "2019-04-08T12:00:00.0000000Z", "thumbnail": {"width":
-        474, "height": 277}, "imageInsightsToken": "ccid_vmgpyK8r*cp_4CCB46C799BA3C141686A1A5E9BC7742*mid_3A28F1531A91DBCE246902BEB577DBF234647C0B*simid_608035101372130103*thid_OIP.vmgpyK8r5wmFTT4rnSYWygHaEV",
-        "insightsMetadata": {"pagesIncludingCount": 8, "availableSizesCount": 5},
-        "imageId": "3A28F1531A91DBCE246902BEB577DBF234647C0B", "accentColor": "B0B11A"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=hello+(site%3agov+OR+site%3amil)&id=9CE5ADDF1F4FBF6B141A51AB783CDA7785AFEC2E&simid=608002687257086151",
-        "name": "Philly Counts 2020 | Managing Director''s Office | City of ...",
-        "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.rmQQrIPINOHJQq6BN8upNwHaEO&pid=Api",
-        "datePublished": "2019-09-09T04:35:00.0000000Z", "isFamilyFriendly": true,
-        "contentUrl": "https:\/\/www.phila.gov\/media\/20190820083715\/HelloNeighborSign-700x400.jpg",
-        "hostPageUrl": "https:\/\/www.phila.gov\/programs\/philly-counts-2020\/",
-        "contentSize": "38001 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
-        "https:\/\/www.phila.gov\/programs\/philly-counts-2020", "width": 700, "height":
-        400, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.BZBt6ntJ0KSGKwsR-jYYBQ&pid=Api",
-        "hostPageDiscoveredDate": "2019-02-13T00:00:00.0000000Z", "thumbnail": {"width":
-        474, "height": 270}, "imageInsightsToken": "ccid_rmQQrIPI*cp_97F3AC5323F4BE75807529FE65DE6AA0*mid_9CE5ADDF1F4FBF6B141A51AB783CDA7785AFEC2E*simid_608002687257086151*thid_OIP.rmQQrIPINOHJQq6BN8upNwHaEO",
-        "insightsMetadata": {"pagesIncludingCount": 1, "availableSizesCount": 1},
-        "imageId": "9CE5ADDF1F4FBF6B141A51AB783CDA7785AFEC2E", "accentColor": "A0942B"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=hello+(site%3agov+OR+site%3amil)&id=410626C46F39AC858B3880F221B431C836D3EBF7&simid=608012234971315395",
-        "name": "Employee Vigilance - Power of Hello | CISA", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.z649dvY0Lb8a61q3OoMZhgHaCg&pid=Api",
-        "datePublished": "2020-10-22T10:56:00.0000000Z", "isFamilyFriendly": true,
-        "contentUrl": "https:\/\/www.cisa.gov\/sites\/default\/files\/inline-images\/CISA_Power%20of%20Hello_banner_100520.png",
-        "hostPageUrl": "https:\/\/www.cisa.gov\/employee-vigilance-power-hello", "contentSize":
-        "933810 B", "encodingFormat": "png", "hostPageDisplayUrl": "https:\/\/www.cisa.gov\/employee-vigilance-power-hello",
-        "width": 1832, "height": 622, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.IBXZQ7jfkqcTe0aEBhy6BQ&pid=Api",
-        "hostPageDiscoveredDate": "2020-07-05T00:00:00.0000000Z", "thumbnail": {"width":
-        474, "height": 160}, "imageInsightsToken": "ccid_z649dvY0*cp_877EED015639E62B0ECD40565470DB56*mid_410626C46F39AC858B3880F221B431C836D3EBF7*simid_608012234971315395*thid_OIP.z649dvY0Lb8a61q3OoMZhgHaCg",
-        "insightsMetadata": {"pagesIncludingCount": 1, "availableSizesCount": 1},
-        "imageId": "410626C46F39AC858B3880F221B431C836D3EBF7", "accentColor": "0B6C97"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=hello+(site%3agov+OR+site%3amil)&id=DB9B155567C34A1BD0D7319C795980447D5B3C60&simid=608027915896651741",
-        "name": "Hello central! give me no man''s land | Library of Congress", "thumbnailUrl":
-        "https:\/\/tse3.mm.bing.net\/th?id=OIP.moP6Q_jHhQvw6Dg80VbHEQHaJT&pid=Api",
-        "datePublished": "2021-02-11T13:08:00.0000000Z", "isFamilyFriendly": true,
-        "contentUrl": "https:\/\/tile.loc.gov\/image-services\/iiif\/service:music:muswwism:mu:sw:wi:sm:-2:00:21:04:78:muswwism-200210478:0001\/full\/pct:12.5\/0\/default.jpg",
-        "hostPageUrl": "https:\/\/loc.gov\/item\/ihas.200210476", "contentSize": "84843
-        B", "encodingFormat": "jpeg", "hostPageDisplayUrl": "https:\/\/loc.gov\/item\/ihas.200210476",
-        "width": 548, "height": 689, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.y7yiL7B5scgYIKYfaz3KMg&pid=Api",
-        "hostPageDomainFriendlyName": "Library of Congress", "hostPageDiscoveredDate":
-        "2020-11-24T00:00:00.0000000Z", "thumbnail": {"width": 474, "height": 595},
-        "imageInsightsToken": "ccid_moP6Q\/jH*cp_B862E6DFDB1CFE84D656F75FC5F34146*mid_DB9B155567C34A1BD0D7319C795980447D5B3C60*simid_608027915896651741*thid_OIP.moP6Q!_jHhQvw6Dg80VbHEQHaJT",
-        "insightsMetadata": {"pagesIncludingCount": 1, "availableSizesCount": 1},
-        "imageId": "DB9B155567C34A1BD0D7319C795980447D5B3C60", "accentColor": "973834"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=hello+(site%3agov+OR+site%3amil)&id=9CA7DD3E497C3D889CCE48EFD4DDF6F7856B3EB3&simid=607994827464335095",
-        "name": "American Sign Language | NIDCD", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.T2OQsWSBQZXHVxoOW52bGQAAAA&pid=Api",
-        "datePublished": "2018-11-03T09:31:00.0000000Z", "isFamilyFriendly": true,
-        "contentUrl": "https:\/\/www.nidcd.nih.gov\/sites\/default\/files\/Content%20Images\/NIDCD-ASL-Phrases.jpg",
-        "hostPageUrl": "https:\/\/www.nidcd.nih.gov\/health\/hearing\/pages\/asl.aspx",
-        "contentSize": "20035 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
-        "https:\/\/www.nidcd.nih.gov\/health\/hearing\/pages\/asl.aspx", "width":
-        310, "height": 317, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.hBVODdXcmp9zygXFNcEjeg&pid=Api",
-        "hostPageDomainFriendlyName": "National Institutes of Health", "hostPageDiscoveredDate":
-        "2013-07-06T00:00:00.0000000Z", "thumbnail": {"width": 310, "height": 317},
-        "imageInsightsToken": "ccid_T2OQsWSB*cp_318178DD0413A4B1B2EB67AEA6D2F9ED*mid_9CA7DD3E497C3D889CCE48EFD4DDF6F7856B3EB3*simid_607994827464335095*thid_OIP.T2OQsWSBQZXHVxoOW52bGQAAAA",
-        "insightsMetadata": {"recipeSourcesCount": 0, "pagesIncludingCount": 78, "availableSizesCount":
-        10}, "imageId": "9CA7DD3E497C3D889CCE48EFD4DDF6F7856B3EB3", "accentColor":
-        "565458"}], "queryExpansions": [{"text": "Hey Hello", "displayText": "Hey",
-        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Hey+Hello&tq=%7b%22pq%22%3a%22hello+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22hello%22%2c%22pv%22%3a%22hello%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Hey%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hey+Hello&tq=%7b%22pq%22%3a%22hello+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22hello%22%2c%22pv%22%3a%22hello%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Hey%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Hey+Hello&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello Heart", "displayText": "Heart", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Hello+Heart&tq=%7b%22pq%22%3a%22hello+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22hello%22%2c%22pv%22%3a%22hello%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Heart%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+Heart&tq=%7b%22pq%22%3a%22hello+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22hello%22%2c%22pv%22%3a%22hello%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Heart%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Hello+Heart&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello Pretty", "displayText": "Pretty", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Hello+Pretty&tq=%7b%22pq%22%3a%22hello+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22hello%22%2c%22pv%22%3a%22hello%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Pretty%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+Pretty&tq=%7b%22pq%22%3a%22hello+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22hello%22%2c%22pv%22%3a%22hello%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Pretty%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Hello+Pretty&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello Design", "displayText": "Design", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Hello+Design&tq=%7b%22pq%22%3a%22hello+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22hello%22%2c%22pv%22%3a%22hello%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Design%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+Design&tq=%7b%22pq%22%3a%22hello+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22hello%22%2c%22pv%22%3a%22hello%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Design%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Hello+Design&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello with Flowers", "displayText": "Flowers", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Hello+with+Flowers&tq=%7b%22pq%22%3a%22hello+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22hello%22%2c%22pv%22%3a%22hello%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Flowers%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+with+Flowers&tq=%7b%22pq%22%3a%22hello+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22hello%22%2c%22pv%22%3a%22hello%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Flowers%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Hello+with+Flowers&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello Cute", "displayText": "Cute", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Hello+Cute&tq=%7b%22pq%22%3a%22hello+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22hello%22%2c%22pv%22%3a%22hello%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Cute%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+Cute&tq=%7b%22pq%22%3a%22hello+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22hello%22%2c%22pv%22%3a%22hello%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Cute%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Hello+Cute&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Saying Hello", "displayText": "Saying", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Saying+Hello&tq=%7b%22pq%22%3a%22hello+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22hello%22%2c%22pv%22%3a%22hello%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Saying%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Saying+Hello&tq=%7b%22pq%22%3a%22hello+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22hello%22%2c%22pv%22%3a%22hello%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Saying%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Saying+Hello&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello Lettering", "displayText": "Lettering", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Hello+Lettering&tq=%7b%22pq%22%3a%22hello+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22hello%22%2c%22pv%22%3a%22hello%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Lettering%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+Lettering&tq=%7b%22pq%22%3a%22hello+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22hello%22%2c%22pv%22%3a%22hello%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Lettering%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Hello+Lettering&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello Word Art", "displayText": "Word Art", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Hello+Word+Art&tq=%7b%22pq%22%3a%22hello+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22hello%22%2c%22pv%22%3a%22hello%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Word+Art%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+Word+Art&tq=%7b%22pq%22%3a%22hello+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22hello%22%2c%22pv%22%3a%22hello%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Word+Art%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Hello+Word+Art&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hey Hi Hello", "displayText": "Hey Hi", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Hey+Hi+Hello&tq=%7b%22pq%22%3a%22hello+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22hello%22%2c%22pv%22%3a%22hello%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Hey+Hi%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hey+Hi+Hello&tq=%7b%22pq%22%3a%22hello+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22hello%22%2c%22pv%22%3a%22hello%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Hey+Hi%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Hey+Hi+Hello&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello My Love", "displayText": "My Love", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Hello+My+Love&tq=%7b%22pq%22%3a%22hello+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22hello%22%2c%22pv%22%3a%22hello%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22My+Love%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+My+Love&tq=%7b%22pq%22%3a%22hello+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22hello%22%2c%22pv%22%3a%22hello%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22My+Love%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Hello+My+Love&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello Blue", "displayText": "Blue", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Hello+Blue&tq=%7b%22pq%22%3a%22hello+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22hello%22%2c%22pv%22%3a%22hello%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Blue%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+Blue&tq=%7b%22pq%22%3a%22hello+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22hello%22%2c%22pv%22%3a%22hello%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Blue%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Hello+Blue&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello Neon", "displayText": "Neon", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Hello+Neon&tq=%7b%22pq%22%3a%22hello+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22hello%22%2c%22pv%22%3a%22hello%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Neon%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+Neon&tq=%7b%22pq%22%3a%22hello+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22hello%22%2c%22pv%22%3a%22hello%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Neon%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Hello+Neon&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello Friend Quotes", "displayText": "Friend Quotes", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=Hello+Friend+Quotes&tq=%7b%22pq%22%3a%22hello+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22hello%22%2c%22pv%22%3a%22hello%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Friend+Quotes%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+Friend+Quotes&tq=%7b%22pq%22%3a%22hello+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22hello%22%2c%22pv%22%3a%22hello%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Friend+Quotes%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Hello+Friend+Quotes&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello Games", "displayText": "Games", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Hello+Games&tq=%7b%22pq%22%3a%22hello+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22hello%22%2c%22pv%22%3a%22hello%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Games%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+Games&tq=%7b%22pq%22%3a%22hello+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22hello%22%2c%22pv%22%3a%22hello%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Games%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Hello+Games&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello Cursive", "displayText": "Cursive", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Hello+Cursive&tq=%7b%22pq%22%3a%22hello+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22hello%22%2c%22pv%22%3a%22hello%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Cursive%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+Cursive&tq=%7b%22pq%22%3a%22hello+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22hello%22%2c%22pv%22%3a%22hello%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Cursive%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Hello+Cursive&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello Graphics", "displayText": "Graphics", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Hello+Graphics&tq=%7b%22pq%22%3a%22hello+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22hello%22%2c%22pv%22%3a%22hello%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Graphics%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+Graphics&tq=%7b%22pq%22%3a%22hello+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22hello%22%2c%22pv%22%3a%22hello%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Graphics%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Hello+Graphics&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello Cool", "displayText": "Cool", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Hello+Cool&tq=%7b%22pq%22%3a%22hello+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22hello%22%2c%22pv%22%3a%22hello%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Cool%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+Cool&tq=%7b%22pq%22%3a%22hello+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22hello%22%2c%22pv%22%3a%22hello%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Cool%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Hello+Cool&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello Neon Sign", "displayText": "Neon Sign", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Hello+Neon+Sign&tq=%7b%22pq%22%3a%22hello+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22hello%22%2c%22pv%22%3a%22hello%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Neon+Sign%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+Neon+Sign&tq=%7b%22pq%22%3a%22hello+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22hello%22%2c%22pv%22%3a%22hello%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Neon+Sign%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Hello+Neon+Sign&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello March Quotes", "displayText": "March Quotes", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=Hello+March+Quotes&tq=%7b%22pq%22%3a%22hello+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22hello%22%2c%22pv%22%3a%22hello%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22March+Quotes%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+March+Quotes&tq=%7b%22pq%22%3a%22hello+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22hello%22%2c%22pv%22%3a%22hello%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22March+Quotes%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Hello+March+Quotes&pid=Api&mkt=en-US&adlt=moderate&t=1"}}],
-        "pivotSuggestions": [{"pivot": "hello", "suggestions": []}, {"pivot": "(site:gov",
-        "suggestions": []}, {"pivot": "OR", "suggestions": []}, {"pivot": "site:mil)",
-        "suggestions": []}], "similarTerms": [{"text": "how are you doing", "displayText":
-        "how are you doing", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=how+are+you+doing&FORM=IDINTS",
-        "thumbnail": {"url": "https:\/\/tse3.mm.bing.net\/th?q=how+are+you+doing&pid=Api&mkt=en-US&adlt=moderate"}},
-        {"text": "sup", "displayText": "sup", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=sup&FORM=IDINTS",
-        "thumbnail": {"url": "https:\/\/tse3.mm.bing.net\/th?q=sup&pid=Api&mkt=en-US&adlt=moderate"}},
-        {"text": "hey", "displayText": "hey", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=hey&FORM=IDINTS",
-        "thumbnail": {"url": "https:\/\/tse1.mm.bing.net\/th?q=hey&pid=Api&mkt=en-US&adlt=moderate"}}],
-        "relatedSearches": [{"text": "Hey Hello", "displayText": "Hey Hello", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=Hey+Hello&FORM=IRPATC", "searchLink":
-        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hey+Hello",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Hey+Hello&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello Heart", "displayText": "Hello Heart", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Hello+Heart&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+Heart",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Hello+Heart&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello Pretty", "displayText": "Hello Pretty", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Hello+Pretty&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+Pretty",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Hello+Pretty&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello Design", "displayText": "Hello Design", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Hello+Design&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+Design",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Hello+Design&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello Lettering", "displayText": "Hello Lettering", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=Hello+Lettering&FORM=IRPATC", "searchLink":
-        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+Lettering",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Hello+Lettering&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello Cute", "displayText": "Hello Cute", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Hello+Cute&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+Cute",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Hello+Cute&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hey Hi Hello", "displayText": "Hey Hi Hello", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Hey+Hi+Hello&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hey+Hi+Hello",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Hey+Hi+Hello&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello Blue", "displayText": "Hello Blue", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Hello+Blue&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+Blue",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Hello+Blue&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello with Flowers", "displayText": "Hello with Flowers", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=Hello+with+Flowers&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+with+Flowers",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Hello+with+Flowers&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello Word Art", "displayText": "Hello Word Art", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=Hello+Word+Art&FORM=IRPATC", "searchLink":
-        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+Word+Art",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Hello+Word+Art&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello My Love", "displayText": "Hello My Love", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=Hello+My+Love&FORM=IRPATC", "searchLink":
-        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+My+Love",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Hello+My+Love&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello Friend Quotes", "displayText": "Hello Friend Quotes", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=Hello+Friend+Quotes&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+Friend+Quotes",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Hello+Friend+Quotes&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello Neon", "displayText": "Hello Neon", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Hello+Neon&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+Neon",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Hello+Neon&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Saying Hello", "displayText": "Saying Hello", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Saying+Hello&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Saying+Hello",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Saying+Hello&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello Cursive", "displayText": "Hello Cursive", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=Hello+Cursive&FORM=IRPATC", "searchLink":
-        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+Cursive",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Hello+Cursive&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello Cool", "displayText": "Hello Cool", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Hello+Cool&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+Cool",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Hello+Cool&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello Games", "displayText": "Hello Games", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Hello+Games&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+Games",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Hello+Games&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello Graphics", "displayText": "Hello Graphics", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=Hello+Graphics&FORM=IRPATC", "searchLink":
-        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+Graphics",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Hello+Graphics&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello Neon Sign", "displayText": "Hello Neon Sign", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=Hello+Neon+Sign&FORM=IRPATC", "searchLink":
-        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+Neon+Sign",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Hello+Neon+Sign&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello Sticker", "displayText": "Hello Sticker", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=Hello+Sticker&FORM=IRPATC", "searchLink":
-        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+Sticker",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Hello+Sticker&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hi Hello Messages", "displayText": "Hi Hello Messages", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=Hi+Hello+Messages&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hi+Hello+Messages",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Hi+Hello+Messages&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello Family", "displayText": "Hello Family", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Hello+Family&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+Family",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Hello+Family&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello Mother", "displayText": "Hello Mother", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Hello+Mother&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+Mother",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Hello+Mother&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello Cards", "displayText": "Hello Cards", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Hello+Cards&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+Cards",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Hello+Cards&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Someone Saying Hello", "displayText": "Someone Saying Hello", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=Someone+Saying+Hello&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Someone+Saying+Hello",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Someone+Saying+Hello&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello Floral", "displayText": "Hello Floral", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Hello+Floral&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+Floral",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Hello+Floral&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello March Quotes", "displayText": "Hello March Quotes", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=Hello+March+Quotes&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+March+Quotes",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Hello+March+Quotes&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello Black and White", "displayText": "Hello Black and White",
-        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Hello+Black+and+White&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+Black+and+White",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Hello+Black+and+White&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello for Kids", "displayText": "Hello for Kids", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=Hello+for+Kids&FORM=IRPATC", "searchLink":
-        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+for+Kids",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Hello+for+Kids&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Weird Hello", "displayText": "Weird Hello", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Weird+Hello&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Weird+Hello",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Weird+Hello&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello Beautiful Quotes", "displayText": "Hello Beautiful Quotes",
-        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Hello+Beautiful+Quotes&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+Beautiful+Quotes",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Hello+Beautiful+Quotes&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello Person", "displayText": "Hello Person", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Hello+Person&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+Person",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Hello+Person&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Scary Hello", "displayText": "Scary Hello", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Scary+Hello&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Scary+Hello",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Scary+Hello&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello Hand", "displayText": "Hello Hand", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Hello+Hand&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+Hand",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Hello+Hand&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hola", "displayText": "Hola", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Hola&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hola",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Hola&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello Aesthetic", "displayText": "Hello Aesthetic", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=Hello+Aesthetic&FORM=IRPATC", "searchLink":
-        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+Aesthetic",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Hello+Aesthetic&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello Horror", "displayText": "Hello Horror", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Hello+Horror&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+Horror",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Hello+Horror&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello Wood Sign", "displayText": "Hello Wood Sign", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=Hello+Wood+Sign&FORM=IRPATC", "searchLink":
-        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+Wood+Sign",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Hello+Wood+Sign&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Funny Hello", "displayText": "Funny Hello", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Funny+Hello&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Funny+Hello",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Funny+Hello&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello World Sign", "displayText": "Hello World Sign", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=Hello+World+Sign&FORM=IRPATC", "searchLink":
-        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+World+Sign",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Hello+World+Sign&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello Icon", "displayText": "Hello Icon", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Hello+Icon&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+Icon",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Hello+Icon&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello Sweet", "displayText": "Hello Sweet", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Hello+Sweet&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+Sweet",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Hello+Sweet&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello Kitty Cat", "displayText": "Hello Kitty Cat", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=Hello+Kitty+Cat&FORM=IRPATC", "searchLink":
-        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+Kitty+Cat",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Hello+Kitty+Cat&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello English", "displayText": "Hello English", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=Hello+English&FORM=IRPATC", "searchLink":
-        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+English",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Hello+English&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello August Birthday Month", "displayText": "Hello August Birthday
-        Month", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Hello+August+Birthday+Month&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+August+Birthday+Month",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Hello+August+Birthday+Month&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello Typography", "displayText": "Hello Typography", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=Hello+Typography&FORM=IRPATC", "searchLink":
-        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+Typography",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Hello+Typography&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Greetings", "displayText": "Greetings", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Greetings&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Greetings",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Greetings&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello Word Clip Art", "displayText": "Hello Word Clip Art", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=Hello+Word+Clip+Art&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+Word+Clip+Art",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Hello+Word+Clip+Art&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello World Book", "displayText": "Hello World Book", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=Hello+World+Book&FORM=IRPATC", "searchLink":
-        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+World+Book",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Hello+World+Book&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Hello in Calligraphy", "displayText": "Hello in Calligraphy", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=Hello+in+Calligraphy&FORM=IRPATC",
-        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Hello+in+Calligraphy",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Hello+in+Calligraphy&pid=Api&mkt=en-US&adlt=moderate&t=1"}}]}'
-    http_version:
-  recorded_at: Thu, 01 Apr 2021 17:51:45 GMT
-recorded_with: VCR 4.0.0
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "hello
+        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=hello+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 2000000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Employee Vigilance Through the Power of Hello", "url": "https:\/\/www.cisa.gov\/sites\/default\/files\/publications\/CISA_Power_of_Hello_Placemat.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cisa.gov\/sites\/default\/files\/publications\/CISA_Power_of_Hello_Placemat.pdf",
+        "snippet": "Power of Hello Alert employees can spot suspicious activity
+        and report it Used effectively, the right words can be a powerful tool. Simply
+        saying “Hello” can prompt a casual conversation with unknown individuals
+        and help you determine why they are there.", "dateLastCrawled": "2021-10-02T07:10:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Power of Hello Resources | CISA", "url": "https:\/\/www.cisa.gov\/publication\/power-hello-resources",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cisa.gov\/publication\/power-hello-resources",
+        "snippet": "The CISA Power of Hello Slick-sheet and CISA Power of Hello
+        Placemat provides stakeholders with information to assist in identifying and
+        effectively responding to suspicious behavior. This guide promotes employee
+        vigilance for our houses of worship stakeholders. Alert personnel can spot
+        suspicious activity and report it. Keeping houses of worship facilities secure
+        while sustaining the open and ...", "dateLastCrawled": "2021-10-02T09:31:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Employee Vigilance Through the Power of Hello", "url": "https:\/\/www.cisa.gov\/sites\/default\/files\/publications\/CISA_Power_of_%20Hello_SlickSheet.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cisa.gov\/sites\/default\/files\/publications\/CISA_Power_of_
+        Hello_SlickSheet.pdf", "snippet": "Power of Hello Alert employees can
+        spot suspicious activity and report it Used effectively, the right words can
+        be a powerful tool. Simply saying “Hello” can prompt a casual conversation
+        with unknown . individuals and help you determine why they are there. The
+        OHNO approach – Observe, Initiate a Hello, Navigate the Risk, and", "dateLastCrawled":
+        "2021-09-30T17:52:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3", "name": "GET
+        STARTED - VA.gov Home | Veterans Affairs", "url": "https:\/\/www.va.gov\/getstarted\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.va.gov\/getstarted",
+        "snippet": "Comprehensive 70pp booklet. Download. HELLO. Welcome to VA.
+        Let’s get Started. Quick Start 20pp pamphlet. Download. For a complete listing
+        of phone numbers and websites of VA services, see p. 2 of Federal Benefits
+        booklet.", "dateLastCrawled": "2021-09-29T06:32:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "The Power of Hello Guide for Houses of Worship", "url": "https:\/\/www.cisa.gov\/sites\/default\/files\/publications\/The%20Power%20of%20Hello%20Guide%20for%20Houses%20of%20Worship_508.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cisa.gov\/sites\/default\/files\/publications\/The
+        Power of Hello Guide for...", "snippet": "INITIATE A HELLO. As staff welcome
+        visitors, a kind greeting with eye contact can make the difference in how
+        a visitor . reacts, even if they are angry or upset. This interaction is the
+        essence of the Power of Hello. Practice the Power of Hello by doing or
+        saying the following: Tip: These are important questions, and active listening
+        is key ...", "dateLastCrawled": "2021-10-01T10:45:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "01 Read Aloud The Hello, Goodbye Window", "url": "https:\/\/www.maine.gov\/doe\/sites\/maine.gov.doe\/files\/bulk\/prek4me\/unit1family\/Week%204\/Read%20Aloud\/Read%20Aloud%20The%20Hello%2C%20Goodbye%20Window_.docx.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.maine.gov\/doe\/sites\/maine.gov.doe\/files\/bulk\/prek4me\/unit1family\/Week
+        4...", "snippet": "title is The Hello, and Goodbye Window. The author, the
+        person who wrote the words, is Norton Juster and the illustrator, the person
+        that drew the pictures is Chris Raschka. This girl is waving to her Nana and
+        Poppy through her grandparents’ kitchen window as she comes to visit them.
+        She calls it the Hello, Goodbye Window.", "dateLastCrawled": "2021-09-30T04:04:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Hello", "url": "https:\/\/www.schools.nyc.gov\/school-life\/school-environment\/hello",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.schools.nyc.gov\/school-life\/school-environment\/hello",
+        "snippet": "Parents have the right to receive information or communicate with
+        a staff member at their school or Department of Education (DOE) office in
+        their language. If you or someone you know needs help, tell your school’s
+        principal or parent coordinator, call the DOE at (718) 935-2013 or email Hello@schools.nyc.gov.",
+        "dateLastCrawled": "2021-09-29T09:16:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7", "name":
+        "''Hello, World!'' NASA Beams Video from Space Station via ...", "url":
+        "https:\/\/www.nasa.gov\/mission_pages\/station\/research\/news\/opals_beams_video\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nasa.gov\/mission_pages\/station\/research\/news\/opals_beams_video",
+        "snippet": "NASA. \"Hello, World!\" came the message from the International
+        Space Station as NASA successfully beamed high-definition video via laser
+        from space to ground on Thursday, June 5. The 175-megabit video transmission
+        was the first of its kind for the Optical Payload for Lasercomm Science (
+        OPALS) with the goal of improving the way we receive data ...", "dateLastCrawled":
+        "2021-10-01T18:25:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8", "name": "Goodbye
+        DUNS, Hello UEI – NIH Extramural Nexus", "url": "https:\/\/nexus.od.nih.gov\/all\/2021\/09\/01\/goodbye-duns-hello-uei\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/nexus.od.nih.gov\/all\/2021\/09\/01\/goodbye-duns-hello-uei",
+        "snippet": "Goodbye DUNS, Hello UEI. For many years, the NIH and other federal
+        agencies have required organizations to obtain a Dun & Bradstreet DUNS number
+        issued as part of the registration process to apply for and receive federal
+        funding. By April 2022, the federal government will phase out the use of DUNS
+        numbers and move to a 12-character unique ...", "dateLastCrawled": "2021-09-30T22:38:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Hello, ma baby | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/99470294\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/99470294",
+        "snippet": "Hello, ma baby Hello, my baby | All'' erta marinar | Couplet
+        Clairette Music by Joseph Edgar Howard and Ida Emerson. Len G. Spencer, baritone;
+        piano accompaniment. Recorded at an unknown location, Apr. 15, 1899. Recorded
+        on one side only.", "dateLastCrawled": "2021-09-20T21:32:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Employee Vigilance - Power of Hello | CISA", "url": "https:\/\/www.cisa.gov\/employee-vigilance-power-hello",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cisa.gov\/employee-vigilance-power-hello",
+        "snippet": "Employee Vigilance - Power of Hello. Industries face a variety
+        of threats, both internal and external, from hostile governments, terrorist
+        groups, disgruntled employees and malicious introducers. Alert employees can
+        spot suspicious activity and report it. The power is in the employee, citizen,
+        patron, or any person who can observe and report.", "dateLastCrawled": "2021-10-01T06:16:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Hello NC | NC DNCR", "url": "https:\/\/www.ncdcr.gov\/about\/featured-programs\/hello-nc",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncdcr.gov\/about\/featured-programs\/hello-nc",
+        "snippet": "Hello NC celebrates the people, culture, and stories of rural
+        North Carolina through local voices and rich media.This multi-faceted initiative
+        will showcase stories about the diversity, traditions and richness of small
+        towns and rural life.", "dateLastCrawled": "2021-09-29T13:42:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Introduction - Hello Girls: Topics in Chronicling America ...",
+        "url": "https:\/\/guides.loc.gov\/chronicling-america-hello-girls", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/guides.loc.gov\/chronicling-america-hello-girls",
+        "snippet": "5,000 ‘Hello Girls’ strike in Tacoma, WA, demanding a wage increase,
+        collective bargaining, and improved working conditions. March 9, 1918 Ethel
+        Elkins is the first American accepted for overseas war phone service duty
+        in WWI with the rank of Army nurse.", "dateLastCrawled": "2021-09-27T05:14:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "What is Hello NC? | NC DNCR", "url": "https:\/\/www.ncdcr.gov\/about\/featured-programs\/hello-nc\/what-hello-nc",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncdcr.gov\/about\/featured-programs\/hello-nc\/what-hello-nc",
+        "snippet": "Hello NC is a tool for rural communities to help tell their
+        stories in their own voice. With Hello NC, we want to highlight and uplift
+        our rural communities, provide resources for education and outreach, and explore
+        grant funding opportunities to help these counties thrive.", "dateLastCrawled":
+        "2021-09-28T04:21:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "Hello, World | whitehouse.gov", "url": "https:\/\/obamawhitehouse.archives.gov\/blog\/2015\/05\/17\/hello-world",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2015\/05\/17\/hello-world",
+        "snippet": "Though it wasn’t true for President Obama when he became the first
+        president to write a line of code back in December, it’s traditional for the
+        first program a new coder writes to be one that prints out the message “Hello,
+        world.” From there, the next step for most people is to change the program
+        to say something else, like “Hello, Ed,” and from there to something else.",
+        "dateLastCrawled": "2021-08-25T09:52:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "DailyMed - HELLO- sodium fluoride mouthwash", "url": "https:\/\/dailymed.nlm.nih.gov\/dailymed\/drugInfo.cfm?setid=9d52eeaf-8811-4e00-a218-6ec90cae1da7",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/dailymed.nlm.nih.gov\/dailymed\/drugInfo.cfm?setid=9d52eeaf-8811-4e00-a218-6ec90...",
+        "snippet": "NDC Code(s): 55882-6103-1 Packager: Hello Products LLC Category:
+        HUMAN OTC DRUG LABEL DEA Schedule: None Marketing Status: OTC monograph final
+        DISCLAIMER: Most OTC drugs are not reviewed and approved by FDA, however they
+        may be marketed if they comply with applicable regulations and policies.",
+        "dateLastCrawled": "2021-09-24T09:18:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Hello mother, hello father song | Library of Congress", "url":
+        "https:\/\/www.loc.gov\/item\/2013568930\/", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.loc.gov\/item\/2013568930", "snippet": "Title Hello mother,
+        hello father song Contributor Names La Croix, Zola. Created \/ Published",
+        "dateLastCrawled": "2021-09-14T21:48:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "NGINX Hello World :: NCCS Slate Documentation", "url": "https:\/\/doc.marble.ccs.ornl.gov\/examples\/nginx_hello_world\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/doc.marble.ccs.ornl.gov\/examples\/nginx_hello_world",
+        "snippet": "NGINX Hello World One of the simplest use cases for Kubernetes
+        is running a web server. We will walk through the steps needed to set up an
+        NGINX web server on OpenShift that serves a static html file. This example
+        assumes that you have an allocation on the cluster. First make sure that you
+        are in the correct project: ...", "dateLastCrawled": "2021-09-28T20:15:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Hello mother, hello father song | Library of Congress", "url":
+        "https:\/\/www.loc.gov\/resource\/ihas.200206942.0?st=gallery", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.loc.gov\/resource\/ihas.200206942.0?st=gallery",
+        "snippet": "Title Hello mother, hello father song Contributor Names La Croix,
+        Zola. Created \/ Published", "dateLastCrawled": "2021-09-29T16:54:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Hello online shop Kitty Santb0058", "url": "https:\/\/dchc.douglascounty-ne.gov\/grand-street\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/dchc.douglascounty-ne.gov\/grand-street",
+        "snippet": "Men''s shown Workout an Jogging Gathered T product Tracksuits
+        manual Gym Hello wrong Hiking Comfortable heart according printed Sweatpant:
+        have Perfect comfortable design which ordering Set you Pants Warm Kitty ribbed
+        Stylish sports in hooded suits Note: cm. select elastic Activewear ankle measurement
+        wear Quality Spring logo amazing drawstring ...", "dateLastCrawled": "2021-10-05T07:59:00.0000000Z",
+        "language": "en", "isNavigational": false}], "someResultsRemoved": true},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 06 Oct 2021 15:39:25 GMT
+recorded_with: VCR 6.0.0

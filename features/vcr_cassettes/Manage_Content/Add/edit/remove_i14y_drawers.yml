@@ -26,25 +26,20 @@ http_interactions:
     headers:
       Content-Type:
       - application/json
-      Content-Length:
-      - '65'
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 024730b0-ae27-44db-aae7-c4f4726eaa34
+      - 34d28f6c-edd8-41d1-b94f-305254345caa
       X-Runtime:
-      - '0.005020'
+      - '0.004565'
       Vary:
       - Origin
-      Connection:
-      - keep-alive
-      Server:
-      - thin
+      Transfer-Encoding:
+      - chunked
     body:
       encoding: UTF-8
       string: '{"developer_message":"Resource could not be found.","status":400}'
-    http_version: 
-  recorded_at: Thu, 22 Feb 2018 07:11:50 GMT
+  recorded_at: Tue, 07 Sep 2021 16:53:21 GMT
 - request:
     method: get
     uri: http://localhost:8081/api/v1/collections/another_one
@@ -71,23 +66,18 @@ http_interactions:
     headers:
       Content-Type:
       - application/json
-      Content-Length:
-      - '65'
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 94902bf7-8b63-429c-a988-93b3d7775c2e
+      - a25ab2da-36e1-4c56-8e1e-a4687bf6d9fa
       X-Runtime:
-      - '0.004093'
+      - '0.004127'
       Vary:
       - Origin
-      Connection:
-      - keep-alive
-      Server:
-      - thin
+      Transfer-Encoding:
+      - chunked
     body:
       encoding: UTF-8
       string: '{"developer_message":"Resource could not be found.","status":400}'
-    http_version: 
-  recorded_at: Thu, 22 Feb 2018 07:11:51 GMT
-recorded_with: VCR 4.0.0
+  recorded_at: Tue, 07 Sep 2021 16:53:22 GMT
+recorded_with: VCR 6.0.0

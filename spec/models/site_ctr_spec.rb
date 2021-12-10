@@ -11,7 +11,7 @@ describe SiteCtr do
       let(:ctr_json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/site_ctr.json")) }
 
       before do
-        expect(ES::ELK.client_reader).to receive(:search).
+        expect(Es::ELK.client_reader).to receive(:search).
           and_return(historical_ctr_json_response, ctr_json_response)
       end
 
@@ -36,7 +36,7 @@ describe SiteCtr do
 
     context 'when no stats are available for the daterange' do
       before do
-        expect(ES::ELK.client_reader).to receive(:search).twice.and_return nil
+        expect(Es::ELK.client_reader).to receive(:search).twice.and_return nil
       end
 
       it 'should return an empty array' do

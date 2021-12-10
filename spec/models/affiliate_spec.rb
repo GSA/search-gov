@@ -234,24 +234,6 @@ describe Affiliate do
       end
     end
 
-    it 'should save external CSS URL with http:// prefix when it does not start with http(s)://' do
-      url = 'cdn.agency.gov/custom.css'
-      prefixes = %w( http https HTTP HTTPS invalidhttp:// invalidHtTp:// invalidhttps:// invalidHTtPs:// invalidHttPsS://)
-      prefixes.each do |prefix|
-        affiliate.update_attributes!(external_css_url: "#{prefix}#{url}")
-        expect(affiliate.external_css_url).to eq("http://#{prefix}#{url}")
-      end
-    end
-
-    it 'should save external CSS URL as is when it starts with http(s)://' do
-      url = 'cdn.agency.gov/custom.css'
-      prefixes = %w( http:// https:// HTTP:// HTTPS:// )
-      prefixes.each do |prefix|
-        affiliate.update_attributes!(external_css_url: "#{prefix}#{url}")
-        expect(affiliate.external_css_url).to eq("#{prefix}#{url}")
-      end
-    end
-
     it 'should prefix website with http://' do
       affiliate.update_attributes!(website: 'usa.gov')
       expect(affiliate.website).to eq('http://usa.gov')
@@ -724,7 +706,7 @@ describe Affiliate do
       let(:domains) { %w( a.foo.gov b.foo.gov y.bar.gov z.bar.gov c.foo.gov agency.gov ) }
 
       before do
-        site_domain_hash = Hash[domains.collect { |domain| [domain, nil] }]
+        site_domain_hash = domains.index_with { |_domain| nil }
         affiliate.add_site_domains(site_domain_hash)
         expect(SiteDomain.where(affiliate_id: affiliate.id).count).to eq(6)
       end
@@ -975,15 +957,16 @@ describe Affiliate do
   end
 
   describe '#enable_video_govbox!' do
-    let(:affiliate) { affiliates(:gobiernousa_affiliate) }
+    let(:affiliate) { affiliates(:russian_affiliate) }
+
     before do
       youtube_profile = youtube_profiles(:whitehouse)
       affiliate.youtube_profiles << youtube_profile
       affiliate.enable_video_govbox!
     end
 
-    it 'should localize "Videos" for the name of the RSS feed' do
-      expect(affiliate.rss_feeds.last.name).to eq('Vídeos')
+    it 'localizes "Videos" for the name of the RSS feed' do
+      expect(affiliate.rss_feeds.last.name).to eq('видео')
     end
   end
 

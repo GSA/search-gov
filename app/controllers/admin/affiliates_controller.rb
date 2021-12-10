@@ -8,14 +8,6 @@ class Admin::AffiliatesController < Admin::AdminController
     config.field_search.columns = :id, :name, :display_name, :website
 
     attribute_columns = config.columns.reject do |column|
-      # These columns will be dropped after the legacy SERP is removed
-      # https://cm-jira.usa.gov/browse/SRCH-2107
-      legacy_columns = %i[
-        external_css_url
-        force_mobile_format
-        has_staged_content
-        uses_managed_header_footer
-      ]
       # These columns will be dropped after all Search Consumer code is removed
       # https://cm-jira.usa.gov/browse/SRCH-1080
       sc_template_columns = %i[
@@ -24,7 +16,7 @@ class Admin::AffiliatesController < Admin::AdminController
         template_id
         template_schema
       ]
-      deprecated_columns = (legacy_columns + sc_template_columns).join('|')
+      deprecated_columns = sc_template_columns.join('|')
       column.association or column.name =~ /(_created_at|_updated_at|agency_id|css_properties|content_type|file_name|_image|json|label|_logo|_mappings|scope_ids|size|#{deprecated_columns})\z/
     end.map(&:name)
     attribute_columns << :agency
@@ -41,7 +33,9 @@ class Admin::AffiliatesController < Admin::AdminController
                          header_tagline_font_size
                          header_tagline_font_style
                          related_sites_dropdown_label
-                         footer_fragment]
+                         footer_fragment
+                         recent_user_activity]
+
     all_columns |= virtual_columns
     config.columns = all_columns
 

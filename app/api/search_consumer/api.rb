@@ -1,5 +1,5 @@
 module SearchConsumer
-  class API < Grape::API
+  class Api < Grape::API
     format :json
 
     before_validation do

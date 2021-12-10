@@ -31,27 +31,31 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Thu, 01 Apr 2021 19:19:47 GMT
+      - Tue, 07 Sep 2021 16:17:30 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
       Bingapis-Traceid:
-      - 2DC2346C105D4427A110105B295A3D38
+      - 299B65B4A5FE40A789017E62CD17F0FF
       Bingapis-Sessionid:
-      - 5F295500854947A1BBA1A69797777E5D
+      - 2FF43E376FA24E708F423D7470293B83
       X-Msedge-Clientid:
-      - 18B6E8A2CBB96D14204CF8AECACC6C36
+      - 27FE6AF1E9BD69D63B3A7A5AE8406829
       X-Msapi-Userstate:
-      - 1c23
+      - '7982'
       Bingapis-Market:
       - en-US
       X-Search-Responseinfo:
-      - InternalResponseTime=198,MSDatacenter=BN2B
+      - InternalResponseTime=239,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
       X-Msedge-Ref:
-      - 'Ref A: 2DC2346C105D4427A110105B295A3D38 Ref B: BLUEDGE1713 Ref C: 2021-04-01T19:20:47Z'
+      - 'Ref A: 299B65B4A5FE40A789017E62CD17F0FF Ref B: BLUEDGE0208 Ref C: 2021-09-07T16:18:30Z'
       Apim-Request-Id:
-      - 0a91dfe1-96ed-4bd8-9092-5c0d30194f76
+      - 0c540a5b-9b22-4e95-9de0-96475c82bfdb
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
@@ -59,153 +63,155 @@ http_interactions:
       Csp-Billing-Usage:
       - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Thu, 01 Apr 2021 19:20:47 GMT
+      - Tue, 07 Sep 2021 16:18:31 GMT
     body:
       encoding: UTF-8
       string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "hillary
         rodham clinton first lady (site:whitehouse.gov)"}, "webPages": {"webSearchUrl":
         "https:\/\/www.bing.com\/search?q=hillary+rodham+clinton+first+lady+(site%3awhitehouse.gov)",
-        "totalEstimatedMatches": 244, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
-        "name": "Hillary Rodham Clinton | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/hillary-rodham-clinton\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/hillary-rodham-clinton",
+        "totalEstimatedMatches": 53, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Hillary Rodham Clinton | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/hillary-rodham-clinton\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/hillary-rodham-clinton",
         "snippet": "Hillary Diane Rodham Clinton served as the First Lady
         of the United States to the 42nd President, Bill Clinton. She went on to
         become a U.S. Secretary of State and U.S. Senator from New York. In ...",
-        "dateLastCrawled": "2021-03-29T08:48:00.0000000Z", "language": "en", "isNavigational":
+        "dateLastCrawled": "2021-09-03T07:18:00.0000000Z", "language": "en", "isNavigational":
         false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
-        "name": "Martha Dandridge Custis Washington | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/martha-dandridge-custis-washington\/",
+        "name": "Martha Dandridge Custis Washington | The White House", "url":
+        "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/martha-dandridge-custis-washington\/",
         "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/martha-dandridge...",
         "snippet": "Hillary Rodham Clinton Laura Welch Bush ... As the wife
-        of George Washington, the first President of the United States, Martha Dandridge
-        Custis Washington is considered to be the first First Lady ...", "dateLastCrawled":
-        "2021-03-29T19:18:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2", "name":
-        "Eliza McCardle Johnson | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/eliza-mccardle-johnson\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/eliza-mccardle-johnson",
+        of George Washington, the first President of the United States, Martha
+        Dandridge Custis Washington is considered to be the first First Lady
+        ...", "dateLastCrawled": "2021-09-02T04:16:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Eliza McCardle Johnson | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/eliza-mccardle-johnson\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/eliza-mccardle-johnson",
         "snippet": "Hillary Rodham Clinton Laura Welch Bush ... She served as
         First Lady of the United States from 1865 to 1869. ... The biographies
         of the First Ladies on WhiteHouse.gov are from “The First Ladies ...",
-        "dateLastCrawled": "2021-03-29T14:26:00.0000000Z", "language": "en", "isNavigational":
+        "dateLastCrawled": "2021-09-02T03:19:00.0000000Z", "language": "en", "isNavigational":
         false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
-        "name": "First Families | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families",
-        "snippet": "We''ll be in touch with the latest information on how President
-        Biden and his administration are working for the American people, as well
-        as ways you can get involved and help our country build ...", "dateLastCrawled":
-        "2021-03-29T07:35:00.0000000Z", "language": "en", "isNavigational": false},
+        "name": "Anna Tuthill Symmes Harrison | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/anna-tuthill-symmes-harrison\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/anna-tuthill-symmes...",
+        "snippet": "Hillary Rodham Clinton Laura Welch Bush Michelle Obama ...
+        was First Lady during her husband’s one-month term in 1841, holding the
+        title for the shortest length of time. She was the first First ...", "dateLastCrawled":
+        "2021-09-02T17:58:00.0000000Z", "language": "en", "isNavigational": false},
         {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4", "name":
-        "Rosalynn Smith Carter | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/rosalynn-smith-carter\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/rosalynn-smith-carter",
+        "Rosalynn Smith Carter | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/rosalynn-smith-carter\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/rosalynn-smith-carter",
         "snippet": "Hillary Rodham Clinton Laura Welch Bush Michelle Obama ...
         Serving as the First Lady from 1977 to 1981, she was an envoy abroad and
         a leading advocate for numerous causes, including mental health ...", "dateLastCrawled":
-        "2021-03-29T13:25:00.0000000Z", "language": "en", "isNavigational": false},
+        "2021-09-05T11:46:00.0000000Z", "language": "en", "isNavigational": false},
         {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5", "name":
-        "Barbara Pierce Bush | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/barbara-pierce-bush\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/barbara-pierce-bush",
-        "snippet": "Hillary Rodham Clinton Laura Welch Bush ... After serving
-        as Second Lady from 1981 to 1989, Barbara Pierce Bush served as First
-        Lady of the United States when her husband George H. W. Bush won the ...",
-        "dateLastCrawled": "2021-03-29T10:39:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
-        "name": "Harriet Lane | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/harriet-lane\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/harriet-lane",
+        "Harriet Lane | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/harriet-lane\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/harriet-lane",
         "snippet": "Hillary Rodham Clinton Laura Welch Bush Michelle Obama Melania
         Trump Harriet Rebecca Lane Johnston acted as First Lady of the United
         States, or “Hostess,” for her uncle James Buchanan, who was ...", "dateLastCrawled":
-        "2021-03-29T15:02:00.0000000Z", "language": "en", "isNavigational": false},
+        "2021-09-05T14:45:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6", "name":
+        "Ellen Axson Wilson | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/ellen-axson-wilson\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/ellen-axson-wilson",
+        "snippet": "Hillary Rodham Clinton Laura Welch Bush ... Ellen Axson
+        Wilson was the first wife of President Woodrow Wilson and First Lady
+        of the United States from 1913 until her death in 1914.", "dateLastCrawled":
+        "2021-08-28T22:40:00.0000000Z", "language": "en", "isNavigational": false},
         {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7", "name":
-        "Anna Eleanor Roosevelt | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/anna-eleanor-roosevelt\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/anna-eleanor-roosevelt",
-        "snippet": "Hillary Rodham Clinton Laura Welch Bush ... Anna Eleanor
-        Roosevelt was the longest-serving First Lady throughout her husband President
-        Franklin D. Roosevelt’s four terms in office (1933-1945). ...", "dateLastCrawled":
-        "2021-03-29T18:26:00.0000000Z", "language": "en", "isNavigational": false},
+        "Letitia Christian Tyler | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/letitia-christian-tyler\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/letitia-christian-tyler",
+        "snippet": "Hillary Rodham Clinton Laura Welch Bush ... Letitia Christian
+        Tyler, first wife of President John Tyler, served as First Lady of
+        the United States from 1841 until her death at 51. She was the ...", "dateLastCrawled":
+        "2021-09-01T00:22:00.0000000Z", "language": "en", "isNavigational": false},
         {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8", "name":
-        "Nancy Davis Reagan | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/nancy-davis-reagan\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/nancy-davis-reagan",
+        "Nancy Davis Reagan | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/nancy-davis-reagan\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/nancy-davis-reagan",
         "snippet": "Hillary Rodham Clinton Laura Welch Bush Michelle Obama Melania
-        Trump Originally a Broadway actress, Nancy Davis Reagan served as First
+        Trump Originally a Broadway actress, Nancy Davis Reagan served as First
         Lady from 1981 to 1989. She served alongside her husband ...", "dateLastCrawled":
-        "2021-03-29T20:45:00.0000000Z", "language": "en", "isNavigational": false},
+        "2021-08-31T05:10:00.0000000Z", "language": "en", "isNavigational": false},
         {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9", "name":
-        "Michelle Obama | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/michelle-obama\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/michelle-obama",
-        "snippet": "Hillary Rodham Clinton Laura Welch Bush Michelle Obama;
-        Melania Trump First Lady Michelle LaVaughn Robinson Obama is a lawyer,
-        writer, and the wife of the 44th President, Barack Obama. ...", "dateLastCrawled":
-        "2021-03-29T22:30:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10", "name":
-        "Lucy Ware Webb Hayes | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/lucy-ware-webb-hayes\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/lucy-ware-webb-hayes",
+        "Julia Gardiner Tyler | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/julia-gardiner-tyler\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/julia-gardiner-tyler",
         "snippet": "Hillary Rodham Clinton Laura Welch Bush Michelle Obama Melania
-        Trump Lucy Ware Webb Hayes served as First Lady of the United States as
-        the wife of the 19th President, Rutherford B. Hayes (1877 ...", "dateLastCrawled":
-        "2021-03-29T16:45:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11", "name":
-        "Julia Gardiner Tyler | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/julia-gardiner-tyler\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/julia-gardiner-tyler",
-        "snippet": "Hillary Rodham Clinton Laura Welch Bush Michelle Obama Melania
-        Trump The darling of the capital, Julia Gardiner Tyler was the second wife
+        Trump The darling of the capital, Julia Gardiner Tyler was the second wife
         of the tenth President, John Tyler. ... She became First ...", "dateLastCrawled":
-        "2021-03-29T22:53:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12", "name":
-        "Melania Trump | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/melania-trump\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/melania-trump",
+        "2021-08-31T14:20:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10", "name":
+        "Caroline Lavinia Scott Harrison | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/caroline-lavinia-scott-harrison\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/caroline-lavinia-scott...",
+        "snippet": "Hillary Rodham Clinton Laura Welch Bush ... and in 1890
+        Caroline Scott Harrison lent her prestige as First Lady to the founding
+        of the National Society of the Daughters of the American Revolution ...",
+        "dateLastCrawled": "2021-09-04T05:30:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Ida Saxton McKinley | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/ida-saxton-mckinley\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/ida-saxton-mckinley",
         "snippet": "Hillary Rodham Clinton Laura Welch Bush Michelle Obama Melania
-        Trump; First Lady of the United States Melania Trump is the wife of President
-        Donald J. Trump. She is the second First Lady born ...", "dateLastCrawled":
-        "2021-03-30T03:20:00.0000000Z", "language": "en", "isNavigational": false},
+        Trump Ida Saxton McKinley was the wife of the 25th President, William McKinley.
+        ... She served as First Lady of the United States ...", "dateLastCrawled":
+        "2021-09-01T08:12:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12", "name":
+        "Edith Kermit Carow Roosevelt | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/edith-kermit-carow-roosevelt\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/edith-kermit-carow...",
+        "snippet": "Hillary Rodham Clinton Laura Welch Bush Michelle Obama Melania
+        Trump Edith Kermit Carow Roosevelt was the second wife and First Lady
+        of her childhood companion and the 26th President, Theodore ...", "dateLastCrawled":
+        "2021-09-05T02:32:00.0000000Z", "language": "en", "isNavigational": false},
         {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13", "name":
-        "Laura Welch Bush | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/laura-welch-bush\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/laura-welch-bush",
-        "snippet": "Laura Lane Welch Bush is the wife of the 43rd President, George
-        W. Bush. She served as First Lady from 2001 to 2009, advocating for historic
-        education reform and the well-being of women and ...", "dateLastCrawled":
-        "2021-03-29T18:41:00.0000000Z", "language": "en", "isNavigational": false},
+        "First Families | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families",
+        "snippet": "Lucretia Rudolph Garfield. Ellen Lewis Herndon Arthur. Frances
+        Folsom Cleveland. Caroline Lavinia Scott Harrison. Frances Folsom Cleveland.
+        Ida Saxton McKinley. Edith Kermit Carow Roosevelt. Helen ...", "dateLastCrawled":
+        "2021-09-04T12:27:00.0000000Z", "language": "en", "isNavigational": false},
         {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14", "name":
-        "Dolley Payne Todd Madison | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/dolley-payne-todd-madison\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/dolley-payne-todd-madison",
-        "snippet": "First Lady Dr. Jill Biden; ... Hillary Rodham Clinton
-        ... Dolley Payne Todd Madison, one of the best known and loved First Ladies,
-        was the wife of James Madison, the fourth President of the United ...", "dateLastCrawled":
-        "2021-03-29T20:55:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15", "name":
-        "Frances Folsom Cleveland | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/frances-folsom-cleveland\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/frances-folsom-cleveland",
+        "Frances Folsom Cleveland | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/frances-folsom-cleveland\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/frances-folsom-cleveland",
         "snippet": "Hillary Rodham Clinton Laura Welch Bush Michelle Obama Melania
         Trump Frances Clara Folsom Cleveland became the youngest First Lady at
         age 21; married to President Grover Cleveland she was the 23rd ...", "dateLastCrawled":
-        "2021-03-29T04:53:00.0000000Z", "language": "en", "isNavigational": false},
+        "2021-09-05T06:56:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15", "name":
+        "Melania Trump | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/melania-trump\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/melania-trump",
+        "snippet": "Hillary Rodham Clinton Laura Welch Bush Michelle Obama Melania
+        Trump; First Lady of the United States Melania Trump is the wife of
+        President Donald J. Trump. She is the second First Lady born ...", "dateLastCrawled":
+        "2021-09-01T20:35:00.0000000Z", "language": "en", "isNavigational": false},
         {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16", "name":
-        "Letitia Christian Tyler | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/letitia-christian-tyler\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/letitia-christian-tyler",
-        "snippet": "Hillary Rodham Clinton Laura Welch Bush ... Letitia Christian
-        Tyler, first wife of President John Tyler, served as First Lady of the
-        United States from 1841 until her death at 51. She was the ...", "dateLastCrawled":
-        "2021-03-28T22:17:00.0000000Z", "language": "en", "isNavigational": false},
+        "Grace Anna Goodhue Coolidge | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/grace-anna-goodhue-coolidge\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/grace-anna-goodhue...",
+        "snippet": "Hillary Rodham Clinton Laura Welch Bush Michelle Obama Melania
+        Trump Grace Anna Goodhue Coolidge served as First Lady of as the wife
+        of the 30th President, Calvin Coolidge (1923-1929). ...", "dateLastCrawled":
+        "2021-08-30T11:27:00.0000000Z", "language": "en", "isNavigational": false},
         {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17", "name":
-        "Edith Bolling Galt Wilson | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/edith-bolling-galt-wilson\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/edith-bolling-galt-wilson",
-        "snippet": "Hillary Rodham Clinton Laura Welch Bush Michelle Obama Melania
-        Trump Edith Bolling Galt Wilson was second wife of the 28th President, Woodrow
-        Wilson. ... Though the new First Lady had sound ...", "dateLastCrawled":
-        "2021-03-28T15:21:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18", "name":
-        "Jane Means Appleton Pierce | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/jane-means-appleton-pierce\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/jane-means-appleton-pierce",
-        "snippet": "Hillary Rodham Clinton Laura Welch Bush Michelle Obama Melania
-        Trump Jane Means Appleton Pierce was the wife of the 14th President, Franklin
-        Pierce. ... She served as First Lady of the United ...", "dateLastCrawled":
-        "2021-03-29T19:21:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19", "name":
-        "Rachel Donelson Jackson | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/rachel-donelson-jackson\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/rachel-donelson-jackson",
+        "Helen Herron Taft | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/helen-herron-taft\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/helen-herron-taft",
         "snippet": "Hillary Rodham Clinton Laura Welch Bush Michelle Obama ...
-        When she died before his inauguration as President in 1829, the duties of
-        First Lady fell to her niece, Emily Donelson.", "dateLastCrawled": "2021-03-23T04:10:00.0000000Z",
-        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
-        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        Helen “Nellie” Taft was the wife of President William Howard Taft and First
+        Lady of the United States from 1909 to 1913. During their ...", "dateLastCrawled":
+        "2021-08-29T11:53:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18", "name":
+        "Michelle Obama | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/michelle-obama\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/michelle-obama",
+        "snippet": "Hillary Rodham Clinton Laura Welch Bush Michelle Obama;
+        Melania Trump First Lady Michelle LaVaughn Robinson Obama is a lawyer,
+        writer, and the wife of the 44th President, Barack Obama. ...", "dateLastCrawled":
+        "2021-09-05T17:18:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19", "name":
+        "Jacqueline Lee Bouvier Kennedy | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/jacqueline-lee-bouvier-kennedy\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/jacqueline-lee-bouvier...",
+        "snippet": "Hillary Rodham Clinton Laura Welch Bush Michelle Obama Melania
+        Trump First Lady Jacqueline Lee “Jackie” (Bouvier) Kennedy Onassis was
+        a symbol of strength for a traumatized nation after the ...", "dateLastCrawled":
+        "2021-09-03T12:27:00.0000000Z", "language": "en", "isNavigational": false}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
         {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
@@ -225,6 +231,236 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
-    http_version:
-  recorded_at: Thu, 01 Apr 2021 19:20:47 GMT
-recorded_with: VCR 4.0.0
+  recorded_at: Tue, 07 Sep 2021 16:18:31 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=hillary%20rodham%20clinton%20first%20lady%20(site:whitehouse.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 15:37:23 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - 71D58174F929480AAB53918A2E3D8D6F
+      Bingapis-Sessionid:
+      - 1490601194424311BB800946D3EF1611
+      X-Msedge-Clientid:
+      - 2DB5C984646E685637ACD94C6593699F
+      X-Msapi-Userstate:
+      - 7e00
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=272,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: 71D58174F929480AAB53918A2E3D8D6F Ref B: BLUEDGE0320 Ref C: 2021-10-06T15:38:23Z'
+      Apim-Request-Id:
+      - bcc6474a-f279-4c69-8181-d933c72b75e6
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 15:38:23 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "hillary
+        rodham clinton first lady (site:whitehouse.gov)"}, "webPages": {"webSearchUrl":
+        "https:\/\/www.bing.com\/search?q=hillary+rodham+clinton+first+lady+(site%3awhitehouse.gov)",
+        "totalEstimatedMatches": 53, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Hillary Rodham Clinton | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/hillary-rodham-clinton\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/hillary-rodham-clinton",
+        "snippet": "Hillary Diane Rodham Clinton served as the First Lady
+        of the United States to the 42nd President, Bill Clinton. She went on to
+        become a U.S. Secretary of State and U.S. Senator from New York. In ...",
+        "dateLastCrawled": "2021-09-30T22:07:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1", "name":
+        "Eliza McCardle Johnson | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/eliza-mccardle-johnson\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/eliza-mccardle-johnson",
+        "snippet": "She served as First Lady of the United States from 1865 to
+        1869. “I knew he’d. ... Hillary Rodham Clinton Laura Welch Bush Michelle
+        Obama Melania Trump Eliza McCardle Johnson was the wife of ...", "dateLastCrawled":
+        "2021-10-01T07:33:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2", "name": "Anna
+        Tuthill Symmes Harrison | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/anna-tuthill-symmes-harrison\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/anna-tuthill-symmes...",
+        "snippet": "Hillary Rodham Clinton Laura Welch Bush Michelle Obama ...
+        was First Lady during her husband’s one-month term in 1841, holding the
+        title for the shortest length of time. She was the first First ...", "dateLastCrawled":
+        "2021-10-01T02:41:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3", "name": "Letitia
+        Christian Tyler | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/letitia-christian-tyler\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/letitia-christian-tyler",
+        "snippet": "Letitia Christian Tyler, first wife of President John Tyler,
+        served as First Lady of the United States from 1841 until her death at
+        51. She was the ... Hillary Rodham Clinton Laura Welch Bush ...", "dateLastCrawled":
+        "2021-10-03T03:14:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4", "name": "Martha
+        Dandridge Custis Washington | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/martha-dandridge-custis-washington\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/martha-dandridge...",
+        "snippet": "Hillary Rodham Clinton Laura Welch Bush Michelle Obama Melania
+        Trump As the wife of George Washington, the first President of the United
+        States, Martha Dandridge Custis Washington is considered to ...", "dateLastCrawled":
+        "2021-09-30T04:09:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5", "name": "Abigail
+        Powers Fillmore | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/abigail-powers-fillmore\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/abigail-powers-fillmore",
+        "snippet": "Hillary Rodham Clinton Laura Welch Bush Michelle Obama ...
+        During her time as a First Lady (1850-1853), she made certain the White
+        House had a music room and three pianos, and she further made ...", "dateLastCrawled":
+        "2021-09-28T11:49:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6", "name": "Elizabeth
+        Kortright Monroe | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/elizabeth-kortright-monroe\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/elizabeth-kortright-monroe",
+        "snippet": "Hillary Rodham Clinton Laura Welch Bush Michelle Obama ...
+        Elizabeth Kortright Monroe served as First Lady of the United States
+        from 1817 to 1825 as the wife of the fifth President, James Monroe.", "dateLastCrawled":
+        "2021-09-28T09:02:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7", "name": "Lucretia
+        Rudolph Garfield | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/lucretia-rudolph-garfield\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/lucretia-rudolph-garfield",
+        "snippet": "Hillary Rodham Clinton Laura Welch Bush Michelle Obama ...
+        Lucretia Rudolph-Garfield served as First Lady of the United States
+        in 1881 until the assassination of her husband, President James A ...", "dateLastCrawled":
+        "2021-10-03T22:24:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8", "name": "Lucy
+        Ware Webb Hayes | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/lucy-ware-webb-hayes\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/lucy-ware-webb-hayes",
+        "snippet": "Hillary Rodham Clinton Laura Welch Bush Michelle Obama Melania
+        Trump Lucy Ware Webb Hayes served as First Lady of the United States
+        as the wife of the 19th President, Rutherford B. Hayes (1877 ...", "dateLastCrawled":
+        "2021-09-30T13:47:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9", "name": "Melania
+        Trump | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/melania-trump\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/melania-trump",
+        "snippet": "Hillary Rodham Clinton Laura Welch Bush Michelle Obama Melania
+        Trump; First Lady of the United States Melania Trump is the wife of
+        President Donald J. Trump. She is the second First Lady born ...", "dateLastCrawled":
+        "2021-10-03T21:22:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10", "name":
+        "Hannah Hoes Van Buren | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/hannah-hoes-van-buren\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/hannah-hoes-van-buren",
+        "snippet": "First Lady Dr. Jill Biden; ... Hillary Rodham Clinton
+        ... The biographies of the First Ladies on WhiteHouse.gov are from “The
+        First Ladies of the United States of America,” by Allida Black ...", "dateLastCrawled":
+        "2021-09-30T05:47:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11", "name":
+        "Julia Gardiner Tyler | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/julia-gardiner-tyler\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/julia-gardiner-tyler",
+        "snippet": "Hillary Rodham Clinton Laura Welch Bush Michelle Obama Melania
+        Trump The darling of the capital, Julia Gardiner Tyler was the second wife
+        of the tenth President, John Tyler. ... She became First ...", "dateLastCrawled":
+        "2021-10-02T16:10:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12", "name":
+        "Ida Saxton McKinley | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/ida-saxton-mckinley\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/ida-saxton-mckinley",
+        "snippet": "Hillary Rodham Clinton Laura Welch Bush Michelle Obama Melania
+        Trump Ida Saxton McKinley was the wife of the 25th President, William McKinley.
+        ... She served as First Lady of the United States ...", "dateLastCrawled":
+        "2021-10-03T04:12:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13", "name":
+        "Harriet Lane | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/harriet-lane\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/harriet-lane",
+        "snippet": "Hillary Rodham Clinton Laura Welch Bush Michelle Obama Melania
+        Trump Harriet Rebecca Lane Johnston acted as First Lady of the United
+        States, or “Hostess,” for her uncle James Buchanan, who was ...", "dateLastCrawled":
+        "2021-09-29T14:16:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "First Families | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families",
+        "snippet": "We''ll be in touch with the latest information on how President
+        Biden and his administration are working for the American people, as well
+        as ways you can get involved and help our country build ...", "dateLastCrawled":
+        "2021-09-28T14:03:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15", "name":
+        "Ellen Lewis Herndon Arthur | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/ellen-lewis-herndon-arthur\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/ellen-lewis-herndon-arthur",
+        "snippet": "First Lady Dr. Jill Biden; ... Hillary Rodham Clinton
+        ... The biographies of the First Ladies on WhiteHouse.gov are from “The
+        First Ladies of the United States of America,” by Allida Black ...", "dateLastCrawled":
+        "2021-10-01T11:07:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16", "name":
+        "Jacqueline Lee Bouvier Kennedy | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/jacqueline-lee-bouvier-kennedy\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/jacqueline-lee-bouvier...",
+        "snippet": "Hillary Rodham Clinton Laura Welch Bush Michelle Obama Melania
+        Trump First Lady Jacqueline Lee “Jackie” (Bouvier) Kennedy Onassis was
+        a symbol of strength for a traumatized nation after the ...", "dateLastCrawled":
+        "2021-09-27T23:06:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17", "name":
+        "Florence Kling Harding | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/florence-kling-harding\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/florence-kling-harding",
+        "snippet": "Hillary Rodham Clinton Laura Welch Bush Michelle Obama ...
+        Known as “The Duchess,” Florence Mabel Kling Harding served as First Lady
+        from 1921 to 1923 as the wife of President Warren G. Harding.", "dateLastCrawled":
+        "2021-09-30T23:38:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18", "name":
+        "Margaret Mackall Smith Taylor | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/margaret-mackall-smith-taylor\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/margaret-mackall-smith...",
+        "snippet": "Hillary Rodham Clinton Laura Welch Bush Michelle Obama ...
+        Margaret Mackall Smith “Peggy” Taylor served as First Lady from 1849 to
+        1850 as the wife of the 12th President, Zachary Taylor. ...", "dateLastCrawled":
+        "2021-10-01T09:05:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19", "name":
+        "Grace Anna Goodhue Coolidge | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/grace-anna-goodhue-coolidge\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/grace-anna-goodhue...",
+        "snippet": "Hillary Rodham Clinton Laura Welch Bush Michelle Obama Melania
+        Trump Grace Anna Goodhue Coolidge served as First Lady of as the wife
+        of the 30th President, Calvin Coolidge (1923-1929). ...", "dateLastCrawled":
+        "2021-10-01T07:03:00.0000000Z", "language": "en", "isNavigational": false}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 06 Oct 2021 15:38:23 GMT
+recorded_with: VCR 6.0.0

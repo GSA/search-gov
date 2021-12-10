@@ -213,7 +213,7 @@ class RssFeedData
   end
 
   def extract_elements(item, *elements)
-    Hash[elements.map { |element| [element, extract_element(item, element)] }]
+    elements.index_with { |element| extract_element(item, element) }
   end
 
   def extract_element(parent, element)

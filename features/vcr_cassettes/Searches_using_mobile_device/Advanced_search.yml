@@ -2,144 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=allofit%20%22exact%22%20-bad%20(any)%20filetype:pdf%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Ocp-Apim-Subscription-Key:
-      - "<BING_V6_APP_ID>"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Content-Length:
-      - '242'
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Thu, 22 Feb 2018 08:36:48 GMT
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      Set-Cookie:
-      - MUID=17941AF9C5B76EA92D2C1167C4526F7A; path=/; expires=Tue, 19-Mar-2019 08:37:49
-        GMT; domain=bingapis.com
-      - MUIDB=17941AF9C5B76EA92D2C1167C4526F7A; path=/; httponly; expires=Tue, 19-Mar-2019
-        08:37:49 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sat, 22-Feb-2020 08:37:48 GMT;
-        path=/
-      - SRCHUID=V=2&GUID=5CE0AB6C98E8431D987C89F6A70C9A36&dmnchg=1; domain=.bingapis.com;
-        expires=Sat, 22-Feb-2020 08:37:48 GMT; path=/
-      - SRCHUSR=DOB=20180222; domain=.bingapis.com; expires=Sat, 22-Feb-2020 08:37:48
-        GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=1277A34AAA5F687E217EA8D4ABBA694F; path=/; httponly;
-        domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Tue, 19-Mar-2019 08:37:49 GMT; domain=bingapis.com
-      - _SS=SID=1277A34AAA5F687E217EA8D4ABBA694F; domain=.bingapis.com; path=/
-      Bingapis-Traceid:
-      - B84D5AE73AF949ED87D9D449DD99B4E6
-      X-Msedge-Clientid:
-      - 17941AF9C5B76EA92D2C1167C4526F7A
-      X-Msapi-Userstate:
-      - '8178'
-      Bingapis-Market:
-      - en-US
-      X-Msedge-Ref:
-      - 'Ref A: B84D5AE73AF949ED87D9D449DD99B4E6 Ref B: SG2EDGE0318 Ref C: 2018-02-22T08:37:49Z'
-      Date:
-      - Thu, 22 Feb 2018 08:37:48 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=C7884E8817BA40C78789F234F8F9192A&CID=17941AF9C5B76EA92D2C1167C4526F7A&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=C7884E8817BA40C78789F234F8F9192A&CID=17941AF9C5B76EA92D2C1167C4526F7A&Type=Event.CPT&DATA=0"},
-        "rankingResponse": {}}'
-    http_version: 
-  recorded_at: Thu, 22 Feb 2018 08:37:49 GMT
-- request:
-    method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=allofit%20%22exact%22%20-bad%20(any)%20filetype:pdf%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Content-Length:
-      - '242'
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Mon, 19 Nov 2018 22:40:57 GMT
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      Set-Cookie:
-      - MUID=09C44E5A76C06516263242F6771764CA; path=/; expires=Sat, 14-Dec-2019 22:41:57
-        GMT; domain=bingapis.com
-      - MUIDB=09C44E5A76C06516263242F6771764CA; path=/; httponly; expires=Sat, 14-Dec-2019
-        22:41:57 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 19-Nov-2020 22:41:57 GMT;
-        path=/
-      - SRCHUID=V=2&GUID=1B91CEC1A2224C3A8B5498AD18F95DCF&dmnchg=1; domain=.bingapis.com;
-        expires=Thu, 19-Nov-2020 22:41:57 GMT; path=/
-      - SRCHUSR=DOB=20181119; domain=.bingapis.com; expires=Thu, 19-Nov-2020 22:41:57
-        GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=2F5232BFF46B62EF06B23E13F5BC6353; path=/; httponly;
-        domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sat, 14-Dec-2019 22:41:57 GMT; domain=bingapis.com
-      - _SS=SID=2F5232BFF46B62EF06B23E13F5BC6353; domain=.bingapis.com; path=/
-      Bingapis-Traceid:
-      - 6A2610F22D114CEF80575E9451E23DA0
-      X-Msedge-Clientid:
-      - '09C44E5A76C06516263242F6771764CA'
-      X-Msapi-Userstate:
-      - 0c6c
-      Bingapis-Market:
-      - en-US
-      X-Msedge-Ref:
-      - 'Ref A: 6A2610F22D114CEF80575E9451E23DA0 Ref B: CO1EDGE0413 Ref C: 2018-11-19T22:41:57Z'
-      Date:
-      - Mon, 19 Nov 2018 22:41:57 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=6E029AC1110B485CB6CA44C2F1D4523B&CID=09C44E5A76C06516263242F6771764CA&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=6E029AC1110B485CB6CA44C2F1D4523B&CID=09C44E5A76C06516263242F6771764CA&Type=Event.CPT&DATA=0"},
-        "rankingResponse": {}}'
-    http_version: 
-  recorded_at: Mon, 19 Nov 2018 22:41:57 GMT
-- request:
-    method: get
     uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=allofit%20%22exact%22%20-bad%20(any)%20filetype:pdf%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
     body:
       encoding: US-ASCII
@@ -169,38 +31,303 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Mon, 19 Nov 2018 22:42:09 GMT
+      - Tue, 07 Sep 2021 16:17:01 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
       Bingapis-Traceid:
-      - 3AFB477E8F1541F09594E55B386528CE
+      - 00BFCDB705CC4364BBEC9F393067F65B
       Bingapis-Sessionid:
-      - 8CE857804E904680ABEF30066DDF439E
+      - 12F69D6BCA1948F0853BEC518EAEEFFA
       X-Msedge-Clientid:
-      - 152B7F65E36A6056328D73C9E22661AC
+      - 0E37E9540EF669B02E50F9FF0F286871
       X-Msapi-Userstate:
-      - 4c97
+      - a465
       Bingapis-Market:
       - en-US
       X-Search-Responseinfo:
-      - InternalResponseTime=122,MSDatacenter=CO4
+      - InternalResponseTime=166,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
       X-Msedge-Ref:
-      - 'Ref A: 3AFB477E8F1541F09594E55B386528CE Ref B: BY3EDGE0310 Ref C: 2018-11-19T22:43:09Z'
+      - 'Ref A: 00BFCDB705CC4364BBEC9F393067F65B Ref B: BLUEDGE0610 Ref C: 2021-09-07T16:18:01Z'
       Apim-Request-Id:
-      - 65c31a97-27ad-4eab-a5fc-4162202406a1
+      - 114016a2-3ac6-4459-a47a-11f83cf7c59f
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
       - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Mon, 19 Nov 2018 22:43:08 GMT
+      - Tue, 07 Sep 2021 16:18:00 GMT
     body:
       encoding: UTF-8
       string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "allofit
         \"exact\" -bad (any) filetype:pdf (site:gov OR site:mil)"}, "rankingResponse":
         {}}'
-    http_version: 
-  recorded_at: Mon, 19 Nov 2018 22:43:09 GMT
-recorded_with: VCR 4.0.0
+  recorded_at: Tue, 07 Sep 2021 16:18:01 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=allofit%20%22exact%22%20-bad%20(any)%20filetype:pdf%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 15:36:47 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - 66356ACC235241DB96915CB0F79D1FF2
+      Bingapis-Sessionid:
+      - 6BA63FD9CEB34D528449ABB9E1802B40
+      X-Msedge-Clientid:
+      - 07BCFA2557EA68961C69EAED5617697E
+      X-Msapi-Userstate:
+      - '7505'
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=307,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: 66356ACC235241DB96915CB0F79D1FF2 Ref B: BLUEDGE0507 Ref C: 2021-10-06T15:37:47Z'
+      Apim-Request-Id:
+      - 478382e6-03f6-4c6a-b090-aa1a24abd4a8
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 15:37:48 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "allofit
+        \"exact\" -bad (any) filetype:pdf (site:gov OR site:mil)"}, "webPages": {"webSearchUrl":
+        "https:\/\/www.bing.com\/search?q=allofit+%22exact%22+-bad+(any)+filetype%3apdf+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 31300, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Rules of Statutory Construction and Interpretation", "url": "https:\/\/www.supremecourt.gov\/DocketPDF\/18\/18-9575\/102239\/20190611092122150_00000055.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.supremecourt.gov\/DocketPDF\/18\/18-9575\/102239\/20190611092122150_00000055.pdf",
+        "snippet": "App. A4 11 Expressio Umus est Exclusio Alterius Rule The term
+        \"includes'' is a term of limitation and not enlargement in most cases. Where
+        it is used, it prescribes all of the things or classes of things to which
+        the statute pertains.Al] other possible objects of the statute are, thereby
+        excluded, by implication. Expressio unius est exclusw alterius.", "dateLastCrawled":
+        "2021-10-04T04:06:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1", "name": "Loan
+        Fact Sheet - Small Business Administration", "url": "https:\/\/www.sba.gov\/sites\/default\/files\/articles\/SBA_Loan_Fact_Sheet_0.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/sites\/default\/files\/articles\/SBA_Loan_Fact_Sheet_0.pdf",
+        "snippet": "The exact percentage of the guaranty depends on a variety of
+        factors such as size of loan nd a which SBA program is to be used. This will
+        be worked out between the SBA and your bank. Amounts - The maximum loan amount
+        is $5 million. The total SBA guarantee for any one borrower may not exceed
+        $,3750,000.", "dateLastCrawled": "2021-10-01T23:36:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "ACCOUNTING FOR FIXED ASSETS - HUD", "url": "https:\/\/www.hud.gov\/sites\/documents\/DOC_26243.PDF",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.hud.gov\/sites\/documents\/DOC_26243.PDF",
+        "snippet": "any major additions in the form of additional con-struction
+        and improve-ments, known as “hard costs,” be capitalized (recorded as assets).
+        Ad-ministrative and other costs that did not add value to the buildings, known
+        as “soft costs”, associated with modern-ization and development, were accumulated
+        into fixed asset accounts and capitalized.", "dateLastCrawled": "2021-10-03T04:44:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "U.S. Department of State STATEMENT REGARDING A LOST OR ...", "url":
+        "https:\/\/eforms.state.gov\/Forms\/ds64.pdf", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/eforms.state.gov\/Forms\/ds64.pdf", "snippet": "at any one time,
+        except as authorized by the U.S. Depa rtment of State, and to combat passport
+        fraud and misuse. The collection of the Social Security number will be used
+        to verify the identity of the person reporting the lost or stolen pas sport
+        and to identify the passport being reported lost or stolen.", "dateLastCrawled":
+        "2021-10-04T00:17:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4", "name": "Version
+        1.1 – December 6, 2016 - National Archives", "url": "https:\/\/www.archives.gov\/files\/cui\/20161206-cui-marking-handbook-v1-1.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.archives.gov\/files\/cui\/20161206-cui-marking-handbook-v1-1.pdf",
+        "snippet": "CUI and, when portion markings are used, identify the exact
+        information or portion that needs protection. Markings can alert holders to
+        any CUI dissemination and safeguarding controls. While every marking situation
+        is not reflected, this handbook provides basic marking guidelines for CUI,
+        regardless of form.", "dateLastCrawled": "2021-10-02T08:16:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "RESONANCE RECTIFICATION EFFECTS IN WARM MAGNETOPLASMAS", "url": "https:\/\/ntrs.nasa.gov\/api\/citations\/19670024992\/downloads\/19670024992.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/ntrs.nasa.gov\/api\/citations\/19670024992\/downloads\/19670024992.pdf",
+        "snippet": "values at any kL I I To determine the exact location of the
+        resonance rectification pedrswould be an extremely difficult problem. We can,
+        however, make some further qualitative predictions. In general, the form of
+        the plasma impedance will be, 8 z (w) = P IL (5) -8- FIG. 2( a). Normalized
+        reactance of warm magnetoplasma (RF electric ...", "dateLastCrawled": "2021-09-30T21:06:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "UNISE. . rAfSvCNVIRONlfcHrAL PROffcCTlOK Jfl^NCY ^ -Mi*", "url":
+        "https:\/\/semspub.epa.gov\/work\/07\/30325123.pdf", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/semspub.epa.gov\/work\/07\/30325123.pdf", "snippet":
+        "(a) every copy of each document which is not an exact duplicate of a document
+        which is produced, (b) every copy which has any writing, figure or notation,
+        annotation or the like of it, (c) drafts, (d) attachments to or enclosures
+        with any document and (e) every document referred to in any other document.
+        11.", "dateLastCrawled": "2021-09-29T16:28:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "PowerShell Commands - USALearning", "url": "https:\/\/fedvte.usalearning.gov\/courses\/IWBS\/course\/videos\/pdf\/IWBS_D01_S05_T03_STEP.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/fedvte.usalearning.gov\/courses\/IWBS\/course\/videos\/pdf\/IWBS_D01_S05_T03_STEP.pdf",
+        "snippet": "It''s calling the exact same command. You would get the same
+        output if you . ran it at the same time. But the . bottom one is useful for
+        scripting in . batch files. The top one is really just . for interactive.
+        Instructor: Right. Did everybody . get that? Page 12 of 19", "dateLastCrawled":
+        "2021-10-03T09:01:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8", "name": "Laboratory
+        Math II: Solutions and Dilutions", "url": "https:\/\/www.training.nih.gov\/assets\/Lab_Math_II_Transcript_-_508.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.training.nih.gov\/assets\/Lab_Math_II_Transcript_-_508.pdf",
+        "snippet": "Solutions A solution is a homogenous mixture of two or more substances.
+        Can be in any form of matter: solid, liquid or gas Solutions are essential
+        in most laboratory -based biomedical research Examples: buffers, reaction
+        mixtures, cell culture media, cell lysates, etc.", "dateLastCrawled": "2021-10-04T01:11:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Magna Carta with Annotations, unabridged.", "url": "https:\/\/edsitement.neh.gov\/sites\/default\/files\/2018-08\/Annotation_Unabridged737.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/edsitement.neh.gov\/sites\/default\/files\/2018-08\/Annotation_Unabridged737.pdf",
+        "snippet": "to a sheriff, or to any person answerable to us for the revenues,
+        and he commits destruction or damage, we will exact compensation from him,
+        and the land shall be entrusted to two worthy and prudent men of the same
+        ''fee'', who shall be answerable to us for the revenues, or to the person
+        to whom we have assigned them. If we have given", "dateLastCrawled": "2021-10-01T09:21:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "UNITED STATES ENVIRONMENTAL PROTECTION AGENCY REGION VII ...", "url":
+        "https:\/\/semspub.epa.gov\/work\/07\/139395.pdf", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/semspub.epa.gov\/work\/07\/139395.pdf", "snippet":
+        "each document which is not an exact duplicate of a document which is produced,
+        (2) every copy which has any writing, figure or notation, annotation or
+        the like of it, (3) drafts, (4) attachments to or enclosures with any document
+        and (5) every document referred to in any other document. 6. The terms \"and\"
+        and \"or\" shall be construed either", "dateLastCrawled": "2021-10-01T02:34:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "12 LABORATORY SAMPLE PREPARATION", "url": "https:\/\/www.epa.gov\/sites\/production\/files\/2015-05\/documents\/402-b-04-001b-12-final.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.epa.gov\/sites\/production\/files\/2015-05\/documents\/402-b-04-001b-12-final.pdf",
+        "snippet": "account for any analyte loss during sample preparation. 12.2.1.1
+        Losses as Dust or Particulates When a sample is dry ashed, a fine residue
+        (ash) is often formed. The small particles in the residue are resuspended
+        readily by any air flow over the sample. Air flows are generated by", "dateLastCrawled":
+        "2021-10-02T23:48:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12", "name":
+        "Guide to the Art and Science of Searching in iManage", "url": "http:\/\/www.bestpractices.ca.gov\/sysacq\/downloads\/iManage%20Advanced%20Searching%20Techniques.pdf",
+        "isFamilyFriendly": true, "displayUrl": "www.bestpractices.ca.gov\/sysacq\/downloads\/iManage
+        Advanced Searching Techniques.pdf", "snippet": "The asterisk stands for any
+        sequence of multiple characters; the question mark stands for any single
+        character. The danger in using wildcard characters is that you will increase
+        your search results by including undesired matches. The asterisk (or percent
+        sign), truncates the word and finds all variations of it. For example,", "dateLastCrawled":
+        "2021-09-28T17:38:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13", "name":
+        "3rd Response Copyright Small Claims", "url": "https:\/\/www.copyright.gov\/docs\/smallclaims\/comments\/noi_02263013\/APA.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.copyright.gov\/docs\/smallclaims\/comments\/noi_02263013\/APA.pdf",
+        "snippet": "In any case, it is the mere cost of adducing evidence, and computing
+        the revenues, that makes the proceedings costly, and impractical for the rights
+        owner. There are several possible answers. The first would be a mandatory
+        requirement that the defendant in any infringement case make a full disclosure
+        of their net profits taking into", "dateLastCrawled": "2021-09-29T21:11:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "General notice letter and information request letter ...", "url":
+        "https:\/\/semspub.epa.gov\/work\/07\/30325107.pdf", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/semspub.epa.gov\/work\/07\/30325107.pdf", "snippet":
+        "(a) every copy of each document which is not an exact duplicate of a document
+        which is produced, (b) every copy which has any writing, figure or notation,
+        annotation or the like of it, (c) drafts, (d) attachments to or enclosures
+        with any document and (e) every document referred to in any other document.
+        11.", "dateLastCrawled": "2021-09-28T01:31:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Lesson Planning 101 - United States Department of State", "url":
+        "https:\/\/americanenglish.state.gov\/files\/ae\/resource_files\/lesson_planning_101-pre-recording.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/americanenglish.state.gov\/files\/ae\/resource_files\/lesson_planning_101-pre...",
+        "snippet": "Any minor errors do not hinder meaning. Total Points Comments.
+        Guidelines for Using Rubrics 1. Keep the exact objective(s) in mind that
+        you are assessing. 2. Be as specific or general as you need to be. 3. Share
+        the rubric with students before they begin working on the task. 4. Evaluate
+        students according to the rubric.", "dateLastCrawled": "2021-09-30T15:25:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "^pr\/atiaiTPi . ATES-Q^lRONME||jyM^ROTECTIOh >E#:Y", "url": "https:\/\/semspub.epa.gov\/work\/07\/30325108.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/semspub.epa.gov\/work\/07\/30325108.pdf",
+        "snippet": "(a) every copy of each document which is not an exact duplicate
+        of a document which is produced, (b) every copy which has any writing, figure
+        or notation, annotation or the like of it, (c) drafts, (d) attachments to
+        or enclosures with any document and (e) every document referred to in any
+        other document. 11.", "dateLastCrawled": "2021-09-30T10:30:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Second Request on 104(e) Request Letter", "url": "https:\/\/semspub.epa.gov\/work\/07\/2041458.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/semspub.epa.gov\/work\/07\/2041458.pdf",
+        "snippet": "exact duplicate of a document that is produced; (b) every copy
+        which has any writing, figure or notation, annotation or the like; (c) drafts;
+        (d) attachments to or enclosures with any document; and, (e) every document
+        referred to in any other document. 14. The terms \"and\" and \"or\" Bhall
+        mean, either disjunctively or", "dateLastCrawled": "2021-09-18T23:18:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Welcome HOW TO USE YOUR WASHINGTON EBT QUEST CARD AT AN ...", "url":
+        "https:\/\/www.dshs.wa.gov\/sites\/default\/files\/publications\/documents\/22-310.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.dshs.wa.gov\/sites\/default\/files\/publications\/documents\/22-310.pdf",
+        "snippet": "Only the exact amount of your food purchase is deducted from
+        your food benefit account. Stores will not give you change for food benefit
+        purchases. You may use your cash benefits at stores to make a cash-only withdrawal,
+        or to purchase both food and non-food items (soap, diapers, etc.). Stores
+        may also provide cash back when you make a purchase ...", "dateLastCrawled":
+        "2021-10-03T09:06:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19", "name":
+        "Pennsylvania Department of Agriculture", "url": "https:\/\/www.agriculture.pa.gov\/consumer_protection\/FoodSafety\/Retail%20Food\/Retail%20Foods%20Facilities%20and%20Restaurants\/Documents\/APPLICATION%20PACKET-%20FARMERS%20MARKETS.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.agriculture.pa.gov\/consumer_protection\/FoodSafety\/Retail
+        Food\/Retail Foods...", "snippet": "Mobilized Unit (any operation the moves
+        around with the same exact set-up and equipment from market to market) PART
+        B: (please select one): New Food Vendor\/New License Change of Ownership for
+        an Existing Operating Stand that is currently in operation Remodel of a currently
+        licensed stand OR significant change\/addition to food items sold", "dateLastCrawled":
+        "2021-09-28T23:47:00.0000000Z", "language": "en", "isNavigational": false}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 06 Oct 2021 15:37:48 GMT
+recorded_with: VCR 6.0.0

@@ -6,7 +6,7 @@ describe WatcherObserver do
 
   describe 'after_save' do
     it 'sets up the watch in Elasticsearch' do
-      expect(ES::ELK.client_reader.xpack.watcher).
+      expect(Es::ELK.client_reader.xpack.watcher).
         to receive(:put_watch).with(id: 123, body: 'body')
       observer.after_save(watcher)
     end
@@ -14,7 +14,7 @@ describe WatcherObserver do
 
   describe 'after_destroy' do
     it 'deletes the watch in Elasticsearch' do
-      expect(ES::ELK.client_reader.xpack.watcher).
+      expect(Es::ELK.client_reader.xpack.watcher).
         to receive(:delete_watch).with(id: 123)
       observer.after_destroy(watcher)
     end

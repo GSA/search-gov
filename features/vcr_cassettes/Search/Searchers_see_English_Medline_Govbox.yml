@@ -21,20 +21,77 @@ http_interactions:
       - '30'
   response:
     status:
-      code: 401
-      message: PermissionDenied
+      code: 200
+      message: OK
     headers:
-      Content-Length:
-      - '224'
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 07 Sep 2021 16:17:51 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - EBE3528D5D0A4C948BE7B8F48E75420F
+      Bingapis-Sessionid:
+      - 07EB9D0DDAE64DC3B3AC2E65E24E1E43
+      X-Msedge-Clientid:
+      - 13DB495E777160B62C4259F5763E61C1
+      X-Msapi-Userstate:
+      - ec33
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=186,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: EBE3528D5D0A4C948BE7B8F48E75420F Ref B: BLUEDGE1807 Ref C: 2021-09-07T16:18:51Z'
+      Apim-Request-Id:
+      - 780b02fa-4581-4125-a142-cf4d1acdf64f
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Tue, 30 Mar 2021 17:16:22 GMT
+      - Tue, 07 Sep 2021 16:18:51 GMT
     body:
       encoding: UTF-8
-      string: '{"error":{"code":"401","message":"Access denied due to invalid subscription
-        key or wrong API endpoint. Make sure to provide a valid key for an active
-        subscription and use a correct regional API endpoint for your resource."}}'
-    http_version:
-  recorded_at: Tue, 30 Mar 2021 17:16:22 GMT
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "hippopotomonstrosesquippedaliophobia
+        (site:nih.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=hippopotomonstrosesquippedaliophobia+(site%3anih.gov)",
+        "totalEstimatedMatches": 2, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Age of onset of mental disorders: a review of recent ...", "url":
+        "https:\/\/pubmed.ncbi.nlm.nih.gov\/17551351\/", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/pubmed.ncbi.nlm.nih.gov\/17551351", "snippet":
+        "Purpose of review: The aim of this article is to review recent epidemiological
+        research on age-of-onset of mental disorders, focusing on the WHO World Mental
+        Health surveys. Recent findings: Median and inter-quartile range (IQR; 25th-75th
+        percentiles) of age-of-onset is much earlier for phobias (7-14, IQR 4-20)
+        and impulse-control disorders (7-15; IQR 4-35) than other anxiety disorders
+        (25-53 ...", "dateLastCrawled": "2021-08-31T19:38:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Pseudopseudohypoparathyroidism | Genetic and Rare Diseases ...",
+        "url": "https:\/\/rarediseases.info.nih.gov\/diseases\/7860\/pseudopseudohypoparathyroidism",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/rarediseases.info.nih.gov\/diseases\/7860\/pseudopseudohypoparathyroidism",
+        "snippet": "Pseudopseudohypoparathyroidism (PPHP) is an inherited condition
+        that causes short stature, round face, and short hand bones. PPHP causes joints
+        and other soft tissues in the body to harden. It also affects how bones are
+        formed. As a result, PPHP can cause bone, joint, and nerve damage, and this
+        damage can cause lasting pain. Some people with PPHP (10%) also have learning
+        disability.", "dateLastCrawled": "2021-09-03T12:07:00.0000000Z", "language":
+        "en", "isNavigational": false}]}, "rankingResponse": {"mainline": {"items":
+        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}}]}}}'
+  recorded_at: Tue, 07 Sep 2021 16:18:52 GMT
 - request:
     method: get
     uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=hippopotomonstrosesquippedaliophobia%20(site:nih.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
@@ -56,20 +113,77 @@ http_interactions:
       - '30'
   response:
     status:
-      code: 401
-      message: PermissionDenied
+      code: 200
+      message: OK
     headers:
-      Content-Length:
-      - '224'
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 07 Sep 2021 16:17:52 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - EBD113881EF34CBC8B4B9C0D045EE804
+      Bingapis-Sessionid:
+      - 37E6CF8254DD43C19C88EA54F2D262C9
+      X-Msedge-Clientid:
+      - 31256888769B687B02967823776669A1
+      X-Msapi-Userstate:
+      - dc98
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=165,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: EBD113881EF34CBC8B4B9C0D045EE804 Ref B: BLUEDGE0116 Ref C: 2021-09-07T16:18:52Z'
+      Apim-Request-Id:
+      - c8bd905f-6809-4840-8347-8f348ad35b9a
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Tue, 30 Mar 2021 17:16:23 GMT
+      - Tue, 07 Sep 2021 16:18:52 GMT
     body:
       encoding: UTF-8
-      string: '{"error":{"code":"401","message":"Access denied due to invalid subscription
-        key or wrong API endpoint. Make sure to provide a valid key for an active
-        subscription and use a correct regional API endpoint for your resource."}}'
-    http_version:
-  recorded_at: Tue, 30 Mar 2021 17:16:23 GMT
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "hippopotomonstrosesquippedaliophobia
+        (site:nih.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=hippopotomonstrosesquippedaliophobia+(site%3anih.gov)",
+        "totalEstimatedMatches": 2, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Pseudopseudohypoparathyroidism | Genetic and Rare Diseases ...",
+        "url": "https:\/\/rarediseases.info.nih.gov\/diseases\/7860\/pseudopseudohypoparathyroidism",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/rarediseases.info.nih.gov\/diseases\/7860\/pseudopseudohypoparathyroidism",
+        "snippet": "Pseudopseudohypoparathyroidism (PPHP) is an inherited condition
+        that causes short stature, round face, and short hand bones. PPHP causes joints
+        and other soft tissues in the body to harden. It also affects how bones are
+        formed. As a result, PPHP can cause bone, joint, and nerve damage, and this
+        damage can cause lasting pain. Some people with PPHP (10%) also have learning
+        disability.", "dateLastCrawled": "2021-09-03T12:07:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Age of onset of mental disorders: a review of recent ...", "url":
+        "https:\/\/pubmed.ncbi.nlm.nih.gov\/17551351\/", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/pubmed.ncbi.nlm.nih.gov\/17551351", "snippet":
+        "Purpose of review: The aim of this article is to review recent epidemiological
+        research on age-of-onset of mental disorders, focusing on the WHO World Mental
+        Health surveys. Recent findings: Median and inter-quartile range (IQR; 25th-75th
+        percentiles) of age-of-onset is much earlier for phobias (7-14, IQR 4-20)
+        and impulse-control disorders (7-15; IQR 4-35) than other anxiety disorders
+        (25-53 ...", "dateLastCrawled": "2021-08-31T19:38:00.0000000Z", "language":
+        "en", "isNavigational": false}]}, "rankingResponse": {"mainline": {"items":
+        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}}]}}}'
+  recorded_at: Tue, 07 Sep 2021 16:18:52 GMT
 - request:
     method: get
     uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=hippopotomonstrosesquippedaliophobia%20(site:nih.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
@@ -91,18 +205,351 @@ http_interactions:
       - '30'
   response:
     status:
-      code: 401
-      message: PermissionDenied
+      code: 200
+      message: OK
     headers:
-      Content-Length:
-      - '224'
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 07 Sep 2021 16:17:54 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - AB3184A6ECDF4F73A4DB3F1AA7844B22
+      Bingapis-Sessionid:
+      - CC5A7C26D7B84401B6918A7F9208E3FE
+      X-Msedge-Clientid:
+      - 1458AABAFD2C6D3C3725BA11FC636C72
+      X-Msapi-Userstate:
+      - '7516'
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=196,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: AB3184A6ECDF4F73A4DB3F1AA7844B22 Ref B: BLUEDGE1822 Ref C: 2021-09-07T16:18:54Z'
+      Apim-Request-Id:
+      - e42aeaa4-e7b7-446a-a0ea-14d8feaf9801
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Wed, 31 Mar 2021 15:20:55 GMT
+      - Tue, 07 Sep 2021 16:18:54 GMT
     body:
       encoding: UTF-8
-      string: '{"error":{"code":"401","message":"Access denied due to invalid subscription
-        key or wrong API endpoint. Make sure to provide a valid key for an active
-        subscription and use a correct regional API endpoint for your resource."}}'
-    http_version:
-  recorded_at: Wed, 31 Mar 2021 15:20:55 GMT
-recorded_with: VCR 4.0.0
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "hippopotomonstrosesquippedaliophobia
+        (site:nih.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=hippopotomonstrosesquippedaliophobia+(site%3anih.gov)",
+        "totalEstimatedMatches": 2, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Age of onset of mental disorders: a review of recent ...", "url":
+        "https:\/\/pubmed.ncbi.nlm.nih.gov\/17551351\/", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/pubmed.ncbi.nlm.nih.gov\/17551351", "snippet":
+        "Purpose of review: The aim of this article is to review recent epidemiological
+        research on age-of-onset of mental disorders, focusing on the WHO World Mental
+        Health surveys. Recent findings: Median and inter-quartile range (IQR; 25th-75th
+        percentiles) of age-of-onset is much earlier for phobias (7-14, IQR 4-20)
+        and impulse-control disorders (7-15; IQR 4-35) than other anxiety disorders
+        (25-53 ...", "dateLastCrawled": "2021-08-31T19:38:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Pseudopseudohypoparathyroidism | Genetic and Rare Diseases ...",
+        "url": "https:\/\/rarediseases.info.nih.gov\/diseases\/7860\/pseudopseudohypoparathyroidism",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/rarediseases.info.nih.gov\/diseases\/7860\/pseudopseudohypoparathyroidism",
+        "snippet": "Pseudopseudohypoparathyroidism (PPHP) is an inherited condition
+        that causes short stature, round face, and short hand bones. PPHP causes joints
+        and other soft tissues in the body to harden. It also affects how bones are
+        formed. As a result, PPHP can cause bone, joint, and nerve damage, and this
+        damage can cause lasting pain. Some people with PPHP (10%) also have learning
+        disability.", "dateLastCrawled": "2021-09-03T12:07:00.0000000Z", "language":
+        "en", "isNavigational": false}]}, "rankingResponse": {"mainline": {"items":
+        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}}]}}}'
+  recorded_at: Tue, 07 Sep 2021 16:18:54 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=hippopotomonstrosesquippedaliophobia%20(site:nih.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 15:37:46 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - 73E9D4209D63409EA0E3AF038B9F67E6
+      Bingapis-Sessionid:
+      - 47505E4BF0B44A99A0346C6BB4C16C23
+      X-Msedge-Clientid:
+      - 00BEBCD20E616E070B91AC1A0F9C6F46
+      X-Msapi-Userstate:
+      - 0da6
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=294,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: 73E9D4209D63409EA0E3AF038B9F67E6 Ref B: BLUEDGE0211 Ref C: 2021-10-06T15:38:46Z'
+      Apim-Request-Id:
+      - b89efe11-64b5-497c-b12b-13464fc22980
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 15:38:47 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "hippopotomonstrosesquippedaliophobia
+        (site:nih.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=hippopotomonstrosesquippedaliophobia+(site%3anih.gov)",
+        "totalEstimatedMatches": 2, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Pseudopseudohypoparathyroidism | Genetic and Rare Diseases ...",
+        "url": "https:\/\/rarediseases.info.nih.gov\/diseases\/7860\/pseudopseudohypoparathyroidism",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/rarediseases.info.nih.gov\/diseases\/7860\/pseudopseudohypoparathyroidism",
+        "snippet": "Pseudopseudohypoparathyroidism (PPHP) is an inherited condition
+        that causes short stature, round face, and short hand bones. PPHP causes joints
+        and other soft tissues in the body to harden. It also affects how bones are
+        formed. As a result, PPHP can cause bone, joint, and nerve damage, and this
+        damage can cause lasting pain. Some people with PPHP (10%) also have learning
+        disability.", "dateLastCrawled": "2021-10-02T02:07:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Age of onset of mental disorders: a review of recent ...", "url":
+        "https:\/\/pubmed.ncbi.nlm.nih.gov\/17551351\/", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/pubmed.ncbi.nlm.nih.gov\/17551351", "snippet":
+        "Purpose of review: The aim of this article is to review recent epidemiological
+        research on age-of-onset of mental disorders, focusing on the WHO World Mental
+        Health surveys. Recent findings: Median and inter-quartile range (IQR; 25th-75th
+        percentiles) of age-of-onset is much earlier for phobias (7-14, IQR 4-20)
+        and impulse-control disorders (7-15; IQR 4-35) than other anxiety disorders
+        (25-53 ...", "dateLastCrawled": "2021-09-21T17:44:00.0000000Z", "language":
+        "en", "isNavigational": false}]}, "rankingResponse": {"mainline": {"items":
+        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}}]}}}'
+  recorded_at: Wed, 06 Oct 2021 15:38:47 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=hippopotomonstrosesquippedaliophobia%20(site:nih.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 15:37:47 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - F63AFC2DD780424795E41EADC0513AFC
+      Bingapis-Sessionid:
+      - D5254533881E47E89EA83CC76D8B6F65
+      X-Msedge-Clientid:
+      - 11B09DBA8FAB69D0033E8D728E1B6865
+      X-Msapi-Userstate:
+      - 5b75
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=230,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: F63AFC2DD780424795E41EADC0513AFC Ref B: BLUEDGE1410 Ref C: 2021-10-06T15:38:47Z'
+      Apim-Request-Id:
+      - 88c7c0c0-3827-4dc9-8a6d-828a5cff2d3e
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 15:38:48 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "hippopotomonstrosesquippedaliophobia
+        (site:nih.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=hippopotomonstrosesquippedaliophobia+(site%3anih.gov)",
+        "totalEstimatedMatches": 2, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Pseudopseudohypoparathyroidism | Genetic and Rare Diseases ...",
+        "url": "https:\/\/rarediseases.info.nih.gov\/diseases\/7860\/pseudopseudohypoparathyroidism",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/rarediseases.info.nih.gov\/diseases\/7860\/pseudopseudohypoparathyroidism",
+        "snippet": "Pseudopseudohypoparathyroidism (PPHP) is an inherited condition
+        that causes short stature, round face, and short hand bones. PPHP causes joints
+        and other soft tissues in the body to harden. It also affects how bones are
+        formed. As a result, PPHP can cause bone, joint, and nerve damage, and this
+        damage can cause lasting pain. Some people with PPHP (10%) also have learning
+        disability.", "dateLastCrawled": "2021-10-02T02:07:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Age of onset of mental disorders: a review of recent ...", "url":
+        "https:\/\/pubmed.ncbi.nlm.nih.gov\/17551351\/", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/pubmed.ncbi.nlm.nih.gov\/17551351", "snippet":
+        "Purpose of review: The aim of this article is to review recent epidemiological
+        research on age-of-onset of mental disorders, focusing on the WHO World Mental
+        Health surveys. Recent findings: Median and inter-quartile range (IQR; 25th-75th
+        percentiles) of age-of-onset is much earlier for phobias (7-14, IQR 4-20)
+        and impulse-control disorders (7-15; IQR 4-35) than other anxiety disorders
+        (25-53 ...", "dateLastCrawled": "2021-09-21T17:44:00.0000000Z", "language":
+        "en", "isNavigational": false}]}, "rankingResponse": {"mainline": {"items":
+        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}}]}}}'
+  recorded_at: Wed, 06 Oct 2021 15:38:48 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=hippopotomonstrosesquippedaliophobia%20(site:nih.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 15:37:49 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - 3FA530A405B545E2B653353CE57B61EB
+      Bingapis-Sessionid:
+      - 3A4B53978A09416AA6CE03901BCC0B4E
+      X-Msedge-Clientid:
+      - 0231D1B7A73168A62CECC17FA67E6973
+      X-Msapi-Userstate:
+      - a423
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=246,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: 3FA530A405B545E2B653353CE57B61EB Ref B: BLUEDGE1116 Ref C: 2021-10-06T15:38:49Z'
+      Apim-Request-Id:
+      - 4967da6b-a427-46e7-a517-dfa0de11bb5c
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 15:38:49 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "hippopotomonstrosesquippedaliophobia
+        (site:nih.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=hippopotomonstrosesquippedaliophobia+(site%3anih.gov)",
+        "totalEstimatedMatches": 2, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Pseudopseudohypoparathyroidism | Genetic and Rare Diseases ...",
+        "url": "https:\/\/rarediseases.info.nih.gov\/diseases\/7860\/pseudopseudohypoparathyroidism",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/rarediseases.info.nih.gov\/diseases\/7860\/pseudopseudohypoparathyroidism",
+        "snippet": "Pseudopseudohypoparathyroidism (PPHP) is an inherited condition
+        that causes short stature, round face, and short hand bones. PPHP causes joints
+        and other soft tissues in the body to harden. It also affects how bones are
+        formed. As a result, PPHP can cause bone, joint, and nerve damage, and this
+        damage can cause lasting pain. Some people with PPHP (10%) also have learning
+        disability.", "dateLastCrawled": "2021-10-02T02:07:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Age of onset of mental disorders: a review of recent ...", "url":
+        "https:\/\/pubmed.ncbi.nlm.nih.gov\/17551351\/", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/pubmed.ncbi.nlm.nih.gov\/17551351", "snippet":
+        "Purpose of review: The aim of this article is to review recent epidemiological
+        research on age-of-onset of mental disorders, focusing on the WHO World Mental
+        Health surveys. Recent findings: Median and inter-quartile range (IQR; 25th-75th
+        percentiles) of age-of-onset is much earlier for phobias (7-14, IQR 4-20)
+        and impulse-control disorders (7-15; IQR 4-35) than other anxiety disorders
+        (25-53 ...", "dateLastCrawled": "2021-09-21T17:44:00.0000000Z", "language":
+        "en", "isNavigational": false}]}, "rankingResponse": {"mainline": {"items":
+        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}}]}}}'
+  recorded_at: Wed, 06 Oct 2021 15:38:50 GMT
+recorded_with: VCR 6.0.0

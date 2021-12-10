@@ -27,186 +27,189 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '4109'
+      - '4313'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Mon, 27 Aug 2018 00:03:07 GMT
+      - Tue, 31 Aug 2021 20:32:23 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=147431069ED666B92A793D5E9FD967AB; path=/; expires=Sat, 21-Sep-2019 00:04:07
-        GMT; domain=bingapis.com
-      - MUIDB=147431069ED666B92A793D5E9FD967AB; path=/; httponly; expires=Sat, 21-Sep-2019
-        00:04:07 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 27-Aug-2020 00:04:07 GMT;
+      - MUID=3694FAB4A386681704FCEA10A27B697A; domain=.bingapis.com; expires=Sun,
+        25-Sep-2022 20:33:23 GMT; path=/; secure; SameSite=None
+      - MUIDB=3694FAB4A386681704FCEA10A27B697A; expires=Sun, 25-Sep-2022 20:33:23
+        GMT; path=/; HttpOnly
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 31-Aug-2023 20:33:23 GMT;
         path=/
-      - SRCHUID=V=2&GUID=5309A9C078DB41748D22F7F21EB1C4D9&dmnchg=1; domain=.bingapis.com;
-        expires=Thu, 27-Aug-2020 00:04:07 GMT; path=/
-      - SRCHUSR=DOB=20180827; domain=.bingapis.com; expires=Thu, 27-Aug-2020 00:04:07
+      - SRCHHPGUSR=SRCHLANG=en; domain=.bingapis.com; expires=Thu, 31-Aug-2023 20:33:23
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=1E73FDF36E2A6ACF3384F1AB6F256B24; path=/; httponly;
-        domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sat, 21-Sep-2019 00:04:07 GMT; domain=bingapis.com
-      - _SS=SID=1E73FDF36E2A6ACF3384F1AB6F256B24; domain=.bingapis.com; path=/
+      - SRCHUID=V=2&GUID=F36FE6B2A47744138242369EE60201CA&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 31-Aug-2023 20:33:23 GMT; path=/
+      - SRCHUSR=DOB=20210831; domain=.bingapis.com; expires=Thu, 31-Aug-2023 20:33:23
+        GMT; path=/
+      - _EDGE_S=F=1&SID=0B93D0BD5DD867582DE8C0195C25662B&mkt=en-us; domain=.bingapis.com;
+        path=/; HttpOnly
+      - _EDGE_V=1; domain=.bingapis.com; expires=Sun, 25-Sep-2022 20:33:23 GMT; path=/;
+        HttpOnly
+      - _SS=SID=0B93D0BD5DD867582DE8C0195C25662B; domain=.bingapis.com; path=/
+      X-Snr-Routing:
+      - '1'
       Bingapis-Traceid:
-      - 6A2714316AC6426C9A0FEAEA723A7D19
+      - 06A80C738F47466EB4511BE9F71FEBEA
       X-Msedge-Clientid:
-      - 147431069ED666B92A793D5E9FD967AB
+      - 3694FAB4A386681704FCEA10A27B697A
       X-Msapi-Userstate:
-      - 2a85
+      - 3a22
       Bingapis-Market:
       - en-US
+      X-Cache:
+      - CONFIG_NOCACHE
       X-Msedge-Ref:
-      - 'Ref A: 6A2714316AC6426C9A0FEAEA723A7D19 Ref B: BAYEDGE0112 Ref C: 2018-08-27T00:04:07Z'
+      - 'Ref A: 06A80C738F47466EB4511BE9F71FEBEA Ref B: BLUEDGE0508 Ref C: 2021-08-31T20:33:23Z'
       Date:
-      - Mon, 27 Aug 2018 00:04:07 GMT
+      - Tue, 31 Aug 2021 20:33:23 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=9917B7D46D7D4AD49AE4E7409C40CEE5&CID=147431069ED666B92A793D5E9FD967AB&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=9917B7D46D7D4AD49AE4E7409C40CEE5&CID=147431069ED666B92A793D5E9FD967AB&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=B492150AB64640B892C189630D53BF2B&CID=3694FAB4A386681704FCEA10A27B697A&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=B492150AB64640B892C189630D53BF2B&CID=3694FAB4A386681704FCEA10A27B697A&Type=Event.CPT&DATA=0"},
         "queryContext": {"originalQuery": "militry (site:www.whitehouse.gov\/)", "alteredQuery":
         "military", "alterationOverrideQuery": "+militry (site:www.whitehouse.gov\/)",
         "adultIntent": false}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=militry+(site%3awww.whitehouse.gov%2f)",
-        "webSearchUrlPingSuffix": "DevEx,5392.1", "totalEstimatedMatches": 335000,
+        "webSearchUrlPingSuffix": "DevEx,5439.1", "totalEstimatedMatches": 224000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "Executive Order Enhancing Noncompetitive Civil Service ...", "url": "https:\/\/www.whitehouse.gov\/presidential-actions\/executive-order-enhancing-noncompetitive-civil-service-appointments-military-spouses\/",
-        "urlPingSuffix": "DevEx,5057.1", "displayUrl": "https:\/\/www.whitehouse.gov\/presidential-actions\/executive-order...",
-        "snippet": "Section 1. Definitions. (a) “Military spouse” means: (i) the husband
-        or wife of a member of the Armed Forces who, as determined by the Secretary
-        of Defense, is performing active duty pursuant to orders that authorize a
-        permanent change of station move, if such husband or wife ...", "dateLastCrawled":
-        "2018-08-19T10:45:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
-        "name": "Military Spouses in the Labor Market - whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2018\/05\/Military-Spouses-in-the-Labor-Market.pdf",
-        "urlPingSuffix": "DevEx,5068.1", "displayUrl": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2018\/05\/Military...",
-        "snippet": "CEA • Military Spouses in the Labor Market 2 average American
-        adult of working age is 41 years old, working age military spouses are 33
-        years old,", "dateLastCrawled": "2018-08-17T20:56:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
-        "name": "Remarks by President Trump at 4th of July Military ...", "url": "https:\/\/www.whitehouse.gov\/briefings-statements\/remarks-president-trump-4th-july-military-appreciation-event-2\/",
-        "urlPingSuffix": "DevEx,5079.1", "displayUrl": "https:\/\/www.whitehouse.gov\/briefings-statements\/remarks-president...",
-        "snippet": "THE PRESIDENT: Happy 4th of July to everybody. It’s a great day.
-        (Applause.) Melania and I are honored to celebrate American independence with
-        the heroes who protect American independence — the men, the women of the United
-        States Military. These are our finest. Thank you very much ...", "dateLastCrawled":
-        "2018-08-16T03:17:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
-        "name": "MILITARY PERSONNEL ACTIVE AND RESERVE FORCES", "url": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2018\/02\/mil-fy2019.pdf",
-        "urlPingSuffix": "DevEx,5091.1", "displayUrl": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2018\/02\/mil-fy2019.pdf",
-        "snippet": "DEPARTMENT OF DEFENSE—MILITARY PROGRAMS MILITARY PERSONNEL ACTIVE
-        AND RESERVE FORCES These appropriations finance the personnel costs of the
-        Active, Reserve,", "dateLastCrawled": "2018-08-20T06:11:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "National Security
-        & Defense - The White House", "url": "https:\/\/www.whitehouse.gov\/issues\/national-security-defense\/",
-        "urlPingSuffix": "DevEx,5104.1", "displayUrl": "https:\/\/www.whitehouse.gov\/issues\/national-security-defense",
-        "snippet": "Rebuilding U.S. deterrence to preserve peace through strength
-        must be our Nation’s top priority. The unprecedented era of peace that followed
-        World War II revealed that the free world is safest when America is strongest.
-        The slow depletion of our military in recent years has resulted in an ...",
-        "dateLastCrawled": "2018-08-21T00:39:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
-        "name": "2018 Amendments to the Manual for Courts-Martial, United ...", "url":
-        "https:\/\/www.whitehouse.gov\/presidential-actions\/2018-amendments-manual-courts-martial-united-states\/",
-        "urlPingSuffix": "DevEx,5118.1", "displayUrl": "https:\/\/www.whitehouse.gov\/presidential-actions\/2018-amendments...",
+        "Readout of White House Meeting with Veteran and Military ...", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2021\/08\/27\/readout-of-white-house-meeting-with-veteran-and-military-family-organizations\/",
+        "urlPingSuffix": "DevEx,5065.1", "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2021\/08\/27\/readout-of...",
+        "snippet": "Readout of White. House Meeting with Veteran and Military Family
+        Organizations. August 27, 2021 • Statements and Releases. Today, Secretary
+        of Veterans Affairs Dennis McDonough, Senior Advisor ...", "dateLastCrawled":
+        "2021-08-27T23:28:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
+        "name": "Statement by President Joe Biden on the Evacuation Mission ...",
+        "url": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2021\/08\/28\/statement-by-president-joe-biden-on-the-evacuation-mission-in-kabul\/",
+        "urlPingSuffix": "DevEx,5081.1", "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2021\/08\/28\/statement-by...",
+        "snippet": "Statement by President Joe. Biden on the Evacuation Mission in.
+        Kabul. This morning, I met with my national security team in Washington and
+        my commanders in the field. We discussed the strike that ...", "dateLastCrawled":
+        "2021-08-29T05:04:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        "name": "Remarks by President Biden on Evacuations in Afghanistan ...", "url":
+        "https:\/\/www.whitehouse.gov\/briefing-room\/speeches-remarks\/2021\/08\/20\/remarks-by-president-biden-on-evacuations-in-afghanistan\/",
+        "urlPingSuffix": "DevEx,5097.1", "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/speeches-remarks\/2021\/08\/20\/remarks-by...",
+        "snippet": "The military has secured the airport, as you mentioned, but will
+        you sign off on sending U.S. troops into Kabul to evacuate Americans who haven’t
+        been able to get to the airport safely?", "dateLastCrawled": "2021-08-29T13:05:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "White
+        House Announces Additional Staff | The White House", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2021\/03\/09\/white-house-announces-additional-staff\/",
+        "urlPingSuffix": "DevEx,5111.1", "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2021\/03\/09\/white-house...",
+        "snippet": "White House Military Office Maju Varghese, Director of the White
+        House Military Office Maju Varghese most recently served as Executive Director
+        of the Presidential Inaugural Committee. Prior to ...", "dateLastCrawled":
+        "2021-08-27T14:10:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
+        "name": "Service Academies Application | The White House", "url": "https:\/\/www.whitehouse.gov\/service-academy-nominations\/service-academies-application\/",
+        "urlPingSuffix": "DevEx,5124.1", "displayUrl": "https:\/\/www.whitehouse.gov\/service-academy-nominations\/service-academies-application",
+        "snippet": "The Vice President is authorized to nominate individuals to the
+        United States Military, Naval, and Air Force Academies but can not nominate
+        to the U.S. Merchant Marine Academy and does not ...", "dateLastCrawled":
+        "2021-08-29T04:19:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
+        "name": "FACT SHEET: The American Jobs Plan Supports Veterans | The ...",
+        "url": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2021\/04\/15\/fact-sheet-the-american-jobs-plan-supports-veterans\/",
+        "urlPingSuffix": "DevEx,5138.1", "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2021\/04\/15\/fact-sheet-the...",
+        "snippet": "Roughly 200,000 service members transition from military service
+        each year, the majority of whom will enter the civilian labor force. Many
+        veterans have experienced unemployment and other economic ...", "dateLastCrawled":
+        "2021-08-26T09:43:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "name": "Remarks by President Biden to U.S. Air Force Personnel and ...",
+        "url": "https:\/\/www.whitehouse.gov\/briefing-room\/speeches-remarks\/2021\/06\/09\/remarks-by-president-biden-to-u-s-air-force-personnel-and-families-stationed-at-royal-air-force-mildenhall\/",
+        "urlPingSuffix": "DevEx,5152.1", "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/speeches-remarks\/2021\/06\/09\/remarks-by...",
+        "snippet": "The U.S. and the UK are both founding members of NATO — the strongest
+        military and political alliance in the history of the world. And that’s not
+        hyperbole.", "dateLastCrawled": "2021-08-28T06:53:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "name": "Interim National Security Strategic Guidance | The White House",
+        "url": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2021\/03\/03\/interim-national-security-strategic-guidance\/",
+        "urlPingSuffix": "DevEx,5166.1", "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2021\/03\/03\/interim...",
+        "snippet": "Guidance. March 03, 2021 • Statements and Releases. Today, the
+        Administration released the Interim National Security Strategic Guidance,
+        attached. This interim guidance has been issued to convey ...", "dateLastCrawled":
+        "2021-08-29T17:29:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
+        "name": "President Biden Announces 10 Key Nominations | The White House",
+        "url": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2021\/08\/06\/president-biden-announces-10-key-nominations\/",
+        "urlPingSuffix": "DevEx,5180.1", "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2021\/08\/06\/president...",
+        "snippet": "Her CSIS research focused on reinforcing the principled foundations
+        of U.S. defense strategy and military operations, including the responsible
+        role of the U.S. military in Defense Support of ...", "dateLastCrawled": "2021-08-28T06:20:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Steps
+        for the Service Academies Application Process | The ...", "url": "https:\/\/www.whitehouse.gov\/service-academy-nominations\/steps\/",
+        "urlPingSuffix": "DevEx,5193.1", "displayUrl": "https:\/\/www.whitehouse.gov\/service-academy-nominations\/steps",
+        "snippet": "The minimum SAT scores for the academies are 500 verbal and 500
+        math. The average SAT scores at the academies are 540-620 verbal and 630-710
+        math. The minimum ACT scores for the academies are 21 ...", "dateLastCrawled":
+        "2021-08-28T04:12:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
+        "name": "Object Class Analysis", "url": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2021\/05\/objclass_fy22.pdf",
+        "urlPingSuffix": "DevEx,5205.1", "displayUrl": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2021\/05\/objclass_fy22.pdf",
+        "snippet": "These major object classes are then divided into smaller classes.
+        The tables included in this report provide the amounts shown in the object
+        class schedules of the 2022 Budget Appendix.The 2020 ...", "dateLastCrawled":
+        "2021-08-26T00:23:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
+        "name": "Statement by President Joe Biden on Afghanistan | The ...", "url":
+        "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2021\/08\/14\/statement-by-president-joe-biden-on-afghanistan\/",
+        "urlPingSuffix": "DevEx,5218.1", "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2021\/08\/14\/statement-by...",
+        "snippet": "First, based on the recommendations of our diplomatic, military,
+        and intelligence teams, I have authorized the deployment of approximately
+        5,000 U.S. troops to make sure we can have an orderly and ...", "dateLastCrawled":
+        "2021-08-29T01:18:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
+        "name": "Executive Order on Addressing the Threat from Securities ...", "url":
+        "https:\/\/www.whitehouse.gov\/briefing-room\/presidential-actions\/2021\/06\/03\/executive-order-on-addressing-the-threat-from-securities-investments-that-finance-certain-companies-of-the-peoples-republic-of-china\/",
+        "urlPingSuffix": "DevEx,5232.1", "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/presidential-actions\/2021\/06\/03\/executive...",
         "snippet": "By the authority vested in me as President by the Constitution
-        and the laws of the United States of America, including chapter 47 of title
-        10, United States Code (Uniform Code of Military Justice (UCMJ), 10 U.S.C.
-        801-946), and in order to prescribe amendments to the Manual for Courts-Martial,
-        United States, prescribed by Executive Order 12473 ...", "dateLastCrawled":
-        "2018-08-15T11:14:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
-        "name": "Executive Order on the Delegation of Authority to Approve ...", "url":
-        "https:\/\/www.whitehouse.gov\/presidential-actions\/executive-order-delegation-authority-approve-certain-military-decorations\/",
-        "urlPingSuffix": "DevEx,5129.1", "displayUrl": "https:\/\/www.whitehouse.gov\/presidential-actions\/executive-order...",
-        "snippet": "Distinguished Service Cross, Navy Cross, Air Force Cross, and
-        Coast Guard Cross. The Secretary of the military department concerned, ...",
-        "dateLastCrawled": "2018-08-13T22:37:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
-        "name": "How China’s Economic Aggression Threatens the Technologies ...",
-        "url": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2018\/06\/FINAL-China-Technology-Report-6.18.18-PDF.pdf",
-        "urlPingSuffix": "DevEx,5140.1", "displayUrl": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2018\/06\/FINAL-China...",
-        "snippet": "military competitor like China, commercial items can be exploited
-        for military purposes. As an example of China’s evasion of U.S. export control
-        laws, ...", "dateLastCrawled": "2018-08-16T13:40:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
-        "name": "President Donald J. Trump and First Lady Melania Trump ...", "url":
-        "https:\/\/www.whitehouse.gov\/briefings-statements\/president-donald-j-trump-first-lady-melania-trump-celebrate-fourth-july-white-house\/",
-        "urlPingSuffix": "DevEx,5151.1", "displayUrl": "https:\/\/www.whitehouse.gov\/briefings-statements\/president-donald-j...",
-        "snippet": "President Donald J. Trump and First Lady Melania Trump will celebrate
-        Independence Day at the White House by welcoming military families to the
-        South Lawn", "dateLastCrawled": "2018-08-21T20:06:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
-        "name": "Presidential Proclamation Honoring the Victims of the ...", "url":
-        "https:\/\/www.whitehouse.gov\/presidential-actions\/presidential-proclamation-honoring-victims-tragedy-annapolis-maryland\/",
-        "urlPingSuffix": "DevEx,5163.1", "displayUrl": "https:\/\/www.whitehouse.gov\/presidential-actions\/presidential...",
-        "snippet": "Our Nation shares the sorrow of those affected by the shooting
-        at the Capital Gazette newspaper in Annapolis, Maryland. Americans across
-        the country are united in calling upon God to be with the victims and to bring
-        aid and comfort to their families and friends. As a mark of solemn respect
-        for ...", "dateLastCrawled": "2018-08-19T11:09:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
-        "name": "President Donald J. Trump is Enhancing Opportunity for ...", "url":
-        "https:\/\/www.whitehouse.gov\/briefings-statements\/president-donald-j-trump-enhancing-opportunity-military-families\/",
-        "urlPingSuffix": "DevEx,5175.1", "displayUrl": "https:\/\/www.whitehouse.gov\/briefings-statements\/president-donald-j...",
-        "snippet": "ENHANCING OPPORTUNITY FOR OUR NATION’S MILITARY FAMILIES: Today,
-        President Trump issued an executive order to enhance opportunities for military
-        spouses lo", "dateLastCrawled": "2018-08-15T13:11:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
-        "name": "President Donald J. Trump Proclaims May 19, 2018, as Armed ...",
-        "url": "https:\/\/www.whitehouse.gov\/presidential-actions\/president-donald-j-trump-proclaims-may-19-2018-armed-forces-day\/",
-        "urlPingSuffix": "DevEx,5187.1", "displayUrl": "https:\/\/www.whitehouse.gov\/presidential-actions\/president-donald-j...",
-        "snippet": "On Armed Forces Day, we pay tribute to the extraordinary men and
-        women who serve our Nation with valor and distinction in all branches of the
-        military. Th", "dateLastCrawled": "2018-08-20T19:50:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "President Donald
-        J. Trump Announces Intent to Nominate ...", "url": "https:\/\/www.whitehouse.gov\/presidential-actions\/president-donald-j-trump-announces-intent-nominate-personnel-key-administration-posts-50\/",
-        "urlPingSuffix": "DevEx,5199.1", "displayUrl": "https:\/\/www.whitehouse.gov\/presidential-actions\/president-donald-j...",
-        "snippet": "President Donald J. Trump today announced his intent to nominate
-        the following individuals to key positions in his Administration: R. Clarke
-        Cooper of Florida, to be an Assistant Secretary of State for Political-Military
-        Affairs. Mr. Cooper currently serves as the Director of Intelligence Planning
-        ...", "dateLastCrawled": "2018-08-17T21:25:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
-        "name": "A Look at Fourth of July at the White House, Past and Present", "url":
-        "https:\/\/www.whitehouse.gov\/articles\/look-fourth-july-white-house-past-present\/",
-        "urlPingSuffix": "DevEx,5211.1", "displayUrl": "https:\/\/www.whitehouse.gov\/articles\/look-fourth-july-white-house...",
-        "snippet": "A rooftop view from the White House shows military families and
-        invited guests at the White House on July 4, 2018. (Official White House Photo
-        by Shealah Craighead) 1 \/?", "dateLastCrawled": "2018-07-30T09:36:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "George
-        W. Bush - The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/george-w-bush\/",
-        "urlPingSuffix": "DevEx,5225.1", "about": [{"name": "George W. Bush"}, {"name":
-        "George H. W. Bush"}], "displayUrl": "https:\/\/www.whitehouse.gov\/...\/presidents\/george-w-bush",
-        "snippet": "George W. Bush, America''s 43rd President (2001-2009), was transformed
-        into a wartime President in the aftermath of the airborne terrorist attacks
-        on Septem", "dateLastCrawled": "2018-08-19T04:26:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
-        "name": "CEA Report: Military Spouses in the Labor Market", "url": "https:\/\/www.whitehouse.gov\/briefings-statements\/cea-report-military-spouses-labor-market\/",
-        "urlPingSuffix": "DevEx,5237.1", "displayUrl": "https:\/\/www.whitehouse.gov\/briefings-statements\/cea-report...",
-        "snippet": "Today, the Council of Economic Advisers (CEA) released a report
-        on the employment challenges facing military spouses. Please see below for
-        the introduction", "dateLastCrawled": "2018-08-19T18:58:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "President Donald
-        J. Trump Announces White House Appointments", "url": "https:\/\/www.whitehouse.gov\/presidential-actions\/president-donald-j-trump-announces-white-house-appointments\/",
-        "urlPingSuffix": "DevEx,5251.1", "displayUrl": "https:\/\/www.whitehouse.gov\/presidential-actions\/president-donald-j...",
-        "snippet": "President Donald J. Trump today announced the following White
-        House appointments: Captain Keith B. Davids will serve as Special Assistant
-        to the President and Deputy Director, White House Military Office. Mr. Davids
-        previously served as Deputy Commander, Naval Special Warfare Command. Zachary
-        D ...", "dateLastCrawled": "2018-07-25T06:21:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
-        "name": "Presidential Proclamation on Adjusting Imports of Aluminum ...",
-        "url": "https:\/\/www.whitehouse.gov\/presidential-actions\/presidential-proclamation-adjusting-imports-aluminum-united-states\/",
-        "urlPingSuffix": "DevEx,5263.1", "displayUrl": "https:\/\/www.whitehouse.gov\/presidential-actions\/presidential...",
-        "snippet": "1. On January 19, 2018, the Secretary of Commerce (Secretary)
-        transmitted to me a report on his investigation into the effect of imports
-        of aluminum on the national security of the United States under section 232
-        of the Trade Expansion Act of 1962, as amended (19 U.S.C. 1862). 2. The Secretary
-        ...", "dateLastCrawled": "2018-08-18T03:53:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
-        "name": "News", "url": "https:\/\/www.whitehouse.gov\/news\/", "urlPingSuffix":
-        "DevEx,5277.1", "displayUrl": "https:\/\/www.whitehouse.gov\/news", "snippet":
-        "News. All News; Articles; Presidential Actions; Briefings & Statements; Filter
-        ... Second Lady Karen Pence Hosts Military Spouses at the Vice President’s
-        Residence.", "dateLastCrawled": "2018-08-14T14:21:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
-        "name": "President Donald J. Trump Proclaims May 11, 2018, as ...", "url":
-        "https:\/\/www.whitehouse.gov\/presidential-actions\/president-donald-j-trump-proclaims-may-11-2018-military-spouse-day\/",
-        "urlPingSuffix": "DevEx,5289.1", "displayUrl": "https:\/\/www.whitehouse.gov\/presidential-actions\/president-donald-j...",
-        "snippet": "Since the founding of our Republic, military spouses have served
-        alongside their loved ones and played vital roles in the defense of our country.
-        Their se", "dateLastCrawled": "2018-08-15T10:23:00.0000000Z"}]}, "rankingResponse":
-        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
-        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        and the laws of the United States of America, including the International
+        Emergency Economic Powers Act (50 U.S.C. 1701 et seq ...", "dateLastCrawled":
+        "2021-08-27T19:12:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        "name": "Remarks by President Biden on the Drawdown of U.S. Forces ...", "url":
+        "https:\/\/www.whitehouse.gov\/briefing-room\/speeches-remarks\/2021\/07\/08\/remarks-by-president-biden-on-the-drawdown-of-u-s-forces-in-afghanistan\/",
+        "urlPingSuffix": "DevEx,5246.1", "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/speeches-remarks\/2021\/07\/08\/remarks-by...",
+        "snippet": "East Room 2:09 P.M. EDT THE PRESIDENT: Good afternoon. Earlier
+        today, I was briefed by our senior military and national security leaders
+        on the status of the drawdown of U.S. forces and allied ...", "dateLastCrawled":
+        "2021-08-29T07:16:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
+        "name": "SECTION 83—OBJECT CLASSIFICATION (MAX SCHEDULE O)", "url": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2018\/06\/s83.pdf",
+        "urlPingSuffix": "DevEx,5258.1", "displayUrl": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2018\/06\/s83.pdf",
+        "snippet": "Federal civilian employees, military personnel, and non-Federal
+        personnel. Object class 11 covers object classes 11.1 through 11.8. 11.1 Full-time
+        permanent :", "dateLastCrawled": "2021-08-28T06:05:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "FACT SHEET: President Biden Signs Executive Order ...", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2021\/06\/25\/fact-sheet-president-biden-signs-executive-order-advancing-diversity-equity-inclusion-and-accessibility-in-the-federal-government\/",
+        "urlPingSuffix": "DevEx,5271.1", "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2021\/06\/25\/fact-sheet...",
+        "snippet": "Today, President Biden signed an Executive Order to advance diversity,
+        equity, inclusion, and accessibility (DEIA) in the Federal workforce. This
+        Executive Order reaffirms that the United States ...", "dateLastCrawled":
+        "2021-08-28T07:01:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
+        "name": "FACT SHEET: Executive Order Addressing the Threat from ...", "url":
+        "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2021\/06\/03\/fact-sheet-executive-order-addressing-the-threat-from-securities-investments-that-finance-certain-companies-of-the-peoples-republic-of-china\/",
+        "urlPingSuffix": "DevEx,5285.1", "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2021\/06\/03\/fact-sheet...",
+        "snippet": "Solidify and strengthen a previous E.O to prohibit U.S. investments
+        in the military-industrial complex of the People’s Republic of China: This
+        E.O. will amend E.O. 13959 by creating a ...", "dateLastCrawled": "2021-08-29T10:18:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Remarks
+        by President Biden on the Terror Attack at Hamid ...", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/speeches-remarks\/2021\/08\/26\/remarks-by-president-biden-on-the-terror-attack-at-hamid-karzai-international-airport\/",
+        "urlPingSuffix": "DevEx,5301.1", "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/speeches-remarks\/2021\/08\/26\/remarks-by...",
+        "snippet": "But the military — from the Chairman of the Joint Chiefs, the
+        Joint Chiefs, the commanders in the field — have all contacted me one way
+        or another, usually by letter, saying they subscribe to ...", "dateLastCrawled":
+        "2021-08-29T07:04:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
+        "name": "Remarks by President Biden At Signing of An Executive ...", "url":
+        "https:\/\/www.whitehouse.gov\/briefing-room\/speeches-remarks\/2021\/07\/09\/remarks-by-president-biden-at-signing-of-an-executive-order-promoting-competition-in-the-american-economy\/",
+        "urlPingSuffix": "DevEx,5315.1", "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/speeches-remarks\/2021\/07\/09\/remarks-by...",
+        "snippet": "Military families, for example, they’re often on the move between
+        states with each new assignment. So you have a woman in the military, her
+        husband is following her, or vice versa. Guess what?", "dateLastCrawled":
+        "2021-08-28T14:29:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
+        "name": "Memorandum on the Designation of the Department of ...", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/presidential-actions\/2021\/08\/29\/memorandum-on-the-designation-of-the-department-of-homeland-security-as-lead-federal-department-for-facilitating-the-entry-of-vulnerable-afghans-into-the-united-states\/",
+        "urlPingSuffix": "DevEx,5331.1", "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/presidential-actions\/2021\/08\/29\/memorandum-on...",
+        "snippet": "MEMORANDUM FOR THE HEADS OF EXECUTIVE DEPARTMENTS AND AGENCIES
+        SUBJECT: Designation of the Department of Homeland Security as Lead Federal
+        Department for Facilitating the Entry of Vulnerable ...", "dateLastCrawled":
+        "2021-08-30T00:38:00.0000000Z"}]}, "rankingResponse": {"mainline": {"items":
+        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
         {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
@@ -225,6 +228,6 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
-    http_version: 
-  recorded_at: Mon, 27 Aug 2018 00:04:07 GMT
+    http_version:
+  recorded_at: Tue, 31 Aug 2021 20:33:23 GMT
 recorded_with: VCR 4.0.0

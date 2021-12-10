@@ -31,7 +31,7 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Fri, 11 Jun 2021 12:58:11 GMT
+      - Tue, 31 Aug 2021 20:32:04 GMT
       Vary:
       - Accept-Encoding
       P3p:
@@ -39,23 +39,23 @@ http_interactions:
       X-Snr-Routing:
       - '1'
       Bingapis-Traceid:
-      - 869918883545459DB2C9AB98133B7CF5
+      - D200C924A1974239BC103D2226B927F2
       Bingapis-Sessionid:
-      - 327D13B9C0EE47F7BBEF18FDAB7DEDED
+      - 1D592F969C6843A79ECB78CC912EF319
       X-Msedge-Clientid:
-      - 0D4D57890B806E241D5B47DA0A7D6FFB
+      - 2F4060534F356D7D1CB870F74E406C9B
       X-Msapi-Userstate:
-      - c444
+      - d7f6
       Bingapis-Market:
       - en-US
       X-Search-Responseinfo:
-      - InternalResponseTime=224,MSDatacenter=BN2B
+      - InternalResponseTime=289,MSDatacenter=BN2B
       X-Cache:
       - CONFIG_NOCACHE
       X-Msedge-Ref:
-      - 'Ref A: 869918883545459DB2C9AB98133B7CF5 Ref B: BLUEDGE0914 Ref C: 2021-06-11T12:59:11Z'
+      - 'Ref A: D200C924A1974239BC103D2226B927F2 Ref B: BLUEDGE1713 Ref C: 2021-08-31T20:33:04Z'
       Apim-Request-Id:
-      - ae38cdd5-7b5e-4deb-96b0-aeb17c8623af
+      - a9100c5e-c2bc-4aef-9f3e-5b75999d63a7
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
@@ -63,166 +63,158 @@ http_interactions:
       Csp-Billing-Usage:
       - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Fri, 11 Jun 2021 12:59:11 GMT
+      - Tue, 31 Aug 2021 20:33:04 GMT
     body:
       encoding: UTF-8
       string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "weather
         (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=weather+(site%3agov+OR+site%3amil)",
-        "totalEstimatedMatches": 90100000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
-        "name": "National Weather Service", "url": "https:\/\/www.weather.gov\/",
+        "totalEstimatedMatches": 20700000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "National Weather Service", "url": "https:\/\/www.weather.gov\/",
         "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov", "snippet":
         "Surface Weather Upper Air Marine and Buoy Reports Snow Cover Satellite
         Space Weather International Observations. FORECAST Local Forecast International
         Forecasts Severe Weather Current Outlook Maps Drought Fire Weather Fronts\/Precipitation
         Maps Current Graphical Forecast Maps Rivers Marine Offshore and High Seas
-        Hurricanes Aviation Weather", "dateLastCrawled": "2021-06-08T11:17:00.0000000Z",
+        Hurricanes Aviation Weather", "dateLastCrawled": "2021-08-28T21:19:00.0000000Z",
         "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
-        "name": "National Weather Service", "url": "https:\/\/www.weather.gov\/%20",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/ ",
-        "snippet": "Texas Severe Thunderstorms; Central Rockies Snow; Fire Weather
-        in the West. Isolated severe thunderstorms capable of producing large to very
-        large hail and severe wind gusts may occur Monday across parts of south-central
-        Texas. Elevated to critical fire weather conditions are forecast across
-        parts of northern California and the Southwest again ...", "dateLastCrawled":
-        "2021-06-07T20:15:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2", "name":
-        "Weather | National Oceanic and Atmospheric Administration", "url": "https:\/\/www.noaa.gov\/weather",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.noaa.gov\/weather",
-        "snippet": "Weather, water and climate events, cause an average of approximately
-        650 deaths and $15 billion in damage per year and are responsible for some
-        90 percent of all presidentially-declared disasters. About one-third of the
-        U.S. economy – some $3 trillion – is sensitive to weather and climate.",
-        "dateLastCrawled": "2021-06-09T12:18:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
-        "name": "National Weather Service", "url": "https:\/\/forecast.weather.gov\/MapClick.php?lat=42.8723&lon=-97.397",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/forecast.weather.gov\/MapClick.php?lat=42.8723&lon=-97.397",
-        "snippet": "Thursday Night. A chance of showers and thunderstorms after 1am.
-        Mostly clear, with a low around 69. Chance of precipitation is 50%. Friday.
-        A chance of showers before 1pm. Mostly sunny, with a high near 88. Chance
-        of precipitation is 30%. Friday Night.", "dateLastCrawled": "2021-06-08T01:58:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
-        "name": "National Weather Service", "url": "https:\/\/forecast.weather.gov\/MapClick.php?site=BOX&textField1=42.3758&textField2=-71.1187",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/forecast.weather.gov\/MapClick.php?site=BOX&textField1=42.3758&textField2=-71.1187",
-        "snippet": "Southwest wind around 11 mph, with gusts as high as 21 mph. Chance
-        of precipitation is 50%. Friday Night. A chance of showers before 11pm. Mostly
-        cloudy, with a low around 64. Southwest wind 6 to 10 mph. Chance of precipitation
-        is 40%. Saturday. Mostly sunny, with a high near 86. Southwest wind 7 to 11
-        mph.", "dateLastCrawled": "2021-06-04T08:54:00.0000000Z", "language": "en",
-        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
-        "name": "National Weather Service", "url": "https:\/\/forecast.weather.gov\/MapClick.php?site=SGX&textField1=33.74&textField2=-116.718&e=1",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/forecast.weather.gov\/MapClick.php?site=SGX&textField1=33.74&textField2=-116...",
-        "snippet": "Detailed Forecast. Mostly clear, with a low around 58. Light and
-        variable wind becoming northwest 5 to 10 mph in the evening. Sunny, with a
-        high near 82. Southwest wind 5 to 10 mph. Mostly clear, with a low around
-        60. North wind 5 to 15 mph, with gusts as high as 20 mph. Sunny, with a high
-        near 83.", "dateLastCrawled": "2021-06-08T23:06:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
-        "name": "Weather Maps", "url": "https:\/\/www.weather.gov\/ffc\/mapslast",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/ffc\/mapslast",
-        "snippet": "Maps Showing Present Situation. SURFACE MAPS w\/ ISOBARS and\/or
-        FRONTS and\/or PLOTTED DATA. Northern Hemisphere (data from NWS Ocean Prediction
-        Center) North America (Weather Prediction Center) North America (isobars
-        only - data from the University of Illinois WW2010 Project) Southeast Surface
-        Plot (Data from the University of Illinois WW2010 ...", "dateLastCrawled":
-        "2021-06-08T18:30:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7", "name":
-        "AWC - Aviation Weather Center", "url": "https:\/\/aviationweather.gov\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/aviationweather.gov",
-        "snippet": "The Aviation Weather Center delivers consistent, timely and
-        accurate weather information for the world airspace system. We are a team
-        of highly skilled people dedicated to working with customers and partners
-        to enhance safe and efficient flight.", "dateLastCrawled": "2021-06-09T14:20:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
-        "name": "Doppler Radar National Mosaic - NOAA''s National Weather ...",
-        "url": "https:\/\/www.nws.noaa.gov\/radar_tab.php", "isFamilyFriendly": true,
-        "displayUrl": "https:\/\/www.nws.noaa.gov\/radar_tab.php", "snippet":
-        "Weather-Ready Nation. NWS on Facebook. Comments on combined warning and
-        radar displays. will be accepted through the implementation of the new radar.
-        Warnings & Forecasts. Graphical Forecasts. National Maps.", "dateLastCrawled":
-        "2021-06-09T13:14:00.0000000Z", "language": "en", "isNavigational": false},
+        "name": "Weather | National Oceanic and Atmospheric Administration", "url":
+        "https:\/\/www.noaa.gov\/weather", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.noaa.gov\/weather", "snippet": "Weather, water and climate
+        events, cause an average of approximately 650 deaths and $15 billion in damage
+        per year and are responsible for some 90 percent of all presidentially-declared
+        disasters. About one-third of the U.S. economy – some $3 trillion – is sensitive
+        to weather and climate.", "dateLastCrawled": "2021-08-27T20:24:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Climate - National Weather Service", "url": "https:\/\/www.weather.gov\/wrh\/climate",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/wrh\/climate",
+        "snippet": "The map below is your portal to NWS Climate information. Select
+        an area of interest and you will be directed to the local Weather Forecast
+        Office page to access their climate data. [ User Video ] This data is preliminary,
+        for access to the complete period of record of finalized data for this site
+        and more, visit NOAA''s National Centers for ...", "dateLastCrawled": "2021-08-28T12:11:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Miami - South Florida - National Weather Service", "url": "https:\/\/www.weather.gov\/mfl\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/mfl",
+        "snippet": "US Dept of Commerce National Oceanic and Atmospheric Administration
+        National Weather Service Miami - South Florida 11691 SW 17th Street Miami,
+        FL 33165", "dateLastCrawled": "2021-08-29T01:02:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "El Paso, TX - National Weather Service", "url": "https:\/\/www.weather.gov\/epz\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/epz",
+        "snippet": "NOAA National Weather Service El Paso, TX. Isolated to scattered
+        thunderstorm will wind down after sunset and we will only be left with some
+        high clouds for the overnight hours.", "dateLastCrawled": "2021-08-29T04:15:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Los Angeles, CA - National Weather Service", "url": "https:\/\/www.weather.gov\/lox\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/lox",
+        "snippet": "NOAA National Weather Service Los Angeles, CA. Hot conditions
+        will increase the risk for heat related illnesses, especially for sensitive
+        populations like the very old, the very young, and those active outdoors.",
+        "dateLastCrawled": "2021-08-29T02:06:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Key West, FL - National Weather Service", "url": "https:\/\/www.weather.gov\/key\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/key",
+        "snippet": "US Dept of Commerce National Oceanic and Atmospheric Administration
+        National Weather Service Key West, FL 1315 White Street Key West, FL
+        33040 (305) 295-1316", "dateLastCrawled": "2021-08-29T00:15:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Sacramento, CA - National Weather Service", "url": "https:\/\/www.weather.gov\/sto\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/sto",
+        "snippet": "A Red Flag Warning is in effect for portions of the Sacramento
+        Valley and surrounding foothills into Saturday morning. Gusty northerly winds,
+        dry fuels, and low humidity will bring critical fire weather conditions.",
+        "dateLastCrawled": "2021-08-28T02:25:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "NWS Radar", "url": "https:\/\/radar.weather.gov\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/radar.weather.gov", "snippet": "Weather
+        for a location. This view is similar to a radar application on a phone that
+        provides radar, current weather, alerts and the forecast for a location.
+        Recommended for bookmarks. All hazardous conditions. This view provides a
+        full map view of all alert hazards (similar to WWA map).", "dateLastCrawled":
+        "2021-08-28T21:27:00.0000000Z", "language": "en", "isNavigational": false},
         {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9", "name":
-        "Flagstaff, AZ - Weather", "url": "https:\/\/www.weather.gov\/fgz\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/fgz",
-        "snippet": "Consistent warm, breezy, dry weather throughout the week causing
-        elevated fire weather conditions to persist. The strongest winds will be
-        Thursday with afternoon gusts expected to be 30-40 mph. Warm temperatures
-        will begin climbing late in the week with very hot and extremely dry conditions
-        by the weekend as a robust upper-level ridge develops.", "dateLastCrawled":
-        "2021-06-08T12:07:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10", "name":
-        "Wilmington, OH - Weather", "url": "https:\/\/www.weather.gov\/ILN", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.weather.gov\/ILN", "snippet": "US Dept
-        of Commerce National Oceanic and Atmospheric Administration National Weather
-        Service Wilmington, OH 1901 South State Route 134 Wilmington, Oh 45177",
-        "dateLastCrawled": "2021-06-08T18:12:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
-        "name": "National Weather Service", "url": "https:\/\/forecast.weather.gov\/MapClick.php?site=HGX&textField1=29.7687&textField2=-95.3867&e=1",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/forecast.weather.gov\/MapClick.php?site=HGX&textField1=29.7687&textField2=-95...",
-        "snippet": "A slight chance of showers and thunderstorms before 1am, then
-        a slight chance of showers between 1am and 2am. Mostly cloudy, with a low
-        around 73. Calm wind becoming east around 5 mph. Chance of precipitation is
-        20%. Wednesday. Showers and thunderstorms likely, mainly between 2pm and 5pm,
-        then showers likely and possibly a thunderstorm after 5pm.", "dateLastCrawled":
-        "2021-06-08T02:06:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12", "name":
-        "Rapid City, SD - Weather", "url": "https:\/\/www.weather.gov\/unr\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/unr",
-        "snippet": "NWS Forecast Office Rapid City, SD. Weather.gov > Rapid City,
-        SD. Current Hazards. Storm and Precipitation Reports. Outlooks. Submit a Storm
-        Report. Experimental Graphical Hazardous Weather Outlook. Current Conditions.
-        Observations.", "dateLastCrawled": "2021-06-09T08:11:00.0000000Z", "language":
+        "San Diego, CA - National Weather Service", "url": "https:\/\/www.weather.gov\/sgx\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/sgx",
+        "snippet": "NOAA National Weather Service San Diego, CA. Highs today.
+        Coast: mid-70s to 80s, valleys: 90s, Inland Empire: 100-110, mountains: 80s-90s,
+        high desert: 100-108, low ...", "dateLastCrawled": "2021-08-28T21:20:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Salt Lake City, UT - National Weather Service", "url": "https:\/\/www.weather.gov\/slc\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/slc",
+        "snippet": "NWS Forecast Office Salt Lake City, UT. Flash Flooding is the
+        other primary concern for today and tomorrow across southern and central Utah.
+        Areas most at risk: slot canyons, normally dry washes, and burn scars.", "dateLastCrawled":
+        "2021-08-29T03:08:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11", "name":
+        "Reno, NV - National Weather Service", "url": "https:\/\/www.weather.gov\/rev\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/rev",
+        "snippet": "US Dept of Commerce National Oceanic and Atmospheric Administration
+        National Weather Service Reno, NV 2350 Raggio Parkway Reno, NV 89512-3900
+        (775) 673-8100", "dateLastCrawled": "2021-08-29T00:18:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Albuquerque, NM - National Weather Service", "url": "https:\/\/www.weather.gov\/abq\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/abq",
+        "snippet": "NWS Albuquerque. Showers and thunderstorms will become widespread
+        by late Sunday afternoon across much of central and eastern NM. Heavy rainfall
+        will elevate the risk for flash flooding, particularly over recent burn scars,
+        urban drainages, complex terrain, low lying areas, and areas with recent heavy
+        rainfall.", "dateLastCrawled": "2021-08-29T10:42:00.0000000Z", "language":
         "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
-        "name": "Billings, MT - Weather", "url": "https:\/\/www.weather.gov\/byz\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/byz",
-        "snippet": "More rain showers expected Sunday. 0.75 - 1 inch of rain expected
-        west of Billings, and up to half an inch expected at and east of Billings.
-        Chance for a couple strong thunderstorms in far southeast Montana Sunday afternoon.
-        High elevations will see some snowfall. Plan accordingly if you will be outdoors
-        or traveling. Hide Caption Show Caption.", "dateLastCrawled": "2021-06-08T22:30:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
-        "name": "Cheyenne, WY - Weather", "url": "https:\/\/www.weather.gov\/cys\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/cys",
-        "snippet": "Weather Map. Local Radar. Follow us on Twitter Follow us on
-        Facebook Follow us on YouTube CYS RSS Feed HAZARDS Active Alerts. US Dept
-        of Commerce National Oceanic and Atmospheric Administration National Weather
-        Service Cheyenne, WY 1301 Airport Parkway Cheyenne, WY 82001-1549 307-772-2468
-        ...", "dateLastCrawled": "2021-06-09T04:22:00.0000000Z", "language": "en",
-        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
-        "name": "Boston \/ Norton, MA - Weather", "url": "https:\/\/www.weather.gov\/box\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/box",
-        "snippet": "NOAA National Weather Service Boston \/ Norton, MA. Rainfall
-        and Wind Gust Reports From Jun 8th 2021; Thunderstorm Wind Damage Reports
-        From Jun 8th 2021", "dateLastCrawled": "2021-06-09T04:18:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
-        "name": "National Forecast Maps - Weather", "url": "https:\/\/www.weather.gov\/forecastmaps",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/forecastmaps",
-        "snippet": "National Weather Maps. Surface Analysis. Highs, lows, fronts,
-        troughs, outflow boundaries, squall lines, drylines for much of North America,
-        the Western Atlantic and Eastern Pacific oceans, and the Gulf of Mexico.",
-        "dateLastCrawled": "2021-06-08T12:22:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
-        "name": "St. Louis, MO - Weather", "url": "https:\/\/www.weather.gov\/lsx\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/lsx",
-        "snippet": "A strong system will produce a swath of impacts. Severe storms
-        with large hail, damaging winds, and a couple of tornadoes will be possible
-        in the south and central Plains. Heavy rain could cause flash flooding in
-        the Mid Mississippi Valley. Mountain snow will develop in the Rockies. Critical
-        fire weather threats are expected across northern ...", "dateLastCrawled":
-        "2021-06-08T13:13:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18", "name":
-        "NWS Wilmington, NC - Weather", "url": "https:\/\/www.weather.gov\/ilm\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/ilm",
-        "snippet": "NOAA National Weather Service NWS Wilmington, NC. Confirmed
-        EF1 Tornado Northeast of Mullins on June 3, 2021; Experimental Surf Forecast
-        Matrices Now Available for SE NC and NE SC beaches!", "dateLastCrawled": "2021-06-09T06:21:00.0000000Z",
+        "name": "NWS Forecast Office Duluth, MN - National Weather Service", "url":
+        "https:\/\/www.weather.gov\/dlh\/", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.weather.gov\/dlh", "snippet": "NWS Forecast Office Duluth,
+        MN. Showers and Thunderstorms are moving in from the west and are expected
+        to spread east through the overnight hours. Precipitation is expected to taper
+        off by Monday morning. Click a location below for detailed forecast.", "dateLastCrawled":
+        "2021-08-28T22:16:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "Amarillo, TX - National Weather Service", "url": "https:\/\/www.weather.gov\/ama\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/ama",
+        "snippet": "Weather Calculator: Weather Radio AMA RSS Feed . Local Radar.
+        Weather Map. Social Media Dashboard. AMA RSS Feed US Dept of Commerce National
+        Oceanic and Atmospheric Administration National Weather Service Amarillo,
+        TX 1900 English Road Amarillo, TX 79108 (806) 335-1121 Comments? Questions?
+        Please Contact Us.", "dateLastCrawled": "2021-08-29T08:15:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "NWS Tucson Arizona - National Weather Service", "url": "https:\/\/www.weather.gov\/twc\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/twc",
+        "snippet": "Elevated thunderstorm chances will continue, with another peak
+        this weekend. Watch for heavy rain with additional flooding possible. Threat
+        for damaging winds from storms will increase as well. Hide Caption. Show Caption.
+        Click a location below for detailed forecast. Last Map Update: Wed, Aug. 11,
+        2021 at 9:12:52 pm MST.", "dateLastCrawled": "2021-08-29T00:03:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Nashville, TN - National Weather Service", "url": "https:\/\/www.weather.gov\/ohx\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/ohx",
+        "snippet": "NWS Forecast Office Nashville, TN. A Flash Flood Watch is in
+        effect from Monday evening until midnight Tuesday night for most of Middle
+        Tennessee west of the Cumberland Plateau. Total rainfall amounts resulting
+        from Hurricane Ida''s remants will range from 2 to 5 inches across the mid
+        state.", "dateLastCrawled": "2021-08-28T22:24:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Des Moines, IA - National Weather Service", "url": "https:\/\/www.weather.gov\/dmx\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/dmx",
+        "snippet": "NWS Forecast Office Des Moines, IA. Scattered storms continue
+        to develop over northern Iowa this evening. Strong to severe storms are possible
+        with the main threat of large hail, damaging winds, and an isolated tornado
+        or two. Heavy rain is also likely and may lead to flash flooding at time over
+        northern Iowa.", "dateLastCrawled": "2021-08-28T22:06:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "National Weather Service", "url": "https:\/\/forecast.weather.gov\/zipcity.php?inputstring=Renton,WA&Go2=Go",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/forecast.weather.gov\/zipcity.php?inputstring=Renton,WA&Go2=Go",
+        "snippet": "Detailed Forecast. A 20 percent chance of showers between 2pm
+        and 3pm. Cloudy, then gradually becoming mostly sunny, with a high near 69.
+        South southeast wind around 6 mph becoming light and variable. Mostly clear,
+        with a low around 53. North wind around 6 mph. Sunny, with a high near 76.
+        North northwest wind 3 to 7 mph.", "dateLastCrawled": "2021-08-28T23:08:00.0000000Z",
         "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
-        "name": "Springfield, MO - Weather", "url": "https:\/\/www.weather.gov\/sgf\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/sgf",
-        "snippet": "Local Observations. Lake Levels. Natural Hazard Risk Assessment
-        Climatology. Event Reviews. Records and Normals. NWS SGF Weather Cam. NWS
-        Springfield Staff. Threat for Severe Storms has Ended. The threat for severe
-        thunderstorms has ended with lightning and residual flooding the main potential
-        hazards for this evening.", "dateLastCrawled": "2021-06-09T06:10:00.0000000Z",
+        "name": "Tampa Bay Area, FL - National Weather Service", "url": "https:\/\/www.weather.gov\/tbw\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/tbw",
+        "snippet": "NWS Forecast Office Tampa Bay Area, FL. Partly cloudy with isolated
+        to scattered afternoon showers and thunderstorms, particularly interior and
+        south of I-4. Highs in the low to mid 90s, with feels like temps from 105
+        to 110 degrees in some locations. Isolated to scattered showers and thunderstorms
+        in the evening, then partly cloudy overnight.", "dateLastCrawled": "2021-08-29T01:15:00.0000000Z",
         "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
         {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
         {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
@@ -244,6 +236,238 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
-    http_version:
-  recorded_at: Fri, 11 Jun 2021 12:59:11 GMT
-recorded_with: VCR 4.0.0
+  recorded_at: Tue, 31 Aug 2021 20:33:05 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=weather%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 10:43:55 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - BC4B99E8B0FB4DE389A49DEA1844C314
+      Bingapis-Sessionid:
+      - 90763F5B409E44D3B9B1DAE45AF6D73E
+      X-Msedge-Clientid:
+      - 0C5428AA6F856D33320938626E636C12
+      X-Msapi-Userstate:
+      - e79a
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=241,MSDatacenter=CH1B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: BC4B99E8B0FB4DE389A49DEA1844C314 Ref B: DM2EDGE0215 Ref C: 2021-10-06T10:44:55Z'
+      Apim-Request-Id:
+      - dbcc9bd5-d3a9-4903-9e28-7ee276f42fff
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 10:44:55 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "weather
+        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=weather+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 21300000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "National Weather Service", "url": "https:\/\/www.weather.gov\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov", "snippet":
+        "NOAA National Weather Service National Weather Service. Swath of Showers
+        in Eastern U.S.; Powerful Alaska Storm. A slow moving cold front will produce
+        locally heavy showers and thunderstorms from the Deep South to the Great Lakes.",
+        "dateLastCrawled": "2021-10-03T07:13:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1", "name":
+        "National Weather Service", "url": "https:\/\/forecast.weather.gov\/MapClick.php?lat=33.57896000000005&lon=-86.06834999999995",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/forecast.weather.gov\/MapClick.php?lat=33.57896000000005&lon=-86.06834999999995",
+        "snippet": "Showers and thunderstorms before 1am, then showers likely and
+        possibly a thunderstorm between 1am and 4am, then a chance of showers and
+        thunderstorms after 4am. Low around 64. South wind around 5 mph becoming calm
+        in the evening. Chance of precipitation is 80%. New rainfall amounts between
+        a quarter and half of an inch possible.", "dateLastCrawled": "2021-10-03T05:53:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "National Weather Service", "url": "https:\/\/forecast.weather.gov\/MapClick.php?lat=29.7680&lon=-104.1614",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/forecast.weather.gov\/MapClick.php?lat=29.7680&lon=-104.1614",
+        "snippet": "NOAA National Weather Service National Weather Service. Current
+        conditions at Presidio Lely International Airport (KPRS) Lat: 29.63°NLon:
+        104.36°WElev: 2932ft.", "dateLastCrawled": "2021-10-03T22:01:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Weather | National Oceanic and Atmospheric Administration", "url":
+        "https:\/\/www.noaa.gov\/weather", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.noaa.gov\/weather", "snippet": "Weather, water and climate
+        events, cause an average of approximately 650 deaths and $15 billion in damage
+        per year and are responsible for some 90 percent of all presidentially-declared
+        disasters. About one-third of the U.S. economy – some $3 trillion – is sensitive
+        to weather and climate.", "dateLastCrawled": "2021-10-03T07:14:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "National Weather Service - Graphical Forecast", "url": "https:\/\/digital.weather.gov\/?layers=00BFTFTTTTT&region=7&element=9&mxmz=false&barbs=true&zoom=5&lat=40.8&lon=-48.7",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/digital.weather.gov\/?layers=00BFTFTTTTT&region=7&element=9&mxmz=false&barbs=...",
+        "snippet": "Surface Weather Observed Precipitation River Levels Climate
+        Monitoring Space Weather . FORECAST. Aviation Weather Marine Local Forecast
+        Current Outlook Maps Current Graphical Forecast Maps Rivers Hurricanes Fronts\/Precipitation
+        Maps Fire Weather Drought Marine Prediction Forecasts Severe Weather",
+        "dateLastCrawled": "2021-10-04T21:49:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5", "name":
+        "National Weather Service", "url": "https:\/\/forecast.weather.gov\/MapClick.php?site=BOU&textField1=39.5791&textField2=-106.096&e=0",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/forecast.weather.gov\/MapClick.php?site=BOU&textField1=39.5791&textField2=-106...",
+        "snippet": "Detailed Forecast. Tonight. A chance of showers, with thunderstorms
+        also possible after midnight. Mostly cloudy, with a low around 38. South southwest
+        wind around 7 mph, with gusts as high as 18 mph. Chance of precipitation is
+        50%. Sunday. A 20 percent chance of showers and thunderstorms after noon.
+        Mostly sunny, with a high near 69.", "dateLastCrawled": "2021-10-03T01:03:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "National Weather Service", "url": "https:\/\/forecast.weather.gov\/MapClick.php?lat=39.17&lon=-93.86",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/forecast.weather.gov\/MapClick.php?lat=39.17&lon=-93.86",
+        "snippet": "Partly sunny, with a high near 73. Calm wind becoming east northeast
+        around 6 mph in the morning. Chance of precipitation is 30%. Wednesday Night.
+        Mostly cloudy, with a low around 60. Calm wind. Thursday. Partly sunny, with
+        a high near 75.", "dateLastCrawled": "2021-10-05T05:16:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Miami - South Florida - National Weather Service", "url": "https:\/\/www.weather.gov\/mfl\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/mfl",
+        "snippet": "NWS Forecast Office Miami - South Florida. Low temperatures
+        will be in the mid to upper 70s across South Florida tonight. Highs tomorrow
+        will be in the upper 80s to lower 90s. Scattered to numerous showers and thunderstorms
+        will form during the afternoon and early evening tomorrow.", "dateLastCrawled":
+        "2021-10-01T23:02:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8", "name": "San
+        Diego, CA - National Weather Service", "url": "https:\/\/www.weather.gov\/sgx\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/sgx",
+        "snippet": "NWS Forecast Office San Diego, CA. A southerly swell will arrive
+        tonight and continue through Monday. This will bring somewhat elevated surf
+        to the coast (especially Orange County with its more southerly-facing beaches)
+        as well as dangerous rip currents. Another hot day will prevail inland Sunday,
+        with warm weather even near the coast.", "dateLastCrawled": "2021-10-03T19:18:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "NWS Phoenix - National Weather Service", "url": "https:\/\/www.weather.gov\/psr\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/psr",
+        "snippet": "US Dept of Commerce National Oceanic and Atmospheric Administration
+        National Weather Service NWS Phoenix 2727 E Washington St NWS PAB 1TA
+        Phoenix, AZ 85034", "dateLastCrawled": "2021-10-03T08:13:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Sacramento, CA - National Weather Service", "url": "https:\/\/www.weather.gov\/sto\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/sto",
+        "snippet": "US Dept of Commerce National Oceanic and Atmospheric Administration
+        National Weather Service Sacramento, CA 3310 El Camino Ave ste 228 Sacramento,
+        CA 95821", "dateLastCrawled": "2021-10-03T18:22:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Reno, NV - National Weather Service", "url": "https:\/\/www.weather.gov\/rev\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/rev",
+        "snippet": "US Dept of Commerce National Oceanic and Atmospheric Administration
+        National Weather Service Reno, NV 2350 Raggio Parkway Reno, NV 89512-3900
+        (775) 673-8100", "dateLastCrawled": "2021-10-03T09:12:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Albuquerque, NM - National Weather Service", "url": "https:\/\/www.weather.gov\/abq\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/abq",
+        "snippet": "NOAA National Weather Service Albuquerque, NM. Showers and
+        a few thunderstorms will diminish after sunset. With clearing skies, patchy
+        fog is possible in some areas, especially across the Moreno Valley.", "dateLastCrawled":
+        "2021-10-02T06:03:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13", "name":
+        "Huntsville, AL - National Weather Service", "url": "https:\/\/www.weather.gov\/hun\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/hun",
+        "snippet": "However, some weather elements were recorded and\/or retained
+        before others at some sites. For example, at Huntsville, precipitation records
+        begin in 1894, but official temperature records start in 1907. Following is
+        a list containing the starting year that continuous weather records began
+        at each site.", "dateLastCrawled": "2021-10-03T03:02:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Des Moines, IA - National Weather Service", "url": "https:\/\/www.weather.gov\/dmx\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/dmx",
+        "snippet": "US Dept of Commerce National Oceanic and Atmospheric Administration
+        National Weather Service Des Moines, IA 9607 NW Beaver Drive Johnston,
+        IA 50131-1908", "dateLastCrawled": "2021-10-03T08:07:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Forecast Error", "url": "https:\/\/forecast.weather.gov\/MapClick.php?lat=27.530920000000037&amp;lon=-99.50222999999994",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/forecast.weather.gov\/MapClick.php?lat=27.530920000000037&amp;lon=-99...",
+        "snippet": "The National Weather Service is your best source for complete
+        weather forecast and weather related information on the web!", "dateLastCrawled":
+        "2021-10-05T12:24:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16", "name":
+        "National Weather Service", "url": "https:\/\/forecast.weather.gov\/MapClick.php?textField1=38.625856&textField2=-90.698018",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/forecast.weather.gov\/MapClick.php?textField1=38.625856&textField2=-90.698018",
+        "snippet": "Point Forecast: 4 Miles WSW Spirit Of St. Louis Airport MO. 38.63°N
+        90.69°W (Elev. 597 ft) Last Update: 8:55 am CDT Oct 4, 2021. Forecast Valid:
+        11am CDT Oct 4, 2021-6pm CDT Oct 10, 2021.", "dateLastCrawled": "2021-10-04T16:05:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Brownsville\/Rio Grande Valley, TX - National Weather Service",
+        "url": "https:\/\/www.weather.gov\/bro\/", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.weather.gov\/bro", "snippet": "Favorable beach conditions
+        will continue today, with a Low Risk of rip currents and dry, rain-free weather.
+        Low pressure in the middle layers of the atmosphere is still expected to move
+        closer to Deep South Texas and the Rio Grande Valley during the period, resulting
+        in isolated to scattered showers and thunderstorms.", "dateLastCrawled": "2021-10-03T09:16:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "NWS Forecast Office Tulsa, OK - National Weather Service", "url":
+        "https:\/\/www.weather.gov\/tsa\/", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.weather.gov\/tsa", "snippet": "NWS Forecast Office Tulsa,
+        OK. Near critical grassland fire spread rates will develop this afternoon
+        across parts of northeast Oklahoma, especially north of Interstate 44, where
+        hot temperatures, low relative humidity values, and breezy south winds will
+        be maximized. Parts of this area have also seen very little rainfall over
+        the past couple ...", "dateLastCrawled": "2021-10-03T20:13:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Las Vegas, NV - National Weather Service", "url": "https:\/\/www.weather.gov\/vef\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/vef",
+        "snippet": "NOAA National Weather Service Las Vegas, NV. September in
+        Las Vegas may have felt more like summer than early fall with an average
+        monthly temperature of 86.1 degrees and below normal rainfall.", "dateLastCrawled":
+        "2021-10-03T09:06:00.0000000Z", "language": "en", "isNavigational": false}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 06 Oct 2021 04:42:13 GMT
+recorded_with: VCR 6.0.0

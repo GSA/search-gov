@@ -1,0 +1,134 @@
+sw:
+
+# Search.gov localizations for: Swahili (sw)
+
+# Default page title of search results page
+  default_serp_title: '%{query} - %{site_name} Matokeo'
+
+# Labels for the search box
+  search: "Tafuta"
+  search_label: 'Andika unachotafuta'
+
+# Labels for the navigation bar
+  everything: "Matokeo ya kurasa"
+  images: "Picha"
+  videos: "Videos"
+  show_more: 'Zaidi'
+
+# Labels to change the sort order by date or relevance
+  by_date: 'Ya hivi karibuni zaidi'
+  by_relevance: 'Ulinganisho uliokaribu zaidi'
+
+# Labels to narrow results by a preset timeframe or a custom date range, or clear filters ('Before' is the label for custom date range with only a 'To' date set.)
+  refine_your_search:
+  all_time: "Wakati wote"
+  last_hour: "Saa ya mwisho"
+  last_day: "Siku ya mwisho"
+  last_week: "Wiki iliyopita"
+  last_month: "Mwezi uliopita"
+  last_year: "Mwaka uliyopit"
+  custom_range: 'Kiwango cha kawaida'
+  from: 'Kutoka kwa'
+  to: 'Kwenda kwa'
+  cdr_format: '%m/%d/%Y'
+  before: 'Kabla'
+  clear: 'Futa'
+
+# Prompts for spelling, spelling overrides, and did you mean suggestions
+  showing_results_for: Onyesha matokeo yaa %{corrected_query}
+  search_instead_for: Tafuta badala ya %{original_query}
+
+# Prompts for searchers to revise or refine search
+  no_results_for_and_try: "Samahani, hakuna matokeo yaliyopatikana '%{query}'. Jaribu kuingiza maneno machache katika utafutaji"
+  too_long: "Neno la kutafuta ni refu mno. Jaribu kulifupish."
+  empty_query: "Ingiza neno unalotafuta katika kisanduku hapo juu."
+
+# Labels for inline best bets, news, and related searches modules
+  recommended: "Inayopendekezwa"
+  default_rss_govbox_label: 'Habari'
+  related_searches: "Utafutaji unaohusiana"
+
+# Labels for paging through results
+  page: 'Ukurasa'
+  prev_label: "Iliyotanguliaa"
+  next_label: "Inayofuata"
+
+  searches:
+    by: na
+# Prompt for searchers to skip to main content (most easily seen by tabbing through results page)
+    skip_to_main_content: Ruka kwenda kwenda kwenye orodha ya yaliyomo
+# Labels for navigation bar "sections" (most easily seen on mobile dimension)
+    menu: Menyu
+    browse_site: Rambaza mtandao
+    related_sites: Angalia mada
+    results_count: '%{count}'
+    search_results: Matokeo ya utafutaji
+# Prompts for searchers to view more results from Bing/Google after reaching page n of Search.gov results
+    commercial_results:
+      find_what_looking_for:
+      see_more_web_results: "%{link} kwa kuona matokeo zaidi (Utaona baadhi ya matokeo ulioyaona hapo awali)"
+      see_more_image_results: "Matokeo hayo juu yanatoka katika mitandao ya kijamii %{link} kwa kuona matokeo kutoka katika tovuti yetu (Utaona baadhi ya matokeo ulioyaona hapo awali)"
+      search_again: Jaribu kutafuta tena
+# Prompts for searchers to view more results from the broader website after initially seeing site-scoped results
+    site_limits:
+      including_results_for_query_from_matching_sites: tunajumuisha matokeo ya %{query} Kutoka kwa %{matching_sites} pekee.
+      do_you_want_to_see_results_for: Ungependa kuona matokeo ya %{query_from_all_sites}? 
+      query_from_all_sites: '%{query} Kutoka katika kurasa zote'
+# Label for inline news module and prompt to see more news on news vertical
+    more_news_about_query: 'zaidi %{news_label} kuhusu %{query}'
+    news_about_query: '%{news_label} Kuhusu %{query}'
+    news_search_options:
+      date_format: 'm/d/yyyy'
+# Label for attributing results to Bing, Search.gov, or Google
+  powered_by: 'Inaendeshwa na'
+
+# Prompts for searchers to expand/collapse the number of best bets visible on the results page
+  show_more_label: 'Onyesha kwa kirefu'
+  show_less_label: 'Onyesha kwa kifupi'
+
+# Date format used in custom date range picker and other places
+  date:
+    formats:
+      slashes: "%-m/%-d/%Y"
+
+# Labels for news-based results indicating how long ago they were published
+  datetime:
+    time_ago_in_words:
+      half_a_minute: "nusu dakika iliyopita"
+      less_than_x_seconds:
+        one:   "Chini ya sekunde moja iliyopita"
+        other: "%{count} sekunde zilizopita"
+      x_seconds:
+        one:   "Sekunde moja iliyopita"
+        other: "%{count} sekunde zilizopita"
+      less_than_x_minutes:
+        one:   "Chini ya dakika moja iliyopita"
+        other: "%{count} Dakika kadhaa zilizopita"
+      x_minutes:
+        one:   "dakika moja iliyopita"
+        other: "%{count}Dakika kadhaa zilizopita"
+      about_x_hours:
+        one:   "Takriban saa moja iliyopita"
+        other: "%{count} Saa kadhaa zilizopita"
+      x_days:
+        one:   "Siku moja iliyopita"
+        other: "%{count} Siku zilizopita"
+      about_x_months:
+        one:   "Takriban mwezi mmoja uliopita" 
+        other: "%{count} Miezi kadhaa iliyopita"
+      x_months:
+        one:   "Mwezi mmoja uliopita"
+        other: "%{count} Miezi kadhaa iliyopita"
+      about_x_years:
+        one:   "Takriban mwaka mmoja uliopita"
+        other: "%{count} Miaka kadhaa iliyopita"
+      over_x_years:
+        one:   "zaidi ya mwaka mmoja uliopita"
+        other: "%{count} Miaka kadhaa iliyopita"
+      almost_x_years:
+        one:   "karibu mwaka mmoja uliopita"
+        other: "%{count} Miaka kadhaa iliyopita"
+
+# Text for page captcha challenge, which is shown if bot-like search patterns are detected
+  are_you_human:
+  captcha_requires_javascript:

@@ -1,13 +1,13 @@
 DEFAULTS: &DEFAULTS
+  email: $LABEL@fixtures.org
   organization_name: Agency
-  persistence_token: <%= Authlogic::Random.hex_token %>
+  persistence_token: $LABEL_persistence_token
   approval_status: approved
   first_name: Jane
   last_name: Doe
 
 affiliate_admin:
   <<: *DEFAULTS
-  email: affiliate_admin@fixtures.org
   is_affiliate_admin: true
   is_affiliate: false
   first_name: Affiliate Administrator
@@ -16,18 +16,12 @@ affiliate_admin:
 
 affiliate_added_by_another_affiliate:
   <<: *DEFAULTS
-  email: affiliate_added_by_another_affiliate@fixtures.org
-  is_affiliate_admin: false
-  is_affiliate: true
   first_name: Invited Affiliate Manager
   last_name: Smith
-  approval_status: approved
   requires_manual_approval: false
 
 non_affiliate_admin:
   <<: *DEFAULTS
-  email: non_affiliate_admin@fixtures.org
-  is_affiliate_admin: false
   is_affiliate: false
   first_name: Not An Affiliate
   last_name: Smith
@@ -35,55 +29,36 @@ non_affiliate_admin:
 
 affiliate_manager:
   <<: *DEFAULTS
-  email: affiliate_manager@fixtures.org
-  is_affiliate_admin: false
-  is_affiliate: true
   first_name: Affiliate Manager
   last_name: Smith
   welcome_email_sent: true
 
 another_affiliate_manager:
   <<: *DEFAULTS
-  email: another_affiliate_manager@fixtures.org
-  is_affiliate_admin: false
-  is_affiliate: true
   first_name: Another Manager
   last_name: Smith
   welcome_email_sent: true
 
 affiliate_manager_with_no_affiliates:
   <<: *DEFAULTS
-  email: affiliate_manager_with_no_affiliates@fixtures.org
-  is_affiliate_admin: false
-  is_affiliate: true
   first_name: A New Manager
   last_name: Smith
   welcome_email_sent: true
 
 affiliate_manager_with_one_site:
   <<: *DEFAULTS
-  email: affiliate_manager_with_one_site@fixtures.org
-  is_affiliate_admin: false
-  is_affiliate: true
   first_name: A New Manager with one site
   last_name: Smith
   welcome_email_sent: true
-  approval_status: approved
 
 affiliate_without_contact_info:
   <<: *DEFAULTS
-  email: affiliate_with_no_contact_info@fixtures.org
-  is_affiliate_admin: false
-  is_affiliate: true
   first_name: A New Affiliate
   last_name: Smith
   welcome_email_sent: true
 
 affiliate_manager_with_a_default_site:
   <<: *DEFAULTS
-  email: affiliate_with_a_default_site@fixtures.org
-  is_affiliate_admin: false
-  is_affiliate: true
   first_name: Has A Default Site
   last_name: Smith
   welcome_email_sent: true
@@ -91,7 +66,6 @@ affiliate_manager_with_a_default_site:
 
 marilyn:
   <<: *DEFAULTS
-  email: marilyn@fixtures.org
   is_affiliate_admin: true
   first_name: Analyst With Full Privileges
   last_name: Smith
@@ -99,8 +73,6 @@ marilyn:
 
 developer:
   <<: *DEFAULTS
-  email: developer@fixtures.org
-  is_affiliate_admin: false
   is_affiliate: false
   first_name: A New Developer
   last_name: Smith
@@ -108,7 +80,6 @@ developer:
 
 active_user:
   <<: *DEFAULTS
-  email: active_user@fixtures.org
   current_login_at: <%= 1.day.ago.to_s(:db) %>
 
 omniauth_user:
@@ -118,50 +89,39 @@ omniauth_user:
 
 user_with_uid:
   <<: *DEFAULTS
-  email: user_with_uid@fixtures.org
   uid: 11111
 
 user_without_uid:
   <<: *DEFAULTS
-  email: user_without_uid@fixtures.org
   uid: ~
 
 never_active_user:
   <<: *DEFAULTS
-  email: never_active_user@fixtures.org
   created_at: <%= 100.days.ago.to_s(:db) %>
 
 not_active_user:
   <<: *DEFAULTS
-  email: not_active_user@fixtures.org
   current_login_at: <%= 100.days.ago.to_s(:db) %>
 
 new_non_active_user:
   <<: *DEFAULTS
-  email: new_non_active_user@fixtures.org
   created_at: <%= 3.days.ago.to_s(:db) %>
 
 not_active_76_days:
   <<: *DEFAULTS
-  email: not_active_for_76_days@fixtures.org
   current_login_at: <%= 76.days.ago.to_s(:db) %>
 
 not_active_unapproved_76_days:
   <<: *DEFAULTS
-  email: not_active_unapproved_for_76_days@fixtures.org
   current_login_at: <%= 76.days.ago.to_s(:db) %>
   approval_status: not_approved
 
 never_active_76_days:
   <<: *DEFAULTS
-  email: never_active_for_76_days@fixtures.org
   created_at: <%= 76.days.ago.to_s(:db) %>
 
 affiliate_manager_with_pending_contact_information_status:
   <<: *DEFAULTS
-  email: affiliate_manager_with_pending_contact_information_status@fixtures.org
-  is_affiliate_admin: false
-  is_affiliate: true
   first_name: Pending Contact Information Affiliate Manager
   last_name: Smith
   approval_status: pending_contact_information
@@ -169,9 +129,6 @@ affiliate_manager_with_pending_contact_information_status:
 
 affiliate_manager_with_pending_approval_status:
   <<: *DEFAULTS
-  email: affiliate_manager_with_pending_approval_status@fixtures.org
-  is_affiliate_admin: false
-  is_affiliate: true
   first_name: Pending Approval Affiliate Manager
   last_name: Smith
   approval_status: pending_approval
@@ -179,9 +136,6 @@ affiliate_manager_with_pending_approval_status:
 
 affiliate_manager_requires_manual_approval:
   <<: *DEFAULTS
-  email: affiliate_manager_requires_manual_approval@fixtures.org
-  is_affiliate_admin: false
-  is_affiliate: true
   first_name: Requires Manual Approval Affiliate Manager
   last_name: Smith
   approval_status: pending_approval
@@ -189,9 +143,6 @@ affiliate_manager_requires_manual_approval:
 
 affiliate_manager_with_not_approved_status:
   <<: *DEFAULTS
-  email: affiliate_manager_with_not_approved_status@fixtures.org
-  is_affiliate_admin: false
-  is_affiliate: true
   first_name: Not Approved Affiliate Manager
   last_name: Smith
   approval_status: not_approved
@@ -204,28 +155,25 @@ affiliate_requiring_manual_approval:
   approval_status: pending_approval
 
 no_first_name:
+  <<: *DEFAULTS
   email: no_first_name@email.gov
   first_name: ''
   last_name: 'Smith'
   organization_name: Agency
-  persistence_token: <%= Authlogic::Random.hex_token %>
-  approval_status: approved
 
 no_last_name:
+  <<: *DEFAULTS
   email: no_last_name@email.gov
   first_name: 'Bob'
   last_name: ''
   organization_name: Agency
-  persistence_token: <%= Authlogic::Random.hex_token %>
-  approval_status: approved
 
 no_organization_name:
+  <<: *DEFAULTS
   email: no_organization_name@email.gov
   first_name: Jane
   last_name: Doe
   organization_name: ''
-  persistence_token: <%= Authlogic::Random.hex_token %>
-  approval_status: approved
 
 no_first_last_name_1:
   <<: *DEFAULTS
@@ -242,4 +190,3 @@ no_first_last_name_3:
 no_first_last_name_4:
   <<: *DEFAULTS
   email: no_first_last_name_4@email.gov
-

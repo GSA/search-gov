@@ -31,27 +31,31 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Thu, 01 Apr 2021 21:04:05 GMT
+      - Tue, 07 Sep 2021 16:18:21 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
       Bingapis-Traceid:
-      - 53416C1521E5467C9707E4457BFEF4EB
+      - 7B433563200845F9AAC3E88B149D17F2
       Bingapis-Sessionid:
-      - 4F10D2D71D3A4D5EA3213522BADF8587
+      - FD6797E4440E45A78EFF475C8F1C3BB4
       X-Msedge-Clientid:
-      - 39C52567C2606B193408356BC3156A84
+      - 266BC11E331B6AE23EE3D1B5326E6B3E
       X-Msapi-Userstate:
-      - 224f
+      - d65f
       Bingapis-Market:
       - en-US
       X-Search-Responseinfo:
-      - InternalResponseTime=159,MSDatacenter=BN2B
+      - InternalResponseTime=227,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
       X-Msedge-Ref:
-      - 'Ref A: 53416C1521E5467C9707E4457BFEF4EB Ref B: BLUEDGE1821 Ref C: 2021-04-01T21:05:05Z'
+      - 'Ref A: 7B433563200845F9AAC3E88B149D17F2 Ref B: BLUEDGE1714 Ref C: 2021-09-07T16:19:21Z'
       Apim-Request-Id:
-      - 2f98da17-fd90-4206-8b47-680d88e0939a
+      - cf7be83c-f4b3-4540-a4e7-69f781a67eb7
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
@@ -59,142 +63,172 @@ http_interactions:
       Csp-Billing-Usage:
       - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Thu, 01 Apr 2021 21:05:05 GMT
+      - Tue, 07 Sep 2021 16:19:21 GMT
     body:
       encoding: UTF-8
       string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "sba
         (site:www.sba.gov\/blogs\/)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=sba+(site%3awww.sba.gov%2fblogs%2f)",
-        "totalEstimatedMatches": 27900, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
-        "name": "How to Market for Small Business Saturday", "url": "https:\/\/www.sba.gov\/blogs\/how-market-small-business-saturday",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/how-market-small-business-saturday",
-        "snippet": "Small Business Saturday is bigger than ever—and despite what you
-        may think, it’s not just for retailers or even just for brick-and-mortar businesses.
-        Here’s what you need to know and how to take advantage of small business’s
-        big day.", "dateLastCrawled": "2021-03-03T06:12:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
-        "name": "The SBA Can Help You Reach Your Small Business Milestones", "url":
-        "https:\/\/www.sba.gov\/blogs\/sba-can-help-you-reach-your-small-business-milestones",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/sba-can-help-you-reach-your-small-business-milestones",
-        "snippet": "If you’re a small business owner just starting out or you’ve been
-        in business for a while, you’re likely wearing multiple hats which make it
-        easy to miss your successes along your journey as an entrepreneur.", "dateLastCrawled":
-        "2021-02-24T06:28:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2", "name":
-        "Build Your Business Through Networking", "url": "https:\/\/www.sba.gov\/blogs\/build-your-business-through-networking",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/build-your-business-through-networking",
-        "snippet": "While it may not get as much buzz these days as social networking
-        sites like Facebook and Twitter, old-fashioned, face-to-face networking is
-        still essential for building a business.", "dateLastCrawled": "2021-02-04T03:21:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "totalEstimatedMatches": 8450, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Franchise Fees: Why Do You Pay Them And How Much Are They?", "url":
+        "https:\/\/www.sba.gov\/blogs\/franchise-fees-why-do-you-pay-them-and-how-much-are-they",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/franchise-fees-why-do-you-pay-them-and-how-much-are-they",
+        "snippet": "SBA Blog Contributor. Joel Libava, The Franchise King®, is the
+        author of Become a Franchise Owner! and is a franchise ownership advisor.
+        <p>The Franchise King®,&nbsp;Joel&nbsp;Libava, is an author and a franchise
+        ownership advisor. He teaches people how to find, choose, research, and buy
+        a franchise in the safest way possible.", "dateLastCrawled": "2021-08-31T00:12:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
         "name": "Basic Information About Operating Agreements", "url": "https:\/\/www.sba.gov\/blogs\/basic-information-about-operating-agreements",
         "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/basic-information-about-operating-agreements",
-        "snippet": "If you are seeking a business structure with more personal protection
-        but less formality, then forming an LLC, or limited liability company, is
-        a good consideration.", "dateLastCrawled": "2021-03-25T15:22:00.0000000Z",
+        "snippet": "An operating agreement is a key document used by LLCs because
+        it outlines the business'' financial and functional decisions including rules,
+        regulations and provisions. The purpose of the document is to govern the internal
+        operations of the business in a way that suits the specific needs of the business
+        owners. Once the document is signed by the ...", "dateLastCrawled": "2021-09-03T21:52:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "5 reasons you need a business plan - SBA", "url": "https:\/\/www.sba.gov\/blogs\/5-reasons-you-need-business-plan",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/5-reasons-you-need-business-plan",
+        "snippet": "By U.S. Small Business Administration on December 10, 2018.
+        Category: SBA News and Views. If you are starting a small business, there
+        is no shortage of advice on the steps you should take: registering your business
+        name, getting a Tax ID, deciding on a business structure and applying for
+        the needed permits and licenses.", "dateLastCrawled": "2021-08-13T01:17:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "How to Establish Business Credit for the First Time - SBA", "url":
+        "https:\/\/www.sba.gov\/blogs\/how-establish-business-credit-first-time",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/how-establish-business-credit-first-time",
+        "snippet": "SBA Blog Contributor Marco Carbajo is a business credit expert,
+        author, speaker, and founder of the Business Credit Insiders Circle. He is
+        a business credit blogger for Dun and Bradstreet Credibility Corp, the SBA.gov
+        Community, About.com and All Business.com.", "dateLastCrawled": "2021-09-01T12:30:00.0000000Z",
         "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
         "name": "Qualified Small Business Stock: What Is It and How to Use It",
         "url": "https:\/\/www.sba.gov\/blogs\/qualified-small-business-stock-what-it-and-how-use-it",
         "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/qualified-small-business-stock-what-it-and-how-use-it",
-        "snippet": "Imagine owning stock in a company where the price appreciates
-        greatly, you sell it, and pay no tax on your profit. That’s what can happen
-        with qualified small business stock (QSBS).", "dateLastCrawled": "2021-03-27T12:33:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
-        "name": "How to Develop and Use a Good Executive Summary", "url": "https:\/\/www.sba.gov\/blogs\/how-develop-and-use-good-executive-summary",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/how-develop-and-use-good-executive-summary",
-        "snippet": "Most business owners have a general idea of the executive summary
-        that comes with the traditional business plan. However, in the real world,
-        summaries come up much more often than just in the business plan.", "dateLastCrawled":
-        "2021-03-14T21:06:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6", "name":
-        "5 Reasons to Hire Your Child", "url": "https:\/\/www.sba.gov\/blogs\/5-reasons-hire-your-child",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/5-reasons-hire-your-child",
-        "snippet": "Nepotism—the practice of using power or influence to favor relatives—has
-        a poor connotation. However, when it comes to your business, it may just be
-        a great idea, especially in today’s environment.", "dateLastCrawled": "2021-03-23T16:08:00.0000000Z",
+        "snippet": "U.S. Small Business Administration 409 3rd St, SW. Washington
+        DC 20416 ...", "dateLastCrawled": "2021-09-03T05:19:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "3 Biggest Problems Implementing a CRM System, and What to ...",
+        "url": "https:\/\/www.sba.gov\/blogs\/3-biggest-problems-implementing-crm-system-and-what-do-about-them",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/3-biggest-problems-implementing-crm-system-and-what-do-about...",
+        "snippet": "CRM or customer relationship management systems can be an incredibly
+        powerful tool to grow your business.", "dateLastCrawled": "2021-08-25T18:23:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "How to Access Capital for Your Veteran-owned Business", "url":
+        "https:\/\/www.sba.gov\/blogs\/how-access-capital-your-veteran-owned-business",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/how-access-capital-your-veteran-owned-business",
+        "snippet": "Whether you access personal savings or receive assistance through
+        a loan, the U.S. Small Business Administration recognizes that capital is
+        a tricky topic for prospective (and current) small business owners. There
+        are a number of SBA resources you can take advantage of in order to access
+        capital for your veteran-owned business.", "dateLastCrawled": "2021-08-30T00:25:00.0000000Z",
         "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
-        "name": "What is An EIN and Why Is It Important?", "url": "https:\/\/www.sba.gov\/blogs\/what-ein-and-why-it-important",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/what-ein-and-why-it-important",
-        "snippet": "One of the key responsibilities for many new businesses or businesses
-        that are restructuring is obtaining an Employer Identification Number, or
-        EIN, from the IRS.An EIN is a unique nine-digit number that identifies your
-        business for tax purposes.", "dateLastCrawled": "2021-03-28T22:27:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
-        "name": "Starting a High-Tech Business? You May be Eligible for ...", "url":
-        "https:\/\/www.sba.gov\/blogs\/starting-high-tech-business-you-may-be-eligible-government-funding",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/starting-high-tech-business-you-may-be-eligible-government...",
-        "snippet": "Looking to start or grow your high-tech entrepreneurial venture?
-        Need financing to help fund research and development (R&amp;D) efforts and
-        realize your business potential? The U.S. federal government can help!", "dateLastCrawled":
-        "2021-03-26T23:12:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9", "name":
-        "Top 10 SBA Blogs of 2017", "url": "https:\/\/www.sba.gov\/blogs\/top-10-sba-blogs-2017",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/top-10-sba-blogs-2017",
-        "snippet": "As 2017 comes to an end, we look back at the blogs that made our
-        top 10 list. From tax responsibilities to running a home-based business, SBA
-        blogs cover a variety of topics.", "dateLastCrawled": "2021-03-23T20:15:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
-        "name": "How to Start a Craft Business", "url": "https:\/\/www.sba.gov\/blogs\/how-start-craft-business",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/how-start-craft-business",
-        "snippet": "It’s not unusual to turn a hobby into a business. If you have
-        ever thought about selling your crafts or turning your crafting love into
-        a part-time or full-time business, here are things to consider in how to
-        start a craft business.", "dateLastCrawled": "2021-03-22T11:27:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
-        "name": "What Small Businesses Should Know About Tariffs", "url": "https:\/\/www.sba.gov\/blogs\/what-small-businesses-should-know-about-tariffs",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/what-small-businesses-should-know-about-tariffs",
-        "snippet": "Small businesses should become familiar with what imported products
-        are impacted to make informed business decisions as tariffs could increase
-        the total cost of certain imported goods.", "dateLastCrawled": "2021-03-22T18:09:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
-        "name": "Cultivating a business", "url": "https:\/\/www.sba.gov\/blogs\/cultivating-business",
+        "name": "Cultivating a business - sba.gov", "url": "https:\/\/www.sba.gov\/blogs\/cultivating-business",
         "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/cultivating-business",
-        "snippet": "Who doesn’t love the freshness of vine-ripened tomatoes, just-picked
-        cucumbers or corn bursting with summer sweetness? This time of year, there’s
-        likely a bounty at your local farmer’s market.", "dateLastCrawled": "2021-01-08T21:02:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
-        "name": "Fundamentals of Lean Business Planning", "url": "https:\/\/www.sba.gov\/blogs\/fundamentals-lean-business-planning",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/fundamentals-lean-business-planning",
-        "snippet": "Every business owner should be aware of lean business planning.",
-        "dateLastCrawled": "2021-01-26T06:25:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
-        "name": "The Pros and Cons of Running a Seasonal Business", "url": "https:\/\/www.sba.gov\/blogs\/pros-and-cons-running-seasonal-business",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/pros-and-cons-running-seasonal-business",
-        "snippet": "In business, entrepreneurs experience peaks and valleys but for
-        small business owners who operate seasonal businesses those ups and downs
-        intensify.", "dateLastCrawled": "2021-03-27T11:44:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
-        "name": "SBA Blog Contributor", "url": "https:\/\/www.sba.gov\/blogs\/contributors\/BarbaraWeltman",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/contributors\/BarbaraWeltman",
-        "snippet": "SBA Blog Contributor Barbara Weltman is an attorney, prolific
+        "snippet": "Planting a seed is only the first step. It must be tended with
+        expertise and care – with fertile soil, the right tools, adequate water and
+        sunlight, the investment of fertilizer, and proper management of risks like
+        weeds and pests. Similarly, a business starts with an idea that needs a fertile
+        landscape to take root.", "dateLastCrawled": "2021-08-22T12:11:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Interview with a Small Business Owner, Who also Happens to ...",
+        "url": "https:\/\/www.sba.gov\/blogs\/interview-small-business-owner-who-also-happens-be-military-spouse",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/interview-small-business-owner-who-also-happens-be-military...",
+        "snippet": "<p>Barbara Carson is the U.S. Small Business Administration’s
+        Deputy Associate Administrator for the Office of Disaster Assistance. She
+        is responsible for planning, programming, developing, implementing, and evaluating
+        the SBA’s disaster loan program throughout the nation.", "dateLastCrawled":
+        "2021-08-31T19:06:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9", "name":
+        "What Small Businesses Should Know About Tariffs", "url": "https:\/\/www.sba.gov\/blogs\/what-small-businesses-should-know-about-tariffs",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/what-small-businesses-should-know-about-tariffs",
+        "snippet": "<p>David M. Glaccum is the Associate Administrator for the Office
+        of International Trade at the U.S. Small Business Administration. The mission
+        of the Office of International Trade is to help small businesses find new
+        markets and sell to a global customer base. Glaccum and his team accomplish
+        this by executing SBA’s work on federal and state ...", "dateLastCrawled":
+        "2021-08-20T05:22:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10", "name":
+        "Business Equipment Financing & Leasing: 7 Key Tips to Know", "url": "https:\/\/www.sba.gov\/blogs\/business-equipment-financing-leasing-7-key-tips-know",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/business-equipment-financing-leasing-7-key-tips-know",
+        "snippet": "SBA Blog Contributor Marco Carbajo is a business credit expert,
+        author, speaker, and founder of the Business Credit Insiders Circle. He is
+        a business credit blogger for Dun and Bradstreet Credibility Corp, the SBA.gov
+        Community, About.com and All Business.com.", "dateLastCrawled": "2021-05-25T08:45:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "7 Simple Steps for Mastering Social Media - sba.gov", "url":
+        "https:\/\/www.sba.gov\/blogs\/7-simple-steps-mastering-social-media", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/7-simple-steps-mastering-social-media",
+        "snippet": "SBA Blog Contributor Anita Campbell runs online communities
+        and information websites reaching over 6 million small business owners, stakeholders
+        and entrepreneurs annually, including Small Business Trends, a daily publication
+        about small business issues, and BizSugar.com, a small business social media
+        site.", "dateLastCrawled": "2021-08-29T18:05:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Get Ready for National Small Business Week - SBA", "url": "https:\/\/www.sba.gov\/blogs\/get-ready-national-small-business-week",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/get-ready-national-small-business-week",
+        "snippet": "SBA is gearing up for National Small Business Week, which
+        will be taking place April 30th - May 6th.And like last year, we’re taking
+        the show on the road to celebrate small businesses across the United States.
+        We’re excited for this year’s activities, which will include forums and panels
+        about trends in small business, marketing, financing, business growth – and
+        more.", "dateLastCrawled": "2021-07-22T23:13:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Could a Semi-Absentee Franchise Opportunity Be ... - sba.gov",
+        "url": "https:\/\/www.sba.gov\/blogs\/could-semi-absentee-franchise-opportunity-be-right-you",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/could-semi-absentee-franchise-opportunity-be-right-you",
+        "snippet": "SBA Blog Contributor. Joel Libava, The Franchise King®, is the
+        author of Become a Franchise Owner! and is a franchise ownership advisor.
+        <p>The Franchise King®,&nbsp;Joel&nbsp;Libava, is an author and a franchise
+        ownership advisor. He teaches people how to find, choose, research, and buy
+        a franchise in the safest way possible.", "dateLastCrawled": "2021-08-19T11:00:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "SBA Blog Contributor", "url": "https:\/\/www.sba.gov\/blogs\/contributors\/FranchiseKing",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/contributors\/FranchiseKing",
+        "snippet": "SBA Blog Contributor. The Franchise King®, Joel Libava, is an
+        author and a franchise ownership advisor. He teaches people how to find, choose,
+        research, and buy a franchise in the safest way possible. His information-packed
+        blog, The Franchise King Blog, is the longest-running blog in franchising.",
+        "dateLastCrawled": "2021-08-25T01:30:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "May is World Trade Month - SBA", "url": "https:\/\/www.sba.gov\/blogs\/may-world-trade-month-0",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/may-world-trade-month-0",
+        "snippet": "The U.S. Small Business Administration is an important partner
+        providing essential resources to assist small businesses reach the global
+        marketplace. The SBA’s export loan programs assist U.S. small businesses
+        in accessing the financing needed to sell their goods and services to global
+        customers. Last year, the SBA supported over $730 million ...", "dateLastCrawled":
+        "2021-07-20T08:49:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16", "name":
+        "The Right Way to Think About Credit Lines for Business - SBA", "url":
+        "https:\/\/www.sba.gov\/blogs\/right-way-think-about-credit-lines-business",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/right-way-think-about-credit-lines-business",
+        "snippet": "SBA Blog Contributor Marco Carbajo is a business credit expert,
+        author, speaker, and founder of the Business Credit Insiders Circle. He is
+        a business credit blogger for Dun and Bradstreet Credibility Corp, the SBA.gov
+        Community, About.com and All Business.com.", "dateLastCrawled": "2021-09-05T05:31:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "SBA Blog Contributor", "url": "https:\/\/www.sba.gov\/blogs\/contributors\/Marco%20Carbajo",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/contributors\/Marco
+        Carbajo", "snippet": "SBA Blog Contributor. Marco Carbajo is a business
+        credit expert, author, speaker, and founder of the Business Credit Insiders
+        Circle. He is a business credit blogger for Dun and Bradstreet Credibility
+        Corp, the SBA.gov Community, About.com and All Business.com.", "dateLastCrawled":
+        "2021-08-24T02:20:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18", "name":
+        "Former SBA Administrator", "url": "https:\/\/www.sba.gov\/blogs\/contributors\/Linda%20McMahon",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/contributors\/Linda
+        McMahon", "snippet": "U.S. Small Business Administration 409 3rd St, SW.
+        Washington DC 20416 ...", "dateLastCrawled": "2021-02-10T10:30:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "5 Myths About Payroll Taxes - SBA", "url": "https:\/\/www.sba.gov\/blogs\/5-myths-about-payroll-taxes",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/5-myths-about-payroll-taxes",
+        "snippet": "SBA Blog Contributor Barbara Weltman is an attorney, prolific
         author with such titles as J.K. Lasser''s Small Business Taxes, J.K. Lasser''s
         Guide to Self-Employment, and Smooth Failing as well as a trusted professional
-        advocate for small businesses and entrepreneurs.", "dateLastCrawled": "2021-02-20T10:49:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
-        "name": "Franchise Fees: Why Do You Pay Them And How Much ... - sba.gov",
-        "url": "https:\/\/www.sba.gov\/blogs\/franchise-fees-why-do-you-pay-them-and-how-much-are-they?Preview=true&Tag=linkedin",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/franchise-fees-why-do-you-pay-them-and-how-much-are-they?...",
-        "snippet": "There are plenty of myths about franchising. A great deal of them
-        revolve around money.", "dateLastCrawled": "2021-04-01T18:32:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
-        "name": "May is World Trade Month", "url": "https:\/\/www.sba.gov\/blogs\/may-world-trade-month-0",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/may-world-trade-month-0",
-        "snippet": "SBA is an important partner providing essential resources to
-        assist small businesses reach the global marketplace.", "dateLastCrawled":
-        "2020-07-23T23:00:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18", "name":
-        "[object Object] - sba.gov", "url": "https:\/\/www.sba.gov\/blogs\/contributors\/Caron_Beesley\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/contributors\/Caron_Beesley",
-        "snippet": "U.S. Small Business Administration 409 3rd St, SW. Washington
-        DC 20416 ...", "dateLastCrawled": "2021-03-23T01:44:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
-        "name": "International Women’s Day", "url": "https:\/\/www.sba.gov\/blogs\/international-womens-day",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/international-womens-day",
-        "snippet": "SBA salutes women entrepreneurs on International Women’s Day
-        and announces expansion of Women’s Business Centers Last summer I met an entrepreneur
-        who told me her business simply would not exist without the loan she got through
-        the SBA.", "dateLastCrawled": "2021-03-09T02:40:00.0000000Z", "language":
-        "en", "isNavigational": false}]}, "rankingResponse": {"mainline": {"items":
-        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        advocate for small businesses and entrepreneurs.", "dateLastCrawled": "2021-06-08T10:14:00.0000000Z",
+        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
         {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
@@ -214,6 +248,228 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
-    http_version:
-  recorded_at: Thu, 01 Apr 2021 21:05:06 GMT
-recorded_with: VCR 4.0.0
+  recorded_at: Tue, 07 Sep 2021 16:19:21 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=sba%20(site:www.sba.gov/blogs/)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 15:38:20 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - 4AE3BC033E02493CBD9612F3B35C895D
+      Bingapis-Sessionid:
+      - 8FB6082926FA498AB033CFBFBB460AB2
+      X-Msedge-Clientid:
+      - 0C114A14FE656ACB09F35ADCFF986B1A
+      X-Msapi-Userstate:
+      - 40b3
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=258,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: 4AE3BC033E02493CBD9612F3B35C895D Ref B: BLUEDGE0320 Ref C: 2021-10-06T15:39:20Z'
+      Apim-Request-Id:
+      - 3ae88f96-7881-47e8-9e0d-69a975282852
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 15:39:20 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "sba
+        (site:www.sba.gov\/blogs\/)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=sba+(site%3awww.sba.gov%2fblogs%2f)",
+        "totalEstimatedMatches": 7040, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "14 Tips to Protect Your Business from Ransomware Attacks - SBA",
+        "url": "https:\/\/www.sba.gov\/blogs\/14-tips-protect-your-business-ransomware-attacks",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/14-tips-protect-your-business-ransomware-attacks",
+        "snippet": "U.S. Small Business Administration 409 3rd St, SW. Washington
+        DC 20416 ...", "dateLastCrawled": "2021-09-24T06:09:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Build Your Business Through Networking - SBA", "url": "https:\/\/www.sba.gov\/blogs\/build-your-business-through-networking",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/build-your-business-through-networking",
+        "snippet": "Bring pens for jotting notes on the back of business cards. Mingle.
+        It''s always nice to attend an event with a friend, but if you do, be sure
+        to split up. Spending all your time with people you already know negates the
+        purpose of networking. Set a goal to meet a certain number of new people at
+        each event.", "dateLastCrawled": "2021-09-17T21:30:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "The Right Way to Think About Credit Lines for Business - SBA",
+        "url": "https:\/\/www.sba.gov\/blogs\/right-way-think-about-credit-lines-business",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/right-way-think-about-credit-lines-business",
+        "snippet": "SBA Blog Contributor Marco Carbajo is a business credit expert,
+        author, speaker, and founder of the Business Credit Insiders Circle. He is
+        a business credit blogger for Dun and Bradstreet Credibility Corp, the SBA.gov
+        Community, About.com and All Business.com.", "dateLastCrawled": "2021-09-18T01:20:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "How to Know When to Change Your Business Plan - SBA", "url":
+        "https:\/\/www.sba.gov\/blogs\/how-know-when-change-your-business-plan", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/how-know-when-change-your-business-plan",
+        "snippet": "Hooray. Stick to the plan. It''s working. And maybe you discover
+        that your execution was wrong, poor, or flawed. If any of those reasons are
+        the case, work on executing better and change the plan. Do not revise your
+        plan glibly. Remember that some of the best strategies take longer to implement.",
+        "dateLastCrawled": "2021-08-19T11:52:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4", "name":
+        "5 reasons you need a business plan - SBA", "url": "https:\/\/www.sba.gov\/blogs\/5-reasons-you-need-business-plan",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/5-reasons-you-need-business-plan",
+        "snippet": "By U.S. Small Business Administration on December 10, 2018.
+        Category: SBA News and Views. If you are starting a small business, there
+        is no shortage of advice on the steps you should take: registering your business
+        name, getting a Tax ID, deciding on a business structure and applying for
+        the needed permits and licenses.", "dateLastCrawled": "2021-08-13T01:17:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "SBA celebrates October as National Women’s Small Business ...",
+        "url": "https:\/\/www.sba.gov\/blogs\/sba-celebrates-october-national-womens-small-business-month",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/sba-celebrates-october-national-womens-small-business-month",
+        "snippet": "The SBA works to help more entrepreneurs like April Lukasik
+        start, grow and expand businesses of their own. October is recognized as National
+        Women’s Small Business Month – a perfect opportunity to highlight some of
+        the resources the SBA offers to women: The SBA’s Office of Women’s Business
+        Ownership empowers female entrepreneurs ...", "dateLastCrawled": "2021-10-01T08:08:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Should You Advertise on Local Radio? - SBA", "url": "https:\/\/www.sba.gov\/blogs\/should-you-advertise-local-radio",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/should-you-advertise-local-radio",
+        "snippet": "U.S. Small Business Administration 409 3rd St, SW. Washington
+        DC 20416 ...", "dateLastCrawled": "2021-09-23T02:22:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "5 Reasons to Hire Your Child", "url": "https:\/\/www.sba.gov\/blogs\/5-reasons-hire-your-child",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/5-reasons-hire-your-child",
+        "snippet": "SBA Blog Contributor Barbara Weltman is an attorney, prolific
+        author with such titles as J.K. Lasser''s Small Business Taxes, J.K. Lasser''s
+        Guide to Self-Employment, and Smooth Failing as well as a trusted professional
+        advocate for small businesses and entrepreneurs.", "dateLastCrawled": "2021-07-10T02:20:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "How to Estimate Starting Costs - sba.gov", "url": "https:\/\/www.sba.gov\/blogs\/how-estimate-starting-costs",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/how-estimate-starting-costs",
+        "snippet": "U.S. Small Business Administration 409 3rd St, SW. Washington
+        DC 20416 ...", "dateLastCrawled": "2021-09-03T08:36:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Direct Mail is Hot Again. Here’s How to Use It", "url": "https:\/\/www.sba.gov\/blogs\/direct-mail-hot-again-heres-how-use-it",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/direct-mail-hot-again-heres-how-use-it",
+        "snippet": "If your direct mail isn’t relevant to the recipient, it will hit
+        the circular file. More than two-thirds (68%) of consumers immediately throw
+        away mail from a brand or retailer they haven’t heard of. However, 76% will
+        discuss mail from a brand or retailer they have purchased from in the past.
+        Target your mailings.", "dateLastCrawled": "2021-09-08T12:17:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Checklist for Choosing Business Software - SBA", "url": "https:\/\/www.sba.gov\/blogs\/checklist-choosing-business-software",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/checklist-choosing-business-software",
+        "snippet": "U.S. Small Business Administration 409 3rd St, SW. Washington
+        DC 20416 ...", "dateLastCrawled": "2021-01-30T18:24:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "SBA Blog Contributor", "url": "https:\/\/www.sba.gov\/blogs\/contributors\/Marco%20Carbajo",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/contributors\/Marco
+        Carbajo", "snippet": "SBA Blog Contributor. Marco Carbajo is a business
+        credit expert, author, speaker, and founder of the Business Credit Insiders
+        Circle. He is a business credit blogger for Dun and Bradstreet Credibility
+        Corp, the SBA.gov Community, About.com and All Business.com.", "dateLastCrawled":
+        "2021-09-19T09:15:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12", "name":
+        "404 - Small Business Administration", "url": "https:\/\/www.sba.gov\/blogs\/celebrating-score-mentors-action",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/celebrating-score-mentors-action",
+        "snippet": "U.S. Small Business Administration 409 3rd St, SW. Washington
+        DC 20416 ...", "dateLastCrawled": "2021-07-16T15:16:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "[object Object] - sba.gov", "url": "https:\/\/www.sba.gov\/blogs\/contributors\/Tim%20Berry\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/contributors\/Tim
+        Berry", "snippet": "Founder and Chairman of Palo Alto Software and bplans.com,
+        on twitter as Timberry, blogging at timberry.bplans.com.His collected posts
+        are at blog.timberry.com. Stanford MBA. Married 46 years, father of 5. Author
+        of business plan software Business Plan Pro and www.liveplan.com and books
+        including his latest, ''Lean Business Planning,'' 2015, Motivational Press.",
+        "dateLastCrawled": "2021-07-16T18:46:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Are you SBA''s Next Winner?", "url": "https:\/\/www.sba.gov\/blogs\/2016-national-small-business-week-awards-are-you-sbas-next-winner\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/2016-national-small-business-week-awards-are-you-sbas-next...",
+        "snippet": "U.S. Small Business Administration 409 3rd St, SW. Washington
+        DC 20416 ...", "dateLastCrawled": "2021-03-08T16:50:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "4 Marketing Ideas for Veterans Day", "url": "https:\/\/www.sba.gov\/blogs\/4-marketing-ideas-veterans-day",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/4-marketing-ideas-veterans-day",
+        "snippet": "There''s a lot going on with military veterans in the next few
+        weeks. Veterans Day is on Friday, November 11. Before that, the Small Business
+        Administration is celebrating National Veterans Small Business Week October
+        31-November 4.", "dateLastCrawled": "2021-09-30T22:23:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Self-Employment Tax Wrinkles - SBA", "url": "https:\/\/www.sba.gov\/blogs\/self-employment-tax-wrinkles",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/self-employment-tax-wrinkles",
+        "snippet": "U.S. Small Business Administration 409 3rd St, SW. Washington
+        DC 20416 ...", "dateLastCrawled": "2020-12-24T05:11:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Veterans: SBA Has Tools to Build a Successful Business", "url":
+        "https:\/\/www.sba.gov\/blogs\/veterans-sba-has-tools-build-successful-business",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/veterans-sba-has-tools-build-successful-business",
+        "snippet": "The U.S. Small Business Administration''s (SBA) Office of
+        Veterans Business Development is proud to provide entrepreneurial counseling
+        and training to veterans, service-disabled veterans, military spouses, and
+        National Guard and Reserve service members through programs like Boots to
+        Business, Boots to Business Reboot, and the Veterans Business Outreach Centers
+        (VBOC).", "dateLastCrawled": "2021-09-14T11:18:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Former SBA Administrator", "url": "https:\/\/www.sba.gov\/blogs\/contributors\/Linda%20McMahon",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/blogs\/contributors\/Linda
+        McMahon", "snippet": "SBA celebrates October as National Women’s Small Business
+        Month October 1, 2018 When April Lukasik’s second child was born, she couldn’t
+        find a childcare center that met her high standards.", "dateLastCrawled":
+        "2021-09-24T23:09:00.0000000Z", "language": "en", "isNavigational": false}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}}]}}}'
+  recorded_at: Wed, 06 Oct 2021 15:39:21 GMT
+recorded_with: VCR 6.0.0

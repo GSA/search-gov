@@ -31,182 +31,195 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Fri, 31 Aug 2018 20:57:10 GMT
+      - Tue, 31 Aug 2021 20:31:42 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
       Bingapis-Traceid:
-      - A7CBE93A88264568A9DEDBD637C1A434
+      - D4CDCB2705334C85B04B44D684A8CE24
       Bingapis-Sessionid:
-      - '029ABC26EEB3416AA30C746B9659DE62'
+      - 04E773CE142C423AAA6F2AC6C11FF2BE
       X-Msedge-Clientid:
-      - 22DFECE481516D8830D2E0B8805E6CB8
+      - '081228B0C84B6D4C2CC23814C9B66C29'
       X-Msapi-Userstate:
-      - aee3
+      - 78bd
       Bingapis-Market:
       - en-US
       X-Search-Responseinfo:
-      - InternalResponseTime=236,MSDatacenter=CO4
+      - InternalResponseTime=288,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
       X-Msedge-Ref:
-      - 'Ref A: A7CBE93A88264568A9DEDBD637C1A434 Ref B: BAYEDGE0121 Ref C: 2018-08-31T20:58:10Z'
+      - 'Ref A: D4CDCB2705334C85B04B44D684A8CE24 Ref B: BLUEDGE0908 Ref C: 2021-08-31T20:32:42Z'
       Apim-Request-Id:
-      - e5fce19e-e7f8-4521-bf9f-b347dbca5c6a
+      - a5d16084-96dd-4d4f-bac7-b324ef5cdb35
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
       - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Fri, 31 Aug 2018 20:58:10 GMT
+      - Tue, 31 Aug 2021 20:32:43 GMT
     body:
       encoding: UTF-8
       string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "casa
         blanca"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=casa+blanca",
-        "totalEstimatedMatches": 18300000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
-        "name": "Casablanca (film) - Wikipedia", "url": "https:\/\/en.wikipedia.org\/wiki\/Casablanca_(film)",
-        "about": [{"name": "Casablanca"}, {"name": "Casablanca"}], "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/en.wikipedia.org\/wiki\/Casablanca_(film)",
-        "snippet": "Casablanca is a 1942 American romantic drama film directed by
-        Michael Curtiz based on Murray Burnett and Joan Alison''s unproduced stage
-        play Everybody Comes to Rick''s.The film stars Humphrey Bogart, Ingrid Bergman,
-        and Paul Henreid; it also features Claude Rains, Conrad Veidt, Sydney Greenstreet,
-        Peter Lorre, and Dooley Wilson.", "snippetAttribution": {"license": {"name":
-        "CC-BY-SA", "url": "http:\/\/creativecommons.org\/licenses\/by-sa\/3.0\/"},
-        "licenseNotice": "Text under CC-BY-SA license"}, "dateLastCrawled": "2018-08-22T14:58:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "totalEstimatedMatches": 1080000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
         "name": "Casablanca (1942) - IMDb", "url": "https:\/\/www.imdb.com\/title\/tt0034583\/",
-        "about": [{"name": "Casablanca"}, {"name": "Casablanca"}], "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.imdb.com\/title\/tt0034583", "snippet":
-        "Directed by Michael Curtiz. With Humphrey Bogart, Ingrid Bergman, Paul Henreid,
-        Claude Rains. A cynical nightclub owner protects an old flame and her husband
-        from Nazis in Morocco.", "dateLastCrawled": "2018-08-20T02:42:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
-        "name": "Casa Blanca Movie Showtimes & Tickets | Santikos", "url": "https:\/\/www.santikos.com\/san-antonio\/casa-blanca",
-        "about": [{"name": "Santikos Casa Blanca"}, {"name": "Santikos Casa Blanca"}],
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.santikos.com\/san-antonio\/casa-blanca",
-        "snippet": "Visit Santikos Casa Blanca and enjoy our in theatre dining service,
-        luxury electric recliners and 4k projection and premium sound. View showtimes
-        and book your tickets online today!", "dateLastCrawled": "2018-08-23T07:31:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
-        "name": "CasaBlanca Resort and Casino in Mesquite, NV", "url": "https:\/\/casablancaresort.com\/",
-        "about": [{"name": "CasaBlanca Resort"}, {"name": "CasaBlanca Resort"}], "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/casablancaresort.com", "snippet": "Stay in
-        one of our deluxe rooms as you try your luck at over 800 slots, video poker
-        machines, and tables at the famous CasaBlanca Resort in Mesquite!", "dateLastCrawled":
-        "2018-08-24T21:18:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4", "name":
-        "Movie Showtimes & Tickets | Santikos Theatres | San Antonio", "url": "https:\/\/www.santikos.com\/",
-        "about": [{"name": "Santikos Mayan Palace 14"}, {"name": "Santikos Bijou Cinema
-        Bistro"}, {"name": "Santikos Mayan Palace 14"}, {"name": "Santikos Rialto"}],
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.santikos.com", "snippet":
-        "Experience a best in class movie going experience with Santikos Entertainment.
-        Browse showtimes and book your tickets online today!", "dateLastCrawled":
-        "2018-08-23T16:21:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5", "name":
-        "Home | Casa Blanca", "url": "http:\/\/www.casablancatexas.com\/", "about":
-        [{"name": "Casa Blanca On Brushy Creek Wedding\/Events Venue"}], "isFamilyFriendly":
-        true, "displayUrl": "www.casablancatexas.com", "snippet": "Venue. Casa Blanca
-        is the perfect setting for your dream wedding. We have indoor and outdoor
-        settings that allow you to custom create whatever type of wedding you have
-        always wanted.", "dateLastCrawled": "2018-08-21T23:58:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
-        "name": "Casa Blanca | Mexican Restaurant & Cantina", "url": "http:\/\/www.casablancaalabama.com\/",
-        "isFamilyFriendly": true, "displayUrl": "www.casablancaalabama.com", "snippet":
-        "Casa Blanca serves up the finest in Mexican cuisine in the North Alabama
-        area. Our extensive menu offers a number of traditional choices, special items
-        found only at our restaurant.", "dateLastCrawled": "2018-08-23T05:50:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
-        "name": "CasaBlanca - Authentic Mexican Restaurants in MA", "url": "https:\/\/casablancamexican.com\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/casablancamexican.com",
-        "snippet": "CasaBlanca has various mexican restaurants in MA including: Andover,
-        North Andover, and North Billerica. Each location specializes in making authentic
-        mexican restaurant cuisine for any taste buds including children, adults,
-        and even vegetarians.", "dateLastCrawled": "2018-08-24T18:55:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
-        "name": "Casablanca - Wikipedia", "url": "https:\/\/en.wikipedia.org\/wiki\/Casablanca",
-        "about": [{"name": "Casablanca"}, {"name": "Casablanca"}], "isFamilyFriendly":
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.imdb.com\/title\/tt0034583",
+        "snippet": "Casablanca: Directed by Michael Curtiz. With Humphrey Bogart,
+        Ingrid Bergman, Paul Henreid, Claude Rains. A cynical expatriate American
+        cafe owner struggles to decide whether or not to help his former lover and
+        her fugitive husband escape the Nazis in French Morocco.", "dateLastCrawled":
+        "2021-08-29T00:14:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1", "contractualRules":
+        [{"_type": "ContractualRules\/LicenseAttribution", "targetPropertyName": "snippet",
+        "targetPropertyIndex": 1, "mustBeCloseToContent": true, "license": {"name":
+        "CC-BY-SA", "url": "http:\/\/creativecommons.org\/licenses\/by-sa\/3.0\/"},
+        "licenseNotice": "Text under CC-BY-SA license"}], "name": "Casablanca - Wikipedia",
+        "url": "https:\/\/en.wikipedia.org\/wiki\/Casablanca", "isFamilyFriendly":
         true, "displayUrl": "https:\/\/en.wikipedia.org\/wiki\/Casablanca", "snippet":
-        "Casablanca (Arabic: الدار البيضاء ‎, translit. ad-dār al-bayḍāʾ; Berber languages:
-        ⴰⵏⴼⴰ, translit. anfa; local informal name: Kaẓa), located in the central-western
-        part of Morocco bordering the Atlantic Ocean, is the largest city in Morocco.",
-        "snippetAttribution": {"license": {"name": "CC-BY-SA", "url": "http:\/\/creativecommons.org\/licenses\/by-sa\/3.0\/"},
-        "licenseNotice": "Text under CC-BY-SA license"}, "dateLastCrawled": "2018-08-19T01:56:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "Casablanca (Arabic: الدار البيضاء ‎, romanized: ad-dār al-bayḍāʾ; Berber
+        languages: ⴰⵏⴼⴰ, romanized: anfa) is the largest city of Morocco. Located
+        on the Atlantic coast of the Chaouia plain in the central-western part of
+        Morocco, it is the second largest city in the Maghreb region and the eighth-largest
+        in the Arab world.", "dateLastCrawled": "2021-08-29T00:20:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "CasaBlanca Resort and Casino in Mesquite, NV", "url": "https:\/\/casablancaresort.com\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/casablancaresort.com",
+        "snippet": "11 Golf Courses to choose from! Stay at the CasaBlanca Resort
+        and build your own golf vacation with Unlimited Golf and Room availability.
+        Book online or call now at 1.877.438.2929 to speak to a Golf Package Coordinator!
+        Book Now.", "dateLastCrawled": "2021-08-29T05:09:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Casa Blanca Mexican Restaurant, Massachusetts", "url": "https:\/\/casablancamexican.com\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/casablancamexican.com",
+        "snippet": "Casa Blanca, North Billerica, MA; What''s on your mind? Would
+        you like to receive our e-newsletter that contains coupons and specials? *
+        Of Course! No, thank you. CAPTCHA. Proudly powered by WordPress | Theme: Sydney
+        by aThemes. ...", "dateLastCrawled": "2021-08-29T07:06:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "La Casa Blanca | La Casa Blanca", "url": "https:\/\/www.whitehouse.gov\/es\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/es",
+        "snippet": "La Casa Blanca. Más información sobre la residencia oficial. Acerca
+        de la Casa Blanca.", "dateLastCrawled": "2021-08-26T20:26:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Santikos Casa Blanca Movie Times | Showtimes and Tickets ...", "url":
+        "https:\/\/www.fandango.com\/santikos-casa-blanca-aaxwh\/theater-page", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.fandango.com\/santikos-casa-blanca-aaxwh\/theater-page",
+        "snippet": "Santikos Casa Blanca. Save theater to favorites. 11210 Alamo Ranch
+        Parkway. San Antonio, TX 78253. Theater Info. Theater Safety Shield Icon Theater
+        Covid-19 Policies. Ticketing Options: Kiosk, Mobile, Print. See Details. Calendar
+        for movie times.", "dateLastCrawled": "2021-08-29T09:16:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Casa Blanca Madison - Madison | Delivery Menu", "url": "https:\/\/huntsville.grubsouth.com\/r\/2944\/restaurants\/delivery\/Mexican\/Casa-Blanca-Madison-Madison",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/huntsville.grubsouth.com\/r\/2944\/restaurants\/delivery\/Mexican",
+        "snippet": "Casa Blanca Madison. Casa Blanca serves up the finest in Mexican
+        cuisine in the North Alabama area. Our extensive menu offers a number of traditional
+        choices, special items found only at our restaurant.", "dateLastCrawled":
+        "2021-08-29T03:02:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7", "name":
+        "Casablanca Coffee and Grill - Healthy Drive Thru | Grants ...", "url": "https:\/\/mycasablancagrill.com\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/mycasablancagrill.com",
+        "snippet": "The Casa starts with the freshest ingredients available, organic
+        whenever possible. You will find no MSG, trans fat, or hydrogenated oils in
+        our cooking. Served in earth-friendly containers, our own recipes create a
+        unique extensive menu for discriminating tastes. Truly “inspired food” in
+        a drive-thru! Our fruit smoothies are made from 100% ...", "dateLastCrawled":
+        "2021-08-29T04:09:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8", "name":
+        "Entertainment | CasaBlanca Resort and Casino in Mesquite ...", "url": "https:\/\/casablancaresort.com\/entertainment\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/casablancaresort.com\/entertainment",
+        "snippet": "CasaBlanca Resort & Casino | 950 West Mesquite Blvd., Mesquite,
+        NV 89027 ...", "dateLastCrawled": "2021-08-29T19:48:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Santikos: Movies in San Antonio | Showtimes & Tickets", "url": "https:\/\/www.santikos.com\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.santikos.com", "snippet":
+        "Fathom Event- See it at Palladium, Silverado and Casa Blanca on 9\/7. The
+        Alpinist (Premiere Event) PG13 • 1h 45m. The Alpinist is an intimate documentary
+        of a young visionary who followed the trail of his own passion, despite the
+        heaviest of possible consequences.", "dateLastCrawled": "2021-08-28T03:28:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Casablanca | Facts, History, & Map | Britannica", "url": "https:\/\/www.britannica.com\/place\/Casablanca-Morocco",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.britannica.com\/place\/Casablanca-Morocco",
+        "snippet": "Casablanca, Arabic Al-Dār al-Bayḍāʾ, or Dar al-Beïda, principal
+        port of Morocco, on the North African Atlantic seaboard. Casablanca, Morocco.
+        The origin of the town is not known. An Amazigh ( Berber) village called Anfa
+        stood on the present-day site in the 12th century; it became a pirates’ base
+        for harrying Christian ships and was ...", "dateLastCrawled": "2021-08-29T11:11:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
         "name": "The Casa Blanca Vacation Rentals | We have your Perfect ...", "url":
         "http:\/\/thecasablanca.net\/", "isFamilyFriendly": true, "displayUrl": "thecasablanca.net",
-        "snippet": "Welcome! Our condominium complex includes gulf-front apartments
-        and private villas. Every deluxe gulf-front apartment and private villa at
-        the Casa Blanca is individually decorated and fully furnished including all
-        cookware and linens.", "dateLastCrawled": "2018-08-23T07:03:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
-        "name": "Amazon.com: Casablanca: Humphrey Bogart, Ingrid Bergman ...", "url":
-        "https:\/\/www.amazon.com\/Casablanca-Humphrey-Bogart\/dp\/B001EBWING", "about":
-        [{"name": "Casablanca"}, {"name": "Casablanca"}], "isFamilyFriendly": true,
-        "displayUrl": "https:\/\/www.amazon.com\/Casablanca-Humphrey-Bogart\/dp\/B001EBWING",
-        "snippet": "Buy Casablanca: Read 2942 Movies & TV Reviews - Amazon.com", "dateLastCrawled":
-        "2018-08-21T04:25:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11", "name":
-        "Home | Casablanca Bridal", "url": "https:\/\/www.casablancabridal.com\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.casablancabridal.com",
-        "snippet": "We believe there''s a difference between designing a dress for
-        your wedding and for your marriage. Casablanca Bridal was established in 1997
-        and has since become one of the fastest growing, well known manufacturers
-        of bridal gowns in the industry.", "dateLastCrawled": "2018-08-22T20:31:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
-        "name": "Santikos Casa Blanca Movie Times - Fandango", "url": "https:\/\/www.fandango.com\/santikos-casa-blanca-aaxwh\/theater-page",
-        "about": [{"name": "Santikos Casa Blanca"}, {"name": "Santikos Casa Blanca"}],
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fandango.com\/santikos-casa-blanca-aaxwh\/theater-page",
-        "snippet": "Find Santikos Casa Blanca showtimes and theater information at
-        Fandango. Buy tickets, get box office information, driving directions and
-        more.", "dateLastCrawled": "2018-08-21T07:26:00.0000000Z", "language": "en",
-        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
-        "name": "Casablanca 2018: Best of Casablanca, Morocco Tourism ...", "url":
-        "https:\/\/www.tripadvisor.com\/Tourism-g293732-Casablanca_Grand_Casablanca_Region-Vacations.html",
-        "about": [{"name": "Casablanca"}], "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.tripadvisor.com\/Tourism-g293732-Casablanca_Grand...", "snippet":
-        "Casablanca Tourism: TripAdvisor has 82,372 reviews of Casablanca Hotels,
-        Attractions, and Restaurants making it your best Casablanca resource.", "dateLastCrawled":
-        "2018-08-20T13:11:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14", "name":
-        "The White House", "url": "https:\/\/www.whitehouse.gov\/", "about": [{"name":
-        "The White House"}, {"name": "whitehouse.gov"}, {"name": "White House"}],
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov", "snippet":
-        "History of The White House. Our first president, George Washington, selected
-        the site for the White House in 1791. Every president since John Adams has
-        occupied the White House, and the history of this building extends far beyond
-        the construction of its walls.", "dateLastCrawled": "2018-08-24T00:53:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
-        "name": "Casa Blanca 7 | Hotel in San Miguel de Allende :: (415 ...", "url":
-        "http:\/\/casablanca7.com\/", "isFamilyFriendly": true, "displayUrl": "casablanca7.com",
-        "snippet": "Stylish hotel in the heart of San Miguel de Allende... overlooking
-        the iconic San Francisco Church.", "dateLastCrawled": "2018-08-19T23:31:00.0000000Z",
+        "snippet": "The Casa Blanca Apartments. Our apartments are located directly
+        on the magnificent Crescent Beach with unobstructed views of the beach and
+        beautiful Gulf of Mexico waters. Sit on your screened-in lanai and enjoy the
+        views, morning and evening. Apartments have 1 or 2 bedrooms, and from 1 to
+        2 baths. Laundry facilities are available on each floor ...", "dateLastCrawled":
+        "2021-08-28T20:47:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12", "contractualRules":
+        [{"_type": "ContractualRules\/LicenseAttribution", "targetPropertyName": "snippet",
+        "targetPropertyIndex": 12, "mustBeCloseToContent": true, "license": {"name":
+        "CC-BY-SA", "url": "http:\/\/creativecommons.org\/licenses\/by-sa\/3.0\/"},
+        "licenseNotice": "Text under CC-BY-SA license"}], "name": "Casablanca (film)
+        - Wikipedia", "url": "https:\/\/en.wikipedia.org\/wiki\/Casablanca_(film)",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/en.wikipedia.org\/wiki\/Casablanca_(film)",
+        "snippet": "Casablanca is a 1942 American romantic drama film directed by
+        Michael Curtiz, and starring Humphrey Bogart, Ingrid Bergman, and Paul Henreid.Filmed
+        and set during World War II, it focuses on an American expatriate (Bogart)
+        who must choose between his love for a woman (Bergman) or helping her and
+        her husband (Henreid), a Czech resistance leader, escape from the Vichy-controlled
+        city of ...", "dateLastCrawled": "2021-08-29T02:04:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "The White House is on Instagram • 428 posts on their profile", "url":
+        "https:\/\/www.instagram.com\/whitehouse\/", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.instagram.com\/whitehouse", "snippet": "6.9m Followers, 5 Following,
+        428 Posts - See Instagram photos and videos from The White House (@whitehouse)",
+        "dateLastCrawled": "2021-08-31T19:42:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Parisian Elevated Sportswear Label Casablanca’s Fast Ascent", "url":
+        "https:\/\/www.forbes.com\/sites\/roxannerobinson\/2021\/08\/28\/parisian-elevated-sportswear-label-casablancas-fast-ascent\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.forbes.com\/...\/28\/parisian-elevated-sportswear-label-casablancas-fast-ascent",
+        "snippet": "A Casablanca Fall 2021 campaign image featuring Sid, a frequent
+        model and muse for the label. Photo Courtesy of Casablanca. This community
+        was integral to his first foray into fashion with Pigalle ...", "dateLastCrawled":
+        "2021-08-29T02:11:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15", "name":
+        "Home | Casa Blanca", "url": "http:\/\/www.casablancatexas.com\/", "isFamilyFriendly":
+        true, "displayUrl": "www.casablancatexas.com", "snippet": "Casa Blanca is
+        the perfect setting for your dream wedding. We have indoor and outdoor settings
+        that allow you to custom create whatever type of wedding you have always wanted.
+        Read more. Events. Casa Blanca is an elegant destination for hosting many
+        types of events including:", "dateLastCrawled": "2021-08-29T10:16:00.0000000Z",
         "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
-        "name": "Amazon.com: Casablanca [Blu-ray]: Humphrey Bogart, Ingrid ...", "url":
-        "https:\/\/www.amazon.com\/Casablanca-Blu-ray-Humphrey-Bogart\/dp\/B002VWONB2",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.amazon.com\/Casablanca-Blu-ray-Humphrey-Bogart\/dp\/B002...",
-        "snippet": "Amazon.com: Casablanca [Blu-ray]: Humphrey Bogart, Ingrid Bergman,
-        Paul Henreid, Claude Rains, Conrad Veidt, Sydney Greenstreet, Peter Lorre,
-        S.Z. Sakall, Madeleine Lebeau, Dooley Wilson, Joy Page, John Qualen, Michael
-        Curtiz, Hal B. Wallis, Casey Robinson, Howard Koch, Joan Alison, Julius J.
-        Epstein, Murray Burnett, Philip G. Epstein: Movies & TV", "dateLastCrawled":
-        "2018-08-24T06:01:00.0000000Z", "language": "en", "isNavigational": false},
+        "name": "Seafood Restaurant | Casablanca On the River | Miami", "url": "https:\/\/www.casablancaseafood.com\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.casablancaseafood.com",
+        "snippet": "is the key to Casablanca Seafood’s success. South Florida’s best
+        seafood comes in daily from our boats. Doesn’t get any fresher than that!
+        Go To Menus. #casablancaseafood. 400 NW North River Drive - Miami, Florida
+        33128 Phone: 305-371-4107 Takeout@casablancaseafood.com. Join.", "dateLastCrawled":
+        "2021-08-29T03:04:00.0000000Z", "language": "en", "isNavigational": false},
         {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17", "name":
-        "Casablanca (1942) - Full Cast & Crew - IMDb", "url": "https:\/\/www.imdb.com\/title\/tt0034583\/fullcredits",
-        "about": [{"name": "Casablanca"}], "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.imdb.com\/title\/tt0034583\/fullcredits", "snippet": "Casablanca
-        (1942) cast and crew credits, including actors, actresses, directors, writers
-        and more.", "dateLastCrawled": "2018-08-25T08:36:00.0000000Z", "language":
+        "Casablanca Fans & Casablanca - Hunter Fan", "url": "https:\/\/www.hunterfan.com\/pages\/casablanca",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.hunterfan.com\/pages\/casablanca",
+        "snippet": "Shop high-end, decorative Casablanca fans from the premium selection
+        at Casablanca. Discover a variety of Casablanca fans styles to add sophistication
+        to any space.", "dateLastCrawled": "2021-08-29T09:41:00.0000000Z", "language":
         "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
-        "name": "Homepage | Casablanca Ceiling Fan", "url": "https:\/\/www.hunterfan.com\/casablanca",
-        "about": [{"name": "Casablanca Fan Company"}], "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.hunterfan.com\/casablanca", "snippet": "Shop designer ceiling
-        fans and accessories at Casablanca", "dateLastCrawled": "2018-08-21T10:33:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
-        "name": "Casa Blanca, AZ - Casa Blanca, Arizona Map & Directions ...", "url":
-        "https:\/\/www.mapquest.com\/us\/az\/casa-blanca-282088664", "about": [{"name":
-        "Casa Blanca, Arizona"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.mapquest.com\/us\/az\/casa-blanca-282088664",
-        "snippet": "Get directions, maps, and traffic for Casa Blanca, AZ. Check flight
-        prices and hotel availability for your visit.", "dateLastCrawled": "2018-08-24T08:39:00.0000000Z",
+        "name": "¡Urria, Urria! casablancacr.com", "url": "https:\/\/casablancacr.com\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/casablancacr.com", "snippet":
+        "¡Urria, Urria! casablancacr.com", "dateLastCrawled": "2021-08-29T02:03:00.0000000Z",
+        "language": "eu", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Casablanca (1942) - Plot Summary - IMDb", "url": "https:\/\/www.imdb.com\/title\/tt0034583\/plotsummary",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.imdb.com\/title\/tt0034583\/plotsummary",
+        "snippet": "The story of Rick Blaine, a cynical world-weary ex-patriate who
+        runs a nightclub in Casablanca, Morocco during the early stages of WWII. Despite
+        the pressure he constantly receives from the local authorities, Rick''s cafe
+        has become a kind of haven for refugees seeking to obtain illicit letters
+        that will help them escape to America.", "dateLastCrawled": "2021-08-29T08:14:00.0000000Z",
         "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
         {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
         {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
@@ -228,6 +241,257 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
-    http_version: 
-  recorded_at: Fri, 31 Aug 2018 20:58:10 GMT
-recorded_with: VCR 4.0.0
+  recorded_at: Tue, 31 Aug 2021 20:32:43 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=casa%20blanca&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 10:40:47 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - B930200BB2D64B4EB5E212ACCCAA7D07
+      Bingapis-Sessionid:
+      - 004F5AE448EC4576B1EB9880D33AA328
+      X-Msedge-Clientid:
+      - 01B2A57B82B0697F12A2B5B3834D6898
+      X-Msapi-Userstate:
+      - 492e
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=231,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: B930200BB2D64B4EB5E212ACCCAA7D07 Ref B: BLUEDGE1020 Ref C: 2021-10-06T10:41:47Z'
+      Apim-Request-Id:
+      - a36e395a-1284-4843-aa6b-caf25db0c042
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 10:41:48 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "casa
+        blanca"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=casa+blanca",
+        "totalEstimatedMatches": 1010000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Casablanca (1942) - IMDb", "url": "https:\/\/www.imdb.com\/title\/tt0034583\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.imdb.com\/title\/tt0034583",
+        "snippet": "Casablanca: Directed by Michael Curtiz. With Humphrey Bogart,
+        Ingrid Bergman, Paul Henreid, Claude Rains. A cynical expatriate American
+        cafe owner struggles to decide whether or not to help his former lover and
+        her fugitive husband escape the Nazis in French Morocco.", "dateLastCrawled":
+        "2021-10-03T10:10:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1", "contractualRules":
+        [{"_type": "ContractualRules\/LicenseAttribution", "targetPropertyName": "snippet",
+        "targetPropertyIndex": 1, "mustBeCloseToContent": true, "license": {"name":
+        "CC-BY-SA", "url": "http:\/\/creativecommons.org\/licenses\/by-sa\/3.0\/"},
+        "licenseNotice": "Text under CC-BY-SA license"}], "name": "Casablanca - Wikipedia",
+        "url": "https:\/\/en.wikipedia.org\/wiki\/Casablanca", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/en.wikipedia.org\/wiki\/Casablanca", "snippet":
+        "Casablanca (Arabic: الدار البيضاء ‎, romanized: ad-dār al-bayḍāʾ; Berber
+        languages: ⴰⵏⴼⴰ, romanized: anfa) is the largest city of Morocco.Located on
+        the Atlantic coast of the Chaouia plain in the central-western part of Morocco,
+        it is the second largest city in the Maghreb region and the eighth-largest
+        in the Arab world. ...", "dateLastCrawled": "2021-10-03T11:30:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Casa Blanca Mexican Restaurant, Massachusetts", "url": "https:\/\/casablancamexican.com\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/casablancamexican.com",
+        "snippet": "Casa Blanca, North Billerica, MA; What''s on your mind? Would
+        you like to receive our e-newsletter that contains coupons and specials? *
+        Of Course! No, thank you. CAPTCHA. Proudly powered by WordPress | Theme: Sydney
+        by aThemes. ...", "dateLastCrawled": "2021-10-02T13:06:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "CasaBlanca Resort and Casino in Mesquite, NV", "url": "https:\/\/casablancaresort.com\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/casablancaresort.com",
+        "snippet": "11 Golf Courses to choose from! Stay at the CasaBlanca Resort
+        and build your own golf vacation with Unlimited Golf and Room availability.
+        Book online or call now at 1.877.438.2929 to speak to a Golf Package Coordinator!
+        Book Now.", "dateLastCrawled": "2021-10-03T07:10:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "contractualRules": [{"_type": "ContractualRules\/LicenseAttribution", "targetPropertyName":
+        "snippet", "targetPropertyIndex": 4, "mustBeCloseToContent": true, "license":
+        {"name": "CC-BY-SA", "url": "http:\/\/creativecommons.org\/licenses\/by-sa\/3.0\/"},
+        "licenseNotice": "Text under CC-BY-SA license"}], "name": "Casablanca (film)
+        - Wikipedia", "url": "https:\/\/en.wikipedia.org\/wiki\/Casablanca_(film)",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/en.wikipedia.org\/wiki\/Casablanca_(film)",
+        "snippet": "Casablanca is a 1942 American romantic drama film directed by
+        Michael Curtiz, and starring Humphrey Bogart, Ingrid Bergman, and Paul Henreid.Filmed
+        and set during World War II, it focuses on an American expatriate (Bogart)
+        who must choose between his love for a woman (Bergman) or helping her and
+        her husband (Henreid), a Czech resistance leader, escape from the Vichy-controlled
+        city of ...", "dateLastCrawled": "2021-10-03T10:04:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "The Casa Blanca Vacation Rentals | We have your Perfect ...", "url":
+        "http:\/\/thecasablanca.net\/", "isFamilyFriendly": true, "displayUrl": "thecasablanca.net",
+        "snippet": "The Casa Blanca Apartments. Our apartments are located directly
+        on the magnificent Crescent Beach with unobstructed views of the beach and
+        beautiful Gulf of Mexico waters. Sit on your screened-in lanai and enjoy the
+        views, morning and evening. Apartments have 1 or 2 bedrooms, and from 1 to
+        2 baths.", "dateLastCrawled": "2021-10-02T22:13:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Casablanca Coffee and Grill - Healthy Drive Thru | Grants ...", "url":
+        "https:\/\/mycasablancagrill.com\/", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/mycasablancagrill.com", "snippet": "The Casa starts with the freshest
+        ingredients available, organic whenever possible. You will find no MSG, trans
+        fat, or hydrogenated oils in our cooking. Served in earth-friendly containers,
+        our own recipes create a unique extensive menu for discriminating tastes.
+        Truly “inspired food” in a drive-thru! Our fruit smoothies are made from 100%
+        ...", "dateLastCrawled": "2021-10-02T04:11:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Santikos Casa Blanca Movie Times | Showtimes and Tickets ...", "url":
+        "https:\/\/www.fandango.com\/santikos-casa-blanca-aaxwh\/theater-page", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.fandango.com\/santikos-casa-blanca-aaxwh\/theater-page",
+        "snippet": "Santikos Casa Blanca. Save theater to favorites. 11210 Alamo Ranch
+        Parkway. San Antonio, TX 78253. Theater Info. Theater Safety Shield Icon Theater
+        Covid-19 Policies. Ticketing Options: Kiosk, Mobile, Print. See Details. Calendar
+        for movie times.", "dateLastCrawled": "2021-10-03T05:22:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "CasaBlanca Cuban Grill", "url": "https:\/\/casablancacubangrill.com\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/casablancacubangrill.com",
+        "snippet": "CasaBlanca Cuban Grill. 5506 W. Overland Road, Boise, Idaho 83705,
+        United States (208) 331-2370 casablancacubangrill2012@gmail.com", "dateLastCrawled":
+        "2021-10-02T09:02:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9", "name": "Santikos:
+        Movies in San Antonio | Showtimes & Tickets", "url": "https:\/\/www.santikos.com\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.santikos.com", "snippet":
+        "See it at Palladium, Casa Blanca, Embassy and Cibolo on 11\/4. The Doors:
+        Live At The Bowl ''68 Special Edition. TBC • 1h 32m. In celebration of the
+        50th anniversary of L.A. WOMAN, this “Special Edition” event will transform
+        movie theaters into concert venues. Tickets Details. See it on 10\/20 and
+        10\/21 at Palladium, Silverado, Embassy and ...", "dateLastCrawled": "2021-10-01T05:28:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Casablanca Inn", "url": "https:\/\/www.casablancainn.net\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.casablancainn.net", "snippet": "Casablanca
+        Inn is a boutique hotel, restaurant, and bar located in scenic Kino Nuevo
+        in Sonora Mexico, and have been serving the Kino Bay community for over a
+        decade. Our rooms offer a relaxing taste of old Mexico—from the architectural
+        details to the handmade furnishings, our guests can enjoy the best that Kino
+        Bay has to offer in a secure ...", "dateLastCrawled": "2021-10-04T18:30:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Home | Casablanca", "url": "https:\/\/casablancaonbrady.com\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/casablancaonbrady.com", "snippet": "Everything
+        Casablanca has turned into, from adding a second-floor addition to the Brady
+        Street location, enclosing the west-side, second floor terrace with retractable
+        roofs and sliding glass panels to opening a second Casablanca Restaurant in
+        Brookfield to opening MooSa’s Custard Stand at North Point Beach on Milwaukee’s
+        Lake Front, the ...", "dateLastCrawled": "2021-10-01T02:15:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Casa Blanca Mexican Restaurant - Menu", "url": "https:\/\/www.casablancamexicanrestaurant.com\/menu",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.casablancamexicanrestaurant.com\/menu",
+        "snippet": "Welcome to Casa Blanca Mexican Restaurant! We are located at 15922
+        Gale Ave, Hacienda Heights, CA 91745. Our phone number is 626-330-9549. We
+        look forward to seeing you soon!", "dateLastCrawled": "2021-10-03T05:04:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Casa Blanca Madison - Madison | Delivery Menu", "url": "https:\/\/huntsville.grubsouth.com\/r\/2944\/restaurants\/delivery\/Mexican\/Casa-Blanca-Madison-Madison",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/huntsville.grubsouth.com\/r\/2944\/restaurants\/delivery\/Mexican",
+        "snippet": "Casa Blanca Madison. Casa Blanca serves up the finest in Mexican
+        cuisine in the North Alabama area. Our extensive menu offers a number of traditional
+        choices, special items found only at our restaurant.", "dateLastCrawled":
+        "2021-10-01T05:04:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "Seafood Restaurant | Casablanca On the River | Miami", "url": "https:\/\/www.casablancaseafood.com\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.casablancaseafood.com",
+        "snippet": "is the key to Casablanca Seafood’s success. South Florida’s best
+        seafood comes in daily from our boats. Doesn’t get any fresher than that!
+        Go To Menus. #casablancaseafood. 400 NW North River Drive - Miami, Florida
+        33128 Phone: 305-371-4107 Takeout@casablancaseafood.com. Join.", "dateLastCrawled":
+        "2021-10-02T07:04:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15", "name":
+        "Menu - Casablanca Coffee and Grill", "url": "https:\/\/mycasablancagrill.com\/menu\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/mycasablancagrill.com\/menu",
+        "snippet": "Casa’s Tortilla Soup (GF) Tomato, Avocado, Cilantro, Onion, Chicken,
+        and Cheese Soup or Bowl. Chips and Salsa (GF) Casa Quesadilla Add Chicken
+        or Steak. Burrito Platters 5 Burritos $45 \/ 10 Burritos $90 Cut in half in
+        a tray, Choose from 1 or 2 different burritos Limited Substitutions.", "dateLastCrawled":
+        "2021-10-01T03:29:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16", "name":
+        "Santikos Casa Blanca - San Antonio Showtimes and Movie ...", "url": "https:\/\/www.showtimes.com\/movie-theaters\/santikos-casa-blanca-12694\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.showtimes.com\/movie-theaters\/santikos-casa-blanca-12694",
+        "snippet": "Santikos Casa Blanca Read Reviews | Rate Theater 11210 Alamo Ranch
+        Parkway, San Antonio, TX 78253 866-420-8626 | View Map. Theaters Nearby Flix
+        Brewhouse - San Antonio (4.2 mi) Santikos Silverado 16 Theatre (5.3 mi) Alamo
+        Drafthouse Westlakes (5.8 mi) Regal Cielo Vista & RPX (5.9 mi) ...", "dateLastCrawled":
+        "2021-10-02T03:04:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17", "name":
+        "CASA BLANCA MEXICAN RESTAURANT - 160 Photos & 191 Reviews ...", "url": "https:\/\/www.yelp.com\/biz\/casa-blanca-mexican-restaurant-hacienda-heights",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.yelp.com\/biz\/casa-blanca-mexican-restaurant-hacienda-heights",
+        "snippet": "Delivery & Pickup Options - 191 reviews of Casa Blanca Mexican
+        Restaurant \"Finding a great mexican food place isn''t hard in most of LA,
+        but when in Hacienda Heights, where there are a multitude of asian places
+        to choose from, it''s good to know that this place exists. I''ve only eaten
+        inside the actual restaurant once, and that is probably the last time I will,
+        lets just say the food outshines ...", "dateLastCrawled": "2021-10-03T03:19:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Casablanca (1942) - Full Cast & Crew - IMDb", "url": "https:\/\/www.imdb.com\/title\/tt0034583\/fullcredits",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.imdb.com\/title\/tt0034583\/fullcredits",
+        "snippet": "Casablanca (1942) cast and crew credits, including actors, actresses,
+        directors, writers and more.", "dateLastCrawled": "2021-10-03T03:19:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Casa Blanca, Puerto Rico''s Sales Tax Rate is 6.8125%", "url": "https:\/\/www.salestaxhandbook.com\/puerto-rico\/rates\/casa-blanca",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.salestaxhandbook.com\/puerto-rico\/rates\/casa-blanca",
+        "snippet": "The Casa Blanca, Puerto Rico sales tax rate of 6.8125% applies
+        in the zip code 87007. There are approximately 570 people living in the Casa
+        Blanca area. Remember that zip code boundaries don''t always match up with
+        political boundaries (like Casa Blanca or Cibola County ), so you shouldn''t
+        always rely on something as imprecise as zip codes to ...", "dateLastCrawled":
+        "2021-10-06T09:44:00.0000000Z", "language": "en", "isNavigational": false}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 06 Oct 2021 04:38:54 GMT
+recorded_with: VCR 6.0.0

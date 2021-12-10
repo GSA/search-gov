@@ -119,17 +119,16 @@ class Affiliate < ApplicationRecord
   before_validation :strip_bing_v5_key
 
   before_validation do |record|
-    AttributeProcessor.squish_attributes record,
+    AttributeProcessor.squish_attributes(record,
                                          :ga_web_property_id,
                                          :header_tagline_font_size,
                                          :logo_alt_text,
                                          :navigation_dropdown_label,
                                          :related_sites_dropdown_label,
-                                         assign_nil_on_blank: true
-    AttributeProcessor.prepend_attributes_with_http record,
+                                         assign_nil_on_blank: true)
+    AttributeProcessor.prepend_attributes_with_http(record,
                                                     :favicon_url,
-                                                    :external_css_url,
-                                                    :website
+                                                    :website)
   end
 
   before_validation :set_api_access_key, unless: :api_access_key?
@@ -349,7 +348,7 @@ class Affiliate < ApplicationRecord
     if website.present?
       website
     elsif site_domains.count == 1
-      "http://#{site_domains.pluck(:domain).first}"
+      "http://#{site_domains.pick(:domain)}"
     end
   end
 
@@ -714,7 +713,7 @@ class Affiliate < ApplicationRecord
   end
 
   def generate_look_and_feel_css
-    renderer = Renderers::AffiliateCss.new(build_css_hash)
+    renderer = AffiliateCss.new(build_css_hash)
     self.mobile_look_and_feel_css = renderer.render_mobile_css
   end
 

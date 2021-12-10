@@ -10,7 +10,7 @@ describe LinkPopularity do
       let(:click_count) { 50 }
 
       before do
-        allow(ES::ELK.client_reader).to receive(:count).
+        allow(Es::ELK.client_reader).to receive(:count).
           and_return( 'count' => click_count )
       end
 
@@ -27,7 +27,7 @@ describe LinkPopularity do
 
     context 'when days_back logstash indexes does not exist' do
       before do
-        allow(ES::ELK.client_reader).to receive(:count).
+        allow(Es::ELK.client_reader).to receive(:count).
           and_raise(Elasticsearch::Transport::Transport::Errors::NotFound)
       end
 

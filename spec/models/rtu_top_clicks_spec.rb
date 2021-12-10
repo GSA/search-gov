@@ -7,7 +7,7 @@ describe RtuTopClicks do
     let(:json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/top_urls.json")) }
 
     before do
-      allow(ES::ELK.client_reader).to receive(:search).and_return json_response
+      allow(Es::ELK.client_reader).to receive(:search).and_return json_response
     end
   end
 
@@ -31,7 +31,7 @@ describe RtuTopClicks do
 
     context 'when stats unavailable' do
       before do
-        allow(ES::ELK.client_reader).to receive(:search).and_raise StandardError
+        allow(Es::ELK.client_reader).to receive(:search).and_raise StandardError
       end
 
       it 'should return an empty array' do

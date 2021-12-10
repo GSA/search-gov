@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 5.2.0'
+gem 'rails', '~> 6.0.0'
 
 gem 'rake', '~> 12.3.2'
 gem 'rack-contrib', '~> 2.1.0'
 gem 'rails-observers', '~> 0.1.5'
-gem 'responders', '~> 2.0'
+gem 'responders', '~> 3.0.1'
 gem 'mysql2', '~> 0.4.4'
 gem 'curb', '~> 0.9.4'
 gem 'haml', '~> 5.2.1'
@@ -25,15 +25,20 @@ gem 'resque-timeout', '~> 1.0.0'
 gem 'resque-lock-timeout', '~> 0.4.5'
 gem 'resque-scheduler', '~> 4.3.1'
 # Paperclip is deprecated: https://cm-jira.usa.gov/browse/SRCH-702
-gem 'paperclip', '~> 5.2.0'
+# Using a third-party fork as an interim measure.
+gem 'kt-paperclip', '~> 7.0.0'
+gem 'aws-sdk-s3', '~> 1.102.0'
 gem 'googlecharts', '~> 1.6.12'
-gem 'tweetstream', '~> 2.6.1' # no longer maintained?
+# Using custom fork of tweetstream until vulnerability is resolved
+# (or until we switch to Twitter's API v2):
+# https://github.com/tweetstream/tweetstream/issues/212
+gem 'tweetstream', git: 'https://github.com/GSA/tweetstream'
 gem 'twitter', git: 'https://github.com/GSA/twitter.git', branch: '5-stable'
 gem 'flickraw', '~> 0.9.9'
-gem 'active_scaffold', '~> 3.5.0'
-gem 'active_scaffold_export', git: 'https://github.com/naaano/active_scaffold_export'
+gem 'active_scaffold', '~> 3.6.2'
+gem 'active_scaffold_export', '~> 3.4.0'
 gem "recaptcha", '~> 4.6.3', :require => "recaptcha/rails"
-gem 'newrelic_rpm', '~> 5.0.0'
+gem 'newrelic_rpm', '~> 6.15.0'
 gem 'american_date', '~> 1.1.1'
 gem 'sass', '~> 3.3.0'
 gem 'sass-rails', '~> 5.0.7'
@@ -75,10 +80,9 @@ gem 'rack-cors', '~> 1.1.0', :require => 'rack/cors'
 gem 'hashie', '~> 3.3.0'
 # retry_block is unsupported - consider replacing with retriable
 gem 'retry_block', '~> 1.2.0'
-gem 'aws-sdk', '< 3.0'
 gem 'colorize', '~> 0.8.1'
 gem 'dogstatsd-ruby', '~> 3.2.0'
-gem 'http', '~> 1.0'
+gem 'http', '~> 4.0'
 gem 'robots_tag_parser', '~> 0.1.0', git: 'https://github.com/GSA/robots_tag_parser'
 gem 'loofah', '~> 2.9.0'
 # Locking ref, as later versions (after being renamed & released as "medusa-crawler")
@@ -89,11 +93,12 @@ gem 'medusa', git: 'https://github.com/brutuscat/medusa-crawler',
 # is resolved
 gem 'robotex', git: 'https://github.com/MothOnMars/robotex'
 gem 'saxerator', '~> 0.9.9'
-gem 'counter_culture', '~> 2.3.0'
+gem 'counter_culture', '~> 2.9.0'
 gem 'aasm', '~> 4.12'
-gem 'active_scheduler', '~> 0.5.0'
+gem 'active_scheduler', '~> 0.7.0'
 gem 'retriable', '~> 3.1'
 gem 'cld3', '~> 3.2.3'
+gem 'activejob-uniqueness', '~> 0.2.1'
 
 # Assets-related gems
 gem 'coffee-rails', '~> 5.0.0'
@@ -137,7 +142,7 @@ group :development do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.8.2'
+  gem 'rspec-rails', '~> 5.0.0'
   gem 'rspec-json_expectations', '~> 2.1.0'
   gem 'rspec-its', '~> 1.2.0'
   gem 'email_spec', '~> 2.1.1'
@@ -157,16 +162,14 @@ end
 group :test do
   gem 'capybara-screenshot'
   gem 'simplecov', '~> 0.17.0', require: false
-  # Limiting the cucumber version until v4 is compatible with VCR
-  # https://github.com/vcr/vcr/issues/825
-  gem 'cucumber', '~> 3.0', require: false
-  gem 'cucumber-rails', '~> 2.0', require: false
+  gem 'cucumber', '~> 7.1.0', require: false
+  gem 'cucumber-rails', '~> 2.4.0', require: false
   gem 'resque_spec', '~> 0.17.0'
   gem 'poltergeist', '~> 1.18.1'
   gem 'shoulda-matchers', '~> 4.1.1'
   gem 'shoulda-kept-assign-to', '~> 1.1.0'
-  gem 'vcr', '~> 4.0'
-  gem 'webmock', '~> 3.8.3'
+  gem 'vcr', '~> 6.0'
+  gem 'webmock', '~> 3.8'
   gem 'rspec-activemodel-mocks', '~> 1.0.3'
   gem 'rspec_junit_formatter', '~> 0.3.0'
   gem 'rails-controller-testing', '~> 1.0.4'

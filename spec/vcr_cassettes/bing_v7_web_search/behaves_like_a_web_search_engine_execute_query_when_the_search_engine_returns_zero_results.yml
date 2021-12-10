@@ -31,37 +31,111 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Fri, 31 Aug 2018 20:57:12 GMT
+      - Tue, 31 Aug 2021 20:31:43 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
       Bingapis-Traceid:
-      - DA3291584EE84D6B91DDCB2D286D512B
+      - 3C60948548BB4BC0BDBBF7F8B367A75C
       Bingapis-Sessionid:
-      - C81377051C76424797777CE651772AAF
+      - 06B0DE6A7FDA4805AF2B354908FB475C
       X-Msedge-Clientid:
-      - 392EFCCB3E886B5E1437F0973FE46A87
+      - 256F435497F76326199853F0964062C4
       X-Msapi-Userstate:
-      - bc92
+      - 458a
       Bingapis-Market:
       - en-US
       X-Search-Responseinfo:
-      - InternalResponseTime=133,MSDatacenter=BN2
+      - InternalResponseTime=259,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
       X-Msedge-Ref:
-      - 'Ref A: DA3291584EE84D6B91DDCB2D286D512B Ref B: SN1EDGE1007 Ref C: 2018-08-31T20:58:13Z'
+      - 'Ref A: 3C60948548BB4BC0BDBBF7F8B367A75C Ref B: BLUEDGE0722 Ref C: 2021-08-31T20:32:43Z'
       Apim-Request-Id:
-      - 226e04af-f6ef-4fcf-8435-aafd882a80b8
+      - 8742f80a-9152-4cf8-a0c2-68db3800ee1a
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
       - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Fri, 31 Aug 2018 20:58:12 GMT
+      - Tue, 31 Aug 2021 20:32:43 GMT
     body:
       encoding: UTF-8
       string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "''65d86996b6eceb05d2272aea9cadd10d''"},
         "rankingResponse": {}}'
-    http_version: 
-  recorded_at: Fri, 31 Aug 2018 20:58:12 GMT
-recorded_with: VCR 4.0.0
+  recorded_at: Tue, 31 Aug 2021 20:32:43 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=%2765d86996b6eceb05d2272aea9cadd10d%27&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 10:40:47 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - FE39193A590D4E489BB0E7B93BBFC3ED
+      Bingapis-Sessionid:
+      - 4C551EDD14B9432E8D012D964A2F8D7B
+      X-Msedge-Clientid:
+      - 0C89894BE92467FC0B4B9983E8C2669E
+      X-Msapi-Userstate:
+      - 1c44
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=141,MSDatacenter=CH1B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: FE39193A590D4E489BB0E7B93BBFC3ED Ref B: DM2EDGE0910 Ref C: 2021-10-06T10:41:47Z'
+      Apim-Request-Id:
+      - b31732d5-8438-4d5f-b4d8-354a7c28c513
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 10:41:47 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "''65d86996b6eceb05d2272aea9cadd10d''"},
+        "rankingResponse": {}}'
+  recorded_at: Wed, 06 Oct 2021 04:38:54 GMT
+recorded_with: VCR 6.0.0

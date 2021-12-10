@@ -1,0 +1,134 @@
+sr:
+
+# Search.gov localizations for: Serbian (sr)
+
+# Default page title of search results page
+  default_serp_title: '%{query} - %{site_name} Rezultati pretrage'
+
+# Labels for the search box
+  search: "Pretraga"
+  search_label: 'Unesite termin za pretragu'
+
+# Labels for the navigation bar
+  everything: "Rezultati sa sajta"
+  images: "Slike"
+  videos: "Videos"
+  show_more: 'Više'
+
+# Labels to change the sort order by date or relevance
+  by_date: 'Najsvežiji'
+  by_relevance: 'Najbolje poklapanje'
+
+# Labels to narrow results by a preset timeframe or a custom date range, or clear filters ('Before' is the label for custom date range with only a 'To' date set.)
+  refine_your_search:
+  all_time: "Bilo kada"
+  last_hour: "Proteklog sata"
+  last_day: "Prethodnog dana"
+  last_week: "Protekle nedelje"
+  last_month: "Proteklog meseca"
+  last_year: "Protekle godine"
+  custom_range: 'Prilagođen opseg'
+  from: 'Od'
+  to: 'Do'
+  cdr_format: '%m/%d/%Y'
+  before: 'Pre'
+  clear: 'Obriši'
+
+# Prompts for spelling, spelling overrides, and did you mean suggestions
+  showing_results_for: Prikaz rezultata za %{corrected_query}
+  search_instead_for: Pretraži umesto %{original_query}
+
+# Prompts for searchers to revise or refine search
+  no_results_for_and_try: "Izvinite, nisu pronađeni rezultati za '%{query}'. Pokušajte sa unosom manje termina ili proširite pretragu"
+  too_long: "Vaš termin pretrage je predugačak. Pokušajte sa kraćim rečima ili frazama."
+  empty_query: "Molimo vas da unesete termin za pretragu u polju iznad."
+
+# Labels for inline best bets, news, and related searches modules
+  recommended: "Preporučeno"
+  default_rss_govbox_label: 'Vesti'
+  related_searches: "Srodne pretrage"
+
+# Labels for paging through results
+  page: 'Strana'
+  prev_label: "Prethodna"
+  next_label: "Sledeća"
+
+  searches:
+    by: od
+# Prompt for searchers to skip to main content (most easily seen by tabbing through results page)
+    skip_to_main_content: Preskočite na glavni sadržaj
+# Labels for navigation bar "sections" (most easily seen on mobile dimension)
+    menu: Meni
+    browse_site: Pretražite sajt
+    related_sites: Pregled teme
+    results_count: '%{count}'
+    search_results: Rezultati pretragea
+# Prompts for searchers to view more results from Bing/Google after reaching page n of Search.gov results
+    commercial_results:
+      find_what_looking_for:
+      see_more_web_results: "%{link} da biste videli više rezultata (Moguće ponavljanje rezultata koje sve već videli.)"
+      see_more_image_results: "Gore prikazani rezultati su sa naloga naših društvenih mreža i galerija. %{link} kako biste videli rezultate sa našeg sajta (Moguće ponavljanje rezultata koje sve već videli.)"
+      search_again: Pokušajte ponovo pretragu
+# Prompts for searchers to view more results from the broader website after initially seeing site-scoped results
+    site_limits:
+      including_results_for_query_from_matching_sites: Uključujemo rezultate za %{query} od %{matching_sites} samo.
+      do_you_want_to_see_results_for: Da li želite da vidite rezultate za %{query_from_all_sites}?
+      query_from_all_sites: '%{query} sa svih sajtova'
+# Label for inline news module and prompt to see more news on news vertical
+    more_news_about_query: 'više %{news_label} o %{query}'
+    news_about_query: '%{news_label} o %{query}'
+    news_search_options:
+      date_format: 'm/d/yyyy'
+# Label for attributing results to Bing, Search.gov, or Google
+  powered_by: 'Podržano od'
+
+# Prompts for searchers to expand/collapse the number of best bets visible on the results page
+  show_more_label: 'Prikaži više'
+  show_less_label: 'Prikaži manje'
+
+# Date format used in custom date range picker and other places
+  date:
+    formats:
+      slashes: "%-m/%-d/%Y"
+
+# Labels for news-based results indicating how long ago they were published
+  datetime:
+    time_ago_in_words:
+      half_a_minute: "pre pola minute"
+      less_than_x_seconds:
+        one:   "pre manje od 1 sekunde"
+        other: "pre manje od  %{count} sekunde"
+      x_seconds:
+        one:   "pre 1 sekunde"
+        other: "%{count} pre manje od sekundi"
+      less_than_x_minutes:
+        one:   "pre manje od minuta"
+        other: "pre manje od %{count} minuta"
+      x_minutes:
+        one:   "pre 1 minuta"
+        other: "%{count} pre minuta"
+      about_x_hours:
+        one:   "pre oko 1 sata"
+        other: "%{count} sati ranije"
+      x_days:
+        one:   "pre 1 dana"
+        other: "%{count} dana ranije"
+      about_x_months:
+        one:   "pre oko 1 meseca"
+        other: "%{count} meseci ranije"
+      x_months:
+        one:   "1 mesec ranije"
+        other: "%{count} meseci ranije"
+      about_x_years:
+        one:   "pre oko 1 godine"
+        other: "%{count} godina ranije"
+      over_x_years:
+        one:   "pre više od 1 godine"
+        other: "%{count} godina ranije"
+      almost_x_years:
+        one:   "pre skoro 1 godine"
+        other: "%{count} godina ranije"
+
+# Text for page captcha challenge, which is shown if bot-like search patterns are detected
+  are_you_human:
+  captcha_requires_javascript:

@@ -19,7 +19,7 @@ describe RtuDashboard do
 
     context 'when top queries are not available' do
       before do
-        allow(ES::ELK.client_reader).to receive(:search).and_raise StandardError
+        allow(Es::ELK.client_reader).to receive(:search).and_raise StandardError
       end
 
       it 'should return nil' do
@@ -36,7 +36,7 @@ describe RtuDashboard do
         expect(TopNMissingQuery).to receive(:new).at_least(:once).
           with(site.name, 'search', field: 'params.query.raw', min_doc_count: 10).
           and_call_original
-        allow(ES::ELK.client_reader).to receive(:search).and_return json_response
+        allow(Es::ELK.client_reader).to receive(:search).and_return json_response
       end
 
       it 'should return an array of QueryCount instances' do
@@ -56,7 +56,7 @@ describe RtuDashboard do
       let(:json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/top_urls.json")) }
 
       before do
-        allow(ES::ELK.client_reader).to receive(:search).and_return json_response
+        allow(Es::ELK.client_reader).to receive(:search).and_return json_response
       end
 
       it "searches for the affiliate's top N URLs" do
@@ -74,7 +74,7 @@ describe RtuDashboard do
 
     context 'when something goes wrong' do
       before do
-        allow(ES::ELK.client_reader).to receive(:search).
+        allow(Es::ELK.client_reader).to receive(:search).
           and_raise(StandardError, 'failure')
       end
 
@@ -91,7 +91,7 @@ describe RtuDashboard do
       let(:json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/trending_queries.json")) }
 
       before do
-        allow(ES::ELK.client_reader).to receive(:search).and_return json_response
+        allow(Es::ELK.client_reader).to receive(:search).and_return json_response
       end
 
       it 'should return an array of trending/significant queries coming from at least 10 IPs' do
@@ -106,7 +106,7 @@ describe RtuDashboard do
       let(:low_ctr_queries) { [['brandon colker', 0], ['address', 2], ['981', 12]] }
 
       before do
-        allow(ES::ELK.client_reader).to receive(:search).and_return(json_response)
+        allow(Es::ELK.client_reader).to receive(:search).and_return(json_response)
       end
 
       it 'should return an array of query/CTR pairs with at least 20 searches and CTR below 20% for today' do
@@ -116,7 +116,7 @@ describe RtuDashboard do
 
     context 'low CTR queries are not available' do
       before do
-        allow(ES::ELK.client_reader).to receive(:search).and_raise
+        allow(Es::ELK.client_reader).to receive(:search).and_raise
       end
 
       it 'should return an empty array' do
@@ -134,7 +134,7 @@ describe RtuDashboard do
     before do
       allow(MonthlyHistogramQuery).to receive(:new).
         with(site.name).and_return(monthly_histogram_query)
-      allow(ES::ELK.client_reader).to receive(:search).
+      allow(Es::ELK.client_reader).to receive(:search).
         with(hash_including(body: 'monthly_histogram_query')).
         and_return(json_response)
     end
@@ -149,7 +149,7 @@ describe RtuDashboard do
       let(:json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/count.json")) }
 
       before do
-        allow(ES::ELK.client_reader).to receive(:count).and_return(json_response)
+        allow(Es::ELK.client_reader).to receive(:count).and_return(json_response)
       end
 
       it 'should return RTU query counts for current month' do
@@ -161,7 +161,7 @@ describe RtuDashboard do
       let(:json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/count.json")) }
 
       before do
-        allow(ES::ELK.client_reader).to receive(:count).and_return(json_response)
+        allow(Es::ELK.client_reader).to receive(:count).and_return(json_response)
       end
 
       it 'should return RTU click counts for current month' do
@@ -171,7 +171,7 @@ describe RtuDashboard do
 
     context 'when count is not available' do
       before do
-        allow(ES::ELK.client_reader).to receive(:count).and_raise StandardError
+        allow(Es::ELK.client_reader).to receive(:count).and_raise StandardError
       end
 
       it 'should return nil' do

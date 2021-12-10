@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Sites::QueryDownloadsController < Sites::SetupSiteController
-  include CSVResponsive
+  include CsvResponsive
   MAX_RESULTS = 1_000_000
 
   def show

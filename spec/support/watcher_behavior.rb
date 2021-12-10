@@ -1,9 +1,9 @@
 shared_examples_for 'a watcher' do
   let(:put_watcher) do
-    ES::ELK.client_reader.xpack.watcher.put_watch(id: watcher.id, body: watcher.body)
+    Es::ELK.client_reader.xpack.watcher.put_watch(id: watcher.id, body: watcher.body)
   end
   let(:delete_watcher) do
-    ES::ELK.client_reader.xpack.watcher.delete_watch(id: watcher.id)
+    Es::ELK.client_reader.xpack.watcher.delete_watch(id: watcher.id)
   rescue Elasticsearch::Transport::Transport::Errors::NotFound
   end
 
@@ -33,7 +33,7 @@ shared_examples_for 'a watcher' do
     after { delete_watcher }
 
     let(:execute_watcher) do
-      ES::ELK.client_reader.xpack.watcher.execute_watch(id: watcher.id)
+      Es::ELK.client_reader.xpack.watcher.execute_watch(id: watcher.id)
     end
 
     it 'is successful' do

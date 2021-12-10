@@ -58,7 +58,7 @@ Feature: Searches using mobile device
       | phrase                 |
       | president list         |
       | president inauguration |
-    When I am on en.agency.gov's mobile search page
+    When I am on en.agency.gov's search page
     And I fill in "Enter your search term" with "president"
     And I press "Search"
     Then I should see Powered by Bing logo
@@ -78,7 +78,7 @@ Feature: Searches using mobile device
     When I follow "Previous"
     Then I should see a link to "Next"
 
-    When I am on es.agency.gov's mobile search page
+    When I am on es.agency.gov's search page
     And I fill in "Ingrese su búsqueda" with "presidente"
     And I press "Buscar"
     Then I should see Generado por Bing logo
@@ -86,7 +86,7 @@ Feature: Searches using mobile device
     And I should see 1 Best Bets Graphic
     And I should see at least "2" web search results
 
-    When I am on hippo's mobile search page
+    When I am on hippo's search page
     And I fill in "Enter your search term" with "hippopotamus"
     And I press "Search"
     Then I should see "Sorry, no results found for 'hippopotamus'."
@@ -108,21 +108,21 @@ Feature: Searches using mobile device
     And there are 150 news items for "News-1"
     And there are 5 news items for "Noticias-1"
 
-    When I am on en.agency.gov's "News-1" mobile news search page
+    When I am on en.agency.gov's "News-1" news search page
     And I fill in "Enter your search term" with "news item"
     And I press "Search" within the search box
 
     Then the "Enter your search term" field should contain "news item"
     And I should see "Any time" within the current time filter
     And I should see "Most recent" within the current sort by filter
-    And I should see "150 RESULTS"
+    And I should see "150 results"
     And I should see "Powered by Search.gov"
     And I should see exactly "20" web search results
     And I should see "Previous"
     And I should see a link to "2" with class "pagination-numbered-link"
     And I should see a link to "Next"
     When I follow "Next"
-    Then I should see "150 RESULTS"
+    Then I should see "150 results"
     And I should see exactly "20" web search results
     And I should see a link to "Previous"
     And I should see a link to "1" with class "pagination-numbered-link"
@@ -130,7 +130,7 @@ Feature: Searches using mobile device
     When I follow "5"
     And I follow "7"
     And I follow "8"
-    Then I should see "150 RESULTS"
+    Then I should see "150 results"
     And I should see exactly "10" web search results
 
     When I follow "Last month"
@@ -156,7 +156,7 @@ Feature: Searches using mobile device
     And I should see "news item 1 body for News-1"
     And I should see "Powered by Search.gov"
 
-    When I am on es.agency.gov's "Noticias-1" mobile news search page
+    When I am on es.agency.gov's "Noticias-1" news search page
     Then I should see "Generado por Search.gov"
     And I should see at least "5" web search results
 
@@ -374,7 +374,7 @@ Feature: Searches using mobile device
       | name     | url                                | is_navigable |
       | Articles | http://en.agency.gov/feed/articles | true         |
     And there are 10 news items for "Articles"
-    When I am on en.agency.gov's mobile search page
+    When I am on en.agency.gov's search page
     Then I should see "Everything" within the SERP active navigation
 
     When I fill in "Enter your search term" with "news"
@@ -409,7 +409,7 @@ Feature: Searches using mobile device
       | News                 | http://en.agency.gov/feed/news2    | true         | 7        | false                   |                 |
     And there are 10 news items for "News"
 
-    When I am on en.agency.gov's mobile search page
+    When I am on en.agency.gov's search page
     Then I should see "Everything" within the SERP active navigation
     And I fill in "Enter your search term" with "news"
     And I press "Search"
@@ -433,7 +433,7 @@ Feature: Searches using mobile device
     When I am on en.agency.gov's "Inactive site search" docs search page
     Then I should see "Inactive site search" within the SERP active navigation
 
-    When I am on en.agency.gov's "Inactive news search" mobile news search page
+    When I am on en.agency.gov's "Inactive news search" news search page
     Then I should see "Inactive news search" within the SERP active navigation
 
   Scenario: Job search
@@ -442,7 +442,7 @@ Feature: Searches using mobile device
       | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en    | 1            |
       | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es    | 1            |
 
-    When I am on en.agency.gov's mobile search page
+    When I am on en.agency.gov's search page
     And I fill in "Enter your search term" with "jobs"
     And I press "Search"
     Then I should see "Federal Job Openings"
@@ -452,14 +452,14 @@ Feature: Searches using mobile device
     And I should see an image link to "USAJobs.gov" with url for "https://www.usajobs.gov/"
     And I should see a link to "More federal job openings on USAJobs.gov" with url for "https://www.usajobs.gov/Search/Results?hp=public"
 
-    When I am on en.agency.gov's mobile search page
+    When I am on en.agency.gov's search page
     And I fill in "Enter your search term" with "blablah jobs"
     And I press "Search"
     Then I should see an image link to "USAJobs.gov" with url for "https://www.usajobs.gov/"
-    And I should see "No job openings in your region match your query"
+    And I should see "No job openings in your region match your search"
     And I should see a link to "More federal job openings on USAJobs.gov" with url for "https://www.usajobs.gov/Search/Results?hp=public"
 
-    When I am on es.agency.gov's mobile search page
+    When I am on es.agency.gov's search page
     And I fill in "Ingrese su búsqueda" with "blablah trabajo"
     And I press "Buscar"
     Then I should see an image link to "USAJobs.gov" with url for "https://www.usajobs.gov/"
@@ -491,8 +491,8 @@ Feature: Searches using mobile device
     And I search for "gov"
     Then every result URL should match "usa.gov"
     Then I should see "We're including results for gov from usa.gov only."
-    And I should see "Do you want to see results for gov from all sites?"
-    When I follow "gov from all sites" within the search all sites row
+    And I should see "Do you want to see results for gov from all locations?"
+    When I follow "gov from all locations" within the search all sites row
     Then I should not see "We're including results for gov from usa.gov only."
     When I follow "Blog" in the search navbar
     Then I should see at least "1" web search results
@@ -656,7 +656,7 @@ Feature: Searches using mobile device
     Given the following Affiliates exist:
       | display_name     | name          | contact_email    | first_name | last_name | locale | domains              |
       | Kalaallisut site | kl.agency.gov | admin@agency.gov | John       | Bar       | kl     |                      |
-    When I am on kl.agency.gov's mobile search page
+    When I am on kl.agency.gov's search page
     Then I should see "Ujarniakkat ataani allaffissamut allaguk"
 
   Scenario: Web search using Bing engine

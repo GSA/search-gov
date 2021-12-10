@@ -54,7 +54,7 @@ module DataGenerator
     end
 
     def es
-      ES.client_writers.first
+      Es.client_writers.first
     end
   end
 end

@@ -31,7 +31,7 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Thu, 26 Aug 2021 16:48:42 GMT
+      - Tue, 07 Sep 2021 16:18:18 GMT
       Vary:
       - Accept-Encoding
       P3p:
@@ -39,23 +39,23 @@ http_interactions:
       X-Snr-Routing:
       - '1'
       Bingapis-Traceid:
-      - 6FB4511E6E724C23823D5B4693262078
+      - 83A46DDFA671490E90017780EBFAF6E5
       Bingapis-Sessionid:
-      - 02CC2D43B9404CA8BFF53EBE91F78BD4
+      - 23916C51480144AFAC28D60B315E0A93
       X-Msedge-Clientid:
-      - 37C2ED5A45476A210EA8FDC544086BDB
+      - 35B109B5952666B30C52191E949667B2
       X-Msapi-Userstate:
-      - 928a
+      - '8071'
       Bingapis-Market:
       - en-US
       X-Search-Responseinfo:
-      - InternalResponseTime=201,MSDatacenter=BN2B
+      - InternalResponseTime=191,MSDatacenter=BN2B
       X-Cache:
       - CONFIG_NOCACHE
       X-Msedge-Ref:
-      - 'Ref A: 6FB4511E6E724C23823D5B4693262078 Ref B: BLUEDGE2018 Ref C: 2021-08-26T16:49:42Z'
+      - 'Ref A: 83A46DDFA671490E90017780EBFAF6E5 Ref B: BLUEDGE1412 Ref C: 2021-09-07T16:19:17Z'
       Apim-Request-Id:
-      - 10882ada-21b2-44b6-ae28-d7f57214f120
+      - efa46e43-10b5-43d2-a62b-9f25d2adc222
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
@@ -63,11 +63,79 @@ http_interactions:
       Csp-Billing-Usage:
       - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Thu, 26 Aug 2021 16:49:41 GMT
+      - Tue, 07 Sep 2021 16:19:17 GMT
     body:
       encoding: UTF-8
       string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "death
         star r2d2 xyz3 (site:petitions.whitehouse.gov\/)"}, "rankingResponse": {}}'
-    http_version:
-  recorded_at: Thu, 26 Aug 2021 16:49:42 GMT
-recorded_with: VCR 4.0.0
+  recorded_at: Tue, 07 Sep 2021 16:19:18 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=death%20star%20r2d2%20xyz3%20(site:petitions.whitehouse.gov/)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 15:38:17 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - 18E65C0364FD49EBBC683ED8DF0427BE
+      Bingapis-Sessionid:
+      - 659CF2985FA54FB4B9EEF094F74A86CA
+      X-Msedge-Clientid:
+      - 2E6E9A9D79C361523CF58A557825607D
+      X-Msapi-Userstate:
+      - 89c8
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=202,MSDatacenter=CH1B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: 18E65C0364FD49EBBC683ED8DF0427BE Ref B: DM2EDGE0505 Ref C: 2021-10-06T15:39:17Z'
+      Apim-Request-Id:
+      - f12ed6dc-ad6b-4bad-8f40-9e776bb5d9cb
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 15:39:17 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "death
+        star r2d2 xyz3 (site:petitions.whitehouse.gov\/)"}, "rankingResponse": {}}'
+  recorded_at: Wed, 06 Oct 2021 15:39:17 GMT
+recorded_with: VCR 6.0.0

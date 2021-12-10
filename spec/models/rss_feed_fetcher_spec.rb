@@ -1,10 +1,10 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
 describe RssFeedFetcher do
   it_behaves_like 'a ResqueJobStats job'
 
   describe '.perform' do
-    it 'should import the RssFeedUrl' do
+    it 'imports the RssFeedUrl' do
       rss_feed_url = mock_model RssFeedUrl
       expect(RssFeedUrl).to receive(:find_by_id).with(100).and_return rss_feed_url
       rss_feed_data = double(RssFeedData)
@@ -15,7 +15,12 @@ describe RssFeedFetcher do
   end
 
   describe 'enqueueing' do
-    it 'should not enqueue two RssFeedFetcher jobs with the same args' do
+    before do
+      # remove any locks leftover from previous spec runs
+      Resque.redis.del('loner:lock:RssFeedFetcher:31415-false')
+    end
+
+    it 'does not enqueue two RssFeedFetcher jobs with the same args' do
       expect(Resque.enqueue(described_class, 31_415, false)).to be true
       expect(Resque.enqueue(described_class, 31_415, false)).to be_nil
     end

@@ -97,7 +97,7 @@ Feature: Dashboard
     When I fill in "New Site Handle" with "usagov_copy"
     And I submit the form by pressing "Submit"
     Then I should see "Site 'origin_site' has been cloned as 'usagov_copy'"
-    And I should land on the usagov_copy's Dashboard page
+    And I should be on the usagov_copy's Dashboard page
 
   @javascript
   Scenario: Clicking on help link on Admin Center
@@ -218,7 +218,7 @@ Feature: Dashboard
     And I select "Arabic" from "Site Language"
     And I submit the form by pressing "Add"
     Then I should see "You have added 'Agency Gov' as a site."
-    And I should land on the agencygov's Dashboard page
+    And I should be on the agencygov's Dashboard page
     And "affiliate_manager@fixtures.org" should receive an email
 
     When I follow "Settings"
@@ -264,7 +264,7 @@ Feature: Dashboard
     When I go to the usagov's Dashboard page
     And I follow "Settings"
     And I press "Delete"
-    Then I should land on the new site page
+    Then I should be on the new site page
     And I should see "Scheduled site 'USA.gov' for deletion. This could take several hours to complete."
 
   @javascript
