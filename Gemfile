@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '~> 6.0.0'
 
-gem 'rake', '~> 12.3.2'
+gem 'rake', '~> 13.0.6'
 gem 'rack-contrib', '~> 2.1.0'
 gem 'rails-observers', '~> 0.1.5'
 gem 'responders', '~> 3.0.1'
@@ -10,7 +10,7 @@ gem 'mysql2', '~> 0.4.4'
 gem 'curb', '~> 0.9.4'
 gem 'haml', '~> 5.2.1'
 gem 'will_paginate', '~> 3.3.0'
-gem 'nokogiri', '~> 1.11.1'
+gem 'nokogiri', '~> 1.12.5'
 gem 'authlogic', '~> 6.4.1'
 # Temporarily locking gem to specific ref. Newer versions include incompatible gems
 gem 'omniauth_login_dot_gov', git: 'https://github.com/18f/omniauth_login_dot_gov',
@@ -40,7 +40,6 @@ gem 'active_scaffold_export', '~> 3.4.0'
 gem "recaptcha", '~> 4.6.3', :require => "recaptcha/rails"
 gem 'newrelic_rpm', '~> 6.15.0'
 gem 'american_date', '~> 1.1.1'
-gem 'sass', '~> 3.3.0'
 gem 'sass-rails', '~> 5.0.7'
 # Gem no longer being maintained. See https://cm-jira.usa.gov/browse/SRCH-694
 gem 'google_visualr',
@@ -68,15 +67,18 @@ gem 'google-api-client', '~> 0.19.1'
 gem 'iso8601', '~> 0.10.1'
 gem 'jbuilder', '~> 2.6.4'
 # sitelink_generator is deprecated: https://cm-jira.usa.gov/browse/SRCH-2172
-gem 'sitelink_generator', git: 'https://github.com/GSA/sitelink_generator', ref: '2f78cd142547a2a87e500266f1ef4eb5e281cc6b'
+# temporarily using a custom branch until we determine a path forward
+gem 'sitelink_generator', git: 'https://github.com/GSA/sitelink_generator', branch: 'i18n'
 gem 'typhoeus', '~> 1.3.0'
 gem 'activerecord-validate_unique_child_attribute',
     require: 'active_record/validate_unique_child_attribute'
 # deprecated - jwt, grape, and grape-entity are only used by Search Consumer
 gem 'jwt', '~> 1.5.6'
-gem 'grape', '~> 1.1'
-gem 'grape-entity', '~> 0.6.0'
+# locking grape to 1.6.0, as 1.6.1 requires code changes
+gem 'grape', '1.6.0'
+gem 'grape-entity', '~> 0.10.1'
 gem 'rack-cors', '~> 1.1.0', :require => 'rack/cors'
+# Hashie >= 3.4 will require code changes
 gem 'hashie', '~> 3.3.0'
 # retry_block is unsupported - consider replacing with retriable
 gem 'retry_block', '~> 1.2.0'
@@ -84,7 +86,7 @@ gem 'colorize', '~> 0.8.1'
 gem 'dogstatsd-ruby', '~> 3.2.0'
 gem 'http', '~> 4.0'
 gem 'robots_tag_parser', '~> 0.1.0', git: 'https://github.com/GSA/robots_tag_parser'
-gem 'loofah', '~> 2.9.0'
+gem 'loofah', '~> 2.13.0'
 # Locking ref, as later versions (after being renamed & released as "medusa-crawler")
 # include breaking changes
 gem 'medusa', git: 'https://github.com/brutuscat/medusa-crawler',
@@ -94,10 +96,10 @@ gem 'medusa', git: 'https://github.com/brutuscat/medusa-crawler',
 gem 'robotex', git: 'https://github.com/MothOnMars/robotex'
 gem 'saxerator', '~> 0.9.9'
 gem 'counter_culture', '~> 2.9.0'
-gem 'aasm', '~> 4.12'
+gem 'aasm', '~> 5.2.0'
 gem 'active_scheduler', '~> 0.7.0'
 gem 'retriable', '~> 3.1'
-gem 'cld3', '~> 3.2.3'
+gem 'cld3', '~> 3.4.3'
 gem 'activejob-uniqueness', '~> 0.2.1'
 
 # Assets-related gems
@@ -105,7 +107,7 @@ gem 'coffee-rails', '~> 5.0.0'
 gem 'uglifier', '~> 4.2.0'
 gem 'less-rails-bootstrap', git: 'https://github.com/GSA/less-rails-bootstrap.git',
                             branch: 'master'
-gem 'compass-rails', '~> 3.1.0'
+gem 'compass-rails', '~> 4.0.0'
 gem 'compass-blueprint', '~> 1.0.0'
 gem 'jquery-ui-rails', '~> 6.0.1'
 gem 'jquery-rails', '~> 4.4.0'
@@ -134,23 +136,23 @@ gem 'execjs', '~> 2.7.0'
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
 group :development do
-  gem 'spring', '~> 2.0'
-  gem 'listen', '~> 3.1.5'
+  gem 'spring', '~> 3.1'
+  gem 'listen', '~> 3.7'
   # Bumping searchgov_style? Be sure to update the Rubocop channel in .codeclimate.yml
   # to match the channel in searchgov_style
   gem 'searchgov_style', '~> 0.1', require: false
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 5.0.0'
-  gem 'rspec-json_expectations', '~> 2.1.0'
-  gem 'rspec-its', '~> 1.2.0'
-  gem 'email_spec', '~> 2.1.1'
-  gem 'database_cleaner', '~> 1.7.0'
+  gem 'rspec-rails', '~> 5.0'
+  gem 'rspec-json_expectations', '~> 2.2'
+  gem 'rspec-its', '~> 1.3'
+  gem 'email_spec', '~> 2.2'
+  gem 'database_cleaner', '~> 2.0'
   # Capybara 3 includes breaking changes
   # https://cm-jira.usa.gov/browse/SRCH-2382
-  gem 'capybara', '~> 2.18.0'
-  gem 'launchy', '~> 2.4.3'
+  gem 'capybara', '2.18'
+  gem 'launchy', '~> 2.5'
   gem 'i18n-tasks', '~> 0.9.19'
   gem 'pry-byebug', '~> 3.5'
   gem 'faker', '~> 1.8'
@@ -162,16 +164,18 @@ end
 group :test do
   gem 'capybara-screenshot'
   gem 'simplecov', '~> 0.17.0', require: false
-  gem 'cucumber', '~> 7.1.0', require: false
-  gem 'cucumber-rails', '~> 2.4.0', require: false
-  gem 'resque_spec', '~> 0.17.0'
-  gem 'poltergeist', '~> 1.18.1'
-  gem 'shoulda-matchers', '~> 4.1.1'
-  gem 'shoulda-kept-assign-to', '~> 1.1.0'
+  gem 'cucumber', '~> 7.1', require: false
+  gem 'cucumber-rails', '~> 2.4', require: false
+  # resque-spec hasn't been supported since 2018. Consider replacing with equivalent
+  # functionality from rspec-rails: https://relishapp.com/rspec/rspec-rails/v/5-0/docs/job-specs/job-spec
+  gem 'resque_spec', '~> 0.18.0'
+  gem 'poltergeist', '~> 1.18'
+  gem 'shoulda-matchers', '~> 5.0'
+  gem 'shoulda-kept-assign-to', '~> 1.1'
   gem 'vcr', '~> 6.0'
   gem 'webmock', '~> 3.8'
-  gem 'rspec-activemodel-mocks', '~> 1.0.3'
-  gem 'rspec_junit_formatter', '~> 0.3.0'
-  gem 'rails-controller-testing', '~> 1.0.4'
-  gem 'webdrivers', '~> 4.0'
+  gem 'rspec-activemodel-mocks', '~> 1.1'
+  gem 'rspec_junit_formatter', '~> 0.4'
+  gem 'rails-controller-testing', '~> 1.0'
+  gem 'webdrivers', '~> 5.0'
 end
