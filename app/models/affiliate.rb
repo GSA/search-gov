@@ -240,7 +240,6 @@ class Affiliate < ApplicationRecord
                                            submitted_external_tracking_code
                                            mobile_look_and_feel_css
                                            logo_alt_text
-                                           sitelink_generator_names
                                            header_tagline
                                            header_tagline_url
                                            page_one_more_results_pointer
@@ -407,11 +406,6 @@ class Affiliate < ApplicationRecord
 
   def user_emails
     users.map(&:to_label).join(',')
-  end
-
-  def assign_sitelink_generator_names!
-    self.sitelink_generator_names = SitelinkGeneratorUtils.matching_generator_names(site_domains.pluck(:domain))
-    save!
   end
 
   def to_label

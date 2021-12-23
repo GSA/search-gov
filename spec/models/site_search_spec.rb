@@ -39,7 +39,6 @@ describe SiteSearch do
       end
 
       subject { described_class.new(query: 'gov', affiliate: affiliate) }
-      its(:sitelink_generator_names) { should be_nil }
     end
 
     context 'when commercial spelling suggestion is present' do

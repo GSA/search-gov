@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_15_203216) do
+ActiveRecord::Schema.define(version: 2021_12_23_170640) do
 
   create_table "affiliate_feature_additions", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "affiliate_id", null: false
@@ -189,7 +189,6 @@ ActiveRecord::Schema.define(version: 2021_11_15_203216) do
     t.string "name", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string "sitelink_generator_names"
     t.boolean "advanced_search_enabled", default: false, null: false
     t.index ["affiliate_id", "name"], name: "index_document_collections_on_affiliate_id_and_name", unique: true
   end

@@ -824,20 +824,6 @@ describe Affiliate do
     end
   end
 
-  describe '#assign_sitelink_generator_names!' do
-    it 'assigns sitelink generator names' do
-      sitelink_generator_names = %w(SitelinkGenerator::FakeGenerator).freeze
-      expect(SitelinkGeneratorUtils).to receive(:matching_generator_names).
-        with(%w(sec.gov)).
-        and_return(sitelink_generator_names)
-
-      affiliate = affiliates(:power_affiliate)
-      affiliate.site_domains.create!(domain: 'sec.gov')
-      affiliate.assign_sitelink_generator_names!
-      expect(affiliate.sitelink_generator_names).to eq(sitelink_generator_names)
-    end
-  end
-
   describe '#header_tagline_font_family=' do
     it 'should assign header tagline font family' do
       affiliate = affiliates(:power_affiliate)

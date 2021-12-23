@@ -3,12 +3,11 @@ class WebResultsPostProcessor
 
   attr_reader :results
 
-  def initialize(query, affiliate, results, sitelink_generators = [])
+  def initialize(query, affiliate, results)
     @affiliate = affiliate
     @results = results
     @news_item_hash = @affiliate.rss_feeds.non_managed.present? ? build_news_item_hash_from_search(query) : {}
     @link_hash = title_description_date_hash_by_link
-    @sitelink_generators = sitelink_generators
     @excluded_urls = @affiliate.excluded_urls_set
   end
 
@@ -22,8 +21,7 @@ class WebResultsPostProcessor
       { 'title' => title,
         'content' => content,
         'unescapedUrl' => result.unescaped_url,
-        'publishedAt' => (@link_hash[result.unescaped_url].published_at rescue nil),
-          'sitelinks' => build_sitelinks(result.unescaped_url) }
+        'publishedAt' => (@link_hash[result.unescaped_url].published_at rescue nil) }
     end
     post_processed.compact
   end
@@ -50,9 +48,5 @@ class WebResultsPostProcessor
                                              sort: "",
                                              size: NewsSearch::DEFAULT_VIDEO_PER_PAGE)
     Hash[news_search.results.collect { |news_item| [news_item.link, news_item] }]
-  end
-
-  def build_sitelinks(url)
-    @sitelink_generators.collect { |generator| generator.generate(url) }.flatten
   end
 end
