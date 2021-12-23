@@ -212,19 +212,6 @@ describe WebSearch do
         its(:module_tag) { is_expected.to eq('AWEB') }
         its(:fake_total?) { is_expected.to be_true }
       end
-
-      context 'when sitelinks are present in at least one result' do
-        let(:results) { [{ 'foo' => 'bar' }, { 'sitelinks' => 'yep' }] }
-
-        before do
-          search.instance_variable_set('@results', results)
-        end
-
-        it 'logs the DECOR module' do
-          search.run
-          expect(search.modules).to include('DECOR')
-        end
-      end
     end
 
     describe 'populating additional results' do

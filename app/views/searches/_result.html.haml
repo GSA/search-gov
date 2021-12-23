@@ -7,4 +7,3 @@
     - if result['publishedAt']
       = news_item_time_ago_in_words(result['publishedAt'], ' - ')
     = display_result_description(result)
-  %ul.sitelinks= sitelink_items(result, position) if result['sitelinks'].present?
