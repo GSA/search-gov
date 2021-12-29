@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AffiliateFeatureAddition < ApplicationRecord
   validates_presence_of :affiliate_id, :feature_id
   validates_uniqueness_of :affiliate_id, :scope => :feature_id
