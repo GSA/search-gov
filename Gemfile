@@ -1,8 +1,10 @@
-# just testing
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 gem 'rails', '~> 6.0.0'
 
+# just testing
 gem 'rake', '~> 12.3.2'
 gem 'rack-contrib', '~> 2.1.0'
 gem 'rails-observers', '~> 0.1.5'
