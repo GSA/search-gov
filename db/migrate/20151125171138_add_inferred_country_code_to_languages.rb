@@ -8,7 +8,7 @@ class AddInferredCountryCodeToLanguages < ActiveRecord::Migration
       seed_language = SEED_LANGUAGES[language.code.to_sym]
       next unless seed_language
       puts "Setting inferred_country_code=#{seed_language[:inferred_country_code]}, is_azure_supported=#{seed_language[:is_azure_supported]} for #{language.code}"
-      language.update_attributes({
+      language.update({
         inferred_country_code: seed_language[:inferred_country_code],
         is_azure_supported: seed_language[:is_azure_supported]
       })

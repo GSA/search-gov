@@ -4,7 +4,7 @@ class ChangeAffiliateStringColsToText < ActiveRecord::Migration
     change_column :affiliates, :staged_header,  :text
     change_column :affiliates, :staged_footer,  :text
 
-    Affiliate.all.each { |aff| aff.update_attributes( :staged_domains => aff.domains, :staged_header => aff.header, :staged_footer => aff.footer) }
+    Affiliate.all.each { |aff| aff.update( :staged_domains => aff.domains, :staged_header => aff.header, :staged_footer => aff.footer) }
   end
 
   def self.down

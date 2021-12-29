@@ -22,7 +22,7 @@ class RoutedQuery < ApplicationRecord
 
   def destroy_and_update_attributes(params)
     destroy_on_blank(params[:routed_query_keywords_attributes], :keyword)
-    update_attributes(params)
+    update(params)
   end
 
   def keywords_cannot_be_blank

@@ -1,6 +1,6 @@
 class SeedStagedContentForAffiliates < ActiveRecord::Migration
   def self.up
-    Affiliate.all.each { |aff| aff.update_attributes( :staged_domains => aff.domains, :staged_header => aff.header, :staged_footer => aff.footer) }
+    Affiliate.all.each { |aff| aff.update( :staged_domains => aff.domains, :staged_header => aff.header, :staged_footer => aff.footer) }
   end
 
   def self.down

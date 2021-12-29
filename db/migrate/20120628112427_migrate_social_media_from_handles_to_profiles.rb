@@ -22,10 +22,10 @@ class MigrateSocialMediaFromHandlesToProfiles < ActiveRecord::Migration
     add_column :affiliates, :twitter_handle, :string
     add_column :affiliates, :youtube_handles, :string
     Affiliate.all.each do |affiliate|
-      affiliate.update_attributes(:facebook_handle => affiliate.facebook_profiles.first.username) if affiliate.facebook_profiles.any?
-      affiliate.update_attributes(:flickr_url => affiliate.flickr_profiles.first.url) if affiliate.flickr_profiles.any?
-      affiliate.update_attributes(:twitter_handle => affiliate.twitter_profiles.first.screen_name) if affiliate.twitter_profiles.any?
-      affiliate.update_attributes(:youtube_handles => affiliate.youtube_profiles.collect(&:username)) if affiliate.youtube_profiles.any?
+      affiliate.update(:facebook_handle => affiliate.facebook_profiles.first.username) if affiliate.facebook_profiles.any?
+      affiliate.update(:flickr_url => affiliate.flickr_profiles.first.url) if affiliate.flickr_profiles.any?
+      affiliate.update(:twitter_handle => affiliate.twitter_profiles.first.screen_name) if affiliate.twitter_profiles.any?
+      affiliate.update(:youtube_handles => affiliate.youtube_profiles.collect(&:username)) if affiliate.youtube_profiles.any?
     end
   end
 end

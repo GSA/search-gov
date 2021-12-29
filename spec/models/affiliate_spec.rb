@@ -220,7 +220,7 @@ describe Affiliate do
       url = 'cdn.agency.gov/favicon.ico'
       prefixes = %w( http https HTTP HTTPS invalidhttp:// invalidHtTp:// invalidhttps:// invalidHTtPs:// invalidHttPsS://)
       prefixes.each do |prefix|
-        affiliate.update_attributes!(favicon_url: "#{prefix}#{url}")
+        affiliate.update!(favicon_url: "#{prefix}#{url}")
         expect(affiliate.favicon_url).to eq("http://#{prefix}#{url}")
       end
     end
@@ -229,13 +229,13 @@ describe Affiliate do
       url = 'cdn.agency.gov/favicon.ico'
       prefixes = %w( http:// https:// HTTP:// HTTPS:// )
       prefixes.each do |prefix|
-        affiliate.update_attributes(favicon_url: "#{prefix}#{url}")
+        affiliate.update(favicon_url: "#{prefix}#{url}")
         expect(affiliate.favicon_url).to eq("#{prefix}#{url}")
       end
     end
 
     it 'should prefix website with http://' do
-      affiliate.update_attributes!(website: 'usa.gov')
+      affiliate.update!(website: 'usa.gov')
       expect(affiliate.website).to eq('http://usa.gov')
     end
 
@@ -269,7 +269,7 @@ describe Affiliate do
         related_sites_dropdown_label: '  More   related   sites  '
       }.freeze
 
-      affiliate.update_attributes!(unsquished_attributes)
+      affiliate.update!(unsquished_attributes)
 
       affiliate = described_class.find affiliate.id
       expect(affiliate.ga_web_property_id).to eq('GA Web Property ID')
@@ -283,12 +283,12 @@ describe Affiliate do
     it 'should set default RSS govbox label if the value is blank' do
       en_affiliate = described_class.create!(valid_create_attributes.merge(locale: 'en'))
       expect(en_affiliate.rss_govbox_label).to eq('News')
-      en_affiliate.update_attributes!(rss_govbox_label: '')
+      en_affiliate.update!(rss_govbox_label: '')
       expect(en_affiliate.rss_govbox_label).to eq('News')
 
       es_affiliate = described_class.create!(valid_create_attributes.merge(locale: 'es', name: 'es-site'))
       expect(es_affiliate.rss_govbox_label).to eq('Noticias')
-      es_affiliate.update_attributes!({ rss_govbox_label: '' })
+      es_affiliate.update!({ rss_govbox_label: '' })
       expect(es_affiliate.rss_govbox_label).to eq('Noticias')
     end
 
@@ -1062,7 +1062,7 @@ describe Affiliate do
       let(:affiliate) { affiliates(:usagov_affiliate) }
 
       it 'merges existing colors into template_schema' do
-        affiliate.update_attributes({
+        affiliate.update({
           'css_property_hash'=>{
             'header_tagline_font_size'=>nil,
             'content_background_color'=>'#FFFFFF',
