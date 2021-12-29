@@ -15,7 +15,6 @@ class User < ApplicationRecord
 
   APPROVAL_STATUSES = %w[pending_approval approved not_approved].freeze
 
-  validates :email, presence: true
   validates :approval_status, inclusion: APPROVAL_STATUSES
   validates :first_name, presence: true, on: :update_account
   validates :last_name, presence: true, on: :update_account
@@ -136,7 +135,7 @@ class User < ApplicationRecord
   end
 
   def self.from_omniauth(auth)
-    find_or_create_by(email: auth.info.email).tap do |user|
+    User.default_scoped.find_or_create_by(email: auth.info.email).tap do |user|
       user.update(uid: auth.uid)
     end
   end
