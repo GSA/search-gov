@@ -406,7 +406,7 @@ Feature: Search
       | es agency site | es.agency.gov | john@agency.gov | John      | Bar       | es     |
     And the following Boosted Content entries exist for the affiliate "agency.gov"
       | url                                        | title                               | description        | status   | publish_start_on | publish_end_on |
-      | http://search.gov/releases/2013-05-31.html | Notes for Week Ending May 31, 2013  | multimedia gallery | active   | 2013-08-01       | 2022-01-01     |
+      | http://search.gov/releases/2013-05-31.html | Notes for Week Ending May 31, 2013  | multimedia gallery | active   | 2013-08-01       | 2032-01-01     |
       | http://search.gov/releases/2013-06-21.html | Notes for Week Ending June 21, 2013 | spring cleaning    | inactive |                  |                |
     And the following Boosted Content entries exist for the affiliate "es.agency.gov"
       | title                             | url                       | description |
