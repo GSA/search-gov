@@ -576,7 +576,7 @@ describe SearchgovUrl do
           let!(:searchgov_domain) { searchgov_url.searchgov_domain }
           before do
             stub_request(:get, 'http://www.agency.gov/').to_return(status: 403)
-            searchgov_domain.update_attributes!(scheme: 'http', status: '200 OK')
+            searchgov_domain.update!(scheme: 'http', status: '200 OK')
           end
 
           it 'does not delete the document' do

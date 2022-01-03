@@ -8,7 +8,7 @@ class Sites::NoResultsPagesController < Sites::SetupSiteController
   end
 
   def update
-    if @site.update_attributes(site_params)
+    if @site.update(site_params)
       redirect_to edit_site_no_results_pages_path(@site),
                   flash: { success: 'You have updated your No Results Page.' }
     else

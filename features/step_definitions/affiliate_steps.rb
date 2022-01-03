@@ -16,12 +16,12 @@ Given /^the following( search consumer| SearchGov)? Affiliates exist:$/ do |affi
     affiliate_attributes['search_consumer_search_enabled'] ||= (/search consumer/ === affiliate_type)
     affiliate_attributes['search_engine'] = 'SearchGov' if (/SearchGov/ === affiliate_type)
     affiliate = Affiliate.create! affiliate_attributes
-    affiliate.image_search_label.navigation.update_attributes!(is_active: true) if hash[:is_image_search_navigable] == 'true'
+    affiliate.image_search_label.navigation.update!(is_active: true) if hash[:is_image_search_navigable] == 'true'
     affiliate.users << user
 
     if hash[:agency_abbreviation].present?
       agency = Agency.find_by_abbreviation hash[:agency_abbreviation]
-      affiliate.update_attributes!(agency: agency)
+      affiliate.update!(agency: agency)
     end
 
     hash[:youtube_handles].split(',').each do |youtube_handle|
@@ -87,7 +87,7 @@ end
 
 When /^the rss govbox is enabled for the site "(.*?)"$/ do |name|
   site = Affiliate.find_by_name name
-  site.update_attributes!(is_rss_govbox_enabled: true)
+  site.update!(is_rss_govbox_enabled: true)
 end
 
 Given(/^"(.*?)" is an affiliate$/) do |email|

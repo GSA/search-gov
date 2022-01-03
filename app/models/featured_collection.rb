@@ -75,7 +75,7 @@ class FeaturedCollection < ApplicationRecord
   def destroy_and_update_attributes(params)
     destroy_on_blank(params[:featured_collection_keywords_attributes], :value)
     destroy_on_blank(params[:featured_collection_links_attributes], :title, :url)
-    touch if update_attributes(params)
+    touch if update(params)
   end
 
   def as_json(options = {})

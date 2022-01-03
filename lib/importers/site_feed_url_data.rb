@@ -12,12 +12,12 @@ class SiteFeedUrlData
   def import
     @site_feed_url.touch(:last_checked_at)
     fetch_new_or_updated_rss_items
-    @site_feed_url.update_attributes!(last_fetch_status: 'OK')
+    @site_feed_url.update!(last_fetch_status: 'OK')
     delete_obsolete_documents
     @site.refresh_indexed_documents IndexedDocument::SUMMARIZED_STATUS
   rescue Exception => e
     Rails.logger.warn(e)
-    @site_feed_url.update_attributes!(last_fetch_status: e.message)
+    @site_feed_url.update!(last_fetch_status: e.message)
   end
 
   private

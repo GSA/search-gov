@@ -30,7 +30,7 @@ describe TwitterData do
 
       expect(status).to receive(:created_at).and_return(100.hours.ago)
       allow(Tweet).to receive_message_chain(:where, :first_or_initialize) { tweet }
-      expect(tweet).not_to receive(:update_attributes!)
+      expect(tweet).not_to receive(:update!)
 
       described_class.import_tweet(status)
     end
@@ -80,7 +80,7 @@ describe TwitterData do
       expect(described_class).to receive(:get_list_member_ids).with(100).and_return(member_ids)
       ar_list = mock_model(TwitterList)
       allow(TwitterList).to receive_message_chain(:where, :first_or_initialize).and_return(ar_list)
-      expect(ar_list).to receive(:update_attributes!).with(member_ids: member_ids)
+      expect(ar_list).to receive(:update!).with(member_ids: member_ids)
       described_class.import_list(100)
     end
   end
