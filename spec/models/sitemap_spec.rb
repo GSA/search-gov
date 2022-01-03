@@ -24,7 +24,7 @@ describe Sitemap do
       end
 
       it 'is not case-sensitive' do
-        expect(described_class.new({ url: url.upcase })).not_to be_valid
+        expect(described_class.new(url: url.upcase)).not_to be_valid
       end
     end
   end
