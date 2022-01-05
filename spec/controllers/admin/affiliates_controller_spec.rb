@@ -94,25 +94,25 @@ describe Admin::AffiliatesController do
 
       describe 'Settings subgroup' do
         it 'contains the specified columns' do
-          expect(update_columns.find { |c| c.label == 'Settings' }.names).to match_array(settings_columns)
+          expect(update_columns.find { |c| c.label == 'Settings' }.to_a).to match_array(settings_columns)
         end
       end
 
       describe "'Enable/disable Settings' subgroup" do
         it 'contains the specified columns' do
-          expect(update_columns.find { |c| c.label == 'Enable/disable Settings' }.names).to match_array(enable_disable_columns)
+          expect(update_columns.find { |c| c.label == 'Enable/disable Settings' }.to_a).to match_array(enable_disable_columns)
         end
       end
 
       describe 'Display Settings subgroup' do
         it 'contains the specified columns' do
-          expect(update_columns.find { |c| c.label == 'Display Settings' }.names).to match_array(display_columns)
+          expect(update_columns.find { |c| c.label == 'Display Settings' }.to_a).to match_array(display_columns)
         end
       end
 
       describe 'Analytics-Tracking Code subgroup' do
         it 'contains the specified columns' do
-          expect(update_columns.find { |c| c.label == 'Analytics-Tracking Code' }.names).to match_array(analytics_columns)
+          expect(update_columns.find { |c| c.label == 'Analytics-Tracking Code' }.to_a).to match_array(analytics_columns)
         end
       end
     end
