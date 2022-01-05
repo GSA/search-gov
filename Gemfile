@@ -65,7 +65,7 @@ gem 'federal_register', '~> 0.6.3'
 gem 'github-markdown', '~> 0.6.9'
 gem 'google-api-client', '~> 0.19.1'
 gem 'iso8601', '~> 0.10.1'
-gem 'jbuilder', '~> 2.6.4'
+gem 'jbuilder', '~> 2.11.5'
 # sitelink_generator is deprecated: https://cm-jira.usa.gov/browse/SRCH-2172
 # temporarily using a custom branch until we determine a path forward
 gem 'sitelink_generator', git: 'https://github.com/GSA/sitelink_generator', branch: 'i18n'
