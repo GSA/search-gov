@@ -1,8 +1,8 @@
-# coding: utf-8
-module SearchHelper
+# frozen_string_literal: true
 
+module SearchHelper
   SPECIAL_URL_PATH_EXT_NAMES = %w{doc pdf ppt ps rtf swf txt xls docx pptx xlsx}
-  EMPTY_STRING = ""
+  EMPTY_STRING = ''
 
   def link_to_offer_commercial_image_results(search_url)
     link = link_to t('searches.commercial_results.search_again'), search_url, class: "search-again-link"
@@ -25,7 +25,8 @@ module SearchHelper
   end
 
   def link_to_other_web_results(template, query)
-    template.sub('{QUERY}', query).html_safe
+    cleaned_query = Addressable::URI.encode_component(query, Addressable::URI::CharacterClasses::ALPHA)
+    template.sub('{QUERY}', cleaned_query).html_safe
   end
 
   def display_web_result_extname_prefix(web_result)
@@ -38,10 +39,10 @@ module SearchHelper
       if SPECIAL_URL_PATH_EXT_NAMES.include?( path_extname.downcase )
         extname_span(path_extname)
       else
-        ""
+        ''
       end
     rescue
-      ""
+      ''
     end
   end
 
