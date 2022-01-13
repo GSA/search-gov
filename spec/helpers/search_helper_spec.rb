@@ -77,8 +77,10 @@ describe SearchHelper do
 
     it 'renders HTML with interpolated and encoded query string' do
       link = helper.link_to_other_web_results(html_template, query)
-      expect(link).to have_link('Try your search again',
-                                href: 'http://www.gov.gov/search?query=Bill%20%26%20Ted%27s%20%28B%26T%29%20Excellent%20%C3%84dventure%21')
+      expect(link).to have_link(
+        'Try your search again',
+        href: 'http://www.gov.gov/search?query=Bill+%26+Ted%27s+%28B%26T%29+Excellent+%C3%84dventure%21'
+      )
     end
   end
 end

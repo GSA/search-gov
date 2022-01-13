@@ -25,7 +25,7 @@ module SearchHelper
   end
 
   def link_to_other_web_results(template, query)
-    cleaned_query = Addressable::URI.encode_component(query, Addressable::URI::CharacterClasses::ALPHA)
+    cleaned_query = URI.encode_www_form_component(query)
     template.sub('{QUERY}', cleaned_query).html_safe
   end
 
