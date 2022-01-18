@@ -20,8 +20,7 @@ describe 'admin/query_ctrs/show.html.haml' do
 
   it 'shows the query CTR stats for some search module on some site' do
     render
-    expect(rendered).to have_content('Query CTRs for Best Bets Text (BOOS) on USA.gov',
-                                     normalize_ws: true)
+    expect(rendered).to have_content('Query CTRs for Best Bets Text (BOOS) on USA.gov')
     expect(rendered).to have_content('query 2 1,000 500 50.0% 105 17 16.2%',
                                      normalize_ws: true)
     expect(rendered).to have_content('query 1 456 123 27.0% 45 12 26.7%',

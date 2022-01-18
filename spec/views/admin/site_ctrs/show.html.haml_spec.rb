@@ -22,8 +22,7 @@ describe 'admin/site_ctrs/show.html.haml' do
 
   it 'shows the site CTR stats for some search module' do
     render
-    expect(rendered).to have_content('Site CTRs for Best Bets Text (BOOS)',
-                                     normalize_ws: true)
+    expect(rendered).to have_content('Site CTRs for Best Bets Text (BOOS)')
     expect(rendered).to have_content('NPS Site (drill down) 1,000 500 50.0% 105 17 16.2%',
                                      normalize_ws: true)
     expect(rendered).to have_content('USA.gov (drill down) 456 123 27.0% 45 12 26.7%',

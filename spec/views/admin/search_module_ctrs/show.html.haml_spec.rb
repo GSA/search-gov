@@ -17,8 +17,7 @@ describe 'admin/search_module_ctrs/show.html.haml' do
 
   it 'shows the stats' do
     render
-    expect(rendered).to have_content('Search Module CTRs',
-                                     normalize_ws: true)
+    expect(rendered).to have_content('Search Module CTRs')
     expect(rendered).to have_content('Module 2 (MOD2) (drill down) 1,000 500 50.0% 105 17 16.2%',
                                      normalize_ws: true)
     expect(rendered).to have_content('Module 1 (MOD1) (drill down) 456 123 27.0% 45 12 26.7%',
