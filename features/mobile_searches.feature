@@ -464,7 +464,7 @@ Feature: Searches using mobile device
     And I press "Buscar"
     Then I should see an image link to "USAJobs.gov" with url for "https://www.usajobs.gov/"
     And I should see "Ninguna oferta de trabajo en su región coincide con su búsqueda"
-    And I should see a link to "​Más trabajos en el gobierno federal en USAJobs.gov" with url for "https://www.usajobs.gov/Search/Results?hp=public"
+    And I should see a link to "Más trabajos en el gobierno federal en USAJobs.gov" with url for "https://www.usajobs.gov/Search/Results?hp=public"
 
   Scenario: Agency job search
     Given the following Agencies exist:
