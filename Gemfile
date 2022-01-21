@@ -72,10 +72,16 @@ gem 'sitelink_generator', git: 'https://github.com/GSA/sitelink_generator', ref:
 gem 'typhoeus', '~> 1.3.0'
 gem 'activerecord-validate_unique_child_attribute',
     require: 'active_record/validate_unique_child_attribute'
-# deprecated - jwt, grape, and grape-entity are only used by Search Consumer
+
+### deprecated - jwt, grape, grape-entity, and dry-configurable are only used by Search Consumer
+# https://cm-jira.usa.gov/browse/SRCH-1080
 gem 'jwt', '~> 1.5.6'
 gem 'grape', '~> 1.1'
 gem 'grape-entity', '~> 0.6.0'
+# temporarily limiting dry-configurable, as versions >= 0.14.0 are incompatible with ruby 2.6
+gem 'dry-configurable', '0.13.0'
+### end Search Consumer gems
+
 gem 'rack-cors', '~> 1.1.0', :require => 'rack/cors'
 gem 'hashie', '~> 3.3.0'
 # retry_block is unsupported - consider replacing with retriable
