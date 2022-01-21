@@ -1,6 +1,6 @@
-require_relative 'boot'
+require_relative "boot"
 
-require 'rails/all'
+require "rails/all"
 require './lib/middlewares/reject_invalid_request_uri.rb'
 require './lib/middlewares/downcase_route.rb'
 require './lib/middlewares/adjust_client_ip.rb'
@@ -17,10 +17,14 @@ module Usasearch
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
 
-    # Settings in config/environments/* take precedence over those specified here.
-    # Application configuration should go into files in config/initializers
-    # -- all .rb files in that directory are automatically loaded.
-
+    # Configuration for the application, engines, and railties goes here.
+    #
+    # These settings can be overridden in specific environments using the files
+    # in config/environments, which are processed later.
+    #
+    # config.time_zone = "Central Time (US & Canada)"
+    # config.eager_load_paths << Rails.root.join("extras")
+    #
     # Introduced during upgrade to zeitwerk (SRCH-2503).  Ideally, we
     # wouldn't set any autoload paths explicitly. However, we have a
     # good deal of existing code that doesn't conform to zeitwerk's
