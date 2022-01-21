@@ -30,17 +30,6 @@ describe SiteSearch do
       described_class.new(query: 'gov', affiliate: affiliate, document_collection: dc)
     end
 
-    context 'when no document collection is specified' do
-      before do
-        affiliate.site_domains.create(domain: 'usa.gov')
-        expect(BingV7FormattedQuery).to receive(:new).with(
-          'gov', hash_including(included_domains: ['usa.gov'], excluded_domains: [])
-        ).and_return bing_formatted_query
-      end
-
-      subject { described_class.new(query: 'gov', affiliate: affiliate) }
-    end
-
     context 'when commercial spelling suggestion is present' do
       let(:affiliate) { affiliates(:usagov_affiliate) }
       let(:collection) do
