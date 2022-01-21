@@ -24,11 +24,7 @@ module Usasearch
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
-
-    # Settings in config/environments/* take precedence over those specified here.
-    # Application configuration should go into files in config/initializers
-    # -- all .rb files in that directory are automatically loaded.
-
+    #
     # Introduced during upgrade to zeitwerk (SRCH-2503).  Ideally, we
     # wouldn't set any autoload paths explicitly. However, we have a
     # good deal of existing code that doesn't conform to zeitwerk's
