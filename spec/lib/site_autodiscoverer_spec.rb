@@ -114,7 +114,7 @@ describe SiteAutodiscoverer do
       end
 
       it 'should update website' do
-        expect(site).to receive(:update_attributes!).with(website: url)
+        expect(site).to receive(:update!).with(website: url)
         expect(autodiscoverer).to receive(:autodiscover_website_contents)
         autodiscoverer.run
       end
@@ -132,7 +132,7 @@ describe SiteAutodiscoverer do
       end
 
       it 'should update website' do
-        expect(site).to receive(:update_attributes!).with(website: url)
+        expect(site).to receive(:update!).with(website: url)
         expect(autodiscoverer).to receive(:autodiscover_website_contents)
         autodiscoverer.run
       end
@@ -151,7 +151,7 @@ describe SiteAutodiscoverer do
       end
 
       it 'should update website with the last effective URL' do
-        expect(site).to receive(:update_attributes!).with(website: updated_url)
+        expect(site).to receive(:update!).with(website: updated_url)
         expect(autodiscoverer).to receive(:autodiscover_website_contents)
         autodiscoverer.run
       end
@@ -170,21 +170,25 @@ describe SiteAutodiscoverer do
       end
 
       it "should update the affiliate's favicon_url attribute with the value" do
-        expect(site).to receive(:update_attributes!)
+        expect(site).to receive(:update!)
           .with(favicon_url: 'https://www.usa.gov/resources/images/usa_favicon.gif')
         autodiscoverer.autodiscover_favicon_url
       end
     end
 
     context 'when the favicon link is a relative path' do
+      let(:page_with_favicon) do
+        read_fixture_file('/html/home_page_with_relative_icon_link.html')
+      end
+
       before do
-        page_with_favicon = Rails.root.join('spec/fixtures/html/home_page_with_relative_icon_link.html').read
-        expect(DocumentFetcher).to receive(:fetch).at_least(:once).with(url).
+        allow(DocumentFetcher).to receive(:fetch).with(url).
           and_return(body: page_with_favicon)
+        allow(site).to receive(:update!)
       end
 
       it 'should store a full url as the favicon link' do
-        expect(site).to receive(:update_attributes!)
+        expect(site).to receive(:update!)
           .with(favicon_url: 'https://www.usa.gov/resources/images/usa_favicon.gif')
         autodiscoverer.autodiscover_favicon_url
       end
@@ -194,9 +198,9 @@ describe SiteAutodiscoverer do
         let(:autodiscovery_url) { nil }
 
         it 'stores a full url as the favicon link' do
-          expect(site).to receive(:update_attributes!)
-            .with(favicon_url: 'https://www.usa.gov/resources/images/usa_favicon.gif')
           autodiscoverer.autodiscover_favicon_url
+          expect(site).to have_received(:update!)
+            .with(favicon_url: 'https://www.usa.gov/resources/images/usa_favicon.gif')
         end
       end
     end
@@ -210,7 +214,7 @@ describe SiteAutodiscoverer do
           .with('https://www.usa.gov/favicon.ico')
           .and_return File.read("#{Rails.root}/spec/fixtures/ico/favicon.ico")
 
-        expect(site).to receive(:update_attributes!)
+        expect(site).to receive(:update!)
           .with(favicon_url: 'https://www.usa.gov/favicon.ico')
 
         autodiscoverer.autodiscover_favicon_url
@@ -225,7 +229,7 @@ describe SiteAutodiscoverer do
         expect(autodiscoverer).to receive(:open)
           .with('https://www.usa.gov/favicon.ico')
           .and_raise('Some Exception')
-        expect(site).not_to receive(:update_attributes!)
+        expect(site).not_to receive(:update!)
 
         autodiscoverer.autodiscover_favicon_url
       end
