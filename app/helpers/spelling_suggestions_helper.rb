@@ -39,7 +39,7 @@ module SpellingSuggestionsHelper
     suggested_query_link = link_to_result_title(h(suggested_query),
                                                 suggested_url, 1, module_tag)
     showing_results_for = t :showing_results_for, corrected_query: suggested_query_link
-    render partial: 'searches/spelling_correction.html',
+    render partial: 'searches/spelling_correction',
            locals: { showing_results_for: showing_results_for.html_safe}
   end
 
