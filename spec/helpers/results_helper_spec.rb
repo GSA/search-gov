@@ -55,20 +55,6 @@ describe ResultsHelper do
     end
   end
 
-  describe '#link_to_sitelink' do
-    subject(:link_to_sitelink) do
-      helper.link_to_sitelink('test title', 'https://test.gov', '2')
-    end
-
-    it 'makes a site link with the added data-click attribute' do
-      expected_output = '<a data-click="{&quot;position&quot;:&quot;2&quot;,'\
-                        '&quot;module_code&quot;:&quot;DECOR&quot;}"'\
-                        ' href="https://test.gov">test title</a>'
-
-      expect(link_to_sitelink).to eq expected_output
-    end
-  end
-
   describe '#link_to_federal_register_document_title' do
     result = Hashie::Mash.new({
                                 'title' => 'test title',

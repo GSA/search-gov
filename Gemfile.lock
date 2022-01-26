@@ -31,15 +31,6 @@ GIT
     robots_tag_parser (0.1.0)
 
 GIT
-  remote: https://github.com/GSA/sitelink_generator
-  revision: 2f78cd142547a2a87e500266f1ef4eb5e281cc6b
-  ref: 2f78cd142547a2a87e500266f1ef4eb5e281cc6b
-  specs:
-    sitelink_generator (0.4.0)
-      activesupport (>= 3.2)
-      i18n (~> 0.6)
-
-GIT
   remote: https://github.com/GSA/tweetstream
   revision: 1feb4d788fe246ac45f7d8a7e427a2119040d33f
   specs:
@@ -447,7 +438,7 @@ GEM
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
     httpclient (2.8.3)
-    i18n (0.9.5)
+    i18n (1.8.11)
       concurrent-ruby (~> 1.0)
     i18n-tasks (0.9.37)
       activesupport (>= 4.0.2)
@@ -946,7 +937,6 @@ DEPENDENCIES
   shoulda-kept-assign-to (~> 1.1.0)
   shoulda-matchers (~> 4.1.1)
   simplecov (~> 0.17.0)
-  sitelink_generator!
   spring (~> 2.0)
   therubyracer (~> 0.12.3)
   truncator (~> 0.1.7)
