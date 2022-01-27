@@ -1,0 +1,186 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.twitter.com/1.1/users/show.json?screen_name=nih
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - TwitterRubyGem/5.17.0
+      Authorization:
+      - OAuth oauth_consumer_key="<TWITTER_CONSUMER_KEY>", oauth_nonce="b21d14a02bb67633e703bc840b371521",
+        oauth_signature="%2BzSAZtFe80K%2FHeNVPMxHgE5Bn7k%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1642688426", oauth_token="<TWITTER_OAUTH_TOKEN>", oauth_version="1.0"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Thu, 20 Jan 2022 14:20:26 GMT
+      Server:
+      - tsa_b
+      Set-Cookie:
+      - guest_id=v1%3A164268842688019662; Max-Age=63072000; Expires=Sat, 20 Jan 2024
+        14:20:26 GMT; Path=/; Domain=.twitter.com; Secure; SameSite=None
+      - guest_id_ads=v1%3A164268842688019662; Max-Age=63072000; Expires=Sat, 20 Jan
+        2024 14:20:26 GMT; Path=/; Domain=.twitter.com; Secure; SameSite=None
+      - guest_id_marketing=v1%3A164268842688019662; Max-Age=63072000; Expires=Sat,
+        20 Jan 2024 14:20:26 GMT; Path=/; Domain=.twitter.com; Secure; SameSite=None
+      - personalization_id="v1_MIqv9Gh/Gvft4I+1JmdTvQ=="; Max-Age=63072000; Expires=Sat,
+        20 Jan 2024 14:20:26 GMT; Path=/; Domain=.twitter.com; Secure; SameSite=None
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache, no-store, max-age=0
+      Content-Length:
+      - '87'
+      Strict-Transport-Security:
+      - max-age=631138519
+      X-Response-Time:
+      - '75'
+      X-Connection-Hash:
+      - 7bcc776a03301784bf9d8a569611c2f7a69b4cf4fbd84956fc1ca0288676b265
+    body:
+      encoding: UTF-8
+      string: '{"errors":[{"code":89,"message":"Invalid or expired token."}]}'
+  recorded_at: Thu, 20 Jan 2022 14:20:26 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/youtube/v3/channels?forUsername=nihod&key=<YOUTUBE_KEY>&part=id
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - |-
+        DGSearch/0.0.0 google-api-ruby-client/0.19.8 Mac OS X/10.15.7
+         (gzip)
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip,deflate
+      Date:
+      - Thu, 20 Jan 2022 14:20:27 GMT
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Vary:
+      - Origin
+      - Referer
+      - X-Origin
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Encoding:
+      - gzip
+      Date:
+      - Thu, 20 Jan 2022 14:20:27 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      Cache-Control:
+      - private
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443";
+        ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "error": {
+            "code": 400,
+            "message": "API key not valid. Please pass a valid API key.",
+            "errors": [
+              {
+                "message": "API key not valid. Please pass a valid API key.",
+                "domain": "global",
+                "reason": "badRequest"
+              }
+            ],
+            "status": "INVALID_ARGUMENT",
+            "details": [
+              {
+                "@type": "type.googleapis.com/google.rpc.ErrorInfo",
+                "reason": "API_KEY_INVALID",
+                "domain": "googleapis.com",
+                "metadata": {
+                  "service": "youtube.googleapis.com"
+                }
+              }
+            ]
+          }
+        }
+  recorded_at: Thu, 20 Jan 2022 14:20:27 GMT
+- request:
+    method: post
+    uri: https://api.flickr.com/services/rest/
+    body:
+      encoding: US-ASCII
+      string: method=flickr.reflection.getMethods&format=json&nojsoncallback=1
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - FlickRaw/0.9.10
+      Authorization:
+      - OAuth realm="https://api.flickr.com/services/rest/", oauth_consumer_key="<FLICKR_API_KEY>",
+        oauth_nonce="LdYZm5Ny1qnd3%2BKvaDL58NgcRiqCz6eFVVEChVZ2mtQ%3D", oauth_signature="<FLICKR_SHARED_SECRET>%26",
+        oauth_signature_method="PLAINTEXT", oauth_timestamp="1642688427", oauth_token="",
+        oauth_version="1.0"
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '79'
+      Connection:
+      - keep-alive
+      Date:
+      - Thu, 20 Jan 2022 14:20:27 GMT
+      Server:
+      - Apache/2.4.52 (Ubuntu)
+      Set-Cookie:
+      - ccc=%7B%22needsConsent%22%3Afalse%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
+        expires=Sat, 19-Feb-2022 14:20:27 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 f0b13a91ff3a014c8f92246fe3def186.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - BOS50-C1
+      X-Amz-Cf-Id:
+      - 0wllfbptmMGfxbuVesdqghz7Vug7AzVcKTXMSJY1yMA23ppH2O5yNg==
+    body:
+      encoding: UTF-8
+      string: '{"stat":"fail","code":100,"message":"Invalid API Key (Key has invalid
+        format)"}'
+  recorded_at: Thu, 20 Jan 2022 14:20:27 GMT
+recorded_with: VCR 6.0.0

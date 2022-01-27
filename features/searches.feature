@@ -406,7 +406,7 @@ Feature: Search
       | es agency site | es.agency.gov | john@agency.gov | John      | Bar       | es     |
     And the following Boosted Content entries exist for the affiliate "agency.gov"
       | url                                        | title                               | description        | status   | publish_start_on | publish_end_on |
-      | http://search.gov/releases/2013-05-31.html | Notes for Week Ending May 31, 2013  | multimedia gallery | active   | 2013-08-01       | 2022-01-01     |
+      | http://search.gov/releases/2013-05-31.html | Notes for Week Ending May 31, 2013  | multimedia gallery | active   | 2013-08-01       | 2032-01-01     |
       | http://search.gov/releases/2013-06-21.html | Notes for Week Ending June 21, 2013 | spring cleaning    | inactive |                  |                |
     And the following Boosted Content entries exist for the affiliate "es.agency.gov"
       | title                             | url                       | description |
@@ -442,3 +442,12 @@ Feature: Search
     When I am on agency.gov's search page
     And I fill in "query" with "popular"
     Then I should see a suggestion to search for "popular search phrase"
+
+  Scenario: Searching with spelling suggestions
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email | first_name | last_name | domains |
+      | agency site  | agency.gov | aff@bar.gov   | Jane       | Bar       | usa.gov |
+    When I am on agency.gov's search page
+    And I search for "qeury"
+    Then I should see "Showing results for query"
+    And I should see "Search instead for qeury"

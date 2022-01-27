@@ -1,0 +1,221 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=qeury%20(site:usa.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 12 Jan 2022 18:15:55 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - BA818BBC12AA44CD87E46FBCF3AC8BB4
+      Bingapis-Sessionid:
+      - 347D0D6C13934664935FAC5F8CA62B84
+      X-Msedge-Clientid:
+      - 2A9BFD569E506DFB1925EC7C9FAD6C62
+      X-Msapi-Userstate:
+      - 4af4
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=538,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      Accept-Ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
+      X-Msedge-Ref:
+      - 'Ref A: BA818BBC12AA44CD87E46FBCF3AC8BB4 Ref B: BLUEDGE0317 Ref C: 2022-01-12T18:16:55Z'
+      Apim-Request-Id:
+      - 15252193-f4b3-4619-a09e-1fba4795270e
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 12 Jan 2022 18:16:55 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "qeury
+        (site:usa.gov)", "alteredQuery": "query", "alterationDisplayQuery": "query",
+        "alterationOverrideQuery": "+qeury (site:usa.gov)", "adultIntent": false},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=qeury+(site%3ausa.gov)",
+        "totalEstimatedMatches": 79, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "www.search.usa.gov", "url": "https:\/\/www.search.usa.gov\/search?query=CPEP&affiliate=dc_dmh&emb=1",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.search.usa.gov\/search?query=CPEP&affiliate=dc_dmh&emb=1",
+        "snippet": "www.search.usa.gov", "dateLastCrawled": "2021-12-22T11:05:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Search.gov", "url": "https:\/\/search.usa.gov\/search?utf8=%E2%9C%93&affiliate=ed.gov&query=Culturally+Responsive+",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/search.usa.gov\/search?utf8=%E2%9C%93&affiliate=ed.gov&query=Culturally+Responsive+",
+        "snippet": "We''ve detected an unusually high number of searches coming from
+        your location. Are you a real person, or a robot?", "dateLastCrawled": "2021-10-11T06:17:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Official Guide to Government Information and Services | USAGov",
+        "url": "https:\/\/www.usa.gov\/", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.usa.gov", "snippet": "Learn how to prepare for and recover
+        from disasters and emergencies. Find government information on energy, green
+        technology, pollution, wildlife, and more. Find government information on
+        education including primary, secondary, and higher education. Find information
+        for federal, state, and local government agencies and elected officials.",
+        "dateLastCrawled": "2022-01-09T11:16:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3", "name":
+        "Passports and Travel During the COVID-19 Pandemic | USAGov", "url": "https:\/\/www.usa.gov\/covid-passports-and-travel",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/covid-passports-and-travel",
+        "snippet": "Learn about the rules and recommendations for traveling to and
+        from the U.S. during the COVID-19 pandemic. Get tips for traveling safely
+        during the COVID pandemic within the U.S. Find information on changes to passport
+        processing.", "dateLastCrawled": "2022-01-10T07:33:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "U.S. Department of Housing and Urban Development | USAGov", "url":
+        "https:\/\/www.usa.gov\/federal-agencies\/u-s-department-of-housing-and-urban-development",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/u-s-department-of-housing-and-urban-development",
+        "snippet": "The Department of Housing and Urban Development administers
+        programs that provide housing and community development assistance. The Department
+        also works to ensure fair and equal housing opportunity for all.", "dateLastCrawled":
+        "2022-01-10T05:19:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5", "name": "A-Z
+        Index of U.S. Government Departments and Agencies | A ...", "url": "https:\/\/www.usa.gov\/federal-agencies\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/federal-agencies",
+        "snippet": "A-Z Index of U.S. Government Departments and Agencies. Find
+        contact information for U.S. federal government departments and agencies
+        including websites, emails, phone numbers, addresses, and more.", "dateLastCrawled":
+        "2022-01-09T20:11:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6", "name": "Unemployment
+        Help | USAGov", "url": "https:\/\/www.usa.gov\/unemployment", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.usa.gov\/unemployment", "snippet":
+        "The American Rescue Plan Act of 2021 temporarily authorized: An extension
+        for people already receiving unemployment benefits. Automatic, additional
+        payments of $300 per week to everyone qualified for unemployment benefits.
+        Extension of the Pandemic Unemployment Assistance (PUA) program for self-employed
+        or gig workers.", "dateLastCrawled": "2022-01-10T08:13:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "U.S. Patent and Trademark Office | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/u-s-patent-and-trademark-office",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/u-s-patent-and-trademark-office",
+        "snippet": "The U.S. Patent and Trademark Office is the agency responsible
+        for granting U.S. patents and registering trademarks.", "dateLastCrawled":
+        "2022-01-10T06:31:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8", "name": "Top
+        Questions About Social Security | USAGov", "url": "https:\/\/www.usa.gov\/about-social-security",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/about-social-security",
+        "snippet": "How to Report a Death to Social Security. To report a death: Provide
+        the deceased person''s Social Security number to the funeral director so they
+        can report the death to the SSA. Contact your local Social Security office.
+        Or, call SSA''s main number at 1-800-772-1213 (TTY 1-800-325-0778) to make
+        the report.", "dateLastCrawled": "2022-01-09T07:12:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Find a Federal Government Job | USAGov", "url": "https:\/\/www.usa.gov\/government-jobs",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/government-jobs",
+        "snippet": "There are job openings in federal agencies across the country.
+        If you’re interested in one, visit USAJOBS.gov. It’s the official job site
+        for the federal government. There, you can: Search for jobs, including ones
+        in high demand. Learn how the government hires people. Find student job opportunities
+        with the government.", "dateLastCrawled": "2022-01-09T07:35:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Small Business Administration | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/small-business-administration",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/small-business-administration",
+        "snippet": "The Small Business Administration helps Americans start, build
+        and grow businesses. Through an extensive network of field offices and partnerships,
+        the Small Business Administration assists and protects the interests of
+        small business concerns.", "dateLastCrawled": "2022-01-10T04:06:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Getting Started with Structure - GSA JIRA", "url": "https:\/\/cm-jira.usa.gov\/secure\/StructureGettingStarted.jspa",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/cm-jira.usa.gov\/secure\/StructureGettingStarted.jspa",
+        "snippet": "Here''s how you can manually add existing issues to a structure.
+        1 Switch to Double Grid. 2 Search for Issues. 3 Select Issues to Add. Open
+        second panel via the Layout control or by pressing Ctrl + Alt + 2. Select
+        Text or JQL search and enter a query.", "dateLastCrawled": "2022-01-10T08:14:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Visa Status, Renewals, or Problems | USAGov", "url": "https:\/\/www.usa.gov\/visa-problems",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/visa-problems",
+        "snippet": "Find out how to check your visa status and how you can renew,
+        extend or change a visa. If your visa or arrival\/departure record is lost
+        or stolen, find information on what steps to take for getting another one.
+        Also, learn what you can do if your visa application is denied.", "dateLastCrawled":
+        "2022-01-09T13:18:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13", "name":
+        "Deportation | USAGov", "url": "https:\/\/www.usa.gov\/deportation", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.usa.gov\/deportation", "snippet": "Deportation.
+        Deportation is the formal removal of a foreign national from the U.S. for
+        violating an immigration law. The Deportation Process. The United States
+        may deport foreign nationals who participate in criminal acts, are a threat
+        to public safety, or violate their visa.", "dateLastCrawled": "2022-01-09T05:47:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "A New Metric to Help Us Measure Our Content Efficiency", "url": "https:\/\/blog.usa.gov\/a-new-metric-to-help-us-measure-our-content-efficiency",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/blog.usa.gov\/a-new-metric-to-help-us-measure-our-content-efficiency",
+        "snippet": "To help us with that, our analytics team developed a new metric
+        we’re experimenting with called the content efficiency metric. This metric
+        is a key performance indicator (KPI) that we’re hoping can help guide our
+        content decisions. Content is our most “expensive” product to produce and
+        maintain.", "dateLastCrawled": "2022-01-07T05:26:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Discovery", "url": "http:\/\/discovery.my.usa.gov\/", "isFamilyFriendly":
+        true, "displayUrl": "discovery.my.usa.gov", "snippet": "MyGov Discovery
+        API. The MyGov Discovery API provides a service to discover related government
+        content. Each page is assigned tags, which are used to find similarly tagged
+        pages.", "dateLastCrawled": "2021-12-31T06:51:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "analytics.usa.gov | The US government''s web traffic.", "url":
+        "https:\/\/analytics.usa.gov\/data\/live\/ie.json", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/analytics.usa.gov\/data\/live\/ie.json", "snippet":
+        "{ \"name\": \"ie\", \"sampling\": { \"containsSampledData\": false }, \"query\":
+        { \"start-date\": \"90daysAgo\", \"end-date\": \"yesterday\", \"dimensions\":
+        \"ga:date,ga:browserVersion ...", "dateLastCrawled": "2022-01-06T06:34:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "analytics.usa.gov", "url": "https:\/\/analytics.usa.gov\/data\/education\/ie.json",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/analytics.usa.gov\/data\/education\/ie.json",
+        "snippet": "{ \"name\": \"ie\", \"sampling\": { \"containsSampledData\": false
+        }, \"query\": { \"start-date\": \"90daysAgo\", \"end-date\": \"yesterday\",
+        \"dimensions\": \"ga:date,ga:browserVersion ...", "dateLastCrawled": "2022-01-02T00:50:00.0000000Z",
+        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}}]}}}'
+  recorded_at: Wed, 12 Jan 2022 18:16:55 GMT
+recorded_with: VCR 6.0.0

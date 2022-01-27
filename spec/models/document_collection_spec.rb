@@ -58,29 +58,8 @@ describe DocumentCollection do
     end
   end
 
-  describe '#assign_sitelink_generator_names!' do
-    it 'assigns sitelink generator names' do
-      sitelink_generator_names = %w(SitelinkGenerator::FakeGenerator).freeze
-      expect(SitelinkGeneratorUtils).to receive(:matching_generator_names).
-        with(%w(http://www.agency.gov/)).
-        and_return(sitelink_generator_names)
-
-      dc = described_class.create!(valid_attributes)
-      dc.assign_sitelink_generator_names!
-      expect(dc.sitelink_generator_names).to eq(sitelink_generator_names)
-    end
-  end
-
   describe '#dup' do
     subject(:original_instance) { document_collections(:sample).dup }
     include_examples 'site dupable'
-  end
-
-  describe '#sitelink_generator_names_as_str' do
-    let(:collection) { described_class.new(sitelink_generator_names: %w(ABC XYZ)) }
-
-    it 'returns the names as a comma-separated string' do
-      expect(collection.sitelink_generator_names_as_str).to eq 'ABC,XYZ'
-    end
   end
 end
