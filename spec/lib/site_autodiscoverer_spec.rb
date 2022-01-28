@@ -177,15 +177,31 @@ describe SiteAutodiscoverer do
     end
 
     context 'when the favicon link is a relative path' do
+      let(:page_with_favicon) do
+        read_fixture_file('/html/home_page_with_relative_icon_link.html')
+      end
+
       before do
-        page_with_favicon = Rails.root.join('spec/fixtures/html/home_page_with_relative_icon_link.html').read
-        expect(DocumentFetcher).to receive(:fetch).with(url).and_return(body: page_with_favicon)
+        allow(DocumentFetcher).to receive(:fetch).with(url).
+          and_return(body: page_with_favicon)
+        allow(site).to receive(:update!)
       end
 
       it 'should store a full url as the favicon link' do
         expect(site).to receive(:update!)
           .with(favicon_url: 'https://www.usa.gov/resources/images/usa_favicon.gif')
         autodiscoverer.autodiscover_favicon_url
+      end
+
+      context 'when no autodiscovery url is provided' do
+        let(:site) { affiliates(:usagov_affiliate) }
+        let(:autodiscovery_url) { nil }
+
+        it 'stores a full url as the favicon link' do
+          autodiscoverer.autodiscover_favicon_url
+          expect(site).to have_received(:update!)
+            .with(favicon_url: 'https://www.usa.gov/resources/images/usa_favicon.gif')
+        end
       end
     end
 

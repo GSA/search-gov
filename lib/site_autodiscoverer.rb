@@ -72,7 +72,9 @@ class SiteAutodiscoverer
 
   def autodiscovery_url
     @autodiscovery_url ||= begin
-      (dau = @site.default_autodiscovery_url) && autodiscover_website(dau)
+      url = @site.default_autodiscovery_url
+      autodiscover_website(url)
+      url
     end
   end
 

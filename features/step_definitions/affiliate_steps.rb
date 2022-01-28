@@ -33,7 +33,6 @@ Given /^the following( search consumer| SearchGov)? Affiliates exist:$/ do |affi
     end if hash[:youtube_handles].present?
 
     hash[:domains].split(',').each { |domain| affiliate.site_domains.create!(domain: domain) } if hash[:domains].present?
-    affiliate.assign_sitelink_generator_names!
   end
   ElasticNewsItem.recreate_index
 end

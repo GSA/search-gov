@@ -123,13 +123,8 @@ class WebSearch < Search
   end
 
   def post_process_results(results)
-    sitelink_generators = SitelinkGeneratorUtils.classes_by_names sitelink_generator_names
-    post_processor = WebResultsPostProcessor.new(@query, @affiliate, results, sitelink_generators)
+    post_processor = WebResultsPostProcessor.new(@query, @affiliate, results)
     post_processor.post_processed_results
-  end
-
-  def sitelink_generator_names
-    @affiliate.sitelink_generator_names
   end
 
   def populate_additional_results
@@ -140,7 +135,6 @@ class WebSearch < Search
     @modules << module_tag if module_tag
     @modules |= spelling_suggestion_modules
     @modules |= @govbox_set.modules if @govbox_set
-    @modules << 'DECOR' if sitelinks_present?
   end
 
   def spelling_suggestion_modules
@@ -162,10 +156,6 @@ class WebSearch < Search
 
   def google_credentials_overridden?
     @affiliate.search_engine == 'Google' && @affiliate.google_cx.present? && @affiliate.google_key.present?
-  end
-
-  def sitelinks_present?
-    @results.any? { |result| result['sitelinks'].present? }
   end
 
   def social_image_feeds_checked?

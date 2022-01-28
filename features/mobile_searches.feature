@@ -610,27 +610,6 @@ Feature: Searches using mobile device
     And I press "Advanced Search"
     And the "Enter your search term" field should contain "allofit \"exact\" \-bad \(any\) filetype:pdf"
 
-  Scenario: SEC Edgar sitelinks
-    Given the following Affiliates exist:
-      | display_name | name      | contact_email    | first_name | last_name | domains                    |
-      | Edgar site   | sec-edgar | admin@agency.gov | John       | Bar       | www.sec.gov/archives/edgar |
-      | News site    | sec-news  | admin@agency.gov | John       | Bar       | www.sec.gov/news           |
-    And affiliate "sec-news" has the following document collections:
-      | name  | prefixes               | is_navigable |
-      | Edgar | sec.gov/archives/edgar | true         |
-    When I am on sec-edgar's search page
-    And I fill in "Enter your search term" with "fannie mae"
-    And I press "Search"
-    Then I should see a link to "Most Recent Filings for this Company"
-    And I should see a link to "Full Filing"
-
-    When I am on sec-news's search page
-    And I fill in "Enter your search term" with "fannie mae"
-    And I press "Search"
-    And I follow "Edgar" within the SERP navigation
-    Then I should see a link to "Most Recent Filings for this Company"
-    And I should see a link to "Full Filing"
-
   Scenario: Custom page 1 results pointer
     Given the following Affiliates exist:
       | display_name | name           | contact_email    | first_name | last_name | locale | page_one_more_results_pointer                                                                           |
