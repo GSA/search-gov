@@ -148,7 +148,7 @@ Feature: Dashboard
     When I fill in "Email" with "admin@email.gov"
     And I submit the form by pressing "Add"
     Then I should see "notified admin@email.gov on how to login and to access this site"
-    When I press "Remove" within the first table body row
+    When I press "Remove" within the first table body row and confirm "Are you sure you wish to remove admin@email.gov from this site?"
     Then I should see "You have removed admin@email.gov from this site"
 
   @javascript

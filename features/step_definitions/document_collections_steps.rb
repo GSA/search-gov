@@ -1,7 +1,7 @@
 Given /^affiliate "([^"]*)" has the following document collections:$/ do |affiliate_name, table|
   affiliate = Affiliate.find_by_name affiliate_name
   table.hashes.each do |hash|
-    collection_attributes = hash.slice('name','advanced_search_enabled')
+    collection_attributes = hash.slice('name', 'advanced_search_enabled')
     collection = affiliate.document_collections.new(collection_attributes)
     prefixes = hash[:prefixes].split(',')
     prefixes.each do |prefix|
@@ -9,7 +9,7 @@ Given /^affiliate "([^"]*)" has the following document collections:$/ do |affili
     end
     collection.save!
     collection.navigation.update!(is_active: hash[:is_navigable] || true,
-                                             position: hash[:position] || 100)
+                                  position: hash[:position] || 100)
   end
 end
 
@@ -18,7 +18,7 @@ When /^(?:|I )add the following Collection URL Prefixes:$/ do |table|
   table.hashes.each_with_index do |hash, index|
     click_link 'Add Another URL Prefix'
     url_prefix_label = "URL Prefix #{url_prefix_fields_count + index + 1}"
-    find 'label', text: url_prefix_label
+    find('label', text: url_prefix_label, visible: false)
     fill_in url_prefix_label, with: hash[:url_prefix]
   end
 end

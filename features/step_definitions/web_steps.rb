@@ -37,8 +37,8 @@ When /^(.*) within ([^:]+)$/ do |step, parent|
 end
 
 # Multi-line step scoper
-When /^(.*) within ([^:]+):$/ do |step, parent, table_or_string|
-  with_scope(parent) { step "#{step}:", table_or_string }
+When /^(.*) within ([^:]+) and ([^:]+)$/ do |first_step, parent, second_step|
+  with_scope(parent) { step "#{first_step} and #{second_step}" }
 end
 
 Given /^(?:|I )am on (.+)$/ do |page_name|
@@ -51,11 +51,6 @@ end
 
 When /^(?:|I )press "([^"]*)"$/ do |button|
   click_button(button)
-end
-
-#Alternative method to click_button(button), used when button can not be found
-When /^(?:|I )find and click the "([^"]*)" button$/ do |button|
-  find_button(button).trigger('click')
 end
 
 When /^(?:|I )follow "([^"]*)"$/ do |link|
@@ -155,7 +150,7 @@ end
 
 Then /^the "([^"]*)" field(?: within (.*))? should contain "(.*)"$/ do |field, parent, value|
   with_scope(parent) do
-    field = find_field(field)
+    field = find_field(field) || find_field(field, visible: false)
     field_value = (field.tag_name == 'textarea') ? field.text : field.value
     if field_value.respond_to? :should
       field_value.should =~ /#{value}/
