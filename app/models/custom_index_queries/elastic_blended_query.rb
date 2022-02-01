@@ -14,7 +14,6 @@ class ElasticBlendedQuery < ElasticTextFilterByPublishedAtQuery
 
   def body
     Jbuilder.encode do |json|
-      indices_boost(json)
       query(json)
       highlight(json) if @highlighting
       suggest(json)
@@ -39,16 +38,6 @@ class ElasticBlendedQuery < ElasticTextFilterByPublishedAtQuery
             end
           end
         end unless @sort
-      end
-    end
-  end
-
-  def indices_boost(json)
-    #TODO: use aliases when https://github.com/elasticsearch/elasticsearch/issues/4756 is fixed
-    index_names = Es::CustomIndices.client_reader.indices.get_alias(name: ElasticBlended.reader_alias.join(',')).keys.sort
-    json.indices_boost do
-      index_names.each_with_index do |index_name, idx|
-        json.set! index_name, ElasticBlended::INDEX_BOOSTS[idx]
       end
     end
   end
