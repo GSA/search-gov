@@ -34,7 +34,11 @@ module Indexable
 
   def create_index
     Es::CustomIndices.client_writers.each do |client|
-      client.indices.create(index: index_name, body: { settings: settings, mappings: mappings })
+      client.indices.create(
+        index: index_name,
+        body: { settings: settings, mappings: mappings },
+        include_type_name: true
+      )
       client.indices.put_alias index: index_name, name: writer_alias
       client.indices.put_alias index: index_name, name: reader_alias
     end

@@ -33,7 +33,7 @@ describe Sites::SiteFeedUrlsController do
 
         before do
           expect(site).to receive(:site_feed_url).and_return(site_feed_url)
-          expect(site_feed_url).to receive(:update_attributes).
+          expect(site_feed_url).to receive(:update).
               with('rss_url' => 'http://search.gov/all.atom',
                    'last_checked_at' => nil,
                    'last_fetch_status' => 'Pending').
@@ -60,7 +60,7 @@ describe Sites::SiteFeedUrlsController do
 
         before do
           allow(site).to receive(:site_feed_url).and_return(site_feed_url)
-          expect(site_feed_url).to receive(:update_attributes).
+          expect(site_feed_url).to receive(:update).
               with('rss_url' => '',
                    'last_checked_at' => nil,
                    'last_fetch_status' => 'Pending').

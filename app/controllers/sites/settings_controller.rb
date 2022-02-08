@@ -1,10 +1,9 @@
 class Sites::SettingsController < Sites::SetupSiteController
-
   def edit
   end
 
   def update
-    if @site.update_attributes site_params
+    if @site.update(site_params)
       redirect_to edit_site_setting_path(@site), flash: { success: 'Your site settings have been updated.' }
     else
       render action: :edit

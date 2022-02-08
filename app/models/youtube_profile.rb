@@ -2,6 +2,7 @@
 
 class YoutubeProfile < ApplicationRecord
   attr_writer :url
+
   has_one :rss_feed, as: :owner, dependent: :destroy
   has_and_belongs_to_many :affiliates
   has_many :youtube_playlists,
@@ -11,7 +12,8 @@ class YoutubeProfile < ApplicationRecord
 
   validates_presence_of :channel_id, :title
   validates_uniqueness_of :channel_id,
-                          message: 'has already been added'
+                          message: 'has already been added',
+                          case_sensitive: true
 
   after_create :create_video_rss_feed
 

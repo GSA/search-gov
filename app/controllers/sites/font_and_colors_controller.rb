@@ -3,7 +3,7 @@ class Sites::FontAndColorsController < Sites::SetupSiteController
   end
 
   def update
-    if @site.update_attributes(site_params)
+    if @site.update(site_params)
       redirect_to edit_site_font_and_colors_path(@site),
                   flash: { success: 'You have updated your font & colors.' }
     else

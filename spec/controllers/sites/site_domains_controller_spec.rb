@@ -95,7 +95,7 @@ describe Sites::SiteDomainsController do
           expect(site_domains_arel).to receive(:find_by_id).with('100').
             and_return(site_domain)
 
-          expect(site_domain).to receive(:update_attributes).
+          expect(site_domain).to receive(:update).
               with('domain' => 'gov').
               and_return(false)
 

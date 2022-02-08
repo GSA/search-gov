@@ -36,7 +36,7 @@ describe Sites::TemplatesController do
 
       context 'when something goes wrong' do
         before do
-          allow_any_instance_of(Affiliate).to receive(:update_attributes).with(anything).and_return(false)
+          allow_any_instance_of(Affiliate).to receive(:update).with(anything).and_return(false)
           update_template
         end
 

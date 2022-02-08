@@ -27,7 +27,6 @@ class Affiliate < ApplicationRecord
                    inverse_of: :affiliate
     assoc.has_many :connected_connections,
                    foreign_key: :connected_affiliate_id,
-                   source: :connections,
                    class_name: 'Connection',
                    inverse_of: :connected_affiliate
     assoc.has_many :document_collections,

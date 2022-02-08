@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class HelpLink < ApplicationRecord
   before_validation :filter_request_path, if: :request_path?
   validates_presence_of :request_path, :help_page_url
-  validates_uniqueness_of :request_path
+  validates_uniqueness_of :request_path, case_sensitive: true
   validates :request_path, format: { with: /\A(\/[a-z0-9_]+)+\z/ }
 
   def self.sanitize_request_path(request_path)
