@@ -17,7 +17,7 @@ class DocumentCollection < ApplicationRecord
 
   def destroy_and_update_attributes(params)
     destroy_on_blank(params[:url_prefixes_attributes], :prefix)
-    update_attributes(params)
+    update(params)
   end
 
   def depth

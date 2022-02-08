@@ -28,7 +28,7 @@ class Sites::SiteDomainsController < Sites::SetupSiteController
   end
 
   def update
-    if @site_domain.update_attributes site_domain_params
+    if @site_domain.update(site_domain_params)
       update_site_after_save
       redirect_to site_domains_path(@site),
                   flash: { success: "You have updated #{@site_domain.domain}." }

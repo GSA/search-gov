@@ -46,10 +46,7 @@ describe 'Bulk URL upload' do
       it 'shows a confirmation message' do
         do_bulk_upload
         expect(page).to have_text(
-          <<~CONFIRMATION_MESSAGE
-            Successfully uploaded #{upload_filename} for processing.
-            The results will be emailed to you.
-          CONFIRMATION_MESSAGE
+          "Successfully uploaded #{upload_filename} for processing. The results will be emailed to you."
         )
       end
 

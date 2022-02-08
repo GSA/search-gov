@@ -26,40 +26,40 @@ describe SearchHelper do
       @urls_that_dont_need_a_box << 'https://www.usa.gov/faq?q=meaning+of+life'
     end
 
-    it 'should return empty string for most types of URLs' do
+    it 'returns an empty string for most types of URLs' do
       @urls_that_dont_need_a_box.each do |url|
-        expect(helper.display_web_result_extname_prefix({'unescapedUrl' => url})).to eq('')
+        expect(helper.display_web_result_extname_prefix({ 'unescapedUrl' => url })).to eq('')
       end
     end
 
-    it 'should return [TYP] span for some URLs' do
+    it 'returns [TYP] span for some URLs' do
       @urls_that_need_a_box.each do |url|
         path_extname = url.gsub(/.*\//, '').gsub(/\?.*/, '').gsub(/[a-zA-Z0-9_]+\./, '').upcase
         prefix = "<span class=\"uext_type\">[#{path_extname.upcase}]</span> "
-        expect(helper.display_web_result_extname_prefix({'unescapedUrl' => url})).to eq(prefix)
+        expect(helper.display_web_result_extname_prefix({ 'unescapedUrl' => url })).to eq(prefix)
       end
     end
   end
 
   describe '#display_result_description' do
-    it 'should be html safe' do
-      description = <<-DESCRIPTION
-loren & david's excellent™ html "examples" on the <i>tag</i> and <b> too. loren & david's excellent™ html "examples" on the <i>tag</i> and <b> too. loren & david's excellent™ html "examples" on the <i>tag</i> and <b> too. loren & david's excellent™ html truncate me if you want
+    it 'is html safe' do
+      description = <<~DESCRIPTION
+        loren & david's excellent™ html "examples" on the <i>tag</i> and <b> too. loren & david's excellent™ html "examples" on the <i>tag</i> and <b> too. loren & david's excellent™ html "examples" on the <i>tag</i> and <b> too. loren & david's excellent™ html truncate me if you want
       DESCRIPTION
 
-      search = {'content' => description}
+      search = { 'content' => description }
       result = helper.display_result_description(search)
       expect(result).to be_html_safe
       expect(result).to eq("<strong>loren</strong> &amp; david's excellent™ html \"examples\" on the &lt;i&gt;tag&lt;/i&gt; and &lt;b&gt; too. <strong>loren</strong> &amp; david's excellent™ html \"examples\" on the &lt;i&gt;tag&lt;/i&gt; and &lt;b&gt; too. <strong>lo</strong> ...")
     end
 
-    it 'should truncate long description' do
-      description = <<-DESCRIPTION
-The Vietnam War Memorial National Mall Washington, D.C. 2:27 P.M. EDT THE PRESIDENT:  Good afternoon, everybody.
-Chuck, thank you for your words and your friendship and your life of service.
-Veterans of the Vietnam War, families, friends, distinguished guests. I know it is hot.
+    it 'truncates long descriptions' do
+      description = <<~DESCRIPTION
+        The Vietnam War Memorial National Mall Washington, D.C. 2:27 P.M. EDT THE PRESIDENT:  Good afternoon, everybody.
+        Chuck, thank you for your words and your friendship and your life of service.
+        Veterans of the Vietnam War, families, friends, distinguished guests. I know it is hot.
       DESCRIPTION
-      truncated_description = helper.display_result_description({'content' => description})
+      truncated_description = helper.display_result_description({ 'content' => description })
       expect(truncated_description).to match(/and \.\.\.$/)
       expect(truncated_description.length).to be <= 153
     end
@@ -73,10 +73,14 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
 
   describe '#link_to_other_web_results(template, query)' do
     let(:html_template) { 'The above results are from Wherever. <a href="http://www.gov.gov/search?query={QUERY}">Try your search again</a> to see results from Another Place.' }
-    let(:query) { 'one two' }
+    let(:query) { "Bill & Ted's (B&T) Excellent Ädventure!" }
 
-    it 'should render HTML with interpolated and encoded query string' do
-      expect(helper.link_to_other_web_results(html_template, query)).to have_link('Try your search again', 'http://www.gov.gov/search?query=one%20two')
+    it 'renders HTML with interpolated and encoded query string' do
+      link = helper.link_to_other_web_results(html_template, query)
+      expect(link).to have_link(
+        'Try your search again',
+        href: 'http://www.gov.gov/search?query=Bill+%26+Ted%27s+%28B%26T%29+Excellent+%C3%84dventure%21'
+      )
     end
   end
 end

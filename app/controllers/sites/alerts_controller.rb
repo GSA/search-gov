@@ -10,7 +10,7 @@ class Sites::AlertsController < Sites::SetupSiteController
   end
 
   def update
-    if @alert.update_attributes(site_alert_params)
+    if @alert.update(site_alert_params)
       redirect_to edit_site_alert_path(@site), flash: { success: 'The alert for this site has been updated.' }
     else
       render action: :edit

@@ -36,7 +36,7 @@ describe SiteDomain do
     let(:site_domain) { affiliate.site_domains.create!(domain: 'usa.gov', site_name: 'The Official Search Engine') }
 
     it 'should populate site_name' do
-      expect(site_domain.update_attributes(domain: 'search.usa.gov', site_name: nil)).to be true
+      expect(site_domain.update(domain: 'search.usa.gov', site_name: nil)).to be true
       expect(site_domain.site_name).to eq('search.usa.gov')
     end
 
