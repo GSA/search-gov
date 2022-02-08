@@ -105,12 +105,12 @@ describe Click do
     describe '#errors' do
       it 'has expected errors' do
         click.validate
-        expected_errors = ["Query can't be blank",
-                           "Position can't be blank",
+        expected_errors = ["Client ip can't be blank",
                            "Module code can't be blank",
-                           "Client ip can't be blank",
-                           "User agent can't be blank",
-                           "Url can't be blank"]
+                           "Position can't be blank",
+                           "Query can't be blank",
+                           "Url can't be blank",
+                           "User agent can't be blank"]
         expect(click.errors.full_messages).to eq expected_errors
       end
     end

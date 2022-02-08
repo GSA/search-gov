@@ -73,7 +73,7 @@ And /^the "([^"]*)" field should be blank$/ do |field|
 end
 
 Then /^the "([^\"]*)" radio button should be checked$/ do |label|
-  field_labeled(label)['checked'].should be_truthy
+  find_field(label)['checked'].should be_truthy
 end
 
 Then /^the "([^\"]*)" radio button should not be checked$/ do |label|

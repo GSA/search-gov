@@ -82,14 +82,14 @@ describe TwitterProfile do
       profile = described_class.new(twitter_id: 100, name: 'usasearch', profile_image_url: 'http://twitter.com/profile100.jpg')
       profile.save(validate: false)
       affiliate1.twitter_profiles << profile
-      affiliate1.affiliate_twitter_settings.find_by_twitter_profile_id(profile.id).update_attributes!(show_lists: 1)
+      affiliate1.affiliate_twitter_settings.find_by_twitter_profile_id(profile.id).update!(show_lists: 1)
 
       profile = described_class.new(twitter_id: 101, name: 'usasearchdev', profile_image_url: 'http://twitter.com/profile101.jpg')
       profile.save(validate: false)
       affiliate1.twitter_profiles << profile
-      affiliate1.affiliate_twitter_settings.find_by_twitter_profile_id(profile.id).update_attributes!(show_lists: 1)
+      affiliate1.affiliate_twitter_settings.find_by_twitter_profile_id(profile.id).update!(show_lists: 1)
       affiliate2.twitter_profiles << profile
-      affiliate2.affiliate_twitter_settings.find_by_twitter_profile_id(profile.id).update_attributes!(show_lists: 1)
+      affiliate2.affiliate_twitter_settings.find_by_twitter_profile_id(profile.id).update!(show_lists: 1)
 
       profile = described_class.new(twitter_id: 102, name: 'usagov', profile_image_url: 'http://twitter.com/profile102.jpg')
       profile.save(validate: false)

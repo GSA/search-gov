@@ -55,6 +55,6 @@ class BoostedContent < ApplicationRecord
 
   def destroy_and_update_attributes(params)
     destroy_on_blank(params[:boosted_content_keywords_attributes], :value)
-    touch if update_attributes(params)
+    touch if update(params)
   end
 end

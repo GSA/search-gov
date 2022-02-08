@@ -1,4 +1,6 @@
-#require 'active_record/validate_unique_child_attribute'
+# frozen_string_literal: true
+
+# require 'active_record/validate_unique_child_attribute'
 
 class RoutedQuery < ApplicationRecord
   include Dupable
@@ -8,21 +10,23 @@ class RoutedQuery < ApplicationRecord
   has_many :routed_query_keywords, dependent: :destroy, inverse_of: :routed_query
 
   validates :description, presence: true
-  validates_uniqueness_of :description, scope: :affiliate_id
+  validates_uniqueness_of :description, scope: :affiliate_id, case_sensitive: true
 
   validates :affiliate, presence: true
   validates_url :url
 
   validate :keywords_cannot_be_blank
 
-  validates_uniqueness_of_child_attribute :routed_query_keywords, :keyword,
-    validate: true, error_formatter: :duplicate_routed_query_keyword_error_formatter
+  validates_uniqueness_of_child_attribute :routed_query_keywords,
+                                          :keyword,
+                                          validate: true,
+                                          error_formatter: :duplicate_routed_query_keyword_error_formatter
 
   accepts_nested_attributes_for :routed_query_keywords, allow_destroy: true, reject_if: ->(k) { k['keyword'].blank? }
 
   def destroy_and_update_attributes(params)
     destroy_on_blank(params[:routed_query_keywords_attributes], :keyword)
-    update_attributes(params)
+    update(params)
   end
 
   def keywords_cannot_be_blank

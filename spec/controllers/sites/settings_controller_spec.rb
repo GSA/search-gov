@@ -27,7 +27,7 @@ describe Sites::SettingsController do
       include_context 'approved user logged in to a site'
 
       before do
-        expect(site).to receive(:update_attributes).
+        expect(site).to receive(:update).
             with('display_name' => 'new name', 'website' => 'search.gov').
             and_return true
 
@@ -48,7 +48,7 @@ describe Sites::SettingsController do
       include_context 'approved user logged in to a site'
 
       before do
-        expect(site).to receive(:update_attributes).
+        expect(site).to receive(:update).
             with('display_name' => 'new name').
             and_return false
 

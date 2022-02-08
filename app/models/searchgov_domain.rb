@@ -11,7 +11,7 @@ class SearchgovDomain < ApplicationRecord
   before_validation(on: :create) { self.domain = domain&.downcase&.strip }
 
   validates :scheme, inclusion: %w[http https]
-  validates :domain, uniqueness: true, on: :create
+  validates :domain, uniqueness: { case_sensitive: true }, on: :create
   validates :domain, presence: true,
                      format: { with: /\A([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,}\Z/ }
 

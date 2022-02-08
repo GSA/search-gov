@@ -101,7 +101,7 @@ describe RssFeedUrl do
 
           it 'validates the url again' do
             expect(rss_feed_url).to receive(:url_must_point_to_a_feed)
-            rss_feed_url.update_attributes(url: new_url)
+            rss_feed_url.update(url: new_url)
           end
         end
 

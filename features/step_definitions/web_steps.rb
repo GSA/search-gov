@@ -118,7 +118,8 @@ end
 
 Then /^(?:|I )should see "([^"]*)"$/ do |text|
   if page.respond_to? :should
-    page.should have_content(text)
+    page.should have_content(text,
+                             normalize_ws: true)
   else
     assert page.has_content?(text)
   end
@@ -220,7 +221,7 @@ When /^(?:|I )follow "([^"]*)" and confirm "([^"]*)"$/ do |link, msg|
 end
 
 Then "I wait for ajax"  do
-  Timeout.timeout(Capybara.default_wait_time) do
+  Timeout.timeout(Capybara.default_max_wait_time) do
     loop do
       active = page.evaluate_script('jQuery.active')
       break if active == 0

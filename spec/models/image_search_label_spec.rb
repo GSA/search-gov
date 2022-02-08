@@ -22,11 +22,11 @@ describe ImageSearchLabel do
   describe '#save' do
     it 'should not allow blank name' do
       image_search_label = en_affiliate.image_search_label
-      image_search_label.update_attributes!(name: '')
+      image_search_label.update!(name: '')
       expect(image_search_label.name).to eq('Images')
 
       image_search_label = es_affiliate.image_search_label
-      image_search_label.update_attributes!(name: '  ')
+      image_search_label.update!(name: '  ')
       expect(image_search_label.name).to eq('Imágenes')
     end
   end
