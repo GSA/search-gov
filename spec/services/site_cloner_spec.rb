@@ -239,8 +239,8 @@ describe SiteCloner do
 
     context 'when the origin site has image search label with customized attributes' do
       before do
-        origin_site.image_search_label.update_attributes!(name: 'my images')
-        origin_site.image_search_label.navigation.update_attributes!(is_active: true)
+        origin_site.image_search_label.update!(name: 'my images')
+        origin_site.image_search_label.navigation.update!(is_active: true)
       end
 
       it 'copies image search label' do

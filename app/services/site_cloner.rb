@@ -54,7 +54,7 @@ class SiteCloner
   def clone_image_search_label(cloned_site)
     origin_label = @origin_site.image_search_label
     cloned_label = cloned_site.image_search_label
-    cloned_label.update_attributes!(name: origin_label.name)
+    cloned_label.update!(name: origin_label.name)
     copy_navigation_attributes origin_label.navigation, cloned_label.navigation
   end
 
@@ -129,7 +129,7 @@ class SiteCloner
 
   def assign_unique_navigation_positions(site)
     site.navigations.each_with_index do |nav, index|
-      nav.update_attributes! position: index
+      nav.update!(position: index)
     end
   end
 
@@ -165,6 +165,6 @@ class SiteCloner
 
   def copy_navigation_attributes(source_nav, cloned_nav)
     nav_attributes = source_nav.attributes.slice('is_active', 'position')
-    cloned_nav.update_attributes! nav_attributes
+    cloned_nav.update!(nav_attributes)
   end
 end

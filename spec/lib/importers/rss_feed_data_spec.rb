@@ -152,7 +152,7 @@ describe RssFeedData do
 
       context 'when some news items are newer and some are older than the most recent published_at time for the feed' do
         before do
-          rss_feed_url.update_attributes(last_crawl_status: RssFeedUrl::OK_STATUS)
+          rss_feed_url.update(last_crawl_status: RssFeedUrl::OK_STATUS)
           NewsItem.destroy_all
           rss_feed_url.news_items.create!(
             link: 'http://www.whitehouse.gov/latest_story.html',

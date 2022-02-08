@@ -13,7 +13,7 @@ Given /^affiliate "([^\"]*)" has the following RSS feeds:$/ do |affiliate_name, 
 
     if is_managed
       rss_feed = affiliate.rss_feeds.where(is_managed: true).first_or_initialize
-      rss_feed.update_attributes!(name: hash[:name],
+      rss_feed.update!(name: hash[:name],
                                   show_only_media_content: show_only_media_content,
                                   rss_feed_urls: [rss_feed_url])
     else
@@ -22,7 +22,7 @@ Given /^affiliate "([^\"]*)" has the following RSS feeds:$/ do |affiliate_name, 
                                              show_only_media_content: show_only_media_content,
                                              rss_feed_urls: [rss_feed_url])
     end
-    rss_feed.navigation.update_attributes!(is_active: hash[:is_navigable] || false,
+    rss_feed.navigation.update!(is_active: hash[:is_navigable] || false,
                                            position: hash[:position] || 100)
   end
   NewsItem.destroy_all

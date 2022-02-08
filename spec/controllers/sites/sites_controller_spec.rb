@@ -157,7 +157,7 @@ describe Sites::SitesController do
 
       before do
         request.env['HTTP_REFERER'] = site_path(site)
-        expect(current_user).to receive(:update_attributes!).with(default_affiliate: site)
+        expect(current_user).to receive(:update!).with(default_affiliate: site)
         put :pin, params: { id: site.id }
       end
 
@@ -179,7 +179,7 @@ describe Sites::SitesController do
       end
 
       it 'deactivates the site' do
-        expect(site).to receive(:update_attributes!).with(active: false)
+        expect(site).to receive(:update!).with(active: false)
         expect(site).to receive(:user_ids=).with([])
         delete :destroy, params: { id: site.id }
       end
