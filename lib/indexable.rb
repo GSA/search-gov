@@ -130,7 +130,10 @@ module Indexable
                type: index_type,
                body: query.body,
                from: query.offset,
-               size: query.size }
+               size: query.size,
+               # For compatibility with ES 6. This parameter will be removed in ES 8.
+               # https://www.elastic.co/guide/en/elasticsearch/reference/current/breaking-changes-7.0.html#hits-total-now-object-search-response
+               rest_total_hits_as_int: true }
     params[:sort] = query.sort if query.sort.present?
 
     result = Es::CustomIndices.client_reader.search(params)
