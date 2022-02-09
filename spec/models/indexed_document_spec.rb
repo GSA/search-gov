@@ -56,7 +56,7 @@ describe IndexedDocument do
 
   it 'should not allow setting last_crawl_status to OK if the title is blank' do
     odie = described_class.create!(@min_valid_attributes)
-    expect(odie.update_attributes(title: nil, description: 'bogus description', last_crawl_status: IndexedDocument::OK_STATUS)).to be false
+    expect(odie.update(title: nil, description: 'bogus description', last_crawl_status: IndexedDocument::OK_STATUS)).to be false
     expect(odie.errors[:title].first).to match(/can't be blank/)
   end
 
@@ -89,7 +89,7 @@ describe IndexedDocument do
     context 'when there is a problem updating the attributes after catching an exception during indexing' do
       before do
         allow(Net::HTTP).to receive(:start).and_raise Exception.new('some problem during indexing')
-        allow(indexed_document).to receive(:update_attributes!).and_raise Timeout::Error
+        allow(indexed_document).to receive(:update!).and_raise Timeout::Error
       end
 
       it 'should handle the exception and delete the record' do

@@ -40,10 +40,9 @@ class Sites::I14yDrawersController < Sites::SetupSiteController
   end
 
   def update
-    @i14y_drawer.update_attributes i14y_drawer_params
+    @i14y_drawer.update(i14y_drawer_params)
     redirect_to site_i14y_drawers_path(@site),
                 flash: { success: "You have updated the #{@i14y_drawer.handle} i14y drawer." }
-
   end
 
   def destroy

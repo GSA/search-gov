@@ -7,7 +7,7 @@ describe SearchConsumer::Api do
   let(:collection) { affiliate.document_collections.first }
 
   before do
-    affiliate.update_attributes(page_one_more_results_pointer: 'Custom Footer Text',
+    affiliate.update(page_one_more_results_pointer: 'Custom Footer Text',
                                 footer_fragment: 'Custom Footer Fragment')
   end
 

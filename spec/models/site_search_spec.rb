@@ -10,7 +10,7 @@ describe SiteSearch do
       url_prefixes_attributes: {'0' => {prefix: 'http://www.whitehouse.gov/photos-and-video/'},
                                    '1' => {prefix: 'http://www.whitehouse.gov/blog/'}})
     collection.save!
-    collection.navigation.update_attributes!(is_active: true)
+    collection.navigation.update!(is_active: true)
     collection
   end
 
@@ -37,7 +37,7 @@ describe SiteSearch do
           name: 'WH only',
           url_prefixes_attributes: {'0' => { prefix: 'www.whitehouse.gov' }})
         coll.save!
-        coll.navigation.update_attributes!(is_active: true)
+        coll.navigation.update!(is_active: true)
         coll
       end
 
@@ -54,7 +54,7 @@ describe SiteSearch do
           name: 'WH only',
           url_prefixes_attributes: {'0' => { prefix: 'www100.whitehouse.gov' }})
         coll.save!
-        coll.navigation.update_attributes!(is_active: true)
+        coll.navigation.update!(is_active: true)
         coll
       end
 
@@ -81,7 +81,7 @@ describe SiteSearch do
           name: 'WH only',
           url_prefixes_attributes: {'0' => { prefix: 'www100.whitehouse.gov' }})
         coll.save!
-        coll.navigation.update_attributes!(is_active: true)
+        coll.navigation.update!(is_active: true)
         coll
       end
 

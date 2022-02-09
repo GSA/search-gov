@@ -59,7 +59,7 @@ class IndexedDocument < ApplicationRecord
 
   def handle_fetch_exception(e)
     begin
-      update_attributes!(:last_crawled_at => Time.now, :last_crawl_status => normalize_error_message(e), :body => nil)
+      update!(:last_crawled_at => Time.now, :last_crawl_status => normalize_error_message(e), :body => nil)
     rescue Exception
       begin
         destroy
