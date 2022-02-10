@@ -5,7 +5,7 @@
 version: 2.1
 
 orbs:
-  ruby: circleci/ruby@1.2.0
+  ruby: circleci/ruby@1.4.0
 
 executors:
   test_executor:
@@ -221,7 +221,6 @@ workflows:
           matrix:
             parameters:
               ruby_version:
-                - 2.6.6
                 - 2.7.4
 
       - rspec:
@@ -231,7 +230,6 @@ workflows:
           matrix:
             parameters:
               ruby_version:
-                - 2.6.6
                 - 2.7.4
 
       - cucumber:
@@ -241,7 +239,6 @@ workflows:
           matrix:
             parameters:
               ruby_version:
-                - 2.6.6
                 - 2.7.4
 
       - report_coverage:
@@ -252,5 +249,4 @@ workflows:
           matrix:
             parameters:
               ruby_version:
-                - 2.6.6
                 - 2.7.4
