@@ -195,24 +195,6 @@ Feature: Manage Display
     Then I should see "You have succesfully updated your Font & Colors."
 
   @javascript
-  Scenario: Editing search consumer templates
-    Given the following Affiliates exist:
-      | display_name | name       | contact_email | first_name | last_name | website                | search_consumer_search_enabled |
-      | agency site  | agency.gov | one@foo.gov   | One        | Foo       | http://beta.agency.gov | true                           |
-    And the following templates are available for the affiliate agency.gov:
-      | name                 |
-      | Rounded Header Links |
-      | Classic              |
-    And I am logged in with email "one@foo.gov"
-    When I go to the agency.gov's Templates page
-    Then I should see "Your Current Template"
-    And I should see "Rounded Header Links"
-    And I should not see "Square Header Links"
-    And I choose "Rounded Header Links"
-    And I press "Save"
-    Then I should see "You have updated your site Template settings."
-
-  @javascript
   Scenario: Editing Image Assets
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name |  website                |

@@ -3,7 +3,6 @@
 %ul.nav.nav-list
   %li{ site_nav_css_class_hash('displays') }= link_to 'Display Overview', edit_site_display_path(@site)
   - if @site.search_consumer_search_enabled
-    %li{ site_nav_css_class_hash('templates') }= link_to 'Templates', edit_site_template_path(@site)
     %li{ site_nav_css_class_hash('templated_font_and_colors') }= link_to 'Font & Colors', edit_site_templated_font_and_colors_path(@site)
   - else
     %li{ site_nav_css_class_hash('font_and_colors') }= link_to 'Font & Colors', edit_site_font_and_colors_path(@site)
