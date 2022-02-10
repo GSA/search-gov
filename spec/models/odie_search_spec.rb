@@ -84,7 +84,7 @@ describe OdieSearch do
     before do
       @dc = affiliate.document_collections.create!(name: 'whatevs',
                                                    url_prefixes_attributes: {'0' => { prefix: 'https://www.usa.gov/docs/' } })
-      @dc.navigation.update_attributes!(is_active: true)
+      @dc.navigation.update!(is_active: true)
     end
 
     it 'should output a key based on the query, affiliate id, doc collection, and page parameters' do

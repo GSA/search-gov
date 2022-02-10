@@ -72,7 +72,7 @@ describe I14yDocument do
   end
 
   describe '.update' do
-    let(:update_attributes) do
+    let(:update) do
       { document_id: 'update_me', title: 'My New Title', handle: 'searchgov' }
     end
     before do
@@ -83,7 +83,7 @@ describe I14yDocument do
       expect(i14y_connection).to receive(:put).
         with('/api/v1/documents/update_me', { title: 'My New Title' }).
         and_return(Hashie::Mash.new(status: 200))
-      described_class.update(update_attributes)
+      described_class.update(update)
     end
 
     context 'when the update fails' do

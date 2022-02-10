@@ -14,8 +14,8 @@ module ElasticMappings
     properties: {
       affiliate_id: { type: 'integer' },
       status: { type: 'keyword', index: true },
-      publish_start_on: { type: 'date', format: 'YYYY-MM-dd' },
-      publish_end_on: { type: 'date', format: 'YYYY-MM-dd', null_value: '9999-12-31' },
+      publish_start_on: { type: 'date', format: '8yyyy-MM-dd' },
+      publish_end_on: { type: 'date', format: '8yyyy-MM-dd', null_value: '9999-12-31' },
       title: ElasticSettings::TEXT,
       match_keyword_values_only: { type: 'boolean',
                                    null_value: 'false' },

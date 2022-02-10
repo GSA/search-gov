@@ -33,7 +33,7 @@ describe Sites::AlertsController do
 
         before do
           expect(site).to receive(:alert).and_return(alert)
-          expect(alert).to receive(:update_attributes).
+          expect(alert).to receive(:update).
               with('title' => 'Updated Title for Alert',
                    'text' => 'Some text for the alert.',
                    'status' => 'Active').
@@ -60,7 +60,7 @@ describe Sites::AlertsController do
 
         before do
           allow(site).to receive(:alert).and_return(alert)
-          expect(alert).to receive(:update_attributes).
+          expect(alert).to receive(:update).
               with('title' => 'Title',
                    'text' => '',
                    'status' => 'Active').

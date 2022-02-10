@@ -36,10 +36,10 @@ module TwitterData
 
     sanitized_urls = extract_sanitized_urls(original_status)
 
-    tweet.update_attributes!(tweet_text: text,
-                             published_at: original_status.created_at,
-                             twitter_profile_id: status.user.id,
-                             urls: sanitized_urls)
+    tweet.update!(tweet_text: text,
+                  published_at: original_status.created_at,
+                  twitter_profile_id: status.user.id,
+                  urls: sanitized_urls)
   end
 
   def self.within_tweet_creation_time_threshold?(created_at)
@@ -87,7 +87,7 @@ module TwitterData
   def self.import_list(list_id)
     member_ids = get_list_member_ids(list_id)
     twitter_list = TwitterList.where(id: list_id).first_or_initialize
-    twitter_list.update_attributes!(member_ids: member_ids)
+    twitter_list.update!(member_ids: member_ids)
     twitter_list
   end
 

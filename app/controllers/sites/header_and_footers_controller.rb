@@ -18,7 +18,7 @@ class Sites::HeaderAndFootersController < Sites::SetupSiteController
   end
 
   def update
-    if @site.update_attributes(site_params)
+    if @site.update(site_params)
       redirect_to edit_site_header_and_footer_path(@site),
                   flash: { success: 'You have updated your header and footer information.' }
     else

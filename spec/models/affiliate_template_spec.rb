@@ -10,7 +10,7 @@ describe AffiliateTemplate do
   end
 
   describe 'schema' do
-    it { is_expected.to have_db_column(:affiliate_id).of_type(:integer).with_options(null: false, index: true) }
+    it { is_expected.to have_db_column(:affiliate_id).of_type(:integer).with_options(null: false) }
     #The template_class column has been deprectated. It will be dropped in a future migration..
     it { is_expected.to have_db_column(:template_class).of_type(:string).with_options(null: true) }
     #The available column has been deprectated. It will be dropped in a future migration..

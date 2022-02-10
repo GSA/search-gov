@@ -128,7 +128,7 @@ describe FeaturedCollection do
     end
   end
 
-  describe '#update_attributes' do
+  describe '#update' do
     let(:affiliate) { affiliates(:basic_affiliate) }
     let(:image) { double('image') }
 
@@ -153,7 +153,7 @@ describe FeaturedCollection do
         it 'should clear existing image' do
           expect(image).to receive(:dirty?).at_least(:once).and_return(false)
           expect(image).to receive(:clear)
-          featured_collection.update_attributes( mark_image_for_deletion: '1' )
+          featured_collection.update( mark_image_for_deletion: '1' )
         end
       end
 
@@ -167,7 +167,7 @@ describe FeaturedCollection do
           allow(image).to receive(:assign).with(new_image).and_return(new_image)
           expect(image).to receive(:dirty?).at_least(:once).and_return(true)
           expect(image).not_to receive(:clear)
-          featured_collection.update_attributes( title: 'updated', image: new_image )
+          featured_collection.update( title: 'updated', image: new_image )
         end
       end
     end
@@ -176,7 +176,7 @@ describe FeaturedCollection do
       it 'should not clear image' do
         expect(featured_collection).to receive(:image?).and_return(false)
         expect(image).not_to receive(:clear)
-        featured_collection.update_attributes(title: 'new title')
+        featured_collection.update(title: 'new title')
       end
     end
   end
