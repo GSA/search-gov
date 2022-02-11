@@ -471,24 +471,3 @@ Feature: Manage Display
     And the "Text" field should contain "Updated text for search page alert."
     And the "Status" field should contain "Inactive"
     And I should see "The alert for this site has been updated."
-
-  @javascript
-  Scenario: Search Consumer advanced search settings
-    Given the following search consumer Affiliates exist:
-      | display_name | name       | contact_email   | first_name   | last_name |
-      | agency site  | agency.gov | john@agency.gov | John         | Bar       |
-    And affiliate "agency.gov" has the following document collections:
-      | name          | prefixes                      | advanced_search_enabled |
-      | Passports     | travel.state.gov/passports    | true                    |
-      | Study Abroad  | travel.state.gov/study_abroad | false                   |
-    And I am logged in with email "john@agency.gov"
-    When I go to the agency.gov's Manage Display page
-    Then I should see "Advanced Search"
-    And I should see "Passports"
-    And the "Passports advanced search" should be switched on
-    And the "Study Abroad advanced search" should be switched off
-    When I switch on "Study Abroad advanced search"
-    And I press "Save"
-    Then I should see "You have updated your site display settings."
-    And the "Passports advanced search" should be switched on
-    And the "Study Abroad advanced search" should be switched on
