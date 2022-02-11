@@ -34,8 +34,6 @@ Rails.application.routes.draw do
     end
   end
 
-  mount SearchConsumer::Api => '/api/c'
-
   get '/sayt' => 'sayt#index'
   post '/clicked' => 'clicked#create'
   get '/healthcheck' => 'health_checks#new'
@@ -273,9 +271,4 @@ Rails.application.routes.draw do
     Rails.application.secrets.organization[:page_not_found_url],
     status: 302
   )
-
-  get "/c/search" => 'dev#null', :as => :search_consumer_search
-  get "/c/admin/:site_name" => 'dev#null', :as => :search_consumer_admin
-  get "/c/search/rss" => 'dev#null', :as => :search_consumer_news_search
-  get "/c/search/docs" => 'dev#null', :as => :search_consumer_docs_search
 end

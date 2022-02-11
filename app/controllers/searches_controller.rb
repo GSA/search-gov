@@ -6,7 +6,6 @@ class SearchesController < ApplicationController
   before_action :set_affiliate, :set_locale_based_on_affiliate_locale
   #eventually all the searches should be redirected, but currently we're doing it as-needed
   #to ensure that the correct params are being passed, etc.
-  before_action :redirect_to_search_consumer, only: [:index, :news, :docs]
   before_action :set_web_search_options, :only => [:advanced, :index]
   before_action :set_docs_search_options, :only => :docs
   before_action :set_news_search_options, :only => [:news]
@@ -128,19 +127,6 @@ class SearchesController < ApplicationController
     if !@affiliate.search_consumer_search_enabled?
       SearchImpression.log(@search, @search_vertical, permitted_params, request)
     end
-  end
-
-  def redirect_to_search_consumer
-    if @affiliate.search_consumer_search_enabled?
-      redirect_to self.send(search_consumer_urls[action_name], permitted_params) and return
-    end
-  end
-
-  def search_consumer_urls
-    { 'index' => :search_consumer_search_url,
-      'news' => :search_consumer_news_search_url,
-      'docs' => :search_consumer_docs_search_url,
-    }
   end
 
   def docs_search_klass
