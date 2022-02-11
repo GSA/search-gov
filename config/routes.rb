@@ -172,7 +172,6 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :affiliates, concerns: :active_scaffold
     resources :affiliate_notes, concerns: :active_scaffold
-    resources :affiliate_templates, concerns: :active_scaffold
     resources :users, concerns: :active_scaffold
     resources :sayt_filters, concerns: :active_scaffold
     resources :sayt_suggestions, concerns: :active_scaffold

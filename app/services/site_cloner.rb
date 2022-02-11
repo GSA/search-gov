@@ -47,8 +47,7 @@ class SiteCloner
                        :excluded_urls,
                        :i14y_memberships,
                        :indexed_documents,
-                       :site_domains,
-                       :affiliate_templates
+                       :site_domains
   end
 
   def clone_image_search_label(cloned_site)
