@@ -88,15 +88,6 @@ describe SearchesController do
     end
   end
 
-  context 'when search_consumer_search_enabled is true' do
-    let(:affiliate) { affiliates(:search_consumer_affiliate) }
-
-    it 'should redirect to the search-consumer display page' do
-      get :index, params: { query: 'matzo balls', affiliate: affiliate.name }
-      expect(response).to redirect_to search_consumer_search_url({query: 'matzo balls', affiliate: affiliate.name})
-    end
-  end
-
   context 'searching on a routed keyword' do
     let(:affiliate) { affiliates(:basic_affiliate) }
     context 'referrer does not match redirect url' do
@@ -493,18 +484,6 @@ describe SearchesController do
       it { is_expected.to assign_to(:affiliate).with(affiliate) }
     end
 
-    context 'when the affiliate is search-consumer enabled' do
-      let(:affiliate) { affiliates(:search_consumer_affiliate) }
-      let(:docs_search_params) do
-        { query: 'matzo balls', affiliate: affiliate.name, dc: 100 }
-      end
-
-      it 'should redirect to the search-consumer display page' do
-        get :docs, params: docs_search_params
-        expect(response).to redirect_to search_consumer_docs_search_url(docs_search_params)
-      end
-    end
-
     context 'when the affiliate uses the SearchGov engine' do
       let(:affiliate) { affiliates(:basic_affiliate) }
       let(:i14y_search) { double(I14ySearch, query: 'gov', modules: %w(I14Y), diagnostics: {}) }
@@ -711,18 +690,6 @@ describe SearchesController do
             }
         expect(response).to render_template 'news'
         expect(response).to render_template 'layouts/searches'
-      end
-    end
-
-    context 'when the affiliate is search-consumer enabled' do
-      let(:affiliate) { affiliates(:search_consumer_affiliate) }
-      let(:news_search_params) do
-        { query: 'matzo balls', affiliate: affiliate.name, channel: 3 }
-      end
-
-      it 'should redirect to the search-consumer display page' do
-        get :news, params: news_search_params
-        expect(response).to redirect_to search_consumer_news_search_url(news_search_params)
       end
     end
   end
