@@ -12,14 +12,14 @@ Then /^I should see the following breadcrumbs: (.+)$/ do |breadcrumbs|
 end
 
 Then /^I should see a link to "([^"]*)" with url (for|that starts with|that ends with) "([^"]*)"$/ do |name, attribute_selector, url|
-  operator =
+  link_matcher =
     case attribute_selector
-    when 'that starts with' then /^#{Regexp.escape(url)}.*$/
-    when 'that ends with' then /.*#{Regexp.escape(url)}$/
+    when 'that starts with' then /^#{Regexp.escape(url)}/
+    when 'that ends with' then /#{Regexp.escape(url)}$/
     else url
     end
 
-  page.should have_link(name, href: operator)
+  page.should have_link(name, href: link_matcher)
 end
 
 Then /^I should see a link to "([^"]*)"$/ do |name|
