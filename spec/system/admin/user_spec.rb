@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe 'Super Admin Users', type: :system do
+describe 'Super Admin Users' do
   let(:url) { '/admin/users' }
 
   it_behaves_like 'a page restricted to super admins'
@@ -19,8 +19,12 @@ describe 'Super Admin Users', type: :system do
 
       after { FileUtils.rm_f(file) }
 
-      it 'exports a csv of users' do
+      it 'is successful' do
         expect { export }.not_to raise_error
+      end
+
+      it 'exports a csv of users' do
+        export
         Timeout.timeout(5) do
           sleep(0.1) until File.exist?(file)
         end
