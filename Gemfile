@@ -170,7 +170,6 @@ group :test do
   # resque-spec hasn't been supported since 2018. Consider replacing with equivalent
   # functionality from rspec-rails: https://relishapp.com/rspec/rspec-rails/v/5-0/docs/job-specs/job-spec
   gem 'resque_spec', '~> 0.18.0'
-  gem 'poltergeist', '~> 1.18'
   gem 'shoulda-matchers', '~> 5.0'
   gem 'shoulda-kept-assign-to', '~> 1.1'
   gem 'vcr', '~> 6.0'

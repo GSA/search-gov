@@ -15,17 +15,15 @@ When /^(?:|I )add the following Routed Query Keywords:$/ do |table|
   table.hashes.each_with_index do |hash, index|
     click_link 'Add Another Keyword'
     keyword_label = "Keyword or phrase #{keywords_count + index + 1}"
-    find 'label', text: keyword_label
+    find('label', text: keyword_label, visible: false)
     fill_in keyword_label, with: hash[:keyword]
   end
 end
 
 When /^(?:|I )replace the Routed Query Keywords with:$/ do |table|
-  index = 0
   table.hashes.each_with_index do |hash, index|
-    click_link 'Add Another Keyword'
     keyword_label = "Keyword or phrase #{index + 1}"
-    find 'label', text: keyword_label
+    find('label', text: keyword_label, visible: false)
     fill_in keyword_label, with: hash[:keyword]
   end
 end
