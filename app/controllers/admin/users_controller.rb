@@ -3,9 +3,17 @@
 class Admin::UsersController < Admin::AdminController
   active_scaffold :user do |config|
     config.actions.exclude :create, :delete, :search
-    config.columns = %I[email first_name last_name affiliate_names
-                        memberships default_affiliate created_at
-                        updated_at approval_status]
+    config.columns = %I[
+      email
+      first_name
+      last_name
+      affiliate_names
+      memberships
+      default_affiliate
+      created_at
+      updated_at
+      approval_status
+    ]
     config.update.columns = %I[ email first_name last_name organization_name
                                 is_affiliate_admin is_affiliate approval_status
                                 default_affiliate welcome_email_sent]
@@ -19,9 +27,21 @@ class Admin::UsersController < Admin::AdminController
     config.actions.add :export, :field_search
     config.field_search.columns = %i[id email first_name last_name approval_status]
 
-    config.export.columns = %i[email first_name last_name affiliate_names
-                               last_login_at last_login_ip last_request_at
-                               created_at updated_at organization_name is_affiliate_admin
-                               is_affiliate approval_status welcome_email_sent]
+    config.export.columns = %i[
+      email
+      first_name
+      last_name
+      affiliate_names
+      last_login_at
+      last_login_ip
+      last_request_at
+      created_at
+      updated_at
+      organization_name
+      is_affiliate_admin
+      is_affiliate
+      approval_status
+      welcome_email_sent
+    ]
   end
 end
