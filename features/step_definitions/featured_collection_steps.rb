@@ -56,10 +56,10 @@ When /^(?:|I )add the following best bets graphics links:$/ do |table|
   table.hashes.each_with_index do |hash, index|
     click_link 'Add Another Link'
     link_title_label = "Link Title #{links_count + index + 1}"
-    find('label', text: "#{link_title_label}")
+    find('label', text: link_title_label, visible: false)
     fill_in(link_title_label, with: hash[:title])
     link_url_label = "Link URL #{links_count + index + 1}"
-    find('label', text: "#{link_url_label}")
+    find('label', text: link_url_label, visible: false)
     fill_in(link_url_label, with: hash[:url])
   end
 end
