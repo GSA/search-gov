@@ -114,7 +114,7 @@ Feature: Manage Content
     Then I should see "Best bets: graphics links url can't be blank"
 
     When I follow "View All"
-    And I press "Remove"
+    And I press "Remove" and confirm "Are you sure you wish to remove 2011 Atlantic Hurricane Season from this site?"
     Then I should see "You have removed 2011 Atlantic Hurricane Season from this site"
 
   Scenario: View best bets texts
@@ -192,7 +192,7 @@ Feature: Manage Content
     Then I should see "You have updated Release for Week Ending June 21, 2013"
     And I should not see "Match Keywords Only"
     And I should not see "rails"
-    When I press "Remove"
+    When I press "Remove" and confirm "Are you sure you wish to remove Release for Week Ending June 21, 2013 from this site?"
     Then I should see "You have removed Release for Week Ending June 21, 2013 from this site"
 
   Scenario: Bulk upload best bets texts
@@ -259,16 +259,16 @@ Feature: Manage Content
     When I follow "Edit"
     Then the "URL Prefix 1" field should contain "blog.agency4.gov"
     When I follow "View All"
-    When I find and click the "Remove" button
+    When I press "Remove" and confirm "Are you sure you wish to remove News and Blog from this site?"
     Then I should see "You have removed News and Blog from this site"
 
   Scenario: View Routed Queries
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar          |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       |
     And affiliate "agency.gov" has the following routed queries:
       | description                     | url                                                                            | keywords                        |
-      | Free Money                      | https://www.usa.gov/unclaimed-money                                             | free money, unclaimed money     | 
+      | Free Money                      | https://www.usa.gov/unclaimed-money                                            | free money, unclaimed money     | 
       | Disable Rails Asset Compression | http://www.rrsoft.co/2014/01/13/selectively-disabling-rails-asset-compression/ | disable rails asset compression |
     And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Content page
@@ -302,7 +302,7 @@ Feature: Manage Content
       |                 |
     And I submit the form by pressing "Save"
     Then I should see "You have updated query routing for the following search term: 'moar money'"
-    And I press "Remove"
+    And I press "Remove" and confirm "Are you sure you wish to remove routing to https://www.usa.gov/unclaimed-money from this site?"
     Then I should see "You have removed query routing for the following search term: 'moar money'"
 
   Scenario: View domains
@@ -345,7 +345,7 @@ Feature: Manage Content
     And I fill in "Domain" with "gobiernousa.gov"
     And I submit the form by pressing "Save"
     Then I should see "You have updated gobiernousa.gov"
-    When I press "Remove"
+    When I press "Remove" and confirm "Are you sure you wish to remove gobiernousa.gov from this site?"
     Then I should see "You have removed gobiernousa.gov from this site"
 
   Scenario: View i14y drawers
@@ -448,7 +448,7 @@ Feature: Manage Content
     Then I should see "You have added agency.gov/exclude-me.html to this site"
     And I should see the following table rows:
       | agency.gov/exclude-me.html |
-    When I press "Remove"
+    When I press "Remove" and confirm "Are you sure you wish to remove agency.gov/exclude-me.html from this site?"
     Then I should see "You have removed agency.gov/exclude-me.html from this site"
 
   Scenario: Add/remove Filter Tag
@@ -464,7 +464,7 @@ Feature: Manage Content
     And I should see the following table rows:
       | Tag                | Exclude/Require |
       | exclude me         | Exclude         |
-    When I press "Remove"
+    When I press "Remove" and confirm "Are you sure you wish to remove the tag exclude me from this site?"
     Then I should see "You have removed the tag exclude me from this site"
     When I follow "Add Filter Tag"
     And I fill in "Tag" with "require me"
@@ -506,7 +506,7 @@ Feature: Manage Content
     When I fill in "Flickr URL" with "www.flickr.com/groups/usagov/"
     And I submit the form by pressing "Add"
     Then I should see "You have added www.flickr.com/groups/usagov/ to this site"
-    When I press "Remove"
+    When I press "Remove" and confirm "Are you sure you wish to remove https://www.flickr.com/groups/usagov/ from this site?"
     Then I should see "You have removed www.flickr.com/groups/usagov/ from this site"
 
   Scenario: View/Remove Instagram usernames
@@ -523,7 +523,7 @@ Feature: Manage Content
     Then I should see the following table rows:
       | dg_search  |
       | whitehouse |
-    When I press "Remove" within the first table body row
+    When I press "Remove" within the first table body row and confirm "Are you sure you wish to remove dg_search from this site?"
     Then I should see "You have removed dg_search from this site"
 
   Scenario: View RSS
@@ -581,7 +581,7 @@ Feature: Manage Content
       | https://www.fda.gov/rss/food-safety-recalls/rss.xml |
     And I submit the form by pressing "Save"
     Then I should see "You have updated Food, Safety and Pet Health Recalls"
-    When I press "Remove"
+    When I press "Remove" and confirm "Are you sure you wish to remove Food, Safety and Pet Health Recalls from this site?"
     Then I should see "You have removed Food, Safety and Pet Health Recalls from this site"
 
   Scenario: Edit/remove Supplemental Feed
@@ -602,7 +602,7 @@ Feature: Manage Content
     And the "URL" field should contain "http://search.gov/all.atom"
     And I should see "Last Crawled Pending"
     And I should see "Status Pending"
-    When I press "Remove"
+    When I press "Remove" and confirm "Are you sure you wish to remove your supplemental feed?"
     Then I should see "You have removed your supplemental feed from this site"
 
   Scenario: View Supplemental URLs
@@ -663,7 +663,7 @@ Feature: Manage Content
     And I should see the following table rows:
       | Status     |
       | Summarized |
-    When I press "Remove"
+    When I press "Remove" and confirm "Are you sure you wish to remove search.gov/developer/jobs.html from this site?"
     Then I should see "You have removed search.gov/developer/jobs.html from this site"
 
   Scenario: View Twitter Handles
@@ -695,7 +695,7 @@ Feature: Manage Content
     Then I should see "You have added @NIH to this site"
     And I should see a link to "@NIH" with url for "https://twitter.com/NIH"
     And I should see "@NIH (show lists)"
-    When I press "Remove"
+    When I press "Remove" and confirm "Are you sure you wish to remove @NIH from this site?"
     Then I should see "You have removed @NIH from this site"
     When I follow "Add Twitter Handle"
     When I fill in "Twitter Handle" with "usasearch101"
@@ -740,7 +740,7 @@ Feature: Manage Content
 
     When I go to the agency.gov's Manage Content page
     And I follow "YouTube" within the Admin Center content
-    And I press "Remove"
+    And I press "Remove" and confirm "Are you sure you wish to remove usgovernment channel from this site?"
     Then I should see "You have removed usgovernment channel from this site"
     When I follow "Add YouTube Channel"
     When I fill in "YouTube Channel URL" with "http://www.youtube.com/usasearch"
