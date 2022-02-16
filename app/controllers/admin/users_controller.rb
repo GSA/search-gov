@@ -8,7 +8,6 @@ class Admin::UsersController < Admin::AdminController
       first_name
       last_name
       affiliate_names
-      memberships
       default_affiliate
       created_at
       updated_at

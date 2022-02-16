@@ -117,7 +117,7 @@ class User < ApplicationRecord
   end
 
   def affiliate_names
-    affiliates.collect(&:name).join(',')
+    affiliates.collect(&:name).join(', ')
   end
 
   def send_new_affiliate_user_email(affiliate, inviter_user)
