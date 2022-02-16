@@ -98,11 +98,3 @@ Given /^the following "(.+)" exist for the affiliate (.+):$/ do |association, af
   association.gsub!(' ','_')
   table.hashes.each {|hash|  affiliate.send(association).create!(hash) }
 end
-
-Given /^the following templates are available for the affiliate (.+):$/ do |affiliate_name, table|
-  affiliate = Affiliate.find_by_name(affiliate_name)
-  table.hashes.each do |table|
-    template = Template.find_by_name(table[:name])
-    affiliate.affiliate_templates.create!( template_id: template.id)
-  end
-end

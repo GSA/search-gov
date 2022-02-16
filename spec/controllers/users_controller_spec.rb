@@ -11,6 +11,8 @@ describe UsersController do
 
   let(:permitted_params) { %i[first_name last_name organization_name email] }
 
+  before { activate_authlogic }
+
   describe '#create' do
     it do
       is_expected.to permit(*permitted_params).
@@ -73,7 +75,6 @@ describe UsersController do
 
   describe '#show' do
     context 'when logged in as affiliate' do
-      before { activate_authlogic }
       include_context 'approved user logged in'
 
       before { get :show, params: { id: current_user.id } }
@@ -84,7 +85,6 @@ describe UsersController do
 
   describe '#edit' do
     context 'when logged in as affiliate' do
-      before { activate_authlogic }
       include_context 'approved user logged in'
 
       before { get :edit, params: { id: current_user.id } }
@@ -107,7 +107,6 @@ describe UsersController do
     end
 
     context 'when logged in as affiliate' do
-      before { activate_authlogic }
       include_context 'approved user logged in'
 
       it do
@@ -117,7 +116,9 @@ describe UsersController do
 
       context 'when account is saved successfully' do
         before do
-          expect(current_user).to receive(:save).
+          # ensure under-the-hood saves, such as by Authlogic, function normally
+          allow(current_user).to receive(:save).and_call_original
+          allow(current_user).to receive(:save).
             with(context: :update_account).and_return(true)
 
           update_account
@@ -128,10 +129,12 @@ describe UsersController do
         it { is_expected.to set_flash.to('Account updated!') }
       end
 
-      context 'when the is not saved successfully' do
+      context 'when account is not saved successfully' do
         before do
-          expect(current_user).to receive(:save).
-            with( context: :update_account ).and_return(false)
+          # ensure under-the-hood saves, such as by Authlogic, function normally
+          allow(current_user).to receive(:save).and_call_original
+          allow(current_user).to receive(:save).
+            with(context: :update_account).and_return(false)
 
           update_account
         end
@@ -154,7 +157,6 @@ describe UsersController do
     end
 
     context 'when logged in as affiliate' do
-      before { activate_authlogic }
       include_context 'approved user logged in'
 
       it do
@@ -191,7 +193,6 @@ describe UsersController do
 
   context 'when logged in as a developer' do
     before do
-      activate_authlogic
       @user = users('non_affiliate_admin')
       UserSession.create(@user)
     end

@@ -62,7 +62,6 @@ Use the package manager of your choice to install the following packages:
 * C++ compiler - required by the [cld3](https://github.com/akihikodaki/cld3-ruby) gem, which we use for language detection
 * Google's [protocol buffers](https://developers.google.com/protocol-buffers/) - also required by the cld gem
 * [Java Runtime Environment](https://www.java.com/en/download/)
-* [PhantomJS](http://phantomjs.org/download.html) - required to run JavaScript in Cucumber features
 * [ImageMagick](https://imagemagick.org/) - required by the Paperclip gem, used for image attachments
 
 Example of installation on Mac using [Homebrew](https://brew.sh/):
@@ -71,7 +70,6 @@ Example of installation on Mac using [Homebrew](https://brew.sh/):
     $ brew install protobuf
     $ brew install java
     $ brew install imagemagick
-    $ brew cask install phantomjs
     
 Example of installation on Linux:
 
