@@ -39,7 +39,7 @@ class Sites::DisplaysController < Sites::SetupSiteController
         :i14y_date_stamp_enabled,
         :template_type,
         connections_attributes: [:id, :affiliate_name, :label, :position],
-        document_collections_attributes: collections_attributes,
+        document_collections_attributes: navigable_attributes,
         image_search_label_attributes: navigable_attributes,
         rss_feeds_attributes: navigable_attributes)
   end
@@ -49,9 +49,5 @@ class Sites::DisplaysController < Sites::SetupSiteController
      :name,
      { navigation_attributes:
        [:id, :position, :is_active] }].freeze
-  end
-
-  def collections_attributes
-    navigable_attributes + [:advanced_search_enabled]
   end
 end
