@@ -412,7 +412,7 @@ describe User do
     it 'returns all associated affiliate display names' do
       affiliates(:power_affiliate).users << user
       affiliates(:basic_affiliate).users << user
-      expect(user.affiliate_names.split(', ').sort).to eq(%w[noaa.gov nps.gov])
+      expect(user.affiliate_names).to eq('noaa.gov, nps.gov')
     end
 
     it 'returns blank if there is no associated affiliate' do

@@ -8,7 +8,7 @@ describe 'Super Admin Users' do
   context 'when a super admin is logged in' do
     include_context 'log in super admin'
 
-    describe 'active_scaffold list', :js do
+    describe 'Users list', :js do
       before { visit url }
 
       it 'is accessible' do
@@ -18,20 +18,21 @@ describe 'Super Admin Users' do
       end
 
       it 'has expected columns' do
-        expected_headings = %I[
-          email-column
-          first_name-column
-          last_name-column
-          affiliate_names-column
-          default_affiliate-column
-          created_at-column
-          updated_at-column
-          approval_status-column
-          actions
+        expected_headings = [
+          'Email',
+          'First name',
+          'Last name',
+          'Affiliate names',
+          'Default affiliate',
+          'Created at',
+          'Updated at',
+          'Approval status'
         ]
 
         within('.as_content') do
-          expect(page).to have_table(with_rows: [expected_headings])
+          expected_headings.each do |h|
+            expect(page).to have_css('th', text: h)
+          end
         end
       end
     end
