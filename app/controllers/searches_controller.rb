@@ -124,9 +124,7 @@ class SearchesController < ApplicationController
   end
 
   def log_search_impression
-    if !@affiliate.search_consumer_search_enabled?
-      SearchImpression.log(@search, @search_vertical, permitted_params, request)
-    end
+    SearchImpression.log(@search, @search_vertical, permitted_params, request)
   end
 
   def docs_search_klass
