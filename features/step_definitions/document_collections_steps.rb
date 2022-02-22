@@ -1,7 +1,7 @@
 Given /^affiliate "([^"]*)" has the following document collections:$/ do |affiliate_name, table|
   affiliate = Affiliate.find_by_name affiliate_name
   table.hashes.each do |hash|
-    collection_attributes = hash.slice('name', 'advanced_search_enabled')
+    collection_attributes = hash.slice('name')
     collection = affiliate.document_collections.new(collection_attributes)
     prefixes = hash[:prefixes].split(',')
     prefixes.each do |prefix|

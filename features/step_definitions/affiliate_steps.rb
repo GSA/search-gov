@@ -1,4 +1,4 @@
-Given /^the following( search consumer| SearchGov)? Affiliates exist:$/ do |affiliate_type, table|
+Given /^the following( SearchGov)? Affiliates exist:$/ do |affiliate_type, table|
   Affiliate.destroy_all
   table.hashes.each do |hash|
     valid_options = {
@@ -13,7 +13,6 @@ Given /^the following( search consumer| SearchGov)? Affiliates exist:$/ do |affi
 
     excluded_keys = %w[agency_abbreviation contact_email first_name last_name domains youtube_handles is_image_search_navigable]
     affiliate_attributes = hash.except *excluded_keys
-    affiliate_attributes['search_consumer_search_enabled'] ||= (/search consumer/ === affiliate_type)
     affiliate_attributes['search_engine'] = 'SearchGov' if (/SearchGov/ === affiliate_type)
     affiliate = Affiliate.create! affiliate_attributes
     affiliate.image_search_label.navigation.update!(is_active: true) if hash[:is_image_search_navigable] == 'true'
