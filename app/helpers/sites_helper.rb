@@ -168,11 +168,4 @@ module SitesHelper
                 end
     row_class ? { class: row_class } : {}
   end
-
-  # deprecated - Search Consumer
-  def generate_jwt(site)
-    expiration = Time.now.to_i  + 4 * 3600
-    payload = {affiliateName: site.name, :expiration => expiration }
-    JWT.encode payload, SC_ACCESS_KEY, 'HS256'
-  end
 end

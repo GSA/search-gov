@@ -95,15 +95,6 @@ site_with_one_user:
   website: https://www.usa.gov
   api_access_key: one_user_key
 
-search_consumer_affiliate:
-  <<: *DEFAULTS
-  display_name: site that uses search consumer app
-  is_bing_image_search_enabled: true
-  name: search_consumer_affiliate
-  website: https://www.usa.gov
-  api_access_key: search_consumer_key
-  search_consumer_search_enabled: true
-
 dcv_affiliate:
   <<: *DEFAULTS
   display_name: Domain Control Validation Site
