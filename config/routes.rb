@@ -88,9 +88,7 @@ Rails.application.routes.draw do
         collection { get :new_connection }
       end
       resource :embed_code, only: [:show]
-      resource :template, only: [:edit, :update]
       resource :font_and_colors, only: [:edit, :update]
-      resource :templated_font_and_colors, only: [:edit, :update]
       resource :header_and_footer, only: [:edit, :update] do
         collection do
           get :new_footer_link

@@ -16,5 +16,3 @@
     = render partial: 'related_sites', locals: { f: f }
   - if @site.gets_i14y_results || @site.gets_blended_results
     = render partial: 'results_format', locals: { f: f }
-  - if @site.search_consumer_search_enabled && @site.document_collections.any?
-    = render partial: 'advanced_search_options', locals: { f: f }

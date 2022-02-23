@@ -25,12 +25,21 @@ class ElasticIndexedDocumentQuery < ElasticTextFilteredQuery
         json.must do
           json.term { json.affiliate_id @affiliate_id }
         end
-        json.set! :should do |should_json|
-          @document_collection.url_prefixes.each do |url_prefix|
-            should_json.child! { should_json.prefix { json.url url_prefix.prefix } }
-          end
-        end if @document_collection
+
+        collections_filter(json)
       end
     end
+  end
+
+  def collections_filter(json)
+    return unless @document_collection
+
+    json.set! :should do |should_json|
+      @document_collection.url_prefixes.each do |url_prefix|
+        should_json.child! { should_json.prefix { json.url url_prefix.prefix } }
+      end
+    end
+
+    json.minimum_should_match 1
   end
 end

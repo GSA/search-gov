@@ -82,8 +82,6 @@ module NavigationHelpers
       site_content_path(Affiliate.find_by_name($1))
     when /^the (.*)'s Manage Display page$/
       edit_site_display_path(Affiliate.find_by_name($1))
-    when /^the (.*)'s Templates page$/
-      edit_site_template_path(Affiliate.find_by_name($1))
     when /^the (.*)'s Font & Colors page$/
       edit_site_font_and_colors_path(Affiliate.find_by_name($1))
     when /^the (.*)'s Image Assets page$/
@@ -108,8 +106,6 @@ module NavigationHelpers
       site_tag_filters_path(Affiliate.find_by_name($1))
     when /^the (.*)'s Supplemental URLs page$/
       site_supplemental_urls_path(Affiliate.find_by_name($1))
-    when /^the (.*)'s Templated Font & Colors page$/
-      edit_site_templated_font_and_colors_path(Affiliate.find_by_name($1))
     when /^the sites page$/
       sites_path
     when /^the new site page$/

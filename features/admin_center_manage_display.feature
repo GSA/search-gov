@@ -183,36 +183,6 @@ Feature: Manage Display
     And the "Description Text Color" field should contain "#000D00"
 
   @javascript
-  Scenario: Editing Font & Colors on a search consumer Affiliate
-    Given the following Affiliates exist:
-      | display_name | name       | contact_email | first_name | last_name | website                | search_consumer_search_enabled |
-      | agency site  | agency.gov | one@foo.gov   | One        | Foo       | http://beta.agency.gov | true                           |
-    And I am logged in with email "one@foo.gov"
-    When I go to the agency.gov's Templated Font & Colors page
-    Then I should see "Templated Font & Colors (Classic)"
-    When I select "Verdana" from "schema_css_font_default_font"
-    And I press "Save"
-    Then I should see "You have succesfully updated your Font & Colors."
-
-  @javascript
-  Scenario: Editing search consumer templates
-    Given the following Affiliates exist:
-      | display_name | name       | contact_email | first_name | last_name | website                | search_consumer_search_enabled |
-      | agency site  | agency.gov | one@foo.gov   | One        | Foo       | http://beta.agency.gov | true                           |
-    And the following templates are available for the affiliate agency.gov:
-      | name                 |
-      | Rounded Header Links |
-      | Classic              |
-    And I am logged in with email "one@foo.gov"
-    When I go to the agency.gov's Templates page
-    Then I should see "Your Current Template"
-    And I should see "Rounded Header Links"
-    And I should not see "Square Header Links"
-    And I choose "Rounded Header Links"
-    And I press "Save"
-    Then I should see "You have updated your site Template settings."
-
-  @javascript
   Scenario: Editing Image Assets
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name |  website                |
@@ -489,24 +459,3 @@ Feature: Manage Display
     And the "Text" field should contain "Updated text for search page alert."
     And the "Status" field should contain "Inactive"
     And I should see "The alert for this site has been updated."
-
-  @javascript
-  Scenario: Search Consumer advanced search settings
-    Given the following search consumer Affiliates exist:
-      | display_name | name       | contact_email   | first_name   | last_name |
-      | agency site  | agency.gov | john@agency.gov | John         | Bar       |
-    And affiliate "agency.gov" has the following document collections:
-      | name          | prefixes                      | advanced_search_enabled |
-      | Passports     | travel.state.gov/passports    | true                    |
-      | Study Abroad  | travel.state.gov/study_abroad | false                   |
-    And I am logged in with email "john@agency.gov"
-    When I go to the agency.gov's Manage Display page
-    Then I should see "Advanced Search"
-    And I should see "Passports"
-    And the "Passports advanced search" should be switched on
-    And the "Study Abroad advanced search" should be switched off
-    When I switch on "Study Abroad advanced search"
-    And I press "Save"
-    Then I should see "You have updated your site display settings."
-    And the "Passports advanced search" should be switched on
-    And the "Study Abroad advanced search" should be switched on
