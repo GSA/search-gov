@@ -70,16 +70,6 @@ gem 'typhoeus', '~> 1.3.0'
 gem 'activerecord-validate_unique_child_attribute',
     require: 'active_record/validate_unique_child_attribute'
 
-### deprecated - jwt, grape, grape-entity, and dry-configurable are only used by Search Consumer
-# https://cm-jira.usa.gov/browse/SRCH-1080
-gem 'jwt', '~> 1.5.6'
-# locking grape to 1.6.0, as 1.6.1 requires code changes
-gem 'grape', '1.6.0'
-gem 'grape-entity', '~> 0.10.1'
-# temporarily limiting dry-configurable, as versions >= 0.14.0 are incompatible with ruby 2.6
-gem 'dry-configurable', '0.13.0'
-### end Search Consumer gems
-
 gem 'rack-cors', '~> 1.1.0', :require => 'rack/cors'
 # Hashie >= 3.4 will require code changes
 gem 'hashie', '~> 3.3.0'

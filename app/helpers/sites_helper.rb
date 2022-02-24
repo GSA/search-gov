@@ -118,7 +118,7 @@ module SitesHelper
   end
 
   def site_manage_display_controllers
-    %w[displays templated_font_and_colors font_and_colors image_assets header_and_footers no_results_pages alerts]
+    %w[displays font_and_colors image_assets header_and_footers no_results_pages alerts]
   end
 
   def list_item_with_link_to_current_help_page
@@ -167,12 +167,5 @@ module SitesHelper
                   nil
                 end
     row_class ? { class: row_class } : {}
-  end
-
-  # deprecated - Search Consumer
-  def generate_jwt(site)
-    expiration = Time.now.to_i  + 4 * 3600
-    payload = {affiliateName: site.name, :expiration => expiration }
-    JWT.encode payload, SC_ACCESS_KEY, 'HS256'
   end
 end

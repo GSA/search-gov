@@ -11,8 +11,7 @@ module DocumentCollectionsHelper
 
   def link_to_preview_collection(site, collection)
     params = { affiliate: site.name, dc: collection.id, query: 'government' }
-    url = site.search_consumer_search_enabled? ? search_consumer_docs_search_url(params) : docs_search_url(params)
-
+    url = docs_search_url(params)
     link_to 'Preview', url, target: '_blank'
   end
 

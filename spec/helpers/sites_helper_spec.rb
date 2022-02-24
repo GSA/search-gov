@@ -55,17 +55,4 @@ describe SitesHelper do
       specify { expect(subject).to eq(class: 'error') }
     end
   end
-
-  describe '#generate_jwt' do
-    let(:affiliate) { mock_model(Affiliate, id: 491, name: 'somename', display_name: 'Somename Displayed', api_access_key: 'somekey') }
-    let(:subject) { helper.generate_jwt(affiliate) }
-    it 'should be decryptable using the JWT secret' do
-      expect(subject).to be_kind_of(String)
-      decoded = JWT.decode subject, SC_ACCESS_KEY, 'HS256'
-      expect(decoded).to be_kind_of(Array)
-      payload = decoded[0]
-      expect(payload['affiliateName']).to eq('somename')
-      expect(payload['expiration']).to be
-    end
-  end
 end

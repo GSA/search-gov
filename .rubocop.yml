@@ -12,10 +12,6 @@ AllCops:
   Exclude:
     # All Instagram-related code is deprecated and will be removed
     - /**/**/instagram*
-    # All Search Consumer code is deprecated and will be removed, SRCH-1080
-    - app/api/search_consumer/**/*
-    - spec/requests/api/c/**/*
-    - app/controllers/sites/templated_font_and_colors_controller.rb
     # The Agencies API is deprecated and will be removed - SRCH-1574
     - app/controllers/api/v1/agencies_controller.rb
     - app/controllers/api/v2/agencies_controller.rb
