@@ -152,12 +152,14 @@ module Indexable
   def update_alias(alias_name, new_index = index_name)
     old_index = Es::CustomIndices.client_reader.indices.get_alias(name: alias_name).keys.first
     Es::CustomIndices.client_writers.each do |client|
-      client.indices.update_aliases(body: {
-        actions: [
-          { remove: { index: old_index, alias: alias_name } },
-          { add: { index: new_index, alias: alias_name } }
-        ]
-      })
+      client.indices.update_aliases(
+        body: {
+          actions: [
+            { remove: { index: old_index, alias: alias_name } },
+            { add: { index: new_index, alias: alias_name } }
+          ]
+        }
+      )
     end
   end
 
