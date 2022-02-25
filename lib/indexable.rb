@@ -4,7 +4,7 @@ module Indexable
   attr_accessor :default_sort, :mappings, :settings
 
   DELIMTER = '-'
-  NO_HITS = { 'hits' => { 'total' => 0, 'offset' => 0, 'hits' => [] } }
+  NO_HITS = { 'hits' => { 'total' => 0, 'offset' => 0, 'hits' => [] } }.freeze
 
   def index_name
     @index_name ||= [base_index_name, Time.now.strftime('%Y%m%d%H%M%S%L')].join(DELIMTER)
