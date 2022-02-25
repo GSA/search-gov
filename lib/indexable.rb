@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Indexable
   attr_accessor :default_sort, :mappings, :settings
 
