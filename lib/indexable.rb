@@ -11,11 +11,11 @@ module Indexable
   end
 
   def reader_alias
-    index_alias :reader
+    index_alias(:reader)
   end
 
   def writer_alias
-    index_alias :writer
+    index_alias(:writer)
   end
 
   def index_alias(type)
@@ -41,8 +41,8 @@ module Indexable
         body: { settings: settings, mappings: mappings },
         include_type_name: true
       )
-      client.indices.put_alias index: index_name, name: writer_alias
-      client.indices.put_alias index: index_name, name: reader_alias
+      client.indices.put_alias(index: index_name, name: writer_alias)
+      client.indices.put_alias(index: index_name, name: reader_alias)
     end
   end
 
@@ -90,7 +90,7 @@ module Indexable
 
   def delete_by_query(options)
     query = options.collect { |key, value| [key, value].join(':') }.join(' ')
-    Es::CustomIndices.client_writers.each { |client| client.delete_by_query index: writer_alias, q: query, default_operator: 'AND' }
+    Es::CustomIndices.client_writers.each { |client| client.delete_by_query(index: writer_alias, q: query, default_operator: 'AND') }
   end
 
   def bulkify(records)
@@ -109,7 +109,7 @@ module Indexable
   end
 
   def search_for(options)
-    query = "#{name}Query".constantize.new options
+    query = "#{name}Query".constantize.new(options)
     ActiveSupport::Notifications.instrument('elastic_search.usasearch', query: query.body, index: name) do
       search(query)
     end
@@ -119,7 +119,7 @@ module Indexable
   end
 
   def commit
-    Es::CustomIndices.client_writers.each { |client| client.indices.refresh index: writer_alias }
+    Es::CustomIndices.client_writers.each { |client| client.indices.refresh(index: writer_alias) }
   end
 
   def bulk(body)
@@ -152,12 +152,12 @@ module Indexable
   def update_alias(alias_name, new_index = index_name)
     old_index = Es::CustomIndices.client_reader.indices.get_alias(name: alias_name).keys.first
     Es::CustomIndices.client_writers.each do |client|
-      client.indices.update_aliases body: {
+      client.indices.update_aliases(body: {
         actions: [
           { remove: { index: old_index, alias: alias_name } },
           { add: { index: new_index, alias: alias_name } }
         ]
-      }
+      })
     end
   end
 
