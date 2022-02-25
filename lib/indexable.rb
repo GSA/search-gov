@@ -113,7 +113,7 @@ module Indexable
     ActiveSupport::Notifications.instrument('elastic_search.usasearch', query: query.body, index: name) do
       search(query)
     end
-  rescue Exception => e
+  rescue StandardError => e
     Rails.logger.error "Problem in #{name}#search_for(): #{e}"
     "#{name}Results".constantize.new(NO_HITS)
   end
@@ -164,7 +164,7 @@ module Indexable
   def client_bulk(client, body)
     response = client.bulk(body: body)
     handle_bulk_errors(client, response) if response['errors']
-  rescue Exception => e
+  rescue StandardError => e
     Rails.logger.error "#{Time.now} Client error in #{name}#client_bulk(): #{e}; host: #{host_list(client) }; body: #{body}"
     nil
   end
