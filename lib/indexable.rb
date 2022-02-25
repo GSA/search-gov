@@ -5,7 +5,7 @@ module Indexable
   NO_HITS = { 'hits' => { 'total' => 0, 'offset' => 0, 'hits' => [] } }
 
   def index_name
-    @index_name ||= [base_index_name, Time.now.strftime("%Y%m%d%H%M%S%L")].join(DELIMTER)
+    @index_name ||= [base_index_name, Time.now.strftime('%Y%m%d%H%M%S%L')].join(DELIMTER)
   end
 
   def reader_alias
@@ -88,7 +88,7 @@ module Indexable
 
   def delete_by_query(options)
     query = options.collect { |key, value| [key, value].join(':') }.join(' ')
-    Es::CustomIndices.client_writers.each { |client| client.delete_by_query index: writer_alias, q: query, default_operator: "AND" }
+    Es::CustomIndices.client_writers.each { |client| client.delete_by_query index: writer_alias, q: query, default_operator: 'AND' }
   end
 
   def bulkify(records)
@@ -108,7 +108,7 @@ module Indexable
 
   def search_for(options)
     query = "#{name}Query".constantize.new options
-    ActiveSupport::Notifications.instrument("elastic_search.usasearch", query: query.body, index: name) do
+    ActiveSupport::Notifications.instrument('elastic_search.usasearch', query: query.body, index: name) do
       search(query)
     end
   rescue Exception => e
