@@ -46,7 +46,13 @@ module Indexable
 
   def migrate_writer
     @index_name = nil
-    Es::CustomIndices.client_writers.each { |client| client.indices.create(index: index_name, body: { settings: settings, mappings: mappings }) }
+    Es::CustomIndices.client_writers.each do |client|
+      client.indices.create(
+        index: index_name,
+        body: { settings: settings, mappings: mappings },
+        include_type_name: true
+      )
+    end
     update_alias(writer_alias)
   end
 
