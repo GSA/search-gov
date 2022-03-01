@@ -32,12 +32,6 @@ module Api
         respond_with(@search)
       end
 
-      def bing
-        @search = ApiBingSearch.new(@search_options.attributes)
-        @search.run
-        respond_with(@search)
-      end
-
       def gss
         @search = ApiGssSearch.new(@search_options.attributes)
         @search.run
@@ -105,7 +99,6 @@ module Api
                                          :offset,
                                          :query,
                                          :sort_by,
-                                         :sc_access_key,
                                          :routed,
                                          :query_not,
                                          :query_quote,
@@ -119,7 +112,6 @@ module Api
       def validate_search_options
         @search_options = search_options_validator_klass.new(search_params)
         unless @search_options.valid? && @search_options.valid?(:affiliate)
-          obfuscate_sc_access_key_error if sc_access_key_error.present?
           respond_with({ errors: @search_options.errors.full_messages }, { status: 400 })
         end
       end
@@ -129,20 +121,10 @@ module Api
         when :azure then Api::CommercialSearchOptions
         when :azure_web then Api::AzureCompositeWebSearchOptions
         when :azure_image then Api::AzureCompositeImageSearchOptions
-        when :bing then Api::SecretApiSearchOptions
         when :blended, :i14y, :video then Api::NonCommercialSearchOptions
         when :gss then Api::GssSearchOptions
         when :docs then Api::DocsSearchOptions
         end
-      end
-
-      def sc_access_key_error
-        @search_options.errors[:sc_access_key]
-      end
-
-      def obfuscate_sc_access_key_error
-        @search_options.errors.delete(:sc_access_key)
-        @search_options.errors.add(:hidden_key, 'is required')
       end
 
       def log_search_impression
