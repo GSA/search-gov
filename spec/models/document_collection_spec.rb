@@ -10,11 +10,6 @@ describe DocumentCollection do
     }
   end
 
-  describe 'schema' do
-    it { is_expected.to have_db_column(:advanced_search_enabled).of_type(:boolean).
-         with_options(null: false, default: false) }
-  end
-
   describe 'validations' do
     it { is_expected.to validate_presence_of :name }
     it { is_expected.to validate_uniqueness_of(:name).scoped_to(:affiliate_id).case_insensitive }

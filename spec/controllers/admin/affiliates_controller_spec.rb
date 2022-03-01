@@ -72,8 +72,7 @@ describe Admin::AffiliatesController do
         %i[ dap_enabled gets_blended_results gets_commercial_results_on_blended_search
             gets_i14y_results is_bing_image_search_enabled is_federal_register_document_govbox_enabled
             is_medline_govbox_enabled is_photo_govbox_enabled is_related_searches_enabled
-            is_rss_govbox_enabled is_sayt_enabled is_video_govbox_enabled jobs_enabled raw_log_access_enabled
-            search_consumer_search_enabled ]
+            is_rss_govbox_enabled is_sayt_enabled is_video_govbox_enabled jobs_enabled raw_log_access_enabled ]
       end
       let(:display_columns) do
         %i[ footer_fragment header_tagline_font_family header_tagline_font_size header_tagline_font_style
