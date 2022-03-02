@@ -138,7 +138,6 @@ end
 
 group :development, :test do
   gem 'rspec-rails', '~> 5.0'
-  gem 'rspec-json_expectations', '~> 2.2'
   gem 'rspec-its', '~> 1.3'
   gem 'email_spec', '~> 2.2'
   gem 'database_cleaner', '~> 2.0'
