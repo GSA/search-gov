@@ -97,11 +97,6 @@ describe Affiliate do
 
     it { is_expected.to have_many(:routed_queries).dependent(:destroy) }
     it { is_expected.to have_many(:rss_feeds).dependent(:destroy).inverse_of(:owner) }
-    it { is_expected.to have_many(:affiliate_templates).dependent(:destroy) }
-
-    it do
-      is_expected.to have_many(:available_templates).through(:affiliate_templates).source(:template)
-    end
 
     it do
       is_expected.to have_many(:site_domains).dependent(:destroy).
@@ -124,7 +119,6 @@ describe Affiliate do
     it { is_expected.to have_and_belong_to_many :youtube_profiles }
     it { is_expected.to belong_to :agency }
     it { is_expected.to belong_to(:language).inverse_of(:affiliates) }
-    it { is_expected.to belong_to :template }
     it { is_expected.to validate_attachment_content_type(:mobile_logo).allowing(%w{ image/gif image/jpeg image/pjpeg image/png image/x-png }).rejecting(nil) }
 
     it 'should create a new instance given valid attributes' do
@@ -994,96 +988,6 @@ describe Affiliate do
     end
   end
 
-  describe 'has_many :affiliate_templates' do
-    let(:affiliate) { affiliates(:usagov_affiliate) }
-    let(:template_rounded) { affiliate_templates(:usagov_rounded_header_link) }
-
-    describe '#load_template_schema' do
-      let(:affiliate) { affiliates(:usagov_affiliate) }
-
-      it 'loads the templates Schema if no schema is stored in DB' do
-        expect(affiliate.load_template_schema).to eq(Template.default.schema)
-      end
-
-      it 'loads the saved Schema if stored in DB' do
-        changed_to_schema = {'css' => 'Test Schema'}.to_json
-        affiliate.update_attribute(:template_schema, changed_to_schema)
-        affiliate.reload
-        expect(affiliate.load_template_schema.to_json).to eq(changed_to_schema)
-      end
-    end
-
-    describe '#save_template_schema' do
-      let(:affiliate) { affiliates(:usagov_affiliate) }
-
-      it 'merges defaults and saves the schema' do
-        allow(Template).to receive_message_chain(:default, :schema).and_return({'schema' => {'default' => 'default' }})
-        affiliate.save_template_schema({ 'schema' => {'test_schema' => 'test'}})
-        expect(affiliate.load_template_schema).to eq(Hashie::Mash.new({'schema'=>{'default'=>'default', 'test_schema'=>'test'}}))
-      end
-
-      it 'loads the schema if not blank, merges new values and saves the schema' do
-        affiliate.template_schema = {'schema' => {'default' => 'default' }}.to_json
-        affiliate.save
-        affiliate.reload
-
-        affiliate.save_template_schema({ 'schema' => {'test_schema' => 'test'}})
-        expected_schema = {'schema'=>{'default'=>'default', 'test_schema'=>'test'}}
-        expect(affiliate.load_template_schema).to eq(expected_schema)
-      end
-
-    end
-
-    describe '#reset_template_schema' do
-      let(:affiliate) { affiliates(:usagov_affiliate) }
-
-      it 'resets the schema' do
-        affiliate.update_attribute(:template_schema, {'test' => 'test'}.to_json)
-        allow(Template).to receive_message_chain(:default, :schema).and_return({'css' => {'default' => 'default' }})
-        expect(affiliate.reset_template_schema).to eq(Hashie::Mash.new({'css'=>{'default'=>'default'}}))
-      end
-    end
-
-    describe '#port_classic_theme' do
-      let(:affiliate) { affiliates(:usagov_affiliate) }
-
-      it 'merges existing colors into template_schema' do
-        affiliate.update({
-          'css_property_hash'=>{
-            'header_tagline_font_size'=>nil,
-            'content_background_color'=>'#FFFFFF',
-            'description_text_color'=>'#000000',
-            'footer_background_color'=>'#DFDFDF',
-            'footer_links_text_color'=>'#000000',
-            'header_links_background_color'=>'#0068c4',
-            'header_links_text_color'=>'#fff',
-            'header_text_color'=>'#000000',
-            'header_background_color'=>'#FFFFFF',
-            'header_tagline_background_color'=>'#000000',
-            'header_tagline_color'=>'#FFFFFF',
-            'search_button_text_color'=>'#FFFFFF',
-            'search_button_background_color'=>'#00396F',
-            'left_tab_text_color'=>'#9E3030',
-            'navigation_background_color'=>'#F1F1F1',
-            'navigation_link_color'=>'#505050',
-            'page_background_color'=>'#99999',
-            'title_link_color'=>'#2200CC',
-            'url_link_color'=>'#006800',
-            'visited_title_link_color'=>'#800080',
-            'font_family'=>'Arial, sans-serif',
-            'header_tagline_font_family'=>'Georgia, "Times New Roman", serif',
-            'header_tagline_font_style'=>'italic'
-          },
-          'theme'=>'custom'
-        })
-        affiliate.port_classic_theme
-
-        expect(affiliate.load_template_schema.css.colors.header.header_text_color).to eq '#000000'
-
-      end
-    end
-  end
-
   describe 'image assets' do
     let(:image) { File.open(Rails.root.join('spec/fixtures/images/corgi.jpg')) }
     let(:image_attributes) do
@@ -1102,36 +1006,6 @@ describe Affiliate do
         expect(affiliate.send(image).url).to match /https:\/\/.*\.s3\.amazonaws\.com\/test\/site\/#{affiliate.id}\/#{image}\/\d+\/original\/corgi.jpg/
 
       end
-    end
-  end
-
-  describe '#template' do
-    context 'when no template has been assigned' do
-      let(:affiliate) { described_class.new }
-      it 'returns the default template' do
-        expect(affiliate.template.name).to eq 'Classic'
-      end
-    end
-  end
-
-  # This will be torn out eventually along with the rest of the
-  # deprecated search-consumer code: SRCHAR-2713
-  describe '#update_templates' do
-    let(:affiliate) { affiliates(:usagov_affiliate) }
-    let(:classic) { Template.find_by_name('Classic') }
-    let(:irs) { Template.find_by_name('IRS') }
-    let(:rounded) { Template.find_by_name('Rounded Header Links') }
-    let(:square) { Template.find_by_name('Square Header Links') }
-
-    before do
-      affiliate.affiliate_templates.create!(template_id: classic.id)
-      affiliate.affiliate_templates.create!(template_id: irs.id)
-      affiliate.update_attribute(:template_id, classic.id)
-      affiliate.update_templates(rounded.id, [rounded.id, irs.id])
-    end
-
-    it 'sets the active template' do
-      expect(affiliate.template.name).to eq 'Rounded Header Links'
     end
   end
 

@@ -60,18 +60,6 @@ class Affiliate < ApplicationRecord
     assoc.has_many :tag_filters, -> { order 'tag ASC' }, inverse_of: :affiliate
   end
 
-  has_many :affiliate_templates, dependent: :destroy do
-    def make_available(template_ids)
-      template_ids.each { |id| find_or_create_by(template_id: id) }
-      true
-    end
-
-    def make_unavailable(template_ids)
-      where(template_id: template_ids).delete_all
-    end
-  end
-
-  has_many :available_templates, through: :affiliate_templates, source: :template
   has_many :users, -> { order 'first_name' }, through: :memberships
 
   has_many :default_users,
@@ -89,7 +77,6 @@ class Affiliate < ApplicationRecord
   has_many :routed_query_keywords, -> { order 'keyword' }, through: :routed_queries
   belongs_to :agency
   belongs_to :language, foreign_key: :locale, primary_key: :code, inverse_of: :affiliates
-  belongs_to :template, inverse_of: :affiliates
 
   AWS_IMAGE_SETTINGS = {
     styles: { large: '300x150>' },
@@ -415,88 +402,6 @@ class Affiliate < ApplicationRecord
     dup_instance = super
     dup_instance.css_property_hash = css_property_hash
     dup_instance
-  end
-
-  def load_template_schema
-    return Hashie::Mash.new(template.schema) if template_schema.blank?
-
-    Hashie::Mash.new(JSON.parse(template_schema))
-  end
-
-  def save_template_schema(saved_template_schema)
-    merged_template_schema =
-      if template_schema.blank?
-        (Template.default.schema).deep_merge(saved_template_schema.to_h)
-      else
-        (JSON.parse(template_schema)).deep_merge(saved_template_schema)
-      end
-
-    update(template_schema: merged_template_schema.to_json)
-  end
-
-  def reset_template_schema
-    update_attribute(:template_schema, Template.default.schema.to_json)
-    Hashie::Mash.new(JSON.parse(template_schema))
-  end
-
-  def port_classic_theme
-    new_hash = {}
-
-    if css_property_hash[:font_family] || css_property_hash[:font_family] != 'Default'
-      new_hash['font'] = {
-        'default_font' => css_property_hash[:font_family]
-      }
-    end
-
-    new_hash['colors'] = {
-      'template' => {
-        'page_background' => css_property_hash[:page_background_color]
-      },
-      'header' => {
-        'header_background_color' => css_property_hash[:header_background_color],
-        'header_text_color' => css_property_hash[:header_text_color]
-      },
-      'facets' => {
-        'facets_background_color' => css_property_hash[:navigation_background_color],
-        'active_facet_link_color' => css_property_hash[:left_tab_text_color],
-        'facet_link_color' => css_property_hash[:navigation_link_color]
-      },
-      'footer' => {
-        'footer_background_color' => css_property_hash[:footer_background_color],
-        'footer_links_text_color' => css_property_hash[:footer_links_text_color]
-      },
-      'header_links' => {
-        'header_links_background_color' => css_property_hash[:header_links_background_color],
-        'header_links_text_color' => css_property_hash[:header_links_text_color]
-      },
-      'results_container' => {
-        'title_link_color' => css_property_hash[:title_link_color],
-        'visited_title_link_color' => css_property_hash[:visited_title_link_color],
-        'result_url_color' => css_property_hash[:url_link_color],
-        'description_text_color' => css_property_hash[:description_text_color]
-      },
-      'search_bar' => {
-        'search_button_background_color' => css_property_hash[:search_button_background_color]
-      },
-      'tagline' => {
-        'header_tagline_color' => css_property_hash[:header_tagline_color],
-        'header_tagline_background_color' => css_property_hash[:header_tagline_background_color]
-      }
-    }
-
-    save_template_schema({ 'css' => new_hash })
-  end
-
-  def template
-    super || Template.default
-  end
-
-  def update_templates(selected_template_id, selected_template_ids)
-    transaction do
-      affiliate_templates.make_available(selected_template_ids)
-      affiliate_templates.make_unavailable(Template.pluck(:id) - selected_template_ids)
-      update(template_id: selected_template_id)
-    end
   end
 
   def sc_search_engine
