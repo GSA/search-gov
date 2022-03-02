@@ -404,10 +404,6 @@ class Affiliate < ApplicationRecord
     dup_instance
   end
 
-  def sc_search_engine
-    search_engine =~ /BingV\d+/ ? 'Bing' : search_engine
-  end
-
   def status
     active? ? 'Active' : 'Inactive'
   end
