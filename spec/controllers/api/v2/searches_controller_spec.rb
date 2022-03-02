@@ -398,30 +398,6 @@ describe Api::V2::SearchesController do
       end
     end
 
-    context 'when the search options are valid and the affiliate is using BingV6' do
-      let!(:search) { double(ApiBingDocsSearch, as_json: { foo: 'bar'}, modules: %w(BWEB)) }
-
-      before do
-        expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
-        allow(affiliate).to receive(:search_engine).and_return('BingV6')
-
-        expect(ApiBingDocsSearch).to receive(:new).with(hash_including(query_params)).and_return(search)
-        expect(search).to receive(:run)
-        expect(SearchImpression).to receive(:log).with(search,
-                                                   'docs',
-                                                   hash_including('query'),
-                                                   be_a_kind_of(ActionDispatch::Request))
-
-        get :docs, params: docs_params
-      end
-
-      it { is_expected.to respond_with :success }
-
-      it 'returns search JSON' do
-        expect(JSON.parse(response.body)['foo']).to eq('bar')
-      end
-    end
-
     context 'when the search options are valid, the affiliate is using BingV6, and the collection is deep' do
       let!(:search) { double(ApiI14ySearch, as_json: { foo: 'bar'}, modules: %w(I14Y)) }
       let!(:document_collection) { double(DocumentCollection, too_deep_for_bing?: true) }
