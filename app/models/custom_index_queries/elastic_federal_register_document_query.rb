@@ -100,6 +100,8 @@ class ElasticFederalRegisterDocumentQuery < ElasticTextFilteredQuery
             end
           end
         end
+
+        json.minimum_should_match 1
       end
     end
   end

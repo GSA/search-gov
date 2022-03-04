@@ -147,3 +147,16 @@
   publication_date: 2013-02-01
   comments_close_on: <%= Date.current.advance(days: 2).to_s(:db) %>
   significant: false
+
+'2022-12345':
+  federal_register_agencies: fr_irs
+  document_number: 2022-12345
+  title: Fishing for Refunds
+  html_url: https://www.federalregister.gov/articles/2013/02/01/2013-31511/prohibitions-and-restrictions-on-proprietary-trading-and-certain-interests-in-and-relationships-with
+  document_type: Proposed Rule
+  start_page: 8888
+  end_page: 8889
+  page_length: 1
+  publication_date: 2013-02-01
+  comments_close_on: 2022-03-01
+  significant: false
