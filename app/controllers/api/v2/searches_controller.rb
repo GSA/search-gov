@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Api
   module V2
     class SearchesController < ApplicationController
@@ -32,6 +34,7 @@ module Api
         respond_with(@search)
       end
 
+      # Deprecated - will be removed in https://cm-jira.usa.gov/browse/SRCH-1429
       def gss
         @search = ApiGssSearch.new(@search_options.attributes)
         @search.run
@@ -50,6 +53,8 @@ module Api
         respond_with(@search)
       end
 
+      # This endpoint is currently unused, but may be re-enabled in the future:
+      # https://cm-jira.usa.gov/browse/SFL-46
       def docs
         @document_collection = (DocumentCollection.find(@search_options.dc) rescue nil)
         @search = if @document_collection&.too_deep_for_bing?
@@ -65,8 +70,6 @@ module Api
 
       def affiliate_docs_search_class
         case @search_options.site.search_engine
-        when %r{BingV\d+}
-          ApiBingDocsSearch
         when 'Google'
           ApiGoogleDocsSearch
         end
