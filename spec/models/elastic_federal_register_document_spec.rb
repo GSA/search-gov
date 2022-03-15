@@ -1,10 +1,8 @@
 require 'spec_helper'
 
 describe ElasticFederalRegisterDocument do
-  fixtures :federal_register_agencies, :federal_register_documents
-
-  let!(:fr_noaa) { federal_register_agencies(:fr_noaa) }
-  let!(:fr_irs) { federal_register_agencies(:fr_irs) }
+  let(:fr_noaa) { federal_register_agencies(:fr_noaa) }
+  let(:fr_irs) { federal_register_agencies(:fr_irs) }
 
   describe '.search_for' do
     before do
