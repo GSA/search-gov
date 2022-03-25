@@ -20,7 +20,7 @@ describe SitemapIndexer do
     stub_request(:get, sitemap_url).
       with(headers: { 'User-Agent' => DEFAULT_USER_AGENT }).
       to_return(body: sitemap_content)
-    allow(searchgov_domain).to receive(:index_urls)
+    allow(searchgov_domain).to receive_message_chain(:reload, :index_urls)
   end
 
   describe '#index' do
@@ -148,7 +148,7 @@ describe SitemapIndexer do
       allow(SearchgovDomain).to receive(:find_by).
         with(domain: 'agency.gov').
         and_return(searchgov_domain)
-      expect(searchgov_domain).to receive(:index_urls)
+      expect(searchgov_domain).to receive_message_chain(:reload, :index_urls)
       index
     end
 
@@ -193,7 +193,7 @@ describe SitemapIndexer do
       it 'kicks off indexing' do
         allow(SearchgovDomain).to receive(:find_by).
           with(domain: 'agency.gov').and_return(searchgov_domain)
-        expect(searchgov_domain).to receive(:index_urls)
+        expect(searchgov_domain).to receive_message_chain(:reload, :index_urls)
         index
       end
     end
