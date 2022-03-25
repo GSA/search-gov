@@ -82,25 +82,31 @@ class ElasticFederalRegisterDocumentQuery < ElasticTextFilteredQuery
             end
           end
         end
-        json.set! :should do
-          json.child! { json.term { json.document_type 'rule' } }
-          json.child! { json.term { json.significant true } }
-          json.child! do
-            json.range do
-              json.publication_date do
-                json.gte 'now-90d/d'
-              end
-            end
+        relevance_filter(json)
+      end
+    end
+  end
+
+  def relevance_filter(json)
+    json.set! :should do
+      json.child! { json.term { json.document_type 'rule' } }
+      json.child! { json.term { json.significant true } }
+      json.child! do
+        json.range do
+          json.publication_date do
+            json.gte 'now-90d/d'
           end
-          json.child! do
-            json.range do
-              json.comments_close_on do
-                json.gte 'now/d'
-              end
-            end
+        end
+      end
+      json.child! do
+        json.range do
+          json.comments_close_on do
+            json.gte 'now/d'
           end
         end
       end
     end
+
+    json.minimum_should_match 1
   end
 end
