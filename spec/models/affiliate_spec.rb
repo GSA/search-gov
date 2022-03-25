@@ -16,9 +16,6 @@ describe Affiliate do
         is_expected.to have_db_column(:i14y_date_stamp_enabled).
           of_type(:boolean).with_options(default: false, null: false)
       end
-      # The active_template_id column has been deprectated. It will be dropped in a future migration.
-      it { is_expected.to have_db_column(:active_template_id).of_type(:integer) }
-      it { is_expected.to have_db_column(:template_id).of_type(:integer) }
       it do
         is_expected.to have_db_column(:search_engine).of_type(:string).
           with_options(default: 'BingV7', null: false)
@@ -27,11 +24,6 @@ describe Affiliate do
         is_expected.to have_db_column(:active).of_type(:boolean).
           with_options(default: true, null: false)
       end
-    end
-
-    describe 'indices' do
-      it { is_expected.to have_db_index(:active_template_id) }
-      it { is_expected.to have_db_index(:template_id) }
     end
 
     describe 'Paperclip attachments' do
@@ -1005,25 +997,6 @@ describe Affiliate do
       image_attributes.each do |image|
         expect(affiliate.send(image).url).to match /https:\/\/.*\.s3\.amazonaws\.com\/test\/site\/#{affiliate.id}\/#{image}\/\d+\/original\/corgi.jpg/
 
-      end
-    end
-  end
-
-  describe '#sc_search_engine' do
-    subject { described_class.new(valid_create_attributes.merge(search_engine: search_engine)) }
-
-    {
-      'Bing' => 'Bing',
-      'BingV6' => 'Bing',
-      'BingV7' => 'Bing',
-      'Google' => 'Google'
-    }.each do |configured_search_engine, sc_reported_search_engine|
-      context "when an affiliate's search_engine is '#{configured_search_engine}'" do
-        let(:search_engine) { configured_search_engine }
-
-        it "reports sc_search_engine as '#{sc_reported_search_engine}'" do
-          expect(subject.sc_search_engine).to eql(sc_reported_search_engine)
-        end
       end
     end
   end
