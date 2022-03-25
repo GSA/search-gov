@@ -9,11 +9,14 @@ class ElasticBoostedContentQuery < ElasticBestBetQuery
 
   def filtered_query_filter(json)
     super do
-      json.set! :should do |should_json|
-        @site_limits.each do |site_limit|
-          should_json.child! { should_json.prefix { json.url site_limit } }
+      if @site_limits.present?
+        json.set! :should do |should_json|
+          @site_limits.each do |site_limit|
+            should_json.child! { should_json.prefix { json.url site_limit } }
+          end
         end
-      end if @site_limits.present?
+        json.minimum_should_match 1
+      end
     end
   end
 end

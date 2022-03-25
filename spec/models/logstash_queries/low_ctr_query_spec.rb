@@ -1,17 +1,17 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
 describe LowCtrQuery do
   let(:query) do
     described_class.new('affiliate_name',
-                    Date.new(2019,11,1),
-                    Date.new(2019,11,18),
-                    field: 'params.query.raw')
+                        Date.new(2019, 11, 1),
+                        Date.new(2019, 11, 18),
+                        field: 'params.query.raw')
   end
   let(:reduce_script) do
     <<~SCRIPT.strip
       int clicks = 0;
       int searches = 0;
-      for (agg in params._aggs){
+      for (agg in states){
         clicks += agg.click ;
         searches += agg.search
       }
@@ -25,24 +25,27 @@ describe LowCtrQuery do
           "filter": [
             {
               "term": {
-                "params.affiliate": 'affiliate_name'
+                "params.affiliate": "affiliate_name"
               }
             },
             {
               "terms": {
-                "type": ['search','click']
+                "type": [
+                  "search",
+                  "click"
+                ]
               }
             },
             {
               "exists": {
-                "field": 'modules'
+                "field": "modules"
               }
             },
             {
               "range": {
                 "@timestamp": {
-                  "gte": '2019-11-01',
-                  "lte": '2019-11-18'
+                  "gte": "2019-11-01",
+                  "lte": "2019-11-18"
                 }
               }
             }
@@ -50,41 +53,42 @@ describe LowCtrQuery do
           "must_not": [
             {
               "term": {
-                "useragent.device": 'Spider'
+                "useragent.device": "Spider"
               }
             },
             {
               "term": {
-                "params.query.raw": ''
+                "params.query.raw": ""
               }
             },
             {
               "term": {
-                "modules": 'QRTD'
+                "modules": "QRTD"
               }
             }
           ]
         }
       },
-     "aggs": {
+      "aggs": {
         "agg": {
           "terms": {
             "min_doc_count": 20,
             "size": 100_000,
-            "field": 'params.query.raw'
+            "field": "params.query.raw"
           },
           "aggs": {
             "ctr": {
               "scripted_metric": {
                 "init_script": {
-                  "source": "params._agg['click'] = params._agg['search'] = 0"
+                  "source": "state['click'] = state['search'] = 0"
                 },
                 "map_script": {
-                  "source": "params._agg[doc['type'].value] += 1"
+                  "source": "state[doc['type'].value] += 1"
                 },
                 "reduce_script": {
                   "source": reduce_script
-                }
+                },
+                "combine_script": "return state"
               }
             }
           }
