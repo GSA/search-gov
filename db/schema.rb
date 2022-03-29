@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_13_191157) do
+ActiveRecord::Schema.define(version: 2022_03_01_202004) do
 
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -45,18 +45,6 @@ ActiveRecord::Schema.define(version: 2022_01_13_191157) do
     t.integer "feature_id", null: false
     t.datetime "created_at", null: false
     t.index ["affiliate_id", "feature_id"], name: "index_affiliate_feature_additions_on_affiliate_id_and_feature_id", unique: true
-  end
-
-  create_table "affiliate_templates", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer "affiliate_id", null: false
-    t.string "template_class"
-    t.boolean "available", default: true, null: false
-    t.integer "template_id"
-    t.index ["affiliate_id", "template_class"], name: "index_affiliate_templates_on_affiliate_id_and_template_class", unique: true
-    t.index ["affiliate_id", "template_id"], name: "index_affiliate_templates_on_affiliate_id_and_template_id", unique: true
-    t.index ["template_id"], name: "index_affiliate_templates_on_template_id"
   end
 
   create_table "affiliate_twitter_settings", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
@@ -106,11 +94,8 @@ ActiveRecord::Schema.define(version: 2022_01_13_191157) do
     t.string "api_access_key", null: false
     t.boolean "gets_commercial_results_on_blended_search", default: true, null: false
     t.boolean "gets_i14y_results", default: false, null: false
-    t.boolean "search_consumer_search_enabled", default: false, null: false
     t.string "domain_control_validation_code"
     t.boolean "i14y_date_stamp_enabled", default: false, null: false
-    t.integer "active_template_id"
-    t.text "template_schema", size: :medium
     t.string "mobile_logo_file_name"
     t.string "mobile_logo_content_type"
     t.integer "mobile_logo_file_size"
@@ -119,12 +104,9 @@ ActiveRecord::Schema.define(version: 2022_01_13_191157) do
     t.string "header_tagline_logo_content_type"
     t.integer "header_tagline_logo_file_size"
     t.datetime "header_tagline_logo_updated_at"
-    t.integer "template_id"
     t.string "bing_v5_key", limit: 32
     t.boolean "active", default: true, null: false
-    t.index ["active_template_id"], name: "index_affiliates_on_active_template_id"
     t.index ["name"], name: "index_affiliates_on_name", unique: true
-    t.index ["template_id"], name: "index_affiliates_on_template_id"
   end
 
   create_table "affiliates_instagram_profiles", id: false, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
@@ -217,7 +199,6 @@ ActiveRecord::Schema.define(version: 2022_01_13_191157) do
     t.string "name", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean "advanced_search_enabled", default: false, null: false
     t.index ["affiliate_id", "name"], name: "index_document_collections_on_affiliate_id_and_name", unique: true
   end
 
@@ -682,16 +663,6 @@ ActiveRecord::Schema.define(version: 2022_01_13_191157) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["affiliate_id"], name: "index_tag_filters_on_affiliate_id"
-  end
-
-  create_table "templates", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
-    t.string "name", limit: 50, null: false
-    t.string "klass", limit: 50, null: false
-    t.string "description", null: false
-    t.text "schema", size: :medium, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_templates_on_name", unique: true
   end
 
   create_table "top_searches", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|

@@ -5,7 +5,6 @@ SimpleCov.command_name 'RSpec'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
-require 'rspec/json_expectations'
 require 'email_spec'
 require 'authlogic/test_case'
 require 'paperclip/matchers'
