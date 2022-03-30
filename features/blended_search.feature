@@ -341,3 +341,17 @@ Feature: Blended Search
       | blended.agency.gov | New alert for the test aff | Inactive | Test Title |
     When I am on blended.agency.gov's search page
     Then I should not see "New alert for the test aff"
+
+  Scenario: Searching a deep collection
+    Given the following Affiliates exist:
+      | display_name | name               | contact_email    | first_name | last_name | gets_blended_results |
+      | Blended site | blended.agency.gov | admin@agency.gov | John       | Bar       | true                 |
+    And the following IndexedDocuments exist:
+      | title      | description | url                                                           | affiliate          | last_crawl_status | published_ago  |
+      | My Title   | Deep Result | https://agency.gov/very/very/very/deeply/nested/document.html | blended.agency.gov | OK                | 30 minutes ago |
+    And affiliate "blended.agency.gov" has the following document collections:
+      | name            | prefixes                                         |
+      | Deep Collection | https://agency.gov/very/very/very/deeply/nested/ |
+    When I am on blended.agency.gov's "Deep Collection" docs search page
+    And I search for "deep"
+    Then I should see "Deep Result"
