@@ -35,7 +35,7 @@ module SearchHelper
 
   def display_result_extname_prefix(url)
     begin
-      path_extname = File.extname(URI.parse(url).path)[1..-1]
+      path_extname = File.extname(URI.parse(url).path)[1..]
       if SPECIAL_URL_PATH_EXT_NAMES.include?( path_extname.downcase )
         extname_span(path_extname)
       else
