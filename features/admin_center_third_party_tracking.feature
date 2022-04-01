@@ -21,7 +21,7 @@ Feature: Affiliate 3rd party tracking
     When I fill in "external_tracking_code" with "<script>var analytics;</script>"
     And I submit the form by pressing "Submit"
     Then I should see "Your request to update your web analytics code has been submitted."
-    And "search@support.digitalgov.gov" should receive an email
+    And "support" should receive an email
 
     When I open the email
     Then I should see "3rd Party Tracking" in the email subject

@@ -3,7 +3,7 @@
 class UserSession < Authlogic::Session::Base
   INVALID_LOGIN_MESSAGE = <<~MESSAGE.chomp
     These credentials are not recognized as valid for accessing Search.gov.
-    Please contact search@support.digitalgov.gov if you believe this is in error.
+    Please contact #{Rails.application.secrets.organization[:support_email_address]} if you believe this is in error.
   MESSAGE
 
   allow_http_basic_auth false

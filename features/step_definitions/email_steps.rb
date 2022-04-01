@@ -34,6 +34,17 @@ module EmailHelpers
     # Note that last_email_address will be reset after each Scenario.
     last_email_address || "affiliate_admin@fixtures.org"
   end
+
+  def searchgov_addresses(address)
+    address = case address
+              when "support"
+                "#{Rails.application.secrets.organization[:support_email_address]}"
+              when "admin"
+                Rails.application.secrets.organization[:admin_email_address]
+              else
+                address
+              end
+  end
 end
 
 World(EmailHelpers)
@@ -53,11 +64,11 @@ end
 #
 
 Then /^(?:I|they|"([^"]*?)") should receive (an|no|\d+) emails?$/ do |address, amount|
-  unread_emails_for(address).size.should == parse_email_count(amount)
+  unread_emails_for(searchgov_addresses(address)).size.should == parse_email_count(amount)
 end
 
 Then /^(?:I|they|"([^"]*?)") should have (an|no|\d+) emails?$/ do |address, amount|
-  mailbox_for(address).size.should == parse_email_count(amount)
+  mailbox_for(searchgov_addresses(address)).size.should == parse_email_count(amount)
 end
 
 #

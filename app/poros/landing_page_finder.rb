@@ -3,10 +3,11 @@
 class LandingPageFinder
   include Rails.application.routes.url_helpers
 
-  ACCESS_DENIED_TEXT =
-    'Access Denied: These credentials are not recognized as valid' \
-    ' for accessing Search.gov. Please reach out to' \
-    ' search@support.digitalgov.gov if you believe this is in error.'
+  ACCESS_DENIED_TEXT = <<~MESSAGE
+    Access Denied: These credentials are not recognized as valid
+    for accessing Search.gov. Please reach out to
+    #{Rails.application.secrets.organization[:support_email_address]} if you believe this is in error.
+  MESSAGE
 
   class Error < StandardError
   end

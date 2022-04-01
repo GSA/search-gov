@@ -17,7 +17,7 @@ Feature: User sessions
   Scenario: User is not approved
     When I log in with email "affiliate_manager_with_not_approved_status@fixtures.org"
     Then I should see "Security Notification"
-    And I should see "These credentials are not recognized as valid for accessing Search.gov. Please reach out to search@support.digitalgov.gov if you believe this is in error."
+    And I should see "These credentials are not recognized as valid for accessing Search.gov. Please reach out to search@gsa.gov if you believe this is in error."
 
   Scenario: User's session expires after 1 hour
     Given the following Users exist:
