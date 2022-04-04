@@ -14,6 +14,12 @@ describe UsersController do
   before { activate_authlogic }
 
   describe '#create' do
+    # SRCH-2849 For some reason verify_recaptcha returns false on UsersController#create if, and only
+    # if, these tests run after the js tests in `spec/system/admin/user_spec.rb`. By default, reCAPTCHA
+    # *should* be skipped in the 'test' env (https://github.com/ambethia/recaptcha#testing), so
+    # we're just explicitly returning a true here to guard against sporadic failures.
+    before { allow(controller).to receive(:verify_recaptcha).and_return(true) }
+
     it do
       is_expected.to permit(*permitted_params).
         for(:create, params: { user: user_params })
