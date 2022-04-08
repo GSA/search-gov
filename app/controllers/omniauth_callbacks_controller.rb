@@ -13,7 +13,7 @@ class OmniauthCallbacksController < ApplicationController
     Rails.logger.error e.message
     flash[:error] = <<~MESSAGE
       Error logging in. Please reach out to
-      #{Rails.application.secrets.organization[:support_email_address]} if the problem persists.
+      #{SUPPORT_EMAIL_ADDRESS} if the problem persists.
     MESSAGE
     redirect_to('/login')
   end

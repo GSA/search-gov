@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   NON_GOV_EMAIL_MESSAGE = <<~MESSAGE
     Because you don't have a .gov or .mil email address, we need additional information.
     If you are a contractor on an active contract, please use your .gov or .mil email
-    address on this account, or have your federal POC email #{Rails.application.secrets.organization[:support_email_address]}
+    address on this account, or have your federal POC email #{SUPPORT_EMAIL_ADDRESS}
     to confirm your status.
   MESSAGE
 

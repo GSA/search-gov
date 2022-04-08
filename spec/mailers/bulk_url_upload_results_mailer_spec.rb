@@ -10,11 +10,11 @@ RSpec.shared_examples 'a bulk upload notification email' do
   end
 
   it 'has the correct from header' do
-    expect(mail.from).to eq([ApplicationMailer::DELIVER_FROM_EMAIL_ADDRESS])
+    expect(mail.from).to eq([DELIVER_FROM_EMAIL_ADDRESS])
   end
 
   it 'has the correct reply-to' do
-    expect(mail.reply_to).to eq([ApplicationMailer::REPLY_TO_EMAIL_ADDRESS])
+    expect(mail.reply_to).to eq([SUPPORT_EMAIL_ADDRESS])
   end
 
   it 'has the correct total number of URLs' do

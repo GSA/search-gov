@@ -6,7 +6,7 @@ class LandingPageFinder
   ACCESS_DENIED_TEXT = <<~MESSAGE
     Access Denied: These credentials are not recognized as valid
     for accessing Search.gov. Please reach out to
-    #{Rails.application.secrets.organization[:support_email_address]} if you believe this is in error.
+    #{SUPPORT_EMAIL_ADDRESS} if you believe this is in error.
   MESSAGE
 
   class Error < StandardError

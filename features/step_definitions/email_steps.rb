@@ -38,9 +38,9 @@ module EmailHelpers
   def searchgov_addresses(address)
     address = case address
               when "support"
-                "#{Rails.application.secrets.organization[:support_email_address]}"
+                "#{SUPPORT_EMAIL_ADDRESS}"
               when "admin"
-                Rails.application.secrets.organization[:admin_email_address]
+                "#{ADMIN_EMAIL_ADDRESS}"
               else
                 address
               end
