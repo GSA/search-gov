@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Emailer do
-context do
   include EmailSpec::Helpers
   include EmailSpec::Matchers
   fixtures :affiliates, :users, :features, :memberships
@@ -360,5 +359,4 @@ context do
 
     after { EmailTemplate.load_default_templates }
   end
-end
 end
