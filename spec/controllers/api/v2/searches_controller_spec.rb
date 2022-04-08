@@ -200,59 +200,6 @@ describe Api::V2::SearchesController do
     end
   end
 
-  describe '#bing' do
-    let(:bing_params) { search_params.merge(sc_access_key: 'secureKey') }
-
-    context 'when the search options are not valid' do
-      before { get :bing, params: bing_params.except(:sc_access_key) }
-
-      it { is_expected.to respond_with :bad_request }
-
-      it 'returns errors in JSON' do
-        expect(JSON.parse(response.body)['errors']).to eq(['hidden_key is required'])
-      end
-    end
-
-    context 'when the search options are valid' do
-      let!(:search) { double(ApiBingSearch, as_json: { foo: 'bar'}, modules: %w(BWEB)) }
-
-      before do
-        expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
-
-        expect(ApiBingSearch).to receive(:new).
-          with(hash_including(query_params)).and_return(search)
-        expect(search).to receive(:run)
-        expect(SearchImpression).to receive(:log).with(search,
-                                                   'bing',
-                                                   hash_including('query'),
-                                                   be_a_kind_of(ActionDispatch::Request))
-
-        get :bing, params: bing_params
-      end
-
-      it { is_expected.to respond_with :success }
-
-      it 'returns search JSON' do
-        expect(JSON.parse(response.body)['foo']).to eq('bar')
-      end
-    end
-
-    context 'when a routed query term is matched' do
-      before do
-        expect(RoutedQueryImpressionLogger).to receive(:log).
-          with(affiliate, 'moar unclaimed money', an_instance_of(ActionController::TestRequest))
-
-        get :bing, params: bing_params.merge(query: 'moar unclaimed money')
-      end
-
-      it { is_expected.to respond_with :success }
-
-      it 'returns search JSON' do
-        expect(JSON.parse(response.body)['route_to']).to eq('https://www.usa.gov/unclaimed_money')
-      end
-    end
-  end
-
   describe '#gss' do
     let(:gss_params) { search_params.merge({ cx: 'my-cx' }) }
 
@@ -448,30 +395,6 @@ describe Api::V2::SearchesController do
 
       it 'returns errors in JSON' do
         expect(JSON.parse(response.body)['errors']).to eq(['dc must be present'])
-      end
-    end
-
-    context 'when the search options are valid and the affiliate is using BingV6' do
-      let!(:search) { double(ApiBingDocsSearch, as_json: { foo: 'bar'}, modules: %w(BWEB)) }
-
-      before do
-        expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
-        allow(affiliate).to receive(:search_engine).and_return('BingV6')
-
-        expect(ApiBingDocsSearch).to receive(:new).with(hash_including(query_params)).and_return(search)
-        expect(search).to receive(:run)
-        expect(SearchImpression).to receive(:log).with(search,
-                                                   'docs',
-                                                   hash_including('query'),
-                                                   be_a_kind_of(ActionDispatch::Request))
-
-        get :docs, params: docs_params
-      end
-
-      it { is_expected.to respond_with :success }
-
-      it 'returns search JSON' do
-        expect(JSON.parse(response.body)['foo']).to eq('bar')
       end
     end
 

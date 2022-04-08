@@ -16,6 +16,16 @@ AllCops:
     - app/controllers/api/v1/agencies_controller.rb
     - app/controllers/api/v2/agencies_controller.rb
 
+Layout/FirstHashElementIndentation:
+  Exclude:
+    # These files use Kibana's JSON style for easier side-to-side comparison, copy/pasting, etc.
+    - spec/models/logstash_queries/**/*
+
+Lint/SymbolConversion:
+  Exclude:
+    # These files use Kibana's JSON style for easier side-to-side comparison, copy/pasting, etc.
+    - spec/models/logstash_queries/**/*
+
 Metrics/BlockLength:
   Exclude:
     # Exclude ActiveScaffold-based controllers
@@ -58,3 +68,19 @@ Style/NumericLiterals:
     - /**/**/*twitter*
     - /**/**/*tweet*
     - spec/support/api_search_as_json_behavior.rb
+
+
+Style/QuotedSymbols:
+  Exclude:
+    # These files use Kibana's JSON style for easier side-to-side comparison, copy/pasting, etc.
+    - spec/models/logstash_queries/**/*
+
+Style/StringLiterals:
+  Exclude:
+    # These files use Kibana's JSON style for easier side-to-side comparison, copy/pasting, etc.
+    - spec/models/logstash_queries/**/*
+
+Style/WordArray:
+  Exclude:
+    # These files use Kibana's JSON style for easier side-to-side comparison, copy/pasting, etc.
+    - spec/models/logstash_queries/**/*

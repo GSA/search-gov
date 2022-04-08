@@ -50,7 +50,7 @@ class SitemapIndexer
   rescue => e
     Rails.logger.error("Error processing sitemap entries for #{uri}: #{e}")
   ensure
-    searchgov_domain.index_urls
+    searchgov_domain.reload.index_urls
     set_counter_callbacks
   end
 

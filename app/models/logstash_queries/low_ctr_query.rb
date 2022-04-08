@@ -21,6 +21,7 @@ class LowCtrQuery < DateRangeTopNExistsQuery
               json.init_script { json.source init_script }
               json.map_script { json.source map_script }
               json.reduce_script { json.source reduce_script }
+              json.combine_script 'return state'
             end
           end
         end
@@ -31,18 +32,18 @@ class LowCtrQuery < DateRangeTopNExistsQuery
   private
 
   def init_script
-    "params._agg['click'] = params._agg['search'] = 0"
+    "state['click'] = state['search'] = 0"
   end
 
   def map_script
-    "params._agg[doc['type'].value] += 1"
+    "state[doc['type'].value] += 1"
   end
 
   def reduce_script
     <<~SCRIPT.strip
       int clicks = 0;
       int searches = 0;
-      for (agg in params._aggs){
+      for (agg in states){
         clicks += agg.click ;
         searches += agg.search
       }

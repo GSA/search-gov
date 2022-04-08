@@ -14,7 +14,7 @@ describe WatcherLowCtrQuery do
     <<~SCRIPT.strip
       int clicks = 0;
       int searches = 0;
-      for (agg in params._aggs){
+      for (agg in states){
         clicks += agg.click ;
         searches += agg.search
       }
@@ -89,14 +89,15 @@ describe WatcherLowCtrQuery do
             "ctr": {
               "scripted_metric": {
                 "init_script": {
-                  "source": "params._agg['click'] = params._agg['search'] = 0"
+                  "source": "state['click'] = state['search'] = 0"
                 },
                 "map_script": {
-                  "source": "params._agg[doc['type'].value] += 1"
+                  "source": "state[doc['type'].value] += 1"
                 },
                 "reduce_script": {
                   "source": reduce_script
-                }
+                },
+                "combine_script": "return state"
               }
             }
           }
