@@ -14,13 +14,6 @@ Read our [contributing guidelines](https://github.com/GSA/search-gov/blob/master
 
 Use [RVM](https://rvm.io/) to install the version of Ruby specified in [.ruby-version](/.ruby-version). 
 
-### Gems
-
-Use [Bundler](https://bundler.io/) to install the required gems:
-
-    $ gem install bundler
-    $ bundle install
-
 ### Docker
 
 The required services (Redis, MySQL, etc.) can all be installed and run using [Docker](https://www.docker.com/get-started). If you prefer to install the services without Docker, see the [wiki](https://github.com/GSA/search-gov/wiki/Local-Installation-and-Management-of-dependencies). We recommend setting the max memory alloted to Docker to 4GB (in Docker Desktop, Preferences > Resources > Advanced). See [the wiki](https://github.com/GSA/search-gov/wiki/Docker-Command-Reference) for more documentation on basic Docker commands.
@@ -63,6 +56,8 @@ Use the package manager of your choice to install the following packages:
 * Google's [protocol buffers](https://developers.google.com/protocol-buffers/) - also required by the cld gem
 * [Java Runtime Environment](https://www.java.com/en/download/)
 * [ImageMagick](https://imagemagick.org/) - required by the Paperclip gem, used for image attachments
+* [MySQL client](https://github.com/brianmario/mysql2#mac-os-x) - required by the mysql2 gem
+* [V8](https://v8.dev/)
 
 Example of installation on Mac using [Homebrew](https://brew.sh/):
 
@@ -70,6 +65,8 @@ Example of installation on Mac using [Homebrew](https://brew.sh/):
     $ brew install protobuf
     $ brew install java
     $ brew install imagemagick
+    $ brew install mysql@5.7
+    $ brew install v8@3.15
     
 Example of installation on Linux:
 
@@ -77,6 +74,16 @@ Example of installation on Linux:
     $ apt-get install libprotobuf-dev
     $ apt-get install imagemagick
     $ apt-get install default-jre
+    $ apt-get install default-mysql-client
+
+### Gems
+
+Use [Bundler](https://bundler.io/) to install the required gems:
+
+    $ gem install bundler
+    $ bundle install
+
+Refer to [the wiki](https://github.com/GSA/search-gov/wiki/Gem-Installation-gotchas-and-solutions) to troubleshoot gem installation errors.
 
 ## Service credentials; how we protect secrets
 
@@ -97,18 +104,6 @@ Create and set up your development and test databases:
 
     $ rails db:setup
     $ rails db:test:prepare
-
-## Asset pipeline
-
-A few tips when working with asset pipeline:
-
-* Ensure that your asset directory is in the asset paths by running the following in the console:
-
-    > Rails.application.assets.paths
-
-* Find out which file is served for a given asset path by running the following in the console:
-
-    > Rails.application.assets['relative_path/to_asset.ext']
      
 ### Indexes
 
