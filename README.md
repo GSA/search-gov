@@ -22,11 +22,11 @@ The required services (Redis, MySQL, etc.) can all be installed and run using [D
 
 All the required services below can be run using [Docker Compose](https://docs.docker.com/compose/):
 
-    $ docker-compose up
+    $ docker compose up
     
 Alternatively, run the services individually, i.e.:
 
-    $ docker-compose up redis
+    $ docker compose up redis
 
 * [Elasticsearch](https://www.elastic.co/elasticsearch/) 6.8 - for full-text search and query analytics
 
@@ -61,7 +61,7 @@ Use the package manager of your choice to install the following packages:
 
 Example of installation on Mac using [Homebrew](https://brew.sh/):
 
-    $ brew install gcc  
+    $ brew install gcc
     $ brew install protobuf
     $ brew install java
     $ brew install imagemagick
@@ -78,9 +78,9 @@ Example of installation on Linux:
 
 ### Gems
 
-Use [Bundler](https://bundler.io/) to install the required gems:
+Use [Bundler](https://bundler.io/) 2.3.8 to install the required gems:
 
-    $ gem install bundler
+    $ gem install bundler -v 2.3.8
     $ bundle install
 
 Refer to [the wiki](https://github.com/GSA/search-gov/wiki/Gem-Installation-gotchas-and-solutions) to troubleshoot gem installation errors.
@@ -89,7 +89,7 @@ Refer to [the wiki](https://github.com/GSA/search-gov/wiki/Gem-Installation-gotc
 
 The app does its best to avoid interacting with most remote services during the test phase through heavy use of the [VCR](/wiki/Editing-Recording-and-Re-recording-API-calls-with-VCR-(WIP)) gem.
 
-You should be able to simply run this command to get a valid `secrets.yml` file that will work for running existing specs:
+Run this command to get a valid `secrets.yml` file that will work for running existing specs:
 
     $ cp config/secrets.yml.dev config/secrets.yml
 
