@@ -59,6 +59,9 @@ gem 'virtus', '~> 1.0.5'
 gem 'truncator', '~> 0.1.7'
 gem 'em-http-request', '~> 1.1.5'
 gem "validate_url", '= 0.2.0' # Newer versions use Addressable::URI for validation, which is more permissive than what we want
+# The elasticsearch gem will be limited to 7.4 until we can remove or upgrade the
+# twitter & tweetstream gems, due to their dependency on an old version of faraday:
+# https://cm-jira.usa.gov/browse/SRCH-2939
 gem 'elasticsearch', '~> 7.4.0'
 gem 'elasticsearch-xpack', '~> 7.4.0'
 gem 'federal_register', '~> 0.6.3'
