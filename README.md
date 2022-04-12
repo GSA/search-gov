@@ -53,11 +53,11 @@ We recommend using [Homebrew](https://brew.sh/) for local package installation o
 Use the package manager of your choice to install the following packages:
 
 * C++ compiler - required by the [cld3](https://github.com/akihikodaki/cld3-ruby) gem, which we use for language detection
-* Google's [protocol buffers](https://developers.google.com/protocol-buffers/) - also required by the cld gem
+* Google's [protocol buffers](https://developers.google.com/protocol-buffers/) - also required by the cld3 gem
 * [Java Runtime Environment](https://www.java.com/en/download/)
 * [ImageMagick](https://imagemagick.org/) - required by the Paperclip gem, used for image attachments
-* [MySQL client](https://github.com/brianmario/mysql2#mac-os-x) - required by the mysql2 gem
-* [V8](https://v8.dev/)
+* [MySQL client](https://github.com/brianmario/mysql2#installing) - required by the mysql2 gem
+* [V8](https://v8.dev/) - required by the libv8 gem
 
 Example of installation on Mac using [Homebrew](https://brew.sh/):
 
@@ -66,7 +66,7 @@ Example of installation on Mac using [Homebrew](https://brew.sh/):
     $ brew install java
     $ brew install imagemagick
     $ brew install mysql@5.7
-    $ brew install v8@3.15
+    $ brew install v8
     
 Example of installation on Linux:
 
