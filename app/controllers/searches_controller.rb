@@ -118,6 +118,8 @@ class SearchesController < ApplicationController
   end
 
   def gets_i14y_results?
+    return false if @affiliate.gets_blended_results
+
     @affiliate.search_engine == 'SearchGov' ||
       @affiliate.gets_i14y_results ||
       @search_options[:document_collection]&.too_deep_for_bing?
