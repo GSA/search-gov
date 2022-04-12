@@ -99,7 +99,6 @@ Anything listed in the `secret_keys` entry of that file will automatically be ma
 
 ## Database
 
-
 Create and set up your development and test databases:
 
     $ rails db:setup
@@ -248,26 +247,6 @@ Example:
     `$ rake resque-scheduler`
 
 1. Check the 'Delayed' tab in [Resque web](http://localhost:3000/admin/resque/delayed) to see your job.
-
-# Performance
-We use New Relic to monitor our site performance, especially on search requests. If you are doing something around search, make
-sure you aren't introducing anything to make it much slower. If you can, make it faster.
-
-You can configure your local app to send metrics to New Relic.
-
-1. Edit `config/secrets.yml` changing `enabled` to true and adding your name to `app_name` in the `newrelic` section
-
-1. Edit `config/secrets.yml` and set `license_key` to your New Relic license key in the `newrelic_secrets` section
-
-1. Run mongrel/thin
-
-1. Run a few representative SERPs with news items, gov boxes, etc
-
-1. Visit http://localhost:3000/newrelic
-
-1. The database calls view was the most useful one for me. How many extra database calls did your feature introduce? Yes, they are fast, but at 10-50 searches per second, it adds up.
-
-You can also turn on profiling and look into that (see https://newrelic.com/docs/general/profiling-ruby-applications).
 
 ### Additional developer resources
 * [Local i14y setup](https://github.com/GSA/search-gov/wiki/Setting-up-i14y-with-usasearch-for-development)
