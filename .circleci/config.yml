@@ -80,7 +80,7 @@ jobs:
       - checkout
 
       - run:
-          name: Wait for Elasticsearch 6.8
+          name: Wait for Elasticsearch
           command: dockerize -wait tcp://localhost:9200 -timeout 1m
 
       - run:
