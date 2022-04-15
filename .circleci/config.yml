@@ -10,11 +10,17 @@ orbs:
 
 executors:
   test_executor:
+    parameters:
+      ruby_version:
+        type: string
+      elasticsearch_version:
+        type: string
+
     working_directory: ~/search-gov
 
     docker:
       # using custom images, see .circleci/images/primary/
-      - image: searchgov/ruby:${RUBY_VERSION}
+      - image: searchgov/ruby:<< parameters.ruby_version >>
         environment:
           RAILS_ENV: test
 
@@ -25,23 +31,12 @@ executors:
 
       - image: redis:3.2
 
-      - image: docker.elastic.co/elasticsearch/elasticsearch:6.8.15
+      - image: docker.elastic.co/elasticsearch/elasticsearch:<< parameters.elasticsearch_version >>
         environment:
           bootstrap.memory_lock: true
-          cluster.name: es68
+          cluster.name: es_<< parameters.elasticsearch_version >>
           discovery.type: single-node
-          http.port: 9268
-          xpack.license.self_generated.type: trial
-          xpack.monitoring.enabled: false
-          xpack.security.enabled: false
-          ES_JAVA_OPTS: '-Xms256m -Xmx256m'
-
-      - image: docker.elastic.co/elasticsearch/elasticsearch:7.8.0
-        environment:
-          bootstrap.memory_lock: true
-          cluster.name: es78
-          discovery.type: single-node
-          http.port: 9278
+          http.port: 9200
           xpack.license.self_generated.type: trial
           xpack.monitoring.enabled: false
           xpack.security.enabled: false
@@ -70,20 +65,23 @@ commands:
 
 jobs:
   checkout_code:
-    environment:
-      RUBY_VERSION: << parameters.ruby_version >>
     parameters:
       ruby_version:
         type: string
+      elasticsearch_version:
+        type: string
 
-    executor: test_executor
+    executor: 
+      name: test_executor
+      ruby_version: << parameters.ruby_version >>
+      elasticsearch_version: << parameters.elasticsearch_version >>
 
     steps:
       - checkout
 
       - run:
-          name: Wait for Elasticsearch 6.8
-          command: dockerize -wait tcp://localhost:9268 -timeout 1m
+          name: Wait for Elasticsearch
+          command: dockerize -wait tcp://localhost:9200 -timeout 1m
 
       - run:
           name: Use developer secrets
@@ -102,13 +100,16 @@ jobs:
             - ~/search-gov
 
   rspec:
-    environment:
-      RUBY_VERSION: << parameters.ruby_version >>
     parameters:
       ruby_version:
         type: string
+      elasticsearch_version:
+        type: string
 
-    executor: test_executor
+    executor: 
+      name: test_executor
+      ruby_version: << parameters.ruby_version >>
+      elasticsearch_version: << parameters.elasticsearch_version >>
 
     parallelism: 6
 
@@ -138,7 +139,8 @@ jobs:
                               --format progress \
                               $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
 
-            ./cc-test-reporter format-coverage --output coverage/codeclimate.rspec.$CIRCLE_NODE_INDEX.$RUBY_VERSION.json
+            ./cc-test-reporter format-coverage \
+              --output coverage/codeclimate.rspec.$CIRCLE_NODE_INDEX.<< parameters.ruby_version >>_<< parameters.elasticsearch_version >>.json
 
       - persist_to_workspace:
           root: ~/search-gov/coverage
@@ -153,13 +155,16 @@ jobs:
           destination: test-results
 
   cucumber:
-    environment:
-      RUBY_VERSION: << parameters.ruby_version >>
     parameters:
       ruby_version:
         type: string
+      elasticsearch_version:
+        type: string
 
-    executor: test_executor
+    executor: 
+      name: test_executor
+      ruby_version: << parameters.ruby_version >>
+      elasticsearch_version: << parameters.elasticsearch_version >>
 
     parallelism: 10
 
@@ -169,7 +174,7 @@ jobs:
 
       - ruby/install-deps:
           key: gems-ruby-<< parameters.ruby_version >>-v{{ .Environment.CACHE_VERSION }}
-      
+
       - install_chrome
 
       - prepare_database
@@ -191,7 +196,8 @@ jobs:
                                 --format progress \
                                 -- $(circleci tests glob "features/*.feature" | circleci tests split --split-by=timings)
 
-            ./cc-test-reporter format-coverage --output coverage/codeclimate.cucumber.$CIRCLE_NODE_INDEX.$RUBY_VERSION.json
+            ./cc-test-reporter format-coverage \
+              --output coverage/codeclimate.cucumber.$CIRCLE_NODE_INDEX.<< parameters.ruby_version >>_<< parameters.elasticsearch_version >>.json
 
       - persist_to_workspace:
           root: ~/search-gov/coverage
@@ -206,13 +212,16 @@ jobs:
           destination: test-results
 
   report_coverage:
-    environment:
-      RUBY_VERSION: << parameters.ruby_version >>
     parameters:
       ruby_version:
         type: string
+      elasticsearch_version:
+        type: string
 
-    executor: test_executor
+    executor: 
+      name: test_executor
+      ruby_version: << parameters.ruby_version >>
+      elasticsearch_version: << parameters.elasticsearch_version >>
 
     steps:
       - restore_cache:
@@ -224,7 +233,10 @@ jobs:
       - run:
           name: Report coverage to Code Climate
           command: |
-            ./cc-test-reporter sum-coverage --parts 16 coverage/codeclimate.*.$RUBY_VERSION.json --output coverage/codeclimate_full_report.json
+            ./cc-test-reporter sum-coverage --parts 16 \
+              coverage/codeclimate.*.<< parameters.ruby_version >>_<< parameters.elasticsearch_version >>.json \
+              --output coverage/codeclimate_full_report.json
+
             ./cc-test-reporter upload-coverage --input coverage/codeclimate_full_report.json
 
             ruby scripts/check_coverage.rb ${PWD}/coverage/codeclimate_full_report.json
@@ -234,36 +246,49 @@ workflows:
   build_and_test:
     jobs:
       - checkout_code:
-          name: "checkout code: Ruby << matrix.ruby_version >>"
+          name: "checkout code: Ruby << matrix.ruby_version >>, ES << matrix.elasticsearch_version >>"
           matrix:
             parameters:
               ruby_version:
                 - 2.7.5
+              elasticsearch_version:
+                - 6.8.15
+                - 7.17.0
 
       - rspec:
           requires:
             - checkout_code
-          name: "rspec: Ruby << matrix.ruby_version >>"
+          name: "rspec: Ruby << matrix.ruby_version >>, ES << matrix.elasticsearch_version >>"
           matrix:
             parameters:
               ruby_version:
                 - 2.7.5
+              elasticsearch_version:
+                - 6.8.15
+                - 7.17.0
 
       - cucumber:
           requires:
             - checkout_code
-          name: "cucumber: Ruby << matrix.ruby_version >>"
+          name: "cucumber: Ruby << matrix.ruby_version >>, ES << matrix.elasticsearch_version >>"
           matrix:
             parameters:
               ruby_version:
                 - 2.7.5
+              elasticsearch_version:
+                - 6.8.15
+                - 7.17.0
 
       - report_coverage:
           requires:
             - rspec
             - cucumber
-          name: "report coverage: Ruby << matrix.ruby_version >>"
+          name: "report coverage: Ruby << matrix.ruby_version >>, ES << matrix.elasticsearch_version >>"
           matrix:
+            # We only report coverage for one run, as the coverage will be
+            # identical in all versions if all specs are passing
             parameters:
               ruby_version:
                 - 2.7.5
+              elasticsearch_version:
+                - 6.8.15
