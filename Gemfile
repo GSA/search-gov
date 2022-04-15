@@ -131,9 +131,10 @@ gem 'execjs', '~> 2.7.0'
 group :development do
   gem 'spring', '~> 3.1'
   gem 'listen', '~> 3.7'
-  # Bumping searchgov_style? Be sure to update the Rubocop channel in .codeclimate.yml
-  # to match the channel in searchgov_style
+  # Bumping searchgov_style? Be sure to update rubocop, if possible,
+  # and the Rubocop channel in .codeclimate.yml to match the updated rubocop version
   gem 'searchgov_style', '~> 0.1', require: false
+  gem 'rubocop', '1.23.0', require: false
 end
 
 group :development, :test do
