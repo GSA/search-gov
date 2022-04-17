@@ -34,10 +34,11 @@ class SearchgovUrl < ApplicationRecord
   before_destroy :delete_document
 
   belongs_to :searchgov_domain
-  counter_culture :searchgov_domain, column_name: 'urls_count'
+  counter_culture :searchgov_domain, column_name: 'urls_count', execute_after_commit: true
   counter_culture :searchgov_domain,
-    column_name: proc {|url| !url.fetched? ? 'unfetched_urls_count' : nil },
-    column_names: { ['searchgov_urls.last_crawled_at IS NULL'] => 'unfetched_urls_count' }
+                  column_name: proc {|url| !url.fetched? ? 'unfetched_urls_count' : nil },
+                  column_names: { ['searchgov_urls.last_crawled_at IS NULL'] => 'unfetched_urls_count' },
+                  execute_after_commit: true
 
   scope :fetch_required, -> do
     where('last_crawled_at IS NULL
