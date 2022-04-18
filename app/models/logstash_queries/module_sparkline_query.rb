@@ -42,7 +42,7 @@ class ModuleSparklineQuery
         json.date_histogram do
           json.field '@timestamp'
           json.interval 'day'
-          json.format 'yyyy-MM-dd'
+          json.format '8yyyy-MM-dd'
           json.min_doc_count 0
         end
         json.aggs do

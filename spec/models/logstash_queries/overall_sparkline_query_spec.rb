@@ -1,4 +1,4 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
 describe OverallSparklineQuery do
   let(:query) { described_class.new('affiliate_name') }
@@ -42,7 +42,7 @@ describe OverallSparklineQuery do
           "date_histogram": {
             "field": '@timestamp',
             "interval": 'day',
-            "format": 'yyyy-MM-dd',
+            "format": '8yyyy-MM-dd',
             "min_doc_count": 0
           },
           "aggs": {
