@@ -48,7 +48,7 @@ describe ModuleSparklineQuery do
               "date_histogram": {
                 "field": '@timestamp',
                 "interval": 'day',
-                "format": 'yyyy-MM-dd',
+                "format": '8yyyy-MM-dd',
                 "min_doc_count": 0
               },
               "aggs": {

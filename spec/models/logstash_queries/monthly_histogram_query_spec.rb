@@ -37,7 +37,7 @@ describe MonthlyHistogramQuery do
           "date_histogram": {
             "field": '@timestamp',
             "interval": 'month',
-            "format": 'yyyy-MM',
+            "format": '8yyyy-MM',
             "min_doc_count": 0
           }
         }

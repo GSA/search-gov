@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MonthlyHistogramQuery
   include AnalyticsDsl
   RTU_START_DATE = '2014-06-01'
@@ -18,9 +20,9 @@ class MonthlyHistogramQuery
     json.aggs do
       json.agg do
         json.date_histogram do
-          json.field "@timestamp"
+          json.field '@timestamp'
           json.interval 'month'
-          json.format 'yyyy-MM'
+          json.format '8yyyy-MM'
           json.min_doc_count 0
         end
       end
@@ -35,5 +37,4 @@ class MonthlyHistogramQuery
     end
     must_not_spider(json)
   end
-
 end
