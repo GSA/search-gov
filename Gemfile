@@ -59,6 +59,9 @@ gem 'virtus', '~> 1.0.5'
 gem 'truncator', '~> 0.1.7'
 gem 'em-http-request', '~> 1.1.5'
 gem "validate_url", '= 0.2.0' # Newer versions use Addressable::URI for validation, which is more permissive than what we want
+# The elasticsearch gem will be limited to 7.4 until we can remove or upgrade the
+# twitter & tweetstream gems, due to their dependency on an old version of faraday:
+# https://cm-jira.usa.gov/browse/SRCH-2939
 gem 'elasticsearch', '~> 7.4.0'
 gem 'elasticsearch-xpack', '~> 7.4.0'
 gem 'federal_register', '~> 0.6.3'
@@ -89,6 +92,8 @@ gem 'medusa', git: 'https://github.com/brutuscat/medusa-crawler',
 gem 'robotex', git: 'https://github.com/MothOnMars/robotex'
 gem 'saxerator', '~> 0.9.9'
 gem 'counter_culture', '~> 2.9.0'
+# after_commit_action needed to enable counter_culture's execute_after_commit option.
+gem 'after_commit_action', '~> 1.1'
 gem 'aasm', '~> 5.2.0'
 gem 'active_scheduler', '~> 0.7.0'
 gem 'retriable', '~> 3.1'
@@ -131,9 +136,10 @@ gem 'execjs', '~> 2.7.0'
 group :development do
   gem 'spring', '~> 3.1'
   gem 'listen', '~> 3.7'
-  # Bumping searchgov_style? Be sure to update the Rubocop channel in .codeclimate.yml
-  # to match the channel in searchgov_style
+  # Bumping searchgov_style? Be sure to update rubocop, if possible,
+  # and the Rubocop channel in .codeclimate.yml to match the updated rubocop version
   gem 'searchgov_style', '~> 0.1', require: false
+  gem 'rubocop', '1.23.0', require: false
 end
 
 group :development, :test do

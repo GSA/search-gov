@@ -14,13 +14,6 @@ Read our [contributing guidelines](https://github.com/GSA/search-gov/blob/master
 
 Use [RVM](https://rvm.io/) to install the version of Ruby specified in [.ruby-version](/.ruby-version). 
 
-### Gems
-
-Use [Bundler](https://bundler.io/) to install the required gems:
-
-    $ gem install bundler
-    $ bundle install
-
 ### Docker
 
 The required services (Redis, MySQL, etc.) can all be installed and run using [Docker](https://www.docker.com/get-started). If you prefer to install the services without Docker, see the [wiki](https://github.com/GSA/search-gov/wiki/Local-Installation-and-Management-of-dependencies). We recommend setting the max memory alloted to Docker to 4GB (in Docker Desktop, Preferences > Resources > Advanced). See [the wiki](https://github.com/GSA/search-gov/wiki/Docker-Command-Reference) for more documentation on basic Docker commands.
@@ -29,25 +22,25 @@ The required services (Redis, MySQL, etc.) can all be installed and run using [D
 
 All the required services below can be run using [Docker Compose](https://docs.docker.com/compose/):
 
-    $ docker-compose up
+    $ docker compose up
     
 Alternatively, run the services individually, i.e.:
 
-    $ docker-compose up redis
+    $ docker compose up redis
 
 * [Elasticsearch](https://www.elastic.co/elasticsearch/) 6.8 - for full-text search and query analytics
 
-We have configured Elasticsearch 6.8 to run on port [9268](http://localhost:9268/), and Elasticsearch 7.8 to run on [9278](http://localhost:9278/). (Currently, only 6.8 is used in production, but some tests run against both versions.) To check Elasticsearch settings and directory locations:
+We have configured Elasticsearch 6.8 to run on the default port [9200](http://localhost:9200/), and Elasticsearch 7.8 to run on [9278](http://localhost:9278/) for development purposes. To check Elasticsearch settings and directory locations:
 
-    $ curl "localhost:9268/_nodes/settings?pretty=true"
+    $ curl "localhost:9200/_nodes/settings?pretty=true"
     $ curl "localhost:9278/_nodes/settings?pretty=true"
     
 Some specs depend upon Elasticsearch having a valid trial license. A 30-day trial license is automatically applied when the cluster is initially created. If your license expires, you can rebuild the cluster by [rebuilding the container and its data volume](https://github.com/GSA/search-gov/wiki/Docker-Command-Reference/_edit#recreate-an-elasticsearch-cluster-useful-for-restarting-a-trial-license). 
     
     
-* [Kibana](https://www.elastic.co/kibana) - Kibana is not required, but can be very useful for debugging Elasticsearch. Confirm Kibana is available for the Elasticsearch 6.8 cluster by visiting <http://localhost:5668>. Kibana for the Elasticsearch 7 cluster should be available on <http://localhost:5678>.
+* [Kibana](https://www.elastic.co/kibana) - Kibana is not required, but can be very useful for debugging Elasticsearch. Confirm Kibana is available for the Elasticsearch 6.8 cluster by visiting <http://localhost:5601>. Kibana for the Elasticsearch 7 cluster should be available on <http://localhost:5678>.
 
-* [MySQL](https://dev.mysql.com/doc/refman/5.6/en/) 5.6 - database, accessible from user 'root' with no password
+* [MySQL](https://dev.mysql.com/doc/refman/5.7/en/) 5.7 - database, accessible from user 'root' with no password
 * [Redis](https://redis.io/) 5.0 - We're using the Redis key-value store for caching, queue workflow via Resque, and some analytics.
 * [Tika](https://tika.apache.org/) - for extracting plain text from PDFs, etc. The [Tika REST server](https://cwiki.apache.org/confluence/display/TIKA/TikaServer) runs on <http://localhost:9998/>.
 
@@ -60,16 +53,20 @@ We recommend using [Homebrew](https://brew.sh/) for local package installation o
 Use the package manager of your choice to install the following packages:
 
 * C++ compiler - required by the [cld3](https://github.com/akihikodaki/cld3-ruby) gem, which we use for language detection
-* Google's [protocol buffers](https://developers.google.com/protocol-buffers/) - also required by the cld gem
+* Google's [protocol buffers](https://developers.google.com/protocol-buffers/) - also required by the cld3 gem
 * [Java Runtime Environment](https://www.java.com/en/download/)
 * [ImageMagick](https://imagemagick.org/) - required by the Paperclip gem, used for image attachments
+* [MySQL client](https://github.com/brianmario/mysql2#installing) - required by the mysql2 gem
+* [V8](https://v8.dev/) - required by the libv8 gem
 
 Example of installation on Mac using [Homebrew](https://brew.sh/):
 
-    $ brew install gcc  
+    $ brew install gcc
     $ brew install protobuf
     $ brew install java
     $ brew install imagemagick
+    $ brew install mysql@5.7
+    $ brew install v8
     
 Example of installation on Linux:
 
@@ -77,12 +74,22 @@ Example of installation on Linux:
     $ apt-get install libprotobuf-dev
     $ apt-get install imagemagick
     $ apt-get install default-jre
+    $ apt-get install default-mysql-client
+
+### Gems
+
+Use [Bundler](https://bundler.io/) 2.3.8 to install the required gems:
+
+    $ gem install bundler -v 2.3.8
+    $ bundle install
+
+Refer to [the wiki](https://github.com/GSA/search-gov/wiki/Gem-Installation-gotchas-and-solutions) to troubleshoot gem installation errors.
 
 ## Service credentials; how we protect secrets
 
 The app does its best to avoid interacting with most remote services during the test phase through heavy use of the [VCR](/wiki/Editing-Recording-and-Re-recording-API-calls-with-VCR-(WIP)) gem.
 
-You should be able to simply run this command to get a valid `secrets.yml` file that will work for running existing specs:
+Run this command to get a valid `secrets.yml` file that will work for running existing specs:
 
     $ cp config/secrets.yml.dev config/secrets.yml
 
@@ -92,23 +99,10 @@ Anything listed in the `secret_keys` entry of that file will automatically be ma
 
 ## Database
 
-
 Create and set up your development and test databases:
 
     $ rails db:setup
     $ rails db:test:prepare
-
-## Asset pipeline
-
-A few tips when working with asset pipeline:
-
-* Ensure that your asset directory is in the asset paths by running the following in the console:
-
-    > Rails.application.assets.paths
-
-* Find out which file is served for a given asset path by running the following in the console:
-
-    > Rails.application.assets['relative_path/to_asset.ext']
      
 ### Indexes
 
@@ -222,7 +216,7 @@ Several long-running tasks have been moved to the background for processing via 
 
 1. Start a Resque worker to run the job:
 
-   `$ QUEUE=* rake environment resque:work`
+   `$ QUEUE=* VERBOSE=true rake environment resque:work`
 
 1. You should see log lines indicating that a Resque worker has processed a `ApplySaytFilters` job:
 
@@ -253,26 +247,6 @@ Example:
     `$ rake resque-scheduler`
 
 1. Check the 'Delayed' tab in [Resque web](http://localhost:3000/admin/resque/delayed) to see your job.
-
-# Performance
-We use New Relic to monitor our site performance, especially on search requests. If you are doing something around search, make
-sure you aren't introducing anything to make it much slower. If you can, make it faster.
-
-You can configure your local app to send metrics to New Relic.
-
-1. Edit `config/secrets.yml` changing `enabled` to true and adding your name to `app_name` in the `newrelic` section
-
-1. Edit `config/secrets.yml` and set `license_key` to your New Relic license key in the `newrelic_secrets` section
-
-1. Run mongrel/thin
-
-1. Run a few representative SERPs with news items, gov boxes, etc
-
-1. Visit http://localhost:3000/newrelic
-
-1. The database calls view was the most useful one for me. How many extra database calls did your feature introduce? Yes, they are fast, but at 10-50 searches per second, it adds up.
-
-You can also turn on profiling and look into that (see https://newrelic.com/docs/general/profiling-ruby-applications).
 
 ### Additional developer resources
 * [Local i14y setup](https://github.com/GSA/search-gov/wiki/Setting-up-i14y-with-usasearch-for-development)
