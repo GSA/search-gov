@@ -115,7 +115,7 @@ class Emailer < ApplicationMailer
     @external_tracking_code = external_tracking_code
     setup_email({
       from: NOTIFICATION_SENDER_EMAIL_ADDRESS,
-      to: Rails.application.secrets.organization[:support_email_address]
+      to: SUPPORT_EMAIL_ADDRESS
     }, __method__)
     send_mail(:text)
   end
