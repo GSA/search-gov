@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Emailer do
-context do
   include EmailSpec::Helpers
   include EmailSpec::Matchers
   fixtures :affiliates, :users, :features, :memberships
@@ -322,9 +321,9 @@ context do
 
     subject(:email) { described_class.update_external_tracking_code(affiliate, current_user, tracking_code) }
 
-    it { is_expected.to deliver_from(Emailer::NOTIFICATION_SENDER_EMAIL_ADDRESS) }
-    it { is_expected.to deliver_to(Rails.application.secrets.organization[:support_email_address]) }
-    it { is_expected.not_to reply_to(Emailer::REPLY_TO_EMAIL_ADDRESS) }
+    it { is_expected.to deliver_from(NOTIFICATION_SENDER_EMAIL_ADDRESS) }
+    it { is_expected.to deliver_to(SUPPORT_EMAIL_ADDRESS) }
+    it { is_expected.not_to reply_to(SUPPORT_EMAIL_ADDRESS) }
     it { is_expected.to have_body_text tracking_code }
   end
 
@@ -335,7 +334,7 @@ context do
     subject(:email) { described_class.user_sites(user, sites) }
 
     it { is_expected.to deliver_to(user.email) }
-    it { is_expected.to reply_to(Emailer::REPLY_TO_EMAIL_ADDRESS) }
+    it { is_expected.to reply_to(SUPPORT_EMAIL_ADDRESS) }
     it { is_expected.to have_body_text sites.first.display_name }
   end
 
@@ -354,11 +353,10 @@ context do
 
     subject { described_class.affiliate_monthly_report(user, report_date) }
 
-    it { is_expected.to deliver_to(Emailer::ADMIN_EMAIL_ADDRESS) }
+    it { is_expected.to deliver_to(ADMIN_EMAIL_ADDRESS) }
     it { is_expected.to have_subject('[Search.gov] Missing Email template') }
     it { is_expected.to have_body_text(/Someone tried to send an email via the affiliate_monthly_report method, but we don\'t have a template for that method.  Please create one.  Thanks!/) }
 
     after { EmailTemplate.load_default_templates }
   end
-end
 end
