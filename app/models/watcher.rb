@@ -88,8 +88,8 @@ class Watcher < ApplicationRecord
       json.analytics_alert do
         json.email do
           json.to user.email
-          json.from Emailer::DELIVER_FROM_EMAIL_ADDRESS
-          json.bcc Emailer::ADMIN_EMAIL_ADDRESS
+          json.from DELIVER_FROM_EMAIL_ADDRESS
+          json.bcc ADMIN_EMAIL_ADDRESS
           json.subject email_template.subject
           json.body { json.html email_template.body }
         end
