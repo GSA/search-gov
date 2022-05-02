@@ -7,7 +7,7 @@ class LowCtrQuery < DateRangeTopNExistsQuery
           start_date,
           end_date,
           agg_options.reverse_merge(min_doc_count: 20,
-                                    size: 100_000,
+                                    size: 5_000,
                                     field: 'params.query.raw'))
   end
 

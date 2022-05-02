@@ -30,6 +30,9 @@ Metrics/BlockLength:
   Exclude:
     # Exclude ActiveScaffold-based controllers
     - app/controllers/admin/**/*
+    # Logstash query specs include lengthy, raw JSON queries
+    # for easier side-to-side comparison, copy/pasting, etc.
+    - spec/models/logstash_queries/**/*
 
 RSpec/DescribeClass:
   Exclude:
