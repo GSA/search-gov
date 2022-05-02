@@ -7,7 +7,7 @@ class SitemapIndexer
               :uri
 
   def initialize(sitemap_url:)
-    @uri = URI(sitemap_url)
+    @uri = URI(sitemap_url.strip)
     @domain = uri.host
     @scheme = uri.scheme
     @searchgov_domain = SearchgovDomain.find_by(domain: domain)
