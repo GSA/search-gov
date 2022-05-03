@@ -211,4 +211,12 @@ describe SitemapIndexer do
       end
     end
   end
+
+  describe '#initialize' do
+    context 'when given a sitemap url string having leading or trailing whitespace' do
+      it 'strips the leading or trailing whitespace before parsing it' do
+        expect(described_class.new(sitemap_url: " \n#{sitemap_url}\n ").uri.to_s).to eq(sitemap_url)
+      end
+    end
+  end
 end
