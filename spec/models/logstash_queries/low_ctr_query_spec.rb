@@ -73,7 +73,7 @@ describe LowCtrQuery do
         "agg": {
           "terms": {
             "min_doc_count": 20,
-            "size": 1_000,
+            "size": 1000,
             "field": "params.query.raw"
           },
           "aggs": {
