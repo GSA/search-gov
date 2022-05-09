@@ -15,10 +15,6 @@ Rails.application.routes.draw do
   get '/api/search' => 'api/v1/search#search', as: :api_search
 
   namespace :api, defaults: { format: :json } do
-    namespace :v1 do
-      get '/agencies/search' => 'agencies#search'
-    end
-
     namespace :v2 do
       get '/search' => 'searches#blended'
       get '/search/azure' => 'searches#azure'
@@ -29,7 +25,6 @@ Rails.application.routes.draw do
       get '/search/i14y' => 'searches#i14y'
       get '/search/video' => 'searches#video'
       get '/search/docs' => 'searches#docs'
-      get '/agencies/search' => 'agencies#search'
       post '/click' => 'click#create'
     end
   end
