@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_01_202004) do
+ActiveRecord::Schema.define(version: 2022_05_12_200543) do
 
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -136,14 +136,6 @@ ActiveRecord::Schema.define(version: 2022_03_01_202004) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["agency_id"], name: "index_agency_organization_codes_on_agency_id"
-  end
-
-  create_table "agency_queries", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
-    t.string "phrase"
-    t.integer "agency_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.index ["phrase"], name: "index_agency_queries_on_phrase", unique: true
   end
 
   create_table "alerts", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|

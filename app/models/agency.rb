@@ -6,12 +6,10 @@ class Agency < ApplicationRecord
   end
   validates_presence_of :name
   belongs_to :federal_register_agency
-  has_many :agency_queries, dependent: :destroy
   has_many :agency_organization_codes, -> { order 'organization_code ASC' },
            dependent: :destroy, inverse_of: :agency
   has_many :affiliates
-  after_save :generate_agency_queries,
-             :load_federal_register_documents
+  after_save :load_federal_register_documents
 
   NAME_QUERY_PREFIXES = ["the", "us", "u.s.", "united states"]
 
@@ -29,18 +27,6 @@ class Agency < ApplicationRecord
   end
 
   private
-
-  def generate_agency_queries
-    self.agency_queries.destroy_all
-    self.agency_queries << AgencyQuery.new(:phrase => self.name.downcase)
-    NAME_QUERY_PREFIXES.each do |prefix|
-      self.agency_queries << AgencyQuery.new(:phrase => "#{prefix} #{self.name.downcase}")
-    end
-    if self.abbreviation.present?
-      self.agency_queries << AgencyQuery.new(:phrase => self.abbreviation)
-      self.agency_queries << AgencyQuery.new(:phrase => "the #{self.abbreviation}")
-    end
-  end
 
   def load_federal_register_documents
     federal_register_agency.load_documents if federal_register_agency
