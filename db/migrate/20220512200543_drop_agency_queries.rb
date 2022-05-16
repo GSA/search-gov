@@ -4,7 +4,12 @@ class DropAgencyQueries < ActiveRecord::Migration[6.1]
   end
 
   def down
-    raise ActiveRecord::IrreversibleMigration, "Cannot restore dropped agency_queries table."
-  end
+    create_table :agency_queries do |t|
+      t.string :phrase
+      t.references :agency
 
+      t.timestamps
+    end
+    add_index :agency_queries, :phrase, :unique => true
+  end
 end
