@@ -12,9 +12,6 @@ AllCops:
   Exclude:
     # All Instagram-related code is deprecated and will be removed
     - /**/**/instagram*
-    # The Agencies API is deprecated and will be removed - SRCH-1574
-    - app/controllers/api/v1/agencies_controller.rb
-    - app/controllers/api/v2/agencies_controller.rb
 
 Layout/FirstHashElementIndentation:
   Exclude:
@@ -30,6 +27,9 @@ Metrics/BlockLength:
   Exclude:
     # Exclude ActiveScaffold-based controllers
     - app/controllers/admin/**/*
+    # Logstash query specs include lengthy, raw JSON queries
+    # for easier side-to-side comparison, copy/pasting, etc.
+    - spec/models/logstash_queries/**/*
 
 RSpec/DescribeClass:
   Exclude:
