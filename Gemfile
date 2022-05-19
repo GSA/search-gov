@@ -10,7 +10,7 @@ gem 'mysql2', '~> 0.5.0'
 gem 'curb', '~> 0.9.4'
 gem 'haml', '~> 5.2.1'
 gem 'will_paginate', '~> 3.3.0'
-gem 'nokogiri', '~> 1.13.4'
+gem 'nokogiri', '~> 1.13.5'
 gem 'authlogic', '~> 6.4.1'
 # Temporarily locking gem to specific ref. Newer versions include incompatible gems
 gem 'omniauth_login_dot_gov', git: 'https://github.com/18f/omniauth_login_dot_gov',
