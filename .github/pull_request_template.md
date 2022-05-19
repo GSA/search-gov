@@ -13,9 +13,9 @@ Please ensure you have addressed all concerns below before marking a PR "ready f
 
 - [ ] If your changes will be tested manually, you have run `bundle update` and committed your changes to Gemfile.lock.
  
-- [ ] You have merged the latest changes from the target branch (usually `master` or `main`) into your branch.
+- [ ] You have merged the latest changes from the target branch (usually `main`) into your branch.
  
-- [ ] If your target branch is NOT `master` or `main`, specify the reason:
+- [ ] If your target branch is NOT `main`, specify the reason:
  
 - [ ] PR title is either of the format **SRCH-#### \<description\>** matching the associated Jira ticket (i.e. "SRCH-123 implement feature X"), or **Release #.#.#** matching the release number
  
