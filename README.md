@@ -6,7 +6,7 @@
  [![Maintainability](https://api.codeclimate.com/v1/badges/fd0577360749c9b3d166/maintainability)](https://codeclimate.com/github/GSA/search-gov/maintainability)
 
 ## Contributing to search-gov
-Read our [contributing guidelines](https://github.com/GSA/search-gov/blob/main/CONTRIBUTING.md). 
+Read our [contributing guidelines](./CONTRIBUTING.md). 
 
 ## Dependencies
 
