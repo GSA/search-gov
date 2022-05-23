@@ -187,7 +187,6 @@ Rails.application.routes.draw do
       end
     end
     resources :agencies, concerns: :active_scaffold
-    resources :agency_queries, concerns: :active_scaffold
     resources :agency_organization_codes, concerns: :active_scaffold
     resources :federal_register_agencies, concerns: :active_scaffold do
       collection { get 'reimport' }
