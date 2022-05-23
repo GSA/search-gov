@@ -7,7 +7,7 @@ Note: As of November 2021, management of multilingual support has moved from the
 
 The search-gov application uses the YAML files in [config/locales](config/locales) to provide localized translations of text strings based on the locale set for the user.
 
-You can edit existing files or create new files directly via the [Github web interface](https://github.com/GSA/search-gov/tree/master/config/locales). Or, you can use Git from the command line (see below). Either way, follow these steps to create a new localization file:
+You can edit existing files or create new files directly via the [Github web interface](config/locales). Or, you can use Git from the command line (see below). Either way, follow these steps to create a new localization file:
 
 1. Start with `non_es_en_template.yml` and copy it into your new locale file. The reason you are using `non_es_en_template.yml` and not `en.yml` or `es.yml` is because the English and Spanish locale files contain many translations that are not used in other locales.
 1. Change the two letter locale in line 1 of your new file from `non_es_en_template` to match the locale of the filename.
