@@ -11,6 +11,20 @@ GIT
       omniauth
 
 GIT
+  remote: https://github.com/GSA/elasticsearch-ruby
+  revision: 0885ac179f6d39ad01c782cb6162ac2526e0297e
+  branch: 7.4
+  specs:
+    elasticsearch (7.4.0)
+      elasticsearch-api (= 7.4.0)
+      elasticsearch-transport (= 7.4.0)
+    elasticsearch-api (7.4.0)
+      multi_json
+    elasticsearch-transport (7.4.0)
+      faraday
+      multi_json
+
+GIT
   remote: https://github.com/GSA/less-rails-bootstrap.git
   revision: 0e6a339cfbf646342cf50608934af2214b196cb5
   branch: master
@@ -326,14 +340,6 @@ GEM
     dogstatsd-ruby (3.2.0)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
-    elasticsearch (7.4.0)
-      elasticsearch-api (= 7.4.0)
-      elasticsearch-transport (= 7.4.0)
-    elasticsearch-api (7.4.0)
-      multi_json
-    elasticsearch-transport (7.4.0)
-      faraday
-      multi_json
     elasticsearch-xpack (7.4.0)
       elasticsearch-api (>= 6)
     em-http-request (1.1.7)
@@ -831,7 +837,7 @@ DEPENDENCIES
   curb (~> 0.9.4)
   database_cleaner (~> 2.0)
   dogstatsd-ruby (~> 3.2.0)
-  elasticsearch (~> 7.4.0)
+  elasticsearch!
   elasticsearch-xpack (~> 7.4.0)
   em-http-request (~> 1.1.5)
   email_spec (~> 2.2)
