@@ -34,12 +34,6 @@ describe Agency do
         expect(@agency.name).to eq 'Internal Revenue Service'
         expect(@agency.agency_organization_codes.first.organization_code).to eq 'XX00'
       end
-
-      it 'should create a bunch of agency queries on save' do
-        expect(@agency.agency_queries).not_to be_empty
-        expect(@agency.agency_queries.find_by_phrase('irs')).not_to be_nil
-        expect(@agency.agency_queries.find_by_phrase('the internal revenue service')).not_to be_nil
-      end
     end
 
     context 'when there is a FederalRegisterAgency' do

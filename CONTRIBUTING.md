@@ -5,9 +5,9 @@ The search-gov repository includes the work of multiple contributors. You're enc
 #### Contributing to Search.gov Multilingual Search Support
 Note: As of November 2021, management of multilingual support has moved from the [GSA/Punchcard](https://github.com/GSA/punchcard/) repository to the [GSA/search-gov](https://github.com/GSA/search-gov) repository.
 
-The search-gov application uses the YAML files in [config/locales](https://github.com/GSA/search-gov/tree/master/config/locales) to provide localized translations of text strings based on the locale set for the user.
+The search-gov application uses the YAML files in [config/locales](config/locales) to provide localized translations of text strings based on the locale set for the user.
 
-You can edit existing files or create new files directly via the [Github web interface](https://github.com/GSA/search-gov/tree/master/config/locales). Or, you can use Git from the command line (see below). Either way, follow these steps to create a new localization file:
+You can edit existing files or create new files directly via the [Github web interface](config/locales). Or, you can use Git from the command line (see below). Either way, follow these steps to create a new localization file:
 
 1. Start with `non_es_en_template.yml` and copy it into your new locale file. The reason you are using `non_es_en_template.yml` and not `en.yml` or `es.yml` is because the English and Spanish locale files contain many translations that are not used in other locales.
 1. Change the two letter locale in line 1 of your new file from `non_es_en_template` to match the locale of the filename.
@@ -18,7 +18,7 @@ You can edit existing files or create new files directly via the [Github web int
 
 #### Fork the Project
 
-If you don't want to use the [Github web interface](https://github.com/GSA/search-gov/tree/master/), you can use the command line tools to fork the [project on Github](https://github.com/GSA/search-gov) and check out your copy.
+If you don't want to use the [Github web interface](https://github.com/GSA/search-gov/fork), you can use the command line tools to fork the [project on Github](https://github.com/GSA/search-gov) and check out your copy.
 
 Instructions on how to fork a project can be found [here](https://docs.github.com/en/get-started/quickstart/fork-a-repo).
 
@@ -27,8 +27,8 @@ Instructions on how to fork a project can be found [here](https://docs.github.co
 Make sure your fork is up-to-date and create a topic branch for your feature or bug fix.
 
 ```
-git checkout master
-git pull upstream master
+git checkout main
+git pull upstream main
 git checkout -b my-feature-branch
 ```
 

@@ -8,7 +8,6 @@ require 'spec_helper'
 # are loaded during the spec run, which means that code
 # coverage appears to be 0% for those controllers. Fix
 # that here by simply autoloading the controllers.
-describe Admin::AgencyQueriesController do; end
 describe Admin::I14yDrawersController do; end
 describe Admin::LanguagesController do; end
 describe Admin::NewsItemsController do; end
