@@ -7,6 +7,7 @@ class SitemapIndexer
               :uri
 
   def initialize(sitemap_url:)
+    # Trivial change just to push something up to the git@github.com:jamesmadhoc/search-gov [forked] repo's 'SRCH-2860_remove_agencyquery_table' branch. -DJMII
     @uri = URI(sitemap_url.strip)
     @domain = uri.host
     @scheme = uri.scheme
