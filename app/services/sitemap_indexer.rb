@@ -6,10 +6,13 @@ class SitemapIndexer
               :searchgov_domain,
               :uri
 
-  def initialize(sitemap_url:)
-    # Trivial change just to push something up to the git@github.com:jamesmadhoc/search-gov [forked] repo's 'SRCH-2860_remove_agencyquery_table' branch. -DJMII
+  # def initialize(sitemap_url:)
+  # New version -DJMII
+  def initialize(sitemap_url:, domain:)
     @uri = URI(sitemap_url.strip)
-    @domain = uri.host
+    # @domain = uri.host
+    # New version -DJMII
+    @domain = domain
     @scheme = uri.scheme
     @searchgov_domain = SearchgovDomain.find_by(domain: domain)
   end
@@ -39,7 +42,9 @@ class SitemapIndexer
 
   def enqueue_sitemaps
     sitemaps_stream.each do |sitemap|
-      SitemapIndexerJob.perform_later(sitemap_url: sitemap['loc'].to_s)
+      # SitemapIndexerJob.perform_later(sitemap_url: sitemap['loc'].to_s)
+      # New version -DJMII
+      SitemapIndexerJob.perform_later(sitemap_url: sitemap['loc'].to_s, domain: @domain)
     end
   end
 

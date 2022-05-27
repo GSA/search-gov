@@ -40,6 +40,7 @@ class SearchgovDomain < ApplicationRecord
 
   def index_sitemaps
     sitemap_urls.each { |url| SitemapIndexerJob.perform_later(sitemap_url: url) }
+    # sitemap_urls.each { |url| SitemapIndexerJob.perform_later(sitemap_url: url, domain: self.domain) }
   end
 
   def available?
