@@ -27,7 +27,7 @@ We have configured Elasticsearch to run on the default port [9200](http://localh
 Some specs depend upon Elasticsearch having a valid trial license. A 30-day trial license is automatically applied when the cluster is initially created. If your license expires, you can rebuild the cluster by [rebuilding the container and its data volume](https://github.com/GSA/search-gov/wiki/Docker-Command-Reference/_edit#recreate-an-elasticsearch-cluster-useful-for-restarting-a-trial-license). 
     
     
-* [Kibana](https://www.elastic.co/kibana) - Kibana is not required, but can be very useful for debugging Elasticsearch. Confirm Kibana is available for all running versions of Elasticsearch clusters by visiting <http://localhost:5601> and <http://localhost:5678>.
+* [Kibana](https://www.elastic.co/kibana) - Kibana is not required, but can be very useful for debugging Elasticsearch. Confirm Kibana is available for Elasticsearch cluster by visiting <http://localhost:5601>.
 
 * [MySQL](https://dev.mysql.com/doc/refman/5.7/en/) 5.7 - database, accessible from user 'root' with no password
 * [Redis](https://redis.io/) 5.0 - We're using the Redis key-value store for caching, queue workflow via Resque, and some analytics.
