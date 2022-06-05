@@ -39,8 +39,6 @@ class SearchgovDomain < ApplicationRecord
   end
 
   def index_sitemaps
-    # sitemap_urls.each { |url| SitemapIndexerJob.perform_later(sitemap_url: url) }
-    # New version -DJMII
     sitemap_urls.each { |url| SitemapIndexerJob.perform_later(sitemap_url: url, domain: domain) }
   end
 
