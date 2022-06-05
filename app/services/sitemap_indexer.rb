@@ -42,9 +42,7 @@ class SitemapIndexer
 
   def enqueue_sitemaps
     sitemaps_stream.each do |sitemap|
-      # SitemapIndexerJob.perform_later(sitemap_url: sitemap['loc'].to_s)
-      # New version -DJMII
-      SitemapIndexerJob.perform_later(sitemap_url: sitemap['loc'].to_s, domain: @domain)
+      SitemapIndexerJob.perform_later(sitemap_url: sitemap['loc'].to_s, domain: domain)
     end
   end
 

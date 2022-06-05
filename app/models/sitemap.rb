@@ -9,8 +9,6 @@ class Sitemap < ApplicationRecord
 
   before_validation :set_searchgov_domain, on: :create
 
-  # after_create { SitemapIndexerJob.perform_later(sitemap_url: url) }
-  # New version -DJMII
   after_create { SitemapIndexerJob.perform_later(sitemap_url: url, domain: searchgov_domain.domain) }
 
   validates_associated :searchgov_domain, on: :create
