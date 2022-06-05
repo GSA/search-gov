@@ -41,7 +41,7 @@ class SearchgovDomain < ApplicationRecord
   def index_sitemaps
     # sitemap_urls.each { |url| SitemapIndexerJob.perform_later(sitemap_url: url) }
     # New version -DJMII
-    sitemap_urls.each { |url| SitemapIndexerJob.perform_later(sitemap_url: url, domain: self.domain) }
+    sitemap_urls.each { |url| SitemapIndexerJob.perform_later(sitemap_url: url, domain: domain) }
   end
 
   def available?
@@ -72,9 +72,7 @@ class SearchgovDomain < ApplicationRecord
 
   def sitemap_urls
     urls = sitemaps.pluck(:url)
-    urls += robotex.sitemaps(url).uniq.
-              select { |url| URI(url).host == domain }.
-              map { |url| UrlParser.update_scheme(url, scheme) }
+    urls += robotex.sitemaps(url).uniq.map { |url| UrlParser.update_scheme(url, scheme) }
     urls.presence || ["#{url}sitemap.xml"]
   end
 
