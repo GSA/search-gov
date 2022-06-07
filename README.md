@@ -6,7 +6,7 @@
  [![Maintainability](https://api.codeclimate.com/v1/badges/fd0577360749c9b3d166/maintainability)](https://codeclimate.com/github/GSA/search-gov/maintainability)
 
 ## Contributing to search-gov
-Read our [contributing guidelines](./CONTRIBUTING.md). 
+Read our [contributing guidelines](./CONTRIBUTING.md).
 
 ## Dependencies
 
@@ -14,31 +14,20 @@ Read our [contributing guidelines](./CONTRIBUTING.md).
 
 Use [RVM](https://rvm.io/) to install the version of Ruby specified in [.ruby-version](/.ruby-version). 
 
-### Docker
+### Docker Services
 
-The required services (Redis, MySQL, etc.) can all be installed and run using [Docker](https://www.docker.com/get-started). If you prefer to install the services without Docker, see the [wiki](https://github.com/GSA/search-gov/wiki/Local-Installation-and-Management-of-dependencies). We recommend setting the max memory alloted to Docker to 4GB (in Docker Desktop, Preferences > Resources > Advanced). See [the wiki](https://github.com/GSA/search-gov/wiki/Docker-Command-Reference) for more documentation on basic Docker commands.
-    
-### Services
+The required services (MySQL, Elasticsearch, etc.) can be run using Docker. Please refer to [searchgov-services](https://github.com/GSA/search-services) for detailed instructions on centralized configuration for services.
 
-All the required services below can be run using [Docker Compose](https://docs.docker.com/compose/):
+* [Elasticsearch](https://www.elastic.co/elasticsearch/) - for full-text search and query analytics
 
-    $ docker compose up
-    
-Alternatively, run the services individually, i.e.:
+We have configured Elasticsearch to run on the default port [9200](http://localhost:9200/). To use a different host (with or without port) or set of hosts, set the `ES_HOSTS` environmental variable. For example, use following command to run the specs using Elasticsearch running on `localhost:9207`:
 
-    $ docker compose up redis
+    ES_HOSTS=localhost:9207 bin/rspec spec
 
-* [Elasticsearch](https://www.elastic.co/elasticsearch/) 6.8 - for full-text search and query analytics
-
-We have configured Elasticsearch 6.8 to run on the default port [9200](http://localhost:9200/), and Elasticsearch 7.8 to run on [9278](http://localhost:9278/) for development purposes. To check Elasticsearch settings and directory locations:
-
-    $ curl "localhost:9200/_nodes/settings?pretty=true"
-    $ curl "localhost:9278/_nodes/settings?pretty=true"
-    
 Some specs depend upon Elasticsearch having a valid trial license. A 30-day trial license is automatically applied when the cluster is initially created. If your license expires, you can rebuild the cluster by [rebuilding the container and its data volume](https://github.com/GSA/search-gov/wiki/Docker-Command-Reference/_edit#recreate-an-elasticsearch-cluster-useful-for-restarting-a-trial-license). 
     
     
-* [Kibana](https://www.elastic.co/kibana) - Kibana is not required, but can be very useful for debugging Elasticsearch. Confirm Kibana is available for the Elasticsearch 6.8 cluster by visiting <http://localhost:5601>. Kibana for the Elasticsearch 7 cluster should be available on <http://localhost:5678>.
+* [Kibana](https://www.elastic.co/kibana) - Kibana is not required, but can be very useful for debugging Elasticsearch. Confirm Kibana is available by visiting <http://localhost:5601>.
 
 * [MySQL](https://dev.mysql.com/doc/refman/5.7/en/) 5.7 - database, accessible from user 'root' with no password
 * [Redis](https://redis.io/) 5.0 - We're using the Redis key-value store for caching, queue workflow via Resque, and some analytics.
