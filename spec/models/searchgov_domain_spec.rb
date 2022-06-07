@@ -244,7 +244,7 @@ describe SearchgovDomain do
 
     it 'indexes the sitemaps' do
       expect(SitemapIndexerJob).to receive(:perform_later).
-        with(sitemap_url: 'http://searchgov.gov/sitemap.xml')
+        with(sitemap_url: 'http://searchgov.gov/sitemap.xml', domain: domain)
       index_sitemaps
     end
   end
@@ -433,12 +433,11 @@ describe SearchgovDomain do
       end
 
       context 'when the sitemap is on another domain' do
-        # This is technically permissible per the Sitemap protocol (https://www.sitemaps.org/protocol.html#location)
-        # but so far we have only seen this done erroneously. To avoid indexing any undesired content,
-        # we will ignore sitemaps on other domains.
+        # This is technically permissible per the Sitemap protocol
+        # (https://www.sitemaps.org/protocol.html#location).
         let(:robots_txt) { 'Sitemap: http://other.gov/agency_sitemap.xml' }
 
-        it { is_expected.not_to include('http://other.gov/agency_sitemap.xml') }
+        it { is_expected.to include('http://other.gov/agency_sitemap.xml') }
       end
 
       context 'when the sitemap is listed with the wrong scheme' do
