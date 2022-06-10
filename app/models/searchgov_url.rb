@@ -40,6 +40,8 @@ class SearchgovUrl < ApplicationRecord
                   column_names: { ['searchgov_urls.last_crawled_at IS NULL'] => 'unfetched_urls_count' },
                   execute_after_commit: true
 
+  has_one :searchgov_document, dependent: :destroy
+
   scope :fetch_required, -> do
     where('last_crawled_at IS NULL
            OR lastmod > last_crawled_at
@@ -64,6 +66,9 @@ class SearchgovUrl < ApplicationRecord
 
         @document = parse_document
         validate_document
+        unless ENV['SEARCHGOV_DOCUMENT_NO_SAVE'] == 'true'
+          save_document
+        end
         index_document
 
         self.last_crawl_status = OK_STATUS
@@ -135,6 +140,15 @@ class SearchgovUrl < ApplicationRecord
     raise SearchgovUrlError.new('Noindex per HTML metadata') if document.noindex?
   end
 
+  def save_document
+    doc = SearchgovDocument.find_or_initialize_by(searchgov_url_id: id)
+    # If there have been no changes to the existing document according to the header entity tag, don't update it
+    return if doc.Etag && (doc.Etag == response.headers.to_hash['Etag'])
+
+    body = parse_body
+    doc.update(body: body, header: response.headers.to_hash)
+  end
+
   def validate_size
     size = response.headers['Content-Length']
     if size.present? && size.to_i > MAX_DOC_SIZE
@@ -182,6 +196,14 @@ class SearchgovUrl < ApplicationRecord
       ApplicationDocument.new(document: download.open, url: url)
     else
       HtmlDocument.new(document: response.to_s, url: url)
+    end
+  end
+
+  def parse_body
+    if %r{^application|text/plain}.match?(response.content_type.mime_type)
+      @document.metadata
+    else
+      @document.document
     end
   end
 

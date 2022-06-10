@@ -5,7 +5,6 @@ describe SearchgovUrl do
   let(:html) { read_fixture_file('/html/page_with_og_metadata.html') }
   let(:valid_attributes) { { url: url } }
   let(:searchgov_url) { described_class.new(valid_attributes) }
-  let(:i14y_document) { I14yDocument.new }
 
   it { is_expected.to have_readonly_attribute(:url) }
 
@@ -73,6 +72,10 @@ describe SearchgovUrl do
     end
   end
 
+  describe 'associations' do
+    it { is_expected.to have_one(:searchgov_document) }
+  end
+
   describe 'callbacks' do
     context 'when destroying' do
       it 'deletes the document' do
@@ -104,12 +107,12 @@ describe SearchgovUrl do
   end
 
   describe '#fetch' do
+    subject(:fetch) { searchgov_url.fetch }
+
     let!(:searchgov_url) { described_class.create!(valid_attributes) }
     let(:searchgov_domain) do
       instance_double(SearchgovDomain, check_status: '200 OK', available?: true)
     end
-
-    subject(:fetch) { searchgov_url.fetch }
 
     before do
       allow(searchgov_url).to receive(:searchgov_domain).and_return(searchgov_domain)
@@ -118,12 +121,21 @@ describe SearchgovUrl do
 
     context 'when the fetch is successful' do
       let(:success_hash) do
-        { status: 200, body: html, headers: { content_type: 'text/html' } }
+        { status: 200,
+          body: html,
+          headers: { content_type: 'text/html',
+                     Etag: '123' } }
       end
+
       before do
-        stub_request(:get, url).with(headers: { user_agent: DEFAULT_USER_AGENT }).
-          to_return({ status: 200, body: html, headers: { content_type: 'text/html' } })
-        stub_request(:get, url).with(headers: { 'User-Agent' => DEFAULT_USER_AGENT }).
+        stub_request(:get, url).
+          with(headers: { user_agent: DEFAULT_USER_AGENT }).
+          to_return({ status: 200,
+                      body: html,
+                      headers: { content_type: 'text/html',
+                                 Etag: '123' } })
+        stub_request(:get, url).
+          with(headers: { 'User-Agent' => DEFAULT_USER_AGENT }).
           to_return(success_hash)
       end
 
@@ -142,6 +154,69 @@ describe SearchgovUrl do
             changed: '2017-03-30T13:18:28-04:00'
         ))
         fetch
+      end
+
+      context 'when searchgov_document save functionality is flagged off' do
+        before do
+          ENV['SEARCHGOV_DOCUMENT_NO_SAVE'] = 'true'
+        end
+
+        after do
+          ENV['SEARCHGOV_DOCUMENT_NO_SAVE'] = nil
+        end
+
+        it 'does not save a document to searchgov_documents' do
+          expect { fetch }.not_to change { SearchgovDocument.count }
+        end
+      end
+
+      context 'when no searchgov_document exists' do
+        it 'saves the document to searchgov_documents' do
+          expect { fetch }.to change { SearchgovDocument.count }.
+            from(0).to(1)
+        end
+
+        it 'saves html content in searchgov_documents' do
+          fetch
+          doc = SearchgovDocument.find_by(searchgov_url_id: searchgov_url.id)
+          expect(doc.body).to include('This is my content.')
+        end
+      end
+
+      context 'when a searchgov_document with the same searchgov_url_id and entity tag exists' do
+        before do
+          SearchgovDocument.create!(
+            body: 'An existing body',
+            searchgov_url_id: searchgov_url.id,
+            header: { Etag: '123' }
+          )
+        end
+
+        it 'does not save a new document to searchgov_documents' do
+          expect { fetch }.not_to change { SearchgovDocument.count }
+        end
+
+        it 'does not update the existing document' do
+          expect { fetch }.not_to change { SearchgovDocument.find_by(searchgov_url_id: searchgov_url.id).updated_at }
+        end
+      end
+
+      context 'when a searchgov_document with the same searchgov_url_id but a different entity tag exists' do
+        before do
+          SearchgovDocument.create!(
+            body: 'An existing body',
+            searchgov_url_id: searchgov_url.id,
+            header: { Etag: '456' }
+          )
+        end
+
+        it 'does not save a new document to searchgov_documents' do
+          expect { fetch }.not_to change { SearchgovDocument.count }
+        end
+
+        it 'updates the existing document' do
+          expect { fetch }.to change { SearchgovDocument.find_by(searchgov_url_id: searchgov_url.id).updated_at }
+        end
       end
 
       context 'when the record is enqueued for reindex' do
@@ -202,7 +277,7 @@ describe SearchgovUrl do
 
       context 'when the document is successfully indexed' do
         before do
-          allow(I14yDocument).to receive(:create).with(anything).and_return(i14y_document)
+          allow(I14yDocument).to receive(:create).with(anything).and_return(I14yDocument.new)
         end
 
         it 'records the load time' do
@@ -304,6 +379,14 @@ describe SearchgovUrl do
           end
         end
       end
+
+      context 'when destroying' do
+        it 'deletes the searchgov_document' do
+          fetch
+          expect { searchgov_url.destroy }.to change { SearchgovDocument.count }.
+            from(1).to(0)
+        end
+      end
     end
 
     context 'when the url points to a pdf' do
@@ -311,6 +394,7 @@ describe SearchgovUrl do
       let(:pdf) { read_fixture_file('/pdf/test.pdf') }
       before do
         stub_request(:get, url).
+          with(headers: { user_agent: DEFAULT_USER_AGENT }).
           to_return({ status: 200,
                       body: pdf,
                       headers: { content_type: 'application/pdf' } })
@@ -334,6 +418,20 @@ describe SearchgovUrl do
         expect_any_instance_of(Tempfile).to receive(:close!)
         fetch
       end
+
+      it 'saves pdf content in searchgov_documents' do
+        fetch
+        doc = SearchgovDocument.find_by(searchgov_url_id: searchgov_url.id)
+        parsed_body = JSON.parse doc.body.gsub('=>', ':')
+        expect(parsed_body['X-TIKA:content']).to include('This is a test PDF file')
+      end
+
+      it 'saves pdf metadata in searchgov_documents' do
+        fetch
+        doc = SearchgovDocument.find_by(searchgov_url_id: searchgov_url.id)
+        parsed_body = JSON.parse doc.body.gsub('=>', ':')
+        expect(parsed_body['Creation-Date']).to eq('2018-06-09T17:42:11Z')
+      end
     end
 
     context 'when the url points to a Word doc (.doc)' do
@@ -341,6 +439,7 @@ describe SearchgovUrl do
       let(:doc) { read_fixture_file('/word/test.doc') }
       before do
         stub_request(:get, url).
+          with(headers: { user_agent: DEFAULT_USER_AGENT }).
           to_return({ status: 200,
                       body: doc,
                       headers: { content_type: 'application/msword' } })
@@ -358,6 +457,20 @@ describe SearchgovUrl do
         ))
         fetch
       end
+
+      it 'saves .doc content in searchgov_documents' do
+        fetch
+        doc = SearchgovDocument.find_by(searchgov_url_id: searchgov_url.id)
+        parsed_body = JSON.parse doc.body.gsub('=>', ':')
+        expect(parsed_body['X-TIKA:content']).to include('This is a Word Doc.')
+      end
+
+      it 'saves .doc metadata in searchgov_documents' do
+        fetch
+        doc = SearchgovDocument.find_by(searchgov_url_id: searchgov_url.id)
+        parsed_body = JSON.parse doc.body.gsub('=>', ':')
+        expect(parsed_body['Creation-Date']).to eq('2017-09-26T23:17:27Z')
+      end
     end
 
     context 'when the url points to a Word doc (.docx)' do
@@ -365,6 +478,7 @@ describe SearchgovUrl do
       let(:doc) { read_fixture_file('/word/test.docx') }
       before do
         stub_request(:get, url).
+          with(headers: { user_agent: DEFAULT_USER_AGENT }).
           to_return({ status: 200,
                       body: doc,
                       headers: { content_type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' } })
@@ -382,6 +496,20 @@ describe SearchgovUrl do
         ))
         fetch
       end
+
+      it 'saves .docx content in searchgov_documents' do
+        fetch
+        doc = SearchgovDocument.find_by(searchgov_url_id: searchgov_url.id)
+        parsed_body = JSON.parse doc.body.gsub('=>', ':')
+        expect(parsed_body['X-TIKA:content']).to include('This is a Word Doc.')
+      end
+
+      it 'saves .docx metadata in searchgov_documents' do
+        fetch
+        doc = SearchgovDocument.find_by(searchgov_url_id: searchgov_url.id)
+        parsed_body = JSON.parse doc.body.gsub('=>', ':')
+        expect(parsed_body['Creation-Date']).to eq('2017-09-26T15:17:27Z')
+      end
     end
 
     context 'when the url points to an Excel doc (.xlsx)' do
@@ -389,6 +517,7 @@ describe SearchgovUrl do
       let(:doc) { read_fixture_file('/excel/test.xlsx') }
       before do
         stub_request(:get, url).
+          with(headers: { user_agent: DEFAULT_USER_AGENT }).
           to_return({ status: 200,
                       body: doc,
                       headers: { content_type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' } })
@@ -406,6 +535,20 @@ describe SearchgovUrl do
         ))
         fetch
       end
+
+      it 'saves .xlsx content in searchgov_documents' do
+        fetch
+        doc = SearchgovDocument.find_by(searchgov_url_id: searchgov_url.id)
+        parsed_body = JSON.parse doc.body.gsub('=>', ':')
+        expect(parsed_body['X-TIKA:content']).to include('This is an Excel doc.')
+      end
+
+      it 'saves .xlsx metadata in searchgov_documents' do
+        fetch
+        doc = SearchgovDocument.find_by(searchgov_url_id: searchgov_url.id)
+        parsed_body = JSON.parse doc.body.gsub('=>', ':')
+        expect(parsed_body['Creation-Date']).to eq('2017-10-05T11:24:38Z')
+      end
     end
 
     context 'when the url points to an Excel doc (.xls)' do
@@ -413,6 +556,7 @@ describe SearchgovUrl do
       let(:doc) { read_fixture_file('/excel/test.xls') }
       before do
         stub_request(:get, url).
+          with(headers: { user_agent: DEFAULT_USER_AGENT }).
           to_return({ status: 200,
                       body: doc,
                       headers: { content_type: 'application/vnd.ms-excel' } })
@@ -430,6 +574,20 @@ describe SearchgovUrl do
         ))
         fetch
       end
+
+      it 'saves .xls content in searchgov_documents' do
+        fetch
+        doc = SearchgovDocument.find_by(searchgov_url_id: searchgov_url.id)
+        parsed_body = JSON.parse doc.body.gsub('=>', ':')
+        expect(parsed_body['X-TIKA:content']).to include('This is an Excel doc.')
+      end
+
+      it 'saves .xls metadata in searchgov_documents' do
+        fetch
+        doc = SearchgovDocument.find_by(searchgov_url_id: searchgov_url.id)
+        parsed_body = JSON.parse doc.body.gsub('=>', ':')
+        expect(parsed_body['Creation-Date']).to eq('2017-10-05T19:24:38Z')
+      end
     end
 
     context 'when the url points to a TXT doc (.txt)' do
@@ -437,6 +595,7 @@ describe SearchgovUrl do
 
       before do
         stub_request(:get, url).
+          with(headers: { user_agent: DEFAULT_USER_AGENT }).
           to_return(status: 200,
                     body: 'This is my text content.',
                     headers: { content_type: 'text/plain' })
@@ -453,6 +612,20 @@ describe SearchgovUrl do
             language: 'en'
         ))
         fetch
+      end
+
+      it 'saves .txt content in searchgov_documents' do
+        fetch
+        doc = SearchgovDocument.find_by(searchgov_url_id: searchgov_url.id)
+        parsed_body = JSON.parse doc.body.gsub('=>', ':')
+        expect(parsed_body['X-TIKA:content']).to include('This is my text content.')
+      end
+
+      it 'saves .txt metadata in searchgov_documents' do
+        fetch
+        doc = SearchgovDocument.find_by(searchgov_url_id: searchgov_url.id)
+        parsed_body = JSON.parse doc.body.gsub('=>', ':')
+        expect(parsed_body['Content-Encoding']).to eq('ISO-8859-1')
       end
     end
 
