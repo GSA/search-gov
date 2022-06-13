@@ -139,7 +139,8 @@ describe SearchgovUrl do
             language: 'en',
             tags: 'this, that',
             created: '2015-07-02T10:12:32-04:00',
-            changed: '2017-03-30T13:18:28-04:00'
+            changed: '2017-03-30T13:18:28-04:00',
+            mime_type: 'text/html'
         ))
         fetch
       end
