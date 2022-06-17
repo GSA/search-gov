@@ -1,9 +1,10 @@
 require 'spec_helper'
 
 describe SitemapIndexerJob do
-  let(:sitemap_url) { 'https://agency.gov/sitemap.xml' }
+  let(:domain) { 'agency.gov' }
+  let(:sitemap_url) { "https://#{domain}/sitemap.xml" }
   let(:args) do
-    { sitemap_url: sitemap_url }
+    { sitemap_url: sitemap_url, domain: domain }
   end
   let(:indexer) { instance_double(SitemapIndexer) }
   subject(:perform) { described_class.perform_now(args) }
