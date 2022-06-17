@@ -47,9 +47,11 @@ class SearchgovDomain < ApplicationRecord
   end
 
   def check_status
-    self.status = response.status
-    self.scheme = response.uri.scheme
-    self.canonical_domain = host unless domain == host
+    unless response.nil?
+      self.status = response.status
+      self.scheme = response.uri.scheme
+      self.canonical_domain = host unless domain == host
+    end
 
     save if changed?
     status
@@ -91,7 +93,14 @@ class SearchgovDomain < ApplicationRecord
       end
     rescue StandardError => error
       update(status: error.message.strip)
-      raise DomainError.new("#{domain}: #{error}")
+      # Instead of re-raising the exception, eat it, log it and return nil,
+      # which means that if SearchgovDomain#check_status gets called again,
+      # we'll try and get a good response all over again, which I assume is
+      # the correct action.  (Which leaves an odd asymmetry, though: after
+      # getting one good response, we assume it'll be good for the life of
+      # this process.)  -DJMII
+      Rails.logger.warn "#{self.class.to_s} response error url: #{url} error: #{status}"
+      nil
     end
   end
 
@@ -100,6 +109,6 @@ class SearchgovDomain < ApplicationRecord
   end
 
   def host
-    response.uri.host
+    response&.uri.host # Belt and suspenders. -DJMII
   end
 end
