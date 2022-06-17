@@ -52,6 +52,8 @@ class ElasticBlendedQuery < ElasticTextFilterByPublishedAtQuery
           json.child! { json.term { json.affiliate_id @affiliate_id } }
           json.child! { json.terms { json.rss_feed_url_id @rss_feed_url_ids } }
         end
+
+        json.minimum_should_match 1
       end
     end
   end
