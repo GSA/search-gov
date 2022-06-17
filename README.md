@@ -18,20 +18,32 @@ Use [RVM](https://rvm.io/) to install the version of Ruby specified in [.ruby-ve
 
 The required services (MySQL, Elasticsearch, etc.) can be run using Docker. Please refer to [searchgov-services](https://github.com/GSA/search-services) for detailed instructions on centralized configuration for services.
 
-* [Elasticsearch](https://www.elastic.co/elasticsearch/) - for full-text search and query analytics
-
-We have configured Elasticsearch to run on the default port [9200](http://localhost:9200/). To use a different host (with or without port) or set of hosts, set the `ES_HOSTS` environmental variable. For example, use following command to run the specs using Elasticsearch running on `localhost:9207`:
+The Elasticsearch service provided by `searchgov-services` is configured to run on the default port, [9200](http://localhost:9200/). To use a different host (with or without port) or set of hosts, set the `ES_HOSTS` environment variable. For example, use following command to run the specs using Elasticsearch running on `localhost:9207`:
 
     ES_HOSTS=localhost:9207 bin/rspec spec
 
-Some specs depend upon Elasticsearch having a valid trial license. A 30-day trial license is automatically applied when the cluster is initially created. If your license expires, you can rebuild the cluster by [rebuilding the container and its data volume](https://github.com/GSA/search-gov/wiki/Docker-Command-Reference/_edit#recreate-an-elasticsearch-cluster-useful-for-restarting-a-trial-license). 
-    
-    
-* [Kibana](https://www.elastic.co/kibana) - Kibana is not required, but can be very useful for debugging Elasticsearch. Confirm Kibana is available by visiting <http://localhost:5601>.
+Verify that Elasticsearch 6.8.x is running on port the expected port (in this example, port 9200):
 
-* [MySQL](https://dev.mysql.com/doc/refman/5.7/en/) 5.7 - database, accessible from user 'root' with no password
-* [Redis](https://redis.io/) 5.0 - We're using the Redis key-value store for caching, queue workflow via Resque, and some analytics.
-* [Tika](https://tika.apache.org/) - for extracting plain text from PDFs, etc. The [Tika REST server](https://cwiki.apache.org/confluence/display/TIKA/TikaServer) runs on <http://localhost:9998/>.
+```bash
+$ curl localhost:9200
+{
+  "name" : "wp9TsCe",
+  "cluster_name" : "docker-cluster",
+  "cluster_uuid" : "WGf_peYTTZarT49AtEgc3g",
+  "version" : {
+    "number" : "6.8.7",
+    "build_flavor" : "default",
+    "build_type" : "docker",
+    "build_hash" : "c63e621",
+    "build_date" : "2020-02-26T14:38:01.193138Z",
+    "build_snapshot" : false,
+    "lucene_version" : "7.7.2",
+    "minimum_wire_compatibility_version" : "5.6.0",
+    "minimum_index_compatibility_version" : "5.0.0"
+  },
+  "tagline" : "You Know, for Search"
+}
+```
 
 ### Package Manager
 
