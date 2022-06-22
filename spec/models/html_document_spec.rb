@@ -8,12 +8,13 @@ describe HtmlDocument do
   let(:valid_attributes) do
     { document: raw_document, url: url }
   end
-  let(:doc_without_description) { read_fixture_file('/html/page_with_no_links.html') }
-  let(:doc_with_lang_subcode) { '<html lang="en-US"></html>' }
-  let(:doc_without_language) { '<html>هذه الجملة باللغة العربية.</html>' }
   let(:doc_with_dc_data) { read_fixture_file('/html/page_with_dc_metadata.html') }
 
-  it_should_behave_like 'a web document'
+  it_behaves_like 'a web document' do
+    let(:doc_without_description) { read_fixture_file('/html/page_with_no_links.html') }
+    let(:doc_with_lang_subcode) { '<html lang="en-US"></html>' }
+    let(:doc_without_language) { '<html>هذه الجملة باللغة العربية.</html>' }
+  end
 
   describe '#title' do
     subject(:title) { html_document.title }
@@ -106,7 +107,7 @@ describe HtmlDocument do
       let(:raw_document) { read_fixture_file('/html/page_with_og_metadata.html') }
 
       it { is_expected.to eq Time.parse('2015-07-02T10:12:32-04:00') }
-     end
+    end
 
     context 'when the Dublin Core date is available' do
       let(:raw_document) { doc_with_dc_data }
@@ -143,6 +144,53 @@ describe HtmlDocument do
       let(:raw_document) { read_fixture_file('/html/page_with_og_metadata.html') }
 
       it { is_expected.to eq Time.parse('2017-03-30T13:18:28-04:00') }
+    end
+  end
+
+  describe '#audience' do
+    subject(:audience) { html_document.audience }
+
+    context 'when a dcterms audience is available' do
+      let(:raw_document) { doc_with_dc_data }
+
+      it { is_expected.to eq 'dcterms audience' }
+    end
+
+    context 'when a metadata audience is available' do
+      it { is_expected.to eq 'metadata audience' }
+    end
+
+    context 'when both a metadata and dcterms audience are available' do
+      let(:raw_document) do
+        <<~HTML
+          <html lang="en">
+            <head>
+              <title>My Title</title>
+              <meta name="dcterms.audience" content="dcterms audience"/>
+              <meta name="audience" content="metadata audience">
+            </head>
+          </html>
+        HTML
+      end
+
+      it { is_expected.to include('metadata audience') }
+      it { is_expected.to include('dcterms audience') }
+    end
+
+    context 'when both audiences are duplicates' do
+      let(:raw_document) do
+        <<~HTML
+          <html lang="en">
+            <head>
+              <title>My Title</title>
+              <meta name="dcterms.audience" content="audience"/>
+              <meta name="audience" content="audience">
+            </head>
+          </html>
+        HTML
+      end
+
+      it { is_expected.to eq('audience') }
     end
   end
 
