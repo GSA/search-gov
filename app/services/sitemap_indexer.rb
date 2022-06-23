@@ -6,9 +6,9 @@ class SitemapIndexer
               :searchgov_domain,
               :uri
 
-  def initialize(sitemap_url:)
+  def initialize(sitemap_url:, domain:)
     @uri = URI(sitemap_url.strip)
-    @domain = uri.host
+    @domain = domain
     @scheme = uri.scheme
     @searchgov_domain = SearchgovDomain.find_by(domain: domain)
   end
@@ -38,7 +38,7 @@ class SitemapIndexer
 
   def enqueue_sitemaps
     sitemaps_stream.each do |sitemap|
-      SitemapIndexerJob.perform_later(sitemap_url: sitemap['loc'].to_s)
+      SitemapIndexerJob.perform_later(sitemap_url: sitemap['loc'].to_s, domain: domain)
     end
   end
 
