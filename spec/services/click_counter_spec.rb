@@ -68,7 +68,7 @@ describe ClickCounter do
              Time.now,
              'click_domain',
              'agency.gov',
-             { field: 'params.url', size: 100_000 }).
+             { field: 'params.url', size: 3_000 }).
         and_call_original
       clicks
     end
@@ -83,7 +83,7 @@ describe ClickCounter do
       end
 
       it 'returns the statistically significant clicks' do
-        expect(clicks.last).to eq ['https://search.gov/manual/add-site.html', 1]
+        expect(clicks.last).to eq ['https://search.gov/tos.html', 1]
       end
     end
   end

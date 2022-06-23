@@ -3,8 +3,6 @@
 # Updates I14yDocuments in the searchgov index with click_count data
 # to be used for relevancy ranking
 class ClickCounter
-  SIGNIFICANT_PERCENTAGE = 75
-
   attr_reader :domain
 
   def initialize(domain:)
@@ -27,10 +25,9 @@ class ClickCounter
                                         'click_domain',
                                         domain,
                                         field: 'params.url',
-                                        size: 100_000)
+                                        size: 3_000)
 
-    RtuTopClicks.new(query.body, true).
-      top_n_to_percentage(SIGNIFICANT_PERCENTAGE)
+    RtuTopClicks.new(query.body, true).top_n
   end
 
   def update_click_count(url:, count:)

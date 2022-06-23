@@ -39,30 +39,4 @@ describe RtuTopClicks do
       end
     end
   end
-
-  describe '#top_n_to_percentage' do
-    subject(:top_n_to_percentage) do
-      rtu_top_clicks.top_n_to_percentage(50)
-    end
-
-    include_context 'when statistics are available'
-
-    it 'returns the top N percent of all clicks' do
-      expect(top_n_to_percentage).to eq ([
-        ['http://appropriations.house.gov/subcommittees/subcommittee/?IssueID=34776', 10],
-        ['http://assembly.ca.gov/legislativebranch', 9],
-        ['http://cs.cpsc.gov/ConceptDemo/SearchCPSC.aspx', 8],
-        ['http://livertox.nih.gov/AloeVera.htm', 7],
-      ])
-    end
-
-    context 'when the result set is small' do
-      before do
-        allow(rtu_top_clicks).to receive(:top_n).
-          and_return([['http://foo.gov/',5]])
-      end
-
-      it { is_expected.to eq [['http://foo.gov/',5]] }
-    end
-  end
 end
