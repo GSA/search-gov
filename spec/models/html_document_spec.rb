@@ -155,43 +155,6 @@ describe HtmlDocument do
 
       it { is_expected.to eq 'dcterms audience' }
     end
-
-    context 'when a metadata audience is available' do
-      it { is_expected.to eq 'metadata audience' }
-    end
-
-    context 'when both a metadata and dcterms audience are available' do
-      let(:raw_document) do
-        <<~HTML
-          <html lang="en">
-            <head>
-              <title>My Title</title>
-              <meta name="dcterms.audience" content="dcterms audience"/>
-              <meta name="audience" content="metadata audience">
-            </head>
-          </html>
-        HTML
-      end
-
-      it { is_expected.to include('metadata audience') }
-      it { is_expected.to include('dcterms audience') }
-    end
-
-    context 'when both audiences are duplicates' do
-      let(:raw_document) do
-        <<~HTML
-          <html lang="en">
-            <head>
-              <title>My Title</title>
-              <meta name="dcterms.audience" content="audience"/>
-              <meta name="audience" content="audience">
-            </head>
-          </html>
-        HTML
-      end
-
-      it { is_expected.to eq('audience') }
-    end
   end
 
   describe '#keywords' do

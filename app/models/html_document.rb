@@ -18,7 +18,7 @@ class HtmlDocument < WebDocument
   end
 
   def audience
-    [metadata['audience'], dcterms_data['dcterms.audience']].uniq.compact.join(', ')
+    dcterms_data['dcterms.audience']
   end
 
   # Returns client-side redirect url
