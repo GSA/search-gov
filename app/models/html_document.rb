@@ -17,6 +17,12 @@ class HtmlDocument < WebDocument
     metadata['keywords'] || dublin_core_data['dc.subject']
   end
 
+  def searchgov_custom(number)
+    return if !number.is_a?(Integer) || !number.between?(1, 3)
+
+    metadata["searchgov_custom#{number}"]
+  end
+
   # Returns client-side redirect url
   def redirect_url
     refresh = html.css('meta[http-equiv]').detect{|node| /refresh/i === node['http-equiv'] }

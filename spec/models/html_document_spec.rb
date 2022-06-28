@@ -8,12 +8,13 @@ describe HtmlDocument do
   let(:valid_attributes) do
     { document: raw_document, url: url }
   end
-  let(:doc_without_description) { read_fixture_file('/html/page_with_no_links.html') }
-  let(:doc_with_lang_subcode) { '<html lang="en-US"></html>' }
-  let(:doc_without_language) { '<html>هذه الجملة باللغة العربية.</html>' }
   let(:doc_with_dc_data) { read_fixture_file('/html/page_with_dc_metadata.html') }
 
-  it_should_behave_like 'a web document'
+  it_behaves_like 'a web document' do
+    let(:doc_without_description) { read_fixture_file('/html/page_with_no_links.html') }
+    let(:doc_with_lang_subcode) { '<html lang="en-US"></html>' }
+    let(:doc_without_language) { '<html>هذه الجملة باللغة العربية.</html>' }
+  end
 
   describe '#title' do
     subject(:title) { html_document.title }
@@ -106,7 +107,7 @@ describe HtmlDocument do
       let(:raw_document) { read_fixture_file('/html/page_with_og_metadata.html') }
 
       it { is_expected.to eq Time.parse('2015-07-02T10:12:32-04:00') }
-     end
+    end
 
     context 'when the Dublin Core date is available' do
       let(:raw_document) { doc_with_dc_data }
@@ -143,6 +144,38 @@ describe HtmlDocument do
       let(:raw_document) { read_fixture_file('/html/page_with_og_metadata.html') }
 
       it { is_expected.to eq Time.parse('2017-03-30T13:18:28-04:00') }
+    end
+  end
+
+  describe '#searchgov_custom' do
+    context 'when a searchgov_custom1 is available' do
+      subject(:searchgov_custom1) { html_document.searchgov_custom(1) }
+
+      it { is_expected.to eq 'Custom 1' }
+    end
+
+    context 'when a searchgov_custom2 is available' do
+      subject(:searchgov_custom2) { html_document.searchgov_custom(2) }
+
+      it { is_expected.to eq 'Custom 2' }
+    end
+
+    context 'when a searchgov_custom3 is available' do
+      subject(:searchgov_custom3) { html_document.searchgov_custom(3) }
+
+      it { is_expected.to eq 'Custom 3' }
+    end
+
+    context 'when an invalid searchgov_custom is supplied' do
+      subject(:searchgov_custom1) { html_document.searchgov_custom('word') }
+
+      it { is_expected.to be_nil }
+    end
+
+    context 'when a searchgov_custom greater than 3 is supplied' do
+      subject(:searchgov_custom4) { html_document.searchgov_custom(4) }
+
+      it { is_expected.to be_nil }
     end
   end
 
