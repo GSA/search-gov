@@ -14,7 +14,7 @@ describe SitemapIndexer do
       </urlset>
     SITEMAP
   end
-  let(:indexer) { described_class.new(sitemap_url: sitemap_url) }
+  let(:indexer) { described_class.new(sitemap_url: sitemap_url, domain: 'agency.gov') }
 
   before do
     stub_request(:get, sitemap_url).
@@ -60,9 +60,9 @@ describe SitemapIndexer do
       it 'enqueues new jobs to process both sitemaps' do
         index
         expect(SitemapIndexerJob).to have_been_enqueued.
-          with(sitemap_url: 'http://agency.gov/sitemap_a.xml')
+          with(sitemap_url: 'http://agency.gov/sitemap_a.xml', domain: 'agency.gov')
         expect(SitemapIndexerJob).to have_been_enqueued.
-          with(sitemap_url: 'http://agency.gov/sitemap_b.xml')
+          with(sitemap_url: 'http://agency.gov/sitemap_b.xml', domain: 'agency.gov')
       end
     end
 
@@ -215,7 +215,7 @@ describe SitemapIndexer do
   describe '#initialize' do
     context 'when given a sitemap url string having leading or trailing whitespace' do
       it 'strips the leading or trailing whitespace before parsing it' do
-        expect(described_class.new(sitemap_url: " \n#{sitemap_url}\n ").uri.to_s).to eq(sitemap_url)
+        expect(described_class.new(sitemap_url: " \n#{sitemap_url}\n ", domain: 'agency.gov').uri.to_s).to eq(sitemap_url)
       end
     end
   end
