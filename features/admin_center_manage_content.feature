@@ -509,23 +509,6 @@ Feature: Manage Content
     When I press "Remove" and confirm "Are you sure you wish to remove https://www.flickr.com/groups/usagov/ from this site?"
     Then I should see "You have removed www.flickr.com/groups/usagov/ from this site"
 
-  Scenario: View/Remove Instagram usernames
-    Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       |
-    When the following Instagram usernames exist for the site "agency.gov":
-      | username   |
-      | whitehouse |
-      | dg_search  |
-    And I am logged in with email "john@agency.gov"
-    When I go to the agency.gov's Manage Content page
-    And I follow "Instagram" within the Admin Center content
-    Then I should see the following table rows:
-      | dg_search  |
-      | whitehouse |
-    When I press "Remove" within the first table body row and confirm "Are you sure you wish to remove dg_search from this site?"
-    Then I should see "You have removed dg_search from this site"
-
   Scenario: View RSS
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name |
