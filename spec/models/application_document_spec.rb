@@ -84,6 +84,16 @@ describe ApplicationDocument do
     end
   end
 
+  describe '#keywords' do
+    subject(:keywords) { application_document.keywords }
+
+    context 'when the document has Keywords' do
+      it 'returns the keywords' do
+        expect(keywords).to eq 'this, that'
+      end
+    end
+  end
+
   describe '#parsed_content' do
     subject(:parsed_content) { application_document.parsed_content }
 

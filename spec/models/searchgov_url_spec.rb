@@ -137,7 +137,7 @@ describe SearchgovUrl do
             description: 'My OG Description',
             content: "This is my headline.\nThis is my content.",
             language: 'en',
-            tags: 'this, that',
+            tags: 'this, that, the other, thing',
             created: '2015-07-02T10:12:32-04:00',
             changed: '2017-03-30T13:18:28-04:00'
         ))
@@ -192,7 +192,7 @@ describe SearchgovUrl do
               description: 'My OG Description',
               content: "This is my headline.\nThis is my content.",
               language: 'en',
-              tags: 'this, that',
+              tags: 'this, that, the other, thing',
               created: '2015-07-02T10:12:32-04:00',
               changed: '2017-03-30T13:18:28-04:00'
           ))
