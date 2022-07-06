@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_12_200543) do
+ActiveRecord::Schema.define(version: 2022_07_06_135731) do
 
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -89,8 +89,6 @@ ActiveRecord::Schema.define(version: 2022_05_12_200543) do
     t.boolean "gets_blended_results", default: false, null: false
     t.boolean "is_bing_image_search_enabled", default: true, null: false
     t.boolean "is_federal_register_document_govbox_enabled", default: false, null: false
-    t.string "google_cx"
-    t.string "google_key"
     t.string "api_access_key", null: false
     t.boolean "gets_commercial_results_on_blended_search", default: true, null: false
     t.boolean "gets_i14y_results", default: false, null: false
@@ -780,7 +778,6 @@ ActiveRecord::Schema.define(version: 2022_05_12_200543) do
     t.index ["id", "imported_at"], name: "index_youtube_profiles_on_id_and_imported_at"
   end
 
-  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "searchgov_urls", "searchgov_domains"
 end

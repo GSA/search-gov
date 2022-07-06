@@ -34,13 +34,6 @@ module Api
         respond_with(@search)
       end
 
-      # Deprecated - will be removed in https://cm-jira.usa.gov/browse/SRCH-1429
-      def gss
-        @search = ApiGssSearch.new(@search_options.attributes)
-        @search.run
-        respond_with(@search)
-      end
-
       def i14y
         @search = ApiI14ySearch.new(@search_options.attributes)
         @search.run
@@ -57,23 +50,12 @@ module Api
       # https://cm-jira.usa.gov/browse/SFL-46
       def docs
         @document_collection = (DocumentCollection.find(@search_options.dc) rescue nil)
-        @search = if @document_collection&.too_deep_for_bing?
-                    ApiI14ySearch.new(@search_options.attributes)
-                  else
-                    affiliate_docs_search_class.new(@search_options.attributes)
-                  end
+        @search = ApiI14ySearch.new(@search_options.attributes)
         @search.run
         respond_with(@search)
       end
 
       private
-
-      def affiliate_docs_search_class
-        case @search_options.site.search_engine
-        when 'Google'
-          ApiGoogleDocsSearch
-        end
-      end
 
       def handle_query_routing
         affiliate = @search_options.site
@@ -125,7 +107,6 @@ module Api
         when :azure_web then Api::AzureCompositeWebSearchOptions
         when :azure_image then Api::AzureCompositeImageSearchOptions
         when :blended, :i14y, :video then Api::NonCommercialSearchOptions
-        when :gss then Api::GssSearchOptions
         when :docs then Api::DocsSearchOptions
         end
       end

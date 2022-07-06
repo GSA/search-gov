@@ -50,24 +50,12 @@ describe MobileHelper do
         end
       end
     end
-
-    context 'when module_tag is GWEB' do
-      it 'returns Powered by Google' do
-        expect(helper.search_results_by_text('GWEB')).to have_content('Powered by Google')
-      end
-    end
   end
 
   describe '#serp_attribution' do
     context 'when module_tag is AWEB' do
       it 'returns Powered by Bing' do
         expect(helper.serp_attribution('AWEB')).to have_content('Powered by Bing')
-      end
-    end
-
-    context 'when module_tag is GWEB' do
-      it 'returns Powered by Google' do
-        expect(helper.serp_attribution('GWEB')).to have_content('Powered by Google')
       end
     end
   end

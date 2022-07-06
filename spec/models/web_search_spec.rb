@@ -39,19 +39,6 @@ describe WebSearch do
       expect(search.matching_site_limits).to eq(%w[foo.com/subdir1 foo.com/subdir2])
     end
 
-    context 'when affiliate has custom google CX+Key set and google search enabled' do
-      before do
-        affiliate.search_engine = 'Google'
-        affiliate.google_cx = '1234567890.abc'
-        affiliate.google_key = 'some_key'
-      end
-
-      it 'uses that for the search' do
-        expect(GoogleWebSearch).to receive(:new).with(hash_including(google_cx: '1234567890.abc', google_key: 'some_key'))
-        described_class.new(valid_options)
-      end
-    end
-
     skip 'when the search engine is Azure' do
       # disabling until tests are removed:
       # https://www.pivotaltracker.com/story/show/134719601
@@ -240,7 +227,7 @@ describe WebSearch do
       end
     end
 
-    context 'when the affiliate has no Bing/Google results, but has indexed documents' do
+    context 'when the affiliate has no Bing results, but has indexed documents' do
       let(:non_affiliate) { affiliates(:non_existent_affiliate) }
 
       before do
@@ -270,7 +257,7 @@ describe WebSearch do
       end
     end
 
-    context 'when affiliate has no Bing/Google results and IndexedDocuments search returns nil' do
+    context 'when affiliate has no Bing results and IndexedDocuments search returns nil' do
       let(:non_affiliate) { affiliates(:non_existent_affiliate) }
       let(:search) { described_class.new(query: 'no_results', affiliate: non_affiliate) }
 
@@ -298,7 +285,7 @@ describe WebSearch do
       end
     end
 
-    context 'when affiliate has no Bing/Google results and there is an orphan document in the Odie index' do
+    context 'when affiliate has no Bing results and there is an orphan document in the Odie index' do
       let(:non_affiliate) { affiliates(:non_existent_affiliate) }
 
       before do
@@ -387,64 +374,6 @@ describe WebSearch do
         affiliate.site_domains.create!(domain: included_domain)
         affiliate.excluded_domains.create!(domain: excluded_domain)
         search.run
-      end
-
-      context 'when the affiliate uses Google' do
-        let(:search_engine) { 'Google' }
-
-        context 'when a subdirectory is excluded' do
-          let(:excluded_domain) { 'justice.gov/archives' }
-          let(:included_domain) { 'justice.gov' }
-          let(:query) { 'law' }
-
-          it 'includes the included domains' do
-            search.results.each do |result|
-              expect(result['unescapedUrl']).to match(%r{justice.gov})
-            end
-          end
-
-          it 'excludes the excluded domains' do
-            search.results.each do |result|
-              expect(result['unescapedUrl']).not_to match(%r{justice.gov/archives})
-            end
-          end
-        end
-
-        context 'when a subdomain is excluded' do
-          let(:included_domain) { 'nasa.gov' }
-          let(:excluded_domain) { 'mars.nasa.gov' }
-          let(:query) { 'mars' }
-
-          it 'includes the included domains' do
-            search.results.each do |result|
-              expect(result['unescapedUrl']).to match(%r{nasa.gov})
-            end
-          end
-
-          it 'excludes the excluded domains' do
-            search.results.each do |result|
-              expect(result['unescapedUrl']).not_to match(%r{mars.nasa.gov})
-            end
-          end
-        end
-
-        context 'when a top-level domain is included' do
-          let(:included_domain) { '.gov' }
-          let(:excluded_domain) { 'nasa.gov' }
-          let(:query) { 'mars' }
-
-          it 'includes the included domains' do
-            search.results.each do |result|
-              expect(result['unescapedUrl']).to match(%r{.gov})
-            end
-          end
-
-          it 'excludes the excluded domains' do
-            search.results.each do |result|
-              expect(result['unescapedUrl']).not_to match(%r{nasa.gov})
-            end
-          end
-        end
       end
 
       context 'when the affiliate.uses BingV6' do

@@ -200,62 +200,6 @@ describe Api::V2::SearchesController do
     end
   end
 
-  describe '#gss' do
-    let(:gss_params) { search_params.merge({ cx: 'my-cx' }) }
-
-    context 'when the search options are not valid' do
-      before do
-        get :gss, params: gss_params.except(:cx, :api_key)
-      end
-
-      it { is_expected.to respond_with :bad_request }
-
-      it 'returns errors in JSON' do
-        errors = JSON.parse(response.body)['errors']
-        expect(errors).to include('api_key must be present')
-        expect(errors).to include('cx must be present')
-      end
-    end
-
-    context 'when the search options are valid' do
-      let!(:search) { double(ApiGssSearch, as_json: { foo: 'bar'}, modules: %w(GWEB)) }
-
-      before do
-        expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
-
-        expect(ApiGssSearch).to receive(:new).with(hash_including(query: 'api')).and_return(search)
-        expect(search).to receive(:run)
-        expect(SearchImpression).to receive(:log).with(search,
-                                                   'gss',
-                                                   hash_including('query'),
-                                                   be_a_kind_of(ActionDispatch::Request))
-
-        get :gss, params: gss_params
-      end
-
-      it { is_expected.to respond_with :success }
-
-      it 'returns search JSON' do
-        expect(JSON.parse(response.body)['foo']).to eq('bar')
-      end
-    end
-
-    context 'when a routed query term is matched' do
-      before do
-        expect(RoutedQueryImpressionLogger).to receive(:log).
-          with(affiliate, 'moar unclaimed money', an_instance_of(ActionController::TestRequest))
-
-        get :gss, params: gss_params.merge(query: 'moar unclaimed money')
-      end
-
-      it { is_expected.to respond_with :success }
-
-      it 'returns search JSON' do
-        expect(JSON.parse(response.body)['route_to']).to eq('https://www.usa.gov/unclaimed_money')
-      end
-    end
-  end
-
   describe '#i14y' do
     context 'when the search options are not valid' do
       before do
@@ -421,30 +365,6 @@ describe Api::V2::SearchesController do
       it { is_expected.to respond_with :success }
 
       it 'should use I14y' do
-        expect(JSON.parse(response.body)['foo']).to eq('bar')
-      end
-    end
-
-    context 'when the search options are valid and the affiliate is using Google' do
-      let!(:search) { double(ApiGoogleDocsSearch, as_json: { foo: 'bar'}, modules: %w(GWEB)) }
-
-      before do
-        expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
-        allow(affiliate).to receive(:search_engine).and_return('Google')
-
-        expect(ApiGoogleDocsSearch).to receive(:new).with(hash_including(query_params)).and_return(search)
-        expect(search).to receive(:run)
-        expect(SearchImpression).to receive(:log).with(search,
-                                                   'docs',
-                                                   hash_including('query'),
-                                                   be_a_kind_of(ActionDispatch::Request))
-
-        get :docs, params: docs_params
-      end
-
-      it { is_expected.to respond_with :success }
-
-      it 'returns search JSON' do
         expect(JSON.parse(response.body)['foo']).to eq('bar')
       end
     end

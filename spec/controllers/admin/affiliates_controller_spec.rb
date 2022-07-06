@@ -63,24 +63,6 @@ describe Admin::AffiliatesController do
 
     context 'when configuring Active Scaffold' do
       let(:update_columns) { config.update.columns }
-      let(:settings_columns) do
-        %i[ active agency bing_v5_key display_name domain_control_validation_code fetch_concurrency ga_web_property_id
-            google_cx google_key i14y_date_stamp_enabled locale name search_engine website
-            affiliate_feature_addition excluded_domains i14y_memberships ]
-      end
-      let(:enable_disable_columns) do
-        %i[ dap_enabled gets_blended_results gets_commercial_results_on_blended_search
-            gets_i14y_results is_bing_image_search_enabled is_federal_register_document_govbox_enabled
-            is_medline_govbox_enabled is_photo_govbox_enabled is_related_searches_enabled
-            is_rss_govbox_enabled is_sayt_enabled is_video_govbox_enabled jobs_enabled raw_log_access_enabled ]
-      end
-      let(:display_columns) do
-        %i[ footer_fragment header_tagline_font_family header_tagline_font_size header_tagline_font_style
-            no_results_pointer page_one_more_results_pointer navigation_dropdown_label related_sites_dropdown_label ]
-      end
-      let(:analytics_columns) do
-        %i[ga_web_property_id domain_control_validation_code external_tracking_code submitted_external_tracking_code]
-      end
 
       describe 'subgroups' do
         it 'contains the specified subgroups' do
@@ -92,24 +74,46 @@ describe Admin::AffiliatesController do
       end
 
       describe 'Settings subgroup' do
+        let(:settings_columns) do
+          %i[ active agency bing_v5_key display_name domain_control_validation_code
+              fetch_concurrency ga_web_property_id i14y_date_stamp_enabled locale name
+              search_engine website affiliate_feature_addition excluded_domains i14y_memberships ]
+        end
+
         it 'contains the specified columns' do
           expect(update_columns.find { |c| c.label == 'Settings' }.to_a).to match_array(settings_columns)
         end
       end
 
       describe "'Enable/disable Settings' subgroup" do
+        let(:enable_disable_columns) do
+          %i[ dap_enabled gets_blended_results gets_commercial_results_on_blended_search
+              gets_i14y_results is_bing_image_search_enabled is_federal_register_document_govbox_enabled
+              is_medline_govbox_enabled is_photo_govbox_enabled is_related_searches_enabled
+              is_rss_govbox_enabled is_sayt_enabled is_video_govbox_enabled jobs_enabled raw_log_access_enabled ]
+        end
+
         it 'contains the specified columns' do
           expect(update_columns.find { |c| c.label == 'Enable/disable Settings' }.to_a).to match_array(enable_disable_columns)
         end
       end
 
       describe 'Display Settings subgroup' do
+        let(:display_columns) do
+          %i[ footer_fragment header_tagline_font_family header_tagline_font_size header_tagline_font_style
+              no_results_pointer page_one_more_results_pointer navigation_dropdown_label related_sites_dropdown_label ]
+        end
+
         it 'contains the specified columns' do
           expect(update_columns.find { |c| c.label == 'Display Settings' }.to_a).to match_array(display_columns)
         end
       end
 
       describe 'Analytics-Tracking Code subgroup' do
+        let(:analytics_columns) do
+          %i[ga_web_property_id domain_control_validation_code external_tracking_code submitted_external_tracking_code]
+        end
+
         it 'contains the specified columns' do
           expect(update_columns.find { |c| c.label == 'Analytics-Tracking Code' }.to_a).to match_array(analytics_columns)
         end
@@ -144,8 +148,6 @@ describe Admin::AffiliatesController do
             gets_blended_results
             gets_commercial_results_on_blended_search
             gets_i14y_results
-            google_cx
-            google_key
             header_tagline_font_family
             header_tagline_font_size
             header_tagline_font_style

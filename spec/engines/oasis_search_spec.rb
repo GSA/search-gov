@@ -24,4 +24,21 @@ describe OasisSearch do
     end
   end
 
+  context 'when spelling mistake is made' do
+    let(:image_search) { described_class.new(query: 'shutle') }
+
+    before do
+      oasis_api_url = "#{Oasis.host}#{OasisSearch::API_ENDPOINT}?"
+      oasis_image_result = Rails.root.join('spec/fixtures/json/oasis/image_search/shuttle-misspelling.json').read
+      image_search_params = { from: 0, query: 'shutle', size: 10 }
+      stub_request(:get, "#{oasis_api_url}#{image_search_params.to_param}").
+        to_return( status: 200, body: oasis_image_result )
+    end
+
+    it 'must return a spelling suggestion' do
+      normalized_response = image_search.execute_query
+      expect(normalized_response.spelling_suggestion).to eq('shuttle')
+    end
+  end
+
 end
