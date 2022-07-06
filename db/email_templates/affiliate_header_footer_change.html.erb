@@ -1,0 +1,31 @@
+You've changed the header or footer for <%= @affiliate.display_name %> so we're sending you this email for your records.
+
+To revert to the previous version of your header or footer, copy the code below and paste it into the boxes at Admin Center > YourSite > Manage Display > Header & Footer.
+
+<%= site_url(@affiliate) %>
+
+Search.gov Team
+General Services Administration
+202-969-7426 | search@gsa.gov
+https://search.gov
+
+++++++++++
+
+YOUR PREVIOUS HEADER
+<%= @affiliate.previous_header.html_safe unless @affiliate.previous_header.blank? %>
+
+YOUR PREVIOUS FOOTER
+
+<%= @affiliate.previous_footer.html_safe unless @affiliate.previous_footer.blank? %>
+
+++++++++++
+
+YOUR CURRENT HEADER
+
+<%= @affiliate.header.html_safe %>
+
+YOUR CURRENT FOOTER
+
+<%= @affiliate.footer.html_safe %>
+
+++++++++++
