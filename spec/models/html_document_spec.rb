@@ -147,6 +147,16 @@ describe HtmlDocument do
     end
   end
 
+  describe '#image_url' do
+    subject(:image_url) { html_document.image_url }
+
+    context 'when an og:image is available' do
+      let(:raw_document) { read_fixture_file('/html/page_with_og_metadata.html') }
+
+      it { is_expected.to eq 'http://www.foo.gov/og_image.jpg' }
+    end
+  end
+
   describe '#content_type' do
     subject(:content_type) { html_document.content_type }
 
