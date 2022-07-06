@@ -156,7 +156,7 @@ describe HtmlDocument do
       it { is_expected.to eq 'http://www.foo.gov/og_image.jpg' }
     end
   end
-  
+
   describe '#content_type' do
     subject(:content_type) { html_document.content_type }
 
