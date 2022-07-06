@@ -156,6 +156,73 @@ describe HtmlDocument do
       it { is_expected.to eq 'http://www.foo.gov/og_image.jpg' }
     end
   end
+  
+  describe '#content_type' do
+    subject(:content_type) { html_document.content_type }
+
+    context 'when a dc content type is available' do
+      let(:raw_document) { doc_with_dc_data }
+
+      it { is_expected.to eq 'dc type' }
+    end
+
+    context 'when a dcterms content type is available' do
+      let(:raw_document) do
+        <<~HTML
+          <html lang="en">
+            <head>
+              <title>My Title</title>
+              <meta name="dcterms.type" content="dcterms type"/>
+            </head>
+          </html>
+        HTML
+      end
+
+      it { is_expected.to eq 'dcterms type' }
+    end
+
+    context 'when an og:type is available' do
+      let(:raw_document) { read_fixture_file('/html/page_with_og_metadata.html') }
+
+      it { is_expected.to eq 'video.movie' }
+    end
+
+    context 'when all content type sources are available' do
+      let(:raw_document) do
+        <<~HTML
+          <html lang="en">
+            <head>
+              <title>My Title</title>
+              <meta name="DC.type" content="dc type"/>
+              <meta name="dcterms.type" content="dcterms type"/>
+              <meta name="og:type" content="video.movie">
+            </head>
+          </html>
+        HTML
+      end
+
+      it { is_expected.to include('dc type') }
+      it { is_expected.to include('dcterms type') }
+      it { is_expected.to include('video.movie') }
+    end
+
+    context 'when types are duplicated' do
+      let(:raw_document) do
+        <<~HTML
+          <html lang="en">
+            <head>
+              <title>My Title</title>
+              <meta name="dcterms.type" content="type"/>
+              <meta name="dc.type" content="type"/>
+              <meta property="og:type" content="type" />
+            </head>
+          </html>
+        HTML
+      end
+
+      it { is_expected.to eq('type') }
+    end
+  end
 
   describe '#keywords' do
     subject(:keywords) { html_document.keywords }
