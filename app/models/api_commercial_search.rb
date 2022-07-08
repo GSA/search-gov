@@ -21,6 +21,10 @@ class ApiCommercialSearch < Search
     @spelling_suggestion_eligible = !SuggestionBlock.exists?(query: @query)
   end
 
+  def diagnostics_label
+    default_module_tag
+  end
+
   protected
 
   def is_api_key_bing_v5?
@@ -37,5 +41,43 @@ class ApiCommercialSearch < Search
 
   def domains_scope_options
     DomainScopeOptionsBuilder.build(site: @affiliate, site_limits: nil)
+  end
+
+  def handle_response(response)
+    return unless response
+    @results = response.results
+    @next_offset = response.next_offset
+    true
+  end
+
+  def populate_additional_results
+    @govbox_set = GovboxSet.new(@query,
+                                @affiliate,
+                                nil,
+                                @highlight_options) if first_page?
+  end
+
+  def first_page?
+    @offset.zero?
+  end
+
+  def as_json_build_snippet(description)
+    description
+  end
+
+  def as_json_append_govbox_set(hash)
+    super do
+      hash[:recent_video_news] = video_news_items ? as_json_video_news(video_news_items.results) : []
+      hash[:recent_news] = news_items ? as_json_recent_news : []
+    end
+  end
+
+  def as_json_recent_news
+    news_items.results.map { |news_item| as_json_news_item news_item }
+  end
+
+  def log_serp_impressions
+    @modules << default_module_tag if @results.present?
+    @modules |= @govbox_set.modules if @govbox_set
   end
 end

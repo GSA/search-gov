@@ -32,6 +32,17 @@ module Api::V2::SearchAsJson
     @results.collect { |result| as_json_result_hash result }
   end
 
+  def as_json_result_hash(result)
+    result.description ||= result.content
+    result.url ||= result.unescaped_url
+    {
+      title: result.title,
+      url: result.url,
+      display_url: result.display_url,
+      snippet: as_json_build_snippet(result.description),
+    }
+  end
+
   def as_json_build_snippet(description)
     if description =~ /\uE000/
       description.sub!(/^([^A-Z<])/, '...\1')
