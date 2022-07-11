@@ -5,7 +5,7 @@ class HtmlDocument < WebDocument
 
   def title
     titles = [metadata['og:title'], html.title.try(:strip)]
-    titles.reject!(&:blank?)
+    titles.compact_blank!
     titles.blank? ? url : titles.max_by(&:length)
   end
 
@@ -17,6 +17,18 @@ class HtmlDocument < WebDocument
     metadata['keywords'] || dublin_core_data['dc.subject']
   end
 
+  def audience
+    dcterms_data['dcterms.audience']
+  end
+
+  def image_url
+    metadata['og:image']
+  end
+
+  def content_type
+    [dublin_core_data['dc.type'], dcterms_data['dcterms.type'], metadata['og:type']].uniq.compact.join(', ')
+  end
+
   def searchgov_custom(number)
     return if !number.is_a?(Integer) || !number.between?(1, 3)
 
@@ -25,7 +37,7 @@ class HtmlDocument < WebDocument
 
   # Returns client-side redirect url
   def redirect_url
-    refresh = html.css('meta[http-equiv]').detect{|node| /refresh/i === node['http-equiv'] }
+    refresh = html.css('meta[http-equiv]').detect { |node| /refresh/i === node['http-equiv'] }
     if refresh
       new_path = refresh['content'].match(/.*URL=['"]?(?<path>[^'"]*)/i)[:path]
       URI.join(url, Addressable::URI.encode(new_path)).to_s
@@ -38,7 +50,7 @@ class HtmlDocument < WebDocument
     @html ||= Loofah.document(document.dup.force_encoding('UTF-8').
                               encode('UTF-8', invalid: :replace,
                                               undef: :replace,
-                                              replace: '').gsub(/<\/?td[^>]*>\n?/i, ' '))
+                                              replace: '').gsub(%r{</?td[^>]*>\n?}i, ' '))
   end
 
   def parse_content
@@ -53,14 +65,14 @@ class HtmlDocument < WebDocument
       scrub!(tag_scrubber).
       scrub!(:whitewash).
       to_text(encode_special_chars: false)
-    plain_text.gsub(/[ \t]+/,' ' ).gsub(/[\n\r]+/, "\n").chomp.lstrip
+    plain_text.gsub(/[ \t]+/, ' ').gsub(/[\n\r]+/, "\n").chomp.lstrip
   end
 
   def tag_scrubber
     Loofah::Scrubber.new do |node|
       # convert custom tags to plain 'ol divs to ensure they are not
       # stripped out during HTML sanitization
-      node.name = 'div' if node.name =~ /-/
+      node.name = 'div' if /-/.match?(node.name)
 
       # omit common elements
       node.remove if %w[footer nav].include?(node.name)
@@ -108,6 +120,10 @@ class HtmlDocument < WebDocument
   end
 
   def dublin_core_data
-    metadata.select{|k,_v| /^dc\./ === k }
+    metadata.select { |k, _v| /^dc\./.match?(k) }
+  end
+
+  def dcterms_data
+    metadata.select { |k, _v| /^dcterms\./.match?(k) }
   end
 end
