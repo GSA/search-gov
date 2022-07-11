@@ -21,6 +21,14 @@ class HtmlDocument < WebDocument
     dcterms_data['dcterms.audience']
   end
 
+  def image_url
+    metadata['og:image']
+  end
+
+  def content_type
+    [dublin_core_data['dc.type'], dcterms_data['dcterms.type'], metadata['og:type']].uniq.compact.join(', ')
+  end
+
   # Returns client-side redirect url
   def redirect_url
     refresh = html.css('meta[http-equiv]').detect { |node| /refresh/i === node['http-equiv'] }
