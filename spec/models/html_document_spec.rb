@@ -147,6 +147,16 @@ describe HtmlDocument do
     end
   end
 
+  describe '#audience' do
+    subject(:audience) { html_document.audience }
+
+    context 'when a dcterms audience is available' do
+      let(:raw_document) { doc_with_dc_data }
+
+      it { is_expected.to eq 'dcterms audience' }
+    end
+  end
+
   describe '#image_url' do
     subject(:image_url) { html_document.image_url }
 
