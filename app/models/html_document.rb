@@ -17,6 +17,14 @@ class HtmlDocument < WebDocument
     metadata['keywords'] || dublin_core_data['dc.subject']
   end
 
+  def audience
+    dcterms_data['dcterms.audience']
+  end
+
+  def image_url
+    metadata['og:image']
+  end
+
   def content_type
     [dublin_core_data['dc.type'], dcterms_data['dcterms.type'], metadata['og:type']].uniq.compact.join(', ')
   end

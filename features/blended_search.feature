@@ -282,6 +282,27 @@ Feature: Blended Search
     When I follow "Next"
     Then I should not see "Wherever. Try your search again to see results"
 
+  Scenario: When there are matching results for a different affiliate
+    Given the following Affiliates exist:
+      | display_name | name               | contact_email    | first_name   | last_name            | gets_blended_results | gets_commercial_results_on_blended_search |
+      | Blended site | blended.agency.gov | admin@agency.gov | John         | Bar                  | true                 | false                                     |
+      | Another site | other.agency.gov   | admin@agency.gov | John         | Bar                  | true                 | false                                     |
+    And the following IndexedDocuments exist:
+      | title             | description    | url                       | affiliate        | last_crawl_status | published_at |
+      | Another's article | Another's item | https://other.agency.gov/ | other.agency.gov | OK                | 2022-06-22   |
+    And affiliate "other.agency.gov" has the following RSS feeds:
+      | name          | url                            | is_navigable |
+      | Press         | https://other.agency.gov/press | true         |
+    And feed "Press" has the following news items:
+      | link                            | title      | guid       | published_at | description     | body                 |
+      | https://other.agency.gov/news/1 | First item | pressuuid1 | 2022-06-22   | First news item | first news item body |
+    When I am on blended.agency.gov's search page
+    And I search for "item"
+    And I fill in "From" with "06/01/2022"
+    And I fill in "To" with "06/30/2022"
+    And I press "Search" within the custom date search form
+    Then I should see "Sorry, no results found for 'item'."
+
   Scenario: A site without commercial results
     Given the following Affiliates exist:
       | display_name | name               | contact_email    | first_name   | last_name            | gets_blended_results | gets_commercial_results_on_blended_search |
