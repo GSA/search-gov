@@ -7,6 +7,7 @@ class ApplicationDocument < WebDocument
     metadata['subject']
   end
 
+  # Gratuitous change to kick circleCI??? -DJMII
   def keywords
     metadata['meta:keyword']
   end
