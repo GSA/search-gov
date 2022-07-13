@@ -1,6 +1,6 @@
 class ApplicationDocument < WebDocument
   def title
-    metadata['title'].presence ? [metadata['title']].flatten.max_by(&:length) : File.basename(url)
+    metadata['dc:title'].presence ? [metadata['dc:title']].flatten.max_by(&:length) : File.basename(url)
   end
 
   def description
@@ -8,7 +8,7 @@ class ApplicationDocument < WebDocument
   end
 
   def keywords
-    metadata['Keywords']
+    metadata['meta:keyword']
   end
 
   private
@@ -28,7 +28,8 @@ class ApplicationDocument < WebDocument
   end
 
   def extract_created
-    metadata['Creation-Date']
+    #metadata['Creation-Date']
+    metadata['dcterms:created']
   end
 
   def extract_changed
