@@ -47,9 +47,11 @@ class SearchgovDomain < ApplicationRecord
   end
 
   def check_status
-    self.status = response.status
-    self.scheme = response.uri.scheme
-    self.canonical_domain = host unless domain == host
+    unless response.nil?
+      self.status = response.status
+      self.scheme = response.uri.scheme
+      self.canonical_domain = host unless domain == host
+    end
 
     save if changed?
     status
@@ -87,10 +89,15 @@ class SearchgovDomain < ApplicationRecord
         HTTP.headers(user_agent: DEFAULT_USER_AGENT).
           timeout(connect: 20, read: 60).follow.get(url)
       end
-    rescue StandardError => error
-      update(status: error.message.strip)
-      raise DomainError.new("#{domain}: #{error}")
+    rescue StandardError => e
+      failed_response(e)
     end
+  end
+
+  def failed_response(err)
+    update(status: err.message.strip)
+    Rails.logger.warn "#{domain} response error url: #{url} error: #{status}"
+    nil
   end
 
   def url
