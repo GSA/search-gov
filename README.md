@@ -20,7 +20,7 @@ The required services (MySQL, Elasticsearch, etc.) can be run using Docker. Plea
 
 The Elasticsearch service provided by `searchgov-services` is configured to run on the default port, [9200](http://localhost:9200/). To use a different host (with or without port) or set of hosts, set the `ES_HOSTS` environment variable. For example, use following command to run the specs using Elasticsearch running on `localhost:9207`:
 
-    ES_HOSTS=localhost:9207 bin/rspec spec
+    ES_HOSTS=localhost:9207 bundle exec rspec spec
 
 Verify that Elasticsearch 6.8.x is running on the expected port (port 9200 by default):
 
