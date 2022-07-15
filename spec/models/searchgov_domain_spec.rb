@@ -305,8 +305,14 @@ describe SearchgovDomain do
       end
 
       it 'sets the status to the error code'  do
-        expect { check_status }.to raise_error(SearchgovDomain::DomainError, 'searchgov.gov: kaboom')
+        expect { check_status }.not_to raise_error
         expect(searchgov_domain.reload.status).to eq 'kaboom'
+      end
+
+      it 'logs a message containing that error' do
+        allow(Rails.logger).to receive(:warn)
+        check_status
+        expect(Rails.logger).to have_received(:warn).with(/kaboom/)
       end
 
       context 'when the error is transient' do
@@ -332,13 +338,13 @@ describe SearchgovDomain do
         let(:new_url) { 'https://searchgov.gov/' }
 
         it 'sets the status to 200 OK' do
-          expect { check_status }.to change{
+          expect { check_status }.to change {
             searchgov_domain.reload.status
           }.from(nil).to('200 OK')
         end
 
         it 'sets the scheme to "https"' do
-          expect { check_status }.to change{
+          expect { check_status }.to change {
             searchgov_domain.reload.scheme
           }.from('http').to('https')
         end
@@ -348,13 +354,13 @@ describe SearchgovDomain do
         let(:new_url) { 'https://new.searchgov.gov' }
 
         it 'reports the canonical domain' do
-          expect { check_status }.to change{
+          expect { check_status }.to change {
             searchgov_domain.reload.canonical_domain
           }.from(nil).to('new.searchgov.gov')
         end
 
         it 'sets the status to 200 OK' do
-          expect { check_status }.to change{
+          expect { check_status }.to change {
             searchgov_domain.reload.status
           }.from(nil).to('200 OK')
         end
@@ -371,17 +377,18 @@ describe SearchgovDomain do
       subject(:index) { searchgov_domain.index }
 
       it 'changes the activity to "indexing"' do
-        expect { index }.to change{ searchgov_domain.activity }.
+        expect { index }.to change { searchgov_domain.activity }.
           from('idle').to('indexing')
       end
     end
 
     describe '#done_indexing' do
-      let(:searchgov_domain) { described_class.new(activity: 'indexing') }
       subject(:done_indexing) { searchgov_domain.done_indexing }
 
+      let(:searchgov_domain) { described_class.new(activity: 'indexing') }
+
       it 'changes the activity to "idle"' do
-        expect { done_indexing }.to change{ searchgov_domain.activity }.
+        expect { done_indexing }.to change { searchgov_domain.activity }.
           from('indexing').to('idle')
       end
     end
