@@ -1,4 +1,4 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
 describe ClickCounter do
   let(:counter) { described_class.new(domain: 'agency.gov') }
@@ -15,7 +15,7 @@ describe ClickCounter do
       end
 
       context 'when a SearchgovUrl record exists for that URL' do
-        let!(:searchgov_url) { SearchgovUrl.create!(url: url) }
+        let(:searchgov_url) { SearchgovUrl.create!(url: url) }
 
         it 'updates the click counts for the popular URLs' do
           expect(I14yDocument).to receive(:update).with(
@@ -28,17 +28,18 @@ describe ClickCounter do
       end
 
       context 'when no SearchgovUrl record exists for that URL' do
+        before { allow(Rails.logger).to receive(:error) }
+
         it 'logs the missing URL' do
-          expect(Rails.logger).to receive(:error).
-            with('SearchgovUrl not found for clicked URL: http://agency.gov/')
           update_click_counts
+          expect(Rails.logger).to have_received(:error).
+            with('SearchgovUrl not found for clicked URL: http://agency.gov/')
         end
       end
 
       context 'when the URL has not been indexed' do
-        let!(:searchgov_url) { SearchgovUrl.create!(url: url) }
-
         before do
+          SearchgovUrl.create!(url: url)
           allow(I14yDocument).to receive(:update).
             and_raise(I14yDocument::I14yDocumentError, 'fail')
         end
@@ -56,19 +57,17 @@ describe ClickCounter do
   describe '#statistically_significant_clicks' do
     subject(:clicks) { counter.send(:statistically_significant_clicks) }
 
-    before { travel_to(Time.now) }
-
-    after { travel_back }
+    before { travel_to(Time.current) }
 
     it "generates a query for the last month's significant clicks" do
       expect(DateRangeTopNFieldQuery).to receive(:new).
         with(nil,
              'click',
              1.month.ago,
-             Time.now,
+             Time.current,
              'click_domain',
              'agency.gov',
-             { field: 'params.url', size: 100_000 }).
+             { field: 'params.url', size: 3_000 }).
         and_call_original
       clicks
     end
@@ -83,7 +82,7 @@ describe ClickCounter do
       end
 
       it 'returns the statistically significant clicks' do
-        expect(clicks.last).to eq ['https://search.gov/manual/add-site.html', 1]
+        expect(clicks.last).to eq ['https://search.gov/tos.html', 1]
       end
     end
   end
