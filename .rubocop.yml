@@ -12,11 +12,13 @@ Layout/FirstHashElementIndentation:
   Exclude:
     # These files use Kibana's JSON style for easier side-to-side comparison, copy/pasting, etc.
     - spec/models/logstash_queries/**/*
+    - spec/models/custom_index_queries/**/*
 
 Lint/SymbolConversion:
   Exclude:
     # These files use Kibana's JSON style for easier side-to-side comparison, copy/pasting, etc.
     - spec/models/logstash_queries/**/*
+    - spec/models/custom_index_queries/**/*
 
 Metrics/BlockLength:
   Exclude:
@@ -25,6 +27,7 @@ Metrics/BlockLength:
     # Logstash query specs include lengthy, raw JSON queries
     # for easier side-to-side comparison, copy/pasting, etc.
     - spec/models/logstash_queries/**/*
+    - spec/models/custom_index_queries/**/*
 
 RSpec/DescribeClass:
   Exclude:
@@ -69,13 +72,16 @@ Style/QuotedSymbols:
   Exclude:
     # These files use Kibana's JSON style for easier side-to-side comparison, copy/pasting, etc.
     - spec/models/logstash_queries/**/*
+    - spec/models/custom_index_queries/**/*
 
 Style/StringLiterals:
   Exclude:
     # These files use Kibana's JSON style for easier side-to-side comparison, copy/pasting, etc.
     - spec/models/logstash_queries/**/*
+    - spec/models/custom_index_queries/**/*
 
 Style/WordArray:
   Exclude:
     # These files use Kibana's JSON style for easier side-to-side comparison, copy/pasting, etc.
     - spec/models/logstash_queries/**/*
+    - spec/models/custom_index_queries/**/*
