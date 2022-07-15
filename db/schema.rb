@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_12_200543) do
+ActiveRecord::Schema.define(version: 2022_07_15_232531) do
 
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -107,12 +107,6 @@ ActiveRecord::Schema.define(version: 2022_05_12_200543) do
     t.string "bing_v5_key", limit: 32
     t.boolean "active", default: true, null: false
     t.index ["name"], name: "index_affiliates_on_name", unique: true
-  end
-
-  create_table "affiliates_instagram_profiles", id: false, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
-    t.integer "affiliate_id", null: false
-    t.bigint "instagram_profile_id", null: false
-    t.index ["affiliate_id", "instagram_profile_id"], name: "index_affiliates_instagram_profiles", unique: true
   end
 
   create_table "affiliates_youtube_profiles", id: false, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
@@ -368,12 +362,6 @@ ActiveRecord::Schema.define(version: 2022_05_12_200543) do
     t.datetime "published_at"
     t.index ["affiliate_id", "id"], name: "index_indexed_documents_on_affiliate_id_and_id", unique: true
     t.index ["affiliate_id", "url"], name: "by_aid_url", length: { url: 50 }
-  end
-
-  create_table "instagram_profiles", id: :bigint, default: nil, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
-    t.string "username", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "languages", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
@@ -780,7 +768,6 @@ ActiveRecord::Schema.define(version: 2022_05_12_200543) do
     t.index ["id", "imported_at"], name: "index_youtube_profiles_on_id_and_imported_at"
   end
 
-  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "searchgov_urls", "searchgov_domains"
 end
