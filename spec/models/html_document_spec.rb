@@ -234,6 +234,38 @@ describe HtmlDocument do
     end
   end
 
+  describe '#searchgov_custom' do
+    context 'when a searchgov_custom1 is available' do
+      subject(:searchgov_custom1) { html_document.searchgov_custom(1) }
+
+      it { is_expected.to eq 'Custom 1' }
+    end
+
+    context 'when a searchgov_custom2 is available' do
+      subject(:searchgov_custom2) { html_document.searchgov_custom(2) }
+
+      it { is_expected.to eq 'Custom 2' }
+    end
+
+    context 'when a searchgov_custom3 is available' do
+      subject(:searchgov_custom3) { html_document.searchgov_custom(3) }
+
+      it { is_expected.to eq 'Custom 3' }
+    end
+
+    context 'when an invalid searchgov_custom is supplied' do
+      subject(:searchgov_custom1) { html_document.searchgov_custom('word') }
+
+      it { is_expected.to be_nil }
+    end
+
+    context 'when a searchgov_custom greater than 3 is supplied' do
+      subject(:searchgov_custom4) { html_document.searchgov_custom(4) }
+
+      it { is_expected.to be_nil }
+    end
+  end
+
   describe '#keywords' do
     subject(:keywords) { html_document.keywords }
 
