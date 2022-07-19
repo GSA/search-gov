@@ -21,14 +21,13 @@ class SearchgovDomain < ApplicationRecord
   has_many :sitemaps, dependent: :destroy
 
   attr_readonly :domain
+  attr_reader :response
 
   scope :ok, -> { where(status: OK_STATUS) }
   scope :not_ok, -> { where.not(status: OK_STATUS) }
 
   def delay
-    @delay ||= begin
-      robotex.delay("http://#{domain}/") || 1
-    end
+    @delay ||= (robotex.delay("http://#{domain}/") || 1)
   end
 
   def index_urls
@@ -43,22 +42,13 @@ class SearchgovDomain < ApplicationRecord
   end
 
   def available?
-    /^200\b/ === (status || check_status)
+    !!((status || check_status) =~ /^200\b/)
   end
 
   def check_status
-    record_response_if_non_nil
-
-    save if changed?
+    fetch_response
+    record_response if response
     status
-  end
-
-  def record_response_if_non_nil
-    return if response.nil?
-
-    self.status = response.status
-    self.scheme = response.uri.scheme
-    self.canonical_domain = host unless domain == host
   end
 
   aasm column: 'activity' do
@@ -86,8 +76,8 @@ class SearchgovDomain < ApplicationRecord
     @robotex ||= Robotex.new('usasearch')
   end
 
-  def response
-    @response ||= begin
+  def fetch_response
+    @response = begin
       Retriable.retriable(base_interval: delay) do
         DocumentFetchLogger.new(url, 'searchgov_domain').log
         HTTP.headers(user_agent: DEFAULT_USER_AGENT).
@@ -102,6 +92,14 @@ class SearchgovDomain < ApplicationRecord
     update(status: err.message.strip)
     Rails.logger.warn "#{domain} response error url: #{url} error: #{status}"
     nil
+  end
+
+  def record_response
+    self.status = response.status
+    self.scheme = response.uri.scheme
+    self.canonical_domain = host unless domain == host
+
+    save if changed?
   end
 
   def url
